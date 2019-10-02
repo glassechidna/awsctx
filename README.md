@@ -81,11 +81,8 @@ import (
 	"context"
 	"fmt"
 	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/aws/aws-sdk-go/service/s3/s3iface"
 	"github.com/aws/aws-sdk-go/service/sts"
 	"github.com/glassechidna/awsctx"
-	"github.com/glassechidna/awsctx/service/s3ctx"
 	"github.com/glassechidna/awsctx/service/stsctx"
 	"time"
 )
@@ -93,15 +90,13 @@ import (
 func main() {
 	sess := session.Must(session.NewSession())
 	base := sts.New(sess)
-
-	ctxual := stsctx.New(
-		base,
-		awsctx.ContexterFunc(func(ctx context.Context, request *awsctx.AwsRequest, inner func(ctx context.Context)) {
-			defer recordApiCall(ctx, request, time.Now())
-			inner(ctx)
-		}),
-	)
-	
+		
+	ctxer := awsctx.ContexterFunc(func(ctx context.Context, request *awsctx.AwsRequest, inner func(ctx context.Context)) {
+	    defer recordApiCall(ctx, request, time.Now())
+	    inner(ctx)
+	})
+		
+	ctxual := stsctx.New(base, ctxer)
 	_, _ = ctxual.GetCallerIdentityWithContext(context.Background(), &sts.GetCallerIdentityInput{})
 }
 
