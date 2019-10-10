@@ -7,3 +7,5 @@ cd -
 
 go get github.com/aws/aws-sdk-go
 internal/generate/generate service
+
+go test ./...
