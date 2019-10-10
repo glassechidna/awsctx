@@ -155,7 +155,9 @@ func main() {
 		sdkVersion = os.Args[2]
 	}
 
-	glob := awsSdkPath(sdkVersion) + "/service/**/*iface/interface.go"
+	sdkPath := awsSdkPath(sdkVersion)
+	fmt.Printf("module path: %s\n", sdkPath)
+	glob := sdkPath + "/service/**/*iface/interface.go"
 	paths, err := filepath.Glob(glob)
 	if err != nil {
 		panic(err)

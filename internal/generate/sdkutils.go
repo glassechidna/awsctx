@@ -7,6 +7,7 @@ import (
 	"github.com/pkg/errors"
 	"os/exec"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -62,6 +63,7 @@ func latestAwsSdkVersion() string {
 		versions = append(versions, v)
 	}
 
+	sort.Sort(versions)
 	latest := versions[len(versions)-1]
 	return latest.String()
 }
