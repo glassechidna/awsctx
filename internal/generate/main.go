@@ -21,6 +21,7 @@ type visitor struct {
 
 type method struct {
 	Name       string
+	Action     string // name without suffix
 	Args       string
 	ReturnType string
 }
@@ -71,6 +72,7 @@ func (v visitor) Visit(node ast.Node) (w ast.Visitor) {
 
 			myapi.Methods = append(myapi.Methods, method{
 				Name:       name,
+				Action:     strings.TrimSuffix(name, "WithContext"),
 				Args:       args,
 				ReturnType: returnType.String(),
 			})
@@ -122,7 +124,7 @@ var _ {{ .Name }} = (*Client)(nil)
 func (c *Client) {{ .Name }}({{ .Args }}) ({{ .ReturnType }}, error) {
 	req := &awsctx.AwsRequest{
 		Service: "{{ $.SourcePackage }}",
-		Action:  "{{ .Name }}",
+		Action:  "{{ .Action }}",
 		Input:   input,
 		Output:  ({{ .ReturnType }})(nil),
 		Error:   nil,
