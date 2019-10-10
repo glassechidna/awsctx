@@ -95,6 +95,9 @@ package {{ .SourcePackage }}ctx
 import (
 	"context"
 	"github.com/aws/aws-sdk-go/aws/request"
+	{{ if eq .SourcePackage "wafregional" -}}
+	"github.com/aws/aws-sdk-go/service/waf"
+	{{ end -}} 
 	"github.com/aws/aws-sdk-go/service/{{ .SourcePackage }}"
 	"github.com/aws/aws-sdk-go/service/{{ .SourcePackage }}/{{ .SourcePackage }}iface"
 	"github.com/glassechidna/awsctx"

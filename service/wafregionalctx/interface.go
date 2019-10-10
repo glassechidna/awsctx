@@ -5,6 +5,7 @@ package wafregionalctx
 import (
 	"context"
 	"github.com/aws/aws-sdk-go/aws/request"
+	"github.com/aws/aws-sdk-go/service/waf"
 	"github.com/aws/aws-sdk-go/service/wafregional"
 	"github.com/aws/aws-sdk-go/service/wafregional/wafregionaliface"
 	"github.com/glassechidna/awsctx"
