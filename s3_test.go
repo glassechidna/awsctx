@@ -93,7 +93,7 @@ func TestWithContexter(t *testing.T) {
 		S3API: api,
 		Contexter: awsctx.ContexterFunc(func(ctx context.Context, request *awsctx.AwsRequest, inner func(ctx context.Context)) {
 			assert.Equal(t, "s3", request.Service)
-			assert.Equal(t, "ListObjectsWithContext", request.Action)
+			assert.Equal(t, "ListObjects", request.Action)
 			assert.NotNil(t, request.Input)
 			assert.Nil(t, request.Output)
 			inner(context.WithValue(ctx, "mykey", "hello world"))
