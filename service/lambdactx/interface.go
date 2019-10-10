@@ -70,7 +70,7 @@ var _ Lambda = (*Client)(nil)
 func (c *Client) AddLayerVersionPermissionWithContext(ctx context.Context, input *lambda.AddLayerVersionPermissionInput, opts ...request.Option) (*lambda.AddLayerVersionPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "AddLayerVersionPermissionWithContext",
+		Action:  "AddLayerVersionPermission",
 		Input:   input,
 		Output:  (*lambda.AddLayerVersionPermissionOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) AddLayerVersionPermissionWithContext(ctx context.Context, input
 func (c *Client) AddPermissionWithContext(ctx context.Context, input *lambda.AddPermissionInput, opts ...request.Option) (*lambda.AddPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "AddPermissionWithContext",
+		Action:  "AddPermission",
 		Input:   input,
 		Output:  (*lambda.AddPermissionOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) AddPermissionWithContext(ctx context.Context, input *lambda.Add
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *lambda.CreateAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "CreateAliasWithContext",
+		Action:  "CreateAlias",
 		Input:   input,
 		Output:  (*lambda.AliasConfiguration)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *lambda.Creat
 func (c *Client) CreateEventSourceMappingWithContext(ctx context.Context, input *lambda.CreateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "CreateEventSourceMappingWithContext",
+		Action:  "CreateEventSourceMapping",
 		Input:   input,
 		Output:  (*lambda.EventSourceMappingConfiguration)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) CreateEventSourceMappingWithContext(ctx context.Context, input 
 func (c *Client) CreateFunctionWithContext(ctx context.Context, input *lambda.CreateFunctionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "CreateFunctionWithContext",
+		Action:  "CreateFunction",
 		Input:   input,
 		Output:  (*lambda.FunctionConfiguration)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, input *lambda.Cr
 func (c *Client) DeleteAliasWithContext(ctx context.Context, input *lambda.DeleteAliasInput, opts ...request.Option) (*lambda.DeleteAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "DeleteAliasWithContext",
+		Action:  "DeleteAlias",
 		Input:   input,
 		Output:  (*lambda.DeleteAliasOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *lambda.Delet
 func (c *Client) DeleteEventSourceMappingWithContext(ctx context.Context, input *lambda.DeleteEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "DeleteEventSourceMappingWithContext",
+		Action:  "DeleteEventSourceMapping",
 		Input:   input,
 		Output:  (*lambda.EventSourceMappingConfiguration)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) DeleteEventSourceMappingWithContext(ctx context.Context, input 
 func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *lambda.DeleteFunctionInput, opts ...request.Option) (*lambda.DeleteFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "DeleteFunctionWithContext",
+		Action:  "DeleteFunction",
 		Input:   input,
 		Output:  (*lambda.DeleteFunctionOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *lambda.De
 func (c *Client) DeleteFunctionConcurrencyWithContext(ctx context.Context, input *lambda.DeleteFunctionConcurrencyInput, opts ...request.Option) (*lambda.DeleteFunctionConcurrencyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "DeleteFunctionConcurrencyWithContext",
+		Action:  "DeleteFunctionConcurrency",
 		Input:   input,
 		Output:  (*lambda.DeleteFunctionConcurrencyOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) DeleteFunctionConcurrencyWithContext(ctx context.Context, input
 func (c *Client) DeleteLayerVersionWithContext(ctx context.Context, input *lambda.DeleteLayerVersionInput, opts ...request.Option) (*lambda.DeleteLayerVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "DeleteLayerVersionWithContext",
+		Action:  "DeleteLayerVersion",
 		Input:   input,
 		Output:  (*lambda.DeleteLayerVersionOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) DeleteLayerVersionWithContext(ctx context.Context, input *lambd
 func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *lambda.GetAccountSettingsInput, opts ...request.Option) (*lambda.GetAccountSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetAccountSettingsWithContext",
+		Action:  "GetAccountSettings",
 		Input:   input,
 		Output:  (*lambda.GetAccountSettingsOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *lambd
 func (c *Client) GetAliasWithContext(ctx context.Context, input *lambda.GetAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetAliasWithContext",
+		Action:  "GetAlias",
 		Input:   input,
 		Output:  (*lambda.AliasConfiguration)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) GetAliasWithContext(ctx context.Context, input *lambda.GetAlias
 func (c *Client) GetEventSourceMappingWithContext(ctx context.Context, input *lambda.GetEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetEventSourceMappingWithContext",
+		Action:  "GetEventSourceMapping",
 		Input:   input,
 		Output:  (*lambda.EventSourceMappingConfiguration)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) GetEventSourceMappingWithContext(ctx context.Context, input *la
 func (c *Client) GetFunctionWithContext(ctx context.Context, input *lambda.GetFunctionInput, opts ...request.Option) (*lambda.GetFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetFunctionWithContext",
+		Action:  "GetFunction",
 		Input:   input,
 		Output:  (*lambda.GetFunctionOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) GetFunctionWithContext(ctx context.Context, input *lambda.GetFu
 func (c *Client) GetFunctionConfigurationWithContext(ctx context.Context, input *lambda.GetFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetFunctionConfigurationWithContext",
+		Action:  "GetFunctionConfiguration",
 		Input:   input,
 		Output:  (*lambda.FunctionConfiguration)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) GetFunctionConfigurationWithContext(ctx context.Context, input 
 func (c *Client) GetLayerVersionWithContext(ctx context.Context, input *lambda.GetLayerVersionInput, opts ...request.Option) (*lambda.GetLayerVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetLayerVersionWithContext",
+		Action:  "GetLayerVersion",
 		Input:   input,
 		Output:  (*lambda.GetLayerVersionOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) GetLayerVersionWithContext(ctx context.Context, input *lambda.G
 func (c *Client) GetLayerVersionByArnWithContext(ctx context.Context, input *lambda.GetLayerVersionByArnInput, opts ...request.Option) (*lambda.GetLayerVersionByArnOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetLayerVersionByArnWithContext",
+		Action:  "GetLayerVersionByArn",
 		Input:   input,
 		Output:  (*lambda.GetLayerVersionByArnOutput)(nil),
 		Error:   nil,
@@ -427,7 +427,7 @@ func (c *Client) GetLayerVersionByArnWithContext(ctx context.Context, input *lam
 func (c *Client) GetLayerVersionPolicyWithContext(ctx context.Context, input *lambda.GetLayerVersionPolicyInput, opts ...request.Option) (*lambda.GetLayerVersionPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetLayerVersionPolicyWithContext",
+		Action:  "GetLayerVersionPolicy",
 		Input:   input,
 		Output:  (*lambda.GetLayerVersionPolicyOutput)(nil),
 		Error:   nil,
@@ -448,7 +448,7 @@ func (c *Client) GetLayerVersionPolicyWithContext(ctx context.Context, input *la
 func (c *Client) GetPolicyWithContext(ctx context.Context, input *lambda.GetPolicyInput, opts ...request.Option) (*lambda.GetPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "GetPolicyWithContext",
+		Action:  "GetPolicy",
 		Input:   input,
 		Output:  (*lambda.GetPolicyOutput)(nil),
 		Error:   nil,
@@ -469,7 +469,7 @@ func (c *Client) GetPolicyWithContext(ctx context.Context, input *lambda.GetPoli
 func (c *Client) InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "InvokeWithContext",
+		Action:  "Invoke",
 		Input:   input,
 		Output:  (*lambda.InvokeOutput)(nil),
 		Error:   nil,
@@ -490,7 +490,7 @@ func (c *Client) InvokeWithContext(ctx context.Context, input *lambda.InvokeInpu
 func (c *Client) InvokeAsyncWithContext(ctx context.Context, input *lambda.InvokeAsyncInput, opts ...request.Option) (*lambda.InvokeAsyncOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "InvokeAsyncWithContext",
+		Action:  "InvokeAsync",
 		Input:   input,
 		Output:  (*lambda.InvokeAsyncOutput)(nil),
 		Error:   nil,
@@ -511,7 +511,7 @@ func (c *Client) InvokeAsyncWithContext(ctx context.Context, input *lambda.Invok
 func (c *Client) ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListAliasesWithContext",
+		Action:  "ListAliases",
 		Input:   input,
 		Output:  (*lambda.ListAliasesOutput)(nil),
 		Error:   nil,
@@ -532,7 +532,7 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *lambda.ListA
 func (c *Client) ListEventSourceMappingsWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, opts ...request.Option) (*lambda.ListEventSourceMappingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListEventSourceMappingsWithContext",
+		Action:  "ListEventSourceMappings",
 		Input:   input,
 		Output:  (*lambda.ListEventSourceMappingsOutput)(nil),
 		Error:   nil,
@@ -553,7 +553,7 @@ func (c *Client) ListEventSourceMappingsWithContext(ctx context.Context, input *
 func (c *Client) ListFunctionsWithContext(ctx context.Context, input *lambda.ListFunctionsInput, opts ...request.Option) (*lambda.ListFunctionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListFunctionsWithContext",
+		Action:  "ListFunctions",
 		Input:   input,
 		Output:  (*lambda.ListFunctionsOutput)(nil),
 		Error:   nil,
@@ -574,7 +574,7 @@ func (c *Client) ListFunctionsWithContext(ctx context.Context, input *lambda.Lis
 func (c *Client) ListLayerVersionsWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, opts ...request.Option) (*lambda.ListLayerVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListLayerVersionsWithContext",
+		Action:  "ListLayerVersions",
 		Input:   input,
 		Output:  (*lambda.ListLayerVersionsOutput)(nil),
 		Error:   nil,
@@ -595,7 +595,7 @@ func (c *Client) ListLayerVersionsWithContext(ctx context.Context, input *lambda
 func (c *Client) ListLayersWithContext(ctx context.Context, input *lambda.ListLayersInput, opts ...request.Option) (*lambda.ListLayersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListLayersWithContext",
+		Action:  "ListLayers",
 		Input:   input,
 		Output:  (*lambda.ListLayersOutput)(nil),
 		Error:   nil,
@@ -616,7 +616,7 @@ func (c *Client) ListLayersWithContext(ctx context.Context, input *lambda.ListLa
 func (c *Client) ListTagsWithContext(ctx context.Context, input *lambda.ListTagsInput, opts ...request.Option) (*lambda.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*lambda.ListTagsOutput)(nil),
 		Error:   nil,
@@ -637,7 +637,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *lambda.ListTags
 func (c *Client) ListVersionsByFunctionWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, opts ...request.Option) (*lambda.ListVersionsByFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "ListVersionsByFunctionWithContext",
+		Action:  "ListVersionsByFunction",
 		Input:   input,
 		Output:  (*lambda.ListVersionsByFunctionOutput)(nil),
 		Error:   nil,
@@ -658,7 +658,7 @@ func (c *Client) ListVersionsByFunctionWithContext(ctx context.Context, input *l
 func (c *Client) PublishLayerVersionWithContext(ctx context.Context, input *lambda.PublishLayerVersionInput, opts ...request.Option) (*lambda.PublishLayerVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "PublishLayerVersionWithContext",
+		Action:  "PublishLayerVersion",
 		Input:   input,
 		Output:  (*lambda.PublishLayerVersionOutput)(nil),
 		Error:   nil,
@@ -679,7 +679,7 @@ func (c *Client) PublishLayerVersionWithContext(ctx context.Context, input *lamb
 func (c *Client) PublishVersionWithContext(ctx context.Context, input *lambda.PublishVersionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "PublishVersionWithContext",
+		Action:  "PublishVersion",
 		Input:   input,
 		Output:  (*lambda.FunctionConfiguration)(nil),
 		Error:   nil,
@@ -700,7 +700,7 @@ func (c *Client) PublishVersionWithContext(ctx context.Context, input *lambda.Pu
 func (c *Client) PutFunctionConcurrencyWithContext(ctx context.Context, input *lambda.PutFunctionConcurrencyInput, opts ...request.Option) (*lambda.PutFunctionConcurrencyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "PutFunctionConcurrencyWithContext",
+		Action:  "PutFunctionConcurrency",
 		Input:   input,
 		Output:  (*lambda.PutFunctionConcurrencyOutput)(nil),
 		Error:   nil,
@@ -721,7 +721,7 @@ func (c *Client) PutFunctionConcurrencyWithContext(ctx context.Context, input *l
 func (c *Client) RemoveLayerVersionPermissionWithContext(ctx context.Context, input *lambda.RemoveLayerVersionPermissionInput, opts ...request.Option) (*lambda.RemoveLayerVersionPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "RemoveLayerVersionPermissionWithContext",
+		Action:  "RemoveLayerVersionPermission",
 		Input:   input,
 		Output:  (*lambda.RemoveLayerVersionPermissionOutput)(nil),
 		Error:   nil,
@@ -742,7 +742,7 @@ func (c *Client) RemoveLayerVersionPermissionWithContext(ctx context.Context, in
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *lambda.RemovePermissionInput, opts ...request.Option) (*lambda.RemovePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "RemovePermissionWithContext",
+		Action:  "RemovePermission",
 		Input:   input,
 		Output:  (*lambda.RemovePermissionOutput)(nil),
 		Error:   nil,
@@ -763,7 +763,7 @@ func (c *Client) RemovePermissionWithContext(ctx context.Context, input *lambda.
 func (c *Client) TagResourceWithContext(ctx context.Context, input *lambda.TagResourceInput, opts ...request.Option) (*lambda.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*lambda.TagResourceOutput)(nil),
 		Error:   nil,
@@ -784,7 +784,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *lambda.TagRe
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *lambda.UntagResourceInput, opts ...request.Option) (*lambda.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*lambda.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -805,7 +805,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *lambda.Unt
 func (c *Client) UpdateAliasWithContext(ctx context.Context, input *lambda.UpdateAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "UpdateAliasWithContext",
+		Action:  "UpdateAlias",
 		Input:   input,
 		Output:  (*lambda.AliasConfiguration)(nil),
 		Error:   nil,
@@ -826,7 +826,7 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, input *lambda.Updat
 func (c *Client) UpdateEventSourceMappingWithContext(ctx context.Context, input *lambda.UpdateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "UpdateEventSourceMappingWithContext",
+		Action:  "UpdateEventSourceMapping",
 		Input:   input,
 		Output:  (*lambda.EventSourceMappingConfiguration)(nil),
 		Error:   nil,
@@ -847,7 +847,7 @@ func (c *Client) UpdateEventSourceMappingWithContext(ctx context.Context, input 
 func (c *Client) UpdateFunctionCodeWithContext(ctx context.Context, input *lambda.UpdateFunctionCodeInput, opts ...request.Option) (*lambda.FunctionConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "UpdateFunctionCodeWithContext",
+		Action:  "UpdateFunctionCode",
 		Input:   input,
 		Output:  (*lambda.FunctionConfiguration)(nil),
 		Error:   nil,
@@ -868,7 +868,7 @@ func (c *Client) UpdateFunctionCodeWithContext(ctx context.Context, input *lambd
 func (c *Client) UpdateFunctionConfigurationWithContext(ctx context.Context, input *lambda.UpdateFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
-		Action:  "UpdateFunctionConfigurationWithContext",
+		Action:  "UpdateFunctionConfiguration",
 		Input:   input,
 		Output:  (*lambda.FunctionConfiguration)(nil),
 		Error:   nil,

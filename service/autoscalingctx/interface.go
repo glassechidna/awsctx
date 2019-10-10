@@ -85,7 +85,7 @@ var _ AutoScaling = (*Client)(nil)
 func (c *Client) AttachInstancesWithContext(ctx context.Context, input *autoscaling.AttachInstancesInput, opts ...request.Option) (*autoscaling.AttachInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "AttachInstancesWithContext",
+		Action:  "AttachInstances",
 		Input:   input,
 		Output:  (*autoscaling.AttachInstancesOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) AttachInstancesWithContext(ctx context.Context, input *autoscal
 func (c *Client) AttachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.AttachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.AttachLoadBalancerTargetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "AttachLoadBalancerTargetGroupsWithContext",
+		Action:  "AttachLoadBalancerTargetGroups",
 		Input:   input,
 		Output:  (*autoscaling.AttachLoadBalancerTargetGroupsOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) AttachLoadBalancerTargetGroupsWithContext(ctx context.Context, 
 func (c *Client) AttachLoadBalancersWithContext(ctx context.Context, input *autoscaling.AttachLoadBalancersInput, opts ...request.Option) (*autoscaling.AttachLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "AttachLoadBalancersWithContext",
+		Action:  "AttachLoadBalancers",
 		Input:   input,
 		Output:  (*autoscaling.AttachLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) AttachLoadBalancersWithContext(ctx context.Context, input *auto
 func (c *Client) BatchDeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.BatchDeleteScheduledActionInput, opts ...request.Option) (*autoscaling.BatchDeleteScheduledActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "BatchDeleteScheduledActionWithContext",
+		Action:  "BatchDeleteScheduledAction",
 		Input:   input,
 		Output:  (*autoscaling.BatchDeleteScheduledActionOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) BatchDeleteScheduledActionWithContext(ctx context.Context, inpu
 func (c *Client) BatchPutScheduledUpdateGroupActionWithContext(ctx context.Context, input *autoscaling.BatchPutScheduledUpdateGroupActionInput, opts ...request.Option) (*autoscaling.BatchPutScheduledUpdateGroupActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "BatchPutScheduledUpdateGroupActionWithContext",
+		Action:  "BatchPutScheduledUpdateGroupAction",
 		Input:   input,
 		Output:  (*autoscaling.BatchPutScheduledUpdateGroupActionOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) BatchPutScheduledUpdateGroupActionWithContext(ctx context.Conte
 func (c *Client) CompleteLifecycleActionWithContext(ctx context.Context, input *autoscaling.CompleteLifecycleActionInput, opts ...request.Option) (*autoscaling.CompleteLifecycleActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "CompleteLifecycleActionWithContext",
+		Action:  "CompleteLifecycleAction",
 		Input:   input,
 		Output:  (*autoscaling.CompleteLifecycleActionOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) CompleteLifecycleActionWithContext(ctx context.Context, input *
 func (c *Client) CreateAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.CreateAutoScalingGroupInput, opts ...request.Option) (*autoscaling.CreateAutoScalingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "CreateAutoScalingGroupWithContext",
+		Action:  "CreateAutoScalingGroup",
 		Input:   input,
 		Output:  (*autoscaling.CreateAutoScalingGroupOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) CreateAutoScalingGroupWithContext(ctx context.Context, input *a
 func (c *Client) CreateLaunchConfigurationWithContext(ctx context.Context, input *autoscaling.CreateLaunchConfigurationInput, opts ...request.Option) (*autoscaling.CreateLaunchConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "CreateLaunchConfigurationWithContext",
+		Action:  "CreateLaunchConfiguration",
 		Input:   input,
 		Output:  (*autoscaling.CreateLaunchConfigurationOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) CreateLaunchConfigurationWithContext(ctx context.Context, input
 func (c *Client) CreateOrUpdateTagsWithContext(ctx context.Context, input *autoscaling.CreateOrUpdateTagsInput, opts ...request.Option) (*autoscaling.CreateOrUpdateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "CreateOrUpdateTagsWithContext",
+		Action:  "CreateOrUpdateTags",
 		Input:   input,
 		Output:  (*autoscaling.CreateOrUpdateTagsOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) CreateOrUpdateTagsWithContext(ctx context.Context, input *autos
 func (c *Client) DeleteAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.DeleteAutoScalingGroupInput, opts ...request.Option) (*autoscaling.DeleteAutoScalingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeleteAutoScalingGroupWithContext",
+		Action:  "DeleteAutoScalingGroup",
 		Input:   input,
 		Output:  (*autoscaling.DeleteAutoScalingGroupOutput)(nil),
 		Error:   nil,
@@ -295,7 +295,7 @@ func (c *Client) DeleteAutoScalingGroupWithContext(ctx context.Context, input *a
 func (c *Client) DeleteLaunchConfigurationWithContext(ctx context.Context, input *autoscaling.DeleteLaunchConfigurationInput, opts ...request.Option) (*autoscaling.DeleteLaunchConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeleteLaunchConfigurationWithContext",
+		Action:  "DeleteLaunchConfiguration",
 		Input:   input,
 		Output:  (*autoscaling.DeleteLaunchConfigurationOutput)(nil),
 		Error:   nil,
@@ -316,7 +316,7 @@ func (c *Client) DeleteLaunchConfigurationWithContext(ctx context.Context, input
 func (c *Client) DeleteLifecycleHookWithContext(ctx context.Context, input *autoscaling.DeleteLifecycleHookInput, opts ...request.Option) (*autoscaling.DeleteLifecycleHookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeleteLifecycleHookWithContext",
+		Action:  "DeleteLifecycleHook",
 		Input:   input,
 		Output:  (*autoscaling.DeleteLifecycleHookOutput)(nil),
 		Error:   nil,
@@ -337,7 +337,7 @@ func (c *Client) DeleteLifecycleHookWithContext(ctx context.Context, input *auto
 func (c *Client) DeleteNotificationConfigurationWithContext(ctx context.Context, input *autoscaling.DeleteNotificationConfigurationInput, opts ...request.Option) (*autoscaling.DeleteNotificationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeleteNotificationConfigurationWithContext",
+		Action:  "DeleteNotificationConfiguration",
 		Input:   input,
 		Output:  (*autoscaling.DeleteNotificationConfigurationOutput)(nil),
 		Error:   nil,
@@ -358,7 +358,7 @@ func (c *Client) DeleteNotificationConfigurationWithContext(ctx context.Context,
 func (c *Client) DeletePolicyWithContext(ctx context.Context, input *autoscaling.DeletePolicyInput, opts ...request.Option) (*autoscaling.DeletePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeletePolicyWithContext",
+		Action:  "DeletePolicy",
 		Input:   input,
 		Output:  (*autoscaling.DeletePolicyOutput)(nil),
 		Error:   nil,
@@ -379,7 +379,7 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *autoscaling
 func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.DeleteScheduledActionInput, opts ...request.Option) (*autoscaling.DeleteScheduledActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeleteScheduledActionWithContext",
+		Action:  "DeleteScheduledAction",
 		Input:   input,
 		Output:  (*autoscaling.DeleteScheduledActionOutput)(nil),
 		Error:   nil,
@@ -400,7 +400,7 @@ func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, input *au
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *autoscaling.DeleteTagsInput, opts ...request.Option) (*autoscaling.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*autoscaling.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -421,7 +421,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *autoscaling.D
 func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *autoscaling.DescribeAccountLimitsInput, opts ...request.Option) (*autoscaling.DescribeAccountLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeAccountLimitsWithContext",
+		Action:  "DescribeAccountLimits",
 		Input:   input,
 		Output:  (*autoscaling.DescribeAccountLimitsOutput)(nil),
 		Error:   nil,
@@ -442,7 +442,7 @@ func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *au
 func (c *Client) DescribeAdjustmentTypesWithContext(ctx context.Context, input *autoscaling.DescribeAdjustmentTypesInput, opts ...request.Option) (*autoscaling.DescribeAdjustmentTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeAdjustmentTypesWithContext",
+		Action:  "DescribeAdjustmentTypes",
 		Input:   input,
 		Output:  (*autoscaling.DescribeAdjustmentTypesOutput)(nil),
 		Error:   nil,
@@ -463,7 +463,7 @@ func (c *Client) DescribeAdjustmentTypesWithContext(ctx context.Context, input *
 func (c *Client) DescribeAutoScalingGroupsWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingGroupsInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeAutoScalingGroupsWithContext",
+		Action:  "DescribeAutoScalingGroups",
 		Input:   input,
 		Output:  (*autoscaling.DescribeAutoScalingGroupsOutput)(nil),
 		Error:   nil,
@@ -484,7 +484,7 @@ func (c *Client) DescribeAutoScalingGroupsWithContext(ctx context.Context, input
 func (c *Client) DescribeAutoScalingInstancesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeAutoScalingInstancesWithContext",
+		Action:  "DescribeAutoScalingInstances",
 		Input:   input,
 		Output:  (*autoscaling.DescribeAutoScalingInstancesOutput)(nil),
 		Error:   nil,
@@ -505,7 +505,7 @@ func (c *Client) DescribeAutoScalingInstancesWithContext(ctx context.Context, in
 func (c *Client) DescribeAutoScalingNotificationTypesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingNotificationTypesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingNotificationTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeAutoScalingNotificationTypesWithContext",
+		Action:  "DescribeAutoScalingNotificationTypes",
 		Input:   input,
 		Output:  (*autoscaling.DescribeAutoScalingNotificationTypesOutput)(nil),
 		Error:   nil,
@@ -526,7 +526,7 @@ func (c *Client) DescribeAutoScalingNotificationTypesWithContext(ctx context.Con
 func (c *Client) DescribeLaunchConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeLaunchConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeLaunchConfigurationsWithContext",
+		Action:  "DescribeLaunchConfigurations",
 		Input:   input,
 		Output:  (*autoscaling.DescribeLaunchConfigurationsOutput)(nil),
 		Error:   nil,
@@ -547,7 +547,7 @@ func (c *Client) DescribeLaunchConfigurationsWithContext(ctx context.Context, in
 func (c *Client) DescribeLifecycleHookTypesWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHookTypesInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHookTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeLifecycleHookTypesWithContext",
+		Action:  "DescribeLifecycleHookTypes",
 		Input:   input,
 		Output:  (*autoscaling.DescribeLifecycleHookTypesOutput)(nil),
 		Error:   nil,
@@ -568,7 +568,7 @@ func (c *Client) DescribeLifecycleHookTypesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeLifecycleHooksWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHooksInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHooksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeLifecycleHooksWithContext",
+		Action:  "DescribeLifecycleHooks",
 		Input:   input,
 		Output:  (*autoscaling.DescribeLifecycleHooksOutput)(nil),
 		Error:   nil,
@@ -589,7 +589,7 @@ func (c *Client) DescribeLifecycleHooksWithContext(ctx context.Context, input *a
 func (c *Client) DescribeLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancerTargetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeLoadBalancerTargetGroupsWithContext",
+		Action:  "DescribeLoadBalancerTargetGroups",
 		Input:   input,
 		Output:  (*autoscaling.DescribeLoadBalancerTargetGroupsOutput)(nil),
 		Error:   nil,
@@ -610,7 +610,7 @@ func (c *Client) DescribeLoadBalancerTargetGroupsWithContext(ctx context.Context
 func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancersInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeLoadBalancersWithContext",
+		Action:  "DescribeLoadBalancers",
 		Input:   input,
 		Output:  (*autoscaling.DescribeLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -631,7 +631,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *au
 func (c *Client) DescribeMetricCollectionTypesWithContext(ctx context.Context, input *autoscaling.DescribeMetricCollectionTypesInput, opts ...request.Option) (*autoscaling.DescribeMetricCollectionTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeMetricCollectionTypesWithContext",
+		Action:  "DescribeMetricCollectionTypes",
 		Input:   input,
 		Output:  (*autoscaling.DescribeMetricCollectionTypesOutput)(nil),
 		Error:   nil,
@@ -652,7 +652,7 @@ func (c *Client) DescribeMetricCollectionTypesWithContext(ctx context.Context, i
 func (c *Client) DescribeNotificationConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeNotificationConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeNotificationConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeNotificationConfigurationsWithContext",
+		Action:  "DescribeNotificationConfigurations",
 		Input:   input,
 		Output:  (*autoscaling.DescribeNotificationConfigurationsOutput)(nil),
 		Error:   nil,
@@ -673,7 +673,7 @@ func (c *Client) DescribeNotificationConfigurationsWithContext(ctx context.Conte
 func (c *Client) DescribePoliciesWithContext(ctx context.Context, input *autoscaling.DescribePoliciesInput, opts ...request.Option) (*autoscaling.DescribePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribePoliciesWithContext",
+		Action:  "DescribePolicies",
 		Input:   input,
 		Output:  (*autoscaling.DescribePoliciesOutput)(nil),
 		Error:   nil,
@@ -694,7 +694,7 @@ func (c *Client) DescribePoliciesWithContext(ctx context.Context, input *autosca
 func (c *Client) DescribeScalingActivitiesWithContext(ctx context.Context, input *autoscaling.DescribeScalingActivitiesInput, opts ...request.Option) (*autoscaling.DescribeScalingActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeScalingActivitiesWithContext",
+		Action:  "DescribeScalingActivities",
 		Input:   input,
 		Output:  (*autoscaling.DescribeScalingActivitiesOutput)(nil),
 		Error:   nil,
@@ -715,7 +715,7 @@ func (c *Client) DescribeScalingActivitiesWithContext(ctx context.Context, input
 func (c *Client) DescribeScalingProcessTypesWithContext(ctx context.Context, input *autoscaling.DescribeScalingProcessTypesInput, opts ...request.Option) (*autoscaling.DescribeScalingProcessTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeScalingProcessTypesWithContext",
+		Action:  "DescribeScalingProcessTypes",
 		Input:   input,
 		Output:  (*autoscaling.DescribeScalingProcessTypesOutput)(nil),
 		Error:   nil,
@@ -736,7 +736,7 @@ func (c *Client) DescribeScalingProcessTypesWithContext(ctx context.Context, inp
 func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, input *autoscaling.DescribeScheduledActionsInput, opts ...request.Option) (*autoscaling.DescribeScheduledActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeScheduledActionsWithContext",
+		Action:  "DescribeScheduledActions",
 		Input:   input,
 		Output:  (*autoscaling.DescribeScheduledActionsOutput)(nil),
 		Error:   nil,
@@ -757,7 +757,7 @@ func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, opts ...request.Option) (*autoscaling.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*autoscaling.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -778,7 +778,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *autoscaling
 func (c *Client) DescribeTerminationPolicyTypesWithContext(ctx context.Context, input *autoscaling.DescribeTerminationPolicyTypesInput, opts ...request.Option) (*autoscaling.DescribeTerminationPolicyTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DescribeTerminationPolicyTypesWithContext",
+		Action:  "DescribeTerminationPolicyTypes",
 		Input:   input,
 		Output:  (*autoscaling.DescribeTerminationPolicyTypesOutput)(nil),
 		Error:   nil,
@@ -799,7 +799,7 @@ func (c *Client) DescribeTerminationPolicyTypesWithContext(ctx context.Context, 
 func (c *Client) DetachInstancesWithContext(ctx context.Context, input *autoscaling.DetachInstancesInput, opts ...request.Option) (*autoscaling.DetachInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DetachInstancesWithContext",
+		Action:  "DetachInstances",
 		Input:   input,
 		Output:  (*autoscaling.DetachInstancesOutput)(nil),
 		Error:   nil,
@@ -820,7 +820,7 @@ func (c *Client) DetachInstancesWithContext(ctx context.Context, input *autoscal
 func (c *Client) DetachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DetachLoadBalancerTargetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DetachLoadBalancerTargetGroupsWithContext",
+		Action:  "DetachLoadBalancerTargetGroups",
 		Input:   input,
 		Output:  (*autoscaling.DetachLoadBalancerTargetGroupsOutput)(nil),
 		Error:   nil,
@@ -841,7 +841,7 @@ func (c *Client) DetachLoadBalancerTargetGroupsWithContext(ctx context.Context, 
 func (c *Client) DetachLoadBalancersWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancersInput, opts ...request.Option) (*autoscaling.DetachLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DetachLoadBalancersWithContext",
+		Action:  "DetachLoadBalancers",
 		Input:   input,
 		Output:  (*autoscaling.DetachLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -862,7 +862,7 @@ func (c *Client) DetachLoadBalancersWithContext(ctx context.Context, input *auto
 func (c *Client) DisableMetricsCollectionWithContext(ctx context.Context, input *autoscaling.DisableMetricsCollectionInput, opts ...request.Option) (*autoscaling.DisableMetricsCollectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "DisableMetricsCollectionWithContext",
+		Action:  "DisableMetricsCollection",
 		Input:   input,
 		Output:  (*autoscaling.DisableMetricsCollectionOutput)(nil),
 		Error:   nil,
@@ -883,7 +883,7 @@ func (c *Client) DisableMetricsCollectionWithContext(ctx context.Context, input 
 func (c *Client) EnableMetricsCollectionWithContext(ctx context.Context, input *autoscaling.EnableMetricsCollectionInput, opts ...request.Option) (*autoscaling.EnableMetricsCollectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "EnableMetricsCollectionWithContext",
+		Action:  "EnableMetricsCollection",
 		Input:   input,
 		Output:  (*autoscaling.EnableMetricsCollectionOutput)(nil),
 		Error:   nil,
@@ -904,7 +904,7 @@ func (c *Client) EnableMetricsCollectionWithContext(ctx context.Context, input *
 func (c *Client) EnterStandbyWithContext(ctx context.Context, input *autoscaling.EnterStandbyInput, opts ...request.Option) (*autoscaling.EnterStandbyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "EnterStandbyWithContext",
+		Action:  "EnterStandby",
 		Input:   input,
 		Output:  (*autoscaling.EnterStandbyOutput)(nil),
 		Error:   nil,
@@ -925,7 +925,7 @@ func (c *Client) EnterStandbyWithContext(ctx context.Context, input *autoscaling
 func (c *Client) ExecutePolicyWithContext(ctx context.Context, input *autoscaling.ExecutePolicyInput, opts ...request.Option) (*autoscaling.ExecutePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "ExecutePolicyWithContext",
+		Action:  "ExecutePolicy",
 		Input:   input,
 		Output:  (*autoscaling.ExecutePolicyOutput)(nil),
 		Error:   nil,
@@ -946,7 +946,7 @@ func (c *Client) ExecutePolicyWithContext(ctx context.Context, input *autoscalin
 func (c *Client) ExitStandbyWithContext(ctx context.Context, input *autoscaling.ExitStandbyInput, opts ...request.Option) (*autoscaling.ExitStandbyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "ExitStandbyWithContext",
+		Action:  "ExitStandby",
 		Input:   input,
 		Output:  (*autoscaling.ExitStandbyOutput)(nil),
 		Error:   nil,
@@ -967,7 +967,7 @@ func (c *Client) ExitStandbyWithContext(ctx context.Context, input *autoscaling.
 func (c *Client) PutLifecycleHookWithContext(ctx context.Context, input *autoscaling.PutLifecycleHookInput, opts ...request.Option) (*autoscaling.PutLifecycleHookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "PutLifecycleHookWithContext",
+		Action:  "PutLifecycleHook",
 		Input:   input,
 		Output:  (*autoscaling.PutLifecycleHookOutput)(nil),
 		Error:   nil,
@@ -988,7 +988,7 @@ func (c *Client) PutLifecycleHookWithContext(ctx context.Context, input *autosca
 func (c *Client) PutNotificationConfigurationWithContext(ctx context.Context, input *autoscaling.PutNotificationConfigurationInput, opts ...request.Option) (*autoscaling.PutNotificationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "PutNotificationConfigurationWithContext",
+		Action:  "PutNotificationConfiguration",
 		Input:   input,
 		Output:  (*autoscaling.PutNotificationConfigurationOutput)(nil),
 		Error:   nil,
@@ -1009,7 +1009,7 @@ func (c *Client) PutNotificationConfigurationWithContext(ctx context.Context, in
 func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *autoscaling.PutScalingPolicyInput, opts ...request.Option) (*autoscaling.PutScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "PutScalingPolicyWithContext",
+		Action:  "PutScalingPolicy",
 		Input:   input,
 		Output:  (*autoscaling.PutScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -1030,7 +1030,7 @@ func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *autosca
 func (c *Client) PutScheduledUpdateGroupActionWithContext(ctx context.Context, input *autoscaling.PutScheduledUpdateGroupActionInput, opts ...request.Option) (*autoscaling.PutScheduledUpdateGroupActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "PutScheduledUpdateGroupActionWithContext",
+		Action:  "PutScheduledUpdateGroupAction",
 		Input:   input,
 		Output:  (*autoscaling.PutScheduledUpdateGroupActionOutput)(nil),
 		Error:   nil,
@@ -1051,7 +1051,7 @@ func (c *Client) PutScheduledUpdateGroupActionWithContext(ctx context.Context, i
 func (c *Client) RecordLifecycleActionHeartbeatWithContext(ctx context.Context, input *autoscaling.RecordLifecycleActionHeartbeatInput, opts ...request.Option) (*autoscaling.RecordLifecycleActionHeartbeatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "RecordLifecycleActionHeartbeatWithContext",
+		Action:  "RecordLifecycleActionHeartbeat",
 		Input:   input,
 		Output:  (*autoscaling.RecordLifecycleActionHeartbeatOutput)(nil),
 		Error:   nil,
@@ -1072,7 +1072,7 @@ func (c *Client) RecordLifecycleActionHeartbeatWithContext(ctx context.Context, 
 func (c *Client) ResumeProcessesWithContext(ctx context.Context, input *autoscaling.ScalingProcessQuery, opts ...request.Option) (*autoscaling.ResumeProcessesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "ResumeProcessesWithContext",
+		Action:  "ResumeProcesses",
 		Input:   input,
 		Output:  (*autoscaling.ResumeProcessesOutput)(nil),
 		Error:   nil,
@@ -1093,7 +1093,7 @@ func (c *Client) ResumeProcessesWithContext(ctx context.Context, input *autoscal
 func (c *Client) SetDesiredCapacityWithContext(ctx context.Context, input *autoscaling.SetDesiredCapacityInput, opts ...request.Option) (*autoscaling.SetDesiredCapacityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "SetDesiredCapacityWithContext",
+		Action:  "SetDesiredCapacity",
 		Input:   input,
 		Output:  (*autoscaling.SetDesiredCapacityOutput)(nil),
 		Error:   nil,
@@ -1114,7 +1114,7 @@ func (c *Client) SetDesiredCapacityWithContext(ctx context.Context, input *autos
 func (c *Client) SetInstanceHealthWithContext(ctx context.Context, input *autoscaling.SetInstanceHealthInput, opts ...request.Option) (*autoscaling.SetInstanceHealthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "SetInstanceHealthWithContext",
+		Action:  "SetInstanceHealth",
 		Input:   input,
 		Output:  (*autoscaling.SetInstanceHealthOutput)(nil),
 		Error:   nil,
@@ -1135,7 +1135,7 @@ func (c *Client) SetInstanceHealthWithContext(ctx context.Context, input *autosc
 func (c *Client) SetInstanceProtectionWithContext(ctx context.Context, input *autoscaling.SetInstanceProtectionInput, opts ...request.Option) (*autoscaling.SetInstanceProtectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "SetInstanceProtectionWithContext",
+		Action:  "SetInstanceProtection",
 		Input:   input,
 		Output:  (*autoscaling.SetInstanceProtectionOutput)(nil),
 		Error:   nil,
@@ -1156,7 +1156,7 @@ func (c *Client) SetInstanceProtectionWithContext(ctx context.Context, input *au
 func (c *Client) SuspendProcessesWithContext(ctx context.Context, input *autoscaling.ScalingProcessQuery, opts ...request.Option) (*autoscaling.SuspendProcessesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "SuspendProcessesWithContext",
+		Action:  "SuspendProcesses",
 		Input:   input,
 		Output:  (*autoscaling.SuspendProcessesOutput)(nil),
 		Error:   nil,
@@ -1177,7 +1177,7 @@ func (c *Client) SuspendProcessesWithContext(ctx context.Context, input *autosca
 func (c *Client) TerminateInstanceInAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.TerminateInstanceInAutoScalingGroupInput, opts ...request.Option) (*autoscaling.TerminateInstanceInAutoScalingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "TerminateInstanceInAutoScalingGroupWithContext",
+		Action:  "TerminateInstanceInAutoScalingGroup",
 		Input:   input,
 		Output:  (*autoscaling.TerminateInstanceInAutoScalingGroupOutput)(nil),
 		Error:   nil,
@@ -1198,7 +1198,7 @@ func (c *Client) TerminateInstanceInAutoScalingGroupWithContext(ctx context.Cont
 func (c *Client) UpdateAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.UpdateAutoScalingGroupInput, opts ...request.Option) (*autoscaling.UpdateAutoScalingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
-		Action:  "UpdateAutoScalingGroupWithContext",
+		Action:  "UpdateAutoScalingGroup",
 		Input:   input,
 		Output:  (*autoscaling.UpdateAutoScalingGroupOutput)(nil),
 		Error:   nil,

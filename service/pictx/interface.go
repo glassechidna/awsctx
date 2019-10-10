@@ -33,7 +33,7 @@ var _ PI = (*Client)(nil)
 func (c *Client) DescribeDimensionKeysWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, opts ...request.Option) (*pi.DescribeDimensionKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pi",
-		Action:  "DescribeDimensionKeysWithContext",
+		Action:  "DescribeDimensionKeys",
 		Input:   input,
 		Output:  (*pi.DescribeDimensionKeysOutput)(nil),
 		Error:   nil,
@@ -54,7 +54,7 @@ func (c *Client) DescribeDimensionKeysWithContext(ctx context.Context, input *pi
 func (c *Client) GetResourceMetricsWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, opts ...request.Option) (*pi.GetResourceMetricsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pi",
-		Action:  "GetResourceMetricsWithContext",
+		Action:  "GetResourceMetrics",
 		Input:   input,
 		Output:  (*pi.GetResourceMetricsOutput)(nil),
 		Error:   nil,

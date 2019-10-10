@@ -68,7 +68,7 @@ var _ SWF = (*Client)(nil)
 func (c *Client) CountClosedWorkflowExecutionsWithContext(ctx context.Context, input *swf.CountClosedWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionCount, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "CountClosedWorkflowExecutionsWithContext",
+		Action:  "CountClosedWorkflowExecutions",
 		Input:   input,
 		Output:  (*swf.WorkflowExecutionCount)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) CountClosedWorkflowExecutionsWithContext(ctx context.Context, i
 func (c *Client) CountOpenWorkflowExecutionsWithContext(ctx context.Context, input *swf.CountOpenWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionCount, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "CountOpenWorkflowExecutionsWithContext",
+		Action:  "CountOpenWorkflowExecutions",
 		Input:   input,
 		Output:  (*swf.WorkflowExecutionCount)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) CountOpenWorkflowExecutionsWithContext(ctx context.Context, inp
 func (c *Client) CountPendingActivityTasksWithContext(ctx context.Context, input *swf.CountPendingActivityTasksInput, opts ...request.Option) (*swf.PendingTaskCount, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "CountPendingActivityTasksWithContext",
+		Action:  "CountPendingActivityTasks",
 		Input:   input,
 		Output:  (*swf.PendingTaskCount)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) CountPendingActivityTasksWithContext(ctx context.Context, input
 func (c *Client) CountPendingDecisionTasksWithContext(ctx context.Context, input *swf.CountPendingDecisionTasksInput, opts ...request.Option) (*swf.PendingTaskCount, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "CountPendingDecisionTasksWithContext",
+		Action:  "CountPendingDecisionTasks",
 		Input:   input,
 		Output:  (*swf.PendingTaskCount)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) CountPendingDecisionTasksWithContext(ctx context.Context, input
 func (c *Client) DeprecateActivityTypeWithContext(ctx context.Context, input *swf.DeprecateActivityTypeInput, opts ...request.Option) (*swf.DeprecateActivityTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DeprecateActivityTypeWithContext",
+		Action:  "DeprecateActivityType",
 		Input:   input,
 		Output:  (*swf.DeprecateActivityTypeOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DeprecateActivityTypeWithContext(ctx context.Context, input *sw
 func (c *Client) DeprecateDomainWithContext(ctx context.Context, input *swf.DeprecateDomainInput, opts ...request.Option) (*swf.DeprecateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DeprecateDomainWithContext",
+		Action:  "DeprecateDomain",
 		Input:   input,
 		Output:  (*swf.DeprecateDomainOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DeprecateDomainWithContext(ctx context.Context, input *swf.Depr
 func (c *Client) DeprecateWorkflowTypeWithContext(ctx context.Context, input *swf.DeprecateWorkflowTypeInput, opts ...request.Option) (*swf.DeprecateWorkflowTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DeprecateWorkflowTypeWithContext",
+		Action:  "DeprecateWorkflowType",
 		Input:   input,
 		Output:  (*swf.DeprecateWorkflowTypeOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DeprecateWorkflowTypeWithContext(ctx context.Context, input *sw
 func (c *Client) DescribeActivityTypeWithContext(ctx context.Context, input *swf.DescribeActivityTypeInput, opts ...request.Option) (*swf.DescribeActivityTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DescribeActivityTypeWithContext",
+		Action:  "DescribeActivityType",
 		Input:   input,
 		Output:  (*swf.DescribeActivityTypeOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) DescribeActivityTypeWithContext(ctx context.Context, input *swf
 func (c *Client) DescribeDomainWithContext(ctx context.Context, input *swf.DescribeDomainInput, opts ...request.Option) (*swf.DescribeDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DescribeDomainWithContext",
+		Action:  "DescribeDomain",
 		Input:   input,
 		Output:  (*swf.DescribeDomainOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) DescribeDomainWithContext(ctx context.Context, input *swf.Descr
 func (c *Client) DescribeWorkflowExecutionWithContext(ctx context.Context, input *swf.DescribeWorkflowExecutionInput, opts ...request.Option) (*swf.DescribeWorkflowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DescribeWorkflowExecutionWithContext",
+		Action:  "DescribeWorkflowExecution",
 		Input:   input,
 		Output:  (*swf.DescribeWorkflowExecutionOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) DescribeWorkflowExecutionWithContext(ctx context.Context, input
 func (c *Client) DescribeWorkflowTypeWithContext(ctx context.Context, input *swf.DescribeWorkflowTypeInput, opts ...request.Option) (*swf.DescribeWorkflowTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "DescribeWorkflowTypeWithContext",
+		Action:  "DescribeWorkflowType",
 		Input:   input,
 		Output:  (*swf.DescribeWorkflowTypeOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) DescribeWorkflowTypeWithContext(ctx context.Context, input *swf
 func (c *Client) GetWorkflowExecutionHistoryWithContext(ctx context.Context, input *swf.GetWorkflowExecutionHistoryInput, opts ...request.Option) (*swf.GetWorkflowExecutionHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "GetWorkflowExecutionHistoryWithContext",
+		Action:  "GetWorkflowExecutionHistory",
 		Input:   input,
 		Output:  (*swf.GetWorkflowExecutionHistoryOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) GetWorkflowExecutionHistoryWithContext(ctx context.Context, inp
 func (c *Client) ListActivityTypesWithContext(ctx context.Context, input *swf.ListActivityTypesInput, opts ...request.Option) (*swf.ListActivityTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "ListActivityTypesWithContext",
+		Action:  "ListActivityTypes",
 		Input:   input,
 		Output:  (*swf.ListActivityTypesOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) ListActivityTypesWithContext(ctx context.Context, input *swf.Li
 func (c *Client) ListClosedWorkflowExecutionsWithContext(ctx context.Context, input *swf.ListClosedWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionInfos, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "ListClosedWorkflowExecutionsWithContext",
+		Action:  "ListClosedWorkflowExecutions",
 		Input:   input,
 		Output:  (*swf.WorkflowExecutionInfos)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) ListClosedWorkflowExecutionsWithContext(ctx context.Context, in
 func (c *Client) ListDomainsWithContext(ctx context.Context, input *swf.ListDomainsInput, opts ...request.Option) (*swf.ListDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "ListDomainsWithContext",
+		Action:  "ListDomains",
 		Input:   input,
 		Output:  (*swf.ListDomainsOutput)(nil),
 		Error:   nil,
@@ -383,7 +383,7 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *swf.ListDoma
 func (c *Client) ListOpenWorkflowExecutionsWithContext(ctx context.Context, input *swf.ListOpenWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionInfos, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "ListOpenWorkflowExecutionsWithContext",
+		Action:  "ListOpenWorkflowExecutions",
 		Input:   input,
 		Output:  (*swf.WorkflowExecutionInfos)(nil),
 		Error:   nil,
@@ -404,7 +404,7 @@ func (c *Client) ListOpenWorkflowExecutionsWithContext(ctx context.Context, inpu
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *swf.ListTagsForResourceInput, opts ...request.Option) (*swf.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*swf.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -425,7 +425,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *swf.
 func (c *Client) ListWorkflowTypesWithContext(ctx context.Context, input *swf.ListWorkflowTypesInput, opts ...request.Option) (*swf.ListWorkflowTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "ListWorkflowTypesWithContext",
+		Action:  "ListWorkflowTypes",
 		Input:   input,
 		Output:  (*swf.ListWorkflowTypesOutput)(nil),
 		Error:   nil,
@@ -446,7 +446,7 @@ func (c *Client) ListWorkflowTypesWithContext(ctx context.Context, input *swf.Li
 func (c *Client) PollForActivityTaskWithContext(ctx context.Context, input *swf.PollForActivityTaskInput, opts ...request.Option) (*swf.PollForActivityTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "PollForActivityTaskWithContext",
+		Action:  "PollForActivityTask",
 		Input:   input,
 		Output:  (*swf.PollForActivityTaskOutput)(nil),
 		Error:   nil,
@@ -467,7 +467,7 @@ func (c *Client) PollForActivityTaskWithContext(ctx context.Context, input *swf.
 func (c *Client) PollForDecisionTaskWithContext(ctx context.Context, input *swf.PollForDecisionTaskInput, opts ...request.Option) (*swf.PollForDecisionTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "PollForDecisionTaskWithContext",
+		Action:  "PollForDecisionTask",
 		Input:   input,
 		Output:  (*swf.PollForDecisionTaskOutput)(nil),
 		Error:   nil,
@@ -488,7 +488,7 @@ func (c *Client) PollForDecisionTaskWithContext(ctx context.Context, input *swf.
 func (c *Client) RecordActivityTaskHeartbeatWithContext(ctx context.Context, input *swf.RecordActivityTaskHeartbeatInput, opts ...request.Option) (*swf.RecordActivityTaskHeartbeatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RecordActivityTaskHeartbeatWithContext",
+		Action:  "RecordActivityTaskHeartbeat",
 		Input:   input,
 		Output:  (*swf.RecordActivityTaskHeartbeatOutput)(nil),
 		Error:   nil,
@@ -509,7 +509,7 @@ func (c *Client) RecordActivityTaskHeartbeatWithContext(ctx context.Context, inp
 func (c *Client) RegisterActivityTypeWithContext(ctx context.Context, input *swf.RegisterActivityTypeInput, opts ...request.Option) (*swf.RegisterActivityTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RegisterActivityTypeWithContext",
+		Action:  "RegisterActivityType",
 		Input:   input,
 		Output:  (*swf.RegisterActivityTypeOutput)(nil),
 		Error:   nil,
@@ -530,7 +530,7 @@ func (c *Client) RegisterActivityTypeWithContext(ctx context.Context, input *swf
 func (c *Client) RegisterDomainWithContext(ctx context.Context, input *swf.RegisterDomainInput, opts ...request.Option) (*swf.RegisterDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RegisterDomainWithContext",
+		Action:  "RegisterDomain",
 		Input:   input,
 		Output:  (*swf.RegisterDomainOutput)(nil),
 		Error:   nil,
@@ -551,7 +551,7 @@ func (c *Client) RegisterDomainWithContext(ctx context.Context, input *swf.Regis
 func (c *Client) RegisterWorkflowTypeWithContext(ctx context.Context, input *swf.RegisterWorkflowTypeInput, opts ...request.Option) (*swf.RegisterWorkflowTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RegisterWorkflowTypeWithContext",
+		Action:  "RegisterWorkflowType",
 		Input:   input,
 		Output:  (*swf.RegisterWorkflowTypeOutput)(nil),
 		Error:   nil,
@@ -572,7 +572,7 @@ func (c *Client) RegisterWorkflowTypeWithContext(ctx context.Context, input *swf
 func (c *Client) RequestCancelWorkflowExecutionWithContext(ctx context.Context, input *swf.RequestCancelWorkflowExecutionInput, opts ...request.Option) (*swf.RequestCancelWorkflowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RequestCancelWorkflowExecutionWithContext",
+		Action:  "RequestCancelWorkflowExecution",
 		Input:   input,
 		Output:  (*swf.RequestCancelWorkflowExecutionOutput)(nil),
 		Error:   nil,
@@ -593,7 +593,7 @@ func (c *Client) RequestCancelWorkflowExecutionWithContext(ctx context.Context, 
 func (c *Client) RespondActivityTaskCanceledWithContext(ctx context.Context, input *swf.RespondActivityTaskCanceledInput, opts ...request.Option) (*swf.RespondActivityTaskCanceledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RespondActivityTaskCanceledWithContext",
+		Action:  "RespondActivityTaskCanceled",
 		Input:   input,
 		Output:  (*swf.RespondActivityTaskCanceledOutput)(nil),
 		Error:   nil,
@@ -614,7 +614,7 @@ func (c *Client) RespondActivityTaskCanceledWithContext(ctx context.Context, inp
 func (c *Client) RespondActivityTaskCompletedWithContext(ctx context.Context, input *swf.RespondActivityTaskCompletedInput, opts ...request.Option) (*swf.RespondActivityTaskCompletedOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RespondActivityTaskCompletedWithContext",
+		Action:  "RespondActivityTaskCompleted",
 		Input:   input,
 		Output:  (*swf.RespondActivityTaskCompletedOutput)(nil),
 		Error:   nil,
@@ -635,7 +635,7 @@ func (c *Client) RespondActivityTaskCompletedWithContext(ctx context.Context, in
 func (c *Client) RespondActivityTaskFailedWithContext(ctx context.Context, input *swf.RespondActivityTaskFailedInput, opts ...request.Option) (*swf.RespondActivityTaskFailedOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RespondActivityTaskFailedWithContext",
+		Action:  "RespondActivityTaskFailed",
 		Input:   input,
 		Output:  (*swf.RespondActivityTaskFailedOutput)(nil),
 		Error:   nil,
@@ -656,7 +656,7 @@ func (c *Client) RespondActivityTaskFailedWithContext(ctx context.Context, input
 func (c *Client) RespondDecisionTaskCompletedWithContext(ctx context.Context, input *swf.RespondDecisionTaskCompletedInput, opts ...request.Option) (*swf.RespondDecisionTaskCompletedOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "RespondDecisionTaskCompletedWithContext",
+		Action:  "RespondDecisionTaskCompleted",
 		Input:   input,
 		Output:  (*swf.RespondDecisionTaskCompletedOutput)(nil),
 		Error:   nil,
@@ -677,7 +677,7 @@ func (c *Client) RespondDecisionTaskCompletedWithContext(ctx context.Context, in
 func (c *Client) SignalWorkflowExecutionWithContext(ctx context.Context, input *swf.SignalWorkflowExecutionInput, opts ...request.Option) (*swf.SignalWorkflowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "SignalWorkflowExecutionWithContext",
+		Action:  "SignalWorkflowExecution",
 		Input:   input,
 		Output:  (*swf.SignalWorkflowExecutionOutput)(nil),
 		Error:   nil,
@@ -698,7 +698,7 @@ func (c *Client) SignalWorkflowExecutionWithContext(ctx context.Context, input *
 func (c *Client) StartWorkflowExecutionWithContext(ctx context.Context, input *swf.StartWorkflowExecutionInput, opts ...request.Option) (*swf.StartWorkflowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "StartWorkflowExecutionWithContext",
+		Action:  "StartWorkflowExecution",
 		Input:   input,
 		Output:  (*swf.StartWorkflowExecutionOutput)(nil),
 		Error:   nil,
@@ -719,7 +719,7 @@ func (c *Client) StartWorkflowExecutionWithContext(ctx context.Context, input *s
 func (c *Client) TagResourceWithContext(ctx context.Context, input *swf.TagResourceInput, opts ...request.Option) (*swf.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*swf.TagResourceOutput)(nil),
 		Error:   nil,
@@ -740,7 +740,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *swf.TagResou
 func (c *Client) TerminateWorkflowExecutionWithContext(ctx context.Context, input *swf.TerminateWorkflowExecutionInput, opts ...request.Option) (*swf.TerminateWorkflowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "TerminateWorkflowExecutionWithContext",
+		Action:  "TerminateWorkflowExecution",
 		Input:   input,
 		Output:  (*swf.TerminateWorkflowExecutionOutput)(nil),
 		Error:   nil,
@@ -761,7 +761,7 @@ func (c *Client) TerminateWorkflowExecutionWithContext(ctx context.Context, inpu
 func (c *Client) UndeprecateActivityTypeWithContext(ctx context.Context, input *swf.UndeprecateActivityTypeInput, opts ...request.Option) (*swf.UndeprecateActivityTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "UndeprecateActivityTypeWithContext",
+		Action:  "UndeprecateActivityType",
 		Input:   input,
 		Output:  (*swf.UndeprecateActivityTypeOutput)(nil),
 		Error:   nil,
@@ -782,7 +782,7 @@ func (c *Client) UndeprecateActivityTypeWithContext(ctx context.Context, input *
 func (c *Client) UndeprecateDomainWithContext(ctx context.Context, input *swf.UndeprecateDomainInput, opts ...request.Option) (*swf.UndeprecateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "UndeprecateDomainWithContext",
+		Action:  "UndeprecateDomain",
 		Input:   input,
 		Output:  (*swf.UndeprecateDomainOutput)(nil),
 		Error:   nil,
@@ -803,7 +803,7 @@ func (c *Client) UndeprecateDomainWithContext(ctx context.Context, input *swf.Un
 func (c *Client) UndeprecateWorkflowTypeWithContext(ctx context.Context, input *swf.UndeprecateWorkflowTypeInput, opts ...request.Option) (*swf.UndeprecateWorkflowTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "UndeprecateWorkflowTypeWithContext",
+		Action:  "UndeprecateWorkflowType",
 		Input:   input,
 		Output:  (*swf.UndeprecateWorkflowTypeOutput)(nil),
 		Error:   nil,
@@ -824,7 +824,7 @@ func (c *Client) UndeprecateWorkflowTypeWithContext(ctx context.Context, input *
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *swf.UntagResourceInput, opts ...request.Option) (*swf.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*swf.UntagResourceOutput)(nil),
 		Error:   nil,

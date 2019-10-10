@@ -124,7 +124,7 @@ var _ AlexaForBusiness = (*Client)(nil)
 func (c *Client) ApproveSkillWithContext(ctx context.Context, input *alexaforbusiness.ApproveSkillInput, opts ...request.Option) (*alexaforbusiness.ApproveSkillOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ApproveSkillWithContext",
+		Action:  "ApproveSkill",
 		Input:   input,
 		Output:  (*alexaforbusiness.ApproveSkillOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) ApproveSkillWithContext(ctx context.Context, input *alexaforbus
 func (c *Client) AssociateContactWithAddressBookWithContext(ctx context.Context, input *alexaforbusiness.AssociateContactWithAddressBookInput, opts ...request.Option) (*alexaforbusiness.AssociateContactWithAddressBookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "AssociateContactWithAddressBookWithContext",
+		Action:  "AssociateContactWithAddressBook",
 		Input:   input,
 		Output:  (*alexaforbusiness.AssociateContactWithAddressBookOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) AssociateContactWithAddressBookWithContext(ctx context.Context,
 func (c *Client) AssociateDeviceWithNetworkProfileWithContext(ctx context.Context, input *alexaforbusiness.AssociateDeviceWithNetworkProfileInput, opts ...request.Option) (*alexaforbusiness.AssociateDeviceWithNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "AssociateDeviceWithNetworkProfileWithContext",
+		Action:  "AssociateDeviceWithNetworkProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.AssociateDeviceWithNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) AssociateDeviceWithNetworkProfileWithContext(ctx context.Contex
 func (c *Client) AssociateDeviceWithRoomWithContext(ctx context.Context, input *alexaforbusiness.AssociateDeviceWithRoomInput, opts ...request.Option) (*alexaforbusiness.AssociateDeviceWithRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "AssociateDeviceWithRoomWithContext",
+		Action:  "AssociateDeviceWithRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.AssociateDeviceWithRoomOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) AssociateDeviceWithRoomWithContext(ctx context.Context, input *
 func (c *Client) AssociateSkillGroupWithRoomWithContext(ctx context.Context, input *alexaforbusiness.AssociateSkillGroupWithRoomInput, opts ...request.Option) (*alexaforbusiness.AssociateSkillGroupWithRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "AssociateSkillGroupWithRoomWithContext",
+		Action:  "AssociateSkillGroupWithRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.AssociateSkillGroupWithRoomOutput)(nil),
 		Error:   nil,
@@ -229,7 +229,7 @@ func (c *Client) AssociateSkillGroupWithRoomWithContext(ctx context.Context, inp
 func (c *Client) AssociateSkillWithSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.AssociateSkillWithSkillGroupInput, opts ...request.Option) (*alexaforbusiness.AssociateSkillWithSkillGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "AssociateSkillWithSkillGroupWithContext",
+		Action:  "AssociateSkillWithSkillGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.AssociateSkillWithSkillGroupOutput)(nil),
 		Error:   nil,
@@ -250,7 +250,7 @@ func (c *Client) AssociateSkillWithSkillGroupWithContext(ctx context.Context, in
 func (c *Client) AssociateSkillWithUsersWithContext(ctx context.Context, input *alexaforbusiness.AssociateSkillWithUsersInput, opts ...request.Option) (*alexaforbusiness.AssociateSkillWithUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "AssociateSkillWithUsersWithContext",
+		Action:  "AssociateSkillWithUsers",
 		Input:   input,
 		Output:  (*alexaforbusiness.AssociateSkillWithUsersOutput)(nil),
 		Error:   nil,
@@ -271,7 +271,7 @@ func (c *Client) AssociateSkillWithUsersWithContext(ctx context.Context, input *
 func (c *Client) CreateAddressBookWithContext(ctx context.Context, input *alexaforbusiness.CreateAddressBookInput, opts ...request.Option) (*alexaforbusiness.CreateAddressBookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateAddressBookWithContext",
+		Action:  "CreateAddressBook",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateAddressBookOutput)(nil),
 		Error:   nil,
@@ -292,7 +292,7 @@ func (c *Client) CreateAddressBookWithContext(ctx context.Context, input *alexaf
 func (c *Client) CreateBusinessReportScheduleWithContext(ctx context.Context, input *alexaforbusiness.CreateBusinessReportScheduleInput, opts ...request.Option) (*alexaforbusiness.CreateBusinessReportScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateBusinessReportScheduleWithContext",
+		Action:  "CreateBusinessReportSchedule",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateBusinessReportScheduleOutput)(nil),
 		Error:   nil,
@@ -313,7 +313,7 @@ func (c *Client) CreateBusinessReportScheduleWithContext(ctx context.Context, in
 func (c *Client) CreateConferenceProviderWithContext(ctx context.Context, input *alexaforbusiness.CreateConferenceProviderInput, opts ...request.Option) (*alexaforbusiness.CreateConferenceProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateConferenceProviderWithContext",
+		Action:  "CreateConferenceProvider",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateConferenceProviderOutput)(nil),
 		Error:   nil,
@@ -334,7 +334,7 @@ func (c *Client) CreateConferenceProviderWithContext(ctx context.Context, input 
 func (c *Client) CreateContactWithContext(ctx context.Context, input *alexaforbusiness.CreateContactInput, opts ...request.Option) (*alexaforbusiness.CreateContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateContactWithContext",
+		Action:  "CreateContact",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateContactOutput)(nil),
 		Error:   nil,
@@ -355,7 +355,7 @@ func (c *Client) CreateContactWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) CreateGatewayGroupWithContext(ctx context.Context, input *alexaforbusiness.CreateGatewayGroupInput, opts ...request.Option) (*alexaforbusiness.CreateGatewayGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateGatewayGroupWithContext",
+		Action:  "CreateGatewayGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateGatewayGroupOutput)(nil),
 		Error:   nil,
@@ -376,7 +376,7 @@ func (c *Client) CreateGatewayGroupWithContext(ctx context.Context, input *alexa
 func (c *Client) CreateNetworkProfileWithContext(ctx context.Context, input *alexaforbusiness.CreateNetworkProfileInput, opts ...request.Option) (*alexaforbusiness.CreateNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateNetworkProfileWithContext",
+		Action:  "CreateNetworkProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -397,7 +397,7 @@ func (c *Client) CreateNetworkProfileWithContext(ctx context.Context, input *ale
 func (c *Client) CreateProfileWithContext(ctx context.Context, input *alexaforbusiness.CreateProfileInput, opts ...request.Option) (*alexaforbusiness.CreateProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateProfileWithContext",
+		Action:  "CreateProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateProfileOutput)(nil),
 		Error:   nil,
@@ -418,7 +418,7 @@ func (c *Client) CreateProfileWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) CreateRoomWithContext(ctx context.Context, input *alexaforbusiness.CreateRoomInput, opts ...request.Option) (*alexaforbusiness.CreateRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateRoomWithContext",
+		Action:  "CreateRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateRoomOutput)(nil),
 		Error:   nil,
@@ -439,7 +439,7 @@ func (c *Client) CreateRoomWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) CreateSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.CreateSkillGroupInput, opts ...request.Option) (*alexaforbusiness.CreateSkillGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateSkillGroupWithContext",
+		Action:  "CreateSkillGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateSkillGroupOutput)(nil),
 		Error:   nil,
@@ -460,7 +460,7 @@ func (c *Client) CreateSkillGroupWithContext(ctx context.Context, input *alexafo
 func (c *Client) CreateUserWithContext(ctx context.Context, input *alexaforbusiness.CreateUserInput, opts ...request.Option) (*alexaforbusiness.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*alexaforbusiness.CreateUserOutput)(nil),
 		Error:   nil,
@@ -481,7 +481,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) DeleteAddressBookWithContext(ctx context.Context, input *alexaforbusiness.DeleteAddressBookInput, opts ...request.Option) (*alexaforbusiness.DeleteAddressBookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteAddressBookWithContext",
+		Action:  "DeleteAddressBook",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteAddressBookOutput)(nil),
 		Error:   nil,
@@ -502,7 +502,7 @@ func (c *Client) DeleteAddressBookWithContext(ctx context.Context, input *alexaf
 func (c *Client) DeleteBusinessReportScheduleWithContext(ctx context.Context, input *alexaforbusiness.DeleteBusinessReportScheduleInput, opts ...request.Option) (*alexaforbusiness.DeleteBusinessReportScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteBusinessReportScheduleWithContext",
+		Action:  "DeleteBusinessReportSchedule",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteBusinessReportScheduleOutput)(nil),
 		Error:   nil,
@@ -523,7 +523,7 @@ func (c *Client) DeleteBusinessReportScheduleWithContext(ctx context.Context, in
 func (c *Client) DeleteConferenceProviderWithContext(ctx context.Context, input *alexaforbusiness.DeleteConferenceProviderInput, opts ...request.Option) (*alexaforbusiness.DeleteConferenceProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteConferenceProviderWithContext",
+		Action:  "DeleteConferenceProvider",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteConferenceProviderOutput)(nil),
 		Error:   nil,
@@ -544,7 +544,7 @@ func (c *Client) DeleteConferenceProviderWithContext(ctx context.Context, input 
 func (c *Client) DeleteContactWithContext(ctx context.Context, input *alexaforbusiness.DeleteContactInput, opts ...request.Option) (*alexaforbusiness.DeleteContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteContactWithContext",
+		Action:  "DeleteContact",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteContactOutput)(nil),
 		Error:   nil,
@@ -565,7 +565,7 @@ func (c *Client) DeleteContactWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) DeleteDeviceWithContext(ctx context.Context, input *alexaforbusiness.DeleteDeviceInput, opts ...request.Option) (*alexaforbusiness.DeleteDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteDeviceWithContext",
+		Action:  "DeleteDevice",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteDeviceOutput)(nil),
 		Error:   nil,
@@ -586,7 +586,7 @@ func (c *Client) DeleteDeviceWithContext(ctx context.Context, input *alexaforbus
 func (c *Client) DeleteDeviceUsageDataWithContext(ctx context.Context, input *alexaforbusiness.DeleteDeviceUsageDataInput, opts ...request.Option) (*alexaforbusiness.DeleteDeviceUsageDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteDeviceUsageDataWithContext",
+		Action:  "DeleteDeviceUsageData",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteDeviceUsageDataOutput)(nil),
 		Error:   nil,
@@ -607,7 +607,7 @@ func (c *Client) DeleteDeviceUsageDataWithContext(ctx context.Context, input *al
 func (c *Client) DeleteGatewayGroupWithContext(ctx context.Context, input *alexaforbusiness.DeleteGatewayGroupInput, opts ...request.Option) (*alexaforbusiness.DeleteGatewayGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteGatewayGroupWithContext",
+		Action:  "DeleteGatewayGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteGatewayGroupOutput)(nil),
 		Error:   nil,
@@ -628,7 +628,7 @@ func (c *Client) DeleteGatewayGroupWithContext(ctx context.Context, input *alexa
 func (c *Client) DeleteNetworkProfileWithContext(ctx context.Context, input *alexaforbusiness.DeleteNetworkProfileInput, opts ...request.Option) (*alexaforbusiness.DeleteNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteNetworkProfileWithContext",
+		Action:  "DeleteNetworkProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -649,7 +649,7 @@ func (c *Client) DeleteNetworkProfileWithContext(ctx context.Context, input *ale
 func (c *Client) DeleteProfileWithContext(ctx context.Context, input *alexaforbusiness.DeleteProfileInput, opts ...request.Option) (*alexaforbusiness.DeleteProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteProfileWithContext",
+		Action:  "DeleteProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteProfileOutput)(nil),
 		Error:   nil,
@@ -670,7 +670,7 @@ func (c *Client) DeleteProfileWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) DeleteRoomWithContext(ctx context.Context, input *alexaforbusiness.DeleteRoomInput, opts ...request.Option) (*alexaforbusiness.DeleteRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteRoomWithContext",
+		Action:  "DeleteRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteRoomOutput)(nil),
 		Error:   nil,
@@ -691,7 +691,7 @@ func (c *Client) DeleteRoomWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) DeleteRoomSkillParameterWithContext(ctx context.Context, input *alexaforbusiness.DeleteRoomSkillParameterInput, opts ...request.Option) (*alexaforbusiness.DeleteRoomSkillParameterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteRoomSkillParameterWithContext",
+		Action:  "DeleteRoomSkillParameter",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteRoomSkillParameterOutput)(nil),
 		Error:   nil,
@@ -712,7 +712,7 @@ func (c *Client) DeleteRoomSkillParameterWithContext(ctx context.Context, input 
 func (c *Client) DeleteSkillAuthorizationWithContext(ctx context.Context, input *alexaforbusiness.DeleteSkillAuthorizationInput, opts ...request.Option) (*alexaforbusiness.DeleteSkillAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteSkillAuthorizationWithContext",
+		Action:  "DeleteSkillAuthorization",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteSkillAuthorizationOutput)(nil),
 		Error:   nil,
@@ -733,7 +733,7 @@ func (c *Client) DeleteSkillAuthorizationWithContext(ctx context.Context, input 
 func (c *Client) DeleteSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.DeleteSkillGroupInput, opts ...request.Option) (*alexaforbusiness.DeleteSkillGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteSkillGroupWithContext",
+		Action:  "DeleteSkillGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteSkillGroupOutput)(nil),
 		Error:   nil,
@@ -754,7 +754,7 @@ func (c *Client) DeleteSkillGroupWithContext(ctx context.Context, input *alexafo
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *alexaforbusiness.DeleteUserInput, opts ...request.Option) (*alexaforbusiness.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*alexaforbusiness.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -775,7 +775,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) DisassociateContactFromAddressBookWithContext(ctx context.Context, input *alexaforbusiness.DisassociateContactFromAddressBookInput, opts ...request.Option) (*alexaforbusiness.DisassociateContactFromAddressBookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DisassociateContactFromAddressBookWithContext",
+		Action:  "DisassociateContactFromAddressBook",
 		Input:   input,
 		Output:  (*alexaforbusiness.DisassociateContactFromAddressBookOutput)(nil),
 		Error:   nil,
@@ -796,7 +796,7 @@ func (c *Client) DisassociateContactFromAddressBookWithContext(ctx context.Conte
 func (c *Client) DisassociateDeviceFromRoomWithContext(ctx context.Context, input *alexaforbusiness.DisassociateDeviceFromRoomInput, opts ...request.Option) (*alexaforbusiness.DisassociateDeviceFromRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DisassociateDeviceFromRoomWithContext",
+		Action:  "DisassociateDeviceFromRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.DisassociateDeviceFromRoomOutput)(nil),
 		Error:   nil,
@@ -817,7 +817,7 @@ func (c *Client) DisassociateDeviceFromRoomWithContext(ctx context.Context, inpu
 func (c *Client) DisassociateSkillFromSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.DisassociateSkillFromSkillGroupInput, opts ...request.Option) (*alexaforbusiness.DisassociateSkillFromSkillGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DisassociateSkillFromSkillGroupWithContext",
+		Action:  "DisassociateSkillFromSkillGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.DisassociateSkillFromSkillGroupOutput)(nil),
 		Error:   nil,
@@ -838,7 +838,7 @@ func (c *Client) DisassociateSkillFromSkillGroupWithContext(ctx context.Context,
 func (c *Client) DisassociateSkillFromUsersWithContext(ctx context.Context, input *alexaforbusiness.DisassociateSkillFromUsersInput, opts ...request.Option) (*alexaforbusiness.DisassociateSkillFromUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DisassociateSkillFromUsersWithContext",
+		Action:  "DisassociateSkillFromUsers",
 		Input:   input,
 		Output:  (*alexaforbusiness.DisassociateSkillFromUsersOutput)(nil),
 		Error:   nil,
@@ -859,7 +859,7 @@ func (c *Client) DisassociateSkillFromUsersWithContext(ctx context.Context, inpu
 func (c *Client) DisassociateSkillGroupFromRoomWithContext(ctx context.Context, input *alexaforbusiness.DisassociateSkillGroupFromRoomInput, opts ...request.Option) (*alexaforbusiness.DisassociateSkillGroupFromRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "DisassociateSkillGroupFromRoomWithContext",
+		Action:  "DisassociateSkillGroupFromRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.DisassociateSkillGroupFromRoomOutput)(nil),
 		Error:   nil,
@@ -880,7 +880,7 @@ func (c *Client) DisassociateSkillGroupFromRoomWithContext(ctx context.Context, 
 func (c *Client) ForgetSmartHomeAppliancesWithContext(ctx context.Context, input *alexaforbusiness.ForgetSmartHomeAppliancesInput, opts ...request.Option) (*alexaforbusiness.ForgetSmartHomeAppliancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ForgetSmartHomeAppliancesWithContext",
+		Action:  "ForgetSmartHomeAppliances",
 		Input:   input,
 		Output:  (*alexaforbusiness.ForgetSmartHomeAppliancesOutput)(nil),
 		Error:   nil,
@@ -901,7 +901,7 @@ func (c *Client) ForgetSmartHomeAppliancesWithContext(ctx context.Context, input
 func (c *Client) GetAddressBookWithContext(ctx context.Context, input *alexaforbusiness.GetAddressBookInput, opts ...request.Option) (*alexaforbusiness.GetAddressBookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetAddressBookWithContext",
+		Action:  "GetAddressBook",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetAddressBookOutput)(nil),
 		Error:   nil,
@@ -922,7 +922,7 @@ func (c *Client) GetAddressBookWithContext(ctx context.Context, input *alexaforb
 func (c *Client) GetConferencePreferenceWithContext(ctx context.Context, input *alexaforbusiness.GetConferencePreferenceInput, opts ...request.Option) (*alexaforbusiness.GetConferencePreferenceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetConferencePreferenceWithContext",
+		Action:  "GetConferencePreference",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetConferencePreferenceOutput)(nil),
 		Error:   nil,
@@ -943,7 +943,7 @@ func (c *Client) GetConferencePreferenceWithContext(ctx context.Context, input *
 func (c *Client) GetConferenceProviderWithContext(ctx context.Context, input *alexaforbusiness.GetConferenceProviderInput, opts ...request.Option) (*alexaforbusiness.GetConferenceProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetConferenceProviderWithContext",
+		Action:  "GetConferenceProvider",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetConferenceProviderOutput)(nil),
 		Error:   nil,
@@ -964,7 +964,7 @@ func (c *Client) GetConferenceProviderWithContext(ctx context.Context, input *al
 func (c *Client) GetContactWithContext(ctx context.Context, input *alexaforbusiness.GetContactInput, opts ...request.Option) (*alexaforbusiness.GetContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetContactWithContext",
+		Action:  "GetContact",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetContactOutput)(nil),
 		Error:   nil,
@@ -985,7 +985,7 @@ func (c *Client) GetContactWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) GetDeviceWithContext(ctx context.Context, input *alexaforbusiness.GetDeviceInput, opts ...request.Option) (*alexaforbusiness.GetDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetDeviceWithContext",
+		Action:  "GetDevice",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetDeviceOutput)(nil),
 		Error:   nil,
@@ -1006,7 +1006,7 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, input *alexaforbusine
 func (c *Client) GetGatewayWithContext(ctx context.Context, input *alexaforbusiness.GetGatewayInput, opts ...request.Option) (*alexaforbusiness.GetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetGatewayWithContext",
+		Action:  "GetGateway",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetGatewayOutput)(nil),
 		Error:   nil,
@@ -1027,7 +1027,7 @@ func (c *Client) GetGatewayWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) GetGatewayGroupWithContext(ctx context.Context, input *alexaforbusiness.GetGatewayGroupInput, opts ...request.Option) (*alexaforbusiness.GetGatewayGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetGatewayGroupWithContext",
+		Action:  "GetGatewayGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetGatewayGroupOutput)(nil),
 		Error:   nil,
@@ -1048,7 +1048,7 @@ func (c *Client) GetGatewayGroupWithContext(ctx context.Context, input *alexafor
 func (c *Client) GetInvitationConfigurationWithContext(ctx context.Context, input *alexaforbusiness.GetInvitationConfigurationInput, opts ...request.Option) (*alexaforbusiness.GetInvitationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetInvitationConfigurationWithContext",
+		Action:  "GetInvitationConfiguration",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetInvitationConfigurationOutput)(nil),
 		Error:   nil,
@@ -1069,7 +1069,7 @@ func (c *Client) GetInvitationConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) GetNetworkProfileWithContext(ctx context.Context, input *alexaforbusiness.GetNetworkProfileInput, opts ...request.Option) (*alexaforbusiness.GetNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetNetworkProfileWithContext",
+		Action:  "GetNetworkProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -1090,7 +1090,7 @@ func (c *Client) GetNetworkProfileWithContext(ctx context.Context, input *alexaf
 func (c *Client) GetProfileWithContext(ctx context.Context, input *alexaforbusiness.GetProfileInput, opts ...request.Option) (*alexaforbusiness.GetProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetProfileWithContext",
+		Action:  "GetProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetProfileOutput)(nil),
 		Error:   nil,
@@ -1111,7 +1111,7 @@ func (c *Client) GetProfileWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) GetRoomWithContext(ctx context.Context, input *alexaforbusiness.GetRoomInput, opts ...request.Option) (*alexaforbusiness.GetRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetRoomWithContext",
+		Action:  "GetRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetRoomOutput)(nil),
 		Error:   nil,
@@ -1132,7 +1132,7 @@ func (c *Client) GetRoomWithContext(ctx context.Context, input *alexaforbusiness
 func (c *Client) GetRoomSkillParameterWithContext(ctx context.Context, input *alexaforbusiness.GetRoomSkillParameterInput, opts ...request.Option) (*alexaforbusiness.GetRoomSkillParameterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetRoomSkillParameterWithContext",
+		Action:  "GetRoomSkillParameter",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetRoomSkillParameterOutput)(nil),
 		Error:   nil,
@@ -1153,7 +1153,7 @@ func (c *Client) GetRoomSkillParameterWithContext(ctx context.Context, input *al
 func (c *Client) GetSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.GetSkillGroupInput, opts ...request.Option) (*alexaforbusiness.GetSkillGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "GetSkillGroupWithContext",
+		Action:  "GetSkillGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.GetSkillGroupOutput)(nil),
 		Error:   nil,
@@ -1174,7 +1174,7 @@ func (c *Client) GetSkillGroupWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) ListBusinessReportSchedulesWithContext(ctx context.Context, input *alexaforbusiness.ListBusinessReportSchedulesInput, opts ...request.Option) (*alexaforbusiness.ListBusinessReportSchedulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListBusinessReportSchedulesWithContext",
+		Action:  "ListBusinessReportSchedules",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListBusinessReportSchedulesOutput)(nil),
 		Error:   nil,
@@ -1195,7 +1195,7 @@ func (c *Client) ListBusinessReportSchedulesWithContext(ctx context.Context, inp
 func (c *Client) ListConferenceProvidersWithContext(ctx context.Context, input *alexaforbusiness.ListConferenceProvidersInput, opts ...request.Option) (*alexaforbusiness.ListConferenceProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListConferenceProvidersWithContext",
+		Action:  "ListConferenceProviders",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListConferenceProvidersOutput)(nil),
 		Error:   nil,
@@ -1216,7 +1216,7 @@ func (c *Client) ListConferenceProvidersWithContext(ctx context.Context, input *
 func (c *Client) ListDeviceEventsWithContext(ctx context.Context, input *alexaforbusiness.ListDeviceEventsInput, opts ...request.Option) (*alexaforbusiness.ListDeviceEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListDeviceEventsWithContext",
+		Action:  "ListDeviceEvents",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListDeviceEventsOutput)(nil),
 		Error:   nil,
@@ -1237,7 +1237,7 @@ func (c *Client) ListDeviceEventsWithContext(ctx context.Context, input *alexafo
 func (c *Client) ListGatewayGroupsWithContext(ctx context.Context, input *alexaforbusiness.ListGatewayGroupsInput, opts ...request.Option) (*alexaforbusiness.ListGatewayGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListGatewayGroupsWithContext",
+		Action:  "ListGatewayGroups",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListGatewayGroupsOutput)(nil),
 		Error:   nil,
@@ -1258,7 +1258,7 @@ func (c *Client) ListGatewayGroupsWithContext(ctx context.Context, input *alexaf
 func (c *Client) ListGatewaysWithContext(ctx context.Context, input *alexaforbusiness.ListGatewaysInput, opts ...request.Option) (*alexaforbusiness.ListGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListGatewaysWithContext",
+		Action:  "ListGateways",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListGatewaysOutput)(nil),
 		Error:   nil,
@@ -1279,7 +1279,7 @@ func (c *Client) ListGatewaysWithContext(ctx context.Context, input *alexaforbus
 func (c *Client) ListSkillsWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsInput, opts ...request.Option) (*alexaforbusiness.ListSkillsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListSkillsWithContext",
+		Action:  "ListSkills",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListSkillsOutput)(nil),
 		Error:   nil,
@@ -1300,7 +1300,7 @@ func (c *Client) ListSkillsWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) ListSkillsStoreCategoriesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreCategoriesInput, opts ...request.Option) (*alexaforbusiness.ListSkillsStoreCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListSkillsStoreCategoriesWithContext",
+		Action:  "ListSkillsStoreCategories",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListSkillsStoreCategoriesOutput)(nil),
 		Error:   nil,
@@ -1321,7 +1321,7 @@ func (c *Client) ListSkillsStoreCategoriesWithContext(ctx context.Context, input
 func (c *Client) ListSkillsStoreSkillsByCategoryWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreSkillsByCategoryInput, opts ...request.Option) (*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListSkillsStoreSkillsByCategoryWithContext",
+		Action:  "ListSkillsStoreSkillsByCategory",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput)(nil),
 		Error:   nil,
@@ -1342,7 +1342,7 @@ func (c *Client) ListSkillsStoreSkillsByCategoryWithContext(ctx context.Context,
 func (c *Client) ListSmartHomeAppliancesWithContext(ctx context.Context, input *alexaforbusiness.ListSmartHomeAppliancesInput, opts ...request.Option) (*alexaforbusiness.ListSmartHomeAppliancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListSmartHomeAppliancesWithContext",
+		Action:  "ListSmartHomeAppliances",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListSmartHomeAppliancesOutput)(nil),
 		Error:   nil,
@@ -1363,7 +1363,7 @@ func (c *Client) ListSmartHomeAppliancesWithContext(ctx context.Context, input *
 func (c *Client) ListTagsWithContext(ctx context.Context, input *alexaforbusiness.ListTagsInput, opts ...request.Option) (*alexaforbusiness.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*alexaforbusiness.ListTagsOutput)(nil),
 		Error:   nil,
@@ -1384,7 +1384,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *alexaforbusines
 func (c *Client) PutConferencePreferenceWithContext(ctx context.Context, input *alexaforbusiness.PutConferencePreferenceInput, opts ...request.Option) (*alexaforbusiness.PutConferencePreferenceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "PutConferencePreferenceWithContext",
+		Action:  "PutConferencePreference",
 		Input:   input,
 		Output:  (*alexaforbusiness.PutConferencePreferenceOutput)(nil),
 		Error:   nil,
@@ -1405,7 +1405,7 @@ func (c *Client) PutConferencePreferenceWithContext(ctx context.Context, input *
 func (c *Client) PutInvitationConfigurationWithContext(ctx context.Context, input *alexaforbusiness.PutInvitationConfigurationInput, opts ...request.Option) (*alexaforbusiness.PutInvitationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "PutInvitationConfigurationWithContext",
+		Action:  "PutInvitationConfiguration",
 		Input:   input,
 		Output:  (*alexaforbusiness.PutInvitationConfigurationOutput)(nil),
 		Error:   nil,
@@ -1426,7 +1426,7 @@ func (c *Client) PutInvitationConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) PutRoomSkillParameterWithContext(ctx context.Context, input *alexaforbusiness.PutRoomSkillParameterInput, opts ...request.Option) (*alexaforbusiness.PutRoomSkillParameterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "PutRoomSkillParameterWithContext",
+		Action:  "PutRoomSkillParameter",
 		Input:   input,
 		Output:  (*alexaforbusiness.PutRoomSkillParameterOutput)(nil),
 		Error:   nil,
@@ -1447,7 +1447,7 @@ func (c *Client) PutRoomSkillParameterWithContext(ctx context.Context, input *al
 func (c *Client) PutSkillAuthorizationWithContext(ctx context.Context, input *alexaforbusiness.PutSkillAuthorizationInput, opts ...request.Option) (*alexaforbusiness.PutSkillAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "PutSkillAuthorizationWithContext",
+		Action:  "PutSkillAuthorization",
 		Input:   input,
 		Output:  (*alexaforbusiness.PutSkillAuthorizationOutput)(nil),
 		Error:   nil,
@@ -1468,7 +1468,7 @@ func (c *Client) PutSkillAuthorizationWithContext(ctx context.Context, input *al
 func (c *Client) RegisterAVSDeviceWithContext(ctx context.Context, input *alexaforbusiness.RegisterAVSDeviceInput, opts ...request.Option) (*alexaforbusiness.RegisterAVSDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "RegisterAVSDeviceWithContext",
+		Action:  "RegisterAVSDevice",
 		Input:   input,
 		Output:  (*alexaforbusiness.RegisterAVSDeviceOutput)(nil),
 		Error:   nil,
@@ -1489,7 +1489,7 @@ func (c *Client) RegisterAVSDeviceWithContext(ctx context.Context, input *alexaf
 func (c *Client) RejectSkillWithContext(ctx context.Context, input *alexaforbusiness.RejectSkillInput, opts ...request.Option) (*alexaforbusiness.RejectSkillOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "RejectSkillWithContext",
+		Action:  "RejectSkill",
 		Input:   input,
 		Output:  (*alexaforbusiness.RejectSkillOutput)(nil),
 		Error:   nil,
@@ -1510,7 +1510,7 @@ func (c *Client) RejectSkillWithContext(ctx context.Context, input *alexaforbusi
 func (c *Client) ResolveRoomWithContext(ctx context.Context, input *alexaforbusiness.ResolveRoomInput, opts ...request.Option) (*alexaforbusiness.ResolveRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "ResolveRoomWithContext",
+		Action:  "ResolveRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.ResolveRoomOutput)(nil),
 		Error:   nil,
@@ -1531,7 +1531,7 @@ func (c *Client) ResolveRoomWithContext(ctx context.Context, input *alexaforbusi
 func (c *Client) RevokeInvitationWithContext(ctx context.Context, input *alexaforbusiness.RevokeInvitationInput, opts ...request.Option) (*alexaforbusiness.RevokeInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "RevokeInvitationWithContext",
+		Action:  "RevokeInvitation",
 		Input:   input,
 		Output:  (*alexaforbusiness.RevokeInvitationOutput)(nil),
 		Error:   nil,
@@ -1552,7 +1552,7 @@ func (c *Client) RevokeInvitationWithContext(ctx context.Context, input *alexafo
 func (c *Client) SearchAddressBooksWithContext(ctx context.Context, input *alexaforbusiness.SearchAddressBooksInput, opts ...request.Option) (*alexaforbusiness.SearchAddressBooksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchAddressBooksWithContext",
+		Action:  "SearchAddressBooks",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchAddressBooksOutput)(nil),
 		Error:   nil,
@@ -1573,7 +1573,7 @@ func (c *Client) SearchAddressBooksWithContext(ctx context.Context, input *alexa
 func (c *Client) SearchContactsWithContext(ctx context.Context, input *alexaforbusiness.SearchContactsInput, opts ...request.Option) (*alexaforbusiness.SearchContactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchContactsWithContext",
+		Action:  "SearchContacts",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchContactsOutput)(nil),
 		Error:   nil,
@@ -1594,7 +1594,7 @@ func (c *Client) SearchContactsWithContext(ctx context.Context, input *alexaforb
 func (c *Client) SearchDevicesWithContext(ctx context.Context, input *alexaforbusiness.SearchDevicesInput, opts ...request.Option) (*alexaforbusiness.SearchDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchDevicesWithContext",
+		Action:  "SearchDevices",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchDevicesOutput)(nil),
 		Error:   nil,
@@ -1615,7 +1615,7 @@ func (c *Client) SearchDevicesWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) SearchNetworkProfilesWithContext(ctx context.Context, input *alexaforbusiness.SearchNetworkProfilesInput, opts ...request.Option) (*alexaforbusiness.SearchNetworkProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchNetworkProfilesWithContext",
+		Action:  "SearchNetworkProfiles",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchNetworkProfilesOutput)(nil),
 		Error:   nil,
@@ -1636,7 +1636,7 @@ func (c *Client) SearchNetworkProfilesWithContext(ctx context.Context, input *al
 func (c *Client) SearchProfilesWithContext(ctx context.Context, input *alexaforbusiness.SearchProfilesInput, opts ...request.Option) (*alexaforbusiness.SearchProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchProfilesWithContext",
+		Action:  "SearchProfiles",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchProfilesOutput)(nil),
 		Error:   nil,
@@ -1657,7 +1657,7 @@ func (c *Client) SearchProfilesWithContext(ctx context.Context, input *alexaforb
 func (c *Client) SearchRoomsWithContext(ctx context.Context, input *alexaforbusiness.SearchRoomsInput, opts ...request.Option) (*alexaforbusiness.SearchRoomsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchRoomsWithContext",
+		Action:  "SearchRooms",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchRoomsOutput)(nil),
 		Error:   nil,
@@ -1678,7 +1678,7 @@ func (c *Client) SearchRoomsWithContext(ctx context.Context, input *alexaforbusi
 func (c *Client) SearchSkillGroupsWithContext(ctx context.Context, input *alexaforbusiness.SearchSkillGroupsInput, opts ...request.Option) (*alexaforbusiness.SearchSkillGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchSkillGroupsWithContext",
+		Action:  "SearchSkillGroups",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchSkillGroupsOutput)(nil),
 		Error:   nil,
@@ -1699,7 +1699,7 @@ func (c *Client) SearchSkillGroupsWithContext(ctx context.Context, input *alexaf
 func (c *Client) SearchUsersWithContext(ctx context.Context, input *alexaforbusiness.SearchUsersInput, opts ...request.Option) (*alexaforbusiness.SearchUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SearchUsersWithContext",
+		Action:  "SearchUsers",
 		Input:   input,
 		Output:  (*alexaforbusiness.SearchUsersOutput)(nil),
 		Error:   nil,
@@ -1720,7 +1720,7 @@ func (c *Client) SearchUsersWithContext(ctx context.Context, input *alexaforbusi
 func (c *Client) SendAnnouncementWithContext(ctx context.Context, input *alexaforbusiness.SendAnnouncementInput, opts ...request.Option) (*alexaforbusiness.SendAnnouncementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SendAnnouncementWithContext",
+		Action:  "SendAnnouncement",
 		Input:   input,
 		Output:  (*alexaforbusiness.SendAnnouncementOutput)(nil),
 		Error:   nil,
@@ -1741,7 +1741,7 @@ func (c *Client) SendAnnouncementWithContext(ctx context.Context, input *alexafo
 func (c *Client) SendInvitationWithContext(ctx context.Context, input *alexaforbusiness.SendInvitationInput, opts ...request.Option) (*alexaforbusiness.SendInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "SendInvitationWithContext",
+		Action:  "SendInvitation",
 		Input:   input,
 		Output:  (*alexaforbusiness.SendInvitationOutput)(nil),
 		Error:   nil,
@@ -1762,7 +1762,7 @@ func (c *Client) SendInvitationWithContext(ctx context.Context, input *alexaforb
 func (c *Client) StartDeviceSyncWithContext(ctx context.Context, input *alexaforbusiness.StartDeviceSyncInput, opts ...request.Option) (*alexaforbusiness.StartDeviceSyncOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "StartDeviceSyncWithContext",
+		Action:  "StartDeviceSync",
 		Input:   input,
 		Output:  (*alexaforbusiness.StartDeviceSyncOutput)(nil),
 		Error:   nil,
@@ -1783,7 +1783,7 @@ func (c *Client) StartDeviceSyncWithContext(ctx context.Context, input *alexafor
 func (c *Client) StartSmartHomeApplianceDiscoveryWithContext(ctx context.Context, input *alexaforbusiness.StartSmartHomeApplianceDiscoveryInput, opts ...request.Option) (*alexaforbusiness.StartSmartHomeApplianceDiscoveryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "StartSmartHomeApplianceDiscoveryWithContext",
+		Action:  "StartSmartHomeApplianceDiscovery",
 		Input:   input,
 		Output:  (*alexaforbusiness.StartSmartHomeApplianceDiscoveryOutput)(nil),
 		Error:   nil,
@@ -1804,7 +1804,7 @@ func (c *Client) StartSmartHomeApplianceDiscoveryWithContext(ctx context.Context
 func (c *Client) TagResourceWithContext(ctx context.Context, input *alexaforbusiness.TagResourceInput, opts ...request.Option) (*alexaforbusiness.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*alexaforbusiness.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1825,7 +1825,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *alexaforbusi
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *alexaforbusiness.UntagResourceInput, opts ...request.Option) (*alexaforbusiness.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*alexaforbusiness.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1846,7 +1846,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) UpdateAddressBookWithContext(ctx context.Context, input *alexaforbusiness.UpdateAddressBookInput, opts ...request.Option) (*alexaforbusiness.UpdateAddressBookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateAddressBookWithContext",
+		Action:  "UpdateAddressBook",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateAddressBookOutput)(nil),
 		Error:   nil,
@@ -1867,7 +1867,7 @@ func (c *Client) UpdateAddressBookWithContext(ctx context.Context, input *alexaf
 func (c *Client) UpdateBusinessReportScheduleWithContext(ctx context.Context, input *alexaforbusiness.UpdateBusinessReportScheduleInput, opts ...request.Option) (*alexaforbusiness.UpdateBusinessReportScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateBusinessReportScheduleWithContext",
+		Action:  "UpdateBusinessReportSchedule",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateBusinessReportScheduleOutput)(nil),
 		Error:   nil,
@@ -1888,7 +1888,7 @@ func (c *Client) UpdateBusinessReportScheduleWithContext(ctx context.Context, in
 func (c *Client) UpdateConferenceProviderWithContext(ctx context.Context, input *alexaforbusiness.UpdateConferenceProviderInput, opts ...request.Option) (*alexaforbusiness.UpdateConferenceProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateConferenceProviderWithContext",
+		Action:  "UpdateConferenceProvider",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateConferenceProviderOutput)(nil),
 		Error:   nil,
@@ -1909,7 +1909,7 @@ func (c *Client) UpdateConferenceProviderWithContext(ctx context.Context, input 
 func (c *Client) UpdateContactWithContext(ctx context.Context, input *alexaforbusiness.UpdateContactInput, opts ...request.Option) (*alexaforbusiness.UpdateContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateContactWithContext",
+		Action:  "UpdateContact",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateContactOutput)(nil),
 		Error:   nil,
@@ -1930,7 +1930,7 @@ func (c *Client) UpdateContactWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) UpdateDeviceWithContext(ctx context.Context, input *alexaforbusiness.UpdateDeviceInput, opts ...request.Option) (*alexaforbusiness.UpdateDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateDeviceWithContext",
+		Action:  "UpdateDevice",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateDeviceOutput)(nil),
 		Error:   nil,
@@ -1951,7 +1951,7 @@ func (c *Client) UpdateDeviceWithContext(ctx context.Context, input *alexaforbus
 func (c *Client) UpdateGatewayWithContext(ctx context.Context, input *alexaforbusiness.UpdateGatewayInput, opts ...request.Option) (*alexaforbusiness.UpdateGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateGatewayWithContext",
+		Action:  "UpdateGateway",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateGatewayOutput)(nil),
 		Error:   nil,
@@ -1972,7 +1972,7 @@ func (c *Client) UpdateGatewayWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) UpdateGatewayGroupWithContext(ctx context.Context, input *alexaforbusiness.UpdateGatewayGroupInput, opts ...request.Option) (*alexaforbusiness.UpdateGatewayGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateGatewayGroupWithContext",
+		Action:  "UpdateGatewayGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateGatewayGroupOutput)(nil),
 		Error:   nil,
@@ -1993,7 +1993,7 @@ func (c *Client) UpdateGatewayGroupWithContext(ctx context.Context, input *alexa
 func (c *Client) UpdateNetworkProfileWithContext(ctx context.Context, input *alexaforbusiness.UpdateNetworkProfileInput, opts ...request.Option) (*alexaforbusiness.UpdateNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateNetworkProfileWithContext",
+		Action:  "UpdateNetworkProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -2014,7 +2014,7 @@ func (c *Client) UpdateNetworkProfileWithContext(ctx context.Context, input *ale
 func (c *Client) UpdateProfileWithContext(ctx context.Context, input *alexaforbusiness.UpdateProfileInput, opts ...request.Option) (*alexaforbusiness.UpdateProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateProfileWithContext",
+		Action:  "UpdateProfile",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateProfileOutput)(nil),
 		Error:   nil,
@@ -2035,7 +2035,7 @@ func (c *Client) UpdateProfileWithContext(ctx context.Context, input *alexaforbu
 func (c *Client) UpdateRoomWithContext(ctx context.Context, input *alexaforbusiness.UpdateRoomInput, opts ...request.Option) (*alexaforbusiness.UpdateRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateRoomWithContext",
+		Action:  "UpdateRoom",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateRoomOutput)(nil),
 		Error:   nil,
@@ -2056,7 +2056,7 @@ func (c *Client) UpdateRoomWithContext(ctx context.Context, input *alexaforbusin
 func (c *Client) UpdateSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.UpdateSkillGroupInput, opts ...request.Option) (*alexaforbusiness.UpdateSkillGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
-		Action:  "UpdateSkillGroupWithContext",
+		Action:  "UpdateSkillGroup",
 		Input:   input,
 		Output:  (*alexaforbusiness.UpdateSkillGroupOutput)(nil),
 		Error:   nil,

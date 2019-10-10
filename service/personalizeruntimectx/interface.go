@@ -33,7 +33,7 @@ var _ PersonalizeRuntime = (*Client)(nil)
 func (c *Client) GetPersonalizedRankingWithContext(ctx context.Context, input *personalizeruntime.GetPersonalizedRankingInput, opts ...request.Option) (*personalizeruntime.GetPersonalizedRankingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalizeruntime",
-		Action:  "GetPersonalizedRankingWithContext",
+		Action:  "GetPersonalizedRanking",
 		Input:   input,
 		Output:  (*personalizeruntime.GetPersonalizedRankingOutput)(nil),
 		Error:   nil,
@@ -54,7 +54,7 @@ func (c *Client) GetPersonalizedRankingWithContext(ctx context.Context, input *p
 func (c *Client) GetRecommendationsWithContext(ctx context.Context, input *personalizeruntime.GetRecommendationsInput, opts ...request.Option) (*personalizeruntime.GetRecommendationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalizeruntime",
-		Action:  "GetRecommendationsWithContext",
+		Action:  "GetRecommendations",
 		Input:   input,
 		Output:  (*personalizeruntime.GetRecommendationsOutput)(nil),
 		Error:   nil,

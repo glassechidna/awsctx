@@ -67,7 +67,7 @@ var _ RoboMaker = (*Client)(nil)
 func (c *Client) BatchDescribeSimulationJobWithContext(ctx context.Context, input *robomaker.BatchDescribeSimulationJobInput, opts ...request.Option) (*robomaker.BatchDescribeSimulationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "BatchDescribeSimulationJobWithContext",
+		Action:  "BatchDescribeSimulationJob",
 		Input:   input,
 		Output:  (*robomaker.BatchDescribeSimulationJobOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) BatchDescribeSimulationJobWithContext(ctx context.Context, inpu
 func (c *Client) CancelDeploymentJobWithContext(ctx context.Context, input *robomaker.CancelDeploymentJobInput, opts ...request.Option) (*robomaker.CancelDeploymentJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CancelDeploymentJobWithContext",
+		Action:  "CancelDeploymentJob",
 		Input:   input,
 		Output:  (*robomaker.CancelDeploymentJobOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) CancelDeploymentJobWithContext(ctx context.Context, input *robo
 func (c *Client) CancelSimulationJobWithContext(ctx context.Context, input *robomaker.CancelSimulationJobInput, opts ...request.Option) (*robomaker.CancelSimulationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CancelSimulationJobWithContext",
+		Action:  "CancelSimulationJob",
 		Input:   input,
 		Output:  (*robomaker.CancelSimulationJobOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) CancelSimulationJobWithContext(ctx context.Context, input *robo
 func (c *Client) CreateDeploymentJobWithContext(ctx context.Context, input *robomaker.CreateDeploymentJobInput, opts ...request.Option) (*robomaker.CreateDeploymentJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateDeploymentJobWithContext",
+		Action:  "CreateDeploymentJob",
 		Input:   input,
 		Output:  (*robomaker.CreateDeploymentJobOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) CreateDeploymentJobWithContext(ctx context.Context, input *robo
 func (c *Client) CreateFleetWithContext(ctx context.Context, input *robomaker.CreateFleetInput, opts ...request.Option) (*robomaker.CreateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateFleetWithContext",
+		Action:  "CreateFleet",
 		Input:   input,
 		Output:  (*robomaker.CreateFleetOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *robomaker.Cr
 func (c *Client) CreateRobotWithContext(ctx context.Context, input *robomaker.CreateRobotInput, opts ...request.Option) (*robomaker.CreateRobotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateRobotWithContext",
+		Action:  "CreateRobot",
 		Input:   input,
 		Output:  (*robomaker.CreateRobotOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) CreateRobotWithContext(ctx context.Context, input *robomaker.Cr
 func (c *Client) CreateRobotApplicationWithContext(ctx context.Context, input *robomaker.CreateRobotApplicationInput, opts ...request.Option) (*robomaker.CreateRobotApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateRobotApplicationWithContext",
+		Action:  "CreateRobotApplication",
 		Input:   input,
 		Output:  (*robomaker.CreateRobotApplicationOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) CreateRobotApplicationWithContext(ctx context.Context, input *r
 func (c *Client) CreateRobotApplicationVersionWithContext(ctx context.Context, input *robomaker.CreateRobotApplicationVersionInput, opts ...request.Option) (*robomaker.CreateRobotApplicationVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateRobotApplicationVersionWithContext",
+		Action:  "CreateRobotApplicationVersion",
 		Input:   input,
 		Output:  (*robomaker.CreateRobotApplicationVersionOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) CreateRobotApplicationVersionWithContext(ctx context.Context, i
 func (c *Client) CreateSimulationApplicationWithContext(ctx context.Context, input *robomaker.CreateSimulationApplicationInput, opts ...request.Option) (*robomaker.CreateSimulationApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateSimulationApplicationWithContext",
+		Action:  "CreateSimulationApplication",
 		Input:   input,
 		Output:  (*robomaker.CreateSimulationApplicationOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) CreateSimulationApplicationWithContext(ctx context.Context, inp
 func (c *Client) CreateSimulationApplicationVersionWithContext(ctx context.Context, input *robomaker.CreateSimulationApplicationVersionInput, opts ...request.Option) (*robomaker.CreateSimulationApplicationVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateSimulationApplicationVersionWithContext",
+		Action:  "CreateSimulationApplicationVersion",
 		Input:   input,
 		Output:  (*robomaker.CreateSimulationApplicationVersionOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) CreateSimulationApplicationVersionWithContext(ctx context.Conte
 func (c *Client) CreateSimulationJobWithContext(ctx context.Context, input *robomaker.CreateSimulationJobInput, opts ...request.Option) (*robomaker.CreateSimulationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "CreateSimulationJobWithContext",
+		Action:  "CreateSimulationJob",
 		Input:   input,
 		Output:  (*robomaker.CreateSimulationJobOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) CreateSimulationJobWithContext(ctx context.Context, input *robo
 func (c *Client) DeleteFleetWithContext(ctx context.Context, input *robomaker.DeleteFleetInput, opts ...request.Option) (*robomaker.DeleteFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DeleteFleetWithContext",
+		Action:  "DeleteFleet",
 		Input:   input,
 		Output:  (*robomaker.DeleteFleetOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, input *robomaker.De
 func (c *Client) DeleteRobotWithContext(ctx context.Context, input *robomaker.DeleteRobotInput, opts ...request.Option) (*robomaker.DeleteRobotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DeleteRobotWithContext",
+		Action:  "DeleteRobot",
 		Input:   input,
 		Output:  (*robomaker.DeleteRobotOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) DeleteRobotWithContext(ctx context.Context, input *robomaker.De
 func (c *Client) DeleteRobotApplicationWithContext(ctx context.Context, input *robomaker.DeleteRobotApplicationInput, opts ...request.Option) (*robomaker.DeleteRobotApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DeleteRobotApplicationWithContext",
+		Action:  "DeleteRobotApplication",
 		Input:   input,
 		Output:  (*robomaker.DeleteRobotApplicationOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) DeleteRobotApplicationWithContext(ctx context.Context, input *r
 func (c *Client) DeleteSimulationApplicationWithContext(ctx context.Context, input *robomaker.DeleteSimulationApplicationInput, opts ...request.Option) (*robomaker.DeleteSimulationApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DeleteSimulationApplicationWithContext",
+		Action:  "DeleteSimulationApplication",
 		Input:   input,
 		Output:  (*robomaker.DeleteSimulationApplicationOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) DeleteSimulationApplicationWithContext(ctx context.Context, inp
 func (c *Client) DeregisterRobotWithContext(ctx context.Context, input *robomaker.DeregisterRobotInput, opts ...request.Option) (*robomaker.DeregisterRobotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DeregisterRobotWithContext",
+		Action:  "DeregisterRobot",
 		Input:   input,
 		Output:  (*robomaker.DeregisterRobotOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) DeregisterRobotWithContext(ctx context.Context, input *robomake
 func (c *Client) DescribeDeploymentJobWithContext(ctx context.Context, input *robomaker.DescribeDeploymentJobInput, opts ...request.Option) (*robomaker.DescribeDeploymentJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DescribeDeploymentJobWithContext",
+		Action:  "DescribeDeploymentJob",
 		Input:   input,
 		Output:  (*robomaker.DescribeDeploymentJobOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) DescribeDeploymentJobWithContext(ctx context.Context, input *ro
 func (c *Client) DescribeFleetWithContext(ctx context.Context, input *robomaker.DescribeFleetInput, opts ...request.Option) (*robomaker.DescribeFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DescribeFleetWithContext",
+		Action:  "DescribeFleet",
 		Input:   input,
 		Output:  (*robomaker.DescribeFleetOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) DescribeFleetWithContext(ctx context.Context, input *robomaker.
 func (c *Client) DescribeRobotWithContext(ctx context.Context, input *robomaker.DescribeRobotInput, opts ...request.Option) (*robomaker.DescribeRobotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DescribeRobotWithContext",
+		Action:  "DescribeRobot",
 		Input:   input,
 		Output:  (*robomaker.DescribeRobotOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) DescribeRobotWithContext(ctx context.Context, input *robomaker.
 func (c *Client) DescribeRobotApplicationWithContext(ctx context.Context, input *robomaker.DescribeRobotApplicationInput, opts ...request.Option) (*robomaker.DescribeRobotApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DescribeRobotApplicationWithContext",
+		Action:  "DescribeRobotApplication",
 		Input:   input,
 		Output:  (*robomaker.DescribeRobotApplicationOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) DescribeRobotApplicationWithContext(ctx context.Context, input 
 func (c *Client) DescribeSimulationApplicationWithContext(ctx context.Context, input *robomaker.DescribeSimulationApplicationInput, opts ...request.Option) (*robomaker.DescribeSimulationApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DescribeSimulationApplicationWithContext",
+		Action:  "DescribeSimulationApplication",
 		Input:   input,
 		Output:  (*robomaker.DescribeSimulationApplicationOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) DescribeSimulationApplicationWithContext(ctx context.Context, i
 func (c *Client) DescribeSimulationJobWithContext(ctx context.Context, input *robomaker.DescribeSimulationJobInput, opts ...request.Option) (*robomaker.DescribeSimulationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "DescribeSimulationJobWithContext",
+		Action:  "DescribeSimulationJob",
 		Input:   input,
 		Output:  (*robomaker.DescribeSimulationJobOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) DescribeSimulationJobWithContext(ctx context.Context, input *ro
 func (c *Client) ListDeploymentJobsWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, opts ...request.Option) (*robomaker.ListDeploymentJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListDeploymentJobsWithContext",
+		Action:  "ListDeploymentJobs",
 		Input:   input,
 		Output:  (*robomaker.ListDeploymentJobsOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) ListDeploymentJobsWithContext(ctx context.Context, input *robom
 func (c *Client) ListFleetsWithContext(ctx context.Context, input *robomaker.ListFleetsInput, opts ...request.Option) (*robomaker.ListFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListFleetsWithContext",
+		Action:  "ListFleets",
 		Input:   input,
 		Output:  (*robomaker.ListFleetsOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, input *robomaker.Lis
 func (c *Client) ListRobotApplicationsWithContext(ctx context.Context, input *robomaker.ListRobotApplicationsInput, opts ...request.Option) (*robomaker.ListRobotApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListRobotApplicationsWithContext",
+		Action:  "ListRobotApplications",
 		Input:   input,
 		Output:  (*robomaker.ListRobotApplicationsOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) ListRobotApplicationsWithContext(ctx context.Context, input *ro
 func (c *Client) ListRobotsWithContext(ctx context.Context, input *robomaker.ListRobotsInput, opts ...request.Option) (*robomaker.ListRobotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListRobotsWithContext",
+		Action:  "ListRobots",
 		Input:   input,
 		Output:  (*robomaker.ListRobotsOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) ListRobotsWithContext(ctx context.Context, input *robomaker.Lis
 func (c *Client) ListSimulationApplicationsWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, opts ...request.Option) (*robomaker.ListSimulationApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListSimulationApplicationsWithContext",
+		Action:  "ListSimulationApplications",
 		Input:   input,
 		Output:  (*robomaker.ListSimulationApplicationsOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) ListSimulationApplicationsWithContext(ctx context.Context, inpu
 func (c *Client) ListSimulationJobsWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, opts ...request.Option) (*robomaker.ListSimulationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListSimulationJobsWithContext",
+		Action:  "ListSimulationJobs",
 		Input:   input,
 		Output:  (*robomaker.ListSimulationJobsOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) ListSimulationJobsWithContext(ctx context.Context, input *robom
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *robomaker.ListTagsForResourceInput, opts ...request.Option) (*robomaker.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*robomaker.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *robo
 func (c *Client) RegisterRobotWithContext(ctx context.Context, input *robomaker.RegisterRobotInput, opts ...request.Option) (*robomaker.RegisterRobotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "RegisterRobotWithContext",
+		Action:  "RegisterRobot",
 		Input:   input,
 		Output:  (*robomaker.RegisterRobotOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) RegisterRobotWithContext(ctx context.Context, input *robomaker.
 func (c *Client) RestartSimulationJobWithContext(ctx context.Context, input *robomaker.RestartSimulationJobInput, opts ...request.Option) (*robomaker.RestartSimulationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "RestartSimulationJobWithContext",
+		Action:  "RestartSimulationJob",
 		Input:   input,
 		Output:  (*robomaker.RestartSimulationJobOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) RestartSimulationJobWithContext(ctx context.Context, input *rob
 func (c *Client) SyncDeploymentJobWithContext(ctx context.Context, input *robomaker.SyncDeploymentJobInput, opts ...request.Option) (*robomaker.SyncDeploymentJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "SyncDeploymentJobWithContext",
+		Action:  "SyncDeploymentJob",
 		Input:   input,
 		Output:  (*robomaker.SyncDeploymentJobOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) SyncDeploymentJobWithContext(ctx context.Context, input *roboma
 func (c *Client) TagResourceWithContext(ctx context.Context, input *robomaker.TagResourceInput, opts ...request.Option) (*robomaker.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*robomaker.TagResourceOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *robomaker.Ta
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *robomaker.UntagResourceInput, opts ...request.Option) (*robomaker.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*robomaker.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *robomaker.
 func (c *Client) UpdateRobotApplicationWithContext(ctx context.Context, input *robomaker.UpdateRobotApplicationInput, opts ...request.Option) (*robomaker.UpdateRobotApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "UpdateRobotApplicationWithContext",
+		Action:  "UpdateRobotApplication",
 		Input:   input,
 		Output:  (*robomaker.UpdateRobotApplicationOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) UpdateRobotApplicationWithContext(ctx context.Context, input *r
 func (c *Client) UpdateSimulationApplicationWithContext(ctx context.Context, input *robomaker.UpdateSimulationApplicationInput, opts ...request.Option) (*robomaker.UpdateSimulationApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
-		Action:  "UpdateSimulationApplicationWithContext",
+		Action:  "UpdateSimulationApplication",
 		Input:   input,
 		Output:  (*robomaker.UpdateSimulationApplicationOutput)(nil),
 		Error:   nil,

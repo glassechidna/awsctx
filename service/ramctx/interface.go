@@ -21,6 +21,7 @@ type RAM interface {
 	GetResourceShareAssociationsWithContext(ctx context.Context, input *ram.GetResourceShareAssociationsInput, opts ...request.Option) (*ram.GetResourceShareAssociationsOutput, error)
 	GetResourceShareInvitationsWithContext(ctx context.Context, input *ram.GetResourceShareInvitationsInput, opts ...request.Option) (*ram.GetResourceShareInvitationsOutput, error)
 	GetResourceSharesWithContext(ctx context.Context, input *ram.GetResourceSharesInput, opts ...request.Option) (*ram.GetResourceSharesOutput, error)
+	ListPendingInvitationResourcesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, opts ...request.Option) (*ram.ListPendingInvitationResourcesOutput, error)
 	ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error)
 	ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error)
 	RejectResourceShareInvitationWithContext(ctx context.Context, input *ram.RejectResourceShareInvitationInput, opts ...request.Option) (*ram.RejectResourceShareInvitationOutput, error)
@@ -47,7 +48,7 @@ var _ RAM = (*Client)(nil)
 func (c *Client) AcceptResourceShareInvitationWithContext(ctx context.Context, input *ram.AcceptResourceShareInvitationInput, opts ...request.Option) (*ram.AcceptResourceShareInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "AcceptResourceShareInvitationWithContext",
+		Action:  "AcceptResourceShareInvitation",
 		Input:   input,
 		Output:  (*ram.AcceptResourceShareInvitationOutput)(nil),
 		Error:   nil,
@@ -68,7 +69,7 @@ func (c *Client) AcceptResourceShareInvitationWithContext(ctx context.Context, i
 func (c *Client) AssociateResourceShareWithContext(ctx context.Context, input *ram.AssociateResourceShareInput, opts ...request.Option) (*ram.AssociateResourceShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "AssociateResourceShareWithContext",
+		Action:  "AssociateResourceShare",
 		Input:   input,
 		Output:  (*ram.AssociateResourceShareOutput)(nil),
 		Error:   nil,
@@ -89,7 +90,7 @@ func (c *Client) AssociateResourceShareWithContext(ctx context.Context, input *r
 func (c *Client) CreateResourceShareWithContext(ctx context.Context, input *ram.CreateResourceShareInput, opts ...request.Option) (*ram.CreateResourceShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "CreateResourceShareWithContext",
+		Action:  "CreateResourceShare",
 		Input:   input,
 		Output:  (*ram.CreateResourceShareOutput)(nil),
 		Error:   nil,
@@ -110,7 +111,7 @@ func (c *Client) CreateResourceShareWithContext(ctx context.Context, input *ram.
 func (c *Client) DeleteResourceShareWithContext(ctx context.Context, input *ram.DeleteResourceShareInput, opts ...request.Option) (*ram.DeleteResourceShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "DeleteResourceShareWithContext",
+		Action:  "DeleteResourceShare",
 		Input:   input,
 		Output:  (*ram.DeleteResourceShareOutput)(nil),
 		Error:   nil,
@@ -131,7 +132,7 @@ func (c *Client) DeleteResourceShareWithContext(ctx context.Context, input *ram.
 func (c *Client) DisassociateResourceShareWithContext(ctx context.Context, input *ram.DisassociateResourceShareInput, opts ...request.Option) (*ram.DisassociateResourceShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "DisassociateResourceShareWithContext",
+		Action:  "DisassociateResourceShare",
 		Input:   input,
 		Output:  (*ram.DisassociateResourceShareOutput)(nil),
 		Error:   nil,
@@ -152,7 +153,7 @@ func (c *Client) DisassociateResourceShareWithContext(ctx context.Context, input
 func (c *Client) EnableSharingWithAwsOrganizationWithContext(ctx context.Context, input *ram.EnableSharingWithAwsOrganizationInput, opts ...request.Option) (*ram.EnableSharingWithAwsOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "EnableSharingWithAwsOrganizationWithContext",
+		Action:  "EnableSharingWithAwsOrganization",
 		Input:   input,
 		Output:  (*ram.EnableSharingWithAwsOrganizationOutput)(nil),
 		Error:   nil,
@@ -173,7 +174,7 @@ func (c *Client) EnableSharingWithAwsOrganizationWithContext(ctx context.Context
 func (c *Client) GetResourcePoliciesWithContext(ctx context.Context, input *ram.GetResourcePoliciesInput, opts ...request.Option) (*ram.GetResourcePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "GetResourcePoliciesWithContext",
+		Action:  "GetResourcePolicies",
 		Input:   input,
 		Output:  (*ram.GetResourcePoliciesOutput)(nil),
 		Error:   nil,
@@ -194,7 +195,7 @@ func (c *Client) GetResourcePoliciesWithContext(ctx context.Context, input *ram.
 func (c *Client) GetResourceShareAssociationsWithContext(ctx context.Context, input *ram.GetResourceShareAssociationsInput, opts ...request.Option) (*ram.GetResourceShareAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "GetResourceShareAssociationsWithContext",
+		Action:  "GetResourceShareAssociations",
 		Input:   input,
 		Output:  (*ram.GetResourceShareAssociationsOutput)(nil),
 		Error:   nil,
@@ -215,7 +216,7 @@ func (c *Client) GetResourceShareAssociationsWithContext(ctx context.Context, in
 func (c *Client) GetResourceShareInvitationsWithContext(ctx context.Context, input *ram.GetResourceShareInvitationsInput, opts ...request.Option) (*ram.GetResourceShareInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "GetResourceShareInvitationsWithContext",
+		Action:  "GetResourceShareInvitations",
 		Input:   input,
 		Output:  (*ram.GetResourceShareInvitationsOutput)(nil),
 		Error:   nil,
@@ -236,7 +237,7 @@ func (c *Client) GetResourceShareInvitationsWithContext(ctx context.Context, inp
 func (c *Client) GetResourceSharesWithContext(ctx context.Context, input *ram.GetResourceSharesInput, opts ...request.Option) (*ram.GetResourceSharesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "GetResourceSharesWithContext",
+		Action:  "GetResourceShares",
 		Input:   input,
 		Output:  (*ram.GetResourceSharesOutput)(nil),
 		Error:   nil,
@@ -254,10 +255,31 @@ func (c *Client) GetResourceSharesWithContext(ctx context.Context, input *ram.Ge
 	return req.Output.(*ram.GetResourceSharesOutput), req.Error
 }
 
+func (c *Client) ListPendingInvitationResourcesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, opts ...request.Option) (*ram.ListPendingInvitationResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListPendingInvitationResources",
+		Input:   input,
+		Output:  (*ram.ListPendingInvitationResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.ListPendingInvitationResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.ListPendingInvitationResourcesOutput), req.Error
+}
+
 func (c *Client) ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "ListPrincipalsWithContext",
+		Action:  "ListPrincipals",
 		Input:   input,
 		Output:  (*ram.ListPrincipalsOutput)(nil),
 		Error:   nil,
@@ -278,7 +300,7 @@ func (c *Client) ListPrincipalsWithContext(ctx context.Context, input *ram.ListP
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "ListResourcesWithContext",
+		Action:  "ListResources",
 		Input:   input,
 		Output:  (*ram.ListResourcesOutput)(nil),
 		Error:   nil,
@@ -299,7 +321,7 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, input *ram.ListRe
 func (c *Client) RejectResourceShareInvitationWithContext(ctx context.Context, input *ram.RejectResourceShareInvitationInput, opts ...request.Option) (*ram.RejectResourceShareInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "RejectResourceShareInvitationWithContext",
+		Action:  "RejectResourceShareInvitation",
 		Input:   input,
 		Output:  (*ram.RejectResourceShareInvitationOutput)(nil),
 		Error:   nil,
@@ -320,7 +342,7 @@ func (c *Client) RejectResourceShareInvitationWithContext(ctx context.Context, i
 func (c *Client) TagResourceWithContext(ctx context.Context, input *ram.TagResourceInput, opts ...request.Option) (*ram.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*ram.TagResourceOutput)(nil),
 		Error:   nil,
@@ -341,7 +363,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *ram.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *ram.UntagResourceInput, opts ...request.Option) (*ram.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*ram.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -362,7 +384,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *ram.UntagR
 func (c *Client) UpdateResourceShareWithContext(ctx context.Context, input *ram.UpdateResourceShareInput, opts ...request.Option) (*ram.UpdateResourceShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
-		Action:  "UpdateResourceShareWithContext",
+		Action:  "UpdateResourceShare",
 		Input:   input,
 		Output:  (*ram.UpdateResourceShareOutput)(nil),
 		Error:   nil,

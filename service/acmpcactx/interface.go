@@ -51,7 +51,7 @@ var _ ACMPCA = (*Client)(nil)
 func (c *Client) CreateCertificateAuthorityWithContext(ctx context.Context, input *acmpca.CreateCertificateAuthorityInput, opts ...request.Option) (*acmpca.CreateCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "CreateCertificateAuthorityWithContext",
+		Action:  "CreateCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.CreateCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -72,7 +72,7 @@ func (c *Client) CreateCertificateAuthorityWithContext(ctx context.Context, inpu
 func (c *Client) CreateCertificateAuthorityAuditReportWithContext(ctx context.Context, input *acmpca.CreateCertificateAuthorityAuditReportInput, opts ...request.Option) (*acmpca.CreateCertificateAuthorityAuditReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "CreateCertificateAuthorityAuditReportWithContext",
+		Action:  "CreateCertificateAuthorityAuditReport",
 		Input:   input,
 		Output:  (*acmpca.CreateCertificateAuthorityAuditReportOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) CreateCertificateAuthorityAuditReportWithContext(ctx context.Co
 func (c *Client) CreatePermissionWithContext(ctx context.Context, input *acmpca.CreatePermissionInput, opts ...request.Option) (*acmpca.CreatePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "CreatePermissionWithContext",
+		Action:  "CreatePermission",
 		Input:   input,
 		Output:  (*acmpca.CreatePermissionOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) CreatePermissionWithContext(ctx context.Context, input *acmpca.
 func (c *Client) DeleteCertificateAuthorityWithContext(ctx context.Context, input *acmpca.DeleteCertificateAuthorityInput, opts ...request.Option) (*acmpca.DeleteCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "DeleteCertificateAuthorityWithContext",
+		Action:  "DeleteCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.DeleteCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) DeleteCertificateAuthorityWithContext(ctx context.Context, inpu
 func (c *Client) DeletePermissionWithContext(ctx context.Context, input *acmpca.DeletePermissionInput, opts ...request.Option) (*acmpca.DeletePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "DeletePermissionWithContext",
+		Action:  "DeletePermission",
 		Input:   input,
 		Output:  (*acmpca.DeletePermissionOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) DeletePermissionWithContext(ctx context.Context, input *acmpca.
 func (c *Client) DescribeCertificateAuthorityWithContext(ctx context.Context, input *acmpca.DescribeCertificateAuthorityInput, opts ...request.Option) (*acmpca.DescribeCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "DescribeCertificateAuthorityWithContext",
+		Action:  "DescribeCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.DescribeCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) DescribeCertificateAuthorityWithContext(ctx context.Context, in
 func (c *Client) DescribeCertificateAuthorityAuditReportWithContext(ctx context.Context, input *acmpca.DescribeCertificateAuthorityAuditReportInput, opts ...request.Option) (*acmpca.DescribeCertificateAuthorityAuditReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "DescribeCertificateAuthorityAuditReportWithContext",
+		Action:  "DescribeCertificateAuthorityAuditReport",
 		Input:   input,
 		Output:  (*acmpca.DescribeCertificateAuthorityAuditReportOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) DescribeCertificateAuthorityAuditReportWithContext(ctx context.
 func (c *Client) GetCertificateWithContext(ctx context.Context, input *acmpca.GetCertificateInput, opts ...request.Option) (*acmpca.GetCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "GetCertificateWithContext",
+		Action:  "GetCertificate",
 		Input:   input,
 		Output:  (*acmpca.GetCertificateOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) GetCertificateWithContext(ctx context.Context, input *acmpca.Ge
 func (c *Client) GetCertificateAuthorityCertificateWithContext(ctx context.Context, input *acmpca.GetCertificateAuthorityCertificateInput, opts ...request.Option) (*acmpca.GetCertificateAuthorityCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "GetCertificateAuthorityCertificateWithContext",
+		Action:  "GetCertificateAuthorityCertificate",
 		Input:   input,
 		Output:  (*acmpca.GetCertificateAuthorityCertificateOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) GetCertificateAuthorityCertificateWithContext(ctx context.Conte
 func (c *Client) GetCertificateAuthorityCsrWithContext(ctx context.Context, input *acmpca.GetCertificateAuthorityCsrInput, opts ...request.Option) (*acmpca.GetCertificateAuthorityCsrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "GetCertificateAuthorityCsrWithContext",
+		Action:  "GetCertificateAuthorityCsr",
 		Input:   input,
 		Output:  (*acmpca.GetCertificateAuthorityCsrOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) GetCertificateAuthorityCsrWithContext(ctx context.Context, inpu
 func (c *Client) ImportCertificateAuthorityCertificateWithContext(ctx context.Context, input *acmpca.ImportCertificateAuthorityCertificateInput, opts ...request.Option) (*acmpca.ImportCertificateAuthorityCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "ImportCertificateAuthorityCertificateWithContext",
+		Action:  "ImportCertificateAuthorityCertificate",
 		Input:   input,
 		Output:  (*acmpca.ImportCertificateAuthorityCertificateOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) ImportCertificateAuthorityCertificateWithContext(ctx context.Co
 func (c *Client) IssueCertificateWithContext(ctx context.Context, input *acmpca.IssueCertificateInput, opts ...request.Option) (*acmpca.IssueCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "IssueCertificateWithContext",
+		Action:  "IssueCertificate",
 		Input:   input,
 		Output:  (*acmpca.IssueCertificateOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) IssueCertificateWithContext(ctx context.Context, input *acmpca.
 func (c *Client) ListCertificateAuthoritiesWithContext(ctx context.Context, input *acmpca.ListCertificateAuthoritiesInput, opts ...request.Option) (*acmpca.ListCertificateAuthoritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "ListCertificateAuthoritiesWithContext",
+		Action:  "ListCertificateAuthorities",
 		Input:   input,
 		Output:  (*acmpca.ListCertificateAuthoritiesOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) ListCertificateAuthoritiesWithContext(ctx context.Context, inpu
 func (c *Client) ListPermissionsWithContext(ctx context.Context, input *acmpca.ListPermissionsInput, opts ...request.Option) (*acmpca.ListPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "ListPermissionsWithContext",
+		Action:  "ListPermissions",
 		Input:   input,
 		Output:  (*acmpca.ListPermissionsOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) ListPermissionsWithContext(ctx context.Context, input *acmpca.L
 func (c *Client) ListTagsWithContext(ctx context.Context, input *acmpca.ListTagsInput, opts ...request.Option) (*acmpca.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*acmpca.ListTagsOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *acmpca.ListTags
 func (c *Client) RestoreCertificateAuthorityWithContext(ctx context.Context, input *acmpca.RestoreCertificateAuthorityInput, opts ...request.Option) (*acmpca.RestoreCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "RestoreCertificateAuthorityWithContext",
+		Action:  "RestoreCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.RestoreCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) RestoreCertificateAuthorityWithContext(ctx context.Context, inp
 func (c *Client) RevokeCertificateWithContext(ctx context.Context, input *acmpca.RevokeCertificateInput, opts ...request.Option) (*acmpca.RevokeCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "RevokeCertificateWithContext",
+		Action:  "RevokeCertificate",
 		Input:   input,
 		Output:  (*acmpca.RevokeCertificateOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) RevokeCertificateWithContext(ctx context.Context, input *acmpca
 func (c *Client) TagCertificateAuthorityWithContext(ctx context.Context, input *acmpca.TagCertificateAuthorityInput, opts ...request.Option) (*acmpca.TagCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "TagCertificateAuthorityWithContext",
+		Action:  "TagCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.TagCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) TagCertificateAuthorityWithContext(ctx context.Context, input *
 func (c *Client) UntagCertificateAuthorityWithContext(ctx context.Context, input *acmpca.UntagCertificateAuthorityInput, opts ...request.Option) (*acmpca.UntagCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "UntagCertificateAuthorityWithContext",
+		Action:  "UntagCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.UntagCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) UntagCertificateAuthorityWithContext(ctx context.Context, input
 func (c *Client) UpdateCertificateAuthorityWithContext(ctx context.Context, input *acmpca.UpdateCertificateAuthorityInput, opts ...request.Option) (*acmpca.UpdateCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
-		Action:  "UpdateCertificateAuthorityWithContext",
+		Action:  "UpdateCertificateAuthority",
 		Input:   input,
 		Output:  (*acmpca.UpdateCertificateAuthorityOutput)(nil),
 		Error:   nil,

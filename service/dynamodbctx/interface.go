@@ -67,7 +67,7 @@ var _ DynamoDB = (*Client)(nil)
 func (c *Client) BatchGetItemWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, opts ...request.Option) (*dynamodb.BatchGetItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "BatchGetItemWithContext",
+		Action:  "BatchGetItem",
 		Input:   input,
 		Output:  (*dynamodb.BatchGetItemOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) BatchGetItemWithContext(ctx context.Context, input *dynamodb.Ba
 func (c *Client) BatchWriteItemWithContext(ctx context.Context, input *dynamodb.BatchWriteItemInput, opts ...request.Option) (*dynamodb.BatchWriteItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "BatchWriteItemWithContext",
+		Action:  "BatchWriteItem",
 		Input:   input,
 		Output:  (*dynamodb.BatchWriteItemOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) BatchWriteItemWithContext(ctx context.Context, input *dynamodb.
 func (c *Client) CreateBackupWithContext(ctx context.Context, input *dynamodb.CreateBackupInput, opts ...request.Option) (*dynamodb.CreateBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "CreateBackupWithContext",
+		Action:  "CreateBackup",
 		Input:   input,
 		Output:  (*dynamodb.CreateBackupOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, input *dynamodb.Cr
 func (c *Client) CreateGlobalTableWithContext(ctx context.Context, input *dynamodb.CreateGlobalTableInput, opts ...request.Option) (*dynamodb.CreateGlobalTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "CreateGlobalTableWithContext",
+		Action:  "CreateGlobalTable",
 		Input:   input,
 		Output:  (*dynamodb.CreateGlobalTableOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) CreateGlobalTableWithContext(ctx context.Context, input *dynamo
 func (c *Client) CreateTableWithContext(ctx context.Context, input *dynamodb.CreateTableInput, opts ...request.Option) (*dynamodb.CreateTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "CreateTableWithContext",
+		Action:  "CreateTable",
 		Input:   input,
 		Output:  (*dynamodb.CreateTableOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) CreateTableWithContext(ctx context.Context, input *dynamodb.Cre
 func (c *Client) DeleteBackupWithContext(ctx context.Context, input *dynamodb.DeleteBackupInput, opts ...request.Option) (*dynamodb.DeleteBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DeleteBackupWithContext",
+		Action:  "DeleteBackup",
 		Input:   input,
 		Output:  (*dynamodb.DeleteBackupOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, input *dynamodb.De
 func (c *Client) DeleteItemWithContext(ctx context.Context, input *dynamodb.DeleteItemInput, opts ...request.Option) (*dynamodb.DeleteItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DeleteItemWithContext",
+		Action:  "DeleteItem",
 		Input:   input,
 		Output:  (*dynamodb.DeleteItemOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) DeleteItemWithContext(ctx context.Context, input *dynamodb.Dele
 func (c *Client) DeleteTableWithContext(ctx context.Context, input *dynamodb.DeleteTableInput, opts ...request.Option) (*dynamodb.DeleteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DeleteTableWithContext",
+		Action:  "DeleteTable",
 		Input:   input,
 		Output:  (*dynamodb.DeleteTableOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) DeleteTableWithContext(ctx context.Context, input *dynamodb.Del
 func (c *Client) DescribeBackupWithContext(ctx context.Context, input *dynamodb.DescribeBackupInput, opts ...request.Option) (*dynamodb.DescribeBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeBackupWithContext",
+		Action:  "DescribeBackup",
 		Input:   input,
 		Output:  (*dynamodb.DescribeBackupOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) DescribeBackupWithContext(ctx context.Context, input *dynamodb.
 func (c *Client) DescribeContinuousBackupsWithContext(ctx context.Context, input *dynamodb.DescribeContinuousBackupsInput, opts ...request.Option) (*dynamodb.DescribeContinuousBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeContinuousBackupsWithContext",
+		Action:  "DescribeContinuousBackups",
 		Input:   input,
 		Output:  (*dynamodb.DescribeContinuousBackupsOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) DescribeContinuousBackupsWithContext(ctx context.Context, input
 func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *dynamodb.DescribeEndpointsInput, opts ...request.Option) (*dynamodb.DescribeEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeEndpointsWithContext",
+		Action:  "DescribeEndpoints",
 		Input:   input,
 		Output:  (*dynamodb.DescribeEndpointsOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *dynamo
 func (c *Client) DescribeGlobalTableWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeGlobalTableWithContext",
+		Action:  "DescribeGlobalTable",
 		Input:   input,
 		Output:  (*dynamodb.DescribeGlobalTableOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) DescribeGlobalTableWithContext(ctx context.Context, input *dyna
 func (c *Client) DescribeGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeGlobalTableSettingsWithContext",
+		Action:  "DescribeGlobalTableSettings",
 		Input:   input,
 		Output:  (*dynamodb.DescribeGlobalTableSettingsOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) DescribeGlobalTableSettingsWithContext(ctx context.Context, inp
 func (c *Client) DescribeLimitsWithContext(ctx context.Context, input *dynamodb.DescribeLimitsInput, opts ...request.Option) (*dynamodb.DescribeLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeLimitsWithContext",
+		Action:  "DescribeLimits",
 		Input:   input,
 		Output:  (*dynamodb.DescribeLimitsOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) DescribeLimitsWithContext(ctx context.Context, input *dynamodb.
 func (c *Client) DescribeTableWithContext(ctx context.Context, input *dynamodb.DescribeTableInput, opts ...request.Option) (*dynamodb.DescribeTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeTableWithContext",
+		Action:  "DescribeTable",
 		Input:   input,
 		Output:  (*dynamodb.DescribeTableOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) DescribeTableWithContext(ctx context.Context, input *dynamodb.D
 func (c *Client) DescribeTimeToLiveWithContext(ctx context.Context, input *dynamodb.DescribeTimeToLiveInput, opts ...request.Option) (*dynamodb.DescribeTimeToLiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "DescribeTimeToLiveWithContext",
+		Action:  "DescribeTimeToLive",
 		Input:   input,
 		Output:  (*dynamodb.DescribeTimeToLiveOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) DescribeTimeToLiveWithContext(ctx context.Context, input *dynam
 func (c *Client) GetItemWithContext(ctx context.Context, input *dynamodb.GetItemInput, opts ...request.Option) (*dynamodb.GetItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "GetItemWithContext",
+		Action:  "GetItem",
 		Input:   input,
 		Output:  (*dynamodb.GetItemOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) GetItemWithContext(ctx context.Context, input *dynamodb.GetItem
 func (c *Client) ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "ListBackupsWithContext",
+		Action:  "ListBackups",
 		Input:   input,
 		Output:  (*dynamodb.ListBackupsOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) ListBackupsWithContext(ctx context.Context, input *dynamodb.Lis
 func (c *Client) ListGlobalTablesWithContext(ctx context.Context, input *dynamodb.ListGlobalTablesInput, opts ...request.Option) (*dynamodb.ListGlobalTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "ListGlobalTablesWithContext",
+		Action:  "ListGlobalTables",
 		Input:   input,
 		Output:  (*dynamodb.ListGlobalTablesOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) ListGlobalTablesWithContext(ctx context.Context, input *dynamod
 func (c *Client) ListTablesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, opts ...request.Option) (*dynamodb.ListTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "ListTablesWithContext",
+		Action:  "ListTables",
 		Input:   input,
 		Output:  (*dynamodb.ListTablesOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) ListTablesWithContext(ctx context.Context, input *dynamodb.List
 func (c *Client) ListTagsOfResourceWithContext(ctx context.Context, input *dynamodb.ListTagsOfResourceInput, opts ...request.Option) (*dynamodb.ListTagsOfResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "ListTagsOfResourceWithContext",
+		Action:  "ListTagsOfResource",
 		Input:   input,
 		Output:  (*dynamodb.ListTagsOfResourceOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) ListTagsOfResourceWithContext(ctx context.Context, input *dynam
 func (c *Client) PutItemWithContext(ctx context.Context, input *dynamodb.PutItemInput, opts ...request.Option) (*dynamodb.PutItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "PutItemWithContext",
+		Action:  "PutItem",
 		Input:   input,
 		Output:  (*dynamodb.PutItemOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) PutItemWithContext(ctx context.Context, input *dynamodb.PutItem
 func (c *Client) QueryWithContext(ctx context.Context, input *dynamodb.QueryInput, opts ...request.Option) (*dynamodb.QueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "QueryWithContext",
+		Action:  "Query",
 		Input:   input,
 		Output:  (*dynamodb.QueryOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) QueryWithContext(ctx context.Context, input *dynamodb.QueryInpu
 func (c *Client) RestoreTableFromBackupWithContext(ctx context.Context, input *dynamodb.RestoreTableFromBackupInput, opts ...request.Option) (*dynamodb.RestoreTableFromBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "RestoreTableFromBackupWithContext",
+		Action:  "RestoreTableFromBackup",
 		Input:   input,
 		Output:  (*dynamodb.RestoreTableFromBackupOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) RestoreTableFromBackupWithContext(ctx context.Context, input *d
 func (c *Client) RestoreTableToPointInTimeWithContext(ctx context.Context, input *dynamodb.RestoreTableToPointInTimeInput, opts ...request.Option) (*dynamodb.RestoreTableToPointInTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "RestoreTableToPointInTimeWithContext",
+		Action:  "RestoreTableToPointInTime",
 		Input:   input,
 		Output:  (*dynamodb.RestoreTableToPointInTimeOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) RestoreTableToPointInTimeWithContext(ctx context.Context, input
 func (c *Client) ScanWithContext(ctx context.Context, input *dynamodb.ScanInput, opts ...request.Option) (*dynamodb.ScanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "ScanWithContext",
+		Action:  "Scan",
 		Input:   input,
 		Output:  (*dynamodb.ScanOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) ScanWithContext(ctx context.Context, input *dynamodb.ScanInput,
 func (c *Client) TagResourceWithContext(ctx context.Context, input *dynamodb.TagResourceInput, opts ...request.Option) (*dynamodb.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*dynamodb.TagResourceOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *dynamodb.Tag
 func (c *Client) TransactGetItemsWithContext(ctx context.Context, input *dynamodb.TransactGetItemsInput, opts ...request.Option) (*dynamodb.TransactGetItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "TransactGetItemsWithContext",
+		Action:  "TransactGetItems",
 		Input:   input,
 		Output:  (*dynamodb.TransactGetItemsOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) TransactGetItemsWithContext(ctx context.Context, input *dynamod
 func (c *Client) TransactWriteItemsWithContext(ctx context.Context, input *dynamodb.TransactWriteItemsInput, opts ...request.Option) (*dynamodb.TransactWriteItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "TransactWriteItemsWithContext",
+		Action:  "TransactWriteItems",
 		Input:   input,
 		Output:  (*dynamodb.TransactWriteItemsOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) TransactWriteItemsWithContext(ctx context.Context, input *dynam
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *dynamodb.UntagResourceInput, opts ...request.Option) (*dynamodb.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*dynamodb.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *dynamodb.U
 func (c *Client) UpdateContinuousBackupsWithContext(ctx context.Context, input *dynamodb.UpdateContinuousBackupsInput, opts ...request.Option) (*dynamodb.UpdateContinuousBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UpdateContinuousBackupsWithContext",
+		Action:  "UpdateContinuousBackups",
 		Input:   input,
 		Output:  (*dynamodb.UpdateContinuousBackupsOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) UpdateContinuousBackupsWithContext(ctx context.Context, input *
 func (c *Client) UpdateGlobalTableWithContext(ctx context.Context, input *dynamodb.UpdateGlobalTableInput, opts ...request.Option) (*dynamodb.UpdateGlobalTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UpdateGlobalTableWithContext",
+		Action:  "UpdateGlobalTable",
 		Input:   input,
 		Output:  (*dynamodb.UpdateGlobalTableOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) UpdateGlobalTableWithContext(ctx context.Context, input *dynamo
 func (c *Client) UpdateGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.UpdateGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.UpdateGlobalTableSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UpdateGlobalTableSettingsWithContext",
+		Action:  "UpdateGlobalTableSettings",
 		Input:   input,
 		Output:  (*dynamodb.UpdateGlobalTableSettingsOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) UpdateGlobalTableSettingsWithContext(ctx context.Context, input
 func (c *Client) UpdateItemWithContext(ctx context.Context, input *dynamodb.UpdateItemInput, opts ...request.Option) (*dynamodb.UpdateItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UpdateItemWithContext",
+		Action:  "UpdateItem",
 		Input:   input,
 		Output:  (*dynamodb.UpdateItemOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) UpdateItemWithContext(ctx context.Context, input *dynamodb.Upda
 func (c *Client) UpdateTableWithContext(ctx context.Context, input *dynamodb.UpdateTableInput, opts ...request.Option) (*dynamodb.UpdateTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UpdateTableWithContext",
+		Action:  "UpdateTable",
 		Input:   input,
 		Output:  (*dynamodb.UpdateTableOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) UpdateTableWithContext(ctx context.Context, input *dynamodb.Upd
 func (c *Client) UpdateTimeToLiveWithContext(ctx context.Context, input *dynamodb.UpdateTimeToLiveInput, opts ...request.Option) (*dynamodb.UpdateTimeToLiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
-		Action:  "UpdateTimeToLiveWithContext",
+		Action:  "UpdateTimeToLive",
 		Input:   input,
 		Output:  (*dynamodb.UpdateTimeToLiveOutput)(nil),
 		Error:   nil,

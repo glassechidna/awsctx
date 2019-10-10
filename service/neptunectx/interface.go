@@ -88,7 +88,7 @@ var _ Neptune = (*Client)(nil)
 func (c *Client) AddRoleToDBClusterWithContext(ctx context.Context, input *neptune.AddRoleToDBClusterInput, opts ...request.Option) (*neptune.AddRoleToDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "AddRoleToDBClusterWithContext",
+		Action:  "AddRoleToDBCluster",
 		Input:   input,
 		Output:  (*neptune.AddRoleToDBClusterOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) AddRoleToDBClusterWithContext(ctx context.Context, input *neptu
 func (c *Client) AddSourceIdentifierToSubscriptionWithContext(ctx context.Context, input *neptune.AddSourceIdentifierToSubscriptionInput, opts ...request.Option) (*neptune.AddSourceIdentifierToSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "AddSourceIdentifierToSubscriptionWithContext",
+		Action:  "AddSourceIdentifierToSubscription",
 		Input:   input,
 		Output:  (*neptune.AddSourceIdentifierToSubscriptionOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) AddSourceIdentifierToSubscriptionWithContext(ctx context.Contex
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *neptune.AddTagsToResourceInput, opts ...request.Option) (*neptune.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*neptune.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *neptun
 func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *neptune.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*neptune.ApplyPendingMaintenanceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ApplyPendingMaintenanceActionWithContext",
+		Action:  "ApplyPendingMaintenanceAction",
 		Input:   input,
 		Output:  (*neptune.ApplyPendingMaintenanceActionOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, i
 func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.CopyDBClusterParameterGroupInput, opts ...request.Option) (*neptune.CopyDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CopyDBClusterParameterGroupWithContext",
+		Action:  "CopyDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*neptune.CopyDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, inp
 func (c *Client) CopyDBClusterSnapshotWithContext(ctx context.Context, input *neptune.CopyDBClusterSnapshotInput, opts ...request.Option) (*neptune.CopyDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CopyDBClusterSnapshotWithContext",
+		Action:  "CopyDBClusterSnapshot",
 		Input:   input,
 		Output:  (*neptune.CopyDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) CopyDBClusterSnapshotWithContext(ctx context.Context, input *ne
 func (c *Client) CopyDBParameterGroupWithContext(ctx context.Context, input *neptune.CopyDBParameterGroupInput, opts ...request.Option) (*neptune.CopyDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CopyDBParameterGroupWithContext",
+		Action:  "CopyDBParameterGroup",
 		Input:   input,
 		Output:  (*neptune.CopyDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) CopyDBParameterGroupWithContext(ctx context.Context, input *nep
 func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *neptune.CreateDBClusterInput, opts ...request.Option) (*neptune.CreateDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateDBClusterWithContext",
+		Action:  "CreateDBCluster",
 		Input:   input,
 		Output:  (*neptune.CreateDBClusterOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *neptune.
 func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.CreateDBClusterParameterGroupInput, opts ...request.Option) (*neptune.CreateDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateDBClusterParameterGroupWithContext",
+		Action:  "CreateDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*neptune.CreateDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) CreateDBClusterSnapshotWithContext(ctx context.Context, input *neptune.CreateDBClusterSnapshotInput, opts ...request.Option) (*neptune.CreateDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateDBClusterSnapshotWithContext",
+		Action:  "CreateDBClusterSnapshot",
 		Input:   input,
 		Output:  (*neptune.CreateDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) CreateDBClusterSnapshotWithContext(ctx context.Context, input *
 func (c *Client) CreateDBInstanceWithContext(ctx context.Context, input *neptune.CreateDBInstanceInput, opts ...request.Option) (*neptune.CreateDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateDBInstanceWithContext",
+		Action:  "CreateDBInstance",
 		Input:   input,
 		Output:  (*neptune.CreateDBInstanceOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) CreateDBInstanceWithContext(ctx context.Context, input *neptune
 func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, input *neptune.CreateDBParameterGroupInput, opts ...request.Option) (*neptune.CreateDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateDBParameterGroupWithContext",
+		Action:  "CreateDBParameterGroup",
 		Input:   input,
 		Output:  (*neptune.CreateDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, input *n
 func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *neptune.CreateDBSubnetGroupInput, opts ...request.Option) (*neptune.CreateDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateDBSubnetGroupWithContext",
+		Action:  "CreateDBSubnetGroup",
 		Input:   input,
 		Output:  (*neptune.CreateDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *nept
 func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *neptune.CreateEventSubscriptionInput, opts ...request.Option) (*neptune.CreateEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "CreateEventSubscriptionWithContext",
+		Action:  "CreateEventSubscription",
 		Input:   input,
 		Output:  (*neptune.CreateEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *neptune.DeleteDBClusterInput, opts ...request.Option) (*neptune.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteDBClusterWithContext",
+		Action:  "DeleteDBCluster",
 		Input:   input,
 		Output:  (*neptune.DeleteDBClusterOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *neptune.
 func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteDBClusterParameterGroupWithContext",
+		Action:  "DeleteDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*neptune.DeleteDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) DeleteDBClusterSnapshotWithContext(ctx context.Context, input *neptune.DeleteDBClusterSnapshotInput, opts ...request.Option) (*neptune.DeleteDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteDBClusterSnapshotWithContext",
+		Action:  "DeleteDBClusterSnapshot",
 		Input:   input,
 		Output:  (*neptune.DeleteDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) DeleteDBClusterSnapshotWithContext(ctx context.Context, input *
 func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, input *neptune.DeleteDBInstanceInput, opts ...request.Option) (*neptune.DeleteDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteDBInstanceWithContext",
+		Action:  "DeleteDBInstance",
 		Input:   input,
 		Output:  (*neptune.DeleteDBInstanceOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, input *neptune
 func (c *Client) DeleteDBParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteDBParameterGroupWithContext",
+		Action:  "DeleteDBParameterGroup",
 		Input:   input,
 		Output:  (*neptune.DeleteDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) DeleteDBParameterGroupWithContext(ctx context.Context, input *n
 func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *neptune.DeleteDBSubnetGroupInput, opts ...request.Option) (*neptune.DeleteDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteDBSubnetGroupWithContext",
+		Action:  "DeleteDBSubnetGroup",
 		Input:   input,
 		Output:  (*neptune.DeleteDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *nept
 func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *neptune.DeleteEventSubscriptionInput, opts ...request.Option) (*neptune.DeleteEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DeleteEventSubscriptionWithContext",
+		Action:  "DeleteEventSubscription",
 		Input:   input,
 		Output:  (*neptune.DeleteEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBClusterParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBClusterParameterGroupsWithContext",
+		Action:  "DescribeDBClusterParameterGroups",
 		Input:   input,
 		Output:  (*neptune.DescribeDBClusterParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context
 func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, input *neptune.DescribeDBClusterParametersInput, opts ...request.Option) (*neptune.DescribeDBClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBClusterParametersWithContext",
+		Action:  "DescribeDBClusterParameters",
 		Input:   input,
 		Output:  (*neptune.DescribeDBClusterParametersOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, inp
 func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *neptune.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*neptune.DescribeDBClusterSnapshotAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBClusterSnapshotAttributesWithContext",
+		Action:  "DescribeDBClusterSnapshotAttributes",
 		Input:   input,
 		Output:  (*neptune.DescribeDBClusterSnapshotAttributesOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Cont
 func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, input *neptune.DescribeDBClusterSnapshotsInput, opts ...request.Option) (*neptune.DescribeDBClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBClusterSnapshotsWithContext",
+		Action:  "DescribeDBClusterSnapshots",
 		Input:   input,
 		Output:  (*neptune.DescribeDBClusterSnapshotsOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *neptune.DescribeDBClustersInput, opts ...request.Option) (*neptune.DescribeDBClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBClustersWithContext",
+		Action:  "DescribeDBClusters",
 		Input:   input,
 		Output:  (*neptune.DescribeDBClustersOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *neptu
 func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input *neptune.DescribeDBEngineVersionsInput, opts ...request.Option) (*neptune.DescribeDBEngineVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBEngineVersionsWithContext",
+		Action:  "DescribeDBEngineVersions",
 		Input:   input,
 		Output:  (*neptune.DescribeDBEngineVersionsOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *neptune.DescribeDBInstancesInput, opts ...request.Option) (*neptune.DescribeDBInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBInstancesWithContext",
+		Action:  "DescribeDBInstances",
 		Input:   input,
 		Output:  (*neptune.DescribeDBInstancesOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *nept
 func (c *Client) DescribeDBParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBParameterGroupsWithContext",
+		Action:  "DescribeDBParameterGroups",
 		Input:   input,
 		Output:  (*neptune.DescribeDBParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) DescribeDBParameterGroupsWithContext(ctx context.Context, input
 func (c *Client) DescribeDBParametersWithContext(ctx context.Context, input *neptune.DescribeDBParametersInput, opts ...request.Option) (*neptune.DescribeDBParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBParametersWithContext",
+		Action:  "DescribeDBParameters",
 		Input:   input,
 		Output:  (*neptune.DescribeDBParametersOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) DescribeDBParametersWithContext(ctx context.Context, input *nep
 func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *neptune.DescribeDBSubnetGroupsInput, opts ...request.Option) (*neptune.DescribeDBSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeDBSubnetGroupsWithContext",
+		Action:  "DescribeDBSubnetGroups",
 		Input:   input,
 		Output:  (*neptune.DescribeDBSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *n
 func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultClusterParametersInput, opts ...request.Option) (*neptune.DescribeEngineDefaultClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeEngineDefaultClusterParametersWithContext",
+		Action:  "DescribeEngineDefaultClusterParameters",
 		Input:   input,
 		Output:  (*neptune.DescribeEngineDefaultClusterParametersOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.C
 func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultParametersInput, opts ...request.Option) (*neptune.DescribeEngineDefaultParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeEngineDefaultParametersWithContext",
+		Action:  "DescribeEngineDefaultParameters",
 		Input:   input,
 		Output:  (*neptune.DescribeEngineDefaultParametersOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *neptune.DescribeEventCategoriesInput, opts ...request.Option) (*neptune.DescribeEventCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeEventCategoriesWithContext",
+		Action:  "DescribeEventCategories",
 		Input:   input,
 		Output:  (*neptune.DescribeEventCategoriesOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *
 func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, input *neptune.DescribeEventSubscriptionsInput, opts ...request.Option) (*neptune.DescribeEventSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeEventSubscriptionsWithContext",
+		Action:  "DescribeEventSubscriptions",
 		Input:   input,
 		Output:  (*neptune.DescribeEventSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -823,7 +823,7 @@ func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *neptune.DescribeEventsInput, opts ...request.Option) (*neptune.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*neptune.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -844,7 +844,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *neptune.D
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeOrderableDBInstanceOptionsWithContext",
+		Action:  "DescribeOrderableDBInstanceOptions",
 		Input:   input,
 		Output:  (*neptune.DescribeOrderableDBInstanceOptionsOutput)(nil),
 		Error:   nil,
@@ -865,7 +865,7 @@ func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Conte
 func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *neptune.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*neptune.DescribePendingMaintenanceActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribePendingMaintenanceActionsWithContext",
+		Action:  "DescribePendingMaintenanceActions",
 		Input:   input,
 		Output:  (*neptune.DescribePendingMaintenanceActionsOutput)(nil),
 		Error:   nil,
@@ -886,7 +886,7 @@ func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Contex
 func (c *Client) DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *neptune.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*neptune.DescribeValidDBInstanceModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "DescribeValidDBInstanceModificationsWithContext",
+		Action:  "DescribeValidDBInstanceModifications",
 		Input:   input,
 		Output:  (*neptune.DescribeValidDBInstanceModificationsOutput)(nil),
 		Error:   nil,
@@ -907,7 +907,7 @@ func (c *Client) DescribeValidDBInstanceModificationsWithContext(ctx context.Con
 func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *neptune.FailoverDBClusterInput, opts ...request.Option) (*neptune.FailoverDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "FailoverDBClusterWithContext",
+		Action:  "FailoverDBCluster",
 		Input:   input,
 		Output:  (*neptune.FailoverDBClusterOutput)(nil),
 		Error:   nil,
@@ -928,7 +928,7 @@ func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *neptun
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *neptune.ListTagsForResourceInput, opts ...request.Option) (*neptune.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*neptune.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -949,7 +949,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *nept
 func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *neptune.ModifyDBClusterInput, opts ...request.Option) (*neptune.ModifyDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyDBClusterWithContext",
+		Action:  "ModifyDBCluster",
 		Input:   input,
 		Output:  (*neptune.ModifyDBClusterOutput)(nil),
 		Error:   nil,
@@ -970,7 +970,7 @@ func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *neptune.
 func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.ModifyDBClusterParameterGroupInput, opts ...request.Option) (*neptune.ResetDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyDBClusterParameterGroupWithContext",
+		Action:  "ModifyDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*neptune.ResetDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -991,7 +991,7 @@ func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context, input *neptune.ModifyDBClusterSnapshotAttributeInput, opts ...request.Option) (*neptune.ModifyDBClusterSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyDBClusterSnapshotAttributeWithContext",
+		Action:  "ModifyDBClusterSnapshotAttribute",
 		Input:   input,
 		Output:  (*neptune.ModifyDBClusterSnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -1012,7 +1012,7 @@ func (c *Client) ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context
 func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, input *neptune.ModifyDBInstanceInput, opts ...request.Option) (*neptune.ModifyDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyDBInstanceWithContext",
+		Action:  "ModifyDBInstance",
 		Input:   input,
 		Output:  (*neptune.ModifyDBInstanceOutput)(nil),
 		Error:   nil,
@@ -1033,7 +1033,7 @@ func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, input *neptune
 func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, input *neptune.ModifyDBParameterGroupInput, opts ...request.Option) (*neptune.ResetDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyDBParameterGroupWithContext",
+		Action:  "ModifyDBParameterGroup",
 		Input:   input,
 		Output:  (*neptune.ResetDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -1054,7 +1054,7 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, input *n
 func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *neptune.ModifyDBSubnetGroupInput, opts ...request.Option) (*neptune.ModifyDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyDBSubnetGroupWithContext",
+		Action:  "ModifyDBSubnetGroup",
 		Input:   input,
 		Output:  (*neptune.ModifyDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -1075,7 +1075,7 @@ func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *nept
 func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *neptune.ModifyEventSubscriptionInput, opts ...request.Option) (*neptune.ModifyEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ModifyEventSubscriptionWithContext",
+		Action:  "ModifyEventSubscription",
 		Input:   input,
 		Output:  (*neptune.ModifyEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -1096,7 +1096,7 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *neptune.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*neptune.PromoteReadReplicaDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "PromoteReadReplicaDBClusterWithContext",
+		Action:  "PromoteReadReplicaDBCluster",
 		Input:   input,
 		Output:  (*neptune.PromoteReadReplicaDBClusterOutput)(nil),
 		Error:   nil,
@@ -1117,7 +1117,7 @@ func (c *Client) PromoteReadReplicaDBClusterWithContext(ctx context.Context, inp
 func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *neptune.RebootDBInstanceInput, opts ...request.Option) (*neptune.RebootDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "RebootDBInstanceWithContext",
+		Action:  "RebootDBInstance",
 		Input:   input,
 		Output:  (*neptune.RebootDBInstanceOutput)(nil),
 		Error:   nil,
@@ -1138,7 +1138,7 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *neptune
 func (c *Client) RemoveRoleFromDBClusterWithContext(ctx context.Context, input *neptune.RemoveRoleFromDBClusterInput, opts ...request.Option) (*neptune.RemoveRoleFromDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "RemoveRoleFromDBClusterWithContext",
+		Action:  "RemoveRoleFromDBCluster",
 		Input:   input,
 		Output:  (*neptune.RemoveRoleFromDBClusterOutput)(nil),
 		Error:   nil,
@@ -1159,7 +1159,7 @@ func (c *Client) RemoveRoleFromDBClusterWithContext(ctx context.Context, input *
 func (c *Client) RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *neptune.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*neptune.RemoveSourceIdentifierFromSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "RemoveSourceIdentifierFromSubscriptionWithContext",
+		Action:  "RemoveSourceIdentifierFromSubscription",
 		Input:   input,
 		Output:  (*neptune.RemoveSourceIdentifierFromSubscriptionOutput)(nil),
 		Error:   nil,
@@ -1180,7 +1180,7 @@ func (c *Client) RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.C
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *neptune.RemoveTagsFromResourceInput, opts ...request.Option) (*neptune.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*neptune.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -1201,7 +1201,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *n
 func (c *Client) ResetDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.ResetDBClusterParameterGroupInput, opts ...request.Option) (*neptune.ResetDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ResetDBClusterParameterGroupWithContext",
+		Action:  "ResetDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*neptune.ResetDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -1222,7 +1222,7 @@ func (c *Client) ResetDBClusterParameterGroupWithContext(ctx context.Context, in
 func (c *Client) ResetDBParameterGroupWithContext(ctx context.Context, input *neptune.ResetDBParameterGroupInput, opts ...request.Option) (*neptune.ResetDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "ResetDBParameterGroupWithContext",
+		Action:  "ResetDBParameterGroup",
 		Input:   input,
 		Output:  (*neptune.ResetDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -1243,7 +1243,7 @@ func (c *Client) ResetDBParameterGroupWithContext(ctx context.Context, input *ne
 func (c *Client) RestoreDBClusterFromSnapshotWithContext(ctx context.Context, input *neptune.RestoreDBClusterFromSnapshotInput, opts ...request.Option) (*neptune.RestoreDBClusterFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "RestoreDBClusterFromSnapshotWithContext",
+		Action:  "RestoreDBClusterFromSnapshot",
 		Input:   input,
 		Output:  (*neptune.RestoreDBClusterFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -1264,7 +1264,7 @@ func (c *Client) RestoreDBClusterFromSnapshotWithContext(ctx context.Context, in
 func (c *Client) RestoreDBClusterToPointInTimeWithContext(ctx context.Context, input *neptune.RestoreDBClusterToPointInTimeInput, opts ...request.Option) (*neptune.RestoreDBClusterToPointInTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
-		Action:  "RestoreDBClusterToPointInTimeWithContext",
+		Action:  "RestoreDBClusterToPointInTime",
 		Input:   input,
 		Output:  (*neptune.RestoreDBClusterToPointInTimeOutput)(nil),
 		Error:   nil,

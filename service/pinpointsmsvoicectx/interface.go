@@ -39,7 +39,7 @@ var _ PinpointSMSVoice = (*Client)(nil)
 func (c *Client) CreateConfigurationSetWithContext(ctx context.Context, input *pinpointsmsvoice.CreateConfigurationSetInput, opts ...request.Option) (*pinpointsmsvoice.CreateConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "CreateConfigurationSetWithContext",
+		Action:  "CreateConfigurationSet",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.CreateConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -60,7 +60,7 @@ func (c *Client) CreateConfigurationSetWithContext(ctx context.Context, input *p
 func (c *Client) CreateConfigurationSetEventDestinationWithContext(ctx context.Context, input *pinpointsmsvoice.CreateConfigurationSetEventDestinationInput, opts ...request.Option) (*pinpointsmsvoice.CreateConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "CreateConfigurationSetEventDestinationWithContext",
+		Action:  "CreateConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.CreateConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -81,7 +81,7 @@ func (c *Client) CreateConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) DeleteConfigurationSetWithContext(ctx context.Context, input *pinpointsmsvoice.DeleteConfigurationSetInput, opts ...request.Option) (*pinpointsmsvoice.DeleteConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "DeleteConfigurationSetWithContext",
+		Action:  "DeleteConfigurationSet",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.DeleteConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -102,7 +102,7 @@ func (c *Client) DeleteConfigurationSetWithContext(ctx context.Context, input *p
 func (c *Client) DeleteConfigurationSetEventDestinationWithContext(ctx context.Context, input *pinpointsmsvoice.DeleteConfigurationSetEventDestinationInput, opts ...request.Option) (*pinpointsmsvoice.DeleteConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "DeleteConfigurationSetEventDestinationWithContext",
+		Action:  "DeleteConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.DeleteConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -123,7 +123,7 @@ func (c *Client) DeleteConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) GetConfigurationSetEventDestinationsWithContext(ctx context.Context, input *pinpointsmsvoice.GetConfigurationSetEventDestinationsInput, opts ...request.Option) (*pinpointsmsvoice.GetConfigurationSetEventDestinationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "GetConfigurationSetEventDestinationsWithContext",
+		Action:  "GetConfigurationSetEventDestinations",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.GetConfigurationSetEventDestinationsOutput)(nil),
 		Error:   nil,
@@ -144,7 +144,7 @@ func (c *Client) GetConfigurationSetEventDestinationsWithContext(ctx context.Con
 func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *pinpointsmsvoice.ListConfigurationSetsInput, opts ...request.Option) (*pinpointsmsvoice.ListConfigurationSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "ListConfigurationSetsWithContext",
+		Action:  "ListConfigurationSets",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.ListConfigurationSetsOutput)(nil),
 		Error:   nil,
@@ -165,7 +165,7 @@ func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *pi
 func (c *Client) SendVoiceMessageWithContext(ctx context.Context, input *pinpointsmsvoice.SendVoiceMessageInput, opts ...request.Option) (*pinpointsmsvoice.SendVoiceMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "SendVoiceMessageWithContext",
+		Action:  "SendVoiceMessage",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.SendVoiceMessageOutput)(nil),
 		Error:   nil,
@@ -186,7 +186,7 @@ func (c *Client) SendVoiceMessageWithContext(ctx context.Context, input *pinpoin
 func (c *Client) UpdateConfigurationSetEventDestinationWithContext(ctx context.Context, input *pinpointsmsvoice.UpdateConfigurationSetEventDestinationInput, opts ...request.Option) (*pinpointsmsvoice.UpdateConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointsmsvoice",
-		Action:  "UpdateConfigurationSetEventDestinationWithContext",
+		Action:  "UpdateConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*pinpointsmsvoice.UpdateConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,

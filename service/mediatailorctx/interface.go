@@ -38,7 +38,7 @@ var _ MediaTailor = (*Client)(nil)
 func (c *Client) DeletePlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.DeletePlaybackConfigurationInput, opts ...request.Option) (*mediatailor.DeletePlaybackConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "DeletePlaybackConfigurationWithContext",
+		Action:  "DeletePlaybackConfiguration",
 		Input:   input,
 		Output:  (*mediatailor.DeletePlaybackConfigurationOutput)(nil),
 		Error:   nil,
@@ -59,7 +59,7 @@ func (c *Client) DeletePlaybackConfigurationWithContext(ctx context.Context, inp
 func (c *Client) GetPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.GetPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.GetPlaybackConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "GetPlaybackConfigurationWithContext",
+		Action:  "GetPlaybackConfiguration",
 		Input:   input,
 		Output:  (*mediatailor.GetPlaybackConfigurationOutput)(nil),
 		Error:   nil,
@@ -80,7 +80,7 @@ func (c *Client) GetPlaybackConfigurationWithContext(ctx context.Context, input 
 func (c *Client) ListPlaybackConfigurationsWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, opts ...request.Option) (*mediatailor.ListPlaybackConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "ListPlaybackConfigurationsWithContext",
+		Action:  "ListPlaybackConfigurations",
 		Input:   input,
 		Output:  (*mediatailor.ListPlaybackConfigurationsOutput)(nil),
 		Error:   nil,
@@ -101,7 +101,7 @@ func (c *Client) ListPlaybackConfigurationsWithContext(ctx context.Context, inpu
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediatailor.ListTagsForResourceInput, opts ...request.Option) (*mediatailor.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*mediatailor.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -122,7 +122,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 func (c *Client) PutPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.PutPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.PutPlaybackConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "PutPlaybackConfigurationWithContext",
+		Action:  "PutPlaybackConfiguration",
 		Input:   input,
 		Output:  (*mediatailor.PutPlaybackConfigurationOutput)(nil),
 		Error:   nil,
@@ -143,7 +143,7 @@ func (c *Client) PutPlaybackConfigurationWithContext(ctx context.Context, input 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *mediatailor.TagResourceInput, opts ...request.Option) (*mediatailor.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*mediatailor.TagResourceOutput)(nil),
 		Error:   nil,
@@ -164,7 +164,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *mediatailor.
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediatailor.UntagResourceInput, opts ...request.Option) (*mediatailor.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*mediatailor.UntagResourceOutput)(nil),
 		Error:   nil,

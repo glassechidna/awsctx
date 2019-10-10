@@ -49,7 +49,7 @@ var _ ManagedBlockchain = (*Client)(nil)
 func (c *Client) CreateMemberWithContext(ctx context.Context, input *managedblockchain.CreateMemberInput, opts ...request.Option) (*managedblockchain.CreateMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "CreateMemberWithContext",
+		Action:  "CreateMember",
 		Input:   input,
 		Output:  (*managedblockchain.CreateMemberOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) CreateMemberWithContext(ctx context.Context, input *managedbloc
 func (c *Client) CreateNetworkWithContext(ctx context.Context, input *managedblockchain.CreateNetworkInput, opts ...request.Option) (*managedblockchain.CreateNetworkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "CreateNetworkWithContext",
+		Action:  "CreateNetwork",
 		Input:   input,
 		Output:  (*managedblockchain.CreateNetworkOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) CreateNetworkWithContext(ctx context.Context, input *managedblo
 func (c *Client) CreateNodeWithContext(ctx context.Context, input *managedblockchain.CreateNodeInput, opts ...request.Option) (*managedblockchain.CreateNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "CreateNodeWithContext",
+		Action:  "CreateNode",
 		Input:   input,
 		Output:  (*managedblockchain.CreateNodeOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) CreateNodeWithContext(ctx context.Context, input *managedblockc
 func (c *Client) CreateProposalWithContext(ctx context.Context, input *managedblockchain.CreateProposalInput, opts ...request.Option) (*managedblockchain.CreateProposalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "CreateProposalWithContext",
+		Action:  "CreateProposal",
 		Input:   input,
 		Output:  (*managedblockchain.CreateProposalOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) CreateProposalWithContext(ctx context.Context, input *managedbl
 func (c *Client) DeleteMemberWithContext(ctx context.Context, input *managedblockchain.DeleteMemberInput, opts ...request.Option) (*managedblockchain.DeleteMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "DeleteMemberWithContext",
+		Action:  "DeleteMember",
 		Input:   input,
 		Output:  (*managedblockchain.DeleteMemberOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DeleteMemberWithContext(ctx context.Context, input *managedbloc
 func (c *Client) DeleteNodeWithContext(ctx context.Context, input *managedblockchain.DeleteNodeInput, opts ...request.Option) (*managedblockchain.DeleteNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "DeleteNodeWithContext",
+		Action:  "DeleteNode",
 		Input:   input,
 		Output:  (*managedblockchain.DeleteNodeOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) DeleteNodeWithContext(ctx context.Context, input *managedblockc
 func (c *Client) GetMemberWithContext(ctx context.Context, input *managedblockchain.GetMemberInput, opts ...request.Option) (*managedblockchain.GetMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "GetMemberWithContext",
+		Action:  "GetMember",
 		Input:   input,
 		Output:  (*managedblockchain.GetMemberOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) GetMemberWithContext(ctx context.Context, input *managedblockch
 func (c *Client) GetNetworkWithContext(ctx context.Context, input *managedblockchain.GetNetworkInput, opts ...request.Option) (*managedblockchain.GetNetworkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "GetNetworkWithContext",
+		Action:  "GetNetwork",
 		Input:   input,
 		Output:  (*managedblockchain.GetNetworkOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) GetNetworkWithContext(ctx context.Context, input *managedblockc
 func (c *Client) GetNodeWithContext(ctx context.Context, input *managedblockchain.GetNodeInput, opts ...request.Option) (*managedblockchain.GetNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "GetNodeWithContext",
+		Action:  "GetNode",
 		Input:   input,
 		Output:  (*managedblockchain.GetNodeOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) GetNodeWithContext(ctx context.Context, input *managedblockchai
 func (c *Client) GetProposalWithContext(ctx context.Context, input *managedblockchain.GetProposalInput, opts ...request.Option) (*managedblockchain.GetProposalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "GetProposalWithContext",
+		Action:  "GetProposal",
 		Input:   input,
 		Output:  (*managedblockchain.GetProposalOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) GetProposalWithContext(ctx context.Context, input *managedblock
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, opts ...request.Option) (*managedblockchain.ListInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "ListInvitationsWithContext",
+		Action:  "ListInvitations",
 		Input:   input,
 		Output:  (*managedblockchain.ListInvitationsOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) ListInvitationsWithContext(ctx context.Context, input *managedb
 func (c *Client) ListMembersWithContext(ctx context.Context, input *managedblockchain.ListMembersInput, opts ...request.Option) (*managedblockchain.ListMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "ListMembersWithContext",
+		Action:  "ListMembers",
 		Input:   input,
 		Output:  (*managedblockchain.ListMembersOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) ListMembersWithContext(ctx context.Context, input *managedblock
 func (c *Client) ListNetworksWithContext(ctx context.Context, input *managedblockchain.ListNetworksInput, opts ...request.Option) (*managedblockchain.ListNetworksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "ListNetworksWithContext",
+		Action:  "ListNetworks",
 		Input:   input,
 		Output:  (*managedblockchain.ListNetworksOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) ListNetworksWithContext(ctx context.Context, input *managedbloc
 func (c *Client) ListNodesWithContext(ctx context.Context, input *managedblockchain.ListNodesInput, opts ...request.Option) (*managedblockchain.ListNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "ListNodesWithContext",
+		Action:  "ListNodes",
 		Input:   input,
 		Output:  (*managedblockchain.ListNodesOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) ListNodesWithContext(ctx context.Context, input *managedblockch
 func (c *Client) ListProposalVotesWithContext(ctx context.Context, input *managedblockchain.ListProposalVotesInput, opts ...request.Option) (*managedblockchain.ListProposalVotesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "ListProposalVotesWithContext",
+		Action:  "ListProposalVotes",
 		Input:   input,
 		Output:  (*managedblockchain.ListProposalVotesOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) ListProposalVotesWithContext(ctx context.Context, input *manage
 func (c *Client) ListProposalsWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, opts ...request.Option) (*managedblockchain.ListProposalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "ListProposalsWithContext",
+		Action:  "ListProposals",
 		Input:   input,
 		Output:  (*managedblockchain.ListProposalsOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) ListProposalsWithContext(ctx context.Context, input *managedblo
 func (c *Client) RejectInvitationWithContext(ctx context.Context, input *managedblockchain.RejectInvitationInput, opts ...request.Option) (*managedblockchain.RejectInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "RejectInvitationWithContext",
+		Action:  "RejectInvitation",
 		Input:   input,
 		Output:  (*managedblockchain.RejectInvitationOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) RejectInvitationWithContext(ctx context.Context, input *managed
 func (c *Client) VoteOnProposalWithContext(ctx context.Context, input *managedblockchain.VoteOnProposalInput, opts ...request.Option) (*managedblockchain.VoteOnProposalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
-		Action:  "VoteOnProposalWithContext",
+		Action:  "VoteOnProposal",
 		Input:   input,
 		Output:  (*managedblockchain.VoteOnProposalOutput)(nil),
 		Error:   nil,

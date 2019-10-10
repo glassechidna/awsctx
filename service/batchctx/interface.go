@@ -47,7 +47,7 @@ var _ Batch = (*Client)(nil)
 func (c *Client) CancelJobWithContext(ctx context.Context, input *batch.CancelJobInput, opts ...request.Option) (*batch.CancelJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "CancelJobWithContext",
+		Action:  "CancelJob",
 		Input:   input,
 		Output:  (*batch.CancelJobOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) CancelJobWithContext(ctx context.Context, input *batch.CancelJo
 func (c *Client) CreateComputeEnvironmentWithContext(ctx context.Context, input *batch.CreateComputeEnvironmentInput, opts ...request.Option) (*batch.CreateComputeEnvironmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "CreateComputeEnvironmentWithContext",
+		Action:  "CreateComputeEnvironment",
 		Input:   input,
 		Output:  (*batch.CreateComputeEnvironmentOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) CreateComputeEnvironmentWithContext(ctx context.Context, input 
 func (c *Client) CreateJobQueueWithContext(ctx context.Context, input *batch.CreateJobQueueInput, opts ...request.Option) (*batch.CreateJobQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "CreateJobQueueWithContext",
+		Action:  "CreateJobQueue",
 		Input:   input,
 		Output:  (*batch.CreateJobQueueOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) CreateJobQueueWithContext(ctx context.Context, input *batch.Cre
 func (c *Client) DeleteComputeEnvironmentWithContext(ctx context.Context, input *batch.DeleteComputeEnvironmentInput, opts ...request.Option) (*batch.DeleteComputeEnvironmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DeleteComputeEnvironmentWithContext",
+		Action:  "DeleteComputeEnvironment",
 		Input:   input,
 		Output:  (*batch.DeleteComputeEnvironmentOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) DeleteComputeEnvironmentWithContext(ctx context.Context, input 
 func (c *Client) DeleteJobQueueWithContext(ctx context.Context, input *batch.DeleteJobQueueInput, opts ...request.Option) (*batch.DeleteJobQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DeleteJobQueueWithContext",
+		Action:  "DeleteJobQueue",
 		Input:   input,
 		Output:  (*batch.DeleteJobQueueOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) DeleteJobQueueWithContext(ctx context.Context, input *batch.Del
 func (c *Client) DeregisterJobDefinitionWithContext(ctx context.Context, input *batch.DeregisterJobDefinitionInput, opts ...request.Option) (*batch.DeregisterJobDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DeregisterJobDefinitionWithContext",
+		Action:  "DeregisterJobDefinition",
 		Input:   input,
 		Output:  (*batch.DeregisterJobDefinitionOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DeregisterJobDefinitionWithContext(ctx context.Context, input *
 func (c *Client) DescribeComputeEnvironmentsWithContext(ctx context.Context, input *batch.DescribeComputeEnvironmentsInput, opts ...request.Option) (*batch.DescribeComputeEnvironmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DescribeComputeEnvironmentsWithContext",
+		Action:  "DescribeComputeEnvironments",
 		Input:   input,
 		Output:  (*batch.DescribeComputeEnvironmentsOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DescribeComputeEnvironmentsWithContext(ctx context.Context, inp
 func (c *Client) DescribeJobDefinitionsWithContext(ctx context.Context, input *batch.DescribeJobDefinitionsInput, opts ...request.Option) (*batch.DescribeJobDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DescribeJobDefinitionsWithContext",
+		Action:  "DescribeJobDefinitions",
 		Input:   input,
 		Output:  (*batch.DescribeJobDefinitionsOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DescribeJobDefinitionsWithContext(ctx context.Context, input *b
 func (c *Client) DescribeJobQueuesWithContext(ctx context.Context, input *batch.DescribeJobQueuesInput, opts ...request.Option) (*batch.DescribeJobQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DescribeJobQueuesWithContext",
+		Action:  "DescribeJobQueues",
 		Input:   input,
 		Output:  (*batch.DescribeJobQueuesOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) DescribeJobQueuesWithContext(ctx context.Context, input *batch.
 func (c *Client) DescribeJobsWithContext(ctx context.Context, input *batch.DescribeJobsInput, opts ...request.Option) (*batch.DescribeJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "DescribeJobsWithContext",
+		Action:  "DescribeJobs",
 		Input:   input,
 		Output:  (*batch.DescribeJobsOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) DescribeJobsWithContext(ctx context.Context, input *batch.Descr
 func (c *Client) ListJobsWithContext(ctx context.Context, input *batch.ListJobsInput, opts ...request.Option) (*batch.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*batch.ListJobsOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *batch.ListJobsI
 func (c *Client) RegisterJobDefinitionWithContext(ctx context.Context, input *batch.RegisterJobDefinitionInput, opts ...request.Option) (*batch.RegisterJobDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "RegisterJobDefinitionWithContext",
+		Action:  "RegisterJobDefinition",
 		Input:   input,
 		Output:  (*batch.RegisterJobDefinitionOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) RegisterJobDefinitionWithContext(ctx context.Context, input *ba
 func (c *Client) SubmitJobWithContext(ctx context.Context, input *batch.SubmitJobInput, opts ...request.Option) (*batch.SubmitJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "SubmitJobWithContext",
+		Action:  "SubmitJob",
 		Input:   input,
 		Output:  (*batch.SubmitJobOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) SubmitJobWithContext(ctx context.Context, input *batch.SubmitJo
 func (c *Client) TerminateJobWithContext(ctx context.Context, input *batch.TerminateJobInput, opts ...request.Option) (*batch.TerminateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "TerminateJobWithContext",
+		Action:  "TerminateJob",
 		Input:   input,
 		Output:  (*batch.TerminateJobOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) TerminateJobWithContext(ctx context.Context, input *batch.Termi
 func (c *Client) UpdateComputeEnvironmentWithContext(ctx context.Context, input *batch.UpdateComputeEnvironmentInput, opts ...request.Option) (*batch.UpdateComputeEnvironmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "UpdateComputeEnvironmentWithContext",
+		Action:  "UpdateComputeEnvironment",
 		Input:   input,
 		Output:  (*batch.UpdateComputeEnvironmentOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) UpdateComputeEnvironmentWithContext(ctx context.Context, input 
 func (c *Client) UpdateJobQueueWithContext(ctx context.Context, input *batch.UpdateJobQueueInput, opts ...request.Option) (*batch.UpdateJobQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
-		Action:  "UpdateJobQueueWithContext",
+		Action:  "UpdateJobQueue",
 		Input:   input,
 		Output:  (*batch.UpdateJobQueueOutput)(nil),
 		Error:   nil,

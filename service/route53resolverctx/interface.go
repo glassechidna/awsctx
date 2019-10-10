@@ -53,7 +53,7 @@ var _ Route53Resolver = (*Client)(nil)
 func (c *Client) AssociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.AssociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.AssociateResolverEndpointIpAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "AssociateResolverEndpointIpAddressWithContext",
+		Action:  "AssociateResolverEndpointIpAddress",
 		Input:   input,
 		Output:  (*route53resolver.AssociateResolverEndpointIpAddressOutput)(nil),
 		Error:   nil,
@@ -74,7 +74,7 @@ func (c *Client) AssociateResolverEndpointIpAddressWithContext(ctx context.Conte
 func (c *Client) AssociateResolverRuleWithContext(ctx context.Context, input *route53resolver.AssociateResolverRuleInput, opts ...request.Option) (*route53resolver.AssociateResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "AssociateResolverRuleWithContext",
+		Action:  "AssociateResolverRule",
 		Input:   input,
 		Output:  (*route53resolver.AssociateResolverRuleOutput)(nil),
 		Error:   nil,
@@ -95,7 +95,7 @@ func (c *Client) AssociateResolverRuleWithContext(ctx context.Context, input *ro
 func (c *Client) CreateResolverEndpointWithContext(ctx context.Context, input *route53resolver.CreateResolverEndpointInput, opts ...request.Option) (*route53resolver.CreateResolverEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "CreateResolverEndpointWithContext",
+		Action:  "CreateResolverEndpoint",
 		Input:   input,
 		Output:  (*route53resolver.CreateResolverEndpointOutput)(nil),
 		Error:   nil,
@@ -116,7 +116,7 @@ func (c *Client) CreateResolverEndpointWithContext(ctx context.Context, input *r
 func (c *Client) CreateResolverRuleWithContext(ctx context.Context, input *route53resolver.CreateResolverRuleInput, opts ...request.Option) (*route53resolver.CreateResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "CreateResolverRuleWithContext",
+		Action:  "CreateResolverRule",
 		Input:   input,
 		Output:  (*route53resolver.CreateResolverRuleOutput)(nil),
 		Error:   nil,
@@ -137,7 +137,7 @@ func (c *Client) CreateResolverRuleWithContext(ctx context.Context, input *route
 func (c *Client) DeleteResolverEndpointWithContext(ctx context.Context, input *route53resolver.DeleteResolverEndpointInput, opts ...request.Option) (*route53resolver.DeleteResolverEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "DeleteResolverEndpointWithContext",
+		Action:  "DeleteResolverEndpoint",
 		Input:   input,
 		Output:  (*route53resolver.DeleteResolverEndpointOutput)(nil),
 		Error:   nil,
@@ -158,7 +158,7 @@ func (c *Client) DeleteResolverEndpointWithContext(ctx context.Context, input *r
 func (c *Client) DeleteResolverRuleWithContext(ctx context.Context, input *route53resolver.DeleteResolverRuleInput, opts ...request.Option) (*route53resolver.DeleteResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "DeleteResolverRuleWithContext",
+		Action:  "DeleteResolverRule",
 		Input:   input,
 		Output:  (*route53resolver.DeleteResolverRuleOutput)(nil),
 		Error:   nil,
@@ -179,7 +179,7 @@ func (c *Client) DeleteResolverRuleWithContext(ctx context.Context, input *route
 func (c *Client) DisassociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.DisassociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.DisassociateResolverEndpointIpAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "DisassociateResolverEndpointIpAddressWithContext",
+		Action:  "DisassociateResolverEndpointIpAddress",
 		Input:   input,
 		Output:  (*route53resolver.DisassociateResolverEndpointIpAddressOutput)(nil),
 		Error:   nil,
@@ -200,7 +200,7 @@ func (c *Client) DisassociateResolverEndpointIpAddressWithContext(ctx context.Co
 func (c *Client) DisassociateResolverRuleWithContext(ctx context.Context, input *route53resolver.DisassociateResolverRuleInput, opts ...request.Option) (*route53resolver.DisassociateResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "DisassociateResolverRuleWithContext",
+		Action:  "DisassociateResolverRule",
 		Input:   input,
 		Output:  (*route53resolver.DisassociateResolverRuleOutput)(nil),
 		Error:   nil,
@@ -221,7 +221,7 @@ func (c *Client) DisassociateResolverRuleWithContext(ctx context.Context, input 
 func (c *Client) GetResolverEndpointWithContext(ctx context.Context, input *route53resolver.GetResolverEndpointInput, opts ...request.Option) (*route53resolver.GetResolverEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "GetResolverEndpointWithContext",
+		Action:  "GetResolverEndpoint",
 		Input:   input,
 		Output:  (*route53resolver.GetResolverEndpointOutput)(nil),
 		Error:   nil,
@@ -242,7 +242,7 @@ func (c *Client) GetResolverEndpointWithContext(ctx context.Context, input *rout
 func (c *Client) GetResolverRuleWithContext(ctx context.Context, input *route53resolver.GetResolverRuleInput, opts ...request.Option) (*route53resolver.GetResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "GetResolverRuleWithContext",
+		Action:  "GetResolverRule",
 		Input:   input,
 		Output:  (*route53resolver.GetResolverRuleOutput)(nil),
 		Error:   nil,
@@ -263,7 +263,7 @@ func (c *Client) GetResolverRuleWithContext(ctx context.Context, input *route53r
 func (c *Client) GetResolverRuleAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverRuleAssociationInput, opts ...request.Option) (*route53resolver.GetResolverRuleAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "GetResolverRuleAssociationWithContext",
+		Action:  "GetResolverRuleAssociation",
 		Input:   input,
 		Output:  (*route53resolver.GetResolverRuleAssociationOutput)(nil),
 		Error:   nil,
@@ -284,7 +284,7 @@ func (c *Client) GetResolverRuleAssociationWithContext(ctx context.Context, inpu
 func (c *Client) GetResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.GetResolverRulePolicyInput, opts ...request.Option) (*route53resolver.GetResolverRulePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "GetResolverRulePolicyWithContext",
+		Action:  "GetResolverRulePolicy",
 		Input:   input,
 		Output:  (*route53resolver.GetResolverRulePolicyOutput)(nil),
 		Error:   nil,
@@ -305,7 +305,7 @@ func (c *Client) GetResolverRulePolicyWithContext(ctx context.Context, input *ro
 func (c *Client) ListResolverEndpointIpAddressesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, opts ...request.Option) (*route53resolver.ListResolverEndpointIpAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "ListResolverEndpointIpAddressesWithContext",
+		Action:  "ListResolverEndpointIpAddresses",
 		Input:   input,
 		Output:  (*route53resolver.ListResolverEndpointIpAddressesOutput)(nil),
 		Error:   nil,
@@ -326,7 +326,7 @@ func (c *Client) ListResolverEndpointIpAddressesWithContext(ctx context.Context,
 func (c *Client) ListResolverEndpointsWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, opts ...request.Option) (*route53resolver.ListResolverEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "ListResolverEndpointsWithContext",
+		Action:  "ListResolverEndpoints",
 		Input:   input,
 		Output:  (*route53resolver.ListResolverEndpointsOutput)(nil),
 		Error:   nil,
@@ -347,7 +347,7 @@ func (c *Client) ListResolverEndpointsWithContext(ctx context.Context, input *ro
 func (c *Client) ListResolverRuleAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverRuleAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "ListResolverRuleAssociationsWithContext",
+		Action:  "ListResolverRuleAssociations",
 		Input:   input,
 		Output:  (*route53resolver.ListResolverRuleAssociationsOutput)(nil),
 		Error:   nil,
@@ -368,7 +368,7 @@ func (c *Client) ListResolverRuleAssociationsWithContext(ctx context.Context, in
 func (c *Client) ListResolverRulesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, opts ...request.Option) (*route53resolver.ListResolverRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "ListResolverRulesWithContext",
+		Action:  "ListResolverRules",
 		Input:   input,
 		Output:  (*route53resolver.ListResolverRulesOutput)(nil),
 		Error:   nil,
@@ -389,7 +389,7 @@ func (c *Client) ListResolverRulesWithContext(ctx context.Context, input *route5
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, opts ...request.Option) (*route53resolver.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*route53resolver.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -410,7 +410,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rout
 func (c *Client) PutResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.PutResolverRulePolicyInput, opts ...request.Option) (*route53resolver.PutResolverRulePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "PutResolverRulePolicyWithContext",
+		Action:  "PutResolverRulePolicy",
 		Input:   input,
 		Output:  (*route53resolver.PutResolverRulePolicyOutput)(nil),
 		Error:   nil,
@@ -431,7 +431,7 @@ func (c *Client) PutResolverRulePolicyWithContext(ctx context.Context, input *ro
 func (c *Client) TagResourceWithContext(ctx context.Context, input *route53resolver.TagResourceInput, opts ...request.Option) (*route53resolver.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*route53resolver.TagResourceOutput)(nil),
 		Error:   nil,
@@ -452,7 +452,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *route53resol
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *route53resolver.UntagResourceInput, opts ...request.Option) (*route53resolver.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*route53resolver.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -473,7 +473,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *route53res
 func (c *Client) UpdateResolverEndpointWithContext(ctx context.Context, input *route53resolver.UpdateResolverEndpointInput, opts ...request.Option) (*route53resolver.UpdateResolverEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "UpdateResolverEndpointWithContext",
+		Action:  "UpdateResolverEndpoint",
 		Input:   input,
 		Output:  (*route53resolver.UpdateResolverEndpointOutput)(nil),
 		Error:   nil,
@@ -494,7 +494,7 @@ func (c *Client) UpdateResolverEndpointWithContext(ctx context.Context, input *r
 func (c *Client) UpdateResolverRuleWithContext(ctx context.Context, input *route53resolver.UpdateResolverRuleInput, opts ...request.Option) (*route53resolver.UpdateResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
-		Action:  "UpdateResolverRuleWithContext",
+		Action:  "UpdateResolverRule",
 		Input:   input,
 		Output:  (*route53resolver.UpdateResolverRuleOutput)(nil),
 		Error:   nil,

@@ -76,7 +76,7 @@ var _ GuardDuty = (*Client)(nil)
 func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *guardduty.AcceptInvitationInput, opts ...request.Option) (*guardduty.AcceptInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "AcceptInvitationWithContext",
+		Action:  "AcceptInvitation",
 		Input:   input,
 		Output:  (*guardduty.AcceptInvitationOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *guarddu
 func (c *Client) ArchiveFindingsWithContext(ctx context.Context, input *guardduty.ArchiveFindingsInput, opts ...request.Option) (*guardduty.ArchiveFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ArchiveFindingsWithContext",
+		Action:  "ArchiveFindings",
 		Input:   input,
 		Output:  (*guardduty.ArchiveFindingsOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) ArchiveFindingsWithContext(ctx context.Context, input *guarddut
 func (c *Client) CreateDetectorWithContext(ctx context.Context, input *guardduty.CreateDetectorInput, opts ...request.Option) (*guardduty.CreateDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "CreateDetectorWithContext",
+		Action:  "CreateDetector",
 		Input:   input,
 		Output:  (*guardduty.CreateDetectorOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) CreateDetectorWithContext(ctx context.Context, input *guardduty
 func (c *Client) CreateFilterWithContext(ctx context.Context, input *guardduty.CreateFilterInput, opts ...request.Option) (*guardduty.CreateFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "CreateFilterWithContext",
+		Action:  "CreateFilter",
 		Input:   input,
 		Output:  (*guardduty.CreateFilterOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) CreateFilterWithContext(ctx context.Context, input *guardduty.C
 func (c *Client) CreateIPSetWithContext(ctx context.Context, input *guardduty.CreateIPSetInput, opts ...request.Option) (*guardduty.CreateIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "CreateIPSetWithContext",
+		Action:  "CreateIPSet",
 		Input:   input,
 		Output:  (*guardduty.CreateIPSetOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) CreateIPSetWithContext(ctx context.Context, input *guardduty.Cr
 func (c *Client) CreateMembersWithContext(ctx context.Context, input *guardduty.CreateMembersInput, opts ...request.Option) (*guardduty.CreateMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "CreateMembersWithContext",
+		Action:  "CreateMembers",
 		Input:   input,
 		Output:  (*guardduty.CreateMembersOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) CreateMembersWithContext(ctx context.Context, input *guardduty.
 func (c *Client) CreateSampleFindingsWithContext(ctx context.Context, input *guardduty.CreateSampleFindingsInput, opts ...request.Option) (*guardduty.CreateSampleFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "CreateSampleFindingsWithContext",
+		Action:  "CreateSampleFindings",
 		Input:   input,
 		Output:  (*guardduty.CreateSampleFindingsOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) CreateSampleFindingsWithContext(ctx context.Context, input *gua
 func (c *Client) CreateThreatIntelSetWithContext(ctx context.Context, input *guardduty.CreateThreatIntelSetInput, opts ...request.Option) (*guardduty.CreateThreatIntelSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "CreateThreatIntelSetWithContext",
+		Action:  "CreateThreatIntelSet",
 		Input:   input,
 		Output:  (*guardduty.CreateThreatIntelSetOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) CreateThreatIntelSetWithContext(ctx context.Context, input *gua
 func (c *Client) DeclineInvitationsWithContext(ctx context.Context, input *guardduty.DeclineInvitationsInput, opts ...request.Option) (*guardduty.DeclineInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeclineInvitationsWithContext",
+		Action:  "DeclineInvitations",
 		Input:   input,
 		Output:  (*guardduty.DeclineInvitationsOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) DeclineInvitationsWithContext(ctx context.Context, input *guard
 func (c *Client) DeleteDetectorWithContext(ctx context.Context, input *guardduty.DeleteDetectorInput, opts ...request.Option) (*guardduty.DeleteDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeleteDetectorWithContext",
+		Action:  "DeleteDetector",
 		Input:   input,
 		Output:  (*guardduty.DeleteDetectorOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) DeleteDetectorWithContext(ctx context.Context, input *guardduty
 func (c *Client) DeleteFilterWithContext(ctx context.Context, input *guardduty.DeleteFilterInput, opts ...request.Option) (*guardduty.DeleteFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeleteFilterWithContext",
+		Action:  "DeleteFilter",
 		Input:   input,
 		Output:  (*guardduty.DeleteFilterOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) DeleteFilterWithContext(ctx context.Context, input *guardduty.D
 func (c *Client) DeleteIPSetWithContext(ctx context.Context, input *guardduty.DeleteIPSetInput, opts ...request.Option) (*guardduty.DeleteIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeleteIPSetWithContext",
+		Action:  "DeleteIPSet",
 		Input:   input,
 		Output:  (*guardduty.DeleteIPSetOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) DeleteIPSetWithContext(ctx context.Context, input *guardduty.De
 func (c *Client) DeleteInvitationsWithContext(ctx context.Context, input *guardduty.DeleteInvitationsInput, opts ...request.Option) (*guardduty.DeleteInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeleteInvitationsWithContext",
+		Action:  "DeleteInvitations",
 		Input:   input,
 		Output:  (*guardduty.DeleteInvitationsOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) DeleteInvitationsWithContext(ctx context.Context, input *guardd
 func (c *Client) DeleteMembersWithContext(ctx context.Context, input *guardduty.DeleteMembersInput, opts ...request.Option) (*guardduty.DeleteMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeleteMembersWithContext",
+		Action:  "DeleteMembers",
 		Input:   input,
 		Output:  (*guardduty.DeleteMembersOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) DeleteMembersWithContext(ctx context.Context, input *guardduty.
 func (c *Client) DeleteThreatIntelSetWithContext(ctx context.Context, input *guardduty.DeleteThreatIntelSetInput, opts ...request.Option) (*guardduty.DeleteThreatIntelSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DeleteThreatIntelSetWithContext",
+		Action:  "DeleteThreatIntelSet",
 		Input:   input,
 		Output:  (*guardduty.DeleteThreatIntelSetOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) DeleteThreatIntelSetWithContext(ctx context.Context, input *gua
 func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DisassociateFromMasterAccountWithContext",
+		Action:  "DisassociateFromMasterAccount",
 		Input:   input,
 		Output:  (*guardduty.DisassociateFromMasterAccountOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, i
 func (c *Client) DisassociateMembersWithContext(ctx context.Context, input *guardduty.DisassociateMembersInput, opts ...request.Option) (*guardduty.DisassociateMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "DisassociateMembersWithContext",
+		Action:  "DisassociateMembers",
 		Input:   input,
 		Output:  (*guardduty.DisassociateMembersOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) DisassociateMembersWithContext(ctx context.Context, input *guar
 func (c *Client) GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetDetectorWithContext",
+		Action:  "GetDetector",
 		Input:   input,
 		Output:  (*guardduty.GetDetectorOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) GetDetectorWithContext(ctx context.Context, input *guardduty.Ge
 func (c *Client) GetFilterWithContext(ctx context.Context, input *guardduty.GetFilterInput, opts ...request.Option) (*guardduty.GetFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetFilterWithContext",
+		Action:  "GetFilter",
 		Input:   input,
 		Output:  (*guardduty.GetFilterOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) GetFilterWithContext(ctx context.Context, input *guardduty.GetF
 func (c *Client) GetFindingsWithContext(ctx context.Context, input *guardduty.GetFindingsInput, opts ...request.Option) (*guardduty.GetFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetFindingsWithContext",
+		Action:  "GetFindings",
 		Input:   input,
 		Output:  (*guardduty.GetFindingsOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) GetFindingsWithContext(ctx context.Context, input *guardduty.Ge
 func (c *Client) GetFindingsStatisticsWithContext(ctx context.Context, input *guardduty.GetFindingsStatisticsInput, opts ...request.Option) (*guardduty.GetFindingsStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetFindingsStatisticsWithContext",
+		Action:  "GetFindingsStatistics",
 		Input:   input,
 		Output:  (*guardduty.GetFindingsStatisticsOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) GetFindingsStatisticsWithContext(ctx context.Context, input *gu
 func (c *Client) GetIPSetWithContext(ctx context.Context, input *guardduty.GetIPSetInput, opts ...request.Option) (*guardduty.GetIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetIPSetWithContext",
+		Action:  "GetIPSet",
 		Input:   input,
 		Output:  (*guardduty.GetIPSetOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) GetIPSetWithContext(ctx context.Context, input *guardduty.GetIP
 func (c *Client) GetInvitationsCountWithContext(ctx context.Context, input *guardduty.GetInvitationsCountInput, opts ...request.Option) (*guardduty.GetInvitationsCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetInvitationsCountWithContext",
+		Action:  "GetInvitationsCount",
 		Input:   input,
 		Output:  (*guardduty.GetInvitationsCountOutput)(nil),
 		Error:   nil,
@@ -559,7 +559,7 @@ func (c *Client) GetInvitationsCountWithContext(ctx context.Context, input *guar
 func (c *Client) GetMasterAccountWithContext(ctx context.Context, input *guardduty.GetMasterAccountInput, opts ...request.Option) (*guardduty.GetMasterAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetMasterAccountWithContext",
+		Action:  "GetMasterAccount",
 		Input:   input,
 		Output:  (*guardduty.GetMasterAccountOutput)(nil),
 		Error:   nil,
@@ -580,7 +580,7 @@ func (c *Client) GetMasterAccountWithContext(ctx context.Context, input *guarddu
 func (c *Client) GetMembersWithContext(ctx context.Context, input *guardduty.GetMembersInput, opts ...request.Option) (*guardduty.GetMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetMembersWithContext",
+		Action:  "GetMembers",
 		Input:   input,
 		Output:  (*guardduty.GetMembersOutput)(nil),
 		Error:   nil,
@@ -601,7 +601,7 @@ func (c *Client) GetMembersWithContext(ctx context.Context, input *guardduty.Get
 func (c *Client) GetThreatIntelSetWithContext(ctx context.Context, input *guardduty.GetThreatIntelSetInput, opts ...request.Option) (*guardduty.GetThreatIntelSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "GetThreatIntelSetWithContext",
+		Action:  "GetThreatIntelSet",
 		Input:   input,
 		Output:  (*guardduty.GetThreatIntelSetOutput)(nil),
 		Error:   nil,
@@ -622,7 +622,7 @@ func (c *Client) GetThreatIntelSetWithContext(ctx context.Context, input *guardd
 func (c *Client) InviteMembersWithContext(ctx context.Context, input *guardduty.InviteMembersInput, opts ...request.Option) (*guardduty.InviteMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "InviteMembersWithContext",
+		Action:  "InviteMembers",
 		Input:   input,
 		Output:  (*guardduty.InviteMembersOutput)(nil),
 		Error:   nil,
@@ -643,7 +643,7 @@ func (c *Client) InviteMembersWithContext(ctx context.Context, input *guardduty.
 func (c *Client) ListDetectorsWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, opts ...request.Option) (*guardduty.ListDetectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListDetectorsWithContext",
+		Action:  "ListDetectors",
 		Input:   input,
 		Output:  (*guardduty.ListDetectorsOutput)(nil),
 		Error:   nil,
@@ -664,7 +664,7 @@ func (c *Client) ListDetectorsWithContext(ctx context.Context, input *guardduty.
 func (c *Client) ListFiltersWithContext(ctx context.Context, input *guardduty.ListFiltersInput, opts ...request.Option) (*guardduty.ListFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListFiltersWithContext",
+		Action:  "ListFilters",
 		Input:   input,
 		Output:  (*guardduty.ListFiltersOutput)(nil),
 		Error:   nil,
@@ -685,7 +685,7 @@ func (c *Client) ListFiltersWithContext(ctx context.Context, input *guardduty.Li
 func (c *Client) ListFindingsWithContext(ctx context.Context, input *guardduty.ListFindingsInput, opts ...request.Option) (*guardduty.ListFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListFindingsWithContext",
+		Action:  "ListFindings",
 		Input:   input,
 		Output:  (*guardduty.ListFindingsOutput)(nil),
 		Error:   nil,
@@ -706,7 +706,7 @@ func (c *Client) ListFindingsWithContext(ctx context.Context, input *guardduty.L
 func (c *Client) ListIPSetsWithContext(ctx context.Context, input *guardduty.ListIPSetsInput, opts ...request.Option) (*guardduty.ListIPSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListIPSetsWithContext",
+		Action:  "ListIPSets",
 		Input:   input,
 		Output:  (*guardduty.ListIPSetsOutput)(nil),
 		Error:   nil,
@@ -727,7 +727,7 @@ func (c *Client) ListIPSetsWithContext(ctx context.Context, input *guardduty.Lis
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, opts ...request.Option) (*guardduty.ListInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListInvitationsWithContext",
+		Action:  "ListInvitations",
 		Input:   input,
 		Output:  (*guardduty.ListInvitationsOutput)(nil),
 		Error:   nil,
@@ -748,7 +748,7 @@ func (c *Client) ListInvitationsWithContext(ctx context.Context, input *guarddut
 func (c *Client) ListMembersWithContext(ctx context.Context, input *guardduty.ListMembersInput, opts ...request.Option) (*guardduty.ListMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListMembersWithContext",
+		Action:  "ListMembers",
 		Input:   input,
 		Output:  (*guardduty.ListMembersOutput)(nil),
 		Error:   nil,
@@ -769,7 +769,7 @@ func (c *Client) ListMembersWithContext(ctx context.Context, input *guardduty.Li
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*guardduty.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -790,7 +790,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *guar
 func (c *Client) ListThreatIntelSetsWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, opts ...request.Option) (*guardduty.ListThreatIntelSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "ListThreatIntelSetsWithContext",
+		Action:  "ListThreatIntelSets",
 		Input:   input,
 		Output:  (*guardduty.ListThreatIntelSetsOutput)(nil),
 		Error:   nil,
@@ -811,7 +811,7 @@ func (c *Client) ListThreatIntelSetsWithContext(ctx context.Context, input *guar
 func (c *Client) StartMonitoringMembersWithContext(ctx context.Context, input *guardduty.StartMonitoringMembersInput, opts ...request.Option) (*guardduty.StartMonitoringMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "StartMonitoringMembersWithContext",
+		Action:  "StartMonitoringMembers",
 		Input:   input,
 		Output:  (*guardduty.StartMonitoringMembersOutput)(nil),
 		Error:   nil,
@@ -832,7 +832,7 @@ func (c *Client) StartMonitoringMembersWithContext(ctx context.Context, input *g
 func (c *Client) StopMonitoringMembersWithContext(ctx context.Context, input *guardduty.StopMonitoringMembersInput, opts ...request.Option) (*guardduty.StopMonitoringMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "StopMonitoringMembersWithContext",
+		Action:  "StopMonitoringMembers",
 		Input:   input,
 		Output:  (*guardduty.StopMonitoringMembersOutput)(nil),
 		Error:   nil,
@@ -853,7 +853,7 @@ func (c *Client) StopMonitoringMembersWithContext(ctx context.Context, input *gu
 func (c *Client) TagResourceWithContext(ctx context.Context, input *guardduty.TagResourceInput, opts ...request.Option) (*guardduty.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*guardduty.TagResourceOutput)(nil),
 		Error:   nil,
@@ -874,7 +874,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *guardduty.Ta
 func (c *Client) UnarchiveFindingsWithContext(ctx context.Context, input *guardduty.UnarchiveFindingsInput, opts ...request.Option) (*guardduty.UnarchiveFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UnarchiveFindingsWithContext",
+		Action:  "UnarchiveFindings",
 		Input:   input,
 		Output:  (*guardduty.UnarchiveFindingsOutput)(nil),
 		Error:   nil,
@@ -895,7 +895,7 @@ func (c *Client) UnarchiveFindingsWithContext(ctx context.Context, input *guardd
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *guardduty.UntagResourceInput, opts ...request.Option) (*guardduty.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*guardduty.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -916,7 +916,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *guardduty.
 func (c *Client) UpdateDetectorWithContext(ctx context.Context, input *guardduty.UpdateDetectorInput, opts ...request.Option) (*guardduty.UpdateDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UpdateDetectorWithContext",
+		Action:  "UpdateDetector",
 		Input:   input,
 		Output:  (*guardduty.UpdateDetectorOutput)(nil),
 		Error:   nil,
@@ -937,7 +937,7 @@ func (c *Client) UpdateDetectorWithContext(ctx context.Context, input *guardduty
 func (c *Client) UpdateFilterWithContext(ctx context.Context, input *guardduty.UpdateFilterInput, opts ...request.Option) (*guardduty.UpdateFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UpdateFilterWithContext",
+		Action:  "UpdateFilter",
 		Input:   input,
 		Output:  (*guardduty.UpdateFilterOutput)(nil),
 		Error:   nil,
@@ -958,7 +958,7 @@ func (c *Client) UpdateFilterWithContext(ctx context.Context, input *guardduty.U
 func (c *Client) UpdateFindingsFeedbackWithContext(ctx context.Context, input *guardduty.UpdateFindingsFeedbackInput, opts ...request.Option) (*guardduty.UpdateFindingsFeedbackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UpdateFindingsFeedbackWithContext",
+		Action:  "UpdateFindingsFeedback",
 		Input:   input,
 		Output:  (*guardduty.UpdateFindingsFeedbackOutput)(nil),
 		Error:   nil,
@@ -979,7 +979,7 @@ func (c *Client) UpdateFindingsFeedbackWithContext(ctx context.Context, input *g
 func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *guardduty.UpdateIPSetInput, opts ...request.Option) (*guardduty.UpdateIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UpdateIPSetWithContext",
+		Action:  "UpdateIPSet",
 		Input:   input,
 		Output:  (*guardduty.UpdateIPSetOutput)(nil),
 		Error:   nil,
@@ -1000,7 +1000,7 @@ func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *guardduty.Up
 func (c *Client) UpdateThreatIntelSetWithContext(ctx context.Context, input *guardduty.UpdateThreatIntelSetInput, opts ...request.Option) (*guardduty.UpdateThreatIntelSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
-		Action:  "UpdateThreatIntelSetWithContext",
+		Action:  "UpdateThreatIntelSet",
 		Input:   input,
 		Output:  (*guardduty.UpdateThreatIntelSetOutput)(nil),
 		Error:   nil,

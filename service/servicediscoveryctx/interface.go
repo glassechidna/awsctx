@@ -51,7 +51,7 @@ var _ ServiceDiscovery = (*Client)(nil)
 func (c *Client) CreateHttpNamespaceWithContext(ctx context.Context, input *servicediscovery.CreateHttpNamespaceInput, opts ...request.Option) (*servicediscovery.CreateHttpNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "CreateHttpNamespaceWithContext",
+		Action:  "CreateHttpNamespace",
 		Input:   input,
 		Output:  (*servicediscovery.CreateHttpNamespaceOutput)(nil),
 		Error:   nil,
@@ -72,7 +72,7 @@ func (c *Client) CreateHttpNamespaceWithContext(ctx context.Context, input *serv
 func (c *Client) CreatePrivateDnsNamespaceWithContext(ctx context.Context, input *servicediscovery.CreatePrivateDnsNamespaceInput, opts ...request.Option) (*servicediscovery.CreatePrivateDnsNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "CreatePrivateDnsNamespaceWithContext",
+		Action:  "CreatePrivateDnsNamespace",
 		Input:   input,
 		Output:  (*servicediscovery.CreatePrivateDnsNamespaceOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) CreatePrivateDnsNamespaceWithContext(ctx context.Context, input
 func (c *Client) CreatePublicDnsNamespaceWithContext(ctx context.Context, input *servicediscovery.CreatePublicDnsNamespaceInput, opts ...request.Option) (*servicediscovery.CreatePublicDnsNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "CreatePublicDnsNamespaceWithContext",
+		Action:  "CreatePublicDnsNamespace",
 		Input:   input,
 		Output:  (*servicediscovery.CreatePublicDnsNamespaceOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) CreatePublicDnsNamespaceWithContext(ctx context.Context, input 
 func (c *Client) CreateServiceWithContext(ctx context.Context, input *servicediscovery.CreateServiceInput, opts ...request.Option) (*servicediscovery.CreateServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "CreateServiceWithContext",
+		Action:  "CreateService",
 		Input:   input,
 		Output:  (*servicediscovery.CreateServiceOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) CreateServiceWithContext(ctx context.Context, input *servicedis
 func (c *Client) DeleteNamespaceWithContext(ctx context.Context, input *servicediscovery.DeleteNamespaceInput, opts ...request.Option) (*servicediscovery.DeleteNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "DeleteNamespaceWithContext",
+		Action:  "DeleteNamespace",
 		Input:   input,
 		Output:  (*servicediscovery.DeleteNamespaceOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, input *serviced
 func (c *Client) DeleteServiceWithContext(ctx context.Context, input *servicediscovery.DeleteServiceInput, opts ...request.Option) (*servicediscovery.DeleteServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "DeleteServiceWithContext",
+		Action:  "DeleteService",
 		Input:   input,
 		Output:  (*servicediscovery.DeleteServiceOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) DeleteServiceWithContext(ctx context.Context, input *servicedis
 func (c *Client) DeregisterInstanceWithContext(ctx context.Context, input *servicediscovery.DeregisterInstanceInput, opts ...request.Option) (*servicediscovery.DeregisterInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "DeregisterInstanceWithContext",
+		Action:  "DeregisterInstance",
 		Input:   input,
 		Output:  (*servicediscovery.DeregisterInstanceOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) DeregisterInstanceWithContext(ctx context.Context, input *servi
 func (c *Client) DiscoverInstancesWithContext(ctx context.Context, input *servicediscovery.DiscoverInstancesInput, opts ...request.Option) (*servicediscovery.DiscoverInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "DiscoverInstancesWithContext",
+		Action:  "DiscoverInstances",
 		Input:   input,
 		Output:  (*servicediscovery.DiscoverInstancesOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) DiscoverInstancesWithContext(ctx context.Context, input *servic
 func (c *Client) GetInstanceWithContext(ctx context.Context, input *servicediscovery.GetInstanceInput, opts ...request.Option) (*servicediscovery.GetInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "GetInstanceWithContext",
+		Action:  "GetInstance",
 		Input:   input,
 		Output:  (*servicediscovery.GetInstanceOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) GetInstanceWithContext(ctx context.Context, input *servicedisco
 func (c *Client) GetInstancesHealthStatusWithContext(ctx context.Context, input *servicediscovery.GetInstancesHealthStatusInput, opts ...request.Option) (*servicediscovery.GetInstancesHealthStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "GetInstancesHealthStatusWithContext",
+		Action:  "GetInstancesHealthStatus",
 		Input:   input,
 		Output:  (*servicediscovery.GetInstancesHealthStatusOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) GetInstancesHealthStatusWithContext(ctx context.Context, input 
 func (c *Client) GetNamespaceWithContext(ctx context.Context, input *servicediscovery.GetNamespaceInput, opts ...request.Option) (*servicediscovery.GetNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "GetNamespaceWithContext",
+		Action:  "GetNamespace",
 		Input:   input,
 		Output:  (*servicediscovery.GetNamespaceOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) GetNamespaceWithContext(ctx context.Context, input *servicedisc
 func (c *Client) GetOperationWithContext(ctx context.Context, input *servicediscovery.GetOperationInput, opts ...request.Option) (*servicediscovery.GetOperationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "GetOperationWithContext",
+		Action:  "GetOperation",
 		Input:   input,
 		Output:  (*servicediscovery.GetOperationOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) GetOperationWithContext(ctx context.Context, input *servicedisc
 func (c *Client) GetServiceWithContext(ctx context.Context, input *servicediscovery.GetServiceInput, opts ...request.Option) (*servicediscovery.GetServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "GetServiceWithContext",
+		Action:  "GetService",
 		Input:   input,
 		Output:  (*servicediscovery.GetServiceOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) GetServiceWithContext(ctx context.Context, input *servicediscov
 func (c *Client) ListInstancesWithContext(ctx context.Context, input *servicediscovery.ListInstancesInput, opts ...request.Option) (*servicediscovery.ListInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "ListInstancesWithContext",
+		Action:  "ListInstances",
 		Input:   input,
 		Output:  (*servicediscovery.ListInstancesOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, input *servicedis
 func (c *Client) ListNamespacesWithContext(ctx context.Context, input *servicediscovery.ListNamespacesInput, opts ...request.Option) (*servicediscovery.ListNamespacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "ListNamespacesWithContext",
+		Action:  "ListNamespaces",
 		Input:   input,
 		Output:  (*servicediscovery.ListNamespacesOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) ListNamespacesWithContext(ctx context.Context, input *servicedi
 func (c *Client) ListOperationsWithContext(ctx context.Context, input *servicediscovery.ListOperationsInput, opts ...request.Option) (*servicediscovery.ListOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "ListOperationsWithContext",
+		Action:  "ListOperations",
 		Input:   input,
 		Output:  (*servicediscovery.ListOperationsOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) ListOperationsWithContext(ctx context.Context, input *servicedi
 func (c *Client) ListServicesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, opts ...request.Option) (*servicediscovery.ListServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "ListServicesWithContext",
+		Action:  "ListServices",
 		Input:   input,
 		Output:  (*servicediscovery.ListServicesOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) ListServicesWithContext(ctx context.Context, input *servicedisc
 func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *servicediscovery.RegisterInstanceInput, opts ...request.Option) (*servicediscovery.RegisterInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "RegisterInstanceWithContext",
+		Action:  "RegisterInstance",
 		Input:   input,
 		Output:  (*servicediscovery.RegisterInstanceOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *service
 func (c *Client) UpdateInstanceCustomHealthStatusWithContext(ctx context.Context, input *servicediscovery.UpdateInstanceCustomHealthStatusInput, opts ...request.Option) (*servicediscovery.UpdateInstanceCustomHealthStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "UpdateInstanceCustomHealthStatusWithContext",
+		Action:  "UpdateInstanceCustomHealthStatus",
 		Input:   input,
 		Output:  (*servicediscovery.UpdateInstanceCustomHealthStatusOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) UpdateInstanceCustomHealthStatusWithContext(ctx context.Context
 func (c *Client) UpdateServiceWithContext(ctx context.Context, input *servicediscovery.UpdateServiceInput, opts ...request.Option) (*servicediscovery.UpdateServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
-		Action:  "UpdateServiceWithContext",
+		Action:  "UpdateService",
 		Input:   input,
 		Output:  (*servicediscovery.UpdateServiceOutput)(nil),
 		Error:   nil,

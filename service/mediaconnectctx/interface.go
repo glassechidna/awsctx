@@ -48,7 +48,7 @@ var _ MediaConnect = (*Client)(nil)
 func (c *Client) AddFlowOutputsWithContext(ctx context.Context, input *mediaconnect.AddFlowOutputsInput, opts ...request.Option) (*mediaconnect.AddFlowOutputsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "AddFlowOutputsWithContext",
+		Action:  "AddFlowOutputs",
 		Input:   input,
 		Output:  (*mediaconnect.AddFlowOutputsOutput)(nil),
 		Error:   nil,
@@ -69,7 +69,7 @@ func (c *Client) AddFlowOutputsWithContext(ctx context.Context, input *mediaconn
 func (c *Client) CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "CreateFlowWithContext",
+		Action:  "CreateFlow",
 		Input:   input,
 		Output:  (*mediaconnect.CreateFlowOutput)(nil),
 		Error:   nil,
@@ -90,7 +90,7 @@ func (c *Client) CreateFlowWithContext(ctx context.Context, input *mediaconnect.
 func (c *Client) DeleteFlowWithContext(ctx context.Context, input *mediaconnect.DeleteFlowInput, opts ...request.Option) (*mediaconnect.DeleteFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "DeleteFlowWithContext",
+		Action:  "DeleteFlow",
 		Input:   input,
 		Output:  (*mediaconnect.DeleteFlowOutput)(nil),
 		Error:   nil,
@@ -111,7 +111,7 @@ func (c *Client) DeleteFlowWithContext(ctx context.Context, input *mediaconnect.
 func (c *Client) DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "DescribeFlowWithContext",
+		Action:  "DescribeFlow",
 		Input:   input,
 		Output:  (*mediaconnect.DescribeFlowOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, input *mediaconnec
 func (c *Client) GrantFlowEntitlementsWithContext(ctx context.Context, input *mediaconnect.GrantFlowEntitlementsInput, opts ...request.Option) (*mediaconnect.GrantFlowEntitlementsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "GrantFlowEntitlementsWithContext",
+		Action:  "GrantFlowEntitlements",
 		Input:   input,
 		Output:  (*mediaconnect.GrantFlowEntitlementsOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) GrantFlowEntitlementsWithContext(ctx context.Context, input *me
 func (c *Client) ListEntitlementsWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, opts ...request.Option) (*mediaconnect.ListEntitlementsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "ListEntitlementsWithContext",
+		Action:  "ListEntitlements",
 		Input:   input,
 		Output:  (*mediaconnect.ListEntitlementsOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) ListEntitlementsWithContext(ctx context.Context, input *mediaco
 func (c *Client) ListFlowsWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, opts ...request.Option) (*mediaconnect.ListFlowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "ListFlowsWithContext",
+		Action:  "ListFlows",
 		Input:   input,
 		Output:  (*mediaconnect.ListFlowsOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) ListFlowsWithContext(ctx context.Context, input *mediaconnect.L
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*mediaconnect.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 func (c *Client) RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "RemoveFlowOutputWithContext",
+		Action:  "RemoveFlowOutput",
 		Input:   input,
 		Output:  (*mediaconnect.RemoveFlowOutputOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) RemoveFlowOutputWithContext(ctx context.Context, input *mediaco
 func (c *Client) RevokeFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.RevokeFlowEntitlementInput, opts ...request.Option) (*mediaconnect.RevokeFlowEntitlementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "RevokeFlowEntitlementWithContext",
+		Action:  "RevokeFlowEntitlement",
 		Input:   input,
 		Output:  (*mediaconnect.RevokeFlowEntitlementOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) RevokeFlowEntitlementWithContext(ctx context.Context, input *me
 func (c *Client) StartFlowWithContext(ctx context.Context, input *mediaconnect.StartFlowInput, opts ...request.Option) (*mediaconnect.StartFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "StartFlowWithContext",
+		Action:  "StartFlow",
 		Input:   input,
 		Output:  (*mediaconnect.StartFlowOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) StartFlowWithContext(ctx context.Context, input *mediaconnect.S
 func (c *Client) StopFlowWithContext(ctx context.Context, input *mediaconnect.StopFlowInput, opts ...request.Option) (*mediaconnect.StopFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "StopFlowWithContext",
+		Action:  "StopFlow",
 		Input:   input,
 		Output:  (*mediaconnect.StopFlowOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) StopFlowWithContext(ctx context.Context, input *mediaconnect.St
 func (c *Client) TagResourceWithContext(ctx context.Context, input *mediaconnect.TagResourceInput, opts ...request.Option) (*mediaconnect.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*mediaconnect.TagResourceOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *mediaconnect
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediaconnect.UntagResourceInput, opts ...request.Option) (*mediaconnect.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*mediaconnect.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediaconne
 func (c *Client) UpdateFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.UpdateFlowEntitlementInput, opts ...request.Option) (*mediaconnect.UpdateFlowEntitlementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "UpdateFlowEntitlementWithContext",
+		Action:  "UpdateFlowEntitlement",
 		Input:   input,
 		Output:  (*mediaconnect.UpdateFlowEntitlementOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) UpdateFlowEntitlementWithContext(ctx context.Context, input *me
 func (c *Client) UpdateFlowOutputWithContext(ctx context.Context, input *mediaconnect.UpdateFlowOutputInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "UpdateFlowOutputWithContext",
+		Action:  "UpdateFlowOutput",
 		Input:   input,
 		Output:  (*mediaconnect.UpdateFlowOutputOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) UpdateFlowOutputWithContext(ctx context.Context, input *mediaco
 func (c *Client) UpdateFlowSourceWithContext(ctx context.Context, input *mediaconnect.UpdateFlowSourceInput, opts ...request.Option) (*mediaconnect.UpdateFlowSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
-		Action:  "UpdateFlowSourceWithContext",
+		Action:  "UpdateFlowSource",
 		Input:   input,
 		Output:  (*mediaconnect.UpdateFlowSourceOutput)(nil),
 		Error:   nil,

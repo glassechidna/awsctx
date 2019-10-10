@@ -102,7 +102,7 @@ var _ SES = (*Client)(nil)
 func (c *Client) CloneReceiptRuleSetWithContext(ctx context.Context, input *ses.CloneReceiptRuleSetInput, opts ...request.Option) (*ses.CloneReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CloneReceiptRuleSetWithContext",
+		Action:  "CloneReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.CloneReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -123,7 +123,7 @@ func (c *Client) CloneReceiptRuleSetWithContext(ctx context.Context, input *ses.
 func (c *Client) CreateConfigurationSetWithContext(ctx context.Context, input *ses.CreateConfigurationSetInput, opts ...request.Option) (*ses.CreateConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateConfigurationSetWithContext",
+		Action:  "CreateConfigurationSet",
 		Input:   input,
 		Output:  (*ses.CreateConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -144,7 +144,7 @@ func (c *Client) CreateConfigurationSetWithContext(ctx context.Context, input *s
 func (c *Client) CreateConfigurationSetEventDestinationWithContext(ctx context.Context, input *ses.CreateConfigurationSetEventDestinationInput, opts ...request.Option) (*ses.CreateConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateConfigurationSetEventDestinationWithContext",
+		Action:  "CreateConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*ses.CreateConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -165,7 +165,7 @@ func (c *Client) CreateConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) CreateConfigurationSetTrackingOptionsWithContext(ctx context.Context, input *ses.CreateConfigurationSetTrackingOptionsInput, opts ...request.Option) (*ses.CreateConfigurationSetTrackingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateConfigurationSetTrackingOptionsWithContext",
+		Action:  "CreateConfigurationSetTrackingOptions",
 		Input:   input,
 		Output:  (*ses.CreateConfigurationSetTrackingOptionsOutput)(nil),
 		Error:   nil,
@@ -186,7 +186,7 @@ func (c *Client) CreateConfigurationSetTrackingOptionsWithContext(ctx context.Co
 func (c *Client) CreateCustomVerificationEmailTemplateWithContext(ctx context.Context, input *ses.CreateCustomVerificationEmailTemplateInput, opts ...request.Option) (*ses.CreateCustomVerificationEmailTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateCustomVerificationEmailTemplateWithContext",
+		Action:  "CreateCustomVerificationEmailTemplate",
 		Input:   input,
 		Output:  (*ses.CreateCustomVerificationEmailTemplateOutput)(nil),
 		Error:   nil,
@@ -207,7 +207,7 @@ func (c *Client) CreateCustomVerificationEmailTemplateWithContext(ctx context.Co
 func (c *Client) CreateReceiptFilterWithContext(ctx context.Context, input *ses.CreateReceiptFilterInput, opts ...request.Option) (*ses.CreateReceiptFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateReceiptFilterWithContext",
+		Action:  "CreateReceiptFilter",
 		Input:   input,
 		Output:  (*ses.CreateReceiptFilterOutput)(nil),
 		Error:   nil,
@@ -228,7 +228,7 @@ func (c *Client) CreateReceiptFilterWithContext(ctx context.Context, input *ses.
 func (c *Client) CreateReceiptRuleWithContext(ctx context.Context, input *ses.CreateReceiptRuleInput, opts ...request.Option) (*ses.CreateReceiptRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateReceiptRuleWithContext",
+		Action:  "CreateReceiptRule",
 		Input:   input,
 		Output:  (*ses.CreateReceiptRuleOutput)(nil),
 		Error:   nil,
@@ -249,7 +249,7 @@ func (c *Client) CreateReceiptRuleWithContext(ctx context.Context, input *ses.Cr
 func (c *Client) CreateReceiptRuleSetWithContext(ctx context.Context, input *ses.CreateReceiptRuleSetInput, opts ...request.Option) (*ses.CreateReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateReceiptRuleSetWithContext",
+		Action:  "CreateReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.CreateReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -270,7 +270,7 @@ func (c *Client) CreateReceiptRuleSetWithContext(ctx context.Context, input *ses
 func (c *Client) CreateTemplateWithContext(ctx context.Context, input *ses.CreateTemplateInput, opts ...request.Option) (*ses.CreateTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "CreateTemplateWithContext",
+		Action:  "CreateTemplate",
 		Input:   input,
 		Output:  (*ses.CreateTemplateOutput)(nil),
 		Error:   nil,
@@ -291,7 +291,7 @@ func (c *Client) CreateTemplateWithContext(ctx context.Context, input *ses.Creat
 func (c *Client) DeleteConfigurationSetWithContext(ctx context.Context, input *ses.DeleteConfigurationSetInput, opts ...request.Option) (*ses.DeleteConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteConfigurationSetWithContext",
+		Action:  "DeleteConfigurationSet",
 		Input:   input,
 		Output:  (*ses.DeleteConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -312,7 +312,7 @@ func (c *Client) DeleteConfigurationSetWithContext(ctx context.Context, input *s
 func (c *Client) DeleteConfigurationSetEventDestinationWithContext(ctx context.Context, input *ses.DeleteConfigurationSetEventDestinationInput, opts ...request.Option) (*ses.DeleteConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteConfigurationSetEventDestinationWithContext",
+		Action:  "DeleteConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*ses.DeleteConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -333,7 +333,7 @@ func (c *Client) DeleteConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) DeleteConfigurationSetTrackingOptionsWithContext(ctx context.Context, input *ses.DeleteConfigurationSetTrackingOptionsInput, opts ...request.Option) (*ses.DeleteConfigurationSetTrackingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteConfigurationSetTrackingOptionsWithContext",
+		Action:  "DeleteConfigurationSetTrackingOptions",
 		Input:   input,
 		Output:  (*ses.DeleteConfigurationSetTrackingOptionsOutput)(nil),
 		Error:   nil,
@@ -354,7 +354,7 @@ func (c *Client) DeleteConfigurationSetTrackingOptionsWithContext(ctx context.Co
 func (c *Client) DeleteCustomVerificationEmailTemplateWithContext(ctx context.Context, input *ses.DeleteCustomVerificationEmailTemplateInput, opts ...request.Option) (*ses.DeleteCustomVerificationEmailTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteCustomVerificationEmailTemplateWithContext",
+		Action:  "DeleteCustomVerificationEmailTemplate",
 		Input:   input,
 		Output:  (*ses.DeleteCustomVerificationEmailTemplateOutput)(nil),
 		Error:   nil,
@@ -375,7 +375,7 @@ func (c *Client) DeleteCustomVerificationEmailTemplateWithContext(ctx context.Co
 func (c *Client) DeleteIdentityWithContext(ctx context.Context, input *ses.DeleteIdentityInput, opts ...request.Option) (*ses.DeleteIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteIdentityWithContext",
+		Action:  "DeleteIdentity",
 		Input:   input,
 		Output:  (*ses.DeleteIdentityOutput)(nil),
 		Error:   nil,
@@ -396,7 +396,7 @@ func (c *Client) DeleteIdentityWithContext(ctx context.Context, input *ses.Delet
 func (c *Client) DeleteIdentityPolicyWithContext(ctx context.Context, input *ses.DeleteIdentityPolicyInput, opts ...request.Option) (*ses.DeleteIdentityPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteIdentityPolicyWithContext",
+		Action:  "DeleteIdentityPolicy",
 		Input:   input,
 		Output:  (*ses.DeleteIdentityPolicyOutput)(nil),
 		Error:   nil,
@@ -417,7 +417,7 @@ func (c *Client) DeleteIdentityPolicyWithContext(ctx context.Context, input *ses
 func (c *Client) DeleteReceiptFilterWithContext(ctx context.Context, input *ses.DeleteReceiptFilterInput, opts ...request.Option) (*ses.DeleteReceiptFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteReceiptFilterWithContext",
+		Action:  "DeleteReceiptFilter",
 		Input:   input,
 		Output:  (*ses.DeleteReceiptFilterOutput)(nil),
 		Error:   nil,
@@ -438,7 +438,7 @@ func (c *Client) DeleteReceiptFilterWithContext(ctx context.Context, input *ses.
 func (c *Client) DeleteReceiptRuleWithContext(ctx context.Context, input *ses.DeleteReceiptRuleInput, opts ...request.Option) (*ses.DeleteReceiptRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteReceiptRuleWithContext",
+		Action:  "DeleteReceiptRule",
 		Input:   input,
 		Output:  (*ses.DeleteReceiptRuleOutput)(nil),
 		Error:   nil,
@@ -459,7 +459,7 @@ func (c *Client) DeleteReceiptRuleWithContext(ctx context.Context, input *ses.De
 func (c *Client) DeleteReceiptRuleSetWithContext(ctx context.Context, input *ses.DeleteReceiptRuleSetInput, opts ...request.Option) (*ses.DeleteReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteReceiptRuleSetWithContext",
+		Action:  "DeleteReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.DeleteReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -480,7 +480,7 @@ func (c *Client) DeleteReceiptRuleSetWithContext(ctx context.Context, input *ses
 func (c *Client) DeleteTemplateWithContext(ctx context.Context, input *ses.DeleteTemplateInput, opts ...request.Option) (*ses.DeleteTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteTemplateWithContext",
+		Action:  "DeleteTemplate",
 		Input:   input,
 		Output:  (*ses.DeleteTemplateOutput)(nil),
 		Error:   nil,
@@ -501,7 +501,7 @@ func (c *Client) DeleteTemplateWithContext(ctx context.Context, input *ses.Delet
 func (c *Client) DeleteVerifiedEmailAddressWithContext(ctx context.Context, input *ses.DeleteVerifiedEmailAddressInput, opts ...request.Option) (*ses.DeleteVerifiedEmailAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DeleteVerifiedEmailAddressWithContext",
+		Action:  "DeleteVerifiedEmailAddress",
 		Input:   input,
 		Output:  (*ses.DeleteVerifiedEmailAddressOutput)(nil),
 		Error:   nil,
@@ -522,7 +522,7 @@ func (c *Client) DeleteVerifiedEmailAddressWithContext(ctx context.Context, inpu
 func (c *Client) DescribeActiveReceiptRuleSetWithContext(ctx context.Context, input *ses.DescribeActiveReceiptRuleSetInput, opts ...request.Option) (*ses.DescribeActiveReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DescribeActiveReceiptRuleSetWithContext",
+		Action:  "DescribeActiveReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.DescribeActiveReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -543,7 +543,7 @@ func (c *Client) DescribeActiveReceiptRuleSetWithContext(ctx context.Context, in
 func (c *Client) DescribeConfigurationSetWithContext(ctx context.Context, input *ses.DescribeConfigurationSetInput, opts ...request.Option) (*ses.DescribeConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DescribeConfigurationSetWithContext",
+		Action:  "DescribeConfigurationSet",
 		Input:   input,
 		Output:  (*ses.DescribeConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -564,7 +564,7 @@ func (c *Client) DescribeConfigurationSetWithContext(ctx context.Context, input 
 func (c *Client) DescribeReceiptRuleWithContext(ctx context.Context, input *ses.DescribeReceiptRuleInput, opts ...request.Option) (*ses.DescribeReceiptRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DescribeReceiptRuleWithContext",
+		Action:  "DescribeReceiptRule",
 		Input:   input,
 		Output:  (*ses.DescribeReceiptRuleOutput)(nil),
 		Error:   nil,
@@ -585,7 +585,7 @@ func (c *Client) DescribeReceiptRuleWithContext(ctx context.Context, input *ses.
 func (c *Client) DescribeReceiptRuleSetWithContext(ctx context.Context, input *ses.DescribeReceiptRuleSetInput, opts ...request.Option) (*ses.DescribeReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "DescribeReceiptRuleSetWithContext",
+		Action:  "DescribeReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.DescribeReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -606,7 +606,7 @@ func (c *Client) DescribeReceiptRuleSetWithContext(ctx context.Context, input *s
 func (c *Client) GetAccountSendingEnabledWithContext(ctx context.Context, input *ses.GetAccountSendingEnabledInput, opts ...request.Option) (*ses.GetAccountSendingEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetAccountSendingEnabledWithContext",
+		Action:  "GetAccountSendingEnabled",
 		Input:   input,
 		Output:  (*ses.GetAccountSendingEnabledOutput)(nil),
 		Error:   nil,
@@ -627,7 +627,7 @@ func (c *Client) GetAccountSendingEnabledWithContext(ctx context.Context, input 
 func (c *Client) GetCustomVerificationEmailTemplateWithContext(ctx context.Context, input *ses.GetCustomVerificationEmailTemplateInput, opts ...request.Option) (*ses.GetCustomVerificationEmailTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetCustomVerificationEmailTemplateWithContext",
+		Action:  "GetCustomVerificationEmailTemplate",
 		Input:   input,
 		Output:  (*ses.GetCustomVerificationEmailTemplateOutput)(nil),
 		Error:   nil,
@@ -648,7 +648,7 @@ func (c *Client) GetCustomVerificationEmailTemplateWithContext(ctx context.Conte
 func (c *Client) GetIdentityDkimAttributesWithContext(ctx context.Context, input *ses.GetIdentityDkimAttributesInput, opts ...request.Option) (*ses.GetIdentityDkimAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetIdentityDkimAttributesWithContext",
+		Action:  "GetIdentityDkimAttributes",
 		Input:   input,
 		Output:  (*ses.GetIdentityDkimAttributesOutput)(nil),
 		Error:   nil,
@@ -669,7 +669,7 @@ func (c *Client) GetIdentityDkimAttributesWithContext(ctx context.Context, input
 func (c *Client) GetIdentityMailFromDomainAttributesWithContext(ctx context.Context, input *ses.GetIdentityMailFromDomainAttributesInput, opts ...request.Option) (*ses.GetIdentityMailFromDomainAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetIdentityMailFromDomainAttributesWithContext",
+		Action:  "GetIdentityMailFromDomainAttributes",
 		Input:   input,
 		Output:  (*ses.GetIdentityMailFromDomainAttributesOutput)(nil),
 		Error:   nil,
@@ -690,7 +690,7 @@ func (c *Client) GetIdentityMailFromDomainAttributesWithContext(ctx context.Cont
 func (c *Client) GetIdentityNotificationAttributesWithContext(ctx context.Context, input *ses.GetIdentityNotificationAttributesInput, opts ...request.Option) (*ses.GetIdentityNotificationAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetIdentityNotificationAttributesWithContext",
+		Action:  "GetIdentityNotificationAttributes",
 		Input:   input,
 		Output:  (*ses.GetIdentityNotificationAttributesOutput)(nil),
 		Error:   nil,
@@ -711,7 +711,7 @@ func (c *Client) GetIdentityNotificationAttributesWithContext(ctx context.Contex
 func (c *Client) GetIdentityPoliciesWithContext(ctx context.Context, input *ses.GetIdentityPoliciesInput, opts ...request.Option) (*ses.GetIdentityPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetIdentityPoliciesWithContext",
+		Action:  "GetIdentityPolicies",
 		Input:   input,
 		Output:  (*ses.GetIdentityPoliciesOutput)(nil),
 		Error:   nil,
@@ -732,7 +732,7 @@ func (c *Client) GetIdentityPoliciesWithContext(ctx context.Context, input *ses.
 func (c *Client) GetIdentityVerificationAttributesWithContext(ctx context.Context, input *ses.GetIdentityVerificationAttributesInput, opts ...request.Option) (*ses.GetIdentityVerificationAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetIdentityVerificationAttributesWithContext",
+		Action:  "GetIdentityVerificationAttributes",
 		Input:   input,
 		Output:  (*ses.GetIdentityVerificationAttributesOutput)(nil),
 		Error:   nil,
@@ -753,7 +753,7 @@ func (c *Client) GetIdentityVerificationAttributesWithContext(ctx context.Contex
 func (c *Client) GetSendQuotaWithContext(ctx context.Context, input *ses.GetSendQuotaInput, opts ...request.Option) (*ses.GetSendQuotaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetSendQuotaWithContext",
+		Action:  "GetSendQuota",
 		Input:   input,
 		Output:  (*ses.GetSendQuotaOutput)(nil),
 		Error:   nil,
@@ -774,7 +774,7 @@ func (c *Client) GetSendQuotaWithContext(ctx context.Context, input *ses.GetSend
 func (c *Client) GetSendStatisticsWithContext(ctx context.Context, input *ses.GetSendStatisticsInput, opts ...request.Option) (*ses.GetSendStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetSendStatisticsWithContext",
+		Action:  "GetSendStatistics",
 		Input:   input,
 		Output:  (*ses.GetSendStatisticsOutput)(nil),
 		Error:   nil,
@@ -795,7 +795,7 @@ func (c *Client) GetSendStatisticsWithContext(ctx context.Context, input *ses.Ge
 func (c *Client) GetTemplateWithContext(ctx context.Context, input *ses.GetTemplateInput, opts ...request.Option) (*ses.GetTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "GetTemplateWithContext",
+		Action:  "GetTemplate",
 		Input:   input,
 		Output:  (*ses.GetTemplateOutput)(nil),
 		Error:   nil,
@@ -816,7 +816,7 @@ func (c *Client) GetTemplateWithContext(ctx context.Context, input *ses.GetTempl
 func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *ses.ListConfigurationSetsInput, opts ...request.Option) (*ses.ListConfigurationSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListConfigurationSetsWithContext",
+		Action:  "ListConfigurationSets",
 		Input:   input,
 		Output:  (*ses.ListConfigurationSetsOutput)(nil),
 		Error:   nil,
@@ -837,7 +837,7 @@ func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *se
 func (c *Client) ListCustomVerificationEmailTemplatesWithContext(ctx context.Context, input *ses.ListCustomVerificationEmailTemplatesInput, opts ...request.Option) (*ses.ListCustomVerificationEmailTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListCustomVerificationEmailTemplatesWithContext",
+		Action:  "ListCustomVerificationEmailTemplates",
 		Input:   input,
 		Output:  (*ses.ListCustomVerificationEmailTemplatesOutput)(nil),
 		Error:   nil,
@@ -858,7 +858,7 @@ func (c *Client) ListCustomVerificationEmailTemplatesWithContext(ctx context.Con
 func (c *Client) ListIdentitiesWithContext(ctx context.Context, input *ses.ListIdentitiesInput, opts ...request.Option) (*ses.ListIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListIdentitiesWithContext",
+		Action:  "ListIdentities",
 		Input:   input,
 		Output:  (*ses.ListIdentitiesOutput)(nil),
 		Error:   nil,
@@ -879,7 +879,7 @@ func (c *Client) ListIdentitiesWithContext(ctx context.Context, input *ses.ListI
 func (c *Client) ListIdentityPoliciesWithContext(ctx context.Context, input *ses.ListIdentityPoliciesInput, opts ...request.Option) (*ses.ListIdentityPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListIdentityPoliciesWithContext",
+		Action:  "ListIdentityPolicies",
 		Input:   input,
 		Output:  (*ses.ListIdentityPoliciesOutput)(nil),
 		Error:   nil,
@@ -900,7 +900,7 @@ func (c *Client) ListIdentityPoliciesWithContext(ctx context.Context, input *ses
 func (c *Client) ListReceiptFiltersWithContext(ctx context.Context, input *ses.ListReceiptFiltersInput, opts ...request.Option) (*ses.ListReceiptFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListReceiptFiltersWithContext",
+		Action:  "ListReceiptFilters",
 		Input:   input,
 		Output:  (*ses.ListReceiptFiltersOutput)(nil),
 		Error:   nil,
@@ -921,7 +921,7 @@ func (c *Client) ListReceiptFiltersWithContext(ctx context.Context, input *ses.L
 func (c *Client) ListReceiptRuleSetsWithContext(ctx context.Context, input *ses.ListReceiptRuleSetsInput, opts ...request.Option) (*ses.ListReceiptRuleSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListReceiptRuleSetsWithContext",
+		Action:  "ListReceiptRuleSets",
 		Input:   input,
 		Output:  (*ses.ListReceiptRuleSetsOutput)(nil),
 		Error:   nil,
@@ -942,7 +942,7 @@ func (c *Client) ListReceiptRuleSetsWithContext(ctx context.Context, input *ses.
 func (c *Client) ListTemplatesWithContext(ctx context.Context, input *ses.ListTemplatesInput, opts ...request.Option) (*ses.ListTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListTemplatesWithContext",
+		Action:  "ListTemplates",
 		Input:   input,
 		Output:  (*ses.ListTemplatesOutput)(nil),
 		Error:   nil,
@@ -963,7 +963,7 @@ func (c *Client) ListTemplatesWithContext(ctx context.Context, input *ses.ListTe
 func (c *Client) ListVerifiedEmailAddressesWithContext(ctx context.Context, input *ses.ListVerifiedEmailAddressesInput, opts ...request.Option) (*ses.ListVerifiedEmailAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ListVerifiedEmailAddressesWithContext",
+		Action:  "ListVerifiedEmailAddresses",
 		Input:   input,
 		Output:  (*ses.ListVerifiedEmailAddressesOutput)(nil),
 		Error:   nil,
@@ -984,7 +984,7 @@ func (c *Client) ListVerifiedEmailAddressesWithContext(ctx context.Context, inpu
 func (c *Client) PutConfigurationSetDeliveryOptionsWithContext(ctx context.Context, input *ses.PutConfigurationSetDeliveryOptionsInput, opts ...request.Option) (*ses.PutConfigurationSetDeliveryOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "PutConfigurationSetDeliveryOptionsWithContext",
+		Action:  "PutConfigurationSetDeliveryOptions",
 		Input:   input,
 		Output:  (*ses.PutConfigurationSetDeliveryOptionsOutput)(nil),
 		Error:   nil,
@@ -1005,7 +1005,7 @@ func (c *Client) PutConfigurationSetDeliveryOptionsWithContext(ctx context.Conte
 func (c *Client) PutIdentityPolicyWithContext(ctx context.Context, input *ses.PutIdentityPolicyInput, opts ...request.Option) (*ses.PutIdentityPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "PutIdentityPolicyWithContext",
+		Action:  "PutIdentityPolicy",
 		Input:   input,
 		Output:  (*ses.PutIdentityPolicyOutput)(nil),
 		Error:   nil,
@@ -1026,7 +1026,7 @@ func (c *Client) PutIdentityPolicyWithContext(ctx context.Context, input *ses.Pu
 func (c *Client) ReorderReceiptRuleSetWithContext(ctx context.Context, input *ses.ReorderReceiptRuleSetInput, opts ...request.Option) (*ses.ReorderReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "ReorderReceiptRuleSetWithContext",
+		Action:  "ReorderReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.ReorderReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -1047,7 +1047,7 @@ func (c *Client) ReorderReceiptRuleSetWithContext(ctx context.Context, input *se
 func (c *Client) SendBounceWithContext(ctx context.Context, input *ses.SendBounceInput, opts ...request.Option) (*ses.SendBounceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SendBounceWithContext",
+		Action:  "SendBounce",
 		Input:   input,
 		Output:  (*ses.SendBounceOutput)(nil),
 		Error:   nil,
@@ -1068,7 +1068,7 @@ func (c *Client) SendBounceWithContext(ctx context.Context, input *ses.SendBounc
 func (c *Client) SendBulkTemplatedEmailWithContext(ctx context.Context, input *ses.SendBulkTemplatedEmailInput, opts ...request.Option) (*ses.SendBulkTemplatedEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SendBulkTemplatedEmailWithContext",
+		Action:  "SendBulkTemplatedEmail",
 		Input:   input,
 		Output:  (*ses.SendBulkTemplatedEmailOutput)(nil),
 		Error:   nil,
@@ -1089,7 +1089,7 @@ func (c *Client) SendBulkTemplatedEmailWithContext(ctx context.Context, input *s
 func (c *Client) SendCustomVerificationEmailWithContext(ctx context.Context, input *ses.SendCustomVerificationEmailInput, opts ...request.Option) (*ses.SendCustomVerificationEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SendCustomVerificationEmailWithContext",
+		Action:  "SendCustomVerificationEmail",
 		Input:   input,
 		Output:  (*ses.SendCustomVerificationEmailOutput)(nil),
 		Error:   nil,
@@ -1110,7 +1110,7 @@ func (c *Client) SendCustomVerificationEmailWithContext(ctx context.Context, inp
 func (c *Client) SendEmailWithContext(ctx context.Context, input *ses.SendEmailInput, opts ...request.Option) (*ses.SendEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SendEmailWithContext",
+		Action:  "SendEmail",
 		Input:   input,
 		Output:  (*ses.SendEmailOutput)(nil),
 		Error:   nil,
@@ -1131,7 +1131,7 @@ func (c *Client) SendEmailWithContext(ctx context.Context, input *ses.SendEmailI
 func (c *Client) SendRawEmailWithContext(ctx context.Context, input *ses.SendRawEmailInput, opts ...request.Option) (*ses.SendRawEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SendRawEmailWithContext",
+		Action:  "SendRawEmail",
 		Input:   input,
 		Output:  (*ses.SendRawEmailOutput)(nil),
 		Error:   nil,
@@ -1152,7 +1152,7 @@ func (c *Client) SendRawEmailWithContext(ctx context.Context, input *ses.SendRaw
 func (c *Client) SendTemplatedEmailWithContext(ctx context.Context, input *ses.SendTemplatedEmailInput, opts ...request.Option) (*ses.SendTemplatedEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SendTemplatedEmailWithContext",
+		Action:  "SendTemplatedEmail",
 		Input:   input,
 		Output:  (*ses.SendTemplatedEmailOutput)(nil),
 		Error:   nil,
@@ -1173,7 +1173,7 @@ func (c *Client) SendTemplatedEmailWithContext(ctx context.Context, input *ses.S
 func (c *Client) SetActiveReceiptRuleSetWithContext(ctx context.Context, input *ses.SetActiveReceiptRuleSetInput, opts ...request.Option) (*ses.SetActiveReceiptRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetActiveReceiptRuleSetWithContext",
+		Action:  "SetActiveReceiptRuleSet",
 		Input:   input,
 		Output:  (*ses.SetActiveReceiptRuleSetOutput)(nil),
 		Error:   nil,
@@ -1194,7 +1194,7 @@ func (c *Client) SetActiveReceiptRuleSetWithContext(ctx context.Context, input *
 func (c *Client) SetIdentityDkimEnabledWithContext(ctx context.Context, input *ses.SetIdentityDkimEnabledInput, opts ...request.Option) (*ses.SetIdentityDkimEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetIdentityDkimEnabledWithContext",
+		Action:  "SetIdentityDkimEnabled",
 		Input:   input,
 		Output:  (*ses.SetIdentityDkimEnabledOutput)(nil),
 		Error:   nil,
@@ -1215,7 +1215,7 @@ func (c *Client) SetIdentityDkimEnabledWithContext(ctx context.Context, input *s
 func (c *Client) SetIdentityFeedbackForwardingEnabledWithContext(ctx context.Context, input *ses.SetIdentityFeedbackForwardingEnabledInput, opts ...request.Option) (*ses.SetIdentityFeedbackForwardingEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetIdentityFeedbackForwardingEnabledWithContext",
+		Action:  "SetIdentityFeedbackForwardingEnabled",
 		Input:   input,
 		Output:  (*ses.SetIdentityFeedbackForwardingEnabledOutput)(nil),
 		Error:   nil,
@@ -1236,7 +1236,7 @@ func (c *Client) SetIdentityFeedbackForwardingEnabledWithContext(ctx context.Con
 func (c *Client) SetIdentityHeadersInNotificationsEnabledWithContext(ctx context.Context, input *ses.SetIdentityHeadersInNotificationsEnabledInput, opts ...request.Option) (*ses.SetIdentityHeadersInNotificationsEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetIdentityHeadersInNotificationsEnabledWithContext",
+		Action:  "SetIdentityHeadersInNotificationsEnabled",
 		Input:   input,
 		Output:  (*ses.SetIdentityHeadersInNotificationsEnabledOutput)(nil),
 		Error:   nil,
@@ -1257,7 +1257,7 @@ func (c *Client) SetIdentityHeadersInNotificationsEnabledWithContext(ctx context
 func (c *Client) SetIdentityMailFromDomainWithContext(ctx context.Context, input *ses.SetIdentityMailFromDomainInput, opts ...request.Option) (*ses.SetIdentityMailFromDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetIdentityMailFromDomainWithContext",
+		Action:  "SetIdentityMailFromDomain",
 		Input:   input,
 		Output:  (*ses.SetIdentityMailFromDomainOutput)(nil),
 		Error:   nil,
@@ -1278,7 +1278,7 @@ func (c *Client) SetIdentityMailFromDomainWithContext(ctx context.Context, input
 func (c *Client) SetIdentityNotificationTopicWithContext(ctx context.Context, input *ses.SetIdentityNotificationTopicInput, opts ...request.Option) (*ses.SetIdentityNotificationTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetIdentityNotificationTopicWithContext",
+		Action:  "SetIdentityNotificationTopic",
 		Input:   input,
 		Output:  (*ses.SetIdentityNotificationTopicOutput)(nil),
 		Error:   nil,
@@ -1299,7 +1299,7 @@ func (c *Client) SetIdentityNotificationTopicWithContext(ctx context.Context, in
 func (c *Client) SetReceiptRulePositionWithContext(ctx context.Context, input *ses.SetReceiptRulePositionInput, opts ...request.Option) (*ses.SetReceiptRulePositionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "SetReceiptRulePositionWithContext",
+		Action:  "SetReceiptRulePosition",
 		Input:   input,
 		Output:  (*ses.SetReceiptRulePositionOutput)(nil),
 		Error:   nil,
@@ -1320,7 +1320,7 @@ func (c *Client) SetReceiptRulePositionWithContext(ctx context.Context, input *s
 func (c *Client) TestRenderTemplateWithContext(ctx context.Context, input *ses.TestRenderTemplateInput, opts ...request.Option) (*ses.TestRenderTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "TestRenderTemplateWithContext",
+		Action:  "TestRenderTemplate",
 		Input:   input,
 		Output:  (*ses.TestRenderTemplateOutput)(nil),
 		Error:   nil,
@@ -1341,7 +1341,7 @@ func (c *Client) TestRenderTemplateWithContext(ctx context.Context, input *ses.T
 func (c *Client) UpdateAccountSendingEnabledWithContext(ctx context.Context, input *ses.UpdateAccountSendingEnabledInput, opts ...request.Option) (*ses.UpdateAccountSendingEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateAccountSendingEnabledWithContext",
+		Action:  "UpdateAccountSendingEnabled",
 		Input:   input,
 		Output:  (*ses.UpdateAccountSendingEnabledOutput)(nil),
 		Error:   nil,
@@ -1362,7 +1362,7 @@ func (c *Client) UpdateAccountSendingEnabledWithContext(ctx context.Context, inp
 func (c *Client) UpdateConfigurationSetEventDestinationWithContext(ctx context.Context, input *ses.UpdateConfigurationSetEventDestinationInput, opts ...request.Option) (*ses.UpdateConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateConfigurationSetEventDestinationWithContext",
+		Action:  "UpdateConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*ses.UpdateConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -1383,7 +1383,7 @@ func (c *Client) UpdateConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) UpdateConfigurationSetReputationMetricsEnabledWithContext(ctx context.Context, input *ses.UpdateConfigurationSetReputationMetricsEnabledInput, opts ...request.Option) (*ses.UpdateConfigurationSetReputationMetricsEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateConfigurationSetReputationMetricsEnabledWithContext",
+		Action:  "UpdateConfigurationSetReputationMetricsEnabled",
 		Input:   input,
 		Output:  (*ses.UpdateConfigurationSetReputationMetricsEnabledOutput)(nil),
 		Error:   nil,
@@ -1404,7 +1404,7 @@ func (c *Client) UpdateConfigurationSetReputationMetricsEnabledWithContext(ctx c
 func (c *Client) UpdateConfigurationSetSendingEnabledWithContext(ctx context.Context, input *ses.UpdateConfigurationSetSendingEnabledInput, opts ...request.Option) (*ses.UpdateConfigurationSetSendingEnabledOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateConfigurationSetSendingEnabledWithContext",
+		Action:  "UpdateConfigurationSetSendingEnabled",
 		Input:   input,
 		Output:  (*ses.UpdateConfigurationSetSendingEnabledOutput)(nil),
 		Error:   nil,
@@ -1425,7 +1425,7 @@ func (c *Client) UpdateConfigurationSetSendingEnabledWithContext(ctx context.Con
 func (c *Client) UpdateConfigurationSetTrackingOptionsWithContext(ctx context.Context, input *ses.UpdateConfigurationSetTrackingOptionsInput, opts ...request.Option) (*ses.UpdateConfigurationSetTrackingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateConfigurationSetTrackingOptionsWithContext",
+		Action:  "UpdateConfigurationSetTrackingOptions",
 		Input:   input,
 		Output:  (*ses.UpdateConfigurationSetTrackingOptionsOutput)(nil),
 		Error:   nil,
@@ -1446,7 +1446,7 @@ func (c *Client) UpdateConfigurationSetTrackingOptionsWithContext(ctx context.Co
 func (c *Client) UpdateCustomVerificationEmailTemplateWithContext(ctx context.Context, input *ses.UpdateCustomVerificationEmailTemplateInput, opts ...request.Option) (*ses.UpdateCustomVerificationEmailTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateCustomVerificationEmailTemplateWithContext",
+		Action:  "UpdateCustomVerificationEmailTemplate",
 		Input:   input,
 		Output:  (*ses.UpdateCustomVerificationEmailTemplateOutput)(nil),
 		Error:   nil,
@@ -1467,7 +1467,7 @@ func (c *Client) UpdateCustomVerificationEmailTemplateWithContext(ctx context.Co
 func (c *Client) UpdateReceiptRuleWithContext(ctx context.Context, input *ses.UpdateReceiptRuleInput, opts ...request.Option) (*ses.UpdateReceiptRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateReceiptRuleWithContext",
+		Action:  "UpdateReceiptRule",
 		Input:   input,
 		Output:  (*ses.UpdateReceiptRuleOutput)(nil),
 		Error:   nil,
@@ -1488,7 +1488,7 @@ func (c *Client) UpdateReceiptRuleWithContext(ctx context.Context, input *ses.Up
 func (c *Client) UpdateTemplateWithContext(ctx context.Context, input *ses.UpdateTemplateInput, opts ...request.Option) (*ses.UpdateTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "UpdateTemplateWithContext",
+		Action:  "UpdateTemplate",
 		Input:   input,
 		Output:  (*ses.UpdateTemplateOutput)(nil),
 		Error:   nil,
@@ -1509,7 +1509,7 @@ func (c *Client) UpdateTemplateWithContext(ctx context.Context, input *ses.Updat
 func (c *Client) VerifyDomainDkimWithContext(ctx context.Context, input *ses.VerifyDomainDkimInput, opts ...request.Option) (*ses.VerifyDomainDkimOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "VerifyDomainDkimWithContext",
+		Action:  "VerifyDomainDkim",
 		Input:   input,
 		Output:  (*ses.VerifyDomainDkimOutput)(nil),
 		Error:   nil,
@@ -1530,7 +1530,7 @@ func (c *Client) VerifyDomainDkimWithContext(ctx context.Context, input *ses.Ver
 func (c *Client) VerifyDomainIdentityWithContext(ctx context.Context, input *ses.VerifyDomainIdentityInput, opts ...request.Option) (*ses.VerifyDomainIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "VerifyDomainIdentityWithContext",
+		Action:  "VerifyDomainIdentity",
 		Input:   input,
 		Output:  (*ses.VerifyDomainIdentityOutput)(nil),
 		Error:   nil,
@@ -1551,7 +1551,7 @@ func (c *Client) VerifyDomainIdentityWithContext(ctx context.Context, input *ses
 func (c *Client) VerifyEmailAddressWithContext(ctx context.Context, input *ses.VerifyEmailAddressInput, opts ...request.Option) (*ses.VerifyEmailAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "VerifyEmailAddressWithContext",
+		Action:  "VerifyEmailAddress",
 		Input:   input,
 		Output:  (*ses.VerifyEmailAddressOutput)(nil),
 		Error:   nil,
@@ -1572,7 +1572,7 @@ func (c *Client) VerifyEmailAddressWithContext(ctx context.Context, input *ses.V
 func (c *Client) VerifyEmailIdentityWithContext(ctx context.Context, input *ses.VerifyEmailIdentityInput, opts ...request.Option) (*ses.VerifyEmailIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
-		Action:  "VerifyEmailIdentityWithContext",
+		Action:  "VerifyEmailIdentity",
 		Input:   input,
 		Output:  (*ses.VerifyEmailIdentityOutput)(nil),
 		Error:   nil,

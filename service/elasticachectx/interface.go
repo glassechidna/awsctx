@@ -77,7 +77,7 @@ var _ ElastiCache = (*Client)(nil)
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *elasticache.AddTagsToResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*elasticache.TagListMessage)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *elasti
 func (c *Client) AuthorizeCacheSecurityGroupIngressWithContext(ctx context.Context, input *elasticache.AuthorizeCacheSecurityGroupIngressInput, opts ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "AuthorizeCacheSecurityGroupIngressWithContext",
+		Action:  "AuthorizeCacheSecurityGroupIngress",
 		Input:   input,
 		Output:  (*elasticache.AuthorizeCacheSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) AuthorizeCacheSecurityGroupIngressWithContext(ctx context.Conte
 func (c *Client) BatchApplyUpdateActionWithContext(ctx context.Context, input *elasticache.BatchApplyUpdateActionInput, opts ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "BatchApplyUpdateActionWithContext",
+		Action:  "BatchApplyUpdateAction",
 		Input:   input,
 		Output:  (*elasticache.BatchApplyUpdateActionOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) BatchApplyUpdateActionWithContext(ctx context.Context, input *e
 func (c *Client) BatchStopUpdateActionWithContext(ctx context.Context, input *elasticache.BatchStopUpdateActionInput, opts ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "BatchStopUpdateActionWithContext",
+		Action:  "BatchStopUpdateAction",
 		Input:   input,
 		Output:  (*elasticache.BatchStopUpdateActionOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) BatchStopUpdateActionWithContext(ctx context.Context, input *el
 func (c *Client) CopySnapshotWithContext(ctx context.Context, input *elasticache.CopySnapshotInput, opts ...request.Option) (*elasticache.CopySnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CopySnapshotWithContext",
+		Action:  "CopySnapshot",
 		Input:   input,
 		Output:  (*elasticache.CopySnapshotOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) CopySnapshotWithContext(ctx context.Context, input *elasticache
 func (c *Client) CreateCacheClusterWithContext(ctx context.Context, input *elasticache.CreateCacheClusterInput, opts ...request.Option) (*elasticache.CreateCacheClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CreateCacheClusterWithContext",
+		Action:  "CreateCacheCluster",
 		Input:   input,
 		Output:  (*elasticache.CreateCacheClusterOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) CreateCacheClusterWithContext(ctx context.Context, input *elast
 func (c *Client) CreateCacheParameterGroupWithContext(ctx context.Context, input *elasticache.CreateCacheParameterGroupInput, opts ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CreateCacheParameterGroupWithContext",
+		Action:  "CreateCacheParameterGroup",
 		Input:   input,
 		Output:  (*elasticache.CreateCacheParameterGroupOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) CreateCacheParameterGroupWithContext(ctx context.Context, input
 func (c *Client) CreateCacheSecurityGroupWithContext(ctx context.Context, input *elasticache.CreateCacheSecurityGroupInput, opts ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CreateCacheSecurityGroupWithContext",
+		Action:  "CreateCacheSecurityGroup",
 		Input:   input,
 		Output:  (*elasticache.CreateCacheSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) CreateCacheSecurityGroupWithContext(ctx context.Context, input 
 func (c *Client) CreateCacheSubnetGroupWithContext(ctx context.Context, input *elasticache.CreateCacheSubnetGroupInput, opts ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CreateCacheSubnetGroupWithContext",
+		Action:  "CreateCacheSubnetGroup",
 		Input:   input,
 		Output:  (*elasticache.CreateCacheSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) CreateCacheSubnetGroupWithContext(ctx context.Context, input *e
 func (c *Client) CreateReplicationGroupWithContext(ctx context.Context, input *elasticache.CreateReplicationGroupInput, opts ...request.Option) (*elasticache.CreateReplicationGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CreateReplicationGroupWithContext",
+		Action:  "CreateReplicationGroup",
 		Input:   input,
 		Output:  (*elasticache.CreateReplicationGroupOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) CreateReplicationGroupWithContext(ctx context.Context, input *e
 func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *elasticache.CreateSnapshotInput, opts ...request.Option) (*elasticache.CreateSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "CreateSnapshotWithContext",
+		Action:  "CreateSnapshot",
 		Input:   input,
 		Output:  (*elasticache.CreateSnapshotOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *elasticac
 func (c *Client) DecreaseReplicaCountWithContext(ctx context.Context, input *elasticache.DecreaseReplicaCountInput, opts ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DecreaseReplicaCountWithContext",
+		Action:  "DecreaseReplicaCount",
 		Input:   input,
 		Output:  (*elasticache.DecreaseReplicaCountOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) DecreaseReplicaCountWithContext(ctx context.Context, input *ela
 func (c *Client) DeleteCacheClusterWithContext(ctx context.Context, input *elasticache.DeleteCacheClusterInput, opts ...request.Option) (*elasticache.DeleteCacheClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DeleteCacheClusterWithContext",
+		Action:  "DeleteCacheCluster",
 		Input:   input,
 		Output:  (*elasticache.DeleteCacheClusterOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) DeleteCacheClusterWithContext(ctx context.Context, input *elast
 func (c *Client) DeleteCacheParameterGroupWithContext(ctx context.Context, input *elasticache.DeleteCacheParameterGroupInput, opts ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DeleteCacheParameterGroupWithContext",
+		Action:  "DeleteCacheParameterGroup",
 		Input:   input,
 		Output:  (*elasticache.DeleteCacheParameterGroupOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) DeleteCacheParameterGroupWithContext(ctx context.Context, input
 func (c *Client) DeleteCacheSecurityGroupWithContext(ctx context.Context, input *elasticache.DeleteCacheSecurityGroupInput, opts ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DeleteCacheSecurityGroupWithContext",
+		Action:  "DeleteCacheSecurityGroup",
 		Input:   input,
 		Output:  (*elasticache.DeleteCacheSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) DeleteCacheSecurityGroupWithContext(ctx context.Context, input 
 func (c *Client) DeleteCacheSubnetGroupWithContext(ctx context.Context, input *elasticache.DeleteCacheSubnetGroupInput, opts ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DeleteCacheSubnetGroupWithContext",
+		Action:  "DeleteCacheSubnetGroup",
 		Input:   input,
 		Output:  (*elasticache.DeleteCacheSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) DeleteCacheSubnetGroupWithContext(ctx context.Context, input *e
 func (c *Client) DeleteReplicationGroupWithContext(ctx context.Context, input *elasticache.DeleteReplicationGroupInput, opts ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DeleteReplicationGroupWithContext",
+		Action:  "DeleteReplicationGroup",
 		Input:   input,
 		Output:  (*elasticache.DeleteReplicationGroupOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) DeleteReplicationGroupWithContext(ctx context.Context, input *e
 func (c *Client) DeleteSnapshotWithContext(ctx context.Context, input *elasticache.DeleteSnapshotInput, opts ...request.Option) (*elasticache.DeleteSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DeleteSnapshotWithContext",
+		Action:  "DeleteSnapshot",
 		Input:   input,
 		Output:  (*elasticache.DeleteSnapshotOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, input *elasticac
 func (c *Client) DescribeCacheClustersWithContext(ctx context.Context, input *elasticache.DescribeCacheClustersInput, opts ...request.Option) (*elasticache.DescribeCacheClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeCacheClustersWithContext",
+		Action:  "DescribeCacheClusters",
 		Input:   input,
 		Output:  (*elasticache.DescribeCacheClustersOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) DescribeCacheClustersWithContext(ctx context.Context, input *el
 func (c *Client) DescribeCacheEngineVersionsWithContext(ctx context.Context, input *elasticache.DescribeCacheEngineVersionsInput, opts ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeCacheEngineVersionsWithContext",
+		Action:  "DescribeCacheEngineVersions",
 		Input:   input,
 		Output:  (*elasticache.DescribeCacheEngineVersionsOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) DescribeCacheEngineVersionsWithContext(ctx context.Context, inp
 func (c *Client) DescribeCacheParameterGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheParameterGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeCacheParameterGroupsWithContext",
+		Action:  "DescribeCacheParameterGroups",
 		Input:   input,
 		Output:  (*elasticache.DescribeCacheParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) DescribeCacheParameterGroupsWithContext(ctx context.Context, in
 func (c *Client) DescribeCacheParametersWithContext(ctx context.Context, input *elasticache.DescribeCacheParametersInput, opts ...request.Option) (*elasticache.DescribeCacheParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeCacheParametersWithContext",
+		Action:  "DescribeCacheParameters",
 		Input:   input,
 		Output:  (*elasticache.DescribeCacheParametersOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) DescribeCacheParametersWithContext(ctx context.Context, input *
 func (c *Client) DescribeCacheSecurityGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheSecurityGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeCacheSecurityGroupsWithContext",
+		Action:  "DescribeCacheSecurityGroups",
 		Input:   input,
 		Output:  (*elasticache.DescribeCacheSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) DescribeCacheSecurityGroupsWithContext(ctx context.Context, inp
 func (c *Client) DescribeCacheSubnetGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheSubnetGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeCacheSubnetGroupsWithContext",
+		Action:  "DescribeCacheSubnetGroups",
 		Input:   input,
 		Output:  (*elasticache.DescribeCacheSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -581,7 +581,7 @@ func (c *Client) DescribeCacheSubnetGroupsWithContext(ctx context.Context, input
 func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context, input *elasticache.DescribeEngineDefaultParametersInput, opts ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeEngineDefaultParametersWithContext",
+		Action:  "DescribeEngineDefaultParameters",
 		Input:   input,
 		Output:  (*elasticache.DescribeEngineDefaultParametersOutput)(nil),
 		Error:   nil,
@@ -602,7 +602,7 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, opts ...request.Option) (*elasticache.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*elasticache.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -623,7 +623,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticac
 func (c *Client) DescribeReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeReplicationGroupsWithContext",
+		Action:  "DescribeReplicationGroups",
 		Input:   input,
 		Output:  (*elasticache.DescribeReplicationGroupsOutput)(nil),
 		Error:   nil,
@@ -644,7 +644,7 @@ func (c *Client) DescribeReplicationGroupsWithContext(ctx context.Context, input
 func (c *Client) DescribeReservedCacheNodesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeReservedCacheNodesWithContext",
+		Action:  "DescribeReservedCacheNodes",
 		Input:   input,
 		Output:  (*elasticache.DescribeReservedCacheNodesOutput)(nil),
 		Error:   nil,
@@ -665,7 +665,7 @@ func (c *Client) DescribeReservedCacheNodesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeReservedCacheNodesOfferingsWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesOfferingsInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeReservedCacheNodesOfferingsWithContext",
+		Action:  "DescribeReservedCacheNodesOfferings",
 		Input:   input,
 		Output:  (*elasticache.DescribeReservedCacheNodesOfferingsOutput)(nil),
 		Error:   nil,
@@ -686,7 +686,7 @@ func (c *Client) DescribeReservedCacheNodesOfferingsWithContext(ctx context.Cont
 func (c *Client) DescribeServiceUpdatesWithContext(ctx context.Context, input *elasticache.DescribeServiceUpdatesInput, opts ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeServiceUpdatesWithContext",
+		Action:  "DescribeServiceUpdates",
 		Input:   input,
 		Output:  (*elasticache.DescribeServiceUpdatesOutput)(nil),
 		Error:   nil,
@@ -707,7 +707,7 @@ func (c *Client) DescribeServiceUpdatesWithContext(ctx context.Context, input *e
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *elasticache.DescribeSnapshotsInput, opts ...request.Option) (*elasticache.DescribeSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeSnapshotsWithContext",
+		Action:  "DescribeSnapshots",
 		Input:   input,
 		Output:  (*elasticache.DescribeSnapshotsOutput)(nil),
 		Error:   nil,
@@ -728,7 +728,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *elasti
 func (c *Client) DescribeUpdateActionsWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, opts ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "DescribeUpdateActionsWithContext",
+		Action:  "DescribeUpdateActions",
 		Input:   input,
 		Output:  (*elasticache.DescribeUpdateActionsOutput)(nil),
 		Error:   nil,
@@ -749,7 +749,7 @@ func (c *Client) DescribeUpdateActionsWithContext(ctx context.Context, input *el
 func (c *Client) IncreaseReplicaCountWithContext(ctx context.Context, input *elasticache.IncreaseReplicaCountInput, opts ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "IncreaseReplicaCountWithContext",
+		Action:  "IncreaseReplicaCount",
 		Input:   input,
 		Output:  (*elasticache.IncreaseReplicaCountOutput)(nil),
 		Error:   nil,
@@ -770,7 +770,7 @@ func (c *Client) IncreaseReplicaCountWithContext(ctx context.Context, input *ela
 func (c *Client) ListAllowedNodeTypeModificationsWithContext(ctx context.Context, input *elasticache.ListAllowedNodeTypeModificationsInput, opts ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ListAllowedNodeTypeModificationsWithContext",
+		Action:  "ListAllowedNodeTypeModifications",
 		Input:   input,
 		Output:  (*elasticache.ListAllowedNodeTypeModificationsOutput)(nil),
 		Error:   nil,
@@ -791,7 +791,7 @@ func (c *Client) ListAllowedNodeTypeModificationsWithContext(ctx context.Context
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *elasticache.ListTagsForResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*elasticache.TagListMessage)(nil),
 		Error:   nil,
@@ -812,7 +812,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *elas
 func (c *Client) ModifyCacheClusterWithContext(ctx context.Context, input *elasticache.ModifyCacheClusterInput, opts ...request.Option) (*elasticache.ModifyCacheClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ModifyCacheClusterWithContext",
+		Action:  "ModifyCacheCluster",
 		Input:   input,
 		Output:  (*elasticache.ModifyCacheClusterOutput)(nil),
 		Error:   nil,
@@ -833,7 +833,7 @@ func (c *Client) ModifyCacheClusterWithContext(ctx context.Context, input *elast
 func (c *Client) ModifyCacheParameterGroupWithContext(ctx context.Context, input *elasticache.ModifyCacheParameterGroupInput, opts ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ModifyCacheParameterGroupWithContext",
+		Action:  "ModifyCacheParameterGroup",
 		Input:   input,
 		Output:  (*elasticache.CacheParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -854,7 +854,7 @@ func (c *Client) ModifyCacheParameterGroupWithContext(ctx context.Context, input
 func (c *Client) ModifyCacheSubnetGroupWithContext(ctx context.Context, input *elasticache.ModifyCacheSubnetGroupInput, opts ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ModifyCacheSubnetGroupWithContext",
+		Action:  "ModifyCacheSubnetGroup",
 		Input:   input,
 		Output:  (*elasticache.ModifyCacheSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -875,7 +875,7 @@ func (c *Client) ModifyCacheSubnetGroupWithContext(ctx context.Context, input *e
 func (c *Client) ModifyReplicationGroupWithContext(ctx context.Context, input *elasticache.ModifyReplicationGroupInput, opts ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ModifyReplicationGroupWithContext",
+		Action:  "ModifyReplicationGroup",
 		Input:   input,
 		Output:  (*elasticache.ModifyReplicationGroupOutput)(nil),
 		Error:   nil,
@@ -896,7 +896,7 @@ func (c *Client) ModifyReplicationGroupWithContext(ctx context.Context, input *e
 func (c *Client) ModifyReplicationGroupShardConfigurationWithContext(ctx context.Context, input *elasticache.ModifyReplicationGroupShardConfigurationInput, opts ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ModifyReplicationGroupShardConfigurationWithContext",
+		Action:  "ModifyReplicationGroupShardConfiguration",
 		Input:   input,
 		Output:  (*elasticache.ModifyReplicationGroupShardConfigurationOutput)(nil),
 		Error:   nil,
@@ -917,7 +917,7 @@ func (c *Client) ModifyReplicationGroupShardConfigurationWithContext(ctx context
 func (c *Client) PurchaseReservedCacheNodesOfferingWithContext(ctx context.Context, input *elasticache.PurchaseReservedCacheNodesOfferingInput, opts ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "PurchaseReservedCacheNodesOfferingWithContext",
+		Action:  "PurchaseReservedCacheNodesOffering",
 		Input:   input,
 		Output:  (*elasticache.PurchaseReservedCacheNodesOfferingOutput)(nil),
 		Error:   nil,
@@ -938,7 +938,7 @@ func (c *Client) PurchaseReservedCacheNodesOfferingWithContext(ctx context.Conte
 func (c *Client) RebootCacheClusterWithContext(ctx context.Context, input *elasticache.RebootCacheClusterInput, opts ...request.Option) (*elasticache.RebootCacheClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "RebootCacheClusterWithContext",
+		Action:  "RebootCacheCluster",
 		Input:   input,
 		Output:  (*elasticache.RebootCacheClusterOutput)(nil),
 		Error:   nil,
@@ -959,7 +959,7 @@ func (c *Client) RebootCacheClusterWithContext(ctx context.Context, input *elast
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *elasticache.RemoveTagsFromResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*elasticache.TagListMessage)(nil),
 		Error:   nil,
@@ -980,7 +980,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *e
 func (c *Client) ResetCacheParameterGroupWithContext(ctx context.Context, input *elasticache.ResetCacheParameterGroupInput, opts ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "ResetCacheParameterGroupWithContext",
+		Action:  "ResetCacheParameterGroup",
 		Input:   input,
 		Output:  (*elasticache.CacheParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -1001,7 +1001,7 @@ func (c *Client) ResetCacheParameterGroupWithContext(ctx context.Context, input 
 func (c *Client) RevokeCacheSecurityGroupIngressWithContext(ctx context.Context, input *elasticache.RevokeCacheSecurityGroupIngressInput, opts ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "RevokeCacheSecurityGroupIngressWithContext",
+		Action:  "RevokeCacheSecurityGroupIngress",
 		Input:   input,
 		Output:  (*elasticache.RevokeCacheSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -1022,7 +1022,7 @@ func (c *Client) RevokeCacheSecurityGroupIngressWithContext(ctx context.Context,
 func (c *Client) TestFailoverWithContext(ctx context.Context, input *elasticache.TestFailoverInput, opts ...request.Option) (*elasticache.TestFailoverOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
-		Action:  "TestFailoverWithContext",
+		Action:  "TestFailover",
 		Input:   input,
 		Output:  (*elasticache.TestFailoverOutput)(nil),
 		Error:   nil,

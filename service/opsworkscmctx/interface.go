@@ -47,7 +47,7 @@ var _ OpsWorksCM = (*Client)(nil)
 func (c *Client) AssociateNodeWithContext(ctx context.Context, input *opsworkscm.AssociateNodeInput, opts ...request.Option) (*opsworkscm.AssociateNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "AssociateNodeWithContext",
+		Action:  "AssociateNode",
 		Input:   input,
 		Output:  (*opsworkscm.AssociateNodeOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) AssociateNodeWithContext(ctx context.Context, input *opsworkscm
 func (c *Client) CreateBackupWithContext(ctx context.Context, input *opsworkscm.CreateBackupInput, opts ...request.Option) (*opsworkscm.CreateBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "CreateBackupWithContext",
+		Action:  "CreateBackup",
 		Input:   input,
 		Output:  (*opsworkscm.CreateBackupOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, input *opsworkscm.
 func (c *Client) CreateServerWithContext(ctx context.Context, input *opsworkscm.CreateServerInput, opts ...request.Option) (*opsworkscm.CreateServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "CreateServerWithContext",
+		Action:  "CreateServer",
 		Input:   input,
 		Output:  (*opsworkscm.CreateServerOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) CreateServerWithContext(ctx context.Context, input *opsworkscm.
 func (c *Client) DeleteBackupWithContext(ctx context.Context, input *opsworkscm.DeleteBackupInput, opts ...request.Option) (*opsworkscm.DeleteBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DeleteBackupWithContext",
+		Action:  "DeleteBackup",
 		Input:   input,
 		Output:  (*opsworkscm.DeleteBackupOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, input *opsworkscm.
 func (c *Client) DeleteServerWithContext(ctx context.Context, input *opsworkscm.DeleteServerInput, opts ...request.Option) (*opsworkscm.DeleteServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DeleteServerWithContext",
+		Action:  "DeleteServer",
 		Input:   input,
 		Output:  (*opsworkscm.DeleteServerOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) DeleteServerWithContext(ctx context.Context, input *opsworkscm.
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *opsworkscm.DescribeAccountAttributesInput, opts ...request.Option) (*opsworkscm.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DescribeAccountAttributesWithContext",
+		Action:  "DescribeAccountAttributes",
 		Input:   input,
 		Output:  (*opsworkscm.DescribeAccountAttributesOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *opsworkscm.DescribeBackupsInput, opts ...request.Option) (*opsworkscm.DescribeBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DescribeBackupsWithContext",
+		Action:  "DescribeBackups",
 		Input:   input,
 		Output:  (*opsworkscm.DescribeBackupsOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *opsworks
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *opsworkscm.DescribeEventsInput, opts ...request.Option) (*opsworkscm.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*opsworkscm.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *opsworksc
 func (c *Client) DescribeNodeAssociationStatusWithContext(ctx context.Context, input *opsworkscm.DescribeNodeAssociationStatusInput, opts ...request.Option) (*opsworkscm.DescribeNodeAssociationStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DescribeNodeAssociationStatusWithContext",
+		Action:  "DescribeNodeAssociationStatus",
 		Input:   input,
 		Output:  (*opsworkscm.DescribeNodeAssociationStatusOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) DescribeNodeAssociationStatusWithContext(ctx context.Context, i
 func (c *Client) DescribeServersWithContext(ctx context.Context, input *opsworkscm.DescribeServersInput, opts ...request.Option) (*opsworkscm.DescribeServersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DescribeServersWithContext",
+		Action:  "DescribeServers",
 		Input:   input,
 		Output:  (*opsworkscm.DescribeServersOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) DescribeServersWithContext(ctx context.Context, input *opsworks
 func (c *Client) DisassociateNodeWithContext(ctx context.Context, input *opsworkscm.DisassociateNodeInput, opts ...request.Option) (*opsworkscm.DisassociateNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "DisassociateNodeWithContext",
+		Action:  "DisassociateNode",
 		Input:   input,
 		Output:  (*opsworkscm.DisassociateNodeOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) DisassociateNodeWithContext(ctx context.Context, input *opswork
 func (c *Client) ExportServerEngineAttributeWithContext(ctx context.Context, input *opsworkscm.ExportServerEngineAttributeInput, opts ...request.Option) (*opsworkscm.ExportServerEngineAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "ExportServerEngineAttributeWithContext",
+		Action:  "ExportServerEngineAttribute",
 		Input:   input,
 		Output:  (*opsworkscm.ExportServerEngineAttributeOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) ExportServerEngineAttributeWithContext(ctx context.Context, inp
 func (c *Client) RestoreServerWithContext(ctx context.Context, input *opsworkscm.RestoreServerInput, opts ...request.Option) (*opsworkscm.RestoreServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "RestoreServerWithContext",
+		Action:  "RestoreServer",
 		Input:   input,
 		Output:  (*opsworkscm.RestoreServerOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) RestoreServerWithContext(ctx context.Context, input *opsworkscm
 func (c *Client) StartMaintenanceWithContext(ctx context.Context, input *opsworkscm.StartMaintenanceInput, opts ...request.Option) (*opsworkscm.StartMaintenanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "StartMaintenanceWithContext",
+		Action:  "StartMaintenance",
 		Input:   input,
 		Output:  (*opsworkscm.StartMaintenanceOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) StartMaintenanceWithContext(ctx context.Context, input *opswork
 func (c *Client) UpdateServerWithContext(ctx context.Context, input *opsworkscm.UpdateServerInput, opts ...request.Option) (*opsworkscm.UpdateServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "UpdateServerWithContext",
+		Action:  "UpdateServer",
 		Input:   input,
 		Output:  (*opsworkscm.UpdateServerOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) UpdateServerWithContext(ctx context.Context, input *opsworkscm.
 func (c *Client) UpdateServerEngineAttributesWithContext(ctx context.Context, input *opsworkscm.UpdateServerEngineAttributesInput, opts ...request.Option) (*opsworkscm.UpdateServerEngineAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
-		Action:  "UpdateServerEngineAttributesWithContext",
+		Action:  "UpdateServerEngineAttributes",
 		Input:   input,
 		Output:  (*opsworkscm.UpdateServerEngineAttributesOutput)(nil),
 		Error:   nil,

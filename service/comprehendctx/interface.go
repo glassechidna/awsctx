@@ -76,7 +76,7 @@ var _ Comprehend = (*Client)(nil)
 func (c *Client) BatchDetectDominantLanguageWithContext(ctx context.Context, input *comprehend.BatchDetectDominantLanguageInput, opts ...request.Option) (*comprehend.BatchDetectDominantLanguageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "BatchDetectDominantLanguageWithContext",
+		Action:  "BatchDetectDominantLanguage",
 		Input:   input,
 		Output:  (*comprehend.BatchDetectDominantLanguageOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) BatchDetectDominantLanguageWithContext(ctx context.Context, inp
 func (c *Client) BatchDetectEntitiesWithContext(ctx context.Context, input *comprehend.BatchDetectEntitiesInput, opts ...request.Option) (*comprehend.BatchDetectEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "BatchDetectEntitiesWithContext",
+		Action:  "BatchDetectEntities",
 		Input:   input,
 		Output:  (*comprehend.BatchDetectEntitiesOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) BatchDetectEntitiesWithContext(ctx context.Context, input *comp
 func (c *Client) BatchDetectKeyPhrasesWithContext(ctx context.Context, input *comprehend.BatchDetectKeyPhrasesInput, opts ...request.Option) (*comprehend.BatchDetectKeyPhrasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "BatchDetectKeyPhrasesWithContext",
+		Action:  "BatchDetectKeyPhrases",
 		Input:   input,
 		Output:  (*comprehend.BatchDetectKeyPhrasesOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) BatchDetectKeyPhrasesWithContext(ctx context.Context, input *co
 func (c *Client) BatchDetectSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectSentimentInput, opts ...request.Option) (*comprehend.BatchDetectSentimentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "BatchDetectSentimentWithContext",
+		Action:  "BatchDetectSentiment",
 		Input:   input,
 		Output:  (*comprehend.BatchDetectSentimentOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) BatchDetectSentimentWithContext(ctx context.Context, input *com
 func (c *Client) BatchDetectSyntaxWithContext(ctx context.Context, input *comprehend.BatchDetectSyntaxInput, opts ...request.Option) (*comprehend.BatchDetectSyntaxOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "BatchDetectSyntaxWithContext",
+		Action:  "BatchDetectSyntax",
 		Input:   input,
 		Output:  (*comprehend.BatchDetectSyntaxOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) BatchDetectSyntaxWithContext(ctx context.Context, input *compre
 func (c *Client) CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "CreateDocumentClassifierWithContext",
+		Action:  "CreateDocumentClassifier",
 		Input:   input,
 		Output:  (*comprehend.CreateDocumentClassifierOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) CreateDocumentClassifierWithContext(ctx context.Context, input 
 func (c *Client) CreateEntityRecognizerWithContext(ctx context.Context, input *comprehend.CreateEntityRecognizerInput, opts ...request.Option) (*comprehend.CreateEntityRecognizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "CreateEntityRecognizerWithContext",
+		Action:  "CreateEntityRecognizer",
 		Input:   input,
 		Output:  (*comprehend.CreateEntityRecognizerOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) CreateEntityRecognizerWithContext(ctx context.Context, input *c
 func (c *Client) DeleteDocumentClassifierWithContext(ctx context.Context, input *comprehend.DeleteDocumentClassifierInput, opts ...request.Option) (*comprehend.DeleteDocumentClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DeleteDocumentClassifierWithContext",
+		Action:  "DeleteDocumentClassifier",
 		Input:   input,
 		Output:  (*comprehend.DeleteDocumentClassifierOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) DeleteDocumentClassifierWithContext(ctx context.Context, input 
 func (c *Client) DeleteEntityRecognizerWithContext(ctx context.Context, input *comprehend.DeleteEntityRecognizerInput, opts ...request.Option) (*comprehend.DeleteEntityRecognizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DeleteEntityRecognizerWithContext",
+		Action:  "DeleteEntityRecognizer",
 		Input:   input,
 		Output:  (*comprehend.DeleteEntityRecognizerOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) DeleteEntityRecognizerWithContext(ctx context.Context, input *c
 func (c *Client) DescribeDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassificationJobInput, opts ...request.Option) (*comprehend.DescribeDocumentClassificationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeDocumentClassificationJobWithContext",
+		Action:  "DescribeDocumentClassificationJob",
 		Input:   input,
 		Output:  (*comprehend.DescribeDocumentClassificationJobOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) DescribeDocumentClassificationJobWithContext(ctx context.Contex
 func (c *Client) DescribeDocumentClassifierWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassifierInput, opts ...request.Option) (*comprehend.DescribeDocumentClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeDocumentClassifierWithContext",
+		Action:  "DescribeDocumentClassifier",
 		Input:   input,
 		Output:  (*comprehend.DescribeDocumentClassifierOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) DescribeDocumentClassifierWithContext(ctx context.Context, inpu
 func (c *Client) DescribeDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.DescribeDominantLanguageDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeDominantLanguageDetectionJobWithContext",
+		Action:  "DescribeDominantLanguageDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.DescribeDominantLanguageDetectionJobOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) DescribeDominantLanguageDetectionJobWithContext(ctx context.Con
 func (c *Client) DescribeEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEntitiesDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeEntitiesDetectionJobWithContext",
+		Action:  "DescribeEntitiesDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.DescribeEntitiesDetectionJobOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) DescribeEntitiesDetectionJobWithContext(ctx context.Context, in
 func (c *Client) DescribeEntityRecognizerWithContext(ctx context.Context, input *comprehend.DescribeEntityRecognizerInput, opts ...request.Option) (*comprehend.DescribeEntityRecognizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeEntityRecognizerWithContext",
+		Action:  "DescribeEntityRecognizer",
 		Input:   input,
 		Output:  (*comprehend.DescribeEntityRecognizerOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) DescribeEntityRecognizerWithContext(ctx context.Context, input 
 func (c *Client) DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeKeyPhrasesDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeKeyPhrasesDetectionJobWithContext",
+		Action:  "DescribeKeyPhrasesDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.DescribeKeyPhrasesDetectionJobOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, 
 func (c *Client) DescribeSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeSentimentDetectionJobInput, opts ...request.Option) (*comprehend.DescribeSentimentDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeSentimentDetectionJobWithContext",
+		Action:  "DescribeSentimentDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.DescribeSentimentDetectionJobOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) DescribeSentimentDetectionJobWithContext(ctx context.Context, i
 func (c *Client) DescribeTopicsDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeTopicsDetectionJobInput, opts ...request.Option) (*comprehend.DescribeTopicsDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DescribeTopicsDetectionJobWithContext",
+		Action:  "DescribeTopicsDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.DescribeTopicsDetectionJobOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) DescribeTopicsDetectionJobWithContext(ctx context.Context, inpu
 func (c *Client) DetectDominantLanguageWithContext(ctx context.Context, input *comprehend.DetectDominantLanguageInput, opts ...request.Option) (*comprehend.DetectDominantLanguageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DetectDominantLanguageWithContext",
+		Action:  "DetectDominantLanguage",
 		Input:   input,
 		Output:  (*comprehend.DetectDominantLanguageOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) DetectDominantLanguageWithContext(ctx context.Context, input *c
 func (c *Client) DetectEntitiesWithContext(ctx context.Context, input *comprehend.DetectEntitiesInput, opts ...request.Option) (*comprehend.DetectEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DetectEntitiesWithContext",
+		Action:  "DetectEntities",
 		Input:   input,
 		Output:  (*comprehend.DetectEntitiesOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) DetectEntitiesWithContext(ctx context.Context, input *comprehen
 func (c *Client) DetectKeyPhrasesWithContext(ctx context.Context, input *comprehend.DetectKeyPhrasesInput, opts ...request.Option) (*comprehend.DetectKeyPhrasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DetectKeyPhrasesWithContext",
+		Action:  "DetectKeyPhrases",
 		Input:   input,
 		Output:  (*comprehend.DetectKeyPhrasesOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) DetectKeyPhrasesWithContext(ctx context.Context, input *compreh
 func (c *Client) DetectSentimentWithContext(ctx context.Context, input *comprehend.DetectSentimentInput, opts ...request.Option) (*comprehend.DetectSentimentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DetectSentimentWithContext",
+		Action:  "DetectSentiment",
 		Input:   input,
 		Output:  (*comprehend.DetectSentimentOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) DetectSentimentWithContext(ctx context.Context, input *comprehe
 func (c *Client) DetectSyntaxWithContext(ctx context.Context, input *comprehend.DetectSyntaxInput, opts ...request.Option) (*comprehend.DetectSyntaxOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "DetectSyntaxWithContext",
+		Action:  "DetectSyntax",
 		Input:   input,
 		Output:  (*comprehend.DetectSyntaxOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) DetectSyntaxWithContext(ctx context.Context, input *comprehend.
 func (c *Client) ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListDocumentClassificationJobsWithContext",
+		Action:  "ListDocumentClassificationJobs",
 		Input:   input,
 		Output:  (*comprehend.ListDocumentClassificationJobsOutput)(nil),
 		Error:   nil,
@@ -559,7 +559,7 @@ func (c *Client) ListDocumentClassificationJobsWithContext(ctx context.Context, 
 func (c *Client) ListDocumentClassifiersWithContext(ctx context.Context, input *comprehend.ListDocumentClassifiersInput, opts ...request.Option) (*comprehend.ListDocumentClassifiersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListDocumentClassifiersWithContext",
+		Action:  "ListDocumentClassifiers",
 		Input:   input,
 		Output:  (*comprehend.ListDocumentClassifiersOutput)(nil),
 		Error:   nil,
@@ -580,7 +580,7 @@ func (c *Client) ListDocumentClassifiersWithContext(ctx context.Context, input *
 func (c *Client) ListDominantLanguageDetectionJobsWithContext(ctx context.Context, input *comprehend.ListDominantLanguageDetectionJobsInput, opts ...request.Option) (*comprehend.ListDominantLanguageDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListDominantLanguageDetectionJobsWithContext",
+		Action:  "ListDominantLanguageDetectionJobs",
 		Input:   input,
 		Output:  (*comprehend.ListDominantLanguageDetectionJobsOutput)(nil),
 		Error:   nil,
@@ -601,7 +601,7 @@ func (c *Client) ListDominantLanguageDetectionJobsWithContext(ctx context.Contex
 func (c *Client) ListEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListEntitiesDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListEntitiesDetectionJobsWithContext",
+		Action:  "ListEntitiesDetectionJobs",
 		Input:   input,
 		Output:  (*comprehend.ListEntitiesDetectionJobsOutput)(nil),
 		Error:   nil,
@@ -622,7 +622,7 @@ func (c *Client) ListEntitiesDetectionJobsWithContext(ctx context.Context, input
 func (c *Client) ListEntityRecognizersWithContext(ctx context.Context, input *comprehend.ListEntityRecognizersInput, opts ...request.Option) (*comprehend.ListEntityRecognizersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListEntityRecognizersWithContext",
+		Action:  "ListEntityRecognizers",
 		Input:   input,
 		Output:  (*comprehend.ListEntityRecognizersOutput)(nil),
 		Error:   nil,
@@ -643,7 +643,7 @@ func (c *Client) ListEntityRecognizersWithContext(ctx context.Context, input *co
 func (c *Client) ListKeyPhrasesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, opts ...request.Option) (*comprehend.ListKeyPhrasesDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListKeyPhrasesDetectionJobsWithContext",
+		Action:  "ListKeyPhrasesDetectionJobs",
 		Input:   input,
 		Output:  (*comprehend.ListKeyPhrasesDetectionJobsOutput)(nil),
 		Error:   nil,
@@ -664,7 +664,7 @@ func (c *Client) ListKeyPhrasesDetectionJobsWithContext(ctx context.Context, inp
 func (c *Client) ListSentimentDetectionJobsWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, opts ...request.Option) (*comprehend.ListSentimentDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListSentimentDetectionJobsWithContext",
+		Action:  "ListSentimentDetectionJobs",
 		Input:   input,
 		Output:  (*comprehend.ListSentimentDetectionJobsOutput)(nil),
 		Error:   nil,
@@ -685,7 +685,7 @@ func (c *Client) ListSentimentDetectionJobsWithContext(ctx context.Context, inpu
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *comprehend.ListTagsForResourceInput, opts ...request.Option) (*comprehend.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*comprehend.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -706,7 +706,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *comp
 func (c *Client) ListTopicsDetectionJobsWithContext(ctx context.Context, input *comprehend.ListTopicsDetectionJobsInput, opts ...request.Option) (*comprehend.ListTopicsDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "ListTopicsDetectionJobsWithContext",
+		Action:  "ListTopicsDetectionJobs",
 		Input:   input,
 		Output:  (*comprehend.ListTopicsDetectionJobsOutput)(nil),
 		Error:   nil,
@@ -727,7 +727,7 @@ func (c *Client) ListTopicsDetectionJobsWithContext(ctx context.Context, input *
 func (c *Client) StartDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.StartDocumentClassificationJobInput, opts ...request.Option) (*comprehend.StartDocumentClassificationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StartDocumentClassificationJobWithContext",
+		Action:  "StartDocumentClassificationJob",
 		Input:   input,
 		Output:  (*comprehend.StartDocumentClassificationJobOutput)(nil),
 		Error:   nil,
@@ -748,7 +748,7 @@ func (c *Client) StartDocumentClassificationJobWithContext(ctx context.Context, 
 func (c *Client) StartDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.StartDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.StartDominantLanguageDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StartDominantLanguageDetectionJobWithContext",
+		Action:  "StartDominantLanguageDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StartDominantLanguageDetectionJobOutput)(nil),
 		Error:   nil,
@@ -769,7 +769,7 @@ func (c *Client) StartDominantLanguageDetectionJobWithContext(ctx context.Contex
 func (c *Client) StartEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartEntitiesDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StartEntitiesDetectionJobWithContext",
+		Action:  "StartEntitiesDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StartEntitiesDetectionJobOutput)(nil),
 		Error:   nil,
@@ -790,7 +790,7 @@ func (c *Client) StartEntitiesDetectionJobWithContext(ctx context.Context, input
 func (c *Client) StartKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.StartKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.StartKeyPhrasesDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StartKeyPhrasesDetectionJobWithContext",
+		Action:  "StartKeyPhrasesDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StartKeyPhrasesDetectionJobOutput)(nil),
 		Error:   nil,
@@ -811,7 +811,7 @@ func (c *Client) StartKeyPhrasesDetectionJobWithContext(ctx context.Context, inp
 func (c *Client) StartSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StartSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StartSentimentDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StartSentimentDetectionJobWithContext",
+		Action:  "StartSentimentDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StartSentimentDetectionJobOutput)(nil),
 		Error:   nil,
@@ -832,7 +832,7 @@ func (c *Client) StartSentimentDetectionJobWithContext(ctx context.Context, inpu
 func (c *Client) StartTopicsDetectionJobWithContext(ctx context.Context, input *comprehend.StartTopicsDetectionJobInput, opts ...request.Option) (*comprehend.StartTopicsDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StartTopicsDetectionJobWithContext",
+		Action:  "StartTopicsDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StartTopicsDetectionJobOutput)(nil),
 		Error:   nil,
@@ -853,7 +853,7 @@ func (c *Client) StartTopicsDetectionJobWithContext(ctx context.Context, input *
 func (c *Client) StopDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.StopDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.StopDominantLanguageDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StopDominantLanguageDetectionJobWithContext",
+		Action:  "StopDominantLanguageDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StopDominantLanguageDetectionJobOutput)(nil),
 		Error:   nil,
@@ -874,7 +874,7 @@ func (c *Client) StopDominantLanguageDetectionJobWithContext(ctx context.Context
 func (c *Client) StopEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StopEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StopEntitiesDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StopEntitiesDetectionJobWithContext",
+		Action:  "StopEntitiesDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StopEntitiesDetectionJobOutput)(nil),
 		Error:   nil,
@@ -895,7 +895,7 @@ func (c *Client) StopEntitiesDetectionJobWithContext(ctx context.Context, input 
 func (c *Client) StopKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.StopKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.StopKeyPhrasesDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StopKeyPhrasesDetectionJobWithContext",
+		Action:  "StopKeyPhrasesDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StopKeyPhrasesDetectionJobOutput)(nil),
 		Error:   nil,
@@ -916,7 +916,7 @@ func (c *Client) StopKeyPhrasesDetectionJobWithContext(ctx context.Context, inpu
 func (c *Client) StopSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StopSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StopSentimentDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StopSentimentDetectionJobWithContext",
+		Action:  "StopSentimentDetectionJob",
 		Input:   input,
 		Output:  (*comprehend.StopSentimentDetectionJobOutput)(nil),
 		Error:   nil,
@@ -937,7 +937,7 @@ func (c *Client) StopSentimentDetectionJobWithContext(ctx context.Context, input
 func (c *Client) StopTrainingDocumentClassifierWithContext(ctx context.Context, input *comprehend.StopTrainingDocumentClassifierInput, opts ...request.Option) (*comprehend.StopTrainingDocumentClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StopTrainingDocumentClassifierWithContext",
+		Action:  "StopTrainingDocumentClassifier",
 		Input:   input,
 		Output:  (*comprehend.StopTrainingDocumentClassifierOutput)(nil),
 		Error:   nil,
@@ -958,7 +958,7 @@ func (c *Client) StopTrainingDocumentClassifierWithContext(ctx context.Context, 
 func (c *Client) StopTrainingEntityRecognizerWithContext(ctx context.Context, input *comprehend.StopTrainingEntityRecognizerInput, opts ...request.Option) (*comprehend.StopTrainingEntityRecognizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "StopTrainingEntityRecognizerWithContext",
+		Action:  "StopTrainingEntityRecognizer",
 		Input:   input,
 		Output:  (*comprehend.StopTrainingEntityRecognizerOutput)(nil),
 		Error:   nil,
@@ -979,7 +979,7 @@ func (c *Client) StopTrainingEntityRecognizerWithContext(ctx context.Context, in
 func (c *Client) TagResourceWithContext(ctx context.Context, input *comprehend.TagResourceInput, opts ...request.Option) (*comprehend.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*comprehend.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1000,7 +1000,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *comprehend.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *comprehend.UntagResourceInput, opts ...request.Option) (*comprehend.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*comprehend.UntagResourceOutput)(nil),
 		Error:   nil,

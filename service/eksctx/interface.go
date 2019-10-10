@@ -16,7 +16,10 @@ type EKS interface {
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
 	DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error)
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error)
 	ListUpdatesWithContext(ctx context.Context, input *eks.ListUpdatesInput, opts ...request.Option) (*eks.ListUpdatesOutput, error)
+	TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *eks.UntagResourceInput, opts ...request.Option) (*eks.UntagResourceOutput, error)
 	UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error)
 	UpdateClusterVersionWithContext(ctx context.Context, input *eks.UpdateClusterVersionInput, opts ...request.Option) (*eks.UpdateClusterVersionOutput, error)
 }
@@ -39,7 +42,7 @@ var _ EKS = (*Client)(nil)
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*eks.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -60,7 +63,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *eks.Create
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "DeleteClusterWithContext",
+		Action:  "DeleteCluster",
 		Input:   input,
 		Output:  (*eks.DeleteClusterOutput)(nil),
 		Error:   nil,
@@ -81,7 +84,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.Delete
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "DescribeClusterWithContext",
+		Action:  "DescribeCluster",
 		Input:   input,
 		Output:  (*eks.DescribeClusterOutput)(nil),
 		Error:   nil,
@@ -102,7 +105,7 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.Desc
 func (c *Client) DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "DescribeUpdateWithContext",
+		Action:  "DescribeUpdate",
 		Input:   input,
 		Output:  (*eks.DescribeUpdateOutput)(nil),
 		Error:   nil,
@@ -123,7 +126,7 @@ func (c *Client) DescribeUpdateWithContext(ctx context.Context, input *eks.Descr
 func (c *Client) ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "ListClustersWithContext",
+		Action:  "ListClusters",
 		Input:   input,
 		Output:  (*eks.ListClustersOutput)(nil),
 		Error:   nil,
@@ -141,10 +144,31 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *eks.ListClu
 	return req.Output.(*eks.ListClustersOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*eks.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListUpdatesWithContext(ctx context.Context, input *eks.ListUpdatesInput, opts ...request.Option) (*eks.ListUpdatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "ListUpdatesWithContext",
+		Action:  "ListUpdates",
 		Input:   input,
 		Output:  (*eks.ListUpdatesOutput)(nil),
 		Error:   nil,
@@ -162,10 +186,52 @@ func (c *Client) ListUpdatesWithContext(ctx context.Context, input *eks.ListUpda
 	return req.Output.(*eks.ListUpdatesOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*eks.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *eks.UntagResourceInput, opts ...request.Option) (*eks.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*eks.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.UntagResourceOutput), req.Error
+}
+
 func (c *Client) UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "UpdateClusterConfigWithContext",
+		Action:  "UpdateClusterConfig",
 		Input:   input,
 		Output:  (*eks.UpdateClusterConfigOutput)(nil),
 		Error:   nil,
@@ -186,7 +252,7 @@ func (c *Client) UpdateClusterConfigWithContext(ctx context.Context, input *eks.
 func (c *Client) UpdateClusterVersionWithContext(ctx context.Context, input *eks.UpdateClusterVersionInput, opts ...request.Option) (*eks.UpdateClusterVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
-		Action:  "UpdateClusterVersionWithContext",
+		Action:  "UpdateClusterVersion",
 		Input:   input,
 		Output:  (*eks.UpdateClusterVersionOutput)(nil),
 		Error:   nil,

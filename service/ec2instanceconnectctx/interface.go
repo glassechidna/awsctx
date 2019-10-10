@@ -32,7 +32,7 @@ var _ EC2InstanceConnect = (*Client)(nil)
 func (c *Client) SendSSHPublicKeyWithContext(ctx context.Context, input *ec2instanceconnect.SendSSHPublicKeyInput, opts ...request.Option) (*ec2instanceconnect.SendSSHPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2instanceconnect",
-		Action:  "SendSSHPublicKeyWithContext",
+		Action:  "SendSSHPublicKey",
 		Input:   input,
 		Output:  (*ec2instanceconnect.SendSSHPublicKeyOutput)(nil),
 		Error:   nil,

@@ -119,7 +119,7 @@ var _ S3 = (*Client)(nil)
 func (c *Client) AbortMultipartUploadWithContext(ctx context.Context, input *s3.AbortMultipartUploadInput, opts ...request.Option) (*s3.AbortMultipartUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "AbortMultipartUploadWithContext",
+		Action:  "AbortMultipartUpload",
 		Input:   input,
 		Output:  (*s3.AbortMultipartUploadOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) AbortMultipartUploadWithContext(ctx context.Context, input *s3.
 func (c *Client) CompleteMultipartUploadWithContext(ctx context.Context, input *s3.CompleteMultipartUploadInput, opts ...request.Option) (*s3.CompleteMultipartUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "CompleteMultipartUploadWithContext",
+		Action:  "CompleteMultipartUpload",
 		Input:   input,
 		Output:  (*s3.CompleteMultipartUploadOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) CompleteMultipartUploadWithContext(ctx context.Context, input *
 func (c *Client) CopyObjectWithContext(ctx context.Context, input *s3.CopyObjectInput, opts ...request.Option) (*s3.CopyObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "CopyObjectWithContext",
+		Action:  "CopyObject",
 		Input:   input,
 		Output:  (*s3.CopyObjectOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) CopyObjectWithContext(ctx context.Context, input *s3.CopyObject
 func (c *Client) CreateBucketWithContext(ctx context.Context, input *s3.CreateBucketInput, opts ...request.Option) (*s3.CreateBucketOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "CreateBucketWithContext",
+		Action:  "CreateBucket",
 		Input:   input,
 		Output:  (*s3.CreateBucketOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) CreateBucketWithContext(ctx context.Context, input *s3.CreateBu
 func (c *Client) CreateMultipartUploadWithContext(ctx context.Context, input *s3.CreateMultipartUploadInput, opts ...request.Option) (*s3.CreateMultipartUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "CreateMultipartUploadWithContext",
+		Action:  "CreateMultipartUpload",
 		Input:   input,
 		Output:  (*s3.CreateMultipartUploadOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) CreateMultipartUploadWithContext(ctx context.Context, input *s3
 func (c *Client) DeleteBucketWithContext(ctx context.Context, input *s3.DeleteBucketInput, opts ...request.Option) (*s3.DeleteBucketOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketWithContext",
+		Action:  "DeleteBucket",
 		Input:   input,
 		Output:  (*s3.DeleteBucketOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) DeleteBucketWithContext(ctx context.Context, input *s3.DeleteBu
 func (c *Client) DeleteBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.DeleteBucketAnalyticsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketAnalyticsConfigurationWithContext",
+		Action:  "DeleteBucketAnalyticsConfiguration",
 		Input:   input,
 		Output:  (*s3.DeleteBucketAnalyticsConfigurationOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) DeleteBucketAnalyticsConfigurationWithContext(ctx context.Conte
 func (c *Client) DeleteBucketCorsWithContext(ctx context.Context, input *s3.DeleteBucketCorsInput, opts ...request.Option) (*s3.DeleteBucketCorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketCorsWithContext",
+		Action:  "DeleteBucketCors",
 		Input:   input,
 		Output:  (*s3.DeleteBucketCorsOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) DeleteBucketCorsWithContext(ctx context.Context, input *s3.Dele
 func (c *Client) DeleteBucketEncryptionWithContext(ctx context.Context, input *s3.DeleteBucketEncryptionInput, opts ...request.Option) (*s3.DeleteBucketEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketEncryptionWithContext",
+		Action:  "DeleteBucketEncryption",
 		Input:   input,
 		Output:  (*s3.DeleteBucketEncryptionOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) DeleteBucketEncryptionWithContext(ctx context.Context, input *s
 func (c *Client) DeleteBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketInventoryConfigurationInput, opts ...request.Option) (*s3.DeleteBucketInventoryConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketInventoryConfigurationWithContext",
+		Action:  "DeleteBucketInventoryConfiguration",
 		Input:   input,
 		Output:  (*s3.DeleteBucketInventoryConfigurationOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) DeleteBucketInventoryConfigurationWithContext(ctx context.Conte
 func (c *Client) DeleteBucketLifecycleWithContext(ctx context.Context, input *s3.DeleteBucketLifecycleInput, opts ...request.Option) (*s3.DeleteBucketLifecycleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketLifecycleWithContext",
+		Action:  "DeleteBucketLifecycle",
 		Input:   input,
 		Output:  (*s3.DeleteBucketLifecycleOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) DeleteBucketLifecycleWithContext(ctx context.Context, input *s3
 func (c *Client) DeleteBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketMetricsConfigurationInput, opts ...request.Option) (*s3.DeleteBucketMetricsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketMetricsConfigurationWithContext",
+		Action:  "DeleteBucketMetricsConfiguration",
 		Input:   input,
 		Output:  (*s3.DeleteBucketMetricsConfigurationOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) DeleteBucketMetricsConfigurationWithContext(ctx context.Context
 func (c *Client) DeleteBucketPolicyWithContext(ctx context.Context, input *s3.DeleteBucketPolicyInput, opts ...request.Option) (*s3.DeleteBucketPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketPolicyWithContext",
+		Action:  "DeleteBucketPolicy",
 		Input:   input,
 		Output:  (*s3.DeleteBucketPolicyOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) DeleteBucketPolicyWithContext(ctx context.Context, input *s3.De
 func (c *Client) DeleteBucketReplicationWithContext(ctx context.Context, input *s3.DeleteBucketReplicationInput, opts ...request.Option) (*s3.DeleteBucketReplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketReplicationWithContext",
+		Action:  "DeleteBucketReplication",
 		Input:   input,
 		Output:  (*s3.DeleteBucketReplicationOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) DeleteBucketReplicationWithContext(ctx context.Context, input *
 func (c *Client) DeleteBucketTaggingWithContext(ctx context.Context, input *s3.DeleteBucketTaggingInput, opts ...request.Option) (*s3.DeleteBucketTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketTaggingWithContext",
+		Action:  "DeleteBucketTagging",
 		Input:   input,
 		Output:  (*s3.DeleteBucketTaggingOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) DeleteBucketTaggingWithContext(ctx context.Context, input *s3.D
 func (c *Client) DeleteBucketWebsiteWithContext(ctx context.Context, input *s3.DeleteBucketWebsiteInput, opts ...request.Option) (*s3.DeleteBucketWebsiteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteBucketWebsiteWithContext",
+		Action:  "DeleteBucketWebsite",
 		Input:   input,
 		Output:  (*s3.DeleteBucketWebsiteOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) DeleteBucketWebsiteWithContext(ctx context.Context, input *s3.D
 func (c *Client) DeleteObjectWithContext(ctx context.Context, input *s3.DeleteObjectInput, opts ...request.Option) (*s3.DeleteObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteObjectWithContext",
+		Action:  "DeleteObject",
 		Input:   input,
 		Output:  (*s3.DeleteObjectOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) DeleteObjectWithContext(ctx context.Context, input *s3.DeleteOb
 func (c *Client) DeleteObjectTaggingWithContext(ctx context.Context, input *s3.DeleteObjectTaggingInput, opts ...request.Option) (*s3.DeleteObjectTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteObjectTaggingWithContext",
+		Action:  "DeleteObjectTagging",
 		Input:   input,
 		Output:  (*s3.DeleteObjectTaggingOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) DeleteObjectTaggingWithContext(ctx context.Context, input *s3.D
 func (c *Client) DeleteObjectsWithContext(ctx context.Context, input *s3.DeleteObjectsInput, opts ...request.Option) (*s3.DeleteObjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeleteObjectsWithContext",
+		Action:  "DeleteObjects",
 		Input:   input,
 		Output:  (*s3.DeleteObjectsOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) DeleteObjectsWithContext(ctx context.Context, input *s3.DeleteO
 func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *s3.DeletePublicAccessBlockInput, opts ...request.Option) (*s3.DeletePublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "DeletePublicAccessBlockWithContext",
+		Action:  "DeletePublicAccessBlock",
 		Input:   input,
 		Output:  (*s3.DeletePublicAccessBlockOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *
 func (c *Client) GetBucketAccelerateConfigurationWithContext(ctx context.Context, input *s3.GetBucketAccelerateConfigurationInput, opts ...request.Option) (*s3.GetBucketAccelerateConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketAccelerateConfigurationWithContext",
+		Action:  "GetBucketAccelerateConfiguration",
 		Input:   input,
 		Output:  (*s3.GetBucketAccelerateConfigurationOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) GetBucketAccelerateConfigurationWithContext(ctx context.Context
 func (c *Client) GetBucketAclWithContext(ctx context.Context, input *s3.GetBucketAclInput, opts ...request.Option) (*s3.GetBucketAclOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketAclWithContext",
+		Action:  "GetBucketAcl",
 		Input:   input,
 		Output:  (*s3.GetBucketAclOutput)(nil),
 		Error:   nil,
@@ -581,7 +581,7 @@ func (c *Client) GetBucketAclWithContext(ctx context.Context, input *s3.GetBucke
 func (c *Client) GetBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.GetBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.GetBucketAnalyticsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketAnalyticsConfigurationWithContext",
+		Action:  "GetBucketAnalyticsConfiguration",
 		Input:   input,
 		Output:  (*s3.GetBucketAnalyticsConfigurationOutput)(nil),
 		Error:   nil,
@@ -602,7 +602,7 @@ func (c *Client) GetBucketAnalyticsConfigurationWithContext(ctx context.Context,
 func (c *Client) GetBucketCorsWithContext(ctx context.Context, input *s3.GetBucketCorsInput, opts ...request.Option) (*s3.GetBucketCorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketCorsWithContext",
+		Action:  "GetBucketCors",
 		Input:   input,
 		Output:  (*s3.GetBucketCorsOutput)(nil),
 		Error:   nil,
@@ -623,7 +623,7 @@ func (c *Client) GetBucketCorsWithContext(ctx context.Context, input *s3.GetBuck
 func (c *Client) GetBucketEncryptionWithContext(ctx context.Context, input *s3.GetBucketEncryptionInput, opts ...request.Option) (*s3.GetBucketEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketEncryptionWithContext",
+		Action:  "GetBucketEncryption",
 		Input:   input,
 		Output:  (*s3.GetBucketEncryptionOutput)(nil),
 		Error:   nil,
@@ -644,7 +644,7 @@ func (c *Client) GetBucketEncryptionWithContext(ctx context.Context, input *s3.G
 func (c *Client) GetBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.GetBucketInventoryConfigurationInput, opts ...request.Option) (*s3.GetBucketInventoryConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketInventoryConfigurationWithContext",
+		Action:  "GetBucketInventoryConfiguration",
 		Input:   input,
 		Output:  (*s3.GetBucketInventoryConfigurationOutput)(nil),
 		Error:   nil,
@@ -665,7 +665,7 @@ func (c *Client) GetBucketInventoryConfigurationWithContext(ctx context.Context,
 func (c *Client) GetBucketLifecycleWithContext(ctx context.Context, input *s3.GetBucketLifecycleInput, opts ...request.Option) (*s3.GetBucketLifecycleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketLifecycleWithContext",
+		Action:  "GetBucketLifecycle",
 		Input:   input,
 		Output:  (*s3.GetBucketLifecycleOutput)(nil),
 		Error:   nil,
@@ -686,7 +686,7 @@ func (c *Client) GetBucketLifecycleWithContext(ctx context.Context, input *s3.Ge
 func (c *Client) GetBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3.GetBucketLifecycleConfigurationInput, opts ...request.Option) (*s3.GetBucketLifecycleConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketLifecycleConfigurationWithContext",
+		Action:  "GetBucketLifecycleConfiguration",
 		Input:   input,
 		Output:  (*s3.GetBucketLifecycleConfigurationOutput)(nil),
 		Error:   nil,
@@ -707,7 +707,7 @@ func (c *Client) GetBucketLifecycleConfigurationWithContext(ctx context.Context,
 func (c *Client) GetBucketLocationWithContext(ctx context.Context, input *s3.GetBucketLocationInput, opts ...request.Option) (*s3.GetBucketLocationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketLocationWithContext",
+		Action:  "GetBucketLocation",
 		Input:   input,
 		Output:  (*s3.GetBucketLocationOutput)(nil),
 		Error:   nil,
@@ -728,7 +728,7 @@ func (c *Client) GetBucketLocationWithContext(ctx context.Context, input *s3.Get
 func (c *Client) GetBucketLoggingWithContext(ctx context.Context, input *s3.GetBucketLoggingInput, opts ...request.Option) (*s3.GetBucketLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketLoggingWithContext",
+		Action:  "GetBucketLogging",
 		Input:   input,
 		Output:  (*s3.GetBucketLoggingOutput)(nil),
 		Error:   nil,
@@ -749,7 +749,7 @@ func (c *Client) GetBucketLoggingWithContext(ctx context.Context, input *s3.GetB
 func (c *Client) GetBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.GetBucketMetricsConfigurationInput, opts ...request.Option) (*s3.GetBucketMetricsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketMetricsConfigurationWithContext",
+		Action:  "GetBucketMetricsConfiguration",
 		Input:   input,
 		Output:  (*s3.GetBucketMetricsConfigurationOutput)(nil),
 		Error:   nil,
@@ -770,7 +770,7 @@ func (c *Client) GetBucketMetricsConfigurationWithContext(ctx context.Context, i
 func (c *Client) GetBucketNotificationWithContext(ctx context.Context, input *s3.GetBucketNotificationConfigurationRequest, opts ...request.Option) (*s3.NotificationConfigurationDeprecated, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketNotificationWithContext",
+		Action:  "GetBucketNotification",
 		Input:   input,
 		Output:  (*s3.NotificationConfigurationDeprecated)(nil),
 		Error:   nil,
@@ -791,7 +791,7 @@ func (c *Client) GetBucketNotificationWithContext(ctx context.Context, input *s3
 func (c *Client) GetBucketNotificationConfigurationWithContext(ctx context.Context, input *s3.GetBucketNotificationConfigurationRequest, opts ...request.Option) (*s3.NotificationConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketNotificationConfigurationWithContext",
+		Action:  "GetBucketNotificationConfiguration",
 		Input:   input,
 		Output:  (*s3.NotificationConfiguration)(nil),
 		Error:   nil,
@@ -812,7 +812,7 @@ func (c *Client) GetBucketNotificationConfigurationWithContext(ctx context.Conte
 func (c *Client) GetBucketPolicyWithContext(ctx context.Context, input *s3.GetBucketPolicyInput, opts ...request.Option) (*s3.GetBucketPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketPolicyWithContext",
+		Action:  "GetBucketPolicy",
 		Input:   input,
 		Output:  (*s3.GetBucketPolicyOutput)(nil),
 		Error:   nil,
@@ -833,7 +833,7 @@ func (c *Client) GetBucketPolicyWithContext(ctx context.Context, input *s3.GetBu
 func (c *Client) GetBucketPolicyStatusWithContext(ctx context.Context, input *s3.GetBucketPolicyStatusInput, opts ...request.Option) (*s3.GetBucketPolicyStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketPolicyStatusWithContext",
+		Action:  "GetBucketPolicyStatus",
 		Input:   input,
 		Output:  (*s3.GetBucketPolicyStatusOutput)(nil),
 		Error:   nil,
@@ -854,7 +854,7 @@ func (c *Client) GetBucketPolicyStatusWithContext(ctx context.Context, input *s3
 func (c *Client) GetBucketReplicationWithContext(ctx context.Context, input *s3.GetBucketReplicationInput, opts ...request.Option) (*s3.GetBucketReplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketReplicationWithContext",
+		Action:  "GetBucketReplication",
 		Input:   input,
 		Output:  (*s3.GetBucketReplicationOutput)(nil),
 		Error:   nil,
@@ -875,7 +875,7 @@ func (c *Client) GetBucketReplicationWithContext(ctx context.Context, input *s3.
 func (c *Client) GetBucketRequestPaymentWithContext(ctx context.Context, input *s3.GetBucketRequestPaymentInput, opts ...request.Option) (*s3.GetBucketRequestPaymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketRequestPaymentWithContext",
+		Action:  "GetBucketRequestPayment",
 		Input:   input,
 		Output:  (*s3.GetBucketRequestPaymentOutput)(nil),
 		Error:   nil,
@@ -896,7 +896,7 @@ func (c *Client) GetBucketRequestPaymentWithContext(ctx context.Context, input *
 func (c *Client) GetBucketTaggingWithContext(ctx context.Context, input *s3.GetBucketTaggingInput, opts ...request.Option) (*s3.GetBucketTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketTaggingWithContext",
+		Action:  "GetBucketTagging",
 		Input:   input,
 		Output:  (*s3.GetBucketTaggingOutput)(nil),
 		Error:   nil,
@@ -917,7 +917,7 @@ func (c *Client) GetBucketTaggingWithContext(ctx context.Context, input *s3.GetB
 func (c *Client) GetBucketVersioningWithContext(ctx context.Context, input *s3.GetBucketVersioningInput, opts ...request.Option) (*s3.GetBucketVersioningOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketVersioningWithContext",
+		Action:  "GetBucketVersioning",
 		Input:   input,
 		Output:  (*s3.GetBucketVersioningOutput)(nil),
 		Error:   nil,
@@ -938,7 +938,7 @@ func (c *Client) GetBucketVersioningWithContext(ctx context.Context, input *s3.G
 func (c *Client) GetBucketWebsiteWithContext(ctx context.Context, input *s3.GetBucketWebsiteInput, opts ...request.Option) (*s3.GetBucketWebsiteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetBucketWebsiteWithContext",
+		Action:  "GetBucketWebsite",
 		Input:   input,
 		Output:  (*s3.GetBucketWebsiteOutput)(nil),
 		Error:   nil,
@@ -959,7 +959,7 @@ func (c *Client) GetBucketWebsiteWithContext(ctx context.Context, input *s3.GetB
 func (c *Client) GetObjectWithContext(ctx context.Context, input *s3.GetObjectInput, opts ...request.Option) (*s3.GetObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectWithContext",
+		Action:  "GetObject",
 		Input:   input,
 		Output:  (*s3.GetObjectOutput)(nil),
 		Error:   nil,
@@ -980,7 +980,7 @@ func (c *Client) GetObjectWithContext(ctx context.Context, input *s3.GetObjectIn
 func (c *Client) GetObjectAclWithContext(ctx context.Context, input *s3.GetObjectAclInput, opts ...request.Option) (*s3.GetObjectAclOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectAclWithContext",
+		Action:  "GetObjectAcl",
 		Input:   input,
 		Output:  (*s3.GetObjectAclOutput)(nil),
 		Error:   nil,
@@ -1001,7 +1001,7 @@ func (c *Client) GetObjectAclWithContext(ctx context.Context, input *s3.GetObjec
 func (c *Client) GetObjectLegalHoldWithContext(ctx context.Context, input *s3.GetObjectLegalHoldInput, opts ...request.Option) (*s3.GetObjectLegalHoldOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectLegalHoldWithContext",
+		Action:  "GetObjectLegalHold",
 		Input:   input,
 		Output:  (*s3.GetObjectLegalHoldOutput)(nil),
 		Error:   nil,
@@ -1022,7 +1022,7 @@ func (c *Client) GetObjectLegalHoldWithContext(ctx context.Context, input *s3.Ge
 func (c *Client) GetObjectLockConfigurationWithContext(ctx context.Context, input *s3.GetObjectLockConfigurationInput, opts ...request.Option) (*s3.GetObjectLockConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectLockConfigurationWithContext",
+		Action:  "GetObjectLockConfiguration",
 		Input:   input,
 		Output:  (*s3.GetObjectLockConfigurationOutput)(nil),
 		Error:   nil,
@@ -1043,7 +1043,7 @@ func (c *Client) GetObjectLockConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) GetObjectRetentionWithContext(ctx context.Context, input *s3.GetObjectRetentionInput, opts ...request.Option) (*s3.GetObjectRetentionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectRetentionWithContext",
+		Action:  "GetObjectRetention",
 		Input:   input,
 		Output:  (*s3.GetObjectRetentionOutput)(nil),
 		Error:   nil,
@@ -1064,7 +1064,7 @@ func (c *Client) GetObjectRetentionWithContext(ctx context.Context, input *s3.Ge
 func (c *Client) GetObjectTaggingWithContext(ctx context.Context, input *s3.GetObjectTaggingInput, opts ...request.Option) (*s3.GetObjectTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectTaggingWithContext",
+		Action:  "GetObjectTagging",
 		Input:   input,
 		Output:  (*s3.GetObjectTaggingOutput)(nil),
 		Error:   nil,
@@ -1085,7 +1085,7 @@ func (c *Client) GetObjectTaggingWithContext(ctx context.Context, input *s3.GetO
 func (c *Client) GetObjectTorrentWithContext(ctx context.Context, input *s3.GetObjectTorrentInput, opts ...request.Option) (*s3.GetObjectTorrentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetObjectTorrentWithContext",
+		Action:  "GetObjectTorrent",
 		Input:   input,
 		Output:  (*s3.GetObjectTorrentOutput)(nil),
 		Error:   nil,
@@ -1106,7 +1106,7 @@ func (c *Client) GetObjectTorrentWithContext(ctx context.Context, input *s3.GetO
 func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3.GetPublicAccessBlockInput, opts ...request.Option) (*s3.GetPublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "GetPublicAccessBlockWithContext",
+		Action:  "GetPublicAccessBlock",
 		Input:   input,
 		Output:  (*s3.GetPublicAccessBlockOutput)(nil),
 		Error:   nil,
@@ -1127,7 +1127,7 @@ func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3.
 func (c *Client) HeadBucketWithContext(ctx context.Context, input *s3.HeadBucketInput, opts ...request.Option) (*s3.HeadBucketOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "HeadBucketWithContext",
+		Action:  "HeadBucket",
 		Input:   input,
 		Output:  (*s3.HeadBucketOutput)(nil),
 		Error:   nil,
@@ -1148,7 +1148,7 @@ func (c *Client) HeadBucketWithContext(ctx context.Context, input *s3.HeadBucket
 func (c *Client) HeadObjectWithContext(ctx context.Context, input *s3.HeadObjectInput, opts ...request.Option) (*s3.HeadObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "HeadObjectWithContext",
+		Action:  "HeadObject",
 		Input:   input,
 		Output:  (*s3.HeadObjectOutput)(nil),
 		Error:   nil,
@@ -1169,7 +1169,7 @@ func (c *Client) HeadObjectWithContext(ctx context.Context, input *s3.HeadObject
 func (c *Client) ListBucketAnalyticsConfigurationsWithContext(ctx context.Context, input *s3.ListBucketAnalyticsConfigurationsInput, opts ...request.Option) (*s3.ListBucketAnalyticsConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListBucketAnalyticsConfigurationsWithContext",
+		Action:  "ListBucketAnalyticsConfigurations",
 		Input:   input,
 		Output:  (*s3.ListBucketAnalyticsConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1190,7 +1190,7 @@ func (c *Client) ListBucketAnalyticsConfigurationsWithContext(ctx context.Contex
 func (c *Client) ListBucketInventoryConfigurationsWithContext(ctx context.Context, input *s3.ListBucketInventoryConfigurationsInput, opts ...request.Option) (*s3.ListBucketInventoryConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListBucketInventoryConfigurationsWithContext",
+		Action:  "ListBucketInventoryConfigurations",
 		Input:   input,
 		Output:  (*s3.ListBucketInventoryConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1211,7 +1211,7 @@ func (c *Client) ListBucketInventoryConfigurationsWithContext(ctx context.Contex
 func (c *Client) ListBucketMetricsConfigurationsWithContext(ctx context.Context, input *s3.ListBucketMetricsConfigurationsInput, opts ...request.Option) (*s3.ListBucketMetricsConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListBucketMetricsConfigurationsWithContext",
+		Action:  "ListBucketMetricsConfigurations",
 		Input:   input,
 		Output:  (*s3.ListBucketMetricsConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1232,7 +1232,7 @@ func (c *Client) ListBucketMetricsConfigurationsWithContext(ctx context.Context,
 func (c *Client) ListBucketsWithContext(ctx context.Context, input *s3.ListBucketsInput, opts ...request.Option) (*s3.ListBucketsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListBucketsWithContext",
+		Action:  "ListBuckets",
 		Input:   input,
 		Output:  (*s3.ListBucketsOutput)(nil),
 		Error:   nil,
@@ -1253,7 +1253,7 @@ func (c *Client) ListBucketsWithContext(ctx context.Context, input *s3.ListBucke
 func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *s3.ListMultipartUploadsInput, opts ...request.Option) (*s3.ListMultipartUploadsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListMultipartUploadsWithContext",
+		Action:  "ListMultipartUploads",
 		Input:   input,
 		Output:  (*s3.ListMultipartUploadsOutput)(nil),
 		Error:   nil,
@@ -1274,7 +1274,7 @@ func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *s3.
 func (c *Client) ListObjectVersionsWithContext(ctx context.Context, input *s3.ListObjectVersionsInput, opts ...request.Option) (*s3.ListObjectVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListObjectVersionsWithContext",
+		Action:  "ListObjectVersions",
 		Input:   input,
 		Output:  (*s3.ListObjectVersionsOutput)(nil),
 		Error:   nil,
@@ -1295,7 +1295,7 @@ func (c *Client) ListObjectVersionsWithContext(ctx context.Context, input *s3.Li
 func (c *Client) ListObjectsWithContext(ctx context.Context, input *s3.ListObjectsInput, opts ...request.Option) (*s3.ListObjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListObjectsWithContext",
+		Action:  "ListObjects",
 		Input:   input,
 		Output:  (*s3.ListObjectsOutput)(nil),
 		Error:   nil,
@@ -1316,7 +1316,7 @@ func (c *Client) ListObjectsWithContext(ctx context.Context, input *s3.ListObjec
 func (c *Client) ListObjectsV2WithContext(ctx context.Context, input *s3.ListObjectsV2Input, opts ...request.Option) (*s3.ListObjectsV2Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListObjectsV2WithContext",
+		Action:  "ListObjectsV2",
 		Input:   input,
 		Output:  (*s3.ListObjectsV2Output)(nil),
 		Error:   nil,
@@ -1337,7 +1337,7 @@ func (c *Client) ListObjectsV2WithContext(ctx context.Context, input *s3.ListObj
 func (c *Client) ListPartsWithContext(ctx context.Context, input *s3.ListPartsInput, opts ...request.Option) (*s3.ListPartsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "ListPartsWithContext",
+		Action:  "ListParts",
 		Input:   input,
 		Output:  (*s3.ListPartsOutput)(nil),
 		Error:   nil,
@@ -1358,7 +1358,7 @@ func (c *Client) ListPartsWithContext(ctx context.Context, input *s3.ListPartsIn
 func (c *Client) PutBucketAccelerateConfigurationWithContext(ctx context.Context, input *s3.PutBucketAccelerateConfigurationInput, opts ...request.Option) (*s3.PutBucketAccelerateConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketAccelerateConfigurationWithContext",
+		Action:  "PutBucketAccelerateConfiguration",
 		Input:   input,
 		Output:  (*s3.PutBucketAccelerateConfigurationOutput)(nil),
 		Error:   nil,
@@ -1379,7 +1379,7 @@ func (c *Client) PutBucketAccelerateConfigurationWithContext(ctx context.Context
 func (c *Client) PutBucketAclWithContext(ctx context.Context, input *s3.PutBucketAclInput, opts ...request.Option) (*s3.PutBucketAclOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketAclWithContext",
+		Action:  "PutBucketAcl",
 		Input:   input,
 		Output:  (*s3.PutBucketAclOutput)(nil),
 		Error:   nil,
@@ -1400,7 +1400,7 @@ func (c *Client) PutBucketAclWithContext(ctx context.Context, input *s3.PutBucke
 func (c *Client) PutBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.PutBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.PutBucketAnalyticsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketAnalyticsConfigurationWithContext",
+		Action:  "PutBucketAnalyticsConfiguration",
 		Input:   input,
 		Output:  (*s3.PutBucketAnalyticsConfigurationOutput)(nil),
 		Error:   nil,
@@ -1421,7 +1421,7 @@ func (c *Client) PutBucketAnalyticsConfigurationWithContext(ctx context.Context,
 func (c *Client) PutBucketCorsWithContext(ctx context.Context, input *s3.PutBucketCorsInput, opts ...request.Option) (*s3.PutBucketCorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketCorsWithContext",
+		Action:  "PutBucketCors",
 		Input:   input,
 		Output:  (*s3.PutBucketCorsOutput)(nil),
 		Error:   nil,
@@ -1442,7 +1442,7 @@ func (c *Client) PutBucketCorsWithContext(ctx context.Context, input *s3.PutBuck
 func (c *Client) PutBucketEncryptionWithContext(ctx context.Context, input *s3.PutBucketEncryptionInput, opts ...request.Option) (*s3.PutBucketEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketEncryptionWithContext",
+		Action:  "PutBucketEncryption",
 		Input:   input,
 		Output:  (*s3.PutBucketEncryptionOutput)(nil),
 		Error:   nil,
@@ -1463,7 +1463,7 @@ func (c *Client) PutBucketEncryptionWithContext(ctx context.Context, input *s3.P
 func (c *Client) PutBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.PutBucketInventoryConfigurationInput, opts ...request.Option) (*s3.PutBucketInventoryConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketInventoryConfigurationWithContext",
+		Action:  "PutBucketInventoryConfiguration",
 		Input:   input,
 		Output:  (*s3.PutBucketInventoryConfigurationOutput)(nil),
 		Error:   nil,
@@ -1484,7 +1484,7 @@ func (c *Client) PutBucketInventoryConfigurationWithContext(ctx context.Context,
 func (c *Client) PutBucketLifecycleWithContext(ctx context.Context, input *s3.PutBucketLifecycleInput, opts ...request.Option) (*s3.PutBucketLifecycleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketLifecycleWithContext",
+		Action:  "PutBucketLifecycle",
 		Input:   input,
 		Output:  (*s3.PutBucketLifecycleOutput)(nil),
 		Error:   nil,
@@ -1505,7 +1505,7 @@ func (c *Client) PutBucketLifecycleWithContext(ctx context.Context, input *s3.Pu
 func (c *Client) PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3.PutBucketLifecycleConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketLifecycleConfigurationWithContext",
+		Action:  "PutBucketLifecycleConfiguration",
 		Input:   input,
 		Output:  (*s3.PutBucketLifecycleConfigurationOutput)(nil),
 		Error:   nil,
@@ -1526,7 +1526,7 @@ func (c *Client) PutBucketLifecycleConfigurationWithContext(ctx context.Context,
 func (c *Client) PutBucketLoggingWithContext(ctx context.Context, input *s3.PutBucketLoggingInput, opts ...request.Option) (*s3.PutBucketLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketLoggingWithContext",
+		Action:  "PutBucketLogging",
 		Input:   input,
 		Output:  (*s3.PutBucketLoggingOutput)(nil),
 		Error:   nil,
@@ -1547,7 +1547,7 @@ func (c *Client) PutBucketLoggingWithContext(ctx context.Context, input *s3.PutB
 func (c *Client) PutBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.PutBucketMetricsConfigurationInput, opts ...request.Option) (*s3.PutBucketMetricsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketMetricsConfigurationWithContext",
+		Action:  "PutBucketMetricsConfiguration",
 		Input:   input,
 		Output:  (*s3.PutBucketMetricsConfigurationOutput)(nil),
 		Error:   nil,
@@ -1568,7 +1568,7 @@ func (c *Client) PutBucketMetricsConfigurationWithContext(ctx context.Context, i
 func (c *Client) PutBucketNotificationWithContext(ctx context.Context, input *s3.PutBucketNotificationInput, opts ...request.Option) (*s3.PutBucketNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketNotificationWithContext",
+		Action:  "PutBucketNotification",
 		Input:   input,
 		Output:  (*s3.PutBucketNotificationOutput)(nil),
 		Error:   nil,
@@ -1589,7 +1589,7 @@ func (c *Client) PutBucketNotificationWithContext(ctx context.Context, input *s3
 func (c *Client) PutBucketNotificationConfigurationWithContext(ctx context.Context, input *s3.PutBucketNotificationConfigurationInput, opts ...request.Option) (*s3.PutBucketNotificationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketNotificationConfigurationWithContext",
+		Action:  "PutBucketNotificationConfiguration",
 		Input:   input,
 		Output:  (*s3.PutBucketNotificationConfigurationOutput)(nil),
 		Error:   nil,
@@ -1610,7 +1610,7 @@ func (c *Client) PutBucketNotificationConfigurationWithContext(ctx context.Conte
 func (c *Client) PutBucketPolicyWithContext(ctx context.Context, input *s3.PutBucketPolicyInput, opts ...request.Option) (*s3.PutBucketPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketPolicyWithContext",
+		Action:  "PutBucketPolicy",
 		Input:   input,
 		Output:  (*s3.PutBucketPolicyOutput)(nil),
 		Error:   nil,
@@ -1631,7 +1631,7 @@ func (c *Client) PutBucketPolicyWithContext(ctx context.Context, input *s3.PutBu
 func (c *Client) PutBucketReplicationWithContext(ctx context.Context, input *s3.PutBucketReplicationInput, opts ...request.Option) (*s3.PutBucketReplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketReplicationWithContext",
+		Action:  "PutBucketReplication",
 		Input:   input,
 		Output:  (*s3.PutBucketReplicationOutput)(nil),
 		Error:   nil,
@@ -1652,7 +1652,7 @@ func (c *Client) PutBucketReplicationWithContext(ctx context.Context, input *s3.
 func (c *Client) PutBucketRequestPaymentWithContext(ctx context.Context, input *s3.PutBucketRequestPaymentInput, opts ...request.Option) (*s3.PutBucketRequestPaymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketRequestPaymentWithContext",
+		Action:  "PutBucketRequestPayment",
 		Input:   input,
 		Output:  (*s3.PutBucketRequestPaymentOutput)(nil),
 		Error:   nil,
@@ -1673,7 +1673,7 @@ func (c *Client) PutBucketRequestPaymentWithContext(ctx context.Context, input *
 func (c *Client) PutBucketTaggingWithContext(ctx context.Context, input *s3.PutBucketTaggingInput, opts ...request.Option) (*s3.PutBucketTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketTaggingWithContext",
+		Action:  "PutBucketTagging",
 		Input:   input,
 		Output:  (*s3.PutBucketTaggingOutput)(nil),
 		Error:   nil,
@@ -1694,7 +1694,7 @@ func (c *Client) PutBucketTaggingWithContext(ctx context.Context, input *s3.PutB
 func (c *Client) PutBucketVersioningWithContext(ctx context.Context, input *s3.PutBucketVersioningInput, opts ...request.Option) (*s3.PutBucketVersioningOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketVersioningWithContext",
+		Action:  "PutBucketVersioning",
 		Input:   input,
 		Output:  (*s3.PutBucketVersioningOutput)(nil),
 		Error:   nil,
@@ -1715,7 +1715,7 @@ func (c *Client) PutBucketVersioningWithContext(ctx context.Context, input *s3.P
 func (c *Client) PutBucketWebsiteWithContext(ctx context.Context, input *s3.PutBucketWebsiteInput, opts ...request.Option) (*s3.PutBucketWebsiteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutBucketWebsiteWithContext",
+		Action:  "PutBucketWebsite",
 		Input:   input,
 		Output:  (*s3.PutBucketWebsiteOutput)(nil),
 		Error:   nil,
@@ -1736,7 +1736,7 @@ func (c *Client) PutBucketWebsiteWithContext(ctx context.Context, input *s3.PutB
 func (c *Client) PutObjectWithContext(ctx context.Context, input *s3.PutObjectInput, opts ...request.Option) (*s3.PutObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutObjectWithContext",
+		Action:  "PutObject",
 		Input:   input,
 		Output:  (*s3.PutObjectOutput)(nil),
 		Error:   nil,
@@ -1757,7 +1757,7 @@ func (c *Client) PutObjectWithContext(ctx context.Context, input *s3.PutObjectIn
 func (c *Client) PutObjectAclWithContext(ctx context.Context, input *s3.PutObjectAclInput, opts ...request.Option) (*s3.PutObjectAclOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutObjectAclWithContext",
+		Action:  "PutObjectAcl",
 		Input:   input,
 		Output:  (*s3.PutObjectAclOutput)(nil),
 		Error:   nil,
@@ -1778,7 +1778,7 @@ func (c *Client) PutObjectAclWithContext(ctx context.Context, input *s3.PutObjec
 func (c *Client) PutObjectLegalHoldWithContext(ctx context.Context, input *s3.PutObjectLegalHoldInput, opts ...request.Option) (*s3.PutObjectLegalHoldOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutObjectLegalHoldWithContext",
+		Action:  "PutObjectLegalHold",
 		Input:   input,
 		Output:  (*s3.PutObjectLegalHoldOutput)(nil),
 		Error:   nil,
@@ -1799,7 +1799,7 @@ func (c *Client) PutObjectLegalHoldWithContext(ctx context.Context, input *s3.Pu
 func (c *Client) PutObjectLockConfigurationWithContext(ctx context.Context, input *s3.PutObjectLockConfigurationInput, opts ...request.Option) (*s3.PutObjectLockConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutObjectLockConfigurationWithContext",
+		Action:  "PutObjectLockConfiguration",
 		Input:   input,
 		Output:  (*s3.PutObjectLockConfigurationOutput)(nil),
 		Error:   nil,
@@ -1820,7 +1820,7 @@ func (c *Client) PutObjectLockConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) PutObjectRetentionWithContext(ctx context.Context, input *s3.PutObjectRetentionInput, opts ...request.Option) (*s3.PutObjectRetentionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutObjectRetentionWithContext",
+		Action:  "PutObjectRetention",
 		Input:   input,
 		Output:  (*s3.PutObjectRetentionOutput)(nil),
 		Error:   nil,
@@ -1841,7 +1841,7 @@ func (c *Client) PutObjectRetentionWithContext(ctx context.Context, input *s3.Pu
 func (c *Client) PutObjectTaggingWithContext(ctx context.Context, input *s3.PutObjectTaggingInput, opts ...request.Option) (*s3.PutObjectTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutObjectTaggingWithContext",
+		Action:  "PutObjectTagging",
 		Input:   input,
 		Output:  (*s3.PutObjectTaggingOutput)(nil),
 		Error:   nil,
@@ -1862,7 +1862,7 @@ func (c *Client) PutObjectTaggingWithContext(ctx context.Context, input *s3.PutO
 func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3.PutPublicAccessBlockInput, opts ...request.Option) (*s3.PutPublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "PutPublicAccessBlockWithContext",
+		Action:  "PutPublicAccessBlock",
 		Input:   input,
 		Output:  (*s3.PutPublicAccessBlockOutput)(nil),
 		Error:   nil,
@@ -1883,7 +1883,7 @@ func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3.
 func (c *Client) RestoreObjectWithContext(ctx context.Context, input *s3.RestoreObjectInput, opts ...request.Option) (*s3.RestoreObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "RestoreObjectWithContext",
+		Action:  "RestoreObject",
 		Input:   input,
 		Output:  (*s3.RestoreObjectOutput)(nil),
 		Error:   nil,
@@ -1904,7 +1904,7 @@ func (c *Client) RestoreObjectWithContext(ctx context.Context, input *s3.Restore
 func (c *Client) SelectObjectContentWithContext(ctx context.Context, input *s3.SelectObjectContentInput, opts ...request.Option) (*s3.SelectObjectContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "SelectObjectContentWithContext",
+		Action:  "SelectObjectContent",
 		Input:   input,
 		Output:  (*s3.SelectObjectContentOutput)(nil),
 		Error:   nil,
@@ -1925,7 +1925,7 @@ func (c *Client) SelectObjectContentWithContext(ctx context.Context, input *s3.S
 func (c *Client) UploadPartWithContext(ctx context.Context, input *s3.UploadPartInput, opts ...request.Option) (*s3.UploadPartOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "UploadPartWithContext",
+		Action:  "UploadPart",
 		Input:   input,
 		Output:  (*s3.UploadPartOutput)(nil),
 		Error:   nil,
@@ -1946,7 +1946,7 @@ func (c *Client) UploadPartWithContext(ctx context.Context, input *s3.UploadPart
 func (c *Client) UploadPartCopyWithContext(ctx context.Context, input *s3.UploadPartCopyInput, opts ...request.Option) (*s3.UploadPartCopyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
-		Action:  "UploadPartCopyWithContext",
+		Action:  "UploadPartCopy",
 		Input:   input,
 		Output:  (*s3.UploadPartCopyOutput)(nil),
 		Error:   nil,

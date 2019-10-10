@@ -62,7 +62,7 @@ var _ MediaLive = (*Client)(nil)
 func (c *Client) BatchUpdateScheduleWithContext(ctx context.Context, input *medialive.BatchUpdateScheduleInput, opts ...request.Option) (*medialive.BatchUpdateScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "BatchUpdateScheduleWithContext",
+		Action:  "BatchUpdateSchedule",
 		Input:   input,
 		Output:  (*medialive.BatchUpdateScheduleOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) BatchUpdateScheduleWithContext(ctx context.Context, input *medi
 func (c *Client) CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "CreateChannelWithContext",
+		Action:  "CreateChannel",
 		Input:   input,
 		Output:  (*medialive.CreateChannelOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) CreateChannelWithContext(ctx context.Context, input *medialive.
 func (c *Client) CreateInputWithContext(ctx context.Context, input *medialive.CreateInputInput, opts ...request.Option) (*medialive.CreateInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "CreateInputWithContext",
+		Action:  "CreateInput",
 		Input:   input,
 		Output:  (*medialive.CreateInputOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) CreateInputWithContext(ctx context.Context, input *medialive.Cr
 func (c *Client) CreateInputSecurityGroupWithContext(ctx context.Context, input *medialive.CreateInputSecurityGroupInput, opts ...request.Option) (*medialive.CreateInputSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "CreateInputSecurityGroupWithContext",
+		Action:  "CreateInputSecurityGroup",
 		Input:   input,
 		Output:  (*medialive.CreateInputSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) CreateInputSecurityGroupWithContext(ctx context.Context, input 
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *medialive.CreateTagsInput, opts ...request.Option) (*medialive.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*medialive.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *medialive.Cre
 func (c *Client) DeleteChannelWithContext(ctx context.Context, input *medialive.DeleteChannelInput, opts ...request.Option) (*medialive.DeleteChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DeleteChannelWithContext",
+		Action:  "DeleteChannel",
 		Input:   input,
 		Output:  (*medialive.DeleteChannelOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) DeleteChannelWithContext(ctx context.Context, input *medialive.
 func (c *Client) DeleteInputWithContext(ctx context.Context, input *medialive.DeleteInputInput, opts ...request.Option) (*medialive.DeleteInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DeleteInputWithContext",
+		Action:  "DeleteInput",
 		Input:   input,
 		Output:  (*medialive.DeleteInputOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) DeleteInputWithContext(ctx context.Context, input *medialive.De
 func (c *Client) DeleteInputSecurityGroupWithContext(ctx context.Context, input *medialive.DeleteInputSecurityGroupInput, opts ...request.Option) (*medialive.DeleteInputSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DeleteInputSecurityGroupWithContext",
+		Action:  "DeleteInputSecurityGroup",
 		Input:   input,
 		Output:  (*medialive.DeleteInputSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) DeleteInputSecurityGroupWithContext(ctx context.Context, input 
 func (c *Client) DeleteReservationWithContext(ctx context.Context, input *medialive.DeleteReservationInput, opts ...request.Option) (*medialive.DeleteReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DeleteReservationWithContext",
+		Action:  "DeleteReservation",
 		Input:   input,
 		Output:  (*medialive.DeleteReservationOutput)(nil),
 		Error:   nil,
@@ -251,7 +251,7 @@ func (c *Client) DeleteReservationWithContext(ctx context.Context, input *medial
 func (c *Client) DeleteScheduleWithContext(ctx context.Context, input *medialive.DeleteScheduleInput, opts ...request.Option) (*medialive.DeleteScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DeleteScheduleWithContext",
+		Action:  "DeleteSchedule",
 		Input:   input,
 		Output:  (*medialive.DeleteScheduleOutput)(nil),
 		Error:   nil,
@@ -272,7 +272,7 @@ func (c *Client) DeleteScheduleWithContext(ctx context.Context, input *medialive
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *medialive.DeleteTagsInput, opts ...request.Option) (*medialive.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*medialive.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -293,7 +293,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *medialive.Del
 func (c *Client) DescribeChannelWithContext(ctx context.Context, input *medialive.DescribeChannelInput, opts ...request.Option) (*medialive.DescribeChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DescribeChannelWithContext",
+		Action:  "DescribeChannel",
 		Input:   input,
 		Output:  (*medialive.DescribeChannelOutput)(nil),
 		Error:   nil,
@@ -314,7 +314,7 @@ func (c *Client) DescribeChannelWithContext(ctx context.Context, input *medialiv
 func (c *Client) DescribeInputWithContext(ctx context.Context, input *medialive.DescribeInputInput, opts ...request.Option) (*medialive.DescribeInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DescribeInputWithContext",
+		Action:  "DescribeInput",
 		Input:   input,
 		Output:  (*medialive.DescribeInputOutput)(nil),
 		Error:   nil,
@@ -335,7 +335,7 @@ func (c *Client) DescribeInputWithContext(ctx context.Context, input *medialive.
 func (c *Client) DescribeInputSecurityGroupWithContext(ctx context.Context, input *medialive.DescribeInputSecurityGroupInput, opts ...request.Option) (*medialive.DescribeInputSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DescribeInputSecurityGroupWithContext",
+		Action:  "DescribeInputSecurityGroup",
 		Input:   input,
 		Output:  (*medialive.DescribeInputSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -356,7 +356,7 @@ func (c *Client) DescribeInputSecurityGroupWithContext(ctx context.Context, inpu
 func (c *Client) DescribeOfferingWithContext(ctx context.Context, input *medialive.DescribeOfferingInput, opts ...request.Option) (*medialive.DescribeOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DescribeOfferingWithContext",
+		Action:  "DescribeOffering",
 		Input:   input,
 		Output:  (*medialive.DescribeOfferingOutput)(nil),
 		Error:   nil,
@@ -377,7 +377,7 @@ func (c *Client) DescribeOfferingWithContext(ctx context.Context, input *mediali
 func (c *Client) DescribeReservationWithContext(ctx context.Context, input *medialive.DescribeReservationInput, opts ...request.Option) (*medialive.DescribeReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DescribeReservationWithContext",
+		Action:  "DescribeReservation",
 		Input:   input,
 		Output:  (*medialive.DescribeReservationOutput)(nil),
 		Error:   nil,
@@ -398,7 +398,7 @@ func (c *Client) DescribeReservationWithContext(ctx context.Context, input *medi
 func (c *Client) DescribeScheduleWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, opts ...request.Option) (*medialive.DescribeScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "DescribeScheduleWithContext",
+		Action:  "DescribeSchedule",
 		Input:   input,
 		Output:  (*medialive.DescribeScheduleOutput)(nil),
 		Error:   nil,
@@ -419,7 +419,7 @@ func (c *Client) DescribeScheduleWithContext(ctx context.Context, input *mediali
 func (c *Client) ListChannelsWithContext(ctx context.Context, input *medialive.ListChannelsInput, opts ...request.Option) (*medialive.ListChannelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "ListChannelsWithContext",
+		Action:  "ListChannels",
 		Input:   input,
 		Output:  (*medialive.ListChannelsOutput)(nil),
 		Error:   nil,
@@ -440,7 +440,7 @@ func (c *Client) ListChannelsWithContext(ctx context.Context, input *medialive.L
 func (c *Client) ListInputSecurityGroupsWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, opts ...request.Option) (*medialive.ListInputSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "ListInputSecurityGroupsWithContext",
+		Action:  "ListInputSecurityGroups",
 		Input:   input,
 		Output:  (*medialive.ListInputSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -461,7 +461,7 @@ func (c *Client) ListInputSecurityGroupsWithContext(ctx context.Context, input *
 func (c *Client) ListInputsWithContext(ctx context.Context, input *medialive.ListInputsInput, opts ...request.Option) (*medialive.ListInputsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "ListInputsWithContext",
+		Action:  "ListInputs",
 		Input:   input,
 		Output:  (*medialive.ListInputsOutput)(nil),
 		Error:   nil,
@@ -482,7 +482,7 @@ func (c *Client) ListInputsWithContext(ctx context.Context, input *medialive.Lis
 func (c *Client) ListOfferingsWithContext(ctx context.Context, input *medialive.ListOfferingsInput, opts ...request.Option) (*medialive.ListOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "ListOfferingsWithContext",
+		Action:  "ListOfferings",
 		Input:   input,
 		Output:  (*medialive.ListOfferingsOutput)(nil),
 		Error:   nil,
@@ -503,7 +503,7 @@ func (c *Client) ListOfferingsWithContext(ctx context.Context, input *medialive.
 func (c *Client) ListReservationsWithContext(ctx context.Context, input *medialive.ListReservationsInput, opts ...request.Option) (*medialive.ListReservationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "ListReservationsWithContext",
+		Action:  "ListReservations",
 		Input:   input,
 		Output:  (*medialive.ListReservationsOutput)(nil),
 		Error:   nil,
@@ -524,7 +524,7 @@ func (c *Client) ListReservationsWithContext(ctx context.Context, input *mediali
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medialive.ListTagsForResourceInput, opts ...request.Option) (*medialive.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*medialive.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -545,7 +545,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *medialive.PurchaseOfferingInput, opts ...request.Option) (*medialive.PurchaseOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "PurchaseOfferingWithContext",
+		Action:  "PurchaseOffering",
 		Input:   input,
 		Output:  (*medialive.PurchaseOfferingOutput)(nil),
 		Error:   nil,
@@ -566,7 +566,7 @@ func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *mediali
 func (c *Client) StartChannelWithContext(ctx context.Context, input *medialive.StartChannelInput, opts ...request.Option) (*medialive.StartChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "StartChannelWithContext",
+		Action:  "StartChannel",
 		Input:   input,
 		Output:  (*medialive.StartChannelOutput)(nil),
 		Error:   nil,
@@ -587,7 +587,7 @@ func (c *Client) StartChannelWithContext(ctx context.Context, input *medialive.S
 func (c *Client) StopChannelWithContext(ctx context.Context, input *medialive.StopChannelInput, opts ...request.Option) (*medialive.StopChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "StopChannelWithContext",
+		Action:  "StopChannel",
 		Input:   input,
 		Output:  (*medialive.StopChannelOutput)(nil),
 		Error:   nil,
@@ -608,7 +608,7 @@ func (c *Client) StopChannelWithContext(ctx context.Context, input *medialive.St
 func (c *Client) UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "UpdateChannelWithContext",
+		Action:  "UpdateChannel",
 		Input:   input,
 		Output:  (*medialive.UpdateChannelOutput)(nil),
 		Error:   nil,
@@ -629,7 +629,7 @@ func (c *Client) UpdateChannelWithContext(ctx context.Context, input *medialive.
 func (c *Client) UpdateChannelClassWithContext(ctx context.Context, input *medialive.UpdateChannelClassInput, opts ...request.Option) (*medialive.UpdateChannelClassOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "UpdateChannelClassWithContext",
+		Action:  "UpdateChannelClass",
 		Input:   input,
 		Output:  (*medialive.UpdateChannelClassOutput)(nil),
 		Error:   nil,
@@ -650,7 +650,7 @@ func (c *Client) UpdateChannelClassWithContext(ctx context.Context, input *media
 func (c *Client) UpdateInputWithContext(ctx context.Context, input *medialive.UpdateInputInput, opts ...request.Option) (*medialive.UpdateInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "UpdateInputWithContext",
+		Action:  "UpdateInput",
 		Input:   input,
 		Output:  (*medialive.UpdateInputOutput)(nil),
 		Error:   nil,
@@ -671,7 +671,7 @@ func (c *Client) UpdateInputWithContext(ctx context.Context, input *medialive.Up
 func (c *Client) UpdateInputSecurityGroupWithContext(ctx context.Context, input *medialive.UpdateInputSecurityGroupInput, opts ...request.Option) (*medialive.UpdateInputSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "UpdateInputSecurityGroupWithContext",
+		Action:  "UpdateInputSecurityGroup",
 		Input:   input,
 		Output:  (*medialive.UpdateInputSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -692,7 +692,7 @@ func (c *Client) UpdateInputSecurityGroupWithContext(ctx context.Context, input 
 func (c *Client) UpdateReservationWithContext(ctx context.Context, input *medialive.UpdateReservationInput, opts ...request.Option) (*medialive.UpdateReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
-		Action:  "UpdateReservationWithContext",
+		Action:  "UpdateReservation",
 		Input:   input,
 		Output:  (*medialive.UpdateReservationOutput)(nil),
 		Error:   nil,

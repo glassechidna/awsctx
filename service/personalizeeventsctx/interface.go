@@ -32,7 +32,7 @@ var _ PersonalizeEvents = (*Client)(nil)
 func (c *Client) PutEventsWithContext(ctx context.Context, input *personalizeevents.PutEventsInput, opts ...request.Option) (*personalizeevents.PutEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalizeevents",
-		Action:  "PutEventsWithContext",
+		Action:  "PutEvents",
 		Input:   input,
 		Output:  (*personalizeevents.PutEventsOutput)(nil),
 		Error:   nil,

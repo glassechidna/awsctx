@@ -48,7 +48,7 @@ var _ CognitoSync = (*Client)(nil)
 func (c *Client) BulkPublishWithContext(ctx context.Context, input *cognitosync.BulkPublishInput, opts ...request.Option) (*cognitosync.BulkPublishOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "BulkPublishWithContext",
+		Action:  "BulkPublish",
 		Input:   input,
 		Output:  (*cognitosync.BulkPublishOutput)(nil),
 		Error:   nil,
@@ -69,7 +69,7 @@ func (c *Client) BulkPublishWithContext(ctx context.Context, input *cognitosync.
 func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *cognitosync.DeleteDatasetInput, opts ...request.Option) (*cognitosync.DeleteDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "DeleteDatasetWithContext",
+		Action:  "DeleteDataset",
 		Input:   input,
 		Output:  (*cognitosync.DeleteDatasetOutput)(nil),
 		Error:   nil,
@@ -90,7 +90,7 @@ func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *cognitosyn
 func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *cognitosync.DescribeDatasetInput, opts ...request.Option) (*cognitosync.DescribeDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "DescribeDatasetWithContext",
+		Action:  "DescribeDataset",
 		Input:   input,
 		Output:  (*cognitosync.DescribeDatasetOutput)(nil),
 		Error:   nil,
@@ -111,7 +111,7 @@ func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *cognitos
 func (c *Client) DescribeIdentityPoolUsageWithContext(ctx context.Context, input *cognitosync.DescribeIdentityPoolUsageInput, opts ...request.Option) (*cognitosync.DescribeIdentityPoolUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "DescribeIdentityPoolUsageWithContext",
+		Action:  "DescribeIdentityPoolUsage",
 		Input:   input,
 		Output:  (*cognitosync.DescribeIdentityPoolUsageOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) DescribeIdentityPoolUsageWithContext(ctx context.Context, input
 func (c *Client) DescribeIdentityUsageWithContext(ctx context.Context, input *cognitosync.DescribeIdentityUsageInput, opts ...request.Option) (*cognitosync.DescribeIdentityUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "DescribeIdentityUsageWithContext",
+		Action:  "DescribeIdentityUsage",
 		Input:   input,
 		Output:  (*cognitosync.DescribeIdentityUsageOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) DescribeIdentityUsageWithContext(ctx context.Context, input *co
 func (c *Client) GetBulkPublishDetailsWithContext(ctx context.Context, input *cognitosync.GetBulkPublishDetailsInput, opts ...request.Option) (*cognitosync.GetBulkPublishDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "GetBulkPublishDetailsWithContext",
+		Action:  "GetBulkPublishDetails",
 		Input:   input,
 		Output:  (*cognitosync.GetBulkPublishDetailsOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) GetBulkPublishDetailsWithContext(ctx context.Context, input *co
 func (c *Client) GetCognitoEventsWithContext(ctx context.Context, input *cognitosync.GetCognitoEventsInput, opts ...request.Option) (*cognitosync.GetCognitoEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "GetCognitoEventsWithContext",
+		Action:  "GetCognitoEvents",
 		Input:   input,
 		Output:  (*cognitosync.GetCognitoEventsOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) GetCognitoEventsWithContext(ctx context.Context, input *cognito
 func (c *Client) GetIdentityPoolConfigurationWithContext(ctx context.Context, input *cognitosync.GetIdentityPoolConfigurationInput, opts ...request.Option) (*cognitosync.GetIdentityPoolConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "GetIdentityPoolConfigurationWithContext",
+		Action:  "GetIdentityPoolConfiguration",
 		Input:   input,
 		Output:  (*cognitosync.GetIdentityPoolConfigurationOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) GetIdentityPoolConfigurationWithContext(ctx context.Context, in
 func (c *Client) ListDatasetsWithContext(ctx context.Context, input *cognitosync.ListDatasetsInput, opts ...request.Option) (*cognitosync.ListDatasetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "ListDatasetsWithContext",
+		Action:  "ListDatasets",
 		Input:   input,
 		Output:  (*cognitosync.ListDatasetsOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) ListDatasetsWithContext(ctx context.Context, input *cognitosync
 func (c *Client) ListIdentityPoolUsageWithContext(ctx context.Context, input *cognitosync.ListIdentityPoolUsageInput, opts ...request.Option) (*cognitosync.ListIdentityPoolUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "ListIdentityPoolUsageWithContext",
+		Action:  "ListIdentityPoolUsage",
 		Input:   input,
 		Output:  (*cognitosync.ListIdentityPoolUsageOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) ListIdentityPoolUsageWithContext(ctx context.Context, input *co
 func (c *Client) ListRecordsWithContext(ctx context.Context, input *cognitosync.ListRecordsInput, opts ...request.Option) (*cognitosync.ListRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "ListRecordsWithContext",
+		Action:  "ListRecords",
 		Input:   input,
 		Output:  (*cognitosync.ListRecordsOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) ListRecordsWithContext(ctx context.Context, input *cognitosync.
 func (c *Client) RegisterDeviceWithContext(ctx context.Context, input *cognitosync.RegisterDeviceInput, opts ...request.Option) (*cognitosync.RegisterDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "RegisterDeviceWithContext",
+		Action:  "RegisterDevice",
 		Input:   input,
 		Output:  (*cognitosync.RegisterDeviceOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) RegisterDeviceWithContext(ctx context.Context, input *cognitosy
 func (c *Client) SetCognitoEventsWithContext(ctx context.Context, input *cognitosync.SetCognitoEventsInput, opts ...request.Option) (*cognitosync.SetCognitoEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "SetCognitoEventsWithContext",
+		Action:  "SetCognitoEvents",
 		Input:   input,
 		Output:  (*cognitosync.SetCognitoEventsOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) SetCognitoEventsWithContext(ctx context.Context, input *cognito
 func (c *Client) SetIdentityPoolConfigurationWithContext(ctx context.Context, input *cognitosync.SetIdentityPoolConfigurationInput, opts ...request.Option) (*cognitosync.SetIdentityPoolConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "SetIdentityPoolConfigurationWithContext",
+		Action:  "SetIdentityPoolConfiguration",
 		Input:   input,
 		Output:  (*cognitosync.SetIdentityPoolConfigurationOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) SetIdentityPoolConfigurationWithContext(ctx context.Context, in
 func (c *Client) SubscribeToDatasetWithContext(ctx context.Context, input *cognitosync.SubscribeToDatasetInput, opts ...request.Option) (*cognitosync.SubscribeToDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "SubscribeToDatasetWithContext",
+		Action:  "SubscribeToDataset",
 		Input:   input,
 		Output:  (*cognitosync.SubscribeToDatasetOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) SubscribeToDatasetWithContext(ctx context.Context, input *cogni
 func (c *Client) UnsubscribeFromDatasetWithContext(ctx context.Context, input *cognitosync.UnsubscribeFromDatasetInput, opts ...request.Option) (*cognitosync.UnsubscribeFromDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "UnsubscribeFromDatasetWithContext",
+		Action:  "UnsubscribeFromDataset",
 		Input:   input,
 		Output:  (*cognitosync.UnsubscribeFromDatasetOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) UnsubscribeFromDatasetWithContext(ctx context.Context, input *c
 func (c *Client) UpdateRecordsWithContext(ctx context.Context, input *cognitosync.UpdateRecordsInput, opts ...request.Option) (*cognitosync.UpdateRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitosync",
-		Action:  "UpdateRecordsWithContext",
+		Action:  "UpdateRecords",
 		Input:   input,
 		Output:  (*cognitosync.UpdateRecordsOutput)(nil),
 		Error:   nil,

@@ -76,7 +76,7 @@ var _ CloudFormation = (*Client)(nil)
 func (c *Client) CancelUpdateStackWithContext(ctx context.Context, input *cloudformation.CancelUpdateStackInput, opts ...request.Option) (*cloudformation.CancelUpdateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "CancelUpdateStackWithContext",
+		Action:  "CancelUpdateStack",
 		Input:   input,
 		Output:  (*cloudformation.CancelUpdateStackOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) CancelUpdateStackWithContext(ctx context.Context, input *cloudf
 func (c *Client) ContinueUpdateRollbackWithContext(ctx context.Context, input *cloudformation.ContinueUpdateRollbackInput, opts ...request.Option) (*cloudformation.ContinueUpdateRollbackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ContinueUpdateRollbackWithContext",
+		Action:  "ContinueUpdateRollback",
 		Input:   input,
 		Output:  (*cloudformation.ContinueUpdateRollbackOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) ContinueUpdateRollbackWithContext(ctx context.Context, input *c
 func (c *Client) CreateChangeSetWithContext(ctx context.Context, input *cloudformation.CreateChangeSetInput, opts ...request.Option) (*cloudformation.CreateChangeSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "CreateChangeSetWithContext",
+		Action:  "CreateChangeSet",
 		Input:   input,
 		Output:  (*cloudformation.CreateChangeSetOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) CreateChangeSetWithContext(ctx context.Context, input *cloudfor
 func (c *Client) CreateStackWithContext(ctx context.Context, input *cloudformation.CreateStackInput, opts ...request.Option) (*cloudformation.CreateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "CreateStackWithContext",
+		Action:  "CreateStack",
 		Input:   input,
 		Output:  (*cloudformation.CreateStackOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) CreateStackWithContext(ctx context.Context, input *cloudformati
 func (c *Client) CreateStackInstancesWithContext(ctx context.Context, input *cloudformation.CreateStackInstancesInput, opts ...request.Option) (*cloudformation.CreateStackInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "CreateStackInstancesWithContext",
+		Action:  "CreateStackInstances",
 		Input:   input,
 		Output:  (*cloudformation.CreateStackInstancesOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) CreateStackInstancesWithContext(ctx context.Context, input *clo
 func (c *Client) CreateStackSetWithContext(ctx context.Context, input *cloudformation.CreateStackSetInput, opts ...request.Option) (*cloudformation.CreateStackSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "CreateStackSetWithContext",
+		Action:  "CreateStackSet",
 		Input:   input,
 		Output:  (*cloudformation.CreateStackSetOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) CreateStackSetWithContext(ctx context.Context, input *cloudform
 func (c *Client) DeleteChangeSetWithContext(ctx context.Context, input *cloudformation.DeleteChangeSetInput, opts ...request.Option) (*cloudformation.DeleteChangeSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DeleteChangeSetWithContext",
+		Action:  "DeleteChangeSet",
 		Input:   input,
 		Output:  (*cloudformation.DeleteChangeSetOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) DeleteChangeSetWithContext(ctx context.Context, input *cloudfor
 func (c *Client) DeleteStackWithContext(ctx context.Context, input *cloudformation.DeleteStackInput, opts ...request.Option) (*cloudformation.DeleteStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DeleteStackWithContext",
+		Action:  "DeleteStack",
 		Input:   input,
 		Output:  (*cloudformation.DeleteStackOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) DeleteStackWithContext(ctx context.Context, input *cloudformati
 func (c *Client) DeleteStackInstancesWithContext(ctx context.Context, input *cloudformation.DeleteStackInstancesInput, opts ...request.Option) (*cloudformation.DeleteStackInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DeleteStackInstancesWithContext",
+		Action:  "DeleteStackInstances",
 		Input:   input,
 		Output:  (*cloudformation.DeleteStackInstancesOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) DeleteStackInstancesWithContext(ctx context.Context, input *clo
 func (c *Client) DeleteStackSetWithContext(ctx context.Context, input *cloudformation.DeleteStackSetInput, opts ...request.Option) (*cloudformation.DeleteStackSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DeleteStackSetWithContext",
+		Action:  "DeleteStackSet",
 		Input:   input,
 		Output:  (*cloudformation.DeleteStackSetOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) DeleteStackSetWithContext(ctx context.Context, input *cloudform
 func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, opts ...request.Option) (*cloudformation.DescribeAccountLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeAccountLimitsWithContext",
+		Action:  "DescribeAccountLimits",
 		Input:   input,
 		Output:  (*cloudformation.DescribeAccountLimitsOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *cl
 func (c *Client) DescribeChangeSetWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetInput, opts ...request.Option) (*cloudformation.DescribeChangeSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeChangeSetWithContext",
+		Action:  "DescribeChangeSet",
 		Input:   input,
 		Output:  (*cloudformation.DescribeChangeSetOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) DescribeChangeSetWithContext(ctx context.Context, input *cloudf
 func (c *Client) DescribeStackDriftDetectionStatusWithContext(ctx context.Context, input *cloudformation.DescribeStackDriftDetectionStatusInput, opts ...request.Option) (*cloudformation.DescribeStackDriftDetectionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackDriftDetectionStatusWithContext",
+		Action:  "DescribeStackDriftDetectionStatus",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackDriftDetectionStatusOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) DescribeStackDriftDetectionStatusWithContext(ctx context.Contex
 func (c *Client) DescribeStackEventsWithContext(ctx context.Context, input *cloudformation.DescribeStackEventsInput, opts ...request.Option) (*cloudformation.DescribeStackEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackEventsWithContext",
+		Action:  "DescribeStackEvents",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackEventsOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) DescribeStackEventsWithContext(ctx context.Context, input *clou
 func (c *Client) DescribeStackInstanceWithContext(ctx context.Context, input *cloudformation.DescribeStackInstanceInput, opts ...request.Option) (*cloudformation.DescribeStackInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackInstanceWithContext",
+		Action:  "DescribeStackInstance",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackInstanceOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) DescribeStackInstanceWithContext(ctx context.Context, input *cl
 func (c *Client) DescribeStackResourceWithContext(ctx context.Context, input *cloudformation.DescribeStackResourceInput, opts ...request.Option) (*cloudformation.DescribeStackResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackResourceWithContext",
+		Action:  "DescribeStackResource",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackResourceOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) DescribeStackResourceWithContext(ctx context.Context, input *cl
 func (c *Client) DescribeStackResourceDriftsWithContext(ctx context.Context, input *cloudformation.DescribeStackResourceDriftsInput, opts ...request.Option) (*cloudformation.DescribeStackResourceDriftsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackResourceDriftsWithContext",
+		Action:  "DescribeStackResourceDrifts",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackResourceDriftsOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) DescribeStackResourceDriftsWithContext(ctx context.Context, inp
 func (c *Client) DescribeStackResourcesWithContext(ctx context.Context, input *cloudformation.DescribeStackResourcesInput, opts ...request.Option) (*cloudformation.DescribeStackResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackResourcesWithContext",
+		Action:  "DescribeStackResources",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackResourcesOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) DescribeStackResourcesWithContext(ctx context.Context, input *c
 func (c *Client) DescribeStackSetWithContext(ctx context.Context, input *cloudformation.DescribeStackSetInput, opts ...request.Option) (*cloudformation.DescribeStackSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackSetWithContext",
+		Action:  "DescribeStackSet",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackSetOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) DescribeStackSetWithContext(ctx context.Context, input *cloudfo
 func (c *Client) DescribeStackSetOperationWithContext(ctx context.Context, input *cloudformation.DescribeStackSetOperationInput, opts ...request.Option) (*cloudformation.DescribeStackSetOperationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStackSetOperationWithContext",
+		Action:  "DescribeStackSetOperation",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStackSetOperationOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) DescribeStackSetOperationWithContext(ctx context.Context, input
 func (c *Client) DescribeStacksWithContext(ctx context.Context, input *cloudformation.DescribeStacksInput, opts ...request.Option) (*cloudformation.DescribeStacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DescribeStacksWithContext",
+		Action:  "DescribeStacks",
 		Input:   input,
 		Output:  (*cloudformation.DescribeStacksOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) DescribeStacksWithContext(ctx context.Context, input *cloudform
 func (c *Client) DetectStackDriftWithContext(ctx context.Context, input *cloudformation.DetectStackDriftInput, opts ...request.Option) (*cloudformation.DetectStackDriftOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DetectStackDriftWithContext",
+		Action:  "DetectStackDrift",
 		Input:   input,
 		Output:  (*cloudformation.DetectStackDriftOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) DetectStackDriftWithContext(ctx context.Context, input *cloudfo
 func (c *Client) DetectStackResourceDriftWithContext(ctx context.Context, input *cloudformation.DetectStackResourceDriftInput, opts ...request.Option) (*cloudformation.DetectStackResourceDriftOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "DetectStackResourceDriftWithContext",
+		Action:  "DetectStackResourceDrift",
 		Input:   input,
 		Output:  (*cloudformation.DetectStackResourceDriftOutput)(nil),
 		Error:   nil,
@@ -559,7 +559,7 @@ func (c *Client) DetectStackResourceDriftWithContext(ctx context.Context, input 
 func (c *Client) EstimateTemplateCostWithContext(ctx context.Context, input *cloudformation.EstimateTemplateCostInput, opts ...request.Option) (*cloudformation.EstimateTemplateCostOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "EstimateTemplateCostWithContext",
+		Action:  "EstimateTemplateCost",
 		Input:   input,
 		Output:  (*cloudformation.EstimateTemplateCostOutput)(nil),
 		Error:   nil,
@@ -580,7 +580,7 @@ func (c *Client) EstimateTemplateCostWithContext(ctx context.Context, input *clo
 func (c *Client) ExecuteChangeSetWithContext(ctx context.Context, input *cloudformation.ExecuteChangeSetInput, opts ...request.Option) (*cloudformation.ExecuteChangeSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ExecuteChangeSetWithContext",
+		Action:  "ExecuteChangeSet",
 		Input:   input,
 		Output:  (*cloudformation.ExecuteChangeSetOutput)(nil),
 		Error:   nil,
@@ -601,7 +601,7 @@ func (c *Client) ExecuteChangeSetWithContext(ctx context.Context, input *cloudfo
 func (c *Client) GetStackPolicyWithContext(ctx context.Context, input *cloudformation.GetStackPolicyInput, opts ...request.Option) (*cloudformation.GetStackPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "GetStackPolicyWithContext",
+		Action:  "GetStackPolicy",
 		Input:   input,
 		Output:  (*cloudformation.GetStackPolicyOutput)(nil),
 		Error:   nil,
@@ -622,7 +622,7 @@ func (c *Client) GetStackPolicyWithContext(ctx context.Context, input *cloudform
 func (c *Client) GetTemplateWithContext(ctx context.Context, input *cloudformation.GetTemplateInput, opts ...request.Option) (*cloudformation.GetTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "GetTemplateWithContext",
+		Action:  "GetTemplate",
 		Input:   input,
 		Output:  (*cloudformation.GetTemplateOutput)(nil),
 		Error:   nil,
@@ -643,7 +643,7 @@ func (c *Client) GetTemplateWithContext(ctx context.Context, input *cloudformati
 func (c *Client) GetTemplateSummaryWithContext(ctx context.Context, input *cloudformation.GetTemplateSummaryInput, opts ...request.Option) (*cloudformation.GetTemplateSummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "GetTemplateSummaryWithContext",
+		Action:  "GetTemplateSummary",
 		Input:   input,
 		Output:  (*cloudformation.GetTemplateSummaryOutput)(nil),
 		Error:   nil,
@@ -664,7 +664,7 @@ func (c *Client) GetTemplateSummaryWithContext(ctx context.Context, input *cloud
 func (c *Client) ListChangeSetsWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, opts ...request.Option) (*cloudformation.ListChangeSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListChangeSetsWithContext",
+		Action:  "ListChangeSets",
 		Input:   input,
 		Output:  (*cloudformation.ListChangeSetsOutput)(nil),
 		Error:   nil,
@@ -685,7 +685,7 @@ func (c *Client) ListChangeSetsWithContext(ctx context.Context, input *cloudform
 func (c *Client) ListExportsWithContext(ctx context.Context, input *cloudformation.ListExportsInput, opts ...request.Option) (*cloudformation.ListExportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListExportsWithContext",
+		Action:  "ListExports",
 		Input:   input,
 		Output:  (*cloudformation.ListExportsOutput)(nil),
 		Error:   nil,
@@ -706,7 +706,7 @@ func (c *Client) ListExportsWithContext(ctx context.Context, input *cloudformati
 func (c *Client) ListImportsWithContext(ctx context.Context, input *cloudformation.ListImportsInput, opts ...request.Option) (*cloudformation.ListImportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListImportsWithContext",
+		Action:  "ListImports",
 		Input:   input,
 		Output:  (*cloudformation.ListImportsOutput)(nil),
 		Error:   nil,
@@ -727,7 +727,7 @@ func (c *Client) ListImportsWithContext(ctx context.Context, input *cloudformati
 func (c *Client) ListStackInstancesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, opts ...request.Option) (*cloudformation.ListStackInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListStackInstancesWithContext",
+		Action:  "ListStackInstances",
 		Input:   input,
 		Output:  (*cloudformation.ListStackInstancesOutput)(nil),
 		Error:   nil,
@@ -748,7 +748,7 @@ func (c *Client) ListStackInstancesWithContext(ctx context.Context, input *cloud
 func (c *Client) ListStackResourcesWithContext(ctx context.Context, input *cloudformation.ListStackResourcesInput, opts ...request.Option) (*cloudformation.ListStackResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListStackResourcesWithContext",
+		Action:  "ListStackResources",
 		Input:   input,
 		Output:  (*cloudformation.ListStackResourcesOutput)(nil),
 		Error:   nil,
@@ -769,7 +769,7 @@ func (c *Client) ListStackResourcesWithContext(ctx context.Context, input *cloud
 func (c *Client) ListStackSetOperationResultsWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationResultsInput, opts ...request.Option) (*cloudformation.ListStackSetOperationResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListStackSetOperationResultsWithContext",
+		Action:  "ListStackSetOperationResults",
 		Input:   input,
 		Output:  (*cloudformation.ListStackSetOperationResultsOutput)(nil),
 		Error:   nil,
@@ -790,7 +790,7 @@ func (c *Client) ListStackSetOperationResultsWithContext(ctx context.Context, in
 func (c *Client) ListStackSetOperationsWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationsInput, opts ...request.Option) (*cloudformation.ListStackSetOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListStackSetOperationsWithContext",
+		Action:  "ListStackSetOperations",
 		Input:   input,
 		Output:  (*cloudformation.ListStackSetOperationsOutput)(nil),
 		Error:   nil,
@@ -811,7 +811,7 @@ func (c *Client) ListStackSetOperationsWithContext(ctx context.Context, input *c
 func (c *Client) ListStackSetsWithContext(ctx context.Context, input *cloudformation.ListStackSetsInput, opts ...request.Option) (*cloudformation.ListStackSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListStackSetsWithContext",
+		Action:  "ListStackSets",
 		Input:   input,
 		Output:  (*cloudformation.ListStackSetsOutput)(nil),
 		Error:   nil,
@@ -832,7 +832,7 @@ func (c *Client) ListStackSetsWithContext(ctx context.Context, input *cloudforma
 func (c *Client) ListStacksWithContext(ctx context.Context, input *cloudformation.ListStacksInput, opts ...request.Option) (*cloudformation.ListStacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ListStacksWithContext",
+		Action:  "ListStacks",
 		Input:   input,
 		Output:  (*cloudformation.ListStacksOutput)(nil),
 		Error:   nil,
@@ -853,7 +853,7 @@ func (c *Client) ListStacksWithContext(ctx context.Context, input *cloudformatio
 func (c *Client) SetStackPolicyWithContext(ctx context.Context, input *cloudformation.SetStackPolicyInput, opts ...request.Option) (*cloudformation.SetStackPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "SetStackPolicyWithContext",
+		Action:  "SetStackPolicy",
 		Input:   input,
 		Output:  (*cloudformation.SetStackPolicyOutput)(nil),
 		Error:   nil,
@@ -874,7 +874,7 @@ func (c *Client) SetStackPolicyWithContext(ctx context.Context, input *cloudform
 func (c *Client) SignalResourceWithContext(ctx context.Context, input *cloudformation.SignalResourceInput, opts ...request.Option) (*cloudformation.SignalResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "SignalResourceWithContext",
+		Action:  "SignalResource",
 		Input:   input,
 		Output:  (*cloudformation.SignalResourceOutput)(nil),
 		Error:   nil,
@@ -895,7 +895,7 @@ func (c *Client) SignalResourceWithContext(ctx context.Context, input *cloudform
 func (c *Client) StopStackSetOperationWithContext(ctx context.Context, input *cloudformation.StopStackSetOperationInput, opts ...request.Option) (*cloudformation.StopStackSetOperationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "StopStackSetOperationWithContext",
+		Action:  "StopStackSetOperation",
 		Input:   input,
 		Output:  (*cloudformation.StopStackSetOperationOutput)(nil),
 		Error:   nil,
@@ -916,7 +916,7 @@ func (c *Client) StopStackSetOperationWithContext(ctx context.Context, input *cl
 func (c *Client) UpdateStackWithContext(ctx context.Context, input *cloudformation.UpdateStackInput, opts ...request.Option) (*cloudformation.UpdateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "UpdateStackWithContext",
+		Action:  "UpdateStack",
 		Input:   input,
 		Output:  (*cloudformation.UpdateStackOutput)(nil),
 		Error:   nil,
@@ -937,7 +937,7 @@ func (c *Client) UpdateStackWithContext(ctx context.Context, input *cloudformati
 func (c *Client) UpdateStackInstancesWithContext(ctx context.Context, input *cloudformation.UpdateStackInstancesInput, opts ...request.Option) (*cloudformation.UpdateStackInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "UpdateStackInstancesWithContext",
+		Action:  "UpdateStackInstances",
 		Input:   input,
 		Output:  (*cloudformation.UpdateStackInstancesOutput)(nil),
 		Error:   nil,
@@ -958,7 +958,7 @@ func (c *Client) UpdateStackInstancesWithContext(ctx context.Context, input *clo
 func (c *Client) UpdateStackSetWithContext(ctx context.Context, input *cloudformation.UpdateStackSetInput, opts ...request.Option) (*cloudformation.UpdateStackSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "UpdateStackSetWithContext",
+		Action:  "UpdateStackSet",
 		Input:   input,
 		Output:  (*cloudformation.UpdateStackSetOutput)(nil),
 		Error:   nil,
@@ -979,7 +979,7 @@ func (c *Client) UpdateStackSetWithContext(ctx context.Context, input *cloudform
 func (c *Client) UpdateTerminationProtectionWithContext(ctx context.Context, input *cloudformation.UpdateTerminationProtectionInput, opts ...request.Option) (*cloudformation.UpdateTerminationProtectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "UpdateTerminationProtectionWithContext",
+		Action:  "UpdateTerminationProtection",
 		Input:   input,
 		Output:  (*cloudformation.UpdateTerminationProtectionOutput)(nil),
 		Error:   nil,
@@ -1000,7 +1000,7 @@ func (c *Client) UpdateTerminationProtectionWithContext(ctx context.Context, inp
 func (c *Client) ValidateTemplateWithContext(ctx context.Context, input *cloudformation.ValidateTemplateInput, opts ...request.Option) (*cloudformation.ValidateTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
-		Action:  "ValidateTemplateWithContext",
+		Action:  "ValidateTemplate",
 		Input:   input,
 		Output:  (*cloudformation.ValidateTemplateOutput)(nil),
 		Error:   nil,

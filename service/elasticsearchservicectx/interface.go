@@ -54,7 +54,7 @@ var _ ElasticsearchService = (*Client)(nil)
 func (c *Client) AddTagsWithContext(ctx context.Context, input *elasticsearchservice.AddTagsInput, opts ...request.Option) (*elasticsearchservice.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*elasticsearchservice.AddTagsOutput)(nil),
 		Error:   nil,
@@ -75,7 +75,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *elasticsearchser
 func (c *Client) CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "CancelElasticsearchServiceSoftwareUpdateWithContext",
+		Action:  "CancelElasticsearchServiceSoftwareUpdate",
 		Input:   input,
 		Output:  (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput)(nil),
 		Error:   nil,
@@ -96,7 +96,7 @@ func (c *Client) CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context
 func (c *Client) CreateElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.CreateElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.CreateElasticsearchDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "CreateElasticsearchDomainWithContext",
+		Action:  "CreateElasticsearchDomain",
 		Input:   input,
 		Output:  (*elasticsearchservice.CreateElasticsearchDomainOutput)(nil),
 		Error:   nil,
@@ -117,7 +117,7 @@ func (c *Client) CreateElasticsearchDomainWithContext(ctx context.Context, input
 func (c *Client) DeleteElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DeleteElasticsearchDomainWithContext",
+		Action:  "DeleteElasticsearchDomain",
 		Input:   input,
 		Output:  (*elasticsearchservice.DeleteElasticsearchDomainOutput)(nil),
 		Error:   nil,
@@ -138,7 +138,7 @@ func (c *Client) DeleteElasticsearchDomainWithContext(ctx context.Context, input
 func (c *Client) DeleteElasticsearchServiceRoleWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchServiceRoleInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchServiceRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DeleteElasticsearchServiceRoleWithContext",
+		Action:  "DeleteElasticsearchServiceRole",
 		Input:   input,
 		Output:  (*elasticsearchservice.DeleteElasticsearchServiceRoleOutput)(nil),
 		Error:   nil,
@@ -159,7 +159,7 @@ func (c *Client) DeleteElasticsearchServiceRoleWithContext(ctx context.Context, 
 func (c *Client) DescribeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DescribeElasticsearchDomainWithContext",
+		Action:  "DescribeElasticsearchDomain",
 		Input:   input,
 		Output:  (*elasticsearchservice.DescribeElasticsearchDomainOutput)(nil),
 		Error:   nil,
@@ -180,7 +180,7 @@ func (c *Client) DescribeElasticsearchDomainWithContext(ctx context.Context, inp
 func (c *Client) DescribeElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DescribeElasticsearchDomainConfigWithContext",
+		Action:  "DescribeElasticsearchDomainConfig",
 		Input:   input,
 		Output:  (*elasticsearchservice.DescribeElasticsearchDomainConfigOutput)(nil),
 		Error:   nil,
@@ -201,7 +201,7 @@ func (c *Client) DescribeElasticsearchDomainConfigWithContext(ctx context.Contex
 func (c *Client) DescribeElasticsearchDomainsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DescribeElasticsearchDomainsWithContext",
+		Action:  "DescribeElasticsearchDomains",
 		Input:   input,
 		Output:  (*elasticsearchservice.DescribeElasticsearchDomainsOutput)(nil),
 		Error:   nil,
@@ -222,7 +222,7 @@ func (c *Client) DescribeElasticsearchDomainsWithContext(ctx context.Context, in
 func (c *Client) DescribeElasticsearchInstanceTypeLimitsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DescribeElasticsearchInstanceTypeLimitsWithContext",
+		Action:  "DescribeElasticsearchInstanceTypeLimits",
 		Input:   input,
 		Output:  (*elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsOutput)(nil),
 		Error:   nil,
@@ -243,7 +243,7 @@ func (c *Client) DescribeElasticsearchInstanceTypeLimitsWithContext(ctx context.
 func (c *Client) DescribeReservedElasticsearchInstanceOfferingsWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DescribeReservedElasticsearchInstanceOfferingsWithContext",
+		Action:  "DescribeReservedElasticsearchInstanceOfferings",
 		Input:   input,
 		Output:  (*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput)(nil),
 		Error:   nil,
@@ -264,7 +264,7 @@ func (c *Client) DescribeReservedElasticsearchInstanceOfferingsWithContext(ctx c
 func (c *Client) DescribeReservedElasticsearchInstancesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstancesInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "DescribeReservedElasticsearchInstancesWithContext",
+		Action:  "DescribeReservedElasticsearchInstances",
 		Input:   input,
 		Output:  (*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput)(nil),
 		Error:   nil,
@@ -285,7 +285,7 @@ func (c *Client) DescribeReservedElasticsearchInstancesWithContext(ctx context.C
 func (c *Client) GetCompatibleElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.GetCompatibleElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "GetCompatibleElasticsearchVersionsWithContext",
+		Action:  "GetCompatibleElasticsearchVersions",
 		Input:   input,
 		Output:  (*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput)(nil),
 		Error:   nil,
@@ -306,7 +306,7 @@ func (c *Client) GetCompatibleElasticsearchVersionsWithContext(ctx context.Conte
 func (c *Client) GetUpgradeHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeHistoryInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "GetUpgradeHistoryWithContext",
+		Action:  "GetUpgradeHistory",
 		Input:   input,
 		Output:  (*elasticsearchservice.GetUpgradeHistoryOutput)(nil),
 		Error:   nil,
@@ -327,7 +327,7 @@ func (c *Client) GetUpgradeHistoryWithContext(ctx context.Context, input *elasti
 func (c *Client) GetUpgradeStatusWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeStatusInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "GetUpgradeStatusWithContext",
+		Action:  "GetUpgradeStatus",
 		Input:   input,
 		Output:  (*elasticsearchservice.GetUpgradeStatusOutput)(nil),
 		Error:   nil,
@@ -348,7 +348,7 @@ func (c *Client) GetUpgradeStatusWithContext(ctx context.Context, input *elastic
 func (c *Client) ListDomainNamesWithContext(ctx context.Context, input *elasticsearchservice.ListDomainNamesInput, opts ...request.Option) (*elasticsearchservice.ListDomainNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "ListDomainNamesWithContext",
+		Action:  "ListDomainNames",
 		Input:   input,
 		Output:  (*elasticsearchservice.ListDomainNamesOutput)(nil),
 		Error:   nil,
@@ -369,7 +369,7 @@ func (c *Client) ListDomainNamesWithContext(ctx context.Context, input *elastics
 func (c *Client) ListElasticsearchInstanceTypesWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchInstanceTypesInput, opts ...request.Option) (*elasticsearchservice.ListElasticsearchInstanceTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "ListElasticsearchInstanceTypesWithContext",
+		Action:  "ListElasticsearchInstanceTypes",
 		Input:   input,
 		Output:  (*elasticsearchservice.ListElasticsearchInstanceTypesOutput)(nil),
 		Error:   nil,
@@ -390,7 +390,7 @@ func (c *Client) ListElasticsearchInstanceTypesWithContext(ctx context.Context, 
 func (c *Client) ListElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.ListElasticsearchVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "ListElasticsearchVersionsWithContext",
+		Action:  "ListElasticsearchVersions",
 		Input:   input,
 		Output:  (*elasticsearchservice.ListElasticsearchVersionsOutput)(nil),
 		Error:   nil,
@@ -411,7 +411,7 @@ func (c *Client) ListElasticsearchVersionsWithContext(ctx context.Context, input
 func (c *Client) ListTagsWithContext(ctx context.Context, input *elasticsearchservice.ListTagsInput, opts ...request.Option) (*elasticsearchservice.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*elasticsearchservice.ListTagsOutput)(nil),
 		Error:   nil,
@@ -432,7 +432,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *elasticsearchse
 func (c *Client) PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx context.Context, input *elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingInput, opts ...request.Option) (*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "PurchaseReservedElasticsearchInstanceOfferingWithContext",
+		Action:  "PurchaseReservedElasticsearchInstanceOffering",
 		Input:   input,
 		Output:  (*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput)(nil),
 		Error:   nil,
@@ -453,7 +453,7 @@ func (c *Client) PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx co
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elasticsearchservice.RemoveTagsInput, opts ...request.Option) (*elasticsearchservice.RemoveTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "RemoveTagsWithContext",
+		Action:  "RemoveTags",
 		Input:   input,
 		Output:  (*elasticsearchservice.RemoveTagsOutput)(nil),
 		Error:   nil,
@@ -474,7 +474,7 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elasticsearch
 func (c *Client) StartElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.StartElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.StartElasticsearchServiceSoftwareUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "StartElasticsearchServiceSoftwareUpdateWithContext",
+		Action:  "StartElasticsearchServiceSoftwareUpdate",
 		Input:   input,
 		Output:  (*elasticsearchservice.StartElasticsearchServiceSoftwareUpdateOutput)(nil),
 		Error:   nil,
@@ -495,7 +495,7 @@ func (c *Client) StartElasticsearchServiceSoftwareUpdateWithContext(ctx context.
 func (c *Client) UpdateElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.UpdateElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.UpdateElasticsearchDomainConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "UpdateElasticsearchDomainConfigWithContext",
+		Action:  "UpdateElasticsearchDomainConfig",
 		Input:   input,
 		Output:  (*elasticsearchservice.UpdateElasticsearchDomainConfigOutput)(nil),
 		Error:   nil,
@@ -516,7 +516,7 @@ func (c *Client) UpdateElasticsearchDomainConfigWithContext(ctx context.Context,
 func (c *Client) UpgradeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.UpgradeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.UpgradeElasticsearchDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
-		Action:  "UpgradeElasticsearchDomainWithContext",
+		Action:  "UpgradeElasticsearchDomain",
 		Input:   input,
 		Output:  (*elasticsearchservice.UpgradeElasticsearchDomainOutput)(nil),
 		Error:   nil,

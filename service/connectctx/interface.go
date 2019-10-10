@@ -52,7 +52,7 @@ var _ Connect = (*Client)(nil)
 func (c *Client) CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*connect.CreateUserOutput)(nil),
 		Error:   nil,
@@ -73,7 +73,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *connect.Creat
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*connect.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -94,7 +94,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.Delet
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "DescribeUserWithContext",
+		Action:  "DescribeUser",
 		Input:   input,
 		Output:  (*connect.DescribeUserOutput)(nil),
 		Error:   nil,
@@ -115,7 +115,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *connect.Des
 func (c *Client) DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "DescribeUserHierarchyGroupWithContext",
+		Action:  "DescribeUserHierarchyGroup",
 		Input:   input,
 		Output:  (*connect.DescribeUserHierarchyGroupOutput)(nil),
 		Error:   nil,
@@ -136,7 +136,7 @@ func (c *Client) DescribeUserHierarchyGroupWithContext(ctx context.Context, inpu
 func (c *Client) DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "DescribeUserHierarchyStructureWithContext",
+		Action:  "DescribeUserHierarchyStructure",
 		Input:   input,
 		Output:  (*connect.DescribeUserHierarchyStructureOutput)(nil),
 		Error:   nil,
@@ -157,7 +157,7 @@ func (c *Client) DescribeUserHierarchyStructureWithContext(ctx context.Context, 
 func (c *Client) GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "GetContactAttributesWithContext",
+		Action:  "GetContactAttributes",
 		Input:   input,
 		Output:  (*connect.GetContactAttributesOutput)(nil),
 		Error:   nil,
@@ -178,7 +178,7 @@ func (c *Client) GetContactAttributesWithContext(ctx context.Context, input *con
 func (c *Client) GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "GetCurrentMetricDataWithContext",
+		Action:  "GetCurrentMetricData",
 		Input:   input,
 		Output:  (*connect.GetCurrentMetricDataOutput)(nil),
 		Error:   nil,
@@ -199,7 +199,7 @@ func (c *Client) GetCurrentMetricDataWithContext(ctx context.Context, input *con
 func (c *Client) GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "GetFederationTokenWithContext",
+		Action:  "GetFederationToken",
 		Input:   input,
 		Output:  (*connect.GetFederationTokenOutput)(nil),
 		Error:   nil,
@@ -220,7 +220,7 @@ func (c *Client) GetFederationTokenWithContext(ctx context.Context, input *conne
 func (c *Client) GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "GetMetricDataWithContext",
+		Action:  "GetMetricData",
 		Input:   input,
 		Output:  (*connect.GetMetricDataOutput)(nil),
 		Error:   nil,
@@ -241,7 +241,7 @@ func (c *Client) GetMetricDataWithContext(ctx context.Context, input *connect.Ge
 func (c *Client) ListRoutingProfilesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, opts ...request.Option) (*connect.ListRoutingProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "ListRoutingProfilesWithContext",
+		Action:  "ListRoutingProfiles",
 		Input:   input,
 		Output:  (*connect.ListRoutingProfilesOutput)(nil),
 		Error:   nil,
@@ -262,7 +262,7 @@ func (c *Client) ListRoutingProfilesWithContext(ctx context.Context, input *conn
 func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "ListSecurityProfilesWithContext",
+		Action:  "ListSecurityProfiles",
 		Input:   input,
 		Output:  (*connect.ListSecurityProfilesOutput)(nil),
 		Error:   nil,
@@ -283,7 +283,7 @@ func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *con
 func (c *Client) ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "ListUserHierarchyGroupsWithContext",
+		Action:  "ListUserHierarchyGroups",
 		Input:   input,
 		Output:  (*connect.ListUserHierarchyGroupsOutput)(nil),
 		Error:   nil,
@@ -304,7 +304,7 @@ func (c *Client) ListUserHierarchyGroupsWithContext(ctx context.Context, input *
 func (c *Client) ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*connect.ListUsersOutput)(nil),
 		Error:   nil,
@@ -325,7 +325,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *connect.ListUs
 func (c *Client) StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "StartOutboundVoiceContactWithContext",
+		Action:  "StartOutboundVoiceContact",
 		Input:   input,
 		Output:  (*connect.StartOutboundVoiceContactOutput)(nil),
 		Error:   nil,
@@ -346,7 +346,7 @@ func (c *Client) StartOutboundVoiceContactWithContext(ctx context.Context, input
 func (c *Client) StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "StopContactWithContext",
+		Action:  "StopContact",
 		Input:   input,
 		Output:  (*connect.StopContactOutput)(nil),
 		Error:   nil,
@@ -367,7 +367,7 @@ func (c *Client) StopContactWithContext(ctx context.Context, input *connect.Stop
 func (c *Client) UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "UpdateContactAttributesWithContext",
+		Action:  "UpdateContactAttributes",
 		Input:   input,
 		Output:  (*connect.UpdateContactAttributesOutput)(nil),
 		Error:   nil,
@@ -388,7 +388,7 @@ func (c *Client) UpdateContactAttributesWithContext(ctx context.Context, input *
 func (c *Client) UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "UpdateUserHierarchyWithContext",
+		Action:  "UpdateUserHierarchy",
 		Input:   input,
 		Output:  (*connect.UpdateUserHierarchyOutput)(nil),
 		Error:   nil,
@@ -409,7 +409,7 @@ func (c *Client) UpdateUserHierarchyWithContext(ctx context.Context, input *conn
 func (c *Client) UpdateUserIdentityInfoWithContext(ctx context.Context, input *connect.UpdateUserIdentityInfoInput, opts ...request.Option) (*connect.UpdateUserIdentityInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "UpdateUserIdentityInfoWithContext",
+		Action:  "UpdateUserIdentityInfo",
 		Input:   input,
 		Output:  (*connect.UpdateUserIdentityInfoOutput)(nil),
 		Error:   nil,
@@ -430,7 +430,7 @@ func (c *Client) UpdateUserIdentityInfoWithContext(ctx context.Context, input *c
 func (c *Client) UpdateUserPhoneConfigWithContext(ctx context.Context, input *connect.UpdateUserPhoneConfigInput, opts ...request.Option) (*connect.UpdateUserPhoneConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "UpdateUserPhoneConfigWithContext",
+		Action:  "UpdateUserPhoneConfig",
 		Input:   input,
 		Output:  (*connect.UpdateUserPhoneConfigOutput)(nil),
 		Error:   nil,
@@ -451,7 +451,7 @@ func (c *Client) UpdateUserPhoneConfigWithContext(ctx context.Context, input *co
 func (c *Client) UpdateUserRoutingProfileWithContext(ctx context.Context, input *connect.UpdateUserRoutingProfileInput, opts ...request.Option) (*connect.UpdateUserRoutingProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "UpdateUserRoutingProfileWithContext",
+		Action:  "UpdateUserRoutingProfile",
 		Input:   input,
 		Output:  (*connect.UpdateUserRoutingProfileOutput)(nil),
 		Error:   nil,
@@ -472,7 +472,7 @@ func (c *Client) UpdateUserRoutingProfileWithContext(ctx context.Context, input 
 func (c *Client) UpdateUserSecurityProfilesWithContext(ctx context.Context, input *connect.UpdateUserSecurityProfilesInput, opts ...request.Option) (*connect.UpdateUserSecurityProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
-		Action:  "UpdateUserSecurityProfilesWithContext",
+		Action:  "UpdateUserSecurityProfiles",
 		Input:   input,
 		Output:  (*connect.UpdateUserSecurityProfilesOutput)(nil),
 		Error:   nil,

@@ -36,7 +36,7 @@ var _ LexRuntimeService = (*Client)(nil)
 func (c *Client) DeleteSessionWithContext(ctx context.Context, input *lexruntimeservice.DeleteSessionInput, opts ...request.Option) (*lexruntimeservice.DeleteSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexruntimeservice",
-		Action:  "DeleteSessionWithContext",
+		Action:  "DeleteSession",
 		Input:   input,
 		Output:  (*lexruntimeservice.DeleteSessionOutput)(nil),
 		Error:   nil,
@@ -57,7 +57,7 @@ func (c *Client) DeleteSessionWithContext(ctx context.Context, input *lexruntime
 func (c *Client) GetSessionWithContext(ctx context.Context, input *lexruntimeservice.GetSessionInput, opts ...request.Option) (*lexruntimeservice.GetSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexruntimeservice",
-		Action:  "GetSessionWithContext",
+		Action:  "GetSession",
 		Input:   input,
 		Output:  (*lexruntimeservice.GetSessionOutput)(nil),
 		Error:   nil,
@@ -78,7 +78,7 @@ func (c *Client) GetSessionWithContext(ctx context.Context, input *lexruntimeser
 func (c *Client) PostContentWithContext(ctx context.Context, input *lexruntimeservice.PostContentInput, opts ...request.Option) (*lexruntimeservice.PostContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexruntimeservice",
-		Action:  "PostContentWithContext",
+		Action:  "PostContent",
 		Input:   input,
 		Output:  (*lexruntimeservice.PostContentOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) PostContentWithContext(ctx context.Context, input *lexruntimese
 func (c *Client) PostTextWithContext(ctx context.Context, input *lexruntimeservice.PostTextInput, opts ...request.Option) (*lexruntimeservice.PostTextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexruntimeservice",
-		Action:  "PostTextWithContext",
+		Action:  "PostText",
 		Input:   input,
 		Output:  (*lexruntimeservice.PostTextOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) PostTextWithContext(ctx context.Context, input *lexruntimeservi
 func (c *Client) PutSessionWithContext(ctx context.Context, input *lexruntimeservice.PutSessionInput, opts ...request.Option) (*lexruntimeservice.PutSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexruntimeservice",
-		Action:  "PutSessionWithContext",
+		Action:  "PutSession",
 		Input:   input,
 		Output:  (*lexruntimeservice.PutSessionOutput)(nil),
 		Error:   nil,

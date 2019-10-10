@@ -49,7 +49,7 @@ var _ Shield = (*Client)(nil)
 func (c *Client) AssociateDRTLogBucketWithContext(ctx context.Context, input *shield.AssociateDRTLogBucketInput, opts ...request.Option) (*shield.AssociateDRTLogBucketOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "AssociateDRTLogBucketWithContext",
+		Action:  "AssociateDRTLogBucket",
 		Input:   input,
 		Output:  (*shield.AssociateDRTLogBucketOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) AssociateDRTLogBucketWithContext(ctx context.Context, input *sh
 func (c *Client) AssociateDRTRoleWithContext(ctx context.Context, input *shield.AssociateDRTRoleInput, opts ...request.Option) (*shield.AssociateDRTRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "AssociateDRTRoleWithContext",
+		Action:  "AssociateDRTRole",
 		Input:   input,
 		Output:  (*shield.AssociateDRTRoleOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) AssociateDRTRoleWithContext(ctx context.Context, input *shield.
 func (c *Client) CreateProtectionWithContext(ctx context.Context, input *shield.CreateProtectionInput, opts ...request.Option) (*shield.CreateProtectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "CreateProtectionWithContext",
+		Action:  "CreateProtection",
 		Input:   input,
 		Output:  (*shield.CreateProtectionOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) CreateProtectionWithContext(ctx context.Context, input *shield.
 func (c *Client) CreateSubscriptionWithContext(ctx context.Context, input *shield.CreateSubscriptionInput, opts ...request.Option) (*shield.CreateSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "CreateSubscriptionWithContext",
+		Action:  "CreateSubscription",
 		Input:   input,
 		Output:  (*shield.CreateSubscriptionOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) CreateSubscriptionWithContext(ctx context.Context, input *shiel
 func (c *Client) DeleteProtectionWithContext(ctx context.Context, input *shield.DeleteProtectionInput, opts ...request.Option) (*shield.DeleteProtectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DeleteProtectionWithContext",
+		Action:  "DeleteProtection",
 		Input:   input,
 		Output:  (*shield.DeleteProtectionOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DeleteProtectionWithContext(ctx context.Context, input *shield.
 func (c *Client) DeleteSubscriptionWithContext(ctx context.Context, input *shield.DeleteSubscriptionInput, opts ...request.Option) (*shield.DeleteSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DeleteSubscriptionWithContext",
+		Action:  "DeleteSubscription",
 		Input:   input,
 		Output:  (*shield.DeleteSubscriptionOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) DeleteSubscriptionWithContext(ctx context.Context, input *shiel
 func (c *Client) DescribeAttackWithContext(ctx context.Context, input *shield.DescribeAttackInput, opts ...request.Option) (*shield.DescribeAttackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DescribeAttackWithContext",
+		Action:  "DescribeAttack",
 		Input:   input,
 		Output:  (*shield.DescribeAttackOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) DescribeAttackWithContext(ctx context.Context, input *shield.De
 func (c *Client) DescribeDRTAccessWithContext(ctx context.Context, input *shield.DescribeDRTAccessInput, opts ...request.Option) (*shield.DescribeDRTAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DescribeDRTAccessWithContext",
+		Action:  "DescribeDRTAccess",
 		Input:   input,
 		Output:  (*shield.DescribeDRTAccessOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) DescribeDRTAccessWithContext(ctx context.Context, input *shield
 func (c *Client) DescribeEmergencyContactSettingsWithContext(ctx context.Context, input *shield.DescribeEmergencyContactSettingsInput, opts ...request.Option) (*shield.DescribeEmergencyContactSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DescribeEmergencyContactSettingsWithContext",
+		Action:  "DescribeEmergencyContactSettings",
 		Input:   input,
 		Output:  (*shield.DescribeEmergencyContactSettingsOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) DescribeEmergencyContactSettingsWithContext(ctx context.Context
 func (c *Client) DescribeProtectionWithContext(ctx context.Context, input *shield.DescribeProtectionInput, opts ...request.Option) (*shield.DescribeProtectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DescribeProtectionWithContext",
+		Action:  "DescribeProtection",
 		Input:   input,
 		Output:  (*shield.DescribeProtectionOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) DescribeProtectionWithContext(ctx context.Context, input *shiel
 func (c *Client) DescribeSubscriptionWithContext(ctx context.Context, input *shield.DescribeSubscriptionInput, opts ...request.Option) (*shield.DescribeSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DescribeSubscriptionWithContext",
+		Action:  "DescribeSubscription",
 		Input:   input,
 		Output:  (*shield.DescribeSubscriptionOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) DescribeSubscriptionWithContext(ctx context.Context, input *shi
 func (c *Client) DisassociateDRTLogBucketWithContext(ctx context.Context, input *shield.DisassociateDRTLogBucketInput, opts ...request.Option) (*shield.DisassociateDRTLogBucketOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DisassociateDRTLogBucketWithContext",
+		Action:  "DisassociateDRTLogBucket",
 		Input:   input,
 		Output:  (*shield.DisassociateDRTLogBucketOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) DisassociateDRTLogBucketWithContext(ctx context.Context, input 
 func (c *Client) DisassociateDRTRoleWithContext(ctx context.Context, input *shield.DisassociateDRTRoleInput, opts ...request.Option) (*shield.DisassociateDRTRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "DisassociateDRTRoleWithContext",
+		Action:  "DisassociateDRTRole",
 		Input:   input,
 		Output:  (*shield.DisassociateDRTRoleOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) DisassociateDRTRoleWithContext(ctx context.Context, input *shie
 func (c *Client) GetSubscriptionStateWithContext(ctx context.Context, input *shield.GetSubscriptionStateInput, opts ...request.Option) (*shield.GetSubscriptionStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "GetSubscriptionStateWithContext",
+		Action:  "GetSubscriptionState",
 		Input:   input,
 		Output:  (*shield.GetSubscriptionStateOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) GetSubscriptionStateWithContext(ctx context.Context, input *shi
 func (c *Client) ListAttacksWithContext(ctx context.Context, input *shield.ListAttacksInput, opts ...request.Option) (*shield.ListAttacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "ListAttacksWithContext",
+		Action:  "ListAttacks",
 		Input:   input,
 		Output:  (*shield.ListAttacksOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) ListAttacksWithContext(ctx context.Context, input *shield.ListA
 func (c *Client) ListProtectionsWithContext(ctx context.Context, input *shield.ListProtectionsInput, opts ...request.Option) (*shield.ListProtectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "ListProtectionsWithContext",
+		Action:  "ListProtections",
 		Input:   input,
 		Output:  (*shield.ListProtectionsOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) ListProtectionsWithContext(ctx context.Context, input *shield.L
 func (c *Client) UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "UpdateEmergencyContactSettingsWithContext",
+		Action:  "UpdateEmergencyContactSettings",
 		Input:   input,
 		Output:  (*shield.UpdateEmergencyContactSettingsOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) UpdateEmergencyContactSettingsWithContext(ctx context.Context, 
 func (c *Client) UpdateSubscriptionWithContext(ctx context.Context, input *shield.UpdateSubscriptionInput, opts ...request.Option) (*shield.UpdateSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
-		Action:  "UpdateSubscriptionWithContext",
+		Action:  "UpdateSubscription",
 		Input:   input,
 		Output:  (*shield.UpdateSubscriptionOutput)(nil),
 		Error:   nil,

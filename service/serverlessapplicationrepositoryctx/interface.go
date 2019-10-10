@@ -44,7 +44,7 @@ var _ ServerlessApplicationRepository = (*Client)(nil)
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.CreateApplicationRequest, opts ...request.Option) (*serverlessapplicationrepository.CreateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "CreateApplicationWithContext",
+		Action:  "CreateApplication",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.CreateApplicationOutput)(nil),
 		Error:   nil,
@@ -65,7 +65,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *server
 func (c *Client) CreateApplicationVersionWithContext(ctx context.Context, input *serverlessapplicationrepository.CreateApplicationVersionRequest, opts ...request.Option) (*serverlessapplicationrepository.CreateApplicationVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "CreateApplicationVersionWithContext",
+		Action:  "CreateApplicationVersion",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.CreateApplicationVersionOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) CreateApplicationVersionWithContext(ctx context.Context, input 
 func (c *Client) CreateCloudFormationChangeSetWithContext(ctx context.Context, input *serverlessapplicationrepository.CreateCloudFormationChangeSetRequest, opts ...request.Option) (*serverlessapplicationrepository.CreateCloudFormationChangeSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "CreateCloudFormationChangeSetWithContext",
+		Action:  "CreateCloudFormationChangeSet",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.CreateCloudFormationChangeSetOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) CreateCloudFormationChangeSetWithContext(ctx context.Context, i
 func (c *Client) CreateCloudFormationTemplateWithContext(ctx context.Context, input *serverlessapplicationrepository.CreateCloudFormationTemplateInput, opts ...request.Option) (*serverlessapplicationrepository.CreateCloudFormationTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "CreateCloudFormationTemplateWithContext",
+		Action:  "CreateCloudFormationTemplate",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.CreateCloudFormationTemplateOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) CreateCloudFormationTemplateWithContext(ctx context.Context, in
 func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.DeleteApplicationInput, opts ...request.Option) (*serverlessapplicationrepository.DeleteApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "DeleteApplicationWithContext",
+		Action:  "DeleteApplication",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.DeleteApplicationOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *server
 func (c *Client) GetApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.GetApplicationInput, opts ...request.Option) (*serverlessapplicationrepository.GetApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "GetApplicationWithContext",
+		Action:  "GetApplication",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.GetApplicationOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) GetApplicationWithContext(ctx context.Context, input *serverles
 func (c *Client) GetApplicationPolicyWithContext(ctx context.Context, input *serverlessapplicationrepository.GetApplicationPolicyInput, opts ...request.Option) (*serverlessapplicationrepository.GetApplicationPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "GetApplicationPolicyWithContext",
+		Action:  "GetApplicationPolicy",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.GetApplicationPolicyOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) GetApplicationPolicyWithContext(ctx context.Context, input *ser
 func (c *Client) GetCloudFormationTemplateWithContext(ctx context.Context, input *serverlessapplicationrepository.GetCloudFormationTemplateInput, opts ...request.Option) (*serverlessapplicationrepository.GetCloudFormationTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "GetCloudFormationTemplateWithContext",
+		Action:  "GetCloudFormationTemplate",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.GetCloudFormationTemplateOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) GetCloudFormationTemplateWithContext(ctx context.Context, input
 func (c *Client) ListApplicationDependenciesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationDependenciesInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationDependenciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "ListApplicationDependenciesWithContext",
+		Action:  "ListApplicationDependencies",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.ListApplicationDependenciesOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) ListApplicationDependenciesWithContext(ctx context.Context, inp
 func (c *Client) ListApplicationVersionsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationVersionsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "ListApplicationVersionsWithContext",
+		Action:  "ListApplicationVersions",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.ListApplicationVersionsOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) ListApplicationVersionsWithContext(ctx context.Context, input *
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "ListApplicationsWithContext",
+		Action:  "ListApplications",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.ListApplicationsOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *serverl
 func (c *Client) PutApplicationPolicyWithContext(ctx context.Context, input *serverlessapplicationrepository.PutApplicationPolicyInput, opts ...request.Option) (*serverlessapplicationrepository.PutApplicationPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "PutApplicationPolicyWithContext",
+		Action:  "PutApplicationPolicy",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.PutApplicationPolicyOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) PutApplicationPolicyWithContext(ctx context.Context, input *ser
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.UpdateApplicationRequest, opts ...request.Option) (*serverlessapplicationrepository.UpdateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
-		Action:  "UpdateApplicationWithContext",
+		Action:  "UpdateApplication",
 		Input:   input,
 		Output:  (*serverlessapplicationrepository.UpdateApplicationOutput)(nil),
 		Error:   nil,

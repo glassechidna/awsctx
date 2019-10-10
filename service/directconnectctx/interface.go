@@ -84,7 +84,7 @@ var _ DirectConnect = (*Client)(nil)
 func (c *Client) AcceptDirectConnectGatewayAssociationProposalWithContext(ctx context.Context, input *directconnect.AcceptDirectConnectGatewayAssociationProposalInput, opts ...request.Option) (*directconnect.AcceptDirectConnectGatewayAssociationProposalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AcceptDirectConnectGatewayAssociationProposalWithContext",
+		Action:  "AcceptDirectConnectGatewayAssociationProposal",
 		Input:   input,
 		Output:  (*directconnect.AcceptDirectConnectGatewayAssociationProposalOutput)(nil),
 		Error:   nil,
@@ -105,7 +105,7 @@ func (c *Client) AcceptDirectConnectGatewayAssociationProposalWithContext(ctx co
 func (c *Client) AllocateConnectionOnInterconnectWithContext(ctx context.Context, input *directconnect.AllocateConnectionOnInterconnectInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AllocateConnectionOnInterconnectWithContext",
+		Action:  "AllocateConnectionOnInterconnect",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -126,7 +126,7 @@ func (c *Client) AllocateConnectionOnInterconnectWithContext(ctx context.Context
 func (c *Client) AllocateHostedConnectionWithContext(ctx context.Context, input *directconnect.AllocateHostedConnectionInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AllocateHostedConnectionWithContext",
+		Action:  "AllocateHostedConnection",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -147,7 +147,7 @@ func (c *Client) AllocateHostedConnectionWithContext(ctx context.Context, input 
 func (c *Client) AllocatePrivateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AllocatePrivateVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AllocatePrivateVirtualInterfaceWithContext",
+		Action:  "AllocatePrivateVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.VirtualInterface)(nil),
 		Error:   nil,
@@ -168,7 +168,7 @@ func (c *Client) AllocatePrivateVirtualInterfaceWithContext(ctx context.Context,
 func (c *Client) AllocatePublicVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AllocatePublicVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AllocatePublicVirtualInterfaceWithContext",
+		Action:  "AllocatePublicVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.VirtualInterface)(nil),
 		Error:   nil,
@@ -189,7 +189,7 @@ func (c *Client) AllocatePublicVirtualInterfaceWithContext(ctx context.Context, 
 func (c *Client) AllocateTransitVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AllocateTransitVirtualInterfaceInput, opts ...request.Option) (*directconnect.AllocateTransitVirtualInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AllocateTransitVirtualInterfaceWithContext",
+		Action:  "AllocateTransitVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.AllocateTransitVirtualInterfaceOutput)(nil),
 		Error:   nil,
@@ -210,7 +210,7 @@ func (c *Client) AllocateTransitVirtualInterfaceWithContext(ctx context.Context,
 func (c *Client) AssociateConnectionWithLagWithContext(ctx context.Context, input *directconnect.AssociateConnectionWithLagInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AssociateConnectionWithLagWithContext",
+		Action:  "AssociateConnectionWithLag",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -231,7 +231,7 @@ func (c *Client) AssociateConnectionWithLagWithContext(ctx context.Context, inpu
 func (c *Client) AssociateHostedConnectionWithContext(ctx context.Context, input *directconnect.AssociateHostedConnectionInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AssociateHostedConnectionWithContext",
+		Action:  "AssociateHostedConnection",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -252,7 +252,7 @@ func (c *Client) AssociateHostedConnectionWithContext(ctx context.Context, input
 func (c *Client) AssociateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AssociateVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "AssociateVirtualInterfaceWithContext",
+		Action:  "AssociateVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.VirtualInterface)(nil),
 		Error:   nil,
@@ -273,7 +273,7 @@ func (c *Client) AssociateVirtualInterfaceWithContext(ctx context.Context, input
 func (c *Client) ConfirmConnectionWithContext(ctx context.Context, input *directconnect.ConfirmConnectionInput, opts ...request.Option) (*directconnect.ConfirmConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "ConfirmConnectionWithContext",
+		Action:  "ConfirmConnection",
 		Input:   input,
 		Output:  (*directconnect.ConfirmConnectionOutput)(nil),
 		Error:   nil,
@@ -294,7 +294,7 @@ func (c *Client) ConfirmConnectionWithContext(ctx context.Context, input *direct
 func (c *Client) ConfirmPrivateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmPrivateVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmPrivateVirtualInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "ConfirmPrivateVirtualInterfaceWithContext",
+		Action:  "ConfirmPrivateVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.ConfirmPrivateVirtualInterfaceOutput)(nil),
 		Error:   nil,
@@ -315,7 +315,7 @@ func (c *Client) ConfirmPrivateVirtualInterfaceWithContext(ctx context.Context, 
 func (c *Client) ConfirmPublicVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmPublicVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmPublicVirtualInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "ConfirmPublicVirtualInterfaceWithContext",
+		Action:  "ConfirmPublicVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.ConfirmPublicVirtualInterfaceOutput)(nil),
 		Error:   nil,
@@ -336,7 +336,7 @@ func (c *Client) ConfirmPublicVirtualInterfaceWithContext(ctx context.Context, i
 func (c *Client) ConfirmTransitVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmTransitVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmTransitVirtualInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "ConfirmTransitVirtualInterfaceWithContext",
+		Action:  "ConfirmTransitVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.ConfirmTransitVirtualInterfaceOutput)(nil),
 		Error:   nil,
@@ -357,7 +357,7 @@ func (c *Client) ConfirmTransitVirtualInterfaceWithContext(ctx context.Context, 
 func (c *Client) CreateBGPPeerWithContext(ctx context.Context, input *directconnect.CreateBGPPeerInput, opts ...request.Option) (*directconnect.CreateBGPPeerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateBGPPeerWithContext",
+		Action:  "CreateBGPPeer",
 		Input:   input,
 		Output:  (*directconnect.CreateBGPPeerOutput)(nil),
 		Error:   nil,
@@ -378,7 +378,7 @@ func (c *Client) CreateBGPPeerWithContext(ctx context.Context, input *directconn
 func (c *Client) CreateConnectionWithContext(ctx context.Context, input *directconnect.CreateConnectionInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateConnectionWithContext",
+		Action:  "CreateConnection",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -399,7 +399,7 @@ func (c *Client) CreateConnectionWithContext(ctx context.Context, input *directc
 func (c *Client) CreateDirectConnectGatewayWithContext(ctx context.Context, input *directconnect.CreateDirectConnectGatewayInput, opts ...request.Option) (*directconnect.CreateDirectConnectGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateDirectConnectGatewayWithContext",
+		Action:  "CreateDirectConnectGateway",
 		Input:   input,
 		Output:  (*directconnect.CreateDirectConnectGatewayOutput)(nil),
 		Error:   nil,
@@ -420,7 +420,7 @@ func (c *Client) CreateDirectConnectGatewayWithContext(ctx context.Context, inpu
 func (c *Client) CreateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.CreateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.CreateDirectConnectGatewayAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateDirectConnectGatewayAssociationWithContext",
+		Action:  "CreateDirectConnectGatewayAssociation",
 		Input:   input,
 		Output:  (*directconnect.CreateDirectConnectGatewayAssociationOutput)(nil),
 		Error:   nil,
@@ -441,7 +441,7 @@ func (c *Client) CreateDirectConnectGatewayAssociationWithContext(ctx context.Co
 func (c *Client) CreateDirectConnectGatewayAssociationProposalWithContext(ctx context.Context, input *directconnect.CreateDirectConnectGatewayAssociationProposalInput, opts ...request.Option) (*directconnect.CreateDirectConnectGatewayAssociationProposalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateDirectConnectGatewayAssociationProposalWithContext",
+		Action:  "CreateDirectConnectGatewayAssociationProposal",
 		Input:   input,
 		Output:  (*directconnect.CreateDirectConnectGatewayAssociationProposalOutput)(nil),
 		Error:   nil,
@@ -462,7 +462,7 @@ func (c *Client) CreateDirectConnectGatewayAssociationProposalWithContext(ctx co
 func (c *Client) CreateInterconnectWithContext(ctx context.Context, input *directconnect.CreateInterconnectInput, opts ...request.Option) (*directconnect.Interconnect, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateInterconnectWithContext",
+		Action:  "CreateInterconnect",
 		Input:   input,
 		Output:  (*directconnect.Interconnect)(nil),
 		Error:   nil,
@@ -483,7 +483,7 @@ func (c *Client) CreateInterconnectWithContext(ctx context.Context, input *direc
 func (c *Client) CreateLagWithContext(ctx context.Context, input *directconnect.CreateLagInput, opts ...request.Option) (*directconnect.Lag, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateLagWithContext",
+		Action:  "CreateLag",
 		Input:   input,
 		Output:  (*directconnect.Lag)(nil),
 		Error:   nil,
@@ -504,7 +504,7 @@ func (c *Client) CreateLagWithContext(ctx context.Context, input *directconnect.
 func (c *Client) CreatePrivateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.CreatePrivateVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreatePrivateVirtualInterfaceWithContext",
+		Action:  "CreatePrivateVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.VirtualInterface)(nil),
 		Error:   nil,
@@ -525,7 +525,7 @@ func (c *Client) CreatePrivateVirtualInterfaceWithContext(ctx context.Context, i
 func (c *Client) CreatePublicVirtualInterfaceWithContext(ctx context.Context, input *directconnect.CreatePublicVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreatePublicVirtualInterfaceWithContext",
+		Action:  "CreatePublicVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.VirtualInterface)(nil),
 		Error:   nil,
@@ -546,7 +546,7 @@ func (c *Client) CreatePublicVirtualInterfaceWithContext(ctx context.Context, in
 func (c *Client) CreateTransitVirtualInterfaceWithContext(ctx context.Context, input *directconnect.CreateTransitVirtualInterfaceInput, opts ...request.Option) (*directconnect.CreateTransitVirtualInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "CreateTransitVirtualInterfaceWithContext",
+		Action:  "CreateTransitVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.CreateTransitVirtualInterfaceOutput)(nil),
 		Error:   nil,
@@ -567,7 +567,7 @@ func (c *Client) CreateTransitVirtualInterfaceWithContext(ctx context.Context, i
 func (c *Client) DeleteBGPPeerWithContext(ctx context.Context, input *directconnect.DeleteBGPPeerInput, opts ...request.Option) (*directconnect.DeleteBGPPeerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteBGPPeerWithContext",
+		Action:  "DeleteBGPPeer",
 		Input:   input,
 		Output:  (*directconnect.DeleteBGPPeerOutput)(nil),
 		Error:   nil,
@@ -588,7 +588,7 @@ func (c *Client) DeleteBGPPeerWithContext(ctx context.Context, input *directconn
 func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *directconnect.DeleteConnectionInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteConnectionWithContext",
+		Action:  "DeleteConnection",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -609,7 +609,7 @@ func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *directc
 func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, input *directconnect.DeleteDirectConnectGatewayInput, opts ...request.Option) (*directconnect.DeleteDirectConnectGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteDirectConnectGatewayWithContext",
+		Action:  "DeleteDirectConnectGateway",
 		Input:   input,
 		Output:  (*directconnect.DeleteDirectConnectGatewayOutput)(nil),
 		Error:   nil,
@@ -630,7 +630,7 @@ func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, inpu
 func (c *Client) DeleteDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.DeleteDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.DeleteDirectConnectGatewayAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteDirectConnectGatewayAssociationWithContext",
+		Action:  "DeleteDirectConnectGatewayAssociation",
 		Input:   input,
 		Output:  (*directconnect.DeleteDirectConnectGatewayAssociationOutput)(nil),
 		Error:   nil,
@@ -651,7 +651,7 @@ func (c *Client) DeleteDirectConnectGatewayAssociationWithContext(ctx context.Co
 func (c *Client) DeleteDirectConnectGatewayAssociationProposalWithContext(ctx context.Context, input *directconnect.DeleteDirectConnectGatewayAssociationProposalInput, opts ...request.Option) (*directconnect.DeleteDirectConnectGatewayAssociationProposalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteDirectConnectGatewayAssociationProposalWithContext",
+		Action:  "DeleteDirectConnectGatewayAssociationProposal",
 		Input:   input,
 		Output:  (*directconnect.DeleteDirectConnectGatewayAssociationProposalOutput)(nil),
 		Error:   nil,
@@ -672,7 +672,7 @@ func (c *Client) DeleteDirectConnectGatewayAssociationProposalWithContext(ctx co
 func (c *Client) DeleteInterconnectWithContext(ctx context.Context, input *directconnect.DeleteInterconnectInput, opts ...request.Option) (*directconnect.DeleteInterconnectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteInterconnectWithContext",
+		Action:  "DeleteInterconnect",
 		Input:   input,
 		Output:  (*directconnect.DeleteInterconnectOutput)(nil),
 		Error:   nil,
@@ -693,7 +693,7 @@ func (c *Client) DeleteInterconnectWithContext(ctx context.Context, input *direc
 func (c *Client) DeleteLagWithContext(ctx context.Context, input *directconnect.DeleteLagInput, opts ...request.Option) (*directconnect.Lag, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteLagWithContext",
+		Action:  "DeleteLag",
 		Input:   input,
 		Output:  (*directconnect.Lag)(nil),
 		Error:   nil,
@@ -714,7 +714,7 @@ func (c *Client) DeleteLagWithContext(ctx context.Context, input *directconnect.
 func (c *Client) DeleteVirtualInterfaceWithContext(ctx context.Context, input *directconnect.DeleteVirtualInterfaceInput, opts ...request.Option) (*directconnect.DeleteVirtualInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DeleteVirtualInterfaceWithContext",
+		Action:  "DeleteVirtualInterface",
 		Input:   input,
 		Output:  (*directconnect.DeleteVirtualInterfaceOutput)(nil),
 		Error:   nil,
@@ -735,7 +735,7 @@ func (c *Client) DeleteVirtualInterfaceWithContext(ctx context.Context, input *d
 func (c *Client) DescribeConnectionLoaWithContext(ctx context.Context, input *directconnect.DescribeConnectionLoaInput, opts ...request.Option) (*directconnect.DescribeConnectionLoaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeConnectionLoaWithContext",
+		Action:  "DescribeConnectionLoa",
 		Input:   input,
 		Output:  (*directconnect.DescribeConnectionLoaOutput)(nil),
 		Error:   nil,
@@ -756,7 +756,7 @@ func (c *Client) DescribeConnectionLoaWithContext(ctx context.Context, input *di
 func (c *Client) DescribeConnectionsWithContext(ctx context.Context, input *directconnect.DescribeConnectionsInput, opts ...request.Option) (*directconnect.Connections, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeConnectionsWithContext",
+		Action:  "DescribeConnections",
 		Input:   input,
 		Output:  (*directconnect.Connections)(nil),
 		Error:   nil,
@@ -777,7 +777,7 @@ func (c *Client) DescribeConnectionsWithContext(ctx context.Context, input *dire
 func (c *Client) DescribeConnectionsOnInterconnectWithContext(ctx context.Context, input *directconnect.DescribeConnectionsOnInterconnectInput, opts ...request.Option) (*directconnect.Connections, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeConnectionsOnInterconnectWithContext",
+		Action:  "DescribeConnectionsOnInterconnect",
 		Input:   input,
 		Output:  (*directconnect.Connections)(nil),
 		Error:   nil,
@@ -798,7 +798,7 @@ func (c *Client) DescribeConnectionsOnInterconnectWithContext(ctx context.Contex
 func (c *Client) DescribeDirectConnectGatewayAssociationProposalsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAssociationProposalsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAssociationProposalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeDirectConnectGatewayAssociationProposalsWithContext",
+		Action:  "DescribeDirectConnectGatewayAssociationProposals",
 		Input:   input,
 		Output:  (*directconnect.DescribeDirectConnectGatewayAssociationProposalsOutput)(nil),
 		Error:   nil,
@@ -819,7 +819,7 @@ func (c *Client) DescribeDirectConnectGatewayAssociationProposalsWithContext(ctx
 func (c *Client) DescribeDirectConnectGatewayAssociationsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAssociationsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeDirectConnectGatewayAssociationsWithContext",
+		Action:  "DescribeDirectConnectGatewayAssociations",
 		Input:   input,
 		Output:  (*directconnect.DescribeDirectConnectGatewayAssociationsOutput)(nil),
 		Error:   nil,
@@ -840,7 +840,7 @@ func (c *Client) DescribeDirectConnectGatewayAssociationsWithContext(ctx context
 func (c *Client) DescribeDirectConnectGatewayAttachmentsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAttachmentsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeDirectConnectGatewayAttachmentsWithContext",
+		Action:  "DescribeDirectConnectGatewayAttachments",
 		Input:   input,
 		Output:  (*directconnect.DescribeDirectConnectGatewayAttachmentsOutput)(nil),
 		Error:   nil,
@@ -861,7 +861,7 @@ func (c *Client) DescribeDirectConnectGatewayAttachmentsWithContext(ctx context.
 func (c *Client) DescribeDirectConnectGatewaysWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewaysInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeDirectConnectGatewaysWithContext",
+		Action:  "DescribeDirectConnectGateways",
 		Input:   input,
 		Output:  (*directconnect.DescribeDirectConnectGatewaysOutput)(nil),
 		Error:   nil,
@@ -882,7 +882,7 @@ func (c *Client) DescribeDirectConnectGatewaysWithContext(ctx context.Context, i
 func (c *Client) DescribeHostedConnectionsWithContext(ctx context.Context, input *directconnect.DescribeHostedConnectionsInput, opts ...request.Option) (*directconnect.Connections, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeHostedConnectionsWithContext",
+		Action:  "DescribeHostedConnections",
 		Input:   input,
 		Output:  (*directconnect.Connections)(nil),
 		Error:   nil,
@@ -903,7 +903,7 @@ func (c *Client) DescribeHostedConnectionsWithContext(ctx context.Context, input
 func (c *Client) DescribeInterconnectLoaWithContext(ctx context.Context, input *directconnect.DescribeInterconnectLoaInput, opts ...request.Option) (*directconnect.DescribeInterconnectLoaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeInterconnectLoaWithContext",
+		Action:  "DescribeInterconnectLoa",
 		Input:   input,
 		Output:  (*directconnect.DescribeInterconnectLoaOutput)(nil),
 		Error:   nil,
@@ -924,7 +924,7 @@ func (c *Client) DescribeInterconnectLoaWithContext(ctx context.Context, input *
 func (c *Client) DescribeInterconnectsWithContext(ctx context.Context, input *directconnect.DescribeInterconnectsInput, opts ...request.Option) (*directconnect.DescribeInterconnectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeInterconnectsWithContext",
+		Action:  "DescribeInterconnects",
 		Input:   input,
 		Output:  (*directconnect.DescribeInterconnectsOutput)(nil),
 		Error:   nil,
@@ -945,7 +945,7 @@ func (c *Client) DescribeInterconnectsWithContext(ctx context.Context, input *di
 func (c *Client) DescribeLagsWithContext(ctx context.Context, input *directconnect.DescribeLagsInput, opts ...request.Option) (*directconnect.DescribeLagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeLagsWithContext",
+		Action:  "DescribeLags",
 		Input:   input,
 		Output:  (*directconnect.DescribeLagsOutput)(nil),
 		Error:   nil,
@@ -966,7 +966,7 @@ func (c *Client) DescribeLagsWithContext(ctx context.Context, input *directconne
 func (c *Client) DescribeLoaWithContext(ctx context.Context, input *directconnect.DescribeLoaInput, opts ...request.Option) (*directconnect.Loa, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeLoaWithContext",
+		Action:  "DescribeLoa",
 		Input:   input,
 		Output:  (*directconnect.Loa)(nil),
 		Error:   nil,
@@ -987,7 +987,7 @@ func (c *Client) DescribeLoaWithContext(ctx context.Context, input *directconnec
 func (c *Client) DescribeLocationsWithContext(ctx context.Context, input *directconnect.DescribeLocationsInput, opts ...request.Option) (*directconnect.DescribeLocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeLocationsWithContext",
+		Action:  "DescribeLocations",
 		Input:   input,
 		Output:  (*directconnect.DescribeLocationsOutput)(nil),
 		Error:   nil,
@@ -1008,7 +1008,7 @@ func (c *Client) DescribeLocationsWithContext(ctx context.Context, input *direct
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *directconnect.DescribeTagsInput, opts ...request.Option) (*directconnect.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*directconnect.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -1029,7 +1029,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *directconne
 func (c *Client) DescribeVirtualGatewaysWithContext(ctx context.Context, input *directconnect.DescribeVirtualGatewaysInput, opts ...request.Option) (*directconnect.DescribeVirtualGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeVirtualGatewaysWithContext",
+		Action:  "DescribeVirtualGateways",
 		Input:   input,
 		Output:  (*directconnect.DescribeVirtualGatewaysOutput)(nil),
 		Error:   nil,
@@ -1050,7 +1050,7 @@ func (c *Client) DescribeVirtualGatewaysWithContext(ctx context.Context, input *
 func (c *Client) DescribeVirtualInterfacesWithContext(ctx context.Context, input *directconnect.DescribeVirtualInterfacesInput, opts ...request.Option) (*directconnect.DescribeVirtualInterfacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DescribeVirtualInterfacesWithContext",
+		Action:  "DescribeVirtualInterfaces",
 		Input:   input,
 		Output:  (*directconnect.DescribeVirtualInterfacesOutput)(nil),
 		Error:   nil,
@@ -1071,7 +1071,7 @@ func (c *Client) DescribeVirtualInterfacesWithContext(ctx context.Context, input
 func (c *Client) DisassociateConnectionFromLagWithContext(ctx context.Context, input *directconnect.DisassociateConnectionFromLagInput, opts ...request.Option) (*directconnect.Connection, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "DisassociateConnectionFromLagWithContext",
+		Action:  "DisassociateConnectionFromLag",
 		Input:   input,
 		Output:  (*directconnect.Connection)(nil),
 		Error:   nil,
@@ -1092,7 +1092,7 @@ func (c *Client) DisassociateConnectionFromLagWithContext(ctx context.Context, i
 func (c *Client) TagResourceWithContext(ctx context.Context, input *directconnect.TagResourceInput, opts ...request.Option) (*directconnect.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*directconnect.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1113,7 +1113,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *directconnec
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *directconnect.UntagResourceInput, opts ...request.Option) (*directconnect.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*directconnect.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1134,7 +1134,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *directconn
 func (c *Client) UpdateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "UpdateDirectConnectGatewayAssociationWithContext",
+		Action:  "UpdateDirectConnectGatewayAssociation",
 		Input:   input,
 		Output:  (*directconnect.UpdateDirectConnectGatewayAssociationOutput)(nil),
 		Error:   nil,
@@ -1155,7 +1155,7 @@ func (c *Client) UpdateDirectConnectGatewayAssociationWithContext(ctx context.Co
 func (c *Client) UpdateLagWithContext(ctx context.Context, input *directconnect.UpdateLagInput, opts ...request.Option) (*directconnect.Lag, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "UpdateLagWithContext",
+		Action:  "UpdateLag",
 		Input:   input,
 		Output:  (*directconnect.Lag)(nil),
 		Error:   nil,
@@ -1176,7 +1176,7 @@ func (c *Client) UpdateLagWithContext(ctx context.Context, input *directconnect.
 func (c *Client) UpdateVirtualInterfaceAttributesWithContext(ctx context.Context, input *directconnect.UpdateVirtualInterfaceAttributesInput, opts ...request.Option) (*directconnect.UpdateVirtualInterfaceAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
-		Action:  "UpdateVirtualInterfaceAttributesWithContext",
+		Action:  "UpdateVirtualInterfaceAttributes",
 		Input:   input,
 		Output:  (*directconnect.UpdateVirtualInterfaceAttributesOutput)(nil),
 		Error:   nil,

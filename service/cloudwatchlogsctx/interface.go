@@ -70,7 +70,7 @@ var _ CloudWatchLogs = (*Client)(nil)
 func (c *Client) AssociateKmsKeyWithContext(ctx context.Context, input *cloudwatchlogs.AssociateKmsKeyInput, opts ...request.Option) (*cloudwatchlogs.AssociateKmsKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "AssociateKmsKeyWithContext",
+		Action:  "AssociateKmsKey",
 		Input:   input,
 		Output:  (*cloudwatchlogs.AssociateKmsKeyOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) AssociateKmsKeyWithContext(ctx context.Context, input *cloudwat
 func (c *Client) CancelExportTaskWithContext(ctx context.Context, input *cloudwatchlogs.CancelExportTaskInput, opts ...request.Option) (*cloudwatchlogs.CancelExportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "CancelExportTaskWithContext",
+		Action:  "CancelExportTask",
 		Input:   input,
 		Output:  (*cloudwatchlogs.CancelExportTaskOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) CancelExportTaskWithContext(ctx context.Context, input *cloudwa
 func (c *Client) CreateExportTaskWithContext(ctx context.Context, input *cloudwatchlogs.CreateExportTaskInput, opts ...request.Option) (*cloudwatchlogs.CreateExportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "CreateExportTaskWithContext",
+		Action:  "CreateExportTask",
 		Input:   input,
 		Output:  (*cloudwatchlogs.CreateExportTaskOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) CreateExportTaskWithContext(ctx context.Context, input *cloudwa
 func (c *Client) CreateLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.CreateLogGroupInput, opts ...request.Option) (*cloudwatchlogs.CreateLogGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "CreateLogGroupWithContext",
+		Action:  "CreateLogGroup",
 		Input:   input,
 		Output:  (*cloudwatchlogs.CreateLogGroupOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) CreateLogGroupWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) CreateLogStreamWithContext(ctx context.Context, input *cloudwatchlogs.CreateLogStreamInput, opts ...request.Option) (*cloudwatchlogs.CreateLogStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "CreateLogStreamWithContext",
+		Action:  "CreateLogStream",
 		Input:   input,
 		Output:  (*cloudwatchlogs.CreateLogStreamOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) CreateLogStreamWithContext(ctx context.Context, input *cloudwat
 func (c *Client) DeleteDestinationWithContext(ctx context.Context, input *cloudwatchlogs.DeleteDestinationInput, opts ...request.Option) (*cloudwatchlogs.DeleteDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteDestinationWithContext",
+		Action:  "DeleteDestination",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteDestinationOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) DeleteDestinationWithContext(ctx context.Context, input *cloudw
 func (c *Client) DeleteLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.DeleteLogGroupInput, opts ...request.Option) (*cloudwatchlogs.DeleteLogGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteLogGroupWithContext",
+		Action:  "DeleteLogGroup",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteLogGroupOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) DeleteLogGroupWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) DeleteLogStreamWithContext(ctx context.Context, input *cloudwatchlogs.DeleteLogStreamInput, opts ...request.Option) (*cloudwatchlogs.DeleteLogStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteLogStreamWithContext",
+		Action:  "DeleteLogStream",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteLogStreamOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) DeleteLogStreamWithContext(ctx context.Context, input *cloudwat
 func (c *Client) DeleteMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.DeleteMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.DeleteMetricFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteMetricFilterWithContext",
+		Action:  "DeleteMetricFilter",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteMetricFilterOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) DeleteMetricFilterWithContext(ctx context.Context, input *cloud
 func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteResourcePolicyWithContext",
+		Action:  "DeleteResourcePolicy",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *clo
 func (c *Client) DeleteRetentionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteRetentionPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteRetentionPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteRetentionPolicyWithContext",
+		Action:  "DeleteRetentionPolicy",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteRetentionPolicyOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) DeleteRetentionPolicyWithContext(ctx context.Context, input *cl
 func (c *Client) DeleteSubscriptionFilterWithContext(ctx context.Context, input *cloudwatchlogs.DeleteSubscriptionFilterInput, opts ...request.Option) (*cloudwatchlogs.DeleteSubscriptionFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DeleteSubscriptionFilterWithContext",
+		Action:  "DeleteSubscriptionFilter",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DeleteSubscriptionFilterOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) DeleteSubscriptionFilterWithContext(ctx context.Context, input 
 func (c *Client) DescribeDestinationsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, opts ...request.Option) (*cloudwatchlogs.DescribeDestinationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeDestinationsWithContext",
+		Action:  "DescribeDestinations",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeDestinationsOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) DescribeDestinationsWithContext(ctx context.Context, input *clo
 func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *cloudwatchlogs.DescribeExportTasksInput, opts ...request.Option) (*cloudwatchlogs.DescribeExportTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeExportTasksWithContext",
+		Action:  "DescribeExportTasks",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeExportTasksOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *clou
 func (c *Client) DescribeLogGroupsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogGroupsInput, opts ...request.Option) (*cloudwatchlogs.DescribeLogGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeLogGroupsWithContext",
+		Action:  "DescribeLogGroups",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeLogGroupsOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) DescribeLogGroupsWithContext(ctx context.Context, input *cloudw
 func (c *Client) DescribeLogStreamsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogStreamsInput, opts ...request.Option) (*cloudwatchlogs.DescribeLogStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeLogStreamsWithContext",
+		Action:  "DescribeLogStreams",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeLogStreamsOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) DescribeLogStreamsWithContext(ctx context.Context, input *cloud
 func (c *Client) DescribeMetricFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeMetricFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeMetricFiltersWithContext",
+		Action:  "DescribeMetricFilters",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeMetricFiltersOutput)(nil),
 		Error:   nil,
@@ -427,7 +427,7 @@ func (c *Client) DescribeMetricFiltersWithContext(ctx context.Context, input *cl
 func (c *Client) DescribeQueriesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeQueriesInput, opts ...request.Option) (*cloudwatchlogs.DescribeQueriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeQueriesWithContext",
+		Action:  "DescribeQueries",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeQueriesOutput)(nil),
 		Error:   nil,
@@ -448,7 +448,7 @@ func (c *Client) DescribeQueriesWithContext(ctx context.Context, input *cloudwat
 func (c *Client) DescribeResourcePoliciesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeResourcePoliciesInput, opts ...request.Option) (*cloudwatchlogs.DescribeResourcePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeResourcePoliciesWithContext",
+		Action:  "DescribeResourcePolicies",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeResourcePoliciesOutput)(nil),
 		Error:   nil,
@@ -469,7 +469,7 @@ func (c *Client) DescribeResourcePoliciesWithContext(ctx context.Context, input 
 func (c *Client) DescribeSubscriptionFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeSubscriptionFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeSubscriptionFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DescribeSubscriptionFiltersWithContext",
+		Action:  "DescribeSubscriptionFilters",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DescribeSubscriptionFiltersOutput)(nil),
 		Error:   nil,
@@ -490,7 +490,7 @@ func (c *Client) DescribeSubscriptionFiltersWithContext(ctx context.Context, inp
 func (c *Client) DisassociateKmsKeyWithContext(ctx context.Context, input *cloudwatchlogs.DisassociateKmsKeyInput, opts ...request.Option) (*cloudwatchlogs.DisassociateKmsKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "DisassociateKmsKeyWithContext",
+		Action:  "DisassociateKmsKey",
 		Input:   input,
 		Output:  (*cloudwatchlogs.DisassociateKmsKeyOutput)(nil),
 		Error:   nil,
@@ -511,7 +511,7 @@ func (c *Client) DisassociateKmsKeyWithContext(ctx context.Context, input *cloud
 func (c *Client) FilterLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.FilterLogEventsInput, opts ...request.Option) (*cloudwatchlogs.FilterLogEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "FilterLogEventsWithContext",
+		Action:  "FilterLogEvents",
 		Input:   input,
 		Output:  (*cloudwatchlogs.FilterLogEventsOutput)(nil),
 		Error:   nil,
@@ -532,7 +532,7 @@ func (c *Client) FilterLogEventsWithContext(ctx context.Context, input *cloudwat
 func (c *Client) GetLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogEventsInput, opts ...request.Option) (*cloudwatchlogs.GetLogEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "GetLogEventsWithContext",
+		Action:  "GetLogEvents",
 		Input:   input,
 		Output:  (*cloudwatchlogs.GetLogEventsOutput)(nil),
 		Error:   nil,
@@ -553,7 +553,7 @@ func (c *Client) GetLogEventsWithContext(ctx context.Context, input *cloudwatchl
 func (c *Client) GetLogGroupFieldsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogGroupFieldsInput, opts ...request.Option) (*cloudwatchlogs.GetLogGroupFieldsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "GetLogGroupFieldsWithContext",
+		Action:  "GetLogGroupFields",
 		Input:   input,
 		Output:  (*cloudwatchlogs.GetLogGroupFieldsOutput)(nil),
 		Error:   nil,
@@ -574,7 +574,7 @@ func (c *Client) GetLogGroupFieldsWithContext(ctx context.Context, input *cloudw
 func (c *Client) GetLogRecordWithContext(ctx context.Context, input *cloudwatchlogs.GetLogRecordInput, opts ...request.Option) (*cloudwatchlogs.GetLogRecordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "GetLogRecordWithContext",
+		Action:  "GetLogRecord",
 		Input:   input,
 		Output:  (*cloudwatchlogs.GetLogRecordOutput)(nil),
 		Error:   nil,
@@ -595,7 +595,7 @@ func (c *Client) GetLogRecordWithContext(ctx context.Context, input *cloudwatchl
 func (c *Client) GetQueryResultsWithContext(ctx context.Context, input *cloudwatchlogs.GetQueryResultsInput, opts ...request.Option) (*cloudwatchlogs.GetQueryResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "GetQueryResultsWithContext",
+		Action:  "GetQueryResults",
 		Input:   input,
 		Output:  (*cloudwatchlogs.GetQueryResultsOutput)(nil),
 		Error:   nil,
@@ -616,7 +616,7 @@ func (c *Client) GetQueryResultsWithContext(ctx context.Context, input *cloudwat
 func (c *Client) ListTagsLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsLogGroupInput, opts ...request.Option) (*cloudwatchlogs.ListTagsLogGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "ListTagsLogGroupWithContext",
+		Action:  "ListTagsLogGroup",
 		Input:   input,
 		Output:  (*cloudwatchlogs.ListTagsLogGroupOutput)(nil),
 		Error:   nil,
@@ -637,7 +637,7 @@ func (c *Client) ListTagsLogGroupWithContext(ctx context.Context, input *cloudwa
 func (c *Client) PutDestinationWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutDestinationWithContext",
+		Action:  "PutDestination",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutDestinationOutput)(nil),
 		Error:   nil,
@@ -658,7 +658,7 @@ func (c *Client) PutDestinationWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) PutDestinationPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutDestinationPolicyWithContext",
+		Action:  "PutDestinationPolicy",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutDestinationPolicyOutput)(nil),
 		Error:   nil,
@@ -679,7 +679,7 @@ func (c *Client) PutDestinationPolicyWithContext(ctx context.Context, input *clo
 func (c *Client) PutLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.PutLogEventsInput, opts ...request.Option) (*cloudwatchlogs.PutLogEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutLogEventsWithContext",
+		Action:  "PutLogEvents",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutLogEventsOutput)(nil),
 		Error:   nil,
@@ -700,7 +700,7 @@ func (c *Client) PutLogEventsWithContext(ctx context.Context, input *cloudwatchl
 func (c *Client) PutMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.PutMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.PutMetricFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutMetricFilterWithContext",
+		Action:  "PutMetricFilter",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutMetricFilterOutput)(nil),
 		Error:   nil,
@@ -721,7 +721,7 @@ func (c *Client) PutMetricFilterWithContext(ctx context.Context, input *cloudwat
 func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.PutResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutResourcePolicyWithContext",
+		Action:  "PutResourcePolicy",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -742,7 +742,7 @@ func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *cloudw
 func (c *Client) PutRetentionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutRetentionPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutRetentionPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutRetentionPolicyWithContext",
+		Action:  "PutRetentionPolicy",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutRetentionPolicyOutput)(nil),
 		Error:   nil,
@@ -763,7 +763,7 @@ func (c *Client) PutRetentionPolicyWithContext(ctx context.Context, input *cloud
 func (c *Client) PutSubscriptionFilterWithContext(ctx context.Context, input *cloudwatchlogs.PutSubscriptionFilterInput, opts ...request.Option) (*cloudwatchlogs.PutSubscriptionFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "PutSubscriptionFilterWithContext",
+		Action:  "PutSubscriptionFilter",
 		Input:   input,
 		Output:  (*cloudwatchlogs.PutSubscriptionFilterOutput)(nil),
 		Error:   nil,
@@ -784,7 +784,7 @@ func (c *Client) PutSubscriptionFilterWithContext(ctx context.Context, input *cl
 func (c *Client) StartQueryWithContext(ctx context.Context, input *cloudwatchlogs.StartQueryInput, opts ...request.Option) (*cloudwatchlogs.StartQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "StartQueryWithContext",
+		Action:  "StartQuery",
 		Input:   input,
 		Output:  (*cloudwatchlogs.StartQueryOutput)(nil),
 		Error:   nil,
@@ -805,7 +805,7 @@ func (c *Client) StartQueryWithContext(ctx context.Context, input *cloudwatchlog
 func (c *Client) StopQueryWithContext(ctx context.Context, input *cloudwatchlogs.StopQueryInput, opts ...request.Option) (*cloudwatchlogs.StopQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "StopQueryWithContext",
+		Action:  "StopQuery",
 		Input:   input,
 		Output:  (*cloudwatchlogs.StopQueryOutput)(nil),
 		Error:   nil,
@@ -826,7 +826,7 @@ func (c *Client) StopQueryWithContext(ctx context.Context, input *cloudwatchlogs
 func (c *Client) TagLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.TagLogGroupInput, opts ...request.Option) (*cloudwatchlogs.TagLogGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "TagLogGroupWithContext",
+		Action:  "TagLogGroup",
 		Input:   input,
 		Output:  (*cloudwatchlogs.TagLogGroupOutput)(nil),
 		Error:   nil,
@@ -847,7 +847,7 @@ func (c *Client) TagLogGroupWithContext(ctx context.Context, input *cloudwatchlo
 func (c *Client) TestMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.TestMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.TestMetricFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "TestMetricFilterWithContext",
+		Action:  "TestMetricFilter",
 		Input:   input,
 		Output:  (*cloudwatchlogs.TestMetricFilterOutput)(nil),
 		Error:   nil,
@@ -868,7 +868,7 @@ func (c *Client) TestMetricFilterWithContext(ctx context.Context, input *cloudwa
 func (c *Client) UntagLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.UntagLogGroupInput, opts ...request.Option) (*cloudwatchlogs.UntagLogGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
-		Action:  "UntagLogGroupWithContext",
+		Action:  "UntagLogGroup",
 		Input:   input,
 		Output:  (*cloudwatchlogs.UntagLogGroupOutput)(nil),
 		Error:   nil,

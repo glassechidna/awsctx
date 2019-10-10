@@ -77,7 +77,7 @@ var _ Organizations = (*Client)(nil)
 func (c *Client) AcceptHandshakeWithContext(ctx context.Context, input *organizations.AcceptHandshakeInput, opts ...request.Option) (*organizations.AcceptHandshakeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "AcceptHandshakeWithContext",
+		Action:  "AcceptHandshake",
 		Input:   input,
 		Output:  (*organizations.AcceptHandshakeOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) AcceptHandshakeWithContext(ctx context.Context, input *organiza
 func (c *Client) AttachPolicyWithContext(ctx context.Context, input *organizations.AttachPolicyInput, opts ...request.Option) (*organizations.AttachPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "AttachPolicyWithContext",
+		Action:  "AttachPolicy",
 		Input:   input,
 		Output:  (*organizations.AttachPolicyOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) AttachPolicyWithContext(ctx context.Context, input *organizatio
 func (c *Client) CancelHandshakeWithContext(ctx context.Context, input *organizations.CancelHandshakeInput, opts ...request.Option) (*organizations.CancelHandshakeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "CancelHandshakeWithContext",
+		Action:  "CancelHandshake",
 		Input:   input,
 		Output:  (*organizations.CancelHandshakeOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) CancelHandshakeWithContext(ctx context.Context, input *organiza
 func (c *Client) CreateAccountWithContext(ctx context.Context, input *organizations.CreateAccountInput, opts ...request.Option) (*organizations.CreateAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "CreateAccountWithContext",
+		Action:  "CreateAccount",
 		Input:   input,
 		Output:  (*organizations.CreateAccountOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, input *organizati
 func (c *Client) CreateGovCloudAccountWithContext(ctx context.Context, input *organizations.CreateGovCloudAccountInput, opts ...request.Option) (*organizations.CreateGovCloudAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "CreateGovCloudAccountWithContext",
+		Action:  "CreateGovCloudAccount",
 		Input:   input,
 		Output:  (*organizations.CreateGovCloudAccountOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) CreateGovCloudAccountWithContext(ctx context.Context, input *or
 func (c *Client) CreateOrganizationWithContext(ctx context.Context, input *organizations.CreateOrganizationInput, opts ...request.Option) (*organizations.CreateOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "CreateOrganizationWithContext",
+		Action:  "CreateOrganization",
 		Input:   input,
 		Output:  (*organizations.CreateOrganizationOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) CreateOrganizationWithContext(ctx context.Context, input *organ
 func (c *Client) CreateOrganizationalUnitWithContext(ctx context.Context, input *organizations.CreateOrganizationalUnitInput, opts ...request.Option) (*organizations.CreateOrganizationalUnitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "CreateOrganizationalUnitWithContext",
+		Action:  "CreateOrganizationalUnit",
 		Input:   input,
 		Output:  (*organizations.CreateOrganizationalUnitOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) CreateOrganizationalUnitWithContext(ctx context.Context, input 
 func (c *Client) CreatePolicyWithContext(ctx context.Context, input *organizations.CreatePolicyInput, opts ...request.Option) (*organizations.CreatePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "CreatePolicyWithContext",
+		Action:  "CreatePolicy",
 		Input:   input,
 		Output:  (*organizations.CreatePolicyOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) CreatePolicyWithContext(ctx context.Context, input *organizatio
 func (c *Client) DeclineHandshakeWithContext(ctx context.Context, input *organizations.DeclineHandshakeInput, opts ...request.Option) (*organizations.DeclineHandshakeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DeclineHandshakeWithContext",
+		Action:  "DeclineHandshake",
 		Input:   input,
 		Output:  (*organizations.DeclineHandshakeOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) DeclineHandshakeWithContext(ctx context.Context, input *organiz
 func (c *Client) DeleteOrganizationWithContext(ctx context.Context, input *organizations.DeleteOrganizationInput, opts ...request.Option) (*organizations.DeleteOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DeleteOrganizationWithContext",
+		Action:  "DeleteOrganization",
 		Input:   input,
 		Output:  (*organizations.DeleteOrganizationOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) DeleteOrganizationWithContext(ctx context.Context, input *organ
 func (c *Client) DeleteOrganizationalUnitWithContext(ctx context.Context, input *organizations.DeleteOrganizationalUnitInput, opts ...request.Option) (*organizations.DeleteOrganizationalUnitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DeleteOrganizationalUnitWithContext",
+		Action:  "DeleteOrganizationalUnit",
 		Input:   input,
 		Output:  (*organizations.DeleteOrganizationalUnitOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) DeleteOrganizationalUnitWithContext(ctx context.Context, input 
 func (c *Client) DeletePolicyWithContext(ctx context.Context, input *organizations.DeletePolicyInput, opts ...request.Option) (*organizations.DeletePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DeletePolicyWithContext",
+		Action:  "DeletePolicy",
 		Input:   input,
 		Output:  (*organizations.DeletePolicyOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *organizatio
 func (c *Client) DescribeAccountWithContext(ctx context.Context, input *organizations.DescribeAccountInput, opts ...request.Option) (*organizations.DescribeAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DescribeAccountWithContext",
+		Action:  "DescribeAccount",
 		Input:   input,
 		Output:  (*organizations.DescribeAccountOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) DescribeAccountWithContext(ctx context.Context, input *organiza
 func (c *Client) DescribeCreateAccountStatusWithContext(ctx context.Context, input *organizations.DescribeCreateAccountStatusInput, opts ...request.Option) (*organizations.DescribeCreateAccountStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DescribeCreateAccountStatusWithContext",
+		Action:  "DescribeCreateAccountStatus",
 		Input:   input,
 		Output:  (*organizations.DescribeCreateAccountStatusOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) DescribeCreateAccountStatusWithContext(ctx context.Context, inp
 func (c *Client) DescribeHandshakeWithContext(ctx context.Context, input *organizations.DescribeHandshakeInput, opts ...request.Option) (*organizations.DescribeHandshakeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DescribeHandshakeWithContext",
+		Action:  "DescribeHandshake",
 		Input:   input,
 		Output:  (*organizations.DescribeHandshakeOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) DescribeHandshakeWithContext(ctx context.Context, input *organi
 func (c *Client) DescribeOrganizationWithContext(ctx context.Context, input *organizations.DescribeOrganizationInput, opts ...request.Option) (*organizations.DescribeOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DescribeOrganizationWithContext",
+		Action:  "DescribeOrganization",
 		Input:   input,
 		Output:  (*organizations.DescribeOrganizationOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) DescribeOrganizationWithContext(ctx context.Context, input *org
 func (c *Client) DescribeOrganizationalUnitWithContext(ctx context.Context, input *organizations.DescribeOrganizationalUnitInput, opts ...request.Option) (*organizations.DescribeOrganizationalUnitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DescribeOrganizationalUnitWithContext",
+		Action:  "DescribeOrganizationalUnit",
 		Input:   input,
 		Output:  (*organizations.DescribeOrganizationalUnitOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) DescribeOrganizationalUnitWithContext(ctx context.Context, inpu
 func (c *Client) DescribePolicyWithContext(ctx context.Context, input *organizations.DescribePolicyInput, opts ...request.Option) (*organizations.DescribePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DescribePolicyWithContext",
+		Action:  "DescribePolicy",
 		Input:   input,
 		Output:  (*organizations.DescribePolicyOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) DescribePolicyWithContext(ctx context.Context, input *organizat
 func (c *Client) DetachPolicyWithContext(ctx context.Context, input *organizations.DetachPolicyInput, opts ...request.Option) (*organizations.DetachPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DetachPolicyWithContext",
+		Action:  "DetachPolicy",
 		Input:   input,
 		Output:  (*organizations.DetachPolicyOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) DetachPolicyWithContext(ctx context.Context, input *organizatio
 func (c *Client) DisableAWSServiceAccessWithContext(ctx context.Context, input *organizations.DisableAWSServiceAccessInput, opts ...request.Option) (*organizations.DisableAWSServiceAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DisableAWSServiceAccessWithContext",
+		Action:  "DisableAWSServiceAccess",
 		Input:   input,
 		Output:  (*organizations.DisableAWSServiceAccessOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) DisableAWSServiceAccessWithContext(ctx context.Context, input *
 func (c *Client) DisablePolicyTypeWithContext(ctx context.Context, input *organizations.DisablePolicyTypeInput, opts ...request.Option) (*organizations.DisablePolicyTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "DisablePolicyTypeWithContext",
+		Action:  "DisablePolicyType",
 		Input:   input,
 		Output:  (*organizations.DisablePolicyTypeOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) DisablePolicyTypeWithContext(ctx context.Context, input *organi
 func (c *Client) EnableAWSServiceAccessWithContext(ctx context.Context, input *organizations.EnableAWSServiceAccessInput, opts ...request.Option) (*organizations.EnableAWSServiceAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "EnableAWSServiceAccessWithContext",
+		Action:  "EnableAWSServiceAccess",
 		Input:   input,
 		Output:  (*organizations.EnableAWSServiceAccessOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) EnableAWSServiceAccessWithContext(ctx context.Context, input *o
 func (c *Client) EnableAllFeaturesWithContext(ctx context.Context, input *organizations.EnableAllFeaturesInput, opts ...request.Option) (*organizations.EnableAllFeaturesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "EnableAllFeaturesWithContext",
+		Action:  "EnableAllFeatures",
 		Input:   input,
 		Output:  (*organizations.EnableAllFeaturesOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) EnableAllFeaturesWithContext(ctx context.Context, input *organi
 func (c *Client) EnablePolicyTypeWithContext(ctx context.Context, input *organizations.EnablePolicyTypeInput, opts ...request.Option) (*organizations.EnablePolicyTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "EnablePolicyTypeWithContext",
+		Action:  "EnablePolicyType",
 		Input:   input,
 		Output:  (*organizations.EnablePolicyTypeOutput)(nil),
 		Error:   nil,
@@ -581,7 +581,7 @@ func (c *Client) EnablePolicyTypeWithContext(ctx context.Context, input *organiz
 func (c *Client) InviteAccountToOrganizationWithContext(ctx context.Context, input *organizations.InviteAccountToOrganizationInput, opts ...request.Option) (*organizations.InviteAccountToOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "InviteAccountToOrganizationWithContext",
+		Action:  "InviteAccountToOrganization",
 		Input:   input,
 		Output:  (*organizations.InviteAccountToOrganizationOutput)(nil),
 		Error:   nil,
@@ -602,7 +602,7 @@ func (c *Client) InviteAccountToOrganizationWithContext(ctx context.Context, inp
 func (c *Client) LeaveOrganizationWithContext(ctx context.Context, input *organizations.LeaveOrganizationInput, opts ...request.Option) (*organizations.LeaveOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "LeaveOrganizationWithContext",
+		Action:  "LeaveOrganization",
 		Input:   input,
 		Output:  (*organizations.LeaveOrganizationOutput)(nil),
 		Error:   nil,
@@ -623,7 +623,7 @@ func (c *Client) LeaveOrganizationWithContext(ctx context.Context, input *organi
 func (c *Client) ListAWSServiceAccessForOrganizationWithContext(ctx context.Context, input *organizations.ListAWSServiceAccessForOrganizationInput, opts ...request.Option) (*organizations.ListAWSServiceAccessForOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListAWSServiceAccessForOrganizationWithContext",
+		Action:  "ListAWSServiceAccessForOrganization",
 		Input:   input,
 		Output:  (*organizations.ListAWSServiceAccessForOrganizationOutput)(nil),
 		Error:   nil,
@@ -644,7 +644,7 @@ func (c *Client) ListAWSServiceAccessForOrganizationWithContext(ctx context.Cont
 func (c *Client) ListAccountsWithContext(ctx context.Context, input *organizations.ListAccountsInput, opts ...request.Option) (*organizations.ListAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListAccountsWithContext",
+		Action:  "ListAccounts",
 		Input:   input,
 		Output:  (*organizations.ListAccountsOutput)(nil),
 		Error:   nil,
@@ -665,7 +665,7 @@ func (c *Client) ListAccountsWithContext(ctx context.Context, input *organizatio
 func (c *Client) ListAccountsForParentWithContext(ctx context.Context, input *organizations.ListAccountsForParentInput, opts ...request.Option) (*organizations.ListAccountsForParentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListAccountsForParentWithContext",
+		Action:  "ListAccountsForParent",
 		Input:   input,
 		Output:  (*organizations.ListAccountsForParentOutput)(nil),
 		Error:   nil,
@@ -686,7 +686,7 @@ func (c *Client) ListAccountsForParentWithContext(ctx context.Context, input *or
 func (c *Client) ListChildrenWithContext(ctx context.Context, input *organizations.ListChildrenInput, opts ...request.Option) (*organizations.ListChildrenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListChildrenWithContext",
+		Action:  "ListChildren",
 		Input:   input,
 		Output:  (*organizations.ListChildrenOutput)(nil),
 		Error:   nil,
@@ -707,7 +707,7 @@ func (c *Client) ListChildrenWithContext(ctx context.Context, input *organizatio
 func (c *Client) ListCreateAccountStatusWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, opts ...request.Option) (*organizations.ListCreateAccountStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListCreateAccountStatusWithContext",
+		Action:  "ListCreateAccountStatus",
 		Input:   input,
 		Output:  (*organizations.ListCreateAccountStatusOutput)(nil),
 		Error:   nil,
@@ -728,7 +728,7 @@ func (c *Client) ListCreateAccountStatusWithContext(ctx context.Context, input *
 func (c *Client) ListHandshakesForAccountWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, opts ...request.Option) (*organizations.ListHandshakesForAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListHandshakesForAccountWithContext",
+		Action:  "ListHandshakesForAccount",
 		Input:   input,
 		Output:  (*organizations.ListHandshakesForAccountOutput)(nil),
 		Error:   nil,
@@ -749,7 +749,7 @@ func (c *Client) ListHandshakesForAccountWithContext(ctx context.Context, input 
 func (c *Client) ListHandshakesForOrganizationWithContext(ctx context.Context, input *organizations.ListHandshakesForOrganizationInput, opts ...request.Option) (*organizations.ListHandshakesForOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListHandshakesForOrganizationWithContext",
+		Action:  "ListHandshakesForOrganization",
 		Input:   input,
 		Output:  (*organizations.ListHandshakesForOrganizationOutput)(nil),
 		Error:   nil,
@@ -770,7 +770,7 @@ func (c *Client) ListHandshakesForOrganizationWithContext(ctx context.Context, i
 func (c *Client) ListOrganizationalUnitsForParentWithContext(ctx context.Context, input *organizations.ListOrganizationalUnitsForParentInput, opts ...request.Option) (*organizations.ListOrganizationalUnitsForParentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListOrganizationalUnitsForParentWithContext",
+		Action:  "ListOrganizationalUnitsForParent",
 		Input:   input,
 		Output:  (*organizations.ListOrganizationalUnitsForParentOutput)(nil),
 		Error:   nil,
@@ -791,7 +791,7 @@ func (c *Client) ListOrganizationalUnitsForParentWithContext(ctx context.Context
 func (c *Client) ListParentsWithContext(ctx context.Context, input *organizations.ListParentsInput, opts ...request.Option) (*organizations.ListParentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListParentsWithContext",
+		Action:  "ListParents",
 		Input:   input,
 		Output:  (*organizations.ListParentsOutput)(nil),
 		Error:   nil,
@@ -812,7 +812,7 @@ func (c *Client) ListParentsWithContext(ctx context.Context, input *organization
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *organizations.ListPoliciesInput, opts ...request.Option) (*organizations.ListPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListPoliciesWithContext",
+		Action:  "ListPolicies",
 		Input:   input,
 		Output:  (*organizations.ListPoliciesOutput)(nil),
 		Error:   nil,
@@ -833,7 +833,7 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *organizatio
 func (c *Client) ListPoliciesForTargetWithContext(ctx context.Context, input *organizations.ListPoliciesForTargetInput, opts ...request.Option) (*organizations.ListPoliciesForTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListPoliciesForTargetWithContext",
+		Action:  "ListPoliciesForTarget",
 		Input:   input,
 		Output:  (*organizations.ListPoliciesForTargetOutput)(nil),
 		Error:   nil,
@@ -854,7 +854,7 @@ func (c *Client) ListPoliciesForTargetWithContext(ctx context.Context, input *or
 func (c *Client) ListRootsWithContext(ctx context.Context, input *organizations.ListRootsInput, opts ...request.Option) (*organizations.ListRootsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListRootsWithContext",
+		Action:  "ListRoots",
 		Input:   input,
 		Output:  (*organizations.ListRootsOutput)(nil),
 		Error:   nil,
@@ -875,7 +875,7 @@ func (c *Client) ListRootsWithContext(ctx context.Context, input *organizations.
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *organizations.ListTagsForResourceInput, opts ...request.Option) (*organizations.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*organizations.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -896,7 +896,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *orga
 func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, opts ...request.Option) (*organizations.ListTargetsForPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "ListTargetsForPolicyWithContext",
+		Action:  "ListTargetsForPolicy",
 		Input:   input,
 		Output:  (*organizations.ListTargetsForPolicyOutput)(nil),
 		Error:   nil,
@@ -917,7 +917,7 @@ func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *org
 func (c *Client) MoveAccountWithContext(ctx context.Context, input *organizations.MoveAccountInput, opts ...request.Option) (*organizations.MoveAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "MoveAccountWithContext",
+		Action:  "MoveAccount",
 		Input:   input,
 		Output:  (*organizations.MoveAccountOutput)(nil),
 		Error:   nil,
@@ -938,7 +938,7 @@ func (c *Client) MoveAccountWithContext(ctx context.Context, input *organization
 func (c *Client) RemoveAccountFromOrganizationWithContext(ctx context.Context, input *organizations.RemoveAccountFromOrganizationInput, opts ...request.Option) (*organizations.RemoveAccountFromOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "RemoveAccountFromOrganizationWithContext",
+		Action:  "RemoveAccountFromOrganization",
 		Input:   input,
 		Output:  (*organizations.RemoveAccountFromOrganizationOutput)(nil),
 		Error:   nil,
@@ -959,7 +959,7 @@ func (c *Client) RemoveAccountFromOrganizationWithContext(ctx context.Context, i
 func (c *Client) TagResourceWithContext(ctx context.Context, input *organizations.TagResourceInput, opts ...request.Option) (*organizations.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*organizations.TagResourceOutput)(nil),
 		Error:   nil,
@@ -980,7 +980,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *organization
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *organizations.UntagResourceInput, opts ...request.Option) (*organizations.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*organizations.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1001,7 +1001,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *organizati
 func (c *Client) UpdateOrganizationalUnitWithContext(ctx context.Context, input *organizations.UpdateOrganizationalUnitInput, opts ...request.Option) (*organizations.UpdateOrganizationalUnitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "UpdateOrganizationalUnitWithContext",
+		Action:  "UpdateOrganizationalUnit",
 		Input:   input,
 		Output:  (*organizations.UpdateOrganizationalUnitOutput)(nil),
 		Error:   nil,
@@ -1022,7 +1022,7 @@ func (c *Client) UpdateOrganizationalUnitWithContext(ctx context.Context, input 
 func (c *Client) UpdatePolicyWithContext(ctx context.Context, input *organizations.UpdatePolicyInput, opts ...request.Option) (*organizations.UpdatePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
-		Action:  "UpdatePolicyWithContext",
+		Action:  "UpdatePolicy",
 		Input:   input,
 		Output:  (*organizations.UpdatePolicyOutput)(nil),
 		Error:   nil,

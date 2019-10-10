@@ -47,7 +47,7 @@ var _ MigrationHub = (*Client)(nil)
 func (c *Client) AssociateCreatedArtifactWithContext(ctx context.Context, input *migrationhub.AssociateCreatedArtifactInput, opts ...request.Option) (*migrationhub.AssociateCreatedArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "AssociateCreatedArtifactWithContext",
+		Action:  "AssociateCreatedArtifact",
 		Input:   input,
 		Output:  (*migrationhub.AssociateCreatedArtifactOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) AssociateCreatedArtifactWithContext(ctx context.Context, input 
 func (c *Client) AssociateDiscoveredResourceWithContext(ctx context.Context, input *migrationhub.AssociateDiscoveredResourceInput, opts ...request.Option) (*migrationhub.AssociateDiscoveredResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "AssociateDiscoveredResourceWithContext",
+		Action:  "AssociateDiscoveredResource",
 		Input:   input,
 		Output:  (*migrationhub.AssociateDiscoveredResourceOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) AssociateDiscoveredResourceWithContext(ctx context.Context, inp
 func (c *Client) CreateProgressUpdateStreamWithContext(ctx context.Context, input *migrationhub.CreateProgressUpdateStreamInput, opts ...request.Option) (*migrationhub.CreateProgressUpdateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "CreateProgressUpdateStreamWithContext",
+		Action:  "CreateProgressUpdateStream",
 		Input:   input,
 		Output:  (*migrationhub.CreateProgressUpdateStreamOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) CreateProgressUpdateStreamWithContext(ctx context.Context, inpu
 func (c *Client) DeleteProgressUpdateStreamWithContext(ctx context.Context, input *migrationhub.DeleteProgressUpdateStreamInput, opts ...request.Option) (*migrationhub.DeleteProgressUpdateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "DeleteProgressUpdateStreamWithContext",
+		Action:  "DeleteProgressUpdateStream",
 		Input:   input,
 		Output:  (*migrationhub.DeleteProgressUpdateStreamOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) DeleteProgressUpdateStreamWithContext(ctx context.Context, inpu
 func (c *Client) DescribeApplicationStateWithContext(ctx context.Context, input *migrationhub.DescribeApplicationStateInput, opts ...request.Option) (*migrationhub.DescribeApplicationStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "DescribeApplicationStateWithContext",
+		Action:  "DescribeApplicationState",
 		Input:   input,
 		Output:  (*migrationhub.DescribeApplicationStateOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) DescribeApplicationStateWithContext(ctx context.Context, input 
 func (c *Client) DescribeMigrationTaskWithContext(ctx context.Context, input *migrationhub.DescribeMigrationTaskInput, opts ...request.Option) (*migrationhub.DescribeMigrationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "DescribeMigrationTaskWithContext",
+		Action:  "DescribeMigrationTask",
 		Input:   input,
 		Output:  (*migrationhub.DescribeMigrationTaskOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DescribeMigrationTaskWithContext(ctx context.Context, input *mi
 func (c *Client) DisassociateCreatedArtifactWithContext(ctx context.Context, input *migrationhub.DisassociateCreatedArtifactInput, opts ...request.Option) (*migrationhub.DisassociateCreatedArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "DisassociateCreatedArtifactWithContext",
+		Action:  "DisassociateCreatedArtifact",
 		Input:   input,
 		Output:  (*migrationhub.DisassociateCreatedArtifactOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DisassociateCreatedArtifactWithContext(ctx context.Context, inp
 func (c *Client) DisassociateDiscoveredResourceWithContext(ctx context.Context, input *migrationhub.DisassociateDiscoveredResourceInput, opts ...request.Option) (*migrationhub.DisassociateDiscoveredResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "DisassociateDiscoveredResourceWithContext",
+		Action:  "DisassociateDiscoveredResource",
 		Input:   input,
 		Output:  (*migrationhub.DisassociateDiscoveredResourceOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DisassociateDiscoveredResourceWithContext(ctx context.Context, 
 func (c *Client) ImportMigrationTaskWithContext(ctx context.Context, input *migrationhub.ImportMigrationTaskInput, opts ...request.Option) (*migrationhub.ImportMigrationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "ImportMigrationTaskWithContext",
+		Action:  "ImportMigrationTask",
 		Input:   input,
 		Output:  (*migrationhub.ImportMigrationTaskOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) ImportMigrationTaskWithContext(ctx context.Context, input *migr
 func (c *Client) ListCreatedArtifactsWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, opts ...request.Option) (*migrationhub.ListCreatedArtifactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "ListCreatedArtifactsWithContext",
+		Action:  "ListCreatedArtifacts",
 		Input:   input,
 		Output:  (*migrationhub.ListCreatedArtifactsOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) ListCreatedArtifactsWithContext(ctx context.Context, input *mig
 func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *migrationhub.ListDiscoveredResourcesInput, opts ...request.Option) (*migrationhub.ListDiscoveredResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "ListDiscoveredResourcesWithContext",
+		Action:  "ListDiscoveredResources",
 		Input:   input,
 		Output:  (*migrationhub.ListDiscoveredResourcesOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *
 func (c *Client) ListMigrationTasksWithContext(ctx context.Context, input *migrationhub.ListMigrationTasksInput, opts ...request.Option) (*migrationhub.ListMigrationTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "ListMigrationTasksWithContext",
+		Action:  "ListMigrationTasks",
 		Input:   input,
 		Output:  (*migrationhub.ListMigrationTasksOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) ListMigrationTasksWithContext(ctx context.Context, input *migra
 func (c *Client) ListProgressUpdateStreamsWithContext(ctx context.Context, input *migrationhub.ListProgressUpdateStreamsInput, opts ...request.Option) (*migrationhub.ListProgressUpdateStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "ListProgressUpdateStreamsWithContext",
+		Action:  "ListProgressUpdateStreams",
 		Input:   input,
 		Output:  (*migrationhub.ListProgressUpdateStreamsOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) ListProgressUpdateStreamsWithContext(ctx context.Context, input
 func (c *Client) NotifyApplicationStateWithContext(ctx context.Context, input *migrationhub.NotifyApplicationStateInput, opts ...request.Option) (*migrationhub.NotifyApplicationStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "NotifyApplicationStateWithContext",
+		Action:  "NotifyApplicationState",
 		Input:   input,
 		Output:  (*migrationhub.NotifyApplicationStateOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) NotifyApplicationStateWithContext(ctx context.Context, input *m
 func (c *Client) NotifyMigrationTaskStateWithContext(ctx context.Context, input *migrationhub.NotifyMigrationTaskStateInput, opts ...request.Option) (*migrationhub.NotifyMigrationTaskStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "NotifyMigrationTaskStateWithContext",
+		Action:  "NotifyMigrationTaskState",
 		Input:   input,
 		Output:  (*migrationhub.NotifyMigrationTaskStateOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) NotifyMigrationTaskStateWithContext(ctx context.Context, input 
 func (c *Client) PutResourceAttributesWithContext(ctx context.Context, input *migrationhub.PutResourceAttributesInput, opts ...request.Option) (*migrationhub.PutResourceAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
-		Action:  "PutResourceAttributesWithContext",
+		Action:  "PutResourceAttributes",
 		Input:   input,
 		Output:  (*migrationhub.PutResourceAttributesOutput)(nil),
 		Error:   nil,

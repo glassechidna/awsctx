@@ -48,7 +48,7 @@ var _ ElasticTranscoder = (*Client)(nil)
 func (c *Client) CancelJobWithContext(ctx context.Context, input *elastictranscoder.CancelJobInput, opts ...request.Option) (*elastictranscoder.CancelJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "CancelJobWithContext",
+		Action:  "CancelJob",
 		Input:   input,
 		Output:  (*elastictranscoder.CancelJobOutput)(nil),
 		Error:   nil,
@@ -69,7 +69,7 @@ func (c *Client) CancelJobWithContext(ctx context.Context, input *elastictransco
 func (c *Client) CreateJobWithContext(ctx context.Context, input *elastictranscoder.CreateJobInput, opts ...request.Option) (*elastictranscoder.CreateJobResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "CreateJobWithContext",
+		Action:  "CreateJob",
 		Input:   input,
 		Output:  (*elastictranscoder.CreateJobResponse)(nil),
 		Error:   nil,
@@ -90,7 +90,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *elastictransco
 func (c *Client) CreatePipelineWithContext(ctx context.Context, input *elastictranscoder.CreatePipelineInput, opts ...request.Option) (*elastictranscoder.CreatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "CreatePipelineWithContext",
+		Action:  "CreatePipeline",
 		Input:   input,
 		Output:  (*elastictranscoder.CreatePipelineOutput)(nil),
 		Error:   nil,
@@ -111,7 +111,7 @@ func (c *Client) CreatePipelineWithContext(ctx context.Context, input *elastictr
 func (c *Client) CreatePresetWithContext(ctx context.Context, input *elastictranscoder.CreatePresetInput, opts ...request.Option) (*elastictranscoder.CreatePresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "CreatePresetWithContext",
+		Action:  "CreatePreset",
 		Input:   input,
 		Output:  (*elastictranscoder.CreatePresetOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) CreatePresetWithContext(ctx context.Context, input *elastictran
 func (c *Client) DeletePipelineWithContext(ctx context.Context, input *elastictranscoder.DeletePipelineInput, opts ...request.Option) (*elastictranscoder.DeletePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "DeletePipelineWithContext",
+		Action:  "DeletePipeline",
 		Input:   input,
 		Output:  (*elastictranscoder.DeletePipelineOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) DeletePipelineWithContext(ctx context.Context, input *elastictr
 func (c *Client) DeletePresetWithContext(ctx context.Context, input *elastictranscoder.DeletePresetInput, opts ...request.Option) (*elastictranscoder.DeletePresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "DeletePresetWithContext",
+		Action:  "DeletePreset",
 		Input:   input,
 		Output:  (*elastictranscoder.DeletePresetOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) DeletePresetWithContext(ctx context.Context, input *elastictran
 func (c *Client) ListJobsByPipelineWithContext(ctx context.Context, input *elastictranscoder.ListJobsByPipelineInput, opts ...request.Option) (*elastictranscoder.ListJobsByPipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ListJobsByPipelineWithContext",
+		Action:  "ListJobsByPipeline",
 		Input:   input,
 		Output:  (*elastictranscoder.ListJobsByPipelineOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) ListJobsByPipelineWithContext(ctx context.Context, input *elast
 func (c *Client) ListJobsByStatusWithContext(ctx context.Context, input *elastictranscoder.ListJobsByStatusInput, opts ...request.Option) (*elastictranscoder.ListJobsByStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ListJobsByStatusWithContext",
+		Action:  "ListJobsByStatus",
 		Input:   input,
 		Output:  (*elastictranscoder.ListJobsByStatusOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) ListJobsByStatusWithContext(ctx context.Context, input *elastic
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *elastictranscoder.ListPipelinesInput, opts ...request.Option) (*elastictranscoder.ListPipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ListPipelinesWithContext",
+		Action:  "ListPipelines",
 		Input:   input,
 		Output:  (*elastictranscoder.ListPipelinesOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *elastictra
 func (c *Client) ListPresetsWithContext(ctx context.Context, input *elastictranscoder.ListPresetsInput, opts ...request.Option) (*elastictranscoder.ListPresetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ListPresetsWithContext",
+		Action:  "ListPresets",
 		Input:   input,
 		Output:  (*elastictranscoder.ListPresetsOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) ListPresetsWithContext(ctx context.Context, input *elastictrans
 func (c *Client) ReadJobWithContext(ctx context.Context, input *elastictranscoder.ReadJobInput, opts ...request.Option) (*elastictranscoder.ReadJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ReadJobWithContext",
+		Action:  "ReadJob",
 		Input:   input,
 		Output:  (*elastictranscoder.ReadJobOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) ReadJobWithContext(ctx context.Context, input *elastictranscode
 func (c *Client) ReadPipelineWithContext(ctx context.Context, input *elastictranscoder.ReadPipelineInput, opts ...request.Option) (*elastictranscoder.ReadPipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ReadPipelineWithContext",
+		Action:  "ReadPipeline",
 		Input:   input,
 		Output:  (*elastictranscoder.ReadPipelineOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) ReadPipelineWithContext(ctx context.Context, input *elastictran
 func (c *Client) ReadPresetWithContext(ctx context.Context, input *elastictranscoder.ReadPresetInput, opts ...request.Option) (*elastictranscoder.ReadPresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "ReadPresetWithContext",
+		Action:  "ReadPreset",
 		Input:   input,
 		Output:  (*elastictranscoder.ReadPresetOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) ReadPresetWithContext(ctx context.Context, input *elastictransc
 func (c *Client) TestRoleWithContext(ctx context.Context, input *elastictranscoder.TestRoleInput, opts ...request.Option) (*elastictranscoder.TestRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "TestRoleWithContext",
+		Action:  "TestRole",
 		Input:   input,
 		Output:  (*elastictranscoder.TestRoleOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) TestRoleWithContext(ctx context.Context, input *elastictranscod
 func (c *Client) UpdatePipelineWithContext(ctx context.Context, input *elastictranscoder.UpdatePipelineInput, opts ...request.Option) (*elastictranscoder.UpdatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "UpdatePipelineWithContext",
+		Action:  "UpdatePipeline",
 		Input:   input,
 		Output:  (*elastictranscoder.UpdatePipelineOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) UpdatePipelineWithContext(ctx context.Context, input *elastictr
 func (c *Client) UpdatePipelineNotificationsWithContext(ctx context.Context, input *elastictranscoder.UpdatePipelineNotificationsInput, opts ...request.Option) (*elastictranscoder.UpdatePipelineNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "UpdatePipelineNotificationsWithContext",
+		Action:  "UpdatePipelineNotifications",
 		Input:   input,
 		Output:  (*elastictranscoder.UpdatePipelineNotificationsOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) UpdatePipelineNotificationsWithContext(ctx context.Context, inp
 func (c *Client) UpdatePipelineStatusWithContext(ctx context.Context, input *elastictranscoder.UpdatePipelineStatusInput, opts ...request.Option) (*elastictranscoder.UpdatePipelineStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
-		Action:  "UpdatePipelineStatusWithContext",
+		Action:  "UpdatePipelineStatus",
 		Input:   input,
 		Output:  (*elastictranscoder.UpdatePipelineStatusOutput)(nil),
 		Error:   nil,

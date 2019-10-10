@@ -43,7 +43,7 @@ var _ ResourceGroups = (*Client)(nil)
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *resourcegroups.CreateGroupInput, opts ...request.Option) (*resourcegroups.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*resourcegroups.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -64,7 +64,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *resourcegrou
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *resourcegroups.DeleteGroupInput, opts ...request.Option) (*resourcegroups.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*resourcegroups.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -85,7 +85,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *resourcegrou
 func (c *Client) GetGroupWithContext(ctx context.Context, input *resourcegroups.GetGroupInput, opts ...request.Option) (*resourcegroups.GetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "GetGroupWithContext",
+		Action:  "GetGroup",
 		Input:   input,
 		Output:  (*resourcegroups.GetGroupOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) GetGroupWithContext(ctx context.Context, input *resourcegroups.
 func (c *Client) GetGroupQueryWithContext(ctx context.Context, input *resourcegroups.GetGroupQueryInput, opts ...request.Option) (*resourcegroups.GetGroupQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "GetGroupQueryWithContext",
+		Action:  "GetGroupQuery",
 		Input:   input,
 		Output:  (*resourcegroups.GetGroupQueryOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) GetGroupQueryWithContext(ctx context.Context, input *resourcegr
 func (c *Client) GetTagsWithContext(ctx context.Context, input *resourcegroups.GetTagsInput, opts ...request.Option) (*resourcegroups.GetTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "GetTagsWithContext",
+		Action:  "GetTags",
 		Input:   input,
 		Output:  (*resourcegroups.GetTagsOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) GetTagsWithContext(ctx context.Context, input *resourcegroups.G
 func (c *Client) ListGroupResourcesWithContext(ctx context.Context, input *resourcegroups.ListGroupResourcesInput, opts ...request.Option) (*resourcegroups.ListGroupResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "ListGroupResourcesWithContext",
+		Action:  "ListGroupResources",
 		Input:   input,
 		Output:  (*resourcegroups.ListGroupResourcesOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) ListGroupResourcesWithContext(ctx context.Context, input *resou
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, opts ...request.Option) (*resourcegroups.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "ListGroupsWithContext",
+		Action:  "ListGroups",
 		Input:   input,
 		Output:  (*resourcegroups.ListGroupsOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *resourcegroup
 func (c *Client) SearchResourcesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, opts ...request.Option) (*resourcegroups.SearchResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "SearchResourcesWithContext",
+		Action:  "SearchResources",
 		Input:   input,
 		Output:  (*resourcegroups.SearchResourcesOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) SearchResourcesWithContext(ctx context.Context, input *resource
 func (c *Client) TagWithContext(ctx context.Context, input *resourcegroups.TagInput, opts ...request.Option) (*resourcegroups.TagOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "TagWithContext",
+		Action:  "Tag",
 		Input:   input,
 		Output:  (*resourcegroups.TagOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) TagWithContext(ctx context.Context, input *resourcegroups.TagIn
 func (c *Client) UntagWithContext(ctx context.Context, input *resourcegroups.UntagInput, opts ...request.Option) (*resourcegroups.UntagOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "UntagWithContext",
+		Action:  "Untag",
 		Input:   input,
 		Output:  (*resourcegroups.UntagOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) UntagWithContext(ctx context.Context, input *resourcegroups.Unt
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *resourcegroups.UpdateGroupInput, opts ...request.Option) (*resourcegroups.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "UpdateGroupWithContext",
+		Action:  "UpdateGroup",
 		Input:   input,
 		Output:  (*resourcegroups.UpdateGroupOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *resourcegrou
 func (c *Client) UpdateGroupQueryWithContext(ctx context.Context, input *resourcegroups.UpdateGroupQueryInput, opts ...request.Option) (*resourcegroups.UpdateGroupQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
-		Action:  "UpdateGroupQueryWithContext",
+		Action:  "UpdateGroupQuery",
 		Input:   input,
 		Output:  (*resourcegroups.UpdateGroupQueryOutput)(nil),
 		Error:   nil,

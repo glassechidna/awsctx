@@ -49,7 +49,7 @@ var _ Transfer = (*Client)(nil)
 func (c *Client) CreateServerWithContext(ctx context.Context, input *transfer.CreateServerInput, opts ...request.Option) (*transfer.CreateServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "CreateServerWithContext",
+		Action:  "CreateServer",
 		Input:   input,
 		Output:  (*transfer.CreateServerOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) CreateServerWithContext(ctx context.Context, input *transfer.Cr
 func (c *Client) CreateUserWithContext(ctx context.Context, input *transfer.CreateUserInput, opts ...request.Option) (*transfer.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*transfer.CreateUserOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *transfer.Crea
 func (c *Client) DeleteServerWithContext(ctx context.Context, input *transfer.DeleteServerInput, opts ...request.Option) (*transfer.DeleteServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "DeleteServerWithContext",
+		Action:  "DeleteServer",
 		Input:   input,
 		Output:  (*transfer.DeleteServerOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) DeleteServerWithContext(ctx context.Context, input *transfer.De
 func (c *Client) DeleteSshPublicKeyWithContext(ctx context.Context, input *transfer.DeleteSshPublicKeyInput, opts ...request.Option) (*transfer.DeleteSshPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "DeleteSshPublicKeyWithContext",
+		Action:  "DeleteSshPublicKey",
 		Input:   input,
 		Output:  (*transfer.DeleteSshPublicKeyOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) DeleteSshPublicKeyWithContext(ctx context.Context, input *trans
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *transfer.DeleteUserInput, opts ...request.Option) (*transfer.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*transfer.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *transfer.Dele
 func (c *Client) DescribeServerWithContext(ctx context.Context, input *transfer.DescribeServerInput, opts ...request.Option) (*transfer.DescribeServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "DescribeServerWithContext",
+		Action:  "DescribeServer",
 		Input:   input,
 		Output:  (*transfer.DescribeServerOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) DescribeServerWithContext(ctx context.Context, input *transfer.
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *transfer.DescribeUserInput, opts ...request.Option) (*transfer.DescribeUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "DescribeUserWithContext",
+		Action:  "DescribeUser",
 		Input:   input,
 		Output:  (*transfer.DescribeUserOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *transfer.De
 func (c *Client) ImportSshPublicKeyWithContext(ctx context.Context, input *transfer.ImportSshPublicKeyInput, opts ...request.Option) (*transfer.ImportSshPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "ImportSshPublicKeyWithContext",
+		Action:  "ImportSshPublicKey",
 		Input:   input,
 		Output:  (*transfer.ImportSshPublicKeyOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) ImportSshPublicKeyWithContext(ctx context.Context, input *trans
 func (c *Client) ListServersWithContext(ctx context.Context, input *transfer.ListServersInput, opts ...request.Option) (*transfer.ListServersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "ListServersWithContext",
+		Action:  "ListServers",
 		Input:   input,
 		Output:  (*transfer.ListServersOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) ListServersWithContext(ctx context.Context, input *transfer.Lis
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *transfer.ListTagsForResourceInput, opts ...request.Option) (*transfer.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*transfer.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *tran
 func (c *Client) ListUsersWithContext(ctx context.Context, input *transfer.ListUsersInput, opts ...request.Option) (*transfer.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*transfer.ListUsersOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *transfer.ListU
 func (c *Client) StartServerWithContext(ctx context.Context, input *transfer.StartServerInput, opts ...request.Option) (*transfer.StartServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "StartServerWithContext",
+		Action:  "StartServer",
 		Input:   input,
 		Output:  (*transfer.StartServerOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) StartServerWithContext(ctx context.Context, input *transfer.Sta
 func (c *Client) StopServerWithContext(ctx context.Context, input *transfer.StopServerInput, opts ...request.Option) (*transfer.StopServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "StopServerWithContext",
+		Action:  "StopServer",
 		Input:   input,
 		Output:  (*transfer.StopServerOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) StopServerWithContext(ctx context.Context, input *transfer.Stop
 func (c *Client) TagResourceWithContext(ctx context.Context, input *transfer.TagResourceInput, opts ...request.Option) (*transfer.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*transfer.TagResourceOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *transfer.Tag
 func (c *Client) TestIdentityProviderWithContext(ctx context.Context, input *transfer.TestIdentityProviderInput, opts ...request.Option) (*transfer.TestIdentityProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "TestIdentityProviderWithContext",
+		Action:  "TestIdentityProvider",
 		Input:   input,
 		Output:  (*transfer.TestIdentityProviderOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) TestIdentityProviderWithContext(ctx context.Context, input *tra
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *transfer.UntagResourceInput, opts ...request.Option) (*transfer.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*transfer.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *transfer.U
 func (c *Client) UpdateServerWithContext(ctx context.Context, input *transfer.UpdateServerInput, opts ...request.Option) (*transfer.UpdateServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "UpdateServerWithContext",
+		Action:  "UpdateServer",
 		Input:   input,
 		Output:  (*transfer.UpdateServerOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) UpdateServerWithContext(ctx context.Context, input *transfer.Up
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *transfer.UpdateUserInput, opts ...request.Option) (*transfer.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
-		Action:  "UpdateUserWithContext",
+		Action:  "UpdateUser",
 		Input:   input,
 		Output:  (*transfer.UpdateUserOutput)(nil),
 		Error:   nil,

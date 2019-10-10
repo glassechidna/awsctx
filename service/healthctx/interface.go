@@ -37,7 +37,7 @@ var _ Health = (*Client)(nil)
 func (c *Client) DescribeAffectedEntitiesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesInput, opts ...request.Option) (*health.DescribeAffectedEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
-		Action:  "DescribeAffectedEntitiesWithContext",
+		Action:  "DescribeAffectedEntities",
 		Input:   input,
 		Output:  (*health.DescribeAffectedEntitiesOutput)(nil),
 		Error:   nil,
@@ -58,7 +58,7 @@ func (c *Client) DescribeAffectedEntitiesWithContext(ctx context.Context, input 
 func (c *Client) DescribeEntityAggregatesWithContext(ctx context.Context, input *health.DescribeEntityAggregatesInput, opts ...request.Option) (*health.DescribeEntityAggregatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
-		Action:  "DescribeEntityAggregatesWithContext",
+		Action:  "DescribeEntityAggregates",
 		Input:   input,
 		Output:  (*health.DescribeEntityAggregatesOutput)(nil),
 		Error:   nil,
@@ -79,7 +79,7 @@ func (c *Client) DescribeEntityAggregatesWithContext(ctx context.Context, input 
 func (c *Client) DescribeEventAggregatesWithContext(ctx context.Context, input *health.DescribeEventAggregatesInput, opts ...request.Option) (*health.DescribeEventAggregatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
-		Action:  "DescribeEventAggregatesWithContext",
+		Action:  "DescribeEventAggregates",
 		Input:   input,
 		Output:  (*health.DescribeEventAggregatesOutput)(nil),
 		Error:   nil,
@@ -100,7 +100,7 @@ func (c *Client) DescribeEventAggregatesWithContext(ctx context.Context, input *
 func (c *Client) DescribeEventDetailsWithContext(ctx context.Context, input *health.DescribeEventDetailsInput, opts ...request.Option) (*health.DescribeEventDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
-		Action:  "DescribeEventDetailsWithContext",
+		Action:  "DescribeEventDetails",
 		Input:   input,
 		Output:  (*health.DescribeEventDetailsOutput)(nil),
 		Error:   nil,
@@ -121,7 +121,7 @@ func (c *Client) DescribeEventDetailsWithContext(ctx context.Context, input *hea
 func (c *Client) DescribeEventTypesWithContext(ctx context.Context, input *health.DescribeEventTypesInput, opts ...request.Option) (*health.DescribeEventTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
-		Action:  "DescribeEventTypesWithContext",
+		Action:  "DescribeEventTypes",
 		Input:   input,
 		Output:  (*health.DescribeEventTypesOutput)(nil),
 		Error:   nil,
@@ -142,7 +142,7 @@ func (c *Client) DescribeEventTypesWithContext(ctx context.Context, input *healt
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *health.DescribeEventsInput, opts ...request.Option) (*health.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*health.DescribeEventsOutput)(nil),
 		Error:   nil,

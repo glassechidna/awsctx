@@ -87,7 +87,7 @@ var _ Route53 = (*Client)(nil)
 func (c *Client) AssociateVPCWithHostedZoneWithContext(ctx context.Context, input *route53.AssociateVPCWithHostedZoneInput, opts ...request.Option) (*route53.AssociateVPCWithHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "AssociateVPCWithHostedZoneWithContext",
+		Action:  "AssociateVPCWithHostedZone",
 		Input:   input,
 		Output:  (*route53.AssociateVPCWithHostedZoneOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) AssociateVPCWithHostedZoneWithContext(ctx context.Context, inpu
 func (c *Client) ChangeResourceRecordSetsWithContext(ctx context.Context, input *route53.ChangeResourceRecordSetsInput, opts ...request.Option) (*route53.ChangeResourceRecordSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ChangeResourceRecordSetsWithContext",
+		Action:  "ChangeResourceRecordSets",
 		Input:   input,
 		Output:  (*route53.ChangeResourceRecordSetsOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) ChangeResourceRecordSetsWithContext(ctx context.Context, input 
 func (c *Client) ChangeTagsForResourceWithContext(ctx context.Context, input *route53.ChangeTagsForResourceInput, opts ...request.Option) (*route53.ChangeTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ChangeTagsForResourceWithContext",
+		Action:  "ChangeTagsForResource",
 		Input:   input,
 		Output:  (*route53.ChangeTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) ChangeTagsForResourceWithContext(ctx context.Context, input *ro
 func (c *Client) CreateHealthCheckWithContext(ctx context.Context, input *route53.CreateHealthCheckInput, opts ...request.Option) (*route53.CreateHealthCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateHealthCheckWithContext",
+		Action:  "CreateHealthCheck",
 		Input:   input,
 		Output:  (*route53.CreateHealthCheckOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) CreateHealthCheckWithContext(ctx context.Context, input *route5
 func (c *Client) CreateHostedZoneWithContext(ctx context.Context, input *route53.CreateHostedZoneInput, opts ...request.Option) (*route53.CreateHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateHostedZoneWithContext",
+		Action:  "CreateHostedZone",
 		Input:   input,
 		Output:  (*route53.CreateHostedZoneOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) CreateHostedZoneWithContext(ctx context.Context, input *route53
 func (c *Client) CreateQueryLoggingConfigWithContext(ctx context.Context, input *route53.CreateQueryLoggingConfigInput, opts ...request.Option) (*route53.CreateQueryLoggingConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateQueryLoggingConfigWithContext",
+		Action:  "CreateQueryLoggingConfig",
 		Input:   input,
 		Output:  (*route53.CreateQueryLoggingConfigOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) CreateQueryLoggingConfigWithContext(ctx context.Context, input 
 func (c *Client) CreateReusableDelegationSetWithContext(ctx context.Context, input *route53.CreateReusableDelegationSetInput, opts ...request.Option) (*route53.CreateReusableDelegationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateReusableDelegationSetWithContext",
+		Action:  "CreateReusableDelegationSet",
 		Input:   input,
 		Output:  (*route53.CreateReusableDelegationSetOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) CreateReusableDelegationSetWithContext(ctx context.Context, inp
 func (c *Client) CreateTrafficPolicyWithContext(ctx context.Context, input *route53.CreateTrafficPolicyInput, opts ...request.Option) (*route53.CreateTrafficPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateTrafficPolicyWithContext",
+		Action:  "CreateTrafficPolicy",
 		Input:   input,
 		Output:  (*route53.CreateTrafficPolicyOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) CreateTrafficPolicyWithContext(ctx context.Context, input *rout
 func (c *Client) CreateTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.CreateTrafficPolicyInstanceInput, opts ...request.Option) (*route53.CreateTrafficPolicyInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateTrafficPolicyInstanceWithContext",
+		Action:  "CreateTrafficPolicyInstance",
 		Input:   input,
 		Output:  (*route53.CreateTrafficPolicyInstanceOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) CreateTrafficPolicyInstanceWithContext(ctx context.Context, inp
 func (c *Client) CreateTrafficPolicyVersionWithContext(ctx context.Context, input *route53.CreateTrafficPolicyVersionInput, opts ...request.Option) (*route53.CreateTrafficPolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateTrafficPolicyVersionWithContext",
+		Action:  "CreateTrafficPolicyVersion",
 		Input:   input,
 		Output:  (*route53.CreateTrafficPolicyVersionOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) CreateTrafficPolicyVersionWithContext(ctx context.Context, inpu
 func (c *Client) CreateVPCAssociationAuthorizationWithContext(ctx context.Context, input *route53.CreateVPCAssociationAuthorizationInput, opts ...request.Option) (*route53.CreateVPCAssociationAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "CreateVPCAssociationAuthorizationWithContext",
+		Action:  "CreateVPCAssociationAuthorization",
 		Input:   input,
 		Output:  (*route53.CreateVPCAssociationAuthorizationOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) CreateVPCAssociationAuthorizationWithContext(ctx context.Contex
 func (c *Client) DeleteHealthCheckWithContext(ctx context.Context, input *route53.DeleteHealthCheckInput, opts ...request.Option) (*route53.DeleteHealthCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteHealthCheckWithContext",
+		Action:  "DeleteHealthCheck",
 		Input:   input,
 		Output:  (*route53.DeleteHealthCheckOutput)(nil),
 		Error:   nil,
@@ -339,7 +339,7 @@ func (c *Client) DeleteHealthCheckWithContext(ctx context.Context, input *route5
 func (c *Client) DeleteHostedZoneWithContext(ctx context.Context, input *route53.DeleteHostedZoneInput, opts ...request.Option) (*route53.DeleteHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteHostedZoneWithContext",
+		Action:  "DeleteHostedZone",
 		Input:   input,
 		Output:  (*route53.DeleteHostedZoneOutput)(nil),
 		Error:   nil,
@@ -360,7 +360,7 @@ func (c *Client) DeleteHostedZoneWithContext(ctx context.Context, input *route53
 func (c *Client) DeleteQueryLoggingConfigWithContext(ctx context.Context, input *route53.DeleteQueryLoggingConfigInput, opts ...request.Option) (*route53.DeleteQueryLoggingConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteQueryLoggingConfigWithContext",
+		Action:  "DeleteQueryLoggingConfig",
 		Input:   input,
 		Output:  (*route53.DeleteQueryLoggingConfigOutput)(nil),
 		Error:   nil,
@@ -381,7 +381,7 @@ func (c *Client) DeleteQueryLoggingConfigWithContext(ctx context.Context, input 
 func (c *Client) DeleteReusableDelegationSetWithContext(ctx context.Context, input *route53.DeleteReusableDelegationSetInput, opts ...request.Option) (*route53.DeleteReusableDelegationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteReusableDelegationSetWithContext",
+		Action:  "DeleteReusableDelegationSet",
 		Input:   input,
 		Output:  (*route53.DeleteReusableDelegationSetOutput)(nil),
 		Error:   nil,
@@ -402,7 +402,7 @@ func (c *Client) DeleteReusableDelegationSetWithContext(ctx context.Context, inp
 func (c *Client) DeleteTrafficPolicyWithContext(ctx context.Context, input *route53.DeleteTrafficPolicyInput, opts ...request.Option) (*route53.DeleteTrafficPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteTrafficPolicyWithContext",
+		Action:  "DeleteTrafficPolicy",
 		Input:   input,
 		Output:  (*route53.DeleteTrafficPolicyOutput)(nil),
 		Error:   nil,
@@ -423,7 +423,7 @@ func (c *Client) DeleteTrafficPolicyWithContext(ctx context.Context, input *rout
 func (c *Client) DeleteTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.DeleteTrafficPolicyInstanceInput, opts ...request.Option) (*route53.DeleteTrafficPolicyInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteTrafficPolicyInstanceWithContext",
+		Action:  "DeleteTrafficPolicyInstance",
 		Input:   input,
 		Output:  (*route53.DeleteTrafficPolicyInstanceOutput)(nil),
 		Error:   nil,
@@ -444,7 +444,7 @@ func (c *Client) DeleteTrafficPolicyInstanceWithContext(ctx context.Context, inp
 func (c *Client) DeleteVPCAssociationAuthorizationWithContext(ctx context.Context, input *route53.DeleteVPCAssociationAuthorizationInput, opts ...request.Option) (*route53.DeleteVPCAssociationAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DeleteVPCAssociationAuthorizationWithContext",
+		Action:  "DeleteVPCAssociationAuthorization",
 		Input:   input,
 		Output:  (*route53.DeleteVPCAssociationAuthorizationOutput)(nil),
 		Error:   nil,
@@ -465,7 +465,7 @@ func (c *Client) DeleteVPCAssociationAuthorizationWithContext(ctx context.Contex
 func (c *Client) DisassociateVPCFromHostedZoneWithContext(ctx context.Context, input *route53.DisassociateVPCFromHostedZoneInput, opts ...request.Option) (*route53.DisassociateVPCFromHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "DisassociateVPCFromHostedZoneWithContext",
+		Action:  "DisassociateVPCFromHostedZone",
 		Input:   input,
 		Output:  (*route53.DisassociateVPCFromHostedZoneOutput)(nil),
 		Error:   nil,
@@ -486,7 +486,7 @@ func (c *Client) DisassociateVPCFromHostedZoneWithContext(ctx context.Context, i
 func (c *Client) GetAccountLimitWithContext(ctx context.Context, input *route53.GetAccountLimitInput, opts ...request.Option) (*route53.GetAccountLimitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetAccountLimitWithContext",
+		Action:  "GetAccountLimit",
 		Input:   input,
 		Output:  (*route53.GetAccountLimitOutput)(nil),
 		Error:   nil,
@@ -507,7 +507,7 @@ func (c *Client) GetAccountLimitWithContext(ctx context.Context, input *route53.
 func (c *Client) GetChangeWithContext(ctx context.Context, input *route53.GetChangeInput, opts ...request.Option) (*route53.GetChangeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetChangeWithContext",
+		Action:  "GetChange",
 		Input:   input,
 		Output:  (*route53.GetChangeOutput)(nil),
 		Error:   nil,
@@ -528,7 +528,7 @@ func (c *Client) GetChangeWithContext(ctx context.Context, input *route53.GetCha
 func (c *Client) GetCheckerIpRangesWithContext(ctx context.Context, input *route53.GetCheckerIpRangesInput, opts ...request.Option) (*route53.GetCheckerIpRangesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetCheckerIpRangesWithContext",
+		Action:  "GetCheckerIpRanges",
 		Input:   input,
 		Output:  (*route53.GetCheckerIpRangesOutput)(nil),
 		Error:   nil,
@@ -549,7 +549,7 @@ func (c *Client) GetCheckerIpRangesWithContext(ctx context.Context, input *route
 func (c *Client) GetGeoLocationWithContext(ctx context.Context, input *route53.GetGeoLocationInput, opts ...request.Option) (*route53.GetGeoLocationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetGeoLocationWithContext",
+		Action:  "GetGeoLocation",
 		Input:   input,
 		Output:  (*route53.GetGeoLocationOutput)(nil),
 		Error:   nil,
@@ -570,7 +570,7 @@ func (c *Client) GetGeoLocationWithContext(ctx context.Context, input *route53.G
 func (c *Client) GetHealthCheckWithContext(ctx context.Context, input *route53.GetHealthCheckInput, opts ...request.Option) (*route53.GetHealthCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHealthCheckWithContext",
+		Action:  "GetHealthCheck",
 		Input:   input,
 		Output:  (*route53.GetHealthCheckOutput)(nil),
 		Error:   nil,
@@ -591,7 +591,7 @@ func (c *Client) GetHealthCheckWithContext(ctx context.Context, input *route53.G
 func (c *Client) GetHealthCheckCountWithContext(ctx context.Context, input *route53.GetHealthCheckCountInput, opts ...request.Option) (*route53.GetHealthCheckCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHealthCheckCountWithContext",
+		Action:  "GetHealthCheckCount",
 		Input:   input,
 		Output:  (*route53.GetHealthCheckCountOutput)(nil),
 		Error:   nil,
@@ -612,7 +612,7 @@ func (c *Client) GetHealthCheckCountWithContext(ctx context.Context, input *rout
 func (c *Client) GetHealthCheckLastFailureReasonWithContext(ctx context.Context, input *route53.GetHealthCheckLastFailureReasonInput, opts ...request.Option) (*route53.GetHealthCheckLastFailureReasonOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHealthCheckLastFailureReasonWithContext",
+		Action:  "GetHealthCheckLastFailureReason",
 		Input:   input,
 		Output:  (*route53.GetHealthCheckLastFailureReasonOutput)(nil),
 		Error:   nil,
@@ -633,7 +633,7 @@ func (c *Client) GetHealthCheckLastFailureReasonWithContext(ctx context.Context,
 func (c *Client) GetHealthCheckStatusWithContext(ctx context.Context, input *route53.GetHealthCheckStatusInput, opts ...request.Option) (*route53.GetHealthCheckStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHealthCheckStatusWithContext",
+		Action:  "GetHealthCheckStatus",
 		Input:   input,
 		Output:  (*route53.GetHealthCheckStatusOutput)(nil),
 		Error:   nil,
@@ -654,7 +654,7 @@ func (c *Client) GetHealthCheckStatusWithContext(ctx context.Context, input *rou
 func (c *Client) GetHostedZoneWithContext(ctx context.Context, input *route53.GetHostedZoneInput, opts ...request.Option) (*route53.GetHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHostedZoneWithContext",
+		Action:  "GetHostedZone",
 		Input:   input,
 		Output:  (*route53.GetHostedZoneOutput)(nil),
 		Error:   nil,
@@ -675,7 +675,7 @@ func (c *Client) GetHostedZoneWithContext(ctx context.Context, input *route53.Ge
 func (c *Client) GetHostedZoneCountWithContext(ctx context.Context, input *route53.GetHostedZoneCountInput, opts ...request.Option) (*route53.GetHostedZoneCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHostedZoneCountWithContext",
+		Action:  "GetHostedZoneCount",
 		Input:   input,
 		Output:  (*route53.GetHostedZoneCountOutput)(nil),
 		Error:   nil,
@@ -696,7 +696,7 @@ func (c *Client) GetHostedZoneCountWithContext(ctx context.Context, input *route
 func (c *Client) GetHostedZoneLimitWithContext(ctx context.Context, input *route53.GetHostedZoneLimitInput, opts ...request.Option) (*route53.GetHostedZoneLimitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetHostedZoneLimitWithContext",
+		Action:  "GetHostedZoneLimit",
 		Input:   input,
 		Output:  (*route53.GetHostedZoneLimitOutput)(nil),
 		Error:   nil,
@@ -717,7 +717,7 @@ func (c *Client) GetHostedZoneLimitWithContext(ctx context.Context, input *route
 func (c *Client) GetQueryLoggingConfigWithContext(ctx context.Context, input *route53.GetQueryLoggingConfigInput, opts ...request.Option) (*route53.GetQueryLoggingConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetQueryLoggingConfigWithContext",
+		Action:  "GetQueryLoggingConfig",
 		Input:   input,
 		Output:  (*route53.GetQueryLoggingConfigOutput)(nil),
 		Error:   nil,
@@ -738,7 +738,7 @@ func (c *Client) GetQueryLoggingConfigWithContext(ctx context.Context, input *ro
 func (c *Client) GetReusableDelegationSetWithContext(ctx context.Context, input *route53.GetReusableDelegationSetInput, opts ...request.Option) (*route53.GetReusableDelegationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetReusableDelegationSetWithContext",
+		Action:  "GetReusableDelegationSet",
 		Input:   input,
 		Output:  (*route53.GetReusableDelegationSetOutput)(nil),
 		Error:   nil,
@@ -759,7 +759,7 @@ func (c *Client) GetReusableDelegationSetWithContext(ctx context.Context, input 
 func (c *Client) GetReusableDelegationSetLimitWithContext(ctx context.Context, input *route53.GetReusableDelegationSetLimitInput, opts ...request.Option) (*route53.GetReusableDelegationSetLimitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetReusableDelegationSetLimitWithContext",
+		Action:  "GetReusableDelegationSetLimit",
 		Input:   input,
 		Output:  (*route53.GetReusableDelegationSetLimitOutput)(nil),
 		Error:   nil,
@@ -780,7 +780,7 @@ func (c *Client) GetReusableDelegationSetLimitWithContext(ctx context.Context, i
 func (c *Client) GetTrafficPolicyWithContext(ctx context.Context, input *route53.GetTrafficPolicyInput, opts ...request.Option) (*route53.GetTrafficPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetTrafficPolicyWithContext",
+		Action:  "GetTrafficPolicy",
 		Input:   input,
 		Output:  (*route53.GetTrafficPolicyOutput)(nil),
 		Error:   nil,
@@ -801,7 +801,7 @@ func (c *Client) GetTrafficPolicyWithContext(ctx context.Context, input *route53
 func (c *Client) GetTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.GetTrafficPolicyInstanceInput, opts ...request.Option) (*route53.GetTrafficPolicyInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetTrafficPolicyInstanceWithContext",
+		Action:  "GetTrafficPolicyInstance",
 		Input:   input,
 		Output:  (*route53.GetTrafficPolicyInstanceOutput)(nil),
 		Error:   nil,
@@ -822,7 +822,7 @@ func (c *Client) GetTrafficPolicyInstanceWithContext(ctx context.Context, input 
 func (c *Client) GetTrafficPolicyInstanceCountWithContext(ctx context.Context, input *route53.GetTrafficPolicyInstanceCountInput, opts ...request.Option) (*route53.GetTrafficPolicyInstanceCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "GetTrafficPolicyInstanceCountWithContext",
+		Action:  "GetTrafficPolicyInstanceCount",
 		Input:   input,
 		Output:  (*route53.GetTrafficPolicyInstanceCountOutput)(nil),
 		Error:   nil,
@@ -843,7 +843,7 @@ func (c *Client) GetTrafficPolicyInstanceCountWithContext(ctx context.Context, i
 func (c *Client) ListGeoLocationsWithContext(ctx context.Context, input *route53.ListGeoLocationsInput, opts ...request.Option) (*route53.ListGeoLocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListGeoLocationsWithContext",
+		Action:  "ListGeoLocations",
 		Input:   input,
 		Output:  (*route53.ListGeoLocationsOutput)(nil),
 		Error:   nil,
@@ -864,7 +864,7 @@ func (c *Client) ListGeoLocationsWithContext(ctx context.Context, input *route53
 func (c *Client) ListHealthChecksWithContext(ctx context.Context, input *route53.ListHealthChecksInput, opts ...request.Option) (*route53.ListHealthChecksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListHealthChecksWithContext",
+		Action:  "ListHealthChecks",
 		Input:   input,
 		Output:  (*route53.ListHealthChecksOutput)(nil),
 		Error:   nil,
@@ -885,7 +885,7 @@ func (c *Client) ListHealthChecksWithContext(ctx context.Context, input *route53
 func (c *Client) ListHostedZonesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, opts ...request.Option) (*route53.ListHostedZonesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListHostedZonesWithContext",
+		Action:  "ListHostedZones",
 		Input:   input,
 		Output:  (*route53.ListHostedZonesOutput)(nil),
 		Error:   nil,
@@ -906,7 +906,7 @@ func (c *Client) ListHostedZonesWithContext(ctx context.Context, input *route53.
 func (c *Client) ListHostedZonesByNameWithContext(ctx context.Context, input *route53.ListHostedZonesByNameInput, opts ...request.Option) (*route53.ListHostedZonesByNameOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListHostedZonesByNameWithContext",
+		Action:  "ListHostedZonesByName",
 		Input:   input,
 		Output:  (*route53.ListHostedZonesByNameOutput)(nil),
 		Error:   nil,
@@ -927,7 +927,7 @@ func (c *Client) ListHostedZonesByNameWithContext(ctx context.Context, input *ro
 func (c *Client) ListQueryLoggingConfigsWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, opts ...request.Option) (*route53.ListQueryLoggingConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListQueryLoggingConfigsWithContext",
+		Action:  "ListQueryLoggingConfigs",
 		Input:   input,
 		Output:  (*route53.ListQueryLoggingConfigsOutput)(nil),
 		Error:   nil,
@@ -948,7 +948,7 @@ func (c *Client) ListQueryLoggingConfigsWithContext(ctx context.Context, input *
 func (c *Client) ListResourceRecordSetsWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, opts ...request.Option) (*route53.ListResourceRecordSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListResourceRecordSetsWithContext",
+		Action:  "ListResourceRecordSets",
 		Input:   input,
 		Output:  (*route53.ListResourceRecordSetsOutput)(nil),
 		Error:   nil,
@@ -969,7 +969,7 @@ func (c *Client) ListResourceRecordSetsWithContext(ctx context.Context, input *r
 func (c *Client) ListReusableDelegationSetsWithContext(ctx context.Context, input *route53.ListReusableDelegationSetsInput, opts ...request.Option) (*route53.ListReusableDelegationSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListReusableDelegationSetsWithContext",
+		Action:  "ListReusableDelegationSets",
 		Input:   input,
 		Output:  (*route53.ListReusableDelegationSetsOutput)(nil),
 		Error:   nil,
@@ -990,7 +990,7 @@ func (c *Client) ListReusableDelegationSetsWithContext(ctx context.Context, inpu
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *route53.ListTagsForResourceInput, opts ...request.Option) (*route53.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*route53.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1011,7 +1011,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rout
 func (c *Client) ListTagsForResourcesWithContext(ctx context.Context, input *route53.ListTagsForResourcesInput, opts ...request.Option) (*route53.ListTagsForResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTagsForResourcesWithContext",
+		Action:  "ListTagsForResources",
 		Input:   input,
 		Output:  (*route53.ListTagsForResourcesOutput)(nil),
 		Error:   nil,
@@ -1032,7 +1032,7 @@ func (c *Client) ListTagsForResourcesWithContext(ctx context.Context, input *rou
 func (c *Client) ListTrafficPoliciesWithContext(ctx context.Context, input *route53.ListTrafficPoliciesInput, opts ...request.Option) (*route53.ListTrafficPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTrafficPoliciesWithContext",
+		Action:  "ListTrafficPolicies",
 		Input:   input,
 		Output:  (*route53.ListTrafficPoliciesOutput)(nil),
 		Error:   nil,
@@ -1053,7 +1053,7 @@ func (c *Client) ListTrafficPoliciesWithContext(ctx context.Context, input *rout
 func (c *Client) ListTrafficPolicyInstancesWithContext(ctx context.Context, input *route53.ListTrafficPolicyInstancesInput, opts ...request.Option) (*route53.ListTrafficPolicyInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTrafficPolicyInstancesWithContext",
+		Action:  "ListTrafficPolicyInstances",
 		Input:   input,
 		Output:  (*route53.ListTrafficPolicyInstancesOutput)(nil),
 		Error:   nil,
@@ -1074,7 +1074,7 @@ func (c *Client) ListTrafficPolicyInstancesWithContext(ctx context.Context, inpu
 func (c *Client) ListTrafficPolicyInstancesByHostedZoneWithContext(ctx context.Context, input *route53.ListTrafficPolicyInstancesByHostedZoneInput, opts ...request.Option) (*route53.ListTrafficPolicyInstancesByHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTrafficPolicyInstancesByHostedZoneWithContext",
+		Action:  "ListTrafficPolicyInstancesByHostedZone",
 		Input:   input,
 		Output:  (*route53.ListTrafficPolicyInstancesByHostedZoneOutput)(nil),
 		Error:   nil,
@@ -1095,7 +1095,7 @@ func (c *Client) ListTrafficPolicyInstancesByHostedZoneWithContext(ctx context.C
 func (c *Client) ListTrafficPolicyInstancesByPolicyWithContext(ctx context.Context, input *route53.ListTrafficPolicyInstancesByPolicyInput, opts ...request.Option) (*route53.ListTrafficPolicyInstancesByPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTrafficPolicyInstancesByPolicyWithContext",
+		Action:  "ListTrafficPolicyInstancesByPolicy",
 		Input:   input,
 		Output:  (*route53.ListTrafficPolicyInstancesByPolicyOutput)(nil),
 		Error:   nil,
@@ -1116,7 +1116,7 @@ func (c *Client) ListTrafficPolicyInstancesByPolicyWithContext(ctx context.Conte
 func (c *Client) ListTrafficPolicyVersionsWithContext(ctx context.Context, input *route53.ListTrafficPolicyVersionsInput, opts ...request.Option) (*route53.ListTrafficPolicyVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListTrafficPolicyVersionsWithContext",
+		Action:  "ListTrafficPolicyVersions",
 		Input:   input,
 		Output:  (*route53.ListTrafficPolicyVersionsOutput)(nil),
 		Error:   nil,
@@ -1137,7 +1137,7 @@ func (c *Client) ListTrafficPolicyVersionsWithContext(ctx context.Context, input
 func (c *Client) ListVPCAssociationAuthorizationsWithContext(ctx context.Context, input *route53.ListVPCAssociationAuthorizationsInput, opts ...request.Option) (*route53.ListVPCAssociationAuthorizationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "ListVPCAssociationAuthorizationsWithContext",
+		Action:  "ListVPCAssociationAuthorizations",
 		Input:   input,
 		Output:  (*route53.ListVPCAssociationAuthorizationsOutput)(nil),
 		Error:   nil,
@@ -1158,7 +1158,7 @@ func (c *Client) ListVPCAssociationAuthorizationsWithContext(ctx context.Context
 func (c *Client) TestDNSAnswerWithContext(ctx context.Context, input *route53.TestDNSAnswerInput, opts ...request.Option) (*route53.TestDNSAnswerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "TestDNSAnswerWithContext",
+		Action:  "TestDNSAnswer",
 		Input:   input,
 		Output:  (*route53.TestDNSAnswerOutput)(nil),
 		Error:   nil,
@@ -1179,7 +1179,7 @@ func (c *Client) TestDNSAnswerWithContext(ctx context.Context, input *route53.Te
 func (c *Client) UpdateHealthCheckWithContext(ctx context.Context, input *route53.UpdateHealthCheckInput, opts ...request.Option) (*route53.UpdateHealthCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "UpdateHealthCheckWithContext",
+		Action:  "UpdateHealthCheck",
 		Input:   input,
 		Output:  (*route53.UpdateHealthCheckOutput)(nil),
 		Error:   nil,
@@ -1200,7 +1200,7 @@ func (c *Client) UpdateHealthCheckWithContext(ctx context.Context, input *route5
 func (c *Client) UpdateHostedZoneCommentWithContext(ctx context.Context, input *route53.UpdateHostedZoneCommentInput, opts ...request.Option) (*route53.UpdateHostedZoneCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "UpdateHostedZoneCommentWithContext",
+		Action:  "UpdateHostedZoneComment",
 		Input:   input,
 		Output:  (*route53.UpdateHostedZoneCommentOutput)(nil),
 		Error:   nil,
@@ -1221,7 +1221,7 @@ func (c *Client) UpdateHostedZoneCommentWithContext(ctx context.Context, input *
 func (c *Client) UpdateTrafficPolicyCommentWithContext(ctx context.Context, input *route53.UpdateTrafficPolicyCommentInput, opts ...request.Option) (*route53.UpdateTrafficPolicyCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "UpdateTrafficPolicyCommentWithContext",
+		Action:  "UpdateTrafficPolicyComment",
 		Input:   input,
 		Output:  (*route53.UpdateTrafficPolicyCommentOutput)(nil),
 		Error:   nil,
@@ -1242,7 +1242,7 @@ func (c *Client) UpdateTrafficPolicyCommentWithContext(ctx context.Context, inpu
 func (c *Client) UpdateTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.UpdateTrafficPolicyInstanceInput, opts ...request.Option) (*route53.UpdateTrafficPolicyInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
-		Action:  "UpdateTrafficPolicyInstanceWithContext",
+		Action:  "UpdateTrafficPolicyInstance",
 		Input:   input,
 		Output:  (*route53.UpdateTrafficPolicyInstanceOutput)(nil),
 		Error:   nil,

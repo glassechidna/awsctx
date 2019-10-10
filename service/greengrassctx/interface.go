@@ -121,7 +121,7 @@ var _ Greengrass = (*Client)(nil)
 func (c *Client) AssociateRoleToGroupWithContext(ctx context.Context, input *greengrass.AssociateRoleToGroupInput, opts ...request.Option) (*greengrass.AssociateRoleToGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "AssociateRoleToGroupWithContext",
+		Action:  "AssociateRoleToGroup",
 		Input:   input,
 		Output:  (*greengrass.AssociateRoleToGroupOutput)(nil),
 		Error:   nil,
@@ -142,7 +142,7 @@ func (c *Client) AssociateRoleToGroupWithContext(ctx context.Context, input *gre
 func (c *Client) AssociateServiceRoleToAccountWithContext(ctx context.Context, input *greengrass.AssociateServiceRoleToAccountInput, opts ...request.Option) (*greengrass.AssociateServiceRoleToAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "AssociateServiceRoleToAccountWithContext",
+		Action:  "AssociateServiceRoleToAccount",
 		Input:   input,
 		Output:  (*greengrass.AssociateServiceRoleToAccountOutput)(nil),
 		Error:   nil,
@@ -163,7 +163,7 @@ func (c *Client) AssociateServiceRoleToAccountWithContext(ctx context.Context, i
 func (c *Client) CreateConnectorDefinitionWithContext(ctx context.Context, input *greengrass.CreateConnectorDefinitionInput, opts ...request.Option) (*greengrass.CreateConnectorDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateConnectorDefinitionWithContext",
+		Action:  "CreateConnectorDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateConnectorDefinitionOutput)(nil),
 		Error:   nil,
@@ -184,7 +184,7 @@ func (c *Client) CreateConnectorDefinitionWithContext(ctx context.Context, input
 func (c *Client) CreateConnectorDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateConnectorDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateConnectorDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateConnectorDefinitionVersionWithContext",
+		Action:  "CreateConnectorDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateConnectorDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -205,7 +205,7 @@ func (c *Client) CreateConnectorDefinitionVersionWithContext(ctx context.Context
 func (c *Client) CreateCoreDefinitionWithContext(ctx context.Context, input *greengrass.CreateCoreDefinitionInput, opts ...request.Option) (*greengrass.CreateCoreDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateCoreDefinitionWithContext",
+		Action:  "CreateCoreDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateCoreDefinitionOutput)(nil),
 		Error:   nil,
@@ -226,7 +226,7 @@ func (c *Client) CreateCoreDefinitionWithContext(ctx context.Context, input *gre
 func (c *Client) CreateCoreDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateCoreDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateCoreDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateCoreDefinitionVersionWithContext",
+		Action:  "CreateCoreDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateCoreDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -247,7 +247,7 @@ func (c *Client) CreateCoreDefinitionVersionWithContext(ctx context.Context, inp
 func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *greengrass.CreateDeploymentInput, opts ...request.Option) (*greengrass.CreateDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateDeploymentWithContext",
+		Action:  "CreateDeployment",
 		Input:   input,
 		Output:  (*greengrass.CreateDeploymentOutput)(nil),
 		Error:   nil,
@@ -268,7 +268,7 @@ func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *greengr
 func (c *Client) CreateDeviceDefinitionWithContext(ctx context.Context, input *greengrass.CreateDeviceDefinitionInput, opts ...request.Option) (*greengrass.CreateDeviceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateDeviceDefinitionWithContext",
+		Action:  "CreateDeviceDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateDeviceDefinitionOutput)(nil),
 		Error:   nil,
@@ -289,7 +289,7 @@ func (c *Client) CreateDeviceDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) CreateDeviceDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateDeviceDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateDeviceDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateDeviceDefinitionVersionWithContext",
+		Action:  "CreateDeviceDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateDeviceDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -310,7 +310,7 @@ func (c *Client) CreateDeviceDefinitionVersionWithContext(ctx context.Context, i
 func (c *Client) CreateFunctionDefinitionWithContext(ctx context.Context, input *greengrass.CreateFunctionDefinitionInput, opts ...request.Option) (*greengrass.CreateFunctionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateFunctionDefinitionWithContext",
+		Action:  "CreateFunctionDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateFunctionDefinitionOutput)(nil),
 		Error:   nil,
@@ -331,7 +331,7 @@ func (c *Client) CreateFunctionDefinitionWithContext(ctx context.Context, input 
 func (c *Client) CreateFunctionDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateFunctionDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateFunctionDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateFunctionDefinitionVersionWithContext",
+		Action:  "CreateFunctionDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateFunctionDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -352,7 +352,7 @@ func (c *Client) CreateFunctionDefinitionVersionWithContext(ctx context.Context,
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *greengrass.CreateGroupInput, opts ...request.Option) (*greengrass.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*greengrass.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -373,7 +373,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *greengrass.C
 func (c *Client) CreateGroupCertificateAuthorityWithContext(ctx context.Context, input *greengrass.CreateGroupCertificateAuthorityInput, opts ...request.Option) (*greengrass.CreateGroupCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateGroupCertificateAuthorityWithContext",
+		Action:  "CreateGroupCertificateAuthority",
 		Input:   input,
 		Output:  (*greengrass.CreateGroupCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -394,7 +394,7 @@ func (c *Client) CreateGroupCertificateAuthorityWithContext(ctx context.Context,
 func (c *Client) CreateGroupVersionWithContext(ctx context.Context, input *greengrass.CreateGroupVersionInput, opts ...request.Option) (*greengrass.CreateGroupVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateGroupVersionWithContext",
+		Action:  "CreateGroupVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateGroupVersionOutput)(nil),
 		Error:   nil,
@@ -415,7 +415,7 @@ func (c *Client) CreateGroupVersionWithContext(ctx context.Context, input *green
 func (c *Client) CreateLoggerDefinitionWithContext(ctx context.Context, input *greengrass.CreateLoggerDefinitionInput, opts ...request.Option) (*greengrass.CreateLoggerDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateLoggerDefinitionWithContext",
+		Action:  "CreateLoggerDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateLoggerDefinitionOutput)(nil),
 		Error:   nil,
@@ -436,7 +436,7 @@ func (c *Client) CreateLoggerDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) CreateLoggerDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateLoggerDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateLoggerDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateLoggerDefinitionVersionWithContext",
+		Action:  "CreateLoggerDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateLoggerDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -457,7 +457,7 @@ func (c *Client) CreateLoggerDefinitionVersionWithContext(ctx context.Context, i
 func (c *Client) CreateResourceDefinitionWithContext(ctx context.Context, input *greengrass.CreateResourceDefinitionInput, opts ...request.Option) (*greengrass.CreateResourceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateResourceDefinitionWithContext",
+		Action:  "CreateResourceDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateResourceDefinitionOutput)(nil),
 		Error:   nil,
@@ -478,7 +478,7 @@ func (c *Client) CreateResourceDefinitionWithContext(ctx context.Context, input 
 func (c *Client) CreateResourceDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateResourceDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateResourceDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateResourceDefinitionVersionWithContext",
+		Action:  "CreateResourceDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateResourceDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -499,7 +499,7 @@ func (c *Client) CreateResourceDefinitionVersionWithContext(ctx context.Context,
 func (c *Client) CreateSoftwareUpdateJobWithContext(ctx context.Context, input *greengrass.CreateSoftwareUpdateJobInput, opts ...request.Option) (*greengrass.CreateSoftwareUpdateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateSoftwareUpdateJobWithContext",
+		Action:  "CreateSoftwareUpdateJob",
 		Input:   input,
 		Output:  (*greengrass.CreateSoftwareUpdateJobOutput)(nil),
 		Error:   nil,
@@ -520,7 +520,7 @@ func (c *Client) CreateSoftwareUpdateJobWithContext(ctx context.Context, input *
 func (c *Client) CreateSubscriptionDefinitionWithContext(ctx context.Context, input *greengrass.CreateSubscriptionDefinitionInput, opts ...request.Option) (*greengrass.CreateSubscriptionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateSubscriptionDefinitionWithContext",
+		Action:  "CreateSubscriptionDefinition",
 		Input:   input,
 		Output:  (*greengrass.CreateSubscriptionDefinitionOutput)(nil),
 		Error:   nil,
@@ -541,7 +541,7 @@ func (c *Client) CreateSubscriptionDefinitionWithContext(ctx context.Context, in
 func (c *Client) CreateSubscriptionDefinitionVersionWithContext(ctx context.Context, input *greengrass.CreateSubscriptionDefinitionVersionInput, opts ...request.Option) (*greengrass.CreateSubscriptionDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "CreateSubscriptionDefinitionVersionWithContext",
+		Action:  "CreateSubscriptionDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.CreateSubscriptionDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -562,7 +562,7 @@ func (c *Client) CreateSubscriptionDefinitionVersionWithContext(ctx context.Cont
 func (c *Client) DeleteConnectorDefinitionWithContext(ctx context.Context, input *greengrass.DeleteConnectorDefinitionInput, opts ...request.Option) (*greengrass.DeleteConnectorDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteConnectorDefinitionWithContext",
+		Action:  "DeleteConnectorDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteConnectorDefinitionOutput)(nil),
 		Error:   nil,
@@ -583,7 +583,7 @@ func (c *Client) DeleteConnectorDefinitionWithContext(ctx context.Context, input
 func (c *Client) DeleteCoreDefinitionWithContext(ctx context.Context, input *greengrass.DeleteCoreDefinitionInput, opts ...request.Option) (*greengrass.DeleteCoreDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteCoreDefinitionWithContext",
+		Action:  "DeleteCoreDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteCoreDefinitionOutput)(nil),
 		Error:   nil,
@@ -604,7 +604,7 @@ func (c *Client) DeleteCoreDefinitionWithContext(ctx context.Context, input *gre
 func (c *Client) DeleteDeviceDefinitionWithContext(ctx context.Context, input *greengrass.DeleteDeviceDefinitionInput, opts ...request.Option) (*greengrass.DeleteDeviceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteDeviceDefinitionWithContext",
+		Action:  "DeleteDeviceDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteDeviceDefinitionOutput)(nil),
 		Error:   nil,
@@ -625,7 +625,7 @@ func (c *Client) DeleteDeviceDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) DeleteFunctionDefinitionWithContext(ctx context.Context, input *greengrass.DeleteFunctionDefinitionInput, opts ...request.Option) (*greengrass.DeleteFunctionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteFunctionDefinitionWithContext",
+		Action:  "DeleteFunctionDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteFunctionDefinitionOutput)(nil),
 		Error:   nil,
@@ -646,7 +646,7 @@ func (c *Client) DeleteFunctionDefinitionWithContext(ctx context.Context, input 
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *greengrass.DeleteGroupInput, opts ...request.Option) (*greengrass.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*greengrass.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -667,7 +667,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *greengrass.D
 func (c *Client) DeleteLoggerDefinitionWithContext(ctx context.Context, input *greengrass.DeleteLoggerDefinitionInput, opts ...request.Option) (*greengrass.DeleteLoggerDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteLoggerDefinitionWithContext",
+		Action:  "DeleteLoggerDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteLoggerDefinitionOutput)(nil),
 		Error:   nil,
@@ -688,7 +688,7 @@ func (c *Client) DeleteLoggerDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) DeleteResourceDefinitionWithContext(ctx context.Context, input *greengrass.DeleteResourceDefinitionInput, opts ...request.Option) (*greengrass.DeleteResourceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteResourceDefinitionWithContext",
+		Action:  "DeleteResourceDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteResourceDefinitionOutput)(nil),
 		Error:   nil,
@@ -709,7 +709,7 @@ func (c *Client) DeleteResourceDefinitionWithContext(ctx context.Context, input 
 func (c *Client) DeleteSubscriptionDefinitionWithContext(ctx context.Context, input *greengrass.DeleteSubscriptionDefinitionInput, opts ...request.Option) (*greengrass.DeleteSubscriptionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DeleteSubscriptionDefinitionWithContext",
+		Action:  "DeleteSubscriptionDefinition",
 		Input:   input,
 		Output:  (*greengrass.DeleteSubscriptionDefinitionOutput)(nil),
 		Error:   nil,
@@ -730,7 +730,7 @@ func (c *Client) DeleteSubscriptionDefinitionWithContext(ctx context.Context, in
 func (c *Client) DisassociateRoleFromGroupWithContext(ctx context.Context, input *greengrass.DisassociateRoleFromGroupInput, opts ...request.Option) (*greengrass.DisassociateRoleFromGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DisassociateRoleFromGroupWithContext",
+		Action:  "DisassociateRoleFromGroup",
 		Input:   input,
 		Output:  (*greengrass.DisassociateRoleFromGroupOutput)(nil),
 		Error:   nil,
@@ -751,7 +751,7 @@ func (c *Client) DisassociateRoleFromGroupWithContext(ctx context.Context, input
 func (c *Client) DisassociateServiceRoleFromAccountWithContext(ctx context.Context, input *greengrass.DisassociateServiceRoleFromAccountInput, opts ...request.Option) (*greengrass.DisassociateServiceRoleFromAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "DisassociateServiceRoleFromAccountWithContext",
+		Action:  "DisassociateServiceRoleFromAccount",
 		Input:   input,
 		Output:  (*greengrass.DisassociateServiceRoleFromAccountOutput)(nil),
 		Error:   nil,
@@ -772,7 +772,7 @@ func (c *Client) DisassociateServiceRoleFromAccountWithContext(ctx context.Conte
 func (c *Client) GetAssociatedRoleWithContext(ctx context.Context, input *greengrass.GetAssociatedRoleInput, opts ...request.Option) (*greengrass.GetAssociatedRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetAssociatedRoleWithContext",
+		Action:  "GetAssociatedRole",
 		Input:   input,
 		Output:  (*greengrass.GetAssociatedRoleOutput)(nil),
 		Error:   nil,
@@ -793,7 +793,7 @@ func (c *Client) GetAssociatedRoleWithContext(ctx context.Context, input *greeng
 func (c *Client) GetBulkDeploymentStatusWithContext(ctx context.Context, input *greengrass.GetBulkDeploymentStatusInput, opts ...request.Option) (*greengrass.GetBulkDeploymentStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetBulkDeploymentStatusWithContext",
+		Action:  "GetBulkDeploymentStatus",
 		Input:   input,
 		Output:  (*greengrass.GetBulkDeploymentStatusOutput)(nil),
 		Error:   nil,
@@ -814,7 +814,7 @@ func (c *Client) GetBulkDeploymentStatusWithContext(ctx context.Context, input *
 func (c *Client) GetConnectivityInfoWithContext(ctx context.Context, input *greengrass.GetConnectivityInfoInput, opts ...request.Option) (*greengrass.GetConnectivityInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetConnectivityInfoWithContext",
+		Action:  "GetConnectivityInfo",
 		Input:   input,
 		Output:  (*greengrass.GetConnectivityInfoOutput)(nil),
 		Error:   nil,
@@ -835,7 +835,7 @@ func (c *Client) GetConnectivityInfoWithContext(ctx context.Context, input *gree
 func (c *Client) GetConnectorDefinitionWithContext(ctx context.Context, input *greengrass.GetConnectorDefinitionInput, opts ...request.Option) (*greengrass.GetConnectorDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetConnectorDefinitionWithContext",
+		Action:  "GetConnectorDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetConnectorDefinitionOutput)(nil),
 		Error:   nil,
@@ -856,7 +856,7 @@ func (c *Client) GetConnectorDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) GetConnectorDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetConnectorDefinitionVersionInput, opts ...request.Option) (*greengrass.GetConnectorDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetConnectorDefinitionVersionWithContext",
+		Action:  "GetConnectorDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetConnectorDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -877,7 +877,7 @@ func (c *Client) GetConnectorDefinitionVersionWithContext(ctx context.Context, i
 func (c *Client) GetCoreDefinitionWithContext(ctx context.Context, input *greengrass.GetCoreDefinitionInput, opts ...request.Option) (*greengrass.GetCoreDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetCoreDefinitionWithContext",
+		Action:  "GetCoreDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetCoreDefinitionOutput)(nil),
 		Error:   nil,
@@ -898,7 +898,7 @@ func (c *Client) GetCoreDefinitionWithContext(ctx context.Context, input *greeng
 func (c *Client) GetCoreDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetCoreDefinitionVersionInput, opts ...request.Option) (*greengrass.GetCoreDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetCoreDefinitionVersionWithContext",
+		Action:  "GetCoreDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetCoreDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -919,7 +919,7 @@ func (c *Client) GetCoreDefinitionVersionWithContext(ctx context.Context, input 
 func (c *Client) GetDeploymentStatusWithContext(ctx context.Context, input *greengrass.GetDeploymentStatusInput, opts ...request.Option) (*greengrass.GetDeploymentStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetDeploymentStatusWithContext",
+		Action:  "GetDeploymentStatus",
 		Input:   input,
 		Output:  (*greengrass.GetDeploymentStatusOutput)(nil),
 		Error:   nil,
@@ -940,7 +940,7 @@ func (c *Client) GetDeploymentStatusWithContext(ctx context.Context, input *gree
 func (c *Client) GetDeviceDefinitionWithContext(ctx context.Context, input *greengrass.GetDeviceDefinitionInput, opts ...request.Option) (*greengrass.GetDeviceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetDeviceDefinitionWithContext",
+		Action:  "GetDeviceDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetDeviceDefinitionOutput)(nil),
 		Error:   nil,
@@ -961,7 +961,7 @@ func (c *Client) GetDeviceDefinitionWithContext(ctx context.Context, input *gree
 func (c *Client) GetDeviceDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetDeviceDefinitionVersionInput, opts ...request.Option) (*greengrass.GetDeviceDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetDeviceDefinitionVersionWithContext",
+		Action:  "GetDeviceDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetDeviceDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -982,7 +982,7 @@ func (c *Client) GetDeviceDefinitionVersionWithContext(ctx context.Context, inpu
 func (c *Client) GetFunctionDefinitionWithContext(ctx context.Context, input *greengrass.GetFunctionDefinitionInput, opts ...request.Option) (*greengrass.GetFunctionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetFunctionDefinitionWithContext",
+		Action:  "GetFunctionDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetFunctionDefinitionOutput)(nil),
 		Error:   nil,
@@ -1003,7 +1003,7 @@ func (c *Client) GetFunctionDefinitionWithContext(ctx context.Context, input *gr
 func (c *Client) GetFunctionDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetFunctionDefinitionVersionInput, opts ...request.Option) (*greengrass.GetFunctionDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetFunctionDefinitionVersionWithContext",
+		Action:  "GetFunctionDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetFunctionDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -1024,7 +1024,7 @@ func (c *Client) GetFunctionDefinitionVersionWithContext(ctx context.Context, in
 func (c *Client) GetGroupWithContext(ctx context.Context, input *greengrass.GetGroupInput, opts ...request.Option) (*greengrass.GetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetGroupWithContext",
+		Action:  "GetGroup",
 		Input:   input,
 		Output:  (*greengrass.GetGroupOutput)(nil),
 		Error:   nil,
@@ -1045,7 +1045,7 @@ func (c *Client) GetGroupWithContext(ctx context.Context, input *greengrass.GetG
 func (c *Client) GetGroupCertificateAuthorityWithContext(ctx context.Context, input *greengrass.GetGroupCertificateAuthorityInput, opts ...request.Option) (*greengrass.GetGroupCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetGroupCertificateAuthorityWithContext",
+		Action:  "GetGroupCertificateAuthority",
 		Input:   input,
 		Output:  (*greengrass.GetGroupCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -1066,7 +1066,7 @@ func (c *Client) GetGroupCertificateAuthorityWithContext(ctx context.Context, in
 func (c *Client) GetGroupCertificateConfigurationWithContext(ctx context.Context, input *greengrass.GetGroupCertificateConfigurationInput, opts ...request.Option) (*greengrass.GetGroupCertificateConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetGroupCertificateConfigurationWithContext",
+		Action:  "GetGroupCertificateConfiguration",
 		Input:   input,
 		Output:  (*greengrass.GetGroupCertificateConfigurationOutput)(nil),
 		Error:   nil,
@@ -1087,7 +1087,7 @@ func (c *Client) GetGroupCertificateConfigurationWithContext(ctx context.Context
 func (c *Client) GetGroupVersionWithContext(ctx context.Context, input *greengrass.GetGroupVersionInput, opts ...request.Option) (*greengrass.GetGroupVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetGroupVersionWithContext",
+		Action:  "GetGroupVersion",
 		Input:   input,
 		Output:  (*greengrass.GetGroupVersionOutput)(nil),
 		Error:   nil,
@@ -1108,7 +1108,7 @@ func (c *Client) GetGroupVersionWithContext(ctx context.Context, input *greengra
 func (c *Client) GetLoggerDefinitionWithContext(ctx context.Context, input *greengrass.GetLoggerDefinitionInput, opts ...request.Option) (*greengrass.GetLoggerDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetLoggerDefinitionWithContext",
+		Action:  "GetLoggerDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetLoggerDefinitionOutput)(nil),
 		Error:   nil,
@@ -1129,7 +1129,7 @@ func (c *Client) GetLoggerDefinitionWithContext(ctx context.Context, input *gree
 func (c *Client) GetLoggerDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetLoggerDefinitionVersionInput, opts ...request.Option) (*greengrass.GetLoggerDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetLoggerDefinitionVersionWithContext",
+		Action:  "GetLoggerDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetLoggerDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -1150,7 +1150,7 @@ func (c *Client) GetLoggerDefinitionVersionWithContext(ctx context.Context, inpu
 func (c *Client) GetResourceDefinitionWithContext(ctx context.Context, input *greengrass.GetResourceDefinitionInput, opts ...request.Option) (*greengrass.GetResourceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetResourceDefinitionWithContext",
+		Action:  "GetResourceDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetResourceDefinitionOutput)(nil),
 		Error:   nil,
@@ -1171,7 +1171,7 @@ func (c *Client) GetResourceDefinitionWithContext(ctx context.Context, input *gr
 func (c *Client) GetResourceDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetResourceDefinitionVersionInput, opts ...request.Option) (*greengrass.GetResourceDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetResourceDefinitionVersionWithContext",
+		Action:  "GetResourceDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetResourceDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -1192,7 +1192,7 @@ func (c *Client) GetResourceDefinitionVersionWithContext(ctx context.Context, in
 func (c *Client) GetServiceRoleForAccountWithContext(ctx context.Context, input *greengrass.GetServiceRoleForAccountInput, opts ...request.Option) (*greengrass.GetServiceRoleForAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetServiceRoleForAccountWithContext",
+		Action:  "GetServiceRoleForAccount",
 		Input:   input,
 		Output:  (*greengrass.GetServiceRoleForAccountOutput)(nil),
 		Error:   nil,
@@ -1213,7 +1213,7 @@ func (c *Client) GetServiceRoleForAccountWithContext(ctx context.Context, input 
 func (c *Client) GetSubscriptionDefinitionWithContext(ctx context.Context, input *greengrass.GetSubscriptionDefinitionInput, opts ...request.Option) (*greengrass.GetSubscriptionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetSubscriptionDefinitionWithContext",
+		Action:  "GetSubscriptionDefinition",
 		Input:   input,
 		Output:  (*greengrass.GetSubscriptionDefinitionOutput)(nil),
 		Error:   nil,
@@ -1234,7 +1234,7 @@ func (c *Client) GetSubscriptionDefinitionWithContext(ctx context.Context, input
 func (c *Client) GetSubscriptionDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetSubscriptionDefinitionVersionInput, opts ...request.Option) (*greengrass.GetSubscriptionDefinitionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "GetSubscriptionDefinitionVersionWithContext",
+		Action:  "GetSubscriptionDefinitionVersion",
 		Input:   input,
 		Output:  (*greengrass.GetSubscriptionDefinitionVersionOutput)(nil),
 		Error:   nil,
@@ -1255,7 +1255,7 @@ func (c *Client) GetSubscriptionDefinitionVersionWithContext(ctx context.Context
 func (c *Client) ListBulkDeploymentDetailedReportsWithContext(ctx context.Context, input *greengrass.ListBulkDeploymentDetailedReportsInput, opts ...request.Option) (*greengrass.ListBulkDeploymentDetailedReportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListBulkDeploymentDetailedReportsWithContext",
+		Action:  "ListBulkDeploymentDetailedReports",
 		Input:   input,
 		Output:  (*greengrass.ListBulkDeploymentDetailedReportsOutput)(nil),
 		Error:   nil,
@@ -1276,7 +1276,7 @@ func (c *Client) ListBulkDeploymentDetailedReportsWithContext(ctx context.Contex
 func (c *Client) ListBulkDeploymentsWithContext(ctx context.Context, input *greengrass.ListBulkDeploymentsInput, opts ...request.Option) (*greengrass.ListBulkDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListBulkDeploymentsWithContext",
+		Action:  "ListBulkDeployments",
 		Input:   input,
 		Output:  (*greengrass.ListBulkDeploymentsOutput)(nil),
 		Error:   nil,
@@ -1297,7 +1297,7 @@ func (c *Client) ListBulkDeploymentsWithContext(ctx context.Context, input *gree
 func (c *Client) ListConnectorDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListConnectorDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListConnectorDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListConnectorDefinitionVersionsWithContext",
+		Action:  "ListConnectorDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListConnectorDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1318,7 +1318,7 @@ func (c *Client) ListConnectorDefinitionVersionsWithContext(ctx context.Context,
 func (c *Client) ListConnectorDefinitionsWithContext(ctx context.Context, input *greengrass.ListConnectorDefinitionsInput, opts ...request.Option) (*greengrass.ListConnectorDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListConnectorDefinitionsWithContext",
+		Action:  "ListConnectorDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListConnectorDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1339,7 +1339,7 @@ func (c *Client) ListConnectorDefinitionsWithContext(ctx context.Context, input 
 func (c *Client) ListCoreDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListCoreDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListCoreDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListCoreDefinitionVersionsWithContext",
+		Action:  "ListCoreDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListCoreDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1360,7 +1360,7 @@ func (c *Client) ListCoreDefinitionVersionsWithContext(ctx context.Context, inpu
 func (c *Client) ListCoreDefinitionsWithContext(ctx context.Context, input *greengrass.ListCoreDefinitionsInput, opts ...request.Option) (*greengrass.ListCoreDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListCoreDefinitionsWithContext",
+		Action:  "ListCoreDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListCoreDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1381,7 +1381,7 @@ func (c *Client) ListCoreDefinitionsWithContext(ctx context.Context, input *gree
 func (c *Client) ListDeploymentsWithContext(ctx context.Context, input *greengrass.ListDeploymentsInput, opts ...request.Option) (*greengrass.ListDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListDeploymentsWithContext",
+		Action:  "ListDeployments",
 		Input:   input,
 		Output:  (*greengrass.ListDeploymentsOutput)(nil),
 		Error:   nil,
@@ -1402,7 +1402,7 @@ func (c *Client) ListDeploymentsWithContext(ctx context.Context, input *greengra
 func (c *Client) ListDeviceDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListDeviceDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListDeviceDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListDeviceDefinitionVersionsWithContext",
+		Action:  "ListDeviceDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListDeviceDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1423,7 +1423,7 @@ func (c *Client) ListDeviceDefinitionVersionsWithContext(ctx context.Context, in
 func (c *Client) ListDeviceDefinitionsWithContext(ctx context.Context, input *greengrass.ListDeviceDefinitionsInput, opts ...request.Option) (*greengrass.ListDeviceDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListDeviceDefinitionsWithContext",
+		Action:  "ListDeviceDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListDeviceDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1444,7 +1444,7 @@ func (c *Client) ListDeviceDefinitionsWithContext(ctx context.Context, input *gr
 func (c *Client) ListFunctionDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListFunctionDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListFunctionDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListFunctionDefinitionVersionsWithContext",
+		Action:  "ListFunctionDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListFunctionDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1465,7 +1465,7 @@ func (c *Client) ListFunctionDefinitionVersionsWithContext(ctx context.Context, 
 func (c *Client) ListFunctionDefinitionsWithContext(ctx context.Context, input *greengrass.ListFunctionDefinitionsInput, opts ...request.Option) (*greengrass.ListFunctionDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListFunctionDefinitionsWithContext",
+		Action:  "ListFunctionDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListFunctionDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1486,7 +1486,7 @@ func (c *Client) ListFunctionDefinitionsWithContext(ctx context.Context, input *
 func (c *Client) ListGroupCertificateAuthoritiesWithContext(ctx context.Context, input *greengrass.ListGroupCertificateAuthoritiesInput, opts ...request.Option) (*greengrass.ListGroupCertificateAuthoritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListGroupCertificateAuthoritiesWithContext",
+		Action:  "ListGroupCertificateAuthorities",
 		Input:   input,
 		Output:  (*greengrass.ListGroupCertificateAuthoritiesOutput)(nil),
 		Error:   nil,
@@ -1507,7 +1507,7 @@ func (c *Client) ListGroupCertificateAuthoritiesWithContext(ctx context.Context,
 func (c *Client) ListGroupVersionsWithContext(ctx context.Context, input *greengrass.ListGroupVersionsInput, opts ...request.Option) (*greengrass.ListGroupVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListGroupVersionsWithContext",
+		Action:  "ListGroupVersions",
 		Input:   input,
 		Output:  (*greengrass.ListGroupVersionsOutput)(nil),
 		Error:   nil,
@@ -1528,7 +1528,7 @@ func (c *Client) ListGroupVersionsWithContext(ctx context.Context, input *greeng
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *greengrass.ListGroupsInput, opts ...request.Option) (*greengrass.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListGroupsWithContext",
+		Action:  "ListGroups",
 		Input:   input,
 		Output:  (*greengrass.ListGroupsOutput)(nil),
 		Error:   nil,
@@ -1549,7 +1549,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *greengrass.Li
 func (c *Client) ListLoggerDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListLoggerDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListLoggerDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListLoggerDefinitionVersionsWithContext",
+		Action:  "ListLoggerDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListLoggerDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1570,7 +1570,7 @@ func (c *Client) ListLoggerDefinitionVersionsWithContext(ctx context.Context, in
 func (c *Client) ListLoggerDefinitionsWithContext(ctx context.Context, input *greengrass.ListLoggerDefinitionsInput, opts ...request.Option) (*greengrass.ListLoggerDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListLoggerDefinitionsWithContext",
+		Action:  "ListLoggerDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListLoggerDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1591,7 +1591,7 @@ func (c *Client) ListLoggerDefinitionsWithContext(ctx context.Context, input *gr
 func (c *Client) ListResourceDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListResourceDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListResourceDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListResourceDefinitionVersionsWithContext",
+		Action:  "ListResourceDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListResourceDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1612,7 +1612,7 @@ func (c *Client) ListResourceDefinitionVersionsWithContext(ctx context.Context, 
 func (c *Client) ListResourceDefinitionsWithContext(ctx context.Context, input *greengrass.ListResourceDefinitionsInput, opts ...request.Option) (*greengrass.ListResourceDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListResourceDefinitionsWithContext",
+		Action:  "ListResourceDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListResourceDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1633,7 +1633,7 @@ func (c *Client) ListResourceDefinitionsWithContext(ctx context.Context, input *
 func (c *Client) ListSubscriptionDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListSubscriptionDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListSubscriptionDefinitionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListSubscriptionDefinitionVersionsWithContext",
+		Action:  "ListSubscriptionDefinitionVersions",
 		Input:   input,
 		Output:  (*greengrass.ListSubscriptionDefinitionVersionsOutput)(nil),
 		Error:   nil,
@@ -1654,7 +1654,7 @@ func (c *Client) ListSubscriptionDefinitionVersionsWithContext(ctx context.Conte
 func (c *Client) ListSubscriptionDefinitionsWithContext(ctx context.Context, input *greengrass.ListSubscriptionDefinitionsInput, opts ...request.Option) (*greengrass.ListSubscriptionDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListSubscriptionDefinitionsWithContext",
+		Action:  "ListSubscriptionDefinitions",
 		Input:   input,
 		Output:  (*greengrass.ListSubscriptionDefinitionsOutput)(nil),
 		Error:   nil,
@@ -1675,7 +1675,7 @@ func (c *Client) ListSubscriptionDefinitionsWithContext(ctx context.Context, inp
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *greengrass.ListTagsForResourceInput, opts ...request.Option) (*greengrass.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*greengrass.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1696,7 +1696,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *gree
 func (c *Client) ResetDeploymentsWithContext(ctx context.Context, input *greengrass.ResetDeploymentsInput, opts ...request.Option) (*greengrass.ResetDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "ResetDeploymentsWithContext",
+		Action:  "ResetDeployments",
 		Input:   input,
 		Output:  (*greengrass.ResetDeploymentsOutput)(nil),
 		Error:   nil,
@@ -1717,7 +1717,7 @@ func (c *Client) ResetDeploymentsWithContext(ctx context.Context, input *greengr
 func (c *Client) StartBulkDeploymentWithContext(ctx context.Context, input *greengrass.StartBulkDeploymentInput, opts ...request.Option) (*greengrass.StartBulkDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "StartBulkDeploymentWithContext",
+		Action:  "StartBulkDeployment",
 		Input:   input,
 		Output:  (*greengrass.StartBulkDeploymentOutput)(nil),
 		Error:   nil,
@@ -1738,7 +1738,7 @@ func (c *Client) StartBulkDeploymentWithContext(ctx context.Context, input *gree
 func (c *Client) StopBulkDeploymentWithContext(ctx context.Context, input *greengrass.StopBulkDeploymentInput, opts ...request.Option) (*greengrass.StopBulkDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "StopBulkDeploymentWithContext",
+		Action:  "StopBulkDeployment",
 		Input:   input,
 		Output:  (*greengrass.StopBulkDeploymentOutput)(nil),
 		Error:   nil,
@@ -1759,7 +1759,7 @@ func (c *Client) StopBulkDeploymentWithContext(ctx context.Context, input *green
 func (c *Client) TagResourceWithContext(ctx context.Context, input *greengrass.TagResourceInput, opts ...request.Option) (*greengrass.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*greengrass.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1780,7 +1780,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *greengrass.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *greengrass.UntagResourceInput, opts ...request.Option) (*greengrass.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*greengrass.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1801,7 +1801,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *greengrass
 func (c *Client) UpdateConnectivityInfoWithContext(ctx context.Context, input *greengrass.UpdateConnectivityInfoInput, opts ...request.Option) (*greengrass.UpdateConnectivityInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateConnectivityInfoWithContext",
+		Action:  "UpdateConnectivityInfo",
 		Input:   input,
 		Output:  (*greengrass.UpdateConnectivityInfoOutput)(nil),
 		Error:   nil,
@@ -1822,7 +1822,7 @@ func (c *Client) UpdateConnectivityInfoWithContext(ctx context.Context, input *g
 func (c *Client) UpdateConnectorDefinitionWithContext(ctx context.Context, input *greengrass.UpdateConnectorDefinitionInput, opts ...request.Option) (*greengrass.UpdateConnectorDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateConnectorDefinitionWithContext",
+		Action:  "UpdateConnectorDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateConnectorDefinitionOutput)(nil),
 		Error:   nil,
@@ -1843,7 +1843,7 @@ func (c *Client) UpdateConnectorDefinitionWithContext(ctx context.Context, input
 func (c *Client) UpdateCoreDefinitionWithContext(ctx context.Context, input *greengrass.UpdateCoreDefinitionInput, opts ...request.Option) (*greengrass.UpdateCoreDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateCoreDefinitionWithContext",
+		Action:  "UpdateCoreDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateCoreDefinitionOutput)(nil),
 		Error:   nil,
@@ -1864,7 +1864,7 @@ func (c *Client) UpdateCoreDefinitionWithContext(ctx context.Context, input *gre
 func (c *Client) UpdateDeviceDefinitionWithContext(ctx context.Context, input *greengrass.UpdateDeviceDefinitionInput, opts ...request.Option) (*greengrass.UpdateDeviceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateDeviceDefinitionWithContext",
+		Action:  "UpdateDeviceDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateDeviceDefinitionOutput)(nil),
 		Error:   nil,
@@ -1885,7 +1885,7 @@ func (c *Client) UpdateDeviceDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) UpdateFunctionDefinitionWithContext(ctx context.Context, input *greengrass.UpdateFunctionDefinitionInput, opts ...request.Option) (*greengrass.UpdateFunctionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateFunctionDefinitionWithContext",
+		Action:  "UpdateFunctionDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateFunctionDefinitionOutput)(nil),
 		Error:   nil,
@@ -1906,7 +1906,7 @@ func (c *Client) UpdateFunctionDefinitionWithContext(ctx context.Context, input 
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *greengrass.UpdateGroupInput, opts ...request.Option) (*greengrass.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateGroupWithContext",
+		Action:  "UpdateGroup",
 		Input:   input,
 		Output:  (*greengrass.UpdateGroupOutput)(nil),
 		Error:   nil,
@@ -1927,7 +1927,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *greengrass.U
 func (c *Client) UpdateGroupCertificateConfigurationWithContext(ctx context.Context, input *greengrass.UpdateGroupCertificateConfigurationInput, opts ...request.Option) (*greengrass.UpdateGroupCertificateConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateGroupCertificateConfigurationWithContext",
+		Action:  "UpdateGroupCertificateConfiguration",
 		Input:   input,
 		Output:  (*greengrass.UpdateGroupCertificateConfigurationOutput)(nil),
 		Error:   nil,
@@ -1948,7 +1948,7 @@ func (c *Client) UpdateGroupCertificateConfigurationWithContext(ctx context.Cont
 func (c *Client) UpdateLoggerDefinitionWithContext(ctx context.Context, input *greengrass.UpdateLoggerDefinitionInput, opts ...request.Option) (*greengrass.UpdateLoggerDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateLoggerDefinitionWithContext",
+		Action:  "UpdateLoggerDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateLoggerDefinitionOutput)(nil),
 		Error:   nil,
@@ -1969,7 +1969,7 @@ func (c *Client) UpdateLoggerDefinitionWithContext(ctx context.Context, input *g
 func (c *Client) UpdateResourceDefinitionWithContext(ctx context.Context, input *greengrass.UpdateResourceDefinitionInput, opts ...request.Option) (*greengrass.UpdateResourceDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateResourceDefinitionWithContext",
+		Action:  "UpdateResourceDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateResourceDefinitionOutput)(nil),
 		Error:   nil,
@@ -1990,7 +1990,7 @@ func (c *Client) UpdateResourceDefinitionWithContext(ctx context.Context, input 
 func (c *Client) UpdateSubscriptionDefinitionWithContext(ctx context.Context, input *greengrass.UpdateSubscriptionDefinitionInput, opts ...request.Option) (*greengrass.UpdateSubscriptionDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
-		Action:  "UpdateSubscriptionDefinitionWithContext",
+		Action:  "UpdateSubscriptionDefinition",
 		Input:   input,
 		Output:  (*greengrass.UpdateSubscriptionDefinitionOutput)(nil),
 		Error:   nil,

@@ -37,7 +37,7 @@ var _ RDSDataService = (*Client)(nil)
 func (c *Client) BatchExecuteStatementWithContext(ctx context.Context, input *rdsdataservice.BatchExecuteStatementInput, opts ...request.Option) (*rdsdataservice.BatchExecuteStatementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rdsdataservice",
-		Action:  "BatchExecuteStatementWithContext",
+		Action:  "BatchExecuteStatement",
 		Input:   input,
 		Output:  (*rdsdataservice.BatchExecuteStatementOutput)(nil),
 		Error:   nil,
@@ -58,7 +58,7 @@ func (c *Client) BatchExecuteStatementWithContext(ctx context.Context, input *rd
 func (c *Client) BeginTransactionWithContext(ctx context.Context, input *rdsdataservice.BeginTransactionInput, opts ...request.Option) (*rdsdataservice.BeginTransactionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rdsdataservice",
-		Action:  "BeginTransactionWithContext",
+		Action:  "BeginTransaction",
 		Input:   input,
 		Output:  (*rdsdataservice.BeginTransactionOutput)(nil),
 		Error:   nil,
@@ -79,7 +79,7 @@ func (c *Client) BeginTransactionWithContext(ctx context.Context, input *rdsdata
 func (c *Client) CommitTransactionWithContext(ctx context.Context, input *rdsdataservice.CommitTransactionInput, opts ...request.Option) (*rdsdataservice.CommitTransactionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rdsdataservice",
-		Action:  "CommitTransactionWithContext",
+		Action:  "CommitTransaction",
 		Input:   input,
 		Output:  (*rdsdataservice.CommitTransactionOutput)(nil),
 		Error:   nil,
@@ -100,7 +100,7 @@ func (c *Client) CommitTransactionWithContext(ctx context.Context, input *rdsdat
 func (c *Client) ExecuteSqlWithContext(ctx context.Context, input *rdsdataservice.ExecuteSqlInput, opts ...request.Option) (*rdsdataservice.ExecuteSqlOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rdsdataservice",
-		Action:  "ExecuteSqlWithContext",
+		Action:  "ExecuteSql",
 		Input:   input,
 		Output:  (*rdsdataservice.ExecuteSqlOutput)(nil),
 		Error:   nil,
@@ -121,7 +121,7 @@ func (c *Client) ExecuteSqlWithContext(ctx context.Context, input *rdsdataservic
 func (c *Client) ExecuteStatementWithContext(ctx context.Context, input *rdsdataservice.ExecuteStatementInput, opts ...request.Option) (*rdsdataservice.ExecuteStatementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rdsdataservice",
-		Action:  "ExecuteStatementWithContext",
+		Action:  "ExecuteStatement",
 		Input:   input,
 		Output:  (*rdsdataservice.ExecuteStatementOutput)(nil),
 		Error:   nil,
@@ -142,7 +142,7 @@ func (c *Client) ExecuteStatementWithContext(ctx context.Context, input *rdsdata
 func (c *Client) RollbackTransactionWithContext(ctx context.Context, input *rdsdataservice.RollbackTransactionInput, opts ...request.Option) (*rdsdataservice.RollbackTransactionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rdsdataservice",
-		Action:  "RollbackTransactionWithContext",
+		Action:  "RollbackTransaction",
 		Input:   input,
 		Output:  (*rdsdataservice.RollbackTransactionOutput)(nil),
 		Error:   nil,

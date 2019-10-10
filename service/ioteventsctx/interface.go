@@ -47,7 +47,7 @@ var _ IoTEvents = (*Client)(nil)
 func (c *Client) CreateDetectorModelWithContext(ctx context.Context, input *iotevents.CreateDetectorModelInput, opts ...request.Option) (*iotevents.CreateDetectorModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "CreateDetectorModelWithContext",
+		Action:  "CreateDetectorModel",
 		Input:   input,
 		Output:  (*iotevents.CreateDetectorModelOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) CreateDetectorModelWithContext(ctx context.Context, input *iote
 func (c *Client) CreateInputWithContext(ctx context.Context, input *iotevents.CreateInputInput, opts ...request.Option) (*iotevents.CreateInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "CreateInputWithContext",
+		Action:  "CreateInput",
 		Input:   input,
 		Output:  (*iotevents.CreateInputOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) CreateInputWithContext(ctx context.Context, input *iotevents.Cr
 func (c *Client) DeleteDetectorModelWithContext(ctx context.Context, input *iotevents.DeleteDetectorModelInput, opts ...request.Option) (*iotevents.DeleteDetectorModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "DeleteDetectorModelWithContext",
+		Action:  "DeleteDetectorModel",
 		Input:   input,
 		Output:  (*iotevents.DeleteDetectorModelOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) DeleteDetectorModelWithContext(ctx context.Context, input *iote
 func (c *Client) DeleteInputWithContext(ctx context.Context, input *iotevents.DeleteInputInput, opts ...request.Option) (*iotevents.DeleteInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "DeleteInputWithContext",
+		Action:  "DeleteInput",
 		Input:   input,
 		Output:  (*iotevents.DeleteInputOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) DeleteInputWithContext(ctx context.Context, input *iotevents.De
 func (c *Client) DescribeDetectorModelWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelInput, opts ...request.Option) (*iotevents.DescribeDetectorModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "DescribeDetectorModelWithContext",
+		Action:  "DescribeDetectorModel",
 		Input:   input,
 		Output:  (*iotevents.DescribeDetectorModelOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) DescribeDetectorModelWithContext(ctx context.Context, input *io
 func (c *Client) DescribeInputWithContext(ctx context.Context, input *iotevents.DescribeInputInput, opts ...request.Option) (*iotevents.DescribeInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "DescribeInputWithContext",
+		Action:  "DescribeInput",
 		Input:   input,
 		Output:  (*iotevents.DescribeInputOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DescribeInputWithContext(ctx context.Context, input *iotevents.
 func (c *Client) DescribeLoggingOptionsWithContext(ctx context.Context, input *iotevents.DescribeLoggingOptionsInput, opts ...request.Option) (*iotevents.DescribeLoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "DescribeLoggingOptionsWithContext",
+		Action:  "DescribeLoggingOptions",
 		Input:   input,
 		Output:  (*iotevents.DescribeLoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DescribeLoggingOptionsWithContext(ctx context.Context, input *i
 func (c *Client) ListDetectorModelVersionsWithContext(ctx context.Context, input *iotevents.ListDetectorModelVersionsInput, opts ...request.Option) (*iotevents.ListDetectorModelVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "ListDetectorModelVersionsWithContext",
+		Action:  "ListDetectorModelVersions",
 		Input:   input,
 		Output:  (*iotevents.ListDetectorModelVersionsOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) ListDetectorModelVersionsWithContext(ctx context.Context, input
 func (c *Client) ListDetectorModelsWithContext(ctx context.Context, input *iotevents.ListDetectorModelsInput, opts ...request.Option) (*iotevents.ListDetectorModelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "ListDetectorModelsWithContext",
+		Action:  "ListDetectorModels",
 		Input:   input,
 		Output:  (*iotevents.ListDetectorModelsOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) ListDetectorModelsWithContext(ctx context.Context, input *iotev
 func (c *Client) ListInputsWithContext(ctx context.Context, input *iotevents.ListInputsInput, opts ...request.Option) (*iotevents.ListInputsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "ListInputsWithContext",
+		Action:  "ListInputs",
 		Input:   input,
 		Output:  (*iotevents.ListInputsOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) ListInputsWithContext(ctx context.Context, input *iotevents.Lis
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iotevents.ListTagsForResourceInput, opts ...request.Option) (*iotevents.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*iotevents.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iote
 func (c *Client) PutLoggingOptionsWithContext(ctx context.Context, input *iotevents.PutLoggingOptionsInput, opts ...request.Option) (*iotevents.PutLoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "PutLoggingOptionsWithContext",
+		Action:  "PutLoggingOptions",
 		Input:   input,
 		Output:  (*iotevents.PutLoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) PutLoggingOptionsWithContext(ctx context.Context, input *ioteve
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iotevents.TagResourceInput, opts ...request.Option) (*iotevents.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*iotevents.TagResourceOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *iotevents.Ta
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotevents.UntagResourceInput, opts ...request.Option) (*iotevents.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*iotevents.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotevents.
 func (c *Client) UpdateDetectorModelWithContext(ctx context.Context, input *iotevents.UpdateDetectorModelInput, opts ...request.Option) (*iotevents.UpdateDetectorModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "UpdateDetectorModelWithContext",
+		Action:  "UpdateDetectorModel",
 		Input:   input,
 		Output:  (*iotevents.UpdateDetectorModelOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) UpdateDetectorModelWithContext(ctx context.Context, input *iote
 func (c *Client) UpdateInputWithContext(ctx context.Context, input *iotevents.UpdateInputInput, opts ...request.Option) (*iotevents.UpdateInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
-		Action:  "UpdateInputWithContext",
+		Action:  "UpdateInput",
 		Input:   input,
 		Output:  (*iotevents.UpdateInputOutput)(nil),
 		Error:   nil,

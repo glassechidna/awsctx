@@ -40,7 +40,7 @@ var _ TranscribeService = (*Client)(nil)
 func (c *Client) CreateVocabularyWithContext(ctx context.Context, input *transcribeservice.CreateVocabularyInput, opts ...request.Option) (*transcribeservice.CreateVocabularyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "CreateVocabularyWithContext",
+		Action:  "CreateVocabulary",
 		Input:   input,
 		Output:  (*transcribeservice.CreateVocabularyOutput)(nil),
 		Error:   nil,
@@ -61,7 +61,7 @@ func (c *Client) CreateVocabularyWithContext(ctx context.Context, input *transcr
 func (c *Client) DeleteTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.DeleteTranscriptionJobInput, opts ...request.Option) (*transcribeservice.DeleteTranscriptionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "DeleteTranscriptionJobWithContext",
+		Action:  "DeleteTranscriptionJob",
 		Input:   input,
 		Output:  (*transcribeservice.DeleteTranscriptionJobOutput)(nil),
 		Error:   nil,
@@ -82,7 +82,7 @@ func (c *Client) DeleteTranscriptionJobWithContext(ctx context.Context, input *t
 func (c *Client) DeleteVocabularyWithContext(ctx context.Context, input *transcribeservice.DeleteVocabularyInput, opts ...request.Option) (*transcribeservice.DeleteVocabularyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "DeleteVocabularyWithContext",
+		Action:  "DeleteVocabulary",
 		Input:   input,
 		Output:  (*transcribeservice.DeleteVocabularyOutput)(nil),
 		Error:   nil,
@@ -103,7 +103,7 @@ func (c *Client) DeleteVocabularyWithContext(ctx context.Context, input *transcr
 func (c *Client) GetTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.GetTranscriptionJobInput, opts ...request.Option) (*transcribeservice.GetTranscriptionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "GetTranscriptionJobWithContext",
+		Action:  "GetTranscriptionJob",
 		Input:   input,
 		Output:  (*transcribeservice.GetTranscriptionJobOutput)(nil),
 		Error:   nil,
@@ -124,7 +124,7 @@ func (c *Client) GetTranscriptionJobWithContext(ctx context.Context, input *tran
 func (c *Client) GetVocabularyWithContext(ctx context.Context, input *transcribeservice.GetVocabularyInput, opts ...request.Option) (*transcribeservice.GetVocabularyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "GetVocabularyWithContext",
+		Action:  "GetVocabulary",
 		Input:   input,
 		Output:  (*transcribeservice.GetVocabularyOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) GetVocabularyWithContext(ctx context.Context, input *transcribe
 func (c *Client) ListTranscriptionJobsWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, opts ...request.Option) (*transcribeservice.ListTranscriptionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "ListTranscriptionJobsWithContext",
+		Action:  "ListTranscriptionJobs",
 		Input:   input,
 		Output:  (*transcribeservice.ListTranscriptionJobsOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) ListTranscriptionJobsWithContext(ctx context.Context, input *tr
 func (c *Client) ListVocabulariesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, opts ...request.Option) (*transcribeservice.ListVocabulariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "ListVocabulariesWithContext",
+		Action:  "ListVocabularies",
 		Input:   input,
 		Output:  (*transcribeservice.ListVocabulariesOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) ListVocabulariesWithContext(ctx context.Context, input *transcr
 func (c *Client) StartTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartTranscriptionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "StartTranscriptionJobWithContext",
+		Action:  "StartTranscriptionJob",
 		Input:   input,
 		Output:  (*transcribeservice.StartTranscriptionJobOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) StartTranscriptionJobWithContext(ctx context.Context, input *tr
 func (c *Client) UpdateVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateVocabularyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
-		Action:  "UpdateVocabularyWithContext",
+		Action:  "UpdateVocabulary",
 		Input:   input,
 		Output:  (*transcribeservice.UpdateVocabularyOutput)(nil),
 		Error:   nil,

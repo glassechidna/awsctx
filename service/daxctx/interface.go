@@ -52,7 +52,7 @@ var _ DAX = (*Client)(nil)
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *dax.CreateClusterInput, opts ...request.Option) (*dax.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*dax.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -73,7 +73,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *dax.Create
 func (c *Client) CreateParameterGroupWithContext(ctx context.Context, input *dax.CreateParameterGroupInput, opts ...request.Option) (*dax.CreateParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "CreateParameterGroupWithContext",
+		Action:  "CreateParameterGroup",
 		Input:   input,
 		Output:  (*dax.CreateParameterGroupOutput)(nil),
 		Error:   nil,
@@ -94,7 +94,7 @@ func (c *Client) CreateParameterGroupWithContext(ctx context.Context, input *dax
 func (c *Client) CreateSubnetGroupWithContext(ctx context.Context, input *dax.CreateSubnetGroupInput, opts ...request.Option) (*dax.CreateSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "CreateSubnetGroupWithContext",
+		Action:  "CreateSubnetGroup",
 		Input:   input,
 		Output:  (*dax.CreateSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -115,7 +115,7 @@ func (c *Client) CreateSubnetGroupWithContext(ctx context.Context, input *dax.Cr
 func (c *Client) DecreaseReplicationFactorWithContext(ctx context.Context, input *dax.DecreaseReplicationFactorInput, opts ...request.Option) (*dax.DecreaseReplicationFactorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DecreaseReplicationFactorWithContext",
+		Action:  "DecreaseReplicationFactor",
 		Input:   input,
 		Output:  (*dax.DecreaseReplicationFactorOutput)(nil),
 		Error:   nil,
@@ -136,7 +136,7 @@ func (c *Client) DecreaseReplicationFactorWithContext(ctx context.Context, input
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *dax.DeleteClusterInput, opts ...request.Option) (*dax.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DeleteClusterWithContext",
+		Action:  "DeleteCluster",
 		Input:   input,
 		Output:  (*dax.DeleteClusterOutput)(nil),
 		Error:   nil,
@@ -157,7 +157,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *dax.Delete
 func (c *Client) DeleteParameterGroupWithContext(ctx context.Context, input *dax.DeleteParameterGroupInput, opts ...request.Option) (*dax.DeleteParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DeleteParameterGroupWithContext",
+		Action:  "DeleteParameterGroup",
 		Input:   input,
 		Output:  (*dax.DeleteParameterGroupOutput)(nil),
 		Error:   nil,
@@ -178,7 +178,7 @@ func (c *Client) DeleteParameterGroupWithContext(ctx context.Context, input *dax
 func (c *Client) DeleteSubnetGroupWithContext(ctx context.Context, input *dax.DeleteSubnetGroupInput, opts ...request.Option) (*dax.DeleteSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DeleteSubnetGroupWithContext",
+		Action:  "DeleteSubnetGroup",
 		Input:   input,
 		Output:  (*dax.DeleteSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -199,7 +199,7 @@ func (c *Client) DeleteSubnetGroupWithContext(ctx context.Context, input *dax.De
 func (c *Client) DescribeClustersWithContext(ctx context.Context, input *dax.DescribeClustersInput, opts ...request.Option) (*dax.DescribeClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DescribeClustersWithContext",
+		Action:  "DescribeClusters",
 		Input:   input,
 		Output:  (*dax.DescribeClustersOutput)(nil),
 		Error:   nil,
@@ -220,7 +220,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, input *dax.Des
 func (c *Client) DescribeDefaultParametersWithContext(ctx context.Context, input *dax.DescribeDefaultParametersInput, opts ...request.Option) (*dax.DescribeDefaultParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DescribeDefaultParametersWithContext",
+		Action:  "DescribeDefaultParameters",
 		Input:   input,
 		Output:  (*dax.DescribeDefaultParametersOutput)(nil),
 		Error:   nil,
@@ -241,7 +241,7 @@ func (c *Client) DescribeDefaultParametersWithContext(ctx context.Context, input
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *dax.DescribeEventsInput, opts ...request.Option) (*dax.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*dax.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -262,7 +262,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *dax.Descr
 func (c *Client) DescribeParameterGroupsWithContext(ctx context.Context, input *dax.DescribeParameterGroupsInput, opts ...request.Option) (*dax.DescribeParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DescribeParameterGroupsWithContext",
+		Action:  "DescribeParameterGroups",
 		Input:   input,
 		Output:  (*dax.DescribeParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -283,7 +283,7 @@ func (c *Client) DescribeParameterGroupsWithContext(ctx context.Context, input *
 func (c *Client) DescribeParametersWithContext(ctx context.Context, input *dax.DescribeParametersInput, opts ...request.Option) (*dax.DescribeParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DescribeParametersWithContext",
+		Action:  "DescribeParameters",
 		Input:   input,
 		Output:  (*dax.DescribeParametersOutput)(nil),
 		Error:   nil,
@@ -304,7 +304,7 @@ func (c *Client) DescribeParametersWithContext(ctx context.Context, input *dax.D
 func (c *Client) DescribeSubnetGroupsWithContext(ctx context.Context, input *dax.DescribeSubnetGroupsInput, opts ...request.Option) (*dax.DescribeSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "DescribeSubnetGroupsWithContext",
+		Action:  "DescribeSubnetGroups",
 		Input:   input,
 		Output:  (*dax.DescribeSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -325,7 +325,7 @@ func (c *Client) DescribeSubnetGroupsWithContext(ctx context.Context, input *dax
 func (c *Client) IncreaseReplicationFactorWithContext(ctx context.Context, input *dax.IncreaseReplicationFactorInput, opts ...request.Option) (*dax.IncreaseReplicationFactorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "IncreaseReplicationFactorWithContext",
+		Action:  "IncreaseReplicationFactor",
 		Input:   input,
 		Output:  (*dax.IncreaseReplicationFactorOutput)(nil),
 		Error:   nil,
@@ -346,7 +346,7 @@ func (c *Client) IncreaseReplicationFactorWithContext(ctx context.Context, input
 func (c *Client) ListTagsWithContext(ctx context.Context, input *dax.ListTagsInput, opts ...request.Option) (*dax.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*dax.ListTagsOutput)(nil),
 		Error:   nil,
@@ -367,7 +367,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *dax.ListTagsInp
 func (c *Client) RebootNodeWithContext(ctx context.Context, input *dax.RebootNodeInput, opts ...request.Option) (*dax.RebootNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "RebootNodeWithContext",
+		Action:  "RebootNode",
 		Input:   input,
 		Output:  (*dax.RebootNodeOutput)(nil),
 		Error:   nil,
@@ -388,7 +388,7 @@ func (c *Client) RebootNodeWithContext(ctx context.Context, input *dax.RebootNod
 func (c *Client) TagResourceWithContext(ctx context.Context, input *dax.TagResourceInput, opts ...request.Option) (*dax.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*dax.TagResourceOutput)(nil),
 		Error:   nil,
@@ -409,7 +409,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *dax.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *dax.UntagResourceInput, opts ...request.Option) (*dax.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*dax.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -430,7 +430,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *dax.UntagR
 func (c *Client) UpdateClusterWithContext(ctx context.Context, input *dax.UpdateClusterInput, opts ...request.Option) (*dax.UpdateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "UpdateClusterWithContext",
+		Action:  "UpdateCluster",
 		Input:   input,
 		Output:  (*dax.UpdateClusterOutput)(nil),
 		Error:   nil,
@@ -451,7 +451,7 @@ func (c *Client) UpdateClusterWithContext(ctx context.Context, input *dax.Update
 func (c *Client) UpdateParameterGroupWithContext(ctx context.Context, input *dax.UpdateParameterGroupInput, opts ...request.Option) (*dax.UpdateParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "UpdateParameterGroupWithContext",
+		Action:  "UpdateParameterGroup",
 		Input:   input,
 		Output:  (*dax.UpdateParameterGroupOutput)(nil),
 		Error:   nil,
@@ -472,7 +472,7 @@ func (c *Client) UpdateParameterGroupWithContext(ctx context.Context, input *dax
 func (c *Client) UpdateSubnetGroupWithContext(ctx context.Context, input *dax.UpdateSubnetGroupInput, opts ...request.Option) (*dax.UpdateSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dax",
-		Action:  "UpdateSubnetGroupWithContext",
+		Action:  "UpdateSubnetGroup",
 		Input:   input,
 		Output:  (*dax.UpdateSubnetGroupOutput)(nil),
 		Error:   nil,

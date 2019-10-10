@@ -66,7 +66,7 @@ var _ IoTThingsGraph = (*Client)(nil)
 func (c *Client) AssociateEntityToThingWithContext(ctx context.Context, input *iotthingsgraph.AssociateEntityToThingInput, opts ...request.Option) (*iotthingsgraph.AssociateEntityToThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "AssociateEntityToThingWithContext",
+		Action:  "AssociateEntityToThing",
 		Input:   input,
 		Output:  (*iotthingsgraph.AssociateEntityToThingOutput)(nil),
 		Error:   nil,
@@ -87,7 +87,7 @@ func (c *Client) AssociateEntityToThingWithContext(ctx context.Context, input *i
 func (c *Client) CreateFlowTemplateWithContext(ctx context.Context, input *iotthingsgraph.CreateFlowTemplateInput, opts ...request.Option) (*iotthingsgraph.CreateFlowTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "CreateFlowTemplateWithContext",
+		Action:  "CreateFlowTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.CreateFlowTemplateOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) CreateFlowTemplateWithContext(ctx context.Context, input *iotth
 func (c *Client) CreateSystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.CreateSystemInstanceInput, opts ...request.Option) (*iotthingsgraph.CreateSystemInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "CreateSystemInstanceWithContext",
+		Action:  "CreateSystemInstance",
 		Input:   input,
 		Output:  (*iotthingsgraph.CreateSystemInstanceOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) CreateSystemInstanceWithContext(ctx context.Context, input *iot
 func (c *Client) CreateSystemTemplateWithContext(ctx context.Context, input *iotthingsgraph.CreateSystemTemplateInput, opts ...request.Option) (*iotthingsgraph.CreateSystemTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "CreateSystemTemplateWithContext",
+		Action:  "CreateSystemTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.CreateSystemTemplateOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) CreateSystemTemplateWithContext(ctx context.Context, input *iot
 func (c *Client) DeleteFlowTemplateWithContext(ctx context.Context, input *iotthingsgraph.DeleteFlowTemplateInput, opts ...request.Option) (*iotthingsgraph.DeleteFlowTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeleteFlowTemplateWithContext",
+		Action:  "DeleteFlowTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeleteFlowTemplateOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) DeleteFlowTemplateWithContext(ctx context.Context, input *iotth
 func (c *Client) DeleteNamespaceWithContext(ctx context.Context, input *iotthingsgraph.DeleteNamespaceInput, opts ...request.Option) (*iotthingsgraph.DeleteNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeleteNamespaceWithContext",
+		Action:  "DeleteNamespace",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeleteNamespaceOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) DeleteNamespaceWithContext(ctx context.Context, input *iotthing
 func (c *Client) DeleteSystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.DeleteSystemInstanceInput, opts ...request.Option) (*iotthingsgraph.DeleteSystemInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeleteSystemInstanceWithContext",
+		Action:  "DeleteSystemInstance",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeleteSystemInstanceOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) DeleteSystemInstanceWithContext(ctx context.Context, input *iot
 func (c *Client) DeleteSystemTemplateWithContext(ctx context.Context, input *iotthingsgraph.DeleteSystemTemplateInput, opts ...request.Option) (*iotthingsgraph.DeleteSystemTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeleteSystemTemplateWithContext",
+		Action:  "DeleteSystemTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeleteSystemTemplateOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) DeleteSystemTemplateWithContext(ctx context.Context, input *iot
 func (c *Client) DeploySystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.DeploySystemInstanceInput, opts ...request.Option) (*iotthingsgraph.DeploySystemInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeploySystemInstanceWithContext",
+		Action:  "DeploySystemInstance",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeploySystemInstanceOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) DeploySystemInstanceWithContext(ctx context.Context, input *iot
 func (c *Client) DeprecateFlowTemplateWithContext(ctx context.Context, input *iotthingsgraph.DeprecateFlowTemplateInput, opts ...request.Option) (*iotthingsgraph.DeprecateFlowTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeprecateFlowTemplateWithContext",
+		Action:  "DeprecateFlowTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeprecateFlowTemplateOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) DeprecateFlowTemplateWithContext(ctx context.Context, input *io
 func (c *Client) DeprecateSystemTemplateWithContext(ctx context.Context, input *iotthingsgraph.DeprecateSystemTemplateInput, opts ...request.Option) (*iotthingsgraph.DeprecateSystemTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DeprecateSystemTemplateWithContext",
+		Action:  "DeprecateSystemTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.DeprecateSystemTemplateOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) DeprecateSystemTemplateWithContext(ctx context.Context, input *
 func (c *Client) DescribeNamespaceWithContext(ctx context.Context, input *iotthingsgraph.DescribeNamespaceInput, opts ...request.Option) (*iotthingsgraph.DescribeNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DescribeNamespaceWithContext",
+		Action:  "DescribeNamespace",
 		Input:   input,
 		Output:  (*iotthingsgraph.DescribeNamespaceOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) DescribeNamespaceWithContext(ctx context.Context, input *iotthi
 func (c *Client) DissociateEntityFromThingWithContext(ctx context.Context, input *iotthingsgraph.DissociateEntityFromThingInput, opts ...request.Option) (*iotthingsgraph.DissociateEntityFromThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "DissociateEntityFromThingWithContext",
+		Action:  "DissociateEntityFromThing",
 		Input:   input,
 		Output:  (*iotthingsgraph.DissociateEntityFromThingOutput)(nil),
 		Error:   nil,
@@ -339,7 +339,7 @@ func (c *Client) DissociateEntityFromThingWithContext(ctx context.Context, input
 func (c *Client) GetEntitiesWithContext(ctx context.Context, input *iotthingsgraph.GetEntitiesInput, opts ...request.Option) (*iotthingsgraph.GetEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetEntitiesWithContext",
+		Action:  "GetEntities",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetEntitiesOutput)(nil),
 		Error:   nil,
@@ -360,7 +360,7 @@ func (c *Client) GetEntitiesWithContext(ctx context.Context, input *iotthingsgra
 func (c *Client) GetFlowTemplateWithContext(ctx context.Context, input *iotthingsgraph.GetFlowTemplateInput, opts ...request.Option) (*iotthingsgraph.GetFlowTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetFlowTemplateWithContext",
+		Action:  "GetFlowTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetFlowTemplateOutput)(nil),
 		Error:   nil,
@@ -381,7 +381,7 @@ func (c *Client) GetFlowTemplateWithContext(ctx context.Context, input *iotthing
 func (c *Client) GetFlowTemplateRevisionsWithContext(ctx context.Context, input *iotthingsgraph.GetFlowTemplateRevisionsInput, opts ...request.Option) (*iotthingsgraph.GetFlowTemplateRevisionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetFlowTemplateRevisionsWithContext",
+		Action:  "GetFlowTemplateRevisions",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetFlowTemplateRevisionsOutput)(nil),
 		Error:   nil,
@@ -402,7 +402,7 @@ func (c *Client) GetFlowTemplateRevisionsWithContext(ctx context.Context, input 
 func (c *Client) GetNamespaceDeletionStatusWithContext(ctx context.Context, input *iotthingsgraph.GetNamespaceDeletionStatusInput, opts ...request.Option) (*iotthingsgraph.GetNamespaceDeletionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetNamespaceDeletionStatusWithContext",
+		Action:  "GetNamespaceDeletionStatus",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetNamespaceDeletionStatusOutput)(nil),
 		Error:   nil,
@@ -423,7 +423,7 @@ func (c *Client) GetNamespaceDeletionStatusWithContext(ctx context.Context, inpu
 func (c *Client) GetSystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.GetSystemInstanceInput, opts ...request.Option) (*iotthingsgraph.GetSystemInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetSystemInstanceWithContext",
+		Action:  "GetSystemInstance",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetSystemInstanceOutput)(nil),
 		Error:   nil,
@@ -444,7 +444,7 @@ func (c *Client) GetSystemInstanceWithContext(ctx context.Context, input *iotthi
 func (c *Client) GetSystemTemplateWithContext(ctx context.Context, input *iotthingsgraph.GetSystemTemplateInput, opts ...request.Option) (*iotthingsgraph.GetSystemTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetSystemTemplateWithContext",
+		Action:  "GetSystemTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetSystemTemplateOutput)(nil),
 		Error:   nil,
@@ -465,7 +465,7 @@ func (c *Client) GetSystemTemplateWithContext(ctx context.Context, input *iotthi
 func (c *Client) GetSystemTemplateRevisionsWithContext(ctx context.Context, input *iotthingsgraph.GetSystemTemplateRevisionsInput, opts ...request.Option) (*iotthingsgraph.GetSystemTemplateRevisionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetSystemTemplateRevisionsWithContext",
+		Action:  "GetSystemTemplateRevisions",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetSystemTemplateRevisionsOutput)(nil),
 		Error:   nil,
@@ -486,7 +486,7 @@ func (c *Client) GetSystemTemplateRevisionsWithContext(ctx context.Context, inpu
 func (c *Client) GetUploadStatusWithContext(ctx context.Context, input *iotthingsgraph.GetUploadStatusInput, opts ...request.Option) (*iotthingsgraph.GetUploadStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "GetUploadStatusWithContext",
+		Action:  "GetUploadStatus",
 		Input:   input,
 		Output:  (*iotthingsgraph.GetUploadStatusOutput)(nil),
 		Error:   nil,
@@ -507,7 +507,7 @@ func (c *Client) GetUploadStatusWithContext(ctx context.Context, input *iotthing
 func (c *Client) ListFlowExecutionMessagesWithContext(ctx context.Context, input *iotthingsgraph.ListFlowExecutionMessagesInput, opts ...request.Option) (*iotthingsgraph.ListFlowExecutionMessagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "ListFlowExecutionMessagesWithContext",
+		Action:  "ListFlowExecutionMessages",
 		Input:   input,
 		Output:  (*iotthingsgraph.ListFlowExecutionMessagesOutput)(nil),
 		Error:   nil,
@@ -528,7 +528,7 @@ func (c *Client) ListFlowExecutionMessagesWithContext(ctx context.Context, input
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iotthingsgraph.ListTagsForResourceInput, opts ...request.Option) (*iotthingsgraph.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*iotthingsgraph.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -549,7 +549,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iott
 func (c *Client) SearchEntitiesWithContext(ctx context.Context, input *iotthingsgraph.SearchEntitiesInput, opts ...request.Option) (*iotthingsgraph.SearchEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "SearchEntitiesWithContext",
+		Action:  "SearchEntities",
 		Input:   input,
 		Output:  (*iotthingsgraph.SearchEntitiesOutput)(nil),
 		Error:   nil,
@@ -570,7 +570,7 @@ func (c *Client) SearchEntitiesWithContext(ctx context.Context, input *iotthings
 func (c *Client) SearchFlowExecutionsWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowExecutionsInput, opts ...request.Option) (*iotthingsgraph.SearchFlowExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "SearchFlowExecutionsWithContext",
+		Action:  "SearchFlowExecutions",
 		Input:   input,
 		Output:  (*iotthingsgraph.SearchFlowExecutionsOutput)(nil),
 		Error:   nil,
@@ -591,7 +591,7 @@ func (c *Client) SearchFlowExecutionsWithContext(ctx context.Context, input *iot
 func (c *Client) SearchFlowTemplatesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowTemplatesInput, opts ...request.Option) (*iotthingsgraph.SearchFlowTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "SearchFlowTemplatesWithContext",
+		Action:  "SearchFlowTemplates",
 		Input:   input,
 		Output:  (*iotthingsgraph.SearchFlowTemplatesOutput)(nil),
 		Error:   nil,
@@ -612,7 +612,7 @@ func (c *Client) SearchFlowTemplatesWithContext(ctx context.Context, input *iott
 func (c *Client) SearchSystemInstancesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemInstancesInput, opts ...request.Option) (*iotthingsgraph.SearchSystemInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "SearchSystemInstancesWithContext",
+		Action:  "SearchSystemInstances",
 		Input:   input,
 		Output:  (*iotthingsgraph.SearchSystemInstancesOutput)(nil),
 		Error:   nil,
@@ -633,7 +633,7 @@ func (c *Client) SearchSystemInstancesWithContext(ctx context.Context, input *io
 func (c *Client) SearchSystemTemplatesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemTemplatesInput, opts ...request.Option) (*iotthingsgraph.SearchSystemTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "SearchSystemTemplatesWithContext",
+		Action:  "SearchSystemTemplates",
 		Input:   input,
 		Output:  (*iotthingsgraph.SearchSystemTemplatesOutput)(nil),
 		Error:   nil,
@@ -654,7 +654,7 @@ func (c *Client) SearchSystemTemplatesWithContext(ctx context.Context, input *io
 func (c *Client) SearchThingsWithContext(ctx context.Context, input *iotthingsgraph.SearchThingsInput, opts ...request.Option) (*iotthingsgraph.SearchThingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "SearchThingsWithContext",
+		Action:  "SearchThings",
 		Input:   input,
 		Output:  (*iotthingsgraph.SearchThingsOutput)(nil),
 		Error:   nil,
@@ -675,7 +675,7 @@ func (c *Client) SearchThingsWithContext(ctx context.Context, input *iotthingsgr
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iotthingsgraph.TagResourceInput, opts ...request.Option) (*iotthingsgraph.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*iotthingsgraph.TagResourceOutput)(nil),
 		Error:   nil,
@@ -696,7 +696,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *iotthingsgra
 func (c *Client) UndeploySystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.UndeploySystemInstanceInput, opts ...request.Option) (*iotthingsgraph.UndeploySystemInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "UndeploySystemInstanceWithContext",
+		Action:  "UndeploySystemInstance",
 		Input:   input,
 		Output:  (*iotthingsgraph.UndeploySystemInstanceOutput)(nil),
 		Error:   nil,
@@ -717,7 +717,7 @@ func (c *Client) UndeploySystemInstanceWithContext(ctx context.Context, input *i
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotthingsgraph.UntagResourceInput, opts ...request.Option) (*iotthingsgraph.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*iotthingsgraph.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -738,7 +738,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotthingsg
 func (c *Client) UpdateFlowTemplateWithContext(ctx context.Context, input *iotthingsgraph.UpdateFlowTemplateInput, opts ...request.Option) (*iotthingsgraph.UpdateFlowTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "UpdateFlowTemplateWithContext",
+		Action:  "UpdateFlowTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.UpdateFlowTemplateOutput)(nil),
 		Error:   nil,
@@ -759,7 +759,7 @@ func (c *Client) UpdateFlowTemplateWithContext(ctx context.Context, input *iotth
 func (c *Client) UpdateSystemTemplateWithContext(ctx context.Context, input *iotthingsgraph.UpdateSystemTemplateInput, opts ...request.Option) (*iotthingsgraph.UpdateSystemTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "UpdateSystemTemplateWithContext",
+		Action:  "UpdateSystemTemplate",
 		Input:   input,
 		Output:  (*iotthingsgraph.UpdateSystemTemplateOutput)(nil),
 		Error:   nil,
@@ -780,7 +780,7 @@ func (c *Client) UpdateSystemTemplateWithContext(ctx context.Context, input *iot
 func (c *Client) UploadEntityDefinitionsWithContext(ctx context.Context, input *iotthingsgraph.UploadEntityDefinitionsInput, opts ...request.Option) (*iotthingsgraph.UploadEntityDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
-		Action:  "UploadEntityDefinitionsWithContext",
+		Action:  "UploadEntityDefinitions",
 		Input:   input,
 		Output:  (*iotthingsgraph.UploadEntityDefinitionsOutput)(nil),
 		Error:   nil,

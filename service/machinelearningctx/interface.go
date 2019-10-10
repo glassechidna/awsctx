@@ -59,7 +59,7 @@ var _ MachineLearning = (*Client)(nil)
 func (c *Client) AddTagsWithContext(ctx context.Context, input *machinelearning.AddTagsInput, opts ...request.Option) (*machinelearning.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*machinelearning.AddTagsOutput)(nil),
 		Error:   nil,
@@ -80,7 +80,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *machinelearning.
 func (c *Client) CreateBatchPredictionWithContext(ctx context.Context, input *machinelearning.CreateBatchPredictionInput, opts ...request.Option) (*machinelearning.CreateBatchPredictionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateBatchPredictionWithContext",
+		Action:  "CreateBatchPrediction",
 		Input:   input,
 		Output:  (*machinelearning.CreateBatchPredictionOutput)(nil),
 		Error:   nil,
@@ -101,7 +101,7 @@ func (c *Client) CreateBatchPredictionWithContext(ctx context.Context, input *ma
 func (c *Client) CreateDataSourceFromRDSWithContext(ctx context.Context, input *machinelearning.CreateDataSourceFromRDSInput, opts ...request.Option) (*machinelearning.CreateDataSourceFromRDSOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateDataSourceFromRDSWithContext",
+		Action:  "CreateDataSourceFromRDS",
 		Input:   input,
 		Output:  (*machinelearning.CreateDataSourceFromRDSOutput)(nil),
 		Error:   nil,
@@ -122,7 +122,7 @@ func (c *Client) CreateDataSourceFromRDSWithContext(ctx context.Context, input *
 func (c *Client) CreateDataSourceFromRedshiftWithContext(ctx context.Context, input *machinelearning.CreateDataSourceFromRedshiftInput, opts ...request.Option) (*machinelearning.CreateDataSourceFromRedshiftOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateDataSourceFromRedshiftWithContext",
+		Action:  "CreateDataSourceFromRedshift",
 		Input:   input,
 		Output:  (*machinelearning.CreateDataSourceFromRedshiftOutput)(nil),
 		Error:   nil,
@@ -143,7 +143,7 @@ func (c *Client) CreateDataSourceFromRedshiftWithContext(ctx context.Context, in
 func (c *Client) CreateDataSourceFromS3WithContext(ctx context.Context, input *machinelearning.CreateDataSourceFromS3Input, opts ...request.Option) (*machinelearning.CreateDataSourceFromS3Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateDataSourceFromS3WithContext",
+		Action:  "CreateDataSourceFromS3",
 		Input:   input,
 		Output:  (*machinelearning.CreateDataSourceFromS3Output)(nil),
 		Error:   nil,
@@ -164,7 +164,7 @@ func (c *Client) CreateDataSourceFromS3WithContext(ctx context.Context, input *m
 func (c *Client) CreateEvaluationWithContext(ctx context.Context, input *machinelearning.CreateEvaluationInput, opts ...request.Option) (*machinelearning.CreateEvaluationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateEvaluationWithContext",
+		Action:  "CreateEvaluation",
 		Input:   input,
 		Output:  (*machinelearning.CreateEvaluationOutput)(nil),
 		Error:   nil,
@@ -185,7 +185,7 @@ func (c *Client) CreateEvaluationWithContext(ctx context.Context, input *machine
 func (c *Client) CreateMLModelWithContext(ctx context.Context, input *machinelearning.CreateMLModelInput, opts ...request.Option) (*machinelearning.CreateMLModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateMLModelWithContext",
+		Action:  "CreateMLModel",
 		Input:   input,
 		Output:  (*machinelearning.CreateMLModelOutput)(nil),
 		Error:   nil,
@@ -206,7 +206,7 @@ func (c *Client) CreateMLModelWithContext(ctx context.Context, input *machinelea
 func (c *Client) CreateRealtimeEndpointWithContext(ctx context.Context, input *machinelearning.CreateRealtimeEndpointInput, opts ...request.Option) (*machinelearning.CreateRealtimeEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "CreateRealtimeEndpointWithContext",
+		Action:  "CreateRealtimeEndpoint",
 		Input:   input,
 		Output:  (*machinelearning.CreateRealtimeEndpointOutput)(nil),
 		Error:   nil,
@@ -227,7 +227,7 @@ func (c *Client) CreateRealtimeEndpointWithContext(ctx context.Context, input *m
 func (c *Client) DeleteBatchPredictionWithContext(ctx context.Context, input *machinelearning.DeleteBatchPredictionInput, opts ...request.Option) (*machinelearning.DeleteBatchPredictionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DeleteBatchPredictionWithContext",
+		Action:  "DeleteBatchPrediction",
 		Input:   input,
 		Output:  (*machinelearning.DeleteBatchPredictionOutput)(nil),
 		Error:   nil,
@@ -248,7 +248,7 @@ func (c *Client) DeleteBatchPredictionWithContext(ctx context.Context, input *ma
 func (c *Client) DeleteDataSourceWithContext(ctx context.Context, input *machinelearning.DeleteDataSourceInput, opts ...request.Option) (*machinelearning.DeleteDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DeleteDataSourceWithContext",
+		Action:  "DeleteDataSource",
 		Input:   input,
 		Output:  (*machinelearning.DeleteDataSourceOutput)(nil),
 		Error:   nil,
@@ -269,7 +269,7 @@ func (c *Client) DeleteDataSourceWithContext(ctx context.Context, input *machine
 func (c *Client) DeleteEvaluationWithContext(ctx context.Context, input *machinelearning.DeleteEvaluationInput, opts ...request.Option) (*machinelearning.DeleteEvaluationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DeleteEvaluationWithContext",
+		Action:  "DeleteEvaluation",
 		Input:   input,
 		Output:  (*machinelearning.DeleteEvaluationOutput)(nil),
 		Error:   nil,
@@ -290,7 +290,7 @@ func (c *Client) DeleteEvaluationWithContext(ctx context.Context, input *machine
 func (c *Client) DeleteMLModelWithContext(ctx context.Context, input *machinelearning.DeleteMLModelInput, opts ...request.Option) (*machinelearning.DeleteMLModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DeleteMLModelWithContext",
+		Action:  "DeleteMLModel",
 		Input:   input,
 		Output:  (*machinelearning.DeleteMLModelOutput)(nil),
 		Error:   nil,
@@ -311,7 +311,7 @@ func (c *Client) DeleteMLModelWithContext(ctx context.Context, input *machinelea
 func (c *Client) DeleteRealtimeEndpointWithContext(ctx context.Context, input *machinelearning.DeleteRealtimeEndpointInput, opts ...request.Option) (*machinelearning.DeleteRealtimeEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DeleteRealtimeEndpointWithContext",
+		Action:  "DeleteRealtimeEndpoint",
 		Input:   input,
 		Output:  (*machinelearning.DeleteRealtimeEndpointOutput)(nil),
 		Error:   nil,
@@ -332,7 +332,7 @@ func (c *Client) DeleteRealtimeEndpointWithContext(ctx context.Context, input *m
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *machinelearning.DeleteTagsInput, opts ...request.Option) (*machinelearning.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*machinelearning.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -353,7 +353,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *machinelearni
 func (c *Client) DescribeBatchPredictionsWithContext(ctx context.Context, input *machinelearning.DescribeBatchPredictionsInput, opts ...request.Option) (*machinelearning.DescribeBatchPredictionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DescribeBatchPredictionsWithContext",
+		Action:  "DescribeBatchPredictions",
 		Input:   input,
 		Output:  (*machinelearning.DescribeBatchPredictionsOutput)(nil),
 		Error:   nil,
@@ -374,7 +374,7 @@ func (c *Client) DescribeBatchPredictionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeDataSourcesWithContext(ctx context.Context, input *machinelearning.DescribeDataSourcesInput, opts ...request.Option) (*machinelearning.DescribeDataSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DescribeDataSourcesWithContext",
+		Action:  "DescribeDataSources",
 		Input:   input,
 		Output:  (*machinelearning.DescribeDataSourcesOutput)(nil),
 		Error:   nil,
@@ -395,7 +395,7 @@ func (c *Client) DescribeDataSourcesWithContext(ctx context.Context, input *mach
 func (c *Client) DescribeEvaluationsWithContext(ctx context.Context, input *machinelearning.DescribeEvaluationsInput, opts ...request.Option) (*machinelearning.DescribeEvaluationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DescribeEvaluationsWithContext",
+		Action:  "DescribeEvaluations",
 		Input:   input,
 		Output:  (*machinelearning.DescribeEvaluationsOutput)(nil),
 		Error:   nil,
@@ -416,7 +416,7 @@ func (c *Client) DescribeEvaluationsWithContext(ctx context.Context, input *mach
 func (c *Client) DescribeMLModelsWithContext(ctx context.Context, input *machinelearning.DescribeMLModelsInput, opts ...request.Option) (*machinelearning.DescribeMLModelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DescribeMLModelsWithContext",
+		Action:  "DescribeMLModels",
 		Input:   input,
 		Output:  (*machinelearning.DescribeMLModelsOutput)(nil),
 		Error:   nil,
@@ -437,7 +437,7 @@ func (c *Client) DescribeMLModelsWithContext(ctx context.Context, input *machine
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *machinelearning.DescribeTagsInput, opts ...request.Option) (*machinelearning.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*machinelearning.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -458,7 +458,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *machinelear
 func (c *Client) GetBatchPredictionWithContext(ctx context.Context, input *machinelearning.GetBatchPredictionInput, opts ...request.Option) (*machinelearning.GetBatchPredictionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "GetBatchPredictionWithContext",
+		Action:  "GetBatchPrediction",
 		Input:   input,
 		Output:  (*machinelearning.GetBatchPredictionOutput)(nil),
 		Error:   nil,
@@ -479,7 +479,7 @@ func (c *Client) GetBatchPredictionWithContext(ctx context.Context, input *machi
 func (c *Client) GetDataSourceWithContext(ctx context.Context, input *machinelearning.GetDataSourceInput, opts ...request.Option) (*machinelearning.GetDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "GetDataSourceWithContext",
+		Action:  "GetDataSource",
 		Input:   input,
 		Output:  (*machinelearning.GetDataSourceOutput)(nil),
 		Error:   nil,
@@ -500,7 +500,7 @@ func (c *Client) GetDataSourceWithContext(ctx context.Context, input *machinelea
 func (c *Client) GetEvaluationWithContext(ctx context.Context, input *machinelearning.GetEvaluationInput, opts ...request.Option) (*machinelearning.GetEvaluationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "GetEvaluationWithContext",
+		Action:  "GetEvaluation",
 		Input:   input,
 		Output:  (*machinelearning.GetEvaluationOutput)(nil),
 		Error:   nil,
@@ -521,7 +521,7 @@ func (c *Client) GetEvaluationWithContext(ctx context.Context, input *machinelea
 func (c *Client) GetMLModelWithContext(ctx context.Context, input *machinelearning.GetMLModelInput, opts ...request.Option) (*machinelearning.GetMLModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "GetMLModelWithContext",
+		Action:  "GetMLModel",
 		Input:   input,
 		Output:  (*machinelearning.GetMLModelOutput)(nil),
 		Error:   nil,
@@ -542,7 +542,7 @@ func (c *Client) GetMLModelWithContext(ctx context.Context, input *machinelearni
 func (c *Client) PredictWithContext(ctx context.Context, input *machinelearning.PredictInput, opts ...request.Option) (*machinelearning.PredictOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "PredictWithContext",
+		Action:  "Predict",
 		Input:   input,
 		Output:  (*machinelearning.PredictOutput)(nil),
 		Error:   nil,
@@ -563,7 +563,7 @@ func (c *Client) PredictWithContext(ctx context.Context, input *machinelearning.
 func (c *Client) UpdateBatchPredictionWithContext(ctx context.Context, input *machinelearning.UpdateBatchPredictionInput, opts ...request.Option) (*machinelearning.UpdateBatchPredictionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "UpdateBatchPredictionWithContext",
+		Action:  "UpdateBatchPrediction",
 		Input:   input,
 		Output:  (*machinelearning.UpdateBatchPredictionOutput)(nil),
 		Error:   nil,
@@ -584,7 +584,7 @@ func (c *Client) UpdateBatchPredictionWithContext(ctx context.Context, input *ma
 func (c *Client) UpdateDataSourceWithContext(ctx context.Context, input *machinelearning.UpdateDataSourceInput, opts ...request.Option) (*machinelearning.UpdateDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "UpdateDataSourceWithContext",
+		Action:  "UpdateDataSource",
 		Input:   input,
 		Output:  (*machinelearning.UpdateDataSourceOutput)(nil),
 		Error:   nil,
@@ -605,7 +605,7 @@ func (c *Client) UpdateDataSourceWithContext(ctx context.Context, input *machine
 func (c *Client) UpdateEvaluationWithContext(ctx context.Context, input *machinelearning.UpdateEvaluationInput, opts ...request.Option) (*machinelearning.UpdateEvaluationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "UpdateEvaluationWithContext",
+		Action:  "UpdateEvaluation",
 		Input:   input,
 		Output:  (*machinelearning.UpdateEvaluationOutput)(nil),
 		Error:   nil,
@@ -626,7 +626,7 @@ func (c *Client) UpdateEvaluationWithContext(ctx context.Context, input *machine
 func (c *Client) UpdateMLModelWithContext(ctx context.Context, input *machinelearning.UpdateMLModelInput, opts ...request.Option) (*machinelearning.UpdateMLModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
-		Action:  "UpdateMLModelWithContext",
+		Action:  "UpdateMLModel",
 		Input:   input,
 		Output:  (*machinelearning.UpdateMLModelOutput)(nil),
 		Error:   nil,

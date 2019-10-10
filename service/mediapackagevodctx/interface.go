@@ -43,7 +43,7 @@ var _ MediaPackageVod = (*Client)(nil)
 func (c *Client) CreateAssetWithContext(ctx context.Context, input *mediapackagevod.CreateAssetInput, opts ...request.Option) (*mediapackagevod.CreateAssetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "CreateAssetWithContext",
+		Action:  "CreateAsset",
 		Input:   input,
 		Output:  (*mediapackagevod.CreateAssetOutput)(nil),
 		Error:   nil,
@@ -64,7 +64,7 @@ func (c *Client) CreateAssetWithContext(ctx context.Context, input *mediapackage
 func (c *Client) CreatePackagingConfigurationWithContext(ctx context.Context, input *mediapackagevod.CreatePackagingConfigurationInput, opts ...request.Option) (*mediapackagevod.CreatePackagingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "CreatePackagingConfigurationWithContext",
+		Action:  "CreatePackagingConfiguration",
 		Input:   input,
 		Output:  (*mediapackagevod.CreatePackagingConfigurationOutput)(nil),
 		Error:   nil,
@@ -85,7 +85,7 @@ func (c *Client) CreatePackagingConfigurationWithContext(ctx context.Context, in
 func (c *Client) CreatePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.CreatePackagingGroupInput, opts ...request.Option) (*mediapackagevod.CreatePackagingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "CreatePackagingGroupWithContext",
+		Action:  "CreatePackagingGroup",
 		Input:   input,
 		Output:  (*mediapackagevod.CreatePackagingGroupOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) CreatePackagingGroupWithContext(ctx context.Context, input *med
 func (c *Client) DeleteAssetWithContext(ctx context.Context, input *mediapackagevod.DeleteAssetInput, opts ...request.Option) (*mediapackagevod.DeleteAssetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "DeleteAssetWithContext",
+		Action:  "DeleteAsset",
 		Input:   input,
 		Output:  (*mediapackagevod.DeleteAssetOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) DeleteAssetWithContext(ctx context.Context, input *mediapackage
 func (c *Client) DeletePackagingConfigurationWithContext(ctx context.Context, input *mediapackagevod.DeletePackagingConfigurationInput, opts ...request.Option) (*mediapackagevod.DeletePackagingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "DeletePackagingConfigurationWithContext",
+		Action:  "DeletePackagingConfiguration",
 		Input:   input,
 		Output:  (*mediapackagevod.DeletePackagingConfigurationOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) DeletePackagingConfigurationWithContext(ctx context.Context, in
 func (c *Client) DeletePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.DeletePackagingGroupInput, opts ...request.Option) (*mediapackagevod.DeletePackagingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "DeletePackagingGroupWithContext",
+		Action:  "DeletePackagingGroup",
 		Input:   input,
 		Output:  (*mediapackagevod.DeletePackagingGroupOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) DeletePackagingGroupWithContext(ctx context.Context, input *med
 func (c *Client) DescribeAssetWithContext(ctx context.Context, input *mediapackagevod.DescribeAssetInput, opts ...request.Option) (*mediapackagevod.DescribeAssetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "DescribeAssetWithContext",
+		Action:  "DescribeAsset",
 		Input:   input,
 		Output:  (*mediapackagevod.DescribeAssetOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) DescribeAssetWithContext(ctx context.Context, input *mediapacka
 func (c *Client) DescribePackagingConfigurationWithContext(ctx context.Context, input *mediapackagevod.DescribePackagingConfigurationInput, opts ...request.Option) (*mediapackagevod.DescribePackagingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "DescribePackagingConfigurationWithContext",
+		Action:  "DescribePackagingConfiguration",
 		Input:   input,
 		Output:  (*mediapackagevod.DescribePackagingConfigurationOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) DescribePackagingConfigurationWithContext(ctx context.Context, 
 func (c *Client) DescribePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.DescribePackagingGroupInput, opts ...request.Option) (*mediapackagevod.DescribePackagingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "DescribePackagingGroupWithContext",
+		Action:  "DescribePackagingGroup",
 		Input:   input,
 		Output:  (*mediapackagevod.DescribePackagingGroupOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) DescribePackagingGroupWithContext(ctx context.Context, input *m
 func (c *Client) ListAssetsWithContext(ctx context.Context, input *mediapackagevod.ListAssetsInput, opts ...request.Option) (*mediapackagevod.ListAssetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "ListAssetsWithContext",
+		Action:  "ListAssets",
 		Input:   input,
 		Output:  (*mediapackagevod.ListAssetsOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) ListAssetsWithContext(ctx context.Context, input *mediapackagev
 func (c *Client) ListPackagingConfigurationsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingConfigurationsInput, opts ...request.Option) (*mediapackagevod.ListPackagingConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "ListPackagingConfigurationsWithContext",
+		Action:  "ListPackagingConfigurations",
 		Input:   input,
 		Output:  (*mediapackagevod.ListPackagingConfigurationsOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) ListPackagingConfigurationsWithContext(ctx context.Context, inp
 func (c *Client) ListPackagingGroupsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, opts ...request.Option) (*mediapackagevod.ListPackagingGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
-		Action:  "ListPackagingGroupsWithContext",
+		Action:  "ListPackagingGroups",
 		Input:   input,
 		Output:  (*mediapackagevod.ListPackagingGroupsOutput)(nil),
 		Error:   nil,

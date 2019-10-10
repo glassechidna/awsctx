@@ -62,7 +62,7 @@ var _ CloudWatchEvents = (*Client)(nil)
 func (c *Client) ActivateEventSourceWithContext(ctx context.Context, input *cloudwatchevents.ActivateEventSourceInput, opts ...request.Option) (*cloudwatchevents.ActivateEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ActivateEventSourceWithContext",
+		Action:  "ActivateEventSource",
 		Input:   input,
 		Output:  (*cloudwatchevents.ActivateEventSourceOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) ActivateEventSourceWithContext(ctx context.Context, input *clou
 func (c *Client) CreateEventBusWithContext(ctx context.Context, input *cloudwatchevents.CreateEventBusInput, opts ...request.Option) (*cloudwatchevents.CreateEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "CreateEventBusWithContext",
+		Action:  "CreateEventBus",
 		Input:   input,
 		Output:  (*cloudwatchevents.CreateEventBusOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) CreateEventBusWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) CreatePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.CreatePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.CreatePartnerEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "CreatePartnerEventSourceWithContext",
+		Action:  "CreatePartnerEventSource",
 		Input:   input,
 		Output:  (*cloudwatchevents.CreatePartnerEventSourceOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) CreatePartnerEventSourceWithContext(ctx context.Context, input 
 func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DeactivateEventSourceInput, opts ...request.Option) (*cloudwatchevents.DeactivateEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DeactivateEventSourceWithContext",
+		Action:  "DeactivateEventSource",
 		Input:   input,
 		Output:  (*cloudwatchevents.DeactivateEventSourceOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *cl
 func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *cloudwatchevents.DeleteEventBusInput, opts ...request.Option) (*cloudwatchevents.DeleteEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DeleteEventBusWithContext",
+		Action:  "DeleteEventBus",
 		Input:   input,
 		Output:  (*cloudwatchevents.DeleteEventBusOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) DeletePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DeletePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.DeletePartnerEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DeletePartnerEventSourceWithContext",
+		Action:  "DeletePartnerEventSource",
 		Input:   input,
 		Output:  (*cloudwatchevents.DeletePartnerEventSourceOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) DeletePartnerEventSourceWithContext(ctx context.Context, input 
 func (c *Client) DeleteRuleWithContext(ctx context.Context, input *cloudwatchevents.DeleteRuleInput, opts ...request.Option) (*cloudwatchevents.DeleteRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DeleteRuleWithContext",
+		Action:  "DeleteRule",
 		Input:   input,
 		Output:  (*cloudwatchevents.DeleteRuleOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *cloudwatcheve
 func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventBusInput, opts ...request.Option) (*cloudwatchevents.DescribeEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DescribeEventBusWithContext",
+		Action:  "DescribeEventBus",
 		Input:   input,
 		Output:  (*cloudwatchevents.DescribeEventBusOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *cloudwa
 func (c *Client) DescribeEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventSourceInput, opts ...request.Option) (*cloudwatchevents.DescribeEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DescribeEventSourceWithContext",
+		Action:  "DescribeEventSource",
 		Input:   input,
 		Output:  (*cloudwatchevents.DescribeEventSourceOutput)(nil),
 		Error:   nil,
@@ -251,7 +251,7 @@ func (c *Client) DescribeEventSourceWithContext(ctx context.Context, input *clou
 func (c *Client) DescribePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DescribePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.DescribePartnerEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DescribePartnerEventSourceWithContext",
+		Action:  "DescribePartnerEventSource",
 		Input:   input,
 		Output:  (*cloudwatchevents.DescribePartnerEventSourceOutput)(nil),
 		Error:   nil,
@@ -272,7 +272,7 @@ func (c *Client) DescribePartnerEventSourceWithContext(ctx context.Context, inpu
 func (c *Client) DescribeRuleWithContext(ctx context.Context, input *cloudwatchevents.DescribeRuleInput, opts ...request.Option) (*cloudwatchevents.DescribeRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DescribeRuleWithContext",
+		Action:  "DescribeRule",
 		Input:   input,
 		Output:  (*cloudwatchevents.DescribeRuleOutput)(nil),
 		Error:   nil,
@@ -293,7 +293,7 @@ func (c *Client) DescribeRuleWithContext(ctx context.Context, input *cloudwatche
 func (c *Client) DisableRuleWithContext(ctx context.Context, input *cloudwatchevents.DisableRuleInput, opts ...request.Option) (*cloudwatchevents.DisableRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "DisableRuleWithContext",
+		Action:  "DisableRule",
 		Input:   input,
 		Output:  (*cloudwatchevents.DisableRuleOutput)(nil),
 		Error:   nil,
@@ -314,7 +314,7 @@ func (c *Client) DisableRuleWithContext(ctx context.Context, input *cloudwatchev
 func (c *Client) EnableRuleWithContext(ctx context.Context, input *cloudwatchevents.EnableRuleInput, opts ...request.Option) (*cloudwatchevents.EnableRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "EnableRuleWithContext",
+		Action:  "EnableRule",
 		Input:   input,
 		Output:  (*cloudwatchevents.EnableRuleOutput)(nil),
 		Error:   nil,
@@ -335,7 +335,7 @@ func (c *Client) EnableRuleWithContext(ctx context.Context, input *cloudwatcheve
 func (c *Client) ListEventBusesWithContext(ctx context.Context, input *cloudwatchevents.ListEventBusesInput, opts ...request.Option) (*cloudwatchevents.ListEventBusesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListEventBusesWithContext",
+		Action:  "ListEventBuses",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListEventBusesOutput)(nil),
 		Error:   nil,
@@ -356,7 +356,7 @@ func (c *Client) ListEventBusesWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) ListEventSourcesWithContext(ctx context.Context, input *cloudwatchevents.ListEventSourcesInput, opts ...request.Option) (*cloudwatchevents.ListEventSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListEventSourcesWithContext",
+		Action:  "ListEventSources",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListEventSourcesOutput)(nil),
 		Error:   nil,
@@ -377,7 +377,7 @@ func (c *Client) ListEventSourcesWithContext(ctx context.Context, input *cloudwa
 func (c *Client) ListPartnerEventSourceAccountsWithContext(ctx context.Context, input *cloudwatchevents.ListPartnerEventSourceAccountsInput, opts ...request.Option) (*cloudwatchevents.ListPartnerEventSourceAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListPartnerEventSourceAccountsWithContext",
+		Action:  "ListPartnerEventSourceAccounts",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListPartnerEventSourceAccountsOutput)(nil),
 		Error:   nil,
@@ -398,7 +398,7 @@ func (c *Client) ListPartnerEventSourceAccountsWithContext(ctx context.Context, 
 func (c *Client) ListPartnerEventSourcesWithContext(ctx context.Context, input *cloudwatchevents.ListPartnerEventSourcesInput, opts ...request.Option) (*cloudwatchevents.ListPartnerEventSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListPartnerEventSourcesWithContext",
+		Action:  "ListPartnerEventSources",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListPartnerEventSourcesOutput)(nil),
 		Error:   nil,
@@ -419,7 +419,7 @@ func (c *Client) ListPartnerEventSourcesWithContext(ctx context.Context, input *
 func (c *Client) ListRuleNamesByTargetWithContext(ctx context.Context, input *cloudwatchevents.ListRuleNamesByTargetInput, opts ...request.Option) (*cloudwatchevents.ListRuleNamesByTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListRuleNamesByTargetWithContext",
+		Action:  "ListRuleNamesByTarget",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListRuleNamesByTargetOutput)(nil),
 		Error:   nil,
@@ -440,7 +440,7 @@ func (c *Client) ListRuleNamesByTargetWithContext(ctx context.Context, input *cl
 func (c *Client) ListRulesWithContext(ctx context.Context, input *cloudwatchevents.ListRulesInput, opts ...request.Option) (*cloudwatchevents.ListRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListRulesWithContext",
+		Action:  "ListRules",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListRulesOutput)(nil),
 		Error:   nil,
@@ -461,7 +461,7 @@ func (c *Client) ListRulesWithContext(ctx context.Context, input *cloudwatcheven
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cloudwatchevents.ListTagsForResourceInput, opts ...request.Option) (*cloudwatchevents.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -482,7 +482,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 func (c *Client) ListTargetsByRuleWithContext(ctx context.Context, input *cloudwatchevents.ListTargetsByRuleInput, opts ...request.Option) (*cloudwatchevents.ListTargetsByRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "ListTargetsByRuleWithContext",
+		Action:  "ListTargetsByRule",
 		Input:   input,
 		Output:  (*cloudwatchevents.ListTargetsByRuleOutput)(nil),
 		Error:   nil,
@@ -503,7 +503,7 @@ func (c *Client) ListTargetsByRuleWithContext(ctx context.Context, input *cloudw
 func (c *Client) PutEventsWithContext(ctx context.Context, input *cloudwatchevents.PutEventsInput, opts ...request.Option) (*cloudwatchevents.PutEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "PutEventsWithContext",
+		Action:  "PutEvents",
 		Input:   input,
 		Output:  (*cloudwatchevents.PutEventsOutput)(nil),
 		Error:   nil,
@@ -524,7 +524,7 @@ func (c *Client) PutEventsWithContext(ctx context.Context, input *cloudwatcheven
 func (c *Client) PutPartnerEventsWithContext(ctx context.Context, input *cloudwatchevents.PutPartnerEventsInput, opts ...request.Option) (*cloudwatchevents.PutPartnerEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "PutPartnerEventsWithContext",
+		Action:  "PutPartnerEvents",
 		Input:   input,
 		Output:  (*cloudwatchevents.PutPartnerEventsOutput)(nil),
 		Error:   nil,
@@ -545,7 +545,7 @@ func (c *Client) PutPartnerEventsWithContext(ctx context.Context, input *cloudwa
 func (c *Client) PutPermissionWithContext(ctx context.Context, input *cloudwatchevents.PutPermissionInput, opts ...request.Option) (*cloudwatchevents.PutPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "PutPermissionWithContext",
+		Action:  "PutPermission",
 		Input:   input,
 		Output:  (*cloudwatchevents.PutPermissionOutput)(nil),
 		Error:   nil,
@@ -566,7 +566,7 @@ func (c *Client) PutPermissionWithContext(ctx context.Context, input *cloudwatch
 func (c *Client) PutRuleWithContext(ctx context.Context, input *cloudwatchevents.PutRuleInput, opts ...request.Option) (*cloudwatchevents.PutRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "PutRuleWithContext",
+		Action:  "PutRule",
 		Input:   input,
 		Output:  (*cloudwatchevents.PutRuleOutput)(nil),
 		Error:   nil,
@@ -587,7 +587,7 @@ func (c *Client) PutRuleWithContext(ctx context.Context, input *cloudwatchevents
 func (c *Client) PutTargetsWithContext(ctx context.Context, input *cloudwatchevents.PutTargetsInput, opts ...request.Option) (*cloudwatchevents.PutTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "PutTargetsWithContext",
+		Action:  "PutTargets",
 		Input:   input,
 		Output:  (*cloudwatchevents.PutTargetsOutput)(nil),
 		Error:   nil,
@@ -608,7 +608,7 @@ func (c *Client) PutTargetsWithContext(ctx context.Context, input *cloudwatcheve
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *cloudwatchevents.RemovePermissionInput, opts ...request.Option) (*cloudwatchevents.RemovePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "RemovePermissionWithContext",
+		Action:  "RemovePermission",
 		Input:   input,
 		Output:  (*cloudwatchevents.RemovePermissionOutput)(nil),
 		Error:   nil,
@@ -629,7 +629,7 @@ func (c *Client) RemovePermissionWithContext(ctx context.Context, input *cloudwa
 func (c *Client) RemoveTargetsWithContext(ctx context.Context, input *cloudwatchevents.RemoveTargetsInput, opts ...request.Option) (*cloudwatchevents.RemoveTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "RemoveTargetsWithContext",
+		Action:  "RemoveTargets",
 		Input:   input,
 		Output:  (*cloudwatchevents.RemoveTargetsOutput)(nil),
 		Error:   nil,
@@ -650,7 +650,7 @@ func (c *Client) RemoveTargetsWithContext(ctx context.Context, input *cloudwatch
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatchevents.TagResourceInput, opts ...request.Option) (*cloudwatchevents.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*cloudwatchevents.TagResourceOutput)(nil),
 		Error:   nil,
@@ -671,7 +671,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatchev
 func (c *Client) TestEventPatternWithContext(ctx context.Context, input *cloudwatchevents.TestEventPatternInput, opts ...request.Option) (*cloudwatchevents.TestEventPatternOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "TestEventPatternWithContext",
+		Action:  "TestEventPattern",
 		Input:   input,
 		Output:  (*cloudwatchevents.TestEventPatternOutput)(nil),
 		Error:   nil,
@@ -692,7 +692,7 @@ func (c *Client) TestEventPatternWithContext(ctx context.Context, input *cloudwa
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudwatchevents.UntagResourceInput, opts ...request.Option) (*cloudwatchevents.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*cloudwatchevents.UntagResourceOutput)(nil),
 		Error:   nil,

@@ -59,7 +59,7 @@ var _ Kinesis = (*Client)(nil)
 func (c *Client) AddTagsToStreamWithContext(ctx context.Context, input *kinesis.AddTagsToStreamInput, opts ...request.Option) (*kinesis.AddTagsToStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "AddTagsToStreamWithContext",
+		Action:  "AddTagsToStream",
 		Input:   input,
 		Output:  (*kinesis.AddTagsToStreamOutput)(nil),
 		Error:   nil,
@@ -80,7 +80,7 @@ func (c *Client) AddTagsToStreamWithContext(ctx context.Context, input *kinesis.
 func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesis.CreateStreamInput, opts ...request.Option) (*kinesis.CreateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "CreateStreamWithContext",
+		Action:  "CreateStream",
 		Input:   input,
 		Output:  (*kinesis.CreateStreamOutput)(nil),
 		Error:   nil,
@@ -101,7 +101,7 @@ func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesis.Cre
 func (c *Client) DecreaseStreamRetentionPeriodWithContext(ctx context.Context, input *kinesis.DecreaseStreamRetentionPeriodInput, opts ...request.Option) (*kinesis.DecreaseStreamRetentionPeriodOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DecreaseStreamRetentionPeriodWithContext",
+		Action:  "DecreaseStreamRetentionPeriod",
 		Input:   input,
 		Output:  (*kinesis.DecreaseStreamRetentionPeriodOutput)(nil),
 		Error:   nil,
@@ -122,7 +122,7 @@ func (c *Client) DecreaseStreamRetentionPeriodWithContext(ctx context.Context, i
 func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesis.DeleteStreamInput, opts ...request.Option) (*kinesis.DeleteStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DeleteStreamWithContext",
+		Action:  "DeleteStream",
 		Input:   input,
 		Output:  (*kinesis.DeleteStreamOutput)(nil),
 		Error:   nil,
@@ -143,7 +143,7 @@ func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesis.Del
 func (c *Client) DeregisterStreamConsumerWithContext(ctx context.Context, input *kinesis.DeregisterStreamConsumerInput, opts ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DeregisterStreamConsumerWithContext",
+		Action:  "DeregisterStreamConsumer",
 		Input:   input,
 		Output:  (*kinesis.DeregisterStreamConsumerOutput)(nil),
 		Error:   nil,
@@ -164,7 +164,7 @@ func (c *Client) DeregisterStreamConsumerWithContext(ctx context.Context, input 
 func (c *Client) DescribeLimitsWithContext(ctx context.Context, input *kinesis.DescribeLimitsInput, opts ...request.Option) (*kinesis.DescribeLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DescribeLimitsWithContext",
+		Action:  "DescribeLimits",
 		Input:   input,
 		Output:  (*kinesis.DescribeLimitsOutput)(nil),
 		Error:   nil,
@@ -185,7 +185,7 @@ func (c *Client) DescribeLimitsWithContext(ctx context.Context, input *kinesis.D
 func (c *Client) DescribeStreamWithContext(ctx context.Context, input *kinesis.DescribeStreamInput, opts ...request.Option) (*kinesis.DescribeStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DescribeStreamWithContext",
+		Action:  "DescribeStream",
 		Input:   input,
 		Output:  (*kinesis.DescribeStreamOutput)(nil),
 		Error:   nil,
@@ -206,7 +206,7 @@ func (c *Client) DescribeStreamWithContext(ctx context.Context, input *kinesis.D
 func (c *Client) DescribeStreamConsumerWithContext(ctx context.Context, input *kinesis.DescribeStreamConsumerInput, opts ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DescribeStreamConsumerWithContext",
+		Action:  "DescribeStreamConsumer",
 		Input:   input,
 		Output:  (*kinesis.DescribeStreamConsumerOutput)(nil),
 		Error:   nil,
@@ -227,7 +227,7 @@ func (c *Client) DescribeStreamConsumerWithContext(ctx context.Context, input *k
 func (c *Client) DescribeStreamSummaryWithContext(ctx context.Context, input *kinesis.DescribeStreamSummaryInput, opts ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DescribeStreamSummaryWithContext",
+		Action:  "DescribeStreamSummary",
 		Input:   input,
 		Output:  (*kinesis.DescribeStreamSummaryOutput)(nil),
 		Error:   nil,
@@ -248,7 +248,7 @@ func (c *Client) DescribeStreamSummaryWithContext(ctx context.Context, input *ki
 func (c *Client) DisableEnhancedMonitoringWithContext(ctx context.Context, input *kinesis.DisableEnhancedMonitoringInput, opts ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "DisableEnhancedMonitoringWithContext",
+		Action:  "DisableEnhancedMonitoring",
 		Input:   input,
 		Output:  (*kinesis.EnhancedMonitoringOutput)(nil),
 		Error:   nil,
@@ -269,7 +269,7 @@ func (c *Client) DisableEnhancedMonitoringWithContext(ctx context.Context, input
 func (c *Client) EnableEnhancedMonitoringWithContext(ctx context.Context, input *kinesis.EnableEnhancedMonitoringInput, opts ...request.Option) (*kinesis.EnhancedMonitoringOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "EnableEnhancedMonitoringWithContext",
+		Action:  "EnableEnhancedMonitoring",
 		Input:   input,
 		Output:  (*kinesis.EnhancedMonitoringOutput)(nil),
 		Error:   nil,
@@ -290,7 +290,7 @@ func (c *Client) EnableEnhancedMonitoringWithContext(ctx context.Context, input 
 func (c *Client) GetRecordsWithContext(ctx context.Context, input *kinesis.GetRecordsInput, opts ...request.Option) (*kinesis.GetRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "GetRecordsWithContext",
+		Action:  "GetRecords",
 		Input:   input,
 		Output:  (*kinesis.GetRecordsOutput)(nil),
 		Error:   nil,
@@ -311,7 +311,7 @@ func (c *Client) GetRecordsWithContext(ctx context.Context, input *kinesis.GetRe
 func (c *Client) GetShardIteratorWithContext(ctx context.Context, input *kinesis.GetShardIteratorInput, opts ...request.Option) (*kinesis.GetShardIteratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "GetShardIteratorWithContext",
+		Action:  "GetShardIterator",
 		Input:   input,
 		Output:  (*kinesis.GetShardIteratorOutput)(nil),
 		Error:   nil,
@@ -332,7 +332,7 @@ func (c *Client) GetShardIteratorWithContext(ctx context.Context, input *kinesis
 func (c *Client) IncreaseStreamRetentionPeriodWithContext(ctx context.Context, input *kinesis.IncreaseStreamRetentionPeriodInput, opts ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "IncreaseStreamRetentionPeriodWithContext",
+		Action:  "IncreaseStreamRetentionPeriod",
 		Input:   input,
 		Output:  (*kinesis.IncreaseStreamRetentionPeriodOutput)(nil),
 		Error:   nil,
@@ -353,7 +353,7 @@ func (c *Client) IncreaseStreamRetentionPeriodWithContext(ctx context.Context, i
 func (c *Client) ListShardsWithContext(ctx context.Context, input *kinesis.ListShardsInput, opts ...request.Option) (*kinesis.ListShardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "ListShardsWithContext",
+		Action:  "ListShards",
 		Input:   input,
 		Output:  (*kinesis.ListShardsOutput)(nil),
 		Error:   nil,
@@ -374,7 +374,7 @@ func (c *Client) ListShardsWithContext(ctx context.Context, input *kinesis.ListS
 func (c *Client) ListStreamConsumersWithContext(ctx context.Context, input *kinesis.ListStreamConsumersInput, opts ...request.Option) (*kinesis.ListStreamConsumersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "ListStreamConsumersWithContext",
+		Action:  "ListStreamConsumers",
 		Input:   input,
 		Output:  (*kinesis.ListStreamConsumersOutput)(nil),
 		Error:   nil,
@@ -395,7 +395,7 @@ func (c *Client) ListStreamConsumersWithContext(ctx context.Context, input *kine
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesis.ListStreamsInput, opts ...request.Option) (*kinesis.ListStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "ListStreamsWithContext",
+		Action:  "ListStreams",
 		Input:   input,
 		Output:  (*kinesis.ListStreamsOutput)(nil),
 		Error:   nil,
@@ -416,7 +416,7 @@ func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesis.List
 func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesis.ListTagsForStreamInput, opts ...request.Option) (*kinesis.ListTagsForStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "ListTagsForStreamWithContext",
+		Action:  "ListTagsForStream",
 		Input:   input,
 		Output:  (*kinesis.ListTagsForStreamOutput)(nil),
 		Error:   nil,
@@ -437,7 +437,7 @@ func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesi
 func (c *Client) MergeShardsWithContext(ctx context.Context, input *kinesis.MergeShardsInput, opts ...request.Option) (*kinesis.MergeShardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "MergeShardsWithContext",
+		Action:  "MergeShards",
 		Input:   input,
 		Output:  (*kinesis.MergeShardsOutput)(nil),
 		Error:   nil,
@@ -458,7 +458,7 @@ func (c *Client) MergeShardsWithContext(ctx context.Context, input *kinesis.Merg
 func (c *Client) PutRecordWithContext(ctx context.Context, input *kinesis.PutRecordInput, opts ...request.Option) (*kinesis.PutRecordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "PutRecordWithContext",
+		Action:  "PutRecord",
 		Input:   input,
 		Output:  (*kinesis.PutRecordOutput)(nil),
 		Error:   nil,
@@ -479,7 +479,7 @@ func (c *Client) PutRecordWithContext(ctx context.Context, input *kinesis.PutRec
 func (c *Client) PutRecordsWithContext(ctx context.Context, input *kinesis.PutRecordsInput, opts ...request.Option) (*kinesis.PutRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "PutRecordsWithContext",
+		Action:  "PutRecords",
 		Input:   input,
 		Output:  (*kinesis.PutRecordsOutput)(nil),
 		Error:   nil,
@@ -500,7 +500,7 @@ func (c *Client) PutRecordsWithContext(ctx context.Context, input *kinesis.PutRe
 func (c *Client) RegisterStreamConsumerWithContext(ctx context.Context, input *kinesis.RegisterStreamConsumerInput, opts ...request.Option) (*kinesis.RegisterStreamConsumerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "RegisterStreamConsumerWithContext",
+		Action:  "RegisterStreamConsumer",
 		Input:   input,
 		Output:  (*kinesis.RegisterStreamConsumerOutput)(nil),
 		Error:   nil,
@@ -521,7 +521,7 @@ func (c *Client) RegisterStreamConsumerWithContext(ctx context.Context, input *k
 func (c *Client) RemoveTagsFromStreamWithContext(ctx context.Context, input *kinesis.RemoveTagsFromStreamInput, opts ...request.Option) (*kinesis.RemoveTagsFromStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "RemoveTagsFromStreamWithContext",
+		Action:  "RemoveTagsFromStream",
 		Input:   input,
 		Output:  (*kinesis.RemoveTagsFromStreamOutput)(nil),
 		Error:   nil,
@@ -542,7 +542,7 @@ func (c *Client) RemoveTagsFromStreamWithContext(ctx context.Context, input *kin
 func (c *Client) SplitShardWithContext(ctx context.Context, input *kinesis.SplitShardInput, opts ...request.Option) (*kinesis.SplitShardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "SplitShardWithContext",
+		Action:  "SplitShard",
 		Input:   input,
 		Output:  (*kinesis.SplitShardOutput)(nil),
 		Error:   nil,
@@ -563,7 +563,7 @@ func (c *Client) SplitShardWithContext(ctx context.Context, input *kinesis.Split
 func (c *Client) StartStreamEncryptionWithContext(ctx context.Context, input *kinesis.StartStreamEncryptionInput, opts ...request.Option) (*kinesis.StartStreamEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "StartStreamEncryptionWithContext",
+		Action:  "StartStreamEncryption",
 		Input:   input,
 		Output:  (*kinesis.StartStreamEncryptionOutput)(nil),
 		Error:   nil,
@@ -584,7 +584,7 @@ func (c *Client) StartStreamEncryptionWithContext(ctx context.Context, input *ki
 func (c *Client) StopStreamEncryptionWithContext(ctx context.Context, input *kinesis.StopStreamEncryptionInput, opts ...request.Option) (*kinesis.StopStreamEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "StopStreamEncryptionWithContext",
+		Action:  "StopStreamEncryption",
 		Input:   input,
 		Output:  (*kinesis.StopStreamEncryptionOutput)(nil),
 		Error:   nil,
@@ -605,7 +605,7 @@ func (c *Client) StopStreamEncryptionWithContext(ctx context.Context, input *kin
 func (c *Client) SubscribeToShardWithContext(ctx context.Context, input *kinesis.SubscribeToShardInput, opts ...request.Option) (*kinesis.SubscribeToShardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "SubscribeToShardWithContext",
+		Action:  "SubscribeToShard",
 		Input:   input,
 		Output:  (*kinesis.SubscribeToShardOutput)(nil),
 		Error:   nil,
@@ -626,7 +626,7 @@ func (c *Client) SubscribeToShardWithContext(ctx context.Context, input *kinesis
 func (c *Client) UpdateShardCountWithContext(ctx context.Context, input *kinesis.UpdateShardCountInput, opts ...request.Option) (*kinesis.UpdateShardCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
-		Action:  "UpdateShardCountWithContext",
+		Action:  "UpdateShardCount",
 		Input:   input,
 		Output:  (*kinesis.UpdateShardCountOutput)(nil),
 		Error:   nil,

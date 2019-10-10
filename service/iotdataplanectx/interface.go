@@ -35,7 +35,7 @@ var _ IoTDataPlane = (*Client)(nil)
 func (c *Client) DeleteThingShadowWithContext(ctx context.Context, input *iotdataplane.DeleteThingShadowInput, opts ...request.Option) (*iotdataplane.DeleteThingShadowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotdataplane",
-		Action:  "DeleteThingShadowWithContext",
+		Action:  "DeleteThingShadow",
 		Input:   input,
 		Output:  (*iotdataplane.DeleteThingShadowOutput)(nil),
 		Error:   nil,
@@ -56,7 +56,7 @@ func (c *Client) DeleteThingShadowWithContext(ctx context.Context, input *iotdat
 func (c *Client) GetThingShadowWithContext(ctx context.Context, input *iotdataplane.GetThingShadowInput, opts ...request.Option) (*iotdataplane.GetThingShadowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotdataplane",
-		Action:  "GetThingShadowWithContext",
+		Action:  "GetThingShadow",
 		Input:   input,
 		Output:  (*iotdataplane.GetThingShadowOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) GetThingShadowWithContext(ctx context.Context, input *iotdatapl
 func (c *Client) PublishWithContext(ctx context.Context, input *iotdataplane.PublishInput, opts ...request.Option) (*iotdataplane.PublishOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotdataplane",
-		Action:  "PublishWithContext",
+		Action:  "Publish",
 		Input:   input,
 		Output:  (*iotdataplane.PublishOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) PublishWithContext(ctx context.Context, input *iotdataplane.Pub
 func (c *Client) UpdateThingShadowWithContext(ctx context.Context, input *iotdataplane.UpdateThingShadowInput, opts ...request.Option) (*iotdataplane.UpdateThingShadowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotdataplane",
-		Action:  "UpdateThingShadowWithContext",
+		Action:  "UpdateThingShadow",
 		Input:   input,
 		Output:  (*iotdataplane.UpdateThingShadowOutput)(nil),
 		Error:   nil,

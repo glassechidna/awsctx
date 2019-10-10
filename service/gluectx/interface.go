@@ -69,7 +69,6 @@ type Glue interface {
 	GetDevEndpointsWithContext(ctx context.Context, input *glue.GetDevEndpointsInput, opts ...request.Option) (*glue.GetDevEndpointsOutput, error)
 	GetJobWithContext(ctx context.Context, input *glue.GetJobInput, opts ...request.Option) (*glue.GetJobOutput, error)
 	GetJobBookmarkWithContext(ctx context.Context, input *glue.GetJobBookmarkInput, opts ...request.Option) (*glue.GetJobBookmarkOutput, error)
-	GetJobBookmarksWithContext(ctx context.Context, input *glue.GetJobBookmarksInput, opts ...request.Option) (*glue.GetJobBookmarksOutput, error)
 	GetJobRunWithContext(ctx context.Context, input *glue.GetJobRunInput, opts ...request.Option) (*glue.GetJobRunOutput, error)
 	GetJobRunsWithContext(ctx context.Context, input *glue.GetJobRunsInput, opts ...request.Option) (*glue.GetJobRunsOutput, error)
 	GetJobsWithContext(ctx context.Context, input *glue.GetJobsInput, opts ...request.Option) (*glue.GetJobsOutput, error)
@@ -155,7 +154,7 @@ var _ Glue = (*Client)(nil)
 func (c *Client) BatchCreatePartitionWithContext(ctx context.Context, input *glue.BatchCreatePartitionInput, opts ...request.Option) (*glue.BatchCreatePartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchCreatePartitionWithContext",
+		Action:  "BatchCreatePartition",
 		Input:   input,
 		Output:  (*glue.BatchCreatePartitionOutput)(nil),
 		Error:   nil,
@@ -176,7 +175,7 @@ func (c *Client) BatchCreatePartitionWithContext(ctx context.Context, input *glu
 func (c *Client) BatchDeleteConnectionWithContext(ctx context.Context, input *glue.BatchDeleteConnectionInput, opts ...request.Option) (*glue.BatchDeleteConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchDeleteConnectionWithContext",
+		Action:  "BatchDeleteConnection",
 		Input:   input,
 		Output:  (*glue.BatchDeleteConnectionOutput)(nil),
 		Error:   nil,
@@ -197,7 +196,7 @@ func (c *Client) BatchDeleteConnectionWithContext(ctx context.Context, input *gl
 func (c *Client) BatchDeletePartitionWithContext(ctx context.Context, input *glue.BatchDeletePartitionInput, opts ...request.Option) (*glue.BatchDeletePartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchDeletePartitionWithContext",
+		Action:  "BatchDeletePartition",
 		Input:   input,
 		Output:  (*glue.BatchDeletePartitionOutput)(nil),
 		Error:   nil,
@@ -218,7 +217,7 @@ func (c *Client) BatchDeletePartitionWithContext(ctx context.Context, input *glu
 func (c *Client) BatchDeleteTableWithContext(ctx context.Context, input *glue.BatchDeleteTableInput, opts ...request.Option) (*glue.BatchDeleteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchDeleteTableWithContext",
+		Action:  "BatchDeleteTable",
 		Input:   input,
 		Output:  (*glue.BatchDeleteTableOutput)(nil),
 		Error:   nil,
@@ -239,7 +238,7 @@ func (c *Client) BatchDeleteTableWithContext(ctx context.Context, input *glue.Ba
 func (c *Client) BatchDeleteTableVersionWithContext(ctx context.Context, input *glue.BatchDeleteTableVersionInput, opts ...request.Option) (*glue.BatchDeleteTableVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchDeleteTableVersionWithContext",
+		Action:  "BatchDeleteTableVersion",
 		Input:   input,
 		Output:  (*glue.BatchDeleteTableVersionOutput)(nil),
 		Error:   nil,
@@ -260,7 +259,7 @@ func (c *Client) BatchDeleteTableVersionWithContext(ctx context.Context, input *
 func (c *Client) BatchGetCrawlersWithContext(ctx context.Context, input *glue.BatchGetCrawlersInput, opts ...request.Option) (*glue.BatchGetCrawlersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchGetCrawlersWithContext",
+		Action:  "BatchGetCrawlers",
 		Input:   input,
 		Output:  (*glue.BatchGetCrawlersOutput)(nil),
 		Error:   nil,
@@ -281,7 +280,7 @@ func (c *Client) BatchGetCrawlersWithContext(ctx context.Context, input *glue.Ba
 func (c *Client) BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchGetDevEndpointsWithContext",
+		Action:  "BatchGetDevEndpoints",
 		Input:   input,
 		Output:  (*glue.BatchGetDevEndpointsOutput)(nil),
 		Error:   nil,
@@ -302,7 +301,7 @@ func (c *Client) BatchGetDevEndpointsWithContext(ctx context.Context, input *glu
 func (c *Client) BatchGetJobsWithContext(ctx context.Context, input *glue.BatchGetJobsInput, opts ...request.Option) (*glue.BatchGetJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchGetJobsWithContext",
+		Action:  "BatchGetJobs",
 		Input:   input,
 		Output:  (*glue.BatchGetJobsOutput)(nil),
 		Error:   nil,
@@ -323,7 +322,7 @@ func (c *Client) BatchGetJobsWithContext(ctx context.Context, input *glue.BatchG
 func (c *Client) BatchGetPartitionWithContext(ctx context.Context, input *glue.BatchGetPartitionInput, opts ...request.Option) (*glue.BatchGetPartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchGetPartitionWithContext",
+		Action:  "BatchGetPartition",
 		Input:   input,
 		Output:  (*glue.BatchGetPartitionOutput)(nil),
 		Error:   nil,
@@ -344,7 +343,7 @@ func (c *Client) BatchGetPartitionWithContext(ctx context.Context, input *glue.B
 func (c *Client) BatchGetTriggersWithContext(ctx context.Context, input *glue.BatchGetTriggersInput, opts ...request.Option) (*glue.BatchGetTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchGetTriggersWithContext",
+		Action:  "BatchGetTriggers",
 		Input:   input,
 		Output:  (*glue.BatchGetTriggersOutput)(nil),
 		Error:   nil,
@@ -365,7 +364,7 @@ func (c *Client) BatchGetTriggersWithContext(ctx context.Context, input *glue.Ba
 func (c *Client) BatchGetWorkflowsWithContext(ctx context.Context, input *glue.BatchGetWorkflowsInput, opts ...request.Option) (*glue.BatchGetWorkflowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchGetWorkflowsWithContext",
+		Action:  "BatchGetWorkflows",
 		Input:   input,
 		Output:  (*glue.BatchGetWorkflowsOutput)(nil),
 		Error:   nil,
@@ -386,7 +385,7 @@ func (c *Client) BatchGetWorkflowsWithContext(ctx context.Context, input *glue.B
 func (c *Client) BatchStopJobRunWithContext(ctx context.Context, input *glue.BatchStopJobRunInput, opts ...request.Option) (*glue.BatchStopJobRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "BatchStopJobRunWithContext",
+		Action:  "BatchStopJobRun",
 		Input:   input,
 		Output:  (*glue.BatchStopJobRunOutput)(nil),
 		Error:   nil,
@@ -407,7 +406,7 @@ func (c *Client) BatchStopJobRunWithContext(ctx context.Context, input *glue.Bat
 func (c *Client) CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CancelMLTaskRunWithContext",
+		Action:  "CancelMLTaskRun",
 		Input:   input,
 		Output:  (*glue.CancelMLTaskRunOutput)(nil),
 		Error:   nil,
@@ -428,7 +427,7 @@ func (c *Client) CancelMLTaskRunWithContext(ctx context.Context, input *glue.Can
 func (c *Client) CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateClassifierWithContext",
+		Action:  "CreateClassifier",
 		Input:   input,
 		Output:  (*glue.CreateClassifierOutput)(nil),
 		Error:   nil,
@@ -449,7 +448,7 @@ func (c *Client) CreateClassifierWithContext(ctx context.Context, input *glue.Cr
 func (c *Client) CreateConnectionWithContext(ctx context.Context, input *glue.CreateConnectionInput, opts ...request.Option) (*glue.CreateConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateConnectionWithContext",
+		Action:  "CreateConnection",
 		Input:   input,
 		Output:  (*glue.CreateConnectionOutput)(nil),
 		Error:   nil,
@@ -470,7 +469,7 @@ func (c *Client) CreateConnectionWithContext(ctx context.Context, input *glue.Cr
 func (c *Client) CreateCrawlerWithContext(ctx context.Context, input *glue.CreateCrawlerInput, opts ...request.Option) (*glue.CreateCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateCrawlerWithContext",
+		Action:  "CreateCrawler",
 		Input:   input,
 		Output:  (*glue.CreateCrawlerOutput)(nil),
 		Error:   nil,
@@ -491,7 +490,7 @@ func (c *Client) CreateCrawlerWithContext(ctx context.Context, input *glue.Creat
 func (c *Client) CreateDatabaseWithContext(ctx context.Context, input *glue.CreateDatabaseInput, opts ...request.Option) (*glue.CreateDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateDatabaseWithContext",
+		Action:  "CreateDatabase",
 		Input:   input,
 		Output:  (*glue.CreateDatabaseOutput)(nil),
 		Error:   nil,
@@ -512,7 +511,7 @@ func (c *Client) CreateDatabaseWithContext(ctx context.Context, input *glue.Crea
 func (c *Client) CreateDevEndpointWithContext(ctx context.Context, input *glue.CreateDevEndpointInput, opts ...request.Option) (*glue.CreateDevEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateDevEndpointWithContext",
+		Action:  "CreateDevEndpoint",
 		Input:   input,
 		Output:  (*glue.CreateDevEndpointOutput)(nil),
 		Error:   nil,
@@ -533,7 +532,7 @@ func (c *Client) CreateDevEndpointWithContext(ctx context.Context, input *glue.C
 func (c *Client) CreateJobWithContext(ctx context.Context, input *glue.CreateJobInput, opts ...request.Option) (*glue.CreateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateJobWithContext",
+		Action:  "CreateJob",
 		Input:   input,
 		Output:  (*glue.CreateJobOutput)(nil),
 		Error:   nil,
@@ -554,7 +553,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *glue.CreateJob
 func (c *Client) CreateMLTransformWithContext(ctx context.Context, input *glue.CreateMLTransformInput, opts ...request.Option) (*glue.CreateMLTransformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateMLTransformWithContext",
+		Action:  "CreateMLTransform",
 		Input:   input,
 		Output:  (*glue.CreateMLTransformOutput)(nil),
 		Error:   nil,
@@ -575,7 +574,7 @@ func (c *Client) CreateMLTransformWithContext(ctx context.Context, input *glue.C
 func (c *Client) CreatePartitionWithContext(ctx context.Context, input *glue.CreatePartitionInput, opts ...request.Option) (*glue.CreatePartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreatePartitionWithContext",
+		Action:  "CreatePartition",
 		Input:   input,
 		Output:  (*glue.CreatePartitionOutput)(nil),
 		Error:   nil,
@@ -596,7 +595,7 @@ func (c *Client) CreatePartitionWithContext(ctx context.Context, input *glue.Cre
 func (c *Client) CreateScriptWithContext(ctx context.Context, input *glue.CreateScriptInput, opts ...request.Option) (*glue.CreateScriptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateScriptWithContext",
+		Action:  "CreateScript",
 		Input:   input,
 		Output:  (*glue.CreateScriptOutput)(nil),
 		Error:   nil,
@@ -617,7 +616,7 @@ func (c *Client) CreateScriptWithContext(ctx context.Context, input *glue.Create
 func (c *Client) CreateSecurityConfigurationWithContext(ctx context.Context, input *glue.CreateSecurityConfigurationInput, opts ...request.Option) (*glue.CreateSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateSecurityConfigurationWithContext",
+		Action:  "CreateSecurityConfiguration",
 		Input:   input,
 		Output:  (*glue.CreateSecurityConfigurationOutput)(nil),
 		Error:   nil,
@@ -638,7 +637,7 @@ func (c *Client) CreateSecurityConfigurationWithContext(ctx context.Context, inp
 func (c *Client) CreateTableWithContext(ctx context.Context, input *glue.CreateTableInput, opts ...request.Option) (*glue.CreateTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateTableWithContext",
+		Action:  "CreateTable",
 		Input:   input,
 		Output:  (*glue.CreateTableOutput)(nil),
 		Error:   nil,
@@ -659,7 +658,7 @@ func (c *Client) CreateTableWithContext(ctx context.Context, input *glue.CreateT
 func (c *Client) CreateTriggerWithContext(ctx context.Context, input *glue.CreateTriggerInput, opts ...request.Option) (*glue.CreateTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateTriggerWithContext",
+		Action:  "CreateTrigger",
 		Input:   input,
 		Output:  (*glue.CreateTriggerOutput)(nil),
 		Error:   nil,
@@ -680,7 +679,7 @@ func (c *Client) CreateTriggerWithContext(ctx context.Context, input *glue.Creat
 func (c *Client) CreateUserDefinedFunctionWithContext(ctx context.Context, input *glue.CreateUserDefinedFunctionInput, opts ...request.Option) (*glue.CreateUserDefinedFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateUserDefinedFunctionWithContext",
+		Action:  "CreateUserDefinedFunction",
 		Input:   input,
 		Output:  (*glue.CreateUserDefinedFunctionOutput)(nil),
 		Error:   nil,
@@ -701,7 +700,7 @@ func (c *Client) CreateUserDefinedFunctionWithContext(ctx context.Context, input
 func (c *Client) CreateWorkflowWithContext(ctx context.Context, input *glue.CreateWorkflowInput, opts ...request.Option) (*glue.CreateWorkflowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "CreateWorkflowWithContext",
+		Action:  "CreateWorkflow",
 		Input:   input,
 		Output:  (*glue.CreateWorkflowOutput)(nil),
 		Error:   nil,
@@ -722,7 +721,7 @@ func (c *Client) CreateWorkflowWithContext(ctx context.Context, input *glue.Crea
 func (c *Client) DeleteClassifierWithContext(ctx context.Context, input *glue.DeleteClassifierInput, opts ...request.Option) (*glue.DeleteClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteClassifierWithContext",
+		Action:  "DeleteClassifier",
 		Input:   input,
 		Output:  (*glue.DeleteClassifierOutput)(nil),
 		Error:   nil,
@@ -743,7 +742,7 @@ func (c *Client) DeleteClassifierWithContext(ctx context.Context, input *glue.De
 func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *glue.DeleteConnectionInput, opts ...request.Option) (*glue.DeleteConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteConnectionWithContext",
+		Action:  "DeleteConnection",
 		Input:   input,
 		Output:  (*glue.DeleteConnectionOutput)(nil),
 		Error:   nil,
@@ -764,7 +763,7 @@ func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *glue.De
 func (c *Client) DeleteCrawlerWithContext(ctx context.Context, input *glue.DeleteCrawlerInput, opts ...request.Option) (*glue.DeleteCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteCrawlerWithContext",
+		Action:  "DeleteCrawler",
 		Input:   input,
 		Output:  (*glue.DeleteCrawlerOutput)(nil),
 		Error:   nil,
@@ -785,7 +784,7 @@ func (c *Client) DeleteCrawlerWithContext(ctx context.Context, input *glue.Delet
 func (c *Client) DeleteDatabaseWithContext(ctx context.Context, input *glue.DeleteDatabaseInput, opts ...request.Option) (*glue.DeleteDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteDatabaseWithContext",
+		Action:  "DeleteDatabase",
 		Input:   input,
 		Output:  (*glue.DeleteDatabaseOutput)(nil),
 		Error:   nil,
@@ -806,7 +805,7 @@ func (c *Client) DeleteDatabaseWithContext(ctx context.Context, input *glue.Dele
 func (c *Client) DeleteDevEndpointWithContext(ctx context.Context, input *glue.DeleteDevEndpointInput, opts ...request.Option) (*glue.DeleteDevEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteDevEndpointWithContext",
+		Action:  "DeleteDevEndpoint",
 		Input:   input,
 		Output:  (*glue.DeleteDevEndpointOutput)(nil),
 		Error:   nil,
@@ -827,7 +826,7 @@ func (c *Client) DeleteDevEndpointWithContext(ctx context.Context, input *glue.D
 func (c *Client) DeleteJobWithContext(ctx context.Context, input *glue.DeleteJobInput, opts ...request.Option) (*glue.DeleteJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteJobWithContext",
+		Action:  "DeleteJob",
 		Input:   input,
 		Output:  (*glue.DeleteJobOutput)(nil),
 		Error:   nil,
@@ -848,7 +847,7 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, input *glue.DeleteJob
 func (c *Client) DeleteMLTransformWithContext(ctx context.Context, input *glue.DeleteMLTransformInput, opts ...request.Option) (*glue.DeleteMLTransformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteMLTransformWithContext",
+		Action:  "DeleteMLTransform",
 		Input:   input,
 		Output:  (*glue.DeleteMLTransformOutput)(nil),
 		Error:   nil,
@@ -869,7 +868,7 @@ func (c *Client) DeleteMLTransformWithContext(ctx context.Context, input *glue.D
 func (c *Client) DeletePartitionWithContext(ctx context.Context, input *glue.DeletePartitionInput, opts ...request.Option) (*glue.DeletePartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeletePartitionWithContext",
+		Action:  "DeletePartition",
 		Input:   input,
 		Output:  (*glue.DeletePartitionOutput)(nil),
 		Error:   nil,
@@ -890,7 +889,7 @@ func (c *Client) DeletePartitionWithContext(ctx context.Context, input *glue.Del
 func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *glue.DeleteResourcePolicyInput, opts ...request.Option) (*glue.DeleteResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteResourcePolicyWithContext",
+		Action:  "DeleteResourcePolicy",
 		Input:   input,
 		Output:  (*glue.DeleteResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -911,7 +910,7 @@ func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *glu
 func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, input *glue.DeleteSecurityConfigurationInput, opts ...request.Option) (*glue.DeleteSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteSecurityConfigurationWithContext",
+		Action:  "DeleteSecurityConfiguration",
 		Input:   input,
 		Output:  (*glue.DeleteSecurityConfigurationOutput)(nil),
 		Error:   nil,
@@ -932,7 +931,7 @@ func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, inp
 func (c *Client) DeleteTableWithContext(ctx context.Context, input *glue.DeleteTableInput, opts ...request.Option) (*glue.DeleteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteTableWithContext",
+		Action:  "DeleteTable",
 		Input:   input,
 		Output:  (*glue.DeleteTableOutput)(nil),
 		Error:   nil,
@@ -953,7 +952,7 @@ func (c *Client) DeleteTableWithContext(ctx context.Context, input *glue.DeleteT
 func (c *Client) DeleteTableVersionWithContext(ctx context.Context, input *glue.DeleteTableVersionInput, opts ...request.Option) (*glue.DeleteTableVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteTableVersionWithContext",
+		Action:  "DeleteTableVersion",
 		Input:   input,
 		Output:  (*glue.DeleteTableVersionOutput)(nil),
 		Error:   nil,
@@ -974,7 +973,7 @@ func (c *Client) DeleteTableVersionWithContext(ctx context.Context, input *glue.
 func (c *Client) DeleteTriggerWithContext(ctx context.Context, input *glue.DeleteTriggerInput, opts ...request.Option) (*glue.DeleteTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteTriggerWithContext",
+		Action:  "DeleteTrigger",
 		Input:   input,
 		Output:  (*glue.DeleteTriggerOutput)(nil),
 		Error:   nil,
@@ -995,7 +994,7 @@ func (c *Client) DeleteTriggerWithContext(ctx context.Context, input *glue.Delet
 func (c *Client) DeleteUserDefinedFunctionWithContext(ctx context.Context, input *glue.DeleteUserDefinedFunctionInput, opts ...request.Option) (*glue.DeleteUserDefinedFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteUserDefinedFunctionWithContext",
+		Action:  "DeleteUserDefinedFunction",
 		Input:   input,
 		Output:  (*glue.DeleteUserDefinedFunctionOutput)(nil),
 		Error:   nil,
@@ -1016,7 +1015,7 @@ func (c *Client) DeleteUserDefinedFunctionWithContext(ctx context.Context, input
 func (c *Client) DeleteWorkflowWithContext(ctx context.Context, input *glue.DeleteWorkflowInput, opts ...request.Option) (*glue.DeleteWorkflowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "DeleteWorkflowWithContext",
+		Action:  "DeleteWorkflow",
 		Input:   input,
 		Output:  (*glue.DeleteWorkflowOutput)(nil),
 		Error:   nil,
@@ -1037,7 +1036,7 @@ func (c *Client) DeleteWorkflowWithContext(ctx context.Context, input *glue.Dele
 func (c *Client) GetCatalogImportStatusWithContext(ctx context.Context, input *glue.GetCatalogImportStatusInput, opts ...request.Option) (*glue.GetCatalogImportStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetCatalogImportStatusWithContext",
+		Action:  "GetCatalogImportStatus",
 		Input:   input,
 		Output:  (*glue.GetCatalogImportStatusOutput)(nil),
 		Error:   nil,
@@ -1058,7 +1057,7 @@ func (c *Client) GetCatalogImportStatusWithContext(ctx context.Context, input *g
 func (c *Client) GetClassifierWithContext(ctx context.Context, input *glue.GetClassifierInput, opts ...request.Option) (*glue.GetClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetClassifierWithContext",
+		Action:  "GetClassifier",
 		Input:   input,
 		Output:  (*glue.GetClassifierOutput)(nil),
 		Error:   nil,
@@ -1079,7 +1078,7 @@ func (c *Client) GetClassifierWithContext(ctx context.Context, input *glue.GetCl
 func (c *Client) GetClassifiersWithContext(ctx context.Context, input *glue.GetClassifiersInput, opts ...request.Option) (*glue.GetClassifiersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetClassifiersWithContext",
+		Action:  "GetClassifiers",
 		Input:   input,
 		Output:  (*glue.GetClassifiersOutput)(nil),
 		Error:   nil,
@@ -1100,7 +1099,7 @@ func (c *Client) GetClassifiersWithContext(ctx context.Context, input *glue.GetC
 func (c *Client) GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetConnectionWithContext",
+		Action:  "GetConnection",
 		Input:   input,
 		Output:  (*glue.GetConnectionOutput)(nil),
 		Error:   nil,
@@ -1121,7 +1120,7 @@ func (c *Client) GetConnectionWithContext(ctx context.Context, input *glue.GetCo
 func (c *Client) GetConnectionsWithContext(ctx context.Context, input *glue.GetConnectionsInput, opts ...request.Option) (*glue.GetConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetConnectionsWithContext",
+		Action:  "GetConnections",
 		Input:   input,
 		Output:  (*glue.GetConnectionsOutput)(nil),
 		Error:   nil,
@@ -1142,7 +1141,7 @@ func (c *Client) GetConnectionsWithContext(ctx context.Context, input *glue.GetC
 func (c *Client) GetCrawlerWithContext(ctx context.Context, input *glue.GetCrawlerInput, opts ...request.Option) (*glue.GetCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetCrawlerWithContext",
+		Action:  "GetCrawler",
 		Input:   input,
 		Output:  (*glue.GetCrawlerOutput)(nil),
 		Error:   nil,
@@ -1163,7 +1162,7 @@ func (c *Client) GetCrawlerWithContext(ctx context.Context, input *glue.GetCrawl
 func (c *Client) GetCrawlerMetricsWithContext(ctx context.Context, input *glue.GetCrawlerMetricsInput, opts ...request.Option) (*glue.GetCrawlerMetricsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetCrawlerMetricsWithContext",
+		Action:  "GetCrawlerMetrics",
 		Input:   input,
 		Output:  (*glue.GetCrawlerMetricsOutput)(nil),
 		Error:   nil,
@@ -1184,7 +1183,7 @@ func (c *Client) GetCrawlerMetricsWithContext(ctx context.Context, input *glue.G
 func (c *Client) GetCrawlersWithContext(ctx context.Context, input *glue.GetCrawlersInput, opts ...request.Option) (*glue.GetCrawlersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetCrawlersWithContext",
+		Action:  "GetCrawlers",
 		Input:   input,
 		Output:  (*glue.GetCrawlersOutput)(nil),
 		Error:   nil,
@@ -1205,7 +1204,7 @@ func (c *Client) GetCrawlersWithContext(ctx context.Context, input *glue.GetCraw
 func (c *Client) GetDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.GetDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.GetDataCatalogEncryptionSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetDataCatalogEncryptionSettingsWithContext",
+		Action:  "GetDataCatalogEncryptionSettings",
 		Input:   input,
 		Output:  (*glue.GetDataCatalogEncryptionSettingsOutput)(nil),
 		Error:   nil,
@@ -1226,7 +1225,7 @@ func (c *Client) GetDataCatalogEncryptionSettingsWithContext(ctx context.Context
 func (c *Client) GetDatabaseWithContext(ctx context.Context, input *glue.GetDatabaseInput, opts ...request.Option) (*glue.GetDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetDatabaseWithContext",
+		Action:  "GetDatabase",
 		Input:   input,
 		Output:  (*glue.GetDatabaseOutput)(nil),
 		Error:   nil,
@@ -1247,7 +1246,7 @@ func (c *Client) GetDatabaseWithContext(ctx context.Context, input *glue.GetData
 func (c *Client) GetDatabasesWithContext(ctx context.Context, input *glue.GetDatabasesInput, opts ...request.Option) (*glue.GetDatabasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetDatabasesWithContext",
+		Action:  "GetDatabases",
 		Input:   input,
 		Output:  (*glue.GetDatabasesOutput)(nil),
 		Error:   nil,
@@ -1268,7 +1267,7 @@ func (c *Client) GetDatabasesWithContext(ctx context.Context, input *glue.GetDat
 func (c *Client) GetDataflowGraphWithContext(ctx context.Context, input *glue.GetDataflowGraphInput, opts ...request.Option) (*glue.GetDataflowGraphOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetDataflowGraphWithContext",
+		Action:  "GetDataflowGraph",
 		Input:   input,
 		Output:  (*glue.GetDataflowGraphOutput)(nil),
 		Error:   nil,
@@ -1289,7 +1288,7 @@ func (c *Client) GetDataflowGraphWithContext(ctx context.Context, input *glue.Ge
 func (c *Client) GetDevEndpointWithContext(ctx context.Context, input *glue.GetDevEndpointInput, opts ...request.Option) (*glue.GetDevEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetDevEndpointWithContext",
+		Action:  "GetDevEndpoint",
 		Input:   input,
 		Output:  (*glue.GetDevEndpointOutput)(nil),
 		Error:   nil,
@@ -1310,7 +1309,7 @@ func (c *Client) GetDevEndpointWithContext(ctx context.Context, input *glue.GetD
 func (c *Client) GetDevEndpointsWithContext(ctx context.Context, input *glue.GetDevEndpointsInput, opts ...request.Option) (*glue.GetDevEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetDevEndpointsWithContext",
+		Action:  "GetDevEndpoints",
 		Input:   input,
 		Output:  (*glue.GetDevEndpointsOutput)(nil),
 		Error:   nil,
@@ -1331,7 +1330,7 @@ func (c *Client) GetDevEndpointsWithContext(ctx context.Context, input *glue.Get
 func (c *Client) GetJobWithContext(ctx context.Context, input *glue.GetJobInput, opts ...request.Option) (*glue.GetJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetJobWithContext",
+		Action:  "GetJob",
 		Input:   input,
 		Output:  (*glue.GetJobOutput)(nil),
 		Error:   nil,
@@ -1352,7 +1351,7 @@ func (c *Client) GetJobWithContext(ctx context.Context, input *glue.GetJobInput,
 func (c *Client) GetJobBookmarkWithContext(ctx context.Context, input *glue.GetJobBookmarkInput, opts ...request.Option) (*glue.GetJobBookmarkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetJobBookmarkWithContext",
+		Action:  "GetJobBookmark",
 		Input:   input,
 		Output:  (*glue.GetJobBookmarkOutput)(nil),
 		Error:   nil,
@@ -1370,31 +1369,10 @@ func (c *Client) GetJobBookmarkWithContext(ctx context.Context, input *glue.GetJ
 	return req.Output.(*glue.GetJobBookmarkOutput), req.Error
 }
 
-func (c *Client) GetJobBookmarksWithContext(ctx context.Context, input *glue.GetJobBookmarksInput, opts ...request.Option) (*glue.GetJobBookmarksOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "glue",
-		Action:  "GetJobBookmarksWithContext",
-		Input:   input,
-		Output:  (*glue.GetJobBookmarksOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.GlueAPI.GetJobBookmarksWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*glue.GetJobBookmarksOutput), req.Error
-}
-
 func (c *Client) GetJobRunWithContext(ctx context.Context, input *glue.GetJobRunInput, opts ...request.Option) (*glue.GetJobRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetJobRunWithContext",
+		Action:  "GetJobRun",
 		Input:   input,
 		Output:  (*glue.GetJobRunOutput)(nil),
 		Error:   nil,
@@ -1415,7 +1393,7 @@ func (c *Client) GetJobRunWithContext(ctx context.Context, input *glue.GetJobRun
 func (c *Client) GetJobRunsWithContext(ctx context.Context, input *glue.GetJobRunsInput, opts ...request.Option) (*glue.GetJobRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetJobRunsWithContext",
+		Action:  "GetJobRuns",
 		Input:   input,
 		Output:  (*glue.GetJobRunsOutput)(nil),
 		Error:   nil,
@@ -1436,7 +1414,7 @@ func (c *Client) GetJobRunsWithContext(ctx context.Context, input *glue.GetJobRu
 func (c *Client) GetJobsWithContext(ctx context.Context, input *glue.GetJobsInput, opts ...request.Option) (*glue.GetJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetJobsWithContext",
+		Action:  "GetJobs",
 		Input:   input,
 		Output:  (*glue.GetJobsOutput)(nil),
 		Error:   nil,
@@ -1457,7 +1435,7 @@ func (c *Client) GetJobsWithContext(ctx context.Context, input *glue.GetJobsInpu
 func (c *Client) GetMLTaskRunWithContext(ctx context.Context, input *glue.GetMLTaskRunInput, opts ...request.Option) (*glue.GetMLTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetMLTaskRunWithContext",
+		Action:  "GetMLTaskRun",
 		Input:   input,
 		Output:  (*glue.GetMLTaskRunOutput)(nil),
 		Error:   nil,
@@ -1478,7 +1456,7 @@ func (c *Client) GetMLTaskRunWithContext(ctx context.Context, input *glue.GetMLT
 func (c *Client) GetMLTaskRunsWithContext(ctx context.Context, input *glue.GetMLTaskRunsInput, opts ...request.Option) (*glue.GetMLTaskRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetMLTaskRunsWithContext",
+		Action:  "GetMLTaskRuns",
 		Input:   input,
 		Output:  (*glue.GetMLTaskRunsOutput)(nil),
 		Error:   nil,
@@ -1499,7 +1477,7 @@ func (c *Client) GetMLTaskRunsWithContext(ctx context.Context, input *glue.GetML
 func (c *Client) GetMLTransformWithContext(ctx context.Context, input *glue.GetMLTransformInput, opts ...request.Option) (*glue.GetMLTransformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetMLTransformWithContext",
+		Action:  "GetMLTransform",
 		Input:   input,
 		Output:  (*glue.GetMLTransformOutput)(nil),
 		Error:   nil,
@@ -1520,7 +1498,7 @@ func (c *Client) GetMLTransformWithContext(ctx context.Context, input *glue.GetM
 func (c *Client) GetMLTransformsWithContext(ctx context.Context, input *glue.GetMLTransformsInput, opts ...request.Option) (*glue.GetMLTransformsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetMLTransformsWithContext",
+		Action:  "GetMLTransforms",
 		Input:   input,
 		Output:  (*glue.GetMLTransformsOutput)(nil),
 		Error:   nil,
@@ -1541,7 +1519,7 @@ func (c *Client) GetMLTransformsWithContext(ctx context.Context, input *glue.Get
 func (c *Client) GetMappingWithContext(ctx context.Context, input *glue.GetMappingInput, opts ...request.Option) (*glue.GetMappingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetMappingWithContext",
+		Action:  "GetMapping",
 		Input:   input,
 		Output:  (*glue.GetMappingOutput)(nil),
 		Error:   nil,
@@ -1562,7 +1540,7 @@ func (c *Client) GetMappingWithContext(ctx context.Context, input *glue.GetMappi
 func (c *Client) GetPartitionWithContext(ctx context.Context, input *glue.GetPartitionInput, opts ...request.Option) (*glue.GetPartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetPartitionWithContext",
+		Action:  "GetPartition",
 		Input:   input,
 		Output:  (*glue.GetPartitionOutput)(nil),
 		Error:   nil,
@@ -1583,7 +1561,7 @@ func (c *Client) GetPartitionWithContext(ctx context.Context, input *glue.GetPar
 func (c *Client) GetPartitionsWithContext(ctx context.Context, input *glue.GetPartitionsInput, opts ...request.Option) (*glue.GetPartitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetPartitionsWithContext",
+		Action:  "GetPartitions",
 		Input:   input,
 		Output:  (*glue.GetPartitionsOutput)(nil),
 		Error:   nil,
@@ -1604,7 +1582,7 @@ func (c *Client) GetPartitionsWithContext(ctx context.Context, input *glue.GetPa
 func (c *Client) GetPlanWithContext(ctx context.Context, input *glue.GetPlanInput, opts ...request.Option) (*glue.GetPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetPlanWithContext",
+		Action:  "GetPlan",
 		Input:   input,
 		Output:  (*glue.GetPlanOutput)(nil),
 		Error:   nil,
@@ -1625,7 +1603,7 @@ func (c *Client) GetPlanWithContext(ctx context.Context, input *glue.GetPlanInpu
 func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *glue.GetResourcePolicyInput, opts ...request.Option) (*glue.GetResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetResourcePolicyWithContext",
+		Action:  "GetResourcePolicy",
 		Input:   input,
 		Output:  (*glue.GetResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -1646,7 +1624,7 @@ func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *glue.G
 func (c *Client) GetSecurityConfigurationWithContext(ctx context.Context, input *glue.GetSecurityConfigurationInput, opts ...request.Option) (*glue.GetSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetSecurityConfigurationWithContext",
+		Action:  "GetSecurityConfiguration",
 		Input:   input,
 		Output:  (*glue.GetSecurityConfigurationOutput)(nil),
 		Error:   nil,
@@ -1667,7 +1645,7 @@ func (c *Client) GetSecurityConfigurationWithContext(ctx context.Context, input 
 func (c *Client) GetSecurityConfigurationsWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, opts ...request.Option) (*glue.GetSecurityConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetSecurityConfigurationsWithContext",
+		Action:  "GetSecurityConfigurations",
 		Input:   input,
 		Output:  (*glue.GetSecurityConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1688,7 +1666,7 @@ func (c *Client) GetSecurityConfigurationsWithContext(ctx context.Context, input
 func (c *Client) GetTableWithContext(ctx context.Context, input *glue.GetTableInput, opts ...request.Option) (*glue.GetTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTableWithContext",
+		Action:  "GetTable",
 		Input:   input,
 		Output:  (*glue.GetTableOutput)(nil),
 		Error:   nil,
@@ -1709,7 +1687,7 @@ func (c *Client) GetTableWithContext(ctx context.Context, input *glue.GetTableIn
 func (c *Client) GetTableVersionWithContext(ctx context.Context, input *glue.GetTableVersionInput, opts ...request.Option) (*glue.GetTableVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTableVersionWithContext",
+		Action:  "GetTableVersion",
 		Input:   input,
 		Output:  (*glue.GetTableVersionOutput)(nil),
 		Error:   nil,
@@ -1730,7 +1708,7 @@ func (c *Client) GetTableVersionWithContext(ctx context.Context, input *glue.Get
 func (c *Client) GetTableVersionsWithContext(ctx context.Context, input *glue.GetTableVersionsInput, opts ...request.Option) (*glue.GetTableVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTableVersionsWithContext",
+		Action:  "GetTableVersions",
 		Input:   input,
 		Output:  (*glue.GetTableVersionsOutput)(nil),
 		Error:   nil,
@@ -1751,7 +1729,7 @@ func (c *Client) GetTableVersionsWithContext(ctx context.Context, input *glue.Ge
 func (c *Client) GetTablesWithContext(ctx context.Context, input *glue.GetTablesInput, opts ...request.Option) (*glue.GetTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTablesWithContext",
+		Action:  "GetTables",
 		Input:   input,
 		Output:  (*glue.GetTablesOutput)(nil),
 		Error:   nil,
@@ -1772,7 +1750,7 @@ func (c *Client) GetTablesWithContext(ctx context.Context, input *glue.GetTables
 func (c *Client) GetTagsWithContext(ctx context.Context, input *glue.GetTagsInput, opts ...request.Option) (*glue.GetTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTagsWithContext",
+		Action:  "GetTags",
 		Input:   input,
 		Output:  (*glue.GetTagsOutput)(nil),
 		Error:   nil,
@@ -1793,7 +1771,7 @@ func (c *Client) GetTagsWithContext(ctx context.Context, input *glue.GetTagsInpu
 func (c *Client) GetTriggerWithContext(ctx context.Context, input *glue.GetTriggerInput, opts ...request.Option) (*glue.GetTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTriggerWithContext",
+		Action:  "GetTrigger",
 		Input:   input,
 		Output:  (*glue.GetTriggerOutput)(nil),
 		Error:   nil,
@@ -1814,7 +1792,7 @@ func (c *Client) GetTriggerWithContext(ctx context.Context, input *glue.GetTrigg
 func (c *Client) GetTriggersWithContext(ctx context.Context, input *glue.GetTriggersInput, opts ...request.Option) (*glue.GetTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetTriggersWithContext",
+		Action:  "GetTriggers",
 		Input:   input,
 		Output:  (*glue.GetTriggersOutput)(nil),
 		Error:   nil,
@@ -1835,7 +1813,7 @@ func (c *Client) GetTriggersWithContext(ctx context.Context, input *glue.GetTrig
 func (c *Client) GetUserDefinedFunctionWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionInput, opts ...request.Option) (*glue.GetUserDefinedFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetUserDefinedFunctionWithContext",
+		Action:  "GetUserDefinedFunction",
 		Input:   input,
 		Output:  (*glue.GetUserDefinedFunctionOutput)(nil),
 		Error:   nil,
@@ -1856,7 +1834,7 @@ func (c *Client) GetUserDefinedFunctionWithContext(ctx context.Context, input *g
 func (c *Client) GetUserDefinedFunctionsWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionsInput, opts ...request.Option) (*glue.GetUserDefinedFunctionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetUserDefinedFunctionsWithContext",
+		Action:  "GetUserDefinedFunctions",
 		Input:   input,
 		Output:  (*glue.GetUserDefinedFunctionsOutput)(nil),
 		Error:   nil,
@@ -1877,7 +1855,7 @@ func (c *Client) GetUserDefinedFunctionsWithContext(ctx context.Context, input *
 func (c *Client) GetWorkflowWithContext(ctx context.Context, input *glue.GetWorkflowInput, opts ...request.Option) (*glue.GetWorkflowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetWorkflowWithContext",
+		Action:  "GetWorkflow",
 		Input:   input,
 		Output:  (*glue.GetWorkflowOutput)(nil),
 		Error:   nil,
@@ -1898,7 +1876,7 @@ func (c *Client) GetWorkflowWithContext(ctx context.Context, input *glue.GetWork
 func (c *Client) GetWorkflowRunWithContext(ctx context.Context, input *glue.GetWorkflowRunInput, opts ...request.Option) (*glue.GetWorkflowRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetWorkflowRunWithContext",
+		Action:  "GetWorkflowRun",
 		Input:   input,
 		Output:  (*glue.GetWorkflowRunOutput)(nil),
 		Error:   nil,
@@ -1919,7 +1897,7 @@ func (c *Client) GetWorkflowRunWithContext(ctx context.Context, input *glue.GetW
 func (c *Client) GetWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.GetWorkflowRunPropertiesInput, opts ...request.Option) (*glue.GetWorkflowRunPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetWorkflowRunPropertiesWithContext",
+		Action:  "GetWorkflowRunProperties",
 		Input:   input,
 		Output:  (*glue.GetWorkflowRunPropertiesOutput)(nil),
 		Error:   nil,
@@ -1940,7 +1918,7 @@ func (c *Client) GetWorkflowRunPropertiesWithContext(ctx context.Context, input 
 func (c *Client) GetWorkflowRunsWithContext(ctx context.Context, input *glue.GetWorkflowRunsInput, opts ...request.Option) (*glue.GetWorkflowRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "GetWorkflowRunsWithContext",
+		Action:  "GetWorkflowRuns",
 		Input:   input,
 		Output:  (*glue.GetWorkflowRunsOutput)(nil),
 		Error:   nil,
@@ -1961,7 +1939,7 @@ func (c *Client) GetWorkflowRunsWithContext(ctx context.Context, input *glue.Get
 func (c *Client) ImportCatalogToGlueWithContext(ctx context.Context, input *glue.ImportCatalogToGlueInput, opts ...request.Option) (*glue.ImportCatalogToGlueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ImportCatalogToGlueWithContext",
+		Action:  "ImportCatalogToGlue",
 		Input:   input,
 		Output:  (*glue.ImportCatalogToGlueOutput)(nil),
 		Error:   nil,
@@ -1982,7 +1960,7 @@ func (c *Client) ImportCatalogToGlueWithContext(ctx context.Context, input *glue
 func (c *Client) ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ListCrawlersWithContext",
+		Action:  "ListCrawlers",
 		Input:   input,
 		Output:  (*glue.ListCrawlersOutput)(nil),
 		Error:   nil,
@@ -2003,7 +1981,7 @@ func (c *Client) ListCrawlersWithContext(ctx context.Context, input *glue.ListCr
 func (c *Client) ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ListDevEndpointsWithContext",
+		Action:  "ListDevEndpoints",
 		Input:   input,
 		Output:  (*glue.ListDevEndpointsOutput)(nil),
 		Error:   nil,
@@ -2024,7 +2002,7 @@ func (c *Client) ListDevEndpointsWithContext(ctx context.Context, input *glue.Li
 func (c *Client) ListJobsWithContext(ctx context.Context, input *glue.ListJobsInput, opts ...request.Option) (*glue.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*glue.ListJobsOutput)(nil),
 		Error:   nil,
@@ -2045,7 +2023,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *glue.ListJobsIn
 func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ListTriggersWithContext",
+		Action:  "ListTriggers",
 		Input:   input,
 		Output:  (*glue.ListTriggersOutput)(nil),
 		Error:   nil,
@@ -2066,7 +2044,7 @@ func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTr
 func (c *Client) ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ListWorkflowsWithContext",
+		Action:  "ListWorkflows",
 		Input:   input,
 		Output:  (*glue.ListWorkflowsOutput)(nil),
 		Error:   nil,
@@ -2087,7 +2065,7 @@ func (c *Client) ListWorkflowsWithContext(ctx context.Context, input *glue.ListW
 func (c *Client) PutDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.PutDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.PutDataCatalogEncryptionSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "PutDataCatalogEncryptionSettingsWithContext",
+		Action:  "PutDataCatalogEncryptionSettings",
 		Input:   input,
 		Output:  (*glue.PutDataCatalogEncryptionSettingsOutput)(nil),
 		Error:   nil,
@@ -2108,7 +2086,7 @@ func (c *Client) PutDataCatalogEncryptionSettingsWithContext(ctx context.Context
 func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *glue.PutResourcePolicyInput, opts ...request.Option) (*glue.PutResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "PutResourcePolicyWithContext",
+		Action:  "PutResourcePolicy",
 		Input:   input,
 		Output:  (*glue.PutResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -2129,7 +2107,7 @@ func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *glue.P
 func (c *Client) PutWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.PutWorkflowRunPropertiesInput, opts ...request.Option) (*glue.PutWorkflowRunPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "PutWorkflowRunPropertiesWithContext",
+		Action:  "PutWorkflowRunProperties",
 		Input:   input,
 		Output:  (*glue.PutWorkflowRunPropertiesOutput)(nil),
 		Error:   nil,
@@ -2150,7 +2128,7 @@ func (c *Client) PutWorkflowRunPropertiesWithContext(ctx context.Context, input 
 func (c *Client) ResetJobBookmarkWithContext(ctx context.Context, input *glue.ResetJobBookmarkInput, opts ...request.Option) (*glue.ResetJobBookmarkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "ResetJobBookmarkWithContext",
+		Action:  "ResetJobBookmark",
 		Input:   input,
 		Output:  (*glue.ResetJobBookmarkOutput)(nil),
 		Error:   nil,
@@ -2171,7 +2149,7 @@ func (c *Client) ResetJobBookmarkWithContext(ctx context.Context, input *glue.Re
 func (c *Client) SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "SearchTablesWithContext",
+		Action:  "SearchTables",
 		Input:   input,
 		Output:  (*glue.SearchTablesOutput)(nil),
 		Error:   nil,
@@ -2192,7 +2170,7 @@ func (c *Client) SearchTablesWithContext(ctx context.Context, input *glue.Search
 func (c *Client) StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartCrawlerWithContext",
+		Action:  "StartCrawler",
 		Input:   input,
 		Output:  (*glue.StartCrawlerOutput)(nil),
 		Error:   nil,
@@ -2213,7 +2191,7 @@ func (c *Client) StartCrawlerWithContext(ctx context.Context, input *glue.StartC
 func (c *Client) StartCrawlerScheduleWithContext(ctx context.Context, input *glue.StartCrawlerScheduleInput, opts ...request.Option) (*glue.StartCrawlerScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartCrawlerScheduleWithContext",
+		Action:  "StartCrawlerSchedule",
 		Input:   input,
 		Output:  (*glue.StartCrawlerScheduleOutput)(nil),
 		Error:   nil,
@@ -2234,7 +2212,7 @@ func (c *Client) StartCrawlerScheduleWithContext(ctx context.Context, input *glu
 func (c *Client) StartExportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartExportLabelsTaskRunInput, opts ...request.Option) (*glue.StartExportLabelsTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartExportLabelsTaskRunWithContext",
+		Action:  "StartExportLabelsTaskRun",
 		Input:   input,
 		Output:  (*glue.StartExportLabelsTaskRunOutput)(nil),
 		Error:   nil,
@@ -2255,7 +2233,7 @@ func (c *Client) StartExportLabelsTaskRunWithContext(ctx context.Context, input 
 func (c *Client) StartImportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartImportLabelsTaskRunInput, opts ...request.Option) (*glue.StartImportLabelsTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartImportLabelsTaskRunWithContext",
+		Action:  "StartImportLabelsTaskRun",
 		Input:   input,
 		Output:  (*glue.StartImportLabelsTaskRunOutput)(nil),
 		Error:   nil,
@@ -2276,7 +2254,7 @@ func (c *Client) StartImportLabelsTaskRunWithContext(ctx context.Context, input 
 func (c *Client) StartJobRunWithContext(ctx context.Context, input *glue.StartJobRunInput, opts ...request.Option) (*glue.StartJobRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartJobRunWithContext",
+		Action:  "StartJobRun",
 		Input:   input,
 		Output:  (*glue.StartJobRunOutput)(nil),
 		Error:   nil,
@@ -2297,7 +2275,7 @@ func (c *Client) StartJobRunWithContext(ctx context.Context, input *glue.StartJo
 func (c *Client) StartMLEvaluationTaskRunWithContext(ctx context.Context, input *glue.StartMLEvaluationTaskRunInput, opts ...request.Option) (*glue.StartMLEvaluationTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartMLEvaluationTaskRunWithContext",
+		Action:  "StartMLEvaluationTaskRun",
 		Input:   input,
 		Output:  (*glue.StartMLEvaluationTaskRunOutput)(nil),
 		Error:   nil,
@@ -2318,7 +2296,7 @@ func (c *Client) StartMLEvaluationTaskRunWithContext(ctx context.Context, input 
 func (c *Client) StartMLLabelingSetGenerationTaskRunWithContext(ctx context.Context, input *glue.StartMLLabelingSetGenerationTaskRunInput, opts ...request.Option) (*glue.StartMLLabelingSetGenerationTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartMLLabelingSetGenerationTaskRunWithContext",
+		Action:  "StartMLLabelingSetGenerationTaskRun",
 		Input:   input,
 		Output:  (*glue.StartMLLabelingSetGenerationTaskRunOutput)(nil),
 		Error:   nil,
@@ -2339,7 +2317,7 @@ func (c *Client) StartMLLabelingSetGenerationTaskRunWithContext(ctx context.Cont
 func (c *Client) StartTriggerWithContext(ctx context.Context, input *glue.StartTriggerInput, opts ...request.Option) (*glue.StartTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartTriggerWithContext",
+		Action:  "StartTrigger",
 		Input:   input,
 		Output:  (*glue.StartTriggerOutput)(nil),
 		Error:   nil,
@@ -2360,7 +2338,7 @@ func (c *Client) StartTriggerWithContext(ctx context.Context, input *glue.StartT
 func (c *Client) StartWorkflowRunWithContext(ctx context.Context, input *glue.StartWorkflowRunInput, opts ...request.Option) (*glue.StartWorkflowRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StartWorkflowRunWithContext",
+		Action:  "StartWorkflowRun",
 		Input:   input,
 		Output:  (*glue.StartWorkflowRunOutput)(nil),
 		Error:   nil,
@@ -2381,7 +2359,7 @@ func (c *Client) StartWorkflowRunWithContext(ctx context.Context, input *glue.St
 func (c *Client) StopCrawlerWithContext(ctx context.Context, input *glue.StopCrawlerInput, opts ...request.Option) (*glue.StopCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StopCrawlerWithContext",
+		Action:  "StopCrawler",
 		Input:   input,
 		Output:  (*glue.StopCrawlerOutput)(nil),
 		Error:   nil,
@@ -2402,7 +2380,7 @@ func (c *Client) StopCrawlerWithContext(ctx context.Context, input *glue.StopCra
 func (c *Client) StopCrawlerScheduleWithContext(ctx context.Context, input *glue.StopCrawlerScheduleInput, opts ...request.Option) (*glue.StopCrawlerScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StopCrawlerScheduleWithContext",
+		Action:  "StopCrawlerSchedule",
 		Input:   input,
 		Output:  (*glue.StopCrawlerScheduleOutput)(nil),
 		Error:   nil,
@@ -2423,7 +2401,7 @@ func (c *Client) StopCrawlerScheduleWithContext(ctx context.Context, input *glue
 func (c *Client) StopTriggerWithContext(ctx context.Context, input *glue.StopTriggerInput, opts ...request.Option) (*glue.StopTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "StopTriggerWithContext",
+		Action:  "StopTrigger",
 		Input:   input,
 		Output:  (*glue.StopTriggerOutput)(nil),
 		Error:   nil,
@@ -2444,7 +2422,7 @@ func (c *Client) StopTriggerWithContext(ctx context.Context, input *glue.StopTri
 func (c *Client) TagResourceWithContext(ctx context.Context, input *glue.TagResourceInput, opts ...request.Option) (*glue.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*glue.TagResourceOutput)(nil),
 		Error:   nil,
@@ -2465,7 +2443,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *glue.TagReso
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *glue.UntagResourceInput, opts ...request.Option) (*glue.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*glue.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -2486,7 +2464,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *glue.Untag
 func (c *Client) UpdateClassifierWithContext(ctx context.Context, input *glue.UpdateClassifierInput, opts ...request.Option) (*glue.UpdateClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateClassifierWithContext",
+		Action:  "UpdateClassifier",
 		Input:   input,
 		Output:  (*glue.UpdateClassifierOutput)(nil),
 		Error:   nil,
@@ -2507,7 +2485,7 @@ func (c *Client) UpdateClassifierWithContext(ctx context.Context, input *glue.Up
 func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *glue.UpdateConnectionInput, opts ...request.Option) (*glue.UpdateConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateConnectionWithContext",
+		Action:  "UpdateConnection",
 		Input:   input,
 		Output:  (*glue.UpdateConnectionOutput)(nil),
 		Error:   nil,
@@ -2528,7 +2506,7 @@ func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *glue.Up
 func (c *Client) UpdateCrawlerWithContext(ctx context.Context, input *glue.UpdateCrawlerInput, opts ...request.Option) (*glue.UpdateCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateCrawlerWithContext",
+		Action:  "UpdateCrawler",
 		Input:   input,
 		Output:  (*glue.UpdateCrawlerOutput)(nil),
 		Error:   nil,
@@ -2549,7 +2527,7 @@ func (c *Client) UpdateCrawlerWithContext(ctx context.Context, input *glue.Updat
 func (c *Client) UpdateCrawlerScheduleWithContext(ctx context.Context, input *glue.UpdateCrawlerScheduleInput, opts ...request.Option) (*glue.UpdateCrawlerScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateCrawlerScheduleWithContext",
+		Action:  "UpdateCrawlerSchedule",
 		Input:   input,
 		Output:  (*glue.UpdateCrawlerScheduleOutput)(nil),
 		Error:   nil,
@@ -2570,7 +2548,7 @@ func (c *Client) UpdateCrawlerScheduleWithContext(ctx context.Context, input *gl
 func (c *Client) UpdateDatabaseWithContext(ctx context.Context, input *glue.UpdateDatabaseInput, opts ...request.Option) (*glue.UpdateDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateDatabaseWithContext",
+		Action:  "UpdateDatabase",
 		Input:   input,
 		Output:  (*glue.UpdateDatabaseOutput)(nil),
 		Error:   nil,
@@ -2591,7 +2569,7 @@ func (c *Client) UpdateDatabaseWithContext(ctx context.Context, input *glue.Upda
 func (c *Client) UpdateDevEndpointWithContext(ctx context.Context, input *glue.UpdateDevEndpointInput, opts ...request.Option) (*glue.UpdateDevEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateDevEndpointWithContext",
+		Action:  "UpdateDevEndpoint",
 		Input:   input,
 		Output:  (*glue.UpdateDevEndpointOutput)(nil),
 		Error:   nil,
@@ -2612,7 +2590,7 @@ func (c *Client) UpdateDevEndpointWithContext(ctx context.Context, input *glue.U
 func (c *Client) UpdateJobWithContext(ctx context.Context, input *glue.UpdateJobInput, opts ...request.Option) (*glue.UpdateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateJobWithContext",
+		Action:  "UpdateJob",
 		Input:   input,
 		Output:  (*glue.UpdateJobOutput)(nil),
 		Error:   nil,
@@ -2633,7 +2611,7 @@ func (c *Client) UpdateJobWithContext(ctx context.Context, input *glue.UpdateJob
 func (c *Client) UpdateMLTransformWithContext(ctx context.Context, input *glue.UpdateMLTransformInput, opts ...request.Option) (*glue.UpdateMLTransformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateMLTransformWithContext",
+		Action:  "UpdateMLTransform",
 		Input:   input,
 		Output:  (*glue.UpdateMLTransformOutput)(nil),
 		Error:   nil,
@@ -2654,7 +2632,7 @@ func (c *Client) UpdateMLTransformWithContext(ctx context.Context, input *glue.U
 func (c *Client) UpdatePartitionWithContext(ctx context.Context, input *glue.UpdatePartitionInput, opts ...request.Option) (*glue.UpdatePartitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdatePartitionWithContext",
+		Action:  "UpdatePartition",
 		Input:   input,
 		Output:  (*glue.UpdatePartitionOutput)(nil),
 		Error:   nil,
@@ -2675,7 +2653,7 @@ func (c *Client) UpdatePartitionWithContext(ctx context.Context, input *glue.Upd
 func (c *Client) UpdateTableWithContext(ctx context.Context, input *glue.UpdateTableInput, opts ...request.Option) (*glue.UpdateTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateTableWithContext",
+		Action:  "UpdateTable",
 		Input:   input,
 		Output:  (*glue.UpdateTableOutput)(nil),
 		Error:   nil,
@@ -2696,7 +2674,7 @@ func (c *Client) UpdateTableWithContext(ctx context.Context, input *glue.UpdateT
 func (c *Client) UpdateTriggerWithContext(ctx context.Context, input *glue.UpdateTriggerInput, opts ...request.Option) (*glue.UpdateTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateTriggerWithContext",
+		Action:  "UpdateTrigger",
 		Input:   input,
 		Output:  (*glue.UpdateTriggerOutput)(nil),
 		Error:   nil,
@@ -2717,7 +2695,7 @@ func (c *Client) UpdateTriggerWithContext(ctx context.Context, input *glue.Updat
 func (c *Client) UpdateUserDefinedFunctionWithContext(ctx context.Context, input *glue.UpdateUserDefinedFunctionInput, opts ...request.Option) (*glue.UpdateUserDefinedFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateUserDefinedFunctionWithContext",
+		Action:  "UpdateUserDefinedFunction",
 		Input:   input,
 		Output:  (*glue.UpdateUserDefinedFunctionOutput)(nil),
 		Error:   nil,
@@ -2738,7 +2716,7 @@ func (c *Client) UpdateUserDefinedFunctionWithContext(ctx context.Context, input
 func (c *Client) UpdateWorkflowWithContext(ctx context.Context, input *glue.UpdateWorkflowInput, opts ...request.Option) (*glue.UpdateWorkflowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
-		Action:  "UpdateWorkflowWithContext",
+		Action:  "UpdateWorkflow",
 		Input:   input,
 		Output:  (*glue.UpdateWorkflowOutput)(nil),
 		Error:   nil,

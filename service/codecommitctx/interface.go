@@ -12,6 +12,7 @@ import (
 
 type CodeCommit interface {
 	BatchDescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.BatchDescribeMergeConflictsInput, opts ...request.Option) (*codecommit.BatchDescribeMergeConflictsOutput, error)
+	BatchGetCommitsWithContext(ctx context.Context, input *codecommit.BatchGetCommitsInput, opts ...request.Option) (*codecommit.BatchGetCommitsOutput, error)
 	BatchGetRepositoriesWithContext(ctx context.Context, input *codecommit.BatchGetRepositoriesInput, opts ...request.Option) (*codecommit.BatchGetRepositoriesOutput, error)
 	CreateBranchWithContext(ctx context.Context, input *codecommit.CreateBranchInput, opts ...request.Option) (*codecommit.CreateBranchOutput, error)
 	CreateCommitWithContext(ctx context.Context, input *codecommit.CreateCommitInput, opts ...request.Option) (*codecommit.CreateCommitOutput, error)
@@ -84,7 +85,7 @@ var _ CodeCommit = (*Client)(nil)
 func (c *Client) BatchDescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.BatchDescribeMergeConflictsInput, opts ...request.Option) (*codecommit.BatchDescribeMergeConflictsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "BatchDescribeMergeConflictsWithContext",
+		Action:  "BatchDescribeMergeConflicts",
 		Input:   input,
 		Output:  (*codecommit.BatchDescribeMergeConflictsOutput)(nil),
 		Error:   nil,
@@ -102,10 +103,31 @@ func (c *Client) BatchDescribeMergeConflictsWithContext(ctx context.Context, inp
 	return req.Output.(*codecommit.BatchDescribeMergeConflictsOutput), req.Error
 }
 
+func (c *Client) BatchGetCommitsWithContext(ctx context.Context, input *codecommit.BatchGetCommitsInput, opts ...request.Option) (*codecommit.BatchGetCommitsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "BatchGetCommits",
+		Input:   input,
+		Output:  (*codecommit.BatchGetCommitsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.BatchGetCommitsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.BatchGetCommitsOutput), req.Error
+}
+
 func (c *Client) BatchGetRepositoriesWithContext(ctx context.Context, input *codecommit.BatchGetRepositoriesInput, opts ...request.Option) (*codecommit.BatchGetRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "BatchGetRepositoriesWithContext",
+		Action:  "BatchGetRepositories",
 		Input:   input,
 		Output:  (*codecommit.BatchGetRepositoriesOutput)(nil),
 		Error:   nil,
@@ -126,7 +148,7 @@ func (c *Client) BatchGetRepositoriesWithContext(ctx context.Context, input *cod
 func (c *Client) CreateBranchWithContext(ctx context.Context, input *codecommit.CreateBranchInput, opts ...request.Option) (*codecommit.CreateBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "CreateBranchWithContext",
+		Action:  "CreateBranch",
 		Input:   input,
 		Output:  (*codecommit.CreateBranchOutput)(nil),
 		Error:   nil,
@@ -147,7 +169,7 @@ func (c *Client) CreateBranchWithContext(ctx context.Context, input *codecommit.
 func (c *Client) CreateCommitWithContext(ctx context.Context, input *codecommit.CreateCommitInput, opts ...request.Option) (*codecommit.CreateCommitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "CreateCommitWithContext",
+		Action:  "CreateCommit",
 		Input:   input,
 		Output:  (*codecommit.CreateCommitOutput)(nil),
 		Error:   nil,
@@ -168,7 +190,7 @@ func (c *Client) CreateCommitWithContext(ctx context.Context, input *codecommit.
 func (c *Client) CreatePullRequestWithContext(ctx context.Context, input *codecommit.CreatePullRequestInput, opts ...request.Option) (*codecommit.CreatePullRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "CreatePullRequestWithContext",
+		Action:  "CreatePullRequest",
 		Input:   input,
 		Output:  (*codecommit.CreatePullRequestOutput)(nil),
 		Error:   nil,
@@ -189,7 +211,7 @@ func (c *Client) CreatePullRequestWithContext(ctx context.Context, input *codeco
 func (c *Client) CreateRepositoryWithContext(ctx context.Context, input *codecommit.CreateRepositoryInput, opts ...request.Option) (*codecommit.CreateRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "CreateRepositoryWithContext",
+		Action:  "CreateRepository",
 		Input:   input,
 		Output:  (*codecommit.CreateRepositoryOutput)(nil),
 		Error:   nil,
@@ -210,7 +232,7 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, input *codecom
 func (c *Client) CreateUnreferencedMergeCommitWithContext(ctx context.Context, input *codecommit.CreateUnreferencedMergeCommitInput, opts ...request.Option) (*codecommit.CreateUnreferencedMergeCommitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "CreateUnreferencedMergeCommitWithContext",
+		Action:  "CreateUnreferencedMergeCommit",
 		Input:   input,
 		Output:  (*codecommit.CreateUnreferencedMergeCommitOutput)(nil),
 		Error:   nil,
@@ -231,7 +253,7 @@ func (c *Client) CreateUnreferencedMergeCommitWithContext(ctx context.Context, i
 func (c *Client) DeleteBranchWithContext(ctx context.Context, input *codecommit.DeleteBranchInput, opts ...request.Option) (*codecommit.DeleteBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "DeleteBranchWithContext",
+		Action:  "DeleteBranch",
 		Input:   input,
 		Output:  (*codecommit.DeleteBranchOutput)(nil),
 		Error:   nil,
@@ -252,7 +274,7 @@ func (c *Client) DeleteBranchWithContext(ctx context.Context, input *codecommit.
 func (c *Client) DeleteCommentContentWithContext(ctx context.Context, input *codecommit.DeleteCommentContentInput, opts ...request.Option) (*codecommit.DeleteCommentContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "DeleteCommentContentWithContext",
+		Action:  "DeleteCommentContent",
 		Input:   input,
 		Output:  (*codecommit.DeleteCommentContentOutput)(nil),
 		Error:   nil,
@@ -273,7 +295,7 @@ func (c *Client) DeleteCommentContentWithContext(ctx context.Context, input *cod
 func (c *Client) DeleteFileWithContext(ctx context.Context, input *codecommit.DeleteFileInput, opts ...request.Option) (*codecommit.DeleteFileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "DeleteFileWithContext",
+		Action:  "DeleteFile",
 		Input:   input,
 		Output:  (*codecommit.DeleteFileOutput)(nil),
 		Error:   nil,
@@ -294,7 +316,7 @@ func (c *Client) DeleteFileWithContext(ctx context.Context, input *codecommit.De
 func (c *Client) DeleteRepositoryWithContext(ctx context.Context, input *codecommit.DeleteRepositoryInput, opts ...request.Option) (*codecommit.DeleteRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "DeleteRepositoryWithContext",
+		Action:  "DeleteRepository",
 		Input:   input,
 		Output:  (*codecommit.DeleteRepositoryOutput)(nil),
 		Error:   nil,
@@ -315,7 +337,7 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, input *codecom
 func (c *Client) DescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.DescribeMergeConflictsInput, opts ...request.Option) (*codecommit.DescribeMergeConflictsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "DescribeMergeConflictsWithContext",
+		Action:  "DescribeMergeConflicts",
 		Input:   input,
 		Output:  (*codecommit.DescribeMergeConflictsOutput)(nil),
 		Error:   nil,
@@ -336,7 +358,7 @@ func (c *Client) DescribeMergeConflictsWithContext(ctx context.Context, input *c
 func (c *Client) DescribePullRequestEventsWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, opts ...request.Option) (*codecommit.DescribePullRequestEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "DescribePullRequestEventsWithContext",
+		Action:  "DescribePullRequestEvents",
 		Input:   input,
 		Output:  (*codecommit.DescribePullRequestEventsOutput)(nil),
 		Error:   nil,
@@ -357,7 +379,7 @@ func (c *Client) DescribePullRequestEventsWithContext(ctx context.Context, input
 func (c *Client) GetBlobWithContext(ctx context.Context, input *codecommit.GetBlobInput, opts ...request.Option) (*codecommit.GetBlobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetBlobWithContext",
+		Action:  "GetBlob",
 		Input:   input,
 		Output:  (*codecommit.GetBlobOutput)(nil),
 		Error:   nil,
@@ -378,7 +400,7 @@ func (c *Client) GetBlobWithContext(ctx context.Context, input *codecommit.GetBl
 func (c *Client) GetBranchWithContext(ctx context.Context, input *codecommit.GetBranchInput, opts ...request.Option) (*codecommit.GetBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetBranchWithContext",
+		Action:  "GetBranch",
 		Input:   input,
 		Output:  (*codecommit.GetBranchOutput)(nil),
 		Error:   nil,
@@ -399,7 +421,7 @@ func (c *Client) GetBranchWithContext(ctx context.Context, input *codecommit.Get
 func (c *Client) GetCommentWithContext(ctx context.Context, input *codecommit.GetCommentInput, opts ...request.Option) (*codecommit.GetCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetCommentWithContext",
+		Action:  "GetComment",
 		Input:   input,
 		Output:  (*codecommit.GetCommentOutput)(nil),
 		Error:   nil,
@@ -420,7 +442,7 @@ func (c *Client) GetCommentWithContext(ctx context.Context, input *codecommit.Ge
 func (c *Client) GetCommentsForComparedCommitWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, opts ...request.Option) (*codecommit.GetCommentsForComparedCommitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetCommentsForComparedCommitWithContext",
+		Action:  "GetCommentsForComparedCommit",
 		Input:   input,
 		Output:  (*codecommit.GetCommentsForComparedCommitOutput)(nil),
 		Error:   nil,
@@ -441,7 +463,7 @@ func (c *Client) GetCommentsForComparedCommitWithContext(ctx context.Context, in
 func (c *Client) GetCommentsForPullRequestWithContext(ctx context.Context, input *codecommit.GetCommentsForPullRequestInput, opts ...request.Option) (*codecommit.GetCommentsForPullRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetCommentsForPullRequestWithContext",
+		Action:  "GetCommentsForPullRequest",
 		Input:   input,
 		Output:  (*codecommit.GetCommentsForPullRequestOutput)(nil),
 		Error:   nil,
@@ -462,7 +484,7 @@ func (c *Client) GetCommentsForPullRequestWithContext(ctx context.Context, input
 func (c *Client) GetCommitWithContext(ctx context.Context, input *codecommit.GetCommitInput, opts ...request.Option) (*codecommit.GetCommitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetCommitWithContext",
+		Action:  "GetCommit",
 		Input:   input,
 		Output:  (*codecommit.GetCommitOutput)(nil),
 		Error:   nil,
@@ -483,7 +505,7 @@ func (c *Client) GetCommitWithContext(ctx context.Context, input *codecommit.Get
 func (c *Client) GetDifferencesWithContext(ctx context.Context, input *codecommit.GetDifferencesInput, opts ...request.Option) (*codecommit.GetDifferencesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetDifferencesWithContext",
+		Action:  "GetDifferences",
 		Input:   input,
 		Output:  (*codecommit.GetDifferencesOutput)(nil),
 		Error:   nil,
@@ -504,7 +526,7 @@ func (c *Client) GetDifferencesWithContext(ctx context.Context, input *codecommi
 func (c *Client) GetFileWithContext(ctx context.Context, input *codecommit.GetFileInput, opts ...request.Option) (*codecommit.GetFileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetFileWithContext",
+		Action:  "GetFile",
 		Input:   input,
 		Output:  (*codecommit.GetFileOutput)(nil),
 		Error:   nil,
@@ -525,7 +547,7 @@ func (c *Client) GetFileWithContext(ctx context.Context, input *codecommit.GetFi
 func (c *Client) GetFolderWithContext(ctx context.Context, input *codecommit.GetFolderInput, opts ...request.Option) (*codecommit.GetFolderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetFolderWithContext",
+		Action:  "GetFolder",
 		Input:   input,
 		Output:  (*codecommit.GetFolderOutput)(nil),
 		Error:   nil,
@@ -546,7 +568,7 @@ func (c *Client) GetFolderWithContext(ctx context.Context, input *codecommit.Get
 func (c *Client) GetMergeCommitWithContext(ctx context.Context, input *codecommit.GetMergeCommitInput, opts ...request.Option) (*codecommit.GetMergeCommitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetMergeCommitWithContext",
+		Action:  "GetMergeCommit",
 		Input:   input,
 		Output:  (*codecommit.GetMergeCommitOutput)(nil),
 		Error:   nil,
@@ -567,7 +589,7 @@ func (c *Client) GetMergeCommitWithContext(ctx context.Context, input *codecommi
 func (c *Client) GetMergeConflictsWithContext(ctx context.Context, input *codecommit.GetMergeConflictsInput, opts ...request.Option) (*codecommit.GetMergeConflictsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetMergeConflictsWithContext",
+		Action:  "GetMergeConflicts",
 		Input:   input,
 		Output:  (*codecommit.GetMergeConflictsOutput)(nil),
 		Error:   nil,
@@ -588,7 +610,7 @@ func (c *Client) GetMergeConflictsWithContext(ctx context.Context, input *codeco
 func (c *Client) GetMergeOptionsWithContext(ctx context.Context, input *codecommit.GetMergeOptionsInput, opts ...request.Option) (*codecommit.GetMergeOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetMergeOptionsWithContext",
+		Action:  "GetMergeOptions",
 		Input:   input,
 		Output:  (*codecommit.GetMergeOptionsOutput)(nil),
 		Error:   nil,
@@ -609,7 +631,7 @@ func (c *Client) GetMergeOptionsWithContext(ctx context.Context, input *codecomm
 func (c *Client) GetPullRequestWithContext(ctx context.Context, input *codecommit.GetPullRequestInput, opts ...request.Option) (*codecommit.GetPullRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetPullRequestWithContext",
+		Action:  "GetPullRequest",
 		Input:   input,
 		Output:  (*codecommit.GetPullRequestOutput)(nil),
 		Error:   nil,
@@ -630,7 +652,7 @@ func (c *Client) GetPullRequestWithContext(ctx context.Context, input *codecommi
 func (c *Client) GetRepositoryWithContext(ctx context.Context, input *codecommit.GetRepositoryInput, opts ...request.Option) (*codecommit.GetRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetRepositoryWithContext",
+		Action:  "GetRepository",
 		Input:   input,
 		Output:  (*codecommit.GetRepositoryOutput)(nil),
 		Error:   nil,
@@ -651,7 +673,7 @@ func (c *Client) GetRepositoryWithContext(ctx context.Context, input *codecommit
 func (c *Client) GetRepositoryTriggersWithContext(ctx context.Context, input *codecommit.GetRepositoryTriggersInput, opts ...request.Option) (*codecommit.GetRepositoryTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "GetRepositoryTriggersWithContext",
+		Action:  "GetRepositoryTriggers",
 		Input:   input,
 		Output:  (*codecommit.GetRepositoryTriggersOutput)(nil),
 		Error:   nil,
@@ -672,7 +694,7 @@ func (c *Client) GetRepositoryTriggersWithContext(ctx context.Context, input *co
 func (c *Client) ListBranchesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, opts ...request.Option) (*codecommit.ListBranchesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "ListBranchesWithContext",
+		Action:  "ListBranches",
 		Input:   input,
 		Output:  (*codecommit.ListBranchesOutput)(nil),
 		Error:   nil,
@@ -693,7 +715,7 @@ func (c *Client) ListBranchesWithContext(ctx context.Context, input *codecommit.
 func (c *Client) ListPullRequestsWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, opts ...request.Option) (*codecommit.ListPullRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "ListPullRequestsWithContext",
+		Action:  "ListPullRequests",
 		Input:   input,
 		Output:  (*codecommit.ListPullRequestsOutput)(nil),
 		Error:   nil,
@@ -714,7 +736,7 @@ func (c *Client) ListPullRequestsWithContext(ctx context.Context, input *codecom
 func (c *Client) ListRepositoriesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, opts ...request.Option) (*codecommit.ListRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "ListRepositoriesWithContext",
+		Action:  "ListRepositories",
 		Input:   input,
 		Output:  (*codecommit.ListRepositoriesOutput)(nil),
 		Error:   nil,
@@ -735,7 +757,7 @@ func (c *Client) ListRepositoriesWithContext(ctx context.Context, input *codecom
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *codecommit.ListTagsForResourceInput, opts ...request.Option) (*codecommit.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*codecommit.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -756,7 +778,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *code
 func (c *Client) MergeBranchesByFastForwardWithContext(ctx context.Context, input *codecommit.MergeBranchesByFastForwardInput, opts ...request.Option) (*codecommit.MergeBranchesByFastForwardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "MergeBranchesByFastForwardWithContext",
+		Action:  "MergeBranchesByFastForward",
 		Input:   input,
 		Output:  (*codecommit.MergeBranchesByFastForwardOutput)(nil),
 		Error:   nil,
@@ -777,7 +799,7 @@ func (c *Client) MergeBranchesByFastForwardWithContext(ctx context.Context, inpu
 func (c *Client) MergeBranchesBySquashWithContext(ctx context.Context, input *codecommit.MergeBranchesBySquashInput, opts ...request.Option) (*codecommit.MergeBranchesBySquashOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "MergeBranchesBySquashWithContext",
+		Action:  "MergeBranchesBySquash",
 		Input:   input,
 		Output:  (*codecommit.MergeBranchesBySquashOutput)(nil),
 		Error:   nil,
@@ -798,7 +820,7 @@ func (c *Client) MergeBranchesBySquashWithContext(ctx context.Context, input *co
 func (c *Client) MergeBranchesByThreeWayWithContext(ctx context.Context, input *codecommit.MergeBranchesByThreeWayInput, opts ...request.Option) (*codecommit.MergeBranchesByThreeWayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "MergeBranchesByThreeWayWithContext",
+		Action:  "MergeBranchesByThreeWay",
 		Input:   input,
 		Output:  (*codecommit.MergeBranchesByThreeWayOutput)(nil),
 		Error:   nil,
@@ -819,7 +841,7 @@ func (c *Client) MergeBranchesByThreeWayWithContext(ctx context.Context, input *
 func (c *Client) MergePullRequestByFastForwardWithContext(ctx context.Context, input *codecommit.MergePullRequestByFastForwardInput, opts ...request.Option) (*codecommit.MergePullRequestByFastForwardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "MergePullRequestByFastForwardWithContext",
+		Action:  "MergePullRequestByFastForward",
 		Input:   input,
 		Output:  (*codecommit.MergePullRequestByFastForwardOutput)(nil),
 		Error:   nil,
@@ -840,7 +862,7 @@ func (c *Client) MergePullRequestByFastForwardWithContext(ctx context.Context, i
 func (c *Client) MergePullRequestBySquashWithContext(ctx context.Context, input *codecommit.MergePullRequestBySquashInput, opts ...request.Option) (*codecommit.MergePullRequestBySquashOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "MergePullRequestBySquashWithContext",
+		Action:  "MergePullRequestBySquash",
 		Input:   input,
 		Output:  (*codecommit.MergePullRequestBySquashOutput)(nil),
 		Error:   nil,
@@ -861,7 +883,7 @@ func (c *Client) MergePullRequestBySquashWithContext(ctx context.Context, input 
 func (c *Client) MergePullRequestByThreeWayWithContext(ctx context.Context, input *codecommit.MergePullRequestByThreeWayInput, opts ...request.Option) (*codecommit.MergePullRequestByThreeWayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "MergePullRequestByThreeWayWithContext",
+		Action:  "MergePullRequestByThreeWay",
 		Input:   input,
 		Output:  (*codecommit.MergePullRequestByThreeWayOutput)(nil),
 		Error:   nil,
@@ -882,7 +904,7 @@ func (c *Client) MergePullRequestByThreeWayWithContext(ctx context.Context, inpu
 func (c *Client) PostCommentForComparedCommitWithContext(ctx context.Context, input *codecommit.PostCommentForComparedCommitInput, opts ...request.Option) (*codecommit.PostCommentForComparedCommitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "PostCommentForComparedCommitWithContext",
+		Action:  "PostCommentForComparedCommit",
 		Input:   input,
 		Output:  (*codecommit.PostCommentForComparedCommitOutput)(nil),
 		Error:   nil,
@@ -903,7 +925,7 @@ func (c *Client) PostCommentForComparedCommitWithContext(ctx context.Context, in
 func (c *Client) PostCommentForPullRequestWithContext(ctx context.Context, input *codecommit.PostCommentForPullRequestInput, opts ...request.Option) (*codecommit.PostCommentForPullRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "PostCommentForPullRequestWithContext",
+		Action:  "PostCommentForPullRequest",
 		Input:   input,
 		Output:  (*codecommit.PostCommentForPullRequestOutput)(nil),
 		Error:   nil,
@@ -924,7 +946,7 @@ func (c *Client) PostCommentForPullRequestWithContext(ctx context.Context, input
 func (c *Client) PostCommentReplyWithContext(ctx context.Context, input *codecommit.PostCommentReplyInput, opts ...request.Option) (*codecommit.PostCommentReplyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "PostCommentReplyWithContext",
+		Action:  "PostCommentReply",
 		Input:   input,
 		Output:  (*codecommit.PostCommentReplyOutput)(nil),
 		Error:   nil,
@@ -945,7 +967,7 @@ func (c *Client) PostCommentReplyWithContext(ctx context.Context, input *codecom
 func (c *Client) PutFileWithContext(ctx context.Context, input *codecommit.PutFileInput, opts ...request.Option) (*codecommit.PutFileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "PutFileWithContext",
+		Action:  "PutFile",
 		Input:   input,
 		Output:  (*codecommit.PutFileOutput)(nil),
 		Error:   nil,
@@ -966,7 +988,7 @@ func (c *Client) PutFileWithContext(ctx context.Context, input *codecommit.PutFi
 func (c *Client) PutRepositoryTriggersWithContext(ctx context.Context, input *codecommit.PutRepositoryTriggersInput, opts ...request.Option) (*codecommit.PutRepositoryTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "PutRepositoryTriggersWithContext",
+		Action:  "PutRepositoryTriggers",
 		Input:   input,
 		Output:  (*codecommit.PutRepositoryTriggersOutput)(nil),
 		Error:   nil,
@@ -987,7 +1009,7 @@ func (c *Client) PutRepositoryTriggersWithContext(ctx context.Context, input *co
 func (c *Client) TagResourceWithContext(ctx context.Context, input *codecommit.TagResourceInput, opts ...request.Option) (*codecommit.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*codecommit.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1008,7 +1030,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *codecommit.T
 func (c *Client) TestRepositoryTriggersWithContext(ctx context.Context, input *codecommit.TestRepositoryTriggersInput, opts ...request.Option) (*codecommit.TestRepositoryTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "TestRepositoryTriggersWithContext",
+		Action:  "TestRepositoryTriggers",
 		Input:   input,
 		Output:  (*codecommit.TestRepositoryTriggersOutput)(nil),
 		Error:   nil,
@@ -1029,7 +1051,7 @@ func (c *Client) TestRepositoryTriggersWithContext(ctx context.Context, input *c
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *codecommit.UntagResourceInput, opts ...request.Option) (*codecommit.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*codecommit.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1050,7 +1072,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *codecommit
 func (c *Client) UpdateCommentWithContext(ctx context.Context, input *codecommit.UpdateCommentInput, opts ...request.Option) (*codecommit.UpdateCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdateCommentWithContext",
+		Action:  "UpdateComment",
 		Input:   input,
 		Output:  (*codecommit.UpdateCommentOutput)(nil),
 		Error:   nil,
@@ -1071,7 +1093,7 @@ func (c *Client) UpdateCommentWithContext(ctx context.Context, input *codecommit
 func (c *Client) UpdateDefaultBranchWithContext(ctx context.Context, input *codecommit.UpdateDefaultBranchInput, opts ...request.Option) (*codecommit.UpdateDefaultBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdateDefaultBranchWithContext",
+		Action:  "UpdateDefaultBranch",
 		Input:   input,
 		Output:  (*codecommit.UpdateDefaultBranchOutput)(nil),
 		Error:   nil,
@@ -1092,7 +1114,7 @@ func (c *Client) UpdateDefaultBranchWithContext(ctx context.Context, input *code
 func (c *Client) UpdatePullRequestDescriptionWithContext(ctx context.Context, input *codecommit.UpdatePullRequestDescriptionInput, opts ...request.Option) (*codecommit.UpdatePullRequestDescriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdatePullRequestDescriptionWithContext",
+		Action:  "UpdatePullRequestDescription",
 		Input:   input,
 		Output:  (*codecommit.UpdatePullRequestDescriptionOutput)(nil),
 		Error:   nil,
@@ -1113,7 +1135,7 @@ func (c *Client) UpdatePullRequestDescriptionWithContext(ctx context.Context, in
 func (c *Client) UpdatePullRequestStatusWithContext(ctx context.Context, input *codecommit.UpdatePullRequestStatusInput, opts ...request.Option) (*codecommit.UpdatePullRequestStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdatePullRequestStatusWithContext",
+		Action:  "UpdatePullRequestStatus",
 		Input:   input,
 		Output:  (*codecommit.UpdatePullRequestStatusOutput)(nil),
 		Error:   nil,
@@ -1134,7 +1156,7 @@ func (c *Client) UpdatePullRequestStatusWithContext(ctx context.Context, input *
 func (c *Client) UpdatePullRequestTitleWithContext(ctx context.Context, input *codecommit.UpdatePullRequestTitleInput, opts ...request.Option) (*codecommit.UpdatePullRequestTitleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdatePullRequestTitleWithContext",
+		Action:  "UpdatePullRequestTitle",
 		Input:   input,
 		Output:  (*codecommit.UpdatePullRequestTitleOutput)(nil),
 		Error:   nil,
@@ -1155,7 +1177,7 @@ func (c *Client) UpdatePullRequestTitleWithContext(ctx context.Context, input *c
 func (c *Client) UpdateRepositoryDescriptionWithContext(ctx context.Context, input *codecommit.UpdateRepositoryDescriptionInput, opts ...request.Option) (*codecommit.UpdateRepositoryDescriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdateRepositoryDescriptionWithContext",
+		Action:  "UpdateRepositoryDescription",
 		Input:   input,
 		Output:  (*codecommit.UpdateRepositoryDescriptionOutput)(nil),
 		Error:   nil,
@@ -1176,7 +1198,7 @@ func (c *Client) UpdateRepositoryDescriptionWithContext(ctx context.Context, inp
 func (c *Client) UpdateRepositoryNameWithContext(ctx context.Context, input *codecommit.UpdateRepositoryNameInput, opts ...request.Option) (*codecommit.UpdateRepositoryNameOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
-		Action:  "UpdateRepositoryNameWithContext",
+		Action:  "UpdateRepositoryName",
 		Input:   input,
 		Output:  (*codecommit.UpdateRepositoryNameOutput)(nil),
 		Error:   nil,

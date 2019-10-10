@@ -45,7 +45,7 @@ var _ Support = (*Client)(nil)
 func (c *Client) AddAttachmentsToSetWithContext(ctx context.Context, input *support.AddAttachmentsToSetInput, opts ...request.Option) (*support.AddAttachmentsToSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "AddAttachmentsToSetWithContext",
+		Action:  "AddAttachmentsToSet",
 		Input:   input,
 		Output:  (*support.AddAttachmentsToSetOutput)(nil),
 		Error:   nil,
@@ -66,7 +66,7 @@ func (c *Client) AddAttachmentsToSetWithContext(ctx context.Context, input *supp
 func (c *Client) AddCommunicationToCaseWithContext(ctx context.Context, input *support.AddCommunicationToCaseInput, opts ...request.Option) (*support.AddCommunicationToCaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "AddCommunicationToCaseWithContext",
+		Action:  "AddCommunicationToCase",
 		Input:   input,
 		Output:  (*support.AddCommunicationToCaseOutput)(nil),
 		Error:   nil,
@@ -87,7 +87,7 @@ func (c *Client) AddCommunicationToCaseWithContext(ctx context.Context, input *s
 func (c *Client) CreateCaseWithContext(ctx context.Context, input *support.CreateCaseInput, opts ...request.Option) (*support.CreateCaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "CreateCaseWithContext",
+		Action:  "CreateCase",
 		Input:   input,
 		Output:  (*support.CreateCaseOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) CreateCaseWithContext(ctx context.Context, input *support.Creat
 func (c *Client) DescribeAttachmentWithContext(ctx context.Context, input *support.DescribeAttachmentInput, opts ...request.Option) (*support.DescribeAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeAttachmentWithContext",
+		Action:  "DescribeAttachment",
 		Input:   input,
 		Output:  (*support.DescribeAttachmentOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) DescribeAttachmentWithContext(ctx context.Context, input *suppo
 func (c *Client) DescribeCasesWithContext(ctx context.Context, input *support.DescribeCasesInput, opts ...request.Option) (*support.DescribeCasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeCasesWithContext",
+		Action:  "DescribeCases",
 		Input:   input,
 		Output:  (*support.DescribeCasesOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) DescribeCasesWithContext(ctx context.Context, input *support.De
 func (c *Client) DescribeCommunicationsWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, opts ...request.Option) (*support.DescribeCommunicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeCommunicationsWithContext",
+		Action:  "DescribeCommunications",
 		Input:   input,
 		Output:  (*support.DescribeCommunicationsOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) DescribeCommunicationsWithContext(ctx context.Context, input *s
 func (c *Client) DescribeServicesWithContext(ctx context.Context, input *support.DescribeServicesInput, opts ...request.Option) (*support.DescribeServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeServicesWithContext",
+		Action:  "DescribeServices",
 		Input:   input,
 		Output:  (*support.DescribeServicesOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) DescribeServicesWithContext(ctx context.Context, input *support
 func (c *Client) DescribeSeverityLevelsWithContext(ctx context.Context, input *support.DescribeSeverityLevelsInput, opts ...request.Option) (*support.DescribeSeverityLevelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeSeverityLevelsWithContext",
+		Action:  "DescribeSeverityLevels",
 		Input:   input,
 		Output:  (*support.DescribeSeverityLevelsOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) DescribeSeverityLevelsWithContext(ctx context.Context, input *s
 func (c *Client) DescribeTrustedAdvisorCheckRefreshStatusesWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckRefreshStatusesInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckRefreshStatusesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeTrustedAdvisorCheckRefreshStatusesWithContext",
+		Action:  "DescribeTrustedAdvisorCheckRefreshStatuses",
 		Input:   input,
 		Output:  (*support.DescribeTrustedAdvisorCheckRefreshStatusesOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) DescribeTrustedAdvisorCheckRefreshStatusesWithContext(ctx conte
 func (c *Client) DescribeTrustedAdvisorCheckResultWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckResultInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckResultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeTrustedAdvisorCheckResultWithContext",
+		Action:  "DescribeTrustedAdvisorCheckResult",
 		Input:   input,
 		Output:  (*support.DescribeTrustedAdvisorCheckResultOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) DescribeTrustedAdvisorCheckResultWithContext(ctx context.Contex
 func (c *Client) DescribeTrustedAdvisorCheckSummariesWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckSummariesInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeTrustedAdvisorCheckSummariesWithContext",
+		Action:  "DescribeTrustedAdvisorCheckSummaries",
 		Input:   input,
 		Output:  (*support.DescribeTrustedAdvisorCheckSummariesOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) DescribeTrustedAdvisorCheckSummariesWithContext(ctx context.Con
 func (c *Client) DescribeTrustedAdvisorChecksWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorChecksInput, opts ...request.Option) (*support.DescribeTrustedAdvisorChecksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "DescribeTrustedAdvisorChecksWithContext",
+		Action:  "DescribeTrustedAdvisorChecks",
 		Input:   input,
 		Output:  (*support.DescribeTrustedAdvisorChecksOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) DescribeTrustedAdvisorChecksWithContext(ctx context.Context, in
 func (c *Client) RefreshTrustedAdvisorCheckWithContext(ctx context.Context, input *support.RefreshTrustedAdvisorCheckInput, opts ...request.Option) (*support.RefreshTrustedAdvisorCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "RefreshTrustedAdvisorCheckWithContext",
+		Action:  "RefreshTrustedAdvisorCheck",
 		Input:   input,
 		Output:  (*support.RefreshTrustedAdvisorCheckOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) RefreshTrustedAdvisorCheckWithContext(ctx context.Context, inpu
 func (c *Client) ResolveCaseWithContext(ctx context.Context, input *support.ResolveCaseInput, opts ...request.Option) (*support.ResolveCaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
-		Action:  "ResolveCaseWithContext",
+		Action:  "ResolveCase",
 		Input:   input,
 		Output:  (*support.ResolveCaseOutput)(nil),
 		Error:   nil,

@@ -39,7 +39,7 @@ var _ STS = (*Client)(nil)
 func (c *Client) AssumeRoleWithContext(ctx context.Context, input *sts.AssumeRoleInput, opts ...request.Option) (*sts.AssumeRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "AssumeRoleWithContext",
+		Action:  "AssumeRole",
 		Input:   input,
 		Output:  (*sts.AssumeRoleOutput)(nil),
 		Error:   nil,
@@ -60,7 +60,7 @@ func (c *Client) AssumeRoleWithContext(ctx context.Context, input *sts.AssumeRol
 func (c *Client) AssumeRoleWithSAMLWithContext(ctx context.Context, input *sts.AssumeRoleWithSAMLInput, opts ...request.Option) (*sts.AssumeRoleWithSAMLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "AssumeRoleWithSAMLWithContext",
+		Action:  "AssumeRoleWithSAML",
 		Input:   input,
 		Output:  (*sts.AssumeRoleWithSAMLOutput)(nil),
 		Error:   nil,
@@ -81,7 +81,7 @@ func (c *Client) AssumeRoleWithSAMLWithContext(ctx context.Context, input *sts.A
 func (c *Client) AssumeRoleWithWebIdentityWithContext(ctx context.Context, input *sts.AssumeRoleWithWebIdentityInput, opts ...request.Option) (*sts.AssumeRoleWithWebIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "AssumeRoleWithWebIdentityWithContext",
+		Action:  "AssumeRoleWithWebIdentity",
 		Input:   input,
 		Output:  (*sts.AssumeRoleWithWebIdentityOutput)(nil),
 		Error:   nil,
@@ -102,7 +102,7 @@ func (c *Client) AssumeRoleWithWebIdentityWithContext(ctx context.Context, input
 func (c *Client) DecodeAuthorizationMessageWithContext(ctx context.Context, input *sts.DecodeAuthorizationMessageInput, opts ...request.Option) (*sts.DecodeAuthorizationMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "DecodeAuthorizationMessageWithContext",
+		Action:  "DecodeAuthorizationMessage",
 		Input:   input,
 		Output:  (*sts.DecodeAuthorizationMessageOutput)(nil),
 		Error:   nil,
@@ -123,7 +123,7 @@ func (c *Client) DecodeAuthorizationMessageWithContext(ctx context.Context, inpu
 func (c *Client) GetAccessKeyInfoWithContext(ctx context.Context, input *sts.GetAccessKeyInfoInput, opts ...request.Option) (*sts.GetAccessKeyInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "GetAccessKeyInfoWithContext",
+		Action:  "GetAccessKeyInfo",
 		Input:   input,
 		Output:  (*sts.GetAccessKeyInfoOutput)(nil),
 		Error:   nil,
@@ -144,7 +144,7 @@ func (c *Client) GetAccessKeyInfoWithContext(ctx context.Context, input *sts.Get
 func (c *Client) GetCallerIdentityWithContext(ctx context.Context, input *sts.GetCallerIdentityInput, opts ...request.Option) (*sts.GetCallerIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "GetCallerIdentityWithContext",
+		Action:  "GetCallerIdentity",
 		Input:   input,
 		Output:  (*sts.GetCallerIdentityOutput)(nil),
 		Error:   nil,
@@ -165,7 +165,7 @@ func (c *Client) GetCallerIdentityWithContext(ctx context.Context, input *sts.Ge
 func (c *Client) GetFederationTokenWithContext(ctx context.Context, input *sts.GetFederationTokenInput, opts ...request.Option) (*sts.GetFederationTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "GetFederationTokenWithContext",
+		Action:  "GetFederationToken",
 		Input:   input,
 		Output:  (*sts.GetFederationTokenOutput)(nil),
 		Error:   nil,
@@ -186,7 +186,7 @@ func (c *Client) GetFederationTokenWithContext(ctx context.Context, input *sts.G
 func (c *Client) GetSessionTokenWithContext(ctx context.Context, input *sts.GetSessionTokenInput, opts ...request.Option) (*sts.GetSessionTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sts",
-		Action:  "GetSessionTokenWithContext",
+		Action:  "GetSessionToken",
 		Input:   input,
 		Output:  (*sts.GetSessionTokenOutput)(nil),
 		Error:   nil,

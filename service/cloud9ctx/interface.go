@@ -41,7 +41,7 @@ var _ Cloud9 = (*Client)(nil)
 func (c *Client) CreateEnvironmentEC2WithContext(ctx context.Context, input *cloud9.CreateEnvironmentEC2Input, opts ...request.Option) (*cloud9.CreateEnvironmentEC2Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "CreateEnvironmentEC2WithContext",
+		Action:  "CreateEnvironmentEC2",
 		Input:   input,
 		Output:  (*cloud9.CreateEnvironmentEC2Output)(nil),
 		Error:   nil,
@@ -62,7 +62,7 @@ func (c *Client) CreateEnvironmentEC2WithContext(ctx context.Context, input *clo
 func (c *Client) CreateEnvironmentMembershipWithContext(ctx context.Context, input *cloud9.CreateEnvironmentMembershipInput, opts ...request.Option) (*cloud9.CreateEnvironmentMembershipOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "CreateEnvironmentMembershipWithContext",
+		Action:  "CreateEnvironmentMembership",
 		Input:   input,
 		Output:  (*cloud9.CreateEnvironmentMembershipOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) CreateEnvironmentMembershipWithContext(ctx context.Context, inp
 func (c *Client) DeleteEnvironmentWithContext(ctx context.Context, input *cloud9.DeleteEnvironmentInput, opts ...request.Option) (*cloud9.DeleteEnvironmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "DeleteEnvironmentWithContext",
+		Action:  "DeleteEnvironment",
 		Input:   input,
 		Output:  (*cloud9.DeleteEnvironmentOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) DeleteEnvironmentWithContext(ctx context.Context, input *cloud9
 func (c *Client) DeleteEnvironmentMembershipWithContext(ctx context.Context, input *cloud9.DeleteEnvironmentMembershipInput, opts ...request.Option) (*cloud9.DeleteEnvironmentMembershipOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "DeleteEnvironmentMembershipWithContext",
+		Action:  "DeleteEnvironmentMembership",
 		Input:   input,
 		Output:  (*cloud9.DeleteEnvironmentMembershipOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) DeleteEnvironmentMembershipWithContext(ctx context.Context, inp
 func (c *Client) DescribeEnvironmentMembershipsWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentMembershipsInput, opts ...request.Option) (*cloud9.DescribeEnvironmentMembershipsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "DescribeEnvironmentMembershipsWithContext",
+		Action:  "DescribeEnvironmentMemberships",
 		Input:   input,
 		Output:  (*cloud9.DescribeEnvironmentMembershipsOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) DescribeEnvironmentMembershipsWithContext(ctx context.Context, 
 func (c *Client) DescribeEnvironmentStatusWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentStatusInput, opts ...request.Option) (*cloud9.DescribeEnvironmentStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "DescribeEnvironmentStatusWithContext",
+		Action:  "DescribeEnvironmentStatus",
 		Input:   input,
 		Output:  (*cloud9.DescribeEnvironmentStatusOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) DescribeEnvironmentStatusWithContext(ctx context.Context, input
 func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentsInput, opts ...request.Option) (*cloud9.DescribeEnvironmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "DescribeEnvironmentsWithContext",
+		Action:  "DescribeEnvironments",
 		Input:   input,
 		Output:  (*cloud9.DescribeEnvironmentsOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, input *clo
 func (c *Client) ListEnvironmentsWithContext(ctx context.Context, input *cloud9.ListEnvironmentsInput, opts ...request.Option) (*cloud9.ListEnvironmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "ListEnvironmentsWithContext",
+		Action:  "ListEnvironments",
 		Input:   input,
 		Output:  (*cloud9.ListEnvironmentsOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) ListEnvironmentsWithContext(ctx context.Context, input *cloud9.
 func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentInput, opts ...request.Option) (*cloud9.UpdateEnvironmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "UpdateEnvironmentWithContext",
+		Action:  "UpdateEnvironment",
 		Input:   input,
 		Output:  (*cloud9.UpdateEnvironmentOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, input *cloud9
 func (c *Client) UpdateEnvironmentMembershipWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentMembershipInput, opts ...request.Option) (*cloud9.UpdateEnvironmentMembershipOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
-		Action:  "UpdateEnvironmentMembershipWithContext",
+		Action:  "UpdateEnvironmentMembership",
 		Input:   input,
 		Output:  (*cloud9.UpdateEnvironmentMembershipOutput)(nil),
 		Error:   nil,

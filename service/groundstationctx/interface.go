@@ -56,7 +56,7 @@ var _ GroundStation = (*Client)(nil)
 func (c *Client) CancelContactWithContext(ctx context.Context, input *groundstation.CancelContactInput, opts ...request.Option) (*groundstation.CancelContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "CancelContactWithContext",
+		Action:  "CancelContact",
 		Input:   input,
 		Output:  (*groundstation.CancelContactOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) CancelContactWithContext(ctx context.Context, input *groundstat
 func (c *Client) CreateConfigWithContext(ctx context.Context, input *groundstation.CreateConfigInput, opts ...request.Option) (*groundstation.CreateConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "CreateConfigWithContext",
+		Action:  "CreateConfig",
 		Input:   input,
 		Output:  (*groundstation.CreateConfigOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) CreateConfigWithContext(ctx context.Context, input *groundstati
 func (c *Client) CreateDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.CreateDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.CreateDataflowEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "CreateDataflowEndpointGroupWithContext",
+		Action:  "CreateDataflowEndpointGroup",
 		Input:   input,
 		Output:  (*groundstation.CreateDataflowEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) CreateDataflowEndpointGroupWithContext(ctx context.Context, inp
 func (c *Client) CreateMissionProfileWithContext(ctx context.Context, input *groundstation.CreateMissionProfileInput, opts ...request.Option) (*groundstation.CreateMissionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "CreateMissionProfileWithContext",
+		Action:  "CreateMissionProfile",
 		Input:   input,
 		Output:  (*groundstation.CreateMissionProfileOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) CreateMissionProfileWithContext(ctx context.Context, input *gro
 func (c *Client) DeleteConfigWithContext(ctx context.Context, input *groundstation.DeleteConfigInput, opts ...request.Option) (*groundstation.DeleteConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "DeleteConfigWithContext",
+		Action:  "DeleteConfig",
 		Input:   input,
 		Output:  (*groundstation.DeleteConfigOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) DeleteConfigWithContext(ctx context.Context, input *groundstati
 func (c *Client) DeleteDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.DeleteDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.DeleteDataflowEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "DeleteDataflowEndpointGroupWithContext",
+		Action:  "DeleteDataflowEndpointGroup",
 		Input:   input,
 		Output:  (*groundstation.DeleteDataflowEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) DeleteDataflowEndpointGroupWithContext(ctx context.Context, inp
 func (c *Client) DeleteMissionProfileWithContext(ctx context.Context, input *groundstation.DeleteMissionProfileInput, opts ...request.Option) (*groundstation.DeleteMissionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "DeleteMissionProfileWithContext",
+		Action:  "DeleteMissionProfile",
 		Input:   input,
 		Output:  (*groundstation.DeleteMissionProfileOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) DeleteMissionProfileWithContext(ctx context.Context, input *gro
 func (c *Client) DescribeContactWithContext(ctx context.Context, input *groundstation.DescribeContactInput, opts ...request.Option) (*groundstation.DescribeContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "DescribeContactWithContext",
+		Action:  "DescribeContact",
 		Input:   input,
 		Output:  (*groundstation.DescribeContactOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) DescribeContactWithContext(ctx context.Context, input *groundst
 func (c *Client) GetConfigWithContext(ctx context.Context, input *groundstation.GetConfigInput, opts ...request.Option) (*groundstation.GetConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "GetConfigWithContext",
+		Action:  "GetConfig",
 		Input:   input,
 		Output:  (*groundstation.GetConfigOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) GetConfigWithContext(ctx context.Context, input *groundstation.
 func (c *Client) GetDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.GetDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.GetDataflowEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "GetDataflowEndpointGroupWithContext",
+		Action:  "GetDataflowEndpointGroup",
 		Input:   input,
 		Output:  (*groundstation.GetDataflowEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) GetDataflowEndpointGroupWithContext(ctx context.Context, input 
 func (c *Client) GetMinuteUsageWithContext(ctx context.Context, input *groundstation.GetMinuteUsageInput, opts ...request.Option) (*groundstation.GetMinuteUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "GetMinuteUsageWithContext",
+		Action:  "GetMinuteUsage",
 		Input:   input,
 		Output:  (*groundstation.GetMinuteUsageOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) GetMinuteUsageWithContext(ctx context.Context, input *groundsta
 func (c *Client) GetMissionProfileWithContext(ctx context.Context, input *groundstation.GetMissionProfileInput, opts ...request.Option) (*groundstation.GetMissionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "GetMissionProfileWithContext",
+		Action:  "GetMissionProfile",
 		Input:   input,
 		Output:  (*groundstation.GetMissionProfileOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) GetMissionProfileWithContext(ctx context.Context, input *ground
 func (c *Client) GetSatelliteWithContext(ctx context.Context, input *groundstation.GetSatelliteInput, opts ...request.Option) (*groundstation.GetSatelliteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "GetSatelliteWithContext",
+		Action:  "GetSatellite",
 		Input:   input,
 		Output:  (*groundstation.GetSatelliteOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) GetSatelliteWithContext(ctx context.Context, input *groundstati
 func (c *Client) ListConfigsWithContext(ctx context.Context, input *groundstation.ListConfigsInput, opts ...request.Option) (*groundstation.ListConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListConfigsWithContext",
+		Action:  "ListConfigs",
 		Input:   input,
 		Output:  (*groundstation.ListConfigsOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) ListConfigsWithContext(ctx context.Context, input *groundstatio
 func (c *Client) ListContactsWithContext(ctx context.Context, input *groundstation.ListContactsInput, opts ...request.Option) (*groundstation.ListContactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListContactsWithContext",
+		Action:  "ListContacts",
 		Input:   input,
 		Output:  (*groundstation.ListContactsOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) ListContactsWithContext(ctx context.Context, input *groundstati
 func (c *Client) ListDataflowEndpointGroupsWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, opts ...request.Option) (*groundstation.ListDataflowEndpointGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListDataflowEndpointGroupsWithContext",
+		Action:  "ListDataflowEndpointGroups",
 		Input:   input,
 		Output:  (*groundstation.ListDataflowEndpointGroupsOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) ListDataflowEndpointGroupsWithContext(ctx context.Context, inpu
 func (c *Client) ListGroundStationsWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, opts ...request.Option) (*groundstation.ListGroundStationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListGroundStationsWithContext",
+		Action:  "ListGroundStations",
 		Input:   input,
 		Output:  (*groundstation.ListGroundStationsOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) ListGroundStationsWithContext(ctx context.Context, input *groun
 func (c *Client) ListMissionProfilesWithContext(ctx context.Context, input *groundstation.ListMissionProfilesInput, opts ...request.Option) (*groundstation.ListMissionProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListMissionProfilesWithContext",
+		Action:  "ListMissionProfiles",
 		Input:   input,
 		Output:  (*groundstation.ListMissionProfilesOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) ListMissionProfilesWithContext(ctx context.Context, input *grou
 func (c *Client) ListSatellitesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, opts ...request.Option) (*groundstation.ListSatellitesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListSatellitesWithContext",
+		Action:  "ListSatellites",
 		Input:   input,
 		Output:  (*groundstation.ListSatellitesOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) ListSatellitesWithContext(ctx context.Context, input *groundsta
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *groundstation.ListTagsForResourceInput, opts ...request.Option) (*groundstation.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*groundstation.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *grou
 func (c *Client) ReserveContactWithContext(ctx context.Context, input *groundstation.ReserveContactInput, opts ...request.Option) (*groundstation.ReserveContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "ReserveContactWithContext",
+		Action:  "ReserveContact",
 		Input:   input,
 		Output:  (*groundstation.ReserveContactOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) ReserveContactWithContext(ctx context.Context, input *groundsta
 func (c *Client) TagResourceWithContext(ctx context.Context, input *groundstation.TagResourceInput, opts ...request.Option) (*groundstation.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*groundstation.TagResourceOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *groundstatio
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *groundstation.UntagResourceInput, opts ...request.Option) (*groundstation.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*groundstation.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *groundstat
 func (c *Client) UpdateConfigWithContext(ctx context.Context, input *groundstation.UpdateConfigInput, opts ...request.Option) (*groundstation.UpdateConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "UpdateConfigWithContext",
+		Action:  "UpdateConfig",
 		Input:   input,
 		Output:  (*groundstation.UpdateConfigOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) UpdateConfigWithContext(ctx context.Context, input *groundstati
 func (c *Client) UpdateMissionProfileWithContext(ctx context.Context, input *groundstation.UpdateMissionProfileInput, opts ...request.Option) (*groundstation.UpdateMissionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
-		Action:  "UpdateMissionProfileWithContext",
+		Action:  "UpdateMissionProfile",
 		Input:   input,
 		Output:  (*groundstation.UpdateMissionProfileOutput)(nil),
 		Error:   nil,

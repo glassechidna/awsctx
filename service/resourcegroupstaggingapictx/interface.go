@@ -36,7 +36,7 @@ var _ ResourceGroupsTaggingAPI = (*Client)(nil)
 func (c *Client) GetResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
-		Action:  "GetResourcesWithContext",
+		Action:  "GetResources",
 		Input:   input,
 		Output:  (*resourcegroupstaggingapi.GetResourcesOutput)(nil),
 		Error:   nil,
@@ -57,7 +57,7 @@ func (c *Client) GetResourcesWithContext(ctx context.Context, input *resourcegro
 func (c *Client) GetTagKeysWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagKeysInput, opts ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
-		Action:  "GetTagKeysWithContext",
+		Action:  "GetTagKeys",
 		Input:   input,
 		Output:  (*resourcegroupstaggingapi.GetTagKeysOutput)(nil),
 		Error:   nil,
@@ -78,7 +78,7 @@ func (c *Client) GetTagKeysWithContext(ctx context.Context, input *resourcegroup
 func (c *Client) GetTagValuesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagValuesInput, opts ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
-		Action:  "GetTagValuesWithContext",
+		Action:  "GetTagValues",
 		Input:   input,
 		Output:  (*resourcegroupstaggingapi.GetTagValuesOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) GetTagValuesWithContext(ctx context.Context, input *resourcegro
 func (c *Client) TagResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.TagResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
-		Action:  "TagResourcesWithContext",
+		Action:  "TagResources",
 		Input:   input,
 		Output:  (*resourcegroupstaggingapi.TagResourcesOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) TagResourcesWithContext(ctx context.Context, input *resourcegro
 func (c *Client) UntagResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.UntagResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
-		Action:  "UntagResourcesWithContext",
+		Action:  "UntagResources",
 		Input:   input,
 		Output:  (*resourcegroupstaggingapi.UntagResourcesOutput)(nil),
 		Error:   nil,

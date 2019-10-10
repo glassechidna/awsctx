@@ -62,7 +62,7 @@ var _ EventBridge = (*Client)(nil)
 func (c *Client) ActivateEventSourceWithContext(ctx context.Context, input *eventbridge.ActivateEventSourceInput, opts ...request.Option) (*eventbridge.ActivateEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ActivateEventSourceWithContext",
+		Action:  "ActivateEventSource",
 		Input:   input,
 		Output:  (*eventbridge.ActivateEventSourceOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) ActivateEventSourceWithContext(ctx context.Context, input *even
 func (c *Client) CreateEventBusWithContext(ctx context.Context, input *eventbridge.CreateEventBusInput, opts ...request.Option) (*eventbridge.CreateEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "CreateEventBusWithContext",
+		Action:  "CreateEventBus",
 		Input:   input,
 		Output:  (*eventbridge.CreateEventBusOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) CreateEventBusWithContext(ctx context.Context, input *eventbrid
 func (c *Client) CreatePartnerEventSourceWithContext(ctx context.Context, input *eventbridge.CreatePartnerEventSourceInput, opts ...request.Option) (*eventbridge.CreatePartnerEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "CreatePartnerEventSourceWithContext",
+		Action:  "CreatePartnerEventSource",
 		Input:   input,
 		Output:  (*eventbridge.CreatePartnerEventSourceOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) CreatePartnerEventSourceWithContext(ctx context.Context, input 
 func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *eventbridge.DeactivateEventSourceInput, opts ...request.Option) (*eventbridge.DeactivateEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DeactivateEventSourceWithContext",
+		Action:  "DeactivateEventSource",
 		Input:   input,
 		Output:  (*eventbridge.DeactivateEventSourceOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *ev
 func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *eventbridge.DeleteEventBusInput, opts ...request.Option) (*eventbridge.DeleteEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DeleteEventBusWithContext",
+		Action:  "DeleteEventBus",
 		Input:   input,
 		Output:  (*eventbridge.DeleteEventBusOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *eventbrid
 func (c *Client) DeletePartnerEventSourceWithContext(ctx context.Context, input *eventbridge.DeletePartnerEventSourceInput, opts ...request.Option) (*eventbridge.DeletePartnerEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DeletePartnerEventSourceWithContext",
+		Action:  "DeletePartnerEventSource",
 		Input:   input,
 		Output:  (*eventbridge.DeletePartnerEventSourceOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) DeletePartnerEventSourceWithContext(ctx context.Context, input 
 func (c *Client) DeleteRuleWithContext(ctx context.Context, input *eventbridge.DeleteRuleInput, opts ...request.Option) (*eventbridge.DeleteRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DeleteRuleWithContext",
+		Action:  "DeleteRule",
 		Input:   input,
 		Output:  (*eventbridge.DeleteRuleOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *eventbridge.D
 func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *eventbridge.DescribeEventBusInput, opts ...request.Option) (*eventbridge.DescribeEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DescribeEventBusWithContext",
+		Action:  "DescribeEventBus",
 		Input:   input,
 		Output:  (*eventbridge.DescribeEventBusOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *eventbr
 func (c *Client) DescribeEventSourceWithContext(ctx context.Context, input *eventbridge.DescribeEventSourceInput, opts ...request.Option) (*eventbridge.DescribeEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DescribeEventSourceWithContext",
+		Action:  "DescribeEventSource",
 		Input:   input,
 		Output:  (*eventbridge.DescribeEventSourceOutput)(nil),
 		Error:   nil,
@@ -251,7 +251,7 @@ func (c *Client) DescribeEventSourceWithContext(ctx context.Context, input *even
 func (c *Client) DescribePartnerEventSourceWithContext(ctx context.Context, input *eventbridge.DescribePartnerEventSourceInput, opts ...request.Option) (*eventbridge.DescribePartnerEventSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DescribePartnerEventSourceWithContext",
+		Action:  "DescribePartnerEventSource",
 		Input:   input,
 		Output:  (*eventbridge.DescribePartnerEventSourceOutput)(nil),
 		Error:   nil,
@@ -272,7 +272,7 @@ func (c *Client) DescribePartnerEventSourceWithContext(ctx context.Context, inpu
 func (c *Client) DescribeRuleWithContext(ctx context.Context, input *eventbridge.DescribeRuleInput, opts ...request.Option) (*eventbridge.DescribeRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DescribeRuleWithContext",
+		Action:  "DescribeRule",
 		Input:   input,
 		Output:  (*eventbridge.DescribeRuleOutput)(nil),
 		Error:   nil,
@@ -293,7 +293,7 @@ func (c *Client) DescribeRuleWithContext(ctx context.Context, input *eventbridge
 func (c *Client) DisableRuleWithContext(ctx context.Context, input *eventbridge.DisableRuleInput, opts ...request.Option) (*eventbridge.DisableRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "DisableRuleWithContext",
+		Action:  "DisableRule",
 		Input:   input,
 		Output:  (*eventbridge.DisableRuleOutput)(nil),
 		Error:   nil,
@@ -314,7 +314,7 @@ func (c *Client) DisableRuleWithContext(ctx context.Context, input *eventbridge.
 func (c *Client) EnableRuleWithContext(ctx context.Context, input *eventbridge.EnableRuleInput, opts ...request.Option) (*eventbridge.EnableRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "EnableRuleWithContext",
+		Action:  "EnableRule",
 		Input:   input,
 		Output:  (*eventbridge.EnableRuleOutput)(nil),
 		Error:   nil,
@@ -335,7 +335,7 @@ func (c *Client) EnableRuleWithContext(ctx context.Context, input *eventbridge.E
 func (c *Client) ListEventBusesWithContext(ctx context.Context, input *eventbridge.ListEventBusesInput, opts ...request.Option) (*eventbridge.ListEventBusesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListEventBusesWithContext",
+		Action:  "ListEventBuses",
 		Input:   input,
 		Output:  (*eventbridge.ListEventBusesOutput)(nil),
 		Error:   nil,
@@ -356,7 +356,7 @@ func (c *Client) ListEventBusesWithContext(ctx context.Context, input *eventbrid
 func (c *Client) ListEventSourcesWithContext(ctx context.Context, input *eventbridge.ListEventSourcesInput, opts ...request.Option) (*eventbridge.ListEventSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListEventSourcesWithContext",
+		Action:  "ListEventSources",
 		Input:   input,
 		Output:  (*eventbridge.ListEventSourcesOutput)(nil),
 		Error:   nil,
@@ -377,7 +377,7 @@ func (c *Client) ListEventSourcesWithContext(ctx context.Context, input *eventbr
 func (c *Client) ListPartnerEventSourceAccountsWithContext(ctx context.Context, input *eventbridge.ListPartnerEventSourceAccountsInput, opts ...request.Option) (*eventbridge.ListPartnerEventSourceAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListPartnerEventSourceAccountsWithContext",
+		Action:  "ListPartnerEventSourceAccounts",
 		Input:   input,
 		Output:  (*eventbridge.ListPartnerEventSourceAccountsOutput)(nil),
 		Error:   nil,
@@ -398,7 +398,7 @@ func (c *Client) ListPartnerEventSourceAccountsWithContext(ctx context.Context, 
 func (c *Client) ListPartnerEventSourcesWithContext(ctx context.Context, input *eventbridge.ListPartnerEventSourcesInput, opts ...request.Option) (*eventbridge.ListPartnerEventSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListPartnerEventSourcesWithContext",
+		Action:  "ListPartnerEventSources",
 		Input:   input,
 		Output:  (*eventbridge.ListPartnerEventSourcesOutput)(nil),
 		Error:   nil,
@@ -419,7 +419,7 @@ func (c *Client) ListPartnerEventSourcesWithContext(ctx context.Context, input *
 func (c *Client) ListRuleNamesByTargetWithContext(ctx context.Context, input *eventbridge.ListRuleNamesByTargetInput, opts ...request.Option) (*eventbridge.ListRuleNamesByTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListRuleNamesByTargetWithContext",
+		Action:  "ListRuleNamesByTarget",
 		Input:   input,
 		Output:  (*eventbridge.ListRuleNamesByTargetOutput)(nil),
 		Error:   nil,
@@ -440,7 +440,7 @@ func (c *Client) ListRuleNamesByTargetWithContext(ctx context.Context, input *ev
 func (c *Client) ListRulesWithContext(ctx context.Context, input *eventbridge.ListRulesInput, opts ...request.Option) (*eventbridge.ListRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListRulesWithContext",
+		Action:  "ListRules",
 		Input:   input,
 		Output:  (*eventbridge.ListRulesOutput)(nil),
 		Error:   nil,
@@ -461,7 +461,7 @@ func (c *Client) ListRulesWithContext(ctx context.Context, input *eventbridge.Li
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *eventbridge.ListTagsForResourceInput, opts ...request.Option) (*eventbridge.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*eventbridge.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -482,7 +482,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *even
 func (c *Client) ListTargetsByRuleWithContext(ctx context.Context, input *eventbridge.ListTargetsByRuleInput, opts ...request.Option) (*eventbridge.ListTargetsByRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "ListTargetsByRuleWithContext",
+		Action:  "ListTargetsByRule",
 		Input:   input,
 		Output:  (*eventbridge.ListTargetsByRuleOutput)(nil),
 		Error:   nil,
@@ -503,7 +503,7 @@ func (c *Client) ListTargetsByRuleWithContext(ctx context.Context, input *eventb
 func (c *Client) PutEventsWithContext(ctx context.Context, input *eventbridge.PutEventsInput, opts ...request.Option) (*eventbridge.PutEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "PutEventsWithContext",
+		Action:  "PutEvents",
 		Input:   input,
 		Output:  (*eventbridge.PutEventsOutput)(nil),
 		Error:   nil,
@@ -524,7 +524,7 @@ func (c *Client) PutEventsWithContext(ctx context.Context, input *eventbridge.Pu
 func (c *Client) PutPartnerEventsWithContext(ctx context.Context, input *eventbridge.PutPartnerEventsInput, opts ...request.Option) (*eventbridge.PutPartnerEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "PutPartnerEventsWithContext",
+		Action:  "PutPartnerEvents",
 		Input:   input,
 		Output:  (*eventbridge.PutPartnerEventsOutput)(nil),
 		Error:   nil,
@@ -545,7 +545,7 @@ func (c *Client) PutPartnerEventsWithContext(ctx context.Context, input *eventbr
 func (c *Client) PutPermissionWithContext(ctx context.Context, input *eventbridge.PutPermissionInput, opts ...request.Option) (*eventbridge.PutPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "PutPermissionWithContext",
+		Action:  "PutPermission",
 		Input:   input,
 		Output:  (*eventbridge.PutPermissionOutput)(nil),
 		Error:   nil,
@@ -566,7 +566,7 @@ func (c *Client) PutPermissionWithContext(ctx context.Context, input *eventbridg
 func (c *Client) PutRuleWithContext(ctx context.Context, input *eventbridge.PutRuleInput, opts ...request.Option) (*eventbridge.PutRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "PutRuleWithContext",
+		Action:  "PutRule",
 		Input:   input,
 		Output:  (*eventbridge.PutRuleOutput)(nil),
 		Error:   nil,
@@ -587,7 +587,7 @@ func (c *Client) PutRuleWithContext(ctx context.Context, input *eventbridge.PutR
 func (c *Client) PutTargetsWithContext(ctx context.Context, input *eventbridge.PutTargetsInput, opts ...request.Option) (*eventbridge.PutTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "PutTargetsWithContext",
+		Action:  "PutTargets",
 		Input:   input,
 		Output:  (*eventbridge.PutTargetsOutput)(nil),
 		Error:   nil,
@@ -608,7 +608,7 @@ func (c *Client) PutTargetsWithContext(ctx context.Context, input *eventbridge.P
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *eventbridge.RemovePermissionInput, opts ...request.Option) (*eventbridge.RemovePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "RemovePermissionWithContext",
+		Action:  "RemovePermission",
 		Input:   input,
 		Output:  (*eventbridge.RemovePermissionOutput)(nil),
 		Error:   nil,
@@ -629,7 +629,7 @@ func (c *Client) RemovePermissionWithContext(ctx context.Context, input *eventbr
 func (c *Client) RemoveTargetsWithContext(ctx context.Context, input *eventbridge.RemoveTargetsInput, opts ...request.Option) (*eventbridge.RemoveTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "RemoveTargetsWithContext",
+		Action:  "RemoveTargets",
 		Input:   input,
 		Output:  (*eventbridge.RemoveTargetsOutput)(nil),
 		Error:   nil,
@@ -650,7 +650,7 @@ func (c *Client) RemoveTargetsWithContext(ctx context.Context, input *eventbridg
 func (c *Client) TagResourceWithContext(ctx context.Context, input *eventbridge.TagResourceInput, opts ...request.Option) (*eventbridge.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*eventbridge.TagResourceOutput)(nil),
 		Error:   nil,
@@ -671,7 +671,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *eventbridge.
 func (c *Client) TestEventPatternWithContext(ctx context.Context, input *eventbridge.TestEventPatternInput, opts ...request.Option) (*eventbridge.TestEventPatternOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "TestEventPatternWithContext",
+		Action:  "TestEventPattern",
 		Input:   input,
 		Output:  (*eventbridge.TestEventPatternOutput)(nil),
 		Error:   nil,
@@ -692,7 +692,7 @@ func (c *Client) TestEventPatternWithContext(ctx context.Context, input *eventbr
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *eventbridge.UntagResourceInput, opts ...request.Option) (*eventbridge.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*eventbridge.UntagResourceOutput)(nil),
 		Error:   nil,

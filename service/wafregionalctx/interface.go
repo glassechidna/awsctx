@@ -111,7 +111,7 @@ var _ WAFRegional = (*Client)(nil)
 func (c *Client) AssociateWebACLWithContext(ctx context.Context, input *wafregional.AssociateWebACLInput, opts ...request.Option) (*wafregional.AssociateWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "AssociateWebACLWithContext",
+		Action:  "AssociateWebACL",
 		Input:   input,
 		Output:  (*wafregional.AssociateWebACLOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) AssociateWebACLWithContext(ctx context.Context, input *wafregio
 func (c *Client) CreateByteMatchSetWithContext(ctx context.Context, input *waf.CreateByteMatchSetInput, opts ...request.Option) (*waf.CreateByteMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateByteMatchSetWithContext",
+		Action:  "CreateByteMatchSet",
 		Input:   input,
 		Output:  (*waf.CreateByteMatchSetOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) CreateByteMatchSetWithContext(ctx context.Context, input *waf.C
 func (c *Client) CreateGeoMatchSetWithContext(ctx context.Context, input *waf.CreateGeoMatchSetInput, opts ...request.Option) (*waf.CreateGeoMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateGeoMatchSetWithContext",
+		Action:  "CreateGeoMatchSet",
 		Input:   input,
 		Output:  (*waf.CreateGeoMatchSetOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) CreateGeoMatchSetWithContext(ctx context.Context, input *waf.Cr
 func (c *Client) CreateIPSetWithContext(ctx context.Context, input *waf.CreateIPSetInput, opts ...request.Option) (*waf.CreateIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateIPSetWithContext",
+		Action:  "CreateIPSet",
 		Input:   input,
 		Output:  (*waf.CreateIPSetOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) CreateIPSetWithContext(ctx context.Context, input *waf.CreateIP
 func (c *Client) CreateRateBasedRuleWithContext(ctx context.Context, input *waf.CreateRateBasedRuleInput, opts ...request.Option) (*waf.CreateRateBasedRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateRateBasedRuleWithContext",
+		Action:  "CreateRateBasedRule",
 		Input:   input,
 		Output:  (*waf.CreateRateBasedRuleOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) CreateRateBasedRuleWithContext(ctx context.Context, input *waf.
 func (c *Client) CreateRegexMatchSetWithContext(ctx context.Context, input *waf.CreateRegexMatchSetInput, opts ...request.Option) (*waf.CreateRegexMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateRegexMatchSetWithContext",
+		Action:  "CreateRegexMatchSet",
 		Input:   input,
 		Output:  (*waf.CreateRegexMatchSetOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) CreateRegexMatchSetWithContext(ctx context.Context, input *waf.
 func (c *Client) CreateRegexPatternSetWithContext(ctx context.Context, input *waf.CreateRegexPatternSetInput, opts ...request.Option) (*waf.CreateRegexPatternSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateRegexPatternSetWithContext",
+		Action:  "CreateRegexPatternSet",
 		Input:   input,
 		Output:  (*waf.CreateRegexPatternSetOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) CreateRegexPatternSetWithContext(ctx context.Context, input *wa
 func (c *Client) CreateRuleWithContext(ctx context.Context, input *waf.CreateRuleInput, opts ...request.Option) (*waf.CreateRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateRuleWithContext",
+		Action:  "CreateRule",
 		Input:   input,
 		Output:  (*waf.CreateRuleOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, input *waf.CreateRul
 func (c *Client) CreateRuleGroupWithContext(ctx context.Context, input *waf.CreateRuleGroupInput, opts ...request.Option) (*waf.CreateRuleGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateRuleGroupWithContext",
+		Action:  "CreateRuleGroup",
 		Input:   input,
 		Output:  (*waf.CreateRuleGroupOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) CreateRuleGroupWithContext(ctx context.Context, input *waf.Crea
 func (c *Client) CreateSizeConstraintSetWithContext(ctx context.Context, input *waf.CreateSizeConstraintSetInput, opts ...request.Option) (*waf.CreateSizeConstraintSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateSizeConstraintSetWithContext",
+		Action:  "CreateSizeConstraintSet",
 		Input:   input,
 		Output:  (*waf.CreateSizeConstraintSetOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) CreateSizeConstraintSetWithContext(ctx context.Context, input *
 func (c *Client) CreateSqlInjectionMatchSetWithContext(ctx context.Context, input *waf.CreateSqlInjectionMatchSetInput, opts ...request.Option) (*waf.CreateSqlInjectionMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateSqlInjectionMatchSetWithContext",
+		Action:  "CreateSqlInjectionMatchSet",
 		Input:   input,
 		Output:  (*waf.CreateSqlInjectionMatchSetOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) CreateSqlInjectionMatchSetWithContext(ctx context.Context, inpu
 func (c *Client) CreateWebACLWithContext(ctx context.Context, input *waf.CreateWebACLInput, opts ...request.Option) (*waf.CreateWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateWebACLWithContext",
+		Action:  "CreateWebACL",
 		Input:   input,
 		Output:  (*waf.CreateWebACLOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) CreateWebACLWithContext(ctx context.Context, input *waf.CreateW
 func (c *Client) CreateXssMatchSetWithContext(ctx context.Context, input *waf.CreateXssMatchSetInput, opts ...request.Option) (*waf.CreateXssMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "CreateXssMatchSetWithContext",
+		Action:  "CreateXssMatchSet",
 		Input:   input,
 		Output:  (*waf.CreateXssMatchSetOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) CreateXssMatchSetWithContext(ctx context.Context, input *waf.Cr
 func (c *Client) DeleteByteMatchSetWithContext(ctx context.Context, input *waf.DeleteByteMatchSetInput, opts ...request.Option) (*waf.DeleteByteMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteByteMatchSetWithContext",
+		Action:  "DeleteByteMatchSet",
 		Input:   input,
 		Output:  (*waf.DeleteByteMatchSetOutput)(nil),
 		Error:   nil,
@@ -405,7 +405,7 @@ func (c *Client) DeleteByteMatchSetWithContext(ctx context.Context, input *waf.D
 func (c *Client) DeleteGeoMatchSetWithContext(ctx context.Context, input *waf.DeleteGeoMatchSetInput, opts ...request.Option) (*waf.DeleteGeoMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteGeoMatchSetWithContext",
+		Action:  "DeleteGeoMatchSet",
 		Input:   input,
 		Output:  (*waf.DeleteGeoMatchSetOutput)(nil),
 		Error:   nil,
@@ -426,7 +426,7 @@ func (c *Client) DeleteGeoMatchSetWithContext(ctx context.Context, input *waf.De
 func (c *Client) DeleteIPSetWithContext(ctx context.Context, input *waf.DeleteIPSetInput, opts ...request.Option) (*waf.DeleteIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteIPSetWithContext",
+		Action:  "DeleteIPSet",
 		Input:   input,
 		Output:  (*waf.DeleteIPSetOutput)(nil),
 		Error:   nil,
@@ -447,7 +447,7 @@ func (c *Client) DeleteIPSetWithContext(ctx context.Context, input *waf.DeleteIP
 func (c *Client) DeleteLoggingConfigurationWithContext(ctx context.Context, input *waf.DeleteLoggingConfigurationInput, opts ...request.Option) (*waf.DeleteLoggingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteLoggingConfigurationWithContext",
+		Action:  "DeleteLoggingConfiguration",
 		Input:   input,
 		Output:  (*waf.DeleteLoggingConfigurationOutput)(nil),
 		Error:   nil,
@@ -468,7 +468,7 @@ func (c *Client) DeleteLoggingConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) DeletePermissionPolicyWithContext(ctx context.Context, input *waf.DeletePermissionPolicyInput, opts ...request.Option) (*waf.DeletePermissionPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeletePermissionPolicyWithContext",
+		Action:  "DeletePermissionPolicy",
 		Input:   input,
 		Output:  (*waf.DeletePermissionPolicyOutput)(nil),
 		Error:   nil,
@@ -489,7 +489,7 @@ func (c *Client) DeletePermissionPolicyWithContext(ctx context.Context, input *w
 func (c *Client) DeleteRateBasedRuleWithContext(ctx context.Context, input *waf.DeleteRateBasedRuleInput, opts ...request.Option) (*waf.DeleteRateBasedRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteRateBasedRuleWithContext",
+		Action:  "DeleteRateBasedRule",
 		Input:   input,
 		Output:  (*waf.DeleteRateBasedRuleOutput)(nil),
 		Error:   nil,
@@ -510,7 +510,7 @@ func (c *Client) DeleteRateBasedRuleWithContext(ctx context.Context, input *waf.
 func (c *Client) DeleteRegexMatchSetWithContext(ctx context.Context, input *waf.DeleteRegexMatchSetInput, opts ...request.Option) (*waf.DeleteRegexMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteRegexMatchSetWithContext",
+		Action:  "DeleteRegexMatchSet",
 		Input:   input,
 		Output:  (*waf.DeleteRegexMatchSetOutput)(nil),
 		Error:   nil,
@@ -531,7 +531,7 @@ func (c *Client) DeleteRegexMatchSetWithContext(ctx context.Context, input *waf.
 func (c *Client) DeleteRegexPatternSetWithContext(ctx context.Context, input *waf.DeleteRegexPatternSetInput, opts ...request.Option) (*waf.DeleteRegexPatternSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteRegexPatternSetWithContext",
+		Action:  "DeleteRegexPatternSet",
 		Input:   input,
 		Output:  (*waf.DeleteRegexPatternSetOutput)(nil),
 		Error:   nil,
@@ -552,7 +552,7 @@ func (c *Client) DeleteRegexPatternSetWithContext(ctx context.Context, input *wa
 func (c *Client) DeleteRuleWithContext(ctx context.Context, input *waf.DeleteRuleInput, opts ...request.Option) (*waf.DeleteRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteRuleWithContext",
+		Action:  "DeleteRule",
 		Input:   input,
 		Output:  (*waf.DeleteRuleOutput)(nil),
 		Error:   nil,
@@ -573,7 +573,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *waf.DeleteRul
 func (c *Client) DeleteRuleGroupWithContext(ctx context.Context, input *waf.DeleteRuleGroupInput, opts ...request.Option) (*waf.DeleteRuleGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteRuleGroupWithContext",
+		Action:  "DeleteRuleGroup",
 		Input:   input,
 		Output:  (*waf.DeleteRuleGroupOutput)(nil),
 		Error:   nil,
@@ -594,7 +594,7 @@ func (c *Client) DeleteRuleGroupWithContext(ctx context.Context, input *waf.Dele
 func (c *Client) DeleteSizeConstraintSetWithContext(ctx context.Context, input *waf.DeleteSizeConstraintSetInput, opts ...request.Option) (*waf.DeleteSizeConstraintSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteSizeConstraintSetWithContext",
+		Action:  "DeleteSizeConstraintSet",
 		Input:   input,
 		Output:  (*waf.DeleteSizeConstraintSetOutput)(nil),
 		Error:   nil,
@@ -615,7 +615,7 @@ func (c *Client) DeleteSizeConstraintSetWithContext(ctx context.Context, input *
 func (c *Client) DeleteSqlInjectionMatchSetWithContext(ctx context.Context, input *waf.DeleteSqlInjectionMatchSetInput, opts ...request.Option) (*waf.DeleteSqlInjectionMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteSqlInjectionMatchSetWithContext",
+		Action:  "DeleteSqlInjectionMatchSet",
 		Input:   input,
 		Output:  (*waf.DeleteSqlInjectionMatchSetOutput)(nil),
 		Error:   nil,
@@ -636,7 +636,7 @@ func (c *Client) DeleteSqlInjectionMatchSetWithContext(ctx context.Context, inpu
 func (c *Client) DeleteWebACLWithContext(ctx context.Context, input *waf.DeleteWebACLInput, opts ...request.Option) (*waf.DeleteWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteWebACLWithContext",
+		Action:  "DeleteWebACL",
 		Input:   input,
 		Output:  (*waf.DeleteWebACLOutput)(nil),
 		Error:   nil,
@@ -657,7 +657,7 @@ func (c *Client) DeleteWebACLWithContext(ctx context.Context, input *waf.DeleteW
 func (c *Client) DeleteXssMatchSetWithContext(ctx context.Context, input *waf.DeleteXssMatchSetInput, opts ...request.Option) (*waf.DeleteXssMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DeleteXssMatchSetWithContext",
+		Action:  "DeleteXssMatchSet",
 		Input:   input,
 		Output:  (*waf.DeleteXssMatchSetOutput)(nil),
 		Error:   nil,
@@ -678,7 +678,7 @@ func (c *Client) DeleteXssMatchSetWithContext(ctx context.Context, input *waf.De
 func (c *Client) DisassociateWebACLWithContext(ctx context.Context, input *wafregional.DisassociateWebACLInput, opts ...request.Option) (*wafregional.DisassociateWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "DisassociateWebACLWithContext",
+		Action:  "DisassociateWebACL",
 		Input:   input,
 		Output:  (*wafregional.DisassociateWebACLOutput)(nil),
 		Error:   nil,
@@ -699,7 +699,7 @@ func (c *Client) DisassociateWebACLWithContext(ctx context.Context, input *wafre
 func (c *Client) GetByteMatchSetWithContext(ctx context.Context, input *waf.GetByteMatchSetInput, opts ...request.Option) (*waf.GetByteMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetByteMatchSetWithContext",
+		Action:  "GetByteMatchSet",
 		Input:   input,
 		Output:  (*waf.GetByteMatchSetOutput)(nil),
 		Error:   nil,
@@ -720,7 +720,7 @@ func (c *Client) GetByteMatchSetWithContext(ctx context.Context, input *waf.GetB
 func (c *Client) GetChangeTokenWithContext(ctx context.Context, input *waf.GetChangeTokenInput, opts ...request.Option) (*waf.GetChangeTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetChangeTokenWithContext",
+		Action:  "GetChangeToken",
 		Input:   input,
 		Output:  (*waf.GetChangeTokenOutput)(nil),
 		Error:   nil,
@@ -741,7 +741,7 @@ func (c *Client) GetChangeTokenWithContext(ctx context.Context, input *waf.GetCh
 func (c *Client) GetChangeTokenStatusWithContext(ctx context.Context, input *waf.GetChangeTokenStatusInput, opts ...request.Option) (*waf.GetChangeTokenStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetChangeTokenStatusWithContext",
+		Action:  "GetChangeTokenStatus",
 		Input:   input,
 		Output:  (*waf.GetChangeTokenStatusOutput)(nil),
 		Error:   nil,
@@ -762,7 +762,7 @@ func (c *Client) GetChangeTokenStatusWithContext(ctx context.Context, input *waf
 func (c *Client) GetGeoMatchSetWithContext(ctx context.Context, input *waf.GetGeoMatchSetInput, opts ...request.Option) (*waf.GetGeoMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetGeoMatchSetWithContext",
+		Action:  "GetGeoMatchSet",
 		Input:   input,
 		Output:  (*waf.GetGeoMatchSetOutput)(nil),
 		Error:   nil,
@@ -783,7 +783,7 @@ func (c *Client) GetGeoMatchSetWithContext(ctx context.Context, input *waf.GetGe
 func (c *Client) GetIPSetWithContext(ctx context.Context, input *waf.GetIPSetInput, opts ...request.Option) (*waf.GetIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetIPSetWithContext",
+		Action:  "GetIPSet",
 		Input:   input,
 		Output:  (*waf.GetIPSetOutput)(nil),
 		Error:   nil,
@@ -804,7 +804,7 @@ func (c *Client) GetIPSetWithContext(ctx context.Context, input *waf.GetIPSetInp
 func (c *Client) GetLoggingConfigurationWithContext(ctx context.Context, input *waf.GetLoggingConfigurationInput, opts ...request.Option) (*waf.GetLoggingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetLoggingConfigurationWithContext",
+		Action:  "GetLoggingConfiguration",
 		Input:   input,
 		Output:  (*waf.GetLoggingConfigurationOutput)(nil),
 		Error:   nil,
@@ -825,7 +825,7 @@ func (c *Client) GetLoggingConfigurationWithContext(ctx context.Context, input *
 func (c *Client) GetPermissionPolicyWithContext(ctx context.Context, input *waf.GetPermissionPolicyInput, opts ...request.Option) (*waf.GetPermissionPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetPermissionPolicyWithContext",
+		Action:  "GetPermissionPolicy",
 		Input:   input,
 		Output:  (*waf.GetPermissionPolicyOutput)(nil),
 		Error:   nil,
@@ -846,7 +846,7 @@ func (c *Client) GetPermissionPolicyWithContext(ctx context.Context, input *waf.
 func (c *Client) GetRateBasedRuleWithContext(ctx context.Context, input *waf.GetRateBasedRuleInput, opts ...request.Option) (*waf.GetRateBasedRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetRateBasedRuleWithContext",
+		Action:  "GetRateBasedRule",
 		Input:   input,
 		Output:  (*waf.GetRateBasedRuleOutput)(nil),
 		Error:   nil,
@@ -867,7 +867,7 @@ func (c *Client) GetRateBasedRuleWithContext(ctx context.Context, input *waf.Get
 func (c *Client) GetRateBasedRuleManagedKeysWithContext(ctx context.Context, input *waf.GetRateBasedRuleManagedKeysInput, opts ...request.Option) (*waf.GetRateBasedRuleManagedKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetRateBasedRuleManagedKeysWithContext",
+		Action:  "GetRateBasedRuleManagedKeys",
 		Input:   input,
 		Output:  (*waf.GetRateBasedRuleManagedKeysOutput)(nil),
 		Error:   nil,
@@ -888,7 +888,7 @@ func (c *Client) GetRateBasedRuleManagedKeysWithContext(ctx context.Context, inp
 func (c *Client) GetRegexMatchSetWithContext(ctx context.Context, input *waf.GetRegexMatchSetInput, opts ...request.Option) (*waf.GetRegexMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetRegexMatchSetWithContext",
+		Action:  "GetRegexMatchSet",
 		Input:   input,
 		Output:  (*waf.GetRegexMatchSetOutput)(nil),
 		Error:   nil,
@@ -909,7 +909,7 @@ func (c *Client) GetRegexMatchSetWithContext(ctx context.Context, input *waf.Get
 func (c *Client) GetRegexPatternSetWithContext(ctx context.Context, input *waf.GetRegexPatternSetInput, opts ...request.Option) (*waf.GetRegexPatternSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetRegexPatternSetWithContext",
+		Action:  "GetRegexPatternSet",
 		Input:   input,
 		Output:  (*waf.GetRegexPatternSetOutput)(nil),
 		Error:   nil,
@@ -930,7 +930,7 @@ func (c *Client) GetRegexPatternSetWithContext(ctx context.Context, input *waf.G
 func (c *Client) GetRuleWithContext(ctx context.Context, input *waf.GetRuleInput, opts ...request.Option) (*waf.GetRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetRuleWithContext",
+		Action:  "GetRule",
 		Input:   input,
 		Output:  (*waf.GetRuleOutput)(nil),
 		Error:   nil,
@@ -951,7 +951,7 @@ func (c *Client) GetRuleWithContext(ctx context.Context, input *waf.GetRuleInput
 func (c *Client) GetRuleGroupWithContext(ctx context.Context, input *waf.GetRuleGroupInput, opts ...request.Option) (*waf.GetRuleGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetRuleGroupWithContext",
+		Action:  "GetRuleGroup",
 		Input:   input,
 		Output:  (*waf.GetRuleGroupOutput)(nil),
 		Error:   nil,
@@ -972,7 +972,7 @@ func (c *Client) GetRuleGroupWithContext(ctx context.Context, input *waf.GetRule
 func (c *Client) GetSampledRequestsWithContext(ctx context.Context, input *waf.GetSampledRequestsInput, opts ...request.Option) (*waf.GetSampledRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetSampledRequestsWithContext",
+		Action:  "GetSampledRequests",
 		Input:   input,
 		Output:  (*waf.GetSampledRequestsOutput)(nil),
 		Error:   nil,
@@ -993,7 +993,7 @@ func (c *Client) GetSampledRequestsWithContext(ctx context.Context, input *waf.G
 func (c *Client) GetSizeConstraintSetWithContext(ctx context.Context, input *waf.GetSizeConstraintSetInput, opts ...request.Option) (*waf.GetSizeConstraintSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetSizeConstraintSetWithContext",
+		Action:  "GetSizeConstraintSet",
 		Input:   input,
 		Output:  (*waf.GetSizeConstraintSetOutput)(nil),
 		Error:   nil,
@@ -1014,7 +1014,7 @@ func (c *Client) GetSizeConstraintSetWithContext(ctx context.Context, input *waf
 func (c *Client) GetSqlInjectionMatchSetWithContext(ctx context.Context, input *waf.GetSqlInjectionMatchSetInput, opts ...request.Option) (*waf.GetSqlInjectionMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetSqlInjectionMatchSetWithContext",
+		Action:  "GetSqlInjectionMatchSet",
 		Input:   input,
 		Output:  (*waf.GetSqlInjectionMatchSetOutput)(nil),
 		Error:   nil,
@@ -1035,7 +1035,7 @@ func (c *Client) GetSqlInjectionMatchSetWithContext(ctx context.Context, input *
 func (c *Client) GetWebACLWithContext(ctx context.Context, input *waf.GetWebACLInput, opts ...request.Option) (*waf.GetWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetWebACLWithContext",
+		Action:  "GetWebACL",
 		Input:   input,
 		Output:  (*waf.GetWebACLOutput)(nil),
 		Error:   nil,
@@ -1056,7 +1056,7 @@ func (c *Client) GetWebACLWithContext(ctx context.Context, input *waf.GetWebACLI
 func (c *Client) GetWebACLForResourceWithContext(ctx context.Context, input *wafregional.GetWebACLForResourceInput, opts ...request.Option) (*wafregional.GetWebACLForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetWebACLForResourceWithContext",
+		Action:  "GetWebACLForResource",
 		Input:   input,
 		Output:  (*wafregional.GetWebACLForResourceOutput)(nil),
 		Error:   nil,
@@ -1077,7 +1077,7 @@ func (c *Client) GetWebACLForResourceWithContext(ctx context.Context, input *waf
 func (c *Client) GetXssMatchSetWithContext(ctx context.Context, input *waf.GetXssMatchSetInput, opts ...request.Option) (*waf.GetXssMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "GetXssMatchSetWithContext",
+		Action:  "GetXssMatchSet",
 		Input:   input,
 		Output:  (*waf.GetXssMatchSetOutput)(nil),
 		Error:   nil,
@@ -1098,7 +1098,7 @@ func (c *Client) GetXssMatchSetWithContext(ctx context.Context, input *waf.GetXs
 func (c *Client) ListActivatedRulesInRuleGroupWithContext(ctx context.Context, input *waf.ListActivatedRulesInRuleGroupInput, opts ...request.Option) (*waf.ListActivatedRulesInRuleGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListActivatedRulesInRuleGroupWithContext",
+		Action:  "ListActivatedRulesInRuleGroup",
 		Input:   input,
 		Output:  (*waf.ListActivatedRulesInRuleGroupOutput)(nil),
 		Error:   nil,
@@ -1119,7 +1119,7 @@ func (c *Client) ListActivatedRulesInRuleGroupWithContext(ctx context.Context, i
 func (c *Client) ListByteMatchSetsWithContext(ctx context.Context, input *waf.ListByteMatchSetsInput, opts ...request.Option) (*waf.ListByteMatchSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListByteMatchSetsWithContext",
+		Action:  "ListByteMatchSets",
 		Input:   input,
 		Output:  (*waf.ListByteMatchSetsOutput)(nil),
 		Error:   nil,
@@ -1140,7 +1140,7 @@ func (c *Client) ListByteMatchSetsWithContext(ctx context.Context, input *waf.Li
 func (c *Client) ListGeoMatchSetsWithContext(ctx context.Context, input *waf.ListGeoMatchSetsInput, opts ...request.Option) (*waf.ListGeoMatchSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListGeoMatchSetsWithContext",
+		Action:  "ListGeoMatchSets",
 		Input:   input,
 		Output:  (*waf.ListGeoMatchSetsOutput)(nil),
 		Error:   nil,
@@ -1161,7 +1161,7 @@ func (c *Client) ListGeoMatchSetsWithContext(ctx context.Context, input *waf.Lis
 func (c *Client) ListIPSetsWithContext(ctx context.Context, input *waf.ListIPSetsInput, opts ...request.Option) (*waf.ListIPSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListIPSetsWithContext",
+		Action:  "ListIPSets",
 		Input:   input,
 		Output:  (*waf.ListIPSetsOutput)(nil),
 		Error:   nil,
@@ -1182,7 +1182,7 @@ func (c *Client) ListIPSetsWithContext(ctx context.Context, input *waf.ListIPSet
 func (c *Client) ListLoggingConfigurationsWithContext(ctx context.Context, input *waf.ListLoggingConfigurationsInput, opts ...request.Option) (*waf.ListLoggingConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListLoggingConfigurationsWithContext",
+		Action:  "ListLoggingConfigurations",
 		Input:   input,
 		Output:  (*waf.ListLoggingConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1203,7 +1203,7 @@ func (c *Client) ListLoggingConfigurationsWithContext(ctx context.Context, input
 func (c *Client) ListRateBasedRulesWithContext(ctx context.Context, input *waf.ListRateBasedRulesInput, opts ...request.Option) (*waf.ListRateBasedRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListRateBasedRulesWithContext",
+		Action:  "ListRateBasedRules",
 		Input:   input,
 		Output:  (*waf.ListRateBasedRulesOutput)(nil),
 		Error:   nil,
@@ -1224,7 +1224,7 @@ func (c *Client) ListRateBasedRulesWithContext(ctx context.Context, input *waf.L
 func (c *Client) ListRegexMatchSetsWithContext(ctx context.Context, input *waf.ListRegexMatchSetsInput, opts ...request.Option) (*waf.ListRegexMatchSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListRegexMatchSetsWithContext",
+		Action:  "ListRegexMatchSets",
 		Input:   input,
 		Output:  (*waf.ListRegexMatchSetsOutput)(nil),
 		Error:   nil,
@@ -1245,7 +1245,7 @@ func (c *Client) ListRegexMatchSetsWithContext(ctx context.Context, input *waf.L
 func (c *Client) ListRegexPatternSetsWithContext(ctx context.Context, input *waf.ListRegexPatternSetsInput, opts ...request.Option) (*waf.ListRegexPatternSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListRegexPatternSetsWithContext",
+		Action:  "ListRegexPatternSets",
 		Input:   input,
 		Output:  (*waf.ListRegexPatternSetsOutput)(nil),
 		Error:   nil,
@@ -1266,7 +1266,7 @@ func (c *Client) ListRegexPatternSetsWithContext(ctx context.Context, input *waf
 func (c *Client) ListResourcesForWebACLWithContext(ctx context.Context, input *wafregional.ListResourcesForWebACLInput, opts ...request.Option) (*wafregional.ListResourcesForWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListResourcesForWebACLWithContext",
+		Action:  "ListResourcesForWebACL",
 		Input:   input,
 		Output:  (*wafregional.ListResourcesForWebACLOutput)(nil),
 		Error:   nil,
@@ -1287,7 +1287,7 @@ func (c *Client) ListResourcesForWebACLWithContext(ctx context.Context, input *w
 func (c *Client) ListRuleGroupsWithContext(ctx context.Context, input *waf.ListRuleGroupsInput, opts ...request.Option) (*waf.ListRuleGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListRuleGroupsWithContext",
+		Action:  "ListRuleGroups",
 		Input:   input,
 		Output:  (*waf.ListRuleGroupsOutput)(nil),
 		Error:   nil,
@@ -1308,7 +1308,7 @@ func (c *Client) ListRuleGroupsWithContext(ctx context.Context, input *waf.ListR
 func (c *Client) ListRulesWithContext(ctx context.Context, input *waf.ListRulesInput, opts ...request.Option) (*waf.ListRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListRulesWithContext",
+		Action:  "ListRules",
 		Input:   input,
 		Output:  (*waf.ListRulesOutput)(nil),
 		Error:   nil,
@@ -1329,7 +1329,7 @@ func (c *Client) ListRulesWithContext(ctx context.Context, input *waf.ListRulesI
 func (c *Client) ListSizeConstraintSetsWithContext(ctx context.Context, input *waf.ListSizeConstraintSetsInput, opts ...request.Option) (*waf.ListSizeConstraintSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListSizeConstraintSetsWithContext",
+		Action:  "ListSizeConstraintSets",
 		Input:   input,
 		Output:  (*waf.ListSizeConstraintSetsOutput)(nil),
 		Error:   nil,
@@ -1350,7 +1350,7 @@ func (c *Client) ListSizeConstraintSetsWithContext(ctx context.Context, input *w
 func (c *Client) ListSqlInjectionMatchSetsWithContext(ctx context.Context, input *waf.ListSqlInjectionMatchSetsInput, opts ...request.Option) (*waf.ListSqlInjectionMatchSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListSqlInjectionMatchSetsWithContext",
+		Action:  "ListSqlInjectionMatchSets",
 		Input:   input,
 		Output:  (*waf.ListSqlInjectionMatchSetsOutput)(nil),
 		Error:   nil,
@@ -1371,7 +1371,7 @@ func (c *Client) ListSqlInjectionMatchSetsWithContext(ctx context.Context, input
 func (c *Client) ListSubscribedRuleGroupsWithContext(ctx context.Context, input *waf.ListSubscribedRuleGroupsInput, opts ...request.Option) (*waf.ListSubscribedRuleGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListSubscribedRuleGroupsWithContext",
+		Action:  "ListSubscribedRuleGroups",
 		Input:   input,
 		Output:  (*waf.ListSubscribedRuleGroupsOutput)(nil),
 		Error:   nil,
@@ -1392,7 +1392,7 @@ func (c *Client) ListSubscribedRuleGroupsWithContext(ctx context.Context, input 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *waf.ListTagsForResourceInput, opts ...request.Option) (*waf.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*waf.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1413,7 +1413,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *waf.
 func (c *Client) ListWebACLsWithContext(ctx context.Context, input *waf.ListWebACLsInput, opts ...request.Option) (*waf.ListWebACLsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListWebACLsWithContext",
+		Action:  "ListWebACLs",
 		Input:   input,
 		Output:  (*waf.ListWebACLsOutput)(nil),
 		Error:   nil,
@@ -1434,7 +1434,7 @@ func (c *Client) ListWebACLsWithContext(ctx context.Context, input *waf.ListWebA
 func (c *Client) ListXssMatchSetsWithContext(ctx context.Context, input *waf.ListXssMatchSetsInput, opts ...request.Option) (*waf.ListXssMatchSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "ListXssMatchSetsWithContext",
+		Action:  "ListXssMatchSets",
 		Input:   input,
 		Output:  (*waf.ListXssMatchSetsOutput)(nil),
 		Error:   nil,
@@ -1455,7 +1455,7 @@ func (c *Client) ListXssMatchSetsWithContext(ctx context.Context, input *waf.Lis
 func (c *Client) PutLoggingConfigurationWithContext(ctx context.Context, input *waf.PutLoggingConfigurationInput, opts ...request.Option) (*waf.PutLoggingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "PutLoggingConfigurationWithContext",
+		Action:  "PutLoggingConfiguration",
 		Input:   input,
 		Output:  (*waf.PutLoggingConfigurationOutput)(nil),
 		Error:   nil,
@@ -1476,7 +1476,7 @@ func (c *Client) PutLoggingConfigurationWithContext(ctx context.Context, input *
 func (c *Client) PutPermissionPolicyWithContext(ctx context.Context, input *waf.PutPermissionPolicyInput, opts ...request.Option) (*waf.PutPermissionPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "PutPermissionPolicyWithContext",
+		Action:  "PutPermissionPolicy",
 		Input:   input,
 		Output:  (*waf.PutPermissionPolicyOutput)(nil),
 		Error:   nil,
@@ -1497,7 +1497,7 @@ func (c *Client) PutPermissionPolicyWithContext(ctx context.Context, input *waf.
 func (c *Client) TagResourceWithContext(ctx context.Context, input *waf.TagResourceInput, opts ...request.Option) (*waf.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*waf.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1518,7 +1518,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *waf.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *waf.UntagResourceInput, opts ...request.Option) (*waf.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*waf.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1539,7 +1539,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *waf.UntagR
 func (c *Client) UpdateByteMatchSetWithContext(ctx context.Context, input *waf.UpdateByteMatchSetInput, opts ...request.Option) (*waf.UpdateByteMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateByteMatchSetWithContext",
+		Action:  "UpdateByteMatchSet",
 		Input:   input,
 		Output:  (*waf.UpdateByteMatchSetOutput)(nil),
 		Error:   nil,
@@ -1560,7 +1560,7 @@ func (c *Client) UpdateByteMatchSetWithContext(ctx context.Context, input *waf.U
 func (c *Client) UpdateGeoMatchSetWithContext(ctx context.Context, input *waf.UpdateGeoMatchSetInput, opts ...request.Option) (*waf.UpdateGeoMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateGeoMatchSetWithContext",
+		Action:  "UpdateGeoMatchSet",
 		Input:   input,
 		Output:  (*waf.UpdateGeoMatchSetOutput)(nil),
 		Error:   nil,
@@ -1581,7 +1581,7 @@ func (c *Client) UpdateGeoMatchSetWithContext(ctx context.Context, input *waf.Up
 func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *waf.UpdateIPSetInput, opts ...request.Option) (*waf.UpdateIPSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateIPSetWithContext",
+		Action:  "UpdateIPSet",
 		Input:   input,
 		Output:  (*waf.UpdateIPSetOutput)(nil),
 		Error:   nil,
@@ -1602,7 +1602,7 @@ func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *waf.UpdateIP
 func (c *Client) UpdateRateBasedRuleWithContext(ctx context.Context, input *waf.UpdateRateBasedRuleInput, opts ...request.Option) (*waf.UpdateRateBasedRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateRateBasedRuleWithContext",
+		Action:  "UpdateRateBasedRule",
 		Input:   input,
 		Output:  (*waf.UpdateRateBasedRuleOutput)(nil),
 		Error:   nil,
@@ -1623,7 +1623,7 @@ func (c *Client) UpdateRateBasedRuleWithContext(ctx context.Context, input *waf.
 func (c *Client) UpdateRegexMatchSetWithContext(ctx context.Context, input *waf.UpdateRegexMatchSetInput, opts ...request.Option) (*waf.UpdateRegexMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateRegexMatchSetWithContext",
+		Action:  "UpdateRegexMatchSet",
 		Input:   input,
 		Output:  (*waf.UpdateRegexMatchSetOutput)(nil),
 		Error:   nil,
@@ -1644,7 +1644,7 @@ func (c *Client) UpdateRegexMatchSetWithContext(ctx context.Context, input *waf.
 func (c *Client) UpdateRegexPatternSetWithContext(ctx context.Context, input *waf.UpdateRegexPatternSetInput, opts ...request.Option) (*waf.UpdateRegexPatternSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateRegexPatternSetWithContext",
+		Action:  "UpdateRegexPatternSet",
 		Input:   input,
 		Output:  (*waf.UpdateRegexPatternSetOutput)(nil),
 		Error:   nil,
@@ -1665,7 +1665,7 @@ func (c *Client) UpdateRegexPatternSetWithContext(ctx context.Context, input *wa
 func (c *Client) UpdateRuleWithContext(ctx context.Context, input *waf.UpdateRuleInput, opts ...request.Option) (*waf.UpdateRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateRuleWithContext",
+		Action:  "UpdateRule",
 		Input:   input,
 		Output:  (*waf.UpdateRuleOutput)(nil),
 		Error:   nil,
@@ -1686,7 +1686,7 @@ func (c *Client) UpdateRuleWithContext(ctx context.Context, input *waf.UpdateRul
 func (c *Client) UpdateRuleGroupWithContext(ctx context.Context, input *waf.UpdateRuleGroupInput, opts ...request.Option) (*waf.UpdateRuleGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateRuleGroupWithContext",
+		Action:  "UpdateRuleGroup",
 		Input:   input,
 		Output:  (*waf.UpdateRuleGroupOutput)(nil),
 		Error:   nil,
@@ -1707,7 +1707,7 @@ func (c *Client) UpdateRuleGroupWithContext(ctx context.Context, input *waf.Upda
 func (c *Client) UpdateSizeConstraintSetWithContext(ctx context.Context, input *waf.UpdateSizeConstraintSetInput, opts ...request.Option) (*waf.UpdateSizeConstraintSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateSizeConstraintSetWithContext",
+		Action:  "UpdateSizeConstraintSet",
 		Input:   input,
 		Output:  (*waf.UpdateSizeConstraintSetOutput)(nil),
 		Error:   nil,
@@ -1728,7 +1728,7 @@ func (c *Client) UpdateSizeConstraintSetWithContext(ctx context.Context, input *
 func (c *Client) UpdateSqlInjectionMatchSetWithContext(ctx context.Context, input *waf.UpdateSqlInjectionMatchSetInput, opts ...request.Option) (*waf.UpdateSqlInjectionMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateSqlInjectionMatchSetWithContext",
+		Action:  "UpdateSqlInjectionMatchSet",
 		Input:   input,
 		Output:  (*waf.UpdateSqlInjectionMatchSetOutput)(nil),
 		Error:   nil,
@@ -1749,7 +1749,7 @@ func (c *Client) UpdateSqlInjectionMatchSetWithContext(ctx context.Context, inpu
 func (c *Client) UpdateWebACLWithContext(ctx context.Context, input *waf.UpdateWebACLInput, opts ...request.Option) (*waf.UpdateWebACLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateWebACLWithContext",
+		Action:  "UpdateWebACL",
 		Input:   input,
 		Output:  (*waf.UpdateWebACLOutput)(nil),
 		Error:   nil,
@@ -1770,7 +1770,7 @@ func (c *Client) UpdateWebACLWithContext(ctx context.Context, input *waf.UpdateW
 func (c *Client) UpdateXssMatchSetWithContext(ctx context.Context, input *waf.UpdateXssMatchSetInput, opts ...request.Option) (*waf.UpdateXssMatchSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "wafregional",
-		Action:  "UpdateXssMatchSetWithContext",
+		Action:  "UpdateXssMatchSet",
 		Input:   input,
 		Output:  (*waf.UpdateXssMatchSetOutput)(nil),
 		Error:   nil,

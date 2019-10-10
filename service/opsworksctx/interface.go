@@ -105,7 +105,7 @@ var _ OpsWorks = (*Client)(nil)
 func (c *Client) AssignInstanceWithContext(ctx context.Context, input *opsworks.AssignInstanceInput, opts ...request.Option) (*opsworks.AssignInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "AssignInstanceWithContext",
+		Action:  "AssignInstance",
 		Input:   input,
 		Output:  (*opsworks.AssignInstanceOutput)(nil),
 		Error:   nil,
@@ -126,7 +126,7 @@ func (c *Client) AssignInstanceWithContext(ctx context.Context, input *opsworks.
 func (c *Client) AssignVolumeWithContext(ctx context.Context, input *opsworks.AssignVolumeInput, opts ...request.Option) (*opsworks.AssignVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "AssignVolumeWithContext",
+		Action:  "AssignVolume",
 		Input:   input,
 		Output:  (*opsworks.AssignVolumeOutput)(nil),
 		Error:   nil,
@@ -147,7 +147,7 @@ func (c *Client) AssignVolumeWithContext(ctx context.Context, input *opsworks.As
 func (c *Client) AssociateElasticIpWithContext(ctx context.Context, input *opsworks.AssociateElasticIpInput, opts ...request.Option) (*opsworks.AssociateElasticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "AssociateElasticIpWithContext",
+		Action:  "AssociateElasticIp",
 		Input:   input,
 		Output:  (*opsworks.AssociateElasticIpOutput)(nil),
 		Error:   nil,
@@ -168,7 +168,7 @@ func (c *Client) AssociateElasticIpWithContext(ctx context.Context, input *opswo
 func (c *Client) AttachElasticLoadBalancerWithContext(ctx context.Context, input *opsworks.AttachElasticLoadBalancerInput, opts ...request.Option) (*opsworks.AttachElasticLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "AttachElasticLoadBalancerWithContext",
+		Action:  "AttachElasticLoadBalancer",
 		Input:   input,
 		Output:  (*opsworks.AttachElasticLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -189,7 +189,7 @@ func (c *Client) AttachElasticLoadBalancerWithContext(ctx context.Context, input
 func (c *Client) CloneStackWithContext(ctx context.Context, input *opsworks.CloneStackInput, opts ...request.Option) (*opsworks.CloneStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CloneStackWithContext",
+		Action:  "CloneStack",
 		Input:   input,
 		Output:  (*opsworks.CloneStackOutput)(nil),
 		Error:   nil,
@@ -210,7 +210,7 @@ func (c *Client) CloneStackWithContext(ctx context.Context, input *opsworks.Clon
 func (c *Client) CreateAppWithContext(ctx context.Context, input *opsworks.CreateAppInput, opts ...request.Option) (*opsworks.CreateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CreateAppWithContext",
+		Action:  "CreateApp",
 		Input:   input,
 		Output:  (*opsworks.CreateAppOutput)(nil),
 		Error:   nil,
@@ -231,7 +231,7 @@ func (c *Client) CreateAppWithContext(ctx context.Context, input *opsworks.Creat
 func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *opsworks.CreateDeploymentInput, opts ...request.Option) (*opsworks.CreateDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CreateDeploymentWithContext",
+		Action:  "CreateDeployment",
 		Input:   input,
 		Output:  (*opsworks.CreateDeploymentOutput)(nil),
 		Error:   nil,
@@ -252,7 +252,7 @@ func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *opswork
 func (c *Client) CreateInstanceWithContext(ctx context.Context, input *opsworks.CreateInstanceInput, opts ...request.Option) (*opsworks.CreateInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CreateInstanceWithContext",
+		Action:  "CreateInstance",
 		Input:   input,
 		Output:  (*opsworks.CreateInstanceOutput)(nil),
 		Error:   nil,
@@ -273,7 +273,7 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, input *opsworks.
 func (c *Client) CreateLayerWithContext(ctx context.Context, input *opsworks.CreateLayerInput, opts ...request.Option) (*opsworks.CreateLayerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CreateLayerWithContext",
+		Action:  "CreateLayer",
 		Input:   input,
 		Output:  (*opsworks.CreateLayerOutput)(nil),
 		Error:   nil,
@@ -294,7 +294,7 @@ func (c *Client) CreateLayerWithContext(ctx context.Context, input *opsworks.Cre
 func (c *Client) CreateStackWithContext(ctx context.Context, input *opsworks.CreateStackInput, opts ...request.Option) (*opsworks.CreateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CreateStackWithContext",
+		Action:  "CreateStack",
 		Input:   input,
 		Output:  (*opsworks.CreateStackOutput)(nil),
 		Error:   nil,
@@ -315,7 +315,7 @@ func (c *Client) CreateStackWithContext(ctx context.Context, input *opsworks.Cre
 func (c *Client) CreateUserProfileWithContext(ctx context.Context, input *opsworks.CreateUserProfileInput, opts ...request.Option) (*opsworks.CreateUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "CreateUserProfileWithContext",
+		Action:  "CreateUserProfile",
 		Input:   input,
 		Output:  (*opsworks.CreateUserProfileOutput)(nil),
 		Error:   nil,
@@ -336,7 +336,7 @@ func (c *Client) CreateUserProfileWithContext(ctx context.Context, input *opswor
 func (c *Client) DeleteAppWithContext(ctx context.Context, input *opsworks.DeleteAppInput, opts ...request.Option) (*opsworks.DeleteAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeleteAppWithContext",
+		Action:  "DeleteApp",
 		Input:   input,
 		Output:  (*opsworks.DeleteAppOutput)(nil),
 		Error:   nil,
@@ -357,7 +357,7 @@ func (c *Client) DeleteAppWithContext(ctx context.Context, input *opsworks.Delet
 func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *opsworks.DeleteInstanceInput, opts ...request.Option) (*opsworks.DeleteInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeleteInstanceWithContext",
+		Action:  "DeleteInstance",
 		Input:   input,
 		Output:  (*opsworks.DeleteInstanceOutput)(nil),
 		Error:   nil,
@@ -378,7 +378,7 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *opsworks.
 func (c *Client) DeleteLayerWithContext(ctx context.Context, input *opsworks.DeleteLayerInput, opts ...request.Option) (*opsworks.DeleteLayerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeleteLayerWithContext",
+		Action:  "DeleteLayer",
 		Input:   input,
 		Output:  (*opsworks.DeleteLayerOutput)(nil),
 		Error:   nil,
@@ -399,7 +399,7 @@ func (c *Client) DeleteLayerWithContext(ctx context.Context, input *opsworks.Del
 func (c *Client) DeleteStackWithContext(ctx context.Context, input *opsworks.DeleteStackInput, opts ...request.Option) (*opsworks.DeleteStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeleteStackWithContext",
+		Action:  "DeleteStack",
 		Input:   input,
 		Output:  (*opsworks.DeleteStackOutput)(nil),
 		Error:   nil,
@@ -420,7 +420,7 @@ func (c *Client) DeleteStackWithContext(ctx context.Context, input *opsworks.Del
 func (c *Client) DeleteUserProfileWithContext(ctx context.Context, input *opsworks.DeleteUserProfileInput, opts ...request.Option) (*opsworks.DeleteUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeleteUserProfileWithContext",
+		Action:  "DeleteUserProfile",
 		Input:   input,
 		Output:  (*opsworks.DeleteUserProfileOutput)(nil),
 		Error:   nil,
@@ -441,7 +441,7 @@ func (c *Client) DeleteUserProfileWithContext(ctx context.Context, input *opswor
 func (c *Client) DeregisterEcsClusterWithContext(ctx context.Context, input *opsworks.DeregisterEcsClusterInput, opts ...request.Option) (*opsworks.DeregisterEcsClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeregisterEcsClusterWithContext",
+		Action:  "DeregisterEcsCluster",
 		Input:   input,
 		Output:  (*opsworks.DeregisterEcsClusterOutput)(nil),
 		Error:   nil,
@@ -462,7 +462,7 @@ func (c *Client) DeregisterEcsClusterWithContext(ctx context.Context, input *ops
 func (c *Client) DeregisterElasticIpWithContext(ctx context.Context, input *opsworks.DeregisterElasticIpInput, opts ...request.Option) (*opsworks.DeregisterElasticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeregisterElasticIpWithContext",
+		Action:  "DeregisterElasticIp",
 		Input:   input,
 		Output:  (*opsworks.DeregisterElasticIpOutput)(nil),
 		Error:   nil,
@@ -483,7 +483,7 @@ func (c *Client) DeregisterElasticIpWithContext(ctx context.Context, input *opsw
 func (c *Client) DeregisterInstanceWithContext(ctx context.Context, input *opsworks.DeregisterInstanceInput, opts ...request.Option) (*opsworks.DeregisterInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeregisterInstanceWithContext",
+		Action:  "DeregisterInstance",
 		Input:   input,
 		Output:  (*opsworks.DeregisterInstanceOutput)(nil),
 		Error:   nil,
@@ -504,7 +504,7 @@ func (c *Client) DeregisterInstanceWithContext(ctx context.Context, input *opswo
 func (c *Client) DeregisterRdsDbInstanceWithContext(ctx context.Context, input *opsworks.DeregisterRdsDbInstanceInput, opts ...request.Option) (*opsworks.DeregisterRdsDbInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeregisterRdsDbInstanceWithContext",
+		Action:  "DeregisterRdsDbInstance",
 		Input:   input,
 		Output:  (*opsworks.DeregisterRdsDbInstanceOutput)(nil),
 		Error:   nil,
@@ -525,7 +525,7 @@ func (c *Client) DeregisterRdsDbInstanceWithContext(ctx context.Context, input *
 func (c *Client) DeregisterVolumeWithContext(ctx context.Context, input *opsworks.DeregisterVolumeInput, opts ...request.Option) (*opsworks.DeregisterVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DeregisterVolumeWithContext",
+		Action:  "DeregisterVolume",
 		Input:   input,
 		Output:  (*opsworks.DeregisterVolumeOutput)(nil),
 		Error:   nil,
@@ -546,7 +546,7 @@ func (c *Client) DeregisterVolumeWithContext(ctx context.Context, input *opswork
 func (c *Client) DescribeAgentVersionsWithContext(ctx context.Context, input *opsworks.DescribeAgentVersionsInput, opts ...request.Option) (*opsworks.DescribeAgentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeAgentVersionsWithContext",
+		Action:  "DescribeAgentVersions",
 		Input:   input,
 		Output:  (*opsworks.DescribeAgentVersionsOutput)(nil),
 		Error:   nil,
@@ -567,7 +567,7 @@ func (c *Client) DescribeAgentVersionsWithContext(ctx context.Context, input *op
 func (c *Client) DescribeAppsWithContext(ctx context.Context, input *opsworks.DescribeAppsInput, opts ...request.Option) (*opsworks.DescribeAppsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeAppsWithContext",
+		Action:  "DescribeApps",
 		Input:   input,
 		Output:  (*opsworks.DescribeAppsOutput)(nil),
 		Error:   nil,
@@ -588,7 +588,7 @@ func (c *Client) DescribeAppsWithContext(ctx context.Context, input *opsworks.De
 func (c *Client) DescribeCommandsWithContext(ctx context.Context, input *opsworks.DescribeCommandsInput, opts ...request.Option) (*opsworks.DescribeCommandsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeCommandsWithContext",
+		Action:  "DescribeCommands",
 		Input:   input,
 		Output:  (*opsworks.DescribeCommandsOutput)(nil),
 		Error:   nil,
@@ -609,7 +609,7 @@ func (c *Client) DescribeCommandsWithContext(ctx context.Context, input *opswork
 func (c *Client) DescribeDeploymentsWithContext(ctx context.Context, input *opsworks.DescribeDeploymentsInput, opts ...request.Option) (*opsworks.DescribeDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeDeploymentsWithContext",
+		Action:  "DescribeDeployments",
 		Input:   input,
 		Output:  (*opsworks.DescribeDeploymentsOutput)(nil),
 		Error:   nil,
@@ -630,7 +630,7 @@ func (c *Client) DescribeDeploymentsWithContext(ctx context.Context, input *opsw
 func (c *Client) DescribeEcsClustersWithContext(ctx context.Context, input *opsworks.DescribeEcsClustersInput, opts ...request.Option) (*opsworks.DescribeEcsClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeEcsClustersWithContext",
+		Action:  "DescribeEcsClusters",
 		Input:   input,
 		Output:  (*opsworks.DescribeEcsClustersOutput)(nil),
 		Error:   nil,
@@ -651,7 +651,7 @@ func (c *Client) DescribeEcsClustersWithContext(ctx context.Context, input *opsw
 func (c *Client) DescribeElasticIpsWithContext(ctx context.Context, input *opsworks.DescribeElasticIpsInput, opts ...request.Option) (*opsworks.DescribeElasticIpsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeElasticIpsWithContext",
+		Action:  "DescribeElasticIps",
 		Input:   input,
 		Output:  (*opsworks.DescribeElasticIpsOutput)(nil),
 		Error:   nil,
@@ -672,7 +672,7 @@ func (c *Client) DescribeElasticIpsWithContext(ctx context.Context, input *opswo
 func (c *Client) DescribeElasticLoadBalancersWithContext(ctx context.Context, input *opsworks.DescribeElasticLoadBalancersInput, opts ...request.Option) (*opsworks.DescribeElasticLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeElasticLoadBalancersWithContext",
+		Action:  "DescribeElasticLoadBalancers",
 		Input:   input,
 		Output:  (*opsworks.DescribeElasticLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -693,7 +693,7 @@ func (c *Client) DescribeElasticLoadBalancersWithContext(ctx context.Context, in
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *opsworks.DescribeInstancesInput, opts ...request.Option) (*opsworks.DescribeInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeInstancesWithContext",
+		Action:  "DescribeInstances",
 		Input:   input,
 		Output:  (*opsworks.DescribeInstancesOutput)(nil),
 		Error:   nil,
@@ -714,7 +714,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *opswor
 func (c *Client) DescribeLayersWithContext(ctx context.Context, input *opsworks.DescribeLayersInput, opts ...request.Option) (*opsworks.DescribeLayersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeLayersWithContext",
+		Action:  "DescribeLayers",
 		Input:   input,
 		Output:  (*opsworks.DescribeLayersOutput)(nil),
 		Error:   nil,
@@ -735,7 +735,7 @@ func (c *Client) DescribeLayersWithContext(ctx context.Context, input *opsworks.
 func (c *Client) DescribeLoadBasedAutoScalingWithContext(ctx context.Context, input *opsworks.DescribeLoadBasedAutoScalingInput, opts ...request.Option) (*opsworks.DescribeLoadBasedAutoScalingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeLoadBasedAutoScalingWithContext",
+		Action:  "DescribeLoadBasedAutoScaling",
 		Input:   input,
 		Output:  (*opsworks.DescribeLoadBasedAutoScalingOutput)(nil),
 		Error:   nil,
@@ -756,7 +756,7 @@ func (c *Client) DescribeLoadBasedAutoScalingWithContext(ctx context.Context, in
 func (c *Client) DescribeMyUserProfileWithContext(ctx context.Context, input *opsworks.DescribeMyUserProfileInput, opts ...request.Option) (*opsworks.DescribeMyUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeMyUserProfileWithContext",
+		Action:  "DescribeMyUserProfile",
 		Input:   input,
 		Output:  (*opsworks.DescribeMyUserProfileOutput)(nil),
 		Error:   nil,
@@ -777,7 +777,7 @@ func (c *Client) DescribeMyUserProfileWithContext(ctx context.Context, input *op
 func (c *Client) DescribeOperatingSystemsWithContext(ctx context.Context, input *opsworks.DescribeOperatingSystemsInput, opts ...request.Option) (*opsworks.DescribeOperatingSystemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeOperatingSystemsWithContext",
+		Action:  "DescribeOperatingSystems",
 		Input:   input,
 		Output:  (*opsworks.DescribeOperatingSystemsOutput)(nil),
 		Error:   nil,
@@ -798,7 +798,7 @@ func (c *Client) DescribeOperatingSystemsWithContext(ctx context.Context, input 
 func (c *Client) DescribePermissionsWithContext(ctx context.Context, input *opsworks.DescribePermissionsInput, opts ...request.Option) (*opsworks.DescribePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribePermissionsWithContext",
+		Action:  "DescribePermissions",
 		Input:   input,
 		Output:  (*opsworks.DescribePermissionsOutput)(nil),
 		Error:   nil,
@@ -819,7 +819,7 @@ func (c *Client) DescribePermissionsWithContext(ctx context.Context, input *opsw
 func (c *Client) DescribeRaidArraysWithContext(ctx context.Context, input *opsworks.DescribeRaidArraysInput, opts ...request.Option) (*opsworks.DescribeRaidArraysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeRaidArraysWithContext",
+		Action:  "DescribeRaidArrays",
 		Input:   input,
 		Output:  (*opsworks.DescribeRaidArraysOutput)(nil),
 		Error:   nil,
@@ -840,7 +840,7 @@ func (c *Client) DescribeRaidArraysWithContext(ctx context.Context, input *opswo
 func (c *Client) DescribeRdsDbInstancesWithContext(ctx context.Context, input *opsworks.DescribeRdsDbInstancesInput, opts ...request.Option) (*opsworks.DescribeRdsDbInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeRdsDbInstancesWithContext",
+		Action:  "DescribeRdsDbInstances",
 		Input:   input,
 		Output:  (*opsworks.DescribeRdsDbInstancesOutput)(nil),
 		Error:   nil,
@@ -861,7 +861,7 @@ func (c *Client) DescribeRdsDbInstancesWithContext(ctx context.Context, input *o
 func (c *Client) DescribeServiceErrorsWithContext(ctx context.Context, input *opsworks.DescribeServiceErrorsInput, opts ...request.Option) (*opsworks.DescribeServiceErrorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeServiceErrorsWithContext",
+		Action:  "DescribeServiceErrors",
 		Input:   input,
 		Output:  (*opsworks.DescribeServiceErrorsOutput)(nil),
 		Error:   nil,
@@ -882,7 +882,7 @@ func (c *Client) DescribeServiceErrorsWithContext(ctx context.Context, input *op
 func (c *Client) DescribeStackProvisioningParametersWithContext(ctx context.Context, input *opsworks.DescribeStackProvisioningParametersInput, opts ...request.Option) (*opsworks.DescribeStackProvisioningParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeStackProvisioningParametersWithContext",
+		Action:  "DescribeStackProvisioningParameters",
 		Input:   input,
 		Output:  (*opsworks.DescribeStackProvisioningParametersOutput)(nil),
 		Error:   nil,
@@ -903,7 +903,7 @@ func (c *Client) DescribeStackProvisioningParametersWithContext(ctx context.Cont
 func (c *Client) DescribeStackSummaryWithContext(ctx context.Context, input *opsworks.DescribeStackSummaryInput, opts ...request.Option) (*opsworks.DescribeStackSummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeStackSummaryWithContext",
+		Action:  "DescribeStackSummary",
 		Input:   input,
 		Output:  (*opsworks.DescribeStackSummaryOutput)(nil),
 		Error:   nil,
@@ -924,7 +924,7 @@ func (c *Client) DescribeStackSummaryWithContext(ctx context.Context, input *ops
 func (c *Client) DescribeStacksWithContext(ctx context.Context, input *opsworks.DescribeStacksInput, opts ...request.Option) (*opsworks.DescribeStacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeStacksWithContext",
+		Action:  "DescribeStacks",
 		Input:   input,
 		Output:  (*opsworks.DescribeStacksOutput)(nil),
 		Error:   nil,
@@ -945,7 +945,7 @@ func (c *Client) DescribeStacksWithContext(ctx context.Context, input *opsworks.
 func (c *Client) DescribeTimeBasedAutoScalingWithContext(ctx context.Context, input *opsworks.DescribeTimeBasedAutoScalingInput, opts ...request.Option) (*opsworks.DescribeTimeBasedAutoScalingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeTimeBasedAutoScalingWithContext",
+		Action:  "DescribeTimeBasedAutoScaling",
 		Input:   input,
 		Output:  (*opsworks.DescribeTimeBasedAutoScalingOutput)(nil),
 		Error:   nil,
@@ -966,7 +966,7 @@ func (c *Client) DescribeTimeBasedAutoScalingWithContext(ctx context.Context, in
 func (c *Client) DescribeUserProfilesWithContext(ctx context.Context, input *opsworks.DescribeUserProfilesInput, opts ...request.Option) (*opsworks.DescribeUserProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeUserProfilesWithContext",
+		Action:  "DescribeUserProfiles",
 		Input:   input,
 		Output:  (*opsworks.DescribeUserProfilesOutput)(nil),
 		Error:   nil,
@@ -987,7 +987,7 @@ func (c *Client) DescribeUserProfilesWithContext(ctx context.Context, input *ops
 func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *opsworks.DescribeVolumesInput, opts ...request.Option) (*opsworks.DescribeVolumesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DescribeVolumesWithContext",
+		Action:  "DescribeVolumes",
 		Input:   input,
 		Output:  (*opsworks.DescribeVolumesOutput)(nil),
 		Error:   nil,
@@ -1008,7 +1008,7 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *opsworks
 func (c *Client) DetachElasticLoadBalancerWithContext(ctx context.Context, input *opsworks.DetachElasticLoadBalancerInput, opts ...request.Option) (*opsworks.DetachElasticLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DetachElasticLoadBalancerWithContext",
+		Action:  "DetachElasticLoadBalancer",
 		Input:   input,
 		Output:  (*opsworks.DetachElasticLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -1029,7 +1029,7 @@ func (c *Client) DetachElasticLoadBalancerWithContext(ctx context.Context, input
 func (c *Client) DisassociateElasticIpWithContext(ctx context.Context, input *opsworks.DisassociateElasticIpInput, opts ...request.Option) (*opsworks.DisassociateElasticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "DisassociateElasticIpWithContext",
+		Action:  "DisassociateElasticIp",
 		Input:   input,
 		Output:  (*opsworks.DisassociateElasticIpOutput)(nil),
 		Error:   nil,
@@ -1050,7 +1050,7 @@ func (c *Client) DisassociateElasticIpWithContext(ctx context.Context, input *op
 func (c *Client) GetHostnameSuggestionWithContext(ctx context.Context, input *opsworks.GetHostnameSuggestionInput, opts ...request.Option) (*opsworks.GetHostnameSuggestionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "GetHostnameSuggestionWithContext",
+		Action:  "GetHostnameSuggestion",
 		Input:   input,
 		Output:  (*opsworks.GetHostnameSuggestionOutput)(nil),
 		Error:   nil,
@@ -1071,7 +1071,7 @@ func (c *Client) GetHostnameSuggestionWithContext(ctx context.Context, input *op
 func (c *Client) GrantAccessWithContext(ctx context.Context, input *opsworks.GrantAccessInput, opts ...request.Option) (*opsworks.GrantAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "GrantAccessWithContext",
+		Action:  "GrantAccess",
 		Input:   input,
 		Output:  (*opsworks.GrantAccessOutput)(nil),
 		Error:   nil,
@@ -1092,7 +1092,7 @@ func (c *Client) GrantAccessWithContext(ctx context.Context, input *opsworks.Gra
 func (c *Client) ListTagsWithContext(ctx context.Context, input *opsworks.ListTagsInput, opts ...request.Option) (*opsworks.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*opsworks.ListTagsOutput)(nil),
 		Error:   nil,
@@ -1113,7 +1113,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *opsworks.ListTa
 func (c *Client) RebootInstanceWithContext(ctx context.Context, input *opsworks.RebootInstanceInput, opts ...request.Option) (*opsworks.RebootInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "RebootInstanceWithContext",
+		Action:  "RebootInstance",
 		Input:   input,
 		Output:  (*opsworks.RebootInstanceOutput)(nil),
 		Error:   nil,
@@ -1134,7 +1134,7 @@ func (c *Client) RebootInstanceWithContext(ctx context.Context, input *opsworks.
 func (c *Client) RegisterEcsClusterWithContext(ctx context.Context, input *opsworks.RegisterEcsClusterInput, opts ...request.Option) (*opsworks.RegisterEcsClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "RegisterEcsClusterWithContext",
+		Action:  "RegisterEcsCluster",
 		Input:   input,
 		Output:  (*opsworks.RegisterEcsClusterOutput)(nil),
 		Error:   nil,
@@ -1155,7 +1155,7 @@ func (c *Client) RegisterEcsClusterWithContext(ctx context.Context, input *opswo
 func (c *Client) RegisterElasticIpWithContext(ctx context.Context, input *opsworks.RegisterElasticIpInput, opts ...request.Option) (*opsworks.RegisterElasticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "RegisterElasticIpWithContext",
+		Action:  "RegisterElasticIp",
 		Input:   input,
 		Output:  (*opsworks.RegisterElasticIpOutput)(nil),
 		Error:   nil,
@@ -1176,7 +1176,7 @@ func (c *Client) RegisterElasticIpWithContext(ctx context.Context, input *opswor
 func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *opsworks.RegisterInstanceInput, opts ...request.Option) (*opsworks.RegisterInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "RegisterInstanceWithContext",
+		Action:  "RegisterInstance",
 		Input:   input,
 		Output:  (*opsworks.RegisterInstanceOutput)(nil),
 		Error:   nil,
@@ -1197,7 +1197,7 @@ func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *opswork
 func (c *Client) RegisterRdsDbInstanceWithContext(ctx context.Context, input *opsworks.RegisterRdsDbInstanceInput, opts ...request.Option) (*opsworks.RegisterRdsDbInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "RegisterRdsDbInstanceWithContext",
+		Action:  "RegisterRdsDbInstance",
 		Input:   input,
 		Output:  (*opsworks.RegisterRdsDbInstanceOutput)(nil),
 		Error:   nil,
@@ -1218,7 +1218,7 @@ func (c *Client) RegisterRdsDbInstanceWithContext(ctx context.Context, input *op
 func (c *Client) RegisterVolumeWithContext(ctx context.Context, input *opsworks.RegisterVolumeInput, opts ...request.Option) (*opsworks.RegisterVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "RegisterVolumeWithContext",
+		Action:  "RegisterVolume",
 		Input:   input,
 		Output:  (*opsworks.RegisterVolumeOutput)(nil),
 		Error:   nil,
@@ -1239,7 +1239,7 @@ func (c *Client) RegisterVolumeWithContext(ctx context.Context, input *opsworks.
 func (c *Client) SetLoadBasedAutoScalingWithContext(ctx context.Context, input *opsworks.SetLoadBasedAutoScalingInput, opts ...request.Option) (*opsworks.SetLoadBasedAutoScalingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "SetLoadBasedAutoScalingWithContext",
+		Action:  "SetLoadBasedAutoScaling",
 		Input:   input,
 		Output:  (*opsworks.SetLoadBasedAutoScalingOutput)(nil),
 		Error:   nil,
@@ -1260,7 +1260,7 @@ func (c *Client) SetLoadBasedAutoScalingWithContext(ctx context.Context, input *
 func (c *Client) SetPermissionWithContext(ctx context.Context, input *opsworks.SetPermissionInput, opts ...request.Option) (*opsworks.SetPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "SetPermissionWithContext",
+		Action:  "SetPermission",
 		Input:   input,
 		Output:  (*opsworks.SetPermissionOutput)(nil),
 		Error:   nil,
@@ -1281,7 +1281,7 @@ func (c *Client) SetPermissionWithContext(ctx context.Context, input *opsworks.S
 func (c *Client) SetTimeBasedAutoScalingWithContext(ctx context.Context, input *opsworks.SetTimeBasedAutoScalingInput, opts ...request.Option) (*opsworks.SetTimeBasedAutoScalingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "SetTimeBasedAutoScalingWithContext",
+		Action:  "SetTimeBasedAutoScaling",
 		Input:   input,
 		Output:  (*opsworks.SetTimeBasedAutoScalingOutput)(nil),
 		Error:   nil,
@@ -1302,7 +1302,7 @@ func (c *Client) SetTimeBasedAutoScalingWithContext(ctx context.Context, input *
 func (c *Client) StartInstanceWithContext(ctx context.Context, input *opsworks.StartInstanceInput, opts ...request.Option) (*opsworks.StartInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "StartInstanceWithContext",
+		Action:  "StartInstance",
 		Input:   input,
 		Output:  (*opsworks.StartInstanceOutput)(nil),
 		Error:   nil,
@@ -1323,7 +1323,7 @@ func (c *Client) StartInstanceWithContext(ctx context.Context, input *opsworks.S
 func (c *Client) StartStackWithContext(ctx context.Context, input *opsworks.StartStackInput, opts ...request.Option) (*opsworks.StartStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "StartStackWithContext",
+		Action:  "StartStack",
 		Input:   input,
 		Output:  (*opsworks.StartStackOutput)(nil),
 		Error:   nil,
@@ -1344,7 +1344,7 @@ func (c *Client) StartStackWithContext(ctx context.Context, input *opsworks.Star
 func (c *Client) StopInstanceWithContext(ctx context.Context, input *opsworks.StopInstanceInput, opts ...request.Option) (*opsworks.StopInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "StopInstanceWithContext",
+		Action:  "StopInstance",
 		Input:   input,
 		Output:  (*opsworks.StopInstanceOutput)(nil),
 		Error:   nil,
@@ -1365,7 +1365,7 @@ func (c *Client) StopInstanceWithContext(ctx context.Context, input *opsworks.St
 func (c *Client) StopStackWithContext(ctx context.Context, input *opsworks.StopStackInput, opts ...request.Option) (*opsworks.StopStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "StopStackWithContext",
+		Action:  "StopStack",
 		Input:   input,
 		Output:  (*opsworks.StopStackOutput)(nil),
 		Error:   nil,
@@ -1386,7 +1386,7 @@ func (c *Client) StopStackWithContext(ctx context.Context, input *opsworks.StopS
 func (c *Client) TagResourceWithContext(ctx context.Context, input *opsworks.TagResourceInput, opts ...request.Option) (*opsworks.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*opsworks.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1407,7 +1407,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *opsworks.Tag
 func (c *Client) UnassignInstanceWithContext(ctx context.Context, input *opsworks.UnassignInstanceInput, opts ...request.Option) (*opsworks.UnassignInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UnassignInstanceWithContext",
+		Action:  "UnassignInstance",
 		Input:   input,
 		Output:  (*opsworks.UnassignInstanceOutput)(nil),
 		Error:   nil,
@@ -1428,7 +1428,7 @@ func (c *Client) UnassignInstanceWithContext(ctx context.Context, input *opswork
 func (c *Client) UnassignVolumeWithContext(ctx context.Context, input *opsworks.UnassignVolumeInput, opts ...request.Option) (*opsworks.UnassignVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UnassignVolumeWithContext",
+		Action:  "UnassignVolume",
 		Input:   input,
 		Output:  (*opsworks.UnassignVolumeOutput)(nil),
 		Error:   nil,
@@ -1449,7 +1449,7 @@ func (c *Client) UnassignVolumeWithContext(ctx context.Context, input *opsworks.
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *opsworks.UntagResourceInput, opts ...request.Option) (*opsworks.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*opsworks.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1470,7 +1470,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *opsworks.U
 func (c *Client) UpdateAppWithContext(ctx context.Context, input *opsworks.UpdateAppInput, opts ...request.Option) (*opsworks.UpdateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateAppWithContext",
+		Action:  "UpdateApp",
 		Input:   input,
 		Output:  (*opsworks.UpdateAppOutput)(nil),
 		Error:   nil,
@@ -1491,7 +1491,7 @@ func (c *Client) UpdateAppWithContext(ctx context.Context, input *opsworks.Updat
 func (c *Client) UpdateElasticIpWithContext(ctx context.Context, input *opsworks.UpdateElasticIpInput, opts ...request.Option) (*opsworks.UpdateElasticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateElasticIpWithContext",
+		Action:  "UpdateElasticIp",
 		Input:   input,
 		Output:  (*opsworks.UpdateElasticIpOutput)(nil),
 		Error:   nil,
@@ -1512,7 +1512,7 @@ func (c *Client) UpdateElasticIpWithContext(ctx context.Context, input *opsworks
 func (c *Client) UpdateInstanceWithContext(ctx context.Context, input *opsworks.UpdateInstanceInput, opts ...request.Option) (*opsworks.UpdateInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateInstanceWithContext",
+		Action:  "UpdateInstance",
 		Input:   input,
 		Output:  (*opsworks.UpdateInstanceOutput)(nil),
 		Error:   nil,
@@ -1533,7 +1533,7 @@ func (c *Client) UpdateInstanceWithContext(ctx context.Context, input *opsworks.
 func (c *Client) UpdateLayerWithContext(ctx context.Context, input *opsworks.UpdateLayerInput, opts ...request.Option) (*opsworks.UpdateLayerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateLayerWithContext",
+		Action:  "UpdateLayer",
 		Input:   input,
 		Output:  (*opsworks.UpdateLayerOutput)(nil),
 		Error:   nil,
@@ -1554,7 +1554,7 @@ func (c *Client) UpdateLayerWithContext(ctx context.Context, input *opsworks.Upd
 func (c *Client) UpdateMyUserProfileWithContext(ctx context.Context, input *opsworks.UpdateMyUserProfileInput, opts ...request.Option) (*opsworks.UpdateMyUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateMyUserProfileWithContext",
+		Action:  "UpdateMyUserProfile",
 		Input:   input,
 		Output:  (*opsworks.UpdateMyUserProfileOutput)(nil),
 		Error:   nil,
@@ -1575,7 +1575,7 @@ func (c *Client) UpdateMyUserProfileWithContext(ctx context.Context, input *opsw
 func (c *Client) UpdateRdsDbInstanceWithContext(ctx context.Context, input *opsworks.UpdateRdsDbInstanceInput, opts ...request.Option) (*opsworks.UpdateRdsDbInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateRdsDbInstanceWithContext",
+		Action:  "UpdateRdsDbInstance",
 		Input:   input,
 		Output:  (*opsworks.UpdateRdsDbInstanceOutput)(nil),
 		Error:   nil,
@@ -1596,7 +1596,7 @@ func (c *Client) UpdateRdsDbInstanceWithContext(ctx context.Context, input *opsw
 func (c *Client) UpdateStackWithContext(ctx context.Context, input *opsworks.UpdateStackInput, opts ...request.Option) (*opsworks.UpdateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateStackWithContext",
+		Action:  "UpdateStack",
 		Input:   input,
 		Output:  (*opsworks.UpdateStackOutput)(nil),
 		Error:   nil,
@@ -1617,7 +1617,7 @@ func (c *Client) UpdateStackWithContext(ctx context.Context, input *opsworks.Upd
 func (c *Client) UpdateUserProfileWithContext(ctx context.Context, input *opsworks.UpdateUserProfileInput, opts ...request.Option) (*opsworks.UpdateUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateUserProfileWithContext",
+		Action:  "UpdateUserProfile",
 		Input:   input,
 		Output:  (*opsworks.UpdateUserProfileOutput)(nil),
 		Error:   nil,
@@ -1638,7 +1638,7 @@ func (c *Client) UpdateUserProfileWithContext(ctx context.Context, input *opswor
 func (c *Client) UpdateVolumeWithContext(ctx context.Context, input *opsworks.UpdateVolumeInput, opts ...request.Option) (*opsworks.UpdateVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworks",
-		Action:  "UpdateVolumeWithContext",
+		Action:  "UpdateVolume",
 		Input:   input,
 		Output:  (*opsworks.UpdateVolumeOutput)(nil),
 		Error:   nil,

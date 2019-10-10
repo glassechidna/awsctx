@@ -67,7 +67,7 @@ var _ Personalize = (*Client)(nil)
 func (c *Client) CreateCampaignWithContext(ctx context.Context, input *personalize.CreateCampaignInput, opts ...request.Option) (*personalize.CreateCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateCampaignWithContext",
+		Action:  "CreateCampaign",
 		Input:   input,
 		Output:  (*personalize.CreateCampaignOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) CreateCampaignWithContext(ctx context.Context, input *personali
 func (c *Client) CreateDatasetWithContext(ctx context.Context, input *personalize.CreateDatasetInput, opts ...request.Option) (*personalize.CreateDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateDatasetWithContext",
+		Action:  "CreateDataset",
 		Input:   input,
 		Output:  (*personalize.CreateDatasetOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) CreateDatasetWithContext(ctx context.Context, input *personaliz
 func (c *Client) CreateDatasetGroupWithContext(ctx context.Context, input *personalize.CreateDatasetGroupInput, opts ...request.Option) (*personalize.CreateDatasetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateDatasetGroupWithContext",
+		Action:  "CreateDatasetGroup",
 		Input:   input,
 		Output:  (*personalize.CreateDatasetGroupOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) CreateDatasetGroupWithContext(ctx context.Context, input *perso
 func (c *Client) CreateDatasetImportJobWithContext(ctx context.Context, input *personalize.CreateDatasetImportJobInput, opts ...request.Option) (*personalize.CreateDatasetImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateDatasetImportJobWithContext",
+		Action:  "CreateDatasetImportJob",
 		Input:   input,
 		Output:  (*personalize.CreateDatasetImportJobOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) CreateDatasetImportJobWithContext(ctx context.Context, input *p
 func (c *Client) CreateEventTrackerWithContext(ctx context.Context, input *personalize.CreateEventTrackerInput, opts ...request.Option) (*personalize.CreateEventTrackerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateEventTrackerWithContext",
+		Action:  "CreateEventTracker",
 		Input:   input,
 		Output:  (*personalize.CreateEventTrackerOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) CreateEventTrackerWithContext(ctx context.Context, input *perso
 func (c *Client) CreateSchemaWithContext(ctx context.Context, input *personalize.CreateSchemaInput, opts ...request.Option) (*personalize.CreateSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateSchemaWithContext",
+		Action:  "CreateSchema",
 		Input:   input,
 		Output:  (*personalize.CreateSchemaOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) CreateSchemaWithContext(ctx context.Context, input *personalize
 func (c *Client) CreateSolutionWithContext(ctx context.Context, input *personalize.CreateSolutionInput, opts ...request.Option) (*personalize.CreateSolutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateSolutionWithContext",
+		Action:  "CreateSolution",
 		Input:   input,
 		Output:  (*personalize.CreateSolutionOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) CreateSolutionWithContext(ctx context.Context, input *personali
 func (c *Client) CreateSolutionVersionWithContext(ctx context.Context, input *personalize.CreateSolutionVersionInput, opts ...request.Option) (*personalize.CreateSolutionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "CreateSolutionVersionWithContext",
+		Action:  "CreateSolutionVersion",
 		Input:   input,
 		Output:  (*personalize.CreateSolutionVersionOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) CreateSolutionVersionWithContext(ctx context.Context, input *pe
 func (c *Client) DeleteCampaignWithContext(ctx context.Context, input *personalize.DeleteCampaignInput, opts ...request.Option) (*personalize.DeleteCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DeleteCampaignWithContext",
+		Action:  "DeleteCampaign",
 		Input:   input,
 		Output:  (*personalize.DeleteCampaignOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) DeleteCampaignWithContext(ctx context.Context, input *personali
 func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *personalize.DeleteDatasetInput, opts ...request.Option) (*personalize.DeleteDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DeleteDatasetWithContext",
+		Action:  "DeleteDataset",
 		Input:   input,
 		Output:  (*personalize.DeleteDatasetOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *personaliz
 func (c *Client) DeleteDatasetGroupWithContext(ctx context.Context, input *personalize.DeleteDatasetGroupInput, opts ...request.Option) (*personalize.DeleteDatasetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DeleteDatasetGroupWithContext",
+		Action:  "DeleteDatasetGroup",
 		Input:   input,
 		Output:  (*personalize.DeleteDatasetGroupOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) DeleteDatasetGroupWithContext(ctx context.Context, input *perso
 func (c *Client) DeleteEventTrackerWithContext(ctx context.Context, input *personalize.DeleteEventTrackerInput, opts ...request.Option) (*personalize.DeleteEventTrackerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DeleteEventTrackerWithContext",
+		Action:  "DeleteEventTracker",
 		Input:   input,
 		Output:  (*personalize.DeleteEventTrackerOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) DeleteEventTrackerWithContext(ctx context.Context, input *perso
 func (c *Client) DeleteSchemaWithContext(ctx context.Context, input *personalize.DeleteSchemaInput, opts ...request.Option) (*personalize.DeleteSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DeleteSchemaWithContext",
+		Action:  "DeleteSchema",
 		Input:   input,
 		Output:  (*personalize.DeleteSchemaOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) DeleteSchemaWithContext(ctx context.Context, input *personalize
 func (c *Client) DeleteSolutionWithContext(ctx context.Context, input *personalize.DeleteSolutionInput, opts ...request.Option) (*personalize.DeleteSolutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DeleteSolutionWithContext",
+		Action:  "DeleteSolution",
 		Input:   input,
 		Output:  (*personalize.DeleteSolutionOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) DeleteSolutionWithContext(ctx context.Context, input *personali
 func (c *Client) DescribeAlgorithmWithContext(ctx context.Context, input *personalize.DescribeAlgorithmInput, opts ...request.Option) (*personalize.DescribeAlgorithmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeAlgorithmWithContext",
+		Action:  "DescribeAlgorithm",
 		Input:   input,
 		Output:  (*personalize.DescribeAlgorithmOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) DescribeAlgorithmWithContext(ctx context.Context, input *person
 func (c *Client) DescribeCampaignWithContext(ctx context.Context, input *personalize.DescribeCampaignInput, opts ...request.Option) (*personalize.DescribeCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeCampaignWithContext",
+		Action:  "DescribeCampaign",
 		Input:   input,
 		Output:  (*personalize.DescribeCampaignOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) DescribeCampaignWithContext(ctx context.Context, input *persona
 func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *personalize.DescribeDatasetInput, opts ...request.Option) (*personalize.DescribeDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeDatasetWithContext",
+		Action:  "DescribeDataset",
 		Input:   input,
 		Output:  (*personalize.DescribeDatasetOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *personal
 func (c *Client) DescribeDatasetGroupWithContext(ctx context.Context, input *personalize.DescribeDatasetGroupInput, opts ...request.Option) (*personalize.DescribeDatasetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeDatasetGroupWithContext",
+		Action:  "DescribeDatasetGroup",
 		Input:   input,
 		Output:  (*personalize.DescribeDatasetGroupOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) DescribeDatasetGroupWithContext(ctx context.Context, input *per
 func (c *Client) DescribeDatasetImportJobWithContext(ctx context.Context, input *personalize.DescribeDatasetImportJobInput, opts ...request.Option) (*personalize.DescribeDatasetImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeDatasetImportJobWithContext",
+		Action:  "DescribeDatasetImportJob",
 		Input:   input,
 		Output:  (*personalize.DescribeDatasetImportJobOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) DescribeDatasetImportJobWithContext(ctx context.Context, input 
 func (c *Client) DescribeEventTrackerWithContext(ctx context.Context, input *personalize.DescribeEventTrackerInput, opts ...request.Option) (*personalize.DescribeEventTrackerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeEventTrackerWithContext",
+		Action:  "DescribeEventTracker",
 		Input:   input,
 		Output:  (*personalize.DescribeEventTrackerOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) DescribeEventTrackerWithContext(ctx context.Context, input *per
 func (c *Client) DescribeFeatureTransformationWithContext(ctx context.Context, input *personalize.DescribeFeatureTransformationInput, opts ...request.Option) (*personalize.DescribeFeatureTransformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeFeatureTransformationWithContext",
+		Action:  "DescribeFeatureTransformation",
 		Input:   input,
 		Output:  (*personalize.DescribeFeatureTransformationOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) DescribeFeatureTransformationWithContext(ctx context.Context, i
 func (c *Client) DescribeRecipeWithContext(ctx context.Context, input *personalize.DescribeRecipeInput, opts ...request.Option) (*personalize.DescribeRecipeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeRecipeWithContext",
+		Action:  "DescribeRecipe",
 		Input:   input,
 		Output:  (*personalize.DescribeRecipeOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) DescribeRecipeWithContext(ctx context.Context, input *personali
 func (c *Client) DescribeSchemaWithContext(ctx context.Context, input *personalize.DescribeSchemaInput, opts ...request.Option) (*personalize.DescribeSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeSchemaWithContext",
+		Action:  "DescribeSchema",
 		Input:   input,
 		Output:  (*personalize.DescribeSchemaOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) DescribeSchemaWithContext(ctx context.Context, input *personali
 func (c *Client) DescribeSolutionWithContext(ctx context.Context, input *personalize.DescribeSolutionInput, opts ...request.Option) (*personalize.DescribeSolutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeSolutionWithContext",
+		Action:  "DescribeSolution",
 		Input:   input,
 		Output:  (*personalize.DescribeSolutionOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) DescribeSolutionWithContext(ctx context.Context, input *persona
 func (c *Client) DescribeSolutionVersionWithContext(ctx context.Context, input *personalize.DescribeSolutionVersionInput, opts ...request.Option) (*personalize.DescribeSolutionVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "DescribeSolutionVersionWithContext",
+		Action:  "DescribeSolutionVersion",
 		Input:   input,
 		Output:  (*personalize.DescribeSolutionVersionOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) DescribeSolutionVersionWithContext(ctx context.Context, input *
 func (c *Client) GetSolutionMetricsWithContext(ctx context.Context, input *personalize.GetSolutionMetricsInput, opts ...request.Option) (*personalize.GetSolutionMetricsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "GetSolutionMetricsWithContext",
+		Action:  "GetSolutionMetrics",
 		Input:   input,
 		Output:  (*personalize.GetSolutionMetricsOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) GetSolutionMetricsWithContext(ctx context.Context, input *perso
 func (c *Client) ListCampaignsWithContext(ctx context.Context, input *personalize.ListCampaignsInput, opts ...request.Option) (*personalize.ListCampaignsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListCampaignsWithContext",
+		Action:  "ListCampaigns",
 		Input:   input,
 		Output:  (*personalize.ListCampaignsOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) ListCampaignsWithContext(ctx context.Context, input *personaliz
 func (c *Client) ListDatasetGroupsWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, opts ...request.Option) (*personalize.ListDatasetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListDatasetGroupsWithContext",
+		Action:  "ListDatasetGroups",
 		Input:   input,
 		Output:  (*personalize.ListDatasetGroupsOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) ListDatasetGroupsWithContext(ctx context.Context, input *person
 func (c *Client) ListDatasetImportJobsWithContext(ctx context.Context, input *personalize.ListDatasetImportJobsInput, opts ...request.Option) (*personalize.ListDatasetImportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListDatasetImportJobsWithContext",
+		Action:  "ListDatasetImportJobs",
 		Input:   input,
 		Output:  (*personalize.ListDatasetImportJobsOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) ListDatasetImportJobsWithContext(ctx context.Context, input *pe
 func (c *Client) ListDatasetsWithContext(ctx context.Context, input *personalize.ListDatasetsInput, opts ...request.Option) (*personalize.ListDatasetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListDatasetsWithContext",
+		Action:  "ListDatasets",
 		Input:   input,
 		Output:  (*personalize.ListDatasetsOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) ListDatasetsWithContext(ctx context.Context, input *personalize
 func (c *Client) ListEventTrackersWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, opts ...request.Option) (*personalize.ListEventTrackersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListEventTrackersWithContext",
+		Action:  "ListEventTrackers",
 		Input:   input,
 		Output:  (*personalize.ListEventTrackersOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) ListEventTrackersWithContext(ctx context.Context, input *person
 func (c *Client) ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListRecipesWithContext",
+		Action:  "ListRecipes",
 		Input:   input,
 		Output:  (*personalize.ListRecipesOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) ListRecipesWithContext(ctx context.Context, input *personalize.
 func (c *Client) ListSchemasWithContext(ctx context.Context, input *personalize.ListSchemasInput, opts ...request.Option) (*personalize.ListSchemasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListSchemasWithContext",
+		Action:  "ListSchemas",
 		Input:   input,
 		Output:  (*personalize.ListSchemasOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) ListSchemasWithContext(ctx context.Context, input *personalize.
 func (c *Client) ListSolutionVersionsWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, opts ...request.Option) (*personalize.ListSolutionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListSolutionVersionsWithContext",
+		Action:  "ListSolutionVersions",
 		Input:   input,
 		Output:  (*personalize.ListSolutionVersionsOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) ListSolutionVersionsWithContext(ctx context.Context, input *per
 func (c *Client) ListSolutionsWithContext(ctx context.Context, input *personalize.ListSolutionsInput, opts ...request.Option) (*personalize.ListSolutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "ListSolutionsWithContext",
+		Action:  "ListSolutions",
 		Input:   input,
 		Output:  (*personalize.ListSolutionsOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) ListSolutionsWithContext(ctx context.Context, input *personaliz
 func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
-		Action:  "UpdateCampaignWithContext",
+		Action:  "UpdateCampaign",
 		Input:   input,
 		Output:  (*personalize.UpdateCampaignOutput)(nil),
 		Error:   nil,

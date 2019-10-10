@@ -68,7 +68,7 @@ var _ Inspector = (*Client)(nil)
 func (c *Client) AddAttributesToFindingsWithContext(ctx context.Context, input *inspector.AddAttributesToFindingsInput, opts ...request.Option) (*inspector.AddAttributesToFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "AddAttributesToFindingsWithContext",
+		Action:  "AddAttributesToFindings",
 		Input:   input,
 		Output:  (*inspector.AddAttributesToFindingsOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) AddAttributesToFindingsWithContext(ctx context.Context, input *
 func (c *Client) CreateAssessmentTargetWithContext(ctx context.Context, input *inspector.CreateAssessmentTargetInput, opts ...request.Option) (*inspector.CreateAssessmentTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "CreateAssessmentTargetWithContext",
+		Action:  "CreateAssessmentTarget",
 		Input:   input,
 		Output:  (*inspector.CreateAssessmentTargetOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) CreateAssessmentTargetWithContext(ctx context.Context, input *i
 func (c *Client) CreateAssessmentTemplateWithContext(ctx context.Context, input *inspector.CreateAssessmentTemplateInput, opts ...request.Option) (*inspector.CreateAssessmentTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "CreateAssessmentTemplateWithContext",
+		Action:  "CreateAssessmentTemplate",
 		Input:   input,
 		Output:  (*inspector.CreateAssessmentTemplateOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) CreateAssessmentTemplateWithContext(ctx context.Context, input 
 func (c *Client) CreateExclusionsPreviewWithContext(ctx context.Context, input *inspector.CreateExclusionsPreviewInput, opts ...request.Option) (*inspector.CreateExclusionsPreviewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "CreateExclusionsPreviewWithContext",
+		Action:  "CreateExclusionsPreview",
 		Input:   input,
 		Output:  (*inspector.CreateExclusionsPreviewOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) CreateExclusionsPreviewWithContext(ctx context.Context, input *
 func (c *Client) CreateResourceGroupWithContext(ctx context.Context, input *inspector.CreateResourceGroupInput, opts ...request.Option) (*inspector.CreateResourceGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "CreateResourceGroupWithContext",
+		Action:  "CreateResourceGroup",
 		Input:   input,
 		Output:  (*inspector.CreateResourceGroupOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) CreateResourceGroupWithContext(ctx context.Context, input *insp
 func (c *Client) DeleteAssessmentRunWithContext(ctx context.Context, input *inspector.DeleteAssessmentRunInput, opts ...request.Option) (*inspector.DeleteAssessmentRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DeleteAssessmentRunWithContext",
+		Action:  "DeleteAssessmentRun",
 		Input:   input,
 		Output:  (*inspector.DeleteAssessmentRunOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DeleteAssessmentRunWithContext(ctx context.Context, input *insp
 func (c *Client) DeleteAssessmentTargetWithContext(ctx context.Context, input *inspector.DeleteAssessmentTargetInput, opts ...request.Option) (*inspector.DeleteAssessmentTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DeleteAssessmentTargetWithContext",
+		Action:  "DeleteAssessmentTarget",
 		Input:   input,
 		Output:  (*inspector.DeleteAssessmentTargetOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DeleteAssessmentTargetWithContext(ctx context.Context, input *i
 func (c *Client) DeleteAssessmentTemplateWithContext(ctx context.Context, input *inspector.DeleteAssessmentTemplateInput, opts ...request.Option) (*inspector.DeleteAssessmentTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DeleteAssessmentTemplateWithContext",
+		Action:  "DeleteAssessmentTemplate",
 		Input:   input,
 		Output:  (*inspector.DeleteAssessmentTemplateOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) DeleteAssessmentTemplateWithContext(ctx context.Context, input 
 func (c *Client) DescribeAssessmentRunsWithContext(ctx context.Context, input *inspector.DescribeAssessmentRunsInput, opts ...request.Option) (*inspector.DescribeAssessmentRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeAssessmentRunsWithContext",
+		Action:  "DescribeAssessmentRuns",
 		Input:   input,
 		Output:  (*inspector.DescribeAssessmentRunsOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) DescribeAssessmentRunsWithContext(ctx context.Context, input *i
 func (c *Client) DescribeAssessmentTargetsWithContext(ctx context.Context, input *inspector.DescribeAssessmentTargetsInput, opts ...request.Option) (*inspector.DescribeAssessmentTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeAssessmentTargetsWithContext",
+		Action:  "DescribeAssessmentTargets",
 		Input:   input,
 		Output:  (*inspector.DescribeAssessmentTargetsOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) DescribeAssessmentTargetsWithContext(ctx context.Context, input
 func (c *Client) DescribeAssessmentTemplatesWithContext(ctx context.Context, input *inspector.DescribeAssessmentTemplatesInput, opts ...request.Option) (*inspector.DescribeAssessmentTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeAssessmentTemplatesWithContext",
+		Action:  "DescribeAssessmentTemplates",
 		Input:   input,
 		Output:  (*inspector.DescribeAssessmentTemplatesOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) DescribeAssessmentTemplatesWithContext(ctx context.Context, inp
 func (c *Client) DescribeCrossAccountAccessRoleWithContext(ctx context.Context, input *inspector.DescribeCrossAccountAccessRoleInput, opts ...request.Option) (*inspector.DescribeCrossAccountAccessRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeCrossAccountAccessRoleWithContext",
+		Action:  "DescribeCrossAccountAccessRole",
 		Input:   input,
 		Output:  (*inspector.DescribeCrossAccountAccessRoleOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) DescribeCrossAccountAccessRoleWithContext(ctx context.Context, 
 func (c *Client) DescribeExclusionsWithContext(ctx context.Context, input *inspector.DescribeExclusionsInput, opts ...request.Option) (*inspector.DescribeExclusionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeExclusionsWithContext",
+		Action:  "DescribeExclusions",
 		Input:   input,
 		Output:  (*inspector.DescribeExclusionsOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) DescribeExclusionsWithContext(ctx context.Context, input *inspe
 func (c *Client) DescribeFindingsWithContext(ctx context.Context, input *inspector.DescribeFindingsInput, opts ...request.Option) (*inspector.DescribeFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeFindingsWithContext",
+		Action:  "DescribeFindings",
 		Input:   input,
 		Output:  (*inspector.DescribeFindingsOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) DescribeFindingsWithContext(ctx context.Context, input *inspect
 func (c *Client) DescribeResourceGroupsWithContext(ctx context.Context, input *inspector.DescribeResourceGroupsInput, opts ...request.Option) (*inspector.DescribeResourceGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeResourceGroupsWithContext",
+		Action:  "DescribeResourceGroups",
 		Input:   input,
 		Output:  (*inspector.DescribeResourceGroupsOutput)(nil),
 		Error:   nil,
@@ -383,7 +383,7 @@ func (c *Client) DescribeResourceGroupsWithContext(ctx context.Context, input *i
 func (c *Client) DescribeRulesPackagesWithContext(ctx context.Context, input *inspector.DescribeRulesPackagesInput, opts ...request.Option) (*inspector.DescribeRulesPackagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "DescribeRulesPackagesWithContext",
+		Action:  "DescribeRulesPackages",
 		Input:   input,
 		Output:  (*inspector.DescribeRulesPackagesOutput)(nil),
 		Error:   nil,
@@ -404,7 +404,7 @@ func (c *Client) DescribeRulesPackagesWithContext(ctx context.Context, input *in
 func (c *Client) GetAssessmentReportWithContext(ctx context.Context, input *inspector.GetAssessmentReportInput, opts ...request.Option) (*inspector.GetAssessmentReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "GetAssessmentReportWithContext",
+		Action:  "GetAssessmentReport",
 		Input:   input,
 		Output:  (*inspector.GetAssessmentReportOutput)(nil),
 		Error:   nil,
@@ -425,7 +425,7 @@ func (c *Client) GetAssessmentReportWithContext(ctx context.Context, input *insp
 func (c *Client) GetExclusionsPreviewWithContext(ctx context.Context, input *inspector.GetExclusionsPreviewInput, opts ...request.Option) (*inspector.GetExclusionsPreviewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "GetExclusionsPreviewWithContext",
+		Action:  "GetExclusionsPreview",
 		Input:   input,
 		Output:  (*inspector.GetExclusionsPreviewOutput)(nil),
 		Error:   nil,
@@ -446,7 +446,7 @@ func (c *Client) GetExclusionsPreviewWithContext(ctx context.Context, input *ins
 func (c *Client) GetTelemetryMetadataWithContext(ctx context.Context, input *inspector.GetTelemetryMetadataInput, opts ...request.Option) (*inspector.GetTelemetryMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "GetTelemetryMetadataWithContext",
+		Action:  "GetTelemetryMetadata",
 		Input:   input,
 		Output:  (*inspector.GetTelemetryMetadataOutput)(nil),
 		Error:   nil,
@@ -467,7 +467,7 @@ func (c *Client) GetTelemetryMetadataWithContext(ctx context.Context, input *ins
 func (c *Client) ListAssessmentRunAgentsWithContext(ctx context.Context, input *inspector.ListAssessmentRunAgentsInput, opts ...request.Option) (*inspector.ListAssessmentRunAgentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListAssessmentRunAgentsWithContext",
+		Action:  "ListAssessmentRunAgents",
 		Input:   input,
 		Output:  (*inspector.ListAssessmentRunAgentsOutput)(nil),
 		Error:   nil,
@@ -488,7 +488,7 @@ func (c *Client) ListAssessmentRunAgentsWithContext(ctx context.Context, input *
 func (c *Client) ListAssessmentRunsWithContext(ctx context.Context, input *inspector.ListAssessmentRunsInput, opts ...request.Option) (*inspector.ListAssessmentRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListAssessmentRunsWithContext",
+		Action:  "ListAssessmentRuns",
 		Input:   input,
 		Output:  (*inspector.ListAssessmentRunsOutput)(nil),
 		Error:   nil,
@@ -509,7 +509,7 @@ func (c *Client) ListAssessmentRunsWithContext(ctx context.Context, input *inspe
 func (c *Client) ListAssessmentTargetsWithContext(ctx context.Context, input *inspector.ListAssessmentTargetsInput, opts ...request.Option) (*inspector.ListAssessmentTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListAssessmentTargetsWithContext",
+		Action:  "ListAssessmentTargets",
 		Input:   input,
 		Output:  (*inspector.ListAssessmentTargetsOutput)(nil),
 		Error:   nil,
@@ -530,7 +530,7 @@ func (c *Client) ListAssessmentTargetsWithContext(ctx context.Context, input *in
 func (c *Client) ListAssessmentTemplatesWithContext(ctx context.Context, input *inspector.ListAssessmentTemplatesInput, opts ...request.Option) (*inspector.ListAssessmentTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListAssessmentTemplatesWithContext",
+		Action:  "ListAssessmentTemplates",
 		Input:   input,
 		Output:  (*inspector.ListAssessmentTemplatesOutput)(nil),
 		Error:   nil,
@@ -551,7 +551,7 @@ func (c *Client) ListAssessmentTemplatesWithContext(ctx context.Context, input *
 func (c *Client) ListEventSubscriptionsWithContext(ctx context.Context, input *inspector.ListEventSubscriptionsInput, opts ...request.Option) (*inspector.ListEventSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListEventSubscriptionsWithContext",
+		Action:  "ListEventSubscriptions",
 		Input:   input,
 		Output:  (*inspector.ListEventSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -572,7 +572,7 @@ func (c *Client) ListEventSubscriptionsWithContext(ctx context.Context, input *i
 func (c *Client) ListExclusionsWithContext(ctx context.Context, input *inspector.ListExclusionsInput, opts ...request.Option) (*inspector.ListExclusionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListExclusionsWithContext",
+		Action:  "ListExclusions",
 		Input:   input,
 		Output:  (*inspector.ListExclusionsOutput)(nil),
 		Error:   nil,
@@ -593,7 +593,7 @@ func (c *Client) ListExclusionsWithContext(ctx context.Context, input *inspector
 func (c *Client) ListFindingsWithContext(ctx context.Context, input *inspector.ListFindingsInput, opts ...request.Option) (*inspector.ListFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListFindingsWithContext",
+		Action:  "ListFindings",
 		Input:   input,
 		Output:  (*inspector.ListFindingsOutput)(nil),
 		Error:   nil,
@@ -614,7 +614,7 @@ func (c *Client) ListFindingsWithContext(ctx context.Context, input *inspector.L
 func (c *Client) ListRulesPackagesWithContext(ctx context.Context, input *inspector.ListRulesPackagesInput, opts ...request.Option) (*inspector.ListRulesPackagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListRulesPackagesWithContext",
+		Action:  "ListRulesPackages",
 		Input:   input,
 		Output:  (*inspector.ListRulesPackagesOutput)(nil),
 		Error:   nil,
@@ -635,7 +635,7 @@ func (c *Client) ListRulesPackagesWithContext(ctx context.Context, input *inspec
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *inspector.ListTagsForResourceInput, opts ...request.Option) (*inspector.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*inspector.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -656,7 +656,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *insp
 func (c *Client) PreviewAgentsWithContext(ctx context.Context, input *inspector.PreviewAgentsInput, opts ...request.Option) (*inspector.PreviewAgentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "PreviewAgentsWithContext",
+		Action:  "PreviewAgents",
 		Input:   input,
 		Output:  (*inspector.PreviewAgentsOutput)(nil),
 		Error:   nil,
@@ -677,7 +677,7 @@ func (c *Client) PreviewAgentsWithContext(ctx context.Context, input *inspector.
 func (c *Client) RegisterCrossAccountAccessRoleWithContext(ctx context.Context, input *inspector.RegisterCrossAccountAccessRoleInput, opts ...request.Option) (*inspector.RegisterCrossAccountAccessRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "RegisterCrossAccountAccessRoleWithContext",
+		Action:  "RegisterCrossAccountAccessRole",
 		Input:   input,
 		Output:  (*inspector.RegisterCrossAccountAccessRoleOutput)(nil),
 		Error:   nil,
@@ -698,7 +698,7 @@ func (c *Client) RegisterCrossAccountAccessRoleWithContext(ctx context.Context, 
 func (c *Client) RemoveAttributesFromFindingsWithContext(ctx context.Context, input *inspector.RemoveAttributesFromFindingsInput, opts ...request.Option) (*inspector.RemoveAttributesFromFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "RemoveAttributesFromFindingsWithContext",
+		Action:  "RemoveAttributesFromFindings",
 		Input:   input,
 		Output:  (*inspector.RemoveAttributesFromFindingsOutput)(nil),
 		Error:   nil,
@@ -719,7 +719,7 @@ func (c *Client) RemoveAttributesFromFindingsWithContext(ctx context.Context, in
 func (c *Client) SetTagsForResourceWithContext(ctx context.Context, input *inspector.SetTagsForResourceInput, opts ...request.Option) (*inspector.SetTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "SetTagsForResourceWithContext",
+		Action:  "SetTagsForResource",
 		Input:   input,
 		Output:  (*inspector.SetTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -740,7 +740,7 @@ func (c *Client) SetTagsForResourceWithContext(ctx context.Context, input *inspe
 func (c *Client) StartAssessmentRunWithContext(ctx context.Context, input *inspector.StartAssessmentRunInput, opts ...request.Option) (*inspector.StartAssessmentRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "StartAssessmentRunWithContext",
+		Action:  "StartAssessmentRun",
 		Input:   input,
 		Output:  (*inspector.StartAssessmentRunOutput)(nil),
 		Error:   nil,
@@ -761,7 +761,7 @@ func (c *Client) StartAssessmentRunWithContext(ctx context.Context, input *inspe
 func (c *Client) StopAssessmentRunWithContext(ctx context.Context, input *inspector.StopAssessmentRunInput, opts ...request.Option) (*inspector.StopAssessmentRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "StopAssessmentRunWithContext",
+		Action:  "StopAssessmentRun",
 		Input:   input,
 		Output:  (*inspector.StopAssessmentRunOutput)(nil),
 		Error:   nil,
@@ -782,7 +782,7 @@ func (c *Client) StopAssessmentRunWithContext(ctx context.Context, input *inspec
 func (c *Client) SubscribeToEventWithContext(ctx context.Context, input *inspector.SubscribeToEventInput, opts ...request.Option) (*inspector.SubscribeToEventOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "SubscribeToEventWithContext",
+		Action:  "SubscribeToEvent",
 		Input:   input,
 		Output:  (*inspector.SubscribeToEventOutput)(nil),
 		Error:   nil,
@@ -803,7 +803,7 @@ func (c *Client) SubscribeToEventWithContext(ctx context.Context, input *inspect
 func (c *Client) UnsubscribeFromEventWithContext(ctx context.Context, input *inspector.UnsubscribeFromEventInput, opts ...request.Option) (*inspector.UnsubscribeFromEventOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "UnsubscribeFromEventWithContext",
+		Action:  "UnsubscribeFromEvent",
 		Input:   input,
 		Output:  (*inspector.UnsubscribeFromEventOutput)(nil),
 		Error:   nil,
@@ -824,7 +824,7 @@ func (c *Client) UnsubscribeFromEventWithContext(ctx context.Context, input *ins
 func (c *Client) UpdateAssessmentTargetWithContext(ctx context.Context, input *inspector.UpdateAssessmentTargetInput, opts ...request.Option) (*inspector.UpdateAssessmentTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
-		Action:  "UpdateAssessmentTargetWithContext",
+		Action:  "UpdateAssessmentTarget",
 		Input:   input,
 		Output:  (*inspector.UpdateAssessmentTargetOutput)(nil),
 		Error:   nil,

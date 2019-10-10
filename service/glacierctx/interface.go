@@ -64,7 +64,7 @@ var _ Glacier = (*Client)(nil)
 func (c *Client) AbortMultipartUploadWithContext(ctx context.Context, input *glacier.AbortMultipartUploadInput, opts ...request.Option) (*glacier.AbortMultipartUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "AbortMultipartUploadWithContext",
+		Action:  "AbortMultipartUpload",
 		Input:   input,
 		Output:  (*glacier.AbortMultipartUploadOutput)(nil),
 		Error:   nil,
@@ -85,7 +85,7 @@ func (c *Client) AbortMultipartUploadWithContext(ctx context.Context, input *gla
 func (c *Client) AbortVaultLockWithContext(ctx context.Context, input *glacier.AbortVaultLockInput, opts ...request.Option) (*glacier.AbortVaultLockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "AbortVaultLockWithContext",
+		Action:  "AbortVaultLock",
 		Input:   input,
 		Output:  (*glacier.AbortVaultLockOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) AbortVaultLockWithContext(ctx context.Context, input *glacier.A
 func (c *Client) AddTagsToVaultWithContext(ctx context.Context, input *glacier.AddTagsToVaultInput, opts ...request.Option) (*glacier.AddTagsToVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "AddTagsToVaultWithContext",
+		Action:  "AddTagsToVault",
 		Input:   input,
 		Output:  (*glacier.AddTagsToVaultOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) AddTagsToVaultWithContext(ctx context.Context, input *glacier.A
 func (c *Client) CompleteMultipartUploadWithContext(ctx context.Context, input *glacier.CompleteMultipartUploadInput, opts ...request.Option) (*glacier.ArchiveCreationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "CompleteMultipartUploadWithContext",
+		Action:  "CompleteMultipartUpload",
 		Input:   input,
 		Output:  (*glacier.ArchiveCreationOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) CompleteMultipartUploadWithContext(ctx context.Context, input *
 func (c *Client) CompleteVaultLockWithContext(ctx context.Context, input *glacier.CompleteVaultLockInput, opts ...request.Option) (*glacier.CompleteVaultLockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "CompleteVaultLockWithContext",
+		Action:  "CompleteVaultLock",
 		Input:   input,
 		Output:  (*glacier.CompleteVaultLockOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) CompleteVaultLockWithContext(ctx context.Context, input *glacie
 func (c *Client) CreateVaultWithContext(ctx context.Context, input *glacier.CreateVaultInput, opts ...request.Option) (*glacier.CreateVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "CreateVaultWithContext",
+		Action:  "CreateVault",
 		Input:   input,
 		Output:  (*glacier.CreateVaultOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) CreateVaultWithContext(ctx context.Context, input *glacier.Crea
 func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *glacier.DeleteArchiveInput, opts ...request.Option) (*glacier.DeleteArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "DeleteArchiveWithContext",
+		Action:  "DeleteArchive",
 		Input:   input,
 		Output:  (*glacier.DeleteArchiveOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *glacier.De
 func (c *Client) DeleteVaultWithContext(ctx context.Context, input *glacier.DeleteVaultInput, opts ...request.Option) (*glacier.DeleteVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "DeleteVaultWithContext",
+		Action:  "DeleteVault",
 		Input:   input,
 		Output:  (*glacier.DeleteVaultOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) DeleteVaultWithContext(ctx context.Context, input *glacier.Dele
 func (c *Client) DeleteVaultAccessPolicyWithContext(ctx context.Context, input *glacier.DeleteVaultAccessPolicyInput, opts ...request.Option) (*glacier.DeleteVaultAccessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "DeleteVaultAccessPolicyWithContext",
+		Action:  "DeleteVaultAccessPolicy",
 		Input:   input,
 		Output:  (*glacier.DeleteVaultAccessPolicyOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) DeleteVaultAccessPolicyWithContext(ctx context.Context, input *
 func (c *Client) DeleteVaultNotificationsWithContext(ctx context.Context, input *glacier.DeleteVaultNotificationsInput, opts ...request.Option) (*glacier.DeleteVaultNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "DeleteVaultNotificationsWithContext",
+		Action:  "DeleteVaultNotifications",
 		Input:   input,
 		Output:  (*glacier.DeleteVaultNotificationsOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) DeleteVaultNotificationsWithContext(ctx context.Context, input 
 func (c *Client) DescribeJobWithContext(ctx context.Context, input *glacier.DescribeJobInput, opts ...request.Option) (*glacier.JobDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "DescribeJobWithContext",
+		Action:  "DescribeJob",
 		Input:   input,
 		Output:  (*glacier.JobDescription)(nil),
 		Error:   nil,
@@ -295,7 +295,7 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *glacier.Desc
 func (c *Client) DescribeVaultWithContext(ctx context.Context, input *glacier.DescribeVaultInput, opts ...request.Option) (*glacier.DescribeVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "DescribeVaultWithContext",
+		Action:  "DescribeVault",
 		Input:   input,
 		Output:  (*glacier.DescribeVaultOutput)(nil),
 		Error:   nil,
@@ -316,7 +316,7 @@ func (c *Client) DescribeVaultWithContext(ctx context.Context, input *glacier.De
 func (c *Client) GetDataRetrievalPolicyWithContext(ctx context.Context, input *glacier.GetDataRetrievalPolicyInput, opts ...request.Option) (*glacier.GetDataRetrievalPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "GetDataRetrievalPolicyWithContext",
+		Action:  "GetDataRetrievalPolicy",
 		Input:   input,
 		Output:  (*glacier.GetDataRetrievalPolicyOutput)(nil),
 		Error:   nil,
@@ -337,7 +337,7 @@ func (c *Client) GetDataRetrievalPolicyWithContext(ctx context.Context, input *g
 func (c *Client) GetJobOutputWithContext(ctx context.Context, input *glacier.GetJobOutputInput, opts ...request.Option) (*glacier.GetJobOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "GetJobOutputWithContext",
+		Action:  "GetJobOutput",
 		Input:   input,
 		Output:  (*glacier.GetJobOutputOutput)(nil),
 		Error:   nil,
@@ -358,7 +358,7 @@ func (c *Client) GetJobOutputWithContext(ctx context.Context, input *glacier.Get
 func (c *Client) GetVaultAccessPolicyWithContext(ctx context.Context, input *glacier.GetVaultAccessPolicyInput, opts ...request.Option) (*glacier.GetVaultAccessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "GetVaultAccessPolicyWithContext",
+		Action:  "GetVaultAccessPolicy",
 		Input:   input,
 		Output:  (*glacier.GetVaultAccessPolicyOutput)(nil),
 		Error:   nil,
@@ -379,7 +379,7 @@ func (c *Client) GetVaultAccessPolicyWithContext(ctx context.Context, input *gla
 func (c *Client) GetVaultLockWithContext(ctx context.Context, input *glacier.GetVaultLockInput, opts ...request.Option) (*glacier.GetVaultLockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "GetVaultLockWithContext",
+		Action:  "GetVaultLock",
 		Input:   input,
 		Output:  (*glacier.GetVaultLockOutput)(nil),
 		Error:   nil,
@@ -400,7 +400,7 @@ func (c *Client) GetVaultLockWithContext(ctx context.Context, input *glacier.Get
 func (c *Client) GetVaultNotificationsWithContext(ctx context.Context, input *glacier.GetVaultNotificationsInput, opts ...request.Option) (*glacier.GetVaultNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "GetVaultNotificationsWithContext",
+		Action:  "GetVaultNotifications",
 		Input:   input,
 		Output:  (*glacier.GetVaultNotificationsOutput)(nil),
 		Error:   nil,
@@ -421,7 +421,7 @@ func (c *Client) GetVaultNotificationsWithContext(ctx context.Context, input *gl
 func (c *Client) InitiateJobWithContext(ctx context.Context, input *glacier.InitiateJobInput, opts ...request.Option) (*glacier.InitiateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "InitiateJobWithContext",
+		Action:  "InitiateJob",
 		Input:   input,
 		Output:  (*glacier.InitiateJobOutput)(nil),
 		Error:   nil,
@@ -442,7 +442,7 @@ func (c *Client) InitiateJobWithContext(ctx context.Context, input *glacier.Init
 func (c *Client) InitiateMultipartUploadWithContext(ctx context.Context, input *glacier.InitiateMultipartUploadInput, opts ...request.Option) (*glacier.InitiateMultipartUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "InitiateMultipartUploadWithContext",
+		Action:  "InitiateMultipartUpload",
 		Input:   input,
 		Output:  (*glacier.InitiateMultipartUploadOutput)(nil),
 		Error:   nil,
@@ -463,7 +463,7 @@ func (c *Client) InitiateMultipartUploadWithContext(ctx context.Context, input *
 func (c *Client) InitiateVaultLockWithContext(ctx context.Context, input *glacier.InitiateVaultLockInput, opts ...request.Option) (*glacier.InitiateVaultLockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "InitiateVaultLockWithContext",
+		Action:  "InitiateVaultLock",
 		Input:   input,
 		Output:  (*glacier.InitiateVaultLockOutput)(nil),
 		Error:   nil,
@@ -484,7 +484,7 @@ func (c *Client) InitiateVaultLockWithContext(ctx context.Context, input *glacie
 func (c *Client) ListJobsWithContext(ctx context.Context, input *glacier.ListJobsInput, opts ...request.Option) (*glacier.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*glacier.ListJobsOutput)(nil),
 		Error:   nil,
@@ -505,7 +505,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *glacier.ListJob
 func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *glacier.ListMultipartUploadsInput, opts ...request.Option) (*glacier.ListMultipartUploadsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "ListMultipartUploadsWithContext",
+		Action:  "ListMultipartUploads",
 		Input:   input,
 		Output:  (*glacier.ListMultipartUploadsOutput)(nil),
 		Error:   nil,
@@ -526,7 +526,7 @@ func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *gla
 func (c *Client) ListPartsWithContext(ctx context.Context, input *glacier.ListPartsInput, opts ...request.Option) (*glacier.ListPartsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "ListPartsWithContext",
+		Action:  "ListParts",
 		Input:   input,
 		Output:  (*glacier.ListPartsOutput)(nil),
 		Error:   nil,
@@ -547,7 +547,7 @@ func (c *Client) ListPartsWithContext(ctx context.Context, input *glacier.ListPa
 func (c *Client) ListProvisionedCapacityWithContext(ctx context.Context, input *glacier.ListProvisionedCapacityInput, opts ...request.Option) (*glacier.ListProvisionedCapacityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "ListProvisionedCapacityWithContext",
+		Action:  "ListProvisionedCapacity",
 		Input:   input,
 		Output:  (*glacier.ListProvisionedCapacityOutput)(nil),
 		Error:   nil,
@@ -568,7 +568,7 @@ func (c *Client) ListProvisionedCapacityWithContext(ctx context.Context, input *
 func (c *Client) ListTagsForVaultWithContext(ctx context.Context, input *glacier.ListTagsForVaultInput, opts ...request.Option) (*glacier.ListTagsForVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "ListTagsForVaultWithContext",
+		Action:  "ListTagsForVault",
 		Input:   input,
 		Output:  (*glacier.ListTagsForVaultOutput)(nil),
 		Error:   nil,
@@ -589,7 +589,7 @@ func (c *Client) ListTagsForVaultWithContext(ctx context.Context, input *glacier
 func (c *Client) ListVaultsWithContext(ctx context.Context, input *glacier.ListVaultsInput, opts ...request.Option) (*glacier.ListVaultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "ListVaultsWithContext",
+		Action:  "ListVaults",
 		Input:   input,
 		Output:  (*glacier.ListVaultsOutput)(nil),
 		Error:   nil,
@@ -610,7 +610,7 @@ func (c *Client) ListVaultsWithContext(ctx context.Context, input *glacier.ListV
 func (c *Client) PurchaseProvisionedCapacityWithContext(ctx context.Context, input *glacier.PurchaseProvisionedCapacityInput, opts ...request.Option) (*glacier.PurchaseProvisionedCapacityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "PurchaseProvisionedCapacityWithContext",
+		Action:  "PurchaseProvisionedCapacity",
 		Input:   input,
 		Output:  (*glacier.PurchaseProvisionedCapacityOutput)(nil),
 		Error:   nil,
@@ -631,7 +631,7 @@ func (c *Client) PurchaseProvisionedCapacityWithContext(ctx context.Context, inp
 func (c *Client) RemoveTagsFromVaultWithContext(ctx context.Context, input *glacier.RemoveTagsFromVaultInput, opts ...request.Option) (*glacier.RemoveTagsFromVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "RemoveTagsFromVaultWithContext",
+		Action:  "RemoveTagsFromVault",
 		Input:   input,
 		Output:  (*glacier.RemoveTagsFromVaultOutput)(nil),
 		Error:   nil,
@@ -652,7 +652,7 @@ func (c *Client) RemoveTagsFromVaultWithContext(ctx context.Context, input *glac
 func (c *Client) SetDataRetrievalPolicyWithContext(ctx context.Context, input *glacier.SetDataRetrievalPolicyInput, opts ...request.Option) (*glacier.SetDataRetrievalPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "SetDataRetrievalPolicyWithContext",
+		Action:  "SetDataRetrievalPolicy",
 		Input:   input,
 		Output:  (*glacier.SetDataRetrievalPolicyOutput)(nil),
 		Error:   nil,
@@ -673,7 +673,7 @@ func (c *Client) SetDataRetrievalPolicyWithContext(ctx context.Context, input *g
 func (c *Client) SetVaultAccessPolicyWithContext(ctx context.Context, input *glacier.SetVaultAccessPolicyInput, opts ...request.Option) (*glacier.SetVaultAccessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "SetVaultAccessPolicyWithContext",
+		Action:  "SetVaultAccessPolicy",
 		Input:   input,
 		Output:  (*glacier.SetVaultAccessPolicyOutput)(nil),
 		Error:   nil,
@@ -694,7 +694,7 @@ func (c *Client) SetVaultAccessPolicyWithContext(ctx context.Context, input *gla
 func (c *Client) SetVaultNotificationsWithContext(ctx context.Context, input *glacier.SetVaultNotificationsInput, opts ...request.Option) (*glacier.SetVaultNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "SetVaultNotificationsWithContext",
+		Action:  "SetVaultNotifications",
 		Input:   input,
 		Output:  (*glacier.SetVaultNotificationsOutput)(nil),
 		Error:   nil,
@@ -715,7 +715,7 @@ func (c *Client) SetVaultNotificationsWithContext(ctx context.Context, input *gl
 func (c *Client) UploadArchiveWithContext(ctx context.Context, input *glacier.UploadArchiveInput, opts ...request.Option) (*glacier.ArchiveCreationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "UploadArchiveWithContext",
+		Action:  "UploadArchive",
 		Input:   input,
 		Output:  (*glacier.ArchiveCreationOutput)(nil),
 		Error:   nil,
@@ -736,7 +736,7 @@ func (c *Client) UploadArchiveWithContext(ctx context.Context, input *glacier.Up
 func (c *Client) UploadMultipartPartWithContext(ctx context.Context, input *glacier.UploadMultipartPartInput, opts ...request.Option) (*glacier.UploadMultipartPartOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
-		Action:  "UploadMultipartPartWithContext",
+		Action:  "UploadMultipartPart",
 		Input:   input,
 		Output:  (*glacier.UploadMultipartPartOutput)(nil),
 		Error:   nil,

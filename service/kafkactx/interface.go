@@ -49,7 +49,7 @@ var _ Kafka = (*Client)(nil)
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *kafka.CreateClusterInput, opts ...request.Option) (*kafka.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*kafka.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *kafka.Crea
 func (c *Client) CreateConfigurationWithContext(ctx context.Context, input *kafka.CreateConfigurationInput, opts ...request.Option) (*kafka.CreateConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "CreateConfigurationWithContext",
+		Action:  "CreateConfiguration",
 		Input:   input,
 		Output:  (*kafka.CreateConfigurationOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) CreateConfigurationWithContext(ctx context.Context, input *kafk
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *kafka.DeleteClusterInput, opts ...request.Option) (*kafka.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "DeleteClusterWithContext",
+		Action:  "DeleteCluster",
 		Input:   input,
 		Output:  (*kafka.DeleteClusterOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *kafka.Dele
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *kafka.DescribeClusterInput, opts ...request.Option) (*kafka.DescribeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "DescribeClusterWithContext",
+		Action:  "DescribeCluster",
 		Input:   input,
 		Output:  (*kafka.DescribeClusterOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *kafka.De
 func (c *Client) DescribeClusterOperationWithContext(ctx context.Context, input *kafka.DescribeClusterOperationInput, opts ...request.Option) (*kafka.DescribeClusterOperationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "DescribeClusterOperationWithContext",
+		Action:  "DescribeClusterOperation",
 		Input:   input,
 		Output:  (*kafka.DescribeClusterOperationOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DescribeClusterOperationWithContext(ctx context.Context, input 
 func (c *Client) DescribeConfigurationWithContext(ctx context.Context, input *kafka.DescribeConfigurationInput, opts ...request.Option) (*kafka.DescribeConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "DescribeConfigurationWithContext",
+		Action:  "DescribeConfiguration",
 		Input:   input,
 		Output:  (*kafka.DescribeConfigurationOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) DescribeConfigurationWithContext(ctx context.Context, input *ka
 func (c *Client) DescribeConfigurationRevisionWithContext(ctx context.Context, input *kafka.DescribeConfigurationRevisionInput, opts ...request.Option) (*kafka.DescribeConfigurationRevisionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "DescribeConfigurationRevisionWithContext",
+		Action:  "DescribeConfigurationRevision",
 		Input:   input,
 		Output:  (*kafka.DescribeConfigurationRevisionOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) DescribeConfigurationRevisionWithContext(ctx context.Context, i
 func (c *Client) GetBootstrapBrokersWithContext(ctx context.Context, input *kafka.GetBootstrapBrokersInput, opts ...request.Option) (*kafka.GetBootstrapBrokersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "GetBootstrapBrokersWithContext",
+		Action:  "GetBootstrapBrokers",
 		Input:   input,
 		Output:  (*kafka.GetBootstrapBrokersOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) GetBootstrapBrokersWithContext(ctx context.Context, input *kafk
 func (c *Client) ListClusterOperationsWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, opts ...request.Option) (*kafka.ListClusterOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "ListClusterOperationsWithContext",
+		Action:  "ListClusterOperations",
 		Input:   input,
 		Output:  (*kafka.ListClusterOperationsOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) ListClusterOperationsWithContext(ctx context.Context, input *ka
 func (c *Client) ListClustersWithContext(ctx context.Context, input *kafka.ListClustersInput, opts ...request.Option) (*kafka.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "ListClustersWithContext",
+		Action:  "ListClusters",
 		Input:   input,
 		Output:  (*kafka.ListClustersOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *kafka.ListC
 func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, input *kafka.ListConfigurationRevisionsInput, opts ...request.Option) (*kafka.ListConfigurationRevisionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "ListConfigurationRevisionsWithContext",
+		Action:  "ListConfigurationRevisions",
 		Input:   input,
 		Output:  (*kafka.ListConfigurationRevisionsOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, inpu
 func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, opts ...request.Option) (*kafka.ListConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "ListConfigurationsWithContext",
+		Action:  "ListConfigurations",
 		Input:   input,
 		Output:  (*kafka.ListConfigurationsOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *kafka
 func (c *Client) ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "ListNodesWithContext",
+		Action:  "ListNodes",
 		Input:   input,
 		Output:  (*kafka.ListNodesOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) ListNodesWithContext(ctx context.Context, input *kafka.ListNode
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*kafka.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kafk
 func (c *Client) TagResourceWithContext(ctx context.Context, input *kafka.TagResourceInput, opts ...request.Option) (*kafka.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*kafka.TagResourceOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *kafka.TagRes
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *kafka.UntagResourceInput, opts ...request.Option) (*kafka.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*kafka.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *kafka.Unta
 func (c *Client) UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "UpdateBrokerStorageWithContext",
+		Action:  "UpdateBrokerStorage",
 		Input:   input,
 		Output:  (*kafka.UpdateBrokerStorageOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) UpdateBrokerStorageWithContext(ctx context.Context, input *kafk
 func (c *Client) UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
-		Action:  "UpdateClusterConfigurationWithContext",
+		Action:  "UpdateClusterConfiguration",
 		Input:   input,
 		Output:  (*kafka.UpdateClusterConfigurationOutput)(nil),
 		Error:   nil,

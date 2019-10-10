@@ -11,6 +11,8 @@ import (
 )
 
 type ApiGatewayManagementApi interface {
+	DeleteConnectionWithContext(ctx context.Context, input *apigatewaymanagementapi.DeleteConnectionInput, opts ...request.Option) (*apigatewaymanagementapi.DeleteConnectionOutput, error)
+	GetConnectionWithContext(ctx context.Context, input *apigatewaymanagementapi.GetConnectionInput, opts ...request.Option) (*apigatewaymanagementapi.GetConnectionOutput, error)
 	PostToConnectionWithContext(ctx context.Context, input *apigatewaymanagementapi.PostToConnectionInput, opts ...request.Option) (*apigatewaymanagementapi.PostToConnectionOutput, error)
 }
 
@@ -29,10 +31,52 @@ func New(base apigatewaymanagementapiiface.ApiGatewayManagementApiAPI, ctxer aws
 var _ ApiGatewayManagementApi = (*apigatewaymanagementapi.ApiGatewayManagementApi)(nil)
 var _ ApiGatewayManagementApi = (*Client)(nil)
 
+func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *apigatewaymanagementapi.DeleteConnectionInput, opts ...request.Option) (*apigatewaymanagementapi.DeleteConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewaymanagementapi",
+		Action:  "DeleteConnection",
+		Input:   input,
+		Output:  (*apigatewaymanagementapi.DeleteConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayManagementApiAPI.DeleteConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewaymanagementapi.DeleteConnectionOutput), req.Error
+}
+
+func (c *Client) GetConnectionWithContext(ctx context.Context, input *apigatewaymanagementapi.GetConnectionInput, opts ...request.Option) (*apigatewaymanagementapi.GetConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewaymanagementapi",
+		Action:  "GetConnection",
+		Input:   input,
+		Output:  (*apigatewaymanagementapi.GetConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayManagementApiAPI.GetConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewaymanagementapi.GetConnectionOutput), req.Error
+}
+
 func (c *Client) PostToConnectionWithContext(ctx context.Context, input *apigatewaymanagementapi.PostToConnectionInput, opts ...request.Option) (*apigatewaymanagementapi.PostToConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigatewaymanagementapi",
-		Action:  "PostToConnectionWithContext",
+		Action:  "PostToConnection",
 		Input:   input,
 		Output:  (*apigatewaymanagementapi.PostToConnectionOutput)(nil),
 		Error:   nil,

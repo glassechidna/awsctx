@@ -16,6 +16,7 @@ type DataSync interface {
 	CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error)
 	CreateLocationNfsWithContext(ctx context.Context, input *datasync.CreateLocationNfsInput, opts ...request.Option) (*datasync.CreateLocationNfsOutput, error)
 	CreateLocationS3WithContext(ctx context.Context, input *datasync.CreateLocationS3Input, opts ...request.Option) (*datasync.CreateLocationS3Output, error)
+	CreateLocationSmbWithContext(ctx context.Context, input *datasync.CreateLocationSmbInput, opts ...request.Option) (*datasync.CreateLocationSmbOutput, error)
 	CreateTaskWithContext(ctx context.Context, input *datasync.CreateTaskInput, opts ...request.Option) (*datasync.CreateTaskOutput, error)
 	DeleteAgentWithContext(ctx context.Context, input *datasync.DeleteAgentInput, opts ...request.Option) (*datasync.DeleteAgentOutput, error)
 	DeleteLocationWithContext(ctx context.Context, input *datasync.DeleteLocationInput, opts ...request.Option) (*datasync.DeleteLocationOutput, error)
@@ -24,6 +25,7 @@ type DataSync interface {
 	DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error)
 	DescribeLocationNfsWithContext(ctx context.Context, input *datasync.DescribeLocationNfsInput, opts ...request.Option) (*datasync.DescribeLocationNfsOutput, error)
 	DescribeLocationS3WithContext(ctx context.Context, input *datasync.DescribeLocationS3Input, opts ...request.Option) (*datasync.DescribeLocationS3Output, error)
+	DescribeLocationSmbWithContext(ctx context.Context, input *datasync.DescribeLocationSmbInput, opts ...request.Option) (*datasync.DescribeLocationSmbOutput, error)
 	DescribeTaskWithContext(ctx context.Context, input *datasync.DescribeTaskInput, opts ...request.Option) (*datasync.DescribeTaskOutput, error)
 	DescribeTaskExecutionWithContext(ctx context.Context, input *datasync.DescribeTaskExecutionInput, opts ...request.Option) (*datasync.DescribeTaskExecutionOutput, error)
 	ListAgentsWithContext(ctx context.Context, input *datasync.ListAgentsInput, opts ...request.Option) (*datasync.ListAgentsOutput, error)
@@ -56,7 +58,7 @@ var _ DataSync = (*Client)(nil)
 func (c *Client) CancelTaskExecutionWithContext(ctx context.Context, input *datasync.CancelTaskExecutionInput, opts ...request.Option) (*datasync.CancelTaskExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "CancelTaskExecutionWithContext",
+		Action:  "CancelTaskExecution",
 		Input:   input,
 		Output:  (*datasync.CancelTaskExecutionOutput)(nil),
 		Error:   nil,
@@ -77,7 +79,7 @@ func (c *Client) CancelTaskExecutionWithContext(ctx context.Context, input *data
 func (c *Client) CreateAgentWithContext(ctx context.Context, input *datasync.CreateAgentInput, opts ...request.Option) (*datasync.CreateAgentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "CreateAgentWithContext",
+		Action:  "CreateAgent",
 		Input:   input,
 		Output:  (*datasync.CreateAgentOutput)(nil),
 		Error:   nil,
@@ -98,7 +100,7 @@ func (c *Client) CreateAgentWithContext(ctx context.Context, input *datasync.Cre
 func (c *Client) CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "CreateLocationEfsWithContext",
+		Action:  "CreateLocationEfs",
 		Input:   input,
 		Output:  (*datasync.CreateLocationEfsOutput)(nil),
 		Error:   nil,
@@ -119,7 +121,7 @@ func (c *Client) CreateLocationEfsWithContext(ctx context.Context, input *datasy
 func (c *Client) CreateLocationNfsWithContext(ctx context.Context, input *datasync.CreateLocationNfsInput, opts ...request.Option) (*datasync.CreateLocationNfsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "CreateLocationNfsWithContext",
+		Action:  "CreateLocationNfs",
 		Input:   input,
 		Output:  (*datasync.CreateLocationNfsOutput)(nil),
 		Error:   nil,
@@ -140,7 +142,7 @@ func (c *Client) CreateLocationNfsWithContext(ctx context.Context, input *datasy
 func (c *Client) CreateLocationS3WithContext(ctx context.Context, input *datasync.CreateLocationS3Input, opts ...request.Option) (*datasync.CreateLocationS3Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "CreateLocationS3WithContext",
+		Action:  "CreateLocationS3",
 		Input:   input,
 		Output:  (*datasync.CreateLocationS3Output)(nil),
 		Error:   nil,
@@ -158,10 +160,31 @@ func (c *Client) CreateLocationS3WithContext(ctx context.Context, input *datasyn
 	return req.Output.(*datasync.CreateLocationS3Output), req.Error
 }
 
+func (c *Client) CreateLocationSmbWithContext(ctx context.Context, input *datasync.CreateLocationSmbInput, opts ...request.Option) (*datasync.CreateLocationSmbOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "CreateLocationSmb",
+		Input:   input,
+		Output:  (*datasync.CreateLocationSmbOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.CreateLocationSmbWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.CreateLocationSmbOutput), req.Error
+}
+
 func (c *Client) CreateTaskWithContext(ctx context.Context, input *datasync.CreateTaskInput, opts ...request.Option) (*datasync.CreateTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "CreateTaskWithContext",
+		Action:  "CreateTask",
 		Input:   input,
 		Output:  (*datasync.CreateTaskOutput)(nil),
 		Error:   nil,
@@ -182,7 +205,7 @@ func (c *Client) CreateTaskWithContext(ctx context.Context, input *datasync.Crea
 func (c *Client) DeleteAgentWithContext(ctx context.Context, input *datasync.DeleteAgentInput, opts ...request.Option) (*datasync.DeleteAgentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DeleteAgentWithContext",
+		Action:  "DeleteAgent",
 		Input:   input,
 		Output:  (*datasync.DeleteAgentOutput)(nil),
 		Error:   nil,
@@ -203,7 +226,7 @@ func (c *Client) DeleteAgentWithContext(ctx context.Context, input *datasync.Del
 func (c *Client) DeleteLocationWithContext(ctx context.Context, input *datasync.DeleteLocationInput, opts ...request.Option) (*datasync.DeleteLocationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DeleteLocationWithContext",
+		Action:  "DeleteLocation",
 		Input:   input,
 		Output:  (*datasync.DeleteLocationOutput)(nil),
 		Error:   nil,
@@ -224,7 +247,7 @@ func (c *Client) DeleteLocationWithContext(ctx context.Context, input *datasync.
 func (c *Client) DeleteTaskWithContext(ctx context.Context, input *datasync.DeleteTaskInput, opts ...request.Option) (*datasync.DeleteTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DeleteTaskWithContext",
+		Action:  "DeleteTask",
 		Input:   input,
 		Output:  (*datasync.DeleteTaskOutput)(nil),
 		Error:   nil,
@@ -245,7 +268,7 @@ func (c *Client) DeleteTaskWithContext(ctx context.Context, input *datasync.Dele
 func (c *Client) DescribeAgentWithContext(ctx context.Context, input *datasync.DescribeAgentInput, opts ...request.Option) (*datasync.DescribeAgentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DescribeAgentWithContext",
+		Action:  "DescribeAgent",
 		Input:   input,
 		Output:  (*datasync.DescribeAgentOutput)(nil),
 		Error:   nil,
@@ -266,7 +289,7 @@ func (c *Client) DescribeAgentWithContext(ctx context.Context, input *datasync.D
 func (c *Client) DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DescribeLocationEfsWithContext",
+		Action:  "DescribeLocationEfs",
 		Input:   input,
 		Output:  (*datasync.DescribeLocationEfsOutput)(nil),
 		Error:   nil,
@@ -287,7 +310,7 @@ func (c *Client) DescribeLocationEfsWithContext(ctx context.Context, input *data
 func (c *Client) DescribeLocationNfsWithContext(ctx context.Context, input *datasync.DescribeLocationNfsInput, opts ...request.Option) (*datasync.DescribeLocationNfsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DescribeLocationNfsWithContext",
+		Action:  "DescribeLocationNfs",
 		Input:   input,
 		Output:  (*datasync.DescribeLocationNfsOutput)(nil),
 		Error:   nil,
@@ -308,7 +331,7 @@ func (c *Client) DescribeLocationNfsWithContext(ctx context.Context, input *data
 func (c *Client) DescribeLocationS3WithContext(ctx context.Context, input *datasync.DescribeLocationS3Input, opts ...request.Option) (*datasync.DescribeLocationS3Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DescribeLocationS3WithContext",
+		Action:  "DescribeLocationS3",
 		Input:   input,
 		Output:  (*datasync.DescribeLocationS3Output)(nil),
 		Error:   nil,
@@ -326,10 +349,31 @@ func (c *Client) DescribeLocationS3WithContext(ctx context.Context, input *datas
 	return req.Output.(*datasync.DescribeLocationS3Output), req.Error
 }
 
+func (c *Client) DescribeLocationSmbWithContext(ctx context.Context, input *datasync.DescribeLocationSmbInput, opts ...request.Option) (*datasync.DescribeLocationSmbOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeLocationSmb",
+		Input:   input,
+		Output:  (*datasync.DescribeLocationSmbOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeLocationSmbWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeLocationSmbOutput), req.Error
+}
+
 func (c *Client) DescribeTaskWithContext(ctx context.Context, input *datasync.DescribeTaskInput, opts ...request.Option) (*datasync.DescribeTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DescribeTaskWithContext",
+		Action:  "DescribeTask",
 		Input:   input,
 		Output:  (*datasync.DescribeTaskOutput)(nil),
 		Error:   nil,
@@ -350,7 +394,7 @@ func (c *Client) DescribeTaskWithContext(ctx context.Context, input *datasync.De
 func (c *Client) DescribeTaskExecutionWithContext(ctx context.Context, input *datasync.DescribeTaskExecutionInput, opts ...request.Option) (*datasync.DescribeTaskExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "DescribeTaskExecutionWithContext",
+		Action:  "DescribeTaskExecution",
 		Input:   input,
 		Output:  (*datasync.DescribeTaskExecutionOutput)(nil),
 		Error:   nil,
@@ -371,7 +415,7 @@ func (c *Client) DescribeTaskExecutionWithContext(ctx context.Context, input *da
 func (c *Client) ListAgentsWithContext(ctx context.Context, input *datasync.ListAgentsInput, opts ...request.Option) (*datasync.ListAgentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "ListAgentsWithContext",
+		Action:  "ListAgents",
 		Input:   input,
 		Output:  (*datasync.ListAgentsOutput)(nil),
 		Error:   nil,
@@ -392,7 +436,7 @@ func (c *Client) ListAgentsWithContext(ctx context.Context, input *datasync.List
 func (c *Client) ListLocationsWithContext(ctx context.Context, input *datasync.ListLocationsInput, opts ...request.Option) (*datasync.ListLocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "ListLocationsWithContext",
+		Action:  "ListLocations",
 		Input:   input,
 		Output:  (*datasync.ListLocationsOutput)(nil),
 		Error:   nil,
@@ -413,7 +457,7 @@ func (c *Client) ListLocationsWithContext(ctx context.Context, input *datasync.L
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, opts ...request.Option) (*datasync.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*datasync.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -434,7 +478,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *data
 func (c *Client) ListTaskExecutionsWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, opts ...request.Option) (*datasync.ListTaskExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "ListTaskExecutionsWithContext",
+		Action:  "ListTaskExecutions",
 		Input:   input,
 		Output:  (*datasync.ListTaskExecutionsOutput)(nil),
 		Error:   nil,
@@ -455,7 +499,7 @@ func (c *Client) ListTaskExecutionsWithContext(ctx context.Context, input *datas
 func (c *Client) ListTasksWithContext(ctx context.Context, input *datasync.ListTasksInput, opts ...request.Option) (*datasync.ListTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "ListTasksWithContext",
+		Action:  "ListTasks",
 		Input:   input,
 		Output:  (*datasync.ListTasksOutput)(nil),
 		Error:   nil,
@@ -476,7 +520,7 @@ func (c *Client) ListTasksWithContext(ctx context.Context, input *datasync.ListT
 func (c *Client) StartTaskExecutionWithContext(ctx context.Context, input *datasync.StartTaskExecutionInput, opts ...request.Option) (*datasync.StartTaskExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "StartTaskExecutionWithContext",
+		Action:  "StartTaskExecution",
 		Input:   input,
 		Output:  (*datasync.StartTaskExecutionOutput)(nil),
 		Error:   nil,
@@ -497,7 +541,7 @@ func (c *Client) StartTaskExecutionWithContext(ctx context.Context, input *datas
 func (c *Client) TagResourceWithContext(ctx context.Context, input *datasync.TagResourceInput, opts ...request.Option) (*datasync.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*datasync.TagResourceOutput)(nil),
 		Error:   nil,
@@ -518,7 +562,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *datasync.Tag
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*datasync.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -539,7 +583,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *datasync.U
 func (c *Client) UpdateAgentWithContext(ctx context.Context, input *datasync.UpdateAgentInput, opts ...request.Option) (*datasync.UpdateAgentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "UpdateAgentWithContext",
+		Action:  "UpdateAgent",
 		Input:   input,
 		Output:  (*datasync.UpdateAgentOutput)(nil),
 		Error:   nil,
@@ -560,7 +604,7 @@ func (c *Client) UpdateAgentWithContext(ctx context.Context, input *datasync.Upd
 func (c *Client) UpdateTaskWithContext(ctx context.Context, input *datasync.UpdateTaskInput, opts ...request.Option) (*datasync.UpdateTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
-		Action:  "UpdateTaskWithContext",
+		Action:  "UpdateTask",
 		Input:   input,
 		Output:  (*datasync.UpdateTaskOutput)(nil),
 		Error:   nil,

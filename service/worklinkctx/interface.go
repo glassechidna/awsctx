@@ -61,7 +61,7 @@ var _ WorkLink = (*Client)(nil)
 func (c *Client) AssociateDomainWithContext(ctx context.Context, input *worklink.AssociateDomainInput, opts ...request.Option) (*worklink.AssociateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "AssociateDomainWithContext",
+		Action:  "AssociateDomain",
 		Input:   input,
 		Output:  (*worklink.AssociateDomainOutput)(nil),
 		Error:   nil,
@@ -82,7 +82,7 @@ func (c *Client) AssociateDomainWithContext(ctx context.Context, input *worklink
 func (c *Client) AssociateWebsiteAuthorizationProviderWithContext(ctx context.Context, input *worklink.AssociateWebsiteAuthorizationProviderInput, opts ...request.Option) (*worklink.AssociateWebsiteAuthorizationProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "AssociateWebsiteAuthorizationProviderWithContext",
+		Action:  "AssociateWebsiteAuthorizationProvider",
 		Input:   input,
 		Output:  (*worklink.AssociateWebsiteAuthorizationProviderOutput)(nil),
 		Error:   nil,
@@ -103,7 +103,7 @@ func (c *Client) AssociateWebsiteAuthorizationProviderWithContext(ctx context.Co
 func (c *Client) AssociateWebsiteCertificateAuthorityWithContext(ctx context.Context, input *worklink.AssociateWebsiteCertificateAuthorityInput, opts ...request.Option) (*worklink.AssociateWebsiteCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "AssociateWebsiteCertificateAuthorityWithContext",
+		Action:  "AssociateWebsiteCertificateAuthority",
 		Input:   input,
 		Output:  (*worklink.AssociateWebsiteCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -124,7 +124,7 @@ func (c *Client) AssociateWebsiteCertificateAuthorityWithContext(ctx context.Con
 func (c *Client) CreateFleetWithContext(ctx context.Context, input *worklink.CreateFleetInput, opts ...request.Option) (*worklink.CreateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "CreateFleetWithContext",
+		Action:  "CreateFleet",
 		Input:   input,
 		Output:  (*worklink.CreateFleetOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *worklink.Cre
 func (c *Client) DeleteFleetWithContext(ctx context.Context, input *worklink.DeleteFleetInput, opts ...request.Option) (*worklink.DeleteFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DeleteFleetWithContext",
+		Action:  "DeleteFleet",
 		Input:   input,
 		Output:  (*worklink.DeleteFleetOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, input *worklink.Del
 func (c *Client) DescribeAuditStreamConfigurationWithContext(ctx context.Context, input *worklink.DescribeAuditStreamConfigurationInput, opts ...request.Option) (*worklink.DescribeAuditStreamConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeAuditStreamConfigurationWithContext",
+		Action:  "DescribeAuditStreamConfiguration",
 		Input:   input,
 		Output:  (*worklink.DescribeAuditStreamConfigurationOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) DescribeAuditStreamConfigurationWithContext(ctx context.Context
 func (c *Client) DescribeCompanyNetworkConfigurationWithContext(ctx context.Context, input *worklink.DescribeCompanyNetworkConfigurationInput, opts ...request.Option) (*worklink.DescribeCompanyNetworkConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeCompanyNetworkConfigurationWithContext",
+		Action:  "DescribeCompanyNetworkConfiguration",
 		Input:   input,
 		Output:  (*worklink.DescribeCompanyNetworkConfigurationOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) DescribeCompanyNetworkConfigurationWithContext(ctx context.Cont
 func (c *Client) DescribeDeviceWithContext(ctx context.Context, input *worklink.DescribeDeviceInput, opts ...request.Option) (*worklink.DescribeDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeDeviceWithContext",
+		Action:  "DescribeDevice",
 		Input:   input,
 		Output:  (*worklink.DescribeDeviceOutput)(nil),
 		Error:   nil,
@@ -229,7 +229,7 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, input *worklink.
 func (c *Client) DescribeDevicePolicyConfigurationWithContext(ctx context.Context, input *worklink.DescribeDevicePolicyConfigurationInput, opts ...request.Option) (*worklink.DescribeDevicePolicyConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeDevicePolicyConfigurationWithContext",
+		Action:  "DescribeDevicePolicyConfiguration",
 		Input:   input,
 		Output:  (*worklink.DescribeDevicePolicyConfigurationOutput)(nil),
 		Error:   nil,
@@ -250,7 +250,7 @@ func (c *Client) DescribeDevicePolicyConfigurationWithContext(ctx context.Contex
 func (c *Client) DescribeDomainWithContext(ctx context.Context, input *worklink.DescribeDomainInput, opts ...request.Option) (*worklink.DescribeDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeDomainWithContext",
+		Action:  "DescribeDomain",
 		Input:   input,
 		Output:  (*worklink.DescribeDomainOutput)(nil),
 		Error:   nil,
@@ -271,7 +271,7 @@ func (c *Client) DescribeDomainWithContext(ctx context.Context, input *worklink.
 func (c *Client) DescribeFleetMetadataWithContext(ctx context.Context, input *worklink.DescribeFleetMetadataInput, opts ...request.Option) (*worklink.DescribeFleetMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeFleetMetadataWithContext",
+		Action:  "DescribeFleetMetadata",
 		Input:   input,
 		Output:  (*worklink.DescribeFleetMetadataOutput)(nil),
 		Error:   nil,
@@ -292,7 +292,7 @@ func (c *Client) DescribeFleetMetadataWithContext(ctx context.Context, input *wo
 func (c *Client) DescribeIdentityProviderConfigurationWithContext(ctx context.Context, input *worklink.DescribeIdentityProviderConfigurationInput, opts ...request.Option) (*worklink.DescribeIdentityProviderConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeIdentityProviderConfigurationWithContext",
+		Action:  "DescribeIdentityProviderConfiguration",
 		Input:   input,
 		Output:  (*worklink.DescribeIdentityProviderConfigurationOutput)(nil),
 		Error:   nil,
@@ -313,7 +313,7 @@ func (c *Client) DescribeIdentityProviderConfigurationWithContext(ctx context.Co
 func (c *Client) DescribeWebsiteCertificateAuthorityWithContext(ctx context.Context, input *worklink.DescribeWebsiteCertificateAuthorityInput, opts ...request.Option) (*worklink.DescribeWebsiteCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DescribeWebsiteCertificateAuthorityWithContext",
+		Action:  "DescribeWebsiteCertificateAuthority",
 		Input:   input,
 		Output:  (*worklink.DescribeWebsiteCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -334,7 +334,7 @@ func (c *Client) DescribeWebsiteCertificateAuthorityWithContext(ctx context.Cont
 func (c *Client) DisassociateDomainWithContext(ctx context.Context, input *worklink.DisassociateDomainInput, opts ...request.Option) (*worklink.DisassociateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DisassociateDomainWithContext",
+		Action:  "DisassociateDomain",
 		Input:   input,
 		Output:  (*worklink.DisassociateDomainOutput)(nil),
 		Error:   nil,
@@ -355,7 +355,7 @@ func (c *Client) DisassociateDomainWithContext(ctx context.Context, input *workl
 func (c *Client) DisassociateWebsiteAuthorizationProviderWithContext(ctx context.Context, input *worklink.DisassociateWebsiteAuthorizationProviderInput, opts ...request.Option) (*worklink.DisassociateWebsiteAuthorizationProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DisassociateWebsiteAuthorizationProviderWithContext",
+		Action:  "DisassociateWebsiteAuthorizationProvider",
 		Input:   input,
 		Output:  (*worklink.DisassociateWebsiteAuthorizationProviderOutput)(nil),
 		Error:   nil,
@@ -376,7 +376,7 @@ func (c *Client) DisassociateWebsiteAuthorizationProviderWithContext(ctx context
 func (c *Client) DisassociateWebsiteCertificateAuthorityWithContext(ctx context.Context, input *worklink.DisassociateWebsiteCertificateAuthorityInput, opts ...request.Option) (*worklink.DisassociateWebsiteCertificateAuthorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "DisassociateWebsiteCertificateAuthorityWithContext",
+		Action:  "DisassociateWebsiteCertificateAuthority",
 		Input:   input,
 		Output:  (*worklink.DisassociateWebsiteCertificateAuthorityOutput)(nil),
 		Error:   nil,
@@ -397,7 +397,7 @@ func (c *Client) DisassociateWebsiteCertificateAuthorityWithContext(ctx context.
 func (c *Client) ListDevicesWithContext(ctx context.Context, input *worklink.ListDevicesInput, opts ...request.Option) (*worklink.ListDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "ListDevicesWithContext",
+		Action:  "ListDevices",
 		Input:   input,
 		Output:  (*worklink.ListDevicesOutput)(nil),
 		Error:   nil,
@@ -418,7 +418,7 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, input *worklink.Lis
 func (c *Client) ListDomainsWithContext(ctx context.Context, input *worklink.ListDomainsInput, opts ...request.Option) (*worklink.ListDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "ListDomainsWithContext",
+		Action:  "ListDomains",
 		Input:   input,
 		Output:  (*worklink.ListDomainsOutput)(nil),
 		Error:   nil,
@@ -439,7 +439,7 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *worklink.Lis
 func (c *Client) ListFleetsWithContext(ctx context.Context, input *worklink.ListFleetsInput, opts ...request.Option) (*worklink.ListFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "ListFleetsWithContext",
+		Action:  "ListFleets",
 		Input:   input,
 		Output:  (*worklink.ListFleetsOutput)(nil),
 		Error:   nil,
@@ -460,7 +460,7 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, input *worklink.List
 func (c *Client) ListWebsiteAuthorizationProvidersWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, opts ...request.Option) (*worklink.ListWebsiteAuthorizationProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "ListWebsiteAuthorizationProvidersWithContext",
+		Action:  "ListWebsiteAuthorizationProviders",
 		Input:   input,
 		Output:  (*worklink.ListWebsiteAuthorizationProvidersOutput)(nil),
 		Error:   nil,
@@ -481,7 +481,7 @@ func (c *Client) ListWebsiteAuthorizationProvidersWithContext(ctx context.Contex
 func (c *Client) ListWebsiteCertificateAuthoritiesWithContext(ctx context.Context, input *worklink.ListWebsiteCertificateAuthoritiesInput, opts ...request.Option) (*worklink.ListWebsiteCertificateAuthoritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "ListWebsiteCertificateAuthoritiesWithContext",
+		Action:  "ListWebsiteCertificateAuthorities",
 		Input:   input,
 		Output:  (*worklink.ListWebsiteCertificateAuthoritiesOutput)(nil),
 		Error:   nil,
@@ -502,7 +502,7 @@ func (c *Client) ListWebsiteCertificateAuthoritiesWithContext(ctx context.Contex
 func (c *Client) RestoreDomainAccessWithContext(ctx context.Context, input *worklink.RestoreDomainAccessInput, opts ...request.Option) (*worklink.RestoreDomainAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "RestoreDomainAccessWithContext",
+		Action:  "RestoreDomainAccess",
 		Input:   input,
 		Output:  (*worklink.RestoreDomainAccessOutput)(nil),
 		Error:   nil,
@@ -523,7 +523,7 @@ func (c *Client) RestoreDomainAccessWithContext(ctx context.Context, input *work
 func (c *Client) RevokeDomainAccessWithContext(ctx context.Context, input *worklink.RevokeDomainAccessInput, opts ...request.Option) (*worklink.RevokeDomainAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "RevokeDomainAccessWithContext",
+		Action:  "RevokeDomainAccess",
 		Input:   input,
 		Output:  (*worklink.RevokeDomainAccessOutput)(nil),
 		Error:   nil,
@@ -544,7 +544,7 @@ func (c *Client) RevokeDomainAccessWithContext(ctx context.Context, input *workl
 func (c *Client) SignOutUserWithContext(ctx context.Context, input *worklink.SignOutUserInput, opts ...request.Option) (*worklink.SignOutUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "SignOutUserWithContext",
+		Action:  "SignOutUser",
 		Input:   input,
 		Output:  (*worklink.SignOutUserOutput)(nil),
 		Error:   nil,
@@ -565,7 +565,7 @@ func (c *Client) SignOutUserWithContext(ctx context.Context, input *worklink.Sig
 func (c *Client) UpdateAuditStreamConfigurationWithContext(ctx context.Context, input *worklink.UpdateAuditStreamConfigurationInput, opts ...request.Option) (*worklink.UpdateAuditStreamConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "UpdateAuditStreamConfigurationWithContext",
+		Action:  "UpdateAuditStreamConfiguration",
 		Input:   input,
 		Output:  (*worklink.UpdateAuditStreamConfigurationOutput)(nil),
 		Error:   nil,
@@ -586,7 +586,7 @@ func (c *Client) UpdateAuditStreamConfigurationWithContext(ctx context.Context, 
 func (c *Client) UpdateCompanyNetworkConfigurationWithContext(ctx context.Context, input *worklink.UpdateCompanyNetworkConfigurationInput, opts ...request.Option) (*worklink.UpdateCompanyNetworkConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "UpdateCompanyNetworkConfigurationWithContext",
+		Action:  "UpdateCompanyNetworkConfiguration",
 		Input:   input,
 		Output:  (*worklink.UpdateCompanyNetworkConfigurationOutput)(nil),
 		Error:   nil,
@@ -607,7 +607,7 @@ func (c *Client) UpdateCompanyNetworkConfigurationWithContext(ctx context.Contex
 func (c *Client) UpdateDevicePolicyConfigurationWithContext(ctx context.Context, input *worklink.UpdateDevicePolicyConfigurationInput, opts ...request.Option) (*worklink.UpdateDevicePolicyConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "UpdateDevicePolicyConfigurationWithContext",
+		Action:  "UpdateDevicePolicyConfiguration",
 		Input:   input,
 		Output:  (*worklink.UpdateDevicePolicyConfigurationOutput)(nil),
 		Error:   nil,
@@ -628,7 +628,7 @@ func (c *Client) UpdateDevicePolicyConfigurationWithContext(ctx context.Context,
 func (c *Client) UpdateDomainMetadataWithContext(ctx context.Context, input *worklink.UpdateDomainMetadataInput, opts ...request.Option) (*worklink.UpdateDomainMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "UpdateDomainMetadataWithContext",
+		Action:  "UpdateDomainMetadata",
 		Input:   input,
 		Output:  (*worklink.UpdateDomainMetadataOutput)(nil),
 		Error:   nil,
@@ -649,7 +649,7 @@ func (c *Client) UpdateDomainMetadataWithContext(ctx context.Context, input *wor
 func (c *Client) UpdateFleetMetadataWithContext(ctx context.Context, input *worklink.UpdateFleetMetadataInput, opts ...request.Option) (*worklink.UpdateFleetMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "UpdateFleetMetadataWithContext",
+		Action:  "UpdateFleetMetadata",
 		Input:   input,
 		Output:  (*worklink.UpdateFleetMetadataOutput)(nil),
 		Error:   nil,
@@ -670,7 +670,7 @@ func (c *Client) UpdateFleetMetadataWithContext(ctx context.Context, input *work
 func (c *Client) UpdateIdentityProviderConfigurationWithContext(ctx context.Context, input *worklink.UpdateIdentityProviderConfigurationInput, opts ...request.Option) (*worklink.UpdateIdentityProviderConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
-		Action:  "UpdateIdentityProviderConfigurationWithContext",
+		Action:  "UpdateIdentityProviderConfiguration",
 		Input:   input,
 		Output:  (*worklink.UpdateIdentityProviderConfigurationOutput)(nil),
 		Error:   nil,

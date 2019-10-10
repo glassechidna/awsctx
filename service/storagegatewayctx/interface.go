@@ -104,7 +104,7 @@ var _ StorageGateway = (*Client)(nil)
 func (c *Client) ActivateGatewayWithContext(ctx context.Context, input *storagegateway.ActivateGatewayInput, opts ...request.Option) (*storagegateway.ActivateGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ActivateGatewayWithContext",
+		Action:  "ActivateGateway",
 		Input:   input,
 		Output:  (*storagegateway.ActivateGatewayOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) ActivateGatewayWithContext(ctx context.Context, input *storageg
 func (c *Client) AddCacheWithContext(ctx context.Context, input *storagegateway.AddCacheInput, opts ...request.Option) (*storagegateway.AddCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "AddCacheWithContext",
+		Action:  "AddCache",
 		Input:   input,
 		Output:  (*storagegateway.AddCacheOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) AddCacheWithContext(ctx context.Context, input *storagegateway.
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *storagegateway.AddTagsToResourceInput, opts ...request.Option) (*storagegateway.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*storagegateway.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *storag
 func (c *Client) AddUploadBufferWithContext(ctx context.Context, input *storagegateway.AddUploadBufferInput, opts ...request.Option) (*storagegateway.AddUploadBufferOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "AddUploadBufferWithContext",
+		Action:  "AddUploadBuffer",
 		Input:   input,
 		Output:  (*storagegateway.AddUploadBufferOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) AddUploadBufferWithContext(ctx context.Context, input *storageg
 func (c *Client) AddWorkingStorageWithContext(ctx context.Context, input *storagegateway.AddWorkingStorageInput, opts ...request.Option) (*storagegateway.AddWorkingStorageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "AddWorkingStorageWithContext",
+		Action:  "AddWorkingStorage",
 		Input:   input,
 		Output:  (*storagegateway.AddWorkingStorageOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) AddWorkingStorageWithContext(ctx context.Context, input *storag
 func (c *Client) AssignTapePoolWithContext(ctx context.Context, input *storagegateway.AssignTapePoolInput, opts ...request.Option) (*storagegateway.AssignTapePoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "AssignTapePoolWithContext",
+		Action:  "AssignTapePool",
 		Input:   input,
 		Output:  (*storagegateway.AssignTapePoolOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) AssignTapePoolWithContext(ctx context.Context, input *storagega
 func (c *Client) AttachVolumeWithContext(ctx context.Context, input *storagegateway.AttachVolumeInput, opts ...request.Option) (*storagegateway.AttachVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "AttachVolumeWithContext",
+		Action:  "AttachVolume",
 		Input:   input,
 		Output:  (*storagegateway.AttachVolumeOutput)(nil),
 		Error:   nil,
@@ -251,7 +251,7 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, input *storagegate
 func (c *Client) CancelArchivalWithContext(ctx context.Context, input *storagegateway.CancelArchivalInput, opts ...request.Option) (*storagegateway.CancelArchivalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CancelArchivalWithContext",
+		Action:  "CancelArchival",
 		Input:   input,
 		Output:  (*storagegateway.CancelArchivalOutput)(nil),
 		Error:   nil,
@@ -272,7 +272,7 @@ func (c *Client) CancelArchivalWithContext(ctx context.Context, input *storagega
 func (c *Client) CancelRetrievalWithContext(ctx context.Context, input *storagegateway.CancelRetrievalInput, opts ...request.Option) (*storagegateway.CancelRetrievalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CancelRetrievalWithContext",
+		Action:  "CancelRetrieval",
 		Input:   input,
 		Output:  (*storagegateway.CancelRetrievalOutput)(nil),
 		Error:   nil,
@@ -293,7 +293,7 @@ func (c *Client) CancelRetrievalWithContext(ctx context.Context, input *storageg
 func (c *Client) CreateCachediSCSIVolumeWithContext(ctx context.Context, input *storagegateway.CreateCachediSCSIVolumeInput, opts ...request.Option) (*storagegateway.CreateCachediSCSIVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateCachediSCSIVolumeWithContext",
+		Action:  "CreateCachediSCSIVolume",
 		Input:   input,
 		Output:  (*storagegateway.CreateCachediSCSIVolumeOutput)(nil),
 		Error:   nil,
@@ -314,7 +314,7 @@ func (c *Client) CreateCachediSCSIVolumeWithContext(ctx context.Context, input *
 func (c *Client) CreateNFSFileShareWithContext(ctx context.Context, input *storagegateway.CreateNFSFileShareInput, opts ...request.Option) (*storagegateway.CreateNFSFileShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateNFSFileShareWithContext",
+		Action:  "CreateNFSFileShare",
 		Input:   input,
 		Output:  (*storagegateway.CreateNFSFileShareOutput)(nil),
 		Error:   nil,
@@ -335,7 +335,7 @@ func (c *Client) CreateNFSFileShareWithContext(ctx context.Context, input *stora
 func (c *Client) CreateSMBFileShareWithContext(ctx context.Context, input *storagegateway.CreateSMBFileShareInput, opts ...request.Option) (*storagegateway.CreateSMBFileShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateSMBFileShareWithContext",
+		Action:  "CreateSMBFileShare",
 		Input:   input,
 		Output:  (*storagegateway.CreateSMBFileShareOutput)(nil),
 		Error:   nil,
@@ -356,7 +356,7 @@ func (c *Client) CreateSMBFileShareWithContext(ctx context.Context, input *stora
 func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *storagegateway.CreateSnapshotInput, opts ...request.Option) (*storagegateway.CreateSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateSnapshotWithContext",
+		Action:  "CreateSnapshot",
 		Input:   input,
 		Output:  (*storagegateway.CreateSnapshotOutput)(nil),
 		Error:   nil,
@@ -377,7 +377,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *storagega
 func (c *Client) CreateSnapshotFromVolumeRecoveryPointWithContext(ctx context.Context, input *storagegateway.CreateSnapshotFromVolumeRecoveryPointInput, opts ...request.Option) (*storagegateway.CreateSnapshotFromVolumeRecoveryPointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateSnapshotFromVolumeRecoveryPointWithContext",
+		Action:  "CreateSnapshotFromVolumeRecoveryPoint",
 		Input:   input,
 		Output:  (*storagegateway.CreateSnapshotFromVolumeRecoveryPointOutput)(nil),
 		Error:   nil,
@@ -398,7 +398,7 @@ func (c *Client) CreateSnapshotFromVolumeRecoveryPointWithContext(ctx context.Co
 func (c *Client) CreateStorediSCSIVolumeWithContext(ctx context.Context, input *storagegateway.CreateStorediSCSIVolumeInput, opts ...request.Option) (*storagegateway.CreateStorediSCSIVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateStorediSCSIVolumeWithContext",
+		Action:  "CreateStorediSCSIVolume",
 		Input:   input,
 		Output:  (*storagegateway.CreateStorediSCSIVolumeOutput)(nil),
 		Error:   nil,
@@ -419,7 +419,7 @@ func (c *Client) CreateStorediSCSIVolumeWithContext(ctx context.Context, input *
 func (c *Client) CreateTapeWithBarcodeWithContext(ctx context.Context, input *storagegateway.CreateTapeWithBarcodeInput, opts ...request.Option) (*storagegateway.CreateTapeWithBarcodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateTapeWithBarcodeWithContext",
+		Action:  "CreateTapeWithBarcode",
 		Input:   input,
 		Output:  (*storagegateway.CreateTapeWithBarcodeOutput)(nil),
 		Error:   nil,
@@ -440,7 +440,7 @@ func (c *Client) CreateTapeWithBarcodeWithContext(ctx context.Context, input *st
 func (c *Client) CreateTapesWithContext(ctx context.Context, input *storagegateway.CreateTapesInput, opts ...request.Option) (*storagegateway.CreateTapesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "CreateTapesWithContext",
+		Action:  "CreateTapes",
 		Input:   input,
 		Output:  (*storagegateway.CreateTapesOutput)(nil),
 		Error:   nil,
@@ -461,7 +461,7 @@ func (c *Client) CreateTapesWithContext(ctx context.Context, input *storagegatew
 func (c *Client) DeleteBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DeleteBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DeleteBandwidthRateLimitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteBandwidthRateLimitWithContext",
+		Action:  "DeleteBandwidthRateLimit",
 		Input:   input,
 		Output:  (*storagegateway.DeleteBandwidthRateLimitOutput)(nil),
 		Error:   nil,
@@ -482,7 +482,7 @@ func (c *Client) DeleteBandwidthRateLimitWithContext(ctx context.Context, input 
 func (c *Client) DeleteChapCredentialsWithContext(ctx context.Context, input *storagegateway.DeleteChapCredentialsInput, opts ...request.Option) (*storagegateway.DeleteChapCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteChapCredentialsWithContext",
+		Action:  "DeleteChapCredentials",
 		Input:   input,
 		Output:  (*storagegateway.DeleteChapCredentialsOutput)(nil),
 		Error:   nil,
@@ -503,7 +503,7 @@ func (c *Client) DeleteChapCredentialsWithContext(ctx context.Context, input *st
 func (c *Client) DeleteFileShareWithContext(ctx context.Context, input *storagegateway.DeleteFileShareInput, opts ...request.Option) (*storagegateway.DeleteFileShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteFileShareWithContext",
+		Action:  "DeleteFileShare",
 		Input:   input,
 		Output:  (*storagegateway.DeleteFileShareOutput)(nil),
 		Error:   nil,
@@ -524,7 +524,7 @@ func (c *Client) DeleteFileShareWithContext(ctx context.Context, input *storageg
 func (c *Client) DeleteGatewayWithContext(ctx context.Context, input *storagegateway.DeleteGatewayInput, opts ...request.Option) (*storagegateway.DeleteGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteGatewayWithContext",
+		Action:  "DeleteGateway",
 		Input:   input,
 		Output:  (*storagegateway.DeleteGatewayOutput)(nil),
 		Error:   nil,
@@ -545,7 +545,7 @@ func (c *Client) DeleteGatewayWithContext(ctx context.Context, input *storagegat
 func (c *Client) DeleteSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.DeleteSnapshotScheduleInput, opts ...request.Option) (*storagegateway.DeleteSnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteSnapshotScheduleWithContext",
+		Action:  "DeleteSnapshotSchedule",
 		Input:   input,
 		Output:  (*storagegateway.DeleteSnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -566,7 +566,7 @@ func (c *Client) DeleteSnapshotScheduleWithContext(ctx context.Context, input *s
 func (c *Client) DeleteTapeWithContext(ctx context.Context, input *storagegateway.DeleteTapeInput, opts ...request.Option) (*storagegateway.DeleteTapeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteTapeWithContext",
+		Action:  "DeleteTape",
 		Input:   input,
 		Output:  (*storagegateway.DeleteTapeOutput)(nil),
 		Error:   nil,
@@ -587,7 +587,7 @@ func (c *Client) DeleteTapeWithContext(ctx context.Context, input *storagegatewa
 func (c *Client) DeleteTapeArchiveWithContext(ctx context.Context, input *storagegateway.DeleteTapeArchiveInput, opts ...request.Option) (*storagegateway.DeleteTapeArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteTapeArchiveWithContext",
+		Action:  "DeleteTapeArchive",
 		Input:   input,
 		Output:  (*storagegateway.DeleteTapeArchiveOutput)(nil),
 		Error:   nil,
@@ -608,7 +608,7 @@ func (c *Client) DeleteTapeArchiveWithContext(ctx context.Context, input *storag
 func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *storagegateway.DeleteVolumeInput, opts ...request.Option) (*storagegateway.DeleteVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DeleteVolumeWithContext",
+		Action:  "DeleteVolume",
 		Input:   input,
 		Output:  (*storagegateway.DeleteVolumeOutput)(nil),
 		Error:   nil,
@@ -629,7 +629,7 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *storagegate
 func (c *Client) DescribeBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeBandwidthRateLimitWithContext",
+		Action:  "DescribeBandwidthRateLimit",
 		Input:   input,
 		Output:  (*storagegateway.DescribeBandwidthRateLimitOutput)(nil),
 		Error:   nil,
@@ -650,7 +650,7 @@ func (c *Client) DescribeBandwidthRateLimitWithContext(ctx context.Context, inpu
 func (c *Client) DescribeCacheWithContext(ctx context.Context, input *storagegateway.DescribeCacheInput, opts ...request.Option) (*storagegateway.DescribeCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeCacheWithContext",
+		Action:  "DescribeCache",
 		Input:   input,
 		Output:  (*storagegateway.DescribeCacheOutput)(nil),
 		Error:   nil,
@@ -671,7 +671,7 @@ func (c *Client) DescribeCacheWithContext(ctx context.Context, input *storagegat
 func (c *Client) DescribeCachediSCSIVolumesWithContext(ctx context.Context, input *storagegateway.DescribeCachediSCSIVolumesInput, opts ...request.Option) (*storagegateway.DescribeCachediSCSIVolumesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeCachediSCSIVolumesWithContext",
+		Action:  "DescribeCachediSCSIVolumes",
 		Input:   input,
 		Output:  (*storagegateway.DescribeCachediSCSIVolumesOutput)(nil),
 		Error:   nil,
@@ -692,7 +692,7 @@ func (c *Client) DescribeCachediSCSIVolumesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeChapCredentialsWithContext(ctx context.Context, input *storagegateway.DescribeChapCredentialsInput, opts ...request.Option) (*storagegateway.DescribeChapCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeChapCredentialsWithContext",
+		Action:  "DescribeChapCredentials",
 		Input:   input,
 		Output:  (*storagegateway.DescribeChapCredentialsOutput)(nil),
 		Error:   nil,
@@ -713,7 +713,7 @@ func (c *Client) DescribeChapCredentialsWithContext(ctx context.Context, input *
 func (c *Client) DescribeGatewayInformationWithContext(ctx context.Context, input *storagegateway.DescribeGatewayInformationInput, opts ...request.Option) (*storagegateway.DescribeGatewayInformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeGatewayInformationWithContext",
+		Action:  "DescribeGatewayInformation",
 		Input:   input,
 		Output:  (*storagegateway.DescribeGatewayInformationOutput)(nil),
 		Error:   nil,
@@ -734,7 +734,7 @@ func (c *Client) DescribeGatewayInformationWithContext(ctx context.Context, inpu
 func (c *Client) DescribeMaintenanceStartTimeWithContext(ctx context.Context, input *storagegateway.DescribeMaintenanceStartTimeInput, opts ...request.Option) (*storagegateway.DescribeMaintenanceStartTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeMaintenanceStartTimeWithContext",
+		Action:  "DescribeMaintenanceStartTime",
 		Input:   input,
 		Output:  (*storagegateway.DescribeMaintenanceStartTimeOutput)(nil),
 		Error:   nil,
@@ -755,7 +755,7 @@ func (c *Client) DescribeMaintenanceStartTimeWithContext(ctx context.Context, in
 func (c *Client) DescribeNFSFileSharesWithContext(ctx context.Context, input *storagegateway.DescribeNFSFileSharesInput, opts ...request.Option) (*storagegateway.DescribeNFSFileSharesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeNFSFileSharesWithContext",
+		Action:  "DescribeNFSFileShares",
 		Input:   input,
 		Output:  (*storagegateway.DescribeNFSFileSharesOutput)(nil),
 		Error:   nil,
@@ -776,7 +776,7 @@ func (c *Client) DescribeNFSFileSharesWithContext(ctx context.Context, input *st
 func (c *Client) DescribeSMBFileSharesWithContext(ctx context.Context, input *storagegateway.DescribeSMBFileSharesInput, opts ...request.Option) (*storagegateway.DescribeSMBFileSharesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeSMBFileSharesWithContext",
+		Action:  "DescribeSMBFileShares",
 		Input:   input,
 		Output:  (*storagegateway.DescribeSMBFileSharesOutput)(nil),
 		Error:   nil,
@@ -797,7 +797,7 @@ func (c *Client) DescribeSMBFileSharesWithContext(ctx context.Context, input *st
 func (c *Client) DescribeSMBSettingsWithContext(ctx context.Context, input *storagegateway.DescribeSMBSettingsInput, opts ...request.Option) (*storagegateway.DescribeSMBSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeSMBSettingsWithContext",
+		Action:  "DescribeSMBSettings",
 		Input:   input,
 		Output:  (*storagegateway.DescribeSMBSettingsOutput)(nil),
 		Error:   nil,
@@ -818,7 +818,7 @@ func (c *Client) DescribeSMBSettingsWithContext(ctx context.Context, input *stor
 func (c *Client) DescribeSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.DescribeSnapshotScheduleInput, opts ...request.Option) (*storagegateway.DescribeSnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeSnapshotScheduleWithContext",
+		Action:  "DescribeSnapshotSchedule",
 		Input:   input,
 		Output:  (*storagegateway.DescribeSnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -839,7 +839,7 @@ func (c *Client) DescribeSnapshotScheduleWithContext(ctx context.Context, input 
 func (c *Client) DescribeStorediSCSIVolumesWithContext(ctx context.Context, input *storagegateway.DescribeStorediSCSIVolumesInput, opts ...request.Option) (*storagegateway.DescribeStorediSCSIVolumesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeStorediSCSIVolumesWithContext",
+		Action:  "DescribeStorediSCSIVolumes",
 		Input:   input,
 		Output:  (*storagegateway.DescribeStorediSCSIVolumesOutput)(nil),
 		Error:   nil,
@@ -860,7 +860,7 @@ func (c *Client) DescribeStorediSCSIVolumesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeTapeArchivesWithContext(ctx context.Context, input *storagegateway.DescribeTapeArchivesInput, opts ...request.Option) (*storagegateway.DescribeTapeArchivesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeTapeArchivesWithContext",
+		Action:  "DescribeTapeArchives",
 		Input:   input,
 		Output:  (*storagegateway.DescribeTapeArchivesOutput)(nil),
 		Error:   nil,
@@ -881,7 +881,7 @@ func (c *Client) DescribeTapeArchivesWithContext(ctx context.Context, input *sto
 func (c *Client) DescribeTapeRecoveryPointsWithContext(ctx context.Context, input *storagegateway.DescribeTapeRecoveryPointsInput, opts ...request.Option) (*storagegateway.DescribeTapeRecoveryPointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeTapeRecoveryPointsWithContext",
+		Action:  "DescribeTapeRecoveryPoints",
 		Input:   input,
 		Output:  (*storagegateway.DescribeTapeRecoveryPointsOutput)(nil),
 		Error:   nil,
@@ -902,7 +902,7 @@ func (c *Client) DescribeTapeRecoveryPointsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeTapesWithContext(ctx context.Context, input *storagegateway.DescribeTapesInput, opts ...request.Option) (*storagegateway.DescribeTapesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeTapesWithContext",
+		Action:  "DescribeTapes",
 		Input:   input,
 		Output:  (*storagegateway.DescribeTapesOutput)(nil),
 		Error:   nil,
@@ -923,7 +923,7 @@ func (c *Client) DescribeTapesWithContext(ctx context.Context, input *storagegat
 func (c *Client) DescribeUploadBufferWithContext(ctx context.Context, input *storagegateway.DescribeUploadBufferInput, opts ...request.Option) (*storagegateway.DescribeUploadBufferOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeUploadBufferWithContext",
+		Action:  "DescribeUploadBuffer",
 		Input:   input,
 		Output:  (*storagegateway.DescribeUploadBufferOutput)(nil),
 		Error:   nil,
@@ -944,7 +944,7 @@ func (c *Client) DescribeUploadBufferWithContext(ctx context.Context, input *sto
 func (c *Client) DescribeVTLDevicesWithContext(ctx context.Context, input *storagegateway.DescribeVTLDevicesInput, opts ...request.Option) (*storagegateway.DescribeVTLDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeVTLDevicesWithContext",
+		Action:  "DescribeVTLDevices",
 		Input:   input,
 		Output:  (*storagegateway.DescribeVTLDevicesOutput)(nil),
 		Error:   nil,
@@ -965,7 +965,7 @@ func (c *Client) DescribeVTLDevicesWithContext(ctx context.Context, input *stora
 func (c *Client) DescribeWorkingStorageWithContext(ctx context.Context, input *storagegateway.DescribeWorkingStorageInput, opts ...request.Option) (*storagegateway.DescribeWorkingStorageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DescribeWorkingStorageWithContext",
+		Action:  "DescribeWorkingStorage",
 		Input:   input,
 		Output:  (*storagegateway.DescribeWorkingStorageOutput)(nil),
 		Error:   nil,
@@ -986,7 +986,7 @@ func (c *Client) DescribeWorkingStorageWithContext(ctx context.Context, input *s
 func (c *Client) DetachVolumeWithContext(ctx context.Context, input *storagegateway.DetachVolumeInput, opts ...request.Option) (*storagegateway.DetachVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DetachVolumeWithContext",
+		Action:  "DetachVolume",
 		Input:   input,
 		Output:  (*storagegateway.DetachVolumeOutput)(nil),
 		Error:   nil,
@@ -1007,7 +1007,7 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, input *storagegate
 func (c *Client) DisableGatewayWithContext(ctx context.Context, input *storagegateway.DisableGatewayInput, opts ...request.Option) (*storagegateway.DisableGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "DisableGatewayWithContext",
+		Action:  "DisableGateway",
 		Input:   input,
 		Output:  (*storagegateway.DisableGatewayOutput)(nil),
 		Error:   nil,
@@ -1028,7 +1028,7 @@ func (c *Client) DisableGatewayWithContext(ctx context.Context, input *storagega
 func (c *Client) JoinDomainWithContext(ctx context.Context, input *storagegateway.JoinDomainInput, opts ...request.Option) (*storagegateway.JoinDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "JoinDomainWithContext",
+		Action:  "JoinDomain",
 		Input:   input,
 		Output:  (*storagegateway.JoinDomainOutput)(nil),
 		Error:   nil,
@@ -1049,7 +1049,7 @@ func (c *Client) JoinDomainWithContext(ctx context.Context, input *storagegatewa
 func (c *Client) ListFileSharesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, opts ...request.Option) (*storagegateway.ListFileSharesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListFileSharesWithContext",
+		Action:  "ListFileShares",
 		Input:   input,
 		Output:  (*storagegateway.ListFileSharesOutput)(nil),
 		Error:   nil,
@@ -1070,7 +1070,7 @@ func (c *Client) ListFileSharesWithContext(ctx context.Context, input *storagega
 func (c *Client) ListGatewaysWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, opts ...request.Option) (*storagegateway.ListGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListGatewaysWithContext",
+		Action:  "ListGateways",
 		Input:   input,
 		Output:  (*storagegateway.ListGatewaysOutput)(nil),
 		Error:   nil,
@@ -1091,7 +1091,7 @@ func (c *Client) ListGatewaysWithContext(ctx context.Context, input *storagegate
 func (c *Client) ListLocalDisksWithContext(ctx context.Context, input *storagegateway.ListLocalDisksInput, opts ...request.Option) (*storagegateway.ListLocalDisksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListLocalDisksWithContext",
+		Action:  "ListLocalDisks",
 		Input:   input,
 		Output:  (*storagegateway.ListLocalDisksOutput)(nil),
 		Error:   nil,
@@ -1112,7 +1112,7 @@ func (c *Client) ListLocalDisksWithContext(ctx context.Context, input *storagega
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, opts ...request.Option) (*storagegateway.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*storagegateway.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1133,7 +1133,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *stor
 func (c *Client) ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListTapesWithContext",
+		Action:  "ListTapes",
 		Input:   input,
 		Output:  (*storagegateway.ListTapesOutput)(nil),
 		Error:   nil,
@@ -1154,7 +1154,7 @@ func (c *Client) ListTapesWithContext(ctx context.Context, input *storagegateway
 func (c *Client) ListVolumeInitiatorsWithContext(ctx context.Context, input *storagegateway.ListVolumeInitiatorsInput, opts ...request.Option) (*storagegateway.ListVolumeInitiatorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListVolumeInitiatorsWithContext",
+		Action:  "ListVolumeInitiators",
 		Input:   input,
 		Output:  (*storagegateway.ListVolumeInitiatorsOutput)(nil),
 		Error:   nil,
@@ -1175,7 +1175,7 @@ func (c *Client) ListVolumeInitiatorsWithContext(ctx context.Context, input *sto
 func (c *Client) ListVolumeRecoveryPointsWithContext(ctx context.Context, input *storagegateway.ListVolumeRecoveryPointsInput, opts ...request.Option) (*storagegateway.ListVolumeRecoveryPointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListVolumeRecoveryPointsWithContext",
+		Action:  "ListVolumeRecoveryPoints",
 		Input:   input,
 		Output:  (*storagegateway.ListVolumeRecoveryPointsOutput)(nil),
 		Error:   nil,
@@ -1196,7 +1196,7 @@ func (c *Client) ListVolumeRecoveryPointsWithContext(ctx context.Context, input 
 func (c *Client) ListVolumesWithContext(ctx context.Context, input *storagegateway.ListVolumesInput, opts ...request.Option) (*storagegateway.ListVolumesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ListVolumesWithContext",
+		Action:  "ListVolumes",
 		Input:   input,
 		Output:  (*storagegateway.ListVolumesOutput)(nil),
 		Error:   nil,
@@ -1217,7 +1217,7 @@ func (c *Client) ListVolumesWithContext(ctx context.Context, input *storagegatew
 func (c *Client) NotifyWhenUploadedWithContext(ctx context.Context, input *storagegateway.NotifyWhenUploadedInput, opts ...request.Option) (*storagegateway.NotifyWhenUploadedOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "NotifyWhenUploadedWithContext",
+		Action:  "NotifyWhenUploaded",
 		Input:   input,
 		Output:  (*storagegateway.NotifyWhenUploadedOutput)(nil),
 		Error:   nil,
@@ -1238,7 +1238,7 @@ func (c *Client) NotifyWhenUploadedWithContext(ctx context.Context, input *stora
 func (c *Client) RefreshCacheWithContext(ctx context.Context, input *storagegateway.RefreshCacheInput, opts ...request.Option) (*storagegateway.RefreshCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "RefreshCacheWithContext",
+		Action:  "RefreshCache",
 		Input:   input,
 		Output:  (*storagegateway.RefreshCacheOutput)(nil),
 		Error:   nil,
@@ -1259,7 +1259,7 @@ func (c *Client) RefreshCacheWithContext(ctx context.Context, input *storagegate
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *storagegateway.RemoveTagsFromResourceInput, opts ...request.Option) (*storagegateway.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*storagegateway.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -1280,7 +1280,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *s
 func (c *Client) ResetCacheWithContext(ctx context.Context, input *storagegateway.ResetCacheInput, opts ...request.Option) (*storagegateway.ResetCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ResetCacheWithContext",
+		Action:  "ResetCache",
 		Input:   input,
 		Output:  (*storagegateway.ResetCacheOutput)(nil),
 		Error:   nil,
@@ -1301,7 +1301,7 @@ func (c *Client) ResetCacheWithContext(ctx context.Context, input *storagegatewa
 func (c *Client) RetrieveTapeArchiveWithContext(ctx context.Context, input *storagegateway.RetrieveTapeArchiveInput, opts ...request.Option) (*storagegateway.RetrieveTapeArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "RetrieveTapeArchiveWithContext",
+		Action:  "RetrieveTapeArchive",
 		Input:   input,
 		Output:  (*storagegateway.RetrieveTapeArchiveOutput)(nil),
 		Error:   nil,
@@ -1322,7 +1322,7 @@ func (c *Client) RetrieveTapeArchiveWithContext(ctx context.Context, input *stor
 func (c *Client) RetrieveTapeRecoveryPointWithContext(ctx context.Context, input *storagegateway.RetrieveTapeRecoveryPointInput, opts ...request.Option) (*storagegateway.RetrieveTapeRecoveryPointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "RetrieveTapeRecoveryPointWithContext",
+		Action:  "RetrieveTapeRecoveryPoint",
 		Input:   input,
 		Output:  (*storagegateway.RetrieveTapeRecoveryPointOutput)(nil),
 		Error:   nil,
@@ -1343,7 +1343,7 @@ func (c *Client) RetrieveTapeRecoveryPointWithContext(ctx context.Context, input
 func (c *Client) SetLocalConsolePasswordWithContext(ctx context.Context, input *storagegateway.SetLocalConsolePasswordInput, opts ...request.Option) (*storagegateway.SetLocalConsolePasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "SetLocalConsolePasswordWithContext",
+		Action:  "SetLocalConsolePassword",
 		Input:   input,
 		Output:  (*storagegateway.SetLocalConsolePasswordOutput)(nil),
 		Error:   nil,
@@ -1364,7 +1364,7 @@ func (c *Client) SetLocalConsolePasswordWithContext(ctx context.Context, input *
 func (c *Client) SetSMBGuestPasswordWithContext(ctx context.Context, input *storagegateway.SetSMBGuestPasswordInput, opts ...request.Option) (*storagegateway.SetSMBGuestPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "SetSMBGuestPasswordWithContext",
+		Action:  "SetSMBGuestPassword",
 		Input:   input,
 		Output:  (*storagegateway.SetSMBGuestPasswordOutput)(nil),
 		Error:   nil,
@@ -1385,7 +1385,7 @@ func (c *Client) SetSMBGuestPasswordWithContext(ctx context.Context, input *stor
 func (c *Client) ShutdownGatewayWithContext(ctx context.Context, input *storagegateway.ShutdownGatewayInput, opts ...request.Option) (*storagegateway.ShutdownGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "ShutdownGatewayWithContext",
+		Action:  "ShutdownGateway",
 		Input:   input,
 		Output:  (*storagegateway.ShutdownGatewayOutput)(nil),
 		Error:   nil,
@@ -1406,7 +1406,7 @@ func (c *Client) ShutdownGatewayWithContext(ctx context.Context, input *storageg
 func (c *Client) StartGatewayWithContext(ctx context.Context, input *storagegateway.StartGatewayInput, opts ...request.Option) (*storagegateway.StartGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "StartGatewayWithContext",
+		Action:  "StartGateway",
 		Input:   input,
 		Output:  (*storagegateway.StartGatewayOutput)(nil),
 		Error:   nil,
@@ -1427,7 +1427,7 @@ func (c *Client) StartGatewayWithContext(ctx context.Context, input *storagegate
 func (c *Client) UpdateBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateBandwidthRateLimitWithContext",
+		Action:  "UpdateBandwidthRateLimit",
 		Input:   input,
 		Output:  (*storagegateway.UpdateBandwidthRateLimitOutput)(nil),
 		Error:   nil,
@@ -1448,7 +1448,7 @@ func (c *Client) UpdateBandwidthRateLimitWithContext(ctx context.Context, input 
 func (c *Client) UpdateChapCredentialsWithContext(ctx context.Context, input *storagegateway.UpdateChapCredentialsInput, opts ...request.Option) (*storagegateway.UpdateChapCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateChapCredentialsWithContext",
+		Action:  "UpdateChapCredentials",
 		Input:   input,
 		Output:  (*storagegateway.UpdateChapCredentialsOutput)(nil),
 		Error:   nil,
@@ -1469,7 +1469,7 @@ func (c *Client) UpdateChapCredentialsWithContext(ctx context.Context, input *st
 func (c *Client) UpdateGatewayInformationWithContext(ctx context.Context, input *storagegateway.UpdateGatewayInformationInput, opts ...request.Option) (*storagegateway.UpdateGatewayInformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateGatewayInformationWithContext",
+		Action:  "UpdateGatewayInformation",
 		Input:   input,
 		Output:  (*storagegateway.UpdateGatewayInformationOutput)(nil),
 		Error:   nil,
@@ -1490,7 +1490,7 @@ func (c *Client) UpdateGatewayInformationWithContext(ctx context.Context, input 
 func (c *Client) UpdateGatewaySoftwareNowWithContext(ctx context.Context, input *storagegateway.UpdateGatewaySoftwareNowInput, opts ...request.Option) (*storagegateway.UpdateGatewaySoftwareNowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateGatewaySoftwareNowWithContext",
+		Action:  "UpdateGatewaySoftwareNow",
 		Input:   input,
 		Output:  (*storagegateway.UpdateGatewaySoftwareNowOutput)(nil),
 		Error:   nil,
@@ -1511,7 +1511,7 @@ func (c *Client) UpdateGatewaySoftwareNowWithContext(ctx context.Context, input 
 func (c *Client) UpdateMaintenanceStartTimeWithContext(ctx context.Context, input *storagegateway.UpdateMaintenanceStartTimeInput, opts ...request.Option) (*storagegateway.UpdateMaintenanceStartTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateMaintenanceStartTimeWithContext",
+		Action:  "UpdateMaintenanceStartTime",
 		Input:   input,
 		Output:  (*storagegateway.UpdateMaintenanceStartTimeOutput)(nil),
 		Error:   nil,
@@ -1532,7 +1532,7 @@ func (c *Client) UpdateMaintenanceStartTimeWithContext(ctx context.Context, inpu
 func (c *Client) UpdateNFSFileShareWithContext(ctx context.Context, input *storagegateway.UpdateNFSFileShareInput, opts ...request.Option) (*storagegateway.UpdateNFSFileShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateNFSFileShareWithContext",
+		Action:  "UpdateNFSFileShare",
 		Input:   input,
 		Output:  (*storagegateway.UpdateNFSFileShareOutput)(nil),
 		Error:   nil,
@@ -1553,7 +1553,7 @@ func (c *Client) UpdateNFSFileShareWithContext(ctx context.Context, input *stora
 func (c *Client) UpdateSMBFileShareWithContext(ctx context.Context, input *storagegateway.UpdateSMBFileShareInput, opts ...request.Option) (*storagegateway.UpdateSMBFileShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateSMBFileShareWithContext",
+		Action:  "UpdateSMBFileShare",
 		Input:   input,
 		Output:  (*storagegateway.UpdateSMBFileShareOutput)(nil),
 		Error:   nil,
@@ -1574,7 +1574,7 @@ func (c *Client) UpdateSMBFileShareWithContext(ctx context.Context, input *stora
 func (c *Client) UpdateSMBSecurityStrategyWithContext(ctx context.Context, input *storagegateway.UpdateSMBSecurityStrategyInput, opts ...request.Option) (*storagegateway.UpdateSMBSecurityStrategyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateSMBSecurityStrategyWithContext",
+		Action:  "UpdateSMBSecurityStrategy",
 		Input:   input,
 		Output:  (*storagegateway.UpdateSMBSecurityStrategyOutput)(nil),
 		Error:   nil,
@@ -1595,7 +1595,7 @@ func (c *Client) UpdateSMBSecurityStrategyWithContext(ctx context.Context, input
 func (c *Client) UpdateSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.UpdateSnapshotScheduleInput, opts ...request.Option) (*storagegateway.UpdateSnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateSnapshotScheduleWithContext",
+		Action:  "UpdateSnapshotSchedule",
 		Input:   input,
 		Output:  (*storagegateway.UpdateSnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -1616,7 +1616,7 @@ func (c *Client) UpdateSnapshotScheduleWithContext(ctx context.Context, input *s
 func (c *Client) UpdateVTLDeviceTypeWithContext(ctx context.Context, input *storagegateway.UpdateVTLDeviceTypeInput, opts ...request.Option) (*storagegateway.UpdateVTLDeviceTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
-		Action:  "UpdateVTLDeviceTypeWithContext",
+		Action:  "UpdateVTLDeviceType",
 		Input:   input,
 		Output:  (*storagegateway.UpdateVTLDeviceTypeOutput)(nil),
 		Error:   nil,

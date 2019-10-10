@@ -48,7 +48,7 @@ var _ ApplicationInsights = (*Client)(nil)
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *applicationinsights.CreateApplicationInput, opts ...request.Option) (*applicationinsights.CreateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "CreateApplicationWithContext",
+		Action:  "CreateApplication",
 		Input:   input,
 		Output:  (*applicationinsights.CreateApplicationOutput)(nil),
 		Error:   nil,
@@ -69,7 +69,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *applic
 func (c *Client) CreateComponentWithContext(ctx context.Context, input *applicationinsights.CreateComponentInput, opts ...request.Option) (*applicationinsights.CreateComponentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "CreateComponentWithContext",
+		Action:  "CreateComponent",
 		Input:   input,
 		Output:  (*applicationinsights.CreateComponentOutput)(nil),
 		Error:   nil,
@@ -90,7 +90,7 @@ func (c *Client) CreateComponentWithContext(ctx context.Context, input *applicat
 func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *applicationinsights.DeleteApplicationInput, opts ...request.Option) (*applicationinsights.DeleteApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DeleteApplicationWithContext",
+		Action:  "DeleteApplication",
 		Input:   input,
 		Output:  (*applicationinsights.DeleteApplicationOutput)(nil),
 		Error:   nil,
@@ -111,7 +111,7 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *applic
 func (c *Client) DeleteComponentWithContext(ctx context.Context, input *applicationinsights.DeleteComponentInput, opts ...request.Option) (*applicationinsights.DeleteComponentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DeleteComponentWithContext",
+		Action:  "DeleteComponent",
 		Input:   input,
 		Output:  (*applicationinsights.DeleteComponentOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) DeleteComponentWithContext(ctx context.Context, input *applicat
 func (c *Client) DescribeApplicationWithContext(ctx context.Context, input *applicationinsights.DescribeApplicationInput, opts ...request.Option) (*applicationinsights.DescribeApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeApplicationWithContext",
+		Action:  "DescribeApplication",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeApplicationOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) DescribeApplicationWithContext(ctx context.Context, input *appl
 func (c *Client) DescribeComponentWithContext(ctx context.Context, input *applicationinsights.DescribeComponentInput, opts ...request.Option) (*applicationinsights.DescribeComponentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeComponentWithContext",
+		Action:  "DescribeComponent",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeComponentOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) DescribeComponentWithContext(ctx context.Context, input *applic
 func (c *Client) DescribeComponentConfigurationWithContext(ctx context.Context, input *applicationinsights.DescribeComponentConfigurationInput, opts ...request.Option) (*applicationinsights.DescribeComponentConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeComponentConfigurationWithContext",
+		Action:  "DescribeComponentConfiguration",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeComponentConfigurationOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) DescribeComponentConfigurationWithContext(ctx context.Context, 
 func (c *Client) DescribeComponentConfigurationRecommendationWithContext(ctx context.Context, input *applicationinsights.DescribeComponentConfigurationRecommendationInput, opts ...request.Option) (*applicationinsights.DescribeComponentConfigurationRecommendationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeComponentConfigurationRecommendationWithContext",
+		Action:  "DescribeComponentConfigurationRecommendation",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeComponentConfigurationRecommendationOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) DescribeComponentConfigurationRecommendationWithContext(ctx con
 func (c *Client) DescribeObservationWithContext(ctx context.Context, input *applicationinsights.DescribeObservationInput, opts ...request.Option) (*applicationinsights.DescribeObservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeObservationWithContext",
+		Action:  "DescribeObservation",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeObservationOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) DescribeObservationWithContext(ctx context.Context, input *appl
 func (c *Client) DescribeProblemWithContext(ctx context.Context, input *applicationinsights.DescribeProblemInput, opts ...request.Option) (*applicationinsights.DescribeProblemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeProblemWithContext",
+		Action:  "DescribeProblem",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeProblemOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) DescribeProblemWithContext(ctx context.Context, input *applicat
 func (c *Client) DescribeProblemObservationsWithContext(ctx context.Context, input *applicationinsights.DescribeProblemObservationsInput, opts ...request.Option) (*applicationinsights.DescribeProblemObservationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "DescribeProblemObservationsWithContext",
+		Action:  "DescribeProblemObservations",
 		Input:   input,
 		Output:  (*applicationinsights.DescribeProblemObservationsOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) DescribeProblemObservationsWithContext(ctx context.Context, inp
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *applicationinsights.ListApplicationsInput, opts ...request.Option) (*applicationinsights.ListApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "ListApplicationsWithContext",
+		Action:  "ListApplications",
 		Input:   input,
 		Output:  (*applicationinsights.ListApplicationsOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *applica
 func (c *Client) ListComponentsWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, opts ...request.Option) (*applicationinsights.ListComponentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "ListComponentsWithContext",
+		Action:  "ListComponents",
 		Input:   input,
 		Output:  (*applicationinsights.ListComponentsOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) ListComponentsWithContext(ctx context.Context, input *applicati
 func (c *Client) ListProblemsWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, opts ...request.Option) (*applicationinsights.ListProblemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "ListProblemsWithContext",
+		Action:  "ListProblems",
 		Input:   input,
 		Output:  (*applicationinsights.ListProblemsOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) ListProblemsWithContext(ctx context.Context, input *application
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *applicationinsights.UpdateApplicationInput, opts ...request.Option) (*applicationinsights.UpdateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "UpdateApplicationWithContext",
+		Action:  "UpdateApplication",
 		Input:   input,
 		Output:  (*applicationinsights.UpdateApplicationOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *applic
 func (c *Client) UpdateComponentWithContext(ctx context.Context, input *applicationinsights.UpdateComponentInput, opts ...request.Option) (*applicationinsights.UpdateComponentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "UpdateComponentWithContext",
+		Action:  "UpdateComponent",
 		Input:   input,
 		Output:  (*applicationinsights.UpdateComponentOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) UpdateComponentWithContext(ctx context.Context, input *applicat
 func (c *Client) UpdateComponentConfigurationWithContext(ctx context.Context, input *applicationinsights.UpdateComponentConfigurationInput, opts ...request.Option) (*applicationinsights.UpdateComponentConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
-		Action:  "UpdateComponentConfigurationWithContext",
+		Action:  "UpdateComponentConfiguration",
 		Input:   input,
 		Output:  (*applicationinsights.UpdateComponentConfigurationOutput)(nil),
 		Error:   nil,

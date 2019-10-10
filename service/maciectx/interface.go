@@ -38,7 +38,7 @@ var _ Macie = (*Client)(nil)
 func (c *Client) AssociateMemberAccountWithContext(ctx context.Context, input *macie.AssociateMemberAccountInput, opts ...request.Option) (*macie.AssociateMemberAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "AssociateMemberAccountWithContext",
+		Action:  "AssociateMemberAccount",
 		Input:   input,
 		Output:  (*macie.AssociateMemberAccountOutput)(nil),
 		Error:   nil,
@@ -59,7 +59,7 @@ func (c *Client) AssociateMemberAccountWithContext(ctx context.Context, input *m
 func (c *Client) AssociateS3ResourcesWithContext(ctx context.Context, input *macie.AssociateS3ResourcesInput, opts ...request.Option) (*macie.AssociateS3ResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "AssociateS3ResourcesWithContext",
+		Action:  "AssociateS3Resources",
 		Input:   input,
 		Output:  (*macie.AssociateS3ResourcesOutput)(nil),
 		Error:   nil,
@@ -80,7 +80,7 @@ func (c *Client) AssociateS3ResourcesWithContext(ctx context.Context, input *mac
 func (c *Client) DisassociateMemberAccountWithContext(ctx context.Context, input *macie.DisassociateMemberAccountInput, opts ...request.Option) (*macie.DisassociateMemberAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "DisassociateMemberAccountWithContext",
+		Action:  "DisassociateMemberAccount",
 		Input:   input,
 		Output:  (*macie.DisassociateMemberAccountOutput)(nil),
 		Error:   nil,
@@ -101,7 +101,7 @@ func (c *Client) DisassociateMemberAccountWithContext(ctx context.Context, input
 func (c *Client) DisassociateS3ResourcesWithContext(ctx context.Context, input *macie.DisassociateS3ResourcesInput, opts ...request.Option) (*macie.DisassociateS3ResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "DisassociateS3ResourcesWithContext",
+		Action:  "DisassociateS3Resources",
 		Input:   input,
 		Output:  (*macie.DisassociateS3ResourcesOutput)(nil),
 		Error:   nil,
@@ -122,7 +122,7 @@ func (c *Client) DisassociateS3ResourcesWithContext(ctx context.Context, input *
 func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *macie.ListMemberAccountsInput, opts ...request.Option) (*macie.ListMemberAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "ListMemberAccountsWithContext",
+		Action:  "ListMemberAccounts",
 		Input:   input,
 		Output:  (*macie.ListMemberAccountsOutput)(nil),
 		Error:   nil,
@@ -143,7 +143,7 @@ func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *macie
 func (c *Client) ListS3ResourcesWithContext(ctx context.Context, input *macie.ListS3ResourcesInput, opts ...request.Option) (*macie.ListS3ResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "ListS3ResourcesWithContext",
+		Action:  "ListS3Resources",
 		Input:   input,
 		Output:  (*macie.ListS3ResourcesOutput)(nil),
 		Error:   nil,
@@ -164,7 +164,7 @@ func (c *Client) ListS3ResourcesWithContext(ctx context.Context, input *macie.Li
 func (c *Client) UpdateS3ResourcesWithContext(ctx context.Context, input *macie.UpdateS3ResourcesInput, opts ...request.Option) (*macie.UpdateS3ResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
-		Action:  "UpdateS3ResourcesWithContext",
+		Action:  "UpdateS3Resources",
 		Input:   input,
 		Output:  (*macie.UpdateS3ResourcesOutput)(nil),
 		Error:   nil,

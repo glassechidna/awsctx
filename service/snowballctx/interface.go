@@ -23,6 +23,7 @@ type Snowball interface {
 	GetJobManifestWithContext(ctx context.Context, input *snowball.GetJobManifestInput, opts ...request.Option) (*snowball.GetJobManifestOutput, error)
 	GetJobUnlockCodeWithContext(ctx context.Context, input *snowball.GetJobUnlockCodeInput, opts ...request.Option) (*snowball.GetJobUnlockCodeOutput, error)
 	GetSnowballUsageWithContext(ctx context.Context, input *snowball.GetSnowballUsageInput, opts ...request.Option) (*snowball.GetSnowballUsageOutput, error)
+	GetSoftwareUpdatesWithContext(ctx context.Context, input *snowball.GetSoftwareUpdatesInput, opts ...request.Option) (*snowball.GetSoftwareUpdatesOutput, error)
 	ListClusterJobsWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, opts ...request.Option) (*snowball.ListClusterJobsOutput, error)
 	ListClustersWithContext(ctx context.Context, input *snowball.ListClustersInput, opts ...request.Option) (*snowball.ListClustersOutput, error)
 	ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error)
@@ -49,7 +50,7 @@ var _ Snowball = (*Client)(nil)
 func (c *Client) CancelClusterWithContext(ctx context.Context, input *snowball.CancelClusterInput, opts ...request.Option) (*snowball.CancelClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "CancelClusterWithContext",
+		Action:  "CancelCluster",
 		Input:   input,
 		Output:  (*snowball.CancelClusterOutput)(nil),
 		Error:   nil,
@@ -70,7 +71,7 @@ func (c *Client) CancelClusterWithContext(ctx context.Context, input *snowball.C
 func (c *Client) CancelJobWithContext(ctx context.Context, input *snowball.CancelJobInput, opts ...request.Option) (*snowball.CancelJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "CancelJobWithContext",
+		Action:  "CancelJob",
 		Input:   input,
 		Output:  (*snowball.CancelJobOutput)(nil),
 		Error:   nil,
@@ -91,7 +92,7 @@ func (c *Client) CancelJobWithContext(ctx context.Context, input *snowball.Cance
 func (c *Client) CreateAddressWithContext(ctx context.Context, input *snowball.CreateAddressInput, opts ...request.Option) (*snowball.CreateAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "CreateAddressWithContext",
+		Action:  "CreateAddress",
 		Input:   input,
 		Output:  (*snowball.CreateAddressOutput)(nil),
 		Error:   nil,
@@ -112,7 +113,7 @@ func (c *Client) CreateAddressWithContext(ctx context.Context, input *snowball.C
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *snowball.CreateClusterInput, opts ...request.Option) (*snowball.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*snowball.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -133,7 +134,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *snowball.C
 func (c *Client) CreateJobWithContext(ctx context.Context, input *snowball.CreateJobInput, opts ...request.Option) (*snowball.CreateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "CreateJobWithContext",
+		Action:  "CreateJob",
 		Input:   input,
 		Output:  (*snowball.CreateJobOutput)(nil),
 		Error:   nil,
@@ -154,7 +155,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *snowball.Creat
 func (c *Client) DescribeAddressWithContext(ctx context.Context, input *snowball.DescribeAddressInput, opts ...request.Option) (*snowball.DescribeAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "DescribeAddressWithContext",
+		Action:  "DescribeAddress",
 		Input:   input,
 		Output:  (*snowball.DescribeAddressOutput)(nil),
 		Error:   nil,
@@ -175,7 +176,7 @@ func (c *Client) DescribeAddressWithContext(ctx context.Context, input *snowball
 func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, opts ...request.Option) (*snowball.DescribeAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "DescribeAddressesWithContext",
+		Action:  "DescribeAddresses",
 		Input:   input,
 		Output:  (*snowball.DescribeAddressesOutput)(nil),
 		Error:   nil,
@@ -196,7 +197,7 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *snowba
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *snowball.DescribeClusterInput, opts ...request.Option) (*snowball.DescribeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "DescribeClusterWithContext",
+		Action:  "DescribeCluster",
 		Input:   input,
 		Output:  (*snowball.DescribeClusterOutput)(nil),
 		Error:   nil,
@@ -217,7 +218,7 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *snowball
 func (c *Client) DescribeJobWithContext(ctx context.Context, input *snowball.DescribeJobInput, opts ...request.Option) (*snowball.DescribeJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "DescribeJobWithContext",
+		Action:  "DescribeJob",
 		Input:   input,
 		Output:  (*snowball.DescribeJobOutput)(nil),
 		Error:   nil,
@@ -238,7 +239,7 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *snowball.Des
 func (c *Client) GetJobManifestWithContext(ctx context.Context, input *snowball.GetJobManifestInput, opts ...request.Option) (*snowball.GetJobManifestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "GetJobManifestWithContext",
+		Action:  "GetJobManifest",
 		Input:   input,
 		Output:  (*snowball.GetJobManifestOutput)(nil),
 		Error:   nil,
@@ -259,7 +260,7 @@ func (c *Client) GetJobManifestWithContext(ctx context.Context, input *snowball.
 func (c *Client) GetJobUnlockCodeWithContext(ctx context.Context, input *snowball.GetJobUnlockCodeInput, opts ...request.Option) (*snowball.GetJobUnlockCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "GetJobUnlockCodeWithContext",
+		Action:  "GetJobUnlockCode",
 		Input:   input,
 		Output:  (*snowball.GetJobUnlockCodeOutput)(nil),
 		Error:   nil,
@@ -280,7 +281,7 @@ func (c *Client) GetJobUnlockCodeWithContext(ctx context.Context, input *snowbal
 func (c *Client) GetSnowballUsageWithContext(ctx context.Context, input *snowball.GetSnowballUsageInput, opts ...request.Option) (*snowball.GetSnowballUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "GetSnowballUsageWithContext",
+		Action:  "GetSnowballUsage",
 		Input:   input,
 		Output:  (*snowball.GetSnowballUsageOutput)(nil),
 		Error:   nil,
@@ -298,10 +299,31 @@ func (c *Client) GetSnowballUsageWithContext(ctx context.Context, input *snowbal
 	return req.Output.(*snowball.GetSnowballUsageOutput), req.Error
 }
 
+func (c *Client) GetSoftwareUpdatesWithContext(ctx context.Context, input *snowball.GetSoftwareUpdatesInput, opts ...request.Option) (*snowball.GetSoftwareUpdatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "GetSoftwareUpdates",
+		Input:   input,
+		Output:  (*snowball.GetSoftwareUpdatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.GetSoftwareUpdatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.GetSoftwareUpdatesOutput), req.Error
+}
+
 func (c *Client) ListClusterJobsWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, opts ...request.Option) (*snowball.ListClusterJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "ListClusterJobsWithContext",
+		Action:  "ListClusterJobs",
 		Input:   input,
 		Output:  (*snowball.ListClusterJobsOutput)(nil),
 		Error:   nil,
@@ -322,7 +344,7 @@ func (c *Client) ListClusterJobsWithContext(ctx context.Context, input *snowball
 func (c *Client) ListClustersWithContext(ctx context.Context, input *snowball.ListClustersInput, opts ...request.Option) (*snowball.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "ListClustersWithContext",
+		Action:  "ListClusters",
 		Input:   input,
 		Output:  (*snowball.ListClustersOutput)(nil),
 		Error:   nil,
@@ -343,7 +365,7 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *snowball.Li
 func (c *Client) ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "ListCompatibleImagesWithContext",
+		Action:  "ListCompatibleImages",
 		Input:   input,
 		Output:  (*snowball.ListCompatibleImagesOutput)(nil),
 		Error:   nil,
@@ -364,7 +386,7 @@ func (c *Client) ListCompatibleImagesWithContext(ctx context.Context, input *sno
 func (c *Client) ListJobsWithContext(ctx context.Context, input *snowball.ListJobsInput, opts ...request.Option) (*snowball.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*snowball.ListJobsOutput)(nil),
 		Error:   nil,
@@ -385,7 +407,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *snowball.ListJo
 func (c *Client) UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "UpdateClusterWithContext",
+		Action:  "UpdateCluster",
 		Input:   input,
 		Output:  (*snowball.UpdateClusterOutput)(nil),
 		Error:   nil,
@@ -406,7 +428,7 @@ func (c *Client) UpdateClusterWithContext(ctx context.Context, input *snowball.U
 func (c *Client) UpdateJobWithContext(ctx context.Context, input *snowball.UpdateJobInput, opts ...request.Option) (*snowball.UpdateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
-		Action:  "UpdateJobWithContext",
+		Action:  "UpdateJob",
 		Input:   input,
 		Output:  (*snowball.UpdateJobOutput)(nil),
 		Error:   nil,

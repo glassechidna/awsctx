@@ -209,7 +209,7 @@ var _ IoT = (*Client)(nil)
 func (c *Client) AcceptCertificateTransferWithContext(ctx context.Context, input *iot.AcceptCertificateTransferInput, opts ...request.Option) (*iot.AcceptCertificateTransferOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AcceptCertificateTransferWithContext",
+		Action:  "AcceptCertificateTransfer",
 		Input:   input,
 		Output:  (*iot.AcceptCertificateTransferOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) AcceptCertificateTransferWithContext(ctx context.Context, input
 func (c *Client) AddThingToBillingGroupWithContext(ctx context.Context, input *iot.AddThingToBillingGroupInput, opts ...request.Option) (*iot.AddThingToBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AddThingToBillingGroupWithContext",
+		Action:  "AddThingToBillingGroup",
 		Input:   input,
 		Output:  (*iot.AddThingToBillingGroupOutput)(nil),
 		Error:   nil,
@@ -251,7 +251,7 @@ func (c *Client) AddThingToBillingGroupWithContext(ctx context.Context, input *i
 func (c *Client) AddThingToThingGroupWithContext(ctx context.Context, input *iot.AddThingToThingGroupInput, opts ...request.Option) (*iot.AddThingToThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AddThingToThingGroupWithContext",
+		Action:  "AddThingToThingGroup",
 		Input:   input,
 		Output:  (*iot.AddThingToThingGroupOutput)(nil),
 		Error:   nil,
@@ -272,7 +272,7 @@ func (c *Client) AddThingToThingGroupWithContext(ctx context.Context, input *iot
 func (c *Client) AssociateTargetsWithJobWithContext(ctx context.Context, input *iot.AssociateTargetsWithJobInput, opts ...request.Option) (*iot.AssociateTargetsWithJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AssociateTargetsWithJobWithContext",
+		Action:  "AssociateTargetsWithJob",
 		Input:   input,
 		Output:  (*iot.AssociateTargetsWithJobOutput)(nil),
 		Error:   nil,
@@ -293,7 +293,7 @@ func (c *Client) AssociateTargetsWithJobWithContext(ctx context.Context, input *
 func (c *Client) AttachPolicyWithContext(ctx context.Context, input *iot.AttachPolicyInput, opts ...request.Option) (*iot.AttachPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AttachPolicyWithContext",
+		Action:  "AttachPolicy",
 		Input:   input,
 		Output:  (*iot.AttachPolicyOutput)(nil),
 		Error:   nil,
@@ -314,7 +314,7 @@ func (c *Client) AttachPolicyWithContext(ctx context.Context, input *iot.AttachP
 func (c *Client) AttachPrincipalPolicyWithContext(ctx context.Context, input *iot.AttachPrincipalPolicyInput, opts ...request.Option) (*iot.AttachPrincipalPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AttachPrincipalPolicyWithContext",
+		Action:  "AttachPrincipalPolicy",
 		Input:   input,
 		Output:  (*iot.AttachPrincipalPolicyOutput)(nil),
 		Error:   nil,
@@ -335,7 +335,7 @@ func (c *Client) AttachPrincipalPolicyWithContext(ctx context.Context, input *io
 func (c *Client) AttachSecurityProfileWithContext(ctx context.Context, input *iot.AttachSecurityProfileInput, opts ...request.Option) (*iot.AttachSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AttachSecurityProfileWithContext",
+		Action:  "AttachSecurityProfile",
 		Input:   input,
 		Output:  (*iot.AttachSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -356,7 +356,7 @@ func (c *Client) AttachSecurityProfileWithContext(ctx context.Context, input *io
 func (c *Client) AttachThingPrincipalWithContext(ctx context.Context, input *iot.AttachThingPrincipalInput, opts ...request.Option) (*iot.AttachThingPrincipalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "AttachThingPrincipalWithContext",
+		Action:  "AttachThingPrincipal",
 		Input:   input,
 		Output:  (*iot.AttachThingPrincipalOutput)(nil),
 		Error:   nil,
@@ -377,7 +377,7 @@ func (c *Client) AttachThingPrincipalWithContext(ctx context.Context, input *iot
 func (c *Client) CancelAuditMitigationActionsTaskWithContext(ctx context.Context, input *iot.CancelAuditMitigationActionsTaskInput, opts ...request.Option) (*iot.CancelAuditMitigationActionsTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CancelAuditMitigationActionsTaskWithContext",
+		Action:  "CancelAuditMitigationActionsTask",
 		Input:   input,
 		Output:  (*iot.CancelAuditMitigationActionsTaskOutput)(nil),
 		Error:   nil,
@@ -398,7 +398,7 @@ func (c *Client) CancelAuditMitigationActionsTaskWithContext(ctx context.Context
 func (c *Client) CancelAuditTaskWithContext(ctx context.Context, input *iot.CancelAuditTaskInput, opts ...request.Option) (*iot.CancelAuditTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CancelAuditTaskWithContext",
+		Action:  "CancelAuditTask",
 		Input:   input,
 		Output:  (*iot.CancelAuditTaskOutput)(nil),
 		Error:   nil,
@@ -419,7 +419,7 @@ func (c *Client) CancelAuditTaskWithContext(ctx context.Context, input *iot.Canc
 func (c *Client) CancelCertificateTransferWithContext(ctx context.Context, input *iot.CancelCertificateTransferInput, opts ...request.Option) (*iot.CancelCertificateTransferOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CancelCertificateTransferWithContext",
+		Action:  "CancelCertificateTransfer",
 		Input:   input,
 		Output:  (*iot.CancelCertificateTransferOutput)(nil),
 		Error:   nil,
@@ -440,7 +440,7 @@ func (c *Client) CancelCertificateTransferWithContext(ctx context.Context, input
 func (c *Client) CancelJobWithContext(ctx context.Context, input *iot.CancelJobInput, opts ...request.Option) (*iot.CancelJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CancelJobWithContext",
+		Action:  "CancelJob",
 		Input:   input,
 		Output:  (*iot.CancelJobOutput)(nil),
 		Error:   nil,
@@ -461,7 +461,7 @@ func (c *Client) CancelJobWithContext(ctx context.Context, input *iot.CancelJobI
 func (c *Client) CancelJobExecutionWithContext(ctx context.Context, input *iot.CancelJobExecutionInput, opts ...request.Option) (*iot.CancelJobExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CancelJobExecutionWithContext",
+		Action:  "CancelJobExecution",
 		Input:   input,
 		Output:  (*iot.CancelJobExecutionOutput)(nil),
 		Error:   nil,
@@ -482,7 +482,7 @@ func (c *Client) CancelJobExecutionWithContext(ctx context.Context, input *iot.C
 func (c *Client) ClearDefaultAuthorizerWithContext(ctx context.Context, input *iot.ClearDefaultAuthorizerInput, opts ...request.Option) (*iot.ClearDefaultAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ClearDefaultAuthorizerWithContext",
+		Action:  "ClearDefaultAuthorizer",
 		Input:   input,
 		Output:  (*iot.ClearDefaultAuthorizerOutput)(nil),
 		Error:   nil,
@@ -503,7 +503,7 @@ func (c *Client) ClearDefaultAuthorizerWithContext(ctx context.Context, input *i
 func (c *Client) CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateAuthorizerWithContext",
+		Action:  "CreateAuthorizer",
 		Input:   input,
 		Output:  (*iot.CreateAuthorizerOutput)(nil),
 		Error:   nil,
@@ -524,7 +524,7 @@ func (c *Client) CreateAuthorizerWithContext(ctx context.Context, input *iot.Cre
 func (c *Client) CreateBillingGroupWithContext(ctx context.Context, input *iot.CreateBillingGroupInput, opts ...request.Option) (*iot.CreateBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateBillingGroupWithContext",
+		Action:  "CreateBillingGroup",
 		Input:   input,
 		Output:  (*iot.CreateBillingGroupOutput)(nil),
 		Error:   nil,
@@ -545,7 +545,7 @@ func (c *Client) CreateBillingGroupWithContext(ctx context.Context, input *iot.C
 func (c *Client) CreateCertificateFromCsrWithContext(ctx context.Context, input *iot.CreateCertificateFromCsrInput, opts ...request.Option) (*iot.CreateCertificateFromCsrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateCertificateFromCsrWithContext",
+		Action:  "CreateCertificateFromCsr",
 		Input:   input,
 		Output:  (*iot.CreateCertificateFromCsrOutput)(nil),
 		Error:   nil,
@@ -566,7 +566,7 @@ func (c *Client) CreateCertificateFromCsrWithContext(ctx context.Context, input 
 func (c *Client) CreateDynamicThingGroupWithContext(ctx context.Context, input *iot.CreateDynamicThingGroupInput, opts ...request.Option) (*iot.CreateDynamicThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateDynamicThingGroupWithContext",
+		Action:  "CreateDynamicThingGroup",
 		Input:   input,
 		Output:  (*iot.CreateDynamicThingGroupOutput)(nil),
 		Error:   nil,
@@ -587,7 +587,7 @@ func (c *Client) CreateDynamicThingGroupWithContext(ctx context.Context, input *
 func (c *Client) CreateJobWithContext(ctx context.Context, input *iot.CreateJobInput, opts ...request.Option) (*iot.CreateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateJobWithContext",
+		Action:  "CreateJob",
 		Input:   input,
 		Output:  (*iot.CreateJobOutput)(nil),
 		Error:   nil,
@@ -608,7 +608,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *iot.CreateJobI
 func (c *Client) CreateKeysAndCertificateWithContext(ctx context.Context, input *iot.CreateKeysAndCertificateInput, opts ...request.Option) (*iot.CreateKeysAndCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateKeysAndCertificateWithContext",
+		Action:  "CreateKeysAndCertificate",
 		Input:   input,
 		Output:  (*iot.CreateKeysAndCertificateOutput)(nil),
 		Error:   nil,
@@ -629,7 +629,7 @@ func (c *Client) CreateKeysAndCertificateWithContext(ctx context.Context, input 
 func (c *Client) CreateMitigationActionWithContext(ctx context.Context, input *iot.CreateMitigationActionInput, opts ...request.Option) (*iot.CreateMitigationActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateMitigationActionWithContext",
+		Action:  "CreateMitigationAction",
 		Input:   input,
 		Output:  (*iot.CreateMitigationActionOutput)(nil),
 		Error:   nil,
@@ -650,7 +650,7 @@ func (c *Client) CreateMitigationActionWithContext(ctx context.Context, input *i
 func (c *Client) CreateOTAUpdateWithContext(ctx context.Context, input *iot.CreateOTAUpdateInput, opts ...request.Option) (*iot.CreateOTAUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateOTAUpdateWithContext",
+		Action:  "CreateOTAUpdate",
 		Input:   input,
 		Output:  (*iot.CreateOTAUpdateOutput)(nil),
 		Error:   nil,
@@ -671,7 +671,7 @@ func (c *Client) CreateOTAUpdateWithContext(ctx context.Context, input *iot.Crea
 func (c *Client) CreatePolicyWithContext(ctx context.Context, input *iot.CreatePolicyInput, opts ...request.Option) (*iot.CreatePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreatePolicyWithContext",
+		Action:  "CreatePolicy",
 		Input:   input,
 		Output:  (*iot.CreatePolicyOutput)(nil),
 		Error:   nil,
@@ -692,7 +692,7 @@ func (c *Client) CreatePolicyWithContext(ctx context.Context, input *iot.CreateP
 func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, input *iot.CreatePolicyVersionInput, opts ...request.Option) (*iot.CreatePolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreatePolicyVersionWithContext",
+		Action:  "CreatePolicyVersion",
 		Input:   input,
 		Output:  (*iot.CreatePolicyVersionOutput)(nil),
 		Error:   nil,
@@ -713,7 +713,7 @@ func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, input *iot.
 func (c *Client) CreateRoleAliasWithContext(ctx context.Context, input *iot.CreateRoleAliasInput, opts ...request.Option) (*iot.CreateRoleAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateRoleAliasWithContext",
+		Action:  "CreateRoleAlias",
 		Input:   input,
 		Output:  (*iot.CreateRoleAliasOutput)(nil),
 		Error:   nil,
@@ -734,7 +734,7 @@ func (c *Client) CreateRoleAliasWithContext(ctx context.Context, input *iot.Crea
 func (c *Client) CreateScheduledAuditWithContext(ctx context.Context, input *iot.CreateScheduledAuditInput, opts ...request.Option) (*iot.CreateScheduledAuditOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateScheduledAuditWithContext",
+		Action:  "CreateScheduledAudit",
 		Input:   input,
 		Output:  (*iot.CreateScheduledAuditOutput)(nil),
 		Error:   nil,
@@ -755,7 +755,7 @@ func (c *Client) CreateScheduledAuditWithContext(ctx context.Context, input *iot
 func (c *Client) CreateSecurityProfileWithContext(ctx context.Context, input *iot.CreateSecurityProfileInput, opts ...request.Option) (*iot.CreateSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateSecurityProfileWithContext",
+		Action:  "CreateSecurityProfile",
 		Input:   input,
 		Output:  (*iot.CreateSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -776,7 +776,7 @@ func (c *Client) CreateSecurityProfileWithContext(ctx context.Context, input *io
 func (c *Client) CreateStreamWithContext(ctx context.Context, input *iot.CreateStreamInput, opts ...request.Option) (*iot.CreateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateStreamWithContext",
+		Action:  "CreateStream",
 		Input:   input,
 		Output:  (*iot.CreateStreamOutput)(nil),
 		Error:   nil,
@@ -797,7 +797,7 @@ func (c *Client) CreateStreamWithContext(ctx context.Context, input *iot.CreateS
 func (c *Client) CreateThingWithContext(ctx context.Context, input *iot.CreateThingInput, opts ...request.Option) (*iot.CreateThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateThingWithContext",
+		Action:  "CreateThing",
 		Input:   input,
 		Output:  (*iot.CreateThingOutput)(nil),
 		Error:   nil,
@@ -818,7 +818,7 @@ func (c *Client) CreateThingWithContext(ctx context.Context, input *iot.CreateTh
 func (c *Client) CreateThingGroupWithContext(ctx context.Context, input *iot.CreateThingGroupInput, opts ...request.Option) (*iot.CreateThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateThingGroupWithContext",
+		Action:  "CreateThingGroup",
 		Input:   input,
 		Output:  (*iot.CreateThingGroupOutput)(nil),
 		Error:   nil,
@@ -839,7 +839,7 @@ func (c *Client) CreateThingGroupWithContext(ctx context.Context, input *iot.Cre
 func (c *Client) CreateThingTypeWithContext(ctx context.Context, input *iot.CreateThingTypeInput, opts ...request.Option) (*iot.CreateThingTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateThingTypeWithContext",
+		Action:  "CreateThingType",
 		Input:   input,
 		Output:  (*iot.CreateThingTypeOutput)(nil),
 		Error:   nil,
@@ -860,7 +860,7 @@ func (c *Client) CreateThingTypeWithContext(ctx context.Context, input *iot.Crea
 func (c *Client) CreateTopicRuleWithContext(ctx context.Context, input *iot.CreateTopicRuleInput, opts ...request.Option) (*iot.CreateTopicRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "CreateTopicRuleWithContext",
+		Action:  "CreateTopicRule",
 		Input:   input,
 		Output:  (*iot.CreateTopicRuleOutput)(nil),
 		Error:   nil,
@@ -881,7 +881,7 @@ func (c *Client) CreateTopicRuleWithContext(ctx context.Context, input *iot.Crea
 func (c *Client) DeleteAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DeleteAccountAuditConfigurationInput, opts ...request.Option) (*iot.DeleteAccountAuditConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteAccountAuditConfigurationWithContext",
+		Action:  "DeleteAccountAuditConfiguration",
 		Input:   input,
 		Output:  (*iot.DeleteAccountAuditConfigurationOutput)(nil),
 		Error:   nil,
@@ -902,7 +902,7 @@ func (c *Client) DeleteAccountAuditConfigurationWithContext(ctx context.Context,
 func (c *Client) DeleteAuthorizerWithContext(ctx context.Context, input *iot.DeleteAuthorizerInput, opts ...request.Option) (*iot.DeleteAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteAuthorizerWithContext",
+		Action:  "DeleteAuthorizer",
 		Input:   input,
 		Output:  (*iot.DeleteAuthorizerOutput)(nil),
 		Error:   nil,
@@ -923,7 +923,7 @@ func (c *Client) DeleteAuthorizerWithContext(ctx context.Context, input *iot.Del
 func (c *Client) DeleteBillingGroupWithContext(ctx context.Context, input *iot.DeleteBillingGroupInput, opts ...request.Option) (*iot.DeleteBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteBillingGroupWithContext",
+		Action:  "DeleteBillingGroup",
 		Input:   input,
 		Output:  (*iot.DeleteBillingGroupOutput)(nil),
 		Error:   nil,
@@ -944,7 +944,7 @@ func (c *Client) DeleteBillingGroupWithContext(ctx context.Context, input *iot.D
 func (c *Client) DeleteCACertificateWithContext(ctx context.Context, input *iot.DeleteCACertificateInput, opts ...request.Option) (*iot.DeleteCACertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteCACertificateWithContext",
+		Action:  "DeleteCACertificate",
 		Input:   input,
 		Output:  (*iot.DeleteCACertificateOutput)(nil),
 		Error:   nil,
@@ -965,7 +965,7 @@ func (c *Client) DeleteCACertificateWithContext(ctx context.Context, input *iot.
 func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *iot.DeleteCertificateInput, opts ...request.Option) (*iot.DeleteCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteCertificateWithContext",
+		Action:  "DeleteCertificate",
 		Input:   input,
 		Output:  (*iot.DeleteCertificateOutput)(nil),
 		Error:   nil,
@@ -986,7 +986,7 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *iot.De
 func (c *Client) DeleteDynamicThingGroupWithContext(ctx context.Context, input *iot.DeleteDynamicThingGroupInput, opts ...request.Option) (*iot.DeleteDynamicThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteDynamicThingGroupWithContext",
+		Action:  "DeleteDynamicThingGroup",
 		Input:   input,
 		Output:  (*iot.DeleteDynamicThingGroupOutput)(nil),
 		Error:   nil,
@@ -1007,7 +1007,7 @@ func (c *Client) DeleteDynamicThingGroupWithContext(ctx context.Context, input *
 func (c *Client) DeleteJobWithContext(ctx context.Context, input *iot.DeleteJobInput, opts ...request.Option) (*iot.DeleteJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteJobWithContext",
+		Action:  "DeleteJob",
 		Input:   input,
 		Output:  (*iot.DeleteJobOutput)(nil),
 		Error:   nil,
@@ -1028,7 +1028,7 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, input *iot.DeleteJobI
 func (c *Client) DeleteJobExecutionWithContext(ctx context.Context, input *iot.DeleteJobExecutionInput, opts ...request.Option) (*iot.DeleteJobExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteJobExecutionWithContext",
+		Action:  "DeleteJobExecution",
 		Input:   input,
 		Output:  (*iot.DeleteJobExecutionOutput)(nil),
 		Error:   nil,
@@ -1049,7 +1049,7 @@ func (c *Client) DeleteJobExecutionWithContext(ctx context.Context, input *iot.D
 func (c *Client) DeleteMitigationActionWithContext(ctx context.Context, input *iot.DeleteMitigationActionInput, opts ...request.Option) (*iot.DeleteMitigationActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteMitigationActionWithContext",
+		Action:  "DeleteMitigationAction",
 		Input:   input,
 		Output:  (*iot.DeleteMitigationActionOutput)(nil),
 		Error:   nil,
@@ -1070,7 +1070,7 @@ func (c *Client) DeleteMitigationActionWithContext(ctx context.Context, input *i
 func (c *Client) DeleteOTAUpdateWithContext(ctx context.Context, input *iot.DeleteOTAUpdateInput, opts ...request.Option) (*iot.DeleteOTAUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteOTAUpdateWithContext",
+		Action:  "DeleteOTAUpdate",
 		Input:   input,
 		Output:  (*iot.DeleteOTAUpdateOutput)(nil),
 		Error:   nil,
@@ -1091,7 +1091,7 @@ func (c *Client) DeleteOTAUpdateWithContext(ctx context.Context, input *iot.Dele
 func (c *Client) DeletePolicyWithContext(ctx context.Context, input *iot.DeletePolicyInput, opts ...request.Option) (*iot.DeletePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeletePolicyWithContext",
+		Action:  "DeletePolicy",
 		Input:   input,
 		Output:  (*iot.DeletePolicyOutput)(nil),
 		Error:   nil,
@@ -1112,7 +1112,7 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *iot.DeleteP
 func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, input *iot.DeletePolicyVersionInput, opts ...request.Option) (*iot.DeletePolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeletePolicyVersionWithContext",
+		Action:  "DeletePolicyVersion",
 		Input:   input,
 		Output:  (*iot.DeletePolicyVersionOutput)(nil),
 		Error:   nil,
@@ -1133,7 +1133,7 @@ func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, input *iot.
 func (c *Client) DeleteRegistrationCodeWithContext(ctx context.Context, input *iot.DeleteRegistrationCodeInput, opts ...request.Option) (*iot.DeleteRegistrationCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteRegistrationCodeWithContext",
+		Action:  "DeleteRegistrationCode",
 		Input:   input,
 		Output:  (*iot.DeleteRegistrationCodeOutput)(nil),
 		Error:   nil,
@@ -1154,7 +1154,7 @@ func (c *Client) DeleteRegistrationCodeWithContext(ctx context.Context, input *i
 func (c *Client) DeleteRoleAliasWithContext(ctx context.Context, input *iot.DeleteRoleAliasInput, opts ...request.Option) (*iot.DeleteRoleAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteRoleAliasWithContext",
+		Action:  "DeleteRoleAlias",
 		Input:   input,
 		Output:  (*iot.DeleteRoleAliasOutput)(nil),
 		Error:   nil,
@@ -1175,7 +1175,7 @@ func (c *Client) DeleteRoleAliasWithContext(ctx context.Context, input *iot.Dele
 func (c *Client) DeleteScheduledAuditWithContext(ctx context.Context, input *iot.DeleteScheduledAuditInput, opts ...request.Option) (*iot.DeleteScheduledAuditOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteScheduledAuditWithContext",
+		Action:  "DeleteScheduledAudit",
 		Input:   input,
 		Output:  (*iot.DeleteScheduledAuditOutput)(nil),
 		Error:   nil,
@@ -1196,7 +1196,7 @@ func (c *Client) DeleteScheduledAuditWithContext(ctx context.Context, input *iot
 func (c *Client) DeleteSecurityProfileWithContext(ctx context.Context, input *iot.DeleteSecurityProfileInput, opts ...request.Option) (*iot.DeleteSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteSecurityProfileWithContext",
+		Action:  "DeleteSecurityProfile",
 		Input:   input,
 		Output:  (*iot.DeleteSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -1217,7 +1217,7 @@ func (c *Client) DeleteSecurityProfileWithContext(ctx context.Context, input *io
 func (c *Client) DeleteStreamWithContext(ctx context.Context, input *iot.DeleteStreamInput, opts ...request.Option) (*iot.DeleteStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteStreamWithContext",
+		Action:  "DeleteStream",
 		Input:   input,
 		Output:  (*iot.DeleteStreamOutput)(nil),
 		Error:   nil,
@@ -1238,7 +1238,7 @@ func (c *Client) DeleteStreamWithContext(ctx context.Context, input *iot.DeleteS
 func (c *Client) DeleteThingWithContext(ctx context.Context, input *iot.DeleteThingInput, opts ...request.Option) (*iot.DeleteThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteThingWithContext",
+		Action:  "DeleteThing",
 		Input:   input,
 		Output:  (*iot.DeleteThingOutput)(nil),
 		Error:   nil,
@@ -1259,7 +1259,7 @@ func (c *Client) DeleteThingWithContext(ctx context.Context, input *iot.DeleteTh
 func (c *Client) DeleteThingGroupWithContext(ctx context.Context, input *iot.DeleteThingGroupInput, opts ...request.Option) (*iot.DeleteThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteThingGroupWithContext",
+		Action:  "DeleteThingGroup",
 		Input:   input,
 		Output:  (*iot.DeleteThingGroupOutput)(nil),
 		Error:   nil,
@@ -1280,7 +1280,7 @@ func (c *Client) DeleteThingGroupWithContext(ctx context.Context, input *iot.Del
 func (c *Client) DeleteThingTypeWithContext(ctx context.Context, input *iot.DeleteThingTypeInput, opts ...request.Option) (*iot.DeleteThingTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteThingTypeWithContext",
+		Action:  "DeleteThingType",
 		Input:   input,
 		Output:  (*iot.DeleteThingTypeOutput)(nil),
 		Error:   nil,
@@ -1301,7 +1301,7 @@ func (c *Client) DeleteThingTypeWithContext(ctx context.Context, input *iot.Dele
 func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, input *iot.DeleteTopicRuleInput, opts ...request.Option) (*iot.DeleteTopicRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteTopicRuleWithContext",
+		Action:  "DeleteTopicRule",
 		Input:   input,
 		Output:  (*iot.DeleteTopicRuleOutput)(nil),
 		Error:   nil,
@@ -1322,7 +1322,7 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, input *iot.Dele
 func (c *Client) DeleteV2LoggingLevelWithContext(ctx context.Context, input *iot.DeleteV2LoggingLevelInput, opts ...request.Option) (*iot.DeleteV2LoggingLevelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeleteV2LoggingLevelWithContext",
+		Action:  "DeleteV2LoggingLevel",
 		Input:   input,
 		Output:  (*iot.DeleteV2LoggingLevelOutput)(nil),
 		Error:   nil,
@@ -1343,7 +1343,7 @@ func (c *Client) DeleteV2LoggingLevelWithContext(ctx context.Context, input *iot
 func (c *Client) DeprecateThingTypeWithContext(ctx context.Context, input *iot.DeprecateThingTypeInput, opts ...request.Option) (*iot.DeprecateThingTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DeprecateThingTypeWithContext",
+		Action:  "DeprecateThingType",
 		Input:   input,
 		Output:  (*iot.DeprecateThingTypeOutput)(nil),
 		Error:   nil,
@@ -1364,7 +1364,7 @@ func (c *Client) DeprecateThingTypeWithContext(ctx context.Context, input *iot.D
 func (c *Client) DescribeAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DescribeAccountAuditConfigurationInput, opts ...request.Option) (*iot.DescribeAccountAuditConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeAccountAuditConfigurationWithContext",
+		Action:  "DescribeAccountAuditConfiguration",
 		Input:   input,
 		Output:  (*iot.DescribeAccountAuditConfigurationOutput)(nil),
 		Error:   nil,
@@ -1385,7 +1385,7 @@ func (c *Client) DescribeAccountAuditConfigurationWithContext(ctx context.Contex
 func (c *Client) DescribeAuditFindingWithContext(ctx context.Context, input *iot.DescribeAuditFindingInput, opts ...request.Option) (*iot.DescribeAuditFindingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeAuditFindingWithContext",
+		Action:  "DescribeAuditFinding",
 		Input:   input,
 		Output:  (*iot.DescribeAuditFindingOutput)(nil),
 		Error:   nil,
@@ -1406,7 +1406,7 @@ func (c *Client) DescribeAuditFindingWithContext(ctx context.Context, input *iot
 func (c *Client) DescribeAuditMitigationActionsTaskWithContext(ctx context.Context, input *iot.DescribeAuditMitigationActionsTaskInput, opts ...request.Option) (*iot.DescribeAuditMitigationActionsTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeAuditMitigationActionsTaskWithContext",
+		Action:  "DescribeAuditMitigationActionsTask",
 		Input:   input,
 		Output:  (*iot.DescribeAuditMitigationActionsTaskOutput)(nil),
 		Error:   nil,
@@ -1427,7 +1427,7 @@ func (c *Client) DescribeAuditMitigationActionsTaskWithContext(ctx context.Conte
 func (c *Client) DescribeAuditTaskWithContext(ctx context.Context, input *iot.DescribeAuditTaskInput, opts ...request.Option) (*iot.DescribeAuditTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeAuditTaskWithContext",
+		Action:  "DescribeAuditTask",
 		Input:   input,
 		Output:  (*iot.DescribeAuditTaskOutput)(nil),
 		Error:   nil,
@@ -1448,7 +1448,7 @@ func (c *Client) DescribeAuditTaskWithContext(ctx context.Context, input *iot.De
 func (c *Client) DescribeAuthorizerWithContext(ctx context.Context, input *iot.DescribeAuthorizerInput, opts ...request.Option) (*iot.DescribeAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeAuthorizerWithContext",
+		Action:  "DescribeAuthorizer",
 		Input:   input,
 		Output:  (*iot.DescribeAuthorizerOutput)(nil),
 		Error:   nil,
@@ -1469,7 +1469,7 @@ func (c *Client) DescribeAuthorizerWithContext(ctx context.Context, input *iot.D
 func (c *Client) DescribeBillingGroupWithContext(ctx context.Context, input *iot.DescribeBillingGroupInput, opts ...request.Option) (*iot.DescribeBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeBillingGroupWithContext",
+		Action:  "DescribeBillingGroup",
 		Input:   input,
 		Output:  (*iot.DescribeBillingGroupOutput)(nil),
 		Error:   nil,
@@ -1490,7 +1490,7 @@ func (c *Client) DescribeBillingGroupWithContext(ctx context.Context, input *iot
 func (c *Client) DescribeCACertificateWithContext(ctx context.Context, input *iot.DescribeCACertificateInput, opts ...request.Option) (*iot.DescribeCACertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeCACertificateWithContext",
+		Action:  "DescribeCACertificate",
 		Input:   input,
 		Output:  (*iot.DescribeCACertificateOutput)(nil),
 		Error:   nil,
@@ -1511,7 +1511,7 @@ func (c *Client) DescribeCACertificateWithContext(ctx context.Context, input *io
 func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *iot.DescribeCertificateInput, opts ...request.Option) (*iot.DescribeCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeCertificateWithContext",
+		Action:  "DescribeCertificate",
 		Input:   input,
 		Output:  (*iot.DescribeCertificateOutput)(nil),
 		Error:   nil,
@@ -1532,7 +1532,7 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *iot.
 func (c *Client) DescribeDefaultAuthorizerWithContext(ctx context.Context, input *iot.DescribeDefaultAuthorizerInput, opts ...request.Option) (*iot.DescribeDefaultAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeDefaultAuthorizerWithContext",
+		Action:  "DescribeDefaultAuthorizer",
 		Input:   input,
 		Output:  (*iot.DescribeDefaultAuthorizerOutput)(nil),
 		Error:   nil,
@@ -1553,7 +1553,7 @@ func (c *Client) DescribeDefaultAuthorizerWithContext(ctx context.Context, input
 func (c *Client) DescribeEndpointWithContext(ctx context.Context, input *iot.DescribeEndpointInput, opts ...request.Option) (*iot.DescribeEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeEndpointWithContext",
+		Action:  "DescribeEndpoint",
 		Input:   input,
 		Output:  (*iot.DescribeEndpointOutput)(nil),
 		Error:   nil,
@@ -1574,7 +1574,7 @@ func (c *Client) DescribeEndpointWithContext(ctx context.Context, input *iot.Des
 func (c *Client) DescribeEventConfigurationsWithContext(ctx context.Context, input *iot.DescribeEventConfigurationsInput, opts ...request.Option) (*iot.DescribeEventConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeEventConfigurationsWithContext",
+		Action:  "DescribeEventConfigurations",
 		Input:   input,
 		Output:  (*iot.DescribeEventConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1595,7 +1595,7 @@ func (c *Client) DescribeEventConfigurationsWithContext(ctx context.Context, inp
 func (c *Client) DescribeIndexWithContext(ctx context.Context, input *iot.DescribeIndexInput, opts ...request.Option) (*iot.DescribeIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeIndexWithContext",
+		Action:  "DescribeIndex",
 		Input:   input,
 		Output:  (*iot.DescribeIndexOutput)(nil),
 		Error:   nil,
@@ -1616,7 +1616,7 @@ func (c *Client) DescribeIndexWithContext(ctx context.Context, input *iot.Descri
 func (c *Client) DescribeJobWithContext(ctx context.Context, input *iot.DescribeJobInput, opts ...request.Option) (*iot.DescribeJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeJobWithContext",
+		Action:  "DescribeJob",
 		Input:   input,
 		Output:  (*iot.DescribeJobOutput)(nil),
 		Error:   nil,
@@ -1637,7 +1637,7 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *iot.Describe
 func (c *Client) DescribeJobExecutionWithContext(ctx context.Context, input *iot.DescribeJobExecutionInput, opts ...request.Option) (*iot.DescribeJobExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeJobExecutionWithContext",
+		Action:  "DescribeJobExecution",
 		Input:   input,
 		Output:  (*iot.DescribeJobExecutionOutput)(nil),
 		Error:   nil,
@@ -1658,7 +1658,7 @@ func (c *Client) DescribeJobExecutionWithContext(ctx context.Context, input *iot
 func (c *Client) DescribeMitigationActionWithContext(ctx context.Context, input *iot.DescribeMitigationActionInput, opts ...request.Option) (*iot.DescribeMitigationActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeMitigationActionWithContext",
+		Action:  "DescribeMitigationAction",
 		Input:   input,
 		Output:  (*iot.DescribeMitigationActionOutput)(nil),
 		Error:   nil,
@@ -1679,7 +1679,7 @@ func (c *Client) DescribeMitigationActionWithContext(ctx context.Context, input 
 func (c *Client) DescribeRoleAliasWithContext(ctx context.Context, input *iot.DescribeRoleAliasInput, opts ...request.Option) (*iot.DescribeRoleAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeRoleAliasWithContext",
+		Action:  "DescribeRoleAlias",
 		Input:   input,
 		Output:  (*iot.DescribeRoleAliasOutput)(nil),
 		Error:   nil,
@@ -1700,7 +1700,7 @@ func (c *Client) DescribeRoleAliasWithContext(ctx context.Context, input *iot.De
 func (c *Client) DescribeScheduledAuditWithContext(ctx context.Context, input *iot.DescribeScheduledAuditInput, opts ...request.Option) (*iot.DescribeScheduledAuditOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeScheduledAuditWithContext",
+		Action:  "DescribeScheduledAudit",
 		Input:   input,
 		Output:  (*iot.DescribeScheduledAuditOutput)(nil),
 		Error:   nil,
@@ -1721,7 +1721,7 @@ func (c *Client) DescribeScheduledAuditWithContext(ctx context.Context, input *i
 func (c *Client) DescribeSecurityProfileWithContext(ctx context.Context, input *iot.DescribeSecurityProfileInput, opts ...request.Option) (*iot.DescribeSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeSecurityProfileWithContext",
+		Action:  "DescribeSecurityProfile",
 		Input:   input,
 		Output:  (*iot.DescribeSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -1742,7 +1742,7 @@ func (c *Client) DescribeSecurityProfileWithContext(ctx context.Context, input *
 func (c *Client) DescribeStreamWithContext(ctx context.Context, input *iot.DescribeStreamInput, opts ...request.Option) (*iot.DescribeStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeStreamWithContext",
+		Action:  "DescribeStream",
 		Input:   input,
 		Output:  (*iot.DescribeStreamOutput)(nil),
 		Error:   nil,
@@ -1763,7 +1763,7 @@ func (c *Client) DescribeStreamWithContext(ctx context.Context, input *iot.Descr
 func (c *Client) DescribeThingWithContext(ctx context.Context, input *iot.DescribeThingInput, opts ...request.Option) (*iot.DescribeThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeThingWithContext",
+		Action:  "DescribeThing",
 		Input:   input,
 		Output:  (*iot.DescribeThingOutput)(nil),
 		Error:   nil,
@@ -1784,7 +1784,7 @@ func (c *Client) DescribeThingWithContext(ctx context.Context, input *iot.Descri
 func (c *Client) DescribeThingGroupWithContext(ctx context.Context, input *iot.DescribeThingGroupInput, opts ...request.Option) (*iot.DescribeThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeThingGroupWithContext",
+		Action:  "DescribeThingGroup",
 		Input:   input,
 		Output:  (*iot.DescribeThingGroupOutput)(nil),
 		Error:   nil,
@@ -1805,7 +1805,7 @@ func (c *Client) DescribeThingGroupWithContext(ctx context.Context, input *iot.D
 func (c *Client) DescribeThingRegistrationTaskWithContext(ctx context.Context, input *iot.DescribeThingRegistrationTaskInput, opts ...request.Option) (*iot.DescribeThingRegistrationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeThingRegistrationTaskWithContext",
+		Action:  "DescribeThingRegistrationTask",
 		Input:   input,
 		Output:  (*iot.DescribeThingRegistrationTaskOutput)(nil),
 		Error:   nil,
@@ -1826,7 +1826,7 @@ func (c *Client) DescribeThingRegistrationTaskWithContext(ctx context.Context, i
 func (c *Client) DescribeThingTypeWithContext(ctx context.Context, input *iot.DescribeThingTypeInput, opts ...request.Option) (*iot.DescribeThingTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DescribeThingTypeWithContext",
+		Action:  "DescribeThingType",
 		Input:   input,
 		Output:  (*iot.DescribeThingTypeOutput)(nil),
 		Error:   nil,
@@ -1847,7 +1847,7 @@ func (c *Client) DescribeThingTypeWithContext(ctx context.Context, input *iot.De
 func (c *Client) DetachPolicyWithContext(ctx context.Context, input *iot.DetachPolicyInput, opts ...request.Option) (*iot.DetachPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DetachPolicyWithContext",
+		Action:  "DetachPolicy",
 		Input:   input,
 		Output:  (*iot.DetachPolicyOutput)(nil),
 		Error:   nil,
@@ -1868,7 +1868,7 @@ func (c *Client) DetachPolicyWithContext(ctx context.Context, input *iot.DetachP
 func (c *Client) DetachPrincipalPolicyWithContext(ctx context.Context, input *iot.DetachPrincipalPolicyInput, opts ...request.Option) (*iot.DetachPrincipalPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DetachPrincipalPolicyWithContext",
+		Action:  "DetachPrincipalPolicy",
 		Input:   input,
 		Output:  (*iot.DetachPrincipalPolicyOutput)(nil),
 		Error:   nil,
@@ -1889,7 +1889,7 @@ func (c *Client) DetachPrincipalPolicyWithContext(ctx context.Context, input *io
 func (c *Client) DetachSecurityProfileWithContext(ctx context.Context, input *iot.DetachSecurityProfileInput, opts ...request.Option) (*iot.DetachSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DetachSecurityProfileWithContext",
+		Action:  "DetachSecurityProfile",
 		Input:   input,
 		Output:  (*iot.DetachSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -1910,7 +1910,7 @@ func (c *Client) DetachSecurityProfileWithContext(ctx context.Context, input *io
 func (c *Client) DetachThingPrincipalWithContext(ctx context.Context, input *iot.DetachThingPrincipalInput, opts ...request.Option) (*iot.DetachThingPrincipalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DetachThingPrincipalWithContext",
+		Action:  "DetachThingPrincipal",
 		Input:   input,
 		Output:  (*iot.DetachThingPrincipalOutput)(nil),
 		Error:   nil,
@@ -1931,7 +1931,7 @@ func (c *Client) DetachThingPrincipalWithContext(ctx context.Context, input *iot
 func (c *Client) DisableTopicRuleWithContext(ctx context.Context, input *iot.DisableTopicRuleInput, opts ...request.Option) (*iot.DisableTopicRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "DisableTopicRuleWithContext",
+		Action:  "DisableTopicRule",
 		Input:   input,
 		Output:  (*iot.DisableTopicRuleOutput)(nil),
 		Error:   nil,
@@ -1952,7 +1952,7 @@ func (c *Client) DisableTopicRuleWithContext(ctx context.Context, input *iot.Dis
 func (c *Client) EnableTopicRuleWithContext(ctx context.Context, input *iot.EnableTopicRuleInput, opts ...request.Option) (*iot.EnableTopicRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "EnableTopicRuleWithContext",
+		Action:  "EnableTopicRule",
 		Input:   input,
 		Output:  (*iot.EnableTopicRuleOutput)(nil),
 		Error:   nil,
@@ -1973,7 +1973,7 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, input *iot.Enab
 func (c *Client) GetEffectivePoliciesWithContext(ctx context.Context, input *iot.GetEffectivePoliciesInput, opts ...request.Option) (*iot.GetEffectivePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetEffectivePoliciesWithContext",
+		Action:  "GetEffectivePolicies",
 		Input:   input,
 		Output:  (*iot.GetEffectivePoliciesOutput)(nil),
 		Error:   nil,
@@ -1994,7 +1994,7 @@ func (c *Client) GetEffectivePoliciesWithContext(ctx context.Context, input *iot
 func (c *Client) GetIndexingConfigurationWithContext(ctx context.Context, input *iot.GetIndexingConfigurationInput, opts ...request.Option) (*iot.GetIndexingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetIndexingConfigurationWithContext",
+		Action:  "GetIndexingConfiguration",
 		Input:   input,
 		Output:  (*iot.GetIndexingConfigurationOutput)(nil),
 		Error:   nil,
@@ -2015,7 +2015,7 @@ func (c *Client) GetIndexingConfigurationWithContext(ctx context.Context, input 
 func (c *Client) GetJobDocumentWithContext(ctx context.Context, input *iot.GetJobDocumentInput, opts ...request.Option) (*iot.GetJobDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetJobDocumentWithContext",
+		Action:  "GetJobDocument",
 		Input:   input,
 		Output:  (*iot.GetJobDocumentOutput)(nil),
 		Error:   nil,
@@ -2036,7 +2036,7 @@ func (c *Client) GetJobDocumentWithContext(ctx context.Context, input *iot.GetJo
 func (c *Client) GetLoggingOptionsWithContext(ctx context.Context, input *iot.GetLoggingOptionsInput, opts ...request.Option) (*iot.GetLoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetLoggingOptionsWithContext",
+		Action:  "GetLoggingOptions",
 		Input:   input,
 		Output:  (*iot.GetLoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -2057,7 +2057,7 @@ func (c *Client) GetLoggingOptionsWithContext(ctx context.Context, input *iot.Ge
 func (c *Client) GetOTAUpdateWithContext(ctx context.Context, input *iot.GetOTAUpdateInput, opts ...request.Option) (*iot.GetOTAUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetOTAUpdateWithContext",
+		Action:  "GetOTAUpdate",
 		Input:   input,
 		Output:  (*iot.GetOTAUpdateOutput)(nil),
 		Error:   nil,
@@ -2078,7 +2078,7 @@ func (c *Client) GetOTAUpdateWithContext(ctx context.Context, input *iot.GetOTAU
 func (c *Client) GetPolicyWithContext(ctx context.Context, input *iot.GetPolicyInput, opts ...request.Option) (*iot.GetPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetPolicyWithContext",
+		Action:  "GetPolicy",
 		Input:   input,
 		Output:  (*iot.GetPolicyOutput)(nil),
 		Error:   nil,
@@ -2099,7 +2099,7 @@ func (c *Client) GetPolicyWithContext(ctx context.Context, input *iot.GetPolicyI
 func (c *Client) GetPolicyVersionWithContext(ctx context.Context, input *iot.GetPolicyVersionInput, opts ...request.Option) (*iot.GetPolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetPolicyVersionWithContext",
+		Action:  "GetPolicyVersion",
 		Input:   input,
 		Output:  (*iot.GetPolicyVersionOutput)(nil),
 		Error:   nil,
@@ -2120,7 +2120,7 @@ func (c *Client) GetPolicyVersionWithContext(ctx context.Context, input *iot.Get
 func (c *Client) GetRegistrationCodeWithContext(ctx context.Context, input *iot.GetRegistrationCodeInput, opts ...request.Option) (*iot.GetRegistrationCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetRegistrationCodeWithContext",
+		Action:  "GetRegistrationCode",
 		Input:   input,
 		Output:  (*iot.GetRegistrationCodeOutput)(nil),
 		Error:   nil,
@@ -2141,7 +2141,7 @@ func (c *Client) GetRegistrationCodeWithContext(ctx context.Context, input *iot.
 func (c *Client) GetStatisticsWithContext(ctx context.Context, input *iot.GetStatisticsInput, opts ...request.Option) (*iot.GetStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetStatisticsWithContext",
+		Action:  "GetStatistics",
 		Input:   input,
 		Output:  (*iot.GetStatisticsOutput)(nil),
 		Error:   nil,
@@ -2162,7 +2162,7 @@ func (c *Client) GetStatisticsWithContext(ctx context.Context, input *iot.GetSta
 func (c *Client) GetTopicRuleWithContext(ctx context.Context, input *iot.GetTopicRuleInput, opts ...request.Option) (*iot.GetTopicRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetTopicRuleWithContext",
+		Action:  "GetTopicRule",
 		Input:   input,
 		Output:  (*iot.GetTopicRuleOutput)(nil),
 		Error:   nil,
@@ -2183,7 +2183,7 @@ func (c *Client) GetTopicRuleWithContext(ctx context.Context, input *iot.GetTopi
 func (c *Client) GetV2LoggingOptionsWithContext(ctx context.Context, input *iot.GetV2LoggingOptionsInput, opts ...request.Option) (*iot.GetV2LoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "GetV2LoggingOptionsWithContext",
+		Action:  "GetV2LoggingOptions",
 		Input:   input,
 		Output:  (*iot.GetV2LoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -2204,7 +2204,7 @@ func (c *Client) GetV2LoggingOptionsWithContext(ctx context.Context, input *iot.
 func (c *Client) ListActiveViolationsWithContext(ctx context.Context, input *iot.ListActiveViolationsInput, opts ...request.Option) (*iot.ListActiveViolationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListActiveViolationsWithContext",
+		Action:  "ListActiveViolations",
 		Input:   input,
 		Output:  (*iot.ListActiveViolationsOutput)(nil),
 		Error:   nil,
@@ -2225,7 +2225,7 @@ func (c *Client) ListActiveViolationsWithContext(ctx context.Context, input *iot
 func (c *Client) ListAttachedPoliciesWithContext(ctx context.Context, input *iot.ListAttachedPoliciesInput, opts ...request.Option) (*iot.ListAttachedPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListAttachedPoliciesWithContext",
+		Action:  "ListAttachedPolicies",
 		Input:   input,
 		Output:  (*iot.ListAttachedPoliciesOutput)(nil),
 		Error:   nil,
@@ -2246,7 +2246,7 @@ func (c *Client) ListAttachedPoliciesWithContext(ctx context.Context, input *iot
 func (c *Client) ListAuditFindingsWithContext(ctx context.Context, input *iot.ListAuditFindingsInput, opts ...request.Option) (*iot.ListAuditFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListAuditFindingsWithContext",
+		Action:  "ListAuditFindings",
 		Input:   input,
 		Output:  (*iot.ListAuditFindingsOutput)(nil),
 		Error:   nil,
@@ -2267,7 +2267,7 @@ func (c *Client) ListAuditFindingsWithContext(ctx context.Context, input *iot.Li
 func (c *Client) ListAuditMitigationActionsExecutionsWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsExecutionsInput, opts ...request.Option) (*iot.ListAuditMitigationActionsExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListAuditMitigationActionsExecutionsWithContext",
+		Action:  "ListAuditMitigationActionsExecutions",
 		Input:   input,
 		Output:  (*iot.ListAuditMitigationActionsExecutionsOutput)(nil),
 		Error:   nil,
@@ -2288,7 +2288,7 @@ func (c *Client) ListAuditMitigationActionsExecutionsWithContext(ctx context.Con
 func (c *Client) ListAuditMitigationActionsTasksWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsTasksInput, opts ...request.Option) (*iot.ListAuditMitigationActionsTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListAuditMitigationActionsTasksWithContext",
+		Action:  "ListAuditMitigationActionsTasks",
 		Input:   input,
 		Output:  (*iot.ListAuditMitigationActionsTasksOutput)(nil),
 		Error:   nil,
@@ -2309,7 +2309,7 @@ func (c *Client) ListAuditMitigationActionsTasksWithContext(ctx context.Context,
 func (c *Client) ListAuditTasksWithContext(ctx context.Context, input *iot.ListAuditTasksInput, opts ...request.Option) (*iot.ListAuditTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListAuditTasksWithContext",
+		Action:  "ListAuditTasks",
 		Input:   input,
 		Output:  (*iot.ListAuditTasksOutput)(nil),
 		Error:   nil,
@@ -2330,7 +2330,7 @@ func (c *Client) ListAuditTasksWithContext(ctx context.Context, input *iot.ListA
 func (c *Client) ListAuthorizersWithContext(ctx context.Context, input *iot.ListAuthorizersInput, opts ...request.Option) (*iot.ListAuthorizersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListAuthorizersWithContext",
+		Action:  "ListAuthorizers",
 		Input:   input,
 		Output:  (*iot.ListAuthorizersOutput)(nil),
 		Error:   nil,
@@ -2351,7 +2351,7 @@ func (c *Client) ListAuthorizersWithContext(ctx context.Context, input *iot.List
 func (c *Client) ListBillingGroupsWithContext(ctx context.Context, input *iot.ListBillingGroupsInput, opts ...request.Option) (*iot.ListBillingGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListBillingGroupsWithContext",
+		Action:  "ListBillingGroups",
 		Input:   input,
 		Output:  (*iot.ListBillingGroupsOutput)(nil),
 		Error:   nil,
@@ -2372,7 +2372,7 @@ func (c *Client) ListBillingGroupsWithContext(ctx context.Context, input *iot.Li
 func (c *Client) ListCACertificatesWithContext(ctx context.Context, input *iot.ListCACertificatesInput, opts ...request.Option) (*iot.ListCACertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListCACertificatesWithContext",
+		Action:  "ListCACertificates",
 		Input:   input,
 		Output:  (*iot.ListCACertificatesOutput)(nil),
 		Error:   nil,
@@ -2393,7 +2393,7 @@ func (c *Client) ListCACertificatesWithContext(ctx context.Context, input *iot.L
 func (c *Client) ListCertificatesWithContext(ctx context.Context, input *iot.ListCertificatesInput, opts ...request.Option) (*iot.ListCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListCertificatesWithContext",
+		Action:  "ListCertificates",
 		Input:   input,
 		Output:  (*iot.ListCertificatesOutput)(nil),
 		Error:   nil,
@@ -2414,7 +2414,7 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, input *iot.Lis
 func (c *Client) ListCertificatesByCAWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, opts ...request.Option) (*iot.ListCertificatesByCAOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListCertificatesByCAWithContext",
+		Action:  "ListCertificatesByCA",
 		Input:   input,
 		Output:  (*iot.ListCertificatesByCAOutput)(nil),
 		Error:   nil,
@@ -2435,7 +2435,7 @@ func (c *Client) ListCertificatesByCAWithContext(ctx context.Context, input *iot
 func (c *Client) ListIndicesWithContext(ctx context.Context, input *iot.ListIndicesInput, opts ...request.Option) (*iot.ListIndicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListIndicesWithContext",
+		Action:  "ListIndices",
 		Input:   input,
 		Output:  (*iot.ListIndicesOutput)(nil),
 		Error:   nil,
@@ -2456,7 +2456,7 @@ func (c *Client) ListIndicesWithContext(ctx context.Context, input *iot.ListIndi
 func (c *Client) ListJobExecutionsForJobWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, opts ...request.Option) (*iot.ListJobExecutionsForJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListJobExecutionsForJobWithContext",
+		Action:  "ListJobExecutionsForJob",
 		Input:   input,
 		Output:  (*iot.ListJobExecutionsForJobOutput)(nil),
 		Error:   nil,
@@ -2477,7 +2477,7 @@ func (c *Client) ListJobExecutionsForJobWithContext(ctx context.Context, input *
 func (c *Client) ListJobExecutionsForThingWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, opts ...request.Option) (*iot.ListJobExecutionsForThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListJobExecutionsForThingWithContext",
+		Action:  "ListJobExecutionsForThing",
 		Input:   input,
 		Output:  (*iot.ListJobExecutionsForThingOutput)(nil),
 		Error:   nil,
@@ -2498,7 +2498,7 @@ func (c *Client) ListJobExecutionsForThingWithContext(ctx context.Context, input
 func (c *Client) ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*iot.ListJobsOutput)(nil),
 		Error:   nil,
@@ -2519,7 +2519,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *iot.ListJobsInp
 func (c *Client) ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListMitigationActionsWithContext",
+		Action:  "ListMitigationActions",
 		Input:   input,
 		Output:  (*iot.ListMitigationActionsOutput)(nil),
 		Error:   nil,
@@ -2540,7 +2540,7 @@ func (c *Client) ListMitigationActionsWithContext(ctx context.Context, input *io
 func (c *Client) ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, opts ...request.Option) (*iot.ListOTAUpdatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListOTAUpdatesWithContext",
+		Action:  "ListOTAUpdates",
 		Input:   input,
 		Output:  (*iot.ListOTAUpdatesOutput)(nil),
 		Error:   nil,
@@ -2561,7 +2561,7 @@ func (c *Client) ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListO
 func (c *Client) ListOutgoingCertificatesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, opts ...request.Option) (*iot.ListOutgoingCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListOutgoingCertificatesWithContext",
+		Action:  "ListOutgoingCertificates",
 		Input:   input,
 		Output:  (*iot.ListOutgoingCertificatesOutput)(nil),
 		Error:   nil,
@@ -2582,7 +2582,7 @@ func (c *Client) ListOutgoingCertificatesWithContext(ctx context.Context, input 
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iot.ListPoliciesInput, opts ...request.Option) (*iot.ListPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListPoliciesWithContext",
+		Action:  "ListPolicies",
 		Input:   input,
 		Output:  (*iot.ListPoliciesOutput)(nil),
 		Error:   nil,
@@ -2603,7 +2603,7 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iot.ListPol
 func (c *Client) ListPolicyPrincipalsWithContext(ctx context.Context, input *iot.ListPolicyPrincipalsInput, opts ...request.Option) (*iot.ListPolicyPrincipalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListPolicyPrincipalsWithContext",
+		Action:  "ListPolicyPrincipals",
 		Input:   input,
 		Output:  (*iot.ListPolicyPrincipalsOutput)(nil),
 		Error:   nil,
@@ -2624,7 +2624,7 @@ func (c *Client) ListPolicyPrincipalsWithContext(ctx context.Context, input *iot
 func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iot.ListPolicyVersionsInput, opts ...request.Option) (*iot.ListPolicyVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListPolicyVersionsWithContext",
+		Action:  "ListPolicyVersions",
 		Input:   input,
 		Output:  (*iot.ListPolicyVersionsOutput)(nil),
 		Error:   nil,
@@ -2645,7 +2645,7 @@ func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iot.L
 func (c *Client) ListPrincipalPoliciesWithContext(ctx context.Context, input *iot.ListPrincipalPoliciesInput, opts ...request.Option) (*iot.ListPrincipalPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListPrincipalPoliciesWithContext",
+		Action:  "ListPrincipalPolicies",
 		Input:   input,
 		Output:  (*iot.ListPrincipalPoliciesOutput)(nil),
 		Error:   nil,
@@ -2666,7 +2666,7 @@ func (c *Client) ListPrincipalPoliciesWithContext(ctx context.Context, input *io
 func (c *Client) ListPrincipalThingsWithContext(ctx context.Context, input *iot.ListPrincipalThingsInput, opts ...request.Option) (*iot.ListPrincipalThingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListPrincipalThingsWithContext",
+		Action:  "ListPrincipalThings",
 		Input:   input,
 		Output:  (*iot.ListPrincipalThingsOutput)(nil),
 		Error:   nil,
@@ -2687,7 +2687,7 @@ func (c *Client) ListPrincipalThingsWithContext(ctx context.Context, input *iot.
 func (c *Client) ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListRoleAliasesWithContext",
+		Action:  "ListRoleAliases",
 		Input:   input,
 		Output:  (*iot.ListRoleAliasesOutput)(nil),
 		Error:   nil,
@@ -2708,7 +2708,7 @@ func (c *Client) ListRoleAliasesWithContext(ctx context.Context, input *iot.List
 func (c *Client) ListScheduledAuditsWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, opts ...request.Option) (*iot.ListScheduledAuditsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListScheduledAuditsWithContext",
+		Action:  "ListScheduledAudits",
 		Input:   input,
 		Output:  (*iot.ListScheduledAuditsOutput)(nil),
 		Error:   nil,
@@ -2729,7 +2729,7 @@ func (c *Client) ListScheduledAuditsWithContext(ctx context.Context, input *iot.
 func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *iot.ListSecurityProfilesInput, opts ...request.Option) (*iot.ListSecurityProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListSecurityProfilesWithContext",
+		Action:  "ListSecurityProfiles",
 		Input:   input,
 		Output:  (*iot.ListSecurityProfilesOutput)(nil),
 		Error:   nil,
@@ -2750,7 +2750,7 @@ func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *iot
 func (c *Client) ListSecurityProfilesForTargetWithContext(ctx context.Context, input *iot.ListSecurityProfilesForTargetInput, opts ...request.Option) (*iot.ListSecurityProfilesForTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListSecurityProfilesForTargetWithContext",
+		Action:  "ListSecurityProfilesForTarget",
 		Input:   input,
 		Output:  (*iot.ListSecurityProfilesForTargetOutput)(nil),
 		Error:   nil,
@@ -2771,7 +2771,7 @@ func (c *Client) ListSecurityProfilesForTargetWithContext(ctx context.Context, i
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *iot.ListStreamsInput, opts ...request.Option) (*iot.ListStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListStreamsWithContext",
+		Action:  "ListStreams",
 		Input:   input,
 		Output:  (*iot.ListStreamsOutput)(nil),
 		Error:   nil,
@@ -2792,7 +2792,7 @@ func (c *Client) ListStreamsWithContext(ctx context.Context, input *iot.ListStre
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot.ListTagsForResourceInput, opts ...request.Option) (*iot.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*iot.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -2813,7 +2813,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot.
 func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *iot.ListTargetsForPolicyInput, opts ...request.Option) (*iot.ListTargetsForPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListTargetsForPolicyWithContext",
+		Action:  "ListTargetsForPolicy",
 		Input:   input,
 		Output:  (*iot.ListTargetsForPolicyOutput)(nil),
 		Error:   nil,
@@ -2834,7 +2834,7 @@ func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *iot
 func (c *Client) ListTargetsForSecurityProfileWithContext(ctx context.Context, input *iot.ListTargetsForSecurityProfileInput, opts ...request.Option) (*iot.ListTargetsForSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListTargetsForSecurityProfileWithContext",
+		Action:  "ListTargetsForSecurityProfile",
 		Input:   input,
 		Output:  (*iot.ListTargetsForSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -2855,7 +2855,7 @@ func (c *Client) ListTargetsForSecurityProfileWithContext(ctx context.Context, i
 func (c *Client) ListThingGroupsWithContext(ctx context.Context, input *iot.ListThingGroupsInput, opts ...request.Option) (*iot.ListThingGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingGroupsWithContext",
+		Action:  "ListThingGroups",
 		Input:   input,
 		Output:  (*iot.ListThingGroupsOutput)(nil),
 		Error:   nil,
@@ -2876,7 +2876,7 @@ func (c *Client) ListThingGroupsWithContext(ctx context.Context, input *iot.List
 func (c *Client) ListThingGroupsForThingWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, opts ...request.Option) (*iot.ListThingGroupsForThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingGroupsForThingWithContext",
+		Action:  "ListThingGroupsForThing",
 		Input:   input,
 		Output:  (*iot.ListThingGroupsForThingOutput)(nil),
 		Error:   nil,
@@ -2897,7 +2897,7 @@ func (c *Client) ListThingGroupsForThingWithContext(ctx context.Context, input *
 func (c *Client) ListThingPrincipalsWithContext(ctx context.Context, input *iot.ListThingPrincipalsInput, opts ...request.Option) (*iot.ListThingPrincipalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingPrincipalsWithContext",
+		Action:  "ListThingPrincipals",
 		Input:   input,
 		Output:  (*iot.ListThingPrincipalsOutput)(nil),
 		Error:   nil,
@@ -2918,7 +2918,7 @@ func (c *Client) ListThingPrincipalsWithContext(ctx context.Context, input *iot.
 func (c *Client) ListThingRegistrationTaskReportsWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, opts ...request.Option) (*iot.ListThingRegistrationTaskReportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingRegistrationTaskReportsWithContext",
+		Action:  "ListThingRegistrationTaskReports",
 		Input:   input,
 		Output:  (*iot.ListThingRegistrationTaskReportsOutput)(nil),
 		Error:   nil,
@@ -2939,7 +2939,7 @@ func (c *Client) ListThingRegistrationTaskReportsWithContext(ctx context.Context
 func (c *Client) ListThingRegistrationTasksWithContext(ctx context.Context, input *iot.ListThingRegistrationTasksInput, opts ...request.Option) (*iot.ListThingRegistrationTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingRegistrationTasksWithContext",
+		Action:  "ListThingRegistrationTasks",
 		Input:   input,
 		Output:  (*iot.ListThingRegistrationTasksOutput)(nil),
 		Error:   nil,
@@ -2960,7 +2960,7 @@ func (c *Client) ListThingRegistrationTasksWithContext(ctx context.Context, inpu
 func (c *Client) ListThingTypesWithContext(ctx context.Context, input *iot.ListThingTypesInput, opts ...request.Option) (*iot.ListThingTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingTypesWithContext",
+		Action:  "ListThingTypes",
 		Input:   input,
 		Output:  (*iot.ListThingTypesOutput)(nil),
 		Error:   nil,
@@ -2981,7 +2981,7 @@ func (c *Client) ListThingTypesWithContext(ctx context.Context, input *iot.ListT
 func (c *Client) ListThingsWithContext(ctx context.Context, input *iot.ListThingsInput, opts ...request.Option) (*iot.ListThingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingsWithContext",
+		Action:  "ListThings",
 		Input:   input,
 		Output:  (*iot.ListThingsOutput)(nil),
 		Error:   nil,
@@ -3002,7 +3002,7 @@ func (c *Client) ListThingsWithContext(ctx context.Context, input *iot.ListThing
 func (c *Client) ListThingsInBillingGroupWithContext(ctx context.Context, input *iot.ListThingsInBillingGroupInput, opts ...request.Option) (*iot.ListThingsInBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingsInBillingGroupWithContext",
+		Action:  "ListThingsInBillingGroup",
 		Input:   input,
 		Output:  (*iot.ListThingsInBillingGroupOutput)(nil),
 		Error:   nil,
@@ -3023,7 +3023,7 @@ func (c *Client) ListThingsInBillingGroupWithContext(ctx context.Context, input 
 func (c *Client) ListThingsInThingGroupWithContext(ctx context.Context, input *iot.ListThingsInThingGroupInput, opts ...request.Option) (*iot.ListThingsInThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListThingsInThingGroupWithContext",
+		Action:  "ListThingsInThingGroup",
 		Input:   input,
 		Output:  (*iot.ListThingsInThingGroupOutput)(nil),
 		Error:   nil,
@@ -3044,7 +3044,7 @@ func (c *Client) ListThingsInThingGroupWithContext(ctx context.Context, input *i
 func (c *Client) ListTopicRulesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, opts ...request.Option) (*iot.ListTopicRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListTopicRulesWithContext",
+		Action:  "ListTopicRules",
 		Input:   input,
 		Output:  (*iot.ListTopicRulesOutput)(nil),
 		Error:   nil,
@@ -3065,7 +3065,7 @@ func (c *Client) ListTopicRulesWithContext(ctx context.Context, input *iot.ListT
 func (c *Client) ListV2LoggingLevelsWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, opts ...request.Option) (*iot.ListV2LoggingLevelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListV2LoggingLevelsWithContext",
+		Action:  "ListV2LoggingLevels",
 		Input:   input,
 		Output:  (*iot.ListV2LoggingLevelsOutput)(nil),
 		Error:   nil,
@@ -3086,7 +3086,7 @@ func (c *Client) ListV2LoggingLevelsWithContext(ctx context.Context, input *iot.
 func (c *Client) ListViolationEventsWithContext(ctx context.Context, input *iot.ListViolationEventsInput, opts ...request.Option) (*iot.ListViolationEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ListViolationEventsWithContext",
+		Action:  "ListViolationEvents",
 		Input:   input,
 		Output:  (*iot.ListViolationEventsOutput)(nil),
 		Error:   nil,
@@ -3107,7 +3107,7 @@ func (c *Client) ListViolationEventsWithContext(ctx context.Context, input *iot.
 func (c *Client) RegisterCACertificateWithContext(ctx context.Context, input *iot.RegisterCACertificateInput, opts ...request.Option) (*iot.RegisterCACertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "RegisterCACertificateWithContext",
+		Action:  "RegisterCACertificate",
 		Input:   input,
 		Output:  (*iot.RegisterCACertificateOutput)(nil),
 		Error:   nil,
@@ -3128,7 +3128,7 @@ func (c *Client) RegisterCACertificateWithContext(ctx context.Context, input *io
 func (c *Client) RegisterCertificateWithContext(ctx context.Context, input *iot.RegisterCertificateInput, opts ...request.Option) (*iot.RegisterCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "RegisterCertificateWithContext",
+		Action:  "RegisterCertificate",
 		Input:   input,
 		Output:  (*iot.RegisterCertificateOutput)(nil),
 		Error:   nil,
@@ -3149,7 +3149,7 @@ func (c *Client) RegisterCertificateWithContext(ctx context.Context, input *iot.
 func (c *Client) RegisterThingWithContext(ctx context.Context, input *iot.RegisterThingInput, opts ...request.Option) (*iot.RegisterThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "RegisterThingWithContext",
+		Action:  "RegisterThing",
 		Input:   input,
 		Output:  (*iot.RegisterThingOutput)(nil),
 		Error:   nil,
@@ -3170,7 +3170,7 @@ func (c *Client) RegisterThingWithContext(ctx context.Context, input *iot.Regist
 func (c *Client) RejectCertificateTransferWithContext(ctx context.Context, input *iot.RejectCertificateTransferInput, opts ...request.Option) (*iot.RejectCertificateTransferOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "RejectCertificateTransferWithContext",
+		Action:  "RejectCertificateTransfer",
 		Input:   input,
 		Output:  (*iot.RejectCertificateTransferOutput)(nil),
 		Error:   nil,
@@ -3191,7 +3191,7 @@ func (c *Client) RejectCertificateTransferWithContext(ctx context.Context, input
 func (c *Client) RemoveThingFromBillingGroupWithContext(ctx context.Context, input *iot.RemoveThingFromBillingGroupInput, opts ...request.Option) (*iot.RemoveThingFromBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "RemoveThingFromBillingGroupWithContext",
+		Action:  "RemoveThingFromBillingGroup",
 		Input:   input,
 		Output:  (*iot.RemoveThingFromBillingGroupOutput)(nil),
 		Error:   nil,
@@ -3212,7 +3212,7 @@ func (c *Client) RemoveThingFromBillingGroupWithContext(ctx context.Context, inp
 func (c *Client) RemoveThingFromThingGroupWithContext(ctx context.Context, input *iot.RemoveThingFromThingGroupInput, opts ...request.Option) (*iot.RemoveThingFromThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "RemoveThingFromThingGroupWithContext",
+		Action:  "RemoveThingFromThingGroup",
 		Input:   input,
 		Output:  (*iot.RemoveThingFromThingGroupOutput)(nil),
 		Error:   nil,
@@ -3233,7 +3233,7 @@ func (c *Client) RemoveThingFromThingGroupWithContext(ctx context.Context, input
 func (c *Client) ReplaceTopicRuleWithContext(ctx context.Context, input *iot.ReplaceTopicRuleInput, opts ...request.Option) (*iot.ReplaceTopicRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ReplaceTopicRuleWithContext",
+		Action:  "ReplaceTopicRule",
 		Input:   input,
 		Output:  (*iot.ReplaceTopicRuleOutput)(nil),
 		Error:   nil,
@@ -3254,7 +3254,7 @@ func (c *Client) ReplaceTopicRuleWithContext(ctx context.Context, input *iot.Rep
 func (c *Client) SearchIndexWithContext(ctx context.Context, input *iot.SearchIndexInput, opts ...request.Option) (*iot.SearchIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "SearchIndexWithContext",
+		Action:  "SearchIndex",
 		Input:   input,
 		Output:  (*iot.SearchIndexOutput)(nil),
 		Error:   nil,
@@ -3275,7 +3275,7 @@ func (c *Client) SearchIndexWithContext(ctx context.Context, input *iot.SearchIn
 func (c *Client) SetDefaultAuthorizerWithContext(ctx context.Context, input *iot.SetDefaultAuthorizerInput, opts ...request.Option) (*iot.SetDefaultAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "SetDefaultAuthorizerWithContext",
+		Action:  "SetDefaultAuthorizer",
 		Input:   input,
 		Output:  (*iot.SetDefaultAuthorizerOutput)(nil),
 		Error:   nil,
@@ -3296,7 +3296,7 @@ func (c *Client) SetDefaultAuthorizerWithContext(ctx context.Context, input *iot
 func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, input *iot.SetDefaultPolicyVersionInput, opts ...request.Option) (*iot.SetDefaultPolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "SetDefaultPolicyVersionWithContext",
+		Action:  "SetDefaultPolicyVersion",
 		Input:   input,
 		Output:  (*iot.SetDefaultPolicyVersionOutput)(nil),
 		Error:   nil,
@@ -3317,7 +3317,7 @@ func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, input *
 func (c *Client) SetLoggingOptionsWithContext(ctx context.Context, input *iot.SetLoggingOptionsInput, opts ...request.Option) (*iot.SetLoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "SetLoggingOptionsWithContext",
+		Action:  "SetLoggingOptions",
 		Input:   input,
 		Output:  (*iot.SetLoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -3338,7 +3338,7 @@ func (c *Client) SetLoggingOptionsWithContext(ctx context.Context, input *iot.Se
 func (c *Client) SetV2LoggingLevelWithContext(ctx context.Context, input *iot.SetV2LoggingLevelInput, opts ...request.Option) (*iot.SetV2LoggingLevelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "SetV2LoggingLevelWithContext",
+		Action:  "SetV2LoggingLevel",
 		Input:   input,
 		Output:  (*iot.SetV2LoggingLevelOutput)(nil),
 		Error:   nil,
@@ -3359,7 +3359,7 @@ func (c *Client) SetV2LoggingLevelWithContext(ctx context.Context, input *iot.Se
 func (c *Client) SetV2LoggingOptionsWithContext(ctx context.Context, input *iot.SetV2LoggingOptionsInput, opts ...request.Option) (*iot.SetV2LoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "SetV2LoggingOptionsWithContext",
+		Action:  "SetV2LoggingOptions",
 		Input:   input,
 		Output:  (*iot.SetV2LoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -3380,7 +3380,7 @@ func (c *Client) SetV2LoggingOptionsWithContext(ctx context.Context, input *iot.
 func (c *Client) StartAuditMitigationActionsTaskWithContext(ctx context.Context, input *iot.StartAuditMitigationActionsTaskInput, opts ...request.Option) (*iot.StartAuditMitigationActionsTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "StartAuditMitigationActionsTaskWithContext",
+		Action:  "StartAuditMitigationActionsTask",
 		Input:   input,
 		Output:  (*iot.StartAuditMitigationActionsTaskOutput)(nil),
 		Error:   nil,
@@ -3401,7 +3401,7 @@ func (c *Client) StartAuditMitigationActionsTaskWithContext(ctx context.Context,
 func (c *Client) StartOnDemandAuditTaskWithContext(ctx context.Context, input *iot.StartOnDemandAuditTaskInput, opts ...request.Option) (*iot.StartOnDemandAuditTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "StartOnDemandAuditTaskWithContext",
+		Action:  "StartOnDemandAuditTask",
 		Input:   input,
 		Output:  (*iot.StartOnDemandAuditTaskOutput)(nil),
 		Error:   nil,
@@ -3422,7 +3422,7 @@ func (c *Client) StartOnDemandAuditTaskWithContext(ctx context.Context, input *i
 func (c *Client) StartThingRegistrationTaskWithContext(ctx context.Context, input *iot.StartThingRegistrationTaskInput, opts ...request.Option) (*iot.StartThingRegistrationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "StartThingRegistrationTaskWithContext",
+		Action:  "StartThingRegistrationTask",
 		Input:   input,
 		Output:  (*iot.StartThingRegistrationTaskOutput)(nil),
 		Error:   nil,
@@ -3443,7 +3443,7 @@ func (c *Client) StartThingRegistrationTaskWithContext(ctx context.Context, inpu
 func (c *Client) StopThingRegistrationTaskWithContext(ctx context.Context, input *iot.StopThingRegistrationTaskInput, opts ...request.Option) (*iot.StopThingRegistrationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "StopThingRegistrationTaskWithContext",
+		Action:  "StopThingRegistrationTask",
 		Input:   input,
 		Output:  (*iot.StopThingRegistrationTaskOutput)(nil),
 		Error:   nil,
@@ -3464,7 +3464,7 @@ func (c *Client) StopThingRegistrationTaskWithContext(ctx context.Context, input
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iot.TagResourceInput, opts ...request.Option) (*iot.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*iot.TagResourceOutput)(nil),
 		Error:   nil,
@@ -3485,7 +3485,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *iot.TagResou
 func (c *Client) TestAuthorizationWithContext(ctx context.Context, input *iot.TestAuthorizationInput, opts ...request.Option) (*iot.TestAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "TestAuthorizationWithContext",
+		Action:  "TestAuthorization",
 		Input:   input,
 		Output:  (*iot.TestAuthorizationOutput)(nil),
 		Error:   nil,
@@ -3506,7 +3506,7 @@ func (c *Client) TestAuthorizationWithContext(ctx context.Context, input *iot.Te
 func (c *Client) TestInvokeAuthorizerWithContext(ctx context.Context, input *iot.TestInvokeAuthorizerInput, opts ...request.Option) (*iot.TestInvokeAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "TestInvokeAuthorizerWithContext",
+		Action:  "TestInvokeAuthorizer",
 		Input:   input,
 		Output:  (*iot.TestInvokeAuthorizerOutput)(nil),
 		Error:   nil,
@@ -3527,7 +3527,7 @@ func (c *Client) TestInvokeAuthorizerWithContext(ctx context.Context, input *iot
 func (c *Client) TransferCertificateWithContext(ctx context.Context, input *iot.TransferCertificateInput, opts ...request.Option) (*iot.TransferCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "TransferCertificateWithContext",
+		Action:  "TransferCertificate",
 		Input:   input,
 		Output:  (*iot.TransferCertificateOutput)(nil),
 		Error:   nil,
@@ -3548,7 +3548,7 @@ func (c *Client) TransferCertificateWithContext(ctx context.Context, input *iot.
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *iot.UntagResourceInput, opts ...request.Option) (*iot.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*iot.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -3569,7 +3569,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iot.UntagR
 func (c *Client) UpdateAccountAuditConfigurationWithContext(ctx context.Context, input *iot.UpdateAccountAuditConfigurationInput, opts ...request.Option) (*iot.UpdateAccountAuditConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateAccountAuditConfigurationWithContext",
+		Action:  "UpdateAccountAuditConfiguration",
 		Input:   input,
 		Output:  (*iot.UpdateAccountAuditConfigurationOutput)(nil),
 		Error:   nil,
@@ -3590,7 +3590,7 @@ func (c *Client) UpdateAccountAuditConfigurationWithContext(ctx context.Context,
 func (c *Client) UpdateAuthorizerWithContext(ctx context.Context, input *iot.UpdateAuthorizerInput, opts ...request.Option) (*iot.UpdateAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateAuthorizerWithContext",
+		Action:  "UpdateAuthorizer",
 		Input:   input,
 		Output:  (*iot.UpdateAuthorizerOutput)(nil),
 		Error:   nil,
@@ -3611,7 +3611,7 @@ func (c *Client) UpdateAuthorizerWithContext(ctx context.Context, input *iot.Upd
 func (c *Client) UpdateBillingGroupWithContext(ctx context.Context, input *iot.UpdateBillingGroupInput, opts ...request.Option) (*iot.UpdateBillingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateBillingGroupWithContext",
+		Action:  "UpdateBillingGroup",
 		Input:   input,
 		Output:  (*iot.UpdateBillingGroupOutput)(nil),
 		Error:   nil,
@@ -3632,7 +3632,7 @@ func (c *Client) UpdateBillingGroupWithContext(ctx context.Context, input *iot.U
 func (c *Client) UpdateCACertificateWithContext(ctx context.Context, input *iot.UpdateCACertificateInput, opts ...request.Option) (*iot.UpdateCACertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateCACertificateWithContext",
+		Action:  "UpdateCACertificate",
 		Input:   input,
 		Output:  (*iot.UpdateCACertificateOutput)(nil),
 		Error:   nil,
@@ -3653,7 +3653,7 @@ func (c *Client) UpdateCACertificateWithContext(ctx context.Context, input *iot.
 func (c *Client) UpdateCertificateWithContext(ctx context.Context, input *iot.UpdateCertificateInput, opts ...request.Option) (*iot.UpdateCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateCertificateWithContext",
+		Action:  "UpdateCertificate",
 		Input:   input,
 		Output:  (*iot.UpdateCertificateOutput)(nil),
 		Error:   nil,
@@ -3674,7 +3674,7 @@ func (c *Client) UpdateCertificateWithContext(ctx context.Context, input *iot.Up
 func (c *Client) UpdateDynamicThingGroupWithContext(ctx context.Context, input *iot.UpdateDynamicThingGroupInput, opts ...request.Option) (*iot.UpdateDynamicThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateDynamicThingGroupWithContext",
+		Action:  "UpdateDynamicThingGroup",
 		Input:   input,
 		Output:  (*iot.UpdateDynamicThingGroupOutput)(nil),
 		Error:   nil,
@@ -3695,7 +3695,7 @@ func (c *Client) UpdateDynamicThingGroupWithContext(ctx context.Context, input *
 func (c *Client) UpdateEventConfigurationsWithContext(ctx context.Context, input *iot.UpdateEventConfigurationsInput, opts ...request.Option) (*iot.UpdateEventConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateEventConfigurationsWithContext",
+		Action:  "UpdateEventConfigurations",
 		Input:   input,
 		Output:  (*iot.UpdateEventConfigurationsOutput)(nil),
 		Error:   nil,
@@ -3716,7 +3716,7 @@ func (c *Client) UpdateEventConfigurationsWithContext(ctx context.Context, input
 func (c *Client) UpdateIndexingConfigurationWithContext(ctx context.Context, input *iot.UpdateIndexingConfigurationInput, opts ...request.Option) (*iot.UpdateIndexingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateIndexingConfigurationWithContext",
+		Action:  "UpdateIndexingConfiguration",
 		Input:   input,
 		Output:  (*iot.UpdateIndexingConfigurationOutput)(nil),
 		Error:   nil,
@@ -3737,7 +3737,7 @@ func (c *Client) UpdateIndexingConfigurationWithContext(ctx context.Context, inp
 func (c *Client) UpdateJobWithContext(ctx context.Context, input *iot.UpdateJobInput, opts ...request.Option) (*iot.UpdateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateJobWithContext",
+		Action:  "UpdateJob",
 		Input:   input,
 		Output:  (*iot.UpdateJobOutput)(nil),
 		Error:   nil,
@@ -3758,7 +3758,7 @@ func (c *Client) UpdateJobWithContext(ctx context.Context, input *iot.UpdateJobI
 func (c *Client) UpdateMitigationActionWithContext(ctx context.Context, input *iot.UpdateMitigationActionInput, opts ...request.Option) (*iot.UpdateMitigationActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateMitigationActionWithContext",
+		Action:  "UpdateMitigationAction",
 		Input:   input,
 		Output:  (*iot.UpdateMitigationActionOutput)(nil),
 		Error:   nil,
@@ -3779,7 +3779,7 @@ func (c *Client) UpdateMitigationActionWithContext(ctx context.Context, input *i
 func (c *Client) UpdateRoleAliasWithContext(ctx context.Context, input *iot.UpdateRoleAliasInput, opts ...request.Option) (*iot.UpdateRoleAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateRoleAliasWithContext",
+		Action:  "UpdateRoleAlias",
 		Input:   input,
 		Output:  (*iot.UpdateRoleAliasOutput)(nil),
 		Error:   nil,
@@ -3800,7 +3800,7 @@ func (c *Client) UpdateRoleAliasWithContext(ctx context.Context, input *iot.Upda
 func (c *Client) UpdateScheduledAuditWithContext(ctx context.Context, input *iot.UpdateScheduledAuditInput, opts ...request.Option) (*iot.UpdateScheduledAuditOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateScheduledAuditWithContext",
+		Action:  "UpdateScheduledAudit",
 		Input:   input,
 		Output:  (*iot.UpdateScheduledAuditOutput)(nil),
 		Error:   nil,
@@ -3821,7 +3821,7 @@ func (c *Client) UpdateScheduledAuditWithContext(ctx context.Context, input *iot
 func (c *Client) UpdateSecurityProfileWithContext(ctx context.Context, input *iot.UpdateSecurityProfileInput, opts ...request.Option) (*iot.UpdateSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateSecurityProfileWithContext",
+		Action:  "UpdateSecurityProfile",
 		Input:   input,
 		Output:  (*iot.UpdateSecurityProfileOutput)(nil),
 		Error:   nil,
@@ -3842,7 +3842,7 @@ func (c *Client) UpdateSecurityProfileWithContext(ctx context.Context, input *io
 func (c *Client) UpdateStreamWithContext(ctx context.Context, input *iot.UpdateStreamInput, opts ...request.Option) (*iot.UpdateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateStreamWithContext",
+		Action:  "UpdateStream",
 		Input:   input,
 		Output:  (*iot.UpdateStreamOutput)(nil),
 		Error:   nil,
@@ -3863,7 +3863,7 @@ func (c *Client) UpdateStreamWithContext(ctx context.Context, input *iot.UpdateS
 func (c *Client) UpdateThingWithContext(ctx context.Context, input *iot.UpdateThingInput, opts ...request.Option) (*iot.UpdateThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateThingWithContext",
+		Action:  "UpdateThing",
 		Input:   input,
 		Output:  (*iot.UpdateThingOutput)(nil),
 		Error:   nil,
@@ -3884,7 +3884,7 @@ func (c *Client) UpdateThingWithContext(ctx context.Context, input *iot.UpdateTh
 func (c *Client) UpdateThingGroupWithContext(ctx context.Context, input *iot.UpdateThingGroupInput, opts ...request.Option) (*iot.UpdateThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateThingGroupWithContext",
+		Action:  "UpdateThingGroup",
 		Input:   input,
 		Output:  (*iot.UpdateThingGroupOutput)(nil),
 		Error:   nil,
@@ -3905,7 +3905,7 @@ func (c *Client) UpdateThingGroupWithContext(ctx context.Context, input *iot.Upd
 func (c *Client) UpdateThingGroupsForThingWithContext(ctx context.Context, input *iot.UpdateThingGroupsForThingInput, opts ...request.Option) (*iot.UpdateThingGroupsForThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "UpdateThingGroupsForThingWithContext",
+		Action:  "UpdateThingGroupsForThing",
 		Input:   input,
 		Output:  (*iot.UpdateThingGroupsForThingOutput)(nil),
 		Error:   nil,
@@ -3926,7 +3926,7 @@ func (c *Client) UpdateThingGroupsForThingWithContext(ctx context.Context, input
 func (c *Client) ValidateSecurityProfileBehaviorsWithContext(ctx context.Context, input *iot.ValidateSecurityProfileBehaviorsInput, opts ...request.Option) (*iot.ValidateSecurityProfileBehaviorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
-		Action:  "ValidateSecurityProfileBehaviorsWithContext",
+		Action:  "ValidateSecurityProfileBehaviors",
 		Input:   input,
 		Output:  (*iot.ValidateSecurityProfileBehaviorsOutput)(nil),
 		Error:   nil,

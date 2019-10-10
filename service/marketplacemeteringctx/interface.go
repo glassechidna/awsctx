@@ -35,7 +35,7 @@ var _ MarketplaceMetering = (*Client)(nil)
 func (c *Client) BatchMeterUsageWithContext(ctx context.Context, input *marketplacemetering.BatchMeterUsageInput, opts ...request.Option) (*marketplacemetering.BatchMeterUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplacemetering",
-		Action:  "BatchMeterUsageWithContext",
+		Action:  "BatchMeterUsage",
 		Input:   input,
 		Output:  (*marketplacemetering.BatchMeterUsageOutput)(nil),
 		Error:   nil,
@@ -56,7 +56,7 @@ func (c *Client) BatchMeterUsageWithContext(ctx context.Context, input *marketpl
 func (c *Client) MeterUsageWithContext(ctx context.Context, input *marketplacemetering.MeterUsageInput, opts ...request.Option) (*marketplacemetering.MeterUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplacemetering",
-		Action:  "MeterUsageWithContext",
+		Action:  "MeterUsage",
 		Input:   input,
 		Output:  (*marketplacemetering.MeterUsageOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) MeterUsageWithContext(ctx context.Context, input *marketplaceme
 func (c *Client) RegisterUsageWithContext(ctx context.Context, input *marketplacemetering.RegisterUsageInput, opts ...request.Option) (*marketplacemetering.RegisterUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplacemetering",
-		Action:  "RegisterUsageWithContext",
+		Action:  "RegisterUsage",
 		Input:   input,
 		Output:  (*marketplacemetering.RegisterUsageOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) RegisterUsageWithContext(ctx context.Context, input *marketplac
 func (c *Client) ResolveCustomerWithContext(ctx context.Context, input *marketplacemetering.ResolveCustomerInput, opts ...request.Option) (*marketplacemetering.ResolveCustomerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplacemetering",
-		Action:  "ResolveCustomerWithContext",
+		Action:  "ResolveCustomer",
 		Input:   input,
 		Output:  (*marketplacemetering.ResolveCustomerOutput)(nil),
 		Error:   nil,

@@ -49,7 +49,7 @@ var _ CodeStar = (*Client)(nil)
 func (c *Client) AssociateTeamMemberWithContext(ctx context.Context, input *codestar.AssociateTeamMemberInput, opts ...request.Option) (*codestar.AssociateTeamMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "AssociateTeamMemberWithContext",
+		Action:  "AssociateTeamMember",
 		Input:   input,
 		Output:  (*codestar.AssociateTeamMemberOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) AssociateTeamMemberWithContext(ctx context.Context, input *code
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *codestar.CreateProjectInput, opts ...request.Option) (*codestar.CreateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "CreateProjectWithContext",
+		Action:  "CreateProject",
 		Input:   input,
 		Output:  (*codestar.CreateProjectOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, input *codestar.C
 func (c *Client) CreateUserProfileWithContext(ctx context.Context, input *codestar.CreateUserProfileInput, opts ...request.Option) (*codestar.CreateUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "CreateUserProfileWithContext",
+		Action:  "CreateUserProfile",
 		Input:   input,
 		Output:  (*codestar.CreateUserProfileOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) CreateUserProfileWithContext(ctx context.Context, input *codest
 func (c *Client) DeleteProjectWithContext(ctx context.Context, input *codestar.DeleteProjectInput, opts ...request.Option) (*codestar.DeleteProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "DeleteProjectWithContext",
+		Action:  "DeleteProject",
 		Input:   input,
 		Output:  (*codestar.DeleteProjectOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, input *codestar.D
 func (c *Client) DeleteUserProfileWithContext(ctx context.Context, input *codestar.DeleteUserProfileInput, opts ...request.Option) (*codestar.DeleteUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "DeleteUserProfileWithContext",
+		Action:  "DeleteUserProfile",
 		Input:   input,
 		Output:  (*codestar.DeleteUserProfileOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DeleteUserProfileWithContext(ctx context.Context, input *codest
 func (c *Client) DescribeProjectWithContext(ctx context.Context, input *codestar.DescribeProjectInput, opts ...request.Option) (*codestar.DescribeProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "DescribeProjectWithContext",
+		Action:  "DescribeProject",
 		Input:   input,
 		Output:  (*codestar.DescribeProjectOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, input *codestar
 func (c *Client) DescribeUserProfileWithContext(ctx context.Context, input *codestar.DescribeUserProfileInput, opts ...request.Option) (*codestar.DescribeUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "DescribeUserProfileWithContext",
+		Action:  "DescribeUserProfile",
 		Input:   input,
 		Output:  (*codestar.DescribeUserProfileOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) DescribeUserProfileWithContext(ctx context.Context, input *code
 func (c *Client) DisassociateTeamMemberWithContext(ctx context.Context, input *codestar.DisassociateTeamMemberInput, opts ...request.Option) (*codestar.DisassociateTeamMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "DisassociateTeamMemberWithContext",
+		Action:  "DisassociateTeamMember",
 		Input:   input,
 		Output:  (*codestar.DisassociateTeamMemberOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) DisassociateTeamMemberWithContext(ctx context.Context, input *c
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *codestar.ListProjectsInput, opts ...request.Option) (*codestar.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "ListProjectsWithContext",
+		Action:  "ListProjects",
 		Input:   input,
 		Output:  (*codestar.ListProjectsOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *codestar.Li
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *codestar.ListResourcesInput, opts ...request.Option) (*codestar.ListResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "ListResourcesWithContext",
+		Action:  "ListResources",
 		Input:   input,
 		Output:  (*codestar.ListResourcesOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, input *codestar.L
 func (c *Client) ListTagsForProjectWithContext(ctx context.Context, input *codestar.ListTagsForProjectInput, opts ...request.Option) (*codestar.ListTagsForProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "ListTagsForProjectWithContext",
+		Action:  "ListTagsForProject",
 		Input:   input,
 		Output:  (*codestar.ListTagsForProjectOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) ListTagsForProjectWithContext(ctx context.Context, input *codes
 func (c *Client) ListTeamMembersWithContext(ctx context.Context, input *codestar.ListTeamMembersInput, opts ...request.Option) (*codestar.ListTeamMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "ListTeamMembersWithContext",
+		Action:  "ListTeamMembers",
 		Input:   input,
 		Output:  (*codestar.ListTeamMembersOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) ListTeamMembersWithContext(ctx context.Context, input *codestar
 func (c *Client) ListUserProfilesWithContext(ctx context.Context, input *codestar.ListUserProfilesInput, opts ...request.Option) (*codestar.ListUserProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "ListUserProfilesWithContext",
+		Action:  "ListUserProfiles",
 		Input:   input,
 		Output:  (*codestar.ListUserProfilesOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) ListUserProfilesWithContext(ctx context.Context, input *codesta
 func (c *Client) TagProjectWithContext(ctx context.Context, input *codestar.TagProjectInput, opts ...request.Option) (*codestar.TagProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "TagProjectWithContext",
+		Action:  "TagProject",
 		Input:   input,
 		Output:  (*codestar.TagProjectOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) TagProjectWithContext(ctx context.Context, input *codestar.TagP
 func (c *Client) UntagProjectWithContext(ctx context.Context, input *codestar.UntagProjectInput, opts ...request.Option) (*codestar.UntagProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "UntagProjectWithContext",
+		Action:  "UntagProject",
 		Input:   input,
 		Output:  (*codestar.UntagProjectOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) UntagProjectWithContext(ctx context.Context, input *codestar.Un
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codestar.UpdateProjectInput, opts ...request.Option) (*codestar.UpdateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "UpdateProjectWithContext",
+		Action:  "UpdateProject",
 		Input:   input,
 		Output:  (*codestar.UpdateProjectOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codestar.U
 func (c *Client) UpdateTeamMemberWithContext(ctx context.Context, input *codestar.UpdateTeamMemberInput, opts ...request.Option) (*codestar.UpdateTeamMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "UpdateTeamMemberWithContext",
+		Action:  "UpdateTeamMember",
 		Input:   input,
 		Output:  (*codestar.UpdateTeamMemberOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) UpdateTeamMemberWithContext(ctx context.Context, input *codesta
 func (c *Client) UpdateUserProfileWithContext(ctx context.Context, input *codestar.UpdateUserProfileInput, opts ...request.Option) (*codestar.UpdateUserProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codestar",
-		Action:  "UpdateUserProfileWithContext",
+		Action:  "UpdateUserProfile",
 		Input:   input,
 		Output:  (*codestar.UpdateUserProfileOutput)(nil),
 		Error:   nil,

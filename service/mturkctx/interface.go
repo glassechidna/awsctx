@@ -70,7 +70,7 @@ var _ MTurk = (*Client)(nil)
 func (c *Client) AcceptQualificationRequestWithContext(ctx context.Context, input *mturk.AcceptQualificationRequestInput, opts ...request.Option) (*mturk.AcceptQualificationRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "AcceptQualificationRequestWithContext",
+		Action:  "AcceptQualificationRequest",
 		Input:   input,
 		Output:  (*mturk.AcceptQualificationRequestOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) AcceptQualificationRequestWithContext(ctx context.Context, inpu
 func (c *Client) ApproveAssignmentWithContext(ctx context.Context, input *mturk.ApproveAssignmentInput, opts ...request.Option) (*mturk.ApproveAssignmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ApproveAssignmentWithContext",
+		Action:  "ApproveAssignment",
 		Input:   input,
 		Output:  (*mturk.ApproveAssignmentOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) ApproveAssignmentWithContext(ctx context.Context, input *mturk.
 func (c *Client) AssociateQualificationWithWorkerWithContext(ctx context.Context, input *mturk.AssociateQualificationWithWorkerInput, opts ...request.Option) (*mturk.AssociateQualificationWithWorkerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "AssociateQualificationWithWorkerWithContext",
+		Action:  "AssociateQualificationWithWorker",
 		Input:   input,
 		Output:  (*mturk.AssociateQualificationWithWorkerOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) AssociateQualificationWithWorkerWithContext(ctx context.Context
 func (c *Client) CreateAdditionalAssignmentsForHITWithContext(ctx context.Context, input *mturk.CreateAdditionalAssignmentsForHITInput, opts ...request.Option) (*mturk.CreateAdditionalAssignmentsForHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "CreateAdditionalAssignmentsForHITWithContext",
+		Action:  "CreateAdditionalAssignmentsForHIT",
 		Input:   input,
 		Output:  (*mturk.CreateAdditionalAssignmentsForHITOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) CreateAdditionalAssignmentsForHITWithContext(ctx context.Contex
 func (c *Client) CreateHITWithContext(ctx context.Context, input *mturk.CreateHITInput, opts ...request.Option) (*mturk.CreateHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "CreateHITWithContext",
+		Action:  "CreateHIT",
 		Input:   input,
 		Output:  (*mturk.CreateHITOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) CreateHITWithContext(ctx context.Context, input *mturk.CreateHI
 func (c *Client) CreateHITTypeWithContext(ctx context.Context, input *mturk.CreateHITTypeInput, opts ...request.Option) (*mturk.CreateHITTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "CreateHITTypeWithContext",
+		Action:  "CreateHITType",
 		Input:   input,
 		Output:  (*mturk.CreateHITTypeOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) CreateHITTypeWithContext(ctx context.Context, input *mturk.Crea
 func (c *Client) CreateHITWithHITTypeWithContext(ctx context.Context, input *mturk.CreateHITWithHITTypeInput, opts ...request.Option) (*mturk.CreateHITWithHITTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "CreateHITWithHITTypeWithContext",
+		Action:  "CreateHITWithHITType",
 		Input:   input,
 		Output:  (*mturk.CreateHITWithHITTypeOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) CreateHITWithHITTypeWithContext(ctx context.Context, input *mtu
 func (c *Client) CreateQualificationTypeWithContext(ctx context.Context, input *mturk.CreateQualificationTypeInput, opts ...request.Option) (*mturk.CreateQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "CreateQualificationTypeWithContext",
+		Action:  "CreateQualificationType",
 		Input:   input,
 		Output:  (*mturk.CreateQualificationTypeOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) CreateQualificationTypeWithContext(ctx context.Context, input *
 func (c *Client) CreateWorkerBlockWithContext(ctx context.Context, input *mturk.CreateWorkerBlockInput, opts ...request.Option) (*mturk.CreateWorkerBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "CreateWorkerBlockWithContext",
+		Action:  "CreateWorkerBlock",
 		Input:   input,
 		Output:  (*mturk.CreateWorkerBlockOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) CreateWorkerBlockWithContext(ctx context.Context, input *mturk.
 func (c *Client) DeleteHITWithContext(ctx context.Context, input *mturk.DeleteHITInput, opts ...request.Option) (*mturk.DeleteHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "DeleteHITWithContext",
+		Action:  "DeleteHIT",
 		Input:   input,
 		Output:  (*mturk.DeleteHITOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) DeleteHITWithContext(ctx context.Context, input *mturk.DeleteHI
 func (c *Client) DeleteQualificationTypeWithContext(ctx context.Context, input *mturk.DeleteQualificationTypeInput, opts ...request.Option) (*mturk.DeleteQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "DeleteQualificationTypeWithContext",
+		Action:  "DeleteQualificationType",
 		Input:   input,
 		Output:  (*mturk.DeleteQualificationTypeOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) DeleteQualificationTypeWithContext(ctx context.Context, input *
 func (c *Client) DeleteWorkerBlockWithContext(ctx context.Context, input *mturk.DeleteWorkerBlockInput, opts ...request.Option) (*mturk.DeleteWorkerBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "DeleteWorkerBlockWithContext",
+		Action:  "DeleteWorkerBlock",
 		Input:   input,
 		Output:  (*mturk.DeleteWorkerBlockOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) DeleteWorkerBlockWithContext(ctx context.Context, input *mturk.
 func (c *Client) DisassociateQualificationFromWorkerWithContext(ctx context.Context, input *mturk.DisassociateQualificationFromWorkerInput, opts ...request.Option) (*mturk.DisassociateQualificationFromWorkerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "DisassociateQualificationFromWorkerWithContext",
+		Action:  "DisassociateQualificationFromWorker",
 		Input:   input,
 		Output:  (*mturk.DisassociateQualificationFromWorkerOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) DisassociateQualificationFromWorkerWithContext(ctx context.Cont
 func (c *Client) GetAccountBalanceWithContext(ctx context.Context, input *mturk.GetAccountBalanceInput, opts ...request.Option) (*mturk.GetAccountBalanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "GetAccountBalanceWithContext",
+		Action:  "GetAccountBalance",
 		Input:   input,
 		Output:  (*mturk.GetAccountBalanceOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) GetAccountBalanceWithContext(ctx context.Context, input *mturk.
 func (c *Client) GetAssignmentWithContext(ctx context.Context, input *mturk.GetAssignmentInput, opts ...request.Option) (*mturk.GetAssignmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "GetAssignmentWithContext",
+		Action:  "GetAssignment",
 		Input:   input,
 		Output:  (*mturk.GetAssignmentOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) GetAssignmentWithContext(ctx context.Context, input *mturk.GetA
 func (c *Client) GetFileUploadURLWithContext(ctx context.Context, input *mturk.GetFileUploadURLInput, opts ...request.Option) (*mturk.GetFileUploadURLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "GetFileUploadURLWithContext",
+		Action:  "GetFileUploadURL",
 		Input:   input,
 		Output:  (*mturk.GetFileUploadURLOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) GetFileUploadURLWithContext(ctx context.Context, input *mturk.G
 func (c *Client) GetHITWithContext(ctx context.Context, input *mturk.GetHITInput, opts ...request.Option) (*mturk.GetHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "GetHITWithContext",
+		Action:  "GetHIT",
 		Input:   input,
 		Output:  (*mturk.GetHITOutput)(nil),
 		Error:   nil,
@@ -427,7 +427,7 @@ func (c *Client) GetHITWithContext(ctx context.Context, input *mturk.GetHITInput
 func (c *Client) GetQualificationScoreWithContext(ctx context.Context, input *mturk.GetQualificationScoreInput, opts ...request.Option) (*mturk.GetQualificationScoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "GetQualificationScoreWithContext",
+		Action:  "GetQualificationScore",
 		Input:   input,
 		Output:  (*mturk.GetQualificationScoreOutput)(nil),
 		Error:   nil,
@@ -448,7 +448,7 @@ func (c *Client) GetQualificationScoreWithContext(ctx context.Context, input *mt
 func (c *Client) GetQualificationTypeWithContext(ctx context.Context, input *mturk.GetQualificationTypeInput, opts ...request.Option) (*mturk.GetQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "GetQualificationTypeWithContext",
+		Action:  "GetQualificationType",
 		Input:   input,
 		Output:  (*mturk.GetQualificationTypeOutput)(nil),
 		Error:   nil,
@@ -469,7 +469,7 @@ func (c *Client) GetQualificationTypeWithContext(ctx context.Context, input *mtu
 func (c *Client) ListAssignmentsForHITWithContext(ctx context.Context, input *mturk.ListAssignmentsForHITInput, opts ...request.Option) (*mturk.ListAssignmentsForHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListAssignmentsForHITWithContext",
+		Action:  "ListAssignmentsForHIT",
 		Input:   input,
 		Output:  (*mturk.ListAssignmentsForHITOutput)(nil),
 		Error:   nil,
@@ -490,7 +490,7 @@ func (c *Client) ListAssignmentsForHITWithContext(ctx context.Context, input *mt
 func (c *Client) ListBonusPaymentsWithContext(ctx context.Context, input *mturk.ListBonusPaymentsInput, opts ...request.Option) (*mturk.ListBonusPaymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListBonusPaymentsWithContext",
+		Action:  "ListBonusPayments",
 		Input:   input,
 		Output:  (*mturk.ListBonusPaymentsOutput)(nil),
 		Error:   nil,
@@ -511,7 +511,7 @@ func (c *Client) ListBonusPaymentsWithContext(ctx context.Context, input *mturk.
 func (c *Client) ListHITsWithContext(ctx context.Context, input *mturk.ListHITsInput, opts ...request.Option) (*mturk.ListHITsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListHITsWithContext",
+		Action:  "ListHITs",
 		Input:   input,
 		Output:  (*mturk.ListHITsOutput)(nil),
 		Error:   nil,
@@ -532,7 +532,7 @@ func (c *Client) ListHITsWithContext(ctx context.Context, input *mturk.ListHITsI
 func (c *Client) ListHITsForQualificationTypeWithContext(ctx context.Context, input *mturk.ListHITsForQualificationTypeInput, opts ...request.Option) (*mturk.ListHITsForQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListHITsForQualificationTypeWithContext",
+		Action:  "ListHITsForQualificationType",
 		Input:   input,
 		Output:  (*mturk.ListHITsForQualificationTypeOutput)(nil),
 		Error:   nil,
@@ -553,7 +553,7 @@ func (c *Client) ListHITsForQualificationTypeWithContext(ctx context.Context, in
 func (c *Client) ListQualificationRequestsWithContext(ctx context.Context, input *mturk.ListQualificationRequestsInput, opts ...request.Option) (*mturk.ListQualificationRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListQualificationRequestsWithContext",
+		Action:  "ListQualificationRequests",
 		Input:   input,
 		Output:  (*mturk.ListQualificationRequestsOutput)(nil),
 		Error:   nil,
@@ -574,7 +574,7 @@ func (c *Client) ListQualificationRequestsWithContext(ctx context.Context, input
 func (c *Client) ListQualificationTypesWithContext(ctx context.Context, input *mturk.ListQualificationTypesInput, opts ...request.Option) (*mturk.ListQualificationTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListQualificationTypesWithContext",
+		Action:  "ListQualificationTypes",
 		Input:   input,
 		Output:  (*mturk.ListQualificationTypesOutput)(nil),
 		Error:   nil,
@@ -595,7 +595,7 @@ func (c *Client) ListQualificationTypesWithContext(ctx context.Context, input *m
 func (c *Client) ListReviewPolicyResultsForHITWithContext(ctx context.Context, input *mturk.ListReviewPolicyResultsForHITInput, opts ...request.Option) (*mturk.ListReviewPolicyResultsForHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListReviewPolicyResultsForHITWithContext",
+		Action:  "ListReviewPolicyResultsForHIT",
 		Input:   input,
 		Output:  (*mturk.ListReviewPolicyResultsForHITOutput)(nil),
 		Error:   nil,
@@ -616,7 +616,7 @@ func (c *Client) ListReviewPolicyResultsForHITWithContext(ctx context.Context, i
 func (c *Client) ListReviewableHITsWithContext(ctx context.Context, input *mturk.ListReviewableHITsInput, opts ...request.Option) (*mturk.ListReviewableHITsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListReviewableHITsWithContext",
+		Action:  "ListReviewableHITs",
 		Input:   input,
 		Output:  (*mturk.ListReviewableHITsOutput)(nil),
 		Error:   nil,
@@ -637,7 +637,7 @@ func (c *Client) ListReviewableHITsWithContext(ctx context.Context, input *mturk
 func (c *Client) ListWorkerBlocksWithContext(ctx context.Context, input *mturk.ListWorkerBlocksInput, opts ...request.Option) (*mturk.ListWorkerBlocksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListWorkerBlocksWithContext",
+		Action:  "ListWorkerBlocks",
 		Input:   input,
 		Output:  (*mturk.ListWorkerBlocksOutput)(nil),
 		Error:   nil,
@@ -658,7 +658,7 @@ func (c *Client) ListWorkerBlocksWithContext(ctx context.Context, input *mturk.L
 func (c *Client) ListWorkersWithQualificationTypeWithContext(ctx context.Context, input *mturk.ListWorkersWithQualificationTypeInput, opts ...request.Option) (*mturk.ListWorkersWithQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "ListWorkersWithQualificationTypeWithContext",
+		Action:  "ListWorkersWithQualificationType",
 		Input:   input,
 		Output:  (*mturk.ListWorkersWithQualificationTypeOutput)(nil),
 		Error:   nil,
@@ -679,7 +679,7 @@ func (c *Client) ListWorkersWithQualificationTypeWithContext(ctx context.Context
 func (c *Client) NotifyWorkersWithContext(ctx context.Context, input *mturk.NotifyWorkersInput, opts ...request.Option) (*mturk.NotifyWorkersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "NotifyWorkersWithContext",
+		Action:  "NotifyWorkers",
 		Input:   input,
 		Output:  (*mturk.NotifyWorkersOutput)(nil),
 		Error:   nil,
@@ -700,7 +700,7 @@ func (c *Client) NotifyWorkersWithContext(ctx context.Context, input *mturk.Noti
 func (c *Client) RejectAssignmentWithContext(ctx context.Context, input *mturk.RejectAssignmentInput, opts ...request.Option) (*mturk.RejectAssignmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "RejectAssignmentWithContext",
+		Action:  "RejectAssignment",
 		Input:   input,
 		Output:  (*mturk.RejectAssignmentOutput)(nil),
 		Error:   nil,
@@ -721,7 +721,7 @@ func (c *Client) RejectAssignmentWithContext(ctx context.Context, input *mturk.R
 func (c *Client) RejectQualificationRequestWithContext(ctx context.Context, input *mturk.RejectQualificationRequestInput, opts ...request.Option) (*mturk.RejectQualificationRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "RejectQualificationRequestWithContext",
+		Action:  "RejectQualificationRequest",
 		Input:   input,
 		Output:  (*mturk.RejectQualificationRequestOutput)(nil),
 		Error:   nil,
@@ -742,7 +742,7 @@ func (c *Client) RejectQualificationRequestWithContext(ctx context.Context, inpu
 func (c *Client) SendBonusWithContext(ctx context.Context, input *mturk.SendBonusInput, opts ...request.Option) (*mturk.SendBonusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "SendBonusWithContext",
+		Action:  "SendBonus",
 		Input:   input,
 		Output:  (*mturk.SendBonusOutput)(nil),
 		Error:   nil,
@@ -763,7 +763,7 @@ func (c *Client) SendBonusWithContext(ctx context.Context, input *mturk.SendBonu
 func (c *Client) SendTestEventNotificationWithContext(ctx context.Context, input *mturk.SendTestEventNotificationInput, opts ...request.Option) (*mturk.SendTestEventNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "SendTestEventNotificationWithContext",
+		Action:  "SendTestEventNotification",
 		Input:   input,
 		Output:  (*mturk.SendTestEventNotificationOutput)(nil),
 		Error:   nil,
@@ -784,7 +784,7 @@ func (c *Client) SendTestEventNotificationWithContext(ctx context.Context, input
 func (c *Client) UpdateExpirationForHITWithContext(ctx context.Context, input *mturk.UpdateExpirationForHITInput, opts ...request.Option) (*mturk.UpdateExpirationForHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "UpdateExpirationForHITWithContext",
+		Action:  "UpdateExpirationForHIT",
 		Input:   input,
 		Output:  (*mturk.UpdateExpirationForHITOutput)(nil),
 		Error:   nil,
@@ -805,7 +805,7 @@ func (c *Client) UpdateExpirationForHITWithContext(ctx context.Context, input *m
 func (c *Client) UpdateHITReviewStatusWithContext(ctx context.Context, input *mturk.UpdateHITReviewStatusInput, opts ...request.Option) (*mturk.UpdateHITReviewStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "UpdateHITReviewStatusWithContext",
+		Action:  "UpdateHITReviewStatus",
 		Input:   input,
 		Output:  (*mturk.UpdateHITReviewStatusOutput)(nil),
 		Error:   nil,
@@ -826,7 +826,7 @@ func (c *Client) UpdateHITReviewStatusWithContext(ctx context.Context, input *mt
 func (c *Client) UpdateHITTypeOfHITWithContext(ctx context.Context, input *mturk.UpdateHITTypeOfHITInput, opts ...request.Option) (*mturk.UpdateHITTypeOfHITOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "UpdateHITTypeOfHITWithContext",
+		Action:  "UpdateHITTypeOfHIT",
 		Input:   input,
 		Output:  (*mturk.UpdateHITTypeOfHITOutput)(nil),
 		Error:   nil,
@@ -847,7 +847,7 @@ func (c *Client) UpdateHITTypeOfHITWithContext(ctx context.Context, input *mturk
 func (c *Client) UpdateNotificationSettingsWithContext(ctx context.Context, input *mturk.UpdateNotificationSettingsInput, opts ...request.Option) (*mturk.UpdateNotificationSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "UpdateNotificationSettingsWithContext",
+		Action:  "UpdateNotificationSettings",
 		Input:   input,
 		Output:  (*mturk.UpdateNotificationSettingsOutput)(nil),
 		Error:   nil,
@@ -868,7 +868,7 @@ func (c *Client) UpdateNotificationSettingsWithContext(ctx context.Context, inpu
 func (c *Client) UpdateQualificationTypeWithContext(ctx context.Context, input *mturk.UpdateQualificationTypeInput, opts ...request.Option) (*mturk.UpdateQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
-		Action:  "UpdateQualificationTypeWithContext",
+		Action:  "UpdateQualificationType",
 		Input:   input,
 		Output:  (*mturk.UpdateQualificationTypeOutput)(nil),
 		Error:   nil,

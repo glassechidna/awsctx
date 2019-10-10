@@ -171,7 +171,7 @@ var _ IAM = (*Client)(nil)
 func (c *Client) AddClientIDToOpenIDConnectProviderWithContext(ctx context.Context, input *iam.AddClientIDToOpenIDConnectProviderInput, opts ...request.Option) (*iam.AddClientIDToOpenIDConnectProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "AddClientIDToOpenIDConnectProviderWithContext",
+		Action:  "AddClientIDToOpenIDConnectProvider",
 		Input:   input,
 		Output:  (*iam.AddClientIDToOpenIDConnectProviderOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) AddClientIDToOpenIDConnectProviderWithContext(ctx context.Conte
 func (c *Client) AddRoleToInstanceProfileWithContext(ctx context.Context, input *iam.AddRoleToInstanceProfileInput, opts ...request.Option) (*iam.AddRoleToInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "AddRoleToInstanceProfileWithContext",
+		Action:  "AddRoleToInstanceProfile",
 		Input:   input,
 		Output:  (*iam.AddRoleToInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) AddRoleToInstanceProfileWithContext(ctx context.Context, input 
 func (c *Client) AddUserToGroupWithContext(ctx context.Context, input *iam.AddUserToGroupInput, opts ...request.Option) (*iam.AddUserToGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "AddUserToGroupWithContext",
+		Action:  "AddUserToGroup",
 		Input:   input,
 		Output:  (*iam.AddUserToGroupOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) AddUserToGroupWithContext(ctx context.Context, input *iam.AddUs
 func (c *Client) AttachGroupPolicyWithContext(ctx context.Context, input *iam.AttachGroupPolicyInput, opts ...request.Option) (*iam.AttachGroupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "AttachGroupPolicyWithContext",
+		Action:  "AttachGroupPolicy",
 		Input:   input,
 		Output:  (*iam.AttachGroupPolicyOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) AttachGroupPolicyWithContext(ctx context.Context, input *iam.At
 func (c *Client) AttachRolePolicyWithContext(ctx context.Context, input *iam.AttachRolePolicyInput, opts ...request.Option) (*iam.AttachRolePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "AttachRolePolicyWithContext",
+		Action:  "AttachRolePolicy",
 		Input:   input,
 		Output:  (*iam.AttachRolePolicyOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) AttachRolePolicyWithContext(ctx context.Context, input *iam.Att
 func (c *Client) AttachUserPolicyWithContext(ctx context.Context, input *iam.AttachUserPolicyInput, opts ...request.Option) (*iam.AttachUserPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "AttachUserPolicyWithContext",
+		Action:  "AttachUserPolicy",
 		Input:   input,
 		Output:  (*iam.AttachUserPolicyOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) AttachUserPolicyWithContext(ctx context.Context, input *iam.Att
 func (c *Client) ChangePasswordWithContext(ctx context.Context, input *iam.ChangePasswordInput, opts ...request.Option) (*iam.ChangePasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ChangePasswordWithContext",
+		Action:  "ChangePassword",
 		Input:   input,
 		Output:  (*iam.ChangePasswordOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) ChangePasswordWithContext(ctx context.Context, input *iam.Chang
 func (c *Client) CreateAccessKeyWithContext(ctx context.Context, input *iam.CreateAccessKeyInput, opts ...request.Option) (*iam.CreateAccessKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateAccessKeyWithContext",
+		Action:  "CreateAccessKey",
 		Input:   input,
 		Output:  (*iam.CreateAccessKeyOutput)(nil),
 		Error:   nil,
@@ -339,7 +339,7 @@ func (c *Client) CreateAccessKeyWithContext(ctx context.Context, input *iam.Crea
 func (c *Client) CreateAccountAliasWithContext(ctx context.Context, input *iam.CreateAccountAliasInput, opts ...request.Option) (*iam.CreateAccountAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateAccountAliasWithContext",
+		Action:  "CreateAccountAlias",
 		Input:   input,
 		Output:  (*iam.CreateAccountAliasOutput)(nil),
 		Error:   nil,
@@ -360,7 +360,7 @@ func (c *Client) CreateAccountAliasWithContext(ctx context.Context, input *iam.C
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *iam.CreateGroupInput, opts ...request.Option) (*iam.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*iam.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -381,7 +381,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *iam.CreateGr
 func (c *Client) CreateInstanceProfileWithContext(ctx context.Context, input *iam.CreateInstanceProfileInput, opts ...request.Option) (*iam.CreateInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateInstanceProfileWithContext",
+		Action:  "CreateInstanceProfile",
 		Input:   input,
 		Output:  (*iam.CreateInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -402,7 +402,7 @@ func (c *Client) CreateInstanceProfileWithContext(ctx context.Context, input *ia
 func (c *Client) CreateLoginProfileWithContext(ctx context.Context, input *iam.CreateLoginProfileInput, opts ...request.Option) (*iam.CreateLoginProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateLoginProfileWithContext",
+		Action:  "CreateLoginProfile",
 		Input:   input,
 		Output:  (*iam.CreateLoginProfileOutput)(nil),
 		Error:   nil,
@@ -423,7 +423,7 @@ func (c *Client) CreateLoginProfileWithContext(ctx context.Context, input *iam.C
 func (c *Client) CreateOpenIDConnectProviderWithContext(ctx context.Context, input *iam.CreateOpenIDConnectProviderInput, opts ...request.Option) (*iam.CreateOpenIDConnectProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateOpenIDConnectProviderWithContext",
+		Action:  "CreateOpenIDConnectProvider",
 		Input:   input,
 		Output:  (*iam.CreateOpenIDConnectProviderOutput)(nil),
 		Error:   nil,
@@ -444,7 +444,7 @@ func (c *Client) CreateOpenIDConnectProviderWithContext(ctx context.Context, inp
 func (c *Client) CreatePolicyWithContext(ctx context.Context, input *iam.CreatePolicyInput, opts ...request.Option) (*iam.CreatePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreatePolicyWithContext",
+		Action:  "CreatePolicy",
 		Input:   input,
 		Output:  (*iam.CreatePolicyOutput)(nil),
 		Error:   nil,
@@ -465,7 +465,7 @@ func (c *Client) CreatePolicyWithContext(ctx context.Context, input *iam.CreateP
 func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, input *iam.CreatePolicyVersionInput, opts ...request.Option) (*iam.CreatePolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreatePolicyVersionWithContext",
+		Action:  "CreatePolicyVersion",
 		Input:   input,
 		Output:  (*iam.CreatePolicyVersionOutput)(nil),
 		Error:   nil,
@@ -486,7 +486,7 @@ func (c *Client) CreatePolicyVersionWithContext(ctx context.Context, input *iam.
 func (c *Client) CreateRoleWithContext(ctx context.Context, input *iam.CreateRoleInput, opts ...request.Option) (*iam.CreateRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateRoleWithContext",
+		Action:  "CreateRole",
 		Input:   input,
 		Output:  (*iam.CreateRoleOutput)(nil),
 		Error:   nil,
@@ -507,7 +507,7 @@ func (c *Client) CreateRoleWithContext(ctx context.Context, input *iam.CreateRol
 func (c *Client) CreateSAMLProviderWithContext(ctx context.Context, input *iam.CreateSAMLProviderInput, opts ...request.Option) (*iam.CreateSAMLProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateSAMLProviderWithContext",
+		Action:  "CreateSAMLProvider",
 		Input:   input,
 		Output:  (*iam.CreateSAMLProviderOutput)(nil),
 		Error:   nil,
@@ -528,7 +528,7 @@ func (c *Client) CreateSAMLProviderWithContext(ctx context.Context, input *iam.C
 func (c *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, input *iam.CreateServiceLinkedRoleInput, opts ...request.Option) (*iam.CreateServiceLinkedRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateServiceLinkedRoleWithContext",
+		Action:  "CreateServiceLinkedRole",
 		Input:   input,
 		Output:  (*iam.CreateServiceLinkedRoleOutput)(nil),
 		Error:   nil,
@@ -549,7 +549,7 @@ func (c *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, input *
 func (c *Client) CreateServiceSpecificCredentialWithContext(ctx context.Context, input *iam.CreateServiceSpecificCredentialInput, opts ...request.Option) (*iam.CreateServiceSpecificCredentialOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateServiceSpecificCredentialWithContext",
+		Action:  "CreateServiceSpecificCredential",
 		Input:   input,
 		Output:  (*iam.CreateServiceSpecificCredentialOutput)(nil),
 		Error:   nil,
@@ -570,7 +570,7 @@ func (c *Client) CreateServiceSpecificCredentialWithContext(ctx context.Context,
 func (c *Client) CreateUserWithContext(ctx context.Context, input *iam.CreateUserInput, opts ...request.Option) (*iam.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*iam.CreateUserOutput)(nil),
 		Error:   nil,
@@ -591,7 +591,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *iam.CreateUse
 func (c *Client) CreateVirtualMFADeviceWithContext(ctx context.Context, input *iam.CreateVirtualMFADeviceInput, opts ...request.Option) (*iam.CreateVirtualMFADeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "CreateVirtualMFADeviceWithContext",
+		Action:  "CreateVirtualMFADevice",
 		Input:   input,
 		Output:  (*iam.CreateVirtualMFADeviceOutput)(nil),
 		Error:   nil,
@@ -612,7 +612,7 @@ func (c *Client) CreateVirtualMFADeviceWithContext(ctx context.Context, input *i
 func (c *Client) DeactivateMFADeviceWithContext(ctx context.Context, input *iam.DeactivateMFADeviceInput, opts ...request.Option) (*iam.DeactivateMFADeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeactivateMFADeviceWithContext",
+		Action:  "DeactivateMFADevice",
 		Input:   input,
 		Output:  (*iam.DeactivateMFADeviceOutput)(nil),
 		Error:   nil,
@@ -633,7 +633,7 @@ func (c *Client) DeactivateMFADeviceWithContext(ctx context.Context, input *iam.
 func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, input *iam.DeleteAccessKeyInput, opts ...request.Option) (*iam.DeleteAccessKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteAccessKeyWithContext",
+		Action:  "DeleteAccessKey",
 		Input:   input,
 		Output:  (*iam.DeleteAccessKeyOutput)(nil),
 		Error:   nil,
@@ -654,7 +654,7 @@ func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, input *iam.Dele
 func (c *Client) DeleteAccountAliasWithContext(ctx context.Context, input *iam.DeleteAccountAliasInput, opts ...request.Option) (*iam.DeleteAccountAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteAccountAliasWithContext",
+		Action:  "DeleteAccountAlias",
 		Input:   input,
 		Output:  (*iam.DeleteAccountAliasOutput)(nil),
 		Error:   nil,
@@ -675,7 +675,7 @@ func (c *Client) DeleteAccountAliasWithContext(ctx context.Context, input *iam.D
 func (c *Client) DeleteAccountPasswordPolicyWithContext(ctx context.Context, input *iam.DeleteAccountPasswordPolicyInput, opts ...request.Option) (*iam.DeleteAccountPasswordPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteAccountPasswordPolicyWithContext",
+		Action:  "DeleteAccountPasswordPolicy",
 		Input:   input,
 		Output:  (*iam.DeleteAccountPasswordPolicyOutput)(nil),
 		Error:   nil,
@@ -696,7 +696,7 @@ func (c *Client) DeleteAccountPasswordPolicyWithContext(ctx context.Context, inp
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *iam.DeleteGroupInput, opts ...request.Option) (*iam.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*iam.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -717,7 +717,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *iam.DeleteGr
 func (c *Client) DeleteGroupPolicyWithContext(ctx context.Context, input *iam.DeleteGroupPolicyInput, opts ...request.Option) (*iam.DeleteGroupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteGroupPolicyWithContext",
+		Action:  "DeleteGroupPolicy",
 		Input:   input,
 		Output:  (*iam.DeleteGroupPolicyOutput)(nil),
 		Error:   nil,
@@ -738,7 +738,7 @@ func (c *Client) DeleteGroupPolicyWithContext(ctx context.Context, input *iam.De
 func (c *Client) DeleteInstanceProfileWithContext(ctx context.Context, input *iam.DeleteInstanceProfileInput, opts ...request.Option) (*iam.DeleteInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteInstanceProfileWithContext",
+		Action:  "DeleteInstanceProfile",
 		Input:   input,
 		Output:  (*iam.DeleteInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -759,7 +759,7 @@ func (c *Client) DeleteInstanceProfileWithContext(ctx context.Context, input *ia
 func (c *Client) DeleteLoginProfileWithContext(ctx context.Context, input *iam.DeleteLoginProfileInput, opts ...request.Option) (*iam.DeleteLoginProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteLoginProfileWithContext",
+		Action:  "DeleteLoginProfile",
 		Input:   input,
 		Output:  (*iam.DeleteLoginProfileOutput)(nil),
 		Error:   nil,
@@ -780,7 +780,7 @@ func (c *Client) DeleteLoginProfileWithContext(ctx context.Context, input *iam.D
 func (c *Client) DeleteOpenIDConnectProviderWithContext(ctx context.Context, input *iam.DeleteOpenIDConnectProviderInput, opts ...request.Option) (*iam.DeleteOpenIDConnectProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteOpenIDConnectProviderWithContext",
+		Action:  "DeleteOpenIDConnectProvider",
 		Input:   input,
 		Output:  (*iam.DeleteOpenIDConnectProviderOutput)(nil),
 		Error:   nil,
@@ -801,7 +801,7 @@ func (c *Client) DeleteOpenIDConnectProviderWithContext(ctx context.Context, inp
 func (c *Client) DeletePolicyWithContext(ctx context.Context, input *iam.DeletePolicyInput, opts ...request.Option) (*iam.DeletePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeletePolicyWithContext",
+		Action:  "DeletePolicy",
 		Input:   input,
 		Output:  (*iam.DeletePolicyOutput)(nil),
 		Error:   nil,
@@ -822,7 +822,7 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *iam.DeleteP
 func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, input *iam.DeletePolicyVersionInput, opts ...request.Option) (*iam.DeletePolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeletePolicyVersionWithContext",
+		Action:  "DeletePolicyVersion",
 		Input:   input,
 		Output:  (*iam.DeletePolicyVersionOutput)(nil),
 		Error:   nil,
@@ -843,7 +843,7 @@ func (c *Client) DeletePolicyVersionWithContext(ctx context.Context, input *iam.
 func (c *Client) DeleteRoleWithContext(ctx context.Context, input *iam.DeleteRoleInput, opts ...request.Option) (*iam.DeleteRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteRoleWithContext",
+		Action:  "DeleteRole",
 		Input:   input,
 		Output:  (*iam.DeleteRoleOutput)(nil),
 		Error:   nil,
@@ -864,7 +864,7 @@ func (c *Client) DeleteRoleWithContext(ctx context.Context, input *iam.DeleteRol
 func (c *Client) DeleteRolePermissionsBoundaryWithContext(ctx context.Context, input *iam.DeleteRolePermissionsBoundaryInput, opts ...request.Option) (*iam.DeleteRolePermissionsBoundaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteRolePermissionsBoundaryWithContext",
+		Action:  "DeleteRolePermissionsBoundary",
 		Input:   input,
 		Output:  (*iam.DeleteRolePermissionsBoundaryOutput)(nil),
 		Error:   nil,
@@ -885,7 +885,7 @@ func (c *Client) DeleteRolePermissionsBoundaryWithContext(ctx context.Context, i
 func (c *Client) DeleteRolePolicyWithContext(ctx context.Context, input *iam.DeleteRolePolicyInput, opts ...request.Option) (*iam.DeleteRolePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteRolePolicyWithContext",
+		Action:  "DeleteRolePolicy",
 		Input:   input,
 		Output:  (*iam.DeleteRolePolicyOutput)(nil),
 		Error:   nil,
@@ -906,7 +906,7 @@ func (c *Client) DeleteRolePolicyWithContext(ctx context.Context, input *iam.Del
 func (c *Client) DeleteSAMLProviderWithContext(ctx context.Context, input *iam.DeleteSAMLProviderInput, opts ...request.Option) (*iam.DeleteSAMLProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteSAMLProviderWithContext",
+		Action:  "DeleteSAMLProvider",
 		Input:   input,
 		Output:  (*iam.DeleteSAMLProviderOutput)(nil),
 		Error:   nil,
@@ -927,7 +927,7 @@ func (c *Client) DeleteSAMLProviderWithContext(ctx context.Context, input *iam.D
 func (c *Client) DeleteSSHPublicKeyWithContext(ctx context.Context, input *iam.DeleteSSHPublicKeyInput, opts ...request.Option) (*iam.DeleteSSHPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteSSHPublicKeyWithContext",
+		Action:  "DeleteSSHPublicKey",
 		Input:   input,
 		Output:  (*iam.DeleteSSHPublicKeyOutput)(nil),
 		Error:   nil,
@@ -948,7 +948,7 @@ func (c *Client) DeleteSSHPublicKeyWithContext(ctx context.Context, input *iam.D
 func (c *Client) DeleteServerCertificateWithContext(ctx context.Context, input *iam.DeleteServerCertificateInput, opts ...request.Option) (*iam.DeleteServerCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteServerCertificateWithContext",
+		Action:  "DeleteServerCertificate",
 		Input:   input,
 		Output:  (*iam.DeleteServerCertificateOutput)(nil),
 		Error:   nil,
@@ -969,7 +969,7 @@ func (c *Client) DeleteServerCertificateWithContext(ctx context.Context, input *
 func (c *Client) DeleteServiceLinkedRoleWithContext(ctx context.Context, input *iam.DeleteServiceLinkedRoleInput, opts ...request.Option) (*iam.DeleteServiceLinkedRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteServiceLinkedRoleWithContext",
+		Action:  "DeleteServiceLinkedRole",
 		Input:   input,
 		Output:  (*iam.DeleteServiceLinkedRoleOutput)(nil),
 		Error:   nil,
@@ -990,7 +990,7 @@ func (c *Client) DeleteServiceLinkedRoleWithContext(ctx context.Context, input *
 func (c *Client) DeleteServiceSpecificCredentialWithContext(ctx context.Context, input *iam.DeleteServiceSpecificCredentialInput, opts ...request.Option) (*iam.DeleteServiceSpecificCredentialOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteServiceSpecificCredentialWithContext",
+		Action:  "DeleteServiceSpecificCredential",
 		Input:   input,
 		Output:  (*iam.DeleteServiceSpecificCredentialOutput)(nil),
 		Error:   nil,
@@ -1011,7 +1011,7 @@ func (c *Client) DeleteServiceSpecificCredentialWithContext(ctx context.Context,
 func (c *Client) DeleteSigningCertificateWithContext(ctx context.Context, input *iam.DeleteSigningCertificateInput, opts ...request.Option) (*iam.DeleteSigningCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteSigningCertificateWithContext",
+		Action:  "DeleteSigningCertificate",
 		Input:   input,
 		Output:  (*iam.DeleteSigningCertificateOutput)(nil),
 		Error:   nil,
@@ -1032,7 +1032,7 @@ func (c *Client) DeleteSigningCertificateWithContext(ctx context.Context, input 
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *iam.DeleteUserInput, opts ...request.Option) (*iam.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*iam.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -1053,7 +1053,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *iam.DeleteUse
 func (c *Client) DeleteUserPermissionsBoundaryWithContext(ctx context.Context, input *iam.DeleteUserPermissionsBoundaryInput, opts ...request.Option) (*iam.DeleteUserPermissionsBoundaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteUserPermissionsBoundaryWithContext",
+		Action:  "DeleteUserPermissionsBoundary",
 		Input:   input,
 		Output:  (*iam.DeleteUserPermissionsBoundaryOutput)(nil),
 		Error:   nil,
@@ -1074,7 +1074,7 @@ func (c *Client) DeleteUserPermissionsBoundaryWithContext(ctx context.Context, i
 func (c *Client) DeleteUserPolicyWithContext(ctx context.Context, input *iam.DeleteUserPolicyInput, opts ...request.Option) (*iam.DeleteUserPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteUserPolicyWithContext",
+		Action:  "DeleteUserPolicy",
 		Input:   input,
 		Output:  (*iam.DeleteUserPolicyOutput)(nil),
 		Error:   nil,
@@ -1095,7 +1095,7 @@ func (c *Client) DeleteUserPolicyWithContext(ctx context.Context, input *iam.Del
 func (c *Client) DeleteVirtualMFADeviceWithContext(ctx context.Context, input *iam.DeleteVirtualMFADeviceInput, opts ...request.Option) (*iam.DeleteVirtualMFADeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DeleteVirtualMFADeviceWithContext",
+		Action:  "DeleteVirtualMFADevice",
 		Input:   input,
 		Output:  (*iam.DeleteVirtualMFADeviceOutput)(nil),
 		Error:   nil,
@@ -1116,7 +1116,7 @@ func (c *Client) DeleteVirtualMFADeviceWithContext(ctx context.Context, input *i
 func (c *Client) DetachGroupPolicyWithContext(ctx context.Context, input *iam.DetachGroupPolicyInput, opts ...request.Option) (*iam.DetachGroupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DetachGroupPolicyWithContext",
+		Action:  "DetachGroupPolicy",
 		Input:   input,
 		Output:  (*iam.DetachGroupPolicyOutput)(nil),
 		Error:   nil,
@@ -1137,7 +1137,7 @@ func (c *Client) DetachGroupPolicyWithContext(ctx context.Context, input *iam.De
 func (c *Client) DetachRolePolicyWithContext(ctx context.Context, input *iam.DetachRolePolicyInput, opts ...request.Option) (*iam.DetachRolePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DetachRolePolicyWithContext",
+		Action:  "DetachRolePolicy",
 		Input:   input,
 		Output:  (*iam.DetachRolePolicyOutput)(nil),
 		Error:   nil,
@@ -1158,7 +1158,7 @@ func (c *Client) DetachRolePolicyWithContext(ctx context.Context, input *iam.Det
 func (c *Client) DetachUserPolicyWithContext(ctx context.Context, input *iam.DetachUserPolicyInput, opts ...request.Option) (*iam.DetachUserPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "DetachUserPolicyWithContext",
+		Action:  "DetachUserPolicy",
 		Input:   input,
 		Output:  (*iam.DetachUserPolicyOutput)(nil),
 		Error:   nil,
@@ -1179,7 +1179,7 @@ func (c *Client) DetachUserPolicyWithContext(ctx context.Context, input *iam.Det
 func (c *Client) EnableMFADeviceWithContext(ctx context.Context, input *iam.EnableMFADeviceInput, opts ...request.Option) (*iam.EnableMFADeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "EnableMFADeviceWithContext",
+		Action:  "EnableMFADevice",
 		Input:   input,
 		Output:  (*iam.EnableMFADeviceOutput)(nil),
 		Error:   nil,
@@ -1200,7 +1200,7 @@ func (c *Client) EnableMFADeviceWithContext(ctx context.Context, input *iam.Enab
 func (c *Client) GenerateCredentialReportWithContext(ctx context.Context, input *iam.GenerateCredentialReportInput, opts ...request.Option) (*iam.GenerateCredentialReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GenerateCredentialReportWithContext",
+		Action:  "GenerateCredentialReport",
 		Input:   input,
 		Output:  (*iam.GenerateCredentialReportOutput)(nil),
 		Error:   nil,
@@ -1221,7 +1221,7 @@ func (c *Client) GenerateCredentialReportWithContext(ctx context.Context, input 
 func (c *Client) GenerateOrganizationsAccessReportWithContext(ctx context.Context, input *iam.GenerateOrganizationsAccessReportInput, opts ...request.Option) (*iam.GenerateOrganizationsAccessReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GenerateOrganizationsAccessReportWithContext",
+		Action:  "GenerateOrganizationsAccessReport",
 		Input:   input,
 		Output:  (*iam.GenerateOrganizationsAccessReportOutput)(nil),
 		Error:   nil,
@@ -1242,7 +1242,7 @@ func (c *Client) GenerateOrganizationsAccessReportWithContext(ctx context.Contex
 func (c *Client) GenerateServiceLastAccessedDetailsWithContext(ctx context.Context, input *iam.GenerateServiceLastAccessedDetailsInput, opts ...request.Option) (*iam.GenerateServiceLastAccessedDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GenerateServiceLastAccessedDetailsWithContext",
+		Action:  "GenerateServiceLastAccessedDetails",
 		Input:   input,
 		Output:  (*iam.GenerateServiceLastAccessedDetailsOutput)(nil),
 		Error:   nil,
@@ -1263,7 +1263,7 @@ func (c *Client) GenerateServiceLastAccessedDetailsWithContext(ctx context.Conte
 func (c *Client) GetAccessKeyLastUsedWithContext(ctx context.Context, input *iam.GetAccessKeyLastUsedInput, opts ...request.Option) (*iam.GetAccessKeyLastUsedOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetAccessKeyLastUsedWithContext",
+		Action:  "GetAccessKeyLastUsed",
 		Input:   input,
 		Output:  (*iam.GetAccessKeyLastUsedOutput)(nil),
 		Error:   nil,
@@ -1284,7 +1284,7 @@ func (c *Client) GetAccessKeyLastUsedWithContext(ctx context.Context, input *iam
 func (c *Client) GetAccountAuthorizationDetailsWithContext(ctx context.Context, input *iam.GetAccountAuthorizationDetailsInput, opts ...request.Option) (*iam.GetAccountAuthorizationDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetAccountAuthorizationDetailsWithContext",
+		Action:  "GetAccountAuthorizationDetails",
 		Input:   input,
 		Output:  (*iam.GetAccountAuthorizationDetailsOutput)(nil),
 		Error:   nil,
@@ -1305,7 +1305,7 @@ func (c *Client) GetAccountAuthorizationDetailsWithContext(ctx context.Context, 
 func (c *Client) GetAccountPasswordPolicyWithContext(ctx context.Context, input *iam.GetAccountPasswordPolicyInput, opts ...request.Option) (*iam.GetAccountPasswordPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetAccountPasswordPolicyWithContext",
+		Action:  "GetAccountPasswordPolicy",
 		Input:   input,
 		Output:  (*iam.GetAccountPasswordPolicyOutput)(nil),
 		Error:   nil,
@@ -1326,7 +1326,7 @@ func (c *Client) GetAccountPasswordPolicyWithContext(ctx context.Context, input 
 func (c *Client) GetAccountSummaryWithContext(ctx context.Context, input *iam.GetAccountSummaryInput, opts ...request.Option) (*iam.GetAccountSummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetAccountSummaryWithContext",
+		Action:  "GetAccountSummary",
 		Input:   input,
 		Output:  (*iam.GetAccountSummaryOutput)(nil),
 		Error:   nil,
@@ -1347,7 +1347,7 @@ func (c *Client) GetAccountSummaryWithContext(ctx context.Context, input *iam.Ge
 func (c *Client) GetContextKeysForCustomPolicyWithContext(ctx context.Context, input *iam.GetContextKeysForCustomPolicyInput, opts ...request.Option) (*iam.GetContextKeysForPolicyResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetContextKeysForCustomPolicyWithContext",
+		Action:  "GetContextKeysForCustomPolicy",
 		Input:   input,
 		Output:  (*iam.GetContextKeysForPolicyResponse)(nil),
 		Error:   nil,
@@ -1368,7 +1368,7 @@ func (c *Client) GetContextKeysForCustomPolicyWithContext(ctx context.Context, i
 func (c *Client) GetContextKeysForPrincipalPolicyWithContext(ctx context.Context, input *iam.GetContextKeysForPrincipalPolicyInput, opts ...request.Option) (*iam.GetContextKeysForPolicyResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetContextKeysForPrincipalPolicyWithContext",
+		Action:  "GetContextKeysForPrincipalPolicy",
 		Input:   input,
 		Output:  (*iam.GetContextKeysForPolicyResponse)(nil),
 		Error:   nil,
@@ -1389,7 +1389,7 @@ func (c *Client) GetContextKeysForPrincipalPolicyWithContext(ctx context.Context
 func (c *Client) GetCredentialReportWithContext(ctx context.Context, input *iam.GetCredentialReportInput, opts ...request.Option) (*iam.GetCredentialReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetCredentialReportWithContext",
+		Action:  "GetCredentialReport",
 		Input:   input,
 		Output:  (*iam.GetCredentialReportOutput)(nil),
 		Error:   nil,
@@ -1410,7 +1410,7 @@ func (c *Client) GetCredentialReportWithContext(ctx context.Context, input *iam.
 func (c *Client) GetGroupWithContext(ctx context.Context, input *iam.GetGroupInput, opts ...request.Option) (*iam.GetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetGroupWithContext",
+		Action:  "GetGroup",
 		Input:   input,
 		Output:  (*iam.GetGroupOutput)(nil),
 		Error:   nil,
@@ -1431,7 +1431,7 @@ func (c *Client) GetGroupWithContext(ctx context.Context, input *iam.GetGroupInp
 func (c *Client) GetGroupPolicyWithContext(ctx context.Context, input *iam.GetGroupPolicyInput, opts ...request.Option) (*iam.GetGroupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetGroupPolicyWithContext",
+		Action:  "GetGroupPolicy",
 		Input:   input,
 		Output:  (*iam.GetGroupPolicyOutput)(nil),
 		Error:   nil,
@@ -1452,7 +1452,7 @@ func (c *Client) GetGroupPolicyWithContext(ctx context.Context, input *iam.GetGr
 func (c *Client) GetInstanceProfileWithContext(ctx context.Context, input *iam.GetInstanceProfileInput, opts ...request.Option) (*iam.GetInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetInstanceProfileWithContext",
+		Action:  "GetInstanceProfile",
 		Input:   input,
 		Output:  (*iam.GetInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -1473,7 +1473,7 @@ func (c *Client) GetInstanceProfileWithContext(ctx context.Context, input *iam.G
 func (c *Client) GetLoginProfileWithContext(ctx context.Context, input *iam.GetLoginProfileInput, opts ...request.Option) (*iam.GetLoginProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetLoginProfileWithContext",
+		Action:  "GetLoginProfile",
 		Input:   input,
 		Output:  (*iam.GetLoginProfileOutput)(nil),
 		Error:   nil,
@@ -1494,7 +1494,7 @@ func (c *Client) GetLoginProfileWithContext(ctx context.Context, input *iam.GetL
 func (c *Client) GetOpenIDConnectProviderWithContext(ctx context.Context, input *iam.GetOpenIDConnectProviderInput, opts ...request.Option) (*iam.GetOpenIDConnectProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetOpenIDConnectProviderWithContext",
+		Action:  "GetOpenIDConnectProvider",
 		Input:   input,
 		Output:  (*iam.GetOpenIDConnectProviderOutput)(nil),
 		Error:   nil,
@@ -1515,7 +1515,7 @@ func (c *Client) GetOpenIDConnectProviderWithContext(ctx context.Context, input 
 func (c *Client) GetOrganizationsAccessReportWithContext(ctx context.Context, input *iam.GetOrganizationsAccessReportInput, opts ...request.Option) (*iam.GetOrganizationsAccessReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetOrganizationsAccessReportWithContext",
+		Action:  "GetOrganizationsAccessReport",
 		Input:   input,
 		Output:  (*iam.GetOrganizationsAccessReportOutput)(nil),
 		Error:   nil,
@@ -1536,7 +1536,7 @@ func (c *Client) GetOrganizationsAccessReportWithContext(ctx context.Context, in
 func (c *Client) GetPolicyWithContext(ctx context.Context, input *iam.GetPolicyInput, opts ...request.Option) (*iam.GetPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetPolicyWithContext",
+		Action:  "GetPolicy",
 		Input:   input,
 		Output:  (*iam.GetPolicyOutput)(nil),
 		Error:   nil,
@@ -1557,7 +1557,7 @@ func (c *Client) GetPolicyWithContext(ctx context.Context, input *iam.GetPolicyI
 func (c *Client) GetPolicyVersionWithContext(ctx context.Context, input *iam.GetPolicyVersionInput, opts ...request.Option) (*iam.GetPolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetPolicyVersionWithContext",
+		Action:  "GetPolicyVersion",
 		Input:   input,
 		Output:  (*iam.GetPolicyVersionOutput)(nil),
 		Error:   nil,
@@ -1578,7 +1578,7 @@ func (c *Client) GetPolicyVersionWithContext(ctx context.Context, input *iam.Get
 func (c *Client) GetRoleWithContext(ctx context.Context, input *iam.GetRoleInput, opts ...request.Option) (*iam.GetRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetRoleWithContext",
+		Action:  "GetRole",
 		Input:   input,
 		Output:  (*iam.GetRoleOutput)(nil),
 		Error:   nil,
@@ -1599,7 +1599,7 @@ func (c *Client) GetRoleWithContext(ctx context.Context, input *iam.GetRoleInput
 func (c *Client) GetRolePolicyWithContext(ctx context.Context, input *iam.GetRolePolicyInput, opts ...request.Option) (*iam.GetRolePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetRolePolicyWithContext",
+		Action:  "GetRolePolicy",
 		Input:   input,
 		Output:  (*iam.GetRolePolicyOutput)(nil),
 		Error:   nil,
@@ -1620,7 +1620,7 @@ func (c *Client) GetRolePolicyWithContext(ctx context.Context, input *iam.GetRol
 func (c *Client) GetSAMLProviderWithContext(ctx context.Context, input *iam.GetSAMLProviderInput, opts ...request.Option) (*iam.GetSAMLProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetSAMLProviderWithContext",
+		Action:  "GetSAMLProvider",
 		Input:   input,
 		Output:  (*iam.GetSAMLProviderOutput)(nil),
 		Error:   nil,
@@ -1641,7 +1641,7 @@ func (c *Client) GetSAMLProviderWithContext(ctx context.Context, input *iam.GetS
 func (c *Client) GetSSHPublicKeyWithContext(ctx context.Context, input *iam.GetSSHPublicKeyInput, opts ...request.Option) (*iam.GetSSHPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetSSHPublicKeyWithContext",
+		Action:  "GetSSHPublicKey",
 		Input:   input,
 		Output:  (*iam.GetSSHPublicKeyOutput)(nil),
 		Error:   nil,
@@ -1662,7 +1662,7 @@ func (c *Client) GetSSHPublicKeyWithContext(ctx context.Context, input *iam.GetS
 func (c *Client) GetServerCertificateWithContext(ctx context.Context, input *iam.GetServerCertificateInput, opts ...request.Option) (*iam.GetServerCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetServerCertificateWithContext",
+		Action:  "GetServerCertificate",
 		Input:   input,
 		Output:  (*iam.GetServerCertificateOutput)(nil),
 		Error:   nil,
@@ -1683,7 +1683,7 @@ func (c *Client) GetServerCertificateWithContext(ctx context.Context, input *iam
 func (c *Client) GetServiceLastAccessedDetailsWithContext(ctx context.Context, input *iam.GetServiceLastAccessedDetailsInput, opts ...request.Option) (*iam.GetServiceLastAccessedDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetServiceLastAccessedDetailsWithContext",
+		Action:  "GetServiceLastAccessedDetails",
 		Input:   input,
 		Output:  (*iam.GetServiceLastAccessedDetailsOutput)(nil),
 		Error:   nil,
@@ -1704,7 +1704,7 @@ func (c *Client) GetServiceLastAccessedDetailsWithContext(ctx context.Context, i
 func (c *Client) GetServiceLastAccessedDetailsWithEntitiesWithContext(ctx context.Context, input *iam.GetServiceLastAccessedDetailsWithEntitiesInput, opts ...request.Option) (*iam.GetServiceLastAccessedDetailsWithEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetServiceLastAccessedDetailsWithEntitiesWithContext",
+		Action:  "GetServiceLastAccessedDetailsWithEntities",
 		Input:   input,
 		Output:  (*iam.GetServiceLastAccessedDetailsWithEntitiesOutput)(nil),
 		Error:   nil,
@@ -1725,7 +1725,7 @@ func (c *Client) GetServiceLastAccessedDetailsWithEntitiesWithContext(ctx contex
 func (c *Client) GetServiceLinkedRoleDeletionStatusWithContext(ctx context.Context, input *iam.GetServiceLinkedRoleDeletionStatusInput, opts ...request.Option) (*iam.GetServiceLinkedRoleDeletionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetServiceLinkedRoleDeletionStatusWithContext",
+		Action:  "GetServiceLinkedRoleDeletionStatus",
 		Input:   input,
 		Output:  (*iam.GetServiceLinkedRoleDeletionStatusOutput)(nil),
 		Error:   nil,
@@ -1746,7 +1746,7 @@ func (c *Client) GetServiceLinkedRoleDeletionStatusWithContext(ctx context.Conte
 func (c *Client) GetUserWithContext(ctx context.Context, input *iam.GetUserInput, opts ...request.Option) (*iam.GetUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetUserWithContext",
+		Action:  "GetUser",
 		Input:   input,
 		Output:  (*iam.GetUserOutput)(nil),
 		Error:   nil,
@@ -1767,7 +1767,7 @@ func (c *Client) GetUserWithContext(ctx context.Context, input *iam.GetUserInput
 func (c *Client) GetUserPolicyWithContext(ctx context.Context, input *iam.GetUserPolicyInput, opts ...request.Option) (*iam.GetUserPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "GetUserPolicyWithContext",
+		Action:  "GetUserPolicy",
 		Input:   input,
 		Output:  (*iam.GetUserPolicyOutput)(nil),
 		Error:   nil,
@@ -1788,7 +1788,7 @@ func (c *Client) GetUserPolicyWithContext(ctx context.Context, input *iam.GetUse
 func (c *Client) ListAccessKeysWithContext(ctx context.Context, input *iam.ListAccessKeysInput, opts ...request.Option) (*iam.ListAccessKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListAccessKeysWithContext",
+		Action:  "ListAccessKeys",
 		Input:   input,
 		Output:  (*iam.ListAccessKeysOutput)(nil),
 		Error:   nil,
@@ -1809,7 +1809,7 @@ func (c *Client) ListAccessKeysWithContext(ctx context.Context, input *iam.ListA
 func (c *Client) ListAccountAliasesWithContext(ctx context.Context, input *iam.ListAccountAliasesInput, opts ...request.Option) (*iam.ListAccountAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListAccountAliasesWithContext",
+		Action:  "ListAccountAliases",
 		Input:   input,
 		Output:  (*iam.ListAccountAliasesOutput)(nil),
 		Error:   nil,
@@ -1830,7 +1830,7 @@ func (c *Client) ListAccountAliasesWithContext(ctx context.Context, input *iam.L
 func (c *Client) ListAttachedGroupPoliciesWithContext(ctx context.Context, input *iam.ListAttachedGroupPoliciesInput, opts ...request.Option) (*iam.ListAttachedGroupPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListAttachedGroupPoliciesWithContext",
+		Action:  "ListAttachedGroupPolicies",
 		Input:   input,
 		Output:  (*iam.ListAttachedGroupPoliciesOutput)(nil),
 		Error:   nil,
@@ -1851,7 +1851,7 @@ func (c *Client) ListAttachedGroupPoliciesWithContext(ctx context.Context, input
 func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, input *iam.ListAttachedRolePoliciesInput, opts ...request.Option) (*iam.ListAttachedRolePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListAttachedRolePoliciesWithContext",
+		Action:  "ListAttachedRolePolicies",
 		Input:   input,
 		Output:  (*iam.ListAttachedRolePoliciesOutput)(nil),
 		Error:   nil,
@@ -1872,7 +1872,7 @@ func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, input 
 func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, input *iam.ListAttachedUserPoliciesInput, opts ...request.Option) (*iam.ListAttachedUserPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListAttachedUserPoliciesWithContext",
+		Action:  "ListAttachedUserPolicies",
 		Input:   input,
 		Output:  (*iam.ListAttachedUserPoliciesOutput)(nil),
 		Error:   nil,
@@ -1893,7 +1893,7 @@ func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, input 
 func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, input *iam.ListEntitiesForPolicyInput, opts ...request.Option) (*iam.ListEntitiesForPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListEntitiesForPolicyWithContext",
+		Action:  "ListEntitiesForPolicy",
 		Input:   input,
 		Output:  (*iam.ListEntitiesForPolicyOutput)(nil),
 		Error:   nil,
@@ -1914,7 +1914,7 @@ func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, input *ia
 func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, input *iam.ListGroupPoliciesInput, opts ...request.Option) (*iam.ListGroupPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListGroupPoliciesWithContext",
+		Action:  "ListGroupPolicies",
 		Input:   input,
 		Output:  (*iam.ListGroupPoliciesOutput)(nil),
 		Error:   nil,
@@ -1935,7 +1935,7 @@ func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, input *iam.Li
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *iam.ListGroupsInput, opts ...request.Option) (*iam.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListGroupsWithContext",
+		Action:  "ListGroups",
 		Input:   input,
 		Output:  (*iam.ListGroupsOutput)(nil),
 		Error:   nil,
@@ -1956,7 +1956,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *iam.ListGroup
 func (c *Client) ListGroupsForUserWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, opts ...request.Option) (*iam.ListGroupsForUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListGroupsForUserWithContext",
+		Action:  "ListGroupsForUser",
 		Input:   input,
 		Output:  (*iam.ListGroupsForUserOutput)(nil),
 		Error:   nil,
@@ -1977,7 +1977,7 @@ func (c *Client) ListGroupsForUserWithContext(ctx context.Context, input *iam.Li
 func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, opts ...request.Option) (*iam.ListInstanceProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListInstanceProfilesWithContext",
+		Action:  "ListInstanceProfiles",
 		Input:   input,
 		Output:  (*iam.ListInstanceProfilesOutput)(nil),
 		Error:   nil,
@@ -1998,7 +1998,7 @@ func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *iam
 func (c *Client) ListInstanceProfilesForRoleWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, opts ...request.Option) (*iam.ListInstanceProfilesForRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListInstanceProfilesForRoleWithContext",
+		Action:  "ListInstanceProfilesForRole",
 		Input:   input,
 		Output:  (*iam.ListInstanceProfilesForRoleOutput)(nil),
 		Error:   nil,
@@ -2019,7 +2019,7 @@ func (c *Client) ListInstanceProfilesForRoleWithContext(ctx context.Context, inp
 func (c *Client) ListMFADevicesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, opts ...request.Option) (*iam.ListMFADevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListMFADevicesWithContext",
+		Action:  "ListMFADevices",
 		Input:   input,
 		Output:  (*iam.ListMFADevicesOutput)(nil),
 		Error:   nil,
@@ -2040,7 +2040,7 @@ func (c *Client) ListMFADevicesWithContext(ctx context.Context, input *iam.ListM
 func (c *Client) ListOpenIDConnectProvidersWithContext(ctx context.Context, input *iam.ListOpenIDConnectProvidersInput, opts ...request.Option) (*iam.ListOpenIDConnectProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListOpenIDConnectProvidersWithContext",
+		Action:  "ListOpenIDConnectProviders",
 		Input:   input,
 		Output:  (*iam.ListOpenIDConnectProvidersOutput)(nil),
 		Error:   nil,
@@ -2061,7 +2061,7 @@ func (c *Client) ListOpenIDConnectProvidersWithContext(ctx context.Context, inpu
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iam.ListPoliciesInput, opts ...request.Option) (*iam.ListPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListPoliciesWithContext",
+		Action:  "ListPolicies",
 		Input:   input,
 		Output:  (*iam.ListPoliciesOutput)(nil),
 		Error:   nil,
@@ -2082,7 +2082,7 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iam.ListPol
 func (c *Client) ListPoliciesGrantingServiceAccessWithContext(ctx context.Context, input *iam.ListPoliciesGrantingServiceAccessInput, opts ...request.Option) (*iam.ListPoliciesGrantingServiceAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListPoliciesGrantingServiceAccessWithContext",
+		Action:  "ListPoliciesGrantingServiceAccess",
 		Input:   input,
 		Output:  (*iam.ListPoliciesGrantingServiceAccessOutput)(nil),
 		Error:   nil,
@@ -2103,7 +2103,7 @@ func (c *Client) ListPoliciesGrantingServiceAccessWithContext(ctx context.Contex
 func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, opts ...request.Option) (*iam.ListPolicyVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListPolicyVersionsWithContext",
+		Action:  "ListPolicyVersions",
 		Input:   input,
 		Output:  (*iam.ListPolicyVersionsOutput)(nil),
 		Error:   nil,
@@ -2124,7 +2124,7 @@ func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iam.L
 func (c *Client) ListRolePoliciesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, opts ...request.Option) (*iam.ListRolePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListRolePoliciesWithContext",
+		Action:  "ListRolePolicies",
 		Input:   input,
 		Output:  (*iam.ListRolePoliciesOutput)(nil),
 		Error:   nil,
@@ -2145,7 +2145,7 @@ func (c *Client) ListRolePoliciesWithContext(ctx context.Context, input *iam.Lis
 func (c *Client) ListRoleTagsWithContext(ctx context.Context, input *iam.ListRoleTagsInput, opts ...request.Option) (*iam.ListRoleTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListRoleTagsWithContext",
+		Action:  "ListRoleTags",
 		Input:   input,
 		Output:  (*iam.ListRoleTagsOutput)(nil),
 		Error:   nil,
@@ -2166,7 +2166,7 @@ func (c *Client) ListRoleTagsWithContext(ctx context.Context, input *iam.ListRol
 func (c *Client) ListRolesWithContext(ctx context.Context, input *iam.ListRolesInput, opts ...request.Option) (*iam.ListRolesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListRolesWithContext",
+		Action:  "ListRoles",
 		Input:   input,
 		Output:  (*iam.ListRolesOutput)(nil),
 		Error:   nil,
@@ -2187,7 +2187,7 @@ func (c *Client) ListRolesWithContext(ctx context.Context, input *iam.ListRolesI
 func (c *Client) ListSAMLProvidersWithContext(ctx context.Context, input *iam.ListSAMLProvidersInput, opts ...request.Option) (*iam.ListSAMLProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListSAMLProvidersWithContext",
+		Action:  "ListSAMLProviders",
 		Input:   input,
 		Output:  (*iam.ListSAMLProvidersOutput)(nil),
 		Error:   nil,
@@ -2208,7 +2208,7 @@ func (c *Client) ListSAMLProvidersWithContext(ctx context.Context, input *iam.Li
 func (c *Client) ListSSHPublicKeysWithContext(ctx context.Context, input *iam.ListSSHPublicKeysInput, opts ...request.Option) (*iam.ListSSHPublicKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListSSHPublicKeysWithContext",
+		Action:  "ListSSHPublicKeys",
 		Input:   input,
 		Output:  (*iam.ListSSHPublicKeysOutput)(nil),
 		Error:   nil,
@@ -2229,7 +2229,7 @@ func (c *Client) ListSSHPublicKeysWithContext(ctx context.Context, input *iam.Li
 func (c *Client) ListServerCertificatesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, opts ...request.Option) (*iam.ListServerCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListServerCertificatesWithContext",
+		Action:  "ListServerCertificates",
 		Input:   input,
 		Output:  (*iam.ListServerCertificatesOutput)(nil),
 		Error:   nil,
@@ -2250,7 +2250,7 @@ func (c *Client) ListServerCertificatesWithContext(ctx context.Context, input *i
 func (c *Client) ListServiceSpecificCredentialsWithContext(ctx context.Context, input *iam.ListServiceSpecificCredentialsInput, opts ...request.Option) (*iam.ListServiceSpecificCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListServiceSpecificCredentialsWithContext",
+		Action:  "ListServiceSpecificCredentials",
 		Input:   input,
 		Output:  (*iam.ListServiceSpecificCredentialsOutput)(nil),
 		Error:   nil,
@@ -2271,7 +2271,7 @@ func (c *Client) ListServiceSpecificCredentialsWithContext(ctx context.Context, 
 func (c *Client) ListSigningCertificatesWithContext(ctx context.Context, input *iam.ListSigningCertificatesInput, opts ...request.Option) (*iam.ListSigningCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListSigningCertificatesWithContext",
+		Action:  "ListSigningCertificates",
 		Input:   input,
 		Output:  (*iam.ListSigningCertificatesOutput)(nil),
 		Error:   nil,
@@ -2292,7 +2292,7 @@ func (c *Client) ListSigningCertificatesWithContext(ctx context.Context, input *
 func (c *Client) ListUserPoliciesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, opts ...request.Option) (*iam.ListUserPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListUserPoliciesWithContext",
+		Action:  "ListUserPolicies",
 		Input:   input,
 		Output:  (*iam.ListUserPoliciesOutput)(nil),
 		Error:   nil,
@@ -2313,7 +2313,7 @@ func (c *Client) ListUserPoliciesWithContext(ctx context.Context, input *iam.Lis
 func (c *Client) ListUserTagsWithContext(ctx context.Context, input *iam.ListUserTagsInput, opts ...request.Option) (*iam.ListUserTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListUserTagsWithContext",
+		Action:  "ListUserTags",
 		Input:   input,
 		Output:  (*iam.ListUserTagsOutput)(nil),
 		Error:   nil,
@@ -2334,7 +2334,7 @@ func (c *Client) ListUserTagsWithContext(ctx context.Context, input *iam.ListUse
 func (c *Client) ListUsersWithContext(ctx context.Context, input *iam.ListUsersInput, opts ...request.Option) (*iam.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*iam.ListUsersOutput)(nil),
 		Error:   nil,
@@ -2355,7 +2355,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *iam.ListUsersI
 func (c *Client) ListVirtualMFADevicesWithContext(ctx context.Context, input *iam.ListVirtualMFADevicesInput, opts ...request.Option) (*iam.ListVirtualMFADevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ListVirtualMFADevicesWithContext",
+		Action:  "ListVirtualMFADevices",
 		Input:   input,
 		Output:  (*iam.ListVirtualMFADevicesOutput)(nil),
 		Error:   nil,
@@ -2376,7 +2376,7 @@ func (c *Client) ListVirtualMFADevicesWithContext(ctx context.Context, input *ia
 func (c *Client) PutGroupPolicyWithContext(ctx context.Context, input *iam.PutGroupPolicyInput, opts ...request.Option) (*iam.PutGroupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "PutGroupPolicyWithContext",
+		Action:  "PutGroupPolicy",
 		Input:   input,
 		Output:  (*iam.PutGroupPolicyOutput)(nil),
 		Error:   nil,
@@ -2397,7 +2397,7 @@ func (c *Client) PutGroupPolicyWithContext(ctx context.Context, input *iam.PutGr
 func (c *Client) PutRolePermissionsBoundaryWithContext(ctx context.Context, input *iam.PutRolePermissionsBoundaryInput, opts ...request.Option) (*iam.PutRolePermissionsBoundaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "PutRolePermissionsBoundaryWithContext",
+		Action:  "PutRolePermissionsBoundary",
 		Input:   input,
 		Output:  (*iam.PutRolePermissionsBoundaryOutput)(nil),
 		Error:   nil,
@@ -2418,7 +2418,7 @@ func (c *Client) PutRolePermissionsBoundaryWithContext(ctx context.Context, inpu
 func (c *Client) PutRolePolicyWithContext(ctx context.Context, input *iam.PutRolePolicyInput, opts ...request.Option) (*iam.PutRolePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "PutRolePolicyWithContext",
+		Action:  "PutRolePolicy",
 		Input:   input,
 		Output:  (*iam.PutRolePolicyOutput)(nil),
 		Error:   nil,
@@ -2439,7 +2439,7 @@ func (c *Client) PutRolePolicyWithContext(ctx context.Context, input *iam.PutRol
 func (c *Client) PutUserPermissionsBoundaryWithContext(ctx context.Context, input *iam.PutUserPermissionsBoundaryInput, opts ...request.Option) (*iam.PutUserPermissionsBoundaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "PutUserPermissionsBoundaryWithContext",
+		Action:  "PutUserPermissionsBoundary",
 		Input:   input,
 		Output:  (*iam.PutUserPermissionsBoundaryOutput)(nil),
 		Error:   nil,
@@ -2460,7 +2460,7 @@ func (c *Client) PutUserPermissionsBoundaryWithContext(ctx context.Context, inpu
 func (c *Client) PutUserPolicyWithContext(ctx context.Context, input *iam.PutUserPolicyInput, opts ...request.Option) (*iam.PutUserPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "PutUserPolicyWithContext",
+		Action:  "PutUserPolicy",
 		Input:   input,
 		Output:  (*iam.PutUserPolicyOutput)(nil),
 		Error:   nil,
@@ -2481,7 +2481,7 @@ func (c *Client) PutUserPolicyWithContext(ctx context.Context, input *iam.PutUse
 func (c *Client) RemoveClientIDFromOpenIDConnectProviderWithContext(ctx context.Context, input *iam.RemoveClientIDFromOpenIDConnectProviderInput, opts ...request.Option) (*iam.RemoveClientIDFromOpenIDConnectProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "RemoveClientIDFromOpenIDConnectProviderWithContext",
+		Action:  "RemoveClientIDFromOpenIDConnectProvider",
 		Input:   input,
 		Output:  (*iam.RemoveClientIDFromOpenIDConnectProviderOutput)(nil),
 		Error:   nil,
@@ -2502,7 +2502,7 @@ func (c *Client) RemoveClientIDFromOpenIDConnectProviderWithContext(ctx context.
 func (c *Client) RemoveRoleFromInstanceProfileWithContext(ctx context.Context, input *iam.RemoveRoleFromInstanceProfileInput, opts ...request.Option) (*iam.RemoveRoleFromInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "RemoveRoleFromInstanceProfileWithContext",
+		Action:  "RemoveRoleFromInstanceProfile",
 		Input:   input,
 		Output:  (*iam.RemoveRoleFromInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -2523,7 +2523,7 @@ func (c *Client) RemoveRoleFromInstanceProfileWithContext(ctx context.Context, i
 func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, input *iam.RemoveUserFromGroupInput, opts ...request.Option) (*iam.RemoveUserFromGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "RemoveUserFromGroupWithContext",
+		Action:  "RemoveUserFromGroup",
 		Input:   input,
 		Output:  (*iam.RemoveUserFromGroupOutput)(nil),
 		Error:   nil,
@@ -2544,7 +2544,7 @@ func (c *Client) RemoveUserFromGroupWithContext(ctx context.Context, input *iam.
 func (c *Client) ResetServiceSpecificCredentialWithContext(ctx context.Context, input *iam.ResetServiceSpecificCredentialInput, opts ...request.Option) (*iam.ResetServiceSpecificCredentialOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ResetServiceSpecificCredentialWithContext",
+		Action:  "ResetServiceSpecificCredential",
 		Input:   input,
 		Output:  (*iam.ResetServiceSpecificCredentialOutput)(nil),
 		Error:   nil,
@@ -2565,7 +2565,7 @@ func (c *Client) ResetServiceSpecificCredentialWithContext(ctx context.Context, 
 func (c *Client) ResyncMFADeviceWithContext(ctx context.Context, input *iam.ResyncMFADeviceInput, opts ...request.Option) (*iam.ResyncMFADeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "ResyncMFADeviceWithContext",
+		Action:  "ResyncMFADevice",
 		Input:   input,
 		Output:  (*iam.ResyncMFADeviceOutput)(nil),
 		Error:   nil,
@@ -2586,7 +2586,7 @@ func (c *Client) ResyncMFADeviceWithContext(ctx context.Context, input *iam.Resy
 func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, input *iam.SetDefaultPolicyVersionInput, opts ...request.Option) (*iam.SetDefaultPolicyVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "SetDefaultPolicyVersionWithContext",
+		Action:  "SetDefaultPolicyVersion",
 		Input:   input,
 		Output:  (*iam.SetDefaultPolicyVersionOutput)(nil),
 		Error:   nil,
@@ -2607,7 +2607,7 @@ func (c *Client) SetDefaultPolicyVersionWithContext(ctx context.Context, input *
 func (c *Client) SetSecurityTokenServicePreferencesWithContext(ctx context.Context, input *iam.SetSecurityTokenServicePreferencesInput, opts ...request.Option) (*iam.SetSecurityTokenServicePreferencesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "SetSecurityTokenServicePreferencesWithContext",
+		Action:  "SetSecurityTokenServicePreferences",
 		Input:   input,
 		Output:  (*iam.SetSecurityTokenServicePreferencesOutput)(nil),
 		Error:   nil,
@@ -2628,7 +2628,7 @@ func (c *Client) SetSecurityTokenServicePreferencesWithContext(ctx context.Conte
 func (c *Client) SimulateCustomPolicyWithContext(ctx context.Context, input *iam.SimulateCustomPolicyInput, opts ...request.Option) (*iam.SimulatePolicyResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "SimulateCustomPolicyWithContext",
+		Action:  "SimulateCustomPolicy",
 		Input:   input,
 		Output:  (*iam.SimulatePolicyResponse)(nil),
 		Error:   nil,
@@ -2649,7 +2649,7 @@ func (c *Client) SimulateCustomPolicyWithContext(ctx context.Context, input *iam
 func (c *Client) SimulatePrincipalPolicyWithContext(ctx context.Context, input *iam.SimulatePrincipalPolicyInput, opts ...request.Option) (*iam.SimulatePolicyResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "SimulatePrincipalPolicyWithContext",
+		Action:  "SimulatePrincipalPolicy",
 		Input:   input,
 		Output:  (*iam.SimulatePolicyResponse)(nil),
 		Error:   nil,
@@ -2670,7 +2670,7 @@ func (c *Client) SimulatePrincipalPolicyWithContext(ctx context.Context, input *
 func (c *Client) TagRoleWithContext(ctx context.Context, input *iam.TagRoleInput, opts ...request.Option) (*iam.TagRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "TagRoleWithContext",
+		Action:  "TagRole",
 		Input:   input,
 		Output:  (*iam.TagRoleOutput)(nil),
 		Error:   nil,
@@ -2691,7 +2691,7 @@ func (c *Client) TagRoleWithContext(ctx context.Context, input *iam.TagRoleInput
 func (c *Client) TagUserWithContext(ctx context.Context, input *iam.TagUserInput, opts ...request.Option) (*iam.TagUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "TagUserWithContext",
+		Action:  "TagUser",
 		Input:   input,
 		Output:  (*iam.TagUserOutput)(nil),
 		Error:   nil,
@@ -2712,7 +2712,7 @@ func (c *Client) TagUserWithContext(ctx context.Context, input *iam.TagUserInput
 func (c *Client) UntagRoleWithContext(ctx context.Context, input *iam.UntagRoleInput, opts ...request.Option) (*iam.UntagRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UntagRoleWithContext",
+		Action:  "UntagRole",
 		Input:   input,
 		Output:  (*iam.UntagRoleOutput)(nil),
 		Error:   nil,
@@ -2733,7 +2733,7 @@ func (c *Client) UntagRoleWithContext(ctx context.Context, input *iam.UntagRoleI
 func (c *Client) UntagUserWithContext(ctx context.Context, input *iam.UntagUserInput, opts ...request.Option) (*iam.UntagUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UntagUserWithContext",
+		Action:  "UntagUser",
 		Input:   input,
 		Output:  (*iam.UntagUserOutput)(nil),
 		Error:   nil,
@@ -2754,7 +2754,7 @@ func (c *Client) UntagUserWithContext(ctx context.Context, input *iam.UntagUserI
 func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, input *iam.UpdateAccessKeyInput, opts ...request.Option) (*iam.UpdateAccessKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateAccessKeyWithContext",
+		Action:  "UpdateAccessKey",
 		Input:   input,
 		Output:  (*iam.UpdateAccessKeyOutput)(nil),
 		Error:   nil,
@@ -2775,7 +2775,7 @@ func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, input *iam.Upda
 func (c *Client) UpdateAccountPasswordPolicyWithContext(ctx context.Context, input *iam.UpdateAccountPasswordPolicyInput, opts ...request.Option) (*iam.UpdateAccountPasswordPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateAccountPasswordPolicyWithContext",
+		Action:  "UpdateAccountPasswordPolicy",
 		Input:   input,
 		Output:  (*iam.UpdateAccountPasswordPolicyOutput)(nil),
 		Error:   nil,
@@ -2796,7 +2796,7 @@ func (c *Client) UpdateAccountPasswordPolicyWithContext(ctx context.Context, inp
 func (c *Client) UpdateAssumeRolePolicyWithContext(ctx context.Context, input *iam.UpdateAssumeRolePolicyInput, opts ...request.Option) (*iam.UpdateAssumeRolePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateAssumeRolePolicyWithContext",
+		Action:  "UpdateAssumeRolePolicy",
 		Input:   input,
 		Output:  (*iam.UpdateAssumeRolePolicyOutput)(nil),
 		Error:   nil,
@@ -2817,7 +2817,7 @@ func (c *Client) UpdateAssumeRolePolicyWithContext(ctx context.Context, input *i
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *iam.UpdateGroupInput, opts ...request.Option) (*iam.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateGroupWithContext",
+		Action:  "UpdateGroup",
 		Input:   input,
 		Output:  (*iam.UpdateGroupOutput)(nil),
 		Error:   nil,
@@ -2838,7 +2838,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *iam.UpdateGr
 func (c *Client) UpdateLoginProfileWithContext(ctx context.Context, input *iam.UpdateLoginProfileInput, opts ...request.Option) (*iam.UpdateLoginProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateLoginProfileWithContext",
+		Action:  "UpdateLoginProfile",
 		Input:   input,
 		Output:  (*iam.UpdateLoginProfileOutput)(nil),
 		Error:   nil,
@@ -2859,7 +2859,7 @@ func (c *Client) UpdateLoginProfileWithContext(ctx context.Context, input *iam.U
 func (c *Client) UpdateOpenIDConnectProviderThumbprintWithContext(ctx context.Context, input *iam.UpdateOpenIDConnectProviderThumbprintInput, opts ...request.Option) (*iam.UpdateOpenIDConnectProviderThumbprintOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateOpenIDConnectProviderThumbprintWithContext",
+		Action:  "UpdateOpenIDConnectProviderThumbprint",
 		Input:   input,
 		Output:  (*iam.UpdateOpenIDConnectProviderThumbprintOutput)(nil),
 		Error:   nil,
@@ -2880,7 +2880,7 @@ func (c *Client) UpdateOpenIDConnectProviderThumbprintWithContext(ctx context.Co
 func (c *Client) UpdateRoleWithContext(ctx context.Context, input *iam.UpdateRoleInput, opts ...request.Option) (*iam.UpdateRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateRoleWithContext",
+		Action:  "UpdateRole",
 		Input:   input,
 		Output:  (*iam.UpdateRoleOutput)(nil),
 		Error:   nil,
@@ -2901,7 +2901,7 @@ func (c *Client) UpdateRoleWithContext(ctx context.Context, input *iam.UpdateRol
 func (c *Client) UpdateRoleDescriptionWithContext(ctx context.Context, input *iam.UpdateRoleDescriptionInput, opts ...request.Option) (*iam.UpdateRoleDescriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateRoleDescriptionWithContext",
+		Action:  "UpdateRoleDescription",
 		Input:   input,
 		Output:  (*iam.UpdateRoleDescriptionOutput)(nil),
 		Error:   nil,
@@ -2922,7 +2922,7 @@ func (c *Client) UpdateRoleDescriptionWithContext(ctx context.Context, input *ia
 func (c *Client) UpdateSAMLProviderWithContext(ctx context.Context, input *iam.UpdateSAMLProviderInput, opts ...request.Option) (*iam.UpdateSAMLProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateSAMLProviderWithContext",
+		Action:  "UpdateSAMLProvider",
 		Input:   input,
 		Output:  (*iam.UpdateSAMLProviderOutput)(nil),
 		Error:   nil,
@@ -2943,7 +2943,7 @@ func (c *Client) UpdateSAMLProviderWithContext(ctx context.Context, input *iam.U
 func (c *Client) UpdateSSHPublicKeyWithContext(ctx context.Context, input *iam.UpdateSSHPublicKeyInput, opts ...request.Option) (*iam.UpdateSSHPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateSSHPublicKeyWithContext",
+		Action:  "UpdateSSHPublicKey",
 		Input:   input,
 		Output:  (*iam.UpdateSSHPublicKeyOutput)(nil),
 		Error:   nil,
@@ -2964,7 +2964,7 @@ func (c *Client) UpdateSSHPublicKeyWithContext(ctx context.Context, input *iam.U
 func (c *Client) UpdateServerCertificateWithContext(ctx context.Context, input *iam.UpdateServerCertificateInput, opts ...request.Option) (*iam.UpdateServerCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateServerCertificateWithContext",
+		Action:  "UpdateServerCertificate",
 		Input:   input,
 		Output:  (*iam.UpdateServerCertificateOutput)(nil),
 		Error:   nil,
@@ -2985,7 +2985,7 @@ func (c *Client) UpdateServerCertificateWithContext(ctx context.Context, input *
 func (c *Client) UpdateServiceSpecificCredentialWithContext(ctx context.Context, input *iam.UpdateServiceSpecificCredentialInput, opts ...request.Option) (*iam.UpdateServiceSpecificCredentialOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateServiceSpecificCredentialWithContext",
+		Action:  "UpdateServiceSpecificCredential",
 		Input:   input,
 		Output:  (*iam.UpdateServiceSpecificCredentialOutput)(nil),
 		Error:   nil,
@@ -3006,7 +3006,7 @@ func (c *Client) UpdateServiceSpecificCredentialWithContext(ctx context.Context,
 func (c *Client) UpdateSigningCertificateWithContext(ctx context.Context, input *iam.UpdateSigningCertificateInput, opts ...request.Option) (*iam.UpdateSigningCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateSigningCertificateWithContext",
+		Action:  "UpdateSigningCertificate",
 		Input:   input,
 		Output:  (*iam.UpdateSigningCertificateOutput)(nil),
 		Error:   nil,
@@ -3027,7 +3027,7 @@ func (c *Client) UpdateSigningCertificateWithContext(ctx context.Context, input 
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *iam.UpdateUserInput, opts ...request.Option) (*iam.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UpdateUserWithContext",
+		Action:  "UpdateUser",
 		Input:   input,
 		Output:  (*iam.UpdateUserOutput)(nil),
 		Error:   nil,
@@ -3048,7 +3048,7 @@ func (c *Client) UpdateUserWithContext(ctx context.Context, input *iam.UpdateUse
 func (c *Client) UploadSSHPublicKeyWithContext(ctx context.Context, input *iam.UploadSSHPublicKeyInput, opts ...request.Option) (*iam.UploadSSHPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UploadSSHPublicKeyWithContext",
+		Action:  "UploadSSHPublicKey",
 		Input:   input,
 		Output:  (*iam.UploadSSHPublicKeyOutput)(nil),
 		Error:   nil,
@@ -3069,7 +3069,7 @@ func (c *Client) UploadSSHPublicKeyWithContext(ctx context.Context, input *iam.U
 func (c *Client) UploadServerCertificateWithContext(ctx context.Context, input *iam.UploadServerCertificateInput, opts ...request.Option) (*iam.UploadServerCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UploadServerCertificateWithContext",
+		Action:  "UploadServerCertificate",
 		Input:   input,
 		Output:  (*iam.UploadServerCertificateOutput)(nil),
 		Error:   nil,
@@ -3090,7 +3090,7 @@ func (c *Client) UploadServerCertificateWithContext(ctx context.Context, input *
 func (c *Client) UploadSigningCertificateWithContext(ctx context.Context, input *iam.UploadSigningCertificateInput, opts ...request.Option) (*iam.UploadSigningCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
-		Action:  "UploadSigningCertificateWithContext",
+		Action:  "UploadSigningCertificate",
 		Input:   input,
 		Output:  (*iam.UploadSigningCertificateOutput)(nil),
 		Error:   nil,

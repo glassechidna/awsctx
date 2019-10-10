@@ -56,7 +56,7 @@ var _ MediaConvert = (*Client)(nil)
 func (c *Client) AssociateCertificateWithContext(ctx context.Context, input *mediaconvert.AssociateCertificateInput, opts ...request.Option) (*mediaconvert.AssociateCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "AssociateCertificateWithContext",
+		Action:  "AssociateCertificate",
 		Input:   input,
 		Output:  (*mediaconvert.AssociateCertificateOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) AssociateCertificateWithContext(ctx context.Context, input *med
 func (c *Client) CancelJobWithContext(ctx context.Context, input *mediaconvert.CancelJobInput, opts ...request.Option) (*mediaconvert.CancelJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "CancelJobWithContext",
+		Action:  "CancelJob",
 		Input:   input,
 		Output:  (*mediaconvert.CancelJobOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) CancelJobWithContext(ctx context.Context, input *mediaconvert.C
 func (c *Client) CreateJobWithContext(ctx context.Context, input *mediaconvert.CreateJobInput, opts ...request.Option) (*mediaconvert.CreateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "CreateJobWithContext",
+		Action:  "CreateJob",
 		Input:   input,
 		Output:  (*mediaconvert.CreateJobOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *mediaconvert.C
 func (c *Client) CreateJobTemplateWithContext(ctx context.Context, input *mediaconvert.CreateJobTemplateInput, opts ...request.Option) (*mediaconvert.CreateJobTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "CreateJobTemplateWithContext",
+		Action:  "CreateJobTemplate",
 		Input:   input,
 		Output:  (*mediaconvert.CreateJobTemplateOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) CreateJobTemplateWithContext(ctx context.Context, input *mediac
 func (c *Client) CreatePresetWithContext(ctx context.Context, input *mediaconvert.CreatePresetInput, opts ...request.Option) (*mediaconvert.CreatePresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "CreatePresetWithContext",
+		Action:  "CreatePreset",
 		Input:   input,
 		Output:  (*mediaconvert.CreatePresetOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) CreatePresetWithContext(ctx context.Context, input *mediaconver
 func (c *Client) CreateQueueWithContext(ctx context.Context, input *mediaconvert.CreateQueueInput, opts ...request.Option) (*mediaconvert.CreateQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "CreateQueueWithContext",
+		Action:  "CreateQueue",
 		Input:   input,
 		Output:  (*mediaconvert.CreateQueueOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) CreateQueueWithContext(ctx context.Context, input *mediaconvert
 func (c *Client) DeleteJobTemplateWithContext(ctx context.Context, input *mediaconvert.DeleteJobTemplateInput, opts ...request.Option) (*mediaconvert.DeleteJobTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "DeleteJobTemplateWithContext",
+		Action:  "DeleteJobTemplate",
 		Input:   input,
 		Output:  (*mediaconvert.DeleteJobTemplateOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) DeleteJobTemplateWithContext(ctx context.Context, input *mediac
 func (c *Client) DeletePresetWithContext(ctx context.Context, input *mediaconvert.DeletePresetInput, opts ...request.Option) (*mediaconvert.DeletePresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "DeletePresetWithContext",
+		Action:  "DeletePreset",
 		Input:   input,
 		Output:  (*mediaconvert.DeletePresetOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) DeletePresetWithContext(ctx context.Context, input *mediaconver
 func (c *Client) DeleteQueueWithContext(ctx context.Context, input *mediaconvert.DeleteQueueInput, opts ...request.Option) (*mediaconvert.DeleteQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "DeleteQueueWithContext",
+		Action:  "DeleteQueue",
 		Input:   input,
 		Output:  (*mediaconvert.DeleteQueueOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) DeleteQueueWithContext(ctx context.Context, input *mediaconvert
 func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *mediaconvert.DescribeEndpointsInput, opts ...request.Option) (*mediaconvert.DescribeEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "DescribeEndpointsWithContext",
+		Action:  "DescribeEndpoints",
 		Input:   input,
 		Output:  (*mediaconvert.DescribeEndpointsOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *mediac
 func (c *Client) DisassociateCertificateWithContext(ctx context.Context, input *mediaconvert.DisassociateCertificateInput, opts ...request.Option) (*mediaconvert.DisassociateCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "DisassociateCertificateWithContext",
+		Action:  "DisassociateCertificate",
 		Input:   input,
 		Output:  (*mediaconvert.DisassociateCertificateOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) DisassociateCertificateWithContext(ctx context.Context, input *
 func (c *Client) GetJobWithContext(ctx context.Context, input *mediaconvert.GetJobInput, opts ...request.Option) (*mediaconvert.GetJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "GetJobWithContext",
+		Action:  "GetJob",
 		Input:   input,
 		Output:  (*mediaconvert.GetJobOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) GetJobWithContext(ctx context.Context, input *mediaconvert.GetJ
 func (c *Client) GetJobTemplateWithContext(ctx context.Context, input *mediaconvert.GetJobTemplateInput, opts ...request.Option) (*mediaconvert.GetJobTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "GetJobTemplateWithContext",
+		Action:  "GetJobTemplate",
 		Input:   input,
 		Output:  (*mediaconvert.GetJobTemplateOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) GetJobTemplateWithContext(ctx context.Context, input *mediaconv
 func (c *Client) GetPresetWithContext(ctx context.Context, input *mediaconvert.GetPresetInput, opts ...request.Option) (*mediaconvert.GetPresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "GetPresetWithContext",
+		Action:  "GetPreset",
 		Input:   input,
 		Output:  (*mediaconvert.GetPresetOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) GetPresetWithContext(ctx context.Context, input *mediaconvert.G
 func (c *Client) GetQueueWithContext(ctx context.Context, input *mediaconvert.GetQueueInput, opts ...request.Option) (*mediaconvert.GetQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "GetQueueWithContext",
+		Action:  "GetQueue",
 		Input:   input,
 		Output:  (*mediaconvert.GetQueueOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) GetQueueWithContext(ctx context.Context, input *mediaconvert.Ge
 func (c *Client) ListJobTemplatesWithContext(ctx context.Context, input *mediaconvert.ListJobTemplatesInput, opts ...request.Option) (*mediaconvert.ListJobTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "ListJobTemplatesWithContext",
+		Action:  "ListJobTemplates",
 		Input:   input,
 		Output:  (*mediaconvert.ListJobTemplatesOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) ListJobTemplatesWithContext(ctx context.Context, input *mediaco
 func (c *Client) ListJobsWithContext(ctx context.Context, input *mediaconvert.ListJobsInput, opts ...request.Option) (*mediaconvert.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*mediaconvert.ListJobsOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *mediaconvert.Li
 func (c *Client) ListPresetsWithContext(ctx context.Context, input *mediaconvert.ListPresetsInput, opts ...request.Option) (*mediaconvert.ListPresetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "ListPresetsWithContext",
+		Action:  "ListPresets",
 		Input:   input,
 		Output:  (*mediaconvert.ListPresetsOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) ListPresetsWithContext(ctx context.Context, input *mediaconvert
 func (c *Client) ListQueuesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, opts ...request.Option) (*mediaconvert.ListQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "ListQueuesWithContext",
+		Action:  "ListQueues",
 		Input:   input,
 		Output:  (*mediaconvert.ListQueuesOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) ListQueuesWithContext(ctx context.Context, input *mediaconvert.
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediaconvert.ListTagsForResourceInput, opts ...request.Option) (*mediaconvert.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*mediaconvert.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 func (c *Client) TagResourceWithContext(ctx context.Context, input *mediaconvert.TagResourceInput, opts ...request.Option) (*mediaconvert.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*mediaconvert.TagResourceOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *mediaconvert
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediaconvert.UntagResourceInput, opts ...request.Option) (*mediaconvert.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*mediaconvert.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediaconve
 func (c *Client) UpdateJobTemplateWithContext(ctx context.Context, input *mediaconvert.UpdateJobTemplateInput, opts ...request.Option) (*mediaconvert.UpdateJobTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "UpdateJobTemplateWithContext",
+		Action:  "UpdateJobTemplate",
 		Input:   input,
 		Output:  (*mediaconvert.UpdateJobTemplateOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) UpdateJobTemplateWithContext(ctx context.Context, input *mediac
 func (c *Client) UpdatePresetWithContext(ctx context.Context, input *mediaconvert.UpdatePresetInput, opts ...request.Option) (*mediaconvert.UpdatePresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "UpdatePresetWithContext",
+		Action:  "UpdatePreset",
 		Input:   input,
 		Output:  (*mediaconvert.UpdatePresetOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) UpdatePresetWithContext(ctx context.Context, input *mediaconver
 func (c *Client) UpdateQueueWithContext(ctx context.Context, input *mediaconvert.UpdateQueueInput, opts ...request.Option) (*mediaconvert.UpdateQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
-		Action:  "UpdateQueueWithContext",
+		Action:  "UpdateQueue",
 		Input:   input,
 		Output:  (*mediaconvert.UpdateQueueOutput)(nil),
 		Error:   nil,

@@ -114,7 +114,7 @@ var _ ServiceCatalog = (*Client)(nil)
 func (c *Client) AcceptPortfolioShareWithContext(ctx context.Context, input *servicecatalog.AcceptPortfolioShareInput, opts ...request.Option) (*servicecatalog.AcceptPortfolioShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "AcceptPortfolioShareWithContext",
+		Action:  "AcceptPortfolioShare",
 		Input:   input,
 		Output:  (*servicecatalog.AcceptPortfolioShareOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) AcceptPortfolioShareWithContext(ctx context.Context, input *ser
 func (c *Client) AssociateBudgetWithResourceWithContext(ctx context.Context, input *servicecatalog.AssociateBudgetWithResourceInput, opts ...request.Option) (*servicecatalog.AssociateBudgetWithResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "AssociateBudgetWithResourceWithContext",
+		Action:  "AssociateBudgetWithResource",
 		Input:   input,
 		Output:  (*servicecatalog.AssociateBudgetWithResourceOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) AssociateBudgetWithResourceWithContext(ctx context.Context, inp
 func (c *Client) AssociatePrincipalWithPortfolioWithContext(ctx context.Context, input *servicecatalog.AssociatePrincipalWithPortfolioInput, opts ...request.Option) (*servicecatalog.AssociatePrincipalWithPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "AssociatePrincipalWithPortfolioWithContext",
+		Action:  "AssociatePrincipalWithPortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.AssociatePrincipalWithPortfolioOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) AssociatePrincipalWithPortfolioWithContext(ctx context.Context,
 func (c *Client) AssociateProductWithPortfolioWithContext(ctx context.Context, input *servicecatalog.AssociateProductWithPortfolioInput, opts ...request.Option) (*servicecatalog.AssociateProductWithPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "AssociateProductWithPortfolioWithContext",
+		Action:  "AssociateProductWithPortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.AssociateProductWithPortfolioOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) AssociateProductWithPortfolioWithContext(ctx context.Context, i
 func (c *Client) AssociateServiceActionWithProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.AssociateServiceActionWithProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.AssociateServiceActionWithProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "AssociateServiceActionWithProvisioningArtifactWithContext",
+		Action:  "AssociateServiceActionWithProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.AssociateServiceActionWithProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) AssociateServiceActionWithProvisioningArtifactWithContext(ctx c
 func (c *Client) AssociateTagOptionWithResourceWithContext(ctx context.Context, input *servicecatalog.AssociateTagOptionWithResourceInput, opts ...request.Option) (*servicecatalog.AssociateTagOptionWithResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "AssociateTagOptionWithResourceWithContext",
+		Action:  "AssociateTagOptionWithResource",
 		Input:   input,
 		Output:  (*servicecatalog.AssociateTagOptionWithResourceOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) AssociateTagOptionWithResourceWithContext(ctx context.Context, 
 func (c *Client) BatchAssociateServiceActionWithProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.BatchAssociateServiceActionWithProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.BatchAssociateServiceActionWithProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "BatchAssociateServiceActionWithProvisioningArtifactWithContext",
+		Action:  "BatchAssociateServiceActionWithProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.BatchAssociateServiceActionWithProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) BatchAssociateServiceActionWithProvisioningArtifactWithContext(
 func (c *Client) BatchDisassociateServiceActionFromProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.BatchDisassociateServiceActionFromProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.BatchDisassociateServiceActionFromProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "BatchDisassociateServiceActionFromProvisioningArtifactWithContext",
+		Action:  "BatchDisassociateServiceActionFromProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.BatchDisassociateServiceActionFromProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) BatchDisassociateServiceActionFromProvisioningArtifactWithConte
 func (c *Client) CopyProductWithContext(ctx context.Context, input *servicecatalog.CopyProductInput, opts ...request.Option) (*servicecatalog.CopyProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CopyProductWithContext",
+		Action:  "CopyProduct",
 		Input:   input,
 		Output:  (*servicecatalog.CopyProductOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) CopyProductWithContext(ctx context.Context, input *servicecatal
 func (c *Client) CreateConstraintWithContext(ctx context.Context, input *servicecatalog.CreateConstraintInput, opts ...request.Option) (*servicecatalog.CreateConstraintOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreateConstraintWithContext",
+		Action:  "CreateConstraint",
 		Input:   input,
 		Output:  (*servicecatalog.CreateConstraintOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) CreateConstraintWithContext(ctx context.Context, input *service
 func (c *Client) CreatePortfolioWithContext(ctx context.Context, input *servicecatalog.CreatePortfolioInput, opts ...request.Option) (*servicecatalog.CreatePortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreatePortfolioWithContext",
+		Action:  "CreatePortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.CreatePortfolioOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) CreatePortfolioWithContext(ctx context.Context, input *servicec
 func (c *Client) CreatePortfolioShareWithContext(ctx context.Context, input *servicecatalog.CreatePortfolioShareInput, opts ...request.Option) (*servicecatalog.CreatePortfolioShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreatePortfolioShareWithContext",
+		Action:  "CreatePortfolioShare",
 		Input:   input,
 		Output:  (*servicecatalog.CreatePortfolioShareOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) CreatePortfolioShareWithContext(ctx context.Context, input *ser
 func (c *Client) CreateProductWithContext(ctx context.Context, input *servicecatalog.CreateProductInput, opts ...request.Option) (*servicecatalog.CreateProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreateProductWithContext",
+		Action:  "CreateProduct",
 		Input:   input,
 		Output:  (*servicecatalog.CreateProductOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) CreateProductWithContext(ctx context.Context, input *servicecat
 func (c *Client) CreateProvisionedProductPlanWithContext(ctx context.Context, input *servicecatalog.CreateProvisionedProductPlanInput, opts ...request.Option) (*servicecatalog.CreateProvisionedProductPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreateProvisionedProductPlanWithContext",
+		Action:  "CreateProvisionedProductPlan",
 		Input:   input,
 		Output:  (*servicecatalog.CreateProvisionedProductPlanOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) CreateProvisionedProductPlanWithContext(ctx context.Context, in
 func (c *Client) CreateProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.CreateProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.CreateProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreateProvisioningArtifactWithContext",
+		Action:  "CreateProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.CreateProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) CreateProvisioningArtifactWithContext(ctx context.Context, inpu
 func (c *Client) CreateServiceActionWithContext(ctx context.Context, input *servicecatalog.CreateServiceActionInput, opts ...request.Option) (*servicecatalog.CreateServiceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreateServiceActionWithContext",
+		Action:  "CreateServiceAction",
 		Input:   input,
 		Output:  (*servicecatalog.CreateServiceActionOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) CreateServiceActionWithContext(ctx context.Context, input *serv
 func (c *Client) CreateTagOptionWithContext(ctx context.Context, input *servicecatalog.CreateTagOptionInput, opts ...request.Option) (*servicecatalog.CreateTagOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "CreateTagOptionWithContext",
+		Action:  "CreateTagOption",
 		Input:   input,
 		Output:  (*servicecatalog.CreateTagOptionOutput)(nil),
 		Error:   nil,
@@ -471,7 +471,7 @@ func (c *Client) CreateTagOptionWithContext(ctx context.Context, input *servicec
 func (c *Client) DeleteConstraintWithContext(ctx context.Context, input *servicecatalog.DeleteConstraintInput, opts ...request.Option) (*servicecatalog.DeleteConstraintOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeleteConstraintWithContext",
+		Action:  "DeleteConstraint",
 		Input:   input,
 		Output:  (*servicecatalog.DeleteConstraintOutput)(nil),
 		Error:   nil,
@@ -492,7 +492,7 @@ func (c *Client) DeleteConstraintWithContext(ctx context.Context, input *service
 func (c *Client) DeletePortfolioWithContext(ctx context.Context, input *servicecatalog.DeletePortfolioInput, opts ...request.Option) (*servicecatalog.DeletePortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeletePortfolioWithContext",
+		Action:  "DeletePortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.DeletePortfolioOutput)(nil),
 		Error:   nil,
@@ -513,7 +513,7 @@ func (c *Client) DeletePortfolioWithContext(ctx context.Context, input *servicec
 func (c *Client) DeletePortfolioShareWithContext(ctx context.Context, input *servicecatalog.DeletePortfolioShareInput, opts ...request.Option) (*servicecatalog.DeletePortfolioShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeletePortfolioShareWithContext",
+		Action:  "DeletePortfolioShare",
 		Input:   input,
 		Output:  (*servicecatalog.DeletePortfolioShareOutput)(nil),
 		Error:   nil,
@@ -534,7 +534,7 @@ func (c *Client) DeletePortfolioShareWithContext(ctx context.Context, input *ser
 func (c *Client) DeleteProductWithContext(ctx context.Context, input *servicecatalog.DeleteProductInput, opts ...request.Option) (*servicecatalog.DeleteProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeleteProductWithContext",
+		Action:  "DeleteProduct",
 		Input:   input,
 		Output:  (*servicecatalog.DeleteProductOutput)(nil),
 		Error:   nil,
@@ -555,7 +555,7 @@ func (c *Client) DeleteProductWithContext(ctx context.Context, input *servicecat
 func (c *Client) DeleteProvisionedProductPlanWithContext(ctx context.Context, input *servicecatalog.DeleteProvisionedProductPlanInput, opts ...request.Option) (*servicecatalog.DeleteProvisionedProductPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeleteProvisionedProductPlanWithContext",
+		Action:  "DeleteProvisionedProductPlan",
 		Input:   input,
 		Output:  (*servicecatalog.DeleteProvisionedProductPlanOutput)(nil),
 		Error:   nil,
@@ -576,7 +576,7 @@ func (c *Client) DeleteProvisionedProductPlanWithContext(ctx context.Context, in
 func (c *Client) DeleteProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.DeleteProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.DeleteProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeleteProvisioningArtifactWithContext",
+		Action:  "DeleteProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.DeleteProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -597,7 +597,7 @@ func (c *Client) DeleteProvisioningArtifactWithContext(ctx context.Context, inpu
 func (c *Client) DeleteServiceActionWithContext(ctx context.Context, input *servicecatalog.DeleteServiceActionInput, opts ...request.Option) (*servicecatalog.DeleteServiceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeleteServiceActionWithContext",
+		Action:  "DeleteServiceAction",
 		Input:   input,
 		Output:  (*servicecatalog.DeleteServiceActionOutput)(nil),
 		Error:   nil,
@@ -618,7 +618,7 @@ func (c *Client) DeleteServiceActionWithContext(ctx context.Context, input *serv
 func (c *Client) DeleteTagOptionWithContext(ctx context.Context, input *servicecatalog.DeleteTagOptionInput, opts ...request.Option) (*servicecatalog.DeleteTagOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DeleteTagOptionWithContext",
+		Action:  "DeleteTagOption",
 		Input:   input,
 		Output:  (*servicecatalog.DeleteTagOptionOutput)(nil),
 		Error:   nil,
@@ -639,7 +639,7 @@ func (c *Client) DeleteTagOptionWithContext(ctx context.Context, input *servicec
 func (c *Client) DescribeConstraintWithContext(ctx context.Context, input *servicecatalog.DescribeConstraintInput, opts ...request.Option) (*servicecatalog.DescribeConstraintOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeConstraintWithContext",
+		Action:  "DescribeConstraint",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeConstraintOutput)(nil),
 		Error:   nil,
@@ -660,7 +660,7 @@ func (c *Client) DescribeConstraintWithContext(ctx context.Context, input *servi
 func (c *Client) DescribeCopyProductStatusWithContext(ctx context.Context, input *servicecatalog.DescribeCopyProductStatusInput, opts ...request.Option) (*servicecatalog.DescribeCopyProductStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeCopyProductStatusWithContext",
+		Action:  "DescribeCopyProductStatus",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeCopyProductStatusOutput)(nil),
 		Error:   nil,
@@ -681,7 +681,7 @@ func (c *Client) DescribeCopyProductStatusWithContext(ctx context.Context, input
 func (c *Client) DescribePortfolioWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioInput, opts ...request.Option) (*servicecatalog.DescribePortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribePortfolioWithContext",
+		Action:  "DescribePortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.DescribePortfolioOutput)(nil),
 		Error:   nil,
@@ -702,7 +702,7 @@ func (c *Client) DescribePortfolioWithContext(ctx context.Context, input *servic
 func (c *Client) DescribePortfolioShareStatusWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioShareStatusInput, opts ...request.Option) (*servicecatalog.DescribePortfolioShareStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribePortfolioShareStatusWithContext",
+		Action:  "DescribePortfolioShareStatus",
 		Input:   input,
 		Output:  (*servicecatalog.DescribePortfolioShareStatusOutput)(nil),
 		Error:   nil,
@@ -723,7 +723,7 @@ func (c *Client) DescribePortfolioShareStatusWithContext(ctx context.Context, in
 func (c *Client) DescribeProductWithContext(ctx context.Context, input *servicecatalog.DescribeProductInput, opts ...request.Option) (*servicecatalog.DescribeProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProductWithContext",
+		Action:  "DescribeProduct",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProductOutput)(nil),
 		Error:   nil,
@@ -744,7 +744,7 @@ func (c *Client) DescribeProductWithContext(ctx context.Context, input *servicec
 func (c *Client) DescribeProductAsAdminWithContext(ctx context.Context, input *servicecatalog.DescribeProductAsAdminInput, opts ...request.Option) (*servicecatalog.DescribeProductAsAdminOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProductAsAdminWithContext",
+		Action:  "DescribeProductAsAdmin",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProductAsAdminOutput)(nil),
 		Error:   nil,
@@ -765,7 +765,7 @@ func (c *Client) DescribeProductAsAdminWithContext(ctx context.Context, input *s
 func (c *Client) DescribeProductViewWithContext(ctx context.Context, input *servicecatalog.DescribeProductViewInput, opts ...request.Option) (*servicecatalog.DescribeProductViewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProductViewWithContext",
+		Action:  "DescribeProductView",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProductViewOutput)(nil),
 		Error:   nil,
@@ -786,7 +786,7 @@ func (c *Client) DescribeProductViewWithContext(ctx context.Context, input *serv
 func (c *Client) DescribeProvisionedProductWithContext(ctx context.Context, input *servicecatalog.DescribeProvisionedProductInput, opts ...request.Option) (*servicecatalog.DescribeProvisionedProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProvisionedProductWithContext",
+		Action:  "DescribeProvisionedProduct",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProvisionedProductOutput)(nil),
 		Error:   nil,
@@ -807,7 +807,7 @@ func (c *Client) DescribeProvisionedProductWithContext(ctx context.Context, inpu
 func (c *Client) DescribeProvisionedProductPlanWithContext(ctx context.Context, input *servicecatalog.DescribeProvisionedProductPlanInput, opts ...request.Option) (*servicecatalog.DescribeProvisionedProductPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProvisionedProductPlanWithContext",
+		Action:  "DescribeProvisionedProductPlan",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProvisionedProductPlanOutput)(nil),
 		Error:   nil,
@@ -828,7 +828,7 @@ func (c *Client) DescribeProvisionedProductPlanWithContext(ctx context.Context, 
 func (c *Client) DescribeProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.DescribeProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.DescribeProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProvisioningArtifactWithContext",
+		Action:  "DescribeProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -849,7 +849,7 @@ func (c *Client) DescribeProvisioningArtifactWithContext(ctx context.Context, in
 func (c *Client) DescribeProvisioningParametersWithContext(ctx context.Context, input *servicecatalog.DescribeProvisioningParametersInput, opts ...request.Option) (*servicecatalog.DescribeProvisioningParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeProvisioningParametersWithContext",
+		Action:  "DescribeProvisioningParameters",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeProvisioningParametersOutput)(nil),
 		Error:   nil,
@@ -870,7 +870,7 @@ func (c *Client) DescribeProvisioningParametersWithContext(ctx context.Context, 
 func (c *Client) DescribeRecordWithContext(ctx context.Context, input *servicecatalog.DescribeRecordInput, opts ...request.Option) (*servicecatalog.DescribeRecordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeRecordWithContext",
+		Action:  "DescribeRecord",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeRecordOutput)(nil),
 		Error:   nil,
@@ -891,7 +891,7 @@ func (c *Client) DescribeRecordWithContext(ctx context.Context, input *serviceca
 func (c *Client) DescribeServiceActionWithContext(ctx context.Context, input *servicecatalog.DescribeServiceActionInput, opts ...request.Option) (*servicecatalog.DescribeServiceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeServiceActionWithContext",
+		Action:  "DescribeServiceAction",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeServiceActionOutput)(nil),
 		Error:   nil,
@@ -912,7 +912,7 @@ func (c *Client) DescribeServiceActionWithContext(ctx context.Context, input *se
 func (c *Client) DescribeServiceActionExecutionParametersWithContext(ctx context.Context, input *servicecatalog.DescribeServiceActionExecutionParametersInput, opts ...request.Option) (*servicecatalog.DescribeServiceActionExecutionParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeServiceActionExecutionParametersWithContext",
+		Action:  "DescribeServiceActionExecutionParameters",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeServiceActionExecutionParametersOutput)(nil),
 		Error:   nil,
@@ -933,7 +933,7 @@ func (c *Client) DescribeServiceActionExecutionParametersWithContext(ctx context
 func (c *Client) DescribeTagOptionWithContext(ctx context.Context, input *servicecatalog.DescribeTagOptionInput, opts ...request.Option) (*servicecatalog.DescribeTagOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DescribeTagOptionWithContext",
+		Action:  "DescribeTagOption",
 		Input:   input,
 		Output:  (*servicecatalog.DescribeTagOptionOutput)(nil),
 		Error:   nil,
@@ -954,7 +954,7 @@ func (c *Client) DescribeTagOptionWithContext(ctx context.Context, input *servic
 func (c *Client) DisableAWSOrganizationsAccessWithContext(ctx context.Context, input *servicecatalog.DisableAWSOrganizationsAccessInput, opts ...request.Option) (*servicecatalog.DisableAWSOrganizationsAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DisableAWSOrganizationsAccessWithContext",
+		Action:  "DisableAWSOrganizationsAccess",
 		Input:   input,
 		Output:  (*servicecatalog.DisableAWSOrganizationsAccessOutput)(nil),
 		Error:   nil,
@@ -975,7 +975,7 @@ func (c *Client) DisableAWSOrganizationsAccessWithContext(ctx context.Context, i
 func (c *Client) DisassociateBudgetFromResourceWithContext(ctx context.Context, input *servicecatalog.DisassociateBudgetFromResourceInput, opts ...request.Option) (*servicecatalog.DisassociateBudgetFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DisassociateBudgetFromResourceWithContext",
+		Action:  "DisassociateBudgetFromResource",
 		Input:   input,
 		Output:  (*servicecatalog.DisassociateBudgetFromResourceOutput)(nil),
 		Error:   nil,
@@ -996,7 +996,7 @@ func (c *Client) DisassociateBudgetFromResourceWithContext(ctx context.Context, 
 func (c *Client) DisassociatePrincipalFromPortfolioWithContext(ctx context.Context, input *servicecatalog.DisassociatePrincipalFromPortfolioInput, opts ...request.Option) (*servicecatalog.DisassociatePrincipalFromPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DisassociatePrincipalFromPortfolioWithContext",
+		Action:  "DisassociatePrincipalFromPortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.DisassociatePrincipalFromPortfolioOutput)(nil),
 		Error:   nil,
@@ -1017,7 +1017,7 @@ func (c *Client) DisassociatePrincipalFromPortfolioWithContext(ctx context.Conte
 func (c *Client) DisassociateProductFromPortfolioWithContext(ctx context.Context, input *servicecatalog.DisassociateProductFromPortfolioInput, opts ...request.Option) (*servicecatalog.DisassociateProductFromPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DisassociateProductFromPortfolioWithContext",
+		Action:  "DisassociateProductFromPortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.DisassociateProductFromPortfolioOutput)(nil),
 		Error:   nil,
@@ -1038,7 +1038,7 @@ func (c *Client) DisassociateProductFromPortfolioWithContext(ctx context.Context
 func (c *Client) DisassociateServiceActionFromProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.DisassociateServiceActionFromProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.DisassociateServiceActionFromProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DisassociateServiceActionFromProvisioningArtifactWithContext",
+		Action:  "DisassociateServiceActionFromProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.DisassociateServiceActionFromProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -1059,7 +1059,7 @@ func (c *Client) DisassociateServiceActionFromProvisioningArtifactWithContext(ct
 func (c *Client) DisassociateTagOptionFromResourceWithContext(ctx context.Context, input *servicecatalog.DisassociateTagOptionFromResourceInput, opts ...request.Option) (*servicecatalog.DisassociateTagOptionFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "DisassociateTagOptionFromResourceWithContext",
+		Action:  "DisassociateTagOptionFromResource",
 		Input:   input,
 		Output:  (*servicecatalog.DisassociateTagOptionFromResourceOutput)(nil),
 		Error:   nil,
@@ -1080,7 +1080,7 @@ func (c *Client) DisassociateTagOptionFromResourceWithContext(ctx context.Contex
 func (c *Client) EnableAWSOrganizationsAccessWithContext(ctx context.Context, input *servicecatalog.EnableAWSOrganizationsAccessInput, opts ...request.Option) (*servicecatalog.EnableAWSOrganizationsAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "EnableAWSOrganizationsAccessWithContext",
+		Action:  "EnableAWSOrganizationsAccess",
 		Input:   input,
 		Output:  (*servicecatalog.EnableAWSOrganizationsAccessOutput)(nil),
 		Error:   nil,
@@ -1101,7 +1101,7 @@ func (c *Client) EnableAWSOrganizationsAccessWithContext(ctx context.Context, in
 func (c *Client) ExecuteProvisionedProductPlanWithContext(ctx context.Context, input *servicecatalog.ExecuteProvisionedProductPlanInput, opts ...request.Option) (*servicecatalog.ExecuteProvisionedProductPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ExecuteProvisionedProductPlanWithContext",
+		Action:  "ExecuteProvisionedProductPlan",
 		Input:   input,
 		Output:  (*servicecatalog.ExecuteProvisionedProductPlanOutput)(nil),
 		Error:   nil,
@@ -1122,7 +1122,7 @@ func (c *Client) ExecuteProvisionedProductPlanWithContext(ctx context.Context, i
 func (c *Client) ExecuteProvisionedProductServiceActionWithContext(ctx context.Context, input *servicecatalog.ExecuteProvisionedProductServiceActionInput, opts ...request.Option) (*servicecatalog.ExecuteProvisionedProductServiceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ExecuteProvisionedProductServiceActionWithContext",
+		Action:  "ExecuteProvisionedProductServiceAction",
 		Input:   input,
 		Output:  (*servicecatalog.ExecuteProvisionedProductServiceActionOutput)(nil),
 		Error:   nil,
@@ -1143,7 +1143,7 @@ func (c *Client) ExecuteProvisionedProductServiceActionWithContext(ctx context.C
 func (c *Client) GetAWSOrganizationsAccessStatusWithContext(ctx context.Context, input *servicecatalog.GetAWSOrganizationsAccessStatusInput, opts ...request.Option) (*servicecatalog.GetAWSOrganizationsAccessStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "GetAWSOrganizationsAccessStatusWithContext",
+		Action:  "GetAWSOrganizationsAccessStatus",
 		Input:   input,
 		Output:  (*servicecatalog.GetAWSOrganizationsAccessStatusOutput)(nil),
 		Error:   nil,
@@ -1164,7 +1164,7 @@ func (c *Client) GetAWSOrganizationsAccessStatusWithContext(ctx context.Context,
 func (c *Client) ListAcceptedPortfolioSharesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, opts ...request.Option) (*servicecatalog.ListAcceptedPortfolioSharesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListAcceptedPortfolioSharesWithContext",
+		Action:  "ListAcceptedPortfolioShares",
 		Input:   input,
 		Output:  (*servicecatalog.ListAcceptedPortfolioSharesOutput)(nil),
 		Error:   nil,
@@ -1185,7 +1185,7 @@ func (c *Client) ListAcceptedPortfolioSharesWithContext(ctx context.Context, inp
 func (c *Client) ListBudgetsForResourceWithContext(ctx context.Context, input *servicecatalog.ListBudgetsForResourceInput, opts ...request.Option) (*servicecatalog.ListBudgetsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListBudgetsForResourceWithContext",
+		Action:  "ListBudgetsForResource",
 		Input:   input,
 		Output:  (*servicecatalog.ListBudgetsForResourceOutput)(nil),
 		Error:   nil,
@@ -1206,7 +1206,7 @@ func (c *Client) ListBudgetsForResourceWithContext(ctx context.Context, input *s
 func (c *Client) ListConstraintsForPortfolioWithContext(ctx context.Context, input *servicecatalog.ListConstraintsForPortfolioInput, opts ...request.Option) (*servicecatalog.ListConstraintsForPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListConstraintsForPortfolioWithContext",
+		Action:  "ListConstraintsForPortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.ListConstraintsForPortfolioOutput)(nil),
 		Error:   nil,
@@ -1227,7 +1227,7 @@ func (c *Client) ListConstraintsForPortfolioWithContext(ctx context.Context, inp
 func (c *Client) ListLaunchPathsWithContext(ctx context.Context, input *servicecatalog.ListLaunchPathsInput, opts ...request.Option) (*servicecatalog.ListLaunchPathsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListLaunchPathsWithContext",
+		Action:  "ListLaunchPaths",
 		Input:   input,
 		Output:  (*servicecatalog.ListLaunchPathsOutput)(nil),
 		Error:   nil,
@@ -1248,7 +1248,7 @@ func (c *Client) ListLaunchPathsWithContext(ctx context.Context, input *servicec
 func (c *Client) ListOrganizationPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListOrganizationPortfolioAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListOrganizationPortfolioAccessWithContext",
+		Action:  "ListOrganizationPortfolioAccess",
 		Input:   input,
 		Output:  (*servicecatalog.ListOrganizationPortfolioAccessOutput)(nil),
 		Error:   nil,
@@ -1269,7 +1269,7 @@ func (c *Client) ListOrganizationPortfolioAccessWithContext(ctx context.Context,
 func (c *Client) ListPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListPortfolioAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListPortfolioAccessWithContext",
+		Action:  "ListPortfolioAccess",
 		Input:   input,
 		Output:  (*servicecatalog.ListPortfolioAccessOutput)(nil),
 		Error:   nil,
@@ -1290,7 +1290,7 @@ func (c *Client) ListPortfolioAccessWithContext(ctx context.Context, input *serv
 func (c *Client) ListPortfoliosWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, opts ...request.Option) (*servicecatalog.ListPortfoliosOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListPortfoliosWithContext",
+		Action:  "ListPortfolios",
 		Input:   input,
 		Output:  (*servicecatalog.ListPortfoliosOutput)(nil),
 		Error:   nil,
@@ -1311,7 +1311,7 @@ func (c *Client) ListPortfoliosWithContext(ctx context.Context, input *serviceca
 func (c *Client) ListPortfoliosForProductWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosForProductInput, opts ...request.Option) (*servicecatalog.ListPortfoliosForProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListPortfoliosForProductWithContext",
+		Action:  "ListPortfoliosForProduct",
 		Input:   input,
 		Output:  (*servicecatalog.ListPortfoliosForProductOutput)(nil),
 		Error:   nil,
@@ -1332,7 +1332,7 @@ func (c *Client) ListPortfoliosForProductWithContext(ctx context.Context, input 
 func (c *Client) ListPrincipalsForPortfolioWithContext(ctx context.Context, input *servicecatalog.ListPrincipalsForPortfolioInput, opts ...request.Option) (*servicecatalog.ListPrincipalsForPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListPrincipalsForPortfolioWithContext",
+		Action:  "ListPrincipalsForPortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.ListPrincipalsForPortfolioOutput)(nil),
 		Error:   nil,
@@ -1353,7 +1353,7 @@ func (c *Client) ListPrincipalsForPortfolioWithContext(ctx context.Context, inpu
 func (c *Client) ListProvisionedProductPlansWithContext(ctx context.Context, input *servicecatalog.ListProvisionedProductPlansInput, opts ...request.Option) (*servicecatalog.ListProvisionedProductPlansOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListProvisionedProductPlansWithContext",
+		Action:  "ListProvisionedProductPlans",
 		Input:   input,
 		Output:  (*servicecatalog.ListProvisionedProductPlansOutput)(nil),
 		Error:   nil,
@@ -1374,7 +1374,7 @@ func (c *Client) ListProvisionedProductPlansWithContext(ctx context.Context, inp
 func (c *Client) ListProvisioningArtifactsWithContext(ctx context.Context, input *servicecatalog.ListProvisioningArtifactsInput, opts ...request.Option) (*servicecatalog.ListProvisioningArtifactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListProvisioningArtifactsWithContext",
+		Action:  "ListProvisioningArtifacts",
 		Input:   input,
 		Output:  (*servicecatalog.ListProvisioningArtifactsOutput)(nil),
 		Error:   nil,
@@ -1395,7 +1395,7 @@ func (c *Client) ListProvisioningArtifactsWithContext(ctx context.Context, input
 func (c *Client) ListProvisioningArtifactsForServiceActionWithContext(ctx context.Context, input *servicecatalog.ListProvisioningArtifactsForServiceActionInput, opts ...request.Option) (*servicecatalog.ListProvisioningArtifactsForServiceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListProvisioningArtifactsForServiceActionWithContext",
+		Action:  "ListProvisioningArtifactsForServiceAction",
 		Input:   input,
 		Output:  (*servicecatalog.ListProvisioningArtifactsForServiceActionOutput)(nil),
 		Error:   nil,
@@ -1416,7 +1416,7 @@ func (c *Client) ListProvisioningArtifactsForServiceActionWithContext(ctx contex
 func (c *Client) ListRecordHistoryWithContext(ctx context.Context, input *servicecatalog.ListRecordHistoryInput, opts ...request.Option) (*servicecatalog.ListRecordHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListRecordHistoryWithContext",
+		Action:  "ListRecordHistory",
 		Input:   input,
 		Output:  (*servicecatalog.ListRecordHistoryOutput)(nil),
 		Error:   nil,
@@ -1437,7 +1437,7 @@ func (c *Client) ListRecordHistoryWithContext(ctx context.Context, input *servic
 func (c *Client) ListResourcesForTagOptionWithContext(ctx context.Context, input *servicecatalog.ListResourcesForTagOptionInput, opts ...request.Option) (*servicecatalog.ListResourcesForTagOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListResourcesForTagOptionWithContext",
+		Action:  "ListResourcesForTagOption",
 		Input:   input,
 		Output:  (*servicecatalog.ListResourcesForTagOptionOutput)(nil),
 		Error:   nil,
@@ -1458,7 +1458,7 @@ func (c *Client) ListResourcesForTagOptionWithContext(ctx context.Context, input
 func (c *Client) ListServiceActionsWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsInput, opts ...request.Option) (*servicecatalog.ListServiceActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListServiceActionsWithContext",
+		Action:  "ListServiceActions",
 		Input:   input,
 		Output:  (*servicecatalog.ListServiceActionsOutput)(nil),
 		Error:   nil,
@@ -1479,7 +1479,7 @@ func (c *Client) ListServiceActionsWithContext(ctx context.Context, input *servi
 func (c *Client) ListServiceActionsForProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsForProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.ListServiceActionsForProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListServiceActionsForProvisioningArtifactWithContext",
+		Action:  "ListServiceActionsForProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.ListServiceActionsForProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -1500,7 +1500,7 @@ func (c *Client) ListServiceActionsForProvisioningArtifactWithContext(ctx contex
 func (c *Client) ListStackInstancesForProvisionedProductWithContext(ctx context.Context, input *servicecatalog.ListStackInstancesForProvisionedProductInput, opts ...request.Option) (*servicecatalog.ListStackInstancesForProvisionedProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListStackInstancesForProvisionedProductWithContext",
+		Action:  "ListStackInstancesForProvisionedProduct",
 		Input:   input,
 		Output:  (*servicecatalog.ListStackInstancesForProvisionedProductOutput)(nil),
 		Error:   nil,
@@ -1521,7 +1521,7 @@ func (c *Client) ListStackInstancesForProvisionedProductWithContext(ctx context.
 func (c *Client) ListTagOptionsWithContext(ctx context.Context, input *servicecatalog.ListTagOptionsInput, opts ...request.Option) (*servicecatalog.ListTagOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ListTagOptionsWithContext",
+		Action:  "ListTagOptions",
 		Input:   input,
 		Output:  (*servicecatalog.ListTagOptionsOutput)(nil),
 		Error:   nil,
@@ -1542,7 +1542,7 @@ func (c *Client) ListTagOptionsWithContext(ctx context.Context, input *serviceca
 func (c *Client) ProvisionProductWithContext(ctx context.Context, input *servicecatalog.ProvisionProductInput, opts ...request.Option) (*servicecatalog.ProvisionProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ProvisionProductWithContext",
+		Action:  "ProvisionProduct",
 		Input:   input,
 		Output:  (*servicecatalog.ProvisionProductOutput)(nil),
 		Error:   nil,
@@ -1563,7 +1563,7 @@ func (c *Client) ProvisionProductWithContext(ctx context.Context, input *service
 func (c *Client) RejectPortfolioShareWithContext(ctx context.Context, input *servicecatalog.RejectPortfolioShareInput, opts ...request.Option) (*servicecatalog.RejectPortfolioShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "RejectPortfolioShareWithContext",
+		Action:  "RejectPortfolioShare",
 		Input:   input,
 		Output:  (*servicecatalog.RejectPortfolioShareOutput)(nil),
 		Error:   nil,
@@ -1584,7 +1584,7 @@ func (c *Client) RejectPortfolioShareWithContext(ctx context.Context, input *ser
 func (c *Client) ScanProvisionedProductsWithContext(ctx context.Context, input *servicecatalog.ScanProvisionedProductsInput, opts ...request.Option) (*servicecatalog.ScanProvisionedProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "ScanProvisionedProductsWithContext",
+		Action:  "ScanProvisionedProducts",
 		Input:   input,
 		Output:  (*servicecatalog.ScanProvisionedProductsOutput)(nil),
 		Error:   nil,
@@ -1605,7 +1605,7 @@ func (c *Client) ScanProvisionedProductsWithContext(ctx context.Context, input *
 func (c *Client) SearchProductsWithContext(ctx context.Context, input *servicecatalog.SearchProductsInput, opts ...request.Option) (*servicecatalog.SearchProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "SearchProductsWithContext",
+		Action:  "SearchProducts",
 		Input:   input,
 		Output:  (*servicecatalog.SearchProductsOutput)(nil),
 		Error:   nil,
@@ -1626,7 +1626,7 @@ func (c *Client) SearchProductsWithContext(ctx context.Context, input *serviceca
 func (c *Client) SearchProductsAsAdminWithContext(ctx context.Context, input *servicecatalog.SearchProductsAsAdminInput, opts ...request.Option) (*servicecatalog.SearchProductsAsAdminOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "SearchProductsAsAdminWithContext",
+		Action:  "SearchProductsAsAdmin",
 		Input:   input,
 		Output:  (*servicecatalog.SearchProductsAsAdminOutput)(nil),
 		Error:   nil,
@@ -1647,7 +1647,7 @@ func (c *Client) SearchProductsAsAdminWithContext(ctx context.Context, input *se
 func (c *Client) SearchProvisionedProductsWithContext(ctx context.Context, input *servicecatalog.SearchProvisionedProductsInput, opts ...request.Option) (*servicecatalog.SearchProvisionedProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "SearchProvisionedProductsWithContext",
+		Action:  "SearchProvisionedProducts",
 		Input:   input,
 		Output:  (*servicecatalog.SearchProvisionedProductsOutput)(nil),
 		Error:   nil,
@@ -1668,7 +1668,7 @@ func (c *Client) SearchProvisionedProductsWithContext(ctx context.Context, input
 func (c *Client) TerminateProvisionedProductWithContext(ctx context.Context, input *servicecatalog.TerminateProvisionedProductInput, opts ...request.Option) (*servicecatalog.TerminateProvisionedProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "TerminateProvisionedProductWithContext",
+		Action:  "TerminateProvisionedProduct",
 		Input:   input,
 		Output:  (*servicecatalog.TerminateProvisionedProductOutput)(nil),
 		Error:   nil,
@@ -1689,7 +1689,7 @@ func (c *Client) TerminateProvisionedProductWithContext(ctx context.Context, inp
 func (c *Client) UpdateConstraintWithContext(ctx context.Context, input *servicecatalog.UpdateConstraintInput, opts ...request.Option) (*servicecatalog.UpdateConstraintOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateConstraintWithContext",
+		Action:  "UpdateConstraint",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateConstraintOutput)(nil),
 		Error:   nil,
@@ -1710,7 +1710,7 @@ func (c *Client) UpdateConstraintWithContext(ctx context.Context, input *service
 func (c *Client) UpdatePortfolioWithContext(ctx context.Context, input *servicecatalog.UpdatePortfolioInput, opts ...request.Option) (*servicecatalog.UpdatePortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdatePortfolioWithContext",
+		Action:  "UpdatePortfolio",
 		Input:   input,
 		Output:  (*servicecatalog.UpdatePortfolioOutput)(nil),
 		Error:   nil,
@@ -1731,7 +1731,7 @@ func (c *Client) UpdatePortfolioWithContext(ctx context.Context, input *servicec
 func (c *Client) UpdateProductWithContext(ctx context.Context, input *servicecatalog.UpdateProductInput, opts ...request.Option) (*servicecatalog.UpdateProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateProductWithContext",
+		Action:  "UpdateProduct",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateProductOutput)(nil),
 		Error:   nil,
@@ -1752,7 +1752,7 @@ func (c *Client) UpdateProductWithContext(ctx context.Context, input *servicecat
 func (c *Client) UpdateProvisionedProductWithContext(ctx context.Context, input *servicecatalog.UpdateProvisionedProductInput, opts ...request.Option) (*servicecatalog.UpdateProvisionedProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateProvisionedProductWithContext",
+		Action:  "UpdateProvisionedProduct",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateProvisionedProductOutput)(nil),
 		Error:   nil,
@@ -1773,7 +1773,7 @@ func (c *Client) UpdateProvisionedProductWithContext(ctx context.Context, input 
 func (c *Client) UpdateProvisionedProductPropertiesWithContext(ctx context.Context, input *servicecatalog.UpdateProvisionedProductPropertiesInput, opts ...request.Option) (*servicecatalog.UpdateProvisionedProductPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateProvisionedProductPropertiesWithContext",
+		Action:  "UpdateProvisionedProductProperties",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateProvisionedProductPropertiesOutput)(nil),
 		Error:   nil,
@@ -1794,7 +1794,7 @@ func (c *Client) UpdateProvisionedProductPropertiesWithContext(ctx context.Conte
 func (c *Client) UpdateProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.UpdateProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.UpdateProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateProvisioningArtifactWithContext",
+		Action:  "UpdateProvisioningArtifact",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateProvisioningArtifactOutput)(nil),
 		Error:   nil,
@@ -1815,7 +1815,7 @@ func (c *Client) UpdateProvisioningArtifactWithContext(ctx context.Context, inpu
 func (c *Client) UpdateServiceActionWithContext(ctx context.Context, input *servicecatalog.UpdateServiceActionInput, opts ...request.Option) (*servicecatalog.UpdateServiceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateServiceActionWithContext",
+		Action:  "UpdateServiceAction",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateServiceActionOutput)(nil),
 		Error:   nil,
@@ -1836,7 +1836,7 @@ func (c *Client) UpdateServiceActionWithContext(ctx context.Context, input *serv
 func (c *Client) UpdateTagOptionWithContext(ctx context.Context, input *servicecatalog.UpdateTagOptionInput, opts ...request.Option) (*servicecatalog.UpdateTagOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
-		Action:  "UpdateTagOptionWithContext",
+		Action:  "UpdateTagOption",
 		Input:   input,
 		Output:  (*servicecatalog.UpdateTagOptionOutput)(nil),
 		Error:   nil,

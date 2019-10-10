@@ -36,7 +36,7 @@ var _ MediaStoreData = (*Client)(nil)
 func (c *Client) DeleteObjectWithContext(ctx context.Context, input *mediastoredata.DeleteObjectInput, opts ...request.Option) (*mediastoredata.DeleteObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastoredata",
-		Action:  "DeleteObjectWithContext",
+		Action:  "DeleteObject",
 		Input:   input,
 		Output:  (*mediastoredata.DeleteObjectOutput)(nil),
 		Error:   nil,
@@ -57,7 +57,7 @@ func (c *Client) DeleteObjectWithContext(ctx context.Context, input *mediastored
 func (c *Client) DescribeObjectWithContext(ctx context.Context, input *mediastoredata.DescribeObjectInput, opts ...request.Option) (*mediastoredata.DescribeObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastoredata",
-		Action:  "DescribeObjectWithContext",
+		Action:  "DescribeObject",
 		Input:   input,
 		Output:  (*mediastoredata.DescribeObjectOutput)(nil),
 		Error:   nil,
@@ -78,7 +78,7 @@ func (c *Client) DescribeObjectWithContext(ctx context.Context, input *mediastor
 func (c *Client) GetObjectWithContext(ctx context.Context, input *mediastoredata.GetObjectInput, opts ...request.Option) (*mediastoredata.GetObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastoredata",
-		Action:  "GetObjectWithContext",
+		Action:  "GetObject",
 		Input:   input,
 		Output:  (*mediastoredata.GetObjectOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) GetObjectWithContext(ctx context.Context, input *mediastoredata
 func (c *Client) ListItemsWithContext(ctx context.Context, input *mediastoredata.ListItemsInput, opts ...request.Option) (*mediastoredata.ListItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastoredata",
-		Action:  "ListItemsWithContext",
+		Action:  "ListItems",
 		Input:   input,
 		Output:  (*mediastoredata.ListItemsOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) ListItemsWithContext(ctx context.Context, input *mediastoredata
 func (c *Client) PutObjectWithContext(ctx context.Context, input *mediastoredata.PutObjectInput, opts ...request.Option) (*mediastoredata.PutObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastoredata",
-		Action:  "PutObjectWithContext",
+		Action:  "PutObject",
 		Input:   input,
 		Output:  (*mediastoredata.PutObjectOutput)(nil),
 		Error:   nil,

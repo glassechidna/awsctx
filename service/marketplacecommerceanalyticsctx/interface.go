@@ -33,7 +33,7 @@ var _ MarketplaceCommerceAnalytics = (*Client)(nil)
 func (c *Client) GenerateDataSetWithContext(ctx context.Context, input *marketplacecommerceanalytics.GenerateDataSetInput, opts ...request.Option) (*marketplacecommerceanalytics.GenerateDataSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplacecommerceanalytics",
-		Action:  "GenerateDataSetWithContext",
+		Action:  "GenerateDataSet",
 		Input:   input,
 		Output:  (*marketplacecommerceanalytics.GenerateDataSetOutput)(nil),
 		Error:   nil,
@@ -54,7 +54,7 @@ func (c *Client) GenerateDataSetWithContext(ctx context.Context, input *marketpl
 func (c *Client) StartSupportDataExportWithContext(ctx context.Context, input *marketplacecommerceanalytics.StartSupportDataExportInput, opts ...request.Option) (*marketplacecommerceanalytics.StartSupportDataExportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplacecommerceanalytics",
-		Action:  "StartSupportDataExportWithContext",
+		Action:  "StartSupportDataExport",
 		Input:   input,
 		Output:  (*marketplacecommerceanalytics.StartSupportDataExportOutput)(nil),
 		Error:   nil,

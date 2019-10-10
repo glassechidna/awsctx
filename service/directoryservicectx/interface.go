@@ -81,7 +81,7 @@ var _ DirectoryService = (*Client)(nil)
 func (c *Client) AcceptSharedDirectoryWithContext(ctx context.Context, input *directoryservice.AcceptSharedDirectoryInput, opts ...request.Option) (*directoryservice.AcceptSharedDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "AcceptSharedDirectoryWithContext",
+		Action:  "AcceptSharedDirectory",
 		Input:   input,
 		Output:  (*directoryservice.AcceptSharedDirectoryOutput)(nil),
 		Error:   nil,
@@ -102,7 +102,7 @@ func (c *Client) AcceptSharedDirectoryWithContext(ctx context.Context, input *di
 func (c *Client) AddIpRoutesWithContext(ctx context.Context, input *directoryservice.AddIpRoutesInput, opts ...request.Option) (*directoryservice.AddIpRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "AddIpRoutesWithContext",
+		Action:  "AddIpRoutes",
 		Input:   input,
 		Output:  (*directoryservice.AddIpRoutesOutput)(nil),
 		Error:   nil,
@@ -123,7 +123,7 @@ func (c *Client) AddIpRoutesWithContext(ctx context.Context, input *directoryser
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *directoryservice.AddTagsToResourceInput, opts ...request.Option) (*directoryservice.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*directoryservice.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -144,7 +144,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *direct
 func (c *Client) CancelSchemaExtensionWithContext(ctx context.Context, input *directoryservice.CancelSchemaExtensionInput, opts ...request.Option) (*directoryservice.CancelSchemaExtensionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CancelSchemaExtensionWithContext",
+		Action:  "CancelSchemaExtension",
 		Input:   input,
 		Output:  (*directoryservice.CancelSchemaExtensionOutput)(nil),
 		Error:   nil,
@@ -165,7 +165,7 @@ func (c *Client) CancelSchemaExtensionWithContext(ctx context.Context, input *di
 func (c *Client) ConnectDirectoryWithContext(ctx context.Context, input *directoryservice.ConnectDirectoryInput, opts ...request.Option) (*directoryservice.ConnectDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ConnectDirectoryWithContext",
+		Action:  "ConnectDirectory",
 		Input:   input,
 		Output:  (*directoryservice.ConnectDirectoryOutput)(nil),
 		Error:   nil,
@@ -186,7 +186,7 @@ func (c *Client) ConnectDirectoryWithContext(ctx context.Context, input *directo
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *directoryservice.CreateAliasInput, opts ...request.Option) (*directoryservice.CreateAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateAliasWithContext",
+		Action:  "CreateAlias",
 		Input:   input,
 		Output:  (*directoryservice.CreateAliasOutput)(nil),
 		Error:   nil,
@@ -207,7 +207,7 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *directoryser
 func (c *Client) CreateComputerWithContext(ctx context.Context, input *directoryservice.CreateComputerInput, opts ...request.Option) (*directoryservice.CreateComputerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateComputerWithContext",
+		Action:  "CreateComputer",
 		Input:   input,
 		Output:  (*directoryservice.CreateComputerOutput)(nil),
 		Error:   nil,
@@ -228,7 +228,7 @@ func (c *Client) CreateComputerWithContext(ctx context.Context, input *directory
 func (c *Client) CreateConditionalForwarderWithContext(ctx context.Context, input *directoryservice.CreateConditionalForwarderInput, opts ...request.Option) (*directoryservice.CreateConditionalForwarderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateConditionalForwarderWithContext",
+		Action:  "CreateConditionalForwarder",
 		Input:   input,
 		Output:  (*directoryservice.CreateConditionalForwarderOutput)(nil),
 		Error:   nil,
@@ -249,7 +249,7 @@ func (c *Client) CreateConditionalForwarderWithContext(ctx context.Context, inpu
 func (c *Client) CreateDirectoryWithContext(ctx context.Context, input *directoryservice.CreateDirectoryInput, opts ...request.Option) (*directoryservice.CreateDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateDirectoryWithContext",
+		Action:  "CreateDirectory",
 		Input:   input,
 		Output:  (*directoryservice.CreateDirectoryOutput)(nil),
 		Error:   nil,
@@ -270,7 +270,7 @@ func (c *Client) CreateDirectoryWithContext(ctx context.Context, input *director
 func (c *Client) CreateLogSubscriptionWithContext(ctx context.Context, input *directoryservice.CreateLogSubscriptionInput, opts ...request.Option) (*directoryservice.CreateLogSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateLogSubscriptionWithContext",
+		Action:  "CreateLogSubscription",
 		Input:   input,
 		Output:  (*directoryservice.CreateLogSubscriptionOutput)(nil),
 		Error:   nil,
@@ -291,7 +291,7 @@ func (c *Client) CreateLogSubscriptionWithContext(ctx context.Context, input *di
 func (c *Client) CreateMicrosoftADWithContext(ctx context.Context, input *directoryservice.CreateMicrosoftADInput, opts ...request.Option) (*directoryservice.CreateMicrosoftADOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateMicrosoftADWithContext",
+		Action:  "CreateMicrosoftAD",
 		Input:   input,
 		Output:  (*directoryservice.CreateMicrosoftADOutput)(nil),
 		Error:   nil,
@@ -312,7 +312,7 @@ func (c *Client) CreateMicrosoftADWithContext(ctx context.Context, input *direct
 func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *directoryservice.CreateSnapshotInput, opts ...request.Option) (*directoryservice.CreateSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateSnapshotWithContext",
+		Action:  "CreateSnapshot",
 		Input:   input,
 		Output:  (*directoryservice.CreateSnapshotOutput)(nil),
 		Error:   nil,
@@ -333,7 +333,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *directory
 func (c *Client) CreateTrustWithContext(ctx context.Context, input *directoryservice.CreateTrustInput, opts ...request.Option) (*directoryservice.CreateTrustOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "CreateTrustWithContext",
+		Action:  "CreateTrust",
 		Input:   input,
 		Output:  (*directoryservice.CreateTrustOutput)(nil),
 		Error:   nil,
@@ -354,7 +354,7 @@ func (c *Client) CreateTrustWithContext(ctx context.Context, input *directoryser
 func (c *Client) DeleteConditionalForwarderWithContext(ctx context.Context, input *directoryservice.DeleteConditionalForwarderInput, opts ...request.Option) (*directoryservice.DeleteConditionalForwarderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DeleteConditionalForwarderWithContext",
+		Action:  "DeleteConditionalForwarder",
 		Input:   input,
 		Output:  (*directoryservice.DeleteConditionalForwarderOutput)(nil),
 		Error:   nil,
@@ -375,7 +375,7 @@ func (c *Client) DeleteConditionalForwarderWithContext(ctx context.Context, inpu
 func (c *Client) DeleteDirectoryWithContext(ctx context.Context, input *directoryservice.DeleteDirectoryInput, opts ...request.Option) (*directoryservice.DeleteDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DeleteDirectoryWithContext",
+		Action:  "DeleteDirectory",
 		Input:   input,
 		Output:  (*directoryservice.DeleteDirectoryOutput)(nil),
 		Error:   nil,
@@ -396,7 +396,7 @@ func (c *Client) DeleteDirectoryWithContext(ctx context.Context, input *director
 func (c *Client) DeleteLogSubscriptionWithContext(ctx context.Context, input *directoryservice.DeleteLogSubscriptionInput, opts ...request.Option) (*directoryservice.DeleteLogSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DeleteLogSubscriptionWithContext",
+		Action:  "DeleteLogSubscription",
 		Input:   input,
 		Output:  (*directoryservice.DeleteLogSubscriptionOutput)(nil),
 		Error:   nil,
@@ -417,7 +417,7 @@ func (c *Client) DeleteLogSubscriptionWithContext(ctx context.Context, input *di
 func (c *Client) DeleteSnapshotWithContext(ctx context.Context, input *directoryservice.DeleteSnapshotInput, opts ...request.Option) (*directoryservice.DeleteSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DeleteSnapshotWithContext",
+		Action:  "DeleteSnapshot",
 		Input:   input,
 		Output:  (*directoryservice.DeleteSnapshotOutput)(nil),
 		Error:   nil,
@@ -438,7 +438,7 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, input *directory
 func (c *Client) DeleteTrustWithContext(ctx context.Context, input *directoryservice.DeleteTrustInput, opts ...request.Option) (*directoryservice.DeleteTrustOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DeleteTrustWithContext",
+		Action:  "DeleteTrust",
 		Input:   input,
 		Output:  (*directoryservice.DeleteTrustOutput)(nil),
 		Error:   nil,
@@ -459,7 +459,7 @@ func (c *Client) DeleteTrustWithContext(ctx context.Context, input *directoryser
 func (c *Client) DeregisterEventTopicWithContext(ctx context.Context, input *directoryservice.DeregisterEventTopicInput, opts ...request.Option) (*directoryservice.DeregisterEventTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DeregisterEventTopicWithContext",
+		Action:  "DeregisterEventTopic",
 		Input:   input,
 		Output:  (*directoryservice.DeregisterEventTopicOutput)(nil),
 		Error:   nil,
@@ -480,7 +480,7 @@ func (c *Client) DeregisterEventTopicWithContext(ctx context.Context, input *dir
 func (c *Client) DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeConditionalForwardersWithContext",
+		Action:  "DescribeConditionalForwarders",
 		Input:   input,
 		Output:  (*directoryservice.DescribeConditionalForwardersOutput)(nil),
 		Error:   nil,
@@ -501,7 +501,7 @@ func (c *Client) DescribeConditionalForwardersWithContext(ctx context.Context, i
 func (c *Client) DescribeDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeDirectoriesWithContext",
+		Action:  "DescribeDirectories",
 		Input:   input,
 		Output:  (*directoryservice.DescribeDirectoriesOutput)(nil),
 		Error:   nil,
@@ -522,7 +522,7 @@ func (c *Client) DescribeDirectoriesWithContext(ctx context.Context, input *dire
 func (c *Client) DescribeDomainControllersWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, opts ...request.Option) (*directoryservice.DescribeDomainControllersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeDomainControllersWithContext",
+		Action:  "DescribeDomainControllers",
 		Input:   input,
 		Output:  (*directoryservice.DescribeDomainControllersOutput)(nil),
 		Error:   nil,
@@ -543,7 +543,7 @@ func (c *Client) DescribeDomainControllersWithContext(ctx context.Context, input
 func (c *Client) DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeEventTopicsWithContext",
+		Action:  "DescribeEventTopics",
 		Input:   input,
 		Output:  (*directoryservice.DescribeEventTopicsOutput)(nil),
 		Error:   nil,
@@ -564,7 +564,7 @@ func (c *Client) DescribeEventTopicsWithContext(ctx context.Context, input *dire
 func (c *Client) DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeSharedDirectoriesWithContext",
+		Action:  "DescribeSharedDirectories",
 		Input:   input,
 		Output:  (*directoryservice.DescribeSharedDirectoriesOutput)(nil),
 		Error:   nil,
@@ -585,7 +585,7 @@ func (c *Client) DescribeSharedDirectoriesWithContext(ctx context.Context, input
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeSnapshotsWithContext",
+		Action:  "DescribeSnapshots",
 		Input:   input,
 		Output:  (*directoryservice.DescribeSnapshotsOutput)(nil),
 		Error:   nil,
@@ -606,7 +606,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *direct
 func (c *Client) DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DescribeTrustsWithContext",
+		Action:  "DescribeTrusts",
 		Input:   input,
 		Output:  (*directoryservice.DescribeTrustsOutput)(nil),
 		Error:   nil,
@@ -627,7 +627,7 @@ func (c *Client) DescribeTrustsWithContext(ctx context.Context, input *directory
 func (c *Client) DisableRadiusWithContext(ctx context.Context, input *directoryservice.DisableRadiusInput, opts ...request.Option) (*directoryservice.DisableRadiusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DisableRadiusWithContext",
+		Action:  "DisableRadius",
 		Input:   input,
 		Output:  (*directoryservice.DisableRadiusOutput)(nil),
 		Error:   nil,
@@ -648,7 +648,7 @@ func (c *Client) DisableRadiusWithContext(ctx context.Context, input *directorys
 func (c *Client) DisableSsoWithContext(ctx context.Context, input *directoryservice.DisableSsoInput, opts ...request.Option) (*directoryservice.DisableSsoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "DisableSsoWithContext",
+		Action:  "DisableSso",
 		Input:   input,
 		Output:  (*directoryservice.DisableSsoOutput)(nil),
 		Error:   nil,
@@ -669,7 +669,7 @@ func (c *Client) DisableSsoWithContext(ctx context.Context, input *directoryserv
 func (c *Client) EnableRadiusWithContext(ctx context.Context, input *directoryservice.EnableRadiusInput, opts ...request.Option) (*directoryservice.EnableRadiusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "EnableRadiusWithContext",
+		Action:  "EnableRadius",
 		Input:   input,
 		Output:  (*directoryservice.EnableRadiusOutput)(nil),
 		Error:   nil,
@@ -690,7 +690,7 @@ func (c *Client) EnableRadiusWithContext(ctx context.Context, input *directoryse
 func (c *Client) EnableSsoWithContext(ctx context.Context, input *directoryservice.EnableSsoInput, opts ...request.Option) (*directoryservice.EnableSsoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "EnableSsoWithContext",
+		Action:  "EnableSso",
 		Input:   input,
 		Output:  (*directoryservice.EnableSsoOutput)(nil),
 		Error:   nil,
@@ -711,7 +711,7 @@ func (c *Client) EnableSsoWithContext(ctx context.Context, input *directoryservi
 func (c *Client) GetDirectoryLimitsWithContext(ctx context.Context, input *directoryservice.GetDirectoryLimitsInput, opts ...request.Option) (*directoryservice.GetDirectoryLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "GetDirectoryLimitsWithContext",
+		Action:  "GetDirectoryLimits",
 		Input:   input,
 		Output:  (*directoryservice.GetDirectoryLimitsOutput)(nil),
 		Error:   nil,
@@ -732,7 +732,7 @@ func (c *Client) GetDirectoryLimitsWithContext(ctx context.Context, input *direc
 func (c *Client) GetSnapshotLimitsWithContext(ctx context.Context, input *directoryservice.GetSnapshotLimitsInput, opts ...request.Option) (*directoryservice.GetSnapshotLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "GetSnapshotLimitsWithContext",
+		Action:  "GetSnapshotLimits",
 		Input:   input,
 		Output:  (*directoryservice.GetSnapshotLimitsOutput)(nil),
 		Error:   nil,
@@ -753,7 +753,7 @@ func (c *Client) GetSnapshotLimitsWithContext(ctx context.Context, input *direct
 func (c *Client) ListIpRoutesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, opts ...request.Option) (*directoryservice.ListIpRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ListIpRoutesWithContext",
+		Action:  "ListIpRoutes",
 		Input:   input,
 		Output:  (*directoryservice.ListIpRoutesOutput)(nil),
 		Error:   nil,
@@ -774,7 +774,7 @@ func (c *Client) ListIpRoutesWithContext(ctx context.Context, input *directoryse
 func (c *Client) ListLogSubscriptionsWithContext(ctx context.Context, input *directoryservice.ListLogSubscriptionsInput, opts ...request.Option) (*directoryservice.ListLogSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ListLogSubscriptionsWithContext",
+		Action:  "ListLogSubscriptions",
 		Input:   input,
 		Output:  (*directoryservice.ListLogSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -795,7 +795,7 @@ func (c *Client) ListLogSubscriptionsWithContext(ctx context.Context, input *dir
 func (c *Client) ListSchemaExtensionsWithContext(ctx context.Context, input *directoryservice.ListSchemaExtensionsInput, opts ...request.Option) (*directoryservice.ListSchemaExtensionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ListSchemaExtensionsWithContext",
+		Action:  "ListSchemaExtensions",
 		Input:   input,
 		Output:  (*directoryservice.ListSchemaExtensionsOutput)(nil),
 		Error:   nil,
@@ -816,7 +816,7 @@ func (c *Client) ListSchemaExtensionsWithContext(ctx context.Context, input *dir
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *directoryservice.ListTagsForResourceInput, opts ...request.Option) (*directoryservice.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*directoryservice.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -837,7 +837,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *dire
 func (c *Client) RegisterEventTopicWithContext(ctx context.Context, input *directoryservice.RegisterEventTopicInput, opts ...request.Option) (*directoryservice.RegisterEventTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "RegisterEventTopicWithContext",
+		Action:  "RegisterEventTopic",
 		Input:   input,
 		Output:  (*directoryservice.RegisterEventTopicOutput)(nil),
 		Error:   nil,
@@ -858,7 +858,7 @@ func (c *Client) RegisterEventTopicWithContext(ctx context.Context, input *direc
 func (c *Client) RejectSharedDirectoryWithContext(ctx context.Context, input *directoryservice.RejectSharedDirectoryInput, opts ...request.Option) (*directoryservice.RejectSharedDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "RejectSharedDirectoryWithContext",
+		Action:  "RejectSharedDirectory",
 		Input:   input,
 		Output:  (*directoryservice.RejectSharedDirectoryOutput)(nil),
 		Error:   nil,
@@ -879,7 +879,7 @@ func (c *Client) RejectSharedDirectoryWithContext(ctx context.Context, input *di
 func (c *Client) RemoveIpRoutesWithContext(ctx context.Context, input *directoryservice.RemoveIpRoutesInput, opts ...request.Option) (*directoryservice.RemoveIpRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "RemoveIpRoutesWithContext",
+		Action:  "RemoveIpRoutes",
 		Input:   input,
 		Output:  (*directoryservice.RemoveIpRoutesOutput)(nil),
 		Error:   nil,
@@ -900,7 +900,7 @@ func (c *Client) RemoveIpRoutesWithContext(ctx context.Context, input *directory
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *directoryservice.RemoveTagsFromResourceInput, opts ...request.Option) (*directoryservice.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*directoryservice.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -921,7 +921,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *d
 func (c *Client) ResetUserPasswordWithContext(ctx context.Context, input *directoryservice.ResetUserPasswordInput, opts ...request.Option) (*directoryservice.ResetUserPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ResetUserPasswordWithContext",
+		Action:  "ResetUserPassword",
 		Input:   input,
 		Output:  (*directoryservice.ResetUserPasswordOutput)(nil),
 		Error:   nil,
@@ -942,7 +942,7 @@ func (c *Client) ResetUserPasswordWithContext(ctx context.Context, input *direct
 func (c *Client) RestoreFromSnapshotWithContext(ctx context.Context, input *directoryservice.RestoreFromSnapshotInput, opts ...request.Option) (*directoryservice.RestoreFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "RestoreFromSnapshotWithContext",
+		Action:  "RestoreFromSnapshot",
 		Input:   input,
 		Output:  (*directoryservice.RestoreFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -963,7 +963,7 @@ func (c *Client) RestoreFromSnapshotWithContext(ctx context.Context, input *dire
 func (c *Client) ShareDirectoryWithContext(ctx context.Context, input *directoryservice.ShareDirectoryInput, opts ...request.Option) (*directoryservice.ShareDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "ShareDirectoryWithContext",
+		Action:  "ShareDirectory",
 		Input:   input,
 		Output:  (*directoryservice.ShareDirectoryOutput)(nil),
 		Error:   nil,
@@ -984,7 +984,7 @@ func (c *Client) ShareDirectoryWithContext(ctx context.Context, input *directory
 func (c *Client) StartSchemaExtensionWithContext(ctx context.Context, input *directoryservice.StartSchemaExtensionInput, opts ...request.Option) (*directoryservice.StartSchemaExtensionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "StartSchemaExtensionWithContext",
+		Action:  "StartSchemaExtension",
 		Input:   input,
 		Output:  (*directoryservice.StartSchemaExtensionOutput)(nil),
 		Error:   nil,
@@ -1005,7 +1005,7 @@ func (c *Client) StartSchemaExtensionWithContext(ctx context.Context, input *dir
 func (c *Client) UnshareDirectoryWithContext(ctx context.Context, input *directoryservice.UnshareDirectoryInput, opts ...request.Option) (*directoryservice.UnshareDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "UnshareDirectoryWithContext",
+		Action:  "UnshareDirectory",
 		Input:   input,
 		Output:  (*directoryservice.UnshareDirectoryOutput)(nil),
 		Error:   nil,
@@ -1026,7 +1026,7 @@ func (c *Client) UnshareDirectoryWithContext(ctx context.Context, input *directo
 func (c *Client) UpdateConditionalForwarderWithContext(ctx context.Context, input *directoryservice.UpdateConditionalForwarderInput, opts ...request.Option) (*directoryservice.UpdateConditionalForwarderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "UpdateConditionalForwarderWithContext",
+		Action:  "UpdateConditionalForwarder",
 		Input:   input,
 		Output:  (*directoryservice.UpdateConditionalForwarderOutput)(nil),
 		Error:   nil,
@@ -1047,7 +1047,7 @@ func (c *Client) UpdateConditionalForwarderWithContext(ctx context.Context, inpu
 func (c *Client) UpdateNumberOfDomainControllersWithContext(ctx context.Context, input *directoryservice.UpdateNumberOfDomainControllersInput, opts ...request.Option) (*directoryservice.UpdateNumberOfDomainControllersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "UpdateNumberOfDomainControllersWithContext",
+		Action:  "UpdateNumberOfDomainControllers",
 		Input:   input,
 		Output:  (*directoryservice.UpdateNumberOfDomainControllersOutput)(nil),
 		Error:   nil,
@@ -1068,7 +1068,7 @@ func (c *Client) UpdateNumberOfDomainControllersWithContext(ctx context.Context,
 func (c *Client) UpdateRadiusWithContext(ctx context.Context, input *directoryservice.UpdateRadiusInput, opts ...request.Option) (*directoryservice.UpdateRadiusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "UpdateRadiusWithContext",
+		Action:  "UpdateRadius",
 		Input:   input,
 		Output:  (*directoryservice.UpdateRadiusOutput)(nil),
 		Error:   nil,
@@ -1089,7 +1089,7 @@ func (c *Client) UpdateRadiusWithContext(ctx context.Context, input *directoryse
 func (c *Client) UpdateTrustWithContext(ctx context.Context, input *directoryservice.UpdateTrustInput, opts ...request.Option) (*directoryservice.UpdateTrustOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "UpdateTrustWithContext",
+		Action:  "UpdateTrust",
 		Input:   input,
 		Output:  (*directoryservice.UpdateTrustOutput)(nil),
 		Error:   nil,
@@ -1110,7 +1110,7 @@ func (c *Client) UpdateTrustWithContext(ctx context.Context, input *directoryser
 func (c *Client) VerifyTrustWithContext(ctx context.Context, input *directoryservice.VerifyTrustInput, opts ...request.Option) (*directoryservice.VerifyTrustOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
-		Action:  "VerifyTrustWithContext",
+		Action:  "VerifyTrust",
 		Input:   input,
 		Output:  (*directoryservice.VerifyTrustOutput)(nil),
 		Error:   nil,

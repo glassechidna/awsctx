@@ -51,7 +51,7 @@ var _ SQS = (*Client)(nil)
 func (c *Client) AddPermissionWithContext(ctx context.Context, input *sqs.AddPermissionInput, opts ...request.Option) (*sqs.AddPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "AddPermissionWithContext",
+		Action:  "AddPermission",
 		Input:   input,
 		Output:  (*sqs.AddPermissionOutput)(nil),
 		Error:   nil,
@@ -72,7 +72,7 @@ func (c *Client) AddPermissionWithContext(ctx context.Context, input *sqs.AddPer
 func (c *Client) ChangeMessageVisibilityWithContext(ctx context.Context, input *sqs.ChangeMessageVisibilityInput, opts ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "ChangeMessageVisibilityWithContext",
+		Action:  "ChangeMessageVisibility",
 		Input:   input,
 		Output:  (*sqs.ChangeMessageVisibilityOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) ChangeMessageVisibilityWithContext(ctx context.Context, input *
 func (c *Client) ChangeMessageVisibilityBatchWithContext(ctx context.Context, input *sqs.ChangeMessageVisibilityBatchInput, opts ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "ChangeMessageVisibilityBatchWithContext",
+		Action:  "ChangeMessageVisibilityBatch",
 		Input:   input,
 		Output:  (*sqs.ChangeMessageVisibilityBatchOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) ChangeMessageVisibilityBatchWithContext(ctx context.Context, in
 func (c *Client) CreateQueueWithContext(ctx context.Context, input *sqs.CreateQueueInput, opts ...request.Option) (*sqs.CreateQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "CreateQueueWithContext",
+		Action:  "CreateQueue",
 		Input:   input,
 		Output:  (*sqs.CreateQueueOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) CreateQueueWithContext(ctx context.Context, input *sqs.CreateQu
 func (c *Client) DeleteMessageWithContext(ctx context.Context, input *sqs.DeleteMessageInput, opts ...request.Option) (*sqs.DeleteMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "DeleteMessageWithContext",
+		Action:  "DeleteMessage",
 		Input:   input,
 		Output:  (*sqs.DeleteMessageOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) DeleteMessageWithContext(ctx context.Context, input *sqs.Delete
 func (c *Client) DeleteMessageBatchWithContext(ctx context.Context, input *sqs.DeleteMessageBatchInput, opts ...request.Option) (*sqs.DeleteMessageBatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "DeleteMessageBatchWithContext",
+		Action:  "DeleteMessageBatch",
 		Input:   input,
 		Output:  (*sqs.DeleteMessageBatchOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) DeleteMessageBatchWithContext(ctx context.Context, input *sqs.D
 func (c *Client) DeleteQueueWithContext(ctx context.Context, input *sqs.DeleteQueueInput, opts ...request.Option) (*sqs.DeleteQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "DeleteQueueWithContext",
+		Action:  "DeleteQueue",
 		Input:   input,
 		Output:  (*sqs.DeleteQueueOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) DeleteQueueWithContext(ctx context.Context, input *sqs.DeleteQu
 func (c *Client) GetQueueAttributesWithContext(ctx context.Context, input *sqs.GetQueueAttributesInput, opts ...request.Option) (*sqs.GetQueueAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "GetQueueAttributesWithContext",
+		Action:  "GetQueueAttributes",
 		Input:   input,
 		Output:  (*sqs.GetQueueAttributesOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) GetQueueAttributesWithContext(ctx context.Context, input *sqs.G
 func (c *Client) GetQueueUrlWithContext(ctx context.Context, input *sqs.GetQueueUrlInput, opts ...request.Option) (*sqs.GetQueueUrlOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "GetQueueUrlWithContext",
+		Action:  "GetQueueUrl",
 		Input:   input,
 		Output:  (*sqs.GetQueueUrlOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) GetQueueUrlWithContext(ctx context.Context, input *sqs.GetQueue
 func (c *Client) ListDeadLetterSourceQueuesWithContext(ctx context.Context, input *sqs.ListDeadLetterSourceQueuesInput, opts ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "ListDeadLetterSourceQueuesWithContext",
+		Action:  "ListDeadLetterSourceQueues",
 		Input:   input,
 		Output:  (*sqs.ListDeadLetterSourceQueuesOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) ListDeadLetterSourceQueuesWithContext(ctx context.Context, inpu
 func (c *Client) ListQueueTagsWithContext(ctx context.Context, input *sqs.ListQueueTagsInput, opts ...request.Option) (*sqs.ListQueueTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "ListQueueTagsWithContext",
+		Action:  "ListQueueTags",
 		Input:   input,
 		Output:  (*sqs.ListQueueTagsOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) ListQueueTagsWithContext(ctx context.Context, input *sqs.ListQu
 func (c *Client) ListQueuesWithContext(ctx context.Context, input *sqs.ListQueuesInput, opts ...request.Option) (*sqs.ListQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "ListQueuesWithContext",
+		Action:  "ListQueues",
 		Input:   input,
 		Output:  (*sqs.ListQueuesOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) ListQueuesWithContext(ctx context.Context, input *sqs.ListQueue
 func (c *Client) PurgeQueueWithContext(ctx context.Context, input *sqs.PurgeQueueInput, opts ...request.Option) (*sqs.PurgeQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "PurgeQueueWithContext",
+		Action:  "PurgeQueue",
 		Input:   input,
 		Output:  (*sqs.PurgeQueueOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) PurgeQueueWithContext(ctx context.Context, input *sqs.PurgeQueu
 func (c *Client) ReceiveMessageWithContext(ctx context.Context, input *sqs.ReceiveMessageInput, opts ...request.Option) (*sqs.ReceiveMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "ReceiveMessageWithContext",
+		Action:  "ReceiveMessage",
 		Input:   input,
 		Output:  (*sqs.ReceiveMessageOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) ReceiveMessageWithContext(ctx context.Context, input *sqs.Recei
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *sqs.RemovePermissionInput, opts ...request.Option) (*sqs.RemovePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "RemovePermissionWithContext",
+		Action:  "RemovePermission",
 		Input:   input,
 		Output:  (*sqs.RemovePermissionOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) RemovePermissionWithContext(ctx context.Context, input *sqs.Rem
 func (c *Client) SendMessageWithContext(ctx context.Context, input *sqs.SendMessageInput, opts ...request.Option) (*sqs.SendMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "SendMessageWithContext",
+		Action:  "SendMessage",
 		Input:   input,
 		Output:  (*sqs.SendMessageOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) SendMessageWithContext(ctx context.Context, input *sqs.SendMess
 func (c *Client) SendMessageBatchWithContext(ctx context.Context, input *sqs.SendMessageBatchInput, opts ...request.Option) (*sqs.SendMessageBatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "SendMessageBatchWithContext",
+		Action:  "SendMessageBatch",
 		Input:   input,
 		Output:  (*sqs.SendMessageBatchOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) SendMessageBatchWithContext(ctx context.Context, input *sqs.Sen
 func (c *Client) SetQueueAttributesWithContext(ctx context.Context, input *sqs.SetQueueAttributesInput, opts ...request.Option) (*sqs.SetQueueAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "SetQueueAttributesWithContext",
+		Action:  "SetQueueAttributes",
 		Input:   input,
 		Output:  (*sqs.SetQueueAttributesOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) SetQueueAttributesWithContext(ctx context.Context, input *sqs.S
 func (c *Client) TagQueueWithContext(ctx context.Context, input *sqs.TagQueueInput, opts ...request.Option) (*sqs.TagQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "TagQueueWithContext",
+		Action:  "TagQueue",
 		Input:   input,
 		Output:  (*sqs.TagQueueOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) TagQueueWithContext(ctx context.Context, input *sqs.TagQueueInp
 func (c *Client) UntagQueueWithContext(ctx context.Context, input *sqs.UntagQueueInput, opts ...request.Option) (*sqs.UntagQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
-		Action:  "UntagQueueWithContext",
+		Action:  "UntagQueue",
 		Input:   input,
 		Output:  (*sqs.UntagQueueOutput)(nil),
 		Error:   nil,

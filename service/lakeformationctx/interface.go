@@ -44,7 +44,7 @@ var _ LakeFormation = (*Client)(nil)
 func (c *Client) BatchGrantPermissionsWithContext(ctx context.Context, input *lakeformation.BatchGrantPermissionsInput, opts ...request.Option) (*lakeformation.BatchGrantPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "BatchGrantPermissionsWithContext",
+		Action:  "BatchGrantPermissions",
 		Input:   input,
 		Output:  (*lakeformation.BatchGrantPermissionsOutput)(nil),
 		Error:   nil,
@@ -65,7 +65,7 @@ func (c *Client) BatchGrantPermissionsWithContext(ctx context.Context, input *la
 func (c *Client) BatchRevokePermissionsWithContext(ctx context.Context, input *lakeformation.BatchRevokePermissionsInput, opts ...request.Option) (*lakeformation.BatchRevokePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "BatchRevokePermissionsWithContext",
+		Action:  "BatchRevokePermissions",
 		Input:   input,
 		Output:  (*lakeformation.BatchRevokePermissionsOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) BatchRevokePermissionsWithContext(ctx context.Context, input *l
 func (c *Client) DeregisterResourceWithContext(ctx context.Context, input *lakeformation.DeregisterResourceInput, opts ...request.Option) (*lakeformation.DeregisterResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "DeregisterResourceWithContext",
+		Action:  "DeregisterResource",
 		Input:   input,
 		Output:  (*lakeformation.DeregisterResourceOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) DeregisterResourceWithContext(ctx context.Context, input *lakef
 func (c *Client) DescribeResourceWithContext(ctx context.Context, input *lakeformation.DescribeResourceInput, opts ...request.Option) (*lakeformation.DescribeResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "DescribeResourceWithContext",
+		Action:  "DescribeResource",
 		Input:   input,
 		Output:  (*lakeformation.DescribeResourceOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) DescribeResourceWithContext(ctx context.Context, input *lakefor
 func (c *Client) GetDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.GetDataLakeSettingsInput, opts ...request.Option) (*lakeformation.GetDataLakeSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "GetDataLakeSettingsWithContext",
+		Action:  "GetDataLakeSettings",
 		Input:   input,
 		Output:  (*lakeformation.GetDataLakeSettingsOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) GetDataLakeSettingsWithContext(ctx context.Context, input *lake
 func (c *Client) GetEffectivePermissionsForPathWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, opts ...request.Option) (*lakeformation.GetEffectivePermissionsForPathOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "GetEffectivePermissionsForPathWithContext",
+		Action:  "GetEffectivePermissionsForPath",
 		Input:   input,
 		Output:  (*lakeformation.GetEffectivePermissionsForPathOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) GetEffectivePermissionsForPathWithContext(ctx context.Context, 
 func (c *Client) GrantPermissionsWithContext(ctx context.Context, input *lakeformation.GrantPermissionsInput, opts ...request.Option) (*lakeformation.GrantPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "GrantPermissionsWithContext",
+		Action:  "GrantPermissions",
 		Input:   input,
 		Output:  (*lakeformation.GrantPermissionsOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) GrantPermissionsWithContext(ctx context.Context, input *lakefor
 func (c *Client) ListPermissionsWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, opts ...request.Option) (*lakeformation.ListPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "ListPermissionsWithContext",
+		Action:  "ListPermissions",
 		Input:   input,
 		Output:  (*lakeformation.ListPermissionsOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) ListPermissionsWithContext(ctx context.Context, input *lakeform
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, opts ...request.Option) (*lakeformation.ListResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "ListResourcesWithContext",
+		Action:  "ListResources",
 		Input:   input,
 		Output:  (*lakeformation.ListResourcesOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, input *lakeformat
 func (c *Client) PutDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.PutDataLakeSettingsInput, opts ...request.Option) (*lakeformation.PutDataLakeSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "PutDataLakeSettingsWithContext",
+		Action:  "PutDataLakeSettings",
 		Input:   input,
 		Output:  (*lakeformation.PutDataLakeSettingsOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) PutDataLakeSettingsWithContext(ctx context.Context, input *lake
 func (c *Client) RegisterResourceWithContext(ctx context.Context, input *lakeformation.RegisterResourceInput, opts ...request.Option) (*lakeformation.RegisterResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "RegisterResourceWithContext",
+		Action:  "RegisterResource",
 		Input:   input,
 		Output:  (*lakeformation.RegisterResourceOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) RegisterResourceWithContext(ctx context.Context, input *lakefor
 func (c *Client) RevokePermissionsWithContext(ctx context.Context, input *lakeformation.RevokePermissionsInput, opts ...request.Option) (*lakeformation.RevokePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "RevokePermissionsWithContext",
+		Action:  "RevokePermissions",
 		Input:   input,
 		Output:  (*lakeformation.RevokePermissionsOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) RevokePermissionsWithContext(ctx context.Context, input *lakefo
 func (c *Client) UpdateResourceWithContext(ctx context.Context, input *lakeformation.UpdateResourceInput, opts ...request.Option) (*lakeformation.UpdateResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
-		Action:  "UpdateResourceWithContext",
+		Action:  "UpdateResource",
 		Input:   input,
 		Output:  (*lakeformation.UpdateResourceOutput)(nil),
 		Error:   nil,

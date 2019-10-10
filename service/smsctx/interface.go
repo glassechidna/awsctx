@@ -59,7 +59,7 @@ var _ SMS = (*Client)(nil)
 func (c *Client) CreateAppWithContext(ctx context.Context, input *sms.CreateAppInput, opts ...request.Option) (*sms.CreateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "CreateAppWithContext",
+		Action:  "CreateApp",
 		Input:   input,
 		Output:  (*sms.CreateAppOutput)(nil),
 		Error:   nil,
@@ -80,7 +80,7 @@ func (c *Client) CreateAppWithContext(ctx context.Context, input *sms.CreateAppI
 func (c *Client) CreateReplicationJobWithContext(ctx context.Context, input *sms.CreateReplicationJobInput, opts ...request.Option) (*sms.CreateReplicationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "CreateReplicationJobWithContext",
+		Action:  "CreateReplicationJob",
 		Input:   input,
 		Output:  (*sms.CreateReplicationJobOutput)(nil),
 		Error:   nil,
@@ -101,7 +101,7 @@ func (c *Client) CreateReplicationJobWithContext(ctx context.Context, input *sms
 func (c *Client) DeleteAppWithContext(ctx context.Context, input *sms.DeleteAppInput, opts ...request.Option) (*sms.DeleteAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "DeleteAppWithContext",
+		Action:  "DeleteApp",
 		Input:   input,
 		Output:  (*sms.DeleteAppOutput)(nil),
 		Error:   nil,
@@ -122,7 +122,7 @@ func (c *Client) DeleteAppWithContext(ctx context.Context, input *sms.DeleteAppI
 func (c *Client) DeleteAppLaunchConfigurationWithContext(ctx context.Context, input *sms.DeleteAppLaunchConfigurationInput, opts ...request.Option) (*sms.DeleteAppLaunchConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "DeleteAppLaunchConfigurationWithContext",
+		Action:  "DeleteAppLaunchConfiguration",
 		Input:   input,
 		Output:  (*sms.DeleteAppLaunchConfigurationOutput)(nil),
 		Error:   nil,
@@ -143,7 +143,7 @@ func (c *Client) DeleteAppLaunchConfigurationWithContext(ctx context.Context, in
 func (c *Client) DeleteAppReplicationConfigurationWithContext(ctx context.Context, input *sms.DeleteAppReplicationConfigurationInput, opts ...request.Option) (*sms.DeleteAppReplicationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "DeleteAppReplicationConfigurationWithContext",
+		Action:  "DeleteAppReplicationConfiguration",
 		Input:   input,
 		Output:  (*sms.DeleteAppReplicationConfigurationOutput)(nil),
 		Error:   nil,
@@ -164,7 +164,7 @@ func (c *Client) DeleteAppReplicationConfigurationWithContext(ctx context.Contex
 func (c *Client) DeleteReplicationJobWithContext(ctx context.Context, input *sms.DeleteReplicationJobInput, opts ...request.Option) (*sms.DeleteReplicationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "DeleteReplicationJobWithContext",
+		Action:  "DeleteReplicationJob",
 		Input:   input,
 		Output:  (*sms.DeleteReplicationJobOutput)(nil),
 		Error:   nil,
@@ -185,7 +185,7 @@ func (c *Client) DeleteReplicationJobWithContext(ctx context.Context, input *sms
 func (c *Client) DeleteServerCatalogWithContext(ctx context.Context, input *sms.DeleteServerCatalogInput, opts ...request.Option) (*sms.DeleteServerCatalogOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "DeleteServerCatalogWithContext",
+		Action:  "DeleteServerCatalog",
 		Input:   input,
 		Output:  (*sms.DeleteServerCatalogOutput)(nil),
 		Error:   nil,
@@ -206,7 +206,7 @@ func (c *Client) DeleteServerCatalogWithContext(ctx context.Context, input *sms.
 func (c *Client) DisassociateConnectorWithContext(ctx context.Context, input *sms.DisassociateConnectorInput, opts ...request.Option) (*sms.DisassociateConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "DisassociateConnectorWithContext",
+		Action:  "DisassociateConnector",
 		Input:   input,
 		Output:  (*sms.DisassociateConnectorOutput)(nil),
 		Error:   nil,
@@ -227,7 +227,7 @@ func (c *Client) DisassociateConnectorWithContext(ctx context.Context, input *sm
 func (c *Client) GenerateChangeSetWithContext(ctx context.Context, input *sms.GenerateChangeSetInput, opts ...request.Option) (*sms.GenerateChangeSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GenerateChangeSetWithContext",
+		Action:  "GenerateChangeSet",
 		Input:   input,
 		Output:  (*sms.GenerateChangeSetOutput)(nil),
 		Error:   nil,
@@ -248,7 +248,7 @@ func (c *Client) GenerateChangeSetWithContext(ctx context.Context, input *sms.Ge
 func (c *Client) GenerateTemplateWithContext(ctx context.Context, input *sms.GenerateTemplateInput, opts ...request.Option) (*sms.GenerateTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GenerateTemplateWithContext",
+		Action:  "GenerateTemplate",
 		Input:   input,
 		Output:  (*sms.GenerateTemplateOutput)(nil),
 		Error:   nil,
@@ -269,7 +269,7 @@ func (c *Client) GenerateTemplateWithContext(ctx context.Context, input *sms.Gen
 func (c *Client) GetAppWithContext(ctx context.Context, input *sms.GetAppInput, opts ...request.Option) (*sms.GetAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetAppWithContext",
+		Action:  "GetApp",
 		Input:   input,
 		Output:  (*sms.GetAppOutput)(nil),
 		Error:   nil,
@@ -290,7 +290,7 @@ func (c *Client) GetAppWithContext(ctx context.Context, input *sms.GetAppInput, 
 func (c *Client) GetAppLaunchConfigurationWithContext(ctx context.Context, input *sms.GetAppLaunchConfigurationInput, opts ...request.Option) (*sms.GetAppLaunchConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetAppLaunchConfigurationWithContext",
+		Action:  "GetAppLaunchConfiguration",
 		Input:   input,
 		Output:  (*sms.GetAppLaunchConfigurationOutput)(nil),
 		Error:   nil,
@@ -311,7 +311,7 @@ func (c *Client) GetAppLaunchConfigurationWithContext(ctx context.Context, input
 func (c *Client) GetAppReplicationConfigurationWithContext(ctx context.Context, input *sms.GetAppReplicationConfigurationInput, opts ...request.Option) (*sms.GetAppReplicationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetAppReplicationConfigurationWithContext",
+		Action:  "GetAppReplicationConfiguration",
 		Input:   input,
 		Output:  (*sms.GetAppReplicationConfigurationOutput)(nil),
 		Error:   nil,
@@ -332,7 +332,7 @@ func (c *Client) GetAppReplicationConfigurationWithContext(ctx context.Context, 
 func (c *Client) GetConnectorsWithContext(ctx context.Context, input *sms.GetConnectorsInput, opts ...request.Option) (*sms.GetConnectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetConnectorsWithContext",
+		Action:  "GetConnectors",
 		Input:   input,
 		Output:  (*sms.GetConnectorsOutput)(nil),
 		Error:   nil,
@@ -353,7 +353,7 @@ func (c *Client) GetConnectorsWithContext(ctx context.Context, input *sms.GetCon
 func (c *Client) GetReplicationJobsWithContext(ctx context.Context, input *sms.GetReplicationJobsInput, opts ...request.Option) (*sms.GetReplicationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetReplicationJobsWithContext",
+		Action:  "GetReplicationJobs",
 		Input:   input,
 		Output:  (*sms.GetReplicationJobsOutput)(nil),
 		Error:   nil,
@@ -374,7 +374,7 @@ func (c *Client) GetReplicationJobsWithContext(ctx context.Context, input *sms.G
 func (c *Client) GetReplicationRunsWithContext(ctx context.Context, input *sms.GetReplicationRunsInput, opts ...request.Option) (*sms.GetReplicationRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetReplicationRunsWithContext",
+		Action:  "GetReplicationRuns",
 		Input:   input,
 		Output:  (*sms.GetReplicationRunsOutput)(nil),
 		Error:   nil,
@@ -395,7 +395,7 @@ func (c *Client) GetReplicationRunsWithContext(ctx context.Context, input *sms.G
 func (c *Client) GetServersWithContext(ctx context.Context, input *sms.GetServersInput, opts ...request.Option) (*sms.GetServersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "GetServersWithContext",
+		Action:  "GetServers",
 		Input:   input,
 		Output:  (*sms.GetServersOutput)(nil),
 		Error:   nil,
@@ -416,7 +416,7 @@ func (c *Client) GetServersWithContext(ctx context.Context, input *sms.GetServer
 func (c *Client) ImportServerCatalogWithContext(ctx context.Context, input *sms.ImportServerCatalogInput, opts ...request.Option) (*sms.ImportServerCatalogOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "ImportServerCatalogWithContext",
+		Action:  "ImportServerCatalog",
 		Input:   input,
 		Output:  (*sms.ImportServerCatalogOutput)(nil),
 		Error:   nil,
@@ -437,7 +437,7 @@ func (c *Client) ImportServerCatalogWithContext(ctx context.Context, input *sms.
 func (c *Client) LaunchAppWithContext(ctx context.Context, input *sms.LaunchAppInput, opts ...request.Option) (*sms.LaunchAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "LaunchAppWithContext",
+		Action:  "LaunchApp",
 		Input:   input,
 		Output:  (*sms.LaunchAppOutput)(nil),
 		Error:   nil,
@@ -458,7 +458,7 @@ func (c *Client) LaunchAppWithContext(ctx context.Context, input *sms.LaunchAppI
 func (c *Client) ListAppsWithContext(ctx context.Context, input *sms.ListAppsInput, opts ...request.Option) (*sms.ListAppsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "ListAppsWithContext",
+		Action:  "ListApps",
 		Input:   input,
 		Output:  (*sms.ListAppsOutput)(nil),
 		Error:   nil,
@@ -479,7 +479,7 @@ func (c *Client) ListAppsWithContext(ctx context.Context, input *sms.ListAppsInp
 func (c *Client) PutAppLaunchConfigurationWithContext(ctx context.Context, input *sms.PutAppLaunchConfigurationInput, opts ...request.Option) (*sms.PutAppLaunchConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "PutAppLaunchConfigurationWithContext",
+		Action:  "PutAppLaunchConfiguration",
 		Input:   input,
 		Output:  (*sms.PutAppLaunchConfigurationOutput)(nil),
 		Error:   nil,
@@ -500,7 +500,7 @@ func (c *Client) PutAppLaunchConfigurationWithContext(ctx context.Context, input
 func (c *Client) PutAppReplicationConfigurationWithContext(ctx context.Context, input *sms.PutAppReplicationConfigurationInput, opts ...request.Option) (*sms.PutAppReplicationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "PutAppReplicationConfigurationWithContext",
+		Action:  "PutAppReplicationConfiguration",
 		Input:   input,
 		Output:  (*sms.PutAppReplicationConfigurationOutput)(nil),
 		Error:   nil,
@@ -521,7 +521,7 @@ func (c *Client) PutAppReplicationConfigurationWithContext(ctx context.Context, 
 func (c *Client) StartAppReplicationWithContext(ctx context.Context, input *sms.StartAppReplicationInput, opts ...request.Option) (*sms.StartAppReplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "StartAppReplicationWithContext",
+		Action:  "StartAppReplication",
 		Input:   input,
 		Output:  (*sms.StartAppReplicationOutput)(nil),
 		Error:   nil,
@@ -542,7 +542,7 @@ func (c *Client) StartAppReplicationWithContext(ctx context.Context, input *sms.
 func (c *Client) StartOnDemandReplicationRunWithContext(ctx context.Context, input *sms.StartOnDemandReplicationRunInput, opts ...request.Option) (*sms.StartOnDemandReplicationRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "StartOnDemandReplicationRunWithContext",
+		Action:  "StartOnDemandReplicationRun",
 		Input:   input,
 		Output:  (*sms.StartOnDemandReplicationRunOutput)(nil),
 		Error:   nil,
@@ -563,7 +563,7 @@ func (c *Client) StartOnDemandReplicationRunWithContext(ctx context.Context, inp
 func (c *Client) StopAppReplicationWithContext(ctx context.Context, input *sms.StopAppReplicationInput, opts ...request.Option) (*sms.StopAppReplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "StopAppReplicationWithContext",
+		Action:  "StopAppReplication",
 		Input:   input,
 		Output:  (*sms.StopAppReplicationOutput)(nil),
 		Error:   nil,
@@ -584,7 +584,7 @@ func (c *Client) StopAppReplicationWithContext(ctx context.Context, input *sms.S
 func (c *Client) TerminateAppWithContext(ctx context.Context, input *sms.TerminateAppInput, opts ...request.Option) (*sms.TerminateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "TerminateAppWithContext",
+		Action:  "TerminateApp",
 		Input:   input,
 		Output:  (*sms.TerminateAppOutput)(nil),
 		Error:   nil,
@@ -605,7 +605,7 @@ func (c *Client) TerminateAppWithContext(ctx context.Context, input *sms.Termina
 func (c *Client) UpdateAppWithContext(ctx context.Context, input *sms.UpdateAppInput, opts ...request.Option) (*sms.UpdateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "UpdateAppWithContext",
+		Action:  "UpdateApp",
 		Input:   input,
 		Output:  (*sms.UpdateAppOutput)(nil),
 		Error:   nil,
@@ -626,7 +626,7 @@ func (c *Client) UpdateAppWithContext(ctx context.Context, input *sms.UpdateAppI
 func (c *Client) UpdateReplicationJobWithContext(ctx context.Context, input *sms.UpdateReplicationJobInput, opts ...request.Option) (*sms.UpdateReplicationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
-		Action:  "UpdateReplicationJobWithContext",
+		Action:  "UpdateReplicationJob",
 		Input:   input,
 		Output:  (*sms.UpdateReplicationJobOutput)(nil),
 		Error:   nil,

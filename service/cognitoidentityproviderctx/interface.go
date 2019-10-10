@@ -131,7 +131,7 @@ var _ CognitoIdentityProvider = (*Client)(nil)
 func (c *Client) AddCustomAttributesWithContext(ctx context.Context, input *cognitoidentityprovider.AddCustomAttributesInput, opts ...request.Option) (*cognitoidentityprovider.AddCustomAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AddCustomAttributesWithContext",
+		Action:  "AddCustomAttributes",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AddCustomAttributesOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) AddCustomAttributesWithContext(ctx context.Context, input *cogn
 func (c *Client) AdminAddUserToGroupWithContext(ctx context.Context, input *cognitoidentityprovider.AdminAddUserToGroupInput, opts ...request.Option) (*cognitoidentityprovider.AdminAddUserToGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminAddUserToGroupWithContext",
+		Action:  "AdminAddUserToGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminAddUserToGroupOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) AdminAddUserToGroupWithContext(ctx context.Context, input *cogn
 func (c *Client) AdminConfirmSignUpWithContext(ctx context.Context, input *cognitoidentityprovider.AdminConfirmSignUpInput, opts ...request.Option) (*cognitoidentityprovider.AdminConfirmSignUpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminConfirmSignUpWithContext",
+		Action:  "AdminConfirmSignUp",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminConfirmSignUpOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) AdminConfirmSignUpWithContext(ctx context.Context, input *cogni
 func (c *Client) AdminCreateUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminCreateUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminCreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminCreateUserWithContext",
+		Action:  "AdminCreateUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminCreateUserOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) AdminCreateUserWithContext(ctx context.Context, input *cognitoi
 func (c *Client) AdminDeleteUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminDeleteUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminDeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminDeleteUserWithContext",
+		Action:  "AdminDeleteUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminDeleteUserOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) AdminDeleteUserWithContext(ctx context.Context, input *cognitoi
 func (c *Client) AdminDeleteUserAttributesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminDeleteUserAttributesInput, opts ...request.Option) (*cognitoidentityprovider.AdminDeleteUserAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminDeleteUserAttributesWithContext",
+		Action:  "AdminDeleteUserAttributes",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminDeleteUserAttributesOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) AdminDeleteUserAttributesWithContext(ctx context.Context, input
 func (c *Client) AdminDisableProviderForUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminDisableProviderForUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminDisableProviderForUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminDisableProviderForUserWithContext",
+		Action:  "AdminDisableProviderForUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminDisableProviderForUserOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) AdminDisableProviderForUserWithContext(ctx context.Context, inp
 func (c *Client) AdminDisableUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminDisableUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminDisableUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminDisableUserWithContext",
+		Action:  "AdminDisableUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminDisableUserOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) AdminDisableUserWithContext(ctx context.Context, input *cognito
 func (c *Client) AdminEnableUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminEnableUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminEnableUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminEnableUserWithContext",
+		Action:  "AdminEnableUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminEnableUserOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) AdminEnableUserWithContext(ctx context.Context, input *cognitoi
 func (c *Client) AdminForgetDeviceWithContext(ctx context.Context, input *cognitoidentityprovider.AdminForgetDeviceInput, opts ...request.Option) (*cognitoidentityprovider.AdminForgetDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminForgetDeviceWithContext",
+		Action:  "AdminForgetDevice",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminForgetDeviceOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) AdminForgetDeviceWithContext(ctx context.Context, input *cognit
 func (c *Client) AdminGetDeviceWithContext(ctx context.Context, input *cognitoidentityprovider.AdminGetDeviceInput, opts ...request.Option) (*cognitoidentityprovider.AdminGetDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminGetDeviceWithContext",
+		Action:  "AdminGetDevice",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminGetDeviceOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) AdminGetDeviceWithContext(ctx context.Context, input *cognitoid
 func (c *Client) AdminGetUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminGetUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminGetUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminGetUserWithContext",
+		Action:  "AdminGetUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminGetUserOutput)(nil),
 		Error:   nil,
@@ -383,7 +383,7 @@ func (c *Client) AdminGetUserWithContext(ctx context.Context, input *cognitoiden
 func (c *Client) AdminInitiateAuthWithContext(ctx context.Context, input *cognitoidentityprovider.AdminInitiateAuthInput, opts ...request.Option) (*cognitoidentityprovider.AdminInitiateAuthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminInitiateAuthWithContext",
+		Action:  "AdminInitiateAuth",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminInitiateAuthOutput)(nil),
 		Error:   nil,
@@ -404,7 +404,7 @@ func (c *Client) AdminInitiateAuthWithContext(ctx context.Context, input *cognit
 func (c *Client) AdminLinkProviderForUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminLinkProviderForUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminLinkProviderForUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminLinkProviderForUserWithContext",
+		Action:  "AdminLinkProviderForUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminLinkProviderForUserOutput)(nil),
 		Error:   nil,
@@ -425,7 +425,7 @@ func (c *Client) AdminLinkProviderForUserWithContext(ctx context.Context, input 
 func (c *Client) AdminListDevicesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListDevicesInput, opts ...request.Option) (*cognitoidentityprovider.AdminListDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminListDevicesWithContext",
+		Action:  "AdminListDevices",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminListDevicesOutput)(nil),
 		Error:   nil,
@@ -446,7 +446,7 @@ func (c *Client) AdminListDevicesWithContext(ctx context.Context, input *cognito
 func (c *Client) AdminListGroupsForUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListGroupsForUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminListGroupsForUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminListGroupsForUserWithContext",
+		Action:  "AdminListGroupsForUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminListGroupsForUserOutput)(nil),
 		Error:   nil,
@@ -467,7 +467,7 @@ func (c *Client) AdminListGroupsForUserWithContext(ctx context.Context, input *c
 func (c *Client) AdminListUserAuthEventsWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListUserAuthEventsInput, opts ...request.Option) (*cognitoidentityprovider.AdminListUserAuthEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminListUserAuthEventsWithContext",
+		Action:  "AdminListUserAuthEvents",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminListUserAuthEventsOutput)(nil),
 		Error:   nil,
@@ -488,7 +488,7 @@ func (c *Client) AdminListUserAuthEventsWithContext(ctx context.Context, input *
 func (c *Client) AdminRemoveUserFromGroupWithContext(ctx context.Context, input *cognitoidentityprovider.AdminRemoveUserFromGroupInput, opts ...request.Option) (*cognitoidentityprovider.AdminRemoveUserFromGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminRemoveUserFromGroupWithContext",
+		Action:  "AdminRemoveUserFromGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminRemoveUserFromGroupOutput)(nil),
 		Error:   nil,
@@ -509,7 +509,7 @@ func (c *Client) AdminRemoveUserFromGroupWithContext(ctx context.Context, input 
 func (c *Client) AdminResetUserPasswordWithContext(ctx context.Context, input *cognitoidentityprovider.AdminResetUserPasswordInput, opts ...request.Option) (*cognitoidentityprovider.AdminResetUserPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminResetUserPasswordWithContext",
+		Action:  "AdminResetUserPassword",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminResetUserPasswordOutput)(nil),
 		Error:   nil,
@@ -530,7 +530,7 @@ func (c *Client) AdminResetUserPasswordWithContext(ctx context.Context, input *c
 func (c *Client) AdminRespondToAuthChallengeWithContext(ctx context.Context, input *cognitoidentityprovider.AdminRespondToAuthChallengeInput, opts ...request.Option) (*cognitoidentityprovider.AdminRespondToAuthChallengeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminRespondToAuthChallengeWithContext",
+		Action:  "AdminRespondToAuthChallenge",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminRespondToAuthChallengeOutput)(nil),
 		Error:   nil,
@@ -551,7 +551,7 @@ func (c *Client) AdminRespondToAuthChallengeWithContext(ctx context.Context, inp
 func (c *Client) AdminSetUserMFAPreferenceWithContext(ctx context.Context, input *cognitoidentityprovider.AdminSetUserMFAPreferenceInput, opts ...request.Option) (*cognitoidentityprovider.AdminSetUserMFAPreferenceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminSetUserMFAPreferenceWithContext",
+		Action:  "AdminSetUserMFAPreference",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminSetUserMFAPreferenceOutput)(nil),
 		Error:   nil,
@@ -572,7 +572,7 @@ func (c *Client) AdminSetUserMFAPreferenceWithContext(ctx context.Context, input
 func (c *Client) AdminSetUserPasswordWithContext(ctx context.Context, input *cognitoidentityprovider.AdminSetUserPasswordInput, opts ...request.Option) (*cognitoidentityprovider.AdminSetUserPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminSetUserPasswordWithContext",
+		Action:  "AdminSetUserPassword",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminSetUserPasswordOutput)(nil),
 		Error:   nil,
@@ -593,7 +593,7 @@ func (c *Client) AdminSetUserPasswordWithContext(ctx context.Context, input *cog
 func (c *Client) AdminSetUserSettingsWithContext(ctx context.Context, input *cognitoidentityprovider.AdminSetUserSettingsInput, opts ...request.Option) (*cognitoidentityprovider.AdminSetUserSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminSetUserSettingsWithContext",
+		Action:  "AdminSetUserSettings",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminSetUserSettingsOutput)(nil),
 		Error:   nil,
@@ -614,7 +614,7 @@ func (c *Client) AdminSetUserSettingsWithContext(ctx context.Context, input *cog
 func (c *Client) AdminUpdateAuthEventFeedbackWithContext(ctx context.Context, input *cognitoidentityprovider.AdminUpdateAuthEventFeedbackInput, opts ...request.Option) (*cognitoidentityprovider.AdminUpdateAuthEventFeedbackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminUpdateAuthEventFeedbackWithContext",
+		Action:  "AdminUpdateAuthEventFeedback",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminUpdateAuthEventFeedbackOutput)(nil),
 		Error:   nil,
@@ -635,7 +635,7 @@ func (c *Client) AdminUpdateAuthEventFeedbackWithContext(ctx context.Context, in
 func (c *Client) AdminUpdateDeviceStatusWithContext(ctx context.Context, input *cognitoidentityprovider.AdminUpdateDeviceStatusInput, opts ...request.Option) (*cognitoidentityprovider.AdminUpdateDeviceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminUpdateDeviceStatusWithContext",
+		Action:  "AdminUpdateDeviceStatus",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminUpdateDeviceStatusOutput)(nil),
 		Error:   nil,
@@ -656,7 +656,7 @@ func (c *Client) AdminUpdateDeviceStatusWithContext(ctx context.Context, input *
 func (c *Client) AdminUpdateUserAttributesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminUpdateUserAttributesInput, opts ...request.Option) (*cognitoidentityprovider.AdminUpdateUserAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminUpdateUserAttributesWithContext",
+		Action:  "AdminUpdateUserAttributes",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminUpdateUserAttributesOutput)(nil),
 		Error:   nil,
@@ -677,7 +677,7 @@ func (c *Client) AdminUpdateUserAttributesWithContext(ctx context.Context, input
 func (c *Client) AdminUserGlobalSignOutWithContext(ctx context.Context, input *cognitoidentityprovider.AdminUserGlobalSignOutInput, opts ...request.Option) (*cognitoidentityprovider.AdminUserGlobalSignOutOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AdminUserGlobalSignOutWithContext",
+		Action:  "AdminUserGlobalSignOut",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AdminUserGlobalSignOutOutput)(nil),
 		Error:   nil,
@@ -698,7 +698,7 @@ func (c *Client) AdminUserGlobalSignOutWithContext(ctx context.Context, input *c
 func (c *Client) AssociateSoftwareTokenWithContext(ctx context.Context, input *cognitoidentityprovider.AssociateSoftwareTokenInput, opts ...request.Option) (*cognitoidentityprovider.AssociateSoftwareTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "AssociateSoftwareTokenWithContext",
+		Action:  "AssociateSoftwareToken",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.AssociateSoftwareTokenOutput)(nil),
 		Error:   nil,
@@ -719,7 +719,7 @@ func (c *Client) AssociateSoftwareTokenWithContext(ctx context.Context, input *c
 func (c *Client) ChangePasswordWithContext(ctx context.Context, input *cognitoidentityprovider.ChangePasswordInput, opts ...request.Option) (*cognitoidentityprovider.ChangePasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ChangePasswordWithContext",
+		Action:  "ChangePassword",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ChangePasswordOutput)(nil),
 		Error:   nil,
@@ -740,7 +740,7 @@ func (c *Client) ChangePasswordWithContext(ctx context.Context, input *cognitoid
 func (c *Client) ConfirmDeviceWithContext(ctx context.Context, input *cognitoidentityprovider.ConfirmDeviceInput, opts ...request.Option) (*cognitoidentityprovider.ConfirmDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ConfirmDeviceWithContext",
+		Action:  "ConfirmDevice",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ConfirmDeviceOutput)(nil),
 		Error:   nil,
@@ -761,7 +761,7 @@ func (c *Client) ConfirmDeviceWithContext(ctx context.Context, input *cognitoide
 func (c *Client) ConfirmForgotPasswordWithContext(ctx context.Context, input *cognitoidentityprovider.ConfirmForgotPasswordInput, opts ...request.Option) (*cognitoidentityprovider.ConfirmForgotPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ConfirmForgotPasswordWithContext",
+		Action:  "ConfirmForgotPassword",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ConfirmForgotPasswordOutput)(nil),
 		Error:   nil,
@@ -782,7 +782,7 @@ func (c *Client) ConfirmForgotPasswordWithContext(ctx context.Context, input *co
 func (c *Client) ConfirmSignUpWithContext(ctx context.Context, input *cognitoidentityprovider.ConfirmSignUpInput, opts ...request.Option) (*cognitoidentityprovider.ConfirmSignUpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ConfirmSignUpWithContext",
+		Action:  "ConfirmSignUp",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ConfirmSignUpOutput)(nil),
 		Error:   nil,
@@ -803,7 +803,7 @@ func (c *Client) ConfirmSignUpWithContext(ctx context.Context, input *cognitoide
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *cognitoidentityprovider.CreateGroupInput, opts ...request.Option) (*cognitoidentityprovider.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -824,7 +824,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *cognitoident
 func (c *Client) CreateIdentityProviderWithContext(ctx context.Context, input *cognitoidentityprovider.CreateIdentityProviderInput, opts ...request.Option) (*cognitoidentityprovider.CreateIdentityProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateIdentityProviderWithContext",
+		Action:  "CreateIdentityProvider",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateIdentityProviderOutput)(nil),
 		Error:   nil,
@@ -845,7 +845,7 @@ func (c *Client) CreateIdentityProviderWithContext(ctx context.Context, input *c
 func (c *Client) CreateResourceServerWithContext(ctx context.Context, input *cognitoidentityprovider.CreateResourceServerInput, opts ...request.Option) (*cognitoidentityprovider.CreateResourceServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateResourceServerWithContext",
+		Action:  "CreateResourceServer",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateResourceServerOutput)(nil),
 		Error:   nil,
@@ -866,7 +866,7 @@ func (c *Client) CreateResourceServerWithContext(ctx context.Context, input *cog
 func (c *Client) CreateUserImportJobWithContext(ctx context.Context, input *cognitoidentityprovider.CreateUserImportJobInput, opts ...request.Option) (*cognitoidentityprovider.CreateUserImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateUserImportJobWithContext",
+		Action:  "CreateUserImportJob",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateUserImportJobOutput)(nil),
 		Error:   nil,
@@ -887,7 +887,7 @@ func (c *Client) CreateUserImportJobWithContext(ctx context.Context, input *cogn
 func (c *Client) CreateUserPoolWithContext(ctx context.Context, input *cognitoidentityprovider.CreateUserPoolInput, opts ...request.Option) (*cognitoidentityprovider.CreateUserPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateUserPoolWithContext",
+		Action:  "CreateUserPool",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateUserPoolOutput)(nil),
 		Error:   nil,
@@ -908,7 +908,7 @@ func (c *Client) CreateUserPoolWithContext(ctx context.Context, input *cognitoid
 func (c *Client) CreateUserPoolClientWithContext(ctx context.Context, input *cognitoidentityprovider.CreateUserPoolClientInput, opts ...request.Option) (*cognitoidentityprovider.CreateUserPoolClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateUserPoolClientWithContext",
+		Action:  "CreateUserPoolClient",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateUserPoolClientOutput)(nil),
 		Error:   nil,
@@ -929,7 +929,7 @@ func (c *Client) CreateUserPoolClientWithContext(ctx context.Context, input *cog
 func (c *Client) CreateUserPoolDomainWithContext(ctx context.Context, input *cognitoidentityprovider.CreateUserPoolDomainInput, opts ...request.Option) (*cognitoidentityprovider.CreateUserPoolDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "CreateUserPoolDomainWithContext",
+		Action:  "CreateUserPoolDomain",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.CreateUserPoolDomainOutput)(nil),
 		Error:   nil,
@@ -950,7 +950,7 @@ func (c *Client) CreateUserPoolDomainWithContext(ctx context.Context, input *cog
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteGroupInput, opts ...request.Option) (*cognitoidentityprovider.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -971,7 +971,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *cognitoident
 func (c *Client) DeleteIdentityProviderWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteIdentityProviderInput, opts ...request.Option) (*cognitoidentityprovider.DeleteIdentityProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteIdentityProviderWithContext",
+		Action:  "DeleteIdentityProvider",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteIdentityProviderOutput)(nil),
 		Error:   nil,
@@ -992,7 +992,7 @@ func (c *Client) DeleteIdentityProviderWithContext(ctx context.Context, input *c
 func (c *Client) DeleteResourceServerWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteResourceServerInput, opts ...request.Option) (*cognitoidentityprovider.DeleteResourceServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteResourceServerWithContext",
+		Action:  "DeleteResourceServer",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteResourceServerOutput)(nil),
 		Error:   nil,
@@ -1013,7 +1013,7 @@ func (c *Client) DeleteResourceServerWithContext(ctx context.Context, input *cog
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteUserInput, opts ...request.Option) (*cognitoidentityprovider.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -1034,7 +1034,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *cognitoidenti
 func (c *Client) DeleteUserAttributesWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteUserAttributesInput, opts ...request.Option) (*cognitoidentityprovider.DeleteUserAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteUserAttributesWithContext",
+		Action:  "DeleteUserAttributes",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteUserAttributesOutput)(nil),
 		Error:   nil,
@@ -1055,7 +1055,7 @@ func (c *Client) DeleteUserAttributesWithContext(ctx context.Context, input *cog
 func (c *Client) DeleteUserPoolWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteUserPoolInput, opts ...request.Option) (*cognitoidentityprovider.DeleteUserPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteUserPoolWithContext",
+		Action:  "DeleteUserPool",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteUserPoolOutput)(nil),
 		Error:   nil,
@@ -1076,7 +1076,7 @@ func (c *Client) DeleteUserPoolWithContext(ctx context.Context, input *cognitoid
 func (c *Client) DeleteUserPoolClientWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteUserPoolClientInput, opts ...request.Option) (*cognitoidentityprovider.DeleteUserPoolClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteUserPoolClientWithContext",
+		Action:  "DeleteUserPoolClient",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteUserPoolClientOutput)(nil),
 		Error:   nil,
@@ -1097,7 +1097,7 @@ func (c *Client) DeleteUserPoolClientWithContext(ctx context.Context, input *cog
 func (c *Client) DeleteUserPoolDomainWithContext(ctx context.Context, input *cognitoidentityprovider.DeleteUserPoolDomainInput, opts ...request.Option) (*cognitoidentityprovider.DeleteUserPoolDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DeleteUserPoolDomainWithContext",
+		Action:  "DeleteUserPoolDomain",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DeleteUserPoolDomainOutput)(nil),
 		Error:   nil,
@@ -1118,7 +1118,7 @@ func (c *Client) DeleteUserPoolDomainWithContext(ctx context.Context, input *cog
 func (c *Client) DescribeIdentityProviderWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeIdentityProviderInput, opts ...request.Option) (*cognitoidentityprovider.DescribeIdentityProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeIdentityProviderWithContext",
+		Action:  "DescribeIdentityProvider",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeIdentityProviderOutput)(nil),
 		Error:   nil,
@@ -1139,7 +1139,7 @@ func (c *Client) DescribeIdentityProviderWithContext(ctx context.Context, input 
 func (c *Client) DescribeResourceServerWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeResourceServerInput, opts ...request.Option) (*cognitoidentityprovider.DescribeResourceServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeResourceServerWithContext",
+		Action:  "DescribeResourceServer",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeResourceServerOutput)(nil),
 		Error:   nil,
@@ -1160,7 +1160,7 @@ func (c *Client) DescribeResourceServerWithContext(ctx context.Context, input *c
 func (c *Client) DescribeRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.DescribeRiskConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeRiskConfigurationWithContext",
+		Action:  "DescribeRiskConfiguration",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeRiskConfigurationOutput)(nil),
 		Error:   nil,
@@ -1181,7 +1181,7 @@ func (c *Client) DescribeRiskConfigurationWithContext(ctx context.Context, input
 func (c *Client) DescribeUserImportJobWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeUserImportJobInput, opts ...request.Option) (*cognitoidentityprovider.DescribeUserImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeUserImportJobWithContext",
+		Action:  "DescribeUserImportJob",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeUserImportJobOutput)(nil),
 		Error:   nil,
@@ -1202,7 +1202,7 @@ func (c *Client) DescribeUserImportJobWithContext(ctx context.Context, input *co
 func (c *Client) DescribeUserPoolWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeUserPoolInput, opts ...request.Option) (*cognitoidentityprovider.DescribeUserPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeUserPoolWithContext",
+		Action:  "DescribeUserPool",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeUserPoolOutput)(nil),
 		Error:   nil,
@@ -1223,7 +1223,7 @@ func (c *Client) DescribeUserPoolWithContext(ctx context.Context, input *cognito
 func (c *Client) DescribeUserPoolClientWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeUserPoolClientInput, opts ...request.Option) (*cognitoidentityprovider.DescribeUserPoolClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeUserPoolClientWithContext",
+		Action:  "DescribeUserPoolClient",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeUserPoolClientOutput)(nil),
 		Error:   nil,
@@ -1244,7 +1244,7 @@ func (c *Client) DescribeUserPoolClientWithContext(ctx context.Context, input *c
 func (c *Client) DescribeUserPoolDomainWithContext(ctx context.Context, input *cognitoidentityprovider.DescribeUserPoolDomainInput, opts ...request.Option) (*cognitoidentityprovider.DescribeUserPoolDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "DescribeUserPoolDomainWithContext",
+		Action:  "DescribeUserPoolDomain",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.DescribeUserPoolDomainOutput)(nil),
 		Error:   nil,
@@ -1265,7 +1265,7 @@ func (c *Client) DescribeUserPoolDomainWithContext(ctx context.Context, input *c
 func (c *Client) ForgetDeviceWithContext(ctx context.Context, input *cognitoidentityprovider.ForgetDeviceInput, opts ...request.Option) (*cognitoidentityprovider.ForgetDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ForgetDeviceWithContext",
+		Action:  "ForgetDevice",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ForgetDeviceOutput)(nil),
 		Error:   nil,
@@ -1286,7 +1286,7 @@ func (c *Client) ForgetDeviceWithContext(ctx context.Context, input *cognitoiden
 func (c *Client) ForgotPasswordWithContext(ctx context.Context, input *cognitoidentityprovider.ForgotPasswordInput, opts ...request.Option) (*cognitoidentityprovider.ForgotPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ForgotPasswordWithContext",
+		Action:  "ForgotPassword",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ForgotPasswordOutput)(nil),
 		Error:   nil,
@@ -1307,7 +1307,7 @@ func (c *Client) ForgotPasswordWithContext(ctx context.Context, input *cognitoid
 func (c *Client) GetCSVHeaderWithContext(ctx context.Context, input *cognitoidentityprovider.GetCSVHeaderInput, opts ...request.Option) (*cognitoidentityprovider.GetCSVHeaderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetCSVHeaderWithContext",
+		Action:  "GetCSVHeader",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetCSVHeaderOutput)(nil),
 		Error:   nil,
@@ -1328,7 +1328,7 @@ func (c *Client) GetCSVHeaderWithContext(ctx context.Context, input *cognitoiden
 func (c *Client) GetDeviceWithContext(ctx context.Context, input *cognitoidentityprovider.GetDeviceInput, opts ...request.Option) (*cognitoidentityprovider.GetDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetDeviceWithContext",
+		Action:  "GetDevice",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetDeviceOutput)(nil),
 		Error:   nil,
@@ -1349,7 +1349,7 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, input *cognitoidentit
 func (c *Client) GetGroupWithContext(ctx context.Context, input *cognitoidentityprovider.GetGroupInput, opts ...request.Option) (*cognitoidentityprovider.GetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetGroupWithContext",
+		Action:  "GetGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetGroupOutput)(nil),
 		Error:   nil,
@@ -1370,7 +1370,7 @@ func (c *Client) GetGroupWithContext(ctx context.Context, input *cognitoidentity
 func (c *Client) GetIdentityProviderByIdentifierWithContext(ctx context.Context, input *cognitoidentityprovider.GetIdentityProviderByIdentifierInput, opts ...request.Option) (*cognitoidentityprovider.GetIdentityProviderByIdentifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetIdentityProviderByIdentifierWithContext",
+		Action:  "GetIdentityProviderByIdentifier",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetIdentityProviderByIdentifierOutput)(nil),
 		Error:   nil,
@@ -1391,7 +1391,7 @@ func (c *Client) GetIdentityProviderByIdentifierWithContext(ctx context.Context,
 func (c *Client) GetSigningCertificateWithContext(ctx context.Context, input *cognitoidentityprovider.GetSigningCertificateInput, opts ...request.Option) (*cognitoidentityprovider.GetSigningCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetSigningCertificateWithContext",
+		Action:  "GetSigningCertificate",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetSigningCertificateOutput)(nil),
 		Error:   nil,
@@ -1412,7 +1412,7 @@ func (c *Client) GetSigningCertificateWithContext(ctx context.Context, input *co
 func (c *Client) GetUICustomizationWithContext(ctx context.Context, input *cognitoidentityprovider.GetUICustomizationInput, opts ...request.Option) (*cognitoidentityprovider.GetUICustomizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetUICustomizationWithContext",
+		Action:  "GetUICustomization",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetUICustomizationOutput)(nil),
 		Error:   nil,
@@ -1433,7 +1433,7 @@ func (c *Client) GetUICustomizationWithContext(ctx context.Context, input *cogni
 func (c *Client) GetUserWithContext(ctx context.Context, input *cognitoidentityprovider.GetUserInput, opts ...request.Option) (*cognitoidentityprovider.GetUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetUserWithContext",
+		Action:  "GetUser",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetUserOutput)(nil),
 		Error:   nil,
@@ -1454,7 +1454,7 @@ func (c *Client) GetUserWithContext(ctx context.Context, input *cognitoidentityp
 func (c *Client) GetUserAttributeVerificationCodeWithContext(ctx context.Context, input *cognitoidentityprovider.GetUserAttributeVerificationCodeInput, opts ...request.Option) (*cognitoidentityprovider.GetUserAttributeVerificationCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetUserAttributeVerificationCodeWithContext",
+		Action:  "GetUserAttributeVerificationCode",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetUserAttributeVerificationCodeOutput)(nil),
 		Error:   nil,
@@ -1475,7 +1475,7 @@ func (c *Client) GetUserAttributeVerificationCodeWithContext(ctx context.Context
 func (c *Client) GetUserPoolMfaConfigWithContext(ctx context.Context, input *cognitoidentityprovider.GetUserPoolMfaConfigInput, opts ...request.Option) (*cognitoidentityprovider.GetUserPoolMfaConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GetUserPoolMfaConfigWithContext",
+		Action:  "GetUserPoolMfaConfig",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GetUserPoolMfaConfigOutput)(nil),
 		Error:   nil,
@@ -1496,7 +1496,7 @@ func (c *Client) GetUserPoolMfaConfigWithContext(ctx context.Context, input *cog
 func (c *Client) GlobalSignOutWithContext(ctx context.Context, input *cognitoidentityprovider.GlobalSignOutInput, opts ...request.Option) (*cognitoidentityprovider.GlobalSignOutOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "GlobalSignOutWithContext",
+		Action:  "GlobalSignOut",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.GlobalSignOutOutput)(nil),
 		Error:   nil,
@@ -1517,7 +1517,7 @@ func (c *Client) GlobalSignOutWithContext(ctx context.Context, input *cognitoide
 func (c *Client) InitiateAuthWithContext(ctx context.Context, input *cognitoidentityprovider.InitiateAuthInput, opts ...request.Option) (*cognitoidentityprovider.InitiateAuthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "InitiateAuthWithContext",
+		Action:  "InitiateAuth",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.InitiateAuthOutput)(nil),
 		Error:   nil,
@@ -1538,7 +1538,7 @@ func (c *Client) InitiateAuthWithContext(ctx context.Context, input *cognitoiden
 func (c *Client) ListDevicesWithContext(ctx context.Context, input *cognitoidentityprovider.ListDevicesInput, opts ...request.Option) (*cognitoidentityprovider.ListDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListDevicesWithContext",
+		Action:  "ListDevices",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListDevicesOutput)(nil),
 		Error:   nil,
@@ -1559,7 +1559,7 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, input *cognitoident
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *cognitoidentityprovider.ListGroupsInput, opts ...request.Option) (*cognitoidentityprovider.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListGroupsWithContext",
+		Action:  "ListGroups",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListGroupsOutput)(nil),
 		Error:   nil,
@@ -1580,7 +1580,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *cognitoidenti
 func (c *Client) ListIdentityProvidersWithContext(ctx context.Context, input *cognitoidentityprovider.ListIdentityProvidersInput, opts ...request.Option) (*cognitoidentityprovider.ListIdentityProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListIdentityProvidersWithContext",
+		Action:  "ListIdentityProviders",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListIdentityProvidersOutput)(nil),
 		Error:   nil,
@@ -1601,7 +1601,7 @@ func (c *Client) ListIdentityProvidersWithContext(ctx context.Context, input *co
 func (c *Client) ListResourceServersWithContext(ctx context.Context, input *cognitoidentityprovider.ListResourceServersInput, opts ...request.Option) (*cognitoidentityprovider.ListResourceServersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListResourceServersWithContext",
+		Action:  "ListResourceServers",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListResourceServersOutput)(nil),
 		Error:   nil,
@@ -1622,7 +1622,7 @@ func (c *Client) ListResourceServersWithContext(ctx context.Context, input *cogn
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cognitoidentityprovider.ListTagsForResourceInput, opts ...request.Option) (*cognitoidentityprovider.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1643,7 +1643,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cogn
 func (c *Client) ListUserImportJobsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserImportJobsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserImportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListUserImportJobsWithContext",
+		Action:  "ListUserImportJobs",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListUserImportJobsOutput)(nil),
 		Error:   nil,
@@ -1664,7 +1664,7 @@ func (c *Client) ListUserImportJobsWithContext(ctx context.Context, input *cogni
 func (c *Client) ListUserPoolClientsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolClientsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserPoolClientsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListUserPoolClientsWithContext",
+		Action:  "ListUserPoolClients",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListUserPoolClientsOutput)(nil),
 		Error:   nil,
@@ -1685,7 +1685,7 @@ func (c *Client) ListUserPoolClientsWithContext(ctx context.Context, input *cogn
 func (c *Client) ListUserPoolsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserPoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListUserPoolsWithContext",
+		Action:  "ListUserPools",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListUserPoolsOutput)(nil),
 		Error:   nil,
@@ -1706,7 +1706,7 @@ func (c *Client) ListUserPoolsWithContext(ctx context.Context, input *cognitoide
 func (c *Client) ListUsersWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInput, opts ...request.Option) (*cognitoidentityprovider.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListUsersOutput)(nil),
 		Error:   nil,
@@ -1727,7 +1727,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *cognitoidentit
 func (c *Client) ListUsersInGroupWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInGroupInput, opts ...request.Option) (*cognitoidentityprovider.ListUsersInGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ListUsersInGroupWithContext",
+		Action:  "ListUsersInGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ListUsersInGroupOutput)(nil),
 		Error:   nil,
@@ -1748,7 +1748,7 @@ func (c *Client) ListUsersInGroupWithContext(ctx context.Context, input *cognito
 func (c *Client) ResendConfirmationCodeWithContext(ctx context.Context, input *cognitoidentityprovider.ResendConfirmationCodeInput, opts ...request.Option) (*cognitoidentityprovider.ResendConfirmationCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "ResendConfirmationCodeWithContext",
+		Action:  "ResendConfirmationCode",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.ResendConfirmationCodeOutput)(nil),
 		Error:   nil,
@@ -1769,7 +1769,7 @@ func (c *Client) ResendConfirmationCodeWithContext(ctx context.Context, input *c
 func (c *Client) RespondToAuthChallengeWithContext(ctx context.Context, input *cognitoidentityprovider.RespondToAuthChallengeInput, opts ...request.Option) (*cognitoidentityprovider.RespondToAuthChallengeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "RespondToAuthChallengeWithContext",
+		Action:  "RespondToAuthChallenge",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.RespondToAuthChallengeOutput)(nil),
 		Error:   nil,
@@ -1790,7 +1790,7 @@ func (c *Client) RespondToAuthChallengeWithContext(ctx context.Context, input *c
 func (c *Client) SetRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetRiskConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "SetRiskConfigurationWithContext",
+		Action:  "SetRiskConfiguration",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.SetRiskConfigurationOutput)(nil),
 		Error:   nil,
@@ -1811,7 +1811,7 @@ func (c *Client) SetRiskConfigurationWithContext(ctx context.Context, input *cog
 func (c *Client) SetUICustomizationWithContext(ctx context.Context, input *cognitoidentityprovider.SetUICustomizationInput, opts ...request.Option) (*cognitoidentityprovider.SetUICustomizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "SetUICustomizationWithContext",
+		Action:  "SetUICustomization",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.SetUICustomizationOutput)(nil),
 		Error:   nil,
@@ -1832,7 +1832,7 @@ func (c *Client) SetUICustomizationWithContext(ctx context.Context, input *cogni
 func (c *Client) SetUserMFAPreferenceWithContext(ctx context.Context, input *cognitoidentityprovider.SetUserMFAPreferenceInput, opts ...request.Option) (*cognitoidentityprovider.SetUserMFAPreferenceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "SetUserMFAPreferenceWithContext",
+		Action:  "SetUserMFAPreference",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.SetUserMFAPreferenceOutput)(nil),
 		Error:   nil,
@@ -1853,7 +1853,7 @@ func (c *Client) SetUserMFAPreferenceWithContext(ctx context.Context, input *cog
 func (c *Client) SetUserPoolMfaConfigWithContext(ctx context.Context, input *cognitoidentityprovider.SetUserPoolMfaConfigInput, opts ...request.Option) (*cognitoidentityprovider.SetUserPoolMfaConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "SetUserPoolMfaConfigWithContext",
+		Action:  "SetUserPoolMfaConfig",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.SetUserPoolMfaConfigOutput)(nil),
 		Error:   nil,
@@ -1874,7 +1874,7 @@ func (c *Client) SetUserPoolMfaConfigWithContext(ctx context.Context, input *cog
 func (c *Client) SetUserSettingsWithContext(ctx context.Context, input *cognitoidentityprovider.SetUserSettingsInput, opts ...request.Option) (*cognitoidentityprovider.SetUserSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "SetUserSettingsWithContext",
+		Action:  "SetUserSettings",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.SetUserSettingsOutput)(nil),
 		Error:   nil,
@@ -1895,7 +1895,7 @@ func (c *Client) SetUserSettingsWithContext(ctx context.Context, input *cognitoi
 func (c *Client) SignUpWithContext(ctx context.Context, input *cognitoidentityprovider.SignUpInput, opts ...request.Option) (*cognitoidentityprovider.SignUpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "SignUpWithContext",
+		Action:  "SignUp",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.SignUpOutput)(nil),
 		Error:   nil,
@@ -1916,7 +1916,7 @@ func (c *Client) SignUpWithContext(ctx context.Context, input *cognitoidentitypr
 func (c *Client) StartUserImportJobWithContext(ctx context.Context, input *cognitoidentityprovider.StartUserImportJobInput, opts ...request.Option) (*cognitoidentityprovider.StartUserImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "StartUserImportJobWithContext",
+		Action:  "StartUserImportJob",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.StartUserImportJobOutput)(nil),
 		Error:   nil,
@@ -1937,7 +1937,7 @@ func (c *Client) StartUserImportJobWithContext(ctx context.Context, input *cogni
 func (c *Client) StopUserImportJobWithContext(ctx context.Context, input *cognitoidentityprovider.StopUserImportJobInput, opts ...request.Option) (*cognitoidentityprovider.StopUserImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "StopUserImportJobWithContext",
+		Action:  "StopUserImportJob",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.StopUserImportJobOutput)(nil),
 		Error:   nil,
@@ -1958,7 +1958,7 @@ func (c *Client) StopUserImportJobWithContext(ctx context.Context, input *cognit
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cognitoidentityprovider.TagResourceInput, opts ...request.Option) (*cognitoidentityprovider.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1979,7 +1979,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *cognitoident
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *cognitoidentityprovider.UntagResourceInput, opts ...request.Option) (*cognitoidentityprovider.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -2000,7 +2000,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *cognitoide
 func (c *Client) UpdateAuthEventFeedbackWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateAuthEventFeedbackInput, opts ...request.Option) (*cognitoidentityprovider.UpdateAuthEventFeedbackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateAuthEventFeedbackWithContext",
+		Action:  "UpdateAuthEventFeedback",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateAuthEventFeedbackOutput)(nil),
 		Error:   nil,
@@ -2021,7 +2021,7 @@ func (c *Client) UpdateAuthEventFeedbackWithContext(ctx context.Context, input *
 func (c *Client) UpdateDeviceStatusWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateDeviceStatusInput, opts ...request.Option) (*cognitoidentityprovider.UpdateDeviceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateDeviceStatusWithContext",
+		Action:  "UpdateDeviceStatus",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateDeviceStatusOutput)(nil),
 		Error:   nil,
@@ -2042,7 +2042,7 @@ func (c *Client) UpdateDeviceStatusWithContext(ctx context.Context, input *cogni
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateGroupInput, opts ...request.Option) (*cognitoidentityprovider.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateGroupWithContext",
+		Action:  "UpdateGroup",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateGroupOutput)(nil),
 		Error:   nil,
@@ -2063,7 +2063,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *cognitoident
 func (c *Client) UpdateIdentityProviderWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateIdentityProviderInput, opts ...request.Option) (*cognitoidentityprovider.UpdateIdentityProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateIdentityProviderWithContext",
+		Action:  "UpdateIdentityProvider",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateIdentityProviderOutput)(nil),
 		Error:   nil,
@@ -2084,7 +2084,7 @@ func (c *Client) UpdateIdentityProviderWithContext(ctx context.Context, input *c
 func (c *Client) UpdateResourceServerWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateResourceServerInput, opts ...request.Option) (*cognitoidentityprovider.UpdateResourceServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateResourceServerWithContext",
+		Action:  "UpdateResourceServer",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateResourceServerOutput)(nil),
 		Error:   nil,
@@ -2105,7 +2105,7 @@ func (c *Client) UpdateResourceServerWithContext(ctx context.Context, input *cog
 func (c *Client) UpdateUserAttributesWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateUserAttributesInput, opts ...request.Option) (*cognitoidentityprovider.UpdateUserAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateUserAttributesWithContext",
+		Action:  "UpdateUserAttributes",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateUserAttributesOutput)(nil),
 		Error:   nil,
@@ -2126,7 +2126,7 @@ func (c *Client) UpdateUserAttributesWithContext(ctx context.Context, input *cog
 func (c *Client) UpdateUserPoolWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateUserPoolInput, opts ...request.Option) (*cognitoidentityprovider.UpdateUserPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateUserPoolWithContext",
+		Action:  "UpdateUserPool",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateUserPoolOutput)(nil),
 		Error:   nil,
@@ -2147,7 +2147,7 @@ func (c *Client) UpdateUserPoolWithContext(ctx context.Context, input *cognitoid
 func (c *Client) UpdateUserPoolClientWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateUserPoolClientInput, opts ...request.Option) (*cognitoidentityprovider.UpdateUserPoolClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateUserPoolClientWithContext",
+		Action:  "UpdateUserPoolClient",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateUserPoolClientOutput)(nil),
 		Error:   nil,
@@ -2168,7 +2168,7 @@ func (c *Client) UpdateUserPoolClientWithContext(ctx context.Context, input *cog
 func (c *Client) UpdateUserPoolDomainWithContext(ctx context.Context, input *cognitoidentityprovider.UpdateUserPoolDomainInput, opts ...request.Option) (*cognitoidentityprovider.UpdateUserPoolDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "UpdateUserPoolDomainWithContext",
+		Action:  "UpdateUserPoolDomain",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.UpdateUserPoolDomainOutput)(nil),
 		Error:   nil,
@@ -2189,7 +2189,7 @@ func (c *Client) UpdateUserPoolDomainWithContext(ctx context.Context, input *cog
 func (c *Client) VerifySoftwareTokenWithContext(ctx context.Context, input *cognitoidentityprovider.VerifySoftwareTokenInput, opts ...request.Option) (*cognitoidentityprovider.VerifySoftwareTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "VerifySoftwareTokenWithContext",
+		Action:  "VerifySoftwareToken",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.VerifySoftwareTokenOutput)(nil),
 		Error:   nil,
@@ -2210,7 +2210,7 @@ func (c *Client) VerifySoftwareTokenWithContext(ctx context.Context, input *cogn
 func (c *Client) VerifyUserAttributeWithContext(ctx context.Context, input *cognitoidentityprovider.VerifyUserAttributeInput, opts ...request.Option) (*cognitoidentityprovider.VerifyUserAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
-		Action:  "VerifyUserAttributeWithContext",
+		Action:  "VerifyUserAttribute",
 		Input:   input,
 		Output:  (*cognitoidentityprovider.VerifyUserAttributeOutput)(nil),
 		Error:   nil,

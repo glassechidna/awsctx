@@ -43,7 +43,7 @@ var _ Firehose = (*Client)(nil)
 func (c *Client) CreateDeliveryStreamWithContext(ctx context.Context, input *firehose.CreateDeliveryStreamInput, opts ...request.Option) (*firehose.CreateDeliveryStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "CreateDeliveryStreamWithContext",
+		Action:  "CreateDeliveryStream",
 		Input:   input,
 		Output:  (*firehose.CreateDeliveryStreamOutput)(nil),
 		Error:   nil,
@@ -64,7 +64,7 @@ func (c *Client) CreateDeliveryStreamWithContext(ctx context.Context, input *fir
 func (c *Client) DeleteDeliveryStreamWithContext(ctx context.Context, input *firehose.DeleteDeliveryStreamInput, opts ...request.Option) (*firehose.DeleteDeliveryStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "DeleteDeliveryStreamWithContext",
+		Action:  "DeleteDeliveryStream",
 		Input:   input,
 		Output:  (*firehose.DeleteDeliveryStreamOutput)(nil),
 		Error:   nil,
@@ -85,7 +85,7 @@ func (c *Client) DeleteDeliveryStreamWithContext(ctx context.Context, input *fir
 func (c *Client) DescribeDeliveryStreamWithContext(ctx context.Context, input *firehose.DescribeDeliveryStreamInput, opts ...request.Option) (*firehose.DescribeDeliveryStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "DescribeDeliveryStreamWithContext",
+		Action:  "DescribeDeliveryStream",
 		Input:   input,
 		Output:  (*firehose.DescribeDeliveryStreamOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) DescribeDeliveryStreamWithContext(ctx context.Context, input *f
 func (c *Client) ListDeliveryStreamsWithContext(ctx context.Context, input *firehose.ListDeliveryStreamsInput, opts ...request.Option) (*firehose.ListDeliveryStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "ListDeliveryStreamsWithContext",
+		Action:  "ListDeliveryStreams",
 		Input:   input,
 		Output:  (*firehose.ListDeliveryStreamsOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) ListDeliveryStreamsWithContext(ctx context.Context, input *fire
 func (c *Client) ListTagsForDeliveryStreamWithContext(ctx context.Context, input *firehose.ListTagsForDeliveryStreamInput, opts ...request.Option) (*firehose.ListTagsForDeliveryStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "ListTagsForDeliveryStreamWithContext",
+		Action:  "ListTagsForDeliveryStream",
 		Input:   input,
 		Output:  (*firehose.ListTagsForDeliveryStreamOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) ListTagsForDeliveryStreamWithContext(ctx context.Context, input
 func (c *Client) PutRecordWithContext(ctx context.Context, input *firehose.PutRecordInput, opts ...request.Option) (*firehose.PutRecordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "PutRecordWithContext",
+		Action:  "PutRecord",
 		Input:   input,
 		Output:  (*firehose.PutRecordOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) PutRecordWithContext(ctx context.Context, input *firehose.PutRe
 func (c *Client) PutRecordBatchWithContext(ctx context.Context, input *firehose.PutRecordBatchInput, opts ...request.Option) (*firehose.PutRecordBatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "PutRecordBatchWithContext",
+		Action:  "PutRecordBatch",
 		Input:   input,
 		Output:  (*firehose.PutRecordBatchOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) PutRecordBatchWithContext(ctx context.Context, input *firehose.
 func (c *Client) StartDeliveryStreamEncryptionWithContext(ctx context.Context, input *firehose.StartDeliveryStreamEncryptionInput, opts ...request.Option) (*firehose.StartDeliveryStreamEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "StartDeliveryStreamEncryptionWithContext",
+		Action:  "StartDeliveryStreamEncryption",
 		Input:   input,
 		Output:  (*firehose.StartDeliveryStreamEncryptionOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) StartDeliveryStreamEncryptionWithContext(ctx context.Context, i
 func (c *Client) StopDeliveryStreamEncryptionWithContext(ctx context.Context, input *firehose.StopDeliveryStreamEncryptionInput, opts ...request.Option) (*firehose.StopDeliveryStreamEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "StopDeliveryStreamEncryptionWithContext",
+		Action:  "StopDeliveryStreamEncryption",
 		Input:   input,
 		Output:  (*firehose.StopDeliveryStreamEncryptionOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) StopDeliveryStreamEncryptionWithContext(ctx context.Context, in
 func (c *Client) TagDeliveryStreamWithContext(ctx context.Context, input *firehose.TagDeliveryStreamInput, opts ...request.Option) (*firehose.TagDeliveryStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "TagDeliveryStreamWithContext",
+		Action:  "TagDeliveryStream",
 		Input:   input,
 		Output:  (*firehose.TagDeliveryStreamOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) TagDeliveryStreamWithContext(ctx context.Context, input *fireho
 func (c *Client) UntagDeliveryStreamWithContext(ctx context.Context, input *firehose.UntagDeliveryStreamInput, opts ...request.Option) (*firehose.UntagDeliveryStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "UntagDeliveryStreamWithContext",
+		Action:  "UntagDeliveryStream",
 		Input:   input,
 		Output:  (*firehose.UntagDeliveryStreamOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) UntagDeliveryStreamWithContext(ctx context.Context, input *fire
 func (c *Client) UpdateDestinationWithContext(ctx context.Context, input *firehose.UpdateDestinationInput, opts ...request.Option) (*firehose.UpdateDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "firehose",
-		Action:  "UpdateDestinationWithContext",
+		Action:  "UpdateDestination",
 		Input:   input,
 		Output:  (*firehose.UpdateDestinationOutput)(nil),
 		Error:   nil,

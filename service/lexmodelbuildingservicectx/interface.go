@@ -67,7 +67,7 @@ var _ LexModelBuildingService = (*Client)(nil)
 func (c *Client) CreateBotVersionWithContext(ctx context.Context, input *lexmodelbuildingservice.CreateBotVersionInput, opts ...request.Option) (*lexmodelbuildingservice.CreateBotVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "CreateBotVersionWithContext",
+		Action:  "CreateBotVersion",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.CreateBotVersionOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) CreateBotVersionWithContext(ctx context.Context, input *lexmode
 func (c *Client) CreateIntentVersionWithContext(ctx context.Context, input *lexmodelbuildingservice.CreateIntentVersionInput, opts ...request.Option) (*lexmodelbuildingservice.CreateIntentVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "CreateIntentVersionWithContext",
+		Action:  "CreateIntentVersion",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.CreateIntentVersionOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) CreateIntentVersionWithContext(ctx context.Context, input *lexm
 func (c *Client) CreateSlotTypeVersionWithContext(ctx context.Context, input *lexmodelbuildingservice.CreateSlotTypeVersionInput, opts ...request.Option) (*lexmodelbuildingservice.CreateSlotTypeVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "CreateSlotTypeVersionWithContext",
+		Action:  "CreateSlotTypeVersion",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.CreateSlotTypeVersionOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) CreateSlotTypeVersionWithContext(ctx context.Context, input *le
 func (c *Client) DeleteBotWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteBotInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteBotWithContext",
+		Action:  "DeleteBot",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteBotOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) DeleteBotWithContext(ctx context.Context, input *lexmodelbuildi
 func (c *Client) DeleteBotAliasWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteBotAliasInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteBotAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteBotAliasWithContext",
+		Action:  "DeleteBotAlias",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteBotAliasOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) DeleteBotAliasWithContext(ctx context.Context, input *lexmodelb
 func (c *Client) DeleteBotChannelAssociationWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteBotChannelAssociationInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteBotChannelAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteBotChannelAssociationWithContext",
+		Action:  "DeleteBotChannelAssociation",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteBotChannelAssociationOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) DeleteBotChannelAssociationWithContext(ctx context.Context, inp
 func (c *Client) DeleteBotVersionWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteBotVersionInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteBotVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteBotVersionWithContext",
+		Action:  "DeleteBotVersion",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteBotVersionOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) DeleteBotVersionWithContext(ctx context.Context, input *lexmode
 func (c *Client) DeleteIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteIntentInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteIntentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteIntentWithContext",
+		Action:  "DeleteIntent",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteIntentOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) DeleteIntentWithContext(ctx context.Context, input *lexmodelbui
 func (c *Client) DeleteIntentVersionWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteIntentVersionInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteIntentVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteIntentVersionWithContext",
+		Action:  "DeleteIntentVersion",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteIntentVersionOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) DeleteIntentVersionWithContext(ctx context.Context, input *lexm
 func (c *Client) DeleteSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteSlotTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteSlotTypeWithContext",
+		Action:  "DeleteSlotType",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteSlotTypeOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) DeleteSlotTypeWithContext(ctx context.Context, input *lexmodelb
 func (c *Client) DeleteSlotTypeVersionWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteSlotTypeVersionInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteSlotTypeVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteSlotTypeVersionWithContext",
+		Action:  "DeleteSlotTypeVersion",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteSlotTypeVersionOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) DeleteSlotTypeVersionWithContext(ctx context.Context, input *le
 func (c *Client) DeleteUtterancesWithContext(ctx context.Context, input *lexmodelbuildingservice.DeleteUtterancesInput, opts ...request.Option) (*lexmodelbuildingservice.DeleteUtterancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "DeleteUtterancesWithContext",
+		Action:  "DeleteUtterances",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.DeleteUtterancesOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) DeleteUtterancesWithContext(ctx context.Context, input *lexmode
 func (c *Client) GetBotWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotWithContext",
+		Action:  "GetBot",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) GetBotWithContext(ctx context.Context, input *lexmodelbuildings
 func (c *Client) GetBotAliasWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotAliasInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotAliasWithContext",
+		Action:  "GetBotAlias",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotAliasOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) GetBotAliasWithContext(ctx context.Context, input *lexmodelbuil
 func (c *Client) GetBotAliasesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotAliasesInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotAliasesWithContext",
+		Action:  "GetBotAliases",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotAliasesOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) GetBotAliasesWithContext(ctx context.Context, input *lexmodelbu
 func (c *Client) GetBotChannelAssociationWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotChannelAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotChannelAssociationWithContext",
+		Action:  "GetBotChannelAssociation",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotChannelAssociationOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) GetBotChannelAssociationWithContext(ctx context.Context, input 
 func (c *Client) GetBotChannelAssociationsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotChannelAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotChannelAssociationsWithContext",
+		Action:  "GetBotChannelAssociations",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotChannelAssociationsOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) GetBotChannelAssociationsWithContext(ctx context.Context, input
 func (c *Client) GetBotVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotVersionsWithContext",
+		Action:  "GetBotVersions",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotVersionsOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) GetBotVersionsWithContext(ctx context.Context, input *lexmodelb
 func (c *Client) GetBotsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBotsWithContext",
+		Action:  "GetBots",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBotsOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) GetBotsWithContext(ctx context.Context, input *lexmodelbuilding
 func (c *Client) GetBuiltinIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinIntentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBuiltinIntentWithContext",
+		Action:  "GetBuiltinIntent",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBuiltinIntentOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) GetBuiltinIntentWithContext(ctx context.Context, input *lexmode
 func (c *Client) GetBuiltinIntentsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinIntentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBuiltinIntentsWithContext",
+		Action:  "GetBuiltinIntents",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBuiltinIntentsOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) GetBuiltinIntentsWithContext(ctx context.Context, input *lexmod
 func (c *Client) GetBuiltinSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinSlotTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetBuiltinSlotTypesWithContext",
+		Action:  "GetBuiltinSlotTypes",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetBuiltinSlotTypesOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) GetBuiltinSlotTypesWithContext(ctx context.Context, input *lexm
 func (c *Client) GetExportWithContext(ctx context.Context, input *lexmodelbuildingservice.GetExportInput, opts ...request.Option) (*lexmodelbuildingservice.GetExportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetExportWithContext",
+		Action:  "GetExport",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetExportOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) GetExportWithContext(ctx context.Context, input *lexmodelbuildi
 func (c *Client) GetImportWithContext(ctx context.Context, input *lexmodelbuildingservice.GetImportInput, opts ...request.Option) (*lexmodelbuildingservice.GetImportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetImportWithContext",
+		Action:  "GetImport",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetImportOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) GetImportWithContext(ctx context.Context, input *lexmodelbuildi
 func (c *Client) GetIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetIntentWithContext",
+		Action:  "GetIntent",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetIntentOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) GetIntentWithContext(ctx context.Context, input *lexmodelbuildi
 func (c *Client) GetIntentVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetIntentVersionsWithContext",
+		Action:  "GetIntentVersions",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetIntentVersionsOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) GetIntentVersionsWithContext(ctx context.Context, input *lexmod
 func (c *Client) GetIntentsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetIntentsWithContext",
+		Action:  "GetIntents",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetIntentsOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) GetIntentsWithContext(ctx context.Context, input *lexmodelbuild
 func (c *Client) GetSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetSlotTypeWithContext",
+		Action:  "GetSlotType",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetSlotTypeOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) GetSlotTypeWithContext(ctx context.Context, input *lexmodelbuil
 func (c *Client) GetSlotTypeVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetSlotTypeVersionsWithContext",
+		Action:  "GetSlotTypeVersions",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetSlotTypeVersionsOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) GetSlotTypeVersionsWithContext(ctx context.Context, input *lexm
 func (c *Client) GetSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetSlotTypesWithContext",
+		Action:  "GetSlotTypes",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetSlotTypesOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) GetSlotTypesWithContext(ctx context.Context, input *lexmodelbui
 func (c *Client) GetUtterancesViewWithContext(ctx context.Context, input *lexmodelbuildingservice.GetUtterancesViewInput, opts ...request.Option) (*lexmodelbuildingservice.GetUtterancesViewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "GetUtterancesViewWithContext",
+		Action:  "GetUtterancesView",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.GetUtterancesViewOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) GetUtterancesViewWithContext(ctx context.Context, input *lexmod
 func (c *Client) PutBotWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "PutBotWithContext",
+		Action:  "PutBot",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.PutBotOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) PutBotWithContext(ctx context.Context, input *lexmodelbuildings
 func (c *Client) PutBotAliasWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotAliasInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "PutBotAliasWithContext",
+		Action:  "PutBotAlias",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.PutBotAliasOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) PutBotAliasWithContext(ctx context.Context, input *lexmodelbuil
 func (c *Client) PutIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.PutIntentInput, opts ...request.Option) (*lexmodelbuildingservice.PutIntentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "PutIntentWithContext",
+		Action:  "PutIntent",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.PutIntentOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) PutIntentWithContext(ctx context.Context, input *lexmodelbuildi
 func (c *Client) PutSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.PutSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.PutSlotTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "PutSlotTypeWithContext",
+		Action:  "PutSlotType",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.PutSlotTypeOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) PutSlotTypeWithContext(ctx context.Context, input *lexmodelbuil
 func (c *Client) StartImportWithContext(ctx context.Context, input *lexmodelbuildingservice.StartImportInput, opts ...request.Option) (*lexmodelbuildingservice.StartImportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
-		Action:  "StartImportWithContext",
+		Action:  "StartImport",
 		Input:   input,
 		Output:  (*lexmodelbuildingservice.StartImportOutput)(nil),
 		Error:   nil,

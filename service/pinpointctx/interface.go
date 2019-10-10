@@ -13,9 +13,12 @@ import (
 type Pinpoint interface {
 	CreateAppWithContext(ctx context.Context, input *pinpoint.CreateAppInput, opts ...request.Option) (*pinpoint.CreateAppOutput, error)
 	CreateCampaignWithContext(ctx context.Context, input *pinpoint.CreateCampaignInput, opts ...request.Option) (*pinpoint.CreateCampaignOutput, error)
+	CreateEmailTemplateWithContext(ctx context.Context, input *pinpoint.CreateEmailTemplateInput, opts ...request.Option) (*pinpoint.CreateEmailTemplateOutput, error)
 	CreateExportJobWithContext(ctx context.Context, input *pinpoint.CreateExportJobInput, opts ...request.Option) (*pinpoint.CreateExportJobOutput, error)
 	CreateImportJobWithContext(ctx context.Context, input *pinpoint.CreateImportJobInput, opts ...request.Option) (*pinpoint.CreateImportJobOutput, error)
+	CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error)
 	CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error)
+	CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error)
 	DeleteAdmChannelWithContext(ctx context.Context, input *pinpoint.DeleteAdmChannelInput, opts ...request.Option) (*pinpoint.DeleteAdmChannelOutput, error)
 	DeleteApnsChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsChannelOutput, error)
 	DeleteApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsSandboxChannelOutput, error)
@@ -25,11 +28,14 @@ type Pinpoint interface {
 	DeleteBaiduChannelWithContext(ctx context.Context, input *pinpoint.DeleteBaiduChannelInput, opts ...request.Option) (*pinpoint.DeleteBaiduChannelOutput, error)
 	DeleteCampaignWithContext(ctx context.Context, input *pinpoint.DeleteCampaignInput, opts ...request.Option) (*pinpoint.DeleteCampaignOutput, error)
 	DeleteEmailChannelWithContext(ctx context.Context, input *pinpoint.DeleteEmailChannelInput, opts ...request.Option) (*pinpoint.DeleteEmailChannelOutput, error)
+	DeleteEmailTemplateWithContext(ctx context.Context, input *pinpoint.DeleteEmailTemplateInput, opts ...request.Option) (*pinpoint.DeleteEmailTemplateOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *pinpoint.DeleteEndpointInput, opts ...request.Option) (*pinpoint.DeleteEndpointOutput, error)
 	DeleteEventStreamWithContext(ctx context.Context, input *pinpoint.DeleteEventStreamInput, opts ...request.Option) (*pinpoint.DeleteEventStreamOutput, error)
 	DeleteGcmChannelWithContext(ctx context.Context, input *pinpoint.DeleteGcmChannelInput, opts ...request.Option) (*pinpoint.DeleteGcmChannelOutput, error)
+	DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error)
 	DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error)
 	DeleteSmsChannelWithContext(ctx context.Context, input *pinpoint.DeleteSmsChannelInput, opts ...request.Option) (*pinpoint.DeleteSmsChannelOutput, error)
+	DeleteSmsTemplateWithContext(ctx context.Context, input *pinpoint.DeleteSmsTemplateInput, opts ...request.Option) (*pinpoint.DeleteSmsTemplateOutput, error)
 	DeleteUserEndpointsWithContext(ctx context.Context, input *pinpoint.DeleteUserEndpointsInput, opts ...request.Option) (*pinpoint.DeleteUserEndpointsOutput, error)
 	DeleteVoiceChannelWithContext(ctx context.Context, input *pinpoint.DeleteVoiceChannelInput, opts ...request.Option) (*pinpoint.DeleteVoiceChannelOutput, error)
 	GetAdmChannelWithContext(ctx context.Context, input *pinpoint.GetAdmChannelInput, opts ...request.Option) (*pinpoint.GetAdmChannelOutput, error)
@@ -50,6 +56,7 @@ type Pinpoint interface {
 	GetCampaignsWithContext(ctx context.Context, input *pinpoint.GetCampaignsInput, opts ...request.Option) (*pinpoint.GetCampaignsOutput, error)
 	GetChannelsWithContext(ctx context.Context, input *pinpoint.GetChannelsInput, opts ...request.Option) (*pinpoint.GetChannelsOutput, error)
 	GetEmailChannelWithContext(ctx context.Context, input *pinpoint.GetEmailChannelInput, opts ...request.Option) (*pinpoint.GetEmailChannelOutput, error)
+	GetEmailTemplateWithContext(ctx context.Context, input *pinpoint.GetEmailTemplateInput, opts ...request.Option) (*pinpoint.GetEmailTemplateOutput, error)
 	GetEndpointWithContext(ctx context.Context, input *pinpoint.GetEndpointInput, opts ...request.Option) (*pinpoint.GetEndpointOutput, error)
 	GetEventStreamWithContext(ctx context.Context, input *pinpoint.GetEventStreamInput, opts ...request.Option) (*pinpoint.GetEventStreamOutput, error)
 	GetExportJobWithContext(ctx context.Context, input *pinpoint.GetExportJobInput, opts ...request.Option) (*pinpoint.GetExportJobOutput, error)
@@ -57,6 +64,7 @@ type Pinpoint interface {
 	GetGcmChannelWithContext(ctx context.Context, input *pinpoint.GetGcmChannelInput, opts ...request.Option) (*pinpoint.GetGcmChannelOutput, error)
 	GetImportJobWithContext(ctx context.Context, input *pinpoint.GetImportJobInput, opts ...request.Option) (*pinpoint.GetImportJobOutput, error)
 	GetImportJobsWithContext(ctx context.Context, input *pinpoint.GetImportJobsInput, opts ...request.Option) (*pinpoint.GetImportJobsOutput, error)
+	GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error)
 	GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error)
 	GetSegmentExportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentExportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentExportJobsOutput, error)
 	GetSegmentImportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentImportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentImportJobsOutput, error)
@@ -64,9 +72,11 @@ type Pinpoint interface {
 	GetSegmentVersionsWithContext(ctx context.Context, input *pinpoint.GetSegmentVersionsInput, opts ...request.Option) (*pinpoint.GetSegmentVersionsOutput, error)
 	GetSegmentsWithContext(ctx context.Context, input *pinpoint.GetSegmentsInput, opts ...request.Option) (*pinpoint.GetSegmentsOutput, error)
 	GetSmsChannelWithContext(ctx context.Context, input *pinpoint.GetSmsChannelInput, opts ...request.Option) (*pinpoint.GetSmsChannelOutput, error)
+	GetSmsTemplateWithContext(ctx context.Context, input *pinpoint.GetSmsTemplateInput, opts ...request.Option) (*pinpoint.GetSmsTemplateOutput, error)
 	GetUserEndpointsWithContext(ctx context.Context, input *pinpoint.GetUserEndpointsInput, opts ...request.Option) (*pinpoint.GetUserEndpointsOutput, error)
 	GetVoiceChannelWithContext(ctx context.Context, input *pinpoint.GetVoiceChannelInput, opts ...request.Option) (*pinpoint.GetVoiceChannelOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error)
+	ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error)
 	PhoneNumberValidateWithContext(ctx context.Context, input *pinpoint.PhoneNumberValidateInput, opts ...request.Option) (*pinpoint.PhoneNumberValidateOutput, error)
 	PutEventStreamWithContext(ctx context.Context, input *pinpoint.PutEventStreamInput, opts ...request.Option) (*pinpoint.PutEventStreamOutput, error)
 	PutEventsWithContext(ctx context.Context, input *pinpoint.PutEventsInput, opts ...request.Option) (*pinpoint.PutEventsOutput, error)
@@ -84,11 +94,14 @@ type Pinpoint interface {
 	UpdateBaiduChannelWithContext(ctx context.Context, input *pinpoint.UpdateBaiduChannelInput, opts ...request.Option) (*pinpoint.UpdateBaiduChannelOutput, error)
 	UpdateCampaignWithContext(ctx context.Context, input *pinpoint.UpdateCampaignInput, opts ...request.Option) (*pinpoint.UpdateCampaignOutput, error)
 	UpdateEmailChannelWithContext(ctx context.Context, input *pinpoint.UpdateEmailChannelInput, opts ...request.Option) (*pinpoint.UpdateEmailChannelOutput, error)
+	UpdateEmailTemplateWithContext(ctx context.Context, input *pinpoint.UpdateEmailTemplateInput, opts ...request.Option) (*pinpoint.UpdateEmailTemplateOutput, error)
 	UpdateEndpointWithContext(ctx context.Context, input *pinpoint.UpdateEndpointInput, opts ...request.Option) (*pinpoint.UpdateEndpointOutput, error)
 	UpdateEndpointsBatchWithContext(ctx context.Context, input *pinpoint.UpdateEndpointsBatchInput, opts ...request.Option) (*pinpoint.UpdateEndpointsBatchOutput, error)
 	UpdateGcmChannelWithContext(ctx context.Context, input *pinpoint.UpdateGcmChannelInput, opts ...request.Option) (*pinpoint.UpdateGcmChannelOutput, error)
+	UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error)
 	UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error)
 	UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error)
+	UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error)
 	UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error)
 }
 
@@ -110,7 +123,7 @@ var _ Pinpoint = (*Client)(nil)
 func (c *Client) CreateAppWithContext(ctx context.Context, input *pinpoint.CreateAppInput, opts ...request.Option) (*pinpoint.CreateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "CreateAppWithContext",
+		Action:  "CreateApp",
 		Input:   input,
 		Output:  (*pinpoint.CreateAppOutput)(nil),
 		Error:   nil,
@@ -131,7 +144,7 @@ func (c *Client) CreateAppWithContext(ctx context.Context, input *pinpoint.Creat
 func (c *Client) CreateCampaignWithContext(ctx context.Context, input *pinpoint.CreateCampaignInput, opts ...request.Option) (*pinpoint.CreateCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "CreateCampaignWithContext",
+		Action:  "CreateCampaign",
 		Input:   input,
 		Output:  (*pinpoint.CreateCampaignOutput)(nil),
 		Error:   nil,
@@ -149,10 +162,31 @@ func (c *Client) CreateCampaignWithContext(ctx context.Context, input *pinpoint.
 	return req.Output.(*pinpoint.CreateCampaignOutput), req.Error
 }
 
+func (c *Client) CreateEmailTemplateWithContext(ctx context.Context, input *pinpoint.CreateEmailTemplateInput, opts ...request.Option) (*pinpoint.CreateEmailTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "CreateEmailTemplate",
+		Input:   input,
+		Output:  (*pinpoint.CreateEmailTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.CreateEmailTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.CreateEmailTemplateOutput), req.Error
+}
+
 func (c *Client) CreateExportJobWithContext(ctx context.Context, input *pinpoint.CreateExportJobInput, opts ...request.Option) (*pinpoint.CreateExportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "CreateExportJobWithContext",
+		Action:  "CreateExportJob",
 		Input:   input,
 		Output:  (*pinpoint.CreateExportJobOutput)(nil),
 		Error:   nil,
@@ -173,7 +207,7 @@ func (c *Client) CreateExportJobWithContext(ctx context.Context, input *pinpoint
 func (c *Client) CreateImportJobWithContext(ctx context.Context, input *pinpoint.CreateImportJobInput, opts ...request.Option) (*pinpoint.CreateImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "CreateImportJobWithContext",
+		Action:  "CreateImportJob",
 		Input:   input,
 		Output:  (*pinpoint.CreateImportJobOutput)(nil),
 		Error:   nil,
@@ -191,10 +225,31 @@ func (c *Client) CreateImportJobWithContext(ctx context.Context, input *pinpoint
 	return req.Output.(*pinpoint.CreateImportJobOutput), req.Error
 }
 
+func (c *Client) CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "CreatePushTemplate",
+		Input:   input,
+		Output:  (*pinpoint.CreatePushTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.CreatePushTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.CreatePushTemplateOutput), req.Error
+}
+
 func (c *Client) CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "CreateSegmentWithContext",
+		Action:  "CreateSegment",
 		Input:   input,
 		Output:  (*pinpoint.CreateSegmentOutput)(nil),
 		Error:   nil,
@@ -212,10 +267,31 @@ func (c *Client) CreateSegmentWithContext(ctx context.Context, input *pinpoint.C
 	return req.Output.(*pinpoint.CreateSegmentOutput), req.Error
 }
 
+func (c *Client) CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "CreateSmsTemplate",
+		Input:   input,
+		Output:  (*pinpoint.CreateSmsTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.CreateSmsTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.CreateSmsTemplateOutput), req.Error
+}
+
 func (c *Client) DeleteAdmChannelWithContext(ctx context.Context, input *pinpoint.DeleteAdmChannelInput, opts ...request.Option) (*pinpoint.DeleteAdmChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteAdmChannelWithContext",
+		Action:  "DeleteAdmChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteAdmChannelOutput)(nil),
 		Error:   nil,
@@ -236,7 +312,7 @@ func (c *Client) DeleteAdmChannelWithContext(ctx context.Context, input *pinpoin
 func (c *Client) DeleteApnsChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteApnsChannelWithContext",
+		Action:  "DeleteApnsChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteApnsChannelOutput)(nil),
 		Error:   nil,
@@ -257,7 +333,7 @@ func (c *Client) DeleteApnsChannelWithContext(ctx context.Context, input *pinpoi
 func (c *Client) DeleteApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsSandboxChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteApnsSandboxChannelWithContext",
+		Action:  "DeleteApnsSandboxChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteApnsSandboxChannelOutput)(nil),
 		Error:   nil,
@@ -278,7 +354,7 @@ func (c *Client) DeleteApnsSandboxChannelWithContext(ctx context.Context, input 
 func (c *Client) DeleteApnsVoipChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsVoipChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsVoipChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteApnsVoipChannelWithContext",
+		Action:  "DeleteApnsVoipChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteApnsVoipChannelOutput)(nil),
 		Error:   nil,
@@ -299,7 +375,7 @@ func (c *Client) DeleteApnsVoipChannelWithContext(ctx context.Context, input *pi
 func (c *Client) DeleteApnsVoipSandboxChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsVoipSandboxChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsVoipSandboxChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteApnsVoipSandboxChannelWithContext",
+		Action:  "DeleteApnsVoipSandboxChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteApnsVoipSandboxChannelOutput)(nil),
 		Error:   nil,
@@ -320,7 +396,7 @@ func (c *Client) DeleteApnsVoipSandboxChannelWithContext(ctx context.Context, in
 func (c *Client) DeleteAppWithContext(ctx context.Context, input *pinpoint.DeleteAppInput, opts ...request.Option) (*pinpoint.DeleteAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteAppWithContext",
+		Action:  "DeleteApp",
 		Input:   input,
 		Output:  (*pinpoint.DeleteAppOutput)(nil),
 		Error:   nil,
@@ -341,7 +417,7 @@ func (c *Client) DeleteAppWithContext(ctx context.Context, input *pinpoint.Delet
 func (c *Client) DeleteBaiduChannelWithContext(ctx context.Context, input *pinpoint.DeleteBaiduChannelInput, opts ...request.Option) (*pinpoint.DeleteBaiduChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteBaiduChannelWithContext",
+		Action:  "DeleteBaiduChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteBaiduChannelOutput)(nil),
 		Error:   nil,
@@ -362,7 +438,7 @@ func (c *Client) DeleteBaiduChannelWithContext(ctx context.Context, input *pinpo
 func (c *Client) DeleteCampaignWithContext(ctx context.Context, input *pinpoint.DeleteCampaignInput, opts ...request.Option) (*pinpoint.DeleteCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteCampaignWithContext",
+		Action:  "DeleteCampaign",
 		Input:   input,
 		Output:  (*pinpoint.DeleteCampaignOutput)(nil),
 		Error:   nil,
@@ -383,7 +459,7 @@ func (c *Client) DeleteCampaignWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) DeleteEmailChannelWithContext(ctx context.Context, input *pinpoint.DeleteEmailChannelInput, opts ...request.Option) (*pinpoint.DeleteEmailChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteEmailChannelWithContext",
+		Action:  "DeleteEmailChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteEmailChannelOutput)(nil),
 		Error:   nil,
@@ -401,10 +477,31 @@ func (c *Client) DeleteEmailChannelWithContext(ctx context.Context, input *pinpo
 	return req.Output.(*pinpoint.DeleteEmailChannelOutput), req.Error
 }
 
+func (c *Client) DeleteEmailTemplateWithContext(ctx context.Context, input *pinpoint.DeleteEmailTemplateInput, opts ...request.Option) (*pinpoint.DeleteEmailTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "DeleteEmailTemplate",
+		Input:   input,
+		Output:  (*pinpoint.DeleteEmailTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.DeleteEmailTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.DeleteEmailTemplateOutput), req.Error
+}
+
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *pinpoint.DeleteEndpointInput, opts ...request.Option) (*pinpoint.DeleteEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteEndpointWithContext",
+		Action:  "DeleteEndpoint",
 		Input:   input,
 		Output:  (*pinpoint.DeleteEndpointOutput)(nil),
 		Error:   nil,
@@ -425,7 +522,7 @@ func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) DeleteEventStreamWithContext(ctx context.Context, input *pinpoint.DeleteEventStreamInput, opts ...request.Option) (*pinpoint.DeleteEventStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteEventStreamWithContext",
+		Action:  "DeleteEventStream",
 		Input:   input,
 		Output:  (*pinpoint.DeleteEventStreamOutput)(nil),
 		Error:   nil,
@@ -446,7 +543,7 @@ func (c *Client) DeleteEventStreamWithContext(ctx context.Context, input *pinpoi
 func (c *Client) DeleteGcmChannelWithContext(ctx context.Context, input *pinpoint.DeleteGcmChannelInput, opts ...request.Option) (*pinpoint.DeleteGcmChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteGcmChannelWithContext",
+		Action:  "DeleteGcmChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteGcmChannelOutput)(nil),
 		Error:   nil,
@@ -464,10 +561,31 @@ func (c *Client) DeleteGcmChannelWithContext(ctx context.Context, input *pinpoin
 	return req.Output.(*pinpoint.DeleteGcmChannelOutput), req.Error
 }
 
+func (c *Client) DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "DeletePushTemplate",
+		Input:   input,
+		Output:  (*pinpoint.DeletePushTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.DeletePushTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.DeletePushTemplateOutput), req.Error
+}
+
 func (c *Client) DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteSegmentWithContext",
+		Action:  "DeleteSegment",
 		Input:   input,
 		Output:  (*pinpoint.DeleteSegmentOutput)(nil),
 		Error:   nil,
@@ -488,7 +606,7 @@ func (c *Client) DeleteSegmentWithContext(ctx context.Context, input *pinpoint.D
 func (c *Client) DeleteSmsChannelWithContext(ctx context.Context, input *pinpoint.DeleteSmsChannelInput, opts ...request.Option) (*pinpoint.DeleteSmsChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteSmsChannelWithContext",
+		Action:  "DeleteSmsChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteSmsChannelOutput)(nil),
 		Error:   nil,
@@ -506,10 +624,31 @@ func (c *Client) DeleteSmsChannelWithContext(ctx context.Context, input *pinpoin
 	return req.Output.(*pinpoint.DeleteSmsChannelOutput), req.Error
 }
 
+func (c *Client) DeleteSmsTemplateWithContext(ctx context.Context, input *pinpoint.DeleteSmsTemplateInput, opts ...request.Option) (*pinpoint.DeleteSmsTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "DeleteSmsTemplate",
+		Input:   input,
+		Output:  (*pinpoint.DeleteSmsTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.DeleteSmsTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.DeleteSmsTemplateOutput), req.Error
+}
+
 func (c *Client) DeleteUserEndpointsWithContext(ctx context.Context, input *pinpoint.DeleteUserEndpointsInput, opts ...request.Option) (*pinpoint.DeleteUserEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteUserEndpointsWithContext",
+		Action:  "DeleteUserEndpoints",
 		Input:   input,
 		Output:  (*pinpoint.DeleteUserEndpointsOutput)(nil),
 		Error:   nil,
@@ -530,7 +669,7 @@ func (c *Client) DeleteUserEndpointsWithContext(ctx context.Context, input *pinp
 func (c *Client) DeleteVoiceChannelWithContext(ctx context.Context, input *pinpoint.DeleteVoiceChannelInput, opts ...request.Option) (*pinpoint.DeleteVoiceChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "DeleteVoiceChannelWithContext",
+		Action:  "DeleteVoiceChannel",
 		Input:   input,
 		Output:  (*pinpoint.DeleteVoiceChannelOutput)(nil),
 		Error:   nil,
@@ -551,7 +690,7 @@ func (c *Client) DeleteVoiceChannelWithContext(ctx context.Context, input *pinpo
 func (c *Client) GetAdmChannelWithContext(ctx context.Context, input *pinpoint.GetAdmChannelInput, opts ...request.Option) (*pinpoint.GetAdmChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetAdmChannelWithContext",
+		Action:  "GetAdmChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetAdmChannelOutput)(nil),
 		Error:   nil,
@@ -572,7 +711,7 @@ func (c *Client) GetAdmChannelWithContext(ctx context.Context, input *pinpoint.G
 func (c *Client) GetApnsChannelWithContext(ctx context.Context, input *pinpoint.GetApnsChannelInput, opts ...request.Option) (*pinpoint.GetApnsChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetApnsChannelWithContext",
+		Action:  "GetApnsChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetApnsChannelOutput)(nil),
 		Error:   nil,
@@ -593,7 +732,7 @@ func (c *Client) GetApnsChannelWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) GetApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.GetApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.GetApnsSandboxChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetApnsSandboxChannelWithContext",
+		Action:  "GetApnsSandboxChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetApnsSandboxChannelOutput)(nil),
 		Error:   nil,
@@ -614,7 +753,7 @@ func (c *Client) GetApnsSandboxChannelWithContext(ctx context.Context, input *pi
 func (c *Client) GetApnsVoipChannelWithContext(ctx context.Context, input *pinpoint.GetApnsVoipChannelInput, opts ...request.Option) (*pinpoint.GetApnsVoipChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetApnsVoipChannelWithContext",
+		Action:  "GetApnsVoipChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetApnsVoipChannelOutput)(nil),
 		Error:   nil,
@@ -635,7 +774,7 @@ func (c *Client) GetApnsVoipChannelWithContext(ctx context.Context, input *pinpo
 func (c *Client) GetApnsVoipSandboxChannelWithContext(ctx context.Context, input *pinpoint.GetApnsVoipSandboxChannelInput, opts ...request.Option) (*pinpoint.GetApnsVoipSandboxChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetApnsVoipSandboxChannelWithContext",
+		Action:  "GetApnsVoipSandboxChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetApnsVoipSandboxChannelOutput)(nil),
 		Error:   nil,
@@ -656,7 +795,7 @@ func (c *Client) GetApnsVoipSandboxChannelWithContext(ctx context.Context, input
 func (c *Client) GetAppWithContext(ctx context.Context, input *pinpoint.GetAppInput, opts ...request.Option) (*pinpoint.GetAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetAppWithContext",
+		Action:  "GetApp",
 		Input:   input,
 		Output:  (*pinpoint.GetAppOutput)(nil),
 		Error:   nil,
@@ -677,7 +816,7 @@ func (c *Client) GetAppWithContext(ctx context.Context, input *pinpoint.GetAppIn
 func (c *Client) GetApplicationDateRangeKpiWithContext(ctx context.Context, input *pinpoint.GetApplicationDateRangeKpiInput, opts ...request.Option) (*pinpoint.GetApplicationDateRangeKpiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetApplicationDateRangeKpiWithContext",
+		Action:  "GetApplicationDateRangeKpi",
 		Input:   input,
 		Output:  (*pinpoint.GetApplicationDateRangeKpiOutput)(nil),
 		Error:   nil,
@@ -698,7 +837,7 @@ func (c *Client) GetApplicationDateRangeKpiWithContext(ctx context.Context, inpu
 func (c *Client) GetApplicationSettingsWithContext(ctx context.Context, input *pinpoint.GetApplicationSettingsInput, opts ...request.Option) (*pinpoint.GetApplicationSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetApplicationSettingsWithContext",
+		Action:  "GetApplicationSettings",
 		Input:   input,
 		Output:  (*pinpoint.GetApplicationSettingsOutput)(nil),
 		Error:   nil,
@@ -719,7 +858,7 @@ func (c *Client) GetApplicationSettingsWithContext(ctx context.Context, input *p
 func (c *Client) GetAppsWithContext(ctx context.Context, input *pinpoint.GetAppsInput, opts ...request.Option) (*pinpoint.GetAppsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetAppsWithContext",
+		Action:  "GetApps",
 		Input:   input,
 		Output:  (*pinpoint.GetAppsOutput)(nil),
 		Error:   nil,
@@ -740,7 +879,7 @@ func (c *Client) GetAppsWithContext(ctx context.Context, input *pinpoint.GetApps
 func (c *Client) GetBaiduChannelWithContext(ctx context.Context, input *pinpoint.GetBaiduChannelInput, opts ...request.Option) (*pinpoint.GetBaiduChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetBaiduChannelWithContext",
+		Action:  "GetBaiduChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetBaiduChannelOutput)(nil),
 		Error:   nil,
@@ -761,7 +900,7 @@ func (c *Client) GetBaiduChannelWithContext(ctx context.Context, input *pinpoint
 func (c *Client) GetCampaignWithContext(ctx context.Context, input *pinpoint.GetCampaignInput, opts ...request.Option) (*pinpoint.GetCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetCampaignWithContext",
+		Action:  "GetCampaign",
 		Input:   input,
 		Output:  (*pinpoint.GetCampaignOutput)(nil),
 		Error:   nil,
@@ -782,7 +921,7 @@ func (c *Client) GetCampaignWithContext(ctx context.Context, input *pinpoint.Get
 func (c *Client) GetCampaignActivitiesWithContext(ctx context.Context, input *pinpoint.GetCampaignActivitiesInput, opts ...request.Option) (*pinpoint.GetCampaignActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetCampaignActivitiesWithContext",
+		Action:  "GetCampaignActivities",
 		Input:   input,
 		Output:  (*pinpoint.GetCampaignActivitiesOutput)(nil),
 		Error:   nil,
@@ -803,7 +942,7 @@ func (c *Client) GetCampaignActivitiesWithContext(ctx context.Context, input *pi
 func (c *Client) GetCampaignDateRangeKpiWithContext(ctx context.Context, input *pinpoint.GetCampaignDateRangeKpiInput, opts ...request.Option) (*pinpoint.GetCampaignDateRangeKpiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetCampaignDateRangeKpiWithContext",
+		Action:  "GetCampaignDateRangeKpi",
 		Input:   input,
 		Output:  (*pinpoint.GetCampaignDateRangeKpiOutput)(nil),
 		Error:   nil,
@@ -824,7 +963,7 @@ func (c *Client) GetCampaignDateRangeKpiWithContext(ctx context.Context, input *
 func (c *Client) GetCampaignVersionWithContext(ctx context.Context, input *pinpoint.GetCampaignVersionInput, opts ...request.Option) (*pinpoint.GetCampaignVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetCampaignVersionWithContext",
+		Action:  "GetCampaignVersion",
 		Input:   input,
 		Output:  (*pinpoint.GetCampaignVersionOutput)(nil),
 		Error:   nil,
@@ -845,7 +984,7 @@ func (c *Client) GetCampaignVersionWithContext(ctx context.Context, input *pinpo
 func (c *Client) GetCampaignVersionsWithContext(ctx context.Context, input *pinpoint.GetCampaignVersionsInput, opts ...request.Option) (*pinpoint.GetCampaignVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetCampaignVersionsWithContext",
+		Action:  "GetCampaignVersions",
 		Input:   input,
 		Output:  (*pinpoint.GetCampaignVersionsOutput)(nil),
 		Error:   nil,
@@ -866,7 +1005,7 @@ func (c *Client) GetCampaignVersionsWithContext(ctx context.Context, input *pinp
 func (c *Client) GetCampaignsWithContext(ctx context.Context, input *pinpoint.GetCampaignsInput, opts ...request.Option) (*pinpoint.GetCampaignsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetCampaignsWithContext",
+		Action:  "GetCampaigns",
 		Input:   input,
 		Output:  (*pinpoint.GetCampaignsOutput)(nil),
 		Error:   nil,
@@ -887,7 +1026,7 @@ func (c *Client) GetCampaignsWithContext(ctx context.Context, input *pinpoint.Ge
 func (c *Client) GetChannelsWithContext(ctx context.Context, input *pinpoint.GetChannelsInput, opts ...request.Option) (*pinpoint.GetChannelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetChannelsWithContext",
+		Action:  "GetChannels",
 		Input:   input,
 		Output:  (*pinpoint.GetChannelsOutput)(nil),
 		Error:   nil,
@@ -908,7 +1047,7 @@ func (c *Client) GetChannelsWithContext(ctx context.Context, input *pinpoint.Get
 func (c *Client) GetEmailChannelWithContext(ctx context.Context, input *pinpoint.GetEmailChannelInput, opts ...request.Option) (*pinpoint.GetEmailChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetEmailChannelWithContext",
+		Action:  "GetEmailChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetEmailChannelOutput)(nil),
 		Error:   nil,
@@ -926,10 +1065,31 @@ func (c *Client) GetEmailChannelWithContext(ctx context.Context, input *pinpoint
 	return req.Output.(*pinpoint.GetEmailChannelOutput), req.Error
 }
 
+func (c *Client) GetEmailTemplateWithContext(ctx context.Context, input *pinpoint.GetEmailTemplateInput, opts ...request.Option) (*pinpoint.GetEmailTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetEmailTemplate",
+		Input:   input,
+		Output:  (*pinpoint.GetEmailTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetEmailTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetEmailTemplateOutput), req.Error
+}
+
 func (c *Client) GetEndpointWithContext(ctx context.Context, input *pinpoint.GetEndpointInput, opts ...request.Option) (*pinpoint.GetEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetEndpointWithContext",
+		Action:  "GetEndpoint",
 		Input:   input,
 		Output:  (*pinpoint.GetEndpointOutput)(nil),
 		Error:   nil,
@@ -950,7 +1110,7 @@ func (c *Client) GetEndpointWithContext(ctx context.Context, input *pinpoint.Get
 func (c *Client) GetEventStreamWithContext(ctx context.Context, input *pinpoint.GetEventStreamInput, opts ...request.Option) (*pinpoint.GetEventStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetEventStreamWithContext",
+		Action:  "GetEventStream",
 		Input:   input,
 		Output:  (*pinpoint.GetEventStreamOutput)(nil),
 		Error:   nil,
@@ -971,7 +1131,7 @@ func (c *Client) GetEventStreamWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) GetExportJobWithContext(ctx context.Context, input *pinpoint.GetExportJobInput, opts ...request.Option) (*pinpoint.GetExportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetExportJobWithContext",
+		Action:  "GetExportJob",
 		Input:   input,
 		Output:  (*pinpoint.GetExportJobOutput)(nil),
 		Error:   nil,
@@ -992,7 +1152,7 @@ func (c *Client) GetExportJobWithContext(ctx context.Context, input *pinpoint.Ge
 func (c *Client) GetExportJobsWithContext(ctx context.Context, input *pinpoint.GetExportJobsInput, opts ...request.Option) (*pinpoint.GetExportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetExportJobsWithContext",
+		Action:  "GetExportJobs",
 		Input:   input,
 		Output:  (*pinpoint.GetExportJobsOutput)(nil),
 		Error:   nil,
@@ -1013,7 +1173,7 @@ func (c *Client) GetExportJobsWithContext(ctx context.Context, input *pinpoint.G
 func (c *Client) GetGcmChannelWithContext(ctx context.Context, input *pinpoint.GetGcmChannelInput, opts ...request.Option) (*pinpoint.GetGcmChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetGcmChannelWithContext",
+		Action:  "GetGcmChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetGcmChannelOutput)(nil),
 		Error:   nil,
@@ -1034,7 +1194,7 @@ func (c *Client) GetGcmChannelWithContext(ctx context.Context, input *pinpoint.G
 func (c *Client) GetImportJobWithContext(ctx context.Context, input *pinpoint.GetImportJobInput, opts ...request.Option) (*pinpoint.GetImportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetImportJobWithContext",
+		Action:  "GetImportJob",
 		Input:   input,
 		Output:  (*pinpoint.GetImportJobOutput)(nil),
 		Error:   nil,
@@ -1055,7 +1215,7 @@ func (c *Client) GetImportJobWithContext(ctx context.Context, input *pinpoint.Ge
 func (c *Client) GetImportJobsWithContext(ctx context.Context, input *pinpoint.GetImportJobsInput, opts ...request.Option) (*pinpoint.GetImportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetImportJobsWithContext",
+		Action:  "GetImportJobs",
 		Input:   input,
 		Output:  (*pinpoint.GetImportJobsOutput)(nil),
 		Error:   nil,
@@ -1073,10 +1233,31 @@ func (c *Client) GetImportJobsWithContext(ctx context.Context, input *pinpoint.G
 	return req.Output.(*pinpoint.GetImportJobsOutput), req.Error
 }
 
+func (c *Client) GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetPushTemplate",
+		Input:   input,
+		Output:  (*pinpoint.GetPushTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetPushTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetPushTemplateOutput), req.Error
+}
+
 func (c *Client) GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSegmentWithContext",
+		Action:  "GetSegment",
 		Input:   input,
 		Output:  (*pinpoint.GetSegmentOutput)(nil),
 		Error:   nil,
@@ -1097,7 +1278,7 @@ func (c *Client) GetSegmentWithContext(ctx context.Context, input *pinpoint.GetS
 func (c *Client) GetSegmentExportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentExportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentExportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSegmentExportJobsWithContext",
+		Action:  "GetSegmentExportJobs",
 		Input:   input,
 		Output:  (*pinpoint.GetSegmentExportJobsOutput)(nil),
 		Error:   nil,
@@ -1118,7 +1299,7 @@ func (c *Client) GetSegmentExportJobsWithContext(ctx context.Context, input *pin
 func (c *Client) GetSegmentImportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentImportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentImportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSegmentImportJobsWithContext",
+		Action:  "GetSegmentImportJobs",
 		Input:   input,
 		Output:  (*pinpoint.GetSegmentImportJobsOutput)(nil),
 		Error:   nil,
@@ -1139,7 +1320,7 @@ func (c *Client) GetSegmentImportJobsWithContext(ctx context.Context, input *pin
 func (c *Client) GetSegmentVersionWithContext(ctx context.Context, input *pinpoint.GetSegmentVersionInput, opts ...request.Option) (*pinpoint.GetSegmentVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSegmentVersionWithContext",
+		Action:  "GetSegmentVersion",
 		Input:   input,
 		Output:  (*pinpoint.GetSegmentVersionOutput)(nil),
 		Error:   nil,
@@ -1160,7 +1341,7 @@ func (c *Client) GetSegmentVersionWithContext(ctx context.Context, input *pinpoi
 func (c *Client) GetSegmentVersionsWithContext(ctx context.Context, input *pinpoint.GetSegmentVersionsInput, opts ...request.Option) (*pinpoint.GetSegmentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSegmentVersionsWithContext",
+		Action:  "GetSegmentVersions",
 		Input:   input,
 		Output:  (*pinpoint.GetSegmentVersionsOutput)(nil),
 		Error:   nil,
@@ -1181,7 +1362,7 @@ func (c *Client) GetSegmentVersionsWithContext(ctx context.Context, input *pinpo
 func (c *Client) GetSegmentsWithContext(ctx context.Context, input *pinpoint.GetSegmentsInput, opts ...request.Option) (*pinpoint.GetSegmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSegmentsWithContext",
+		Action:  "GetSegments",
 		Input:   input,
 		Output:  (*pinpoint.GetSegmentsOutput)(nil),
 		Error:   nil,
@@ -1202,7 +1383,7 @@ func (c *Client) GetSegmentsWithContext(ctx context.Context, input *pinpoint.Get
 func (c *Client) GetSmsChannelWithContext(ctx context.Context, input *pinpoint.GetSmsChannelInput, opts ...request.Option) (*pinpoint.GetSmsChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetSmsChannelWithContext",
+		Action:  "GetSmsChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetSmsChannelOutput)(nil),
 		Error:   nil,
@@ -1220,10 +1401,31 @@ func (c *Client) GetSmsChannelWithContext(ctx context.Context, input *pinpoint.G
 	return req.Output.(*pinpoint.GetSmsChannelOutput), req.Error
 }
 
+func (c *Client) GetSmsTemplateWithContext(ctx context.Context, input *pinpoint.GetSmsTemplateInput, opts ...request.Option) (*pinpoint.GetSmsTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetSmsTemplate",
+		Input:   input,
+		Output:  (*pinpoint.GetSmsTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetSmsTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetSmsTemplateOutput), req.Error
+}
+
 func (c *Client) GetUserEndpointsWithContext(ctx context.Context, input *pinpoint.GetUserEndpointsInput, opts ...request.Option) (*pinpoint.GetUserEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetUserEndpointsWithContext",
+		Action:  "GetUserEndpoints",
 		Input:   input,
 		Output:  (*pinpoint.GetUserEndpointsOutput)(nil),
 		Error:   nil,
@@ -1244,7 +1446,7 @@ func (c *Client) GetUserEndpointsWithContext(ctx context.Context, input *pinpoin
 func (c *Client) GetVoiceChannelWithContext(ctx context.Context, input *pinpoint.GetVoiceChannelInput, opts ...request.Option) (*pinpoint.GetVoiceChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "GetVoiceChannelWithContext",
+		Action:  "GetVoiceChannel",
 		Input:   input,
 		Output:  (*pinpoint.GetVoiceChannelOutput)(nil),
 		Error:   nil,
@@ -1265,7 +1467,7 @@ func (c *Client) GetVoiceChannelWithContext(ctx context.Context, input *pinpoint
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*pinpoint.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1283,10 +1485,31 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinp
 	return req.Output.(*pinpoint.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "ListTemplates",
+		Input:   input,
+		Output:  (*pinpoint.ListTemplatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.ListTemplatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.ListTemplatesOutput), req.Error
+}
+
 func (c *Client) PhoneNumberValidateWithContext(ctx context.Context, input *pinpoint.PhoneNumberValidateInput, opts ...request.Option) (*pinpoint.PhoneNumberValidateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "PhoneNumberValidateWithContext",
+		Action:  "PhoneNumberValidate",
 		Input:   input,
 		Output:  (*pinpoint.PhoneNumberValidateOutput)(nil),
 		Error:   nil,
@@ -1307,7 +1530,7 @@ func (c *Client) PhoneNumberValidateWithContext(ctx context.Context, input *pinp
 func (c *Client) PutEventStreamWithContext(ctx context.Context, input *pinpoint.PutEventStreamInput, opts ...request.Option) (*pinpoint.PutEventStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "PutEventStreamWithContext",
+		Action:  "PutEventStream",
 		Input:   input,
 		Output:  (*pinpoint.PutEventStreamOutput)(nil),
 		Error:   nil,
@@ -1328,7 +1551,7 @@ func (c *Client) PutEventStreamWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) PutEventsWithContext(ctx context.Context, input *pinpoint.PutEventsInput, opts ...request.Option) (*pinpoint.PutEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "PutEventsWithContext",
+		Action:  "PutEvents",
 		Input:   input,
 		Output:  (*pinpoint.PutEventsOutput)(nil),
 		Error:   nil,
@@ -1349,7 +1572,7 @@ func (c *Client) PutEventsWithContext(ctx context.Context, input *pinpoint.PutEv
 func (c *Client) RemoveAttributesWithContext(ctx context.Context, input *pinpoint.RemoveAttributesInput, opts ...request.Option) (*pinpoint.RemoveAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "RemoveAttributesWithContext",
+		Action:  "RemoveAttributes",
 		Input:   input,
 		Output:  (*pinpoint.RemoveAttributesOutput)(nil),
 		Error:   nil,
@@ -1370,7 +1593,7 @@ func (c *Client) RemoveAttributesWithContext(ctx context.Context, input *pinpoin
 func (c *Client) SendMessagesWithContext(ctx context.Context, input *pinpoint.SendMessagesInput, opts ...request.Option) (*pinpoint.SendMessagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "SendMessagesWithContext",
+		Action:  "SendMessages",
 		Input:   input,
 		Output:  (*pinpoint.SendMessagesOutput)(nil),
 		Error:   nil,
@@ -1391,7 +1614,7 @@ func (c *Client) SendMessagesWithContext(ctx context.Context, input *pinpoint.Se
 func (c *Client) SendUsersMessagesWithContext(ctx context.Context, input *pinpoint.SendUsersMessagesInput, opts ...request.Option) (*pinpoint.SendUsersMessagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "SendUsersMessagesWithContext",
+		Action:  "SendUsersMessages",
 		Input:   input,
 		Output:  (*pinpoint.SendUsersMessagesOutput)(nil),
 		Error:   nil,
@@ -1412,7 +1635,7 @@ func (c *Client) SendUsersMessagesWithContext(ctx context.Context, input *pinpoi
 func (c *Client) TagResourceWithContext(ctx context.Context, input *pinpoint.TagResourceInput, opts ...request.Option) (*pinpoint.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*pinpoint.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1433,7 +1656,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *pinpoint.Tag
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *pinpoint.UntagResourceInput, opts ...request.Option) (*pinpoint.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*pinpoint.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1454,7 +1677,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *pinpoint.U
 func (c *Client) UpdateAdmChannelWithContext(ctx context.Context, input *pinpoint.UpdateAdmChannelInput, opts ...request.Option) (*pinpoint.UpdateAdmChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateAdmChannelWithContext",
+		Action:  "UpdateAdmChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateAdmChannelOutput)(nil),
 		Error:   nil,
@@ -1475,7 +1698,7 @@ func (c *Client) UpdateAdmChannelWithContext(ctx context.Context, input *pinpoin
 func (c *Client) UpdateApnsChannelWithContext(ctx context.Context, input *pinpoint.UpdateApnsChannelInput, opts ...request.Option) (*pinpoint.UpdateApnsChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateApnsChannelWithContext",
+		Action:  "UpdateApnsChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateApnsChannelOutput)(nil),
 		Error:   nil,
@@ -1496,7 +1719,7 @@ func (c *Client) UpdateApnsChannelWithContext(ctx context.Context, input *pinpoi
 func (c *Client) UpdateApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.UpdateApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.UpdateApnsSandboxChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateApnsSandboxChannelWithContext",
+		Action:  "UpdateApnsSandboxChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateApnsSandboxChannelOutput)(nil),
 		Error:   nil,
@@ -1517,7 +1740,7 @@ func (c *Client) UpdateApnsSandboxChannelWithContext(ctx context.Context, input 
 func (c *Client) UpdateApnsVoipChannelWithContext(ctx context.Context, input *pinpoint.UpdateApnsVoipChannelInput, opts ...request.Option) (*pinpoint.UpdateApnsVoipChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateApnsVoipChannelWithContext",
+		Action:  "UpdateApnsVoipChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateApnsVoipChannelOutput)(nil),
 		Error:   nil,
@@ -1538,7 +1761,7 @@ func (c *Client) UpdateApnsVoipChannelWithContext(ctx context.Context, input *pi
 func (c *Client) UpdateApnsVoipSandboxChannelWithContext(ctx context.Context, input *pinpoint.UpdateApnsVoipSandboxChannelInput, opts ...request.Option) (*pinpoint.UpdateApnsVoipSandboxChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateApnsVoipSandboxChannelWithContext",
+		Action:  "UpdateApnsVoipSandboxChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateApnsVoipSandboxChannelOutput)(nil),
 		Error:   nil,
@@ -1559,7 +1782,7 @@ func (c *Client) UpdateApnsVoipSandboxChannelWithContext(ctx context.Context, in
 func (c *Client) UpdateApplicationSettingsWithContext(ctx context.Context, input *pinpoint.UpdateApplicationSettingsInput, opts ...request.Option) (*pinpoint.UpdateApplicationSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateApplicationSettingsWithContext",
+		Action:  "UpdateApplicationSettings",
 		Input:   input,
 		Output:  (*pinpoint.UpdateApplicationSettingsOutput)(nil),
 		Error:   nil,
@@ -1580,7 +1803,7 @@ func (c *Client) UpdateApplicationSettingsWithContext(ctx context.Context, input
 func (c *Client) UpdateBaiduChannelWithContext(ctx context.Context, input *pinpoint.UpdateBaiduChannelInput, opts ...request.Option) (*pinpoint.UpdateBaiduChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateBaiduChannelWithContext",
+		Action:  "UpdateBaiduChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateBaiduChannelOutput)(nil),
 		Error:   nil,
@@ -1601,7 +1824,7 @@ func (c *Client) UpdateBaiduChannelWithContext(ctx context.Context, input *pinpo
 func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *pinpoint.UpdateCampaignInput, opts ...request.Option) (*pinpoint.UpdateCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateCampaignWithContext",
+		Action:  "UpdateCampaign",
 		Input:   input,
 		Output:  (*pinpoint.UpdateCampaignOutput)(nil),
 		Error:   nil,
@@ -1622,7 +1845,7 @@ func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) UpdateEmailChannelWithContext(ctx context.Context, input *pinpoint.UpdateEmailChannelInput, opts ...request.Option) (*pinpoint.UpdateEmailChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateEmailChannelWithContext",
+		Action:  "UpdateEmailChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateEmailChannelOutput)(nil),
 		Error:   nil,
@@ -1640,10 +1863,31 @@ func (c *Client) UpdateEmailChannelWithContext(ctx context.Context, input *pinpo
 	return req.Output.(*pinpoint.UpdateEmailChannelOutput), req.Error
 }
 
+func (c *Client) UpdateEmailTemplateWithContext(ctx context.Context, input *pinpoint.UpdateEmailTemplateInput, opts ...request.Option) (*pinpoint.UpdateEmailTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateEmailTemplate",
+		Input:   input,
+		Output:  (*pinpoint.UpdateEmailTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateEmailTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateEmailTemplateOutput), req.Error
+}
+
 func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *pinpoint.UpdateEndpointInput, opts ...request.Option) (*pinpoint.UpdateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateEndpointWithContext",
+		Action:  "UpdateEndpoint",
 		Input:   input,
 		Output:  (*pinpoint.UpdateEndpointOutput)(nil),
 		Error:   nil,
@@ -1664,7 +1908,7 @@ func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *pinpoint.
 func (c *Client) UpdateEndpointsBatchWithContext(ctx context.Context, input *pinpoint.UpdateEndpointsBatchInput, opts ...request.Option) (*pinpoint.UpdateEndpointsBatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateEndpointsBatchWithContext",
+		Action:  "UpdateEndpointsBatch",
 		Input:   input,
 		Output:  (*pinpoint.UpdateEndpointsBatchOutput)(nil),
 		Error:   nil,
@@ -1685,7 +1929,7 @@ func (c *Client) UpdateEndpointsBatchWithContext(ctx context.Context, input *pin
 func (c *Client) UpdateGcmChannelWithContext(ctx context.Context, input *pinpoint.UpdateGcmChannelInput, opts ...request.Option) (*pinpoint.UpdateGcmChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateGcmChannelWithContext",
+		Action:  "UpdateGcmChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateGcmChannelOutput)(nil),
 		Error:   nil,
@@ -1703,10 +1947,31 @@ func (c *Client) UpdateGcmChannelWithContext(ctx context.Context, input *pinpoin
 	return req.Output.(*pinpoint.UpdateGcmChannelOutput), req.Error
 }
 
+func (c *Client) UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdatePushTemplate",
+		Input:   input,
+		Output:  (*pinpoint.UpdatePushTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdatePushTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdatePushTemplateOutput), req.Error
+}
+
 func (c *Client) UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateSegmentWithContext",
+		Action:  "UpdateSegment",
 		Input:   input,
 		Output:  (*pinpoint.UpdateSegmentOutput)(nil),
 		Error:   nil,
@@ -1727,7 +1992,7 @@ func (c *Client) UpdateSegmentWithContext(ctx context.Context, input *pinpoint.U
 func (c *Client) UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateSmsChannelWithContext",
+		Action:  "UpdateSmsChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateSmsChannelOutput)(nil),
 		Error:   nil,
@@ -1745,10 +2010,31 @@ func (c *Client) UpdateSmsChannelWithContext(ctx context.Context, input *pinpoin
 	return req.Output.(*pinpoint.UpdateSmsChannelOutput), req.Error
 }
 
+func (c *Client) UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateSmsTemplate",
+		Input:   input,
+		Output:  (*pinpoint.UpdateSmsTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateSmsTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateSmsTemplateOutput), req.Error
+}
+
 func (c *Client) UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
-		Action:  "UpdateVoiceChannelWithContext",
+		Action:  "UpdateVoiceChannel",
 		Input:   input,
 		Output:  (*pinpoint.UpdateVoiceChannelOutput)(nil),
 		Error:   nil,

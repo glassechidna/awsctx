@@ -55,7 +55,7 @@ var _ CloudSearch = (*Client)(nil)
 func (c *Client) BuildSuggestersWithContext(ctx context.Context, input *cloudsearch.BuildSuggestersInput, opts ...request.Option) (*cloudsearch.BuildSuggestersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "BuildSuggestersWithContext",
+		Action:  "BuildSuggesters",
 		Input:   input,
 		Output:  (*cloudsearch.BuildSuggestersOutput)(nil),
 		Error:   nil,
@@ -76,7 +76,7 @@ func (c *Client) BuildSuggestersWithContext(ctx context.Context, input *cloudsea
 func (c *Client) CreateDomainWithContext(ctx context.Context, input *cloudsearch.CreateDomainInput, opts ...request.Option) (*cloudsearch.CreateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "CreateDomainWithContext",
+		Action:  "CreateDomain",
 		Input:   input,
 		Output:  (*cloudsearch.CreateDomainOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, input *cloudsearch
 func (c *Client) DefineAnalysisSchemeWithContext(ctx context.Context, input *cloudsearch.DefineAnalysisSchemeInput, opts ...request.Option) (*cloudsearch.DefineAnalysisSchemeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DefineAnalysisSchemeWithContext",
+		Action:  "DefineAnalysisScheme",
 		Input:   input,
 		Output:  (*cloudsearch.DefineAnalysisSchemeOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) DefineAnalysisSchemeWithContext(ctx context.Context, input *clo
 func (c *Client) DefineExpressionWithContext(ctx context.Context, input *cloudsearch.DefineExpressionInput, opts ...request.Option) (*cloudsearch.DefineExpressionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DefineExpressionWithContext",
+		Action:  "DefineExpression",
 		Input:   input,
 		Output:  (*cloudsearch.DefineExpressionOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) DefineExpressionWithContext(ctx context.Context, input *cloudse
 func (c *Client) DefineIndexFieldWithContext(ctx context.Context, input *cloudsearch.DefineIndexFieldInput, opts ...request.Option) (*cloudsearch.DefineIndexFieldOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DefineIndexFieldWithContext",
+		Action:  "DefineIndexField",
 		Input:   input,
 		Output:  (*cloudsearch.DefineIndexFieldOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) DefineIndexFieldWithContext(ctx context.Context, input *cloudse
 func (c *Client) DefineSuggesterWithContext(ctx context.Context, input *cloudsearch.DefineSuggesterInput, opts ...request.Option) (*cloudsearch.DefineSuggesterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DefineSuggesterWithContext",
+		Action:  "DefineSuggester",
 		Input:   input,
 		Output:  (*cloudsearch.DefineSuggesterOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) DefineSuggesterWithContext(ctx context.Context, input *cloudsea
 func (c *Client) DeleteAnalysisSchemeWithContext(ctx context.Context, input *cloudsearch.DeleteAnalysisSchemeInput, opts ...request.Option) (*cloudsearch.DeleteAnalysisSchemeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DeleteAnalysisSchemeWithContext",
+		Action:  "DeleteAnalysisScheme",
 		Input:   input,
 		Output:  (*cloudsearch.DeleteAnalysisSchemeOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) DeleteAnalysisSchemeWithContext(ctx context.Context, input *clo
 func (c *Client) DeleteDomainWithContext(ctx context.Context, input *cloudsearch.DeleteDomainInput, opts ...request.Option) (*cloudsearch.DeleteDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DeleteDomainWithContext",
+		Action:  "DeleteDomain",
 		Input:   input,
 		Output:  (*cloudsearch.DeleteDomainOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, input *cloudsearch
 func (c *Client) DeleteExpressionWithContext(ctx context.Context, input *cloudsearch.DeleteExpressionInput, opts ...request.Option) (*cloudsearch.DeleteExpressionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DeleteExpressionWithContext",
+		Action:  "DeleteExpression",
 		Input:   input,
 		Output:  (*cloudsearch.DeleteExpressionOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) DeleteExpressionWithContext(ctx context.Context, input *cloudse
 func (c *Client) DeleteIndexFieldWithContext(ctx context.Context, input *cloudsearch.DeleteIndexFieldInput, opts ...request.Option) (*cloudsearch.DeleteIndexFieldOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DeleteIndexFieldWithContext",
+		Action:  "DeleteIndexField",
 		Input:   input,
 		Output:  (*cloudsearch.DeleteIndexFieldOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) DeleteIndexFieldWithContext(ctx context.Context, input *cloudse
 func (c *Client) DeleteSuggesterWithContext(ctx context.Context, input *cloudsearch.DeleteSuggesterInput, opts ...request.Option) (*cloudsearch.DeleteSuggesterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DeleteSuggesterWithContext",
+		Action:  "DeleteSuggester",
 		Input:   input,
 		Output:  (*cloudsearch.DeleteSuggesterOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) DeleteSuggesterWithContext(ctx context.Context, input *cloudsea
 func (c *Client) DescribeAnalysisSchemesWithContext(ctx context.Context, input *cloudsearch.DescribeAnalysisSchemesInput, opts ...request.Option) (*cloudsearch.DescribeAnalysisSchemesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeAnalysisSchemesWithContext",
+		Action:  "DescribeAnalysisSchemes",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeAnalysisSchemesOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) DescribeAnalysisSchemesWithContext(ctx context.Context, input *
 func (c *Client) DescribeAvailabilityOptionsWithContext(ctx context.Context, input *cloudsearch.DescribeAvailabilityOptionsInput, opts ...request.Option) (*cloudsearch.DescribeAvailabilityOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeAvailabilityOptionsWithContext",
+		Action:  "DescribeAvailabilityOptions",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeAvailabilityOptionsOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) DescribeAvailabilityOptionsWithContext(ctx context.Context, inp
 func (c *Client) DescribeDomainsWithContext(ctx context.Context, input *cloudsearch.DescribeDomainsInput, opts ...request.Option) (*cloudsearch.DescribeDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeDomainsWithContext",
+		Action:  "DescribeDomains",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeDomainsOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, input *cloudsea
 func (c *Client) DescribeExpressionsWithContext(ctx context.Context, input *cloudsearch.DescribeExpressionsInput, opts ...request.Option) (*cloudsearch.DescribeExpressionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeExpressionsWithContext",
+		Action:  "DescribeExpressions",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeExpressionsOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) DescribeExpressionsWithContext(ctx context.Context, input *clou
 func (c *Client) DescribeIndexFieldsWithContext(ctx context.Context, input *cloudsearch.DescribeIndexFieldsInput, opts ...request.Option) (*cloudsearch.DescribeIndexFieldsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeIndexFieldsWithContext",
+		Action:  "DescribeIndexFields",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeIndexFieldsOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) DescribeIndexFieldsWithContext(ctx context.Context, input *clou
 func (c *Client) DescribeScalingParametersWithContext(ctx context.Context, input *cloudsearch.DescribeScalingParametersInput, opts ...request.Option) (*cloudsearch.DescribeScalingParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeScalingParametersWithContext",
+		Action:  "DescribeScalingParameters",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeScalingParametersOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) DescribeScalingParametersWithContext(ctx context.Context, input
 func (c *Client) DescribeServiceAccessPoliciesWithContext(ctx context.Context, input *cloudsearch.DescribeServiceAccessPoliciesInput, opts ...request.Option) (*cloudsearch.DescribeServiceAccessPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeServiceAccessPoliciesWithContext",
+		Action:  "DescribeServiceAccessPolicies",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeServiceAccessPoliciesOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) DescribeServiceAccessPoliciesWithContext(ctx context.Context, i
 func (c *Client) DescribeSuggestersWithContext(ctx context.Context, input *cloudsearch.DescribeSuggestersInput, opts ...request.Option) (*cloudsearch.DescribeSuggestersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "DescribeSuggestersWithContext",
+		Action:  "DescribeSuggesters",
 		Input:   input,
 		Output:  (*cloudsearch.DescribeSuggestersOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) DescribeSuggestersWithContext(ctx context.Context, input *cloud
 func (c *Client) IndexDocumentsWithContext(ctx context.Context, input *cloudsearch.IndexDocumentsInput, opts ...request.Option) (*cloudsearch.IndexDocumentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "IndexDocumentsWithContext",
+		Action:  "IndexDocuments",
 		Input:   input,
 		Output:  (*cloudsearch.IndexDocumentsOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) IndexDocumentsWithContext(ctx context.Context, input *cloudsear
 func (c *Client) ListDomainNamesWithContext(ctx context.Context, input *cloudsearch.ListDomainNamesInput, opts ...request.Option) (*cloudsearch.ListDomainNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "ListDomainNamesWithContext",
+		Action:  "ListDomainNames",
 		Input:   input,
 		Output:  (*cloudsearch.ListDomainNamesOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) ListDomainNamesWithContext(ctx context.Context, input *cloudsea
 func (c *Client) UpdateAvailabilityOptionsWithContext(ctx context.Context, input *cloudsearch.UpdateAvailabilityOptionsInput, opts ...request.Option) (*cloudsearch.UpdateAvailabilityOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "UpdateAvailabilityOptionsWithContext",
+		Action:  "UpdateAvailabilityOptions",
 		Input:   input,
 		Output:  (*cloudsearch.UpdateAvailabilityOptionsOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) UpdateAvailabilityOptionsWithContext(ctx context.Context, input
 func (c *Client) UpdateScalingParametersWithContext(ctx context.Context, input *cloudsearch.UpdateScalingParametersInput, opts ...request.Option) (*cloudsearch.UpdateScalingParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "UpdateScalingParametersWithContext",
+		Action:  "UpdateScalingParameters",
 		Input:   input,
 		Output:  (*cloudsearch.UpdateScalingParametersOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) UpdateScalingParametersWithContext(ctx context.Context, input *
 func (c *Client) UpdateServiceAccessPoliciesWithContext(ctx context.Context, input *cloudsearch.UpdateServiceAccessPoliciesInput, opts ...request.Option) (*cloudsearch.UpdateServiceAccessPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
-		Action:  "UpdateServiceAccessPoliciesWithContext",
+		Action:  "UpdateServiceAccessPolicies",
 		Input:   input,
 		Output:  (*cloudsearch.UpdateServiceAccessPoliciesOutput)(nil),
 		Error:   nil,

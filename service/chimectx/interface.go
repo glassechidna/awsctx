@@ -89,7 +89,7 @@ var _ Chime = (*Client)(nil)
 func (c *Client) AssociatePhoneNumberWithUserWithContext(ctx context.Context, input *chime.AssociatePhoneNumberWithUserInput, opts ...request.Option) (*chime.AssociatePhoneNumberWithUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "AssociatePhoneNumberWithUserWithContext",
+		Action:  "AssociatePhoneNumberWithUser",
 		Input:   input,
 		Output:  (*chime.AssociatePhoneNumberWithUserOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) AssociatePhoneNumberWithUserWithContext(ctx context.Context, in
 func (c *Client) AssociatePhoneNumbersWithVoiceConnectorWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "AssociatePhoneNumbersWithVoiceConnectorWithContext",
+		Action:  "AssociatePhoneNumbersWithVoiceConnector",
 		Input:   input,
 		Output:  (*chime.AssociatePhoneNumbersWithVoiceConnectorOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) AssociatePhoneNumbersWithVoiceConnectorWithContext(ctx context.
 func (c *Client) BatchDeletePhoneNumberWithContext(ctx context.Context, input *chime.BatchDeletePhoneNumberInput, opts ...request.Option) (*chime.BatchDeletePhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "BatchDeletePhoneNumberWithContext",
+		Action:  "BatchDeletePhoneNumber",
 		Input:   input,
 		Output:  (*chime.BatchDeletePhoneNumberOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) BatchDeletePhoneNumberWithContext(ctx context.Context, input *c
 func (c *Client) BatchSuspendUserWithContext(ctx context.Context, input *chime.BatchSuspendUserInput, opts ...request.Option) (*chime.BatchSuspendUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "BatchSuspendUserWithContext",
+		Action:  "BatchSuspendUser",
 		Input:   input,
 		Output:  (*chime.BatchSuspendUserOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) BatchSuspendUserWithContext(ctx context.Context, input *chime.B
 func (c *Client) BatchUnsuspendUserWithContext(ctx context.Context, input *chime.BatchUnsuspendUserInput, opts ...request.Option) (*chime.BatchUnsuspendUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "BatchUnsuspendUserWithContext",
+		Action:  "BatchUnsuspendUser",
 		Input:   input,
 		Output:  (*chime.BatchUnsuspendUserOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) BatchUnsuspendUserWithContext(ctx context.Context, input *chime
 func (c *Client) BatchUpdatePhoneNumberWithContext(ctx context.Context, input *chime.BatchUpdatePhoneNumberInput, opts ...request.Option) (*chime.BatchUpdatePhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "BatchUpdatePhoneNumberWithContext",
+		Action:  "BatchUpdatePhoneNumber",
 		Input:   input,
 		Output:  (*chime.BatchUpdatePhoneNumberOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) BatchUpdatePhoneNumberWithContext(ctx context.Context, input *c
 func (c *Client) BatchUpdateUserWithContext(ctx context.Context, input *chime.BatchUpdateUserInput, opts ...request.Option) (*chime.BatchUpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "BatchUpdateUserWithContext",
+		Action:  "BatchUpdateUser",
 		Input:   input,
 		Output:  (*chime.BatchUpdateUserOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) BatchUpdateUserWithContext(ctx context.Context, input *chime.Ba
 func (c *Client) CreateAccountWithContext(ctx context.Context, input *chime.CreateAccountInput, opts ...request.Option) (*chime.CreateAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "CreateAccountWithContext",
+		Action:  "CreateAccount",
 		Input:   input,
 		Output:  (*chime.CreateAccountOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, input *chime.Crea
 func (c *Client) CreateBotWithContext(ctx context.Context, input *chime.CreateBotInput, opts ...request.Option) (*chime.CreateBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "CreateBotWithContext",
+		Action:  "CreateBot",
 		Input:   input,
 		Output:  (*chime.CreateBotOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) CreateBotWithContext(ctx context.Context, input *chime.CreateBo
 func (c *Client) CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "CreatePhoneNumberOrderWithContext",
+		Action:  "CreatePhoneNumberOrder",
 		Input:   input,
 		Output:  (*chime.CreatePhoneNumberOrderOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) CreatePhoneNumberOrderWithContext(ctx context.Context, input *c
 func (c *Client) CreateVoiceConnectorWithContext(ctx context.Context, input *chime.CreateVoiceConnectorInput, opts ...request.Option) (*chime.CreateVoiceConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "CreateVoiceConnectorWithContext",
+		Action:  "CreateVoiceConnector",
 		Input:   input,
 		Output:  (*chime.CreateVoiceConnectorOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) CreateVoiceConnectorWithContext(ctx context.Context, input *chi
 func (c *Client) DeleteAccountWithContext(ctx context.Context, input *chime.DeleteAccountInput, opts ...request.Option) (*chime.DeleteAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeleteAccountWithContext",
+		Action:  "DeleteAccount",
 		Input:   input,
 		Output:  (*chime.DeleteAccountOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, input *chime.Dele
 func (c *Client) DeleteEventsConfigurationWithContext(ctx context.Context, input *chime.DeleteEventsConfigurationInput, opts ...request.Option) (*chime.DeleteEventsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeleteEventsConfigurationWithContext",
+		Action:  "DeleteEventsConfiguration",
 		Input:   input,
 		Output:  (*chime.DeleteEventsConfigurationOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) DeleteEventsConfigurationWithContext(ctx context.Context, input
 func (c *Client) DeletePhoneNumberWithContext(ctx context.Context, input *chime.DeletePhoneNumberInput, opts ...request.Option) (*chime.DeletePhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeletePhoneNumberWithContext",
+		Action:  "DeletePhoneNumber",
 		Input:   input,
 		Output:  (*chime.DeletePhoneNumberOutput)(nil),
 		Error:   nil,
@@ -383,7 +383,7 @@ func (c *Client) DeletePhoneNumberWithContext(ctx context.Context, input *chime.
 func (c *Client) DeleteVoiceConnectorWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeleteVoiceConnectorWithContext",
+		Action:  "DeleteVoiceConnector",
 		Input:   input,
 		Output:  (*chime.DeleteVoiceConnectorOutput)(nil),
 		Error:   nil,
@@ -404,7 +404,7 @@ func (c *Client) DeleteVoiceConnectorWithContext(ctx context.Context, input *chi
 func (c *Client) DeleteVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorOriginationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOriginationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeleteVoiceConnectorOriginationWithContext",
+		Action:  "DeleteVoiceConnectorOrigination",
 		Input:   input,
 		Output:  (*chime.DeleteVoiceConnectorOriginationOutput)(nil),
 		Error:   nil,
@@ -425,7 +425,7 @@ func (c *Client) DeleteVoiceConnectorOriginationWithContext(ctx context.Context,
 func (c *Client) DeleteVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorTerminationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorTerminationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeleteVoiceConnectorTerminationWithContext",
+		Action:  "DeleteVoiceConnectorTermination",
 		Input:   input,
 		Output:  (*chime.DeleteVoiceConnectorTerminationOutput)(nil),
 		Error:   nil,
@@ -446,7 +446,7 @@ func (c *Client) DeleteVoiceConnectorTerminationWithContext(ctx context.Context,
 func (c *Client) DeleteVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.DeleteVoiceConnectorTerminationCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DeleteVoiceConnectorTerminationCredentialsWithContext",
+		Action:  "DeleteVoiceConnectorTerminationCredentials",
 		Input:   input,
 		Output:  (*chime.DeleteVoiceConnectorTerminationCredentialsOutput)(nil),
 		Error:   nil,
@@ -467,7 +467,7 @@ func (c *Client) DeleteVoiceConnectorTerminationCredentialsWithContext(ctx conte
 func (c *Client) DisassociatePhoneNumberFromUserWithContext(ctx context.Context, input *chime.DisassociatePhoneNumberFromUserInput, opts ...request.Option) (*chime.DisassociatePhoneNumberFromUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DisassociatePhoneNumberFromUserWithContext",
+		Action:  "DisassociatePhoneNumberFromUser",
 		Input:   input,
 		Output:  (*chime.DisassociatePhoneNumberFromUserOutput)(nil),
 		Error:   nil,
@@ -488,7 +488,7 @@ func (c *Client) DisassociatePhoneNumberFromUserWithContext(ctx context.Context,
 func (c *Client) DisassociatePhoneNumbersFromVoiceConnectorWithContext(ctx context.Context, input *chime.DisassociatePhoneNumbersFromVoiceConnectorInput, opts ...request.Option) (*chime.DisassociatePhoneNumbersFromVoiceConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "DisassociatePhoneNumbersFromVoiceConnectorWithContext",
+		Action:  "DisassociatePhoneNumbersFromVoiceConnector",
 		Input:   input,
 		Output:  (*chime.DisassociatePhoneNumbersFromVoiceConnectorOutput)(nil),
 		Error:   nil,
@@ -509,7 +509,7 @@ func (c *Client) DisassociatePhoneNumbersFromVoiceConnectorWithContext(ctx conte
 func (c *Client) GetAccountWithContext(ctx context.Context, input *chime.GetAccountInput, opts ...request.Option) (*chime.GetAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetAccountWithContext",
+		Action:  "GetAccount",
 		Input:   input,
 		Output:  (*chime.GetAccountOutput)(nil),
 		Error:   nil,
@@ -530,7 +530,7 @@ func (c *Client) GetAccountWithContext(ctx context.Context, input *chime.GetAcco
 func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *chime.GetAccountSettingsInput, opts ...request.Option) (*chime.GetAccountSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetAccountSettingsWithContext",
+		Action:  "GetAccountSettings",
 		Input:   input,
 		Output:  (*chime.GetAccountSettingsOutput)(nil),
 		Error:   nil,
@@ -551,7 +551,7 @@ func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *chime
 func (c *Client) GetBotWithContext(ctx context.Context, input *chime.GetBotInput, opts ...request.Option) (*chime.GetBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetBotWithContext",
+		Action:  "GetBot",
 		Input:   input,
 		Output:  (*chime.GetBotOutput)(nil),
 		Error:   nil,
@@ -572,7 +572,7 @@ func (c *Client) GetBotWithContext(ctx context.Context, input *chime.GetBotInput
 func (c *Client) GetEventsConfigurationWithContext(ctx context.Context, input *chime.GetEventsConfigurationInput, opts ...request.Option) (*chime.GetEventsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetEventsConfigurationWithContext",
+		Action:  "GetEventsConfiguration",
 		Input:   input,
 		Output:  (*chime.GetEventsConfigurationOutput)(nil),
 		Error:   nil,
@@ -593,7 +593,7 @@ func (c *Client) GetEventsConfigurationWithContext(ctx context.Context, input *c
 func (c *Client) GetGlobalSettingsWithContext(ctx context.Context, input *chime.GetGlobalSettingsInput, opts ...request.Option) (*chime.GetGlobalSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetGlobalSettingsWithContext",
+		Action:  "GetGlobalSettings",
 		Input:   input,
 		Output:  (*chime.GetGlobalSettingsOutput)(nil),
 		Error:   nil,
@@ -614,7 +614,7 @@ func (c *Client) GetGlobalSettingsWithContext(ctx context.Context, input *chime.
 func (c *Client) GetPhoneNumberWithContext(ctx context.Context, input *chime.GetPhoneNumberInput, opts ...request.Option) (*chime.GetPhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetPhoneNumberWithContext",
+		Action:  "GetPhoneNumber",
 		Input:   input,
 		Output:  (*chime.GetPhoneNumberOutput)(nil),
 		Error:   nil,
@@ -635,7 +635,7 @@ func (c *Client) GetPhoneNumberWithContext(ctx context.Context, input *chime.Get
 func (c *Client) GetPhoneNumberOrderWithContext(ctx context.Context, input *chime.GetPhoneNumberOrderInput, opts ...request.Option) (*chime.GetPhoneNumberOrderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetPhoneNumberOrderWithContext",
+		Action:  "GetPhoneNumberOrder",
 		Input:   input,
 		Output:  (*chime.GetPhoneNumberOrderOutput)(nil),
 		Error:   nil,
@@ -656,7 +656,7 @@ func (c *Client) GetPhoneNumberOrderWithContext(ctx context.Context, input *chim
 func (c *Client) GetUserWithContext(ctx context.Context, input *chime.GetUserInput, opts ...request.Option) (*chime.GetUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetUserWithContext",
+		Action:  "GetUser",
 		Input:   input,
 		Output:  (*chime.GetUserOutput)(nil),
 		Error:   nil,
@@ -677,7 +677,7 @@ func (c *Client) GetUserWithContext(ctx context.Context, input *chime.GetUserInp
 func (c *Client) GetUserSettingsWithContext(ctx context.Context, input *chime.GetUserSettingsInput, opts ...request.Option) (*chime.GetUserSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetUserSettingsWithContext",
+		Action:  "GetUserSettings",
 		Input:   input,
 		Output:  (*chime.GetUserSettingsOutput)(nil),
 		Error:   nil,
@@ -698,7 +698,7 @@ func (c *Client) GetUserSettingsWithContext(ctx context.Context, input *chime.Ge
 func (c *Client) GetVoiceConnectorWithContext(ctx context.Context, input *chime.GetVoiceConnectorInput, opts ...request.Option) (*chime.GetVoiceConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetVoiceConnectorWithContext",
+		Action:  "GetVoiceConnector",
 		Input:   input,
 		Output:  (*chime.GetVoiceConnectorOutput)(nil),
 		Error:   nil,
@@ -719,7 +719,7 @@ func (c *Client) GetVoiceConnectorWithContext(ctx context.Context, input *chime.
 func (c *Client) GetVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.GetVoiceConnectorOriginationInput, opts ...request.Option) (*chime.GetVoiceConnectorOriginationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetVoiceConnectorOriginationWithContext",
+		Action:  "GetVoiceConnectorOrigination",
 		Input:   input,
 		Output:  (*chime.GetVoiceConnectorOriginationOutput)(nil),
 		Error:   nil,
@@ -740,7 +740,7 @@ func (c *Client) GetVoiceConnectorOriginationWithContext(ctx context.Context, in
 func (c *Client) GetVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.GetVoiceConnectorTerminationInput, opts ...request.Option) (*chime.GetVoiceConnectorTerminationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetVoiceConnectorTerminationWithContext",
+		Action:  "GetVoiceConnectorTermination",
 		Input:   input,
 		Output:  (*chime.GetVoiceConnectorTerminationOutput)(nil),
 		Error:   nil,
@@ -761,7 +761,7 @@ func (c *Client) GetVoiceConnectorTerminationWithContext(ctx context.Context, in
 func (c *Client) GetVoiceConnectorTerminationHealthWithContext(ctx context.Context, input *chime.GetVoiceConnectorTerminationHealthInput, opts ...request.Option) (*chime.GetVoiceConnectorTerminationHealthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "GetVoiceConnectorTerminationHealthWithContext",
+		Action:  "GetVoiceConnectorTerminationHealth",
 		Input:   input,
 		Output:  (*chime.GetVoiceConnectorTerminationHealthOutput)(nil),
 		Error:   nil,
@@ -782,7 +782,7 @@ func (c *Client) GetVoiceConnectorTerminationHealthWithContext(ctx context.Conte
 func (c *Client) InviteUsersWithContext(ctx context.Context, input *chime.InviteUsersInput, opts ...request.Option) (*chime.InviteUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "InviteUsersWithContext",
+		Action:  "InviteUsers",
 		Input:   input,
 		Output:  (*chime.InviteUsersOutput)(nil),
 		Error:   nil,
@@ -803,7 +803,7 @@ func (c *Client) InviteUsersWithContext(ctx context.Context, input *chime.Invite
 func (c *Client) ListAccountsWithContext(ctx context.Context, input *chime.ListAccountsInput, opts ...request.Option) (*chime.ListAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListAccountsWithContext",
+		Action:  "ListAccounts",
 		Input:   input,
 		Output:  (*chime.ListAccountsOutput)(nil),
 		Error:   nil,
@@ -824,7 +824,7 @@ func (c *Client) ListAccountsWithContext(ctx context.Context, input *chime.ListA
 func (c *Client) ListBotsWithContext(ctx context.Context, input *chime.ListBotsInput, opts ...request.Option) (*chime.ListBotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListBotsWithContext",
+		Action:  "ListBots",
 		Input:   input,
 		Output:  (*chime.ListBotsOutput)(nil),
 		Error:   nil,
@@ -845,7 +845,7 @@ func (c *Client) ListBotsWithContext(ctx context.Context, input *chime.ListBotsI
 func (c *Client) ListPhoneNumberOrdersWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, opts ...request.Option) (*chime.ListPhoneNumberOrdersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListPhoneNumberOrdersWithContext",
+		Action:  "ListPhoneNumberOrders",
 		Input:   input,
 		Output:  (*chime.ListPhoneNumberOrdersOutput)(nil),
 		Error:   nil,
@@ -866,7 +866,7 @@ func (c *Client) ListPhoneNumberOrdersWithContext(ctx context.Context, input *ch
 func (c *Client) ListPhoneNumbersWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, opts ...request.Option) (*chime.ListPhoneNumbersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListPhoneNumbersWithContext",
+		Action:  "ListPhoneNumbers",
 		Input:   input,
 		Output:  (*chime.ListPhoneNumbersOutput)(nil),
 		Error:   nil,
@@ -887,7 +887,7 @@ func (c *Client) ListPhoneNumbersWithContext(ctx context.Context, input *chime.L
 func (c *Client) ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*chime.ListUsersOutput)(nil),
 		Error:   nil,
@@ -908,7 +908,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *chime.ListUser
 func (c *Client) ListVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.ListVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.ListVoiceConnectorTerminationCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListVoiceConnectorTerminationCredentialsWithContext",
+		Action:  "ListVoiceConnectorTerminationCredentials",
 		Input:   input,
 		Output:  (*chime.ListVoiceConnectorTerminationCredentialsOutput)(nil),
 		Error:   nil,
@@ -929,7 +929,7 @@ func (c *Client) ListVoiceConnectorTerminationCredentialsWithContext(ctx context
 func (c *Client) ListVoiceConnectorsWithContext(ctx context.Context, input *chime.ListVoiceConnectorsInput, opts ...request.Option) (*chime.ListVoiceConnectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ListVoiceConnectorsWithContext",
+		Action:  "ListVoiceConnectors",
 		Input:   input,
 		Output:  (*chime.ListVoiceConnectorsOutput)(nil),
 		Error:   nil,
@@ -950,7 +950,7 @@ func (c *Client) ListVoiceConnectorsWithContext(ctx context.Context, input *chim
 func (c *Client) LogoutUserWithContext(ctx context.Context, input *chime.LogoutUserInput, opts ...request.Option) (*chime.LogoutUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "LogoutUserWithContext",
+		Action:  "LogoutUser",
 		Input:   input,
 		Output:  (*chime.LogoutUserOutput)(nil),
 		Error:   nil,
@@ -971,7 +971,7 @@ func (c *Client) LogoutUserWithContext(ctx context.Context, input *chime.LogoutU
 func (c *Client) PutEventsConfigurationWithContext(ctx context.Context, input *chime.PutEventsConfigurationInput, opts ...request.Option) (*chime.PutEventsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "PutEventsConfigurationWithContext",
+		Action:  "PutEventsConfiguration",
 		Input:   input,
 		Output:  (*chime.PutEventsConfigurationOutput)(nil),
 		Error:   nil,
@@ -992,7 +992,7 @@ func (c *Client) PutEventsConfigurationWithContext(ctx context.Context, input *c
 func (c *Client) PutVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.PutVoiceConnectorOriginationInput, opts ...request.Option) (*chime.PutVoiceConnectorOriginationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "PutVoiceConnectorOriginationWithContext",
+		Action:  "PutVoiceConnectorOrigination",
 		Input:   input,
 		Output:  (*chime.PutVoiceConnectorOriginationOutput)(nil),
 		Error:   nil,
@@ -1013,7 +1013,7 @@ func (c *Client) PutVoiceConnectorOriginationWithContext(ctx context.Context, in
 func (c *Client) PutVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "PutVoiceConnectorTerminationWithContext",
+		Action:  "PutVoiceConnectorTermination",
 		Input:   input,
 		Output:  (*chime.PutVoiceConnectorTerminationOutput)(nil),
 		Error:   nil,
@@ -1034,7 +1034,7 @@ func (c *Client) PutVoiceConnectorTerminationWithContext(ctx context.Context, in
 func (c *Client) PutVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "PutVoiceConnectorTerminationCredentialsWithContext",
+		Action:  "PutVoiceConnectorTerminationCredentials",
 		Input:   input,
 		Output:  (*chime.PutVoiceConnectorTerminationCredentialsOutput)(nil),
 		Error:   nil,
@@ -1055,7 +1055,7 @@ func (c *Client) PutVoiceConnectorTerminationCredentialsWithContext(ctx context.
 func (c *Client) RegenerateSecurityTokenWithContext(ctx context.Context, input *chime.RegenerateSecurityTokenInput, opts ...request.Option) (*chime.RegenerateSecurityTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "RegenerateSecurityTokenWithContext",
+		Action:  "RegenerateSecurityToken",
 		Input:   input,
 		Output:  (*chime.RegenerateSecurityTokenOutput)(nil),
 		Error:   nil,
@@ -1076,7 +1076,7 @@ func (c *Client) RegenerateSecurityTokenWithContext(ctx context.Context, input *
 func (c *Client) ResetPersonalPINWithContext(ctx context.Context, input *chime.ResetPersonalPINInput, opts ...request.Option) (*chime.ResetPersonalPINOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "ResetPersonalPINWithContext",
+		Action:  "ResetPersonalPIN",
 		Input:   input,
 		Output:  (*chime.ResetPersonalPINOutput)(nil),
 		Error:   nil,
@@ -1097,7 +1097,7 @@ func (c *Client) ResetPersonalPINWithContext(ctx context.Context, input *chime.R
 func (c *Client) RestorePhoneNumberWithContext(ctx context.Context, input *chime.RestorePhoneNumberInput, opts ...request.Option) (*chime.RestorePhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "RestorePhoneNumberWithContext",
+		Action:  "RestorePhoneNumber",
 		Input:   input,
 		Output:  (*chime.RestorePhoneNumberOutput)(nil),
 		Error:   nil,
@@ -1118,7 +1118,7 @@ func (c *Client) RestorePhoneNumberWithContext(ctx context.Context, input *chime
 func (c *Client) SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*chime.SearchAvailablePhoneNumbersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "SearchAvailablePhoneNumbersWithContext",
+		Action:  "SearchAvailablePhoneNumbers",
 		Input:   input,
 		Output:  (*chime.SearchAvailablePhoneNumbersOutput)(nil),
 		Error:   nil,
@@ -1139,7 +1139,7 @@ func (c *Client) SearchAvailablePhoneNumbersWithContext(ctx context.Context, inp
 func (c *Client) UpdateAccountWithContext(ctx context.Context, input *chime.UpdateAccountInput, opts ...request.Option) (*chime.UpdateAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateAccountWithContext",
+		Action:  "UpdateAccount",
 		Input:   input,
 		Output:  (*chime.UpdateAccountOutput)(nil),
 		Error:   nil,
@@ -1160,7 +1160,7 @@ func (c *Client) UpdateAccountWithContext(ctx context.Context, input *chime.Upda
 func (c *Client) UpdateAccountSettingsWithContext(ctx context.Context, input *chime.UpdateAccountSettingsInput, opts ...request.Option) (*chime.UpdateAccountSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateAccountSettingsWithContext",
+		Action:  "UpdateAccountSettings",
 		Input:   input,
 		Output:  (*chime.UpdateAccountSettingsOutput)(nil),
 		Error:   nil,
@@ -1181,7 +1181,7 @@ func (c *Client) UpdateAccountSettingsWithContext(ctx context.Context, input *ch
 func (c *Client) UpdateBotWithContext(ctx context.Context, input *chime.UpdateBotInput, opts ...request.Option) (*chime.UpdateBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateBotWithContext",
+		Action:  "UpdateBot",
 		Input:   input,
 		Output:  (*chime.UpdateBotOutput)(nil),
 		Error:   nil,
@@ -1202,7 +1202,7 @@ func (c *Client) UpdateBotWithContext(ctx context.Context, input *chime.UpdateBo
 func (c *Client) UpdateGlobalSettingsWithContext(ctx context.Context, input *chime.UpdateGlobalSettingsInput, opts ...request.Option) (*chime.UpdateGlobalSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateGlobalSettingsWithContext",
+		Action:  "UpdateGlobalSettings",
 		Input:   input,
 		Output:  (*chime.UpdateGlobalSettingsOutput)(nil),
 		Error:   nil,
@@ -1223,7 +1223,7 @@ func (c *Client) UpdateGlobalSettingsWithContext(ctx context.Context, input *chi
 func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *chime.UpdatePhoneNumberInput, opts ...request.Option) (*chime.UpdatePhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdatePhoneNumberWithContext",
+		Action:  "UpdatePhoneNumber",
 		Input:   input,
 		Output:  (*chime.UpdatePhoneNumberOutput)(nil),
 		Error:   nil,
@@ -1244,7 +1244,7 @@ func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *chime.
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *chime.UpdateUserInput, opts ...request.Option) (*chime.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateUserWithContext",
+		Action:  "UpdateUser",
 		Input:   input,
 		Output:  (*chime.UpdateUserOutput)(nil),
 		Error:   nil,
@@ -1265,7 +1265,7 @@ func (c *Client) UpdateUserWithContext(ctx context.Context, input *chime.UpdateU
 func (c *Client) UpdateUserSettingsWithContext(ctx context.Context, input *chime.UpdateUserSettingsInput, opts ...request.Option) (*chime.UpdateUserSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateUserSettingsWithContext",
+		Action:  "UpdateUserSettings",
 		Input:   input,
 		Output:  (*chime.UpdateUserSettingsOutput)(nil),
 		Error:   nil,
@@ -1286,7 +1286,7 @@ func (c *Client) UpdateUserSettingsWithContext(ctx context.Context, input *chime
 func (c *Client) UpdateVoiceConnectorWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorInput, opts ...request.Option) (*chime.UpdateVoiceConnectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
-		Action:  "UpdateVoiceConnectorWithContext",
+		Action:  "UpdateVoiceConnector",
 		Input:   input,
 		Output:  (*chime.UpdateVoiceConnectorOutput)(nil),
 		Error:   nil,

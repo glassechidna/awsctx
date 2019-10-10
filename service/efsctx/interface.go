@@ -45,7 +45,7 @@ var _ EFS = (*Client)(nil)
 func (c *Client) CreateFileSystemWithContext(ctx context.Context, input *efs.CreateFileSystemInput, opts ...request.Option) (*efs.FileSystemDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "CreateFileSystemWithContext",
+		Action:  "CreateFileSystem",
 		Input:   input,
 		Output:  (*efs.FileSystemDescription)(nil),
 		Error:   nil,
@@ -66,7 +66,7 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, input *efs.Cre
 func (c *Client) CreateMountTargetWithContext(ctx context.Context, input *efs.CreateMountTargetInput, opts ...request.Option) (*efs.MountTargetDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "CreateMountTargetWithContext",
+		Action:  "CreateMountTarget",
 		Input:   input,
 		Output:  (*efs.MountTargetDescription)(nil),
 		Error:   nil,
@@ -87,7 +87,7 @@ func (c *Client) CreateMountTargetWithContext(ctx context.Context, input *efs.Cr
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *efs.CreateTagsInput, opts ...request.Option) (*efs.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*efs.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *efs.CreateTag
 func (c *Client) DeleteFileSystemWithContext(ctx context.Context, input *efs.DeleteFileSystemInput, opts ...request.Option) (*efs.DeleteFileSystemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DeleteFileSystemWithContext",
+		Action:  "DeleteFileSystem",
 		Input:   input,
 		Output:  (*efs.DeleteFileSystemOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, input *efs.Del
 func (c *Client) DeleteMountTargetWithContext(ctx context.Context, input *efs.DeleteMountTargetInput, opts ...request.Option) (*efs.DeleteMountTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DeleteMountTargetWithContext",
+		Action:  "DeleteMountTarget",
 		Input:   input,
 		Output:  (*efs.DeleteMountTargetOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, input *efs.De
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *efs.DeleteTagsInput, opts ...request.Option) (*efs.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*efs.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *efs.DeleteTag
 func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, input *efs.DescribeFileSystemsInput, opts ...request.Option) (*efs.DescribeFileSystemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DescribeFileSystemsWithContext",
+		Action:  "DescribeFileSystems",
 		Input:   input,
 		Output:  (*efs.DescribeFileSystemsOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, input *efs.
 func (c *Client) DescribeLifecycleConfigurationWithContext(ctx context.Context, input *efs.DescribeLifecycleConfigurationInput, opts ...request.Option) (*efs.DescribeLifecycleConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DescribeLifecycleConfigurationWithContext",
+		Action:  "DescribeLifecycleConfiguration",
 		Input:   input,
 		Output:  (*efs.DescribeLifecycleConfigurationOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) DescribeLifecycleConfigurationWithContext(ctx context.Context, 
 func (c *Client) DescribeMountTargetSecurityGroupsWithContext(ctx context.Context, input *efs.DescribeMountTargetSecurityGroupsInput, opts ...request.Option) (*efs.DescribeMountTargetSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DescribeMountTargetSecurityGroupsWithContext",
+		Action:  "DescribeMountTargetSecurityGroups",
 		Input:   input,
 		Output:  (*efs.DescribeMountTargetSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) DescribeMountTargetSecurityGroupsWithContext(ctx context.Contex
 func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, input *efs.DescribeMountTargetsInput, opts ...request.Option) (*efs.DescribeMountTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DescribeMountTargetsWithContext",
+		Action:  "DescribeMountTargets",
 		Input:   input,
 		Output:  (*efs.DescribeMountTargetsOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, input *efs
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *efs.DescribeTagsInput, opts ...request.Option) (*efs.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*efs.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *efs.Describ
 func (c *Client) ModifyMountTargetSecurityGroupsWithContext(ctx context.Context, input *efs.ModifyMountTargetSecurityGroupsInput, opts ...request.Option) (*efs.ModifyMountTargetSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "ModifyMountTargetSecurityGroupsWithContext",
+		Action:  "ModifyMountTargetSecurityGroups",
 		Input:   input,
 		Output:  (*efs.ModifyMountTargetSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) ModifyMountTargetSecurityGroupsWithContext(ctx context.Context,
 func (c *Client) PutLifecycleConfigurationWithContext(ctx context.Context, input *efs.PutLifecycleConfigurationInput, opts ...request.Option) (*efs.PutLifecycleConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "PutLifecycleConfigurationWithContext",
+		Action:  "PutLifecycleConfiguration",
 		Input:   input,
 		Output:  (*efs.PutLifecycleConfigurationOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) PutLifecycleConfigurationWithContext(ctx context.Context, input
 func (c *Client) UpdateFileSystemWithContext(ctx context.Context, input *efs.UpdateFileSystemInput, opts ...request.Option) (*efs.UpdateFileSystemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
-		Action:  "UpdateFileSystemWithContext",
+		Action:  "UpdateFileSystem",
 		Input:   input,
 		Output:  (*efs.UpdateFileSystemOutput)(nil),
 		Error:   nil,

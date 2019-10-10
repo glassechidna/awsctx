@@ -55,7 +55,7 @@ var _ Route53Domains = (*Client)(nil)
 func (c *Client) CheckDomainAvailabilityWithContext(ctx context.Context, input *route53domains.CheckDomainAvailabilityInput, opts ...request.Option) (*route53domains.CheckDomainAvailabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "CheckDomainAvailabilityWithContext",
+		Action:  "CheckDomainAvailability",
 		Input:   input,
 		Output:  (*route53domains.CheckDomainAvailabilityOutput)(nil),
 		Error:   nil,
@@ -76,7 +76,7 @@ func (c *Client) CheckDomainAvailabilityWithContext(ctx context.Context, input *
 func (c *Client) CheckDomainTransferabilityWithContext(ctx context.Context, input *route53domains.CheckDomainTransferabilityInput, opts ...request.Option) (*route53domains.CheckDomainTransferabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "CheckDomainTransferabilityWithContext",
+		Action:  "CheckDomainTransferability",
 		Input:   input,
 		Output:  (*route53domains.CheckDomainTransferabilityOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) CheckDomainTransferabilityWithContext(ctx context.Context, inpu
 func (c *Client) DeleteTagsForDomainWithContext(ctx context.Context, input *route53domains.DeleteTagsForDomainInput, opts ...request.Option) (*route53domains.DeleteTagsForDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "DeleteTagsForDomainWithContext",
+		Action:  "DeleteTagsForDomain",
 		Input:   input,
 		Output:  (*route53domains.DeleteTagsForDomainOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) DeleteTagsForDomainWithContext(ctx context.Context, input *rout
 func (c *Client) DisableDomainAutoRenewWithContext(ctx context.Context, input *route53domains.DisableDomainAutoRenewInput, opts ...request.Option) (*route53domains.DisableDomainAutoRenewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "DisableDomainAutoRenewWithContext",
+		Action:  "DisableDomainAutoRenew",
 		Input:   input,
 		Output:  (*route53domains.DisableDomainAutoRenewOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) DisableDomainAutoRenewWithContext(ctx context.Context, input *r
 func (c *Client) DisableDomainTransferLockWithContext(ctx context.Context, input *route53domains.DisableDomainTransferLockInput, opts ...request.Option) (*route53domains.DisableDomainTransferLockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "DisableDomainTransferLockWithContext",
+		Action:  "DisableDomainTransferLock",
 		Input:   input,
 		Output:  (*route53domains.DisableDomainTransferLockOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) DisableDomainTransferLockWithContext(ctx context.Context, input
 func (c *Client) EnableDomainAutoRenewWithContext(ctx context.Context, input *route53domains.EnableDomainAutoRenewInput, opts ...request.Option) (*route53domains.EnableDomainAutoRenewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "EnableDomainAutoRenewWithContext",
+		Action:  "EnableDomainAutoRenew",
 		Input:   input,
 		Output:  (*route53domains.EnableDomainAutoRenewOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) EnableDomainAutoRenewWithContext(ctx context.Context, input *ro
 func (c *Client) EnableDomainTransferLockWithContext(ctx context.Context, input *route53domains.EnableDomainTransferLockInput, opts ...request.Option) (*route53domains.EnableDomainTransferLockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "EnableDomainTransferLockWithContext",
+		Action:  "EnableDomainTransferLock",
 		Input:   input,
 		Output:  (*route53domains.EnableDomainTransferLockOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) EnableDomainTransferLockWithContext(ctx context.Context, input 
 func (c *Client) GetContactReachabilityStatusWithContext(ctx context.Context, input *route53domains.GetContactReachabilityStatusInput, opts ...request.Option) (*route53domains.GetContactReachabilityStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "GetContactReachabilityStatusWithContext",
+		Action:  "GetContactReachabilityStatus",
 		Input:   input,
 		Output:  (*route53domains.GetContactReachabilityStatusOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) GetContactReachabilityStatusWithContext(ctx context.Context, in
 func (c *Client) GetDomainDetailWithContext(ctx context.Context, input *route53domains.GetDomainDetailInput, opts ...request.Option) (*route53domains.GetDomainDetailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "GetDomainDetailWithContext",
+		Action:  "GetDomainDetail",
 		Input:   input,
 		Output:  (*route53domains.GetDomainDetailOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) GetDomainDetailWithContext(ctx context.Context, input *route53d
 func (c *Client) GetDomainSuggestionsWithContext(ctx context.Context, input *route53domains.GetDomainSuggestionsInput, opts ...request.Option) (*route53domains.GetDomainSuggestionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "GetDomainSuggestionsWithContext",
+		Action:  "GetDomainSuggestions",
 		Input:   input,
 		Output:  (*route53domains.GetDomainSuggestionsOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) GetDomainSuggestionsWithContext(ctx context.Context, input *rou
 func (c *Client) GetOperationDetailWithContext(ctx context.Context, input *route53domains.GetOperationDetailInput, opts ...request.Option) (*route53domains.GetOperationDetailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "GetOperationDetailWithContext",
+		Action:  "GetOperationDetail",
 		Input:   input,
 		Output:  (*route53domains.GetOperationDetailOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) GetOperationDetailWithContext(ctx context.Context, input *route
 func (c *Client) ListDomainsWithContext(ctx context.Context, input *route53domains.ListDomainsInput, opts ...request.Option) (*route53domains.ListDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "ListDomainsWithContext",
+		Action:  "ListDomains",
 		Input:   input,
 		Output:  (*route53domains.ListDomainsOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *route53domai
 func (c *Client) ListOperationsWithContext(ctx context.Context, input *route53domains.ListOperationsInput, opts ...request.Option) (*route53domains.ListOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "ListOperationsWithContext",
+		Action:  "ListOperations",
 		Input:   input,
 		Output:  (*route53domains.ListOperationsOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) ListOperationsWithContext(ctx context.Context, input *route53do
 func (c *Client) ListTagsForDomainWithContext(ctx context.Context, input *route53domains.ListTagsForDomainInput, opts ...request.Option) (*route53domains.ListTagsForDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "ListTagsForDomainWithContext",
+		Action:  "ListTagsForDomain",
 		Input:   input,
 		Output:  (*route53domains.ListTagsForDomainOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) ListTagsForDomainWithContext(ctx context.Context, input *route5
 func (c *Client) RegisterDomainWithContext(ctx context.Context, input *route53domains.RegisterDomainInput, opts ...request.Option) (*route53domains.RegisterDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "RegisterDomainWithContext",
+		Action:  "RegisterDomain",
 		Input:   input,
 		Output:  (*route53domains.RegisterDomainOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) RegisterDomainWithContext(ctx context.Context, input *route53do
 func (c *Client) RenewDomainWithContext(ctx context.Context, input *route53domains.RenewDomainInput, opts ...request.Option) (*route53domains.RenewDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "RenewDomainWithContext",
+		Action:  "RenewDomain",
 		Input:   input,
 		Output:  (*route53domains.RenewDomainOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) RenewDomainWithContext(ctx context.Context, input *route53domai
 func (c *Client) ResendContactReachabilityEmailWithContext(ctx context.Context, input *route53domains.ResendContactReachabilityEmailInput, opts ...request.Option) (*route53domains.ResendContactReachabilityEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "ResendContactReachabilityEmailWithContext",
+		Action:  "ResendContactReachabilityEmail",
 		Input:   input,
 		Output:  (*route53domains.ResendContactReachabilityEmailOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) ResendContactReachabilityEmailWithContext(ctx context.Context, 
 func (c *Client) RetrieveDomainAuthCodeWithContext(ctx context.Context, input *route53domains.RetrieveDomainAuthCodeInput, opts ...request.Option) (*route53domains.RetrieveDomainAuthCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "RetrieveDomainAuthCodeWithContext",
+		Action:  "RetrieveDomainAuthCode",
 		Input:   input,
 		Output:  (*route53domains.RetrieveDomainAuthCodeOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) RetrieveDomainAuthCodeWithContext(ctx context.Context, input *r
 func (c *Client) TransferDomainWithContext(ctx context.Context, input *route53domains.TransferDomainInput, opts ...request.Option) (*route53domains.TransferDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "TransferDomainWithContext",
+		Action:  "TransferDomain",
 		Input:   input,
 		Output:  (*route53domains.TransferDomainOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) TransferDomainWithContext(ctx context.Context, input *route53do
 func (c *Client) UpdateDomainContactWithContext(ctx context.Context, input *route53domains.UpdateDomainContactInput, opts ...request.Option) (*route53domains.UpdateDomainContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "UpdateDomainContactWithContext",
+		Action:  "UpdateDomainContact",
 		Input:   input,
 		Output:  (*route53domains.UpdateDomainContactOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) UpdateDomainContactWithContext(ctx context.Context, input *rout
 func (c *Client) UpdateDomainContactPrivacyWithContext(ctx context.Context, input *route53domains.UpdateDomainContactPrivacyInput, opts ...request.Option) (*route53domains.UpdateDomainContactPrivacyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "UpdateDomainContactPrivacyWithContext",
+		Action:  "UpdateDomainContactPrivacy",
 		Input:   input,
 		Output:  (*route53domains.UpdateDomainContactPrivacyOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) UpdateDomainContactPrivacyWithContext(ctx context.Context, inpu
 func (c *Client) UpdateDomainNameserversWithContext(ctx context.Context, input *route53domains.UpdateDomainNameserversInput, opts ...request.Option) (*route53domains.UpdateDomainNameserversOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "UpdateDomainNameserversWithContext",
+		Action:  "UpdateDomainNameservers",
 		Input:   input,
 		Output:  (*route53domains.UpdateDomainNameserversOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) UpdateDomainNameserversWithContext(ctx context.Context, input *
 func (c *Client) UpdateTagsForDomainWithContext(ctx context.Context, input *route53domains.UpdateTagsForDomainInput, opts ...request.Option) (*route53domains.UpdateTagsForDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "UpdateTagsForDomainWithContext",
+		Action:  "UpdateTagsForDomain",
 		Input:   input,
 		Output:  (*route53domains.UpdateTagsForDomainOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) UpdateTagsForDomainWithContext(ctx context.Context, input *rout
 func (c *Client) ViewBillingWithContext(ctx context.Context, input *route53domains.ViewBillingInput, opts ...request.Option) (*route53domains.ViewBillingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
-		Action:  "ViewBillingWithContext",
+		Action:  "ViewBilling",
 		Input:   input,
 		Output:  (*route53domains.ViewBillingOutput)(nil),
 		Error:   nil,

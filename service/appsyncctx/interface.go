@@ -67,7 +67,7 @@ var _ AppSync = (*Client)(nil)
 func (c *Client) CreateApiKeyWithContext(ctx context.Context, input *appsync.CreateApiKeyInput, opts ...request.Option) (*appsync.CreateApiKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "CreateApiKeyWithContext",
+		Action:  "CreateApiKey",
 		Input:   input,
 		Output:  (*appsync.CreateApiKeyOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) CreateApiKeyWithContext(ctx context.Context, input *appsync.Cre
 func (c *Client) CreateDataSourceWithContext(ctx context.Context, input *appsync.CreateDataSourceInput, opts ...request.Option) (*appsync.CreateDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "CreateDataSourceWithContext",
+		Action:  "CreateDataSource",
 		Input:   input,
 		Output:  (*appsync.CreateDataSourceOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) CreateDataSourceWithContext(ctx context.Context, input *appsync
 func (c *Client) CreateFunctionWithContext(ctx context.Context, input *appsync.CreateFunctionInput, opts ...request.Option) (*appsync.CreateFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "CreateFunctionWithContext",
+		Action:  "CreateFunction",
 		Input:   input,
 		Output:  (*appsync.CreateFunctionOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, input *appsync.C
 func (c *Client) CreateGraphqlApiWithContext(ctx context.Context, input *appsync.CreateGraphqlApiInput, opts ...request.Option) (*appsync.CreateGraphqlApiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "CreateGraphqlApiWithContext",
+		Action:  "CreateGraphqlApi",
 		Input:   input,
 		Output:  (*appsync.CreateGraphqlApiOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) CreateGraphqlApiWithContext(ctx context.Context, input *appsync
 func (c *Client) CreateResolverWithContext(ctx context.Context, input *appsync.CreateResolverInput, opts ...request.Option) (*appsync.CreateResolverOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "CreateResolverWithContext",
+		Action:  "CreateResolver",
 		Input:   input,
 		Output:  (*appsync.CreateResolverOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) CreateResolverWithContext(ctx context.Context, input *appsync.C
 func (c *Client) CreateTypeWithContext(ctx context.Context, input *appsync.CreateTypeInput, opts ...request.Option) (*appsync.CreateTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "CreateTypeWithContext",
+		Action:  "CreateType",
 		Input:   input,
 		Output:  (*appsync.CreateTypeOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) CreateTypeWithContext(ctx context.Context, input *appsync.Creat
 func (c *Client) DeleteApiKeyWithContext(ctx context.Context, input *appsync.DeleteApiKeyInput, opts ...request.Option) (*appsync.DeleteApiKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "DeleteApiKeyWithContext",
+		Action:  "DeleteApiKey",
 		Input:   input,
 		Output:  (*appsync.DeleteApiKeyOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) DeleteApiKeyWithContext(ctx context.Context, input *appsync.Del
 func (c *Client) DeleteDataSourceWithContext(ctx context.Context, input *appsync.DeleteDataSourceInput, opts ...request.Option) (*appsync.DeleteDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "DeleteDataSourceWithContext",
+		Action:  "DeleteDataSource",
 		Input:   input,
 		Output:  (*appsync.DeleteDataSourceOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) DeleteDataSourceWithContext(ctx context.Context, input *appsync
 func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *appsync.DeleteFunctionInput, opts ...request.Option) (*appsync.DeleteFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "DeleteFunctionWithContext",
+		Action:  "DeleteFunction",
 		Input:   input,
 		Output:  (*appsync.DeleteFunctionOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *appsync.D
 func (c *Client) DeleteGraphqlApiWithContext(ctx context.Context, input *appsync.DeleteGraphqlApiInput, opts ...request.Option) (*appsync.DeleteGraphqlApiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "DeleteGraphqlApiWithContext",
+		Action:  "DeleteGraphqlApi",
 		Input:   input,
 		Output:  (*appsync.DeleteGraphqlApiOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) DeleteGraphqlApiWithContext(ctx context.Context, input *appsync
 func (c *Client) DeleteResolverWithContext(ctx context.Context, input *appsync.DeleteResolverInput, opts ...request.Option) (*appsync.DeleteResolverOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "DeleteResolverWithContext",
+		Action:  "DeleteResolver",
 		Input:   input,
 		Output:  (*appsync.DeleteResolverOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) DeleteResolverWithContext(ctx context.Context, input *appsync.D
 func (c *Client) DeleteTypeWithContext(ctx context.Context, input *appsync.DeleteTypeInput, opts ...request.Option) (*appsync.DeleteTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "DeleteTypeWithContext",
+		Action:  "DeleteType",
 		Input:   input,
 		Output:  (*appsync.DeleteTypeOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) DeleteTypeWithContext(ctx context.Context, input *appsync.Delet
 func (c *Client) GetDataSourceWithContext(ctx context.Context, input *appsync.GetDataSourceInput, opts ...request.Option) (*appsync.GetDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetDataSourceWithContext",
+		Action:  "GetDataSource",
 		Input:   input,
 		Output:  (*appsync.GetDataSourceOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) GetDataSourceWithContext(ctx context.Context, input *appsync.Ge
 func (c *Client) GetFunctionWithContext(ctx context.Context, input *appsync.GetFunctionInput, opts ...request.Option) (*appsync.GetFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetFunctionWithContext",
+		Action:  "GetFunction",
 		Input:   input,
 		Output:  (*appsync.GetFunctionOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) GetFunctionWithContext(ctx context.Context, input *appsync.GetF
 func (c *Client) GetGraphqlApiWithContext(ctx context.Context, input *appsync.GetGraphqlApiInput, opts ...request.Option) (*appsync.GetGraphqlApiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetGraphqlApiWithContext",
+		Action:  "GetGraphqlApi",
 		Input:   input,
 		Output:  (*appsync.GetGraphqlApiOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) GetGraphqlApiWithContext(ctx context.Context, input *appsync.Ge
 func (c *Client) GetIntrospectionSchemaWithContext(ctx context.Context, input *appsync.GetIntrospectionSchemaInput, opts ...request.Option) (*appsync.GetIntrospectionSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetIntrospectionSchemaWithContext",
+		Action:  "GetIntrospectionSchema",
 		Input:   input,
 		Output:  (*appsync.GetIntrospectionSchemaOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) GetIntrospectionSchemaWithContext(ctx context.Context, input *a
 func (c *Client) GetResolverWithContext(ctx context.Context, input *appsync.GetResolverInput, opts ...request.Option) (*appsync.GetResolverOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetResolverWithContext",
+		Action:  "GetResolver",
 		Input:   input,
 		Output:  (*appsync.GetResolverOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) GetResolverWithContext(ctx context.Context, input *appsync.GetR
 func (c *Client) GetSchemaCreationStatusWithContext(ctx context.Context, input *appsync.GetSchemaCreationStatusInput, opts ...request.Option) (*appsync.GetSchemaCreationStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetSchemaCreationStatusWithContext",
+		Action:  "GetSchemaCreationStatus",
 		Input:   input,
 		Output:  (*appsync.GetSchemaCreationStatusOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) GetSchemaCreationStatusWithContext(ctx context.Context, input *
 func (c *Client) GetTypeWithContext(ctx context.Context, input *appsync.GetTypeInput, opts ...request.Option) (*appsync.GetTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "GetTypeWithContext",
+		Action:  "GetType",
 		Input:   input,
 		Output:  (*appsync.GetTypeOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) GetTypeWithContext(ctx context.Context, input *appsync.GetTypeI
 func (c *Client) ListApiKeysWithContext(ctx context.Context, input *appsync.ListApiKeysInput, opts ...request.Option) (*appsync.ListApiKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListApiKeysWithContext",
+		Action:  "ListApiKeys",
 		Input:   input,
 		Output:  (*appsync.ListApiKeysOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) ListApiKeysWithContext(ctx context.Context, input *appsync.List
 func (c *Client) ListDataSourcesWithContext(ctx context.Context, input *appsync.ListDataSourcesInput, opts ...request.Option) (*appsync.ListDataSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListDataSourcesWithContext",
+		Action:  "ListDataSources",
 		Input:   input,
 		Output:  (*appsync.ListDataSourcesOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) ListDataSourcesWithContext(ctx context.Context, input *appsync.
 func (c *Client) ListFunctionsWithContext(ctx context.Context, input *appsync.ListFunctionsInput, opts ...request.Option) (*appsync.ListFunctionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListFunctionsWithContext",
+		Action:  "ListFunctions",
 		Input:   input,
 		Output:  (*appsync.ListFunctionsOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) ListFunctionsWithContext(ctx context.Context, input *appsync.Li
 func (c *Client) ListGraphqlApisWithContext(ctx context.Context, input *appsync.ListGraphqlApisInput, opts ...request.Option) (*appsync.ListGraphqlApisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListGraphqlApisWithContext",
+		Action:  "ListGraphqlApis",
 		Input:   input,
 		Output:  (*appsync.ListGraphqlApisOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) ListGraphqlApisWithContext(ctx context.Context, input *appsync.
 func (c *Client) ListResolversWithContext(ctx context.Context, input *appsync.ListResolversInput, opts ...request.Option) (*appsync.ListResolversOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListResolversWithContext",
+		Action:  "ListResolvers",
 		Input:   input,
 		Output:  (*appsync.ListResolversOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) ListResolversWithContext(ctx context.Context, input *appsync.Li
 func (c *Client) ListResolversByFunctionWithContext(ctx context.Context, input *appsync.ListResolversByFunctionInput, opts ...request.Option) (*appsync.ListResolversByFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListResolversByFunctionWithContext",
+		Action:  "ListResolversByFunction",
 		Input:   input,
 		Output:  (*appsync.ListResolversByFunctionOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) ListResolversByFunctionWithContext(ctx context.Context, input *
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appsync.ListTagsForResourceInput, opts ...request.Option) (*appsync.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*appsync.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *apps
 func (c *Client) ListTypesWithContext(ctx context.Context, input *appsync.ListTypesInput, opts ...request.Option) (*appsync.ListTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "ListTypesWithContext",
+		Action:  "ListTypes",
 		Input:   input,
 		Output:  (*appsync.ListTypesOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) ListTypesWithContext(ctx context.Context, input *appsync.ListTy
 func (c *Client) StartSchemaCreationWithContext(ctx context.Context, input *appsync.StartSchemaCreationInput, opts ...request.Option) (*appsync.StartSchemaCreationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "StartSchemaCreationWithContext",
+		Action:  "StartSchemaCreation",
 		Input:   input,
 		Output:  (*appsync.StartSchemaCreationOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) StartSchemaCreationWithContext(ctx context.Context, input *apps
 func (c *Client) TagResourceWithContext(ctx context.Context, input *appsync.TagResourceInput, opts ...request.Option) (*appsync.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*appsync.TagResourceOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *appsync.TagR
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *appsync.UntagResourceInput, opts ...request.Option) (*appsync.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*appsync.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *appsync.Un
 func (c *Client) UpdateApiKeyWithContext(ctx context.Context, input *appsync.UpdateApiKeyInput, opts ...request.Option) (*appsync.UpdateApiKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UpdateApiKeyWithContext",
+		Action:  "UpdateApiKey",
 		Input:   input,
 		Output:  (*appsync.UpdateApiKeyOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) UpdateApiKeyWithContext(ctx context.Context, input *appsync.Upd
 func (c *Client) UpdateDataSourceWithContext(ctx context.Context, input *appsync.UpdateDataSourceInput, opts ...request.Option) (*appsync.UpdateDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UpdateDataSourceWithContext",
+		Action:  "UpdateDataSource",
 		Input:   input,
 		Output:  (*appsync.UpdateDataSourceOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) UpdateDataSourceWithContext(ctx context.Context, input *appsync
 func (c *Client) UpdateFunctionWithContext(ctx context.Context, input *appsync.UpdateFunctionInput, opts ...request.Option) (*appsync.UpdateFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UpdateFunctionWithContext",
+		Action:  "UpdateFunction",
 		Input:   input,
 		Output:  (*appsync.UpdateFunctionOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) UpdateFunctionWithContext(ctx context.Context, input *appsync.U
 func (c *Client) UpdateGraphqlApiWithContext(ctx context.Context, input *appsync.UpdateGraphqlApiInput, opts ...request.Option) (*appsync.UpdateGraphqlApiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UpdateGraphqlApiWithContext",
+		Action:  "UpdateGraphqlApi",
 		Input:   input,
 		Output:  (*appsync.UpdateGraphqlApiOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) UpdateGraphqlApiWithContext(ctx context.Context, input *appsync
 func (c *Client) UpdateResolverWithContext(ctx context.Context, input *appsync.UpdateResolverInput, opts ...request.Option) (*appsync.UpdateResolverOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UpdateResolverWithContext",
+		Action:  "UpdateResolver",
 		Input:   input,
 		Output:  (*appsync.UpdateResolverOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) UpdateResolverWithContext(ctx context.Context, input *appsync.U
 func (c *Client) UpdateTypeWithContext(ctx context.Context, input *appsync.UpdateTypeInput, opts ...request.Option) (*appsync.UpdateTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
-		Action:  "UpdateTypeWithContext",
+		Action:  "UpdateType",
 		Input:   input,
 		Output:  (*appsync.UpdateTypeOutput)(nil),
 		Error:   nil,

@@ -34,7 +34,7 @@ var _ Pricing = (*Client)(nil)
 func (c *Client) DescribeServicesWithContext(ctx context.Context, input *pricing.DescribeServicesInput, opts ...request.Option) (*pricing.DescribeServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pricing",
-		Action:  "DescribeServicesWithContext",
+		Action:  "DescribeServices",
 		Input:   input,
 		Output:  (*pricing.DescribeServicesOutput)(nil),
 		Error:   nil,
@@ -55,7 +55,7 @@ func (c *Client) DescribeServicesWithContext(ctx context.Context, input *pricing
 func (c *Client) GetAttributeValuesWithContext(ctx context.Context, input *pricing.GetAttributeValuesInput, opts ...request.Option) (*pricing.GetAttributeValuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pricing",
-		Action:  "GetAttributeValuesWithContext",
+		Action:  "GetAttributeValues",
 		Input:   input,
 		Output:  (*pricing.GetAttributeValuesOutput)(nil),
 		Error:   nil,
@@ -76,7 +76,7 @@ func (c *Client) GetAttributeValuesWithContext(ctx context.Context, input *prici
 func (c *Client) GetProductsWithContext(ctx context.Context, input *pricing.GetProductsInput, opts ...request.Option) (*pricing.GetProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pricing",
-		Action:  "GetProductsWithContext",
+		Action:  "GetProducts",
 		Input:   input,
 		Output:  (*pricing.GetProductsOutput)(nil),
 		Error:   nil,

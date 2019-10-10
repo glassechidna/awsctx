@@ -19,6 +19,7 @@ type DatabaseMigrationService interface {
 	CreateReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationSubnetGroupOutput, error)
 	CreateReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationTaskOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *databasemigrationservice.DeleteCertificateInput, opts ...request.Option) (*databasemigrationservice.DeleteCertificateOutput, error)
+	DeleteConnectionWithContext(ctx context.Context, input *databasemigrationservice.DeleteConnectionInput, opts ...request.Option) (*databasemigrationservice.DeleteConnectionOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *databasemigrationservice.DeleteEndpointInput, opts ...request.Option) (*databasemigrationservice.DeleteEndpointOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.DeleteEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.DeleteEventSubscriptionOutput, error)
 	DeleteReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationInstanceOutput, error)
@@ -77,7 +78,7 @@ var _ DatabaseMigrationService = (*Client)(nil)
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *databasemigrationservice.AddTagsToResourceInput, opts ...request.Option) (*databasemigrationservice.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*databasemigrationservice.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -98,7 +99,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *databa
 func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *databasemigrationservice.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*databasemigrationservice.ApplyPendingMaintenanceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ApplyPendingMaintenanceActionWithContext",
+		Action:  "ApplyPendingMaintenanceAction",
 		Input:   input,
 		Output:  (*databasemigrationservice.ApplyPendingMaintenanceActionOutput)(nil),
 		Error:   nil,
@@ -119,7 +120,7 @@ func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, i
 func (c *Client) CreateEndpointWithContext(ctx context.Context, input *databasemigrationservice.CreateEndpointInput, opts ...request.Option) (*databasemigrationservice.CreateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "CreateEndpointWithContext",
+		Action:  "CreateEndpoint",
 		Input:   input,
 		Output:  (*databasemigrationservice.CreateEndpointOutput)(nil),
 		Error:   nil,
@@ -140,7 +141,7 @@ func (c *Client) CreateEndpointWithContext(ctx context.Context, input *databasem
 func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.CreateEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.CreateEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "CreateEventSubscriptionWithContext",
+		Action:  "CreateEventSubscription",
 		Input:   input,
 		Output:  (*databasemigrationservice.CreateEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -161,7 +162,7 @@ func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) CreateReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "CreateReplicationInstanceWithContext",
+		Action:  "CreateReplicationInstance",
 		Input:   input,
 		Output:  (*databasemigrationservice.CreateReplicationInstanceOutput)(nil),
 		Error:   nil,
@@ -182,7 +183,7 @@ func (c *Client) CreateReplicationInstanceWithContext(ctx context.Context, input
 func (c *Client) CreateReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "CreateReplicationSubnetGroupWithContext",
+		Action:  "CreateReplicationSubnetGroup",
 		Input:   input,
 		Output:  (*databasemigrationservice.CreateReplicationSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -203,7 +204,7 @@ func (c *Client) CreateReplicationSubnetGroupWithContext(ctx context.Context, in
 func (c *Client) CreateReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "CreateReplicationTaskWithContext",
+		Action:  "CreateReplicationTask",
 		Input:   input,
 		Output:  (*databasemigrationservice.CreateReplicationTaskOutput)(nil),
 		Error:   nil,
@@ -224,7 +225,7 @@ func (c *Client) CreateReplicationTaskWithContext(ctx context.Context, input *da
 func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *databasemigrationservice.DeleteCertificateInput, opts ...request.Option) (*databasemigrationservice.DeleteCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DeleteCertificateWithContext",
+		Action:  "DeleteCertificate",
 		Input:   input,
 		Output:  (*databasemigrationservice.DeleteCertificateOutput)(nil),
 		Error:   nil,
@@ -242,10 +243,31 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *databa
 	return req.Output.(*databasemigrationservice.DeleteCertificateOutput), req.Error
 }
 
+func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *databasemigrationservice.DeleteConnectionInput, opts ...request.Option) (*databasemigrationservice.DeleteConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DeleteConnection",
+		Input:   input,
+		Output:  (*databasemigrationservice.DeleteConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DeleteConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DeleteConnectionOutput), req.Error
+}
+
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *databasemigrationservice.DeleteEndpointInput, opts ...request.Option) (*databasemigrationservice.DeleteEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DeleteEndpointWithContext",
+		Action:  "DeleteEndpoint",
 		Input:   input,
 		Output:  (*databasemigrationservice.DeleteEndpointOutput)(nil),
 		Error:   nil,
@@ -266,7 +288,7 @@ func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *databasem
 func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.DeleteEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.DeleteEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DeleteEventSubscriptionWithContext",
+		Action:  "DeleteEventSubscription",
 		Input:   input,
 		Output:  (*databasemigrationservice.DeleteEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -287,7 +309,7 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) DeleteReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DeleteReplicationInstanceWithContext",
+		Action:  "DeleteReplicationInstance",
 		Input:   input,
 		Output:  (*databasemigrationservice.DeleteReplicationInstanceOutput)(nil),
 		Error:   nil,
@@ -308,7 +330,7 @@ func (c *Client) DeleteReplicationInstanceWithContext(ctx context.Context, input
 func (c *Client) DeleteReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DeleteReplicationSubnetGroupWithContext",
+		Action:  "DeleteReplicationSubnetGroup",
 		Input:   input,
 		Output:  (*databasemigrationservice.DeleteReplicationSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -329,7 +351,7 @@ func (c *Client) DeleteReplicationSubnetGroupWithContext(ctx context.Context, in
 func (c *Client) DeleteReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DeleteReplicationTaskWithContext",
+		Action:  "DeleteReplicationTask",
 		Input:   input,
 		Output:  (*databasemigrationservice.DeleteReplicationTaskOutput)(nil),
 		Error:   nil,
@@ -350,7 +372,7 @@ func (c *Client) DeleteReplicationTaskWithContext(ctx context.Context, input *da
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *databasemigrationservice.DescribeAccountAttributesInput, opts ...request.Option) (*databasemigrationservice.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeAccountAttributesWithContext",
+		Action:  "DescribeAccountAttributes",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeAccountAttributesOutput)(nil),
 		Error:   nil,
@@ -371,7 +393,7 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *databasemigrationservice.DescribeCertificatesInput, opts ...request.Option) (*databasemigrationservice.DescribeCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeCertificatesWithContext",
+		Action:  "DescribeCertificates",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeCertificatesOutput)(nil),
 		Error:   nil,
@@ -392,7 +414,7 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *dat
 func (c *Client) DescribeConnectionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeConnectionsInput, opts ...request.Option) (*databasemigrationservice.DescribeConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeConnectionsWithContext",
+		Action:  "DescribeConnections",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeConnectionsOutput)(nil),
 		Error:   nil,
@@ -413,7 +435,7 @@ func (c *Client) DescribeConnectionsWithContext(ctx context.Context, input *data
 func (c *Client) DescribeEndpointTypesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointTypesInput, opts ...request.Option) (*databasemigrationservice.DescribeEndpointTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeEndpointTypesWithContext",
+		Action:  "DescribeEndpointTypes",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeEndpointTypesOutput)(nil),
 		Error:   nil,
@@ -434,7 +456,7 @@ func (c *Client) DescribeEndpointTypesWithContext(ctx context.Context, input *da
 func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointsInput, opts ...request.Option) (*databasemigrationservice.DescribeEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeEndpointsWithContext",
+		Action:  "DescribeEndpoints",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeEndpointsOutput)(nil),
 		Error:   nil,
@@ -455,7 +477,7 @@ func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *databa
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventCategoriesInput, opts ...request.Option) (*databasemigrationservice.DescribeEventCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeEventCategoriesWithContext",
+		Action:  "DescribeEventCategories",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeEventCategoriesOutput)(nil),
 		Error:   nil,
@@ -476,7 +498,7 @@ func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *
 func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventSubscriptionsInput, opts ...request.Option) (*databasemigrationservice.DescribeEventSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeEventSubscriptionsWithContext",
+		Action:  "DescribeEventSubscriptions",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeEventSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -497,7 +519,7 @@ func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventsInput, opts ...request.Option) (*databasemigrationservice.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -518,7 +540,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *databasem
 func (c *Client) DescribeOrderableReplicationInstancesWithContext(ctx context.Context, input *databasemigrationservice.DescribeOrderableReplicationInstancesInput, opts ...request.Option) (*databasemigrationservice.DescribeOrderableReplicationInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeOrderableReplicationInstancesWithContext",
+		Action:  "DescribeOrderableReplicationInstances",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeOrderableReplicationInstancesOutput)(nil),
 		Error:   nil,
@@ -539,7 +561,7 @@ func (c *Client) DescribeOrderableReplicationInstancesWithContext(ctx context.Co
 func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *databasemigrationservice.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*databasemigrationservice.DescribePendingMaintenanceActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribePendingMaintenanceActionsWithContext",
+		Action:  "DescribePendingMaintenanceActions",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribePendingMaintenanceActionsOutput)(nil),
 		Error:   nil,
@@ -560,7 +582,7 @@ func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Contex
 func (c *Client) DescribeRefreshSchemasStatusWithContext(ctx context.Context, input *databasemigrationservice.DescribeRefreshSchemasStatusInput, opts ...request.Option) (*databasemigrationservice.DescribeRefreshSchemasStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeRefreshSchemasStatusWithContext",
+		Action:  "DescribeRefreshSchemasStatus",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeRefreshSchemasStatusOutput)(nil),
 		Error:   nil,
@@ -581,7 +603,7 @@ func (c *Client) DescribeRefreshSchemasStatusWithContext(ctx context.Context, in
 func (c *Client) DescribeReplicationInstanceTaskLogsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstanceTaskLogsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationInstanceTaskLogsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeReplicationInstanceTaskLogsWithContext",
+		Action:  "DescribeReplicationInstanceTaskLogs",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeReplicationInstanceTaskLogsOutput)(nil),
 		Error:   nil,
@@ -602,7 +624,7 @@ func (c *Client) DescribeReplicationInstanceTaskLogsWithContext(ctx context.Cont
 func (c *Client) DescribeReplicationInstancesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstancesInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeReplicationInstancesWithContext",
+		Action:  "DescribeReplicationInstances",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeReplicationInstancesOutput)(nil),
 		Error:   nil,
@@ -623,7 +645,7 @@ func (c *Client) DescribeReplicationInstancesWithContext(ctx context.Context, in
 func (c *Client) DescribeReplicationSubnetGroupsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationSubnetGroupsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeReplicationSubnetGroupsWithContext",
+		Action:  "DescribeReplicationSubnetGroups",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeReplicationSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -644,7 +666,7 @@ func (c *Client) DescribeReplicationSubnetGroupsWithContext(ctx context.Context,
 func (c *Client) DescribeReplicationTaskAssessmentResultsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentResultsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskAssessmentResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeReplicationTaskAssessmentResultsWithContext",
+		Action:  "DescribeReplicationTaskAssessmentResults",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeReplicationTaskAssessmentResultsOutput)(nil),
 		Error:   nil,
@@ -665,7 +687,7 @@ func (c *Client) DescribeReplicationTaskAssessmentResultsWithContext(ctx context
 func (c *Client) DescribeReplicationTasksWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTasksInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeReplicationTasksWithContext",
+		Action:  "DescribeReplicationTasks",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeReplicationTasksOutput)(nil),
 		Error:   nil,
@@ -686,7 +708,7 @@ func (c *Client) DescribeReplicationTasksWithContext(ctx context.Context, input 
 func (c *Client) DescribeSchemasWithContext(ctx context.Context, input *databasemigrationservice.DescribeSchemasInput, opts ...request.Option) (*databasemigrationservice.DescribeSchemasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeSchemasWithContext",
+		Action:  "DescribeSchemas",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeSchemasOutput)(nil),
 		Error:   nil,
@@ -707,7 +729,7 @@ func (c *Client) DescribeSchemasWithContext(ctx context.Context, input *database
 func (c *Client) DescribeTableStatisticsWithContext(ctx context.Context, input *databasemigrationservice.DescribeTableStatisticsInput, opts ...request.Option) (*databasemigrationservice.DescribeTableStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "DescribeTableStatisticsWithContext",
+		Action:  "DescribeTableStatistics",
 		Input:   input,
 		Output:  (*databasemigrationservice.DescribeTableStatisticsOutput)(nil),
 		Error:   nil,
@@ -728,7 +750,7 @@ func (c *Client) DescribeTableStatisticsWithContext(ctx context.Context, input *
 func (c *Client) ImportCertificateWithContext(ctx context.Context, input *databasemigrationservice.ImportCertificateInput, opts ...request.Option) (*databasemigrationservice.ImportCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ImportCertificateWithContext",
+		Action:  "ImportCertificate",
 		Input:   input,
 		Output:  (*databasemigrationservice.ImportCertificateOutput)(nil),
 		Error:   nil,
@@ -749,7 +771,7 @@ func (c *Client) ImportCertificateWithContext(ctx context.Context, input *databa
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *databasemigrationservice.ListTagsForResourceInput, opts ...request.Option) (*databasemigrationservice.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*databasemigrationservice.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -770,7 +792,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *data
 func (c *Client) ModifyEndpointWithContext(ctx context.Context, input *databasemigrationservice.ModifyEndpointInput, opts ...request.Option) (*databasemigrationservice.ModifyEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ModifyEndpointWithContext",
+		Action:  "ModifyEndpoint",
 		Input:   input,
 		Output:  (*databasemigrationservice.ModifyEndpointOutput)(nil),
 		Error:   nil,
@@ -791,7 +813,7 @@ func (c *Client) ModifyEndpointWithContext(ctx context.Context, input *databasem
 func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.ModifyEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.ModifyEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ModifyEventSubscriptionWithContext",
+		Action:  "ModifyEventSubscription",
 		Input:   input,
 		Output:  (*databasemigrationservice.ModifyEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -812,7 +834,7 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) ModifyReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ModifyReplicationInstanceWithContext",
+		Action:  "ModifyReplicationInstance",
 		Input:   input,
 		Output:  (*databasemigrationservice.ModifyReplicationInstanceOutput)(nil),
 		Error:   nil,
@@ -833,7 +855,7 @@ func (c *Client) ModifyReplicationInstanceWithContext(ctx context.Context, input
 func (c *Client) ModifyReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ModifyReplicationSubnetGroupWithContext",
+		Action:  "ModifyReplicationSubnetGroup",
 		Input:   input,
 		Output:  (*databasemigrationservice.ModifyReplicationSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -854,7 +876,7 @@ func (c *Client) ModifyReplicationSubnetGroupWithContext(ctx context.Context, in
 func (c *Client) ModifyReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ModifyReplicationTaskWithContext",
+		Action:  "ModifyReplicationTask",
 		Input:   input,
 		Output:  (*databasemigrationservice.ModifyReplicationTaskOutput)(nil),
 		Error:   nil,
@@ -875,7 +897,7 @@ func (c *Client) ModifyReplicationTaskWithContext(ctx context.Context, input *da
 func (c *Client) RebootReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.RebootReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.RebootReplicationInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "RebootReplicationInstanceWithContext",
+		Action:  "RebootReplicationInstance",
 		Input:   input,
 		Output:  (*databasemigrationservice.RebootReplicationInstanceOutput)(nil),
 		Error:   nil,
@@ -896,7 +918,7 @@ func (c *Client) RebootReplicationInstanceWithContext(ctx context.Context, input
 func (c *Client) RefreshSchemasWithContext(ctx context.Context, input *databasemigrationservice.RefreshSchemasInput, opts ...request.Option) (*databasemigrationservice.RefreshSchemasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "RefreshSchemasWithContext",
+		Action:  "RefreshSchemas",
 		Input:   input,
 		Output:  (*databasemigrationservice.RefreshSchemasOutput)(nil),
 		Error:   nil,
@@ -917,7 +939,7 @@ func (c *Client) RefreshSchemasWithContext(ctx context.Context, input *databasem
 func (c *Client) ReloadTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "ReloadTablesWithContext",
+		Action:  "ReloadTables",
 		Input:   input,
 		Output:  (*databasemigrationservice.ReloadTablesOutput)(nil),
 		Error:   nil,
@@ -938,7 +960,7 @@ func (c *Client) ReloadTablesWithContext(ctx context.Context, input *databasemig
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *databasemigrationservice.RemoveTagsFromResourceInput, opts ...request.Option) (*databasemigrationservice.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*databasemigrationservice.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -959,7 +981,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *d
 func (c *Client) StartReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "StartReplicationTaskWithContext",
+		Action:  "StartReplicationTask",
 		Input:   input,
 		Output:  (*databasemigrationservice.StartReplicationTaskOutput)(nil),
 		Error:   nil,
@@ -980,7 +1002,7 @@ func (c *Client) StartReplicationTaskWithContext(ctx context.Context, input *dat
 func (c *Client) StartReplicationTaskAssessmentWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "StartReplicationTaskAssessmentWithContext",
+		Action:  "StartReplicationTaskAssessment",
 		Input:   input,
 		Output:  (*databasemigrationservice.StartReplicationTaskAssessmentOutput)(nil),
 		Error:   nil,
@@ -1001,7 +1023,7 @@ func (c *Client) StartReplicationTaskAssessmentWithContext(ctx context.Context, 
 func (c *Client) StopReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StopReplicationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "StopReplicationTaskWithContext",
+		Action:  "StopReplicationTask",
 		Input:   input,
 		Output:  (*databasemigrationservice.StopReplicationTaskOutput)(nil),
 		Error:   nil,
@@ -1022,7 +1044,7 @@ func (c *Client) StopReplicationTaskWithContext(ctx context.Context, input *data
 func (c *Client) TestConnectionWithContext(ctx context.Context, input *databasemigrationservice.TestConnectionInput, opts ...request.Option) (*databasemigrationservice.TestConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
-		Action:  "TestConnectionWithContext",
+		Action:  "TestConnection",
 		Input:   input,
 		Output:  (*databasemigrationservice.TestConnectionOutput)(nil),
 		Error:   nil,

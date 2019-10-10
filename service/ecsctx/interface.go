@@ -50,6 +50,7 @@ type ECS interface {
 	SubmitTaskStateChangeWithContext(ctx context.Context, input *ecs.SubmitTaskStateChangeInput, opts ...request.Option) (*ecs.SubmitTaskStateChangeOutput, error)
 	TagResourceWithContext(ctx context.Context, input *ecs.TagResourceInput, opts ...request.Option) (*ecs.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *ecs.UntagResourceInput, opts ...request.Option) (*ecs.UntagResourceOutput, error)
+	UpdateClusterSettingsWithContext(ctx context.Context, input *ecs.UpdateClusterSettingsInput, opts ...request.Option) (*ecs.UpdateClusterSettingsOutput, error)
 	UpdateContainerAgentWithContext(ctx context.Context, input *ecs.UpdateContainerAgentInput, opts ...request.Option) (*ecs.UpdateContainerAgentOutput, error)
 	UpdateContainerInstancesStateWithContext(ctx context.Context, input *ecs.UpdateContainerInstancesStateInput, opts ...request.Option) (*ecs.UpdateContainerInstancesStateOutput, error)
 	UpdateServiceWithContext(ctx context.Context, input *ecs.UpdateServiceInput, opts ...request.Option) (*ecs.UpdateServiceOutput, error)
@@ -75,7 +76,7 @@ var _ ECS = (*Client)(nil)
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *ecs.CreateClusterInput, opts ...request.Option) (*ecs.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*ecs.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -96,7 +97,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *ecs.Create
 func (c *Client) CreateServiceWithContext(ctx context.Context, input *ecs.CreateServiceInput, opts ...request.Option) (*ecs.CreateServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "CreateServiceWithContext",
+		Action:  "CreateService",
 		Input:   input,
 		Output:  (*ecs.CreateServiceOutput)(nil),
 		Error:   nil,
@@ -117,7 +118,7 @@ func (c *Client) CreateServiceWithContext(ctx context.Context, input *ecs.Create
 func (c *Client) CreateTaskSetWithContext(ctx context.Context, input *ecs.CreateTaskSetInput, opts ...request.Option) (*ecs.CreateTaskSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "CreateTaskSetWithContext",
+		Action:  "CreateTaskSet",
 		Input:   input,
 		Output:  (*ecs.CreateTaskSetOutput)(nil),
 		Error:   nil,
@@ -138,7 +139,7 @@ func (c *Client) CreateTaskSetWithContext(ctx context.Context, input *ecs.Create
 func (c *Client) DeleteAccountSettingWithContext(ctx context.Context, input *ecs.DeleteAccountSettingInput, opts ...request.Option) (*ecs.DeleteAccountSettingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeleteAccountSettingWithContext",
+		Action:  "DeleteAccountSetting",
 		Input:   input,
 		Output:  (*ecs.DeleteAccountSettingOutput)(nil),
 		Error:   nil,
@@ -159,7 +160,7 @@ func (c *Client) DeleteAccountSettingWithContext(ctx context.Context, input *ecs
 func (c *Client) DeleteAttributesWithContext(ctx context.Context, input *ecs.DeleteAttributesInput, opts ...request.Option) (*ecs.DeleteAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeleteAttributesWithContext",
+		Action:  "DeleteAttributes",
 		Input:   input,
 		Output:  (*ecs.DeleteAttributesOutput)(nil),
 		Error:   nil,
@@ -180,7 +181,7 @@ func (c *Client) DeleteAttributesWithContext(ctx context.Context, input *ecs.Del
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *ecs.DeleteClusterInput, opts ...request.Option) (*ecs.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeleteClusterWithContext",
+		Action:  "DeleteCluster",
 		Input:   input,
 		Output:  (*ecs.DeleteClusterOutput)(nil),
 		Error:   nil,
@@ -201,7 +202,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *ecs.Delete
 func (c *Client) DeleteServiceWithContext(ctx context.Context, input *ecs.DeleteServiceInput, opts ...request.Option) (*ecs.DeleteServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeleteServiceWithContext",
+		Action:  "DeleteService",
 		Input:   input,
 		Output:  (*ecs.DeleteServiceOutput)(nil),
 		Error:   nil,
@@ -222,7 +223,7 @@ func (c *Client) DeleteServiceWithContext(ctx context.Context, input *ecs.Delete
 func (c *Client) DeleteTaskSetWithContext(ctx context.Context, input *ecs.DeleteTaskSetInput, opts ...request.Option) (*ecs.DeleteTaskSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeleteTaskSetWithContext",
+		Action:  "DeleteTaskSet",
 		Input:   input,
 		Output:  (*ecs.DeleteTaskSetOutput)(nil),
 		Error:   nil,
@@ -243,7 +244,7 @@ func (c *Client) DeleteTaskSetWithContext(ctx context.Context, input *ecs.Delete
 func (c *Client) DeregisterContainerInstanceWithContext(ctx context.Context, input *ecs.DeregisterContainerInstanceInput, opts ...request.Option) (*ecs.DeregisterContainerInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeregisterContainerInstanceWithContext",
+		Action:  "DeregisterContainerInstance",
 		Input:   input,
 		Output:  (*ecs.DeregisterContainerInstanceOutput)(nil),
 		Error:   nil,
@@ -264,7 +265,7 @@ func (c *Client) DeregisterContainerInstanceWithContext(ctx context.Context, inp
 func (c *Client) DeregisterTaskDefinitionWithContext(ctx context.Context, input *ecs.DeregisterTaskDefinitionInput, opts ...request.Option) (*ecs.DeregisterTaskDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DeregisterTaskDefinitionWithContext",
+		Action:  "DeregisterTaskDefinition",
 		Input:   input,
 		Output:  (*ecs.DeregisterTaskDefinitionOutput)(nil),
 		Error:   nil,
@@ -285,7 +286,7 @@ func (c *Client) DeregisterTaskDefinitionWithContext(ctx context.Context, input 
 func (c *Client) DescribeClustersWithContext(ctx context.Context, input *ecs.DescribeClustersInput, opts ...request.Option) (*ecs.DescribeClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DescribeClustersWithContext",
+		Action:  "DescribeClusters",
 		Input:   input,
 		Output:  (*ecs.DescribeClustersOutput)(nil),
 		Error:   nil,
@@ -306,7 +307,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, input *ecs.Des
 func (c *Client) DescribeContainerInstancesWithContext(ctx context.Context, input *ecs.DescribeContainerInstancesInput, opts ...request.Option) (*ecs.DescribeContainerInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DescribeContainerInstancesWithContext",
+		Action:  "DescribeContainerInstances",
 		Input:   input,
 		Output:  (*ecs.DescribeContainerInstancesOutput)(nil),
 		Error:   nil,
@@ -327,7 +328,7 @@ func (c *Client) DescribeContainerInstancesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeServicesWithContext(ctx context.Context, input *ecs.DescribeServicesInput, opts ...request.Option) (*ecs.DescribeServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DescribeServicesWithContext",
+		Action:  "DescribeServices",
 		Input:   input,
 		Output:  (*ecs.DescribeServicesOutput)(nil),
 		Error:   nil,
@@ -348,7 +349,7 @@ func (c *Client) DescribeServicesWithContext(ctx context.Context, input *ecs.Des
 func (c *Client) DescribeTaskDefinitionWithContext(ctx context.Context, input *ecs.DescribeTaskDefinitionInput, opts ...request.Option) (*ecs.DescribeTaskDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DescribeTaskDefinitionWithContext",
+		Action:  "DescribeTaskDefinition",
 		Input:   input,
 		Output:  (*ecs.DescribeTaskDefinitionOutput)(nil),
 		Error:   nil,
@@ -369,7 +370,7 @@ func (c *Client) DescribeTaskDefinitionWithContext(ctx context.Context, input *e
 func (c *Client) DescribeTaskSetsWithContext(ctx context.Context, input *ecs.DescribeTaskSetsInput, opts ...request.Option) (*ecs.DescribeTaskSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DescribeTaskSetsWithContext",
+		Action:  "DescribeTaskSets",
 		Input:   input,
 		Output:  (*ecs.DescribeTaskSetsOutput)(nil),
 		Error:   nil,
@@ -390,7 +391,7 @@ func (c *Client) DescribeTaskSetsWithContext(ctx context.Context, input *ecs.Des
 func (c *Client) DescribeTasksWithContext(ctx context.Context, input *ecs.DescribeTasksInput, opts ...request.Option) (*ecs.DescribeTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DescribeTasksWithContext",
+		Action:  "DescribeTasks",
 		Input:   input,
 		Output:  (*ecs.DescribeTasksOutput)(nil),
 		Error:   nil,
@@ -411,7 +412,7 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, input *ecs.Descri
 func (c *Client) DiscoverPollEndpointWithContext(ctx context.Context, input *ecs.DiscoverPollEndpointInput, opts ...request.Option) (*ecs.DiscoverPollEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "DiscoverPollEndpointWithContext",
+		Action:  "DiscoverPollEndpoint",
 		Input:   input,
 		Output:  (*ecs.DiscoverPollEndpointOutput)(nil),
 		Error:   nil,
@@ -432,7 +433,7 @@ func (c *Client) DiscoverPollEndpointWithContext(ctx context.Context, input *ecs
 func (c *Client) ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListAccountSettingsWithContext",
+		Action:  "ListAccountSettings",
 		Input:   input,
 		Output:  (*ecs.ListAccountSettingsOutput)(nil),
 		Error:   nil,
@@ -453,7 +454,7 @@ func (c *Client) ListAccountSettingsWithContext(ctx context.Context, input *ecs.
 func (c *Client) ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListAttributesWithContext",
+		Action:  "ListAttributes",
 		Input:   input,
 		Output:  (*ecs.ListAttributesOutput)(nil),
 		Error:   nil,
@@ -474,7 +475,7 @@ func (c *Client) ListAttributesWithContext(ctx context.Context, input *ecs.ListA
 func (c *Client) ListClustersWithContext(ctx context.Context, input *ecs.ListClustersInput, opts ...request.Option) (*ecs.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListClustersWithContext",
+		Action:  "ListClusters",
 		Input:   input,
 		Output:  (*ecs.ListClustersOutput)(nil),
 		Error:   nil,
@@ -495,7 +496,7 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *ecs.ListClu
 func (c *Client) ListContainerInstancesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, opts ...request.Option) (*ecs.ListContainerInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListContainerInstancesWithContext",
+		Action:  "ListContainerInstances",
 		Input:   input,
 		Output:  (*ecs.ListContainerInstancesOutput)(nil),
 		Error:   nil,
@@ -516,7 +517,7 @@ func (c *Client) ListContainerInstancesWithContext(ctx context.Context, input *e
 func (c *Client) ListServicesWithContext(ctx context.Context, input *ecs.ListServicesInput, opts ...request.Option) (*ecs.ListServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListServicesWithContext",
+		Action:  "ListServices",
 		Input:   input,
 		Output:  (*ecs.ListServicesOutput)(nil),
 		Error:   nil,
@@ -537,7 +538,7 @@ func (c *Client) ListServicesWithContext(ctx context.Context, input *ecs.ListSer
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ecs.ListTagsForResourceInput, opts ...request.Option) (*ecs.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*ecs.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -558,7 +559,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ecs.
 func (c *Client) ListTaskDefinitionFamiliesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionFamiliesInput, opts ...request.Option) (*ecs.ListTaskDefinitionFamiliesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListTaskDefinitionFamiliesWithContext",
+		Action:  "ListTaskDefinitionFamilies",
 		Input:   input,
 		Output:  (*ecs.ListTaskDefinitionFamiliesOutput)(nil),
 		Error:   nil,
@@ -579,7 +580,7 @@ func (c *Client) ListTaskDefinitionFamiliesWithContext(ctx context.Context, inpu
 func (c *Client) ListTaskDefinitionsWithContext(ctx context.Context, input *ecs.ListTaskDefinitionsInput, opts ...request.Option) (*ecs.ListTaskDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListTaskDefinitionsWithContext",
+		Action:  "ListTaskDefinitions",
 		Input:   input,
 		Output:  (*ecs.ListTaskDefinitionsOutput)(nil),
 		Error:   nil,
@@ -600,7 +601,7 @@ func (c *Client) ListTaskDefinitionsWithContext(ctx context.Context, input *ecs.
 func (c *Client) ListTasksWithContext(ctx context.Context, input *ecs.ListTasksInput, opts ...request.Option) (*ecs.ListTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "ListTasksWithContext",
+		Action:  "ListTasks",
 		Input:   input,
 		Output:  (*ecs.ListTasksOutput)(nil),
 		Error:   nil,
@@ -621,7 +622,7 @@ func (c *Client) ListTasksWithContext(ctx context.Context, input *ecs.ListTasksI
 func (c *Client) PutAccountSettingWithContext(ctx context.Context, input *ecs.PutAccountSettingInput, opts ...request.Option) (*ecs.PutAccountSettingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "PutAccountSettingWithContext",
+		Action:  "PutAccountSetting",
 		Input:   input,
 		Output:  (*ecs.PutAccountSettingOutput)(nil),
 		Error:   nil,
@@ -642,7 +643,7 @@ func (c *Client) PutAccountSettingWithContext(ctx context.Context, input *ecs.Pu
 func (c *Client) PutAccountSettingDefaultWithContext(ctx context.Context, input *ecs.PutAccountSettingDefaultInput, opts ...request.Option) (*ecs.PutAccountSettingDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "PutAccountSettingDefaultWithContext",
+		Action:  "PutAccountSettingDefault",
 		Input:   input,
 		Output:  (*ecs.PutAccountSettingDefaultOutput)(nil),
 		Error:   nil,
@@ -663,7 +664,7 @@ func (c *Client) PutAccountSettingDefaultWithContext(ctx context.Context, input 
 func (c *Client) PutAttributesWithContext(ctx context.Context, input *ecs.PutAttributesInput, opts ...request.Option) (*ecs.PutAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "PutAttributesWithContext",
+		Action:  "PutAttributes",
 		Input:   input,
 		Output:  (*ecs.PutAttributesOutput)(nil),
 		Error:   nil,
@@ -684,7 +685,7 @@ func (c *Client) PutAttributesWithContext(ctx context.Context, input *ecs.PutAtt
 func (c *Client) RegisterContainerInstanceWithContext(ctx context.Context, input *ecs.RegisterContainerInstanceInput, opts ...request.Option) (*ecs.RegisterContainerInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "RegisterContainerInstanceWithContext",
+		Action:  "RegisterContainerInstance",
 		Input:   input,
 		Output:  (*ecs.RegisterContainerInstanceOutput)(nil),
 		Error:   nil,
@@ -705,7 +706,7 @@ func (c *Client) RegisterContainerInstanceWithContext(ctx context.Context, input
 func (c *Client) RegisterTaskDefinitionWithContext(ctx context.Context, input *ecs.RegisterTaskDefinitionInput, opts ...request.Option) (*ecs.RegisterTaskDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "RegisterTaskDefinitionWithContext",
+		Action:  "RegisterTaskDefinition",
 		Input:   input,
 		Output:  (*ecs.RegisterTaskDefinitionOutput)(nil),
 		Error:   nil,
@@ -726,7 +727,7 @@ func (c *Client) RegisterTaskDefinitionWithContext(ctx context.Context, input *e
 func (c *Client) RunTaskWithContext(ctx context.Context, input *ecs.RunTaskInput, opts ...request.Option) (*ecs.RunTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "RunTaskWithContext",
+		Action:  "RunTask",
 		Input:   input,
 		Output:  (*ecs.RunTaskOutput)(nil),
 		Error:   nil,
@@ -747,7 +748,7 @@ func (c *Client) RunTaskWithContext(ctx context.Context, input *ecs.RunTaskInput
 func (c *Client) StartTaskWithContext(ctx context.Context, input *ecs.StartTaskInput, opts ...request.Option) (*ecs.StartTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "StartTaskWithContext",
+		Action:  "StartTask",
 		Input:   input,
 		Output:  (*ecs.StartTaskOutput)(nil),
 		Error:   nil,
@@ -768,7 +769,7 @@ func (c *Client) StartTaskWithContext(ctx context.Context, input *ecs.StartTaskI
 func (c *Client) StopTaskWithContext(ctx context.Context, input *ecs.StopTaskInput, opts ...request.Option) (*ecs.StopTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "StopTaskWithContext",
+		Action:  "StopTask",
 		Input:   input,
 		Output:  (*ecs.StopTaskOutput)(nil),
 		Error:   nil,
@@ -789,7 +790,7 @@ func (c *Client) StopTaskWithContext(ctx context.Context, input *ecs.StopTaskInp
 func (c *Client) SubmitAttachmentStateChangesWithContext(ctx context.Context, input *ecs.SubmitAttachmentStateChangesInput, opts ...request.Option) (*ecs.SubmitAttachmentStateChangesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "SubmitAttachmentStateChangesWithContext",
+		Action:  "SubmitAttachmentStateChanges",
 		Input:   input,
 		Output:  (*ecs.SubmitAttachmentStateChangesOutput)(nil),
 		Error:   nil,
@@ -810,7 +811,7 @@ func (c *Client) SubmitAttachmentStateChangesWithContext(ctx context.Context, in
 func (c *Client) SubmitContainerStateChangeWithContext(ctx context.Context, input *ecs.SubmitContainerStateChangeInput, opts ...request.Option) (*ecs.SubmitContainerStateChangeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "SubmitContainerStateChangeWithContext",
+		Action:  "SubmitContainerStateChange",
 		Input:   input,
 		Output:  (*ecs.SubmitContainerStateChangeOutput)(nil),
 		Error:   nil,
@@ -831,7 +832,7 @@ func (c *Client) SubmitContainerStateChangeWithContext(ctx context.Context, inpu
 func (c *Client) SubmitTaskStateChangeWithContext(ctx context.Context, input *ecs.SubmitTaskStateChangeInput, opts ...request.Option) (*ecs.SubmitTaskStateChangeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "SubmitTaskStateChangeWithContext",
+		Action:  "SubmitTaskStateChange",
 		Input:   input,
 		Output:  (*ecs.SubmitTaskStateChangeOutput)(nil),
 		Error:   nil,
@@ -852,7 +853,7 @@ func (c *Client) SubmitTaskStateChangeWithContext(ctx context.Context, input *ec
 func (c *Client) TagResourceWithContext(ctx context.Context, input *ecs.TagResourceInput, opts ...request.Option) (*ecs.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*ecs.TagResourceOutput)(nil),
 		Error:   nil,
@@ -873,7 +874,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *ecs.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *ecs.UntagResourceInput, opts ...request.Option) (*ecs.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*ecs.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -891,10 +892,31 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *ecs.UntagR
 	return req.Output.(*ecs.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateClusterSettingsWithContext(ctx context.Context, input *ecs.UpdateClusterSettingsInput, opts ...request.Option) (*ecs.UpdateClusterSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "UpdateClusterSettings",
+		Input:   input,
+		Output:  (*ecs.UpdateClusterSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.UpdateClusterSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.UpdateClusterSettingsOutput), req.Error
+}
+
 func (c *Client) UpdateContainerAgentWithContext(ctx context.Context, input *ecs.UpdateContainerAgentInput, opts ...request.Option) (*ecs.UpdateContainerAgentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "UpdateContainerAgentWithContext",
+		Action:  "UpdateContainerAgent",
 		Input:   input,
 		Output:  (*ecs.UpdateContainerAgentOutput)(nil),
 		Error:   nil,
@@ -915,7 +937,7 @@ func (c *Client) UpdateContainerAgentWithContext(ctx context.Context, input *ecs
 func (c *Client) UpdateContainerInstancesStateWithContext(ctx context.Context, input *ecs.UpdateContainerInstancesStateInput, opts ...request.Option) (*ecs.UpdateContainerInstancesStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "UpdateContainerInstancesStateWithContext",
+		Action:  "UpdateContainerInstancesState",
 		Input:   input,
 		Output:  (*ecs.UpdateContainerInstancesStateOutput)(nil),
 		Error:   nil,
@@ -936,7 +958,7 @@ func (c *Client) UpdateContainerInstancesStateWithContext(ctx context.Context, i
 func (c *Client) UpdateServiceWithContext(ctx context.Context, input *ecs.UpdateServiceInput, opts ...request.Option) (*ecs.UpdateServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "UpdateServiceWithContext",
+		Action:  "UpdateService",
 		Input:   input,
 		Output:  (*ecs.UpdateServiceOutput)(nil),
 		Error:   nil,
@@ -957,7 +979,7 @@ func (c *Client) UpdateServiceWithContext(ctx context.Context, input *ecs.Update
 func (c *Client) UpdateServicePrimaryTaskSetWithContext(ctx context.Context, input *ecs.UpdateServicePrimaryTaskSetInput, opts ...request.Option) (*ecs.UpdateServicePrimaryTaskSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "UpdateServicePrimaryTaskSetWithContext",
+		Action:  "UpdateServicePrimaryTaskSet",
 		Input:   input,
 		Output:  (*ecs.UpdateServicePrimaryTaskSetOutput)(nil),
 		Error:   nil,
@@ -978,7 +1000,7 @@ func (c *Client) UpdateServicePrimaryTaskSetWithContext(ctx context.Context, inp
 func (c *Client) UpdateTaskSetWithContext(ctx context.Context, input *ecs.UpdateTaskSetInput, opts ...request.Option) (*ecs.UpdateTaskSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
-		Action:  "UpdateTaskSetWithContext",
+		Action:  "UpdateTaskSet",
 		Input:   input,
 		Output:  (*ecs.UpdateTaskSetOutput)(nil),
 		Error:   nil,

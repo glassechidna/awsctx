@@ -36,7 +36,7 @@ var _ DLM = (*Client)(nil)
 func (c *Client) CreateLifecyclePolicyWithContext(ctx context.Context, input *dlm.CreateLifecyclePolicyInput, opts ...request.Option) (*dlm.CreateLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dlm",
-		Action:  "CreateLifecyclePolicyWithContext",
+		Action:  "CreateLifecyclePolicy",
 		Input:   input,
 		Output:  (*dlm.CreateLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -57,7 +57,7 @@ func (c *Client) CreateLifecyclePolicyWithContext(ctx context.Context, input *dl
 func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *dlm.DeleteLifecyclePolicyInput, opts ...request.Option) (*dlm.DeleteLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dlm",
-		Action:  "DeleteLifecyclePolicyWithContext",
+		Action:  "DeleteLifecyclePolicy",
 		Input:   input,
 		Output:  (*dlm.DeleteLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -78,7 +78,7 @@ func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *dl
 func (c *Client) GetLifecyclePoliciesWithContext(ctx context.Context, input *dlm.GetLifecyclePoliciesInput, opts ...request.Option) (*dlm.GetLifecyclePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dlm",
-		Action:  "GetLifecyclePoliciesWithContext",
+		Action:  "GetLifecyclePolicies",
 		Input:   input,
 		Output:  (*dlm.GetLifecyclePoliciesOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) GetLifecyclePoliciesWithContext(ctx context.Context, input *dlm
 func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *dlm.GetLifecyclePolicyInput, opts ...request.Option) (*dlm.GetLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dlm",
-		Action:  "GetLifecyclePolicyWithContext",
+		Action:  "GetLifecyclePolicy",
 		Input:   input,
 		Output:  (*dlm.GetLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *dlm.G
 func (c *Client) UpdateLifecyclePolicyWithContext(ctx context.Context, input *dlm.UpdateLifecyclePolicyInput, opts ...request.Option) (*dlm.UpdateLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dlm",
-		Action:  "UpdateLifecyclePolicyWithContext",
+		Action:  "UpdateLifecyclePolicy",
 		Input:   input,
 		Output:  (*dlm.UpdateLifecyclePolicyOutput)(nil),
 		Error:   nil,

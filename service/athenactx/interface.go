@@ -50,7 +50,7 @@ var _ Athena = (*Client)(nil)
 func (c *Client) BatchGetNamedQueryWithContext(ctx context.Context, input *athena.BatchGetNamedQueryInput, opts ...request.Option) (*athena.BatchGetNamedQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "BatchGetNamedQueryWithContext",
+		Action:  "BatchGetNamedQuery",
 		Input:   input,
 		Output:  (*athena.BatchGetNamedQueryOutput)(nil),
 		Error:   nil,
@@ -71,7 +71,7 @@ func (c *Client) BatchGetNamedQueryWithContext(ctx context.Context, input *athen
 func (c *Client) BatchGetQueryExecutionWithContext(ctx context.Context, input *athena.BatchGetQueryExecutionInput, opts ...request.Option) (*athena.BatchGetQueryExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "BatchGetQueryExecutionWithContext",
+		Action:  "BatchGetQueryExecution",
 		Input:   input,
 		Output:  (*athena.BatchGetQueryExecutionOutput)(nil),
 		Error:   nil,
@@ -92,7 +92,7 @@ func (c *Client) BatchGetQueryExecutionWithContext(ctx context.Context, input *a
 func (c *Client) CreateNamedQueryWithContext(ctx context.Context, input *athena.CreateNamedQueryInput, opts ...request.Option) (*athena.CreateNamedQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "CreateNamedQueryWithContext",
+		Action:  "CreateNamedQuery",
 		Input:   input,
 		Output:  (*athena.CreateNamedQueryOutput)(nil),
 		Error:   nil,
@@ -113,7 +113,7 @@ func (c *Client) CreateNamedQueryWithContext(ctx context.Context, input *athena.
 func (c *Client) CreateWorkGroupWithContext(ctx context.Context, input *athena.CreateWorkGroupInput, opts ...request.Option) (*athena.CreateWorkGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "CreateWorkGroupWithContext",
+		Action:  "CreateWorkGroup",
 		Input:   input,
 		Output:  (*athena.CreateWorkGroupOutput)(nil),
 		Error:   nil,
@@ -134,7 +134,7 @@ func (c *Client) CreateWorkGroupWithContext(ctx context.Context, input *athena.C
 func (c *Client) DeleteNamedQueryWithContext(ctx context.Context, input *athena.DeleteNamedQueryInput, opts ...request.Option) (*athena.DeleteNamedQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "DeleteNamedQueryWithContext",
+		Action:  "DeleteNamedQuery",
 		Input:   input,
 		Output:  (*athena.DeleteNamedQueryOutput)(nil),
 		Error:   nil,
@@ -155,7 +155,7 @@ func (c *Client) DeleteNamedQueryWithContext(ctx context.Context, input *athena.
 func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, input *athena.DeleteWorkGroupInput, opts ...request.Option) (*athena.DeleteWorkGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "DeleteWorkGroupWithContext",
+		Action:  "DeleteWorkGroup",
 		Input:   input,
 		Output:  (*athena.DeleteWorkGroupOutput)(nil),
 		Error:   nil,
@@ -176,7 +176,7 @@ func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, input *athena.D
 func (c *Client) GetNamedQueryWithContext(ctx context.Context, input *athena.GetNamedQueryInput, opts ...request.Option) (*athena.GetNamedQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "GetNamedQueryWithContext",
+		Action:  "GetNamedQuery",
 		Input:   input,
 		Output:  (*athena.GetNamedQueryOutput)(nil),
 		Error:   nil,
@@ -197,7 +197,7 @@ func (c *Client) GetNamedQueryWithContext(ctx context.Context, input *athena.Get
 func (c *Client) GetQueryExecutionWithContext(ctx context.Context, input *athena.GetQueryExecutionInput, opts ...request.Option) (*athena.GetQueryExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "GetQueryExecutionWithContext",
+		Action:  "GetQueryExecution",
 		Input:   input,
 		Output:  (*athena.GetQueryExecutionOutput)(nil),
 		Error:   nil,
@@ -218,7 +218,7 @@ func (c *Client) GetQueryExecutionWithContext(ctx context.Context, input *athena
 func (c *Client) GetQueryResultsWithContext(ctx context.Context, input *athena.GetQueryResultsInput, opts ...request.Option) (*athena.GetQueryResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "GetQueryResultsWithContext",
+		Action:  "GetQueryResults",
 		Input:   input,
 		Output:  (*athena.GetQueryResultsOutput)(nil),
 		Error:   nil,
@@ -239,7 +239,7 @@ func (c *Client) GetQueryResultsWithContext(ctx context.Context, input *athena.G
 func (c *Client) GetWorkGroupWithContext(ctx context.Context, input *athena.GetWorkGroupInput, opts ...request.Option) (*athena.GetWorkGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "GetWorkGroupWithContext",
+		Action:  "GetWorkGroup",
 		Input:   input,
 		Output:  (*athena.GetWorkGroupOutput)(nil),
 		Error:   nil,
@@ -260,7 +260,7 @@ func (c *Client) GetWorkGroupWithContext(ctx context.Context, input *athena.GetW
 func (c *Client) ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "ListNamedQueriesWithContext",
+		Action:  "ListNamedQueries",
 		Input:   input,
 		Output:  (*athena.ListNamedQueriesOutput)(nil),
 		Error:   nil,
@@ -281,7 +281,7 @@ func (c *Client) ListNamedQueriesWithContext(ctx context.Context, input *athena.
 func (c *Client) ListQueryExecutionsWithContext(ctx context.Context, input *athena.ListQueryExecutionsInput, opts ...request.Option) (*athena.ListQueryExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "ListQueryExecutionsWithContext",
+		Action:  "ListQueryExecutions",
 		Input:   input,
 		Output:  (*athena.ListQueryExecutionsOutput)(nil),
 		Error:   nil,
@@ -302,7 +302,7 @@ func (c *Client) ListQueryExecutionsWithContext(ctx context.Context, input *athe
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *athena.ListTagsForResourceInput, opts ...request.Option) (*athena.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*athena.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -323,7 +323,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *athe
 func (c *Client) ListWorkGroupsWithContext(ctx context.Context, input *athena.ListWorkGroupsInput, opts ...request.Option) (*athena.ListWorkGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "ListWorkGroupsWithContext",
+		Action:  "ListWorkGroups",
 		Input:   input,
 		Output:  (*athena.ListWorkGroupsOutput)(nil),
 		Error:   nil,
@@ -344,7 +344,7 @@ func (c *Client) ListWorkGroupsWithContext(ctx context.Context, input *athena.Li
 func (c *Client) StartQueryExecutionWithContext(ctx context.Context, input *athena.StartQueryExecutionInput, opts ...request.Option) (*athena.StartQueryExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "StartQueryExecutionWithContext",
+		Action:  "StartQueryExecution",
 		Input:   input,
 		Output:  (*athena.StartQueryExecutionOutput)(nil),
 		Error:   nil,
@@ -365,7 +365,7 @@ func (c *Client) StartQueryExecutionWithContext(ctx context.Context, input *athe
 func (c *Client) StopQueryExecutionWithContext(ctx context.Context, input *athena.StopQueryExecutionInput, opts ...request.Option) (*athena.StopQueryExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "StopQueryExecutionWithContext",
+		Action:  "StopQueryExecution",
 		Input:   input,
 		Output:  (*athena.StopQueryExecutionOutput)(nil),
 		Error:   nil,
@@ -386,7 +386,7 @@ func (c *Client) StopQueryExecutionWithContext(ctx context.Context, input *athen
 func (c *Client) TagResourceWithContext(ctx context.Context, input *athena.TagResourceInput, opts ...request.Option) (*athena.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*athena.TagResourceOutput)(nil),
 		Error:   nil,
@@ -407,7 +407,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *athena.TagRe
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *athena.UntagResourceInput, opts ...request.Option) (*athena.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*athena.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -428,7 +428,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *athena.Unt
 func (c *Client) UpdateWorkGroupWithContext(ctx context.Context, input *athena.UpdateWorkGroupInput, opts ...request.Option) (*athena.UpdateWorkGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
-		Action:  "UpdateWorkGroupWithContext",
+		Action:  "UpdateWorkGroup",
 		Input:   input,
 		Output:  (*athena.UpdateWorkGroupOutput)(nil),
 		Error:   nil,

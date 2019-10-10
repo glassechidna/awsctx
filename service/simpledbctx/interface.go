@@ -41,7 +41,7 @@ var _ SimpleDB = (*Client)(nil)
 func (c *Client) BatchDeleteAttributesWithContext(ctx context.Context, input *simpledb.BatchDeleteAttributesInput, opts ...request.Option) (*simpledb.BatchDeleteAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "BatchDeleteAttributesWithContext",
+		Action:  "BatchDeleteAttributes",
 		Input:   input,
 		Output:  (*simpledb.BatchDeleteAttributesOutput)(nil),
 		Error:   nil,
@@ -62,7 +62,7 @@ func (c *Client) BatchDeleteAttributesWithContext(ctx context.Context, input *si
 func (c *Client) BatchPutAttributesWithContext(ctx context.Context, input *simpledb.BatchPutAttributesInput, opts ...request.Option) (*simpledb.BatchPutAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "BatchPutAttributesWithContext",
+		Action:  "BatchPutAttributes",
 		Input:   input,
 		Output:  (*simpledb.BatchPutAttributesOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) BatchPutAttributesWithContext(ctx context.Context, input *simpl
 func (c *Client) CreateDomainWithContext(ctx context.Context, input *simpledb.CreateDomainInput, opts ...request.Option) (*simpledb.CreateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "CreateDomainWithContext",
+		Action:  "CreateDomain",
 		Input:   input,
 		Output:  (*simpledb.CreateDomainOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, input *simpledb.Cr
 func (c *Client) DeleteAttributesWithContext(ctx context.Context, input *simpledb.DeleteAttributesInput, opts ...request.Option) (*simpledb.DeleteAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "DeleteAttributesWithContext",
+		Action:  "DeleteAttributes",
 		Input:   input,
 		Output:  (*simpledb.DeleteAttributesOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) DeleteAttributesWithContext(ctx context.Context, input *simpled
 func (c *Client) DeleteDomainWithContext(ctx context.Context, input *simpledb.DeleteDomainInput, opts ...request.Option) (*simpledb.DeleteDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "DeleteDomainWithContext",
+		Action:  "DeleteDomain",
 		Input:   input,
 		Output:  (*simpledb.DeleteDomainOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, input *simpledb.De
 func (c *Client) DomainMetadataWithContext(ctx context.Context, input *simpledb.DomainMetadataInput, opts ...request.Option) (*simpledb.DomainMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "DomainMetadataWithContext",
+		Action:  "DomainMetadata",
 		Input:   input,
 		Output:  (*simpledb.DomainMetadataOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) DomainMetadataWithContext(ctx context.Context, input *simpledb.
 func (c *Client) GetAttributesWithContext(ctx context.Context, input *simpledb.GetAttributesInput, opts ...request.Option) (*simpledb.GetAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "GetAttributesWithContext",
+		Action:  "GetAttributes",
 		Input:   input,
 		Output:  (*simpledb.GetAttributesOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) GetAttributesWithContext(ctx context.Context, input *simpledb.G
 func (c *Client) ListDomainsWithContext(ctx context.Context, input *simpledb.ListDomainsInput, opts ...request.Option) (*simpledb.ListDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "ListDomainsWithContext",
+		Action:  "ListDomains",
 		Input:   input,
 		Output:  (*simpledb.ListDomainsOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *simpledb.Lis
 func (c *Client) PutAttributesWithContext(ctx context.Context, input *simpledb.PutAttributesInput, opts ...request.Option) (*simpledb.PutAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "PutAttributesWithContext",
+		Action:  "PutAttributes",
 		Input:   input,
 		Output:  (*simpledb.PutAttributesOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) PutAttributesWithContext(ctx context.Context, input *simpledb.P
 func (c *Client) SelectWithContext(ctx context.Context, input *simpledb.SelectInput, opts ...request.Option) (*simpledb.SelectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
-		Action:  "SelectWithContext",
+		Action:  "Select",
 		Input:   input,
 		Output:  (*simpledb.SelectOutput)(nil),
 		Error:   nil,

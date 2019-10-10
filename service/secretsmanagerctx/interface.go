@@ -49,7 +49,7 @@ var _ SecretsManager = (*Client)(nil)
 func (c *Client) CancelRotateSecretWithContext(ctx context.Context, input *secretsmanager.CancelRotateSecretInput, opts ...request.Option) (*secretsmanager.CancelRotateSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "CancelRotateSecretWithContext",
+		Action:  "CancelRotateSecret",
 		Input:   input,
 		Output:  (*secretsmanager.CancelRotateSecretOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) CancelRotateSecretWithContext(ctx context.Context, input *secre
 func (c *Client) CreateSecretWithContext(ctx context.Context, input *secretsmanager.CreateSecretInput, opts ...request.Option) (*secretsmanager.CreateSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "CreateSecretWithContext",
+		Action:  "CreateSecret",
 		Input:   input,
 		Output:  (*secretsmanager.CreateSecretOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) CreateSecretWithContext(ctx context.Context, input *secretsmana
 func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *secretsmanager.DeleteResourcePolicyInput, opts ...request.Option) (*secretsmanager.DeleteResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "DeleteResourcePolicyWithContext",
+		Action:  "DeleteResourcePolicy",
 		Input:   input,
 		Output:  (*secretsmanager.DeleteResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *sec
 func (c *Client) DeleteSecretWithContext(ctx context.Context, input *secretsmanager.DeleteSecretInput, opts ...request.Option) (*secretsmanager.DeleteSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "DeleteSecretWithContext",
+		Action:  "DeleteSecret",
 		Input:   input,
 		Output:  (*secretsmanager.DeleteSecretOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) DeleteSecretWithContext(ctx context.Context, input *secretsmana
 func (c *Client) DescribeSecretWithContext(ctx context.Context, input *secretsmanager.DescribeSecretInput, opts ...request.Option) (*secretsmanager.DescribeSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "DescribeSecretWithContext",
+		Action:  "DescribeSecret",
 		Input:   input,
 		Output:  (*secretsmanager.DescribeSecretOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DescribeSecretWithContext(ctx context.Context, input *secretsma
 func (c *Client) GetRandomPasswordWithContext(ctx context.Context, input *secretsmanager.GetRandomPasswordInput, opts ...request.Option) (*secretsmanager.GetRandomPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "GetRandomPasswordWithContext",
+		Action:  "GetRandomPassword",
 		Input:   input,
 		Output:  (*secretsmanager.GetRandomPasswordOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) GetRandomPasswordWithContext(ctx context.Context, input *secret
 func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *secretsmanager.GetResourcePolicyInput, opts ...request.Option) (*secretsmanager.GetResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "GetResourcePolicyWithContext",
+		Action:  "GetResourcePolicy",
 		Input:   input,
 		Output:  (*secretsmanager.GetResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *secret
 func (c *Client) GetSecretValueWithContext(ctx context.Context, input *secretsmanager.GetSecretValueInput, opts ...request.Option) (*secretsmanager.GetSecretValueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "GetSecretValueWithContext",
+		Action:  "GetSecretValue",
 		Input:   input,
 		Output:  (*secretsmanager.GetSecretValueOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) GetSecretValueWithContext(ctx context.Context, input *secretsma
 func (c *Client) ListSecretVersionIdsWithContext(ctx context.Context, input *secretsmanager.ListSecretVersionIdsInput, opts ...request.Option) (*secretsmanager.ListSecretVersionIdsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "ListSecretVersionIdsWithContext",
+		Action:  "ListSecretVersionIds",
 		Input:   input,
 		Output:  (*secretsmanager.ListSecretVersionIdsOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) ListSecretVersionIdsWithContext(ctx context.Context, input *sec
 func (c *Client) ListSecretsWithContext(ctx context.Context, input *secretsmanager.ListSecretsInput, opts ...request.Option) (*secretsmanager.ListSecretsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "ListSecretsWithContext",
+		Action:  "ListSecrets",
 		Input:   input,
 		Output:  (*secretsmanager.ListSecretsOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) ListSecretsWithContext(ctx context.Context, input *secretsmanag
 func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *secretsmanager.PutResourcePolicyInput, opts ...request.Option) (*secretsmanager.PutResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "PutResourcePolicyWithContext",
+		Action:  "PutResourcePolicy",
 		Input:   input,
 		Output:  (*secretsmanager.PutResourcePolicyOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *secret
 func (c *Client) PutSecretValueWithContext(ctx context.Context, input *secretsmanager.PutSecretValueInput, opts ...request.Option) (*secretsmanager.PutSecretValueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "PutSecretValueWithContext",
+		Action:  "PutSecretValue",
 		Input:   input,
 		Output:  (*secretsmanager.PutSecretValueOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) PutSecretValueWithContext(ctx context.Context, input *secretsma
 func (c *Client) RestoreSecretWithContext(ctx context.Context, input *secretsmanager.RestoreSecretInput, opts ...request.Option) (*secretsmanager.RestoreSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "RestoreSecretWithContext",
+		Action:  "RestoreSecret",
 		Input:   input,
 		Output:  (*secretsmanager.RestoreSecretOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) RestoreSecretWithContext(ctx context.Context, input *secretsman
 func (c *Client) RotateSecretWithContext(ctx context.Context, input *secretsmanager.RotateSecretInput, opts ...request.Option) (*secretsmanager.RotateSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "RotateSecretWithContext",
+		Action:  "RotateSecret",
 		Input:   input,
 		Output:  (*secretsmanager.RotateSecretOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) RotateSecretWithContext(ctx context.Context, input *secretsmana
 func (c *Client) TagResourceWithContext(ctx context.Context, input *secretsmanager.TagResourceInput, opts ...request.Option) (*secretsmanager.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*secretsmanager.TagResourceOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *secretsmanag
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *secretsmanager.UntagResourceInput, opts ...request.Option) (*secretsmanager.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*secretsmanager.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *secretsman
 func (c *Client) UpdateSecretWithContext(ctx context.Context, input *secretsmanager.UpdateSecretInput, opts ...request.Option) (*secretsmanager.UpdateSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "UpdateSecretWithContext",
+		Action:  "UpdateSecret",
 		Input:   input,
 		Output:  (*secretsmanager.UpdateSecretOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) UpdateSecretWithContext(ctx context.Context, input *secretsmana
 func (c *Client) UpdateSecretVersionStageWithContext(ctx context.Context, input *secretsmanager.UpdateSecretVersionStageInput, opts ...request.Option) (*secretsmanager.UpdateSecretVersionStageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
-		Action:  "UpdateSecretVersionStageWithContext",
+		Action:  "UpdateSecretVersionStage",
 		Input:   input,
 		Output:  (*secretsmanager.UpdateSecretVersionStageOutput)(nil),
 		Error:   nil,

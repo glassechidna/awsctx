@@ -53,7 +53,7 @@ var _ MQ = (*Client)(nil)
 func (c *Client) CreateBrokerWithContext(ctx context.Context, input *mq.CreateBrokerRequest, opts ...request.Option) (*mq.CreateBrokerResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "CreateBrokerWithContext",
+		Action:  "CreateBroker",
 		Input:   input,
 		Output:  (*mq.CreateBrokerResponse)(nil),
 		Error:   nil,
@@ -74,7 +74,7 @@ func (c *Client) CreateBrokerWithContext(ctx context.Context, input *mq.CreateBr
 func (c *Client) CreateConfigurationWithContext(ctx context.Context, input *mq.CreateConfigurationRequest, opts ...request.Option) (*mq.CreateConfigurationResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "CreateConfigurationWithContext",
+		Action:  "CreateConfiguration",
 		Input:   input,
 		Output:  (*mq.CreateConfigurationResponse)(nil),
 		Error:   nil,
@@ -95,7 +95,7 @@ func (c *Client) CreateConfigurationWithContext(ctx context.Context, input *mq.C
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *mq.CreateTagsInput, opts ...request.Option) (*mq.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*mq.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -116,7 +116,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *mq.CreateTags
 func (c *Client) CreateUserWithContext(ctx context.Context, input *mq.CreateUserRequest, opts ...request.Option) (*mq.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*mq.CreateUserOutput)(nil),
 		Error:   nil,
@@ -137,7 +137,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *mq.CreateUser
 func (c *Client) DeleteBrokerWithContext(ctx context.Context, input *mq.DeleteBrokerInput, opts ...request.Option) (*mq.DeleteBrokerResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DeleteBrokerWithContext",
+		Action:  "DeleteBroker",
 		Input:   input,
 		Output:  (*mq.DeleteBrokerResponse)(nil),
 		Error:   nil,
@@ -158,7 +158,7 @@ func (c *Client) DeleteBrokerWithContext(ctx context.Context, input *mq.DeleteBr
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *mq.DeleteTagsInput, opts ...request.Option) (*mq.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*mq.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -179,7 +179,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *mq.DeleteTags
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *mq.DeleteUserInput, opts ...request.Option) (*mq.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*mq.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -200,7 +200,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *mq.DeleteUser
 func (c *Client) DescribeBrokerWithContext(ctx context.Context, input *mq.DescribeBrokerInput, opts ...request.Option) (*mq.DescribeBrokerResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DescribeBrokerWithContext",
+		Action:  "DescribeBroker",
 		Input:   input,
 		Output:  (*mq.DescribeBrokerResponse)(nil),
 		Error:   nil,
@@ -221,7 +221,7 @@ func (c *Client) DescribeBrokerWithContext(ctx context.Context, input *mq.Descri
 func (c *Client) DescribeBrokerEngineTypesWithContext(ctx context.Context, input *mq.DescribeBrokerEngineTypesInput, opts ...request.Option) (*mq.DescribeBrokerEngineTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DescribeBrokerEngineTypesWithContext",
+		Action:  "DescribeBrokerEngineTypes",
 		Input:   input,
 		Output:  (*mq.DescribeBrokerEngineTypesOutput)(nil),
 		Error:   nil,
@@ -242,7 +242,7 @@ func (c *Client) DescribeBrokerEngineTypesWithContext(ctx context.Context, input
 func (c *Client) DescribeBrokerInstanceOptionsWithContext(ctx context.Context, input *mq.DescribeBrokerInstanceOptionsInput, opts ...request.Option) (*mq.DescribeBrokerInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DescribeBrokerInstanceOptionsWithContext",
+		Action:  "DescribeBrokerInstanceOptions",
 		Input:   input,
 		Output:  (*mq.DescribeBrokerInstanceOptionsOutput)(nil),
 		Error:   nil,
@@ -263,7 +263,7 @@ func (c *Client) DescribeBrokerInstanceOptionsWithContext(ctx context.Context, i
 func (c *Client) DescribeConfigurationWithContext(ctx context.Context, input *mq.DescribeConfigurationInput, opts ...request.Option) (*mq.DescribeConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DescribeConfigurationWithContext",
+		Action:  "DescribeConfiguration",
 		Input:   input,
 		Output:  (*mq.DescribeConfigurationOutput)(nil),
 		Error:   nil,
@@ -284,7 +284,7 @@ func (c *Client) DescribeConfigurationWithContext(ctx context.Context, input *mq
 func (c *Client) DescribeConfigurationRevisionWithContext(ctx context.Context, input *mq.DescribeConfigurationRevisionInput, opts ...request.Option) (*mq.DescribeConfigurationRevisionResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DescribeConfigurationRevisionWithContext",
+		Action:  "DescribeConfigurationRevision",
 		Input:   input,
 		Output:  (*mq.DescribeConfigurationRevisionResponse)(nil),
 		Error:   nil,
@@ -305,7 +305,7 @@ func (c *Client) DescribeConfigurationRevisionWithContext(ctx context.Context, i
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *mq.DescribeUserInput, opts ...request.Option) (*mq.DescribeUserResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "DescribeUserWithContext",
+		Action:  "DescribeUser",
 		Input:   input,
 		Output:  (*mq.DescribeUserResponse)(nil),
 		Error:   nil,
@@ -326,7 +326,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *mq.Describe
 func (c *Client) ListBrokersWithContext(ctx context.Context, input *mq.ListBrokersInput, opts ...request.Option) (*mq.ListBrokersResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "ListBrokersWithContext",
+		Action:  "ListBrokers",
 		Input:   input,
 		Output:  (*mq.ListBrokersResponse)(nil),
 		Error:   nil,
@@ -347,7 +347,7 @@ func (c *Client) ListBrokersWithContext(ctx context.Context, input *mq.ListBroke
 func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, input *mq.ListConfigurationRevisionsInput, opts ...request.Option) (*mq.ListConfigurationRevisionsResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "ListConfigurationRevisionsWithContext",
+		Action:  "ListConfigurationRevisions",
 		Input:   input,
 		Output:  (*mq.ListConfigurationRevisionsResponse)(nil),
 		Error:   nil,
@@ -368,7 +368,7 @@ func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, inpu
 func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *mq.ListConfigurationsInput, opts ...request.Option) (*mq.ListConfigurationsResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "ListConfigurationsWithContext",
+		Action:  "ListConfigurations",
 		Input:   input,
 		Output:  (*mq.ListConfigurationsResponse)(nil),
 		Error:   nil,
@@ -389,7 +389,7 @@ func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *mq.Li
 func (c *Client) ListTagsWithContext(ctx context.Context, input *mq.ListTagsInput, opts ...request.Option) (*mq.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*mq.ListTagsOutput)(nil),
 		Error:   nil,
@@ -410,7 +410,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *mq.ListTagsInpu
 func (c *Client) ListUsersWithContext(ctx context.Context, input *mq.ListUsersInput, opts ...request.Option) (*mq.ListUsersResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*mq.ListUsersResponse)(nil),
 		Error:   nil,
@@ -431,7 +431,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *mq.ListUsersIn
 func (c *Client) RebootBrokerWithContext(ctx context.Context, input *mq.RebootBrokerInput, opts ...request.Option) (*mq.RebootBrokerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "RebootBrokerWithContext",
+		Action:  "RebootBroker",
 		Input:   input,
 		Output:  (*mq.RebootBrokerOutput)(nil),
 		Error:   nil,
@@ -452,7 +452,7 @@ func (c *Client) RebootBrokerWithContext(ctx context.Context, input *mq.RebootBr
 func (c *Client) UpdateBrokerWithContext(ctx context.Context, input *mq.UpdateBrokerRequest, opts ...request.Option) (*mq.UpdateBrokerResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "UpdateBrokerWithContext",
+		Action:  "UpdateBroker",
 		Input:   input,
 		Output:  (*mq.UpdateBrokerResponse)(nil),
 		Error:   nil,
@@ -473,7 +473,7 @@ func (c *Client) UpdateBrokerWithContext(ctx context.Context, input *mq.UpdateBr
 func (c *Client) UpdateConfigurationWithContext(ctx context.Context, input *mq.UpdateConfigurationRequest, opts ...request.Option) (*mq.UpdateConfigurationResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "UpdateConfigurationWithContext",
+		Action:  "UpdateConfiguration",
 		Input:   input,
 		Output:  (*mq.UpdateConfigurationResponse)(nil),
 		Error:   nil,
@@ -494,7 +494,7 @@ func (c *Client) UpdateConfigurationWithContext(ctx context.Context, input *mq.U
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *mq.UpdateUserRequest, opts ...request.Option) (*mq.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mq",
-		Action:  "UpdateUserWithContext",
+		Action:  "UpdateUser",
 		Input:   input,
 		Output:  (*mq.UpdateUserOutput)(nil),
 		Error:   nil,

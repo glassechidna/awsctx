@@ -51,7 +51,7 @@ var _ XRay = (*Client)(nil)
 func (c *Client) BatchGetTracesWithContext(ctx context.Context, input *xray.BatchGetTracesInput, opts ...request.Option) (*xray.BatchGetTracesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "BatchGetTracesWithContext",
+		Action:  "BatchGetTraces",
 		Input:   input,
 		Output:  (*xray.BatchGetTracesOutput)(nil),
 		Error:   nil,
@@ -72,7 +72,7 @@ func (c *Client) BatchGetTracesWithContext(ctx context.Context, input *xray.Batc
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *xray.CreateGroupInput, opts ...request.Option) (*xray.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*xray.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *xray.CreateG
 func (c *Client) CreateSamplingRuleWithContext(ctx context.Context, input *xray.CreateSamplingRuleInput, opts ...request.Option) (*xray.CreateSamplingRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "CreateSamplingRuleWithContext",
+		Action:  "CreateSamplingRule",
 		Input:   input,
 		Output:  (*xray.CreateSamplingRuleOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) CreateSamplingRuleWithContext(ctx context.Context, input *xray.
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *xray.DeleteGroupInput, opts ...request.Option) (*xray.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*xray.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *xray.DeleteG
 func (c *Client) DeleteSamplingRuleWithContext(ctx context.Context, input *xray.DeleteSamplingRuleInput, opts ...request.Option) (*xray.DeleteSamplingRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "DeleteSamplingRuleWithContext",
+		Action:  "DeleteSamplingRule",
 		Input:   input,
 		Output:  (*xray.DeleteSamplingRuleOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) DeleteSamplingRuleWithContext(ctx context.Context, input *xray.
 func (c *Client) GetEncryptionConfigWithContext(ctx context.Context, input *xray.GetEncryptionConfigInput, opts ...request.Option) (*xray.GetEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetEncryptionConfigWithContext",
+		Action:  "GetEncryptionConfig",
 		Input:   input,
 		Output:  (*xray.GetEncryptionConfigOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) GetEncryptionConfigWithContext(ctx context.Context, input *xray
 func (c *Client) GetGroupWithContext(ctx context.Context, input *xray.GetGroupInput, opts ...request.Option) (*xray.GetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetGroupWithContext",
+		Action:  "GetGroup",
 		Input:   input,
 		Output:  (*xray.GetGroupOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) GetGroupWithContext(ctx context.Context, input *xray.GetGroupIn
 func (c *Client) GetGroupsWithContext(ctx context.Context, input *xray.GetGroupsInput, opts ...request.Option) (*xray.GetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetGroupsWithContext",
+		Action:  "GetGroups",
 		Input:   input,
 		Output:  (*xray.GetGroupsOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) GetGroupsWithContext(ctx context.Context, input *xray.GetGroups
 func (c *Client) GetSamplingRulesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, opts ...request.Option) (*xray.GetSamplingRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetSamplingRulesWithContext",
+		Action:  "GetSamplingRules",
 		Input:   input,
 		Output:  (*xray.GetSamplingRulesOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) GetSamplingRulesWithContext(ctx context.Context, input *xray.Ge
 func (c *Client) GetSamplingStatisticSummariesWithContext(ctx context.Context, input *xray.GetSamplingStatisticSummariesInput, opts ...request.Option) (*xray.GetSamplingStatisticSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetSamplingStatisticSummariesWithContext",
+		Action:  "GetSamplingStatisticSummaries",
 		Input:   input,
 		Output:  (*xray.GetSamplingStatisticSummariesOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) GetSamplingStatisticSummariesWithContext(ctx context.Context, i
 func (c *Client) GetSamplingTargetsWithContext(ctx context.Context, input *xray.GetSamplingTargetsInput, opts ...request.Option) (*xray.GetSamplingTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetSamplingTargetsWithContext",
+		Action:  "GetSamplingTargets",
 		Input:   input,
 		Output:  (*xray.GetSamplingTargetsOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) GetSamplingTargetsWithContext(ctx context.Context, input *xray.
 func (c *Client) GetServiceGraphWithContext(ctx context.Context, input *xray.GetServiceGraphInput, opts ...request.Option) (*xray.GetServiceGraphOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetServiceGraphWithContext",
+		Action:  "GetServiceGraph",
 		Input:   input,
 		Output:  (*xray.GetServiceGraphOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) GetServiceGraphWithContext(ctx context.Context, input *xray.Get
 func (c *Client) GetTimeSeriesServiceStatisticsWithContext(ctx context.Context, input *xray.GetTimeSeriesServiceStatisticsInput, opts ...request.Option) (*xray.GetTimeSeriesServiceStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetTimeSeriesServiceStatisticsWithContext",
+		Action:  "GetTimeSeriesServiceStatistics",
 		Input:   input,
 		Output:  (*xray.GetTimeSeriesServiceStatisticsOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) GetTimeSeriesServiceStatisticsWithContext(ctx context.Context, 
 func (c *Client) GetTraceGraphWithContext(ctx context.Context, input *xray.GetTraceGraphInput, opts ...request.Option) (*xray.GetTraceGraphOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetTraceGraphWithContext",
+		Action:  "GetTraceGraph",
 		Input:   input,
 		Output:  (*xray.GetTraceGraphOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) GetTraceGraphWithContext(ctx context.Context, input *xray.GetTr
 func (c *Client) GetTraceSummariesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, opts ...request.Option) (*xray.GetTraceSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "GetTraceSummariesWithContext",
+		Action:  "GetTraceSummaries",
 		Input:   input,
 		Output:  (*xray.GetTraceSummariesOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) GetTraceSummariesWithContext(ctx context.Context, input *xray.G
 func (c *Client) PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "PutEncryptionConfigWithContext",
+		Action:  "PutEncryptionConfig",
 		Input:   input,
 		Output:  (*xray.PutEncryptionConfigOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) PutEncryptionConfigWithContext(ctx context.Context, input *xray
 func (c *Client) PutTelemetryRecordsWithContext(ctx context.Context, input *xray.PutTelemetryRecordsInput, opts ...request.Option) (*xray.PutTelemetryRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "PutTelemetryRecordsWithContext",
+		Action:  "PutTelemetryRecords",
 		Input:   input,
 		Output:  (*xray.PutTelemetryRecordsOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) PutTelemetryRecordsWithContext(ctx context.Context, input *xray
 func (c *Client) PutTraceSegmentsWithContext(ctx context.Context, input *xray.PutTraceSegmentsInput, opts ...request.Option) (*xray.PutTraceSegmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "PutTraceSegmentsWithContext",
+		Action:  "PutTraceSegments",
 		Input:   input,
 		Output:  (*xray.PutTraceSegmentsOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) PutTraceSegmentsWithContext(ctx context.Context, input *xray.Pu
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *xray.UpdateGroupInput, opts ...request.Option) (*xray.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "UpdateGroupWithContext",
+		Action:  "UpdateGroup",
 		Input:   input,
 		Output:  (*xray.UpdateGroupOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *xray.UpdateG
 func (c *Client) UpdateSamplingRuleWithContext(ctx context.Context, input *xray.UpdateSamplingRuleInput, opts ...request.Option) (*xray.UpdateSamplingRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
-		Action:  "UpdateSamplingRuleWithContext",
+		Action:  "UpdateSamplingRule",
 		Input:   input,
 		Output:  (*xray.UpdateSamplingRuleOutput)(nil),
 		Error:   nil,

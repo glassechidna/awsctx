@@ -60,7 +60,7 @@ var _ ELB = (*Client)(nil)
 func (c *Client) AddTagsWithContext(ctx context.Context, input *elb.AddTagsInput, opts ...request.Option) (*elb.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*elb.AddTagsOutput)(nil),
 		Error:   nil,
@@ -81,7 +81,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *elb.AddTagsInput
 func (c *Client) ApplySecurityGroupsToLoadBalancerWithContext(ctx context.Context, input *elb.ApplySecurityGroupsToLoadBalancerInput, opts ...request.Option) (*elb.ApplySecurityGroupsToLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "ApplySecurityGroupsToLoadBalancerWithContext",
+		Action:  "ApplySecurityGroupsToLoadBalancer",
 		Input:   input,
 		Output:  (*elb.ApplySecurityGroupsToLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -102,7 +102,7 @@ func (c *Client) ApplySecurityGroupsToLoadBalancerWithContext(ctx context.Contex
 func (c *Client) AttachLoadBalancerToSubnetsWithContext(ctx context.Context, input *elb.AttachLoadBalancerToSubnetsInput, opts ...request.Option) (*elb.AttachLoadBalancerToSubnetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "AttachLoadBalancerToSubnetsWithContext",
+		Action:  "AttachLoadBalancerToSubnets",
 		Input:   input,
 		Output:  (*elb.AttachLoadBalancerToSubnetsOutput)(nil),
 		Error:   nil,
@@ -123,7 +123,7 @@ func (c *Client) AttachLoadBalancerToSubnetsWithContext(ctx context.Context, inp
 func (c *Client) ConfigureHealthCheckWithContext(ctx context.Context, input *elb.ConfigureHealthCheckInput, opts ...request.Option) (*elb.ConfigureHealthCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "ConfigureHealthCheckWithContext",
+		Action:  "ConfigureHealthCheck",
 		Input:   input,
 		Output:  (*elb.ConfigureHealthCheckOutput)(nil),
 		Error:   nil,
@@ -144,7 +144,7 @@ func (c *Client) ConfigureHealthCheckWithContext(ctx context.Context, input *elb
 func (c *Client) CreateAppCookieStickinessPolicyWithContext(ctx context.Context, input *elb.CreateAppCookieStickinessPolicyInput, opts ...request.Option) (*elb.CreateAppCookieStickinessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "CreateAppCookieStickinessPolicyWithContext",
+		Action:  "CreateAppCookieStickinessPolicy",
 		Input:   input,
 		Output:  (*elb.CreateAppCookieStickinessPolicyOutput)(nil),
 		Error:   nil,
@@ -165,7 +165,7 @@ func (c *Client) CreateAppCookieStickinessPolicyWithContext(ctx context.Context,
 func (c *Client) CreateLBCookieStickinessPolicyWithContext(ctx context.Context, input *elb.CreateLBCookieStickinessPolicyInput, opts ...request.Option) (*elb.CreateLBCookieStickinessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "CreateLBCookieStickinessPolicyWithContext",
+		Action:  "CreateLBCookieStickinessPolicy",
 		Input:   input,
 		Output:  (*elb.CreateLBCookieStickinessPolicyOutput)(nil),
 		Error:   nil,
@@ -186,7 +186,7 @@ func (c *Client) CreateLBCookieStickinessPolicyWithContext(ctx context.Context, 
 func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, input *elb.CreateLoadBalancerInput, opts ...request.Option) (*elb.CreateLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "CreateLoadBalancerWithContext",
+		Action:  "CreateLoadBalancer",
 		Input:   input,
 		Output:  (*elb.CreateLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -207,7 +207,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, input *elb.C
 func (c *Client) CreateLoadBalancerListenersWithContext(ctx context.Context, input *elb.CreateLoadBalancerListenersInput, opts ...request.Option) (*elb.CreateLoadBalancerListenersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "CreateLoadBalancerListenersWithContext",
+		Action:  "CreateLoadBalancerListeners",
 		Input:   input,
 		Output:  (*elb.CreateLoadBalancerListenersOutput)(nil),
 		Error:   nil,
@@ -228,7 +228,7 @@ func (c *Client) CreateLoadBalancerListenersWithContext(ctx context.Context, inp
 func (c *Client) CreateLoadBalancerPolicyWithContext(ctx context.Context, input *elb.CreateLoadBalancerPolicyInput, opts ...request.Option) (*elb.CreateLoadBalancerPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "CreateLoadBalancerPolicyWithContext",
+		Action:  "CreateLoadBalancerPolicy",
 		Input:   input,
 		Output:  (*elb.CreateLoadBalancerPolicyOutput)(nil),
 		Error:   nil,
@@ -249,7 +249,7 @@ func (c *Client) CreateLoadBalancerPolicyWithContext(ctx context.Context, input 
 func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, input *elb.DeleteLoadBalancerInput, opts ...request.Option) (*elb.DeleteLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DeleteLoadBalancerWithContext",
+		Action:  "DeleteLoadBalancer",
 		Input:   input,
 		Output:  (*elb.DeleteLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -270,7 +270,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, input *elb.D
 func (c *Client) DeleteLoadBalancerListenersWithContext(ctx context.Context, input *elb.DeleteLoadBalancerListenersInput, opts ...request.Option) (*elb.DeleteLoadBalancerListenersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DeleteLoadBalancerListenersWithContext",
+		Action:  "DeleteLoadBalancerListeners",
 		Input:   input,
 		Output:  (*elb.DeleteLoadBalancerListenersOutput)(nil),
 		Error:   nil,
@@ -291,7 +291,7 @@ func (c *Client) DeleteLoadBalancerListenersWithContext(ctx context.Context, inp
 func (c *Client) DeleteLoadBalancerPolicyWithContext(ctx context.Context, input *elb.DeleteLoadBalancerPolicyInput, opts ...request.Option) (*elb.DeleteLoadBalancerPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DeleteLoadBalancerPolicyWithContext",
+		Action:  "DeleteLoadBalancerPolicy",
 		Input:   input,
 		Output:  (*elb.DeleteLoadBalancerPolicyOutput)(nil),
 		Error:   nil,
@@ -312,7 +312,7 @@ func (c *Client) DeleteLoadBalancerPolicyWithContext(ctx context.Context, input 
 func (c *Client) DeregisterInstancesFromLoadBalancerWithContext(ctx context.Context, input *elb.DeregisterInstancesFromLoadBalancerInput, opts ...request.Option) (*elb.DeregisterInstancesFromLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DeregisterInstancesFromLoadBalancerWithContext",
+		Action:  "DeregisterInstancesFromLoadBalancer",
 		Input:   input,
 		Output:  (*elb.DeregisterInstancesFromLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -333,7 +333,7 @@ func (c *Client) DeregisterInstancesFromLoadBalancerWithContext(ctx context.Cont
 func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *elb.DescribeAccountLimitsInput, opts ...request.Option) (*elb.DescribeAccountLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeAccountLimitsWithContext",
+		Action:  "DescribeAccountLimits",
 		Input:   input,
 		Output:  (*elb.DescribeAccountLimitsOutput)(nil),
 		Error:   nil,
@@ -354,7 +354,7 @@ func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *el
 func (c *Client) DescribeInstanceHealthWithContext(ctx context.Context, input *elb.DescribeInstanceHealthInput, opts ...request.Option) (*elb.DescribeInstanceHealthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeInstanceHealthWithContext",
+		Action:  "DescribeInstanceHealth",
 		Input:   input,
 		Output:  (*elb.DescribeInstanceHealthOutput)(nil),
 		Error:   nil,
@@ -375,7 +375,7 @@ func (c *Client) DescribeInstanceHealthWithContext(ctx context.Context, input *e
 func (c *Client) DescribeLoadBalancerAttributesWithContext(ctx context.Context, input *elb.DescribeLoadBalancerAttributesInput, opts ...request.Option) (*elb.DescribeLoadBalancerAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeLoadBalancerAttributesWithContext",
+		Action:  "DescribeLoadBalancerAttributes",
 		Input:   input,
 		Output:  (*elb.DescribeLoadBalancerAttributesOutput)(nil),
 		Error:   nil,
@@ -396,7 +396,7 @@ func (c *Client) DescribeLoadBalancerAttributesWithContext(ctx context.Context, 
 func (c *Client) DescribeLoadBalancerPoliciesWithContext(ctx context.Context, input *elb.DescribeLoadBalancerPoliciesInput, opts ...request.Option) (*elb.DescribeLoadBalancerPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeLoadBalancerPoliciesWithContext",
+		Action:  "DescribeLoadBalancerPolicies",
 		Input:   input,
 		Output:  (*elb.DescribeLoadBalancerPoliciesOutput)(nil),
 		Error:   nil,
@@ -417,7 +417,7 @@ func (c *Client) DescribeLoadBalancerPoliciesWithContext(ctx context.Context, in
 func (c *Client) DescribeLoadBalancerPolicyTypesWithContext(ctx context.Context, input *elb.DescribeLoadBalancerPolicyTypesInput, opts ...request.Option) (*elb.DescribeLoadBalancerPolicyTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeLoadBalancerPolicyTypesWithContext",
+		Action:  "DescribeLoadBalancerPolicyTypes",
 		Input:   input,
 		Output:  (*elb.DescribeLoadBalancerPolicyTypesOutput)(nil),
 		Error:   nil,
@@ -438,7 +438,7 @@ func (c *Client) DescribeLoadBalancerPolicyTypesWithContext(ctx context.Context,
 func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *elb.DescribeLoadBalancersInput, opts ...request.Option) (*elb.DescribeLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeLoadBalancersWithContext",
+		Action:  "DescribeLoadBalancers",
 		Input:   input,
 		Output:  (*elb.DescribeLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -459,7 +459,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *el
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *elb.DescribeTagsInput, opts ...request.Option) (*elb.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*elb.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -480,7 +480,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *elb.Describ
 func (c *Client) DetachLoadBalancerFromSubnetsWithContext(ctx context.Context, input *elb.DetachLoadBalancerFromSubnetsInput, opts ...request.Option) (*elb.DetachLoadBalancerFromSubnetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DetachLoadBalancerFromSubnetsWithContext",
+		Action:  "DetachLoadBalancerFromSubnets",
 		Input:   input,
 		Output:  (*elb.DetachLoadBalancerFromSubnetsOutput)(nil),
 		Error:   nil,
@@ -501,7 +501,7 @@ func (c *Client) DetachLoadBalancerFromSubnetsWithContext(ctx context.Context, i
 func (c *Client) DisableAvailabilityZonesForLoadBalancerWithContext(ctx context.Context, input *elb.DisableAvailabilityZonesForLoadBalancerInput, opts ...request.Option) (*elb.DisableAvailabilityZonesForLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "DisableAvailabilityZonesForLoadBalancerWithContext",
+		Action:  "DisableAvailabilityZonesForLoadBalancer",
 		Input:   input,
 		Output:  (*elb.DisableAvailabilityZonesForLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -522,7 +522,7 @@ func (c *Client) DisableAvailabilityZonesForLoadBalancerWithContext(ctx context.
 func (c *Client) EnableAvailabilityZonesForLoadBalancerWithContext(ctx context.Context, input *elb.EnableAvailabilityZonesForLoadBalancerInput, opts ...request.Option) (*elb.EnableAvailabilityZonesForLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "EnableAvailabilityZonesForLoadBalancerWithContext",
+		Action:  "EnableAvailabilityZonesForLoadBalancer",
 		Input:   input,
 		Output:  (*elb.EnableAvailabilityZonesForLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -543,7 +543,7 @@ func (c *Client) EnableAvailabilityZonesForLoadBalancerWithContext(ctx context.C
 func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, input *elb.ModifyLoadBalancerAttributesInput, opts ...request.Option) (*elb.ModifyLoadBalancerAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "ModifyLoadBalancerAttributesWithContext",
+		Action:  "ModifyLoadBalancerAttributes",
 		Input:   input,
 		Output:  (*elb.ModifyLoadBalancerAttributesOutput)(nil),
 		Error:   nil,
@@ -564,7 +564,7 @@ func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, in
 func (c *Client) RegisterInstancesWithLoadBalancerWithContext(ctx context.Context, input *elb.RegisterInstancesWithLoadBalancerInput, opts ...request.Option) (*elb.RegisterInstancesWithLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "RegisterInstancesWithLoadBalancerWithContext",
+		Action:  "RegisterInstancesWithLoadBalancer",
 		Input:   input,
 		Output:  (*elb.RegisterInstancesWithLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -585,7 +585,7 @@ func (c *Client) RegisterInstancesWithLoadBalancerWithContext(ctx context.Contex
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elb.RemoveTagsInput, opts ...request.Option) (*elb.RemoveTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "RemoveTagsWithContext",
+		Action:  "RemoveTags",
 		Input:   input,
 		Output:  (*elb.RemoveTagsOutput)(nil),
 		Error:   nil,
@@ -606,7 +606,7 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elb.RemoveTag
 func (c *Client) SetLoadBalancerListenerSSLCertificateWithContext(ctx context.Context, input *elb.SetLoadBalancerListenerSSLCertificateInput, opts ...request.Option) (*elb.SetLoadBalancerListenerSSLCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "SetLoadBalancerListenerSSLCertificateWithContext",
+		Action:  "SetLoadBalancerListenerSSLCertificate",
 		Input:   input,
 		Output:  (*elb.SetLoadBalancerListenerSSLCertificateOutput)(nil),
 		Error:   nil,
@@ -627,7 +627,7 @@ func (c *Client) SetLoadBalancerListenerSSLCertificateWithContext(ctx context.Co
 func (c *Client) SetLoadBalancerPoliciesForBackendServerWithContext(ctx context.Context, input *elb.SetLoadBalancerPoliciesForBackendServerInput, opts ...request.Option) (*elb.SetLoadBalancerPoliciesForBackendServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "SetLoadBalancerPoliciesForBackendServerWithContext",
+		Action:  "SetLoadBalancerPoliciesForBackendServer",
 		Input:   input,
 		Output:  (*elb.SetLoadBalancerPoliciesForBackendServerOutput)(nil),
 		Error:   nil,
@@ -648,7 +648,7 @@ func (c *Client) SetLoadBalancerPoliciesForBackendServerWithContext(ctx context.
 func (c *Client) SetLoadBalancerPoliciesOfListenerWithContext(ctx context.Context, input *elb.SetLoadBalancerPoliciesOfListenerInput, opts ...request.Option) (*elb.SetLoadBalancerPoliciesOfListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elb",
-		Action:  "SetLoadBalancerPoliciesOfListenerWithContext",
+		Action:  "SetLoadBalancerPoliciesOfListener",
 		Input:   input,
 		Output:  (*elb.SetLoadBalancerPoliciesOfListenerOutput)(nil),
 		Error:   nil,

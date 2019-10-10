@@ -35,7 +35,7 @@ var _ KinesisVideoArchivedMedia = (*Client)(nil)
 func (c *Client) GetDASHStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetDASHStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetDASHStreamingSessionURLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideoarchivedmedia",
-		Action:  "GetDASHStreamingSessionURLWithContext",
+		Action:  "GetDASHStreamingSessionURL",
 		Input:   input,
 		Output:  (*kinesisvideoarchivedmedia.GetDASHStreamingSessionURLOutput)(nil),
 		Error:   nil,
@@ -56,7 +56,7 @@ func (c *Client) GetDASHStreamingSessionURLWithContext(ctx context.Context, inpu
 func (c *Client) GetHLSStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetHLSStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetHLSStreamingSessionURLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideoarchivedmedia",
-		Action:  "GetHLSStreamingSessionURLWithContext",
+		Action:  "GetHLSStreamingSessionURL",
 		Input:   input,
 		Output:  (*kinesisvideoarchivedmedia.GetHLSStreamingSessionURLOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) GetHLSStreamingSessionURLWithContext(ctx context.Context, input
 func (c *Client) GetMediaForFragmentListWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetMediaForFragmentListInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetMediaForFragmentListOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideoarchivedmedia",
-		Action:  "GetMediaForFragmentListWithContext",
+		Action:  "GetMediaForFragmentList",
 		Input:   input,
 		Output:  (*kinesisvideoarchivedmedia.GetMediaForFragmentListOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) GetMediaForFragmentListWithContext(ctx context.Context, input *
 func (c *Client) ListFragmentsWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.ListFragmentsInput, opts ...request.Option) (*kinesisvideoarchivedmedia.ListFragmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideoarchivedmedia",
-		Action:  "ListFragmentsWithContext",
+		Action:  "ListFragments",
 		Input:   input,
 		Output:  (*kinesisvideoarchivedmedia.ListFragmentsOutput)(nil),
 		Error:   nil,

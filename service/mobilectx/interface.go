@@ -40,7 +40,7 @@ var _ Mobile = (*Client)(nil)
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *mobile.CreateProjectInput, opts ...request.Option) (*mobile.CreateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "CreateProjectWithContext",
+		Action:  "CreateProject",
 		Input:   input,
 		Output:  (*mobile.CreateProjectOutput)(nil),
 		Error:   nil,
@@ -61,7 +61,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, input *mobile.Cre
 func (c *Client) DeleteProjectWithContext(ctx context.Context, input *mobile.DeleteProjectInput, opts ...request.Option) (*mobile.DeleteProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "DeleteProjectWithContext",
+		Action:  "DeleteProject",
 		Input:   input,
 		Output:  (*mobile.DeleteProjectOutput)(nil),
 		Error:   nil,
@@ -82,7 +82,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, input *mobile.Del
 func (c *Client) DescribeBundleWithContext(ctx context.Context, input *mobile.DescribeBundleInput, opts ...request.Option) (*mobile.DescribeBundleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "DescribeBundleWithContext",
+		Action:  "DescribeBundle",
 		Input:   input,
 		Output:  (*mobile.DescribeBundleOutput)(nil),
 		Error:   nil,
@@ -103,7 +103,7 @@ func (c *Client) DescribeBundleWithContext(ctx context.Context, input *mobile.De
 func (c *Client) DescribeProjectWithContext(ctx context.Context, input *mobile.DescribeProjectInput, opts ...request.Option) (*mobile.DescribeProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "DescribeProjectWithContext",
+		Action:  "DescribeProject",
 		Input:   input,
 		Output:  (*mobile.DescribeProjectOutput)(nil),
 		Error:   nil,
@@ -124,7 +124,7 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, input *mobile.D
 func (c *Client) ExportBundleWithContext(ctx context.Context, input *mobile.ExportBundleInput, opts ...request.Option) (*mobile.ExportBundleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "ExportBundleWithContext",
+		Action:  "ExportBundle",
 		Input:   input,
 		Output:  (*mobile.ExportBundleOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) ExportBundleWithContext(ctx context.Context, input *mobile.Expo
 func (c *Client) ExportProjectWithContext(ctx context.Context, input *mobile.ExportProjectInput, opts ...request.Option) (*mobile.ExportProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "ExportProjectWithContext",
+		Action:  "ExportProject",
 		Input:   input,
 		Output:  (*mobile.ExportProjectOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) ExportProjectWithContext(ctx context.Context, input *mobile.Exp
 func (c *Client) ListBundlesWithContext(ctx context.Context, input *mobile.ListBundlesInput, opts ...request.Option) (*mobile.ListBundlesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "ListBundlesWithContext",
+		Action:  "ListBundles",
 		Input:   input,
 		Output:  (*mobile.ListBundlesOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) ListBundlesWithContext(ctx context.Context, input *mobile.ListB
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *mobile.ListProjectsInput, opts ...request.Option) (*mobile.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "ListProjectsWithContext",
+		Action:  "ListProjects",
 		Input:   input,
 		Output:  (*mobile.ListProjectsOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *mobile.List
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *mobile.UpdateProjectInput, opts ...request.Option) (*mobile.UpdateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
-		Action:  "UpdateProjectWithContext",
+		Action:  "UpdateProject",
 		Input:   input,
 		Output:  (*mobile.UpdateProjectOutput)(nil),
 		Error:   nil,

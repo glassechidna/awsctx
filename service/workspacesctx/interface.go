@@ -28,6 +28,7 @@ type WorkSpaces interface {
 	DescribeWorkspaceBundlesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceBundlesOutput, error)
 	DescribeWorkspaceDirectoriesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceDirectoriesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceDirectoriesOutput, error)
 	DescribeWorkspaceImagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceImagesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceImagesOutput, error)
+	DescribeWorkspaceSnapshotsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceSnapshotsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceSnapshotsOutput, error)
 	DescribeWorkspacesWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesInput, opts ...request.Option) (*workspaces.DescribeWorkspacesOutput, error)
 	DescribeWorkspacesConnectionStatusWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesConnectionStatusInput, opts ...request.Option) (*workspaces.DescribeWorkspacesConnectionStatusOutput, error)
 	DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error)
@@ -39,6 +40,7 @@ type WorkSpaces interface {
 	ModifyWorkspaceStateWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceStateInput, opts ...request.Option) (*workspaces.ModifyWorkspaceStateOutput, error)
 	RebootWorkspacesWithContext(ctx context.Context, input *workspaces.RebootWorkspacesInput, opts ...request.Option) (*workspaces.RebootWorkspacesOutput, error)
 	RebuildWorkspacesWithContext(ctx context.Context, input *workspaces.RebuildWorkspacesInput, opts ...request.Option) (*workspaces.RebuildWorkspacesOutput, error)
+	RestoreWorkspaceWithContext(ctx context.Context, input *workspaces.RestoreWorkspaceInput, opts ...request.Option) (*workspaces.RestoreWorkspaceOutput, error)
 	RevokeIpRulesWithContext(ctx context.Context, input *workspaces.RevokeIpRulesInput, opts ...request.Option) (*workspaces.RevokeIpRulesOutput, error)
 	StartWorkspacesWithContext(ctx context.Context, input *workspaces.StartWorkspacesInput, opts ...request.Option) (*workspaces.StartWorkspacesOutput, error)
 	StopWorkspacesWithContext(ctx context.Context, input *workspaces.StopWorkspacesInput, opts ...request.Option) (*workspaces.StopWorkspacesOutput, error)
@@ -64,7 +66,7 @@ var _ WorkSpaces = (*Client)(nil)
 func (c *Client) AssociateIpGroupsWithContext(ctx context.Context, input *workspaces.AssociateIpGroupsInput, opts ...request.Option) (*workspaces.AssociateIpGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "AssociateIpGroupsWithContext",
+		Action:  "AssociateIpGroups",
 		Input:   input,
 		Output:  (*workspaces.AssociateIpGroupsOutput)(nil),
 		Error:   nil,
@@ -85,7 +87,7 @@ func (c *Client) AssociateIpGroupsWithContext(ctx context.Context, input *worksp
 func (c *Client) AuthorizeIpRulesWithContext(ctx context.Context, input *workspaces.AuthorizeIpRulesInput, opts ...request.Option) (*workspaces.AuthorizeIpRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "AuthorizeIpRulesWithContext",
+		Action:  "AuthorizeIpRules",
 		Input:   input,
 		Output:  (*workspaces.AuthorizeIpRulesOutput)(nil),
 		Error:   nil,
@@ -106,7 +108,7 @@ func (c *Client) AuthorizeIpRulesWithContext(ctx context.Context, input *workspa
 func (c *Client) CopyWorkspaceImageWithContext(ctx context.Context, input *workspaces.CopyWorkspaceImageInput, opts ...request.Option) (*workspaces.CopyWorkspaceImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "CopyWorkspaceImageWithContext",
+		Action:  "CopyWorkspaceImage",
 		Input:   input,
 		Output:  (*workspaces.CopyWorkspaceImageOutput)(nil),
 		Error:   nil,
@@ -127,7 +129,7 @@ func (c *Client) CopyWorkspaceImageWithContext(ctx context.Context, input *works
 func (c *Client) CreateIpGroupWithContext(ctx context.Context, input *workspaces.CreateIpGroupInput, opts ...request.Option) (*workspaces.CreateIpGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "CreateIpGroupWithContext",
+		Action:  "CreateIpGroup",
 		Input:   input,
 		Output:  (*workspaces.CreateIpGroupOutput)(nil),
 		Error:   nil,
@@ -148,7 +150,7 @@ func (c *Client) CreateIpGroupWithContext(ctx context.Context, input *workspaces
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *workspaces.CreateTagsInput, opts ...request.Option) (*workspaces.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*workspaces.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -169,7 +171,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *workspaces.Cr
 func (c *Client) CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "CreateWorkspacesWithContext",
+		Action:  "CreateWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.CreateWorkspacesOutput)(nil),
 		Error:   nil,
@@ -190,7 +192,7 @@ func (c *Client) CreateWorkspacesWithContext(ctx context.Context, input *workspa
 func (c *Client) DeleteIpGroupWithContext(ctx context.Context, input *workspaces.DeleteIpGroupInput, opts ...request.Option) (*workspaces.DeleteIpGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DeleteIpGroupWithContext",
+		Action:  "DeleteIpGroup",
 		Input:   input,
 		Output:  (*workspaces.DeleteIpGroupOutput)(nil),
 		Error:   nil,
@@ -211,7 +213,7 @@ func (c *Client) DeleteIpGroupWithContext(ctx context.Context, input *workspaces
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *workspaces.DeleteTagsInput, opts ...request.Option) (*workspaces.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*workspaces.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -232,7 +234,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *workspaces.De
 func (c *Client) DeleteWorkspaceImageWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceImageInput, opts ...request.Option) (*workspaces.DeleteWorkspaceImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DeleteWorkspaceImageWithContext",
+		Action:  "DeleteWorkspaceImage",
 		Input:   input,
 		Output:  (*workspaces.DeleteWorkspaceImageOutput)(nil),
 		Error:   nil,
@@ -253,7 +255,7 @@ func (c *Client) DeleteWorkspaceImageWithContext(ctx context.Context, input *wor
 func (c *Client) DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeAccountWithContext",
+		Action:  "DescribeAccount",
 		Input:   input,
 		Output:  (*workspaces.DescribeAccountOutput)(nil),
 		Error:   nil,
@@ -274,7 +276,7 @@ func (c *Client) DescribeAccountWithContext(ctx context.Context, input *workspac
 func (c *Client) DescribeAccountModificationsWithContext(ctx context.Context, input *workspaces.DescribeAccountModificationsInput, opts ...request.Option) (*workspaces.DescribeAccountModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeAccountModificationsWithContext",
+		Action:  "DescribeAccountModifications",
 		Input:   input,
 		Output:  (*workspaces.DescribeAccountModificationsOutput)(nil),
 		Error:   nil,
@@ -295,7 +297,7 @@ func (c *Client) DescribeAccountModificationsWithContext(ctx context.Context, in
 func (c *Client) DescribeClientPropertiesWithContext(ctx context.Context, input *workspaces.DescribeClientPropertiesInput, opts ...request.Option) (*workspaces.DescribeClientPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeClientPropertiesWithContext",
+		Action:  "DescribeClientProperties",
 		Input:   input,
 		Output:  (*workspaces.DescribeClientPropertiesOutput)(nil),
 		Error:   nil,
@@ -316,7 +318,7 @@ func (c *Client) DescribeClientPropertiesWithContext(ctx context.Context, input 
 func (c *Client) DescribeIpGroupsWithContext(ctx context.Context, input *workspaces.DescribeIpGroupsInput, opts ...request.Option) (*workspaces.DescribeIpGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeIpGroupsWithContext",
+		Action:  "DescribeIpGroups",
 		Input:   input,
 		Output:  (*workspaces.DescribeIpGroupsOutput)(nil),
 		Error:   nil,
@@ -337,7 +339,7 @@ func (c *Client) DescribeIpGroupsWithContext(ctx context.Context, input *workspa
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *workspaces.DescribeTagsInput, opts ...request.Option) (*workspaces.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*workspaces.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -358,7 +360,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *workspaces.
 func (c *Client) DescribeWorkspaceBundlesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceBundlesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeWorkspaceBundlesWithContext",
+		Action:  "DescribeWorkspaceBundles",
 		Input:   input,
 		Output:  (*workspaces.DescribeWorkspaceBundlesOutput)(nil),
 		Error:   nil,
@@ -379,7 +381,7 @@ func (c *Client) DescribeWorkspaceBundlesWithContext(ctx context.Context, input 
 func (c *Client) DescribeWorkspaceDirectoriesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceDirectoriesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeWorkspaceDirectoriesWithContext",
+		Action:  "DescribeWorkspaceDirectories",
 		Input:   input,
 		Output:  (*workspaces.DescribeWorkspaceDirectoriesOutput)(nil),
 		Error:   nil,
@@ -400,7 +402,7 @@ func (c *Client) DescribeWorkspaceDirectoriesWithContext(ctx context.Context, in
 func (c *Client) DescribeWorkspaceImagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceImagesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeWorkspaceImagesWithContext",
+		Action:  "DescribeWorkspaceImages",
 		Input:   input,
 		Output:  (*workspaces.DescribeWorkspaceImagesOutput)(nil),
 		Error:   nil,
@@ -418,10 +420,31 @@ func (c *Client) DescribeWorkspaceImagesWithContext(ctx context.Context, input *
 	return req.Output.(*workspaces.DescribeWorkspaceImagesOutput), req.Error
 }
 
+func (c *Client) DescribeWorkspaceSnapshotsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceSnapshotsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceSnapshotsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeWorkspaceSnapshots",
+		Input:   input,
+		Output:  (*workspaces.DescribeWorkspaceSnapshotsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeWorkspaceSnapshotsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeWorkspaceSnapshotsOutput), req.Error
+}
+
 func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesInput, opts ...request.Option) (*workspaces.DescribeWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeWorkspacesWithContext",
+		Action:  "DescribeWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.DescribeWorkspacesOutput)(nil),
 		Error:   nil,
@@ -442,7 +465,7 @@ func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, input *works
 func (c *Client) DescribeWorkspacesConnectionStatusWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesConnectionStatusInput, opts ...request.Option) (*workspaces.DescribeWorkspacesConnectionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DescribeWorkspacesConnectionStatusWithContext",
+		Action:  "DescribeWorkspacesConnectionStatus",
 		Input:   input,
 		Output:  (*workspaces.DescribeWorkspacesConnectionStatusOutput)(nil),
 		Error:   nil,
@@ -463,7 +486,7 @@ func (c *Client) DescribeWorkspacesConnectionStatusWithContext(ctx context.Conte
 func (c *Client) DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "DisassociateIpGroupsWithContext",
+		Action:  "DisassociateIpGroups",
 		Input:   input,
 		Output:  (*workspaces.DisassociateIpGroupsOutput)(nil),
 		Error:   nil,
@@ -484,7 +507,7 @@ func (c *Client) DisassociateIpGroupsWithContext(ctx context.Context, input *wor
 func (c *Client) ImportWorkspaceImageWithContext(ctx context.Context, input *workspaces.ImportWorkspaceImageInput, opts ...request.Option) (*workspaces.ImportWorkspaceImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "ImportWorkspaceImageWithContext",
+		Action:  "ImportWorkspaceImage",
 		Input:   input,
 		Output:  (*workspaces.ImportWorkspaceImageOutput)(nil),
 		Error:   nil,
@@ -505,7 +528,7 @@ func (c *Client) ImportWorkspaceImageWithContext(ctx context.Context, input *wor
 func (c *Client) ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "ListAvailableManagementCidrRangesWithContext",
+		Action:  "ListAvailableManagementCidrRanges",
 		Input:   input,
 		Output:  (*workspaces.ListAvailableManagementCidrRangesOutput)(nil),
 		Error:   nil,
@@ -526,7 +549,7 @@ func (c *Client) ListAvailableManagementCidrRangesWithContext(ctx context.Contex
 func (c *Client) ModifyAccountWithContext(ctx context.Context, input *workspaces.ModifyAccountInput, opts ...request.Option) (*workspaces.ModifyAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "ModifyAccountWithContext",
+		Action:  "ModifyAccount",
 		Input:   input,
 		Output:  (*workspaces.ModifyAccountOutput)(nil),
 		Error:   nil,
@@ -547,7 +570,7 @@ func (c *Client) ModifyAccountWithContext(ctx context.Context, input *workspaces
 func (c *Client) ModifyClientPropertiesWithContext(ctx context.Context, input *workspaces.ModifyClientPropertiesInput, opts ...request.Option) (*workspaces.ModifyClientPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "ModifyClientPropertiesWithContext",
+		Action:  "ModifyClientProperties",
 		Input:   input,
 		Output:  (*workspaces.ModifyClientPropertiesOutput)(nil),
 		Error:   nil,
@@ -568,7 +591,7 @@ func (c *Client) ModifyClientPropertiesWithContext(ctx context.Context, input *w
 func (c *Client) ModifyWorkspacePropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspacePropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspacePropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "ModifyWorkspacePropertiesWithContext",
+		Action:  "ModifyWorkspaceProperties",
 		Input:   input,
 		Output:  (*workspaces.ModifyWorkspacePropertiesOutput)(nil),
 		Error:   nil,
@@ -589,7 +612,7 @@ func (c *Client) ModifyWorkspacePropertiesWithContext(ctx context.Context, input
 func (c *Client) ModifyWorkspaceStateWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceStateInput, opts ...request.Option) (*workspaces.ModifyWorkspaceStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "ModifyWorkspaceStateWithContext",
+		Action:  "ModifyWorkspaceState",
 		Input:   input,
 		Output:  (*workspaces.ModifyWorkspaceStateOutput)(nil),
 		Error:   nil,
@@ -610,7 +633,7 @@ func (c *Client) ModifyWorkspaceStateWithContext(ctx context.Context, input *wor
 func (c *Client) RebootWorkspacesWithContext(ctx context.Context, input *workspaces.RebootWorkspacesInput, opts ...request.Option) (*workspaces.RebootWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "RebootWorkspacesWithContext",
+		Action:  "RebootWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.RebootWorkspacesOutput)(nil),
 		Error:   nil,
@@ -631,7 +654,7 @@ func (c *Client) RebootWorkspacesWithContext(ctx context.Context, input *workspa
 func (c *Client) RebuildWorkspacesWithContext(ctx context.Context, input *workspaces.RebuildWorkspacesInput, opts ...request.Option) (*workspaces.RebuildWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "RebuildWorkspacesWithContext",
+		Action:  "RebuildWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.RebuildWorkspacesOutput)(nil),
 		Error:   nil,
@@ -649,10 +672,31 @@ func (c *Client) RebuildWorkspacesWithContext(ctx context.Context, input *worksp
 	return req.Output.(*workspaces.RebuildWorkspacesOutput), req.Error
 }
 
+func (c *Client) RestoreWorkspaceWithContext(ctx context.Context, input *workspaces.RestoreWorkspaceInput, opts ...request.Option) (*workspaces.RestoreWorkspaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "RestoreWorkspace",
+		Input:   input,
+		Output:  (*workspaces.RestoreWorkspaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.RestoreWorkspaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.RestoreWorkspaceOutput), req.Error
+}
+
 func (c *Client) RevokeIpRulesWithContext(ctx context.Context, input *workspaces.RevokeIpRulesInput, opts ...request.Option) (*workspaces.RevokeIpRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "RevokeIpRulesWithContext",
+		Action:  "RevokeIpRules",
 		Input:   input,
 		Output:  (*workspaces.RevokeIpRulesOutput)(nil),
 		Error:   nil,
@@ -673,7 +717,7 @@ func (c *Client) RevokeIpRulesWithContext(ctx context.Context, input *workspaces
 func (c *Client) StartWorkspacesWithContext(ctx context.Context, input *workspaces.StartWorkspacesInput, opts ...request.Option) (*workspaces.StartWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "StartWorkspacesWithContext",
+		Action:  "StartWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.StartWorkspacesOutput)(nil),
 		Error:   nil,
@@ -694,7 +738,7 @@ func (c *Client) StartWorkspacesWithContext(ctx context.Context, input *workspac
 func (c *Client) StopWorkspacesWithContext(ctx context.Context, input *workspaces.StopWorkspacesInput, opts ...request.Option) (*workspaces.StopWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "StopWorkspacesWithContext",
+		Action:  "StopWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.StopWorkspacesOutput)(nil),
 		Error:   nil,
@@ -715,7 +759,7 @@ func (c *Client) StopWorkspacesWithContext(ctx context.Context, input *workspace
 func (c *Client) TerminateWorkspacesWithContext(ctx context.Context, input *workspaces.TerminateWorkspacesInput, opts ...request.Option) (*workspaces.TerminateWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "TerminateWorkspacesWithContext",
+		Action:  "TerminateWorkspaces",
 		Input:   input,
 		Output:  (*workspaces.TerminateWorkspacesOutput)(nil),
 		Error:   nil,
@@ -736,7 +780,7 @@ func (c *Client) TerminateWorkspacesWithContext(ctx context.Context, input *work
 func (c *Client) UpdateRulesOfIpGroupWithContext(ctx context.Context, input *workspaces.UpdateRulesOfIpGroupInput, opts ...request.Option) (*workspaces.UpdateRulesOfIpGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
-		Action:  "UpdateRulesOfIpGroupWithContext",
+		Action:  "UpdateRulesOfIpGroup",
 		Input:   input,
 		Output:  (*workspaces.UpdateRulesOfIpGroupOutput)(nil),
 		Error:   nil,

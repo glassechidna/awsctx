@@ -44,7 +44,7 @@ var _ CloudHSMV2 = (*Client)(nil)
 func (c *Client) CopyBackupToRegionWithContext(ctx context.Context, input *cloudhsmv2.CopyBackupToRegionInput, opts ...request.Option) (*cloudhsmv2.CopyBackupToRegionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "CopyBackupToRegionWithContext",
+		Action:  "CopyBackupToRegion",
 		Input:   input,
 		Output:  (*cloudhsmv2.CopyBackupToRegionOutput)(nil),
 		Error:   nil,
@@ -65,7 +65,7 @@ func (c *Client) CopyBackupToRegionWithContext(ctx context.Context, input *cloud
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *cloudhsmv2.CreateClusterInput, opts ...request.Option) (*cloudhsmv2.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*cloudhsmv2.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *cloudhsmv2
 func (c *Client) CreateHsmWithContext(ctx context.Context, input *cloudhsmv2.CreateHsmInput, opts ...request.Option) (*cloudhsmv2.CreateHsmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "CreateHsmWithContext",
+		Action:  "CreateHsm",
 		Input:   input,
 		Output:  (*cloudhsmv2.CreateHsmOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) CreateHsmWithContext(ctx context.Context, input *cloudhsmv2.Cre
 func (c *Client) DeleteBackupWithContext(ctx context.Context, input *cloudhsmv2.DeleteBackupInput, opts ...request.Option) (*cloudhsmv2.DeleteBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "DeleteBackupWithContext",
+		Action:  "DeleteBackup",
 		Input:   input,
 		Output:  (*cloudhsmv2.DeleteBackupOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, input *cloudhsmv2.
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *cloudhsmv2.DeleteClusterInput, opts ...request.Option) (*cloudhsmv2.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "DeleteClusterWithContext",
+		Action:  "DeleteCluster",
 		Input:   input,
 		Output:  (*cloudhsmv2.DeleteClusterOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *cloudhsmv2
 func (c *Client) DeleteHsmWithContext(ctx context.Context, input *cloudhsmv2.DeleteHsmInput, opts ...request.Option) (*cloudhsmv2.DeleteHsmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "DeleteHsmWithContext",
+		Action:  "DeleteHsm",
 		Input:   input,
 		Output:  (*cloudhsmv2.DeleteHsmOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) DeleteHsmWithContext(ctx context.Context, input *cloudhsmv2.Del
 func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *cloudhsmv2.DescribeBackupsInput, opts ...request.Option) (*cloudhsmv2.DescribeBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "DescribeBackupsWithContext",
+		Action:  "DescribeBackups",
 		Input:   input,
 		Output:  (*cloudhsmv2.DescribeBackupsOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *cloudhsm
 func (c *Client) DescribeClustersWithContext(ctx context.Context, input *cloudhsmv2.DescribeClustersInput, opts ...request.Option) (*cloudhsmv2.DescribeClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "DescribeClustersWithContext",
+		Action:  "DescribeClusters",
 		Input:   input,
 		Output:  (*cloudhsmv2.DescribeClustersOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, input *cloudhs
 func (c *Client) InitializeClusterWithContext(ctx context.Context, input *cloudhsmv2.InitializeClusterInput, opts ...request.Option) (*cloudhsmv2.InitializeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "InitializeClusterWithContext",
+		Action:  "InitializeCluster",
 		Input:   input,
 		Output:  (*cloudhsmv2.InitializeClusterOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) InitializeClusterWithContext(ctx context.Context, input *cloudh
 func (c *Client) ListTagsWithContext(ctx context.Context, input *cloudhsmv2.ListTagsInput, opts ...request.Option) (*cloudhsmv2.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*cloudhsmv2.ListTagsOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *cloudhsmv2.List
 func (c *Client) RestoreBackupWithContext(ctx context.Context, input *cloudhsmv2.RestoreBackupInput, opts ...request.Option) (*cloudhsmv2.RestoreBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "RestoreBackupWithContext",
+		Action:  "RestoreBackup",
 		Input:   input,
 		Output:  (*cloudhsmv2.RestoreBackupOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) RestoreBackupWithContext(ctx context.Context, input *cloudhsmv2
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudhsmv2.TagResourceInput, opts ...request.Option) (*cloudhsmv2.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*cloudhsmv2.TagResourceOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudhsmv2.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudhsmv2.UntagResourceInput, opts ...request.Option) (*cloudhsmv2.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsmv2",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*cloudhsmv2.UntagResourceOutput)(nil),
 		Error:   nil,

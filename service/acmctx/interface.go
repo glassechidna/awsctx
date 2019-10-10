@@ -44,7 +44,7 @@ var _ ACM = (*Client)(nil)
 func (c *Client) AddTagsToCertificateWithContext(ctx context.Context, input *acm.AddTagsToCertificateInput, opts ...request.Option) (*acm.AddTagsToCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "AddTagsToCertificateWithContext",
+		Action:  "AddTagsToCertificate",
 		Input:   input,
 		Output:  (*acm.AddTagsToCertificateOutput)(nil),
 		Error:   nil,
@@ -65,7 +65,7 @@ func (c *Client) AddTagsToCertificateWithContext(ctx context.Context, input *acm
 func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *acm.DeleteCertificateInput, opts ...request.Option) (*acm.DeleteCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "DeleteCertificateWithContext",
+		Action:  "DeleteCertificate",
 		Input:   input,
 		Output:  (*acm.DeleteCertificateOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *acm.De
 func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *acm.DescribeCertificateInput, opts ...request.Option) (*acm.DescribeCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "DescribeCertificateWithContext",
+		Action:  "DescribeCertificate",
 		Input:   input,
 		Output:  (*acm.DescribeCertificateOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *acm.
 func (c *Client) ExportCertificateWithContext(ctx context.Context, input *acm.ExportCertificateInput, opts ...request.Option) (*acm.ExportCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "ExportCertificateWithContext",
+		Action:  "ExportCertificate",
 		Input:   input,
 		Output:  (*acm.ExportCertificateOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) ExportCertificateWithContext(ctx context.Context, input *acm.Ex
 func (c *Client) GetCertificateWithContext(ctx context.Context, input *acm.GetCertificateInput, opts ...request.Option) (*acm.GetCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "GetCertificateWithContext",
+		Action:  "GetCertificate",
 		Input:   input,
 		Output:  (*acm.GetCertificateOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) GetCertificateWithContext(ctx context.Context, input *acm.GetCe
 func (c *Client) ImportCertificateWithContext(ctx context.Context, input *acm.ImportCertificateInput, opts ...request.Option) (*acm.ImportCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "ImportCertificateWithContext",
+		Action:  "ImportCertificate",
 		Input:   input,
 		Output:  (*acm.ImportCertificateOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) ImportCertificateWithContext(ctx context.Context, input *acm.Im
 func (c *Client) ListCertificatesWithContext(ctx context.Context, input *acm.ListCertificatesInput, opts ...request.Option) (*acm.ListCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "ListCertificatesWithContext",
+		Action:  "ListCertificates",
 		Input:   input,
 		Output:  (*acm.ListCertificatesOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, input *acm.Lis
 func (c *Client) ListTagsForCertificateWithContext(ctx context.Context, input *acm.ListTagsForCertificateInput, opts ...request.Option) (*acm.ListTagsForCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "ListTagsForCertificateWithContext",
+		Action:  "ListTagsForCertificate",
 		Input:   input,
 		Output:  (*acm.ListTagsForCertificateOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) ListTagsForCertificateWithContext(ctx context.Context, input *a
 func (c *Client) RemoveTagsFromCertificateWithContext(ctx context.Context, input *acm.RemoveTagsFromCertificateInput, opts ...request.Option) (*acm.RemoveTagsFromCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "RemoveTagsFromCertificateWithContext",
+		Action:  "RemoveTagsFromCertificate",
 		Input:   input,
 		Output:  (*acm.RemoveTagsFromCertificateOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) RemoveTagsFromCertificateWithContext(ctx context.Context, input
 func (c *Client) RenewCertificateWithContext(ctx context.Context, input *acm.RenewCertificateInput, opts ...request.Option) (*acm.RenewCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "RenewCertificateWithContext",
+		Action:  "RenewCertificate",
 		Input:   input,
 		Output:  (*acm.RenewCertificateOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) RenewCertificateWithContext(ctx context.Context, input *acm.Ren
 func (c *Client) RequestCertificateWithContext(ctx context.Context, input *acm.RequestCertificateInput, opts ...request.Option) (*acm.RequestCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "RequestCertificateWithContext",
+		Action:  "RequestCertificate",
 		Input:   input,
 		Output:  (*acm.RequestCertificateOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) RequestCertificateWithContext(ctx context.Context, input *acm.R
 func (c *Client) ResendValidationEmailWithContext(ctx context.Context, input *acm.ResendValidationEmailInput, opts ...request.Option) (*acm.ResendValidationEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "ResendValidationEmailWithContext",
+		Action:  "ResendValidationEmail",
 		Input:   input,
 		Output:  (*acm.ResendValidationEmailOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) ResendValidationEmailWithContext(ctx context.Context, input *ac
 func (c *Client) UpdateCertificateOptionsWithContext(ctx context.Context, input *acm.UpdateCertificateOptionsInput, opts ...request.Option) (*acm.UpdateCertificateOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
-		Action:  "UpdateCertificateOptionsWithContext",
+		Action:  "UpdateCertificateOptions",
 		Input:   input,
 		Output:  (*acm.UpdateCertificateOptionsOutput)(nil),
 		Error:   nil,

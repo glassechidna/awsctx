@@ -32,7 +32,7 @@ var _ MarketplaceEntitlementService = (*Client)(nil)
 func (c *Client) GetEntitlementsWithContext(ctx context.Context, input *marketplaceentitlementservice.GetEntitlementsInput, opts ...request.Option) (*marketplaceentitlementservice.GetEntitlementsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "marketplaceentitlementservice",
-		Action:  "GetEntitlementsWithContext",
+		Action:  "GetEntitlements",
 		Input:   input,
 		Output:  (*marketplaceentitlementservice.GetEntitlementsOutput)(nil),
 		Error:   nil,

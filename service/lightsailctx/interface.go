@@ -33,6 +33,7 @@ type Lightsail interface {
 	CreateRelationalDatabaseWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseOutput, error)
 	CreateRelationalDatabaseFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseFromSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseFromSnapshotOutput, error)
 	CreateRelationalDatabaseSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseSnapshotOutput, error)
+	DeleteAutoSnapshotWithContext(ctx context.Context, input *lightsail.DeleteAutoSnapshotInput, opts ...request.Option) (*lightsail.DeleteAutoSnapshotOutput, error)
 	DeleteDiskWithContext(ctx context.Context, input *lightsail.DeleteDiskInput, opts ...request.Option) (*lightsail.DeleteDiskOutput, error)
 	DeleteDiskSnapshotWithContext(ctx context.Context, input *lightsail.DeleteDiskSnapshotInput, opts ...request.Option) (*lightsail.DeleteDiskSnapshotOutput, error)
 	DeleteDomainWithContext(ctx context.Context, input *lightsail.DeleteDomainInput, opts ...request.Option) (*lightsail.DeleteDomainOutput, error)
@@ -48,9 +49,12 @@ type Lightsail interface {
 	DetachDiskWithContext(ctx context.Context, input *lightsail.DetachDiskInput, opts ...request.Option) (*lightsail.DetachDiskOutput, error)
 	DetachInstancesFromLoadBalancerWithContext(ctx context.Context, input *lightsail.DetachInstancesFromLoadBalancerInput, opts ...request.Option) (*lightsail.DetachInstancesFromLoadBalancerOutput, error)
 	DetachStaticIpWithContext(ctx context.Context, input *lightsail.DetachStaticIpInput, opts ...request.Option) (*lightsail.DetachStaticIpOutput, error)
+	DisableAddOnWithContext(ctx context.Context, input *lightsail.DisableAddOnInput, opts ...request.Option) (*lightsail.DisableAddOnOutput, error)
 	DownloadDefaultKeyPairWithContext(ctx context.Context, input *lightsail.DownloadDefaultKeyPairInput, opts ...request.Option) (*lightsail.DownloadDefaultKeyPairOutput, error)
+	EnableAddOnWithContext(ctx context.Context, input *lightsail.EnableAddOnInput, opts ...request.Option) (*lightsail.EnableAddOnOutput, error)
 	ExportSnapshotWithContext(ctx context.Context, input *lightsail.ExportSnapshotInput, opts ...request.Option) (*lightsail.ExportSnapshotOutput, error)
 	GetActiveNamesWithContext(ctx context.Context, input *lightsail.GetActiveNamesInput, opts ...request.Option) (*lightsail.GetActiveNamesOutput, error)
+	GetAutoSnapshotsWithContext(ctx context.Context, input *lightsail.GetAutoSnapshotsInput, opts ...request.Option) (*lightsail.GetAutoSnapshotsOutput, error)
 	GetBlueprintsWithContext(ctx context.Context, input *lightsail.GetBlueprintsInput, opts ...request.Option) (*lightsail.GetBlueprintsOutput, error)
 	GetBundlesWithContext(ctx context.Context, input *lightsail.GetBundlesInput, opts ...request.Option) (*lightsail.GetBundlesOutput, error)
 	GetCloudFormationStackRecordsWithContext(ctx context.Context, input *lightsail.GetCloudFormationStackRecordsInput, opts ...request.Option) (*lightsail.GetCloudFormationStackRecordsOutput, error)
@@ -132,7 +136,7 @@ var _ Lightsail = (*Client)(nil)
 func (c *Client) AllocateStaticIpWithContext(ctx context.Context, input *lightsail.AllocateStaticIpInput, opts ...request.Option) (*lightsail.AllocateStaticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "AllocateStaticIpWithContext",
+		Action:  "AllocateStaticIp",
 		Input:   input,
 		Output:  (*lightsail.AllocateStaticIpOutput)(nil),
 		Error:   nil,
@@ -153,7 +157,7 @@ func (c *Client) AllocateStaticIpWithContext(ctx context.Context, input *lightsa
 func (c *Client) AttachDiskWithContext(ctx context.Context, input *lightsail.AttachDiskInput, opts ...request.Option) (*lightsail.AttachDiskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "AttachDiskWithContext",
+		Action:  "AttachDisk",
 		Input:   input,
 		Output:  (*lightsail.AttachDiskOutput)(nil),
 		Error:   nil,
@@ -174,7 +178,7 @@ func (c *Client) AttachDiskWithContext(ctx context.Context, input *lightsail.Att
 func (c *Client) AttachInstancesToLoadBalancerWithContext(ctx context.Context, input *lightsail.AttachInstancesToLoadBalancerInput, opts ...request.Option) (*lightsail.AttachInstancesToLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "AttachInstancesToLoadBalancerWithContext",
+		Action:  "AttachInstancesToLoadBalancer",
 		Input:   input,
 		Output:  (*lightsail.AttachInstancesToLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -195,7 +199,7 @@ func (c *Client) AttachInstancesToLoadBalancerWithContext(ctx context.Context, i
 func (c *Client) AttachLoadBalancerTlsCertificateWithContext(ctx context.Context, input *lightsail.AttachLoadBalancerTlsCertificateInput, opts ...request.Option) (*lightsail.AttachLoadBalancerTlsCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "AttachLoadBalancerTlsCertificateWithContext",
+		Action:  "AttachLoadBalancerTlsCertificate",
 		Input:   input,
 		Output:  (*lightsail.AttachLoadBalancerTlsCertificateOutput)(nil),
 		Error:   nil,
@@ -216,7 +220,7 @@ func (c *Client) AttachLoadBalancerTlsCertificateWithContext(ctx context.Context
 func (c *Client) AttachStaticIpWithContext(ctx context.Context, input *lightsail.AttachStaticIpInput, opts ...request.Option) (*lightsail.AttachStaticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "AttachStaticIpWithContext",
+		Action:  "AttachStaticIp",
 		Input:   input,
 		Output:  (*lightsail.AttachStaticIpOutput)(nil),
 		Error:   nil,
@@ -237,7 +241,7 @@ func (c *Client) AttachStaticIpWithContext(ctx context.Context, input *lightsail
 func (c *Client) CloseInstancePublicPortsWithContext(ctx context.Context, input *lightsail.CloseInstancePublicPortsInput, opts ...request.Option) (*lightsail.CloseInstancePublicPortsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CloseInstancePublicPortsWithContext",
+		Action:  "CloseInstancePublicPorts",
 		Input:   input,
 		Output:  (*lightsail.CloseInstancePublicPortsOutput)(nil),
 		Error:   nil,
@@ -258,7 +262,7 @@ func (c *Client) CloseInstancePublicPortsWithContext(ctx context.Context, input 
 func (c *Client) CopySnapshotWithContext(ctx context.Context, input *lightsail.CopySnapshotInput, opts ...request.Option) (*lightsail.CopySnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CopySnapshotWithContext",
+		Action:  "CopySnapshot",
 		Input:   input,
 		Output:  (*lightsail.CopySnapshotOutput)(nil),
 		Error:   nil,
@@ -279,7 +283,7 @@ func (c *Client) CopySnapshotWithContext(ctx context.Context, input *lightsail.C
 func (c *Client) CreateCloudFormationStackWithContext(ctx context.Context, input *lightsail.CreateCloudFormationStackInput, opts ...request.Option) (*lightsail.CreateCloudFormationStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateCloudFormationStackWithContext",
+		Action:  "CreateCloudFormationStack",
 		Input:   input,
 		Output:  (*lightsail.CreateCloudFormationStackOutput)(nil),
 		Error:   nil,
@@ -300,7 +304,7 @@ func (c *Client) CreateCloudFormationStackWithContext(ctx context.Context, input
 func (c *Client) CreateDiskWithContext(ctx context.Context, input *lightsail.CreateDiskInput, opts ...request.Option) (*lightsail.CreateDiskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateDiskWithContext",
+		Action:  "CreateDisk",
 		Input:   input,
 		Output:  (*lightsail.CreateDiskOutput)(nil),
 		Error:   nil,
@@ -321,7 +325,7 @@ func (c *Client) CreateDiskWithContext(ctx context.Context, input *lightsail.Cre
 func (c *Client) CreateDiskFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateDiskFromSnapshotInput, opts ...request.Option) (*lightsail.CreateDiskFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateDiskFromSnapshotWithContext",
+		Action:  "CreateDiskFromSnapshot",
 		Input:   input,
 		Output:  (*lightsail.CreateDiskFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -342,7 +346,7 @@ func (c *Client) CreateDiskFromSnapshotWithContext(ctx context.Context, input *l
 func (c *Client) CreateDiskSnapshotWithContext(ctx context.Context, input *lightsail.CreateDiskSnapshotInput, opts ...request.Option) (*lightsail.CreateDiskSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateDiskSnapshotWithContext",
+		Action:  "CreateDiskSnapshot",
 		Input:   input,
 		Output:  (*lightsail.CreateDiskSnapshotOutput)(nil),
 		Error:   nil,
@@ -363,7 +367,7 @@ func (c *Client) CreateDiskSnapshotWithContext(ctx context.Context, input *light
 func (c *Client) CreateDomainWithContext(ctx context.Context, input *lightsail.CreateDomainInput, opts ...request.Option) (*lightsail.CreateDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateDomainWithContext",
+		Action:  "CreateDomain",
 		Input:   input,
 		Output:  (*lightsail.CreateDomainOutput)(nil),
 		Error:   nil,
@@ -384,7 +388,7 @@ func (c *Client) CreateDomainWithContext(ctx context.Context, input *lightsail.C
 func (c *Client) CreateDomainEntryWithContext(ctx context.Context, input *lightsail.CreateDomainEntryInput, opts ...request.Option) (*lightsail.CreateDomainEntryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateDomainEntryWithContext",
+		Action:  "CreateDomainEntry",
 		Input:   input,
 		Output:  (*lightsail.CreateDomainEntryOutput)(nil),
 		Error:   nil,
@@ -405,7 +409,7 @@ func (c *Client) CreateDomainEntryWithContext(ctx context.Context, input *lights
 func (c *Client) CreateInstanceSnapshotWithContext(ctx context.Context, input *lightsail.CreateInstanceSnapshotInput, opts ...request.Option) (*lightsail.CreateInstanceSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateInstanceSnapshotWithContext",
+		Action:  "CreateInstanceSnapshot",
 		Input:   input,
 		Output:  (*lightsail.CreateInstanceSnapshotOutput)(nil),
 		Error:   nil,
@@ -426,7 +430,7 @@ func (c *Client) CreateInstanceSnapshotWithContext(ctx context.Context, input *l
 func (c *Client) CreateInstancesWithContext(ctx context.Context, input *lightsail.CreateInstancesInput, opts ...request.Option) (*lightsail.CreateInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateInstancesWithContext",
+		Action:  "CreateInstances",
 		Input:   input,
 		Output:  (*lightsail.CreateInstancesOutput)(nil),
 		Error:   nil,
@@ -447,7 +451,7 @@ func (c *Client) CreateInstancesWithContext(ctx context.Context, input *lightsai
 func (c *Client) CreateInstancesFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateInstancesFromSnapshotInput, opts ...request.Option) (*lightsail.CreateInstancesFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateInstancesFromSnapshotWithContext",
+		Action:  "CreateInstancesFromSnapshot",
 		Input:   input,
 		Output:  (*lightsail.CreateInstancesFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -468,7 +472,7 @@ func (c *Client) CreateInstancesFromSnapshotWithContext(ctx context.Context, inp
 func (c *Client) CreateKeyPairWithContext(ctx context.Context, input *lightsail.CreateKeyPairInput, opts ...request.Option) (*lightsail.CreateKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateKeyPairWithContext",
+		Action:  "CreateKeyPair",
 		Input:   input,
 		Output:  (*lightsail.CreateKeyPairOutput)(nil),
 		Error:   nil,
@@ -489,7 +493,7 @@ func (c *Client) CreateKeyPairWithContext(ctx context.Context, input *lightsail.
 func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, input *lightsail.CreateLoadBalancerInput, opts ...request.Option) (*lightsail.CreateLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateLoadBalancerWithContext",
+		Action:  "CreateLoadBalancer",
 		Input:   input,
 		Output:  (*lightsail.CreateLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -510,7 +514,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, input *light
 func (c *Client) CreateLoadBalancerTlsCertificateWithContext(ctx context.Context, input *lightsail.CreateLoadBalancerTlsCertificateInput, opts ...request.Option) (*lightsail.CreateLoadBalancerTlsCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateLoadBalancerTlsCertificateWithContext",
+		Action:  "CreateLoadBalancerTlsCertificate",
 		Input:   input,
 		Output:  (*lightsail.CreateLoadBalancerTlsCertificateOutput)(nil),
 		Error:   nil,
@@ -531,7 +535,7 @@ func (c *Client) CreateLoadBalancerTlsCertificateWithContext(ctx context.Context
 func (c *Client) CreateRelationalDatabaseWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateRelationalDatabaseWithContext",
+		Action:  "CreateRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.CreateRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -552,7 +556,7 @@ func (c *Client) CreateRelationalDatabaseWithContext(ctx context.Context, input 
 func (c *Client) CreateRelationalDatabaseFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseFromSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateRelationalDatabaseFromSnapshotWithContext",
+		Action:  "CreateRelationalDatabaseFromSnapshot",
 		Input:   input,
 		Output:  (*lightsail.CreateRelationalDatabaseFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -573,7 +577,7 @@ func (c *Client) CreateRelationalDatabaseFromSnapshotWithContext(ctx context.Con
 func (c *Client) CreateRelationalDatabaseSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "CreateRelationalDatabaseSnapshotWithContext",
+		Action:  "CreateRelationalDatabaseSnapshot",
 		Input:   input,
 		Output:  (*lightsail.CreateRelationalDatabaseSnapshotOutput)(nil),
 		Error:   nil,
@@ -591,10 +595,31 @@ func (c *Client) CreateRelationalDatabaseSnapshotWithContext(ctx context.Context
 	return req.Output.(*lightsail.CreateRelationalDatabaseSnapshotOutput), req.Error
 }
 
+func (c *Client) DeleteAutoSnapshotWithContext(ctx context.Context, input *lightsail.DeleteAutoSnapshotInput, opts ...request.Option) (*lightsail.DeleteAutoSnapshotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DeleteAutoSnapshot",
+		Input:   input,
+		Output:  (*lightsail.DeleteAutoSnapshotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DeleteAutoSnapshotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DeleteAutoSnapshotOutput), req.Error
+}
+
 func (c *Client) DeleteDiskWithContext(ctx context.Context, input *lightsail.DeleteDiskInput, opts ...request.Option) (*lightsail.DeleteDiskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteDiskWithContext",
+		Action:  "DeleteDisk",
 		Input:   input,
 		Output:  (*lightsail.DeleteDiskOutput)(nil),
 		Error:   nil,
@@ -615,7 +640,7 @@ func (c *Client) DeleteDiskWithContext(ctx context.Context, input *lightsail.Del
 func (c *Client) DeleteDiskSnapshotWithContext(ctx context.Context, input *lightsail.DeleteDiskSnapshotInput, opts ...request.Option) (*lightsail.DeleteDiskSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteDiskSnapshotWithContext",
+		Action:  "DeleteDiskSnapshot",
 		Input:   input,
 		Output:  (*lightsail.DeleteDiskSnapshotOutput)(nil),
 		Error:   nil,
@@ -636,7 +661,7 @@ func (c *Client) DeleteDiskSnapshotWithContext(ctx context.Context, input *light
 func (c *Client) DeleteDomainWithContext(ctx context.Context, input *lightsail.DeleteDomainInput, opts ...request.Option) (*lightsail.DeleteDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteDomainWithContext",
+		Action:  "DeleteDomain",
 		Input:   input,
 		Output:  (*lightsail.DeleteDomainOutput)(nil),
 		Error:   nil,
@@ -657,7 +682,7 @@ func (c *Client) DeleteDomainWithContext(ctx context.Context, input *lightsail.D
 func (c *Client) DeleteDomainEntryWithContext(ctx context.Context, input *lightsail.DeleteDomainEntryInput, opts ...request.Option) (*lightsail.DeleteDomainEntryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteDomainEntryWithContext",
+		Action:  "DeleteDomainEntry",
 		Input:   input,
 		Output:  (*lightsail.DeleteDomainEntryOutput)(nil),
 		Error:   nil,
@@ -678,7 +703,7 @@ func (c *Client) DeleteDomainEntryWithContext(ctx context.Context, input *lights
 func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *lightsail.DeleteInstanceInput, opts ...request.Option) (*lightsail.DeleteInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteInstanceWithContext",
+		Action:  "DeleteInstance",
 		Input:   input,
 		Output:  (*lightsail.DeleteInstanceOutput)(nil),
 		Error:   nil,
@@ -699,7 +724,7 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *lightsail
 func (c *Client) DeleteInstanceSnapshotWithContext(ctx context.Context, input *lightsail.DeleteInstanceSnapshotInput, opts ...request.Option) (*lightsail.DeleteInstanceSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteInstanceSnapshotWithContext",
+		Action:  "DeleteInstanceSnapshot",
 		Input:   input,
 		Output:  (*lightsail.DeleteInstanceSnapshotOutput)(nil),
 		Error:   nil,
@@ -720,7 +745,7 @@ func (c *Client) DeleteInstanceSnapshotWithContext(ctx context.Context, input *l
 func (c *Client) DeleteKeyPairWithContext(ctx context.Context, input *lightsail.DeleteKeyPairInput, opts ...request.Option) (*lightsail.DeleteKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteKeyPairWithContext",
+		Action:  "DeleteKeyPair",
 		Input:   input,
 		Output:  (*lightsail.DeleteKeyPairOutput)(nil),
 		Error:   nil,
@@ -741,7 +766,7 @@ func (c *Client) DeleteKeyPairWithContext(ctx context.Context, input *lightsail.
 func (c *Client) DeleteKnownHostKeysWithContext(ctx context.Context, input *lightsail.DeleteKnownHostKeysInput, opts ...request.Option) (*lightsail.DeleteKnownHostKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteKnownHostKeysWithContext",
+		Action:  "DeleteKnownHostKeys",
 		Input:   input,
 		Output:  (*lightsail.DeleteKnownHostKeysOutput)(nil),
 		Error:   nil,
@@ -762,7 +787,7 @@ func (c *Client) DeleteKnownHostKeysWithContext(ctx context.Context, input *ligh
 func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, input *lightsail.DeleteLoadBalancerInput, opts ...request.Option) (*lightsail.DeleteLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteLoadBalancerWithContext",
+		Action:  "DeleteLoadBalancer",
 		Input:   input,
 		Output:  (*lightsail.DeleteLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -783,7 +808,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, input *light
 func (c *Client) DeleteLoadBalancerTlsCertificateWithContext(ctx context.Context, input *lightsail.DeleteLoadBalancerTlsCertificateInput, opts ...request.Option) (*lightsail.DeleteLoadBalancerTlsCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteLoadBalancerTlsCertificateWithContext",
+		Action:  "DeleteLoadBalancerTlsCertificate",
 		Input:   input,
 		Output:  (*lightsail.DeleteLoadBalancerTlsCertificateOutput)(nil),
 		Error:   nil,
@@ -804,7 +829,7 @@ func (c *Client) DeleteLoadBalancerTlsCertificateWithContext(ctx context.Context
 func (c *Client) DeleteRelationalDatabaseWithContext(ctx context.Context, input *lightsail.DeleteRelationalDatabaseInput, opts ...request.Option) (*lightsail.DeleteRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteRelationalDatabaseWithContext",
+		Action:  "DeleteRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.DeleteRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -825,7 +850,7 @@ func (c *Client) DeleteRelationalDatabaseWithContext(ctx context.Context, input 
 func (c *Client) DeleteRelationalDatabaseSnapshotWithContext(ctx context.Context, input *lightsail.DeleteRelationalDatabaseSnapshotInput, opts ...request.Option) (*lightsail.DeleteRelationalDatabaseSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DeleteRelationalDatabaseSnapshotWithContext",
+		Action:  "DeleteRelationalDatabaseSnapshot",
 		Input:   input,
 		Output:  (*lightsail.DeleteRelationalDatabaseSnapshotOutput)(nil),
 		Error:   nil,
@@ -846,7 +871,7 @@ func (c *Client) DeleteRelationalDatabaseSnapshotWithContext(ctx context.Context
 func (c *Client) DetachDiskWithContext(ctx context.Context, input *lightsail.DetachDiskInput, opts ...request.Option) (*lightsail.DetachDiskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DetachDiskWithContext",
+		Action:  "DetachDisk",
 		Input:   input,
 		Output:  (*lightsail.DetachDiskOutput)(nil),
 		Error:   nil,
@@ -867,7 +892,7 @@ func (c *Client) DetachDiskWithContext(ctx context.Context, input *lightsail.Det
 func (c *Client) DetachInstancesFromLoadBalancerWithContext(ctx context.Context, input *lightsail.DetachInstancesFromLoadBalancerInput, opts ...request.Option) (*lightsail.DetachInstancesFromLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DetachInstancesFromLoadBalancerWithContext",
+		Action:  "DetachInstancesFromLoadBalancer",
 		Input:   input,
 		Output:  (*lightsail.DetachInstancesFromLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -888,7 +913,7 @@ func (c *Client) DetachInstancesFromLoadBalancerWithContext(ctx context.Context,
 func (c *Client) DetachStaticIpWithContext(ctx context.Context, input *lightsail.DetachStaticIpInput, opts ...request.Option) (*lightsail.DetachStaticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DetachStaticIpWithContext",
+		Action:  "DetachStaticIp",
 		Input:   input,
 		Output:  (*lightsail.DetachStaticIpOutput)(nil),
 		Error:   nil,
@@ -906,10 +931,31 @@ func (c *Client) DetachStaticIpWithContext(ctx context.Context, input *lightsail
 	return req.Output.(*lightsail.DetachStaticIpOutput), req.Error
 }
 
+func (c *Client) DisableAddOnWithContext(ctx context.Context, input *lightsail.DisableAddOnInput, opts ...request.Option) (*lightsail.DisableAddOnOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DisableAddOn",
+		Input:   input,
+		Output:  (*lightsail.DisableAddOnOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DisableAddOnWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DisableAddOnOutput), req.Error
+}
+
 func (c *Client) DownloadDefaultKeyPairWithContext(ctx context.Context, input *lightsail.DownloadDefaultKeyPairInput, opts ...request.Option) (*lightsail.DownloadDefaultKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "DownloadDefaultKeyPairWithContext",
+		Action:  "DownloadDefaultKeyPair",
 		Input:   input,
 		Output:  (*lightsail.DownloadDefaultKeyPairOutput)(nil),
 		Error:   nil,
@@ -927,10 +973,31 @@ func (c *Client) DownloadDefaultKeyPairWithContext(ctx context.Context, input *l
 	return req.Output.(*lightsail.DownloadDefaultKeyPairOutput), req.Error
 }
 
+func (c *Client) EnableAddOnWithContext(ctx context.Context, input *lightsail.EnableAddOnInput, opts ...request.Option) (*lightsail.EnableAddOnOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "EnableAddOn",
+		Input:   input,
+		Output:  (*lightsail.EnableAddOnOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.EnableAddOnWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.EnableAddOnOutput), req.Error
+}
+
 func (c *Client) ExportSnapshotWithContext(ctx context.Context, input *lightsail.ExportSnapshotInput, opts ...request.Option) (*lightsail.ExportSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "ExportSnapshotWithContext",
+		Action:  "ExportSnapshot",
 		Input:   input,
 		Output:  (*lightsail.ExportSnapshotOutput)(nil),
 		Error:   nil,
@@ -951,7 +1018,7 @@ func (c *Client) ExportSnapshotWithContext(ctx context.Context, input *lightsail
 func (c *Client) GetActiveNamesWithContext(ctx context.Context, input *lightsail.GetActiveNamesInput, opts ...request.Option) (*lightsail.GetActiveNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetActiveNamesWithContext",
+		Action:  "GetActiveNames",
 		Input:   input,
 		Output:  (*lightsail.GetActiveNamesOutput)(nil),
 		Error:   nil,
@@ -969,10 +1036,31 @@ func (c *Client) GetActiveNamesWithContext(ctx context.Context, input *lightsail
 	return req.Output.(*lightsail.GetActiveNamesOutput), req.Error
 }
 
+func (c *Client) GetAutoSnapshotsWithContext(ctx context.Context, input *lightsail.GetAutoSnapshotsInput, opts ...request.Option) (*lightsail.GetAutoSnapshotsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetAutoSnapshots",
+		Input:   input,
+		Output:  (*lightsail.GetAutoSnapshotsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetAutoSnapshotsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetAutoSnapshotsOutput), req.Error
+}
+
 func (c *Client) GetBlueprintsWithContext(ctx context.Context, input *lightsail.GetBlueprintsInput, opts ...request.Option) (*lightsail.GetBlueprintsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetBlueprintsWithContext",
+		Action:  "GetBlueprints",
 		Input:   input,
 		Output:  (*lightsail.GetBlueprintsOutput)(nil),
 		Error:   nil,
@@ -993,7 +1081,7 @@ func (c *Client) GetBlueprintsWithContext(ctx context.Context, input *lightsail.
 func (c *Client) GetBundlesWithContext(ctx context.Context, input *lightsail.GetBundlesInput, opts ...request.Option) (*lightsail.GetBundlesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetBundlesWithContext",
+		Action:  "GetBundles",
 		Input:   input,
 		Output:  (*lightsail.GetBundlesOutput)(nil),
 		Error:   nil,
@@ -1014,7 +1102,7 @@ func (c *Client) GetBundlesWithContext(ctx context.Context, input *lightsail.Get
 func (c *Client) GetCloudFormationStackRecordsWithContext(ctx context.Context, input *lightsail.GetCloudFormationStackRecordsInput, opts ...request.Option) (*lightsail.GetCloudFormationStackRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetCloudFormationStackRecordsWithContext",
+		Action:  "GetCloudFormationStackRecords",
 		Input:   input,
 		Output:  (*lightsail.GetCloudFormationStackRecordsOutput)(nil),
 		Error:   nil,
@@ -1035,7 +1123,7 @@ func (c *Client) GetCloudFormationStackRecordsWithContext(ctx context.Context, i
 func (c *Client) GetDiskWithContext(ctx context.Context, input *lightsail.GetDiskInput, opts ...request.Option) (*lightsail.GetDiskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetDiskWithContext",
+		Action:  "GetDisk",
 		Input:   input,
 		Output:  (*lightsail.GetDiskOutput)(nil),
 		Error:   nil,
@@ -1056,7 +1144,7 @@ func (c *Client) GetDiskWithContext(ctx context.Context, input *lightsail.GetDis
 func (c *Client) GetDiskSnapshotWithContext(ctx context.Context, input *lightsail.GetDiskSnapshotInput, opts ...request.Option) (*lightsail.GetDiskSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetDiskSnapshotWithContext",
+		Action:  "GetDiskSnapshot",
 		Input:   input,
 		Output:  (*lightsail.GetDiskSnapshotOutput)(nil),
 		Error:   nil,
@@ -1077,7 +1165,7 @@ func (c *Client) GetDiskSnapshotWithContext(ctx context.Context, input *lightsai
 func (c *Client) GetDiskSnapshotsWithContext(ctx context.Context, input *lightsail.GetDiskSnapshotsInput, opts ...request.Option) (*lightsail.GetDiskSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetDiskSnapshotsWithContext",
+		Action:  "GetDiskSnapshots",
 		Input:   input,
 		Output:  (*lightsail.GetDiskSnapshotsOutput)(nil),
 		Error:   nil,
@@ -1098,7 +1186,7 @@ func (c *Client) GetDiskSnapshotsWithContext(ctx context.Context, input *lightsa
 func (c *Client) GetDisksWithContext(ctx context.Context, input *lightsail.GetDisksInput, opts ...request.Option) (*lightsail.GetDisksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetDisksWithContext",
+		Action:  "GetDisks",
 		Input:   input,
 		Output:  (*lightsail.GetDisksOutput)(nil),
 		Error:   nil,
@@ -1119,7 +1207,7 @@ func (c *Client) GetDisksWithContext(ctx context.Context, input *lightsail.GetDi
 func (c *Client) GetDomainWithContext(ctx context.Context, input *lightsail.GetDomainInput, opts ...request.Option) (*lightsail.GetDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetDomainWithContext",
+		Action:  "GetDomain",
 		Input:   input,
 		Output:  (*lightsail.GetDomainOutput)(nil),
 		Error:   nil,
@@ -1140,7 +1228,7 @@ func (c *Client) GetDomainWithContext(ctx context.Context, input *lightsail.GetD
 func (c *Client) GetDomainsWithContext(ctx context.Context, input *lightsail.GetDomainsInput, opts ...request.Option) (*lightsail.GetDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetDomainsWithContext",
+		Action:  "GetDomains",
 		Input:   input,
 		Output:  (*lightsail.GetDomainsOutput)(nil),
 		Error:   nil,
@@ -1161,7 +1249,7 @@ func (c *Client) GetDomainsWithContext(ctx context.Context, input *lightsail.Get
 func (c *Client) GetExportSnapshotRecordsWithContext(ctx context.Context, input *lightsail.GetExportSnapshotRecordsInput, opts ...request.Option) (*lightsail.GetExportSnapshotRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetExportSnapshotRecordsWithContext",
+		Action:  "GetExportSnapshotRecords",
 		Input:   input,
 		Output:  (*lightsail.GetExportSnapshotRecordsOutput)(nil),
 		Error:   nil,
@@ -1182,7 +1270,7 @@ func (c *Client) GetExportSnapshotRecordsWithContext(ctx context.Context, input 
 func (c *Client) GetInstanceWithContext(ctx context.Context, input *lightsail.GetInstanceInput, opts ...request.Option) (*lightsail.GetInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstanceWithContext",
+		Action:  "GetInstance",
 		Input:   input,
 		Output:  (*lightsail.GetInstanceOutput)(nil),
 		Error:   nil,
@@ -1203,7 +1291,7 @@ func (c *Client) GetInstanceWithContext(ctx context.Context, input *lightsail.Ge
 func (c *Client) GetInstanceAccessDetailsWithContext(ctx context.Context, input *lightsail.GetInstanceAccessDetailsInput, opts ...request.Option) (*lightsail.GetInstanceAccessDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstanceAccessDetailsWithContext",
+		Action:  "GetInstanceAccessDetails",
 		Input:   input,
 		Output:  (*lightsail.GetInstanceAccessDetailsOutput)(nil),
 		Error:   nil,
@@ -1224,7 +1312,7 @@ func (c *Client) GetInstanceAccessDetailsWithContext(ctx context.Context, input 
 func (c *Client) GetInstanceMetricDataWithContext(ctx context.Context, input *lightsail.GetInstanceMetricDataInput, opts ...request.Option) (*lightsail.GetInstanceMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstanceMetricDataWithContext",
+		Action:  "GetInstanceMetricData",
 		Input:   input,
 		Output:  (*lightsail.GetInstanceMetricDataOutput)(nil),
 		Error:   nil,
@@ -1245,7 +1333,7 @@ func (c *Client) GetInstanceMetricDataWithContext(ctx context.Context, input *li
 func (c *Client) GetInstancePortStatesWithContext(ctx context.Context, input *lightsail.GetInstancePortStatesInput, opts ...request.Option) (*lightsail.GetInstancePortStatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstancePortStatesWithContext",
+		Action:  "GetInstancePortStates",
 		Input:   input,
 		Output:  (*lightsail.GetInstancePortStatesOutput)(nil),
 		Error:   nil,
@@ -1266,7 +1354,7 @@ func (c *Client) GetInstancePortStatesWithContext(ctx context.Context, input *li
 func (c *Client) GetInstanceSnapshotWithContext(ctx context.Context, input *lightsail.GetInstanceSnapshotInput, opts ...request.Option) (*lightsail.GetInstanceSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstanceSnapshotWithContext",
+		Action:  "GetInstanceSnapshot",
 		Input:   input,
 		Output:  (*lightsail.GetInstanceSnapshotOutput)(nil),
 		Error:   nil,
@@ -1287,7 +1375,7 @@ func (c *Client) GetInstanceSnapshotWithContext(ctx context.Context, input *ligh
 func (c *Client) GetInstanceSnapshotsWithContext(ctx context.Context, input *lightsail.GetInstanceSnapshotsInput, opts ...request.Option) (*lightsail.GetInstanceSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstanceSnapshotsWithContext",
+		Action:  "GetInstanceSnapshots",
 		Input:   input,
 		Output:  (*lightsail.GetInstanceSnapshotsOutput)(nil),
 		Error:   nil,
@@ -1308,7 +1396,7 @@ func (c *Client) GetInstanceSnapshotsWithContext(ctx context.Context, input *lig
 func (c *Client) GetInstanceStateWithContext(ctx context.Context, input *lightsail.GetInstanceStateInput, opts ...request.Option) (*lightsail.GetInstanceStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstanceStateWithContext",
+		Action:  "GetInstanceState",
 		Input:   input,
 		Output:  (*lightsail.GetInstanceStateOutput)(nil),
 		Error:   nil,
@@ -1329,7 +1417,7 @@ func (c *Client) GetInstanceStateWithContext(ctx context.Context, input *lightsa
 func (c *Client) GetInstancesWithContext(ctx context.Context, input *lightsail.GetInstancesInput, opts ...request.Option) (*lightsail.GetInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetInstancesWithContext",
+		Action:  "GetInstances",
 		Input:   input,
 		Output:  (*lightsail.GetInstancesOutput)(nil),
 		Error:   nil,
@@ -1350,7 +1438,7 @@ func (c *Client) GetInstancesWithContext(ctx context.Context, input *lightsail.G
 func (c *Client) GetKeyPairWithContext(ctx context.Context, input *lightsail.GetKeyPairInput, opts ...request.Option) (*lightsail.GetKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetKeyPairWithContext",
+		Action:  "GetKeyPair",
 		Input:   input,
 		Output:  (*lightsail.GetKeyPairOutput)(nil),
 		Error:   nil,
@@ -1371,7 +1459,7 @@ func (c *Client) GetKeyPairWithContext(ctx context.Context, input *lightsail.Get
 func (c *Client) GetKeyPairsWithContext(ctx context.Context, input *lightsail.GetKeyPairsInput, opts ...request.Option) (*lightsail.GetKeyPairsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetKeyPairsWithContext",
+		Action:  "GetKeyPairs",
 		Input:   input,
 		Output:  (*lightsail.GetKeyPairsOutput)(nil),
 		Error:   nil,
@@ -1392,7 +1480,7 @@ func (c *Client) GetKeyPairsWithContext(ctx context.Context, input *lightsail.Ge
 func (c *Client) GetLoadBalancerWithContext(ctx context.Context, input *lightsail.GetLoadBalancerInput, opts ...request.Option) (*lightsail.GetLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetLoadBalancerWithContext",
+		Action:  "GetLoadBalancer",
 		Input:   input,
 		Output:  (*lightsail.GetLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -1413,7 +1501,7 @@ func (c *Client) GetLoadBalancerWithContext(ctx context.Context, input *lightsai
 func (c *Client) GetLoadBalancerMetricDataWithContext(ctx context.Context, input *lightsail.GetLoadBalancerMetricDataInput, opts ...request.Option) (*lightsail.GetLoadBalancerMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetLoadBalancerMetricDataWithContext",
+		Action:  "GetLoadBalancerMetricData",
 		Input:   input,
 		Output:  (*lightsail.GetLoadBalancerMetricDataOutput)(nil),
 		Error:   nil,
@@ -1434,7 +1522,7 @@ func (c *Client) GetLoadBalancerMetricDataWithContext(ctx context.Context, input
 func (c *Client) GetLoadBalancerTlsCertificatesWithContext(ctx context.Context, input *lightsail.GetLoadBalancerTlsCertificatesInput, opts ...request.Option) (*lightsail.GetLoadBalancerTlsCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetLoadBalancerTlsCertificatesWithContext",
+		Action:  "GetLoadBalancerTlsCertificates",
 		Input:   input,
 		Output:  (*lightsail.GetLoadBalancerTlsCertificatesOutput)(nil),
 		Error:   nil,
@@ -1455,7 +1543,7 @@ func (c *Client) GetLoadBalancerTlsCertificatesWithContext(ctx context.Context, 
 func (c *Client) GetLoadBalancersWithContext(ctx context.Context, input *lightsail.GetLoadBalancersInput, opts ...request.Option) (*lightsail.GetLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetLoadBalancersWithContext",
+		Action:  "GetLoadBalancers",
 		Input:   input,
 		Output:  (*lightsail.GetLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -1476,7 +1564,7 @@ func (c *Client) GetLoadBalancersWithContext(ctx context.Context, input *lightsa
 func (c *Client) GetOperationWithContext(ctx context.Context, input *lightsail.GetOperationInput, opts ...request.Option) (*lightsail.GetOperationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetOperationWithContext",
+		Action:  "GetOperation",
 		Input:   input,
 		Output:  (*lightsail.GetOperationOutput)(nil),
 		Error:   nil,
@@ -1497,7 +1585,7 @@ func (c *Client) GetOperationWithContext(ctx context.Context, input *lightsail.G
 func (c *Client) GetOperationsWithContext(ctx context.Context, input *lightsail.GetOperationsInput, opts ...request.Option) (*lightsail.GetOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetOperationsWithContext",
+		Action:  "GetOperations",
 		Input:   input,
 		Output:  (*lightsail.GetOperationsOutput)(nil),
 		Error:   nil,
@@ -1518,7 +1606,7 @@ func (c *Client) GetOperationsWithContext(ctx context.Context, input *lightsail.
 func (c *Client) GetOperationsForResourceWithContext(ctx context.Context, input *lightsail.GetOperationsForResourceInput, opts ...request.Option) (*lightsail.GetOperationsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetOperationsForResourceWithContext",
+		Action:  "GetOperationsForResource",
 		Input:   input,
 		Output:  (*lightsail.GetOperationsForResourceOutput)(nil),
 		Error:   nil,
@@ -1539,7 +1627,7 @@ func (c *Client) GetOperationsForResourceWithContext(ctx context.Context, input 
 func (c *Client) GetRegionsWithContext(ctx context.Context, input *lightsail.GetRegionsInput, opts ...request.Option) (*lightsail.GetRegionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRegionsWithContext",
+		Action:  "GetRegions",
 		Input:   input,
 		Output:  (*lightsail.GetRegionsOutput)(nil),
 		Error:   nil,
@@ -1560,7 +1648,7 @@ func (c *Client) GetRegionsWithContext(ctx context.Context, input *lightsail.Get
 func (c *Client) GetRelationalDatabaseWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseWithContext",
+		Action:  "GetRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -1581,7 +1669,7 @@ func (c *Client) GetRelationalDatabaseWithContext(ctx context.Context, input *li
 func (c *Client) GetRelationalDatabaseBlueprintsWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseBlueprintsInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseBlueprintsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseBlueprintsWithContext",
+		Action:  "GetRelationalDatabaseBlueprints",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseBlueprintsOutput)(nil),
 		Error:   nil,
@@ -1602,7 +1690,7 @@ func (c *Client) GetRelationalDatabaseBlueprintsWithContext(ctx context.Context,
 func (c *Client) GetRelationalDatabaseBundlesWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseBundlesInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseBundlesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseBundlesWithContext",
+		Action:  "GetRelationalDatabaseBundles",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseBundlesOutput)(nil),
 		Error:   nil,
@@ -1623,7 +1711,7 @@ func (c *Client) GetRelationalDatabaseBundlesWithContext(ctx context.Context, in
 func (c *Client) GetRelationalDatabaseEventsWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseEventsInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseEventsWithContext",
+		Action:  "GetRelationalDatabaseEvents",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseEventsOutput)(nil),
 		Error:   nil,
@@ -1644,7 +1732,7 @@ func (c *Client) GetRelationalDatabaseEventsWithContext(ctx context.Context, inp
 func (c *Client) GetRelationalDatabaseLogEventsWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseLogEventsInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseLogEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseLogEventsWithContext",
+		Action:  "GetRelationalDatabaseLogEvents",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseLogEventsOutput)(nil),
 		Error:   nil,
@@ -1665,7 +1753,7 @@ func (c *Client) GetRelationalDatabaseLogEventsWithContext(ctx context.Context, 
 func (c *Client) GetRelationalDatabaseLogStreamsWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseLogStreamsInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseLogStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseLogStreamsWithContext",
+		Action:  "GetRelationalDatabaseLogStreams",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseLogStreamsOutput)(nil),
 		Error:   nil,
@@ -1686,7 +1774,7 @@ func (c *Client) GetRelationalDatabaseLogStreamsWithContext(ctx context.Context,
 func (c *Client) GetRelationalDatabaseMasterUserPasswordWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseMasterUserPasswordInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseMasterUserPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseMasterUserPasswordWithContext",
+		Action:  "GetRelationalDatabaseMasterUserPassword",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseMasterUserPasswordOutput)(nil),
 		Error:   nil,
@@ -1707,7 +1795,7 @@ func (c *Client) GetRelationalDatabaseMasterUserPasswordWithContext(ctx context.
 func (c *Client) GetRelationalDatabaseMetricDataWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseMetricDataInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseMetricDataWithContext",
+		Action:  "GetRelationalDatabaseMetricData",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseMetricDataOutput)(nil),
 		Error:   nil,
@@ -1728,7 +1816,7 @@ func (c *Client) GetRelationalDatabaseMetricDataWithContext(ctx context.Context,
 func (c *Client) GetRelationalDatabaseParametersWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseParametersInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseParametersWithContext",
+		Action:  "GetRelationalDatabaseParameters",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseParametersOutput)(nil),
 		Error:   nil,
@@ -1749,7 +1837,7 @@ func (c *Client) GetRelationalDatabaseParametersWithContext(ctx context.Context,
 func (c *Client) GetRelationalDatabaseSnapshotWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseSnapshotInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseSnapshotWithContext",
+		Action:  "GetRelationalDatabaseSnapshot",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseSnapshotOutput)(nil),
 		Error:   nil,
@@ -1770,7 +1858,7 @@ func (c *Client) GetRelationalDatabaseSnapshotWithContext(ctx context.Context, i
 func (c *Client) GetRelationalDatabaseSnapshotsWithContext(ctx context.Context, input *lightsail.GetRelationalDatabaseSnapshotsInput, opts ...request.Option) (*lightsail.GetRelationalDatabaseSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabaseSnapshotsWithContext",
+		Action:  "GetRelationalDatabaseSnapshots",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabaseSnapshotsOutput)(nil),
 		Error:   nil,
@@ -1791,7 +1879,7 @@ func (c *Client) GetRelationalDatabaseSnapshotsWithContext(ctx context.Context, 
 func (c *Client) GetRelationalDatabasesWithContext(ctx context.Context, input *lightsail.GetRelationalDatabasesInput, opts ...request.Option) (*lightsail.GetRelationalDatabasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetRelationalDatabasesWithContext",
+		Action:  "GetRelationalDatabases",
 		Input:   input,
 		Output:  (*lightsail.GetRelationalDatabasesOutput)(nil),
 		Error:   nil,
@@ -1812,7 +1900,7 @@ func (c *Client) GetRelationalDatabasesWithContext(ctx context.Context, input *l
 func (c *Client) GetStaticIpWithContext(ctx context.Context, input *lightsail.GetStaticIpInput, opts ...request.Option) (*lightsail.GetStaticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetStaticIpWithContext",
+		Action:  "GetStaticIp",
 		Input:   input,
 		Output:  (*lightsail.GetStaticIpOutput)(nil),
 		Error:   nil,
@@ -1833,7 +1921,7 @@ func (c *Client) GetStaticIpWithContext(ctx context.Context, input *lightsail.Ge
 func (c *Client) GetStaticIpsWithContext(ctx context.Context, input *lightsail.GetStaticIpsInput, opts ...request.Option) (*lightsail.GetStaticIpsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "GetStaticIpsWithContext",
+		Action:  "GetStaticIps",
 		Input:   input,
 		Output:  (*lightsail.GetStaticIpsOutput)(nil),
 		Error:   nil,
@@ -1854,7 +1942,7 @@ func (c *Client) GetStaticIpsWithContext(ctx context.Context, input *lightsail.G
 func (c *Client) ImportKeyPairWithContext(ctx context.Context, input *lightsail.ImportKeyPairInput, opts ...request.Option) (*lightsail.ImportKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "ImportKeyPairWithContext",
+		Action:  "ImportKeyPair",
 		Input:   input,
 		Output:  (*lightsail.ImportKeyPairOutput)(nil),
 		Error:   nil,
@@ -1875,7 +1963,7 @@ func (c *Client) ImportKeyPairWithContext(ctx context.Context, input *lightsail.
 func (c *Client) IsVpcPeeredWithContext(ctx context.Context, input *lightsail.IsVpcPeeredInput, opts ...request.Option) (*lightsail.IsVpcPeeredOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "IsVpcPeeredWithContext",
+		Action:  "IsVpcPeered",
 		Input:   input,
 		Output:  (*lightsail.IsVpcPeeredOutput)(nil),
 		Error:   nil,
@@ -1896,7 +1984,7 @@ func (c *Client) IsVpcPeeredWithContext(ctx context.Context, input *lightsail.Is
 func (c *Client) OpenInstancePublicPortsWithContext(ctx context.Context, input *lightsail.OpenInstancePublicPortsInput, opts ...request.Option) (*lightsail.OpenInstancePublicPortsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "OpenInstancePublicPortsWithContext",
+		Action:  "OpenInstancePublicPorts",
 		Input:   input,
 		Output:  (*lightsail.OpenInstancePublicPortsOutput)(nil),
 		Error:   nil,
@@ -1917,7 +2005,7 @@ func (c *Client) OpenInstancePublicPortsWithContext(ctx context.Context, input *
 func (c *Client) PeerVpcWithContext(ctx context.Context, input *lightsail.PeerVpcInput, opts ...request.Option) (*lightsail.PeerVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "PeerVpcWithContext",
+		Action:  "PeerVpc",
 		Input:   input,
 		Output:  (*lightsail.PeerVpcOutput)(nil),
 		Error:   nil,
@@ -1938,7 +2026,7 @@ func (c *Client) PeerVpcWithContext(ctx context.Context, input *lightsail.PeerVp
 func (c *Client) PutInstancePublicPortsWithContext(ctx context.Context, input *lightsail.PutInstancePublicPortsInput, opts ...request.Option) (*lightsail.PutInstancePublicPortsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "PutInstancePublicPortsWithContext",
+		Action:  "PutInstancePublicPorts",
 		Input:   input,
 		Output:  (*lightsail.PutInstancePublicPortsOutput)(nil),
 		Error:   nil,
@@ -1959,7 +2047,7 @@ func (c *Client) PutInstancePublicPortsWithContext(ctx context.Context, input *l
 func (c *Client) RebootInstanceWithContext(ctx context.Context, input *lightsail.RebootInstanceInput, opts ...request.Option) (*lightsail.RebootInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "RebootInstanceWithContext",
+		Action:  "RebootInstance",
 		Input:   input,
 		Output:  (*lightsail.RebootInstanceOutput)(nil),
 		Error:   nil,
@@ -1980,7 +2068,7 @@ func (c *Client) RebootInstanceWithContext(ctx context.Context, input *lightsail
 func (c *Client) RebootRelationalDatabaseWithContext(ctx context.Context, input *lightsail.RebootRelationalDatabaseInput, opts ...request.Option) (*lightsail.RebootRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "RebootRelationalDatabaseWithContext",
+		Action:  "RebootRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.RebootRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -2001,7 +2089,7 @@ func (c *Client) RebootRelationalDatabaseWithContext(ctx context.Context, input 
 func (c *Client) ReleaseStaticIpWithContext(ctx context.Context, input *lightsail.ReleaseStaticIpInput, opts ...request.Option) (*lightsail.ReleaseStaticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "ReleaseStaticIpWithContext",
+		Action:  "ReleaseStaticIp",
 		Input:   input,
 		Output:  (*lightsail.ReleaseStaticIpOutput)(nil),
 		Error:   nil,
@@ -2022,7 +2110,7 @@ func (c *Client) ReleaseStaticIpWithContext(ctx context.Context, input *lightsai
 func (c *Client) StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "StartInstanceWithContext",
+		Action:  "StartInstance",
 		Input:   input,
 		Output:  (*lightsail.StartInstanceOutput)(nil),
 		Error:   nil,
@@ -2043,7 +2131,7 @@ func (c *Client) StartInstanceWithContext(ctx context.Context, input *lightsail.
 func (c *Client) StartRelationalDatabaseWithContext(ctx context.Context, input *lightsail.StartRelationalDatabaseInput, opts ...request.Option) (*lightsail.StartRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "StartRelationalDatabaseWithContext",
+		Action:  "StartRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.StartRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -2064,7 +2152,7 @@ func (c *Client) StartRelationalDatabaseWithContext(ctx context.Context, input *
 func (c *Client) StopInstanceWithContext(ctx context.Context, input *lightsail.StopInstanceInput, opts ...request.Option) (*lightsail.StopInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "StopInstanceWithContext",
+		Action:  "StopInstance",
 		Input:   input,
 		Output:  (*lightsail.StopInstanceOutput)(nil),
 		Error:   nil,
@@ -2085,7 +2173,7 @@ func (c *Client) StopInstanceWithContext(ctx context.Context, input *lightsail.S
 func (c *Client) StopRelationalDatabaseWithContext(ctx context.Context, input *lightsail.StopRelationalDatabaseInput, opts ...request.Option) (*lightsail.StopRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "StopRelationalDatabaseWithContext",
+		Action:  "StopRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.StopRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -2106,7 +2194,7 @@ func (c *Client) StopRelationalDatabaseWithContext(ctx context.Context, input *l
 func (c *Client) TagResourceWithContext(ctx context.Context, input *lightsail.TagResourceInput, opts ...request.Option) (*lightsail.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*lightsail.TagResourceOutput)(nil),
 		Error:   nil,
@@ -2127,7 +2215,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *lightsail.Ta
 func (c *Client) UnpeerVpcWithContext(ctx context.Context, input *lightsail.UnpeerVpcInput, opts ...request.Option) (*lightsail.UnpeerVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "UnpeerVpcWithContext",
+		Action:  "UnpeerVpc",
 		Input:   input,
 		Output:  (*lightsail.UnpeerVpcOutput)(nil),
 		Error:   nil,
@@ -2148,7 +2236,7 @@ func (c *Client) UnpeerVpcWithContext(ctx context.Context, input *lightsail.Unpe
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *lightsail.UntagResourceInput, opts ...request.Option) (*lightsail.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*lightsail.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -2169,7 +2257,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *lightsail.
 func (c *Client) UpdateDomainEntryWithContext(ctx context.Context, input *lightsail.UpdateDomainEntryInput, opts ...request.Option) (*lightsail.UpdateDomainEntryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "UpdateDomainEntryWithContext",
+		Action:  "UpdateDomainEntry",
 		Input:   input,
 		Output:  (*lightsail.UpdateDomainEntryOutput)(nil),
 		Error:   nil,
@@ -2190,7 +2278,7 @@ func (c *Client) UpdateDomainEntryWithContext(ctx context.Context, input *lights
 func (c *Client) UpdateLoadBalancerAttributeWithContext(ctx context.Context, input *lightsail.UpdateLoadBalancerAttributeInput, opts ...request.Option) (*lightsail.UpdateLoadBalancerAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "UpdateLoadBalancerAttributeWithContext",
+		Action:  "UpdateLoadBalancerAttribute",
 		Input:   input,
 		Output:  (*lightsail.UpdateLoadBalancerAttributeOutput)(nil),
 		Error:   nil,
@@ -2211,7 +2299,7 @@ func (c *Client) UpdateLoadBalancerAttributeWithContext(ctx context.Context, inp
 func (c *Client) UpdateRelationalDatabaseWithContext(ctx context.Context, input *lightsail.UpdateRelationalDatabaseInput, opts ...request.Option) (*lightsail.UpdateRelationalDatabaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "UpdateRelationalDatabaseWithContext",
+		Action:  "UpdateRelationalDatabase",
 		Input:   input,
 		Output:  (*lightsail.UpdateRelationalDatabaseOutput)(nil),
 		Error:   nil,
@@ -2232,7 +2320,7 @@ func (c *Client) UpdateRelationalDatabaseWithContext(ctx context.Context, input 
 func (c *Client) UpdateRelationalDatabaseParametersWithContext(ctx context.Context, input *lightsail.UpdateRelationalDatabaseParametersInput, opts ...request.Option) (*lightsail.UpdateRelationalDatabaseParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
-		Action:  "UpdateRelationalDatabaseParametersWithContext",
+		Action:  "UpdateRelationalDatabaseParameters",
 		Input:   input,
 		Output:  (*lightsail.UpdateRelationalDatabaseParametersOutput)(nil),
 		Error:   nil,

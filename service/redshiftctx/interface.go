@@ -57,6 +57,7 @@ type Redshift interface {
 	DescribeHsmClientCertificatesWithContext(ctx context.Context, input *redshift.DescribeHsmClientCertificatesInput, opts ...request.Option) (*redshift.DescribeHsmClientCertificatesOutput, error)
 	DescribeHsmConfigurationsWithContext(ctx context.Context, input *redshift.DescribeHsmConfigurationsInput, opts ...request.Option) (*redshift.DescribeHsmConfigurationsOutput, error)
 	DescribeLoggingStatusWithContext(ctx context.Context, input *redshift.DescribeLoggingStatusInput, opts ...request.Option) (*redshift.LoggingStatus, error)
+	DescribeNodeConfigurationOptionsWithContext(ctx context.Context, input *redshift.DescribeNodeConfigurationOptionsInput, opts ...request.Option) (*redshift.DescribeNodeConfigurationOptionsOutput, error)
 	DescribeOrderableClusterOptionsWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, opts ...request.Option) (*redshift.DescribeOrderableClusterOptionsOutput, error)
 	DescribeReservedNodeOfferingsWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, opts ...request.Option) (*redshift.DescribeReservedNodeOfferingsOutput, error)
 	DescribeReservedNodesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, opts ...request.Option) (*redshift.DescribeReservedNodesOutput, error)
@@ -112,7 +113,7 @@ var _ Redshift = (*Client)(nil)
 func (c *Client) AcceptReservedNodeExchangeWithContext(ctx context.Context, input *redshift.AcceptReservedNodeExchangeInput, opts ...request.Option) (*redshift.AcceptReservedNodeExchangeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "AcceptReservedNodeExchangeWithContext",
+		Action:  "AcceptReservedNodeExchange",
 		Input:   input,
 		Output:  (*redshift.AcceptReservedNodeExchangeOutput)(nil),
 		Error:   nil,
@@ -133,7 +134,7 @@ func (c *Client) AcceptReservedNodeExchangeWithContext(ctx context.Context, inpu
 func (c *Client) AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.AuthorizeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.AuthorizeClusterSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "AuthorizeClusterSecurityGroupIngressWithContext",
+		Action:  "AuthorizeClusterSecurityGroupIngress",
 		Input:   input,
 		Output:  (*redshift.AuthorizeClusterSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -154,7 +155,7 @@ func (c *Client) AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Con
 func (c *Client) AuthorizeSnapshotAccessWithContext(ctx context.Context, input *redshift.AuthorizeSnapshotAccessInput, opts ...request.Option) (*redshift.AuthorizeSnapshotAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "AuthorizeSnapshotAccessWithContext",
+		Action:  "AuthorizeSnapshotAccess",
 		Input:   input,
 		Output:  (*redshift.AuthorizeSnapshotAccessOutput)(nil),
 		Error:   nil,
@@ -175,7 +176,7 @@ func (c *Client) AuthorizeSnapshotAccessWithContext(ctx context.Context, input *
 func (c *Client) BatchDeleteClusterSnapshotsWithContext(ctx context.Context, input *redshift.BatchDeleteClusterSnapshotsInput, opts ...request.Option) (*redshift.BatchDeleteClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "BatchDeleteClusterSnapshotsWithContext",
+		Action:  "BatchDeleteClusterSnapshots",
 		Input:   input,
 		Output:  (*redshift.BatchDeleteClusterSnapshotsOutput)(nil),
 		Error:   nil,
@@ -196,7 +197,7 @@ func (c *Client) BatchDeleteClusterSnapshotsWithContext(ctx context.Context, inp
 func (c *Client) BatchModifyClusterSnapshotsWithContext(ctx context.Context, input *redshift.BatchModifyClusterSnapshotsInput, opts ...request.Option) (*redshift.BatchModifyClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "BatchModifyClusterSnapshotsWithContext",
+		Action:  "BatchModifyClusterSnapshots",
 		Input:   input,
 		Output:  (*redshift.BatchModifyClusterSnapshotsOutput)(nil),
 		Error:   nil,
@@ -217,7 +218,7 @@ func (c *Client) BatchModifyClusterSnapshotsWithContext(ctx context.Context, inp
 func (c *Client) CancelResizeWithContext(ctx context.Context, input *redshift.CancelResizeInput, opts ...request.Option) (*redshift.CancelResizeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CancelResizeWithContext",
+		Action:  "CancelResize",
 		Input:   input,
 		Output:  (*redshift.CancelResizeOutput)(nil),
 		Error:   nil,
@@ -238,7 +239,7 @@ func (c *Client) CancelResizeWithContext(ctx context.Context, input *redshift.Ca
 func (c *Client) CopyClusterSnapshotWithContext(ctx context.Context, input *redshift.CopyClusterSnapshotInput, opts ...request.Option) (*redshift.CopyClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CopyClusterSnapshotWithContext",
+		Action:  "CopyClusterSnapshot",
 		Input:   input,
 		Output:  (*redshift.CopyClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -259,7 +260,7 @@ func (c *Client) CopyClusterSnapshotWithContext(ctx context.Context, input *reds
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *redshift.CreateClusterInput, opts ...request.Option) (*redshift.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateClusterWithContext",
+		Action:  "CreateCluster",
 		Input:   input,
 		Output:  (*redshift.CreateClusterOutput)(nil),
 		Error:   nil,
@@ -280,7 +281,7 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *redshift.C
 func (c *Client) CreateClusterParameterGroupWithContext(ctx context.Context, input *redshift.CreateClusterParameterGroupInput, opts ...request.Option) (*redshift.CreateClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateClusterParameterGroupWithContext",
+		Action:  "CreateClusterParameterGroup",
 		Input:   input,
 		Output:  (*redshift.CreateClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -301,7 +302,7 @@ func (c *Client) CreateClusterParameterGroupWithContext(ctx context.Context, inp
 func (c *Client) CreateClusterSecurityGroupWithContext(ctx context.Context, input *redshift.CreateClusterSecurityGroupInput, opts ...request.Option) (*redshift.CreateClusterSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateClusterSecurityGroupWithContext",
+		Action:  "CreateClusterSecurityGroup",
 		Input:   input,
 		Output:  (*redshift.CreateClusterSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -322,7 +323,7 @@ func (c *Client) CreateClusterSecurityGroupWithContext(ctx context.Context, inpu
 func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, input *redshift.CreateClusterSnapshotInput, opts ...request.Option) (*redshift.CreateClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateClusterSnapshotWithContext",
+		Action:  "CreateClusterSnapshot",
 		Input:   input,
 		Output:  (*redshift.CreateClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -343,7 +344,7 @@ func (c *Client) CreateClusterSnapshotWithContext(ctx context.Context, input *re
 func (c *Client) CreateClusterSubnetGroupWithContext(ctx context.Context, input *redshift.CreateClusterSubnetGroupInput, opts ...request.Option) (*redshift.CreateClusterSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateClusterSubnetGroupWithContext",
+		Action:  "CreateClusterSubnetGroup",
 		Input:   input,
 		Output:  (*redshift.CreateClusterSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -364,7 +365,7 @@ func (c *Client) CreateClusterSubnetGroupWithContext(ctx context.Context, input 
 func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *redshift.CreateEventSubscriptionInput, opts ...request.Option) (*redshift.CreateEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateEventSubscriptionWithContext",
+		Action:  "CreateEventSubscription",
 		Input:   input,
 		Output:  (*redshift.CreateEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -385,7 +386,7 @@ func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) CreateHsmClientCertificateWithContext(ctx context.Context, input *redshift.CreateHsmClientCertificateInput, opts ...request.Option) (*redshift.CreateHsmClientCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateHsmClientCertificateWithContext",
+		Action:  "CreateHsmClientCertificate",
 		Input:   input,
 		Output:  (*redshift.CreateHsmClientCertificateOutput)(nil),
 		Error:   nil,
@@ -406,7 +407,7 @@ func (c *Client) CreateHsmClientCertificateWithContext(ctx context.Context, inpu
 func (c *Client) CreateHsmConfigurationWithContext(ctx context.Context, input *redshift.CreateHsmConfigurationInput, opts ...request.Option) (*redshift.CreateHsmConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateHsmConfigurationWithContext",
+		Action:  "CreateHsmConfiguration",
 		Input:   input,
 		Output:  (*redshift.CreateHsmConfigurationOutput)(nil),
 		Error:   nil,
@@ -427,7 +428,7 @@ func (c *Client) CreateHsmConfigurationWithContext(ctx context.Context, input *r
 func (c *Client) CreateSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.CreateSnapshotCopyGrantInput, opts ...request.Option) (*redshift.CreateSnapshotCopyGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateSnapshotCopyGrantWithContext",
+		Action:  "CreateSnapshotCopyGrant",
 		Input:   input,
 		Output:  (*redshift.CreateSnapshotCopyGrantOutput)(nil),
 		Error:   nil,
@@ -448,7 +449,7 @@ func (c *Client) CreateSnapshotCopyGrantWithContext(ctx context.Context, input *
 func (c *Client) CreateSnapshotScheduleWithContext(ctx context.Context, input *redshift.CreateSnapshotScheduleInput, opts ...request.Option) (*redshift.CreateSnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateSnapshotScheduleWithContext",
+		Action:  "CreateSnapshotSchedule",
 		Input:   input,
 		Output:  (*redshift.CreateSnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -469,7 +470,7 @@ func (c *Client) CreateSnapshotScheduleWithContext(ctx context.Context, input *r
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *redshift.CreateTagsInput, opts ...request.Option) (*redshift.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*redshift.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -490,7 +491,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *redshift.Crea
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *redshift.DeleteClusterInput, opts ...request.Option) (*redshift.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteClusterWithContext",
+		Action:  "DeleteCluster",
 		Input:   input,
 		Output:  (*redshift.DeleteClusterOutput)(nil),
 		Error:   nil,
@@ -511,7 +512,7 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *redshift.D
 func (c *Client) DeleteClusterParameterGroupWithContext(ctx context.Context, input *redshift.DeleteClusterParameterGroupInput, opts ...request.Option) (*redshift.DeleteClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteClusterParameterGroupWithContext",
+		Action:  "DeleteClusterParameterGroup",
 		Input:   input,
 		Output:  (*redshift.DeleteClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -532,7 +533,7 @@ func (c *Client) DeleteClusterParameterGroupWithContext(ctx context.Context, inp
 func (c *Client) DeleteClusterSecurityGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSecurityGroupInput, opts ...request.Option) (*redshift.DeleteClusterSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteClusterSecurityGroupWithContext",
+		Action:  "DeleteClusterSecurityGroup",
 		Input:   input,
 		Output:  (*redshift.DeleteClusterSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -553,7 +554,7 @@ func (c *Client) DeleteClusterSecurityGroupWithContext(ctx context.Context, inpu
 func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, input *redshift.DeleteClusterSnapshotInput, opts ...request.Option) (*redshift.DeleteClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteClusterSnapshotWithContext",
+		Action:  "DeleteClusterSnapshot",
 		Input:   input,
 		Output:  (*redshift.DeleteClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -574,7 +575,7 @@ func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, input *re
 func (c *Client) DeleteClusterSubnetGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSubnetGroupInput, opts ...request.Option) (*redshift.DeleteClusterSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteClusterSubnetGroupWithContext",
+		Action:  "DeleteClusterSubnetGroup",
 		Input:   input,
 		Output:  (*redshift.DeleteClusterSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -595,7 +596,7 @@ func (c *Client) DeleteClusterSubnetGroupWithContext(ctx context.Context, input 
 func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *redshift.DeleteEventSubscriptionInput, opts ...request.Option) (*redshift.DeleteEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteEventSubscriptionWithContext",
+		Action:  "DeleteEventSubscription",
 		Input:   input,
 		Output:  (*redshift.DeleteEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -616,7 +617,7 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) DeleteHsmClientCertificateWithContext(ctx context.Context, input *redshift.DeleteHsmClientCertificateInput, opts ...request.Option) (*redshift.DeleteHsmClientCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteHsmClientCertificateWithContext",
+		Action:  "DeleteHsmClientCertificate",
 		Input:   input,
 		Output:  (*redshift.DeleteHsmClientCertificateOutput)(nil),
 		Error:   nil,
@@ -637,7 +638,7 @@ func (c *Client) DeleteHsmClientCertificateWithContext(ctx context.Context, inpu
 func (c *Client) DeleteHsmConfigurationWithContext(ctx context.Context, input *redshift.DeleteHsmConfigurationInput, opts ...request.Option) (*redshift.DeleteHsmConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteHsmConfigurationWithContext",
+		Action:  "DeleteHsmConfiguration",
 		Input:   input,
 		Output:  (*redshift.DeleteHsmConfigurationOutput)(nil),
 		Error:   nil,
@@ -658,7 +659,7 @@ func (c *Client) DeleteHsmConfigurationWithContext(ctx context.Context, input *r
 func (c *Client) DeleteSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.DeleteSnapshotCopyGrantInput, opts ...request.Option) (*redshift.DeleteSnapshotCopyGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteSnapshotCopyGrantWithContext",
+		Action:  "DeleteSnapshotCopyGrant",
 		Input:   input,
 		Output:  (*redshift.DeleteSnapshotCopyGrantOutput)(nil),
 		Error:   nil,
@@ -679,7 +680,7 @@ func (c *Client) DeleteSnapshotCopyGrantWithContext(ctx context.Context, input *
 func (c *Client) DeleteSnapshotScheduleWithContext(ctx context.Context, input *redshift.DeleteSnapshotScheduleInput, opts ...request.Option) (*redshift.DeleteSnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteSnapshotScheduleWithContext",
+		Action:  "DeleteSnapshotSchedule",
 		Input:   input,
 		Output:  (*redshift.DeleteSnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -700,7 +701,7 @@ func (c *Client) DeleteSnapshotScheduleWithContext(ctx context.Context, input *r
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *redshift.DeleteTagsInput, opts ...request.Option) (*redshift.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*redshift.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -721,7 +722,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *redshift.Dele
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *redshift.DescribeAccountAttributesInput, opts ...request.Option) (*redshift.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeAccountAttributesWithContext",
+		Action:  "DescribeAccountAttributes",
 		Input:   input,
 		Output:  (*redshift.DescribeAccountAttributesOutput)(nil),
 		Error:   nil,
@@ -742,7 +743,7 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 func (c *Client) DescribeClusterDbRevisionsWithContext(ctx context.Context, input *redshift.DescribeClusterDbRevisionsInput, opts ...request.Option) (*redshift.DescribeClusterDbRevisionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterDbRevisionsWithContext",
+		Action:  "DescribeClusterDbRevisions",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterDbRevisionsOutput)(nil),
 		Error:   nil,
@@ -763,7 +764,7 @@ func (c *Client) DescribeClusterDbRevisionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeClusterParameterGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterParameterGroupsInput, opts ...request.Option) (*redshift.DescribeClusterParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterParameterGroupsWithContext",
+		Action:  "DescribeClusterParameterGroups",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -784,7 +785,7 @@ func (c *Client) DescribeClusterParameterGroupsWithContext(ctx context.Context, 
 func (c *Client) DescribeClusterParametersWithContext(ctx context.Context, input *redshift.DescribeClusterParametersInput, opts ...request.Option) (*redshift.DescribeClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterParametersWithContext",
+		Action:  "DescribeClusterParameters",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterParametersOutput)(nil),
 		Error:   nil,
@@ -805,7 +806,7 @@ func (c *Client) DescribeClusterParametersWithContext(ctx context.Context, input
 func (c *Client) DescribeClusterSecurityGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterSecurityGroupsInput, opts ...request.Option) (*redshift.DescribeClusterSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterSecurityGroupsWithContext",
+		Action:  "DescribeClusterSecurityGroups",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -826,7 +827,7 @@ func (c *Client) DescribeClusterSecurityGroupsWithContext(ctx context.Context, i
 func (c *Client) DescribeClusterSnapshotsWithContext(ctx context.Context, input *redshift.DescribeClusterSnapshotsInput, opts ...request.Option) (*redshift.DescribeClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterSnapshotsWithContext",
+		Action:  "DescribeClusterSnapshots",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterSnapshotsOutput)(nil),
 		Error:   nil,
@@ -847,7 +848,7 @@ func (c *Client) DescribeClusterSnapshotsWithContext(ctx context.Context, input 
 func (c *Client) DescribeClusterSubnetGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterSubnetGroupsInput, opts ...request.Option) (*redshift.DescribeClusterSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterSubnetGroupsWithContext",
+		Action:  "DescribeClusterSubnetGroups",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -868,7 +869,7 @@ func (c *Client) DescribeClusterSubnetGroupsWithContext(ctx context.Context, inp
 func (c *Client) DescribeClusterTracksWithContext(ctx context.Context, input *redshift.DescribeClusterTracksInput, opts ...request.Option) (*redshift.DescribeClusterTracksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterTracksWithContext",
+		Action:  "DescribeClusterTracks",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterTracksOutput)(nil),
 		Error:   nil,
@@ -889,7 +890,7 @@ func (c *Client) DescribeClusterTracksWithContext(ctx context.Context, input *re
 func (c *Client) DescribeClusterVersionsWithContext(ctx context.Context, input *redshift.DescribeClusterVersionsInput, opts ...request.Option) (*redshift.DescribeClusterVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClusterVersionsWithContext",
+		Action:  "DescribeClusterVersions",
 		Input:   input,
 		Output:  (*redshift.DescribeClusterVersionsOutput)(nil),
 		Error:   nil,
@@ -910,7 +911,7 @@ func (c *Client) DescribeClusterVersionsWithContext(ctx context.Context, input *
 func (c *Client) DescribeClustersWithContext(ctx context.Context, input *redshift.DescribeClustersInput, opts ...request.Option) (*redshift.DescribeClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeClustersWithContext",
+		Action:  "DescribeClusters",
 		Input:   input,
 		Output:  (*redshift.DescribeClustersOutput)(nil),
 		Error:   nil,
@@ -931,7 +932,7 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, input *redshif
 func (c *Client) DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeDefaultClusterParametersWithContext",
+		Action:  "DescribeDefaultClusterParameters",
 		Input:   input,
 		Output:  (*redshift.DescribeDefaultClusterParametersOutput)(nil),
 		Error:   nil,
@@ -952,7 +953,7 @@ func (c *Client) DescribeDefaultClusterParametersWithContext(ctx context.Context
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeEventCategoriesWithContext",
+		Action:  "DescribeEventCategories",
 		Input:   input,
 		Output:  (*redshift.DescribeEventCategoriesOutput)(nil),
 		Error:   nil,
@@ -973,7 +974,7 @@ func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *
 func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, opts ...request.Option) (*redshift.DescribeEventSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeEventSubscriptionsWithContext",
+		Action:  "DescribeEventSubscriptions",
 		Input:   input,
 		Output:  (*redshift.DescribeEventSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -994,7 +995,7 @@ func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *redshift.DescribeEventsInput, opts ...request.Option) (*redshift.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*redshift.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -1015,7 +1016,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *redshift.
 func (c *Client) DescribeHsmClientCertificatesWithContext(ctx context.Context, input *redshift.DescribeHsmClientCertificatesInput, opts ...request.Option) (*redshift.DescribeHsmClientCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeHsmClientCertificatesWithContext",
+		Action:  "DescribeHsmClientCertificates",
 		Input:   input,
 		Output:  (*redshift.DescribeHsmClientCertificatesOutput)(nil),
 		Error:   nil,
@@ -1036,7 +1037,7 @@ func (c *Client) DescribeHsmClientCertificatesWithContext(ctx context.Context, i
 func (c *Client) DescribeHsmConfigurationsWithContext(ctx context.Context, input *redshift.DescribeHsmConfigurationsInput, opts ...request.Option) (*redshift.DescribeHsmConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeHsmConfigurationsWithContext",
+		Action:  "DescribeHsmConfigurations",
 		Input:   input,
 		Output:  (*redshift.DescribeHsmConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1057,7 +1058,7 @@ func (c *Client) DescribeHsmConfigurationsWithContext(ctx context.Context, input
 func (c *Client) DescribeLoggingStatusWithContext(ctx context.Context, input *redshift.DescribeLoggingStatusInput, opts ...request.Option) (*redshift.LoggingStatus, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeLoggingStatusWithContext",
+		Action:  "DescribeLoggingStatus",
 		Input:   input,
 		Output:  (*redshift.LoggingStatus)(nil),
 		Error:   nil,
@@ -1075,10 +1076,31 @@ func (c *Client) DescribeLoggingStatusWithContext(ctx context.Context, input *re
 	return req.Output.(*redshift.LoggingStatus), req.Error
 }
 
+func (c *Client) DescribeNodeConfigurationOptionsWithContext(ctx context.Context, input *redshift.DescribeNodeConfigurationOptionsInput, opts ...request.Option) (*redshift.DescribeNodeConfigurationOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeNodeConfigurationOptions",
+		Input:   input,
+		Output:  (*redshift.DescribeNodeConfigurationOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeNodeConfigurationOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeNodeConfigurationOptionsOutput), req.Error
+}
+
 func (c *Client) DescribeOrderableClusterOptionsWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, opts ...request.Option) (*redshift.DescribeOrderableClusterOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeOrderableClusterOptionsWithContext",
+		Action:  "DescribeOrderableClusterOptions",
 		Input:   input,
 		Output:  (*redshift.DescribeOrderableClusterOptionsOutput)(nil),
 		Error:   nil,
@@ -1099,7 +1121,7 @@ func (c *Client) DescribeOrderableClusterOptionsWithContext(ctx context.Context,
 func (c *Client) DescribeReservedNodeOfferingsWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, opts ...request.Option) (*redshift.DescribeReservedNodeOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeReservedNodeOfferingsWithContext",
+		Action:  "DescribeReservedNodeOfferings",
 		Input:   input,
 		Output:  (*redshift.DescribeReservedNodeOfferingsOutput)(nil),
 		Error:   nil,
@@ -1120,7 +1142,7 @@ func (c *Client) DescribeReservedNodeOfferingsWithContext(ctx context.Context, i
 func (c *Client) DescribeReservedNodesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, opts ...request.Option) (*redshift.DescribeReservedNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeReservedNodesWithContext",
+		Action:  "DescribeReservedNodes",
 		Input:   input,
 		Output:  (*redshift.DescribeReservedNodesOutput)(nil),
 		Error:   nil,
@@ -1141,7 +1163,7 @@ func (c *Client) DescribeReservedNodesWithContext(ctx context.Context, input *re
 func (c *Client) DescribeResizeWithContext(ctx context.Context, input *redshift.DescribeResizeInput, opts ...request.Option) (*redshift.DescribeResizeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeResizeWithContext",
+		Action:  "DescribeResize",
 		Input:   input,
 		Output:  (*redshift.DescribeResizeOutput)(nil),
 		Error:   nil,
@@ -1162,7 +1184,7 @@ func (c *Client) DescribeResizeWithContext(ctx context.Context, input *redshift.
 func (c *Client) DescribeSnapshotCopyGrantsWithContext(ctx context.Context, input *redshift.DescribeSnapshotCopyGrantsInput, opts ...request.Option) (*redshift.DescribeSnapshotCopyGrantsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeSnapshotCopyGrantsWithContext",
+		Action:  "DescribeSnapshotCopyGrants",
 		Input:   input,
 		Output:  (*redshift.DescribeSnapshotCopyGrantsOutput)(nil),
 		Error:   nil,
@@ -1183,7 +1205,7 @@ func (c *Client) DescribeSnapshotCopyGrantsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeSnapshotSchedulesWithContext(ctx context.Context, input *redshift.DescribeSnapshotSchedulesInput, opts ...request.Option) (*redshift.DescribeSnapshotSchedulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeSnapshotSchedulesWithContext",
+		Action:  "DescribeSnapshotSchedules",
 		Input:   input,
 		Output:  (*redshift.DescribeSnapshotSchedulesOutput)(nil),
 		Error:   nil,
@@ -1204,7 +1226,7 @@ func (c *Client) DescribeSnapshotSchedulesWithContext(ctx context.Context, input
 func (c *Client) DescribeStorageWithContext(ctx context.Context, input *redshift.DescribeStorageInput, opts ...request.Option) (*redshift.DescribeStorageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeStorageWithContext",
+		Action:  "DescribeStorage",
 		Input:   input,
 		Output:  (*redshift.DescribeStorageOutput)(nil),
 		Error:   nil,
@@ -1225,7 +1247,7 @@ func (c *Client) DescribeStorageWithContext(ctx context.Context, input *redshift
 func (c *Client) DescribeTableRestoreStatusWithContext(ctx context.Context, input *redshift.DescribeTableRestoreStatusInput, opts ...request.Option) (*redshift.DescribeTableRestoreStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeTableRestoreStatusWithContext",
+		Action:  "DescribeTableRestoreStatus",
 		Input:   input,
 		Output:  (*redshift.DescribeTableRestoreStatusOutput)(nil),
 		Error:   nil,
@@ -1246,7 +1268,7 @@ func (c *Client) DescribeTableRestoreStatusWithContext(ctx context.Context, inpu
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *redshift.DescribeTagsInput, opts ...request.Option) (*redshift.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*redshift.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -1267,7 +1289,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *redshift.De
 func (c *Client) DisableLoggingWithContext(ctx context.Context, input *redshift.DisableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DisableLoggingWithContext",
+		Action:  "DisableLogging",
 		Input:   input,
 		Output:  (*redshift.LoggingStatus)(nil),
 		Error:   nil,
@@ -1288,7 +1310,7 @@ func (c *Client) DisableLoggingWithContext(ctx context.Context, input *redshift.
 func (c *Client) DisableSnapshotCopyWithContext(ctx context.Context, input *redshift.DisableSnapshotCopyInput, opts ...request.Option) (*redshift.DisableSnapshotCopyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "DisableSnapshotCopyWithContext",
+		Action:  "DisableSnapshotCopy",
 		Input:   input,
 		Output:  (*redshift.DisableSnapshotCopyOutput)(nil),
 		Error:   nil,
@@ -1309,7 +1331,7 @@ func (c *Client) DisableSnapshotCopyWithContext(ctx context.Context, input *reds
 func (c *Client) EnableLoggingWithContext(ctx context.Context, input *redshift.EnableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "EnableLoggingWithContext",
+		Action:  "EnableLogging",
 		Input:   input,
 		Output:  (*redshift.LoggingStatus)(nil),
 		Error:   nil,
@@ -1330,7 +1352,7 @@ func (c *Client) EnableLoggingWithContext(ctx context.Context, input *redshift.E
 func (c *Client) EnableSnapshotCopyWithContext(ctx context.Context, input *redshift.EnableSnapshotCopyInput, opts ...request.Option) (*redshift.EnableSnapshotCopyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "EnableSnapshotCopyWithContext",
+		Action:  "EnableSnapshotCopy",
 		Input:   input,
 		Output:  (*redshift.EnableSnapshotCopyOutput)(nil),
 		Error:   nil,
@@ -1351,7 +1373,7 @@ func (c *Client) EnableSnapshotCopyWithContext(ctx context.Context, input *redsh
 func (c *Client) GetClusterCredentialsWithContext(ctx context.Context, input *redshift.GetClusterCredentialsInput, opts ...request.Option) (*redshift.GetClusterCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "GetClusterCredentialsWithContext",
+		Action:  "GetClusterCredentials",
 		Input:   input,
 		Output:  (*redshift.GetClusterCredentialsOutput)(nil),
 		Error:   nil,
@@ -1372,7 +1394,7 @@ func (c *Client) GetClusterCredentialsWithContext(ctx context.Context, input *re
 func (c *Client) GetReservedNodeExchangeOfferingsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeOfferingsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "GetReservedNodeExchangeOfferingsWithContext",
+		Action:  "GetReservedNodeExchangeOfferings",
 		Input:   input,
 		Output:  (*redshift.GetReservedNodeExchangeOfferingsOutput)(nil),
 		Error:   nil,
@@ -1393,7 +1415,7 @@ func (c *Client) GetReservedNodeExchangeOfferingsWithContext(ctx context.Context
 func (c *Client) ModifyClusterWithContext(ctx context.Context, input *redshift.ModifyClusterInput, opts ...request.Option) (*redshift.ModifyClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterWithContext",
+		Action:  "ModifyCluster",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterOutput)(nil),
 		Error:   nil,
@@ -1414,7 +1436,7 @@ func (c *Client) ModifyClusterWithContext(ctx context.Context, input *redshift.M
 func (c *Client) ModifyClusterDbRevisionWithContext(ctx context.Context, input *redshift.ModifyClusterDbRevisionInput, opts ...request.Option) (*redshift.ModifyClusterDbRevisionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterDbRevisionWithContext",
+		Action:  "ModifyClusterDbRevision",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterDbRevisionOutput)(nil),
 		Error:   nil,
@@ -1435,7 +1457,7 @@ func (c *Client) ModifyClusterDbRevisionWithContext(ctx context.Context, input *
 func (c *Client) ModifyClusterIamRolesWithContext(ctx context.Context, input *redshift.ModifyClusterIamRolesInput, opts ...request.Option) (*redshift.ModifyClusterIamRolesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterIamRolesWithContext",
+		Action:  "ModifyClusterIamRoles",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterIamRolesOutput)(nil),
 		Error:   nil,
@@ -1456,7 +1478,7 @@ func (c *Client) ModifyClusterIamRolesWithContext(ctx context.Context, input *re
 func (c *Client) ModifyClusterMaintenanceWithContext(ctx context.Context, input *redshift.ModifyClusterMaintenanceInput, opts ...request.Option) (*redshift.ModifyClusterMaintenanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterMaintenanceWithContext",
+		Action:  "ModifyClusterMaintenance",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterMaintenanceOutput)(nil),
 		Error:   nil,
@@ -1477,7 +1499,7 @@ func (c *Client) ModifyClusterMaintenanceWithContext(ctx context.Context, input 
 func (c *Client) ModifyClusterParameterGroupWithContext(ctx context.Context, input *redshift.ModifyClusterParameterGroupInput, opts ...request.Option) (*redshift.ClusterParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterParameterGroupWithContext",
+		Action:  "ModifyClusterParameterGroup",
 		Input:   input,
 		Output:  (*redshift.ClusterParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -1498,7 +1520,7 @@ func (c *Client) ModifyClusterParameterGroupWithContext(ctx context.Context, inp
 func (c *Client) ModifyClusterSnapshotWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterSnapshotWithContext",
+		Action:  "ModifyClusterSnapshot",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -1519,7 +1541,7 @@ func (c *Client) ModifyClusterSnapshotWithContext(ctx context.Context, input *re
 func (c *Client) ModifyClusterSnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotScheduleInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterSnapshotScheduleWithContext",
+		Action:  "ModifyClusterSnapshotSchedule",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterSnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -1540,7 +1562,7 @@ func (c *Client) ModifyClusterSnapshotScheduleWithContext(ctx context.Context, i
 func (c *Client) ModifyClusterSubnetGroupWithContext(ctx context.Context, input *redshift.ModifyClusterSubnetGroupInput, opts ...request.Option) (*redshift.ModifyClusterSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyClusterSubnetGroupWithContext",
+		Action:  "ModifyClusterSubnetGroup",
 		Input:   input,
 		Output:  (*redshift.ModifyClusterSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -1561,7 +1583,7 @@ func (c *Client) ModifyClusterSubnetGroupWithContext(ctx context.Context, input 
 func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *redshift.ModifyEventSubscriptionInput, opts ...request.Option) (*redshift.ModifyEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifyEventSubscriptionWithContext",
+		Action:  "ModifyEventSubscription",
 		Input:   input,
 		Output:  (*redshift.ModifyEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -1582,7 +1604,7 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Context, input *redshift.ModifySnapshotCopyRetentionPeriodInput, opts ...request.Option) (*redshift.ModifySnapshotCopyRetentionPeriodOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifySnapshotCopyRetentionPeriodWithContext",
+		Action:  "ModifySnapshotCopyRetentionPeriod",
 		Input:   input,
 		Output:  (*redshift.ModifySnapshotCopyRetentionPeriodOutput)(nil),
 		Error:   nil,
@@ -1603,7 +1625,7 @@ func (c *Client) ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Contex
 func (c *Client) ModifySnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifySnapshotScheduleInput, opts ...request.Option) (*redshift.ModifySnapshotScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ModifySnapshotScheduleWithContext",
+		Action:  "ModifySnapshotSchedule",
 		Input:   input,
 		Output:  (*redshift.ModifySnapshotScheduleOutput)(nil),
 		Error:   nil,
@@ -1624,7 +1646,7 @@ func (c *Client) ModifySnapshotScheduleWithContext(ctx context.Context, input *r
 func (c *Client) PurchaseReservedNodeOfferingWithContext(ctx context.Context, input *redshift.PurchaseReservedNodeOfferingInput, opts ...request.Option) (*redshift.PurchaseReservedNodeOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "PurchaseReservedNodeOfferingWithContext",
+		Action:  "PurchaseReservedNodeOffering",
 		Input:   input,
 		Output:  (*redshift.PurchaseReservedNodeOfferingOutput)(nil),
 		Error:   nil,
@@ -1645,7 +1667,7 @@ func (c *Client) PurchaseReservedNodeOfferingWithContext(ctx context.Context, in
 func (c *Client) RebootClusterWithContext(ctx context.Context, input *redshift.RebootClusterInput, opts ...request.Option) (*redshift.RebootClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "RebootClusterWithContext",
+		Action:  "RebootCluster",
 		Input:   input,
 		Output:  (*redshift.RebootClusterOutput)(nil),
 		Error:   nil,
@@ -1666,7 +1688,7 @@ func (c *Client) RebootClusterWithContext(ctx context.Context, input *redshift.R
 func (c *Client) ResetClusterParameterGroupWithContext(ctx context.Context, input *redshift.ResetClusterParameterGroupInput, opts ...request.Option) (*redshift.ClusterParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ResetClusterParameterGroupWithContext",
+		Action:  "ResetClusterParameterGroup",
 		Input:   input,
 		Output:  (*redshift.ClusterParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -1687,7 +1709,7 @@ func (c *Client) ResetClusterParameterGroupWithContext(ctx context.Context, inpu
 func (c *Client) ResizeClusterWithContext(ctx context.Context, input *redshift.ResizeClusterInput, opts ...request.Option) (*redshift.ResizeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "ResizeClusterWithContext",
+		Action:  "ResizeCluster",
 		Input:   input,
 		Output:  (*redshift.ResizeClusterOutput)(nil),
 		Error:   nil,
@@ -1708,7 +1730,7 @@ func (c *Client) ResizeClusterWithContext(ctx context.Context, input *redshift.R
 func (c *Client) RestoreFromClusterSnapshotWithContext(ctx context.Context, input *redshift.RestoreFromClusterSnapshotInput, opts ...request.Option) (*redshift.RestoreFromClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "RestoreFromClusterSnapshotWithContext",
+		Action:  "RestoreFromClusterSnapshot",
 		Input:   input,
 		Output:  (*redshift.RestoreFromClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -1729,7 +1751,7 @@ func (c *Client) RestoreFromClusterSnapshotWithContext(ctx context.Context, inpu
 func (c *Client) RestoreTableFromClusterSnapshotWithContext(ctx context.Context, input *redshift.RestoreTableFromClusterSnapshotInput, opts ...request.Option) (*redshift.RestoreTableFromClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "RestoreTableFromClusterSnapshotWithContext",
+		Action:  "RestoreTableFromClusterSnapshot",
 		Input:   input,
 		Output:  (*redshift.RestoreTableFromClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -1750,7 +1772,7 @@ func (c *Client) RestoreTableFromClusterSnapshotWithContext(ctx context.Context,
 func (c *Client) RevokeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.RevokeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.RevokeClusterSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "RevokeClusterSecurityGroupIngressWithContext",
+		Action:  "RevokeClusterSecurityGroupIngress",
 		Input:   input,
 		Output:  (*redshift.RevokeClusterSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -1771,7 +1793,7 @@ func (c *Client) RevokeClusterSecurityGroupIngressWithContext(ctx context.Contex
 func (c *Client) RevokeSnapshotAccessWithContext(ctx context.Context, input *redshift.RevokeSnapshotAccessInput, opts ...request.Option) (*redshift.RevokeSnapshotAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "RevokeSnapshotAccessWithContext",
+		Action:  "RevokeSnapshotAccess",
 		Input:   input,
 		Output:  (*redshift.RevokeSnapshotAccessOutput)(nil),
 		Error:   nil,
@@ -1792,7 +1814,7 @@ func (c *Client) RevokeSnapshotAccessWithContext(ctx context.Context, input *red
 func (c *Client) RotateEncryptionKeyWithContext(ctx context.Context, input *redshift.RotateEncryptionKeyInput, opts ...request.Option) (*redshift.RotateEncryptionKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
-		Action:  "RotateEncryptionKeyWithContext",
+		Action:  "RotateEncryptionKey",
 		Input:   input,
 		Output:  (*redshift.RotateEncryptionKeyOutput)(nil),
 		Error:   nil,

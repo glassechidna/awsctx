@@ -64,7 +64,7 @@ var _ WorkMail = (*Client)(nil)
 func (c *Client) AssociateDelegateToResourceWithContext(ctx context.Context, input *workmail.AssociateDelegateToResourceInput, opts ...request.Option) (*workmail.AssociateDelegateToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "AssociateDelegateToResourceWithContext",
+		Action:  "AssociateDelegateToResource",
 		Input:   input,
 		Output:  (*workmail.AssociateDelegateToResourceOutput)(nil),
 		Error:   nil,
@@ -85,7 +85,7 @@ func (c *Client) AssociateDelegateToResourceWithContext(ctx context.Context, inp
 func (c *Client) AssociateMemberToGroupWithContext(ctx context.Context, input *workmail.AssociateMemberToGroupInput, opts ...request.Option) (*workmail.AssociateMemberToGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "AssociateMemberToGroupWithContext",
+		Action:  "AssociateMemberToGroup",
 		Input:   input,
 		Output:  (*workmail.AssociateMemberToGroupOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) AssociateMemberToGroupWithContext(ctx context.Context, input *w
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "CreateAliasWithContext",
+		Action:  "CreateAlias",
 		Input:   input,
 		Output:  (*workmail.CreateAliasOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *workmail.Cre
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*workmail.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *workmail.Cre
 func (c *Client) CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "CreateResourceWithContext",
+		Action:  "CreateResource",
 		Input:   input,
 		Output:  (*workmail.CreateResourceOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) CreateResourceWithContext(ctx context.Context, input *workmail.
 func (c *Client) CreateUserWithContext(ctx context.Context, input *workmail.CreateUserInput, opts ...request.Option) (*workmail.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*workmail.CreateUserOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *workmail.Crea
 func (c *Client) DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DeleteAliasWithContext",
+		Action:  "DeleteAlias",
 		Input:   input,
 		Output:  (*workmail.DeleteAliasOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *workmail.Del
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*workmail.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *workmail.Del
 func (c *Client) DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DeleteMailboxPermissionsWithContext",
+		Action:  "DeleteMailboxPermissions",
 		Input:   input,
 		Output:  (*workmail.DeleteMailboxPermissionsOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) DeleteMailboxPermissionsWithContext(ctx context.Context, input 
 func (c *Client) DeleteResourceWithContext(ctx context.Context, input *workmail.DeleteResourceInput, opts ...request.Option) (*workmail.DeleteResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DeleteResourceWithContext",
+		Action:  "DeleteResource",
 		Input:   input,
 		Output:  (*workmail.DeleteResourceOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) DeleteResourceWithContext(ctx context.Context, input *workmail.
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*workmail.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -295,7 +295,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *workmail.Dele
 func (c *Client) DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DeregisterFromWorkMailWithContext",
+		Action:  "DeregisterFromWorkMail",
 		Input:   input,
 		Output:  (*workmail.DeregisterFromWorkMailOutput)(nil),
 		Error:   nil,
@@ -316,7 +316,7 @@ func (c *Client) DeregisterFromWorkMailWithContext(ctx context.Context, input *w
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DescribeGroupWithContext",
+		Action:  "DescribeGroup",
 		Input:   input,
 		Output:  (*workmail.DescribeGroupOutput)(nil),
 		Error:   nil,
@@ -337,7 +337,7 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.D
 func (c *Client) DescribeOrganizationWithContext(ctx context.Context, input *workmail.DescribeOrganizationInput, opts ...request.Option) (*workmail.DescribeOrganizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DescribeOrganizationWithContext",
+		Action:  "DescribeOrganization",
 		Input:   input,
 		Output:  (*workmail.DescribeOrganizationOutput)(nil),
 		Error:   nil,
@@ -358,7 +358,7 @@ func (c *Client) DescribeOrganizationWithContext(ctx context.Context, input *wor
 func (c *Client) DescribeResourceWithContext(ctx context.Context, input *workmail.DescribeResourceInput, opts ...request.Option) (*workmail.DescribeResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DescribeResourceWithContext",
+		Action:  "DescribeResource",
 		Input:   input,
 		Output:  (*workmail.DescribeResourceOutput)(nil),
 		Error:   nil,
@@ -379,7 +379,7 @@ func (c *Client) DescribeResourceWithContext(ctx context.Context, input *workmai
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *workmail.DescribeUserInput, opts ...request.Option) (*workmail.DescribeUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DescribeUserWithContext",
+		Action:  "DescribeUser",
 		Input:   input,
 		Output:  (*workmail.DescribeUserOutput)(nil),
 		Error:   nil,
@@ -400,7 +400,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *workmail.De
 func (c *Client) DisassociateDelegateFromResourceWithContext(ctx context.Context, input *workmail.DisassociateDelegateFromResourceInput, opts ...request.Option) (*workmail.DisassociateDelegateFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DisassociateDelegateFromResourceWithContext",
+		Action:  "DisassociateDelegateFromResource",
 		Input:   input,
 		Output:  (*workmail.DisassociateDelegateFromResourceOutput)(nil),
 		Error:   nil,
@@ -421,7 +421,7 @@ func (c *Client) DisassociateDelegateFromResourceWithContext(ctx context.Context
 func (c *Client) DisassociateMemberFromGroupWithContext(ctx context.Context, input *workmail.DisassociateMemberFromGroupInput, opts ...request.Option) (*workmail.DisassociateMemberFromGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "DisassociateMemberFromGroupWithContext",
+		Action:  "DisassociateMemberFromGroup",
 		Input:   input,
 		Output:  (*workmail.DisassociateMemberFromGroupOutput)(nil),
 		Error:   nil,
@@ -442,7 +442,7 @@ func (c *Client) DisassociateMemberFromGroupWithContext(ctx context.Context, inp
 func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "GetMailboxDetailsWithContext",
+		Action:  "GetMailboxDetails",
 		Input:   input,
 		Output:  (*workmail.GetMailboxDetailsOutput)(nil),
 		Error:   nil,
@@ -463,7 +463,7 @@ func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workma
 func (c *Client) ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListAliasesWithContext",
+		Action:  "ListAliases",
 		Input:   input,
 		Output:  (*workmail.ListAliasesOutput)(nil),
 		Error:   nil,
@@ -484,7 +484,7 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *workmail.Lis
 func (c *Client) ListGroupMembersWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, opts ...request.Option) (*workmail.ListGroupMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListGroupMembersWithContext",
+		Action:  "ListGroupMembers",
 		Input:   input,
 		Output:  (*workmail.ListGroupMembersOutput)(nil),
 		Error:   nil,
@@ -505,7 +505,7 @@ func (c *Client) ListGroupMembersWithContext(ctx context.Context, input *workmai
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListGroupsWithContext",
+		Action:  "ListGroups",
 		Input:   input,
 		Output:  (*workmail.ListGroupsOutput)(nil),
 		Error:   nil,
@@ -526,7 +526,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *workmail.List
 func (c *Client) ListMailboxPermissionsWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, opts ...request.Option) (*workmail.ListMailboxPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListMailboxPermissionsWithContext",
+		Action:  "ListMailboxPermissions",
 		Input:   input,
 		Output:  (*workmail.ListMailboxPermissionsOutput)(nil),
 		Error:   nil,
@@ -547,7 +547,7 @@ func (c *Client) ListMailboxPermissionsWithContext(ctx context.Context, input *w
 func (c *Client) ListOrganizationsWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, opts ...request.Option) (*workmail.ListOrganizationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListOrganizationsWithContext",
+		Action:  "ListOrganizations",
 		Input:   input,
 		Output:  (*workmail.ListOrganizationsOutput)(nil),
 		Error:   nil,
@@ -568,7 +568,7 @@ func (c *Client) ListOrganizationsWithContext(ctx context.Context, input *workma
 func (c *Client) ListResourceDelegatesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, opts ...request.Option) (*workmail.ListResourceDelegatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListResourceDelegatesWithContext",
+		Action:  "ListResourceDelegates",
 		Input:   input,
 		Output:  (*workmail.ListResourceDelegatesOutput)(nil),
 		Error:   nil,
@@ -589,7 +589,7 @@ func (c *Client) ListResourceDelegatesWithContext(ctx context.Context, input *wo
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *workmail.ListResourcesInput, opts ...request.Option) (*workmail.ListResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListResourcesWithContext",
+		Action:  "ListResources",
 		Input:   input,
 		Output:  (*workmail.ListResourcesOutput)(nil),
 		Error:   nil,
@@ -610,7 +610,7 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, input *workmail.L
 func (c *Client) ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*workmail.ListUsersOutput)(nil),
 		Error:   nil,
@@ -631,7 +631,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *workmail.ListU
 func (c *Client) PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "PutMailboxPermissionsWithContext",
+		Action:  "PutMailboxPermissions",
 		Input:   input,
 		Output:  (*workmail.PutMailboxPermissionsOutput)(nil),
 		Error:   nil,
@@ -652,7 +652,7 @@ func (c *Client) PutMailboxPermissionsWithContext(ctx context.Context, input *wo
 func (c *Client) RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "RegisterToWorkMailWithContext",
+		Action:  "RegisterToWorkMail",
 		Input:   input,
 		Output:  (*workmail.RegisterToWorkMailOutput)(nil),
 		Error:   nil,
@@ -673,7 +673,7 @@ func (c *Client) RegisterToWorkMailWithContext(ctx context.Context, input *workm
 func (c *Client) ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "ResetPasswordWithContext",
+		Action:  "ResetPassword",
 		Input:   input,
 		Output:  (*workmail.ResetPasswordOutput)(nil),
 		Error:   nil,
@@ -694,7 +694,7 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, input *workmail.R
 func (c *Client) UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "UpdateMailboxQuotaWithContext",
+		Action:  "UpdateMailboxQuota",
 		Input:   input,
 		Output:  (*workmail.UpdateMailboxQuotaOutput)(nil),
 		Error:   nil,
@@ -715,7 +715,7 @@ func (c *Client) UpdateMailboxQuotaWithContext(ctx context.Context, input *workm
 func (c *Client) UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "UpdatePrimaryEmailAddressWithContext",
+		Action:  "UpdatePrimaryEmailAddress",
 		Input:   input,
 		Output:  (*workmail.UpdatePrimaryEmailAddressOutput)(nil),
 		Error:   nil,
@@ -736,7 +736,7 @@ func (c *Client) UpdatePrimaryEmailAddressWithContext(ctx context.Context, input
 func (c *Client) UpdateResourceWithContext(ctx context.Context, input *workmail.UpdateResourceInput, opts ...request.Option) (*workmail.UpdateResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
-		Action:  "UpdateResourceWithContext",
+		Action:  "UpdateResource",
 		Input:   input,
 		Output:  (*workmail.UpdateResourceOutput)(nil),
 		Error:   nil,

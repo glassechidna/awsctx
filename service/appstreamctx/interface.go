@@ -78,7 +78,7 @@ var _ AppStream = (*Client)(nil)
 func (c *Client) AssociateFleetWithContext(ctx context.Context, input *appstream.AssociateFleetInput, opts ...request.Option) (*appstream.AssociateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "AssociateFleetWithContext",
+		Action:  "AssociateFleet",
 		Input:   input,
 		Output:  (*appstream.AssociateFleetOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) AssociateFleetWithContext(ctx context.Context, input *appstream
 func (c *Client) BatchAssociateUserStackWithContext(ctx context.Context, input *appstream.BatchAssociateUserStackInput, opts ...request.Option) (*appstream.BatchAssociateUserStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "BatchAssociateUserStackWithContext",
+		Action:  "BatchAssociateUserStack",
 		Input:   input,
 		Output:  (*appstream.BatchAssociateUserStackOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) BatchAssociateUserStackWithContext(ctx context.Context, input *
 func (c *Client) BatchDisassociateUserStackWithContext(ctx context.Context, input *appstream.BatchDisassociateUserStackInput, opts ...request.Option) (*appstream.BatchDisassociateUserStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "BatchDisassociateUserStackWithContext",
+		Action:  "BatchDisassociateUserStack",
 		Input:   input,
 		Output:  (*appstream.BatchDisassociateUserStackOutput)(nil),
 		Error:   nil,
@@ -141,7 +141,7 @@ func (c *Client) BatchDisassociateUserStackWithContext(ctx context.Context, inpu
 func (c *Client) CopyImageWithContext(ctx context.Context, input *appstream.CopyImageInput, opts ...request.Option) (*appstream.CopyImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CopyImageWithContext",
+		Action:  "CopyImage",
 		Input:   input,
 		Output:  (*appstream.CopyImageOutput)(nil),
 		Error:   nil,
@@ -162,7 +162,7 @@ func (c *Client) CopyImageWithContext(ctx context.Context, input *appstream.Copy
 func (c *Client) CreateDirectoryConfigWithContext(ctx context.Context, input *appstream.CreateDirectoryConfigInput, opts ...request.Option) (*appstream.CreateDirectoryConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateDirectoryConfigWithContext",
+		Action:  "CreateDirectoryConfig",
 		Input:   input,
 		Output:  (*appstream.CreateDirectoryConfigOutput)(nil),
 		Error:   nil,
@@ -183,7 +183,7 @@ func (c *Client) CreateDirectoryConfigWithContext(ctx context.Context, input *ap
 func (c *Client) CreateFleetWithContext(ctx context.Context, input *appstream.CreateFleetInput, opts ...request.Option) (*appstream.CreateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateFleetWithContext",
+		Action:  "CreateFleet",
 		Input:   input,
 		Output:  (*appstream.CreateFleetOutput)(nil),
 		Error:   nil,
@@ -204,7 +204,7 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *appstream.Cr
 func (c *Client) CreateImageBuilderWithContext(ctx context.Context, input *appstream.CreateImageBuilderInput, opts ...request.Option) (*appstream.CreateImageBuilderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateImageBuilderWithContext",
+		Action:  "CreateImageBuilder",
 		Input:   input,
 		Output:  (*appstream.CreateImageBuilderOutput)(nil),
 		Error:   nil,
@@ -225,7 +225,7 @@ func (c *Client) CreateImageBuilderWithContext(ctx context.Context, input *appst
 func (c *Client) CreateImageBuilderStreamingURLWithContext(ctx context.Context, input *appstream.CreateImageBuilderStreamingURLInput, opts ...request.Option) (*appstream.CreateImageBuilderStreamingURLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateImageBuilderStreamingURLWithContext",
+		Action:  "CreateImageBuilderStreamingURL",
 		Input:   input,
 		Output:  (*appstream.CreateImageBuilderStreamingURLOutput)(nil),
 		Error:   nil,
@@ -246,7 +246,7 @@ func (c *Client) CreateImageBuilderStreamingURLWithContext(ctx context.Context, 
 func (c *Client) CreateStackWithContext(ctx context.Context, input *appstream.CreateStackInput, opts ...request.Option) (*appstream.CreateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateStackWithContext",
+		Action:  "CreateStack",
 		Input:   input,
 		Output:  (*appstream.CreateStackOutput)(nil),
 		Error:   nil,
@@ -267,7 +267,7 @@ func (c *Client) CreateStackWithContext(ctx context.Context, input *appstream.Cr
 func (c *Client) CreateStreamingURLWithContext(ctx context.Context, input *appstream.CreateStreamingURLInput, opts ...request.Option) (*appstream.CreateStreamingURLOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateStreamingURLWithContext",
+		Action:  "CreateStreamingURL",
 		Input:   input,
 		Output:  (*appstream.CreateStreamingURLOutput)(nil),
 		Error:   nil,
@@ -288,7 +288,7 @@ func (c *Client) CreateStreamingURLWithContext(ctx context.Context, input *appst
 func (c *Client) CreateUsageReportSubscriptionWithContext(ctx context.Context, input *appstream.CreateUsageReportSubscriptionInput, opts ...request.Option) (*appstream.CreateUsageReportSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateUsageReportSubscriptionWithContext",
+		Action:  "CreateUsageReportSubscription",
 		Input:   input,
 		Output:  (*appstream.CreateUsageReportSubscriptionOutput)(nil),
 		Error:   nil,
@@ -309,7 +309,7 @@ func (c *Client) CreateUsageReportSubscriptionWithContext(ctx context.Context, i
 func (c *Client) CreateUserWithContext(ctx context.Context, input *appstream.CreateUserInput, opts ...request.Option) (*appstream.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*appstream.CreateUserOutput)(nil),
 		Error:   nil,
@@ -330,7 +330,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *appstream.Cre
 func (c *Client) DeleteDirectoryConfigWithContext(ctx context.Context, input *appstream.DeleteDirectoryConfigInput, opts ...request.Option) (*appstream.DeleteDirectoryConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteDirectoryConfigWithContext",
+		Action:  "DeleteDirectoryConfig",
 		Input:   input,
 		Output:  (*appstream.DeleteDirectoryConfigOutput)(nil),
 		Error:   nil,
@@ -351,7 +351,7 @@ func (c *Client) DeleteDirectoryConfigWithContext(ctx context.Context, input *ap
 func (c *Client) DeleteFleetWithContext(ctx context.Context, input *appstream.DeleteFleetInput, opts ...request.Option) (*appstream.DeleteFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteFleetWithContext",
+		Action:  "DeleteFleet",
 		Input:   input,
 		Output:  (*appstream.DeleteFleetOutput)(nil),
 		Error:   nil,
@@ -372,7 +372,7 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, input *appstream.De
 func (c *Client) DeleteImageWithContext(ctx context.Context, input *appstream.DeleteImageInput, opts ...request.Option) (*appstream.DeleteImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteImageWithContext",
+		Action:  "DeleteImage",
 		Input:   input,
 		Output:  (*appstream.DeleteImageOutput)(nil),
 		Error:   nil,
@@ -393,7 +393,7 @@ func (c *Client) DeleteImageWithContext(ctx context.Context, input *appstream.De
 func (c *Client) DeleteImageBuilderWithContext(ctx context.Context, input *appstream.DeleteImageBuilderInput, opts ...request.Option) (*appstream.DeleteImageBuilderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteImageBuilderWithContext",
+		Action:  "DeleteImageBuilder",
 		Input:   input,
 		Output:  (*appstream.DeleteImageBuilderOutput)(nil),
 		Error:   nil,
@@ -414,7 +414,7 @@ func (c *Client) DeleteImageBuilderWithContext(ctx context.Context, input *appst
 func (c *Client) DeleteImagePermissionsWithContext(ctx context.Context, input *appstream.DeleteImagePermissionsInput, opts ...request.Option) (*appstream.DeleteImagePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteImagePermissionsWithContext",
+		Action:  "DeleteImagePermissions",
 		Input:   input,
 		Output:  (*appstream.DeleteImagePermissionsOutput)(nil),
 		Error:   nil,
@@ -435,7 +435,7 @@ func (c *Client) DeleteImagePermissionsWithContext(ctx context.Context, input *a
 func (c *Client) DeleteStackWithContext(ctx context.Context, input *appstream.DeleteStackInput, opts ...request.Option) (*appstream.DeleteStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteStackWithContext",
+		Action:  "DeleteStack",
 		Input:   input,
 		Output:  (*appstream.DeleteStackOutput)(nil),
 		Error:   nil,
@@ -456,7 +456,7 @@ func (c *Client) DeleteStackWithContext(ctx context.Context, input *appstream.De
 func (c *Client) DeleteUsageReportSubscriptionWithContext(ctx context.Context, input *appstream.DeleteUsageReportSubscriptionInput, opts ...request.Option) (*appstream.DeleteUsageReportSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteUsageReportSubscriptionWithContext",
+		Action:  "DeleteUsageReportSubscription",
 		Input:   input,
 		Output:  (*appstream.DeleteUsageReportSubscriptionOutput)(nil),
 		Error:   nil,
@@ -477,7 +477,7 @@ func (c *Client) DeleteUsageReportSubscriptionWithContext(ctx context.Context, i
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *appstream.DeleteUserInput, opts ...request.Option) (*appstream.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*appstream.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -498,7 +498,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *appstream.Del
 func (c *Client) DescribeDirectoryConfigsWithContext(ctx context.Context, input *appstream.DescribeDirectoryConfigsInput, opts ...request.Option) (*appstream.DescribeDirectoryConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeDirectoryConfigsWithContext",
+		Action:  "DescribeDirectoryConfigs",
 		Input:   input,
 		Output:  (*appstream.DescribeDirectoryConfigsOutput)(nil),
 		Error:   nil,
@@ -519,7 +519,7 @@ func (c *Client) DescribeDirectoryConfigsWithContext(ctx context.Context, input 
 func (c *Client) DescribeFleetsWithContext(ctx context.Context, input *appstream.DescribeFleetsInput, opts ...request.Option) (*appstream.DescribeFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeFleetsWithContext",
+		Action:  "DescribeFleets",
 		Input:   input,
 		Output:  (*appstream.DescribeFleetsOutput)(nil),
 		Error:   nil,
@@ -540,7 +540,7 @@ func (c *Client) DescribeFleetsWithContext(ctx context.Context, input *appstream
 func (c *Client) DescribeImageBuildersWithContext(ctx context.Context, input *appstream.DescribeImageBuildersInput, opts ...request.Option) (*appstream.DescribeImageBuildersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeImageBuildersWithContext",
+		Action:  "DescribeImageBuilders",
 		Input:   input,
 		Output:  (*appstream.DescribeImageBuildersOutput)(nil),
 		Error:   nil,
@@ -561,7 +561,7 @@ func (c *Client) DescribeImageBuildersWithContext(ctx context.Context, input *ap
 func (c *Client) DescribeImagePermissionsWithContext(ctx context.Context, input *appstream.DescribeImagePermissionsInput, opts ...request.Option) (*appstream.DescribeImagePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeImagePermissionsWithContext",
+		Action:  "DescribeImagePermissions",
 		Input:   input,
 		Output:  (*appstream.DescribeImagePermissionsOutput)(nil),
 		Error:   nil,
@@ -582,7 +582,7 @@ func (c *Client) DescribeImagePermissionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeImagesWithContext(ctx context.Context, input *appstream.DescribeImagesInput, opts ...request.Option) (*appstream.DescribeImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeImagesWithContext",
+		Action:  "DescribeImages",
 		Input:   input,
 		Output:  (*appstream.DescribeImagesOutput)(nil),
 		Error:   nil,
@@ -603,7 +603,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, input *appstream
 func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *appstream.DescribeSessionsInput, opts ...request.Option) (*appstream.DescribeSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeSessionsWithContext",
+		Action:  "DescribeSessions",
 		Input:   input,
 		Output:  (*appstream.DescribeSessionsOutput)(nil),
 		Error:   nil,
@@ -624,7 +624,7 @@ func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *appstre
 func (c *Client) DescribeStacksWithContext(ctx context.Context, input *appstream.DescribeStacksInput, opts ...request.Option) (*appstream.DescribeStacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeStacksWithContext",
+		Action:  "DescribeStacks",
 		Input:   input,
 		Output:  (*appstream.DescribeStacksOutput)(nil),
 		Error:   nil,
@@ -645,7 +645,7 @@ func (c *Client) DescribeStacksWithContext(ctx context.Context, input *appstream
 func (c *Client) DescribeUsageReportSubscriptionsWithContext(ctx context.Context, input *appstream.DescribeUsageReportSubscriptionsInput, opts ...request.Option) (*appstream.DescribeUsageReportSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeUsageReportSubscriptionsWithContext",
+		Action:  "DescribeUsageReportSubscriptions",
 		Input:   input,
 		Output:  (*appstream.DescribeUsageReportSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -666,7 +666,7 @@ func (c *Client) DescribeUsageReportSubscriptionsWithContext(ctx context.Context
 func (c *Client) DescribeUserStackAssociationsWithContext(ctx context.Context, input *appstream.DescribeUserStackAssociationsInput, opts ...request.Option) (*appstream.DescribeUserStackAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeUserStackAssociationsWithContext",
+		Action:  "DescribeUserStackAssociations",
 		Input:   input,
 		Output:  (*appstream.DescribeUserStackAssociationsOutput)(nil),
 		Error:   nil,
@@ -687,7 +687,7 @@ func (c *Client) DescribeUserStackAssociationsWithContext(ctx context.Context, i
 func (c *Client) DescribeUsersWithContext(ctx context.Context, input *appstream.DescribeUsersInput, opts ...request.Option) (*appstream.DescribeUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DescribeUsersWithContext",
+		Action:  "DescribeUsers",
 		Input:   input,
 		Output:  (*appstream.DescribeUsersOutput)(nil),
 		Error:   nil,
@@ -708,7 +708,7 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, input *appstream.
 func (c *Client) DisableUserWithContext(ctx context.Context, input *appstream.DisableUserInput, opts ...request.Option) (*appstream.DisableUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DisableUserWithContext",
+		Action:  "DisableUser",
 		Input:   input,
 		Output:  (*appstream.DisableUserOutput)(nil),
 		Error:   nil,
@@ -729,7 +729,7 @@ func (c *Client) DisableUserWithContext(ctx context.Context, input *appstream.Di
 func (c *Client) DisassociateFleetWithContext(ctx context.Context, input *appstream.DisassociateFleetInput, opts ...request.Option) (*appstream.DisassociateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "DisassociateFleetWithContext",
+		Action:  "DisassociateFleet",
 		Input:   input,
 		Output:  (*appstream.DisassociateFleetOutput)(nil),
 		Error:   nil,
@@ -750,7 +750,7 @@ func (c *Client) DisassociateFleetWithContext(ctx context.Context, input *appstr
 func (c *Client) EnableUserWithContext(ctx context.Context, input *appstream.EnableUserInput, opts ...request.Option) (*appstream.EnableUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "EnableUserWithContext",
+		Action:  "EnableUser",
 		Input:   input,
 		Output:  (*appstream.EnableUserOutput)(nil),
 		Error:   nil,
@@ -771,7 +771,7 @@ func (c *Client) EnableUserWithContext(ctx context.Context, input *appstream.Ena
 func (c *Client) ExpireSessionWithContext(ctx context.Context, input *appstream.ExpireSessionInput, opts ...request.Option) (*appstream.ExpireSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "ExpireSessionWithContext",
+		Action:  "ExpireSession",
 		Input:   input,
 		Output:  (*appstream.ExpireSessionOutput)(nil),
 		Error:   nil,
@@ -792,7 +792,7 @@ func (c *Client) ExpireSessionWithContext(ctx context.Context, input *appstream.
 func (c *Client) ListAssociatedFleetsWithContext(ctx context.Context, input *appstream.ListAssociatedFleetsInput, opts ...request.Option) (*appstream.ListAssociatedFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "ListAssociatedFleetsWithContext",
+		Action:  "ListAssociatedFleets",
 		Input:   input,
 		Output:  (*appstream.ListAssociatedFleetsOutput)(nil),
 		Error:   nil,
@@ -813,7 +813,7 @@ func (c *Client) ListAssociatedFleetsWithContext(ctx context.Context, input *app
 func (c *Client) ListAssociatedStacksWithContext(ctx context.Context, input *appstream.ListAssociatedStacksInput, opts ...request.Option) (*appstream.ListAssociatedStacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "ListAssociatedStacksWithContext",
+		Action:  "ListAssociatedStacks",
 		Input:   input,
 		Output:  (*appstream.ListAssociatedStacksOutput)(nil),
 		Error:   nil,
@@ -834,7 +834,7 @@ func (c *Client) ListAssociatedStacksWithContext(ctx context.Context, input *app
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appstream.ListTagsForResourceInput, opts ...request.Option) (*appstream.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*appstream.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -855,7 +855,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *apps
 func (c *Client) StartFleetWithContext(ctx context.Context, input *appstream.StartFleetInput, opts ...request.Option) (*appstream.StartFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "StartFleetWithContext",
+		Action:  "StartFleet",
 		Input:   input,
 		Output:  (*appstream.StartFleetOutput)(nil),
 		Error:   nil,
@@ -876,7 +876,7 @@ func (c *Client) StartFleetWithContext(ctx context.Context, input *appstream.Sta
 func (c *Client) StartImageBuilderWithContext(ctx context.Context, input *appstream.StartImageBuilderInput, opts ...request.Option) (*appstream.StartImageBuilderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "StartImageBuilderWithContext",
+		Action:  "StartImageBuilder",
 		Input:   input,
 		Output:  (*appstream.StartImageBuilderOutput)(nil),
 		Error:   nil,
@@ -897,7 +897,7 @@ func (c *Client) StartImageBuilderWithContext(ctx context.Context, input *appstr
 func (c *Client) StopFleetWithContext(ctx context.Context, input *appstream.StopFleetInput, opts ...request.Option) (*appstream.StopFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "StopFleetWithContext",
+		Action:  "StopFleet",
 		Input:   input,
 		Output:  (*appstream.StopFleetOutput)(nil),
 		Error:   nil,
@@ -918,7 +918,7 @@ func (c *Client) StopFleetWithContext(ctx context.Context, input *appstream.Stop
 func (c *Client) StopImageBuilderWithContext(ctx context.Context, input *appstream.StopImageBuilderInput, opts ...request.Option) (*appstream.StopImageBuilderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "StopImageBuilderWithContext",
+		Action:  "StopImageBuilder",
 		Input:   input,
 		Output:  (*appstream.StopImageBuilderOutput)(nil),
 		Error:   nil,
@@ -939,7 +939,7 @@ func (c *Client) StopImageBuilderWithContext(ctx context.Context, input *appstre
 func (c *Client) TagResourceWithContext(ctx context.Context, input *appstream.TagResourceInput, opts ...request.Option) (*appstream.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*appstream.TagResourceOutput)(nil),
 		Error:   nil,
@@ -960,7 +960,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *appstream.Ta
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *appstream.UntagResourceInput, opts ...request.Option) (*appstream.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*appstream.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -981,7 +981,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *appstream.
 func (c *Client) UpdateDirectoryConfigWithContext(ctx context.Context, input *appstream.UpdateDirectoryConfigInput, opts ...request.Option) (*appstream.UpdateDirectoryConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "UpdateDirectoryConfigWithContext",
+		Action:  "UpdateDirectoryConfig",
 		Input:   input,
 		Output:  (*appstream.UpdateDirectoryConfigOutput)(nil),
 		Error:   nil,
@@ -1002,7 +1002,7 @@ func (c *Client) UpdateDirectoryConfigWithContext(ctx context.Context, input *ap
 func (c *Client) UpdateFleetWithContext(ctx context.Context, input *appstream.UpdateFleetInput, opts ...request.Option) (*appstream.UpdateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "UpdateFleetWithContext",
+		Action:  "UpdateFleet",
 		Input:   input,
 		Output:  (*appstream.UpdateFleetOutput)(nil),
 		Error:   nil,
@@ -1023,7 +1023,7 @@ func (c *Client) UpdateFleetWithContext(ctx context.Context, input *appstream.Up
 func (c *Client) UpdateImagePermissionsWithContext(ctx context.Context, input *appstream.UpdateImagePermissionsInput, opts ...request.Option) (*appstream.UpdateImagePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "UpdateImagePermissionsWithContext",
+		Action:  "UpdateImagePermissions",
 		Input:   input,
 		Output:  (*appstream.UpdateImagePermissionsOutput)(nil),
 		Error:   nil,
@@ -1044,7 +1044,7 @@ func (c *Client) UpdateImagePermissionsWithContext(ctx context.Context, input *a
 func (c *Client) UpdateStackWithContext(ctx context.Context, input *appstream.UpdateStackInput, opts ...request.Option) (*appstream.UpdateStackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
-		Action:  "UpdateStackWithContext",
+		Action:  "UpdateStack",
 		Input:   input,
 		Output:  (*appstream.UpdateStackOutput)(nil),
 		Error:   nil,

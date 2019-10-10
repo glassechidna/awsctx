@@ -42,7 +42,7 @@ var _ FSx = (*Client)(nil)
 func (c *Client) CreateBackupWithContext(ctx context.Context, input *fsx.CreateBackupInput, opts ...request.Option) (*fsx.CreateBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "CreateBackupWithContext",
+		Action:  "CreateBackup",
 		Input:   input,
 		Output:  (*fsx.CreateBackupOutput)(nil),
 		Error:   nil,
@@ -63,7 +63,7 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, input *fsx.CreateB
 func (c *Client) CreateFileSystemWithContext(ctx context.Context, input *fsx.CreateFileSystemInput, opts ...request.Option) (*fsx.CreateFileSystemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "CreateFileSystemWithContext",
+		Action:  "CreateFileSystem",
 		Input:   input,
 		Output:  (*fsx.CreateFileSystemOutput)(nil),
 		Error:   nil,
@@ -84,7 +84,7 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, input *fsx.Cre
 func (c *Client) CreateFileSystemFromBackupWithContext(ctx context.Context, input *fsx.CreateFileSystemFromBackupInput, opts ...request.Option) (*fsx.CreateFileSystemFromBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "CreateFileSystemFromBackupWithContext",
+		Action:  "CreateFileSystemFromBackup",
 		Input:   input,
 		Output:  (*fsx.CreateFileSystemFromBackupOutput)(nil),
 		Error:   nil,
@@ -105,7 +105,7 @@ func (c *Client) CreateFileSystemFromBackupWithContext(ctx context.Context, inpu
 func (c *Client) DeleteBackupWithContext(ctx context.Context, input *fsx.DeleteBackupInput, opts ...request.Option) (*fsx.DeleteBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "DeleteBackupWithContext",
+		Action:  "DeleteBackup",
 		Input:   input,
 		Output:  (*fsx.DeleteBackupOutput)(nil),
 		Error:   nil,
@@ -126,7 +126,7 @@ func (c *Client) DeleteBackupWithContext(ctx context.Context, input *fsx.DeleteB
 func (c *Client) DeleteFileSystemWithContext(ctx context.Context, input *fsx.DeleteFileSystemInput, opts ...request.Option) (*fsx.DeleteFileSystemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "DeleteFileSystemWithContext",
+		Action:  "DeleteFileSystem",
 		Input:   input,
 		Output:  (*fsx.DeleteFileSystemOutput)(nil),
 		Error:   nil,
@@ -147,7 +147,7 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, input *fsx.Del
 func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, opts ...request.Option) (*fsx.DescribeBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "DescribeBackupsWithContext",
+		Action:  "DescribeBackups",
 		Input:   input,
 		Output:  (*fsx.DescribeBackupsOutput)(nil),
 		Error:   nil,
@@ -168,7 +168,7 @@ func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *fsx.Desc
 func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, opts ...request.Option) (*fsx.DescribeFileSystemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "DescribeFileSystemsWithContext",
+		Action:  "DescribeFileSystems",
 		Input:   input,
 		Output:  (*fsx.DescribeFileSystemsOutput)(nil),
 		Error:   nil,
@@ -189,7 +189,7 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, input *fsx.
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, opts ...request.Option) (*fsx.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*fsx.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -210,7 +210,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fsx.
 func (c *Client) TagResourceWithContext(ctx context.Context, input *fsx.TagResourceInput, opts ...request.Option) (*fsx.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*fsx.TagResourceOutput)(nil),
 		Error:   nil,
@@ -231,7 +231,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *fsx.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *fsx.UntagResourceInput, opts ...request.Option) (*fsx.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*fsx.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -252,7 +252,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *fsx.UntagR
 func (c *Client) UpdateFileSystemWithContext(ctx context.Context, input *fsx.UpdateFileSystemInput, opts ...request.Option) (*fsx.UpdateFileSystemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
-		Action:  "UpdateFileSystemWithContext",
+		Action:  "UpdateFileSystem",
 		Input:   input,
 		Output:  (*fsx.UpdateFileSystemOutput)(nil),
 		Error:   nil,

@@ -73,7 +73,7 @@ var _ PinpointEmail = (*Client)(nil)
 func (c *Client) CreateConfigurationSetWithContext(ctx context.Context, input *pinpointemail.CreateConfigurationSetInput, opts ...request.Option) (*pinpointemail.CreateConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "CreateConfigurationSetWithContext",
+		Action:  "CreateConfigurationSet",
 		Input:   input,
 		Output:  (*pinpointemail.CreateConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -94,7 +94,7 @@ func (c *Client) CreateConfigurationSetWithContext(ctx context.Context, input *p
 func (c *Client) CreateConfigurationSetEventDestinationWithContext(ctx context.Context, input *pinpointemail.CreateConfigurationSetEventDestinationInput, opts ...request.Option) (*pinpointemail.CreateConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "CreateConfigurationSetEventDestinationWithContext",
+		Action:  "CreateConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*pinpointemail.CreateConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -115,7 +115,7 @@ func (c *Client) CreateConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) CreateDedicatedIpPoolWithContext(ctx context.Context, input *pinpointemail.CreateDedicatedIpPoolInput, opts ...request.Option) (*pinpointemail.CreateDedicatedIpPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "CreateDedicatedIpPoolWithContext",
+		Action:  "CreateDedicatedIpPool",
 		Input:   input,
 		Output:  (*pinpointemail.CreateDedicatedIpPoolOutput)(nil),
 		Error:   nil,
@@ -136,7 +136,7 @@ func (c *Client) CreateDedicatedIpPoolWithContext(ctx context.Context, input *pi
 func (c *Client) CreateDeliverabilityTestReportWithContext(ctx context.Context, input *pinpointemail.CreateDeliverabilityTestReportInput, opts ...request.Option) (*pinpointemail.CreateDeliverabilityTestReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "CreateDeliverabilityTestReportWithContext",
+		Action:  "CreateDeliverabilityTestReport",
 		Input:   input,
 		Output:  (*pinpointemail.CreateDeliverabilityTestReportOutput)(nil),
 		Error:   nil,
@@ -157,7 +157,7 @@ func (c *Client) CreateDeliverabilityTestReportWithContext(ctx context.Context, 
 func (c *Client) CreateEmailIdentityWithContext(ctx context.Context, input *pinpointemail.CreateEmailIdentityInput, opts ...request.Option) (*pinpointemail.CreateEmailIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "CreateEmailIdentityWithContext",
+		Action:  "CreateEmailIdentity",
 		Input:   input,
 		Output:  (*pinpointemail.CreateEmailIdentityOutput)(nil),
 		Error:   nil,
@@ -178,7 +178,7 @@ func (c *Client) CreateEmailIdentityWithContext(ctx context.Context, input *pinp
 func (c *Client) DeleteConfigurationSetWithContext(ctx context.Context, input *pinpointemail.DeleteConfigurationSetInput, opts ...request.Option) (*pinpointemail.DeleteConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "DeleteConfigurationSetWithContext",
+		Action:  "DeleteConfigurationSet",
 		Input:   input,
 		Output:  (*pinpointemail.DeleteConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -199,7 +199,7 @@ func (c *Client) DeleteConfigurationSetWithContext(ctx context.Context, input *p
 func (c *Client) DeleteConfigurationSetEventDestinationWithContext(ctx context.Context, input *pinpointemail.DeleteConfigurationSetEventDestinationInput, opts ...request.Option) (*pinpointemail.DeleteConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "DeleteConfigurationSetEventDestinationWithContext",
+		Action:  "DeleteConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*pinpointemail.DeleteConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,
@@ -220,7 +220,7 @@ func (c *Client) DeleteConfigurationSetEventDestinationWithContext(ctx context.C
 func (c *Client) DeleteDedicatedIpPoolWithContext(ctx context.Context, input *pinpointemail.DeleteDedicatedIpPoolInput, opts ...request.Option) (*pinpointemail.DeleteDedicatedIpPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "DeleteDedicatedIpPoolWithContext",
+		Action:  "DeleteDedicatedIpPool",
 		Input:   input,
 		Output:  (*pinpointemail.DeleteDedicatedIpPoolOutput)(nil),
 		Error:   nil,
@@ -241,7 +241,7 @@ func (c *Client) DeleteDedicatedIpPoolWithContext(ctx context.Context, input *pi
 func (c *Client) DeleteEmailIdentityWithContext(ctx context.Context, input *pinpointemail.DeleteEmailIdentityInput, opts ...request.Option) (*pinpointemail.DeleteEmailIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "DeleteEmailIdentityWithContext",
+		Action:  "DeleteEmailIdentity",
 		Input:   input,
 		Output:  (*pinpointemail.DeleteEmailIdentityOutput)(nil),
 		Error:   nil,
@@ -262,7 +262,7 @@ func (c *Client) DeleteEmailIdentityWithContext(ctx context.Context, input *pinp
 func (c *Client) GetAccountWithContext(ctx context.Context, input *pinpointemail.GetAccountInput, opts ...request.Option) (*pinpointemail.GetAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetAccountWithContext",
+		Action:  "GetAccount",
 		Input:   input,
 		Output:  (*pinpointemail.GetAccountOutput)(nil),
 		Error:   nil,
@@ -283,7 +283,7 @@ func (c *Client) GetAccountWithContext(ctx context.Context, input *pinpointemail
 func (c *Client) GetBlacklistReportsWithContext(ctx context.Context, input *pinpointemail.GetBlacklistReportsInput, opts ...request.Option) (*pinpointemail.GetBlacklistReportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetBlacklistReportsWithContext",
+		Action:  "GetBlacklistReports",
 		Input:   input,
 		Output:  (*pinpointemail.GetBlacklistReportsOutput)(nil),
 		Error:   nil,
@@ -304,7 +304,7 @@ func (c *Client) GetBlacklistReportsWithContext(ctx context.Context, input *pinp
 func (c *Client) GetConfigurationSetWithContext(ctx context.Context, input *pinpointemail.GetConfigurationSetInput, opts ...request.Option) (*pinpointemail.GetConfigurationSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetConfigurationSetWithContext",
+		Action:  "GetConfigurationSet",
 		Input:   input,
 		Output:  (*pinpointemail.GetConfigurationSetOutput)(nil),
 		Error:   nil,
@@ -325,7 +325,7 @@ func (c *Client) GetConfigurationSetWithContext(ctx context.Context, input *pinp
 func (c *Client) GetConfigurationSetEventDestinationsWithContext(ctx context.Context, input *pinpointemail.GetConfigurationSetEventDestinationsInput, opts ...request.Option) (*pinpointemail.GetConfigurationSetEventDestinationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetConfigurationSetEventDestinationsWithContext",
+		Action:  "GetConfigurationSetEventDestinations",
 		Input:   input,
 		Output:  (*pinpointemail.GetConfigurationSetEventDestinationsOutput)(nil),
 		Error:   nil,
@@ -346,7 +346,7 @@ func (c *Client) GetConfigurationSetEventDestinationsWithContext(ctx context.Con
 func (c *Client) GetDedicatedIpWithContext(ctx context.Context, input *pinpointemail.GetDedicatedIpInput, opts ...request.Option) (*pinpointemail.GetDedicatedIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetDedicatedIpWithContext",
+		Action:  "GetDedicatedIp",
 		Input:   input,
 		Output:  (*pinpointemail.GetDedicatedIpOutput)(nil),
 		Error:   nil,
@@ -367,7 +367,7 @@ func (c *Client) GetDedicatedIpWithContext(ctx context.Context, input *pinpointe
 func (c *Client) GetDedicatedIpsWithContext(ctx context.Context, input *pinpointemail.GetDedicatedIpsInput, opts ...request.Option) (*pinpointemail.GetDedicatedIpsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetDedicatedIpsWithContext",
+		Action:  "GetDedicatedIps",
 		Input:   input,
 		Output:  (*pinpointemail.GetDedicatedIpsOutput)(nil),
 		Error:   nil,
@@ -388,7 +388,7 @@ func (c *Client) GetDedicatedIpsWithContext(ctx context.Context, input *pinpoint
 func (c *Client) GetDeliverabilityDashboardOptionsWithContext(ctx context.Context, input *pinpointemail.GetDeliverabilityDashboardOptionsInput, opts ...request.Option) (*pinpointemail.GetDeliverabilityDashboardOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetDeliverabilityDashboardOptionsWithContext",
+		Action:  "GetDeliverabilityDashboardOptions",
 		Input:   input,
 		Output:  (*pinpointemail.GetDeliverabilityDashboardOptionsOutput)(nil),
 		Error:   nil,
@@ -409,7 +409,7 @@ func (c *Client) GetDeliverabilityDashboardOptionsWithContext(ctx context.Contex
 func (c *Client) GetDeliverabilityTestReportWithContext(ctx context.Context, input *pinpointemail.GetDeliverabilityTestReportInput, opts ...request.Option) (*pinpointemail.GetDeliverabilityTestReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetDeliverabilityTestReportWithContext",
+		Action:  "GetDeliverabilityTestReport",
 		Input:   input,
 		Output:  (*pinpointemail.GetDeliverabilityTestReportOutput)(nil),
 		Error:   nil,
@@ -430,7 +430,7 @@ func (c *Client) GetDeliverabilityTestReportWithContext(ctx context.Context, inp
 func (c *Client) GetDomainDeliverabilityCampaignWithContext(ctx context.Context, input *pinpointemail.GetDomainDeliverabilityCampaignInput, opts ...request.Option) (*pinpointemail.GetDomainDeliverabilityCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetDomainDeliverabilityCampaignWithContext",
+		Action:  "GetDomainDeliverabilityCampaign",
 		Input:   input,
 		Output:  (*pinpointemail.GetDomainDeliverabilityCampaignOutput)(nil),
 		Error:   nil,
@@ -451,7 +451,7 @@ func (c *Client) GetDomainDeliverabilityCampaignWithContext(ctx context.Context,
 func (c *Client) GetDomainStatisticsReportWithContext(ctx context.Context, input *pinpointemail.GetDomainStatisticsReportInput, opts ...request.Option) (*pinpointemail.GetDomainStatisticsReportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetDomainStatisticsReportWithContext",
+		Action:  "GetDomainStatisticsReport",
 		Input:   input,
 		Output:  (*pinpointemail.GetDomainStatisticsReportOutput)(nil),
 		Error:   nil,
@@ -472,7 +472,7 @@ func (c *Client) GetDomainStatisticsReportWithContext(ctx context.Context, input
 func (c *Client) GetEmailIdentityWithContext(ctx context.Context, input *pinpointemail.GetEmailIdentityInput, opts ...request.Option) (*pinpointemail.GetEmailIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "GetEmailIdentityWithContext",
+		Action:  "GetEmailIdentity",
 		Input:   input,
 		Output:  (*pinpointemail.GetEmailIdentityOutput)(nil),
 		Error:   nil,
@@ -493,7 +493,7 @@ func (c *Client) GetEmailIdentityWithContext(ctx context.Context, input *pinpoin
 func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *pinpointemail.ListConfigurationSetsInput, opts ...request.Option) (*pinpointemail.ListConfigurationSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "ListConfigurationSetsWithContext",
+		Action:  "ListConfigurationSets",
 		Input:   input,
 		Output:  (*pinpointemail.ListConfigurationSetsOutput)(nil),
 		Error:   nil,
@@ -514,7 +514,7 @@ func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *pi
 func (c *Client) ListDedicatedIpPoolsWithContext(ctx context.Context, input *pinpointemail.ListDedicatedIpPoolsInput, opts ...request.Option) (*pinpointemail.ListDedicatedIpPoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "ListDedicatedIpPoolsWithContext",
+		Action:  "ListDedicatedIpPools",
 		Input:   input,
 		Output:  (*pinpointemail.ListDedicatedIpPoolsOutput)(nil),
 		Error:   nil,
@@ -535,7 +535,7 @@ func (c *Client) ListDedicatedIpPoolsWithContext(ctx context.Context, input *pin
 func (c *Client) ListDeliverabilityTestReportsWithContext(ctx context.Context, input *pinpointemail.ListDeliverabilityTestReportsInput, opts ...request.Option) (*pinpointemail.ListDeliverabilityTestReportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "ListDeliverabilityTestReportsWithContext",
+		Action:  "ListDeliverabilityTestReports",
 		Input:   input,
 		Output:  (*pinpointemail.ListDeliverabilityTestReportsOutput)(nil),
 		Error:   nil,
@@ -556,7 +556,7 @@ func (c *Client) ListDeliverabilityTestReportsWithContext(ctx context.Context, i
 func (c *Client) ListDomainDeliverabilityCampaignsWithContext(ctx context.Context, input *pinpointemail.ListDomainDeliverabilityCampaignsInput, opts ...request.Option) (*pinpointemail.ListDomainDeliverabilityCampaignsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "ListDomainDeliverabilityCampaignsWithContext",
+		Action:  "ListDomainDeliverabilityCampaigns",
 		Input:   input,
 		Output:  (*pinpointemail.ListDomainDeliverabilityCampaignsOutput)(nil),
 		Error:   nil,
@@ -577,7 +577,7 @@ func (c *Client) ListDomainDeliverabilityCampaignsWithContext(ctx context.Contex
 func (c *Client) ListEmailIdentitiesWithContext(ctx context.Context, input *pinpointemail.ListEmailIdentitiesInput, opts ...request.Option) (*pinpointemail.ListEmailIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "ListEmailIdentitiesWithContext",
+		Action:  "ListEmailIdentities",
 		Input:   input,
 		Output:  (*pinpointemail.ListEmailIdentitiesOutput)(nil),
 		Error:   nil,
@@ -598,7 +598,7 @@ func (c *Client) ListEmailIdentitiesWithContext(ctx context.Context, input *pinp
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinpointemail.ListTagsForResourceInput, opts ...request.Option) (*pinpointemail.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*pinpointemail.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -619,7 +619,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinp
 func (c *Client) PutAccountDedicatedIpWarmupAttributesWithContext(ctx context.Context, input *pinpointemail.PutAccountDedicatedIpWarmupAttributesInput, opts ...request.Option) (*pinpointemail.PutAccountDedicatedIpWarmupAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutAccountDedicatedIpWarmupAttributesWithContext",
+		Action:  "PutAccountDedicatedIpWarmupAttributes",
 		Input:   input,
 		Output:  (*pinpointemail.PutAccountDedicatedIpWarmupAttributesOutput)(nil),
 		Error:   nil,
@@ -640,7 +640,7 @@ func (c *Client) PutAccountDedicatedIpWarmupAttributesWithContext(ctx context.Co
 func (c *Client) PutAccountSendingAttributesWithContext(ctx context.Context, input *pinpointemail.PutAccountSendingAttributesInput, opts ...request.Option) (*pinpointemail.PutAccountSendingAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutAccountSendingAttributesWithContext",
+		Action:  "PutAccountSendingAttributes",
 		Input:   input,
 		Output:  (*pinpointemail.PutAccountSendingAttributesOutput)(nil),
 		Error:   nil,
@@ -661,7 +661,7 @@ func (c *Client) PutAccountSendingAttributesWithContext(ctx context.Context, inp
 func (c *Client) PutConfigurationSetDeliveryOptionsWithContext(ctx context.Context, input *pinpointemail.PutConfigurationSetDeliveryOptionsInput, opts ...request.Option) (*pinpointemail.PutConfigurationSetDeliveryOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutConfigurationSetDeliveryOptionsWithContext",
+		Action:  "PutConfigurationSetDeliveryOptions",
 		Input:   input,
 		Output:  (*pinpointemail.PutConfigurationSetDeliveryOptionsOutput)(nil),
 		Error:   nil,
@@ -682,7 +682,7 @@ func (c *Client) PutConfigurationSetDeliveryOptionsWithContext(ctx context.Conte
 func (c *Client) PutConfigurationSetReputationOptionsWithContext(ctx context.Context, input *pinpointemail.PutConfigurationSetReputationOptionsInput, opts ...request.Option) (*pinpointemail.PutConfigurationSetReputationOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutConfigurationSetReputationOptionsWithContext",
+		Action:  "PutConfigurationSetReputationOptions",
 		Input:   input,
 		Output:  (*pinpointemail.PutConfigurationSetReputationOptionsOutput)(nil),
 		Error:   nil,
@@ -703,7 +703,7 @@ func (c *Client) PutConfigurationSetReputationOptionsWithContext(ctx context.Con
 func (c *Client) PutConfigurationSetSendingOptionsWithContext(ctx context.Context, input *pinpointemail.PutConfigurationSetSendingOptionsInput, opts ...request.Option) (*pinpointemail.PutConfigurationSetSendingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutConfigurationSetSendingOptionsWithContext",
+		Action:  "PutConfigurationSetSendingOptions",
 		Input:   input,
 		Output:  (*pinpointemail.PutConfigurationSetSendingOptionsOutput)(nil),
 		Error:   nil,
@@ -724,7 +724,7 @@ func (c *Client) PutConfigurationSetSendingOptionsWithContext(ctx context.Contex
 func (c *Client) PutConfigurationSetTrackingOptionsWithContext(ctx context.Context, input *pinpointemail.PutConfigurationSetTrackingOptionsInput, opts ...request.Option) (*pinpointemail.PutConfigurationSetTrackingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutConfigurationSetTrackingOptionsWithContext",
+		Action:  "PutConfigurationSetTrackingOptions",
 		Input:   input,
 		Output:  (*pinpointemail.PutConfigurationSetTrackingOptionsOutput)(nil),
 		Error:   nil,
@@ -745,7 +745,7 @@ func (c *Client) PutConfigurationSetTrackingOptionsWithContext(ctx context.Conte
 func (c *Client) PutDedicatedIpInPoolWithContext(ctx context.Context, input *pinpointemail.PutDedicatedIpInPoolInput, opts ...request.Option) (*pinpointemail.PutDedicatedIpInPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutDedicatedIpInPoolWithContext",
+		Action:  "PutDedicatedIpInPool",
 		Input:   input,
 		Output:  (*pinpointemail.PutDedicatedIpInPoolOutput)(nil),
 		Error:   nil,
@@ -766,7 +766,7 @@ func (c *Client) PutDedicatedIpInPoolWithContext(ctx context.Context, input *pin
 func (c *Client) PutDedicatedIpWarmupAttributesWithContext(ctx context.Context, input *pinpointemail.PutDedicatedIpWarmupAttributesInput, opts ...request.Option) (*pinpointemail.PutDedicatedIpWarmupAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutDedicatedIpWarmupAttributesWithContext",
+		Action:  "PutDedicatedIpWarmupAttributes",
 		Input:   input,
 		Output:  (*pinpointemail.PutDedicatedIpWarmupAttributesOutput)(nil),
 		Error:   nil,
@@ -787,7 +787,7 @@ func (c *Client) PutDedicatedIpWarmupAttributesWithContext(ctx context.Context, 
 func (c *Client) PutDeliverabilityDashboardOptionWithContext(ctx context.Context, input *pinpointemail.PutDeliverabilityDashboardOptionInput, opts ...request.Option) (*pinpointemail.PutDeliverabilityDashboardOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutDeliverabilityDashboardOptionWithContext",
+		Action:  "PutDeliverabilityDashboardOption",
 		Input:   input,
 		Output:  (*pinpointemail.PutDeliverabilityDashboardOptionOutput)(nil),
 		Error:   nil,
@@ -808,7 +808,7 @@ func (c *Client) PutDeliverabilityDashboardOptionWithContext(ctx context.Context
 func (c *Client) PutEmailIdentityDkimAttributesWithContext(ctx context.Context, input *pinpointemail.PutEmailIdentityDkimAttributesInput, opts ...request.Option) (*pinpointemail.PutEmailIdentityDkimAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutEmailIdentityDkimAttributesWithContext",
+		Action:  "PutEmailIdentityDkimAttributes",
 		Input:   input,
 		Output:  (*pinpointemail.PutEmailIdentityDkimAttributesOutput)(nil),
 		Error:   nil,
@@ -829,7 +829,7 @@ func (c *Client) PutEmailIdentityDkimAttributesWithContext(ctx context.Context, 
 func (c *Client) PutEmailIdentityFeedbackAttributesWithContext(ctx context.Context, input *pinpointemail.PutEmailIdentityFeedbackAttributesInput, opts ...request.Option) (*pinpointemail.PutEmailIdentityFeedbackAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutEmailIdentityFeedbackAttributesWithContext",
+		Action:  "PutEmailIdentityFeedbackAttributes",
 		Input:   input,
 		Output:  (*pinpointemail.PutEmailIdentityFeedbackAttributesOutput)(nil),
 		Error:   nil,
@@ -850,7 +850,7 @@ func (c *Client) PutEmailIdentityFeedbackAttributesWithContext(ctx context.Conte
 func (c *Client) PutEmailIdentityMailFromAttributesWithContext(ctx context.Context, input *pinpointemail.PutEmailIdentityMailFromAttributesInput, opts ...request.Option) (*pinpointemail.PutEmailIdentityMailFromAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "PutEmailIdentityMailFromAttributesWithContext",
+		Action:  "PutEmailIdentityMailFromAttributes",
 		Input:   input,
 		Output:  (*pinpointemail.PutEmailIdentityMailFromAttributesOutput)(nil),
 		Error:   nil,
@@ -871,7 +871,7 @@ func (c *Client) PutEmailIdentityMailFromAttributesWithContext(ctx context.Conte
 func (c *Client) SendEmailWithContext(ctx context.Context, input *pinpointemail.SendEmailInput, opts ...request.Option) (*pinpointemail.SendEmailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "SendEmailWithContext",
+		Action:  "SendEmail",
 		Input:   input,
 		Output:  (*pinpointemail.SendEmailOutput)(nil),
 		Error:   nil,
@@ -892,7 +892,7 @@ func (c *Client) SendEmailWithContext(ctx context.Context, input *pinpointemail.
 func (c *Client) TagResourceWithContext(ctx context.Context, input *pinpointemail.TagResourceInput, opts ...request.Option) (*pinpointemail.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*pinpointemail.TagResourceOutput)(nil),
 		Error:   nil,
@@ -913,7 +913,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *pinpointemai
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *pinpointemail.UntagResourceInput, opts ...request.Option) (*pinpointemail.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*pinpointemail.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -934,7 +934,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *pinpointem
 func (c *Client) UpdateConfigurationSetEventDestinationWithContext(ctx context.Context, input *pinpointemail.UpdateConfigurationSetEventDestinationInput, opts ...request.Option) (*pinpointemail.UpdateConfigurationSetEventDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
-		Action:  "UpdateConfigurationSetEventDestinationWithContext",
+		Action:  "UpdateConfigurationSetEventDestination",
 		Input:   input,
 		Output:  (*pinpointemail.UpdateConfigurationSetEventDestinationOutput)(nil),
 		Error:   nil,

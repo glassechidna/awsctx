@@ -151,7 +151,7 @@ var _ SSM = (*Client)(nil)
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *ssm.AddTagsToResourceInput, opts ...request.Option) (*ssm.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*ssm.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *ssm.Ad
 func (c *Client) CancelCommandWithContext(ctx context.Context, input *ssm.CancelCommandInput, opts ...request.Option) (*ssm.CancelCommandOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CancelCommandWithContext",
+		Action:  "CancelCommand",
 		Input:   input,
 		Output:  (*ssm.CancelCommandOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) CancelCommandWithContext(ctx context.Context, input *ssm.Cancel
 func (c *Client) CancelMaintenanceWindowExecutionWithContext(ctx context.Context, input *ssm.CancelMaintenanceWindowExecutionInput, opts ...request.Option) (*ssm.CancelMaintenanceWindowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CancelMaintenanceWindowExecutionWithContext",
+		Action:  "CancelMaintenanceWindowExecution",
 		Input:   input,
 		Output:  (*ssm.CancelMaintenanceWindowExecutionOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) CancelMaintenanceWindowExecutionWithContext(ctx context.Context
 func (c *Client) CreateActivationWithContext(ctx context.Context, input *ssm.CreateActivationInput, opts ...request.Option) (*ssm.CreateActivationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateActivationWithContext",
+		Action:  "CreateActivation",
 		Input:   input,
 		Output:  (*ssm.CreateActivationOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) CreateActivationWithContext(ctx context.Context, input *ssm.Cre
 func (c *Client) CreateAssociationWithContext(ctx context.Context, input *ssm.CreateAssociationInput, opts ...request.Option) (*ssm.CreateAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateAssociationWithContext",
+		Action:  "CreateAssociation",
 		Input:   input,
 		Output:  (*ssm.CreateAssociationOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) CreateAssociationWithContext(ctx context.Context, input *ssm.Cr
 func (c *Client) CreateAssociationBatchWithContext(ctx context.Context, input *ssm.CreateAssociationBatchInput, opts ...request.Option) (*ssm.CreateAssociationBatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateAssociationBatchWithContext",
+		Action:  "CreateAssociationBatch",
 		Input:   input,
 		Output:  (*ssm.CreateAssociationBatchOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) CreateAssociationBatchWithContext(ctx context.Context, input *s
 func (c *Client) CreateDocumentWithContext(ctx context.Context, input *ssm.CreateDocumentInput, opts ...request.Option) (*ssm.CreateDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateDocumentWithContext",
+		Action:  "CreateDocument",
 		Input:   input,
 		Output:  (*ssm.CreateDocumentOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, input *ssm.Creat
 func (c *Client) CreateMaintenanceWindowWithContext(ctx context.Context, input *ssm.CreateMaintenanceWindowInput, opts ...request.Option) (*ssm.CreateMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateMaintenanceWindowWithContext",
+		Action:  "CreateMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.CreateMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) CreateMaintenanceWindowWithContext(ctx context.Context, input *
 func (c *Client) CreateOpsItemWithContext(ctx context.Context, input *ssm.CreateOpsItemInput, opts ...request.Option) (*ssm.CreateOpsItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateOpsItemWithContext",
+		Action:  "CreateOpsItem",
 		Input:   input,
 		Output:  (*ssm.CreateOpsItemOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) CreateOpsItemWithContext(ctx context.Context, input *ssm.Create
 func (c *Client) CreatePatchBaselineWithContext(ctx context.Context, input *ssm.CreatePatchBaselineInput, opts ...request.Option) (*ssm.CreatePatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreatePatchBaselineWithContext",
+		Action:  "CreatePatchBaseline",
 		Input:   input,
 		Output:  (*ssm.CreatePatchBaselineOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) CreatePatchBaselineWithContext(ctx context.Context, input *ssm.
 func (c *Client) CreateResourceDataSyncWithContext(ctx context.Context, input *ssm.CreateResourceDataSyncInput, opts ...request.Option) (*ssm.CreateResourceDataSyncOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "CreateResourceDataSyncWithContext",
+		Action:  "CreateResourceDataSync",
 		Input:   input,
 		Output:  (*ssm.CreateResourceDataSyncOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) CreateResourceDataSyncWithContext(ctx context.Context, input *s
 func (c *Client) DeleteActivationWithContext(ctx context.Context, input *ssm.DeleteActivationInput, opts ...request.Option) (*ssm.DeleteActivationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteActivationWithContext",
+		Action:  "DeleteActivation",
 		Input:   input,
 		Output:  (*ssm.DeleteActivationOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) DeleteActivationWithContext(ctx context.Context, input *ssm.Del
 func (c *Client) DeleteAssociationWithContext(ctx context.Context, input *ssm.DeleteAssociationInput, opts ...request.Option) (*ssm.DeleteAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteAssociationWithContext",
+		Action:  "DeleteAssociation",
 		Input:   input,
 		Output:  (*ssm.DeleteAssociationOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) DeleteAssociationWithContext(ctx context.Context, input *ssm.De
 func (c *Client) DeleteDocumentWithContext(ctx context.Context, input *ssm.DeleteDocumentInput, opts ...request.Option) (*ssm.DeleteDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteDocumentWithContext",
+		Action:  "DeleteDocument",
 		Input:   input,
 		Output:  (*ssm.DeleteDocumentOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) DeleteDocumentWithContext(ctx context.Context, input *ssm.Delet
 func (c *Client) DeleteInventoryWithContext(ctx context.Context, input *ssm.DeleteInventoryInput, opts ...request.Option) (*ssm.DeleteInventoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteInventoryWithContext",
+		Action:  "DeleteInventory",
 		Input:   input,
 		Output:  (*ssm.DeleteInventoryOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) DeleteInventoryWithContext(ctx context.Context, input *ssm.Dele
 func (c *Client) DeleteMaintenanceWindowWithContext(ctx context.Context, input *ssm.DeleteMaintenanceWindowInput, opts ...request.Option) (*ssm.DeleteMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteMaintenanceWindowWithContext",
+		Action:  "DeleteMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.DeleteMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) DeleteMaintenanceWindowWithContext(ctx context.Context, input *
 func (c *Client) DeleteParameterWithContext(ctx context.Context, input *ssm.DeleteParameterInput, opts ...request.Option) (*ssm.DeleteParameterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteParameterWithContext",
+		Action:  "DeleteParameter",
 		Input:   input,
 		Output:  (*ssm.DeleteParameterOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) DeleteParameterWithContext(ctx context.Context, input *ssm.Dele
 func (c *Client) DeleteParametersWithContext(ctx context.Context, input *ssm.DeleteParametersInput, opts ...request.Option) (*ssm.DeleteParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteParametersWithContext",
+		Action:  "DeleteParameters",
 		Input:   input,
 		Output:  (*ssm.DeleteParametersOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) DeleteParametersWithContext(ctx context.Context, input *ssm.Del
 func (c *Client) DeletePatchBaselineWithContext(ctx context.Context, input *ssm.DeletePatchBaselineInput, opts ...request.Option) (*ssm.DeletePatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeletePatchBaselineWithContext",
+		Action:  "DeletePatchBaseline",
 		Input:   input,
 		Output:  (*ssm.DeletePatchBaselineOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) DeletePatchBaselineWithContext(ctx context.Context, input *ssm.
 func (c *Client) DeleteResourceDataSyncWithContext(ctx context.Context, input *ssm.DeleteResourceDataSyncInput, opts ...request.Option) (*ssm.DeleteResourceDataSyncOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeleteResourceDataSyncWithContext",
+		Action:  "DeleteResourceDataSync",
 		Input:   input,
 		Output:  (*ssm.DeleteResourceDataSyncOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) DeleteResourceDataSyncWithContext(ctx context.Context, input *s
 func (c *Client) DeregisterManagedInstanceWithContext(ctx context.Context, input *ssm.DeregisterManagedInstanceInput, opts ...request.Option) (*ssm.DeregisterManagedInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeregisterManagedInstanceWithContext",
+		Action:  "DeregisterManagedInstance",
 		Input:   input,
 		Output:  (*ssm.DeregisterManagedInstanceOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) DeregisterManagedInstanceWithContext(ctx context.Context, input
 func (c *Client) DeregisterPatchBaselineForPatchGroupWithContext(ctx context.Context, input *ssm.DeregisterPatchBaselineForPatchGroupInput, opts ...request.Option) (*ssm.DeregisterPatchBaselineForPatchGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeregisterPatchBaselineForPatchGroupWithContext",
+		Action:  "DeregisterPatchBaselineForPatchGroup",
 		Input:   input,
 		Output:  (*ssm.DeregisterPatchBaselineForPatchGroupOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) DeregisterPatchBaselineForPatchGroupWithContext(ctx context.Con
 func (c *Client) DeregisterTargetFromMaintenanceWindowWithContext(ctx context.Context, input *ssm.DeregisterTargetFromMaintenanceWindowInput, opts ...request.Option) (*ssm.DeregisterTargetFromMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeregisterTargetFromMaintenanceWindowWithContext",
+		Action:  "DeregisterTargetFromMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.DeregisterTargetFromMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) DeregisterTargetFromMaintenanceWindowWithContext(ctx context.Co
 func (c *Client) DeregisterTaskFromMaintenanceWindowWithContext(ctx context.Context, input *ssm.DeregisterTaskFromMaintenanceWindowInput, opts ...request.Option) (*ssm.DeregisterTaskFromMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DeregisterTaskFromMaintenanceWindowWithContext",
+		Action:  "DeregisterTaskFromMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.DeregisterTaskFromMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) DeregisterTaskFromMaintenanceWindowWithContext(ctx context.Cont
 func (c *Client) DescribeActivationsWithContext(ctx context.Context, input *ssm.DescribeActivationsInput, opts ...request.Option) (*ssm.DescribeActivationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeActivationsWithContext",
+		Action:  "DescribeActivations",
 		Input:   input,
 		Output:  (*ssm.DescribeActivationsOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) DescribeActivationsWithContext(ctx context.Context, input *ssm.
 func (c *Client) DescribeAssociationWithContext(ctx context.Context, input *ssm.DescribeAssociationInput, opts ...request.Option) (*ssm.DescribeAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeAssociationWithContext",
+		Action:  "DescribeAssociation",
 		Input:   input,
 		Output:  (*ssm.DescribeAssociationOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) DescribeAssociationWithContext(ctx context.Context, input *ssm.
 func (c *Client) DescribeAssociationExecutionTargetsWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionTargetsInput, opts ...request.Option) (*ssm.DescribeAssociationExecutionTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeAssociationExecutionTargetsWithContext",
+		Action:  "DescribeAssociationExecutionTargets",
 		Input:   input,
 		Output:  (*ssm.DescribeAssociationExecutionTargetsOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) DescribeAssociationExecutionTargetsWithContext(ctx context.Cont
 func (c *Client) DescribeAssociationExecutionsWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionsInput, opts ...request.Option) (*ssm.DescribeAssociationExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeAssociationExecutionsWithContext",
+		Action:  "DescribeAssociationExecutions",
 		Input:   input,
 		Output:  (*ssm.DescribeAssociationExecutionsOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) DescribeAssociationExecutionsWithContext(ctx context.Context, i
 func (c *Client) DescribeAutomationExecutionsWithContext(ctx context.Context, input *ssm.DescribeAutomationExecutionsInput, opts ...request.Option) (*ssm.DescribeAutomationExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeAutomationExecutionsWithContext",
+		Action:  "DescribeAutomationExecutions",
 		Input:   input,
 		Output:  (*ssm.DescribeAutomationExecutionsOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) DescribeAutomationExecutionsWithContext(ctx context.Context, in
 func (c *Client) DescribeAutomationStepExecutionsWithContext(ctx context.Context, input *ssm.DescribeAutomationStepExecutionsInput, opts ...request.Option) (*ssm.DescribeAutomationStepExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeAutomationStepExecutionsWithContext",
+		Action:  "DescribeAutomationStepExecutions",
 		Input:   input,
 		Output:  (*ssm.DescribeAutomationStepExecutionsOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) DescribeAutomationStepExecutionsWithContext(ctx context.Context
 func (c *Client) DescribeAvailablePatchesWithContext(ctx context.Context, input *ssm.DescribeAvailablePatchesInput, opts ...request.Option) (*ssm.DescribeAvailablePatchesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeAvailablePatchesWithContext",
+		Action:  "DescribeAvailablePatches",
 		Input:   input,
 		Output:  (*ssm.DescribeAvailablePatchesOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) DescribeAvailablePatchesWithContext(ctx context.Context, input 
 func (c *Client) DescribeDocumentWithContext(ctx context.Context, input *ssm.DescribeDocumentInput, opts ...request.Option) (*ssm.DescribeDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeDocumentWithContext",
+		Action:  "DescribeDocument",
 		Input:   input,
 		Output:  (*ssm.DescribeDocumentOutput)(nil),
 		Error:   nil,
@@ -823,7 +823,7 @@ func (c *Client) DescribeDocumentWithContext(ctx context.Context, input *ssm.Des
 func (c *Client) DescribeDocumentPermissionWithContext(ctx context.Context, input *ssm.DescribeDocumentPermissionInput, opts ...request.Option) (*ssm.DescribeDocumentPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeDocumentPermissionWithContext",
+		Action:  "DescribeDocumentPermission",
 		Input:   input,
 		Output:  (*ssm.DescribeDocumentPermissionOutput)(nil),
 		Error:   nil,
@@ -844,7 +844,7 @@ func (c *Client) DescribeDocumentPermissionWithContext(ctx context.Context, inpu
 func (c *Client) DescribeEffectiveInstanceAssociationsWithContext(ctx context.Context, input *ssm.DescribeEffectiveInstanceAssociationsInput, opts ...request.Option) (*ssm.DescribeEffectiveInstanceAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeEffectiveInstanceAssociationsWithContext",
+		Action:  "DescribeEffectiveInstanceAssociations",
 		Input:   input,
 		Output:  (*ssm.DescribeEffectiveInstanceAssociationsOutput)(nil),
 		Error:   nil,
@@ -865,7 +865,7 @@ func (c *Client) DescribeEffectiveInstanceAssociationsWithContext(ctx context.Co
 func (c *Client) DescribeEffectivePatchesForPatchBaselineWithContext(ctx context.Context, input *ssm.DescribeEffectivePatchesForPatchBaselineInput, opts ...request.Option) (*ssm.DescribeEffectivePatchesForPatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeEffectivePatchesForPatchBaselineWithContext",
+		Action:  "DescribeEffectivePatchesForPatchBaseline",
 		Input:   input,
 		Output:  (*ssm.DescribeEffectivePatchesForPatchBaselineOutput)(nil),
 		Error:   nil,
@@ -886,7 +886,7 @@ func (c *Client) DescribeEffectivePatchesForPatchBaselineWithContext(ctx context
 func (c *Client) DescribeInstanceAssociationsStatusWithContext(ctx context.Context, input *ssm.DescribeInstanceAssociationsStatusInput, opts ...request.Option) (*ssm.DescribeInstanceAssociationsStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeInstanceAssociationsStatusWithContext",
+		Action:  "DescribeInstanceAssociationsStatus",
 		Input:   input,
 		Output:  (*ssm.DescribeInstanceAssociationsStatusOutput)(nil),
 		Error:   nil,
@@ -907,7 +907,7 @@ func (c *Client) DescribeInstanceAssociationsStatusWithContext(ctx context.Conte
 func (c *Client) DescribeInstanceInformationWithContext(ctx context.Context, input *ssm.DescribeInstanceInformationInput, opts ...request.Option) (*ssm.DescribeInstanceInformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeInstanceInformationWithContext",
+		Action:  "DescribeInstanceInformation",
 		Input:   input,
 		Output:  (*ssm.DescribeInstanceInformationOutput)(nil),
 		Error:   nil,
@@ -928,7 +928,7 @@ func (c *Client) DescribeInstanceInformationWithContext(ctx context.Context, inp
 func (c *Client) DescribeInstancePatchStatesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesInput, opts ...request.Option) (*ssm.DescribeInstancePatchStatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeInstancePatchStatesWithContext",
+		Action:  "DescribeInstancePatchStates",
 		Input:   input,
 		Output:  (*ssm.DescribeInstancePatchStatesOutput)(nil),
 		Error:   nil,
@@ -949,7 +949,7 @@ func (c *Client) DescribeInstancePatchStatesWithContext(ctx context.Context, inp
 func (c *Client) DescribeInstancePatchStatesForPatchGroupWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesForPatchGroupInput, opts ...request.Option) (*ssm.DescribeInstancePatchStatesForPatchGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeInstancePatchStatesForPatchGroupWithContext",
+		Action:  "DescribeInstancePatchStatesForPatchGroup",
 		Input:   input,
 		Output:  (*ssm.DescribeInstancePatchStatesForPatchGroupOutput)(nil),
 		Error:   nil,
@@ -970,7 +970,7 @@ func (c *Client) DescribeInstancePatchStatesForPatchGroupWithContext(ctx context
 func (c *Client) DescribeInstancePatchesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchesInput, opts ...request.Option) (*ssm.DescribeInstancePatchesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeInstancePatchesWithContext",
+		Action:  "DescribeInstancePatches",
 		Input:   input,
 		Output:  (*ssm.DescribeInstancePatchesOutput)(nil),
 		Error:   nil,
@@ -991,7 +991,7 @@ func (c *Client) DescribeInstancePatchesWithContext(ctx context.Context, input *
 func (c *Client) DescribeInventoryDeletionsWithContext(ctx context.Context, input *ssm.DescribeInventoryDeletionsInput, opts ...request.Option) (*ssm.DescribeInventoryDeletionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeInventoryDeletionsWithContext",
+		Action:  "DescribeInventoryDeletions",
 		Input:   input,
 		Output:  (*ssm.DescribeInventoryDeletionsOutput)(nil),
 		Error:   nil,
@@ -1012,7 +1012,7 @@ func (c *Client) DescribeInventoryDeletionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowExecutionTaskInvocationsWithContext",
+		Action:  "DescribeMaintenanceWindowExecutionTaskInvocations",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput)(nil),
 		Error:   nil,
@@ -1033,7 +1033,7 @@ func (c *Client) DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(ct
 func (c *Client) DescribeMaintenanceWindowExecutionTasksWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTasksInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowExecutionTasksWithContext",
+		Action:  "DescribeMaintenanceWindowExecutionTasks",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowExecutionTasksOutput)(nil),
 		Error:   nil,
@@ -1054,7 +1054,7 @@ func (c *Client) DescribeMaintenanceWindowExecutionTasksWithContext(ctx context.
 func (c *Client) DescribeMaintenanceWindowExecutionsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowExecutionsWithContext",
+		Action:  "DescribeMaintenanceWindowExecutions",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowExecutionsOutput)(nil),
 		Error:   nil,
@@ -1075,7 +1075,7 @@ func (c *Client) DescribeMaintenanceWindowExecutionsWithContext(ctx context.Cont
 func (c *Client) DescribeMaintenanceWindowScheduleWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowScheduleInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowScheduleWithContext",
+		Action:  "DescribeMaintenanceWindowSchedule",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowScheduleOutput)(nil),
 		Error:   nil,
@@ -1096,7 +1096,7 @@ func (c *Client) DescribeMaintenanceWindowScheduleWithContext(ctx context.Contex
 func (c *Client) DescribeMaintenanceWindowTargetsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTargetsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowTargetsWithContext",
+		Action:  "DescribeMaintenanceWindowTargets",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowTargetsOutput)(nil),
 		Error:   nil,
@@ -1117,7 +1117,7 @@ func (c *Client) DescribeMaintenanceWindowTargetsWithContext(ctx context.Context
 func (c *Client) DescribeMaintenanceWindowTasksWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTasksInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowTasksWithContext",
+		Action:  "DescribeMaintenanceWindowTasks",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowTasksOutput)(nil),
 		Error:   nil,
@@ -1138,7 +1138,7 @@ func (c *Client) DescribeMaintenanceWindowTasksWithContext(ctx context.Context, 
 func (c *Client) DescribeMaintenanceWindowsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowsWithContext",
+		Action:  "DescribeMaintenanceWindows",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowsOutput)(nil),
 		Error:   nil,
@@ -1159,7 +1159,7 @@ func (c *Client) DescribeMaintenanceWindowsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeMaintenanceWindowsForTargetWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsForTargetInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeMaintenanceWindowsForTargetWithContext",
+		Action:  "DescribeMaintenanceWindowsForTarget",
 		Input:   input,
 		Output:  (*ssm.DescribeMaintenanceWindowsForTargetOutput)(nil),
 		Error:   nil,
@@ -1180,7 +1180,7 @@ func (c *Client) DescribeMaintenanceWindowsForTargetWithContext(ctx context.Cont
 func (c *Client) DescribeOpsItemsWithContext(ctx context.Context, input *ssm.DescribeOpsItemsInput, opts ...request.Option) (*ssm.DescribeOpsItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeOpsItemsWithContext",
+		Action:  "DescribeOpsItems",
 		Input:   input,
 		Output:  (*ssm.DescribeOpsItemsOutput)(nil),
 		Error:   nil,
@@ -1201,7 +1201,7 @@ func (c *Client) DescribeOpsItemsWithContext(ctx context.Context, input *ssm.Des
 func (c *Client) DescribeParametersWithContext(ctx context.Context, input *ssm.DescribeParametersInput, opts ...request.Option) (*ssm.DescribeParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeParametersWithContext",
+		Action:  "DescribeParameters",
 		Input:   input,
 		Output:  (*ssm.DescribeParametersOutput)(nil),
 		Error:   nil,
@@ -1222,7 +1222,7 @@ func (c *Client) DescribeParametersWithContext(ctx context.Context, input *ssm.D
 func (c *Client) DescribePatchBaselinesWithContext(ctx context.Context, input *ssm.DescribePatchBaselinesInput, opts ...request.Option) (*ssm.DescribePatchBaselinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribePatchBaselinesWithContext",
+		Action:  "DescribePatchBaselines",
 		Input:   input,
 		Output:  (*ssm.DescribePatchBaselinesOutput)(nil),
 		Error:   nil,
@@ -1243,7 +1243,7 @@ func (c *Client) DescribePatchBaselinesWithContext(ctx context.Context, input *s
 func (c *Client) DescribePatchGroupStateWithContext(ctx context.Context, input *ssm.DescribePatchGroupStateInput, opts ...request.Option) (*ssm.DescribePatchGroupStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribePatchGroupStateWithContext",
+		Action:  "DescribePatchGroupState",
 		Input:   input,
 		Output:  (*ssm.DescribePatchGroupStateOutput)(nil),
 		Error:   nil,
@@ -1264,7 +1264,7 @@ func (c *Client) DescribePatchGroupStateWithContext(ctx context.Context, input *
 func (c *Client) DescribePatchGroupsWithContext(ctx context.Context, input *ssm.DescribePatchGroupsInput, opts ...request.Option) (*ssm.DescribePatchGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribePatchGroupsWithContext",
+		Action:  "DescribePatchGroups",
 		Input:   input,
 		Output:  (*ssm.DescribePatchGroupsOutput)(nil),
 		Error:   nil,
@@ -1285,7 +1285,7 @@ func (c *Client) DescribePatchGroupsWithContext(ctx context.Context, input *ssm.
 func (c *Client) DescribePatchPropertiesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, opts ...request.Option) (*ssm.DescribePatchPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribePatchPropertiesWithContext",
+		Action:  "DescribePatchProperties",
 		Input:   input,
 		Output:  (*ssm.DescribePatchPropertiesOutput)(nil),
 		Error:   nil,
@@ -1306,7 +1306,7 @@ func (c *Client) DescribePatchPropertiesWithContext(ctx context.Context, input *
 func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, opts ...request.Option) (*ssm.DescribeSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "DescribeSessionsWithContext",
+		Action:  "DescribeSessions",
 		Input:   input,
 		Output:  (*ssm.DescribeSessionsOutput)(nil),
 		Error:   nil,
@@ -1327,7 +1327,7 @@ func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *ssm.Des
 func (c *Client) GetAutomationExecutionWithContext(ctx context.Context, input *ssm.GetAutomationExecutionInput, opts ...request.Option) (*ssm.GetAutomationExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetAutomationExecutionWithContext",
+		Action:  "GetAutomationExecution",
 		Input:   input,
 		Output:  (*ssm.GetAutomationExecutionOutput)(nil),
 		Error:   nil,
@@ -1348,7 +1348,7 @@ func (c *Client) GetAutomationExecutionWithContext(ctx context.Context, input *s
 func (c *Client) GetCommandInvocationWithContext(ctx context.Context, input *ssm.GetCommandInvocationInput, opts ...request.Option) (*ssm.GetCommandInvocationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetCommandInvocationWithContext",
+		Action:  "GetCommandInvocation",
 		Input:   input,
 		Output:  (*ssm.GetCommandInvocationOutput)(nil),
 		Error:   nil,
@@ -1369,7 +1369,7 @@ func (c *Client) GetCommandInvocationWithContext(ctx context.Context, input *ssm
 func (c *Client) GetConnectionStatusWithContext(ctx context.Context, input *ssm.GetConnectionStatusInput, opts ...request.Option) (*ssm.GetConnectionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetConnectionStatusWithContext",
+		Action:  "GetConnectionStatus",
 		Input:   input,
 		Output:  (*ssm.GetConnectionStatusOutput)(nil),
 		Error:   nil,
@@ -1390,7 +1390,7 @@ func (c *Client) GetConnectionStatusWithContext(ctx context.Context, input *ssm.
 func (c *Client) GetDefaultPatchBaselineWithContext(ctx context.Context, input *ssm.GetDefaultPatchBaselineInput, opts ...request.Option) (*ssm.GetDefaultPatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetDefaultPatchBaselineWithContext",
+		Action:  "GetDefaultPatchBaseline",
 		Input:   input,
 		Output:  (*ssm.GetDefaultPatchBaselineOutput)(nil),
 		Error:   nil,
@@ -1411,7 +1411,7 @@ func (c *Client) GetDefaultPatchBaselineWithContext(ctx context.Context, input *
 func (c *Client) GetDeployablePatchSnapshotForInstanceWithContext(ctx context.Context, input *ssm.GetDeployablePatchSnapshotForInstanceInput, opts ...request.Option) (*ssm.GetDeployablePatchSnapshotForInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetDeployablePatchSnapshotForInstanceWithContext",
+		Action:  "GetDeployablePatchSnapshotForInstance",
 		Input:   input,
 		Output:  (*ssm.GetDeployablePatchSnapshotForInstanceOutput)(nil),
 		Error:   nil,
@@ -1432,7 +1432,7 @@ func (c *Client) GetDeployablePatchSnapshotForInstanceWithContext(ctx context.Co
 func (c *Client) GetDocumentWithContext(ctx context.Context, input *ssm.GetDocumentInput, opts ...request.Option) (*ssm.GetDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetDocumentWithContext",
+		Action:  "GetDocument",
 		Input:   input,
 		Output:  (*ssm.GetDocumentOutput)(nil),
 		Error:   nil,
@@ -1453,7 +1453,7 @@ func (c *Client) GetDocumentWithContext(ctx context.Context, input *ssm.GetDocum
 func (c *Client) GetInventoryWithContext(ctx context.Context, input *ssm.GetInventoryInput, opts ...request.Option) (*ssm.GetInventoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetInventoryWithContext",
+		Action:  "GetInventory",
 		Input:   input,
 		Output:  (*ssm.GetInventoryOutput)(nil),
 		Error:   nil,
@@ -1474,7 +1474,7 @@ func (c *Client) GetInventoryWithContext(ctx context.Context, input *ssm.GetInve
 func (c *Client) GetInventorySchemaWithContext(ctx context.Context, input *ssm.GetInventorySchemaInput, opts ...request.Option) (*ssm.GetInventorySchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetInventorySchemaWithContext",
+		Action:  "GetInventorySchema",
 		Input:   input,
 		Output:  (*ssm.GetInventorySchemaOutput)(nil),
 		Error:   nil,
@@ -1495,7 +1495,7 @@ func (c *Client) GetInventorySchemaWithContext(ctx context.Context, input *ssm.G
 func (c *Client) GetMaintenanceWindowWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowInput, opts ...request.Option) (*ssm.GetMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetMaintenanceWindowWithContext",
+		Action:  "GetMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.GetMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -1516,7 +1516,7 @@ func (c *Client) GetMaintenanceWindowWithContext(ctx context.Context, input *ssm
 func (c *Client) GetMaintenanceWindowExecutionWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowExecutionInput, opts ...request.Option) (*ssm.GetMaintenanceWindowExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetMaintenanceWindowExecutionWithContext",
+		Action:  "GetMaintenanceWindowExecution",
 		Input:   input,
 		Output:  (*ssm.GetMaintenanceWindowExecutionOutput)(nil),
 		Error:   nil,
@@ -1537,7 +1537,7 @@ func (c *Client) GetMaintenanceWindowExecutionWithContext(ctx context.Context, i
 func (c *Client) GetMaintenanceWindowExecutionTaskWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowExecutionTaskInput, opts ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetMaintenanceWindowExecutionTaskWithContext",
+		Action:  "GetMaintenanceWindowExecutionTask",
 		Input:   input,
 		Output:  (*ssm.GetMaintenanceWindowExecutionTaskOutput)(nil),
 		Error:   nil,
@@ -1558,7 +1558,7 @@ func (c *Client) GetMaintenanceWindowExecutionTaskWithContext(ctx context.Contex
 func (c *Client) GetMaintenanceWindowExecutionTaskInvocationWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowExecutionTaskInvocationInput, opts ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskInvocationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetMaintenanceWindowExecutionTaskInvocationWithContext",
+		Action:  "GetMaintenanceWindowExecutionTaskInvocation",
 		Input:   input,
 		Output:  (*ssm.GetMaintenanceWindowExecutionTaskInvocationOutput)(nil),
 		Error:   nil,
@@ -1579,7 +1579,7 @@ func (c *Client) GetMaintenanceWindowExecutionTaskInvocationWithContext(ctx cont
 func (c *Client) GetMaintenanceWindowTaskWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowTaskInput, opts ...request.Option) (*ssm.GetMaintenanceWindowTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetMaintenanceWindowTaskWithContext",
+		Action:  "GetMaintenanceWindowTask",
 		Input:   input,
 		Output:  (*ssm.GetMaintenanceWindowTaskOutput)(nil),
 		Error:   nil,
@@ -1600,7 +1600,7 @@ func (c *Client) GetMaintenanceWindowTaskWithContext(ctx context.Context, input 
 func (c *Client) GetOpsItemWithContext(ctx context.Context, input *ssm.GetOpsItemInput, opts ...request.Option) (*ssm.GetOpsItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetOpsItemWithContext",
+		Action:  "GetOpsItem",
 		Input:   input,
 		Output:  (*ssm.GetOpsItemOutput)(nil),
 		Error:   nil,
@@ -1621,7 +1621,7 @@ func (c *Client) GetOpsItemWithContext(ctx context.Context, input *ssm.GetOpsIte
 func (c *Client) GetOpsSummaryWithContext(ctx context.Context, input *ssm.GetOpsSummaryInput, opts ...request.Option) (*ssm.GetOpsSummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetOpsSummaryWithContext",
+		Action:  "GetOpsSummary",
 		Input:   input,
 		Output:  (*ssm.GetOpsSummaryOutput)(nil),
 		Error:   nil,
@@ -1642,7 +1642,7 @@ func (c *Client) GetOpsSummaryWithContext(ctx context.Context, input *ssm.GetOps
 func (c *Client) GetParameterWithContext(ctx context.Context, input *ssm.GetParameterInput, opts ...request.Option) (*ssm.GetParameterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetParameterWithContext",
+		Action:  "GetParameter",
 		Input:   input,
 		Output:  (*ssm.GetParameterOutput)(nil),
 		Error:   nil,
@@ -1663,7 +1663,7 @@ func (c *Client) GetParameterWithContext(ctx context.Context, input *ssm.GetPara
 func (c *Client) GetParameterHistoryWithContext(ctx context.Context, input *ssm.GetParameterHistoryInput, opts ...request.Option) (*ssm.GetParameterHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetParameterHistoryWithContext",
+		Action:  "GetParameterHistory",
 		Input:   input,
 		Output:  (*ssm.GetParameterHistoryOutput)(nil),
 		Error:   nil,
@@ -1684,7 +1684,7 @@ func (c *Client) GetParameterHistoryWithContext(ctx context.Context, input *ssm.
 func (c *Client) GetParametersWithContext(ctx context.Context, input *ssm.GetParametersInput, opts ...request.Option) (*ssm.GetParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetParametersWithContext",
+		Action:  "GetParameters",
 		Input:   input,
 		Output:  (*ssm.GetParametersOutput)(nil),
 		Error:   nil,
@@ -1705,7 +1705,7 @@ func (c *Client) GetParametersWithContext(ctx context.Context, input *ssm.GetPar
 func (c *Client) GetParametersByPathWithContext(ctx context.Context, input *ssm.GetParametersByPathInput, opts ...request.Option) (*ssm.GetParametersByPathOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetParametersByPathWithContext",
+		Action:  "GetParametersByPath",
 		Input:   input,
 		Output:  (*ssm.GetParametersByPathOutput)(nil),
 		Error:   nil,
@@ -1726,7 +1726,7 @@ func (c *Client) GetParametersByPathWithContext(ctx context.Context, input *ssm.
 func (c *Client) GetPatchBaselineWithContext(ctx context.Context, input *ssm.GetPatchBaselineInput, opts ...request.Option) (*ssm.GetPatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetPatchBaselineWithContext",
+		Action:  "GetPatchBaseline",
 		Input:   input,
 		Output:  (*ssm.GetPatchBaselineOutput)(nil),
 		Error:   nil,
@@ -1747,7 +1747,7 @@ func (c *Client) GetPatchBaselineWithContext(ctx context.Context, input *ssm.Get
 func (c *Client) GetPatchBaselineForPatchGroupWithContext(ctx context.Context, input *ssm.GetPatchBaselineForPatchGroupInput, opts ...request.Option) (*ssm.GetPatchBaselineForPatchGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetPatchBaselineForPatchGroupWithContext",
+		Action:  "GetPatchBaselineForPatchGroup",
 		Input:   input,
 		Output:  (*ssm.GetPatchBaselineForPatchGroupOutput)(nil),
 		Error:   nil,
@@ -1768,7 +1768,7 @@ func (c *Client) GetPatchBaselineForPatchGroupWithContext(ctx context.Context, i
 func (c *Client) GetServiceSettingWithContext(ctx context.Context, input *ssm.GetServiceSettingInput, opts ...request.Option) (*ssm.GetServiceSettingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "GetServiceSettingWithContext",
+		Action:  "GetServiceSetting",
 		Input:   input,
 		Output:  (*ssm.GetServiceSettingOutput)(nil),
 		Error:   nil,
@@ -1789,7 +1789,7 @@ func (c *Client) GetServiceSettingWithContext(ctx context.Context, input *ssm.Ge
 func (c *Client) LabelParameterVersionWithContext(ctx context.Context, input *ssm.LabelParameterVersionInput, opts ...request.Option) (*ssm.LabelParameterVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "LabelParameterVersionWithContext",
+		Action:  "LabelParameterVersion",
 		Input:   input,
 		Output:  (*ssm.LabelParameterVersionOutput)(nil),
 		Error:   nil,
@@ -1810,7 +1810,7 @@ func (c *Client) LabelParameterVersionWithContext(ctx context.Context, input *ss
 func (c *Client) ListAssociationVersionsWithContext(ctx context.Context, input *ssm.ListAssociationVersionsInput, opts ...request.Option) (*ssm.ListAssociationVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListAssociationVersionsWithContext",
+		Action:  "ListAssociationVersions",
 		Input:   input,
 		Output:  (*ssm.ListAssociationVersionsOutput)(nil),
 		Error:   nil,
@@ -1831,7 +1831,7 @@ func (c *Client) ListAssociationVersionsWithContext(ctx context.Context, input *
 func (c *Client) ListAssociationsWithContext(ctx context.Context, input *ssm.ListAssociationsInput, opts ...request.Option) (*ssm.ListAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListAssociationsWithContext",
+		Action:  "ListAssociations",
 		Input:   input,
 		Output:  (*ssm.ListAssociationsOutput)(nil),
 		Error:   nil,
@@ -1852,7 +1852,7 @@ func (c *Client) ListAssociationsWithContext(ctx context.Context, input *ssm.Lis
 func (c *Client) ListCommandInvocationsWithContext(ctx context.Context, input *ssm.ListCommandInvocationsInput, opts ...request.Option) (*ssm.ListCommandInvocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListCommandInvocationsWithContext",
+		Action:  "ListCommandInvocations",
 		Input:   input,
 		Output:  (*ssm.ListCommandInvocationsOutput)(nil),
 		Error:   nil,
@@ -1873,7 +1873,7 @@ func (c *Client) ListCommandInvocationsWithContext(ctx context.Context, input *s
 func (c *Client) ListCommandsWithContext(ctx context.Context, input *ssm.ListCommandsInput, opts ...request.Option) (*ssm.ListCommandsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListCommandsWithContext",
+		Action:  "ListCommands",
 		Input:   input,
 		Output:  (*ssm.ListCommandsOutput)(nil),
 		Error:   nil,
@@ -1894,7 +1894,7 @@ func (c *Client) ListCommandsWithContext(ctx context.Context, input *ssm.ListCom
 func (c *Client) ListComplianceItemsWithContext(ctx context.Context, input *ssm.ListComplianceItemsInput, opts ...request.Option) (*ssm.ListComplianceItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListComplianceItemsWithContext",
+		Action:  "ListComplianceItems",
 		Input:   input,
 		Output:  (*ssm.ListComplianceItemsOutput)(nil),
 		Error:   nil,
@@ -1915,7 +1915,7 @@ func (c *Client) ListComplianceItemsWithContext(ctx context.Context, input *ssm.
 func (c *Client) ListComplianceSummariesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, opts ...request.Option) (*ssm.ListComplianceSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListComplianceSummariesWithContext",
+		Action:  "ListComplianceSummaries",
 		Input:   input,
 		Output:  (*ssm.ListComplianceSummariesOutput)(nil),
 		Error:   nil,
@@ -1936,7 +1936,7 @@ func (c *Client) ListComplianceSummariesWithContext(ctx context.Context, input *
 func (c *Client) ListDocumentVersionsWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, opts ...request.Option) (*ssm.ListDocumentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListDocumentVersionsWithContext",
+		Action:  "ListDocumentVersions",
 		Input:   input,
 		Output:  (*ssm.ListDocumentVersionsOutput)(nil),
 		Error:   nil,
@@ -1957,7 +1957,7 @@ func (c *Client) ListDocumentVersionsWithContext(ctx context.Context, input *ssm
 func (c *Client) ListDocumentsWithContext(ctx context.Context, input *ssm.ListDocumentsInput, opts ...request.Option) (*ssm.ListDocumentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListDocumentsWithContext",
+		Action:  "ListDocuments",
 		Input:   input,
 		Output:  (*ssm.ListDocumentsOutput)(nil),
 		Error:   nil,
@@ -1978,7 +1978,7 @@ func (c *Client) ListDocumentsWithContext(ctx context.Context, input *ssm.ListDo
 func (c *Client) ListInventoryEntriesWithContext(ctx context.Context, input *ssm.ListInventoryEntriesInput, opts ...request.Option) (*ssm.ListInventoryEntriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListInventoryEntriesWithContext",
+		Action:  "ListInventoryEntries",
 		Input:   input,
 		Output:  (*ssm.ListInventoryEntriesOutput)(nil),
 		Error:   nil,
@@ -1999,7 +1999,7 @@ func (c *Client) ListInventoryEntriesWithContext(ctx context.Context, input *ssm
 func (c *Client) ListResourceComplianceSummariesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, opts ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListResourceComplianceSummariesWithContext",
+		Action:  "ListResourceComplianceSummaries",
 		Input:   input,
 		Output:  (*ssm.ListResourceComplianceSummariesOutput)(nil),
 		Error:   nil,
@@ -2020,7 +2020,7 @@ func (c *Client) ListResourceComplianceSummariesWithContext(ctx context.Context,
 func (c *Client) ListResourceDataSyncWithContext(ctx context.Context, input *ssm.ListResourceDataSyncInput, opts ...request.Option) (*ssm.ListResourceDataSyncOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListResourceDataSyncWithContext",
+		Action:  "ListResourceDataSync",
 		Input:   input,
 		Output:  (*ssm.ListResourceDataSyncOutput)(nil),
 		Error:   nil,
@@ -2041,7 +2041,7 @@ func (c *Client) ListResourceDataSyncWithContext(ctx context.Context, input *ssm
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ssm.ListTagsForResourceInput, opts ...request.Option) (*ssm.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*ssm.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -2062,7 +2062,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ssm.
 func (c *Client) ModifyDocumentPermissionWithContext(ctx context.Context, input *ssm.ModifyDocumentPermissionInput, opts ...request.Option) (*ssm.ModifyDocumentPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ModifyDocumentPermissionWithContext",
+		Action:  "ModifyDocumentPermission",
 		Input:   input,
 		Output:  (*ssm.ModifyDocumentPermissionOutput)(nil),
 		Error:   nil,
@@ -2083,7 +2083,7 @@ func (c *Client) ModifyDocumentPermissionWithContext(ctx context.Context, input 
 func (c *Client) PutComplianceItemsWithContext(ctx context.Context, input *ssm.PutComplianceItemsInput, opts ...request.Option) (*ssm.PutComplianceItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "PutComplianceItemsWithContext",
+		Action:  "PutComplianceItems",
 		Input:   input,
 		Output:  (*ssm.PutComplianceItemsOutput)(nil),
 		Error:   nil,
@@ -2104,7 +2104,7 @@ func (c *Client) PutComplianceItemsWithContext(ctx context.Context, input *ssm.P
 func (c *Client) PutInventoryWithContext(ctx context.Context, input *ssm.PutInventoryInput, opts ...request.Option) (*ssm.PutInventoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "PutInventoryWithContext",
+		Action:  "PutInventory",
 		Input:   input,
 		Output:  (*ssm.PutInventoryOutput)(nil),
 		Error:   nil,
@@ -2125,7 +2125,7 @@ func (c *Client) PutInventoryWithContext(ctx context.Context, input *ssm.PutInve
 func (c *Client) PutParameterWithContext(ctx context.Context, input *ssm.PutParameterInput, opts ...request.Option) (*ssm.PutParameterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "PutParameterWithContext",
+		Action:  "PutParameter",
 		Input:   input,
 		Output:  (*ssm.PutParameterOutput)(nil),
 		Error:   nil,
@@ -2146,7 +2146,7 @@ func (c *Client) PutParameterWithContext(ctx context.Context, input *ssm.PutPara
 func (c *Client) RegisterDefaultPatchBaselineWithContext(ctx context.Context, input *ssm.RegisterDefaultPatchBaselineInput, opts ...request.Option) (*ssm.RegisterDefaultPatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "RegisterDefaultPatchBaselineWithContext",
+		Action:  "RegisterDefaultPatchBaseline",
 		Input:   input,
 		Output:  (*ssm.RegisterDefaultPatchBaselineOutput)(nil),
 		Error:   nil,
@@ -2167,7 +2167,7 @@ func (c *Client) RegisterDefaultPatchBaselineWithContext(ctx context.Context, in
 func (c *Client) RegisterPatchBaselineForPatchGroupWithContext(ctx context.Context, input *ssm.RegisterPatchBaselineForPatchGroupInput, opts ...request.Option) (*ssm.RegisterPatchBaselineForPatchGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "RegisterPatchBaselineForPatchGroupWithContext",
+		Action:  "RegisterPatchBaselineForPatchGroup",
 		Input:   input,
 		Output:  (*ssm.RegisterPatchBaselineForPatchGroupOutput)(nil),
 		Error:   nil,
@@ -2188,7 +2188,7 @@ func (c *Client) RegisterPatchBaselineForPatchGroupWithContext(ctx context.Conte
 func (c *Client) RegisterTargetWithMaintenanceWindowWithContext(ctx context.Context, input *ssm.RegisterTargetWithMaintenanceWindowInput, opts ...request.Option) (*ssm.RegisterTargetWithMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "RegisterTargetWithMaintenanceWindowWithContext",
+		Action:  "RegisterTargetWithMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.RegisterTargetWithMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -2209,7 +2209,7 @@ func (c *Client) RegisterTargetWithMaintenanceWindowWithContext(ctx context.Cont
 func (c *Client) RegisterTaskWithMaintenanceWindowWithContext(ctx context.Context, input *ssm.RegisterTaskWithMaintenanceWindowInput, opts ...request.Option) (*ssm.RegisterTaskWithMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "RegisterTaskWithMaintenanceWindowWithContext",
+		Action:  "RegisterTaskWithMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.RegisterTaskWithMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -2230,7 +2230,7 @@ func (c *Client) RegisterTaskWithMaintenanceWindowWithContext(ctx context.Contex
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *ssm.RemoveTagsFromResourceInput, opts ...request.Option) (*ssm.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*ssm.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -2251,7 +2251,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *s
 func (c *Client) ResetServiceSettingWithContext(ctx context.Context, input *ssm.ResetServiceSettingInput, opts ...request.Option) (*ssm.ResetServiceSettingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ResetServiceSettingWithContext",
+		Action:  "ResetServiceSetting",
 		Input:   input,
 		Output:  (*ssm.ResetServiceSettingOutput)(nil),
 		Error:   nil,
@@ -2272,7 +2272,7 @@ func (c *Client) ResetServiceSettingWithContext(ctx context.Context, input *ssm.
 func (c *Client) ResumeSessionWithContext(ctx context.Context, input *ssm.ResumeSessionInput, opts ...request.Option) (*ssm.ResumeSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "ResumeSessionWithContext",
+		Action:  "ResumeSession",
 		Input:   input,
 		Output:  (*ssm.ResumeSessionOutput)(nil),
 		Error:   nil,
@@ -2293,7 +2293,7 @@ func (c *Client) ResumeSessionWithContext(ctx context.Context, input *ssm.Resume
 func (c *Client) SendAutomationSignalWithContext(ctx context.Context, input *ssm.SendAutomationSignalInput, opts ...request.Option) (*ssm.SendAutomationSignalOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "SendAutomationSignalWithContext",
+		Action:  "SendAutomationSignal",
 		Input:   input,
 		Output:  (*ssm.SendAutomationSignalOutput)(nil),
 		Error:   nil,
@@ -2314,7 +2314,7 @@ func (c *Client) SendAutomationSignalWithContext(ctx context.Context, input *ssm
 func (c *Client) SendCommandWithContext(ctx context.Context, input *ssm.SendCommandInput, opts ...request.Option) (*ssm.SendCommandOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "SendCommandWithContext",
+		Action:  "SendCommand",
 		Input:   input,
 		Output:  (*ssm.SendCommandOutput)(nil),
 		Error:   nil,
@@ -2335,7 +2335,7 @@ func (c *Client) SendCommandWithContext(ctx context.Context, input *ssm.SendComm
 func (c *Client) StartAssociationsOnceWithContext(ctx context.Context, input *ssm.StartAssociationsOnceInput, opts ...request.Option) (*ssm.StartAssociationsOnceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "StartAssociationsOnceWithContext",
+		Action:  "StartAssociationsOnce",
 		Input:   input,
 		Output:  (*ssm.StartAssociationsOnceOutput)(nil),
 		Error:   nil,
@@ -2356,7 +2356,7 @@ func (c *Client) StartAssociationsOnceWithContext(ctx context.Context, input *ss
 func (c *Client) StartAutomationExecutionWithContext(ctx context.Context, input *ssm.StartAutomationExecutionInput, opts ...request.Option) (*ssm.StartAutomationExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "StartAutomationExecutionWithContext",
+		Action:  "StartAutomationExecution",
 		Input:   input,
 		Output:  (*ssm.StartAutomationExecutionOutput)(nil),
 		Error:   nil,
@@ -2377,7 +2377,7 @@ func (c *Client) StartAutomationExecutionWithContext(ctx context.Context, input 
 func (c *Client) StartSessionWithContext(ctx context.Context, input *ssm.StartSessionInput, opts ...request.Option) (*ssm.StartSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "StartSessionWithContext",
+		Action:  "StartSession",
 		Input:   input,
 		Output:  (*ssm.StartSessionOutput)(nil),
 		Error:   nil,
@@ -2398,7 +2398,7 @@ func (c *Client) StartSessionWithContext(ctx context.Context, input *ssm.StartSe
 func (c *Client) StopAutomationExecutionWithContext(ctx context.Context, input *ssm.StopAutomationExecutionInput, opts ...request.Option) (*ssm.StopAutomationExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "StopAutomationExecutionWithContext",
+		Action:  "StopAutomationExecution",
 		Input:   input,
 		Output:  (*ssm.StopAutomationExecutionOutput)(nil),
 		Error:   nil,
@@ -2419,7 +2419,7 @@ func (c *Client) StopAutomationExecutionWithContext(ctx context.Context, input *
 func (c *Client) TerminateSessionWithContext(ctx context.Context, input *ssm.TerminateSessionInput, opts ...request.Option) (*ssm.TerminateSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "TerminateSessionWithContext",
+		Action:  "TerminateSession",
 		Input:   input,
 		Output:  (*ssm.TerminateSessionOutput)(nil),
 		Error:   nil,
@@ -2440,7 +2440,7 @@ func (c *Client) TerminateSessionWithContext(ctx context.Context, input *ssm.Ter
 func (c *Client) UpdateAssociationWithContext(ctx context.Context, input *ssm.UpdateAssociationInput, opts ...request.Option) (*ssm.UpdateAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateAssociationWithContext",
+		Action:  "UpdateAssociation",
 		Input:   input,
 		Output:  (*ssm.UpdateAssociationOutput)(nil),
 		Error:   nil,
@@ -2461,7 +2461,7 @@ func (c *Client) UpdateAssociationWithContext(ctx context.Context, input *ssm.Up
 func (c *Client) UpdateAssociationStatusWithContext(ctx context.Context, input *ssm.UpdateAssociationStatusInput, opts ...request.Option) (*ssm.UpdateAssociationStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateAssociationStatusWithContext",
+		Action:  "UpdateAssociationStatus",
 		Input:   input,
 		Output:  (*ssm.UpdateAssociationStatusOutput)(nil),
 		Error:   nil,
@@ -2482,7 +2482,7 @@ func (c *Client) UpdateAssociationStatusWithContext(ctx context.Context, input *
 func (c *Client) UpdateDocumentWithContext(ctx context.Context, input *ssm.UpdateDocumentInput, opts ...request.Option) (*ssm.UpdateDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateDocumentWithContext",
+		Action:  "UpdateDocument",
 		Input:   input,
 		Output:  (*ssm.UpdateDocumentOutput)(nil),
 		Error:   nil,
@@ -2503,7 +2503,7 @@ func (c *Client) UpdateDocumentWithContext(ctx context.Context, input *ssm.Updat
 func (c *Client) UpdateDocumentDefaultVersionWithContext(ctx context.Context, input *ssm.UpdateDocumentDefaultVersionInput, opts ...request.Option) (*ssm.UpdateDocumentDefaultVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateDocumentDefaultVersionWithContext",
+		Action:  "UpdateDocumentDefaultVersion",
 		Input:   input,
 		Output:  (*ssm.UpdateDocumentDefaultVersionOutput)(nil),
 		Error:   nil,
@@ -2524,7 +2524,7 @@ func (c *Client) UpdateDocumentDefaultVersionWithContext(ctx context.Context, in
 func (c *Client) UpdateMaintenanceWindowWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateMaintenanceWindowWithContext",
+		Action:  "UpdateMaintenanceWindow",
 		Input:   input,
 		Output:  (*ssm.UpdateMaintenanceWindowOutput)(nil),
 		Error:   nil,
@@ -2545,7 +2545,7 @@ func (c *Client) UpdateMaintenanceWindowWithContext(ctx context.Context, input *
 func (c *Client) UpdateMaintenanceWindowTargetWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowTargetInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateMaintenanceWindowTargetWithContext",
+		Action:  "UpdateMaintenanceWindowTarget",
 		Input:   input,
 		Output:  (*ssm.UpdateMaintenanceWindowTargetOutput)(nil),
 		Error:   nil,
@@ -2566,7 +2566,7 @@ func (c *Client) UpdateMaintenanceWindowTargetWithContext(ctx context.Context, i
 func (c *Client) UpdateMaintenanceWindowTaskWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowTaskInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateMaintenanceWindowTaskWithContext",
+		Action:  "UpdateMaintenanceWindowTask",
 		Input:   input,
 		Output:  (*ssm.UpdateMaintenanceWindowTaskOutput)(nil),
 		Error:   nil,
@@ -2587,7 +2587,7 @@ func (c *Client) UpdateMaintenanceWindowTaskWithContext(ctx context.Context, inp
 func (c *Client) UpdateManagedInstanceRoleWithContext(ctx context.Context, input *ssm.UpdateManagedInstanceRoleInput, opts ...request.Option) (*ssm.UpdateManagedInstanceRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateManagedInstanceRoleWithContext",
+		Action:  "UpdateManagedInstanceRole",
 		Input:   input,
 		Output:  (*ssm.UpdateManagedInstanceRoleOutput)(nil),
 		Error:   nil,
@@ -2608,7 +2608,7 @@ func (c *Client) UpdateManagedInstanceRoleWithContext(ctx context.Context, input
 func (c *Client) UpdateOpsItemWithContext(ctx context.Context, input *ssm.UpdateOpsItemInput, opts ...request.Option) (*ssm.UpdateOpsItemOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateOpsItemWithContext",
+		Action:  "UpdateOpsItem",
 		Input:   input,
 		Output:  (*ssm.UpdateOpsItemOutput)(nil),
 		Error:   nil,
@@ -2629,7 +2629,7 @@ func (c *Client) UpdateOpsItemWithContext(ctx context.Context, input *ssm.Update
 func (c *Client) UpdatePatchBaselineWithContext(ctx context.Context, input *ssm.UpdatePatchBaselineInput, opts ...request.Option) (*ssm.UpdatePatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdatePatchBaselineWithContext",
+		Action:  "UpdatePatchBaseline",
 		Input:   input,
 		Output:  (*ssm.UpdatePatchBaselineOutput)(nil),
 		Error:   nil,
@@ -2650,7 +2650,7 @@ func (c *Client) UpdatePatchBaselineWithContext(ctx context.Context, input *ssm.
 func (c *Client) UpdateServiceSettingWithContext(ctx context.Context, input *ssm.UpdateServiceSettingInput, opts ...request.Option) (*ssm.UpdateServiceSettingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
-		Action:  "UpdateServiceSettingWithContext",
+		Action:  "UpdateServiceSetting",
 		Input:   input,
 		Output:  (*ssm.UpdateServiceSettingOutput)(nil),
 		Error:   nil,

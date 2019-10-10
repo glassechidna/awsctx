@@ -21,12 +21,15 @@ type Amplify interface {
 	DeleteDomainAssociationWithContext(ctx context.Context, input *amplify.DeleteDomainAssociationInput, opts ...request.Option) (*amplify.DeleteDomainAssociationOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *amplify.DeleteJobInput, opts ...request.Option) (*amplify.DeleteJobOutput, error)
 	DeleteWebhookWithContext(ctx context.Context, input *amplify.DeleteWebhookInput, opts ...request.Option) (*amplify.DeleteWebhookOutput, error)
+	GenerateAccessLogsWithContext(ctx context.Context, input *amplify.GenerateAccessLogsInput, opts ...request.Option) (*amplify.GenerateAccessLogsOutput, error)
 	GetAppWithContext(ctx context.Context, input *amplify.GetAppInput, opts ...request.Option) (*amplify.GetAppOutput, error)
+	GetArtifactUrlWithContext(ctx context.Context, input *amplify.GetArtifactUrlInput, opts ...request.Option) (*amplify.GetArtifactUrlOutput, error)
 	GetBranchWithContext(ctx context.Context, input *amplify.GetBranchInput, opts ...request.Option) (*amplify.GetBranchOutput, error)
 	GetDomainAssociationWithContext(ctx context.Context, input *amplify.GetDomainAssociationInput, opts ...request.Option) (*amplify.GetDomainAssociationOutput, error)
 	GetJobWithContext(ctx context.Context, input *amplify.GetJobInput, opts ...request.Option) (*amplify.GetJobOutput, error)
 	GetWebhookWithContext(ctx context.Context, input *amplify.GetWebhookInput, opts ...request.Option) (*amplify.GetWebhookOutput, error)
 	ListAppsWithContext(ctx context.Context, input *amplify.ListAppsInput, opts ...request.Option) (*amplify.ListAppsOutput, error)
+	ListArtifactsWithContext(ctx context.Context, input *amplify.ListArtifactsInput, opts ...request.Option) (*amplify.ListArtifactsOutput, error)
 	ListBranchesWithContext(ctx context.Context, input *amplify.ListBranchesInput, opts ...request.Option) (*amplify.ListBranchesOutput, error)
 	ListDomainAssociationsWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, opts ...request.Option) (*amplify.ListDomainAssociationsOutput, error)
 	ListJobsWithContext(ctx context.Context, input *amplify.ListJobsInput, opts ...request.Option) (*amplify.ListJobsOutput, error)
@@ -61,7 +64,7 @@ var _ Amplify = (*Client)(nil)
 func (c *Client) CreateAppWithContext(ctx context.Context, input *amplify.CreateAppInput, opts ...request.Option) (*amplify.CreateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "CreateAppWithContext",
+		Action:  "CreateApp",
 		Input:   input,
 		Output:  (*amplify.CreateAppOutput)(nil),
 		Error:   nil,
@@ -82,7 +85,7 @@ func (c *Client) CreateAppWithContext(ctx context.Context, input *amplify.Create
 func (c *Client) CreateBranchWithContext(ctx context.Context, input *amplify.CreateBranchInput, opts ...request.Option) (*amplify.CreateBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "CreateBranchWithContext",
+		Action:  "CreateBranch",
 		Input:   input,
 		Output:  (*amplify.CreateBranchOutput)(nil),
 		Error:   nil,
@@ -103,7 +106,7 @@ func (c *Client) CreateBranchWithContext(ctx context.Context, input *amplify.Cre
 func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *amplify.CreateDeploymentInput, opts ...request.Option) (*amplify.CreateDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "CreateDeploymentWithContext",
+		Action:  "CreateDeployment",
 		Input:   input,
 		Output:  (*amplify.CreateDeploymentOutput)(nil),
 		Error:   nil,
@@ -124,7 +127,7 @@ func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *amplify
 func (c *Client) CreateDomainAssociationWithContext(ctx context.Context, input *amplify.CreateDomainAssociationInput, opts ...request.Option) (*amplify.CreateDomainAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "CreateDomainAssociationWithContext",
+		Action:  "CreateDomainAssociation",
 		Input:   input,
 		Output:  (*amplify.CreateDomainAssociationOutput)(nil),
 		Error:   nil,
@@ -145,7 +148,7 @@ func (c *Client) CreateDomainAssociationWithContext(ctx context.Context, input *
 func (c *Client) CreateWebhookWithContext(ctx context.Context, input *amplify.CreateWebhookInput, opts ...request.Option) (*amplify.CreateWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "CreateWebhookWithContext",
+		Action:  "CreateWebhook",
 		Input:   input,
 		Output:  (*amplify.CreateWebhookOutput)(nil),
 		Error:   nil,
@@ -166,7 +169,7 @@ func (c *Client) CreateWebhookWithContext(ctx context.Context, input *amplify.Cr
 func (c *Client) DeleteAppWithContext(ctx context.Context, input *amplify.DeleteAppInput, opts ...request.Option) (*amplify.DeleteAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "DeleteAppWithContext",
+		Action:  "DeleteApp",
 		Input:   input,
 		Output:  (*amplify.DeleteAppOutput)(nil),
 		Error:   nil,
@@ -187,7 +190,7 @@ func (c *Client) DeleteAppWithContext(ctx context.Context, input *amplify.Delete
 func (c *Client) DeleteBranchWithContext(ctx context.Context, input *amplify.DeleteBranchInput, opts ...request.Option) (*amplify.DeleteBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "DeleteBranchWithContext",
+		Action:  "DeleteBranch",
 		Input:   input,
 		Output:  (*amplify.DeleteBranchOutput)(nil),
 		Error:   nil,
@@ -208,7 +211,7 @@ func (c *Client) DeleteBranchWithContext(ctx context.Context, input *amplify.Del
 func (c *Client) DeleteDomainAssociationWithContext(ctx context.Context, input *amplify.DeleteDomainAssociationInput, opts ...request.Option) (*amplify.DeleteDomainAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "DeleteDomainAssociationWithContext",
+		Action:  "DeleteDomainAssociation",
 		Input:   input,
 		Output:  (*amplify.DeleteDomainAssociationOutput)(nil),
 		Error:   nil,
@@ -229,7 +232,7 @@ func (c *Client) DeleteDomainAssociationWithContext(ctx context.Context, input *
 func (c *Client) DeleteJobWithContext(ctx context.Context, input *amplify.DeleteJobInput, opts ...request.Option) (*amplify.DeleteJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "DeleteJobWithContext",
+		Action:  "DeleteJob",
 		Input:   input,
 		Output:  (*amplify.DeleteJobOutput)(nil),
 		Error:   nil,
@@ -250,7 +253,7 @@ func (c *Client) DeleteJobWithContext(ctx context.Context, input *amplify.Delete
 func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *amplify.DeleteWebhookInput, opts ...request.Option) (*amplify.DeleteWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "DeleteWebhookWithContext",
+		Action:  "DeleteWebhook",
 		Input:   input,
 		Output:  (*amplify.DeleteWebhookOutput)(nil),
 		Error:   nil,
@@ -268,10 +271,31 @@ func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *amplify.De
 	return req.Output.(*amplify.DeleteWebhookOutput), req.Error
 }
 
+func (c *Client) GenerateAccessLogsWithContext(ctx context.Context, input *amplify.GenerateAccessLogsInput, opts ...request.Option) (*amplify.GenerateAccessLogsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "GenerateAccessLogs",
+		Input:   input,
+		Output:  (*amplify.GenerateAccessLogsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.GenerateAccessLogsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.GenerateAccessLogsOutput), req.Error
+}
+
 func (c *Client) GetAppWithContext(ctx context.Context, input *amplify.GetAppInput, opts ...request.Option) (*amplify.GetAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "GetAppWithContext",
+		Action:  "GetApp",
 		Input:   input,
 		Output:  (*amplify.GetAppOutput)(nil),
 		Error:   nil,
@@ -289,10 +313,31 @@ func (c *Client) GetAppWithContext(ctx context.Context, input *amplify.GetAppInp
 	return req.Output.(*amplify.GetAppOutput), req.Error
 }
 
+func (c *Client) GetArtifactUrlWithContext(ctx context.Context, input *amplify.GetArtifactUrlInput, opts ...request.Option) (*amplify.GetArtifactUrlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "GetArtifactUrl",
+		Input:   input,
+		Output:  (*amplify.GetArtifactUrlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.GetArtifactUrlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.GetArtifactUrlOutput), req.Error
+}
+
 func (c *Client) GetBranchWithContext(ctx context.Context, input *amplify.GetBranchInput, opts ...request.Option) (*amplify.GetBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "GetBranchWithContext",
+		Action:  "GetBranch",
 		Input:   input,
 		Output:  (*amplify.GetBranchOutput)(nil),
 		Error:   nil,
@@ -313,7 +358,7 @@ func (c *Client) GetBranchWithContext(ctx context.Context, input *amplify.GetBra
 func (c *Client) GetDomainAssociationWithContext(ctx context.Context, input *amplify.GetDomainAssociationInput, opts ...request.Option) (*amplify.GetDomainAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "GetDomainAssociationWithContext",
+		Action:  "GetDomainAssociation",
 		Input:   input,
 		Output:  (*amplify.GetDomainAssociationOutput)(nil),
 		Error:   nil,
@@ -334,7 +379,7 @@ func (c *Client) GetDomainAssociationWithContext(ctx context.Context, input *amp
 func (c *Client) GetJobWithContext(ctx context.Context, input *amplify.GetJobInput, opts ...request.Option) (*amplify.GetJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "GetJobWithContext",
+		Action:  "GetJob",
 		Input:   input,
 		Output:  (*amplify.GetJobOutput)(nil),
 		Error:   nil,
@@ -355,7 +400,7 @@ func (c *Client) GetJobWithContext(ctx context.Context, input *amplify.GetJobInp
 func (c *Client) GetWebhookWithContext(ctx context.Context, input *amplify.GetWebhookInput, opts ...request.Option) (*amplify.GetWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "GetWebhookWithContext",
+		Action:  "GetWebhook",
 		Input:   input,
 		Output:  (*amplify.GetWebhookOutput)(nil),
 		Error:   nil,
@@ -376,7 +421,7 @@ func (c *Client) GetWebhookWithContext(ctx context.Context, input *amplify.GetWe
 func (c *Client) ListAppsWithContext(ctx context.Context, input *amplify.ListAppsInput, opts ...request.Option) (*amplify.ListAppsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "ListAppsWithContext",
+		Action:  "ListApps",
 		Input:   input,
 		Output:  (*amplify.ListAppsOutput)(nil),
 		Error:   nil,
@@ -394,10 +439,31 @@ func (c *Client) ListAppsWithContext(ctx context.Context, input *amplify.ListApp
 	return req.Output.(*amplify.ListAppsOutput), req.Error
 }
 
+func (c *Client) ListArtifactsWithContext(ctx context.Context, input *amplify.ListArtifactsInput, opts ...request.Option) (*amplify.ListArtifactsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "ListArtifacts",
+		Input:   input,
+		Output:  (*amplify.ListArtifactsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.ListArtifactsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.ListArtifactsOutput), req.Error
+}
+
 func (c *Client) ListBranchesWithContext(ctx context.Context, input *amplify.ListBranchesInput, opts ...request.Option) (*amplify.ListBranchesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "ListBranchesWithContext",
+		Action:  "ListBranches",
 		Input:   input,
 		Output:  (*amplify.ListBranchesOutput)(nil),
 		Error:   nil,
@@ -418,7 +484,7 @@ func (c *Client) ListBranchesWithContext(ctx context.Context, input *amplify.Lis
 func (c *Client) ListDomainAssociationsWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, opts ...request.Option) (*amplify.ListDomainAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "ListDomainAssociationsWithContext",
+		Action:  "ListDomainAssociations",
 		Input:   input,
 		Output:  (*amplify.ListDomainAssociationsOutput)(nil),
 		Error:   nil,
@@ -439,7 +505,7 @@ func (c *Client) ListDomainAssociationsWithContext(ctx context.Context, input *a
 func (c *Client) ListJobsWithContext(ctx context.Context, input *amplify.ListJobsInput, opts ...request.Option) (*amplify.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*amplify.ListJobsOutput)(nil),
 		Error:   nil,
@@ -460,7 +526,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *amplify.ListJob
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *amplify.ListTagsForResourceInput, opts ...request.Option) (*amplify.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*amplify.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -481,7 +547,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ampl
 func (c *Client) ListWebhooksWithContext(ctx context.Context, input *amplify.ListWebhooksInput, opts ...request.Option) (*amplify.ListWebhooksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "ListWebhooksWithContext",
+		Action:  "ListWebhooks",
 		Input:   input,
 		Output:  (*amplify.ListWebhooksOutput)(nil),
 		Error:   nil,
@@ -502,7 +568,7 @@ func (c *Client) ListWebhooksWithContext(ctx context.Context, input *amplify.Lis
 func (c *Client) StartDeploymentWithContext(ctx context.Context, input *amplify.StartDeploymentInput, opts ...request.Option) (*amplify.StartDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "StartDeploymentWithContext",
+		Action:  "StartDeployment",
 		Input:   input,
 		Output:  (*amplify.StartDeploymentOutput)(nil),
 		Error:   nil,
@@ -523,7 +589,7 @@ func (c *Client) StartDeploymentWithContext(ctx context.Context, input *amplify.
 func (c *Client) StartJobWithContext(ctx context.Context, input *amplify.StartJobInput, opts ...request.Option) (*amplify.StartJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "StartJobWithContext",
+		Action:  "StartJob",
 		Input:   input,
 		Output:  (*amplify.StartJobOutput)(nil),
 		Error:   nil,
@@ -544,7 +610,7 @@ func (c *Client) StartJobWithContext(ctx context.Context, input *amplify.StartJo
 func (c *Client) StopJobWithContext(ctx context.Context, input *amplify.StopJobInput, opts ...request.Option) (*amplify.StopJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "StopJobWithContext",
+		Action:  "StopJob",
 		Input:   input,
 		Output:  (*amplify.StopJobOutput)(nil),
 		Error:   nil,
@@ -565,7 +631,7 @@ func (c *Client) StopJobWithContext(ctx context.Context, input *amplify.StopJobI
 func (c *Client) TagResourceWithContext(ctx context.Context, input *amplify.TagResourceInput, opts ...request.Option) (*amplify.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*amplify.TagResourceOutput)(nil),
 		Error:   nil,
@@ -586,7 +652,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *amplify.TagR
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *amplify.UntagResourceInput, opts ...request.Option) (*amplify.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*amplify.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -607,7 +673,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *amplify.Un
 func (c *Client) UpdateAppWithContext(ctx context.Context, input *amplify.UpdateAppInput, opts ...request.Option) (*amplify.UpdateAppOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "UpdateAppWithContext",
+		Action:  "UpdateApp",
 		Input:   input,
 		Output:  (*amplify.UpdateAppOutput)(nil),
 		Error:   nil,
@@ -628,7 +694,7 @@ func (c *Client) UpdateAppWithContext(ctx context.Context, input *amplify.Update
 func (c *Client) UpdateBranchWithContext(ctx context.Context, input *amplify.UpdateBranchInput, opts ...request.Option) (*amplify.UpdateBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "UpdateBranchWithContext",
+		Action:  "UpdateBranch",
 		Input:   input,
 		Output:  (*amplify.UpdateBranchOutput)(nil),
 		Error:   nil,
@@ -649,7 +715,7 @@ func (c *Client) UpdateBranchWithContext(ctx context.Context, input *amplify.Upd
 func (c *Client) UpdateDomainAssociationWithContext(ctx context.Context, input *amplify.UpdateDomainAssociationInput, opts ...request.Option) (*amplify.UpdateDomainAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "UpdateDomainAssociationWithContext",
+		Action:  "UpdateDomainAssociation",
 		Input:   input,
 		Output:  (*amplify.UpdateDomainAssociationOutput)(nil),
 		Error:   nil,
@@ -670,7 +736,7 @@ func (c *Client) UpdateDomainAssociationWithContext(ctx context.Context, input *
 func (c *Client) UpdateWebhookWithContext(ctx context.Context, input *amplify.UpdateWebhookInput, opts ...request.Option) (*amplify.UpdateWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
-		Action:  "UpdateWebhookWithContext",
+		Action:  "UpdateWebhook",
 		Input:   input,
 		Output:  (*amplify.UpdateWebhookOutput)(nil),
 		Error:   nil,

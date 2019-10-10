@@ -67,7 +67,7 @@ var _ CodePipeline = (*Client)(nil)
 func (c *Client) AcknowledgeJobWithContext(ctx context.Context, input *codepipeline.AcknowledgeJobInput, opts ...request.Option) (*codepipeline.AcknowledgeJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "AcknowledgeJobWithContext",
+		Action:  "AcknowledgeJob",
 		Input:   input,
 		Output:  (*codepipeline.AcknowledgeJobOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) AcknowledgeJobWithContext(ctx context.Context, input *codepipel
 func (c *Client) AcknowledgeThirdPartyJobWithContext(ctx context.Context, input *codepipeline.AcknowledgeThirdPartyJobInput, opts ...request.Option) (*codepipeline.AcknowledgeThirdPartyJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "AcknowledgeThirdPartyJobWithContext",
+		Action:  "AcknowledgeThirdPartyJob",
 		Input:   input,
 		Output:  (*codepipeline.AcknowledgeThirdPartyJobOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) AcknowledgeThirdPartyJobWithContext(ctx context.Context, input 
 func (c *Client) CreateCustomActionTypeWithContext(ctx context.Context, input *codepipeline.CreateCustomActionTypeInput, opts ...request.Option) (*codepipeline.CreateCustomActionTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "CreateCustomActionTypeWithContext",
+		Action:  "CreateCustomActionType",
 		Input:   input,
 		Output:  (*codepipeline.CreateCustomActionTypeOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) CreateCustomActionTypeWithContext(ctx context.Context, input *c
 func (c *Client) CreatePipelineWithContext(ctx context.Context, input *codepipeline.CreatePipelineInput, opts ...request.Option) (*codepipeline.CreatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "CreatePipelineWithContext",
+		Action:  "CreatePipeline",
 		Input:   input,
 		Output:  (*codepipeline.CreatePipelineOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) CreatePipelineWithContext(ctx context.Context, input *codepipel
 func (c *Client) DeleteCustomActionTypeWithContext(ctx context.Context, input *codepipeline.DeleteCustomActionTypeInput, opts ...request.Option) (*codepipeline.DeleteCustomActionTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "DeleteCustomActionTypeWithContext",
+		Action:  "DeleteCustomActionType",
 		Input:   input,
 		Output:  (*codepipeline.DeleteCustomActionTypeOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) DeleteCustomActionTypeWithContext(ctx context.Context, input *c
 func (c *Client) DeletePipelineWithContext(ctx context.Context, input *codepipeline.DeletePipelineInput, opts ...request.Option) (*codepipeline.DeletePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "DeletePipelineWithContext",
+		Action:  "DeletePipeline",
 		Input:   input,
 		Output:  (*codepipeline.DeletePipelineOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) DeletePipelineWithContext(ctx context.Context, input *codepipel
 func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *codepipeline.DeleteWebhookInput, opts ...request.Option) (*codepipeline.DeleteWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "DeleteWebhookWithContext",
+		Action:  "DeleteWebhook",
 		Input:   input,
 		Output:  (*codepipeline.DeleteWebhookOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *codepipeli
 func (c *Client) DeregisterWebhookWithThirdPartyWithContext(ctx context.Context, input *codepipeline.DeregisterWebhookWithThirdPartyInput, opts ...request.Option) (*codepipeline.DeregisterWebhookWithThirdPartyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "DeregisterWebhookWithThirdPartyWithContext",
+		Action:  "DeregisterWebhookWithThirdParty",
 		Input:   input,
 		Output:  (*codepipeline.DeregisterWebhookWithThirdPartyOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) DeregisterWebhookWithThirdPartyWithContext(ctx context.Context,
 func (c *Client) DisableStageTransitionWithContext(ctx context.Context, input *codepipeline.DisableStageTransitionInput, opts ...request.Option) (*codepipeline.DisableStageTransitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "DisableStageTransitionWithContext",
+		Action:  "DisableStageTransition",
 		Input:   input,
 		Output:  (*codepipeline.DisableStageTransitionOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) DisableStageTransitionWithContext(ctx context.Context, input *c
 func (c *Client) EnableStageTransitionWithContext(ctx context.Context, input *codepipeline.EnableStageTransitionInput, opts ...request.Option) (*codepipeline.EnableStageTransitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "EnableStageTransitionWithContext",
+		Action:  "EnableStageTransition",
 		Input:   input,
 		Output:  (*codepipeline.EnableStageTransitionOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) EnableStageTransitionWithContext(ctx context.Context, input *co
 func (c *Client) GetJobDetailsWithContext(ctx context.Context, input *codepipeline.GetJobDetailsInput, opts ...request.Option) (*codepipeline.GetJobDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "GetJobDetailsWithContext",
+		Action:  "GetJobDetails",
 		Input:   input,
 		Output:  (*codepipeline.GetJobDetailsOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) GetJobDetailsWithContext(ctx context.Context, input *codepipeli
 func (c *Client) GetPipelineWithContext(ctx context.Context, input *codepipeline.GetPipelineInput, opts ...request.Option) (*codepipeline.GetPipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "GetPipelineWithContext",
+		Action:  "GetPipeline",
 		Input:   input,
 		Output:  (*codepipeline.GetPipelineOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) GetPipelineWithContext(ctx context.Context, input *codepipeline
 func (c *Client) GetPipelineExecutionWithContext(ctx context.Context, input *codepipeline.GetPipelineExecutionInput, opts ...request.Option) (*codepipeline.GetPipelineExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "GetPipelineExecutionWithContext",
+		Action:  "GetPipelineExecution",
 		Input:   input,
 		Output:  (*codepipeline.GetPipelineExecutionOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) GetPipelineExecutionWithContext(ctx context.Context, input *cod
 func (c *Client) GetPipelineStateWithContext(ctx context.Context, input *codepipeline.GetPipelineStateInput, opts ...request.Option) (*codepipeline.GetPipelineStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "GetPipelineStateWithContext",
+		Action:  "GetPipelineState",
 		Input:   input,
 		Output:  (*codepipeline.GetPipelineStateOutput)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) GetPipelineStateWithContext(ctx context.Context, input *codepip
 func (c *Client) GetThirdPartyJobDetailsWithContext(ctx context.Context, input *codepipeline.GetThirdPartyJobDetailsInput, opts ...request.Option) (*codepipeline.GetThirdPartyJobDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "GetThirdPartyJobDetailsWithContext",
+		Action:  "GetThirdPartyJobDetails",
 		Input:   input,
 		Output:  (*codepipeline.GetThirdPartyJobDetailsOutput)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) GetThirdPartyJobDetailsWithContext(ctx context.Context, input *
 func (c *Client) ListActionExecutionsWithContext(ctx context.Context, input *codepipeline.ListActionExecutionsInput, opts ...request.Option) (*codepipeline.ListActionExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "ListActionExecutionsWithContext",
+		Action:  "ListActionExecutions",
 		Input:   input,
 		Output:  (*codepipeline.ListActionExecutionsOutput)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) ListActionExecutionsWithContext(ctx context.Context, input *cod
 func (c *Client) ListActionTypesWithContext(ctx context.Context, input *codepipeline.ListActionTypesInput, opts ...request.Option) (*codepipeline.ListActionTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "ListActionTypesWithContext",
+		Action:  "ListActionTypes",
 		Input:   input,
 		Output:  (*codepipeline.ListActionTypesOutput)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) ListActionTypesWithContext(ctx context.Context, input *codepipe
 func (c *Client) ListPipelineExecutionsWithContext(ctx context.Context, input *codepipeline.ListPipelineExecutionsInput, opts ...request.Option) (*codepipeline.ListPipelineExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "ListPipelineExecutionsWithContext",
+		Action:  "ListPipelineExecutions",
 		Input:   input,
 		Output:  (*codepipeline.ListPipelineExecutionsOutput)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) ListPipelineExecutionsWithContext(ctx context.Context, input *c
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *codepipeline.ListPipelinesInput, opts ...request.Option) (*codepipeline.ListPipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "ListPipelinesWithContext",
+		Action:  "ListPipelines",
 		Input:   input,
 		Output:  (*codepipeline.ListPipelinesOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *codepipeli
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *codepipeline.ListTagsForResourceInput, opts ...request.Option) (*codepipeline.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*codepipeline.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *code
 func (c *Client) ListWebhooksWithContext(ctx context.Context, input *codepipeline.ListWebhooksInput, opts ...request.Option) (*codepipeline.ListWebhooksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "ListWebhooksWithContext",
+		Action:  "ListWebhooks",
 		Input:   input,
 		Output:  (*codepipeline.ListWebhooksOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) ListWebhooksWithContext(ctx context.Context, input *codepipelin
 func (c *Client) PollForJobsWithContext(ctx context.Context, input *codepipeline.PollForJobsInput, opts ...request.Option) (*codepipeline.PollForJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PollForJobsWithContext",
+		Action:  "PollForJobs",
 		Input:   input,
 		Output:  (*codepipeline.PollForJobsOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) PollForJobsWithContext(ctx context.Context, input *codepipeline
 func (c *Client) PollForThirdPartyJobsWithContext(ctx context.Context, input *codepipeline.PollForThirdPartyJobsInput, opts ...request.Option) (*codepipeline.PollForThirdPartyJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PollForThirdPartyJobsWithContext",
+		Action:  "PollForThirdPartyJobs",
 		Input:   input,
 		Output:  (*codepipeline.PollForThirdPartyJobsOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) PollForThirdPartyJobsWithContext(ctx context.Context, input *co
 func (c *Client) PutActionRevisionWithContext(ctx context.Context, input *codepipeline.PutActionRevisionInput, opts ...request.Option) (*codepipeline.PutActionRevisionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutActionRevisionWithContext",
+		Action:  "PutActionRevision",
 		Input:   input,
 		Output:  (*codepipeline.PutActionRevisionOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) PutActionRevisionWithContext(ctx context.Context, input *codepi
 func (c *Client) PutApprovalResultWithContext(ctx context.Context, input *codepipeline.PutApprovalResultInput, opts ...request.Option) (*codepipeline.PutApprovalResultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutApprovalResultWithContext",
+		Action:  "PutApprovalResult",
 		Input:   input,
 		Output:  (*codepipeline.PutApprovalResultOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) PutApprovalResultWithContext(ctx context.Context, input *codepi
 func (c *Client) PutJobFailureResultWithContext(ctx context.Context, input *codepipeline.PutJobFailureResultInput, opts ...request.Option) (*codepipeline.PutJobFailureResultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutJobFailureResultWithContext",
+		Action:  "PutJobFailureResult",
 		Input:   input,
 		Output:  (*codepipeline.PutJobFailureResultOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) PutJobFailureResultWithContext(ctx context.Context, input *code
 func (c *Client) PutJobSuccessResultWithContext(ctx context.Context, input *codepipeline.PutJobSuccessResultInput, opts ...request.Option) (*codepipeline.PutJobSuccessResultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutJobSuccessResultWithContext",
+		Action:  "PutJobSuccessResult",
 		Input:   input,
 		Output:  (*codepipeline.PutJobSuccessResultOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) PutJobSuccessResultWithContext(ctx context.Context, input *code
 func (c *Client) PutThirdPartyJobFailureResultWithContext(ctx context.Context, input *codepipeline.PutThirdPartyJobFailureResultInput, opts ...request.Option) (*codepipeline.PutThirdPartyJobFailureResultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutThirdPartyJobFailureResultWithContext",
+		Action:  "PutThirdPartyJobFailureResult",
 		Input:   input,
 		Output:  (*codepipeline.PutThirdPartyJobFailureResultOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) PutThirdPartyJobFailureResultWithContext(ctx context.Context, i
 func (c *Client) PutThirdPartyJobSuccessResultWithContext(ctx context.Context, input *codepipeline.PutThirdPartyJobSuccessResultInput, opts ...request.Option) (*codepipeline.PutThirdPartyJobSuccessResultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutThirdPartyJobSuccessResultWithContext",
+		Action:  "PutThirdPartyJobSuccessResult",
 		Input:   input,
 		Output:  (*codepipeline.PutThirdPartyJobSuccessResultOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) PutThirdPartyJobSuccessResultWithContext(ctx context.Context, i
 func (c *Client) PutWebhookWithContext(ctx context.Context, input *codepipeline.PutWebhookInput, opts ...request.Option) (*codepipeline.PutWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "PutWebhookWithContext",
+		Action:  "PutWebhook",
 		Input:   input,
 		Output:  (*codepipeline.PutWebhookOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) PutWebhookWithContext(ctx context.Context, input *codepipeline.
 func (c *Client) RegisterWebhookWithThirdPartyWithContext(ctx context.Context, input *codepipeline.RegisterWebhookWithThirdPartyInput, opts ...request.Option) (*codepipeline.RegisterWebhookWithThirdPartyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "RegisterWebhookWithThirdPartyWithContext",
+		Action:  "RegisterWebhookWithThirdParty",
 		Input:   input,
 		Output:  (*codepipeline.RegisterWebhookWithThirdPartyOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) RegisterWebhookWithThirdPartyWithContext(ctx context.Context, i
 func (c *Client) RetryStageExecutionWithContext(ctx context.Context, input *codepipeline.RetryStageExecutionInput, opts ...request.Option) (*codepipeline.RetryStageExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "RetryStageExecutionWithContext",
+		Action:  "RetryStageExecution",
 		Input:   input,
 		Output:  (*codepipeline.RetryStageExecutionOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) RetryStageExecutionWithContext(ctx context.Context, input *code
 func (c *Client) StartPipelineExecutionWithContext(ctx context.Context, input *codepipeline.StartPipelineExecutionInput, opts ...request.Option) (*codepipeline.StartPipelineExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "StartPipelineExecutionWithContext",
+		Action:  "StartPipelineExecution",
 		Input:   input,
 		Output:  (*codepipeline.StartPipelineExecutionOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) StartPipelineExecutionWithContext(ctx context.Context, input *c
 func (c *Client) TagResourceWithContext(ctx context.Context, input *codepipeline.TagResourceInput, opts ...request.Option) (*codepipeline.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*codepipeline.TagResourceOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *codepipeline
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *codepipeline.UntagResourceInput, opts ...request.Option) (*codepipeline.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*codepipeline.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *codepipeli
 func (c *Client) UpdatePipelineWithContext(ctx context.Context, input *codepipeline.UpdatePipelineInput, opts ...request.Option) (*codepipeline.UpdatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
-		Action:  "UpdatePipelineWithContext",
+		Action:  "UpdatePipeline",
 		Input:   input,
 		Output:  (*codepipeline.UpdatePipelineOutput)(nil),
 		Error:   nil,

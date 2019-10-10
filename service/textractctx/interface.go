@@ -37,7 +37,7 @@ var _ Textract = (*Client)(nil)
 func (c *Client) AnalyzeDocumentWithContext(ctx context.Context, input *textract.AnalyzeDocumentInput, opts ...request.Option) (*textract.AnalyzeDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
-		Action:  "AnalyzeDocumentWithContext",
+		Action:  "AnalyzeDocument",
 		Input:   input,
 		Output:  (*textract.AnalyzeDocumentOutput)(nil),
 		Error:   nil,
@@ -58,7 +58,7 @@ func (c *Client) AnalyzeDocumentWithContext(ctx context.Context, input *textract
 func (c *Client) DetectDocumentTextWithContext(ctx context.Context, input *textract.DetectDocumentTextInput, opts ...request.Option) (*textract.DetectDocumentTextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
-		Action:  "DetectDocumentTextWithContext",
+		Action:  "DetectDocumentText",
 		Input:   input,
 		Output:  (*textract.DetectDocumentTextOutput)(nil),
 		Error:   nil,
@@ -79,7 +79,7 @@ func (c *Client) DetectDocumentTextWithContext(ctx context.Context, input *textr
 func (c *Client) GetDocumentAnalysisWithContext(ctx context.Context, input *textract.GetDocumentAnalysisInput, opts ...request.Option) (*textract.GetDocumentAnalysisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
-		Action:  "GetDocumentAnalysisWithContext",
+		Action:  "GetDocumentAnalysis",
 		Input:   input,
 		Output:  (*textract.GetDocumentAnalysisOutput)(nil),
 		Error:   nil,
@@ -100,7 +100,7 @@ func (c *Client) GetDocumentAnalysisWithContext(ctx context.Context, input *text
 func (c *Client) GetDocumentTextDetectionWithContext(ctx context.Context, input *textract.GetDocumentTextDetectionInput, opts ...request.Option) (*textract.GetDocumentTextDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
-		Action:  "GetDocumentTextDetectionWithContext",
+		Action:  "GetDocumentTextDetection",
 		Input:   input,
 		Output:  (*textract.GetDocumentTextDetectionOutput)(nil),
 		Error:   nil,
@@ -121,7 +121,7 @@ func (c *Client) GetDocumentTextDetectionWithContext(ctx context.Context, input 
 func (c *Client) StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
-		Action:  "StartDocumentAnalysisWithContext",
+		Action:  "StartDocumentAnalysis",
 		Input:   input,
 		Output:  (*textract.StartDocumentAnalysisOutput)(nil),
 		Error:   nil,
@@ -142,7 +142,7 @@ func (c *Client) StartDocumentAnalysisWithContext(ctx context.Context, input *te
 func (c *Client) StartDocumentTextDetectionWithContext(ctx context.Context, input *textract.StartDocumentTextDetectionInput, opts ...request.Option) (*textract.StartDocumentTextDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
-		Action:  "StartDocumentTextDetectionWithContext",
+		Action:  "StartDocumentTextDetection",
 		Input:   input,
 		Output:  (*textract.StartDocumentTextDetectionOutput)(nil),
 		Error:   nil,

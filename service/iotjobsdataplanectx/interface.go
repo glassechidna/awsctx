@@ -35,7 +35,7 @@ var _ IoTJobsDataPlane = (*Client)(nil)
 func (c *Client) DescribeJobExecutionWithContext(ctx context.Context, input *iotjobsdataplane.DescribeJobExecutionInput, opts ...request.Option) (*iotjobsdataplane.DescribeJobExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotjobsdataplane",
-		Action:  "DescribeJobExecutionWithContext",
+		Action:  "DescribeJobExecution",
 		Input:   input,
 		Output:  (*iotjobsdataplane.DescribeJobExecutionOutput)(nil),
 		Error:   nil,
@@ -56,7 +56,7 @@ func (c *Client) DescribeJobExecutionWithContext(ctx context.Context, input *iot
 func (c *Client) GetPendingJobExecutionsWithContext(ctx context.Context, input *iotjobsdataplane.GetPendingJobExecutionsInput, opts ...request.Option) (*iotjobsdataplane.GetPendingJobExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotjobsdataplane",
-		Action:  "GetPendingJobExecutionsWithContext",
+		Action:  "GetPendingJobExecutions",
 		Input:   input,
 		Output:  (*iotjobsdataplane.GetPendingJobExecutionsOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) GetPendingJobExecutionsWithContext(ctx context.Context, input *
 func (c *Client) StartNextPendingJobExecutionWithContext(ctx context.Context, input *iotjobsdataplane.StartNextPendingJobExecutionInput, opts ...request.Option) (*iotjobsdataplane.StartNextPendingJobExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotjobsdataplane",
-		Action:  "StartNextPendingJobExecutionWithContext",
+		Action:  "StartNextPendingJobExecution",
 		Input:   input,
 		Output:  (*iotjobsdataplane.StartNextPendingJobExecutionOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) StartNextPendingJobExecutionWithContext(ctx context.Context, in
 func (c *Client) UpdateJobExecutionWithContext(ctx context.Context, input *iotjobsdataplane.UpdateJobExecutionInput, opts ...request.Option) (*iotjobsdataplane.UpdateJobExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotjobsdataplane",
-		Action:  "UpdateJobExecutionWithContext",
+		Action:  "UpdateJobExecution",
 		Input:   input,
 		Output:  (*iotjobsdataplane.UpdateJobExecutionOutput)(nil),
 		Error:   nil,

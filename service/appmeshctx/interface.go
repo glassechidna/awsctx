@@ -59,7 +59,7 @@ var _ AppMesh = (*Client)(nil)
 func (c *Client) CreateMeshWithContext(ctx context.Context, input *appmesh.CreateMeshInput, opts ...request.Option) (*appmesh.CreateMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "CreateMeshWithContext",
+		Action:  "CreateMesh",
 		Input:   input,
 		Output:  (*appmesh.CreateMeshOutput)(nil),
 		Error:   nil,
@@ -80,7 +80,7 @@ func (c *Client) CreateMeshWithContext(ctx context.Context, input *appmesh.Creat
 func (c *Client) CreateRouteWithContext(ctx context.Context, input *appmesh.CreateRouteInput, opts ...request.Option) (*appmesh.CreateRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "CreateRouteWithContext",
+		Action:  "CreateRoute",
 		Input:   input,
 		Output:  (*appmesh.CreateRouteOutput)(nil),
 		Error:   nil,
@@ -101,7 +101,7 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, input *appmesh.Crea
 func (c *Client) CreateVirtualNodeWithContext(ctx context.Context, input *appmesh.CreateVirtualNodeInput, opts ...request.Option) (*appmesh.CreateVirtualNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "CreateVirtualNodeWithContext",
+		Action:  "CreateVirtualNode",
 		Input:   input,
 		Output:  (*appmesh.CreateVirtualNodeOutput)(nil),
 		Error:   nil,
@@ -122,7 +122,7 @@ func (c *Client) CreateVirtualNodeWithContext(ctx context.Context, input *appmes
 func (c *Client) CreateVirtualRouterWithContext(ctx context.Context, input *appmesh.CreateVirtualRouterInput, opts ...request.Option) (*appmesh.CreateVirtualRouterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "CreateVirtualRouterWithContext",
+		Action:  "CreateVirtualRouter",
 		Input:   input,
 		Output:  (*appmesh.CreateVirtualRouterOutput)(nil),
 		Error:   nil,
@@ -143,7 +143,7 @@ func (c *Client) CreateVirtualRouterWithContext(ctx context.Context, input *appm
 func (c *Client) CreateVirtualServiceWithContext(ctx context.Context, input *appmesh.CreateVirtualServiceInput, opts ...request.Option) (*appmesh.CreateVirtualServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "CreateVirtualServiceWithContext",
+		Action:  "CreateVirtualService",
 		Input:   input,
 		Output:  (*appmesh.CreateVirtualServiceOutput)(nil),
 		Error:   nil,
@@ -164,7 +164,7 @@ func (c *Client) CreateVirtualServiceWithContext(ctx context.Context, input *app
 func (c *Client) DeleteMeshWithContext(ctx context.Context, input *appmesh.DeleteMeshInput, opts ...request.Option) (*appmesh.DeleteMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DeleteMeshWithContext",
+		Action:  "DeleteMesh",
 		Input:   input,
 		Output:  (*appmesh.DeleteMeshOutput)(nil),
 		Error:   nil,
@@ -185,7 +185,7 @@ func (c *Client) DeleteMeshWithContext(ctx context.Context, input *appmesh.Delet
 func (c *Client) DeleteRouteWithContext(ctx context.Context, input *appmesh.DeleteRouteInput, opts ...request.Option) (*appmesh.DeleteRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DeleteRouteWithContext",
+		Action:  "DeleteRoute",
 		Input:   input,
 		Output:  (*appmesh.DeleteRouteOutput)(nil),
 		Error:   nil,
@@ -206,7 +206,7 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, input *appmesh.Dele
 func (c *Client) DeleteVirtualNodeWithContext(ctx context.Context, input *appmesh.DeleteVirtualNodeInput, opts ...request.Option) (*appmesh.DeleteVirtualNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DeleteVirtualNodeWithContext",
+		Action:  "DeleteVirtualNode",
 		Input:   input,
 		Output:  (*appmesh.DeleteVirtualNodeOutput)(nil),
 		Error:   nil,
@@ -227,7 +227,7 @@ func (c *Client) DeleteVirtualNodeWithContext(ctx context.Context, input *appmes
 func (c *Client) DeleteVirtualRouterWithContext(ctx context.Context, input *appmesh.DeleteVirtualRouterInput, opts ...request.Option) (*appmesh.DeleteVirtualRouterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DeleteVirtualRouterWithContext",
+		Action:  "DeleteVirtualRouter",
 		Input:   input,
 		Output:  (*appmesh.DeleteVirtualRouterOutput)(nil),
 		Error:   nil,
@@ -248,7 +248,7 @@ func (c *Client) DeleteVirtualRouterWithContext(ctx context.Context, input *appm
 func (c *Client) DeleteVirtualServiceWithContext(ctx context.Context, input *appmesh.DeleteVirtualServiceInput, opts ...request.Option) (*appmesh.DeleteVirtualServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DeleteVirtualServiceWithContext",
+		Action:  "DeleteVirtualService",
 		Input:   input,
 		Output:  (*appmesh.DeleteVirtualServiceOutput)(nil),
 		Error:   nil,
@@ -269,7 +269,7 @@ func (c *Client) DeleteVirtualServiceWithContext(ctx context.Context, input *app
 func (c *Client) DescribeMeshWithContext(ctx context.Context, input *appmesh.DescribeMeshInput, opts ...request.Option) (*appmesh.DescribeMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DescribeMeshWithContext",
+		Action:  "DescribeMesh",
 		Input:   input,
 		Output:  (*appmesh.DescribeMeshOutput)(nil),
 		Error:   nil,
@@ -290,7 +290,7 @@ func (c *Client) DescribeMeshWithContext(ctx context.Context, input *appmesh.Des
 func (c *Client) DescribeRouteWithContext(ctx context.Context, input *appmesh.DescribeRouteInput, opts ...request.Option) (*appmesh.DescribeRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DescribeRouteWithContext",
+		Action:  "DescribeRoute",
 		Input:   input,
 		Output:  (*appmesh.DescribeRouteOutput)(nil),
 		Error:   nil,
@@ -311,7 +311,7 @@ func (c *Client) DescribeRouteWithContext(ctx context.Context, input *appmesh.De
 func (c *Client) DescribeVirtualNodeWithContext(ctx context.Context, input *appmesh.DescribeVirtualNodeInput, opts ...request.Option) (*appmesh.DescribeVirtualNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DescribeVirtualNodeWithContext",
+		Action:  "DescribeVirtualNode",
 		Input:   input,
 		Output:  (*appmesh.DescribeVirtualNodeOutput)(nil),
 		Error:   nil,
@@ -332,7 +332,7 @@ func (c *Client) DescribeVirtualNodeWithContext(ctx context.Context, input *appm
 func (c *Client) DescribeVirtualRouterWithContext(ctx context.Context, input *appmesh.DescribeVirtualRouterInput, opts ...request.Option) (*appmesh.DescribeVirtualRouterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DescribeVirtualRouterWithContext",
+		Action:  "DescribeVirtualRouter",
 		Input:   input,
 		Output:  (*appmesh.DescribeVirtualRouterOutput)(nil),
 		Error:   nil,
@@ -353,7 +353,7 @@ func (c *Client) DescribeVirtualRouterWithContext(ctx context.Context, input *ap
 func (c *Client) DescribeVirtualServiceWithContext(ctx context.Context, input *appmesh.DescribeVirtualServiceInput, opts ...request.Option) (*appmesh.DescribeVirtualServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "DescribeVirtualServiceWithContext",
+		Action:  "DescribeVirtualService",
 		Input:   input,
 		Output:  (*appmesh.DescribeVirtualServiceOutput)(nil),
 		Error:   nil,
@@ -374,7 +374,7 @@ func (c *Client) DescribeVirtualServiceWithContext(ctx context.Context, input *a
 func (c *Client) ListMeshesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, opts ...request.Option) (*appmesh.ListMeshesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "ListMeshesWithContext",
+		Action:  "ListMeshes",
 		Input:   input,
 		Output:  (*appmesh.ListMeshesOutput)(nil),
 		Error:   nil,
@@ -395,7 +395,7 @@ func (c *Client) ListMeshesWithContext(ctx context.Context, input *appmesh.ListM
 func (c *Client) ListRoutesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, opts ...request.Option) (*appmesh.ListRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "ListRoutesWithContext",
+		Action:  "ListRoutes",
 		Input:   input,
 		Output:  (*appmesh.ListRoutesOutput)(nil),
 		Error:   nil,
@@ -416,7 +416,7 @@ func (c *Client) ListRoutesWithContext(ctx context.Context, input *appmesh.ListR
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, opts ...request.Option) (*appmesh.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*appmesh.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -437,7 +437,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appm
 func (c *Client) ListVirtualNodesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, opts ...request.Option) (*appmesh.ListVirtualNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "ListVirtualNodesWithContext",
+		Action:  "ListVirtualNodes",
 		Input:   input,
 		Output:  (*appmesh.ListVirtualNodesOutput)(nil),
 		Error:   nil,
@@ -458,7 +458,7 @@ func (c *Client) ListVirtualNodesWithContext(ctx context.Context, input *appmesh
 func (c *Client) ListVirtualRoutersWithContext(ctx context.Context, input *appmesh.ListVirtualRoutersInput, opts ...request.Option) (*appmesh.ListVirtualRoutersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "ListVirtualRoutersWithContext",
+		Action:  "ListVirtualRouters",
 		Input:   input,
 		Output:  (*appmesh.ListVirtualRoutersOutput)(nil),
 		Error:   nil,
@@ -479,7 +479,7 @@ func (c *Client) ListVirtualRoutersWithContext(ctx context.Context, input *appme
 func (c *Client) ListVirtualServicesWithContext(ctx context.Context, input *appmesh.ListVirtualServicesInput, opts ...request.Option) (*appmesh.ListVirtualServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "ListVirtualServicesWithContext",
+		Action:  "ListVirtualServices",
 		Input:   input,
 		Output:  (*appmesh.ListVirtualServicesOutput)(nil),
 		Error:   nil,
@@ -500,7 +500,7 @@ func (c *Client) ListVirtualServicesWithContext(ctx context.Context, input *appm
 func (c *Client) TagResourceWithContext(ctx context.Context, input *appmesh.TagResourceInput, opts ...request.Option) (*appmesh.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*appmesh.TagResourceOutput)(nil),
 		Error:   nil,
@@ -521,7 +521,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *appmesh.TagR
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *appmesh.UntagResourceInput, opts ...request.Option) (*appmesh.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*appmesh.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -542,7 +542,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *appmesh.Un
 func (c *Client) UpdateMeshWithContext(ctx context.Context, input *appmesh.UpdateMeshInput, opts ...request.Option) (*appmesh.UpdateMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "UpdateMeshWithContext",
+		Action:  "UpdateMesh",
 		Input:   input,
 		Output:  (*appmesh.UpdateMeshOutput)(nil),
 		Error:   nil,
@@ -563,7 +563,7 @@ func (c *Client) UpdateMeshWithContext(ctx context.Context, input *appmesh.Updat
 func (c *Client) UpdateRouteWithContext(ctx context.Context, input *appmesh.UpdateRouteInput, opts ...request.Option) (*appmesh.UpdateRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "UpdateRouteWithContext",
+		Action:  "UpdateRoute",
 		Input:   input,
 		Output:  (*appmesh.UpdateRouteOutput)(nil),
 		Error:   nil,
@@ -584,7 +584,7 @@ func (c *Client) UpdateRouteWithContext(ctx context.Context, input *appmesh.Upda
 func (c *Client) UpdateVirtualNodeWithContext(ctx context.Context, input *appmesh.UpdateVirtualNodeInput, opts ...request.Option) (*appmesh.UpdateVirtualNodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "UpdateVirtualNodeWithContext",
+		Action:  "UpdateVirtualNode",
 		Input:   input,
 		Output:  (*appmesh.UpdateVirtualNodeOutput)(nil),
 		Error:   nil,
@@ -605,7 +605,7 @@ func (c *Client) UpdateVirtualNodeWithContext(ctx context.Context, input *appmes
 func (c *Client) UpdateVirtualRouterWithContext(ctx context.Context, input *appmesh.UpdateVirtualRouterInput, opts ...request.Option) (*appmesh.UpdateVirtualRouterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "UpdateVirtualRouterWithContext",
+		Action:  "UpdateVirtualRouter",
 		Input:   input,
 		Output:  (*appmesh.UpdateVirtualRouterOutput)(nil),
 		Error:   nil,
@@ -626,7 +626,7 @@ func (c *Client) UpdateVirtualRouterWithContext(ctx context.Context, input *appm
 func (c *Client) UpdateVirtualServiceWithContext(ctx context.Context, input *appmesh.UpdateVirtualServiceInput, opts ...request.Option) (*appmesh.UpdateVirtualServiceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
-		Action:  "UpdateVirtualServiceWithContext",
+		Action:  "UpdateVirtualService",
 		Input:   input,
 		Output:  (*appmesh.UpdateVirtualServiceOutput)(nil),
 		Error:   nil,

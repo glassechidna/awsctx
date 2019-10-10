@@ -106,7 +106,7 @@ var _ SageMaker = (*Client)(nil)
 func (c *Client) AddTagsWithContext(ctx context.Context, input *sagemaker.AddTagsInput, opts ...request.Option) (*sagemaker.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*sagemaker.AddTagsOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *sagemaker.AddTag
 func (c *Client) CreateAlgorithmWithContext(ctx context.Context, input *sagemaker.CreateAlgorithmInput, opts ...request.Option) (*sagemaker.CreateAlgorithmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateAlgorithmWithContext",
+		Action:  "CreateAlgorithm",
 		Input:   input,
 		Output:  (*sagemaker.CreateAlgorithmOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) CreateAlgorithmWithContext(ctx context.Context, input *sagemake
 func (c *Client) CreateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.CreateCodeRepositoryInput, opts ...request.Option) (*sagemaker.CreateCodeRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateCodeRepositoryWithContext",
+		Action:  "CreateCodeRepository",
 		Input:   input,
 		Output:  (*sagemaker.CreateCodeRepositoryOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) CreateCodeRepositoryWithContext(ctx context.Context, input *sag
 func (c *Client) CreateCompilationJobWithContext(ctx context.Context, input *sagemaker.CreateCompilationJobInput, opts ...request.Option) (*sagemaker.CreateCompilationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateCompilationJobWithContext",
+		Action:  "CreateCompilationJob",
 		Input:   input,
 		Output:  (*sagemaker.CreateCompilationJobOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) CreateCompilationJobWithContext(ctx context.Context, input *sag
 func (c *Client) CreateEndpointWithContext(ctx context.Context, input *sagemaker.CreateEndpointInput, opts ...request.Option) (*sagemaker.CreateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateEndpointWithContext",
+		Action:  "CreateEndpoint",
 		Input:   input,
 		Output:  (*sagemaker.CreateEndpointOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) CreateEndpointWithContext(ctx context.Context, input *sagemaker
 func (c *Client) CreateEndpointConfigWithContext(ctx context.Context, input *sagemaker.CreateEndpointConfigInput, opts ...request.Option) (*sagemaker.CreateEndpointConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateEndpointConfigWithContext",
+		Action:  "CreateEndpointConfig",
 		Input:   input,
 		Output:  (*sagemaker.CreateEndpointConfigOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) CreateEndpointConfigWithContext(ctx context.Context, input *sag
 func (c *Client) CreateHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.CreateHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.CreateHyperParameterTuningJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateHyperParameterTuningJobWithContext",
+		Action:  "CreateHyperParameterTuningJob",
 		Input:   input,
 		Output:  (*sagemaker.CreateHyperParameterTuningJobOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) CreateHyperParameterTuningJobWithContext(ctx context.Context, i
 func (c *Client) CreateLabelingJobWithContext(ctx context.Context, input *sagemaker.CreateLabelingJobInput, opts ...request.Option) (*sagemaker.CreateLabelingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateLabelingJobWithContext",
+		Action:  "CreateLabelingJob",
 		Input:   input,
 		Output:  (*sagemaker.CreateLabelingJobOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) CreateLabelingJobWithContext(ctx context.Context, input *sagema
 func (c *Client) CreateModelWithContext(ctx context.Context, input *sagemaker.CreateModelInput, opts ...request.Option) (*sagemaker.CreateModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateModelWithContext",
+		Action:  "CreateModel",
 		Input:   input,
 		Output:  (*sagemaker.CreateModelOutput)(nil),
 		Error:   nil,
@@ -295,7 +295,7 @@ func (c *Client) CreateModelWithContext(ctx context.Context, input *sagemaker.Cr
 func (c *Client) CreateModelPackageWithContext(ctx context.Context, input *sagemaker.CreateModelPackageInput, opts ...request.Option) (*sagemaker.CreateModelPackageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateModelPackageWithContext",
+		Action:  "CreateModelPackage",
 		Input:   input,
 		Output:  (*sagemaker.CreateModelPackageOutput)(nil),
 		Error:   nil,
@@ -316,7 +316,7 @@ func (c *Client) CreateModelPackageWithContext(ctx context.Context, input *sagem
 func (c *Client) CreateNotebookInstanceWithContext(ctx context.Context, input *sagemaker.CreateNotebookInstanceInput, opts ...request.Option) (*sagemaker.CreateNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateNotebookInstanceWithContext",
+		Action:  "CreateNotebookInstance",
 		Input:   input,
 		Output:  (*sagemaker.CreateNotebookInstanceOutput)(nil),
 		Error:   nil,
@@ -337,7 +337,7 @@ func (c *Client) CreateNotebookInstanceWithContext(ctx context.Context, input *s
 func (c *Client) CreateNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.CreateNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.CreateNotebookInstanceLifecycleConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateNotebookInstanceLifecycleConfigWithContext",
+		Action:  "CreateNotebookInstanceLifecycleConfig",
 		Input:   input,
 		Output:  (*sagemaker.CreateNotebookInstanceLifecycleConfigOutput)(nil),
 		Error:   nil,
@@ -358,7 +358,7 @@ func (c *Client) CreateNotebookInstanceLifecycleConfigWithContext(ctx context.Co
 func (c *Client) CreatePresignedNotebookInstanceUrlWithContext(ctx context.Context, input *sagemaker.CreatePresignedNotebookInstanceUrlInput, opts ...request.Option) (*sagemaker.CreatePresignedNotebookInstanceUrlOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreatePresignedNotebookInstanceUrlWithContext",
+		Action:  "CreatePresignedNotebookInstanceUrl",
 		Input:   input,
 		Output:  (*sagemaker.CreatePresignedNotebookInstanceUrlOutput)(nil),
 		Error:   nil,
@@ -379,7 +379,7 @@ func (c *Client) CreatePresignedNotebookInstanceUrlWithContext(ctx context.Conte
 func (c *Client) CreateTrainingJobWithContext(ctx context.Context, input *sagemaker.CreateTrainingJobInput, opts ...request.Option) (*sagemaker.CreateTrainingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateTrainingJobWithContext",
+		Action:  "CreateTrainingJob",
 		Input:   input,
 		Output:  (*sagemaker.CreateTrainingJobOutput)(nil),
 		Error:   nil,
@@ -400,7 +400,7 @@ func (c *Client) CreateTrainingJobWithContext(ctx context.Context, input *sagema
 func (c *Client) CreateTransformJobWithContext(ctx context.Context, input *sagemaker.CreateTransformJobInput, opts ...request.Option) (*sagemaker.CreateTransformJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateTransformJobWithContext",
+		Action:  "CreateTransformJob",
 		Input:   input,
 		Output:  (*sagemaker.CreateTransformJobOutput)(nil),
 		Error:   nil,
@@ -421,7 +421,7 @@ func (c *Client) CreateTransformJobWithContext(ctx context.Context, input *sagem
 func (c *Client) CreateWorkteamWithContext(ctx context.Context, input *sagemaker.CreateWorkteamInput, opts ...request.Option) (*sagemaker.CreateWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "CreateWorkteamWithContext",
+		Action:  "CreateWorkteam",
 		Input:   input,
 		Output:  (*sagemaker.CreateWorkteamOutput)(nil),
 		Error:   nil,
@@ -442,7 +442,7 @@ func (c *Client) CreateWorkteamWithContext(ctx context.Context, input *sagemaker
 func (c *Client) DeleteAlgorithmWithContext(ctx context.Context, input *sagemaker.DeleteAlgorithmInput, opts ...request.Option) (*sagemaker.DeleteAlgorithmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteAlgorithmWithContext",
+		Action:  "DeleteAlgorithm",
 		Input:   input,
 		Output:  (*sagemaker.DeleteAlgorithmOutput)(nil),
 		Error:   nil,
@@ -463,7 +463,7 @@ func (c *Client) DeleteAlgorithmWithContext(ctx context.Context, input *sagemake
 func (c *Client) DeleteCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DeleteCodeRepositoryInput, opts ...request.Option) (*sagemaker.DeleteCodeRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteCodeRepositoryWithContext",
+		Action:  "DeleteCodeRepository",
 		Input:   input,
 		Output:  (*sagemaker.DeleteCodeRepositoryOutput)(nil),
 		Error:   nil,
@@ -484,7 +484,7 @@ func (c *Client) DeleteCodeRepositoryWithContext(ctx context.Context, input *sag
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *sagemaker.DeleteEndpointInput, opts ...request.Option) (*sagemaker.DeleteEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteEndpointWithContext",
+		Action:  "DeleteEndpoint",
 		Input:   input,
 		Output:  (*sagemaker.DeleteEndpointOutput)(nil),
 		Error:   nil,
@@ -505,7 +505,7 @@ func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *sagemaker
 func (c *Client) DeleteEndpointConfigWithContext(ctx context.Context, input *sagemaker.DeleteEndpointConfigInput, opts ...request.Option) (*sagemaker.DeleteEndpointConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteEndpointConfigWithContext",
+		Action:  "DeleteEndpointConfig",
 		Input:   input,
 		Output:  (*sagemaker.DeleteEndpointConfigOutput)(nil),
 		Error:   nil,
@@ -526,7 +526,7 @@ func (c *Client) DeleteEndpointConfigWithContext(ctx context.Context, input *sag
 func (c *Client) DeleteModelWithContext(ctx context.Context, input *sagemaker.DeleteModelInput, opts ...request.Option) (*sagemaker.DeleteModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteModelWithContext",
+		Action:  "DeleteModel",
 		Input:   input,
 		Output:  (*sagemaker.DeleteModelOutput)(nil),
 		Error:   nil,
@@ -547,7 +547,7 @@ func (c *Client) DeleteModelWithContext(ctx context.Context, input *sagemaker.De
 func (c *Client) DeleteModelPackageWithContext(ctx context.Context, input *sagemaker.DeleteModelPackageInput, opts ...request.Option) (*sagemaker.DeleteModelPackageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteModelPackageWithContext",
+		Action:  "DeleteModelPackage",
 		Input:   input,
 		Output:  (*sagemaker.DeleteModelPackageOutput)(nil),
 		Error:   nil,
@@ -568,7 +568,7 @@ func (c *Client) DeleteModelPackageWithContext(ctx context.Context, input *sagem
 func (c *Client) DeleteNotebookInstanceWithContext(ctx context.Context, input *sagemaker.DeleteNotebookInstanceInput, opts ...request.Option) (*sagemaker.DeleteNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteNotebookInstanceWithContext",
+		Action:  "DeleteNotebookInstance",
 		Input:   input,
 		Output:  (*sagemaker.DeleteNotebookInstanceOutput)(nil),
 		Error:   nil,
@@ -589,7 +589,7 @@ func (c *Client) DeleteNotebookInstanceWithContext(ctx context.Context, input *s
 func (c *Client) DeleteNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.DeleteNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.DeleteNotebookInstanceLifecycleConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteNotebookInstanceLifecycleConfigWithContext",
+		Action:  "DeleteNotebookInstanceLifecycleConfig",
 		Input:   input,
 		Output:  (*sagemaker.DeleteNotebookInstanceLifecycleConfigOutput)(nil),
 		Error:   nil,
@@ -610,7 +610,7 @@ func (c *Client) DeleteNotebookInstanceLifecycleConfigWithContext(ctx context.Co
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *sagemaker.DeleteTagsInput, opts ...request.Option) (*sagemaker.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*sagemaker.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -631,7 +631,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *sagemaker.Del
 func (c *Client) DeleteWorkteamWithContext(ctx context.Context, input *sagemaker.DeleteWorkteamInput, opts ...request.Option) (*sagemaker.DeleteWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DeleteWorkteamWithContext",
+		Action:  "DeleteWorkteam",
 		Input:   input,
 		Output:  (*sagemaker.DeleteWorkteamOutput)(nil),
 		Error:   nil,
@@ -652,7 +652,7 @@ func (c *Client) DeleteWorkteamWithContext(ctx context.Context, input *sagemaker
 func (c *Client) DescribeAlgorithmWithContext(ctx context.Context, input *sagemaker.DescribeAlgorithmInput, opts ...request.Option) (*sagemaker.DescribeAlgorithmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeAlgorithmWithContext",
+		Action:  "DescribeAlgorithm",
 		Input:   input,
 		Output:  (*sagemaker.DescribeAlgorithmOutput)(nil),
 		Error:   nil,
@@ -673,7 +673,7 @@ func (c *Client) DescribeAlgorithmWithContext(ctx context.Context, input *sagema
 func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DescribeCodeRepositoryInput, opts ...request.Option) (*sagemaker.DescribeCodeRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeCodeRepositoryWithContext",
+		Action:  "DescribeCodeRepository",
 		Input:   input,
 		Output:  (*sagemaker.DescribeCodeRepositoryOutput)(nil),
 		Error:   nil,
@@ -694,7 +694,7 @@ func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, input *s
 func (c *Client) DescribeCompilationJobWithContext(ctx context.Context, input *sagemaker.DescribeCompilationJobInput, opts ...request.Option) (*sagemaker.DescribeCompilationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeCompilationJobWithContext",
+		Action:  "DescribeCompilationJob",
 		Input:   input,
 		Output:  (*sagemaker.DescribeCompilationJobOutput)(nil),
 		Error:   nil,
@@ -715,7 +715,7 @@ func (c *Client) DescribeCompilationJobWithContext(ctx context.Context, input *s
 func (c *Client) DescribeEndpointWithContext(ctx context.Context, input *sagemaker.DescribeEndpointInput, opts ...request.Option) (*sagemaker.DescribeEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeEndpointWithContext",
+		Action:  "DescribeEndpoint",
 		Input:   input,
 		Output:  (*sagemaker.DescribeEndpointOutput)(nil),
 		Error:   nil,
@@ -736,7 +736,7 @@ func (c *Client) DescribeEndpointWithContext(ctx context.Context, input *sagemak
 func (c *Client) DescribeEndpointConfigWithContext(ctx context.Context, input *sagemaker.DescribeEndpointConfigInput, opts ...request.Option) (*sagemaker.DescribeEndpointConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeEndpointConfigWithContext",
+		Action:  "DescribeEndpointConfig",
 		Input:   input,
 		Output:  (*sagemaker.DescribeEndpointConfigOutput)(nil),
 		Error:   nil,
@@ -757,7 +757,7 @@ func (c *Client) DescribeEndpointConfigWithContext(ctx context.Context, input *s
 func (c *Client) DescribeHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.DescribeHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.DescribeHyperParameterTuningJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeHyperParameterTuningJobWithContext",
+		Action:  "DescribeHyperParameterTuningJob",
 		Input:   input,
 		Output:  (*sagemaker.DescribeHyperParameterTuningJobOutput)(nil),
 		Error:   nil,
@@ -778,7 +778,7 @@ func (c *Client) DescribeHyperParameterTuningJobWithContext(ctx context.Context,
 func (c *Client) DescribeLabelingJobWithContext(ctx context.Context, input *sagemaker.DescribeLabelingJobInput, opts ...request.Option) (*sagemaker.DescribeLabelingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeLabelingJobWithContext",
+		Action:  "DescribeLabelingJob",
 		Input:   input,
 		Output:  (*sagemaker.DescribeLabelingJobOutput)(nil),
 		Error:   nil,
@@ -799,7 +799,7 @@ func (c *Client) DescribeLabelingJobWithContext(ctx context.Context, input *sage
 func (c *Client) DescribeModelWithContext(ctx context.Context, input *sagemaker.DescribeModelInput, opts ...request.Option) (*sagemaker.DescribeModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeModelWithContext",
+		Action:  "DescribeModel",
 		Input:   input,
 		Output:  (*sagemaker.DescribeModelOutput)(nil),
 		Error:   nil,
@@ -820,7 +820,7 @@ func (c *Client) DescribeModelWithContext(ctx context.Context, input *sagemaker.
 func (c *Client) DescribeModelPackageWithContext(ctx context.Context, input *sagemaker.DescribeModelPackageInput, opts ...request.Option) (*sagemaker.DescribeModelPackageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeModelPackageWithContext",
+		Action:  "DescribeModelPackage",
 		Input:   input,
 		Output:  (*sagemaker.DescribeModelPackageOutput)(nil),
 		Error:   nil,
@@ -841,7 +841,7 @@ func (c *Client) DescribeModelPackageWithContext(ctx context.Context, input *sag
 func (c *Client) DescribeNotebookInstanceWithContext(ctx context.Context, input *sagemaker.DescribeNotebookInstanceInput, opts ...request.Option) (*sagemaker.DescribeNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeNotebookInstanceWithContext",
+		Action:  "DescribeNotebookInstance",
 		Input:   input,
 		Output:  (*sagemaker.DescribeNotebookInstanceOutput)(nil),
 		Error:   nil,
@@ -862,7 +862,7 @@ func (c *Client) DescribeNotebookInstanceWithContext(ctx context.Context, input 
 func (c *Client) DescribeNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.DescribeNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.DescribeNotebookInstanceLifecycleConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeNotebookInstanceLifecycleConfigWithContext",
+		Action:  "DescribeNotebookInstanceLifecycleConfig",
 		Input:   input,
 		Output:  (*sagemaker.DescribeNotebookInstanceLifecycleConfigOutput)(nil),
 		Error:   nil,
@@ -883,7 +883,7 @@ func (c *Client) DescribeNotebookInstanceLifecycleConfigWithContext(ctx context.
 func (c *Client) DescribeSubscribedWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeSubscribedWorkteamInput, opts ...request.Option) (*sagemaker.DescribeSubscribedWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeSubscribedWorkteamWithContext",
+		Action:  "DescribeSubscribedWorkteam",
 		Input:   input,
 		Output:  (*sagemaker.DescribeSubscribedWorkteamOutput)(nil),
 		Error:   nil,
@@ -904,7 +904,7 @@ func (c *Client) DescribeSubscribedWorkteamWithContext(ctx context.Context, inpu
 func (c *Client) DescribeTrainingJobWithContext(ctx context.Context, input *sagemaker.DescribeTrainingJobInput, opts ...request.Option) (*sagemaker.DescribeTrainingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeTrainingJobWithContext",
+		Action:  "DescribeTrainingJob",
 		Input:   input,
 		Output:  (*sagemaker.DescribeTrainingJobOutput)(nil),
 		Error:   nil,
@@ -925,7 +925,7 @@ func (c *Client) DescribeTrainingJobWithContext(ctx context.Context, input *sage
 func (c *Client) DescribeTransformJobWithContext(ctx context.Context, input *sagemaker.DescribeTransformJobInput, opts ...request.Option) (*sagemaker.DescribeTransformJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeTransformJobWithContext",
+		Action:  "DescribeTransformJob",
 		Input:   input,
 		Output:  (*sagemaker.DescribeTransformJobOutput)(nil),
 		Error:   nil,
@@ -946,7 +946,7 @@ func (c *Client) DescribeTransformJobWithContext(ctx context.Context, input *sag
 func (c *Client) DescribeWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeWorkteamInput, opts ...request.Option) (*sagemaker.DescribeWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "DescribeWorkteamWithContext",
+		Action:  "DescribeWorkteam",
 		Input:   input,
 		Output:  (*sagemaker.DescribeWorkteamOutput)(nil),
 		Error:   nil,
@@ -967,7 +967,7 @@ func (c *Client) DescribeWorkteamWithContext(ctx context.Context, input *sagemak
 func (c *Client) GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "GetSearchSuggestionsWithContext",
+		Action:  "GetSearchSuggestions",
 		Input:   input,
 		Output:  (*sagemaker.GetSearchSuggestionsOutput)(nil),
 		Error:   nil,
@@ -988,7 +988,7 @@ func (c *Client) GetSearchSuggestionsWithContext(ctx context.Context, input *sag
 func (c *Client) ListAlgorithmsWithContext(ctx context.Context, input *sagemaker.ListAlgorithmsInput, opts ...request.Option) (*sagemaker.ListAlgorithmsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListAlgorithmsWithContext",
+		Action:  "ListAlgorithms",
 		Input:   input,
 		Output:  (*sagemaker.ListAlgorithmsOutput)(nil),
 		Error:   nil,
@@ -1009,7 +1009,7 @@ func (c *Client) ListAlgorithmsWithContext(ctx context.Context, input *sagemaker
 func (c *Client) ListCodeRepositoriesWithContext(ctx context.Context, input *sagemaker.ListCodeRepositoriesInput, opts ...request.Option) (*sagemaker.ListCodeRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListCodeRepositoriesWithContext",
+		Action:  "ListCodeRepositories",
 		Input:   input,
 		Output:  (*sagemaker.ListCodeRepositoriesOutput)(nil),
 		Error:   nil,
@@ -1030,7 +1030,7 @@ func (c *Client) ListCodeRepositoriesWithContext(ctx context.Context, input *sag
 func (c *Client) ListCompilationJobsWithContext(ctx context.Context, input *sagemaker.ListCompilationJobsInput, opts ...request.Option) (*sagemaker.ListCompilationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListCompilationJobsWithContext",
+		Action:  "ListCompilationJobs",
 		Input:   input,
 		Output:  (*sagemaker.ListCompilationJobsOutput)(nil),
 		Error:   nil,
@@ -1051,7 +1051,7 @@ func (c *Client) ListCompilationJobsWithContext(ctx context.Context, input *sage
 func (c *Client) ListEndpointConfigsWithContext(ctx context.Context, input *sagemaker.ListEndpointConfigsInput, opts ...request.Option) (*sagemaker.ListEndpointConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListEndpointConfigsWithContext",
+		Action:  "ListEndpointConfigs",
 		Input:   input,
 		Output:  (*sagemaker.ListEndpointConfigsOutput)(nil),
 		Error:   nil,
@@ -1072,7 +1072,7 @@ func (c *Client) ListEndpointConfigsWithContext(ctx context.Context, input *sage
 func (c *Client) ListEndpointsWithContext(ctx context.Context, input *sagemaker.ListEndpointsInput, opts ...request.Option) (*sagemaker.ListEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListEndpointsWithContext",
+		Action:  "ListEndpoints",
 		Input:   input,
 		Output:  (*sagemaker.ListEndpointsOutput)(nil),
 		Error:   nil,
@@ -1093,7 +1093,7 @@ func (c *Client) ListEndpointsWithContext(ctx context.Context, input *sagemaker.
 func (c *Client) ListHyperParameterTuningJobsWithContext(ctx context.Context, input *sagemaker.ListHyperParameterTuningJobsInput, opts ...request.Option) (*sagemaker.ListHyperParameterTuningJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListHyperParameterTuningJobsWithContext",
+		Action:  "ListHyperParameterTuningJobs",
 		Input:   input,
 		Output:  (*sagemaker.ListHyperParameterTuningJobsOutput)(nil),
 		Error:   nil,
@@ -1114,7 +1114,7 @@ func (c *Client) ListHyperParameterTuningJobsWithContext(ctx context.Context, in
 func (c *Client) ListLabelingJobsWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsInput, opts ...request.Option) (*sagemaker.ListLabelingJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListLabelingJobsWithContext",
+		Action:  "ListLabelingJobs",
 		Input:   input,
 		Output:  (*sagemaker.ListLabelingJobsOutput)(nil),
 		Error:   nil,
@@ -1135,7 +1135,7 @@ func (c *Client) ListLabelingJobsWithContext(ctx context.Context, input *sagemak
 func (c *Client) ListLabelingJobsForWorkteamWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsForWorkteamInput, opts ...request.Option) (*sagemaker.ListLabelingJobsForWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListLabelingJobsForWorkteamWithContext",
+		Action:  "ListLabelingJobsForWorkteam",
 		Input:   input,
 		Output:  (*sagemaker.ListLabelingJobsForWorkteamOutput)(nil),
 		Error:   nil,
@@ -1156,7 +1156,7 @@ func (c *Client) ListLabelingJobsForWorkteamWithContext(ctx context.Context, inp
 func (c *Client) ListModelPackagesWithContext(ctx context.Context, input *sagemaker.ListModelPackagesInput, opts ...request.Option) (*sagemaker.ListModelPackagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListModelPackagesWithContext",
+		Action:  "ListModelPackages",
 		Input:   input,
 		Output:  (*sagemaker.ListModelPackagesOutput)(nil),
 		Error:   nil,
@@ -1177,7 +1177,7 @@ func (c *Client) ListModelPackagesWithContext(ctx context.Context, input *sagema
 func (c *Client) ListModelsWithContext(ctx context.Context, input *sagemaker.ListModelsInput, opts ...request.Option) (*sagemaker.ListModelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListModelsWithContext",
+		Action:  "ListModels",
 		Input:   input,
 		Output:  (*sagemaker.ListModelsOutput)(nil),
 		Error:   nil,
@@ -1198,7 +1198,7 @@ func (c *Client) ListModelsWithContext(ctx context.Context, input *sagemaker.Lis
 func (c *Client) ListNotebookInstanceLifecycleConfigsWithContext(ctx context.Context, input *sagemaker.ListNotebookInstanceLifecycleConfigsInput, opts ...request.Option) (*sagemaker.ListNotebookInstanceLifecycleConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListNotebookInstanceLifecycleConfigsWithContext",
+		Action:  "ListNotebookInstanceLifecycleConfigs",
 		Input:   input,
 		Output:  (*sagemaker.ListNotebookInstanceLifecycleConfigsOutput)(nil),
 		Error:   nil,
@@ -1219,7 +1219,7 @@ func (c *Client) ListNotebookInstanceLifecycleConfigsWithContext(ctx context.Con
 func (c *Client) ListNotebookInstancesWithContext(ctx context.Context, input *sagemaker.ListNotebookInstancesInput, opts ...request.Option) (*sagemaker.ListNotebookInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListNotebookInstancesWithContext",
+		Action:  "ListNotebookInstances",
 		Input:   input,
 		Output:  (*sagemaker.ListNotebookInstancesOutput)(nil),
 		Error:   nil,
@@ -1240,7 +1240,7 @@ func (c *Client) ListNotebookInstancesWithContext(ctx context.Context, input *sa
 func (c *Client) ListSubscribedWorkteamsWithContext(ctx context.Context, input *sagemaker.ListSubscribedWorkteamsInput, opts ...request.Option) (*sagemaker.ListSubscribedWorkteamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListSubscribedWorkteamsWithContext",
+		Action:  "ListSubscribedWorkteams",
 		Input:   input,
 		Output:  (*sagemaker.ListSubscribedWorkteamsOutput)(nil),
 		Error:   nil,
@@ -1261,7 +1261,7 @@ func (c *Client) ListSubscribedWorkteamsWithContext(ctx context.Context, input *
 func (c *Client) ListTagsWithContext(ctx context.Context, input *sagemaker.ListTagsInput, opts ...request.Option) (*sagemaker.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*sagemaker.ListTagsOutput)(nil),
 		Error:   nil,
@@ -1282,7 +1282,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *sagemaker.ListT
 func (c *Client) ListTrainingJobsWithContext(ctx context.Context, input *sagemaker.ListTrainingJobsInput, opts ...request.Option) (*sagemaker.ListTrainingJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListTrainingJobsWithContext",
+		Action:  "ListTrainingJobs",
 		Input:   input,
 		Output:  (*sagemaker.ListTrainingJobsOutput)(nil),
 		Error:   nil,
@@ -1303,7 +1303,7 @@ func (c *Client) ListTrainingJobsWithContext(ctx context.Context, input *sagemak
 func (c *Client) ListTrainingJobsForHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.ListTrainingJobsForHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.ListTrainingJobsForHyperParameterTuningJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListTrainingJobsForHyperParameterTuningJobWithContext",
+		Action:  "ListTrainingJobsForHyperParameterTuningJob",
 		Input:   input,
 		Output:  (*sagemaker.ListTrainingJobsForHyperParameterTuningJobOutput)(nil),
 		Error:   nil,
@@ -1324,7 +1324,7 @@ func (c *Client) ListTrainingJobsForHyperParameterTuningJobWithContext(ctx conte
 func (c *Client) ListTransformJobsWithContext(ctx context.Context, input *sagemaker.ListTransformJobsInput, opts ...request.Option) (*sagemaker.ListTransformJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListTransformJobsWithContext",
+		Action:  "ListTransformJobs",
 		Input:   input,
 		Output:  (*sagemaker.ListTransformJobsOutput)(nil),
 		Error:   nil,
@@ -1345,7 +1345,7 @@ func (c *Client) ListTransformJobsWithContext(ctx context.Context, input *sagema
 func (c *Client) ListWorkteamsWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, opts ...request.Option) (*sagemaker.ListWorkteamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "ListWorkteamsWithContext",
+		Action:  "ListWorkteams",
 		Input:   input,
 		Output:  (*sagemaker.ListWorkteamsOutput)(nil),
 		Error:   nil,
@@ -1366,7 +1366,7 @@ func (c *Client) ListWorkteamsWithContext(ctx context.Context, input *sagemaker.
 func (c *Client) RenderUiTemplateWithContext(ctx context.Context, input *sagemaker.RenderUiTemplateInput, opts ...request.Option) (*sagemaker.RenderUiTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "RenderUiTemplateWithContext",
+		Action:  "RenderUiTemplate",
 		Input:   input,
 		Output:  (*sagemaker.RenderUiTemplateOutput)(nil),
 		Error:   nil,
@@ -1387,7 +1387,7 @@ func (c *Client) RenderUiTemplateWithContext(ctx context.Context, input *sagemak
 func (c *Client) SearchWithContext(ctx context.Context, input *sagemaker.SearchInput, opts ...request.Option) (*sagemaker.SearchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "SearchWithContext",
+		Action:  "Search",
 		Input:   input,
 		Output:  (*sagemaker.SearchOutput)(nil),
 		Error:   nil,
@@ -1408,7 +1408,7 @@ func (c *Client) SearchWithContext(ctx context.Context, input *sagemaker.SearchI
 func (c *Client) StartNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StartNotebookInstanceInput, opts ...request.Option) (*sagemaker.StartNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StartNotebookInstanceWithContext",
+		Action:  "StartNotebookInstance",
 		Input:   input,
 		Output:  (*sagemaker.StartNotebookInstanceOutput)(nil),
 		Error:   nil,
@@ -1429,7 +1429,7 @@ func (c *Client) StartNotebookInstanceWithContext(ctx context.Context, input *sa
 func (c *Client) StopCompilationJobWithContext(ctx context.Context, input *sagemaker.StopCompilationJobInput, opts ...request.Option) (*sagemaker.StopCompilationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StopCompilationJobWithContext",
+		Action:  "StopCompilationJob",
 		Input:   input,
 		Output:  (*sagemaker.StopCompilationJobOutput)(nil),
 		Error:   nil,
@@ -1450,7 +1450,7 @@ func (c *Client) StopCompilationJobWithContext(ctx context.Context, input *sagem
 func (c *Client) StopHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.StopHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.StopHyperParameterTuningJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StopHyperParameterTuningJobWithContext",
+		Action:  "StopHyperParameterTuningJob",
 		Input:   input,
 		Output:  (*sagemaker.StopHyperParameterTuningJobOutput)(nil),
 		Error:   nil,
@@ -1471,7 +1471,7 @@ func (c *Client) StopHyperParameterTuningJobWithContext(ctx context.Context, inp
 func (c *Client) StopLabelingJobWithContext(ctx context.Context, input *sagemaker.StopLabelingJobInput, opts ...request.Option) (*sagemaker.StopLabelingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StopLabelingJobWithContext",
+		Action:  "StopLabelingJob",
 		Input:   input,
 		Output:  (*sagemaker.StopLabelingJobOutput)(nil),
 		Error:   nil,
@@ -1492,7 +1492,7 @@ func (c *Client) StopLabelingJobWithContext(ctx context.Context, input *sagemake
 func (c *Client) StopNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StopNotebookInstanceInput, opts ...request.Option) (*sagemaker.StopNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StopNotebookInstanceWithContext",
+		Action:  "StopNotebookInstance",
 		Input:   input,
 		Output:  (*sagemaker.StopNotebookInstanceOutput)(nil),
 		Error:   nil,
@@ -1513,7 +1513,7 @@ func (c *Client) StopNotebookInstanceWithContext(ctx context.Context, input *sag
 func (c *Client) StopTrainingJobWithContext(ctx context.Context, input *sagemaker.StopTrainingJobInput, opts ...request.Option) (*sagemaker.StopTrainingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StopTrainingJobWithContext",
+		Action:  "StopTrainingJob",
 		Input:   input,
 		Output:  (*sagemaker.StopTrainingJobOutput)(nil),
 		Error:   nil,
@@ -1534,7 +1534,7 @@ func (c *Client) StopTrainingJobWithContext(ctx context.Context, input *sagemake
 func (c *Client) StopTransformJobWithContext(ctx context.Context, input *sagemaker.StopTransformJobInput, opts ...request.Option) (*sagemaker.StopTransformJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "StopTransformJobWithContext",
+		Action:  "StopTransformJob",
 		Input:   input,
 		Output:  (*sagemaker.StopTransformJobOutput)(nil),
 		Error:   nil,
@@ -1555,7 +1555,7 @@ func (c *Client) StopTransformJobWithContext(ctx context.Context, input *sagemak
 func (c *Client) UpdateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.UpdateCodeRepositoryInput, opts ...request.Option) (*sagemaker.UpdateCodeRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "UpdateCodeRepositoryWithContext",
+		Action:  "UpdateCodeRepository",
 		Input:   input,
 		Output:  (*sagemaker.UpdateCodeRepositoryOutput)(nil),
 		Error:   nil,
@@ -1576,7 +1576,7 @@ func (c *Client) UpdateCodeRepositoryWithContext(ctx context.Context, input *sag
 func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *sagemaker.UpdateEndpointInput, opts ...request.Option) (*sagemaker.UpdateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "UpdateEndpointWithContext",
+		Action:  "UpdateEndpoint",
 		Input:   input,
 		Output:  (*sagemaker.UpdateEndpointOutput)(nil),
 		Error:   nil,
@@ -1597,7 +1597,7 @@ func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *sagemaker
 func (c *Client) UpdateEndpointWeightsAndCapacitiesWithContext(ctx context.Context, input *sagemaker.UpdateEndpointWeightsAndCapacitiesInput, opts ...request.Option) (*sagemaker.UpdateEndpointWeightsAndCapacitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "UpdateEndpointWeightsAndCapacitiesWithContext",
+		Action:  "UpdateEndpointWeightsAndCapacities",
 		Input:   input,
 		Output:  (*sagemaker.UpdateEndpointWeightsAndCapacitiesOutput)(nil),
 		Error:   nil,
@@ -1618,7 +1618,7 @@ func (c *Client) UpdateEndpointWeightsAndCapacitiesWithContext(ctx context.Conte
 func (c *Client) UpdateNotebookInstanceWithContext(ctx context.Context, input *sagemaker.UpdateNotebookInstanceInput, opts ...request.Option) (*sagemaker.UpdateNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "UpdateNotebookInstanceWithContext",
+		Action:  "UpdateNotebookInstance",
 		Input:   input,
 		Output:  (*sagemaker.UpdateNotebookInstanceOutput)(nil),
 		Error:   nil,
@@ -1639,7 +1639,7 @@ func (c *Client) UpdateNotebookInstanceWithContext(ctx context.Context, input *s
 func (c *Client) UpdateNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.UpdateNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.UpdateNotebookInstanceLifecycleConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "UpdateNotebookInstanceLifecycleConfigWithContext",
+		Action:  "UpdateNotebookInstanceLifecycleConfig",
 		Input:   input,
 		Output:  (*sagemaker.UpdateNotebookInstanceLifecycleConfigOutput)(nil),
 		Error:   nil,
@@ -1660,7 +1660,7 @@ func (c *Client) UpdateNotebookInstanceLifecycleConfigWithContext(ctx context.Co
 func (c *Client) UpdateWorkteamWithContext(ctx context.Context, input *sagemaker.UpdateWorkteamInput, opts ...request.Option) (*sagemaker.UpdateWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
-		Action:  "UpdateWorkteamWithContext",
+		Action:  "UpdateWorkteam",
 		Input:   input,
 		Output:  (*sagemaker.UpdateWorkteamOutput)(nil),
 		Error:   nil,

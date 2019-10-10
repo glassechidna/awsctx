@@ -40,7 +40,7 @@ var _ CostExplorer = (*Client)(nil)
 func (c *Client) GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetCostAndUsageWithContext",
+		Action:  "GetCostAndUsage",
 		Input:   input,
 		Output:  (*costexplorer.GetCostAndUsageOutput)(nil),
 		Error:   nil,
@@ -61,7 +61,7 @@ func (c *Client) GetCostAndUsageWithContext(ctx context.Context, input *costexpl
 func (c *Client) GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetCostForecastWithContext",
+		Action:  "GetCostForecast",
 		Input:   input,
 		Output:  (*costexplorer.GetCostForecastOutput)(nil),
 		Error:   nil,
@@ -82,7 +82,7 @@ func (c *Client) GetCostForecastWithContext(ctx context.Context, input *costexpl
 func (c *Client) GetDimensionValuesWithContext(ctx context.Context, input *costexplorer.GetDimensionValuesInput, opts ...request.Option) (*costexplorer.GetDimensionValuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetDimensionValuesWithContext",
+		Action:  "GetDimensionValues",
 		Input:   input,
 		Output:  (*costexplorer.GetDimensionValuesOutput)(nil),
 		Error:   nil,
@@ -103,7 +103,7 @@ func (c *Client) GetDimensionValuesWithContext(ctx context.Context, input *coste
 func (c *Client) GetReservationCoverageWithContext(ctx context.Context, input *costexplorer.GetReservationCoverageInput, opts ...request.Option) (*costexplorer.GetReservationCoverageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetReservationCoverageWithContext",
+		Action:  "GetReservationCoverage",
 		Input:   input,
 		Output:  (*costexplorer.GetReservationCoverageOutput)(nil),
 		Error:   nil,
@@ -124,7 +124,7 @@ func (c *Client) GetReservationCoverageWithContext(ctx context.Context, input *c
 func (c *Client) GetReservationPurchaseRecommendationWithContext(ctx context.Context, input *costexplorer.GetReservationPurchaseRecommendationInput, opts ...request.Option) (*costexplorer.GetReservationPurchaseRecommendationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetReservationPurchaseRecommendationWithContext",
+		Action:  "GetReservationPurchaseRecommendation",
 		Input:   input,
 		Output:  (*costexplorer.GetReservationPurchaseRecommendationOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) GetReservationPurchaseRecommendationWithContext(ctx context.Con
 func (c *Client) GetReservationUtilizationWithContext(ctx context.Context, input *costexplorer.GetReservationUtilizationInput, opts ...request.Option) (*costexplorer.GetReservationUtilizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetReservationUtilizationWithContext",
+		Action:  "GetReservationUtilization",
 		Input:   input,
 		Output:  (*costexplorer.GetReservationUtilizationOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) GetReservationUtilizationWithContext(ctx context.Context, input
 func (c *Client) GetRightsizingRecommendationWithContext(ctx context.Context, input *costexplorer.GetRightsizingRecommendationInput, opts ...request.Option) (*costexplorer.GetRightsizingRecommendationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetRightsizingRecommendationWithContext",
+		Action:  "GetRightsizingRecommendation",
 		Input:   input,
 		Output:  (*costexplorer.GetRightsizingRecommendationOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) GetRightsizingRecommendationWithContext(ctx context.Context, in
 func (c *Client) GetTagsWithContext(ctx context.Context, input *costexplorer.GetTagsInput, opts ...request.Option) (*costexplorer.GetTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetTagsWithContext",
+		Action:  "GetTags",
 		Input:   input,
 		Output:  (*costexplorer.GetTagsOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) GetTagsWithContext(ctx context.Context, input *costexplorer.Get
 func (c *Client) GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
-		Action:  "GetUsageForecastWithContext",
+		Action:  "GetUsageForecast",
 		Input:   input,
 		Output:  (*costexplorer.GetUsageForecastOutput)(nil),
 		Error:   nil,

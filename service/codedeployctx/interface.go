@@ -77,7 +77,7 @@ var _ CodeDeploy = (*Client)(nil)
 func (c *Client) AddTagsToOnPremisesInstancesWithContext(ctx context.Context, input *codedeploy.AddTagsToOnPremisesInstancesInput, opts ...request.Option) (*codedeploy.AddTagsToOnPremisesInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "AddTagsToOnPremisesInstancesWithContext",
+		Action:  "AddTagsToOnPremisesInstances",
 		Input:   input,
 		Output:  (*codedeploy.AddTagsToOnPremisesInstancesOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) AddTagsToOnPremisesInstancesWithContext(ctx context.Context, in
 func (c *Client) BatchGetApplicationRevisionsWithContext(ctx context.Context, input *codedeploy.BatchGetApplicationRevisionsInput, opts ...request.Option) (*codedeploy.BatchGetApplicationRevisionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetApplicationRevisionsWithContext",
+		Action:  "BatchGetApplicationRevisions",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetApplicationRevisionsOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) BatchGetApplicationRevisionsWithContext(ctx context.Context, in
 func (c *Client) BatchGetApplicationsWithContext(ctx context.Context, input *codedeploy.BatchGetApplicationsInput, opts ...request.Option) (*codedeploy.BatchGetApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetApplicationsWithContext",
+		Action:  "BatchGetApplications",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetApplicationsOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) BatchGetApplicationsWithContext(ctx context.Context, input *cod
 func (c *Client) BatchGetDeploymentGroupsWithContext(ctx context.Context, input *codedeploy.BatchGetDeploymentGroupsInput, opts ...request.Option) (*codedeploy.BatchGetDeploymentGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetDeploymentGroupsWithContext",
+		Action:  "BatchGetDeploymentGroups",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetDeploymentGroupsOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) BatchGetDeploymentGroupsWithContext(ctx context.Context, input 
 func (c *Client) BatchGetDeploymentInstancesWithContext(ctx context.Context, input *codedeploy.BatchGetDeploymentInstancesInput, opts ...request.Option) (*codedeploy.BatchGetDeploymentInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetDeploymentInstancesWithContext",
+		Action:  "BatchGetDeploymentInstances",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetDeploymentInstancesOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) BatchGetDeploymentInstancesWithContext(ctx context.Context, inp
 func (c *Client) BatchGetDeploymentTargetsWithContext(ctx context.Context, input *codedeploy.BatchGetDeploymentTargetsInput, opts ...request.Option) (*codedeploy.BatchGetDeploymentTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetDeploymentTargetsWithContext",
+		Action:  "BatchGetDeploymentTargets",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetDeploymentTargetsOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) BatchGetDeploymentTargetsWithContext(ctx context.Context, input
 func (c *Client) BatchGetDeploymentsWithContext(ctx context.Context, input *codedeploy.BatchGetDeploymentsInput, opts ...request.Option) (*codedeploy.BatchGetDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetDeploymentsWithContext",
+		Action:  "BatchGetDeployments",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetDeploymentsOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) BatchGetDeploymentsWithContext(ctx context.Context, input *code
 func (c *Client) BatchGetOnPremisesInstancesWithContext(ctx context.Context, input *codedeploy.BatchGetOnPremisesInstancesInput, opts ...request.Option) (*codedeploy.BatchGetOnPremisesInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "BatchGetOnPremisesInstancesWithContext",
+		Action:  "BatchGetOnPremisesInstances",
 		Input:   input,
 		Output:  (*codedeploy.BatchGetOnPremisesInstancesOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) BatchGetOnPremisesInstancesWithContext(ctx context.Context, inp
 func (c *Client) ContinueDeploymentWithContext(ctx context.Context, input *codedeploy.ContinueDeploymentInput, opts ...request.Option) (*codedeploy.ContinueDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ContinueDeploymentWithContext",
+		Action:  "ContinueDeployment",
 		Input:   input,
 		Output:  (*codedeploy.ContinueDeploymentOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) ContinueDeploymentWithContext(ctx context.Context, input *coded
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *codedeploy.CreateApplicationInput, opts ...request.Option) (*codedeploy.CreateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "CreateApplicationWithContext",
+		Action:  "CreateApplication",
 		Input:   input,
 		Output:  (*codedeploy.CreateApplicationOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *codede
 func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *codedeploy.CreateDeploymentInput, opts ...request.Option) (*codedeploy.CreateDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "CreateDeploymentWithContext",
+		Action:  "CreateDeployment",
 		Input:   input,
 		Output:  (*codedeploy.CreateDeploymentOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *codedep
 func (c *Client) CreateDeploymentConfigWithContext(ctx context.Context, input *codedeploy.CreateDeploymentConfigInput, opts ...request.Option) (*codedeploy.CreateDeploymentConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "CreateDeploymentConfigWithContext",
+		Action:  "CreateDeploymentConfig",
 		Input:   input,
 		Output:  (*codedeploy.CreateDeploymentConfigOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) CreateDeploymentConfigWithContext(ctx context.Context, input *c
 func (c *Client) CreateDeploymentGroupWithContext(ctx context.Context, input *codedeploy.CreateDeploymentGroupInput, opts ...request.Option) (*codedeploy.CreateDeploymentGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "CreateDeploymentGroupWithContext",
+		Action:  "CreateDeploymentGroup",
 		Input:   input,
 		Output:  (*codedeploy.CreateDeploymentGroupOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) CreateDeploymentGroupWithContext(ctx context.Context, input *co
 func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *codedeploy.DeleteApplicationInput, opts ...request.Option) (*codedeploy.DeleteApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "DeleteApplicationWithContext",
+		Action:  "DeleteApplication",
 		Input:   input,
 		Output:  (*codedeploy.DeleteApplicationOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *codede
 func (c *Client) DeleteDeploymentConfigWithContext(ctx context.Context, input *codedeploy.DeleteDeploymentConfigInput, opts ...request.Option) (*codedeploy.DeleteDeploymentConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "DeleteDeploymentConfigWithContext",
+		Action:  "DeleteDeploymentConfig",
 		Input:   input,
 		Output:  (*codedeploy.DeleteDeploymentConfigOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) DeleteDeploymentConfigWithContext(ctx context.Context, input *c
 func (c *Client) DeleteDeploymentGroupWithContext(ctx context.Context, input *codedeploy.DeleteDeploymentGroupInput, opts ...request.Option) (*codedeploy.DeleteDeploymentGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "DeleteDeploymentGroupWithContext",
+		Action:  "DeleteDeploymentGroup",
 		Input:   input,
 		Output:  (*codedeploy.DeleteDeploymentGroupOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) DeleteDeploymentGroupWithContext(ctx context.Context, input *co
 func (c *Client) DeleteGitHubAccountTokenWithContext(ctx context.Context, input *codedeploy.DeleteGitHubAccountTokenInput, opts ...request.Option) (*codedeploy.DeleteGitHubAccountTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "DeleteGitHubAccountTokenWithContext",
+		Action:  "DeleteGitHubAccountToken",
 		Input:   input,
 		Output:  (*codedeploy.DeleteGitHubAccountTokenOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) DeleteGitHubAccountTokenWithContext(ctx context.Context, input 
 func (c *Client) DeregisterOnPremisesInstanceWithContext(ctx context.Context, input *codedeploy.DeregisterOnPremisesInstanceInput, opts ...request.Option) (*codedeploy.DeregisterOnPremisesInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "DeregisterOnPremisesInstanceWithContext",
+		Action:  "DeregisterOnPremisesInstance",
 		Input:   input,
 		Output:  (*codedeploy.DeregisterOnPremisesInstanceOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) DeregisterOnPremisesInstanceWithContext(ctx context.Context, in
 func (c *Client) GetApplicationWithContext(ctx context.Context, input *codedeploy.GetApplicationInput, opts ...request.Option) (*codedeploy.GetApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetApplicationWithContext",
+		Action:  "GetApplication",
 		Input:   input,
 		Output:  (*codedeploy.GetApplicationOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) GetApplicationWithContext(ctx context.Context, input *codedeplo
 func (c *Client) GetApplicationRevisionWithContext(ctx context.Context, input *codedeploy.GetApplicationRevisionInput, opts ...request.Option) (*codedeploy.GetApplicationRevisionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetApplicationRevisionWithContext",
+		Action:  "GetApplicationRevision",
 		Input:   input,
 		Output:  (*codedeploy.GetApplicationRevisionOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) GetApplicationRevisionWithContext(ctx context.Context, input *c
 func (c *Client) GetDeploymentWithContext(ctx context.Context, input *codedeploy.GetDeploymentInput, opts ...request.Option) (*codedeploy.GetDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetDeploymentWithContext",
+		Action:  "GetDeployment",
 		Input:   input,
 		Output:  (*codedeploy.GetDeploymentOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) GetDeploymentWithContext(ctx context.Context, input *codedeploy
 func (c *Client) GetDeploymentConfigWithContext(ctx context.Context, input *codedeploy.GetDeploymentConfigInput, opts ...request.Option) (*codedeploy.GetDeploymentConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetDeploymentConfigWithContext",
+		Action:  "GetDeploymentConfig",
 		Input:   input,
 		Output:  (*codedeploy.GetDeploymentConfigOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) GetDeploymentConfigWithContext(ctx context.Context, input *code
 func (c *Client) GetDeploymentGroupWithContext(ctx context.Context, input *codedeploy.GetDeploymentGroupInput, opts ...request.Option) (*codedeploy.GetDeploymentGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetDeploymentGroupWithContext",
+		Action:  "GetDeploymentGroup",
 		Input:   input,
 		Output:  (*codedeploy.GetDeploymentGroupOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) GetDeploymentGroupWithContext(ctx context.Context, input *coded
 func (c *Client) GetDeploymentInstanceWithContext(ctx context.Context, input *codedeploy.GetDeploymentInstanceInput, opts ...request.Option) (*codedeploy.GetDeploymentInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetDeploymentInstanceWithContext",
+		Action:  "GetDeploymentInstance",
 		Input:   input,
 		Output:  (*codedeploy.GetDeploymentInstanceOutput)(nil),
 		Error:   nil,
@@ -581,7 +581,7 @@ func (c *Client) GetDeploymentInstanceWithContext(ctx context.Context, input *co
 func (c *Client) GetDeploymentTargetWithContext(ctx context.Context, input *codedeploy.GetDeploymentTargetInput, opts ...request.Option) (*codedeploy.GetDeploymentTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetDeploymentTargetWithContext",
+		Action:  "GetDeploymentTarget",
 		Input:   input,
 		Output:  (*codedeploy.GetDeploymentTargetOutput)(nil),
 		Error:   nil,
@@ -602,7 +602,7 @@ func (c *Client) GetDeploymentTargetWithContext(ctx context.Context, input *code
 func (c *Client) GetOnPremisesInstanceWithContext(ctx context.Context, input *codedeploy.GetOnPremisesInstanceInput, opts ...request.Option) (*codedeploy.GetOnPremisesInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "GetOnPremisesInstanceWithContext",
+		Action:  "GetOnPremisesInstance",
 		Input:   input,
 		Output:  (*codedeploy.GetOnPremisesInstanceOutput)(nil),
 		Error:   nil,
@@ -623,7 +623,7 @@ func (c *Client) GetOnPremisesInstanceWithContext(ctx context.Context, input *co
 func (c *Client) ListApplicationRevisionsWithContext(ctx context.Context, input *codedeploy.ListApplicationRevisionsInput, opts ...request.Option) (*codedeploy.ListApplicationRevisionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListApplicationRevisionsWithContext",
+		Action:  "ListApplicationRevisions",
 		Input:   input,
 		Output:  (*codedeploy.ListApplicationRevisionsOutput)(nil),
 		Error:   nil,
@@ -644,7 +644,7 @@ func (c *Client) ListApplicationRevisionsWithContext(ctx context.Context, input 
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *codedeploy.ListApplicationsInput, opts ...request.Option) (*codedeploy.ListApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListApplicationsWithContext",
+		Action:  "ListApplications",
 		Input:   input,
 		Output:  (*codedeploy.ListApplicationsOutput)(nil),
 		Error:   nil,
@@ -665,7 +665,7 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *codedep
 func (c *Client) ListDeploymentConfigsWithContext(ctx context.Context, input *codedeploy.ListDeploymentConfigsInput, opts ...request.Option) (*codedeploy.ListDeploymentConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListDeploymentConfigsWithContext",
+		Action:  "ListDeploymentConfigs",
 		Input:   input,
 		Output:  (*codedeploy.ListDeploymentConfigsOutput)(nil),
 		Error:   nil,
@@ -686,7 +686,7 @@ func (c *Client) ListDeploymentConfigsWithContext(ctx context.Context, input *co
 func (c *Client) ListDeploymentGroupsWithContext(ctx context.Context, input *codedeploy.ListDeploymentGroupsInput, opts ...request.Option) (*codedeploy.ListDeploymentGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListDeploymentGroupsWithContext",
+		Action:  "ListDeploymentGroups",
 		Input:   input,
 		Output:  (*codedeploy.ListDeploymentGroupsOutput)(nil),
 		Error:   nil,
@@ -707,7 +707,7 @@ func (c *Client) ListDeploymentGroupsWithContext(ctx context.Context, input *cod
 func (c *Client) ListDeploymentInstancesWithContext(ctx context.Context, input *codedeploy.ListDeploymentInstancesInput, opts ...request.Option) (*codedeploy.ListDeploymentInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListDeploymentInstancesWithContext",
+		Action:  "ListDeploymentInstances",
 		Input:   input,
 		Output:  (*codedeploy.ListDeploymentInstancesOutput)(nil),
 		Error:   nil,
@@ -728,7 +728,7 @@ func (c *Client) ListDeploymentInstancesWithContext(ctx context.Context, input *
 func (c *Client) ListDeploymentTargetsWithContext(ctx context.Context, input *codedeploy.ListDeploymentTargetsInput, opts ...request.Option) (*codedeploy.ListDeploymentTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListDeploymentTargetsWithContext",
+		Action:  "ListDeploymentTargets",
 		Input:   input,
 		Output:  (*codedeploy.ListDeploymentTargetsOutput)(nil),
 		Error:   nil,
@@ -749,7 +749,7 @@ func (c *Client) ListDeploymentTargetsWithContext(ctx context.Context, input *co
 func (c *Client) ListDeploymentsWithContext(ctx context.Context, input *codedeploy.ListDeploymentsInput, opts ...request.Option) (*codedeploy.ListDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListDeploymentsWithContext",
+		Action:  "ListDeployments",
 		Input:   input,
 		Output:  (*codedeploy.ListDeploymentsOutput)(nil),
 		Error:   nil,
@@ -770,7 +770,7 @@ func (c *Client) ListDeploymentsWithContext(ctx context.Context, input *codedepl
 func (c *Client) ListGitHubAccountTokenNamesWithContext(ctx context.Context, input *codedeploy.ListGitHubAccountTokenNamesInput, opts ...request.Option) (*codedeploy.ListGitHubAccountTokenNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListGitHubAccountTokenNamesWithContext",
+		Action:  "ListGitHubAccountTokenNames",
 		Input:   input,
 		Output:  (*codedeploy.ListGitHubAccountTokenNamesOutput)(nil),
 		Error:   nil,
@@ -791,7 +791,7 @@ func (c *Client) ListGitHubAccountTokenNamesWithContext(ctx context.Context, inp
 func (c *Client) ListOnPremisesInstancesWithContext(ctx context.Context, input *codedeploy.ListOnPremisesInstancesInput, opts ...request.Option) (*codedeploy.ListOnPremisesInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListOnPremisesInstancesWithContext",
+		Action:  "ListOnPremisesInstances",
 		Input:   input,
 		Output:  (*codedeploy.ListOnPremisesInstancesOutput)(nil),
 		Error:   nil,
@@ -812,7 +812,7 @@ func (c *Client) ListOnPremisesInstancesWithContext(ctx context.Context, input *
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *codedeploy.ListTagsForResourceInput, opts ...request.Option) (*codedeploy.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*codedeploy.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -833,7 +833,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *code
 func (c *Client) PutLifecycleEventHookExecutionStatusWithContext(ctx context.Context, input *codedeploy.PutLifecycleEventHookExecutionStatusInput, opts ...request.Option) (*codedeploy.PutLifecycleEventHookExecutionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "PutLifecycleEventHookExecutionStatusWithContext",
+		Action:  "PutLifecycleEventHookExecutionStatus",
 		Input:   input,
 		Output:  (*codedeploy.PutLifecycleEventHookExecutionStatusOutput)(nil),
 		Error:   nil,
@@ -854,7 +854,7 @@ func (c *Client) PutLifecycleEventHookExecutionStatusWithContext(ctx context.Con
 func (c *Client) RegisterApplicationRevisionWithContext(ctx context.Context, input *codedeploy.RegisterApplicationRevisionInput, opts ...request.Option) (*codedeploy.RegisterApplicationRevisionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "RegisterApplicationRevisionWithContext",
+		Action:  "RegisterApplicationRevision",
 		Input:   input,
 		Output:  (*codedeploy.RegisterApplicationRevisionOutput)(nil),
 		Error:   nil,
@@ -875,7 +875,7 @@ func (c *Client) RegisterApplicationRevisionWithContext(ctx context.Context, inp
 func (c *Client) RegisterOnPremisesInstanceWithContext(ctx context.Context, input *codedeploy.RegisterOnPremisesInstanceInput, opts ...request.Option) (*codedeploy.RegisterOnPremisesInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "RegisterOnPremisesInstanceWithContext",
+		Action:  "RegisterOnPremisesInstance",
 		Input:   input,
 		Output:  (*codedeploy.RegisterOnPremisesInstanceOutput)(nil),
 		Error:   nil,
@@ -896,7 +896,7 @@ func (c *Client) RegisterOnPremisesInstanceWithContext(ctx context.Context, inpu
 func (c *Client) RemoveTagsFromOnPremisesInstancesWithContext(ctx context.Context, input *codedeploy.RemoveTagsFromOnPremisesInstancesInput, opts ...request.Option) (*codedeploy.RemoveTagsFromOnPremisesInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "RemoveTagsFromOnPremisesInstancesWithContext",
+		Action:  "RemoveTagsFromOnPremisesInstances",
 		Input:   input,
 		Output:  (*codedeploy.RemoveTagsFromOnPremisesInstancesOutput)(nil),
 		Error:   nil,
@@ -917,7 +917,7 @@ func (c *Client) RemoveTagsFromOnPremisesInstancesWithContext(ctx context.Contex
 func (c *Client) SkipWaitTimeForInstanceTerminationWithContext(ctx context.Context, input *codedeploy.SkipWaitTimeForInstanceTerminationInput, opts ...request.Option) (*codedeploy.SkipWaitTimeForInstanceTerminationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "SkipWaitTimeForInstanceTerminationWithContext",
+		Action:  "SkipWaitTimeForInstanceTermination",
 		Input:   input,
 		Output:  (*codedeploy.SkipWaitTimeForInstanceTerminationOutput)(nil),
 		Error:   nil,
@@ -938,7 +938,7 @@ func (c *Client) SkipWaitTimeForInstanceTerminationWithContext(ctx context.Conte
 func (c *Client) StopDeploymentWithContext(ctx context.Context, input *codedeploy.StopDeploymentInput, opts ...request.Option) (*codedeploy.StopDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "StopDeploymentWithContext",
+		Action:  "StopDeployment",
 		Input:   input,
 		Output:  (*codedeploy.StopDeploymentOutput)(nil),
 		Error:   nil,
@@ -959,7 +959,7 @@ func (c *Client) StopDeploymentWithContext(ctx context.Context, input *codedeplo
 func (c *Client) TagResourceWithContext(ctx context.Context, input *codedeploy.TagResourceInput, opts ...request.Option) (*codedeploy.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*codedeploy.TagResourceOutput)(nil),
 		Error:   nil,
@@ -980,7 +980,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *codedeploy.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *codedeploy.UntagResourceInput, opts ...request.Option) (*codedeploy.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*codedeploy.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1001,7 +1001,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *codedeploy
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *codedeploy.UpdateApplicationInput, opts ...request.Option) (*codedeploy.UpdateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "UpdateApplicationWithContext",
+		Action:  "UpdateApplication",
 		Input:   input,
 		Output:  (*codedeploy.UpdateApplicationOutput)(nil),
 		Error:   nil,
@@ -1022,7 +1022,7 @@ func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *codede
 func (c *Client) UpdateDeploymentGroupWithContext(ctx context.Context, input *codedeploy.UpdateDeploymentGroupInput, opts ...request.Option) (*codedeploy.UpdateDeploymentGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
-		Action:  "UpdateDeploymentGroupWithContext",
+		Action:  "UpdateDeploymentGroup",
 		Input:   input,
 		Output:  (*codedeploy.UpdateDeploymentGroupOutput)(nil),
 		Error:   nil,

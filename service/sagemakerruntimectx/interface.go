@@ -32,7 +32,7 @@ var _ SageMakerRuntime = (*Client)(nil)
 func (c *Client) InvokeEndpointWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemakerruntime",
-		Action:  "InvokeEndpointWithContext",
+		Action:  "InvokeEndpoint",
 		Input:   input,
 		Output:  (*sagemakerruntime.InvokeEndpointOutput)(nil),
 		Error:   nil,

@@ -50,7 +50,7 @@ var _ DataPipeline = (*Client)(nil)
 func (c *Client) ActivatePipelineWithContext(ctx context.Context, input *datapipeline.ActivatePipelineInput, opts ...request.Option) (*datapipeline.ActivatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "ActivatePipelineWithContext",
+		Action:  "ActivatePipeline",
 		Input:   input,
 		Output:  (*datapipeline.ActivatePipelineOutput)(nil),
 		Error:   nil,
@@ -71,7 +71,7 @@ func (c *Client) ActivatePipelineWithContext(ctx context.Context, input *datapip
 func (c *Client) AddTagsWithContext(ctx context.Context, input *datapipeline.AddTagsInput, opts ...request.Option) (*datapipeline.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*datapipeline.AddTagsOutput)(nil),
 		Error:   nil,
@@ -92,7 +92,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *datapipeline.Add
 func (c *Client) CreatePipelineWithContext(ctx context.Context, input *datapipeline.CreatePipelineInput, opts ...request.Option) (*datapipeline.CreatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "CreatePipelineWithContext",
+		Action:  "CreatePipeline",
 		Input:   input,
 		Output:  (*datapipeline.CreatePipelineOutput)(nil),
 		Error:   nil,
@@ -113,7 +113,7 @@ func (c *Client) CreatePipelineWithContext(ctx context.Context, input *datapipel
 func (c *Client) DeactivatePipelineWithContext(ctx context.Context, input *datapipeline.DeactivatePipelineInput, opts ...request.Option) (*datapipeline.DeactivatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "DeactivatePipelineWithContext",
+		Action:  "DeactivatePipeline",
 		Input:   input,
 		Output:  (*datapipeline.DeactivatePipelineOutput)(nil),
 		Error:   nil,
@@ -134,7 +134,7 @@ func (c *Client) DeactivatePipelineWithContext(ctx context.Context, input *datap
 func (c *Client) DeletePipelineWithContext(ctx context.Context, input *datapipeline.DeletePipelineInput, opts ...request.Option) (*datapipeline.DeletePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "DeletePipelineWithContext",
+		Action:  "DeletePipeline",
 		Input:   input,
 		Output:  (*datapipeline.DeletePipelineOutput)(nil),
 		Error:   nil,
@@ -155,7 +155,7 @@ func (c *Client) DeletePipelineWithContext(ctx context.Context, input *datapipel
 func (c *Client) DescribeObjectsWithContext(ctx context.Context, input *datapipeline.DescribeObjectsInput, opts ...request.Option) (*datapipeline.DescribeObjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "DescribeObjectsWithContext",
+		Action:  "DescribeObjects",
 		Input:   input,
 		Output:  (*datapipeline.DescribeObjectsOutput)(nil),
 		Error:   nil,
@@ -176,7 +176,7 @@ func (c *Client) DescribeObjectsWithContext(ctx context.Context, input *datapipe
 func (c *Client) DescribePipelinesWithContext(ctx context.Context, input *datapipeline.DescribePipelinesInput, opts ...request.Option) (*datapipeline.DescribePipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "DescribePipelinesWithContext",
+		Action:  "DescribePipelines",
 		Input:   input,
 		Output:  (*datapipeline.DescribePipelinesOutput)(nil),
 		Error:   nil,
@@ -197,7 +197,7 @@ func (c *Client) DescribePipelinesWithContext(ctx context.Context, input *datapi
 func (c *Client) EvaluateExpressionWithContext(ctx context.Context, input *datapipeline.EvaluateExpressionInput, opts ...request.Option) (*datapipeline.EvaluateExpressionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "EvaluateExpressionWithContext",
+		Action:  "EvaluateExpression",
 		Input:   input,
 		Output:  (*datapipeline.EvaluateExpressionOutput)(nil),
 		Error:   nil,
@@ -218,7 +218,7 @@ func (c *Client) EvaluateExpressionWithContext(ctx context.Context, input *datap
 func (c *Client) GetPipelineDefinitionWithContext(ctx context.Context, input *datapipeline.GetPipelineDefinitionInput, opts ...request.Option) (*datapipeline.GetPipelineDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "GetPipelineDefinitionWithContext",
+		Action:  "GetPipelineDefinition",
 		Input:   input,
 		Output:  (*datapipeline.GetPipelineDefinitionOutput)(nil),
 		Error:   nil,
@@ -239,7 +239,7 @@ func (c *Client) GetPipelineDefinitionWithContext(ctx context.Context, input *da
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *datapipeline.ListPipelinesInput, opts ...request.Option) (*datapipeline.ListPipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "ListPipelinesWithContext",
+		Action:  "ListPipelines",
 		Input:   input,
 		Output:  (*datapipeline.ListPipelinesOutput)(nil),
 		Error:   nil,
@@ -260,7 +260,7 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *datapipeli
 func (c *Client) PollForTaskWithContext(ctx context.Context, input *datapipeline.PollForTaskInput, opts ...request.Option) (*datapipeline.PollForTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "PollForTaskWithContext",
+		Action:  "PollForTask",
 		Input:   input,
 		Output:  (*datapipeline.PollForTaskOutput)(nil),
 		Error:   nil,
@@ -281,7 +281,7 @@ func (c *Client) PollForTaskWithContext(ctx context.Context, input *datapipeline
 func (c *Client) PutPipelineDefinitionWithContext(ctx context.Context, input *datapipeline.PutPipelineDefinitionInput, opts ...request.Option) (*datapipeline.PutPipelineDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "PutPipelineDefinitionWithContext",
+		Action:  "PutPipelineDefinition",
 		Input:   input,
 		Output:  (*datapipeline.PutPipelineDefinitionOutput)(nil),
 		Error:   nil,
@@ -302,7 +302,7 @@ func (c *Client) PutPipelineDefinitionWithContext(ctx context.Context, input *da
 func (c *Client) QueryObjectsWithContext(ctx context.Context, input *datapipeline.QueryObjectsInput, opts ...request.Option) (*datapipeline.QueryObjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "QueryObjectsWithContext",
+		Action:  "QueryObjects",
 		Input:   input,
 		Output:  (*datapipeline.QueryObjectsOutput)(nil),
 		Error:   nil,
@@ -323,7 +323,7 @@ func (c *Client) QueryObjectsWithContext(ctx context.Context, input *datapipelin
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *datapipeline.RemoveTagsInput, opts ...request.Option) (*datapipeline.RemoveTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "RemoveTagsWithContext",
+		Action:  "RemoveTags",
 		Input:   input,
 		Output:  (*datapipeline.RemoveTagsOutput)(nil),
 		Error:   nil,
@@ -344,7 +344,7 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *datapipeline.
 func (c *Client) ReportTaskProgressWithContext(ctx context.Context, input *datapipeline.ReportTaskProgressInput, opts ...request.Option) (*datapipeline.ReportTaskProgressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "ReportTaskProgressWithContext",
+		Action:  "ReportTaskProgress",
 		Input:   input,
 		Output:  (*datapipeline.ReportTaskProgressOutput)(nil),
 		Error:   nil,
@@ -365,7 +365,7 @@ func (c *Client) ReportTaskProgressWithContext(ctx context.Context, input *datap
 func (c *Client) ReportTaskRunnerHeartbeatWithContext(ctx context.Context, input *datapipeline.ReportTaskRunnerHeartbeatInput, opts ...request.Option) (*datapipeline.ReportTaskRunnerHeartbeatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "ReportTaskRunnerHeartbeatWithContext",
+		Action:  "ReportTaskRunnerHeartbeat",
 		Input:   input,
 		Output:  (*datapipeline.ReportTaskRunnerHeartbeatOutput)(nil),
 		Error:   nil,
@@ -386,7 +386,7 @@ func (c *Client) ReportTaskRunnerHeartbeatWithContext(ctx context.Context, input
 func (c *Client) SetStatusWithContext(ctx context.Context, input *datapipeline.SetStatusInput, opts ...request.Option) (*datapipeline.SetStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "SetStatusWithContext",
+		Action:  "SetStatus",
 		Input:   input,
 		Output:  (*datapipeline.SetStatusOutput)(nil),
 		Error:   nil,
@@ -407,7 +407,7 @@ func (c *Client) SetStatusWithContext(ctx context.Context, input *datapipeline.S
 func (c *Client) SetTaskStatusWithContext(ctx context.Context, input *datapipeline.SetTaskStatusInput, opts ...request.Option) (*datapipeline.SetTaskStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "SetTaskStatusWithContext",
+		Action:  "SetTaskStatus",
 		Input:   input,
 		Output:  (*datapipeline.SetTaskStatusOutput)(nil),
 		Error:   nil,
@@ -428,7 +428,7 @@ func (c *Client) SetTaskStatusWithContext(ctx context.Context, input *datapipeli
 func (c *Client) ValidatePipelineDefinitionWithContext(ctx context.Context, input *datapipeline.ValidatePipelineDefinitionInput, opts ...request.Option) (*datapipeline.ValidatePipelineDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
-		Action:  "ValidatePipelineDefinitionWithContext",
+		Action:  "ValidatePipelineDefinition",
 		Input:   input,
 		Output:  (*datapipeline.ValidatePipelineDefinitionOutput)(nil),
 		Error:   nil,

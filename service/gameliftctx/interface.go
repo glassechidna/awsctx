@@ -104,7 +104,7 @@ var _ GameLift = (*Client)(nil)
 func (c *Client) AcceptMatchWithContext(ctx context.Context, input *gamelift.AcceptMatchInput, opts ...request.Option) (*gamelift.AcceptMatchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "AcceptMatchWithContext",
+		Action:  "AcceptMatch",
 		Input:   input,
 		Output:  (*gamelift.AcceptMatchOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) AcceptMatchWithContext(ctx context.Context, input *gamelift.Acc
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *gamelift.CreateAliasInput, opts ...request.Option) (*gamelift.CreateAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateAliasWithContext",
+		Action:  "CreateAlias",
 		Input:   input,
 		Output:  (*gamelift.CreateAliasOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *gamelift.Cre
 func (c *Client) CreateBuildWithContext(ctx context.Context, input *gamelift.CreateBuildInput, opts ...request.Option) (*gamelift.CreateBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateBuildWithContext",
+		Action:  "CreateBuild",
 		Input:   input,
 		Output:  (*gamelift.CreateBuildOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) CreateBuildWithContext(ctx context.Context, input *gamelift.Cre
 func (c *Client) CreateFleetWithContext(ctx context.Context, input *gamelift.CreateFleetInput, opts ...request.Option) (*gamelift.CreateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateFleetWithContext",
+		Action:  "CreateFleet",
 		Input:   input,
 		Output:  (*gamelift.CreateFleetOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *gamelift.Cre
 func (c *Client) CreateGameSessionWithContext(ctx context.Context, input *gamelift.CreateGameSessionInput, opts ...request.Option) (*gamelift.CreateGameSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateGameSessionWithContext",
+		Action:  "CreateGameSession",
 		Input:   input,
 		Output:  (*gamelift.CreateGameSessionOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) CreateGameSessionWithContext(ctx context.Context, input *gameli
 func (c *Client) CreateGameSessionQueueWithContext(ctx context.Context, input *gamelift.CreateGameSessionQueueInput, opts ...request.Option) (*gamelift.CreateGameSessionQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateGameSessionQueueWithContext",
+		Action:  "CreateGameSessionQueue",
 		Input:   input,
 		Output:  (*gamelift.CreateGameSessionQueueOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) CreateGameSessionQueueWithContext(ctx context.Context, input *g
 func (c *Client) CreateMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.CreateMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.CreateMatchmakingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateMatchmakingConfigurationWithContext",
+		Action:  "CreateMatchmakingConfiguration",
 		Input:   input,
 		Output:  (*gamelift.CreateMatchmakingConfigurationOutput)(nil),
 		Error:   nil,
@@ -251,7 +251,7 @@ func (c *Client) CreateMatchmakingConfigurationWithContext(ctx context.Context, 
 func (c *Client) CreateMatchmakingRuleSetWithContext(ctx context.Context, input *gamelift.CreateMatchmakingRuleSetInput, opts ...request.Option) (*gamelift.CreateMatchmakingRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateMatchmakingRuleSetWithContext",
+		Action:  "CreateMatchmakingRuleSet",
 		Input:   input,
 		Output:  (*gamelift.CreateMatchmakingRuleSetOutput)(nil),
 		Error:   nil,
@@ -272,7 +272,7 @@ func (c *Client) CreateMatchmakingRuleSetWithContext(ctx context.Context, input 
 func (c *Client) CreatePlayerSessionWithContext(ctx context.Context, input *gamelift.CreatePlayerSessionInput, opts ...request.Option) (*gamelift.CreatePlayerSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreatePlayerSessionWithContext",
+		Action:  "CreatePlayerSession",
 		Input:   input,
 		Output:  (*gamelift.CreatePlayerSessionOutput)(nil),
 		Error:   nil,
@@ -293,7 +293,7 @@ func (c *Client) CreatePlayerSessionWithContext(ctx context.Context, input *game
 func (c *Client) CreatePlayerSessionsWithContext(ctx context.Context, input *gamelift.CreatePlayerSessionsInput, opts ...request.Option) (*gamelift.CreatePlayerSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreatePlayerSessionsWithContext",
+		Action:  "CreatePlayerSessions",
 		Input:   input,
 		Output:  (*gamelift.CreatePlayerSessionsOutput)(nil),
 		Error:   nil,
@@ -314,7 +314,7 @@ func (c *Client) CreatePlayerSessionsWithContext(ctx context.Context, input *gam
 func (c *Client) CreateScriptWithContext(ctx context.Context, input *gamelift.CreateScriptInput, opts ...request.Option) (*gamelift.CreateScriptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateScriptWithContext",
+		Action:  "CreateScript",
 		Input:   input,
 		Output:  (*gamelift.CreateScriptOutput)(nil),
 		Error:   nil,
@@ -335,7 +335,7 @@ func (c *Client) CreateScriptWithContext(ctx context.Context, input *gamelift.Cr
 func (c *Client) CreateVpcPeeringAuthorizationWithContext(ctx context.Context, input *gamelift.CreateVpcPeeringAuthorizationInput, opts ...request.Option) (*gamelift.CreateVpcPeeringAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateVpcPeeringAuthorizationWithContext",
+		Action:  "CreateVpcPeeringAuthorization",
 		Input:   input,
 		Output:  (*gamelift.CreateVpcPeeringAuthorizationOutput)(nil),
 		Error:   nil,
@@ -356,7 +356,7 @@ func (c *Client) CreateVpcPeeringAuthorizationWithContext(ctx context.Context, i
 func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, input *gamelift.CreateVpcPeeringConnectionInput, opts ...request.Option) (*gamelift.CreateVpcPeeringConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "CreateVpcPeeringConnectionWithContext",
+		Action:  "CreateVpcPeeringConnection",
 		Input:   input,
 		Output:  (*gamelift.CreateVpcPeeringConnectionOutput)(nil),
 		Error:   nil,
@@ -377,7 +377,7 @@ func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, inpu
 func (c *Client) DeleteAliasWithContext(ctx context.Context, input *gamelift.DeleteAliasInput, opts ...request.Option) (*gamelift.DeleteAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteAliasWithContext",
+		Action:  "DeleteAlias",
 		Input:   input,
 		Output:  (*gamelift.DeleteAliasOutput)(nil),
 		Error:   nil,
@@ -398,7 +398,7 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *gamelift.Del
 func (c *Client) DeleteBuildWithContext(ctx context.Context, input *gamelift.DeleteBuildInput, opts ...request.Option) (*gamelift.DeleteBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteBuildWithContext",
+		Action:  "DeleteBuild",
 		Input:   input,
 		Output:  (*gamelift.DeleteBuildOutput)(nil),
 		Error:   nil,
@@ -419,7 +419,7 @@ func (c *Client) DeleteBuildWithContext(ctx context.Context, input *gamelift.Del
 func (c *Client) DeleteFleetWithContext(ctx context.Context, input *gamelift.DeleteFleetInput, opts ...request.Option) (*gamelift.DeleteFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteFleetWithContext",
+		Action:  "DeleteFleet",
 		Input:   input,
 		Output:  (*gamelift.DeleteFleetOutput)(nil),
 		Error:   nil,
@@ -440,7 +440,7 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, input *gamelift.Del
 func (c *Client) DeleteGameSessionQueueWithContext(ctx context.Context, input *gamelift.DeleteGameSessionQueueInput, opts ...request.Option) (*gamelift.DeleteGameSessionQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteGameSessionQueueWithContext",
+		Action:  "DeleteGameSessionQueue",
 		Input:   input,
 		Output:  (*gamelift.DeleteGameSessionQueueOutput)(nil),
 		Error:   nil,
@@ -461,7 +461,7 @@ func (c *Client) DeleteGameSessionQueueWithContext(ctx context.Context, input *g
 func (c *Client) DeleteMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.DeleteMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.DeleteMatchmakingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteMatchmakingConfigurationWithContext",
+		Action:  "DeleteMatchmakingConfiguration",
 		Input:   input,
 		Output:  (*gamelift.DeleteMatchmakingConfigurationOutput)(nil),
 		Error:   nil,
@@ -482,7 +482,7 @@ func (c *Client) DeleteMatchmakingConfigurationWithContext(ctx context.Context, 
 func (c *Client) DeleteMatchmakingRuleSetWithContext(ctx context.Context, input *gamelift.DeleteMatchmakingRuleSetInput, opts ...request.Option) (*gamelift.DeleteMatchmakingRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteMatchmakingRuleSetWithContext",
+		Action:  "DeleteMatchmakingRuleSet",
 		Input:   input,
 		Output:  (*gamelift.DeleteMatchmakingRuleSetOutput)(nil),
 		Error:   nil,
@@ -503,7 +503,7 @@ func (c *Client) DeleteMatchmakingRuleSetWithContext(ctx context.Context, input 
 func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, input *gamelift.DeleteScalingPolicyInput, opts ...request.Option) (*gamelift.DeleteScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteScalingPolicyWithContext",
+		Action:  "DeleteScalingPolicy",
 		Input:   input,
 		Output:  (*gamelift.DeleteScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -524,7 +524,7 @@ func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, input *game
 func (c *Client) DeleteScriptWithContext(ctx context.Context, input *gamelift.DeleteScriptInput, opts ...request.Option) (*gamelift.DeleteScriptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteScriptWithContext",
+		Action:  "DeleteScript",
 		Input:   input,
 		Output:  (*gamelift.DeleteScriptOutput)(nil),
 		Error:   nil,
@@ -545,7 +545,7 @@ func (c *Client) DeleteScriptWithContext(ctx context.Context, input *gamelift.De
 func (c *Client) DeleteVpcPeeringAuthorizationWithContext(ctx context.Context, input *gamelift.DeleteVpcPeeringAuthorizationInput, opts ...request.Option) (*gamelift.DeleteVpcPeeringAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteVpcPeeringAuthorizationWithContext",
+		Action:  "DeleteVpcPeeringAuthorization",
 		Input:   input,
 		Output:  (*gamelift.DeleteVpcPeeringAuthorizationOutput)(nil),
 		Error:   nil,
@@ -566,7 +566,7 @@ func (c *Client) DeleteVpcPeeringAuthorizationWithContext(ctx context.Context, i
 func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, input *gamelift.DeleteVpcPeeringConnectionInput, opts ...request.Option) (*gamelift.DeleteVpcPeeringConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DeleteVpcPeeringConnectionWithContext",
+		Action:  "DeleteVpcPeeringConnection",
 		Input:   input,
 		Output:  (*gamelift.DeleteVpcPeeringConnectionOutput)(nil),
 		Error:   nil,
@@ -587,7 +587,7 @@ func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, inpu
 func (c *Client) DescribeAliasWithContext(ctx context.Context, input *gamelift.DescribeAliasInput, opts ...request.Option) (*gamelift.DescribeAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeAliasWithContext",
+		Action:  "DescribeAlias",
 		Input:   input,
 		Output:  (*gamelift.DescribeAliasOutput)(nil),
 		Error:   nil,
@@ -608,7 +608,7 @@ func (c *Client) DescribeAliasWithContext(ctx context.Context, input *gamelift.D
 func (c *Client) DescribeBuildWithContext(ctx context.Context, input *gamelift.DescribeBuildInput, opts ...request.Option) (*gamelift.DescribeBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeBuildWithContext",
+		Action:  "DescribeBuild",
 		Input:   input,
 		Output:  (*gamelift.DescribeBuildOutput)(nil),
 		Error:   nil,
@@ -629,7 +629,7 @@ func (c *Client) DescribeBuildWithContext(ctx context.Context, input *gamelift.D
 func (c *Client) DescribeEC2InstanceLimitsWithContext(ctx context.Context, input *gamelift.DescribeEC2InstanceLimitsInput, opts ...request.Option) (*gamelift.DescribeEC2InstanceLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeEC2InstanceLimitsWithContext",
+		Action:  "DescribeEC2InstanceLimits",
 		Input:   input,
 		Output:  (*gamelift.DescribeEC2InstanceLimitsOutput)(nil),
 		Error:   nil,
@@ -650,7 +650,7 @@ func (c *Client) DescribeEC2InstanceLimitsWithContext(ctx context.Context, input
 func (c *Client) DescribeFleetAttributesWithContext(ctx context.Context, input *gamelift.DescribeFleetAttributesInput, opts ...request.Option) (*gamelift.DescribeFleetAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeFleetAttributesWithContext",
+		Action:  "DescribeFleetAttributes",
 		Input:   input,
 		Output:  (*gamelift.DescribeFleetAttributesOutput)(nil),
 		Error:   nil,
@@ -671,7 +671,7 @@ func (c *Client) DescribeFleetAttributesWithContext(ctx context.Context, input *
 func (c *Client) DescribeFleetCapacityWithContext(ctx context.Context, input *gamelift.DescribeFleetCapacityInput, opts ...request.Option) (*gamelift.DescribeFleetCapacityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeFleetCapacityWithContext",
+		Action:  "DescribeFleetCapacity",
 		Input:   input,
 		Output:  (*gamelift.DescribeFleetCapacityOutput)(nil),
 		Error:   nil,
@@ -692,7 +692,7 @@ func (c *Client) DescribeFleetCapacityWithContext(ctx context.Context, input *ga
 func (c *Client) DescribeFleetEventsWithContext(ctx context.Context, input *gamelift.DescribeFleetEventsInput, opts ...request.Option) (*gamelift.DescribeFleetEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeFleetEventsWithContext",
+		Action:  "DescribeFleetEvents",
 		Input:   input,
 		Output:  (*gamelift.DescribeFleetEventsOutput)(nil),
 		Error:   nil,
@@ -713,7 +713,7 @@ func (c *Client) DescribeFleetEventsWithContext(ctx context.Context, input *game
 func (c *Client) DescribeFleetPortSettingsWithContext(ctx context.Context, input *gamelift.DescribeFleetPortSettingsInput, opts ...request.Option) (*gamelift.DescribeFleetPortSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeFleetPortSettingsWithContext",
+		Action:  "DescribeFleetPortSettings",
 		Input:   input,
 		Output:  (*gamelift.DescribeFleetPortSettingsOutput)(nil),
 		Error:   nil,
@@ -734,7 +734,7 @@ func (c *Client) DescribeFleetPortSettingsWithContext(ctx context.Context, input
 func (c *Client) DescribeFleetUtilizationWithContext(ctx context.Context, input *gamelift.DescribeFleetUtilizationInput, opts ...request.Option) (*gamelift.DescribeFleetUtilizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeFleetUtilizationWithContext",
+		Action:  "DescribeFleetUtilization",
 		Input:   input,
 		Output:  (*gamelift.DescribeFleetUtilizationOutput)(nil),
 		Error:   nil,
@@ -755,7 +755,7 @@ func (c *Client) DescribeFleetUtilizationWithContext(ctx context.Context, input 
 func (c *Client) DescribeGameSessionDetailsWithContext(ctx context.Context, input *gamelift.DescribeGameSessionDetailsInput, opts ...request.Option) (*gamelift.DescribeGameSessionDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeGameSessionDetailsWithContext",
+		Action:  "DescribeGameSessionDetails",
 		Input:   input,
 		Output:  (*gamelift.DescribeGameSessionDetailsOutput)(nil),
 		Error:   nil,
@@ -776,7 +776,7 @@ func (c *Client) DescribeGameSessionDetailsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeGameSessionPlacementWithContext(ctx context.Context, input *gamelift.DescribeGameSessionPlacementInput, opts ...request.Option) (*gamelift.DescribeGameSessionPlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeGameSessionPlacementWithContext",
+		Action:  "DescribeGameSessionPlacement",
 		Input:   input,
 		Output:  (*gamelift.DescribeGameSessionPlacementOutput)(nil),
 		Error:   nil,
@@ -797,7 +797,7 @@ func (c *Client) DescribeGameSessionPlacementWithContext(ctx context.Context, in
 func (c *Client) DescribeGameSessionQueuesWithContext(ctx context.Context, input *gamelift.DescribeGameSessionQueuesInput, opts ...request.Option) (*gamelift.DescribeGameSessionQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeGameSessionQueuesWithContext",
+		Action:  "DescribeGameSessionQueues",
 		Input:   input,
 		Output:  (*gamelift.DescribeGameSessionQueuesOutput)(nil),
 		Error:   nil,
@@ -818,7 +818,7 @@ func (c *Client) DescribeGameSessionQueuesWithContext(ctx context.Context, input
 func (c *Client) DescribeGameSessionsWithContext(ctx context.Context, input *gamelift.DescribeGameSessionsInput, opts ...request.Option) (*gamelift.DescribeGameSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeGameSessionsWithContext",
+		Action:  "DescribeGameSessions",
 		Input:   input,
 		Output:  (*gamelift.DescribeGameSessionsOutput)(nil),
 		Error:   nil,
@@ -839,7 +839,7 @@ func (c *Client) DescribeGameSessionsWithContext(ctx context.Context, input *gam
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *gamelift.DescribeInstancesInput, opts ...request.Option) (*gamelift.DescribeInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeInstancesWithContext",
+		Action:  "DescribeInstances",
 		Input:   input,
 		Output:  (*gamelift.DescribeInstancesOutput)(nil),
 		Error:   nil,
@@ -860,7 +860,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *gameli
 func (c *Client) DescribeMatchmakingWithContext(ctx context.Context, input *gamelift.DescribeMatchmakingInput, opts ...request.Option) (*gamelift.DescribeMatchmakingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeMatchmakingWithContext",
+		Action:  "DescribeMatchmaking",
 		Input:   input,
 		Output:  (*gamelift.DescribeMatchmakingOutput)(nil),
 		Error:   nil,
@@ -881,7 +881,7 @@ func (c *Client) DescribeMatchmakingWithContext(ctx context.Context, input *game
 func (c *Client) DescribeMatchmakingConfigurationsWithContext(ctx context.Context, input *gamelift.DescribeMatchmakingConfigurationsInput, opts ...request.Option) (*gamelift.DescribeMatchmakingConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeMatchmakingConfigurationsWithContext",
+		Action:  "DescribeMatchmakingConfigurations",
 		Input:   input,
 		Output:  (*gamelift.DescribeMatchmakingConfigurationsOutput)(nil),
 		Error:   nil,
@@ -902,7 +902,7 @@ func (c *Client) DescribeMatchmakingConfigurationsWithContext(ctx context.Contex
 func (c *Client) DescribeMatchmakingRuleSetsWithContext(ctx context.Context, input *gamelift.DescribeMatchmakingRuleSetsInput, opts ...request.Option) (*gamelift.DescribeMatchmakingRuleSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeMatchmakingRuleSetsWithContext",
+		Action:  "DescribeMatchmakingRuleSets",
 		Input:   input,
 		Output:  (*gamelift.DescribeMatchmakingRuleSetsOutput)(nil),
 		Error:   nil,
@@ -923,7 +923,7 @@ func (c *Client) DescribeMatchmakingRuleSetsWithContext(ctx context.Context, inp
 func (c *Client) DescribePlayerSessionsWithContext(ctx context.Context, input *gamelift.DescribePlayerSessionsInput, opts ...request.Option) (*gamelift.DescribePlayerSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribePlayerSessionsWithContext",
+		Action:  "DescribePlayerSessions",
 		Input:   input,
 		Output:  (*gamelift.DescribePlayerSessionsOutput)(nil),
 		Error:   nil,
@@ -944,7 +944,7 @@ func (c *Client) DescribePlayerSessionsWithContext(ctx context.Context, input *g
 func (c *Client) DescribeRuntimeConfigurationWithContext(ctx context.Context, input *gamelift.DescribeRuntimeConfigurationInput, opts ...request.Option) (*gamelift.DescribeRuntimeConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeRuntimeConfigurationWithContext",
+		Action:  "DescribeRuntimeConfiguration",
 		Input:   input,
 		Output:  (*gamelift.DescribeRuntimeConfigurationOutput)(nil),
 		Error:   nil,
@@ -965,7 +965,7 @@ func (c *Client) DescribeRuntimeConfigurationWithContext(ctx context.Context, in
 func (c *Client) DescribeScalingPoliciesWithContext(ctx context.Context, input *gamelift.DescribeScalingPoliciesInput, opts ...request.Option) (*gamelift.DescribeScalingPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeScalingPoliciesWithContext",
+		Action:  "DescribeScalingPolicies",
 		Input:   input,
 		Output:  (*gamelift.DescribeScalingPoliciesOutput)(nil),
 		Error:   nil,
@@ -986,7 +986,7 @@ func (c *Client) DescribeScalingPoliciesWithContext(ctx context.Context, input *
 func (c *Client) DescribeScriptWithContext(ctx context.Context, input *gamelift.DescribeScriptInput, opts ...request.Option) (*gamelift.DescribeScriptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeScriptWithContext",
+		Action:  "DescribeScript",
 		Input:   input,
 		Output:  (*gamelift.DescribeScriptOutput)(nil),
 		Error:   nil,
@@ -1007,7 +1007,7 @@ func (c *Client) DescribeScriptWithContext(ctx context.Context, input *gamelift.
 func (c *Client) DescribeVpcPeeringAuthorizationsWithContext(ctx context.Context, input *gamelift.DescribeVpcPeeringAuthorizationsInput, opts ...request.Option) (*gamelift.DescribeVpcPeeringAuthorizationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeVpcPeeringAuthorizationsWithContext",
+		Action:  "DescribeVpcPeeringAuthorizations",
 		Input:   input,
 		Output:  (*gamelift.DescribeVpcPeeringAuthorizationsOutput)(nil),
 		Error:   nil,
@@ -1028,7 +1028,7 @@ func (c *Client) DescribeVpcPeeringAuthorizationsWithContext(ctx context.Context
 func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, input *gamelift.DescribeVpcPeeringConnectionsInput, opts ...request.Option) (*gamelift.DescribeVpcPeeringConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "DescribeVpcPeeringConnectionsWithContext",
+		Action:  "DescribeVpcPeeringConnections",
 		Input:   input,
 		Output:  (*gamelift.DescribeVpcPeeringConnectionsOutput)(nil),
 		Error:   nil,
@@ -1049,7 +1049,7 @@ func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, i
 func (c *Client) GetGameSessionLogUrlWithContext(ctx context.Context, input *gamelift.GetGameSessionLogUrlInput, opts ...request.Option) (*gamelift.GetGameSessionLogUrlOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "GetGameSessionLogUrlWithContext",
+		Action:  "GetGameSessionLogUrl",
 		Input:   input,
 		Output:  (*gamelift.GetGameSessionLogUrlOutput)(nil),
 		Error:   nil,
@@ -1070,7 +1070,7 @@ func (c *Client) GetGameSessionLogUrlWithContext(ctx context.Context, input *gam
 func (c *Client) GetInstanceAccessWithContext(ctx context.Context, input *gamelift.GetInstanceAccessInput, opts ...request.Option) (*gamelift.GetInstanceAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "GetInstanceAccessWithContext",
+		Action:  "GetInstanceAccess",
 		Input:   input,
 		Output:  (*gamelift.GetInstanceAccessOutput)(nil),
 		Error:   nil,
@@ -1091,7 +1091,7 @@ func (c *Client) GetInstanceAccessWithContext(ctx context.Context, input *gameli
 func (c *Client) ListAliasesWithContext(ctx context.Context, input *gamelift.ListAliasesInput, opts ...request.Option) (*gamelift.ListAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "ListAliasesWithContext",
+		Action:  "ListAliases",
 		Input:   input,
 		Output:  (*gamelift.ListAliasesOutput)(nil),
 		Error:   nil,
@@ -1112,7 +1112,7 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *gamelift.Lis
 func (c *Client) ListBuildsWithContext(ctx context.Context, input *gamelift.ListBuildsInput, opts ...request.Option) (*gamelift.ListBuildsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "ListBuildsWithContext",
+		Action:  "ListBuilds",
 		Input:   input,
 		Output:  (*gamelift.ListBuildsOutput)(nil),
 		Error:   nil,
@@ -1133,7 +1133,7 @@ func (c *Client) ListBuildsWithContext(ctx context.Context, input *gamelift.List
 func (c *Client) ListFleetsWithContext(ctx context.Context, input *gamelift.ListFleetsInput, opts ...request.Option) (*gamelift.ListFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "ListFleetsWithContext",
+		Action:  "ListFleets",
 		Input:   input,
 		Output:  (*gamelift.ListFleetsOutput)(nil),
 		Error:   nil,
@@ -1154,7 +1154,7 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, input *gamelift.List
 func (c *Client) ListScriptsWithContext(ctx context.Context, input *gamelift.ListScriptsInput, opts ...request.Option) (*gamelift.ListScriptsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "ListScriptsWithContext",
+		Action:  "ListScripts",
 		Input:   input,
 		Output:  (*gamelift.ListScriptsOutput)(nil),
 		Error:   nil,
@@ -1175,7 +1175,7 @@ func (c *Client) ListScriptsWithContext(ctx context.Context, input *gamelift.Lis
 func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *gamelift.PutScalingPolicyInput, opts ...request.Option) (*gamelift.PutScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "PutScalingPolicyWithContext",
+		Action:  "PutScalingPolicy",
 		Input:   input,
 		Output:  (*gamelift.PutScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -1196,7 +1196,7 @@ func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *gamelif
 func (c *Client) RequestUploadCredentialsWithContext(ctx context.Context, input *gamelift.RequestUploadCredentialsInput, opts ...request.Option) (*gamelift.RequestUploadCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "RequestUploadCredentialsWithContext",
+		Action:  "RequestUploadCredentials",
 		Input:   input,
 		Output:  (*gamelift.RequestUploadCredentialsOutput)(nil),
 		Error:   nil,
@@ -1217,7 +1217,7 @@ func (c *Client) RequestUploadCredentialsWithContext(ctx context.Context, input 
 func (c *Client) ResolveAliasWithContext(ctx context.Context, input *gamelift.ResolveAliasInput, opts ...request.Option) (*gamelift.ResolveAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "ResolveAliasWithContext",
+		Action:  "ResolveAlias",
 		Input:   input,
 		Output:  (*gamelift.ResolveAliasOutput)(nil),
 		Error:   nil,
@@ -1238,7 +1238,7 @@ func (c *Client) ResolveAliasWithContext(ctx context.Context, input *gamelift.Re
 func (c *Client) SearchGameSessionsWithContext(ctx context.Context, input *gamelift.SearchGameSessionsInput, opts ...request.Option) (*gamelift.SearchGameSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "SearchGameSessionsWithContext",
+		Action:  "SearchGameSessions",
 		Input:   input,
 		Output:  (*gamelift.SearchGameSessionsOutput)(nil),
 		Error:   nil,
@@ -1259,7 +1259,7 @@ func (c *Client) SearchGameSessionsWithContext(ctx context.Context, input *gamel
 func (c *Client) StartFleetActionsWithContext(ctx context.Context, input *gamelift.StartFleetActionsInput, opts ...request.Option) (*gamelift.StartFleetActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StartFleetActionsWithContext",
+		Action:  "StartFleetActions",
 		Input:   input,
 		Output:  (*gamelift.StartFleetActionsOutput)(nil),
 		Error:   nil,
@@ -1280,7 +1280,7 @@ func (c *Client) StartFleetActionsWithContext(ctx context.Context, input *gameli
 func (c *Client) StartGameSessionPlacementWithContext(ctx context.Context, input *gamelift.StartGameSessionPlacementInput, opts ...request.Option) (*gamelift.StartGameSessionPlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StartGameSessionPlacementWithContext",
+		Action:  "StartGameSessionPlacement",
 		Input:   input,
 		Output:  (*gamelift.StartGameSessionPlacementOutput)(nil),
 		Error:   nil,
@@ -1301,7 +1301,7 @@ func (c *Client) StartGameSessionPlacementWithContext(ctx context.Context, input
 func (c *Client) StartMatchBackfillWithContext(ctx context.Context, input *gamelift.StartMatchBackfillInput, opts ...request.Option) (*gamelift.StartMatchBackfillOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StartMatchBackfillWithContext",
+		Action:  "StartMatchBackfill",
 		Input:   input,
 		Output:  (*gamelift.StartMatchBackfillOutput)(nil),
 		Error:   nil,
@@ -1322,7 +1322,7 @@ func (c *Client) StartMatchBackfillWithContext(ctx context.Context, input *gamel
 func (c *Client) StartMatchmakingWithContext(ctx context.Context, input *gamelift.StartMatchmakingInput, opts ...request.Option) (*gamelift.StartMatchmakingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StartMatchmakingWithContext",
+		Action:  "StartMatchmaking",
 		Input:   input,
 		Output:  (*gamelift.StartMatchmakingOutput)(nil),
 		Error:   nil,
@@ -1343,7 +1343,7 @@ func (c *Client) StartMatchmakingWithContext(ctx context.Context, input *gamelif
 func (c *Client) StopFleetActionsWithContext(ctx context.Context, input *gamelift.StopFleetActionsInput, opts ...request.Option) (*gamelift.StopFleetActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StopFleetActionsWithContext",
+		Action:  "StopFleetActions",
 		Input:   input,
 		Output:  (*gamelift.StopFleetActionsOutput)(nil),
 		Error:   nil,
@@ -1364,7 +1364,7 @@ func (c *Client) StopFleetActionsWithContext(ctx context.Context, input *gamelif
 func (c *Client) StopGameSessionPlacementWithContext(ctx context.Context, input *gamelift.StopGameSessionPlacementInput, opts ...request.Option) (*gamelift.StopGameSessionPlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StopGameSessionPlacementWithContext",
+		Action:  "StopGameSessionPlacement",
 		Input:   input,
 		Output:  (*gamelift.StopGameSessionPlacementOutput)(nil),
 		Error:   nil,
@@ -1385,7 +1385,7 @@ func (c *Client) StopGameSessionPlacementWithContext(ctx context.Context, input 
 func (c *Client) StopMatchmakingWithContext(ctx context.Context, input *gamelift.StopMatchmakingInput, opts ...request.Option) (*gamelift.StopMatchmakingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "StopMatchmakingWithContext",
+		Action:  "StopMatchmaking",
 		Input:   input,
 		Output:  (*gamelift.StopMatchmakingOutput)(nil),
 		Error:   nil,
@@ -1406,7 +1406,7 @@ func (c *Client) StopMatchmakingWithContext(ctx context.Context, input *gamelift
 func (c *Client) UpdateAliasWithContext(ctx context.Context, input *gamelift.UpdateAliasInput, opts ...request.Option) (*gamelift.UpdateAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateAliasWithContext",
+		Action:  "UpdateAlias",
 		Input:   input,
 		Output:  (*gamelift.UpdateAliasOutput)(nil),
 		Error:   nil,
@@ -1427,7 +1427,7 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, input *gamelift.Upd
 func (c *Client) UpdateBuildWithContext(ctx context.Context, input *gamelift.UpdateBuildInput, opts ...request.Option) (*gamelift.UpdateBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateBuildWithContext",
+		Action:  "UpdateBuild",
 		Input:   input,
 		Output:  (*gamelift.UpdateBuildOutput)(nil),
 		Error:   nil,
@@ -1448,7 +1448,7 @@ func (c *Client) UpdateBuildWithContext(ctx context.Context, input *gamelift.Upd
 func (c *Client) UpdateFleetAttributesWithContext(ctx context.Context, input *gamelift.UpdateFleetAttributesInput, opts ...request.Option) (*gamelift.UpdateFleetAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateFleetAttributesWithContext",
+		Action:  "UpdateFleetAttributes",
 		Input:   input,
 		Output:  (*gamelift.UpdateFleetAttributesOutput)(nil),
 		Error:   nil,
@@ -1469,7 +1469,7 @@ func (c *Client) UpdateFleetAttributesWithContext(ctx context.Context, input *ga
 func (c *Client) UpdateFleetCapacityWithContext(ctx context.Context, input *gamelift.UpdateFleetCapacityInput, opts ...request.Option) (*gamelift.UpdateFleetCapacityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateFleetCapacityWithContext",
+		Action:  "UpdateFleetCapacity",
 		Input:   input,
 		Output:  (*gamelift.UpdateFleetCapacityOutput)(nil),
 		Error:   nil,
@@ -1490,7 +1490,7 @@ func (c *Client) UpdateFleetCapacityWithContext(ctx context.Context, input *game
 func (c *Client) UpdateFleetPortSettingsWithContext(ctx context.Context, input *gamelift.UpdateFleetPortSettingsInput, opts ...request.Option) (*gamelift.UpdateFleetPortSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateFleetPortSettingsWithContext",
+		Action:  "UpdateFleetPortSettings",
 		Input:   input,
 		Output:  (*gamelift.UpdateFleetPortSettingsOutput)(nil),
 		Error:   nil,
@@ -1511,7 +1511,7 @@ func (c *Client) UpdateFleetPortSettingsWithContext(ctx context.Context, input *
 func (c *Client) UpdateGameSessionWithContext(ctx context.Context, input *gamelift.UpdateGameSessionInput, opts ...request.Option) (*gamelift.UpdateGameSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateGameSessionWithContext",
+		Action:  "UpdateGameSession",
 		Input:   input,
 		Output:  (*gamelift.UpdateGameSessionOutput)(nil),
 		Error:   nil,
@@ -1532,7 +1532,7 @@ func (c *Client) UpdateGameSessionWithContext(ctx context.Context, input *gameli
 func (c *Client) UpdateGameSessionQueueWithContext(ctx context.Context, input *gamelift.UpdateGameSessionQueueInput, opts ...request.Option) (*gamelift.UpdateGameSessionQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateGameSessionQueueWithContext",
+		Action:  "UpdateGameSessionQueue",
 		Input:   input,
 		Output:  (*gamelift.UpdateGameSessionQueueOutput)(nil),
 		Error:   nil,
@@ -1553,7 +1553,7 @@ func (c *Client) UpdateGameSessionQueueWithContext(ctx context.Context, input *g
 func (c *Client) UpdateMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.UpdateMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.UpdateMatchmakingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateMatchmakingConfigurationWithContext",
+		Action:  "UpdateMatchmakingConfiguration",
 		Input:   input,
 		Output:  (*gamelift.UpdateMatchmakingConfigurationOutput)(nil),
 		Error:   nil,
@@ -1574,7 +1574,7 @@ func (c *Client) UpdateMatchmakingConfigurationWithContext(ctx context.Context, 
 func (c *Client) UpdateRuntimeConfigurationWithContext(ctx context.Context, input *gamelift.UpdateRuntimeConfigurationInput, opts ...request.Option) (*gamelift.UpdateRuntimeConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateRuntimeConfigurationWithContext",
+		Action:  "UpdateRuntimeConfiguration",
 		Input:   input,
 		Output:  (*gamelift.UpdateRuntimeConfigurationOutput)(nil),
 		Error:   nil,
@@ -1595,7 +1595,7 @@ func (c *Client) UpdateRuntimeConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) UpdateScriptWithContext(ctx context.Context, input *gamelift.UpdateScriptInput, opts ...request.Option) (*gamelift.UpdateScriptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "UpdateScriptWithContext",
+		Action:  "UpdateScript",
 		Input:   input,
 		Output:  (*gamelift.UpdateScriptOutput)(nil),
 		Error:   nil,
@@ -1616,7 +1616,7 @@ func (c *Client) UpdateScriptWithContext(ctx context.Context, input *gamelift.Up
 func (c *Client) ValidateMatchmakingRuleSetWithContext(ctx context.Context, input *gamelift.ValidateMatchmakingRuleSetInput, opts ...request.Option) (*gamelift.ValidateMatchmakingRuleSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
-		Action:  "ValidateMatchmakingRuleSetWithContext",
+		Action:  "ValidateMatchmakingRuleSet",
 		Input:   input,
 		Output:  (*gamelift.ValidateMatchmakingRuleSetOutput)(nil),
 		Error:   nil,

@@ -74,7 +74,7 @@ var _ Backup = (*Client)(nil)
 func (c *Client) CreateBackupPlanWithContext(ctx context.Context, input *backup.CreateBackupPlanInput, opts ...request.Option) (*backup.CreateBackupPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "CreateBackupPlanWithContext",
+		Action:  "CreateBackupPlan",
 		Input:   input,
 		Output:  (*backup.CreateBackupPlanOutput)(nil),
 		Error:   nil,
@@ -95,7 +95,7 @@ func (c *Client) CreateBackupPlanWithContext(ctx context.Context, input *backup.
 func (c *Client) CreateBackupSelectionWithContext(ctx context.Context, input *backup.CreateBackupSelectionInput, opts ...request.Option) (*backup.CreateBackupSelectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "CreateBackupSelectionWithContext",
+		Action:  "CreateBackupSelection",
 		Input:   input,
 		Output:  (*backup.CreateBackupSelectionOutput)(nil),
 		Error:   nil,
@@ -116,7 +116,7 @@ func (c *Client) CreateBackupSelectionWithContext(ctx context.Context, input *ba
 func (c *Client) CreateBackupVaultWithContext(ctx context.Context, input *backup.CreateBackupVaultInput, opts ...request.Option) (*backup.CreateBackupVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "CreateBackupVaultWithContext",
+		Action:  "CreateBackupVault",
 		Input:   input,
 		Output:  (*backup.CreateBackupVaultOutput)(nil),
 		Error:   nil,
@@ -137,7 +137,7 @@ func (c *Client) CreateBackupVaultWithContext(ctx context.Context, input *backup
 func (c *Client) DeleteBackupPlanWithContext(ctx context.Context, input *backup.DeleteBackupPlanInput, opts ...request.Option) (*backup.DeleteBackupPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DeleteBackupPlanWithContext",
+		Action:  "DeleteBackupPlan",
 		Input:   input,
 		Output:  (*backup.DeleteBackupPlanOutput)(nil),
 		Error:   nil,
@@ -158,7 +158,7 @@ func (c *Client) DeleteBackupPlanWithContext(ctx context.Context, input *backup.
 func (c *Client) DeleteBackupSelectionWithContext(ctx context.Context, input *backup.DeleteBackupSelectionInput, opts ...request.Option) (*backup.DeleteBackupSelectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DeleteBackupSelectionWithContext",
+		Action:  "DeleteBackupSelection",
 		Input:   input,
 		Output:  (*backup.DeleteBackupSelectionOutput)(nil),
 		Error:   nil,
@@ -179,7 +179,7 @@ func (c *Client) DeleteBackupSelectionWithContext(ctx context.Context, input *ba
 func (c *Client) DeleteBackupVaultWithContext(ctx context.Context, input *backup.DeleteBackupVaultInput, opts ...request.Option) (*backup.DeleteBackupVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DeleteBackupVaultWithContext",
+		Action:  "DeleteBackupVault",
 		Input:   input,
 		Output:  (*backup.DeleteBackupVaultOutput)(nil),
 		Error:   nil,
@@ -200,7 +200,7 @@ func (c *Client) DeleteBackupVaultWithContext(ctx context.Context, input *backup
 func (c *Client) DeleteBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.DeleteBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.DeleteBackupVaultAccessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DeleteBackupVaultAccessPolicyWithContext",
+		Action:  "DeleteBackupVaultAccessPolicy",
 		Input:   input,
 		Output:  (*backup.DeleteBackupVaultAccessPolicyOutput)(nil),
 		Error:   nil,
@@ -221,7 +221,7 @@ func (c *Client) DeleteBackupVaultAccessPolicyWithContext(ctx context.Context, i
 func (c *Client) DeleteBackupVaultNotificationsWithContext(ctx context.Context, input *backup.DeleteBackupVaultNotificationsInput, opts ...request.Option) (*backup.DeleteBackupVaultNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DeleteBackupVaultNotificationsWithContext",
+		Action:  "DeleteBackupVaultNotifications",
 		Input:   input,
 		Output:  (*backup.DeleteBackupVaultNotificationsOutput)(nil),
 		Error:   nil,
@@ -242,7 +242,7 @@ func (c *Client) DeleteBackupVaultNotificationsWithContext(ctx context.Context, 
 func (c *Client) DeleteRecoveryPointWithContext(ctx context.Context, input *backup.DeleteRecoveryPointInput, opts ...request.Option) (*backup.DeleteRecoveryPointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DeleteRecoveryPointWithContext",
+		Action:  "DeleteRecoveryPoint",
 		Input:   input,
 		Output:  (*backup.DeleteRecoveryPointOutput)(nil),
 		Error:   nil,
@@ -263,7 +263,7 @@ func (c *Client) DeleteRecoveryPointWithContext(ctx context.Context, input *back
 func (c *Client) DescribeBackupJobWithContext(ctx context.Context, input *backup.DescribeBackupJobInput, opts ...request.Option) (*backup.DescribeBackupJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DescribeBackupJobWithContext",
+		Action:  "DescribeBackupJob",
 		Input:   input,
 		Output:  (*backup.DescribeBackupJobOutput)(nil),
 		Error:   nil,
@@ -284,7 +284,7 @@ func (c *Client) DescribeBackupJobWithContext(ctx context.Context, input *backup
 func (c *Client) DescribeBackupVaultWithContext(ctx context.Context, input *backup.DescribeBackupVaultInput, opts ...request.Option) (*backup.DescribeBackupVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DescribeBackupVaultWithContext",
+		Action:  "DescribeBackupVault",
 		Input:   input,
 		Output:  (*backup.DescribeBackupVaultOutput)(nil),
 		Error:   nil,
@@ -305,7 +305,7 @@ func (c *Client) DescribeBackupVaultWithContext(ctx context.Context, input *back
 func (c *Client) DescribeProtectedResourceWithContext(ctx context.Context, input *backup.DescribeProtectedResourceInput, opts ...request.Option) (*backup.DescribeProtectedResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DescribeProtectedResourceWithContext",
+		Action:  "DescribeProtectedResource",
 		Input:   input,
 		Output:  (*backup.DescribeProtectedResourceOutput)(nil),
 		Error:   nil,
@@ -326,7 +326,7 @@ func (c *Client) DescribeProtectedResourceWithContext(ctx context.Context, input
 func (c *Client) DescribeRecoveryPointWithContext(ctx context.Context, input *backup.DescribeRecoveryPointInput, opts ...request.Option) (*backup.DescribeRecoveryPointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DescribeRecoveryPointWithContext",
+		Action:  "DescribeRecoveryPoint",
 		Input:   input,
 		Output:  (*backup.DescribeRecoveryPointOutput)(nil),
 		Error:   nil,
@@ -347,7 +347,7 @@ func (c *Client) DescribeRecoveryPointWithContext(ctx context.Context, input *ba
 func (c *Client) DescribeRestoreJobWithContext(ctx context.Context, input *backup.DescribeRestoreJobInput, opts ...request.Option) (*backup.DescribeRestoreJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "DescribeRestoreJobWithContext",
+		Action:  "DescribeRestoreJob",
 		Input:   input,
 		Output:  (*backup.DescribeRestoreJobOutput)(nil),
 		Error:   nil,
@@ -368,7 +368,7 @@ func (c *Client) DescribeRestoreJobWithContext(ctx context.Context, input *backu
 func (c *Client) ExportBackupPlanTemplateWithContext(ctx context.Context, input *backup.ExportBackupPlanTemplateInput, opts ...request.Option) (*backup.ExportBackupPlanTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ExportBackupPlanTemplateWithContext",
+		Action:  "ExportBackupPlanTemplate",
 		Input:   input,
 		Output:  (*backup.ExportBackupPlanTemplateOutput)(nil),
 		Error:   nil,
@@ -389,7 +389,7 @@ func (c *Client) ExportBackupPlanTemplateWithContext(ctx context.Context, input 
 func (c *Client) GetBackupPlanWithContext(ctx context.Context, input *backup.GetBackupPlanInput, opts ...request.Option) (*backup.GetBackupPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetBackupPlanWithContext",
+		Action:  "GetBackupPlan",
 		Input:   input,
 		Output:  (*backup.GetBackupPlanOutput)(nil),
 		Error:   nil,
@@ -410,7 +410,7 @@ func (c *Client) GetBackupPlanWithContext(ctx context.Context, input *backup.Get
 func (c *Client) GetBackupPlanFromJSONWithContext(ctx context.Context, input *backup.GetBackupPlanFromJSONInput, opts ...request.Option) (*backup.GetBackupPlanFromJSONOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetBackupPlanFromJSONWithContext",
+		Action:  "GetBackupPlanFromJSON",
 		Input:   input,
 		Output:  (*backup.GetBackupPlanFromJSONOutput)(nil),
 		Error:   nil,
@@ -431,7 +431,7 @@ func (c *Client) GetBackupPlanFromJSONWithContext(ctx context.Context, input *ba
 func (c *Client) GetBackupPlanFromTemplateWithContext(ctx context.Context, input *backup.GetBackupPlanFromTemplateInput, opts ...request.Option) (*backup.GetBackupPlanFromTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetBackupPlanFromTemplateWithContext",
+		Action:  "GetBackupPlanFromTemplate",
 		Input:   input,
 		Output:  (*backup.GetBackupPlanFromTemplateOutput)(nil),
 		Error:   nil,
@@ -452,7 +452,7 @@ func (c *Client) GetBackupPlanFromTemplateWithContext(ctx context.Context, input
 func (c *Client) GetBackupSelectionWithContext(ctx context.Context, input *backup.GetBackupSelectionInput, opts ...request.Option) (*backup.GetBackupSelectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetBackupSelectionWithContext",
+		Action:  "GetBackupSelection",
 		Input:   input,
 		Output:  (*backup.GetBackupSelectionOutput)(nil),
 		Error:   nil,
@@ -473,7 +473,7 @@ func (c *Client) GetBackupSelectionWithContext(ctx context.Context, input *backu
 func (c *Client) GetBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.GetBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.GetBackupVaultAccessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetBackupVaultAccessPolicyWithContext",
+		Action:  "GetBackupVaultAccessPolicy",
 		Input:   input,
 		Output:  (*backup.GetBackupVaultAccessPolicyOutput)(nil),
 		Error:   nil,
@@ -494,7 +494,7 @@ func (c *Client) GetBackupVaultAccessPolicyWithContext(ctx context.Context, inpu
 func (c *Client) GetBackupVaultNotificationsWithContext(ctx context.Context, input *backup.GetBackupVaultNotificationsInput, opts ...request.Option) (*backup.GetBackupVaultNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetBackupVaultNotificationsWithContext",
+		Action:  "GetBackupVaultNotifications",
 		Input:   input,
 		Output:  (*backup.GetBackupVaultNotificationsOutput)(nil),
 		Error:   nil,
@@ -515,7 +515,7 @@ func (c *Client) GetBackupVaultNotificationsWithContext(ctx context.Context, inp
 func (c *Client) GetRecoveryPointRestoreMetadataWithContext(ctx context.Context, input *backup.GetRecoveryPointRestoreMetadataInput, opts ...request.Option) (*backup.GetRecoveryPointRestoreMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetRecoveryPointRestoreMetadataWithContext",
+		Action:  "GetRecoveryPointRestoreMetadata",
 		Input:   input,
 		Output:  (*backup.GetRecoveryPointRestoreMetadataOutput)(nil),
 		Error:   nil,
@@ -536,7 +536,7 @@ func (c *Client) GetRecoveryPointRestoreMetadataWithContext(ctx context.Context,
 func (c *Client) GetSupportedResourceTypesWithContext(ctx context.Context, input *backup.GetSupportedResourceTypesInput, opts ...request.Option) (*backup.GetSupportedResourceTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "GetSupportedResourceTypesWithContext",
+		Action:  "GetSupportedResourceTypes",
 		Input:   input,
 		Output:  (*backup.GetSupportedResourceTypesOutput)(nil),
 		Error:   nil,
@@ -557,7 +557,7 @@ func (c *Client) GetSupportedResourceTypesWithContext(ctx context.Context, input
 func (c *Client) ListBackupJobsWithContext(ctx context.Context, input *backup.ListBackupJobsInput, opts ...request.Option) (*backup.ListBackupJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListBackupJobsWithContext",
+		Action:  "ListBackupJobs",
 		Input:   input,
 		Output:  (*backup.ListBackupJobsOutput)(nil),
 		Error:   nil,
@@ -578,7 +578,7 @@ func (c *Client) ListBackupJobsWithContext(ctx context.Context, input *backup.Li
 func (c *Client) ListBackupPlanTemplatesWithContext(ctx context.Context, input *backup.ListBackupPlanTemplatesInput, opts ...request.Option) (*backup.ListBackupPlanTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListBackupPlanTemplatesWithContext",
+		Action:  "ListBackupPlanTemplates",
 		Input:   input,
 		Output:  (*backup.ListBackupPlanTemplatesOutput)(nil),
 		Error:   nil,
@@ -599,7 +599,7 @@ func (c *Client) ListBackupPlanTemplatesWithContext(ctx context.Context, input *
 func (c *Client) ListBackupPlanVersionsWithContext(ctx context.Context, input *backup.ListBackupPlanVersionsInput, opts ...request.Option) (*backup.ListBackupPlanVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListBackupPlanVersionsWithContext",
+		Action:  "ListBackupPlanVersions",
 		Input:   input,
 		Output:  (*backup.ListBackupPlanVersionsOutput)(nil),
 		Error:   nil,
@@ -620,7 +620,7 @@ func (c *Client) ListBackupPlanVersionsWithContext(ctx context.Context, input *b
 func (c *Client) ListBackupPlansWithContext(ctx context.Context, input *backup.ListBackupPlansInput, opts ...request.Option) (*backup.ListBackupPlansOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListBackupPlansWithContext",
+		Action:  "ListBackupPlans",
 		Input:   input,
 		Output:  (*backup.ListBackupPlansOutput)(nil),
 		Error:   nil,
@@ -641,7 +641,7 @@ func (c *Client) ListBackupPlansWithContext(ctx context.Context, input *backup.L
 func (c *Client) ListBackupSelectionsWithContext(ctx context.Context, input *backup.ListBackupSelectionsInput, opts ...request.Option) (*backup.ListBackupSelectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListBackupSelectionsWithContext",
+		Action:  "ListBackupSelections",
 		Input:   input,
 		Output:  (*backup.ListBackupSelectionsOutput)(nil),
 		Error:   nil,
@@ -662,7 +662,7 @@ func (c *Client) ListBackupSelectionsWithContext(ctx context.Context, input *bac
 func (c *Client) ListBackupVaultsWithContext(ctx context.Context, input *backup.ListBackupVaultsInput, opts ...request.Option) (*backup.ListBackupVaultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListBackupVaultsWithContext",
+		Action:  "ListBackupVaults",
 		Input:   input,
 		Output:  (*backup.ListBackupVaultsOutput)(nil),
 		Error:   nil,
@@ -683,7 +683,7 @@ func (c *Client) ListBackupVaultsWithContext(ctx context.Context, input *backup.
 func (c *Client) ListProtectedResourcesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, opts ...request.Option) (*backup.ListProtectedResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListProtectedResourcesWithContext",
+		Action:  "ListProtectedResources",
 		Input:   input,
 		Output:  (*backup.ListProtectedResourcesOutput)(nil),
 		Error:   nil,
@@ -704,7 +704,7 @@ func (c *Client) ListProtectedResourcesWithContext(ctx context.Context, input *b
 func (c *Client) ListRecoveryPointsByBackupVaultWithContext(ctx context.Context, input *backup.ListRecoveryPointsByBackupVaultInput, opts ...request.Option) (*backup.ListRecoveryPointsByBackupVaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListRecoveryPointsByBackupVaultWithContext",
+		Action:  "ListRecoveryPointsByBackupVault",
 		Input:   input,
 		Output:  (*backup.ListRecoveryPointsByBackupVaultOutput)(nil),
 		Error:   nil,
@@ -725,7 +725,7 @@ func (c *Client) ListRecoveryPointsByBackupVaultWithContext(ctx context.Context,
 func (c *Client) ListRecoveryPointsByResourceWithContext(ctx context.Context, input *backup.ListRecoveryPointsByResourceInput, opts ...request.Option) (*backup.ListRecoveryPointsByResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListRecoveryPointsByResourceWithContext",
+		Action:  "ListRecoveryPointsByResource",
 		Input:   input,
 		Output:  (*backup.ListRecoveryPointsByResourceOutput)(nil),
 		Error:   nil,
@@ -746,7 +746,7 @@ func (c *Client) ListRecoveryPointsByResourceWithContext(ctx context.Context, in
 func (c *Client) ListRestoreJobsWithContext(ctx context.Context, input *backup.ListRestoreJobsInput, opts ...request.Option) (*backup.ListRestoreJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListRestoreJobsWithContext",
+		Action:  "ListRestoreJobs",
 		Input:   input,
 		Output:  (*backup.ListRestoreJobsOutput)(nil),
 		Error:   nil,
@@ -767,7 +767,7 @@ func (c *Client) ListRestoreJobsWithContext(ctx context.Context, input *backup.L
 func (c *Client) ListTagsWithContext(ctx context.Context, input *backup.ListTagsInput, opts ...request.Option) (*backup.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*backup.ListTagsOutput)(nil),
 		Error:   nil,
@@ -788,7 +788,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *backup.ListTags
 func (c *Client) PutBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.PutBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.PutBackupVaultAccessPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "PutBackupVaultAccessPolicyWithContext",
+		Action:  "PutBackupVaultAccessPolicy",
 		Input:   input,
 		Output:  (*backup.PutBackupVaultAccessPolicyOutput)(nil),
 		Error:   nil,
@@ -809,7 +809,7 @@ func (c *Client) PutBackupVaultAccessPolicyWithContext(ctx context.Context, inpu
 func (c *Client) PutBackupVaultNotificationsWithContext(ctx context.Context, input *backup.PutBackupVaultNotificationsInput, opts ...request.Option) (*backup.PutBackupVaultNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "PutBackupVaultNotificationsWithContext",
+		Action:  "PutBackupVaultNotifications",
 		Input:   input,
 		Output:  (*backup.PutBackupVaultNotificationsOutput)(nil),
 		Error:   nil,
@@ -830,7 +830,7 @@ func (c *Client) PutBackupVaultNotificationsWithContext(ctx context.Context, inp
 func (c *Client) StartBackupJobWithContext(ctx context.Context, input *backup.StartBackupJobInput, opts ...request.Option) (*backup.StartBackupJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "StartBackupJobWithContext",
+		Action:  "StartBackupJob",
 		Input:   input,
 		Output:  (*backup.StartBackupJobOutput)(nil),
 		Error:   nil,
@@ -851,7 +851,7 @@ func (c *Client) StartBackupJobWithContext(ctx context.Context, input *backup.St
 func (c *Client) StartRestoreJobWithContext(ctx context.Context, input *backup.StartRestoreJobInput, opts ...request.Option) (*backup.StartRestoreJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "StartRestoreJobWithContext",
+		Action:  "StartRestoreJob",
 		Input:   input,
 		Output:  (*backup.StartRestoreJobOutput)(nil),
 		Error:   nil,
@@ -872,7 +872,7 @@ func (c *Client) StartRestoreJobWithContext(ctx context.Context, input *backup.S
 func (c *Client) StopBackupJobWithContext(ctx context.Context, input *backup.StopBackupJobInput, opts ...request.Option) (*backup.StopBackupJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "StopBackupJobWithContext",
+		Action:  "StopBackupJob",
 		Input:   input,
 		Output:  (*backup.StopBackupJobOutput)(nil),
 		Error:   nil,
@@ -893,7 +893,7 @@ func (c *Client) StopBackupJobWithContext(ctx context.Context, input *backup.Sto
 func (c *Client) TagResourceWithContext(ctx context.Context, input *backup.TagResourceInput, opts ...request.Option) (*backup.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*backup.TagResourceOutput)(nil),
 		Error:   nil,
@@ -914,7 +914,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *backup.TagRe
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *backup.UntagResourceInput, opts ...request.Option) (*backup.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*backup.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -935,7 +935,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *backup.Unt
 func (c *Client) UpdateBackupPlanWithContext(ctx context.Context, input *backup.UpdateBackupPlanInput, opts ...request.Option) (*backup.UpdateBackupPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "UpdateBackupPlanWithContext",
+		Action:  "UpdateBackupPlan",
 		Input:   input,
 		Output:  (*backup.UpdateBackupPlanOutput)(nil),
 		Error:   nil,
@@ -956,7 +956,7 @@ func (c *Client) UpdateBackupPlanWithContext(ctx context.Context, input *backup.
 func (c *Client) UpdateRecoveryPointLifecycleWithContext(ctx context.Context, input *backup.UpdateRecoveryPointLifecycleInput, opts ...request.Option) (*backup.UpdateRecoveryPointLifecycleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
-		Action:  "UpdateRecoveryPointLifecycleWithContext",
+		Action:  "UpdateRecoveryPointLifecycle",
 		Input:   input,
 		Output:  (*backup.UpdateRecoveryPointLifecycleOutput)(nil),
 		Error:   nil,

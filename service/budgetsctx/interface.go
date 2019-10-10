@@ -45,7 +45,7 @@ var _ Budgets = (*Client)(nil)
 func (c *Client) CreateBudgetWithContext(ctx context.Context, input *budgets.CreateBudgetInput, opts ...request.Option) (*budgets.CreateBudgetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "CreateBudgetWithContext",
+		Action:  "CreateBudget",
 		Input:   input,
 		Output:  (*budgets.CreateBudgetOutput)(nil),
 		Error:   nil,
@@ -66,7 +66,7 @@ func (c *Client) CreateBudgetWithContext(ctx context.Context, input *budgets.Cre
 func (c *Client) CreateNotificationWithContext(ctx context.Context, input *budgets.CreateNotificationInput, opts ...request.Option) (*budgets.CreateNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "CreateNotificationWithContext",
+		Action:  "CreateNotification",
 		Input:   input,
 		Output:  (*budgets.CreateNotificationOutput)(nil),
 		Error:   nil,
@@ -87,7 +87,7 @@ func (c *Client) CreateNotificationWithContext(ctx context.Context, input *budge
 func (c *Client) CreateSubscriberWithContext(ctx context.Context, input *budgets.CreateSubscriberInput, opts ...request.Option) (*budgets.CreateSubscriberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "CreateSubscriberWithContext",
+		Action:  "CreateSubscriber",
 		Input:   input,
 		Output:  (*budgets.CreateSubscriberOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) CreateSubscriberWithContext(ctx context.Context, input *budgets
 func (c *Client) DeleteBudgetWithContext(ctx context.Context, input *budgets.DeleteBudgetInput, opts ...request.Option) (*budgets.DeleteBudgetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DeleteBudgetWithContext",
+		Action:  "DeleteBudget",
 		Input:   input,
 		Output:  (*budgets.DeleteBudgetOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) DeleteBudgetWithContext(ctx context.Context, input *budgets.Del
 func (c *Client) DeleteNotificationWithContext(ctx context.Context, input *budgets.DeleteNotificationInput, opts ...request.Option) (*budgets.DeleteNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DeleteNotificationWithContext",
+		Action:  "DeleteNotification",
 		Input:   input,
 		Output:  (*budgets.DeleteNotificationOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) DeleteNotificationWithContext(ctx context.Context, input *budge
 func (c *Client) DeleteSubscriberWithContext(ctx context.Context, input *budgets.DeleteSubscriberInput, opts ...request.Option) (*budgets.DeleteSubscriberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DeleteSubscriberWithContext",
+		Action:  "DeleteSubscriber",
 		Input:   input,
 		Output:  (*budgets.DeleteSubscriberOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) DeleteSubscriberWithContext(ctx context.Context, input *budgets
 func (c *Client) DescribeBudgetWithContext(ctx context.Context, input *budgets.DescribeBudgetInput, opts ...request.Option) (*budgets.DescribeBudgetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DescribeBudgetWithContext",
+		Action:  "DescribeBudget",
 		Input:   input,
 		Output:  (*budgets.DescribeBudgetOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) DescribeBudgetWithContext(ctx context.Context, input *budgets.D
 func (c *Client) DescribeBudgetPerformanceHistoryWithContext(ctx context.Context, input *budgets.DescribeBudgetPerformanceHistoryInput, opts ...request.Option) (*budgets.DescribeBudgetPerformanceHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DescribeBudgetPerformanceHistoryWithContext",
+		Action:  "DescribeBudgetPerformanceHistory",
 		Input:   input,
 		Output:  (*budgets.DescribeBudgetPerformanceHistoryOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) DescribeBudgetPerformanceHistoryWithContext(ctx context.Context
 func (c *Client) DescribeBudgetsWithContext(ctx context.Context, input *budgets.DescribeBudgetsInput, opts ...request.Option) (*budgets.DescribeBudgetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DescribeBudgetsWithContext",
+		Action:  "DescribeBudgets",
 		Input:   input,
 		Output:  (*budgets.DescribeBudgetsOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) DescribeBudgetsWithContext(ctx context.Context, input *budgets.
 func (c *Client) DescribeNotificationsForBudgetWithContext(ctx context.Context, input *budgets.DescribeNotificationsForBudgetInput, opts ...request.Option) (*budgets.DescribeNotificationsForBudgetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DescribeNotificationsForBudgetWithContext",
+		Action:  "DescribeNotificationsForBudget",
 		Input:   input,
 		Output:  (*budgets.DescribeNotificationsForBudgetOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) DescribeNotificationsForBudgetWithContext(ctx context.Context, 
 func (c *Client) DescribeSubscribersForNotificationWithContext(ctx context.Context, input *budgets.DescribeSubscribersForNotificationInput, opts ...request.Option) (*budgets.DescribeSubscribersForNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "DescribeSubscribersForNotificationWithContext",
+		Action:  "DescribeSubscribersForNotification",
 		Input:   input,
 		Output:  (*budgets.DescribeSubscribersForNotificationOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) DescribeSubscribersForNotificationWithContext(ctx context.Conte
 func (c *Client) UpdateBudgetWithContext(ctx context.Context, input *budgets.UpdateBudgetInput, opts ...request.Option) (*budgets.UpdateBudgetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "UpdateBudgetWithContext",
+		Action:  "UpdateBudget",
 		Input:   input,
 		Output:  (*budgets.UpdateBudgetOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) UpdateBudgetWithContext(ctx context.Context, input *budgets.Upd
 func (c *Client) UpdateNotificationWithContext(ctx context.Context, input *budgets.UpdateNotificationInput, opts ...request.Option) (*budgets.UpdateNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "UpdateNotificationWithContext",
+		Action:  "UpdateNotification",
 		Input:   input,
 		Output:  (*budgets.UpdateNotificationOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) UpdateNotificationWithContext(ctx context.Context, input *budge
 func (c *Client) UpdateSubscriberWithContext(ctx context.Context, input *budgets.UpdateSubscriberInput, opts ...request.Option) (*budgets.UpdateSubscriberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "budgets",
-		Action:  "UpdateSubscriberWithContext",
+		Action:  "UpdateSubscriber",
 		Input:   input,
 		Output:  (*budgets.UpdateSubscriberOutput)(nil),
 		Error:   nil,

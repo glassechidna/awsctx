@@ -22,6 +22,7 @@ type ConfigService interface {
 	DeleteOrganizationConfigRuleWithContext(ctx context.Context, input *configservice.DeleteOrganizationConfigRuleInput, opts ...request.Option) (*configservice.DeleteOrganizationConfigRuleOutput, error)
 	DeletePendingAggregationRequestWithContext(ctx context.Context, input *configservice.DeletePendingAggregationRequestInput, opts ...request.Option) (*configservice.DeletePendingAggregationRequestOutput, error)
 	DeleteRemediationConfigurationWithContext(ctx context.Context, input *configservice.DeleteRemediationConfigurationInput, opts ...request.Option) (*configservice.DeleteRemediationConfigurationOutput, error)
+	DeleteRemediationExceptionsWithContext(ctx context.Context, input *configservice.DeleteRemediationExceptionsInput, opts ...request.Option) (*configservice.DeleteRemediationExceptionsOutput, error)
 	DeleteRetentionConfigurationWithContext(ctx context.Context, input *configservice.DeleteRetentionConfigurationInput, opts ...request.Option) (*configservice.DeleteRetentionConfigurationOutput, error)
 	DeliverConfigSnapshotWithContext(ctx context.Context, input *configservice.DeliverConfigSnapshotInput, opts ...request.Option) (*configservice.DeliverConfigSnapshotOutput, error)
 	DescribeAggregateComplianceByConfigRulesWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConfigRulesInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConfigRulesOutput, error)
@@ -40,6 +41,7 @@ type ConfigService interface {
 	DescribeOrganizationConfigRulesWithContext(ctx context.Context, input *configservice.DescribeOrganizationConfigRulesInput, opts ...request.Option) (*configservice.DescribeOrganizationConfigRulesOutput, error)
 	DescribePendingAggregationRequestsWithContext(ctx context.Context, input *configservice.DescribePendingAggregationRequestsInput, opts ...request.Option) (*configservice.DescribePendingAggregationRequestsOutput, error)
 	DescribeRemediationConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRemediationConfigurationsInput, opts ...request.Option) (*configservice.DescribeRemediationConfigurationsOutput, error)
+	DescribeRemediationExceptionsWithContext(ctx context.Context, input *configservice.DescribeRemediationExceptionsInput, opts ...request.Option) (*configservice.DescribeRemediationExceptionsOutput, error)
 	DescribeRemediationExecutionStatusWithContext(ctx context.Context, input *configservice.DescribeRemediationExecutionStatusInput, opts ...request.Option) (*configservice.DescribeRemediationExecutionStatusOutput, error)
 	DescribeRetentionConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRetentionConfigurationsInput, opts ...request.Option) (*configservice.DescribeRetentionConfigurationsOutput, error)
 	GetAggregateComplianceDetailsByConfigRuleWithContext(ctx context.Context, input *configservice.GetAggregateComplianceDetailsByConfigRuleInput, opts ...request.Option) (*configservice.GetAggregateComplianceDetailsByConfigRuleOutput, error)
@@ -64,6 +66,7 @@ type ConfigService interface {
 	PutEvaluationsWithContext(ctx context.Context, input *configservice.PutEvaluationsInput, opts ...request.Option) (*configservice.PutEvaluationsOutput, error)
 	PutOrganizationConfigRuleWithContext(ctx context.Context, input *configservice.PutOrganizationConfigRuleInput, opts ...request.Option) (*configservice.PutOrganizationConfigRuleOutput, error)
 	PutRemediationConfigurationsWithContext(ctx context.Context, input *configservice.PutRemediationConfigurationsInput, opts ...request.Option) (*configservice.PutRemediationConfigurationsOutput, error)
+	PutRemediationExceptionsWithContext(ctx context.Context, input *configservice.PutRemediationExceptionsInput, opts ...request.Option) (*configservice.PutRemediationExceptionsOutput, error)
 	PutRetentionConfigurationWithContext(ctx context.Context, input *configservice.PutRetentionConfigurationInput, opts ...request.Option) (*configservice.PutRetentionConfigurationOutput, error)
 	SelectResourceConfigWithContext(ctx context.Context, input *configservice.SelectResourceConfigInput, opts ...request.Option) (*configservice.SelectResourceConfigOutput, error)
 	StartConfigRulesEvaluationWithContext(ctx context.Context, input *configservice.StartConfigRulesEvaluationInput, opts ...request.Option) (*configservice.StartConfigRulesEvaluationOutput, error)
@@ -92,7 +95,7 @@ var _ ConfigService = (*Client)(nil)
 func (c *Client) BatchGetAggregateResourceConfigWithContext(ctx context.Context, input *configservice.BatchGetAggregateResourceConfigInput, opts ...request.Option) (*configservice.BatchGetAggregateResourceConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "BatchGetAggregateResourceConfigWithContext",
+		Action:  "BatchGetAggregateResourceConfig",
 		Input:   input,
 		Output:  (*configservice.BatchGetAggregateResourceConfigOutput)(nil),
 		Error:   nil,
@@ -113,7 +116,7 @@ func (c *Client) BatchGetAggregateResourceConfigWithContext(ctx context.Context,
 func (c *Client) BatchGetResourceConfigWithContext(ctx context.Context, input *configservice.BatchGetResourceConfigInput, opts ...request.Option) (*configservice.BatchGetResourceConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "BatchGetResourceConfigWithContext",
+		Action:  "BatchGetResourceConfig",
 		Input:   input,
 		Output:  (*configservice.BatchGetResourceConfigOutput)(nil),
 		Error:   nil,
@@ -134,7 +137,7 @@ func (c *Client) BatchGetResourceConfigWithContext(ctx context.Context, input *c
 func (c *Client) DeleteAggregationAuthorizationWithContext(ctx context.Context, input *configservice.DeleteAggregationAuthorizationInput, opts ...request.Option) (*configservice.DeleteAggregationAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteAggregationAuthorizationWithContext",
+		Action:  "DeleteAggregationAuthorization",
 		Input:   input,
 		Output:  (*configservice.DeleteAggregationAuthorizationOutput)(nil),
 		Error:   nil,
@@ -155,7 +158,7 @@ func (c *Client) DeleteAggregationAuthorizationWithContext(ctx context.Context, 
 func (c *Client) DeleteConfigRuleWithContext(ctx context.Context, input *configservice.DeleteConfigRuleInput, opts ...request.Option) (*configservice.DeleteConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteConfigRuleWithContext",
+		Action:  "DeleteConfigRule",
 		Input:   input,
 		Output:  (*configservice.DeleteConfigRuleOutput)(nil),
 		Error:   nil,
@@ -176,7 +179,7 @@ func (c *Client) DeleteConfigRuleWithContext(ctx context.Context, input *configs
 func (c *Client) DeleteConfigurationAggregatorWithContext(ctx context.Context, input *configservice.DeleteConfigurationAggregatorInput, opts ...request.Option) (*configservice.DeleteConfigurationAggregatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteConfigurationAggregatorWithContext",
+		Action:  "DeleteConfigurationAggregator",
 		Input:   input,
 		Output:  (*configservice.DeleteConfigurationAggregatorOutput)(nil),
 		Error:   nil,
@@ -197,7 +200,7 @@ func (c *Client) DeleteConfigurationAggregatorWithContext(ctx context.Context, i
 func (c *Client) DeleteConfigurationRecorderWithContext(ctx context.Context, input *configservice.DeleteConfigurationRecorderInput, opts ...request.Option) (*configservice.DeleteConfigurationRecorderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteConfigurationRecorderWithContext",
+		Action:  "DeleteConfigurationRecorder",
 		Input:   input,
 		Output:  (*configservice.DeleteConfigurationRecorderOutput)(nil),
 		Error:   nil,
@@ -218,7 +221,7 @@ func (c *Client) DeleteConfigurationRecorderWithContext(ctx context.Context, inp
 func (c *Client) DeleteDeliveryChannelWithContext(ctx context.Context, input *configservice.DeleteDeliveryChannelInput, opts ...request.Option) (*configservice.DeleteDeliveryChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteDeliveryChannelWithContext",
+		Action:  "DeleteDeliveryChannel",
 		Input:   input,
 		Output:  (*configservice.DeleteDeliveryChannelOutput)(nil),
 		Error:   nil,
@@ -239,7 +242,7 @@ func (c *Client) DeleteDeliveryChannelWithContext(ctx context.Context, input *co
 func (c *Client) DeleteEvaluationResultsWithContext(ctx context.Context, input *configservice.DeleteEvaluationResultsInput, opts ...request.Option) (*configservice.DeleteEvaluationResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteEvaluationResultsWithContext",
+		Action:  "DeleteEvaluationResults",
 		Input:   input,
 		Output:  (*configservice.DeleteEvaluationResultsOutput)(nil),
 		Error:   nil,
@@ -260,7 +263,7 @@ func (c *Client) DeleteEvaluationResultsWithContext(ctx context.Context, input *
 func (c *Client) DeleteOrganizationConfigRuleWithContext(ctx context.Context, input *configservice.DeleteOrganizationConfigRuleInput, opts ...request.Option) (*configservice.DeleteOrganizationConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteOrganizationConfigRuleWithContext",
+		Action:  "DeleteOrganizationConfigRule",
 		Input:   input,
 		Output:  (*configservice.DeleteOrganizationConfigRuleOutput)(nil),
 		Error:   nil,
@@ -281,7 +284,7 @@ func (c *Client) DeleteOrganizationConfigRuleWithContext(ctx context.Context, in
 func (c *Client) DeletePendingAggregationRequestWithContext(ctx context.Context, input *configservice.DeletePendingAggregationRequestInput, opts ...request.Option) (*configservice.DeletePendingAggregationRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeletePendingAggregationRequestWithContext",
+		Action:  "DeletePendingAggregationRequest",
 		Input:   input,
 		Output:  (*configservice.DeletePendingAggregationRequestOutput)(nil),
 		Error:   nil,
@@ -302,7 +305,7 @@ func (c *Client) DeletePendingAggregationRequestWithContext(ctx context.Context,
 func (c *Client) DeleteRemediationConfigurationWithContext(ctx context.Context, input *configservice.DeleteRemediationConfigurationInput, opts ...request.Option) (*configservice.DeleteRemediationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteRemediationConfigurationWithContext",
+		Action:  "DeleteRemediationConfiguration",
 		Input:   input,
 		Output:  (*configservice.DeleteRemediationConfigurationOutput)(nil),
 		Error:   nil,
@@ -320,10 +323,31 @@ func (c *Client) DeleteRemediationConfigurationWithContext(ctx context.Context, 
 	return req.Output.(*configservice.DeleteRemediationConfigurationOutput), req.Error
 }
 
+func (c *Client) DeleteRemediationExceptionsWithContext(ctx context.Context, input *configservice.DeleteRemediationExceptionsInput, opts ...request.Option) (*configservice.DeleteRemediationExceptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DeleteRemediationExceptions",
+		Input:   input,
+		Output:  (*configservice.DeleteRemediationExceptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.DeleteRemediationExceptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.DeleteRemediationExceptionsOutput), req.Error
+}
+
 func (c *Client) DeleteRetentionConfigurationWithContext(ctx context.Context, input *configservice.DeleteRetentionConfigurationInput, opts ...request.Option) (*configservice.DeleteRetentionConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeleteRetentionConfigurationWithContext",
+		Action:  "DeleteRetentionConfiguration",
 		Input:   input,
 		Output:  (*configservice.DeleteRetentionConfigurationOutput)(nil),
 		Error:   nil,
@@ -344,7 +368,7 @@ func (c *Client) DeleteRetentionConfigurationWithContext(ctx context.Context, in
 func (c *Client) DeliverConfigSnapshotWithContext(ctx context.Context, input *configservice.DeliverConfigSnapshotInput, opts ...request.Option) (*configservice.DeliverConfigSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DeliverConfigSnapshotWithContext",
+		Action:  "DeliverConfigSnapshot",
 		Input:   input,
 		Output:  (*configservice.DeliverConfigSnapshotOutput)(nil),
 		Error:   nil,
@@ -365,7 +389,7 @@ func (c *Client) DeliverConfigSnapshotWithContext(ctx context.Context, input *co
 func (c *Client) DescribeAggregateComplianceByConfigRulesWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConfigRulesInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConfigRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeAggregateComplianceByConfigRulesWithContext",
+		Action:  "DescribeAggregateComplianceByConfigRules",
 		Input:   input,
 		Output:  (*configservice.DescribeAggregateComplianceByConfigRulesOutput)(nil),
 		Error:   nil,
@@ -386,7 +410,7 @@ func (c *Client) DescribeAggregateComplianceByConfigRulesWithContext(ctx context
 func (c *Client) DescribeAggregationAuthorizationsWithContext(ctx context.Context, input *configservice.DescribeAggregationAuthorizationsInput, opts ...request.Option) (*configservice.DescribeAggregationAuthorizationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeAggregationAuthorizationsWithContext",
+		Action:  "DescribeAggregationAuthorizations",
 		Input:   input,
 		Output:  (*configservice.DescribeAggregationAuthorizationsOutput)(nil),
 		Error:   nil,
@@ -407,7 +431,7 @@ func (c *Client) DescribeAggregationAuthorizationsWithContext(ctx context.Contex
 func (c *Client) DescribeComplianceByConfigRuleWithContext(ctx context.Context, input *configservice.DescribeComplianceByConfigRuleInput, opts ...request.Option) (*configservice.DescribeComplianceByConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeComplianceByConfigRuleWithContext",
+		Action:  "DescribeComplianceByConfigRule",
 		Input:   input,
 		Output:  (*configservice.DescribeComplianceByConfigRuleOutput)(nil),
 		Error:   nil,
@@ -428,7 +452,7 @@ func (c *Client) DescribeComplianceByConfigRuleWithContext(ctx context.Context, 
 func (c *Client) DescribeComplianceByResourceWithContext(ctx context.Context, input *configservice.DescribeComplianceByResourceInput, opts ...request.Option) (*configservice.DescribeComplianceByResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeComplianceByResourceWithContext",
+		Action:  "DescribeComplianceByResource",
 		Input:   input,
 		Output:  (*configservice.DescribeComplianceByResourceOutput)(nil),
 		Error:   nil,
@@ -449,7 +473,7 @@ func (c *Client) DescribeComplianceByResourceWithContext(ctx context.Context, in
 func (c *Client) DescribeConfigRuleEvaluationStatusWithContext(ctx context.Context, input *configservice.DescribeConfigRuleEvaluationStatusInput, opts ...request.Option) (*configservice.DescribeConfigRuleEvaluationStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeConfigRuleEvaluationStatusWithContext",
+		Action:  "DescribeConfigRuleEvaluationStatus",
 		Input:   input,
 		Output:  (*configservice.DescribeConfigRuleEvaluationStatusOutput)(nil),
 		Error:   nil,
@@ -470,7 +494,7 @@ func (c *Client) DescribeConfigRuleEvaluationStatusWithContext(ctx context.Conte
 func (c *Client) DescribeConfigRulesWithContext(ctx context.Context, input *configservice.DescribeConfigRulesInput, opts ...request.Option) (*configservice.DescribeConfigRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeConfigRulesWithContext",
+		Action:  "DescribeConfigRules",
 		Input:   input,
 		Output:  (*configservice.DescribeConfigRulesOutput)(nil),
 		Error:   nil,
@@ -491,7 +515,7 @@ func (c *Client) DescribeConfigRulesWithContext(ctx context.Context, input *conf
 func (c *Client) DescribeConfigurationAggregatorSourcesStatusWithContext(ctx context.Context, input *configservice.DescribeConfigurationAggregatorSourcesStatusInput, opts ...request.Option) (*configservice.DescribeConfigurationAggregatorSourcesStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeConfigurationAggregatorSourcesStatusWithContext",
+		Action:  "DescribeConfigurationAggregatorSourcesStatus",
 		Input:   input,
 		Output:  (*configservice.DescribeConfigurationAggregatorSourcesStatusOutput)(nil),
 		Error:   nil,
@@ -512,7 +536,7 @@ func (c *Client) DescribeConfigurationAggregatorSourcesStatusWithContext(ctx con
 func (c *Client) DescribeConfigurationAggregatorsWithContext(ctx context.Context, input *configservice.DescribeConfigurationAggregatorsInput, opts ...request.Option) (*configservice.DescribeConfigurationAggregatorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeConfigurationAggregatorsWithContext",
+		Action:  "DescribeConfigurationAggregators",
 		Input:   input,
 		Output:  (*configservice.DescribeConfigurationAggregatorsOutput)(nil),
 		Error:   nil,
@@ -533,7 +557,7 @@ func (c *Client) DescribeConfigurationAggregatorsWithContext(ctx context.Context
 func (c *Client) DescribeConfigurationRecorderStatusWithContext(ctx context.Context, input *configservice.DescribeConfigurationRecorderStatusInput, opts ...request.Option) (*configservice.DescribeConfigurationRecorderStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeConfigurationRecorderStatusWithContext",
+		Action:  "DescribeConfigurationRecorderStatus",
 		Input:   input,
 		Output:  (*configservice.DescribeConfigurationRecorderStatusOutput)(nil),
 		Error:   nil,
@@ -554,7 +578,7 @@ func (c *Client) DescribeConfigurationRecorderStatusWithContext(ctx context.Cont
 func (c *Client) DescribeConfigurationRecordersWithContext(ctx context.Context, input *configservice.DescribeConfigurationRecordersInput, opts ...request.Option) (*configservice.DescribeConfigurationRecordersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeConfigurationRecordersWithContext",
+		Action:  "DescribeConfigurationRecorders",
 		Input:   input,
 		Output:  (*configservice.DescribeConfigurationRecordersOutput)(nil),
 		Error:   nil,
@@ -575,7 +599,7 @@ func (c *Client) DescribeConfigurationRecordersWithContext(ctx context.Context, 
 func (c *Client) DescribeDeliveryChannelStatusWithContext(ctx context.Context, input *configservice.DescribeDeliveryChannelStatusInput, opts ...request.Option) (*configservice.DescribeDeliveryChannelStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeDeliveryChannelStatusWithContext",
+		Action:  "DescribeDeliveryChannelStatus",
 		Input:   input,
 		Output:  (*configservice.DescribeDeliveryChannelStatusOutput)(nil),
 		Error:   nil,
@@ -596,7 +620,7 @@ func (c *Client) DescribeDeliveryChannelStatusWithContext(ctx context.Context, i
 func (c *Client) DescribeDeliveryChannelsWithContext(ctx context.Context, input *configservice.DescribeDeliveryChannelsInput, opts ...request.Option) (*configservice.DescribeDeliveryChannelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeDeliveryChannelsWithContext",
+		Action:  "DescribeDeliveryChannels",
 		Input:   input,
 		Output:  (*configservice.DescribeDeliveryChannelsOutput)(nil),
 		Error:   nil,
@@ -617,7 +641,7 @@ func (c *Client) DescribeDeliveryChannelsWithContext(ctx context.Context, input 
 func (c *Client) DescribeOrganizationConfigRuleStatusesWithContext(ctx context.Context, input *configservice.DescribeOrganizationConfigRuleStatusesInput, opts ...request.Option) (*configservice.DescribeOrganizationConfigRuleStatusesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeOrganizationConfigRuleStatusesWithContext",
+		Action:  "DescribeOrganizationConfigRuleStatuses",
 		Input:   input,
 		Output:  (*configservice.DescribeOrganizationConfigRuleStatusesOutput)(nil),
 		Error:   nil,
@@ -638,7 +662,7 @@ func (c *Client) DescribeOrganizationConfigRuleStatusesWithContext(ctx context.C
 func (c *Client) DescribeOrganizationConfigRulesWithContext(ctx context.Context, input *configservice.DescribeOrganizationConfigRulesInput, opts ...request.Option) (*configservice.DescribeOrganizationConfigRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeOrganizationConfigRulesWithContext",
+		Action:  "DescribeOrganizationConfigRules",
 		Input:   input,
 		Output:  (*configservice.DescribeOrganizationConfigRulesOutput)(nil),
 		Error:   nil,
@@ -659,7 +683,7 @@ func (c *Client) DescribeOrganizationConfigRulesWithContext(ctx context.Context,
 func (c *Client) DescribePendingAggregationRequestsWithContext(ctx context.Context, input *configservice.DescribePendingAggregationRequestsInput, opts ...request.Option) (*configservice.DescribePendingAggregationRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribePendingAggregationRequestsWithContext",
+		Action:  "DescribePendingAggregationRequests",
 		Input:   input,
 		Output:  (*configservice.DescribePendingAggregationRequestsOutput)(nil),
 		Error:   nil,
@@ -680,7 +704,7 @@ func (c *Client) DescribePendingAggregationRequestsWithContext(ctx context.Conte
 func (c *Client) DescribeRemediationConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRemediationConfigurationsInput, opts ...request.Option) (*configservice.DescribeRemediationConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeRemediationConfigurationsWithContext",
+		Action:  "DescribeRemediationConfigurations",
 		Input:   input,
 		Output:  (*configservice.DescribeRemediationConfigurationsOutput)(nil),
 		Error:   nil,
@@ -698,10 +722,31 @@ func (c *Client) DescribeRemediationConfigurationsWithContext(ctx context.Contex
 	return req.Output.(*configservice.DescribeRemediationConfigurationsOutput), req.Error
 }
 
+func (c *Client) DescribeRemediationExceptionsWithContext(ctx context.Context, input *configservice.DescribeRemediationExceptionsInput, opts ...request.Option) (*configservice.DescribeRemediationExceptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DescribeRemediationExceptions",
+		Input:   input,
+		Output:  (*configservice.DescribeRemediationExceptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.DescribeRemediationExceptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.DescribeRemediationExceptionsOutput), req.Error
+}
+
 func (c *Client) DescribeRemediationExecutionStatusWithContext(ctx context.Context, input *configservice.DescribeRemediationExecutionStatusInput, opts ...request.Option) (*configservice.DescribeRemediationExecutionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeRemediationExecutionStatusWithContext",
+		Action:  "DescribeRemediationExecutionStatus",
 		Input:   input,
 		Output:  (*configservice.DescribeRemediationExecutionStatusOutput)(nil),
 		Error:   nil,
@@ -722,7 +767,7 @@ func (c *Client) DescribeRemediationExecutionStatusWithContext(ctx context.Conte
 func (c *Client) DescribeRetentionConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRetentionConfigurationsInput, opts ...request.Option) (*configservice.DescribeRetentionConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "DescribeRetentionConfigurationsWithContext",
+		Action:  "DescribeRetentionConfigurations",
 		Input:   input,
 		Output:  (*configservice.DescribeRetentionConfigurationsOutput)(nil),
 		Error:   nil,
@@ -743,7 +788,7 @@ func (c *Client) DescribeRetentionConfigurationsWithContext(ctx context.Context,
 func (c *Client) GetAggregateComplianceDetailsByConfigRuleWithContext(ctx context.Context, input *configservice.GetAggregateComplianceDetailsByConfigRuleInput, opts ...request.Option) (*configservice.GetAggregateComplianceDetailsByConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetAggregateComplianceDetailsByConfigRuleWithContext",
+		Action:  "GetAggregateComplianceDetailsByConfigRule",
 		Input:   input,
 		Output:  (*configservice.GetAggregateComplianceDetailsByConfigRuleOutput)(nil),
 		Error:   nil,
@@ -764,7 +809,7 @@ func (c *Client) GetAggregateComplianceDetailsByConfigRuleWithContext(ctx contex
 func (c *Client) GetAggregateConfigRuleComplianceSummaryWithContext(ctx context.Context, input *configservice.GetAggregateConfigRuleComplianceSummaryInput, opts ...request.Option) (*configservice.GetAggregateConfigRuleComplianceSummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetAggregateConfigRuleComplianceSummaryWithContext",
+		Action:  "GetAggregateConfigRuleComplianceSummary",
 		Input:   input,
 		Output:  (*configservice.GetAggregateConfigRuleComplianceSummaryOutput)(nil),
 		Error:   nil,
@@ -785,7 +830,7 @@ func (c *Client) GetAggregateConfigRuleComplianceSummaryWithContext(ctx context.
 func (c *Client) GetAggregateDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetAggregateDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetAggregateDiscoveredResourceCountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetAggregateDiscoveredResourceCountsWithContext",
+		Action:  "GetAggregateDiscoveredResourceCounts",
 		Input:   input,
 		Output:  (*configservice.GetAggregateDiscoveredResourceCountsOutput)(nil),
 		Error:   nil,
@@ -806,7 +851,7 @@ func (c *Client) GetAggregateDiscoveredResourceCountsWithContext(ctx context.Con
 func (c *Client) GetAggregateResourceConfigWithContext(ctx context.Context, input *configservice.GetAggregateResourceConfigInput, opts ...request.Option) (*configservice.GetAggregateResourceConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetAggregateResourceConfigWithContext",
+		Action:  "GetAggregateResourceConfig",
 		Input:   input,
 		Output:  (*configservice.GetAggregateResourceConfigOutput)(nil),
 		Error:   nil,
@@ -827,7 +872,7 @@ func (c *Client) GetAggregateResourceConfigWithContext(ctx context.Context, inpu
 func (c *Client) GetComplianceDetailsByConfigRuleWithContext(ctx context.Context, input *configservice.GetComplianceDetailsByConfigRuleInput, opts ...request.Option) (*configservice.GetComplianceDetailsByConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetComplianceDetailsByConfigRuleWithContext",
+		Action:  "GetComplianceDetailsByConfigRule",
 		Input:   input,
 		Output:  (*configservice.GetComplianceDetailsByConfigRuleOutput)(nil),
 		Error:   nil,
@@ -848,7 +893,7 @@ func (c *Client) GetComplianceDetailsByConfigRuleWithContext(ctx context.Context
 func (c *Client) GetComplianceDetailsByResourceWithContext(ctx context.Context, input *configservice.GetComplianceDetailsByResourceInput, opts ...request.Option) (*configservice.GetComplianceDetailsByResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetComplianceDetailsByResourceWithContext",
+		Action:  "GetComplianceDetailsByResource",
 		Input:   input,
 		Output:  (*configservice.GetComplianceDetailsByResourceOutput)(nil),
 		Error:   nil,
@@ -869,7 +914,7 @@ func (c *Client) GetComplianceDetailsByResourceWithContext(ctx context.Context, 
 func (c *Client) GetComplianceSummaryByConfigRuleWithContext(ctx context.Context, input *configservice.GetComplianceSummaryByConfigRuleInput, opts ...request.Option) (*configservice.GetComplianceSummaryByConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetComplianceSummaryByConfigRuleWithContext",
+		Action:  "GetComplianceSummaryByConfigRule",
 		Input:   input,
 		Output:  (*configservice.GetComplianceSummaryByConfigRuleOutput)(nil),
 		Error:   nil,
@@ -890,7 +935,7 @@ func (c *Client) GetComplianceSummaryByConfigRuleWithContext(ctx context.Context
 func (c *Client) GetComplianceSummaryByResourceTypeWithContext(ctx context.Context, input *configservice.GetComplianceSummaryByResourceTypeInput, opts ...request.Option) (*configservice.GetComplianceSummaryByResourceTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetComplianceSummaryByResourceTypeWithContext",
+		Action:  "GetComplianceSummaryByResourceType",
 		Input:   input,
 		Output:  (*configservice.GetComplianceSummaryByResourceTypeOutput)(nil),
 		Error:   nil,
@@ -911,7 +956,7 @@ func (c *Client) GetComplianceSummaryByResourceTypeWithContext(ctx context.Conte
 func (c *Client) GetDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetDiscoveredResourceCountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetDiscoveredResourceCountsWithContext",
+		Action:  "GetDiscoveredResourceCounts",
 		Input:   input,
 		Output:  (*configservice.GetDiscoveredResourceCountsOutput)(nil),
 		Error:   nil,
@@ -932,7 +977,7 @@ func (c *Client) GetDiscoveredResourceCountsWithContext(ctx context.Context, inp
 func (c *Client) GetOrganizationConfigRuleDetailedStatusWithContext(ctx context.Context, input *configservice.GetOrganizationConfigRuleDetailedStatusInput, opts ...request.Option) (*configservice.GetOrganizationConfigRuleDetailedStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetOrganizationConfigRuleDetailedStatusWithContext",
+		Action:  "GetOrganizationConfigRuleDetailedStatus",
 		Input:   input,
 		Output:  (*configservice.GetOrganizationConfigRuleDetailedStatusOutput)(nil),
 		Error:   nil,
@@ -953,7 +998,7 @@ func (c *Client) GetOrganizationConfigRuleDetailedStatusWithContext(ctx context.
 func (c *Client) GetResourceConfigHistoryWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, opts ...request.Option) (*configservice.GetResourceConfigHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "GetResourceConfigHistoryWithContext",
+		Action:  "GetResourceConfigHistory",
 		Input:   input,
 		Output:  (*configservice.GetResourceConfigHistoryOutput)(nil),
 		Error:   nil,
@@ -974,7 +1019,7 @@ func (c *Client) GetResourceConfigHistoryWithContext(ctx context.Context, input 
 func (c *Client) ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "ListAggregateDiscoveredResourcesWithContext",
+		Action:  "ListAggregateDiscoveredResources",
 		Input:   input,
 		Output:  (*configservice.ListAggregateDiscoveredResourcesOutput)(nil),
 		Error:   nil,
@@ -995,7 +1040,7 @@ func (c *Client) ListAggregateDiscoveredResourcesWithContext(ctx context.Context
 func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListDiscoveredResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "ListDiscoveredResourcesWithContext",
+		Action:  "ListDiscoveredResources",
 		Input:   input,
 		Output:  (*configservice.ListDiscoveredResourcesOutput)(nil),
 		Error:   nil,
@@ -1016,7 +1061,7 @@ func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *configservice.ListTagsForResourceInput, opts ...request.Option) (*configservice.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*configservice.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1037,7 +1082,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *conf
 func (c *Client) PutAggregationAuthorizationWithContext(ctx context.Context, input *configservice.PutAggregationAuthorizationInput, opts ...request.Option) (*configservice.PutAggregationAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutAggregationAuthorizationWithContext",
+		Action:  "PutAggregationAuthorization",
 		Input:   input,
 		Output:  (*configservice.PutAggregationAuthorizationOutput)(nil),
 		Error:   nil,
@@ -1058,7 +1103,7 @@ func (c *Client) PutAggregationAuthorizationWithContext(ctx context.Context, inp
 func (c *Client) PutConfigRuleWithContext(ctx context.Context, input *configservice.PutConfigRuleInput, opts ...request.Option) (*configservice.PutConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutConfigRuleWithContext",
+		Action:  "PutConfigRule",
 		Input:   input,
 		Output:  (*configservice.PutConfigRuleOutput)(nil),
 		Error:   nil,
@@ -1079,7 +1124,7 @@ func (c *Client) PutConfigRuleWithContext(ctx context.Context, input *configserv
 func (c *Client) PutConfigurationAggregatorWithContext(ctx context.Context, input *configservice.PutConfigurationAggregatorInput, opts ...request.Option) (*configservice.PutConfigurationAggregatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutConfigurationAggregatorWithContext",
+		Action:  "PutConfigurationAggregator",
 		Input:   input,
 		Output:  (*configservice.PutConfigurationAggregatorOutput)(nil),
 		Error:   nil,
@@ -1100,7 +1145,7 @@ func (c *Client) PutConfigurationAggregatorWithContext(ctx context.Context, inpu
 func (c *Client) PutConfigurationRecorderWithContext(ctx context.Context, input *configservice.PutConfigurationRecorderInput, opts ...request.Option) (*configservice.PutConfigurationRecorderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutConfigurationRecorderWithContext",
+		Action:  "PutConfigurationRecorder",
 		Input:   input,
 		Output:  (*configservice.PutConfigurationRecorderOutput)(nil),
 		Error:   nil,
@@ -1121,7 +1166,7 @@ func (c *Client) PutConfigurationRecorderWithContext(ctx context.Context, input 
 func (c *Client) PutDeliveryChannelWithContext(ctx context.Context, input *configservice.PutDeliveryChannelInput, opts ...request.Option) (*configservice.PutDeliveryChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutDeliveryChannelWithContext",
+		Action:  "PutDeliveryChannel",
 		Input:   input,
 		Output:  (*configservice.PutDeliveryChannelOutput)(nil),
 		Error:   nil,
@@ -1142,7 +1187,7 @@ func (c *Client) PutDeliveryChannelWithContext(ctx context.Context, input *confi
 func (c *Client) PutEvaluationsWithContext(ctx context.Context, input *configservice.PutEvaluationsInput, opts ...request.Option) (*configservice.PutEvaluationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutEvaluationsWithContext",
+		Action:  "PutEvaluations",
 		Input:   input,
 		Output:  (*configservice.PutEvaluationsOutput)(nil),
 		Error:   nil,
@@ -1163,7 +1208,7 @@ func (c *Client) PutEvaluationsWithContext(ctx context.Context, input *configser
 func (c *Client) PutOrganizationConfigRuleWithContext(ctx context.Context, input *configservice.PutOrganizationConfigRuleInput, opts ...request.Option) (*configservice.PutOrganizationConfigRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutOrganizationConfigRuleWithContext",
+		Action:  "PutOrganizationConfigRule",
 		Input:   input,
 		Output:  (*configservice.PutOrganizationConfigRuleOutput)(nil),
 		Error:   nil,
@@ -1184,7 +1229,7 @@ func (c *Client) PutOrganizationConfigRuleWithContext(ctx context.Context, input
 func (c *Client) PutRemediationConfigurationsWithContext(ctx context.Context, input *configservice.PutRemediationConfigurationsInput, opts ...request.Option) (*configservice.PutRemediationConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutRemediationConfigurationsWithContext",
+		Action:  "PutRemediationConfigurations",
 		Input:   input,
 		Output:  (*configservice.PutRemediationConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1202,10 +1247,31 @@ func (c *Client) PutRemediationConfigurationsWithContext(ctx context.Context, in
 	return req.Output.(*configservice.PutRemediationConfigurationsOutput), req.Error
 }
 
+func (c *Client) PutRemediationExceptionsWithContext(ctx context.Context, input *configservice.PutRemediationExceptionsInput, opts ...request.Option) (*configservice.PutRemediationExceptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "PutRemediationExceptions",
+		Input:   input,
+		Output:  (*configservice.PutRemediationExceptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.PutRemediationExceptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.PutRemediationExceptionsOutput), req.Error
+}
+
 func (c *Client) PutRetentionConfigurationWithContext(ctx context.Context, input *configservice.PutRetentionConfigurationInput, opts ...request.Option) (*configservice.PutRetentionConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "PutRetentionConfigurationWithContext",
+		Action:  "PutRetentionConfiguration",
 		Input:   input,
 		Output:  (*configservice.PutRetentionConfigurationOutput)(nil),
 		Error:   nil,
@@ -1226,7 +1292,7 @@ func (c *Client) PutRetentionConfigurationWithContext(ctx context.Context, input
 func (c *Client) SelectResourceConfigWithContext(ctx context.Context, input *configservice.SelectResourceConfigInput, opts ...request.Option) (*configservice.SelectResourceConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "SelectResourceConfigWithContext",
+		Action:  "SelectResourceConfig",
 		Input:   input,
 		Output:  (*configservice.SelectResourceConfigOutput)(nil),
 		Error:   nil,
@@ -1247,7 +1313,7 @@ func (c *Client) SelectResourceConfigWithContext(ctx context.Context, input *con
 func (c *Client) StartConfigRulesEvaluationWithContext(ctx context.Context, input *configservice.StartConfigRulesEvaluationInput, opts ...request.Option) (*configservice.StartConfigRulesEvaluationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "StartConfigRulesEvaluationWithContext",
+		Action:  "StartConfigRulesEvaluation",
 		Input:   input,
 		Output:  (*configservice.StartConfigRulesEvaluationOutput)(nil),
 		Error:   nil,
@@ -1268,7 +1334,7 @@ func (c *Client) StartConfigRulesEvaluationWithContext(ctx context.Context, inpu
 func (c *Client) StartConfigurationRecorderWithContext(ctx context.Context, input *configservice.StartConfigurationRecorderInput, opts ...request.Option) (*configservice.StartConfigurationRecorderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "StartConfigurationRecorderWithContext",
+		Action:  "StartConfigurationRecorder",
 		Input:   input,
 		Output:  (*configservice.StartConfigurationRecorderOutput)(nil),
 		Error:   nil,
@@ -1289,7 +1355,7 @@ func (c *Client) StartConfigurationRecorderWithContext(ctx context.Context, inpu
 func (c *Client) StartRemediationExecutionWithContext(ctx context.Context, input *configservice.StartRemediationExecutionInput, opts ...request.Option) (*configservice.StartRemediationExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "StartRemediationExecutionWithContext",
+		Action:  "StartRemediationExecution",
 		Input:   input,
 		Output:  (*configservice.StartRemediationExecutionOutput)(nil),
 		Error:   nil,
@@ -1310,7 +1376,7 @@ func (c *Client) StartRemediationExecutionWithContext(ctx context.Context, input
 func (c *Client) StopConfigurationRecorderWithContext(ctx context.Context, input *configservice.StopConfigurationRecorderInput, opts ...request.Option) (*configservice.StopConfigurationRecorderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "StopConfigurationRecorderWithContext",
+		Action:  "StopConfigurationRecorder",
 		Input:   input,
 		Output:  (*configservice.StopConfigurationRecorderOutput)(nil),
 		Error:   nil,
@@ -1331,7 +1397,7 @@ func (c *Client) StopConfigurationRecorderWithContext(ctx context.Context, input
 func (c *Client) TagResourceWithContext(ctx context.Context, input *configservice.TagResourceInput, opts ...request.Option) (*configservice.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*configservice.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1352,7 +1418,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *configservic
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *configservice.UntagResourceInput, opts ...request.Option) (*configservice.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*configservice.UntagResourceOutput)(nil),
 		Error:   nil,

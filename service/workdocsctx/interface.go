@@ -72,7 +72,7 @@ var _ WorkDocs = (*Client)(nil)
 func (c *Client) AbortDocumentVersionUploadWithContext(ctx context.Context, input *workdocs.AbortDocumentVersionUploadInput, opts ...request.Option) (*workdocs.AbortDocumentVersionUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "AbortDocumentVersionUploadWithContext",
+		Action:  "AbortDocumentVersionUpload",
 		Input:   input,
 		Output:  (*workdocs.AbortDocumentVersionUploadOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) AbortDocumentVersionUploadWithContext(ctx context.Context, inpu
 func (c *Client) ActivateUserWithContext(ctx context.Context, input *workdocs.ActivateUserInput, opts ...request.Option) (*workdocs.ActivateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "ActivateUserWithContext",
+		Action:  "ActivateUser",
 		Input:   input,
 		Output:  (*workdocs.ActivateUserOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) ActivateUserWithContext(ctx context.Context, input *workdocs.Ac
 func (c *Client) AddResourcePermissionsWithContext(ctx context.Context, input *workdocs.AddResourcePermissionsInput, opts ...request.Option) (*workdocs.AddResourcePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "AddResourcePermissionsWithContext",
+		Action:  "AddResourcePermissions",
 		Input:   input,
 		Output:  (*workdocs.AddResourcePermissionsOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) AddResourcePermissionsWithContext(ctx context.Context, input *w
 func (c *Client) CreateCommentWithContext(ctx context.Context, input *workdocs.CreateCommentInput, opts ...request.Option) (*workdocs.CreateCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "CreateCommentWithContext",
+		Action:  "CreateComment",
 		Input:   input,
 		Output:  (*workdocs.CreateCommentOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) CreateCommentWithContext(ctx context.Context, input *workdocs.C
 func (c *Client) CreateCustomMetadataWithContext(ctx context.Context, input *workdocs.CreateCustomMetadataInput, opts ...request.Option) (*workdocs.CreateCustomMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "CreateCustomMetadataWithContext",
+		Action:  "CreateCustomMetadata",
 		Input:   input,
 		Output:  (*workdocs.CreateCustomMetadataOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) CreateCustomMetadataWithContext(ctx context.Context, input *wor
 func (c *Client) CreateFolderWithContext(ctx context.Context, input *workdocs.CreateFolderInput, opts ...request.Option) (*workdocs.CreateFolderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "CreateFolderWithContext",
+		Action:  "CreateFolder",
 		Input:   input,
 		Output:  (*workdocs.CreateFolderOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) CreateFolderWithContext(ctx context.Context, input *workdocs.Cr
 func (c *Client) CreateLabelsWithContext(ctx context.Context, input *workdocs.CreateLabelsInput, opts ...request.Option) (*workdocs.CreateLabelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "CreateLabelsWithContext",
+		Action:  "CreateLabels",
 		Input:   input,
 		Output:  (*workdocs.CreateLabelsOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) CreateLabelsWithContext(ctx context.Context, input *workdocs.Cr
 func (c *Client) CreateNotificationSubscriptionWithContext(ctx context.Context, input *workdocs.CreateNotificationSubscriptionInput, opts ...request.Option) (*workdocs.CreateNotificationSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "CreateNotificationSubscriptionWithContext",
+		Action:  "CreateNotificationSubscription",
 		Input:   input,
 		Output:  (*workdocs.CreateNotificationSubscriptionOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) CreateNotificationSubscriptionWithContext(ctx context.Context, 
 func (c *Client) CreateUserWithContext(ctx context.Context, input *workdocs.CreateUserInput, opts ...request.Option) (*workdocs.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "CreateUserWithContext",
+		Action:  "CreateUser",
 		Input:   input,
 		Output:  (*workdocs.CreateUserOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *workdocs.Crea
 func (c *Client) DeactivateUserWithContext(ctx context.Context, input *workdocs.DeactivateUserInput, opts ...request.Option) (*workdocs.DeactivateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeactivateUserWithContext",
+		Action:  "DeactivateUser",
 		Input:   input,
 		Output:  (*workdocs.DeactivateUserOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) DeactivateUserWithContext(ctx context.Context, input *workdocs.
 func (c *Client) DeleteCommentWithContext(ctx context.Context, input *workdocs.DeleteCommentInput, opts ...request.Option) (*workdocs.DeleteCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteCommentWithContext",
+		Action:  "DeleteComment",
 		Input:   input,
 		Output:  (*workdocs.DeleteCommentOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) DeleteCommentWithContext(ctx context.Context, input *workdocs.D
 func (c *Client) DeleteCustomMetadataWithContext(ctx context.Context, input *workdocs.DeleteCustomMetadataInput, opts ...request.Option) (*workdocs.DeleteCustomMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteCustomMetadataWithContext",
+		Action:  "DeleteCustomMetadata",
 		Input:   input,
 		Output:  (*workdocs.DeleteCustomMetadataOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) DeleteCustomMetadataWithContext(ctx context.Context, input *wor
 func (c *Client) DeleteDocumentWithContext(ctx context.Context, input *workdocs.DeleteDocumentInput, opts ...request.Option) (*workdocs.DeleteDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteDocumentWithContext",
+		Action:  "DeleteDocument",
 		Input:   input,
 		Output:  (*workdocs.DeleteDocumentOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) DeleteDocumentWithContext(ctx context.Context, input *workdocs.
 func (c *Client) DeleteFolderWithContext(ctx context.Context, input *workdocs.DeleteFolderInput, opts ...request.Option) (*workdocs.DeleteFolderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteFolderWithContext",
+		Action:  "DeleteFolder",
 		Input:   input,
 		Output:  (*workdocs.DeleteFolderOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) DeleteFolderWithContext(ctx context.Context, input *workdocs.De
 func (c *Client) DeleteFolderContentsWithContext(ctx context.Context, input *workdocs.DeleteFolderContentsInput, opts ...request.Option) (*workdocs.DeleteFolderContentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteFolderContentsWithContext",
+		Action:  "DeleteFolderContents",
 		Input:   input,
 		Output:  (*workdocs.DeleteFolderContentsOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) DeleteFolderContentsWithContext(ctx context.Context, input *wor
 func (c *Client) DeleteLabelsWithContext(ctx context.Context, input *workdocs.DeleteLabelsInput, opts ...request.Option) (*workdocs.DeleteLabelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteLabelsWithContext",
+		Action:  "DeleteLabels",
 		Input:   input,
 		Output:  (*workdocs.DeleteLabelsOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) DeleteLabelsWithContext(ctx context.Context, input *workdocs.De
 func (c *Client) DeleteNotificationSubscriptionWithContext(ctx context.Context, input *workdocs.DeleteNotificationSubscriptionInput, opts ...request.Option) (*workdocs.DeleteNotificationSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteNotificationSubscriptionWithContext",
+		Action:  "DeleteNotificationSubscription",
 		Input:   input,
 		Output:  (*workdocs.DeleteNotificationSubscriptionOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) DeleteNotificationSubscriptionWithContext(ctx context.Context, 
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *workdocs.DeleteUserInput, opts ...request.Option) (*workdocs.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*workdocs.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *workdocs.Dele
 func (c *Client) DescribeActivitiesWithContext(ctx context.Context, input *workdocs.DescribeActivitiesInput, opts ...request.Option) (*workdocs.DescribeActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeActivitiesWithContext",
+		Action:  "DescribeActivities",
 		Input:   input,
 		Output:  (*workdocs.DescribeActivitiesOutput)(nil),
 		Error:   nil,
@@ -471,7 +471,7 @@ func (c *Client) DescribeActivitiesWithContext(ctx context.Context, input *workd
 func (c *Client) DescribeCommentsWithContext(ctx context.Context, input *workdocs.DescribeCommentsInput, opts ...request.Option) (*workdocs.DescribeCommentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeCommentsWithContext",
+		Action:  "DescribeComments",
 		Input:   input,
 		Output:  (*workdocs.DescribeCommentsOutput)(nil),
 		Error:   nil,
@@ -492,7 +492,7 @@ func (c *Client) DescribeCommentsWithContext(ctx context.Context, input *workdoc
 func (c *Client) DescribeDocumentVersionsWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, opts ...request.Option) (*workdocs.DescribeDocumentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeDocumentVersionsWithContext",
+		Action:  "DescribeDocumentVersions",
 		Input:   input,
 		Output:  (*workdocs.DescribeDocumentVersionsOutput)(nil),
 		Error:   nil,
@@ -513,7 +513,7 @@ func (c *Client) DescribeDocumentVersionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeFolderContentsWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, opts ...request.Option) (*workdocs.DescribeFolderContentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeFolderContentsWithContext",
+		Action:  "DescribeFolderContents",
 		Input:   input,
 		Output:  (*workdocs.DescribeFolderContentsOutput)(nil),
 		Error:   nil,
@@ -534,7 +534,7 @@ func (c *Client) DescribeFolderContentsWithContext(ctx context.Context, input *w
 func (c *Client) DescribeGroupsWithContext(ctx context.Context, input *workdocs.DescribeGroupsInput, opts ...request.Option) (*workdocs.DescribeGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeGroupsWithContext",
+		Action:  "DescribeGroups",
 		Input:   input,
 		Output:  (*workdocs.DescribeGroupsOutput)(nil),
 		Error:   nil,
@@ -555,7 +555,7 @@ func (c *Client) DescribeGroupsWithContext(ctx context.Context, input *workdocs.
 func (c *Client) DescribeNotificationSubscriptionsWithContext(ctx context.Context, input *workdocs.DescribeNotificationSubscriptionsInput, opts ...request.Option) (*workdocs.DescribeNotificationSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeNotificationSubscriptionsWithContext",
+		Action:  "DescribeNotificationSubscriptions",
 		Input:   input,
 		Output:  (*workdocs.DescribeNotificationSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -576,7 +576,7 @@ func (c *Client) DescribeNotificationSubscriptionsWithContext(ctx context.Contex
 func (c *Client) DescribeResourcePermissionsWithContext(ctx context.Context, input *workdocs.DescribeResourcePermissionsInput, opts ...request.Option) (*workdocs.DescribeResourcePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeResourcePermissionsWithContext",
+		Action:  "DescribeResourcePermissions",
 		Input:   input,
 		Output:  (*workdocs.DescribeResourcePermissionsOutput)(nil),
 		Error:   nil,
@@ -597,7 +597,7 @@ func (c *Client) DescribeResourcePermissionsWithContext(ctx context.Context, inp
 func (c *Client) DescribeRootFoldersWithContext(ctx context.Context, input *workdocs.DescribeRootFoldersInput, opts ...request.Option) (*workdocs.DescribeRootFoldersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeRootFoldersWithContext",
+		Action:  "DescribeRootFolders",
 		Input:   input,
 		Output:  (*workdocs.DescribeRootFoldersOutput)(nil),
 		Error:   nil,
@@ -618,7 +618,7 @@ func (c *Client) DescribeRootFoldersWithContext(ctx context.Context, input *work
 func (c *Client) DescribeUsersWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, opts ...request.Option) (*workdocs.DescribeUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "DescribeUsersWithContext",
+		Action:  "DescribeUsers",
 		Input:   input,
 		Output:  (*workdocs.DescribeUsersOutput)(nil),
 		Error:   nil,
@@ -639,7 +639,7 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, input *workdocs.D
 func (c *Client) GetCurrentUserWithContext(ctx context.Context, input *workdocs.GetCurrentUserInput, opts ...request.Option) (*workdocs.GetCurrentUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetCurrentUserWithContext",
+		Action:  "GetCurrentUser",
 		Input:   input,
 		Output:  (*workdocs.GetCurrentUserOutput)(nil),
 		Error:   nil,
@@ -660,7 +660,7 @@ func (c *Client) GetCurrentUserWithContext(ctx context.Context, input *workdocs.
 func (c *Client) GetDocumentWithContext(ctx context.Context, input *workdocs.GetDocumentInput, opts ...request.Option) (*workdocs.GetDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetDocumentWithContext",
+		Action:  "GetDocument",
 		Input:   input,
 		Output:  (*workdocs.GetDocumentOutput)(nil),
 		Error:   nil,
@@ -681,7 +681,7 @@ func (c *Client) GetDocumentWithContext(ctx context.Context, input *workdocs.Get
 func (c *Client) GetDocumentPathWithContext(ctx context.Context, input *workdocs.GetDocumentPathInput, opts ...request.Option) (*workdocs.GetDocumentPathOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetDocumentPathWithContext",
+		Action:  "GetDocumentPath",
 		Input:   input,
 		Output:  (*workdocs.GetDocumentPathOutput)(nil),
 		Error:   nil,
@@ -702,7 +702,7 @@ func (c *Client) GetDocumentPathWithContext(ctx context.Context, input *workdocs
 func (c *Client) GetDocumentVersionWithContext(ctx context.Context, input *workdocs.GetDocumentVersionInput, opts ...request.Option) (*workdocs.GetDocumentVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetDocumentVersionWithContext",
+		Action:  "GetDocumentVersion",
 		Input:   input,
 		Output:  (*workdocs.GetDocumentVersionOutput)(nil),
 		Error:   nil,
@@ -723,7 +723,7 @@ func (c *Client) GetDocumentVersionWithContext(ctx context.Context, input *workd
 func (c *Client) GetFolderWithContext(ctx context.Context, input *workdocs.GetFolderInput, opts ...request.Option) (*workdocs.GetFolderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetFolderWithContext",
+		Action:  "GetFolder",
 		Input:   input,
 		Output:  (*workdocs.GetFolderOutput)(nil),
 		Error:   nil,
@@ -744,7 +744,7 @@ func (c *Client) GetFolderWithContext(ctx context.Context, input *workdocs.GetFo
 func (c *Client) GetFolderPathWithContext(ctx context.Context, input *workdocs.GetFolderPathInput, opts ...request.Option) (*workdocs.GetFolderPathOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetFolderPathWithContext",
+		Action:  "GetFolderPath",
 		Input:   input,
 		Output:  (*workdocs.GetFolderPathOutput)(nil),
 		Error:   nil,
@@ -765,7 +765,7 @@ func (c *Client) GetFolderPathWithContext(ctx context.Context, input *workdocs.G
 func (c *Client) GetResourcesWithContext(ctx context.Context, input *workdocs.GetResourcesInput, opts ...request.Option) (*workdocs.GetResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "GetResourcesWithContext",
+		Action:  "GetResources",
 		Input:   input,
 		Output:  (*workdocs.GetResourcesOutput)(nil),
 		Error:   nil,
@@ -786,7 +786,7 @@ func (c *Client) GetResourcesWithContext(ctx context.Context, input *workdocs.Ge
 func (c *Client) InitiateDocumentVersionUploadWithContext(ctx context.Context, input *workdocs.InitiateDocumentVersionUploadInput, opts ...request.Option) (*workdocs.InitiateDocumentVersionUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "InitiateDocumentVersionUploadWithContext",
+		Action:  "InitiateDocumentVersionUpload",
 		Input:   input,
 		Output:  (*workdocs.InitiateDocumentVersionUploadOutput)(nil),
 		Error:   nil,
@@ -807,7 +807,7 @@ func (c *Client) InitiateDocumentVersionUploadWithContext(ctx context.Context, i
 func (c *Client) RemoveAllResourcePermissionsWithContext(ctx context.Context, input *workdocs.RemoveAllResourcePermissionsInput, opts ...request.Option) (*workdocs.RemoveAllResourcePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "RemoveAllResourcePermissionsWithContext",
+		Action:  "RemoveAllResourcePermissions",
 		Input:   input,
 		Output:  (*workdocs.RemoveAllResourcePermissionsOutput)(nil),
 		Error:   nil,
@@ -828,7 +828,7 @@ func (c *Client) RemoveAllResourcePermissionsWithContext(ctx context.Context, in
 func (c *Client) RemoveResourcePermissionWithContext(ctx context.Context, input *workdocs.RemoveResourcePermissionInput, opts ...request.Option) (*workdocs.RemoveResourcePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "RemoveResourcePermissionWithContext",
+		Action:  "RemoveResourcePermission",
 		Input:   input,
 		Output:  (*workdocs.RemoveResourcePermissionOutput)(nil),
 		Error:   nil,
@@ -849,7 +849,7 @@ func (c *Client) RemoveResourcePermissionWithContext(ctx context.Context, input 
 func (c *Client) UpdateDocumentWithContext(ctx context.Context, input *workdocs.UpdateDocumentInput, opts ...request.Option) (*workdocs.UpdateDocumentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "UpdateDocumentWithContext",
+		Action:  "UpdateDocument",
 		Input:   input,
 		Output:  (*workdocs.UpdateDocumentOutput)(nil),
 		Error:   nil,
@@ -870,7 +870,7 @@ func (c *Client) UpdateDocumentWithContext(ctx context.Context, input *workdocs.
 func (c *Client) UpdateDocumentVersionWithContext(ctx context.Context, input *workdocs.UpdateDocumentVersionInput, opts ...request.Option) (*workdocs.UpdateDocumentVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "UpdateDocumentVersionWithContext",
+		Action:  "UpdateDocumentVersion",
 		Input:   input,
 		Output:  (*workdocs.UpdateDocumentVersionOutput)(nil),
 		Error:   nil,
@@ -891,7 +891,7 @@ func (c *Client) UpdateDocumentVersionWithContext(ctx context.Context, input *wo
 func (c *Client) UpdateFolderWithContext(ctx context.Context, input *workdocs.UpdateFolderInput, opts ...request.Option) (*workdocs.UpdateFolderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "UpdateFolderWithContext",
+		Action:  "UpdateFolder",
 		Input:   input,
 		Output:  (*workdocs.UpdateFolderOutput)(nil),
 		Error:   nil,
@@ -912,7 +912,7 @@ func (c *Client) UpdateFolderWithContext(ctx context.Context, input *workdocs.Up
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *workdocs.UpdateUserInput, opts ...request.Option) (*workdocs.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
-		Action:  "UpdateUserWithContext",
+		Action:  "UpdateUser",
 		Input:   input,
 		Output:  (*workdocs.UpdateUserOutput)(nil),
 		Error:   nil,

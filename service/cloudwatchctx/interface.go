@@ -54,7 +54,7 @@ var _ CloudWatch = (*Client)(nil)
 func (c *Client) DeleteAlarmsWithContext(ctx context.Context, input *cloudwatch.DeleteAlarmsInput, opts ...request.Option) (*cloudwatch.DeleteAlarmsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DeleteAlarmsWithContext",
+		Action:  "DeleteAlarms",
 		Input:   input,
 		Output:  (*cloudwatch.DeleteAlarmsOutput)(nil),
 		Error:   nil,
@@ -75,7 +75,7 @@ func (c *Client) DeleteAlarmsWithContext(ctx context.Context, input *cloudwatch.
 func (c *Client) DeleteAnomalyDetectorWithContext(ctx context.Context, input *cloudwatch.DeleteAnomalyDetectorInput, opts ...request.Option) (*cloudwatch.DeleteAnomalyDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DeleteAnomalyDetectorWithContext",
+		Action:  "DeleteAnomalyDetector",
 		Input:   input,
 		Output:  (*cloudwatch.DeleteAnomalyDetectorOutput)(nil),
 		Error:   nil,
@@ -96,7 +96,7 @@ func (c *Client) DeleteAnomalyDetectorWithContext(ctx context.Context, input *cl
 func (c *Client) DeleteDashboardsWithContext(ctx context.Context, input *cloudwatch.DeleteDashboardsInput, opts ...request.Option) (*cloudwatch.DeleteDashboardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DeleteDashboardsWithContext",
+		Action:  "DeleteDashboards",
 		Input:   input,
 		Output:  (*cloudwatch.DeleteDashboardsOutput)(nil),
 		Error:   nil,
@@ -117,7 +117,7 @@ func (c *Client) DeleteDashboardsWithContext(ctx context.Context, input *cloudwa
 func (c *Client) DescribeAlarmHistoryWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, opts ...request.Option) (*cloudwatch.DescribeAlarmHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DescribeAlarmHistoryWithContext",
+		Action:  "DescribeAlarmHistory",
 		Input:   input,
 		Output:  (*cloudwatch.DescribeAlarmHistoryOutput)(nil),
 		Error:   nil,
@@ -138,7 +138,7 @@ func (c *Client) DescribeAlarmHistoryWithContext(ctx context.Context, input *clo
 func (c *Client) DescribeAlarmsWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsInput, opts ...request.Option) (*cloudwatch.DescribeAlarmsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DescribeAlarmsWithContext",
+		Action:  "DescribeAlarms",
 		Input:   input,
 		Output:  (*cloudwatch.DescribeAlarmsOutput)(nil),
 		Error:   nil,
@@ -159,7 +159,7 @@ func (c *Client) DescribeAlarmsWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) DescribeAlarmsForMetricWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsForMetricInput, opts ...request.Option) (*cloudwatch.DescribeAlarmsForMetricOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DescribeAlarmsForMetricWithContext",
+		Action:  "DescribeAlarmsForMetric",
 		Input:   input,
 		Output:  (*cloudwatch.DescribeAlarmsForMetricOutput)(nil),
 		Error:   nil,
@@ -180,7 +180,7 @@ func (c *Client) DescribeAlarmsForMetricWithContext(ctx context.Context, input *
 func (c *Client) DescribeAnomalyDetectorsWithContext(ctx context.Context, input *cloudwatch.DescribeAnomalyDetectorsInput, opts ...request.Option) (*cloudwatch.DescribeAnomalyDetectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DescribeAnomalyDetectorsWithContext",
+		Action:  "DescribeAnomalyDetectors",
 		Input:   input,
 		Output:  (*cloudwatch.DescribeAnomalyDetectorsOutput)(nil),
 		Error:   nil,
@@ -201,7 +201,7 @@ func (c *Client) DescribeAnomalyDetectorsWithContext(ctx context.Context, input 
 func (c *Client) DisableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.DisableAlarmActionsInput, opts ...request.Option) (*cloudwatch.DisableAlarmActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "DisableAlarmActionsWithContext",
+		Action:  "DisableAlarmActions",
 		Input:   input,
 		Output:  (*cloudwatch.DisableAlarmActionsOutput)(nil),
 		Error:   nil,
@@ -222,7 +222,7 @@ func (c *Client) DisableAlarmActionsWithContext(ctx context.Context, input *clou
 func (c *Client) EnableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.EnableAlarmActionsInput, opts ...request.Option) (*cloudwatch.EnableAlarmActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "EnableAlarmActionsWithContext",
+		Action:  "EnableAlarmActions",
 		Input:   input,
 		Output:  (*cloudwatch.EnableAlarmActionsOutput)(nil),
 		Error:   nil,
@@ -243,7 +243,7 @@ func (c *Client) EnableAlarmActionsWithContext(ctx context.Context, input *cloud
 func (c *Client) GetDashboardWithContext(ctx context.Context, input *cloudwatch.GetDashboardInput, opts ...request.Option) (*cloudwatch.GetDashboardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "GetDashboardWithContext",
+		Action:  "GetDashboard",
 		Input:   input,
 		Output:  (*cloudwatch.GetDashboardOutput)(nil),
 		Error:   nil,
@@ -264,7 +264,7 @@ func (c *Client) GetDashboardWithContext(ctx context.Context, input *cloudwatch.
 func (c *Client) GetMetricDataWithContext(ctx context.Context, input *cloudwatch.GetMetricDataInput, opts ...request.Option) (*cloudwatch.GetMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "GetMetricDataWithContext",
+		Action:  "GetMetricData",
 		Input:   input,
 		Output:  (*cloudwatch.GetMetricDataOutput)(nil),
 		Error:   nil,
@@ -285,7 +285,7 @@ func (c *Client) GetMetricDataWithContext(ctx context.Context, input *cloudwatch
 func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, input *cloudwatch.GetMetricStatisticsInput, opts ...request.Option) (*cloudwatch.GetMetricStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "GetMetricStatisticsWithContext",
+		Action:  "GetMetricStatistics",
 		Input:   input,
 		Output:  (*cloudwatch.GetMetricStatisticsOutput)(nil),
 		Error:   nil,
@@ -306,7 +306,7 @@ func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, input *clou
 func (c *Client) GetMetricWidgetImageWithContext(ctx context.Context, input *cloudwatch.GetMetricWidgetImageInput, opts ...request.Option) (*cloudwatch.GetMetricWidgetImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "GetMetricWidgetImageWithContext",
+		Action:  "GetMetricWidgetImage",
 		Input:   input,
 		Output:  (*cloudwatch.GetMetricWidgetImageOutput)(nil),
 		Error:   nil,
@@ -327,7 +327,7 @@ func (c *Client) GetMetricWidgetImageWithContext(ctx context.Context, input *clo
 func (c *Client) ListDashboardsWithContext(ctx context.Context, input *cloudwatch.ListDashboardsInput, opts ...request.Option) (*cloudwatch.ListDashboardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "ListDashboardsWithContext",
+		Action:  "ListDashboards",
 		Input:   input,
 		Output:  (*cloudwatch.ListDashboardsOutput)(nil),
 		Error:   nil,
@@ -348,7 +348,7 @@ func (c *Client) ListDashboardsWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) ListMetricsWithContext(ctx context.Context, input *cloudwatch.ListMetricsInput, opts ...request.Option) (*cloudwatch.ListMetricsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "ListMetricsWithContext",
+		Action:  "ListMetrics",
 		Input:   input,
 		Output:  (*cloudwatch.ListMetricsOutput)(nil),
 		Error:   nil,
@@ -369,7 +369,7 @@ func (c *Client) ListMetricsWithContext(ctx context.Context, input *cloudwatch.L
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cloudwatch.ListTagsForResourceInput, opts ...request.Option) (*cloudwatch.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*cloudwatch.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -390,7 +390,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 func (c *Client) PutAnomalyDetectorWithContext(ctx context.Context, input *cloudwatch.PutAnomalyDetectorInput, opts ...request.Option) (*cloudwatch.PutAnomalyDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "PutAnomalyDetectorWithContext",
+		Action:  "PutAnomalyDetector",
 		Input:   input,
 		Output:  (*cloudwatch.PutAnomalyDetectorOutput)(nil),
 		Error:   nil,
@@ -411,7 +411,7 @@ func (c *Client) PutAnomalyDetectorWithContext(ctx context.Context, input *cloud
 func (c *Client) PutDashboardWithContext(ctx context.Context, input *cloudwatch.PutDashboardInput, opts ...request.Option) (*cloudwatch.PutDashboardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "PutDashboardWithContext",
+		Action:  "PutDashboard",
 		Input:   input,
 		Output:  (*cloudwatch.PutDashboardOutput)(nil),
 		Error:   nil,
@@ -432,7 +432,7 @@ func (c *Client) PutDashboardWithContext(ctx context.Context, input *cloudwatch.
 func (c *Client) PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "PutMetricAlarmWithContext",
+		Action:  "PutMetricAlarm",
 		Input:   input,
 		Output:  (*cloudwatch.PutMetricAlarmOutput)(nil),
 		Error:   nil,
@@ -453,7 +453,7 @@ func (c *Client) PutMetricAlarmWithContext(ctx context.Context, input *cloudwatc
 func (c *Client) PutMetricDataWithContext(ctx context.Context, input *cloudwatch.PutMetricDataInput, opts ...request.Option) (*cloudwatch.PutMetricDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "PutMetricDataWithContext",
+		Action:  "PutMetricData",
 		Input:   input,
 		Output:  (*cloudwatch.PutMetricDataOutput)(nil),
 		Error:   nil,
@@ -474,7 +474,7 @@ func (c *Client) PutMetricDataWithContext(ctx context.Context, input *cloudwatch
 func (c *Client) SetAlarmStateWithContext(ctx context.Context, input *cloudwatch.SetAlarmStateInput, opts ...request.Option) (*cloudwatch.SetAlarmStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "SetAlarmStateWithContext",
+		Action:  "SetAlarmState",
 		Input:   input,
 		Output:  (*cloudwatch.SetAlarmStateOutput)(nil),
 		Error:   nil,
@@ -495,7 +495,7 @@ func (c *Client) SetAlarmStateWithContext(ctx context.Context, input *cloudwatch
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatch.TagResourceInput, opts ...request.Option) (*cloudwatch.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*cloudwatch.TagResourceOutput)(nil),
 		Error:   nil,
@@ -516,7 +516,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatch.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudwatch.UntagResourceInput, opts ...request.Option) (*cloudwatch.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*cloudwatch.UntagResourceOutput)(nil),
 		Error:   nil,

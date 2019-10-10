@@ -75,7 +75,7 @@ var _ ElasticBeanstalk = (*Client)(nil)
 func (c *Client) AbortEnvironmentUpdateWithContext(ctx context.Context, input *elasticbeanstalk.AbortEnvironmentUpdateInput, opts ...request.Option) (*elasticbeanstalk.AbortEnvironmentUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "AbortEnvironmentUpdateWithContext",
+		Action:  "AbortEnvironmentUpdate",
 		Input:   input,
 		Output:  (*elasticbeanstalk.AbortEnvironmentUpdateOutput)(nil),
 		Error:   nil,
@@ -96,7 +96,7 @@ func (c *Client) AbortEnvironmentUpdateWithContext(ctx context.Context, input *e
 func (c *Client) ApplyEnvironmentManagedActionWithContext(ctx context.Context, input *elasticbeanstalk.ApplyEnvironmentManagedActionInput, opts ...request.Option) (*elasticbeanstalk.ApplyEnvironmentManagedActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "ApplyEnvironmentManagedActionWithContext",
+		Action:  "ApplyEnvironmentManagedAction",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ApplyEnvironmentManagedActionOutput)(nil),
 		Error:   nil,
@@ -117,7 +117,7 @@ func (c *Client) ApplyEnvironmentManagedActionWithContext(ctx context.Context, i
 func (c *Client) CheckDNSAvailabilityWithContext(ctx context.Context, input *elasticbeanstalk.CheckDNSAvailabilityInput, opts ...request.Option) (*elasticbeanstalk.CheckDNSAvailabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CheckDNSAvailabilityWithContext",
+		Action:  "CheckDNSAvailability",
 		Input:   input,
 		Output:  (*elasticbeanstalk.CheckDNSAvailabilityOutput)(nil),
 		Error:   nil,
@@ -138,7 +138,7 @@ func (c *Client) CheckDNSAvailabilityWithContext(ctx context.Context, input *ela
 func (c *Client) ComposeEnvironmentsWithContext(ctx context.Context, input *elasticbeanstalk.ComposeEnvironmentsInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescriptionsMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "ComposeEnvironmentsWithContext",
+		Action:  "ComposeEnvironments",
 		Input:   input,
 		Output:  (*elasticbeanstalk.EnvironmentDescriptionsMessage)(nil),
 		Error:   nil,
@@ -159,7 +159,7 @@ func (c *Client) ComposeEnvironmentsWithContext(ctx context.Context, input *elas
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *elasticbeanstalk.CreateApplicationInput, opts ...request.Option) (*elasticbeanstalk.ApplicationDescriptionMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CreateApplicationWithContext",
+		Action:  "CreateApplication",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ApplicationDescriptionMessage)(nil),
 		Error:   nil,
@@ -180,7 +180,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *elasti
 func (c *Client) CreateApplicationVersionWithContext(ctx context.Context, input *elasticbeanstalk.CreateApplicationVersionInput, opts ...request.Option) (*elasticbeanstalk.ApplicationVersionDescriptionMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CreateApplicationVersionWithContext",
+		Action:  "CreateApplicationVersion",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ApplicationVersionDescriptionMessage)(nil),
 		Error:   nil,
@@ -201,7 +201,7 @@ func (c *Client) CreateApplicationVersionWithContext(ctx context.Context, input 
 func (c *Client) CreateConfigurationTemplateWithContext(ctx context.Context, input *elasticbeanstalk.CreateConfigurationTemplateInput, opts ...request.Option) (*elasticbeanstalk.ConfigurationSettingsDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CreateConfigurationTemplateWithContext",
+		Action:  "CreateConfigurationTemplate",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ConfigurationSettingsDescription)(nil),
 		Error:   nil,
@@ -222,7 +222,7 @@ func (c *Client) CreateConfigurationTemplateWithContext(ctx context.Context, inp
 func (c *Client) CreateEnvironmentWithContext(ctx context.Context, input *elasticbeanstalk.CreateEnvironmentInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CreateEnvironmentWithContext",
+		Action:  "CreateEnvironment",
 		Input:   input,
 		Output:  (*elasticbeanstalk.EnvironmentDescription)(nil),
 		Error:   nil,
@@ -243,7 +243,7 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, input *elasti
 func (c *Client) CreatePlatformVersionWithContext(ctx context.Context, input *elasticbeanstalk.CreatePlatformVersionInput, opts ...request.Option) (*elasticbeanstalk.CreatePlatformVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CreatePlatformVersionWithContext",
+		Action:  "CreatePlatformVersion",
 		Input:   input,
 		Output:  (*elasticbeanstalk.CreatePlatformVersionOutput)(nil),
 		Error:   nil,
@@ -264,7 +264,7 @@ func (c *Client) CreatePlatformVersionWithContext(ctx context.Context, input *el
 func (c *Client) CreateStorageLocationWithContext(ctx context.Context, input *elasticbeanstalk.CreateStorageLocationInput, opts ...request.Option) (*elasticbeanstalk.CreateStorageLocationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "CreateStorageLocationWithContext",
+		Action:  "CreateStorageLocation",
 		Input:   input,
 		Output:  (*elasticbeanstalk.CreateStorageLocationOutput)(nil),
 		Error:   nil,
@@ -285,7 +285,7 @@ func (c *Client) CreateStorageLocationWithContext(ctx context.Context, input *el
 func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *elasticbeanstalk.DeleteApplicationInput, opts ...request.Option) (*elasticbeanstalk.DeleteApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DeleteApplicationWithContext",
+		Action:  "DeleteApplication",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DeleteApplicationOutput)(nil),
 		Error:   nil,
@@ -306,7 +306,7 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *elasti
 func (c *Client) DeleteApplicationVersionWithContext(ctx context.Context, input *elasticbeanstalk.DeleteApplicationVersionInput, opts ...request.Option) (*elasticbeanstalk.DeleteApplicationVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DeleteApplicationVersionWithContext",
+		Action:  "DeleteApplicationVersion",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DeleteApplicationVersionOutput)(nil),
 		Error:   nil,
@@ -327,7 +327,7 @@ func (c *Client) DeleteApplicationVersionWithContext(ctx context.Context, input 
 func (c *Client) DeleteConfigurationTemplateWithContext(ctx context.Context, input *elasticbeanstalk.DeleteConfigurationTemplateInput, opts ...request.Option) (*elasticbeanstalk.DeleteConfigurationTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DeleteConfigurationTemplateWithContext",
+		Action:  "DeleteConfigurationTemplate",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DeleteConfigurationTemplateOutput)(nil),
 		Error:   nil,
@@ -348,7 +348,7 @@ func (c *Client) DeleteConfigurationTemplateWithContext(ctx context.Context, inp
 func (c *Client) DeleteEnvironmentConfigurationWithContext(ctx context.Context, input *elasticbeanstalk.DeleteEnvironmentConfigurationInput, opts ...request.Option) (*elasticbeanstalk.DeleteEnvironmentConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DeleteEnvironmentConfigurationWithContext",
+		Action:  "DeleteEnvironmentConfiguration",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DeleteEnvironmentConfigurationOutput)(nil),
 		Error:   nil,
@@ -369,7 +369,7 @@ func (c *Client) DeleteEnvironmentConfigurationWithContext(ctx context.Context, 
 func (c *Client) DeletePlatformVersionWithContext(ctx context.Context, input *elasticbeanstalk.DeletePlatformVersionInput, opts ...request.Option) (*elasticbeanstalk.DeletePlatformVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DeletePlatformVersionWithContext",
+		Action:  "DeletePlatformVersion",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DeletePlatformVersionOutput)(nil),
 		Error:   nil,
@@ -390,7 +390,7 @@ func (c *Client) DeletePlatformVersionWithContext(ctx context.Context, input *el
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeAccountAttributesInput, opts ...request.Option) (*elasticbeanstalk.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeAccountAttributesWithContext",
+		Action:  "DescribeAccountAttributes",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeAccountAttributesOutput)(nil),
 		Error:   nil,
@@ -411,7 +411,7 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 func (c *Client) DescribeApplicationVersionsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeApplicationVersionsInput, opts ...request.Option) (*elasticbeanstalk.DescribeApplicationVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeApplicationVersionsWithContext",
+		Action:  "DescribeApplicationVersions",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeApplicationVersionsOutput)(nil),
 		Error:   nil,
@@ -432,7 +432,7 @@ func (c *Client) DescribeApplicationVersionsWithContext(ctx context.Context, inp
 func (c *Client) DescribeApplicationsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeApplicationsInput, opts ...request.Option) (*elasticbeanstalk.DescribeApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeApplicationsWithContext",
+		Action:  "DescribeApplications",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeApplicationsOutput)(nil),
 		Error:   nil,
@@ -453,7 +453,7 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, input *ela
 func (c *Client) DescribeConfigurationOptionsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeConfigurationOptionsInput, opts ...request.Option) (*elasticbeanstalk.DescribeConfigurationOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeConfigurationOptionsWithContext",
+		Action:  "DescribeConfigurationOptions",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeConfigurationOptionsOutput)(nil),
 		Error:   nil,
@@ -474,7 +474,7 @@ func (c *Client) DescribeConfigurationOptionsWithContext(ctx context.Context, in
 func (c *Client) DescribeConfigurationSettingsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeConfigurationSettingsInput, opts ...request.Option) (*elasticbeanstalk.DescribeConfigurationSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeConfigurationSettingsWithContext",
+		Action:  "DescribeConfigurationSettings",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeConfigurationSettingsOutput)(nil),
 		Error:   nil,
@@ -495,7 +495,7 @@ func (c *Client) DescribeConfigurationSettingsWithContext(ctx context.Context, i
 func (c *Client) DescribeEnvironmentHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentHealthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeEnvironmentHealthWithContext",
+		Action:  "DescribeEnvironmentHealth",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeEnvironmentHealthOutput)(nil),
 		Error:   nil,
@@ -516,7 +516,7 @@ func (c *Client) DescribeEnvironmentHealthWithContext(ctx context.Context, input
 func (c *Client) DescribeEnvironmentManagedActionHistoryWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionHistoryInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentManagedActionHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeEnvironmentManagedActionHistoryWithContext",
+		Action:  "DescribeEnvironmentManagedActionHistory",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeEnvironmentManagedActionHistoryOutput)(nil),
 		Error:   nil,
@@ -537,7 +537,7 @@ func (c *Client) DescribeEnvironmentManagedActionHistoryWithContext(ctx context.
 func (c *Client) DescribeEnvironmentManagedActionsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionsInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentManagedActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeEnvironmentManagedActionsWithContext",
+		Action:  "DescribeEnvironmentManagedActions",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeEnvironmentManagedActionsOutput)(nil),
 		Error:   nil,
@@ -558,7 +558,7 @@ func (c *Client) DescribeEnvironmentManagedActionsWithContext(ctx context.Contex
 func (c *Client) DescribeEnvironmentResourcesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentResourcesInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeEnvironmentResourcesWithContext",
+		Action:  "DescribeEnvironmentResources",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeEnvironmentResourcesOutput)(nil),
 		Error:   nil,
@@ -579,7 +579,7 @@ func (c *Client) DescribeEnvironmentResourcesWithContext(ctx context.Context, in
 func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentsInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescriptionsMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeEnvironmentsWithContext",
+		Action:  "DescribeEnvironments",
 		Input:   input,
 		Output:  (*elasticbeanstalk.EnvironmentDescriptionsMessage)(nil),
 		Error:   nil,
@@ -600,7 +600,7 @@ func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, input *ela
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEventsInput, opts ...request.Option) (*elasticbeanstalk.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -621,7 +621,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticbe
 func (c *Client) DescribeInstancesHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeInstancesHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeInstancesHealthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribeInstancesHealthWithContext",
+		Action:  "DescribeInstancesHealth",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribeInstancesHealthOutput)(nil),
 		Error:   nil,
@@ -642,7 +642,7 @@ func (c *Client) DescribeInstancesHealthWithContext(ctx context.Context, input *
 func (c *Client) DescribePlatformVersionWithContext(ctx context.Context, input *elasticbeanstalk.DescribePlatformVersionInput, opts ...request.Option) (*elasticbeanstalk.DescribePlatformVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "DescribePlatformVersionWithContext",
+		Action:  "DescribePlatformVersion",
 		Input:   input,
 		Output:  (*elasticbeanstalk.DescribePlatformVersionOutput)(nil),
 		Error:   nil,
@@ -663,7 +663,7 @@ func (c *Client) DescribePlatformVersionWithContext(ctx context.Context, input *
 func (c *Client) ListAvailableSolutionStacksWithContext(ctx context.Context, input *elasticbeanstalk.ListAvailableSolutionStacksInput, opts ...request.Option) (*elasticbeanstalk.ListAvailableSolutionStacksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "ListAvailableSolutionStacksWithContext",
+		Action:  "ListAvailableSolutionStacks",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ListAvailableSolutionStacksOutput)(nil),
 		Error:   nil,
@@ -684,7 +684,7 @@ func (c *Client) ListAvailableSolutionStacksWithContext(ctx context.Context, inp
 func (c *Client) ListPlatformVersionsWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformVersionsInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "ListPlatformVersionsWithContext",
+		Action:  "ListPlatformVersions",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ListPlatformVersionsOutput)(nil),
 		Error:   nil,
@@ -705,7 +705,7 @@ func (c *Client) ListPlatformVersionsWithContext(ctx context.Context, input *ela
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *elasticbeanstalk.ListTagsForResourceInput, opts ...request.Option) (*elasticbeanstalk.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -726,7 +726,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *elas
 func (c *Client) RebuildEnvironmentWithContext(ctx context.Context, input *elasticbeanstalk.RebuildEnvironmentInput, opts ...request.Option) (*elasticbeanstalk.RebuildEnvironmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "RebuildEnvironmentWithContext",
+		Action:  "RebuildEnvironment",
 		Input:   input,
 		Output:  (*elasticbeanstalk.RebuildEnvironmentOutput)(nil),
 		Error:   nil,
@@ -747,7 +747,7 @@ func (c *Client) RebuildEnvironmentWithContext(ctx context.Context, input *elast
 func (c *Client) RequestEnvironmentInfoWithContext(ctx context.Context, input *elasticbeanstalk.RequestEnvironmentInfoInput, opts ...request.Option) (*elasticbeanstalk.RequestEnvironmentInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "RequestEnvironmentInfoWithContext",
+		Action:  "RequestEnvironmentInfo",
 		Input:   input,
 		Output:  (*elasticbeanstalk.RequestEnvironmentInfoOutput)(nil),
 		Error:   nil,
@@ -768,7 +768,7 @@ func (c *Client) RequestEnvironmentInfoWithContext(ctx context.Context, input *e
 func (c *Client) RestartAppServerWithContext(ctx context.Context, input *elasticbeanstalk.RestartAppServerInput, opts ...request.Option) (*elasticbeanstalk.RestartAppServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "RestartAppServerWithContext",
+		Action:  "RestartAppServer",
 		Input:   input,
 		Output:  (*elasticbeanstalk.RestartAppServerOutput)(nil),
 		Error:   nil,
@@ -789,7 +789,7 @@ func (c *Client) RestartAppServerWithContext(ctx context.Context, input *elastic
 func (c *Client) RetrieveEnvironmentInfoWithContext(ctx context.Context, input *elasticbeanstalk.RetrieveEnvironmentInfoInput, opts ...request.Option) (*elasticbeanstalk.RetrieveEnvironmentInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "RetrieveEnvironmentInfoWithContext",
+		Action:  "RetrieveEnvironmentInfo",
 		Input:   input,
 		Output:  (*elasticbeanstalk.RetrieveEnvironmentInfoOutput)(nil),
 		Error:   nil,
@@ -810,7 +810,7 @@ func (c *Client) RetrieveEnvironmentInfoWithContext(ctx context.Context, input *
 func (c *Client) SwapEnvironmentCNAMEsWithContext(ctx context.Context, input *elasticbeanstalk.SwapEnvironmentCNAMEsInput, opts ...request.Option) (*elasticbeanstalk.SwapEnvironmentCNAMEsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "SwapEnvironmentCNAMEsWithContext",
+		Action:  "SwapEnvironmentCNAMEs",
 		Input:   input,
 		Output:  (*elasticbeanstalk.SwapEnvironmentCNAMEsOutput)(nil),
 		Error:   nil,
@@ -831,7 +831,7 @@ func (c *Client) SwapEnvironmentCNAMEsWithContext(ctx context.Context, input *el
 func (c *Client) TerminateEnvironmentWithContext(ctx context.Context, input *elasticbeanstalk.TerminateEnvironmentInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "TerminateEnvironmentWithContext",
+		Action:  "TerminateEnvironment",
 		Input:   input,
 		Output:  (*elasticbeanstalk.EnvironmentDescription)(nil),
 		Error:   nil,
@@ -852,7 +852,7 @@ func (c *Client) TerminateEnvironmentWithContext(ctx context.Context, input *ela
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *elasticbeanstalk.UpdateApplicationInput, opts ...request.Option) (*elasticbeanstalk.ApplicationDescriptionMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "UpdateApplicationWithContext",
+		Action:  "UpdateApplication",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ApplicationDescriptionMessage)(nil),
 		Error:   nil,
@@ -873,7 +873,7 @@ func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *elasti
 func (c *Client) UpdateApplicationResourceLifecycleWithContext(ctx context.Context, input *elasticbeanstalk.UpdateApplicationResourceLifecycleInput, opts ...request.Option) (*elasticbeanstalk.UpdateApplicationResourceLifecycleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "UpdateApplicationResourceLifecycleWithContext",
+		Action:  "UpdateApplicationResourceLifecycle",
 		Input:   input,
 		Output:  (*elasticbeanstalk.UpdateApplicationResourceLifecycleOutput)(nil),
 		Error:   nil,
@@ -894,7 +894,7 @@ func (c *Client) UpdateApplicationResourceLifecycleWithContext(ctx context.Conte
 func (c *Client) UpdateApplicationVersionWithContext(ctx context.Context, input *elasticbeanstalk.UpdateApplicationVersionInput, opts ...request.Option) (*elasticbeanstalk.ApplicationVersionDescriptionMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "UpdateApplicationVersionWithContext",
+		Action:  "UpdateApplicationVersion",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ApplicationVersionDescriptionMessage)(nil),
 		Error:   nil,
@@ -915,7 +915,7 @@ func (c *Client) UpdateApplicationVersionWithContext(ctx context.Context, input 
 func (c *Client) UpdateConfigurationTemplateWithContext(ctx context.Context, input *elasticbeanstalk.UpdateConfigurationTemplateInput, opts ...request.Option) (*elasticbeanstalk.ConfigurationSettingsDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "UpdateConfigurationTemplateWithContext",
+		Action:  "UpdateConfigurationTemplate",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ConfigurationSettingsDescription)(nil),
 		Error:   nil,
@@ -936,7 +936,7 @@ func (c *Client) UpdateConfigurationTemplateWithContext(ctx context.Context, inp
 func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, input *elasticbeanstalk.UpdateEnvironmentInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescription, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "UpdateEnvironmentWithContext",
+		Action:  "UpdateEnvironment",
 		Input:   input,
 		Output:  (*elasticbeanstalk.EnvironmentDescription)(nil),
 		Error:   nil,
@@ -957,7 +957,7 @@ func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, input *elasti
 func (c *Client) UpdateTagsForResourceWithContext(ctx context.Context, input *elasticbeanstalk.UpdateTagsForResourceInput, opts ...request.Option) (*elasticbeanstalk.UpdateTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "UpdateTagsForResourceWithContext",
+		Action:  "UpdateTagsForResource",
 		Input:   input,
 		Output:  (*elasticbeanstalk.UpdateTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -978,7 +978,7 @@ func (c *Client) UpdateTagsForResourceWithContext(ctx context.Context, input *el
 func (c *Client) ValidateConfigurationSettingsWithContext(ctx context.Context, input *elasticbeanstalk.ValidateConfigurationSettingsInput, opts ...request.Option) (*elasticbeanstalk.ValidateConfigurationSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
-		Action:  "ValidateConfigurationSettingsWithContext",
+		Action:  "ValidateConfigurationSettings",
 		Input:   input,
 		Output:  (*elasticbeanstalk.ValidateConfigurationSettingsOutput)(nil),
 		Error:   nil,

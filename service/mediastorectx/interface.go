@@ -49,7 +49,7 @@ var _ MediaStore = (*Client)(nil)
 func (c *Client) CreateContainerWithContext(ctx context.Context, input *mediastore.CreateContainerInput, opts ...request.Option) (*mediastore.CreateContainerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "CreateContainerWithContext",
+		Action:  "CreateContainer",
 		Input:   input,
 		Output:  (*mediastore.CreateContainerOutput)(nil),
 		Error:   nil,
@@ -70,7 +70,7 @@ func (c *Client) CreateContainerWithContext(ctx context.Context, input *mediasto
 func (c *Client) DeleteContainerWithContext(ctx context.Context, input *mediastore.DeleteContainerInput, opts ...request.Option) (*mediastore.DeleteContainerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "DeleteContainerWithContext",
+		Action:  "DeleteContainer",
 		Input:   input,
 		Output:  (*mediastore.DeleteContainerOutput)(nil),
 		Error:   nil,
@@ -91,7 +91,7 @@ func (c *Client) DeleteContainerWithContext(ctx context.Context, input *mediasto
 func (c *Client) DeleteContainerPolicyWithContext(ctx context.Context, input *mediastore.DeleteContainerPolicyInput, opts ...request.Option) (*mediastore.DeleteContainerPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "DeleteContainerPolicyWithContext",
+		Action:  "DeleteContainerPolicy",
 		Input:   input,
 		Output:  (*mediastore.DeleteContainerPolicyOutput)(nil),
 		Error:   nil,
@@ -112,7 +112,7 @@ func (c *Client) DeleteContainerPolicyWithContext(ctx context.Context, input *me
 func (c *Client) DeleteCorsPolicyWithContext(ctx context.Context, input *mediastore.DeleteCorsPolicyInput, opts ...request.Option) (*mediastore.DeleteCorsPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "DeleteCorsPolicyWithContext",
+		Action:  "DeleteCorsPolicy",
 		Input:   input,
 		Output:  (*mediastore.DeleteCorsPolicyOutput)(nil),
 		Error:   nil,
@@ -133,7 +133,7 @@ func (c *Client) DeleteCorsPolicyWithContext(ctx context.Context, input *mediast
 func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *mediastore.DeleteLifecyclePolicyInput, opts ...request.Option) (*mediastore.DeleteLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "DeleteLifecyclePolicyWithContext",
+		Action:  "DeleteLifecyclePolicy",
 		Input:   input,
 		Output:  (*mediastore.DeleteLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -154,7 +154,7 @@ func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *me
 func (c *Client) DescribeContainerWithContext(ctx context.Context, input *mediastore.DescribeContainerInput, opts ...request.Option) (*mediastore.DescribeContainerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "DescribeContainerWithContext",
+		Action:  "DescribeContainer",
 		Input:   input,
 		Output:  (*mediastore.DescribeContainerOutput)(nil),
 		Error:   nil,
@@ -175,7 +175,7 @@ func (c *Client) DescribeContainerWithContext(ctx context.Context, input *medias
 func (c *Client) GetContainerPolicyWithContext(ctx context.Context, input *mediastore.GetContainerPolicyInput, opts ...request.Option) (*mediastore.GetContainerPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "GetContainerPolicyWithContext",
+		Action:  "GetContainerPolicy",
 		Input:   input,
 		Output:  (*mediastore.GetContainerPolicyOutput)(nil),
 		Error:   nil,
@@ -196,7 +196,7 @@ func (c *Client) GetContainerPolicyWithContext(ctx context.Context, input *media
 func (c *Client) GetCorsPolicyWithContext(ctx context.Context, input *mediastore.GetCorsPolicyInput, opts ...request.Option) (*mediastore.GetCorsPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "GetCorsPolicyWithContext",
+		Action:  "GetCorsPolicy",
 		Input:   input,
 		Output:  (*mediastore.GetCorsPolicyOutput)(nil),
 		Error:   nil,
@@ -217,7 +217,7 @@ func (c *Client) GetCorsPolicyWithContext(ctx context.Context, input *mediastore
 func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *mediastore.GetLifecyclePolicyInput, opts ...request.Option) (*mediastore.GetLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "GetLifecyclePolicyWithContext",
+		Action:  "GetLifecyclePolicy",
 		Input:   input,
 		Output:  (*mediastore.GetLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -238,7 +238,7 @@ func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *media
 func (c *Client) ListContainersWithContext(ctx context.Context, input *mediastore.ListContainersInput, opts ...request.Option) (*mediastore.ListContainersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "ListContainersWithContext",
+		Action:  "ListContainers",
 		Input:   input,
 		Output:  (*mediastore.ListContainersOutput)(nil),
 		Error:   nil,
@@ -259,7 +259,7 @@ func (c *Client) ListContainersWithContext(ctx context.Context, input *mediastor
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediastore.ListTagsForResourceInput, opts ...request.Option) (*mediastore.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*mediastore.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -280,7 +280,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 func (c *Client) PutContainerPolicyWithContext(ctx context.Context, input *mediastore.PutContainerPolicyInput, opts ...request.Option) (*mediastore.PutContainerPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "PutContainerPolicyWithContext",
+		Action:  "PutContainerPolicy",
 		Input:   input,
 		Output:  (*mediastore.PutContainerPolicyOutput)(nil),
 		Error:   nil,
@@ -301,7 +301,7 @@ func (c *Client) PutContainerPolicyWithContext(ctx context.Context, input *media
 func (c *Client) PutCorsPolicyWithContext(ctx context.Context, input *mediastore.PutCorsPolicyInput, opts ...request.Option) (*mediastore.PutCorsPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "PutCorsPolicyWithContext",
+		Action:  "PutCorsPolicy",
 		Input:   input,
 		Output:  (*mediastore.PutCorsPolicyOutput)(nil),
 		Error:   nil,
@@ -322,7 +322,7 @@ func (c *Client) PutCorsPolicyWithContext(ctx context.Context, input *mediastore
 func (c *Client) PutLifecyclePolicyWithContext(ctx context.Context, input *mediastore.PutLifecyclePolicyInput, opts ...request.Option) (*mediastore.PutLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "PutLifecyclePolicyWithContext",
+		Action:  "PutLifecyclePolicy",
 		Input:   input,
 		Output:  (*mediastore.PutLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -343,7 +343,7 @@ func (c *Client) PutLifecyclePolicyWithContext(ctx context.Context, input *media
 func (c *Client) StartAccessLoggingWithContext(ctx context.Context, input *mediastore.StartAccessLoggingInput, opts ...request.Option) (*mediastore.StartAccessLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "StartAccessLoggingWithContext",
+		Action:  "StartAccessLogging",
 		Input:   input,
 		Output:  (*mediastore.StartAccessLoggingOutput)(nil),
 		Error:   nil,
@@ -364,7 +364,7 @@ func (c *Client) StartAccessLoggingWithContext(ctx context.Context, input *media
 func (c *Client) StopAccessLoggingWithContext(ctx context.Context, input *mediastore.StopAccessLoggingInput, opts ...request.Option) (*mediastore.StopAccessLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "StopAccessLoggingWithContext",
+		Action:  "StopAccessLogging",
 		Input:   input,
 		Output:  (*mediastore.StopAccessLoggingOutput)(nil),
 		Error:   nil,
@@ -385,7 +385,7 @@ func (c *Client) StopAccessLoggingWithContext(ctx context.Context, input *medias
 func (c *Client) TagResourceWithContext(ctx context.Context, input *mediastore.TagResourceInput, opts ...request.Option) (*mediastore.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*mediastore.TagResourceOutput)(nil),
 		Error:   nil,
@@ -406,7 +406,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *mediastore.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediastore.UntagResourceInput, opts ...request.Option) (*mediastore.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*mediastore.UntagResourceOutput)(nil),
 		Error:   nil,

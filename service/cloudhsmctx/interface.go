@@ -51,7 +51,7 @@ var _ CloudHSM = (*Client)(nil)
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *cloudhsm.AddTagsToResourceInput, opts ...request.Option) (*cloudhsm.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*cloudhsm.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -72,7 +72,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *cloudh
 func (c *Client) CreateHapgWithContext(ctx context.Context, input *cloudhsm.CreateHapgInput, opts ...request.Option) (*cloudhsm.CreateHapgOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "CreateHapgWithContext",
+		Action:  "CreateHapg",
 		Input:   input,
 		Output:  (*cloudhsm.CreateHapgOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) CreateHapgWithContext(ctx context.Context, input *cloudhsm.Crea
 func (c *Client) CreateHsmWithContext(ctx context.Context, input *cloudhsm.CreateHsmInput, opts ...request.Option) (*cloudhsm.CreateHsmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "CreateHsmWithContext",
+		Action:  "CreateHsm",
 		Input:   input,
 		Output:  (*cloudhsm.CreateHsmOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) CreateHsmWithContext(ctx context.Context, input *cloudhsm.Creat
 func (c *Client) CreateLunaClientWithContext(ctx context.Context, input *cloudhsm.CreateLunaClientInput, opts ...request.Option) (*cloudhsm.CreateLunaClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "CreateLunaClientWithContext",
+		Action:  "CreateLunaClient",
 		Input:   input,
 		Output:  (*cloudhsm.CreateLunaClientOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) CreateLunaClientWithContext(ctx context.Context, input *cloudhs
 func (c *Client) DeleteHapgWithContext(ctx context.Context, input *cloudhsm.DeleteHapgInput, opts ...request.Option) (*cloudhsm.DeleteHapgOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "DeleteHapgWithContext",
+		Action:  "DeleteHapg",
 		Input:   input,
 		Output:  (*cloudhsm.DeleteHapgOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) DeleteHapgWithContext(ctx context.Context, input *cloudhsm.Dele
 func (c *Client) DeleteHsmWithContext(ctx context.Context, input *cloudhsm.DeleteHsmInput, opts ...request.Option) (*cloudhsm.DeleteHsmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "DeleteHsmWithContext",
+		Action:  "DeleteHsm",
 		Input:   input,
 		Output:  (*cloudhsm.DeleteHsmOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) DeleteHsmWithContext(ctx context.Context, input *cloudhsm.Delet
 func (c *Client) DeleteLunaClientWithContext(ctx context.Context, input *cloudhsm.DeleteLunaClientInput, opts ...request.Option) (*cloudhsm.DeleteLunaClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "DeleteLunaClientWithContext",
+		Action:  "DeleteLunaClient",
 		Input:   input,
 		Output:  (*cloudhsm.DeleteLunaClientOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) DeleteLunaClientWithContext(ctx context.Context, input *cloudhs
 func (c *Client) DescribeHapgWithContext(ctx context.Context, input *cloudhsm.DescribeHapgInput, opts ...request.Option) (*cloudhsm.DescribeHapgOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "DescribeHapgWithContext",
+		Action:  "DescribeHapg",
 		Input:   input,
 		Output:  (*cloudhsm.DescribeHapgOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) DescribeHapgWithContext(ctx context.Context, input *cloudhsm.De
 func (c *Client) DescribeHsmWithContext(ctx context.Context, input *cloudhsm.DescribeHsmInput, opts ...request.Option) (*cloudhsm.DescribeHsmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "DescribeHsmWithContext",
+		Action:  "DescribeHsm",
 		Input:   input,
 		Output:  (*cloudhsm.DescribeHsmOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) DescribeHsmWithContext(ctx context.Context, input *cloudhsm.Des
 func (c *Client) DescribeLunaClientWithContext(ctx context.Context, input *cloudhsm.DescribeLunaClientInput, opts ...request.Option) (*cloudhsm.DescribeLunaClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "DescribeLunaClientWithContext",
+		Action:  "DescribeLunaClient",
 		Input:   input,
 		Output:  (*cloudhsm.DescribeLunaClientOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) DescribeLunaClientWithContext(ctx context.Context, input *cloud
 func (c *Client) GetConfigWithContext(ctx context.Context, input *cloudhsm.GetConfigInput, opts ...request.Option) (*cloudhsm.GetConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "GetConfigWithContext",
+		Action:  "GetConfig",
 		Input:   input,
 		Output:  (*cloudhsm.GetConfigOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) GetConfigWithContext(ctx context.Context, input *cloudhsm.GetCo
 func (c *Client) ListAvailableZonesWithContext(ctx context.Context, input *cloudhsm.ListAvailableZonesInput, opts ...request.Option) (*cloudhsm.ListAvailableZonesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ListAvailableZonesWithContext",
+		Action:  "ListAvailableZones",
 		Input:   input,
 		Output:  (*cloudhsm.ListAvailableZonesOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) ListAvailableZonesWithContext(ctx context.Context, input *cloud
 func (c *Client) ListHapgsWithContext(ctx context.Context, input *cloudhsm.ListHapgsInput, opts ...request.Option) (*cloudhsm.ListHapgsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ListHapgsWithContext",
+		Action:  "ListHapgs",
 		Input:   input,
 		Output:  (*cloudhsm.ListHapgsOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) ListHapgsWithContext(ctx context.Context, input *cloudhsm.ListH
 func (c *Client) ListHsmsWithContext(ctx context.Context, input *cloudhsm.ListHsmsInput, opts ...request.Option) (*cloudhsm.ListHsmsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ListHsmsWithContext",
+		Action:  "ListHsms",
 		Input:   input,
 		Output:  (*cloudhsm.ListHsmsOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) ListHsmsWithContext(ctx context.Context, input *cloudhsm.ListHs
 func (c *Client) ListLunaClientsWithContext(ctx context.Context, input *cloudhsm.ListLunaClientsInput, opts ...request.Option) (*cloudhsm.ListLunaClientsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ListLunaClientsWithContext",
+		Action:  "ListLunaClients",
 		Input:   input,
 		Output:  (*cloudhsm.ListLunaClientsOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) ListLunaClientsWithContext(ctx context.Context, input *cloudhsm
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cloudhsm.ListTagsForResourceInput, opts ...request.Option) (*cloudhsm.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*cloudhsm.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 func (c *Client) ModifyHapgWithContext(ctx context.Context, input *cloudhsm.ModifyHapgInput, opts ...request.Option) (*cloudhsm.ModifyHapgOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ModifyHapgWithContext",
+		Action:  "ModifyHapg",
 		Input:   input,
 		Output:  (*cloudhsm.ModifyHapgOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) ModifyHapgWithContext(ctx context.Context, input *cloudhsm.Modi
 func (c *Client) ModifyHsmWithContext(ctx context.Context, input *cloudhsm.ModifyHsmInput, opts ...request.Option) (*cloudhsm.ModifyHsmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ModifyHsmWithContext",
+		Action:  "ModifyHsm",
 		Input:   input,
 		Output:  (*cloudhsm.ModifyHsmOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) ModifyHsmWithContext(ctx context.Context, input *cloudhsm.Modif
 func (c *Client) ModifyLunaClientWithContext(ctx context.Context, input *cloudhsm.ModifyLunaClientInput, opts ...request.Option) (*cloudhsm.ModifyLunaClientOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "ModifyLunaClientWithContext",
+		Action:  "ModifyLunaClient",
 		Input:   input,
 		Output:  (*cloudhsm.ModifyLunaClientOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) ModifyLunaClientWithContext(ctx context.Context, input *cloudhs
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *cloudhsm.RemoveTagsFromResourceInput, opts ...request.Option) (*cloudhsm.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudhsm",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*cloudhsm.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,

@@ -55,7 +55,7 @@ var _ KinesisAnalyticsV2 = (*Client)(nil)
 func (c *Client) AddApplicationCloudWatchLoggingOptionWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationCloudWatchLoggingOptionInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationCloudWatchLoggingOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "AddApplicationCloudWatchLoggingOptionWithContext",
+		Action:  "AddApplicationCloudWatchLoggingOption",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.AddApplicationCloudWatchLoggingOptionOutput)(nil),
 		Error:   nil,
@@ -76,7 +76,7 @@ func (c *Client) AddApplicationCloudWatchLoggingOptionWithContext(ctx context.Co
 func (c *Client) AddApplicationInputWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationInputInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "AddApplicationInputWithContext",
+		Action:  "AddApplicationInput",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.AddApplicationInputOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) AddApplicationInputWithContext(ctx context.Context, input *kine
 func (c *Client) AddApplicationInputProcessingConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationInputProcessingConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationInputProcessingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "AddApplicationInputProcessingConfigurationWithContext",
+		Action:  "AddApplicationInputProcessingConfiguration",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.AddApplicationInputProcessingConfigurationOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) AddApplicationInputProcessingConfigurationWithContext(ctx conte
 func (c *Client) AddApplicationOutputWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationOutputInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "AddApplicationOutputWithContext",
+		Action:  "AddApplicationOutput",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.AddApplicationOutputOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) AddApplicationOutputWithContext(ctx context.Context, input *kin
 func (c *Client) AddApplicationReferenceDataSourceWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationReferenceDataSourceInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationReferenceDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "AddApplicationReferenceDataSourceWithContext",
+		Action:  "AddApplicationReferenceDataSource",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.AddApplicationReferenceDataSourceOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) AddApplicationReferenceDataSourceWithContext(ctx context.Contex
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "CreateApplicationWithContext",
+		Action:  "CreateApplication",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.CreateApplicationOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *kinesi
 func (c *Client) CreateApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "CreateApplicationSnapshotWithContext",
+		Action:  "CreateApplicationSnapshot",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.CreateApplicationSnapshotOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) CreateApplicationSnapshotWithContext(ctx context.Context, input
 func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DeleteApplicationWithContext",
+		Action:  "DeleteApplication",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DeleteApplicationOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *kinesi
 func (c *Client) DeleteApplicationCloudWatchLoggingOptionWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationCloudWatchLoggingOptionInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationCloudWatchLoggingOptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DeleteApplicationCloudWatchLoggingOptionWithContext",
+		Action:  "DeleteApplicationCloudWatchLoggingOption",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DeleteApplicationCloudWatchLoggingOptionOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) DeleteApplicationCloudWatchLoggingOptionWithContext(ctx context
 func (c *Client) DeleteApplicationInputProcessingConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationInputProcessingConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationInputProcessingConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DeleteApplicationInputProcessingConfigurationWithContext",
+		Action:  "DeleteApplicationInputProcessingConfiguration",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DeleteApplicationInputProcessingConfigurationOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) DeleteApplicationInputProcessingConfigurationWithContext(ctx co
 func (c *Client) DeleteApplicationOutputWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationOutputInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DeleteApplicationOutputWithContext",
+		Action:  "DeleteApplicationOutput",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DeleteApplicationOutputOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) DeleteApplicationOutputWithContext(ctx context.Context, input *
 func (c *Client) DeleteApplicationReferenceDataSourceWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationReferenceDataSourceInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationReferenceDataSourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DeleteApplicationReferenceDataSourceWithContext",
+		Action:  "DeleteApplicationReferenceDataSource",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DeleteApplicationReferenceDataSourceOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) DeleteApplicationReferenceDataSourceWithContext(ctx context.Con
 func (c *Client) DeleteApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DeleteApplicationSnapshotWithContext",
+		Action:  "DeleteApplicationSnapshot",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DeleteApplicationSnapshotOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) DeleteApplicationSnapshotWithContext(ctx context.Context, input
 func (c *Client) DescribeApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DescribeApplicationWithContext",
+		Action:  "DescribeApplication",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DescribeApplicationOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) DescribeApplicationWithContext(ctx context.Context, input *kine
 func (c *Client) DescribeApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DescribeApplicationSnapshotWithContext",
+		Action:  "DescribeApplicationSnapshot",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DescribeApplicationSnapshotOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) DescribeApplicationSnapshotWithContext(ctx context.Context, inp
 func (c *Client) DiscoverInputSchemaWithContext(ctx context.Context, input *kinesisanalyticsv2.DiscoverInputSchemaInput, opts ...request.Option) (*kinesisanalyticsv2.DiscoverInputSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "DiscoverInputSchemaWithContext",
+		Action:  "DiscoverInputSchema",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.DiscoverInputSchemaOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) DiscoverInputSchemaWithContext(ctx context.Context, input *kine
 func (c *Client) ListApplicationSnapshotsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationSnapshotsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "ListApplicationSnapshotsWithContext",
+		Action:  "ListApplicationSnapshots",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.ListApplicationSnapshotsOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) ListApplicationSnapshotsWithContext(ctx context.Context, input 
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "ListApplicationsWithContext",
+		Action:  "ListApplications",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.ListApplicationsOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *kinesis
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.ListTagsForResourceInput, opts ...request.Option) (*kinesisanalyticsv2.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kine
 func (c *Client) StartApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.StartApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.StartApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "StartApplicationWithContext",
+		Action:  "StartApplication",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.StartApplicationOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) StartApplicationWithContext(ctx context.Context, input *kinesis
 func (c *Client) StopApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.StopApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.StopApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "StopApplicationWithContext",
+		Action:  "StopApplication",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.StopApplicationOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) StopApplicationWithContext(ctx context.Context, input *kinesisa
 func (c *Client) TagResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.TagResourceInput, opts ...request.Option) (*kinesisanalyticsv2.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.TagResourceOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *kinesisanaly
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.UntagResourceInput, opts ...request.Option) (*kinesisanalyticsv2.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *kinesisana
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.UpdateApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.UpdateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
-		Action:  "UpdateApplicationWithContext",
+		Action:  "UpdateApplication",
 		Input:   input,
 		Output:  (*kinesisanalyticsv2.UpdateApplicationOutput)(nil),
 		Error:   nil,

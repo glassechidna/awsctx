@@ -57,7 +57,7 @@ var _ ECR = (*Client)(nil)
 func (c *Client) BatchCheckLayerAvailabilityWithContext(ctx context.Context, input *ecr.BatchCheckLayerAvailabilityInput, opts ...request.Option) (*ecr.BatchCheckLayerAvailabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "BatchCheckLayerAvailabilityWithContext",
+		Action:  "BatchCheckLayerAvailability",
 		Input:   input,
 		Output:  (*ecr.BatchCheckLayerAvailabilityOutput)(nil),
 		Error:   nil,
@@ -78,7 +78,7 @@ func (c *Client) BatchCheckLayerAvailabilityWithContext(ctx context.Context, inp
 func (c *Client) BatchDeleteImageWithContext(ctx context.Context, input *ecr.BatchDeleteImageInput, opts ...request.Option) (*ecr.BatchDeleteImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "BatchDeleteImageWithContext",
+		Action:  "BatchDeleteImage",
 		Input:   input,
 		Output:  (*ecr.BatchDeleteImageOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) BatchDeleteImageWithContext(ctx context.Context, input *ecr.Bat
 func (c *Client) BatchGetImageWithContext(ctx context.Context, input *ecr.BatchGetImageInput, opts ...request.Option) (*ecr.BatchGetImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "BatchGetImageWithContext",
+		Action:  "BatchGetImage",
 		Input:   input,
 		Output:  (*ecr.BatchGetImageOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) BatchGetImageWithContext(ctx context.Context, input *ecr.BatchG
 func (c *Client) CompleteLayerUploadWithContext(ctx context.Context, input *ecr.CompleteLayerUploadInput, opts ...request.Option) (*ecr.CompleteLayerUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "CompleteLayerUploadWithContext",
+		Action:  "CompleteLayerUpload",
 		Input:   input,
 		Output:  (*ecr.CompleteLayerUploadOutput)(nil),
 		Error:   nil,
@@ -141,7 +141,7 @@ func (c *Client) CompleteLayerUploadWithContext(ctx context.Context, input *ecr.
 func (c *Client) CreateRepositoryWithContext(ctx context.Context, input *ecr.CreateRepositoryInput, opts ...request.Option) (*ecr.CreateRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "CreateRepositoryWithContext",
+		Action:  "CreateRepository",
 		Input:   input,
 		Output:  (*ecr.CreateRepositoryOutput)(nil),
 		Error:   nil,
@@ -162,7 +162,7 @@ func (c *Client) CreateRepositoryWithContext(ctx context.Context, input *ecr.Cre
 func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *ecr.DeleteLifecyclePolicyInput, opts ...request.Option) (*ecr.DeleteLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "DeleteLifecyclePolicyWithContext",
+		Action:  "DeleteLifecyclePolicy",
 		Input:   input,
 		Output:  (*ecr.DeleteLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -183,7 +183,7 @@ func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *ec
 func (c *Client) DeleteRepositoryWithContext(ctx context.Context, input *ecr.DeleteRepositoryInput, opts ...request.Option) (*ecr.DeleteRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "DeleteRepositoryWithContext",
+		Action:  "DeleteRepository",
 		Input:   input,
 		Output:  (*ecr.DeleteRepositoryOutput)(nil),
 		Error:   nil,
@@ -204,7 +204,7 @@ func (c *Client) DeleteRepositoryWithContext(ctx context.Context, input *ecr.Del
 func (c *Client) DeleteRepositoryPolicyWithContext(ctx context.Context, input *ecr.DeleteRepositoryPolicyInput, opts ...request.Option) (*ecr.DeleteRepositoryPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "DeleteRepositoryPolicyWithContext",
+		Action:  "DeleteRepositoryPolicy",
 		Input:   input,
 		Output:  (*ecr.DeleteRepositoryPolicyOutput)(nil),
 		Error:   nil,
@@ -225,7 +225,7 @@ func (c *Client) DeleteRepositoryPolicyWithContext(ctx context.Context, input *e
 func (c *Client) DescribeImagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, opts ...request.Option) (*ecr.DescribeImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "DescribeImagesWithContext",
+		Action:  "DescribeImages",
 		Input:   input,
 		Output:  (*ecr.DescribeImagesOutput)(nil),
 		Error:   nil,
@@ -246,7 +246,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, input *ecr.Descr
 func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, opts ...request.Option) (*ecr.DescribeRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "DescribeRepositoriesWithContext",
+		Action:  "DescribeRepositories",
 		Input:   input,
 		Output:  (*ecr.DescribeRepositoriesOutput)(nil),
 		Error:   nil,
@@ -267,7 +267,7 @@ func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, input *ecr
 func (c *Client) GetAuthorizationTokenWithContext(ctx context.Context, input *ecr.GetAuthorizationTokenInput, opts ...request.Option) (*ecr.GetAuthorizationTokenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "GetAuthorizationTokenWithContext",
+		Action:  "GetAuthorizationToken",
 		Input:   input,
 		Output:  (*ecr.GetAuthorizationTokenOutput)(nil),
 		Error:   nil,
@@ -288,7 +288,7 @@ func (c *Client) GetAuthorizationTokenWithContext(ctx context.Context, input *ec
 func (c *Client) GetDownloadUrlForLayerWithContext(ctx context.Context, input *ecr.GetDownloadUrlForLayerInput, opts ...request.Option) (*ecr.GetDownloadUrlForLayerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "GetDownloadUrlForLayerWithContext",
+		Action:  "GetDownloadUrlForLayer",
 		Input:   input,
 		Output:  (*ecr.GetDownloadUrlForLayerOutput)(nil),
 		Error:   nil,
@@ -309,7 +309,7 @@ func (c *Client) GetDownloadUrlForLayerWithContext(ctx context.Context, input *e
 func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyInput, opts ...request.Option) (*ecr.GetLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "GetLifecyclePolicyWithContext",
+		Action:  "GetLifecyclePolicy",
 		Input:   input,
 		Output:  (*ecr.GetLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -330,7 +330,7 @@ func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *ecr.G
 func (c *Client) GetLifecyclePolicyPreviewWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyPreviewInput, opts ...request.Option) (*ecr.GetLifecyclePolicyPreviewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "GetLifecyclePolicyPreviewWithContext",
+		Action:  "GetLifecyclePolicyPreview",
 		Input:   input,
 		Output:  (*ecr.GetLifecyclePolicyPreviewOutput)(nil),
 		Error:   nil,
@@ -351,7 +351,7 @@ func (c *Client) GetLifecyclePolicyPreviewWithContext(ctx context.Context, input
 func (c *Client) GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.GetRepositoryPolicyInput, opts ...request.Option) (*ecr.GetRepositoryPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "GetRepositoryPolicyWithContext",
+		Action:  "GetRepositoryPolicy",
 		Input:   input,
 		Output:  (*ecr.GetRepositoryPolicyOutput)(nil),
 		Error:   nil,
@@ -372,7 +372,7 @@ func (c *Client) GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.
 func (c *Client) InitiateLayerUploadWithContext(ctx context.Context, input *ecr.InitiateLayerUploadInput, opts ...request.Option) (*ecr.InitiateLayerUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "InitiateLayerUploadWithContext",
+		Action:  "InitiateLayerUpload",
 		Input:   input,
 		Output:  (*ecr.InitiateLayerUploadOutput)(nil),
 		Error:   nil,
@@ -393,7 +393,7 @@ func (c *Client) InitiateLayerUploadWithContext(ctx context.Context, input *ecr.
 func (c *Client) ListImagesWithContext(ctx context.Context, input *ecr.ListImagesInput, opts ...request.Option) (*ecr.ListImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "ListImagesWithContext",
+		Action:  "ListImages",
 		Input:   input,
 		Output:  (*ecr.ListImagesOutput)(nil),
 		Error:   nil,
@@ -414,7 +414,7 @@ func (c *Client) ListImagesWithContext(ctx context.Context, input *ecr.ListImage
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ecr.ListTagsForResourceInput, opts ...request.Option) (*ecr.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*ecr.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -435,7 +435,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ecr.
 func (c *Client) PutImageWithContext(ctx context.Context, input *ecr.PutImageInput, opts ...request.Option) (*ecr.PutImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "PutImageWithContext",
+		Action:  "PutImage",
 		Input:   input,
 		Output:  (*ecr.PutImageOutput)(nil),
 		Error:   nil,
@@ -456,7 +456,7 @@ func (c *Client) PutImageWithContext(ctx context.Context, input *ecr.PutImageInp
 func (c *Client) PutImageTagMutabilityWithContext(ctx context.Context, input *ecr.PutImageTagMutabilityInput, opts ...request.Option) (*ecr.PutImageTagMutabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "PutImageTagMutabilityWithContext",
+		Action:  "PutImageTagMutability",
 		Input:   input,
 		Output:  (*ecr.PutImageTagMutabilityOutput)(nil),
 		Error:   nil,
@@ -477,7 +477,7 @@ func (c *Client) PutImageTagMutabilityWithContext(ctx context.Context, input *ec
 func (c *Client) PutLifecyclePolicyWithContext(ctx context.Context, input *ecr.PutLifecyclePolicyInput, opts ...request.Option) (*ecr.PutLifecyclePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "PutLifecyclePolicyWithContext",
+		Action:  "PutLifecyclePolicy",
 		Input:   input,
 		Output:  (*ecr.PutLifecyclePolicyOutput)(nil),
 		Error:   nil,
@@ -498,7 +498,7 @@ func (c *Client) PutLifecyclePolicyWithContext(ctx context.Context, input *ecr.P
 func (c *Client) SetRepositoryPolicyWithContext(ctx context.Context, input *ecr.SetRepositoryPolicyInput, opts ...request.Option) (*ecr.SetRepositoryPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "SetRepositoryPolicyWithContext",
+		Action:  "SetRepositoryPolicy",
 		Input:   input,
 		Output:  (*ecr.SetRepositoryPolicyOutput)(nil),
 		Error:   nil,
@@ -519,7 +519,7 @@ func (c *Client) SetRepositoryPolicyWithContext(ctx context.Context, input *ecr.
 func (c *Client) StartLifecyclePolicyPreviewWithContext(ctx context.Context, input *ecr.StartLifecyclePolicyPreviewInput, opts ...request.Option) (*ecr.StartLifecyclePolicyPreviewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "StartLifecyclePolicyPreviewWithContext",
+		Action:  "StartLifecyclePolicyPreview",
 		Input:   input,
 		Output:  (*ecr.StartLifecyclePolicyPreviewOutput)(nil),
 		Error:   nil,
@@ -540,7 +540,7 @@ func (c *Client) StartLifecyclePolicyPreviewWithContext(ctx context.Context, inp
 func (c *Client) TagResourceWithContext(ctx context.Context, input *ecr.TagResourceInput, opts ...request.Option) (*ecr.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*ecr.TagResourceOutput)(nil),
 		Error:   nil,
@@ -561,7 +561,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *ecr.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *ecr.UntagResourceInput, opts ...request.Option) (*ecr.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*ecr.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -582,7 +582,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *ecr.UntagR
 func (c *Client) UploadLayerPartWithContext(ctx context.Context, input *ecr.UploadLayerPartInput, opts ...request.Option) (*ecr.UploadLayerPartOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
-		Action:  "UploadLayerPartWithContext",
+		Action:  "UploadLayerPart",
 		Input:   input,
 		Output:  (*ecr.UploadLayerPartOutput)(nil),
 		Error:   nil,

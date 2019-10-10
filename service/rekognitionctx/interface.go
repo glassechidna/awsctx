@@ -65,7 +65,7 @@ var _ Rekognition = (*Client)(nil)
 func (c *Client) CompareFacesWithContext(ctx context.Context, input *rekognition.CompareFacesInput, opts ...request.Option) (*rekognition.CompareFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "CompareFacesWithContext",
+		Action:  "CompareFaces",
 		Input:   input,
 		Output:  (*rekognition.CompareFacesOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) CompareFacesWithContext(ctx context.Context, input *rekognition
 func (c *Client) CreateCollectionWithContext(ctx context.Context, input *rekognition.CreateCollectionInput, opts ...request.Option) (*rekognition.CreateCollectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "CreateCollectionWithContext",
+		Action:  "CreateCollection",
 		Input:   input,
 		Output:  (*rekognition.CreateCollectionOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) CreateCollectionWithContext(ctx context.Context, input *rekogni
 func (c *Client) CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "CreateStreamProcessorWithContext",
+		Action:  "CreateStreamProcessor",
 		Input:   input,
 		Output:  (*rekognition.CreateStreamProcessorOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) CreateStreamProcessorWithContext(ctx context.Context, input *re
 func (c *Client) DeleteCollectionWithContext(ctx context.Context, input *rekognition.DeleteCollectionInput, opts ...request.Option) (*rekognition.DeleteCollectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DeleteCollectionWithContext",
+		Action:  "DeleteCollection",
 		Input:   input,
 		Output:  (*rekognition.DeleteCollectionOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) DeleteCollectionWithContext(ctx context.Context, input *rekogni
 func (c *Client) DeleteFacesWithContext(ctx context.Context, input *rekognition.DeleteFacesInput, opts ...request.Option) (*rekognition.DeleteFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DeleteFacesWithContext",
+		Action:  "DeleteFaces",
 		Input:   input,
 		Output:  (*rekognition.DeleteFacesOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) DeleteFacesWithContext(ctx context.Context, input *rekognition.
 func (c *Client) DeleteStreamProcessorWithContext(ctx context.Context, input *rekognition.DeleteStreamProcessorInput, opts ...request.Option) (*rekognition.DeleteStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DeleteStreamProcessorWithContext",
+		Action:  "DeleteStreamProcessor",
 		Input:   input,
 		Output:  (*rekognition.DeleteStreamProcessorOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) DeleteStreamProcessorWithContext(ctx context.Context, input *re
 func (c *Client) DescribeCollectionWithContext(ctx context.Context, input *rekognition.DescribeCollectionInput, opts ...request.Option) (*rekognition.DescribeCollectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DescribeCollectionWithContext",
+		Action:  "DescribeCollection",
 		Input:   input,
 		Output:  (*rekognition.DescribeCollectionOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) DescribeCollectionWithContext(ctx context.Context, input *rekog
 func (c *Client) DescribeStreamProcessorWithContext(ctx context.Context, input *rekognition.DescribeStreamProcessorInput, opts ...request.Option) (*rekognition.DescribeStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DescribeStreamProcessorWithContext",
+		Action:  "DescribeStreamProcessor",
 		Input:   input,
 		Output:  (*rekognition.DescribeStreamProcessorOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) DescribeStreamProcessorWithContext(ctx context.Context, input *
 func (c *Client) DetectFacesWithContext(ctx context.Context, input *rekognition.DetectFacesInput, opts ...request.Option) (*rekognition.DetectFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DetectFacesWithContext",
+		Action:  "DetectFaces",
 		Input:   input,
 		Output:  (*rekognition.DetectFacesOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) DetectFacesWithContext(ctx context.Context, input *rekognition.
 func (c *Client) DetectLabelsWithContext(ctx context.Context, input *rekognition.DetectLabelsInput, opts ...request.Option) (*rekognition.DetectLabelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DetectLabelsWithContext",
+		Action:  "DetectLabels",
 		Input:   input,
 		Output:  (*rekognition.DetectLabelsOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) DetectLabelsWithContext(ctx context.Context, input *rekognition
 func (c *Client) DetectModerationLabelsWithContext(ctx context.Context, input *rekognition.DetectModerationLabelsInput, opts ...request.Option) (*rekognition.DetectModerationLabelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DetectModerationLabelsWithContext",
+		Action:  "DetectModerationLabels",
 		Input:   input,
 		Output:  (*rekognition.DetectModerationLabelsOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) DetectModerationLabelsWithContext(ctx context.Context, input *r
 func (c *Client) DetectTextWithContext(ctx context.Context, input *rekognition.DetectTextInput, opts ...request.Option) (*rekognition.DetectTextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "DetectTextWithContext",
+		Action:  "DetectText",
 		Input:   input,
 		Output:  (*rekognition.DetectTextOutput)(nil),
 		Error:   nil,
@@ -317,7 +317,7 @@ func (c *Client) DetectTextWithContext(ctx context.Context, input *rekognition.D
 func (c *Client) GetCelebrityInfoWithContext(ctx context.Context, input *rekognition.GetCelebrityInfoInput, opts ...request.Option) (*rekognition.GetCelebrityInfoOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetCelebrityInfoWithContext",
+		Action:  "GetCelebrityInfo",
 		Input:   input,
 		Output:  (*rekognition.GetCelebrityInfoOutput)(nil),
 		Error:   nil,
@@ -338,7 +338,7 @@ func (c *Client) GetCelebrityInfoWithContext(ctx context.Context, input *rekogni
 func (c *Client) GetCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, opts ...request.Option) (*rekognition.GetCelebrityRecognitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetCelebrityRecognitionWithContext",
+		Action:  "GetCelebrityRecognition",
 		Input:   input,
 		Output:  (*rekognition.GetCelebrityRecognitionOutput)(nil),
 		Error:   nil,
@@ -359,7 +359,7 @@ func (c *Client) GetCelebrityRecognitionWithContext(ctx context.Context, input *
 func (c *Client) GetContentModerationWithContext(ctx context.Context, input *rekognition.GetContentModerationInput, opts ...request.Option) (*rekognition.GetContentModerationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetContentModerationWithContext",
+		Action:  "GetContentModeration",
 		Input:   input,
 		Output:  (*rekognition.GetContentModerationOutput)(nil),
 		Error:   nil,
@@ -380,7 +380,7 @@ func (c *Client) GetContentModerationWithContext(ctx context.Context, input *rek
 func (c *Client) GetFaceDetectionWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, opts ...request.Option) (*rekognition.GetFaceDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetFaceDetectionWithContext",
+		Action:  "GetFaceDetection",
 		Input:   input,
 		Output:  (*rekognition.GetFaceDetectionOutput)(nil),
 		Error:   nil,
@@ -401,7 +401,7 @@ func (c *Client) GetFaceDetectionWithContext(ctx context.Context, input *rekogni
 func (c *Client) GetFaceSearchWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, opts ...request.Option) (*rekognition.GetFaceSearchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetFaceSearchWithContext",
+		Action:  "GetFaceSearch",
 		Input:   input,
 		Output:  (*rekognition.GetFaceSearchOutput)(nil),
 		Error:   nil,
@@ -422,7 +422,7 @@ func (c *Client) GetFaceSearchWithContext(ctx context.Context, input *rekognitio
 func (c *Client) GetLabelDetectionWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, opts ...request.Option) (*rekognition.GetLabelDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetLabelDetectionWithContext",
+		Action:  "GetLabelDetection",
 		Input:   input,
 		Output:  (*rekognition.GetLabelDetectionOutput)(nil),
 		Error:   nil,
@@ -443,7 +443,7 @@ func (c *Client) GetLabelDetectionWithContext(ctx context.Context, input *rekogn
 func (c *Client) GetPersonTrackingWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, opts ...request.Option) (*rekognition.GetPersonTrackingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "GetPersonTrackingWithContext",
+		Action:  "GetPersonTracking",
 		Input:   input,
 		Output:  (*rekognition.GetPersonTrackingOutput)(nil),
 		Error:   nil,
@@ -464,7 +464,7 @@ func (c *Client) GetPersonTrackingWithContext(ctx context.Context, input *rekogn
 func (c *Client) IndexFacesWithContext(ctx context.Context, input *rekognition.IndexFacesInput, opts ...request.Option) (*rekognition.IndexFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "IndexFacesWithContext",
+		Action:  "IndexFaces",
 		Input:   input,
 		Output:  (*rekognition.IndexFacesOutput)(nil),
 		Error:   nil,
@@ -485,7 +485,7 @@ func (c *Client) IndexFacesWithContext(ctx context.Context, input *rekognition.I
 func (c *Client) ListCollectionsWithContext(ctx context.Context, input *rekognition.ListCollectionsInput, opts ...request.Option) (*rekognition.ListCollectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "ListCollectionsWithContext",
+		Action:  "ListCollections",
 		Input:   input,
 		Output:  (*rekognition.ListCollectionsOutput)(nil),
 		Error:   nil,
@@ -506,7 +506,7 @@ func (c *Client) ListCollectionsWithContext(ctx context.Context, input *rekognit
 func (c *Client) ListFacesWithContext(ctx context.Context, input *rekognition.ListFacesInput, opts ...request.Option) (*rekognition.ListFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "ListFacesWithContext",
+		Action:  "ListFaces",
 		Input:   input,
 		Output:  (*rekognition.ListFacesOutput)(nil),
 		Error:   nil,
@@ -527,7 +527,7 @@ func (c *Client) ListFacesWithContext(ctx context.Context, input *rekognition.Li
 func (c *Client) ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "ListStreamProcessorsWithContext",
+		Action:  "ListStreamProcessors",
 		Input:   input,
 		Output:  (*rekognition.ListStreamProcessorsOutput)(nil),
 		Error:   nil,
@@ -548,7 +548,7 @@ func (c *Client) ListStreamProcessorsWithContext(ctx context.Context, input *rek
 func (c *Client) RecognizeCelebritiesWithContext(ctx context.Context, input *rekognition.RecognizeCelebritiesInput, opts ...request.Option) (*rekognition.RecognizeCelebritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "RecognizeCelebritiesWithContext",
+		Action:  "RecognizeCelebrities",
 		Input:   input,
 		Output:  (*rekognition.RecognizeCelebritiesOutput)(nil),
 		Error:   nil,
@@ -569,7 +569,7 @@ func (c *Client) RecognizeCelebritiesWithContext(ctx context.Context, input *rek
 func (c *Client) SearchFacesWithContext(ctx context.Context, input *rekognition.SearchFacesInput, opts ...request.Option) (*rekognition.SearchFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "SearchFacesWithContext",
+		Action:  "SearchFaces",
 		Input:   input,
 		Output:  (*rekognition.SearchFacesOutput)(nil),
 		Error:   nil,
@@ -590,7 +590,7 @@ func (c *Client) SearchFacesWithContext(ctx context.Context, input *rekognition.
 func (c *Client) SearchFacesByImageWithContext(ctx context.Context, input *rekognition.SearchFacesByImageInput, opts ...request.Option) (*rekognition.SearchFacesByImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "SearchFacesByImageWithContext",
+		Action:  "SearchFacesByImage",
 		Input:   input,
 		Output:  (*rekognition.SearchFacesByImageOutput)(nil),
 		Error:   nil,
@@ -611,7 +611,7 @@ func (c *Client) SearchFacesByImageWithContext(ctx context.Context, input *rekog
 func (c *Client) StartCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.StartCelebrityRecognitionInput, opts ...request.Option) (*rekognition.StartCelebrityRecognitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartCelebrityRecognitionWithContext",
+		Action:  "StartCelebrityRecognition",
 		Input:   input,
 		Output:  (*rekognition.StartCelebrityRecognitionOutput)(nil),
 		Error:   nil,
@@ -632,7 +632,7 @@ func (c *Client) StartCelebrityRecognitionWithContext(ctx context.Context, input
 func (c *Client) StartContentModerationWithContext(ctx context.Context, input *rekognition.StartContentModerationInput, opts ...request.Option) (*rekognition.StartContentModerationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartContentModerationWithContext",
+		Action:  "StartContentModeration",
 		Input:   input,
 		Output:  (*rekognition.StartContentModerationOutput)(nil),
 		Error:   nil,
@@ -653,7 +653,7 @@ func (c *Client) StartContentModerationWithContext(ctx context.Context, input *r
 func (c *Client) StartFaceDetectionWithContext(ctx context.Context, input *rekognition.StartFaceDetectionInput, opts ...request.Option) (*rekognition.StartFaceDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartFaceDetectionWithContext",
+		Action:  "StartFaceDetection",
 		Input:   input,
 		Output:  (*rekognition.StartFaceDetectionOutput)(nil),
 		Error:   nil,
@@ -674,7 +674,7 @@ func (c *Client) StartFaceDetectionWithContext(ctx context.Context, input *rekog
 func (c *Client) StartFaceSearchWithContext(ctx context.Context, input *rekognition.StartFaceSearchInput, opts ...request.Option) (*rekognition.StartFaceSearchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartFaceSearchWithContext",
+		Action:  "StartFaceSearch",
 		Input:   input,
 		Output:  (*rekognition.StartFaceSearchOutput)(nil),
 		Error:   nil,
@@ -695,7 +695,7 @@ func (c *Client) StartFaceSearchWithContext(ctx context.Context, input *rekognit
 func (c *Client) StartLabelDetectionWithContext(ctx context.Context, input *rekognition.StartLabelDetectionInput, opts ...request.Option) (*rekognition.StartLabelDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartLabelDetectionWithContext",
+		Action:  "StartLabelDetection",
 		Input:   input,
 		Output:  (*rekognition.StartLabelDetectionOutput)(nil),
 		Error:   nil,
@@ -716,7 +716,7 @@ func (c *Client) StartLabelDetectionWithContext(ctx context.Context, input *reko
 func (c *Client) StartPersonTrackingWithContext(ctx context.Context, input *rekognition.StartPersonTrackingInput, opts ...request.Option) (*rekognition.StartPersonTrackingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartPersonTrackingWithContext",
+		Action:  "StartPersonTracking",
 		Input:   input,
 		Output:  (*rekognition.StartPersonTrackingOutput)(nil),
 		Error:   nil,
@@ -737,7 +737,7 @@ func (c *Client) StartPersonTrackingWithContext(ctx context.Context, input *reko
 func (c *Client) StartStreamProcessorWithContext(ctx context.Context, input *rekognition.StartStreamProcessorInput, opts ...request.Option) (*rekognition.StartStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StartStreamProcessorWithContext",
+		Action:  "StartStreamProcessor",
 		Input:   input,
 		Output:  (*rekognition.StartStreamProcessorOutput)(nil),
 		Error:   nil,
@@ -758,7 +758,7 @@ func (c *Client) StartStreamProcessorWithContext(ctx context.Context, input *rek
 func (c *Client) StopStreamProcessorWithContext(ctx context.Context, input *rekognition.StopStreamProcessorInput, opts ...request.Option) (*rekognition.StopStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
-		Action:  "StopStreamProcessorWithContext",
+		Action:  "StopStreamProcessor",
 		Input:   input,
 		Output:  (*rekognition.StopStreamProcessorOutput)(nil),
 		Error:   nil,

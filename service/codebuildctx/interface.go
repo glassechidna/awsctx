@@ -50,7 +50,7 @@ var _ CodeBuild = (*Client)(nil)
 func (c *Client) BatchDeleteBuildsWithContext(ctx context.Context, input *codebuild.BatchDeleteBuildsInput, opts ...request.Option) (*codebuild.BatchDeleteBuildsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "BatchDeleteBuildsWithContext",
+		Action:  "BatchDeleteBuilds",
 		Input:   input,
 		Output:  (*codebuild.BatchDeleteBuildsOutput)(nil),
 		Error:   nil,
@@ -71,7 +71,7 @@ func (c *Client) BatchDeleteBuildsWithContext(ctx context.Context, input *codebu
 func (c *Client) BatchGetBuildsWithContext(ctx context.Context, input *codebuild.BatchGetBuildsInput, opts ...request.Option) (*codebuild.BatchGetBuildsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "BatchGetBuildsWithContext",
+		Action:  "BatchGetBuilds",
 		Input:   input,
 		Output:  (*codebuild.BatchGetBuildsOutput)(nil),
 		Error:   nil,
@@ -92,7 +92,7 @@ func (c *Client) BatchGetBuildsWithContext(ctx context.Context, input *codebuild
 func (c *Client) BatchGetProjectsWithContext(ctx context.Context, input *codebuild.BatchGetProjectsInput, opts ...request.Option) (*codebuild.BatchGetProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "BatchGetProjectsWithContext",
+		Action:  "BatchGetProjects",
 		Input:   input,
 		Output:  (*codebuild.BatchGetProjectsOutput)(nil),
 		Error:   nil,
@@ -113,7 +113,7 @@ func (c *Client) BatchGetProjectsWithContext(ctx context.Context, input *codebui
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *codebuild.CreateProjectInput, opts ...request.Option) (*codebuild.CreateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "CreateProjectWithContext",
+		Action:  "CreateProject",
 		Input:   input,
 		Output:  (*codebuild.CreateProjectOutput)(nil),
 		Error:   nil,
@@ -134,7 +134,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, input *codebuild.
 func (c *Client) CreateWebhookWithContext(ctx context.Context, input *codebuild.CreateWebhookInput, opts ...request.Option) (*codebuild.CreateWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "CreateWebhookWithContext",
+		Action:  "CreateWebhook",
 		Input:   input,
 		Output:  (*codebuild.CreateWebhookOutput)(nil),
 		Error:   nil,
@@ -155,7 +155,7 @@ func (c *Client) CreateWebhookWithContext(ctx context.Context, input *codebuild.
 func (c *Client) DeleteProjectWithContext(ctx context.Context, input *codebuild.DeleteProjectInput, opts ...request.Option) (*codebuild.DeleteProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "DeleteProjectWithContext",
+		Action:  "DeleteProject",
 		Input:   input,
 		Output:  (*codebuild.DeleteProjectOutput)(nil),
 		Error:   nil,
@@ -176,7 +176,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, input *codebuild.
 func (c *Client) DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "DeleteSourceCredentialsWithContext",
+		Action:  "DeleteSourceCredentials",
 		Input:   input,
 		Output:  (*codebuild.DeleteSourceCredentialsOutput)(nil),
 		Error:   nil,
@@ -197,7 +197,7 @@ func (c *Client) DeleteSourceCredentialsWithContext(ctx context.Context, input *
 func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *codebuild.DeleteWebhookInput, opts ...request.Option) (*codebuild.DeleteWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "DeleteWebhookWithContext",
+		Action:  "DeleteWebhook",
 		Input:   input,
 		Output:  (*codebuild.DeleteWebhookOutput)(nil),
 		Error:   nil,
@@ -218,7 +218,7 @@ func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *codebuild.
 func (c *Client) ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "ImportSourceCredentialsWithContext",
+		Action:  "ImportSourceCredentials",
 		Input:   input,
 		Output:  (*codebuild.ImportSourceCredentialsOutput)(nil),
 		Error:   nil,
@@ -239,7 +239,7 @@ func (c *Client) ImportSourceCredentialsWithContext(ctx context.Context, input *
 func (c *Client) InvalidateProjectCacheWithContext(ctx context.Context, input *codebuild.InvalidateProjectCacheInput, opts ...request.Option) (*codebuild.InvalidateProjectCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "InvalidateProjectCacheWithContext",
+		Action:  "InvalidateProjectCache",
 		Input:   input,
 		Output:  (*codebuild.InvalidateProjectCacheOutput)(nil),
 		Error:   nil,
@@ -260,7 +260,7 @@ func (c *Client) InvalidateProjectCacheWithContext(ctx context.Context, input *c
 func (c *Client) ListBuildsWithContext(ctx context.Context, input *codebuild.ListBuildsInput, opts ...request.Option) (*codebuild.ListBuildsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "ListBuildsWithContext",
+		Action:  "ListBuilds",
 		Input:   input,
 		Output:  (*codebuild.ListBuildsOutput)(nil),
 		Error:   nil,
@@ -281,7 +281,7 @@ func (c *Client) ListBuildsWithContext(ctx context.Context, input *codebuild.Lis
 func (c *Client) ListBuildsForProjectWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, opts ...request.Option) (*codebuild.ListBuildsForProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "ListBuildsForProjectWithContext",
+		Action:  "ListBuildsForProject",
 		Input:   input,
 		Output:  (*codebuild.ListBuildsForProjectOutput)(nil),
 		Error:   nil,
@@ -302,7 +302,7 @@ func (c *Client) ListBuildsForProjectWithContext(ctx context.Context, input *cod
 func (c *Client) ListCuratedEnvironmentImagesWithContext(ctx context.Context, input *codebuild.ListCuratedEnvironmentImagesInput, opts ...request.Option) (*codebuild.ListCuratedEnvironmentImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "ListCuratedEnvironmentImagesWithContext",
+		Action:  "ListCuratedEnvironmentImages",
 		Input:   input,
 		Output:  (*codebuild.ListCuratedEnvironmentImagesOutput)(nil),
 		Error:   nil,
@@ -323,7 +323,7 @@ func (c *Client) ListCuratedEnvironmentImagesWithContext(ctx context.Context, in
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *codebuild.ListProjectsInput, opts ...request.Option) (*codebuild.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "ListProjectsWithContext",
+		Action:  "ListProjects",
 		Input:   input,
 		Output:  (*codebuild.ListProjectsOutput)(nil),
 		Error:   nil,
@@ -344,7 +344,7 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *codebuild.L
 func (c *Client) ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "ListSourceCredentialsWithContext",
+		Action:  "ListSourceCredentials",
 		Input:   input,
 		Output:  (*codebuild.ListSourceCredentialsOutput)(nil),
 		Error:   nil,
@@ -365,7 +365,7 @@ func (c *Client) ListSourceCredentialsWithContext(ctx context.Context, input *co
 func (c *Client) StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "StartBuildWithContext",
+		Action:  "StartBuild",
 		Input:   input,
 		Output:  (*codebuild.StartBuildOutput)(nil),
 		Error:   nil,
@@ -386,7 +386,7 @@ func (c *Client) StartBuildWithContext(ctx context.Context, input *codebuild.Sta
 func (c *Client) StopBuildWithContext(ctx context.Context, input *codebuild.StopBuildInput, opts ...request.Option) (*codebuild.StopBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "StopBuildWithContext",
+		Action:  "StopBuild",
 		Input:   input,
 		Output:  (*codebuild.StopBuildOutput)(nil),
 		Error:   nil,
@@ -407,7 +407,7 @@ func (c *Client) StopBuildWithContext(ctx context.Context, input *codebuild.Stop
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codebuild.UpdateProjectInput, opts ...request.Option) (*codebuild.UpdateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "UpdateProjectWithContext",
+		Action:  "UpdateProject",
 		Input:   input,
 		Output:  (*codebuild.UpdateProjectOutput)(nil),
 		Error:   nil,
@@ -428,7 +428,7 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codebuild.
 func (c *Client) UpdateWebhookWithContext(ctx context.Context, input *codebuild.UpdateWebhookInput, opts ...request.Option) (*codebuild.UpdateWebhookOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
-		Action:  "UpdateWebhookWithContext",
+		Action:  "UpdateWebhook",
 		Input:   input,
 		Output:  (*codebuild.UpdateWebhookOutput)(nil),
 		Error:   nil,

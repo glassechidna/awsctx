@@ -47,7 +47,7 @@ var _ ServiceQuotas = (*Client)(nil)
 func (c *Client) AssociateServiceQuotaTemplateWithContext(ctx context.Context, input *servicequotas.AssociateServiceQuotaTemplateInput, opts ...request.Option) (*servicequotas.AssociateServiceQuotaTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "AssociateServiceQuotaTemplateWithContext",
+		Action:  "AssociateServiceQuotaTemplate",
 		Input:   input,
 		Output:  (*servicequotas.AssociateServiceQuotaTemplateOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) AssociateServiceQuotaTemplateWithContext(ctx context.Context, i
 func (c *Client) DeleteServiceQuotaIncreaseRequestFromTemplateWithContext(ctx context.Context, input *servicequotas.DeleteServiceQuotaIncreaseRequestFromTemplateInput, opts ...request.Option) (*servicequotas.DeleteServiceQuotaIncreaseRequestFromTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "DeleteServiceQuotaIncreaseRequestFromTemplateWithContext",
+		Action:  "DeleteServiceQuotaIncreaseRequestFromTemplate",
 		Input:   input,
 		Output:  (*servicequotas.DeleteServiceQuotaIncreaseRequestFromTemplateOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) DeleteServiceQuotaIncreaseRequestFromTemplateWithContext(ctx co
 func (c *Client) DisassociateServiceQuotaTemplateWithContext(ctx context.Context, input *servicequotas.DisassociateServiceQuotaTemplateInput, opts ...request.Option) (*servicequotas.DisassociateServiceQuotaTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "DisassociateServiceQuotaTemplateWithContext",
+		Action:  "DisassociateServiceQuotaTemplate",
 		Input:   input,
 		Output:  (*servicequotas.DisassociateServiceQuotaTemplateOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) DisassociateServiceQuotaTemplateWithContext(ctx context.Context
 func (c *Client) GetAWSDefaultServiceQuotaWithContext(ctx context.Context, input *servicequotas.GetAWSDefaultServiceQuotaInput, opts ...request.Option) (*servicequotas.GetAWSDefaultServiceQuotaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "GetAWSDefaultServiceQuotaWithContext",
+		Action:  "GetAWSDefaultServiceQuota",
 		Input:   input,
 		Output:  (*servicequotas.GetAWSDefaultServiceQuotaOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) GetAWSDefaultServiceQuotaWithContext(ctx context.Context, input
 func (c *Client) GetAssociationForServiceQuotaTemplateWithContext(ctx context.Context, input *servicequotas.GetAssociationForServiceQuotaTemplateInput, opts ...request.Option) (*servicequotas.GetAssociationForServiceQuotaTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "GetAssociationForServiceQuotaTemplateWithContext",
+		Action:  "GetAssociationForServiceQuotaTemplate",
 		Input:   input,
 		Output:  (*servicequotas.GetAssociationForServiceQuotaTemplateOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) GetAssociationForServiceQuotaTemplateWithContext(ctx context.Co
 func (c *Client) GetRequestedServiceQuotaChangeWithContext(ctx context.Context, input *servicequotas.GetRequestedServiceQuotaChangeInput, opts ...request.Option) (*servicequotas.GetRequestedServiceQuotaChangeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "GetRequestedServiceQuotaChangeWithContext",
+		Action:  "GetRequestedServiceQuotaChange",
 		Input:   input,
 		Output:  (*servicequotas.GetRequestedServiceQuotaChangeOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) GetRequestedServiceQuotaChangeWithContext(ctx context.Context, 
 func (c *Client) GetServiceQuotaWithContext(ctx context.Context, input *servicequotas.GetServiceQuotaInput, opts ...request.Option) (*servicequotas.GetServiceQuotaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "GetServiceQuotaWithContext",
+		Action:  "GetServiceQuota",
 		Input:   input,
 		Output:  (*servicequotas.GetServiceQuotaOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) GetServiceQuotaWithContext(ctx context.Context, input *serviceq
 func (c *Client) GetServiceQuotaIncreaseRequestFromTemplateWithContext(ctx context.Context, input *servicequotas.GetServiceQuotaIncreaseRequestFromTemplateInput, opts ...request.Option) (*servicequotas.GetServiceQuotaIncreaseRequestFromTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "GetServiceQuotaIncreaseRequestFromTemplateWithContext",
+		Action:  "GetServiceQuotaIncreaseRequestFromTemplate",
 		Input:   input,
 		Output:  (*servicequotas.GetServiceQuotaIncreaseRequestFromTemplateOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) GetServiceQuotaIncreaseRequestFromTemplateWithContext(ctx conte
 func (c *Client) ListAWSDefaultServiceQuotasWithContext(ctx context.Context, input *servicequotas.ListAWSDefaultServiceQuotasInput, opts ...request.Option) (*servicequotas.ListAWSDefaultServiceQuotasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "ListAWSDefaultServiceQuotasWithContext",
+		Action:  "ListAWSDefaultServiceQuotas",
 		Input:   input,
 		Output:  (*servicequotas.ListAWSDefaultServiceQuotasOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) ListAWSDefaultServiceQuotasWithContext(ctx context.Context, inp
 func (c *Client) ListRequestedServiceQuotaChangeHistoryWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryInput, opts ...request.Option) (*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "ListRequestedServiceQuotaChangeHistoryWithContext",
+		Action:  "ListRequestedServiceQuotaChangeHistory",
 		Input:   input,
 		Output:  (*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) ListRequestedServiceQuotaChangeHistoryWithContext(ctx context.C
 func (c *Client) ListRequestedServiceQuotaChangeHistoryByQuotaWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaInput, opts ...request.Option) (*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "ListRequestedServiceQuotaChangeHistoryByQuotaWithContext",
+		Action:  "ListRequestedServiceQuotaChangeHistoryByQuota",
 		Input:   input,
 		Output:  (*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) ListRequestedServiceQuotaChangeHistoryByQuotaWithContext(ctx co
 func (c *Client) ListServiceQuotaIncreaseRequestsInTemplateWithContext(ctx context.Context, input *servicequotas.ListServiceQuotaIncreaseRequestsInTemplateInput, opts ...request.Option) (*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "ListServiceQuotaIncreaseRequestsInTemplateWithContext",
+		Action:  "ListServiceQuotaIncreaseRequestsInTemplate",
 		Input:   input,
 		Output:  (*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) ListServiceQuotaIncreaseRequestsInTemplateWithContext(ctx conte
 func (c *Client) ListServiceQuotasWithContext(ctx context.Context, input *servicequotas.ListServiceQuotasInput, opts ...request.Option) (*servicequotas.ListServiceQuotasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "ListServiceQuotasWithContext",
+		Action:  "ListServiceQuotas",
 		Input:   input,
 		Output:  (*servicequotas.ListServiceQuotasOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) ListServiceQuotasWithContext(ctx context.Context, input *servic
 func (c *Client) ListServicesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, opts ...request.Option) (*servicequotas.ListServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "ListServicesWithContext",
+		Action:  "ListServices",
 		Input:   input,
 		Output:  (*servicequotas.ListServicesOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) ListServicesWithContext(ctx context.Context, input *servicequot
 func (c *Client) PutServiceQuotaIncreaseRequestIntoTemplateWithContext(ctx context.Context, input *servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateInput, opts ...request.Option) (*servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "PutServiceQuotaIncreaseRequestIntoTemplateWithContext",
+		Action:  "PutServiceQuotaIncreaseRequestIntoTemplate",
 		Input:   input,
 		Output:  (*servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) PutServiceQuotaIncreaseRequestIntoTemplateWithContext(ctx conte
 func (c *Client) RequestServiceQuotaIncreaseWithContext(ctx context.Context, input *servicequotas.RequestServiceQuotaIncreaseInput, opts ...request.Option) (*servicequotas.RequestServiceQuotaIncreaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
-		Action:  "RequestServiceQuotaIncreaseWithContext",
+		Action:  "RequestServiceQuotaIncrease",
 		Input:   input,
 		Output:  (*servicequotas.RequestServiceQuotaIncreaseOutput)(nil),
 		Error:   nil,

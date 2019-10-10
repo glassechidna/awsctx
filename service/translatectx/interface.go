@@ -36,7 +36,7 @@ var _ Translate = (*Client)(nil)
 func (c *Client) DeleteTerminologyWithContext(ctx context.Context, input *translate.DeleteTerminologyInput, opts ...request.Option) (*translate.DeleteTerminologyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
-		Action:  "DeleteTerminologyWithContext",
+		Action:  "DeleteTerminology",
 		Input:   input,
 		Output:  (*translate.DeleteTerminologyOutput)(nil),
 		Error:   nil,
@@ -57,7 +57,7 @@ func (c *Client) DeleteTerminologyWithContext(ctx context.Context, input *transl
 func (c *Client) GetTerminologyWithContext(ctx context.Context, input *translate.GetTerminologyInput, opts ...request.Option) (*translate.GetTerminologyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
-		Action:  "GetTerminologyWithContext",
+		Action:  "GetTerminology",
 		Input:   input,
 		Output:  (*translate.GetTerminologyOutput)(nil),
 		Error:   nil,
@@ -78,7 +78,7 @@ func (c *Client) GetTerminologyWithContext(ctx context.Context, input *translate
 func (c *Client) ImportTerminologyWithContext(ctx context.Context, input *translate.ImportTerminologyInput, opts ...request.Option) (*translate.ImportTerminologyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
-		Action:  "ImportTerminologyWithContext",
+		Action:  "ImportTerminology",
 		Input:   input,
 		Output:  (*translate.ImportTerminologyOutput)(nil),
 		Error:   nil,
@@ -99,7 +99,7 @@ func (c *Client) ImportTerminologyWithContext(ctx context.Context, input *transl
 func (c *Client) ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
-		Action:  "ListTerminologiesWithContext",
+		Action:  "ListTerminologies",
 		Input:   input,
 		Output:  (*translate.ListTerminologiesOutput)(nil),
 		Error:   nil,
@@ -120,7 +120,7 @@ func (c *Client) ListTerminologiesWithContext(ctx context.Context, input *transl
 func (c *Client) TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
-		Action:  "TextWithContext",
+		Action:  "Text",
 		Input:   input,
 		Output:  (*translate.TextOutput)(nil),
 		Error:   nil,

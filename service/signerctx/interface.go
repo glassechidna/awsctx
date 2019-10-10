@@ -40,7 +40,7 @@ var _ Signer = (*Client)(nil)
 func (c *Client) CancelSigningProfileWithContext(ctx context.Context, input *signer.CancelSigningProfileInput, opts ...request.Option) (*signer.CancelSigningProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "CancelSigningProfileWithContext",
+		Action:  "CancelSigningProfile",
 		Input:   input,
 		Output:  (*signer.CancelSigningProfileOutput)(nil),
 		Error:   nil,
@@ -61,7 +61,7 @@ func (c *Client) CancelSigningProfileWithContext(ctx context.Context, input *sig
 func (c *Client) DescribeSigningJobWithContext(ctx context.Context, input *signer.DescribeSigningJobInput, opts ...request.Option) (*signer.DescribeSigningJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "DescribeSigningJobWithContext",
+		Action:  "DescribeSigningJob",
 		Input:   input,
 		Output:  (*signer.DescribeSigningJobOutput)(nil),
 		Error:   nil,
@@ -82,7 +82,7 @@ func (c *Client) DescribeSigningJobWithContext(ctx context.Context, input *signe
 func (c *Client) GetSigningPlatformWithContext(ctx context.Context, input *signer.GetSigningPlatformInput, opts ...request.Option) (*signer.GetSigningPlatformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "GetSigningPlatformWithContext",
+		Action:  "GetSigningPlatform",
 		Input:   input,
 		Output:  (*signer.GetSigningPlatformOutput)(nil),
 		Error:   nil,
@@ -103,7 +103,7 @@ func (c *Client) GetSigningPlatformWithContext(ctx context.Context, input *signe
 func (c *Client) GetSigningProfileWithContext(ctx context.Context, input *signer.GetSigningProfileInput, opts ...request.Option) (*signer.GetSigningProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "GetSigningProfileWithContext",
+		Action:  "GetSigningProfile",
 		Input:   input,
 		Output:  (*signer.GetSigningProfileOutput)(nil),
 		Error:   nil,
@@ -124,7 +124,7 @@ func (c *Client) GetSigningProfileWithContext(ctx context.Context, input *signer
 func (c *Client) ListSigningJobsWithContext(ctx context.Context, input *signer.ListSigningJobsInput, opts ...request.Option) (*signer.ListSigningJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "ListSigningJobsWithContext",
+		Action:  "ListSigningJobs",
 		Input:   input,
 		Output:  (*signer.ListSigningJobsOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) ListSigningJobsWithContext(ctx context.Context, input *signer.L
 func (c *Client) ListSigningPlatformsWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, opts ...request.Option) (*signer.ListSigningPlatformsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "ListSigningPlatformsWithContext",
+		Action:  "ListSigningPlatforms",
 		Input:   input,
 		Output:  (*signer.ListSigningPlatformsOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) ListSigningPlatformsWithContext(ctx context.Context, input *sig
 func (c *Client) ListSigningProfilesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, opts ...request.Option) (*signer.ListSigningProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "ListSigningProfilesWithContext",
+		Action:  "ListSigningProfiles",
 		Input:   input,
 		Output:  (*signer.ListSigningProfilesOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) ListSigningProfilesWithContext(ctx context.Context, input *sign
 func (c *Client) PutSigningProfileWithContext(ctx context.Context, input *signer.PutSigningProfileInput, opts ...request.Option) (*signer.PutSigningProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "PutSigningProfileWithContext",
+		Action:  "PutSigningProfile",
 		Input:   input,
 		Output:  (*signer.PutSigningProfileOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) PutSigningProfileWithContext(ctx context.Context, input *signer
 func (c *Client) StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
-		Action:  "StartSigningJobWithContext",
+		Action:  "StartSigningJob",
 		Input:   input,
 		Output:  (*signer.StartSigningJobOutput)(nil),
 		Error:   nil,

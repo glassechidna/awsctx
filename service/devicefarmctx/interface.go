@@ -98,7 +98,7 @@ var _ DeviceFarm = (*Client)(nil)
 func (c *Client) CreateDevicePoolWithContext(ctx context.Context, input *devicefarm.CreateDevicePoolInput, opts ...request.Option) (*devicefarm.CreateDevicePoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateDevicePoolWithContext",
+		Action:  "CreateDevicePool",
 		Input:   input,
 		Output:  (*devicefarm.CreateDevicePoolOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) CreateDevicePoolWithContext(ctx context.Context, input *devicef
 func (c *Client) CreateInstanceProfileWithContext(ctx context.Context, input *devicefarm.CreateInstanceProfileInput, opts ...request.Option) (*devicefarm.CreateInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateInstanceProfileWithContext",
+		Action:  "CreateInstanceProfile",
 		Input:   input,
 		Output:  (*devicefarm.CreateInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) CreateInstanceProfileWithContext(ctx context.Context, input *de
 func (c *Client) CreateNetworkProfileWithContext(ctx context.Context, input *devicefarm.CreateNetworkProfileInput, opts ...request.Option) (*devicefarm.CreateNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateNetworkProfileWithContext",
+		Action:  "CreateNetworkProfile",
 		Input:   input,
 		Output:  (*devicefarm.CreateNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) CreateNetworkProfileWithContext(ctx context.Context, input *dev
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *devicefarm.CreateProjectInput, opts ...request.Option) (*devicefarm.CreateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateProjectWithContext",
+		Action:  "CreateProject",
 		Input:   input,
 		Output:  (*devicefarm.CreateProjectOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, input *devicefarm
 func (c *Client) CreateRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.CreateRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.CreateRemoteAccessSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateRemoteAccessSessionWithContext",
+		Action:  "CreateRemoteAccessSession",
 		Input:   input,
 		Output:  (*devicefarm.CreateRemoteAccessSessionOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) CreateRemoteAccessSessionWithContext(ctx context.Context, input
 func (c *Client) CreateUploadWithContext(ctx context.Context, input *devicefarm.CreateUploadInput, opts ...request.Option) (*devicefarm.CreateUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateUploadWithContext",
+		Action:  "CreateUpload",
 		Input:   input,
 		Output:  (*devicefarm.CreateUploadOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) CreateUploadWithContext(ctx context.Context, input *devicefarm.
 func (c *Client) CreateVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.CreateVPCEConfigurationInput, opts ...request.Option) (*devicefarm.CreateVPCEConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "CreateVPCEConfigurationWithContext",
+		Action:  "CreateVPCEConfiguration",
 		Input:   input,
 		Output:  (*devicefarm.CreateVPCEConfigurationOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) CreateVPCEConfigurationWithContext(ctx context.Context, input *
 func (c *Client) DeleteDevicePoolWithContext(ctx context.Context, input *devicefarm.DeleteDevicePoolInput, opts ...request.Option) (*devicefarm.DeleteDevicePoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteDevicePoolWithContext",
+		Action:  "DeleteDevicePool",
 		Input:   input,
 		Output:  (*devicefarm.DeleteDevicePoolOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) DeleteDevicePoolWithContext(ctx context.Context, input *devicef
 func (c *Client) DeleteInstanceProfileWithContext(ctx context.Context, input *devicefarm.DeleteInstanceProfileInput, opts ...request.Option) (*devicefarm.DeleteInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteInstanceProfileWithContext",
+		Action:  "DeleteInstanceProfile",
 		Input:   input,
 		Output:  (*devicefarm.DeleteInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) DeleteInstanceProfileWithContext(ctx context.Context, input *de
 func (c *Client) DeleteNetworkProfileWithContext(ctx context.Context, input *devicefarm.DeleteNetworkProfileInput, opts ...request.Option) (*devicefarm.DeleteNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteNetworkProfileWithContext",
+		Action:  "DeleteNetworkProfile",
 		Input:   input,
 		Output:  (*devicefarm.DeleteNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) DeleteNetworkProfileWithContext(ctx context.Context, input *dev
 func (c *Client) DeleteProjectWithContext(ctx context.Context, input *devicefarm.DeleteProjectInput, opts ...request.Option) (*devicefarm.DeleteProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteProjectWithContext",
+		Action:  "DeleteProject",
 		Input:   input,
 		Output:  (*devicefarm.DeleteProjectOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, input *devicefarm
 func (c *Client) DeleteRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.DeleteRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.DeleteRemoteAccessSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteRemoteAccessSessionWithContext",
+		Action:  "DeleteRemoteAccessSession",
 		Input:   input,
 		Output:  (*devicefarm.DeleteRemoteAccessSessionOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) DeleteRemoteAccessSessionWithContext(ctx context.Context, input
 func (c *Client) DeleteRunWithContext(ctx context.Context, input *devicefarm.DeleteRunInput, opts ...request.Option) (*devicefarm.DeleteRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteRunWithContext",
+		Action:  "DeleteRun",
 		Input:   input,
 		Output:  (*devicefarm.DeleteRunOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) DeleteRunWithContext(ctx context.Context, input *devicefarm.Del
 func (c *Client) DeleteUploadWithContext(ctx context.Context, input *devicefarm.DeleteUploadInput, opts ...request.Option) (*devicefarm.DeleteUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteUploadWithContext",
+		Action:  "DeleteUpload",
 		Input:   input,
 		Output:  (*devicefarm.DeleteUploadOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) DeleteUploadWithContext(ctx context.Context, input *devicefarm.
 func (c *Client) DeleteVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.DeleteVPCEConfigurationInput, opts ...request.Option) (*devicefarm.DeleteVPCEConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "DeleteVPCEConfigurationWithContext",
+		Action:  "DeleteVPCEConfiguration",
 		Input:   input,
 		Output:  (*devicefarm.DeleteVPCEConfigurationOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) DeleteVPCEConfigurationWithContext(ctx context.Context, input *
 func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *devicefarm.GetAccountSettingsInput, opts ...request.Option) (*devicefarm.GetAccountSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetAccountSettingsWithContext",
+		Action:  "GetAccountSettings",
 		Input:   input,
 		Output:  (*devicefarm.GetAccountSettingsOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *devic
 func (c *Client) GetDeviceWithContext(ctx context.Context, input *devicefarm.GetDeviceInput, opts ...request.Option) (*devicefarm.GetDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetDeviceWithContext",
+		Action:  "GetDevice",
 		Input:   input,
 		Output:  (*devicefarm.GetDeviceOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) GetDeviceWithContext(ctx context.Context, input *devicefarm.Get
 func (c *Client) GetDeviceInstanceWithContext(ctx context.Context, input *devicefarm.GetDeviceInstanceInput, opts ...request.Option) (*devicefarm.GetDeviceInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetDeviceInstanceWithContext",
+		Action:  "GetDeviceInstance",
 		Input:   input,
 		Output:  (*devicefarm.GetDeviceInstanceOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) GetDeviceInstanceWithContext(ctx context.Context, input *device
 func (c *Client) GetDevicePoolWithContext(ctx context.Context, input *devicefarm.GetDevicePoolInput, opts ...request.Option) (*devicefarm.GetDevicePoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetDevicePoolWithContext",
+		Action:  "GetDevicePool",
 		Input:   input,
 		Output:  (*devicefarm.GetDevicePoolOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) GetDevicePoolWithContext(ctx context.Context, input *devicefarm
 func (c *Client) GetDevicePoolCompatibilityWithContext(ctx context.Context, input *devicefarm.GetDevicePoolCompatibilityInput, opts ...request.Option) (*devicefarm.GetDevicePoolCompatibilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetDevicePoolCompatibilityWithContext",
+		Action:  "GetDevicePoolCompatibility",
 		Input:   input,
 		Output:  (*devicefarm.GetDevicePoolCompatibilityOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) GetDevicePoolCompatibilityWithContext(ctx context.Context, inpu
 func (c *Client) GetInstanceProfileWithContext(ctx context.Context, input *devicefarm.GetInstanceProfileInput, opts ...request.Option) (*devicefarm.GetInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetInstanceProfileWithContext",
+		Action:  "GetInstanceProfile",
 		Input:   input,
 		Output:  (*devicefarm.GetInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) GetInstanceProfileWithContext(ctx context.Context, input *devic
 func (c *Client) GetJobWithContext(ctx context.Context, input *devicefarm.GetJobInput, opts ...request.Option) (*devicefarm.GetJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetJobWithContext",
+		Action:  "GetJob",
 		Input:   input,
 		Output:  (*devicefarm.GetJobOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) GetJobWithContext(ctx context.Context, input *devicefarm.GetJob
 func (c *Client) GetNetworkProfileWithContext(ctx context.Context, input *devicefarm.GetNetworkProfileInput, opts ...request.Option) (*devicefarm.GetNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetNetworkProfileWithContext",
+		Action:  "GetNetworkProfile",
 		Input:   input,
 		Output:  (*devicefarm.GetNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -581,7 +581,7 @@ func (c *Client) GetNetworkProfileWithContext(ctx context.Context, input *device
 func (c *Client) GetOfferingStatusWithContext(ctx context.Context, input *devicefarm.GetOfferingStatusInput, opts ...request.Option) (*devicefarm.GetOfferingStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetOfferingStatusWithContext",
+		Action:  "GetOfferingStatus",
 		Input:   input,
 		Output:  (*devicefarm.GetOfferingStatusOutput)(nil),
 		Error:   nil,
@@ -602,7 +602,7 @@ func (c *Client) GetOfferingStatusWithContext(ctx context.Context, input *device
 func (c *Client) GetProjectWithContext(ctx context.Context, input *devicefarm.GetProjectInput, opts ...request.Option) (*devicefarm.GetProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetProjectWithContext",
+		Action:  "GetProject",
 		Input:   input,
 		Output:  (*devicefarm.GetProjectOutput)(nil),
 		Error:   nil,
@@ -623,7 +623,7 @@ func (c *Client) GetProjectWithContext(ctx context.Context, input *devicefarm.Ge
 func (c *Client) GetRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.GetRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.GetRemoteAccessSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetRemoteAccessSessionWithContext",
+		Action:  "GetRemoteAccessSession",
 		Input:   input,
 		Output:  (*devicefarm.GetRemoteAccessSessionOutput)(nil),
 		Error:   nil,
@@ -644,7 +644,7 @@ func (c *Client) GetRemoteAccessSessionWithContext(ctx context.Context, input *d
 func (c *Client) GetRunWithContext(ctx context.Context, input *devicefarm.GetRunInput, opts ...request.Option) (*devicefarm.GetRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetRunWithContext",
+		Action:  "GetRun",
 		Input:   input,
 		Output:  (*devicefarm.GetRunOutput)(nil),
 		Error:   nil,
@@ -665,7 +665,7 @@ func (c *Client) GetRunWithContext(ctx context.Context, input *devicefarm.GetRun
 func (c *Client) GetSuiteWithContext(ctx context.Context, input *devicefarm.GetSuiteInput, opts ...request.Option) (*devicefarm.GetSuiteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetSuiteWithContext",
+		Action:  "GetSuite",
 		Input:   input,
 		Output:  (*devicefarm.GetSuiteOutput)(nil),
 		Error:   nil,
@@ -686,7 +686,7 @@ func (c *Client) GetSuiteWithContext(ctx context.Context, input *devicefarm.GetS
 func (c *Client) GetTestWithContext(ctx context.Context, input *devicefarm.GetTestInput, opts ...request.Option) (*devicefarm.GetTestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetTestWithContext",
+		Action:  "GetTest",
 		Input:   input,
 		Output:  (*devicefarm.GetTestOutput)(nil),
 		Error:   nil,
@@ -707,7 +707,7 @@ func (c *Client) GetTestWithContext(ctx context.Context, input *devicefarm.GetTe
 func (c *Client) GetUploadWithContext(ctx context.Context, input *devicefarm.GetUploadInput, opts ...request.Option) (*devicefarm.GetUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetUploadWithContext",
+		Action:  "GetUpload",
 		Input:   input,
 		Output:  (*devicefarm.GetUploadOutput)(nil),
 		Error:   nil,
@@ -728,7 +728,7 @@ func (c *Client) GetUploadWithContext(ctx context.Context, input *devicefarm.Get
 func (c *Client) GetVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.GetVPCEConfigurationInput, opts ...request.Option) (*devicefarm.GetVPCEConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "GetVPCEConfigurationWithContext",
+		Action:  "GetVPCEConfiguration",
 		Input:   input,
 		Output:  (*devicefarm.GetVPCEConfigurationOutput)(nil),
 		Error:   nil,
@@ -749,7 +749,7 @@ func (c *Client) GetVPCEConfigurationWithContext(ctx context.Context, input *dev
 func (c *Client) InstallToRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.InstallToRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.InstallToRemoteAccessSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "InstallToRemoteAccessSessionWithContext",
+		Action:  "InstallToRemoteAccessSession",
 		Input:   input,
 		Output:  (*devicefarm.InstallToRemoteAccessSessionOutput)(nil),
 		Error:   nil,
@@ -770,7 +770,7 @@ func (c *Client) InstallToRemoteAccessSessionWithContext(ctx context.Context, in
 func (c *Client) ListArtifactsWithContext(ctx context.Context, input *devicefarm.ListArtifactsInput, opts ...request.Option) (*devicefarm.ListArtifactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListArtifactsWithContext",
+		Action:  "ListArtifacts",
 		Input:   input,
 		Output:  (*devicefarm.ListArtifactsOutput)(nil),
 		Error:   nil,
@@ -791,7 +791,7 @@ func (c *Client) ListArtifactsWithContext(ctx context.Context, input *devicefarm
 func (c *Client) ListDeviceInstancesWithContext(ctx context.Context, input *devicefarm.ListDeviceInstancesInput, opts ...request.Option) (*devicefarm.ListDeviceInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListDeviceInstancesWithContext",
+		Action:  "ListDeviceInstances",
 		Input:   input,
 		Output:  (*devicefarm.ListDeviceInstancesOutput)(nil),
 		Error:   nil,
@@ -812,7 +812,7 @@ func (c *Client) ListDeviceInstancesWithContext(ctx context.Context, input *devi
 func (c *Client) ListDevicePoolsWithContext(ctx context.Context, input *devicefarm.ListDevicePoolsInput, opts ...request.Option) (*devicefarm.ListDevicePoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListDevicePoolsWithContext",
+		Action:  "ListDevicePools",
 		Input:   input,
 		Output:  (*devicefarm.ListDevicePoolsOutput)(nil),
 		Error:   nil,
@@ -833,7 +833,7 @@ func (c *Client) ListDevicePoolsWithContext(ctx context.Context, input *devicefa
 func (c *Client) ListDevicesWithContext(ctx context.Context, input *devicefarm.ListDevicesInput, opts ...request.Option) (*devicefarm.ListDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListDevicesWithContext",
+		Action:  "ListDevices",
 		Input:   input,
 		Output:  (*devicefarm.ListDevicesOutput)(nil),
 		Error:   nil,
@@ -854,7 +854,7 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, input *devicefarm.L
 func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *devicefarm.ListInstanceProfilesInput, opts ...request.Option) (*devicefarm.ListInstanceProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListInstanceProfilesWithContext",
+		Action:  "ListInstanceProfiles",
 		Input:   input,
 		Output:  (*devicefarm.ListInstanceProfilesOutput)(nil),
 		Error:   nil,
@@ -875,7 +875,7 @@ func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *dev
 func (c *Client) ListJobsWithContext(ctx context.Context, input *devicefarm.ListJobsInput, opts ...request.Option) (*devicefarm.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*devicefarm.ListJobsOutput)(nil),
 		Error:   nil,
@@ -896,7 +896,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *devicefarm.List
 func (c *Client) ListNetworkProfilesWithContext(ctx context.Context, input *devicefarm.ListNetworkProfilesInput, opts ...request.Option) (*devicefarm.ListNetworkProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListNetworkProfilesWithContext",
+		Action:  "ListNetworkProfiles",
 		Input:   input,
 		Output:  (*devicefarm.ListNetworkProfilesOutput)(nil),
 		Error:   nil,
@@ -917,7 +917,7 @@ func (c *Client) ListNetworkProfilesWithContext(ctx context.Context, input *devi
 func (c *Client) ListOfferingPromotionsWithContext(ctx context.Context, input *devicefarm.ListOfferingPromotionsInput, opts ...request.Option) (*devicefarm.ListOfferingPromotionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListOfferingPromotionsWithContext",
+		Action:  "ListOfferingPromotions",
 		Input:   input,
 		Output:  (*devicefarm.ListOfferingPromotionsOutput)(nil),
 		Error:   nil,
@@ -938,7 +938,7 @@ func (c *Client) ListOfferingPromotionsWithContext(ctx context.Context, input *d
 func (c *Client) ListOfferingTransactionsWithContext(ctx context.Context, input *devicefarm.ListOfferingTransactionsInput, opts ...request.Option) (*devicefarm.ListOfferingTransactionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListOfferingTransactionsWithContext",
+		Action:  "ListOfferingTransactions",
 		Input:   input,
 		Output:  (*devicefarm.ListOfferingTransactionsOutput)(nil),
 		Error:   nil,
@@ -959,7 +959,7 @@ func (c *Client) ListOfferingTransactionsWithContext(ctx context.Context, input 
 func (c *Client) ListOfferingsWithContext(ctx context.Context, input *devicefarm.ListOfferingsInput, opts ...request.Option) (*devicefarm.ListOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListOfferingsWithContext",
+		Action:  "ListOfferings",
 		Input:   input,
 		Output:  (*devicefarm.ListOfferingsOutput)(nil),
 		Error:   nil,
@@ -980,7 +980,7 @@ func (c *Client) ListOfferingsWithContext(ctx context.Context, input *devicefarm
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *devicefarm.ListProjectsInput, opts ...request.Option) (*devicefarm.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListProjectsWithContext",
+		Action:  "ListProjects",
 		Input:   input,
 		Output:  (*devicefarm.ListProjectsOutput)(nil),
 		Error:   nil,
@@ -1001,7 +1001,7 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *devicefarm.
 func (c *Client) ListRemoteAccessSessionsWithContext(ctx context.Context, input *devicefarm.ListRemoteAccessSessionsInput, opts ...request.Option) (*devicefarm.ListRemoteAccessSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListRemoteAccessSessionsWithContext",
+		Action:  "ListRemoteAccessSessions",
 		Input:   input,
 		Output:  (*devicefarm.ListRemoteAccessSessionsOutput)(nil),
 		Error:   nil,
@@ -1022,7 +1022,7 @@ func (c *Client) ListRemoteAccessSessionsWithContext(ctx context.Context, input 
 func (c *Client) ListRunsWithContext(ctx context.Context, input *devicefarm.ListRunsInput, opts ...request.Option) (*devicefarm.ListRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListRunsWithContext",
+		Action:  "ListRuns",
 		Input:   input,
 		Output:  (*devicefarm.ListRunsOutput)(nil),
 		Error:   nil,
@@ -1043,7 +1043,7 @@ func (c *Client) ListRunsWithContext(ctx context.Context, input *devicefarm.List
 func (c *Client) ListSamplesWithContext(ctx context.Context, input *devicefarm.ListSamplesInput, opts ...request.Option) (*devicefarm.ListSamplesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListSamplesWithContext",
+		Action:  "ListSamples",
 		Input:   input,
 		Output:  (*devicefarm.ListSamplesOutput)(nil),
 		Error:   nil,
@@ -1064,7 +1064,7 @@ func (c *Client) ListSamplesWithContext(ctx context.Context, input *devicefarm.L
 func (c *Client) ListSuitesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, opts ...request.Option) (*devicefarm.ListSuitesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListSuitesWithContext",
+		Action:  "ListSuites",
 		Input:   input,
 		Output:  (*devicefarm.ListSuitesOutput)(nil),
 		Error:   nil,
@@ -1085,7 +1085,7 @@ func (c *Client) ListSuitesWithContext(ctx context.Context, input *devicefarm.Li
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *devicefarm.ListTagsForResourceInput, opts ...request.Option) (*devicefarm.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*devicefarm.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1106,7 +1106,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *devi
 func (c *Client) ListTestsWithContext(ctx context.Context, input *devicefarm.ListTestsInput, opts ...request.Option) (*devicefarm.ListTestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListTestsWithContext",
+		Action:  "ListTests",
 		Input:   input,
 		Output:  (*devicefarm.ListTestsOutput)(nil),
 		Error:   nil,
@@ -1127,7 +1127,7 @@ func (c *Client) ListTestsWithContext(ctx context.Context, input *devicefarm.Lis
 func (c *Client) ListUniqueProblemsWithContext(ctx context.Context, input *devicefarm.ListUniqueProblemsInput, opts ...request.Option) (*devicefarm.ListUniqueProblemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListUniqueProblemsWithContext",
+		Action:  "ListUniqueProblems",
 		Input:   input,
 		Output:  (*devicefarm.ListUniqueProblemsOutput)(nil),
 		Error:   nil,
@@ -1148,7 +1148,7 @@ func (c *Client) ListUniqueProblemsWithContext(ctx context.Context, input *devic
 func (c *Client) ListUploadsWithContext(ctx context.Context, input *devicefarm.ListUploadsInput, opts ...request.Option) (*devicefarm.ListUploadsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListUploadsWithContext",
+		Action:  "ListUploads",
 		Input:   input,
 		Output:  (*devicefarm.ListUploadsOutput)(nil),
 		Error:   nil,
@@ -1169,7 +1169,7 @@ func (c *Client) ListUploadsWithContext(ctx context.Context, input *devicefarm.L
 func (c *Client) ListVPCEConfigurationsWithContext(ctx context.Context, input *devicefarm.ListVPCEConfigurationsInput, opts ...request.Option) (*devicefarm.ListVPCEConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ListVPCEConfigurationsWithContext",
+		Action:  "ListVPCEConfigurations",
 		Input:   input,
 		Output:  (*devicefarm.ListVPCEConfigurationsOutput)(nil),
 		Error:   nil,
@@ -1190,7 +1190,7 @@ func (c *Client) ListVPCEConfigurationsWithContext(ctx context.Context, input *d
 func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *devicefarm.PurchaseOfferingInput, opts ...request.Option) (*devicefarm.PurchaseOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "PurchaseOfferingWithContext",
+		Action:  "PurchaseOffering",
 		Input:   input,
 		Output:  (*devicefarm.PurchaseOfferingOutput)(nil),
 		Error:   nil,
@@ -1211,7 +1211,7 @@ func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *devicef
 func (c *Client) RenewOfferingWithContext(ctx context.Context, input *devicefarm.RenewOfferingInput, opts ...request.Option) (*devicefarm.RenewOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "RenewOfferingWithContext",
+		Action:  "RenewOffering",
 		Input:   input,
 		Output:  (*devicefarm.RenewOfferingOutput)(nil),
 		Error:   nil,
@@ -1232,7 +1232,7 @@ func (c *Client) RenewOfferingWithContext(ctx context.Context, input *devicefarm
 func (c *Client) ScheduleRunWithContext(ctx context.Context, input *devicefarm.ScheduleRunInput, opts ...request.Option) (*devicefarm.ScheduleRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "ScheduleRunWithContext",
+		Action:  "ScheduleRun",
 		Input:   input,
 		Output:  (*devicefarm.ScheduleRunOutput)(nil),
 		Error:   nil,
@@ -1253,7 +1253,7 @@ func (c *Client) ScheduleRunWithContext(ctx context.Context, input *devicefarm.S
 func (c *Client) StopJobWithContext(ctx context.Context, input *devicefarm.StopJobInput, opts ...request.Option) (*devicefarm.StopJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "StopJobWithContext",
+		Action:  "StopJob",
 		Input:   input,
 		Output:  (*devicefarm.StopJobOutput)(nil),
 		Error:   nil,
@@ -1274,7 +1274,7 @@ func (c *Client) StopJobWithContext(ctx context.Context, input *devicefarm.StopJ
 func (c *Client) StopRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.StopRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.StopRemoteAccessSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "StopRemoteAccessSessionWithContext",
+		Action:  "StopRemoteAccessSession",
 		Input:   input,
 		Output:  (*devicefarm.StopRemoteAccessSessionOutput)(nil),
 		Error:   nil,
@@ -1295,7 +1295,7 @@ func (c *Client) StopRemoteAccessSessionWithContext(ctx context.Context, input *
 func (c *Client) StopRunWithContext(ctx context.Context, input *devicefarm.StopRunInput, opts ...request.Option) (*devicefarm.StopRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "StopRunWithContext",
+		Action:  "StopRun",
 		Input:   input,
 		Output:  (*devicefarm.StopRunOutput)(nil),
 		Error:   nil,
@@ -1316,7 +1316,7 @@ func (c *Client) StopRunWithContext(ctx context.Context, input *devicefarm.StopR
 func (c *Client) TagResourceWithContext(ctx context.Context, input *devicefarm.TagResourceInput, opts ...request.Option) (*devicefarm.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*devicefarm.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1337,7 +1337,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *devicefarm.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *devicefarm.UntagResourceInput, opts ...request.Option) (*devicefarm.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*devicefarm.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1358,7 +1358,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *devicefarm
 func (c *Client) UpdateDeviceInstanceWithContext(ctx context.Context, input *devicefarm.UpdateDeviceInstanceInput, opts ...request.Option) (*devicefarm.UpdateDeviceInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateDeviceInstanceWithContext",
+		Action:  "UpdateDeviceInstance",
 		Input:   input,
 		Output:  (*devicefarm.UpdateDeviceInstanceOutput)(nil),
 		Error:   nil,
@@ -1379,7 +1379,7 @@ func (c *Client) UpdateDeviceInstanceWithContext(ctx context.Context, input *dev
 func (c *Client) UpdateDevicePoolWithContext(ctx context.Context, input *devicefarm.UpdateDevicePoolInput, opts ...request.Option) (*devicefarm.UpdateDevicePoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateDevicePoolWithContext",
+		Action:  "UpdateDevicePool",
 		Input:   input,
 		Output:  (*devicefarm.UpdateDevicePoolOutput)(nil),
 		Error:   nil,
@@ -1400,7 +1400,7 @@ func (c *Client) UpdateDevicePoolWithContext(ctx context.Context, input *devicef
 func (c *Client) UpdateInstanceProfileWithContext(ctx context.Context, input *devicefarm.UpdateInstanceProfileInput, opts ...request.Option) (*devicefarm.UpdateInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateInstanceProfileWithContext",
+		Action:  "UpdateInstanceProfile",
 		Input:   input,
 		Output:  (*devicefarm.UpdateInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -1421,7 +1421,7 @@ func (c *Client) UpdateInstanceProfileWithContext(ctx context.Context, input *de
 func (c *Client) UpdateNetworkProfileWithContext(ctx context.Context, input *devicefarm.UpdateNetworkProfileInput, opts ...request.Option) (*devicefarm.UpdateNetworkProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateNetworkProfileWithContext",
+		Action:  "UpdateNetworkProfile",
 		Input:   input,
 		Output:  (*devicefarm.UpdateNetworkProfileOutput)(nil),
 		Error:   nil,
@@ -1442,7 +1442,7 @@ func (c *Client) UpdateNetworkProfileWithContext(ctx context.Context, input *dev
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *devicefarm.UpdateProjectInput, opts ...request.Option) (*devicefarm.UpdateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateProjectWithContext",
+		Action:  "UpdateProject",
 		Input:   input,
 		Output:  (*devicefarm.UpdateProjectOutput)(nil),
 		Error:   nil,
@@ -1463,7 +1463,7 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, input *devicefarm
 func (c *Client) UpdateUploadWithContext(ctx context.Context, input *devicefarm.UpdateUploadInput, opts ...request.Option) (*devicefarm.UpdateUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateUploadWithContext",
+		Action:  "UpdateUpload",
 		Input:   input,
 		Output:  (*devicefarm.UpdateUploadOutput)(nil),
 		Error:   nil,
@@ -1484,7 +1484,7 @@ func (c *Client) UpdateUploadWithContext(ctx context.Context, input *devicefarm.
 func (c *Client) UpdateVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.UpdateVPCEConfigurationInput, opts ...request.Option) (*devicefarm.UpdateVPCEConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
-		Action:  "UpdateVPCEConfigurationWithContext",
+		Action:  "UpdateVPCEConfiguration",
 		Input:   input,
 		Output:  (*devicefarm.UpdateVPCEConfigurationOutput)(nil),
 		Error:   nil,

@@ -142,7 +142,7 @@ var _ RDS = (*Client)(nil)
 func (c *Client) AddRoleToDBClusterWithContext(ctx context.Context, input *rds.AddRoleToDBClusterInput, opts ...request.Option) (*rds.AddRoleToDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "AddRoleToDBClusterWithContext",
+		Action:  "AddRoleToDBCluster",
 		Input:   input,
 		Output:  (*rds.AddRoleToDBClusterOutput)(nil),
 		Error:   nil,
@@ -163,7 +163,7 @@ func (c *Client) AddRoleToDBClusterWithContext(ctx context.Context, input *rds.A
 func (c *Client) AddRoleToDBInstanceWithContext(ctx context.Context, input *rds.AddRoleToDBInstanceInput, opts ...request.Option) (*rds.AddRoleToDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "AddRoleToDBInstanceWithContext",
+		Action:  "AddRoleToDBInstance",
 		Input:   input,
 		Output:  (*rds.AddRoleToDBInstanceOutput)(nil),
 		Error:   nil,
@@ -184,7 +184,7 @@ func (c *Client) AddRoleToDBInstanceWithContext(ctx context.Context, input *rds.
 func (c *Client) AddSourceIdentifierToSubscriptionWithContext(ctx context.Context, input *rds.AddSourceIdentifierToSubscriptionInput, opts ...request.Option) (*rds.AddSourceIdentifierToSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "AddSourceIdentifierToSubscriptionWithContext",
+		Action:  "AddSourceIdentifierToSubscription",
 		Input:   input,
 		Output:  (*rds.AddSourceIdentifierToSubscriptionOutput)(nil),
 		Error:   nil,
@@ -205,7 +205,7 @@ func (c *Client) AddSourceIdentifierToSubscriptionWithContext(ctx context.Contex
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *rds.AddTagsToResourceInput, opts ...request.Option) (*rds.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*rds.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -226,7 +226,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *rds.Ad
 func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *rds.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*rds.ApplyPendingMaintenanceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ApplyPendingMaintenanceActionWithContext",
+		Action:  "ApplyPendingMaintenanceAction",
 		Input:   input,
 		Output:  (*rds.ApplyPendingMaintenanceActionOutput)(nil),
 		Error:   nil,
@@ -247,7 +247,7 @@ func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, i
 func (c *Client) AuthorizeDBSecurityGroupIngressWithContext(ctx context.Context, input *rds.AuthorizeDBSecurityGroupIngressInput, opts ...request.Option) (*rds.AuthorizeDBSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "AuthorizeDBSecurityGroupIngressWithContext",
+		Action:  "AuthorizeDBSecurityGroupIngress",
 		Input:   input,
 		Output:  (*rds.AuthorizeDBSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -268,7 +268,7 @@ func (c *Client) AuthorizeDBSecurityGroupIngressWithContext(ctx context.Context,
 func (c *Client) BacktrackDBClusterWithContext(ctx context.Context, input *rds.BacktrackDBClusterInput, opts ...request.Option) (*rds.BacktrackDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "BacktrackDBClusterWithContext",
+		Action:  "BacktrackDBCluster",
 		Input:   input,
 		Output:  (*rds.BacktrackDBClusterOutput)(nil),
 		Error:   nil,
@@ -289,7 +289,7 @@ func (c *Client) BacktrackDBClusterWithContext(ctx context.Context, input *rds.B
 func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, input *rds.CopyDBClusterParameterGroupInput, opts ...request.Option) (*rds.CopyDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CopyDBClusterParameterGroupWithContext",
+		Action:  "CopyDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*rds.CopyDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -310,7 +310,7 @@ func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, inp
 func (c *Client) CopyDBClusterSnapshotWithContext(ctx context.Context, input *rds.CopyDBClusterSnapshotInput, opts ...request.Option) (*rds.CopyDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CopyDBClusterSnapshotWithContext",
+		Action:  "CopyDBClusterSnapshot",
 		Input:   input,
 		Output:  (*rds.CopyDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -331,7 +331,7 @@ func (c *Client) CopyDBClusterSnapshotWithContext(ctx context.Context, input *rd
 func (c *Client) CopyDBParameterGroupWithContext(ctx context.Context, input *rds.CopyDBParameterGroupInput, opts ...request.Option) (*rds.CopyDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CopyDBParameterGroupWithContext",
+		Action:  "CopyDBParameterGroup",
 		Input:   input,
 		Output:  (*rds.CopyDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -352,7 +352,7 @@ func (c *Client) CopyDBParameterGroupWithContext(ctx context.Context, input *rds
 func (c *Client) CopyDBSnapshotWithContext(ctx context.Context, input *rds.CopyDBSnapshotInput, opts ...request.Option) (*rds.CopyDBSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CopyDBSnapshotWithContext",
+		Action:  "CopyDBSnapshot",
 		Input:   input,
 		Output:  (*rds.CopyDBSnapshotOutput)(nil),
 		Error:   nil,
@@ -373,7 +373,7 @@ func (c *Client) CopyDBSnapshotWithContext(ctx context.Context, input *rds.CopyD
 func (c *Client) CopyOptionGroupWithContext(ctx context.Context, input *rds.CopyOptionGroupInput, opts ...request.Option) (*rds.CopyOptionGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CopyOptionGroupWithContext",
+		Action:  "CopyOptionGroup",
 		Input:   input,
 		Output:  (*rds.CopyOptionGroupOutput)(nil),
 		Error:   nil,
@@ -394,7 +394,7 @@ func (c *Client) CopyOptionGroupWithContext(ctx context.Context, input *rds.Copy
 func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *rds.CreateDBClusterInput, opts ...request.Option) (*rds.CreateDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBClusterWithContext",
+		Action:  "CreateDBCluster",
 		Input:   input,
 		Output:  (*rds.CreateDBClusterOutput)(nil),
 		Error:   nil,
@@ -415,7 +415,7 @@ func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *rds.Crea
 func (c *Client) CreateDBClusterEndpointWithContext(ctx context.Context, input *rds.CreateDBClusterEndpointInput, opts ...request.Option) (*rds.CreateDBClusterEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBClusterEndpointWithContext",
+		Action:  "CreateDBClusterEndpoint",
 		Input:   input,
 		Output:  (*rds.CreateDBClusterEndpointOutput)(nil),
 		Error:   nil,
@@ -436,7 +436,7 @@ func (c *Client) CreateDBClusterEndpointWithContext(ctx context.Context, input *
 func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, input *rds.CreateDBClusterParameterGroupInput, opts ...request.Option) (*rds.CreateDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBClusterParameterGroupWithContext",
+		Action:  "CreateDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*rds.CreateDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -457,7 +457,7 @@ func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) CreateDBClusterSnapshotWithContext(ctx context.Context, input *rds.CreateDBClusterSnapshotInput, opts ...request.Option) (*rds.CreateDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBClusterSnapshotWithContext",
+		Action:  "CreateDBClusterSnapshot",
 		Input:   input,
 		Output:  (*rds.CreateDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -478,7 +478,7 @@ func (c *Client) CreateDBClusterSnapshotWithContext(ctx context.Context, input *
 func (c *Client) CreateDBInstanceWithContext(ctx context.Context, input *rds.CreateDBInstanceInput, opts ...request.Option) (*rds.CreateDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBInstanceWithContext",
+		Action:  "CreateDBInstance",
 		Input:   input,
 		Output:  (*rds.CreateDBInstanceOutput)(nil),
 		Error:   nil,
@@ -499,7 +499,7 @@ func (c *Client) CreateDBInstanceWithContext(ctx context.Context, input *rds.Cre
 func (c *Client) CreateDBInstanceReadReplicaWithContext(ctx context.Context, input *rds.CreateDBInstanceReadReplicaInput, opts ...request.Option) (*rds.CreateDBInstanceReadReplicaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBInstanceReadReplicaWithContext",
+		Action:  "CreateDBInstanceReadReplica",
 		Input:   input,
 		Output:  (*rds.CreateDBInstanceReadReplicaOutput)(nil),
 		Error:   nil,
@@ -520,7 +520,7 @@ func (c *Client) CreateDBInstanceReadReplicaWithContext(ctx context.Context, inp
 func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, input *rds.CreateDBParameterGroupInput, opts ...request.Option) (*rds.CreateDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBParameterGroupWithContext",
+		Action:  "CreateDBParameterGroup",
 		Input:   input,
 		Output:  (*rds.CreateDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -541,7 +541,7 @@ func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, input *r
 func (c *Client) CreateDBSecurityGroupWithContext(ctx context.Context, input *rds.CreateDBSecurityGroupInput, opts ...request.Option) (*rds.CreateDBSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBSecurityGroupWithContext",
+		Action:  "CreateDBSecurityGroup",
 		Input:   input,
 		Output:  (*rds.CreateDBSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -562,7 +562,7 @@ func (c *Client) CreateDBSecurityGroupWithContext(ctx context.Context, input *rd
 func (c *Client) CreateDBSnapshotWithContext(ctx context.Context, input *rds.CreateDBSnapshotInput, opts ...request.Option) (*rds.CreateDBSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBSnapshotWithContext",
+		Action:  "CreateDBSnapshot",
 		Input:   input,
 		Output:  (*rds.CreateDBSnapshotOutput)(nil),
 		Error:   nil,
@@ -583,7 +583,7 @@ func (c *Client) CreateDBSnapshotWithContext(ctx context.Context, input *rds.Cre
 func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *rds.CreateDBSubnetGroupInput, opts ...request.Option) (*rds.CreateDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateDBSubnetGroupWithContext",
+		Action:  "CreateDBSubnetGroup",
 		Input:   input,
 		Output:  (*rds.CreateDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -604,7 +604,7 @@ func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *rds.
 func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *rds.CreateEventSubscriptionInput, opts ...request.Option) (*rds.CreateEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateEventSubscriptionWithContext",
+		Action:  "CreateEventSubscription",
 		Input:   input,
 		Output:  (*rds.CreateEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -625,7 +625,7 @@ func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) CreateGlobalClusterWithContext(ctx context.Context, input *rds.CreateGlobalClusterInput, opts ...request.Option) (*rds.CreateGlobalClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateGlobalClusterWithContext",
+		Action:  "CreateGlobalCluster",
 		Input:   input,
 		Output:  (*rds.CreateGlobalClusterOutput)(nil),
 		Error:   nil,
@@ -646,7 +646,7 @@ func (c *Client) CreateGlobalClusterWithContext(ctx context.Context, input *rds.
 func (c *Client) CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "CreateOptionGroupWithContext",
+		Action:  "CreateOptionGroup",
 		Input:   input,
 		Output:  (*rds.CreateOptionGroupOutput)(nil),
 		Error:   nil,
@@ -667,7 +667,7 @@ func (c *Client) CreateOptionGroupWithContext(ctx context.Context, input *rds.Cr
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBClusterWithContext",
+		Action:  "DeleteDBCluster",
 		Input:   input,
 		Output:  (*rds.DeleteDBClusterOutput)(nil),
 		Error:   nil,
@@ -688,7 +688,7 @@ func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *rds.Dele
 func (c *Client) DeleteDBClusterEndpointWithContext(ctx context.Context, input *rds.DeleteDBClusterEndpointInput, opts ...request.Option) (*rds.DeleteDBClusterEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBClusterEndpointWithContext",
+		Action:  "DeleteDBClusterEndpoint",
 		Input:   input,
 		Output:  (*rds.DeleteDBClusterEndpointOutput)(nil),
 		Error:   nil,
@@ -709,7 +709,7 @@ func (c *Client) DeleteDBClusterEndpointWithContext(ctx context.Context, input *
 func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *rds.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*rds.DeleteDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBClusterParameterGroupWithContext",
+		Action:  "DeleteDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*rds.DeleteDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -730,7 +730,7 @@ func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) DeleteDBClusterSnapshotWithContext(ctx context.Context, input *rds.DeleteDBClusterSnapshotInput, opts ...request.Option) (*rds.DeleteDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBClusterSnapshotWithContext",
+		Action:  "DeleteDBClusterSnapshot",
 		Input:   input,
 		Output:  (*rds.DeleteDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -751,7 +751,7 @@ func (c *Client) DeleteDBClusterSnapshotWithContext(ctx context.Context, input *
 func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, input *rds.DeleteDBInstanceInput, opts ...request.Option) (*rds.DeleteDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBInstanceWithContext",
+		Action:  "DeleteDBInstance",
 		Input:   input,
 		Output:  (*rds.DeleteDBInstanceOutput)(nil),
 		Error:   nil,
@@ -772,7 +772,7 @@ func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, input *rds.Del
 func (c *Client) DeleteDBInstanceAutomatedBackupWithContext(ctx context.Context, input *rds.DeleteDBInstanceAutomatedBackupInput, opts ...request.Option) (*rds.DeleteDBInstanceAutomatedBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBInstanceAutomatedBackupWithContext",
+		Action:  "DeleteDBInstanceAutomatedBackup",
 		Input:   input,
 		Output:  (*rds.DeleteDBInstanceAutomatedBackupOutput)(nil),
 		Error:   nil,
@@ -793,7 +793,7 @@ func (c *Client) DeleteDBInstanceAutomatedBackupWithContext(ctx context.Context,
 func (c *Client) DeleteDBParameterGroupWithContext(ctx context.Context, input *rds.DeleteDBParameterGroupInput, opts ...request.Option) (*rds.DeleteDBParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBParameterGroupWithContext",
+		Action:  "DeleteDBParameterGroup",
 		Input:   input,
 		Output:  (*rds.DeleteDBParameterGroupOutput)(nil),
 		Error:   nil,
@@ -814,7 +814,7 @@ func (c *Client) DeleteDBParameterGroupWithContext(ctx context.Context, input *r
 func (c *Client) DeleteDBSecurityGroupWithContext(ctx context.Context, input *rds.DeleteDBSecurityGroupInput, opts ...request.Option) (*rds.DeleteDBSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBSecurityGroupWithContext",
+		Action:  "DeleteDBSecurityGroup",
 		Input:   input,
 		Output:  (*rds.DeleteDBSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -835,7 +835,7 @@ func (c *Client) DeleteDBSecurityGroupWithContext(ctx context.Context, input *rd
 func (c *Client) DeleteDBSnapshotWithContext(ctx context.Context, input *rds.DeleteDBSnapshotInput, opts ...request.Option) (*rds.DeleteDBSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBSnapshotWithContext",
+		Action:  "DeleteDBSnapshot",
 		Input:   input,
 		Output:  (*rds.DeleteDBSnapshotOutput)(nil),
 		Error:   nil,
@@ -856,7 +856,7 @@ func (c *Client) DeleteDBSnapshotWithContext(ctx context.Context, input *rds.Del
 func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *rds.DeleteDBSubnetGroupInput, opts ...request.Option) (*rds.DeleteDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteDBSubnetGroupWithContext",
+		Action:  "DeleteDBSubnetGroup",
 		Input:   input,
 		Output:  (*rds.DeleteDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -877,7 +877,7 @@ func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *rds.
 func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *rds.DeleteEventSubscriptionInput, opts ...request.Option) (*rds.DeleteEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteEventSubscriptionWithContext",
+		Action:  "DeleteEventSubscription",
 		Input:   input,
 		Output:  (*rds.DeleteEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -898,7 +898,7 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) DeleteGlobalClusterWithContext(ctx context.Context, input *rds.DeleteGlobalClusterInput, opts ...request.Option) (*rds.DeleteGlobalClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteGlobalClusterWithContext",
+		Action:  "DeleteGlobalCluster",
 		Input:   input,
 		Output:  (*rds.DeleteGlobalClusterOutput)(nil),
 		Error:   nil,
@@ -919,7 +919,7 @@ func (c *Client) DeleteGlobalClusterWithContext(ctx context.Context, input *rds.
 func (c *Client) DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DeleteOptionGroupWithContext",
+		Action:  "DeleteOptionGroup",
 		Input:   input,
 		Output:  (*rds.DeleteOptionGroupOutput)(nil),
 		Error:   nil,
@@ -940,7 +940,7 @@ func (c *Client) DeleteOptionGroupWithContext(ctx context.Context, input *rds.De
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeAccountAttributesWithContext",
+		Action:  "DescribeAccountAttributes",
 		Input:   input,
 		Output:  (*rds.DescribeAccountAttributesOutput)(nil),
 		Error:   nil,
@@ -961,7 +961,7 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeCertificatesWithContext",
+		Action:  "DescribeCertificates",
 		Input:   input,
 		Output:  (*rds.DescribeCertificatesOutput)(nil),
 		Error:   nil,
@@ -982,7 +982,7 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *rds
 func (c *Client) DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClusterBacktracksWithContext",
+		Action:  "DescribeDBClusterBacktracks",
 		Input:   input,
 		Output:  (*rds.DescribeDBClusterBacktracksOutput)(nil),
 		Error:   nil,
@@ -1003,7 +1003,7 @@ func (c *Client) DescribeDBClusterBacktracksWithContext(ctx context.Context, inp
 func (c *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, opts ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClusterEndpointsWithContext",
+		Action:  "DescribeDBClusterEndpoints",
 		Input:   input,
 		Output:  (*rds.DescribeDBClusterEndpointsOutput)(nil),
 		Error:   nil,
@@ -1024,7 +1024,7 @@ func (c *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *rds.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*rds.DescribeDBClusterParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClusterParameterGroupsWithContext",
+		Action:  "DescribeDBClusterParameterGroups",
 		Input:   input,
 		Output:  (*rds.DescribeDBClusterParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -1045,7 +1045,7 @@ func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context
 func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, input *rds.DescribeDBClusterParametersInput, opts ...request.Option) (*rds.DescribeDBClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClusterParametersWithContext",
+		Action:  "DescribeDBClusterParameters",
 		Input:   input,
 		Output:  (*rds.DescribeDBClusterParametersOutput)(nil),
 		Error:   nil,
@@ -1066,7 +1066,7 @@ func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, inp
 func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*rds.DescribeDBClusterSnapshotAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClusterSnapshotAttributesWithContext",
+		Action:  "DescribeDBClusterSnapshotAttributes",
 		Input:   input,
 		Output:  (*rds.DescribeDBClusterSnapshotAttributesOutput)(nil),
 		Error:   nil,
@@ -1087,7 +1087,7 @@ func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Cont
 func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotsInput, opts ...request.Option) (*rds.DescribeDBClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClusterSnapshotsWithContext",
+		Action:  "DescribeDBClusterSnapshots",
 		Input:   input,
 		Output:  (*rds.DescribeDBClusterSnapshotsOutput)(nil),
 		Error:   nil,
@@ -1108,7 +1108,7 @@ func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *rds.DescribeDBClustersInput, opts ...request.Option) (*rds.DescribeDBClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBClustersWithContext",
+		Action:  "DescribeDBClusters",
 		Input:   input,
 		Output:  (*rds.DescribeDBClustersOutput)(nil),
 		Error:   nil,
@@ -1129,7 +1129,7 @@ func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *rds.D
 func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input *rds.DescribeDBEngineVersionsInput, opts ...request.Option) (*rds.DescribeDBEngineVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBEngineVersionsWithContext",
+		Action:  "DescribeDBEngineVersions",
 		Input:   input,
 		Output:  (*rds.DescribeDBEngineVersionsOutput)(nil),
 		Error:   nil,
@@ -1150,7 +1150,7 @@ func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeDBInstanceAutomatedBackupsWithContext(ctx context.Context, input *rds.DescribeDBInstanceAutomatedBackupsInput, opts ...request.Option) (*rds.DescribeDBInstanceAutomatedBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBInstanceAutomatedBackupsWithContext",
+		Action:  "DescribeDBInstanceAutomatedBackups",
 		Input:   input,
 		Output:  (*rds.DescribeDBInstanceAutomatedBackupsOutput)(nil),
 		Error:   nil,
@@ -1171,7 +1171,7 @@ func (c *Client) DescribeDBInstanceAutomatedBackupsWithContext(ctx context.Conte
 func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *rds.DescribeDBInstancesInput, opts ...request.Option) (*rds.DescribeDBInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBInstancesWithContext",
+		Action:  "DescribeDBInstances",
 		Input:   input,
 		Output:  (*rds.DescribeDBInstancesOutput)(nil),
 		Error:   nil,
@@ -1192,7 +1192,7 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *rds.
 func (c *Client) DescribeDBLogFilesWithContext(ctx context.Context, input *rds.DescribeDBLogFilesInput, opts ...request.Option) (*rds.DescribeDBLogFilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBLogFilesWithContext",
+		Action:  "DescribeDBLogFiles",
 		Input:   input,
 		Output:  (*rds.DescribeDBLogFilesOutput)(nil),
 		Error:   nil,
@@ -1213,7 +1213,7 @@ func (c *Client) DescribeDBLogFilesWithContext(ctx context.Context, input *rds.D
 func (c *Client) DescribeDBParameterGroupsWithContext(ctx context.Context, input *rds.DescribeDBParameterGroupsInput, opts ...request.Option) (*rds.DescribeDBParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBParameterGroupsWithContext",
+		Action:  "DescribeDBParameterGroups",
 		Input:   input,
 		Output:  (*rds.DescribeDBParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -1234,7 +1234,7 @@ func (c *Client) DescribeDBParameterGroupsWithContext(ctx context.Context, input
 func (c *Client) DescribeDBParametersWithContext(ctx context.Context, input *rds.DescribeDBParametersInput, opts ...request.Option) (*rds.DescribeDBParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBParametersWithContext",
+		Action:  "DescribeDBParameters",
 		Input:   input,
 		Output:  (*rds.DescribeDBParametersOutput)(nil),
 		Error:   nil,
@@ -1255,7 +1255,7 @@ func (c *Client) DescribeDBParametersWithContext(ctx context.Context, input *rds
 func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, input *rds.DescribeDBSecurityGroupsInput, opts ...request.Option) (*rds.DescribeDBSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBSecurityGroupsWithContext",
+		Action:  "DescribeDBSecurityGroups",
 		Input:   input,
 		Output:  (*rds.DescribeDBSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -1276,7 +1276,7 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, input 
 func (c *Client) DescribeDBSnapshotAttributesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotAttributesInput, opts ...request.Option) (*rds.DescribeDBSnapshotAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBSnapshotAttributesWithContext",
+		Action:  "DescribeDBSnapshotAttributes",
 		Input:   input,
 		Output:  (*rds.DescribeDBSnapshotAttributesOutput)(nil),
 		Error:   nil,
@@ -1297,7 +1297,7 @@ func (c *Client) DescribeDBSnapshotAttributesWithContext(ctx context.Context, in
 func (c *Client) DescribeDBSnapshotsWithContext(ctx context.Context, input *rds.DescribeDBSnapshotsInput, opts ...request.Option) (*rds.DescribeDBSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBSnapshotsWithContext",
+		Action:  "DescribeDBSnapshots",
 		Input:   input,
 		Output:  (*rds.DescribeDBSnapshotsOutput)(nil),
 		Error:   nil,
@@ -1318,7 +1318,7 @@ func (c *Client) DescribeDBSnapshotsWithContext(ctx context.Context, input *rds.
 func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *rds.DescribeDBSubnetGroupsInput, opts ...request.Option) (*rds.DescribeDBSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeDBSubnetGroupsWithContext",
+		Action:  "DescribeDBSubnetGroups",
 		Input:   input,
 		Output:  (*rds.DescribeDBSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -1339,7 +1339,7 @@ func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *r
 func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.Context, input *rds.DescribeEngineDefaultClusterParametersInput, opts ...request.Option) (*rds.DescribeEngineDefaultClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeEngineDefaultClusterParametersWithContext",
+		Action:  "DescribeEngineDefaultClusterParameters",
 		Input:   input,
 		Output:  (*rds.DescribeEngineDefaultClusterParametersOutput)(nil),
 		Error:   nil,
@@ -1360,7 +1360,7 @@ func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.C
 func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context, input *rds.DescribeEngineDefaultParametersInput, opts ...request.Option) (*rds.DescribeEngineDefaultParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeEngineDefaultParametersWithContext",
+		Action:  "DescribeEngineDefaultParameters",
 		Input:   input,
 		Output:  (*rds.DescribeEngineDefaultParametersOutput)(nil),
 		Error:   nil,
@@ -1381,7 +1381,7 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *rds.DescribeEventCategoriesInput, opts ...request.Option) (*rds.DescribeEventCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeEventCategoriesWithContext",
+		Action:  "DescribeEventCategories",
 		Input:   input,
 		Output:  (*rds.DescribeEventCategoriesOutput)(nil),
 		Error:   nil,
@@ -1402,7 +1402,7 @@ func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *
 func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, input *rds.DescribeEventSubscriptionsInput, opts ...request.Option) (*rds.DescribeEventSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeEventSubscriptionsWithContext",
+		Action:  "DescribeEventSubscriptions",
 		Input:   input,
 		Output:  (*rds.DescribeEventSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -1423,7 +1423,7 @@ func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *rds.DescribeEventsInput, opts ...request.Option) (*rds.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*rds.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -1444,7 +1444,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *rds.Descr
 func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, opts ...request.Option) (*rds.DescribeGlobalClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeGlobalClustersWithContext",
+		Action:  "DescribeGlobalClusters",
 		Input:   input,
 		Output:  (*rds.DescribeGlobalClustersOutput)(nil),
 		Error:   nil,
@@ -1465,7 +1465,7 @@ func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *r
 func (c *Client) DescribeOptionGroupOptionsWithContext(ctx context.Context, input *rds.DescribeOptionGroupOptionsInput, opts ...request.Option) (*rds.DescribeOptionGroupOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeOptionGroupOptionsWithContext",
+		Action:  "DescribeOptionGroupOptions",
 		Input:   input,
 		Output:  (*rds.DescribeOptionGroupOptionsOutput)(nil),
 		Error:   nil,
@@ -1486,7 +1486,7 @@ func (c *Client) DescribeOptionGroupOptionsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeOptionGroupsWithContext(ctx context.Context, input *rds.DescribeOptionGroupsInput, opts ...request.Option) (*rds.DescribeOptionGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeOptionGroupsWithContext",
+		Action:  "DescribeOptionGroups",
 		Input:   input,
 		Output:  (*rds.DescribeOptionGroupsOutput)(nil),
 		Error:   nil,
@@ -1507,7 +1507,7 @@ func (c *Client) DescribeOptionGroupsWithContext(ctx context.Context, input *rds
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *rds.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*rds.DescribeOrderableDBInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeOrderableDBInstanceOptionsWithContext",
+		Action:  "DescribeOrderableDBInstanceOptions",
 		Input:   input,
 		Output:  (*rds.DescribeOrderableDBInstanceOptionsOutput)(nil),
 		Error:   nil,
@@ -1528,7 +1528,7 @@ func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Conte
 func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *rds.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*rds.DescribePendingMaintenanceActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribePendingMaintenanceActionsWithContext",
+		Action:  "DescribePendingMaintenanceActions",
 		Input:   input,
 		Output:  (*rds.DescribePendingMaintenanceActionsOutput)(nil),
 		Error:   nil,
@@ -1549,7 +1549,7 @@ func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Contex
 func (c *Client) DescribeReservedDBInstancesWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesInput, opts ...request.Option) (*rds.DescribeReservedDBInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeReservedDBInstancesWithContext",
+		Action:  "DescribeReservedDBInstances",
 		Input:   input,
 		Output:  (*rds.DescribeReservedDBInstancesOutput)(nil),
 		Error:   nil,
@@ -1570,7 +1570,7 @@ func (c *Client) DescribeReservedDBInstancesWithContext(ctx context.Context, inp
 func (c *Client) DescribeReservedDBInstancesOfferingsWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesOfferingsInput, opts ...request.Option) (*rds.DescribeReservedDBInstancesOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeReservedDBInstancesOfferingsWithContext",
+		Action:  "DescribeReservedDBInstancesOfferings",
 		Input:   input,
 		Output:  (*rds.DescribeReservedDBInstancesOfferingsOutput)(nil),
 		Error:   nil,
@@ -1591,7 +1591,7 @@ func (c *Client) DescribeReservedDBInstancesOfferingsWithContext(ctx context.Con
 func (c *Client) DescribeSourceRegionsWithContext(ctx context.Context, input *rds.DescribeSourceRegionsInput, opts ...request.Option) (*rds.DescribeSourceRegionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeSourceRegionsWithContext",
+		Action:  "DescribeSourceRegions",
 		Input:   input,
 		Output:  (*rds.DescribeSourceRegionsOutput)(nil),
 		Error:   nil,
@@ -1612,7 +1612,7 @@ func (c *Client) DescribeSourceRegionsWithContext(ctx context.Context, input *rd
 func (c *Client) DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *rds.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DescribeValidDBInstanceModificationsWithContext",
+		Action:  "DescribeValidDBInstanceModifications",
 		Input:   input,
 		Output:  (*rds.DescribeValidDBInstanceModificationsOutput)(nil),
 		Error:   nil,
@@ -1633,7 +1633,7 @@ func (c *Client) DescribeValidDBInstanceModificationsWithContext(ctx context.Con
 func (c *Client) DownloadDBLogFilePortionWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, opts ...request.Option) (*rds.DownloadDBLogFilePortionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "DownloadDBLogFilePortionWithContext",
+		Action:  "DownloadDBLogFilePortion",
 		Input:   input,
 		Output:  (*rds.DownloadDBLogFilePortionOutput)(nil),
 		Error:   nil,
@@ -1654,7 +1654,7 @@ func (c *Client) DownloadDBLogFilePortionWithContext(ctx context.Context, input 
 func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *rds.FailoverDBClusterInput, opts ...request.Option) (*rds.FailoverDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "FailoverDBClusterWithContext",
+		Action:  "FailoverDBCluster",
 		Input:   input,
 		Output:  (*rds.FailoverDBClusterOutput)(nil),
 		Error:   nil,
@@ -1675,7 +1675,7 @@ func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *rds.Fa
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*rds.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1696,7 +1696,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rds.
 func (c *Client) ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, input *rds.ModifyCurrentDBClusterCapacityInput, opts ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyCurrentDBClusterCapacityWithContext",
+		Action:  "ModifyCurrentDBClusterCapacity",
 		Input:   input,
 		Output:  (*rds.ModifyCurrentDBClusterCapacityOutput)(nil),
 		Error:   nil,
@@ -1717,7 +1717,7 @@ func (c *Client) ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, 
 func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *rds.ModifyDBClusterInput, opts ...request.Option) (*rds.ModifyDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBClusterWithContext",
+		Action:  "ModifyDBCluster",
 		Input:   input,
 		Output:  (*rds.ModifyDBClusterOutput)(nil),
 		Error:   nil,
@@ -1738,7 +1738,7 @@ func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *rds.Modi
 func (c *Client) ModifyDBClusterEndpointWithContext(ctx context.Context, input *rds.ModifyDBClusterEndpointInput, opts ...request.Option) (*rds.ModifyDBClusterEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBClusterEndpointWithContext",
+		Action:  "ModifyDBClusterEndpoint",
 		Input:   input,
 		Output:  (*rds.ModifyDBClusterEndpointOutput)(nil),
 		Error:   nil,
@@ -1759,7 +1759,7 @@ func (c *Client) ModifyDBClusterEndpointWithContext(ctx context.Context, input *
 func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, input *rds.ModifyDBClusterParameterGroupInput, opts ...request.Option) (*rds.DBClusterParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBClusterParameterGroupWithContext",
+		Action:  "ModifyDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*rds.DBClusterParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -1780,7 +1780,7 @@ func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context, input *rds.ModifyDBClusterSnapshotAttributeInput, opts ...request.Option) (*rds.ModifyDBClusterSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBClusterSnapshotAttributeWithContext",
+		Action:  "ModifyDBClusterSnapshotAttribute",
 		Input:   input,
 		Output:  (*rds.ModifyDBClusterSnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -1801,7 +1801,7 @@ func (c *Client) ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context
 func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, input *rds.ModifyDBInstanceInput, opts ...request.Option) (*rds.ModifyDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBInstanceWithContext",
+		Action:  "ModifyDBInstance",
 		Input:   input,
 		Output:  (*rds.ModifyDBInstanceOutput)(nil),
 		Error:   nil,
@@ -1822,7 +1822,7 @@ func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, input *rds.Mod
 func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, input *rds.ModifyDBParameterGroupInput, opts ...request.Option) (*rds.DBParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBParameterGroupWithContext",
+		Action:  "ModifyDBParameterGroup",
 		Input:   input,
 		Output:  (*rds.DBParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -1843,7 +1843,7 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, input *r
 func (c *Client) ModifyDBSnapshotWithContext(ctx context.Context, input *rds.ModifyDBSnapshotInput, opts ...request.Option) (*rds.ModifyDBSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBSnapshotWithContext",
+		Action:  "ModifyDBSnapshot",
 		Input:   input,
 		Output:  (*rds.ModifyDBSnapshotOutput)(nil),
 		Error:   nil,
@@ -1864,7 +1864,7 @@ func (c *Client) ModifyDBSnapshotWithContext(ctx context.Context, input *rds.Mod
 func (c *Client) ModifyDBSnapshotAttributeWithContext(ctx context.Context, input *rds.ModifyDBSnapshotAttributeInput, opts ...request.Option) (*rds.ModifyDBSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBSnapshotAttributeWithContext",
+		Action:  "ModifyDBSnapshotAttribute",
 		Input:   input,
 		Output:  (*rds.ModifyDBSnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -1885,7 +1885,7 @@ func (c *Client) ModifyDBSnapshotAttributeWithContext(ctx context.Context, input
 func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *rds.ModifyDBSubnetGroupInput, opts ...request.Option) (*rds.ModifyDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyDBSubnetGroupWithContext",
+		Action:  "ModifyDBSubnetGroup",
 		Input:   input,
 		Output:  (*rds.ModifyDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -1906,7 +1906,7 @@ func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *rds.
 func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *rds.ModifyEventSubscriptionInput, opts ...request.Option) (*rds.ModifyEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyEventSubscriptionWithContext",
+		Action:  "ModifyEventSubscription",
 		Input:   input,
 		Output:  (*rds.ModifyEventSubscriptionOutput)(nil),
 		Error:   nil,
@@ -1927,7 +1927,7 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 func (c *Client) ModifyGlobalClusterWithContext(ctx context.Context, input *rds.ModifyGlobalClusterInput, opts ...request.Option) (*rds.ModifyGlobalClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyGlobalClusterWithContext",
+		Action:  "ModifyGlobalCluster",
 		Input:   input,
 		Output:  (*rds.ModifyGlobalClusterOutput)(nil),
 		Error:   nil,
@@ -1948,7 +1948,7 @@ func (c *Client) ModifyGlobalClusterWithContext(ctx context.Context, input *rds.
 func (c *Client) ModifyOptionGroupWithContext(ctx context.Context, input *rds.ModifyOptionGroupInput, opts ...request.Option) (*rds.ModifyOptionGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ModifyOptionGroupWithContext",
+		Action:  "ModifyOptionGroup",
 		Input:   input,
 		Output:  (*rds.ModifyOptionGroupOutput)(nil),
 		Error:   nil,
@@ -1969,7 +1969,7 @@ func (c *Client) ModifyOptionGroupWithContext(ctx context.Context, input *rds.Mo
 func (c *Client) PromoteReadReplicaWithContext(ctx context.Context, input *rds.PromoteReadReplicaInput, opts ...request.Option) (*rds.PromoteReadReplicaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "PromoteReadReplicaWithContext",
+		Action:  "PromoteReadReplica",
 		Input:   input,
 		Output:  (*rds.PromoteReadReplicaOutput)(nil),
 		Error:   nil,
@@ -1990,7 +1990,7 @@ func (c *Client) PromoteReadReplicaWithContext(ctx context.Context, input *rds.P
 func (c *Client) PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *rds.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*rds.PromoteReadReplicaDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "PromoteReadReplicaDBClusterWithContext",
+		Action:  "PromoteReadReplicaDBCluster",
 		Input:   input,
 		Output:  (*rds.PromoteReadReplicaDBClusterOutput)(nil),
 		Error:   nil,
@@ -2011,7 +2011,7 @@ func (c *Client) PromoteReadReplicaDBClusterWithContext(ctx context.Context, inp
 func (c *Client) PurchaseReservedDBInstancesOfferingWithContext(ctx context.Context, input *rds.PurchaseReservedDBInstancesOfferingInput, opts ...request.Option) (*rds.PurchaseReservedDBInstancesOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "PurchaseReservedDBInstancesOfferingWithContext",
+		Action:  "PurchaseReservedDBInstancesOffering",
 		Input:   input,
 		Output:  (*rds.PurchaseReservedDBInstancesOfferingOutput)(nil),
 		Error:   nil,
@@ -2032,7 +2032,7 @@ func (c *Client) PurchaseReservedDBInstancesOfferingWithContext(ctx context.Cont
 func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *rds.RebootDBInstanceInput, opts ...request.Option) (*rds.RebootDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RebootDBInstanceWithContext",
+		Action:  "RebootDBInstance",
 		Input:   input,
 		Output:  (*rds.RebootDBInstanceOutput)(nil),
 		Error:   nil,
@@ -2053,7 +2053,7 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *rds.Reb
 func (c *Client) RemoveFromGlobalClusterWithContext(ctx context.Context, input *rds.RemoveFromGlobalClusterInput, opts ...request.Option) (*rds.RemoveFromGlobalClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RemoveFromGlobalClusterWithContext",
+		Action:  "RemoveFromGlobalCluster",
 		Input:   input,
 		Output:  (*rds.RemoveFromGlobalClusterOutput)(nil),
 		Error:   nil,
@@ -2074,7 +2074,7 @@ func (c *Client) RemoveFromGlobalClusterWithContext(ctx context.Context, input *
 func (c *Client) RemoveRoleFromDBClusterWithContext(ctx context.Context, input *rds.RemoveRoleFromDBClusterInput, opts ...request.Option) (*rds.RemoveRoleFromDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RemoveRoleFromDBClusterWithContext",
+		Action:  "RemoveRoleFromDBCluster",
 		Input:   input,
 		Output:  (*rds.RemoveRoleFromDBClusterOutput)(nil),
 		Error:   nil,
@@ -2095,7 +2095,7 @@ func (c *Client) RemoveRoleFromDBClusterWithContext(ctx context.Context, input *
 func (c *Client) RemoveRoleFromDBInstanceWithContext(ctx context.Context, input *rds.RemoveRoleFromDBInstanceInput, opts ...request.Option) (*rds.RemoveRoleFromDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RemoveRoleFromDBInstanceWithContext",
+		Action:  "RemoveRoleFromDBInstance",
 		Input:   input,
 		Output:  (*rds.RemoveRoleFromDBInstanceOutput)(nil),
 		Error:   nil,
@@ -2116,7 +2116,7 @@ func (c *Client) RemoveRoleFromDBInstanceWithContext(ctx context.Context, input 
 func (c *Client) RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *rds.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*rds.RemoveSourceIdentifierFromSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RemoveSourceIdentifierFromSubscriptionWithContext",
+		Action:  "RemoveSourceIdentifierFromSubscription",
 		Input:   input,
 		Output:  (*rds.RemoveSourceIdentifierFromSubscriptionOutput)(nil),
 		Error:   nil,
@@ -2137,7 +2137,7 @@ func (c *Client) RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.C
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *rds.RemoveTagsFromResourceInput, opts ...request.Option) (*rds.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*rds.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -2158,7 +2158,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *r
 func (c *Client) ResetDBClusterParameterGroupWithContext(ctx context.Context, input *rds.ResetDBClusterParameterGroupInput, opts ...request.Option) (*rds.DBClusterParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ResetDBClusterParameterGroupWithContext",
+		Action:  "ResetDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*rds.DBClusterParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -2179,7 +2179,7 @@ func (c *Client) ResetDBClusterParameterGroupWithContext(ctx context.Context, in
 func (c *Client) ResetDBParameterGroupWithContext(ctx context.Context, input *rds.ResetDBParameterGroupInput, opts ...request.Option) (*rds.DBParameterGroupNameMessage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "ResetDBParameterGroupWithContext",
+		Action:  "ResetDBParameterGroup",
 		Input:   input,
 		Output:  (*rds.DBParameterGroupNameMessage)(nil),
 		Error:   nil,
@@ -2200,7 +2200,7 @@ func (c *Client) ResetDBParameterGroupWithContext(ctx context.Context, input *rd
 func (c *Client) RestoreDBClusterFromS3WithContext(ctx context.Context, input *rds.RestoreDBClusterFromS3Input, opts ...request.Option) (*rds.RestoreDBClusterFromS3Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RestoreDBClusterFromS3WithContext",
+		Action:  "RestoreDBClusterFromS3",
 		Input:   input,
 		Output:  (*rds.RestoreDBClusterFromS3Output)(nil),
 		Error:   nil,
@@ -2221,7 +2221,7 @@ func (c *Client) RestoreDBClusterFromS3WithContext(ctx context.Context, input *r
 func (c *Client) RestoreDBClusterFromSnapshotWithContext(ctx context.Context, input *rds.RestoreDBClusterFromSnapshotInput, opts ...request.Option) (*rds.RestoreDBClusterFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RestoreDBClusterFromSnapshotWithContext",
+		Action:  "RestoreDBClusterFromSnapshot",
 		Input:   input,
 		Output:  (*rds.RestoreDBClusterFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -2242,7 +2242,7 @@ func (c *Client) RestoreDBClusterFromSnapshotWithContext(ctx context.Context, in
 func (c *Client) RestoreDBClusterToPointInTimeWithContext(ctx context.Context, input *rds.RestoreDBClusterToPointInTimeInput, opts ...request.Option) (*rds.RestoreDBClusterToPointInTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RestoreDBClusterToPointInTimeWithContext",
+		Action:  "RestoreDBClusterToPointInTime",
 		Input:   input,
 		Output:  (*rds.RestoreDBClusterToPointInTimeOutput)(nil),
 		Error:   nil,
@@ -2263,7 +2263,7 @@ func (c *Client) RestoreDBClusterToPointInTimeWithContext(ctx context.Context, i
 func (c *Client) RestoreDBInstanceFromDBSnapshotWithContext(ctx context.Context, input *rds.RestoreDBInstanceFromDBSnapshotInput, opts ...request.Option) (*rds.RestoreDBInstanceFromDBSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RestoreDBInstanceFromDBSnapshotWithContext",
+		Action:  "RestoreDBInstanceFromDBSnapshot",
 		Input:   input,
 		Output:  (*rds.RestoreDBInstanceFromDBSnapshotOutput)(nil),
 		Error:   nil,
@@ -2284,7 +2284,7 @@ func (c *Client) RestoreDBInstanceFromDBSnapshotWithContext(ctx context.Context,
 func (c *Client) RestoreDBInstanceFromS3WithContext(ctx context.Context, input *rds.RestoreDBInstanceFromS3Input, opts ...request.Option) (*rds.RestoreDBInstanceFromS3Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RestoreDBInstanceFromS3WithContext",
+		Action:  "RestoreDBInstanceFromS3",
 		Input:   input,
 		Output:  (*rds.RestoreDBInstanceFromS3Output)(nil),
 		Error:   nil,
@@ -2305,7 +2305,7 @@ func (c *Client) RestoreDBInstanceFromS3WithContext(ctx context.Context, input *
 func (c *Client) RestoreDBInstanceToPointInTimeWithContext(ctx context.Context, input *rds.RestoreDBInstanceToPointInTimeInput, opts ...request.Option) (*rds.RestoreDBInstanceToPointInTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RestoreDBInstanceToPointInTimeWithContext",
+		Action:  "RestoreDBInstanceToPointInTime",
 		Input:   input,
 		Output:  (*rds.RestoreDBInstanceToPointInTimeOutput)(nil),
 		Error:   nil,
@@ -2326,7 +2326,7 @@ func (c *Client) RestoreDBInstanceToPointInTimeWithContext(ctx context.Context, 
 func (c *Client) RevokeDBSecurityGroupIngressWithContext(ctx context.Context, input *rds.RevokeDBSecurityGroupIngressInput, opts ...request.Option) (*rds.RevokeDBSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "RevokeDBSecurityGroupIngressWithContext",
+		Action:  "RevokeDBSecurityGroupIngress",
 		Input:   input,
 		Output:  (*rds.RevokeDBSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -2347,7 +2347,7 @@ func (c *Client) RevokeDBSecurityGroupIngressWithContext(ctx context.Context, in
 func (c *Client) StartActivityStreamWithContext(ctx context.Context, input *rds.StartActivityStreamInput, opts ...request.Option) (*rds.StartActivityStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "StartActivityStreamWithContext",
+		Action:  "StartActivityStream",
 		Input:   input,
 		Output:  (*rds.StartActivityStreamOutput)(nil),
 		Error:   nil,
@@ -2368,7 +2368,7 @@ func (c *Client) StartActivityStreamWithContext(ctx context.Context, input *rds.
 func (c *Client) StartDBClusterWithContext(ctx context.Context, input *rds.StartDBClusterInput, opts ...request.Option) (*rds.StartDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "StartDBClusterWithContext",
+		Action:  "StartDBCluster",
 		Input:   input,
 		Output:  (*rds.StartDBClusterOutput)(nil),
 		Error:   nil,
@@ -2389,7 +2389,7 @@ func (c *Client) StartDBClusterWithContext(ctx context.Context, input *rds.Start
 func (c *Client) StartDBInstanceWithContext(ctx context.Context, input *rds.StartDBInstanceInput, opts ...request.Option) (*rds.StartDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "StartDBInstanceWithContext",
+		Action:  "StartDBInstance",
 		Input:   input,
 		Output:  (*rds.StartDBInstanceOutput)(nil),
 		Error:   nil,
@@ -2410,7 +2410,7 @@ func (c *Client) StartDBInstanceWithContext(ctx context.Context, input *rds.Star
 func (c *Client) StopActivityStreamWithContext(ctx context.Context, input *rds.StopActivityStreamInput, opts ...request.Option) (*rds.StopActivityStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "StopActivityStreamWithContext",
+		Action:  "StopActivityStream",
 		Input:   input,
 		Output:  (*rds.StopActivityStreamOutput)(nil),
 		Error:   nil,
@@ -2431,7 +2431,7 @@ func (c *Client) StopActivityStreamWithContext(ctx context.Context, input *rds.S
 func (c *Client) StopDBClusterWithContext(ctx context.Context, input *rds.StopDBClusterInput, opts ...request.Option) (*rds.StopDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "StopDBClusterWithContext",
+		Action:  "StopDBCluster",
 		Input:   input,
 		Output:  (*rds.StopDBClusterOutput)(nil),
 		Error:   nil,
@@ -2452,7 +2452,7 @@ func (c *Client) StopDBClusterWithContext(ctx context.Context, input *rds.StopDB
 func (c *Client) StopDBInstanceWithContext(ctx context.Context, input *rds.StopDBInstanceInput, opts ...request.Option) (*rds.StopDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
-		Action:  "StopDBInstanceWithContext",
+		Action:  "StopDBInstance",
 		Input:   input,
 		Output:  (*rds.StopDBInstanceOutput)(nil),
 		Error:   nil,

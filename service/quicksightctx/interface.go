@@ -47,7 +47,7 @@ var _ QuickSight = (*Client)(nil)
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *quicksight.CreateGroupInput, opts ...request.Option) (*quicksight.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "CreateGroupWithContext",
+		Action:  "CreateGroup",
 		Input:   input,
 		Output:  (*quicksight.CreateGroupOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *quicksight.C
 func (c *Client) CreateGroupMembershipWithContext(ctx context.Context, input *quicksight.CreateGroupMembershipInput, opts ...request.Option) (*quicksight.CreateGroupMembershipOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "CreateGroupMembershipWithContext",
+		Action:  "CreateGroupMembership",
 		Input:   input,
 		Output:  (*quicksight.CreateGroupMembershipOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) CreateGroupMembershipWithContext(ctx context.Context, input *qu
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *quicksight.DeleteGroupInput, opts ...request.Option) (*quicksight.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "DeleteGroupWithContext",
+		Action:  "DeleteGroup",
 		Input:   input,
 		Output:  (*quicksight.DeleteGroupOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *quicksight.D
 func (c *Client) DeleteGroupMembershipWithContext(ctx context.Context, input *quicksight.DeleteGroupMembershipInput, opts ...request.Option) (*quicksight.DeleteGroupMembershipOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "DeleteGroupMembershipWithContext",
+		Action:  "DeleteGroupMembership",
 		Input:   input,
 		Output:  (*quicksight.DeleteGroupMembershipOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) DeleteGroupMembershipWithContext(ctx context.Context, input *qu
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "DeleteUserWithContext",
+		Action:  "DeleteUser",
 		Input:   input,
 		Output:  (*quicksight.DeleteUserOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *quicksight.De
 func (c *Client) DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "DeleteUserByPrincipalIdWithContext",
+		Action:  "DeleteUserByPrincipalId",
 		Input:   input,
 		Output:  (*quicksight.DeleteUserByPrincipalIdOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DeleteUserByPrincipalIdWithContext(ctx context.Context, input *
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "DescribeGroupWithContext",
+		Action:  "DescribeGroup",
 		Input:   input,
 		Output:  (*quicksight.DescribeGroupOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, input *quicksight
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "DescribeUserWithContext",
+		Action:  "DescribeUser",
 		Input:   input,
 		Output:  (*quicksight.DescribeUserOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.
 func (c *Client) GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "GetDashboardEmbedUrlWithContext",
+		Action:  "GetDashboardEmbedUrl",
 		Input:   input,
 		Output:  (*quicksight.GetDashboardEmbedUrlOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) GetDashboardEmbedUrlWithContext(ctx context.Context, input *qui
 func (c *Client) ListGroupMembershipsWithContext(ctx context.Context, input *quicksight.ListGroupMembershipsInput, opts ...request.Option) (*quicksight.ListGroupMembershipsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "ListGroupMembershipsWithContext",
+		Action:  "ListGroupMemberships",
 		Input:   input,
 		Output:  (*quicksight.ListGroupMembershipsOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) ListGroupMembershipsWithContext(ctx context.Context, input *qui
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *quicksight.ListGroupsInput, opts ...request.Option) (*quicksight.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "ListGroupsWithContext",
+		Action:  "ListGroups",
 		Input:   input,
 		Output:  (*quicksight.ListGroupsOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *quicksight.Li
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "ListUserGroupsWithContext",
+		Action:  "ListUserGroups",
 		Input:   input,
 		Output:  (*quicksight.ListUserGroupsOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) ListUserGroupsWithContext(ctx context.Context, input *quicksigh
 func (c *Client) ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "ListUsersWithContext",
+		Action:  "ListUsers",
 		Input:   input,
 		Output:  (*quicksight.ListUsersOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *quicksight.Lis
 func (c *Client) RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "RegisterUserWithContext",
+		Action:  "RegisterUser",
 		Input:   input,
 		Output:  (*quicksight.RegisterUserOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) RegisterUserWithContext(ctx context.Context, input *quicksight.
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *quicksight.UpdateGroupInput, opts ...request.Option) (*quicksight.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "UpdateGroupWithContext",
+		Action:  "UpdateGroup",
 		Input:   input,
 		Output:  (*quicksight.UpdateGroupOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *quicksight.U
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
-		Action:  "UpdateUserWithContext",
+		Action:  "UpdateUser",
 		Input:   input,
 		Output:  (*quicksight.UpdateUserOutput)(nil),
 		Error:   nil,

@@ -35,7 +35,7 @@ var _ DynamoDBStreams = (*Client)(nil)
 func (c *Client) DescribeStreamWithContext(ctx context.Context, input *dynamodbstreams.DescribeStreamInput, opts ...request.Option) (*dynamodbstreams.DescribeStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodbstreams",
-		Action:  "DescribeStreamWithContext",
+		Action:  "DescribeStream",
 		Input:   input,
 		Output:  (*dynamodbstreams.DescribeStreamOutput)(nil),
 		Error:   nil,
@@ -56,7 +56,7 @@ func (c *Client) DescribeStreamWithContext(ctx context.Context, input *dynamodbs
 func (c *Client) GetRecordsWithContext(ctx context.Context, input *dynamodbstreams.GetRecordsInput, opts ...request.Option) (*dynamodbstreams.GetRecordsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodbstreams",
-		Action:  "GetRecordsWithContext",
+		Action:  "GetRecords",
 		Input:   input,
 		Output:  (*dynamodbstreams.GetRecordsOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) GetRecordsWithContext(ctx context.Context, input *dynamodbstrea
 func (c *Client) GetShardIteratorWithContext(ctx context.Context, input *dynamodbstreams.GetShardIteratorInput, opts ...request.Option) (*dynamodbstreams.GetShardIteratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodbstreams",
-		Action:  "GetShardIteratorWithContext",
+		Action:  "GetShardIterator",
 		Input:   input,
 		Output:  (*dynamodbstreams.GetShardIteratorOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) GetShardIteratorWithContext(ctx context.Context, input *dynamod
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *dynamodbstreams.ListStreamsInput, opts ...request.Option) (*dynamodbstreams.ListStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodbstreams",
-		Action:  "ListStreamsWithContext",
+		Action:  "ListStreams",
 		Input:   input,
 		Output:  (*dynamodbstreams.ListStreamsOutput)(nil),
 		Error:   nil,

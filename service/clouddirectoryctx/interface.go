@@ -97,7 +97,7 @@ var _ CloudDirectory = (*Client)(nil)
 func (c *Client) AddFacetToObjectWithContext(ctx context.Context, input *clouddirectory.AddFacetToObjectInput, opts ...request.Option) (*clouddirectory.AddFacetToObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "AddFacetToObjectWithContext",
+		Action:  "AddFacetToObject",
 		Input:   input,
 		Output:  (*clouddirectory.AddFacetToObjectOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) AddFacetToObjectWithContext(ctx context.Context, input *clouddi
 func (c *Client) ApplySchemaWithContext(ctx context.Context, input *clouddirectory.ApplySchemaInput, opts ...request.Option) (*clouddirectory.ApplySchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ApplySchemaWithContext",
+		Action:  "ApplySchema",
 		Input:   input,
 		Output:  (*clouddirectory.ApplySchemaOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) ApplySchemaWithContext(ctx context.Context, input *clouddirecto
 func (c *Client) AttachObjectWithContext(ctx context.Context, input *clouddirectory.AttachObjectInput, opts ...request.Option) (*clouddirectory.AttachObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "AttachObjectWithContext",
+		Action:  "AttachObject",
 		Input:   input,
 		Output:  (*clouddirectory.AttachObjectOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) AttachObjectWithContext(ctx context.Context, input *clouddirect
 func (c *Client) AttachPolicyWithContext(ctx context.Context, input *clouddirectory.AttachPolicyInput, opts ...request.Option) (*clouddirectory.AttachPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "AttachPolicyWithContext",
+		Action:  "AttachPolicy",
 		Input:   input,
 		Output:  (*clouddirectory.AttachPolicyOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) AttachPolicyWithContext(ctx context.Context, input *clouddirect
 func (c *Client) AttachToIndexWithContext(ctx context.Context, input *clouddirectory.AttachToIndexInput, opts ...request.Option) (*clouddirectory.AttachToIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "AttachToIndexWithContext",
+		Action:  "AttachToIndex",
 		Input:   input,
 		Output:  (*clouddirectory.AttachToIndexOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) AttachToIndexWithContext(ctx context.Context, input *clouddirec
 func (c *Client) AttachTypedLinkWithContext(ctx context.Context, input *clouddirectory.AttachTypedLinkInput, opts ...request.Option) (*clouddirectory.AttachTypedLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "AttachTypedLinkWithContext",
+		Action:  "AttachTypedLink",
 		Input:   input,
 		Output:  (*clouddirectory.AttachTypedLinkOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) AttachTypedLinkWithContext(ctx context.Context, input *clouddir
 func (c *Client) BatchReadWithContext(ctx context.Context, input *clouddirectory.BatchReadInput, opts ...request.Option) (*clouddirectory.BatchReadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "BatchReadWithContext",
+		Action:  "BatchRead",
 		Input:   input,
 		Output:  (*clouddirectory.BatchReadOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) BatchReadWithContext(ctx context.Context, input *clouddirectory
 func (c *Client) BatchWriteWithContext(ctx context.Context, input *clouddirectory.BatchWriteInput, opts ...request.Option) (*clouddirectory.BatchWriteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "BatchWriteWithContext",
+		Action:  "BatchWrite",
 		Input:   input,
 		Output:  (*clouddirectory.BatchWriteOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) BatchWriteWithContext(ctx context.Context, input *clouddirector
 func (c *Client) CreateDirectoryWithContext(ctx context.Context, input *clouddirectory.CreateDirectoryInput, opts ...request.Option) (*clouddirectory.CreateDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "CreateDirectoryWithContext",
+		Action:  "CreateDirectory",
 		Input:   input,
 		Output:  (*clouddirectory.CreateDirectoryOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) CreateDirectoryWithContext(ctx context.Context, input *clouddir
 func (c *Client) CreateFacetWithContext(ctx context.Context, input *clouddirectory.CreateFacetInput, opts ...request.Option) (*clouddirectory.CreateFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "CreateFacetWithContext",
+		Action:  "CreateFacet",
 		Input:   input,
 		Output:  (*clouddirectory.CreateFacetOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) CreateFacetWithContext(ctx context.Context, input *clouddirecto
 func (c *Client) CreateIndexWithContext(ctx context.Context, input *clouddirectory.CreateIndexInput, opts ...request.Option) (*clouddirectory.CreateIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "CreateIndexWithContext",
+		Action:  "CreateIndex",
 		Input:   input,
 		Output:  (*clouddirectory.CreateIndexOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) CreateIndexWithContext(ctx context.Context, input *clouddirecto
 func (c *Client) CreateObjectWithContext(ctx context.Context, input *clouddirectory.CreateObjectInput, opts ...request.Option) (*clouddirectory.CreateObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "CreateObjectWithContext",
+		Action:  "CreateObject",
 		Input:   input,
 		Output:  (*clouddirectory.CreateObjectOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) CreateObjectWithContext(ctx context.Context, input *clouddirect
 func (c *Client) CreateSchemaWithContext(ctx context.Context, input *clouddirectory.CreateSchemaInput, opts ...request.Option) (*clouddirectory.CreateSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "CreateSchemaWithContext",
+		Action:  "CreateSchema",
 		Input:   input,
 		Output:  (*clouddirectory.CreateSchemaOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) CreateSchemaWithContext(ctx context.Context, input *clouddirect
 func (c *Client) CreateTypedLinkFacetWithContext(ctx context.Context, input *clouddirectory.CreateTypedLinkFacetInput, opts ...request.Option) (*clouddirectory.CreateTypedLinkFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "CreateTypedLinkFacetWithContext",
+		Action:  "CreateTypedLinkFacet",
 		Input:   input,
 		Output:  (*clouddirectory.CreateTypedLinkFacetOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) CreateTypedLinkFacetWithContext(ctx context.Context, input *clo
 func (c *Client) DeleteDirectoryWithContext(ctx context.Context, input *clouddirectory.DeleteDirectoryInput, opts ...request.Option) (*clouddirectory.DeleteDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DeleteDirectoryWithContext",
+		Action:  "DeleteDirectory",
 		Input:   input,
 		Output:  (*clouddirectory.DeleteDirectoryOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) DeleteDirectoryWithContext(ctx context.Context, input *clouddir
 func (c *Client) DeleteFacetWithContext(ctx context.Context, input *clouddirectory.DeleteFacetInput, opts ...request.Option) (*clouddirectory.DeleteFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DeleteFacetWithContext",
+		Action:  "DeleteFacet",
 		Input:   input,
 		Output:  (*clouddirectory.DeleteFacetOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) DeleteFacetWithContext(ctx context.Context, input *clouddirecto
 func (c *Client) DeleteObjectWithContext(ctx context.Context, input *clouddirectory.DeleteObjectInput, opts ...request.Option) (*clouddirectory.DeleteObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DeleteObjectWithContext",
+		Action:  "DeleteObject",
 		Input:   input,
 		Output:  (*clouddirectory.DeleteObjectOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) DeleteObjectWithContext(ctx context.Context, input *clouddirect
 func (c *Client) DeleteSchemaWithContext(ctx context.Context, input *clouddirectory.DeleteSchemaInput, opts ...request.Option) (*clouddirectory.DeleteSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DeleteSchemaWithContext",
+		Action:  "DeleteSchema",
 		Input:   input,
 		Output:  (*clouddirectory.DeleteSchemaOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) DeleteSchemaWithContext(ctx context.Context, input *clouddirect
 func (c *Client) DeleteTypedLinkFacetWithContext(ctx context.Context, input *clouddirectory.DeleteTypedLinkFacetInput, opts ...request.Option) (*clouddirectory.DeleteTypedLinkFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DeleteTypedLinkFacetWithContext",
+		Action:  "DeleteTypedLinkFacet",
 		Input:   input,
 		Output:  (*clouddirectory.DeleteTypedLinkFacetOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) DeleteTypedLinkFacetWithContext(ctx context.Context, input *clo
 func (c *Client) DetachFromIndexWithContext(ctx context.Context, input *clouddirectory.DetachFromIndexInput, opts ...request.Option) (*clouddirectory.DetachFromIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DetachFromIndexWithContext",
+		Action:  "DetachFromIndex",
 		Input:   input,
 		Output:  (*clouddirectory.DetachFromIndexOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) DetachFromIndexWithContext(ctx context.Context, input *clouddir
 func (c *Client) DetachObjectWithContext(ctx context.Context, input *clouddirectory.DetachObjectInput, opts ...request.Option) (*clouddirectory.DetachObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DetachObjectWithContext",
+		Action:  "DetachObject",
 		Input:   input,
 		Output:  (*clouddirectory.DetachObjectOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) DetachObjectWithContext(ctx context.Context, input *clouddirect
 func (c *Client) DetachPolicyWithContext(ctx context.Context, input *clouddirectory.DetachPolicyInput, opts ...request.Option) (*clouddirectory.DetachPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DetachPolicyWithContext",
+		Action:  "DetachPolicy",
 		Input:   input,
 		Output:  (*clouddirectory.DetachPolicyOutput)(nil),
 		Error:   nil,
@@ -559,7 +559,7 @@ func (c *Client) DetachPolicyWithContext(ctx context.Context, input *clouddirect
 func (c *Client) DetachTypedLinkWithContext(ctx context.Context, input *clouddirectory.DetachTypedLinkInput, opts ...request.Option) (*clouddirectory.DetachTypedLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DetachTypedLinkWithContext",
+		Action:  "DetachTypedLink",
 		Input:   input,
 		Output:  (*clouddirectory.DetachTypedLinkOutput)(nil),
 		Error:   nil,
@@ -580,7 +580,7 @@ func (c *Client) DetachTypedLinkWithContext(ctx context.Context, input *clouddir
 func (c *Client) DisableDirectoryWithContext(ctx context.Context, input *clouddirectory.DisableDirectoryInput, opts ...request.Option) (*clouddirectory.DisableDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "DisableDirectoryWithContext",
+		Action:  "DisableDirectory",
 		Input:   input,
 		Output:  (*clouddirectory.DisableDirectoryOutput)(nil),
 		Error:   nil,
@@ -601,7 +601,7 @@ func (c *Client) DisableDirectoryWithContext(ctx context.Context, input *clouddi
 func (c *Client) EnableDirectoryWithContext(ctx context.Context, input *clouddirectory.EnableDirectoryInput, opts ...request.Option) (*clouddirectory.EnableDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "EnableDirectoryWithContext",
+		Action:  "EnableDirectory",
 		Input:   input,
 		Output:  (*clouddirectory.EnableDirectoryOutput)(nil),
 		Error:   nil,
@@ -622,7 +622,7 @@ func (c *Client) EnableDirectoryWithContext(ctx context.Context, input *clouddir
 func (c *Client) GetAppliedSchemaVersionWithContext(ctx context.Context, input *clouddirectory.GetAppliedSchemaVersionInput, opts ...request.Option) (*clouddirectory.GetAppliedSchemaVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetAppliedSchemaVersionWithContext",
+		Action:  "GetAppliedSchemaVersion",
 		Input:   input,
 		Output:  (*clouddirectory.GetAppliedSchemaVersionOutput)(nil),
 		Error:   nil,
@@ -643,7 +643,7 @@ func (c *Client) GetAppliedSchemaVersionWithContext(ctx context.Context, input *
 func (c *Client) GetDirectoryWithContext(ctx context.Context, input *clouddirectory.GetDirectoryInput, opts ...request.Option) (*clouddirectory.GetDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetDirectoryWithContext",
+		Action:  "GetDirectory",
 		Input:   input,
 		Output:  (*clouddirectory.GetDirectoryOutput)(nil),
 		Error:   nil,
@@ -664,7 +664,7 @@ func (c *Client) GetDirectoryWithContext(ctx context.Context, input *clouddirect
 func (c *Client) GetFacetWithContext(ctx context.Context, input *clouddirectory.GetFacetInput, opts ...request.Option) (*clouddirectory.GetFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetFacetWithContext",
+		Action:  "GetFacet",
 		Input:   input,
 		Output:  (*clouddirectory.GetFacetOutput)(nil),
 		Error:   nil,
@@ -685,7 +685,7 @@ func (c *Client) GetFacetWithContext(ctx context.Context, input *clouddirectory.
 func (c *Client) GetLinkAttributesWithContext(ctx context.Context, input *clouddirectory.GetLinkAttributesInput, opts ...request.Option) (*clouddirectory.GetLinkAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetLinkAttributesWithContext",
+		Action:  "GetLinkAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.GetLinkAttributesOutput)(nil),
 		Error:   nil,
@@ -706,7 +706,7 @@ func (c *Client) GetLinkAttributesWithContext(ctx context.Context, input *cloudd
 func (c *Client) GetObjectAttributesWithContext(ctx context.Context, input *clouddirectory.GetObjectAttributesInput, opts ...request.Option) (*clouddirectory.GetObjectAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetObjectAttributesWithContext",
+		Action:  "GetObjectAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.GetObjectAttributesOutput)(nil),
 		Error:   nil,
@@ -727,7 +727,7 @@ func (c *Client) GetObjectAttributesWithContext(ctx context.Context, input *clou
 func (c *Client) GetObjectInformationWithContext(ctx context.Context, input *clouddirectory.GetObjectInformationInput, opts ...request.Option) (*clouddirectory.GetObjectInformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetObjectInformationWithContext",
+		Action:  "GetObjectInformation",
 		Input:   input,
 		Output:  (*clouddirectory.GetObjectInformationOutput)(nil),
 		Error:   nil,
@@ -748,7 +748,7 @@ func (c *Client) GetObjectInformationWithContext(ctx context.Context, input *clo
 func (c *Client) GetSchemaAsJsonWithContext(ctx context.Context, input *clouddirectory.GetSchemaAsJsonInput, opts ...request.Option) (*clouddirectory.GetSchemaAsJsonOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetSchemaAsJsonWithContext",
+		Action:  "GetSchemaAsJson",
 		Input:   input,
 		Output:  (*clouddirectory.GetSchemaAsJsonOutput)(nil),
 		Error:   nil,
@@ -769,7 +769,7 @@ func (c *Client) GetSchemaAsJsonWithContext(ctx context.Context, input *clouddir
 func (c *Client) GetTypedLinkFacetInformationWithContext(ctx context.Context, input *clouddirectory.GetTypedLinkFacetInformationInput, opts ...request.Option) (*clouddirectory.GetTypedLinkFacetInformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "GetTypedLinkFacetInformationWithContext",
+		Action:  "GetTypedLinkFacetInformation",
 		Input:   input,
 		Output:  (*clouddirectory.GetTypedLinkFacetInformationOutput)(nil),
 		Error:   nil,
@@ -790,7 +790,7 @@ func (c *Client) GetTypedLinkFacetInformationWithContext(ctx context.Context, in
 func (c *Client) ListAppliedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListAppliedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListAppliedSchemaArnsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListAppliedSchemaArnsWithContext",
+		Action:  "ListAppliedSchemaArns",
 		Input:   input,
 		Output:  (*clouddirectory.ListAppliedSchemaArnsOutput)(nil),
 		Error:   nil,
@@ -811,7 +811,7 @@ func (c *Client) ListAppliedSchemaArnsWithContext(ctx context.Context, input *cl
 func (c *Client) ListAttachedIndicesWithContext(ctx context.Context, input *clouddirectory.ListAttachedIndicesInput, opts ...request.Option) (*clouddirectory.ListAttachedIndicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListAttachedIndicesWithContext",
+		Action:  "ListAttachedIndices",
 		Input:   input,
 		Output:  (*clouddirectory.ListAttachedIndicesOutput)(nil),
 		Error:   nil,
@@ -832,7 +832,7 @@ func (c *Client) ListAttachedIndicesWithContext(ctx context.Context, input *clou
 func (c *Client) ListDevelopmentSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListDevelopmentSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListDevelopmentSchemaArnsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListDevelopmentSchemaArnsWithContext",
+		Action:  "ListDevelopmentSchemaArns",
 		Input:   input,
 		Output:  (*clouddirectory.ListDevelopmentSchemaArnsOutput)(nil),
 		Error:   nil,
@@ -853,7 +853,7 @@ func (c *Client) ListDevelopmentSchemaArnsWithContext(ctx context.Context, input
 func (c *Client) ListDirectoriesWithContext(ctx context.Context, input *clouddirectory.ListDirectoriesInput, opts ...request.Option) (*clouddirectory.ListDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListDirectoriesWithContext",
+		Action:  "ListDirectories",
 		Input:   input,
 		Output:  (*clouddirectory.ListDirectoriesOutput)(nil),
 		Error:   nil,
@@ -874,7 +874,7 @@ func (c *Client) ListDirectoriesWithContext(ctx context.Context, input *clouddir
 func (c *Client) ListFacetAttributesWithContext(ctx context.Context, input *clouddirectory.ListFacetAttributesInput, opts ...request.Option) (*clouddirectory.ListFacetAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListFacetAttributesWithContext",
+		Action:  "ListFacetAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.ListFacetAttributesOutput)(nil),
 		Error:   nil,
@@ -895,7 +895,7 @@ func (c *Client) ListFacetAttributesWithContext(ctx context.Context, input *clou
 func (c *Client) ListFacetNamesWithContext(ctx context.Context, input *clouddirectory.ListFacetNamesInput, opts ...request.Option) (*clouddirectory.ListFacetNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListFacetNamesWithContext",
+		Action:  "ListFacetNames",
 		Input:   input,
 		Output:  (*clouddirectory.ListFacetNamesOutput)(nil),
 		Error:   nil,
@@ -916,7 +916,7 @@ func (c *Client) ListFacetNamesWithContext(ctx context.Context, input *clouddire
 func (c *Client) ListIncomingTypedLinksWithContext(ctx context.Context, input *clouddirectory.ListIncomingTypedLinksInput, opts ...request.Option) (*clouddirectory.ListIncomingTypedLinksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListIncomingTypedLinksWithContext",
+		Action:  "ListIncomingTypedLinks",
 		Input:   input,
 		Output:  (*clouddirectory.ListIncomingTypedLinksOutput)(nil),
 		Error:   nil,
@@ -937,7 +937,7 @@ func (c *Client) ListIncomingTypedLinksWithContext(ctx context.Context, input *c
 func (c *Client) ListIndexWithContext(ctx context.Context, input *clouddirectory.ListIndexInput, opts ...request.Option) (*clouddirectory.ListIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListIndexWithContext",
+		Action:  "ListIndex",
 		Input:   input,
 		Output:  (*clouddirectory.ListIndexOutput)(nil),
 		Error:   nil,
@@ -958,7 +958,7 @@ func (c *Client) ListIndexWithContext(ctx context.Context, input *clouddirectory
 func (c *Client) ListManagedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListManagedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListManagedSchemaArnsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListManagedSchemaArnsWithContext",
+		Action:  "ListManagedSchemaArns",
 		Input:   input,
 		Output:  (*clouddirectory.ListManagedSchemaArnsOutput)(nil),
 		Error:   nil,
@@ -979,7 +979,7 @@ func (c *Client) ListManagedSchemaArnsWithContext(ctx context.Context, input *cl
 func (c *Client) ListObjectAttributesWithContext(ctx context.Context, input *clouddirectory.ListObjectAttributesInput, opts ...request.Option) (*clouddirectory.ListObjectAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListObjectAttributesWithContext",
+		Action:  "ListObjectAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.ListObjectAttributesOutput)(nil),
 		Error:   nil,
@@ -1000,7 +1000,7 @@ func (c *Client) ListObjectAttributesWithContext(ctx context.Context, input *clo
 func (c *Client) ListObjectChildrenWithContext(ctx context.Context, input *clouddirectory.ListObjectChildrenInput, opts ...request.Option) (*clouddirectory.ListObjectChildrenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListObjectChildrenWithContext",
+		Action:  "ListObjectChildren",
 		Input:   input,
 		Output:  (*clouddirectory.ListObjectChildrenOutput)(nil),
 		Error:   nil,
@@ -1021,7 +1021,7 @@ func (c *Client) ListObjectChildrenWithContext(ctx context.Context, input *cloud
 func (c *Client) ListObjectParentPathsWithContext(ctx context.Context, input *clouddirectory.ListObjectParentPathsInput, opts ...request.Option) (*clouddirectory.ListObjectParentPathsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListObjectParentPathsWithContext",
+		Action:  "ListObjectParentPaths",
 		Input:   input,
 		Output:  (*clouddirectory.ListObjectParentPathsOutput)(nil),
 		Error:   nil,
@@ -1042,7 +1042,7 @@ func (c *Client) ListObjectParentPathsWithContext(ctx context.Context, input *cl
 func (c *Client) ListObjectParentsWithContext(ctx context.Context, input *clouddirectory.ListObjectParentsInput, opts ...request.Option) (*clouddirectory.ListObjectParentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListObjectParentsWithContext",
+		Action:  "ListObjectParents",
 		Input:   input,
 		Output:  (*clouddirectory.ListObjectParentsOutput)(nil),
 		Error:   nil,
@@ -1063,7 +1063,7 @@ func (c *Client) ListObjectParentsWithContext(ctx context.Context, input *cloudd
 func (c *Client) ListObjectPoliciesWithContext(ctx context.Context, input *clouddirectory.ListObjectPoliciesInput, opts ...request.Option) (*clouddirectory.ListObjectPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListObjectPoliciesWithContext",
+		Action:  "ListObjectPolicies",
 		Input:   input,
 		Output:  (*clouddirectory.ListObjectPoliciesOutput)(nil),
 		Error:   nil,
@@ -1084,7 +1084,7 @@ func (c *Client) ListObjectPoliciesWithContext(ctx context.Context, input *cloud
 func (c *Client) ListOutgoingTypedLinksWithContext(ctx context.Context, input *clouddirectory.ListOutgoingTypedLinksInput, opts ...request.Option) (*clouddirectory.ListOutgoingTypedLinksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListOutgoingTypedLinksWithContext",
+		Action:  "ListOutgoingTypedLinks",
 		Input:   input,
 		Output:  (*clouddirectory.ListOutgoingTypedLinksOutput)(nil),
 		Error:   nil,
@@ -1105,7 +1105,7 @@ func (c *Client) ListOutgoingTypedLinksWithContext(ctx context.Context, input *c
 func (c *Client) ListPolicyAttachmentsWithContext(ctx context.Context, input *clouddirectory.ListPolicyAttachmentsInput, opts ...request.Option) (*clouddirectory.ListPolicyAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListPolicyAttachmentsWithContext",
+		Action:  "ListPolicyAttachments",
 		Input:   input,
 		Output:  (*clouddirectory.ListPolicyAttachmentsOutput)(nil),
 		Error:   nil,
@@ -1126,7 +1126,7 @@ func (c *Client) ListPolicyAttachmentsWithContext(ctx context.Context, input *cl
 func (c *Client) ListPublishedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListPublishedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListPublishedSchemaArnsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListPublishedSchemaArnsWithContext",
+		Action:  "ListPublishedSchemaArns",
 		Input:   input,
 		Output:  (*clouddirectory.ListPublishedSchemaArnsOutput)(nil),
 		Error:   nil,
@@ -1147,7 +1147,7 @@ func (c *Client) ListPublishedSchemaArnsWithContext(ctx context.Context, input *
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clouddirectory.ListTagsForResourceInput, opts ...request.Option) (*clouddirectory.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*clouddirectory.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -1168,7 +1168,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 func (c *Client) ListTypedLinkFacetAttributesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetAttributesInput, opts ...request.Option) (*clouddirectory.ListTypedLinkFacetAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListTypedLinkFacetAttributesWithContext",
+		Action:  "ListTypedLinkFacetAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.ListTypedLinkFacetAttributesOutput)(nil),
 		Error:   nil,
@@ -1189,7 +1189,7 @@ func (c *Client) ListTypedLinkFacetAttributesWithContext(ctx context.Context, in
 func (c *Client) ListTypedLinkFacetNamesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetNamesInput, opts ...request.Option) (*clouddirectory.ListTypedLinkFacetNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "ListTypedLinkFacetNamesWithContext",
+		Action:  "ListTypedLinkFacetNames",
 		Input:   input,
 		Output:  (*clouddirectory.ListTypedLinkFacetNamesOutput)(nil),
 		Error:   nil,
@@ -1210,7 +1210,7 @@ func (c *Client) ListTypedLinkFacetNamesWithContext(ctx context.Context, input *
 func (c *Client) LookupPolicyWithContext(ctx context.Context, input *clouddirectory.LookupPolicyInput, opts ...request.Option) (*clouddirectory.LookupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "LookupPolicyWithContext",
+		Action:  "LookupPolicy",
 		Input:   input,
 		Output:  (*clouddirectory.LookupPolicyOutput)(nil),
 		Error:   nil,
@@ -1231,7 +1231,7 @@ func (c *Client) LookupPolicyWithContext(ctx context.Context, input *clouddirect
 func (c *Client) PublishSchemaWithContext(ctx context.Context, input *clouddirectory.PublishSchemaInput, opts ...request.Option) (*clouddirectory.PublishSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "PublishSchemaWithContext",
+		Action:  "PublishSchema",
 		Input:   input,
 		Output:  (*clouddirectory.PublishSchemaOutput)(nil),
 		Error:   nil,
@@ -1252,7 +1252,7 @@ func (c *Client) PublishSchemaWithContext(ctx context.Context, input *clouddirec
 func (c *Client) PutSchemaFromJsonWithContext(ctx context.Context, input *clouddirectory.PutSchemaFromJsonInput, opts ...request.Option) (*clouddirectory.PutSchemaFromJsonOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "PutSchemaFromJsonWithContext",
+		Action:  "PutSchemaFromJson",
 		Input:   input,
 		Output:  (*clouddirectory.PutSchemaFromJsonOutput)(nil),
 		Error:   nil,
@@ -1273,7 +1273,7 @@ func (c *Client) PutSchemaFromJsonWithContext(ctx context.Context, input *cloudd
 func (c *Client) RemoveFacetFromObjectWithContext(ctx context.Context, input *clouddirectory.RemoveFacetFromObjectInput, opts ...request.Option) (*clouddirectory.RemoveFacetFromObjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "RemoveFacetFromObjectWithContext",
+		Action:  "RemoveFacetFromObject",
 		Input:   input,
 		Output:  (*clouddirectory.RemoveFacetFromObjectOutput)(nil),
 		Error:   nil,
@@ -1294,7 +1294,7 @@ func (c *Client) RemoveFacetFromObjectWithContext(ctx context.Context, input *cl
 func (c *Client) TagResourceWithContext(ctx context.Context, input *clouddirectory.TagResourceInput, opts ...request.Option) (*clouddirectory.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*clouddirectory.TagResourceOutput)(nil),
 		Error:   nil,
@@ -1315,7 +1315,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *clouddirecto
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *clouddirectory.UntagResourceInput, opts ...request.Option) (*clouddirectory.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*clouddirectory.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -1336,7 +1336,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *clouddirec
 func (c *Client) UpdateFacetWithContext(ctx context.Context, input *clouddirectory.UpdateFacetInput, opts ...request.Option) (*clouddirectory.UpdateFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpdateFacetWithContext",
+		Action:  "UpdateFacet",
 		Input:   input,
 		Output:  (*clouddirectory.UpdateFacetOutput)(nil),
 		Error:   nil,
@@ -1357,7 +1357,7 @@ func (c *Client) UpdateFacetWithContext(ctx context.Context, input *clouddirecto
 func (c *Client) UpdateLinkAttributesWithContext(ctx context.Context, input *clouddirectory.UpdateLinkAttributesInput, opts ...request.Option) (*clouddirectory.UpdateLinkAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpdateLinkAttributesWithContext",
+		Action:  "UpdateLinkAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.UpdateLinkAttributesOutput)(nil),
 		Error:   nil,
@@ -1378,7 +1378,7 @@ func (c *Client) UpdateLinkAttributesWithContext(ctx context.Context, input *clo
 func (c *Client) UpdateObjectAttributesWithContext(ctx context.Context, input *clouddirectory.UpdateObjectAttributesInput, opts ...request.Option) (*clouddirectory.UpdateObjectAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpdateObjectAttributesWithContext",
+		Action:  "UpdateObjectAttributes",
 		Input:   input,
 		Output:  (*clouddirectory.UpdateObjectAttributesOutput)(nil),
 		Error:   nil,
@@ -1399,7 +1399,7 @@ func (c *Client) UpdateObjectAttributesWithContext(ctx context.Context, input *c
 func (c *Client) UpdateSchemaWithContext(ctx context.Context, input *clouddirectory.UpdateSchemaInput, opts ...request.Option) (*clouddirectory.UpdateSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpdateSchemaWithContext",
+		Action:  "UpdateSchema",
 		Input:   input,
 		Output:  (*clouddirectory.UpdateSchemaOutput)(nil),
 		Error:   nil,
@@ -1420,7 +1420,7 @@ func (c *Client) UpdateSchemaWithContext(ctx context.Context, input *clouddirect
 func (c *Client) UpdateTypedLinkFacetWithContext(ctx context.Context, input *clouddirectory.UpdateTypedLinkFacetInput, opts ...request.Option) (*clouddirectory.UpdateTypedLinkFacetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpdateTypedLinkFacetWithContext",
+		Action:  "UpdateTypedLinkFacet",
 		Input:   input,
 		Output:  (*clouddirectory.UpdateTypedLinkFacetOutput)(nil),
 		Error:   nil,
@@ -1441,7 +1441,7 @@ func (c *Client) UpdateTypedLinkFacetWithContext(ctx context.Context, input *clo
 func (c *Client) UpgradeAppliedSchemaWithContext(ctx context.Context, input *clouddirectory.UpgradeAppliedSchemaInput, opts ...request.Option) (*clouddirectory.UpgradeAppliedSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpgradeAppliedSchemaWithContext",
+		Action:  "UpgradeAppliedSchema",
 		Input:   input,
 		Output:  (*clouddirectory.UpgradeAppliedSchemaOutput)(nil),
 		Error:   nil,
@@ -1462,7 +1462,7 @@ func (c *Client) UpgradeAppliedSchemaWithContext(ctx context.Context, input *clo
 func (c *Client) UpgradePublishedSchemaWithContext(ctx context.Context, input *clouddirectory.UpgradePublishedSchemaInput, opts ...request.Option) (*clouddirectory.UpgradePublishedSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
-		Action:  "UpgradePublishedSchemaWithContext",
+		Action:  "UpgradePublishedSchema",
 		Input:   input,
 		Output:  (*clouddirectory.UpgradePublishedSchemaOutput)(nil),
 		Error:   nil,

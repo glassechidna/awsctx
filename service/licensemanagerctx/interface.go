@@ -46,7 +46,7 @@ var _ LicenseManager = (*Client)(nil)
 func (c *Client) CreateLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.CreateLicenseConfigurationInput, opts ...request.Option) (*licensemanager.CreateLicenseConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "CreateLicenseConfigurationWithContext",
+		Action:  "CreateLicenseConfiguration",
 		Input:   input,
 		Output:  (*licensemanager.CreateLicenseConfigurationOutput)(nil),
 		Error:   nil,
@@ -67,7 +67,7 @@ func (c *Client) CreateLicenseConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) DeleteLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.DeleteLicenseConfigurationInput, opts ...request.Option) (*licensemanager.DeleteLicenseConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "DeleteLicenseConfigurationWithContext",
+		Action:  "DeleteLicenseConfiguration",
 		Input:   input,
 		Output:  (*licensemanager.DeleteLicenseConfigurationOutput)(nil),
 		Error:   nil,
@@ -88,7 +88,7 @@ func (c *Client) DeleteLicenseConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) GetLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.GetLicenseConfigurationInput, opts ...request.Option) (*licensemanager.GetLicenseConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "GetLicenseConfigurationWithContext",
+		Action:  "GetLicenseConfiguration",
 		Input:   input,
 		Output:  (*licensemanager.GetLicenseConfigurationOutput)(nil),
 		Error:   nil,
@@ -109,7 +109,7 @@ func (c *Client) GetLicenseConfigurationWithContext(ctx context.Context, input *
 func (c *Client) GetServiceSettingsWithContext(ctx context.Context, input *licensemanager.GetServiceSettingsInput, opts ...request.Option) (*licensemanager.GetServiceSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "GetServiceSettingsWithContext",
+		Action:  "GetServiceSettings",
 		Input:   input,
 		Output:  (*licensemanager.GetServiceSettingsOutput)(nil),
 		Error:   nil,
@@ -130,7 +130,7 @@ func (c *Client) GetServiceSettingsWithContext(ctx context.Context, input *licen
 func (c *Client) ListAssociationsForLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.ListAssociationsForLicenseConfigurationInput, opts ...request.Option) (*licensemanager.ListAssociationsForLicenseConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "ListAssociationsForLicenseConfigurationWithContext",
+		Action:  "ListAssociationsForLicenseConfiguration",
 		Input:   input,
 		Output:  (*licensemanager.ListAssociationsForLicenseConfigurationOutput)(nil),
 		Error:   nil,
@@ -151,7 +151,7 @@ func (c *Client) ListAssociationsForLicenseConfigurationWithContext(ctx context.
 func (c *Client) ListLicenseConfigurationsWithContext(ctx context.Context, input *licensemanager.ListLicenseConfigurationsInput, opts ...request.Option) (*licensemanager.ListLicenseConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "ListLicenseConfigurationsWithContext",
+		Action:  "ListLicenseConfigurations",
 		Input:   input,
 		Output:  (*licensemanager.ListLicenseConfigurationsOutput)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) ListLicenseConfigurationsWithContext(ctx context.Context, input
 func (c *Client) ListLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.ListLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.ListLicenseSpecificationsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "ListLicenseSpecificationsForResourceWithContext",
+		Action:  "ListLicenseSpecificationsForResource",
 		Input:   input,
 		Output:  (*licensemanager.ListLicenseSpecificationsForResourceOutput)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) ListLicenseSpecificationsForResourceWithContext(ctx context.Con
 func (c *Client) ListResourceInventoryWithContext(ctx context.Context, input *licensemanager.ListResourceInventoryInput, opts ...request.Option) (*licensemanager.ListResourceInventoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "ListResourceInventoryWithContext",
+		Action:  "ListResourceInventory",
 		Input:   input,
 		Output:  (*licensemanager.ListResourceInventoryOutput)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) ListResourceInventoryWithContext(ctx context.Context, input *li
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *licensemanager.ListTagsForResourceInput, opts ...request.Option) (*licensemanager.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*licensemanager.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *lice
 func (c *Client) ListUsageForLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.ListUsageForLicenseConfigurationInput, opts ...request.Option) (*licensemanager.ListUsageForLicenseConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "ListUsageForLicenseConfigurationWithContext",
+		Action:  "ListUsageForLicenseConfiguration",
 		Input:   input,
 		Output:  (*licensemanager.ListUsageForLicenseConfigurationOutput)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) ListUsageForLicenseConfigurationWithContext(ctx context.Context
 func (c *Client) TagResourceWithContext(ctx context.Context, input *licensemanager.TagResourceInput, opts ...request.Option) (*licensemanager.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*licensemanager.TagResourceOutput)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *licensemanag
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *licensemanager.UntagResourceInput, opts ...request.Option) (*licensemanager.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*licensemanager.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *licenseman
 func (c *Client) UpdateLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.UpdateLicenseConfigurationInput, opts ...request.Option) (*licensemanager.UpdateLicenseConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "UpdateLicenseConfigurationWithContext",
+		Action:  "UpdateLicenseConfiguration",
 		Input:   input,
 		Output:  (*licensemanager.UpdateLicenseConfigurationOutput)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) UpdateLicenseConfigurationWithContext(ctx context.Context, inpu
 func (c *Client) UpdateLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.UpdateLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.UpdateLicenseSpecificationsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "UpdateLicenseSpecificationsForResourceWithContext",
+		Action:  "UpdateLicenseSpecificationsForResource",
 		Input:   input,
 		Output:  (*licensemanager.UpdateLicenseSpecificationsForResourceOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) UpdateLicenseSpecificationsForResourceWithContext(ctx context.C
 func (c *Client) UpdateServiceSettingsWithContext(ctx context.Context, input *licensemanager.UpdateServiceSettingsInput, opts ...request.Option) (*licensemanager.UpdateServiceSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
-		Action:  "UpdateServiceSettingsWithContext",
+		Action:  "UpdateServiceSettings",
 		Input:   input,
 		Output:  (*licensemanager.UpdateServiceSettingsOutput)(nil),
 		Error:   nil,

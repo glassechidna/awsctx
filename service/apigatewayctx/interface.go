@@ -151,7 +151,7 @@ var _ APIGateway = (*Client)(nil)
 func (c *Client) CreateApiKeyWithContext(ctx context.Context, input *apigateway.CreateApiKeyInput, opts ...request.Option) (*apigateway.ApiKey, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateApiKeyWithContext",
+		Action:  "CreateApiKey",
 		Input:   input,
 		Output:  (*apigateway.ApiKey)(nil),
 		Error:   nil,
@@ -172,7 +172,7 @@ func (c *Client) CreateApiKeyWithContext(ctx context.Context, input *apigateway.
 func (c *Client) CreateAuthorizerWithContext(ctx context.Context, input *apigateway.CreateAuthorizerInput, opts ...request.Option) (*apigateway.Authorizer, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateAuthorizerWithContext",
+		Action:  "CreateAuthorizer",
 		Input:   input,
 		Output:  (*apigateway.Authorizer)(nil),
 		Error:   nil,
@@ -193,7 +193,7 @@ func (c *Client) CreateAuthorizerWithContext(ctx context.Context, input *apigate
 func (c *Client) CreateBasePathMappingWithContext(ctx context.Context, input *apigateway.CreateBasePathMappingInput, opts ...request.Option) (*apigateway.BasePathMapping, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateBasePathMappingWithContext",
+		Action:  "CreateBasePathMapping",
 		Input:   input,
 		Output:  (*apigateway.BasePathMapping)(nil),
 		Error:   nil,
@@ -214,7 +214,7 @@ func (c *Client) CreateBasePathMappingWithContext(ctx context.Context, input *ap
 func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *apigateway.CreateDeploymentInput, opts ...request.Option) (*apigateway.Deployment, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateDeploymentWithContext",
+		Action:  "CreateDeployment",
 		Input:   input,
 		Output:  (*apigateway.Deployment)(nil),
 		Error:   nil,
@@ -235,7 +235,7 @@ func (c *Client) CreateDeploymentWithContext(ctx context.Context, input *apigate
 func (c *Client) CreateDocumentationPartWithContext(ctx context.Context, input *apigateway.CreateDocumentationPartInput, opts ...request.Option) (*apigateway.DocumentationPart, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateDocumentationPartWithContext",
+		Action:  "CreateDocumentationPart",
 		Input:   input,
 		Output:  (*apigateway.DocumentationPart)(nil),
 		Error:   nil,
@@ -256,7 +256,7 @@ func (c *Client) CreateDocumentationPartWithContext(ctx context.Context, input *
 func (c *Client) CreateDocumentationVersionWithContext(ctx context.Context, input *apigateway.CreateDocumentationVersionInput, opts ...request.Option) (*apigateway.DocumentationVersion, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateDocumentationVersionWithContext",
+		Action:  "CreateDocumentationVersion",
 		Input:   input,
 		Output:  (*apigateway.DocumentationVersion)(nil),
 		Error:   nil,
@@ -277,7 +277,7 @@ func (c *Client) CreateDocumentationVersionWithContext(ctx context.Context, inpu
 func (c *Client) CreateDomainNameWithContext(ctx context.Context, input *apigateway.CreateDomainNameInput, opts ...request.Option) (*apigateway.DomainName, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateDomainNameWithContext",
+		Action:  "CreateDomainName",
 		Input:   input,
 		Output:  (*apigateway.DomainName)(nil),
 		Error:   nil,
@@ -298,7 +298,7 @@ func (c *Client) CreateDomainNameWithContext(ctx context.Context, input *apigate
 func (c *Client) CreateModelWithContext(ctx context.Context, input *apigateway.CreateModelInput, opts ...request.Option) (*apigateway.Model, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateModelWithContext",
+		Action:  "CreateModel",
 		Input:   input,
 		Output:  (*apigateway.Model)(nil),
 		Error:   nil,
@@ -319,7 +319,7 @@ func (c *Client) CreateModelWithContext(ctx context.Context, input *apigateway.C
 func (c *Client) CreateRequestValidatorWithContext(ctx context.Context, input *apigateway.CreateRequestValidatorInput, opts ...request.Option) (*apigateway.UpdateRequestValidatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateRequestValidatorWithContext",
+		Action:  "CreateRequestValidator",
 		Input:   input,
 		Output:  (*apigateway.UpdateRequestValidatorOutput)(nil),
 		Error:   nil,
@@ -340,7 +340,7 @@ func (c *Client) CreateRequestValidatorWithContext(ctx context.Context, input *a
 func (c *Client) CreateResourceWithContext(ctx context.Context, input *apigateway.CreateResourceInput, opts ...request.Option) (*apigateway.Resource, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateResourceWithContext",
+		Action:  "CreateResource",
 		Input:   input,
 		Output:  (*apigateway.Resource)(nil),
 		Error:   nil,
@@ -361,7 +361,7 @@ func (c *Client) CreateResourceWithContext(ctx context.Context, input *apigatewa
 func (c *Client) CreateRestApiWithContext(ctx context.Context, input *apigateway.CreateRestApiInput, opts ...request.Option) (*apigateway.RestApi, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateRestApiWithContext",
+		Action:  "CreateRestApi",
 		Input:   input,
 		Output:  (*apigateway.RestApi)(nil),
 		Error:   nil,
@@ -382,7 +382,7 @@ func (c *Client) CreateRestApiWithContext(ctx context.Context, input *apigateway
 func (c *Client) CreateStageWithContext(ctx context.Context, input *apigateway.CreateStageInput, opts ...request.Option) (*apigateway.Stage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateStageWithContext",
+		Action:  "CreateStage",
 		Input:   input,
 		Output:  (*apigateway.Stage)(nil),
 		Error:   nil,
@@ -403,7 +403,7 @@ func (c *Client) CreateStageWithContext(ctx context.Context, input *apigateway.C
 func (c *Client) CreateUsagePlanWithContext(ctx context.Context, input *apigateway.CreateUsagePlanInput, opts ...request.Option) (*apigateway.UsagePlan, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateUsagePlanWithContext",
+		Action:  "CreateUsagePlan",
 		Input:   input,
 		Output:  (*apigateway.UsagePlan)(nil),
 		Error:   nil,
@@ -424,7 +424,7 @@ func (c *Client) CreateUsagePlanWithContext(ctx context.Context, input *apigatew
 func (c *Client) CreateUsagePlanKeyWithContext(ctx context.Context, input *apigateway.CreateUsagePlanKeyInput, opts ...request.Option) (*apigateway.UsagePlanKey, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateUsagePlanKeyWithContext",
+		Action:  "CreateUsagePlanKey",
 		Input:   input,
 		Output:  (*apigateway.UsagePlanKey)(nil),
 		Error:   nil,
@@ -445,7 +445,7 @@ func (c *Client) CreateUsagePlanKeyWithContext(ctx context.Context, input *apiga
 func (c *Client) CreateVpcLinkWithContext(ctx context.Context, input *apigateway.CreateVpcLinkInput, opts ...request.Option) (*apigateway.UpdateVpcLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "CreateVpcLinkWithContext",
+		Action:  "CreateVpcLink",
 		Input:   input,
 		Output:  (*apigateway.UpdateVpcLinkOutput)(nil),
 		Error:   nil,
@@ -466,7 +466,7 @@ func (c *Client) CreateVpcLinkWithContext(ctx context.Context, input *apigateway
 func (c *Client) DeleteApiKeyWithContext(ctx context.Context, input *apigateway.DeleteApiKeyInput, opts ...request.Option) (*apigateway.DeleteApiKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteApiKeyWithContext",
+		Action:  "DeleteApiKey",
 		Input:   input,
 		Output:  (*apigateway.DeleteApiKeyOutput)(nil),
 		Error:   nil,
@@ -487,7 +487,7 @@ func (c *Client) DeleteApiKeyWithContext(ctx context.Context, input *apigateway.
 func (c *Client) DeleteAuthorizerWithContext(ctx context.Context, input *apigateway.DeleteAuthorizerInput, opts ...request.Option) (*apigateway.DeleteAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteAuthorizerWithContext",
+		Action:  "DeleteAuthorizer",
 		Input:   input,
 		Output:  (*apigateway.DeleteAuthorizerOutput)(nil),
 		Error:   nil,
@@ -508,7 +508,7 @@ func (c *Client) DeleteAuthorizerWithContext(ctx context.Context, input *apigate
 func (c *Client) DeleteBasePathMappingWithContext(ctx context.Context, input *apigateway.DeleteBasePathMappingInput, opts ...request.Option) (*apigateway.DeleteBasePathMappingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteBasePathMappingWithContext",
+		Action:  "DeleteBasePathMapping",
 		Input:   input,
 		Output:  (*apigateway.DeleteBasePathMappingOutput)(nil),
 		Error:   nil,
@@ -529,7 +529,7 @@ func (c *Client) DeleteBasePathMappingWithContext(ctx context.Context, input *ap
 func (c *Client) DeleteClientCertificateWithContext(ctx context.Context, input *apigateway.DeleteClientCertificateInput, opts ...request.Option) (*apigateway.DeleteClientCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteClientCertificateWithContext",
+		Action:  "DeleteClientCertificate",
 		Input:   input,
 		Output:  (*apigateway.DeleteClientCertificateOutput)(nil),
 		Error:   nil,
@@ -550,7 +550,7 @@ func (c *Client) DeleteClientCertificateWithContext(ctx context.Context, input *
 func (c *Client) DeleteDeploymentWithContext(ctx context.Context, input *apigateway.DeleteDeploymentInput, opts ...request.Option) (*apigateway.DeleteDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteDeploymentWithContext",
+		Action:  "DeleteDeployment",
 		Input:   input,
 		Output:  (*apigateway.DeleteDeploymentOutput)(nil),
 		Error:   nil,
@@ -571,7 +571,7 @@ func (c *Client) DeleteDeploymentWithContext(ctx context.Context, input *apigate
 func (c *Client) DeleteDocumentationPartWithContext(ctx context.Context, input *apigateway.DeleteDocumentationPartInput, opts ...request.Option) (*apigateway.DeleteDocumentationPartOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteDocumentationPartWithContext",
+		Action:  "DeleteDocumentationPart",
 		Input:   input,
 		Output:  (*apigateway.DeleteDocumentationPartOutput)(nil),
 		Error:   nil,
@@ -592,7 +592,7 @@ func (c *Client) DeleteDocumentationPartWithContext(ctx context.Context, input *
 func (c *Client) DeleteDocumentationVersionWithContext(ctx context.Context, input *apigateway.DeleteDocumentationVersionInput, opts ...request.Option) (*apigateway.DeleteDocumentationVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteDocumentationVersionWithContext",
+		Action:  "DeleteDocumentationVersion",
 		Input:   input,
 		Output:  (*apigateway.DeleteDocumentationVersionOutput)(nil),
 		Error:   nil,
@@ -613,7 +613,7 @@ func (c *Client) DeleteDocumentationVersionWithContext(ctx context.Context, inpu
 func (c *Client) DeleteDomainNameWithContext(ctx context.Context, input *apigateway.DeleteDomainNameInput, opts ...request.Option) (*apigateway.DeleteDomainNameOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteDomainNameWithContext",
+		Action:  "DeleteDomainName",
 		Input:   input,
 		Output:  (*apigateway.DeleteDomainNameOutput)(nil),
 		Error:   nil,
@@ -634,7 +634,7 @@ func (c *Client) DeleteDomainNameWithContext(ctx context.Context, input *apigate
 func (c *Client) DeleteGatewayResponseWithContext(ctx context.Context, input *apigateway.DeleteGatewayResponseInput, opts ...request.Option) (*apigateway.DeleteGatewayResponseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteGatewayResponseWithContext",
+		Action:  "DeleteGatewayResponse",
 		Input:   input,
 		Output:  (*apigateway.DeleteGatewayResponseOutput)(nil),
 		Error:   nil,
@@ -655,7 +655,7 @@ func (c *Client) DeleteGatewayResponseWithContext(ctx context.Context, input *ap
 func (c *Client) DeleteIntegrationWithContext(ctx context.Context, input *apigateway.DeleteIntegrationInput, opts ...request.Option) (*apigateway.DeleteIntegrationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteIntegrationWithContext",
+		Action:  "DeleteIntegration",
 		Input:   input,
 		Output:  (*apigateway.DeleteIntegrationOutput)(nil),
 		Error:   nil,
@@ -676,7 +676,7 @@ func (c *Client) DeleteIntegrationWithContext(ctx context.Context, input *apigat
 func (c *Client) DeleteIntegrationResponseWithContext(ctx context.Context, input *apigateway.DeleteIntegrationResponseInput, opts ...request.Option) (*apigateway.DeleteIntegrationResponseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteIntegrationResponseWithContext",
+		Action:  "DeleteIntegrationResponse",
 		Input:   input,
 		Output:  (*apigateway.DeleteIntegrationResponseOutput)(nil),
 		Error:   nil,
@@ -697,7 +697,7 @@ func (c *Client) DeleteIntegrationResponseWithContext(ctx context.Context, input
 func (c *Client) DeleteMethodWithContext(ctx context.Context, input *apigateway.DeleteMethodInput, opts ...request.Option) (*apigateway.DeleteMethodOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteMethodWithContext",
+		Action:  "DeleteMethod",
 		Input:   input,
 		Output:  (*apigateway.DeleteMethodOutput)(nil),
 		Error:   nil,
@@ -718,7 +718,7 @@ func (c *Client) DeleteMethodWithContext(ctx context.Context, input *apigateway.
 func (c *Client) DeleteMethodResponseWithContext(ctx context.Context, input *apigateway.DeleteMethodResponseInput, opts ...request.Option) (*apigateway.DeleteMethodResponseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteMethodResponseWithContext",
+		Action:  "DeleteMethodResponse",
 		Input:   input,
 		Output:  (*apigateway.DeleteMethodResponseOutput)(nil),
 		Error:   nil,
@@ -739,7 +739,7 @@ func (c *Client) DeleteMethodResponseWithContext(ctx context.Context, input *api
 func (c *Client) DeleteModelWithContext(ctx context.Context, input *apigateway.DeleteModelInput, opts ...request.Option) (*apigateway.DeleteModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteModelWithContext",
+		Action:  "DeleteModel",
 		Input:   input,
 		Output:  (*apigateway.DeleteModelOutput)(nil),
 		Error:   nil,
@@ -760,7 +760,7 @@ func (c *Client) DeleteModelWithContext(ctx context.Context, input *apigateway.D
 func (c *Client) DeleteRequestValidatorWithContext(ctx context.Context, input *apigateway.DeleteRequestValidatorInput, opts ...request.Option) (*apigateway.DeleteRequestValidatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteRequestValidatorWithContext",
+		Action:  "DeleteRequestValidator",
 		Input:   input,
 		Output:  (*apigateway.DeleteRequestValidatorOutput)(nil),
 		Error:   nil,
@@ -781,7 +781,7 @@ func (c *Client) DeleteRequestValidatorWithContext(ctx context.Context, input *a
 func (c *Client) DeleteResourceWithContext(ctx context.Context, input *apigateway.DeleteResourceInput, opts ...request.Option) (*apigateway.DeleteResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteResourceWithContext",
+		Action:  "DeleteResource",
 		Input:   input,
 		Output:  (*apigateway.DeleteResourceOutput)(nil),
 		Error:   nil,
@@ -802,7 +802,7 @@ func (c *Client) DeleteResourceWithContext(ctx context.Context, input *apigatewa
 func (c *Client) DeleteRestApiWithContext(ctx context.Context, input *apigateway.DeleteRestApiInput, opts ...request.Option) (*apigateway.DeleteRestApiOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteRestApiWithContext",
+		Action:  "DeleteRestApi",
 		Input:   input,
 		Output:  (*apigateway.DeleteRestApiOutput)(nil),
 		Error:   nil,
@@ -823,7 +823,7 @@ func (c *Client) DeleteRestApiWithContext(ctx context.Context, input *apigateway
 func (c *Client) DeleteStageWithContext(ctx context.Context, input *apigateway.DeleteStageInput, opts ...request.Option) (*apigateway.DeleteStageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteStageWithContext",
+		Action:  "DeleteStage",
 		Input:   input,
 		Output:  (*apigateway.DeleteStageOutput)(nil),
 		Error:   nil,
@@ -844,7 +844,7 @@ func (c *Client) DeleteStageWithContext(ctx context.Context, input *apigateway.D
 func (c *Client) DeleteUsagePlanWithContext(ctx context.Context, input *apigateway.DeleteUsagePlanInput, opts ...request.Option) (*apigateway.DeleteUsagePlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteUsagePlanWithContext",
+		Action:  "DeleteUsagePlan",
 		Input:   input,
 		Output:  (*apigateway.DeleteUsagePlanOutput)(nil),
 		Error:   nil,
@@ -865,7 +865,7 @@ func (c *Client) DeleteUsagePlanWithContext(ctx context.Context, input *apigatew
 func (c *Client) DeleteUsagePlanKeyWithContext(ctx context.Context, input *apigateway.DeleteUsagePlanKeyInput, opts ...request.Option) (*apigateway.DeleteUsagePlanKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteUsagePlanKeyWithContext",
+		Action:  "DeleteUsagePlanKey",
 		Input:   input,
 		Output:  (*apigateway.DeleteUsagePlanKeyOutput)(nil),
 		Error:   nil,
@@ -886,7 +886,7 @@ func (c *Client) DeleteUsagePlanKeyWithContext(ctx context.Context, input *apiga
 func (c *Client) DeleteVpcLinkWithContext(ctx context.Context, input *apigateway.DeleteVpcLinkInput, opts ...request.Option) (*apigateway.DeleteVpcLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "DeleteVpcLinkWithContext",
+		Action:  "DeleteVpcLink",
 		Input:   input,
 		Output:  (*apigateway.DeleteVpcLinkOutput)(nil),
 		Error:   nil,
@@ -907,7 +907,7 @@ func (c *Client) DeleteVpcLinkWithContext(ctx context.Context, input *apigateway
 func (c *Client) FlushStageAuthorizersCacheWithContext(ctx context.Context, input *apigateway.FlushStageAuthorizersCacheInput, opts ...request.Option) (*apigateway.FlushStageAuthorizersCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "FlushStageAuthorizersCacheWithContext",
+		Action:  "FlushStageAuthorizersCache",
 		Input:   input,
 		Output:  (*apigateway.FlushStageAuthorizersCacheOutput)(nil),
 		Error:   nil,
@@ -928,7 +928,7 @@ func (c *Client) FlushStageAuthorizersCacheWithContext(ctx context.Context, inpu
 func (c *Client) FlushStageCacheWithContext(ctx context.Context, input *apigateway.FlushStageCacheInput, opts ...request.Option) (*apigateway.FlushStageCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "FlushStageCacheWithContext",
+		Action:  "FlushStageCache",
 		Input:   input,
 		Output:  (*apigateway.FlushStageCacheOutput)(nil),
 		Error:   nil,
@@ -949,7 +949,7 @@ func (c *Client) FlushStageCacheWithContext(ctx context.Context, input *apigatew
 func (c *Client) GenerateClientCertificateWithContext(ctx context.Context, input *apigateway.GenerateClientCertificateInput, opts ...request.Option) (*apigateway.ClientCertificate, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GenerateClientCertificateWithContext",
+		Action:  "GenerateClientCertificate",
 		Input:   input,
 		Output:  (*apigateway.ClientCertificate)(nil),
 		Error:   nil,
@@ -970,7 +970,7 @@ func (c *Client) GenerateClientCertificateWithContext(ctx context.Context, input
 func (c *Client) GetAccountWithContext(ctx context.Context, input *apigateway.GetAccountInput, opts ...request.Option) (*apigateway.Account, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetAccountWithContext",
+		Action:  "GetAccount",
 		Input:   input,
 		Output:  (*apigateway.Account)(nil),
 		Error:   nil,
@@ -991,7 +991,7 @@ func (c *Client) GetAccountWithContext(ctx context.Context, input *apigateway.Ge
 func (c *Client) GetApiKeyWithContext(ctx context.Context, input *apigateway.GetApiKeyInput, opts ...request.Option) (*apigateway.ApiKey, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetApiKeyWithContext",
+		Action:  "GetApiKey",
 		Input:   input,
 		Output:  (*apigateway.ApiKey)(nil),
 		Error:   nil,
@@ -1012,7 +1012,7 @@ func (c *Client) GetApiKeyWithContext(ctx context.Context, input *apigateway.Get
 func (c *Client) GetApiKeysWithContext(ctx context.Context, input *apigateway.GetApiKeysInput, opts ...request.Option) (*apigateway.GetApiKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetApiKeysWithContext",
+		Action:  "GetApiKeys",
 		Input:   input,
 		Output:  (*apigateway.GetApiKeysOutput)(nil),
 		Error:   nil,
@@ -1033,7 +1033,7 @@ func (c *Client) GetApiKeysWithContext(ctx context.Context, input *apigateway.Ge
 func (c *Client) GetAuthorizerWithContext(ctx context.Context, input *apigateway.GetAuthorizerInput, opts ...request.Option) (*apigateway.Authorizer, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetAuthorizerWithContext",
+		Action:  "GetAuthorizer",
 		Input:   input,
 		Output:  (*apigateway.Authorizer)(nil),
 		Error:   nil,
@@ -1054,7 +1054,7 @@ func (c *Client) GetAuthorizerWithContext(ctx context.Context, input *apigateway
 func (c *Client) GetAuthorizersWithContext(ctx context.Context, input *apigateway.GetAuthorizersInput, opts ...request.Option) (*apigateway.GetAuthorizersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetAuthorizersWithContext",
+		Action:  "GetAuthorizers",
 		Input:   input,
 		Output:  (*apigateway.GetAuthorizersOutput)(nil),
 		Error:   nil,
@@ -1075,7 +1075,7 @@ func (c *Client) GetAuthorizersWithContext(ctx context.Context, input *apigatewa
 func (c *Client) GetBasePathMappingWithContext(ctx context.Context, input *apigateway.GetBasePathMappingInput, opts ...request.Option) (*apigateway.BasePathMapping, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetBasePathMappingWithContext",
+		Action:  "GetBasePathMapping",
 		Input:   input,
 		Output:  (*apigateway.BasePathMapping)(nil),
 		Error:   nil,
@@ -1096,7 +1096,7 @@ func (c *Client) GetBasePathMappingWithContext(ctx context.Context, input *apiga
 func (c *Client) GetBasePathMappingsWithContext(ctx context.Context, input *apigateway.GetBasePathMappingsInput, opts ...request.Option) (*apigateway.GetBasePathMappingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetBasePathMappingsWithContext",
+		Action:  "GetBasePathMappings",
 		Input:   input,
 		Output:  (*apigateway.GetBasePathMappingsOutput)(nil),
 		Error:   nil,
@@ -1117,7 +1117,7 @@ func (c *Client) GetBasePathMappingsWithContext(ctx context.Context, input *apig
 func (c *Client) GetClientCertificateWithContext(ctx context.Context, input *apigateway.GetClientCertificateInput, opts ...request.Option) (*apigateway.ClientCertificate, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetClientCertificateWithContext",
+		Action:  "GetClientCertificate",
 		Input:   input,
 		Output:  (*apigateway.ClientCertificate)(nil),
 		Error:   nil,
@@ -1138,7 +1138,7 @@ func (c *Client) GetClientCertificateWithContext(ctx context.Context, input *api
 func (c *Client) GetClientCertificatesWithContext(ctx context.Context, input *apigateway.GetClientCertificatesInput, opts ...request.Option) (*apigateway.GetClientCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetClientCertificatesWithContext",
+		Action:  "GetClientCertificates",
 		Input:   input,
 		Output:  (*apigateway.GetClientCertificatesOutput)(nil),
 		Error:   nil,
@@ -1159,7 +1159,7 @@ func (c *Client) GetClientCertificatesWithContext(ctx context.Context, input *ap
 func (c *Client) GetDeploymentWithContext(ctx context.Context, input *apigateway.GetDeploymentInput, opts ...request.Option) (*apigateway.Deployment, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDeploymentWithContext",
+		Action:  "GetDeployment",
 		Input:   input,
 		Output:  (*apigateway.Deployment)(nil),
 		Error:   nil,
@@ -1180,7 +1180,7 @@ func (c *Client) GetDeploymentWithContext(ctx context.Context, input *apigateway
 func (c *Client) GetDeploymentsWithContext(ctx context.Context, input *apigateway.GetDeploymentsInput, opts ...request.Option) (*apigateway.GetDeploymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDeploymentsWithContext",
+		Action:  "GetDeployments",
 		Input:   input,
 		Output:  (*apigateway.GetDeploymentsOutput)(nil),
 		Error:   nil,
@@ -1201,7 +1201,7 @@ func (c *Client) GetDeploymentsWithContext(ctx context.Context, input *apigatewa
 func (c *Client) GetDocumentationPartWithContext(ctx context.Context, input *apigateway.GetDocumentationPartInput, opts ...request.Option) (*apigateway.DocumentationPart, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDocumentationPartWithContext",
+		Action:  "GetDocumentationPart",
 		Input:   input,
 		Output:  (*apigateway.DocumentationPart)(nil),
 		Error:   nil,
@@ -1222,7 +1222,7 @@ func (c *Client) GetDocumentationPartWithContext(ctx context.Context, input *api
 func (c *Client) GetDocumentationPartsWithContext(ctx context.Context, input *apigateway.GetDocumentationPartsInput, opts ...request.Option) (*apigateway.GetDocumentationPartsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDocumentationPartsWithContext",
+		Action:  "GetDocumentationParts",
 		Input:   input,
 		Output:  (*apigateway.GetDocumentationPartsOutput)(nil),
 		Error:   nil,
@@ -1243,7 +1243,7 @@ func (c *Client) GetDocumentationPartsWithContext(ctx context.Context, input *ap
 func (c *Client) GetDocumentationVersionWithContext(ctx context.Context, input *apigateway.GetDocumentationVersionInput, opts ...request.Option) (*apigateway.DocumentationVersion, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDocumentationVersionWithContext",
+		Action:  "GetDocumentationVersion",
 		Input:   input,
 		Output:  (*apigateway.DocumentationVersion)(nil),
 		Error:   nil,
@@ -1264,7 +1264,7 @@ func (c *Client) GetDocumentationVersionWithContext(ctx context.Context, input *
 func (c *Client) GetDocumentationVersionsWithContext(ctx context.Context, input *apigateway.GetDocumentationVersionsInput, opts ...request.Option) (*apigateway.GetDocumentationVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDocumentationVersionsWithContext",
+		Action:  "GetDocumentationVersions",
 		Input:   input,
 		Output:  (*apigateway.GetDocumentationVersionsOutput)(nil),
 		Error:   nil,
@@ -1285,7 +1285,7 @@ func (c *Client) GetDocumentationVersionsWithContext(ctx context.Context, input 
 func (c *Client) GetDomainNameWithContext(ctx context.Context, input *apigateway.GetDomainNameInput, opts ...request.Option) (*apigateway.DomainName, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDomainNameWithContext",
+		Action:  "GetDomainName",
 		Input:   input,
 		Output:  (*apigateway.DomainName)(nil),
 		Error:   nil,
@@ -1306,7 +1306,7 @@ func (c *Client) GetDomainNameWithContext(ctx context.Context, input *apigateway
 func (c *Client) GetDomainNamesWithContext(ctx context.Context, input *apigateway.GetDomainNamesInput, opts ...request.Option) (*apigateway.GetDomainNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetDomainNamesWithContext",
+		Action:  "GetDomainNames",
 		Input:   input,
 		Output:  (*apigateway.GetDomainNamesOutput)(nil),
 		Error:   nil,
@@ -1327,7 +1327,7 @@ func (c *Client) GetDomainNamesWithContext(ctx context.Context, input *apigatewa
 func (c *Client) GetExportWithContext(ctx context.Context, input *apigateway.GetExportInput, opts ...request.Option) (*apigateway.GetExportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetExportWithContext",
+		Action:  "GetExport",
 		Input:   input,
 		Output:  (*apigateway.GetExportOutput)(nil),
 		Error:   nil,
@@ -1348,7 +1348,7 @@ func (c *Client) GetExportWithContext(ctx context.Context, input *apigateway.Get
 func (c *Client) GetGatewayResponseWithContext(ctx context.Context, input *apigateway.GetGatewayResponseInput, opts ...request.Option) (*apigateway.UpdateGatewayResponseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetGatewayResponseWithContext",
+		Action:  "GetGatewayResponse",
 		Input:   input,
 		Output:  (*apigateway.UpdateGatewayResponseOutput)(nil),
 		Error:   nil,
@@ -1369,7 +1369,7 @@ func (c *Client) GetGatewayResponseWithContext(ctx context.Context, input *apiga
 func (c *Client) GetGatewayResponsesWithContext(ctx context.Context, input *apigateway.GetGatewayResponsesInput, opts ...request.Option) (*apigateway.GetGatewayResponsesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetGatewayResponsesWithContext",
+		Action:  "GetGatewayResponses",
 		Input:   input,
 		Output:  (*apigateway.GetGatewayResponsesOutput)(nil),
 		Error:   nil,
@@ -1390,7 +1390,7 @@ func (c *Client) GetGatewayResponsesWithContext(ctx context.Context, input *apig
 func (c *Client) GetIntegrationWithContext(ctx context.Context, input *apigateway.GetIntegrationInput, opts ...request.Option) (*apigateway.Integration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetIntegrationWithContext",
+		Action:  "GetIntegration",
 		Input:   input,
 		Output:  (*apigateway.Integration)(nil),
 		Error:   nil,
@@ -1411,7 +1411,7 @@ func (c *Client) GetIntegrationWithContext(ctx context.Context, input *apigatewa
 func (c *Client) GetIntegrationResponseWithContext(ctx context.Context, input *apigateway.GetIntegrationResponseInput, opts ...request.Option) (*apigateway.IntegrationResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetIntegrationResponseWithContext",
+		Action:  "GetIntegrationResponse",
 		Input:   input,
 		Output:  (*apigateway.IntegrationResponse)(nil),
 		Error:   nil,
@@ -1432,7 +1432,7 @@ func (c *Client) GetIntegrationResponseWithContext(ctx context.Context, input *a
 func (c *Client) GetMethodWithContext(ctx context.Context, input *apigateway.GetMethodInput, opts ...request.Option) (*apigateway.Method, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetMethodWithContext",
+		Action:  "GetMethod",
 		Input:   input,
 		Output:  (*apigateway.Method)(nil),
 		Error:   nil,
@@ -1453,7 +1453,7 @@ func (c *Client) GetMethodWithContext(ctx context.Context, input *apigateway.Get
 func (c *Client) GetMethodResponseWithContext(ctx context.Context, input *apigateway.GetMethodResponseInput, opts ...request.Option) (*apigateway.MethodResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetMethodResponseWithContext",
+		Action:  "GetMethodResponse",
 		Input:   input,
 		Output:  (*apigateway.MethodResponse)(nil),
 		Error:   nil,
@@ -1474,7 +1474,7 @@ func (c *Client) GetMethodResponseWithContext(ctx context.Context, input *apigat
 func (c *Client) GetModelWithContext(ctx context.Context, input *apigateway.GetModelInput, opts ...request.Option) (*apigateway.Model, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetModelWithContext",
+		Action:  "GetModel",
 		Input:   input,
 		Output:  (*apigateway.Model)(nil),
 		Error:   nil,
@@ -1495,7 +1495,7 @@ func (c *Client) GetModelWithContext(ctx context.Context, input *apigateway.GetM
 func (c *Client) GetModelTemplateWithContext(ctx context.Context, input *apigateway.GetModelTemplateInput, opts ...request.Option) (*apigateway.GetModelTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetModelTemplateWithContext",
+		Action:  "GetModelTemplate",
 		Input:   input,
 		Output:  (*apigateway.GetModelTemplateOutput)(nil),
 		Error:   nil,
@@ -1516,7 +1516,7 @@ func (c *Client) GetModelTemplateWithContext(ctx context.Context, input *apigate
 func (c *Client) GetModelsWithContext(ctx context.Context, input *apigateway.GetModelsInput, opts ...request.Option) (*apigateway.GetModelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetModelsWithContext",
+		Action:  "GetModels",
 		Input:   input,
 		Output:  (*apigateway.GetModelsOutput)(nil),
 		Error:   nil,
@@ -1537,7 +1537,7 @@ func (c *Client) GetModelsWithContext(ctx context.Context, input *apigateway.Get
 func (c *Client) GetRequestValidatorWithContext(ctx context.Context, input *apigateway.GetRequestValidatorInput, opts ...request.Option) (*apigateway.UpdateRequestValidatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetRequestValidatorWithContext",
+		Action:  "GetRequestValidator",
 		Input:   input,
 		Output:  (*apigateway.UpdateRequestValidatorOutput)(nil),
 		Error:   nil,
@@ -1558,7 +1558,7 @@ func (c *Client) GetRequestValidatorWithContext(ctx context.Context, input *apig
 func (c *Client) GetRequestValidatorsWithContext(ctx context.Context, input *apigateway.GetRequestValidatorsInput, opts ...request.Option) (*apigateway.GetRequestValidatorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetRequestValidatorsWithContext",
+		Action:  "GetRequestValidators",
 		Input:   input,
 		Output:  (*apigateway.GetRequestValidatorsOutput)(nil),
 		Error:   nil,
@@ -1579,7 +1579,7 @@ func (c *Client) GetRequestValidatorsWithContext(ctx context.Context, input *api
 func (c *Client) GetResourceWithContext(ctx context.Context, input *apigateway.GetResourceInput, opts ...request.Option) (*apigateway.Resource, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetResourceWithContext",
+		Action:  "GetResource",
 		Input:   input,
 		Output:  (*apigateway.Resource)(nil),
 		Error:   nil,
@@ -1600,7 +1600,7 @@ func (c *Client) GetResourceWithContext(ctx context.Context, input *apigateway.G
 func (c *Client) GetResourcesWithContext(ctx context.Context, input *apigateway.GetResourcesInput, opts ...request.Option) (*apigateway.GetResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetResourcesWithContext",
+		Action:  "GetResources",
 		Input:   input,
 		Output:  (*apigateway.GetResourcesOutput)(nil),
 		Error:   nil,
@@ -1621,7 +1621,7 @@ func (c *Client) GetResourcesWithContext(ctx context.Context, input *apigateway.
 func (c *Client) GetRestApiWithContext(ctx context.Context, input *apigateway.GetRestApiInput, opts ...request.Option) (*apigateway.RestApi, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetRestApiWithContext",
+		Action:  "GetRestApi",
 		Input:   input,
 		Output:  (*apigateway.RestApi)(nil),
 		Error:   nil,
@@ -1642,7 +1642,7 @@ func (c *Client) GetRestApiWithContext(ctx context.Context, input *apigateway.Ge
 func (c *Client) GetRestApisWithContext(ctx context.Context, input *apigateway.GetRestApisInput, opts ...request.Option) (*apigateway.GetRestApisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetRestApisWithContext",
+		Action:  "GetRestApis",
 		Input:   input,
 		Output:  (*apigateway.GetRestApisOutput)(nil),
 		Error:   nil,
@@ -1663,7 +1663,7 @@ func (c *Client) GetRestApisWithContext(ctx context.Context, input *apigateway.G
 func (c *Client) GetSdkWithContext(ctx context.Context, input *apigateway.GetSdkInput, opts ...request.Option) (*apigateway.GetSdkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetSdkWithContext",
+		Action:  "GetSdk",
 		Input:   input,
 		Output:  (*apigateway.GetSdkOutput)(nil),
 		Error:   nil,
@@ -1684,7 +1684,7 @@ func (c *Client) GetSdkWithContext(ctx context.Context, input *apigateway.GetSdk
 func (c *Client) GetSdkTypeWithContext(ctx context.Context, input *apigateway.GetSdkTypeInput, opts ...request.Option) (*apigateway.SdkType, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetSdkTypeWithContext",
+		Action:  "GetSdkType",
 		Input:   input,
 		Output:  (*apigateway.SdkType)(nil),
 		Error:   nil,
@@ -1705,7 +1705,7 @@ func (c *Client) GetSdkTypeWithContext(ctx context.Context, input *apigateway.Ge
 func (c *Client) GetSdkTypesWithContext(ctx context.Context, input *apigateway.GetSdkTypesInput, opts ...request.Option) (*apigateway.GetSdkTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetSdkTypesWithContext",
+		Action:  "GetSdkTypes",
 		Input:   input,
 		Output:  (*apigateway.GetSdkTypesOutput)(nil),
 		Error:   nil,
@@ -1726,7 +1726,7 @@ func (c *Client) GetSdkTypesWithContext(ctx context.Context, input *apigateway.G
 func (c *Client) GetStageWithContext(ctx context.Context, input *apigateway.GetStageInput, opts ...request.Option) (*apigateway.Stage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetStageWithContext",
+		Action:  "GetStage",
 		Input:   input,
 		Output:  (*apigateway.Stage)(nil),
 		Error:   nil,
@@ -1747,7 +1747,7 @@ func (c *Client) GetStageWithContext(ctx context.Context, input *apigateway.GetS
 func (c *Client) GetStagesWithContext(ctx context.Context, input *apigateway.GetStagesInput, opts ...request.Option) (*apigateway.GetStagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetStagesWithContext",
+		Action:  "GetStages",
 		Input:   input,
 		Output:  (*apigateway.GetStagesOutput)(nil),
 		Error:   nil,
@@ -1768,7 +1768,7 @@ func (c *Client) GetStagesWithContext(ctx context.Context, input *apigateway.Get
 func (c *Client) GetTagsWithContext(ctx context.Context, input *apigateway.GetTagsInput, opts ...request.Option) (*apigateway.GetTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetTagsWithContext",
+		Action:  "GetTags",
 		Input:   input,
 		Output:  (*apigateway.GetTagsOutput)(nil),
 		Error:   nil,
@@ -1789,7 +1789,7 @@ func (c *Client) GetTagsWithContext(ctx context.Context, input *apigateway.GetTa
 func (c *Client) GetUsageWithContext(ctx context.Context, input *apigateway.GetUsageInput, opts ...request.Option) (*apigateway.Usage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetUsageWithContext",
+		Action:  "GetUsage",
 		Input:   input,
 		Output:  (*apigateway.Usage)(nil),
 		Error:   nil,
@@ -1810,7 +1810,7 @@ func (c *Client) GetUsageWithContext(ctx context.Context, input *apigateway.GetU
 func (c *Client) GetUsagePlanWithContext(ctx context.Context, input *apigateway.GetUsagePlanInput, opts ...request.Option) (*apigateway.UsagePlan, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetUsagePlanWithContext",
+		Action:  "GetUsagePlan",
 		Input:   input,
 		Output:  (*apigateway.UsagePlan)(nil),
 		Error:   nil,
@@ -1831,7 +1831,7 @@ func (c *Client) GetUsagePlanWithContext(ctx context.Context, input *apigateway.
 func (c *Client) GetUsagePlanKeyWithContext(ctx context.Context, input *apigateway.GetUsagePlanKeyInput, opts ...request.Option) (*apigateway.UsagePlanKey, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetUsagePlanKeyWithContext",
+		Action:  "GetUsagePlanKey",
 		Input:   input,
 		Output:  (*apigateway.UsagePlanKey)(nil),
 		Error:   nil,
@@ -1852,7 +1852,7 @@ func (c *Client) GetUsagePlanKeyWithContext(ctx context.Context, input *apigatew
 func (c *Client) GetUsagePlanKeysWithContext(ctx context.Context, input *apigateway.GetUsagePlanKeysInput, opts ...request.Option) (*apigateway.GetUsagePlanKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetUsagePlanKeysWithContext",
+		Action:  "GetUsagePlanKeys",
 		Input:   input,
 		Output:  (*apigateway.GetUsagePlanKeysOutput)(nil),
 		Error:   nil,
@@ -1873,7 +1873,7 @@ func (c *Client) GetUsagePlanKeysWithContext(ctx context.Context, input *apigate
 func (c *Client) GetUsagePlansWithContext(ctx context.Context, input *apigateway.GetUsagePlansInput, opts ...request.Option) (*apigateway.GetUsagePlansOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetUsagePlansWithContext",
+		Action:  "GetUsagePlans",
 		Input:   input,
 		Output:  (*apigateway.GetUsagePlansOutput)(nil),
 		Error:   nil,
@@ -1894,7 +1894,7 @@ func (c *Client) GetUsagePlansWithContext(ctx context.Context, input *apigateway
 func (c *Client) GetVpcLinkWithContext(ctx context.Context, input *apigateway.GetVpcLinkInput, opts ...request.Option) (*apigateway.UpdateVpcLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetVpcLinkWithContext",
+		Action:  "GetVpcLink",
 		Input:   input,
 		Output:  (*apigateway.UpdateVpcLinkOutput)(nil),
 		Error:   nil,
@@ -1915,7 +1915,7 @@ func (c *Client) GetVpcLinkWithContext(ctx context.Context, input *apigateway.Ge
 func (c *Client) GetVpcLinksWithContext(ctx context.Context, input *apigateway.GetVpcLinksInput, opts ...request.Option) (*apigateway.GetVpcLinksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "GetVpcLinksWithContext",
+		Action:  "GetVpcLinks",
 		Input:   input,
 		Output:  (*apigateway.GetVpcLinksOutput)(nil),
 		Error:   nil,
@@ -1936,7 +1936,7 @@ func (c *Client) GetVpcLinksWithContext(ctx context.Context, input *apigateway.G
 func (c *Client) ImportApiKeysWithContext(ctx context.Context, input *apigateway.ImportApiKeysInput, opts ...request.Option) (*apigateway.ImportApiKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "ImportApiKeysWithContext",
+		Action:  "ImportApiKeys",
 		Input:   input,
 		Output:  (*apigateway.ImportApiKeysOutput)(nil),
 		Error:   nil,
@@ -1957,7 +1957,7 @@ func (c *Client) ImportApiKeysWithContext(ctx context.Context, input *apigateway
 func (c *Client) ImportDocumentationPartsWithContext(ctx context.Context, input *apigateway.ImportDocumentationPartsInput, opts ...request.Option) (*apigateway.ImportDocumentationPartsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "ImportDocumentationPartsWithContext",
+		Action:  "ImportDocumentationParts",
 		Input:   input,
 		Output:  (*apigateway.ImportDocumentationPartsOutput)(nil),
 		Error:   nil,
@@ -1978,7 +1978,7 @@ func (c *Client) ImportDocumentationPartsWithContext(ctx context.Context, input 
 func (c *Client) ImportRestApiWithContext(ctx context.Context, input *apigateway.ImportRestApiInput, opts ...request.Option) (*apigateway.RestApi, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "ImportRestApiWithContext",
+		Action:  "ImportRestApi",
 		Input:   input,
 		Output:  (*apigateway.RestApi)(nil),
 		Error:   nil,
@@ -1999,7 +1999,7 @@ func (c *Client) ImportRestApiWithContext(ctx context.Context, input *apigateway
 func (c *Client) PutGatewayResponseWithContext(ctx context.Context, input *apigateway.PutGatewayResponseInput, opts ...request.Option) (*apigateway.UpdateGatewayResponseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "PutGatewayResponseWithContext",
+		Action:  "PutGatewayResponse",
 		Input:   input,
 		Output:  (*apigateway.UpdateGatewayResponseOutput)(nil),
 		Error:   nil,
@@ -2020,7 +2020,7 @@ func (c *Client) PutGatewayResponseWithContext(ctx context.Context, input *apiga
 func (c *Client) PutIntegrationWithContext(ctx context.Context, input *apigateway.PutIntegrationInput, opts ...request.Option) (*apigateway.Integration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "PutIntegrationWithContext",
+		Action:  "PutIntegration",
 		Input:   input,
 		Output:  (*apigateway.Integration)(nil),
 		Error:   nil,
@@ -2041,7 +2041,7 @@ func (c *Client) PutIntegrationWithContext(ctx context.Context, input *apigatewa
 func (c *Client) PutIntegrationResponseWithContext(ctx context.Context, input *apigateway.PutIntegrationResponseInput, opts ...request.Option) (*apigateway.IntegrationResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "PutIntegrationResponseWithContext",
+		Action:  "PutIntegrationResponse",
 		Input:   input,
 		Output:  (*apigateway.IntegrationResponse)(nil),
 		Error:   nil,
@@ -2062,7 +2062,7 @@ func (c *Client) PutIntegrationResponseWithContext(ctx context.Context, input *a
 func (c *Client) PutMethodWithContext(ctx context.Context, input *apigateway.PutMethodInput, opts ...request.Option) (*apigateway.Method, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "PutMethodWithContext",
+		Action:  "PutMethod",
 		Input:   input,
 		Output:  (*apigateway.Method)(nil),
 		Error:   nil,
@@ -2083,7 +2083,7 @@ func (c *Client) PutMethodWithContext(ctx context.Context, input *apigateway.Put
 func (c *Client) PutMethodResponseWithContext(ctx context.Context, input *apigateway.PutMethodResponseInput, opts ...request.Option) (*apigateway.MethodResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "PutMethodResponseWithContext",
+		Action:  "PutMethodResponse",
 		Input:   input,
 		Output:  (*apigateway.MethodResponse)(nil),
 		Error:   nil,
@@ -2104,7 +2104,7 @@ func (c *Client) PutMethodResponseWithContext(ctx context.Context, input *apigat
 func (c *Client) PutRestApiWithContext(ctx context.Context, input *apigateway.PutRestApiInput, opts ...request.Option) (*apigateway.RestApi, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "PutRestApiWithContext",
+		Action:  "PutRestApi",
 		Input:   input,
 		Output:  (*apigateway.RestApi)(nil),
 		Error:   nil,
@@ -2125,7 +2125,7 @@ func (c *Client) PutRestApiWithContext(ctx context.Context, input *apigateway.Pu
 func (c *Client) TagResourceWithContext(ctx context.Context, input *apigateway.TagResourceInput, opts ...request.Option) (*apigateway.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*apigateway.TagResourceOutput)(nil),
 		Error:   nil,
@@ -2146,7 +2146,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *apigateway.T
 func (c *Client) TestInvokeAuthorizerWithContext(ctx context.Context, input *apigateway.TestInvokeAuthorizerInput, opts ...request.Option) (*apigateway.TestInvokeAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "TestInvokeAuthorizerWithContext",
+		Action:  "TestInvokeAuthorizer",
 		Input:   input,
 		Output:  (*apigateway.TestInvokeAuthorizerOutput)(nil),
 		Error:   nil,
@@ -2167,7 +2167,7 @@ func (c *Client) TestInvokeAuthorizerWithContext(ctx context.Context, input *api
 func (c *Client) TestInvokeMethodWithContext(ctx context.Context, input *apigateway.TestInvokeMethodInput, opts ...request.Option) (*apigateway.TestInvokeMethodOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "TestInvokeMethodWithContext",
+		Action:  "TestInvokeMethod",
 		Input:   input,
 		Output:  (*apigateway.TestInvokeMethodOutput)(nil),
 		Error:   nil,
@@ -2188,7 +2188,7 @@ func (c *Client) TestInvokeMethodWithContext(ctx context.Context, input *apigate
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *apigateway.UntagResourceInput, opts ...request.Option) (*apigateway.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*apigateway.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -2209,7 +2209,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *apigateway
 func (c *Client) UpdateAccountWithContext(ctx context.Context, input *apigateway.UpdateAccountInput, opts ...request.Option) (*apigateway.Account, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateAccountWithContext",
+		Action:  "UpdateAccount",
 		Input:   input,
 		Output:  (*apigateway.Account)(nil),
 		Error:   nil,
@@ -2230,7 +2230,7 @@ func (c *Client) UpdateAccountWithContext(ctx context.Context, input *apigateway
 func (c *Client) UpdateApiKeyWithContext(ctx context.Context, input *apigateway.UpdateApiKeyInput, opts ...request.Option) (*apigateway.ApiKey, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateApiKeyWithContext",
+		Action:  "UpdateApiKey",
 		Input:   input,
 		Output:  (*apigateway.ApiKey)(nil),
 		Error:   nil,
@@ -2251,7 +2251,7 @@ func (c *Client) UpdateApiKeyWithContext(ctx context.Context, input *apigateway.
 func (c *Client) UpdateAuthorizerWithContext(ctx context.Context, input *apigateway.UpdateAuthorizerInput, opts ...request.Option) (*apigateway.Authorizer, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateAuthorizerWithContext",
+		Action:  "UpdateAuthorizer",
 		Input:   input,
 		Output:  (*apigateway.Authorizer)(nil),
 		Error:   nil,
@@ -2272,7 +2272,7 @@ func (c *Client) UpdateAuthorizerWithContext(ctx context.Context, input *apigate
 func (c *Client) UpdateBasePathMappingWithContext(ctx context.Context, input *apigateway.UpdateBasePathMappingInput, opts ...request.Option) (*apigateway.BasePathMapping, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateBasePathMappingWithContext",
+		Action:  "UpdateBasePathMapping",
 		Input:   input,
 		Output:  (*apigateway.BasePathMapping)(nil),
 		Error:   nil,
@@ -2293,7 +2293,7 @@ func (c *Client) UpdateBasePathMappingWithContext(ctx context.Context, input *ap
 func (c *Client) UpdateClientCertificateWithContext(ctx context.Context, input *apigateway.UpdateClientCertificateInput, opts ...request.Option) (*apigateway.ClientCertificate, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateClientCertificateWithContext",
+		Action:  "UpdateClientCertificate",
 		Input:   input,
 		Output:  (*apigateway.ClientCertificate)(nil),
 		Error:   nil,
@@ -2314,7 +2314,7 @@ func (c *Client) UpdateClientCertificateWithContext(ctx context.Context, input *
 func (c *Client) UpdateDeploymentWithContext(ctx context.Context, input *apigateway.UpdateDeploymentInput, opts ...request.Option) (*apigateway.Deployment, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateDeploymentWithContext",
+		Action:  "UpdateDeployment",
 		Input:   input,
 		Output:  (*apigateway.Deployment)(nil),
 		Error:   nil,
@@ -2335,7 +2335,7 @@ func (c *Client) UpdateDeploymentWithContext(ctx context.Context, input *apigate
 func (c *Client) UpdateDocumentationPartWithContext(ctx context.Context, input *apigateway.UpdateDocumentationPartInput, opts ...request.Option) (*apigateway.DocumentationPart, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateDocumentationPartWithContext",
+		Action:  "UpdateDocumentationPart",
 		Input:   input,
 		Output:  (*apigateway.DocumentationPart)(nil),
 		Error:   nil,
@@ -2356,7 +2356,7 @@ func (c *Client) UpdateDocumentationPartWithContext(ctx context.Context, input *
 func (c *Client) UpdateDocumentationVersionWithContext(ctx context.Context, input *apigateway.UpdateDocumentationVersionInput, opts ...request.Option) (*apigateway.DocumentationVersion, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateDocumentationVersionWithContext",
+		Action:  "UpdateDocumentationVersion",
 		Input:   input,
 		Output:  (*apigateway.DocumentationVersion)(nil),
 		Error:   nil,
@@ -2377,7 +2377,7 @@ func (c *Client) UpdateDocumentationVersionWithContext(ctx context.Context, inpu
 func (c *Client) UpdateDomainNameWithContext(ctx context.Context, input *apigateway.UpdateDomainNameInput, opts ...request.Option) (*apigateway.DomainName, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateDomainNameWithContext",
+		Action:  "UpdateDomainName",
 		Input:   input,
 		Output:  (*apigateway.DomainName)(nil),
 		Error:   nil,
@@ -2398,7 +2398,7 @@ func (c *Client) UpdateDomainNameWithContext(ctx context.Context, input *apigate
 func (c *Client) UpdateGatewayResponseWithContext(ctx context.Context, input *apigateway.UpdateGatewayResponseInput, opts ...request.Option) (*apigateway.UpdateGatewayResponseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateGatewayResponseWithContext",
+		Action:  "UpdateGatewayResponse",
 		Input:   input,
 		Output:  (*apigateway.UpdateGatewayResponseOutput)(nil),
 		Error:   nil,
@@ -2419,7 +2419,7 @@ func (c *Client) UpdateGatewayResponseWithContext(ctx context.Context, input *ap
 func (c *Client) UpdateIntegrationWithContext(ctx context.Context, input *apigateway.UpdateIntegrationInput, opts ...request.Option) (*apigateway.Integration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateIntegrationWithContext",
+		Action:  "UpdateIntegration",
 		Input:   input,
 		Output:  (*apigateway.Integration)(nil),
 		Error:   nil,
@@ -2440,7 +2440,7 @@ func (c *Client) UpdateIntegrationWithContext(ctx context.Context, input *apigat
 func (c *Client) UpdateIntegrationResponseWithContext(ctx context.Context, input *apigateway.UpdateIntegrationResponseInput, opts ...request.Option) (*apigateway.IntegrationResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateIntegrationResponseWithContext",
+		Action:  "UpdateIntegrationResponse",
 		Input:   input,
 		Output:  (*apigateway.IntegrationResponse)(nil),
 		Error:   nil,
@@ -2461,7 +2461,7 @@ func (c *Client) UpdateIntegrationResponseWithContext(ctx context.Context, input
 func (c *Client) UpdateMethodWithContext(ctx context.Context, input *apigateway.UpdateMethodInput, opts ...request.Option) (*apigateway.Method, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateMethodWithContext",
+		Action:  "UpdateMethod",
 		Input:   input,
 		Output:  (*apigateway.Method)(nil),
 		Error:   nil,
@@ -2482,7 +2482,7 @@ func (c *Client) UpdateMethodWithContext(ctx context.Context, input *apigateway.
 func (c *Client) UpdateMethodResponseWithContext(ctx context.Context, input *apigateway.UpdateMethodResponseInput, opts ...request.Option) (*apigateway.MethodResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateMethodResponseWithContext",
+		Action:  "UpdateMethodResponse",
 		Input:   input,
 		Output:  (*apigateway.MethodResponse)(nil),
 		Error:   nil,
@@ -2503,7 +2503,7 @@ func (c *Client) UpdateMethodResponseWithContext(ctx context.Context, input *api
 func (c *Client) UpdateModelWithContext(ctx context.Context, input *apigateway.UpdateModelInput, opts ...request.Option) (*apigateway.Model, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateModelWithContext",
+		Action:  "UpdateModel",
 		Input:   input,
 		Output:  (*apigateway.Model)(nil),
 		Error:   nil,
@@ -2524,7 +2524,7 @@ func (c *Client) UpdateModelWithContext(ctx context.Context, input *apigateway.U
 func (c *Client) UpdateRequestValidatorWithContext(ctx context.Context, input *apigateway.UpdateRequestValidatorInput, opts ...request.Option) (*apigateway.UpdateRequestValidatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateRequestValidatorWithContext",
+		Action:  "UpdateRequestValidator",
 		Input:   input,
 		Output:  (*apigateway.UpdateRequestValidatorOutput)(nil),
 		Error:   nil,
@@ -2545,7 +2545,7 @@ func (c *Client) UpdateRequestValidatorWithContext(ctx context.Context, input *a
 func (c *Client) UpdateResourceWithContext(ctx context.Context, input *apigateway.UpdateResourceInput, opts ...request.Option) (*apigateway.Resource, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateResourceWithContext",
+		Action:  "UpdateResource",
 		Input:   input,
 		Output:  (*apigateway.Resource)(nil),
 		Error:   nil,
@@ -2566,7 +2566,7 @@ func (c *Client) UpdateResourceWithContext(ctx context.Context, input *apigatewa
 func (c *Client) UpdateRestApiWithContext(ctx context.Context, input *apigateway.UpdateRestApiInput, opts ...request.Option) (*apigateway.RestApi, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateRestApiWithContext",
+		Action:  "UpdateRestApi",
 		Input:   input,
 		Output:  (*apigateway.RestApi)(nil),
 		Error:   nil,
@@ -2587,7 +2587,7 @@ func (c *Client) UpdateRestApiWithContext(ctx context.Context, input *apigateway
 func (c *Client) UpdateStageWithContext(ctx context.Context, input *apigateway.UpdateStageInput, opts ...request.Option) (*apigateway.Stage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateStageWithContext",
+		Action:  "UpdateStage",
 		Input:   input,
 		Output:  (*apigateway.Stage)(nil),
 		Error:   nil,
@@ -2608,7 +2608,7 @@ func (c *Client) UpdateStageWithContext(ctx context.Context, input *apigateway.U
 func (c *Client) UpdateUsageWithContext(ctx context.Context, input *apigateway.UpdateUsageInput, opts ...request.Option) (*apigateway.Usage, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateUsageWithContext",
+		Action:  "UpdateUsage",
 		Input:   input,
 		Output:  (*apigateway.Usage)(nil),
 		Error:   nil,
@@ -2629,7 +2629,7 @@ func (c *Client) UpdateUsageWithContext(ctx context.Context, input *apigateway.U
 func (c *Client) UpdateUsagePlanWithContext(ctx context.Context, input *apigateway.UpdateUsagePlanInput, opts ...request.Option) (*apigateway.UsagePlan, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateUsagePlanWithContext",
+		Action:  "UpdateUsagePlan",
 		Input:   input,
 		Output:  (*apigateway.UsagePlan)(nil),
 		Error:   nil,
@@ -2650,7 +2650,7 @@ func (c *Client) UpdateUsagePlanWithContext(ctx context.Context, input *apigatew
 func (c *Client) UpdateVpcLinkWithContext(ctx context.Context, input *apigateway.UpdateVpcLinkInput, opts ...request.Option) (*apigateway.UpdateVpcLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
-		Action:  "UpdateVpcLinkWithContext",
+		Action:  "UpdateVpcLink",
 		Input:   input,
 		Output:  (*apigateway.UpdateVpcLinkOutput)(nil),
 		Error:   nil,

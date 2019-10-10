@@ -45,7 +45,7 @@ var _ FMS = (*Client)(nil)
 func (c *Client) AssociateAdminAccountWithContext(ctx context.Context, input *fms.AssociateAdminAccountInput, opts ...request.Option) (*fms.AssociateAdminAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "AssociateAdminAccountWithContext",
+		Action:  "AssociateAdminAccount",
 		Input:   input,
 		Output:  (*fms.AssociateAdminAccountOutput)(nil),
 		Error:   nil,
@@ -66,7 +66,7 @@ func (c *Client) AssociateAdminAccountWithContext(ctx context.Context, input *fm
 func (c *Client) DeleteNotificationChannelWithContext(ctx context.Context, input *fms.DeleteNotificationChannelInput, opts ...request.Option) (*fms.DeleteNotificationChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "DeleteNotificationChannelWithContext",
+		Action:  "DeleteNotificationChannel",
 		Input:   input,
 		Output:  (*fms.DeleteNotificationChannelOutput)(nil),
 		Error:   nil,
@@ -87,7 +87,7 @@ func (c *Client) DeleteNotificationChannelWithContext(ctx context.Context, input
 func (c *Client) DeletePolicyWithContext(ctx context.Context, input *fms.DeletePolicyInput, opts ...request.Option) (*fms.DeletePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "DeletePolicyWithContext",
+		Action:  "DeletePolicy",
 		Input:   input,
 		Output:  (*fms.DeletePolicyOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *fms.DeleteP
 func (c *Client) DisassociateAdminAccountWithContext(ctx context.Context, input *fms.DisassociateAdminAccountInput, opts ...request.Option) (*fms.DisassociateAdminAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "DisassociateAdminAccountWithContext",
+		Action:  "DisassociateAdminAccount",
 		Input:   input,
 		Output:  (*fms.DisassociateAdminAccountOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) DisassociateAdminAccountWithContext(ctx context.Context, input 
 func (c *Client) GetAdminAccountWithContext(ctx context.Context, input *fms.GetAdminAccountInput, opts ...request.Option) (*fms.GetAdminAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "GetAdminAccountWithContext",
+		Action:  "GetAdminAccount",
 		Input:   input,
 		Output:  (*fms.GetAdminAccountOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) GetAdminAccountWithContext(ctx context.Context, input *fms.GetA
 func (c *Client) GetComplianceDetailWithContext(ctx context.Context, input *fms.GetComplianceDetailInput, opts ...request.Option) (*fms.GetComplianceDetailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "GetComplianceDetailWithContext",
+		Action:  "GetComplianceDetail",
 		Input:   input,
 		Output:  (*fms.GetComplianceDetailOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) GetComplianceDetailWithContext(ctx context.Context, input *fms.
 func (c *Client) GetNotificationChannelWithContext(ctx context.Context, input *fms.GetNotificationChannelInput, opts ...request.Option) (*fms.GetNotificationChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "GetNotificationChannelWithContext",
+		Action:  "GetNotificationChannel",
 		Input:   input,
 		Output:  (*fms.GetNotificationChannelOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) GetNotificationChannelWithContext(ctx context.Context, input *f
 func (c *Client) GetPolicyWithContext(ctx context.Context, input *fms.GetPolicyInput, opts ...request.Option) (*fms.GetPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "GetPolicyWithContext",
+		Action:  "GetPolicy",
 		Input:   input,
 		Output:  (*fms.GetPolicyOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) GetPolicyWithContext(ctx context.Context, input *fms.GetPolicyI
 func (c *Client) GetProtectionStatusWithContext(ctx context.Context, input *fms.GetProtectionStatusInput, opts ...request.Option) (*fms.GetProtectionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "GetProtectionStatusWithContext",
+		Action:  "GetProtectionStatus",
 		Input:   input,
 		Output:  (*fms.GetProtectionStatusOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) GetProtectionStatusWithContext(ctx context.Context, input *fms.
 func (c *Client) ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "ListComplianceStatusWithContext",
+		Action:  "ListComplianceStatus",
 		Input:   input,
 		Output:  (*fms.ListComplianceStatusOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) ListComplianceStatusWithContext(ctx context.Context, input *fms
 func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "ListMemberAccountsWithContext",
+		Action:  "ListMemberAccounts",
 		Input:   input,
 		Output:  (*fms.ListMemberAccountsOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *fms.L
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "ListPoliciesWithContext",
+		Action:  "ListPolicies",
 		Input:   input,
 		Output:  (*fms.ListPoliciesOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *fms.ListPol
 func (c *Client) PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "PutNotificationChannelWithContext",
+		Action:  "PutNotificationChannel",
 		Input:   input,
 		Output:  (*fms.PutNotificationChannelOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) PutNotificationChannelWithContext(ctx context.Context, input *f
 func (c *Client) PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyInput, opts ...request.Option) (*fms.PutPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
-		Action:  "PutPolicyWithContext",
+		Action:  "PutPolicy",
 		Input:   input,
 		Output:  (*fms.PutPolicyOutput)(nil),
 		Error:   nil,

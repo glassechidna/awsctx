@@ -22,6 +22,7 @@ type EMR interface {
 	DescribeJobFlowsWithContext(ctx context.Context, input *emr.DescribeJobFlowsInput, opts ...request.Option) (*emr.DescribeJobFlowsOutput, error)
 	DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error)
 	DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error)
+	GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error)
 	ListBootstrapActionsWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, opts ...request.Option) (*emr.ListBootstrapActionsOutput, error)
 	ListClustersWithContext(ctx context.Context, input *emr.ListClustersInput, opts ...request.Option) (*emr.ListClustersOutput, error)
 	ListInstanceFleetsWithContext(ctx context.Context, input *emr.ListInstanceFleetsInput, opts ...request.Option) (*emr.ListInstanceFleetsOutput, error)
@@ -32,6 +33,7 @@ type EMR interface {
 	ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error)
 	ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error)
 	PutAutoScalingPolicyWithContext(ctx context.Context, input *emr.PutAutoScalingPolicyInput, opts ...request.Option) (*emr.PutAutoScalingPolicyOutput, error)
+	PutBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.PutBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.PutBlockPublicAccessConfigurationOutput, error)
 	RemoveAutoScalingPolicyWithContext(ctx context.Context, input *emr.RemoveAutoScalingPolicyInput, opts ...request.Option) (*emr.RemoveAutoScalingPolicyOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *emr.RemoveTagsInput, opts ...request.Option) (*emr.RemoveTagsOutput, error)
 	RunJobFlowWithContext(ctx context.Context, input *emr.RunJobFlowInput, opts ...request.Option) (*emr.RunJobFlowOutput, error)
@@ -58,7 +60,7 @@ var _ EMR = (*Client)(nil)
 func (c *Client) AddInstanceFleetWithContext(ctx context.Context, input *emr.AddInstanceFleetInput, opts ...request.Option) (*emr.AddInstanceFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "AddInstanceFleetWithContext",
+		Action:  "AddInstanceFleet",
 		Input:   input,
 		Output:  (*emr.AddInstanceFleetOutput)(nil),
 		Error:   nil,
@@ -79,7 +81,7 @@ func (c *Client) AddInstanceFleetWithContext(ctx context.Context, input *emr.Add
 func (c *Client) AddInstanceGroupsWithContext(ctx context.Context, input *emr.AddInstanceGroupsInput, opts ...request.Option) (*emr.AddInstanceGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "AddInstanceGroupsWithContext",
+		Action:  "AddInstanceGroups",
 		Input:   input,
 		Output:  (*emr.AddInstanceGroupsOutput)(nil),
 		Error:   nil,
@@ -100,7 +102,7 @@ func (c *Client) AddInstanceGroupsWithContext(ctx context.Context, input *emr.Ad
 func (c *Client) AddJobFlowStepsWithContext(ctx context.Context, input *emr.AddJobFlowStepsInput, opts ...request.Option) (*emr.AddJobFlowStepsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "AddJobFlowStepsWithContext",
+		Action:  "AddJobFlowSteps",
 		Input:   input,
 		Output:  (*emr.AddJobFlowStepsOutput)(nil),
 		Error:   nil,
@@ -121,7 +123,7 @@ func (c *Client) AddJobFlowStepsWithContext(ctx context.Context, input *emr.AddJ
 func (c *Client) AddTagsWithContext(ctx context.Context, input *emr.AddTagsInput, opts ...request.Option) (*emr.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*emr.AddTagsOutput)(nil),
 		Error:   nil,
@@ -142,7 +144,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *emr.AddTagsInput
 func (c *Client) CancelStepsWithContext(ctx context.Context, input *emr.CancelStepsInput, opts ...request.Option) (*emr.CancelStepsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "CancelStepsWithContext",
+		Action:  "CancelSteps",
 		Input:   input,
 		Output:  (*emr.CancelStepsOutput)(nil),
 		Error:   nil,
@@ -163,7 +165,7 @@ func (c *Client) CancelStepsWithContext(ctx context.Context, input *emr.CancelSt
 func (c *Client) CreateSecurityConfigurationWithContext(ctx context.Context, input *emr.CreateSecurityConfigurationInput, opts ...request.Option) (*emr.CreateSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "CreateSecurityConfigurationWithContext",
+		Action:  "CreateSecurityConfiguration",
 		Input:   input,
 		Output:  (*emr.CreateSecurityConfigurationOutput)(nil),
 		Error:   nil,
@@ -184,7 +186,7 @@ func (c *Client) CreateSecurityConfigurationWithContext(ctx context.Context, inp
 func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, input *emr.DeleteSecurityConfigurationInput, opts ...request.Option) (*emr.DeleteSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "DeleteSecurityConfigurationWithContext",
+		Action:  "DeleteSecurityConfiguration",
 		Input:   input,
 		Output:  (*emr.DeleteSecurityConfigurationOutput)(nil),
 		Error:   nil,
@@ -205,7 +207,7 @@ func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, inp
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *emr.DescribeClusterInput, opts ...request.Option) (*emr.DescribeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "DescribeClusterWithContext",
+		Action:  "DescribeCluster",
 		Input:   input,
 		Output:  (*emr.DescribeClusterOutput)(nil),
 		Error:   nil,
@@ -226,7 +228,7 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *emr.Desc
 func (c *Client) DescribeJobFlowsWithContext(ctx context.Context, input *emr.DescribeJobFlowsInput, opts ...request.Option) (*emr.DescribeJobFlowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "DescribeJobFlowsWithContext",
+		Action:  "DescribeJobFlows",
 		Input:   input,
 		Output:  (*emr.DescribeJobFlowsOutput)(nil),
 		Error:   nil,
@@ -247,7 +249,7 @@ func (c *Client) DescribeJobFlowsWithContext(ctx context.Context, input *emr.Des
 func (c *Client) DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "DescribeSecurityConfigurationWithContext",
+		Action:  "DescribeSecurityConfiguration",
 		Input:   input,
 		Output:  (*emr.DescribeSecurityConfigurationOutput)(nil),
 		Error:   nil,
@@ -268,7 +270,7 @@ func (c *Client) DescribeSecurityConfigurationWithContext(ctx context.Context, i
 func (c *Client) DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "DescribeStepWithContext",
+		Action:  "DescribeStep",
 		Input:   input,
 		Output:  (*emr.DescribeStepOutput)(nil),
 		Error:   nil,
@@ -286,10 +288,31 @@ func (c *Client) DescribeStepWithContext(ctx context.Context, input *emr.Describ
 	return req.Output.(*emr.DescribeStepOutput), req.Error
 }
 
+func (c *Client) GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "GetBlockPublicAccessConfiguration",
+		Input:   input,
+		Output:  (*emr.GetBlockPublicAccessConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.GetBlockPublicAccessConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.GetBlockPublicAccessConfigurationOutput), req.Error
+}
+
 func (c *Client) ListBootstrapActionsWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, opts ...request.Option) (*emr.ListBootstrapActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListBootstrapActionsWithContext",
+		Action:  "ListBootstrapActions",
 		Input:   input,
 		Output:  (*emr.ListBootstrapActionsOutput)(nil),
 		Error:   nil,
@@ -310,7 +333,7 @@ func (c *Client) ListBootstrapActionsWithContext(ctx context.Context, input *emr
 func (c *Client) ListClustersWithContext(ctx context.Context, input *emr.ListClustersInput, opts ...request.Option) (*emr.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListClustersWithContext",
+		Action:  "ListClusters",
 		Input:   input,
 		Output:  (*emr.ListClustersOutput)(nil),
 		Error:   nil,
@@ -331,7 +354,7 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *emr.ListClu
 func (c *Client) ListInstanceFleetsWithContext(ctx context.Context, input *emr.ListInstanceFleetsInput, opts ...request.Option) (*emr.ListInstanceFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListInstanceFleetsWithContext",
+		Action:  "ListInstanceFleets",
 		Input:   input,
 		Output:  (*emr.ListInstanceFleetsOutput)(nil),
 		Error:   nil,
@@ -352,7 +375,7 @@ func (c *Client) ListInstanceFleetsWithContext(ctx context.Context, input *emr.L
 func (c *Client) ListInstanceGroupsWithContext(ctx context.Context, input *emr.ListInstanceGroupsInput, opts ...request.Option) (*emr.ListInstanceGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListInstanceGroupsWithContext",
+		Action:  "ListInstanceGroups",
 		Input:   input,
 		Output:  (*emr.ListInstanceGroupsOutput)(nil),
 		Error:   nil,
@@ -373,7 +396,7 @@ func (c *Client) ListInstanceGroupsWithContext(ctx context.Context, input *emr.L
 func (c *Client) ListInstancesWithContext(ctx context.Context, input *emr.ListInstancesInput, opts ...request.Option) (*emr.ListInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListInstancesWithContext",
+		Action:  "ListInstances",
 		Input:   input,
 		Output:  (*emr.ListInstancesOutput)(nil),
 		Error:   nil,
@@ -394,7 +417,7 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, input *emr.ListIn
 func (c *Client) ListSecurityConfigurationsWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, opts ...request.Option) (*emr.ListSecurityConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListSecurityConfigurationsWithContext",
+		Action:  "ListSecurityConfigurations",
 		Input:   input,
 		Output:  (*emr.ListSecurityConfigurationsOutput)(nil),
 		Error:   nil,
@@ -415,7 +438,7 @@ func (c *Client) ListSecurityConfigurationsWithContext(ctx context.Context, inpu
 func (c *Client) ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ListStepsWithContext",
+		Action:  "ListSteps",
 		Input:   input,
 		Output:  (*emr.ListStepsOutput)(nil),
 		Error:   nil,
@@ -436,7 +459,7 @@ func (c *Client) ListStepsWithContext(ctx context.Context, input *emr.ListStepsI
 func (c *Client) ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ModifyInstanceFleetWithContext",
+		Action:  "ModifyInstanceFleet",
 		Input:   input,
 		Output:  (*emr.ModifyInstanceFleetOutput)(nil),
 		Error:   nil,
@@ -457,7 +480,7 @@ func (c *Client) ModifyInstanceFleetWithContext(ctx context.Context, input *emr.
 func (c *Client) ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "ModifyInstanceGroupsWithContext",
+		Action:  "ModifyInstanceGroups",
 		Input:   input,
 		Output:  (*emr.ModifyInstanceGroupsOutput)(nil),
 		Error:   nil,
@@ -478,7 +501,7 @@ func (c *Client) ModifyInstanceGroupsWithContext(ctx context.Context, input *emr
 func (c *Client) PutAutoScalingPolicyWithContext(ctx context.Context, input *emr.PutAutoScalingPolicyInput, opts ...request.Option) (*emr.PutAutoScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "PutAutoScalingPolicyWithContext",
+		Action:  "PutAutoScalingPolicy",
 		Input:   input,
 		Output:  (*emr.PutAutoScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -496,10 +519,31 @@ func (c *Client) PutAutoScalingPolicyWithContext(ctx context.Context, input *emr
 	return req.Output.(*emr.PutAutoScalingPolicyOutput), req.Error
 }
 
+func (c *Client) PutBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.PutBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.PutBlockPublicAccessConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "PutBlockPublicAccessConfiguration",
+		Input:   input,
+		Output:  (*emr.PutBlockPublicAccessConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.PutBlockPublicAccessConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.PutBlockPublicAccessConfigurationOutput), req.Error
+}
+
 func (c *Client) RemoveAutoScalingPolicyWithContext(ctx context.Context, input *emr.RemoveAutoScalingPolicyInput, opts ...request.Option) (*emr.RemoveAutoScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "RemoveAutoScalingPolicyWithContext",
+		Action:  "RemoveAutoScalingPolicy",
 		Input:   input,
 		Output:  (*emr.RemoveAutoScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -520,7 +564,7 @@ func (c *Client) RemoveAutoScalingPolicyWithContext(ctx context.Context, input *
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *emr.RemoveTagsInput, opts ...request.Option) (*emr.RemoveTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "RemoveTagsWithContext",
+		Action:  "RemoveTags",
 		Input:   input,
 		Output:  (*emr.RemoveTagsOutput)(nil),
 		Error:   nil,
@@ -541,7 +585,7 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *emr.RemoveTag
 func (c *Client) RunJobFlowWithContext(ctx context.Context, input *emr.RunJobFlowInput, opts ...request.Option) (*emr.RunJobFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "RunJobFlowWithContext",
+		Action:  "RunJobFlow",
 		Input:   input,
 		Output:  (*emr.RunJobFlowOutput)(nil),
 		Error:   nil,
@@ -562,7 +606,7 @@ func (c *Client) RunJobFlowWithContext(ctx context.Context, input *emr.RunJobFlo
 func (c *Client) SetTerminationProtectionWithContext(ctx context.Context, input *emr.SetTerminationProtectionInput, opts ...request.Option) (*emr.SetTerminationProtectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "SetTerminationProtectionWithContext",
+		Action:  "SetTerminationProtection",
 		Input:   input,
 		Output:  (*emr.SetTerminationProtectionOutput)(nil),
 		Error:   nil,
@@ -583,7 +627,7 @@ func (c *Client) SetTerminationProtectionWithContext(ctx context.Context, input 
 func (c *Client) SetVisibleToAllUsersWithContext(ctx context.Context, input *emr.SetVisibleToAllUsersInput, opts ...request.Option) (*emr.SetVisibleToAllUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "SetVisibleToAllUsersWithContext",
+		Action:  "SetVisibleToAllUsers",
 		Input:   input,
 		Output:  (*emr.SetVisibleToAllUsersOutput)(nil),
 		Error:   nil,
@@ -604,7 +648,7 @@ func (c *Client) SetVisibleToAllUsersWithContext(ctx context.Context, input *emr
 func (c *Client) TerminateJobFlowsWithContext(ctx context.Context, input *emr.TerminateJobFlowsInput, opts ...request.Option) (*emr.TerminateJobFlowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
-		Action:  "TerminateJobFlowsWithContext",
+		Action:  "TerminateJobFlows",
 		Input:   input,
 		Output:  (*emr.TerminateJobFlowsOutput)(nil),
 		Error:   nil,

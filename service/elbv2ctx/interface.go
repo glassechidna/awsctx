@@ -65,7 +65,7 @@ var _ ELBV2 = (*Client)(nil)
 func (c *Client) AddListenerCertificatesWithContext(ctx context.Context, input *elbv2.AddListenerCertificatesInput, opts ...request.Option) (*elbv2.AddListenerCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "AddListenerCertificatesWithContext",
+		Action:  "AddListenerCertificates",
 		Input:   input,
 		Output:  (*elbv2.AddListenerCertificatesOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) AddListenerCertificatesWithContext(ctx context.Context, input *
 func (c *Client) AddTagsWithContext(ctx context.Context, input *elbv2.AddTagsInput, opts ...request.Option) (*elbv2.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*elbv2.AddTagsOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *elbv2.AddTagsInp
 func (c *Client) CreateListenerWithContext(ctx context.Context, input *elbv2.CreateListenerInput, opts ...request.Option) (*elbv2.CreateListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "CreateListenerWithContext",
+		Action:  "CreateListener",
 		Input:   input,
 		Output:  (*elbv2.CreateListenerOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, input *elbv2.Cre
 func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, input *elbv2.CreateLoadBalancerInput, opts ...request.Option) (*elbv2.CreateLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "CreateLoadBalancerWithContext",
+		Action:  "CreateLoadBalancer",
 		Input:   input,
 		Output:  (*elbv2.CreateLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, input *elbv2
 func (c *Client) CreateRuleWithContext(ctx context.Context, input *elbv2.CreateRuleInput, opts ...request.Option) (*elbv2.CreateRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "CreateRuleWithContext",
+		Action:  "CreateRule",
 		Input:   input,
 		Output:  (*elbv2.CreateRuleOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, input *elbv2.CreateR
 func (c *Client) CreateTargetGroupWithContext(ctx context.Context, input *elbv2.CreateTargetGroupInput, opts ...request.Option) (*elbv2.CreateTargetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "CreateTargetGroupWithContext",
+		Action:  "CreateTargetGroup",
 		Input:   input,
 		Output:  (*elbv2.CreateTargetGroupOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) CreateTargetGroupWithContext(ctx context.Context, input *elbv2.
 func (c *Client) DeleteListenerWithContext(ctx context.Context, input *elbv2.DeleteListenerInput, opts ...request.Option) (*elbv2.DeleteListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DeleteListenerWithContext",
+		Action:  "DeleteListener",
 		Input:   input,
 		Output:  (*elbv2.DeleteListenerOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, input *elbv2.Del
 func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, input *elbv2.DeleteLoadBalancerInput, opts ...request.Option) (*elbv2.DeleteLoadBalancerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DeleteLoadBalancerWithContext",
+		Action:  "DeleteLoadBalancer",
 		Input:   input,
 		Output:  (*elbv2.DeleteLoadBalancerOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, input *elbv2
 func (c *Client) DeleteRuleWithContext(ctx context.Context, input *elbv2.DeleteRuleInput, opts ...request.Option) (*elbv2.DeleteRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DeleteRuleWithContext",
+		Action:  "DeleteRule",
 		Input:   input,
 		Output:  (*elbv2.DeleteRuleOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *elbv2.DeleteR
 func (c *Client) DeleteTargetGroupWithContext(ctx context.Context, input *elbv2.DeleteTargetGroupInput, opts ...request.Option) (*elbv2.DeleteTargetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DeleteTargetGroupWithContext",
+		Action:  "DeleteTargetGroup",
 		Input:   input,
 		Output:  (*elbv2.DeleteTargetGroupOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) DeleteTargetGroupWithContext(ctx context.Context, input *elbv2.
 func (c *Client) DeregisterTargetsWithContext(ctx context.Context, input *elbv2.DeregisterTargetsInput, opts ...request.Option) (*elbv2.DeregisterTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DeregisterTargetsWithContext",
+		Action:  "DeregisterTargets",
 		Input:   input,
 		Output:  (*elbv2.DeregisterTargetsOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) DeregisterTargetsWithContext(ctx context.Context, input *elbv2.
 func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *elbv2.DescribeAccountLimitsInput, opts ...request.Option) (*elbv2.DescribeAccountLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeAccountLimitsWithContext",
+		Action:  "DescribeAccountLimits",
 		Input:   input,
 		Output:  (*elbv2.DescribeAccountLimitsOutput)(nil),
 		Error:   nil,
@@ -317,7 +317,7 @@ func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *el
 func (c *Client) DescribeListenerCertificatesWithContext(ctx context.Context, input *elbv2.DescribeListenerCertificatesInput, opts ...request.Option) (*elbv2.DescribeListenerCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeListenerCertificatesWithContext",
+		Action:  "DescribeListenerCertificates",
 		Input:   input,
 		Output:  (*elbv2.DescribeListenerCertificatesOutput)(nil),
 		Error:   nil,
@@ -338,7 +338,7 @@ func (c *Client) DescribeListenerCertificatesWithContext(ctx context.Context, in
 func (c *Client) DescribeListenersWithContext(ctx context.Context, input *elbv2.DescribeListenersInput, opts ...request.Option) (*elbv2.DescribeListenersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeListenersWithContext",
+		Action:  "DescribeListeners",
 		Input:   input,
 		Output:  (*elbv2.DescribeListenersOutput)(nil),
 		Error:   nil,
@@ -359,7 +359,7 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, input *elbv2.
 func (c *Client) DescribeLoadBalancerAttributesWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancerAttributesInput, opts ...request.Option) (*elbv2.DescribeLoadBalancerAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeLoadBalancerAttributesWithContext",
+		Action:  "DescribeLoadBalancerAttributes",
 		Input:   input,
 		Output:  (*elbv2.DescribeLoadBalancerAttributesOutput)(nil),
 		Error:   nil,
@@ -380,7 +380,7 @@ func (c *Client) DescribeLoadBalancerAttributesWithContext(ctx context.Context, 
 func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancersInput, opts ...request.Option) (*elbv2.DescribeLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeLoadBalancersWithContext",
+		Action:  "DescribeLoadBalancers",
 		Input:   input,
 		Output:  (*elbv2.DescribeLoadBalancersOutput)(nil),
 		Error:   nil,
@@ -401,7 +401,7 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *el
 func (c *Client) DescribeRulesWithContext(ctx context.Context, input *elbv2.DescribeRulesInput, opts ...request.Option) (*elbv2.DescribeRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeRulesWithContext",
+		Action:  "DescribeRules",
 		Input:   input,
 		Output:  (*elbv2.DescribeRulesOutput)(nil),
 		Error:   nil,
@@ -422,7 +422,7 @@ func (c *Client) DescribeRulesWithContext(ctx context.Context, input *elbv2.Desc
 func (c *Client) DescribeSSLPoliciesWithContext(ctx context.Context, input *elbv2.DescribeSSLPoliciesInput, opts ...request.Option) (*elbv2.DescribeSSLPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeSSLPoliciesWithContext",
+		Action:  "DescribeSSLPolicies",
 		Input:   input,
 		Output:  (*elbv2.DescribeSSLPoliciesOutput)(nil),
 		Error:   nil,
@@ -443,7 +443,7 @@ func (c *Client) DescribeSSLPoliciesWithContext(ctx context.Context, input *elbv
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *elbv2.DescribeTagsInput, opts ...request.Option) (*elbv2.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*elbv2.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -464,7 +464,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *elbv2.Descr
 func (c *Client) DescribeTargetGroupAttributesWithContext(ctx context.Context, input *elbv2.DescribeTargetGroupAttributesInput, opts ...request.Option) (*elbv2.DescribeTargetGroupAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeTargetGroupAttributesWithContext",
+		Action:  "DescribeTargetGroupAttributes",
 		Input:   input,
 		Output:  (*elbv2.DescribeTargetGroupAttributesOutput)(nil),
 		Error:   nil,
@@ -485,7 +485,7 @@ func (c *Client) DescribeTargetGroupAttributesWithContext(ctx context.Context, i
 func (c *Client) DescribeTargetGroupsWithContext(ctx context.Context, input *elbv2.DescribeTargetGroupsInput, opts ...request.Option) (*elbv2.DescribeTargetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeTargetGroupsWithContext",
+		Action:  "DescribeTargetGroups",
 		Input:   input,
 		Output:  (*elbv2.DescribeTargetGroupsOutput)(nil),
 		Error:   nil,
@@ -506,7 +506,7 @@ func (c *Client) DescribeTargetGroupsWithContext(ctx context.Context, input *elb
 func (c *Client) DescribeTargetHealthWithContext(ctx context.Context, input *elbv2.DescribeTargetHealthInput, opts ...request.Option) (*elbv2.DescribeTargetHealthOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "DescribeTargetHealthWithContext",
+		Action:  "DescribeTargetHealth",
 		Input:   input,
 		Output:  (*elbv2.DescribeTargetHealthOutput)(nil),
 		Error:   nil,
@@ -527,7 +527,7 @@ func (c *Client) DescribeTargetHealthWithContext(ctx context.Context, input *elb
 func (c *Client) ModifyListenerWithContext(ctx context.Context, input *elbv2.ModifyListenerInput, opts ...request.Option) (*elbv2.ModifyListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "ModifyListenerWithContext",
+		Action:  "ModifyListener",
 		Input:   input,
 		Output:  (*elbv2.ModifyListenerOutput)(nil),
 		Error:   nil,
@@ -548,7 +548,7 @@ func (c *Client) ModifyListenerWithContext(ctx context.Context, input *elbv2.Mod
 func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, input *elbv2.ModifyLoadBalancerAttributesInput, opts ...request.Option) (*elbv2.ModifyLoadBalancerAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "ModifyLoadBalancerAttributesWithContext",
+		Action:  "ModifyLoadBalancerAttributes",
 		Input:   input,
 		Output:  (*elbv2.ModifyLoadBalancerAttributesOutput)(nil),
 		Error:   nil,
@@ -569,7 +569,7 @@ func (c *Client) ModifyLoadBalancerAttributesWithContext(ctx context.Context, in
 func (c *Client) ModifyRuleWithContext(ctx context.Context, input *elbv2.ModifyRuleInput, opts ...request.Option) (*elbv2.ModifyRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "ModifyRuleWithContext",
+		Action:  "ModifyRule",
 		Input:   input,
 		Output:  (*elbv2.ModifyRuleOutput)(nil),
 		Error:   nil,
@@ -590,7 +590,7 @@ func (c *Client) ModifyRuleWithContext(ctx context.Context, input *elbv2.ModifyR
 func (c *Client) ModifyTargetGroupWithContext(ctx context.Context, input *elbv2.ModifyTargetGroupInput, opts ...request.Option) (*elbv2.ModifyTargetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "ModifyTargetGroupWithContext",
+		Action:  "ModifyTargetGroup",
 		Input:   input,
 		Output:  (*elbv2.ModifyTargetGroupOutput)(nil),
 		Error:   nil,
@@ -611,7 +611,7 @@ func (c *Client) ModifyTargetGroupWithContext(ctx context.Context, input *elbv2.
 func (c *Client) ModifyTargetGroupAttributesWithContext(ctx context.Context, input *elbv2.ModifyTargetGroupAttributesInput, opts ...request.Option) (*elbv2.ModifyTargetGroupAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "ModifyTargetGroupAttributesWithContext",
+		Action:  "ModifyTargetGroupAttributes",
 		Input:   input,
 		Output:  (*elbv2.ModifyTargetGroupAttributesOutput)(nil),
 		Error:   nil,
@@ -632,7 +632,7 @@ func (c *Client) ModifyTargetGroupAttributesWithContext(ctx context.Context, inp
 func (c *Client) RegisterTargetsWithContext(ctx context.Context, input *elbv2.RegisterTargetsInput, opts ...request.Option) (*elbv2.RegisterTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "RegisterTargetsWithContext",
+		Action:  "RegisterTargets",
 		Input:   input,
 		Output:  (*elbv2.RegisterTargetsOutput)(nil),
 		Error:   nil,
@@ -653,7 +653,7 @@ func (c *Client) RegisterTargetsWithContext(ctx context.Context, input *elbv2.Re
 func (c *Client) RemoveListenerCertificatesWithContext(ctx context.Context, input *elbv2.RemoveListenerCertificatesInput, opts ...request.Option) (*elbv2.RemoveListenerCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "RemoveListenerCertificatesWithContext",
+		Action:  "RemoveListenerCertificates",
 		Input:   input,
 		Output:  (*elbv2.RemoveListenerCertificatesOutput)(nil),
 		Error:   nil,
@@ -674,7 +674,7 @@ func (c *Client) RemoveListenerCertificatesWithContext(ctx context.Context, inpu
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elbv2.RemoveTagsInput, opts ...request.Option) (*elbv2.RemoveTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "RemoveTagsWithContext",
+		Action:  "RemoveTags",
 		Input:   input,
 		Output:  (*elbv2.RemoveTagsOutput)(nil),
 		Error:   nil,
@@ -695,7 +695,7 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elbv2.RemoveT
 func (c *Client) SetIpAddressTypeWithContext(ctx context.Context, input *elbv2.SetIpAddressTypeInput, opts ...request.Option) (*elbv2.SetIpAddressTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "SetIpAddressTypeWithContext",
+		Action:  "SetIpAddressType",
 		Input:   input,
 		Output:  (*elbv2.SetIpAddressTypeOutput)(nil),
 		Error:   nil,
@@ -716,7 +716,7 @@ func (c *Client) SetIpAddressTypeWithContext(ctx context.Context, input *elbv2.S
 func (c *Client) SetRulePrioritiesWithContext(ctx context.Context, input *elbv2.SetRulePrioritiesInput, opts ...request.Option) (*elbv2.SetRulePrioritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "SetRulePrioritiesWithContext",
+		Action:  "SetRulePriorities",
 		Input:   input,
 		Output:  (*elbv2.SetRulePrioritiesOutput)(nil),
 		Error:   nil,
@@ -737,7 +737,7 @@ func (c *Client) SetRulePrioritiesWithContext(ctx context.Context, input *elbv2.
 func (c *Client) SetSecurityGroupsWithContext(ctx context.Context, input *elbv2.SetSecurityGroupsInput, opts ...request.Option) (*elbv2.SetSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "SetSecurityGroupsWithContext",
+		Action:  "SetSecurityGroups",
 		Input:   input,
 		Output:  (*elbv2.SetSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -758,7 +758,7 @@ func (c *Client) SetSecurityGroupsWithContext(ctx context.Context, input *elbv2.
 func (c *Client) SetSubnetsWithContext(ctx context.Context, input *elbv2.SetSubnetsInput, opts ...request.Option) (*elbv2.SetSubnetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
-		Action:  "SetSubnetsWithContext",
+		Action:  "SetSubnets",
 		Input:   input,
 		Output:  (*elbv2.SetSubnetsOutput)(nil),
 		Error:   nil,

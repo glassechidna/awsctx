@@ -35,7 +35,7 @@ var _ IoTEventsData = (*Client)(nil)
 func (c *Client) BatchPutMessageWithContext(ctx context.Context, input *ioteventsdata.BatchPutMessageInput, opts ...request.Option) (*ioteventsdata.BatchPutMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ioteventsdata",
-		Action:  "BatchPutMessageWithContext",
+		Action:  "BatchPutMessage",
 		Input:   input,
 		Output:  (*ioteventsdata.BatchPutMessageOutput)(nil),
 		Error:   nil,
@@ -56,7 +56,7 @@ func (c *Client) BatchPutMessageWithContext(ctx context.Context, input *iotevent
 func (c *Client) BatchUpdateDetectorWithContext(ctx context.Context, input *ioteventsdata.BatchUpdateDetectorInput, opts ...request.Option) (*ioteventsdata.BatchUpdateDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ioteventsdata",
-		Action:  "BatchUpdateDetectorWithContext",
+		Action:  "BatchUpdateDetector",
 		Input:   input,
 		Output:  (*ioteventsdata.BatchUpdateDetectorOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) BatchUpdateDetectorWithContext(ctx context.Context, input *iote
 func (c *Client) DescribeDetectorWithContext(ctx context.Context, input *ioteventsdata.DescribeDetectorInput, opts ...request.Option) (*ioteventsdata.DescribeDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ioteventsdata",
-		Action:  "DescribeDetectorWithContext",
+		Action:  "DescribeDetector",
 		Input:   input,
 		Output:  (*ioteventsdata.DescribeDetectorOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) DescribeDetectorWithContext(ctx context.Context, input *ioteven
 func (c *Client) ListDetectorsWithContext(ctx context.Context, input *ioteventsdata.ListDetectorsInput, opts ...request.Option) (*ioteventsdata.ListDetectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ioteventsdata",
-		Action:  "ListDetectorsWithContext",
+		Action:  "ListDetectors",
 		Input:   input,
 		Output:  (*ioteventsdata.ListDetectorsOutput)(nil),
 		Error:   nil,

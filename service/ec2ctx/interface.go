@@ -117,6 +117,7 @@ type EC2 interface {
 	DeleteNetworkInterfaceWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfaceInput, opts ...request.Option) (*ec2.DeleteNetworkInterfaceOutput, error)
 	DeleteNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.DeleteNetworkInterfacePermissionOutput, error)
 	DeletePlacementGroupWithContext(ctx context.Context, input *ec2.DeletePlacementGroupInput, opts ...request.Option) (*ec2.DeletePlacementGroupOutput, error)
+	DeleteQueuedReservedInstancesWithContext(ctx context.Context, input *ec2.DeleteQueuedReservedInstancesInput, opts ...request.Option) (*ec2.DeleteQueuedReservedInstancesOutput, error)
 	DeleteRouteWithContext(ctx context.Context, input *ec2.DeleteRouteInput, opts ...request.Option) (*ec2.DeleteRouteOutput, error)
 	DeleteRouteTableWithContext(ctx context.Context, input *ec2.DeleteRouteTableInput, opts ...request.Option) (*ec2.DeleteRouteTableOutput, error)
 	DeleteSecurityGroupWithContext(ctx context.Context, input *ec2.DeleteSecurityGroupInput, opts ...request.Option) (*ec2.DeleteSecurityGroupOutput, error)
@@ -161,6 +162,7 @@ type EC2 interface {
 	DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, opts ...request.Option) (*ec2.DescribeDhcpOptionsOutput, error)
 	DescribeEgressOnlyInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeEgressOnlyInternetGatewaysOutput, error)
 	DescribeElasticGpusWithContext(ctx context.Context, input *ec2.DescribeElasticGpusInput, opts ...request.Option) (*ec2.DescribeElasticGpusOutput, error)
+	DescribeExportImageTasksWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, opts ...request.Option) (*ec2.DescribeExportImageTasksOutput, error)
 	DescribeExportTasksWithContext(ctx context.Context, input *ec2.DescribeExportTasksInput, opts ...request.Option) (*ec2.DescribeExportTasksOutput, error)
 	DescribeFleetHistoryWithContext(ctx context.Context, input *ec2.DescribeFleetHistoryInput, opts ...request.Option) (*ec2.DescribeFleetHistoryOutput, error)
 	DescribeFleetInstancesWithContext(ctx context.Context, input *ec2.DescribeFleetInstancesInput, opts ...request.Option) (*ec2.DescribeFleetInstancesOutput, error)
@@ -266,6 +268,7 @@ type EC2 interface {
 	EnableVpcClassicLinkDnsSupportWithContext(ctx context.Context, input *ec2.EnableVpcClassicLinkDnsSupportInput, opts ...request.Option) (*ec2.EnableVpcClassicLinkDnsSupportOutput, error)
 	ExportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ExportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ExportClientVpnClientCertificateRevocationListOutput, error)
 	ExportClientVpnClientConfigurationWithContext(ctx context.Context, input *ec2.ExportClientVpnClientConfigurationInput, opts ...request.Option) (*ec2.ExportClientVpnClientConfigurationOutput, error)
+	ExportImageWithContext(ctx context.Context, input *ec2.ExportImageInput, opts ...request.Option) (*ec2.ExportImageOutput, error)
 	ExportTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.ExportTransitGatewayRoutesInput, opts ...request.Option) (*ec2.ExportTransitGatewayRoutesOutput, error)
 	GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error)
 	GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error)
@@ -319,6 +322,8 @@ type EC2 interface {
 	ModifyVpcPeeringConnectionOptionsWithContext(ctx context.Context, input *ec2.ModifyVpcPeeringConnectionOptionsInput, opts ...request.Option) (*ec2.ModifyVpcPeeringConnectionOptionsOutput, error)
 	ModifyVpcTenancyWithContext(ctx context.Context, input *ec2.ModifyVpcTenancyInput, opts ...request.Option) (*ec2.ModifyVpcTenancyOutput, error)
 	ModifyVpnConnectionWithContext(ctx context.Context, input *ec2.ModifyVpnConnectionInput, opts ...request.Option) (*ec2.ModifyVpnConnectionOutput, error)
+	ModifyVpnTunnelCertificateWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelCertificateInput, opts ...request.Option) (*ec2.ModifyVpnTunnelCertificateOutput, error)
+	ModifyVpnTunnelOptionsWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelOptionsInput, opts ...request.Option) (*ec2.ModifyVpnTunnelOptionsOutput, error)
 	MonitorInstancesWithContext(ctx context.Context, input *ec2.MonitorInstancesInput, opts ...request.Option) (*ec2.MonitorInstancesOutput, error)
 	MoveAddressToVpcWithContext(ctx context.Context, input *ec2.MoveAddressToVpcInput, opts ...request.Option) (*ec2.MoveAddressToVpcOutput, error)
 	ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.ProvisionByoipCidrInput, opts ...request.Option) (*ec2.ProvisionByoipCidrOutput, error)
@@ -385,7 +390,7 @@ var _ EC2 = (*Client)(nil)
 func (c *Client) AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.AcceptReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.AcceptReservedInstancesExchangeQuoteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AcceptReservedInstancesExchangeQuoteWithContext",
+		Action:  "AcceptReservedInstancesExchangeQuote",
 		Input:   input,
 		Output:  (*ec2.AcceptReservedInstancesExchangeQuoteOutput)(nil),
 		Error:   nil,
@@ -406,7 +411,7 @@ func (c *Client) AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Con
 func (c *Client) AcceptTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayVpcAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AcceptTransitGatewayVpcAttachmentWithContext",
+		Action:  "AcceptTransitGatewayVpcAttachment",
 		Input:   input,
 		Output:  (*ec2.AcceptTransitGatewayVpcAttachmentOutput)(nil),
 		Error:   nil,
@@ -427,7 +432,7 @@ func (c *Client) AcceptTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 func (c *Client) AcceptVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.AcceptVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.AcceptVpcEndpointConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AcceptVpcEndpointConnectionsWithContext",
+		Action:  "AcceptVpcEndpointConnections",
 		Input:   input,
 		Output:  (*ec2.AcceptVpcEndpointConnectionsOutput)(nil),
 		Error:   nil,
@@ -448,7 +453,7 @@ func (c *Client) AcceptVpcEndpointConnectionsWithContext(ctx context.Context, in
 func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.AcceptVpcPeeringConnectionInput, opts ...request.Option) (*ec2.AcceptVpcPeeringConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AcceptVpcPeeringConnectionWithContext",
+		Action:  "AcceptVpcPeeringConnection",
 		Input:   input,
 		Output:  (*ec2.AcceptVpcPeeringConnectionOutput)(nil),
 		Error:   nil,
@@ -469,7 +474,7 @@ func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, inpu
 func (c *Client) AdvertiseByoipCidrWithContext(ctx context.Context, input *ec2.AdvertiseByoipCidrInput, opts ...request.Option) (*ec2.AdvertiseByoipCidrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AdvertiseByoipCidrWithContext",
+		Action:  "AdvertiseByoipCidr",
 		Input:   input,
 		Output:  (*ec2.AdvertiseByoipCidrOutput)(nil),
 		Error:   nil,
@@ -490,7 +495,7 @@ func (c *Client) AdvertiseByoipCidrWithContext(ctx context.Context, input *ec2.A
 func (c *Client) AllocateAddressWithContext(ctx context.Context, input *ec2.AllocateAddressInput, opts ...request.Option) (*ec2.AllocateAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AllocateAddressWithContext",
+		Action:  "AllocateAddress",
 		Input:   input,
 		Output:  (*ec2.AllocateAddressOutput)(nil),
 		Error:   nil,
@@ -511,7 +516,7 @@ func (c *Client) AllocateAddressWithContext(ctx context.Context, input *ec2.Allo
 func (c *Client) AllocateHostsWithContext(ctx context.Context, input *ec2.AllocateHostsInput, opts ...request.Option) (*ec2.AllocateHostsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AllocateHostsWithContext",
+		Action:  "AllocateHosts",
 		Input:   input,
 		Output:  (*ec2.AllocateHostsOutput)(nil),
 		Error:   nil,
@@ -532,7 +537,7 @@ func (c *Client) AllocateHostsWithContext(ctx context.Context, input *ec2.Alloca
 func (c *Client) ApplySecurityGroupsToClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.ApplySecurityGroupsToClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.ApplySecurityGroupsToClientVpnTargetNetworkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ApplySecurityGroupsToClientVpnTargetNetworkWithContext",
+		Action:  "ApplySecurityGroupsToClientVpnTargetNetwork",
 		Input:   input,
 		Output:  (*ec2.ApplySecurityGroupsToClientVpnTargetNetworkOutput)(nil),
 		Error:   nil,
@@ -553,7 +558,7 @@ func (c *Client) ApplySecurityGroupsToClientVpnTargetNetworkWithContext(ctx cont
 func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, input *ec2.AssignIpv6AddressesInput, opts ...request.Option) (*ec2.AssignIpv6AddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssignIpv6AddressesWithContext",
+		Action:  "AssignIpv6Addresses",
 		Input:   input,
 		Output:  (*ec2.AssignIpv6AddressesOutput)(nil),
 		Error:   nil,
@@ -574,7 +579,7 @@ func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, input *ec2.
 func (c *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, input *ec2.AssignPrivateIpAddressesInput, opts ...request.Option) (*ec2.AssignPrivateIpAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssignPrivateIpAddressesWithContext",
+		Action:  "AssignPrivateIpAddresses",
 		Input:   input,
 		Output:  (*ec2.AssignPrivateIpAddressesOutput)(nil),
 		Error:   nil,
@@ -595,7 +600,7 @@ func (c *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, input 
 func (c *Client) AssociateAddressWithContext(ctx context.Context, input *ec2.AssociateAddressInput, opts ...request.Option) (*ec2.AssociateAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateAddressWithContext",
+		Action:  "AssociateAddress",
 		Input:   input,
 		Output:  (*ec2.AssociateAddressOutput)(nil),
 		Error:   nil,
@@ -616,7 +621,7 @@ func (c *Client) AssociateAddressWithContext(ctx context.Context, input *ec2.Ass
 func (c *Client) AssociateClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.AssociateClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.AssociateClientVpnTargetNetworkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateClientVpnTargetNetworkWithContext",
+		Action:  "AssociateClientVpnTargetNetwork",
 		Input:   input,
 		Output:  (*ec2.AssociateClientVpnTargetNetworkOutput)(nil),
 		Error:   nil,
@@ -637,7 +642,7 @@ func (c *Client) AssociateClientVpnTargetNetworkWithContext(ctx context.Context,
 func (c *Client) AssociateDhcpOptionsWithContext(ctx context.Context, input *ec2.AssociateDhcpOptionsInput, opts ...request.Option) (*ec2.AssociateDhcpOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateDhcpOptionsWithContext",
+		Action:  "AssociateDhcpOptions",
 		Input:   input,
 		Output:  (*ec2.AssociateDhcpOptionsOutput)(nil),
 		Error:   nil,
@@ -658,7 +663,7 @@ func (c *Client) AssociateDhcpOptionsWithContext(ctx context.Context, input *ec2
 func (c *Client) AssociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.AssociateIamInstanceProfileInput, opts ...request.Option) (*ec2.AssociateIamInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateIamInstanceProfileWithContext",
+		Action:  "AssociateIamInstanceProfile",
 		Input:   input,
 		Output:  (*ec2.AssociateIamInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -679,7 +684,7 @@ func (c *Client) AssociateIamInstanceProfileWithContext(ctx context.Context, inp
 func (c *Client) AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateRouteTableWithContext",
+		Action:  "AssociateRouteTable",
 		Input:   input,
 		Output:  (*ec2.AssociateRouteTableOutput)(nil),
 		Error:   nil,
@@ -700,7 +705,7 @@ func (c *Client) AssociateRouteTableWithContext(ctx context.Context, input *ec2.
 func (c *Client) AssociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.AssociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.AssociateSubnetCidrBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateSubnetCidrBlockWithContext",
+		Action:  "AssociateSubnetCidrBlock",
 		Input:   input,
 		Output:  (*ec2.AssociateSubnetCidrBlockOutput)(nil),
 		Error:   nil,
@@ -721,7 +726,7 @@ func (c *Client) AssociateSubnetCidrBlockWithContext(ctx context.Context, input 
 func (c *Client) AssociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.AssociateTransitGatewayRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateTransitGatewayRouteTableWithContext",
+		Action:  "AssociateTransitGatewayRouteTable",
 		Input:   input,
 		Output:  (*ec2.AssociateTransitGatewayRouteTableOutput)(nil),
 		Error:   nil,
@@ -742,7 +747,7 @@ func (c *Client) AssociateTransitGatewayRouteTableWithContext(ctx context.Contex
 func (c *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.AssociateVpcCidrBlockInput, opts ...request.Option) (*ec2.AssociateVpcCidrBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AssociateVpcCidrBlockWithContext",
+		Action:  "AssociateVpcCidrBlock",
 		Input:   input,
 		Output:  (*ec2.AssociateVpcCidrBlockOutput)(nil),
 		Error:   nil,
@@ -763,7 +768,7 @@ func (c *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, input *ec
 func (c *Client) AttachClassicLinkVpcWithContext(ctx context.Context, input *ec2.AttachClassicLinkVpcInput, opts ...request.Option) (*ec2.AttachClassicLinkVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AttachClassicLinkVpcWithContext",
+		Action:  "AttachClassicLinkVpc",
 		Input:   input,
 		Output:  (*ec2.AttachClassicLinkVpcOutput)(nil),
 		Error:   nil,
@@ -784,7 +789,7 @@ func (c *Client) AttachClassicLinkVpcWithContext(ctx context.Context, input *ec2
 func (c *Client) AttachInternetGatewayWithContext(ctx context.Context, input *ec2.AttachInternetGatewayInput, opts ...request.Option) (*ec2.AttachInternetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AttachInternetGatewayWithContext",
+		Action:  "AttachInternetGateway",
 		Input:   input,
 		Output:  (*ec2.AttachInternetGatewayOutput)(nil),
 		Error:   nil,
@@ -805,7 +810,7 @@ func (c *Client) AttachInternetGatewayWithContext(ctx context.Context, input *ec
 func (c *Client) AttachNetworkInterfaceWithContext(ctx context.Context, input *ec2.AttachNetworkInterfaceInput, opts ...request.Option) (*ec2.AttachNetworkInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AttachNetworkInterfaceWithContext",
+		Action:  "AttachNetworkInterface",
 		Input:   input,
 		Output:  (*ec2.AttachNetworkInterfaceOutput)(nil),
 		Error:   nil,
@@ -826,7 +831,7 @@ func (c *Client) AttachNetworkInterfaceWithContext(ctx context.Context, input *e
 func (c *Client) AttachVolumeWithContext(ctx context.Context, input *ec2.AttachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AttachVolumeWithContext",
+		Action:  "AttachVolume",
 		Input:   input,
 		Output:  (*ec2.VolumeAttachment)(nil),
 		Error:   nil,
@@ -847,7 +852,7 @@ func (c *Client) AttachVolumeWithContext(ctx context.Context, input *ec2.AttachV
 func (c *Client) AttachVpnGatewayWithContext(ctx context.Context, input *ec2.AttachVpnGatewayInput, opts ...request.Option) (*ec2.AttachVpnGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AttachVpnGatewayWithContext",
+		Action:  "AttachVpnGateway",
 		Input:   input,
 		Output:  (*ec2.AttachVpnGatewayOutput)(nil),
 		Error:   nil,
@@ -868,7 +873,7 @@ func (c *Client) AttachVpnGatewayWithContext(ctx context.Context, input *ec2.Att
 func (c *Client) AuthorizeClientVpnIngressWithContext(ctx context.Context, input *ec2.AuthorizeClientVpnIngressInput, opts ...request.Option) (*ec2.AuthorizeClientVpnIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AuthorizeClientVpnIngressWithContext",
+		Action:  "AuthorizeClientVpnIngress",
 		Input:   input,
 		Output:  (*ec2.AuthorizeClientVpnIngressOutput)(nil),
 		Error:   nil,
@@ -889,7 +894,7 @@ func (c *Client) AuthorizeClientVpnIngressWithContext(ctx context.Context, input
 func (c *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Context, input *ec2.AuthorizeSecurityGroupEgressInput, opts ...request.Option) (*ec2.AuthorizeSecurityGroupEgressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AuthorizeSecurityGroupEgressWithContext",
+		Action:  "AuthorizeSecurityGroupEgress",
 		Input:   input,
 		Output:  (*ec2.AuthorizeSecurityGroupEgressOutput)(nil),
 		Error:   nil,
@@ -910,7 +915,7 @@ func (c *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Context, in
 func (c *Client) AuthorizeSecurityGroupIngressWithContext(ctx context.Context, input *ec2.AuthorizeSecurityGroupIngressInput, opts ...request.Option) (*ec2.AuthorizeSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "AuthorizeSecurityGroupIngressWithContext",
+		Action:  "AuthorizeSecurityGroupIngress",
 		Input:   input,
 		Output:  (*ec2.AuthorizeSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -931,7 +936,7 @@ func (c *Client) AuthorizeSecurityGroupIngressWithContext(ctx context.Context, i
 func (c *Client) BundleInstanceWithContext(ctx context.Context, input *ec2.BundleInstanceInput, opts ...request.Option) (*ec2.BundleInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "BundleInstanceWithContext",
+		Action:  "BundleInstance",
 		Input:   input,
 		Output:  (*ec2.BundleInstanceOutput)(nil),
 		Error:   nil,
@@ -952,7 +957,7 @@ func (c *Client) BundleInstanceWithContext(ctx context.Context, input *ec2.Bundl
 func (c *Client) CancelBundleTaskWithContext(ctx context.Context, input *ec2.CancelBundleTaskInput, opts ...request.Option) (*ec2.CancelBundleTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelBundleTaskWithContext",
+		Action:  "CancelBundleTask",
 		Input:   input,
 		Output:  (*ec2.CancelBundleTaskOutput)(nil),
 		Error:   nil,
@@ -973,7 +978,7 @@ func (c *Client) CancelBundleTaskWithContext(ctx context.Context, input *ec2.Can
 func (c *Client) CancelCapacityReservationWithContext(ctx context.Context, input *ec2.CancelCapacityReservationInput, opts ...request.Option) (*ec2.CancelCapacityReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelCapacityReservationWithContext",
+		Action:  "CancelCapacityReservation",
 		Input:   input,
 		Output:  (*ec2.CancelCapacityReservationOutput)(nil),
 		Error:   nil,
@@ -994,7 +999,7 @@ func (c *Client) CancelCapacityReservationWithContext(ctx context.Context, input
 func (c *Client) CancelConversionTaskWithContext(ctx context.Context, input *ec2.CancelConversionTaskInput, opts ...request.Option) (*ec2.CancelConversionTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelConversionTaskWithContext",
+		Action:  "CancelConversionTask",
 		Input:   input,
 		Output:  (*ec2.CancelConversionTaskOutput)(nil),
 		Error:   nil,
@@ -1015,7 +1020,7 @@ func (c *Client) CancelConversionTaskWithContext(ctx context.Context, input *ec2
 func (c *Client) CancelExportTaskWithContext(ctx context.Context, input *ec2.CancelExportTaskInput, opts ...request.Option) (*ec2.CancelExportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelExportTaskWithContext",
+		Action:  "CancelExportTask",
 		Input:   input,
 		Output:  (*ec2.CancelExportTaskOutput)(nil),
 		Error:   nil,
@@ -1036,7 +1041,7 @@ func (c *Client) CancelExportTaskWithContext(ctx context.Context, input *ec2.Can
 func (c *Client) CancelImportTaskWithContext(ctx context.Context, input *ec2.CancelImportTaskInput, opts ...request.Option) (*ec2.CancelImportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelImportTaskWithContext",
+		Action:  "CancelImportTask",
 		Input:   input,
 		Output:  (*ec2.CancelImportTaskOutput)(nil),
 		Error:   nil,
@@ -1057,7 +1062,7 @@ func (c *Client) CancelImportTaskWithContext(ctx context.Context, input *ec2.Can
 func (c *Client) CancelReservedInstancesListingWithContext(ctx context.Context, input *ec2.CancelReservedInstancesListingInput, opts ...request.Option) (*ec2.CancelReservedInstancesListingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelReservedInstancesListingWithContext",
+		Action:  "CancelReservedInstancesListing",
 		Input:   input,
 		Output:  (*ec2.CancelReservedInstancesListingOutput)(nil),
 		Error:   nil,
@@ -1078,7 +1083,7 @@ func (c *Client) CancelReservedInstancesListingWithContext(ctx context.Context, 
 func (c *Client) CancelSpotFleetRequestsWithContext(ctx context.Context, input *ec2.CancelSpotFleetRequestsInput, opts ...request.Option) (*ec2.CancelSpotFleetRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelSpotFleetRequestsWithContext",
+		Action:  "CancelSpotFleetRequests",
 		Input:   input,
 		Output:  (*ec2.CancelSpotFleetRequestsOutput)(nil),
 		Error:   nil,
@@ -1099,7 +1104,7 @@ func (c *Client) CancelSpotFleetRequestsWithContext(ctx context.Context, input *
 func (c *Client) CancelSpotInstanceRequestsWithContext(ctx context.Context, input *ec2.CancelSpotInstanceRequestsInput, opts ...request.Option) (*ec2.CancelSpotInstanceRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CancelSpotInstanceRequestsWithContext",
+		Action:  "CancelSpotInstanceRequests",
 		Input:   input,
 		Output:  (*ec2.CancelSpotInstanceRequestsOutput)(nil),
 		Error:   nil,
@@ -1120,7 +1125,7 @@ func (c *Client) CancelSpotInstanceRequestsWithContext(ctx context.Context, inpu
 func (c *Client) ConfirmProductInstanceWithContext(ctx context.Context, input *ec2.ConfirmProductInstanceInput, opts ...request.Option) (*ec2.ConfirmProductInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ConfirmProductInstanceWithContext",
+		Action:  "ConfirmProductInstance",
 		Input:   input,
 		Output:  (*ec2.ConfirmProductInstanceOutput)(nil),
 		Error:   nil,
@@ -1141,7 +1146,7 @@ func (c *Client) ConfirmProductInstanceWithContext(ctx context.Context, input *e
 func (c *Client) CopyFpgaImageWithContext(ctx context.Context, input *ec2.CopyFpgaImageInput, opts ...request.Option) (*ec2.CopyFpgaImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CopyFpgaImageWithContext",
+		Action:  "CopyFpgaImage",
 		Input:   input,
 		Output:  (*ec2.CopyFpgaImageOutput)(nil),
 		Error:   nil,
@@ -1162,7 +1167,7 @@ func (c *Client) CopyFpgaImageWithContext(ctx context.Context, input *ec2.CopyFp
 func (c *Client) CopyImageWithContext(ctx context.Context, input *ec2.CopyImageInput, opts ...request.Option) (*ec2.CopyImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CopyImageWithContext",
+		Action:  "CopyImage",
 		Input:   input,
 		Output:  (*ec2.CopyImageOutput)(nil),
 		Error:   nil,
@@ -1183,7 +1188,7 @@ func (c *Client) CopyImageWithContext(ctx context.Context, input *ec2.CopyImageI
 func (c *Client) CopySnapshotWithContext(ctx context.Context, input *ec2.CopySnapshotInput, opts ...request.Option) (*ec2.CopySnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CopySnapshotWithContext",
+		Action:  "CopySnapshot",
 		Input:   input,
 		Output:  (*ec2.CopySnapshotOutput)(nil),
 		Error:   nil,
@@ -1204,7 +1209,7 @@ func (c *Client) CopySnapshotWithContext(ctx context.Context, input *ec2.CopySna
 func (c *Client) CreateCapacityReservationWithContext(ctx context.Context, input *ec2.CreateCapacityReservationInput, opts ...request.Option) (*ec2.CreateCapacityReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateCapacityReservationWithContext",
+		Action:  "CreateCapacityReservation",
 		Input:   input,
 		Output:  (*ec2.CreateCapacityReservationOutput)(nil),
 		Error:   nil,
@@ -1225,7 +1230,7 @@ func (c *Client) CreateCapacityReservationWithContext(ctx context.Context, input
 func (c *Client) CreateClientVpnEndpointWithContext(ctx context.Context, input *ec2.CreateClientVpnEndpointInput, opts ...request.Option) (*ec2.CreateClientVpnEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateClientVpnEndpointWithContext",
+		Action:  "CreateClientVpnEndpoint",
 		Input:   input,
 		Output:  (*ec2.CreateClientVpnEndpointOutput)(nil),
 		Error:   nil,
@@ -1246,7 +1251,7 @@ func (c *Client) CreateClientVpnEndpointWithContext(ctx context.Context, input *
 func (c *Client) CreateClientVpnRouteWithContext(ctx context.Context, input *ec2.CreateClientVpnRouteInput, opts ...request.Option) (*ec2.CreateClientVpnRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateClientVpnRouteWithContext",
+		Action:  "CreateClientVpnRoute",
 		Input:   input,
 		Output:  (*ec2.CreateClientVpnRouteOutput)(nil),
 		Error:   nil,
@@ -1267,7 +1272,7 @@ func (c *Client) CreateClientVpnRouteWithContext(ctx context.Context, input *ec2
 func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, input *ec2.CreateCustomerGatewayInput, opts ...request.Option) (*ec2.CreateCustomerGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateCustomerGatewayWithContext",
+		Action:  "CreateCustomerGateway",
 		Input:   input,
 		Output:  (*ec2.CreateCustomerGatewayOutput)(nil),
 		Error:   nil,
@@ -1288,7 +1293,7 @@ func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, input *ec
 func (c *Client) CreateDefaultSubnetWithContext(ctx context.Context, input *ec2.CreateDefaultSubnetInput, opts ...request.Option) (*ec2.CreateDefaultSubnetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateDefaultSubnetWithContext",
+		Action:  "CreateDefaultSubnet",
 		Input:   input,
 		Output:  (*ec2.CreateDefaultSubnetOutput)(nil),
 		Error:   nil,
@@ -1309,7 +1314,7 @@ func (c *Client) CreateDefaultSubnetWithContext(ctx context.Context, input *ec2.
 func (c *Client) CreateDefaultVpcWithContext(ctx context.Context, input *ec2.CreateDefaultVpcInput, opts ...request.Option) (*ec2.CreateDefaultVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateDefaultVpcWithContext",
+		Action:  "CreateDefaultVpc",
 		Input:   input,
 		Output:  (*ec2.CreateDefaultVpcOutput)(nil),
 		Error:   nil,
@@ -1330,7 +1335,7 @@ func (c *Client) CreateDefaultVpcWithContext(ctx context.Context, input *ec2.Cre
 func (c *Client) CreateDhcpOptionsWithContext(ctx context.Context, input *ec2.CreateDhcpOptionsInput, opts ...request.Option) (*ec2.CreateDhcpOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateDhcpOptionsWithContext",
+		Action:  "CreateDhcpOptions",
 		Input:   input,
 		Output:  (*ec2.CreateDhcpOptionsOutput)(nil),
 		Error:   nil,
@@ -1351,7 +1356,7 @@ func (c *Client) CreateDhcpOptionsWithContext(ctx context.Context, input *ec2.Cr
 func (c *Client) CreateEgressOnlyInternetGatewayWithContext(ctx context.Context, input *ec2.CreateEgressOnlyInternetGatewayInput, opts ...request.Option) (*ec2.CreateEgressOnlyInternetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateEgressOnlyInternetGatewayWithContext",
+		Action:  "CreateEgressOnlyInternetGateway",
 		Input:   input,
 		Output:  (*ec2.CreateEgressOnlyInternetGatewayOutput)(nil),
 		Error:   nil,
@@ -1372,7 +1377,7 @@ func (c *Client) CreateEgressOnlyInternetGatewayWithContext(ctx context.Context,
 func (c *Client) CreateFleetWithContext(ctx context.Context, input *ec2.CreateFleetInput, opts ...request.Option) (*ec2.CreateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateFleetWithContext",
+		Action:  "CreateFleet",
 		Input:   input,
 		Output:  (*ec2.CreateFleetOutput)(nil),
 		Error:   nil,
@@ -1393,7 +1398,7 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *ec2.CreateFl
 func (c *Client) CreateFlowLogsWithContext(ctx context.Context, input *ec2.CreateFlowLogsInput, opts ...request.Option) (*ec2.CreateFlowLogsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateFlowLogsWithContext",
+		Action:  "CreateFlowLogs",
 		Input:   input,
 		Output:  (*ec2.CreateFlowLogsOutput)(nil),
 		Error:   nil,
@@ -1414,7 +1419,7 @@ func (c *Client) CreateFlowLogsWithContext(ctx context.Context, input *ec2.Creat
 func (c *Client) CreateFpgaImageWithContext(ctx context.Context, input *ec2.CreateFpgaImageInput, opts ...request.Option) (*ec2.CreateFpgaImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateFpgaImageWithContext",
+		Action:  "CreateFpgaImage",
 		Input:   input,
 		Output:  (*ec2.CreateFpgaImageOutput)(nil),
 		Error:   nil,
@@ -1435,7 +1440,7 @@ func (c *Client) CreateFpgaImageWithContext(ctx context.Context, input *ec2.Crea
 func (c *Client) CreateImageWithContext(ctx context.Context, input *ec2.CreateImageInput, opts ...request.Option) (*ec2.CreateImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateImageWithContext",
+		Action:  "CreateImage",
 		Input:   input,
 		Output:  (*ec2.CreateImageOutput)(nil),
 		Error:   nil,
@@ -1456,7 +1461,7 @@ func (c *Client) CreateImageWithContext(ctx context.Context, input *ec2.CreateIm
 func (c *Client) CreateInstanceExportTaskWithContext(ctx context.Context, input *ec2.CreateInstanceExportTaskInput, opts ...request.Option) (*ec2.CreateInstanceExportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateInstanceExportTaskWithContext",
+		Action:  "CreateInstanceExportTask",
 		Input:   input,
 		Output:  (*ec2.CreateInstanceExportTaskOutput)(nil),
 		Error:   nil,
@@ -1477,7 +1482,7 @@ func (c *Client) CreateInstanceExportTaskWithContext(ctx context.Context, input 
 func (c *Client) CreateInternetGatewayWithContext(ctx context.Context, input *ec2.CreateInternetGatewayInput, opts ...request.Option) (*ec2.CreateInternetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateInternetGatewayWithContext",
+		Action:  "CreateInternetGateway",
 		Input:   input,
 		Output:  (*ec2.CreateInternetGatewayOutput)(nil),
 		Error:   nil,
@@ -1498,7 +1503,7 @@ func (c *Client) CreateInternetGatewayWithContext(ctx context.Context, input *ec
 func (c *Client) CreateKeyPairWithContext(ctx context.Context, input *ec2.CreateKeyPairInput, opts ...request.Option) (*ec2.CreateKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateKeyPairWithContext",
+		Action:  "CreateKeyPair",
 		Input:   input,
 		Output:  (*ec2.CreateKeyPairOutput)(nil),
 		Error:   nil,
@@ -1519,7 +1524,7 @@ func (c *Client) CreateKeyPairWithContext(ctx context.Context, input *ec2.Create
 func (c *Client) CreateLaunchTemplateWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateInput, opts ...request.Option) (*ec2.CreateLaunchTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateLaunchTemplateWithContext",
+		Action:  "CreateLaunchTemplate",
 		Input:   input,
 		Output:  (*ec2.CreateLaunchTemplateOutput)(nil),
 		Error:   nil,
@@ -1540,7 +1545,7 @@ func (c *Client) CreateLaunchTemplateWithContext(ctx context.Context, input *ec2
 func (c *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateVersionInput, opts ...request.Option) (*ec2.CreateLaunchTemplateVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateLaunchTemplateVersionWithContext",
+		Action:  "CreateLaunchTemplateVersion",
 		Input:   input,
 		Output:  (*ec2.CreateLaunchTemplateVersionOutput)(nil),
 		Error:   nil,
@@ -1561,7 +1566,7 @@ func (c *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context, inp
 func (c *Client) CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateNatGatewayWithContext",
+		Action:  "CreateNatGateway",
 		Input:   input,
 		Output:  (*ec2.CreateNatGatewayOutput)(nil),
 		Error:   nil,
@@ -1582,7 +1587,7 @@ func (c *Client) CreateNatGatewayWithContext(ctx context.Context, input *ec2.Cre
 func (c *Client) CreateNetworkAclWithContext(ctx context.Context, input *ec2.CreateNetworkAclInput, opts ...request.Option) (*ec2.CreateNetworkAclOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateNetworkAclWithContext",
+		Action:  "CreateNetworkAcl",
 		Input:   input,
 		Output:  (*ec2.CreateNetworkAclOutput)(nil),
 		Error:   nil,
@@ -1603,7 +1608,7 @@ func (c *Client) CreateNetworkAclWithContext(ctx context.Context, input *ec2.Cre
 func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, input *ec2.CreateNetworkAclEntryInput, opts ...request.Option) (*ec2.CreateNetworkAclEntryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateNetworkAclEntryWithContext",
+		Action:  "CreateNetworkAclEntry",
 		Input:   input,
 		Output:  (*ec2.CreateNetworkAclEntryOutput)(nil),
 		Error:   nil,
@@ -1624,7 +1629,7 @@ func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, input *ec
 func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, input *ec2.CreateNetworkInterfaceInput, opts ...request.Option) (*ec2.CreateNetworkInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateNetworkInterfaceWithContext",
+		Action:  "CreateNetworkInterface",
 		Input:   input,
 		Output:  (*ec2.CreateNetworkInterfaceOutput)(nil),
 		Error:   nil,
@@ -1645,7 +1650,7 @@ func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, input *e
 func (c *Client) CreateNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.CreateNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.CreateNetworkInterfacePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateNetworkInterfacePermissionWithContext",
+		Action:  "CreateNetworkInterfacePermission",
 		Input:   input,
 		Output:  (*ec2.CreateNetworkInterfacePermissionOutput)(nil),
 		Error:   nil,
@@ -1666,7 +1671,7 @@ func (c *Client) CreateNetworkInterfacePermissionWithContext(ctx context.Context
 func (c *Client) CreatePlacementGroupWithContext(ctx context.Context, input *ec2.CreatePlacementGroupInput, opts ...request.Option) (*ec2.CreatePlacementGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreatePlacementGroupWithContext",
+		Action:  "CreatePlacementGroup",
 		Input:   input,
 		Output:  (*ec2.CreatePlacementGroupOutput)(nil),
 		Error:   nil,
@@ -1687,7 +1692,7 @@ func (c *Client) CreatePlacementGroupWithContext(ctx context.Context, input *ec2
 func (c *Client) CreateReservedInstancesListingWithContext(ctx context.Context, input *ec2.CreateReservedInstancesListingInput, opts ...request.Option) (*ec2.CreateReservedInstancesListingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateReservedInstancesListingWithContext",
+		Action:  "CreateReservedInstancesListing",
 		Input:   input,
 		Output:  (*ec2.CreateReservedInstancesListingOutput)(nil),
 		Error:   nil,
@@ -1708,7 +1713,7 @@ func (c *Client) CreateReservedInstancesListingWithContext(ctx context.Context, 
 func (c *Client) CreateRouteWithContext(ctx context.Context, input *ec2.CreateRouteInput, opts ...request.Option) (*ec2.CreateRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateRouteWithContext",
+		Action:  "CreateRoute",
 		Input:   input,
 		Output:  (*ec2.CreateRouteOutput)(nil),
 		Error:   nil,
@@ -1729,7 +1734,7 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, input *ec2.CreateRo
 func (c *Client) CreateRouteTableWithContext(ctx context.Context, input *ec2.CreateRouteTableInput, opts ...request.Option) (*ec2.CreateRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateRouteTableWithContext",
+		Action:  "CreateRouteTable",
 		Input:   input,
 		Output:  (*ec2.CreateRouteTableOutput)(nil),
 		Error:   nil,
@@ -1750,7 +1755,7 @@ func (c *Client) CreateRouteTableWithContext(ctx context.Context, input *ec2.Cre
 func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, input *ec2.CreateSecurityGroupInput, opts ...request.Option) (*ec2.CreateSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateSecurityGroupWithContext",
+		Action:  "CreateSecurityGroup",
 		Input:   input,
 		Output:  (*ec2.CreateSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -1771,7 +1776,7 @@ func (c *Client) CreateSecurityGroupWithContext(ctx context.Context, input *ec2.
 func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *ec2.CreateSnapshotInput, opts ...request.Option) (*ec2.Snapshot, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateSnapshotWithContext",
+		Action:  "CreateSnapshot",
 		Input:   input,
 		Output:  (*ec2.Snapshot)(nil),
 		Error:   nil,
@@ -1792,7 +1797,7 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *ec2.Creat
 func (c *Client) CreateSnapshotsWithContext(ctx context.Context, input *ec2.CreateSnapshotsInput, opts ...request.Option) (*ec2.CreateSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateSnapshotsWithContext",
+		Action:  "CreateSnapshots",
 		Input:   input,
 		Output:  (*ec2.CreateSnapshotsOutput)(nil),
 		Error:   nil,
@@ -1813,7 +1818,7 @@ func (c *Client) CreateSnapshotsWithContext(ctx context.Context, input *ec2.Crea
 func (c *Client) CreateSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.CreateSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.CreateSpotDatafeedSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateSpotDatafeedSubscriptionWithContext",
+		Action:  "CreateSpotDatafeedSubscription",
 		Input:   input,
 		Output:  (*ec2.CreateSpotDatafeedSubscriptionOutput)(nil),
 		Error:   nil,
@@ -1834,7 +1839,7 @@ func (c *Client) CreateSpotDatafeedSubscriptionWithContext(ctx context.Context, 
 func (c *Client) CreateSubnetWithContext(ctx context.Context, input *ec2.CreateSubnetInput, opts ...request.Option) (*ec2.CreateSubnetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateSubnetWithContext",
+		Action:  "CreateSubnet",
 		Input:   input,
 		Output:  (*ec2.CreateSubnetOutput)(nil),
 		Error:   nil,
@@ -1855,7 +1860,7 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, input *ec2.CreateS
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *ec2.CreateTagsInput, opts ...request.Option) (*ec2.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*ec2.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -1876,7 +1881,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *ec2.CreateTag
 func (c *Client) CreateTrafficMirrorFilterWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorFilterInput, opts ...request.Option) (*ec2.CreateTrafficMirrorFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTrafficMirrorFilterWithContext",
+		Action:  "CreateTrafficMirrorFilter",
 		Input:   input,
 		Output:  (*ec2.CreateTrafficMirrorFilterOutput)(nil),
 		Error:   nil,
@@ -1897,7 +1902,7 @@ func (c *Client) CreateTrafficMirrorFilterWithContext(ctx context.Context, input
 func (c *Client) CreateTrafficMirrorFilterRuleWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorFilterRuleInput, opts ...request.Option) (*ec2.CreateTrafficMirrorFilterRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTrafficMirrorFilterRuleWithContext",
+		Action:  "CreateTrafficMirrorFilterRule",
 		Input:   input,
 		Output:  (*ec2.CreateTrafficMirrorFilterRuleOutput)(nil),
 		Error:   nil,
@@ -1918,7 +1923,7 @@ func (c *Client) CreateTrafficMirrorFilterRuleWithContext(ctx context.Context, i
 func (c *Client) CreateTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorSessionInput, opts ...request.Option) (*ec2.CreateTrafficMirrorSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTrafficMirrorSessionWithContext",
+		Action:  "CreateTrafficMirrorSession",
 		Input:   input,
 		Output:  (*ec2.CreateTrafficMirrorSessionOutput)(nil),
 		Error:   nil,
@@ -1939,7 +1944,7 @@ func (c *Client) CreateTrafficMirrorSessionWithContext(ctx context.Context, inpu
 func (c *Client) CreateTrafficMirrorTargetWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorTargetInput, opts ...request.Option) (*ec2.CreateTrafficMirrorTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTrafficMirrorTargetWithContext",
+		Action:  "CreateTrafficMirrorTarget",
 		Input:   input,
 		Output:  (*ec2.CreateTrafficMirrorTargetOutput)(nil),
 		Error:   nil,
@@ -1960,7 +1965,7 @@ func (c *Client) CreateTrafficMirrorTargetWithContext(ctx context.Context, input
 func (c *Client) CreateTransitGatewayWithContext(ctx context.Context, input *ec2.CreateTransitGatewayInput, opts ...request.Option) (*ec2.CreateTransitGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTransitGatewayWithContext",
+		Action:  "CreateTransitGateway",
 		Input:   input,
 		Output:  (*ec2.CreateTransitGatewayOutput)(nil),
 		Error:   nil,
@@ -1981,7 +1986,7 @@ func (c *Client) CreateTransitGatewayWithContext(ctx context.Context, input *ec2
 func (c *Client) CreateTransitGatewayRouteWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTransitGatewayRouteWithContext",
+		Action:  "CreateTransitGatewayRoute",
 		Input:   input,
 		Output:  (*ec2.CreateTransitGatewayRouteOutput)(nil),
 		Error:   nil,
@@ -2002,7 +2007,7 @@ func (c *Client) CreateTransitGatewayRouteWithContext(ctx context.Context, input
 func (c *Client) CreateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTransitGatewayRouteTableWithContext",
+		Action:  "CreateTransitGatewayRouteTable",
 		Input:   input,
 		Output:  (*ec2.CreateTransitGatewayRouteTableOutput)(nil),
 		Error:   nil,
@@ -2023,7 +2028,7 @@ func (c *Client) CreateTransitGatewayRouteTableWithContext(ctx context.Context, 
 func (c *Client) CreateTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayVpcAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateTransitGatewayVpcAttachmentWithContext",
+		Action:  "CreateTransitGatewayVpcAttachment",
 		Input:   input,
 		Output:  (*ec2.CreateTransitGatewayVpcAttachmentOutput)(nil),
 		Error:   nil,
@@ -2044,7 +2049,7 @@ func (c *Client) CreateTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 func (c *Client) CreateVolumeWithContext(ctx context.Context, input *ec2.CreateVolumeInput, opts ...request.Option) (*ec2.Volume, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVolumeWithContext",
+		Action:  "CreateVolume",
 		Input:   input,
 		Output:  (*ec2.Volume)(nil),
 		Error:   nil,
@@ -2065,7 +2070,7 @@ func (c *Client) CreateVolumeWithContext(ctx context.Context, input *ec2.CreateV
 func (c *Client) CreateVpcWithContext(ctx context.Context, input *ec2.CreateVpcInput, opts ...request.Option) (*ec2.CreateVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpcWithContext",
+		Action:  "CreateVpc",
 		Input:   input,
 		Output:  (*ec2.CreateVpcOutput)(nil),
 		Error:   nil,
@@ -2086,7 +2091,7 @@ func (c *Client) CreateVpcWithContext(ctx context.Context, input *ec2.CreateVpcI
 func (c *Client) CreateVpcEndpointWithContext(ctx context.Context, input *ec2.CreateVpcEndpointInput, opts ...request.Option) (*ec2.CreateVpcEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpcEndpointWithContext",
+		Action:  "CreateVpcEndpoint",
 		Input:   input,
 		Output:  (*ec2.CreateVpcEndpointOutput)(nil),
 		Error:   nil,
@@ -2107,7 +2112,7 @@ func (c *Client) CreateVpcEndpointWithContext(ctx context.Context, input *ec2.Cr
 func (c *Client) CreateVpcEndpointConnectionNotificationWithContext(ctx context.Context, input *ec2.CreateVpcEndpointConnectionNotificationInput, opts ...request.Option) (*ec2.CreateVpcEndpointConnectionNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpcEndpointConnectionNotificationWithContext",
+		Action:  "CreateVpcEndpointConnectionNotification",
 		Input:   input,
 		Output:  (*ec2.CreateVpcEndpointConnectionNotificationOutput)(nil),
 		Error:   nil,
@@ -2128,7 +2133,7 @@ func (c *Client) CreateVpcEndpointConnectionNotificationWithContext(ctx context.
 func (c *Client) CreateVpcEndpointServiceConfigurationWithContext(ctx context.Context, input *ec2.CreateVpcEndpointServiceConfigurationInput, opts ...request.Option) (*ec2.CreateVpcEndpointServiceConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpcEndpointServiceConfigurationWithContext",
+		Action:  "CreateVpcEndpointServiceConfiguration",
 		Input:   input,
 		Output:  (*ec2.CreateVpcEndpointServiceConfigurationOutput)(nil),
 		Error:   nil,
@@ -2149,7 +2154,7 @@ func (c *Client) CreateVpcEndpointServiceConfigurationWithContext(ctx context.Co
 func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.CreateVpcPeeringConnectionInput, opts ...request.Option) (*ec2.CreateVpcPeeringConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpcPeeringConnectionWithContext",
+		Action:  "CreateVpcPeeringConnection",
 		Input:   input,
 		Output:  (*ec2.CreateVpcPeeringConnectionOutput)(nil),
 		Error:   nil,
@@ -2170,7 +2175,7 @@ func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, inpu
 func (c *Client) CreateVpnConnectionWithContext(ctx context.Context, input *ec2.CreateVpnConnectionInput, opts ...request.Option) (*ec2.CreateVpnConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpnConnectionWithContext",
+		Action:  "CreateVpnConnection",
 		Input:   input,
 		Output:  (*ec2.CreateVpnConnectionOutput)(nil),
 		Error:   nil,
@@ -2191,7 +2196,7 @@ func (c *Client) CreateVpnConnectionWithContext(ctx context.Context, input *ec2.
 func (c *Client) CreateVpnConnectionRouteWithContext(ctx context.Context, input *ec2.CreateVpnConnectionRouteInput, opts ...request.Option) (*ec2.CreateVpnConnectionRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpnConnectionRouteWithContext",
+		Action:  "CreateVpnConnectionRoute",
 		Input:   input,
 		Output:  (*ec2.CreateVpnConnectionRouteOutput)(nil),
 		Error:   nil,
@@ -2212,7 +2217,7 @@ func (c *Client) CreateVpnConnectionRouteWithContext(ctx context.Context, input 
 func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, input *ec2.CreateVpnGatewayInput, opts ...request.Option) (*ec2.CreateVpnGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "CreateVpnGatewayWithContext",
+		Action:  "CreateVpnGateway",
 		Input:   input,
 		Output:  (*ec2.CreateVpnGatewayOutput)(nil),
 		Error:   nil,
@@ -2233,7 +2238,7 @@ func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, input *ec2.Cre
 func (c *Client) DeleteClientVpnEndpointWithContext(ctx context.Context, input *ec2.DeleteClientVpnEndpointInput, opts ...request.Option) (*ec2.DeleteClientVpnEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteClientVpnEndpointWithContext",
+		Action:  "DeleteClientVpnEndpoint",
 		Input:   input,
 		Output:  (*ec2.DeleteClientVpnEndpointOutput)(nil),
 		Error:   nil,
@@ -2254,7 +2259,7 @@ func (c *Client) DeleteClientVpnEndpointWithContext(ctx context.Context, input *
 func (c *Client) DeleteClientVpnRouteWithContext(ctx context.Context, input *ec2.DeleteClientVpnRouteInput, opts ...request.Option) (*ec2.DeleteClientVpnRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteClientVpnRouteWithContext",
+		Action:  "DeleteClientVpnRoute",
 		Input:   input,
 		Output:  (*ec2.DeleteClientVpnRouteOutput)(nil),
 		Error:   nil,
@@ -2275,7 +2280,7 @@ func (c *Client) DeleteClientVpnRouteWithContext(ctx context.Context, input *ec2
 func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, input *ec2.DeleteCustomerGatewayInput, opts ...request.Option) (*ec2.DeleteCustomerGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteCustomerGatewayWithContext",
+		Action:  "DeleteCustomerGateway",
 		Input:   input,
 		Output:  (*ec2.DeleteCustomerGatewayOutput)(nil),
 		Error:   nil,
@@ -2296,7 +2301,7 @@ func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, input *ec
 func (c *Client) DeleteDhcpOptionsWithContext(ctx context.Context, input *ec2.DeleteDhcpOptionsInput, opts ...request.Option) (*ec2.DeleteDhcpOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteDhcpOptionsWithContext",
+		Action:  "DeleteDhcpOptions",
 		Input:   input,
 		Output:  (*ec2.DeleteDhcpOptionsOutput)(nil),
 		Error:   nil,
@@ -2317,7 +2322,7 @@ func (c *Client) DeleteDhcpOptionsWithContext(ctx context.Context, input *ec2.De
 func (c *Client) DeleteEgressOnlyInternetGatewayWithContext(ctx context.Context, input *ec2.DeleteEgressOnlyInternetGatewayInput, opts ...request.Option) (*ec2.DeleteEgressOnlyInternetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteEgressOnlyInternetGatewayWithContext",
+		Action:  "DeleteEgressOnlyInternetGateway",
 		Input:   input,
 		Output:  (*ec2.DeleteEgressOnlyInternetGatewayOutput)(nil),
 		Error:   nil,
@@ -2338,7 +2343,7 @@ func (c *Client) DeleteEgressOnlyInternetGatewayWithContext(ctx context.Context,
 func (c *Client) DeleteFleetsWithContext(ctx context.Context, input *ec2.DeleteFleetsInput, opts ...request.Option) (*ec2.DeleteFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteFleetsWithContext",
+		Action:  "DeleteFleets",
 		Input:   input,
 		Output:  (*ec2.DeleteFleetsOutput)(nil),
 		Error:   nil,
@@ -2359,7 +2364,7 @@ func (c *Client) DeleteFleetsWithContext(ctx context.Context, input *ec2.DeleteF
 func (c *Client) DeleteFlowLogsWithContext(ctx context.Context, input *ec2.DeleteFlowLogsInput, opts ...request.Option) (*ec2.DeleteFlowLogsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteFlowLogsWithContext",
+		Action:  "DeleteFlowLogs",
 		Input:   input,
 		Output:  (*ec2.DeleteFlowLogsOutput)(nil),
 		Error:   nil,
@@ -2380,7 +2385,7 @@ func (c *Client) DeleteFlowLogsWithContext(ctx context.Context, input *ec2.Delet
 func (c *Client) DeleteFpgaImageWithContext(ctx context.Context, input *ec2.DeleteFpgaImageInput, opts ...request.Option) (*ec2.DeleteFpgaImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteFpgaImageWithContext",
+		Action:  "DeleteFpgaImage",
 		Input:   input,
 		Output:  (*ec2.DeleteFpgaImageOutput)(nil),
 		Error:   nil,
@@ -2401,7 +2406,7 @@ func (c *Client) DeleteFpgaImageWithContext(ctx context.Context, input *ec2.Dele
 func (c *Client) DeleteInternetGatewayWithContext(ctx context.Context, input *ec2.DeleteInternetGatewayInput, opts ...request.Option) (*ec2.DeleteInternetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteInternetGatewayWithContext",
+		Action:  "DeleteInternetGateway",
 		Input:   input,
 		Output:  (*ec2.DeleteInternetGatewayOutput)(nil),
 		Error:   nil,
@@ -2422,7 +2427,7 @@ func (c *Client) DeleteInternetGatewayWithContext(ctx context.Context, input *ec
 func (c *Client) DeleteKeyPairWithContext(ctx context.Context, input *ec2.DeleteKeyPairInput, opts ...request.Option) (*ec2.DeleteKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteKeyPairWithContext",
+		Action:  "DeleteKeyPair",
 		Input:   input,
 		Output:  (*ec2.DeleteKeyPairOutput)(nil),
 		Error:   nil,
@@ -2443,7 +2448,7 @@ func (c *Client) DeleteKeyPairWithContext(ctx context.Context, input *ec2.Delete
 func (c *Client) DeleteLaunchTemplateWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteLaunchTemplateWithContext",
+		Action:  "DeleteLaunchTemplate",
 		Input:   input,
 		Output:  (*ec2.DeleteLaunchTemplateOutput)(nil),
 		Error:   nil,
@@ -2464,7 +2469,7 @@ func (c *Client) DeleteLaunchTemplateWithContext(ctx context.Context, input *ec2
 func (c *Client) DeleteLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteLaunchTemplateVersionsWithContext",
+		Action:  "DeleteLaunchTemplateVersions",
 		Input:   input,
 		Output:  (*ec2.DeleteLaunchTemplateVersionsOutput)(nil),
 		Error:   nil,
@@ -2485,7 +2490,7 @@ func (c *Client) DeleteLaunchTemplateVersionsWithContext(ctx context.Context, in
 func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteNatGatewayWithContext",
+		Action:  "DeleteNatGateway",
 		Input:   input,
 		Output:  (*ec2.DeleteNatGatewayOutput)(nil),
 		Error:   nil,
@@ -2506,7 +2511,7 @@ func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, input *ec2.Del
 func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, input *ec2.DeleteNetworkAclInput, opts ...request.Option) (*ec2.DeleteNetworkAclOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteNetworkAclWithContext",
+		Action:  "DeleteNetworkAcl",
 		Input:   input,
 		Output:  (*ec2.DeleteNetworkAclOutput)(nil),
 		Error:   nil,
@@ -2527,7 +2532,7 @@ func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, input *ec2.Del
 func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec2.DeleteNetworkAclEntryInput, opts ...request.Option) (*ec2.DeleteNetworkAclEntryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteNetworkAclEntryWithContext",
+		Action:  "DeleteNetworkAclEntry",
 		Input:   input,
 		Output:  (*ec2.DeleteNetworkAclEntryOutput)(nil),
 		Error:   nil,
@@ -2548,7 +2553,7 @@ func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec
 func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfaceInput, opts ...request.Option) (*ec2.DeleteNetworkInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteNetworkInterfaceWithContext",
+		Action:  "DeleteNetworkInterface",
 		Input:   input,
 		Output:  (*ec2.DeleteNetworkInterfaceOutput)(nil),
 		Error:   nil,
@@ -2569,7 +2574,7 @@ func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, input *e
 func (c *Client) DeleteNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.DeleteNetworkInterfacePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteNetworkInterfacePermissionWithContext",
+		Action:  "DeleteNetworkInterfacePermission",
 		Input:   input,
 		Output:  (*ec2.DeleteNetworkInterfacePermissionOutput)(nil),
 		Error:   nil,
@@ -2590,7 +2595,7 @@ func (c *Client) DeleteNetworkInterfacePermissionWithContext(ctx context.Context
 func (c *Client) DeletePlacementGroupWithContext(ctx context.Context, input *ec2.DeletePlacementGroupInput, opts ...request.Option) (*ec2.DeletePlacementGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeletePlacementGroupWithContext",
+		Action:  "DeletePlacementGroup",
 		Input:   input,
 		Output:  (*ec2.DeletePlacementGroupOutput)(nil),
 		Error:   nil,
@@ -2608,10 +2613,31 @@ func (c *Client) DeletePlacementGroupWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.DeletePlacementGroupOutput), req.Error
 }
 
+func (c *Client) DeleteQueuedReservedInstancesWithContext(ctx context.Context, input *ec2.DeleteQueuedReservedInstancesInput, opts ...request.Option) (*ec2.DeleteQueuedReservedInstancesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteQueuedReservedInstances",
+		Input:   input,
+		Output:  (*ec2.DeleteQueuedReservedInstancesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteQueuedReservedInstancesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteQueuedReservedInstancesOutput), req.Error
+}
+
 func (c *Client) DeleteRouteWithContext(ctx context.Context, input *ec2.DeleteRouteInput, opts ...request.Option) (*ec2.DeleteRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteRouteWithContext",
+		Action:  "DeleteRoute",
 		Input:   input,
 		Output:  (*ec2.DeleteRouteOutput)(nil),
 		Error:   nil,
@@ -2632,7 +2658,7 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, input *ec2.DeleteRo
 func (c *Client) DeleteRouteTableWithContext(ctx context.Context, input *ec2.DeleteRouteTableInput, opts ...request.Option) (*ec2.DeleteRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteRouteTableWithContext",
+		Action:  "DeleteRouteTable",
 		Input:   input,
 		Output:  (*ec2.DeleteRouteTableOutput)(nil),
 		Error:   nil,
@@ -2653,7 +2679,7 @@ func (c *Client) DeleteRouteTableWithContext(ctx context.Context, input *ec2.Del
 func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, input *ec2.DeleteSecurityGroupInput, opts ...request.Option) (*ec2.DeleteSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteSecurityGroupWithContext",
+		Action:  "DeleteSecurityGroup",
 		Input:   input,
 		Output:  (*ec2.DeleteSecurityGroupOutput)(nil),
 		Error:   nil,
@@ -2674,7 +2700,7 @@ func (c *Client) DeleteSecurityGroupWithContext(ctx context.Context, input *ec2.
 func (c *Client) DeleteSnapshotWithContext(ctx context.Context, input *ec2.DeleteSnapshotInput, opts ...request.Option) (*ec2.DeleteSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteSnapshotWithContext",
+		Action:  "DeleteSnapshot",
 		Input:   input,
 		Output:  (*ec2.DeleteSnapshotOutput)(nil),
 		Error:   nil,
@@ -2695,7 +2721,7 @@ func (c *Client) DeleteSnapshotWithContext(ctx context.Context, input *ec2.Delet
 func (c *Client) DeleteSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.DeleteSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.DeleteSpotDatafeedSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteSpotDatafeedSubscriptionWithContext",
+		Action:  "DeleteSpotDatafeedSubscription",
 		Input:   input,
 		Output:  (*ec2.DeleteSpotDatafeedSubscriptionOutput)(nil),
 		Error:   nil,
@@ -2716,7 +2742,7 @@ func (c *Client) DeleteSpotDatafeedSubscriptionWithContext(ctx context.Context, 
 func (c *Client) DeleteSubnetWithContext(ctx context.Context, input *ec2.DeleteSubnetInput, opts ...request.Option) (*ec2.DeleteSubnetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteSubnetWithContext",
+		Action:  "DeleteSubnet",
 		Input:   input,
 		Output:  (*ec2.DeleteSubnetOutput)(nil),
 		Error:   nil,
@@ -2737,7 +2763,7 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, input *ec2.DeleteS
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *ec2.DeleteTagsInput, opts ...request.Option) (*ec2.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*ec2.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -2758,7 +2784,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *ec2.DeleteTag
 func (c *Client) DeleteTrafficMirrorFilterWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorFilterInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTrafficMirrorFilterWithContext",
+		Action:  "DeleteTrafficMirrorFilter",
 		Input:   input,
 		Output:  (*ec2.DeleteTrafficMirrorFilterOutput)(nil),
 		Error:   nil,
@@ -2779,7 +2805,7 @@ func (c *Client) DeleteTrafficMirrorFilterWithContext(ctx context.Context, input
 func (c *Client) DeleteTrafficMirrorFilterRuleWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorFilterRuleInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorFilterRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTrafficMirrorFilterRuleWithContext",
+		Action:  "DeleteTrafficMirrorFilterRule",
 		Input:   input,
 		Output:  (*ec2.DeleteTrafficMirrorFilterRuleOutput)(nil),
 		Error:   nil,
@@ -2800,7 +2826,7 @@ func (c *Client) DeleteTrafficMirrorFilterRuleWithContext(ctx context.Context, i
 func (c *Client) DeleteTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorSessionInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTrafficMirrorSessionWithContext",
+		Action:  "DeleteTrafficMirrorSession",
 		Input:   input,
 		Output:  (*ec2.DeleteTrafficMirrorSessionOutput)(nil),
 		Error:   nil,
@@ -2821,7 +2847,7 @@ func (c *Client) DeleteTrafficMirrorSessionWithContext(ctx context.Context, inpu
 func (c *Client) DeleteTrafficMirrorTargetWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorTargetInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTrafficMirrorTargetWithContext",
+		Action:  "DeleteTrafficMirrorTarget",
 		Input:   input,
 		Output:  (*ec2.DeleteTrafficMirrorTargetOutput)(nil),
 		Error:   nil,
@@ -2842,7 +2868,7 @@ func (c *Client) DeleteTrafficMirrorTargetWithContext(ctx context.Context, input
 func (c *Client) DeleteTransitGatewayWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayInput, opts ...request.Option) (*ec2.DeleteTransitGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTransitGatewayWithContext",
+		Action:  "DeleteTransitGateway",
 		Input:   input,
 		Output:  (*ec2.DeleteTransitGatewayOutput)(nil),
 		Error:   nil,
@@ -2863,7 +2889,7 @@ func (c *Client) DeleteTransitGatewayWithContext(ctx context.Context, input *ec2
 func (c *Client) DeleteTransitGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTransitGatewayRouteWithContext",
+		Action:  "DeleteTransitGatewayRoute",
 		Input:   input,
 		Output:  (*ec2.DeleteTransitGatewayRouteOutput)(nil),
 		Error:   nil,
@@ -2884,7 +2910,7 @@ func (c *Client) DeleteTransitGatewayRouteWithContext(ctx context.Context, input
 func (c *Client) DeleteTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTransitGatewayRouteTableWithContext",
+		Action:  "DeleteTransitGatewayRouteTable",
 		Input:   input,
 		Output:  (*ec2.DeleteTransitGatewayRouteTableOutput)(nil),
 		Error:   nil,
@@ -2905,7 +2931,7 @@ func (c *Client) DeleteTransitGatewayRouteTableWithContext(ctx context.Context, 
 func (c *Client) DeleteTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayVpcAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteTransitGatewayVpcAttachmentWithContext",
+		Action:  "DeleteTransitGatewayVpcAttachment",
 		Input:   input,
 		Output:  (*ec2.DeleteTransitGatewayVpcAttachmentOutput)(nil),
 		Error:   nil,
@@ -2926,7 +2952,7 @@ func (c *Client) DeleteTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *ec2.DeleteVolumeInput, opts ...request.Option) (*ec2.DeleteVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVolumeWithContext",
+		Action:  "DeleteVolume",
 		Input:   input,
 		Output:  (*ec2.DeleteVolumeOutput)(nil),
 		Error:   nil,
@@ -2947,7 +2973,7 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *ec2.DeleteV
 func (c *Client) DeleteVpcWithContext(ctx context.Context, input *ec2.DeleteVpcInput, opts ...request.Option) (*ec2.DeleteVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpcWithContext",
+		Action:  "DeleteVpc",
 		Input:   input,
 		Output:  (*ec2.DeleteVpcOutput)(nil),
 		Error:   nil,
@@ -2968,7 +2994,7 @@ func (c *Client) DeleteVpcWithContext(ctx context.Context, input *ec2.DeleteVpcI
 func (c *Client) DeleteVpcEndpointConnectionNotificationsWithContext(ctx context.Context, input *ec2.DeleteVpcEndpointConnectionNotificationsInput, opts ...request.Option) (*ec2.DeleteVpcEndpointConnectionNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpcEndpointConnectionNotificationsWithContext",
+		Action:  "DeleteVpcEndpointConnectionNotifications",
 		Input:   input,
 		Output:  (*ec2.DeleteVpcEndpointConnectionNotificationsOutput)(nil),
 		Error:   nil,
@@ -2989,7 +3015,7 @@ func (c *Client) DeleteVpcEndpointConnectionNotificationsWithContext(ctx context
 func (c *Client) DeleteVpcEndpointServiceConfigurationsWithContext(ctx context.Context, input *ec2.DeleteVpcEndpointServiceConfigurationsInput, opts ...request.Option) (*ec2.DeleteVpcEndpointServiceConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpcEndpointServiceConfigurationsWithContext",
+		Action:  "DeleteVpcEndpointServiceConfigurations",
 		Input:   input,
 		Output:  (*ec2.DeleteVpcEndpointServiceConfigurationsOutput)(nil),
 		Error:   nil,
@@ -3010,7 +3036,7 @@ func (c *Client) DeleteVpcEndpointServiceConfigurationsWithContext(ctx context.C
 func (c *Client) DeleteVpcEndpointsWithContext(ctx context.Context, input *ec2.DeleteVpcEndpointsInput, opts ...request.Option) (*ec2.DeleteVpcEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpcEndpointsWithContext",
+		Action:  "DeleteVpcEndpoints",
 		Input:   input,
 		Output:  (*ec2.DeleteVpcEndpointsOutput)(nil),
 		Error:   nil,
@@ -3031,7 +3057,7 @@ func (c *Client) DeleteVpcEndpointsWithContext(ctx context.Context, input *ec2.D
 func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.DeleteVpcPeeringConnectionInput, opts ...request.Option) (*ec2.DeleteVpcPeeringConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpcPeeringConnectionWithContext",
+		Action:  "DeleteVpcPeeringConnection",
 		Input:   input,
 		Output:  (*ec2.DeleteVpcPeeringConnectionOutput)(nil),
 		Error:   nil,
@@ -3052,7 +3078,7 @@ func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, inpu
 func (c *Client) DeleteVpnConnectionWithContext(ctx context.Context, input *ec2.DeleteVpnConnectionInput, opts ...request.Option) (*ec2.DeleteVpnConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpnConnectionWithContext",
+		Action:  "DeleteVpnConnection",
 		Input:   input,
 		Output:  (*ec2.DeleteVpnConnectionOutput)(nil),
 		Error:   nil,
@@ -3073,7 +3099,7 @@ func (c *Client) DeleteVpnConnectionWithContext(ctx context.Context, input *ec2.
 func (c *Client) DeleteVpnConnectionRouteWithContext(ctx context.Context, input *ec2.DeleteVpnConnectionRouteInput, opts ...request.Option) (*ec2.DeleteVpnConnectionRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpnConnectionRouteWithContext",
+		Action:  "DeleteVpnConnectionRoute",
 		Input:   input,
 		Output:  (*ec2.DeleteVpnConnectionRouteOutput)(nil),
 		Error:   nil,
@@ -3094,7 +3120,7 @@ func (c *Client) DeleteVpnConnectionRouteWithContext(ctx context.Context, input 
 func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, input *ec2.DeleteVpnGatewayInput, opts ...request.Option) (*ec2.DeleteVpnGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeleteVpnGatewayWithContext",
+		Action:  "DeleteVpnGateway",
 		Input:   input,
 		Output:  (*ec2.DeleteVpnGatewayOutput)(nil),
 		Error:   nil,
@@ -3115,7 +3141,7 @@ func (c *Client) DeleteVpnGatewayWithContext(ctx context.Context, input *ec2.Del
 func (c *Client) DeprovisionByoipCidrWithContext(ctx context.Context, input *ec2.DeprovisionByoipCidrInput, opts ...request.Option) (*ec2.DeprovisionByoipCidrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeprovisionByoipCidrWithContext",
+		Action:  "DeprovisionByoipCidr",
 		Input:   input,
 		Output:  (*ec2.DeprovisionByoipCidrOutput)(nil),
 		Error:   nil,
@@ -3136,7 +3162,7 @@ func (c *Client) DeprovisionByoipCidrWithContext(ctx context.Context, input *ec2
 func (c *Client) DeregisterImageWithContext(ctx context.Context, input *ec2.DeregisterImageInput, opts ...request.Option) (*ec2.DeregisterImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DeregisterImageWithContext",
+		Action:  "DeregisterImage",
 		Input:   input,
 		Output:  (*ec2.DeregisterImageOutput)(nil),
 		Error:   nil,
@@ -3157,7 +3183,7 @@ func (c *Client) DeregisterImageWithContext(ctx context.Context, input *ec2.Dere
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *ec2.DescribeAccountAttributesInput, opts ...request.Option) (*ec2.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeAccountAttributesWithContext",
+		Action:  "DescribeAccountAttributes",
 		Input:   input,
 		Output:  (*ec2.DescribeAccountAttributesOutput)(nil),
 		Error:   nil,
@@ -3178,7 +3204,7 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *ec2.DescribeAddressesInput, opts ...request.Option) (*ec2.DescribeAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeAddressesWithContext",
+		Action:  "DescribeAddresses",
 		Input:   input,
 		Output:  (*ec2.DescribeAddressesOutput)(nil),
 		Error:   nil,
@@ -3199,7 +3225,7 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *ec2.De
 func (c *Client) DescribeAggregateIdFormatWithContext(ctx context.Context, input *ec2.DescribeAggregateIdFormatInput, opts ...request.Option) (*ec2.DescribeAggregateIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeAggregateIdFormatWithContext",
+		Action:  "DescribeAggregateIdFormat",
 		Input:   input,
 		Output:  (*ec2.DescribeAggregateIdFormatOutput)(nil),
 		Error:   nil,
@@ -3220,7 +3246,7 @@ func (c *Client) DescribeAggregateIdFormatWithContext(ctx context.Context, input
 func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, input *ec2.DescribeAvailabilityZonesInput, opts ...request.Option) (*ec2.DescribeAvailabilityZonesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeAvailabilityZonesWithContext",
+		Action:  "DescribeAvailabilityZones",
 		Input:   input,
 		Output:  (*ec2.DescribeAvailabilityZonesOutput)(nil),
 		Error:   nil,
@@ -3241,7 +3267,7 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, input
 func (c *Client) DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeBundleTasksWithContext",
+		Action:  "DescribeBundleTasks",
 		Input:   input,
 		Output:  (*ec2.DescribeBundleTasksOutput)(nil),
 		Error:   nil,
@@ -3262,7 +3288,7 @@ func (c *Client) DescribeBundleTasksWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, opts ...request.Option) (*ec2.DescribeByoipCidrsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeByoipCidrsWithContext",
+		Action:  "DescribeByoipCidrs",
 		Input:   input,
 		Output:  (*ec2.DescribeByoipCidrsOutput)(nil),
 		Error:   nil,
@@ -3283,7 +3309,7 @@ func (c *Client) DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.D
 func (c *Client) DescribeCapacityReservationsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeCapacityReservationsWithContext",
+		Action:  "DescribeCapacityReservations",
 		Input:   input,
 		Output:  (*ec2.DescribeCapacityReservationsOutput)(nil),
 		Error:   nil,
@@ -3304,7 +3330,7 @@ func (c *Client) DescribeCapacityReservationsWithContext(ctx context.Context, in
 func (c *Client) DescribeClassicLinkInstancesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, opts ...request.Option) (*ec2.DescribeClassicLinkInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeClassicLinkInstancesWithContext",
+		Action:  "DescribeClassicLinkInstances",
 		Input:   input,
 		Output:  (*ec2.DescribeClassicLinkInstancesOutput)(nil),
 		Error:   nil,
@@ -3325,7 +3351,7 @@ func (c *Client) DescribeClassicLinkInstancesWithContext(ctx context.Context, in
 func (c *Client) DescribeClientVpnAuthorizationRulesWithContext(ctx context.Context, input *ec2.DescribeClientVpnAuthorizationRulesInput, opts ...request.Option) (*ec2.DescribeClientVpnAuthorizationRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeClientVpnAuthorizationRulesWithContext",
+		Action:  "DescribeClientVpnAuthorizationRules",
 		Input:   input,
 		Output:  (*ec2.DescribeClientVpnAuthorizationRulesOutput)(nil),
 		Error:   nil,
@@ -3346,7 +3372,7 @@ func (c *Client) DescribeClientVpnAuthorizationRulesWithContext(ctx context.Cont
 func (c *Client) DescribeClientVpnConnectionsWithContext(ctx context.Context, input *ec2.DescribeClientVpnConnectionsInput, opts ...request.Option) (*ec2.DescribeClientVpnConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeClientVpnConnectionsWithContext",
+		Action:  "DescribeClientVpnConnections",
 		Input:   input,
 		Output:  (*ec2.DescribeClientVpnConnectionsOutput)(nil),
 		Error:   nil,
@@ -3367,7 +3393,7 @@ func (c *Client) DescribeClientVpnConnectionsWithContext(ctx context.Context, in
 func (c *Client) DescribeClientVpnEndpointsWithContext(ctx context.Context, input *ec2.DescribeClientVpnEndpointsInput, opts ...request.Option) (*ec2.DescribeClientVpnEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeClientVpnEndpointsWithContext",
+		Action:  "DescribeClientVpnEndpoints",
 		Input:   input,
 		Output:  (*ec2.DescribeClientVpnEndpointsOutput)(nil),
 		Error:   nil,
@@ -3388,7 +3414,7 @@ func (c *Client) DescribeClientVpnEndpointsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeClientVpnRoutesWithContext(ctx context.Context, input *ec2.DescribeClientVpnRoutesInput, opts ...request.Option) (*ec2.DescribeClientVpnRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeClientVpnRoutesWithContext",
+		Action:  "DescribeClientVpnRoutes",
 		Input:   input,
 		Output:  (*ec2.DescribeClientVpnRoutesOutput)(nil),
 		Error:   nil,
@@ -3409,7 +3435,7 @@ func (c *Client) DescribeClientVpnRoutesWithContext(ctx context.Context, input *
 func (c *Client) DescribeClientVpnTargetNetworksWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, opts ...request.Option) (*ec2.DescribeClientVpnTargetNetworksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeClientVpnTargetNetworksWithContext",
+		Action:  "DescribeClientVpnTargetNetworks",
 		Input:   input,
 		Output:  (*ec2.DescribeClientVpnTargetNetworksOutput)(nil),
 		Error:   nil,
@@ -3430,7 +3456,7 @@ func (c *Client) DescribeClientVpnTargetNetworksWithContext(ctx context.Context,
 func (c *Client) DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeConversionTasksWithContext",
+		Action:  "DescribeConversionTasks",
 		Input:   input,
 		Output:  (*ec2.DescribeConversionTasksOutput)(nil),
 		Error:   nil,
@@ -3451,7 +3477,7 @@ func (c *Client) DescribeConversionTasksWithContext(ctx context.Context, input *
 func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, input *ec2.DescribeCustomerGatewaysInput, opts ...request.Option) (*ec2.DescribeCustomerGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeCustomerGatewaysWithContext",
+		Action:  "DescribeCustomerGateways",
 		Input:   input,
 		Output:  (*ec2.DescribeCustomerGatewaysOutput)(nil),
 		Error:   nil,
@@ -3472,7 +3498,7 @@ func (c *Client) DescribeCustomerGatewaysWithContext(ctx context.Context, input 
 func (c *Client) DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, opts ...request.Option) (*ec2.DescribeDhcpOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeDhcpOptionsWithContext",
+		Action:  "DescribeDhcpOptions",
 		Input:   input,
 		Output:  (*ec2.DescribeDhcpOptionsOutput)(nil),
 		Error:   nil,
@@ -3493,7 +3519,7 @@ func (c *Client) DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribeEgressOnlyInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeEgressOnlyInternetGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeEgressOnlyInternetGatewaysWithContext",
+		Action:  "DescribeEgressOnlyInternetGateways",
 		Input:   input,
 		Output:  (*ec2.DescribeEgressOnlyInternetGatewaysOutput)(nil),
 		Error:   nil,
@@ -3514,7 +3540,7 @@ func (c *Client) DescribeEgressOnlyInternetGatewaysWithContext(ctx context.Conte
 func (c *Client) DescribeElasticGpusWithContext(ctx context.Context, input *ec2.DescribeElasticGpusInput, opts ...request.Option) (*ec2.DescribeElasticGpusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeElasticGpusWithContext",
+		Action:  "DescribeElasticGpus",
 		Input:   input,
 		Output:  (*ec2.DescribeElasticGpusOutput)(nil),
 		Error:   nil,
@@ -3532,10 +3558,31 @@ func (c *Client) DescribeElasticGpusWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.DescribeElasticGpusOutput), req.Error
 }
 
+func (c *Client) DescribeExportImageTasksWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, opts ...request.Option) (*ec2.DescribeExportImageTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeExportImageTasks",
+		Input:   input,
+		Output:  (*ec2.DescribeExportImageTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeExportImageTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeExportImageTasksOutput), req.Error
+}
+
 func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *ec2.DescribeExportTasksInput, opts ...request.Option) (*ec2.DescribeExportTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeExportTasksWithContext",
+		Action:  "DescribeExportTasks",
 		Input:   input,
 		Output:  (*ec2.DescribeExportTasksOutput)(nil),
 		Error:   nil,
@@ -3556,7 +3603,7 @@ func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribeFleetHistoryWithContext(ctx context.Context, input *ec2.DescribeFleetHistoryInput, opts ...request.Option) (*ec2.DescribeFleetHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeFleetHistoryWithContext",
+		Action:  "DescribeFleetHistory",
 		Input:   input,
 		Output:  (*ec2.DescribeFleetHistoryOutput)(nil),
 		Error:   nil,
@@ -3577,7 +3624,7 @@ func (c *Client) DescribeFleetHistoryWithContext(ctx context.Context, input *ec2
 func (c *Client) DescribeFleetInstancesWithContext(ctx context.Context, input *ec2.DescribeFleetInstancesInput, opts ...request.Option) (*ec2.DescribeFleetInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeFleetInstancesWithContext",
+		Action:  "DescribeFleetInstances",
 		Input:   input,
 		Output:  (*ec2.DescribeFleetInstancesOutput)(nil),
 		Error:   nil,
@@ -3598,7 +3645,7 @@ func (c *Client) DescribeFleetInstancesWithContext(ctx context.Context, input *e
 func (c *Client) DescribeFleetsWithContext(ctx context.Context, input *ec2.DescribeFleetsInput, opts ...request.Option) (*ec2.DescribeFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeFleetsWithContext",
+		Action:  "DescribeFleets",
 		Input:   input,
 		Output:  (*ec2.DescribeFleetsOutput)(nil),
 		Error:   nil,
@@ -3619,7 +3666,7 @@ func (c *Client) DescribeFleetsWithContext(ctx context.Context, input *ec2.Descr
 func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, input *ec2.DescribeFlowLogsInput, opts ...request.Option) (*ec2.DescribeFlowLogsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeFlowLogsWithContext",
+		Action:  "DescribeFlowLogs",
 		Input:   input,
 		Output:  (*ec2.DescribeFlowLogsOutput)(nil),
 		Error:   nil,
@@ -3640,7 +3687,7 @@ func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, input *ec2.Des
 func (c *Client) DescribeFpgaImageAttributeWithContext(ctx context.Context, input *ec2.DescribeFpgaImageAttributeInput, opts ...request.Option) (*ec2.DescribeFpgaImageAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeFpgaImageAttributeWithContext",
+		Action:  "DescribeFpgaImageAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeFpgaImageAttributeOutput)(nil),
 		Error:   nil,
@@ -3661,7 +3708,7 @@ func (c *Client) DescribeFpgaImageAttributeWithContext(ctx context.Context, inpu
 func (c *Client) DescribeFpgaImagesWithContext(ctx context.Context, input *ec2.DescribeFpgaImagesInput, opts ...request.Option) (*ec2.DescribeFpgaImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeFpgaImagesWithContext",
+		Action:  "DescribeFpgaImages",
 		Input:   input,
 		Output:  (*ec2.DescribeFpgaImagesOutput)(nil),
 		Error:   nil,
@@ -3682,7 +3729,7 @@ func (c *Client) DescribeFpgaImagesWithContext(ctx context.Context, input *ec2.D
 func (c *Client) DescribeHostReservationOfferingsWithContext(ctx context.Context, input *ec2.DescribeHostReservationOfferingsInput, opts ...request.Option) (*ec2.DescribeHostReservationOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeHostReservationOfferingsWithContext",
+		Action:  "DescribeHostReservationOfferings",
 		Input:   input,
 		Output:  (*ec2.DescribeHostReservationOfferingsOutput)(nil),
 		Error:   nil,
@@ -3703,7 +3750,7 @@ func (c *Client) DescribeHostReservationOfferingsWithContext(ctx context.Context
 func (c *Client) DescribeHostReservationsWithContext(ctx context.Context, input *ec2.DescribeHostReservationsInput, opts ...request.Option) (*ec2.DescribeHostReservationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeHostReservationsWithContext",
+		Action:  "DescribeHostReservations",
 		Input:   input,
 		Output:  (*ec2.DescribeHostReservationsOutput)(nil),
 		Error:   nil,
@@ -3724,7 +3771,7 @@ func (c *Client) DescribeHostReservationsWithContext(ctx context.Context, input 
 func (c *Client) DescribeHostsWithContext(ctx context.Context, input *ec2.DescribeHostsInput, opts ...request.Option) (*ec2.DescribeHostsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeHostsWithContext",
+		Action:  "DescribeHosts",
 		Input:   input,
 		Output:  (*ec2.DescribeHostsOutput)(nil),
 		Error:   nil,
@@ -3745,7 +3792,7 @@ func (c *Client) DescribeHostsWithContext(ctx context.Context, input *ec2.Descri
 func (c *Client) DescribeIamInstanceProfileAssociationsWithContext(ctx context.Context, input *ec2.DescribeIamInstanceProfileAssociationsInput, opts ...request.Option) (*ec2.DescribeIamInstanceProfileAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeIamInstanceProfileAssociationsWithContext",
+		Action:  "DescribeIamInstanceProfileAssociations",
 		Input:   input,
 		Output:  (*ec2.DescribeIamInstanceProfileAssociationsOutput)(nil),
 		Error:   nil,
@@ -3766,7 +3813,7 @@ func (c *Client) DescribeIamInstanceProfileAssociationsWithContext(ctx context.C
 func (c *Client) DescribeIdFormatWithContext(ctx context.Context, input *ec2.DescribeIdFormatInput, opts ...request.Option) (*ec2.DescribeIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeIdFormatWithContext",
+		Action:  "DescribeIdFormat",
 		Input:   input,
 		Output:  (*ec2.DescribeIdFormatOutput)(nil),
 		Error:   nil,
@@ -3787,7 +3834,7 @@ func (c *Client) DescribeIdFormatWithContext(ctx context.Context, input *ec2.Des
 func (c *Client) DescribeIdentityIdFormatWithContext(ctx context.Context, input *ec2.DescribeIdentityIdFormatInput, opts ...request.Option) (*ec2.DescribeIdentityIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeIdentityIdFormatWithContext",
+		Action:  "DescribeIdentityIdFormat",
 		Input:   input,
 		Output:  (*ec2.DescribeIdentityIdFormatOutput)(nil),
 		Error:   nil,
@@ -3808,7 +3855,7 @@ func (c *Client) DescribeIdentityIdFormatWithContext(ctx context.Context, input 
 func (c *Client) DescribeImageAttributeWithContext(ctx context.Context, input *ec2.DescribeImageAttributeInput, opts ...request.Option) (*ec2.DescribeImageAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeImageAttributeWithContext",
+		Action:  "DescribeImageAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeImageAttributeOutput)(nil),
 		Error:   nil,
@@ -3829,7 +3876,7 @@ func (c *Client) DescribeImageAttributeWithContext(ctx context.Context, input *e
 func (c *Client) DescribeImagesWithContext(ctx context.Context, input *ec2.DescribeImagesInput, opts ...request.Option) (*ec2.DescribeImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeImagesWithContext",
+		Action:  "DescribeImages",
 		Input:   input,
 		Output:  (*ec2.DescribeImagesOutput)(nil),
 		Error:   nil,
@@ -3850,7 +3897,7 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, input *ec2.Descr
 func (c *Client) DescribeImportImageTasksWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, opts ...request.Option) (*ec2.DescribeImportImageTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeImportImageTasksWithContext",
+		Action:  "DescribeImportImageTasks",
 		Input:   input,
 		Output:  (*ec2.DescribeImportImageTasksOutput)(nil),
 		Error:   nil,
@@ -3871,7 +3918,7 @@ func (c *Client) DescribeImportImageTasksWithContext(ctx context.Context, input 
 func (c *Client) DescribeImportSnapshotTasksWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, opts ...request.Option) (*ec2.DescribeImportSnapshotTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeImportSnapshotTasksWithContext",
+		Action:  "DescribeImportSnapshotTasks",
 		Input:   input,
 		Output:  (*ec2.DescribeImportSnapshotTasksOutput)(nil),
 		Error:   nil,
@@ -3892,7 +3939,7 @@ func (c *Client) DescribeImportSnapshotTasksWithContext(ctx context.Context, inp
 func (c *Client) DescribeInstanceAttributeWithContext(ctx context.Context, input *ec2.DescribeInstanceAttributeInput, opts ...request.Option) (*ec2.DescribeInstanceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeInstanceAttributeWithContext",
+		Action:  "DescribeInstanceAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeInstanceAttributeOutput)(nil),
 		Error:   nil,
@@ -3913,7 +3960,7 @@ func (c *Client) DescribeInstanceAttributeWithContext(ctx context.Context, input
 func (c *Client) DescribeInstanceCreditSpecificationsWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, opts ...request.Option) (*ec2.DescribeInstanceCreditSpecificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeInstanceCreditSpecificationsWithContext",
+		Action:  "DescribeInstanceCreditSpecifications",
 		Input:   input,
 		Output:  (*ec2.DescribeInstanceCreditSpecificationsOutput)(nil),
 		Error:   nil,
@@ -3934,7 +3981,7 @@ func (c *Client) DescribeInstanceCreditSpecificationsWithContext(ctx context.Con
 func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeInstanceStatusWithContext",
+		Action:  "DescribeInstanceStatus",
 		Input:   input,
 		Output:  (*ec2.DescribeInstanceStatusOutput)(nil),
 		Error:   nil,
@@ -3955,7 +4002,7 @@ func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, input *e
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeInstancesWithContext",
+		Action:  "DescribeInstances",
 		Input:   input,
 		Output:  (*ec2.DescribeInstancesOutput)(nil),
 		Error:   nil,
@@ -3976,7 +4023,7 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *ec2.De
 func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeInternetGatewaysWithContext",
+		Action:  "DescribeInternetGateways",
 		Input:   input,
 		Output:  (*ec2.DescribeInternetGatewaysOutput)(nil),
 		Error:   nil,
@@ -3997,7 +4044,7 @@ func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, input 
 func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, input *ec2.DescribeKeyPairsInput, opts ...request.Option) (*ec2.DescribeKeyPairsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeKeyPairsWithContext",
+		Action:  "DescribeKeyPairs",
 		Input:   input,
 		Output:  (*ec2.DescribeKeyPairsOutput)(nil),
 		Error:   nil,
@@ -4018,7 +4065,7 @@ func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, input *ec2.Des
 func (c *Client) DescribeLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DescribeLaunchTemplateVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeLaunchTemplateVersionsWithContext",
+		Action:  "DescribeLaunchTemplateVersions",
 		Input:   input,
 		Output:  (*ec2.DescribeLaunchTemplateVersionsOutput)(nil),
 		Error:   nil,
@@ -4039,7 +4086,7 @@ func (c *Client) DescribeLaunchTemplateVersionsWithContext(ctx context.Context, 
 func (c *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, opts ...request.Option) (*ec2.DescribeLaunchTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeLaunchTemplatesWithContext",
+		Action:  "DescribeLaunchTemplates",
 		Input:   input,
 		Output:  (*ec2.DescribeLaunchTemplatesOutput)(nil),
 		Error:   nil,
@@ -4060,7 +4107,7 @@ func (c *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, input *
 func (c *Client) DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeMovingAddressesWithContext",
+		Action:  "DescribeMovingAddresses",
 		Input:   input,
 		Output:  (*ec2.DescribeMovingAddressesOutput)(nil),
 		Error:   nil,
@@ -4081,7 +4128,7 @@ func (c *Client) DescribeMovingAddressesWithContext(ctx context.Context, input *
 func (c *Client) DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, opts ...request.Option) (*ec2.DescribeNatGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeNatGatewaysWithContext",
+		Action:  "DescribeNatGateways",
 		Input:   input,
 		Output:  (*ec2.DescribeNatGatewaysOutput)(nil),
 		Error:   nil,
@@ -4102,7 +4149,7 @@ func (c *Client) DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, opts ...request.Option) (*ec2.DescribeNetworkAclsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeNetworkAclsWithContext",
+		Action:  "DescribeNetworkAcls",
 		Input:   input,
 		Output:  (*ec2.DescribeNetworkAclsOutput)(nil),
 		Error:   nil,
@@ -4123,7 +4170,7 @@ func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribeNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.DescribeNetworkInterfaceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeNetworkInterfaceAttributeWithContext",
+		Action:  "DescribeNetworkInterfaceAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeNetworkInterfaceAttributeOutput)(nil),
 		Error:   nil,
@@ -4144,7 +4191,7 @@ func (c *Client) DescribeNetworkInterfaceAttributeWithContext(ctx context.Contex
 func (c *Client) DescribeNetworkInterfacePermissionsWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacePermissionsInput, opts ...request.Option) (*ec2.DescribeNetworkInterfacePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeNetworkInterfacePermissionsWithContext",
+		Action:  "DescribeNetworkInterfacePermissions",
 		Input:   input,
 		Output:  (*ec2.DescribeNetworkInterfacePermissionsOutput)(nil),
 		Error:   nil,
@@ -4165,7 +4212,7 @@ func (c *Client) DescribeNetworkInterfacePermissionsWithContext(ctx context.Cont
 func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacesInput, opts ...request.Option) (*ec2.DescribeNetworkInterfacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeNetworkInterfacesWithContext",
+		Action:  "DescribeNetworkInterfaces",
 		Input:   input,
 		Output:  (*ec2.DescribeNetworkInterfacesOutput)(nil),
 		Error:   nil,
@@ -4186,7 +4233,7 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, input
 func (c *Client) DescribePlacementGroupsWithContext(ctx context.Context, input *ec2.DescribePlacementGroupsInput, opts ...request.Option) (*ec2.DescribePlacementGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribePlacementGroupsWithContext",
+		Action:  "DescribePlacementGroups",
 		Input:   input,
 		Output:  (*ec2.DescribePlacementGroupsOutput)(nil),
 		Error:   nil,
@@ -4207,7 +4254,7 @@ func (c *Client) DescribePlacementGroupsWithContext(ctx context.Context, input *
 func (c *Client) DescribePrefixListsWithContext(ctx context.Context, input *ec2.DescribePrefixListsInput, opts ...request.Option) (*ec2.DescribePrefixListsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribePrefixListsWithContext",
+		Action:  "DescribePrefixLists",
 		Input:   input,
 		Output:  (*ec2.DescribePrefixListsOutput)(nil),
 		Error:   nil,
@@ -4228,7 +4275,7 @@ func (c *Client) DescribePrefixListsWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribePrincipalIdFormatWithContext(ctx context.Context, input *ec2.DescribePrincipalIdFormatInput, opts ...request.Option) (*ec2.DescribePrincipalIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribePrincipalIdFormatWithContext",
+		Action:  "DescribePrincipalIdFormat",
 		Input:   input,
 		Output:  (*ec2.DescribePrincipalIdFormatOutput)(nil),
 		Error:   nil,
@@ -4249,7 +4296,7 @@ func (c *Client) DescribePrincipalIdFormatWithContext(ctx context.Context, input
 func (c *Client) DescribePublicIpv4PoolsWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, opts ...request.Option) (*ec2.DescribePublicIpv4PoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribePublicIpv4PoolsWithContext",
+		Action:  "DescribePublicIpv4Pools",
 		Input:   input,
 		Output:  (*ec2.DescribePublicIpv4PoolsOutput)(nil),
 		Error:   nil,
@@ -4270,7 +4317,7 @@ func (c *Client) DescribePublicIpv4PoolsWithContext(ctx context.Context, input *
 func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *ec2.DescribeRegionsInput, opts ...request.Option) (*ec2.DescribeRegionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeRegionsWithContext",
+		Action:  "DescribeRegions",
 		Input:   input,
 		Output:  (*ec2.DescribeRegionsOutput)(nil),
 		Error:   nil,
@@ -4291,7 +4338,7 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *ec2.Desc
 func (c *Client) DescribeReservedInstancesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeReservedInstancesWithContext",
+		Action:  "DescribeReservedInstances",
 		Input:   input,
 		Output:  (*ec2.DescribeReservedInstancesOutput)(nil),
 		Error:   nil,
@@ -4312,7 +4359,7 @@ func (c *Client) DescribeReservedInstancesWithContext(ctx context.Context, input
 func (c *Client) DescribeReservedInstancesListingsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesListingsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesListingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeReservedInstancesListingsWithContext",
+		Action:  "DescribeReservedInstancesListings",
 		Input:   input,
 		Output:  (*ec2.DescribeReservedInstancesListingsOutput)(nil),
 		Error:   nil,
@@ -4333,7 +4380,7 @@ func (c *Client) DescribeReservedInstancesListingsWithContext(ctx context.Contex
 func (c *Client) DescribeReservedInstancesModificationsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesModificationsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeReservedInstancesModificationsWithContext",
+		Action:  "DescribeReservedInstancesModifications",
 		Input:   input,
 		Output:  (*ec2.DescribeReservedInstancesModificationsOutput)(nil),
 		Error:   nil,
@@ -4354,7 +4401,7 @@ func (c *Client) DescribeReservedInstancesModificationsWithContext(ctx context.C
 func (c *Client) DescribeReservedInstancesOfferingsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesOfferingsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeReservedInstancesOfferingsWithContext",
+		Action:  "DescribeReservedInstancesOfferings",
 		Input:   input,
 		Output:  (*ec2.DescribeReservedInstancesOfferingsOutput)(nil),
 		Error:   nil,
@@ -4375,7 +4422,7 @@ func (c *Client) DescribeReservedInstancesOfferingsWithContext(ctx context.Conte
 func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, input *ec2.DescribeRouteTablesInput, opts ...request.Option) (*ec2.DescribeRouteTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeRouteTablesWithContext",
+		Action:  "DescribeRouteTables",
 		Input:   input,
 		Output:  (*ec2.DescribeRouteTablesOutput)(nil),
 		Error:   nil,
@@ -4396,7 +4443,7 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, input *ec2.
 func (c *Client) DescribeScheduledInstanceAvailabilityWithContext(ctx context.Context, input *ec2.DescribeScheduledInstanceAvailabilityInput, opts ...request.Option) (*ec2.DescribeScheduledInstanceAvailabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeScheduledInstanceAvailabilityWithContext",
+		Action:  "DescribeScheduledInstanceAvailability",
 		Input:   input,
 		Output:  (*ec2.DescribeScheduledInstanceAvailabilityOutput)(nil),
 		Error:   nil,
@@ -4417,7 +4464,7 @@ func (c *Client) DescribeScheduledInstanceAvailabilityWithContext(ctx context.Co
 func (c *Client) DescribeScheduledInstancesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, opts ...request.Option) (*ec2.DescribeScheduledInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeScheduledInstancesWithContext",
+		Action:  "DescribeScheduledInstances",
 		Input:   input,
 		Output:  (*ec2.DescribeScheduledInstancesOutput)(nil),
 		Error:   nil,
@@ -4438,7 +4485,7 @@ func (c *Client) DescribeScheduledInstancesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeSecurityGroupReferencesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupReferencesInput, opts ...request.Option) (*ec2.DescribeSecurityGroupReferencesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSecurityGroupReferencesWithContext",
+		Action:  "DescribeSecurityGroupReferences",
 		Input:   input,
 		Output:  (*ec2.DescribeSecurityGroupReferencesOutput)(nil),
 		Error:   nil,
@@ -4459,7 +4506,7 @@ func (c *Client) DescribeSecurityGroupReferencesWithContext(ctx context.Context,
 func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSecurityGroupsWithContext",
+		Action:  "DescribeSecurityGroups",
 		Input:   input,
 		Output:  (*ec2.DescribeSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -4480,7 +4527,7 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, input *e
 func (c *Client) DescribeSnapshotAttributeWithContext(ctx context.Context, input *ec2.DescribeSnapshotAttributeInput, opts ...request.Option) (*ec2.DescribeSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSnapshotAttributeWithContext",
+		Action:  "DescribeSnapshotAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeSnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -4501,7 +4548,7 @@ func (c *Client) DescribeSnapshotAttributeWithContext(ctx context.Context, input
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, opts ...request.Option) (*ec2.DescribeSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSnapshotsWithContext",
+		Action:  "DescribeSnapshots",
 		Input:   input,
 		Output:  (*ec2.DescribeSnapshotsOutput)(nil),
 		Error:   nil,
@@ -4522,7 +4569,7 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *ec2.De
 func (c *Client) DescribeSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.DescribeSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.DescribeSpotDatafeedSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSpotDatafeedSubscriptionWithContext",
+		Action:  "DescribeSpotDatafeedSubscription",
 		Input:   input,
 		Output:  (*ec2.DescribeSpotDatafeedSubscriptionOutput)(nil),
 		Error:   nil,
@@ -4543,7 +4590,7 @@ func (c *Client) DescribeSpotDatafeedSubscriptionWithContext(ctx context.Context
 func (c *Client) DescribeSpotFleetInstancesWithContext(ctx context.Context, input *ec2.DescribeSpotFleetInstancesInput, opts ...request.Option) (*ec2.DescribeSpotFleetInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSpotFleetInstancesWithContext",
+		Action:  "DescribeSpotFleetInstances",
 		Input:   input,
 		Output:  (*ec2.DescribeSpotFleetInstancesOutput)(nil),
 		Error:   nil,
@@ -4564,7 +4611,7 @@ func (c *Client) DescribeSpotFleetInstancesWithContext(ctx context.Context, inpu
 func (c *Client) DescribeSpotFleetRequestHistoryWithContext(ctx context.Context, input *ec2.DescribeSpotFleetRequestHistoryInput, opts ...request.Option) (*ec2.DescribeSpotFleetRequestHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSpotFleetRequestHistoryWithContext",
+		Action:  "DescribeSpotFleetRequestHistory",
 		Input:   input,
 		Output:  (*ec2.DescribeSpotFleetRequestHistoryOutput)(nil),
 		Error:   nil,
@@ -4585,7 +4632,7 @@ func (c *Client) DescribeSpotFleetRequestHistoryWithContext(ctx context.Context,
 func (c *Client) DescribeSpotFleetRequestsWithContext(ctx context.Context, input *ec2.DescribeSpotFleetRequestsInput, opts ...request.Option) (*ec2.DescribeSpotFleetRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSpotFleetRequestsWithContext",
+		Action:  "DescribeSpotFleetRequests",
 		Input:   input,
 		Output:  (*ec2.DescribeSpotFleetRequestsOutput)(nil),
 		Error:   nil,
@@ -4606,7 +4653,7 @@ func (c *Client) DescribeSpotFleetRequestsWithContext(ctx context.Context, input
 func (c *Client) DescribeSpotInstanceRequestsWithContext(ctx context.Context, input *ec2.DescribeSpotInstanceRequestsInput, opts ...request.Option) (*ec2.DescribeSpotInstanceRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSpotInstanceRequestsWithContext",
+		Action:  "DescribeSpotInstanceRequests",
 		Input:   input,
 		Output:  (*ec2.DescribeSpotInstanceRequestsOutput)(nil),
 		Error:   nil,
@@ -4627,7 +4674,7 @@ func (c *Client) DescribeSpotInstanceRequestsWithContext(ctx context.Context, in
 func (c *Client) DescribeSpotPriceHistoryWithContext(ctx context.Context, input *ec2.DescribeSpotPriceHistoryInput, opts ...request.Option) (*ec2.DescribeSpotPriceHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSpotPriceHistoryWithContext",
+		Action:  "DescribeSpotPriceHistory",
 		Input:   input,
 		Output:  (*ec2.DescribeSpotPriceHistoryOutput)(nil),
 		Error:   nil,
@@ -4648,7 +4695,7 @@ func (c *Client) DescribeSpotPriceHistoryWithContext(ctx context.Context, input 
 func (c *Client) DescribeStaleSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeStaleSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeStaleSecurityGroupsWithContext",
+		Action:  "DescribeStaleSecurityGroups",
 		Input:   input,
 		Output:  (*ec2.DescribeStaleSecurityGroupsOutput)(nil),
 		Error:   nil,
@@ -4669,7 +4716,7 @@ func (c *Client) DescribeStaleSecurityGroupsWithContext(ctx context.Context, inp
 func (c *Client) DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeSubnetsWithContext",
+		Action:  "DescribeSubnets",
 		Input:   input,
 		Output:  (*ec2.DescribeSubnetsOutput)(nil),
 		Error:   nil,
@@ -4690,7 +4737,7 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, input *ec2.Desc
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *ec2.DescribeTagsInput, opts ...request.Option) (*ec2.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*ec2.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -4711,7 +4758,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *ec2.Describ
 func (c *Client) DescribeTrafficMirrorFiltersWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorFiltersInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTrafficMirrorFiltersWithContext",
+		Action:  "DescribeTrafficMirrorFilters",
 		Input:   input,
 		Output:  (*ec2.DescribeTrafficMirrorFiltersOutput)(nil),
 		Error:   nil,
@@ -4732,7 +4779,7 @@ func (c *Client) DescribeTrafficMirrorFiltersWithContext(ctx context.Context, in
 func (c *Client) DescribeTrafficMirrorSessionsWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorSessionsInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTrafficMirrorSessionsWithContext",
+		Action:  "DescribeTrafficMirrorSessions",
 		Input:   input,
 		Output:  (*ec2.DescribeTrafficMirrorSessionsOutput)(nil),
 		Error:   nil,
@@ -4753,7 +4800,7 @@ func (c *Client) DescribeTrafficMirrorSessionsWithContext(ctx context.Context, i
 func (c *Client) DescribeTrafficMirrorTargetsWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTrafficMirrorTargetsWithContext",
+		Action:  "DescribeTrafficMirrorTargets",
 		Input:   input,
 		Output:  (*ec2.DescribeTrafficMirrorTargetsOutput)(nil),
 		Error:   nil,
@@ -4774,7 +4821,7 @@ func (c *Client) DescribeTrafficMirrorTargetsWithContext(ctx context.Context, in
 func (c *Client) DescribeTransitGatewayAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTransitGatewayAttachmentsWithContext",
+		Action:  "DescribeTransitGatewayAttachments",
 		Input:   input,
 		Output:  (*ec2.DescribeTransitGatewayAttachmentsOutput)(nil),
 		Error:   nil,
@@ -4795,7 +4842,7 @@ func (c *Client) DescribeTransitGatewayAttachmentsWithContext(ctx context.Contex
 func (c *Client) DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTransitGatewayRouteTablesWithContext",
+		Action:  "DescribeTransitGatewayRouteTables",
 		Input:   input,
 		Output:  (*ec2.DescribeTransitGatewayRouteTablesOutput)(nil),
 		Error:   nil,
@@ -4816,7 +4863,7 @@ func (c *Client) DescribeTransitGatewayRouteTablesWithContext(ctx context.Contex
 func (c *Client) DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayVpcAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTransitGatewayVpcAttachmentsWithContext",
+		Action:  "DescribeTransitGatewayVpcAttachments",
 		Input:   input,
 		Output:  (*ec2.DescribeTransitGatewayVpcAttachmentsOutput)(nil),
 		Error:   nil,
@@ -4837,7 +4884,7 @@ func (c *Client) DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Con
 func (c *Client) DescribeTransitGatewaysWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, opts ...request.Option) (*ec2.DescribeTransitGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeTransitGatewaysWithContext",
+		Action:  "DescribeTransitGateways",
 		Input:   input,
 		Output:  (*ec2.DescribeTransitGatewaysOutput)(nil),
 		Error:   nil,
@@ -4858,7 +4905,7 @@ func (c *Client) DescribeTransitGatewaysWithContext(ctx context.Context, input *
 func (c *Client) DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVolumeAttributeWithContext",
+		Action:  "DescribeVolumeAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeVolumeAttributeOutput)(nil),
 		Error:   nil,
@@ -4879,7 +4926,7 @@ func (c *Client) DescribeVolumeAttributeWithContext(ctx context.Context, input *
 func (c *Client) DescribeVolumeStatusWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, opts ...request.Option) (*ec2.DescribeVolumeStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVolumeStatusWithContext",
+		Action:  "DescribeVolumeStatus",
 		Input:   input,
 		Output:  (*ec2.DescribeVolumeStatusOutput)(nil),
 		Error:   nil,
@@ -4900,7 +4947,7 @@ func (c *Client) DescribeVolumeStatusWithContext(ctx context.Context, input *ec2
 func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *ec2.DescribeVolumesInput, opts ...request.Option) (*ec2.DescribeVolumesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVolumesWithContext",
+		Action:  "DescribeVolumes",
 		Input:   input,
 		Output:  (*ec2.DescribeVolumesOutput)(nil),
 		Error:   nil,
@@ -4921,7 +4968,7 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *ec2.Desc
 func (c *Client) DescribeVolumesModificationsWithContext(ctx context.Context, input *ec2.DescribeVolumesModificationsInput, opts ...request.Option) (*ec2.DescribeVolumesModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVolumesModificationsWithContext",
+		Action:  "DescribeVolumesModifications",
 		Input:   input,
 		Output:  (*ec2.DescribeVolumesModificationsOutput)(nil),
 		Error:   nil,
@@ -4942,7 +4989,7 @@ func (c *Client) DescribeVolumesModificationsWithContext(ctx context.Context, in
 func (c *Client) DescribeVpcAttributeWithContext(ctx context.Context, input *ec2.DescribeVpcAttributeInput, opts ...request.Option) (*ec2.DescribeVpcAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcAttributeWithContext",
+		Action:  "DescribeVpcAttribute",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcAttributeOutput)(nil),
 		Error:   nil,
@@ -4963,7 +5010,7 @@ func (c *Client) DescribeVpcAttributeWithContext(ctx context.Context, input *ec2
 func (c *Client) DescribeVpcClassicLinkWithContext(ctx context.Context, input *ec2.DescribeVpcClassicLinkInput, opts ...request.Option) (*ec2.DescribeVpcClassicLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcClassicLinkWithContext",
+		Action:  "DescribeVpcClassicLink",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcClassicLinkOutput)(nil),
 		Error:   nil,
@@ -4984,7 +5031,7 @@ func (c *Client) DescribeVpcClassicLinkWithContext(ctx context.Context, input *e
 func (c *Client) DescribeVpcClassicLinkDnsSupportWithContext(ctx context.Context, input *ec2.DescribeVpcClassicLinkDnsSupportInput, opts ...request.Option) (*ec2.DescribeVpcClassicLinkDnsSupportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcClassicLinkDnsSupportWithContext",
+		Action:  "DescribeVpcClassicLinkDnsSupport",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcClassicLinkDnsSupportOutput)(nil),
 		Error:   nil,
@@ -5005,7 +5052,7 @@ func (c *Client) DescribeVpcClassicLinkDnsSupportWithContext(ctx context.Context
 func (c *Client) DescribeVpcEndpointConnectionNotificationsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionNotificationsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointConnectionNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcEndpointConnectionNotificationsWithContext",
+		Action:  "DescribeVpcEndpointConnectionNotifications",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcEndpointConnectionNotificationsOutput)(nil),
 		Error:   nil,
@@ -5026,7 +5073,7 @@ func (c *Client) DescribeVpcEndpointConnectionNotificationsWithContext(ctx conte
 func (c *Client) DescribeVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcEndpointConnectionsWithContext",
+		Action:  "DescribeVpcEndpointConnections",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcEndpointConnectionsOutput)(nil),
 		Error:   nil,
@@ -5047,7 +5094,7 @@ func (c *Client) DescribeVpcEndpointConnectionsWithContext(ctx context.Context, 
 func (c *Client) DescribeVpcEndpointServiceConfigurationsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServiceConfigurationsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServiceConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcEndpointServiceConfigurationsWithContext",
+		Action:  "DescribeVpcEndpointServiceConfigurations",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcEndpointServiceConfigurationsOutput)(nil),
 		Error:   nil,
@@ -5068,7 +5115,7 @@ func (c *Client) DescribeVpcEndpointServiceConfigurationsWithContext(ctx context
 func (c *Client) DescribeVpcEndpointServicePermissionsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicePermissionsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServicePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcEndpointServicePermissionsWithContext",
+		Action:  "DescribeVpcEndpointServicePermissions",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcEndpointServicePermissionsOutput)(nil),
 		Error:   nil,
@@ -5089,7 +5136,7 @@ func (c *Client) DescribeVpcEndpointServicePermissionsWithContext(ctx context.Co
 func (c *Client) DescribeVpcEndpointServicesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicesInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcEndpointServicesWithContext",
+		Action:  "DescribeVpcEndpointServices",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcEndpointServicesOutput)(nil),
 		Error:   nil,
@@ -5110,7 +5157,7 @@ func (c *Client) DescribeVpcEndpointServicesWithContext(ctx context.Context, inp
 func (c *Client) DescribeVpcEndpointsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcEndpointsWithContext",
+		Action:  "DescribeVpcEndpoints",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcEndpointsOutput)(nil),
 		Error:   nil,
@@ -5131,7 +5178,7 @@ func (c *Client) DescribeVpcEndpointsWithContext(ctx context.Context, input *ec2
 func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpcPeeringConnectionsInput, opts ...request.Option) (*ec2.DescribeVpcPeeringConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcPeeringConnectionsWithContext",
+		Action:  "DescribeVpcPeeringConnections",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcPeeringConnectionsOutput)(nil),
 		Error:   nil,
@@ -5152,7 +5199,7 @@ func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, i
 func (c *Client) DescribeVpcsWithContext(ctx context.Context, input *ec2.DescribeVpcsInput, opts ...request.Option) (*ec2.DescribeVpcsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpcsWithContext",
+		Action:  "DescribeVpcs",
 		Input:   input,
 		Output:  (*ec2.DescribeVpcsOutput)(nil),
 		Error:   nil,
@@ -5173,7 +5220,7 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, input *ec2.Describ
 func (c *Client) DescribeVpnConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpnConnectionsInput, opts ...request.Option) (*ec2.DescribeVpnConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpnConnectionsWithContext",
+		Action:  "DescribeVpnConnections",
 		Input:   input,
 		Output:  (*ec2.DescribeVpnConnectionsOutput)(nil),
 		Error:   nil,
@@ -5194,7 +5241,7 @@ func (c *Client) DescribeVpnConnectionsWithContext(ctx context.Context, input *e
 func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, input *ec2.DescribeVpnGatewaysInput, opts ...request.Option) (*ec2.DescribeVpnGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DescribeVpnGatewaysWithContext",
+		Action:  "DescribeVpnGateways",
 		Input:   input,
 		Output:  (*ec2.DescribeVpnGatewaysOutput)(nil),
 		Error:   nil,
@@ -5215,7 +5262,7 @@ func (c *Client) DescribeVpnGatewaysWithContext(ctx context.Context, input *ec2.
 func (c *Client) DetachClassicLinkVpcWithContext(ctx context.Context, input *ec2.DetachClassicLinkVpcInput, opts ...request.Option) (*ec2.DetachClassicLinkVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DetachClassicLinkVpcWithContext",
+		Action:  "DetachClassicLinkVpc",
 		Input:   input,
 		Output:  (*ec2.DetachClassicLinkVpcOutput)(nil),
 		Error:   nil,
@@ -5236,7 +5283,7 @@ func (c *Client) DetachClassicLinkVpcWithContext(ctx context.Context, input *ec2
 func (c *Client) DetachInternetGatewayWithContext(ctx context.Context, input *ec2.DetachInternetGatewayInput, opts ...request.Option) (*ec2.DetachInternetGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DetachInternetGatewayWithContext",
+		Action:  "DetachInternetGateway",
 		Input:   input,
 		Output:  (*ec2.DetachInternetGatewayOutput)(nil),
 		Error:   nil,
@@ -5257,7 +5304,7 @@ func (c *Client) DetachInternetGatewayWithContext(ctx context.Context, input *ec
 func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, input *ec2.DetachNetworkInterfaceInput, opts ...request.Option) (*ec2.DetachNetworkInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DetachNetworkInterfaceWithContext",
+		Action:  "DetachNetworkInterface",
 		Input:   input,
 		Output:  (*ec2.DetachNetworkInterfaceOutput)(nil),
 		Error:   nil,
@@ -5278,7 +5325,7 @@ func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, input *e
 func (c *Client) DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DetachVolumeWithContext",
+		Action:  "DetachVolume",
 		Input:   input,
 		Output:  (*ec2.VolumeAttachment)(nil),
 		Error:   nil,
@@ -5299,7 +5346,7 @@ func (c *Client) DetachVolumeWithContext(ctx context.Context, input *ec2.DetachV
 func (c *Client) DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DetachVpnGatewayWithContext",
+		Action:  "DetachVpnGateway",
 		Input:   input,
 		Output:  (*ec2.DetachVpnGatewayOutput)(nil),
 		Error:   nil,
@@ -5320,7 +5367,7 @@ func (c *Client) DetachVpnGatewayWithContext(ctx context.Context, input *ec2.Det
 func (c *Client) DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisableEbsEncryptionByDefaultWithContext",
+		Action:  "DisableEbsEncryptionByDefault",
 		Input:   input,
 		Output:  (*ec2.DisableEbsEncryptionByDefaultOutput)(nil),
 		Error:   nil,
@@ -5341,7 +5388,7 @@ func (c *Client) DisableEbsEncryptionByDefaultWithContext(ctx context.Context, i
 func (c *Client) DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisableTransitGatewayRouteTablePropagationWithContext",
+		Action:  "DisableTransitGatewayRouteTablePropagation",
 		Input:   input,
 		Output:  (*ec2.DisableTransitGatewayRouteTablePropagationOutput)(nil),
 		Error:   nil,
@@ -5362,7 +5409,7 @@ func (c *Client) DisableTransitGatewayRouteTablePropagationWithContext(ctx conte
 func (c *Client) DisableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.DisableVgwRoutePropagationInput, opts ...request.Option) (*ec2.DisableVgwRoutePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisableVgwRoutePropagationWithContext",
+		Action:  "DisableVgwRoutePropagation",
 		Input:   input,
 		Output:  (*ec2.DisableVgwRoutePropagationOutput)(nil),
 		Error:   nil,
@@ -5383,7 +5430,7 @@ func (c *Client) DisableVgwRoutePropagationWithContext(ctx context.Context, inpu
 func (c *Client) DisableVpcClassicLinkWithContext(ctx context.Context, input *ec2.DisableVpcClassicLinkInput, opts ...request.Option) (*ec2.DisableVpcClassicLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisableVpcClassicLinkWithContext",
+		Action:  "DisableVpcClassicLink",
 		Input:   input,
 		Output:  (*ec2.DisableVpcClassicLinkOutput)(nil),
 		Error:   nil,
@@ -5404,7 +5451,7 @@ func (c *Client) DisableVpcClassicLinkWithContext(ctx context.Context, input *ec
 func (c *Client) DisableVpcClassicLinkDnsSupportWithContext(ctx context.Context, input *ec2.DisableVpcClassicLinkDnsSupportInput, opts ...request.Option) (*ec2.DisableVpcClassicLinkDnsSupportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisableVpcClassicLinkDnsSupportWithContext",
+		Action:  "DisableVpcClassicLinkDnsSupport",
 		Input:   input,
 		Output:  (*ec2.DisableVpcClassicLinkDnsSupportOutput)(nil),
 		Error:   nil,
@@ -5425,7 +5472,7 @@ func (c *Client) DisableVpcClassicLinkDnsSupportWithContext(ctx context.Context,
 func (c *Client) DisassociateAddressWithContext(ctx context.Context, input *ec2.DisassociateAddressInput, opts ...request.Option) (*ec2.DisassociateAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateAddressWithContext",
+		Action:  "DisassociateAddress",
 		Input:   input,
 		Output:  (*ec2.DisassociateAddressOutput)(nil),
 		Error:   nil,
@@ -5446,7 +5493,7 @@ func (c *Client) DisassociateAddressWithContext(ctx context.Context, input *ec2.
 func (c *Client) DisassociateClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.DisassociateClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.DisassociateClientVpnTargetNetworkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateClientVpnTargetNetworkWithContext",
+		Action:  "DisassociateClientVpnTargetNetwork",
 		Input:   input,
 		Output:  (*ec2.DisassociateClientVpnTargetNetworkOutput)(nil),
 		Error:   nil,
@@ -5467,7 +5514,7 @@ func (c *Client) DisassociateClientVpnTargetNetworkWithContext(ctx context.Conte
 func (c *Client) DisassociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.DisassociateIamInstanceProfileInput, opts ...request.Option) (*ec2.DisassociateIamInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateIamInstanceProfileWithContext",
+		Action:  "DisassociateIamInstanceProfile",
 		Input:   input,
 		Output:  (*ec2.DisassociateIamInstanceProfileOutput)(nil),
 		Error:   nil,
@@ -5488,7 +5535,7 @@ func (c *Client) DisassociateIamInstanceProfileWithContext(ctx context.Context, 
 func (c *Client) DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateRouteTableWithContext",
+		Action:  "DisassociateRouteTable",
 		Input:   input,
 		Output:  (*ec2.DisassociateRouteTableOutput)(nil),
 		Error:   nil,
@@ -5509,7 +5556,7 @@ func (c *Client) DisassociateRouteTableWithContext(ctx context.Context, input *e
 func (c *Client) DisassociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.DisassociateSubnetCidrBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateSubnetCidrBlockWithContext",
+		Action:  "DisassociateSubnetCidrBlock",
 		Input:   input,
 		Output:  (*ec2.DisassociateSubnetCidrBlockOutput)(nil),
 		Error:   nil,
@@ -5530,7 +5577,7 @@ func (c *Client) DisassociateSubnetCidrBlockWithContext(ctx context.Context, inp
 func (c *Client) DisassociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateTransitGatewayRouteTableWithContext",
+		Action:  "DisassociateTransitGatewayRouteTable",
 		Input:   input,
 		Output:  (*ec2.DisassociateTransitGatewayRouteTableOutput)(nil),
 		Error:   nil,
@@ -5551,7 +5598,7 @@ func (c *Client) DisassociateTransitGatewayRouteTableWithContext(ctx context.Con
 func (c *Client) DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "DisassociateVpcCidrBlockWithContext",
+		Action:  "DisassociateVpcCidrBlock",
 		Input:   input,
 		Output:  (*ec2.DisassociateVpcCidrBlockOutput)(nil),
 		Error:   nil,
@@ -5572,7 +5619,7 @@ func (c *Client) DisassociateVpcCidrBlockWithContext(ctx context.Context, input 
 func (c *Client) EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "EnableEbsEncryptionByDefaultWithContext",
+		Action:  "EnableEbsEncryptionByDefault",
 		Input:   input,
 		Output:  (*ec2.EnableEbsEncryptionByDefaultOutput)(nil),
 		Error:   nil,
@@ -5593,7 +5640,7 @@ func (c *Client) EnableEbsEncryptionByDefaultWithContext(ctx context.Context, in
 func (c *Client) EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "EnableTransitGatewayRouteTablePropagationWithContext",
+		Action:  "EnableTransitGatewayRouteTablePropagation",
 		Input:   input,
 		Output:  (*ec2.EnableTransitGatewayRouteTablePropagationOutput)(nil),
 		Error:   nil,
@@ -5614,7 +5661,7 @@ func (c *Client) EnableTransitGatewayRouteTablePropagationWithContext(ctx contex
 func (c *Client) EnableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.EnableVgwRoutePropagationInput, opts ...request.Option) (*ec2.EnableVgwRoutePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "EnableVgwRoutePropagationWithContext",
+		Action:  "EnableVgwRoutePropagation",
 		Input:   input,
 		Output:  (*ec2.EnableVgwRoutePropagationOutput)(nil),
 		Error:   nil,
@@ -5635,7 +5682,7 @@ func (c *Client) EnableVgwRoutePropagationWithContext(ctx context.Context, input
 func (c *Client) EnableVolumeIOWithContext(ctx context.Context, input *ec2.EnableVolumeIOInput, opts ...request.Option) (*ec2.EnableVolumeIOOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "EnableVolumeIOWithContext",
+		Action:  "EnableVolumeIO",
 		Input:   input,
 		Output:  (*ec2.EnableVolumeIOOutput)(nil),
 		Error:   nil,
@@ -5656,7 +5703,7 @@ func (c *Client) EnableVolumeIOWithContext(ctx context.Context, input *ec2.Enabl
 func (c *Client) EnableVpcClassicLinkWithContext(ctx context.Context, input *ec2.EnableVpcClassicLinkInput, opts ...request.Option) (*ec2.EnableVpcClassicLinkOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "EnableVpcClassicLinkWithContext",
+		Action:  "EnableVpcClassicLink",
 		Input:   input,
 		Output:  (*ec2.EnableVpcClassicLinkOutput)(nil),
 		Error:   nil,
@@ -5677,7 +5724,7 @@ func (c *Client) EnableVpcClassicLinkWithContext(ctx context.Context, input *ec2
 func (c *Client) EnableVpcClassicLinkDnsSupportWithContext(ctx context.Context, input *ec2.EnableVpcClassicLinkDnsSupportInput, opts ...request.Option) (*ec2.EnableVpcClassicLinkDnsSupportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "EnableVpcClassicLinkDnsSupportWithContext",
+		Action:  "EnableVpcClassicLinkDnsSupport",
 		Input:   input,
 		Output:  (*ec2.EnableVpcClassicLinkDnsSupportOutput)(nil),
 		Error:   nil,
@@ -5698,7 +5745,7 @@ func (c *Client) EnableVpcClassicLinkDnsSupportWithContext(ctx context.Context, 
 func (c *Client) ExportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ExportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ExportClientVpnClientCertificateRevocationListOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ExportClientVpnClientCertificateRevocationListWithContext",
+		Action:  "ExportClientVpnClientCertificateRevocationList",
 		Input:   input,
 		Output:  (*ec2.ExportClientVpnClientCertificateRevocationListOutput)(nil),
 		Error:   nil,
@@ -5719,7 +5766,7 @@ func (c *Client) ExportClientVpnClientCertificateRevocationListWithContext(ctx c
 func (c *Client) ExportClientVpnClientConfigurationWithContext(ctx context.Context, input *ec2.ExportClientVpnClientConfigurationInput, opts ...request.Option) (*ec2.ExportClientVpnClientConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ExportClientVpnClientConfigurationWithContext",
+		Action:  "ExportClientVpnClientConfiguration",
 		Input:   input,
 		Output:  (*ec2.ExportClientVpnClientConfigurationOutput)(nil),
 		Error:   nil,
@@ -5737,10 +5784,31 @@ func (c *Client) ExportClientVpnClientConfigurationWithContext(ctx context.Conte
 	return req.Output.(*ec2.ExportClientVpnClientConfigurationOutput), req.Error
 }
 
+func (c *Client) ExportImageWithContext(ctx context.Context, input *ec2.ExportImageInput, opts ...request.Option) (*ec2.ExportImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ExportImage",
+		Input:   input,
+		Output:  (*ec2.ExportImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ExportImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ExportImageOutput), req.Error
+}
+
 func (c *Client) ExportTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.ExportTransitGatewayRoutesInput, opts ...request.Option) (*ec2.ExportTransitGatewayRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ExportTransitGatewayRoutesWithContext",
+		Action:  "ExportTransitGatewayRoutes",
 		Input:   input,
 		Output:  (*ec2.ExportTransitGatewayRoutesOutput)(nil),
 		Error:   nil,
@@ -5761,7 +5829,7 @@ func (c *Client) ExportTransitGatewayRoutesWithContext(ctx context.Context, inpu
 func (c *Client) GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetCapacityReservationUsageWithContext",
+		Action:  "GetCapacityReservationUsage",
 		Input:   input,
 		Output:  (*ec2.GetCapacityReservationUsageOutput)(nil),
 		Error:   nil,
@@ -5782,7 +5850,7 @@ func (c *Client) GetCapacityReservationUsageWithContext(ctx context.Context, inp
 func (c *Client) GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetConsoleOutputWithContext",
+		Action:  "GetConsoleOutput",
 		Input:   input,
 		Output:  (*ec2.GetConsoleOutputOutput)(nil),
 		Error:   nil,
@@ -5803,7 +5871,7 @@ func (c *Client) GetConsoleOutputWithContext(ctx context.Context, input *ec2.Get
 func (c *Client) GetConsoleScreenshotWithContext(ctx context.Context, input *ec2.GetConsoleScreenshotInput, opts ...request.Option) (*ec2.GetConsoleScreenshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetConsoleScreenshotWithContext",
+		Action:  "GetConsoleScreenshot",
 		Input:   input,
 		Output:  (*ec2.GetConsoleScreenshotOutput)(nil),
 		Error:   nil,
@@ -5824,7 +5892,7 @@ func (c *Client) GetConsoleScreenshotWithContext(ctx context.Context, input *ec2
 func (c *Client) GetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.GetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.GetEbsDefaultKmsKeyIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetEbsDefaultKmsKeyIdWithContext",
+		Action:  "GetEbsDefaultKmsKeyId",
 		Input:   input,
 		Output:  (*ec2.GetEbsDefaultKmsKeyIdOutput)(nil),
 		Error:   nil,
@@ -5845,7 +5913,7 @@ func (c *Client) GetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec
 func (c *Client) GetEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.GetEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.GetEbsEncryptionByDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetEbsEncryptionByDefaultWithContext",
+		Action:  "GetEbsEncryptionByDefault",
 		Input:   input,
 		Output:  (*ec2.GetEbsEncryptionByDefaultOutput)(nil),
 		Error:   nil,
@@ -5866,7 +5934,7 @@ func (c *Client) GetEbsEncryptionByDefaultWithContext(ctx context.Context, input
 func (c *Client) GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetHostReservationPurchasePreviewWithContext",
+		Action:  "GetHostReservationPurchasePreview",
 		Input:   input,
 		Output:  (*ec2.GetHostReservationPurchasePreviewOutput)(nil),
 		Error:   nil,
@@ -5887,7 +5955,7 @@ func (c *Client) GetHostReservationPurchasePreviewWithContext(ctx context.Contex
 func (c *Client) GetLaunchTemplateDataWithContext(ctx context.Context, input *ec2.GetLaunchTemplateDataInput, opts ...request.Option) (*ec2.GetLaunchTemplateDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetLaunchTemplateDataWithContext",
+		Action:  "GetLaunchTemplateData",
 		Input:   input,
 		Output:  (*ec2.GetLaunchTemplateDataOutput)(nil),
 		Error:   nil,
@@ -5908,7 +5976,7 @@ func (c *Client) GetLaunchTemplateDataWithContext(ctx context.Context, input *ec
 func (c *Client) GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetPasswordDataWithContext",
+		Action:  "GetPasswordData",
 		Input:   input,
 		Output:  (*ec2.GetPasswordDataOutput)(nil),
 		Error:   nil,
@@ -5929,7 +5997,7 @@ func (c *Client) GetPasswordDataWithContext(ctx context.Context, input *ec2.GetP
 func (c *Client) GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetReservedInstancesExchangeQuoteWithContext",
+		Action:  "GetReservedInstancesExchangeQuote",
 		Input:   input,
 		Output:  (*ec2.GetReservedInstancesExchangeQuoteOutput)(nil),
 		Error:   nil,
@@ -5950,7 +6018,7 @@ func (c *Client) GetReservedInstancesExchangeQuoteWithContext(ctx context.Contex
 func (c *Client) GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetTransitGatewayAttachmentPropagationsWithContext",
+		Action:  "GetTransitGatewayAttachmentPropagations",
 		Input:   input,
 		Output:  (*ec2.GetTransitGatewayAttachmentPropagationsOutput)(nil),
 		Error:   nil,
@@ -5971,7 +6039,7 @@ func (c *Client) GetTransitGatewayAttachmentPropagationsWithContext(ctx context.
 func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetTransitGatewayRouteTableAssociationsWithContext",
+		Action:  "GetTransitGatewayRouteTableAssociations",
 		Input:   input,
 		Output:  (*ec2.GetTransitGatewayRouteTableAssociationsOutput)(nil),
 		Error:   nil,
@@ -5992,7 +6060,7 @@ func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.
 func (c *Client) GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "GetTransitGatewayRouteTablePropagationsWithContext",
+		Action:  "GetTransitGatewayRouteTablePropagations",
 		Input:   input,
 		Output:  (*ec2.GetTransitGatewayRouteTablePropagationsOutput)(nil),
 		Error:   nil,
@@ -6013,7 +6081,7 @@ func (c *Client) GetTransitGatewayRouteTablePropagationsWithContext(ctx context.
 func (c *Client) ImportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ImportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ImportClientVpnClientCertificateRevocationListOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ImportClientVpnClientCertificateRevocationListWithContext",
+		Action:  "ImportClientVpnClientCertificateRevocationList",
 		Input:   input,
 		Output:  (*ec2.ImportClientVpnClientCertificateRevocationListOutput)(nil),
 		Error:   nil,
@@ -6034,7 +6102,7 @@ func (c *Client) ImportClientVpnClientCertificateRevocationListWithContext(ctx c
 func (c *Client) ImportImageWithContext(ctx context.Context, input *ec2.ImportImageInput, opts ...request.Option) (*ec2.ImportImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ImportImageWithContext",
+		Action:  "ImportImage",
 		Input:   input,
 		Output:  (*ec2.ImportImageOutput)(nil),
 		Error:   nil,
@@ -6055,7 +6123,7 @@ func (c *Client) ImportImageWithContext(ctx context.Context, input *ec2.ImportIm
 func (c *Client) ImportInstanceWithContext(ctx context.Context, input *ec2.ImportInstanceInput, opts ...request.Option) (*ec2.ImportInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ImportInstanceWithContext",
+		Action:  "ImportInstance",
 		Input:   input,
 		Output:  (*ec2.ImportInstanceOutput)(nil),
 		Error:   nil,
@@ -6076,7 +6144,7 @@ func (c *Client) ImportInstanceWithContext(ctx context.Context, input *ec2.Impor
 func (c *Client) ImportKeyPairWithContext(ctx context.Context, input *ec2.ImportKeyPairInput, opts ...request.Option) (*ec2.ImportKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ImportKeyPairWithContext",
+		Action:  "ImportKeyPair",
 		Input:   input,
 		Output:  (*ec2.ImportKeyPairOutput)(nil),
 		Error:   nil,
@@ -6097,7 +6165,7 @@ func (c *Client) ImportKeyPairWithContext(ctx context.Context, input *ec2.Import
 func (c *Client) ImportSnapshotWithContext(ctx context.Context, input *ec2.ImportSnapshotInput, opts ...request.Option) (*ec2.ImportSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ImportSnapshotWithContext",
+		Action:  "ImportSnapshot",
 		Input:   input,
 		Output:  (*ec2.ImportSnapshotOutput)(nil),
 		Error:   nil,
@@ -6118,7 +6186,7 @@ func (c *Client) ImportSnapshotWithContext(ctx context.Context, input *ec2.Impor
 func (c *Client) ImportVolumeWithContext(ctx context.Context, input *ec2.ImportVolumeInput, opts ...request.Option) (*ec2.ImportVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ImportVolumeWithContext",
+		Action:  "ImportVolume",
 		Input:   input,
 		Output:  (*ec2.ImportVolumeOutput)(nil),
 		Error:   nil,
@@ -6139,7 +6207,7 @@ func (c *Client) ImportVolumeWithContext(ctx context.Context, input *ec2.ImportV
 func (c *Client) ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyCapacityReservationWithContext",
+		Action:  "ModifyCapacityReservation",
 		Input:   input,
 		Output:  (*ec2.ModifyCapacityReservationOutput)(nil),
 		Error:   nil,
@@ -6160,7 +6228,7 @@ func (c *Client) ModifyCapacityReservationWithContext(ctx context.Context, input
 func (c *Client) ModifyClientVpnEndpointWithContext(ctx context.Context, input *ec2.ModifyClientVpnEndpointInput, opts ...request.Option) (*ec2.ModifyClientVpnEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyClientVpnEndpointWithContext",
+		Action:  "ModifyClientVpnEndpoint",
 		Input:   input,
 		Output:  (*ec2.ModifyClientVpnEndpointOutput)(nil),
 		Error:   nil,
@@ -6181,7 +6249,7 @@ func (c *Client) ModifyClientVpnEndpointWithContext(ctx context.Context, input *
 func (c *Client) ModifyEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ModifyEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ModifyEbsDefaultKmsKeyIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyEbsDefaultKmsKeyIdWithContext",
+		Action:  "ModifyEbsDefaultKmsKeyId",
 		Input:   input,
 		Output:  (*ec2.ModifyEbsDefaultKmsKeyIdOutput)(nil),
 		Error:   nil,
@@ -6202,7 +6270,7 @@ func (c *Client) ModifyEbsDefaultKmsKeyIdWithContext(ctx context.Context, input 
 func (c *Client) ModifyFleetWithContext(ctx context.Context, input *ec2.ModifyFleetInput, opts ...request.Option) (*ec2.ModifyFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyFleetWithContext",
+		Action:  "ModifyFleet",
 		Input:   input,
 		Output:  (*ec2.ModifyFleetOutput)(nil),
 		Error:   nil,
@@ -6223,7 +6291,7 @@ func (c *Client) ModifyFleetWithContext(ctx context.Context, input *ec2.ModifyFl
 func (c *Client) ModifyFpgaImageAttributeWithContext(ctx context.Context, input *ec2.ModifyFpgaImageAttributeInput, opts ...request.Option) (*ec2.ModifyFpgaImageAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyFpgaImageAttributeWithContext",
+		Action:  "ModifyFpgaImageAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifyFpgaImageAttributeOutput)(nil),
 		Error:   nil,
@@ -6244,7 +6312,7 @@ func (c *Client) ModifyFpgaImageAttributeWithContext(ctx context.Context, input 
 func (c *Client) ModifyHostsWithContext(ctx context.Context, input *ec2.ModifyHostsInput, opts ...request.Option) (*ec2.ModifyHostsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyHostsWithContext",
+		Action:  "ModifyHosts",
 		Input:   input,
 		Output:  (*ec2.ModifyHostsOutput)(nil),
 		Error:   nil,
@@ -6265,7 +6333,7 @@ func (c *Client) ModifyHostsWithContext(ctx context.Context, input *ec2.ModifyHo
 func (c *Client) ModifyIdFormatWithContext(ctx context.Context, input *ec2.ModifyIdFormatInput, opts ...request.Option) (*ec2.ModifyIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyIdFormatWithContext",
+		Action:  "ModifyIdFormat",
 		Input:   input,
 		Output:  (*ec2.ModifyIdFormatOutput)(nil),
 		Error:   nil,
@@ -6286,7 +6354,7 @@ func (c *Client) ModifyIdFormatWithContext(ctx context.Context, input *ec2.Modif
 func (c *Client) ModifyIdentityIdFormatWithContext(ctx context.Context, input *ec2.ModifyIdentityIdFormatInput, opts ...request.Option) (*ec2.ModifyIdentityIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyIdentityIdFormatWithContext",
+		Action:  "ModifyIdentityIdFormat",
 		Input:   input,
 		Output:  (*ec2.ModifyIdentityIdFormatOutput)(nil),
 		Error:   nil,
@@ -6307,7 +6375,7 @@ func (c *Client) ModifyIdentityIdFormatWithContext(ctx context.Context, input *e
 func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, input *ec2.ModifyImageAttributeInput, opts ...request.Option) (*ec2.ModifyImageAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyImageAttributeWithContext",
+		Action:  "ModifyImageAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifyImageAttributeOutput)(nil),
 		Error:   nil,
@@ -6328,7 +6396,7 @@ func (c *Client) ModifyImageAttributeWithContext(ctx context.Context, input *ec2
 func (c *Client) ModifyInstanceAttributeWithContext(ctx context.Context, input *ec2.ModifyInstanceAttributeInput, opts ...request.Option) (*ec2.ModifyInstanceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyInstanceAttributeWithContext",
+		Action:  "ModifyInstanceAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifyInstanceAttributeOutput)(nil),
 		Error:   nil,
@@ -6349,7 +6417,7 @@ func (c *Client) ModifyInstanceAttributeWithContext(ctx context.Context, input *
 func (c *Client) ModifyInstanceCapacityReservationAttributesWithContext(ctx context.Context, input *ec2.ModifyInstanceCapacityReservationAttributesInput, opts ...request.Option) (*ec2.ModifyInstanceCapacityReservationAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyInstanceCapacityReservationAttributesWithContext",
+		Action:  "ModifyInstanceCapacityReservationAttributes",
 		Input:   input,
 		Output:  (*ec2.ModifyInstanceCapacityReservationAttributesOutput)(nil),
 		Error:   nil,
@@ -6370,7 +6438,7 @@ func (c *Client) ModifyInstanceCapacityReservationAttributesWithContext(ctx cont
 func (c *Client) ModifyInstanceCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyInstanceCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyInstanceCreditSpecificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyInstanceCreditSpecificationWithContext",
+		Action:  "ModifyInstanceCreditSpecification",
 		Input:   input,
 		Output:  (*ec2.ModifyInstanceCreditSpecificationOutput)(nil),
 		Error:   nil,
@@ -6391,7 +6459,7 @@ func (c *Client) ModifyInstanceCreditSpecificationWithContext(ctx context.Contex
 func (c *Client) ModifyInstanceEventStartTimeWithContext(ctx context.Context, input *ec2.ModifyInstanceEventStartTimeInput, opts ...request.Option) (*ec2.ModifyInstanceEventStartTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyInstanceEventStartTimeWithContext",
+		Action:  "ModifyInstanceEventStartTime",
 		Input:   input,
 		Output:  (*ec2.ModifyInstanceEventStartTimeOutput)(nil),
 		Error:   nil,
@@ -6412,7 +6480,7 @@ func (c *Client) ModifyInstanceEventStartTimeWithContext(ctx context.Context, in
 func (c *Client) ModifyInstancePlacementWithContext(ctx context.Context, input *ec2.ModifyInstancePlacementInput, opts ...request.Option) (*ec2.ModifyInstancePlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyInstancePlacementWithContext",
+		Action:  "ModifyInstancePlacement",
 		Input:   input,
 		Output:  (*ec2.ModifyInstancePlacementOutput)(nil),
 		Error:   nil,
@@ -6433,7 +6501,7 @@ func (c *Client) ModifyInstancePlacementWithContext(ctx context.Context, input *
 func (c *Client) ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyLaunchTemplateWithContext",
+		Action:  "ModifyLaunchTemplate",
 		Input:   input,
 		Output:  (*ec2.ModifyLaunchTemplateOutput)(nil),
 		Error:   nil,
@@ -6454,7 +6522,7 @@ func (c *Client) ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2
 func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyNetworkInterfaceAttributeWithContext",
+		Action:  "ModifyNetworkInterfaceAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifyNetworkInterfaceAttributeOutput)(nil),
 		Error:   nil,
@@ -6475,7 +6543,7 @@ func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context,
 func (c *Client) ModifyReservedInstancesWithContext(ctx context.Context, input *ec2.ModifyReservedInstancesInput, opts ...request.Option) (*ec2.ModifyReservedInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyReservedInstancesWithContext",
+		Action:  "ModifyReservedInstances",
 		Input:   input,
 		Output:  (*ec2.ModifyReservedInstancesOutput)(nil),
 		Error:   nil,
@@ -6496,7 +6564,7 @@ func (c *Client) ModifyReservedInstancesWithContext(ctx context.Context, input *
 func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, input *ec2.ModifySnapshotAttributeInput, opts ...request.Option) (*ec2.ModifySnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifySnapshotAttributeWithContext",
+		Action:  "ModifySnapshotAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifySnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -6517,7 +6585,7 @@ func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, input *
 func (c *Client) ModifySpotFleetRequestWithContext(ctx context.Context, input *ec2.ModifySpotFleetRequestInput, opts ...request.Option) (*ec2.ModifySpotFleetRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifySpotFleetRequestWithContext",
+		Action:  "ModifySpotFleetRequest",
 		Input:   input,
 		Output:  (*ec2.ModifySpotFleetRequestOutput)(nil),
 		Error:   nil,
@@ -6538,7 +6606,7 @@ func (c *Client) ModifySpotFleetRequestWithContext(ctx context.Context, input *e
 func (c *Client) ModifySubnetAttributeWithContext(ctx context.Context, input *ec2.ModifySubnetAttributeInput, opts ...request.Option) (*ec2.ModifySubnetAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifySubnetAttributeWithContext",
+		Action:  "ModifySubnetAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifySubnetAttributeOutput)(nil),
 		Error:   nil,
@@ -6559,7 +6627,7 @@ func (c *Client) ModifySubnetAttributeWithContext(ctx context.Context, input *ec
 func (c *Client) ModifyTrafficMirrorFilterNetworkServicesWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorFilterNetworkServicesInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorFilterNetworkServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyTrafficMirrorFilterNetworkServicesWithContext",
+		Action:  "ModifyTrafficMirrorFilterNetworkServices",
 		Input:   input,
 		Output:  (*ec2.ModifyTrafficMirrorFilterNetworkServicesOutput)(nil),
 		Error:   nil,
@@ -6580,7 +6648,7 @@ func (c *Client) ModifyTrafficMirrorFilterNetworkServicesWithContext(ctx context
 func (c *Client) ModifyTrafficMirrorFilterRuleWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorFilterRuleInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorFilterRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyTrafficMirrorFilterRuleWithContext",
+		Action:  "ModifyTrafficMirrorFilterRule",
 		Input:   input,
 		Output:  (*ec2.ModifyTrafficMirrorFilterRuleOutput)(nil),
 		Error:   nil,
@@ -6601,7 +6669,7 @@ func (c *Client) ModifyTrafficMirrorFilterRuleWithContext(ctx context.Context, i
 func (c *Client) ModifyTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorSessionInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyTrafficMirrorSessionWithContext",
+		Action:  "ModifyTrafficMirrorSession",
 		Input:   input,
 		Output:  (*ec2.ModifyTrafficMirrorSessionOutput)(nil),
 		Error:   nil,
@@ -6622,7 +6690,7 @@ func (c *Client) ModifyTrafficMirrorSessionWithContext(ctx context.Context, inpu
 func (c *Client) ModifyTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.ModifyTransitGatewayVpcAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyTransitGatewayVpcAttachmentWithContext",
+		Action:  "ModifyTransitGatewayVpcAttachment",
 		Input:   input,
 		Output:  (*ec2.ModifyTransitGatewayVpcAttachmentOutput)(nil),
 		Error:   nil,
@@ -6643,7 +6711,7 @@ func (c *Client) ModifyTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 func (c *Client) ModifyVolumeWithContext(ctx context.Context, input *ec2.ModifyVolumeInput, opts ...request.Option) (*ec2.ModifyVolumeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVolumeWithContext",
+		Action:  "ModifyVolume",
 		Input:   input,
 		Output:  (*ec2.ModifyVolumeOutput)(nil),
 		Error:   nil,
@@ -6664,7 +6732,7 @@ func (c *Client) ModifyVolumeWithContext(ctx context.Context, input *ec2.ModifyV
 func (c *Client) ModifyVolumeAttributeWithContext(ctx context.Context, input *ec2.ModifyVolumeAttributeInput, opts ...request.Option) (*ec2.ModifyVolumeAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVolumeAttributeWithContext",
+		Action:  "ModifyVolumeAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifyVolumeAttributeOutput)(nil),
 		Error:   nil,
@@ -6685,7 +6753,7 @@ func (c *Client) ModifyVolumeAttributeWithContext(ctx context.Context, input *ec
 func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, input *ec2.ModifyVpcAttributeInput, opts ...request.Option) (*ec2.ModifyVpcAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcAttributeWithContext",
+		Action:  "ModifyVpcAttribute",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcAttributeOutput)(nil),
 		Error:   nil,
@@ -6706,7 +6774,7 @@ func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, input *ec2.M
 func (c *Client) ModifyVpcEndpointWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointInput, opts ...request.Option) (*ec2.ModifyVpcEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcEndpointWithContext",
+		Action:  "ModifyVpcEndpoint",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcEndpointOutput)(nil),
 		Error:   nil,
@@ -6727,7 +6795,7 @@ func (c *Client) ModifyVpcEndpointWithContext(ctx context.Context, input *ec2.Mo
 func (c *Client) ModifyVpcEndpointConnectionNotificationWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointConnectionNotificationInput, opts ...request.Option) (*ec2.ModifyVpcEndpointConnectionNotificationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcEndpointConnectionNotificationWithContext",
+		Action:  "ModifyVpcEndpointConnectionNotification",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcEndpointConnectionNotificationOutput)(nil),
 		Error:   nil,
@@ -6748,7 +6816,7 @@ func (c *Client) ModifyVpcEndpointConnectionNotificationWithContext(ctx context.
 func (c *Client) ModifyVpcEndpointServiceConfigurationWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServiceConfigurationInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServiceConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcEndpointServiceConfigurationWithContext",
+		Action:  "ModifyVpcEndpointServiceConfiguration",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcEndpointServiceConfigurationOutput)(nil),
 		Error:   nil,
@@ -6769,7 +6837,7 @@ func (c *Client) ModifyVpcEndpointServiceConfigurationWithContext(ctx context.Co
 func (c *Client) ModifyVpcEndpointServicePermissionsWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServicePermissionsInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServicePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcEndpointServicePermissionsWithContext",
+		Action:  "ModifyVpcEndpointServicePermissions",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcEndpointServicePermissionsOutput)(nil),
 		Error:   nil,
@@ -6790,7 +6858,7 @@ func (c *Client) ModifyVpcEndpointServicePermissionsWithContext(ctx context.Cont
 func (c *Client) ModifyVpcPeeringConnectionOptionsWithContext(ctx context.Context, input *ec2.ModifyVpcPeeringConnectionOptionsInput, opts ...request.Option) (*ec2.ModifyVpcPeeringConnectionOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcPeeringConnectionOptionsWithContext",
+		Action:  "ModifyVpcPeeringConnectionOptions",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcPeeringConnectionOptionsOutput)(nil),
 		Error:   nil,
@@ -6811,7 +6879,7 @@ func (c *Client) ModifyVpcPeeringConnectionOptionsWithContext(ctx context.Contex
 func (c *Client) ModifyVpcTenancyWithContext(ctx context.Context, input *ec2.ModifyVpcTenancyInput, opts ...request.Option) (*ec2.ModifyVpcTenancyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpcTenancyWithContext",
+		Action:  "ModifyVpcTenancy",
 		Input:   input,
 		Output:  (*ec2.ModifyVpcTenancyOutput)(nil),
 		Error:   nil,
@@ -6832,7 +6900,7 @@ func (c *Client) ModifyVpcTenancyWithContext(ctx context.Context, input *ec2.Mod
 func (c *Client) ModifyVpnConnectionWithContext(ctx context.Context, input *ec2.ModifyVpnConnectionInput, opts ...request.Option) (*ec2.ModifyVpnConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ModifyVpnConnectionWithContext",
+		Action:  "ModifyVpnConnection",
 		Input:   input,
 		Output:  (*ec2.ModifyVpnConnectionOutput)(nil),
 		Error:   nil,
@@ -6850,10 +6918,52 @@ func (c *Client) ModifyVpnConnectionWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.ModifyVpnConnectionOutput), req.Error
 }
 
+func (c *Client) ModifyVpnTunnelCertificateWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelCertificateInput, opts ...request.Option) (*ec2.ModifyVpnTunnelCertificateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVpnTunnelCertificate",
+		Input:   input,
+		Output:  (*ec2.ModifyVpnTunnelCertificateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVpnTunnelCertificateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVpnTunnelCertificateOutput), req.Error
+}
+
+func (c *Client) ModifyVpnTunnelOptionsWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelOptionsInput, opts ...request.Option) (*ec2.ModifyVpnTunnelOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVpnTunnelOptions",
+		Input:   input,
+		Output:  (*ec2.ModifyVpnTunnelOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVpnTunnelOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVpnTunnelOptionsOutput), req.Error
+}
+
 func (c *Client) MonitorInstancesWithContext(ctx context.Context, input *ec2.MonitorInstancesInput, opts ...request.Option) (*ec2.MonitorInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "MonitorInstancesWithContext",
+		Action:  "MonitorInstances",
 		Input:   input,
 		Output:  (*ec2.MonitorInstancesOutput)(nil),
 		Error:   nil,
@@ -6874,7 +6984,7 @@ func (c *Client) MonitorInstancesWithContext(ctx context.Context, input *ec2.Mon
 func (c *Client) MoveAddressToVpcWithContext(ctx context.Context, input *ec2.MoveAddressToVpcInput, opts ...request.Option) (*ec2.MoveAddressToVpcOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "MoveAddressToVpcWithContext",
+		Action:  "MoveAddressToVpc",
 		Input:   input,
 		Output:  (*ec2.MoveAddressToVpcOutput)(nil),
 		Error:   nil,
@@ -6895,7 +7005,7 @@ func (c *Client) MoveAddressToVpcWithContext(ctx context.Context, input *ec2.Mov
 func (c *Client) ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.ProvisionByoipCidrInput, opts ...request.Option) (*ec2.ProvisionByoipCidrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ProvisionByoipCidrWithContext",
+		Action:  "ProvisionByoipCidr",
 		Input:   input,
 		Output:  (*ec2.ProvisionByoipCidrOutput)(nil),
 		Error:   nil,
@@ -6916,7 +7026,7 @@ func (c *Client) ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.P
 func (c *Client) PurchaseHostReservationWithContext(ctx context.Context, input *ec2.PurchaseHostReservationInput, opts ...request.Option) (*ec2.PurchaseHostReservationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "PurchaseHostReservationWithContext",
+		Action:  "PurchaseHostReservation",
 		Input:   input,
 		Output:  (*ec2.PurchaseHostReservationOutput)(nil),
 		Error:   nil,
@@ -6937,7 +7047,7 @@ func (c *Client) PurchaseHostReservationWithContext(ctx context.Context, input *
 func (c *Client) PurchaseReservedInstancesOfferingWithContext(ctx context.Context, input *ec2.PurchaseReservedInstancesOfferingInput, opts ...request.Option) (*ec2.PurchaseReservedInstancesOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "PurchaseReservedInstancesOfferingWithContext",
+		Action:  "PurchaseReservedInstancesOffering",
 		Input:   input,
 		Output:  (*ec2.PurchaseReservedInstancesOfferingOutput)(nil),
 		Error:   nil,
@@ -6958,7 +7068,7 @@ func (c *Client) PurchaseReservedInstancesOfferingWithContext(ctx context.Contex
 func (c *Client) PurchaseScheduledInstancesWithContext(ctx context.Context, input *ec2.PurchaseScheduledInstancesInput, opts ...request.Option) (*ec2.PurchaseScheduledInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "PurchaseScheduledInstancesWithContext",
+		Action:  "PurchaseScheduledInstances",
 		Input:   input,
 		Output:  (*ec2.PurchaseScheduledInstancesOutput)(nil),
 		Error:   nil,
@@ -6979,7 +7089,7 @@ func (c *Client) PurchaseScheduledInstancesWithContext(ctx context.Context, inpu
 func (c *Client) RebootInstancesWithContext(ctx context.Context, input *ec2.RebootInstancesInput, opts ...request.Option) (*ec2.RebootInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RebootInstancesWithContext",
+		Action:  "RebootInstances",
 		Input:   input,
 		Output:  (*ec2.RebootInstancesOutput)(nil),
 		Error:   nil,
@@ -7000,7 +7110,7 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, input *ec2.Rebo
 func (c *Client) RegisterImageWithContext(ctx context.Context, input *ec2.RegisterImageInput, opts ...request.Option) (*ec2.RegisterImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RegisterImageWithContext",
+		Action:  "RegisterImage",
 		Input:   input,
 		Output:  (*ec2.RegisterImageOutput)(nil),
 		Error:   nil,
@@ -7021,7 +7131,7 @@ func (c *Client) RegisterImageWithContext(ctx context.Context, input *ec2.Regist
 func (c *Client) RejectTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayVpcAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RejectTransitGatewayVpcAttachmentWithContext",
+		Action:  "RejectTransitGatewayVpcAttachment",
 		Input:   input,
 		Output:  (*ec2.RejectTransitGatewayVpcAttachmentOutput)(nil),
 		Error:   nil,
@@ -7042,7 +7152,7 @@ func (c *Client) RejectTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 func (c *Client) RejectVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.RejectVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.RejectVpcEndpointConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RejectVpcEndpointConnectionsWithContext",
+		Action:  "RejectVpcEndpointConnections",
 		Input:   input,
 		Output:  (*ec2.RejectVpcEndpointConnectionsOutput)(nil),
 		Error:   nil,
@@ -7063,7 +7173,7 @@ func (c *Client) RejectVpcEndpointConnectionsWithContext(ctx context.Context, in
 func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.RejectVpcPeeringConnectionInput, opts ...request.Option) (*ec2.RejectVpcPeeringConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RejectVpcPeeringConnectionWithContext",
+		Action:  "RejectVpcPeeringConnection",
 		Input:   input,
 		Output:  (*ec2.RejectVpcPeeringConnectionOutput)(nil),
 		Error:   nil,
@@ -7084,7 +7194,7 @@ func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, inpu
 func (c *Client) ReleaseAddressWithContext(ctx context.Context, input *ec2.ReleaseAddressInput, opts ...request.Option) (*ec2.ReleaseAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReleaseAddressWithContext",
+		Action:  "ReleaseAddress",
 		Input:   input,
 		Output:  (*ec2.ReleaseAddressOutput)(nil),
 		Error:   nil,
@@ -7105,7 +7215,7 @@ func (c *Client) ReleaseAddressWithContext(ctx context.Context, input *ec2.Relea
 func (c *Client) ReleaseHostsWithContext(ctx context.Context, input *ec2.ReleaseHostsInput, opts ...request.Option) (*ec2.ReleaseHostsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReleaseHostsWithContext",
+		Action:  "ReleaseHosts",
 		Input:   input,
 		Output:  (*ec2.ReleaseHostsOutput)(nil),
 		Error:   nil,
@@ -7126,7 +7236,7 @@ func (c *Client) ReleaseHostsWithContext(ctx context.Context, input *ec2.Release
 func (c *Client) ReplaceIamInstanceProfileAssociationWithContext(ctx context.Context, input *ec2.ReplaceIamInstanceProfileAssociationInput, opts ...request.Option) (*ec2.ReplaceIamInstanceProfileAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReplaceIamInstanceProfileAssociationWithContext",
+		Action:  "ReplaceIamInstanceProfileAssociation",
 		Input:   input,
 		Output:  (*ec2.ReplaceIamInstanceProfileAssociationOutput)(nil),
 		Error:   nil,
@@ -7147,7 +7257,7 @@ func (c *Client) ReplaceIamInstanceProfileAssociationWithContext(ctx context.Con
 func (c *Client) ReplaceNetworkAclAssociationWithContext(ctx context.Context, input *ec2.ReplaceNetworkAclAssociationInput, opts ...request.Option) (*ec2.ReplaceNetworkAclAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReplaceNetworkAclAssociationWithContext",
+		Action:  "ReplaceNetworkAclAssociation",
 		Input:   input,
 		Output:  (*ec2.ReplaceNetworkAclAssociationOutput)(nil),
 		Error:   nil,
@@ -7168,7 +7278,7 @@ func (c *Client) ReplaceNetworkAclAssociationWithContext(ctx context.Context, in
 func (c *Client) ReplaceNetworkAclEntryWithContext(ctx context.Context, input *ec2.ReplaceNetworkAclEntryInput, opts ...request.Option) (*ec2.ReplaceNetworkAclEntryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReplaceNetworkAclEntryWithContext",
+		Action:  "ReplaceNetworkAclEntry",
 		Input:   input,
 		Output:  (*ec2.ReplaceNetworkAclEntryOutput)(nil),
 		Error:   nil,
@@ -7189,7 +7299,7 @@ func (c *Client) ReplaceNetworkAclEntryWithContext(ctx context.Context, input *e
 func (c *Client) ReplaceRouteWithContext(ctx context.Context, input *ec2.ReplaceRouteInput, opts ...request.Option) (*ec2.ReplaceRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReplaceRouteWithContext",
+		Action:  "ReplaceRoute",
 		Input:   input,
 		Output:  (*ec2.ReplaceRouteOutput)(nil),
 		Error:   nil,
@@ -7210,7 +7320,7 @@ func (c *Client) ReplaceRouteWithContext(ctx context.Context, input *ec2.Replace
 func (c *Client) ReplaceRouteTableAssociationWithContext(ctx context.Context, input *ec2.ReplaceRouteTableAssociationInput, opts ...request.Option) (*ec2.ReplaceRouteTableAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReplaceRouteTableAssociationWithContext",
+		Action:  "ReplaceRouteTableAssociation",
 		Input:   input,
 		Output:  (*ec2.ReplaceRouteTableAssociationOutput)(nil),
 		Error:   nil,
@@ -7231,7 +7341,7 @@ func (c *Client) ReplaceRouteTableAssociationWithContext(ctx context.Context, in
 func (c *Client) ReplaceTransitGatewayRouteWithContext(ctx context.Context, input *ec2.ReplaceTransitGatewayRouteInput, opts ...request.Option) (*ec2.ReplaceTransitGatewayRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReplaceTransitGatewayRouteWithContext",
+		Action:  "ReplaceTransitGatewayRoute",
 		Input:   input,
 		Output:  (*ec2.ReplaceTransitGatewayRouteOutput)(nil),
 		Error:   nil,
@@ -7252,7 +7362,7 @@ func (c *Client) ReplaceTransitGatewayRouteWithContext(ctx context.Context, inpu
 func (c *Client) ReportInstanceStatusWithContext(ctx context.Context, input *ec2.ReportInstanceStatusInput, opts ...request.Option) (*ec2.ReportInstanceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ReportInstanceStatusWithContext",
+		Action:  "ReportInstanceStatus",
 		Input:   input,
 		Output:  (*ec2.ReportInstanceStatusOutput)(nil),
 		Error:   nil,
@@ -7273,7 +7383,7 @@ func (c *Client) ReportInstanceStatusWithContext(ctx context.Context, input *ec2
 func (c *Client) RequestSpotFleetWithContext(ctx context.Context, input *ec2.RequestSpotFleetInput, opts ...request.Option) (*ec2.RequestSpotFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RequestSpotFleetWithContext",
+		Action:  "RequestSpotFleet",
 		Input:   input,
 		Output:  (*ec2.RequestSpotFleetOutput)(nil),
 		Error:   nil,
@@ -7294,7 +7404,7 @@ func (c *Client) RequestSpotFleetWithContext(ctx context.Context, input *ec2.Req
 func (c *Client) RequestSpotInstancesWithContext(ctx context.Context, input *ec2.RequestSpotInstancesInput, opts ...request.Option) (*ec2.RequestSpotInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RequestSpotInstancesWithContext",
+		Action:  "RequestSpotInstances",
 		Input:   input,
 		Output:  (*ec2.RequestSpotInstancesOutput)(nil),
 		Error:   nil,
@@ -7315,7 +7425,7 @@ func (c *Client) RequestSpotInstancesWithContext(ctx context.Context, input *ec2
 func (c *Client) ResetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ResetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ResetEbsDefaultKmsKeyIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ResetEbsDefaultKmsKeyIdWithContext",
+		Action:  "ResetEbsDefaultKmsKeyId",
 		Input:   input,
 		Output:  (*ec2.ResetEbsDefaultKmsKeyIdOutput)(nil),
 		Error:   nil,
@@ -7336,7 +7446,7 @@ func (c *Client) ResetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *
 func (c *Client) ResetFpgaImageAttributeWithContext(ctx context.Context, input *ec2.ResetFpgaImageAttributeInput, opts ...request.Option) (*ec2.ResetFpgaImageAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ResetFpgaImageAttributeWithContext",
+		Action:  "ResetFpgaImageAttribute",
 		Input:   input,
 		Output:  (*ec2.ResetFpgaImageAttributeOutput)(nil),
 		Error:   nil,
@@ -7357,7 +7467,7 @@ func (c *Client) ResetFpgaImageAttributeWithContext(ctx context.Context, input *
 func (c *Client) ResetImageAttributeWithContext(ctx context.Context, input *ec2.ResetImageAttributeInput, opts ...request.Option) (*ec2.ResetImageAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ResetImageAttributeWithContext",
+		Action:  "ResetImageAttribute",
 		Input:   input,
 		Output:  (*ec2.ResetImageAttributeOutput)(nil),
 		Error:   nil,
@@ -7378,7 +7488,7 @@ func (c *Client) ResetImageAttributeWithContext(ctx context.Context, input *ec2.
 func (c *Client) ResetInstanceAttributeWithContext(ctx context.Context, input *ec2.ResetInstanceAttributeInput, opts ...request.Option) (*ec2.ResetInstanceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ResetInstanceAttributeWithContext",
+		Action:  "ResetInstanceAttribute",
 		Input:   input,
 		Output:  (*ec2.ResetInstanceAttributeOutput)(nil),
 		Error:   nil,
@@ -7399,7 +7509,7 @@ func (c *Client) ResetInstanceAttributeWithContext(ctx context.Context, input *e
 func (c *Client) ResetNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ResetNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ResetNetworkInterfaceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ResetNetworkInterfaceAttributeWithContext",
+		Action:  "ResetNetworkInterfaceAttribute",
 		Input:   input,
 		Output:  (*ec2.ResetNetworkInterfaceAttributeOutput)(nil),
 		Error:   nil,
@@ -7420,7 +7530,7 @@ func (c *Client) ResetNetworkInterfaceAttributeWithContext(ctx context.Context, 
 func (c *Client) ResetSnapshotAttributeWithContext(ctx context.Context, input *ec2.ResetSnapshotAttributeInput, opts ...request.Option) (*ec2.ResetSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "ResetSnapshotAttributeWithContext",
+		Action:  "ResetSnapshotAttribute",
 		Input:   input,
 		Output:  (*ec2.ResetSnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -7441,7 +7551,7 @@ func (c *Client) ResetSnapshotAttributeWithContext(ctx context.Context, input *e
 func (c *Client) RestoreAddressToClassicWithContext(ctx context.Context, input *ec2.RestoreAddressToClassicInput, opts ...request.Option) (*ec2.RestoreAddressToClassicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RestoreAddressToClassicWithContext",
+		Action:  "RestoreAddressToClassic",
 		Input:   input,
 		Output:  (*ec2.RestoreAddressToClassicOutput)(nil),
 		Error:   nil,
@@ -7462,7 +7572,7 @@ func (c *Client) RestoreAddressToClassicWithContext(ctx context.Context, input *
 func (c *Client) RevokeClientVpnIngressWithContext(ctx context.Context, input *ec2.RevokeClientVpnIngressInput, opts ...request.Option) (*ec2.RevokeClientVpnIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RevokeClientVpnIngressWithContext",
+		Action:  "RevokeClientVpnIngress",
 		Input:   input,
 		Output:  (*ec2.RevokeClientVpnIngressOutput)(nil),
 		Error:   nil,
@@ -7483,7 +7593,7 @@ func (c *Client) RevokeClientVpnIngressWithContext(ctx context.Context, input *e
 func (c *Client) RevokeSecurityGroupEgressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupEgressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupEgressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RevokeSecurityGroupEgressWithContext",
+		Action:  "RevokeSecurityGroupEgress",
 		Input:   input,
 		Output:  (*ec2.RevokeSecurityGroupEgressOutput)(nil),
 		Error:   nil,
@@ -7504,7 +7614,7 @@ func (c *Client) RevokeSecurityGroupEgressWithContext(ctx context.Context, input
 func (c *Client) RevokeSecurityGroupIngressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupIngressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RevokeSecurityGroupIngressWithContext",
+		Action:  "RevokeSecurityGroupIngress",
 		Input:   input,
 		Output:  (*ec2.RevokeSecurityGroupIngressOutput)(nil),
 		Error:   nil,
@@ -7525,7 +7635,7 @@ func (c *Client) RevokeSecurityGroupIngressWithContext(ctx context.Context, inpu
 func (c *Client) RunInstancesWithContext(ctx context.Context, input *ec2.RunInstancesInput, opts ...request.Option) (*ec2.Reservation, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RunInstancesWithContext",
+		Action:  "RunInstances",
 		Input:   input,
 		Output:  (*ec2.Reservation)(nil),
 		Error:   nil,
@@ -7546,7 +7656,7 @@ func (c *Client) RunInstancesWithContext(ctx context.Context, input *ec2.RunInst
 func (c *Client) RunScheduledInstancesWithContext(ctx context.Context, input *ec2.RunScheduledInstancesInput, opts ...request.Option) (*ec2.RunScheduledInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "RunScheduledInstancesWithContext",
+		Action:  "RunScheduledInstances",
 		Input:   input,
 		Output:  (*ec2.RunScheduledInstancesOutput)(nil),
 		Error:   nil,
@@ -7567,7 +7677,7 @@ func (c *Client) RunScheduledInstancesWithContext(ctx context.Context, input *ec
 func (c *Client) SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "SearchTransitGatewayRoutesWithContext",
+		Action:  "SearchTransitGatewayRoutes",
 		Input:   input,
 		Output:  (*ec2.SearchTransitGatewayRoutesOutput)(nil),
 		Error:   nil,
@@ -7588,7 +7698,7 @@ func (c *Client) SearchTransitGatewayRoutesWithContext(ctx context.Context, inpu
 func (c *Client) SendDiagnosticInterruptWithContext(ctx context.Context, input *ec2.SendDiagnosticInterruptInput, opts ...request.Option) (*ec2.SendDiagnosticInterruptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "SendDiagnosticInterruptWithContext",
+		Action:  "SendDiagnosticInterrupt",
 		Input:   input,
 		Output:  (*ec2.SendDiagnosticInterruptOutput)(nil),
 		Error:   nil,
@@ -7609,7 +7719,7 @@ func (c *Client) SendDiagnosticInterruptWithContext(ctx context.Context, input *
 func (c *Client) StartInstancesWithContext(ctx context.Context, input *ec2.StartInstancesInput, opts ...request.Option) (*ec2.StartInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "StartInstancesWithContext",
+		Action:  "StartInstances",
 		Input:   input,
 		Output:  (*ec2.StartInstancesOutput)(nil),
 		Error:   nil,
@@ -7630,7 +7740,7 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, input *ec2.Start
 func (c *Client) StopInstancesWithContext(ctx context.Context, input *ec2.StopInstancesInput, opts ...request.Option) (*ec2.StopInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "StopInstancesWithContext",
+		Action:  "StopInstances",
 		Input:   input,
 		Output:  (*ec2.StopInstancesOutput)(nil),
 		Error:   nil,
@@ -7651,7 +7761,7 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, input *ec2.StopIn
 func (c *Client) TerminateClientVpnConnectionsWithContext(ctx context.Context, input *ec2.TerminateClientVpnConnectionsInput, opts ...request.Option) (*ec2.TerminateClientVpnConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "TerminateClientVpnConnectionsWithContext",
+		Action:  "TerminateClientVpnConnections",
 		Input:   input,
 		Output:  (*ec2.TerminateClientVpnConnectionsOutput)(nil),
 		Error:   nil,
@@ -7672,7 +7782,7 @@ func (c *Client) TerminateClientVpnConnectionsWithContext(ctx context.Context, i
 func (c *Client) TerminateInstancesWithContext(ctx context.Context, input *ec2.TerminateInstancesInput, opts ...request.Option) (*ec2.TerminateInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "TerminateInstancesWithContext",
+		Action:  "TerminateInstances",
 		Input:   input,
 		Output:  (*ec2.TerminateInstancesOutput)(nil),
 		Error:   nil,
@@ -7693,7 +7803,7 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, input *ec2.T
 func (c *Client) UnassignIpv6AddressesWithContext(ctx context.Context, input *ec2.UnassignIpv6AddressesInput, opts ...request.Option) (*ec2.UnassignIpv6AddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "UnassignIpv6AddressesWithContext",
+		Action:  "UnassignIpv6Addresses",
 		Input:   input,
 		Output:  (*ec2.UnassignIpv6AddressesOutput)(nil),
 		Error:   nil,
@@ -7714,7 +7824,7 @@ func (c *Client) UnassignIpv6AddressesWithContext(ctx context.Context, input *ec
 func (c *Client) UnassignPrivateIpAddressesWithContext(ctx context.Context, input *ec2.UnassignPrivateIpAddressesInput, opts ...request.Option) (*ec2.UnassignPrivateIpAddressesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "UnassignPrivateIpAddressesWithContext",
+		Action:  "UnassignPrivateIpAddresses",
 		Input:   input,
 		Output:  (*ec2.UnassignPrivateIpAddressesOutput)(nil),
 		Error:   nil,
@@ -7735,7 +7845,7 @@ func (c *Client) UnassignPrivateIpAddressesWithContext(ctx context.Context, inpu
 func (c *Client) UnmonitorInstancesWithContext(ctx context.Context, input *ec2.UnmonitorInstancesInput, opts ...request.Option) (*ec2.UnmonitorInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "UnmonitorInstancesWithContext",
+		Action:  "UnmonitorInstances",
 		Input:   input,
 		Output:  (*ec2.UnmonitorInstancesOutput)(nil),
 		Error:   nil,
@@ -7756,7 +7866,7 @@ func (c *Client) UnmonitorInstancesWithContext(ctx context.Context, input *ec2.U
 func (c *Client) UpdateSecurityGroupRuleDescriptionsEgressWithContext(ctx context.Context, input *ec2.UpdateSecurityGroupRuleDescriptionsEgressInput, opts ...request.Option) (*ec2.UpdateSecurityGroupRuleDescriptionsEgressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "UpdateSecurityGroupRuleDescriptionsEgressWithContext",
+		Action:  "UpdateSecurityGroupRuleDescriptionsEgress",
 		Input:   input,
 		Output:  (*ec2.UpdateSecurityGroupRuleDescriptionsEgressOutput)(nil),
 		Error:   nil,
@@ -7777,7 +7887,7 @@ func (c *Client) UpdateSecurityGroupRuleDescriptionsEgressWithContext(ctx contex
 func (c *Client) UpdateSecurityGroupRuleDescriptionsIngressWithContext(ctx context.Context, input *ec2.UpdateSecurityGroupRuleDescriptionsIngressInput, opts ...request.Option) (*ec2.UpdateSecurityGroupRuleDescriptionsIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "UpdateSecurityGroupRuleDescriptionsIngressWithContext",
+		Action:  "UpdateSecurityGroupRuleDescriptionsIngress",
 		Input:   input,
 		Output:  (*ec2.UpdateSecurityGroupRuleDescriptionsIngressOutput)(nil),
 		Error:   nil,
@@ -7798,7 +7908,7 @@ func (c *Client) UpdateSecurityGroupRuleDescriptionsIngressWithContext(ctx conte
 func (c *Client) WithdrawByoipCidrWithContext(ctx context.Context, input *ec2.WithdrawByoipCidrInput, opts ...request.Option) (*ec2.WithdrawByoipCidrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
-		Action:  "WithdrawByoipCidrWithContext",
+		Action:  "WithdrawByoipCidr",
 		Input:   input,
 		Output:  (*ec2.WithdrawByoipCidrOutput)(nil),
 		Error:   nil,

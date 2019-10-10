@@ -69,7 +69,7 @@ var _ SecurityHub = (*Client)(nil)
 func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *securityhub.AcceptInvitationInput, opts ...request.Option) (*securityhub.AcceptInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "AcceptInvitationWithContext",
+		Action:  "AcceptInvitation",
 		Input:   input,
 		Output:  (*securityhub.AcceptInvitationOutput)(nil),
 		Error:   nil,
@@ -90,7 +90,7 @@ func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *securit
 func (c *Client) BatchDisableStandardsWithContext(ctx context.Context, input *securityhub.BatchDisableStandardsInput, opts ...request.Option) (*securityhub.BatchDisableStandardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "BatchDisableStandardsWithContext",
+		Action:  "BatchDisableStandards",
 		Input:   input,
 		Output:  (*securityhub.BatchDisableStandardsOutput)(nil),
 		Error:   nil,
@@ -111,7 +111,7 @@ func (c *Client) BatchDisableStandardsWithContext(ctx context.Context, input *se
 func (c *Client) BatchEnableStandardsWithContext(ctx context.Context, input *securityhub.BatchEnableStandardsInput, opts ...request.Option) (*securityhub.BatchEnableStandardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "BatchEnableStandardsWithContext",
+		Action:  "BatchEnableStandards",
 		Input:   input,
 		Output:  (*securityhub.BatchEnableStandardsOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) BatchEnableStandardsWithContext(ctx context.Context, input *sec
 func (c *Client) BatchImportFindingsWithContext(ctx context.Context, input *securityhub.BatchImportFindingsInput, opts ...request.Option) (*securityhub.BatchImportFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "BatchImportFindingsWithContext",
+		Action:  "BatchImportFindings",
 		Input:   input,
 		Output:  (*securityhub.BatchImportFindingsOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) BatchImportFindingsWithContext(ctx context.Context, input *secu
 func (c *Client) CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "CreateActionTargetWithContext",
+		Action:  "CreateActionTarget",
 		Input:   input,
 		Output:  (*securityhub.CreateActionTargetOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) CreateActionTargetWithContext(ctx context.Context, input *secur
 func (c *Client) CreateInsightWithContext(ctx context.Context, input *securityhub.CreateInsightInput, opts ...request.Option) (*securityhub.CreateInsightOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "CreateInsightWithContext",
+		Action:  "CreateInsight",
 		Input:   input,
 		Output:  (*securityhub.CreateInsightOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) CreateInsightWithContext(ctx context.Context, input *securityhu
 func (c *Client) CreateMembersWithContext(ctx context.Context, input *securityhub.CreateMembersInput, opts ...request.Option) (*securityhub.CreateMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "CreateMembersWithContext",
+		Action:  "CreateMembers",
 		Input:   input,
 		Output:  (*securityhub.CreateMembersOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) CreateMembersWithContext(ctx context.Context, input *securityhu
 func (c *Client) DeclineInvitationsWithContext(ctx context.Context, input *securityhub.DeclineInvitationsInput, opts ...request.Option) (*securityhub.DeclineInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DeclineInvitationsWithContext",
+		Action:  "DeclineInvitations",
 		Input:   input,
 		Output:  (*securityhub.DeclineInvitationsOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) DeclineInvitationsWithContext(ctx context.Context, input *secur
 func (c *Client) DeleteActionTargetWithContext(ctx context.Context, input *securityhub.DeleteActionTargetInput, opts ...request.Option) (*securityhub.DeleteActionTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DeleteActionTargetWithContext",
+		Action:  "DeleteActionTarget",
 		Input:   input,
 		Output:  (*securityhub.DeleteActionTargetOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) DeleteActionTargetWithContext(ctx context.Context, input *secur
 func (c *Client) DeleteInsightWithContext(ctx context.Context, input *securityhub.DeleteInsightInput, opts ...request.Option) (*securityhub.DeleteInsightOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DeleteInsightWithContext",
+		Action:  "DeleteInsight",
 		Input:   input,
 		Output:  (*securityhub.DeleteInsightOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) DeleteInsightWithContext(ctx context.Context, input *securityhu
 func (c *Client) DeleteInvitationsWithContext(ctx context.Context, input *securityhub.DeleteInvitationsInput, opts ...request.Option) (*securityhub.DeleteInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DeleteInvitationsWithContext",
+		Action:  "DeleteInvitations",
 		Input:   input,
 		Output:  (*securityhub.DeleteInvitationsOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) DeleteInvitationsWithContext(ctx context.Context, input *securi
 func (c *Client) DeleteMembersWithContext(ctx context.Context, input *securityhub.DeleteMembersInput, opts ...request.Option) (*securityhub.DeleteMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DeleteMembersWithContext",
+		Action:  "DeleteMembers",
 		Input:   input,
 		Output:  (*securityhub.DeleteMembersOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) DeleteMembersWithContext(ctx context.Context, input *securityhu
 func (c *Client) DescribeActionTargetsWithContext(ctx context.Context, input *securityhub.DescribeActionTargetsInput, opts ...request.Option) (*securityhub.DescribeActionTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DescribeActionTargetsWithContext",
+		Action:  "DescribeActionTargets",
 		Input:   input,
 		Output:  (*securityhub.DescribeActionTargetsOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) DescribeActionTargetsWithContext(ctx context.Context, input *se
 func (c *Client) DescribeHubWithContext(ctx context.Context, input *securityhub.DescribeHubInput, opts ...request.Option) (*securityhub.DescribeHubOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DescribeHubWithContext",
+		Action:  "DescribeHub",
 		Input:   input,
 		Output:  (*securityhub.DescribeHubOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) DescribeHubWithContext(ctx context.Context, input *securityhub.
 func (c *Client) DescribeProductsWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, opts ...request.Option) (*securityhub.DescribeProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DescribeProductsWithContext",
+		Action:  "DescribeProducts",
 		Input:   input,
 		Output:  (*securityhub.DescribeProductsOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, input *securit
 func (c *Client) DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DisableImportFindingsForProductWithContext",
+		Action:  "DisableImportFindingsForProduct",
 		Input:   input,
 		Output:  (*securityhub.DisableImportFindingsForProductOutput)(nil),
 		Error:   nil,
@@ -405,7 +405,7 @@ func (c *Client) DisableImportFindingsForProductWithContext(ctx context.Context,
 func (c *Client) DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DisableSecurityHubWithContext",
+		Action:  "DisableSecurityHub",
 		Input:   input,
 		Output:  (*securityhub.DisableSecurityHubOutput)(nil),
 		Error:   nil,
@@ -426,7 +426,7 @@ func (c *Client) DisableSecurityHubWithContext(ctx context.Context, input *secur
 func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DisassociateFromMasterAccountWithContext",
+		Action:  "DisassociateFromMasterAccount",
 		Input:   input,
 		Output:  (*securityhub.DisassociateFromMasterAccountOutput)(nil),
 		Error:   nil,
@@ -447,7 +447,7 @@ func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, i
 func (c *Client) DisassociateMembersWithContext(ctx context.Context, input *securityhub.DisassociateMembersInput, opts ...request.Option) (*securityhub.DisassociateMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "DisassociateMembersWithContext",
+		Action:  "DisassociateMembers",
 		Input:   input,
 		Output:  (*securityhub.DisassociateMembersOutput)(nil),
 		Error:   nil,
@@ -468,7 +468,7 @@ func (c *Client) DisassociateMembersWithContext(ctx context.Context, input *secu
 func (c *Client) EnableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.EnableImportFindingsForProductInput, opts ...request.Option) (*securityhub.EnableImportFindingsForProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "EnableImportFindingsForProductWithContext",
+		Action:  "EnableImportFindingsForProduct",
 		Input:   input,
 		Output:  (*securityhub.EnableImportFindingsForProductOutput)(nil),
 		Error:   nil,
@@ -489,7 +489,7 @@ func (c *Client) EnableImportFindingsForProductWithContext(ctx context.Context, 
 func (c *Client) EnableSecurityHubWithContext(ctx context.Context, input *securityhub.EnableSecurityHubInput, opts ...request.Option) (*securityhub.EnableSecurityHubOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "EnableSecurityHubWithContext",
+		Action:  "EnableSecurityHub",
 		Input:   input,
 		Output:  (*securityhub.EnableSecurityHubOutput)(nil),
 		Error:   nil,
@@ -510,7 +510,7 @@ func (c *Client) EnableSecurityHubWithContext(ctx context.Context, input *securi
 func (c *Client) GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetEnabledStandardsWithContext",
+		Action:  "GetEnabledStandards",
 		Input:   input,
 		Output:  (*securityhub.GetEnabledStandardsOutput)(nil),
 		Error:   nil,
@@ -531,7 +531,7 @@ func (c *Client) GetEnabledStandardsWithContext(ctx context.Context, input *secu
 func (c *Client) GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetFindingsWithContext",
+		Action:  "GetFindings",
 		Input:   input,
 		Output:  (*securityhub.GetFindingsOutput)(nil),
 		Error:   nil,
@@ -552,7 +552,7 @@ func (c *Client) GetFindingsWithContext(ctx context.Context, input *securityhub.
 func (c *Client) GetInsightResultsWithContext(ctx context.Context, input *securityhub.GetInsightResultsInput, opts ...request.Option) (*securityhub.GetInsightResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetInsightResultsWithContext",
+		Action:  "GetInsightResults",
 		Input:   input,
 		Output:  (*securityhub.GetInsightResultsOutput)(nil),
 		Error:   nil,
@@ -573,7 +573,7 @@ func (c *Client) GetInsightResultsWithContext(ctx context.Context, input *securi
 func (c *Client) GetInsightsWithContext(ctx context.Context, input *securityhub.GetInsightsInput, opts ...request.Option) (*securityhub.GetInsightsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetInsightsWithContext",
+		Action:  "GetInsights",
 		Input:   input,
 		Output:  (*securityhub.GetInsightsOutput)(nil),
 		Error:   nil,
@@ -594,7 +594,7 @@ func (c *Client) GetInsightsWithContext(ctx context.Context, input *securityhub.
 func (c *Client) GetInvitationsCountWithContext(ctx context.Context, input *securityhub.GetInvitationsCountInput, opts ...request.Option) (*securityhub.GetInvitationsCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetInvitationsCountWithContext",
+		Action:  "GetInvitationsCount",
 		Input:   input,
 		Output:  (*securityhub.GetInvitationsCountOutput)(nil),
 		Error:   nil,
@@ -615,7 +615,7 @@ func (c *Client) GetInvitationsCountWithContext(ctx context.Context, input *secu
 func (c *Client) GetMasterAccountWithContext(ctx context.Context, input *securityhub.GetMasterAccountInput, opts ...request.Option) (*securityhub.GetMasterAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetMasterAccountWithContext",
+		Action:  "GetMasterAccount",
 		Input:   input,
 		Output:  (*securityhub.GetMasterAccountOutput)(nil),
 		Error:   nil,
@@ -636,7 +636,7 @@ func (c *Client) GetMasterAccountWithContext(ctx context.Context, input *securit
 func (c *Client) GetMembersWithContext(ctx context.Context, input *securityhub.GetMembersInput, opts ...request.Option) (*securityhub.GetMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "GetMembersWithContext",
+		Action:  "GetMembers",
 		Input:   input,
 		Output:  (*securityhub.GetMembersOutput)(nil),
 		Error:   nil,
@@ -657,7 +657,7 @@ func (c *Client) GetMembersWithContext(ctx context.Context, input *securityhub.G
 func (c *Client) InviteMembersWithContext(ctx context.Context, input *securityhub.InviteMembersInput, opts ...request.Option) (*securityhub.InviteMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "InviteMembersWithContext",
+		Action:  "InviteMembers",
 		Input:   input,
 		Output:  (*securityhub.InviteMembersOutput)(nil),
 		Error:   nil,
@@ -678,7 +678,7 @@ func (c *Client) InviteMembersWithContext(ctx context.Context, input *securityhu
 func (c *Client) ListEnabledProductsForImportWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, opts ...request.Option) (*securityhub.ListEnabledProductsForImportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "ListEnabledProductsForImportWithContext",
+		Action:  "ListEnabledProductsForImport",
 		Input:   input,
 		Output:  (*securityhub.ListEnabledProductsForImportOutput)(nil),
 		Error:   nil,
@@ -699,7 +699,7 @@ func (c *Client) ListEnabledProductsForImportWithContext(ctx context.Context, in
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, opts ...request.Option) (*securityhub.ListInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "ListInvitationsWithContext",
+		Action:  "ListInvitations",
 		Input:   input,
 		Output:  (*securityhub.ListInvitationsOutput)(nil),
 		Error:   nil,
@@ -720,7 +720,7 @@ func (c *Client) ListInvitationsWithContext(ctx context.Context, input *security
 func (c *Client) ListMembersWithContext(ctx context.Context, input *securityhub.ListMembersInput, opts ...request.Option) (*securityhub.ListMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "ListMembersWithContext",
+		Action:  "ListMembers",
 		Input:   input,
 		Output:  (*securityhub.ListMembersOutput)(nil),
 		Error:   nil,
@@ -741,7 +741,7 @@ func (c *Client) ListMembersWithContext(ctx context.Context, input *securityhub.
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*securityhub.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -762,7 +762,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *secu
 func (c *Client) TagResourceWithContext(ctx context.Context, input *securityhub.TagResourceInput, opts ...request.Option) (*securityhub.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*securityhub.TagResourceOutput)(nil),
 		Error:   nil,
@@ -783,7 +783,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *securityhub.
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *securityhub.UntagResourceInput, opts ...request.Option) (*securityhub.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*securityhub.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -804,7 +804,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *securityhu
 func (c *Client) UpdateActionTargetWithContext(ctx context.Context, input *securityhub.UpdateActionTargetInput, opts ...request.Option) (*securityhub.UpdateActionTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "UpdateActionTargetWithContext",
+		Action:  "UpdateActionTarget",
 		Input:   input,
 		Output:  (*securityhub.UpdateActionTargetOutput)(nil),
 		Error:   nil,
@@ -825,7 +825,7 @@ func (c *Client) UpdateActionTargetWithContext(ctx context.Context, input *secur
 func (c *Client) UpdateFindingsWithContext(ctx context.Context, input *securityhub.UpdateFindingsInput, opts ...request.Option) (*securityhub.UpdateFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "UpdateFindingsWithContext",
+		Action:  "UpdateFindings",
 		Input:   input,
 		Output:  (*securityhub.UpdateFindingsOutput)(nil),
 		Error:   nil,
@@ -846,7 +846,7 @@ func (c *Client) UpdateFindingsWithContext(ctx context.Context, input *securityh
 func (c *Client) UpdateInsightWithContext(ctx context.Context, input *securityhub.UpdateInsightInput, opts ...request.Option) (*securityhub.UpdateInsightOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
-		Action:  "UpdateInsightWithContext",
+		Action:  "UpdateInsight",
 		Input:   input,
 		Output:  (*securityhub.UpdateInsightOutput)(nil),
 		Error:   nil,

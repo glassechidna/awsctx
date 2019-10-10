@@ -64,7 +64,7 @@ var _ SNS = (*Client)(nil)
 func (c *Client) AddPermissionWithContext(ctx context.Context, input *sns.AddPermissionInput, opts ...request.Option) (*sns.AddPermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "AddPermissionWithContext",
+		Action:  "AddPermission",
 		Input:   input,
 		Output:  (*sns.AddPermissionOutput)(nil),
 		Error:   nil,
@@ -85,7 +85,7 @@ func (c *Client) AddPermissionWithContext(ctx context.Context, input *sns.AddPer
 func (c *Client) CheckIfPhoneNumberIsOptedOutWithContext(ctx context.Context, input *sns.CheckIfPhoneNumberIsOptedOutInput, opts ...request.Option) (*sns.CheckIfPhoneNumberIsOptedOutOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "CheckIfPhoneNumberIsOptedOutWithContext",
+		Action:  "CheckIfPhoneNumberIsOptedOut",
 		Input:   input,
 		Output:  (*sns.CheckIfPhoneNumberIsOptedOutOutput)(nil),
 		Error:   nil,
@@ -106,7 +106,7 @@ func (c *Client) CheckIfPhoneNumberIsOptedOutWithContext(ctx context.Context, in
 func (c *Client) ConfirmSubscriptionWithContext(ctx context.Context, input *sns.ConfirmSubscriptionInput, opts ...request.Option) (*sns.ConfirmSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ConfirmSubscriptionWithContext",
+		Action:  "ConfirmSubscription",
 		Input:   input,
 		Output:  (*sns.ConfirmSubscriptionOutput)(nil),
 		Error:   nil,
@@ -127,7 +127,7 @@ func (c *Client) ConfirmSubscriptionWithContext(ctx context.Context, input *sns.
 func (c *Client) CreatePlatformApplicationWithContext(ctx context.Context, input *sns.CreatePlatformApplicationInput, opts ...request.Option) (*sns.CreatePlatformApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "CreatePlatformApplicationWithContext",
+		Action:  "CreatePlatformApplication",
 		Input:   input,
 		Output:  (*sns.CreatePlatformApplicationOutput)(nil),
 		Error:   nil,
@@ -148,7 +148,7 @@ func (c *Client) CreatePlatformApplicationWithContext(ctx context.Context, input
 func (c *Client) CreatePlatformEndpointWithContext(ctx context.Context, input *sns.CreatePlatformEndpointInput, opts ...request.Option) (*sns.CreatePlatformEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "CreatePlatformEndpointWithContext",
+		Action:  "CreatePlatformEndpoint",
 		Input:   input,
 		Output:  (*sns.CreatePlatformEndpointOutput)(nil),
 		Error:   nil,
@@ -169,7 +169,7 @@ func (c *Client) CreatePlatformEndpointWithContext(ctx context.Context, input *s
 func (c *Client) CreateTopicWithContext(ctx context.Context, input *sns.CreateTopicInput, opts ...request.Option) (*sns.CreateTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "CreateTopicWithContext",
+		Action:  "CreateTopic",
 		Input:   input,
 		Output:  (*sns.CreateTopicOutput)(nil),
 		Error:   nil,
@@ -190,7 +190,7 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, input *sns.CreateTo
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *sns.DeleteEndpointInput, opts ...request.Option) (*sns.DeleteEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "DeleteEndpointWithContext",
+		Action:  "DeleteEndpoint",
 		Input:   input,
 		Output:  (*sns.DeleteEndpointOutput)(nil),
 		Error:   nil,
@@ -211,7 +211,7 @@ func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *sns.Delet
 func (c *Client) DeletePlatformApplicationWithContext(ctx context.Context, input *sns.DeletePlatformApplicationInput, opts ...request.Option) (*sns.DeletePlatformApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "DeletePlatformApplicationWithContext",
+		Action:  "DeletePlatformApplication",
 		Input:   input,
 		Output:  (*sns.DeletePlatformApplicationOutput)(nil),
 		Error:   nil,
@@ -232,7 +232,7 @@ func (c *Client) DeletePlatformApplicationWithContext(ctx context.Context, input
 func (c *Client) DeleteTopicWithContext(ctx context.Context, input *sns.DeleteTopicInput, opts ...request.Option) (*sns.DeleteTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "DeleteTopicWithContext",
+		Action:  "DeleteTopic",
 		Input:   input,
 		Output:  (*sns.DeleteTopicOutput)(nil),
 		Error:   nil,
@@ -253,7 +253,7 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, input *sns.DeleteTo
 func (c *Client) GetEndpointAttributesWithContext(ctx context.Context, input *sns.GetEndpointAttributesInput, opts ...request.Option) (*sns.GetEndpointAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "GetEndpointAttributesWithContext",
+		Action:  "GetEndpointAttributes",
 		Input:   input,
 		Output:  (*sns.GetEndpointAttributesOutput)(nil),
 		Error:   nil,
@@ -274,7 +274,7 @@ func (c *Client) GetEndpointAttributesWithContext(ctx context.Context, input *sn
 func (c *Client) GetPlatformApplicationAttributesWithContext(ctx context.Context, input *sns.GetPlatformApplicationAttributesInput, opts ...request.Option) (*sns.GetPlatformApplicationAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "GetPlatformApplicationAttributesWithContext",
+		Action:  "GetPlatformApplicationAttributes",
 		Input:   input,
 		Output:  (*sns.GetPlatformApplicationAttributesOutput)(nil),
 		Error:   nil,
@@ -295,7 +295,7 @@ func (c *Client) GetPlatformApplicationAttributesWithContext(ctx context.Context
 func (c *Client) GetSMSAttributesWithContext(ctx context.Context, input *sns.GetSMSAttributesInput, opts ...request.Option) (*sns.GetSMSAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "GetSMSAttributesWithContext",
+		Action:  "GetSMSAttributes",
 		Input:   input,
 		Output:  (*sns.GetSMSAttributesOutput)(nil),
 		Error:   nil,
@@ -316,7 +316,7 @@ func (c *Client) GetSMSAttributesWithContext(ctx context.Context, input *sns.Get
 func (c *Client) GetSubscriptionAttributesWithContext(ctx context.Context, input *sns.GetSubscriptionAttributesInput, opts ...request.Option) (*sns.GetSubscriptionAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "GetSubscriptionAttributesWithContext",
+		Action:  "GetSubscriptionAttributes",
 		Input:   input,
 		Output:  (*sns.GetSubscriptionAttributesOutput)(nil),
 		Error:   nil,
@@ -337,7 +337,7 @@ func (c *Client) GetSubscriptionAttributesWithContext(ctx context.Context, input
 func (c *Client) GetTopicAttributesWithContext(ctx context.Context, input *sns.GetTopicAttributesInput, opts ...request.Option) (*sns.GetTopicAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "GetTopicAttributesWithContext",
+		Action:  "GetTopicAttributes",
 		Input:   input,
 		Output:  (*sns.GetTopicAttributesOutput)(nil),
 		Error:   nil,
@@ -358,7 +358,7 @@ func (c *Client) GetTopicAttributesWithContext(ctx context.Context, input *sns.G
 func (c *Client) ListEndpointsByPlatformApplicationWithContext(ctx context.Context, input *sns.ListEndpointsByPlatformApplicationInput, opts ...request.Option) (*sns.ListEndpointsByPlatformApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListEndpointsByPlatformApplicationWithContext",
+		Action:  "ListEndpointsByPlatformApplication",
 		Input:   input,
 		Output:  (*sns.ListEndpointsByPlatformApplicationOutput)(nil),
 		Error:   nil,
@@ -379,7 +379,7 @@ func (c *Client) ListEndpointsByPlatformApplicationWithContext(ctx context.Conte
 func (c *Client) ListPhoneNumbersOptedOutWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, opts ...request.Option) (*sns.ListPhoneNumbersOptedOutOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListPhoneNumbersOptedOutWithContext",
+		Action:  "ListPhoneNumbersOptedOut",
 		Input:   input,
 		Output:  (*sns.ListPhoneNumbersOptedOutOutput)(nil),
 		Error:   nil,
@@ -400,7 +400,7 @@ func (c *Client) ListPhoneNumbersOptedOutWithContext(ctx context.Context, input 
 func (c *Client) ListPlatformApplicationsWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, opts ...request.Option) (*sns.ListPlatformApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListPlatformApplicationsWithContext",
+		Action:  "ListPlatformApplications",
 		Input:   input,
 		Output:  (*sns.ListPlatformApplicationsOutput)(nil),
 		Error:   nil,
@@ -421,7 +421,7 @@ func (c *Client) ListPlatformApplicationsWithContext(ctx context.Context, input 
 func (c *Client) ListSubscriptionsWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, opts ...request.Option) (*sns.ListSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListSubscriptionsWithContext",
+		Action:  "ListSubscriptions",
 		Input:   input,
 		Output:  (*sns.ListSubscriptionsOutput)(nil),
 		Error:   nil,
@@ -442,7 +442,7 @@ func (c *Client) ListSubscriptionsWithContext(ctx context.Context, input *sns.Li
 func (c *Client) ListSubscriptionsByTopicWithContext(ctx context.Context, input *sns.ListSubscriptionsByTopicInput, opts ...request.Option) (*sns.ListSubscriptionsByTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListSubscriptionsByTopicWithContext",
+		Action:  "ListSubscriptionsByTopic",
 		Input:   input,
 		Output:  (*sns.ListSubscriptionsByTopicOutput)(nil),
 		Error:   nil,
@@ -463,7 +463,7 @@ func (c *Client) ListSubscriptionsByTopicWithContext(ctx context.Context, input 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sns.ListTagsForResourceInput, opts ...request.Option) (*sns.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*sns.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -484,7 +484,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sns.
 func (c *Client) ListTopicsWithContext(ctx context.Context, input *sns.ListTopicsInput, opts ...request.Option) (*sns.ListTopicsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "ListTopicsWithContext",
+		Action:  "ListTopics",
 		Input:   input,
 		Output:  (*sns.ListTopicsOutput)(nil),
 		Error:   nil,
@@ -505,7 +505,7 @@ func (c *Client) ListTopicsWithContext(ctx context.Context, input *sns.ListTopic
 func (c *Client) OptInPhoneNumberWithContext(ctx context.Context, input *sns.OptInPhoneNumberInput, opts ...request.Option) (*sns.OptInPhoneNumberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "OptInPhoneNumberWithContext",
+		Action:  "OptInPhoneNumber",
 		Input:   input,
 		Output:  (*sns.OptInPhoneNumberOutput)(nil),
 		Error:   nil,
@@ -526,7 +526,7 @@ func (c *Client) OptInPhoneNumberWithContext(ctx context.Context, input *sns.Opt
 func (c *Client) PublishWithContext(ctx context.Context, input *sns.PublishInput, opts ...request.Option) (*sns.PublishOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "PublishWithContext",
+		Action:  "Publish",
 		Input:   input,
 		Output:  (*sns.PublishOutput)(nil),
 		Error:   nil,
@@ -547,7 +547,7 @@ func (c *Client) PublishWithContext(ctx context.Context, input *sns.PublishInput
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *sns.RemovePermissionInput, opts ...request.Option) (*sns.RemovePermissionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "RemovePermissionWithContext",
+		Action:  "RemovePermission",
 		Input:   input,
 		Output:  (*sns.RemovePermissionOutput)(nil),
 		Error:   nil,
@@ -568,7 +568,7 @@ func (c *Client) RemovePermissionWithContext(ctx context.Context, input *sns.Rem
 func (c *Client) SetEndpointAttributesWithContext(ctx context.Context, input *sns.SetEndpointAttributesInput, opts ...request.Option) (*sns.SetEndpointAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "SetEndpointAttributesWithContext",
+		Action:  "SetEndpointAttributes",
 		Input:   input,
 		Output:  (*sns.SetEndpointAttributesOutput)(nil),
 		Error:   nil,
@@ -589,7 +589,7 @@ func (c *Client) SetEndpointAttributesWithContext(ctx context.Context, input *sn
 func (c *Client) SetPlatformApplicationAttributesWithContext(ctx context.Context, input *sns.SetPlatformApplicationAttributesInput, opts ...request.Option) (*sns.SetPlatformApplicationAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "SetPlatformApplicationAttributesWithContext",
+		Action:  "SetPlatformApplicationAttributes",
 		Input:   input,
 		Output:  (*sns.SetPlatformApplicationAttributesOutput)(nil),
 		Error:   nil,
@@ -610,7 +610,7 @@ func (c *Client) SetPlatformApplicationAttributesWithContext(ctx context.Context
 func (c *Client) SetSMSAttributesWithContext(ctx context.Context, input *sns.SetSMSAttributesInput, opts ...request.Option) (*sns.SetSMSAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "SetSMSAttributesWithContext",
+		Action:  "SetSMSAttributes",
 		Input:   input,
 		Output:  (*sns.SetSMSAttributesOutput)(nil),
 		Error:   nil,
@@ -631,7 +631,7 @@ func (c *Client) SetSMSAttributesWithContext(ctx context.Context, input *sns.Set
 func (c *Client) SetSubscriptionAttributesWithContext(ctx context.Context, input *sns.SetSubscriptionAttributesInput, opts ...request.Option) (*sns.SetSubscriptionAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "SetSubscriptionAttributesWithContext",
+		Action:  "SetSubscriptionAttributes",
 		Input:   input,
 		Output:  (*sns.SetSubscriptionAttributesOutput)(nil),
 		Error:   nil,
@@ -652,7 +652,7 @@ func (c *Client) SetSubscriptionAttributesWithContext(ctx context.Context, input
 func (c *Client) SetTopicAttributesWithContext(ctx context.Context, input *sns.SetTopicAttributesInput, opts ...request.Option) (*sns.SetTopicAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "SetTopicAttributesWithContext",
+		Action:  "SetTopicAttributes",
 		Input:   input,
 		Output:  (*sns.SetTopicAttributesOutput)(nil),
 		Error:   nil,
@@ -673,7 +673,7 @@ func (c *Client) SetTopicAttributesWithContext(ctx context.Context, input *sns.S
 func (c *Client) SubscribeWithContext(ctx context.Context, input *sns.SubscribeInput, opts ...request.Option) (*sns.SubscribeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "SubscribeWithContext",
+		Action:  "Subscribe",
 		Input:   input,
 		Output:  (*sns.SubscribeOutput)(nil),
 		Error:   nil,
@@ -694,7 +694,7 @@ func (c *Client) SubscribeWithContext(ctx context.Context, input *sns.SubscribeI
 func (c *Client) TagResourceWithContext(ctx context.Context, input *sns.TagResourceInput, opts ...request.Option) (*sns.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*sns.TagResourceOutput)(nil),
 		Error:   nil,
@@ -715,7 +715,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *sns.TagResou
 func (c *Client) UnsubscribeWithContext(ctx context.Context, input *sns.UnsubscribeInput, opts ...request.Option) (*sns.UnsubscribeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "UnsubscribeWithContext",
+		Action:  "Unsubscribe",
 		Input:   input,
 		Output:  (*sns.UnsubscribeOutput)(nil),
 		Error:   nil,
@@ -736,7 +736,7 @@ func (c *Client) UnsubscribeWithContext(ctx context.Context, input *sns.Unsubscr
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *sns.UntagResourceInput, opts ...request.Option) (*sns.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*sns.UntagResourceOutput)(nil),
 		Error:   nil,

@@ -25,6 +25,7 @@ type DocDB interface {
 	DeleteDBClusterSnapshotWithContext(ctx context.Context, input *docdb.DeleteDBClusterSnapshotInput, opts ...request.Option) (*docdb.DeleteDBClusterSnapshotOutput, error)
 	DeleteDBInstanceWithContext(ctx context.Context, input *docdb.DeleteDBInstanceInput, opts ...request.Option) (*docdb.DeleteDBInstanceOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *docdb.DeleteDBSubnetGroupInput, opts ...request.Option) (*docdb.DeleteDBSubnetGroupOutput, error)
+	DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error)
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*docdb.DescribeDBClusterParameterGroupsOutput, error)
 	DescribeDBClusterParametersWithContext(ctx context.Context, input *docdb.DescribeDBClusterParametersInput, opts ...request.Option) (*docdb.DescribeDBClusterParametersOutput, error)
 	DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*docdb.DescribeDBClusterSnapshotAttributesOutput, error)
@@ -72,7 +73,7 @@ var _ DocDB = (*Client)(nil)
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *docdb.AddTagsToResourceInput, opts ...request.Option) (*docdb.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "AddTagsToResourceWithContext",
+		Action:  "AddTagsToResource",
 		Input:   input,
 		Output:  (*docdb.AddTagsToResourceOutput)(nil),
 		Error:   nil,
@@ -93,7 +94,7 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *docdb.
 func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *docdb.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*docdb.ApplyPendingMaintenanceActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ApplyPendingMaintenanceActionWithContext",
+		Action:  "ApplyPendingMaintenanceAction",
 		Input:   input,
 		Output:  (*docdb.ApplyPendingMaintenanceActionOutput)(nil),
 		Error:   nil,
@@ -114,7 +115,7 @@ func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, i
 func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.CopyDBClusterParameterGroupInput, opts ...request.Option) (*docdb.CopyDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CopyDBClusterParameterGroupWithContext",
+		Action:  "CopyDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*docdb.CopyDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -135,7 +136,7 @@ func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, inp
 func (c *Client) CopyDBClusterSnapshotWithContext(ctx context.Context, input *docdb.CopyDBClusterSnapshotInput, opts ...request.Option) (*docdb.CopyDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CopyDBClusterSnapshotWithContext",
+		Action:  "CopyDBClusterSnapshot",
 		Input:   input,
 		Output:  (*docdb.CopyDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -156,7 +157,7 @@ func (c *Client) CopyDBClusterSnapshotWithContext(ctx context.Context, input *do
 func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *docdb.CreateDBClusterInput, opts ...request.Option) (*docdb.CreateDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CreateDBClusterWithContext",
+		Action:  "CreateDBCluster",
 		Input:   input,
 		Output:  (*docdb.CreateDBClusterOutput)(nil),
 		Error:   nil,
@@ -177,7 +178,7 @@ func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *docdb.Cr
 func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.CreateDBClusterParameterGroupInput, opts ...request.Option) (*docdb.CreateDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CreateDBClusterParameterGroupWithContext",
+		Action:  "CreateDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*docdb.CreateDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -198,7 +199,7 @@ func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) CreateDBClusterSnapshotWithContext(ctx context.Context, input *docdb.CreateDBClusterSnapshotInput, opts ...request.Option) (*docdb.CreateDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CreateDBClusterSnapshotWithContext",
+		Action:  "CreateDBClusterSnapshot",
 		Input:   input,
 		Output:  (*docdb.CreateDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -219,7 +220,7 @@ func (c *Client) CreateDBClusterSnapshotWithContext(ctx context.Context, input *
 func (c *Client) CreateDBInstanceWithContext(ctx context.Context, input *docdb.CreateDBInstanceInput, opts ...request.Option) (*docdb.CreateDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CreateDBInstanceWithContext",
+		Action:  "CreateDBInstance",
 		Input:   input,
 		Output:  (*docdb.CreateDBInstanceOutput)(nil),
 		Error:   nil,
@@ -240,7 +241,7 @@ func (c *Client) CreateDBInstanceWithContext(ctx context.Context, input *docdb.C
 func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *docdb.CreateDBSubnetGroupInput, opts ...request.Option) (*docdb.CreateDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "CreateDBSubnetGroupWithContext",
+		Action:  "CreateDBSubnetGroup",
 		Input:   input,
 		Output:  (*docdb.CreateDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -261,7 +262,7 @@ func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *docd
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *docdb.DeleteDBClusterInput, opts ...request.Option) (*docdb.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DeleteDBClusterWithContext",
+		Action:  "DeleteDBCluster",
 		Input:   input,
 		Output:  (*docdb.DeleteDBClusterOutput)(nil),
 		Error:   nil,
@@ -282,7 +283,7 @@ func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *docdb.De
 func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*docdb.DeleteDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DeleteDBClusterParameterGroupWithContext",
+		Action:  "DeleteDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*docdb.DeleteDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -303,7 +304,7 @@ func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) DeleteDBClusterSnapshotWithContext(ctx context.Context, input *docdb.DeleteDBClusterSnapshotInput, opts ...request.Option) (*docdb.DeleteDBClusterSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DeleteDBClusterSnapshotWithContext",
+		Action:  "DeleteDBClusterSnapshot",
 		Input:   input,
 		Output:  (*docdb.DeleteDBClusterSnapshotOutput)(nil),
 		Error:   nil,
@@ -324,7 +325,7 @@ func (c *Client) DeleteDBClusterSnapshotWithContext(ctx context.Context, input *
 func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, input *docdb.DeleteDBInstanceInput, opts ...request.Option) (*docdb.DeleteDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DeleteDBInstanceWithContext",
+		Action:  "DeleteDBInstance",
 		Input:   input,
 		Output:  (*docdb.DeleteDBInstanceOutput)(nil),
 		Error:   nil,
@@ -345,7 +346,7 @@ func (c *Client) DeleteDBInstanceWithContext(ctx context.Context, input *docdb.D
 func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *docdb.DeleteDBSubnetGroupInput, opts ...request.Option) (*docdb.DeleteDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DeleteDBSubnetGroupWithContext",
+		Action:  "DeleteDBSubnetGroup",
 		Input:   input,
 		Output:  (*docdb.DeleteDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -363,10 +364,31 @@ func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *docd
 	return req.Output.(*docdb.DeleteDBSubnetGroupOutput), req.Error
 }
 
+func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeCertificates",
+		Input:   input,
+		Output:  (*docdb.DescribeCertificatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.DescribeCertificatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.DescribeCertificatesOutput), req.Error
+}
+
 func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*docdb.DescribeDBClusterParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBClusterParameterGroupsWithContext",
+		Action:  "DescribeDBClusterParameterGroups",
 		Input:   input,
 		Output:  (*docdb.DescribeDBClusterParameterGroupsOutput)(nil),
 		Error:   nil,
@@ -387,7 +409,7 @@ func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context
 func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, input *docdb.DescribeDBClusterParametersInput, opts ...request.Option) (*docdb.DescribeDBClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBClusterParametersWithContext",
+		Action:  "DescribeDBClusterParameters",
 		Input:   input,
 		Output:  (*docdb.DescribeDBClusterParametersOutput)(nil),
 		Error:   nil,
@@ -408,7 +430,7 @@ func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, inp
 func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*docdb.DescribeDBClusterSnapshotAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBClusterSnapshotAttributesWithContext",
+		Action:  "DescribeDBClusterSnapshotAttributes",
 		Input:   input,
 		Output:  (*docdb.DescribeDBClusterSnapshotAttributesOutput)(nil),
 		Error:   nil,
@@ -429,7 +451,7 @@ func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Cont
 func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotsInput, opts ...request.Option) (*docdb.DescribeDBClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBClusterSnapshotsWithContext",
+		Action:  "DescribeDBClusterSnapshots",
 		Input:   input,
 		Output:  (*docdb.DescribeDBClusterSnapshotsOutput)(nil),
 		Error:   nil,
@@ -450,7 +472,7 @@ func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, inpu
 func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *docdb.DescribeDBClustersInput, opts ...request.Option) (*docdb.DescribeDBClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBClustersWithContext",
+		Action:  "DescribeDBClusters",
 		Input:   input,
 		Output:  (*docdb.DescribeDBClustersOutput)(nil),
 		Error:   nil,
@@ -471,7 +493,7 @@ func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *docdb
 func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input *docdb.DescribeDBEngineVersionsInput, opts ...request.Option) (*docdb.DescribeDBEngineVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBEngineVersionsWithContext",
+		Action:  "DescribeDBEngineVersions",
 		Input:   input,
 		Output:  (*docdb.DescribeDBEngineVersionsOutput)(nil),
 		Error:   nil,
@@ -492,7 +514,7 @@ func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input 
 func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *docdb.DescribeDBInstancesInput, opts ...request.Option) (*docdb.DescribeDBInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBInstancesWithContext",
+		Action:  "DescribeDBInstances",
 		Input:   input,
 		Output:  (*docdb.DescribeDBInstancesOutput)(nil),
 		Error:   nil,
@@ -513,7 +535,7 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *docd
 func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *docdb.DescribeDBSubnetGroupsInput, opts ...request.Option) (*docdb.DescribeDBSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeDBSubnetGroupsWithContext",
+		Action:  "DescribeDBSubnetGroups",
 		Input:   input,
 		Output:  (*docdb.DescribeDBSubnetGroupsOutput)(nil),
 		Error:   nil,
@@ -534,7 +556,7 @@ func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *d
 func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.Context, input *docdb.DescribeEngineDefaultClusterParametersInput, opts ...request.Option) (*docdb.DescribeEngineDefaultClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeEngineDefaultClusterParametersWithContext",
+		Action:  "DescribeEngineDefaultClusterParameters",
 		Input:   input,
 		Output:  (*docdb.DescribeEngineDefaultClusterParametersOutput)(nil),
 		Error:   nil,
@@ -555,7 +577,7 @@ func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.C
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *docdb.DescribeEventCategoriesInput, opts ...request.Option) (*docdb.DescribeEventCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeEventCategoriesWithContext",
+		Action:  "DescribeEventCategories",
 		Input:   input,
 		Output:  (*docdb.DescribeEventCategoriesOutput)(nil),
 		Error:   nil,
@@ -576,7 +598,7 @@ func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *docdb.DescribeEventsInput, opts ...request.Option) (*docdb.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeEventsWithContext",
+		Action:  "DescribeEvents",
 		Input:   input,
 		Output:  (*docdb.DescribeEventsOutput)(nil),
 		Error:   nil,
@@ -597,7 +619,7 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *docdb.Des
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribeOrderableDBInstanceOptionsWithContext",
+		Action:  "DescribeOrderableDBInstanceOptions",
 		Input:   input,
 		Output:  (*docdb.DescribeOrderableDBInstanceOptionsOutput)(nil),
 		Error:   nil,
@@ -618,7 +640,7 @@ func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Conte
 func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *docdb.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*docdb.DescribePendingMaintenanceActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "DescribePendingMaintenanceActionsWithContext",
+		Action:  "DescribePendingMaintenanceActions",
 		Input:   input,
 		Output:  (*docdb.DescribePendingMaintenanceActionsOutput)(nil),
 		Error:   nil,
@@ -639,7 +661,7 @@ func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Contex
 func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *docdb.FailoverDBClusterInput, opts ...request.Option) (*docdb.FailoverDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "FailoverDBClusterWithContext",
+		Action:  "FailoverDBCluster",
 		Input:   input,
 		Output:  (*docdb.FailoverDBClusterOutput)(nil),
 		Error:   nil,
@@ -660,7 +682,7 @@ func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *docdb.
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *docdb.ListTagsForResourceInput, opts ...request.Option) (*docdb.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*docdb.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -681,7 +703,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *docd
 func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *docdb.ModifyDBClusterInput, opts ...request.Option) (*docdb.ModifyDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ModifyDBClusterWithContext",
+		Action:  "ModifyDBCluster",
 		Input:   input,
 		Output:  (*docdb.ModifyDBClusterOutput)(nil),
 		Error:   nil,
@@ -702,7 +724,7 @@ func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *docdb.Mo
 func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.ModifyDBClusterParameterGroupInput, opts ...request.Option) (*docdb.ModifyDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ModifyDBClusterParameterGroupWithContext",
+		Action:  "ModifyDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*docdb.ModifyDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -723,7 +745,7 @@ func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, i
 func (c *Client) ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context, input *docdb.ModifyDBClusterSnapshotAttributeInput, opts ...request.Option) (*docdb.ModifyDBClusterSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ModifyDBClusterSnapshotAttributeWithContext",
+		Action:  "ModifyDBClusterSnapshotAttribute",
 		Input:   input,
 		Output:  (*docdb.ModifyDBClusterSnapshotAttributeOutput)(nil),
 		Error:   nil,
@@ -744,7 +766,7 @@ func (c *Client) ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context
 func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, input *docdb.ModifyDBInstanceInput, opts ...request.Option) (*docdb.ModifyDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ModifyDBInstanceWithContext",
+		Action:  "ModifyDBInstance",
 		Input:   input,
 		Output:  (*docdb.ModifyDBInstanceOutput)(nil),
 		Error:   nil,
@@ -765,7 +787,7 @@ func (c *Client) ModifyDBInstanceWithContext(ctx context.Context, input *docdb.M
 func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *docdb.ModifyDBSubnetGroupInput, opts ...request.Option) (*docdb.ModifyDBSubnetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ModifyDBSubnetGroupWithContext",
+		Action:  "ModifyDBSubnetGroup",
 		Input:   input,
 		Output:  (*docdb.ModifyDBSubnetGroupOutput)(nil),
 		Error:   nil,
@@ -786,7 +808,7 @@ func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *docd
 func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *docdb.RebootDBInstanceInput, opts ...request.Option) (*docdb.RebootDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "RebootDBInstanceWithContext",
+		Action:  "RebootDBInstance",
 		Input:   input,
 		Output:  (*docdb.RebootDBInstanceOutput)(nil),
 		Error:   nil,
@@ -807,7 +829,7 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *docdb.R
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *docdb.RemoveTagsFromResourceInput, opts ...request.Option) (*docdb.RemoveTagsFromResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "RemoveTagsFromResourceWithContext",
+		Action:  "RemoveTagsFromResource",
 		Input:   input,
 		Output:  (*docdb.RemoveTagsFromResourceOutput)(nil),
 		Error:   nil,
@@ -828,7 +850,7 @@ func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *d
 func (c *Client) ResetDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.ResetDBClusterParameterGroupInput, opts ...request.Option) (*docdb.ResetDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "ResetDBClusterParameterGroupWithContext",
+		Action:  "ResetDBClusterParameterGroup",
 		Input:   input,
 		Output:  (*docdb.ResetDBClusterParameterGroupOutput)(nil),
 		Error:   nil,
@@ -849,7 +871,7 @@ func (c *Client) ResetDBClusterParameterGroupWithContext(ctx context.Context, in
 func (c *Client) RestoreDBClusterFromSnapshotWithContext(ctx context.Context, input *docdb.RestoreDBClusterFromSnapshotInput, opts ...request.Option) (*docdb.RestoreDBClusterFromSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "RestoreDBClusterFromSnapshotWithContext",
+		Action:  "RestoreDBClusterFromSnapshot",
 		Input:   input,
 		Output:  (*docdb.RestoreDBClusterFromSnapshotOutput)(nil),
 		Error:   nil,
@@ -870,7 +892,7 @@ func (c *Client) RestoreDBClusterFromSnapshotWithContext(ctx context.Context, in
 func (c *Client) RestoreDBClusterToPointInTimeWithContext(ctx context.Context, input *docdb.RestoreDBClusterToPointInTimeInput, opts ...request.Option) (*docdb.RestoreDBClusterToPointInTimeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "RestoreDBClusterToPointInTimeWithContext",
+		Action:  "RestoreDBClusterToPointInTime",
 		Input:   input,
 		Output:  (*docdb.RestoreDBClusterToPointInTimeOutput)(nil),
 		Error:   nil,
@@ -891,7 +913,7 @@ func (c *Client) RestoreDBClusterToPointInTimeWithContext(ctx context.Context, i
 func (c *Client) StartDBClusterWithContext(ctx context.Context, input *docdb.StartDBClusterInput, opts ...request.Option) (*docdb.StartDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "StartDBClusterWithContext",
+		Action:  "StartDBCluster",
 		Input:   input,
 		Output:  (*docdb.StartDBClusterOutput)(nil),
 		Error:   nil,
@@ -912,7 +934,7 @@ func (c *Client) StartDBClusterWithContext(ctx context.Context, input *docdb.Sta
 func (c *Client) StopDBClusterWithContext(ctx context.Context, input *docdb.StopDBClusterInput, opts ...request.Option) (*docdb.StopDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
-		Action:  "StopDBClusterWithContext",
+		Action:  "StopDBCluster",
 		Input:   input,
 		Output:  (*docdb.StopDBClusterOutput)(nil),
 		Error:   nil,

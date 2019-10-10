@@ -37,7 +37,7 @@ var _ AutoScalingPlans = (*Client)(nil)
 func (c *Client) CreateScalingPlanWithContext(ctx context.Context, input *autoscalingplans.CreateScalingPlanInput, opts ...request.Option) (*autoscalingplans.CreateScalingPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscalingplans",
-		Action:  "CreateScalingPlanWithContext",
+		Action:  "CreateScalingPlan",
 		Input:   input,
 		Output:  (*autoscalingplans.CreateScalingPlanOutput)(nil),
 		Error:   nil,
@@ -58,7 +58,7 @@ func (c *Client) CreateScalingPlanWithContext(ctx context.Context, input *autosc
 func (c *Client) DeleteScalingPlanWithContext(ctx context.Context, input *autoscalingplans.DeleteScalingPlanInput, opts ...request.Option) (*autoscalingplans.DeleteScalingPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscalingplans",
-		Action:  "DeleteScalingPlanWithContext",
+		Action:  "DeleteScalingPlan",
 		Input:   input,
 		Output:  (*autoscalingplans.DeleteScalingPlanOutput)(nil),
 		Error:   nil,
@@ -79,7 +79,7 @@ func (c *Client) DeleteScalingPlanWithContext(ctx context.Context, input *autosc
 func (c *Client) DescribeScalingPlanResourcesWithContext(ctx context.Context, input *autoscalingplans.DescribeScalingPlanResourcesInput, opts ...request.Option) (*autoscalingplans.DescribeScalingPlanResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscalingplans",
-		Action:  "DescribeScalingPlanResourcesWithContext",
+		Action:  "DescribeScalingPlanResources",
 		Input:   input,
 		Output:  (*autoscalingplans.DescribeScalingPlanResourcesOutput)(nil),
 		Error:   nil,
@@ -100,7 +100,7 @@ func (c *Client) DescribeScalingPlanResourcesWithContext(ctx context.Context, in
 func (c *Client) DescribeScalingPlansWithContext(ctx context.Context, input *autoscalingplans.DescribeScalingPlansInput, opts ...request.Option) (*autoscalingplans.DescribeScalingPlansOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscalingplans",
-		Action:  "DescribeScalingPlansWithContext",
+		Action:  "DescribeScalingPlans",
 		Input:   input,
 		Output:  (*autoscalingplans.DescribeScalingPlansOutput)(nil),
 		Error:   nil,
@@ -121,7 +121,7 @@ func (c *Client) DescribeScalingPlansWithContext(ctx context.Context, input *aut
 func (c *Client) GetScalingPlanResourceForecastDataWithContext(ctx context.Context, input *autoscalingplans.GetScalingPlanResourceForecastDataInput, opts ...request.Option) (*autoscalingplans.GetScalingPlanResourceForecastDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscalingplans",
-		Action:  "GetScalingPlanResourceForecastDataWithContext",
+		Action:  "GetScalingPlanResourceForecastData",
 		Input:   input,
 		Output:  (*autoscalingplans.GetScalingPlanResourceForecastDataOutput)(nil),
 		Error:   nil,
@@ -142,7 +142,7 @@ func (c *Client) GetScalingPlanResourceForecastDataWithContext(ctx context.Conte
 func (c *Client) UpdateScalingPlanWithContext(ctx context.Context, input *autoscalingplans.UpdateScalingPlanInput, opts ...request.Option) (*autoscalingplans.UpdateScalingPlanOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscalingplans",
-		Action:  "UpdateScalingPlanWithContext",
+		Action:  "UpdateScalingPlan",
 		Input:   input,
 		Output:  (*autoscalingplans.UpdateScalingPlanOutput)(nil),
 		Error:   nil,

@@ -32,7 +32,7 @@ var _ MobileAnalytics = (*Client)(nil)
 func (c *Client) PutEventsWithContext(ctx context.Context, input *mobileanalytics.PutEventsInput, opts ...request.Option) (*mobileanalytics.PutEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobileanalytics",
-		Action:  "PutEventsWithContext",
+		Action:  "PutEvents",
 		Input:   input,
 		Output:  (*mobileanalytics.PutEventsOutput)(nil),
 		Error:   nil,

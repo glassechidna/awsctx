@@ -47,7 +47,7 @@ var _ IoT1ClickProjects = (*Client)(nil)
 func (c *Client) AssociateDeviceWithPlacementWithContext(ctx context.Context, input *iot1clickprojects.AssociateDeviceWithPlacementInput, opts ...request.Option) (*iot1clickprojects.AssociateDeviceWithPlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "AssociateDeviceWithPlacementWithContext",
+		Action:  "AssociateDeviceWithPlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.AssociateDeviceWithPlacementOutput)(nil),
 		Error:   nil,
@@ -68,7 +68,7 @@ func (c *Client) AssociateDeviceWithPlacementWithContext(ctx context.Context, in
 func (c *Client) CreatePlacementWithContext(ctx context.Context, input *iot1clickprojects.CreatePlacementInput, opts ...request.Option) (*iot1clickprojects.CreatePlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "CreatePlacementWithContext",
+		Action:  "CreatePlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.CreatePlacementOutput)(nil),
 		Error:   nil,
@@ -89,7 +89,7 @@ func (c *Client) CreatePlacementWithContext(ctx context.Context, input *iot1clic
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *iot1clickprojects.CreateProjectInput, opts ...request.Option) (*iot1clickprojects.CreateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "CreateProjectWithContext",
+		Action:  "CreateProject",
 		Input:   input,
 		Output:  (*iot1clickprojects.CreateProjectOutput)(nil),
 		Error:   nil,
@@ -110,7 +110,7 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, input *iot1clickp
 func (c *Client) DeletePlacementWithContext(ctx context.Context, input *iot1clickprojects.DeletePlacementInput, opts ...request.Option) (*iot1clickprojects.DeletePlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "DeletePlacementWithContext",
+		Action:  "DeletePlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.DeletePlacementOutput)(nil),
 		Error:   nil,
@@ -131,7 +131,7 @@ func (c *Client) DeletePlacementWithContext(ctx context.Context, input *iot1clic
 func (c *Client) DeleteProjectWithContext(ctx context.Context, input *iot1clickprojects.DeleteProjectInput, opts ...request.Option) (*iot1clickprojects.DeleteProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "DeleteProjectWithContext",
+		Action:  "DeleteProject",
 		Input:   input,
 		Output:  (*iot1clickprojects.DeleteProjectOutput)(nil),
 		Error:   nil,
@@ -152,7 +152,7 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, input *iot1clickp
 func (c *Client) DescribePlacementWithContext(ctx context.Context, input *iot1clickprojects.DescribePlacementInput, opts ...request.Option) (*iot1clickprojects.DescribePlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "DescribePlacementWithContext",
+		Action:  "DescribePlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.DescribePlacementOutput)(nil),
 		Error:   nil,
@@ -173,7 +173,7 @@ func (c *Client) DescribePlacementWithContext(ctx context.Context, input *iot1cl
 func (c *Client) DescribeProjectWithContext(ctx context.Context, input *iot1clickprojects.DescribeProjectInput, opts ...request.Option) (*iot1clickprojects.DescribeProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "DescribeProjectWithContext",
+		Action:  "DescribeProject",
 		Input:   input,
 		Output:  (*iot1clickprojects.DescribeProjectOutput)(nil),
 		Error:   nil,
@@ -194,7 +194,7 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, input *iot1clic
 func (c *Client) DisassociateDeviceFromPlacementWithContext(ctx context.Context, input *iot1clickprojects.DisassociateDeviceFromPlacementInput, opts ...request.Option) (*iot1clickprojects.DisassociateDeviceFromPlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "DisassociateDeviceFromPlacementWithContext",
+		Action:  "DisassociateDeviceFromPlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.DisassociateDeviceFromPlacementOutput)(nil),
 		Error:   nil,
@@ -215,7 +215,7 @@ func (c *Client) DisassociateDeviceFromPlacementWithContext(ctx context.Context,
 func (c *Client) GetDevicesInPlacementWithContext(ctx context.Context, input *iot1clickprojects.GetDevicesInPlacementInput, opts ...request.Option) (*iot1clickprojects.GetDevicesInPlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "GetDevicesInPlacementWithContext",
+		Action:  "GetDevicesInPlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.GetDevicesInPlacementOutput)(nil),
 		Error:   nil,
@@ -236,7 +236,7 @@ func (c *Client) GetDevicesInPlacementWithContext(ctx context.Context, input *io
 func (c *Client) ListPlacementsWithContext(ctx context.Context, input *iot1clickprojects.ListPlacementsInput, opts ...request.Option) (*iot1clickprojects.ListPlacementsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "ListPlacementsWithContext",
+		Action:  "ListPlacements",
 		Input:   input,
 		Output:  (*iot1clickprojects.ListPlacementsOutput)(nil),
 		Error:   nil,
@@ -257,7 +257,7 @@ func (c *Client) ListPlacementsWithContext(ctx context.Context, input *iot1click
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *iot1clickprojects.ListProjectsInput, opts ...request.Option) (*iot1clickprojects.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "ListProjectsWithContext",
+		Action:  "ListProjects",
 		Input:   input,
 		Output:  (*iot1clickprojects.ListProjectsOutput)(nil),
 		Error:   nil,
@@ -278,7 +278,7 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *iot1clickpr
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot1clickprojects.ListTagsForResourceInput, opts ...request.Option) (*iot1clickprojects.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*iot1clickprojects.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -299,7 +299,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot1
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iot1clickprojects.TagResourceInput, opts ...request.Option) (*iot1clickprojects.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*iot1clickprojects.TagResourceOutput)(nil),
 		Error:   nil,
@@ -320,7 +320,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *iot1clickpro
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *iot1clickprojects.UntagResourceInput, opts ...request.Option) (*iot1clickprojects.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*iot1clickprojects.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -341,7 +341,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iot1clickp
 func (c *Client) UpdatePlacementWithContext(ctx context.Context, input *iot1clickprojects.UpdatePlacementInput, opts ...request.Option) (*iot1clickprojects.UpdatePlacementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "UpdatePlacementWithContext",
+		Action:  "UpdatePlacement",
 		Input:   input,
 		Output:  (*iot1clickprojects.UpdatePlacementOutput)(nil),
 		Error:   nil,
@@ -362,7 +362,7 @@ func (c *Client) UpdatePlacementWithContext(ctx context.Context, input *iot1clic
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *iot1clickprojects.UpdateProjectInput, opts ...request.Option) (*iot1clickprojects.UpdateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
-		Action:  "UpdateProjectWithContext",
+		Action:  "UpdateProject",
 		Input:   input,
 		Output:  (*iot1clickprojects.UpdateProjectOutput)(nil),
 		Error:   nil,

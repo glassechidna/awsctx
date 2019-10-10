@@ -53,7 +53,7 @@ var _ SFN = (*Client)(nil)
 func (c *Client) CreateActivityWithContext(ctx context.Context, input *sfn.CreateActivityInput, opts ...request.Option) (*sfn.CreateActivityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "CreateActivityWithContext",
+		Action:  "CreateActivity",
 		Input:   input,
 		Output:  (*sfn.CreateActivityOutput)(nil),
 		Error:   nil,
@@ -74,7 +74,7 @@ func (c *Client) CreateActivityWithContext(ctx context.Context, input *sfn.Creat
 func (c *Client) CreateStateMachineWithContext(ctx context.Context, input *sfn.CreateStateMachineInput, opts ...request.Option) (*sfn.CreateStateMachineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "CreateStateMachineWithContext",
+		Action:  "CreateStateMachine",
 		Input:   input,
 		Output:  (*sfn.CreateStateMachineOutput)(nil),
 		Error:   nil,
@@ -95,7 +95,7 @@ func (c *Client) CreateStateMachineWithContext(ctx context.Context, input *sfn.C
 func (c *Client) DeleteActivityWithContext(ctx context.Context, input *sfn.DeleteActivityInput, opts ...request.Option) (*sfn.DeleteActivityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "DeleteActivityWithContext",
+		Action:  "DeleteActivity",
 		Input:   input,
 		Output:  (*sfn.DeleteActivityOutput)(nil),
 		Error:   nil,
@@ -116,7 +116,7 @@ func (c *Client) DeleteActivityWithContext(ctx context.Context, input *sfn.Delet
 func (c *Client) DeleteStateMachineWithContext(ctx context.Context, input *sfn.DeleteStateMachineInput, opts ...request.Option) (*sfn.DeleteStateMachineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "DeleteStateMachineWithContext",
+		Action:  "DeleteStateMachine",
 		Input:   input,
 		Output:  (*sfn.DeleteStateMachineOutput)(nil),
 		Error:   nil,
@@ -137,7 +137,7 @@ func (c *Client) DeleteStateMachineWithContext(ctx context.Context, input *sfn.D
 func (c *Client) DescribeActivityWithContext(ctx context.Context, input *sfn.DescribeActivityInput, opts ...request.Option) (*sfn.DescribeActivityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "DescribeActivityWithContext",
+		Action:  "DescribeActivity",
 		Input:   input,
 		Output:  (*sfn.DescribeActivityOutput)(nil),
 		Error:   nil,
@@ -158,7 +158,7 @@ func (c *Client) DescribeActivityWithContext(ctx context.Context, input *sfn.Des
 func (c *Client) DescribeExecutionWithContext(ctx context.Context, input *sfn.DescribeExecutionInput, opts ...request.Option) (*sfn.DescribeExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "DescribeExecutionWithContext",
+		Action:  "DescribeExecution",
 		Input:   input,
 		Output:  (*sfn.DescribeExecutionOutput)(nil),
 		Error:   nil,
@@ -179,7 +179,7 @@ func (c *Client) DescribeExecutionWithContext(ctx context.Context, input *sfn.De
 func (c *Client) DescribeStateMachineWithContext(ctx context.Context, input *sfn.DescribeStateMachineInput, opts ...request.Option) (*sfn.DescribeStateMachineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "DescribeStateMachineWithContext",
+		Action:  "DescribeStateMachine",
 		Input:   input,
 		Output:  (*sfn.DescribeStateMachineOutput)(nil),
 		Error:   nil,
@@ -200,7 +200,7 @@ func (c *Client) DescribeStateMachineWithContext(ctx context.Context, input *sfn
 func (c *Client) DescribeStateMachineForExecutionWithContext(ctx context.Context, input *sfn.DescribeStateMachineForExecutionInput, opts ...request.Option) (*sfn.DescribeStateMachineForExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "DescribeStateMachineForExecutionWithContext",
+		Action:  "DescribeStateMachineForExecution",
 		Input:   input,
 		Output:  (*sfn.DescribeStateMachineForExecutionOutput)(nil),
 		Error:   nil,
@@ -221,7 +221,7 @@ func (c *Client) DescribeStateMachineForExecutionWithContext(ctx context.Context
 func (c *Client) GetActivityTaskWithContext(ctx context.Context, input *sfn.GetActivityTaskInput, opts ...request.Option) (*sfn.GetActivityTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "GetActivityTaskWithContext",
+		Action:  "GetActivityTask",
 		Input:   input,
 		Output:  (*sfn.GetActivityTaskOutput)(nil),
 		Error:   nil,
@@ -242,7 +242,7 @@ func (c *Client) GetActivityTaskWithContext(ctx context.Context, input *sfn.GetA
 func (c *Client) GetExecutionHistoryWithContext(ctx context.Context, input *sfn.GetExecutionHistoryInput, opts ...request.Option) (*sfn.GetExecutionHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "GetExecutionHistoryWithContext",
+		Action:  "GetExecutionHistory",
 		Input:   input,
 		Output:  (*sfn.GetExecutionHistoryOutput)(nil),
 		Error:   nil,
@@ -263,7 +263,7 @@ func (c *Client) GetExecutionHistoryWithContext(ctx context.Context, input *sfn.
 func (c *Client) ListActivitiesWithContext(ctx context.Context, input *sfn.ListActivitiesInput, opts ...request.Option) (*sfn.ListActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "ListActivitiesWithContext",
+		Action:  "ListActivities",
 		Input:   input,
 		Output:  (*sfn.ListActivitiesOutput)(nil),
 		Error:   nil,
@@ -284,7 +284,7 @@ func (c *Client) ListActivitiesWithContext(ctx context.Context, input *sfn.ListA
 func (c *Client) ListExecutionsWithContext(ctx context.Context, input *sfn.ListExecutionsInput, opts ...request.Option) (*sfn.ListExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "ListExecutionsWithContext",
+		Action:  "ListExecutions",
 		Input:   input,
 		Output:  (*sfn.ListExecutionsOutput)(nil),
 		Error:   nil,
@@ -305,7 +305,7 @@ func (c *Client) ListExecutionsWithContext(ctx context.Context, input *sfn.ListE
 func (c *Client) ListStateMachinesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, opts ...request.Option) (*sfn.ListStateMachinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "ListStateMachinesWithContext",
+		Action:  "ListStateMachines",
 		Input:   input,
 		Output:  (*sfn.ListStateMachinesOutput)(nil),
 		Error:   nil,
@@ -326,7 +326,7 @@ func (c *Client) ListStateMachinesWithContext(ctx context.Context, input *sfn.Li
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sfn.ListTagsForResourceInput, opts ...request.Option) (*sfn.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*sfn.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -347,7 +347,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sfn.
 func (c *Client) SendTaskFailureWithContext(ctx context.Context, input *sfn.SendTaskFailureInput, opts ...request.Option) (*sfn.SendTaskFailureOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "SendTaskFailureWithContext",
+		Action:  "SendTaskFailure",
 		Input:   input,
 		Output:  (*sfn.SendTaskFailureOutput)(nil),
 		Error:   nil,
@@ -368,7 +368,7 @@ func (c *Client) SendTaskFailureWithContext(ctx context.Context, input *sfn.Send
 func (c *Client) SendTaskHeartbeatWithContext(ctx context.Context, input *sfn.SendTaskHeartbeatInput, opts ...request.Option) (*sfn.SendTaskHeartbeatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "SendTaskHeartbeatWithContext",
+		Action:  "SendTaskHeartbeat",
 		Input:   input,
 		Output:  (*sfn.SendTaskHeartbeatOutput)(nil),
 		Error:   nil,
@@ -389,7 +389,7 @@ func (c *Client) SendTaskHeartbeatWithContext(ctx context.Context, input *sfn.Se
 func (c *Client) SendTaskSuccessWithContext(ctx context.Context, input *sfn.SendTaskSuccessInput, opts ...request.Option) (*sfn.SendTaskSuccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "SendTaskSuccessWithContext",
+		Action:  "SendTaskSuccess",
 		Input:   input,
 		Output:  (*sfn.SendTaskSuccessOutput)(nil),
 		Error:   nil,
@@ -410,7 +410,7 @@ func (c *Client) SendTaskSuccessWithContext(ctx context.Context, input *sfn.Send
 func (c *Client) StartExecutionWithContext(ctx context.Context, input *sfn.StartExecutionInput, opts ...request.Option) (*sfn.StartExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "StartExecutionWithContext",
+		Action:  "StartExecution",
 		Input:   input,
 		Output:  (*sfn.StartExecutionOutput)(nil),
 		Error:   nil,
@@ -431,7 +431,7 @@ func (c *Client) StartExecutionWithContext(ctx context.Context, input *sfn.Start
 func (c *Client) StopExecutionWithContext(ctx context.Context, input *sfn.StopExecutionInput, opts ...request.Option) (*sfn.StopExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "StopExecutionWithContext",
+		Action:  "StopExecution",
 		Input:   input,
 		Output:  (*sfn.StopExecutionOutput)(nil),
 		Error:   nil,
@@ -452,7 +452,7 @@ func (c *Client) StopExecutionWithContext(ctx context.Context, input *sfn.StopEx
 func (c *Client) TagResourceWithContext(ctx context.Context, input *sfn.TagResourceInput, opts ...request.Option) (*sfn.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*sfn.TagResourceOutput)(nil),
 		Error:   nil,
@@ -473,7 +473,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *sfn.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *sfn.UntagResourceInput, opts ...request.Option) (*sfn.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*sfn.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -494,7 +494,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *sfn.UntagR
 func (c *Client) UpdateStateMachineWithContext(ctx context.Context, input *sfn.UpdateStateMachineInput, opts ...request.Option) (*sfn.UpdateStateMachineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
-		Action:  "UpdateStateMachineWithContext",
+		Action:  "UpdateStateMachine",
 		Input:   input,
 		Output:  (*sfn.UpdateStateMachineOutput)(nil),
 		Error:   nil,

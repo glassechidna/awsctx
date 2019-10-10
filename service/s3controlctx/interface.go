@@ -39,7 +39,7 @@ var _ S3Control = (*Client)(nil)
 func (c *Client) CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "CreateJobWithContext",
+		Action:  "CreateJob",
 		Input:   input,
 		Output:  (*s3control.CreateJobOutput)(nil),
 		Error:   nil,
@@ -60,7 +60,7 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *s3control.Crea
 func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "DeletePublicAccessBlockWithContext",
+		Action:  "DeletePublicAccessBlock",
 		Input:   input,
 		Output:  (*s3control.DeletePublicAccessBlockOutput)(nil),
 		Error:   nil,
@@ -81,7 +81,7 @@ func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *
 func (c *Client) DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "DescribeJobWithContext",
+		Action:  "DescribeJob",
 		Input:   input,
 		Output:  (*s3control.DescribeJobOutput)(nil),
 		Error:   nil,
@@ -102,7 +102,7 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *s3control.De
 func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "GetPublicAccessBlockWithContext",
+		Action:  "GetPublicAccessBlock",
 		Input:   input,
 		Output:  (*s3control.GetPublicAccessBlockOutput)(nil),
 		Error:   nil,
@@ -123,7 +123,7 @@ func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3c
 func (c *Client) ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "ListJobsWithContext",
+		Action:  "ListJobs",
 		Input:   input,
 		Output:  (*s3control.ListJobsOutput)(nil),
 		Error:   nil,
@@ -144,7 +144,7 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *s3control.ListJ
 func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "PutPublicAccessBlockWithContext",
+		Action:  "PutPublicAccessBlock",
 		Input:   input,
 		Output:  (*s3control.PutPublicAccessBlockOutput)(nil),
 		Error:   nil,
@@ -165,7 +165,7 @@ func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3c
 func (c *Client) UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "UpdateJobPriorityWithContext",
+		Action:  "UpdateJobPriority",
 		Input:   input,
 		Output:  (*s3control.UpdateJobPriorityOutput)(nil),
 		Error:   nil,
@@ -186,7 +186,7 @@ func (c *Client) UpdateJobPriorityWithContext(ctx context.Context, input *s3cont
 func (c *Client) UpdateJobStatusWithContext(ctx context.Context, input *s3control.UpdateJobStatusInput, opts ...request.Option) (*s3control.UpdateJobStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
-		Action:  "UpdateJobStatusWithContext",
+		Action:  "UpdateJobStatus",
 		Input:   input,
 		Output:  (*s3control.UpdateJobStatusOutput)(nil),
 		Error:   nil,

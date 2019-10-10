@@ -48,7 +48,7 @@ var _ GlobalAccelerator = (*Client)(nil)
 func (c *Client) CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "CreateAcceleratorWithContext",
+		Action:  "CreateAccelerator",
 		Input:   input,
 		Output:  (*globalaccelerator.CreateAcceleratorOutput)(nil),
 		Error:   nil,
@@ -69,7 +69,7 @@ func (c *Client) CreateAcceleratorWithContext(ctx context.Context, input *global
 func (c *Client) CreateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "CreateEndpointGroupWithContext",
+		Action:  "CreateEndpointGroup",
 		Input:   input,
 		Output:  (*globalaccelerator.CreateEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -90,7 +90,7 @@ func (c *Client) CreateEndpointGroupWithContext(ctx context.Context, input *glob
 func (c *Client) CreateListenerWithContext(ctx context.Context, input *globalaccelerator.CreateListenerInput, opts ...request.Option) (*globalaccelerator.CreateListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "CreateListenerWithContext",
+		Action:  "CreateListener",
 		Input:   input,
 		Output:  (*globalaccelerator.CreateListenerOutput)(nil),
 		Error:   nil,
@@ -111,7 +111,7 @@ func (c *Client) CreateListenerWithContext(ctx context.Context, input *globalacc
 func (c *Client) DeleteAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DeleteAcceleratorWithContext",
+		Action:  "DeleteAccelerator",
 		Input:   input,
 		Output:  (*globalaccelerator.DeleteAcceleratorOutput)(nil),
 		Error:   nil,
@@ -132,7 +132,7 @@ func (c *Client) DeleteAcceleratorWithContext(ctx context.Context, input *global
 func (c *Client) DeleteEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DeleteEndpointGroupWithContext",
+		Action:  "DeleteEndpointGroup",
 		Input:   input,
 		Output:  (*globalaccelerator.DeleteEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -153,7 +153,7 @@ func (c *Client) DeleteEndpointGroupWithContext(ctx context.Context, input *glob
 func (c *Client) DeleteListenerWithContext(ctx context.Context, input *globalaccelerator.DeleteListenerInput, opts ...request.Option) (*globalaccelerator.DeleteListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DeleteListenerWithContext",
+		Action:  "DeleteListener",
 		Input:   input,
 		Output:  (*globalaccelerator.DeleteListenerOutput)(nil),
 		Error:   nil,
@@ -174,7 +174,7 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, input *globalacc
 func (c *Client) DescribeAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DescribeAcceleratorWithContext",
+		Action:  "DescribeAccelerator",
 		Input:   input,
 		Output:  (*globalaccelerator.DescribeAcceleratorOutput)(nil),
 		Error:   nil,
@@ -195,7 +195,7 @@ func (c *Client) DescribeAcceleratorWithContext(ctx context.Context, input *glob
 func (c *Client) DescribeAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DescribeAcceleratorAttributesWithContext",
+		Action:  "DescribeAcceleratorAttributes",
 		Input:   input,
 		Output:  (*globalaccelerator.DescribeAcceleratorAttributesOutput)(nil),
 		Error:   nil,
@@ -216,7 +216,7 @@ func (c *Client) DescribeAcceleratorAttributesWithContext(ctx context.Context, i
 func (c *Client) DescribeEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DescribeEndpointGroupWithContext",
+		Action:  "DescribeEndpointGroup",
 		Input:   input,
 		Output:  (*globalaccelerator.DescribeEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -237,7 +237,7 @@ func (c *Client) DescribeEndpointGroupWithContext(ctx context.Context, input *gl
 func (c *Client) DescribeListenerWithContext(ctx context.Context, input *globalaccelerator.DescribeListenerInput, opts ...request.Option) (*globalaccelerator.DescribeListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "DescribeListenerWithContext",
+		Action:  "DescribeListener",
 		Input:   input,
 		Output:  (*globalaccelerator.DescribeListenerOutput)(nil),
 		Error:   nil,
@@ -258,7 +258,7 @@ func (c *Client) DescribeListenerWithContext(ctx context.Context, input *globala
 func (c *Client) ListAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListAcceleratorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "ListAcceleratorsWithContext",
+		Action:  "ListAccelerators",
 		Input:   input,
 		Output:  (*globalaccelerator.ListAcceleratorsOutput)(nil),
 		Error:   nil,
@@ -279,7 +279,7 @@ func (c *Client) ListAcceleratorsWithContext(ctx context.Context, input *globala
 func (c *Client) ListEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListEndpointGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "ListEndpointGroupsWithContext",
+		Action:  "ListEndpointGroups",
 		Input:   input,
 		Output:  (*globalaccelerator.ListEndpointGroupsOutput)(nil),
 		Error:   nil,
@@ -300,7 +300,7 @@ func (c *Client) ListEndpointGroupsWithContext(ctx context.Context, input *globa
 func (c *Client) ListListenersWithContext(ctx context.Context, input *globalaccelerator.ListListenersInput, opts ...request.Option) (*globalaccelerator.ListListenersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "ListListenersWithContext",
+		Action:  "ListListeners",
 		Input:   input,
 		Output:  (*globalaccelerator.ListListenersOutput)(nil),
 		Error:   nil,
@@ -321,7 +321,7 @@ func (c *Client) ListListenersWithContext(ctx context.Context, input *globalacce
 func (c *Client) UpdateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "UpdateAcceleratorWithContext",
+		Action:  "UpdateAccelerator",
 		Input:   input,
 		Output:  (*globalaccelerator.UpdateAcceleratorOutput)(nil),
 		Error:   nil,
@@ -342,7 +342,7 @@ func (c *Client) UpdateAcceleratorWithContext(ctx context.Context, input *global
 func (c *Client) UpdateAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "UpdateAcceleratorAttributesWithContext",
+		Action:  "UpdateAcceleratorAttributes",
 		Input:   input,
 		Output:  (*globalaccelerator.UpdateAcceleratorAttributesOutput)(nil),
 		Error:   nil,
@@ -363,7 +363,7 @@ func (c *Client) UpdateAcceleratorAttributesWithContext(ctx context.Context, inp
 func (c *Client) UpdateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.UpdateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.UpdateEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "UpdateEndpointGroupWithContext",
+		Action:  "UpdateEndpointGroup",
 		Input:   input,
 		Output:  (*globalaccelerator.UpdateEndpointGroupOutput)(nil),
 		Error:   nil,
@@ -384,7 +384,7 @@ func (c *Client) UpdateEndpointGroupWithContext(ctx context.Context, input *glob
 func (c *Client) UpdateListenerWithContext(ctx context.Context, input *globalaccelerator.UpdateListenerInput, opts ...request.Option) (*globalaccelerator.UpdateListenerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
-		Action:  "UpdateListenerWithContext",
+		Action:  "UpdateListener",
 		Input:   input,
 		Output:  (*globalaccelerator.UpdateListenerOutput)(nil),
 		Error:   nil,

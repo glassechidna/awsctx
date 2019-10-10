@@ -32,7 +32,7 @@ var _ KinesisVideoMedia = (*Client)(nil)
 func (c *Client) GetMediaWithContext(ctx context.Context, input *kinesisvideomedia.GetMediaInput, opts ...request.Option) (*kinesisvideomedia.GetMediaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideomedia",
-		Action:  "GetMediaWithContext",
+		Action:  "GetMedia",
 		Input:   input,
 		Output:  (*kinesisvideomedia.GetMediaOutput)(nil),
 		Error:   nil,

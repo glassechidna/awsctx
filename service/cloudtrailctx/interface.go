@@ -45,7 +45,7 @@ var _ CloudTrail = (*Client)(nil)
 func (c *Client) AddTagsWithContext(ctx context.Context, input *cloudtrail.AddTagsInput, opts ...request.Option) (*cloudtrail.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "AddTagsWithContext",
+		Action:  "AddTags",
 		Input:   input,
 		Output:  (*cloudtrail.AddTagsOutput)(nil),
 		Error:   nil,
@@ -66,7 +66,7 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *cloudtrail.AddTa
 func (c *Client) CreateTrailWithContext(ctx context.Context, input *cloudtrail.CreateTrailInput, opts ...request.Option) (*cloudtrail.CreateTrailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "CreateTrailWithContext",
+		Action:  "CreateTrail",
 		Input:   input,
 		Output:  (*cloudtrail.CreateTrailOutput)(nil),
 		Error:   nil,
@@ -87,7 +87,7 @@ func (c *Client) CreateTrailWithContext(ctx context.Context, input *cloudtrail.C
 func (c *Client) DeleteTrailWithContext(ctx context.Context, input *cloudtrail.DeleteTrailInput, opts ...request.Option) (*cloudtrail.DeleteTrailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "DeleteTrailWithContext",
+		Action:  "DeleteTrail",
 		Input:   input,
 		Output:  (*cloudtrail.DeleteTrailOutput)(nil),
 		Error:   nil,
@@ -108,7 +108,7 @@ func (c *Client) DeleteTrailWithContext(ctx context.Context, input *cloudtrail.D
 func (c *Client) DescribeTrailsWithContext(ctx context.Context, input *cloudtrail.DescribeTrailsInput, opts ...request.Option) (*cloudtrail.DescribeTrailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "DescribeTrailsWithContext",
+		Action:  "DescribeTrails",
 		Input:   input,
 		Output:  (*cloudtrail.DescribeTrailsOutput)(nil),
 		Error:   nil,
@@ -129,7 +129,7 @@ func (c *Client) DescribeTrailsWithContext(ctx context.Context, input *cloudtrai
 func (c *Client) GetEventSelectorsWithContext(ctx context.Context, input *cloudtrail.GetEventSelectorsInput, opts ...request.Option) (*cloudtrail.GetEventSelectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "GetEventSelectorsWithContext",
+		Action:  "GetEventSelectors",
 		Input:   input,
 		Output:  (*cloudtrail.GetEventSelectorsOutput)(nil),
 		Error:   nil,
@@ -150,7 +150,7 @@ func (c *Client) GetEventSelectorsWithContext(ctx context.Context, input *cloudt
 func (c *Client) GetTrailStatusWithContext(ctx context.Context, input *cloudtrail.GetTrailStatusInput, opts ...request.Option) (*cloudtrail.GetTrailStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "GetTrailStatusWithContext",
+		Action:  "GetTrailStatus",
 		Input:   input,
 		Output:  (*cloudtrail.GetTrailStatusOutput)(nil),
 		Error:   nil,
@@ -171,7 +171,7 @@ func (c *Client) GetTrailStatusWithContext(ctx context.Context, input *cloudtrai
 func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, opts ...request.Option) (*cloudtrail.ListPublicKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "ListPublicKeysWithContext",
+		Action:  "ListPublicKeys",
 		Input:   input,
 		Output:  (*cloudtrail.ListPublicKeysOutput)(nil),
 		Error:   nil,
@@ -192,7 +192,7 @@ func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudtrai
 func (c *Client) ListTagsWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, opts ...request.Option) (*cloudtrail.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "ListTagsWithContext",
+		Action:  "ListTags",
 		Input:   input,
 		Output:  (*cloudtrail.ListTagsOutput)(nil),
 		Error:   nil,
@@ -213,7 +213,7 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *cloudtrail.List
 func (c *Client) LookupEventsWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, opts ...request.Option) (*cloudtrail.LookupEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "LookupEventsWithContext",
+		Action:  "LookupEvents",
 		Input:   input,
 		Output:  (*cloudtrail.LookupEventsOutput)(nil),
 		Error:   nil,
@@ -234,7 +234,7 @@ func (c *Client) LookupEventsWithContext(ctx context.Context, input *cloudtrail.
 func (c *Client) PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "PutEventSelectorsWithContext",
+		Action:  "PutEventSelectors",
 		Input:   input,
 		Output:  (*cloudtrail.PutEventSelectorsOutput)(nil),
 		Error:   nil,
@@ -255,7 +255,7 @@ func (c *Client) PutEventSelectorsWithContext(ctx context.Context, input *cloudt
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "RemoveTagsWithContext",
+		Action:  "RemoveTags",
 		Input:   input,
 		Output:  (*cloudtrail.RemoveTagsOutput)(nil),
 		Error:   nil,
@@ -276,7 +276,7 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *cloudtrail.Re
 func (c *Client) StartLoggingWithContext(ctx context.Context, input *cloudtrail.StartLoggingInput, opts ...request.Option) (*cloudtrail.StartLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "StartLoggingWithContext",
+		Action:  "StartLogging",
 		Input:   input,
 		Output:  (*cloudtrail.StartLoggingOutput)(nil),
 		Error:   nil,
@@ -297,7 +297,7 @@ func (c *Client) StartLoggingWithContext(ctx context.Context, input *cloudtrail.
 func (c *Client) StopLoggingWithContext(ctx context.Context, input *cloudtrail.StopLoggingInput, opts ...request.Option) (*cloudtrail.StopLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "StopLoggingWithContext",
+		Action:  "StopLogging",
 		Input:   input,
 		Output:  (*cloudtrail.StopLoggingOutput)(nil),
 		Error:   nil,
@@ -318,7 +318,7 @@ func (c *Client) StopLoggingWithContext(ctx context.Context, input *cloudtrail.S
 func (c *Client) UpdateTrailWithContext(ctx context.Context, input *cloudtrail.UpdateTrailInput, opts ...request.Option) (*cloudtrail.UpdateTrailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
-		Action:  "UpdateTrailWithContext",
+		Action:  "UpdateTrail",
 		Input:   input,
 		Output:  (*cloudtrail.UpdateTrailOutput)(nil),
 		Error:   nil,

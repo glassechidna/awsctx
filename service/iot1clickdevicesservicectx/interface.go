@@ -44,7 +44,7 @@ var _ IoT1ClickDevicesService = (*Client)(nil)
 func (c *Client) ClaimDevicesByClaimCodeWithContext(ctx context.Context, input *iot1clickdevicesservice.ClaimDevicesByClaimCodeInput, opts ...request.Option) (*iot1clickdevicesservice.ClaimDevicesByClaimCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "ClaimDevicesByClaimCodeWithContext",
+		Action:  "ClaimDevicesByClaimCode",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.ClaimDevicesByClaimCodeOutput)(nil),
 		Error:   nil,
@@ -65,7 +65,7 @@ func (c *Client) ClaimDevicesByClaimCodeWithContext(ctx context.Context, input *
 func (c *Client) DescribeDeviceWithContext(ctx context.Context, input *iot1clickdevicesservice.DescribeDeviceInput, opts ...request.Option) (*iot1clickdevicesservice.DescribeDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "DescribeDeviceWithContext",
+		Action:  "DescribeDevice",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.DescribeDeviceOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) DescribeDeviceWithContext(ctx context.Context, input *iot1click
 func (c *Client) FinalizeDeviceClaimWithContext(ctx context.Context, input *iot1clickdevicesservice.FinalizeDeviceClaimInput, opts ...request.Option) (*iot1clickdevicesservice.FinalizeDeviceClaimOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "FinalizeDeviceClaimWithContext",
+		Action:  "FinalizeDeviceClaim",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.FinalizeDeviceClaimOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) FinalizeDeviceClaimWithContext(ctx context.Context, input *iot1
 func (c *Client) GetDeviceMethodsWithContext(ctx context.Context, input *iot1clickdevicesservice.GetDeviceMethodsInput, opts ...request.Option) (*iot1clickdevicesservice.GetDeviceMethodsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "GetDeviceMethodsWithContext",
+		Action:  "GetDeviceMethods",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.GetDeviceMethodsOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) GetDeviceMethodsWithContext(ctx context.Context, input *iot1cli
 func (c *Client) InitiateDeviceClaimWithContext(ctx context.Context, input *iot1clickdevicesservice.InitiateDeviceClaimInput, opts ...request.Option) (*iot1clickdevicesservice.InitiateDeviceClaimOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "InitiateDeviceClaimWithContext",
+		Action:  "InitiateDeviceClaim",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.InitiateDeviceClaimOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) InitiateDeviceClaimWithContext(ctx context.Context, input *iot1
 func (c *Client) InvokeDeviceMethodWithContext(ctx context.Context, input *iot1clickdevicesservice.InvokeDeviceMethodInput, opts ...request.Option) (*iot1clickdevicesservice.InvokeDeviceMethodOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "InvokeDeviceMethodWithContext",
+		Action:  "InvokeDeviceMethod",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.InvokeDeviceMethodOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) InvokeDeviceMethodWithContext(ctx context.Context, input *iot1c
 func (c *Client) ListDeviceEventsWithContext(ctx context.Context, input *iot1clickdevicesservice.ListDeviceEventsInput, opts ...request.Option) (*iot1clickdevicesservice.ListDeviceEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "ListDeviceEventsWithContext",
+		Action:  "ListDeviceEvents",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.ListDeviceEventsOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) ListDeviceEventsWithContext(ctx context.Context, input *iot1cli
 func (c *Client) ListDevicesWithContext(ctx context.Context, input *iot1clickdevicesservice.ListDevicesInput, opts ...request.Option) (*iot1clickdevicesservice.ListDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "ListDevicesWithContext",
+		Action:  "ListDevices",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.ListDevicesOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, input *iot1clickdev
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot1clickdevicesservice.ListTagsForResourceInput, opts ...request.Option) (*iot1clickdevicesservice.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot1
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iot1clickdevicesservice.TagResourceInput, opts ...request.Option) (*iot1clickdevicesservice.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.TagResourceOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *iot1clickdev
 func (c *Client) UnclaimDeviceWithContext(ctx context.Context, input *iot1clickdevicesservice.UnclaimDeviceInput, opts ...request.Option) (*iot1clickdevicesservice.UnclaimDeviceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "UnclaimDeviceWithContext",
+		Action:  "UnclaimDevice",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.UnclaimDeviceOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) UnclaimDeviceWithContext(ctx context.Context, input *iot1clickd
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *iot1clickdevicesservice.UntagResourceInput, opts ...request.Option) (*iot1clickdevicesservice.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iot1clickd
 func (c *Client) UpdateDeviceStateWithContext(ctx context.Context, input *iot1clickdevicesservice.UpdateDeviceStateInput, opts ...request.Option) (*iot1clickdevicesservice.UpdateDeviceStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickdevicesservice",
-		Action:  "UpdateDeviceStateWithContext",
+		Action:  "UpdateDeviceState",
 		Input:   input,
 		Output:  (*iot1clickdevicesservice.UpdateDeviceStateOutput)(nil),
 		Error:   nil,

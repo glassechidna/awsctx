@@ -34,7 +34,7 @@ var _ CloudSearchDomain = (*Client)(nil)
 func (c *Client) SearchWithContext(ctx context.Context, input *cloudsearchdomain.SearchInput, opts ...request.Option) (*cloudsearchdomain.SearchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearchdomain",
-		Action:  "SearchWithContext",
+		Action:  "Search",
 		Input:   input,
 		Output:  (*cloudsearchdomain.SearchOutput)(nil),
 		Error:   nil,
@@ -55,7 +55,7 @@ func (c *Client) SearchWithContext(ctx context.Context, input *cloudsearchdomain
 func (c *Client) SuggestWithContext(ctx context.Context, input *cloudsearchdomain.SuggestInput, opts ...request.Option) (*cloudsearchdomain.SuggestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearchdomain",
-		Action:  "SuggestWithContext",
+		Action:  "Suggest",
 		Input:   input,
 		Output:  (*cloudsearchdomain.SuggestOutput)(nil),
 		Error:   nil,
@@ -76,7 +76,7 @@ func (c *Client) SuggestWithContext(ctx context.Context, input *cloudsearchdomai
 func (c *Client) UploadDocumentsWithContext(ctx context.Context, input *cloudsearchdomain.UploadDocumentsInput, opts ...request.Option) (*cloudsearchdomain.UploadDocumentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearchdomain",
-		Action:  "UploadDocumentsWithContext",
+		Action:  "UploadDocuments",
 		Input:   input,
 		Output:  (*cloudsearchdomain.UploadDocumentsOutput)(nil),
 		Error:   nil,

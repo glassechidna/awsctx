@@ -56,7 +56,7 @@ var _ ApplicationDiscoveryService = (*Client)(nil)
 func (c *Client) AssociateConfigurationItemsToApplicationWithContext(ctx context.Context, input *applicationdiscoveryservice.AssociateConfigurationItemsToApplicationInput, opts ...request.Option) (*applicationdiscoveryservice.AssociateConfigurationItemsToApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "AssociateConfigurationItemsToApplicationWithContext",
+		Action:  "AssociateConfigurationItemsToApplication",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.AssociateConfigurationItemsToApplicationOutput)(nil),
 		Error:   nil,
@@ -77,7 +77,7 @@ func (c *Client) AssociateConfigurationItemsToApplicationWithContext(ctx context
 func (c *Client) BatchDeleteImportDataWithContext(ctx context.Context, input *applicationdiscoveryservice.BatchDeleteImportDataInput, opts ...request.Option) (*applicationdiscoveryservice.BatchDeleteImportDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "BatchDeleteImportDataWithContext",
+		Action:  "BatchDeleteImportData",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.BatchDeleteImportDataOutput)(nil),
 		Error:   nil,
@@ -98,7 +98,7 @@ func (c *Client) BatchDeleteImportDataWithContext(ctx context.Context, input *ap
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *applicationdiscoveryservice.CreateApplicationInput, opts ...request.Option) (*applicationdiscoveryservice.CreateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "CreateApplicationWithContext",
+		Action:  "CreateApplication",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.CreateApplicationOutput)(nil),
 		Error:   nil,
@@ -119,7 +119,7 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *applic
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *applicationdiscoveryservice.CreateTagsInput, opts ...request.Option) (*applicationdiscoveryservice.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "CreateTagsWithContext",
+		Action:  "CreateTags",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.CreateTagsOutput)(nil),
 		Error:   nil,
@@ -140,7 +140,7 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *applicationdi
 func (c *Client) DeleteApplicationsWithContext(ctx context.Context, input *applicationdiscoveryservice.DeleteApplicationsInput, opts ...request.Option) (*applicationdiscoveryservice.DeleteApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DeleteApplicationsWithContext",
+		Action:  "DeleteApplications",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DeleteApplicationsOutput)(nil),
 		Error:   nil,
@@ -161,7 +161,7 @@ func (c *Client) DeleteApplicationsWithContext(ctx context.Context, input *appli
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *applicationdiscoveryservice.DeleteTagsInput, opts ...request.Option) (*applicationdiscoveryservice.DeleteTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DeleteTagsWithContext",
+		Action:  "DeleteTags",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DeleteTagsOutput)(nil),
 		Error:   nil,
@@ -182,7 +182,7 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *applicationdi
 func (c *Client) DescribeAgentsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeAgentsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeAgentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeAgentsWithContext",
+		Action:  "DescribeAgents",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeAgentsOutput)(nil),
 		Error:   nil,
@@ -203,7 +203,7 @@ func (c *Client) DescribeAgentsWithContext(ctx context.Context, input *applicati
 func (c *Client) DescribeConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeConfigurationsWithContext",
+		Action:  "DescribeConfigurations",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeConfigurationsOutput)(nil),
 		Error:   nil,
@@ -224,7 +224,7 @@ func (c *Client) DescribeConfigurationsWithContext(ctx context.Context, input *a
 func (c *Client) DescribeContinuousExportsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeContinuousExportsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeContinuousExportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeContinuousExportsWithContext",
+		Action:  "DescribeContinuousExports",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeContinuousExportsOutput)(nil),
 		Error:   nil,
@@ -245,7 +245,7 @@ func (c *Client) DescribeContinuousExportsWithContext(ctx context.Context, input
 func (c *Client) DescribeExportConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeExportConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeExportConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeExportConfigurationsWithContext",
+		Action:  "DescribeExportConfigurations",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeExportConfigurationsOutput)(nil),
 		Error:   nil,
@@ -266,7 +266,7 @@ func (c *Client) DescribeExportConfigurationsWithContext(ctx context.Context, in
 func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeExportTasksInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeExportTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeExportTasksWithContext",
+		Action:  "DescribeExportTasks",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeExportTasksOutput)(nil),
 		Error:   nil,
@@ -287,7 +287,7 @@ func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *appl
 func (c *Client) DescribeImportTasksWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeImportTasksInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeImportTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeImportTasksWithContext",
+		Action:  "DescribeImportTasks",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeImportTasksOutput)(nil),
 		Error:   nil,
@@ -308,7 +308,7 @@ func (c *Client) DescribeImportTasksWithContext(ctx context.Context, input *appl
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeTagsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DescribeTagsWithContext",
+		Action:  "DescribeTags",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DescribeTagsOutput)(nil),
 		Error:   nil,
@@ -329,7 +329,7 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *application
 func (c *Client) DisassociateConfigurationItemsFromApplicationWithContext(ctx context.Context, input *applicationdiscoveryservice.DisassociateConfigurationItemsFromApplicationInput, opts ...request.Option) (*applicationdiscoveryservice.DisassociateConfigurationItemsFromApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "DisassociateConfigurationItemsFromApplicationWithContext",
+		Action:  "DisassociateConfigurationItemsFromApplication",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.DisassociateConfigurationItemsFromApplicationOutput)(nil),
 		Error:   nil,
@@ -350,7 +350,7 @@ func (c *Client) DisassociateConfigurationItemsFromApplicationWithContext(ctx co
 func (c *Client) ExportConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.ExportConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.ExportConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "ExportConfigurationsWithContext",
+		Action:  "ExportConfigurations",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.ExportConfigurationsOutput)(nil),
 		Error:   nil,
@@ -371,7 +371,7 @@ func (c *Client) ExportConfigurationsWithContext(ctx context.Context, input *app
 func (c *Client) GetDiscoverySummaryWithContext(ctx context.Context, input *applicationdiscoveryservice.GetDiscoverySummaryInput, opts ...request.Option) (*applicationdiscoveryservice.GetDiscoverySummaryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "GetDiscoverySummaryWithContext",
+		Action:  "GetDiscoverySummary",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.GetDiscoverySummaryOutput)(nil),
 		Error:   nil,
@@ -392,7 +392,7 @@ func (c *Client) GetDiscoverySummaryWithContext(ctx context.Context, input *appl
 func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.ListConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.ListConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "ListConfigurationsWithContext",
+		Action:  "ListConfigurations",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.ListConfigurationsOutput)(nil),
 		Error:   nil,
@@ -413,7 +413,7 @@ func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *appli
 func (c *Client) ListServerNeighborsWithContext(ctx context.Context, input *applicationdiscoveryservice.ListServerNeighborsInput, opts ...request.Option) (*applicationdiscoveryservice.ListServerNeighborsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "ListServerNeighborsWithContext",
+		Action:  "ListServerNeighbors",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.ListServerNeighborsOutput)(nil),
 		Error:   nil,
@@ -434,7 +434,7 @@ func (c *Client) ListServerNeighborsWithContext(ctx context.Context, input *appl
 func (c *Client) StartContinuousExportWithContext(ctx context.Context, input *applicationdiscoveryservice.StartContinuousExportInput, opts ...request.Option) (*applicationdiscoveryservice.StartContinuousExportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "StartContinuousExportWithContext",
+		Action:  "StartContinuousExport",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.StartContinuousExportOutput)(nil),
 		Error:   nil,
@@ -455,7 +455,7 @@ func (c *Client) StartContinuousExportWithContext(ctx context.Context, input *ap
 func (c *Client) StartDataCollectionByAgentIdsWithContext(ctx context.Context, input *applicationdiscoveryservice.StartDataCollectionByAgentIdsInput, opts ...request.Option) (*applicationdiscoveryservice.StartDataCollectionByAgentIdsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "StartDataCollectionByAgentIdsWithContext",
+		Action:  "StartDataCollectionByAgentIds",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.StartDataCollectionByAgentIdsOutput)(nil),
 		Error:   nil,
@@ -476,7 +476,7 @@ func (c *Client) StartDataCollectionByAgentIdsWithContext(ctx context.Context, i
 func (c *Client) StartExportTaskWithContext(ctx context.Context, input *applicationdiscoveryservice.StartExportTaskInput, opts ...request.Option) (*applicationdiscoveryservice.StartExportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "StartExportTaskWithContext",
+		Action:  "StartExportTask",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.StartExportTaskOutput)(nil),
 		Error:   nil,
@@ -497,7 +497,7 @@ func (c *Client) StartExportTaskWithContext(ctx context.Context, input *applicat
 func (c *Client) StartImportTaskWithContext(ctx context.Context, input *applicationdiscoveryservice.StartImportTaskInput, opts ...request.Option) (*applicationdiscoveryservice.StartImportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "StartImportTaskWithContext",
+		Action:  "StartImportTask",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.StartImportTaskOutput)(nil),
 		Error:   nil,
@@ -518,7 +518,7 @@ func (c *Client) StartImportTaskWithContext(ctx context.Context, input *applicat
 func (c *Client) StopContinuousExportWithContext(ctx context.Context, input *applicationdiscoveryservice.StopContinuousExportInput, opts ...request.Option) (*applicationdiscoveryservice.StopContinuousExportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "StopContinuousExportWithContext",
+		Action:  "StopContinuousExport",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.StopContinuousExportOutput)(nil),
 		Error:   nil,
@@ -539,7 +539,7 @@ func (c *Client) StopContinuousExportWithContext(ctx context.Context, input *app
 func (c *Client) StopDataCollectionByAgentIdsWithContext(ctx context.Context, input *applicationdiscoveryservice.StopDataCollectionByAgentIdsInput, opts ...request.Option) (*applicationdiscoveryservice.StopDataCollectionByAgentIdsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "StopDataCollectionByAgentIdsWithContext",
+		Action:  "StopDataCollectionByAgentIds",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.StopDataCollectionByAgentIdsOutput)(nil),
 		Error:   nil,
@@ -560,7 +560,7 @@ func (c *Client) StopDataCollectionByAgentIdsWithContext(ctx context.Context, in
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *applicationdiscoveryservice.UpdateApplicationInput, opts ...request.Option) (*applicationdiscoveryservice.UpdateApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
-		Action:  "UpdateApplicationWithContext",
+		Action:  "UpdateApplication",
 		Input:   input,
 		Output:  (*applicationdiscoveryservice.UpdateApplicationOutput)(nil),
 		Error:   nil,

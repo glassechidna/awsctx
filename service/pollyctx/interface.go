@@ -40,7 +40,7 @@ var _ Polly = (*Client)(nil)
 func (c *Client) DeleteLexiconWithContext(ctx context.Context, input *polly.DeleteLexiconInput, opts ...request.Option) (*polly.DeleteLexiconOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "DeleteLexiconWithContext",
+		Action:  "DeleteLexicon",
 		Input:   input,
 		Output:  (*polly.DeleteLexiconOutput)(nil),
 		Error:   nil,
@@ -61,7 +61,7 @@ func (c *Client) DeleteLexiconWithContext(ctx context.Context, input *polly.Dele
 func (c *Client) DescribeVoicesWithContext(ctx context.Context, input *polly.DescribeVoicesInput, opts ...request.Option) (*polly.DescribeVoicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "DescribeVoicesWithContext",
+		Action:  "DescribeVoices",
 		Input:   input,
 		Output:  (*polly.DescribeVoicesOutput)(nil),
 		Error:   nil,
@@ -82,7 +82,7 @@ func (c *Client) DescribeVoicesWithContext(ctx context.Context, input *polly.Des
 func (c *Client) GetLexiconWithContext(ctx context.Context, input *polly.GetLexiconInput, opts ...request.Option) (*polly.GetLexiconOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "GetLexiconWithContext",
+		Action:  "GetLexicon",
 		Input:   input,
 		Output:  (*polly.GetLexiconOutput)(nil),
 		Error:   nil,
@@ -103,7 +103,7 @@ func (c *Client) GetLexiconWithContext(ctx context.Context, input *polly.GetLexi
 func (c *Client) GetSpeechSynthesisTaskWithContext(ctx context.Context, input *polly.GetSpeechSynthesisTaskInput, opts ...request.Option) (*polly.GetSpeechSynthesisTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "GetSpeechSynthesisTaskWithContext",
+		Action:  "GetSpeechSynthesisTask",
 		Input:   input,
 		Output:  (*polly.GetSpeechSynthesisTaskOutput)(nil),
 		Error:   nil,
@@ -124,7 +124,7 @@ func (c *Client) GetSpeechSynthesisTaskWithContext(ctx context.Context, input *p
 func (c *Client) ListLexiconsWithContext(ctx context.Context, input *polly.ListLexiconsInput, opts ...request.Option) (*polly.ListLexiconsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "ListLexiconsWithContext",
+		Action:  "ListLexicons",
 		Input:   input,
 		Output:  (*polly.ListLexiconsOutput)(nil),
 		Error:   nil,
@@ -145,7 +145,7 @@ func (c *Client) ListLexiconsWithContext(ctx context.Context, input *polly.ListL
 func (c *Client) ListSpeechSynthesisTasksWithContext(ctx context.Context, input *polly.ListSpeechSynthesisTasksInput, opts ...request.Option) (*polly.ListSpeechSynthesisTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "ListSpeechSynthesisTasksWithContext",
+		Action:  "ListSpeechSynthesisTasks",
 		Input:   input,
 		Output:  (*polly.ListSpeechSynthesisTasksOutput)(nil),
 		Error:   nil,
@@ -166,7 +166,7 @@ func (c *Client) ListSpeechSynthesisTasksWithContext(ctx context.Context, input 
 func (c *Client) PutLexiconWithContext(ctx context.Context, input *polly.PutLexiconInput, opts ...request.Option) (*polly.PutLexiconOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "PutLexiconWithContext",
+		Action:  "PutLexicon",
 		Input:   input,
 		Output:  (*polly.PutLexiconOutput)(nil),
 		Error:   nil,
@@ -187,7 +187,7 @@ func (c *Client) PutLexiconWithContext(ctx context.Context, input *polly.PutLexi
 func (c *Client) StartSpeechSynthesisTaskWithContext(ctx context.Context, input *polly.StartSpeechSynthesisTaskInput, opts ...request.Option) (*polly.StartSpeechSynthesisTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "StartSpeechSynthesisTaskWithContext",
+		Action:  "StartSpeechSynthesisTask",
 		Input:   input,
 		Output:  (*polly.StartSpeechSynthesisTaskOutput)(nil),
 		Error:   nil,
@@ -208,7 +208,7 @@ func (c *Client) StartSpeechSynthesisTaskWithContext(ctx context.Context, input 
 func (c *Client) SynthesizeSpeechWithContext(ctx context.Context, input *polly.SynthesizeSpeechInput, opts ...request.Option) (*polly.SynthesizeSpeechOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "polly",
-		Action:  "SynthesizeSpeechWithContext",
+		Action:  "SynthesizeSpeech",
 		Input:   input,
 		Output:  (*polly.SynthesizeSpeechOutput)(nil),
 		Error:   nil,

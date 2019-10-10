@@ -72,7 +72,7 @@ var _ KMS = (*Client)(nil)
 func (c *Client) CancelKeyDeletionWithContext(ctx context.Context, input *kms.CancelKeyDeletionInput, opts ...request.Option) (*kms.CancelKeyDeletionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "CancelKeyDeletionWithContext",
+		Action:  "CancelKeyDeletion",
 		Input:   input,
 		Output:  (*kms.CancelKeyDeletionOutput)(nil),
 		Error:   nil,
@@ -93,7 +93,7 @@ func (c *Client) CancelKeyDeletionWithContext(ctx context.Context, input *kms.Ca
 func (c *Client) ConnectCustomKeyStoreWithContext(ctx context.Context, input *kms.ConnectCustomKeyStoreInput, opts ...request.Option) (*kms.ConnectCustomKeyStoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ConnectCustomKeyStoreWithContext",
+		Action:  "ConnectCustomKeyStore",
 		Input:   input,
 		Output:  (*kms.ConnectCustomKeyStoreOutput)(nil),
 		Error:   nil,
@@ -114,7 +114,7 @@ func (c *Client) ConnectCustomKeyStoreWithContext(ctx context.Context, input *km
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *kms.CreateAliasInput, opts ...request.Option) (*kms.CreateAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "CreateAliasWithContext",
+		Action:  "CreateAlias",
 		Input:   input,
 		Output:  (*kms.CreateAliasOutput)(nil),
 		Error:   nil,
@@ -135,7 +135,7 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *kms.CreateAl
 func (c *Client) CreateCustomKeyStoreWithContext(ctx context.Context, input *kms.CreateCustomKeyStoreInput, opts ...request.Option) (*kms.CreateCustomKeyStoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "CreateCustomKeyStoreWithContext",
+		Action:  "CreateCustomKeyStore",
 		Input:   input,
 		Output:  (*kms.CreateCustomKeyStoreOutput)(nil),
 		Error:   nil,
@@ -156,7 +156,7 @@ func (c *Client) CreateCustomKeyStoreWithContext(ctx context.Context, input *kms
 func (c *Client) CreateGrantWithContext(ctx context.Context, input *kms.CreateGrantInput, opts ...request.Option) (*kms.CreateGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "CreateGrantWithContext",
+		Action:  "CreateGrant",
 		Input:   input,
 		Output:  (*kms.CreateGrantOutput)(nil),
 		Error:   nil,
@@ -177,7 +177,7 @@ func (c *Client) CreateGrantWithContext(ctx context.Context, input *kms.CreateGr
 func (c *Client) CreateKeyWithContext(ctx context.Context, input *kms.CreateKeyInput, opts ...request.Option) (*kms.CreateKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "CreateKeyWithContext",
+		Action:  "CreateKey",
 		Input:   input,
 		Output:  (*kms.CreateKeyOutput)(nil),
 		Error:   nil,
@@ -198,7 +198,7 @@ func (c *Client) CreateKeyWithContext(ctx context.Context, input *kms.CreateKeyI
 func (c *Client) DecryptWithContext(ctx context.Context, input *kms.DecryptInput, opts ...request.Option) (*kms.DecryptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DecryptWithContext",
+		Action:  "Decrypt",
 		Input:   input,
 		Output:  (*kms.DecryptOutput)(nil),
 		Error:   nil,
@@ -219,7 +219,7 @@ func (c *Client) DecryptWithContext(ctx context.Context, input *kms.DecryptInput
 func (c *Client) DeleteAliasWithContext(ctx context.Context, input *kms.DeleteAliasInput, opts ...request.Option) (*kms.DeleteAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DeleteAliasWithContext",
+		Action:  "DeleteAlias",
 		Input:   input,
 		Output:  (*kms.DeleteAliasOutput)(nil),
 		Error:   nil,
@@ -240,7 +240,7 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *kms.DeleteAl
 func (c *Client) DeleteCustomKeyStoreWithContext(ctx context.Context, input *kms.DeleteCustomKeyStoreInput, opts ...request.Option) (*kms.DeleteCustomKeyStoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DeleteCustomKeyStoreWithContext",
+		Action:  "DeleteCustomKeyStore",
 		Input:   input,
 		Output:  (*kms.DeleteCustomKeyStoreOutput)(nil),
 		Error:   nil,
@@ -261,7 +261,7 @@ func (c *Client) DeleteCustomKeyStoreWithContext(ctx context.Context, input *kms
 func (c *Client) DeleteImportedKeyMaterialWithContext(ctx context.Context, input *kms.DeleteImportedKeyMaterialInput, opts ...request.Option) (*kms.DeleteImportedKeyMaterialOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DeleteImportedKeyMaterialWithContext",
+		Action:  "DeleteImportedKeyMaterial",
 		Input:   input,
 		Output:  (*kms.DeleteImportedKeyMaterialOutput)(nil),
 		Error:   nil,
@@ -282,7 +282,7 @@ func (c *Client) DeleteImportedKeyMaterialWithContext(ctx context.Context, input
 func (c *Client) DescribeCustomKeyStoresWithContext(ctx context.Context, input *kms.DescribeCustomKeyStoresInput, opts ...request.Option) (*kms.DescribeCustomKeyStoresOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DescribeCustomKeyStoresWithContext",
+		Action:  "DescribeCustomKeyStores",
 		Input:   input,
 		Output:  (*kms.DescribeCustomKeyStoresOutput)(nil),
 		Error:   nil,
@@ -303,7 +303,7 @@ func (c *Client) DescribeCustomKeyStoresWithContext(ctx context.Context, input *
 func (c *Client) DescribeKeyWithContext(ctx context.Context, input *kms.DescribeKeyInput, opts ...request.Option) (*kms.DescribeKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DescribeKeyWithContext",
+		Action:  "DescribeKey",
 		Input:   input,
 		Output:  (*kms.DescribeKeyOutput)(nil),
 		Error:   nil,
@@ -324,7 +324,7 @@ func (c *Client) DescribeKeyWithContext(ctx context.Context, input *kms.Describe
 func (c *Client) DisableKeyWithContext(ctx context.Context, input *kms.DisableKeyInput, opts ...request.Option) (*kms.DisableKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DisableKeyWithContext",
+		Action:  "DisableKey",
 		Input:   input,
 		Output:  (*kms.DisableKeyOutput)(nil),
 		Error:   nil,
@@ -345,7 +345,7 @@ func (c *Client) DisableKeyWithContext(ctx context.Context, input *kms.DisableKe
 func (c *Client) DisableKeyRotationWithContext(ctx context.Context, input *kms.DisableKeyRotationInput, opts ...request.Option) (*kms.DisableKeyRotationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DisableKeyRotationWithContext",
+		Action:  "DisableKeyRotation",
 		Input:   input,
 		Output:  (*kms.DisableKeyRotationOutput)(nil),
 		Error:   nil,
@@ -366,7 +366,7 @@ func (c *Client) DisableKeyRotationWithContext(ctx context.Context, input *kms.D
 func (c *Client) DisconnectCustomKeyStoreWithContext(ctx context.Context, input *kms.DisconnectCustomKeyStoreInput, opts ...request.Option) (*kms.DisconnectCustomKeyStoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "DisconnectCustomKeyStoreWithContext",
+		Action:  "DisconnectCustomKeyStore",
 		Input:   input,
 		Output:  (*kms.DisconnectCustomKeyStoreOutput)(nil),
 		Error:   nil,
@@ -387,7 +387,7 @@ func (c *Client) DisconnectCustomKeyStoreWithContext(ctx context.Context, input 
 func (c *Client) EnableKeyWithContext(ctx context.Context, input *kms.EnableKeyInput, opts ...request.Option) (*kms.EnableKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "EnableKeyWithContext",
+		Action:  "EnableKey",
 		Input:   input,
 		Output:  (*kms.EnableKeyOutput)(nil),
 		Error:   nil,
@@ -408,7 +408,7 @@ func (c *Client) EnableKeyWithContext(ctx context.Context, input *kms.EnableKeyI
 func (c *Client) EnableKeyRotationWithContext(ctx context.Context, input *kms.EnableKeyRotationInput, opts ...request.Option) (*kms.EnableKeyRotationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "EnableKeyRotationWithContext",
+		Action:  "EnableKeyRotation",
 		Input:   input,
 		Output:  (*kms.EnableKeyRotationOutput)(nil),
 		Error:   nil,
@@ -429,7 +429,7 @@ func (c *Client) EnableKeyRotationWithContext(ctx context.Context, input *kms.En
 func (c *Client) EncryptWithContext(ctx context.Context, input *kms.EncryptInput, opts ...request.Option) (*kms.EncryptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "EncryptWithContext",
+		Action:  "Encrypt",
 		Input:   input,
 		Output:  (*kms.EncryptOutput)(nil),
 		Error:   nil,
@@ -450,7 +450,7 @@ func (c *Client) EncryptWithContext(ctx context.Context, input *kms.EncryptInput
 func (c *Client) GenerateDataKeyWithContext(ctx context.Context, input *kms.GenerateDataKeyInput, opts ...request.Option) (*kms.GenerateDataKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "GenerateDataKeyWithContext",
+		Action:  "GenerateDataKey",
 		Input:   input,
 		Output:  (*kms.GenerateDataKeyOutput)(nil),
 		Error:   nil,
@@ -471,7 +471,7 @@ func (c *Client) GenerateDataKeyWithContext(ctx context.Context, input *kms.Gene
 func (c *Client) GenerateDataKeyWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyWithoutPlaintextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "GenerateDataKeyWithoutPlaintextWithContext",
+		Action:  "GenerateDataKeyWithoutPlaintext",
 		Input:   input,
 		Output:  (*kms.GenerateDataKeyWithoutPlaintextOutput)(nil),
 		Error:   nil,
@@ -492,7 +492,7 @@ func (c *Client) GenerateDataKeyWithoutPlaintextWithContext(ctx context.Context,
 func (c *Client) GenerateRandomWithContext(ctx context.Context, input *kms.GenerateRandomInput, opts ...request.Option) (*kms.GenerateRandomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "GenerateRandomWithContext",
+		Action:  "GenerateRandom",
 		Input:   input,
 		Output:  (*kms.GenerateRandomOutput)(nil),
 		Error:   nil,
@@ -513,7 +513,7 @@ func (c *Client) GenerateRandomWithContext(ctx context.Context, input *kms.Gener
 func (c *Client) GetKeyPolicyWithContext(ctx context.Context, input *kms.GetKeyPolicyInput, opts ...request.Option) (*kms.GetKeyPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "GetKeyPolicyWithContext",
+		Action:  "GetKeyPolicy",
 		Input:   input,
 		Output:  (*kms.GetKeyPolicyOutput)(nil),
 		Error:   nil,
@@ -534,7 +534,7 @@ func (c *Client) GetKeyPolicyWithContext(ctx context.Context, input *kms.GetKeyP
 func (c *Client) GetKeyRotationStatusWithContext(ctx context.Context, input *kms.GetKeyRotationStatusInput, opts ...request.Option) (*kms.GetKeyRotationStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "GetKeyRotationStatusWithContext",
+		Action:  "GetKeyRotationStatus",
 		Input:   input,
 		Output:  (*kms.GetKeyRotationStatusOutput)(nil),
 		Error:   nil,
@@ -555,7 +555,7 @@ func (c *Client) GetKeyRotationStatusWithContext(ctx context.Context, input *kms
 func (c *Client) GetParametersForImportWithContext(ctx context.Context, input *kms.GetParametersForImportInput, opts ...request.Option) (*kms.GetParametersForImportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "GetParametersForImportWithContext",
+		Action:  "GetParametersForImport",
 		Input:   input,
 		Output:  (*kms.GetParametersForImportOutput)(nil),
 		Error:   nil,
@@ -576,7 +576,7 @@ func (c *Client) GetParametersForImportWithContext(ctx context.Context, input *k
 func (c *Client) ImportKeyMaterialWithContext(ctx context.Context, input *kms.ImportKeyMaterialInput, opts ...request.Option) (*kms.ImportKeyMaterialOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ImportKeyMaterialWithContext",
+		Action:  "ImportKeyMaterial",
 		Input:   input,
 		Output:  (*kms.ImportKeyMaterialOutput)(nil),
 		Error:   nil,
@@ -597,7 +597,7 @@ func (c *Client) ImportKeyMaterialWithContext(ctx context.Context, input *kms.Im
 func (c *Client) ListAliasesWithContext(ctx context.Context, input *kms.ListAliasesInput, opts ...request.Option) (*kms.ListAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ListAliasesWithContext",
+		Action:  "ListAliases",
 		Input:   input,
 		Output:  (*kms.ListAliasesOutput)(nil),
 		Error:   nil,
@@ -618,7 +618,7 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *kms.ListAlia
 func (c *Client) ListGrantsWithContext(ctx context.Context, input *kms.ListGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ListGrantsWithContext",
+		Action:  "ListGrants",
 		Input:   input,
 		Output:  (*kms.ListGrantsResponse)(nil),
 		Error:   nil,
@@ -639,7 +639,7 @@ func (c *Client) ListGrantsWithContext(ctx context.Context, input *kms.ListGrant
 func (c *Client) ListKeyPoliciesWithContext(ctx context.Context, input *kms.ListKeyPoliciesInput, opts ...request.Option) (*kms.ListKeyPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ListKeyPoliciesWithContext",
+		Action:  "ListKeyPolicies",
 		Input:   input,
 		Output:  (*kms.ListKeyPoliciesOutput)(nil),
 		Error:   nil,
@@ -660,7 +660,7 @@ func (c *Client) ListKeyPoliciesWithContext(ctx context.Context, input *kms.List
 func (c *Client) ListKeysWithContext(ctx context.Context, input *kms.ListKeysInput, opts ...request.Option) (*kms.ListKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ListKeysWithContext",
+		Action:  "ListKeys",
 		Input:   input,
 		Output:  (*kms.ListKeysOutput)(nil),
 		Error:   nil,
@@ -681,7 +681,7 @@ func (c *Client) ListKeysWithContext(ctx context.Context, input *kms.ListKeysInp
 func (c *Client) ListResourceTagsWithContext(ctx context.Context, input *kms.ListResourceTagsInput, opts ...request.Option) (*kms.ListResourceTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ListResourceTagsWithContext",
+		Action:  "ListResourceTags",
 		Input:   input,
 		Output:  (*kms.ListResourceTagsOutput)(nil),
 		Error:   nil,
@@ -702,7 +702,7 @@ func (c *Client) ListResourceTagsWithContext(ctx context.Context, input *kms.Lis
 func (c *Client) ListRetirableGrantsWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ListRetirableGrantsWithContext",
+		Action:  "ListRetirableGrants",
 		Input:   input,
 		Output:  (*kms.ListGrantsResponse)(nil),
 		Error:   nil,
@@ -723,7 +723,7 @@ func (c *Client) ListRetirableGrantsWithContext(ctx context.Context, input *kms.
 func (c *Client) PutKeyPolicyWithContext(ctx context.Context, input *kms.PutKeyPolicyInput, opts ...request.Option) (*kms.PutKeyPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "PutKeyPolicyWithContext",
+		Action:  "PutKeyPolicy",
 		Input:   input,
 		Output:  (*kms.PutKeyPolicyOutput)(nil),
 		Error:   nil,
@@ -744,7 +744,7 @@ func (c *Client) PutKeyPolicyWithContext(ctx context.Context, input *kms.PutKeyP
 func (c *Client) ReEncryptWithContext(ctx context.Context, input *kms.ReEncryptInput, opts ...request.Option) (*kms.ReEncryptOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ReEncryptWithContext",
+		Action:  "ReEncrypt",
 		Input:   input,
 		Output:  (*kms.ReEncryptOutput)(nil),
 		Error:   nil,
@@ -765,7 +765,7 @@ func (c *Client) ReEncryptWithContext(ctx context.Context, input *kms.ReEncryptI
 func (c *Client) RetireGrantWithContext(ctx context.Context, input *kms.RetireGrantInput, opts ...request.Option) (*kms.RetireGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "RetireGrantWithContext",
+		Action:  "RetireGrant",
 		Input:   input,
 		Output:  (*kms.RetireGrantOutput)(nil),
 		Error:   nil,
@@ -786,7 +786,7 @@ func (c *Client) RetireGrantWithContext(ctx context.Context, input *kms.RetireGr
 func (c *Client) RevokeGrantWithContext(ctx context.Context, input *kms.RevokeGrantInput, opts ...request.Option) (*kms.RevokeGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "RevokeGrantWithContext",
+		Action:  "RevokeGrant",
 		Input:   input,
 		Output:  (*kms.RevokeGrantOutput)(nil),
 		Error:   nil,
@@ -807,7 +807,7 @@ func (c *Client) RevokeGrantWithContext(ctx context.Context, input *kms.RevokeGr
 func (c *Client) ScheduleKeyDeletionWithContext(ctx context.Context, input *kms.ScheduleKeyDeletionInput, opts ...request.Option) (*kms.ScheduleKeyDeletionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "ScheduleKeyDeletionWithContext",
+		Action:  "ScheduleKeyDeletion",
 		Input:   input,
 		Output:  (*kms.ScheduleKeyDeletionOutput)(nil),
 		Error:   nil,
@@ -828,7 +828,7 @@ func (c *Client) ScheduleKeyDeletionWithContext(ctx context.Context, input *kms.
 func (c *Client) TagResourceWithContext(ctx context.Context, input *kms.TagResourceInput, opts ...request.Option) (*kms.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*kms.TagResourceOutput)(nil),
 		Error:   nil,
@@ -849,7 +849,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *kms.TagResou
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *kms.UntagResourceInput, opts ...request.Option) (*kms.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*kms.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -870,7 +870,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *kms.UntagR
 func (c *Client) UpdateAliasWithContext(ctx context.Context, input *kms.UpdateAliasInput, opts ...request.Option) (*kms.UpdateAliasOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "UpdateAliasWithContext",
+		Action:  "UpdateAlias",
 		Input:   input,
 		Output:  (*kms.UpdateAliasOutput)(nil),
 		Error:   nil,
@@ -891,7 +891,7 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, input *kms.UpdateAl
 func (c *Client) UpdateCustomKeyStoreWithContext(ctx context.Context, input *kms.UpdateCustomKeyStoreInput, opts ...request.Option) (*kms.UpdateCustomKeyStoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "UpdateCustomKeyStoreWithContext",
+		Action:  "UpdateCustomKeyStore",
 		Input:   input,
 		Output:  (*kms.UpdateCustomKeyStoreOutput)(nil),
 		Error:   nil,
@@ -912,7 +912,7 @@ func (c *Client) UpdateCustomKeyStoreWithContext(ctx context.Context, input *kms
 func (c *Client) UpdateKeyDescriptionWithContext(ctx context.Context, input *kms.UpdateKeyDescriptionInput, opts ...request.Option) (*kms.UpdateKeyDescriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
-		Action:  "UpdateKeyDescriptionWithContext",
+		Action:  "UpdateKeyDescription",
 		Input:   input,
 		Output:  (*kms.UpdateKeyDescriptionOutput)(nil),
 		Error:   nil,

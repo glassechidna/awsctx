@@ -41,7 +41,7 @@ var _ KinesisVideo = (*Client)(nil)
 func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesisvideo.CreateStreamInput, opts ...request.Option) (*kinesisvideo.CreateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "CreateStreamWithContext",
+		Action:  "CreateStream",
 		Input:   input,
 		Output:  (*kinesisvideo.CreateStreamOutput)(nil),
 		Error:   nil,
@@ -62,7 +62,7 @@ func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesisvide
 func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesisvideo.DeleteStreamInput, opts ...request.Option) (*kinesisvideo.DeleteStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "DeleteStreamWithContext",
+		Action:  "DeleteStream",
 		Input:   input,
 		Output:  (*kinesisvideo.DeleteStreamOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesisvide
 func (c *Client) DescribeStreamWithContext(ctx context.Context, input *kinesisvideo.DescribeStreamInput, opts ...request.Option) (*kinesisvideo.DescribeStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "DescribeStreamWithContext",
+		Action:  "DescribeStream",
 		Input:   input,
 		Output:  (*kinesisvideo.DescribeStreamOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) DescribeStreamWithContext(ctx context.Context, input *kinesisvi
 func (c *Client) GetDataEndpointWithContext(ctx context.Context, input *kinesisvideo.GetDataEndpointInput, opts ...request.Option) (*kinesisvideo.GetDataEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "GetDataEndpointWithContext",
+		Action:  "GetDataEndpoint",
 		Input:   input,
 		Output:  (*kinesisvideo.GetDataEndpointOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) GetDataEndpointWithContext(ctx context.Context, input *kinesisv
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, opts ...request.Option) (*kinesisvideo.ListStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "ListStreamsWithContext",
+		Action:  "ListStreams",
 		Input:   input,
 		Output:  (*kinesisvideo.ListStreamsOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesisvideo
 func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesisvideo.ListTagsForStreamInput, opts ...request.Option) (*kinesisvideo.ListTagsForStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "ListTagsForStreamWithContext",
+		Action:  "ListTagsForStream",
 		Input:   input,
 		Output:  (*kinesisvideo.ListTagsForStreamOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesi
 func (c *Client) TagStreamWithContext(ctx context.Context, input *kinesisvideo.TagStreamInput, opts ...request.Option) (*kinesisvideo.TagStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "TagStreamWithContext",
+		Action:  "TagStream",
 		Input:   input,
 		Output:  (*kinesisvideo.TagStreamOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) TagStreamWithContext(ctx context.Context, input *kinesisvideo.T
 func (c *Client) UntagStreamWithContext(ctx context.Context, input *kinesisvideo.UntagStreamInput, opts ...request.Option) (*kinesisvideo.UntagStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "UntagStreamWithContext",
+		Action:  "UntagStream",
 		Input:   input,
 		Output:  (*kinesisvideo.UntagStreamOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) UntagStreamWithContext(ctx context.Context, input *kinesisvideo
 func (c *Client) UpdateDataRetentionWithContext(ctx context.Context, input *kinesisvideo.UpdateDataRetentionInput, opts ...request.Option) (*kinesisvideo.UpdateDataRetentionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "UpdateDataRetentionWithContext",
+		Action:  "UpdateDataRetention",
 		Input:   input,
 		Output:  (*kinesisvideo.UpdateDataRetentionOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) UpdateDataRetentionWithContext(ctx context.Context, input *kine
 func (c *Client) UpdateStreamWithContext(ctx context.Context, input *kinesisvideo.UpdateStreamInput, opts ...request.Option) (*kinesisvideo.UpdateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
-		Action:  "UpdateStreamWithContext",
+		Action:  "UpdateStream",
 		Input:   input,
 		Output:  (*kinesisvideo.UpdateStreamOutput)(nil),
 		Error:   nil,

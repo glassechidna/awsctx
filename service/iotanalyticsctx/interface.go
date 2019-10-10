@@ -65,7 +65,7 @@ var _ IoTAnalytics = (*Client)(nil)
 func (c *Client) BatchPutMessageWithContext(ctx context.Context, input *iotanalytics.BatchPutMessageInput, opts ...request.Option) (*iotanalytics.BatchPutMessageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "BatchPutMessageWithContext",
+		Action:  "BatchPutMessage",
 		Input:   input,
 		Output:  (*iotanalytics.BatchPutMessageOutput)(nil),
 		Error:   nil,
@@ -86,7 +86,7 @@ func (c *Client) BatchPutMessageWithContext(ctx context.Context, input *iotanaly
 func (c *Client) CancelPipelineReprocessingWithContext(ctx context.Context, input *iotanalytics.CancelPipelineReprocessingInput, opts ...request.Option) (*iotanalytics.CancelPipelineReprocessingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "CancelPipelineReprocessingWithContext",
+		Action:  "CancelPipelineReprocessing",
 		Input:   input,
 		Output:  (*iotanalytics.CancelPipelineReprocessingOutput)(nil),
 		Error:   nil,
@@ -107,7 +107,7 @@ func (c *Client) CancelPipelineReprocessingWithContext(ctx context.Context, inpu
 func (c *Client) CreateChannelWithContext(ctx context.Context, input *iotanalytics.CreateChannelInput, opts ...request.Option) (*iotanalytics.CreateChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "CreateChannelWithContext",
+		Action:  "CreateChannel",
 		Input:   input,
 		Output:  (*iotanalytics.CreateChannelOutput)(nil),
 		Error:   nil,
@@ -128,7 +128,7 @@ func (c *Client) CreateChannelWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) CreateDatasetWithContext(ctx context.Context, input *iotanalytics.CreateDatasetInput, opts ...request.Option) (*iotanalytics.CreateDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "CreateDatasetWithContext",
+		Action:  "CreateDataset",
 		Input:   input,
 		Output:  (*iotanalytics.CreateDatasetOutput)(nil),
 		Error:   nil,
@@ -149,7 +149,7 @@ func (c *Client) CreateDatasetWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) CreateDatasetContentWithContext(ctx context.Context, input *iotanalytics.CreateDatasetContentInput, opts ...request.Option) (*iotanalytics.CreateDatasetContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "CreateDatasetContentWithContext",
+		Action:  "CreateDatasetContent",
 		Input:   input,
 		Output:  (*iotanalytics.CreateDatasetContentOutput)(nil),
 		Error:   nil,
@@ -170,7 +170,7 @@ func (c *Client) CreateDatasetContentWithContext(ctx context.Context, input *iot
 func (c *Client) CreateDatastoreWithContext(ctx context.Context, input *iotanalytics.CreateDatastoreInput, opts ...request.Option) (*iotanalytics.CreateDatastoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "CreateDatastoreWithContext",
+		Action:  "CreateDatastore",
 		Input:   input,
 		Output:  (*iotanalytics.CreateDatastoreOutput)(nil),
 		Error:   nil,
@@ -191,7 +191,7 @@ func (c *Client) CreateDatastoreWithContext(ctx context.Context, input *iotanaly
 func (c *Client) CreatePipelineWithContext(ctx context.Context, input *iotanalytics.CreatePipelineInput, opts ...request.Option) (*iotanalytics.CreatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "CreatePipelineWithContext",
+		Action:  "CreatePipeline",
 		Input:   input,
 		Output:  (*iotanalytics.CreatePipelineOutput)(nil),
 		Error:   nil,
@@ -212,7 +212,7 @@ func (c *Client) CreatePipelineWithContext(ctx context.Context, input *iotanalyt
 func (c *Client) DeleteChannelWithContext(ctx context.Context, input *iotanalytics.DeleteChannelInput, opts ...request.Option) (*iotanalytics.DeleteChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DeleteChannelWithContext",
+		Action:  "DeleteChannel",
 		Input:   input,
 		Output:  (*iotanalytics.DeleteChannelOutput)(nil),
 		Error:   nil,
@@ -233,7 +233,7 @@ func (c *Client) DeleteChannelWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *iotanalytics.DeleteDatasetInput, opts ...request.Option) (*iotanalytics.DeleteDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DeleteDatasetWithContext",
+		Action:  "DeleteDataset",
 		Input:   input,
 		Output:  (*iotanalytics.DeleteDatasetOutput)(nil),
 		Error:   nil,
@@ -254,7 +254,7 @@ func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) DeleteDatasetContentWithContext(ctx context.Context, input *iotanalytics.DeleteDatasetContentInput, opts ...request.Option) (*iotanalytics.DeleteDatasetContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DeleteDatasetContentWithContext",
+		Action:  "DeleteDatasetContent",
 		Input:   input,
 		Output:  (*iotanalytics.DeleteDatasetContentOutput)(nil),
 		Error:   nil,
@@ -275,7 +275,7 @@ func (c *Client) DeleteDatasetContentWithContext(ctx context.Context, input *iot
 func (c *Client) DeleteDatastoreWithContext(ctx context.Context, input *iotanalytics.DeleteDatastoreInput, opts ...request.Option) (*iotanalytics.DeleteDatastoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DeleteDatastoreWithContext",
+		Action:  "DeleteDatastore",
 		Input:   input,
 		Output:  (*iotanalytics.DeleteDatastoreOutput)(nil),
 		Error:   nil,
@@ -296,7 +296,7 @@ func (c *Client) DeleteDatastoreWithContext(ctx context.Context, input *iotanaly
 func (c *Client) DeletePipelineWithContext(ctx context.Context, input *iotanalytics.DeletePipelineInput, opts ...request.Option) (*iotanalytics.DeletePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DeletePipelineWithContext",
+		Action:  "DeletePipeline",
 		Input:   input,
 		Output:  (*iotanalytics.DeletePipelineOutput)(nil),
 		Error:   nil,
@@ -317,7 +317,7 @@ func (c *Client) DeletePipelineWithContext(ctx context.Context, input *iotanalyt
 func (c *Client) DescribeChannelWithContext(ctx context.Context, input *iotanalytics.DescribeChannelInput, opts ...request.Option) (*iotanalytics.DescribeChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DescribeChannelWithContext",
+		Action:  "DescribeChannel",
 		Input:   input,
 		Output:  (*iotanalytics.DescribeChannelOutput)(nil),
 		Error:   nil,
@@ -338,7 +338,7 @@ func (c *Client) DescribeChannelWithContext(ctx context.Context, input *iotanaly
 func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *iotanalytics.DescribeDatasetInput, opts ...request.Option) (*iotanalytics.DescribeDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DescribeDatasetWithContext",
+		Action:  "DescribeDataset",
 		Input:   input,
 		Output:  (*iotanalytics.DescribeDatasetOutput)(nil),
 		Error:   nil,
@@ -359,7 +359,7 @@ func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *iotanaly
 func (c *Client) DescribeDatastoreWithContext(ctx context.Context, input *iotanalytics.DescribeDatastoreInput, opts ...request.Option) (*iotanalytics.DescribeDatastoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DescribeDatastoreWithContext",
+		Action:  "DescribeDatastore",
 		Input:   input,
 		Output:  (*iotanalytics.DescribeDatastoreOutput)(nil),
 		Error:   nil,
@@ -380,7 +380,7 @@ func (c *Client) DescribeDatastoreWithContext(ctx context.Context, input *iotana
 func (c *Client) DescribeLoggingOptionsWithContext(ctx context.Context, input *iotanalytics.DescribeLoggingOptionsInput, opts ...request.Option) (*iotanalytics.DescribeLoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DescribeLoggingOptionsWithContext",
+		Action:  "DescribeLoggingOptions",
 		Input:   input,
 		Output:  (*iotanalytics.DescribeLoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -401,7 +401,7 @@ func (c *Client) DescribeLoggingOptionsWithContext(ctx context.Context, input *i
 func (c *Client) DescribePipelineWithContext(ctx context.Context, input *iotanalytics.DescribePipelineInput, opts ...request.Option) (*iotanalytics.DescribePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "DescribePipelineWithContext",
+		Action:  "DescribePipeline",
 		Input:   input,
 		Output:  (*iotanalytics.DescribePipelineOutput)(nil),
 		Error:   nil,
@@ -422,7 +422,7 @@ func (c *Client) DescribePipelineWithContext(ctx context.Context, input *iotanal
 func (c *Client) GetDatasetContentWithContext(ctx context.Context, input *iotanalytics.GetDatasetContentInput, opts ...request.Option) (*iotanalytics.GetDatasetContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "GetDatasetContentWithContext",
+		Action:  "GetDatasetContent",
 		Input:   input,
 		Output:  (*iotanalytics.GetDatasetContentOutput)(nil),
 		Error:   nil,
@@ -443,7 +443,7 @@ func (c *Client) GetDatasetContentWithContext(ctx context.Context, input *iotana
 func (c *Client) ListChannelsWithContext(ctx context.Context, input *iotanalytics.ListChannelsInput, opts ...request.Option) (*iotanalytics.ListChannelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "ListChannelsWithContext",
+		Action:  "ListChannels",
 		Input:   input,
 		Output:  (*iotanalytics.ListChannelsOutput)(nil),
 		Error:   nil,
@@ -464,7 +464,7 @@ func (c *Client) ListChannelsWithContext(ctx context.Context, input *iotanalytic
 func (c *Client) ListDatasetContentsWithContext(ctx context.Context, input *iotanalytics.ListDatasetContentsInput, opts ...request.Option) (*iotanalytics.ListDatasetContentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "ListDatasetContentsWithContext",
+		Action:  "ListDatasetContents",
 		Input:   input,
 		Output:  (*iotanalytics.ListDatasetContentsOutput)(nil),
 		Error:   nil,
@@ -485,7 +485,7 @@ func (c *Client) ListDatasetContentsWithContext(ctx context.Context, input *iota
 func (c *Client) ListDatasetsWithContext(ctx context.Context, input *iotanalytics.ListDatasetsInput, opts ...request.Option) (*iotanalytics.ListDatasetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "ListDatasetsWithContext",
+		Action:  "ListDatasets",
 		Input:   input,
 		Output:  (*iotanalytics.ListDatasetsOutput)(nil),
 		Error:   nil,
@@ -506,7 +506,7 @@ func (c *Client) ListDatasetsWithContext(ctx context.Context, input *iotanalytic
 func (c *Client) ListDatastoresWithContext(ctx context.Context, input *iotanalytics.ListDatastoresInput, opts ...request.Option) (*iotanalytics.ListDatastoresOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "ListDatastoresWithContext",
+		Action:  "ListDatastores",
 		Input:   input,
 		Output:  (*iotanalytics.ListDatastoresOutput)(nil),
 		Error:   nil,
@@ -527,7 +527,7 @@ func (c *Client) ListDatastoresWithContext(ctx context.Context, input *iotanalyt
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *iotanalytics.ListPipelinesInput, opts ...request.Option) (*iotanalytics.ListPipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "ListPipelinesWithContext",
+		Action:  "ListPipelines",
 		Input:   input,
 		Output:  (*iotanalytics.ListPipelinesOutput)(nil),
 		Error:   nil,
@@ -548,7 +548,7 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iotanalytics.ListTagsForResourceInput, opts ...request.Option) (*iotanalytics.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*iotanalytics.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -569,7 +569,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iota
 func (c *Client) PutLoggingOptionsWithContext(ctx context.Context, input *iotanalytics.PutLoggingOptionsInput, opts ...request.Option) (*iotanalytics.PutLoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "PutLoggingOptionsWithContext",
+		Action:  "PutLoggingOptions",
 		Input:   input,
 		Output:  (*iotanalytics.PutLoggingOptionsOutput)(nil),
 		Error:   nil,
@@ -590,7 +590,7 @@ func (c *Client) PutLoggingOptionsWithContext(ctx context.Context, input *iotana
 func (c *Client) RunPipelineActivityWithContext(ctx context.Context, input *iotanalytics.RunPipelineActivityInput, opts ...request.Option) (*iotanalytics.RunPipelineActivityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "RunPipelineActivityWithContext",
+		Action:  "RunPipelineActivity",
 		Input:   input,
 		Output:  (*iotanalytics.RunPipelineActivityOutput)(nil),
 		Error:   nil,
@@ -611,7 +611,7 @@ func (c *Client) RunPipelineActivityWithContext(ctx context.Context, input *iota
 func (c *Client) SampleChannelDataWithContext(ctx context.Context, input *iotanalytics.SampleChannelDataInput, opts ...request.Option) (*iotanalytics.SampleChannelDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "SampleChannelDataWithContext",
+		Action:  "SampleChannelData",
 		Input:   input,
 		Output:  (*iotanalytics.SampleChannelDataOutput)(nil),
 		Error:   nil,
@@ -632,7 +632,7 @@ func (c *Client) SampleChannelDataWithContext(ctx context.Context, input *iotana
 func (c *Client) StartPipelineReprocessingWithContext(ctx context.Context, input *iotanalytics.StartPipelineReprocessingInput, opts ...request.Option) (*iotanalytics.StartPipelineReprocessingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "StartPipelineReprocessingWithContext",
+		Action:  "StartPipelineReprocessing",
 		Input:   input,
 		Output:  (*iotanalytics.StartPipelineReprocessingOutput)(nil),
 		Error:   nil,
@@ -653,7 +653,7 @@ func (c *Client) StartPipelineReprocessingWithContext(ctx context.Context, input
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iotanalytics.TagResourceInput, opts ...request.Option) (*iotanalytics.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*iotanalytics.TagResourceOutput)(nil),
 		Error:   nil,
@@ -674,7 +674,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *iotanalytics
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotanalytics.UntagResourceInput, opts ...request.Option) (*iotanalytics.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*iotanalytics.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -695,7 +695,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) UpdateChannelWithContext(ctx context.Context, input *iotanalytics.UpdateChannelInput, opts ...request.Option) (*iotanalytics.UpdateChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "UpdateChannelWithContext",
+		Action:  "UpdateChannel",
 		Input:   input,
 		Output:  (*iotanalytics.UpdateChannelOutput)(nil),
 		Error:   nil,
@@ -716,7 +716,7 @@ func (c *Client) UpdateChannelWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) UpdateDatasetWithContext(ctx context.Context, input *iotanalytics.UpdateDatasetInput, opts ...request.Option) (*iotanalytics.UpdateDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "UpdateDatasetWithContext",
+		Action:  "UpdateDataset",
 		Input:   input,
 		Output:  (*iotanalytics.UpdateDatasetOutput)(nil),
 		Error:   nil,
@@ -737,7 +737,7 @@ func (c *Client) UpdateDatasetWithContext(ctx context.Context, input *iotanalyti
 func (c *Client) UpdateDatastoreWithContext(ctx context.Context, input *iotanalytics.UpdateDatastoreInput, opts ...request.Option) (*iotanalytics.UpdateDatastoreOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "UpdateDatastoreWithContext",
+		Action:  "UpdateDatastore",
 		Input:   input,
 		Output:  (*iotanalytics.UpdateDatastoreOutput)(nil),
 		Error:   nil,
@@ -758,7 +758,7 @@ func (c *Client) UpdateDatastoreWithContext(ctx context.Context, input *iotanaly
 func (c *Client) UpdatePipelineWithContext(ctx context.Context, input *iotanalytics.UpdatePipelineInput, opts ...request.Option) (*iotanalytics.UpdatePipelineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
-		Action:  "UpdatePipelineWithContext",
+		Action:  "UpdatePipeline",
 		Input:   input,
 		Output:  (*iotanalytics.UpdatePipelineOutput)(nil),
 		Error:   nil,

@@ -13,6 +13,7 @@ import (
 type CostandUsageReportService interface {
 	DeleteReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.DeleteReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.DeleteReportDefinitionOutput, error)
 	DescribeReportDefinitionsWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, opts ...request.Option) (*costandusagereportservice.DescribeReportDefinitionsOutput, error)
+	ModifyReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.ModifyReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.ModifyReportDefinitionOutput, error)
 	PutReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.PutReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.PutReportDefinitionOutput, error)
 }
 
@@ -34,7 +35,7 @@ var _ CostandUsageReportService = (*Client)(nil)
 func (c *Client) DeleteReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.DeleteReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.DeleteReportDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costandusagereportservice",
-		Action:  "DeleteReportDefinitionWithContext",
+		Action:  "DeleteReportDefinition",
 		Input:   input,
 		Output:  (*costandusagereportservice.DeleteReportDefinitionOutput)(nil),
 		Error:   nil,
@@ -55,7 +56,7 @@ func (c *Client) DeleteReportDefinitionWithContext(ctx context.Context, input *c
 func (c *Client) DescribeReportDefinitionsWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, opts ...request.Option) (*costandusagereportservice.DescribeReportDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costandusagereportservice",
-		Action:  "DescribeReportDefinitionsWithContext",
+		Action:  "DescribeReportDefinitions",
 		Input:   input,
 		Output:  (*costandusagereportservice.DescribeReportDefinitionsOutput)(nil),
 		Error:   nil,
@@ -73,10 +74,31 @@ func (c *Client) DescribeReportDefinitionsWithContext(ctx context.Context, input
 	return req.Output.(*costandusagereportservice.DescribeReportDefinitionsOutput), req.Error
 }
 
+func (c *Client) ModifyReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.ModifyReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.ModifyReportDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costandusagereportservice",
+		Action:  "ModifyReportDefinition",
+		Input:   input,
+		Output:  (*costandusagereportservice.ModifyReportDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostandUsageReportServiceAPI.ModifyReportDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costandusagereportservice.ModifyReportDefinitionOutput), req.Error
+}
+
 func (c *Client) PutReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.PutReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.PutReportDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costandusagereportservice",
-		Action:  "PutReportDefinitionWithContext",
+		Action:  "PutReportDefinition",
 		Input:   input,
 		Output:  (*costandusagereportservice.PutReportDefinitionOutput)(nil),
 		Error:   nil,

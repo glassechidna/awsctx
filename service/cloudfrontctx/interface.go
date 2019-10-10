@@ -76,7 +76,7 @@ var _ CloudFront = (*Client)(nil)
 func (c *Client) CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.CreateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.CreateCloudFrontOriginAccessIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateCloudFrontOriginAccessIdentityWithContext",
+		Action:  "CreateCloudFrontOriginAccessIdentity",
 		Input:   input,
 		Output:  (*cloudfront.CreateCloudFrontOriginAccessIdentityOutput)(nil),
 		Error:   nil,
@@ -97,7 +97,7 @@ func (c *Client) CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Con
 func (c *Client) CreateDistributionWithContext(ctx context.Context, input *cloudfront.CreateDistributionInput, opts ...request.Option) (*cloudfront.CreateDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateDistributionWithContext",
+		Action:  "CreateDistribution",
 		Input:   input,
 		Output:  (*cloudfront.CreateDistributionOutput)(nil),
 		Error:   nil,
@@ -118,7 +118,7 @@ func (c *Client) CreateDistributionWithContext(ctx context.Context, input *cloud
 func (c *Client) CreateDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateDistributionWithTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateDistributionWithTagsWithContext",
+		Action:  "CreateDistributionWithTags",
 		Input:   input,
 		Output:  (*cloudfront.CreateDistributionWithTagsOutput)(nil),
 		Error:   nil,
@@ -139,7 +139,7 @@ func (c *Client) CreateDistributionWithTagsWithContext(ctx context.Context, inpu
 func (c *Client) CreateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateFieldLevelEncryptionConfigWithContext",
+		Action:  "CreateFieldLevelEncryptionConfig",
 		Input:   input,
 		Output:  (*cloudfront.CreateFieldLevelEncryptionConfigOutput)(nil),
 		Error:   nil,
@@ -160,7 +160,7 @@ func (c *Client) CreateFieldLevelEncryptionConfigWithContext(ctx context.Context
 func (c *Client) CreateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateFieldLevelEncryptionProfileWithContext",
+		Action:  "CreateFieldLevelEncryptionProfile",
 		Input:   input,
 		Output:  (*cloudfront.CreateFieldLevelEncryptionProfileOutput)(nil),
 		Error:   nil,
@@ -181,7 +181,7 @@ func (c *Client) CreateFieldLevelEncryptionProfileWithContext(ctx context.Contex
 func (c *Client) CreateInvalidationWithContext(ctx context.Context, input *cloudfront.CreateInvalidationInput, opts ...request.Option) (*cloudfront.CreateInvalidationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateInvalidationWithContext",
+		Action:  "CreateInvalidation",
 		Input:   input,
 		Output:  (*cloudfront.CreateInvalidationOutput)(nil),
 		Error:   nil,
@@ -202,7 +202,7 @@ func (c *Client) CreateInvalidationWithContext(ctx context.Context, input *cloud
 func (c *Client) CreatePublicKeyWithContext(ctx context.Context, input *cloudfront.CreatePublicKeyInput, opts ...request.Option) (*cloudfront.CreatePublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreatePublicKeyWithContext",
+		Action:  "CreatePublicKey",
 		Input:   input,
 		Output:  (*cloudfront.CreatePublicKeyOutput)(nil),
 		Error:   nil,
@@ -223,7 +223,7 @@ func (c *Client) CreatePublicKeyWithContext(ctx context.Context, input *cloudfro
 func (c *Client) CreateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateStreamingDistributionWithContext",
+		Action:  "CreateStreamingDistribution",
 		Input:   input,
 		Output:  (*cloudfront.CreateStreamingDistributionOutput)(nil),
 		Error:   nil,
@@ -244,7 +244,7 @@ func (c *Client) CreateStreamingDistributionWithContext(ctx context.Context, inp
 func (c *Client) CreateStreamingDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionWithTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "CreateStreamingDistributionWithTagsWithContext",
+		Action:  "CreateStreamingDistributionWithTags",
 		Input:   input,
 		Output:  (*cloudfront.CreateStreamingDistributionWithTagsOutput)(nil),
 		Error:   nil,
@@ -265,7 +265,7 @@ func (c *Client) CreateStreamingDistributionWithTagsWithContext(ctx context.Cont
 func (c *Client) DeleteCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.DeleteCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.DeleteCloudFrontOriginAccessIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "DeleteCloudFrontOriginAccessIdentityWithContext",
+		Action:  "DeleteCloudFrontOriginAccessIdentity",
 		Input:   input,
 		Output:  (*cloudfront.DeleteCloudFrontOriginAccessIdentityOutput)(nil),
 		Error:   nil,
@@ -286,7 +286,7 @@ func (c *Client) DeleteCloudFrontOriginAccessIdentityWithContext(ctx context.Con
 func (c *Client) DeleteDistributionWithContext(ctx context.Context, input *cloudfront.DeleteDistributionInput, opts ...request.Option) (*cloudfront.DeleteDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "DeleteDistributionWithContext",
+		Action:  "DeleteDistribution",
 		Input:   input,
 		Output:  (*cloudfront.DeleteDistributionOutput)(nil),
 		Error:   nil,
@@ -307,7 +307,7 @@ func (c *Client) DeleteDistributionWithContext(ctx context.Context, input *cloud
 func (c *Client) DeleteFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "DeleteFieldLevelEncryptionConfigWithContext",
+		Action:  "DeleteFieldLevelEncryptionConfig",
 		Input:   input,
 		Output:  (*cloudfront.DeleteFieldLevelEncryptionConfigOutput)(nil),
 		Error:   nil,
@@ -328,7 +328,7 @@ func (c *Client) DeleteFieldLevelEncryptionConfigWithContext(ctx context.Context
 func (c *Client) DeleteFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "DeleteFieldLevelEncryptionProfileWithContext",
+		Action:  "DeleteFieldLevelEncryptionProfile",
 		Input:   input,
 		Output:  (*cloudfront.DeleteFieldLevelEncryptionProfileOutput)(nil),
 		Error:   nil,
@@ -349,7 +349,7 @@ func (c *Client) DeleteFieldLevelEncryptionProfileWithContext(ctx context.Contex
 func (c *Client) DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "DeletePublicKeyWithContext",
+		Action:  "DeletePublicKey",
 		Input:   input,
 		Output:  (*cloudfront.DeletePublicKeyOutput)(nil),
 		Error:   nil,
@@ -370,7 +370,7 @@ func (c *Client) DeletePublicKeyWithContext(ctx context.Context, input *cloudfro
 func (c *Client) DeleteStreamingDistributionWithContext(ctx context.Context, input *cloudfront.DeleteStreamingDistributionInput, opts ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "DeleteStreamingDistributionWithContext",
+		Action:  "DeleteStreamingDistribution",
 		Input:   input,
 		Output:  (*cloudfront.DeleteStreamingDistributionOutput)(nil),
 		Error:   nil,
@@ -391,7 +391,7 @@ func (c *Client) DeleteStreamingDistributionWithContext(ctx context.Context, inp
 func (c *Client) GetCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetCloudFrontOriginAccessIdentityWithContext",
+		Action:  "GetCloudFrontOriginAccessIdentity",
 		Input:   input,
 		Output:  (*cloudfront.GetCloudFrontOriginAccessIdentityOutput)(nil),
 		Error:   nil,
@@ -412,7 +412,7 @@ func (c *Client) GetCloudFrontOriginAccessIdentityWithContext(ctx context.Contex
 func (c *Client) GetCloudFrontOriginAccessIdentityConfigWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityConfigInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetCloudFrontOriginAccessIdentityConfigWithContext",
+		Action:  "GetCloudFrontOriginAccessIdentityConfig",
 		Input:   input,
 		Output:  (*cloudfront.GetCloudFrontOriginAccessIdentityConfigOutput)(nil),
 		Error:   nil,
@@ -433,7 +433,7 @@ func (c *Client) GetCloudFrontOriginAccessIdentityConfigWithContext(ctx context.
 func (c *Client) GetDistributionWithContext(ctx context.Context, input *cloudfront.GetDistributionInput, opts ...request.Option) (*cloudfront.GetDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetDistributionWithContext",
+		Action:  "GetDistribution",
 		Input:   input,
 		Output:  (*cloudfront.GetDistributionOutput)(nil),
 		Error:   nil,
@@ -454,7 +454,7 @@ func (c *Client) GetDistributionWithContext(ctx context.Context, input *cloudfro
 func (c *Client) GetDistributionConfigWithContext(ctx context.Context, input *cloudfront.GetDistributionConfigInput, opts ...request.Option) (*cloudfront.GetDistributionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetDistributionConfigWithContext",
+		Action:  "GetDistributionConfig",
 		Input:   input,
 		Output:  (*cloudfront.GetDistributionConfigOutput)(nil),
 		Error:   nil,
@@ -475,7 +475,7 @@ func (c *Client) GetDistributionConfigWithContext(ctx context.Context, input *cl
 func (c *Client) GetFieldLevelEncryptionWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetFieldLevelEncryptionWithContext",
+		Action:  "GetFieldLevelEncryption",
 		Input:   input,
 		Output:  (*cloudfront.GetFieldLevelEncryptionOutput)(nil),
 		Error:   nil,
@@ -496,7 +496,7 @@ func (c *Client) GetFieldLevelEncryptionWithContext(ctx context.Context, input *
 func (c *Client) GetFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetFieldLevelEncryptionConfigWithContext",
+		Action:  "GetFieldLevelEncryptionConfig",
 		Input:   input,
 		Output:  (*cloudfront.GetFieldLevelEncryptionConfigOutput)(nil),
 		Error:   nil,
@@ -517,7 +517,7 @@ func (c *Client) GetFieldLevelEncryptionConfigWithContext(ctx context.Context, i
 func (c *Client) GetFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetFieldLevelEncryptionProfileWithContext",
+		Action:  "GetFieldLevelEncryptionProfile",
 		Input:   input,
 		Output:  (*cloudfront.GetFieldLevelEncryptionProfileOutput)(nil),
 		Error:   nil,
@@ -538,7 +538,7 @@ func (c *Client) GetFieldLevelEncryptionProfileWithContext(ctx context.Context, 
 func (c *Client) GetFieldLevelEncryptionProfileConfigWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileConfigInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetFieldLevelEncryptionProfileConfigWithContext",
+		Action:  "GetFieldLevelEncryptionProfileConfig",
 		Input:   input,
 		Output:  (*cloudfront.GetFieldLevelEncryptionProfileConfigOutput)(nil),
 		Error:   nil,
@@ -559,7 +559,7 @@ func (c *Client) GetFieldLevelEncryptionProfileConfigWithContext(ctx context.Con
 func (c *Client) GetInvalidationWithContext(ctx context.Context, input *cloudfront.GetInvalidationInput, opts ...request.Option) (*cloudfront.GetInvalidationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetInvalidationWithContext",
+		Action:  "GetInvalidation",
 		Input:   input,
 		Output:  (*cloudfront.GetInvalidationOutput)(nil),
 		Error:   nil,
@@ -580,7 +580,7 @@ func (c *Client) GetInvalidationWithContext(ctx context.Context, input *cloudfro
 func (c *Client) GetPublicKeyWithContext(ctx context.Context, input *cloudfront.GetPublicKeyInput, opts ...request.Option) (*cloudfront.GetPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetPublicKeyWithContext",
+		Action:  "GetPublicKey",
 		Input:   input,
 		Output:  (*cloudfront.GetPublicKeyOutput)(nil),
 		Error:   nil,
@@ -601,7 +601,7 @@ func (c *Client) GetPublicKeyWithContext(ctx context.Context, input *cloudfront.
 func (c *Client) GetPublicKeyConfigWithContext(ctx context.Context, input *cloudfront.GetPublicKeyConfigInput, opts ...request.Option) (*cloudfront.GetPublicKeyConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetPublicKeyConfigWithContext",
+		Action:  "GetPublicKeyConfig",
 		Input:   input,
 		Output:  (*cloudfront.GetPublicKeyConfigOutput)(nil),
 		Error:   nil,
@@ -622,7 +622,7 @@ func (c *Client) GetPublicKeyConfigWithContext(ctx context.Context, input *cloud
 func (c *Client) GetStreamingDistributionWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetStreamingDistributionWithContext",
+		Action:  "GetStreamingDistribution",
 		Input:   input,
 		Output:  (*cloudfront.GetStreamingDistributionOutput)(nil),
 		Error:   nil,
@@ -643,7 +643,7 @@ func (c *Client) GetStreamingDistributionWithContext(ctx context.Context, input 
 func (c *Client) GetStreamingDistributionConfigWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionConfigInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "GetStreamingDistributionConfigWithContext",
+		Action:  "GetStreamingDistributionConfig",
 		Input:   input,
 		Output:  (*cloudfront.GetStreamingDistributionConfigOutput)(nil),
 		Error:   nil,
@@ -664,7 +664,7 @@ func (c *Client) GetStreamingDistributionConfigWithContext(ctx context.Context, 
 func (c *Client) ListCloudFrontOriginAccessIdentitiesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, opts ...request.Option) (*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListCloudFrontOriginAccessIdentitiesWithContext",
+		Action:  "ListCloudFrontOriginAccessIdentities",
 		Input:   input,
 		Output:  (*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput)(nil),
 		Error:   nil,
@@ -685,7 +685,7 @@ func (c *Client) ListCloudFrontOriginAccessIdentitiesWithContext(ctx context.Con
 func (c *Client) ListDistributionsWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, opts ...request.Option) (*cloudfront.ListDistributionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListDistributionsWithContext",
+		Action:  "ListDistributions",
 		Input:   input,
 		Output:  (*cloudfront.ListDistributionsOutput)(nil),
 		Error:   nil,
@@ -706,7 +706,7 @@ func (c *Client) ListDistributionsWithContext(ctx context.Context, input *cloudf
 func (c *Client) ListDistributionsByWebACLIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByWebACLIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByWebACLIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListDistributionsByWebACLIdWithContext",
+		Action:  "ListDistributionsByWebACLId",
 		Input:   input,
 		Output:  (*cloudfront.ListDistributionsByWebACLIdOutput)(nil),
 		Error:   nil,
@@ -727,7 +727,7 @@ func (c *Client) ListDistributionsByWebACLIdWithContext(ctx context.Context, inp
 func (c *Client) ListFieldLevelEncryptionConfigsWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionConfigsInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListFieldLevelEncryptionConfigsWithContext",
+		Action:  "ListFieldLevelEncryptionConfigs",
 		Input:   input,
 		Output:  (*cloudfront.ListFieldLevelEncryptionConfigsOutput)(nil),
 		Error:   nil,
@@ -748,7 +748,7 @@ func (c *Client) ListFieldLevelEncryptionConfigsWithContext(ctx context.Context,
 func (c *Client) ListFieldLevelEncryptionProfilesWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionProfilesInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListFieldLevelEncryptionProfilesWithContext",
+		Action:  "ListFieldLevelEncryptionProfiles",
 		Input:   input,
 		Output:  (*cloudfront.ListFieldLevelEncryptionProfilesOutput)(nil),
 		Error:   nil,
@@ -769,7 +769,7 @@ func (c *Client) ListFieldLevelEncryptionProfilesWithContext(ctx context.Context
 func (c *Client) ListInvalidationsWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, opts ...request.Option) (*cloudfront.ListInvalidationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListInvalidationsWithContext",
+		Action:  "ListInvalidations",
 		Input:   input,
 		Output:  (*cloudfront.ListInvalidationsOutput)(nil),
 		Error:   nil,
@@ -790,7 +790,7 @@ func (c *Client) ListInvalidationsWithContext(ctx context.Context, input *cloudf
 func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudfront.ListPublicKeysInput, opts ...request.Option) (*cloudfront.ListPublicKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListPublicKeysWithContext",
+		Action:  "ListPublicKeys",
 		Input:   input,
 		Output:  (*cloudfront.ListPublicKeysOutput)(nil),
 		Error:   nil,
@@ -811,7 +811,7 @@ func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudfron
 func (c *Client) ListStreamingDistributionsWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, opts ...request.Option) (*cloudfront.ListStreamingDistributionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListStreamingDistributionsWithContext",
+		Action:  "ListStreamingDistributions",
 		Input:   input,
 		Output:  (*cloudfront.ListStreamingDistributionsOutput)(nil),
 		Error:   nil,
@@ -832,7 +832,7 @@ func (c *Client) ListStreamingDistributionsWithContext(ctx context.Context, inpu
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cloudfront.ListTagsForResourceInput, opts ...request.Option) (*cloudfront.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "ListTagsForResourceWithContext",
+		Action:  "ListTagsForResource",
 		Input:   input,
 		Output:  (*cloudfront.ListTagsForResourceOutput)(nil),
 		Error:   nil,
@@ -853,7 +853,7 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudfront.TagResourceInput, opts ...request.Option) (*cloudfront.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "TagResourceWithContext",
+		Action:  "TagResource",
 		Input:   input,
 		Output:  (*cloudfront.TagResourceOutput)(nil),
 		Error:   nil,
@@ -874,7 +874,7 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudfront.T
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudfront.UntagResourceInput, opts ...request.Option) (*cloudfront.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UntagResourceWithContext",
+		Action:  "UntagResource",
 		Input:   input,
 		Output:  (*cloudfront.UntagResourceOutput)(nil),
 		Error:   nil,
@@ -895,7 +895,7 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudfront
 func (c *Client) UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.UpdateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UpdateCloudFrontOriginAccessIdentityWithContext",
+		Action:  "UpdateCloudFrontOriginAccessIdentity",
 		Input:   input,
 		Output:  (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput)(nil),
 		Error:   nil,
@@ -916,7 +916,7 @@ func (c *Client) UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Con
 func (c *Client) UpdateDistributionWithContext(ctx context.Context, input *cloudfront.UpdateDistributionInput, opts ...request.Option) (*cloudfront.UpdateDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UpdateDistributionWithContext",
+		Action:  "UpdateDistribution",
 		Input:   input,
 		Output:  (*cloudfront.UpdateDistributionOutput)(nil),
 		Error:   nil,
@@ -937,7 +937,7 @@ func (c *Client) UpdateDistributionWithContext(ctx context.Context, input *cloud
 func (c *Client) UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UpdateFieldLevelEncryptionConfigWithContext",
+		Action:  "UpdateFieldLevelEncryptionConfig",
 		Input:   input,
 		Output:  (*cloudfront.UpdateFieldLevelEncryptionConfigOutput)(nil),
 		Error:   nil,
@@ -958,7 +958,7 @@ func (c *Client) UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context
 func (c *Client) UpdateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UpdateFieldLevelEncryptionProfileWithContext",
+		Action:  "UpdateFieldLevelEncryptionProfile",
 		Input:   input,
 		Output:  (*cloudfront.UpdateFieldLevelEncryptionProfileOutput)(nil),
 		Error:   nil,
@@ -979,7 +979,7 @@ func (c *Client) UpdateFieldLevelEncryptionProfileWithContext(ctx context.Contex
 func (c *Client) UpdatePublicKeyWithContext(ctx context.Context, input *cloudfront.UpdatePublicKeyInput, opts ...request.Option) (*cloudfront.UpdatePublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UpdatePublicKeyWithContext",
+		Action:  "UpdatePublicKey",
 		Input:   input,
 		Output:  (*cloudfront.UpdatePublicKeyOutput)(nil),
 		Error:   nil,
@@ -1000,7 +1000,7 @@ func (c *Client) UpdatePublicKeyWithContext(ctx context.Context, input *cloudfro
 func (c *Client) UpdateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.UpdateStreamingDistributionInput, opts ...request.Option) (*cloudfront.UpdateStreamingDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
-		Action:  "UpdateStreamingDistributionWithContext",
+		Action:  "UpdateStreamingDistribution",
 		Input:   input,
 		Output:  (*cloudfront.UpdateStreamingDistributionOutput)(nil),
 		Error:   nil,

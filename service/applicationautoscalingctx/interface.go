@@ -41,7 +41,7 @@ var _ ApplicationAutoScaling = (*Client)(nil)
 func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, input *applicationautoscaling.DeleteScalingPolicyInput, opts ...request.Option) (*applicationautoscaling.DeleteScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DeleteScalingPolicyWithContext",
+		Action:  "DeleteScalingPolicy",
 		Input:   input,
 		Output:  (*applicationautoscaling.DeleteScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -62,7 +62,7 @@ func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, input *appl
 func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, input *applicationautoscaling.DeleteScheduledActionInput, opts ...request.Option) (*applicationautoscaling.DeleteScheduledActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DeleteScheduledActionWithContext",
+		Action:  "DeleteScheduledAction",
 		Input:   input,
 		Output:  (*applicationautoscaling.DeleteScheduledActionOutput)(nil),
 		Error:   nil,
@@ -83,7 +83,7 @@ func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, input *ap
 func (c *Client) DeregisterScalableTargetWithContext(ctx context.Context, input *applicationautoscaling.DeregisterScalableTargetInput, opts ...request.Option) (*applicationautoscaling.DeregisterScalableTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DeregisterScalableTargetWithContext",
+		Action:  "DeregisterScalableTarget",
 		Input:   input,
 		Output:  (*applicationautoscaling.DeregisterScalableTargetOutput)(nil),
 		Error:   nil,
@@ -104,7 +104,7 @@ func (c *Client) DeregisterScalableTargetWithContext(ctx context.Context, input 
 func (c *Client) DescribeScalableTargetsWithContext(ctx context.Context, input *applicationautoscaling.DescribeScalableTargetsInput, opts ...request.Option) (*applicationautoscaling.DescribeScalableTargetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DescribeScalableTargetsWithContext",
+		Action:  "DescribeScalableTargets",
 		Input:   input,
 		Output:  (*applicationautoscaling.DescribeScalableTargetsOutput)(nil),
 		Error:   nil,
@@ -125,7 +125,7 @@ func (c *Client) DescribeScalableTargetsWithContext(ctx context.Context, input *
 func (c *Client) DescribeScalingActivitiesWithContext(ctx context.Context, input *applicationautoscaling.DescribeScalingActivitiesInput, opts ...request.Option) (*applicationautoscaling.DescribeScalingActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DescribeScalingActivitiesWithContext",
+		Action:  "DescribeScalingActivities",
 		Input:   input,
 		Output:  (*applicationautoscaling.DescribeScalingActivitiesOutput)(nil),
 		Error:   nil,
@@ -146,7 +146,7 @@ func (c *Client) DescribeScalingActivitiesWithContext(ctx context.Context, input
 func (c *Client) DescribeScalingPoliciesWithContext(ctx context.Context, input *applicationautoscaling.DescribeScalingPoliciesInput, opts ...request.Option) (*applicationautoscaling.DescribeScalingPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DescribeScalingPoliciesWithContext",
+		Action:  "DescribeScalingPolicies",
 		Input:   input,
 		Output:  (*applicationautoscaling.DescribeScalingPoliciesOutput)(nil),
 		Error:   nil,
@@ -167,7 +167,7 @@ func (c *Client) DescribeScalingPoliciesWithContext(ctx context.Context, input *
 func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, input *applicationautoscaling.DescribeScheduledActionsInput, opts ...request.Option) (*applicationautoscaling.DescribeScheduledActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "DescribeScheduledActionsWithContext",
+		Action:  "DescribeScheduledActions",
 		Input:   input,
 		Output:  (*applicationautoscaling.DescribeScheduledActionsOutput)(nil),
 		Error:   nil,
@@ -188,7 +188,7 @@ func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, input 
 func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *applicationautoscaling.PutScalingPolicyInput, opts ...request.Option) (*applicationautoscaling.PutScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "PutScalingPolicyWithContext",
+		Action:  "PutScalingPolicy",
 		Input:   input,
 		Output:  (*applicationautoscaling.PutScalingPolicyOutput)(nil),
 		Error:   nil,
@@ -209,7 +209,7 @@ func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *applica
 func (c *Client) PutScheduledActionWithContext(ctx context.Context, input *applicationautoscaling.PutScheduledActionInput, opts ...request.Option) (*applicationautoscaling.PutScheduledActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "PutScheduledActionWithContext",
+		Action:  "PutScheduledAction",
 		Input:   input,
 		Output:  (*applicationautoscaling.PutScheduledActionOutput)(nil),
 		Error:   nil,
@@ -230,7 +230,7 @@ func (c *Client) PutScheduledActionWithContext(ctx context.Context, input *appli
 func (c *Client) RegisterScalableTargetWithContext(ctx context.Context, input *applicationautoscaling.RegisterScalableTargetInput, opts ...request.Option) (*applicationautoscaling.RegisterScalableTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
-		Action:  "RegisterScalableTargetWithContext",
+		Action:  "RegisterScalableTarget",
 		Input:   input,
 		Output:  (*applicationautoscaling.RegisterScalableTargetOutput)(nil),
 		Error:   nil,
