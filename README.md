@@ -114,10 +114,6 @@ func recordApiCall(ctx context.Context, request *awsctx.AwsRequest, start time.T
 
 ## Outstanding issues
 
-**Automation**. To be maximally useful, I need to set up CI to automatically publish a tag in
-this repo every time the upstream AWS SDK has a new version published. Ideally the version numbers
-should be in sync with AWS to avoid hair being torn out.
-
 **Pagination and waiters**. I haven't yet implemented support for the `*PagesWithContext` methods. Those 
 are useful and should be added. Likewise for the `WaitUntil***WithContext` methods.
 
