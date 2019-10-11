@@ -117,7 +117,6 @@ type EC2 interface {
 	DeleteNetworkInterfaceWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfaceInput, opts ...request.Option) (*ec2.DeleteNetworkInterfaceOutput, error)
 	DeleteNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.DeleteNetworkInterfacePermissionOutput, error)
 	DeletePlacementGroupWithContext(ctx context.Context, input *ec2.DeletePlacementGroupInput, opts ...request.Option) (*ec2.DeletePlacementGroupOutput, error)
-	DeleteQueuedReservedInstancesWithContext(ctx context.Context, input *ec2.DeleteQueuedReservedInstancesInput, opts ...request.Option) (*ec2.DeleteQueuedReservedInstancesOutput, error)
 	DeleteRouteWithContext(ctx context.Context, input *ec2.DeleteRouteInput, opts ...request.Option) (*ec2.DeleteRouteOutput, error)
 	DeleteRouteTableWithContext(ctx context.Context, input *ec2.DeleteRouteTableInput, opts ...request.Option) (*ec2.DeleteRouteTableOutput, error)
 	DeleteSecurityGroupWithContext(ctx context.Context, input *ec2.DeleteSecurityGroupInput, opts ...request.Option) (*ec2.DeleteSecurityGroupOutput, error)
@@ -2611,27 +2610,6 @@ func (c *Client) DeletePlacementGroupWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.DeletePlacementGroupOutput), req.Error
-}
-
-func (c *Client) DeleteQueuedReservedInstancesWithContext(ctx context.Context, input *ec2.DeleteQueuedReservedInstancesInput, opts ...request.Option) (*ec2.DeleteQueuedReservedInstancesOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "ec2",
-		Action:  "DeleteQueuedReservedInstances",
-		Input:   input,
-		Output:  (*ec2.DeleteQueuedReservedInstancesOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.EC2API.DeleteQueuedReservedInstancesWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*ec2.DeleteQueuedReservedInstancesOutput), req.Error
 }
 
 func (c *Client) DeleteRouteWithContext(ctx context.Context, input *ec2.DeleteRouteInput, opts ...request.Option) (*ec2.DeleteRouteOutput, error) {

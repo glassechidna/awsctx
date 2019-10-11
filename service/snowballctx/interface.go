@@ -23,7 +23,6 @@ type Snowball interface {
 	GetJobManifestWithContext(ctx context.Context, input *snowball.GetJobManifestInput, opts ...request.Option) (*snowball.GetJobManifestOutput, error)
 	GetJobUnlockCodeWithContext(ctx context.Context, input *snowball.GetJobUnlockCodeInput, opts ...request.Option) (*snowball.GetJobUnlockCodeOutput, error)
 	GetSnowballUsageWithContext(ctx context.Context, input *snowball.GetSnowballUsageInput, opts ...request.Option) (*snowball.GetSnowballUsageOutput, error)
-	GetSoftwareUpdatesWithContext(ctx context.Context, input *snowball.GetSoftwareUpdatesInput, opts ...request.Option) (*snowball.GetSoftwareUpdatesOutput, error)
 	ListClusterJobsWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, opts ...request.Option) (*snowball.ListClusterJobsOutput, error)
 	ListClustersWithContext(ctx context.Context, input *snowball.ListClustersInput, opts ...request.Option) (*snowball.ListClustersOutput, error)
 	ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error)
@@ -297,27 +296,6 @@ func (c *Client) GetSnowballUsageWithContext(ctx context.Context, input *snowbal
 	})
 
 	return req.Output.(*snowball.GetSnowballUsageOutput), req.Error
-}
-
-func (c *Client) GetSoftwareUpdatesWithContext(ctx context.Context, input *snowball.GetSoftwareUpdatesInput, opts ...request.Option) (*snowball.GetSoftwareUpdatesOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "snowball",
-		Action:  "GetSoftwareUpdates",
-		Input:   input,
-		Output:  (*snowball.GetSoftwareUpdatesOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.SnowballAPI.GetSoftwareUpdatesWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*snowball.GetSoftwareUpdatesOutput), req.Error
 }
 
 func (c *Client) ListClusterJobsWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, opts ...request.Option) (*snowball.ListClusterJobsOutput, error) {

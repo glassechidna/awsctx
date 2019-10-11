@@ -13,12 +13,9 @@ import (
 type Pinpoint interface {
 	CreateAppWithContext(ctx context.Context, input *pinpoint.CreateAppInput, opts ...request.Option) (*pinpoint.CreateAppOutput, error)
 	CreateCampaignWithContext(ctx context.Context, input *pinpoint.CreateCampaignInput, opts ...request.Option) (*pinpoint.CreateCampaignOutput, error)
-	CreateEmailTemplateWithContext(ctx context.Context, input *pinpoint.CreateEmailTemplateInput, opts ...request.Option) (*pinpoint.CreateEmailTemplateOutput, error)
 	CreateExportJobWithContext(ctx context.Context, input *pinpoint.CreateExportJobInput, opts ...request.Option) (*pinpoint.CreateExportJobOutput, error)
 	CreateImportJobWithContext(ctx context.Context, input *pinpoint.CreateImportJobInput, opts ...request.Option) (*pinpoint.CreateImportJobOutput, error)
-	CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error)
 	CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error)
-	CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error)
 	DeleteAdmChannelWithContext(ctx context.Context, input *pinpoint.DeleteAdmChannelInput, opts ...request.Option) (*pinpoint.DeleteAdmChannelOutput, error)
 	DeleteApnsChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsChannelOutput, error)
 	DeleteApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsSandboxChannelOutput, error)
@@ -28,14 +25,11 @@ type Pinpoint interface {
 	DeleteBaiduChannelWithContext(ctx context.Context, input *pinpoint.DeleteBaiduChannelInput, opts ...request.Option) (*pinpoint.DeleteBaiduChannelOutput, error)
 	DeleteCampaignWithContext(ctx context.Context, input *pinpoint.DeleteCampaignInput, opts ...request.Option) (*pinpoint.DeleteCampaignOutput, error)
 	DeleteEmailChannelWithContext(ctx context.Context, input *pinpoint.DeleteEmailChannelInput, opts ...request.Option) (*pinpoint.DeleteEmailChannelOutput, error)
-	DeleteEmailTemplateWithContext(ctx context.Context, input *pinpoint.DeleteEmailTemplateInput, opts ...request.Option) (*pinpoint.DeleteEmailTemplateOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *pinpoint.DeleteEndpointInput, opts ...request.Option) (*pinpoint.DeleteEndpointOutput, error)
 	DeleteEventStreamWithContext(ctx context.Context, input *pinpoint.DeleteEventStreamInput, opts ...request.Option) (*pinpoint.DeleteEventStreamOutput, error)
 	DeleteGcmChannelWithContext(ctx context.Context, input *pinpoint.DeleteGcmChannelInput, opts ...request.Option) (*pinpoint.DeleteGcmChannelOutput, error)
-	DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error)
 	DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error)
 	DeleteSmsChannelWithContext(ctx context.Context, input *pinpoint.DeleteSmsChannelInput, opts ...request.Option) (*pinpoint.DeleteSmsChannelOutput, error)
-	DeleteSmsTemplateWithContext(ctx context.Context, input *pinpoint.DeleteSmsTemplateInput, opts ...request.Option) (*pinpoint.DeleteSmsTemplateOutput, error)
 	DeleteUserEndpointsWithContext(ctx context.Context, input *pinpoint.DeleteUserEndpointsInput, opts ...request.Option) (*pinpoint.DeleteUserEndpointsOutput, error)
 	DeleteVoiceChannelWithContext(ctx context.Context, input *pinpoint.DeleteVoiceChannelInput, opts ...request.Option) (*pinpoint.DeleteVoiceChannelOutput, error)
 	GetAdmChannelWithContext(ctx context.Context, input *pinpoint.GetAdmChannelInput, opts ...request.Option) (*pinpoint.GetAdmChannelOutput, error)
@@ -56,7 +50,6 @@ type Pinpoint interface {
 	GetCampaignsWithContext(ctx context.Context, input *pinpoint.GetCampaignsInput, opts ...request.Option) (*pinpoint.GetCampaignsOutput, error)
 	GetChannelsWithContext(ctx context.Context, input *pinpoint.GetChannelsInput, opts ...request.Option) (*pinpoint.GetChannelsOutput, error)
 	GetEmailChannelWithContext(ctx context.Context, input *pinpoint.GetEmailChannelInput, opts ...request.Option) (*pinpoint.GetEmailChannelOutput, error)
-	GetEmailTemplateWithContext(ctx context.Context, input *pinpoint.GetEmailTemplateInput, opts ...request.Option) (*pinpoint.GetEmailTemplateOutput, error)
 	GetEndpointWithContext(ctx context.Context, input *pinpoint.GetEndpointInput, opts ...request.Option) (*pinpoint.GetEndpointOutput, error)
 	GetEventStreamWithContext(ctx context.Context, input *pinpoint.GetEventStreamInput, opts ...request.Option) (*pinpoint.GetEventStreamOutput, error)
 	GetExportJobWithContext(ctx context.Context, input *pinpoint.GetExportJobInput, opts ...request.Option) (*pinpoint.GetExportJobOutput, error)
@@ -64,7 +57,6 @@ type Pinpoint interface {
 	GetGcmChannelWithContext(ctx context.Context, input *pinpoint.GetGcmChannelInput, opts ...request.Option) (*pinpoint.GetGcmChannelOutput, error)
 	GetImportJobWithContext(ctx context.Context, input *pinpoint.GetImportJobInput, opts ...request.Option) (*pinpoint.GetImportJobOutput, error)
 	GetImportJobsWithContext(ctx context.Context, input *pinpoint.GetImportJobsInput, opts ...request.Option) (*pinpoint.GetImportJobsOutput, error)
-	GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error)
 	GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error)
 	GetSegmentExportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentExportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentExportJobsOutput, error)
 	GetSegmentImportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentImportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentImportJobsOutput, error)
@@ -72,11 +64,9 @@ type Pinpoint interface {
 	GetSegmentVersionsWithContext(ctx context.Context, input *pinpoint.GetSegmentVersionsInput, opts ...request.Option) (*pinpoint.GetSegmentVersionsOutput, error)
 	GetSegmentsWithContext(ctx context.Context, input *pinpoint.GetSegmentsInput, opts ...request.Option) (*pinpoint.GetSegmentsOutput, error)
 	GetSmsChannelWithContext(ctx context.Context, input *pinpoint.GetSmsChannelInput, opts ...request.Option) (*pinpoint.GetSmsChannelOutput, error)
-	GetSmsTemplateWithContext(ctx context.Context, input *pinpoint.GetSmsTemplateInput, opts ...request.Option) (*pinpoint.GetSmsTemplateOutput, error)
 	GetUserEndpointsWithContext(ctx context.Context, input *pinpoint.GetUserEndpointsInput, opts ...request.Option) (*pinpoint.GetUserEndpointsOutput, error)
 	GetVoiceChannelWithContext(ctx context.Context, input *pinpoint.GetVoiceChannelInput, opts ...request.Option) (*pinpoint.GetVoiceChannelOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error)
-	ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error)
 	PhoneNumberValidateWithContext(ctx context.Context, input *pinpoint.PhoneNumberValidateInput, opts ...request.Option) (*pinpoint.PhoneNumberValidateOutput, error)
 	PutEventStreamWithContext(ctx context.Context, input *pinpoint.PutEventStreamInput, opts ...request.Option) (*pinpoint.PutEventStreamOutput, error)
 	PutEventsWithContext(ctx context.Context, input *pinpoint.PutEventsInput, opts ...request.Option) (*pinpoint.PutEventsOutput, error)
@@ -94,14 +84,11 @@ type Pinpoint interface {
 	UpdateBaiduChannelWithContext(ctx context.Context, input *pinpoint.UpdateBaiduChannelInput, opts ...request.Option) (*pinpoint.UpdateBaiduChannelOutput, error)
 	UpdateCampaignWithContext(ctx context.Context, input *pinpoint.UpdateCampaignInput, opts ...request.Option) (*pinpoint.UpdateCampaignOutput, error)
 	UpdateEmailChannelWithContext(ctx context.Context, input *pinpoint.UpdateEmailChannelInput, opts ...request.Option) (*pinpoint.UpdateEmailChannelOutput, error)
-	UpdateEmailTemplateWithContext(ctx context.Context, input *pinpoint.UpdateEmailTemplateInput, opts ...request.Option) (*pinpoint.UpdateEmailTemplateOutput, error)
 	UpdateEndpointWithContext(ctx context.Context, input *pinpoint.UpdateEndpointInput, opts ...request.Option) (*pinpoint.UpdateEndpointOutput, error)
 	UpdateEndpointsBatchWithContext(ctx context.Context, input *pinpoint.UpdateEndpointsBatchInput, opts ...request.Option) (*pinpoint.UpdateEndpointsBatchOutput, error)
 	UpdateGcmChannelWithContext(ctx context.Context, input *pinpoint.UpdateGcmChannelInput, opts ...request.Option) (*pinpoint.UpdateGcmChannelOutput, error)
-	UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error)
 	UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error)
 	UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error)
-	UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error)
 	UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error)
 }
 
@@ -162,27 +149,6 @@ func (c *Client) CreateCampaignWithContext(ctx context.Context, input *pinpoint.
 	return req.Output.(*pinpoint.CreateCampaignOutput), req.Error
 }
 
-func (c *Client) CreateEmailTemplateWithContext(ctx context.Context, input *pinpoint.CreateEmailTemplateInput, opts ...request.Option) (*pinpoint.CreateEmailTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "CreateEmailTemplate",
-		Input:   input,
-		Output:  (*pinpoint.CreateEmailTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.CreateEmailTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.CreateEmailTemplateOutput), req.Error
-}
-
 func (c *Client) CreateExportJobWithContext(ctx context.Context, input *pinpoint.CreateExportJobInput, opts ...request.Option) (*pinpoint.CreateExportJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -225,27 +191,6 @@ func (c *Client) CreateImportJobWithContext(ctx context.Context, input *pinpoint
 	return req.Output.(*pinpoint.CreateImportJobOutput), req.Error
 }
 
-func (c *Client) CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "CreatePushTemplate",
-		Input:   input,
-		Output:  (*pinpoint.CreatePushTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.CreatePushTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.CreatePushTemplateOutput), req.Error
-}
-
 func (c *Client) CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -265,27 +210,6 @@ func (c *Client) CreateSegmentWithContext(ctx context.Context, input *pinpoint.C
 	})
 
 	return req.Output.(*pinpoint.CreateSegmentOutput), req.Error
-}
-
-func (c *Client) CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "CreateSmsTemplate",
-		Input:   input,
-		Output:  (*pinpoint.CreateSmsTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.CreateSmsTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.CreateSmsTemplateOutput), req.Error
 }
 
 func (c *Client) DeleteAdmChannelWithContext(ctx context.Context, input *pinpoint.DeleteAdmChannelInput, opts ...request.Option) (*pinpoint.DeleteAdmChannelOutput, error) {
@@ -477,27 +401,6 @@ func (c *Client) DeleteEmailChannelWithContext(ctx context.Context, input *pinpo
 	return req.Output.(*pinpoint.DeleteEmailChannelOutput), req.Error
 }
 
-func (c *Client) DeleteEmailTemplateWithContext(ctx context.Context, input *pinpoint.DeleteEmailTemplateInput, opts ...request.Option) (*pinpoint.DeleteEmailTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "DeleteEmailTemplate",
-		Input:   input,
-		Output:  (*pinpoint.DeleteEmailTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.DeleteEmailTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.DeleteEmailTemplateOutput), req.Error
-}
-
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *pinpoint.DeleteEndpointInput, opts ...request.Option) (*pinpoint.DeleteEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -561,27 +464,6 @@ func (c *Client) DeleteGcmChannelWithContext(ctx context.Context, input *pinpoin
 	return req.Output.(*pinpoint.DeleteGcmChannelOutput), req.Error
 }
 
-func (c *Client) DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "DeletePushTemplate",
-		Input:   input,
-		Output:  (*pinpoint.DeletePushTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.DeletePushTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.DeletePushTemplateOutput), req.Error
-}
-
 func (c *Client) DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -622,27 +504,6 @@ func (c *Client) DeleteSmsChannelWithContext(ctx context.Context, input *pinpoin
 	})
 
 	return req.Output.(*pinpoint.DeleteSmsChannelOutput), req.Error
-}
-
-func (c *Client) DeleteSmsTemplateWithContext(ctx context.Context, input *pinpoint.DeleteSmsTemplateInput, opts ...request.Option) (*pinpoint.DeleteSmsTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "DeleteSmsTemplate",
-		Input:   input,
-		Output:  (*pinpoint.DeleteSmsTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.DeleteSmsTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.DeleteSmsTemplateOutput), req.Error
 }
 
 func (c *Client) DeleteUserEndpointsWithContext(ctx context.Context, input *pinpoint.DeleteUserEndpointsInput, opts ...request.Option) (*pinpoint.DeleteUserEndpointsOutput, error) {
@@ -1065,27 +926,6 @@ func (c *Client) GetEmailChannelWithContext(ctx context.Context, input *pinpoint
 	return req.Output.(*pinpoint.GetEmailChannelOutput), req.Error
 }
 
-func (c *Client) GetEmailTemplateWithContext(ctx context.Context, input *pinpoint.GetEmailTemplateInput, opts ...request.Option) (*pinpoint.GetEmailTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "GetEmailTemplate",
-		Input:   input,
-		Output:  (*pinpoint.GetEmailTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.GetEmailTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.GetEmailTemplateOutput), req.Error
-}
-
 func (c *Client) GetEndpointWithContext(ctx context.Context, input *pinpoint.GetEndpointInput, opts ...request.Option) (*pinpoint.GetEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -1231,27 +1071,6 @@ func (c *Client) GetImportJobsWithContext(ctx context.Context, input *pinpoint.G
 	})
 
 	return req.Output.(*pinpoint.GetImportJobsOutput), req.Error
-}
-
-func (c *Client) GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "GetPushTemplate",
-		Input:   input,
-		Output:  (*pinpoint.GetPushTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.GetPushTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.GetPushTemplateOutput), req.Error
 }
 
 func (c *Client) GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error) {
@@ -1401,27 +1220,6 @@ func (c *Client) GetSmsChannelWithContext(ctx context.Context, input *pinpoint.G
 	return req.Output.(*pinpoint.GetSmsChannelOutput), req.Error
 }
 
-func (c *Client) GetSmsTemplateWithContext(ctx context.Context, input *pinpoint.GetSmsTemplateInput, opts ...request.Option) (*pinpoint.GetSmsTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "GetSmsTemplate",
-		Input:   input,
-		Output:  (*pinpoint.GetSmsTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.GetSmsTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.GetSmsTemplateOutput), req.Error
-}
-
 func (c *Client) GetUserEndpointsWithContext(ctx context.Context, input *pinpoint.GetUserEndpointsInput, opts ...request.Option) (*pinpoint.GetUserEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -1483,27 +1281,6 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinp
 	})
 
 	return req.Output.(*pinpoint.ListTagsForResourceOutput), req.Error
-}
-
-func (c *Client) ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "ListTemplates",
-		Input:   input,
-		Output:  (*pinpoint.ListTemplatesOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.ListTemplatesWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.ListTemplatesOutput), req.Error
 }
 
 func (c *Client) PhoneNumberValidateWithContext(ctx context.Context, input *pinpoint.PhoneNumberValidateInput, opts ...request.Option) (*pinpoint.PhoneNumberValidateOutput, error) {
@@ -1863,27 +1640,6 @@ func (c *Client) UpdateEmailChannelWithContext(ctx context.Context, input *pinpo
 	return req.Output.(*pinpoint.UpdateEmailChannelOutput), req.Error
 }
 
-func (c *Client) UpdateEmailTemplateWithContext(ctx context.Context, input *pinpoint.UpdateEmailTemplateInput, opts ...request.Option) (*pinpoint.UpdateEmailTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "UpdateEmailTemplate",
-		Input:   input,
-		Output:  (*pinpoint.UpdateEmailTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.UpdateEmailTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.UpdateEmailTemplateOutput), req.Error
-}
-
 func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *pinpoint.UpdateEndpointInput, opts ...request.Option) (*pinpoint.UpdateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -1947,27 +1703,6 @@ func (c *Client) UpdateGcmChannelWithContext(ctx context.Context, input *pinpoin
 	return req.Output.(*pinpoint.UpdateGcmChannelOutput), req.Error
 }
 
-func (c *Client) UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "UpdatePushTemplate",
-		Input:   input,
-		Output:  (*pinpoint.UpdatePushTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.UpdatePushTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.UpdatePushTemplateOutput), req.Error
-}
-
 func (c *Client) UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -2008,27 +1743,6 @@ func (c *Client) UpdateSmsChannelWithContext(ctx context.Context, input *pinpoin
 	})
 
 	return req.Output.(*pinpoint.UpdateSmsChannelOutput), req.Error
-}
-
-func (c *Client) UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "pinpoint",
-		Action:  "UpdateSmsTemplate",
-		Input:   input,
-		Output:  (*pinpoint.UpdateSmsTemplateOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.PinpointAPI.UpdateSmsTemplateWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*pinpoint.UpdateSmsTemplateOutput), req.Error
 }
 
 func (c *Client) UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error) {
