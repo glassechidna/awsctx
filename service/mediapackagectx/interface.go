@@ -12,12 +12,15 @@ import (
 
 type MediaPackage interface {
 	CreateChannelWithContext(ctx context.Context, input *mediapackage.CreateChannelInput, opts ...request.Option) (*mediapackage.CreateChannelOutput, error)
+	CreateHarvestJobWithContext(ctx context.Context, input *mediapackage.CreateHarvestJobInput, opts ...request.Option) (*mediapackage.CreateHarvestJobOutput, error)
 	CreateOriginEndpointWithContext(ctx context.Context, input *mediapackage.CreateOriginEndpointInput, opts ...request.Option) (*mediapackage.CreateOriginEndpointOutput, error)
 	DeleteChannelWithContext(ctx context.Context, input *mediapackage.DeleteChannelInput, opts ...request.Option) (*mediapackage.DeleteChannelOutput, error)
 	DeleteOriginEndpointWithContext(ctx context.Context, input *mediapackage.DeleteOriginEndpointInput, opts ...request.Option) (*mediapackage.DeleteOriginEndpointOutput, error)
 	DescribeChannelWithContext(ctx context.Context, input *mediapackage.DescribeChannelInput, opts ...request.Option) (*mediapackage.DescribeChannelOutput, error)
+	DescribeHarvestJobWithContext(ctx context.Context, input *mediapackage.DescribeHarvestJobInput, opts ...request.Option) (*mediapackage.DescribeHarvestJobOutput, error)
 	DescribeOriginEndpointWithContext(ctx context.Context, input *mediapackage.DescribeOriginEndpointInput, opts ...request.Option) (*mediapackage.DescribeOriginEndpointOutput, error)
 	ListChannelsWithContext(ctx context.Context, input *mediapackage.ListChannelsInput, opts ...request.Option) (*mediapackage.ListChannelsOutput, error)
+	ListHarvestJobsWithContext(ctx context.Context, input *mediapackage.ListHarvestJobsInput, opts ...request.Option) (*mediapackage.ListHarvestJobsOutput, error)
 	ListOriginEndpointsWithContext(ctx context.Context, input *mediapackage.ListOriginEndpointsInput, opts ...request.Option) (*mediapackage.ListOriginEndpointsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *mediapackage.ListTagsForResourceInput, opts ...request.Option) (*mediapackage.ListTagsForResourceOutput, error)
 	RotateChannelCredentialsWithContext(ctx context.Context, input *mediapackage.RotateChannelCredentialsInput, opts ...request.Option) (*mediapackage.RotateChannelCredentialsOutput, error)
@@ -62,6 +65,27 @@ func (c *Client) CreateChannelWithContext(ctx context.Context, input *mediapacka
 	})
 
 	return req.Output.(*mediapackage.CreateChannelOutput), req.Error
+}
+
+func (c *Client) CreateHarvestJobWithContext(ctx context.Context, input *mediapackage.CreateHarvestJobInput, opts ...request.Option) (*mediapackage.CreateHarvestJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "CreateHarvestJob",
+		Input:   input,
+		Output:  (*mediapackage.CreateHarvestJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageAPI.CreateHarvestJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackage.CreateHarvestJobOutput), req.Error
 }
 
 func (c *Client) CreateOriginEndpointWithContext(ctx context.Context, input *mediapackage.CreateOriginEndpointInput, opts ...request.Option) (*mediapackage.CreateOriginEndpointOutput, error) {
@@ -148,6 +172,27 @@ func (c *Client) DescribeChannelWithContext(ctx context.Context, input *mediapac
 	return req.Output.(*mediapackage.DescribeChannelOutput), req.Error
 }
 
+func (c *Client) DescribeHarvestJobWithContext(ctx context.Context, input *mediapackage.DescribeHarvestJobInput, opts ...request.Option) (*mediapackage.DescribeHarvestJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "DescribeHarvestJob",
+		Input:   input,
+		Output:  (*mediapackage.DescribeHarvestJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageAPI.DescribeHarvestJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackage.DescribeHarvestJobOutput), req.Error
+}
+
 func (c *Client) DescribeOriginEndpointWithContext(ctx context.Context, input *mediapackage.DescribeOriginEndpointInput, opts ...request.Option) (*mediapackage.DescribeOriginEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackage",
@@ -188,6 +233,27 @@ func (c *Client) ListChannelsWithContext(ctx context.Context, input *mediapackag
 	})
 
 	return req.Output.(*mediapackage.ListChannelsOutput), req.Error
+}
+
+func (c *Client) ListHarvestJobsWithContext(ctx context.Context, input *mediapackage.ListHarvestJobsInput, opts ...request.Option) (*mediapackage.ListHarvestJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "ListHarvestJobs",
+		Input:   input,
+		Output:  (*mediapackage.ListHarvestJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageAPI.ListHarvestJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackage.ListHarvestJobsOutput), req.Error
 }
 
 func (c *Client) ListOriginEndpointsWithContext(ctx context.Context, input *mediapackage.ListOriginEndpointsInput, opts ...request.Option) (*mediapackage.ListOriginEndpointsOutput, error) {

@@ -33,6 +33,7 @@ type Lightsail interface {
 	CreateRelationalDatabaseWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseOutput, error)
 	CreateRelationalDatabaseFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseFromSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseFromSnapshotOutput, error)
 	CreateRelationalDatabaseSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseSnapshotOutput, error)
+	DeleteAutoSnapshotWithContext(ctx context.Context, input *lightsail.DeleteAutoSnapshotInput, opts ...request.Option) (*lightsail.DeleteAutoSnapshotOutput, error)
 	DeleteDiskWithContext(ctx context.Context, input *lightsail.DeleteDiskInput, opts ...request.Option) (*lightsail.DeleteDiskOutput, error)
 	DeleteDiskSnapshotWithContext(ctx context.Context, input *lightsail.DeleteDiskSnapshotInput, opts ...request.Option) (*lightsail.DeleteDiskSnapshotOutput, error)
 	DeleteDomainWithContext(ctx context.Context, input *lightsail.DeleteDomainInput, opts ...request.Option) (*lightsail.DeleteDomainOutput, error)
@@ -48,9 +49,12 @@ type Lightsail interface {
 	DetachDiskWithContext(ctx context.Context, input *lightsail.DetachDiskInput, opts ...request.Option) (*lightsail.DetachDiskOutput, error)
 	DetachInstancesFromLoadBalancerWithContext(ctx context.Context, input *lightsail.DetachInstancesFromLoadBalancerInput, opts ...request.Option) (*lightsail.DetachInstancesFromLoadBalancerOutput, error)
 	DetachStaticIpWithContext(ctx context.Context, input *lightsail.DetachStaticIpInput, opts ...request.Option) (*lightsail.DetachStaticIpOutput, error)
+	DisableAddOnWithContext(ctx context.Context, input *lightsail.DisableAddOnInput, opts ...request.Option) (*lightsail.DisableAddOnOutput, error)
 	DownloadDefaultKeyPairWithContext(ctx context.Context, input *lightsail.DownloadDefaultKeyPairInput, opts ...request.Option) (*lightsail.DownloadDefaultKeyPairOutput, error)
+	EnableAddOnWithContext(ctx context.Context, input *lightsail.EnableAddOnInput, opts ...request.Option) (*lightsail.EnableAddOnOutput, error)
 	ExportSnapshotWithContext(ctx context.Context, input *lightsail.ExportSnapshotInput, opts ...request.Option) (*lightsail.ExportSnapshotOutput, error)
 	GetActiveNamesWithContext(ctx context.Context, input *lightsail.GetActiveNamesInput, opts ...request.Option) (*lightsail.GetActiveNamesOutput, error)
+	GetAutoSnapshotsWithContext(ctx context.Context, input *lightsail.GetAutoSnapshotsInput, opts ...request.Option) (*lightsail.GetAutoSnapshotsOutput, error)
 	GetBlueprintsWithContext(ctx context.Context, input *lightsail.GetBlueprintsInput, opts ...request.Option) (*lightsail.GetBlueprintsOutput, error)
 	GetBundlesWithContext(ctx context.Context, input *lightsail.GetBundlesInput, opts ...request.Option) (*lightsail.GetBundlesOutput, error)
 	GetCloudFormationStackRecordsWithContext(ctx context.Context, input *lightsail.GetCloudFormationStackRecordsInput, opts ...request.Option) (*lightsail.GetCloudFormationStackRecordsOutput, error)
@@ -591,6 +595,27 @@ func (c *Client) CreateRelationalDatabaseSnapshotWithContext(ctx context.Context
 	return req.Output.(*lightsail.CreateRelationalDatabaseSnapshotOutput), req.Error
 }
 
+func (c *Client) DeleteAutoSnapshotWithContext(ctx context.Context, input *lightsail.DeleteAutoSnapshotInput, opts ...request.Option) (*lightsail.DeleteAutoSnapshotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DeleteAutoSnapshot",
+		Input:   input,
+		Output:  (*lightsail.DeleteAutoSnapshotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DeleteAutoSnapshotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DeleteAutoSnapshotOutput), req.Error
+}
+
 func (c *Client) DeleteDiskWithContext(ctx context.Context, input *lightsail.DeleteDiskInput, opts ...request.Option) (*lightsail.DeleteDiskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
@@ -906,6 +931,27 @@ func (c *Client) DetachStaticIpWithContext(ctx context.Context, input *lightsail
 	return req.Output.(*lightsail.DetachStaticIpOutput), req.Error
 }
 
+func (c *Client) DisableAddOnWithContext(ctx context.Context, input *lightsail.DisableAddOnInput, opts ...request.Option) (*lightsail.DisableAddOnOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DisableAddOn",
+		Input:   input,
+		Output:  (*lightsail.DisableAddOnOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DisableAddOnWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DisableAddOnOutput), req.Error
+}
+
 func (c *Client) DownloadDefaultKeyPairWithContext(ctx context.Context, input *lightsail.DownloadDefaultKeyPairInput, opts ...request.Option) (*lightsail.DownloadDefaultKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
@@ -925,6 +971,27 @@ func (c *Client) DownloadDefaultKeyPairWithContext(ctx context.Context, input *l
 	})
 
 	return req.Output.(*lightsail.DownloadDefaultKeyPairOutput), req.Error
+}
+
+func (c *Client) EnableAddOnWithContext(ctx context.Context, input *lightsail.EnableAddOnInput, opts ...request.Option) (*lightsail.EnableAddOnOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "EnableAddOn",
+		Input:   input,
+		Output:  (*lightsail.EnableAddOnOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.EnableAddOnWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.EnableAddOnOutput), req.Error
 }
 
 func (c *Client) ExportSnapshotWithContext(ctx context.Context, input *lightsail.ExportSnapshotInput, opts ...request.Option) (*lightsail.ExportSnapshotOutput, error) {
@@ -967,6 +1034,27 @@ func (c *Client) GetActiveNamesWithContext(ctx context.Context, input *lightsail
 	})
 
 	return req.Output.(*lightsail.GetActiveNamesOutput), req.Error
+}
+
+func (c *Client) GetAutoSnapshotsWithContext(ctx context.Context, input *lightsail.GetAutoSnapshotsInput, opts ...request.Option) (*lightsail.GetAutoSnapshotsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetAutoSnapshots",
+		Input:   input,
+		Output:  (*lightsail.GetAutoSnapshotsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetAutoSnapshotsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetAutoSnapshotsOutput), req.Error
 }
 
 func (c *Client) GetBlueprintsWithContext(ctx context.Context, input *lightsail.GetBlueprintsInput, opts ...request.Option) (*lightsail.GetBlueprintsOutput, error) {
