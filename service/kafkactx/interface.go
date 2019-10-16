@@ -27,6 +27,7 @@ type Kafka interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kafka.TagResourceInput, opts ...request.Option) (*kafka.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *kafka.UntagResourceInput, opts ...request.Option) (*kafka.UntagResourceOutput, error)
+	UpdateBrokerCountWithContext(ctx context.Context, input *kafka.UpdateBrokerCountInput, opts ...request.Option) (*kafka.UpdateBrokerCountOutput, error)
 	UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error)
 	UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error)
 }
@@ -380,6 +381,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *kafka.Unta
 	})
 
 	return req.Output.(*kafka.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateBrokerCountWithContext(ctx context.Context, input *kafka.UpdateBrokerCountInput, opts ...request.Option) (*kafka.UpdateBrokerCountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateBrokerCount",
+		Input:   input,
+		Output:  (*kafka.UpdateBrokerCountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateBrokerCountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateBrokerCountOutput), req.Error
 }
 
 func (c *Client) UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error) {
