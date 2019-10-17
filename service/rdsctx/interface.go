@@ -23,6 +23,7 @@ type RDS interface {
 	CopyDBParameterGroupWithContext(ctx context.Context, input *rds.CopyDBParameterGroupInput, opts ...request.Option) (*rds.CopyDBParameterGroupOutput, error)
 	CopyDBSnapshotWithContext(ctx context.Context, input *rds.CopyDBSnapshotInput, opts ...request.Option) (*rds.CopyDBSnapshotOutput, error)
 	CopyOptionGroupWithContext(ctx context.Context, input *rds.CopyOptionGroupInput, opts ...request.Option) (*rds.CopyOptionGroupOutput, error)
+	CreateCustomAvailabilityZoneWithContext(ctx context.Context, input *rds.CreateCustomAvailabilityZoneInput, opts ...request.Option) (*rds.CreateCustomAvailabilityZoneOutput, error)
 	CreateDBClusterWithContext(ctx context.Context, input *rds.CreateDBClusterInput, opts ...request.Option) (*rds.CreateDBClusterOutput, error)
 	CreateDBClusterEndpointWithContext(ctx context.Context, input *rds.CreateDBClusterEndpointInput, opts ...request.Option) (*rds.CreateDBClusterEndpointOutput, error)
 	CreateDBClusterParameterGroupWithContext(ctx context.Context, input *rds.CreateDBClusterParameterGroupInput, opts ...request.Option) (*rds.CreateDBClusterParameterGroupOutput, error)
@@ -36,6 +37,7 @@ type RDS interface {
 	CreateEventSubscriptionWithContext(ctx context.Context, input *rds.CreateEventSubscriptionInput, opts ...request.Option) (*rds.CreateEventSubscriptionOutput, error)
 	CreateGlobalClusterWithContext(ctx context.Context, input *rds.CreateGlobalClusterInput, opts ...request.Option) (*rds.CreateGlobalClusterOutput, error)
 	CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error)
+	DeleteCustomAvailabilityZoneWithContext(ctx context.Context, input *rds.DeleteCustomAvailabilityZoneInput, opts ...request.Option) (*rds.DeleteCustomAvailabilityZoneOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error)
 	DeleteDBClusterEndpointWithContext(ctx context.Context, input *rds.DeleteDBClusterEndpointInput, opts ...request.Option) (*rds.DeleteDBClusterEndpointOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *rds.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*rds.DeleteDBClusterParameterGroupOutput, error)
@@ -48,9 +50,11 @@ type RDS interface {
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *rds.DeleteDBSubnetGroupInput, opts ...request.Option) (*rds.DeleteDBSubnetGroupOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *rds.DeleteEventSubscriptionInput, opts ...request.Option) (*rds.DeleteEventSubscriptionOutput, error)
 	DeleteGlobalClusterWithContext(ctx context.Context, input *rds.DeleteGlobalClusterInput, opts ...request.Option) (*rds.DeleteGlobalClusterOutput, error)
+	DeleteInstallationMediaWithContext(ctx context.Context, input *rds.DeleteInstallationMediaInput, opts ...request.Option) (*rds.DeleteInstallationMediaOutput, error)
 	DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error)
 	DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error)
+	DescribeCustomAvailabilityZonesWithContext(ctx context.Context, input *rds.DescribeCustomAvailabilityZonesInput, opts ...request.Option) (*rds.DescribeCustomAvailabilityZonesOutput, error)
 	DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error)
 	DescribeDBClusterEndpointsWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, opts ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error)
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *rds.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*rds.DescribeDBClusterParameterGroupsOutput, error)
@@ -74,6 +78,7 @@ type RDS interface {
 	DescribeEventSubscriptionsWithContext(ctx context.Context, input *rds.DescribeEventSubscriptionsInput, opts ...request.Option) (*rds.DescribeEventSubscriptionsOutput, error)
 	DescribeEventsWithContext(ctx context.Context, input *rds.DescribeEventsInput, opts ...request.Option) (*rds.DescribeEventsOutput, error)
 	DescribeGlobalClustersWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, opts ...request.Option) (*rds.DescribeGlobalClustersOutput, error)
+	DescribeInstallationMediaWithContext(ctx context.Context, input *rds.DescribeInstallationMediaInput, opts ...request.Option) (*rds.DescribeInstallationMediaOutput, error)
 	DescribeOptionGroupOptionsWithContext(ctx context.Context, input *rds.DescribeOptionGroupOptionsInput, opts ...request.Option) (*rds.DescribeOptionGroupOptionsOutput, error)
 	DescribeOptionGroupsWithContext(ctx context.Context, input *rds.DescribeOptionGroupsInput, opts ...request.Option) (*rds.DescribeOptionGroupsOutput, error)
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *rds.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*rds.DescribeOrderableDBInstanceOptionsOutput, error)
@@ -84,6 +89,7 @@ type RDS interface {
 	DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *rds.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error)
 	DownloadDBLogFilePortionWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, opts ...request.Option) (*rds.DownloadDBLogFilePortionOutput, error)
 	FailoverDBClusterWithContext(ctx context.Context, input *rds.FailoverDBClusterInput, opts ...request.Option) (*rds.FailoverDBClusterOutput, error)
+	ImportInstallationMediaWithContext(ctx context.Context, input *rds.ImportInstallationMediaInput, opts ...request.Option) (*rds.ImportInstallationMediaOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error)
 	ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, input *rds.ModifyCurrentDBClusterCapacityInput, opts ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error)
 	ModifyDBClusterWithContext(ctx context.Context, input *rds.ModifyDBClusterInput, opts ...request.Option) (*rds.ModifyDBClusterOutput, error)
@@ -391,6 +397,27 @@ func (c *Client) CopyOptionGroupWithContext(ctx context.Context, input *rds.Copy
 	return req.Output.(*rds.CopyOptionGroupOutput), req.Error
 }
 
+func (c *Client) CreateCustomAvailabilityZoneWithContext(ctx context.Context, input *rds.CreateCustomAvailabilityZoneInput, opts ...request.Option) (*rds.CreateCustomAvailabilityZoneOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CreateCustomAvailabilityZone",
+		Input:   input,
+		Output:  (*rds.CreateCustomAvailabilityZoneOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CreateCustomAvailabilityZoneWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CreateCustomAvailabilityZoneOutput), req.Error
+}
+
 func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *rds.CreateDBClusterInput, opts ...request.Option) (*rds.CreateDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -664,6 +691,27 @@ func (c *Client) CreateOptionGroupWithContext(ctx context.Context, input *rds.Cr
 	return req.Output.(*rds.CreateOptionGroupOutput), req.Error
 }
 
+func (c *Client) DeleteCustomAvailabilityZoneWithContext(ctx context.Context, input *rds.DeleteCustomAvailabilityZoneInput, opts ...request.Option) (*rds.DeleteCustomAvailabilityZoneOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteCustomAvailabilityZone",
+		Input:   input,
+		Output:  (*rds.DeleteCustomAvailabilityZoneOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteCustomAvailabilityZoneWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteCustomAvailabilityZoneOutput), req.Error
+}
+
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -916,6 +964,27 @@ func (c *Client) DeleteGlobalClusterWithContext(ctx context.Context, input *rds.
 	return req.Output.(*rds.DeleteGlobalClusterOutput), req.Error
 }
 
+func (c *Client) DeleteInstallationMediaWithContext(ctx context.Context, input *rds.DeleteInstallationMediaInput, opts ...request.Option) (*rds.DeleteInstallationMediaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteInstallationMedia",
+		Input:   input,
+		Output:  (*rds.DeleteInstallationMediaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteInstallationMediaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteInstallationMediaOutput), req.Error
+}
+
 func (c *Client) DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -977,6 +1046,27 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *rds
 	})
 
 	return req.Output.(*rds.DescribeCertificatesOutput), req.Error
+}
+
+func (c *Client) DescribeCustomAvailabilityZonesWithContext(ctx context.Context, input *rds.DescribeCustomAvailabilityZonesInput, opts ...request.Option) (*rds.DescribeCustomAvailabilityZonesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeCustomAvailabilityZones",
+		Input:   input,
+		Output:  (*rds.DescribeCustomAvailabilityZonesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeCustomAvailabilityZonesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeCustomAvailabilityZonesOutput), req.Error
 }
 
 func (c *Client) DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error) {
@@ -1462,6 +1552,27 @@ func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *r
 	return req.Output.(*rds.DescribeGlobalClustersOutput), req.Error
 }
 
+func (c *Client) DescribeInstallationMediaWithContext(ctx context.Context, input *rds.DescribeInstallationMediaInput, opts ...request.Option) (*rds.DescribeInstallationMediaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeInstallationMedia",
+		Input:   input,
+		Output:  (*rds.DescribeInstallationMediaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeInstallationMediaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeInstallationMediaOutput), req.Error
+}
+
 func (c *Client) DescribeOptionGroupOptionsWithContext(ctx context.Context, input *rds.DescribeOptionGroupOptionsInput, opts ...request.Option) (*rds.DescribeOptionGroupOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1670,6 +1781,27 @@ func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *rds.Fa
 	})
 
 	return req.Output.(*rds.FailoverDBClusterOutput), req.Error
+}
+
+func (c *Client) ImportInstallationMediaWithContext(ctx context.Context, input *rds.ImportInstallationMediaInput, opts ...request.Option) (*rds.ImportInstallationMediaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ImportInstallationMedia",
+		Input:   input,
+		Output:  (*rds.ImportInstallationMediaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ImportInstallationMediaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ImportInstallationMediaOutput), req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error) {
