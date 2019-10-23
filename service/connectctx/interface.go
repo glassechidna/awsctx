@@ -20,6 +20,10 @@ type Connect interface {
 	GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error)
 	GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error)
+	ListContactFlowsWithContext(ctx context.Context, input *connect.ListContactFlowsInput, opts ...request.Option) (*connect.ListContactFlowsOutput, error)
+	ListHoursOfOperationsWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, opts ...request.Option) (*connect.ListHoursOfOperationsOutput, error)
+	ListPhoneNumbersWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, opts ...request.Option) (*connect.ListPhoneNumbersOutput, error)
+	ListQueuesWithContext(ctx context.Context, input *connect.ListQueuesInput, opts ...request.Option) (*connect.ListQueuesOutput, error)
 	ListRoutingProfilesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, opts ...request.Option) (*connect.ListRoutingProfilesOutput, error)
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
 	ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error)
@@ -236,6 +240,90 @@ func (c *Client) GetMetricDataWithContext(ctx context.Context, input *connect.Ge
 	})
 
 	return req.Output.(*connect.GetMetricDataOutput), req.Error
+}
+
+func (c *Client) ListContactFlowsWithContext(ctx context.Context, input *connect.ListContactFlowsInput, opts ...request.Option) (*connect.ListContactFlowsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListContactFlows",
+		Input:   input,
+		Output:  (*connect.ListContactFlowsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListContactFlowsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListContactFlowsOutput), req.Error
+}
+
+func (c *Client) ListHoursOfOperationsWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, opts ...request.Option) (*connect.ListHoursOfOperationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListHoursOfOperations",
+		Input:   input,
+		Output:  (*connect.ListHoursOfOperationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListHoursOfOperationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListHoursOfOperationsOutput), req.Error
+}
+
+func (c *Client) ListPhoneNumbersWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, opts ...request.Option) (*connect.ListPhoneNumbersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListPhoneNumbers",
+		Input:   input,
+		Output:  (*connect.ListPhoneNumbersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListPhoneNumbersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListPhoneNumbersOutput), req.Error
+}
+
+func (c *Client) ListQueuesWithContext(ctx context.Context, input *connect.ListQueuesInput, opts ...request.Option) (*connect.ListQueuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListQueues",
+		Input:   input,
+		Output:  (*connect.ListQueuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListQueuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListQueuesOutput), req.Error
 }
 
 func (c *Client) ListRoutingProfilesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, opts ...request.Option) (*connect.ListRoutingProfilesOutput, error) {
