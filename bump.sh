@@ -5,8 +5,8 @@ git diff | wc -l
 
 AWS_VERSION=$(cat go.mod | grep aws-sdk-go | awk '{print $2}')
 
-git config --local user.email "action@github.com"
-git config --local user.name "GitHub Action"
+git config --local user.email "aidan.steele+bot@glassechidna.com.au"
+git config --local user.name "Aidan bot"
 git commit -m "Upstream ${AWS_VERSION}" -a || exit 0
 git tag -m "${AWS_VERSION}" -a "${AWS_VERSION}"
 
