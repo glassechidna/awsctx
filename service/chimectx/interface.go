@@ -13,6 +13,7 @@ import (
 type Chime interface {
 	AssociatePhoneNumberWithUserWithContext(ctx context.Context, input *chime.AssociatePhoneNumberWithUserInput, opts ...request.Option) (*chime.AssociatePhoneNumberWithUserOutput, error)
 	AssociatePhoneNumbersWithVoiceConnectorWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorOutput, error)
+	AssociatePhoneNumbersWithVoiceConnectorGroupWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorGroupInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput, error)
 	BatchDeletePhoneNumberWithContext(ctx context.Context, input *chime.BatchDeletePhoneNumberInput, opts ...request.Option) (*chime.BatchDeletePhoneNumberOutput, error)
 	BatchSuspendUserWithContext(ctx context.Context, input *chime.BatchSuspendUserInput, opts ...request.Option) (*chime.BatchSuspendUserOutput, error)
 	BatchUnsuspendUserWithContext(ctx context.Context, input *chime.BatchUnsuspendUserInput, opts ...request.Option) (*chime.BatchUnsuspendUserOutput, error)
@@ -22,15 +23,19 @@ type Chime interface {
 	CreateBotWithContext(ctx context.Context, input *chime.CreateBotInput, opts ...request.Option) (*chime.CreateBotOutput, error)
 	CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error)
 	CreateVoiceConnectorWithContext(ctx context.Context, input *chime.CreateVoiceConnectorInput, opts ...request.Option) (*chime.CreateVoiceConnectorOutput, error)
+	CreateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.CreateVoiceConnectorGroupInput, opts ...request.Option) (*chime.CreateVoiceConnectorGroupOutput, error)
 	DeleteAccountWithContext(ctx context.Context, input *chime.DeleteAccountInput, opts ...request.Option) (*chime.DeleteAccountOutput, error)
 	DeleteEventsConfigurationWithContext(ctx context.Context, input *chime.DeleteEventsConfigurationInput, opts ...request.Option) (*chime.DeleteEventsConfigurationOutput, error)
 	DeletePhoneNumberWithContext(ctx context.Context, input *chime.DeletePhoneNumberInput, opts ...request.Option) (*chime.DeletePhoneNumberOutput, error)
 	DeleteVoiceConnectorWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOutput, error)
+	DeleteVoiceConnectorGroupWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorGroupInput, opts ...request.Option) (*chime.DeleteVoiceConnectorGroupOutput, error)
 	DeleteVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorOriginationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOriginationOutput, error)
+	DeleteVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorStreamingConfigurationOutput, error)
 	DeleteVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorTerminationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorTerminationOutput, error)
 	DeleteVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.DeleteVoiceConnectorTerminationCredentialsOutput, error)
 	DisassociatePhoneNumberFromUserWithContext(ctx context.Context, input *chime.DisassociatePhoneNumberFromUserInput, opts ...request.Option) (*chime.DisassociatePhoneNumberFromUserOutput, error)
 	DisassociatePhoneNumbersFromVoiceConnectorWithContext(ctx context.Context, input *chime.DisassociatePhoneNumbersFromVoiceConnectorInput, opts ...request.Option) (*chime.DisassociatePhoneNumbersFromVoiceConnectorOutput, error)
+	DisassociatePhoneNumbersFromVoiceConnectorGroupWithContext(ctx context.Context, input *chime.DisassociatePhoneNumbersFromVoiceConnectorGroupInput, opts ...request.Option) (*chime.DisassociatePhoneNumbersFromVoiceConnectorGroupOutput, error)
 	GetAccountWithContext(ctx context.Context, input *chime.GetAccountInput, opts ...request.Option) (*chime.GetAccountOutput, error)
 	GetAccountSettingsWithContext(ctx context.Context, input *chime.GetAccountSettingsInput, opts ...request.Option) (*chime.GetAccountSettingsOutput, error)
 	GetBotWithContext(ctx context.Context, input *chime.GetBotInput, opts ...request.Option) (*chime.GetBotOutput, error)
@@ -38,10 +43,14 @@ type Chime interface {
 	GetGlobalSettingsWithContext(ctx context.Context, input *chime.GetGlobalSettingsInput, opts ...request.Option) (*chime.GetGlobalSettingsOutput, error)
 	GetPhoneNumberWithContext(ctx context.Context, input *chime.GetPhoneNumberInput, opts ...request.Option) (*chime.GetPhoneNumberOutput, error)
 	GetPhoneNumberOrderWithContext(ctx context.Context, input *chime.GetPhoneNumberOrderInput, opts ...request.Option) (*chime.GetPhoneNumberOrderOutput, error)
+	GetPhoneNumberSettingsWithContext(ctx context.Context, input *chime.GetPhoneNumberSettingsInput, opts ...request.Option) (*chime.GetPhoneNumberSettingsOutput, error)
 	GetUserWithContext(ctx context.Context, input *chime.GetUserInput, opts ...request.Option) (*chime.GetUserOutput, error)
 	GetUserSettingsWithContext(ctx context.Context, input *chime.GetUserSettingsInput, opts ...request.Option) (*chime.GetUserSettingsOutput, error)
 	GetVoiceConnectorWithContext(ctx context.Context, input *chime.GetVoiceConnectorInput, opts ...request.Option) (*chime.GetVoiceConnectorOutput, error)
+	GetVoiceConnectorGroupWithContext(ctx context.Context, input *chime.GetVoiceConnectorGroupInput, opts ...request.Option) (*chime.GetVoiceConnectorGroupOutput, error)
+	GetVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.GetVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.GetVoiceConnectorLoggingConfigurationOutput, error)
 	GetVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.GetVoiceConnectorOriginationInput, opts ...request.Option) (*chime.GetVoiceConnectorOriginationOutput, error)
+	GetVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.GetVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.GetVoiceConnectorStreamingConfigurationOutput, error)
 	GetVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.GetVoiceConnectorTerminationInput, opts ...request.Option) (*chime.GetVoiceConnectorTerminationOutput, error)
 	GetVoiceConnectorTerminationHealthWithContext(ctx context.Context, input *chime.GetVoiceConnectorTerminationHealthInput, opts ...request.Option) (*chime.GetVoiceConnectorTerminationHealthOutput, error)
 	InviteUsersWithContext(ctx context.Context, input *chime.InviteUsersInput, opts ...request.Option) (*chime.InviteUsersOutput, error)
@@ -50,11 +59,14 @@ type Chime interface {
 	ListPhoneNumberOrdersWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, opts ...request.Option) (*chime.ListPhoneNumberOrdersOutput, error)
 	ListPhoneNumbersWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, opts ...request.Option) (*chime.ListPhoneNumbersOutput, error)
 	ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error)
+	ListVoiceConnectorGroupsWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, opts ...request.Option) (*chime.ListVoiceConnectorGroupsOutput, error)
 	ListVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.ListVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.ListVoiceConnectorTerminationCredentialsOutput, error)
 	ListVoiceConnectorsWithContext(ctx context.Context, input *chime.ListVoiceConnectorsInput, opts ...request.Option) (*chime.ListVoiceConnectorsOutput, error)
 	LogoutUserWithContext(ctx context.Context, input *chime.LogoutUserInput, opts ...request.Option) (*chime.LogoutUserOutput, error)
 	PutEventsConfigurationWithContext(ctx context.Context, input *chime.PutEventsConfigurationInput, opts ...request.Option) (*chime.PutEventsConfigurationOutput, error)
+	PutVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorLoggingConfigurationOutput, error)
 	PutVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.PutVoiceConnectorOriginationInput, opts ...request.Option) (*chime.PutVoiceConnectorOriginationOutput, error)
+	PutVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorStreamingConfigurationOutput, error)
 	PutVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationOutput, error)
 	PutVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationCredentialsOutput, error)
 	RegenerateSecurityTokenWithContext(ctx context.Context, input *chime.RegenerateSecurityTokenInput, opts ...request.Option) (*chime.RegenerateSecurityTokenOutput, error)
@@ -66,9 +78,11 @@ type Chime interface {
 	UpdateBotWithContext(ctx context.Context, input *chime.UpdateBotInput, opts ...request.Option) (*chime.UpdateBotOutput, error)
 	UpdateGlobalSettingsWithContext(ctx context.Context, input *chime.UpdateGlobalSettingsInput, opts ...request.Option) (*chime.UpdateGlobalSettingsOutput, error)
 	UpdatePhoneNumberWithContext(ctx context.Context, input *chime.UpdatePhoneNumberInput, opts ...request.Option) (*chime.UpdatePhoneNumberOutput, error)
+	UpdatePhoneNumberSettingsWithContext(ctx context.Context, input *chime.UpdatePhoneNumberSettingsInput, opts ...request.Option) (*chime.UpdatePhoneNumberSettingsOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *chime.UpdateUserInput, opts ...request.Option) (*chime.UpdateUserOutput, error)
 	UpdateUserSettingsWithContext(ctx context.Context, input *chime.UpdateUserSettingsInput, opts ...request.Option) (*chime.UpdateUserSettingsOutput, error)
 	UpdateVoiceConnectorWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorInput, opts ...request.Option) (*chime.UpdateVoiceConnectorOutput, error)
+	UpdateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorGroupInput, opts ...request.Option) (*chime.UpdateVoiceConnectorGroupOutput, error)
 }
 
 type Client struct {
@@ -126,6 +140,27 @@ func (c *Client) AssociatePhoneNumbersWithVoiceConnectorWithContext(ctx context.
 	})
 
 	return req.Output.(*chime.AssociatePhoneNumbersWithVoiceConnectorOutput), req.Error
+}
+
+func (c *Client) AssociatePhoneNumbersWithVoiceConnectorGroupWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorGroupInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "AssociatePhoneNumbersWithVoiceConnectorGroup",
+		Input:   input,
+		Output:  (*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.AssociatePhoneNumbersWithVoiceConnectorGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput), req.Error
 }
 
 func (c *Client) BatchDeletePhoneNumberWithContext(ctx context.Context, input *chime.BatchDeletePhoneNumberInput, opts ...request.Option) (*chime.BatchDeletePhoneNumberOutput, error) {
@@ -317,6 +352,27 @@ func (c *Client) CreateVoiceConnectorWithContext(ctx context.Context, input *chi
 	return req.Output.(*chime.CreateVoiceConnectorOutput), req.Error
 }
 
+func (c *Client) CreateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.CreateVoiceConnectorGroupInput, opts ...request.Option) (*chime.CreateVoiceConnectorGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateVoiceConnectorGroup",
+		Input:   input,
+		Output:  (*chime.CreateVoiceConnectorGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateVoiceConnectorGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateVoiceConnectorGroupOutput), req.Error
+}
+
 func (c *Client) DeleteAccountWithContext(ctx context.Context, input *chime.DeleteAccountInput, opts ...request.Option) (*chime.DeleteAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -401,6 +457,27 @@ func (c *Client) DeleteVoiceConnectorWithContext(ctx context.Context, input *chi
 	return req.Output.(*chime.DeleteVoiceConnectorOutput), req.Error
 }
 
+func (c *Client) DeleteVoiceConnectorGroupWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorGroupInput, opts ...request.Option) (*chime.DeleteVoiceConnectorGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DeleteVoiceConnectorGroup",
+		Input:   input,
+		Output:  (*chime.DeleteVoiceConnectorGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DeleteVoiceConnectorGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DeleteVoiceConnectorGroupOutput), req.Error
+}
+
 func (c *Client) DeleteVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorOriginationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOriginationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -420,6 +497,27 @@ func (c *Client) DeleteVoiceConnectorOriginationWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*chime.DeleteVoiceConnectorOriginationOutput), req.Error
+}
+
+func (c *Client) DeleteVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorStreamingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DeleteVoiceConnectorStreamingConfiguration",
+		Input:   input,
+		Output:  (*chime.DeleteVoiceConnectorStreamingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DeleteVoiceConnectorStreamingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DeleteVoiceConnectorStreamingConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorTerminationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorTerminationOutput, error) {
@@ -504,6 +602,27 @@ func (c *Client) DisassociatePhoneNumbersFromVoiceConnectorWithContext(ctx conte
 	})
 
 	return req.Output.(*chime.DisassociatePhoneNumbersFromVoiceConnectorOutput), req.Error
+}
+
+func (c *Client) DisassociatePhoneNumbersFromVoiceConnectorGroupWithContext(ctx context.Context, input *chime.DisassociatePhoneNumbersFromVoiceConnectorGroupInput, opts ...request.Option) (*chime.DisassociatePhoneNumbersFromVoiceConnectorGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DisassociatePhoneNumbersFromVoiceConnectorGroup",
+		Input:   input,
+		Output:  (*chime.DisassociatePhoneNumbersFromVoiceConnectorGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DisassociatePhoneNumbersFromVoiceConnectorGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DisassociatePhoneNumbersFromVoiceConnectorGroupOutput), req.Error
 }
 
 func (c *Client) GetAccountWithContext(ctx context.Context, input *chime.GetAccountInput, opts ...request.Option) (*chime.GetAccountOutput, error) {
@@ -653,6 +772,27 @@ func (c *Client) GetPhoneNumberOrderWithContext(ctx context.Context, input *chim
 	return req.Output.(*chime.GetPhoneNumberOrderOutput), req.Error
 }
 
+func (c *Client) GetPhoneNumberSettingsWithContext(ctx context.Context, input *chime.GetPhoneNumberSettingsInput, opts ...request.Option) (*chime.GetPhoneNumberSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetPhoneNumberSettings",
+		Input:   input,
+		Output:  (*chime.GetPhoneNumberSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetPhoneNumberSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetPhoneNumberSettingsOutput), req.Error
+}
+
 func (c *Client) GetUserWithContext(ctx context.Context, input *chime.GetUserInput, opts ...request.Option) (*chime.GetUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -716,6 +856,48 @@ func (c *Client) GetVoiceConnectorWithContext(ctx context.Context, input *chime.
 	return req.Output.(*chime.GetVoiceConnectorOutput), req.Error
 }
 
+func (c *Client) GetVoiceConnectorGroupWithContext(ctx context.Context, input *chime.GetVoiceConnectorGroupInput, opts ...request.Option) (*chime.GetVoiceConnectorGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetVoiceConnectorGroup",
+		Input:   input,
+		Output:  (*chime.GetVoiceConnectorGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetVoiceConnectorGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetVoiceConnectorGroupOutput), req.Error
+}
+
+func (c *Client) GetVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.GetVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.GetVoiceConnectorLoggingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetVoiceConnectorLoggingConfiguration",
+		Input:   input,
+		Output:  (*chime.GetVoiceConnectorLoggingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetVoiceConnectorLoggingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetVoiceConnectorLoggingConfigurationOutput), req.Error
+}
+
 func (c *Client) GetVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.GetVoiceConnectorOriginationInput, opts ...request.Option) (*chime.GetVoiceConnectorOriginationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -735,6 +917,27 @@ func (c *Client) GetVoiceConnectorOriginationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*chime.GetVoiceConnectorOriginationOutput), req.Error
+}
+
+func (c *Client) GetVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.GetVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.GetVoiceConnectorStreamingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetVoiceConnectorStreamingConfiguration",
+		Input:   input,
+		Output:  (*chime.GetVoiceConnectorStreamingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetVoiceConnectorStreamingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetVoiceConnectorStreamingConfigurationOutput), req.Error
 }
 
 func (c *Client) GetVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.GetVoiceConnectorTerminationInput, opts ...request.Option) (*chime.GetVoiceConnectorTerminationOutput, error) {
@@ -905,6 +1108,27 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *chime.ListUser
 	return req.Output.(*chime.ListUsersOutput), req.Error
 }
 
+func (c *Client) ListVoiceConnectorGroupsWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, opts ...request.Option) (*chime.ListVoiceConnectorGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListVoiceConnectorGroups",
+		Input:   input,
+		Output:  (*chime.ListVoiceConnectorGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListVoiceConnectorGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListVoiceConnectorGroupsOutput), req.Error
+}
+
 func (c *Client) ListVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.ListVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.ListVoiceConnectorTerminationCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -989,6 +1213,27 @@ func (c *Client) PutEventsConfigurationWithContext(ctx context.Context, input *c
 	return req.Output.(*chime.PutEventsConfigurationOutput), req.Error
 }
 
+func (c *Client) PutVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorLoggingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "PutVoiceConnectorLoggingConfiguration",
+		Input:   input,
+		Output:  (*chime.PutVoiceConnectorLoggingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.PutVoiceConnectorLoggingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.PutVoiceConnectorLoggingConfigurationOutput), req.Error
+}
+
 func (c *Client) PutVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.PutVoiceConnectorOriginationInput, opts ...request.Option) (*chime.PutVoiceConnectorOriginationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1008,6 +1253,27 @@ func (c *Client) PutVoiceConnectorOriginationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*chime.PutVoiceConnectorOriginationOutput), req.Error
+}
+
+func (c *Client) PutVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorStreamingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "PutVoiceConnectorStreamingConfiguration",
+		Input:   input,
+		Output:  (*chime.PutVoiceConnectorStreamingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.PutVoiceConnectorStreamingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.PutVoiceConnectorStreamingConfigurationOutput), req.Error
 }
 
 func (c *Client) PutVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationOutput, error) {
@@ -1241,6 +1507,27 @@ func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *chime.
 	return req.Output.(*chime.UpdatePhoneNumberOutput), req.Error
 }
 
+func (c *Client) UpdatePhoneNumberSettingsWithContext(ctx context.Context, input *chime.UpdatePhoneNumberSettingsInput, opts ...request.Option) (*chime.UpdatePhoneNumberSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UpdatePhoneNumberSettings",
+		Input:   input,
+		Output:  (*chime.UpdatePhoneNumberSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UpdatePhoneNumberSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UpdatePhoneNumberSettingsOutput), req.Error
+}
+
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *chime.UpdateUserInput, opts ...request.Option) (*chime.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1302,4 +1589,25 @@ func (c *Client) UpdateVoiceConnectorWithContext(ctx context.Context, input *chi
 	})
 
 	return req.Output.(*chime.UpdateVoiceConnectorOutput), req.Error
+}
+
+func (c *Client) UpdateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorGroupInput, opts ...request.Option) (*chime.UpdateVoiceConnectorGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UpdateVoiceConnectorGroup",
+		Input:   input,
+		Output:  (*chime.UpdateVoiceConnectorGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UpdateVoiceConnectorGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UpdateVoiceConnectorGroupOutput), req.Error
 }
