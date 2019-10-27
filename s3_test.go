@@ -53,8 +53,6 @@ func TestPassthroughWithoutContext(t *testing.T) {
 }
 
 func TestPaginatedWithContexter(t *testing.T) {
-	t.Skip("not yet implemented")
-
 	api := &mockS3{}
 	api.
 		On("ListObjectsPagesWithContext", mock.Anything, &s3.ListObjectsInput{Bucket: aws.String("bucket")}, mock.Anything, mock.Anything).

@@ -24,6 +24,8 @@ type method struct {
 	Action     string // name without suffix
 	Args       string
 	ReturnType string
+	OutputType string
+	Paginated  bool
 }
 
 type api struct {
@@ -53,28 +55,46 @@ func (v visitor) Visit(node ast.Node) (w ast.Visitor) {
 				continue
 			}
 
-			if strings.HasSuffix(name, "PagesWithContext") {
-				continue
-			}
-
 			if strings.HasPrefix(name, "WaitUntil") {
 				continue
 			}
 
 			ft := meth.Type.(*ast.FuncType)
 
+			paginated := strings.HasSuffix(name, "PagesWithContext")
+
 			inputType := &strings.Builder{}
 			printer.Fprint(inputType, v.fset, ft.Params.List[1].Type)
-			args := fmt.Sprintf("ctx context.Context, input %s, opts ...request.Option", inputType.String())
 
-			returnType := &strings.Builder{}
-			printer.Fprint(returnType, v.fset, ft.Results.List[0].Type)
+			args := ""
+			ret := ""
+			out := ""
+
+			action := strings.TrimSuffix(strings.TrimSuffix(name, "WithContext"), "Pages")
+
+			if paginated {
+				returnType := &strings.Builder{}
+				ft2 := ft.Params.List[2].Type.(*ast.FuncType)
+				printer.Fprint(returnType, v.fset, ft2.Params.List[0].Type)
+
+				args = fmt.Sprintf("ctx context.Context, input %s, cb func(%s, bool) bool, opts ...request.Option", inputType.String(), returnType.String())
+				ret = "error"
+			} else {
+				returnType := &strings.Builder{}
+				printer.Fprint(returnType, v.fset, ft.Results.List[0].Type)
+
+				out = returnType.String()
+				args = fmt.Sprintf("ctx context.Context, input %s, opts ...request.Option", inputType.String())
+				ret = fmt.Sprintf("(%s, error)", out)
+			}
 
 			myapi.Methods = append(myapi.Methods, method{
 				Name:       name,
-				Action:     strings.TrimSuffix(name, "WithContext"),
+				Action:     action,
 				Args:       args,
-				ReturnType: returnType.String(),
+				ReturnType: ret,
+				OutputType: out,
+				Paginated:  paginated,
 			})
 		}
 
@@ -105,7 +125,7 @@ import (
 
 type {{ .Name }} interface {
 {{- range .Methods }}
-	{{ .Name }}({{ .Args }}) ({{ .ReturnType }}, error)
+	{{ .Name }}({{ .Args }}) {{ .ReturnType }}
 {{- end }}
 }
 
@@ -124,12 +144,14 @@ func New(base {{ .SourcePackage }}iface.{{ .Name }}API, ctxer awsctx.Contexter) 
 var _ {{ .Name }} = (*{{ .SourcePackage }}.{{ .Name }})(nil)
 var _ {{ .Name }} = (*Client)(nil)
 {{ range .Methods }}
-func (c *Client) {{ .Name }}({{ .Args }}) ({{ .ReturnType }}, error) {
+func (c *Client) {{ .Name }}({{ .Args }}) {{ .ReturnType }} {
 	req := &awsctx.AwsRequest{
 		Service: "{{ $.SourcePackage }}",
 		Action:  "{{ .Action }}",
 		Input:   input,
-		Output:  ({{ .ReturnType }})(nil),
+{{- if not .Paginated }}
+		Output:  ({{ .OutputType }})(nil),
+{{- end }}
 		Error:   nil,
 	}
 
@@ -139,10 +161,17 @@ func (c *Client) {{ .Name }}({{ .Args }}) ({{ .ReturnType }}, error) {
 	}
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+{{- if .Paginated }}
+		req.Error = c.{{ $.Name }}API.{{ .Name }}(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+{{- else }}
 		req.Output, req.Error = c.{{ $.Name }}API.{{ .Name }}(ctx, input, opts...)
 	})
 
-	return req.Output.({{ .ReturnType }}), req.Error
+	return req.Output.({{ .OutputType }}), req.Error
+{{- end }}
 }
 {{ end }}
 `

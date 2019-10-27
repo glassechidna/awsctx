@@ -114,8 +114,8 @@ func recordApiCall(ctx context.Context, request *awsctx.AwsRequest, start time.T
 
 ## Outstanding issues
 
-**Pagination and waiters**. I haven't yet implemented support for the `*PagesWithContext` methods. Those 
-are useful and should be added. Likewise for the `WaitUntil***WithContext` methods.
+**Waiters**. I haven't yet implemented support for the `WaitUntil***WithContext` methods. Those 
+are useful and should be added.
 
 [sdk]: https://github.com/aws/aws-sdk-go
 [ctx-support]: https://aws.amazon.com/blogs/developer/context-pattern-added-to-the-aws-sdk-for-go/
