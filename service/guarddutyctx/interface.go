@@ -39,13 +39,20 @@ type GuardDuty interface {
 	GetThreatIntelSetWithContext(ctx context.Context, input *guardduty.GetThreatIntelSetInput, opts ...request.Option) (*guardduty.GetThreatIntelSetOutput, error)
 	InviteMembersWithContext(ctx context.Context, input *guardduty.InviteMembersInput, opts ...request.Option) (*guardduty.InviteMembersOutput, error)
 	ListDetectorsWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, opts ...request.Option) (*guardduty.ListDetectorsOutput, error)
+	ListDetectorsPagesWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, cb func(*guardduty.ListDetectorsOutput, bool) bool, opts ...request.Option) error
 	ListFiltersWithContext(ctx context.Context, input *guardduty.ListFiltersInput, opts ...request.Option) (*guardduty.ListFiltersOutput, error)
+	ListFiltersPagesWithContext(ctx context.Context, input *guardduty.ListFiltersInput, cb func(*guardduty.ListFiltersOutput, bool) bool, opts ...request.Option) error
 	ListFindingsWithContext(ctx context.Context, input *guardduty.ListFindingsInput, opts ...request.Option) (*guardduty.ListFindingsOutput, error)
+	ListFindingsPagesWithContext(ctx context.Context, input *guardduty.ListFindingsInput, cb func(*guardduty.ListFindingsOutput, bool) bool, opts ...request.Option) error
 	ListIPSetsWithContext(ctx context.Context, input *guardduty.ListIPSetsInput, opts ...request.Option) (*guardduty.ListIPSetsOutput, error)
+	ListIPSetsPagesWithContext(ctx context.Context, input *guardduty.ListIPSetsInput, cb func(*guardduty.ListIPSetsOutput, bool) bool, opts ...request.Option) error
 	ListInvitationsWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, opts ...request.Option) (*guardduty.ListInvitationsOutput, error)
+	ListInvitationsPagesWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, cb func(*guardduty.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *guardduty.ListMembersInput, opts ...request.Option) (*guardduty.ListMembersOutput, error)
+	ListMembersPagesWithContext(ctx context.Context, input *guardduty.ListMembersInput, cb func(*guardduty.ListMembersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error)
 	ListThreatIntelSetsWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, opts ...request.Option) (*guardduty.ListThreatIntelSetsOutput, error)
+	ListThreatIntelSetsPagesWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, cb func(*guardduty.ListThreatIntelSetsOutput, bool) bool, opts ...request.Option) error
 	StartMonitoringMembersWithContext(ctx context.Context, input *guardduty.StartMonitoringMembersInput, opts ...request.Option) (*guardduty.StartMonitoringMembersOutput, error)
 	StopMonitoringMembersWithContext(ctx context.Context, input *guardduty.StopMonitoringMembersInput, opts ...request.Option) (*guardduty.StopMonitoringMembersOutput, error)
 	TagResourceWithContext(ctx context.Context, input *guardduty.TagResourceInput, opts ...request.Option) (*guardduty.TagResourceOutput, error)
@@ -661,6 +668,26 @@ func (c *Client) ListDetectorsWithContext(ctx context.Context, input *guardduty.
 	return req.Output.(*guardduty.ListDetectorsOutput), req.Error
 }
 
+func (c *Client) ListDetectorsPagesWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, cb func(*guardduty.ListDetectorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListDetectors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListDetectorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListFiltersWithContext(ctx context.Context, input *guardduty.ListFiltersInput, opts ...request.Option) (*guardduty.ListFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -680,6 +707,26 @@ func (c *Client) ListFiltersWithContext(ctx context.Context, input *guardduty.Li
 	})
 
 	return req.Output.(*guardduty.ListFiltersOutput), req.Error
+}
+
+func (c *Client) ListFiltersPagesWithContext(ctx context.Context, input *guardduty.ListFiltersInput, cb func(*guardduty.ListFiltersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListFilters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListFiltersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListFindingsWithContext(ctx context.Context, input *guardduty.ListFindingsInput, opts ...request.Option) (*guardduty.ListFindingsOutput, error) {
@@ -703,6 +750,26 @@ func (c *Client) ListFindingsWithContext(ctx context.Context, input *guardduty.L
 	return req.Output.(*guardduty.ListFindingsOutput), req.Error
 }
 
+func (c *Client) ListFindingsPagesWithContext(ctx context.Context, input *guardduty.ListFindingsInput, cb func(*guardduty.ListFindingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListFindings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListFindingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListIPSetsWithContext(ctx context.Context, input *guardduty.ListIPSetsInput, opts ...request.Option) (*guardduty.ListIPSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -722,6 +789,26 @@ func (c *Client) ListIPSetsWithContext(ctx context.Context, input *guardduty.Lis
 	})
 
 	return req.Output.(*guardduty.ListIPSetsOutput), req.Error
+}
+
+func (c *Client) ListIPSetsPagesWithContext(ctx context.Context, input *guardduty.ListIPSetsInput, cb func(*guardduty.ListIPSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListIPSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListIPSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, opts ...request.Option) (*guardduty.ListInvitationsOutput, error) {
@@ -745,6 +832,26 @@ func (c *Client) ListInvitationsWithContext(ctx context.Context, input *guarddut
 	return req.Output.(*guardduty.ListInvitationsOutput), req.Error
 }
 
+func (c *Client) ListInvitationsPagesWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, cb func(*guardduty.ListInvitationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListInvitations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListInvitationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMembersWithContext(ctx context.Context, input *guardduty.ListMembersInput, opts ...request.Option) (*guardduty.ListMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -764,6 +871,26 @@ func (c *Client) ListMembersWithContext(ctx context.Context, input *guardduty.Li
 	})
 
 	return req.Output.(*guardduty.ListMembersOutput), req.Error
+}
+
+func (c *Client) ListMembersPagesWithContext(ctx context.Context, input *guardduty.ListMembersInput, cb func(*guardduty.ListMembersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListMembers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListMembersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error) {
@@ -806,6 +933,26 @@ func (c *Client) ListThreatIntelSetsWithContext(ctx context.Context, input *guar
 	})
 
 	return req.Output.(*guardduty.ListThreatIntelSetsOutput), req.Error
+}
+
+func (c *Client) ListThreatIntelSetsPagesWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, cb func(*guardduty.ListThreatIntelSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListThreatIntelSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListThreatIntelSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) StartMonitoringMembersWithContext(ctx context.Context, input *guardduty.StartMonitoringMembersInput, opts ...request.Option) (*guardduty.StartMonitoringMembersOutput, error) {

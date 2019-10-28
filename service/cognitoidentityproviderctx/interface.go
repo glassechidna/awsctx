@@ -27,7 +27,9 @@ type CognitoIdentityProvider interface {
 	AdminLinkProviderForUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminLinkProviderForUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminLinkProviderForUserOutput, error)
 	AdminListDevicesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListDevicesInput, opts ...request.Option) (*cognitoidentityprovider.AdminListDevicesOutput, error)
 	AdminListGroupsForUserWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListGroupsForUserInput, opts ...request.Option) (*cognitoidentityprovider.AdminListGroupsForUserOutput, error)
+	AdminListGroupsForUserPagesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListGroupsForUserInput, cb func(*cognitoidentityprovider.AdminListGroupsForUserOutput, bool) bool, opts ...request.Option) error
 	AdminListUserAuthEventsWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListUserAuthEventsInput, opts ...request.Option) (*cognitoidentityprovider.AdminListUserAuthEventsOutput, error)
+	AdminListUserAuthEventsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListUserAuthEventsInput, cb func(*cognitoidentityprovider.AdminListUserAuthEventsOutput, bool) bool, opts ...request.Option) error
 	AdminRemoveUserFromGroupWithContext(ctx context.Context, input *cognitoidentityprovider.AdminRemoveUserFromGroupInput, opts ...request.Option) (*cognitoidentityprovider.AdminRemoveUserFromGroupOutput, error)
 	AdminResetUserPasswordWithContext(ctx context.Context, input *cognitoidentityprovider.AdminResetUserPasswordInput, opts ...request.Option) (*cognitoidentityprovider.AdminResetUserPasswordOutput, error)
 	AdminRespondToAuthChallengeWithContext(ctx context.Context, input *cognitoidentityprovider.AdminRespondToAuthChallengeInput, opts ...request.Option) (*cognitoidentityprovider.AdminRespondToAuthChallengeOutput, error)
@@ -80,14 +82,21 @@ type CognitoIdentityProvider interface {
 	InitiateAuthWithContext(ctx context.Context, input *cognitoidentityprovider.InitiateAuthInput, opts ...request.Option) (*cognitoidentityprovider.InitiateAuthOutput, error)
 	ListDevicesWithContext(ctx context.Context, input *cognitoidentityprovider.ListDevicesInput, opts ...request.Option) (*cognitoidentityprovider.ListDevicesOutput, error)
 	ListGroupsWithContext(ctx context.Context, input *cognitoidentityprovider.ListGroupsInput, opts ...request.Option) (*cognitoidentityprovider.ListGroupsOutput, error)
+	ListGroupsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListGroupsInput, cb func(*cognitoidentityprovider.ListGroupsOutput, bool) bool, opts ...request.Option) error
 	ListIdentityProvidersWithContext(ctx context.Context, input *cognitoidentityprovider.ListIdentityProvidersInput, opts ...request.Option) (*cognitoidentityprovider.ListIdentityProvidersOutput, error)
+	ListIdentityProvidersPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListIdentityProvidersInput, cb func(*cognitoidentityprovider.ListIdentityProvidersOutput, bool) bool, opts ...request.Option) error
 	ListResourceServersWithContext(ctx context.Context, input *cognitoidentityprovider.ListResourceServersInput, opts ...request.Option) (*cognitoidentityprovider.ListResourceServersOutput, error)
+	ListResourceServersPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListResourceServersInput, cb func(*cognitoidentityprovider.ListResourceServersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cognitoidentityprovider.ListTagsForResourceInput, opts ...request.Option) (*cognitoidentityprovider.ListTagsForResourceOutput, error)
 	ListUserImportJobsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserImportJobsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserImportJobsOutput, error)
 	ListUserPoolClientsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolClientsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserPoolClientsOutput, error)
+	ListUserPoolClientsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolClientsInput, cb func(*cognitoidentityprovider.ListUserPoolClientsOutput, bool) bool, opts ...request.Option) error
 	ListUserPoolsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserPoolsOutput, error)
+	ListUserPoolsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolsInput, cb func(*cognitoidentityprovider.ListUserPoolsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInput, opts ...request.Option) (*cognitoidentityprovider.ListUsersOutput, error)
+	ListUsersPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInput, cb func(*cognitoidentityprovider.ListUsersOutput, bool) bool, opts ...request.Option) error
 	ListUsersInGroupWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInGroupInput, opts ...request.Option) (*cognitoidentityprovider.ListUsersInGroupOutput, error)
+	ListUsersInGroupPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInGroupInput, cb func(*cognitoidentityprovider.ListUsersInGroupOutput, bool) bool, opts ...request.Option) error
 	ResendConfirmationCodeWithContext(ctx context.Context, input *cognitoidentityprovider.ResendConfirmationCodeInput, opts ...request.Option) (*cognitoidentityprovider.ResendConfirmationCodeOutput, error)
 	RespondToAuthChallengeWithContext(ctx context.Context, input *cognitoidentityprovider.RespondToAuthChallengeInput, opts ...request.Option) (*cognitoidentityprovider.RespondToAuthChallengeOutput, error)
 	SetRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetRiskConfigurationOutput, error)
@@ -464,6 +473,26 @@ func (c *Client) AdminListGroupsForUserWithContext(ctx context.Context, input *c
 	return req.Output.(*cognitoidentityprovider.AdminListGroupsForUserOutput), req.Error
 }
 
+func (c *Client) AdminListGroupsForUserPagesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListGroupsForUserInput, cb func(*cognitoidentityprovider.AdminListGroupsForUserOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "AdminListGroupsForUser",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.AdminListGroupsForUserPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) AdminListUserAuthEventsWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListUserAuthEventsInput, opts ...request.Option) (*cognitoidentityprovider.AdminListUserAuthEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
@@ -483,6 +512,26 @@ func (c *Client) AdminListUserAuthEventsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*cognitoidentityprovider.AdminListUserAuthEventsOutput), req.Error
+}
+
+func (c *Client) AdminListUserAuthEventsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.AdminListUserAuthEventsInput, cb func(*cognitoidentityprovider.AdminListUserAuthEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "AdminListUserAuthEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.AdminListUserAuthEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) AdminRemoveUserFromGroupWithContext(ctx context.Context, input *cognitoidentityprovider.AdminRemoveUserFromGroupInput, opts ...request.Option) (*cognitoidentityprovider.AdminRemoveUserFromGroupOutput, error) {
@@ -1577,6 +1626,26 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *cognitoidenti
 	return req.Output.(*cognitoidentityprovider.ListGroupsOutput), req.Error
 }
 
+func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListGroupsInput, cb func(*cognitoidentityprovider.ListGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListIdentityProvidersWithContext(ctx context.Context, input *cognitoidentityprovider.ListIdentityProvidersInput, opts ...request.Option) (*cognitoidentityprovider.ListIdentityProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
@@ -1598,6 +1667,26 @@ func (c *Client) ListIdentityProvidersWithContext(ctx context.Context, input *co
 	return req.Output.(*cognitoidentityprovider.ListIdentityProvidersOutput), req.Error
 }
 
+func (c *Client) ListIdentityProvidersPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListIdentityProvidersInput, cb func(*cognitoidentityprovider.ListIdentityProvidersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListIdentityProviders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListIdentityProvidersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResourceServersWithContext(ctx context.Context, input *cognitoidentityprovider.ListResourceServersInput, opts ...request.Option) (*cognitoidentityprovider.ListResourceServersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
@@ -1617,6 +1706,26 @@ func (c *Client) ListResourceServersWithContext(ctx context.Context, input *cogn
 	})
 
 	return req.Output.(*cognitoidentityprovider.ListResourceServersOutput), req.Error
+}
+
+func (c *Client) ListResourceServersPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListResourceServersInput, cb func(*cognitoidentityprovider.ListResourceServersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListResourceServers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListResourceServersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cognitoidentityprovider.ListTagsForResourceInput, opts ...request.Option) (*cognitoidentityprovider.ListTagsForResourceOutput, error) {
@@ -1682,6 +1791,26 @@ func (c *Client) ListUserPoolClientsWithContext(ctx context.Context, input *cogn
 	return req.Output.(*cognitoidentityprovider.ListUserPoolClientsOutput), req.Error
 }
 
+func (c *Client) ListUserPoolClientsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolClientsInput, cb func(*cognitoidentityprovider.ListUserPoolClientsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListUserPoolClients",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListUserPoolClientsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUserPoolsWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolsInput, opts ...request.Option) (*cognitoidentityprovider.ListUserPoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
@@ -1701,6 +1830,26 @@ func (c *Client) ListUserPoolsWithContext(ctx context.Context, input *cognitoide
 	})
 
 	return req.Output.(*cognitoidentityprovider.ListUserPoolsOutput), req.Error
+}
+
+func (c *Client) ListUserPoolsPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUserPoolsInput, cb func(*cognitoidentityprovider.ListUserPoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListUserPools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListUserPoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListUsersWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInput, opts ...request.Option) (*cognitoidentityprovider.ListUsersOutput, error) {
@@ -1724,6 +1873,26 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *cognitoidentit
 	return req.Output.(*cognitoidentityprovider.ListUsersOutput), req.Error
 }
 
+func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInput, cb func(*cognitoidentityprovider.ListUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUsersInGroupWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInGroupInput, opts ...request.Option) (*cognitoidentityprovider.ListUsersInGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
@@ -1743,6 +1912,26 @@ func (c *Client) ListUsersInGroupWithContext(ctx context.Context, input *cognito
 	})
 
 	return req.Output.(*cognitoidentityprovider.ListUsersInGroupOutput), req.Error
+}
+
+func (c *Client) ListUsersInGroupPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInGroupInput, cb func(*cognitoidentityprovider.ListUsersInGroupOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "ListUsersInGroup",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityProviderAPI.ListUsersInGroupPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ResendConfirmationCodeWithContext(ctx context.Context, input *cognitoidentityprovider.ResendConfirmationCodeInput, opts ...request.Option) (*cognitoidentityprovider.ResendConfirmationCodeOutput, error) {

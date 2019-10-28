@@ -45,26 +45,45 @@ type CloudDirectory interface {
 	GetSchemaAsJsonWithContext(ctx context.Context, input *clouddirectory.GetSchemaAsJsonInput, opts ...request.Option) (*clouddirectory.GetSchemaAsJsonOutput, error)
 	GetTypedLinkFacetInformationWithContext(ctx context.Context, input *clouddirectory.GetTypedLinkFacetInformationInput, opts ...request.Option) (*clouddirectory.GetTypedLinkFacetInformationOutput, error)
 	ListAppliedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListAppliedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListAppliedSchemaArnsOutput, error)
+	ListAppliedSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListAppliedSchemaArnsInput, cb func(*clouddirectory.ListAppliedSchemaArnsOutput, bool) bool, opts ...request.Option) error
 	ListAttachedIndicesWithContext(ctx context.Context, input *clouddirectory.ListAttachedIndicesInput, opts ...request.Option) (*clouddirectory.ListAttachedIndicesOutput, error)
+	ListAttachedIndicesPagesWithContext(ctx context.Context, input *clouddirectory.ListAttachedIndicesInput, cb func(*clouddirectory.ListAttachedIndicesOutput, bool) bool, opts ...request.Option) error
 	ListDevelopmentSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListDevelopmentSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListDevelopmentSchemaArnsOutput, error)
+	ListDevelopmentSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListDevelopmentSchemaArnsInput, cb func(*clouddirectory.ListDevelopmentSchemaArnsOutput, bool) bool, opts ...request.Option) error
 	ListDirectoriesWithContext(ctx context.Context, input *clouddirectory.ListDirectoriesInput, opts ...request.Option) (*clouddirectory.ListDirectoriesOutput, error)
+	ListDirectoriesPagesWithContext(ctx context.Context, input *clouddirectory.ListDirectoriesInput, cb func(*clouddirectory.ListDirectoriesOutput, bool) bool, opts ...request.Option) error
 	ListFacetAttributesWithContext(ctx context.Context, input *clouddirectory.ListFacetAttributesInput, opts ...request.Option) (*clouddirectory.ListFacetAttributesOutput, error)
+	ListFacetAttributesPagesWithContext(ctx context.Context, input *clouddirectory.ListFacetAttributesInput, cb func(*clouddirectory.ListFacetAttributesOutput, bool) bool, opts ...request.Option) error
 	ListFacetNamesWithContext(ctx context.Context, input *clouddirectory.ListFacetNamesInput, opts ...request.Option) (*clouddirectory.ListFacetNamesOutput, error)
+	ListFacetNamesPagesWithContext(ctx context.Context, input *clouddirectory.ListFacetNamesInput, cb func(*clouddirectory.ListFacetNamesOutput, bool) bool, opts ...request.Option) error
 	ListIncomingTypedLinksWithContext(ctx context.Context, input *clouddirectory.ListIncomingTypedLinksInput, opts ...request.Option) (*clouddirectory.ListIncomingTypedLinksOutput, error)
 	ListIndexWithContext(ctx context.Context, input *clouddirectory.ListIndexInput, opts ...request.Option) (*clouddirectory.ListIndexOutput, error)
+	ListIndexPagesWithContext(ctx context.Context, input *clouddirectory.ListIndexInput, cb func(*clouddirectory.ListIndexOutput, bool) bool, opts ...request.Option) error
 	ListManagedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListManagedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListManagedSchemaArnsOutput, error)
+	ListManagedSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListManagedSchemaArnsInput, cb func(*clouddirectory.ListManagedSchemaArnsOutput, bool) bool, opts ...request.Option) error
 	ListObjectAttributesWithContext(ctx context.Context, input *clouddirectory.ListObjectAttributesInput, opts ...request.Option) (*clouddirectory.ListObjectAttributesOutput, error)
+	ListObjectAttributesPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectAttributesInput, cb func(*clouddirectory.ListObjectAttributesOutput, bool) bool, opts ...request.Option) error
 	ListObjectChildrenWithContext(ctx context.Context, input *clouddirectory.ListObjectChildrenInput, opts ...request.Option) (*clouddirectory.ListObjectChildrenOutput, error)
+	ListObjectChildrenPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectChildrenInput, cb func(*clouddirectory.ListObjectChildrenOutput, bool) bool, opts ...request.Option) error
 	ListObjectParentPathsWithContext(ctx context.Context, input *clouddirectory.ListObjectParentPathsInput, opts ...request.Option) (*clouddirectory.ListObjectParentPathsOutput, error)
+	ListObjectParentPathsPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectParentPathsInput, cb func(*clouddirectory.ListObjectParentPathsOutput, bool) bool, opts ...request.Option) error
 	ListObjectParentsWithContext(ctx context.Context, input *clouddirectory.ListObjectParentsInput, opts ...request.Option) (*clouddirectory.ListObjectParentsOutput, error)
+	ListObjectParentsPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectParentsInput, cb func(*clouddirectory.ListObjectParentsOutput, bool) bool, opts ...request.Option) error
 	ListObjectPoliciesWithContext(ctx context.Context, input *clouddirectory.ListObjectPoliciesInput, opts ...request.Option) (*clouddirectory.ListObjectPoliciesOutput, error)
+	ListObjectPoliciesPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectPoliciesInput, cb func(*clouddirectory.ListObjectPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListOutgoingTypedLinksWithContext(ctx context.Context, input *clouddirectory.ListOutgoingTypedLinksInput, opts ...request.Option) (*clouddirectory.ListOutgoingTypedLinksOutput, error)
 	ListPolicyAttachmentsWithContext(ctx context.Context, input *clouddirectory.ListPolicyAttachmentsInput, opts ...request.Option) (*clouddirectory.ListPolicyAttachmentsOutput, error)
+	ListPolicyAttachmentsPagesWithContext(ctx context.Context, input *clouddirectory.ListPolicyAttachmentsInput, cb func(*clouddirectory.ListPolicyAttachmentsOutput, bool) bool, opts ...request.Option) error
 	ListPublishedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListPublishedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListPublishedSchemaArnsOutput, error)
+	ListPublishedSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListPublishedSchemaArnsInput, cb func(*clouddirectory.ListPublishedSchemaArnsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *clouddirectory.ListTagsForResourceInput, opts ...request.Option) (*clouddirectory.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *clouddirectory.ListTagsForResourceInput, cb func(*clouddirectory.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTypedLinkFacetAttributesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetAttributesInput, opts ...request.Option) (*clouddirectory.ListTypedLinkFacetAttributesOutput, error)
+	ListTypedLinkFacetAttributesPagesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetAttributesInput, cb func(*clouddirectory.ListTypedLinkFacetAttributesOutput, bool) bool, opts ...request.Option) error
 	ListTypedLinkFacetNamesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetNamesInput, opts ...request.Option) (*clouddirectory.ListTypedLinkFacetNamesOutput, error)
+	ListTypedLinkFacetNamesPagesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetNamesInput, cb func(*clouddirectory.ListTypedLinkFacetNamesOutput, bool) bool, opts ...request.Option) error
 	LookupPolicyWithContext(ctx context.Context, input *clouddirectory.LookupPolicyInput, opts ...request.Option) (*clouddirectory.LookupPolicyOutput, error)
+	LookupPolicyPagesWithContext(ctx context.Context, input *clouddirectory.LookupPolicyInput, cb func(*clouddirectory.LookupPolicyOutput, bool) bool, opts ...request.Option) error
 	PublishSchemaWithContext(ctx context.Context, input *clouddirectory.PublishSchemaInput, opts ...request.Option) (*clouddirectory.PublishSchemaOutput, error)
 	PutSchemaFromJsonWithContext(ctx context.Context, input *clouddirectory.PutSchemaFromJsonInput, opts ...request.Option) (*clouddirectory.PutSchemaFromJsonOutput, error)
 	RemoveFacetFromObjectWithContext(ctx context.Context, input *clouddirectory.RemoveFacetFromObjectInput, opts ...request.Option) (*clouddirectory.RemoveFacetFromObjectOutput, error)
@@ -808,6 +827,26 @@ func (c *Client) ListAppliedSchemaArnsWithContext(ctx context.Context, input *cl
 	return req.Output.(*clouddirectory.ListAppliedSchemaArnsOutput), req.Error
 }
 
+func (c *Client) ListAppliedSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListAppliedSchemaArnsInput, cb func(*clouddirectory.ListAppliedSchemaArnsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListAppliedSchemaArns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListAppliedSchemaArnsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAttachedIndicesWithContext(ctx context.Context, input *clouddirectory.ListAttachedIndicesInput, opts ...request.Option) (*clouddirectory.ListAttachedIndicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -827,6 +866,26 @@ func (c *Client) ListAttachedIndicesWithContext(ctx context.Context, input *clou
 	})
 
 	return req.Output.(*clouddirectory.ListAttachedIndicesOutput), req.Error
+}
+
+func (c *Client) ListAttachedIndicesPagesWithContext(ctx context.Context, input *clouddirectory.ListAttachedIndicesInput, cb func(*clouddirectory.ListAttachedIndicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListAttachedIndices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListAttachedIndicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDevelopmentSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListDevelopmentSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListDevelopmentSchemaArnsOutput, error) {
@@ -850,6 +909,26 @@ func (c *Client) ListDevelopmentSchemaArnsWithContext(ctx context.Context, input
 	return req.Output.(*clouddirectory.ListDevelopmentSchemaArnsOutput), req.Error
 }
 
+func (c *Client) ListDevelopmentSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListDevelopmentSchemaArnsInput, cb func(*clouddirectory.ListDevelopmentSchemaArnsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListDevelopmentSchemaArns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListDevelopmentSchemaArnsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDirectoriesWithContext(ctx context.Context, input *clouddirectory.ListDirectoriesInput, opts ...request.Option) (*clouddirectory.ListDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -869,6 +948,26 @@ func (c *Client) ListDirectoriesWithContext(ctx context.Context, input *clouddir
 	})
 
 	return req.Output.(*clouddirectory.ListDirectoriesOutput), req.Error
+}
+
+func (c *Client) ListDirectoriesPagesWithContext(ctx context.Context, input *clouddirectory.ListDirectoriesInput, cb func(*clouddirectory.ListDirectoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListDirectories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListDirectoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListFacetAttributesWithContext(ctx context.Context, input *clouddirectory.ListFacetAttributesInput, opts ...request.Option) (*clouddirectory.ListFacetAttributesOutput, error) {
@@ -892,6 +991,26 @@ func (c *Client) ListFacetAttributesWithContext(ctx context.Context, input *clou
 	return req.Output.(*clouddirectory.ListFacetAttributesOutput), req.Error
 }
 
+func (c *Client) ListFacetAttributesPagesWithContext(ctx context.Context, input *clouddirectory.ListFacetAttributesInput, cb func(*clouddirectory.ListFacetAttributesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListFacetAttributes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListFacetAttributesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListFacetNamesWithContext(ctx context.Context, input *clouddirectory.ListFacetNamesInput, opts ...request.Option) (*clouddirectory.ListFacetNamesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -911,6 +1030,26 @@ func (c *Client) ListFacetNamesWithContext(ctx context.Context, input *clouddire
 	})
 
 	return req.Output.(*clouddirectory.ListFacetNamesOutput), req.Error
+}
+
+func (c *Client) ListFacetNamesPagesWithContext(ctx context.Context, input *clouddirectory.ListFacetNamesInput, cb func(*clouddirectory.ListFacetNamesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListFacetNames",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListFacetNamesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListIncomingTypedLinksWithContext(ctx context.Context, input *clouddirectory.ListIncomingTypedLinksInput, opts ...request.Option) (*clouddirectory.ListIncomingTypedLinksOutput, error) {
@@ -955,6 +1094,26 @@ func (c *Client) ListIndexWithContext(ctx context.Context, input *clouddirectory
 	return req.Output.(*clouddirectory.ListIndexOutput), req.Error
 }
 
+func (c *Client) ListIndexPagesWithContext(ctx context.Context, input *clouddirectory.ListIndexInput, cb func(*clouddirectory.ListIndexOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListIndex",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListIndexPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListManagedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListManagedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListManagedSchemaArnsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -974,6 +1133,26 @@ func (c *Client) ListManagedSchemaArnsWithContext(ctx context.Context, input *cl
 	})
 
 	return req.Output.(*clouddirectory.ListManagedSchemaArnsOutput), req.Error
+}
+
+func (c *Client) ListManagedSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListManagedSchemaArnsInput, cb func(*clouddirectory.ListManagedSchemaArnsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListManagedSchemaArns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListManagedSchemaArnsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListObjectAttributesWithContext(ctx context.Context, input *clouddirectory.ListObjectAttributesInput, opts ...request.Option) (*clouddirectory.ListObjectAttributesOutput, error) {
@@ -997,6 +1176,26 @@ func (c *Client) ListObjectAttributesWithContext(ctx context.Context, input *clo
 	return req.Output.(*clouddirectory.ListObjectAttributesOutput), req.Error
 }
 
+func (c *Client) ListObjectAttributesPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectAttributesInput, cb func(*clouddirectory.ListObjectAttributesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListObjectAttributes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListObjectAttributesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListObjectChildrenWithContext(ctx context.Context, input *clouddirectory.ListObjectChildrenInput, opts ...request.Option) (*clouddirectory.ListObjectChildrenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -1016,6 +1215,26 @@ func (c *Client) ListObjectChildrenWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*clouddirectory.ListObjectChildrenOutput), req.Error
+}
+
+func (c *Client) ListObjectChildrenPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectChildrenInput, cb func(*clouddirectory.ListObjectChildrenOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListObjectChildren",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListObjectChildrenPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListObjectParentPathsWithContext(ctx context.Context, input *clouddirectory.ListObjectParentPathsInput, opts ...request.Option) (*clouddirectory.ListObjectParentPathsOutput, error) {
@@ -1039,6 +1258,26 @@ func (c *Client) ListObjectParentPathsWithContext(ctx context.Context, input *cl
 	return req.Output.(*clouddirectory.ListObjectParentPathsOutput), req.Error
 }
 
+func (c *Client) ListObjectParentPathsPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectParentPathsInput, cb func(*clouddirectory.ListObjectParentPathsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListObjectParentPaths",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListObjectParentPathsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListObjectParentsWithContext(ctx context.Context, input *clouddirectory.ListObjectParentsInput, opts ...request.Option) (*clouddirectory.ListObjectParentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -1060,6 +1299,26 @@ func (c *Client) ListObjectParentsWithContext(ctx context.Context, input *cloudd
 	return req.Output.(*clouddirectory.ListObjectParentsOutput), req.Error
 }
 
+func (c *Client) ListObjectParentsPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectParentsInput, cb func(*clouddirectory.ListObjectParentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListObjectParents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListObjectParentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListObjectPoliciesWithContext(ctx context.Context, input *clouddirectory.ListObjectPoliciesInput, opts ...request.Option) (*clouddirectory.ListObjectPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -1079,6 +1338,26 @@ func (c *Client) ListObjectPoliciesWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*clouddirectory.ListObjectPoliciesOutput), req.Error
+}
+
+func (c *Client) ListObjectPoliciesPagesWithContext(ctx context.Context, input *clouddirectory.ListObjectPoliciesInput, cb func(*clouddirectory.ListObjectPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListObjectPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListObjectPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOutgoingTypedLinksWithContext(ctx context.Context, input *clouddirectory.ListOutgoingTypedLinksInput, opts ...request.Option) (*clouddirectory.ListOutgoingTypedLinksOutput, error) {
@@ -1123,6 +1402,26 @@ func (c *Client) ListPolicyAttachmentsWithContext(ctx context.Context, input *cl
 	return req.Output.(*clouddirectory.ListPolicyAttachmentsOutput), req.Error
 }
 
+func (c *Client) ListPolicyAttachmentsPagesWithContext(ctx context.Context, input *clouddirectory.ListPolicyAttachmentsInput, cb func(*clouddirectory.ListPolicyAttachmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListPolicyAttachments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListPolicyAttachmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPublishedSchemaArnsWithContext(ctx context.Context, input *clouddirectory.ListPublishedSchemaArnsInput, opts ...request.Option) (*clouddirectory.ListPublishedSchemaArnsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -1142,6 +1441,26 @@ func (c *Client) ListPublishedSchemaArnsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*clouddirectory.ListPublishedSchemaArnsOutput), req.Error
+}
+
+func (c *Client) ListPublishedSchemaArnsPagesWithContext(ctx context.Context, input *clouddirectory.ListPublishedSchemaArnsInput, cb func(*clouddirectory.ListPublishedSchemaArnsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListPublishedSchemaArns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListPublishedSchemaArnsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clouddirectory.ListTagsForResourceInput, opts ...request.Option) (*clouddirectory.ListTagsForResourceOutput, error) {
@@ -1165,6 +1484,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 	return req.Output.(*clouddirectory.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *clouddirectory.ListTagsForResourceInput, cb func(*clouddirectory.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTypedLinkFacetAttributesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetAttributesInput, opts ...request.Option) (*clouddirectory.ListTypedLinkFacetAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -1184,6 +1523,26 @@ func (c *Client) ListTypedLinkFacetAttributesWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*clouddirectory.ListTypedLinkFacetAttributesOutput), req.Error
+}
+
+func (c *Client) ListTypedLinkFacetAttributesPagesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetAttributesInput, cb func(*clouddirectory.ListTypedLinkFacetAttributesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListTypedLinkFacetAttributes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListTypedLinkFacetAttributesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTypedLinkFacetNamesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetNamesInput, opts ...request.Option) (*clouddirectory.ListTypedLinkFacetNamesOutput, error) {
@@ -1207,6 +1566,26 @@ func (c *Client) ListTypedLinkFacetNamesWithContext(ctx context.Context, input *
 	return req.Output.(*clouddirectory.ListTypedLinkFacetNamesOutput), req.Error
 }
 
+func (c *Client) ListTypedLinkFacetNamesPagesWithContext(ctx context.Context, input *clouddirectory.ListTypedLinkFacetNamesInput, cb func(*clouddirectory.ListTypedLinkFacetNamesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "ListTypedLinkFacetNames",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.ListTypedLinkFacetNamesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) LookupPolicyWithContext(ctx context.Context, input *clouddirectory.LookupPolicyInput, opts ...request.Option) (*clouddirectory.LookupPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "clouddirectory",
@@ -1226,6 +1605,26 @@ func (c *Client) LookupPolicyWithContext(ctx context.Context, input *clouddirect
 	})
 
 	return req.Output.(*clouddirectory.LookupPolicyOutput), req.Error
+}
+
+func (c *Client) LookupPolicyPagesWithContext(ctx context.Context, input *clouddirectory.LookupPolicyInput, cb func(*clouddirectory.LookupPolicyOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "clouddirectory",
+		Action:  "LookupPolicy",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudDirectoryAPI.LookupPolicyPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PublishSchemaWithContext(ctx context.Context, input *clouddirectory.PublishSchemaInput, opts ...request.Option) (*clouddirectory.PublishSchemaOutput, error) {

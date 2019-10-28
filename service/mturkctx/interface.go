@@ -31,15 +31,25 @@ type MTurk interface {
 	GetQualificationScoreWithContext(ctx context.Context, input *mturk.GetQualificationScoreInput, opts ...request.Option) (*mturk.GetQualificationScoreOutput, error)
 	GetQualificationTypeWithContext(ctx context.Context, input *mturk.GetQualificationTypeInput, opts ...request.Option) (*mturk.GetQualificationTypeOutput, error)
 	ListAssignmentsForHITWithContext(ctx context.Context, input *mturk.ListAssignmentsForHITInput, opts ...request.Option) (*mturk.ListAssignmentsForHITOutput, error)
+	ListAssignmentsForHITPagesWithContext(ctx context.Context, input *mturk.ListAssignmentsForHITInput, cb func(*mturk.ListAssignmentsForHITOutput, bool) bool, opts ...request.Option) error
 	ListBonusPaymentsWithContext(ctx context.Context, input *mturk.ListBonusPaymentsInput, opts ...request.Option) (*mturk.ListBonusPaymentsOutput, error)
+	ListBonusPaymentsPagesWithContext(ctx context.Context, input *mturk.ListBonusPaymentsInput, cb func(*mturk.ListBonusPaymentsOutput, bool) bool, opts ...request.Option) error
 	ListHITsWithContext(ctx context.Context, input *mturk.ListHITsInput, opts ...request.Option) (*mturk.ListHITsOutput, error)
+	ListHITsPagesWithContext(ctx context.Context, input *mturk.ListHITsInput, cb func(*mturk.ListHITsOutput, bool) bool, opts ...request.Option) error
 	ListHITsForQualificationTypeWithContext(ctx context.Context, input *mturk.ListHITsForQualificationTypeInput, opts ...request.Option) (*mturk.ListHITsForQualificationTypeOutput, error)
+	ListHITsForQualificationTypePagesWithContext(ctx context.Context, input *mturk.ListHITsForQualificationTypeInput, cb func(*mturk.ListHITsForQualificationTypeOutput, bool) bool, opts ...request.Option) error
 	ListQualificationRequestsWithContext(ctx context.Context, input *mturk.ListQualificationRequestsInput, opts ...request.Option) (*mturk.ListQualificationRequestsOutput, error)
+	ListQualificationRequestsPagesWithContext(ctx context.Context, input *mturk.ListQualificationRequestsInput, cb func(*mturk.ListQualificationRequestsOutput, bool) bool, opts ...request.Option) error
 	ListQualificationTypesWithContext(ctx context.Context, input *mturk.ListQualificationTypesInput, opts ...request.Option) (*mturk.ListQualificationTypesOutput, error)
+	ListQualificationTypesPagesWithContext(ctx context.Context, input *mturk.ListQualificationTypesInput, cb func(*mturk.ListQualificationTypesOutput, bool) bool, opts ...request.Option) error
 	ListReviewPolicyResultsForHITWithContext(ctx context.Context, input *mturk.ListReviewPolicyResultsForHITInput, opts ...request.Option) (*mturk.ListReviewPolicyResultsForHITOutput, error)
+	ListReviewPolicyResultsForHITPagesWithContext(ctx context.Context, input *mturk.ListReviewPolicyResultsForHITInput, cb func(*mturk.ListReviewPolicyResultsForHITOutput, bool) bool, opts ...request.Option) error
 	ListReviewableHITsWithContext(ctx context.Context, input *mturk.ListReviewableHITsInput, opts ...request.Option) (*mturk.ListReviewableHITsOutput, error)
+	ListReviewableHITsPagesWithContext(ctx context.Context, input *mturk.ListReviewableHITsInput, cb func(*mturk.ListReviewableHITsOutput, bool) bool, opts ...request.Option) error
 	ListWorkerBlocksWithContext(ctx context.Context, input *mturk.ListWorkerBlocksInput, opts ...request.Option) (*mturk.ListWorkerBlocksOutput, error)
+	ListWorkerBlocksPagesWithContext(ctx context.Context, input *mturk.ListWorkerBlocksInput, cb func(*mturk.ListWorkerBlocksOutput, bool) bool, opts ...request.Option) error
 	ListWorkersWithQualificationTypeWithContext(ctx context.Context, input *mturk.ListWorkersWithQualificationTypeInput, opts ...request.Option) (*mturk.ListWorkersWithQualificationTypeOutput, error)
+	ListWorkersWithQualificationTypePagesWithContext(ctx context.Context, input *mturk.ListWorkersWithQualificationTypeInput, cb func(*mturk.ListWorkersWithQualificationTypeOutput, bool) bool, opts ...request.Option) error
 	NotifyWorkersWithContext(ctx context.Context, input *mturk.NotifyWorkersInput, opts ...request.Option) (*mturk.NotifyWorkersOutput, error)
 	RejectAssignmentWithContext(ctx context.Context, input *mturk.RejectAssignmentInput, opts ...request.Option) (*mturk.RejectAssignmentOutput, error)
 	RejectQualificationRequestWithContext(ctx context.Context, input *mturk.RejectQualificationRequestInput, opts ...request.Option) (*mturk.RejectQualificationRequestOutput, error)
@@ -487,6 +497,26 @@ func (c *Client) ListAssignmentsForHITWithContext(ctx context.Context, input *mt
 	return req.Output.(*mturk.ListAssignmentsForHITOutput), req.Error
 }
 
+func (c *Client) ListAssignmentsForHITPagesWithContext(ctx context.Context, input *mturk.ListAssignmentsForHITInput, cb func(*mturk.ListAssignmentsForHITOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListAssignmentsForHIT",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListAssignmentsForHITPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBonusPaymentsWithContext(ctx context.Context, input *mturk.ListBonusPaymentsInput, opts ...request.Option) (*mturk.ListBonusPaymentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
@@ -506,6 +536,26 @@ func (c *Client) ListBonusPaymentsWithContext(ctx context.Context, input *mturk.
 	})
 
 	return req.Output.(*mturk.ListBonusPaymentsOutput), req.Error
+}
+
+func (c *Client) ListBonusPaymentsPagesWithContext(ctx context.Context, input *mturk.ListBonusPaymentsInput, cb func(*mturk.ListBonusPaymentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListBonusPayments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListBonusPaymentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListHITsWithContext(ctx context.Context, input *mturk.ListHITsInput, opts ...request.Option) (*mturk.ListHITsOutput, error) {
@@ -529,6 +579,26 @@ func (c *Client) ListHITsWithContext(ctx context.Context, input *mturk.ListHITsI
 	return req.Output.(*mturk.ListHITsOutput), req.Error
 }
 
+func (c *Client) ListHITsPagesWithContext(ctx context.Context, input *mturk.ListHITsInput, cb func(*mturk.ListHITsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListHITs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListHITsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListHITsForQualificationTypeWithContext(ctx context.Context, input *mturk.ListHITsForQualificationTypeInput, opts ...request.Option) (*mturk.ListHITsForQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
@@ -548,6 +618,26 @@ func (c *Client) ListHITsForQualificationTypeWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*mturk.ListHITsForQualificationTypeOutput), req.Error
+}
+
+func (c *Client) ListHITsForQualificationTypePagesWithContext(ctx context.Context, input *mturk.ListHITsForQualificationTypeInput, cb func(*mturk.ListHITsForQualificationTypeOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListHITsForQualificationType",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListHITsForQualificationTypePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListQualificationRequestsWithContext(ctx context.Context, input *mturk.ListQualificationRequestsInput, opts ...request.Option) (*mturk.ListQualificationRequestsOutput, error) {
@@ -571,6 +661,26 @@ func (c *Client) ListQualificationRequestsWithContext(ctx context.Context, input
 	return req.Output.(*mturk.ListQualificationRequestsOutput), req.Error
 }
 
+func (c *Client) ListQualificationRequestsPagesWithContext(ctx context.Context, input *mturk.ListQualificationRequestsInput, cb func(*mturk.ListQualificationRequestsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListQualificationRequests",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListQualificationRequestsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListQualificationTypesWithContext(ctx context.Context, input *mturk.ListQualificationTypesInput, opts ...request.Option) (*mturk.ListQualificationTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
@@ -590,6 +700,26 @@ func (c *Client) ListQualificationTypesWithContext(ctx context.Context, input *m
 	})
 
 	return req.Output.(*mturk.ListQualificationTypesOutput), req.Error
+}
+
+func (c *Client) ListQualificationTypesPagesWithContext(ctx context.Context, input *mturk.ListQualificationTypesInput, cb func(*mturk.ListQualificationTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListQualificationTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListQualificationTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListReviewPolicyResultsForHITWithContext(ctx context.Context, input *mturk.ListReviewPolicyResultsForHITInput, opts ...request.Option) (*mturk.ListReviewPolicyResultsForHITOutput, error) {
@@ -613,6 +743,26 @@ func (c *Client) ListReviewPolicyResultsForHITWithContext(ctx context.Context, i
 	return req.Output.(*mturk.ListReviewPolicyResultsForHITOutput), req.Error
 }
 
+func (c *Client) ListReviewPolicyResultsForHITPagesWithContext(ctx context.Context, input *mturk.ListReviewPolicyResultsForHITInput, cb func(*mturk.ListReviewPolicyResultsForHITOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListReviewPolicyResultsForHIT",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListReviewPolicyResultsForHITPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListReviewableHITsWithContext(ctx context.Context, input *mturk.ListReviewableHITsInput, opts ...request.Option) (*mturk.ListReviewableHITsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
@@ -632,6 +782,26 @@ func (c *Client) ListReviewableHITsWithContext(ctx context.Context, input *mturk
 	})
 
 	return req.Output.(*mturk.ListReviewableHITsOutput), req.Error
+}
+
+func (c *Client) ListReviewableHITsPagesWithContext(ctx context.Context, input *mturk.ListReviewableHITsInput, cb func(*mturk.ListReviewableHITsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListReviewableHITs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListReviewableHITsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListWorkerBlocksWithContext(ctx context.Context, input *mturk.ListWorkerBlocksInput, opts ...request.Option) (*mturk.ListWorkerBlocksOutput, error) {
@@ -655,6 +825,26 @@ func (c *Client) ListWorkerBlocksWithContext(ctx context.Context, input *mturk.L
 	return req.Output.(*mturk.ListWorkerBlocksOutput), req.Error
 }
 
+func (c *Client) ListWorkerBlocksPagesWithContext(ctx context.Context, input *mturk.ListWorkerBlocksInput, cb func(*mturk.ListWorkerBlocksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListWorkerBlocks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListWorkerBlocksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListWorkersWithQualificationTypeWithContext(ctx context.Context, input *mturk.ListWorkersWithQualificationTypeInput, opts ...request.Option) (*mturk.ListWorkersWithQualificationTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mturk",
@@ -674,6 +864,26 @@ func (c *Client) ListWorkersWithQualificationTypeWithContext(ctx context.Context
 	})
 
 	return req.Output.(*mturk.ListWorkersWithQualificationTypeOutput), req.Error
+}
+
+func (c *Client) ListWorkersWithQualificationTypePagesWithContext(ctx context.Context, input *mturk.ListWorkersWithQualificationTypeInput, cb func(*mturk.ListWorkersWithQualificationTypeOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mturk",
+		Action:  "ListWorkersWithQualificationType",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MTurkAPI.ListWorkersWithQualificationTypePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) NotifyWorkersWithContext(ctx context.Context, input *mturk.NotifyWorkersInput, opts ...request.Option) (*mturk.NotifyWorkersOutput, error) {

@@ -42,7 +42,9 @@ type ConfigService interface {
 	DescribePendingAggregationRequestsWithContext(ctx context.Context, input *configservice.DescribePendingAggregationRequestsInput, opts ...request.Option) (*configservice.DescribePendingAggregationRequestsOutput, error)
 	DescribeRemediationConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRemediationConfigurationsInput, opts ...request.Option) (*configservice.DescribeRemediationConfigurationsOutput, error)
 	DescribeRemediationExceptionsWithContext(ctx context.Context, input *configservice.DescribeRemediationExceptionsInput, opts ...request.Option) (*configservice.DescribeRemediationExceptionsOutput, error)
+	DescribeRemediationExceptionsPagesWithContext(ctx context.Context, input *configservice.DescribeRemediationExceptionsInput, cb func(*configservice.DescribeRemediationExceptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeRemediationExecutionStatusWithContext(ctx context.Context, input *configservice.DescribeRemediationExecutionStatusInput, opts ...request.Option) (*configservice.DescribeRemediationExecutionStatusOutput, error)
+	DescribeRemediationExecutionStatusPagesWithContext(ctx context.Context, input *configservice.DescribeRemediationExecutionStatusInput, cb func(*configservice.DescribeRemediationExecutionStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeRetentionConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRetentionConfigurationsInput, opts ...request.Option) (*configservice.DescribeRetentionConfigurationsOutput, error)
 	GetAggregateComplianceDetailsByConfigRuleWithContext(ctx context.Context, input *configservice.GetAggregateComplianceDetailsByConfigRuleInput, opts ...request.Option) (*configservice.GetAggregateComplianceDetailsByConfigRuleOutput, error)
 	GetAggregateConfigRuleComplianceSummaryWithContext(ctx context.Context, input *configservice.GetAggregateConfigRuleComplianceSummaryInput, opts ...request.Option) (*configservice.GetAggregateConfigRuleComplianceSummaryOutput, error)
@@ -55,6 +57,7 @@ type ConfigService interface {
 	GetDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetDiscoveredResourceCountsOutput, error)
 	GetOrganizationConfigRuleDetailedStatusWithContext(ctx context.Context, input *configservice.GetOrganizationConfigRuleDetailedStatusInput, opts ...request.Option) (*configservice.GetOrganizationConfigRuleDetailedStatusOutput, error)
 	GetResourceConfigHistoryWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, opts ...request.Option) (*configservice.GetResourceConfigHistoryOutput, error)
+	GetResourceConfigHistoryPagesWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, cb func(*configservice.GetResourceConfigHistoryOutput, bool) bool, opts ...request.Option) error
 	ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error)
 	ListDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListDiscoveredResourcesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *configservice.ListTagsForResourceInput, opts ...request.Option) (*configservice.ListTagsForResourceOutput, error)
@@ -743,6 +746,26 @@ func (c *Client) DescribeRemediationExceptionsWithContext(ctx context.Context, i
 	return req.Output.(*configservice.DescribeRemediationExceptionsOutput), req.Error
 }
 
+func (c *Client) DescribeRemediationExceptionsPagesWithContext(ctx context.Context, input *configservice.DescribeRemediationExceptionsInput, cb func(*configservice.DescribeRemediationExceptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DescribeRemediationExceptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.DescribeRemediationExceptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeRemediationExecutionStatusWithContext(ctx context.Context, input *configservice.DescribeRemediationExecutionStatusInput, opts ...request.Option) (*configservice.DescribeRemediationExecutionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
@@ -762,6 +785,26 @@ func (c *Client) DescribeRemediationExecutionStatusWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*configservice.DescribeRemediationExecutionStatusOutput), req.Error
+}
+
+func (c *Client) DescribeRemediationExecutionStatusPagesWithContext(ctx context.Context, input *configservice.DescribeRemediationExecutionStatusInput, cb func(*configservice.DescribeRemediationExecutionStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DescribeRemediationExecutionStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.DescribeRemediationExecutionStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeRetentionConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRetentionConfigurationsInput, opts ...request.Option) (*configservice.DescribeRetentionConfigurationsOutput, error) {
@@ -1014,6 +1057,26 @@ func (c *Client) GetResourceConfigHistoryWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*configservice.GetResourceConfigHistoryOutput), req.Error
+}
+
+func (c *Client) GetResourceConfigHistoryPagesWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, cb func(*configservice.GetResourceConfigHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "GetResourceConfigHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.GetResourceConfigHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error) {

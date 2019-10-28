@@ -28,10 +28,15 @@ type WorkLink interface {
 	DisassociateWebsiteAuthorizationProviderWithContext(ctx context.Context, input *worklink.DisassociateWebsiteAuthorizationProviderInput, opts ...request.Option) (*worklink.DisassociateWebsiteAuthorizationProviderOutput, error)
 	DisassociateWebsiteCertificateAuthorityWithContext(ctx context.Context, input *worklink.DisassociateWebsiteCertificateAuthorityInput, opts ...request.Option) (*worklink.DisassociateWebsiteCertificateAuthorityOutput, error)
 	ListDevicesWithContext(ctx context.Context, input *worklink.ListDevicesInput, opts ...request.Option) (*worklink.ListDevicesOutput, error)
+	ListDevicesPagesWithContext(ctx context.Context, input *worklink.ListDevicesInput, cb func(*worklink.ListDevicesOutput, bool) bool, opts ...request.Option) error
 	ListDomainsWithContext(ctx context.Context, input *worklink.ListDomainsInput, opts ...request.Option) (*worklink.ListDomainsOutput, error)
+	ListDomainsPagesWithContext(ctx context.Context, input *worklink.ListDomainsInput, cb func(*worklink.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	ListFleetsWithContext(ctx context.Context, input *worklink.ListFleetsInput, opts ...request.Option) (*worklink.ListFleetsOutput, error)
+	ListFleetsPagesWithContext(ctx context.Context, input *worklink.ListFleetsInput, cb func(*worklink.ListFleetsOutput, bool) bool, opts ...request.Option) error
 	ListWebsiteAuthorizationProvidersWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, opts ...request.Option) (*worklink.ListWebsiteAuthorizationProvidersOutput, error)
+	ListWebsiteAuthorizationProvidersPagesWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, cb func(*worklink.ListWebsiteAuthorizationProvidersOutput, bool) bool, opts ...request.Option) error
 	ListWebsiteCertificateAuthoritiesWithContext(ctx context.Context, input *worklink.ListWebsiteCertificateAuthoritiesInput, opts ...request.Option) (*worklink.ListWebsiteCertificateAuthoritiesOutput, error)
+	ListWebsiteCertificateAuthoritiesPagesWithContext(ctx context.Context, input *worklink.ListWebsiteCertificateAuthoritiesInput, cb func(*worklink.ListWebsiteCertificateAuthoritiesOutput, bool) bool, opts ...request.Option) error
 	RestoreDomainAccessWithContext(ctx context.Context, input *worklink.RestoreDomainAccessInput, opts ...request.Option) (*worklink.RestoreDomainAccessOutput, error)
 	RevokeDomainAccessWithContext(ctx context.Context, input *worklink.RevokeDomainAccessInput, opts ...request.Option) (*worklink.RevokeDomainAccessOutput, error)
 	SignOutUserWithContext(ctx context.Context, input *worklink.SignOutUserInput, opts ...request.Option) (*worklink.SignOutUserOutput, error)
@@ -415,6 +420,26 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, input *worklink.Lis
 	return req.Output.(*worklink.ListDevicesOutput), req.Error
 }
 
+func (c *Client) ListDevicesPagesWithContext(ctx context.Context, input *worklink.ListDevicesInput, cb func(*worklink.ListDevicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "ListDevices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkLinkAPI.ListDevicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDomainsWithContext(ctx context.Context, input *worklink.ListDomainsInput, opts ...request.Option) (*worklink.ListDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
@@ -434,6 +459,26 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *worklink.Lis
 	})
 
 	return req.Output.(*worklink.ListDomainsOutput), req.Error
+}
+
+func (c *Client) ListDomainsPagesWithContext(ctx context.Context, input *worklink.ListDomainsInput, cb func(*worklink.ListDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "ListDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkLinkAPI.ListDomainsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListFleetsWithContext(ctx context.Context, input *worklink.ListFleetsInput, opts ...request.Option) (*worklink.ListFleetsOutput, error) {
@@ -457,6 +502,26 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, input *worklink.List
 	return req.Output.(*worklink.ListFleetsOutput), req.Error
 }
 
+func (c *Client) ListFleetsPagesWithContext(ctx context.Context, input *worklink.ListFleetsInput, cb func(*worklink.ListFleetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "ListFleets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkLinkAPI.ListFleetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListWebsiteAuthorizationProvidersWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, opts ...request.Option) (*worklink.ListWebsiteAuthorizationProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
@@ -478,6 +543,26 @@ func (c *Client) ListWebsiteAuthorizationProvidersWithContext(ctx context.Contex
 	return req.Output.(*worklink.ListWebsiteAuthorizationProvidersOutput), req.Error
 }
 
+func (c *Client) ListWebsiteAuthorizationProvidersPagesWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, cb func(*worklink.ListWebsiteAuthorizationProvidersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "ListWebsiteAuthorizationProviders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkLinkAPI.ListWebsiteAuthorizationProvidersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListWebsiteCertificateAuthoritiesWithContext(ctx context.Context, input *worklink.ListWebsiteCertificateAuthoritiesInput, opts ...request.Option) (*worklink.ListWebsiteCertificateAuthoritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
@@ -497,6 +582,26 @@ func (c *Client) ListWebsiteCertificateAuthoritiesWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*worklink.ListWebsiteCertificateAuthoritiesOutput), req.Error
+}
+
+func (c *Client) ListWebsiteCertificateAuthoritiesPagesWithContext(ctx context.Context, input *worklink.ListWebsiteCertificateAuthoritiesInput, cb func(*worklink.ListWebsiteCertificateAuthoritiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "ListWebsiteCertificateAuthorities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkLinkAPI.ListWebsiteCertificateAuthoritiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RestoreDomainAccessWithContext(ctx context.Context, input *worklink.RestoreDomainAccessInput, opts ...request.Option) (*worklink.RestoreDomainAccessOutput, error) {

@@ -16,7 +16,9 @@ type Macie interface {
 	DisassociateMemberAccountWithContext(ctx context.Context, input *macie.DisassociateMemberAccountInput, opts ...request.Option) (*macie.DisassociateMemberAccountOutput, error)
 	DisassociateS3ResourcesWithContext(ctx context.Context, input *macie.DisassociateS3ResourcesInput, opts ...request.Option) (*macie.DisassociateS3ResourcesOutput, error)
 	ListMemberAccountsWithContext(ctx context.Context, input *macie.ListMemberAccountsInput, opts ...request.Option) (*macie.ListMemberAccountsOutput, error)
+	ListMemberAccountsPagesWithContext(ctx context.Context, input *macie.ListMemberAccountsInput, cb func(*macie.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error
 	ListS3ResourcesWithContext(ctx context.Context, input *macie.ListS3ResourcesInput, opts ...request.Option) (*macie.ListS3ResourcesOutput, error)
+	ListS3ResourcesPagesWithContext(ctx context.Context, input *macie.ListS3ResourcesInput, cb func(*macie.ListS3ResourcesOutput, bool) bool, opts ...request.Option) error
 	UpdateS3ResourcesWithContext(ctx context.Context, input *macie.UpdateS3ResourcesInput, opts ...request.Option) (*macie.UpdateS3ResourcesOutput, error)
 }
 
@@ -140,6 +142,26 @@ func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *macie
 	return req.Output.(*macie.ListMemberAccountsOutput), req.Error
 }
 
+func (c *Client) ListMemberAccountsPagesWithContext(ctx context.Context, input *macie.ListMemberAccountsInput, cb func(*macie.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "macie",
+		Action:  "ListMemberAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MacieAPI.ListMemberAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListS3ResourcesWithContext(ctx context.Context, input *macie.ListS3ResourcesInput, opts ...request.Option) (*macie.ListS3ResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "macie",
@@ -159,6 +181,26 @@ func (c *Client) ListS3ResourcesWithContext(ctx context.Context, input *macie.Li
 	})
 
 	return req.Output.(*macie.ListS3ResourcesOutput), req.Error
+}
+
+func (c *Client) ListS3ResourcesPagesWithContext(ctx context.Context, input *macie.ListS3ResourcesInput, cb func(*macie.ListS3ResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "macie",
+		Action:  "ListS3Resources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MacieAPI.ListS3ResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateS3ResourcesWithContext(ctx context.Context, input *macie.UpdateS3ResourcesInput, opts ...request.Option) (*macie.UpdateS3ResourcesOutput, error) {

@@ -56,57 +56,80 @@ type Glue interface {
 	GetCatalogImportStatusWithContext(ctx context.Context, input *glue.GetCatalogImportStatusInput, opts ...request.Option) (*glue.GetCatalogImportStatusOutput, error)
 	GetClassifierWithContext(ctx context.Context, input *glue.GetClassifierInput, opts ...request.Option) (*glue.GetClassifierOutput, error)
 	GetClassifiersWithContext(ctx context.Context, input *glue.GetClassifiersInput, opts ...request.Option) (*glue.GetClassifiersOutput, error)
+	GetClassifiersPagesWithContext(ctx context.Context, input *glue.GetClassifiersInput, cb func(*glue.GetClassifiersOutput, bool) bool, opts ...request.Option) error
 	GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error)
 	GetConnectionsWithContext(ctx context.Context, input *glue.GetConnectionsInput, opts ...request.Option) (*glue.GetConnectionsOutput, error)
+	GetConnectionsPagesWithContext(ctx context.Context, input *glue.GetConnectionsInput, cb func(*glue.GetConnectionsOutput, bool) bool, opts ...request.Option) error
 	GetCrawlerWithContext(ctx context.Context, input *glue.GetCrawlerInput, opts ...request.Option) (*glue.GetCrawlerOutput, error)
 	GetCrawlerMetricsWithContext(ctx context.Context, input *glue.GetCrawlerMetricsInput, opts ...request.Option) (*glue.GetCrawlerMetricsOutput, error)
+	GetCrawlerMetricsPagesWithContext(ctx context.Context, input *glue.GetCrawlerMetricsInput, cb func(*glue.GetCrawlerMetricsOutput, bool) bool, opts ...request.Option) error
 	GetCrawlersWithContext(ctx context.Context, input *glue.GetCrawlersInput, opts ...request.Option) (*glue.GetCrawlersOutput, error)
+	GetCrawlersPagesWithContext(ctx context.Context, input *glue.GetCrawlersInput, cb func(*glue.GetCrawlersOutput, bool) bool, opts ...request.Option) error
 	GetDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.GetDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.GetDataCatalogEncryptionSettingsOutput, error)
 	GetDatabaseWithContext(ctx context.Context, input *glue.GetDatabaseInput, opts ...request.Option) (*glue.GetDatabaseOutput, error)
 	GetDatabasesWithContext(ctx context.Context, input *glue.GetDatabasesInput, opts ...request.Option) (*glue.GetDatabasesOutput, error)
+	GetDatabasesPagesWithContext(ctx context.Context, input *glue.GetDatabasesInput, cb func(*glue.GetDatabasesOutput, bool) bool, opts ...request.Option) error
 	GetDataflowGraphWithContext(ctx context.Context, input *glue.GetDataflowGraphInput, opts ...request.Option) (*glue.GetDataflowGraphOutput, error)
 	GetDevEndpointWithContext(ctx context.Context, input *glue.GetDevEndpointInput, opts ...request.Option) (*glue.GetDevEndpointOutput, error)
 	GetDevEndpointsWithContext(ctx context.Context, input *glue.GetDevEndpointsInput, opts ...request.Option) (*glue.GetDevEndpointsOutput, error)
+	GetDevEndpointsPagesWithContext(ctx context.Context, input *glue.GetDevEndpointsInput, cb func(*glue.GetDevEndpointsOutput, bool) bool, opts ...request.Option) error
 	GetJobWithContext(ctx context.Context, input *glue.GetJobInput, opts ...request.Option) (*glue.GetJobOutput, error)
 	GetJobBookmarkWithContext(ctx context.Context, input *glue.GetJobBookmarkInput, opts ...request.Option) (*glue.GetJobBookmarkOutput, error)
 	GetJobRunWithContext(ctx context.Context, input *glue.GetJobRunInput, opts ...request.Option) (*glue.GetJobRunOutput, error)
 	GetJobRunsWithContext(ctx context.Context, input *glue.GetJobRunsInput, opts ...request.Option) (*glue.GetJobRunsOutput, error)
+	GetJobRunsPagesWithContext(ctx context.Context, input *glue.GetJobRunsInput, cb func(*glue.GetJobRunsOutput, bool) bool, opts ...request.Option) error
 	GetJobsWithContext(ctx context.Context, input *glue.GetJobsInput, opts ...request.Option) (*glue.GetJobsOutput, error)
+	GetJobsPagesWithContext(ctx context.Context, input *glue.GetJobsInput, cb func(*glue.GetJobsOutput, bool) bool, opts ...request.Option) error
 	GetMLTaskRunWithContext(ctx context.Context, input *glue.GetMLTaskRunInput, opts ...request.Option) (*glue.GetMLTaskRunOutput, error)
 	GetMLTaskRunsWithContext(ctx context.Context, input *glue.GetMLTaskRunsInput, opts ...request.Option) (*glue.GetMLTaskRunsOutput, error)
+	GetMLTaskRunsPagesWithContext(ctx context.Context, input *glue.GetMLTaskRunsInput, cb func(*glue.GetMLTaskRunsOutput, bool) bool, opts ...request.Option) error
 	GetMLTransformWithContext(ctx context.Context, input *glue.GetMLTransformInput, opts ...request.Option) (*glue.GetMLTransformOutput, error)
 	GetMLTransformsWithContext(ctx context.Context, input *glue.GetMLTransformsInput, opts ...request.Option) (*glue.GetMLTransformsOutput, error)
+	GetMLTransformsPagesWithContext(ctx context.Context, input *glue.GetMLTransformsInput, cb func(*glue.GetMLTransformsOutput, bool) bool, opts ...request.Option) error
 	GetMappingWithContext(ctx context.Context, input *glue.GetMappingInput, opts ...request.Option) (*glue.GetMappingOutput, error)
 	GetPartitionWithContext(ctx context.Context, input *glue.GetPartitionInput, opts ...request.Option) (*glue.GetPartitionOutput, error)
 	GetPartitionsWithContext(ctx context.Context, input *glue.GetPartitionsInput, opts ...request.Option) (*glue.GetPartitionsOutput, error)
+	GetPartitionsPagesWithContext(ctx context.Context, input *glue.GetPartitionsInput, cb func(*glue.GetPartitionsOutput, bool) bool, opts ...request.Option) error
 	GetPlanWithContext(ctx context.Context, input *glue.GetPlanInput, opts ...request.Option) (*glue.GetPlanOutput, error)
 	GetResourcePolicyWithContext(ctx context.Context, input *glue.GetResourcePolicyInput, opts ...request.Option) (*glue.GetResourcePolicyOutput, error)
 	GetSecurityConfigurationWithContext(ctx context.Context, input *glue.GetSecurityConfigurationInput, opts ...request.Option) (*glue.GetSecurityConfigurationOutput, error)
 	GetSecurityConfigurationsWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, opts ...request.Option) (*glue.GetSecurityConfigurationsOutput, error)
+	GetSecurityConfigurationsPagesWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, cb func(*glue.GetSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	GetTableWithContext(ctx context.Context, input *glue.GetTableInput, opts ...request.Option) (*glue.GetTableOutput, error)
 	GetTableVersionWithContext(ctx context.Context, input *glue.GetTableVersionInput, opts ...request.Option) (*glue.GetTableVersionOutput, error)
 	GetTableVersionsWithContext(ctx context.Context, input *glue.GetTableVersionsInput, opts ...request.Option) (*glue.GetTableVersionsOutput, error)
+	GetTableVersionsPagesWithContext(ctx context.Context, input *glue.GetTableVersionsInput, cb func(*glue.GetTableVersionsOutput, bool) bool, opts ...request.Option) error
 	GetTablesWithContext(ctx context.Context, input *glue.GetTablesInput, opts ...request.Option) (*glue.GetTablesOutput, error)
+	GetTablesPagesWithContext(ctx context.Context, input *glue.GetTablesInput, cb func(*glue.GetTablesOutput, bool) bool, opts ...request.Option) error
 	GetTagsWithContext(ctx context.Context, input *glue.GetTagsInput, opts ...request.Option) (*glue.GetTagsOutput, error)
 	GetTriggerWithContext(ctx context.Context, input *glue.GetTriggerInput, opts ...request.Option) (*glue.GetTriggerOutput, error)
 	GetTriggersWithContext(ctx context.Context, input *glue.GetTriggersInput, opts ...request.Option) (*glue.GetTriggersOutput, error)
+	GetTriggersPagesWithContext(ctx context.Context, input *glue.GetTriggersInput, cb func(*glue.GetTriggersOutput, bool) bool, opts ...request.Option) error
 	GetUserDefinedFunctionWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionInput, opts ...request.Option) (*glue.GetUserDefinedFunctionOutput, error)
 	GetUserDefinedFunctionsWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionsInput, opts ...request.Option) (*glue.GetUserDefinedFunctionsOutput, error)
+	GetUserDefinedFunctionsPagesWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionsInput, cb func(*glue.GetUserDefinedFunctionsOutput, bool) bool, opts ...request.Option) error
 	GetWorkflowWithContext(ctx context.Context, input *glue.GetWorkflowInput, opts ...request.Option) (*glue.GetWorkflowOutput, error)
 	GetWorkflowRunWithContext(ctx context.Context, input *glue.GetWorkflowRunInput, opts ...request.Option) (*glue.GetWorkflowRunOutput, error)
 	GetWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.GetWorkflowRunPropertiesInput, opts ...request.Option) (*glue.GetWorkflowRunPropertiesOutput, error)
 	GetWorkflowRunsWithContext(ctx context.Context, input *glue.GetWorkflowRunsInput, opts ...request.Option) (*glue.GetWorkflowRunsOutput, error)
+	GetWorkflowRunsPagesWithContext(ctx context.Context, input *glue.GetWorkflowRunsInput, cb func(*glue.GetWorkflowRunsOutput, bool) bool, opts ...request.Option) error
 	ImportCatalogToGlueWithContext(ctx context.Context, input *glue.ImportCatalogToGlueInput, opts ...request.Option) (*glue.ImportCatalogToGlueOutput, error)
 	ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error)
+	ListCrawlersPagesWithContext(ctx context.Context, input *glue.ListCrawlersInput, cb func(*glue.ListCrawlersOutput, bool) bool, opts ...request.Option) error
 	ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error)
+	ListDevEndpointsPagesWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, cb func(*glue.ListDevEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *glue.ListJobsInput, opts ...request.Option) (*glue.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *glue.ListJobsInput, cb func(*glue.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error)
+	ListTriggersPagesWithContext(ctx context.Context, input *glue.ListTriggersInput, cb func(*glue.ListTriggersOutput, bool) bool, opts ...request.Option) error
 	ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error)
+	ListWorkflowsPagesWithContext(ctx context.Context, input *glue.ListWorkflowsInput, cb func(*glue.ListWorkflowsOutput, bool) bool, opts ...request.Option) error
 	PutDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.PutDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.PutDataCatalogEncryptionSettingsOutput, error)
 	PutResourcePolicyWithContext(ctx context.Context, input *glue.PutResourcePolicyInput, opts ...request.Option) (*glue.PutResourcePolicyOutput, error)
 	PutWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.PutWorkflowRunPropertiesInput, opts ...request.Option) (*glue.PutWorkflowRunPropertiesOutput, error)
 	ResetJobBookmarkWithContext(ctx context.Context, input *glue.ResetJobBookmarkInput, opts ...request.Option) (*glue.ResetJobBookmarkOutput, error)
 	SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error)
+	SearchTablesPagesWithContext(ctx context.Context, input *glue.SearchTablesInput, cb func(*glue.SearchTablesOutput, bool) bool, opts ...request.Option) error
 	StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error)
 	StartCrawlerScheduleWithContext(ctx context.Context, input *glue.StartCrawlerScheduleInput, opts ...request.Option) (*glue.StartCrawlerScheduleOutput, error)
 	StartExportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartExportLabelsTaskRunInput, opts ...request.Option) (*glue.StartExportLabelsTaskRunOutput, error)
@@ -1096,6 +1119,26 @@ func (c *Client) GetClassifiersWithContext(ctx context.Context, input *glue.GetC
 	return req.Output.(*glue.GetClassifiersOutput), req.Error
 }
 
+func (c *Client) GetClassifiersPagesWithContext(ctx context.Context, input *glue.GetClassifiersInput, cb func(*glue.GetClassifiersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetClassifiers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetClassifiersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1136,6 +1179,26 @@ func (c *Client) GetConnectionsWithContext(ctx context.Context, input *glue.GetC
 	})
 
 	return req.Output.(*glue.GetConnectionsOutput), req.Error
+}
+
+func (c *Client) GetConnectionsPagesWithContext(ctx context.Context, input *glue.GetConnectionsInput, cb func(*glue.GetConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCrawlerWithContext(ctx context.Context, input *glue.GetCrawlerInput, opts ...request.Option) (*glue.GetCrawlerOutput, error) {
@@ -1180,6 +1243,26 @@ func (c *Client) GetCrawlerMetricsWithContext(ctx context.Context, input *glue.G
 	return req.Output.(*glue.GetCrawlerMetricsOutput), req.Error
 }
 
+func (c *Client) GetCrawlerMetricsPagesWithContext(ctx context.Context, input *glue.GetCrawlerMetricsInput, cb func(*glue.GetCrawlerMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetCrawlerMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetCrawlerMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetCrawlersWithContext(ctx context.Context, input *glue.GetCrawlersInput, opts ...request.Option) (*glue.GetCrawlersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1199,6 +1282,26 @@ func (c *Client) GetCrawlersWithContext(ctx context.Context, input *glue.GetCraw
 	})
 
 	return req.Output.(*glue.GetCrawlersOutput), req.Error
+}
+
+func (c *Client) GetCrawlersPagesWithContext(ctx context.Context, input *glue.GetCrawlersInput, cb func(*glue.GetCrawlersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetCrawlers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetCrawlersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.GetDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.GetDataCatalogEncryptionSettingsOutput, error) {
@@ -1264,6 +1367,26 @@ func (c *Client) GetDatabasesWithContext(ctx context.Context, input *glue.GetDat
 	return req.Output.(*glue.GetDatabasesOutput), req.Error
 }
 
+func (c *Client) GetDatabasesPagesWithContext(ctx context.Context, input *glue.GetDatabasesInput, cb func(*glue.GetDatabasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetDatabases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetDatabasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetDataflowGraphWithContext(ctx context.Context, input *glue.GetDataflowGraphInput, opts ...request.Option) (*glue.GetDataflowGraphOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1325,6 +1448,26 @@ func (c *Client) GetDevEndpointsWithContext(ctx context.Context, input *glue.Get
 	})
 
 	return req.Output.(*glue.GetDevEndpointsOutput), req.Error
+}
+
+func (c *Client) GetDevEndpointsPagesWithContext(ctx context.Context, input *glue.GetDevEndpointsInput, cb func(*glue.GetDevEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetDevEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetDevEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetJobWithContext(ctx context.Context, input *glue.GetJobInput, opts ...request.Option) (*glue.GetJobOutput, error) {
@@ -1411,6 +1554,26 @@ func (c *Client) GetJobRunsWithContext(ctx context.Context, input *glue.GetJobRu
 	return req.Output.(*glue.GetJobRunsOutput), req.Error
 }
 
+func (c *Client) GetJobRunsPagesWithContext(ctx context.Context, input *glue.GetJobRunsInput, cb func(*glue.GetJobRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetJobRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetJobRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetJobsWithContext(ctx context.Context, input *glue.GetJobsInput, opts ...request.Option) (*glue.GetJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1430,6 +1593,26 @@ func (c *Client) GetJobsWithContext(ctx context.Context, input *glue.GetJobsInpu
 	})
 
 	return req.Output.(*glue.GetJobsOutput), req.Error
+}
+
+func (c *Client) GetJobsPagesWithContext(ctx context.Context, input *glue.GetJobsInput, cb func(*glue.GetJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetMLTaskRunWithContext(ctx context.Context, input *glue.GetMLTaskRunInput, opts ...request.Option) (*glue.GetMLTaskRunOutput, error) {
@@ -1474,6 +1657,26 @@ func (c *Client) GetMLTaskRunsWithContext(ctx context.Context, input *glue.GetML
 	return req.Output.(*glue.GetMLTaskRunsOutput), req.Error
 }
 
+func (c *Client) GetMLTaskRunsPagesWithContext(ctx context.Context, input *glue.GetMLTaskRunsInput, cb func(*glue.GetMLTaskRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetMLTaskRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetMLTaskRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetMLTransformWithContext(ctx context.Context, input *glue.GetMLTransformInput, opts ...request.Option) (*glue.GetMLTransformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1514,6 +1717,26 @@ func (c *Client) GetMLTransformsWithContext(ctx context.Context, input *glue.Get
 	})
 
 	return req.Output.(*glue.GetMLTransformsOutput), req.Error
+}
+
+func (c *Client) GetMLTransformsPagesWithContext(ctx context.Context, input *glue.GetMLTransformsInput, cb func(*glue.GetMLTransformsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetMLTransforms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetMLTransformsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetMappingWithContext(ctx context.Context, input *glue.GetMappingInput, opts ...request.Option) (*glue.GetMappingOutput, error) {
@@ -1577,6 +1800,26 @@ func (c *Client) GetPartitionsWithContext(ctx context.Context, input *glue.GetPa
 	})
 
 	return req.Output.(*glue.GetPartitionsOutput), req.Error
+}
+
+func (c *Client) GetPartitionsPagesWithContext(ctx context.Context, input *glue.GetPartitionsInput, cb func(*glue.GetPartitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetPartitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetPartitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetPlanWithContext(ctx context.Context, input *glue.GetPlanInput, opts ...request.Option) (*glue.GetPlanOutput, error) {
@@ -1663,6 +1906,26 @@ func (c *Client) GetSecurityConfigurationsWithContext(ctx context.Context, input
 	return req.Output.(*glue.GetSecurityConfigurationsOutput), req.Error
 }
 
+func (c *Client) GetSecurityConfigurationsPagesWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, cb func(*glue.GetSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetSecurityConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetSecurityConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTableWithContext(ctx context.Context, input *glue.GetTableInput, opts ...request.Option) (*glue.GetTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1726,6 +1989,26 @@ func (c *Client) GetTableVersionsWithContext(ctx context.Context, input *glue.Ge
 	return req.Output.(*glue.GetTableVersionsOutput), req.Error
 }
 
+func (c *Client) GetTableVersionsPagesWithContext(ctx context.Context, input *glue.GetTableVersionsInput, cb func(*glue.GetTableVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetTableVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetTableVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTablesWithContext(ctx context.Context, input *glue.GetTablesInput, opts ...request.Option) (*glue.GetTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1745,6 +2028,26 @@ func (c *Client) GetTablesWithContext(ctx context.Context, input *glue.GetTables
 	})
 
 	return req.Output.(*glue.GetTablesOutput), req.Error
+}
+
+func (c *Client) GetTablesPagesWithContext(ctx context.Context, input *glue.GetTablesInput, cb func(*glue.GetTablesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetTables",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetTablesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetTagsWithContext(ctx context.Context, input *glue.GetTagsInput, opts ...request.Option) (*glue.GetTagsOutput, error) {
@@ -1810,6 +2113,26 @@ func (c *Client) GetTriggersWithContext(ctx context.Context, input *glue.GetTrig
 	return req.Output.(*glue.GetTriggersOutput), req.Error
 }
 
+func (c *Client) GetTriggersPagesWithContext(ctx context.Context, input *glue.GetTriggersInput, cb func(*glue.GetTriggersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetTriggers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetTriggersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetUserDefinedFunctionWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionInput, opts ...request.Option) (*glue.GetUserDefinedFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1850,6 +2173,26 @@ func (c *Client) GetUserDefinedFunctionsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*glue.GetUserDefinedFunctionsOutput), req.Error
+}
+
+func (c *Client) GetUserDefinedFunctionsPagesWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionsInput, cb func(*glue.GetUserDefinedFunctionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetUserDefinedFunctions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetUserDefinedFunctionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetWorkflowWithContext(ctx context.Context, input *glue.GetWorkflowInput, opts ...request.Option) (*glue.GetWorkflowOutput, error) {
@@ -1936,6 +2279,26 @@ func (c *Client) GetWorkflowRunsWithContext(ctx context.Context, input *glue.Get
 	return req.Output.(*glue.GetWorkflowRunsOutput), req.Error
 }
 
+func (c *Client) GetWorkflowRunsPagesWithContext(ctx context.Context, input *glue.GetWorkflowRunsInput, cb func(*glue.GetWorkflowRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetWorkflowRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetWorkflowRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ImportCatalogToGlueWithContext(ctx context.Context, input *glue.ImportCatalogToGlueInput, opts ...request.Option) (*glue.ImportCatalogToGlueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1978,6 +2341,26 @@ func (c *Client) ListCrawlersWithContext(ctx context.Context, input *glue.ListCr
 	return req.Output.(*glue.ListCrawlersOutput), req.Error
 }
 
+func (c *Client) ListCrawlersPagesWithContext(ctx context.Context, input *glue.ListCrawlersInput, cb func(*glue.ListCrawlersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListCrawlers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListCrawlersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1997,6 +2380,26 @@ func (c *Client) ListDevEndpointsWithContext(ctx context.Context, input *glue.Li
 	})
 
 	return req.Output.(*glue.ListDevEndpointsOutput), req.Error
+}
+
+func (c *Client) ListDevEndpointsPagesWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, cb func(*glue.ListDevEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDevEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListDevEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJobsWithContext(ctx context.Context, input *glue.ListJobsInput, opts ...request.Option) (*glue.ListJobsOutput, error) {
@@ -2020,6 +2423,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *glue.ListJobsIn
 	return req.Output.(*glue.ListJobsOutput), req.Error
 }
 
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *glue.ListJobsInput, cb func(*glue.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -2041,6 +2464,26 @@ func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTr
 	return req.Output.(*glue.ListTriggersOutput), req.Error
 }
 
+func (c *Client) ListTriggersPagesWithContext(ctx context.Context, input *glue.ListTriggersInput, cb func(*glue.ListTriggersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListTriggers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListTriggersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -2060,6 +2503,26 @@ func (c *Client) ListWorkflowsWithContext(ctx context.Context, input *glue.ListW
 	})
 
 	return req.Output.(*glue.ListWorkflowsOutput), req.Error
+}
+
+func (c *Client) ListWorkflowsPagesWithContext(ctx context.Context, input *glue.ListWorkflowsInput, cb func(*glue.ListWorkflowsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListWorkflows",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListWorkflowsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.PutDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.PutDataCatalogEncryptionSettingsOutput, error) {
@@ -2165,6 +2628,26 @@ func (c *Client) SearchTablesWithContext(ctx context.Context, input *glue.Search
 	})
 
 	return req.Output.(*glue.SearchTablesOutput), req.Error
+}
+
+func (c *Client) SearchTablesPagesWithContext(ctx context.Context, input *glue.SearchTablesInput, cb func(*glue.SearchTablesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "SearchTables",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.SearchTablesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error) {

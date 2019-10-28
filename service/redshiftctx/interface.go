@@ -43,24 +43,40 @@ type Redshift interface {
 	DescribeAccountAttributesWithContext(ctx context.Context, input *redshift.DescribeAccountAttributesInput, opts ...request.Option) (*redshift.DescribeAccountAttributesOutput, error)
 	DescribeClusterDbRevisionsWithContext(ctx context.Context, input *redshift.DescribeClusterDbRevisionsInput, opts ...request.Option) (*redshift.DescribeClusterDbRevisionsOutput, error)
 	DescribeClusterParameterGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterParameterGroupsInput, opts ...request.Option) (*redshift.DescribeClusterParameterGroupsOutput, error)
+	DescribeClusterParameterGroupsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterParameterGroupsInput, cb func(*redshift.DescribeClusterParameterGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterParametersWithContext(ctx context.Context, input *redshift.DescribeClusterParametersInput, opts ...request.Option) (*redshift.DescribeClusterParametersOutput, error)
+	DescribeClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeClusterParametersInput, cb func(*redshift.DescribeClusterParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterSecurityGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterSecurityGroupsInput, opts ...request.Option) (*redshift.DescribeClusterSecurityGroupsOutput, error)
+	DescribeClusterSecurityGroupsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterSecurityGroupsInput, cb func(*redshift.DescribeClusterSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterSnapshotsWithContext(ctx context.Context, input *redshift.DescribeClusterSnapshotsInput, opts ...request.Option) (*redshift.DescribeClusterSnapshotsOutput, error)
+	DescribeClusterSnapshotsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterSnapshotsInput, cb func(*redshift.DescribeClusterSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterSubnetGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterSubnetGroupsInput, opts ...request.Option) (*redshift.DescribeClusterSubnetGroupsOutput, error)
+	DescribeClusterSubnetGroupsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterSubnetGroupsInput, cb func(*redshift.DescribeClusterSubnetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterTracksWithContext(ctx context.Context, input *redshift.DescribeClusterTracksInput, opts ...request.Option) (*redshift.DescribeClusterTracksOutput, error)
 	DescribeClusterVersionsWithContext(ctx context.Context, input *redshift.DescribeClusterVersionsInput, opts ...request.Option) (*redshift.DescribeClusterVersionsOutput, error)
+	DescribeClusterVersionsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterVersionsInput, cb func(*redshift.DescribeClusterVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClustersWithContext(ctx context.Context, input *redshift.DescribeClustersInput, opts ...request.Option) (*redshift.DescribeClustersOutput, error)
+	DescribeClustersPagesWithContext(ctx context.Context, input *redshift.DescribeClustersInput, cb func(*redshift.DescribeClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error)
+	DescribeDefaultClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, cb func(*redshift.DescribeDefaultClusterParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error)
 	DescribeEventSubscriptionsWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, opts ...request.Option) (*redshift.DescribeEventSubscriptionsOutput, error)
+	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, cb func(*redshift.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *redshift.DescribeEventsInput, opts ...request.Option) (*redshift.DescribeEventsOutput, error)
+	DescribeEventsPagesWithContext(ctx context.Context, input *redshift.DescribeEventsInput, cb func(*redshift.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeHsmClientCertificatesWithContext(ctx context.Context, input *redshift.DescribeHsmClientCertificatesInput, opts ...request.Option) (*redshift.DescribeHsmClientCertificatesOutput, error)
+	DescribeHsmClientCertificatesPagesWithContext(ctx context.Context, input *redshift.DescribeHsmClientCertificatesInput, cb func(*redshift.DescribeHsmClientCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeHsmConfigurationsWithContext(ctx context.Context, input *redshift.DescribeHsmConfigurationsInput, opts ...request.Option) (*redshift.DescribeHsmConfigurationsOutput, error)
+	DescribeHsmConfigurationsPagesWithContext(ctx context.Context, input *redshift.DescribeHsmConfigurationsInput, cb func(*redshift.DescribeHsmConfigurationsOutput, bool) bool, opts ...request.Option) error
 	DescribeLoggingStatusWithContext(ctx context.Context, input *redshift.DescribeLoggingStatusInput, opts ...request.Option) (*redshift.LoggingStatus, error)
 	DescribeNodeConfigurationOptionsWithContext(ctx context.Context, input *redshift.DescribeNodeConfigurationOptionsInput, opts ...request.Option) (*redshift.DescribeNodeConfigurationOptionsOutput, error)
+	DescribeNodeConfigurationOptionsPagesWithContext(ctx context.Context, input *redshift.DescribeNodeConfigurationOptionsInput, cb func(*redshift.DescribeNodeConfigurationOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableClusterOptionsWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, opts ...request.Option) (*redshift.DescribeOrderableClusterOptionsOutput, error)
+	DescribeOrderableClusterOptionsPagesWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, cb func(*redshift.DescribeOrderableClusterOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedNodeOfferingsWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, opts ...request.Option) (*redshift.DescribeReservedNodeOfferingsOutput, error)
+	DescribeReservedNodeOfferingsPagesWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, cb func(*redshift.DescribeReservedNodeOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedNodesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, opts ...request.Option) (*redshift.DescribeReservedNodesOutput, error)
+	DescribeReservedNodesPagesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, cb func(*redshift.DescribeReservedNodesOutput, bool) bool, opts ...request.Option) error
 	DescribeResizeWithContext(ctx context.Context, input *redshift.DescribeResizeInput, opts ...request.Option) (*redshift.DescribeResizeOutput, error)
 	DescribeSnapshotCopyGrantsWithContext(ctx context.Context, input *redshift.DescribeSnapshotCopyGrantsInput, opts ...request.Option) (*redshift.DescribeSnapshotCopyGrantsOutput, error)
 	DescribeSnapshotSchedulesWithContext(ctx context.Context, input *redshift.DescribeSnapshotSchedulesInput, opts ...request.Option) (*redshift.DescribeSnapshotSchedulesOutput, error)
@@ -782,6 +798,26 @@ func (c *Client) DescribeClusterParameterGroupsWithContext(ctx context.Context, 
 	return req.Output.(*redshift.DescribeClusterParameterGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeClusterParameterGroupsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterParameterGroupsInput, cb func(*redshift.DescribeClusterParameterGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusterParameterGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClusterParameterGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClusterParametersWithContext(ctx context.Context, input *redshift.DescribeClusterParametersInput, opts ...request.Option) (*redshift.DescribeClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -801,6 +837,26 @@ func (c *Client) DescribeClusterParametersWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*redshift.DescribeClusterParametersOutput), req.Error
+}
+
+func (c *Client) DescribeClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeClusterParametersInput, cb func(*redshift.DescribeClusterParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusterParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClusterParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClusterSecurityGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterSecurityGroupsInput, opts ...request.Option) (*redshift.DescribeClusterSecurityGroupsOutput, error) {
@@ -824,6 +880,26 @@ func (c *Client) DescribeClusterSecurityGroupsWithContext(ctx context.Context, i
 	return req.Output.(*redshift.DescribeClusterSecurityGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeClusterSecurityGroupsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterSecurityGroupsInput, cb func(*redshift.DescribeClusterSecurityGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusterSecurityGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClusterSecurityGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClusterSnapshotsWithContext(ctx context.Context, input *redshift.DescribeClusterSnapshotsInput, opts ...request.Option) (*redshift.DescribeClusterSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -845,6 +921,26 @@ func (c *Client) DescribeClusterSnapshotsWithContext(ctx context.Context, input 
 	return req.Output.(*redshift.DescribeClusterSnapshotsOutput), req.Error
 }
 
+func (c *Client) DescribeClusterSnapshotsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterSnapshotsInput, cb func(*redshift.DescribeClusterSnapshotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusterSnapshots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClusterSnapshotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClusterSubnetGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterSubnetGroupsInput, opts ...request.Option) (*redshift.DescribeClusterSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -864,6 +960,26 @@ func (c *Client) DescribeClusterSubnetGroupsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*redshift.DescribeClusterSubnetGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeClusterSubnetGroupsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterSubnetGroupsInput, cb func(*redshift.DescribeClusterSubnetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusterSubnetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClusterSubnetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClusterTracksWithContext(ctx context.Context, input *redshift.DescribeClusterTracksInput, opts ...request.Option) (*redshift.DescribeClusterTracksOutput, error) {
@@ -908,6 +1024,26 @@ func (c *Client) DescribeClusterVersionsWithContext(ctx context.Context, input *
 	return req.Output.(*redshift.DescribeClusterVersionsOutput), req.Error
 }
 
+func (c *Client) DescribeClusterVersionsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterVersionsInput, cb func(*redshift.DescribeClusterVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusterVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClusterVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClustersWithContext(ctx context.Context, input *redshift.DescribeClustersInput, opts ...request.Option) (*redshift.DescribeClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -929,6 +1065,26 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, input *redshif
 	return req.Output.(*redshift.DescribeClustersOutput), req.Error
 }
 
+func (c *Client) DescribeClustersPagesWithContext(ctx context.Context, input *redshift.DescribeClustersInput, cb func(*redshift.DescribeClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -948,6 +1104,26 @@ func (c *Client) DescribeDefaultClusterParametersWithContext(ctx context.Context
 	})
 
 	return req.Output.(*redshift.DescribeDefaultClusterParametersOutput), req.Error
+}
+
+func (c *Client) DescribeDefaultClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, cb func(*redshift.DescribeDefaultClusterParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeDefaultClusterParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeDefaultClusterParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error) {
@@ -992,6 +1168,26 @@ func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, inpu
 	return req.Output.(*redshift.DescribeEventSubscriptionsOutput), req.Error
 }
 
+func (c *Client) DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, cb func(*redshift.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeEventSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeEventSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *redshift.DescribeEventsInput, opts ...request.Option) (*redshift.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1011,6 +1207,26 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *redshift.
 	})
 
 	return req.Output.(*redshift.DescribeEventsOutput), req.Error
+}
+
+func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *redshift.DescribeEventsInput, cb func(*redshift.DescribeEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeHsmClientCertificatesWithContext(ctx context.Context, input *redshift.DescribeHsmClientCertificatesInput, opts ...request.Option) (*redshift.DescribeHsmClientCertificatesOutput, error) {
@@ -1034,6 +1250,26 @@ func (c *Client) DescribeHsmClientCertificatesWithContext(ctx context.Context, i
 	return req.Output.(*redshift.DescribeHsmClientCertificatesOutput), req.Error
 }
 
+func (c *Client) DescribeHsmClientCertificatesPagesWithContext(ctx context.Context, input *redshift.DescribeHsmClientCertificatesInput, cb func(*redshift.DescribeHsmClientCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeHsmClientCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeHsmClientCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeHsmConfigurationsWithContext(ctx context.Context, input *redshift.DescribeHsmConfigurationsInput, opts ...request.Option) (*redshift.DescribeHsmConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1053,6 +1289,26 @@ func (c *Client) DescribeHsmConfigurationsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*redshift.DescribeHsmConfigurationsOutput), req.Error
+}
+
+func (c *Client) DescribeHsmConfigurationsPagesWithContext(ctx context.Context, input *redshift.DescribeHsmConfigurationsInput, cb func(*redshift.DescribeHsmConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeHsmConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeHsmConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeLoggingStatusWithContext(ctx context.Context, input *redshift.DescribeLoggingStatusInput, opts ...request.Option) (*redshift.LoggingStatus, error) {
@@ -1097,6 +1353,26 @@ func (c *Client) DescribeNodeConfigurationOptionsWithContext(ctx context.Context
 	return req.Output.(*redshift.DescribeNodeConfigurationOptionsOutput), req.Error
 }
 
+func (c *Client) DescribeNodeConfigurationOptionsPagesWithContext(ctx context.Context, input *redshift.DescribeNodeConfigurationOptionsInput, cb func(*redshift.DescribeNodeConfigurationOptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeNodeConfigurationOptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeNodeConfigurationOptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeOrderableClusterOptionsWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, opts ...request.Option) (*redshift.DescribeOrderableClusterOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1116,6 +1392,26 @@ func (c *Client) DescribeOrderableClusterOptionsWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*redshift.DescribeOrderableClusterOptionsOutput), req.Error
+}
+
+func (c *Client) DescribeOrderableClusterOptionsPagesWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, cb func(*redshift.DescribeOrderableClusterOptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeOrderableClusterOptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeOrderableClusterOptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeReservedNodeOfferingsWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, opts ...request.Option) (*redshift.DescribeReservedNodeOfferingsOutput, error) {
@@ -1139,6 +1435,26 @@ func (c *Client) DescribeReservedNodeOfferingsWithContext(ctx context.Context, i
 	return req.Output.(*redshift.DescribeReservedNodeOfferingsOutput), req.Error
 }
 
+func (c *Client) DescribeReservedNodeOfferingsPagesWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, cb func(*redshift.DescribeReservedNodeOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeReservedNodeOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeReservedNodeOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReservedNodesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, opts ...request.Option) (*redshift.DescribeReservedNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1158,6 +1474,26 @@ func (c *Client) DescribeReservedNodesWithContext(ctx context.Context, input *re
 	})
 
 	return req.Output.(*redshift.DescribeReservedNodesOutput), req.Error
+}
+
+func (c *Client) DescribeReservedNodesPagesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, cb func(*redshift.DescribeReservedNodesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeReservedNodes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeReservedNodesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeResizeWithContext(ctx context.Context, input *redshift.DescribeResizeInput, opts ...request.Option) (*redshift.DescribeResizeOutput, error) {

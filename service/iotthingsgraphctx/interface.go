@@ -27,19 +27,29 @@ type IoTThingsGraph interface {
 	GetEntitiesWithContext(ctx context.Context, input *iotthingsgraph.GetEntitiesInput, opts ...request.Option) (*iotthingsgraph.GetEntitiesOutput, error)
 	GetFlowTemplateWithContext(ctx context.Context, input *iotthingsgraph.GetFlowTemplateInput, opts ...request.Option) (*iotthingsgraph.GetFlowTemplateOutput, error)
 	GetFlowTemplateRevisionsWithContext(ctx context.Context, input *iotthingsgraph.GetFlowTemplateRevisionsInput, opts ...request.Option) (*iotthingsgraph.GetFlowTemplateRevisionsOutput, error)
+	GetFlowTemplateRevisionsPagesWithContext(ctx context.Context, input *iotthingsgraph.GetFlowTemplateRevisionsInput, cb func(*iotthingsgraph.GetFlowTemplateRevisionsOutput, bool) bool, opts ...request.Option) error
 	GetNamespaceDeletionStatusWithContext(ctx context.Context, input *iotthingsgraph.GetNamespaceDeletionStatusInput, opts ...request.Option) (*iotthingsgraph.GetNamespaceDeletionStatusOutput, error)
 	GetSystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.GetSystemInstanceInput, opts ...request.Option) (*iotthingsgraph.GetSystemInstanceOutput, error)
 	GetSystemTemplateWithContext(ctx context.Context, input *iotthingsgraph.GetSystemTemplateInput, opts ...request.Option) (*iotthingsgraph.GetSystemTemplateOutput, error)
 	GetSystemTemplateRevisionsWithContext(ctx context.Context, input *iotthingsgraph.GetSystemTemplateRevisionsInput, opts ...request.Option) (*iotthingsgraph.GetSystemTemplateRevisionsOutput, error)
+	GetSystemTemplateRevisionsPagesWithContext(ctx context.Context, input *iotthingsgraph.GetSystemTemplateRevisionsInput, cb func(*iotthingsgraph.GetSystemTemplateRevisionsOutput, bool) bool, opts ...request.Option) error
 	GetUploadStatusWithContext(ctx context.Context, input *iotthingsgraph.GetUploadStatusInput, opts ...request.Option) (*iotthingsgraph.GetUploadStatusOutput, error)
 	ListFlowExecutionMessagesWithContext(ctx context.Context, input *iotthingsgraph.ListFlowExecutionMessagesInput, opts ...request.Option) (*iotthingsgraph.ListFlowExecutionMessagesOutput, error)
+	ListFlowExecutionMessagesPagesWithContext(ctx context.Context, input *iotthingsgraph.ListFlowExecutionMessagesInput, cb func(*iotthingsgraph.ListFlowExecutionMessagesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *iotthingsgraph.ListTagsForResourceInput, opts ...request.Option) (*iotthingsgraph.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *iotthingsgraph.ListTagsForResourceInput, cb func(*iotthingsgraph.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	SearchEntitiesWithContext(ctx context.Context, input *iotthingsgraph.SearchEntitiesInput, opts ...request.Option) (*iotthingsgraph.SearchEntitiesOutput, error)
+	SearchEntitiesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchEntitiesInput, cb func(*iotthingsgraph.SearchEntitiesOutput, bool) bool, opts ...request.Option) error
 	SearchFlowExecutionsWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowExecutionsInput, opts ...request.Option) (*iotthingsgraph.SearchFlowExecutionsOutput, error)
+	SearchFlowExecutionsPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowExecutionsInput, cb func(*iotthingsgraph.SearchFlowExecutionsOutput, bool) bool, opts ...request.Option) error
 	SearchFlowTemplatesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowTemplatesInput, opts ...request.Option) (*iotthingsgraph.SearchFlowTemplatesOutput, error)
+	SearchFlowTemplatesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowTemplatesInput, cb func(*iotthingsgraph.SearchFlowTemplatesOutput, bool) bool, opts ...request.Option) error
 	SearchSystemInstancesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemInstancesInput, opts ...request.Option) (*iotthingsgraph.SearchSystemInstancesOutput, error)
+	SearchSystemInstancesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemInstancesInput, cb func(*iotthingsgraph.SearchSystemInstancesOutput, bool) bool, opts ...request.Option) error
 	SearchSystemTemplatesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemTemplatesInput, opts ...request.Option) (*iotthingsgraph.SearchSystemTemplatesOutput, error)
+	SearchSystemTemplatesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemTemplatesInput, cb func(*iotthingsgraph.SearchSystemTemplatesOutput, bool) bool, opts ...request.Option) error
 	SearchThingsWithContext(ctx context.Context, input *iotthingsgraph.SearchThingsInput, opts ...request.Option) (*iotthingsgraph.SearchThingsOutput, error)
+	SearchThingsPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchThingsInput, cb func(*iotthingsgraph.SearchThingsOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *iotthingsgraph.TagResourceInput, opts ...request.Option) (*iotthingsgraph.TagResourceOutput, error)
 	UndeploySystemInstanceWithContext(ctx context.Context, input *iotthingsgraph.UndeploySystemInstanceInput, opts ...request.Option) (*iotthingsgraph.UndeploySystemInstanceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *iotthingsgraph.UntagResourceInput, opts ...request.Option) (*iotthingsgraph.UntagResourceOutput, error)
@@ -399,6 +409,26 @@ func (c *Client) GetFlowTemplateRevisionsWithContext(ctx context.Context, input 
 	return req.Output.(*iotthingsgraph.GetFlowTemplateRevisionsOutput), req.Error
 }
 
+func (c *Client) GetFlowTemplateRevisionsPagesWithContext(ctx context.Context, input *iotthingsgraph.GetFlowTemplateRevisionsInput, cb func(*iotthingsgraph.GetFlowTemplateRevisionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "GetFlowTemplateRevisions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.GetFlowTemplateRevisionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetNamespaceDeletionStatusWithContext(ctx context.Context, input *iotthingsgraph.GetNamespaceDeletionStatusInput, opts ...request.Option) (*iotthingsgraph.GetNamespaceDeletionStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
@@ -483,6 +513,26 @@ func (c *Client) GetSystemTemplateRevisionsWithContext(ctx context.Context, inpu
 	return req.Output.(*iotthingsgraph.GetSystemTemplateRevisionsOutput), req.Error
 }
 
+func (c *Client) GetSystemTemplateRevisionsPagesWithContext(ctx context.Context, input *iotthingsgraph.GetSystemTemplateRevisionsInput, cb func(*iotthingsgraph.GetSystemTemplateRevisionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "GetSystemTemplateRevisions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.GetSystemTemplateRevisionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetUploadStatusWithContext(ctx context.Context, input *iotthingsgraph.GetUploadStatusInput, opts ...request.Option) (*iotthingsgraph.GetUploadStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
@@ -525,6 +575,26 @@ func (c *Client) ListFlowExecutionMessagesWithContext(ctx context.Context, input
 	return req.Output.(*iotthingsgraph.ListFlowExecutionMessagesOutput), req.Error
 }
 
+func (c *Client) ListFlowExecutionMessagesPagesWithContext(ctx context.Context, input *iotthingsgraph.ListFlowExecutionMessagesInput, cb func(*iotthingsgraph.ListFlowExecutionMessagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "ListFlowExecutionMessages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.ListFlowExecutionMessagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iotthingsgraph.ListTagsForResourceInput, opts ...request.Option) (*iotthingsgraph.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
@@ -544,6 +614,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iott
 	})
 
 	return req.Output.(*iotthingsgraph.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *iotthingsgraph.ListTagsForResourceInput, cb func(*iotthingsgraph.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchEntitiesWithContext(ctx context.Context, input *iotthingsgraph.SearchEntitiesInput, opts ...request.Option) (*iotthingsgraph.SearchEntitiesOutput, error) {
@@ -567,6 +657,26 @@ func (c *Client) SearchEntitiesWithContext(ctx context.Context, input *iotthings
 	return req.Output.(*iotthingsgraph.SearchEntitiesOutput), req.Error
 }
 
+func (c *Client) SearchEntitiesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchEntitiesInput, cb func(*iotthingsgraph.SearchEntitiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "SearchEntities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.SearchEntitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchFlowExecutionsWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowExecutionsInput, opts ...request.Option) (*iotthingsgraph.SearchFlowExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
@@ -586,6 +696,26 @@ func (c *Client) SearchFlowExecutionsWithContext(ctx context.Context, input *iot
 	})
 
 	return req.Output.(*iotthingsgraph.SearchFlowExecutionsOutput), req.Error
+}
+
+func (c *Client) SearchFlowExecutionsPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowExecutionsInput, cb func(*iotthingsgraph.SearchFlowExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "SearchFlowExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.SearchFlowExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchFlowTemplatesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowTemplatesInput, opts ...request.Option) (*iotthingsgraph.SearchFlowTemplatesOutput, error) {
@@ -609,6 +739,26 @@ func (c *Client) SearchFlowTemplatesWithContext(ctx context.Context, input *iott
 	return req.Output.(*iotthingsgraph.SearchFlowTemplatesOutput), req.Error
 }
 
+func (c *Client) SearchFlowTemplatesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchFlowTemplatesInput, cb func(*iotthingsgraph.SearchFlowTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "SearchFlowTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.SearchFlowTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchSystemInstancesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemInstancesInput, opts ...request.Option) (*iotthingsgraph.SearchSystemInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
@@ -628,6 +778,26 @@ func (c *Client) SearchSystemInstancesWithContext(ctx context.Context, input *io
 	})
 
 	return req.Output.(*iotthingsgraph.SearchSystemInstancesOutput), req.Error
+}
+
+func (c *Client) SearchSystemInstancesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemInstancesInput, cb func(*iotthingsgraph.SearchSystemInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "SearchSystemInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.SearchSystemInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchSystemTemplatesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemTemplatesInput, opts ...request.Option) (*iotthingsgraph.SearchSystemTemplatesOutput, error) {
@@ -651,6 +821,26 @@ func (c *Client) SearchSystemTemplatesWithContext(ctx context.Context, input *io
 	return req.Output.(*iotthingsgraph.SearchSystemTemplatesOutput), req.Error
 }
 
+func (c *Client) SearchSystemTemplatesPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchSystemTemplatesInput, cb func(*iotthingsgraph.SearchSystemTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "SearchSystemTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.SearchSystemTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchThingsWithContext(ctx context.Context, input *iotthingsgraph.SearchThingsInput, opts ...request.Option) (*iotthingsgraph.SearchThingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotthingsgraph",
@@ -670,6 +860,26 @@ func (c *Client) SearchThingsWithContext(ctx context.Context, input *iotthingsgr
 	})
 
 	return req.Output.(*iotthingsgraph.SearchThingsOutput), req.Error
+}
+
+func (c *Client) SearchThingsPagesWithContext(ctx context.Context, input *iotthingsgraph.SearchThingsInput, cb func(*iotthingsgraph.SearchThingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotthingsgraph",
+		Action:  "SearchThings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTThingsGraphAPI.SearchThingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iotthingsgraph.TagResourceInput, opts ...request.Option) (*iotthingsgraph.TagResourceOutput, error) {

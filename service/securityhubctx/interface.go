@@ -24,8 +24,10 @@ type SecurityHub interface {
 	DeleteInvitationsWithContext(ctx context.Context, input *securityhub.DeleteInvitationsInput, opts ...request.Option) (*securityhub.DeleteInvitationsOutput, error)
 	DeleteMembersWithContext(ctx context.Context, input *securityhub.DeleteMembersInput, opts ...request.Option) (*securityhub.DeleteMembersOutput, error)
 	DescribeActionTargetsWithContext(ctx context.Context, input *securityhub.DescribeActionTargetsInput, opts ...request.Option) (*securityhub.DescribeActionTargetsOutput, error)
+	DescribeActionTargetsPagesWithContext(ctx context.Context, input *securityhub.DescribeActionTargetsInput, cb func(*securityhub.DescribeActionTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeHubWithContext(ctx context.Context, input *securityhub.DescribeHubInput, opts ...request.Option) (*securityhub.DescribeHubOutput, error)
 	DescribeProductsWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, opts ...request.Option) (*securityhub.DescribeProductsOutput, error)
+	DescribeProductsPagesWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, cb func(*securityhub.DescribeProductsOutput, bool) bool, opts ...request.Option) error
 	DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error)
 	DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error)
@@ -34,13 +36,16 @@ type SecurityHub interface {
 	EnableSecurityHubWithContext(ctx context.Context, input *securityhub.EnableSecurityHubInput, opts ...request.Option) (*securityhub.EnableSecurityHubOutput, error)
 	GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error)
 	GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error)
+	GetFindingsPagesWithContext(ctx context.Context, input *securityhub.GetFindingsInput, cb func(*securityhub.GetFindingsOutput, bool) bool, opts ...request.Option) error
 	GetInsightResultsWithContext(ctx context.Context, input *securityhub.GetInsightResultsInput, opts ...request.Option) (*securityhub.GetInsightResultsOutput, error)
 	GetInsightsWithContext(ctx context.Context, input *securityhub.GetInsightsInput, opts ...request.Option) (*securityhub.GetInsightsOutput, error)
+	GetInsightsPagesWithContext(ctx context.Context, input *securityhub.GetInsightsInput, cb func(*securityhub.GetInsightsOutput, bool) bool, opts ...request.Option) error
 	GetInvitationsCountWithContext(ctx context.Context, input *securityhub.GetInvitationsCountInput, opts ...request.Option) (*securityhub.GetInvitationsCountOutput, error)
 	GetMasterAccountWithContext(ctx context.Context, input *securityhub.GetMasterAccountInput, opts ...request.Option) (*securityhub.GetMasterAccountOutput, error)
 	GetMembersWithContext(ctx context.Context, input *securityhub.GetMembersInput, opts ...request.Option) (*securityhub.GetMembersOutput, error)
 	InviteMembersWithContext(ctx context.Context, input *securityhub.InviteMembersInput, opts ...request.Option) (*securityhub.InviteMembersOutput, error)
 	ListEnabledProductsForImportWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, opts ...request.Option) (*securityhub.ListEnabledProductsForImportOutput, error)
+	ListEnabledProductsForImportPagesWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, cb func(*securityhub.ListEnabledProductsForImportOutput, bool) bool, opts ...request.Option) error
 	ListInvitationsWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, opts ...request.Option) (*securityhub.ListInvitationsOutput, error)
 	ListMembersWithContext(ctx context.Context, input *securityhub.ListMembersInput, opts ...request.Option) (*securityhub.ListMembersOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error)
@@ -339,6 +344,26 @@ func (c *Client) DescribeActionTargetsWithContext(ctx context.Context, input *se
 	return req.Output.(*securityhub.DescribeActionTargetsOutput), req.Error
 }
 
+func (c *Client) DescribeActionTargetsPagesWithContext(ctx context.Context, input *securityhub.DescribeActionTargetsInput, cb func(*securityhub.DescribeActionTargetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeActionTargets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.DescribeActionTargetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeHubWithContext(ctx context.Context, input *securityhub.DescribeHubInput, opts ...request.Option) (*securityhub.DescribeHubOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -379,6 +404,26 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, input *securit
 	})
 
 	return req.Output.(*securityhub.DescribeProductsOutput), req.Error
+}
+
+func (c *Client) DescribeProductsPagesWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, cb func(*securityhub.DescribeProductsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeProducts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.DescribeProductsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error) {
@@ -549,6 +594,26 @@ func (c *Client) GetFindingsWithContext(ctx context.Context, input *securityhub.
 	return req.Output.(*securityhub.GetFindingsOutput), req.Error
 }
 
+func (c *Client) GetFindingsPagesWithContext(ctx context.Context, input *securityhub.GetFindingsInput, cb func(*securityhub.GetFindingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetFindings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.GetFindingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetInsightResultsWithContext(ctx context.Context, input *securityhub.GetInsightResultsInput, opts ...request.Option) (*securityhub.GetInsightResultsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -589,6 +654,26 @@ func (c *Client) GetInsightsWithContext(ctx context.Context, input *securityhub.
 	})
 
 	return req.Output.(*securityhub.GetInsightsOutput), req.Error
+}
+
+func (c *Client) GetInsightsPagesWithContext(ctx context.Context, input *securityhub.GetInsightsInput, cb func(*securityhub.GetInsightsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetInsights",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.GetInsightsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetInvitationsCountWithContext(ctx context.Context, input *securityhub.GetInvitationsCountInput, opts ...request.Option) (*securityhub.GetInvitationsCountOutput, error) {
@@ -694,6 +779,26 @@ func (c *Client) ListEnabledProductsForImportWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*securityhub.ListEnabledProductsForImportOutput), req.Error
+}
+
+func (c *Client) ListEnabledProductsForImportPagesWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, cb func(*securityhub.ListEnabledProductsForImportOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListEnabledProductsForImport",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListEnabledProductsForImportPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, opts ...request.Option) (*securityhub.ListInvitationsOutput, error) {

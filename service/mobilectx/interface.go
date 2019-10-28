@@ -18,7 +18,9 @@ type Mobile interface {
 	ExportBundleWithContext(ctx context.Context, input *mobile.ExportBundleInput, opts ...request.Option) (*mobile.ExportBundleOutput, error)
 	ExportProjectWithContext(ctx context.Context, input *mobile.ExportProjectInput, opts ...request.Option) (*mobile.ExportProjectOutput, error)
 	ListBundlesWithContext(ctx context.Context, input *mobile.ListBundlesInput, opts ...request.Option) (*mobile.ListBundlesOutput, error)
+	ListBundlesPagesWithContext(ctx context.Context, input *mobile.ListBundlesInput, cb func(*mobile.ListBundlesOutput, bool) bool, opts ...request.Option) error
 	ListProjectsWithContext(ctx context.Context, input *mobile.ListProjectsInput, opts ...request.Option) (*mobile.ListProjectsOutput, error)
+	ListProjectsPagesWithContext(ctx context.Context, input *mobile.ListProjectsInput, cb func(*mobile.ListProjectsOutput, bool) bool, opts ...request.Option) error
 	UpdateProjectWithContext(ctx context.Context, input *mobile.UpdateProjectInput, opts ...request.Option) (*mobile.UpdateProjectOutput, error)
 }
 
@@ -184,6 +186,26 @@ func (c *Client) ListBundlesWithContext(ctx context.Context, input *mobile.ListB
 	return req.Output.(*mobile.ListBundlesOutput), req.Error
 }
 
+func (c *Client) ListBundlesPagesWithContext(ctx context.Context, input *mobile.ListBundlesInput, cb func(*mobile.ListBundlesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mobile",
+		Action:  "ListBundles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MobileAPI.ListBundlesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *mobile.ListProjectsInput, opts ...request.Option) (*mobile.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mobile",
@@ -203,6 +225,26 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *mobile.List
 	})
 
 	return req.Output.(*mobile.ListProjectsOutput), req.Error
+}
+
+func (c *Client) ListProjectsPagesWithContext(ctx context.Context, input *mobile.ListProjectsInput, cb func(*mobile.ListProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mobile",
+		Action:  "ListProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MobileAPI.ListProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *mobile.UpdateProjectInput, opts ...request.Option) (*mobile.UpdateProjectOutput, error) {

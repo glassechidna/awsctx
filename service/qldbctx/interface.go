@@ -20,8 +20,11 @@ type QLDB interface {
 	GetDigestWithContext(ctx context.Context, input *qldb.GetDigestInput, opts ...request.Option) (*qldb.GetDigestOutput, error)
 	GetRevisionWithContext(ctx context.Context, input *qldb.GetRevisionInput, opts ...request.Option) (*qldb.GetRevisionOutput, error)
 	ListJournalS3ExportsWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsInput, opts ...request.Option) (*qldb.ListJournalS3ExportsOutput, error)
+	ListJournalS3ExportsPagesWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsInput, cb func(*qldb.ListJournalS3ExportsOutput, bool) bool, opts ...request.Option) error
 	ListJournalS3ExportsForLedgerWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsForLedgerInput, opts ...request.Option) (*qldb.ListJournalS3ExportsForLedgerOutput, error)
+	ListJournalS3ExportsForLedgerPagesWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsForLedgerInput, cb func(*qldb.ListJournalS3ExportsForLedgerOutput, bool) bool, opts ...request.Option) error
 	ListLedgersWithContext(ctx context.Context, input *qldb.ListLedgersInput, opts ...request.Option) (*qldb.ListLedgersOutput, error)
+	ListLedgersPagesWithContext(ctx context.Context, input *qldb.ListLedgersInput, cb func(*qldb.ListLedgersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *qldb.ListTagsForResourceInput, opts ...request.Option) (*qldb.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *qldb.TagResourceInput, opts ...request.Option) (*qldb.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *qldb.UntagResourceInput, opts ...request.Option) (*qldb.UntagResourceOutput, error)
@@ -232,6 +235,26 @@ func (c *Client) ListJournalS3ExportsWithContext(ctx context.Context, input *qld
 	return req.Output.(*qldb.ListJournalS3ExportsOutput), req.Error
 }
 
+func (c *Client) ListJournalS3ExportsPagesWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsInput, cb func(*qldb.ListJournalS3ExportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "ListJournalS3Exports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QLDBAPI.ListJournalS3ExportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListJournalS3ExportsForLedgerWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsForLedgerInput, opts ...request.Option) (*qldb.ListJournalS3ExportsForLedgerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "qldb",
@@ -253,6 +276,26 @@ func (c *Client) ListJournalS3ExportsForLedgerWithContext(ctx context.Context, i
 	return req.Output.(*qldb.ListJournalS3ExportsForLedgerOutput), req.Error
 }
 
+func (c *Client) ListJournalS3ExportsForLedgerPagesWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsForLedgerInput, cb func(*qldb.ListJournalS3ExportsForLedgerOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "ListJournalS3ExportsForLedger",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QLDBAPI.ListJournalS3ExportsForLedgerPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLedgersWithContext(ctx context.Context, input *qldb.ListLedgersInput, opts ...request.Option) (*qldb.ListLedgersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "qldb",
@@ -272,6 +315,26 @@ func (c *Client) ListLedgersWithContext(ctx context.Context, input *qldb.ListLed
 	})
 
 	return req.Output.(*qldb.ListLedgersOutput), req.Error
+}
+
+func (c *Client) ListLedgersPagesWithContext(ctx context.Context, input *qldb.ListLedgersInput, cb func(*qldb.ListLedgersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "ListLedgers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QLDBAPI.ListLedgersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *qldb.ListTagsForResourceInput, opts ...request.Option) (*qldb.ListTagsForResourceOutput, error) {

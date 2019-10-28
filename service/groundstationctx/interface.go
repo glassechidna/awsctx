@@ -25,11 +25,17 @@ type GroundStation interface {
 	GetMissionProfileWithContext(ctx context.Context, input *groundstation.GetMissionProfileInput, opts ...request.Option) (*groundstation.GetMissionProfileOutput, error)
 	GetSatelliteWithContext(ctx context.Context, input *groundstation.GetSatelliteInput, opts ...request.Option) (*groundstation.GetSatelliteOutput, error)
 	ListConfigsWithContext(ctx context.Context, input *groundstation.ListConfigsInput, opts ...request.Option) (*groundstation.ListConfigsOutput, error)
+	ListConfigsPagesWithContext(ctx context.Context, input *groundstation.ListConfigsInput, cb func(*groundstation.ListConfigsOutput, bool) bool, opts ...request.Option) error
 	ListContactsWithContext(ctx context.Context, input *groundstation.ListContactsInput, opts ...request.Option) (*groundstation.ListContactsOutput, error)
+	ListContactsPagesWithContext(ctx context.Context, input *groundstation.ListContactsInput, cb func(*groundstation.ListContactsOutput, bool) bool, opts ...request.Option) error
 	ListDataflowEndpointGroupsWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, opts ...request.Option) (*groundstation.ListDataflowEndpointGroupsOutput, error)
+	ListDataflowEndpointGroupsPagesWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, cb func(*groundstation.ListDataflowEndpointGroupsOutput, bool) bool, opts ...request.Option) error
 	ListGroundStationsWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, opts ...request.Option) (*groundstation.ListGroundStationsOutput, error)
+	ListGroundStationsPagesWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, cb func(*groundstation.ListGroundStationsOutput, bool) bool, opts ...request.Option) error
 	ListMissionProfilesWithContext(ctx context.Context, input *groundstation.ListMissionProfilesInput, opts ...request.Option) (*groundstation.ListMissionProfilesOutput, error)
+	ListMissionProfilesPagesWithContext(ctx context.Context, input *groundstation.ListMissionProfilesInput, cb func(*groundstation.ListMissionProfilesOutput, bool) bool, opts ...request.Option) error
 	ListSatellitesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, opts ...request.Option) (*groundstation.ListSatellitesOutput, error)
+	ListSatellitesPagesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, cb func(*groundstation.ListSatellitesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *groundstation.ListTagsForResourceInput, opts ...request.Option) (*groundstation.ListTagsForResourceOutput, error)
 	ReserveContactWithContext(ctx context.Context, input *groundstation.ReserveContactInput, opts ...request.Option) (*groundstation.ReserveContactOutput, error)
 	TagResourceWithContext(ctx context.Context, input *groundstation.TagResourceInput, opts ...request.Option) (*groundstation.TagResourceOutput, error)
@@ -347,6 +353,26 @@ func (c *Client) ListConfigsWithContext(ctx context.Context, input *groundstatio
 	return req.Output.(*groundstation.ListConfigsOutput), req.Error
 }
 
+func (c *Client) ListConfigsPagesWithContext(ctx context.Context, input *groundstation.ListConfigsInput, cb func(*groundstation.ListConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListContactsWithContext(ctx context.Context, input *groundstation.ListContactsInput, opts ...request.Option) (*groundstation.ListContactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
@@ -366,6 +392,26 @@ func (c *Client) ListContactsWithContext(ctx context.Context, input *groundstati
 	})
 
 	return req.Output.(*groundstation.ListContactsOutput), req.Error
+}
+
+func (c *Client) ListContactsPagesWithContext(ctx context.Context, input *groundstation.ListContactsInput, cb func(*groundstation.ListContactsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListContacts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListContactsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDataflowEndpointGroupsWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, opts ...request.Option) (*groundstation.ListDataflowEndpointGroupsOutput, error) {
@@ -389,6 +435,26 @@ func (c *Client) ListDataflowEndpointGroupsWithContext(ctx context.Context, inpu
 	return req.Output.(*groundstation.ListDataflowEndpointGroupsOutput), req.Error
 }
 
+func (c *Client) ListDataflowEndpointGroupsPagesWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, cb func(*groundstation.ListDataflowEndpointGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListDataflowEndpointGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListDataflowEndpointGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGroundStationsWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, opts ...request.Option) (*groundstation.ListGroundStationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
@@ -408,6 +474,26 @@ func (c *Client) ListGroundStationsWithContext(ctx context.Context, input *groun
 	})
 
 	return req.Output.(*groundstation.ListGroundStationsOutput), req.Error
+}
+
+func (c *Client) ListGroundStationsPagesWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, cb func(*groundstation.ListGroundStationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListGroundStations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListGroundStationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListMissionProfilesWithContext(ctx context.Context, input *groundstation.ListMissionProfilesInput, opts ...request.Option) (*groundstation.ListMissionProfilesOutput, error) {
@@ -431,6 +517,26 @@ func (c *Client) ListMissionProfilesWithContext(ctx context.Context, input *grou
 	return req.Output.(*groundstation.ListMissionProfilesOutput), req.Error
 }
 
+func (c *Client) ListMissionProfilesPagesWithContext(ctx context.Context, input *groundstation.ListMissionProfilesInput, cb func(*groundstation.ListMissionProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListMissionProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListMissionProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSatellitesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, opts ...request.Option) (*groundstation.ListSatellitesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
@@ -450,6 +556,26 @@ func (c *Client) ListSatellitesWithContext(ctx context.Context, input *groundsta
 	})
 
 	return req.Output.(*groundstation.ListSatellitesOutput), req.Error
+}
+
+func (c *Client) ListSatellitesPagesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, cb func(*groundstation.ListSatellitesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListSatellites",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListSatellitesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *groundstation.ListTagsForResourceInput, opts ...request.Option) (*groundstation.ListTagsForResourceOutput, error) {

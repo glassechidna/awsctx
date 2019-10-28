@@ -25,9 +25,13 @@ type SMS interface {
 	GetAppLaunchConfigurationWithContext(ctx context.Context, input *sms.GetAppLaunchConfigurationInput, opts ...request.Option) (*sms.GetAppLaunchConfigurationOutput, error)
 	GetAppReplicationConfigurationWithContext(ctx context.Context, input *sms.GetAppReplicationConfigurationInput, opts ...request.Option) (*sms.GetAppReplicationConfigurationOutput, error)
 	GetConnectorsWithContext(ctx context.Context, input *sms.GetConnectorsInput, opts ...request.Option) (*sms.GetConnectorsOutput, error)
+	GetConnectorsPagesWithContext(ctx context.Context, input *sms.GetConnectorsInput, cb func(*sms.GetConnectorsOutput, bool) bool, opts ...request.Option) error
 	GetReplicationJobsWithContext(ctx context.Context, input *sms.GetReplicationJobsInput, opts ...request.Option) (*sms.GetReplicationJobsOutput, error)
+	GetReplicationJobsPagesWithContext(ctx context.Context, input *sms.GetReplicationJobsInput, cb func(*sms.GetReplicationJobsOutput, bool) bool, opts ...request.Option) error
 	GetReplicationRunsWithContext(ctx context.Context, input *sms.GetReplicationRunsInput, opts ...request.Option) (*sms.GetReplicationRunsOutput, error)
+	GetReplicationRunsPagesWithContext(ctx context.Context, input *sms.GetReplicationRunsInput, cb func(*sms.GetReplicationRunsOutput, bool) bool, opts ...request.Option) error
 	GetServersWithContext(ctx context.Context, input *sms.GetServersInput, opts ...request.Option) (*sms.GetServersOutput, error)
+	GetServersPagesWithContext(ctx context.Context, input *sms.GetServersInput, cb func(*sms.GetServersOutput, bool) bool, opts ...request.Option) error
 	ImportServerCatalogWithContext(ctx context.Context, input *sms.ImportServerCatalogInput, opts ...request.Option) (*sms.ImportServerCatalogOutput, error)
 	LaunchAppWithContext(ctx context.Context, input *sms.LaunchAppInput, opts ...request.Option) (*sms.LaunchAppOutput, error)
 	ListAppsWithContext(ctx context.Context, input *sms.ListAppsInput, opts ...request.Option) (*sms.ListAppsOutput, error)
@@ -350,6 +354,26 @@ func (c *Client) GetConnectorsWithContext(ctx context.Context, input *sms.GetCon
 	return req.Output.(*sms.GetConnectorsOutput), req.Error
 }
 
+func (c *Client) GetConnectorsPagesWithContext(ctx context.Context, input *sms.GetConnectorsInput, cb func(*sms.GetConnectorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "GetConnectors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SMSAPI.GetConnectorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetReplicationJobsWithContext(ctx context.Context, input *sms.GetReplicationJobsInput, opts ...request.Option) (*sms.GetReplicationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
@@ -369,6 +393,26 @@ func (c *Client) GetReplicationJobsWithContext(ctx context.Context, input *sms.G
 	})
 
 	return req.Output.(*sms.GetReplicationJobsOutput), req.Error
+}
+
+func (c *Client) GetReplicationJobsPagesWithContext(ctx context.Context, input *sms.GetReplicationJobsInput, cb func(*sms.GetReplicationJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "GetReplicationJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SMSAPI.GetReplicationJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetReplicationRunsWithContext(ctx context.Context, input *sms.GetReplicationRunsInput, opts ...request.Option) (*sms.GetReplicationRunsOutput, error) {
@@ -392,6 +436,26 @@ func (c *Client) GetReplicationRunsWithContext(ctx context.Context, input *sms.G
 	return req.Output.(*sms.GetReplicationRunsOutput), req.Error
 }
 
+func (c *Client) GetReplicationRunsPagesWithContext(ctx context.Context, input *sms.GetReplicationRunsInput, cb func(*sms.GetReplicationRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "GetReplicationRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SMSAPI.GetReplicationRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetServersWithContext(ctx context.Context, input *sms.GetServersInput, opts ...request.Option) (*sms.GetServersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
@@ -411,6 +475,26 @@ func (c *Client) GetServersWithContext(ctx context.Context, input *sms.GetServer
 	})
 
 	return req.Output.(*sms.GetServersOutput), req.Error
+}
+
+func (c *Client) GetServersPagesWithContext(ctx context.Context, input *sms.GetServersInput, cb func(*sms.GetServersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "GetServers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SMSAPI.GetServersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ImportServerCatalogWithContext(ctx context.Context, input *sms.ImportServerCatalogInput, opts ...request.Option) (*sms.ImportServerCatalogOutput, error) {

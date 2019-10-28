@@ -35,7 +35,9 @@ type AppStream interface {
 	DescribeFleetsWithContext(ctx context.Context, input *appstream.DescribeFleetsInput, opts ...request.Option) (*appstream.DescribeFleetsOutput, error)
 	DescribeImageBuildersWithContext(ctx context.Context, input *appstream.DescribeImageBuildersInput, opts ...request.Option) (*appstream.DescribeImageBuildersOutput, error)
 	DescribeImagePermissionsWithContext(ctx context.Context, input *appstream.DescribeImagePermissionsInput, opts ...request.Option) (*appstream.DescribeImagePermissionsOutput, error)
+	DescribeImagePermissionsPagesWithContext(ctx context.Context, input *appstream.DescribeImagePermissionsInput, cb func(*appstream.DescribeImagePermissionsOutput, bool) bool, opts ...request.Option) error
 	DescribeImagesWithContext(ctx context.Context, input *appstream.DescribeImagesInput, opts ...request.Option) (*appstream.DescribeImagesOutput, error)
+	DescribeImagesPagesWithContext(ctx context.Context, input *appstream.DescribeImagesInput, cb func(*appstream.DescribeImagesOutput, bool) bool, opts ...request.Option) error
 	DescribeSessionsWithContext(ctx context.Context, input *appstream.DescribeSessionsInput, opts ...request.Option) (*appstream.DescribeSessionsOutput, error)
 	DescribeStacksWithContext(ctx context.Context, input *appstream.DescribeStacksInput, opts ...request.Option) (*appstream.DescribeStacksOutput, error)
 	DescribeUsageReportSubscriptionsWithContext(ctx context.Context, input *appstream.DescribeUsageReportSubscriptionsInput, opts ...request.Option) (*appstream.DescribeUsageReportSubscriptionsOutput, error)
@@ -579,6 +581,26 @@ func (c *Client) DescribeImagePermissionsWithContext(ctx context.Context, input 
 	return req.Output.(*appstream.DescribeImagePermissionsOutput), req.Error
 }
 
+func (c *Client) DescribeImagePermissionsPagesWithContext(ctx context.Context, input *appstream.DescribeImagePermissionsInput, cb func(*appstream.DescribeImagePermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DescribeImagePermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppStreamAPI.DescribeImagePermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeImagesWithContext(ctx context.Context, input *appstream.DescribeImagesInput, opts ...request.Option) (*appstream.DescribeImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
@@ -598,6 +620,26 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, input *appstream
 	})
 
 	return req.Output.(*appstream.DescribeImagesOutput), req.Error
+}
+
+func (c *Client) DescribeImagesPagesWithContext(ctx context.Context, input *appstream.DescribeImagesInput, cb func(*appstream.DescribeImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DescribeImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppStreamAPI.DescribeImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *appstream.DescribeSessionsInput, opts ...request.Option) (*appstream.DescribeSessionsOutput, error) {

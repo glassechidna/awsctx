@@ -34,11 +34,17 @@ type RoboMaker interface {
 	DescribeSimulationApplicationWithContext(ctx context.Context, input *robomaker.DescribeSimulationApplicationInput, opts ...request.Option) (*robomaker.DescribeSimulationApplicationOutput, error)
 	DescribeSimulationJobWithContext(ctx context.Context, input *robomaker.DescribeSimulationJobInput, opts ...request.Option) (*robomaker.DescribeSimulationJobOutput, error)
 	ListDeploymentJobsWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, opts ...request.Option) (*robomaker.ListDeploymentJobsOutput, error)
+	ListDeploymentJobsPagesWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, cb func(*robomaker.ListDeploymentJobsOutput, bool) bool, opts ...request.Option) error
 	ListFleetsWithContext(ctx context.Context, input *robomaker.ListFleetsInput, opts ...request.Option) (*robomaker.ListFleetsOutput, error)
+	ListFleetsPagesWithContext(ctx context.Context, input *robomaker.ListFleetsInput, cb func(*robomaker.ListFleetsOutput, bool) bool, opts ...request.Option) error
 	ListRobotApplicationsWithContext(ctx context.Context, input *robomaker.ListRobotApplicationsInput, opts ...request.Option) (*robomaker.ListRobotApplicationsOutput, error)
+	ListRobotApplicationsPagesWithContext(ctx context.Context, input *robomaker.ListRobotApplicationsInput, cb func(*robomaker.ListRobotApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListRobotsWithContext(ctx context.Context, input *robomaker.ListRobotsInput, opts ...request.Option) (*robomaker.ListRobotsOutput, error)
+	ListRobotsPagesWithContext(ctx context.Context, input *robomaker.ListRobotsInput, cb func(*robomaker.ListRobotsOutput, bool) bool, opts ...request.Option) error
 	ListSimulationApplicationsWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, opts ...request.Option) (*robomaker.ListSimulationApplicationsOutput, error)
+	ListSimulationApplicationsPagesWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, cb func(*robomaker.ListSimulationApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListSimulationJobsWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, opts ...request.Option) (*robomaker.ListSimulationJobsOutput, error)
+	ListSimulationJobsPagesWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, cb func(*robomaker.ListSimulationJobsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *robomaker.ListTagsForResourceInput, opts ...request.Option) (*robomaker.ListTagsForResourceOutput, error)
 	RegisterRobotWithContext(ctx context.Context, input *robomaker.RegisterRobotInput, opts ...request.Option) (*robomaker.RegisterRobotOutput, error)
 	RestartSimulationJobWithContext(ctx context.Context, input *robomaker.RestartSimulationJobInput, opts ...request.Option) (*robomaker.RestartSimulationJobOutput, error)
@@ -547,6 +553,26 @@ func (c *Client) ListDeploymentJobsWithContext(ctx context.Context, input *robom
 	return req.Output.(*robomaker.ListDeploymentJobsOutput), req.Error
 }
 
+func (c *Client) ListDeploymentJobsPagesWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, cb func(*robomaker.ListDeploymentJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListDeploymentJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListDeploymentJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListFleetsWithContext(ctx context.Context, input *robomaker.ListFleetsInput, opts ...request.Option) (*robomaker.ListFleetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
@@ -566,6 +592,26 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, input *robomaker.Lis
 	})
 
 	return req.Output.(*robomaker.ListFleetsOutput), req.Error
+}
+
+func (c *Client) ListFleetsPagesWithContext(ctx context.Context, input *robomaker.ListFleetsInput, cb func(*robomaker.ListFleetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListFleets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListFleetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRobotApplicationsWithContext(ctx context.Context, input *robomaker.ListRobotApplicationsInput, opts ...request.Option) (*robomaker.ListRobotApplicationsOutput, error) {
@@ -589,6 +635,26 @@ func (c *Client) ListRobotApplicationsWithContext(ctx context.Context, input *ro
 	return req.Output.(*robomaker.ListRobotApplicationsOutput), req.Error
 }
 
+func (c *Client) ListRobotApplicationsPagesWithContext(ctx context.Context, input *robomaker.ListRobotApplicationsInput, cb func(*robomaker.ListRobotApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListRobotApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListRobotApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRobotsWithContext(ctx context.Context, input *robomaker.ListRobotsInput, opts ...request.Option) (*robomaker.ListRobotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
@@ -608,6 +674,26 @@ func (c *Client) ListRobotsWithContext(ctx context.Context, input *robomaker.Lis
 	})
 
 	return req.Output.(*robomaker.ListRobotsOutput), req.Error
+}
+
+func (c *Client) ListRobotsPagesWithContext(ctx context.Context, input *robomaker.ListRobotsInput, cb func(*robomaker.ListRobotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListRobots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListRobotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSimulationApplicationsWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, opts ...request.Option) (*robomaker.ListSimulationApplicationsOutput, error) {
@@ -631,6 +717,26 @@ func (c *Client) ListSimulationApplicationsWithContext(ctx context.Context, inpu
 	return req.Output.(*robomaker.ListSimulationApplicationsOutput), req.Error
 }
 
+func (c *Client) ListSimulationApplicationsPagesWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, cb func(*robomaker.ListSimulationApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListSimulationApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListSimulationApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSimulationJobsWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, opts ...request.Option) (*robomaker.ListSimulationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
@@ -650,6 +756,26 @@ func (c *Client) ListSimulationJobsWithContext(ctx context.Context, input *robom
 	})
 
 	return req.Output.(*robomaker.ListSimulationJobsOutput), req.Error
+}
+
+func (c *Client) ListSimulationJobsPagesWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, cb func(*robomaker.ListSimulationJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListSimulationJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListSimulationJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *robomaker.ListTagsForResourceInput, opts ...request.Option) (*robomaker.ListTagsForResourceOutput, error) {

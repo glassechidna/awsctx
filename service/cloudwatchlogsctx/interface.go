@@ -24,16 +24,23 @@ type CloudWatchLogs interface {
 	DeleteRetentionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteRetentionPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteRetentionPolicyOutput, error)
 	DeleteSubscriptionFilterWithContext(ctx context.Context, input *cloudwatchlogs.DeleteSubscriptionFilterInput, opts ...request.Option) (*cloudwatchlogs.DeleteSubscriptionFilterOutput, error)
 	DescribeDestinationsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, opts ...request.Option) (*cloudwatchlogs.DescribeDestinationsOutput, error)
+	DescribeDestinationsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, cb func(*cloudwatchlogs.DescribeDestinationsOutput, bool) bool, opts ...request.Option) error
 	DescribeExportTasksWithContext(ctx context.Context, input *cloudwatchlogs.DescribeExportTasksInput, opts ...request.Option) (*cloudwatchlogs.DescribeExportTasksOutput, error)
 	DescribeLogGroupsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogGroupsInput, opts ...request.Option) (*cloudwatchlogs.DescribeLogGroupsOutput, error)
+	DescribeLogGroupsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogGroupsInput, cb func(*cloudwatchlogs.DescribeLogGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeLogStreamsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogStreamsInput, opts ...request.Option) (*cloudwatchlogs.DescribeLogStreamsOutput, error)
+	DescribeLogStreamsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogStreamsInput, cb func(*cloudwatchlogs.DescribeLogStreamsOutput, bool) bool, opts ...request.Option) error
 	DescribeMetricFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeMetricFiltersOutput, error)
+	DescribeMetricFiltersPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, cb func(*cloudwatchlogs.DescribeMetricFiltersOutput, bool) bool, opts ...request.Option) error
 	DescribeQueriesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeQueriesInput, opts ...request.Option) (*cloudwatchlogs.DescribeQueriesOutput, error)
 	DescribeResourcePoliciesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeResourcePoliciesInput, opts ...request.Option) (*cloudwatchlogs.DescribeResourcePoliciesOutput, error)
 	DescribeSubscriptionFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeSubscriptionFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeSubscriptionFiltersOutput, error)
+	DescribeSubscriptionFiltersPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeSubscriptionFiltersInput, cb func(*cloudwatchlogs.DescribeSubscriptionFiltersOutput, bool) bool, opts ...request.Option) error
 	DisassociateKmsKeyWithContext(ctx context.Context, input *cloudwatchlogs.DisassociateKmsKeyInput, opts ...request.Option) (*cloudwatchlogs.DisassociateKmsKeyOutput, error)
 	FilterLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.FilterLogEventsInput, opts ...request.Option) (*cloudwatchlogs.FilterLogEventsOutput, error)
+	FilterLogEventsPagesWithContext(ctx context.Context, input *cloudwatchlogs.FilterLogEventsInput, cb func(*cloudwatchlogs.FilterLogEventsOutput, bool) bool, opts ...request.Option) error
 	GetLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogEventsInput, opts ...request.Option) (*cloudwatchlogs.GetLogEventsOutput, error)
+	GetLogEventsPagesWithContext(ctx context.Context, input *cloudwatchlogs.GetLogEventsInput, cb func(*cloudwatchlogs.GetLogEventsOutput, bool) bool, opts ...request.Option) error
 	GetLogGroupFieldsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogGroupFieldsInput, opts ...request.Option) (*cloudwatchlogs.GetLogGroupFieldsOutput, error)
 	GetLogRecordWithContext(ctx context.Context, input *cloudwatchlogs.GetLogRecordInput, opts ...request.Option) (*cloudwatchlogs.GetLogRecordOutput, error)
 	GetQueryResultsWithContext(ctx context.Context, input *cloudwatchlogs.GetQueryResultsInput, opts ...request.Option) (*cloudwatchlogs.GetQueryResultsOutput, error)
@@ -340,6 +347,26 @@ func (c *Client) DescribeDestinationsWithContext(ctx context.Context, input *clo
 	return req.Output.(*cloudwatchlogs.DescribeDestinationsOutput), req.Error
 }
 
+func (c *Client) DescribeDestinationsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, cb func(*cloudwatchlogs.DescribeDestinationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeDestinations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.DescribeDestinationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *cloudwatchlogs.DescribeExportTasksInput, opts ...request.Option) (*cloudwatchlogs.DescribeExportTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -382,6 +409,26 @@ func (c *Client) DescribeLogGroupsWithContext(ctx context.Context, input *cloudw
 	return req.Output.(*cloudwatchlogs.DescribeLogGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeLogGroupsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogGroupsInput, cb func(*cloudwatchlogs.DescribeLogGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeLogGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.DescribeLogGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLogStreamsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogStreamsInput, opts ...request.Option) (*cloudwatchlogs.DescribeLogStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -403,6 +450,26 @@ func (c *Client) DescribeLogStreamsWithContext(ctx context.Context, input *cloud
 	return req.Output.(*cloudwatchlogs.DescribeLogStreamsOutput), req.Error
 }
 
+func (c *Client) DescribeLogStreamsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeLogStreamsInput, cb func(*cloudwatchlogs.DescribeLogStreamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeLogStreams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.DescribeLogStreamsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeMetricFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeMetricFiltersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -422,6 +489,26 @@ func (c *Client) DescribeMetricFiltersWithContext(ctx context.Context, input *cl
 	})
 
 	return req.Output.(*cloudwatchlogs.DescribeMetricFiltersOutput), req.Error
+}
+
+func (c *Client) DescribeMetricFiltersPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, cb func(*cloudwatchlogs.DescribeMetricFiltersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeMetricFilters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.DescribeMetricFiltersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeQueriesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeQueriesInput, opts ...request.Option) (*cloudwatchlogs.DescribeQueriesOutput, error) {
@@ -487,6 +574,26 @@ func (c *Client) DescribeSubscriptionFiltersWithContext(ctx context.Context, inp
 	return req.Output.(*cloudwatchlogs.DescribeSubscriptionFiltersOutput), req.Error
 }
 
+func (c *Client) DescribeSubscriptionFiltersPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeSubscriptionFiltersInput, cb func(*cloudwatchlogs.DescribeSubscriptionFiltersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeSubscriptionFilters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.DescribeSubscriptionFiltersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DisassociateKmsKeyWithContext(ctx context.Context, input *cloudwatchlogs.DisassociateKmsKeyInput, opts ...request.Option) (*cloudwatchlogs.DisassociateKmsKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -529,6 +636,26 @@ func (c *Client) FilterLogEventsWithContext(ctx context.Context, input *cloudwat
 	return req.Output.(*cloudwatchlogs.FilterLogEventsOutput), req.Error
 }
 
+func (c *Client) FilterLogEventsPagesWithContext(ctx context.Context, input *cloudwatchlogs.FilterLogEventsInput, cb func(*cloudwatchlogs.FilterLogEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "FilterLogEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.FilterLogEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogEventsInput, opts ...request.Option) (*cloudwatchlogs.GetLogEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -548,6 +675,26 @@ func (c *Client) GetLogEventsWithContext(ctx context.Context, input *cloudwatchl
 	})
 
 	return req.Output.(*cloudwatchlogs.GetLogEventsOutput), req.Error
+}
+
+func (c *Client) GetLogEventsPagesWithContext(ctx context.Context, input *cloudwatchlogs.GetLogEventsInput, cb func(*cloudwatchlogs.GetLogEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "GetLogEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchLogsAPI.GetLogEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetLogGroupFieldsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogGroupFieldsInput, opts ...request.Option) (*cloudwatchlogs.GetLogGroupFieldsOutput, error) {

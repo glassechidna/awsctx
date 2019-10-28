@@ -32,11 +32,15 @@ type Glacier interface {
 	InitiateMultipartUploadWithContext(ctx context.Context, input *glacier.InitiateMultipartUploadInput, opts ...request.Option) (*glacier.InitiateMultipartUploadOutput, error)
 	InitiateVaultLockWithContext(ctx context.Context, input *glacier.InitiateVaultLockInput, opts ...request.Option) (*glacier.InitiateVaultLockOutput, error)
 	ListJobsWithContext(ctx context.Context, input *glacier.ListJobsInput, opts ...request.Option) (*glacier.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *glacier.ListJobsInput, cb func(*glacier.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListMultipartUploadsWithContext(ctx context.Context, input *glacier.ListMultipartUploadsInput, opts ...request.Option) (*glacier.ListMultipartUploadsOutput, error)
+	ListMultipartUploadsPagesWithContext(ctx context.Context, input *glacier.ListMultipartUploadsInput, cb func(*glacier.ListMultipartUploadsOutput, bool) bool, opts ...request.Option) error
 	ListPartsWithContext(ctx context.Context, input *glacier.ListPartsInput, opts ...request.Option) (*glacier.ListPartsOutput, error)
+	ListPartsPagesWithContext(ctx context.Context, input *glacier.ListPartsInput, cb func(*glacier.ListPartsOutput, bool) bool, opts ...request.Option) error
 	ListProvisionedCapacityWithContext(ctx context.Context, input *glacier.ListProvisionedCapacityInput, opts ...request.Option) (*glacier.ListProvisionedCapacityOutput, error)
 	ListTagsForVaultWithContext(ctx context.Context, input *glacier.ListTagsForVaultInput, opts ...request.Option) (*glacier.ListTagsForVaultOutput, error)
 	ListVaultsWithContext(ctx context.Context, input *glacier.ListVaultsInput, opts ...request.Option) (*glacier.ListVaultsOutput, error)
+	ListVaultsPagesWithContext(ctx context.Context, input *glacier.ListVaultsInput, cb func(*glacier.ListVaultsOutput, bool) bool, opts ...request.Option) error
 	PurchaseProvisionedCapacityWithContext(ctx context.Context, input *glacier.PurchaseProvisionedCapacityInput, opts ...request.Option) (*glacier.PurchaseProvisionedCapacityOutput, error)
 	RemoveTagsFromVaultWithContext(ctx context.Context, input *glacier.RemoveTagsFromVaultInput, opts ...request.Option) (*glacier.RemoveTagsFromVaultOutput, error)
 	SetDataRetrievalPolicyWithContext(ctx context.Context, input *glacier.SetDataRetrievalPolicyInput, opts ...request.Option) (*glacier.SetDataRetrievalPolicyOutput, error)
@@ -502,6 +506,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *glacier.ListJob
 	return req.Output.(*glacier.ListJobsOutput), req.Error
 }
 
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *glacier.ListJobsInput, cb func(*glacier.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glacier",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlacierAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *glacier.ListMultipartUploadsInput, opts ...request.Option) (*glacier.ListMultipartUploadsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
@@ -523,6 +547,26 @@ func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *gla
 	return req.Output.(*glacier.ListMultipartUploadsOutput), req.Error
 }
 
+func (c *Client) ListMultipartUploadsPagesWithContext(ctx context.Context, input *glacier.ListMultipartUploadsInput, cb func(*glacier.ListMultipartUploadsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glacier",
+		Action:  "ListMultipartUploads",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlacierAPI.ListMultipartUploadsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPartsWithContext(ctx context.Context, input *glacier.ListPartsInput, opts ...request.Option) (*glacier.ListPartsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glacier",
@@ -542,6 +586,26 @@ func (c *Client) ListPartsWithContext(ctx context.Context, input *glacier.ListPa
 	})
 
 	return req.Output.(*glacier.ListPartsOutput), req.Error
+}
+
+func (c *Client) ListPartsPagesWithContext(ctx context.Context, input *glacier.ListPartsInput, cb func(*glacier.ListPartsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glacier",
+		Action:  "ListParts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlacierAPI.ListPartsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListProvisionedCapacityWithContext(ctx context.Context, input *glacier.ListProvisionedCapacityInput, opts ...request.Option) (*glacier.ListProvisionedCapacityOutput, error) {
@@ -605,6 +669,26 @@ func (c *Client) ListVaultsWithContext(ctx context.Context, input *glacier.ListV
 	})
 
 	return req.Output.(*glacier.ListVaultsOutput), req.Error
+}
+
+func (c *Client) ListVaultsPagesWithContext(ctx context.Context, input *glacier.ListVaultsInput, cb func(*glacier.ListVaultsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glacier",
+		Action:  "ListVaults",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlacierAPI.ListVaultsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PurchaseProvisionedCapacityWithContext(ctx context.Context, input *glacier.PurchaseProvisionedCapacityInput, opts ...request.Option) (*glacier.PurchaseProvisionedCapacityOutput, error) {

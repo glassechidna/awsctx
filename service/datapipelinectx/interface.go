@@ -17,13 +17,16 @@ type DataPipeline interface {
 	DeactivatePipelineWithContext(ctx context.Context, input *datapipeline.DeactivatePipelineInput, opts ...request.Option) (*datapipeline.DeactivatePipelineOutput, error)
 	DeletePipelineWithContext(ctx context.Context, input *datapipeline.DeletePipelineInput, opts ...request.Option) (*datapipeline.DeletePipelineOutput, error)
 	DescribeObjectsWithContext(ctx context.Context, input *datapipeline.DescribeObjectsInput, opts ...request.Option) (*datapipeline.DescribeObjectsOutput, error)
+	DescribeObjectsPagesWithContext(ctx context.Context, input *datapipeline.DescribeObjectsInput, cb func(*datapipeline.DescribeObjectsOutput, bool) bool, opts ...request.Option) error
 	DescribePipelinesWithContext(ctx context.Context, input *datapipeline.DescribePipelinesInput, opts ...request.Option) (*datapipeline.DescribePipelinesOutput, error)
 	EvaluateExpressionWithContext(ctx context.Context, input *datapipeline.EvaluateExpressionInput, opts ...request.Option) (*datapipeline.EvaluateExpressionOutput, error)
 	GetPipelineDefinitionWithContext(ctx context.Context, input *datapipeline.GetPipelineDefinitionInput, opts ...request.Option) (*datapipeline.GetPipelineDefinitionOutput, error)
 	ListPipelinesWithContext(ctx context.Context, input *datapipeline.ListPipelinesInput, opts ...request.Option) (*datapipeline.ListPipelinesOutput, error)
+	ListPipelinesPagesWithContext(ctx context.Context, input *datapipeline.ListPipelinesInput, cb func(*datapipeline.ListPipelinesOutput, bool) bool, opts ...request.Option) error
 	PollForTaskWithContext(ctx context.Context, input *datapipeline.PollForTaskInput, opts ...request.Option) (*datapipeline.PollForTaskOutput, error)
 	PutPipelineDefinitionWithContext(ctx context.Context, input *datapipeline.PutPipelineDefinitionInput, opts ...request.Option) (*datapipeline.PutPipelineDefinitionOutput, error)
 	QueryObjectsWithContext(ctx context.Context, input *datapipeline.QueryObjectsInput, opts ...request.Option) (*datapipeline.QueryObjectsOutput, error)
+	QueryObjectsPagesWithContext(ctx context.Context, input *datapipeline.QueryObjectsInput, cb func(*datapipeline.QueryObjectsOutput, bool) bool, opts ...request.Option) error
 	RemoveTagsWithContext(ctx context.Context, input *datapipeline.RemoveTagsInput, opts ...request.Option) (*datapipeline.RemoveTagsOutput, error)
 	ReportTaskProgressWithContext(ctx context.Context, input *datapipeline.ReportTaskProgressInput, opts ...request.Option) (*datapipeline.ReportTaskProgressOutput, error)
 	ReportTaskRunnerHeartbeatWithContext(ctx context.Context, input *datapipeline.ReportTaskRunnerHeartbeatInput, opts ...request.Option) (*datapipeline.ReportTaskRunnerHeartbeatOutput, error)
@@ -173,6 +176,26 @@ func (c *Client) DescribeObjectsWithContext(ctx context.Context, input *datapipe
 	return req.Output.(*datapipeline.DescribeObjectsOutput), req.Error
 }
 
+func (c *Client) DescribeObjectsPagesWithContext(ctx context.Context, input *datapipeline.DescribeObjectsInput, cb func(*datapipeline.DescribeObjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datapipeline",
+		Action:  "DescribeObjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataPipelineAPI.DescribeObjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePipelinesWithContext(ctx context.Context, input *datapipeline.DescribePipelinesInput, opts ...request.Option) (*datapipeline.DescribePipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
@@ -257,6 +280,26 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *datapipeli
 	return req.Output.(*datapipeline.ListPipelinesOutput), req.Error
 }
 
+func (c *Client) ListPipelinesPagesWithContext(ctx context.Context, input *datapipeline.ListPipelinesInput, cb func(*datapipeline.ListPipelinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datapipeline",
+		Action:  "ListPipelines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataPipelineAPI.ListPipelinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) PollForTaskWithContext(ctx context.Context, input *datapipeline.PollForTaskInput, opts ...request.Option) (*datapipeline.PollForTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datapipeline",
@@ -318,6 +361,26 @@ func (c *Client) QueryObjectsWithContext(ctx context.Context, input *datapipelin
 	})
 
 	return req.Output.(*datapipeline.QueryObjectsOutput), req.Error
+}
+
+func (c *Client) QueryObjectsPagesWithContext(ctx context.Context, input *datapipeline.QueryObjectsInput, cb func(*datapipeline.QueryObjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datapipeline",
+		Action:  "QueryObjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataPipelineAPI.QueryObjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *datapipeline.RemoveTagsInput, opts ...request.Option) (*datapipeline.RemoveTagsOutput, error) {

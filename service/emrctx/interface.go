@@ -24,12 +24,19 @@ type EMR interface {
 	DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error)
 	GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error)
 	ListBootstrapActionsWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, opts ...request.Option) (*emr.ListBootstrapActionsOutput, error)
+	ListBootstrapActionsPagesWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, cb func(*emr.ListBootstrapActionsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *emr.ListClustersInput, opts ...request.Option) (*emr.ListClustersOutput, error)
+	ListClustersPagesWithContext(ctx context.Context, input *emr.ListClustersInput, cb func(*emr.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListInstanceFleetsWithContext(ctx context.Context, input *emr.ListInstanceFleetsInput, opts ...request.Option) (*emr.ListInstanceFleetsOutput, error)
+	ListInstanceFleetsPagesWithContext(ctx context.Context, input *emr.ListInstanceFleetsInput, cb func(*emr.ListInstanceFleetsOutput, bool) bool, opts ...request.Option) error
 	ListInstanceGroupsWithContext(ctx context.Context, input *emr.ListInstanceGroupsInput, opts ...request.Option) (*emr.ListInstanceGroupsOutput, error)
+	ListInstanceGroupsPagesWithContext(ctx context.Context, input *emr.ListInstanceGroupsInput, cb func(*emr.ListInstanceGroupsOutput, bool) bool, opts ...request.Option) error
 	ListInstancesWithContext(ctx context.Context, input *emr.ListInstancesInput, opts ...request.Option) (*emr.ListInstancesOutput, error)
+	ListInstancesPagesWithContext(ctx context.Context, input *emr.ListInstancesInput, cb func(*emr.ListInstancesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityConfigurationsWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, opts ...request.Option) (*emr.ListSecurityConfigurationsOutput, error)
+	ListSecurityConfigurationsPagesWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, cb func(*emr.ListSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error)
+	ListStepsPagesWithContext(ctx context.Context, input *emr.ListStepsInput, cb func(*emr.ListStepsOutput, bool) bool, opts ...request.Option) error
 	ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error)
 	ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error)
 	PutAutoScalingPolicyWithContext(ctx context.Context, input *emr.PutAutoScalingPolicyInput, opts ...request.Option) (*emr.PutAutoScalingPolicyOutput, error)
@@ -330,6 +337,26 @@ func (c *Client) ListBootstrapActionsWithContext(ctx context.Context, input *emr
 	return req.Output.(*emr.ListBootstrapActionsOutput), req.Error
 }
 
+func (c *Client) ListBootstrapActionsPagesWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, cb func(*emr.ListBootstrapActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListBootstrapActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListBootstrapActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListClustersWithContext(ctx context.Context, input *emr.ListClustersInput, opts ...request.Option) (*emr.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -349,6 +376,26 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *emr.ListClu
 	})
 
 	return req.Output.(*emr.ListClustersOutput), req.Error
+}
+
+func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *emr.ListClustersInput, cb func(*emr.ListClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInstanceFleetsWithContext(ctx context.Context, input *emr.ListInstanceFleetsInput, opts ...request.Option) (*emr.ListInstanceFleetsOutput, error) {
@@ -372,6 +419,26 @@ func (c *Client) ListInstanceFleetsWithContext(ctx context.Context, input *emr.L
 	return req.Output.(*emr.ListInstanceFleetsOutput), req.Error
 }
 
+func (c *Client) ListInstanceFleetsPagesWithContext(ctx context.Context, input *emr.ListInstanceFleetsInput, cb func(*emr.ListInstanceFleetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListInstanceFleets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListInstanceFleetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListInstanceGroupsWithContext(ctx context.Context, input *emr.ListInstanceGroupsInput, opts ...request.Option) (*emr.ListInstanceGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -391,6 +458,26 @@ func (c *Client) ListInstanceGroupsWithContext(ctx context.Context, input *emr.L
 	})
 
 	return req.Output.(*emr.ListInstanceGroupsOutput), req.Error
+}
+
+func (c *Client) ListInstanceGroupsPagesWithContext(ctx context.Context, input *emr.ListInstanceGroupsInput, cb func(*emr.ListInstanceGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListInstanceGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListInstanceGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInstancesWithContext(ctx context.Context, input *emr.ListInstancesInput, opts ...request.Option) (*emr.ListInstancesOutput, error) {
@@ -414,6 +501,26 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, input *emr.ListIn
 	return req.Output.(*emr.ListInstancesOutput), req.Error
 }
 
+func (c *Client) ListInstancesPagesWithContext(ctx context.Context, input *emr.ListInstancesInput, cb func(*emr.ListInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSecurityConfigurationsWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, opts ...request.Option) (*emr.ListSecurityConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -435,6 +542,26 @@ func (c *Client) ListSecurityConfigurationsWithContext(ctx context.Context, inpu
 	return req.Output.(*emr.ListSecurityConfigurationsOutput), req.Error
 }
 
+func (c *Client) ListSecurityConfigurationsPagesWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, cb func(*emr.ListSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListSecurityConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListSecurityConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -454,6 +581,26 @@ func (c *Client) ListStepsWithContext(ctx context.Context, input *emr.ListStepsI
 	})
 
 	return req.Output.(*emr.ListStepsOutput), req.Error
+}
+
+func (c *Client) ListStepsPagesWithContext(ctx context.Context, input *emr.ListStepsInput, cb func(*emr.ListStepsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListSteps",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListStepsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error) {

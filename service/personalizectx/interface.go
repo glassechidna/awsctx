@@ -38,14 +38,23 @@ type Personalize interface {
 	DescribeSolutionVersionWithContext(ctx context.Context, input *personalize.DescribeSolutionVersionInput, opts ...request.Option) (*personalize.DescribeSolutionVersionOutput, error)
 	GetSolutionMetricsWithContext(ctx context.Context, input *personalize.GetSolutionMetricsInput, opts ...request.Option) (*personalize.GetSolutionMetricsOutput, error)
 	ListCampaignsWithContext(ctx context.Context, input *personalize.ListCampaignsInput, opts ...request.Option) (*personalize.ListCampaignsOutput, error)
+	ListCampaignsPagesWithContext(ctx context.Context, input *personalize.ListCampaignsInput, cb func(*personalize.ListCampaignsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetGroupsWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, opts ...request.Option) (*personalize.ListDatasetGroupsOutput, error)
+	ListDatasetGroupsPagesWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, cb func(*personalize.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetImportJobsWithContext(ctx context.Context, input *personalize.ListDatasetImportJobsInput, opts ...request.Option) (*personalize.ListDatasetImportJobsOutput, error)
+	ListDatasetImportJobsPagesWithContext(ctx context.Context, input *personalize.ListDatasetImportJobsInput, cb func(*personalize.ListDatasetImportJobsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetsWithContext(ctx context.Context, input *personalize.ListDatasetsInput, opts ...request.Option) (*personalize.ListDatasetsOutput, error)
+	ListDatasetsPagesWithContext(ctx context.Context, input *personalize.ListDatasetsInput, cb func(*personalize.ListDatasetsOutput, bool) bool, opts ...request.Option) error
 	ListEventTrackersWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, opts ...request.Option) (*personalize.ListEventTrackersOutput, error)
+	ListEventTrackersPagesWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, cb func(*personalize.ListEventTrackersOutput, bool) bool, opts ...request.Option) error
 	ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error)
+	ListRecipesPagesWithContext(ctx context.Context, input *personalize.ListRecipesInput, cb func(*personalize.ListRecipesOutput, bool) bool, opts ...request.Option) error
 	ListSchemasWithContext(ctx context.Context, input *personalize.ListSchemasInput, opts ...request.Option) (*personalize.ListSchemasOutput, error)
+	ListSchemasPagesWithContext(ctx context.Context, input *personalize.ListSchemasInput, cb func(*personalize.ListSchemasOutput, bool) bool, opts ...request.Option) error
 	ListSolutionVersionsWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, opts ...request.Option) (*personalize.ListSolutionVersionsOutput, error)
+	ListSolutionVersionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, cb func(*personalize.ListSolutionVersionsOutput, bool) bool, opts ...request.Option) error
 	ListSolutionsWithContext(ctx context.Context, input *personalize.ListSolutionsInput, opts ...request.Option) (*personalize.ListSolutionsOutput, error)
+	ListSolutionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionsInput, cb func(*personalize.ListSolutionsOutput, bool) bool, opts ...request.Option) error
 	UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error)
 }
 
@@ -631,6 +640,26 @@ func (c *Client) ListCampaignsWithContext(ctx context.Context, input *personaliz
 	return req.Output.(*personalize.ListCampaignsOutput), req.Error
 }
 
+func (c *Client) ListCampaignsPagesWithContext(ctx context.Context, input *personalize.ListCampaignsInput, cb func(*personalize.ListCampaignsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListCampaigns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListCampaignsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDatasetGroupsWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, opts ...request.Option) (*personalize.ListDatasetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -650,6 +679,26 @@ func (c *Client) ListDatasetGroupsWithContext(ctx context.Context, input *person
 	})
 
 	return req.Output.(*personalize.ListDatasetGroupsOutput), req.Error
+}
+
+func (c *Client) ListDatasetGroupsPagesWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, cb func(*personalize.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListDatasetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListDatasetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDatasetImportJobsWithContext(ctx context.Context, input *personalize.ListDatasetImportJobsInput, opts ...request.Option) (*personalize.ListDatasetImportJobsOutput, error) {
@@ -673,6 +722,26 @@ func (c *Client) ListDatasetImportJobsWithContext(ctx context.Context, input *pe
 	return req.Output.(*personalize.ListDatasetImportJobsOutput), req.Error
 }
 
+func (c *Client) ListDatasetImportJobsPagesWithContext(ctx context.Context, input *personalize.ListDatasetImportJobsInput, cb func(*personalize.ListDatasetImportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListDatasetImportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListDatasetImportJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDatasetsWithContext(ctx context.Context, input *personalize.ListDatasetsInput, opts ...request.Option) (*personalize.ListDatasetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -692,6 +761,26 @@ func (c *Client) ListDatasetsWithContext(ctx context.Context, input *personalize
 	})
 
 	return req.Output.(*personalize.ListDatasetsOutput), req.Error
+}
+
+func (c *Client) ListDatasetsPagesWithContext(ctx context.Context, input *personalize.ListDatasetsInput, cb func(*personalize.ListDatasetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListDatasets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListDatasetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListEventTrackersWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, opts ...request.Option) (*personalize.ListEventTrackersOutput, error) {
@@ -715,6 +804,26 @@ func (c *Client) ListEventTrackersWithContext(ctx context.Context, input *person
 	return req.Output.(*personalize.ListEventTrackersOutput), req.Error
 }
 
+func (c *Client) ListEventTrackersPagesWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, cb func(*personalize.ListEventTrackersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListEventTrackers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListEventTrackersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -734,6 +843,26 @@ func (c *Client) ListRecipesWithContext(ctx context.Context, input *personalize.
 	})
 
 	return req.Output.(*personalize.ListRecipesOutput), req.Error
+}
+
+func (c *Client) ListRecipesPagesWithContext(ctx context.Context, input *personalize.ListRecipesInput, cb func(*personalize.ListRecipesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListRecipes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListRecipesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSchemasWithContext(ctx context.Context, input *personalize.ListSchemasInput, opts ...request.Option) (*personalize.ListSchemasOutput, error) {
@@ -757,6 +886,26 @@ func (c *Client) ListSchemasWithContext(ctx context.Context, input *personalize.
 	return req.Output.(*personalize.ListSchemasOutput), req.Error
 }
 
+func (c *Client) ListSchemasPagesWithContext(ctx context.Context, input *personalize.ListSchemasInput, cb func(*personalize.ListSchemasOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListSchemas",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListSchemasPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSolutionVersionsWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, opts ...request.Option) (*personalize.ListSolutionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -778,6 +927,26 @@ func (c *Client) ListSolutionVersionsWithContext(ctx context.Context, input *per
 	return req.Output.(*personalize.ListSolutionVersionsOutput), req.Error
 }
 
+func (c *Client) ListSolutionVersionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, cb func(*personalize.ListSolutionVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListSolutionVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListSolutionVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSolutionsWithContext(ctx context.Context, input *personalize.ListSolutionsInput, opts ...request.Option) (*personalize.ListSolutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -797,6 +966,26 @@ func (c *Client) ListSolutionsWithContext(ctx context.Context, input *personaliz
 	})
 
 	return req.Output.(*personalize.ListSolutionsOutput), req.Error
+}
+
+func (c *Client) ListSolutionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionsInput, cb func(*personalize.ListSolutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListSolutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListSolutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error) {

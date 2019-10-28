@@ -24,9 +24,13 @@ type Route53Resolver interface {
 	GetResolverRuleAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverRuleAssociationInput, opts ...request.Option) (*route53resolver.GetResolverRuleAssociationOutput, error)
 	GetResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.GetResolverRulePolicyInput, opts ...request.Option) (*route53resolver.GetResolverRulePolicyOutput, error)
 	ListResolverEndpointIpAddressesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, opts ...request.Option) (*route53resolver.ListResolverEndpointIpAddressesOutput, error)
+	ListResolverEndpointIpAddressesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, cb func(*route53resolver.ListResolverEndpointIpAddressesOutput, bool) bool, opts ...request.Option) error
 	ListResolverEndpointsWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, opts ...request.Option) (*route53resolver.ListResolverEndpointsOutput, error)
+	ListResolverEndpointsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, cb func(*route53resolver.ListResolverEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListResolverRuleAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverRuleAssociationsOutput, error)
+	ListResolverRuleAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, cb func(*route53resolver.ListResolverRuleAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListResolverRulesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, opts ...request.Option) (*route53resolver.ListResolverRulesOutput, error)
+	ListResolverRulesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, cb func(*route53resolver.ListResolverRulesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, opts ...request.Option) (*route53resolver.ListTagsForResourceOutput, error)
 	PutResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.PutResolverRulePolicyInput, opts ...request.Option) (*route53resolver.PutResolverRulePolicyOutput, error)
 	TagResourceWithContext(ctx context.Context, input *route53resolver.TagResourceInput, opts ...request.Option) (*route53resolver.TagResourceOutput, error)
@@ -323,6 +327,26 @@ func (c *Client) ListResolverEndpointIpAddressesWithContext(ctx context.Context,
 	return req.Output.(*route53resolver.ListResolverEndpointIpAddressesOutput), req.Error
 }
 
+func (c *Client) ListResolverEndpointIpAddressesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, cb func(*route53resolver.ListResolverEndpointIpAddressesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverEndpointIpAddresses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverEndpointIpAddressesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResolverEndpointsWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, opts ...request.Option) (*route53resolver.ListResolverEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -342,6 +366,26 @@ func (c *Client) ListResolverEndpointsWithContext(ctx context.Context, input *ro
 	})
 
 	return req.Output.(*route53resolver.ListResolverEndpointsOutput), req.Error
+}
+
+func (c *Client) ListResolverEndpointsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, cb func(*route53resolver.ListResolverEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResolverRuleAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverRuleAssociationsOutput, error) {
@@ -365,6 +409,26 @@ func (c *Client) ListResolverRuleAssociationsWithContext(ctx context.Context, in
 	return req.Output.(*route53resolver.ListResolverRuleAssociationsOutput), req.Error
 }
 
+func (c *Client) ListResolverRuleAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, cb func(*route53resolver.ListResolverRuleAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverRuleAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverRuleAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResolverRulesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, opts ...request.Option) (*route53resolver.ListResolverRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -384,6 +448,26 @@ func (c *Client) ListResolverRulesWithContext(ctx context.Context, input *route5
 	})
 
 	return req.Output.(*route53resolver.ListResolverRulesOutput), req.Error
+}
+
+func (c *Client) ListResolverRulesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, cb func(*route53resolver.ListResolverRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, opts ...request.Option) (*route53resolver.ListTagsForResourceOutput, error) {

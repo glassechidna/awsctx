@@ -21,8 +21,11 @@ type FMS interface {
 	GetPolicyWithContext(ctx context.Context, input *fms.GetPolicyInput, opts ...request.Option) (*fms.GetPolicyOutput, error)
 	GetProtectionStatusWithContext(ctx context.Context, input *fms.GetProtectionStatusInput, opts ...request.Option) (*fms.GetProtectionStatusOutput, error)
 	ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error)
+	ListComplianceStatusPagesWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, cb func(*fms.ListComplianceStatusOutput, bool) bool, opts ...request.Option) error
 	ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error)
+	ListMemberAccountsPagesWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, cb func(*fms.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error)
+	ListPoliciesPagesWithContext(ctx context.Context, input *fms.ListPoliciesInput, cb func(*fms.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error)
 	PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyInput, opts ...request.Option) (*fms.PutPolicyOutput, error)
 }
@@ -252,6 +255,26 @@ func (c *Client) ListComplianceStatusWithContext(ctx context.Context, input *fms
 	return req.Output.(*fms.ListComplianceStatusOutput), req.Error
 }
 
+func (c *Client) ListComplianceStatusPagesWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, cb func(*fms.ListComplianceStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListComplianceStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FMSAPI.ListComplianceStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -273,6 +296,26 @@ func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *fms.L
 	return req.Output.(*fms.ListMemberAccountsOutput), req.Error
 }
 
+func (c *Client) ListMemberAccountsPagesWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, cb func(*fms.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListMemberAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FMSAPI.ListMemberAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -292,6 +335,26 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *fms.ListPol
 	})
 
 	return req.Output.(*fms.ListPoliciesOutput), req.Error
+}
+
+func (c *Client) ListPoliciesPagesWithContext(ctx context.Context, input *fms.ListPoliciesInput, cb func(*fms.ListPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FMSAPI.ListPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error) {

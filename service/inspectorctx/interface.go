@@ -29,17 +29,27 @@ type Inspector interface {
 	DescribeRulesPackagesWithContext(ctx context.Context, input *inspector.DescribeRulesPackagesInput, opts ...request.Option) (*inspector.DescribeRulesPackagesOutput, error)
 	GetAssessmentReportWithContext(ctx context.Context, input *inspector.GetAssessmentReportInput, opts ...request.Option) (*inspector.GetAssessmentReportOutput, error)
 	GetExclusionsPreviewWithContext(ctx context.Context, input *inspector.GetExclusionsPreviewInput, opts ...request.Option) (*inspector.GetExclusionsPreviewOutput, error)
+	GetExclusionsPreviewPagesWithContext(ctx context.Context, input *inspector.GetExclusionsPreviewInput, cb func(*inspector.GetExclusionsPreviewOutput, bool) bool, opts ...request.Option) error
 	GetTelemetryMetadataWithContext(ctx context.Context, input *inspector.GetTelemetryMetadataInput, opts ...request.Option) (*inspector.GetTelemetryMetadataOutput, error)
 	ListAssessmentRunAgentsWithContext(ctx context.Context, input *inspector.ListAssessmentRunAgentsInput, opts ...request.Option) (*inspector.ListAssessmentRunAgentsOutput, error)
+	ListAssessmentRunAgentsPagesWithContext(ctx context.Context, input *inspector.ListAssessmentRunAgentsInput, cb func(*inspector.ListAssessmentRunAgentsOutput, bool) bool, opts ...request.Option) error
 	ListAssessmentRunsWithContext(ctx context.Context, input *inspector.ListAssessmentRunsInput, opts ...request.Option) (*inspector.ListAssessmentRunsOutput, error)
+	ListAssessmentRunsPagesWithContext(ctx context.Context, input *inspector.ListAssessmentRunsInput, cb func(*inspector.ListAssessmentRunsOutput, bool) bool, opts ...request.Option) error
 	ListAssessmentTargetsWithContext(ctx context.Context, input *inspector.ListAssessmentTargetsInput, opts ...request.Option) (*inspector.ListAssessmentTargetsOutput, error)
+	ListAssessmentTargetsPagesWithContext(ctx context.Context, input *inspector.ListAssessmentTargetsInput, cb func(*inspector.ListAssessmentTargetsOutput, bool) bool, opts ...request.Option) error
 	ListAssessmentTemplatesWithContext(ctx context.Context, input *inspector.ListAssessmentTemplatesInput, opts ...request.Option) (*inspector.ListAssessmentTemplatesOutput, error)
+	ListAssessmentTemplatesPagesWithContext(ctx context.Context, input *inspector.ListAssessmentTemplatesInput, cb func(*inspector.ListAssessmentTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListEventSubscriptionsWithContext(ctx context.Context, input *inspector.ListEventSubscriptionsInput, opts ...request.Option) (*inspector.ListEventSubscriptionsOutput, error)
+	ListEventSubscriptionsPagesWithContext(ctx context.Context, input *inspector.ListEventSubscriptionsInput, cb func(*inspector.ListEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	ListExclusionsWithContext(ctx context.Context, input *inspector.ListExclusionsInput, opts ...request.Option) (*inspector.ListExclusionsOutput, error)
+	ListExclusionsPagesWithContext(ctx context.Context, input *inspector.ListExclusionsInput, cb func(*inspector.ListExclusionsOutput, bool) bool, opts ...request.Option) error
 	ListFindingsWithContext(ctx context.Context, input *inspector.ListFindingsInput, opts ...request.Option) (*inspector.ListFindingsOutput, error)
+	ListFindingsPagesWithContext(ctx context.Context, input *inspector.ListFindingsInput, cb func(*inspector.ListFindingsOutput, bool) bool, opts ...request.Option) error
 	ListRulesPackagesWithContext(ctx context.Context, input *inspector.ListRulesPackagesInput, opts ...request.Option) (*inspector.ListRulesPackagesOutput, error)
+	ListRulesPackagesPagesWithContext(ctx context.Context, input *inspector.ListRulesPackagesInput, cb func(*inspector.ListRulesPackagesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *inspector.ListTagsForResourceInput, opts ...request.Option) (*inspector.ListTagsForResourceOutput, error)
 	PreviewAgentsWithContext(ctx context.Context, input *inspector.PreviewAgentsInput, opts ...request.Option) (*inspector.PreviewAgentsOutput, error)
+	PreviewAgentsPagesWithContext(ctx context.Context, input *inspector.PreviewAgentsInput, cb func(*inspector.PreviewAgentsOutput, bool) bool, opts ...request.Option) error
 	RegisterCrossAccountAccessRoleWithContext(ctx context.Context, input *inspector.RegisterCrossAccountAccessRoleInput, opts ...request.Option) (*inspector.RegisterCrossAccountAccessRoleOutput, error)
 	RemoveAttributesFromFindingsWithContext(ctx context.Context, input *inspector.RemoveAttributesFromFindingsInput, opts ...request.Option) (*inspector.RemoveAttributesFromFindingsOutput, error)
 	SetTagsForResourceWithContext(ctx context.Context, input *inspector.SetTagsForResourceInput, opts ...request.Option) (*inspector.SetTagsForResourceOutput, error)
@@ -443,6 +453,26 @@ func (c *Client) GetExclusionsPreviewWithContext(ctx context.Context, input *ins
 	return req.Output.(*inspector.GetExclusionsPreviewOutput), req.Error
 }
 
+func (c *Client) GetExclusionsPreviewPagesWithContext(ctx context.Context, input *inspector.GetExclusionsPreviewInput, cb func(*inspector.GetExclusionsPreviewOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "GetExclusionsPreview",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.GetExclusionsPreviewPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTelemetryMetadataWithContext(ctx context.Context, input *inspector.GetTelemetryMetadataInput, opts ...request.Option) (*inspector.GetTelemetryMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
@@ -485,6 +515,26 @@ func (c *Client) ListAssessmentRunAgentsWithContext(ctx context.Context, input *
 	return req.Output.(*inspector.ListAssessmentRunAgentsOutput), req.Error
 }
 
+func (c *Client) ListAssessmentRunAgentsPagesWithContext(ctx context.Context, input *inspector.ListAssessmentRunAgentsInput, cb func(*inspector.ListAssessmentRunAgentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListAssessmentRunAgents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListAssessmentRunAgentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAssessmentRunsWithContext(ctx context.Context, input *inspector.ListAssessmentRunsInput, opts ...request.Option) (*inspector.ListAssessmentRunsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
@@ -504,6 +554,26 @@ func (c *Client) ListAssessmentRunsWithContext(ctx context.Context, input *inspe
 	})
 
 	return req.Output.(*inspector.ListAssessmentRunsOutput), req.Error
+}
+
+func (c *Client) ListAssessmentRunsPagesWithContext(ctx context.Context, input *inspector.ListAssessmentRunsInput, cb func(*inspector.ListAssessmentRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListAssessmentRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListAssessmentRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAssessmentTargetsWithContext(ctx context.Context, input *inspector.ListAssessmentTargetsInput, opts ...request.Option) (*inspector.ListAssessmentTargetsOutput, error) {
@@ -527,6 +597,26 @@ func (c *Client) ListAssessmentTargetsWithContext(ctx context.Context, input *in
 	return req.Output.(*inspector.ListAssessmentTargetsOutput), req.Error
 }
 
+func (c *Client) ListAssessmentTargetsPagesWithContext(ctx context.Context, input *inspector.ListAssessmentTargetsInput, cb func(*inspector.ListAssessmentTargetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListAssessmentTargets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListAssessmentTargetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAssessmentTemplatesWithContext(ctx context.Context, input *inspector.ListAssessmentTemplatesInput, opts ...request.Option) (*inspector.ListAssessmentTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
@@ -546,6 +636,26 @@ func (c *Client) ListAssessmentTemplatesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*inspector.ListAssessmentTemplatesOutput), req.Error
+}
+
+func (c *Client) ListAssessmentTemplatesPagesWithContext(ctx context.Context, input *inspector.ListAssessmentTemplatesInput, cb func(*inspector.ListAssessmentTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListAssessmentTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListAssessmentTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListEventSubscriptionsWithContext(ctx context.Context, input *inspector.ListEventSubscriptionsInput, opts ...request.Option) (*inspector.ListEventSubscriptionsOutput, error) {
@@ -569,6 +679,26 @@ func (c *Client) ListEventSubscriptionsWithContext(ctx context.Context, input *i
 	return req.Output.(*inspector.ListEventSubscriptionsOutput), req.Error
 }
 
+func (c *Client) ListEventSubscriptionsPagesWithContext(ctx context.Context, input *inspector.ListEventSubscriptionsInput, cb func(*inspector.ListEventSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListEventSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListEventSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListExclusionsWithContext(ctx context.Context, input *inspector.ListExclusionsInput, opts ...request.Option) (*inspector.ListExclusionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
@@ -588,6 +718,26 @@ func (c *Client) ListExclusionsWithContext(ctx context.Context, input *inspector
 	})
 
 	return req.Output.(*inspector.ListExclusionsOutput), req.Error
+}
+
+func (c *Client) ListExclusionsPagesWithContext(ctx context.Context, input *inspector.ListExclusionsInput, cb func(*inspector.ListExclusionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListExclusions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListExclusionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListFindingsWithContext(ctx context.Context, input *inspector.ListFindingsInput, opts ...request.Option) (*inspector.ListFindingsOutput, error) {
@@ -611,6 +761,26 @@ func (c *Client) ListFindingsWithContext(ctx context.Context, input *inspector.L
 	return req.Output.(*inspector.ListFindingsOutput), req.Error
 }
 
+func (c *Client) ListFindingsPagesWithContext(ctx context.Context, input *inspector.ListFindingsInput, cb func(*inspector.ListFindingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListFindings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListFindingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRulesPackagesWithContext(ctx context.Context, input *inspector.ListRulesPackagesInput, opts ...request.Option) (*inspector.ListRulesPackagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "inspector",
@@ -630,6 +800,26 @@ func (c *Client) ListRulesPackagesWithContext(ctx context.Context, input *inspec
 	})
 
 	return req.Output.(*inspector.ListRulesPackagesOutput), req.Error
+}
+
+func (c *Client) ListRulesPackagesPagesWithContext(ctx context.Context, input *inspector.ListRulesPackagesInput, cb func(*inspector.ListRulesPackagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "ListRulesPackages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.ListRulesPackagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *inspector.ListTagsForResourceInput, opts ...request.Option) (*inspector.ListTagsForResourceOutput, error) {
@@ -672,6 +862,26 @@ func (c *Client) PreviewAgentsWithContext(ctx context.Context, input *inspector.
 	})
 
 	return req.Output.(*inspector.PreviewAgentsOutput), req.Error
+}
+
+func (c *Client) PreviewAgentsPagesWithContext(ctx context.Context, input *inspector.PreviewAgentsInput, cb func(*inspector.PreviewAgentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "inspector",
+		Action:  "PreviewAgents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.InspectorAPI.PreviewAgentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RegisterCrossAccountAccessRoleWithContext(ctx context.Context, input *inspector.RegisterCrossAccountAccessRoleInput, opts ...request.Option) (*inspector.RegisterCrossAccountAccessRoleOutput, error) {

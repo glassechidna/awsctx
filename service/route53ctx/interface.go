@@ -49,10 +49,13 @@ type Route53 interface {
 	GetTrafficPolicyInstanceCountWithContext(ctx context.Context, input *route53.GetTrafficPolicyInstanceCountInput, opts ...request.Option) (*route53.GetTrafficPolicyInstanceCountOutput, error)
 	ListGeoLocationsWithContext(ctx context.Context, input *route53.ListGeoLocationsInput, opts ...request.Option) (*route53.ListGeoLocationsOutput, error)
 	ListHealthChecksWithContext(ctx context.Context, input *route53.ListHealthChecksInput, opts ...request.Option) (*route53.ListHealthChecksOutput, error)
+	ListHealthChecksPagesWithContext(ctx context.Context, input *route53.ListHealthChecksInput, cb func(*route53.ListHealthChecksOutput, bool) bool, opts ...request.Option) error
 	ListHostedZonesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, opts ...request.Option) (*route53.ListHostedZonesOutput, error)
+	ListHostedZonesPagesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, cb func(*route53.ListHostedZonesOutput, bool) bool, opts ...request.Option) error
 	ListHostedZonesByNameWithContext(ctx context.Context, input *route53.ListHostedZonesByNameInput, opts ...request.Option) (*route53.ListHostedZonesByNameOutput, error)
 	ListQueryLoggingConfigsWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, opts ...request.Option) (*route53.ListQueryLoggingConfigsOutput, error)
 	ListResourceRecordSetsWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, opts ...request.Option) (*route53.ListResourceRecordSetsOutput, error)
+	ListResourceRecordSetsPagesWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, cb func(*route53.ListResourceRecordSetsOutput, bool) bool, opts ...request.Option) error
 	ListReusableDelegationSetsWithContext(ctx context.Context, input *route53.ListReusableDelegationSetsInput, opts ...request.Option) (*route53.ListReusableDelegationSetsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *route53.ListTagsForResourceInput, opts ...request.Option) (*route53.ListTagsForResourceOutput, error)
 	ListTagsForResourcesWithContext(ctx context.Context, input *route53.ListTagsForResourcesInput, opts ...request.Option) (*route53.ListTagsForResourcesOutput, error)
@@ -882,6 +885,26 @@ func (c *Client) ListHealthChecksWithContext(ctx context.Context, input *route53
 	return req.Output.(*route53.ListHealthChecksOutput), req.Error
 }
 
+func (c *Client) ListHealthChecksPagesWithContext(ctx context.Context, input *route53.ListHealthChecksInput, cb func(*route53.ListHealthChecksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListHealthChecks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListHealthChecksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListHostedZonesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, opts ...request.Option) (*route53.ListHostedZonesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
@@ -901,6 +924,26 @@ func (c *Client) ListHostedZonesWithContext(ctx context.Context, input *route53.
 	})
 
 	return req.Output.(*route53.ListHostedZonesOutput), req.Error
+}
+
+func (c *Client) ListHostedZonesPagesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, cb func(*route53.ListHostedZonesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListHostedZones",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListHostedZonesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListHostedZonesByNameWithContext(ctx context.Context, input *route53.ListHostedZonesByNameInput, opts ...request.Option) (*route53.ListHostedZonesByNameOutput, error) {
@@ -964,6 +1007,26 @@ func (c *Client) ListResourceRecordSetsWithContext(ctx context.Context, input *r
 	})
 
 	return req.Output.(*route53.ListResourceRecordSetsOutput), req.Error
+}
+
+func (c *Client) ListResourceRecordSetsPagesWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, cb func(*route53.ListResourceRecordSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListResourceRecordSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListResourceRecordSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListReusableDelegationSetsWithContext(ctx context.Context, input *route53.ListReusableDelegationSetsInput, opts ...request.Option) (*route53.ListReusableDelegationSetsOutput, error) {

@@ -33,12 +33,18 @@ type Lambda interface {
 	InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error)
 	InvokeAsyncWithContext(ctx context.Context, input *lambda.InvokeAsyncInput, opts ...request.Option) (*lambda.InvokeAsyncOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error)
+	ListAliasesPagesWithContext(ctx context.Context, input *lambda.ListAliasesInput, cb func(*lambda.ListAliasesOutput, bool) bool, opts ...request.Option) error
 	ListEventSourceMappingsWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, opts ...request.Option) (*lambda.ListEventSourceMappingsOutput, error)
+	ListEventSourceMappingsPagesWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, cb func(*lambda.ListEventSourceMappingsOutput, bool) bool, opts ...request.Option) error
 	ListFunctionsWithContext(ctx context.Context, input *lambda.ListFunctionsInput, opts ...request.Option) (*lambda.ListFunctionsOutput, error)
+	ListFunctionsPagesWithContext(ctx context.Context, input *lambda.ListFunctionsInput, cb func(*lambda.ListFunctionsOutput, bool) bool, opts ...request.Option) error
 	ListLayerVersionsWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, opts ...request.Option) (*lambda.ListLayerVersionsOutput, error)
+	ListLayerVersionsPagesWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, cb func(*lambda.ListLayerVersionsOutput, bool) bool, opts ...request.Option) error
 	ListLayersWithContext(ctx context.Context, input *lambda.ListLayersInput, opts ...request.Option) (*lambda.ListLayersOutput, error)
+	ListLayersPagesWithContext(ctx context.Context, input *lambda.ListLayersInput, cb func(*lambda.ListLayersOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *lambda.ListTagsInput, opts ...request.Option) (*lambda.ListTagsOutput, error)
 	ListVersionsByFunctionWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, opts ...request.Option) (*lambda.ListVersionsByFunctionOutput, error)
+	ListVersionsByFunctionPagesWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, cb func(*lambda.ListVersionsByFunctionOutput, bool) bool, opts ...request.Option) error
 	PublishLayerVersionWithContext(ctx context.Context, input *lambda.PublishLayerVersionInput, opts ...request.Option) (*lambda.PublishLayerVersionOutput, error)
 	PublishVersionWithContext(ctx context.Context, input *lambda.PublishVersionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	PutFunctionConcurrencyWithContext(ctx context.Context, input *lambda.PutFunctionConcurrencyInput, opts ...request.Option) (*lambda.PutFunctionConcurrencyOutput, error)
@@ -529,6 +535,26 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *lambda.ListA
 	return req.Output.(*lambda.ListAliasesOutput), req.Error
 }
 
+func (c *Client) ListAliasesPagesWithContext(ctx context.Context, input *lambda.ListAliasesInput, cb func(*lambda.ListAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListEventSourceMappingsWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, opts ...request.Option) (*lambda.ListEventSourceMappingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -548,6 +574,26 @@ func (c *Client) ListEventSourceMappingsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*lambda.ListEventSourceMappingsOutput), req.Error
+}
+
+func (c *Client) ListEventSourceMappingsPagesWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, cb func(*lambda.ListEventSourceMappingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListEventSourceMappings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListEventSourceMappingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListFunctionsWithContext(ctx context.Context, input *lambda.ListFunctionsInput, opts ...request.Option) (*lambda.ListFunctionsOutput, error) {
@@ -571,6 +617,26 @@ func (c *Client) ListFunctionsWithContext(ctx context.Context, input *lambda.Lis
 	return req.Output.(*lambda.ListFunctionsOutput), req.Error
 }
 
+func (c *Client) ListFunctionsPagesWithContext(ctx context.Context, input *lambda.ListFunctionsInput, cb func(*lambda.ListFunctionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListFunctions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListFunctionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLayerVersionsWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, opts ...request.Option) (*lambda.ListLayerVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -592,6 +658,26 @@ func (c *Client) ListLayerVersionsWithContext(ctx context.Context, input *lambda
 	return req.Output.(*lambda.ListLayerVersionsOutput), req.Error
 }
 
+func (c *Client) ListLayerVersionsPagesWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, cb func(*lambda.ListLayerVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListLayerVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListLayerVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLayersWithContext(ctx context.Context, input *lambda.ListLayersInput, opts ...request.Option) (*lambda.ListLayersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -611,6 +697,26 @@ func (c *Client) ListLayersWithContext(ctx context.Context, input *lambda.ListLa
 	})
 
 	return req.Output.(*lambda.ListLayersOutput), req.Error
+}
+
+func (c *Client) ListLayersPagesWithContext(ctx context.Context, input *lambda.ListLayersInput, cb func(*lambda.ListLayersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListLayers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListLayersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsWithContext(ctx context.Context, input *lambda.ListTagsInput, opts ...request.Option) (*lambda.ListTagsOutput, error) {
@@ -653,6 +759,26 @@ func (c *Client) ListVersionsByFunctionWithContext(ctx context.Context, input *l
 	})
 
 	return req.Output.(*lambda.ListVersionsByFunctionOutput), req.Error
+}
+
+func (c *Client) ListVersionsByFunctionPagesWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, cb func(*lambda.ListVersionsByFunctionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListVersionsByFunction",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListVersionsByFunctionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PublishLayerVersionWithContext(ctx context.Context, input *lambda.PublishLayerVersionInput, opts ...request.Option) (*lambda.PublishLayerVersionOutput, error) {

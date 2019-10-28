@@ -48,22 +48,31 @@ type StorageGateway interface {
 	DescribeSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.DescribeSnapshotScheduleInput, opts ...request.Option) (*storagegateway.DescribeSnapshotScheduleOutput, error)
 	DescribeStorediSCSIVolumesWithContext(ctx context.Context, input *storagegateway.DescribeStorediSCSIVolumesInput, opts ...request.Option) (*storagegateway.DescribeStorediSCSIVolumesOutput, error)
 	DescribeTapeArchivesWithContext(ctx context.Context, input *storagegateway.DescribeTapeArchivesInput, opts ...request.Option) (*storagegateway.DescribeTapeArchivesOutput, error)
+	DescribeTapeArchivesPagesWithContext(ctx context.Context, input *storagegateway.DescribeTapeArchivesInput, cb func(*storagegateway.DescribeTapeArchivesOutput, bool) bool, opts ...request.Option) error
 	DescribeTapeRecoveryPointsWithContext(ctx context.Context, input *storagegateway.DescribeTapeRecoveryPointsInput, opts ...request.Option) (*storagegateway.DescribeTapeRecoveryPointsOutput, error)
+	DescribeTapeRecoveryPointsPagesWithContext(ctx context.Context, input *storagegateway.DescribeTapeRecoveryPointsInput, cb func(*storagegateway.DescribeTapeRecoveryPointsOutput, bool) bool, opts ...request.Option) error
 	DescribeTapesWithContext(ctx context.Context, input *storagegateway.DescribeTapesInput, opts ...request.Option) (*storagegateway.DescribeTapesOutput, error)
+	DescribeTapesPagesWithContext(ctx context.Context, input *storagegateway.DescribeTapesInput, cb func(*storagegateway.DescribeTapesOutput, bool) bool, opts ...request.Option) error
 	DescribeUploadBufferWithContext(ctx context.Context, input *storagegateway.DescribeUploadBufferInput, opts ...request.Option) (*storagegateway.DescribeUploadBufferOutput, error)
 	DescribeVTLDevicesWithContext(ctx context.Context, input *storagegateway.DescribeVTLDevicesInput, opts ...request.Option) (*storagegateway.DescribeVTLDevicesOutput, error)
+	DescribeVTLDevicesPagesWithContext(ctx context.Context, input *storagegateway.DescribeVTLDevicesInput, cb func(*storagegateway.DescribeVTLDevicesOutput, bool) bool, opts ...request.Option) error
 	DescribeWorkingStorageWithContext(ctx context.Context, input *storagegateway.DescribeWorkingStorageInput, opts ...request.Option) (*storagegateway.DescribeWorkingStorageOutput, error)
 	DetachVolumeWithContext(ctx context.Context, input *storagegateway.DetachVolumeInput, opts ...request.Option) (*storagegateway.DetachVolumeOutput, error)
 	DisableGatewayWithContext(ctx context.Context, input *storagegateway.DisableGatewayInput, opts ...request.Option) (*storagegateway.DisableGatewayOutput, error)
 	JoinDomainWithContext(ctx context.Context, input *storagegateway.JoinDomainInput, opts ...request.Option) (*storagegateway.JoinDomainOutput, error)
 	ListFileSharesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, opts ...request.Option) (*storagegateway.ListFileSharesOutput, error)
+	ListFileSharesPagesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, cb func(*storagegateway.ListFileSharesOutput, bool) bool, opts ...request.Option) error
 	ListGatewaysWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, opts ...request.Option) (*storagegateway.ListGatewaysOutput, error)
+	ListGatewaysPagesWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, cb func(*storagegateway.ListGatewaysOutput, bool) bool, opts ...request.Option) error
 	ListLocalDisksWithContext(ctx context.Context, input *storagegateway.ListLocalDisksInput, opts ...request.Option) (*storagegateway.ListLocalDisksOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, opts ...request.Option) (*storagegateway.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, cb func(*storagegateway.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error)
+	ListTapesPagesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, cb func(*storagegateway.ListTapesOutput, bool) bool, opts ...request.Option) error
 	ListVolumeInitiatorsWithContext(ctx context.Context, input *storagegateway.ListVolumeInitiatorsInput, opts ...request.Option) (*storagegateway.ListVolumeInitiatorsOutput, error)
 	ListVolumeRecoveryPointsWithContext(ctx context.Context, input *storagegateway.ListVolumeRecoveryPointsInput, opts ...request.Option) (*storagegateway.ListVolumeRecoveryPointsOutput, error)
 	ListVolumesWithContext(ctx context.Context, input *storagegateway.ListVolumesInput, opts ...request.Option) (*storagegateway.ListVolumesOutput, error)
+	ListVolumesPagesWithContext(ctx context.Context, input *storagegateway.ListVolumesInput, cb func(*storagegateway.ListVolumesOutput, bool) bool, opts ...request.Option) error
 	NotifyWhenUploadedWithContext(ctx context.Context, input *storagegateway.NotifyWhenUploadedInput, opts ...request.Option) (*storagegateway.NotifyWhenUploadedOutput, error)
 	RefreshCacheWithContext(ctx context.Context, input *storagegateway.RefreshCacheInput, opts ...request.Option) (*storagegateway.RefreshCacheOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *storagegateway.RemoveTagsFromResourceInput, opts ...request.Option) (*storagegateway.RemoveTagsFromResourceOutput, error)
@@ -878,6 +887,26 @@ func (c *Client) DescribeTapeArchivesWithContext(ctx context.Context, input *sto
 	return req.Output.(*storagegateway.DescribeTapeArchivesOutput), req.Error
 }
 
+func (c *Client) DescribeTapeArchivesPagesWithContext(ctx context.Context, input *storagegateway.DescribeTapeArchivesInput, cb func(*storagegateway.DescribeTapeArchivesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeTapeArchives",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.DescribeTapeArchivesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTapeRecoveryPointsWithContext(ctx context.Context, input *storagegateway.DescribeTapeRecoveryPointsInput, opts ...request.Option) (*storagegateway.DescribeTapeRecoveryPointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -899,6 +928,26 @@ func (c *Client) DescribeTapeRecoveryPointsWithContext(ctx context.Context, inpu
 	return req.Output.(*storagegateway.DescribeTapeRecoveryPointsOutput), req.Error
 }
 
+func (c *Client) DescribeTapeRecoveryPointsPagesWithContext(ctx context.Context, input *storagegateway.DescribeTapeRecoveryPointsInput, cb func(*storagegateway.DescribeTapeRecoveryPointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeTapeRecoveryPoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.DescribeTapeRecoveryPointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTapesWithContext(ctx context.Context, input *storagegateway.DescribeTapesInput, opts ...request.Option) (*storagegateway.DescribeTapesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -918,6 +967,26 @@ func (c *Client) DescribeTapesWithContext(ctx context.Context, input *storagegat
 	})
 
 	return req.Output.(*storagegateway.DescribeTapesOutput), req.Error
+}
+
+func (c *Client) DescribeTapesPagesWithContext(ctx context.Context, input *storagegateway.DescribeTapesInput, cb func(*storagegateway.DescribeTapesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeTapes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.DescribeTapesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeUploadBufferWithContext(ctx context.Context, input *storagegateway.DescribeUploadBufferInput, opts ...request.Option) (*storagegateway.DescribeUploadBufferOutput, error) {
@@ -960,6 +1029,26 @@ func (c *Client) DescribeVTLDevicesWithContext(ctx context.Context, input *stora
 	})
 
 	return req.Output.(*storagegateway.DescribeVTLDevicesOutput), req.Error
+}
+
+func (c *Client) DescribeVTLDevicesPagesWithContext(ctx context.Context, input *storagegateway.DescribeVTLDevicesInput, cb func(*storagegateway.DescribeVTLDevicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeVTLDevices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.DescribeVTLDevicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeWorkingStorageWithContext(ctx context.Context, input *storagegateway.DescribeWorkingStorageInput, opts ...request.Option) (*storagegateway.DescribeWorkingStorageOutput, error) {
@@ -1067,6 +1156,26 @@ func (c *Client) ListFileSharesWithContext(ctx context.Context, input *storagega
 	return req.Output.(*storagegateway.ListFileSharesOutput), req.Error
 }
 
+func (c *Client) ListFileSharesPagesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, cb func(*storagegateway.ListFileSharesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListFileShares",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListFileSharesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGatewaysWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, opts ...request.Option) (*storagegateway.ListGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -1086,6 +1195,26 @@ func (c *Client) ListGatewaysWithContext(ctx context.Context, input *storagegate
 	})
 
 	return req.Output.(*storagegateway.ListGatewaysOutput), req.Error
+}
+
+func (c *Client) ListGatewaysPagesWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, cb func(*storagegateway.ListGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListLocalDisksWithContext(ctx context.Context, input *storagegateway.ListLocalDisksInput, opts ...request.Option) (*storagegateway.ListLocalDisksOutput, error) {
@@ -1130,6 +1259,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *stor
 	return req.Output.(*storagegateway.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, cb func(*storagegateway.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -1149,6 +1298,26 @@ func (c *Client) ListTapesWithContext(ctx context.Context, input *storagegateway
 	})
 
 	return req.Output.(*storagegateway.ListTapesOutput), req.Error
+}
+
+func (c *Client) ListTapesPagesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, cb func(*storagegateway.ListTapesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListTapes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListTapesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListVolumeInitiatorsWithContext(ctx context.Context, input *storagegateway.ListVolumeInitiatorsInput, opts ...request.Option) (*storagegateway.ListVolumeInitiatorsOutput, error) {
@@ -1212,6 +1381,26 @@ func (c *Client) ListVolumesWithContext(ctx context.Context, input *storagegatew
 	})
 
 	return req.Output.(*storagegateway.ListVolumesOutput), req.Error
+}
+
+func (c *Client) ListVolumesPagesWithContext(ctx context.Context, input *storagegateway.ListVolumesInput, cb func(*storagegateway.ListVolumesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListVolumes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListVolumesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) NotifyWhenUploadedWithContext(ctx context.Context, input *storagegateway.NotifyWhenUploadedInput, opts ...request.Option) (*storagegateway.NotifyWhenUploadedOutput, error) {

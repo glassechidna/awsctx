@@ -30,20 +30,28 @@ type AutoScaling interface {
 	DescribeAccountLimitsWithContext(ctx context.Context, input *autoscaling.DescribeAccountLimitsInput, opts ...request.Option) (*autoscaling.DescribeAccountLimitsOutput, error)
 	DescribeAdjustmentTypesWithContext(ctx context.Context, input *autoscaling.DescribeAdjustmentTypesInput, opts ...request.Option) (*autoscaling.DescribeAdjustmentTypesOutput, error)
 	DescribeAutoScalingGroupsWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingGroupsInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingGroupsOutput, error)
+	DescribeAutoScalingGroupsPagesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingGroupsInput, cb func(*autoscaling.DescribeAutoScalingGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeAutoScalingInstancesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingInstancesOutput, error)
+	DescribeAutoScalingInstancesPagesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, cb func(*autoscaling.DescribeAutoScalingInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeAutoScalingNotificationTypesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingNotificationTypesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingNotificationTypesOutput, error)
 	DescribeLaunchConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeLaunchConfigurationsOutput, error)
+	DescribeLaunchConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, cb func(*autoscaling.DescribeLaunchConfigurationsOutput, bool) bool, opts ...request.Option) error
 	DescribeLifecycleHookTypesWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHookTypesInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHookTypesOutput, error)
 	DescribeLifecycleHooksWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHooksInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHooksOutput, error)
 	DescribeLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancerTargetGroupsOutput, error)
 	DescribeLoadBalancersWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancersInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancersOutput, error)
 	DescribeMetricCollectionTypesWithContext(ctx context.Context, input *autoscaling.DescribeMetricCollectionTypesInput, opts ...request.Option) (*autoscaling.DescribeMetricCollectionTypesOutput, error)
 	DescribeNotificationConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeNotificationConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeNotificationConfigurationsOutput, error)
+	DescribeNotificationConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeNotificationConfigurationsInput, cb func(*autoscaling.DescribeNotificationConfigurationsOutput, bool) bool, opts ...request.Option) error
 	DescribePoliciesWithContext(ctx context.Context, input *autoscaling.DescribePoliciesInput, opts ...request.Option) (*autoscaling.DescribePoliciesOutput, error)
+	DescribePoliciesPagesWithContext(ctx context.Context, input *autoscaling.DescribePoliciesInput, cb func(*autoscaling.DescribePoliciesOutput, bool) bool, opts ...request.Option) error
 	DescribeScalingActivitiesWithContext(ctx context.Context, input *autoscaling.DescribeScalingActivitiesInput, opts ...request.Option) (*autoscaling.DescribeScalingActivitiesOutput, error)
+	DescribeScalingActivitiesPagesWithContext(ctx context.Context, input *autoscaling.DescribeScalingActivitiesInput, cb func(*autoscaling.DescribeScalingActivitiesOutput, bool) bool, opts ...request.Option) error
 	DescribeScalingProcessTypesWithContext(ctx context.Context, input *autoscaling.DescribeScalingProcessTypesInput, opts ...request.Option) (*autoscaling.DescribeScalingProcessTypesOutput, error)
 	DescribeScheduledActionsWithContext(ctx context.Context, input *autoscaling.DescribeScheduledActionsInput, opts ...request.Option) (*autoscaling.DescribeScheduledActionsOutput, error)
+	DescribeScheduledActionsPagesWithContext(ctx context.Context, input *autoscaling.DescribeScheduledActionsInput, cb func(*autoscaling.DescribeScheduledActionsOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, opts ...request.Option) (*autoscaling.DescribeTagsOutput, error)
+	DescribeTagsPagesWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, cb func(*autoscaling.DescribeTagsOutput, bool) bool, opts ...request.Option) error
 	DescribeTerminationPolicyTypesWithContext(ctx context.Context, input *autoscaling.DescribeTerminationPolicyTypesInput, opts ...request.Option) (*autoscaling.DescribeTerminationPolicyTypesOutput, error)
 	DetachInstancesWithContext(ctx context.Context, input *autoscaling.DetachInstancesInput, opts ...request.Option) (*autoscaling.DetachInstancesOutput, error)
 	DetachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DetachLoadBalancerTargetGroupsOutput, error)
@@ -481,6 +489,26 @@ func (c *Client) DescribeAutoScalingGroupsWithContext(ctx context.Context, input
 	return req.Output.(*autoscaling.DescribeAutoScalingGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeAutoScalingGroupsPagesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingGroupsInput, cb func(*autoscaling.DescribeAutoScalingGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeAutoScalingGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeAutoScalingGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeAutoScalingInstancesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -500,6 +528,26 @@ func (c *Client) DescribeAutoScalingInstancesWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*autoscaling.DescribeAutoScalingInstancesOutput), req.Error
+}
+
+func (c *Client) DescribeAutoScalingInstancesPagesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, cb func(*autoscaling.DescribeAutoScalingInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeAutoScalingInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeAutoScalingInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeAutoScalingNotificationTypesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingNotificationTypesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingNotificationTypesOutput, error) {
@@ -542,6 +590,26 @@ func (c *Client) DescribeLaunchConfigurationsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*autoscaling.DescribeLaunchConfigurationsOutput), req.Error
+}
+
+func (c *Client) DescribeLaunchConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, cb func(*autoscaling.DescribeLaunchConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeLaunchConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeLaunchConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeLifecycleHookTypesWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHookTypesInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHookTypesOutput, error) {
@@ -670,6 +738,26 @@ func (c *Client) DescribeNotificationConfigurationsWithContext(ctx context.Conte
 	return req.Output.(*autoscaling.DescribeNotificationConfigurationsOutput), req.Error
 }
 
+func (c *Client) DescribeNotificationConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeNotificationConfigurationsInput, cb func(*autoscaling.DescribeNotificationConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeNotificationConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeNotificationConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePoliciesWithContext(ctx context.Context, input *autoscaling.DescribePoliciesInput, opts ...request.Option) (*autoscaling.DescribePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -691,6 +779,26 @@ func (c *Client) DescribePoliciesWithContext(ctx context.Context, input *autosca
 	return req.Output.(*autoscaling.DescribePoliciesOutput), req.Error
 }
 
+func (c *Client) DescribePoliciesPagesWithContext(ctx context.Context, input *autoscaling.DescribePoliciesInput, cb func(*autoscaling.DescribePoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribePolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribePoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeScalingActivitiesWithContext(ctx context.Context, input *autoscaling.DescribeScalingActivitiesInput, opts ...request.Option) (*autoscaling.DescribeScalingActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -710,6 +818,26 @@ func (c *Client) DescribeScalingActivitiesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*autoscaling.DescribeScalingActivitiesOutput), req.Error
+}
+
+func (c *Client) DescribeScalingActivitiesPagesWithContext(ctx context.Context, input *autoscaling.DescribeScalingActivitiesInput, cb func(*autoscaling.DescribeScalingActivitiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeScalingActivities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeScalingActivitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeScalingProcessTypesWithContext(ctx context.Context, input *autoscaling.DescribeScalingProcessTypesInput, opts ...request.Option) (*autoscaling.DescribeScalingProcessTypesOutput, error) {
@@ -754,6 +882,26 @@ func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, input 
 	return req.Output.(*autoscaling.DescribeScheduledActionsOutput), req.Error
 }
 
+func (c *Client) DescribeScheduledActionsPagesWithContext(ctx context.Context, input *autoscaling.DescribeScheduledActionsInput, cb func(*autoscaling.DescribeScheduledActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeScheduledActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeScheduledActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, opts ...request.Option) (*autoscaling.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -773,6 +921,26 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *autoscaling
 	})
 
 	return req.Output.(*autoscaling.DescribeTagsOutput), req.Error
+}
+
+func (c *Client) DescribeTagsPagesWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, cb func(*autoscaling.DescribeTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTerminationPolicyTypesWithContext(ctx context.Context, input *autoscaling.DescribeTerminationPolicyTypesInput, opts ...request.Option) (*autoscaling.DescribeTerminationPolicyTypesOutput, error) {

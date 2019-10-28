@@ -25,13 +25,16 @@ type ELBV2 interface {
 	DescribeAccountLimitsWithContext(ctx context.Context, input *elbv2.DescribeAccountLimitsInput, opts ...request.Option) (*elbv2.DescribeAccountLimitsOutput, error)
 	DescribeListenerCertificatesWithContext(ctx context.Context, input *elbv2.DescribeListenerCertificatesInput, opts ...request.Option) (*elbv2.DescribeListenerCertificatesOutput, error)
 	DescribeListenersWithContext(ctx context.Context, input *elbv2.DescribeListenersInput, opts ...request.Option) (*elbv2.DescribeListenersOutput, error)
+	DescribeListenersPagesWithContext(ctx context.Context, input *elbv2.DescribeListenersInput, cb func(*elbv2.DescribeListenersOutput, bool) bool, opts ...request.Option) error
 	DescribeLoadBalancerAttributesWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancerAttributesInput, opts ...request.Option) (*elbv2.DescribeLoadBalancerAttributesOutput, error)
 	DescribeLoadBalancersWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancersInput, opts ...request.Option) (*elbv2.DescribeLoadBalancersOutput, error)
+	DescribeLoadBalancersPagesWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancersInput, cb func(*elbv2.DescribeLoadBalancersOutput, bool) bool, opts ...request.Option) error
 	DescribeRulesWithContext(ctx context.Context, input *elbv2.DescribeRulesInput, opts ...request.Option) (*elbv2.DescribeRulesOutput, error)
 	DescribeSSLPoliciesWithContext(ctx context.Context, input *elbv2.DescribeSSLPoliciesInput, opts ...request.Option) (*elbv2.DescribeSSLPoliciesOutput, error)
 	DescribeTagsWithContext(ctx context.Context, input *elbv2.DescribeTagsInput, opts ...request.Option) (*elbv2.DescribeTagsOutput, error)
 	DescribeTargetGroupAttributesWithContext(ctx context.Context, input *elbv2.DescribeTargetGroupAttributesInput, opts ...request.Option) (*elbv2.DescribeTargetGroupAttributesOutput, error)
 	DescribeTargetGroupsWithContext(ctx context.Context, input *elbv2.DescribeTargetGroupsInput, opts ...request.Option) (*elbv2.DescribeTargetGroupsOutput, error)
+	DescribeTargetGroupsPagesWithContext(ctx context.Context, input *elbv2.DescribeTargetGroupsInput, cb func(*elbv2.DescribeTargetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeTargetHealthWithContext(ctx context.Context, input *elbv2.DescribeTargetHealthInput, opts ...request.Option) (*elbv2.DescribeTargetHealthOutput, error)
 	ModifyListenerWithContext(ctx context.Context, input *elbv2.ModifyListenerInput, opts ...request.Option) (*elbv2.ModifyListenerOutput, error)
 	ModifyLoadBalancerAttributesWithContext(ctx context.Context, input *elbv2.ModifyLoadBalancerAttributesInput, opts ...request.Option) (*elbv2.ModifyLoadBalancerAttributesOutput, error)
@@ -356,6 +359,26 @@ func (c *Client) DescribeListenersWithContext(ctx context.Context, input *elbv2.
 	return req.Output.(*elbv2.DescribeListenersOutput), req.Error
 }
 
+func (c *Client) DescribeListenersPagesWithContext(ctx context.Context, input *elbv2.DescribeListenersInput, cb func(*elbv2.DescribeListenersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elbv2",
+		Action:  "DescribeListeners",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ELBV2API.DescribeListenersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLoadBalancerAttributesWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancerAttributesInput, opts ...request.Option) (*elbv2.DescribeLoadBalancerAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elbv2",
@@ -396,6 +419,26 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *el
 	})
 
 	return req.Output.(*elbv2.DescribeLoadBalancersOutput), req.Error
+}
+
+func (c *Client) DescribeLoadBalancersPagesWithContext(ctx context.Context, input *elbv2.DescribeLoadBalancersInput, cb func(*elbv2.DescribeLoadBalancersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elbv2",
+		Action:  "DescribeLoadBalancers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ELBV2API.DescribeLoadBalancersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeRulesWithContext(ctx context.Context, input *elbv2.DescribeRulesInput, opts ...request.Option) (*elbv2.DescribeRulesOutput, error) {
@@ -501,6 +544,26 @@ func (c *Client) DescribeTargetGroupsWithContext(ctx context.Context, input *elb
 	})
 
 	return req.Output.(*elbv2.DescribeTargetGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeTargetGroupsPagesWithContext(ctx context.Context, input *elbv2.DescribeTargetGroupsInput, cb func(*elbv2.DescribeTargetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elbv2",
+		Action:  "DescribeTargetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ELBV2API.DescribeTargetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTargetHealthWithContext(ctx context.Context, input *elbv2.DescribeTargetHealthInput, opts ...request.Option) (*elbv2.DescribeTargetHealthOutput, error) {

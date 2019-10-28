@@ -37,9 +37,13 @@ type KMS interface {
 	GetParametersForImportWithContext(ctx context.Context, input *kms.GetParametersForImportInput, opts ...request.Option) (*kms.GetParametersForImportOutput, error)
 	ImportKeyMaterialWithContext(ctx context.Context, input *kms.ImportKeyMaterialInput, opts ...request.Option) (*kms.ImportKeyMaterialOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *kms.ListAliasesInput, opts ...request.Option) (*kms.ListAliasesOutput, error)
+	ListAliasesPagesWithContext(ctx context.Context, input *kms.ListAliasesInput, cb func(*kms.ListAliasesOutput, bool) bool, opts ...request.Option) error
 	ListGrantsWithContext(ctx context.Context, input *kms.ListGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error)
+	ListGrantsPagesWithContext(ctx context.Context, input *kms.ListGrantsInput, cb func(*kms.ListGrantsResponse, bool) bool, opts ...request.Option) error
 	ListKeyPoliciesWithContext(ctx context.Context, input *kms.ListKeyPoliciesInput, opts ...request.Option) (*kms.ListKeyPoliciesOutput, error)
+	ListKeyPoliciesPagesWithContext(ctx context.Context, input *kms.ListKeyPoliciesInput, cb func(*kms.ListKeyPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListKeysWithContext(ctx context.Context, input *kms.ListKeysInput, opts ...request.Option) (*kms.ListKeysOutput, error)
+	ListKeysPagesWithContext(ctx context.Context, input *kms.ListKeysInput, cb func(*kms.ListKeysOutput, bool) bool, opts ...request.Option) error
 	ListResourceTagsWithContext(ctx context.Context, input *kms.ListResourceTagsInput, opts ...request.Option) (*kms.ListResourceTagsOutput, error)
 	ListRetirableGrantsWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error)
 	PutKeyPolicyWithContext(ctx context.Context, input *kms.PutKeyPolicyInput, opts ...request.Option) (*kms.PutKeyPolicyOutput, error)
@@ -615,6 +619,26 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *kms.ListAlia
 	return req.Output.(*kms.ListAliasesOutput), req.Error
 }
 
+func (c *Client) ListAliasesPagesWithContext(ctx context.Context, input *kms.ListAliasesInput, cb func(*kms.ListAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ListAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.ListAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGrantsWithContext(ctx context.Context, input *kms.ListGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
@@ -634,6 +658,26 @@ func (c *Client) ListGrantsWithContext(ctx context.Context, input *kms.ListGrant
 	})
 
 	return req.Output.(*kms.ListGrantsResponse), req.Error
+}
+
+func (c *Client) ListGrantsPagesWithContext(ctx context.Context, input *kms.ListGrantsInput, cb func(*kms.ListGrantsResponse, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ListGrants",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.ListGrantsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListKeyPoliciesWithContext(ctx context.Context, input *kms.ListKeyPoliciesInput, opts ...request.Option) (*kms.ListKeyPoliciesOutput, error) {
@@ -657,6 +701,26 @@ func (c *Client) ListKeyPoliciesWithContext(ctx context.Context, input *kms.List
 	return req.Output.(*kms.ListKeyPoliciesOutput), req.Error
 }
 
+func (c *Client) ListKeyPoliciesPagesWithContext(ctx context.Context, input *kms.ListKeyPoliciesInput, cb func(*kms.ListKeyPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ListKeyPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.ListKeyPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListKeysWithContext(ctx context.Context, input *kms.ListKeysInput, opts ...request.Option) (*kms.ListKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
@@ -676,6 +740,26 @@ func (c *Client) ListKeysWithContext(ctx context.Context, input *kms.ListKeysInp
 	})
 
 	return req.Output.(*kms.ListKeysOutput), req.Error
+}
+
+func (c *Client) ListKeysPagesWithContext(ctx context.Context, input *kms.ListKeysInput, cb func(*kms.ListKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ListKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.ListKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResourceTagsWithContext(ctx context.Context, input *kms.ListResourceTagsInput, opts ...request.Option) (*kms.ListResourceTagsOutput, error) {

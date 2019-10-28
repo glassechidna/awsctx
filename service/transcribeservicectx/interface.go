@@ -17,7 +17,9 @@ type TranscribeService interface {
 	GetTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.GetTranscriptionJobInput, opts ...request.Option) (*transcribeservice.GetTranscriptionJobOutput, error)
 	GetVocabularyWithContext(ctx context.Context, input *transcribeservice.GetVocabularyInput, opts ...request.Option) (*transcribeservice.GetVocabularyOutput, error)
 	ListTranscriptionJobsWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, opts ...request.Option) (*transcribeservice.ListTranscriptionJobsOutput, error)
+	ListTranscriptionJobsPagesWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, cb func(*transcribeservice.ListTranscriptionJobsOutput, bool) bool, opts ...request.Option) error
 	ListVocabulariesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, opts ...request.Option) (*transcribeservice.ListVocabulariesOutput, error)
+	ListVocabulariesPagesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, cb func(*transcribeservice.ListVocabulariesOutput, bool) bool, opts ...request.Option) error
 	StartTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartTranscriptionJobOutput, error)
 	UpdateVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateVocabularyOutput, error)
 }
@@ -163,6 +165,26 @@ func (c *Client) ListTranscriptionJobsWithContext(ctx context.Context, input *tr
 	return req.Output.(*transcribeservice.ListTranscriptionJobsOutput), req.Error
 }
 
+func (c *Client) ListTranscriptionJobsPagesWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, cb func(*transcribeservice.ListTranscriptionJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListTranscriptionJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranscribeServiceAPI.ListTranscriptionJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListVocabulariesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, opts ...request.Option) (*transcribeservice.ListVocabulariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
@@ -182,6 +204,26 @@ func (c *Client) ListVocabulariesWithContext(ctx context.Context, input *transcr
 	})
 
 	return req.Output.(*transcribeservice.ListVocabulariesOutput), req.Error
+}
+
+func (c *Client) ListVocabulariesPagesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, cb func(*transcribeservice.ListVocabulariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListVocabularies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranscribeServiceAPI.ListVocabulariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) StartTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartTranscriptionJobOutput, error) {

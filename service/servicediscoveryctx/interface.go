@@ -21,13 +21,18 @@ type ServiceDiscovery interface {
 	DiscoverInstancesWithContext(ctx context.Context, input *servicediscovery.DiscoverInstancesInput, opts ...request.Option) (*servicediscovery.DiscoverInstancesOutput, error)
 	GetInstanceWithContext(ctx context.Context, input *servicediscovery.GetInstanceInput, opts ...request.Option) (*servicediscovery.GetInstanceOutput, error)
 	GetInstancesHealthStatusWithContext(ctx context.Context, input *servicediscovery.GetInstancesHealthStatusInput, opts ...request.Option) (*servicediscovery.GetInstancesHealthStatusOutput, error)
+	GetInstancesHealthStatusPagesWithContext(ctx context.Context, input *servicediscovery.GetInstancesHealthStatusInput, cb func(*servicediscovery.GetInstancesHealthStatusOutput, bool) bool, opts ...request.Option) error
 	GetNamespaceWithContext(ctx context.Context, input *servicediscovery.GetNamespaceInput, opts ...request.Option) (*servicediscovery.GetNamespaceOutput, error)
 	GetOperationWithContext(ctx context.Context, input *servicediscovery.GetOperationInput, opts ...request.Option) (*servicediscovery.GetOperationOutput, error)
 	GetServiceWithContext(ctx context.Context, input *servicediscovery.GetServiceInput, opts ...request.Option) (*servicediscovery.GetServiceOutput, error)
 	ListInstancesWithContext(ctx context.Context, input *servicediscovery.ListInstancesInput, opts ...request.Option) (*servicediscovery.ListInstancesOutput, error)
+	ListInstancesPagesWithContext(ctx context.Context, input *servicediscovery.ListInstancesInput, cb func(*servicediscovery.ListInstancesOutput, bool) bool, opts ...request.Option) error
 	ListNamespacesWithContext(ctx context.Context, input *servicediscovery.ListNamespacesInput, opts ...request.Option) (*servicediscovery.ListNamespacesOutput, error)
+	ListNamespacesPagesWithContext(ctx context.Context, input *servicediscovery.ListNamespacesInput, cb func(*servicediscovery.ListNamespacesOutput, bool) bool, opts ...request.Option) error
 	ListOperationsWithContext(ctx context.Context, input *servicediscovery.ListOperationsInput, opts ...request.Option) (*servicediscovery.ListOperationsOutput, error)
+	ListOperationsPagesWithContext(ctx context.Context, input *servicediscovery.ListOperationsInput, cb func(*servicediscovery.ListOperationsOutput, bool) bool, opts ...request.Option) error
 	ListServicesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, opts ...request.Option) (*servicediscovery.ListServicesOutput, error)
+	ListServicesPagesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, cb func(*servicediscovery.ListServicesOutput, bool) bool, opts ...request.Option) error
 	RegisterInstanceWithContext(ctx context.Context, input *servicediscovery.RegisterInstanceInput, opts ...request.Option) (*servicediscovery.RegisterInstanceOutput, error)
 	UpdateInstanceCustomHealthStatusWithContext(ctx context.Context, input *servicediscovery.UpdateInstanceCustomHealthStatusInput, opts ...request.Option) (*servicediscovery.UpdateInstanceCustomHealthStatusOutput, error)
 	UpdateServiceWithContext(ctx context.Context, input *servicediscovery.UpdateServiceInput, opts ...request.Option) (*servicediscovery.UpdateServiceOutput, error)
@@ -258,6 +263,26 @@ func (c *Client) GetInstancesHealthStatusWithContext(ctx context.Context, input 
 	return req.Output.(*servicediscovery.GetInstancesHealthStatusOutput), req.Error
 }
 
+func (c *Client) GetInstancesHealthStatusPagesWithContext(ctx context.Context, input *servicediscovery.GetInstancesHealthStatusInput, cb func(*servicediscovery.GetInstancesHealthStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "GetInstancesHealthStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceDiscoveryAPI.GetInstancesHealthStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetNamespaceWithContext(ctx context.Context, input *servicediscovery.GetNamespaceInput, opts ...request.Option) (*servicediscovery.GetNamespaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
@@ -342,6 +367,26 @@ func (c *Client) ListInstancesWithContext(ctx context.Context, input *servicedis
 	return req.Output.(*servicediscovery.ListInstancesOutput), req.Error
 }
 
+func (c *Client) ListInstancesPagesWithContext(ctx context.Context, input *servicediscovery.ListInstancesInput, cb func(*servicediscovery.ListInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "ListInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceDiscoveryAPI.ListInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListNamespacesWithContext(ctx context.Context, input *servicediscovery.ListNamespacesInput, opts ...request.Option) (*servicediscovery.ListNamespacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
@@ -361,6 +406,26 @@ func (c *Client) ListNamespacesWithContext(ctx context.Context, input *servicedi
 	})
 
 	return req.Output.(*servicediscovery.ListNamespacesOutput), req.Error
+}
+
+func (c *Client) ListNamespacesPagesWithContext(ctx context.Context, input *servicediscovery.ListNamespacesInput, cb func(*servicediscovery.ListNamespacesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "ListNamespaces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceDiscoveryAPI.ListNamespacesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOperationsWithContext(ctx context.Context, input *servicediscovery.ListOperationsInput, opts ...request.Option) (*servicediscovery.ListOperationsOutput, error) {
@@ -384,6 +449,26 @@ func (c *Client) ListOperationsWithContext(ctx context.Context, input *servicedi
 	return req.Output.(*servicediscovery.ListOperationsOutput), req.Error
 }
 
+func (c *Client) ListOperationsPagesWithContext(ctx context.Context, input *servicediscovery.ListOperationsInput, cb func(*servicediscovery.ListOperationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "ListOperations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceDiscoveryAPI.ListOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServicesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, opts ...request.Option) (*servicediscovery.ListServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
@@ -403,6 +488,26 @@ func (c *Client) ListServicesWithContext(ctx context.Context, input *servicedisc
 	})
 
 	return req.Output.(*servicediscovery.ListServicesOutput), req.Error
+}
+
+func (c *Client) ListServicesPagesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, cb func(*servicediscovery.ListServicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "ListServices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceDiscoveryAPI.ListServicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *servicediscovery.RegisterInstanceInput, opts ...request.Option) (*servicediscovery.RegisterInstanceOutput, error) {

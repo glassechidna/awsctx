@@ -13,6 +13,7 @@ import (
 type CostandUsageReportService interface {
 	DeleteReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.DeleteReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.DeleteReportDefinitionOutput, error)
 	DescribeReportDefinitionsWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, opts ...request.Option) (*costandusagereportservice.DescribeReportDefinitionsOutput, error)
+	DescribeReportDefinitionsPagesWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, cb func(*costandusagereportservice.DescribeReportDefinitionsOutput, bool) bool, opts ...request.Option) error
 	ModifyReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.ModifyReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.ModifyReportDefinitionOutput, error)
 	PutReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.PutReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.PutReportDefinitionOutput, error)
 }
@@ -72,6 +73,26 @@ func (c *Client) DescribeReportDefinitionsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*costandusagereportservice.DescribeReportDefinitionsOutput), req.Error
+}
+
+func (c *Client) DescribeReportDefinitionsPagesWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, cb func(*costandusagereportservice.DescribeReportDefinitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "costandusagereportservice",
+		Action:  "DescribeReportDefinitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CostandUsageReportServiceAPI.DescribeReportDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ModifyReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.ModifyReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.ModifyReportDefinitionOutput, error) {

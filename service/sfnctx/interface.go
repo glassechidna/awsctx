@@ -21,9 +21,13 @@ type SFN interface {
 	DescribeStateMachineForExecutionWithContext(ctx context.Context, input *sfn.DescribeStateMachineForExecutionInput, opts ...request.Option) (*sfn.DescribeStateMachineForExecutionOutput, error)
 	GetActivityTaskWithContext(ctx context.Context, input *sfn.GetActivityTaskInput, opts ...request.Option) (*sfn.GetActivityTaskOutput, error)
 	GetExecutionHistoryWithContext(ctx context.Context, input *sfn.GetExecutionHistoryInput, opts ...request.Option) (*sfn.GetExecutionHistoryOutput, error)
+	GetExecutionHistoryPagesWithContext(ctx context.Context, input *sfn.GetExecutionHistoryInput, cb func(*sfn.GetExecutionHistoryOutput, bool) bool, opts ...request.Option) error
 	ListActivitiesWithContext(ctx context.Context, input *sfn.ListActivitiesInput, opts ...request.Option) (*sfn.ListActivitiesOutput, error)
+	ListActivitiesPagesWithContext(ctx context.Context, input *sfn.ListActivitiesInput, cb func(*sfn.ListActivitiesOutput, bool) bool, opts ...request.Option) error
 	ListExecutionsWithContext(ctx context.Context, input *sfn.ListExecutionsInput, opts ...request.Option) (*sfn.ListExecutionsOutput, error)
+	ListExecutionsPagesWithContext(ctx context.Context, input *sfn.ListExecutionsInput, cb func(*sfn.ListExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListStateMachinesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, opts ...request.Option) (*sfn.ListStateMachinesOutput, error)
+	ListStateMachinesPagesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, cb func(*sfn.ListStateMachinesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *sfn.ListTagsForResourceInput, opts ...request.Option) (*sfn.ListTagsForResourceOutput, error)
 	SendTaskFailureWithContext(ctx context.Context, input *sfn.SendTaskFailureInput, opts ...request.Option) (*sfn.SendTaskFailureOutput, error)
 	SendTaskHeartbeatWithContext(ctx context.Context, input *sfn.SendTaskHeartbeatInput, opts ...request.Option) (*sfn.SendTaskHeartbeatOutput, error)
@@ -260,6 +264,26 @@ func (c *Client) GetExecutionHistoryWithContext(ctx context.Context, input *sfn.
 	return req.Output.(*sfn.GetExecutionHistoryOutput), req.Error
 }
 
+func (c *Client) GetExecutionHistoryPagesWithContext(ctx context.Context, input *sfn.GetExecutionHistoryInput, cb func(*sfn.GetExecutionHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "GetExecutionHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SFNAPI.GetExecutionHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListActivitiesWithContext(ctx context.Context, input *sfn.ListActivitiesInput, opts ...request.Option) (*sfn.ListActivitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
@@ -279,6 +303,26 @@ func (c *Client) ListActivitiesWithContext(ctx context.Context, input *sfn.ListA
 	})
 
 	return req.Output.(*sfn.ListActivitiesOutput), req.Error
+}
+
+func (c *Client) ListActivitiesPagesWithContext(ctx context.Context, input *sfn.ListActivitiesInput, cb func(*sfn.ListActivitiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListActivities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SFNAPI.ListActivitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListExecutionsWithContext(ctx context.Context, input *sfn.ListExecutionsInput, opts ...request.Option) (*sfn.ListExecutionsOutput, error) {
@@ -302,6 +346,26 @@ func (c *Client) ListExecutionsWithContext(ctx context.Context, input *sfn.ListE
 	return req.Output.(*sfn.ListExecutionsOutput), req.Error
 }
 
+func (c *Client) ListExecutionsPagesWithContext(ctx context.Context, input *sfn.ListExecutionsInput, cb func(*sfn.ListExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SFNAPI.ListExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStateMachinesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, opts ...request.Option) (*sfn.ListStateMachinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
@@ -321,6 +385,26 @@ func (c *Client) ListStateMachinesWithContext(ctx context.Context, input *sfn.Li
 	})
 
 	return req.Output.(*sfn.ListStateMachinesOutput), req.Error
+}
+
+func (c *Client) ListStateMachinesPagesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, cb func(*sfn.ListStateMachinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListStateMachines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SFNAPI.ListStateMachinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sfn.ListTagsForResourceInput, opts ...request.Option) (*sfn.ListTagsForResourceOutput, error) {

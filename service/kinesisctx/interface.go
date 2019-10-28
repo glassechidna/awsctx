@@ -18,6 +18,7 @@ type Kinesis interface {
 	DeregisterStreamConsumerWithContext(ctx context.Context, input *kinesis.DeregisterStreamConsumerInput, opts ...request.Option) (*kinesis.DeregisterStreamConsumerOutput, error)
 	DescribeLimitsWithContext(ctx context.Context, input *kinesis.DescribeLimitsInput, opts ...request.Option) (*kinesis.DescribeLimitsOutput, error)
 	DescribeStreamWithContext(ctx context.Context, input *kinesis.DescribeStreamInput, opts ...request.Option) (*kinesis.DescribeStreamOutput, error)
+	DescribeStreamPagesWithContext(ctx context.Context, input *kinesis.DescribeStreamInput, cb func(*kinesis.DescribeStreamOutput, bool) bool, opts ...request.Option) error
 	DescribeStreamConsumerWithContext(ctx context.Context, input *kinesis.DescribeStreamConsumerInput, opts ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error)
 	DescribeStreamSummaryWithContext(ctx context.Context, input *kinesis.DescribeStreamSummaryInput, opts ...request.Option) (*kinesis.DescribeStreamSummaryOutput, error)
 	DisableEnhancedMonitoringWithContext(ctx context.Context, input *kinesis.DisableEnhancedMonitoringInput, opts ...request.Option) (*kinesis.EnhancedMonitoringOutput, error)
@@ -27,7 +28,9 @@ type Kinesis interface {
 	IncreaseStreamRetentionPeriodWithContext(ctx context.Context, input *kinesis.IncreaseStreamRetentionPeriodInput, opts ...request.Option) (*kinesis.IncreaseStreamRetentionPeriodOutput, error)
 	ListShardsWithContext(ctx context.Context, input *kinesis.ListShardsInput, opts ...request.Option) (*kinesis.ListShardsOutput, error)
 	ListStreamConsumersWithContext(ctx context.Context, input *kinesis.ListStreamConsumersInput, opts ...request.Option) (*kinesis.ListStreamConsumersOutput, error)
+	ListStreamConsumersPagesWithContext(ctx context.Context, input *kinesis.ListStreamConsumersInput, cb func(*kinesis.ListStreamConsumersOutput, bool) bool, opts ...request.Option) error
 	ListStreamsWithContext(ctx context.Context, input *kinesis.ListStreamsInput, opts ...request.Option) (*kinesis.ListStreamsOutput, error)
+	ListStreamsPagesWithContext(ctx context.Context, input *kinesis.ListStreamsInput, cb func(*kinesis.ListStreamsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForStreamWithContext(ctx context.Context, input *kinesis.ListTagsForStreamInput, opts ...request.Option) (*kinesis.ListTagsForStreamOutput, error)
 	MergeShardsWithContext(ctx context.Context, input *kinesis.MergeShardsInput, opts ...request.Option) (*kinesis.MergeShardsOutput, error)
 	PutRecordWithContext(ctx context.Context, input *kinesis.PutRecordInput, opts ...request.Option) (*kinesis.PutRecordOutput, error)
@@ -201,6 +204,26 @@ func (c *Client) DescribeStreamWithContext(ctx context.Context, input *kinesis.D
 	})
 
 	return req.Output.(*kinesis.DescribeStreamOutput), req.Error
+}
+
+func (c *Client) DescribeStreamPagesWithContext(ctx context.Context, input *kinesis.DescribeStreamInput, cb func(*kinesis.DescribeStreamOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesis",
+		Action:  "DescribeStream",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisAPI.DescribeStreamPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeStreamConsumerWithContext(ctx context.Context, input *kinesis.DescribeStreamConsumerInput, opts ...request.Option) (*kinesis.DescribeStreamConsumerOutput, error) {
@@ -392,6 +415,26 @@ func (c *Client) ListStreamConsumersWithContext(ctx context.Context, input *kine
 	return req.Output.(*kinesis.ListStreamConsumersOutput), req.Error
 }
 
+func (c *Client) ListStreamConsumersPagesWithContext(ctx context.Context, input *kinesis.ListStreamConsumersInput, cb func(*kinesis.ListStreamConsumersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesis",
+		Action:  "ListStreamConsumers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisAPI.ListStreamConsumersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesis.ListStreamsInput, opts ...request.Option) (*kinesis.ListStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesis",
@@ -411,6 +454,26 @@ func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesis.List
 	})
 
 	return req.Output.(*kinesis.ListStreamsOutput), req.Error
+}
+
+func (c *Client) ListStreamsPagesWithContext(ctx context.Context, input *kinesis.ListStreamsInput, cb func(*kinesis.ListStreamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesis",
+		Action:  "ListStreams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisAPI.ListStreamsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesis.ListTagsForStreamInput, opts ...request.Option) (*kinesis.ListTagsForStreamOutput, error) {

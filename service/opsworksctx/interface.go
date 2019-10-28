@@ -37,6 +37,7 @@ type OpsWorks interface {
 	DescribeCommandsWithContext(ctx context.Context, input *opsworks.DescribeCommandsInput, opts ...request.Option) (*opsworks.DescribeCommandsOutput, error)
 	DescribeDeploymentsWithContext(ctx context.Context, input *opsworks.DescribeDeploymentsInput, opts ...request.Option) (*opsworks.DescribeDeploymentsOutput, error)
 	DescribeEcsClustersWithContext(ctx context.Context, input *opsworks.DescribeEcsClustersInput, opts ...request.Option) (*opsworks.DescribeEcsClustersOutput, error)
+	DescribeEcsClustersPagesWithContext(ctx context.Context, input *opsworks.DescribeEcsClustersInput, cb func(*opsworks.DescribeEcsClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeElasticIpsWithContext(ctx context.Context, input *opsworks.DescribeElasticIpsInput, opts ...request.Option) (*opsworks.DescribeElasticIpsOutput, error)
 	DescribeElasticLoadBalancersWithContext(ctx context.Context, input *opsworks.DescribeElasticLoadBalancersInput, opts ...request.Option) (*opsworks.DescribeElasticLoadBalancersOutput, error)
 	DescribeInstancesWithContext(ctx context.Context, input *opsworks.DescribeInstancesInput, opts ...request.Option) (*opsworks.DescribeInstancesOutput, error)
@@ -646,6 +647,26 @@ func (c *Client) DescribeEcsClustersWithContext(ctx context.Context, input *opsw
 	})
 
 	return req.Output.(*opsworks.DescribeEcsClustersOutput), req.Error
+}
+
+func (c *Client) DescribeEcsClustersPagesWithContext(ctx context.Context, input *opsworks.DescribeEcsClustersInput, cb func(*opsworks.DescribeEcsClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "opsworks",
+		Action:  "DescribeEcsClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OpsWorksAPI.DescribeEcsClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeElasticIpsWithContext(ctx context.Context, input *opsworks.DescribeElasticIpsInput, opts ...request.Option) (*opsworks.DescribeElasticIpsOutput, error) {

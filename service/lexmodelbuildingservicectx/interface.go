@@ -26,21 +26,31 @@ type LexModelBuildingService interface {
 	GetBotWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotOutput, error)
 	GetBotAliasWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotAliasInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotAliasOutput, error)
 	GetBotAliasesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotAliasesInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotAliasesOutput, error)
+	GetBotAliasesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotAliasesInput, cb func(*lexmodelbuildingservice.GetBotAliasesOutput, bool) bool, opts ...request.Option) error
 	GetBotChannelAssociationWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotChannelAssociationOutput, error)
 	GetBotChannelAssociationsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotChannelAssociationsOutput, error)
+	GetBotChannelAssociationsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationsInput, cb func(*lexmodelbuildingservice.GetBotChannelAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetBotVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotVersionsOutput, error)
+	GetBotVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotVersionsInput, cb func(*lexmodelbuildingservice.GetBotVersionsOutput, bool) bool, opts ...request.Option) error
 	GetBotsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotsOutput, error)
+	GetBotsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotsInput, cb func(*lexmodelbuildingservice.GetBotsOutput, bool) bool, opts ...request.Option) error
 	GetBuiltinIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinIntentOutput, error)
 	GetBuiltinIntentsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinIntentsOutput, error)
+	GetBuiltinIntentsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentsInput, cb func(*lexmodelbuildingservice.GetBuiltinIntentsOutput, bool) bool, opts ...request.Option) error
 	GetBuiltinSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinSlotTypesOutput, error)
+	GetBuiltinSlotTypesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinSlotTypesInput, cb func(*lexmodelbuildingservice.GetBuiltinSlotTypesOutput, bool) bool, opts ...request.Option) error
 	GetExportWithContext(ctx context.Context, input *lexmodelbuildingservice.GetExportInput, opts ...request.Option) (*lexmodelbuildingservice.GetExportOutput, error)
 	GetImportWithContext(ctx context.Context, input *lexmodelbuildingservice.GetImportInput, opts ...request.Option) (*lexmodelbuildingservice.GetImportOutput, error)
 	GetIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentOutput, error)
 	GetIntentVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentVersionsOutput, error)
+	GetIntentVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentVersionsInput, cb func(*lexmodelbuildingservice.GetIntentVersionsOutput, bool) bool, opts ...request.Option) error
 	GetIntentsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentsOutput, error)
+	GetIntentsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, cb func(*lexmodelbuildingservice.GetIntentsOutput, bool) bool, opts ...request.Option) error
 	GetSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeOutput, error)
 	GetSlotTypeVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeVersionsOutput, error)
+	GetSlotTypeVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeVersionsInput, cb func(*lexmodelbuildingservice.GetSlotTypeVersionsOutput, bool) bool, opts ...request.Option) error
 	GetSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypesOutput, error)
+	GetSlotTypesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, cb func(*lexmodelbuildingservice.GetSlotTypesOutput, bool) bool, opts ...request.Option) error
 	GetUtterancesViewWithContext(ctx context.Context, input *lexmodelbuildingservice.GetUtterancesViewInput, opts ...request.Option) (*lexmodelbuildingservice.GetUtterancesViewOutput, error)
 	PutBotWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotOutput, error)
 	PutBotAliasWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotAliasInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotAliasOutput, error)
@@ -379,6 +389,26 @@ func (c *Client) GetBotAliasesWithContext(ctx context.Context, input *lexmodelbu
 	return req.Output.(*lexmodelbuildingservice.GetBotAliasesOutput), req.Error
 }
 
+func (c *Client) GetBotAliasesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotAliasesInput, cb func(*lexmodelbuildingservice.GetBotAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetBotAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetBotAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetBotChannelAssociationWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotChannelAssociationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -421,6 +451,26 @@ func (c *Client) GetBotChannelAssociationsWithContext(ctx context.Context, input
 	return req.Output.(*lexmodelbuildingservice.GetBotChannelAssociationsOutput), req.Error
 }
 
+func (c *Client) GetBotChannelAssociationsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotChannelAssociationsInput, cb func(*lexmodelbuildingservice.GetBotChannelAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetBotChannelAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetBotChannelAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetBotVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -442,6 +492,26 @@ func (c *Client) GetBotVersionsWithContext(ctx context.Context, input *lexmodelb
 	return req.Output.(*lexmodelbuildingservice.GetBotVersionsOutput), req.Error
 }
 
+func (c *Client) GetBotVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotVersionsInput, cb func(*lexmodelbuildingservice.GetBotVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetBotVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetBotVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetBotsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotsInput, opts ...request.Option) (*lexmodelbuildingservice.GetBotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -461,6 +531,26 @@ func (c *Client) GetBotsWithContext(ctx context.Context, input *lexmodelbuilding
 	})
 
 	return req.Output.(*lexmodelbuildingservice.GetBotsOutput), req.Error
+}
+
+func (c *Client) GetBotsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBotsInput, cb func(*lexmodelbuildingservice.GetBotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetBots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetBotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetBuiltinIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinIntentOutput, error) {
@@ -505,6 +595,26 @@ func (c *Client) GetBuiltinIntentsWithContext(ctx context.Context, input *lexmod
 	return req.Output.(*lexmodelbuildingservice.GetBuiltinIntentsOutput), req.Error
 }
 
+func (c *Client) GetBuiltinIntentsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinIntentsInput, cb func(*lexmodelbuildingservice.GetBuiltinIntentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetBuiltinIntents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetBuiltinIntentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetBuiltinSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetBuiltinSlotTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -524,6 +634,26 @@ func (c *Client) GetBuiltinSlotTypesWithContext(ctx context.Context, input *lexm
 	})
 
 	return req.Output.(*lexmodelbuildingservice.GetBuiltinSlotTypesOutput), req.Error
+}
+
+func (c *Client) GetBuiltinSlotTypesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetBuiltinSlotTypesInput, cb func(*lexmodelbuildingservice.GetBuiltinSlotTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetBuiltinSlotTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetBuiltinSlotTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetExportWithContext(ctx context.Context, input *lexmodelbuildingservice.GetExportInput, opts ...request.Option) (*lexmodelbuildingservice.GetExportOutput, error) {
@@ -610,6 +740,26 @@ func (c *Client) GetIntentVersionsWithContext(ctx context.Context, input *lexmod
 	return req.Output.(*lexmodelbuildingservice.GetIntentVersionsOutput), req.Error
 }
 
+func (c *Client) GetIntentVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentVersionsInput, cb func(*lexmodelbuildingservice.GetIntentVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetIntentVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetIntentVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetIntentsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -629,6 +779,26 @@ func (c *Client) GetIntentsWithContext(ctx context.Context, input *lexmodelbuild
 	})
 
 	return req.Output.(*lexmodelbuildingservice.GetIntentsOutput), req.Error
+}
+
+func (c *Client) GetIntentsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, cb func(*lexmodelbuildingservice.GetIntentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetIntents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetIntentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeOutput, error) {
@@ -673,6 +843,26 @@ func (c *Client) GetSlotTypeVersionsWithContext(ctx context.Context, input *lexm
 	return req.Output.(*lexmodelbuildingservice.GetSlotTypeVersionsOutput), req.Error
 }
 
+func (c *Client) GetSlotTypeVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeVersionsInput, cb func(*lexmodelbuildingservice.GetSlotTypeVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetSlotTypeVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetSlotTypeVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -692,6 +882,26 @@ func (c *Client) GetSlotTypesWithContext(ctx context.Context, input *lexmodelbui
 	})
 
 	return req.Output.(*lexmodelbuildingservice.GetSlotTypesOutput), req.Error
+}
+
+func (c *Client) GetSlotTypesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, cb func(*lexmodelbuildingservice.GetSlotTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetSlotTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetSlotTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetUtterancesViewWithContext(ctx context.Context, input *lexmodelbuildingservice.GetUtterancesViewInput, opts ...request.Option) (*lexmodelbuildingservice.GetUtterancesViewOutput, error) {

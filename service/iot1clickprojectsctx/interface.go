@@ -21,7 +21,9 @@ type IoT1ClickProjects interface {
 	DisassociateDeviceFromPlacementWithContext(ctx context.Context, input *iot1clickprojects.DisassociateDeviceFromPlacementInput, opts ...request.Option) (*iot1clickprojects.DisassociateDeviceFromPlacementOutput, error)
 	GetDevicesInPlacementWithContext(ctx context.Context, input *iot1clickprojects.GetDevicesInPlacementInput, opts ...request.Option) (*iot1clickprojects.GetDevicesInPlacementOutput, error)
 	ListPlacementsWithContext(ctx context.Context, input *iot1clickprojects.ListPlacementsInput, opts ...request.Option) (*iot1clickprojects.ListPlacementsOutput, error)
+	ListPlacementsPagesWithContext(ctx context.Context, input *iot1clickprojects.ListPlacementsInput, cb func(*iot1clickprojects.ListPlacementsOutput, bool) bool, opts ...request.Option) error
 	ListProjectsWithContext(ctx context.Context, input *iot1clickprojects.ListProjectsInput, opts ...request.Option) (*iot1clickprojects.ListProjectsOutput, error)
+	ListProjectsPagesWithContext(ctx context.Context, input *iot1clickprojects.ListProjectsInput, cb func(*iot1clickprojects.ListProjectsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *iot1clickprojects.ListTagsForResourceInput, opts ...request.Option) (*iot1clickprojects.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *iot1clickprojects.TagResourceInput, opts ...request.Option) (*iot1clickprojects.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *iot1clickprojects.UntagResourceInput, opts ...request.Option) (*iot1clickprojects.UntagResourceOutput, error)
@@ -254,6 +256,26 @@ func (c *Client) ListPlacementsWithContext(ctx context.Context, input *iot1click
 	return req.Output.(*iot1clickprojects.ListPlacementsOutput), req.Error
 }
 
+func (c *Client) ListPlacementsPagesWithContext(ctx context.Context, input *iot1clickprojects.ListPlacementsInput, cb func(*iot1clickprojects.ListPlacementsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot1clickprojects",
+		Action:  "ListPlacements",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoT1ClickProjectsAPI.ListPlacementsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *iot1clickprojects.ListProjectsInput, opts ...request.Option) (*iot1clickprojects.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot1clickprojects",
@@ -273,6 +295,26 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *iot1clickpr
 	})
 
 	return req.Output.(*iot1clickprojects.ListProjectsOutput), req.Error
+}
+
+func (c *Client) ListProjectsPagesWithContext(ctx context.Context, input *iot1clickprojects.ListProjectsInput, cb func(*iot1clickprojects.ListProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot1clickprojects",
+		Action:  "ListProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoT1ClickProjectsAPI.ListProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot1clickprojects.ListTagsForResourceInput, opts ...request.Option) (*iot1clickprojects.ListTagsForResourceOutput, error) {

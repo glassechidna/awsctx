@@ -30,19 +30,33 @@ type ElastiCache interface {
 	DeleteReplicationGroupWithContext(ctx context.Context, input *elasticache.DeleteReplicationGroupInput, opts ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error)
 	DeleteSnapshotWithContext(ctx context.Context, input *elasticache.DeleteSnapshotInput, opts ...request.Option) (*elasticache.DeleteSnapshotOutput, error)
 	DescribeCacheClustersWithContext(ctx context.Context, input *elasticache.DescribeCacheClustersInput, opts ...request.Option) (*elasticache.DescribeCacheClustersOutput, error)
+	DescribeCacheClustersPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheClustersInput, cb func(*elasticache.DescribeCacheClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeCacheEngineVersionsWithContext(ctx context.Context, input *elasticache.DescribeCacheEngineVersionsInput, opts ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error)
+	DescribeCacheEngineVersionsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheEngineVersionsInput, cb func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeCacheParameterGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheParameterGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error)
+	DescribeCacheParameterGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheParameterGroupsInput, cb func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeCacheParametersWithContext(ctx context.Context, input *elasticache.DescribeCacheParametersInput, opts ...request.Option) (*elasticache.DescribeCacheParametersOutput, error)
+	DescribeCacheParametersPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheParametersInput, cb func(*elasticache.DescribeCacheParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeCacheSecurityGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheSecurityGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error)
+	DescribeCacheSecurityGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheSecurityGroupsInput, cb func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeCacheSubnetGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheSubnetGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error)
+	DescribeCacheSubnetGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheSubnetGroupsInput, cb func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeEngineDefaultParametersWithContext(ctx context.Context, input *elasticache.DescribeEngineDefaultParametersInput, opts ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error)
+	DescribeEngineDefaultParametersPagesWithContext(ctx context.Context, input *elasticache.DescribeEngineDefaultParametersInput, cb func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, opts ...request.Option) (*elasticache.DescribeEventsOutput, error)
+	DescribeEventsPagesWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, cb func(*elasticache.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error)
+	DescribeReplicationGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, cb func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedCacheNodesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error)
+	DescribeReservedCacheNodesPagesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesInput, cb func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedCacheNodesOfferingsWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesOfferingsInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error)
+	DescribeReservedCacheNodesOfferingsPagesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesOfferingsInput, cb func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeServiceUpdatesWithContext(ctx context.Context, input *elasticache.DescribeServiceUpdatesInput, opts ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error)
+	DescribeServiceUpdatesPagesWithContext(ctx context.Context, input *elasticache.DescribeServiceUpdatesInput, cb func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotsWithContext(ctx context.Context, input *elasticache.DescribeSnapshotsInput, opts ...request.Option) (*elasticache.DescribeSnapshotsOutput, error)
+	DescribeSnapshotsPagesWithContext(ctx context.Context, input *elasticache.DescribeSnapshotsInput, cb func(*elasticache.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeUpdateActionsWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, opts ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error)
+	DescribeUpdateActionsPagesWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, cb func(*elasticache.DescribeUpdateActionsOutput, bool) bool, opts ...request.Option) error
 	IncreaseReplicaCountWithContext(ctx context.Context, input *elasticache.IncreaseReplicaCountInput, opts ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error)
 	ListAllowedNodeTypeModificationsWithContext(ctx context.Context, input *elasticache.ListAllowedNodeTypeModificationsInput, opts ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *elasticache.ListTagsForResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error)
@@ -473,6 +487,26 @@ func (c *Client) DescribeCacheClustersWithContext(ctx context.Context, input *el
 	return req.Output.(*elasticache.DescribeCacheClustersOutput), req.Error
 }
 
+func (c *Client) DescribeCacheClustersPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheClustersInput, cb func(*elasticache.DescribeCacheClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeCacheClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeCacheClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCacheEngineVersionsWithContext(ctx context.Context, input *elasticache.DescribeCacheEngineVersionsInput, opts ...request.Option) (*elasticache.DescribeCacheEngineVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -492,6 +526,26 @@ func (c *Client) DescribeCacheEngineVersionsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*elasticache.DescribeCacheEngineVersionsOutput), req.Error
+}
+
+func (c *Client) DescribeCacheEngineVersionsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheEngineVersionsInput, cb func(*elasticache.DescribeCacheEngineVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeCacheEngineVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeCacheEngineVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeCacheParameterGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheParameterGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheParameterGroupsOutput, error) {
@@ -515,6 +569,26 @@ func (c *Client) DescribeCacheParameterGroupsWithContext(ctx context.Context, in
 	return req.Output.(*elasticache.DescribeCacheParameterGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeCacheParameterGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheParameterGroupsInput, cb func(*elasticache.DescribeCacheParameterGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeCacheParameterGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeCacheParameterGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCacheParametersWithContext(ctx context.Context, input *elasticache.DescribeCacheParametersInput, opts ...request.Option) (*elasticache.DescribeCacheParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -534,6 +608,26 @@ func (c *Client) DescribeCacheParametersWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*elasticache.DescribeCacheParametersOutput), req.Error
+}
+
+func (c *Client) DescribeCacheParametersPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheParametersInput, cb func(*elasticache.DescribeCacheParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeCacheParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeCacheParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeCacheSecurityGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheSecurityGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheSecurityGroupsOutput, error) {
@@ -557,6 +651,26 @@ func (c *Client) DescribeCacheSecurityGroupsWithContext(ctx context.Context, inp
 	return req.Output.(*elasticache.DescribeCacheSecurityGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeCacheSecurityGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheSecurityGroupsInput, cb func(*elasticache.DescribeCacheSecurityGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeCacheSecurityGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeCacheSecurityGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCacheSubnetGroupsWithContext(ctx context.Context, input *elasticache.DescribeCacheSubnetGroupsInput, opts ...request.Option) (*elasticache.DescribeCacheSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -576,6 +690,26 @@ func (c *Client) DescribeCacheSubnetGroupsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*elasticache.DescribeCacheSubnetGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeCacheSubnetGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeCacheSubnetGroupsInput, cb func(*elasticache.DescribeCacheSubnetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeCacheSubnetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeCacheSubnetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context, input *elasticache.DescribeEngineDefaultParametersInput, opts ...request.Option) (*elasticache.DescribeEngineDefaultParametersOutput, error) {
@@ -599,6 +733,26 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 	return req.Output.(*elasticache.DescribeEngineDefaultParametersOutput), req.Error
 }
 
+func (c *Client) DescribeEngineDefaultParametersPagesWithContext(ctx context.Context, input *elasticache.DescribeEngineDefaultParametersInput, cb func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeEngineDefaultParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeEngineDefaultParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, opts ...request.Option) (*elasticache.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -618,6 +772,26 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticac
 	})
 
 	return req.Output.(*elasticache.DescribeEventsOutput), req.Error
+}
+
+func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, cb func(*elasticache.DescribeEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
@@ -641,6 +815,26 @@ func (c *Client) DescribeReplicationGroupsWithContext(ctx context.Context, input
 	return req.Output.(*elasticache.DescribeReplicationGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeReplicationGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, cb func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeReplicationGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeReplicationGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReservedCacheNodesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -660,6 +854,26 @@ func (c *Client) DescribeReservedCacheNodesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*elasticache.DescribeReservedCacheNodesOutput), req.Error
+}
+
+func (c *Client) DescribeReservedCacheNodesPagesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesInput, cb func(*elasticache.DescribeReservedCacheNodesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeReservedCacheNodes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeReservedCacheNodesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeReservedCacheNodesOfferingsWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesOfferingsInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOfferingsOutput, error) {
@@ -683,6 +897,26 @@ func (c *Client) DescribeReservedCacheNodesOfferingsWithContext(ctx context.Cont
 	return req.Output.(*elasticache.DescribeReservedCacheNodesOfferingsOutput), req.Error
 }
 
+func (c *Client) DescribeReservedCacheNodesOfferingsPagesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesOfferingsInput, cb func(*elasticache.DescribeReservedCacheNodesOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeReservedCacheNodesOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeReservedCacheNodesOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeServiceUpdatesWithContext(ctx context.Context, input *elasticache.DescribeServiceUpdatesInput, opts ...request.Option) (*elasticache.DescribeServiceUpdatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -702,6 +936,26 @@ func (c *Client) DescribeServiceUpdatesWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*elasticache.DescribeServiceUpdatesOutput), req.Error
+}
+
+func (c *Client) DescribeServiceUpdatesPagesWithContext(ctx context.Context, input *elasticache.DescribeServiceUpdatesInput, cb func(*elasticache.DescribeServiceUpdatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeServiceUpdates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeServiceUpdatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *elasticache.DescribeSnapshotsInput, opts ...request.Option) (*elasticache.DescribeSnapshotsOutput, error) {
@@ -725,6 +979,26 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *elasti
 	return req.Output.(*elasticache.DescribeSnapshotsOutput), req.Error
 }
 
+func (c *Client) DescribeSnapshotsPagesWithContext(ctx context.Context, input *elasticache.DescribeSnapshotsInput, cb func(*elasticache.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeSnapshots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeSnapshotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeUpdateActionsWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, opts ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -744,6 +1018,26 @@ func (c *Client) DescribeUpdateActionsWithContext(ctx context.Context, input *el
 	})
 
 	return req.Output.(*elasticache.DescribeUpdateActionsOutput), req.Error
+}
+
+func (c *Client) DescribeUpdateActionsPagesWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, cb func(*elasticache.DescribeUpdateActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeUpdateActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeUpdateActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) IncreaseReplicaCountWithContext(ctx context.Context, input *elasticache.IncreaseReplicaCountInput, opts ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {

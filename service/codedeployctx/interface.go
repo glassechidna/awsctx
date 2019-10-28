@@ -38,12 +38,18 @@ type CodeDeploy interface {
 	GetDeploymentTargetWithContext(ctx context.Context, input *codedeploy.GetDeploymentTargetInput, opts ...request.Option) (*codedeploy.GetDeploymentTargetOutput, error)
 	GetOnPremisesInstanceWithContext(ctx context.Context, input *codedeploy.GetOnPremisesInstanceInput, opts ...request.Option) (*codedeploy.GetOnPremisesInstanceOutput, error)
 	ListApplicationRevisionsWithContext(ctx context.Context, input *codedeploy.ListApplicationRevisionsInput, opts ...request.Option) (*codedeploy.ListApplicationRevisionsOutput, error)
+	ListApplicationRevisionsPagesWithContext(ctx context.Context, input *codedeploy.ListApplicationRevisionsInput, cb func(*codedeploy.ListApplicationRevisionsOutput, bool) bool, opts ...request.Option) error
 	ListApplicationsWithContext(ctx context.Context, input *codedeploy.ListApplicationsInput, opts ...request.Option) (*codedeploy.ListApplicationsOutput, error)
+	ListApplicationsPagesWithContext(ctx context.Context, input *codedeploy.ListApplicationsInput, cb func(*codedeploy.ListApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListDeploymentConfigsWithContext(ctx context.Context, input *codedeploy.ListDeploymentConfigsInput, opts ...request.Option) (*codedeploy.ListDeploymentConfigsOutput, error)
+	ListDeploymentConfigsPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentConfigsInput, cb func(*codedeploy.ListDeploymentConfigsOutput, bool) bool, opts ...request.Option) error
 	ListDeploymentGroupsWithContext(ctx context.Context, input *codedeploy.ListDeploymentGroupsInput, opts ...request.Option) (*codedeploy.ListDeploymentGroupsOutput, error)
+	ListDeploymentGroupsPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentGroupsInput, cb func(*codedeploy.ListDeploymentGroupsOutput, bool) bool, opts ...request.Option) error
 	ListDeploymentInstancesWithContext(ctx context.Context, input *codedeploy.ListDeploymentInstancesInput, opts ...request.Option) (*codedeploy.ListDeploymentInstancesOutput, error)
+	ListDeploymentInstancesPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentInstancesInput, cb func(*codedeploy.ListDeploymentInstancesOutput, bool) bool, opts ...request.Option) error
 	ListDeploymentTargetsWithContext(ctx context.Context, input *codedeploy.ListDeploymentTargetsInput, opts ...request.Option) (*codedeploy.ListDeploymentTargetsOutput, error)
 	ListDeploymentsWithContext(ctx context.Context, input *codedeploy.ListDeploymentsInput, opts ...request.Option) (*codedeploy.ListDeploymentsOutput, error)
+	ListDeploymentsPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentsInput, cb func(*codedeploy.ListDeploymentsOutput, bool) bool, opts ...request.Option) error
 	ListGitHubAccountTokenNamesWithContext(ctx context.Context, input *codedeploy.ListGitHubAccountTokenNamesInput, opts ...request.Option) (*codedeploy.ListGitHubAccountTokenNamesOutput, error)
 	ListOnPremisesInstancesWithContext(ctx context.Context, input *codedeploy.ListOnPremisesInstancesInput, opts ...request.Option) (*codedeploy.ListOnPremisesInstancesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *codedeploy.ListTagsForResourceInput, opts ...request.Option) (*codedeploy.ListTagsForResourceOutput, error)
@@ -641,6 +647,26 @@ func (c *Client) ListApplicationRevisionsWithContext(ctx context.Context, input 
 	return req.Output.(*codedeploy.ListApplicationRevisionsOutput), req.Error
 }
 
+func (c *Client) ListApplicationRevisionsPagesWithContext(ctx context.Context, input *codedeploy.ListApplicationRevisionsInput, cb func(*codedeploy.ListApplicationRevisionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "ListApplicationRevisions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeDeployAPI.ListApplicationRevisionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *codedeploy.ListApplicationsInput, opts ...request.Option) (*codedeploy.ListApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
@@ -660,6 +686,26 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *codedep
 	})
 
 	return req.Output.(*codedeploy.ListApplicationsOutput), req.Error
+}
+
+func (c *Client) ListApplicationsPagesWithContext(ctx context.Context, input *codedeploy.ListApplicationsInput, cb func(*codedeploy.ListApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "ListApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeDeployAPI.ListApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDeploymentConfigsWithContext(ctx context.Context, input *codedeploy.ListDeploymentConfigsInput, opts ...request.Option) (*codedeploy.ListDeploymentConfigsOutput, error) {
@@ -683,6 +729,26 @@ func (c *Client) ListDeploymentConfigsWithContext(ctx context.Context, input *co
 	return req.Output.(*codedeploy.ListDeploymentConfigsOutput), req.Error
 }
 
+func (c *Client) ListDeploymentConfigsPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentConfigsInput, cb func(*codedeploy.ListDeploymentConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "ListDeploymentConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeDeployAPI.ListDeploymentConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDeploymentGroupsWithContext(ctx context.Context, input *codedeploy.ListDeploymentGroupsInput, opts ...request.Option) (*codedeploy.ListDeploymentGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
@@ -704,6 +770,26 @@ func (c *Client) ListDeploymentGroupsWithContext(ctx context.Context, input *cod
 	return req.Output.(*codedeploy.ListDeploymentGroupsOutput), req.Error
 }
 
+func (c *Client) ListDeploymentGroupsPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentGroupsInput, cb func(*codedeploy.ListDeploymentGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "ListDeploymentGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeDeployAPI.ListDeploymentGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDeploymentInstancesWithContext(ctx context.Context, input *codedeploy.ListDeploymentInstancesInput, opts ...request.Option) (*codedeploy.ListDeploymentInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codedeploy",
@@ -723,6 +809,26 @@ func (c *Client) ListDeploymentInstancesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*codedeploy.ListDeploymentInstancesOutput), req.Error
+}
+
+func (c *Client) ListDeploymentInstancesPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentInstancesInput, cb func(*codedeploy.ListDeploymentInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "ListDeploymentInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeDeployAPI.ListDeploymentInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDeploymentTargetsWithContext(ctx context.Context, input *codedeploy.ListDeploymentTargetsInput, opts ...request.Option) (*codedeploy.ListDeploymentTargetsOutput, error) {
@@ -765,6 +871,26 @@ func (c *Client) ListDeploymentsWithContext(ctx context.Context, input *codedepl
 	})
 
 	return req.Output.(*codedeploy.ListDeploymentsOutput), req.Error
+}
+
+func (c *Client) ListDeploymentsPagesWithContext(ctx context.Context, input *codedeploy.ListDeploymentsInput, cb func(*codedeploy.ListDeploymentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "ListDeployments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeDeployAPI.ListDeploymentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGitHubAccountTokenNamesWithContext(ctx context.Context, input *codedeploy.ListGitHubAccountTokenNamesInput, opts ...request.Option) (*codedeploy.ListGitHubAccountTokenNamesOutput, error) {

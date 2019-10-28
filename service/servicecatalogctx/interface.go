@@ -62,29 +62,45 @@ type ServiceCatalog interface {
 	ExecuteProvisionedProductServiceActionWithContext(ctx context.Context, input *servicecatalog.ExecuteProvisionedProductServiceActionInput, opts ...request.Option) (*servicecatalog.ExecuteProvisionedProductServiceActionOutput, error)
 	GetAWSOrganizationsAccessStatusWithContext(ctx context.Context, input *servicecatalog.GetAWSOrganizationsAccessStatusInput, opts ...request.Option) (*servicecatalog.GetAWSOrganizationsAccessStatusOutput, error)
 	ListAcceptedPortfolioSharesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, opts ...request.Option) (*servicecatalog.ListAcceptedPortfolioSharesOutput, error)
+	ListAcceptedPortfolioSharesPagesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, cb func(*servicecatalog.ListAcceptedPortfolioSharesOutput, bool) bool, opts ...request.Option) error
 	ListBudgetsForResourceWithContext(ctx context.Context, input *servicecatalog.ListBudgetsForResourceInput, opts ...request.Option) (*servicecatalog.ListBudgetsForResourceOutput, error)
+	ListBudgetsForResourcePagesWithContext(ctx context.Context, input *servicecatalog.ListBudgetsForResourceInput, cb func(*servicecatalog.ListBudgetsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListConstraintsForPortfolioWithContext(ctx context.Context, input *servicecatalog.ListConstraintsForPortfolioInput, opts ...request.Option) (*servicecatalog.ListConstraintsForPortfolioOutput, error)
+	ListConstraintsForPortfolioPagesWithContext(ctx context.Context, input *servicecatalog.ListConstraintsForPortfolioInput, cb func(*servicecatalog.ListConstraintsForPortfolioOutput, bool) bool, opts ...request.Option) error
 	ListLaunchPathsWithContext(ctx context.Context, input *servicecatalog.ListLaunchPathsInput, opts ...request.Option) (*servicecatalog.ListLaunchPathsOutput, error)
+	ListLaunchPathsPagesWithContext(ctx context.Context, input *servicecatalog.ListLaunchPathsInput, cb func(*servicecatalog.ListLaunchPathsOutput, bool) bool, opts ...request.Option) error
 	ListOrganizationPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListOrganizationPortfolioAccessOutput, error)
+	ListOrganizationPortfolioAccessPagesWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, cb func(*servicecatalog.ListOrganizationPortfolioAccessOutput, bool) bool, opts ...request.Option) error
 	ListPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListPortfolioAccessOutput, error)
 	ListPortfoliosWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, opts ...request.Option) (*servicecatalog.ListPortfoliosOutput, error)
+	ListPortfoliosPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, cb func(*servicecatalog.ListPortfoliosOutput, bool) bool, opts ...request.Option) error
 	ListPortfoliosForProductWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosForProductInput, opts ...request.Option) (*servicecatalog.ListPortfoliosForProductOutput, error)
+	ListPortfoliosForProductPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosForProductInput, cb func(*servicecatalog.ListPortfoliosForProductOutput, bool) bool, opts ...request.Option) error
 	ListPrincipalsForPortfolioWithContext(ctx context.Context, input *servicecatalog.ListPrincipalsForPortfolioInput, opts ...request.Option) (*servicecatalog.ListPrincipalsForPortfolioOutput, error)
+	ListPrincipalsForPortfolioPagesWithContext(ctx context.Context, input *servicecatalog.ListPrincipalsForPortfolioInput, cb func(*servicecatalog.ListPrincipalsForPortfolioOutput, bool) bool, opts ...request.Option) error
 	ListProvisionedProductPlansWithContext(ctx context.Context, input *servicecatalog.ListProvisionedProductPlansInput, opts ...request.Option) (*servicecatalog.ListProvisionedProductPlansOutput, error)
 	ListProvisioningArtifactsWithContext(ctx context.Context, input *servicecatalog.ListProvisioningArtifactsInput, opts ...request.Option) (*servicecatalog.ListProvisioningArtifactsOutput, error)
 	ListProvisioningArtifactsForServiceActionWithContext(ctx context.Context, input *servicecatalog.ListProvisioningArtifactsForServiceActionInput, opts ...request.Option) (*servicecatalog.ListProvisioningArtifactsForServiceActionOutput, error)
+	ListProvisioningArtifactsForServiceActionPagesWithContext(ctx context.Context, input *servicecatalog.ListProvisioningArtifactsForServiceActionInput, cb func(*servicecatalog.ListProvisioningArtifactsForServiceActionOutput, bool) bool, opts ...request.Option) error
 	ListRecordHistoryWithContext(ctx context.Context, input *servicecatalog.ListRecordHistoryInput, opts ...request.Option) (*servicecatalog.ListRecordHistoryOutput, error)
 	ListResourcesForTagOptionWithContext(ctx context.Context, input *servicecatalog.ListResourcesForTagOptionInput, opts ...request.Option) (*servicecatalog.ListResourcesForTagOptionOutput, error)
+	ListResourcesForTagOptionPagesWithContext(ctx context.Context, input *servicecatalog.ListResourcesForTagOptionInput, cb func(*servicecatalog.ListResourcesForTagOptionOutput, bool) bool, opts ...request.Option) error
 	ListServiceActionsWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsInput, opts ...request.Option) (*servicecatalog.ListServiceActionsOutput, error)
+	ListServiceActionsPagesWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsInput, cb func(*servicecatalog.ListServiceActionsOutput, bool) bool, opts ...request.Option) error
 	ListServiceActionsForProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsForProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.ListServiceActionsForProvisioningArtifactOutput, error)
+	ListServiceActionsForProvisioningArtifactPagesWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsForProvisioningArtifactInput, cb func(*servicecatalog.ListServiceActionsForProvisioningArtifactOutput, bool) bool, opts ...request.Option) error
 	ListStackInstancesForProvisionedProductWithContext(ctx context.Context, input *servicecatalog.ListStackInstancesForProvisionedProductInput, opts ...request.Option) (*servicecatalog.ListStackInstancesForProvisionedProductOutput, error)
 	ListTagOptionsWithContext(ctx context.Context, input *servicecatalog.ListTagOptionsInput, opts ...request.Option) (*servicecatalog.ListTagOptionsOutput, error)
+	ListTagOptionsPagesWithContext(ctx context.Context, input *servicecatalog.ListTagOptionsInput, cb func(*servicecatalog.ListTagOptionsOutput, bool) bool, opts ...request.Option) error
 	ProvisionProductWithContext(ctx context.Context, input *servicecatalog.ProvisionProductInput, opts ...request.Option) (*servicecatalog.ProvisionProductOutput, error)
 	RejectPortfolioShareWithContext(ctx context.Context, input *servicecatalog.RejectPortfolioShareInput, opts ...request.Option) (*servicecatalog.RejectPortfolioShareOutput, error)
 	ScanProvisionedProductsWithContext(ctx context.Context, input *servicecatalog.ScanProvisionedProductsInput, opts ...request.Option) (*servicecatalog.ScanProvisionedProductsOutput, error)
 	SearchProductsWithContext(ctx context.Context, input *servicecatalog.SearchProductsInput, opts ...request.Option) (*servicecatalog.SearchProductsOutput, error)
+	SearchProductsPagesWithContext(ctx context.Context, input *servicecatalog.SearchProductsInput, cb func(*servicecatalog.SearchProductsOutput, bool) bool, opts ...request.Option) error
 	SearchProductsAsAdminWithContext(ctx context.Context, input *servicecatalog.SearchProductsAsAdminInput, opts ...request.Option) (*servicecatalog.SearchProductsAsAdminOutput, error)
+	SearchProductsAsAdminPagesWithContext(ctx context.Context, input *servicecatalog.SearchProductsAsAdminInput, cb func(*servicecatalog.SearchProductsAsAdminOutput, bool) bool, opts ...request.Option) error
 	SearchProvisionedProductsWithContext(ctx context.Context, input *servicecatalog.SearchProvisionedProductsInput, opts ...request.Option) (*servicecatalog.SearchProvisionedProductsOutput, error)
+	SearchProvisionedProductsPagesWithContext(ctx context.Context, input *servicecatalog.SearchProvisionedProductsInput, cb func(*servicecatalog.SearchProvisionedProductsOutput, bool) bool, opts ...request.Option) error
 	TerminateProvisionedProductWithContext(ctx context.Context, input *servicecatalog.TerminateProvisionedProductInput, opts ...request.Option) (*servicecatalog.TerminateProvisionedProductOutput, error)
 	UpdateConstraintWithContext(ctx context.Context, input *servicecatalog.UpdateConstraintInput, opts ...request.Option) (*servicecatalog.UpdateConstraintOutput, error)
 	UpdatePortfolioWithContext(ctx context.Context, input *servicecatalog.UpdatePortfolioInput, opts ...request.Option) (*servicecatalog.UpdatePortfolioOutput, error)
@@ -1182,6 +1198,26 @@ func (c *Client) ListAcceptedPortfolioSharesWithContext(ctx context.Context, inp
 	return req.Output.(*servicecatalog.ListAcceptedPortfolioSharesOutput), req.Error
 }
 
+func (c *Client) ListAcceptedPortfolioSharesPagesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, cb func(*servicecatalog.ListAcceptedPortfolioSharesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListAcceptedPortfolioShares",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListAcceptedPortfolioSharesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBudgetsForResourceWithContext(ctx context.Context, input *servicecatalog.ListBudgetsForResourceInput, opts ...request.Option) (*servicecatalog.ListBudgetsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1201,6 +1237,26 @@ func (c *Client) ListBudgetsForResourceWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*servicecatalog.ListBudgetsForResourceOutput), req.Error
+}
+
+func (c *Client) ListBudgetsForResourcePagesWithContext(ctx context.Context, input *servicecatalog.ListBudgetsForResourceInput, cb func(*servicecatalog.ListBudgetsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListBudgetsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListBudgetsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListConstraintsForPortfolioWithContext(ctx context.Context, input *servicecatalog.ListConstraintsForPortfolioInput, opts ...request.Option) (*servicecatalog.ListConstraintsForPortfolioOutput, error) {
@@ -1224,6 +1280,26 @@ func (c *Client) ListConstraintsForPortfolioWithContext(ctx context.Context, inp
 	return req.Output.(*servicecatalog.ListConstraintsForPortfolioOutput), req.Error
 }
 
+func (c *Client) ListConstraintsForPortfolioPagesWithContext(ctx context.Context, input *servicecatalog.ListConstraintsForPortfolioInput, cb func(*servicecatalog.ListConstraintsForPortfolioOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListConstraintsForPortfolio",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListConstraintsForPortfolioPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLaunchPathsWithContext(ctx context.Context, input *servicecatalog.ListLaunchPathsInput, opts ...request.Option) (*servicecatalog.ListLaunchPathsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1245,6 +1321,26 @@ func (c *Client) ListLaunchPathsWithContext(ctx context.Context, input *servicec
 	return req.Output.(*servicecatalog.ListLaunchPathsOutput), req.Error
 }
 
+func (c *Client) ListLaunchPathsPagesWithContext(ctx context.Context, input *servicecatalog.ListLaunchPathsInput, cb func(*servicecatalog.ListLaunchPathsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListLaunchPaths",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListLaunchPathsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOrganizationPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListOrganizationPortfolioAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1264,6 +1360,26 @@ func (c *Client) ListOrganizationPortfolioAccessWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*servicecatalog.ListOrganizationPortfolioAccessOutput), req.Error
+}
+
+func (c *Client) ListOrganizationPortfolioAccessPagesWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, cb func(*servicecatalog.ListOrganizationPortfolioAccessOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListOrganizationPortfolioAccess",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListOrganizationPortfolioAccessPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListPortfolioAccessOutput, error) {
@@ -1308,6 +1424,26 @@ func (c *Client) ListPortfoliosWithContext(ctx context.Context, input *serviceca
 	return req.Output.(*servicecatalog.ListPortfoliosOutput), req.Error
 }
 
+func (c *Client) ListPortfoliosPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, cb func(*servicecatalog.ListPortfoliosOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListPortfolios",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListPortfoliosPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPortfoliosForProductWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosForProductInput, opts ...request.Option) (*servicecatalog.ListPortfoliosForProductOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1329,6 +1465,26 @@ func (c *Client) ListPortfoliosForProductWithContext(ctx context.Context, input 
 	return req.Output.(*servicecatalog.ListPortfoliosForProductOutput), req.Error
 }
 
+func (c *Client) ListPortfoliosForProductPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosForProductInput, cb func(*servicecatalog.ListPortfoliosForProductOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListPortfoliosForProduct",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListPortfoliosForProductPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPrincipalsForPortfolioWithContext(ctx context.Context, input *servicecatalog.ListPrincipalsForPortfolioInput, opts ...request.Option) (*servicecatalog.ListPrincipalsForPortfolioOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1348,6 +1504,26 @@ func (c *Client) ListPrincipalsForPortfolioWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*servicecatalog.ListPrincipalsForPortfolioOutput), req.Error
+}
+
+func (c *Client) ListPrincipalsForPortfolioPagesWithContext(ctx context.Context, input *servicecatalog.ListPrincipalsForPortfolioInput, cb func(*servicecatalog.ListPrincipalsForPortfolioOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListPrincipalsForPortfolio",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListPrincipalsForPortfolioPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListProvisionedProductPlansWithContext(ctx context.Context, input *servicecatalog.ListProvisionedProductPlansInput, opts ...request.Option) (*servicecatalog.ListProvisionedProductPlansOutput, error) {
@@ -1413,6 +1589,26 @@ func (c *Client) ListProvisioningArtifactsForServiceActionWithContext(ctx contex
 	return req.Output.(*servicecatalog.ListProvisioningArtifactsForServiceActionOutput), req.Error
 }
 
+func (c *Client) ListProvisioningArtifactsForServiceActionPagesWithContext(ctx context.Context, input *servicecatalog.ListProvisioningArtifactsForServiceActionInput, cb func(*servicecatalog.ListProvisioningArtifactsForServiceActionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListProvisioningArtifactsForServiceAction",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListProvisioningArtifactsForServiceActionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRecordHistoryWithContext(ctx context.Context, input *servicecatalog.ListRecordHistoryInput, opts ...request.Option) (*servicecatalog.ListRecordHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1455,6 +1651,26 @@ func (c *Client) ListResourcesForTagOptionWithContext(ctx context.Context, input
 	return req.Output.(*servicecatalog.ListResourcesForTagOptionOutput), req.Error
 }
 
+func (c *Client) ListResourcesForTagOptionPagesWithContext(ctx context.Context, input *servicecatalog.ListResourcesForTagOptionInput, cb func(*servicecatalog.ListResourcesForTagOptionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListResourcesForTagOption",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListResourcesForTagOptionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServiceActionsWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsInput, opts ...request.Option) (*servicecatalog.ListServiceActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1476,6 +1692,26 @@ func (c *Client) ListServiceActionsWithContext(ctx context.Context, input *servi
 	return req.Output.(*servicecatalog.ListServiceActionsOutput), req.Error
 }
 
+func (c *Client) ListServiceActionsPagesWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsInput, cb func(*servicecatalog.ListServiceActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListServiceActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListServiceActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServiceActionsForProvisioningArtifactWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsForProvisioningArtifactInput, opts ...request.Option) (*servicecatalog.ListServiceActionsForProvisioningArtifactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1495,6 +1731,26 @@ func (c *Client) ListServiceActionsForProvisioningArtifactWithContext(ctx contex
 	})
 
 	return req.Output.(*servicecatalog.ListServiceActionsForProvisioningArtifactOutput), req.Error
+}
+
+func (c *Client) ListServiceActionsForProvisioningArtifactPagesWithContext(ctx context.Context, input *servicecatalog.ListServiceActionsForProvisioningArtifactInput, cb func(*servicecatalog.ListServiceActionsForProvisioningArtifactOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListServiceActionsForProvisioningArtifact",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListServiceActionsForProvisioningArtifactPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListStackInstancesForProvisionedProductWithContext(ctx context.Context, input *servicecatalog.ListStackInstancesForProvisionedProductInput, opts ...request.Option) (*servicecatalog.ListStackInstancesForProvisionedProductOutput, error) {
@@ -1537,6 +1793,26 @@ func (c *Client) ListTagOptionsWithContext(ctx context.Context, input *serviceca
 	})
 
 	return req.Output.(*servicecatalog.ListTagOptionsOutput), req.Error
+}
+
+func (c *Client) ListTagOptionsPagesWithContext(ctx context.Context, input *servicecatalog.ListTagOptionsInput, cb func(*servicecatalog.ListTagOptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListTagOptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListTagOptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ProvisionProductWithContext(ctx context.Context, input *servicecatalog.ProvisionProductInput, opts ...request.Option) (*servicecatalog.ProvisionProductOutput, error) {
@@ -1623,6 +1899,26 @@ func (c *Client) SearchProductsWithContext(ctx context.Context, input *serviceca
 	return req.Output.(*servicecatalog.SearchProductsOutput), req.Error
 }
 
+func (c *Client) SearchProductsPagesWithContext(ctx context.Context, input *servicecatalog.SearchProductsInput, cb func(*servicecatalog.SearchProductsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "SearchProducts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.SearchProductsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchProductsAsAdminWithContext(ctx context.Context, input *servicecatalog.SearchProductsAsAdminInput, opts ...request.Option) (*servicecatalog.SearchProductsAsAdminOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1644,6 +1940,26 @@ func (c *Client) SearchProductsAsAdminWithContext(ctx context.Context, input *se
 	return req.Output.(*servicecatalog.SearchProductsAsAdminOutput), req.Error
 }
 
+func (c *Client) SearchProductsAsAdminPagesWithContext(ctx context.Context, input *servicecatalog.SearchProductsAsAdminInput, cb func(*servicecatalog.SearchProductsAsAdminOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "SearchProductsAsAdmin",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.SearchProductsAsAdminPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchProvisionedProductsWithContext(ctx context.Context, input *servicecatalog.SearchProvisionedProductsInput, opts ...request.Option) (*servicecatalog.SearchProvisionedProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicecatalog",
@@ -1663,6 +1979,26 @@ func (c *Client) SearchProvisionedProductsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*servicecatalog.SearchProvisionedProductsOutput), req.Error
+}
+
+func (c *Client) SearchProvisionedProductsPagesWithContext(ctx context.Context, input *servicecatalog.SearchProvisionedProductsInput, cb func(*servicecatalog.SearchProvisionedProductsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "SearchProvisionedProducts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.SearchProvisionedProductsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TerminateProvisionedProductWithContext(ctx context.Context, input *servicecatalog.TerminateProvisionedProductInput, opts ...request.Option) (*servicecatalog.TerminateProvisionedProductOutput, error) {

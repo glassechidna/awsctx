@@ -22,11 +22,17 @@ type ManagedBlockchain interface {
 	GetNodeWithContext(ctx context.Context, input *managedblockchain.GetNodeInput, opts ...request.Option) (*managedblockchain.GetNodeOutput, error)
 	GetProposalWithContext(ctx context.Context, input *managedblockchain.GetProposalInput, opts ...request.Option) (*managedblockchain.GetProposalOutput, error)
 	ListInvitationsWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, opts ...request.Option) (*managedblockchain.ListInvitationsOutput, error)
+	ListInvitationsPagesWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, cb func(*managedblockchain.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *managedblockchain.ListMembersInput, opts ...request.Option) (*managedblockchain.ListMembersOutput, error)
+	ListMembersPagesWithContext(ctx context.Context, input *managedblockchain.ListMembersInput, cb func(*managedblockchain.ListMembersOutput, bool) bool, opts ...request.Option) error
 	ListNetworksWithContext(ctx context.Context, input *managedblockchain.ListNetworksInput, opts ...request.Option) (*managedblockchain.ListNetworksOutput, error)
+	ListNetworksPagesWithContext(ctx context.Context, input *managedblockchain.ListNetworksInput, cb func(*managedblockchain.ListNetworksOutput, bool) bool, opts ...request.Option) error
 	ListNodesWithContext(ctx context.Context, input *managedblockchain.ListNodesInput, opts ...request.Option) (*managedblockchain.ListNodesOutput, error)
+	ListNodesPagesWithContext(ctx context.Context, input *managedblockchain.ListNodesInput, cb func(*managedblockchain.ListNodesOutput, bool) bool, opts ...request.Option) error
 	ListProposalVotesWithContext(ctx context.Context, input *managedblockchain.ListProposalVotesInput, opts ...request.Option) (*managedblockchain.ListProposalVotesOutput, error)
+	ListProposalVotesPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalVotesInput, cb func(*managedblockchain.ListProposalVotesOutput, bool) bool, opts ...request.Option) error
 	ListProposalsWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, opts ...request.Option) (*managedblockchain.ListProposalsOutput, error)
+	ListProposalsPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, cb func(*managedblockchain.ListProposalsOutput, bool) bool, opts ...request.Option) error
 	RejectInvitationWithContext(ctx context.Context, input *managedblockchain.RejectInvitationInput, opts ...request.Option) (*managedblockchain.RejectInvitationOutput, error)
 	VoteOnProposalWithContext(ctx context.Context, input *managedblockchain.VoteOnProposalInput, opts ...request.Option) (*managedblockchain.VoteOnProposalOutput, error)
 }
@@ -277,6 +283,26 @@ func (c *Client) ListInvitationsWithContext(ctx context.Context, input *managedb
 	return req.Output.(*managedblockchain.ListInvitationsOutput), req.Error
 }
 
+func (c *Client) ListInvitationsPagesWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, cb func(*managedblockchain.ListInvitationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListInvitations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListInvitationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMembersWithContext(ctx context.Context, input *managedblockchain.ListMembersInput, opts ...request.Option) (*managedblockchain.ListMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
@@ -296,6 +322,26 @@ func (c *Client) ListMembersWithContext(ctx context.Context, input *managedblock
 	})
 
 	return req.Output.(*managedblockchain.ListMembersOutput), req.Error
+}
+
+func (c *Client) ListMembersPagesWithContext(ctx context.Context, input *managedblockchain.ListMembersInput, cb func(*managedblockchain.ListMembersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListMembers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListMembersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListNetworksWithContext(ctx context.Context, input *managedblockchain.ListNetworksInput, opts ...request.Option) (*managedblockchain.ListNetworksOutput, error) {
@@ -319,6 +365,26 @@ func (c *Client) ListNetworksWithContext(ctx context.Context, input *managedbloc
 	return req.Output.(*managedblockchain.ListNetworksOutput), req.Error
 }
 
+func (c *Client) ListNetworksPagesWithContext(ctx context.Context, input *managedblockchain.ListNetworksInput, cb func(*managedblockchain.ListNetworksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListNetworks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListNetworksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListNodesWithContext(ctx context.Context, input *managedblockchain.ListNodesInput, opts ...request.Option) (*managedblockchain.ListNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
@@ -338,6 +404,26 @@ func (c *Client) ListNodesWithContext(ctx context.Context, input *managedblockch
 	})
 
 	return req.Output.(*managedblockchain.ListNodesOutput), req.Error
+}
+
+func (c *Client) ListNodesPagesWithContext(ctx context.Context, input *managedblockchain.ListNodesInput, cb func(*managedblockchain.ListNodesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListNodes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListNodesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListProposalVotesWithContext(ctx context.Context, input *managedblockchain.ListProposalVotesInput, opts ...request.Option) (*managedblockchain.ListProposalVotesOutput, error) {
@@ -361,6 +447,26 @@ func (c *Client) ListProposalVotesWithContext(ctx context.Context, input *manage
 	return req.Output.(*managedblockchain.ListProposalVotesOutput), req.Error
 }
 
+func (c *Client) ListProposalVotesPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalVotesInput, cb func(*managedblockchain.ListProposalVotesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListProposalVotes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListProposalVotesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProposalsWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, opts ...request.Option) (*managedblockchain.ListProposalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
@@ -380,6 +486,26 @@ func (c *Client) ListProposalsWithContext(ctx context.Context, input *managedblo
 	})
 
 	return req.Output.(*managedblockchain.ListProposalsOutput), req.Error
+}
+
+func (c *Client) ListProposalsPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, cb func(*managedblockchain.ListProposalsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListProposals",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListProposalsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RejectInvitationWithContext(ctx context.Context, input *managedblockchain.RejectInvitationInput, opts ...request.Option) (*managedblockchain.RejectInvitationOutput, error) {

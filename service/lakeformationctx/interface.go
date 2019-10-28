@@ -17,9 +17,12 @@ type LakeFormation interface {
 	DescribeResourceWithContext(ctx context.Context, input *lakeformation.DescribeResourceInput, opts ...request.Option) (*lakeformation.DescribeResourceOutput, error)
 	GetDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.GetDataLakeSettingsInput, opts ...request.Option) (*lakeformation.GetDataLakeSettingsOutput, error)
 	GetEffectivePermissionsForPathWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, opts ...request.Option) (*lakeformation.GetEffectivePermissionsForPathOutput, error)
+	GetEffectivePermissionsForPathPagesWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, cb func(*lakeformation.GetEffectivePermissionsForPathOutput, bool) bool, opts ...request.Option) error
 	GrantPermissionsWithContext(ctx context.Context, input *lakeformation.GrantPermissionsInput, opts ...request.Option) (*lakeformation.GrantPermissionsOutput, error)
 	ListPermissionsWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, opts ...request.Option) (*lakeformation.ListPermissionsOutput, error)
+	ListPermissionsPagesWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, cb func(*lakeformation.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, opts ...request.Option) (*lakeformation.ListResourcesOutput, error)
+	ListResourcesPagesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, cb func(*lakeformation.ListResourcesOutput, bool) bool, opts ...request.Option) error
 	PutDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.PutDataLakeSettingsInput, opts ...request.Option) (*lakeformation.PutDataLakeSettingsOutput, error)
 	RegisterResourceWithContext(ctx context.Context, input *lakeformation.RegisterResourceInput, opts ...request.Option) (*lakeformation.RegisterResourceOutput, error)
 	RevokePermissionsWithContext(ctx context.Context, input *lakeformation.RevokePermissionsInput, opts ...request.Option) (*lakeformation.RevokePermissionsOutput, error)
@@ -167,6 +170,26 @@ func (c *Client) GetEffectivePermissionsForPathWithContext(ctx context.Context, 
 	return req.Output.(*lakeformation.GetEffectivePermissionsForPathOutput), req.Error
 }
 
+func (c *Client) GetEffectivePermissionsForPathPagesWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, cb func(*lakeformation.GetEffectivePermissionsForPathOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "GetEffectivePermissionsForPath",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LakeFormationAPI.GetEffectivePermissionsForPathPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GrantPermissionsWithContext(ctx context.Context, input *lakeformation.GrantPermissionsInput, opts ...request.Option) (*lakeformation.GrantPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
@@ -209,6 +232,26 @@ func (c *Client) ListPermissionsWithContext(ctx context.Context, input *lakeform
 	return req.Output.(*lakeformation.ListPermissionsOutput), req.Error
 }
 
+func (c *Client) ListPermissionsPagesWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, cb func(*lakeformation.ListPermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "ListPermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LakeFormationAPI.ListPermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, opts ...request.Option) (*lakeformation.ListResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
@@ -228,6 +271,26 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, input *lakeformat
 	})
 
 	return req.Output.(*lakeformation.ListResourcesOutput), req.Error
+}
+
+func (c *Client) ListResourcesPagesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, cb func(*lakeformation.ListResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "ListResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LakeFormationAPI.ListResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.PutDataLakeSettingsInput, opts ...request.Option) (*lakeformation.PutDataLakeSettingsOutput, error) {

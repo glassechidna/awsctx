@@ -20,10 +20,15 @@ type Kafka interface {
 	DescribeConfigurationRevisionWithContext(ctx context.Context, input *kafka.DescribeConfigurationRevisionInput, opts ...request.Option) (*kafka.DescribeConfigurationRevisionOutput, error)
 	GetBootstrapBrokersWithContext(ctx context.Context, input *kafka.GetBootstrapBrokersInput, opts ...request.Option) (*kafka.GetBootstrapBrokersOutput, error)
 	ListClusterOperationsWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, opts ...request.Option) (*kafka.ListClusterOperationsOutput, error)
+	ListClusterOperationsPagesWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, cb func(*kafka.ListClusterOperationsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *kafka.ListClustersInput, opts ...request.Option) (*kafka.ListClustersOutput, error)
+	ListClustersPagesWithContext(ctx context.Context, input *kafka.ListClustersInput, cb func(*kafka.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListConfigurationRevisionsWithContext(ctx context.Context, input *kafka.ListConfigurationRevisionsInput, opts ...request.Option) (*kafka.ListConfigurationRevisionsOutput, error)
+	ListConfigurationRevisionsPagesWithContext(ctx context.Context, input *kafka.ListConfigurationRevisionsInput, cb func(*kafka.ListConfigurationRevisionsOutput, bool) bool, opts ...request.Option) error
 	ListConfigurationsWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, opts ...request.Option) (*kafka.ListConfigurationsOutput, error)
+	ListConfigurationsPagesWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, cb func(*kafka.ListConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error)
+	ListNodesPagesWithContext(ctx context.Context, input *kafka.ListNodesInput, cb func(*kafka.ListNodesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kafka.TagResourceInput, opts ...request.Option) (*kafka.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *kafka.UntagResourceInput, opts ...request.Option) (*kafka.UntagResourceOutput, error)
@@ -236,6 +241,26 @@ func (c *Client) ListClusterOperationsWithContext(ctx context.Context, input *ka
 	return req.Output.(*kafka.ListClusterOperationsOutput), req.Error
 }
 
+func (c *Client) ListClusterOperationsPagesWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, cb func(*kafka.ListClusterOperationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListClusterOperations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListClusterOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListClustersWithContext(ctx context.Context, input *kafka.ListClustersInput, opts ...request.Option) (*kafka.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
@@ -255,6 +280,26 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *kafka.ListC
 	})
 
 	return req.Output.(*kafka.ListClustersOutput), req.Error
+}
+
+func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *kafka.ListClustersInput, cb func(*kafka.ListClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, input *kafka.ListConfigurationRevisionsInput, opts ...request.Option) (*kafka.ListConfigurationRevisionsOutput, error) {
@@ -278,6 +323,26 @@ func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, inpu
 	return req.Output.(*kafka.ListConfigurationRevisionsOutput), req.Error
 }
 
+func (c *Client) ListConfigurationRevisionsPagesWithContext(ctx context.Context, input *kafka.ListConfigurationRevisionsInput, cb func(*kafka.ListConfigurationRevisionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListConfigurationRevisions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListConfigurationRevisionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, opts ...request.Option) (*kafka.ListConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
@@ -299,6 +364,26 @@ func (c *Client) ListConfigurationsWithContext(ctx context.Context, input *kafka
 	return req.Output.(*kafka.ListConfigurationsOutput), req.Error
 }
 
+func (c *Client) ListConfigurationsPagesWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, cb func(*kafka.ListConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
@@ -318,6 +403,26 @@ func (c *Client) ListNodesWithContext(ctx context.Context, input *kafka.ListNode
 	})
 
 	return req.Output.(*kafka.ListNodesOutput), req.Error
+}
+
+func (c *Client) ListNodesPagesWithContext(ctx context.Context, input *kafka.ListNodesInput, cb func(*kafka.ListNodesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListNodes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListNodesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error) {

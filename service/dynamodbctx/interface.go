@@ -12,6 +12,7 @@ import (
 
 type DynamoDB interface {
 	BatchGetItemWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, opts ...request.Option) (*dynamodb.BatchGetItemOutput, error)
+	BatchGetItemPagesWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, cb func(*dynamodb.BatchGetItemOutput, bool) bool, opts ...request.Option) error
 	BatchWriteItemWithContext(ctx context.Context, input *dynamodb.BatchWriteItemInput, opts ...request.Option) (*dynamodb.BatchWriteItemOutput, error)
 	CreateBackupWithContext(ctx context.Context, input *dynamodb.CreateBackupInput, opts ...request.Option) (*dynamodb.CreateBackupOutput, error)
 	CreateGlobalTableWithContext(ctx context.Context, input *dynamodb.CreateGlobalTableInput, opts ...request.Option) (*dynamodb.CreateGlobalTableOutput, error)
@@ -31,12 +32,15 @@ type DynamoDB interface {
 	ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error)
 	ListGlobalTablesWithContext(ctx context.Context, input *dynamodb.ListGlobalTablesInput, opts ...request.Option) (*dynamodb.ListGlobalTablesOutput, error)
 	ListTablesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, opts ...request.Option) (*dynamodb.ListTablesOutput, error)
+	ListTablesPagesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, cb func(*dynamodb.ListTablesOutput, bool) bool, opts ...request.Option) error
 	ListTagsOfResourceWithContext(ctx context.Context, input *dynamodb.ListTagsOfResourceInput, opts ...request.Option) (*dynamodb.ListTagsOfResourceOutput, error)
 	PutItemWithContext(ctx context.Context, input *dynamodb.PutItemInput, opts ...request.Option) (*dynamodb.PutItemOutput, error)
 	QueryWithContext(ctx context.Context, input *dynamodb.QueryInput, opts ...request.Option) (*dynamodb.QueryOutput, error)
+	QueryPagesWithContext(ctx context.Context, input *dynamodb.QueryInput, cb func(*dynamodb.QueryOutput, bool) bool, opts ...request.Option) error
 	RestoreTableFromBackupWithContext(ctx context.Context, input *dynamodb.RestoreTableFromBackupInput, opts ...request.Option) (*dynamodb.RestoreTableFromBackupOutput, error)
 	RestoreTableToPointInTimeWithContext(ctx context.Context, input *dynamodb.RestoreTableToPointInTimeInput, opts ...request.Option) (*dynamodb.RestoreTableToPointInTimeOutput, error)
 	ScanWithContext(ctx context.Context, input *dynamodb.ScanInput, opts ...request.Option) (*dynamodb.ScanOutput, error)
+	ScanPagesWithContext(ctx context.Context, input *dynamodb.ScanInput, cb func(*dynamodb.ScanOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *dynamodb.TagResourceInput, opts ...request.Option) (*dynamodb.TagResourceOutput, error)
 	TransactGetItemsWithContext(ctx context.Context, input *dynamodb.TransactGetItemsInput, opts ...request.Option) (*dynamodb.TransactGetItemsOutput, error)
 	TransactWriteItemsWithContext(ctx context.Context, input *dynamodb.TransactWriteItemsInput, opts ...request.Option) (*dynamodb.TransactWriteItemsOutput, error)
@@ -83,6 +87,26 @@ func (c *Client) BatchGetItemWithContext(ctx context.Context, input *dynamodb.Ba
 	})
 
 	return req.Output.(*dynamodb.BatchGetItemOutput), req.Error
+}
+
+func (c *Client) BatchGetItemPagesWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, cb func(*dynamodb.BatchGetItemOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "BatchGetItem",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DynamoDBAPI.BatchGetItemPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) BatchWriteItemWithContext(ctx context.Context, input *dynamodb.BatchWriteItemInput, opts ...request.Option) (*dynamodb.BatchWriteItemOutput, error) {
@@ -484,6 +508,26 @@ func (c *Client) ListTablesWithContext(ctx context.Context, input *dynamodb.List
 	return req.Output.(*dynamodb.ListTablesOutput), req.Error
 }
 
+func (c *Client) ListTablesPagesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, cb func(*dynamodb.ListTablesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ListTables",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DynamoDBAPI.ListTablesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsOfResourceWithContext(ctx context.Context, input *dynamodb.ListTagsOfResourceInput, opts ...request.Option) (*dynamodb.ListTagsOfResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
@@ -547,6 +591,26 @@ func (c *Client) QueryWithContext(ctx context.Context, input *dynamodb.QueryInpu
 	return req.Output.(*dynamodb.QueryOutput), req.Error
 }
 
+func (c *Client) QueryPagesWithContext(ctx context.Context, input *dynamodb.QueryInput, cb func(*dynamodb.QueryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "Query",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DynamoDBAPI.QueryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) RestoreTableFromBackupWithContext(ctx context.Context, input *dynamodb.RestoreTableFromBackupInput, opts ...request.Option) (*dynamodb.RestoreTableFromBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
@@ -608,6 +672,26 @@ func (c *Client) ScanWithContext(ctx context.Context, input *dynamodb.ScanInput,
 	})
 
 	return req.Output.(*dynamodb.ScanOutput), req.Error
+}
+
+func (c *Client) ScanPagesWithContext(ctx context.Context, input *dynamodb.ScanInput, cb func(*dynamodb.ScanOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "Scan",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DynamoDBAPI.ScanPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *dynamodb.TagResourceInput, opts ...request.Option) (*dynamodb.TagResourceOutput, error) {

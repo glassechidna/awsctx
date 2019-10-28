@@ -47,7 +47,9 @@ type SES interface {
 	GetTemplateWithContext(ctx context.Context, input *ses.GetTemplateInput, opts ...request.Option) (*ses.GetTemplateOutput, error)
 	ListConfigurationSetsWithContext(ctx context.Context, input *ses.ListConfigurationSetsInput, opts ...request.Option) (*ses.ListConfigurationSetsOutput, error)
 	ListCustomVerificationEmailTemplatesWithContext(ctx context.Context, input *ses.ListCustomVerificationEmailTemplatesInput, opts ...request.Option) (*ses.ListCustomVerificationEmailTemplatesOutput, error)
+	ListCustomVerificationEmailTemplatesPagesWithContext(ctx context.Context, input *ses.ListCustomVerificationEmailTemplatesInput, cb func(*ses.ListCustomVerificationEmailTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListIdentitiesWithContext(ctx context.Context, input *ses.ListIdentitiesInput, opts ...request.Option) (*ses.ListIdentitiesOutput, error)
+	ListIdentitiesPagesWithContext(ctx context.Context, input *ses.ListIdentitiesInput, cb func(*ses.ListIdentitiesOutput, bool) bool, opts ...request.Option) error
 	ListIdentityPoliciesWithContext(ctx context.Context, input *ses.ListIdentityPoliciesInput, opts ...request.Option) (*ses.ListIdentityPoliciesOutput, error)
 	ListReceiptFiltersWithContext(ctx context.Context, input *ses.ListReceiptFiltersInput, opts ...request.Option) (*ses.ListReceiptFiltersOutput, error)
 	ListReceiptRuleSetsWithContext(ctx context.Context, input *ses.ListReceiptRuleSetsInput, opts ...request.Option) (*ses.ListReceiptRuleSetsOutput, error)
@@ -855,6 +857,26 @@ func (c *Client) ListCustomVerificationEmailTemplatesWithContext(ctx context.Con
 	return req.Output.(*ses.ListCustomVerificationEmailTemplatesOutput), req.Error
 }
 
+func (c *Client) ListCustomVerificationEmailTemplatesPagesWithContext(ctx context.Context, input *ses.ListCustomVerificationEmailTemplatesInput, cb func(*ses.ListCustomVerificationEmailTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ses",
+		Action:  "ListCustomVerificationEmailTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SESAPI.ListCustomVerificationEmailTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListIdentitiesWithContext(ctx context.Context, input *ses.ListIdentitiesInput, opts ...request.Option) (*ses.ListIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ses",
@@ -874,6 +896,26 @@ func (c *Client) ListIdentitiesWithContext(ctx context.Context, input *ses.ListI
 	})
 
 	return req.Output.(*ses.ListIdentitiesOutput), req.Error
+}
+
+func (c *Client) ListIdentitiesPagesWithContext(ctx context.Context, input *ses.ListIdentitiesInput, cb func(*ses.ListIdentitiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ses",
+		Action:  "ListIdentities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SESAPI.ListIdentitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListIdentityPoliciesWithContext(ctx context.Context, input *ses.ListIdentityPoliciesInput, opts ...request.Option) (*ses.ListIdentityPoliciesOutput, error) {

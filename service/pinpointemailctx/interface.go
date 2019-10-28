@@ -26,16 +26,22 @@ type PinpointEmail interface {
 	GetConfigurationSetEventDestinationsWithContext(ctx context.Context, input *pinpointemail.GetConfigurationSetEventDestinationsInput, opts ...request.Option) (*pinpointemail.GetConfigurationSetEventDestinationsOutput, error)
 	GetDedicatedIpWithContext(ctx context.Context, input *pinpointemail.GetDedicatedIpInput, opts ...request.Option) (*pinpointemail.GetDedicatedIpOutput, error)
 	GetDedicatedIpsWithContext(ctx context.Context, input *pinpointemail.GetDedicatedIpsInput, opts ...request.Option) (*pinpointemail.GetDedicatedIpsOutput, error)
+	GetDedicatedIpsPagesWithContext(ctx context.Context, input *pinpointemail.GetDedicatedIpsInput, cb func(*pinpointemail.GetDedicatedIpsOutput, bool) bool, opts ...request.Option) error
 	GetDeliverabilityDashboardOptionsWithContext(ctx context.Context, input *pinpointemail.GetDeliverabilityDashboardOptionsInput, opts ...request.Option) (*pinpointemail.GetDeliverabilityDashboardOptionsOutput, error)
 	GetDeliverabilityTestReportWithContext(ctx context.Context, input *pinpointemail.GetDeliverabilityTestReportInput, opts ...request.Option) (*pinpointemail.GetDeliverabilityTestReportOutput, error)
 	GetDomainDeliverabilityCampaignWithContext(ctx context.Context, input *pinpointemail.GetDomainDeliverabilityCampaignInput, opts ...request.Option) (*pinpointemail.GetDomainDeliverabilityCampaignOutput, error)
 	GetDomainStatisticsReportWithContext(ctx context.Context, input *pinpointemail.GetDomainStatisticsReportInput, opts ...request.Option) (*pinpointemail.GetDomainStatisticsReportOutput, error)
 	GetEmailIdentityWithContext(ctx context.Context, input *pinpointemail.GetEmailIdentityInput, opts ...request.Option) (*pinpointemail.GetEmailIdentityOutput, error)
 	ListConfigurationSetsWithContext(ctx context.Context, input *pinpointemail.ListConfigurationSetsInput, opts ...request.Option) (*pinpointemail.ListConfigurationSetsOutput, error)
+	ListConfigurationSetsPagesWithContext(ctx context.Context, input *pinpointemail.ListConfigurationSetsInput, cb func(*pinpointemail.ListConfigurationSetsOutput, bool) bool, opts ...request.Option) error
 	ListDedicatedIpPoolsWithContext(ctx context.Context, input *pinpointemail.ListDedicatedIpPoolsInput, opts ...request.Option) (*pinpointemail.ListDedicatedIpPoolsOutput, error)
+	ListDedicatedIpPoolsPagesWithContext(ctx context.Context, input *pinpointemail.ListDedicatedIpPoolsInput, cb func(*pinpointemail.ListDedicatedIpPoolsOutput, bool) bool, opts ...request.Option) error
 	ListDeliverabilityTestReportsWithContext(ctx context.Context, input *pinpointemail.ListDeliverabilityTestReportsInput, opts ...request.Option) (*pinpointemail.ListDeliverabilityTestReportsOutput, error)
+	ListDeliverabilityTestReportsPagesWithContext(ctx context.Context, input *pinpointemail.ListDeliverabilityTestReportsInput, cb func(*pinpointemail.ListDeliverabilityTestReportsOutput, bool) bool, opts ...request.Option) error
 	ListDomainDeliverabilityCampaignsWithContext(ctx context.Context, input *pinpointemail.ListDomainDeliverabilityCampaignsInput, opts ...request.Option) (*pinpointemail.ListDomainDeliverabilityCampaignsOutput, error)
+	ListDomainDeliverabilityCampaignsPagesWithContext(ctx context.Context, input *pinpointemail.ListDomainDeliverabilityCampaignsInput, cb func(*pinpointemail.ListDomainDeliverabilityCampaignsOutput, bool) bool, opts ...request.Option) error
 	ListEmailIdentitiesWithContext(ctx context.Context, input *pinpointemail.ListEmailIdentitiesInput, opts ...request.Option) (*pinpointemail.ListEmailIdentitiesOutput, error)
+	ListEmailIdentitiesPagesWithContext(ctx context.Context, input *pinpointemail.ListEmailIdentitiesInput, cb func(*pinpointemail.ListEmailIdentitiesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *pinpointemail.ListTagsForResourceInput, opts ...request.Option) (*pinpointemail.ListTagsForResourceOutput, error)
 	PutAccountDedicatedIpWarmupAttributesWithContext(ctx context.Context, input *pinpointemail.PutAccountDedicatedIpWarmupAttributesInput, opts ...request.Option) (*pinpointemail.PutAccountDedicatedIpWarmupAttributesOutput, error)
 	PutAccountSendingAttributesWithContext(ctx context.Context, input *pinpointemail.PutAccountSendingAttributesInput, opts ...request.Option) (*pinpointemail.PutAccountSendingAttributesOutput, error)
@@ -385,6 +391,26 @@ func (c *Client) GetDedicatedIpsWithContext(ctx context.Context, input *pinpoint
 	return req.Output.(*pinpointemail.GetDedicatedIpsOutput), req.Error
 }
 
+func (c *Client) GetDedicatedIpsPagesWithContext(ctx context.Context, input *pinpointemail.GetDedicatedIpsInput, cb func(*pinpointemail.GetDedicatedIpsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pinpointemail",
+		Action:  "GetDedicatedIps",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PinpointEmailAPI.GetDedicatedIpsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetDeliverabilityDashboardOptionsWithContext(ctx context.Context, input *pinpointemail.GetDeliverabilityDashboardOptionsInput, opts ...request.Option) (*pinpointemail.GetDeliverabilityDashboardOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
@@ -511,6 +537,26 @@ func (c *Client) ListConfigurationSetsWithContext(ctx context.Context, input *pi
 	return req.Output.(*pinpointemail.ListConfigurationSetsOutput), req.Error
 }
 
+func (c *Client) ListConfigurationSetsPagesWithContext(ctx context.Context, input *pinpointemail.ListConfigurationSetsInput, cb func(*pinpointemail.ListConfigurationSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pinpointemail",
+		Action:  "ListConfigurationSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PinpointEmailAPI.ListConfigurationSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDedicatedIpPoolsWithContext(ctx context.Context, input *pinpointemail.ListDedicatedIpPoolsInput, opts ...request.Option) (*pinpointemail.ListDedicatedIpPoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
@@ -530,6 +576,26 @@ func (c *Client) ListDedicatedIpPoolsWithContext(ctx context.Context, input *pin
 	})
 
 	return req.Output.(*pinpointemail.ListDedicatedIpPoolsOutput), req.Error
+}
+
+func (c *Client) ListDedicatedIpPoolsPagesWithContext(ctx context.Context, input *pinpointemail.ListDedicatedIpPoolsInput, cb func(*pinpointemail.ListDedicatedIpPoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pinpointemail",
+		Action:  "ListDedicatedIpPools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PinpointEmailAPI.ListDedicatedIpPoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDeliverabilityTestReportsWithContext(ctx context.Context, input *pinpointemail.ListDeliverabilityTestReportsInput, opts ...request.Option) (*pinpointemail.ListDeliverabilityTestReportsOutput, error) {
@@ -553,6 +619,26 @@ func (c *Client) ListDeliverabilityTestReportsWithContext(ctx context.Context, i
 	return req.Output.(*pinpointemail.ListDeliverabilityTestReportsOutput), req.Error
 }
 
+func (c *Client) ListDeliverabilityTestReportsPagesWithContext(ctx context.Context, input *pinpointemail.ListDeliverabilityTestReportsInput, cb func(*pinpointemail.ListDeliverabilityTestReportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pinpointemail",
+		Action:  "ListDeliverabilityTestReports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PinpointEmailAPI.ListDeliverabilityTestReportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDomainDeliverabilityCampaignsWithContext(ctx context.Context, input *pinpointemail.ListDomainDeliverabilityCampaignsInput, opts ...request.Option) (*pinpointemail.ListDomainDeliverabilityCampaignsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
@@ -574,6 +660,26 @@ func (c *Client) ListDomainDeliverabilityCampaignsWithContext(ctx context.Contex
 	return req.Output.(*pinpointemail.ListDomainDeliverabilityCampaignsOutput), req.Error
 }
 
+func (c *Client) ListDomainDeliverabilityCampaignsPagesWithContext(ctx context.Context, input *pinpointemail.ListDomainDeliverabilityCampaignsInput, cb func(*pinpointemail.ListDomainDeliverabilityCampaignsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pinpointemail",
+		Action:  "ListDomainDeliverabilityCampaigns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PinpointEmailAPI.ListDomainDeliverabilityCampaignsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListEmailIdentitiesWithContext(ctx context.Context, input *pinpointemail.ListEmailIdentitiesInput, opts ...request.Option) (*pinpointemail.ListEmailIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpointemail",
@@ -593,6 +699,26 @@ func (c *Client) ListEmailIdentitiesWithContext(ctx context.Context, input *pinp
 	})
 
 	return req.Output.(*pinpointemail.ListEmailIdentitiesOutput), req.Error
+}
+
+func (c *Client) ListEmailIdentitiesPagesWithContext(ctx context.Context, input *pinpointemail.ListEmailIdentitiesInput, cb func(*pinpointemail.ListEmailIdentitiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pinpointemail",
+		Action:  "ListEmailIdentities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PinpointEmailAPI.ListEmailIdentitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinpointemail.ListTagsForResourceInput, opts ...request.Option) (*pinpointemail.ListTagsForResourceOutput, error) {

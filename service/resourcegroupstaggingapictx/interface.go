@@ -12,8 +12,11 @@ import (
 
 type ResourceGroupsTaggingAPI interface {
 	GetResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.GetResourcesOutput, error)
+	GetResourcesPagesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetResourcesInput, cb func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, opts ...request.Option) error
 	GetTagKeysWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagKeysInput, opts ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error)
+	GetTagKeysPagesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagKeysInput, cb func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, opts ...request.Option) error
 	GetTagValuesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagValuesInput, opts ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error)
+	GetTagValuesPagesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagValuesInput, cb func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, opts ...request.Option) error
 	TagResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.TagResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error)
 	UntagResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.UntagResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.UntagResourcesOutput, error)
 }
@@ -54,6 +57,26 @@ func (c *Client) GetResourcesWithContext(ctx context.Context, input *resourcegro
 	return req.Output.(*resourcegroupstaggingapi.GetResourcesOutput), req.Error
 }
 
+func (c *Client) GetResourcesPagesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetResourcesInput, cb func(*resourcegroupstaggingapi.GetResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroupstaggingapi",
+		Action:  "GetResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ResourceGroupsTaggingAPIAPI.GetResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTagKeysWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagKeysInput, opts ...request.Option) (*resourcegroupstaggingapi.GetTagKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
@@ -75,6 +98,26 @@ func (c *Client) GetTagKeysWithContext(ctx context.Context, input *resourcegroup
 	return req.Output.(*resourcegroupstaggingapi.GetTagKeysOutput), req.Error
 }
 
+func (c *Client) GetTagKeysPagesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagKeysInput, cb func(*resourcegroupstaggingapi.GetTagKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroupstaggingapi",
+		Action:  "GetTagKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ResourceGroupsTaggingAPIAPI.GetTagKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTagValuesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagValuesInput, opts ...request.Option) (*resourcegroupstaggingapi.GetTagValuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroupstaggingapi",
@@ -94,6 +137,26 @@ func (c *Client) GetTagValuesWithContext(ctx context.Context, input *resourcegro
 	})
 
 	return req.Output.(*resourcegroupstaggingapi.GetTagValuesOutput), req.Error
+}
+
+func (c *Client) GetTagValuesPagesWithContext(ctx context.Context, input *resourcegroupstaggingapi.GetTagValuesInput, cb func(*resourcegroupstaggingapi.GetTagValuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroupstaggingapi",
+		Action:  "GetTagValues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ResourceGroupsTaggingAPIAPI.GetTagValuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourcesWithContext(ctx context.Context, input *resourcegroupstaggingapi.TagResourcesInput, opts ...request.Option) (*resourcegroupstaggingapi.TagResourcesOutput, error) {

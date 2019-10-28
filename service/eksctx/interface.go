@@ -16,8 +16,10 @@ type EKS interface {
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
 	DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error)
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
+	ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error)
 	ListUpdatesWithContext(ctx context.Context, input *eks.ListUpdatesInput, opts ...request.Option) (*eks.ListUpdatesOutput, error)
+	ListUpdatesPagesWithContext(ctx context.Context, input *eks.ListUpdatesInput, cb func(*eks.ListUpdatesOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *eks.UntagResourceInput, opts ...request.Option) (*eks.UntagResourceOutput, error)
 	UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error)
@@ -144,6 +146,26 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *eks.ListClu
 	return req.Output.(*eks.ListClustersOutput), req.Error
 }
 
+func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -184,6 +206,26 @@ func (c *Client) ListUpdatesWithContext(ctx context.Context, input *eks.ListUpda
 	})
 
 	return req.Output.(*eks.ListUpdatesOutput), req.Error
+}
+
+func (c *Client) ListUpdatesPagesWithContext(ctx context.Context, input *eks.ListUpdatesInput, cb func(*eks.ListUpdatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListUpdates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.ListUpdatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error) {

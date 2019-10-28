@@ -23,8 +23,11 @@ type ApplicationInsights interface {
 	DescribeProblemWithContext(ctx context.Context, input *applicationinsights.DescribeProblemInput, opts ...request.Option) (*applicationinsights.DescribeProblemOutput, error)
 	DescribeProblemObservationsWithContext(ctx context.Context, input *applicationinsights.DescribeProblemObservationsInput, opts ...request.Option) (*applicationinsights.DescribeProblemObservationsOutput, error)
 	ListApplicationsWithContext(ctx context.Context, input *applicationinsights.ListApplicationsInput, opts ...request.Option) (*applicationinsights.ListApplicationsOutput, error)
+	ListApplicationsPagesWithContext(ctx context.Context, input *applicationinsights.ListApplicationsInput, cb func(*applicationinsights.ListApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListComponentsWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, opts ...request.Option) (*applicationinsights.ListComponentsOutput, error)
+	ListComponentsPagesWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, cb func(*applicationinsights.ListComponentsOutput, bool) bool, opts ...request.Option) error
 	ListProblemsWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, opts ...request.Option) (*applicationinsights.ListProblemsOutput, error)
+	ListProblemsPagesWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, cb func(*applicationinsights.ListProblemsOutput, bool) bool, opts ...request.Option) error
 	UpdateApplicationWithContext(ctx context.Context, input *applicationinsights.UpdateApplicationInput, opts ...request.Option) (*applicationinsights.UpdateApplicationOutput, error)
 	UpdateComponentWithContext(ctx context.Context, input *applicationinsights.UpdateComponentInput, opts ...request.Option) (*applicationinsights.UpdateComponentOutput, error)
 	UpdateComponentConfigurationWithContext(ctx context.Context, input *applicationinsights.UpdateComponentConfigurationInput, opts ...request.Option) (*applicationinsights.UpdateComponentConfigurationOutput, error)
@@ -297,6 +300,26 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *applica
 	return req.Output.(*applicationinsights.ListApplicationsOutput), req.Error
 }
 
+func (c *Client) ListApplicationsPagesWithContext(ctx context.Context, input *applicationinsights.ListApplicationsInput, cb func(*applicationinsights.ListApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationInsightsAPI.ListApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListComponentsWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, opts ...request.Option) (*applicationinsights.ListComponentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
@@ -318,6 +341,26 @@ func (c *Client) ListComponentsWithContext(ctx context.Context, input *applicati
 	return req.Output.(*applicationinsights.ListComponentsOutput), req.Error
 }
 
+func (c *Client) ListComponentsPagesWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, cb func(*applicationinsights.ListComponentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListComponents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationInsightsAPI.ListComponentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProblemsWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, opts ...request.Option) (*applicationinsights.ListProblemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
@@ -337,6 +380,26 @@ func (c *Client) ListProblemsWithContext(ctx context.Context, input *application
 	})
 
 	return req.Output.(*applicationinsights.ListProblemsOutput), req.Error
+}
+
+func (c *Client) ListProblemsPagesWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, cb func(*applicationinsights.ListProblemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListProblems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationInsightsAPI.ListProblemsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *applicationinsights.UpdateApplicationInput, opts ...request.Option) (*applicationinsights.UpdateApplicationOutput, error) {

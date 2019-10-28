@@ -21,15 +21,20 @@ type MediaConvert interface {
 	DeletePresetWithContext(ctx context.Context, input *mediaconvert.DeletePresetInput, opts ...request.Option) (*mediaconvert.DeletePresetOutput, error)
 	DeleteQueueWithContext(ctx context.Context, input *mediaconvert.DeleteQueueInput, opts ...request.Option) (*mediaconvert.DeleteQueueOutput, error)
 	DescribeEndpointsWithContext(ctx context.Context, input *mediaconvert.DescribeEndpointsInput, opts ...request.Option) (*mediaconvert.DescribeEndpointsOutput, error)
+	DescribeEndpointsPagesWithContext(ctx context.Context, input *mediaconvert.DescribeEndpointsInput, cb func(*mediaconvert.DescribeEndpointsOutput, bool) bool, opts ...request.Option) error
 	DisassociateCertificateWithContext(ctx context.Context, input *mediaconvert.DisassociateCertificateInput, opts ...request.Option) (*mediaconvert.DisassociateCertificateOutput, error)
 	GetJobWithContext(ctx context.Context, input *mediaconvert.GetJobInput, opts ...request.Option) (*mediaconvert.GetJobOutput, error)
 	GetJobTemplateWithContext(ctx context.Context, input *mediaconvert.GetJobTemplateInput, opts ...request.Option) (*mediaconvert.GetJobTemplateOutput, error)
 	GetPresetWithContext(ctx context.Context, input *mediaconvert.GetPresetInput, opts ...request.Option) (*mediaconvert.GetPresetOutput, error)
 	GetQueueWithContext(ctx context.Context, input *mediaconvert.GetQueueInput, opts ...request.Option) (*mediaconvert.GetQueueOutput, error)
 	ListJobTemplatesWithContext(ctx context.Context, input *mediaconvert.ListJobTemplatesInput, opts ...request.Option) (*mediaconvert.ListJobTemplatesOutput, error)
+	ListJobTemplatesPagesWithContext(ctx context.Context, input *mediaconvert.ListJobTemplatesInput, cb func(*mediaconvert.ListJobTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *mediaconvert.ListJobsInput, opts ...request.Option) (*mediaconvert.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *mediaconvert.ListJobsInput, cb func(*mediaconvert.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListPresetsWithContext(ctx context.Context, input *mediaconvert.ListPresetsInput, opts ...request.Option) (*mediaconvert.ListPresetsOutput, error)
+	ListPresetsPagesWithContext(ctx context.Context, input *mediaconvert.ListPresetsInput, cb func(*mediaconvert.ListPresetsOutput, bool) bool, opts ...request.Option) error
 	ListQueuesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, opts ...request.Option) (*mediaconvert.ListQueuesOutput, error)
+	ListQueuesPagesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, cb func(*mediaconvert.ListQueuesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconvert.ListTagsForResourceInput, opts ...request.Option) (*mediaconvert.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediaconvert.TagResourceInput, opts ...request.Option) (*mediaconvert.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *mediaconvert.UntagResourceInput, opts ...request.Option) (*mediaconvert.UntagResourceOutput, error)
@@ -263,6 +268,26 @@ func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *mediac
 	return req.Output.(*mediaconvert.DescribeEndpointsOutput), req.Error
 }
 
+func (c *Client) DescribeEndpointsPagesWithContext(ctx context.Context, input *mediaconvert.DescribeEndpointsInput, cb func(*mediaconvert.DescribeEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "DescribeEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConvertAPI.DescribeEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DisassociateCertificateWithContext(ctx context.Context, input *mediaconvert.DisassociateCertificateInput, opts ...request.Option) (*mediaconvert.DisassociateCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
@@ -389,6 +414,26 @@ func (c *Client) ListJobTemplatesWithContext(ctx context.Context, input *mediaco
 	return req.Output.(*mediaconvert.ListJobTemplatesOutput), req.Error
 }
 
+func (c *Client) ListJobTemplatesPagesWithContext(ctx context.Context, input *mediaconvert.ListJobTemplatesInput, cb func(*mediaconvert.ListJobTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "ListJobTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConvertAPI.ListJobTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListJobsWithContext(ctx context.Context, input *mediaconvert.ListJobsInput, opts ...request.Option) (*mediaconvert.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
@@ -408,6 +453,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *mediaconvert.Li
 	})
 
 	return req.Output.(*mediaconvert.ListJobsOutput), req.Error
+}
+
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *mediaconvert.ListJobsInput, cb func(*mediaconvert.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConvertAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPresetsWithContext(ctx context.Context, input *mediaconvert.ListPresetsInput, opts ...request.Option) (*mediaconvert.ListPresetsOutput, error) {
@@ -431,6 +496,26 @@ func (c *Client) ListPresetsWithContext(ctx context.Context, input *mediaconvert
 	return req.Output.(*mediaconvert.ListPresetsOutput), req.Error
 }
 
+func (c *Client) ListPresetsPagesWithContext(ctx context.Context, input *mediaconvert.ListPresetsInput, cb func(*mediaconvert.ListPresetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "ListPresets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConvertAPI.ListPresetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListQueuesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, opts ...request.Option) (*mediaconvert.ListQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
@@ -450,6 +535,26 @@ func (c *Client) ListQueuesWithContext(ctx context.Context, input *mediaconvert.
 	})
 
 	return req.Output.(*mediaconvert.ListQueuesOutput), req.Error
+}
+
+func (c *Client) ListQueuesPagesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, cb func(*mediaconvert.ListQueuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "ListQueues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConvertAPI.ListQueuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediaconvert.ListTagsForResourceInput, opts ...request.Option) (*mediaconvert.ListTagsForResourceOutput, error) {

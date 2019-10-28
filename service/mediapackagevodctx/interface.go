@@ -21,8 +21,11 @@ type MediaPackageVod interface {
 	DescribePackagingConfigurationWithContext(ctx context.Context, input *mediapackagevod.DescribePackagingConfigurationInput, opts ...request.Option) (*mediapackagevod.DescribePackagingConfigurationOutput, error)
 	DescribePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.DescribePackagingGroupInput, opts ...request.Option) (*mediapackagevod.DescribePackagingGroupOutput, error)
 	ListAssetsWithContext(ctx context.Context, input *mediapackagevod.ListAssetsInput, opts ...request.Option) (*mediapackagevod.ListAssetsOutput, error)
+	ListAssetsPagesWithContext(ctx context.Context, input *mediapackagevod.ListAssetsInput, cb func(*mediapackagevod.ListAssetsOutput, bool) bool, opts ...request.Option) error
 	ListPackagingConfigurationsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingConfigurationsInput, opts ...request.Option) (*mediapackagevod.ListPackagingConfigurationsOutput, error)
+	ListPackagingConfigurationsPagesWithContext(ctx context.Context, input *mediapackagevod.ListPackagingConfigurationsInput, cb func(*mediapackagevod.ListPackagingConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListPackagingGroupsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, opts ...request.Option) (*mediapackagevod.ListPackagingGroupsOutput, error)
+	ListPackagingGroupsPagesWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, cb func(*mediapackagevod.ListPackagingGroupsOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -250,6 +253,26 @@ func (c *Client) ListAssetsWithContext(ctx context.Context, input *mediapackagev
 	return req.Output.(*mediapackagevod.ListAssetsOutput), req.Error
 }
 
+func (c *Client) ListAssetsPagesWithContext(ctx context.Context, input *mediapackagevod.ListAssetsInput, cb func(*mediapackagevod.ListAssetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "ListAssets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaPackageVodAPI.ListAssetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPackagingConfigurationsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingConfigurationsInput, opts ...request.Option) (*mediapackagevod.ListPackagingConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
@@ -271,6 +294,26 @@ func (c *Client) ListPackagingConfigurationsWithContext(ctx context.Context, inp
 	return req.Output.(*mediapackagevod.ListPackagingConfigurationsOutput), req.Error
 }
 
+func (c *Client) ListPackagingConfigurationsPagesWithContext(ctx context.Context, input *mediapackagevod.ListPackagingConfigurationsInput, cb func(*mediapackagevod.ListPackagingConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "ListPackagingConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaPackageVodAPI.ListPackagingConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPackagingGroupsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, opts ...request.Option) (*mediapackagevod.ListPackagingGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackagevod",
@@ -290,4 +333,24 @@ func (c *Client) ListPackagingGroupsWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*mediapackagevod.ListPackagingGroupsOutput), req.Error
+}
+
+func (c *Client) ListPackagingGroupsPagesWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, cb func(*mediapackagevod.ListPackagingGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "ListPackagingGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaPackageVodAPI.ListPackagingGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }

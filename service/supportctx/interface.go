@@ -16,7 +16,9 @@ type Support interface {
 	CreateCaseWithContext(ctx context.Context, input *support.CreateCaseInput, opts ...request.Option) (*support.CreateCaseOutput, error)
 	DescribeAttachmentWithContext(ctx context.Context, input *support.DescribeAttachmentInput, opts ...request.Option) (*support.DescribeAttachmentOutput, error)
 	DescribeCasesWithContext(ctx context.Context, input *support.DescribeCasesInput, opts ...request.Option) (*support.DescribeCasesOutput, error)
+	DescribeCasesPagesWithContext(ctx context.Context, input *support.DescribeCasesInput, cb func(*support.DescribeCasesOutput, bool) bool, opts ...request.Option) error
 	DescribeCommunicationsWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, opts ...request.Option) (*support.DescribeCommunicationsOutput, error)
+	DescribeCommunicationsPagesWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, cb func(*support.DescribeCommunicationsOutput, bool) bool, opts ...request.Option) error
 	DescribeServicesWithContext(ctx context.Context, input *support.DescribeServicesInput, opts ...request.Option) (*support.DescribeServicesOutput, error)
 	DescribeSeverityLevelsWithContext(ctx context.Context, input *support.DescribeSeverityLevelsInput, opts ...request.Option) (*support.DescribeSeverityLevelsOutput, error)
 	DescribeTrustedAdvisorCheckRefreshStatusesWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckRefreshStatusesInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckRefreshStatusesOutput, error)
@@ -147,6 +149,26 @@ func (c *Client) DescribeCasesWithContext(ctx context.Context, input *support.De
 	return req.Output.(*support.DescribeCasesOutput), req.Error
 }
 
+func (c *Client) DescribeCasesPagesWithContext(ctx context.Context, input *support.DescribeCasesInput, cb func(*support.DescribeCasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "support",
+		Action:  "DescribeCases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SupportAPI.DescribeCasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCommunicationsWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, opts ...request.Option) (*support.DescribeCommunicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
@@ -166,6 +188,26 @@ func (c *Client) DescribeCommunicationsWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*support.DescribeCommunicationsOutput), req.Error
+}
+
+func (c *Client) DescribeCommunicationsPagesWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, cb func(*support.DescribeCommunicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "support",
+		Action:  "DescribeCommunications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SupportAPI.DescribeCommunicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeServicesWithContext(ctx context.Context, input *support.DescribeServicesInput, opts ...request.Option) (*support.DescribeServicesOutput, error) {

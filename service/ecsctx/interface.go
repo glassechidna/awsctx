@@ -31,12 +31,18 @@ type ECS interface {
 	ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error)
 	ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error)
 	ListClustersWithContext(ctx context.Context, input *ecs.ListClustersInput, opts ...request.Option) (*ecs.ListClustersOutput, error)
+	ListClustersPagesWithContext(ctx context.Context, input *ecs.ListClustersInput, cb func(*ecs.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListContainerInstancesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, opts ...request.Option) (*ecs.ListContainerInstancesOutput, error)
+	ListContainerInstancesPagesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, cb func(*ecs.ListContainerInstancesOutput, bool) bool, opts ...request.Option) error
 	ListServicesWithContext(ctx context.Context, input *ecs.ListServicesInput, opts ...request.Option) (*ecs.ListServicesOutput, error)
+	ListServicesPagesWithContext(ctx context.Context, input *ecs.ListServicesInput, cb func(*ecs.ListServicesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *ecs.ListTagsForResourceInput, opts ...request.Option) (*ecs.ListTagsForResourceOutput, error)
 	ListTaskDefinitionFamiliesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionFamiliesInput, opts ...request.Option) (*ecs.ListTaskDefinitionFamiliesOutput, error)
+	ListTaskDefinitionFamiliesPagesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionFamiliesInput, cb func(*ecs.ListTaskDefinitionFamiliesOutput, bool) bool, opts ...request.Option) error
 	ListTaskDefinitionsWithContext(ctx context.Context, input *ecs.ListTaskDefinitionsInput, opts ...request.Option) (*ecs.ListTaskDefinitionsOutput, error)
+	ListTaskDefinitionsPagesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionsInput, cb func(*ecs.ListTaskDefinitionsOutput, bool) bool, opts ...request.Option) error
 	ListTasksWithContext(ctx context.Context, input *ecs.ListTasksInput, opts ...request.Option) (*ecs.ListTasksOutput, error)
+	ListTasksPagesWithContext(ctx context.Context, input *ecs.ListTasksInput, cb func(*ecs.ListTasksOutput, bool) bool, opts ...request.Option) error
 	PutAccountSettingWithContext(ctx context.Context, input *ecs.PutAccountSettingInput, opts ...request.Option) (*ecs.PutAccountSettingOutput, error)
 	PutAccountSettingDefaultWithContext(ctx context.Context, input *ecs.PutAccountSettingDefaultInput, opts ...request.Option) (*ecs.PutAccountSettingDefaultOutput, error)
 	PutAttributesWithContext(ctx context.Context, input *ecs.PutAttributesInput, opts ...request.Option) (*ecs.PutAttributesOutput, error)
@@ -493,6 +499,26 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *ecs.ListClu
 	return req.Output.(*ecs.ListClustersOutput), req.Error
 }
 
+func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *ecs.ListClustersInput, cb func(*ecs.ListClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListContainerInstancesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, opts ...request.Option) (*ecs.ListContainerInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
@@ -514,6 +540,26 @@ func (c *Client) ListContainerInstancesWithContext(ctx context.Context, input *e
 	return req.Output.(*ecs.ListContainerInstancesOutput), req.Error
 }
 
+func (c *Client) ListContainerInstancesPagesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, cb func(*ecs.ListContainerInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListContainerInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListContainerInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServicesWithContext(ctx context.Context, input *ecs.ListServicesInput, opts ...request.Option) (*ecs.ListServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
@@ -533,6 +579,26 @@ func (c *Client) ListServicesWithContext(ctx context.Context, input *ecs.ListSer
 	})
 
 	return req.Output.(*ecs.ListServicesOutput), req.Error
+}
+
+func (c *Client) ListServicesPagesWithContext(ctx context.Context, input *ecs.ListServicesInput, cb func(*ecs.ListServicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListServices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListServicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ecs.ListTagsForResourceInput, opts ...request.Option) (*ecs.ListTagsForResourceOutput, error) {
@@ -577,6 +643,26 @@ func (c *Client) ListTaskDefinitionFamiliesWithContext(ctx context.Context, inpu
 	return req.Output.(*ecs.ListTaskDefinitionFamiliesOutput), req.Error
 }
 
+func (c *Client) ListTaskDefinitionFamiliesPagesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionFamiliesInput, cb func(*ecs.ListTaskDefinitionFamiliesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListTaskDefinitionFamilies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListTaskDefinitionFamiliesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTaskDefinitionsWithContext(ctx context.Context, input *ecs.ListTaskDefinitionsInput, opts ...request.Option) (*ecs.ListTaskDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
@@ -598,6 +684,26 @@ func (c *Client) ListTaskDefinitionsWithContext(ctx context.Context, input *ecs.
 	return req.Output.(*ecs.ListTaskDefinitionsOutput), req.Error
 }
 
+func (c *Client) ListTaskDefinitionsPagesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionsInput, cb func(*ecs.ListTaskDefinitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListTaskDefinitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListTaskDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTasksWithContext(ctx context.Context, input *ecs.ListTasksInput, opts ...request.Option) (*ecs.ListTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
@@ -617,6 +723,26 @@ func (c *Client) ListTasksWithContext(ctx context.Context, input *ecs.ListTasksI
 	})
 
 	return req.Output.(*ecs.ListTasksOutput), req.Error
+}
+
+func (c *Client) ListTasksPagesWithContext(ctx context.Context, input *ecs.ListTasksInput, cb func(*ecs.ListTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutAccountSettingWithContext(ctx context.Context, input *ecs.PutAccountSettingInput, opts ...request.Option) (*ecs.PutAccountSettingOutput, error) {

@@ -16,9 +16,11 @@ type Cloud9 interface {
 	DeleteEnvironmentWithContext(ctx context.Context, input *cloud9.DeleteEnvironmentInput, opts ...request.Option) (*cloud9.DeleteEnvironmentOutput, error)
 	DeleteEnvironmentMembershipWithContext(ctx context.Context, input *cloud9.DeleteEnvironmentMembershipInput, opts ...request.Option) (*cloud9.DeleteEnvironmentMembershipOutput, error)
 	DescribeEnvironmentMembershipsWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentMembershipsInput, opts ...request.Option) (*cloud9.DescribeEnvironmentMembershipsOutput, error)
+	DescribeEnvironmentMembershipsPagesWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentMembershipsInput, cb func(*cloud9.DescribeEnvironmentMembershipsOutput, bool) bool, opts ...request.Option) error
 	DescribeEnvironmentStatusWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentStatusInput, opts ...request.Option) (*cloud9.DescribeEnvironmentStatusOutput, error)
 	DescribeEnvironmentsWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentsInput, opts ...request.Option) (*cloud9.DescribeEnvironmentsOutput, error)
 	ListEnvironmentsWithContext(ctx context.Context, input *cloud9.ListEnvironmentsInput, opts ...request.Option) (*cloud9.ListEnvironmentsOutput, error)
+	ListEnvironmentsPagesWithContext(ctx context.Context, input *cloud9.ListEnvironmentsInput, cb func(*cloud9.ListEnvironmentsOutput, bool) bool, opts ...request.Option) error
 	UpdateEnvironmentWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentInput, opts ...request.Option) (*cloud9.UpdateEnvironmentOutput, error)
 	UpdateEnvironmentMembershipWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentMembershipInput, opts ...request.Option) (*cloud9.UpdateEnvironmentMembershipOutput, error)
 }
@@ -143,6 +145,26 @@ func (c *Client) DescribeEnvironmentMembershipsWithContext(ctx context.Context, 
 	return req.Output.(*cloud9.DescribeEnvironmentMembershipsOutput), req.Error
 }
 
+func (c *Client) DescribeEnvironmentMembershipsPagesWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentMembershipsInput, cb func(*cloud9.DescribeEnvironmentMembershipsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloud9",
+		Action:  "DescribeEnvironmentMemberships",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Cloud9API.DescribeEnvironmentMembershipsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEnvironmentStatusWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentStatusInput, opts ...request.Option) (*cloud9.DescribeEnvironmentStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloud9",
@@ -204,6 +226,26 @@ func (c *Client) ListEnvironmentsWithContext(ctx context.Context, input *cloud9.
 	})
 
 	return req.Output.(*cloud9.ListEnvironmentsOutput), req.Error
+}
+
+func (c *Client) ListEnvironmentsPagesWithContext(ctx context.Context, input *cloud9.ListEnvironmentsInput, cb func(*cloud9.ListEnvironmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloud9",
+		Action:  "ListEnvironments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Cloud9API.ListEnvironmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentInput, opts ...request.Option) (*cloud9.UpdateEnvironmentOutput, error) {

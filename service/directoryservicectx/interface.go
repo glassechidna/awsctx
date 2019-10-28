@@ -33,6 +33,7 @@ type DirectoryService interface {
 	DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error)
 	DescribeDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeDirectoriesOutput, error)
 	DescribeDomainControllersWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, opts ...request.Option) (*directoryservice.DescribeDomainControllersOutput, error)
+	DescribeDomainControllersPagesWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, cb func(*directoryservice.DescribeDomainControllersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error)
 	DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error)
 	DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error)
@@ -538,6 +539,26 @@ func (c *Client) DescribeDomainControllersWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*directoryservice.DescribeDomainControllersOutput), req.Error
+}
+
+func (c *Client) DescribeDomainControllersPagesWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, cb func(*directoryservice.DescribeDomainControllersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeDomainControllers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeDomainControllersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error) {

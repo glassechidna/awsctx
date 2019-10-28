@@ -23,14 +23,21 @@ type SWF interface {
 	DescribeWorkflowExecutionWithContext(ctx context.Context, input *swf.DescribeWorkflowExecutionInput, opts ...request.Option) (*swf.DescribeWorkflowExecutionOutput, error)
 	DescribeWorkflowTypeWithContext(ctx context.Context, input *swf.DescribeWorkflowTypeInput, opts ...request.Option) (*swf.DescribeWorkflowTypeOutput, error)
 	GetWorkflowExecutionHistoryWithContext(ctx context.Context, input *swf.GetWorkflowExecutionHistoryInput, opts ...request.Option) (*swf.GetWorkflowExecutionHistoryOutput, error)
+	GetWorkflowExecutionHistoryPagesWithContext(ctx context.Context, input *swf.GetWorkflowExecutionHistoryInput, cb func(*swf.GetWorkflowExecutionHistoryOutput, bool) bool, opts ...request.Option) error
 	ListActivityTypesWithContext(ctx context.Context, input *swf.ListActivityTypesInput, opts ...request.Option) (*swf.ListActivityTypesOutput, error)
+	ListActivityTypesPagesWithContext(ctx context.Context, input *swf.ListActivityTypesInput, cb func(*swf.ListActivityTypesOutput, bool) bool, opts ...request.Option) error
 	ListClosedWorkflowExecutionsWithContext(ctx context.Context, input *swf.ListClosedWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionInfos, error)
+	ListClosedWorkflowExecutionsPagesWithContext(ctx context.Context, input *swf.ListClosedWorkflowExecutionsInput, cb func(*swf.WorkflowExecutionInfos, bool) bool, opts ...request.Option) error
 	ListDomainsWithContext(ctx context.Context, input *swf.ListDomainsInput, opts ...request.Option) (*swf.ListDomainsOutput, error)
+	ListDomainsPagesWithContext(ctx context.Context, input *swf.ListDomainsInput, cb func(*swf.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	ListOpenWorkflowExecutionsWithContext(ctx context.Context, input *swf.ListOpenWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionInfos, error)
+	ListOpenWorkflowExecutionsPagesWithContext(ctx context.Context, input *swf.ListOpenWorkflowExecutionsInput, cb func(*swf.WorkflowExecutionInfos, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *swf.ListTagsForResourceInput, opts ...request.Option) (*swf.ListTagsForResourceOutput, error)
 	ListWorkflowTypesWithContext(ctx context.Context, input *swf.ListWorkflowTypesInput, opts ...request.Option) (*swf.ListWorkflowTypesOutput, error)
+	ListWorkflowTypesPagesWithContext(ctx context.Context, input *swf.ListWorkflowTypesInput, cb func(*swf.ListWorkflowTypesOutput, bool) bool, opts ...request.Option) error
 	PollForActivityTaskWithContext(ctx context.Context, input *swf.PollForActivityTaskInput, opts ...request.Option) (*swf.PollForActivityTaskOutput, error)
 	PollForDecisionTaskWithContext(ctx context.Context, input *swf.PollForDecisionTaskInput, opts ...request.Option) (*swf.PollForDecisionTaskOutput, error)
+	PollForDecisionTaskPagesWithContext(ctx context.Context, input *swf.PollForDecisionTaskInput, cb func(*swf.PollForDecisionTaskOutput, bool) bool, opts ...request.Option) error
 	RecordActivityTaskHeartbeatWithContext(ctx context.Context, input *swf.RecordActivityTaskHeartbeatInput, opts ...request.Option) (*swf.RecordActivityTaskHeartbeatOutput, error)
 	RegisterActivityTypeWithContext(ctx context.Context, input *swf.RegisterActivityTypeInput, opts ...request.Option) (*swf.RegisterActivityTypeOutput, error)
 	RegisterDomainWithContext(ctx context.Context, input *swf.RegisterDomainInput, opts ...request.Option) (*swf.RegisterDomainOutput, error)
@@ -317,6 +324,26 @@ func (c *Client) GetWorkflowExecutionHistoryWithContext(ctx context.Context, inp
 	return req.Output.(*swf.GetWorkflowExecutionHistoryOutput), req.Error
 }
 
+func (c *Client) GetWorkflowExecutionHistoryPagesWithContext(ctx context.Context, input *swf.GetWorkflowExecutionHistoryInput, cb func(*swf.GetWorkflowExecutionHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "GetWorkflowExecutionHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.GetWorkflowExecutionHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListActivityTypesWithContext(ctx context.Context, input *swf.ListActivityTypesInput, opts ...request.Option) (*swf.ListActivityTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
@@ -336,6 +363,26 @@ func (c *Client) ListActivityTypesWithContext(ctx context.Context, input *swf.Li
 	})
 
 	return req.Output.(*swf.ListActivityTypesOutput), req.Error
+}
+
+func (c *Client) ListActivityTypesPagesWithContext(ctx context.Context, input *swf.ListActivityTypesInput, cb func(*swf.ListActivityTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "ListActivityTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.ListActivityTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListClosedWorkflowExecutionsWithContext(ctx context.Context, input *swf.ListClosedWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionInfos, error) {
@@ -359,6 +406,26 @@ func (c *Client) ListClosedWorkflowExecutionsWithContext(ctx context.Context, in
 	return req.Output.(*swf.WorkflowExecutionInfos), req.Error
 }
 
+func (c *Client) ListClosedWorkflowExecutionsPagesWithContext(ctx context.Context, input *swf.ListClosedWorkflowExecutionsInput, cb func(*swf.WorkflowExecutionInfos, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "ListClosedWorkflowExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.ListClosedWorkflowExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDomainsWithContext(ctx context.Context, input *swf.ListDomainsInput, opts ...request.Option) (*swf.ListDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
@@ -380,6 +447,26 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *swf.ListDoma
 	return req.Output.(*swf.ListDomainsOutput), req.Error
 }
 
+func (c *Client) ListDomainsPagesWithContext(ctx context.Context, input *swf.ListDomainsInput, cb func(*swf.ListDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "ListDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.ListDomainsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOpenWorkflowExecutionsWithContext(ctx context.Context, input *swf.ListOpenWorkflowExecutionsInput, opts ...request.Option) (*swf.WorkflowExecutionInfos, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
@@ -399,6 +486,26 @@ func (c *Client) ListOpenWorkflowExecutionsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*swf.WorkflowExecutionInfos), req.Error
+}
+
+func (c *Client) ListOpenWorkflowExecutionsPagesWithContext(ctx context.Context, input *swf.ListOpenWorkflowExecutionsInput, cb func(*swf.WorkflowExecutionInfos, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "ListOpenWorkflowExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.ListOpenWorkflowExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *swf.ListTagsForResourceInput, opts ...request.Option) (*swf.ListTagsForResourceOutput, error) {
@@ -443,6 +550,26 @@ func (c *Client) ListWorkflowTypesWithContext(ctx context.Context, input *swf.Li
 	return req.Output.(*swf.ListWorkflowTypesOutput), req.Error
 }
 
+func (c *Client) ListWorkflowTypesPagesWithContext(ctx context.Context, input *swf.ListWorkflowTypesInput, cb func(*swf.ListWorkflowTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "ListWorkflowTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.ListWorkflowTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) PollForActivityTaskWithContext(ctx context.Context, input *swf.PollForActivityTaskInput, opts ...request.Option) (*swf.PollForActivityTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "swf",
@@ -483,6 +610,26 @@ func (c *Client) PollForDecisionTaskWithContext(ctx context.Context, input *swf.
 	})
 
 	return req.Output.(*swf.PollForDecisionTaskOutput), req.Error
+}
+
+func (c *Client) PollForDecisionTaskPagesWithContext(ctx context.Context, input *swf.PollForDecisionTaskInput, cb func(*swf.PollForDecisionTaskOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "swf",
+		Action:  "PollForDecisionTask",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SWFAPI.PollForDecisionTaskPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RecordActivityTaskHeartbeatWithContext(ctx context.Context, input *swf.RecordActivityTaskHeartbeatInput, opts ...request.Option) (*swf.RecordActivityTaskHeartbeatOutput, error) {

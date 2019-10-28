@@ -24,8 +24,11 @@ type ACMPCA interface {
 	ImportCertificateAuthorityCertificateWithContext(ctx context.Context, input *acmpca.ImportCertificateAuthorityCertificateInput, opts ...request.Option) (*acmpca.ImportCertificateAuthorityCertificateOutput, error)
 	IssueCertificateWithContext(ctx context.Context, input *acmpca.IssueCertificateInput, opts ...request.Option) (*acmpca.IssueCertificateOutput, error)
 	ListCertificateAuthoritiesWithContext(ctx context.Context, input *acmpca.ListCertificateAuthoritiesInput, opts ...request.Option) (*acmpca.ListCertificateAuthoritiesOutput, error)
+	ListCertificateAuthoritiesPagesWithContext(ctx context.Context, input *acmpca.ListCertificateAuthoritiesInput, cb func(*acmpca.ListCertificateAuthoritiesOutput, bool) bool, opts ...request.Option) error
 	ListPermissionsWithContext(ctx context.Context, input *acmpca.ListPermissionsInput, opts ...request.Option) (*acmpca.ListPermissionsOutput, error)
+	ListPermissionsPagesWithContext(ctx context.Context, input *acmpca.ListPermissionsInput, cb func(*acmpca.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *acmpca.ListTagsInput, opts ...request.Option) (*acmpca.ListTagsOutput, error)
+	ListTagsPagesWithContext(ctx context.Context, input *acmpca.ListTagsInput, cb func(*acmpca.ListTagsOutput, bool) bool, opts ...request.Option) error
 	RestoreCertificateAuthorityWithContext(ctx context.Context, input *acmpca.RestoreCertificateAuthorityInput, opts ...request.Option) (*acmpca.RestoreCertificateAuthorityOutput, error)
 	RevokeCertificateWithContext(ctx context.Context, input *acmpca.RevokeCertificateInput, opts ...request.Option) (*acmpca.RevokeCertificateOutput, error)
 	TagCertificateAuthorityWithContext(ctx context.Context, input *acmpca.TagCertificateAuthorityInput, opts ...request.Option) (*acmpca.TagCertificateAuthorityOutput, error)
@@ -321,6 +324,26 @@ func (c *Client) ListCertificateAuthoritiesWithContext(ctx context.Context, inpu
 	return req.Output.(*acmpca.ListCertificateAuthoritiesOutput), req.Error
 }
 
+func (c *Client) ListCertificateAuthoritiesPagesWithContext(ctx context.Context, input *acmpca.ListCertificateAuthoritiesInput, cb func(*acmpca.ListCertificateAuthoritiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "acmpca",
+		Action:  "ListCertificateAuthorities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ACMPCAAPI.ListCertificateAuthoritiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPermissionsWithContext(ctx context.Context, input *acmpca.ListPermissionsInput, opts ...request.Option) (*acmpca.ListPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
@@ -342,6 +365,26 @@ func (c *Client) ListPermissionsWithContext(ctx context.Context, input *acmpca.L
 	return req.Output.(*acmpca.ListPermissionsOutput), req.Error
 }
 
+func (c *Client) ListPermissionsPagesWithContext(ctx context.Context, input *acmpca.ListPermissionsInput, cb func(*acmpca.ListPermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "acmpca",
+		Action:  "ListPermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ACMPCAAPI.ListPermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsWithContext(ctx context.Context, input *acmpca.ListTagsInput, opts ...request.Option) (*acmpca.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acmpca",
@@ -361,6 +404,26 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *acmpca.ListTags
 	})
 
 	return req.Output.(*acmpca.ListTagsOutput), req.Error
+}
+
+func (c *Client) ListTagsPagesWithContext(ctx context.Context, input *acmpca.ListTagsInput, cb func(*acmpca.ListTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "acmpca",
+		Action:  "ListTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ACMPCAAPI.ListTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RestoreCertificateAuthorityWithContext(ctx context.Context, input *acmpca.RestoreCertificateAuthorityInput, opts ...request.Option) (*acmpca.RestoreCertificateAuthorityOutput, error) {

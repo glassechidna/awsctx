@@ -17,6 +17,7 @@ type Polly interface {
 	GetSpeechSynthesisTaskWithContext(ctx context.Context, input *polly.GetSpeechSynthesisTaskInput, opts ...request.Option) (*polly.GetSpeechSynthesisTaskOutput, error)
 	ListLexiconsWithContext(ctx context.Context, input *polly.ListLexiconsInput, opts ...request.Option) (*polly.ListLexiconsOutput, error)
 	ListSpeechSynthesisTasksWithContext(ctx context.Context, input *polly.ListSpeechSynthesisTasksInput, opts ...request.Option) (*polly.ListSpeechSynthesisTasksOutput, error)
+	ListSpeechSynthesisTasksPagesWithContext(ctx context.Context, input *polly.ListSpeechSynthesisTasksInput, cb func(*polly.ListSpeechSynthesisTasksOutput, bool) bool, opts ...request.Option) error
 	PutLexiconWithContext(ctx context.Context, input *polly.PutLexiconInput, opts ...request.Option) (*polly.PutLexiconOutput, error)
 	StartSpeechSynthesisTaskWithContext(ctx context.Context, input *polly.StartSpeechSynthesisTaskInput, opts ...request.Option) (*polly.StartSpeechSynthesisTaskOutput, error)
 	SynthesizeSpeechWithContext(ctx context.Context, input *polly.SynthesizeSpeechInput, opts ...request.Option) (*polly.SynthesizeSpeechOutput, error)
@@ -161,6 +162,26 @@ func (c *Client) ListSpeechSynthesisTasksWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*polly.ListSpeechSynthesisTasksOutput), req.Error
+}
+
+func (c *Client) ListSpeechSynthesisTasksPagesWithContext(ctx context.Context, input *polly.ListSpeechSynthesisTasksInput, cb func(*polly.ListSpeechSynthesisTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "polly",
+		Action:  "ListSpeechSynthesisTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PollyAPI.ListSpeechSynthesisTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutLexiconWithContext(ctx context.Context, input *polly.PutLexiconInput, opts ...request.Option) (*polly.PutLexiconOutput, error) {

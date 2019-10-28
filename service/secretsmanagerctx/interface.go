@@ -20,7 +20,9 @@ type SecretsManager interface {
 	GetResourcePolicyWithContext(ctx context.Context, input *secretsmanager.GetResourcePolicyInput, opts ...request.Option) (*secretsmanager.GetResourcePolicyOutput, error)
 	GetSecretValueWithContext(ctx context.Context, input *secretsmanager.GetSecretValueInput, opts ...request.Option) (*secretsmanager.GetSecretValueOutput, error)
 	ListSecretVersionIdsWithContext(ctx context.Context, input *secretsmanager.ListSecretVersionIdsInput, opts ...request.Option) (*secretsmanager.ListSecretVersionIdsOutput, error)
+	ListSecretVersionIdsPagesWithContext(ctx context.Context, input *secretsmanager.ListSecretVersionIdsInput, cb func(*secretsmanager.ListSecretVersionIdsOutput, bool) bool, opts ...request.Option) error
 	ListSecretsWithContext(ctx context.Context, input *secretsmanager.ListSecretsInput, opts ...request.Option) (*secretsmanager.ListSecretsOutput, error)
+	ListSecretsPagesWithContext(ctx context.Context, input *secretsmanager.ListSecretsInput, cb func(*secretsmanager.ListSecretsOutput, bool) bool, opts ...request.Option) error
 	PutResourcePolicyWithContext(ctx context.Context, input *secretsmanager.PutResourcePolicyInput, opts ...request.Option) (*secretsmanager.PutResourcePolicyOutput, error)
 	PutSecretValueWithContext(ctx context.Context, input *secretsmanager.PutSecretValueInput, opts ...request.Option) (*secretsmanager.PutSecretValueOutput, error)
 	RestoreSecretWithContext(ctx context.Context, input *secretsmanager.RestoreSecretInput, opts ...request.Option) (*secretsmanager.RestoreSecretOutput, error)
@@ -235,6 +237,26 @@ func (c *Client) ListSecretVersionIdsWithContext(ctx context.Context, input *sec
 	return req.Output.(*secretsmanager.ListSecretVersionIdsOutput), req.Error
 }
 
+func (c *Client) ListSecretVersionIdsPagesWithContext(ctx context.Context, input *secretsmanager.ListSecretVersionIdsInput, cb func(*secretsmanager.ListSecretVersionIdsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "secretsmanager",
+		Action:  "ListSecretVersionIds",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecretsManagerAPI.ListSecretVersionIdsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSecretsWithContext(ctx context.Context, input *secretsmanager.ListSecretsInput, opts ...request.Option) (*secretsmanager.ListSecretsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
@@ -254,6 +276,26 @@ func (c *Client) ListSecretsWithContext(ctx context.Context, input *secretsmanag
 	})
 
 	return req.Output.(*secretsmanager.ListSecretsOutput), req.Error
+}
+
+func (c *Client) ListSecretsPagesWithContext(ctx context.Context, input *secretsmanager.ListSecretsInput, cb func(*secretsmanager.ListSecretsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "secretsmanager",
+		Action:  "ListSecrets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecretsManagerAPI.ListSecretsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *secretsmanager.PutResourcePolicyInput, opts ...request.Option) (*secretsmanager.PutResourcePolicyOutput, error) {

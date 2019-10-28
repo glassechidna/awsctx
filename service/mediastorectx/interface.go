@@ -21,6 +21,7 @@ type MediaStore interface {
 	GetCorsPolicyWithContext(ctx context.Context, input *mediastore.GetCorsPolicyInput, opts ...request.Option) (*mediastore.GetCorsPolicyOutput, error)
 	GetLifecyclePolicyWithContext(ctx context.Context, input *mediastore.GetLifecyclePolicyInput, opts ...request.Option) (*mediastore.GetLifecyclePolicyOutput, error)
 	ListContainersWithContext(ctx context.Context, input *mediastore.ListContainersInput, opts ...request.Option) (*mediastore.ListContainersOutput, error)
+	ListContainersPagesWithContext(ctx context.Context, input *mediastore.ListContainersInput, cb func(*mediastore.ListContainersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediastore.ListTagsForResourceInput, opts ...request.Option) (*mediastore.ListTagsForResourceOutput, error)
 	PutContainerPolicyWithContext(ctx context.Context, input *mediastore.PutContainerPolicyInput, opts ...request.Option) (*mediastore.PutContainerPolicyOutput, error)
 	PutCorsPolicyWithContext(ctx context.Context, input *mediastore.PutCorsPolicyInput, opts ...request.Option) (*mediastore.PutCorsPolicyOutput, error)
@@ -254,6 +255,26 @@ func (c *Client) ListContainersWithContext(ctx context.Context, input *mediastor
 	})
 
 	return req.Output.(*mediastore.ListContainersOutput), req.Error
+}
+
+func (c *Client) ListContainersPagesWithContext(ctx context.Context, input *mediastore.ListContainersInput, cb func(*mediastore.ListContainersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediastore",
+		Action:  "ListContainers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaStoreAPI.ListContainersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediastore.ListTagsForResourceInput, opts ...request.Option) (*mediastore.ListTagsForResourceOutput, error) {

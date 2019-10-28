@@ -20,8 +20,11 @@ type ServerlessApplicationRepository interface {
 	GetApplicationPolicyWithContext(ctx context.Context, input *serverlessapplicationrepository.GetApplicationPolicyInput, opts ...request.Option) (*serverlessapplicationrepository.GetApplicationPolicyOutput, error)
 	GetCloudFormationTemplateWithContext(ctx context.Context, input *serverlessapplicationrepository.GetCloudFormationTemplateInput, opts ...request.Option) (*serverlessapplicationrepository.GetCloudFormationTemplateOutput, error)
 	ListApplicationDependenciesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationDependenciesInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationDependenciesOutput, error)
+	ListApplicationDependenciesPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationDependenciesInput, cb func(*serverlessapplicationrepository.ListApplicationDependenciesOutput, bool) bool, opts ...request.Option) error
 	ListApplicationVersionsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationVersionsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationVersionsOutput, error)
+	ListApplicationVersionsPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationVersionsInput, cb func(*serverlessapplicationrepository.ListApplicationVersionsOutput, bool) bool, opts ...request.Option) error
 	ListApplicationsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationsOutput, error)
+	ListApplicationsPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, cb func(*serverlessapplicationrepository.ListApplicationsOutput, bool) bool, opts ...request.Option) error
 	PutApplicationPolicyWithContext(ctx context.Context, input *serverlessapplicationrepository.PutApplicationPolicyInput, opts ...request.Option) (*serverlessapplicationrepository.PutApplicationPolicyOutput, error)
 	UpdateApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.UpdateApplicationRequest, opts ...request.Option) (*serverlessapplicationrepository.UpdateApplicationOutput, error)
 }
@@ -230,6 +233,26 @@ func (c *Client) ListApplicationDependenciesWithContext(ctx context.Context, inp
 	return req.Output.(*serverlessapplicationrepository.ListApplicationDependenciesOutput), req.Error
 }
 
+func (c *Client) ListApplicationDependenciesPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationDependenciesInput, cb func(*serverlessapplicationrepository.ListApplicationDependenciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "serverlessapplicationrepository",
+		Action:  "ListApplicationDependencies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServerlessApplicationRepositoryAPI.ListApplicationDependenciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListApplicationVersionsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationVersionsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
@@ -251,6 +274,26 @@ func (c *Client) ListApplicationVersionsWithContext(ctx context.Context, input *
 	return req.Output.(*serverlessapplicationrepository.ListApplicationVersionsOutput), req.Error
 }
 
+func (c *Client) ListApplicationVersionsPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationVersionsInput, cb func(*serverlessapplicationrepository.ListApplicationVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "serverlessapplicationrepository",
+		Action:  "ListApplicationVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServerlessApplicationRepositoryAPI.ListApplicationVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "serverlessapplicationrepository",
@@ -270,6 +313,26 @@ func (c *Client) ListApplicationsWithContext(ctx context.Context, input *serverl
 	})
 
 	return req.Output.(*serverlessapplicationrepository.ListApplicationsOutput), req.Error
+}
+
+func (c *Client) ListApplicationsPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, cb func(*serverlessapplicationrepository.ListApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "serverlessapplicationrepository",
+		Action:  "ListApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServerlessApplicationRepositoryAPI.ListApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutApplicationPolicyWithContext(ctx context.Context, input *serverlessapplicationrepository.PutApplicationPolicyInput, opts ...request.Option) (*serverlessapplicationrepository.PutApplicationPolicyOutput, error) {

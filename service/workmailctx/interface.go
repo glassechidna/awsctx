@@ -31,13 +31,21 @@ type WorkMail interface {
 	DisassociateMemberFromGroupWithContext(ctx context.Context, input *workmail.DisassociateMemberFromGroupInput, opts ...request.Option) (*workmail.DisassociateMemberFromGroupOutput, error)
 	GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error)
+	ListAliasesPagesWithContext(ctx context.Context, input *workmail.ListAliasesInput, cb func(*workmail.ListAliasesOutput, bool) bool, opts ...request.Option) error
 	ListGroupMembersWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, opts ...request.Option) (*workmail.ListGroupMembersOutput, error)
+	ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error)
+	ListGroupsPagesWithContext(ctx context.Context, input *workmail.ListGroupsInput, cb func(*workmail.ListGroupsOutput, bool) bool, opts ...request.Option) error
 	ListMailboxPermissionsWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, opts ...request.Option) (*workmail.ListMailboxPermissionsOutput, error)
+	ListMailboxPermissionsPagesWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, cb func(*workmail.ListMailboxPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListOrganizationsWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, opts ...request.Option) (*workmail.ListOrganizationsOutput, error)
+	ListOrganizationsPagesWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, cb func(*workmail.ListOrganizationsOutput, bool) bool, opts ...request.Option) error
 	ListResourceDelegatesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, opts ...request.Option) (*workmail.ListResourceDelegatesOutput, error)
+	ListResourceDelegatesPagesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, cb func(*workmail.ListResourceDelegatesOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *workmail.ListResourcesInput, opts ...request.Option) (*workmail.ListResourcesOutput, error)
+	ListResourcesPagesWithContext(ctx context.Context, input *workmail.ListResourcesInput, cb func(*workmail.ListResourcesOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error)
+	ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
 	RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error)
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
@@ -481,6 +489,26 @@ func (c *Client) ListAliasesWithContext(ctx context.Context, input *workmail.Lis
 	return req.Output.(*workmail.ListAliasesOutput), req.Error
 }
 
+func (c *Client) ListAliasesPagesWithContext(ctx context.Context, input *workmail.ListAliasesInput, cb func(*workmail.ListAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGroupMembersWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, opts ...request.Option) (*workmail.ListGroupMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -500,6 +528,26 @@ func (c *Client) ListGroupMembersWithContext(ctx context.Context, input *workmai
 	})
 
 	return req.Output.(*workmail.ListGroupMembersOutput), req.Error
+}
+
+func (c *Client) ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListGroupMembers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListGroupMembersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error) {
@@ -523,6 +571,26 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *workmail.List
 	return req.Output.(*workmail.ListGroupsOutput), req.Error
 }
 
+func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *workmail.ListGroupsInput, cb func(*workmail.ListGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMailboxPermissionsWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, opts ...request.Option) (*workmail.ListMailboxPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -542,6 +610,26 @@ func (c *Client) ListMailboxPermissionsWithContext(ctx context.Context, input *w
 	})
 
 	return req.Output.(*workmail.ListMailboxPermissionsOutput), req.Error
+}
+
+func (c *Client) ListMailboxPermissionsPagesWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, cb func(*workmail.ListMailboxPermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListMailboxPermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListMailboxPermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOrganizationsWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, opts ...request.Option) (*workmail.ListOrganizationsOutput, error) {
@@ -565,6 +653,26 @@ func (c *Client) ListOrganizationsWithContext(ctx context.Context, input *workma
 	return req.Output.(*workmail.ListOrganizationsOutput), req.Error
 }
 
+func (c *Client) ListOrganizationsPagesWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, cb func(*workmail.ListOrganizationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListOrganizations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListOrganizationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResourceDelegatesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, opts ...request.Option) (*workmail.ListResourceDelegatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -584,6 +692,26 @@ func (c *Client) ListResourceDelegatesWithContext(ctx context.Context, input *wo
 	})
 
 	return req.Output.(*workmail.ListResourceDelegatesOutput), req.Error
+}
+
+func (c *Client) ListResourceDelegatesPagesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, cb func(*workmail.ListResourceDelegatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListResourceDelegates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListResourceDelegatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *workmail.ListResourcesInput, opts ...request.Option) (*workmail.ListResourcesOutput, error) {
@@ -607,6 +735,26 @@ func (c *Client) ListResourcesWithContext(ctx context.Context, input *workmail.L
 	return req.Output.(*workmail.ListResourcesOutput), req.Error
 }
 
+func (c *Client) ListResourcesPagesWithContext(ctx context.Context, input *workmail.ListResourcesInput, cb func(*workmail.ListResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -626,6 +774,26 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *workmail.ListU
 	})
 
 	return req.Output.(*workmail.ListUsersOutput), req.Error
+}
+
+func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error) {

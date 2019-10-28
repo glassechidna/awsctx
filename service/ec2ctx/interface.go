@@ -150,97 +150,161 @@ type EC2 interface {
 	DescribeAvailabilityZonesWithContext(ctx context.Context, input *ec2.DescribeAvailabilityZonesInput, opts ...request.Option) (*ec2.DescribeAvailabilityZonesOutput, error)
 	DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error)
 	DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, opts ...request.Option) (*ec2.DescribeByoipCidrsOutput, error)
+	DescribeByoipCidrsPagesWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, cb func(*ec2.DescribeByoipCidrsOutput, bool) bool, opts ...request.Option) error
 	DescribeCapacityReservationsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationsOutput, error)
+	DescribeCapacityReservationsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, cb func(*ec2.DescribeCapacityReservationsOutput, bool) bool, opts ...request.Option) error
 	DescribeClassicLinkInstancesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, opts ...request.Option) (*ec2.DescribeClassicLinkInstancesOutput, error)
+	DescribeClassicLinkInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, cb func(*ec2.DescribeClassicLinkInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnAuthorizationRulesWithContext(ctx context.Context, input *ec2.DescribeClientVpnAuthorizationRulesInput, opts ...request.Option) (*ec2.DescribeClientVpnAuthorizationRulesOutput, error)
+	DescribeClientVpnAuthorizationRulesPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnAuthorizationRulesInput, cb func(*ec2.DescribeClientVpnAuthorizationRulesOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnConnectionsWithContext(ctx context.Context, input *ec2.DescribeClientVpnConnectionsInput, opts ...request.Option) (*ec2.DescribeClientVpnConnectionsOutput, error)
+	DescribeClientVpnConnectionsPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnConnectionsInput, cb func(*ec2.DescribeClientVpnConnectionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnEndpointsWithContext(ctx context.Context, input *ec2.DescribeClientVpnEndpointsInput, opts ...request.Option) (*ec2.DescribeClientVpnEndpointsOutput, error)
+	DescribeClientVpnEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnEndpointsInput, cb func(*ec2.DescribeClientVpnEndpointsOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnRoutesWithContext(ctx context.Context, input *ec2.DescribeClientVpnRoutesInput, opts ...request.Option) (*ec2.DescribeClientVpnRoutesOutput, error)
+	DescribeClientVpnRoutesPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnRoutesInput, cb func(*ec2.DescribeClientVpnRoutesOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnTargetNetworksWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, opts ...request.Option) (*ec2.DescribeClientVpnTargetNetworksOutput, error)
+	DescribeClientVpnTargetNetworksPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, cb func(*ec2.DescribeClientVpnTargetNetworksOutput, bool) bool, opts ...request.Option) error
 	DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error)
 	DescribeCustomerGatewaysWithContext(ctx context.Context, input *ec2.DescribeCustomerGatewaysInput, opts ...request.Option) (*ec2.DescribeCustomerGatewaysOutput, error)
 	DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, opts ...request.Option) (*ec2.DescribeDhcpOptionsOutput, error)
+	DescribeDhcpOptionsPagesWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, cb func(*ec2.DescribeDhcpOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEgressOnlyInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeEgressOnlyInternetGatewaysOutput, error)
+	DescribeEgressOnlyInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, cb func(*ec2.DescribeEgressOnlyInternetGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeElasticGpusWithContext(ctx context.Context, input *ec2.DescribeElasticGpusInput, opts ...request.Option) (*ec2.DescribeElasticGpusOutput, error)
 	DescribeExportImageTasksWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, opts ...request.Option) (*ec2.DescribeExportImageTasksOutput, error)
 	DescribeExportTasksWithContext(ctx context.Context, input *ec2.DescribeExportTasksInput, opts ...request.Option) (*ec2.DescribeExportTasksOutput, error)
 	DescribeFleetHistoryWithContext(ctx context.Context, input *ec2.DescribeFleetHistoryInput, opts ...request.Option) (*ec2.DescribeFleetHistoryOutput, error)
 	DescribeFleetInstancesWithContext(ctx context.Context, input *ec2.DescribeFleetInstancesInput, opts ...request.Option) (*ec2.DescribeFleetInstancesOutput, error)
 	DescribeFleetsWithContext(ctx context.Context, input *ec2.DescribeFleetsInput, opts ...request.Option) (*ec2.DescribeFleetsOutput, error)
+	DescribeFleetsPagesWithContext(ctx context.Context, input *ec2.DescribeFleetsInput, cb func(*ec2.DescribeFleetsOutput, bool) bool, opts ...request.Option) error
 	DescribeFlowLogsWithContext(ctx context.Context, input *ec2.DescribeFlowLogsInput, opts ...request.Option) (*ec2.DescribeFlowLogsOutput, error)
+	DescribeFlowLogsPagesWithContext(ctx context.Context, input *ec2.DescribeFlowLogsInput, cb func(*ec2.DescribeFlowLogsOutput, bool) bool, opts ...request.Option) error
 	DescribeFpgaImageAttributeWithContext(ctx context.Context, input *ec2.DescribeFpgaImageAttributeInput, opts ...request.Option) (*ec2.DescribeFpgaImageAttributeOutput, error)
 	DescribeFpgaImagesWithContext(ctx context.Context, input *ec2.DescribeFpgaImagesInput, opts ...request.Option) (*ec2.DescribeFpgaImagesOutput, error)
+	DescribeFpgaImagesPagesWithContext(ctx context.Context, input *ec2.DescribeFpgaImagesInput, cb func(*ec2.DescribeFpgaImagesOutput, bool) bool, opts ...request.Option) error
 	DescribeHostReservationOfferingsWithContext(ctx context.Context, input *ec2.DescribeHostReservationOfferingsInput, opts ...request.Option) (*ec2.DescribeHostReservationOfferingsOutput, error)
+	DescribeHostReservationOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeHostReservationOfferingsInput, cb func(*ec2.DescribeHostReservationOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeHostReservationsWithContext(ctx context.Context, input *ec2.DescribeHostReservationsInput, opts ...request.Option) (*ec2.DescribeHostReservationsOutput, error)
+	DescribeHostReservationsPagesWithContext(ctx context.Context, input *ec2.DescribeHostReservationsInput, cb func(*ec2.DescribeHostReservationsOutput, bool) bool, opts ...request.Option) error
 	DescribeHostsWithContext(ctx context.Context, input *ec2.DescribeHostsInput, opts ...request.Option) (*ec2.DescribeHostsOutput, error)
+	DescribeHostsPagesWithContext(ctx context.Context, input *ec2.DescribeHostsInput, cb func(*ec2.DescribeHostsOutput, bool) bool, opts ...request.Option) error
 	DescribeIamInstanceProfileAssociationsWithContext(ctx context.Context, input *ec2.DescribeIamInstanceProfileAssociationsInput, opts ...request.Option) (*ec2.DescribeIamInstanceProfileAssociationsOutput, error)
+	DescribeIamInstanceProfileAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeIamInstanceProfileAssociationsInput, cb func(*ec2.DescribeIamInstanceProfileAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeIdFormatWithContext(ctx context.Context, input *ec2.DescribeIdFormatInput, opts ...request.Option) (*ec2.DescribeIdFormatOutput, error)
 	DescribeIdentityIdFormatWithContext(ctx context.Context, input *ec2.DescribeIdentityIdFormatInput, opts ...request.Option) (*ec2.DescribeIdentityIdFormatOutput, error)
 	DescribeImageAttributeWithContext(ctx context.Context, input *ec2.DescribeImageAttributeInput, opts ...request.Option) (*ec2.DescribeImageAttributeOutput, error)
 	DescribeImagesWithContext(ctx context.Context, input *ec2.DescribeImagesInput, opts ...request.Option) (*ec2.DescribeImagesOutput, error)
 	DescribeImportImageTasksWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, opts ...request.Option) (*ec2.DescribeImportImageTasksOutput, error)
+	DescribeImportImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, cb func(*ec2.DescribeImportImageTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeImportSnapshotTasksWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, opts ...request.Option) (*ec2.DescribeImportSnapshotTasksOutput, error)
+	DescribeImportSnapshotTasksPagesWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, cb func(*ec2.DescribeImportSnapshotTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *ec2.DescribeInstanceAttributeInput, opts ...request.Option) (*ec2.DescribeInstanceAttributeOutput, error)
 	DescribeInstanceCreditSpecificationsWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, opts ...request.Option) (*ec2.DescribeInstanceCreditSpecificationsOutput, error)
+	DescribeInstanceCreditSpecificationsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, cb func(*ec2.DescribeInstanceCreditSpecificationsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error)
+	DescribeInstanceStatusPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, cb func(*ec2.DescribeInstanceStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error)
+	DescribeInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, cb func(*ec2.DescribeInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error)
+	DescribeInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, cb func(*ec2.DescribeInternetGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeKeyPairsWithContext(ctx context.Context, input *ec2.DescribeKeyPairsInput, opts ...request.Option) (*ec2.DescribeKeyPairsOutput, error)
 	DescribeLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DescribeLaunchTemplateVersionsOutput, error)
+	DescribeLaunchTemplateVersionsPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, cb func(*ec2.DescribeLaunchTemplateVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeLaunchTemplatesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, opts ...request.Option) (*ec2.DescribeLaunchTemplatesOutput, error)
+	DescribeLaunchTemplatesPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, cb func(*ec2.DescribeLaunchTemplatesOutput, bool) bool, opts ...request.Option) error
 	DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error)
+	DescribeMovingAddressesPagesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, cb func(*ec2.DescribeMovingAddressesOutput, bool) bool, opts ...request.Option) error
 	DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, opts ...request.Option) (*ec2.DescribeNatGatewaysOutput, error)
+	DescribeNatGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, cb func(*ec2.DescribeNatGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, opts ...request.Option) (*ec2.DescribeNetworkAclsOutput, error)
+	DescribeNetworkAclsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, cb func(*ec2.DescribeNetworkAclsOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.DescribeNetworkInterfaceAttributeOutput, error)
 	DescribeNetworkInterfacePermissionsWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacePermissionsInput, opts ...request.Option) (*ec2.DescribeNetworkInterfacePermissionsOutput, error)
+	DescribeNetworkInterfacePermissionsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacePermissionsInput, cb func(*ec2.DescribeNetworkInterfacePermissionsOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkInterfacesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacesInput, opts ...request.Option) (*ec2.DescribeNetworkInterfacesOutput, error)
+	DescribeNetworkInterfacesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacesInput, cb func(*ec2.DescribeNetworkInterfacesOutput, bool) bool, opts ...request.Option) error
 	DescribePlacementGroupsWithContext(ctx context.Context, input *ec2.DescribePlacementGroupsInput, opts ...request.Option) (*ec2.DescribePlacementGroupsOutput, error)
 	DescribePrefixListsWithContext(ctx context.Context, input *ec2.DescribePrefixListsInput, opts ...request.Option) (*ec2.DescribePrefixListsOutput, error)
+	DescribePrefixListsPagesWithContext(ctx context.Context, input *ec2.DescribePrefixListsInput, cb func(*ec2.DescribePrefixListsOutput, bool) bool, opts ...request.Option) error
 	DescribePrincipalIdFormatWithContext(ctx context.Context, input *ec2.DescribePrincipalIdFormatInput, opts ...request.Option) (*ec2.DescribePrincipalIdFormatOutput, error)
+	DescribePrincipalIdFormatPagesWithContext(ctx context.Context, input *ec2.DescribePrincipalIdFormatInput, cb func(*ec2.DescribePrincipalIdFormatOutput, bool) bool, opts ...request.Option) error
 	DescribePublicIpv4PoolsWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, opts ...request.Option) (*ec2.DescribePublicIpv4PoolsOutput, error)
+	DescribePublicIpv4PoolsPagesWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, cb func(*ec2.DescribePublicIpv4PoolsOutput, bool) bool, opts ...request.Option) error
 	DescribeRegionsWithContext(ctx context.Context, input *ec2.DescribeRegionsInput, opts ...request.Option) (*ec2.DescribeRegionsOutput, error)
 	DescribeReservedInstancesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOutput, error)
 	DescribeReservedInstancesListingsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesListingsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesListingsOutput, error)
 	DescribeReservedInstancesModificationsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesModificationsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesModificationsOutput, error)
+	DescribeReservedInstancesModificationsPagesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesModificationsInput, cb func(*ec2.DescribeReservedInstancesModificationsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedInstancesOfferingsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesOfferingsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOfferingsOutput, error)
+	DescribeReservedInstancesOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesOfferingsInput, cb func(*ec2.DescribeReservedInstancesOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeRouteTablesWithContext(ctx context.Context, input *ec2.DescribeRouteTablesInput, opts ...request.Option) (*ec2.DescribeRouteTablesOutput, error)
+	DescribeRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeRouteTablesInput, cb func(*ec2.DescribeRouteTablesOutput, bool) bool, opts ...request.Option) error
 	DescribeScheduledInstanceAvailabilityWithContext(ctx context.Context, input *ec2.DescribeScheduledInstanceAvailabilityInput, opts ...request.Option) (*ec2.DescribeScheduledInstanceAvailabilityOutput, error)
+	DescribeScheduledInstanceAvailabilityPagesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstanceAvailabilityInput, cb func(*ec2.DescribeScheduledInstanceAvailabilityOutput, bool) bool, opts ...request.Option) error
 	DescribeScheduledInstancesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, opts ...request.Option) (*ec2.DescribeScheduledInstancesOutput, error)
+	DescribeScheduledInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, cb func(*ec2.DescribeScheduledInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeSecurityGroupReferencesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupReferencesInput, opts ...request.Option) (*ec2.DescribeSecurityGroupReferencesOutput, error)
 	DescribeSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeSecurityGroupsOutput, error)
+	DescribeSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, cb func(*ec2.DescribeSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotAttributeWithContext(ctx context.Context, input *ec2.DescribeSnapshotAttributeInput, opts ...request.Option) (*ec2.DescribeSnapshotAttributeOutput, error)
 	DescribeSnapshotsWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, opts ...request.Option) (*ec2.DescribeSnapshotsOutput, error)
+	DescribeSnapshotsPagesWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, cb func(*ec2.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.DescribeSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.DescribeSpotDatafeedSubscriptionOutput, error)
 	DescribeSpotFleetInstancesWithContext(ctx context.Context, input *ec2.DescribeSpotFleetInstancesInput, opts ...request.Option) (*ec2.DescribeSpotFleetInstancesOutput, error)
 	DescribeSpotFleetRequestHistoryWithContext(ctx context.Context, input *ec2.DescribeSpotFleetRequestHistoryInput, opts ...request.Option) (*ec2.DescribeSpotFleetRequestHistoryOutput, error)
 	DescribeSpotFleetRequestsWithContext(ctx context.Context, input *ec2.DescribeSpotFleetRequestsInput, opts ...request.Option) (*ec2.DescribeSpotFleetRequestsOutput, error)
+	DescribeSpotFleetRequestsPagesWithContext(ctx context.Context, input *ec2.DescribeSpotFleetRequestsInput, cb func(*ec2.DescribeSpotFleetRequestsOutput, bool) bool, opts ...request.Option) error
 	DescribeSpotInstanceRequestsWithContext(ctx context.Context, input *ec2.DescribeSpotInstanceRequestsInput, opts ...request.Option) (*ec2.DescribeSpotInstanceRequestsOutput, error)
+	DescribeSpotInstanceRequestsPagesWithContext(ctx context.Context, input *ec2.DescribeSpotInstanceRequestsInput, cb func(*ec2.DescribeSpotInstanceRequestsOutput, bool) bool, opts ...request.Option) error
 	DescribeSpotPriceHistoryWithContext(ctx context.Context, input *ec2.DescribeSpotPriceHistoryInput, opts ...request.Option) (*ec2.DescribeSpotPriceHistoryOutput, error)
+	DescribeSpotPriceHistoryPagesWithContext(ctx context.Context, input *ec2.DescribeSpotPriceHistoryInput, cb func(*ec2.DescribeSpotPriceHistoryOutput, bool) bool, opts ...request.Option) error
 	DescribeStaleSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeStaleSecurityGroupsOutput, error)
+	DescribeStaleSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, cb func(*ec2.DescribeStaleSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error)
+	DescribeSubnetsPagesWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, cb func(*ec2.DescribeSubnetsOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *ec2.DescribeTagsInput, opts ...request.Option) (*ec2.DescribeTagsOutput, error)
+	DescribeTagsPagesWithContext(ctx context.Context, input *ec2.DescribeTagsInput, cb func(*ec2.DescribeTagsOutput, bool) bool, opts ...request.Option) error
 	DescribeTrafficMirrorFiltersWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorFiltersInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorFiltersOutput, error)
+	DescribeTrafficMirrorFiltersPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorFiltersInput, cb func(*ec2.DescribeTrafficMirrorFiltersOutput, bool) bool, opts ...request.Option) error
 	DescribeTrafficMirrorSessionsWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorSessionsInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorSessionsOutput, error)
+	DescribeTrafficMirrorSessionsPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorSessionsInput, cb func(*ec2.DescribeTrafficMirrorSessionsOutput, bool) bool, opts ...request.Option) error
 	DescribeTrafficMirrorTargetsWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorTargetsOutput, error)
+	DescribeTrafficMirrorTargetsPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, cb func(*ec2.DescribeTrafficMirrorTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayAttachmentsOutput, error)
+	DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, cb func(*ec2.DescribeTransitGatewayAttachmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error)
+	DescribeTransitGatewayRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, cb func(*ec2.DescribeTransitGatewayRouteTablesOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayVpcAttachmentsOutput, error)
+	DescribeTransitGatewayVpcAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, cb func(*ec2.DescribeTransitGatewayVpcAttachmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewaysWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, opts ...request.Option) (*ec2.DescribeTransitGatewaysOutput, error)
+	DescribeTransitGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, cb func(*ec2.DescribeTransitGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error)
 	DescribeVolumeStatusWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, opts ...request.Option) (*ec2.DescribeVolumeStatusOutput, error)
+	DescribeVolumeStatusPagesWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, cb func(*ec2.DescribeVolumeStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeVolumesWithContext(ctx context.Context, input *ec2.DescribeVolumesInput, opts ...request.Option) (*ec2.DescribeVolumesOutput, error)
+	DescribeVolumesPagesWithContext(ctx context.Context, input *ec2.DescribeVolumesInput, cb func(*ec2.DescribeVolumesOutput, bool) bool, opts ...request.Option) error
 	DescribeVolumesModificationsWithContext(ctx context.Context, input *ec2.DescribeVolumesModificationsInput, opts ...request.Option) (*ec2.DescribeVolumesModificationsOutput, error)
+	DescribeVolumesModificationsPagesWithContext(ctx context.Context, input *ec2.DescribeVolumesModificationsInput, cb func(*ec2.DescribeVolumesModificationsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcAttributeWithContext(ctx context.Context, input *ec2.DescribeVpcAttributeInput, opts ...request.Option) (*ec2.DescribeVpcAttributeOutput, error)
 	DescribeVpcClassicLinkWithContext(ctx context.Context, input *ec2.DescribeVpcClassicLinkInput, opts ...request.Option) (*ec2.DescribeVpcClassicLinkOutput, error)
 	DescribeVpcClassicLinkDnsSupportWithContext(ctx context.Context, input *ec2.DescribeVpcClassicLinkDnsSupportInput, opts ...request.Option) (*ec2.DescribeVpcClassicLinkDnsSupportOutput, error)
+	DescribeVpcClassicLinkDnsSupportPagesWithContext(ctx context.Context, input *ec2.DescribeVpcClassicLinkDnsSupportInput, cb func(*ec2.DescribeVpcClassicLinkDnsSupportOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcEndpointConnectionNotificationsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionNotificationsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointConnectionNotificationsOutput, error)
+	DescribeVpcEndpointConnectionNotificationsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionNotificationsInput, cb func(*ec2.DescribeVpcEndpointConnectionNotificationsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointConnectionsOutput, error)
+	DescribeVpcEndpointConnectionsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionsInput, cb func(*ec2.DescribeVpcEndpointConnectionsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcEndpointServiceConfigurationsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServiceConfigurationsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServiceConfigurationsOutput, error)
+	DescribeVpcEndpointServiceConfigurationsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServiceConfigurationsInput, cb func(*ec2.DescribeVpcEndpointServiceConfigurationsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcEndpointServicePermissionsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicePermissionsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServicePermissionsOutput, error)
+	DescribeVpcEndpointServicePermissionsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicePermissionsInput, cb func(*ec2.DescribeVpcEndpointServicePermissionsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcEndpointServicesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicesInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServicesOutput, error)
 	DescribeVpcEndpointsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointsOutput, error)
+	DescribeVpcEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointsInput, cb func(*ec2.DescribeVpcEndpointsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcPeeringConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpcPeeringConnectionsInput, opts ...request.Option) (*ec2.DescribeVpcPeeringConnectionsOutput, error)
+	DescribeVpcPeeringConnectionsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcPeeringConnectionsInput, cb func(*ec2.DescribeVpcPeeringConnectionsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpcsWithContext(ctx context.Context, input *ec2.DescribeVpcsInput, opts ...request.Option) (*ec2.DescribeVpcsOutput, error)
+	DescribeVpcsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcsInput, cb func(*ec2.DescribeVpcsOutput, bool) bool, opts ...request.Option) error
 	DescribeVpnConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpnConnectionsInput, opts ...request.Option) (*ec2.DescribeVpnConnectionsOutput, error)
 	DescribeVpnGatewaysWithContext(ctx context.Context, input *ec2.DescribeVpnGatewaysInput, opts ...request.Option) (*ec2.DescribeVpnGatewaysOutput, error)
 	DetachClassicLinkVpcWithContext(ctx context.Context, input *ec2.DetachClassicLinkVpcInput, opts ...request.Option) (*ec2.DetachClassicLinkVpcOutput, error)
@@ -280,8 +344,11 @@ type EC2 interface {
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
+	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error)
+	GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error)
+	GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, cb func(*ec2.GetTransitGatewayRouteTablePropagationsOutput, bool) bool, opts ...request.Option) error
 	ImportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ImportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ImportClientVpnClientCertificateRevocationListOutput, error)
 	ImportImageWithContext(ctx context.Context, input *ec2.ImportImageInput, opts ...request.Option) (*ec2.ImportImageOutput, error)
 	ImportInstanceWithContext(ctx context.Context, input *ec2.ImportInstanceInput, opts ...request.Option) (*ec2.ImportInstanceOutput, error)
@@ -3306,6 +3373,26 @@ func (c *Client) DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.D
 	return req.Output.(*ec2.DescribeByoipCidrsOutput), req.Error
 }
 
+func (c *Client) DescribeByoipCidrsPagesWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, cb func(*ec2.DescribeByoipCidrsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeByoipCidrs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeByoipCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCapacityReservationsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3325,6 +3412,26 @@ func (c *Client) DescribeCapacityReservationsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.DescribeCapacityReservationsOutput), req.Error
+}
+
+func (c *Client) DescribeCapacityReservationsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, cb func(*ec2.DescribeCapacityReservationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCapacityReservations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeCapacityReservationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClassicLinkInstancesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, opts ...request.Option) (*ec2.DescribeClassicLinkInstancesOutput, error) {
@@ -3348,6 +3455,26 @@ func (c *Client) DescribeClassicLinkInstancesWithContext(ctx context.Context, in
 	return req.Output.(*ec2.DescribeClassicLinkInstancesOutput), req.Error
 }
 
+func (c *Client) DescribeClassicLinkInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, cb func(*ec2.DescribeClassicLinkInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeClassicLinkInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeClassicLinkInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClientVpnAuthorizationRulesWithContext(ctx context.Context, input *ec2.DescribeClientVpnAuthorizationRulesInput, opts ...request.Option) (*ec2.DescribeClientVpnAuthorizationRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3367,6 +3494,26 @@ func (c *Client) DescribeClientVpnAuthorizationRulesWithContext(ctx context.Cont
 	})
 
 	return req.Output.(*ec2.DescribeClientVpnAuthorizationRulesOutput), req.Error
+}
+
+func (c *Client) DescribeClientVpnAuthorizationRulesPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnAuthorizationRulesInput, cb func(*ec2.DescribeClientVpnAuthorizationRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeClientVpnAuthorizationRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeClientVpnAuthorizationRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClientVpnConnectionsWithContext(ctx context.Context, input *ec2.DescribeClientVpnConnectionsInput, opts ...request.Option) (*ec2.DescribeClientVpnConnectionsOutput, error) {
@@ -3390,6 +3537,26 @@ func (c *Client) DescribeClientVpnConnectionsWithContext(ctx context.Context, in
 	return req.Output.(*ec2.DescribeClientVpnConnectionsOutput), req.Error
 }
 
+func (c *Client) DescribeClientVpnConnectionsPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnConnectionsInput, cb func(*ec2.DescribeClientVpnConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeClientVpnConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeClientVpnConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClientVpnEndpointsWithContext(ctx context.Context, input *ec2.DescribeClientVpnEndpointsInput, opts ...request.Option) (*ec2.DescribeClientVpnEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3409,6 +3576,26 @@ func (c *Client) DescribeClientVpnEndpointsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.DescribeClientVpnEndpointsOutput), req.Error
+}
+
+func (c *Client) DescribeClientVpnEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnEndpointsInput, cb func(*ec2.DescribeClientVpnEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeClientVpnEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeClientVpnEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClientVpnRoutesWithContext(ctx context.Context, input *ec2.DescribeClientVpnRoutesInput, opts ...request.Option) (*ec2.DescribeClientVpnRoutesOutput, error) {
@@ -3432,6 +3619,26 @@ func (c *Client) DescribeClientVpnRoutesWithContext(ctx context.Context, input *
 	return req.Output.(*ec2.DescribeClientVpnRoutesOutput), req.Error
 }
 
+func (c *Client) DescribeClientVpnRoutesPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnRoutesInput, cb func(*ec2.DescribeClientVpnRoutesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeClientVpnRoutes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeClientVpnRoutesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeClientVpnTargetNetworksWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, opts ...request.Option) (*ec2.DescribeClientVpnTargetNetworksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3451,6 +3658,26 @@ func (c *Client) DescribeClientVpnTargetNetworksWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*ec2.DescribeClientVpnTargetNetworksOutput), req.Error
+}
+
+func (c *Client) DescribeClientVpnTargetNetworksPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, cb func(*ec2.DescribeClientVpnTargetNetworksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeClientVpnTargetNetworks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeClientVpnTargetNetworksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error) {
@@ -3516,6 +3743,26 @@ func (c *Client) DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.DescribeDhcpOptionsOutput), req.Error
 }
 
+func (c *Client) DescribeDhcpOptionsPagesWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, cb func(*ec2.DescribeDhcpOptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeDhcpOptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeDhcpOptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEgressOnlyInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeEgressOnlyInternetGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3535,6 +3782,26 @@ func (c *Client) DescribeEgressOnlyInternetGatewaysWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*ec2.DescribeEgressOnlyInternetGatewaysOutput), req.Error
+}
+
+func (c *Client) DescribeEgressOnlyInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, cb func(*ec2.DescribeEgressOnlyInternetGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeEgressOnlyInternetGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeEgressOnlyInternetGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeElasticGpusWithContext(ctx context.Context, input *ec2.DescribeElasticGpusInput, opts ...request.Option) (*ec2.DescribeElasticGpusOutput, error) {
@@ -3663,6 +3930,26 @@ func (c *Client) DescribeFleetsWithContext(ctx context.Context, input *ec2.Descr
 	return req.Output.(*ec2.DescribeFleetsOutput), req.Error
 }
 
+func (c *Client) DescribeFleetsPagesWithContext(ctx context.Context, input *ec2.DescribeFleetsInput, cb func(*ec2.DescribeFleetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFleets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeFleetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, input *ec2.DescribeFlowLogsInput, opts ...request.Option) (*ec2.DescribeFlowLogsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3682,6 +3969,26 @@ func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, input *ec2.Des
 	})
 
 	return req.Output.(*ec2.DescribeFlowLogsOutput), req.Error
+}
+
+func (c *Client) DescribeFlowLogsPagesWithContext(ctx context.Context, input *ec2.DescribeFlowLogsInput, cb func(*ec2.DescribeFlowLogsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFlowLogs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeFlowLogsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeFpgaImageAttributeWithContext(ctx context.Context, input *ec2.DescribeFpgaImageAttributeInput, opts ...request.Option) (*ec2.DescribeFpgaImageAttributeOutput, error) {
@@ -3726,6 +4033,26 @@ func (c *Client) DescribeFpgaImagesWithContext(ctx context.Context, input *ec2.D
 	return req.Output.(*ec2.DescribeFpgaImagesOutput), req.Error
 }
 
+func (c *Client) DescribeFpgaImagesPagesWithContext(ctx context.Context, input *ec2.DescribeFpgaImagesInput, cb func(*ec2.DescribeFpgaImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFpgaImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeFpgaImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeHostReservationOfferingsWithContext(ctx context.Context, input *ec2.DescribeHostReservationOfferingsInput, opts ...request.Option) (*ec2.DescribeHostReservationOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3745,6 +4072,26 @@ func (c *Client) DescribeHostReservationOfferingsWithContext(ctx context.Context
 	})
 
 	return req.Output.(*ec2.DescribeHostReservationOfferingsOutput), req.Error
+}
+
+func (c *Client) DescribeHostReservationOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeHostReservationOfferingsInput, cb func(*ec2.DescribeHostReservationOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeHostReservationOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeHostReservationOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeHostReservationsWithContext(ctx context.Context, input *ec2.DescribeHostReservationsInput, opts ...request.Option) (*ec2.DescribeHostReservationsOutput, error) {
@@ -3768,6 +4115,26 @@ func (c *Client) DescribeHostReservationsWithContext(ctx context.Context, input 
 	return req.Output.(*ec2.DescribeHostReservationsOutput), req.Error
 }
 
+func (c *Client) DescribeHostReservationsPagesWithContext(ctx context.Context, input *ec2.DescribeHostReservationsInput, cb func(*ec2.DescribeHostReservationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeHostReservations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeHostReservationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeHostsWithContext(ctx context.Context, input *ec2.DescribeHostsInput, opts ...request.Option) (*ec2.DescribeHostsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3789,6 +4156,26 @@ func (c *Client) DescribeHostsWithContext(ctx context.Context, input *ec2.Descri
 	return req.Output.(*ec2.DescribeHostsOutput), req.Error
 }
 
+func (c *Client) DescribeHostsPagesWithContext(ctx context.Context, input *ec2.DescribeHostsInput, cb func(*ec2.DescribeHostsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeHosts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeHostsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeIamInstanceProfileAssociationsWithContext(ctx context.Context, input *ec2.DescribeIamInstanceProfileAssociationsInput, opts ...request.Option) (*ec2.DescribeIamInstanceProfileAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3808,6 +4195,26 @@ func (c *Client) DescribeIamInstanceProfileAssociationsWithContext(ctx context.C
 	})
 
 	return req.Output.(*ec2.DescribeIamInstanceProfileAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeIamInstanceProfileAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeIamInstanceProfileAssociationsInput, cb func(*ec2.DescribeIamInstanceProfileAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIamInstanceProfileAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIamInstanceProfileAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeIdFormatWithContext(ctx context.Context, input *ec2.DescribeIdFormatInput, opts ...request.Option) (*ec2.DescribeIdFormatOutput, error) {
@@ -3915,6 +4322,26 @@ func (c *Client) DescribeImportImageTasksWithContext(ctx context.Context, input 
 	return req.Output.(*ec2.DescribeImportImageTasksOutput), req.Error
 }
 
+func (c *Client) DescribeImportImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, cb func(*ec2.DescribeImportImageTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeImportImageTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeImportImageTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeImportSnapshotTasksWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, opts ...request.Option) (*ec2.DescribeImportSnapshotTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3934,6 +4361,26 @@ func (c *Client) DescribeImportSnapshotTasksWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*ec2.DescribeImportSnapshotTasksOutput), req.Error
+}
+
+func (c *Client) DescribeImportSnapshotTasksPagesWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, cb func(*ec2.DescribeImportSnapshotTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeImportSnapshotTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeImportSnapshotTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstanceAttributeWithContext(ctx context.Context, input *ec2.DescribeInstanceAttributeInput, opts ...request.Option) (*ec2.DescribeInstanceAttributeOutput, error) {
@@ -3978,6 +4425,26 @@ func (c *Client) DescribeInstanceCreditSpecificationsWithContext(ctx context.Con
 	return req.Output.(*ec2.DescribeInstanceCreditSpecificationsOutput), req.Error
 }
 
+func (c *Client) DescribeInstanceCreditSpecificationsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, cb func(*ec2.DescribeInstanceCreditSpecificationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceCreditSpecifications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstanceCreditSpecificationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3997,6 +4464,26 @@ func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ec2.DescribeInstanceStatusOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceStatusPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, cb func(*ec2.DescribeInstanceStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstanceStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error) {
@@ -4020,6 +4507,26 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *ec2.De
 	return req.Output.(*ec2.DescribeInstancesOutput), req.Error
 }
 
+func (c *Client) DescribeInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, cb func(*ec2.DescribeInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4039,6 +4546,26 @@ func (c *Client) DescribeInternetGatewaysWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*ec2.DescribeInternetGatewaysOutput), req.Error
+}
+
+func (c *Client) DescribeInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, cb func(*ec2.DescribeInternetGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInternetGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInternetGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, input *ec2.DescribeKeyPairsInput, opts ...request.Option) (*ec2.DescribeKeyPairsOutput, error) {
@@ -4083,6 +4610,26 @@ func (c *Client) DescribeLaunchTemplateVersionsWithContext(ctx context.Context, 
 	return req.Output.(*ec2.DescribeLaunchTemplateVersionsOutput), req.Error
 }
 
+func (c *Client) DescribeLaunchTemplateVersionsPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, cb func(*ec2.DescribeLaunchTemplateVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLaunchTemplateVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLaunchTemplateVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, opts ...request.Option) (*ec2.DescribeLaunchTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4102,6 +4649,26 @@ func (c *Client) DescribeLaunchTemplatesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.DescribeLaunchTemplatesOutput), req.Error
+}
+
+func (c *Client) DescribeLaunchTemplatesPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, cb func(*ec2.DescribeLaunchTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLaunchTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLaunchTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error) {
@@ -4125,6 +4692,26 @@ func (c *Client) DescribeMovingAddressesWithContext(ctx context.Context, input *
 	return req.Output.(*ec2.DescribeMovingAddressesOutput), req.Error
 }
 
+func (c *Client) DescribeMovingAddressesPagesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, cb func(*ec2.DescribeMovingAddressesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeMovingAddresses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeMovingAddressesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, opts ...request.Option) (*ec2.DescribeNatGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4146,6 +4733,26 @@ func (c *Client) DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.DescribeNatGatewaysOutput), req.Error
 }
 
+func (c *Client) DescribeNatGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, cb func(*ec2.DescribeNatGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNatGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNatGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, opts ...request.Option) (*ec2.DescribeNetworkAclsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4165,6 +4772,26 @@ func (c *Client) DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.
 	})
 
 	return req.Output.(*ec2.DescribeNetworkAclsOutput), req.Error
+}
+
+func (c *Client) DescribeNetworkAclsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, cb func(*ec2.DescribeNetworkAclsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkAcls",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkAclsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.DescribeNetworkInterfaceAttributeOutput, error) {
@@ -4209,6 +4836,26 @@ func (c *Client) DescribeNetworkInterfacePermissionsWithContext(ctx context.Cont
 	return req.Output.(*ec2.DescribeNetworkInterfacePermissionsOutput), req.Error
 }
 
+func (c *Client) DescribeNetworkInterfacePermissionsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacePermissionsInput, cb func(*ec2.DescribeNetworkInterfacePermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInterfacePermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkInterfacePermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacesInput, opts ...request.Option) (*ec2.DescribeNetworkInterfacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4228,6 +4875,26 @@ func (c *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.DescribeNetworkInterfacesOutput), req.Error
+}
+
+func (c *Client) DescribeNetworkInterfacesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacesInput, cb func(*ec2.DescribeNetworkInterfacesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInterfaces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkInterfacesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribePlacementGroupsWithContext(ctx context.Context, input *ec2.DescribePlacementGroupsInput, opts ...request.Option) (*ec2.DescribePlacementGroupsOutput, error) {
@@ -4272,6 +4939,26 @@ func (c *Client) DescribePrefixListsWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.DescribePrefixListsOutput), req.Error
 }
 
+func (c *Client) DescribePrefixListsPagesWithContext(ctx context.Context, input *ec2.DescribePrefixListsInput, cb func(*ec2.DescribePrefixListsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribePrefixLists",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribePrefixListsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePrincipalIdFormatWithContext(ctx context.Context, input *ec2.DescribePrincipalIdFormatInput, opts ...request.Option) (*ec2.DescribePrincipalIdFormatOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4293,6 +4980,26 @@ func (c *Client) DescribePrincipalIdFormatWithContext(ctx context.Context, input
 	return req.Output.(*ec2.DescribePrincipalIdFormatOutput), req.Error
 }
 
+func (c *Client) DescribePrincipalIdFormatPagesWithContext(ctx context.Context, input *ec2.DescribePrincipalIdFormatInput, cb func(*ec2.DescribePrincipalIdFormatOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribePrincipalIdFormat",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribePrincipalIdFormatPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePublicIpv4PoolsWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, opts ...request.Option) (*ec2.DescribePublicIpv4PoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4312,6 +5019,26 @@ func (c *Client) DescribePublicIpv4PoolsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.DescribePublicIpv4PoolsOutput), req.Error
+}
+
+func (c *Client) DescribePublicIpv4PoolsPagesWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, cb func(*ec2.DescribePublicIpv4PoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribePublicIpv4Pools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribePublicIpv4PoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *ec2.DescribeRegionsInput, opts ...request.Option) (*ec2.DescribeRegionsOutput, error) {
@@ -4398,6 +5125,26 @@ func (c *Client) DescribeReservedInstancesModificationsWithContext(ctx context.C
 	return req.Output.(*ec2.DescribeReservedInstancesModificationsOutput), req.Error
 }
 
+func (c *Client) DescribeReservedInstancesModificationsPagesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesModificationsInput, cb func(*ec2.DescribeReservedInstancesModificationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeReservedInstancesModifications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeReservedInstancesModificationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReservedInstancesOfferingsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesOfferingsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4417,6 +5164,26 @@ func (c *Client) DescribeReservedInstancesOfferingsWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*ec2.DescribeReservedInstancesOfferingsOutput), req.Error
+}
+
+func (c *Client) DescribeReservedInstancesOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesOfferingsInput, cb func(*ec2.DescribeReservedInstancesOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeReservedInstancesOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeReservedInstancesOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, input *ec2.DescribeRouteTablesInput, opts ...request.Option) (*ec2.DescribeRouteTablesOutput, error) {
@@ -4440,6 +5207,26 @@ func (c *Client) DescribeRouteTablesWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.DescribeRouteTablesOutput), req.Error
 }
 
+func (c *Client) DescribeRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeRouteTablesInput, cb func(*ec2.DescribeRouteTablesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeRouteTables",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeRouteTablesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeScheduledInstanceAvailabilityWithContext(ctx context.Context, input *ec2.DescribeScheduledInstanceAvailabilityInput, opts ...request.Option) (*ec2.DescribeScheduledInstanceAvailabilityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4461,6 +5248,26 @@ func (c *Client) DescribeScheduledInstanceAvailabilityWithContext(ctx context.Co
 	return req.Output.(*ec2.DescribeScheduledInstanceAvailabilityOutput), req.Error
 }
 
+func (c *Client) DescribeScheduledInstanceAvailabilityPagesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstanceAvailabilityInput, cb func(*ec2.DescribeScheduledInstanceAvailabilityOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeScheduledInstanceAvailability",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeScheduledInstanceAvailabilityPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeScheduledInstancesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, opts ...request.Option) (*ec2.DescribeScheduledInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4480,6 +5287,26 @@ func (c *Client) DescribeScheduledInstancesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.DescribeScheduledInstancesOutput), req.Error
+}
+
+func (c *Client) DescribeScheduledInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, cb func(*ec2.DescribeScheduledInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeScheduledInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeScheduledInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSecurityGroupReferencesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupReferencesInput, opts ...request.Option) (*ec2.DescribeSecurityGroupReferencesOutput, error) {
@@ -4524,6 +5351,26 @@ func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, input *e
 	return req.Output.(*ec2.DescribeSecurityGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, cb func(*ec2.DescribeSecurityGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSecurityGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSecurityGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSnapshotAttributeWithContext(ctx context.Context, input *ec2.DescribeSnapshotAttributeInput, opts ...request.Option) (*ec2.DescribeSnapshotAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4564,6 +5411,26 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *ec2.De
 	})
 
 	return req.Output.(*ec2.DescribeSnapshotsOutput), req.Error
+}
+
+func (c *Client) DescribeSnapshotsPagesWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, cb func(*ec2.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSnapshots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSnapshotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.DescribeSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.DescribeSpotDatafeedSubscriptionOutput, error) {
@@ -4650,6 +5517,26 @@ func (c *Client) DescribeSpotFleetRequestsWithContext(ctx context.Context, input
 	return req.Output.(*ec2.DescribeSpotFleetRequestsOutput), req.Error
 }
 
+func (c *Client) DescribeSpotFleetRequestsPagesWithContext(ctx context.Context, input *ec2.DescribeSpotFleetRequestsInput, cb func(*ec2.DescribeSpotFleetRequestsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSpotFleetRequests",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSpotFleetRequestsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSpotInstanceRequestsWithContext(ctx context.Context, input *ec2.DescribeSpotInstanceRequestsInput, opts ...request.Option) (*ec2.DescribeSpotInstanceRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4669,6 +5556,26 @@ func (c *Client) DescribeSpotInstanceRequestsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.DescribeSpotInstanceRequestsOutput), req.Error
+}
+
+func (c *Client) DescribeSpotInstanceRequestsPagesWithContext(ctx context.Context, input *ec2.DescribeSpotInstanceRequestsInput, cb func(*ec2.DescribeSpotInstanceRequestsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSpotInstanceRequests",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSpotInstanceRequestsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSpotPriceHistoryWithContext(ctx context.Context, input *ec2.DescribeSpotPriceHistoryInput, opts ...request.Option) (*ec2.DescribeSpotPriceHistoryOutput, error) {
@@ -4692,6 +5599,26 @@ func (c *Client) DescribeSpotPriceHistoryWithContext(ctx context.Context, input 
 	return req.Output.(*ec2.DescribeSpotPriceHistoryOutput), req.Error
 }
 
+func (c *Client) DescribeSpotPriceHistoryPagesWithContext(ctx context.Context, input *ec2.DescribeSpotPriceHistoryInput, cb func(*ec2.DescribeSpotPriceHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSpotPriceHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSpotPriceHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeStaleSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeStaleSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4711,6 +5638,26 @@ func (c *Client) DescribeStaleSecurityGroupsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*ec2.DescribeStaleSecurityGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeStaleSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, cb func(*ec2.DescribeStaleSecurityGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeStaleSecurityGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeStaleSecurityGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error) {
@@ -4734,6 +5681,26 @@ func (c *Client) DescribeSubnetsWithContext(ctx context.Context, input *ec2.Desc
 	return req.Output.(*ec2.DescribeSubnetsOutput), req.Error
 }
 
+func (c *Client) DescribeSubnetsPagesWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, cb func(*ec2.DescribeSubnetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSubnets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSubnetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *ec2.DescribeTagsInput, opts ...request.Option) (*ec2.DescribeTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4753,6 +5720,26 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *ec2.Describ
 	})
 
 	return req.Output.(*ec2.DescribeTagsOutput), req.Error
+}
+
+func (c *Client) DescribeTagsPagesWithContext(ctx context.Context, input *ec2.DescribeTagsInput, cb func(*ec2.DescribeTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTrafficMirrorFiltersWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorFiltersInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorFiltersOutput, error) {
@@ -4776,6 +5763,26 @@ func (c *Client) DescribeTrafficMirrorFiltersWithContext(ctx context.Context, in
 	return req.Output.(*ec2.DescribeTrafficMirrorFiltersOutput), req.Error
 }
 
+func (c *Client) DescribeTrafficMirrorFiltersPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorFiltersInput, cb func(*ec2.DescribeTrafficMirrorFiltersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTrafficMirrorFilters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTrafficMirrorFiltersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTrafficMirrorSessionsWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorSessionsInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4795,6 +5802,26 @@ func (c *Client) DescribeTrafficMirrorSessionsWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*ec2.DescribeTrafficMirrorSessionsOutput), req.Error
+}
+
+func (c *Client) DescribeTrafficMirrorSessionsPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorSessionsInput, cb func(*ec2.DescribeTrafficMirrorSessionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTrafficMirrorSessions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTrafficMirrorSessionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTrafficMirrorTargetsWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, opts ...request.Option) (*ec2.DescribeTrafficMirrorTargetsOutput, error) {
@@ -4818,6 +5845,26 @@ func (c *Client) DescribeTrafficMirrorTargetsWithContext(ctx context.Context, in
 	return req.Output.(*ec2.DescribeTrafficMirrorTargetsOutput), req.Error
 }
 
+func (c *Client) DescribeTrafficMirrorTargetsPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, cb func(*ec2.DescribeTrafficMirrorTargetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTrafficMirrorTargets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTrafficMirrorTargetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTransitGatewayAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4837,6 +5884,26 @@ func (c *Client) DescribeTransitGatewayAttachmentsWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.DescribeTransitGatewayAttachmentsOutput), req.Error
+}
+
+func (c *Client) DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, cb func(*ec2.DescribeTransitGatewayAttachmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayAttachments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayAttachmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error) {
@@ -4860,6 +5927,26 @@ func (c *Client) DescribeTransitGatewayRouteTablesWithContext(ctx context.Contex
 	return req.Output.(*ec2.DescribeTransitGatewayRouteTablesOutput), req.Error
 }
 
+func (c *Client) DescribeTransitGatewayRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, cb func(*ec2.DescribeTransitGatewayRouteTablesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayRouteTables",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayRouteTablesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayVpcAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4881,6 +5968,26 @@ func (c *Client) DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Con
 	return req.Output.(*ec2.DescribeTransitGatewayVpcAttachmentsOutput), req.Error
 }
 
+func (c *Client) DescribeTransitGatewayVpcAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, cb func(*ec2.DescribeTransitGatewayVpcAttachmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayVpcAttachments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayVpcAttachmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTransitGatewaysWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, opts ...request.Option) (*ec2.DescribeTransitGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4900,6 +6007,26 @@ func (c *Client) DescribeTransitGatewaysWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.DescribeTransitGatewaysOutput), req.Error
+}
+
+func (c *Client) DescribeTransitGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, cb func(*ec2.DescribeTransitGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error) {
@@ -4944,6 +6071,26 @@ func (c *Client) DescribeVolumeStatusWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.DescribeVolumeStatusOutput), req.Error
 }
 
+func (c *Client) DescribeVolumeStatusPagesWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, cb func(*ec2.DescribeVolumeStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVolumeStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVolumeStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *ec2.DescribeVolumesInput, opts ...request.Option) (*ec2.DescribeVolumesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4965,6 +6112,26 @@ func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *ec2.Desc
 	return req.Output.(*ec2.DescribeVolumesOutput), req.Error
 }
 
+func (c *Client) DescribeVolumesPagesWithContext(ctx context.Context, input *ec2.DescribeVolumesInput, cb func(*ec2.DescribeVolumesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVolumes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVolumesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVolumesModificationsWithContext(ctx context.Context, input *ec2.DescribeVolumesModificationsInput, opts ...request.Option) (*ec2.DescribeVolumesModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4984,6 +6151,26 @@ func (c *Client) DescribeVolumesModificationsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.DescribeVolumesModificationsOutput), req.Error
+}
+
+func (c *Client) DescribeVolumesModificationsPagesWithContext(ctx context.Context, input *ec2.DescribeVolumesModificationsInput, cb func(*ec2.DescribeVolumesModificationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVolumesModifications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVolumesModificationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeVpcAttributeWithContext(ctx context.Context, input *ec2.DescribeVpcAttributeInput, opts ...request.Option) (*ec2.DescribeVpcAttributeOutput, error) {
@@ -5049,6 +6236,26 @@ func (c *Client) DescribeVpcClassicLinkDnsSupportWithContext(ctx context.Context
 	return req.Output.(*ec2.DescribeVpcClassicLinkDnsSupportOutput), req.Error
 }
 
+func (c *Client) DescribeVpcClassicLinkDnsSupportPagesWithContext(ctx context.Context, input *ec2.DescribeVpcClassicLinkDnsSupportInput, cb func(*ec2.DescribeVpcClassicLinkDnsSupportOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcClassicLinkDnsSupport",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcClassicLinkDnsSupportPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVpcEndpointConnectionNotificationsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionNotificationsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointConnectionNotificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5068,6 +6275,26 @@ func (c *Client) DescribeVpcEndpointConnectionNotificationsWithContext(ctx conte
 	})
 
 	return req.Output.(*ec2.DescribeVpcEndpointConnectionNotificationsOutput), req.Error
+}
+
+func (c *Client) DescribeVpcEndpointConnectionNotificationsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionNotificationsInput, cb func(*ec2.DescribeVpcEndpointConnectionNotificationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcEndpointConnectionNotifications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcEndpointConnectionNotificationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointConnectionsOutput, error) {
@@ -5091,6 +6318,26 @@ func (c *Client) DescribeVpcEndpointConnectionsWithContext(ctx context.Context, 
 	return req.Output.(*ec2.DescribeVpcEndpointConnectionsOutput), req.Error
 }
 
+func (c *Client) DescribeVpcEndpointConnectionsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointConnectionsInput, cb func(*ec2.DescribeVpcEndpointConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcEndpointConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcEndpointConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVpcEndpointServiceConfigurationsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServiceConfigurationsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServiceConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5112,6 +6359,26 @@ func (c *Client) DescribeVpcEndpointServiceConfigurationsWithContext(ctx context
 	return req.Output.(*ec2.DescribeVpcEndpointServiceConfigurationsOutput), req.Error
 }
 
+func (c *Client) DescribeVpcEndpointServiceConfigurationsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServiceConfigurationsInput, cb func(*ec2.DescribeVpcEndpointServiceConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcEndpointServiceConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcEndpointServiceConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVpcEndpointServicePermissionsWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicePermissionsInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServicePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5131,6 +6398,26 @@ func (c *Client) DescribeVpcEndpointServicePermissionsWithContext(ctx context.Co
 	})
 
 	return req.Output.(*ec2.DescribeVpcEndpointServicePermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeVpcEndpointServicePermissionsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicePermissionsInput, cb func(*ec2.DescribeVpcEndpointServicePermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcEndpointServicePermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcEndpointServicePermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeVpcEndpointServicesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointServicesInput, opts ...request.Option) (*ec2.DescribeVpcEndpointServicesOutput, error) {
@@ -5175,6 +6462,26 @@ func (c *Client) DescribeVpcEndpointsWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.DescribeVpcEndpointsOutput), req.Error
 }
 
+func (c *Client) DescribeVpcEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcEndpointsInput, cb func(*ec2.DescribeVpcEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpcPeeringConnectionsInput, opts ...request.Option) (*ec2.DescribeVpcPeeringConnectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5196,6 +6503,26 @@ func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, i
 	return req.Output.(*ec2.DescribeVpcPeeringConnectionsOutput), req.Error
 }
 
+func (c *Client) DescribeVpcPeeringConnectionsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcPeeringConnectionsInput, cb func(*ec2.DescribeVpcPeeringConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcPeeringConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcPeeringConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVpcsWithContext(ctx context.Context, input *ec2.DescribeVpcsInput, opts ...request.Option) (*ec2.DescribeVpcsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5215,6 +6542,26 @@ func (c *Client) DescribeVpcsWithContext(ctx context.Context, input *ec2.Describ
 	})
 
 	return req.Output.(*ec2.DescribeVpcsOutput), req.Error
+}
+
+func (c *Client) DescribeVpcsPagesWithContext(ctx context.Context, input *ec2.DescribeVpcsInput, cb func(*ec2.DescribeVpcsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVpcs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVpcsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeVpnConnectionsWithContext(ctx context.Context, input *ec2.DescribeVpnConnectionsInput, opts ...request.Option) (*ec2.DescribeVpnConnectionsOutput, error) {
@@ -6036,6 +7383,26 @@ func (c *Client) GetTransitGatewayAttachmentPropagationsWithContext(ctx context.
 	return req.Output.(*ec2.GetTransitGatewayAttachmentPropagationsOutput), req.Error
 }
 
+func (c *Client) GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayAttachmentPropagations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -6057,6 +7424,26 @@ func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.
 	return req.Output.(*ec2.GetTransitGatewayRouteTableAssociationsOutput), req.Error
 }
 
+func (c *Client) GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayRouteTableAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -6076,6 +7463,26 @@ func (c *Client) GetTransitGatewayRouteTablePropagationsWithContext(ctx context.
 	})
 
 	return req.Output.(*ec2.GetTransitGatewayRouteTablePropagationsOutput), req.Error
+}
+
+func (c *Client) GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, cb func(*ec2.GetTransitGatewayRouteTablePropagationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayRouteTablePropagations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ImportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ImportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ImportClientVpnClientCertificateRevocationListOutput, error) {

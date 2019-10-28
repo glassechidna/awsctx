@@ -55,13 +55,20 @@ type Chime interface {
 	GetVoiceConnectorTerminationHealthWithContext(ctx context.Context, input *chime.GetVoiceConnectorTerminationHealthInput, opts ...request.Option) (*chime.GetVoiceConnectorTerminationHealthOutput, error)
 	InviteUsersWithContext(ctx context.Context, input *chime.InviteUsersInput, opts ...request.Option) (*chime.InviteUsersOutput, error)
 	ListAccountsWithContext(ctx context.Context, input *chime.ListAccountsInput, opts ...request.Option) (*chime.ListAccountsOutput, error)
+	ListAccountsPagesWithContext(ctx context.Context, input *chime.ListAccountsInput, cb func(*chime.ListAccountsOutput, bool) bool, opts ...request.Option) error
 	ListBotsWithContext(ctx context.Context, input *chime.ListBotsInput, opts ...request.Option) (*chime.ListBotsOutput, error)
+	ListBotsPagesWithContext(ctx context.Context, input *chime.ListBotsInput, cb func(*chime.ListBotsOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumberOrdersWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, opts ...request.Option) (*chime.ListPhoneNumberOrdersOutput, error)
+	ListPhoneNumberOrdersPagesWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, cb func(*chime.ListPhoneNumberOrdersOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, opts ...request.Option) (*chime.ListPhoneNumbersOutput, error)
+	ListPhoneNumbersPagesWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, cb func(*chime.ListPhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error)
+	ListUsersPagesWithContext(ctx context.Context, input *chime.ListUsersInput, cb func(*chime.ListUsersOutput, bool) bool, opts ...request.Option) error
 	ListVoiceConnectorGroupsWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, opts ...request.Option) (*chime.ListVoiceConnectorGroupsOutput, error)
+	ListVoiceConnectorGroupsPagesWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, cb func(*chime.ListVoiceConnectorGroupsOutput, bool) bool, opts ...request.Option) error
 	ListVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.ListVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.ListVoiceConnectorTerminationCredentialsOutput, error)
 	ListVoiceConnectorsWithContext(ctx context.Context, input *chime.ListVoiceConnectorsInput, opts ...request.Option) (*chime.ListVoiceConnectorsOutput, error)
+	ListVoiceConnectorsPagesWithContext(ctx context.Context, input *chime.ListVoiceConnectorsInput, cb func(*chime.ListVoiceConnectorsOutput, bool) bool, opts ...request.Option) error
 	LogoutUserWithContext(ctx context.Context, input *chime.LogoutUserInput, opts ...request.Option) (*chime.LogoutUserOutput, error)
 	PutEventsConfigurationWithContext(ctx context.Context, input *chime.PutEventsConfigurationInput, opts ...request.Option) (*chime.PutEventsConfigurationOutput, error)
 	PutVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorLoggingConfigurationOutput, error)
@@ -1024,6 +1031,26 @@ func (c *Client) ListAccountsWithContext(ctx context.Context, input *chime.ListA
 	return req.Output.(*chime.ListAccountsOutput), req.Error
 }
 
+func (c *Client) ListAccountsPagesWithContext(ctx context.Context, input *chime.ListAccountsInput, cb func(*chime.ListAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBotsWithContext(ctx context.Context, input *chime.ListBotsInput, opts ...request.Option) (*chime.ListBotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1043,6 +1070,26 @@ func (c *Client) ListBotsWithContext(ctx context.Context, input *chime.ListBotsI
 	})
 
 	return req.Output.(*chime.ListBotsOutput), req.Error
+}
+
+func (c *Client) ListBotsPagesWithContext(ctx context.Context, input *chime.ListBotsInput, cb func(*chime.ListBotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListBots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListBotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPhoneNumberOrdersWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, opts ...request.Option) (*chime.ListPhoneNumberOrdersOutput, error) {
@@ -1066,6 +1113,26 @@ func (c *Client) ListPhoneNumberOrdersWithContext(ctx context.Context, input *ch
 	return req.Output.(*chime.ListPhoneNumberOrdersOutput), req.Error
 }
 
+func (c *Client) ListPhoneNumberOrdersPagesWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, cb func(*chime.ListPhoneNumberOrdersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListPhoneNumberOrders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListPhoneNumberOrdersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPhoneNumbersWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, opts ...request.Option) (*chime.ListPhoneNumbersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1085,6 +1152,26 @@ func (c *Client) ListPhoneNumbersWithContext(ctx context.Context, input *chime.L
 	})
 
 	return req.Output.(*chime.ListPhoneNumbersOutput), req.Error
+}
+
+func (c *Client) ListPhoneNumbersPagesWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, cb func(*chime.ListPhoneNumbersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListPhoneNumbers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListPhoneNumbersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error) {
@@ -1108,6 +1195,26 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *chime.ListUser
 	return req.Output.(*chime.ListUsersOutput), req.Error
 }
 
+func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *chime.ListUsersInput, cb func(*chime.ListUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListVoiceConnectorGroupsWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, opts ...request.Option) (*chime.ListVoiceConnectorGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1127,6 +1234,26 @@ func (c *Client) ListVoiceConnectorGroupsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*chime.ListVoiceConnectorGroupsOutput), req.Error
+}
+
+func (c *Client) ListVoiceConnectorGroupsPagesWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, cb func(*chime.ListVoiceConnectorGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListVoiceConnectorGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListVoiceConnectorGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.ListVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.ListVoiceConnectorTerminationCredentialsOutput, error) {
@@ -1169,6 +1296,26 @@ func (c *Client) ListVoiceConnectorsWithContext(ctx context.Context, input *chim
 	})
 
 	return req.Output.(*chime.ListVoiceConnectorsOutput), req.Error
+}
+
+func (c *Client) ListVoiceConnectorsPagesWithContext(ctx context.Context, input *chime.ListVoiceConnectorsInput, cb func(*chime.ListVoiceConnectorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListVoiceConnectors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListVoiceConnectorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) LogoutUserWithContext(ctx context.Context, input *chime.LogoutUserInput, opts ...request.Option) (*chime.LogoutUserOutput, error) {

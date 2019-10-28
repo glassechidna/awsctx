@@ -20,11 +20,17 @@ type ServiceQuotas interface {
 	GetServiceQuotaWithContext(ctx context.Context, input *servicequotas.GetServiceQuotaInput, opts ...request.Option) (*servicequotas.GetServiceQuotaOutput, error)
 	GetServiceQuotaIncreaseRequestFromTemplateWithContext(ctx context.Context, input *servicequotas.GetServiceQuotaIncreaseRequestFromTemplateInput, opts ...request.Option) (*servicequotas.GetServiceQuotaIncreaseRequestFromTemplateOutput, error)
 	ListAWSDefaultServiceQuotasWithContext(ctx context.Context, input *servicequotas.ListAWSDefaultServiceQuotasInput, opts ...request.Option) (*servicequotas.ListAWSDefaultServiceQuotasOutput, error)
+	ListAWSDefaultServiceQuotasPagesWithContext(ctx context.Context, input *servicequotas.ListAWSDefaultServiceQuotasInput, cb func(*servicequotas.ListAWSDefaultServiceQuotasOutput, bool) bool, opts ...request.Option) error
 	ListRequestedServiceQuotaChangeHistoryWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryInput, opts ...request.Option) (*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput, error)
+	ListRequestedServiceQuotaChangeHistoryPagesWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryInput, cb func(*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput, bool) bool, opts ...request.Option) error
 	ListRequestedServiceQuotaChangeHistoryByQuotaWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaInput, opts ...request.Option) (*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput, error)
+	ListRequestedServiceQuotaChangeHistoryByQuotaPagesWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaInput, cb func(*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput, bool) bool, opts ...request.Option) error
 	ListServiceQuotaIncreaseRequestsInTemplateWithContext(ctx context.Context, input *servicequotas.ListServiceQuotaIncreaseRequestsInTemplateInput, opts ...request.Option) (*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput, error)
+	ListServiceQuotaIncreaseRequestsInTemplatePagesWithContext(ctx context.Context, input *servicequotas.ListServiceQuotaIncreaseRequestsInTemplateInput, cb func(*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput, bool) bool, opts ...request.Option) error
 	ListServiceQuotasWithContext(ctx context.Context, input *servicequotas.ListServiceQuotasInput, opts ...request.Option) (*servicequotas.ListServiceQuotasOutput, error)
+	ListServiceQuotasPagesWithContext(ctx context.Context, input *servicequotas.ListServiceQuotasInput, cb func(*servicequotas.ListServiceQuotasOutput, bool) bool, opts ...request.Option) error
 	ListServicesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, opts ...request.Option) (*servicequotas.ListServicesOutput, error)
+	ListServicesPagesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, cb func(*servicequotas.ListServicesOutput, bool) bool, opts ...request.Option) error
 	PutServiceQuotaIncreaseRequestIntoTemplateWithContext(ctx context.Context, input *servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateInput, opts ...request.Option) (*servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateOutput, error)
 	RequestServiceQuotaIncreaseWithContext(ctx context.Context, input *servicequotas.RequestServiceQuotaIncreaseInput, opts ...request.Option) (*servicequotas.RequestServiceQuotaIncreaseOutput, error)
 }
@@ -233,6 +239,26 @@ func (c *Client) ListAWSDefaultServiceQuotasWithContext(ctx context.Context, inp
 	return req.Output.(*servicequotas.ListAWSDefaultServiceQuotasOutput), req.Error
 }
 
+func (c *Client) ListAWSDefaultServiceQuotasPagesWithContext(ctx context.Context, input *servicequotas.ListAWSDefaultServiceQuotasInput, cb func(*servicequotas.ListAWSDefaultServiceQuotasOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListAWSDefaultServiceQuotas",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceQuotasAPI.ListAWSDefaultServiceQuotasPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRequestedServiceQuotaChangeHistoryWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryInput, opts ...request.Option) (*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
@@ -252,6 +278,26 @@ func (c *Client) ListRequestedServiceQuotaChangeHistoryWithContext(ctx context.C
 	})
 
 	return req.Output.(*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput), req.Error
+}
+
+func (c *Client) ListRequestedServiceQuotaChangeHistoryPagesWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryInput, cb func(*servicequotas.ListRequestedServiceQuotaChangeHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListRequestedServiceQuotaChangeHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceQuotasAPI.ListRequestedServiceQuotaChangeHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRequestedServiceQuotaChangeHistoryByQuotaWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaInput, opts ...request.Option) (*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput, error) {
@@ -275,6 +321,26 @@ func (c *Client) ListRequestedServiceQuotaChangeHistoryByQuotaWithContext(ctx co
 	return req.Output.(*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput), req.Error
 }
 
+func (c *Client) ListRequestedServiceQuotaChangeHistoryByQuotaPagesWithContext(ctx context.Context, input *servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaInput, cb func(*servicequotas.ListRequestedServiceQuotaChangeHistoryByQuotaOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListRequestedServiceQuotaChangeHistoryByQuota",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceQuotasAPI.ListRequestedServiceQuotaChangeHistoryByQuotaPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServiceQuotaIncreaseRequestsInTemplateWithContext(ctx context.Context, input *servicequotas.ListServiceQuotaIncreaseRequestsInTemplateInput, opts ...request.Option) (*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
@@ -294,6 +360,26 @@ func (c *Client) ListServiceQuotaIncreaseRequestsInTemplateWithContext(ctx conte
 	})
 
 	return req.Output.(*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput), req.Error
+}
+
+func (c *Client) ListServiceQuotaIncreaseRequestsInTemplatePagesWithContext(ctx context.Context, input *servicequotas.ListServiceQuotaIncreaseRequestsInTemplateInput, cb func(*servicequotas.ListServiceQuotaIncreaseRequestsInTemplateOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListServiceQuotaIncreaseRequestsInTemplate",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceQuotasAPI.ListServiceQuotaIncreaseRequestsInTemplatePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListServiceQuotasWithContext(ctx context.Context, input *servicequotas.ListServiceQuotasInput, opts ...request.Option) (*servicequotas.ListServiceQuotasOutput, error) {
@@ -317,6 +403,26 @@ func (c *Client) ListServiceQuotasWithContext(ctx context.Context, input *servic
 	return req.Output.(*servicequotas.ListServiceQuotasOutput), req.Error
 }
 
+func (c *Client) ListServiceQuotasPagesWithContext(ctx context.Context, input *servicequotas.ListServiceQuotasInput, cb func(*servicequotas.ListServiceQuotasOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListServiceQuotas",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceQuotasAPI.ListServiceQuotasPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServicesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, opts ...request.Option) (*servicequotas.ListServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
@@ -336,6 +442,26 @@ func (c *Client) ListServicesWithContext(ctx context.Context, input *servicequot
 	})
 
 	return req.Output.(*servicequotas.ListServicesOutput), req.Error
+}
+
+func (c *Client) ListServicesPagesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, cb func(*servicequotas.ListServicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListServices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceQuotasAPI.ListServicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutServiceQuotaIncreaseRequestIntoTemplateWithContext(ctx context.Context, input *servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateInput, opts ...request.Option) (*servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateOutput, error) {

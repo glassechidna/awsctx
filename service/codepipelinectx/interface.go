@@ -27,11 +27,17 @@ type CodePipeline interface {
 	GetPipelineStateWithContext(ctx context.Context, input *codepipeline.GetPipelineStateInput, opts ...request.Option) (*codepipeline.GetPipelineStateOutput, error)
 	GetThirdPartyJobDetailsWithContext(ctx context.Context, input *codepipeline.GetThirdPartyJobDetailsInput, opts ...request.Option) (*codepipeline.GetThirdPartyJobDetailsOutput, error)
 	ListActionExecutionsWithContext(ctx context.Context, input *codepipeline.ListActionExecutionsInput, opts ...request.Option) (*codepipeline.ListActionExecutionsOutput, error)
+	ListActionExecutionsPagesWithContext(ctx context.Context, input *codepipeline.ListActionExecutionsInput, cb func(*codepipeline.ListActionExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListActionTypesWithContext(ctx context.Context, input *codepipeline.ListActionTypesInput, opts ...request.Option) (*codepipeline.ListActionTypesOutput, error)
+	ListActionTypesPagesWithContext(ctx context.Context, input *codepipeline.ListActionTypesInput, cb func(*codepipeline.ListActionTypesOutput, bool) bool, opts ...request.Option) error
 	ListPipelineExecutionsWithContext(ctx context.Context, input *codepipeline.ListPipelineExecutionsInput, opts ...request.Option) (*codepipeline.ListPipelineExecutionsOutput, error)
+	ListPipelineExecutionsPagesWithContext(ctx context.Context, input *codepipeline.ListPipelineExecutionsInput, cb func(*codepipeline.ListPipelineExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListPipelinesWithContext(ctx context.Context, input *codepipeline.ListPipelinesInput, opts ...request.Option) (*codepipeline.ListPipelinesOutput, error)
+	ListPipelinesPagesWithContext(ctx context.Context, input *codepipeline.ListPipelinesInput, cb func(*codepipeline.ListPipelinesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *codepipeline.ListTagsForResourceInput, opts ...request.Option) (*codepipeline.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *codepipeline.ListTagsForResourceInput, cb func(*codepipeline.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListWebhooksWithContext(ctx context.Context, input *codepipeline.ListWebhooksInput, opts ...request.Option) (*codepipeline.ListWebhooksOutput, error)
+	ListWebhooksPagesWithContext(ctx context.Context, input *codepipeline.ListWebhooksInput, cb func(*codepipeline.ListWebhooksOutput, bool) bool, opts ...request.Option) error
 	PollForJobsWithContext(ctx context.Context, input *codepipeline.PollForJobsInput, opts ...request.Option) (*codepipeline.PollForJobsOutput, error)
 	PollForThirdPartyJobsWithContext(ctx context.Context, input *codepipeline.PollForThirdPartyJobsInput, opts ...request.Option) (*codepipeline.PollForThirdPartyJobsOutput, error)
 	PutActionRevisionWithContext(ctx context.Context, input *codepipeline.PutActionRevisionInput, opts ...request.Option) (*codepipeline.PutActionRevisionOutput, error)
@@ -400,6 +406,26 @@ func (c *Client) ListActionExecutionsWithContext(ctx context.Context, input *cod
 	return req.Output.(*codepipeline.ListActionExecutionsOutput), req.Error
 }
 
+func (c *Client) ListActionExecutionsPagesWithContext(ctx context.Context, input *codepipeline.ListActionExecutionsInput, cb func(*codepipeline.ListActionExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "ListActionExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodePipelineAPI.ListActionExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListActionTypesWithContext(ctx context.Context, input *codepipeline.ListActionTypesInput, opts ...request.Option) (*codepipeline.ListActionTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
@@ -419,6 +445,26 @@ func (c *Client) ListActionTypesWithContext(ctx context.Context, input *codepipe
 	})
 
 	return req.Output.(*codepipeline.ListActionTypesOutput), req.Error
+}
+
+func (c *Client) ListActionTypesPagesWithContext(ctx context.Context, input *codepipeline.ListActionTypesInput, cb func(*codepipeline.ListActionTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "ListActionTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodePipelineAPI.ListActionTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPipelineExecutionsWithContext(ctx context.Context, input *codepipeline.ListPipelineExecutionsInput, opts ...request.Option) (*codepipeline.ListPipelineExecutionsOutput, error) {
@@ -442,6 +488,26 @@ func (c *Client) ListPipelineExecutionsWithContext(ctx context.Context, input *c
 	return req.Output.(*codepipeline.ListPipelineExecutionsOutput), req.Error
 }
 
+func (c *Client) ListPipelineExecutionsPagesWithContext(ctx context.Context, input *codepipeline.ListPipelineExecutionsInput, cb func(*codepipeline.ListPipelineExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "ListPipelineExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodePipelineAPI.ListPipelineExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *codepipeline.ListPipelinesInput, opts ...request.Option) (*codepipeline.ListPipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
@@ -461,6 +527,26 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *codepipeli
 	})
 
 	return req.Output.(*codepipeline.ListPipelinesOutput), req.Error
+}
+
+func (c *Client) ListPipelinesPagesWithContext(ctx context.Context, input *codepipeline.ListPipelinesInput, cb func(*codepipeline.ListPipelinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "ListPipelines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodePipelineAPI.ListPipelinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *codepipeline.ListTagsForResourceInput, opts ...request.Option) (*codepipeline.ListTagsForResourceOutput, error) {
@@ -484,6 +570,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *code
 	return req.Output.(*codepipeline.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *codepipeline.ListTagsForResourceInput, cb func(*codepipeline.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodePipelineAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListWebhooksWithContext(ctx context.Context, input *codepipeline.ListWebhooksInput, opts ...request.Option) (*codepipeline.ListWebhooksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codepipeline",
@@ -503,6 +609,26 @@ func (c *Client) ListWebhooksWithContext(ctx context.Context, input *codepipelin
 	})
 
 	return req.Output.(*codepipeline.ListWebhooksOutput), req.Error
+}
+
+func (c *Client) ListWebhooksPagesWithContext(ctx context.Context, input *codepipeline.ListWebhooksInput, cb func(*codepipeline.ListWebhooksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "ListWebhooks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodePipelineAPI.ListWebhooksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PollForJobsWithContext(ctx context.Context, input *codepipeline.PollForJobsInput, opts ...request.Option) (*codepipeline.PollForJobsOutput, error) {

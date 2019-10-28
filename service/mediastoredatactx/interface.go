@@ -15,6 +15,7 @@ type MediaStoreData interface {
 	DescribeObjectWithContext(ctx context.Context, input *mediastoredata.DescribeObjectInput, opts ...request.Option) (*mediastoredata.DescribeObjectOutput, error)
 	GetObjectWithContext(ctx context.Context, input *mediastoredata.GetObjectInput, opts ...request.Option) (*mediastoredata.GetObjectOutput, error)
 	ListItemsWithContext(ctx context.Context, input *mediastoredata.ListItemsInput, opts ...request.Option) (*mediastoredata.ListItemsOutput, error)
+	ListItemsPagesWithContext(ctx context.Context, input *mediastoredata.ListItemsInput, cb func(*mediastoredata.ListItemsOutput, bool) bool, opts ...request.Option) error
 	PutObjectWithContext(ctx context.Context, input *mediastoredata.PutObjectInput, opts ...request.Option) (*mediastoredata.PutObjectOutput, error)
 }
 
@@ -115,6 +116,26 @@ func (c *Client) ListItemsWithContext(ctx context.Context, input *mediastoredata
 	})
 
 	return req.Output.(*mediastoredata.ListItemsOutput), req.Error
+}
+
+func (c *Client) ListItemsPagesWithContext(ctx context.Context, input *mediastoredata.ListItemsInput, cb func(*mediastoredata.ListItemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediastoredata",
+		Action:  "ListItems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaStoreDataAPI.ListItemsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutObjectWithContext(ctx context.Context, input *mediastoredata.PutObjectInput, opts ...request.Option) (*mediastoredata.PutObjectOutput, error) {

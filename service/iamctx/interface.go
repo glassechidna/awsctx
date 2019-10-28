@@ -65,12 +65,14 @@ type IAM interface {
 	GenerateServiceLastAccessedDetailsWithContext(ctx context.Context, input *iam.GenerateServiceLastAccessedDetailsInput, opts ...request.Option) (*iam.GenerateServiceLastAccessedDetailsOutput, error)
 	GetAccessKeyLastUsedWithContext(ctx context.Context, input *iam.GetAccessKeyLastUsedInput, opts ...request.Option) (*iam.GetAccessKeyLastUsedOutput, error)
 	GetAccountAuthorizationDetailsWithContext(ctx context.Context, input *iam.GetAccountAuthorizationDetailsInput, opts ...request.Option) (*iam.GetAccountAuthorizationDetailsOutput, error)
+	GetAccountAuthorizationDetailsPagesWithContext(ctx context.Context, input *iam.GetAccountAuthorizationDetailsInput, cb func(*iam.GetAccountAuthorizationDetailsOutput, bool) bool, opts ...request.Option) error
 	GetAccountPasswordPolicyWithContext(ctx context.Context, input *iam.GetAccountPasswordPolicyInput, opts ...request.Option) (*iam.GetAccountPasswordPolicyOutput, error)
 	GetAccountSummaryWithContext(ctx context.Context, input *iam.GetAccountSummaryInput, opts ...request.Option) (*iam.GetAccountSummaryOutput, error)
 	GetContextKeysForCustomPolicyWithContext(ctx context.Context, input *iam.GetContextKeysForCustomPolicyInput, opts ...request.Option) (*iam.GetContextKeysForPolicyResponse, error)
 	GetContextKeysForPrincipalPolicyWithContext(ctx context.Context, input *iam.GetContextKeysForPrincipalPolicyInput, opts ...request.Option) (*iam.GetContextKeysForPolicyResponse, error)
 	GetCredentialReportWithContext(ctx context.Context, input *iam.GetCredentialReportInput, opts ...request.Option) (*iam.GetCredentialReportOutput, error)
 	GetGroupWithContext(ctx context.Context, input *iam.GetGroupInput, opts ...request.Option) (*iam.GetGroupOutput, error)
+	GetGroupPagesWithContext(ctx context.Context, input *iam.GetGroupInput, cb func(*iam.GetGroupOutput, bool) bool, opts ...request.Option) error
 	GetGroupPolicyWithContext(ctx context.Context, input *iam.GetGroupPolicyInput, opts ...request.Option) (*iam.GetGroupPolicyOutput, error)
 	GetInstanceProfileWithContext(ctx context.Context, input *iam.GetInstanceProfileInput, opts ...request.Option) (*iam.GetInstanceProfileOutput, error)
 	GetLoginProfileWithContext(ctx context.Context, input *iam.GetLoginProfileInput, opts ...request.Option) (*iam.GetLoginProfileOutput, error)
@@ -89,33 +91,55 @@ type IAM interface {
 	GetUserWithContext(ctx context.Context, input *iam.GetUserInput, opts ...request.Option) (*iam.GetUserOutput, error)
 	GetUserPolicyWithContext(ctx context.Context, input *iam.GetUserPolicyInput, opts ...request.Option) (*iam.GetUserPolicyOutput, error)
 	ListAccessKeysWithContext(ctx context.Context, input *iam.ListAccessKeysInput, opts ...request.Option) (*iam.ListAccessKeysOutput, error)
+	ListAccessKeysPagesWithContext(ctx context.Context, input *iam.ListAccessKeysInput, cb func(*iam.ListAccessKeysOutput, bool) bool, opts ...request.Option) error
 	ListAccountAliasesWithContext(ctx context.Context, input *iam.ListAccountAliasesInput, opts ...request.Option) (*iam.ListAccountAliasesOutput, error)
+	ListAccountAliasesPagesWithContext(ctx context.Context, input *iam.ListAccountAliasesInput, cb func(*iam.ListAccountAliasesOutput, bool) bool, opts ...request.Option) error
 	ListAttachedGroupPoliciesWithContext(ctx context.Context, input *iam.ListAttachedGroupPoliciesInput, opts ...request.Option) (*iam.ListAttachedGroupPoliciesOutput, error)
+	ListAttachedGroupPoliciesPagesWithContext(ctx context.Context, input *iam.ListAttachedGroupPoliciesInput, cb func(*iam.ListAttachedGroupPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListAttachedRolePoliciesWithContext(ctx context.Context, input *iam.ListAttachedRolePoliciesInput, opts ...request.Option) (*iam.ListAttachedRolePoliciesOutput, error)
+	ListAttachedRolePoliciesPagesWithContext(ctx context.Context, input *iam.ListAttachedRolePoliciesInput, cb func(*iam.ListAttachedRolePoliciesOutput, bool) bool, opts ...request.Option) error
 	ListAttachedUserPoliciesWithContext(ctx context.Context, input *iam.ListAttachedUserPoliciesInput, opts ...request.Option) (*iam.ListAttachedUserPoliciesOutput, error)
+	ListAttachedUserPoliciesPagesWithContext(ctx context.Context, input *iam.ListAttachedUserPoliciesInput, cb func(*iam.ListAttachedUserPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListEntitiesForPolicyWithContext(ctx context.Context, input *iam.ListEntitiesForPolicyInput, opts ...request.Option) (*iam.ListEntitiesForPolicyOutput, error)
+	ListEntitiesForPolicyPagesWithContext(ctx context.Context, input *iam.ListEntitiesForPolicyInput, cb func(*iam.ListEntitiesForPolicyOutput, bool) bool, opts ...request.Option) error
 	ListGroupPoliciesWithContext(ctx context.Context, input *iam.ListGroupPoliciesInput, opts ...request.Option) (*iam.ListGroupPoliciesOutput, error)
+	ListGroupPoliciesPagesWithContext(ctx context.Context, input *iam.ListGroupPoliciesInput, cb func(*iam.ListGroupPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *iam.ListGroupsInput, opts ...request.Option) (*iam.ListGroupsOutput, error)
+	ListGroupsPagesWithContext(ctx context.Context, input *iam.ListGroupsInput, cb func(*iam.ListGroupsOutput, bool) bool, opts ...request.Option) error
 	ListGroupsForUserWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, opts ...request.Option) (*iam.ListGroupsForUserOutput, error)
+	ListGroupsForUserPagesWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, cb func(*iam.ListGroupsForUserOutput, bool) bool, opts ...request.Option) error
 	ListInstanceProfilesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, opts ...request.Option) (*iam.ListInstanceProfilesOutput, error)
+	ListInstanceProfilesPagesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, cb func(*iam.ListInstanceProfilesOutput, bool) bool, opts ...request.Option) error
 	ListInstanceProfilesForRoleWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, opts ...request.Option) (*iam.ListInstanceProfilesForRoleOutput, error)
+	ListInstanceProfilesForRolePagesWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, cb func(*iam.ListInstanceProfilesForRoleOutput, bool) bool, opts ...request.Option) error
 	ListMFADevicesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, opts ...request.Option) (*iam.ListMFADevicesOutput, error)
+	ListMFADevicesPagesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, cb func(*iam.ListMFADevicesOutput, bool) bool, opts ...request.Option) error
 	ListOpenIDConnectProvidersWithContext(ctx context.Context, input *iam.ListOpenIDConnectProvidersInput, opts ...request.Option) (*iam.ListOpenIDConnectProvidersOutput, error)
 	ListPoliciesWithContext(ctx context.Context, input *iam.ListPoliciesInput, opts ...request.Option) (*iam.ListPoliciesOutput, error)
+	ListPoliciesPagesWithContext(ctx context.Context, input *iam.ListPoliciesInput, cb func(*iam.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesGrantingServiceAccessWithContext(ctx context.Context, input *iam.ListPoliciesGrantingServiceAccessInput, opts ...request.Option) (*iam.ListPoliciesGrantingServiceAccessOutput, error)
 	ListPolicyVersionsWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, opts ...request.Option) (*iam.ListPolicyVersionsOutput, error)
+	ListPolicyVersionsPagesWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, cb func(*iam.ListPolicyVersionsOutput, bool) bool, opts ...request.Option) error
 	ListRolePoliciesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, opts ...request.Option) (*iam.ListRolePoliciesOutput, error)
+	ListRolePoliciesPagesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, cb func(*iam.ListRolePoliciesOutput, bool) bool, opts ...request.Option) error
 	ListRoleTagsWithContext(ctx context.Context, input *iam.ListRoleTagsInput, opts ...request.Option) (*iam.ListRoleTagsOutput, error)
 	ListRolesWithContext(ctx context.Context, input *iam.ListRolesInput, opts ...request.Option) (*iam.ListRolesOutput, error)
+	ListRolesPagesWithContext(ctx context.Context, input *iam.ListRolesInput, cb func(*iam.ListRolesOutput, bool) bool, opts ...request.Option) error
 	ListSAMLProvidersWithContext(ctx context.Context, input *iam.ListSAMLProvidersInput, opts ...request.Option) (*iam.ListSAMLProvidersOutput, error)
 	ListSSHPublicKeysWithContext(ctx context.Context, input *iam.ListSSHPublicKeysInput, opts ...request.Option) (*iam.ListSSHPublicKeysOutput, error)
+	ListSSHPublicKeysPagesWithContext(ctx context.Context, input *iam.ListSSHPublicKeysInput, cb func(*iam.ListSSHPublicKeysOutput, bool) bool, opts ...request.Option) error
 	ListServerCertificatesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, opts ...request.Option) (*iam.ListServerCertificatesOutput, error)
+	ListServerCertificatesPagesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, cb func(*iam.ListServerCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListServiceSpecificCredentialsWithContext(ctx context.Context, input *iam.ListServiceSpecificCredentialsInput, opts ...request.Option) (*iam.ListServiceSpecificCredentialsOutput, error)
 	ListSigningCertificatesWithContext(ctx context.Context, input *iam.ListSigningCertificatesInput, opts ...request.Option) (*iam.ListSigningCertificatesOutput, error)
+	ListSigningCertificatesPagesWithContext(ctx context.Context, input *iam.ListSigningCertificatesInput, cb func(*iam.ListSigningCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListUserPoliciesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, opts ...request.Option) (*iam.ListUserPoliciesOutput, error)
+	ListUserPoliciesPagesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, cb func(*iam.ListUserPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListUserTagsWithContext(ctx context.Context, input *iam.ListUserTagsInput, opts ...request.Option) (*iam.ListUserTagsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *iam.ListUsersInput, opts ...request.Option) (*iam.ListUsersOutput, error)
+	ListUsersPagesWithContext(ctx context.Context, input *iam.ListUsersInput, cb func(*iam.ListUsersOutput, bool) bool, opts ...request.Option) error
 	ListVirtualMFADevicesWithContext(ctx context.Context, input *iam.ListVirtualMFADevicesInput, opts ...request.Option) (*iam.ListVirtualMFADevicesOutput, error)
+	ListVirtualMFADevicesPagesWithContext(ctx context.Context, input *iam.ListVirtualMFADevicesInput, cb func(*iam.ListVirtualMFADevicesOutput, bool) bool, opts ...request.Option) error
 	PutGroupPolicyWithContext(ctx context.Context, input *iam.PutGroupPolicyInput, opts ...request.Option) (*iam.PutGroupPolicyOutput, error)
 	PutRolePermissionsBoundaryWithContext(ctx context.Context, input *iam.PutRolePermissionsBoundaryInput, opts ...request.Option) (*iam.PutRolePermissionsBoundaryOutput, error)
 	PutRolePolicyWithContext(ctx context.Context, input *iam.PutRolePolicyInput, opts ...request.Option) (*iam.PutRolePolicyOutput, error)
@@ -129,7 +153,9 @@ type IAM interface {
 	SetDefaultPolicyVersionWithContext(ctx context.Context, input *iam.SetDefaultPolicyVersionInput, opts ...request.Option) (*iam.SetDefaultPolicyVersionOutput, error)
 	SetSecurityTokenServicePreferencesWithContext(ctx context.Context, input *iam.SetSecurityTokenServicePreferencesInput, opts ...request.Option) (*iam.SetSecurityTokenServicePreferencesOutput, error)
 	SimulateCustomPolicyWithContext(ctx context.Context, input *iam.SimulateCustomPolicyInput, opts ...request.Option) (*iam.SimulatePolicyResponse, error)
+	SimulateCustomPolicyPagesWithContext(ctx context.Context, input *iam.SimulateCustomPolicyInput, cb func(*iam.SimulatePolicyResponse, bool) bool, opts ...request.Option) error
 	SimulatePrincipalPolicyWithContext(ctx context.Context, input *iam.SimulatePrincipalPolicyInput, opts ...request.Option) (*iam.SimulatePolicyResponse, error)
+	SimulatePrincipalPolicyPagesWithContext(ctx context.Context, input *iam.SimulatePrincipalPolicyInput, cb func(*iam.SimulatePolicyResponse, bool) bool, opts ...request.Option) error
 	TagRoleWithContext(ctx context.Context, input *iam.TagRoleInput, opts ...request.Option) (*iam.TagRoleOutput, error)
 	TagUserWithContext(ctx context.Context, input *iam.TagUserInput, opts ...request.Option) (*iam.TagUserOutput, error)
 	UntagRoleWithContext(ctx context.Context, input *iam.UntagRoleInput, opts ...request.Option) (*iam.UntagRoleOutput, error)
@@ -1302,6 +1328,26 @@ func (c *Client) GetAccountAuthorizationDetailsWithContext(ctx context.Context, 
 	return req.Output.(*iam.GetAccountAuthorizationDetailsOutput), req.Error
 }
 
+func (c *Client) GetAccountAuthorizationDetailsPagesWithContext(ctx context.Context, input *iam.GetAccountAuthorizationDetailsInput, cb func(*iam.GetAccountAuthorizationDetailsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "GetAccountAuthorizationDetails",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.GetAccountAuthorizationDetailsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetAccountPasswordPolicyWithContext(ctx context.Context, input *iam.GetAccountPasswordPolicyInput, opts ...request.Option) (*iam.GetAccountPasswordPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -1426,6 +1472,26 @@ func (c *Client) GetGroupWithContext(ctx context.Context, input *iam.GetGroupInp
 	})
 
 	return req.Output.(*iam.GetGroupOutput), req.Error
+}
+
+func (c *Client) GetGroupPagesWithContext(ctx context.Context, input *iam.GetGroupInput, cb func(*iam.GetGroupOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "GetGroup",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.GetGroupPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetGroupPolicyWithContext(ctx context.Context, input *iam.GetGroupPolicyInput, opts ...request.Option) (*iam.GetGroupPolicyOutput, error) {
@@ -1806,6 +1872,26 @@ func (c *Client) ListAccessKeysWithContext(ctx context.Context, input *iam.ListA
 	return req.Output.(*iam.ListAccessKeysOutput), req.Error
 }
 
+func (c *Client) ListAccessKeysPagesWithContext(ctx context.Context, input *iam.ListAccessKeysInput, cb func(*iam.ListAccessKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListAccessKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListAccessKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAccountAliasesWithContext(ctx context.Context, input *iam.ListAccountAliasesInput, opts ...request.Option) (*iam.ListAccountAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -1825,6 +1911,26 @@ func (c *Client) ListAccountAliasesWithContext(ctx context.Context, input *iam.L
 	})
 
 	return req.Output.(*iam.ListAccountAliasesOutput), req.Error
+}
+
+func (c *Client) ListAccountAliasesPagesWithContext(ctx context.Context, input *iam.ListAccountAliasesInput, cb func(*iam.ListAccountAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListAccountAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListAccountAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAttachedGroupPoliciesWithContext(ctx context.Context, input *iam.ListAttachedGroupPoliciesInput, opts ...request.Option) (*iam.ListAttachedGroupPoliciesOutput, error) {
@@ -1848,6 +1954,26 @@ func (c *Client) ListAttachedGroupPoliciesWithContext(ctx context.Context, input
 	return req.Output.(*iam.ListAttachedGroupPoliciesOutput), req.Error
 }
 
+func (c *Client) ListAttachedGroupPoliciesPagesWithContext(ctx context.Context, input *iam.ListAttachedGroupPoliciesInput, cb func(*iam.ListAttachedGroupPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListAttachedGroupPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListAttachedGroupPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, input *iam.ListAttachedRolePoliciesInput, opts ...request.Option) (*iam.ListAttachedRolePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -1867,6 +1993,26 @@ func (c *Client) ListAttachedRolePoliciesWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*iam.ListAttachedRolePoliciesOutput), req.Error
+}
+
+func (c *Client) ListAttachedRolePoliciesPagesWithContext(ctx context.Context, input *iam.ListAttachedRolePoliciesInput, cb func(*iam.ListAttachedRolePoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListAttachedRolePolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListAttachedRolePoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, input *iam.ListAttachedUserPoliciesInput, opts ...request.Option) (*iam.ListAttachedUserPoliciesOutput, error) {
@@ -1890,6 +2036,26 @@ func (c *Client) ListAttachedUserPoliciesWithContext(ctx context.Context, input 
 	return req.Output.(*iam.ListAttachedUserPoliciesOutput), req.Error
 }
 
+func (c *Client) ListAttachedUserPoliciesPagesWithContext(ctx context.Context, input *iam.ListAttachedUserPoliciesInput, cb func(*iam.ListAttachedUserPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListAttachedUserPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListAttachedUserPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, input *iam.ListEntitiesForPolicyInput, opts ...request.Option) (*iam.ListEntitiesForPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -1909,6 +2075,26 @@ func (c *Client) ListEntitiesForPolicyWithContext(ctx context.Context, input *ia
 	})
 
 	return req.Output.(*iam.ListEntitiesForPolicyOutput), req.Error
+}
+
+func (c *Client) ListEntitiesForPolicyPagesWithContext(ctx context.Context, input *iam.ListEntitiesForPolicyInput, cb func(*iam.ListEntitiesForPolicyOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListEntitiesForPolicy",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListEntitiesForPolicyPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, input *iam.ListGroupPoliciesInput, opts ...request.Option) (*iam.ListGroupPoliciesOutput, error) {
@@ -1932,6 +2118,26 @@ func (c *Client) ListGroupPoliciesWithContext(ctx context.Context, input *iam.Li
 	return req.Output.(*iam.ListGroupPoliciesOutput), req.Error
 }
 
+func (c *Client) ListGroupPoliciesPagesWithContext(ctx context.Context, input *iam.ListGroupPoliciesInput, cb func(*iam.ListGroupPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListGroupPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListGroupPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *iam.ListGroupsInput, opts ...request.Option) (*iam.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -1951,6 +2157,26 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *iam.ListGroup
 	})
 
 	return req.Output.(*iam.ListGroupsOutput), req.Error
+}
+
+func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *iam.ListGroupsInput, cb func(*iam.ListGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGroupsForUserWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, opts ...request.Option) (*iam.ListGroupsForUserOutput, error) {
@@ -1974,6 +2200,26 @@ func (c *Client) ListGroupsForUserWithContext(ctx context.Context, input *iam.Li
 	return req.Output.(*iam.ListGroupsForUserOutput), req.Error
 }
 
+func (c *Client) ListGroupsForUserPagesWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, cb func(*iam.ListGroupsForUserOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListGroupsForUser",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListGroupsForUserPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, opts ...request.Option) (*iam.ListInstanceProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -1993,6 +2239,26 @@ func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *iam
 	})
 
 	return req.Output.(*iam.ListInstanceProfilesOutput), req.Error
+}
+
+func (c *Client) ListInstanceProfilesPagesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, cb func(*iam.ListInstanceProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListInstanceProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListInstanceProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInstanceProfilesForRoleWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, opts ...request.Option) (*iam.ListInstanceProfilesForRoleOutput, error) {
@@ -2016,6 +2282,26 @@ func (c *Client) ListInstanceProfilesForRoleWithContext(ctx context.Context, inp
 	return req.Output.(*iam.ListInstanceProfilesForRoleOutput), req.Error
 }
 
+func (c *Client) ListInstanceProfilesForRolePagesWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, cb func(*iam.ListInstanceProfilesForRoleOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListInstanceProfilesForRole",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListInstanceProfilesForRolePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMFADevicesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, opts ...request.Option) (*iam.ListMFADevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2035,6 +2321,26 @@ func (c *Client) ListMFADevicesWithContext(ctx context.Context, input *iam.ListM
 	})
 
 	return req.Output.(*iam.ListMFADevicesOutput), req.Error
+}
+
+func (c *Client) ListMFADevicesPagesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, cb func(*iam.ListMFADevicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListMFADevices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListMFADevicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOpenIDConnectProvidersWithContext(ctx context.Context, input *iam.ListOpenIDConnectProvidersInput, opts ...request.Option) (*iam.ListOpenIDConnectProvidersOutput, error) {
@@ -2079,6 +2385,26 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iam.ListPol
 	return req.Output.(*iam.ListPoliciesOutput), req.Error
 }
 
+func (c *Client) ListPoliciesPagesWithContext(ctx context.Context, input *iam.ListPoliciesInput, cb func(*iam.ListPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPoliciesGrantingServiceAccessWithContext(ctx context.Context, input *iam.ListPoliciesGrantingServiceAccessInput, opts ...request.Option) (*iam.ListPoliciesGrantingServiceAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2121,6 +2447,26 @@ func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iam.L
 	return req.Output.(*iam.ListPolicyVersionsOutput), req.Error
 }
 
+func (c *Client) ListPolicyVersionsPagesWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, cb func(*iam.ListPolicyVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListPolicyVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListPolicyVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRolePoliciesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, opts ...request.Option) (*iam.ListRolePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2140,6 +2486,26 @@ func (c *Client) ListRolePoliciesWithContext(ctx context.Context, input *iam.Lis
 	})
 
 	return req.Output.(*iam.ListRolePoliciesOutput), req.Error
+}
+
+func (c *Client) ListRolePoliciesPagesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, cb func(*iam.ListRolePoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListRolePolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListRolePoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRoleTagsWithContext(ctx context.Context, input *iam.ListRoleTagsInput, opts ...request.Option) (*iam.ListRoleTagsOutput, error) {
@@ -2184,6 +2550,26 @@ func (c *Client) ListRolesWithContext(ctx context.Context, input *iam.ListRolesI
 	return req.Output.(*iam.ListRolesOutput), req.Error
 }
 
+func (c *Client) ListRolesPagesWithContext(ctx context.Context, input *iam.ListRolesInput, cb func(*iam.ListRolesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListRoles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListRolesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSAMLProvidersWithContext(ctx context.Context, input *iam.ListSAMLProvidersInput, opts ...request.Option) (*iam.ListSAMLProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2226,6 +2612,26 @@ func (c *Client) ListSSHPublicKeysWithContext(ctx context.Context, input *iam.Li
 	return req.Output.(*iam.ListSSHPublicKeysOutput), req.Error
 }
 
+func (c *Client) ListSSHPublicKeysPagesWithContext(ctx context.Context, input *iam.ListSSHPublicKeysInput, cb func(*iam.ListSSHPublicKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListSSHPublicKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListSSHPublicKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListServerCertificatesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, opts ...request.Option) (*iam.ListServerCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2245,6 +2651,26 @@ func (c *Client) ListServerCertificatesWithContext(ctx context.Context, input *i
 	})
 
 	return req.Output.(*iam.ListServerCertificatesOutput), req.Error
+}
+
+func (c *Client) ListServerCertificatesPagesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, cb func(*iam.ListServerCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListServerCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListServerCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListServiceSpecificCredentialsWithContext(ctx context.Context, input *iam.ListServiceSpecificCredentialsInput, opts ...request.Option) (*iam.ListServiceSpecificCredentialsOutput, error) {
@@ -2289,6 +2715,26 @@ func (c *Client) ListSigningCertificatesWithContext(ctx context.Context, input *
 	return req.Output.(*iam.ListSigningCertificatesOutput), req.Error
 }
 
+func (c *Client) ListSigningCertificatesPagesWithContext(ctx context.Context, input *iam.ListSigningCertificatesInput, cb func(*iam.ListSigningCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListSigningCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListSigningCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUserPoliciesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, opts ...request.Option) (*iam.ListUserPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2308,6 +2754,26 @@ func (c *Client) ListUserPoliciesWithContext(ctx context.Context, input *iam.Lis
 	})
 
 	return req.Output.(*iam.ListUserPoliciesOutput), req.Error
+}
+
+func (c *Client) ListUserPoliciesPagesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, cb func(*iam.ListUserPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListUserPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListUserPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListUserTagsWithContext(ctx context.Context, input *iam.ListUserTagsInput, opts ...request.Option) (*iam.ListUserTagsOutput, error) {
@@ -2352,6 +2818,26 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *iam.ListUsersI
 	return req.Output.(*iam.ListUsersOutput), req.Error
 }
 
+func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *iam.ListUsersInput, cb func(*iam.ListUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListVirtualMFADevicesWithContext(ctx context.Context, input *iam.ListVirtualMFADevicesInput, opts ...request.Option) (*iam.ListVirtualMFADevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2371,6 +2857,26 @@ func (c *Client) ListVirtualMFADevicesWithContext(ctx context.Context, input *ia
 	})
 
 	return req.Output.(*iam.ListVirtualMFADevicesOutput), req.Error
+}
+
+func (c *Client) ListVirtualMFADevicesPagesWithContext(ctx context.Context, input *iam.ListVirtualMFADevicesInput, cb func(*iam.ListVirtualMFADevicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListVirtualMFADevices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListVirtualMFADevicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutGroupPolicyWithContext(ctx context.Context, input *iam.PutGroupPolicyInput, opts ...request.Option) (*iam.PutGroupPolicyOutput, error) {
@@ -2646,6 +3152,26 @@ func (c *Client) SimulateCustomPolicyWithContext(ctx context.Context, input *iam
 	return req.Output.(*iam.SimulatePolicyResponse), req.Error
 }
 
+func (c *Client) SimulateCustomPolicyPagesWithContext(ctx context.Context, input *iam.SimulateCustomPolicyInput, cb func(*iam.SimulatePolicyResponse, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "SimulateCustomPolicy",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.SimulateCustomPolicyPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SimulatePrincipalPolicyWithContext(ctx context.Context, input *iam.SimulatePrincipalPolicyInput, opts ...request.Option) (*iam.SimulatePolicyResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2665,6 +3191,26 @@ func (c *Client) SimulatePrincipalPolicyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*iam.SimulatePolicyResponse), req.Error
+}
+
+func (c *Client) SimulatePrincipalPolicyPagesWithContext(ctx context.Context, input *iam.SimulatePrincipalPolicyInput, cb func(*iam.SimulatePolicyResponse, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "SimulatePrincipalPolicy",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.SimulatePrincipalPolicyPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagRoleWithContext(ctx context.Context, input *iam.TagRoleInput, opts ...request.Option) (*iam.TagRoleOutput, error) {

@@ -16,8 +16,11 @@ type Signer interface {
 	GetSigningPlatformWithContext(ctx context.Context, input *signer.GetSigningPlatformInput, opts ...request.Option) (*signer.GetSigningPlatformOutput, error)
 	GetSigningProfileWithContext(ctx context.Context, input *signer.GetSigningProfileInput, opts ...request.Option) (*signer.GetSigningProfileOutput, error)
 	ListSigningJobsWithContext(ctx context.Context, input *signer.ListSigningJobsInput, opts ...request.Option) (*signer.ListSigningJobsOutput, error)
+	ListSigningJobsPagesWithContext(ctx context.Context, input *signer.ListSigningJobsInput, cb func(*signer.ListSigningJobsOutput, bool) bool, opts ...request.Option) error
 	ListSigningPlatformsWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, opts ...request.Option) (*signer.ListSigningPlatformsOutput, error)
+	ListSigningPlatformsPagesWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, cb func(*signer.ListSigningPlatformsOutput, bool) bool, opts ...request.Option) error
 	ListSigningProfilesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, opts ...request.Option) (*signer.ListSigningProfilesOutput, error)
+	ListSigningProfilesPagesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, cb func(*signer.ListSigningProfilesOutput, bool) bool, opts ...request.Option) error
 	PutSigningProfileWithContext(ctx context.Context, input *signer.PutSigningProfileInput, opts ...request.Option) (*signer.PutSigningProfileOutput, error)
 	StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error)
 }
@@ -142,6 +145,26 @@ func (c *Client) ListSigningJobsWithContext(ctx context.Context, input *signer.L
 	return req.Output.(*signer.ListSigningJobsOutput), req.Error
 }
 
+func (c *Client) ListSigningJobsPagesWithContext(ctx context.Context, input *signer.ListSigningJobsInput, cb func(*signer.ListSigningJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "ListSigningJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SignerAPI.ListSigningJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSigningPlatformsWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, opts ...request.Option) (*signer.ListSigningPlatformsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
@@ -163,6 +186,26 @@ func (c *Client) ListSigningPlatformsWithContext(ctx context.Context, input *sig
 	return req.Output.(*signer.ListSigningPlatformsOutput), req.Error
 }
 
+func (c *Client) ListSigningPlatformsPagesWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, cb func(*signer.ListSigningPlatformsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "ListSigningPlatforms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SignerAPI.ListSigningPlatformsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSigningProfilesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, opts ...request.Option) (*signer.ListSigningProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
@@ -182,6 +225,26 @@ func (c *Client) ListSigningProfilesWithContext(ctx context.Context, input *sign
 	})
 
 	return req.Output.(*signer.ListSigningProfilesOutput), req.Error
+}
+
+func (c *Client) ListSigningProfilesPagesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, cb func(*signer.ListSigningProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "ListSigningProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SignerAPI.ListSigningProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutSigningProfileWithContext(ctx context.Context, input *signer.PutSigningProfileInput, opts ...request.Option) (*signer.PutSigningProfileOutput, error) {

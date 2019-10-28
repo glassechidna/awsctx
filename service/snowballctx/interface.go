@@ -18,6 +18,7 @@ type Snowball interface {
 	CreateJobWithContext(ctx context.Context, input *snowball.CreateJobInput, opts ...request.Option) (*snowball.CreateJobOutput, error)
 	DescribeAddressWithContext(ctx context.Context, input *snowball.DescribeAddressInput, opts ...request.Option) (*snowball.DescribeAddressOutput, error)
 	DescribeAddressesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, opts ...request.Option) (*snowball.DescribeAddressesOutput, error)
+	DescribeAddressesPagesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, cb func(*snowball.DescribeAddressesOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterWithContext(ctx context.Context, input *snowball.DescribeClusterInput, opts ...request.Option) (*snowball.DescribeClusterOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *snowball.DescribeJobInput, opts ...request.Option) (*snowball.DescribeJobOutput, error)
 	GetJobManifestWithContext(ctx context.Context, input *snowball.GetJobManifestInput, opts ...request.Option) (*snowball.GetJobManifestOutput, error)
@@ -28,6 +29,7 @@ type Snowball interface {
 	ListClustersWithContext(ctx context.Context, input *snowball.ListClustersInput, opts ...request.Option) (*snowball.ListClustersOutput, error)
 	ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error)
 	ListJobsWithContext(ctx context.Context, input *snowball.ListJobsInput, opts ...request.Option) (*snowball.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *snowball.ListJobsInput, cb func(*snowball.ListJobsOutput, bool) bool, opts ...request.Option) error
 	UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *snowball.UpdateJobInput, opts ...request.Option) (*snowball.UpdateJobOutput, error)
 }
@@ -192,6 +194,26 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *snowba
 	})
 
 	return req.Output.(*snowball.DescribeAddressesOutput), req.Error
+}
+
+func (c *Client) DescribeAddressesPagesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, cb func(*snowball.DescribeAddressesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "DescribeAddresses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.DescribeAddressesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *snowball.DescribeClusterInput, opts ...request.Option) (*snowball.DescribeClusterOutput, error) {
@@ -402,6 +424,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *snowball.ListJo
 	})
 
 	return req.Output.(*snowball.ListJobsOutput), req.Error
+}
+
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *snowball.ListJobsInput, cb func(*snowball.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error) {

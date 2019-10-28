@@ -30,10 +30,15 @@ type IoTAnalytics interface {
 	DescribePipelineWithContext(ctx context.Context, input *iotanalytics.DescribePipelineInput, opts ...request.Option) (*iotanalytics.DescribePipelineOutput, error)
 	GetDatasetContentWithContext(ctx context.Context, input *iotanalytics.GetDatasetContentInput, opts ...request.Option) (*iotanalytics.GetDatasetContentOutput, error)
 	ListChannelsWithContext(ctx context.Context, input *iotanalytics.ListChannelsInput, opts ...request.Option) (*iotanalytics.ListChannelsOutput, error)
+	ListChannelsPagesWithContext(ctx context.Context, input *iotanalytics.ListChannelsInput, cb func(*iotanalytics.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetContentsWithContext(ctx context.Context, input *iotanalytics.ListDatasetContentsInput, opts ...request.Option) (*iotanalytics.ListDatasetContentsOutput, error)
+	ListDatasetContentsPagesWithContext(ctx context.Context, input *iotanalytics.ListDatasetContentsInput, cb func(*iotanalytics.ListDatasetContentsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetsWithContext(ctx context.Context, input *iotanalytics.ListDatasetsInput, opts ...request.Option) (*iotanalytics.ListDatasetsOutput, error)
+	ListDatasetsPagesWithContext(ctx context.Context, input *iotanalytics.ListDatasetsInput, cb func(*iotanalytics.ListDatasetsOutput, bool) bool, opts ...request.Option) error
 	ListDatastoresWithContext(ctx context.Context, input *iotanalytics.ListDatastoresInput, opts ...request.Option) (*iotanalytics.ListDatastoresOutput, error)
+	ListDatastoresPagesWithContext(ctx context.Context, input *iotanalytics.ListDatastoresInput, cb func(*iotanalytics.ListDatastoresOutput, bool) bool, opts ...request.Option) error
 	ListPipelinesWithContext(ctx context.Context, input *iotanalytics.ListPipelinesInput, opts ...request.Option) (*iotanalytics.ListPipelinesOutput, error)
+	ListPipelinesPagesWithContext(ctx context.Context, input *iotanalytics.ListPipelinesInput, cb func(*iotanalytics.ListPipelinesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *iotanalytics.ListTagsForResourceInput, opts ...request.Option) (*iotanalytics.ListTagsForResourceOutput, error)
 	PutLoggingOptionsWithContext(ctx context.Context, input *iotanalytics.PutLoggingOptionsInput, opts ...request.Option) (*iotanalytics.PutLoggingOptionsOutput, error)
 	RunPipelineActivityWithContext(ctx context.Context, input *iotanalytics.RunPipelineActivityInput, opts ...request.Option) (*iotanalytics.RunPipelineActivityOutput, error)
@@ -461,6 +466,26 @@ func (c *Client) ListChannelsWithContext(ctx context.Context, input *iotanalytic
 	return req.Output.(*iotanalytics.ListChannelsOutput), req.Error
 }
 
+func (c *Client) ListChannelsPagesWithContext(ctx context.Context, input *iotanalytics.ListChannelsInput, cb func(*iotanalytics.ListChannelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotanalytics",
+		Action:  "ListChannels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAnalyticsAPI.ListChannelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDatasetContentsWithContext(ctx context.Context, input *iotanalytics.ListDatasetContentsInput, opts ...request.Option) (*iotanalytics.ListDatasetContentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
@@ -480,6 +505,26 @@ func (c *Client) ListDatasetContentsWithContext(ctx context.Context, input *iota
 	})
 
 	return req.Output.(*iotanalytics.ListDatasetContentsOutput), req.Error
+}
+
+func (c *Client) ListDatasetContentsPagesWithContext(ctx context.Context, input *iotanalytics.ListDatasetContentsInput, cb func(*iotanalytics.ListDatasetContentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotanalytics",
+		Action:  "ListDatasetContents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAnalyticsAPI.ListDatasetContentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDatasetsWithContext(ctx context.Context, input *iotanalytics.ListDatasetsInput, opts ...request.Option) (*iotanalytics.ListDatasetsOutput, error) {
@@ -503,6 +548,26 @@ func (c *Client) ListDatasetsWithContext(ctx context.Context, input *iotanalytic
 	return req.Output.(*iotanalytics.ListDatasetsOutput), req.Error
 }
 
+func (c *Client) ListDatasetsPagesWithContext(ctx context.Context, input *iotanalytics.ListDatasetsInput, cb func(*iotanalytics.ListDatasetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotanalytics",
+		Action:  "ListDatasets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAnalyticsAPI.ListDatasetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDatastoresWithContext(ctx context.Context, input *iotanalytics.ListDatastoresInput, opts ...request.Option) (*iotanalytics.ListDatastoresOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
@@ -524,6 +589,26 @@ func (c *Client) ListDatastoresWithContext(ctx context.Context, input *iotanalyt
 	return req.Output.(*iotanalytics.ListDatastoresOutput), req.Error
 }
 
+func (c *Client) ListDatastoresPagesWithContext(ctx context.Context, input *iotanalytics.ListDatastoresInput, cb func(*iotanalytics.ListDatastoresOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotanalytics",
+		Action:  "ListDatastores",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAnalyticsAPI.ListDatastoresPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *iotanalytics.ListPipelinesInput, opts ...request.Option) (*iotanalytics.ListPipelinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotanalytics",
@@ -543,6 +628,26 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *iotanalyti
 	})
 
 	return req.Output.(*iotanalytics.ListPipelinesOutput), req.Error
+}
+
+func (c *Client) ListPipelinesPagesWithContext(ctx context.Context, input *iotanalytics.ListPipelinesInput, cb func(*iotanalytics.ListPipelinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotanalytics",
+		Action:  "ListPipelines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAnalyticsAPI.ListPipelinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iotanalytics.ListTagsForResourceInput, opts ...request.Option) (*iotanalytics.ListTagsForResourceOutput, error) {

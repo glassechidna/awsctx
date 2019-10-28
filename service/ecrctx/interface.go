@@ -20,7 +20,9 @@ type ECR interface {
 	DeleteRepositoryWithContext(ctx context.Context, input *ecr.DeleteRepositoryInput, opts ...request.Option) (*ecr.DeleteRepositoryOutput, error)
 	DeleteRepositoryPolicyWithContext(ctx context.Context, input *ecr.DeleteRepositoryPolicyInput, opts ...request.Option) (*ecr.DeleteRepositoryPolicyOutput, error)
 	DescribeImagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, opts ...request.Option) (*ecr.DescribeImagesOutput, error)
+	DescribeImagesPagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, cb func(*ecr.DescribeImagesOutput, bool) bool, opts ...request.Option) error
 	DescribeRepositoriesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, opts ...request.Option) (*ecr.DescribeRepositoriesOutput, error)
+	DescribeRepositoriesPagesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, cb func(*ecr.DescribeRepositoriesOutput, bool) bool, opts ...request.Option) error
 	GetAuthorizationTokenWithContext(ctx context.Context, input *ecr.GetAuthorizationTokenInput, opts ...request.Option) (*ecr.GetAuthorizationTokenOutput, error)
 	GetDownloadUrlForLayerWithContext(ctx context.Context, input *ecr.GetDownloadUrlForLayerInput, opts ...request.Option) (*ecr.GetDownloadUrlForLayerOutput, error)
 	GetLifecyclePolicyWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyInput, opts ...request.Option) (*ecr.GetLifecyclePolicyOutput, error)
@@ -28,6 +30,7 @@ type ECR interface {
 	GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.GetRepositoryPolicyInput, opts ...request.Option) (*ecr.GetRepositoryPolicyOutput, error)
 	InitiateLayerUploadWithContext(ctx context.Context, input *ecr.InitiateLayerUploadInput, opts ...request.Option) (*ecr.InitiateLayerUploadOutput, error)
 	ListImagesWithContext(ctx context.Context, input *ecr.ListImagesInput, opts ...request.Option) (*ecr.ListImagesOutput, error)
+	ListImagesPagesWithContext(ctx context.Context, input *ecr.ListImagesInput, cb func(*ecr.ListImagesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *ecr.ListTagsForResourceInput, opts ...request.Option) (*ecr.ListTagsForResourceOutput, error)
 	PutImageWithContext(ctx context.Context, input *ecr.PutImageInput, opts ...request.Option) (*ecr.PutImageOutput, error)
 	PutImageTagMutabilityWithContext(ctx context.Context, input *ecr.PutImageTagMutabilityInput, opts ...request.Option) (*ecr.PutImageTagMutabilityOutput, error)
@@ -243,6 +246,26 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, input *ecr.Descr
 	return req.Output.(*ecr.DescribeImagesOutput), req.Error
 }
 
+func (c *Client) DescribeImagesPagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, cb func(*ecr.DescribeImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DescribeImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECRAPI.DescribeImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, opts ...request.Option) (*ecr.DescribeRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
@@ -262,6 +285,26 @@ func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, input *ecr
 	})
 
 	return req.Output.(*ecr.DescribeRepositoriesOutput), req.Error
+}
+
+func (c *Client) DescribeRepositoriesPagesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, cb func(*ecr.DescribeRepositoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DescribeRepositories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECRAPI.DescribeRepositoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetAuthorizationTokenWithContext(ctx context.Context, input *ecr.GetAuthorizationTokenInput, opts ...request.Option) (*ecr.GetAuthorizationTokenOutput, error) {
@@ -409,6 +452,26 @@ func (c *Client) ListImagesWithContext(ctx context.Context, input *ecr.ListImage
 	})
 
 	return req.Output.(*ecr.ListImagesOutput), req.Error
+}
+
+func (c *Client) ListImagesPagesWithContext(ctx context.Context, input *ecr.ListImagesInput, cb func(*ecr.ListImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "ListImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECRAPI.ListImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ecr.ListTagsForResourceInput, opts ...request.Option) (*ecr.ListTagsForResourceOutput, error) {

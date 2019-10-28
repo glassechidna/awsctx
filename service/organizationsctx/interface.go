@@ -38,19 +38,33 @@ type Organizations interface {
 	InviteAccountToOrganizationWithContext(ctx context.Context, input *organizations.InviteAccountToOrganizationInput, opts ...request.Option) (*organizations.InviteAccountToOrganizationOutput, error)
 	LeaveOrganizationWithContext(ctx context.Context, input *organizations.LeaveOrganizationInput, opts ...request.Option) (*organizations.LeaveOrganizationOutput, error)
 	ListAWSServiceAccessForOrganizationWithContext(ctx context.Context, input *organizations.ListAWSServiceAccessForOrganizationInput, opts ...request.Option) (*organizations.ListAWSServiceAccessForOrganizationOutput, error)
+	ListAWSServiceAccessForOrganizationPagesWithContext(ctx context.Context, input *organizations.ListAWSServiceAccessForOrganizationInput, cb func(*organizations.ListAWSServiceAccessForOrganizationOutput, bool) bool, opts ...request.Option) error
 	ListAccountsWithContext(ctx context.Context, input *organizations.ListAccountsInput, opts ...request.Option) (*organizations.ListAccountsOutput, error)
+	ListAccountsPagesWithContext(ctx context.Context, input *organizations.ListAccountsInput, cb func(*organizations.ListAccountsOutput, bool) bool, opts ...request.Option) error
 	ListAccountsForParentWithContext(ctx context.Context, input *organizations.ListAccountsForParentInput, opts ...request.Option) (*organizations.ListAccountsForParentOutput, error)
+	ListAccountsForParentPagesWithContext(ctx context.Context, input *organizations.ListAccountsForParentInput, cb func(*organizations.ListAccountsForParentOutput, bool) bool, opts ...request.Option) error
 	ListChildrenWithContext(ctx context.Context, input *organizations.ListChildrenInput, opts ...request.Option) (*organizations.ListChildrenOutput, error)
+	ListChildrenPagesWithContext(ctx context.Context, input *organizations.ListChildrenInput, cb func(*organizations.ListChildrenOutput, bool) bool, opts ...request.Option) error
 	ListCreateAccountStatusWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, opts ...request.Option) (*organizations.ListCreateAccountStatusOutput, error)
+	ListCreateAccountStatusPagesWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, cb func(*organizations.ListCreateAccountStatusOutput, bool) bool, opts ...request.Option) error
 	ListHandshakesForAccountWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, opts ...request.Option) (*organizations.ListHandshakesForAccountOutput, error)
+	ListHandshakesForAccountPagesWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, cb func(*organizations.ListHandshakesForAccountOutput, bool) bool, opts ...request.Option) error
 	ListHandshakesForOrganizationWithContext(ctx context.Context, input *organizations.ListHandshakesForOrganizationInput, opts ...request.Option) (*organizations.ListHandshakesForOrganizationOutput, error)
+	ListHandshakesForOrganizationPagesWithContext(ctx context.Context, input *organizations.ListHandshakesForOrganizationInput, cb func(*organizations.ListHandshakesForOrganizationOutput, bool) bool, opts ...request.Option) error
 	ListOrganizationalUnitsForParentWithContext(ctx context.Context, input *organizations.ListOrganizationalUnitsForParentInput, opts ...request.Option) (*organizations.ListOrganizationalUnitsForParentOutput, error)
+	ListOrganizationalUnitsForParentPagesWithContext(ctx context.Context, input *organizations.ListOrganizationalUnitsForParentInput, cb func(*organizations.ListOrganizationalUnitsForParentOutput, bool) bool, opts ...request.Option) error
 	ListParentsWithContext(ctx context.Context, input *organizations.ListParentsInput, opts ...request.Option) (*organizations.ListParentsOutput, error)
+	ListParentsPagesWithContext(ctx context.Context, input *organizations.ListParentsInput, cb func(*organizations.ListParentsOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *organizations.ListPoliciesInput, opts ...request.Option) (*organizations.ListPoliciesOutput, error)
+	ListPoliciesPagesWithContext(ctx context.Context, input *organizations.ListPoliciesInput, cb func(*organizations.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesForTargetWithContext(ctx context.Context, input *organizations.ListPoliciesForTargetInput, opts ...request.Option) (*organizations.ListPoliciesForTargetOutput, error)
+	ListPoliciesForTargetPagesWithContext(ctx context.Context, input *organizations.ListPoliciesForTargetInput, cb func(*organizations.ListPoliciesForTargetOutput, bool) bool, opts ...request.Option) error
 	ListRootsWithContext(ctx context.Context, input *organizations.ListRootsInput, opts ...request.Option) (*organizations.ListRootsOutput, error)
+	ListRootsPagesWithContext(ctx context.Context, input *organizations.ListRootsInput, cb func(*organizations.ListRootsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *organizations.ListTagsForResourceInput, opts ...request.Option) (*organizations.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *organizations.ListTagsForResourceInput, cb func(*organizations.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTargetsForPolicyWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, opts ...request.Option) (*organizations.ListTargetsForPolicyOutput, error)
+	ListTargetsForPolicyPagesWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, cb func(*organizations.ListTargetsForPolicyOutput, bool) bool, opts ...request.Option) error
 	MoveAccountWithContext(ctx context.Context, input *organizations.MoveAccountInput, opts ...request.Option) (*organizations.MoveAccountOutput, error)
 	RemoveAccountFromOrganizationWithContext(ctx context.Context, input *organizations.RemoveAccountFromOrganizationInput, opts ...request.Option) (*organizations.RemoveAccountFromOrganizationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *organizations.TagResourceInput, opts ...request.Option) (*organizations.TagResourceOutput, error)
@@ -641,6 +655,26 @@ func (c *Client) ListAWSServiceAccessForOrganizationWithContext(ctx context.Cont
 	return req.Output.(*organizations.ListAWSServiceAccessForOrganizationOutput), req.Error
 }
 
+func (c *Client) ListAWSServiceAccessForOrganizationPagesWithContext(ctx context.Context, input *organizations.ListAWSServiceAccessForOrganizationInput, cb func(*organizations.ListAWSServiceAccessForOrganizationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListAWSServiceAccessForOrganization",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListAWSServiceAccessForOrganizationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAccountsWithContext(ctx context.Context, input *organizations.ListAccountsInput, opts ...request.Option) (*organizations.ListAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -660,6 +694,26 @@ func (c *Client) ListAccountsWithContext(ctx context.Context, input *organizatio
 	})
 
 	return req.Output.(*organizations.ListAccountsOutput), req.Error
+}
+
+func (c *Client) ListAccountsPagesWithContext(ctx context.Context, input *organizations.ListAccountsInput, cb func(*organizations.ListAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAccountsForParentWithContext(ctx context.Context, input *organizations.ListAccountsForParentInput, opts ...request.Option) (*organizations.ListAccountsForParentOutput, error) {
@@ -683,6 +737,26 @@ func (c *Client) ListAccountsForParentWithContext(ctx context.Context, input *or
 	return req.Output.(*organizations.ListAccountsForParentOutput), req.Error
 }
 
+func (c *Client) ListAccountsForParentPagesWithContext(ctx context.Context, input *organizations.ListAccountsForParentInput, cb func(*organizations.ListAccountsForParentOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListAccountsForParent",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListAccountsForParentPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListChildrenWithContext(ctx context.Context, input *organizations.ListChildrenInput, opts ...request.Option) (*organizations.ListChildrenOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -702,6 +776,26 @@ func (c *Client) ListChildrenWithContext(ctx context.Context, input *organizatio
 	})
 
 	return req.Output.(*organizations.ListChildrenOutput), req.Error
+}
+
+func (c *Client) ListChildrenPagesWithContext(ctx context.Context, input *organizations.ListChildrenInput, cb func(*organizations.ListChildrenOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListChildren",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListChildrenPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCreateAccountStatusWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, opts ...request.Option) (*organizations.ListCreateAccountStatusOutput, error) {
@@ -725,6 +819,26 @@ func (c *Client) ListCreateAccountStatusWithContext(ctx context.Context, input *
 	return req.Output.(*organizations.ListCreateAccountStatusOutput), req.Error
 }
 
+func (c *Client) ListCreateAccountStatusPagesWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, cb func(*organizations.ListCreateAccountStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListCreateAccountStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListCreateAccountStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListHandshakesForAccountWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, opts ...request.Option) (*organizations.ListHandshakesForAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -744,6 +858,26 @@ func (c *Client) ListHandshakesForAccountWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*organizations.ListHandshakesForAccountOutput), req.Error
+}
+
+func (c *Client) ListHandshakesForAccountPagesWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, cb func(*organizations.ListHandshakesForAccountOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListHandshakesForAccount",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListHandshakesForAccountPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListHandshakesForOrganizationWithContext(ctx context.Context, input *organizations.ListHandshakesForOrganizationInput, opts ...request.Option) (*organizations.ListHandshakesForOrganizationOutput, error) {
@@ -767,6 +901,26 @@ func (c *Client) ListHandshakesForOrganizationWithContext(ctx context.Context, i
 	return req.Output.(*organizations.ListHandshakesForOrganizationOutput), req.Error
 }
 
+func (c *Client) ListHandshakesForOrganizationPagesWithContext(ctx context.Context, input *organizations.ListHandshakesForOrganizationInput, cb func(*organizations.ListHandshakesForOrganizationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListHandshakesForOrganization",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListHandshakesForOrganizationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOrganizationalUnitsForParentWithContext(ctx context.Context, input *organizations.ListOrganizationalUnitsForParentInput, opts ...request.Option) (*organizations.ListOrganizationalUnitsForParentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -786,6 +940,26 @@ func (c *Client) ListOrganizationalUnitsForParentWithContext(ctx context.Context
 	})
 
 	return req.Output.(*organizations.ListOrganizationalUnitsForParentOutput), req.Error
+}
+
+func (c *Client) ListOrganizationalUnitsForParentPagesWithContext(ctx context.Context, input *organizations.ListOrganizationalUnitsForParentInput, cb func(*organizations.ListOrganizationalUnitsForParentOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListOrganizationalUnitsForParent",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListOrganizationalUnitsForParentPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListParentsWithContext(ctx context.Context, input *organizations.ListParentsInput, opts ...request.Option) (*organizations.ListParentsOutput, error) {
@@ -809,6 +983,26 @@ func (c *Client) ListParentsWithContext(ctx context.Context, input *organization
 	return req.Output.(*organizations.ListParentsOutput), req.Error
 }
 
+func (c *Client) ListParentsPagesWithContext(ctx context.Context, input *organizations.ListParentsInput, cb func(*organizations.ListParentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListParents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListParentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *organizations.ListPoliciesInput, opts ...request.Option) (*organizations.ListPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -828,6 +1022,26 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *organizatio
 	})
 
 	return req.Output.(*organizations.ListPoliciesOutput), req.Error
+}
+
+func (c *Client) ListPoliciesPagesWithContext(ctx context.Context, input *organizations.ListPoliciesInput, cb func(*organizations.ListPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPoliciesForTargetWithContext(ctx context.Context, input *organizations.ListPoliciesForTargetInput, opts ...request.Option) (*organizations.ListPoliciesForTargetOutput, error) {
@@ -851,6 +1065,26 @@ func (c *Client) ListPoliciesForTargetWithContext(ctx context.Context, input *or
 	return req.Output.(*organizations.ListPoliciesForTargetOutput), req.Error
 }
 
+func (c *Client) ListPoliciesForTargetPagesWithContext(ctx context.Context, input *organizations.ListPoliciesForTargetInput, cb func(*organizations.ListPoliciesForTargetOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListPoliciesForTarget",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListPoliciesForTargetPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRootsWithContext(ctx context.Context, input *organizations.ListRootsInput, opts ...request.Option) (*organizations.ListRootsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -870,6 +1104,26 @@ func (c *Client) ListRootsWithContext(ctx context.Context, input *organizations.
 	})
 
 	return req.Output.(*organizations.ListRootsOutput), req.Error
+}
+
+func (c *Client) ListRootsPagesWithContext(ctx context.Context, input *organizations.ListRootsInput, cb func(*organizations.ListRootsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListRoots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListRootsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *organizations.ListTagsForResourceInput, opts ...request.Option) (*organizations.ListTagsForResourceOutput, error) {
@@ -893,6 +1147,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *orga
 	return req.Output.(*organizations.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *organizations.ListTagsForResourceInput, cb func(*organizations.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, opts ...request.Option) (*organizations.ListTargetsForPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -912,6 +1186,26 @@ func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *org
 	})
 
 	return req.Output.(*organizations.ListTargetsForPolicyOutput), req.Error
+}
+
+func (c *Client) ListTargetsForPolicyPagesWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, cb func(*organizations.ListTargetsForPolicyOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListTargetsForPolicy",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListTargetsForPolicyPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) MoveAccountWithContext(ctx context.Context, input *organizations.MoveAccountInput, opts ...request.Option) (*organizations.MoveAccountOutput, error) {

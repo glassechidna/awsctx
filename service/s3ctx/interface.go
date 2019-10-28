@@ -66,10 +66,15 @@ type S3 interface {
 	ListBucketMetricsConfigurationsWithContext(ctx context.Context, input *s3.ListBucketMetricsConfigurationsInput, opts ...request.Option) (*s3.ListBucketMetricsConfigurationsOutput, error)
 	ListBucketsWithContext(ctx context.Context, input *s3.ListBucketsInput, opts ...request.Option) (*s3.ListBucketsOutput, error)
 	ListMultipartUploadsWithContext(ctx context.Context, input *s3.ListMultipartUploadsInput, opts ...request.Option) (*s3.ListMultipartUploadsOutput, error)
+	ListMultipartUploadsPagesWithContext(ctx context.Context, input *s3.ListMultipartUploadsInput, cb func(*s3.ListMultipartUploadsOutput, bool) bool, opts ...request.Option) error
 	ListObjectVersionsWithContext(ctx context.Context, input *s3.ListObjectVersionsInput, opts ...request.Option) (*s3.ListObjectVersionsOutput, error)
+	ListObjectVersionsPagesWithContext(ctx context.Context, input *s3.ListObjectVersionsInput, cb func(*s3.ListObjectVersionsOutput, bool) bool, opts ...request.Option) error
 	ListObjectsWithContext(ctx context.Context, input *s3.ListObjectsInput, opts ...request.Option) (*s3.ListObjectsOutput, error)
+	ListObjectsPagesWithContext(ctx context.Context, input *s3.ListObjectsInput, cb func(*s3.ListObjectsOutput, bool) bool, opts ...request.Option) error
 	ListObjectsV2WithContext(ctx context.Context, input *s3.ListObjectsV2Input, opts ...request.Option) (*s3.ListObjectsV2Output, error)
+	ListObjectsV2PagesWithContext(ctx context.Context, input *s3.ListObjectsV2Input, cb func(*s3.ListObjectsV2Output, bool) bool, opts ...request.Option) error
 	ListPartsWithContext(ctx context.Context, input *s3.ListPartsInput, opts ...request.Option) (*s3.ListPartsOutput, error)
+	ListPartsPagesWithContext(ctx context.Context, input *s3.ListPartsInput, cb func(*s3.ListPartsOutput, bool) bool, opts ...request.Option) error
 	PutBucketAccelerateConfigurationWithContext(ctx context.Context, input *s3.PutBucketAccelerateConfigurationInput, opts ...request.Option) (*s3.PutBucketAccelerateConfigurationOutput, error)
 	PutBucketAclWithContext(ctx context.Context, input *s3.PutBucketAclInput, opts ...request.Option) (*s3.PutBucketAclOutput, error)
 	PutBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.PutBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.PutBucketAnalyticsConfigurationOutput, error)
@@ -1271,6 +1276,26 @@ func (c *Client) ListMultipartUploadsWithContext(ctx context.Context, input *s3.
 	return req.Output.(*s3.ListMultipartUploadsOutput), req.Error
 }
 
+func (c *Client) ListMultipartUploadsPagesWithContext(ctx context.Context, input *s3.ListMultipartUploadsInput, cb func(*s3.ListMultipartUploadsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "ListMultipartUploads",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3API.ListMultipartUploadsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListObjectVersionsWithContext(ctx context.Context, input *s3.ListObjectVersionsInput, opts ...request.Option) (*s3.ListObjectVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
@@ -1290,6 +1315,26 @@ func (c *Client) ListObjectVersionsWithContext(ctx context.Context, input *s3.Li
 	})
 
 	return req.Output.(*s3.ListObjectVersionsOutput), req.Error
+}
+
+func (c *Client) ListObjectVersionsPagesWithContext(ctx context.Context, input *s3.ListObjectVersionsInput, cb func(*s3.ListObjectVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "ListObjectVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3API.ListObjectVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListObjectsWithContext(ctx context.Context, input *s3.ListObjectsInput, opts ...request.Option) (*s3.ListObjectsOutput, error) {
@@ -1313,6 +1358,26 @@ func (c *Client) ListObjectsWithContext(ctx context.Context, input *s3.ListObjec
 	return req.Output.(*s3.ListObjectsOutput), req.Error
 }
 
+func (c *Client) ListObjectsPagesWithContext(ctx context.Context, input *s3.ListObjectsInput, cb func(*s3.ListObjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "ListObjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3API.ListObjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListObjectsV2WithContext(ctx context.Context, input *s3.ListObjectsV2Input, opts ...request.Option) (*s3.ListObjectsV2Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
@@ -1334,6 +1399,26 @@ func (c *Client) ListObjectsV2WithContext(ctx context.Context, input *s3.ListObj
 	return req.Output.(*s3.ListObjectsV2Output), req.Error
 }
 
+func (c *Client) ListObjectsV2PagesWithContext(ctx context.Context, input *s3.ListObjectsV2Input, cb func(*s3.ListObjectsV2Output, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "ListObjectsV2",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3API.ListObjectsV2PagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPartsWithContext(ctx context.Context, input *s3.ListPartsInput, opts ...request.Option) (*s3.ListPartsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
@@ -1353,6 +1438,26 @@ func (c *Client) ListPartsWithContext(ctx context.Context, input *s3.ListPartsIn
 	})
 
 	return req.Output.(*s3.ListPartsOutput), req.Error
+}
+
+func (c *Client) ListPartsPagesWithContext(ctx context.Context, input *s3.ListPartsInput, cb func(*s3.ListPartsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "ListParts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3API.ListPartsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutBucketAccelerateConfigurationWithContext(ctx context.Context, input *s3.PutBucketAccelerateConfigurationInput, opts ...request.Option) (*s3.PutBucketAccelerateConfigurationOutput, error) {

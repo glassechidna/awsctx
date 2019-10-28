@@ -25,15 +25,24 @@ type Rekognition interface {
 	DetectTextWithContext(ctx context.Context, input *rekognition.DetectTextInput, opts ...request.Option) (*rekognition.DetectTextOutput, error)
 	GetCelebrityInfoWithContext(ctx context.Context, input *rekognition.GetCelebrityInfoInput, opts ...request.Option) (*rekognition.GetCelebrityInfoOutput, error)
 	GetCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, opts ...request.Option) (*rekognition.GetCelebrityRecognitionOutput, error)
+	GetCelebrityRecognitionPagesWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, cb func(*rekognition.GetCelebrityRecognitionOutput, bool) bool, opts ...request.Option) error
 	GetContentModerationWithContext(ctx context.Context, input *rekognition.GetContentModerationInput, opts ...request.Option) (*rekognition.GetContentModerationOutput, error)
+	GetContentModerationPagesWithContext(ctx context.Context, input *rekognition.GetContentModerationInput, cb func(*rekognition.GetContentModerationOutput, bool) bool, opts ...request.Option) error
 	GetFaceDetectionWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, opts ...request.Option) (*rekognition.GetFaceDetectionOutput, error)
+	GetFaceDetectionPagesWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, cb func(*rekognition.GetFaceDetectionOutput, bool) bool, opts ...request.Option) error
 	GetFaceSearchWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, opts ...request.Option) (*rekognition.GetFaceSearchOutput, error)
+	GetFaceSearchPagesWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, cb func(*rekognition.GetFaceSearchOutput, bool) bool, opts ...request.Option) error
 	GetLabelDetectionWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, opts ...request.Option) (*rekognition.GetLabelDetectionOutput, error)
+	GetLabelDetectionPagesWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, cb func(*rekognition.GetLabelDetectionOutput, bool) bool, opts ...request.Option) error
 	GetPersonTrackingWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, opts ...request.Option) (*rekognition.GetPersonTrackingOutput, error)
+	GetPersonTrackingPagesWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, cb func(*rekognition.GetPersonTrackingOutput, bool) bool, opts ...request.Option) error
 	IndexFacesWithContext(ctx context.Context, input *rekognition.IndexFacesInput, opts ...request.Option) (*rekognition.IndexFacesOutput, error)
 	ListCollectionsWithContext(ctx context.Context, input *rekognition.ListCollectionsInput, opts ...request.Option) (*rekognition.ListCollectionsOutput, error)
+	ListCollectionsPagesWithContext(ctx context.Context, input *rekognition.ListCollectionsInput, cb func(*rekognition.ListCollectionsOutput, bool) bool, opts ...request.Option) error
 	ListFacesWithContext(ctx context.Context, input *rekognition.ListFacesInput, opts ...request.Option) (*rekognition.ListFacesOutput, error)
+	ListFacesPagesWithContext(ctx context.Context, input *rekognition.ListFacesInput, cb func(*rekognition.ListFacesOutput, bool) bool, opts ...request.Option) error
 	ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error)
+	ListStreamProcessorsPagesWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, cb func(*rekognition.ListStreamProcessorsOutput, bool) bool, opts ...request.Option) error
 	RecognizeCelebritiesWithContext(ctx context.Context, input *rekognition.RecognizeCelebritiesInput, opts ...request.Option) (*rekognition.RecognizeCelebritiesOutput, error)
 	SearchFacesWithContext(ctx context.Context, input *rekognition.SearchFacesInput, opts ...request.Option) (*rekognition.SearchFacesOutput, error)
 	SearchFacesByImageWithContext(ctx context.Context, input *rekognition.SearchFacesByImageInput, opts ...request.Option) (*rekognition.SearchFacesByImageOutput, error)
@@ -356,6 +365,26 @@ func (c *Client) GetCelebrityRecognitionWithContext(ctx context.Context, input *
 	return req.Output.(*rekognition.GetCelebrityRecognitionOutput), req.Error
 }
 
+func (c *Client) GetCelebrityRecognitionPagesWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, cb func(*rekognition.GetCelebrityRecognitionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetCelebrityRecognition",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetCelebrityRecognitionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetContentModerationWithContext(ctx context.Context, input *rekognition.GetContentModerationInput, opts ...request.Option) (*rekognition.GetContentModerationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -375,6 +404,26 @@ func (c *Client) GetContentModerationWithContext(ctx context.Context, input *rek
 	})
 
 	return req.Output.(*rekognition.GetContentModerationOutput), req.Error
+}
+
+func (c *Client) GetContentModerationPagesWithContext(ctx context.Context, input *rekognition.GetContentModerationInput, cb func(*rekognition.GetContentModerationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetContentModeration",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetContentModerationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetFaceDetectionWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, opts ...request.Option) (*rekognition.GetFaceDetectionOutput, error) {
@@ -398,6 +447,26 @@ func (c *Client) GetFaceDetectionWithContext(ctx context.Context, input *rekogni
 	return req.Output.(*rekognition.GetFaceDetectionOutput), req.Error
 }
 
+func (c *Client) GetFaceDetectionPagesWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, cb func(*rekognition.GetFaceDetectionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetFaceDetection",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetFaceDetectionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetFaceSearchWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, opts ...request.Option) (*rekognition.GetFaceSearchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -417,6 +486,26 @@ func (c *Client) GetFaceSearchWithContext(ctx context.Context, input *rekognitio
 	})
 
 	return req.Output.(*rekognition.GetFaceSearchOutput), req.Error
+}
+
+func (c *Client) GetFaceSearchPagesWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, cb func(*rekognition.GetFaceSearchOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetFaceSearch",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetFaceSearchPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetLabelDetectionWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, opts ...request.Option) (*rekognition.GetLabelDetectionOutput, error) {
@@ -440,6 +529,26 @@ func (c *Client) GetLabelDetectionWithContext(ctx context.Context, input *rekogn
 	return req.Output.(*rekognition.GetLabelDetectionOutput), req.Error
 }
 
+func (c *Client) GetLabelDetectionPagesWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, cb func(*rekognition.GetLabelDetectionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetLabelDetection",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetLabelDetectionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetPersonTrackingWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, opts ...request.Option) (*rekognition.GetPersonTrackingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -459,6 +568,26 @@ func (c *Client) GetPersonTrackingWithContext(ctx context.Context, input *rekogn
 	})
 
 	return req.Output.(*rekognition.GetPersonTrackingOutput), req.Error
+}
+
+func (c *Client) GetPersonTrackingPagesWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, cb func(*rekognition.GetPersonTrackingOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetPersonTracking",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetPersonTrackingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) IndexFacesWithContext(ctx context.Context, input *rekognition.IndexFacesInput, opts ...request.Option) (*rekognition.IndexFacesOutput, error) {
@@ -503,6 +632,26 @@ func (c *Client) ListCollectionsWithContext(ctx context.Context, input *rekognit
 	return req.Output.(*rekognition.ListCollectionsOutput), req.Error
 }
 
+func (c *Client) ListCollectionsPagesWithContext(ctx context.Context, input *rekognition.ListCollectionsInput, cb func(*rekognition.ListCollectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListCollections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListCollectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListFacesWithContext(ctx context.Context, input *rekognition.ListFacesInput, opts ...request.Option) (*rekognition.ListFacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -524,6 +673,26 @@ func (c *Client) ListFacesWithContext(ctx context.Context, input *rekognition.Li
 	return req.Output.(*rekognition.ListFacesOutput), req.Error
 }
 
+func (c *Client) ListFacesPagesWithContext(ctx context.Context, input *rekognition.ListFacesInput, cb func(*rekognition.ListFacesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListFaces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListFacesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -543,6 +712,26 @@ func (c *Client) ListStreamProcessorsWithContext(ctx context.Context, input *rek
 	})
 
 	return req.Output.(*rekognition.ListStreamProcessorsOutput), req.Error
+}
+
+func (c *Client) ListStreamProcessorsPagesWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, cb func(*rekognition.ListStreamProcessorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListStreamProcessors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListStreamProcessorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RecognizeCelebritiesWithContext(ctx context.Context, input *rekognition.RecognizeCelebritiesInput, opts ...request.Option) (*rekognition.RecognizeCelebritiesOutput, error) {

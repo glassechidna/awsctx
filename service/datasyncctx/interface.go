@@ -29,10 +29,15 @@ type DataSync interface {
 	DescribeTaskWithContext(ctx context.Context, input *datasync.DescribeTaskInput, opts ...request.Option) (*datasync.DescribeTaskOutput, error)
 	DescribeTaskExecutionWithContext(ctx context.Context, input *datasync.DescribeTaskExecutionInput, opts ...request.Option) (*datasync.DescribeTaskExecutionOutput, error)
 	ListAgentsWithContext(ctx context.Context, input *datasync.ListAgentsInput, opts ...request.Option) (*datasync.ListAgentsOutput, error)
+	ListAgentsPagesWithContext(ctx context.Context, input *datasync.ListAgentsInput, cb func(*datasync.ListAgentsOutput, bool) bool, opts ...request.Option) error
 	ListLocationsWithContext(ctx context.Context, input *datasync.ListLocationsInput, opts ...request.Option) (*datasync.ListLocationsOutput, error)
+	ListLocationsPagesWithContext(ctx context.Context, input *datasync.ListLocationsInput, cb func(*datasync.ListLocationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, opts ...request.Option) (*datasync.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, cb func(*datasync.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTaskExecutionsWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, opts ...request.Option) (*datasync.ListTaskExecutionsOutput, error)
+	ListTaskExecutionsPagesWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, cb func(*datasync.ListTaskExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListTasksWithContext(ctx context.Context, input *datasync.ListTasksInput, opts ...request.Option) (*datasync.ListTasksOutput, error)
+	ListTasksPagesWithContext(ctx context.Context, input *datasync.ListTasksInput, cb func(*datasync.ListTasksOutput, bool) bool, opts ...request.Option) error
 	StartTaskExecutionWithContext(ctx context.Context, input *datasync.StartTaskExecutionInput, opts ...request.Option) (*datasync.StartTaskExecutionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *datasync.TagResourceInput, opts ...request.Option) (*datasync.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error)
@@ -433,6 +438,26 @@ func (c *Client) ListAgentsWithContext(ctx context.Context, input *datasync.List
 	return req.Output.(*datasync.ListAgentsOutput), req.Error
 }
 
+func (c *Client) ListAgentsPagesWithContext(ctx context.Context, input *datasync.ListAgentsInput, cb func(*datasync.ListAgentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListAgents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListAgentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLocationsWithContext(ctx context.Context, input *datasync.ListLocationsInput, opts ...request.Option) (*datasync.ListLocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -452,6 +477,26 @@ func (c *Client) ListLocationsWithContext(ctx context.Context, input *datasync.L
 	})
 
 	return req.Output.(*datasync.ListLocationsOutput), req.Error
+}
+
+func (c *Client) ListLocationsPagesWithContext(ctx context.Context, input *datasync.ListLocationsInput, cb func(*datasync.ListLocationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListLocations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListLocationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, opts ...request.Option) (*datasync.ListTagsForResourceOutput, error) {
@@ -475,6 +520,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *data
 	return req.Output.(*datasync.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, cb func(*datasync.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTaskExecutionsWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, opts ...request.Option) (*datasync.ListTaskExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -496,6 +561,26 @@ func (c *Client) ListTaskExecutionsWithContext(ctx context.Context, input *datas
 	return req.Output.(*datasync.ListTaskExecutionsOutput), req.Error
 }
 
+func (c *Client) ListTaskExecutionsPagesWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, cb func(*datasync.ListTaskExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListTaskExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListTaskExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTasksWithContext(ctx context.Context, input *datasync.ListTasksInput, opts ...request.Option) (*datasync.ListTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -515,6 +600,26 @@ func (c *Client) ListTasksWithContext(ctx context.Context, input *datasync.ListT
 	})
 
 	return req.Output.(*datasync.ListTasksOutput), req.Error
+}
+
+func (c *Client) ListTasksPagesWithContext(ctx context.Context, input *datasync.ListTasksInput, cb func(*datasync.ListTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) StartTaskExecutionWithContext(ctx context.Context, input *datasync.StartTaskExecutionInput, opts ...request.Option) (*datasync.StartTaskExecutionOutput, error) {

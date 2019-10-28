@@ -19,8 +19,10 @@ type SimpleDB interface {
 	DomainMetadataWithContext(ctx context.Context, input *simpledb.DomainMetadataInput, opts ...request.Option) (*simpledb.DomainMetadataOutput, error)
 	GetAttributesWithContext(ctx context.Context, input *simpledb.GetAttributesInput, opts ...request.Option) (*simpledb.GetAttributesOutput, error)
 	ListDomainsWithContext(ctx context.Context, input *simpledb.ListDomainsInput, opts ...request.Option) (*simpledb.ListDomainsOutput, error)
+	ListDomainsPagesWithContext(ctx context.Context, input *simpledb.ListDomainsInput, cb func(*simpledb.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	PutAttributesWithContext(ctx context.Context, input *simpledb.PutAttributesInput, opts ...request.Option) (*simpledb.PutAttributesOutput, error)
 	SelectWithContext(ctx context.Context, input *simpledb.SelectInput, opts ...request.Option) (*simpledb.SelectOutput, error)
+	SelectPagesWithContext(ctx context.Context, input *simpledb.SelectInput, cb func(*simpledb.SelectOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -206,6 +208,26 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *simpledb.Lis
 	return req.Output.(*simpledb.ListDomainsOutput), req.Error
 }
 
+func (c *Client) ListDomainsPagesWithContext(ctx context.Context, input *simpledb.ListDomainsInput, cb func(*simpledb.ListDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "simpledb",
+		Action:  "ListDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SimpleDBAPI.ListDomainsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) PutAttributesWithContext(ctx context.Context, input *simpledb.PutAttributesInput, opts ...request.Option) (*simpledb.PutAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "simpledb",
@@ -246,4 +268,24 @@ func (c *Client) SelectWithContext(ctx context.Context, input *simpledb.SelectIn
 	})
 
 	return req.Output.(*simpledb.SelectOutput), req.Error
+}
+
+func (c *Client) SelectPagesWithContext(ctx context.Context, input *simpledb.SelectInput, cb func(*simpledb.SelectOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "simpledb",
+		Action:  "Select",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SimpleDBAPI.SelectPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }

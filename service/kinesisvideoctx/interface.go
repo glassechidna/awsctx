@@ -16,6 +16,7 @@ type KinesisVideo interface {
 	DescribeStreamWithContext(ctx context.Context, input *kinesisvideo.DescribeStreamInput, opts ...request.Option) (*kinesisvideo.DescribeStreamOutput, error)
 	GetDataEndpointWithContext(ctx context.Context, input *kinesisvideo.GetDataEndpointInput, opts ...request.Option) (*kinesisvideo.GetDataEndpointOutput, error)
 	ListStreamsWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, opts ...request.Option) (*kinesisvideo.ListStreamsOutput, error)
+	ListStreamsPagesWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, cb func(*kinesisvideo.ListStreamsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForStreamWithContext(ctx context.Context, input *kinesisvideo.ListTagsForStreamInput, opts ...request.Option) (*kinesisvideo.ListTagsForStreamOutput, error)
 	TagStreamWithContext(ctx context.Context, input *kinesisvideo.TagStreamInput, opts ...request.Option) (*kinesisvideo.TagStreamOutput, error)
 	UntagStreamWithContext(ctx context.Context, input *kinesisvideo.UntagStreamInput, opts ...request.Option) (*kinesisvideo.UntagStreamOutput, error)
@@ -141,6 +142,26 @@ func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesisvideo
 	})
 
 	return req.Output.(*kinesisvideo.ListStreamsOutput), req.Error
+}
+
+func (c *Client) ListStreamsPagesWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, cb func(*kinesisvideo.ListStreamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "ListStreams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisVideoAPI.ListStreamsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesisvideo.ListTagsForStreamInput, opts ...request.Option) (*kinesisvideo.ListTagsForStreamOutput, error) {

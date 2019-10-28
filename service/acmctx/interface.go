@@ -18,6 +18,7 @@ type ACM interface {
 	GetCertificateWithContext(ctx context.Context, input *acm.GetCertificateInput, opts ...request.Option) (*acm.GetCertificateOutput, error)
 	ImportCertificateWithContext(ctx context.Context, input *acm.ImportCertificateInput, opts ...request.Option) (*acm.ImportCertificateOutput, error)
 	ListCertificatesWithContext(ctx context.Context, input *acm.ListCertificatesInput, opts ...request.Option) (*acm.ListCertificatesOutput, error)
+	ListCertificatesPagesWithContext(ctx context.Context, input *acm.ListCertificatesInput, cb func(*acm.ListCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForCertificateWithContext(ctx context.Context, input *acm.ListTagsForCertificateInput, opts ...request.Option) (*acm.ListTagsForCertificateOutput, error)
 	RemoveTagsFromCertificateWithContext(ctx context.Context, input *acm.RemoveTagsFromCertificateInput, opts ...request.Option) (*acm.RemoveTagsFromCertificateOutput, error)
 	RenewCertificateWithContext(ctx context.Context, input *acm.RenewCertificateInput, opts ...request.Option) (*acm.RenewCertificateOutput, error)
@@ -186,6 +187,26 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, input *acm.Lis
 	})
 
 	return req.Output.(*acm.ListCertificatesOutput), req.Error
+}
+
+func (c *Client) ListCertificatesPagesWithContext(ctx context.Context, input *acm.ListCertificatesInput, cb func(*acm.ListCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "acm",
+		Action:  "ListCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ACMAPI.ListCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForCertificateWithContext(ctx context.Context, input *acm.ListTagsForCertificateInput, opts ...request.Option) (*acm.ListTagsForCertificateOutput, error) {

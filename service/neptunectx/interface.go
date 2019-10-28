@@ -38,16 +38,25 @@ type Neptune interface {
 	DescribeDBClusterSnapshotsWithContext(ctx context.Context, input *neptune.DescribeDBClusterSnapshotsInput, opts ...request.Option) (*neptune.DescribeDBClusterSnapshotsOutput, error)
 	DescribeDBClustersWithContext(ctx context.Context, input *neptune.DescribeDBClustersInput, opts ...request.Option) (*neptune.DescribeDBClustersOutput, error)
 	DescribeDBEngineVersionsWithContext(ctx context.Context, input *neptune.DescribeDBEngineVersionsInput, opts ...request.Option) (*neptune.DescribeDBEngineVersionsOutput, error)
+	DescribeDBEngineVersionsPagesWithContext(ctx context.Context, input *neptune.DescribeDBEngineVersionsInput, cb func(*neptune.DescribeDBEngineVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBInstancesWithContext(ctx context.Context, input *neptune.DescribeDBInstancesInput, opts ...request.Option) (*neptune.DescribeDBInstancesOutput, error)
+	DescribeDBInstancesPagesWithContext(ctx context.Context, input *neptune.DescribeDBInstancesInput, cb func(*neptune.DescribeDBInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBParameterGroupsOutput, error)
+	DescribeDBParameterGroupsPagesWithContext(ctx context.Context, input *neptune.DescribeDBParameterGroupsInput, cb func(*neptune.DescribeDBParameterGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBParametersWithContext(ctx context.Context, input *neptune.DescribeDBParametersInput, opts ...request.Option) (*neptune.DescribeDBParametersOutput, error)
+	DescribeDBParametersPagesWithContext(ctx context.Context, input *neptune.DescribeDBParametersInput, cb func(*neptune.DescribeDBParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeDBSubnetGroupsWithContext(ctx context.Context, input *neptune.DescribeDBSubnetGroupsInput, opts ...request.Option) (*neptune.DescribeDBSubnetGroupsOutput, error)
+	DescribeDBSubnetGroupsPagesWithContext(ctx context.Context, input *neptune.DescribeDBSubnetGroupsInput, cb func(*neptune.DescribeDBSubnetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeEngineDefaultClusterParametersWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultClusterParametersInput, opts ...request.Option) (*neptune.DescribeEngineDefaultClusterParametersOutput, error)
 	DescribeEngineDefaultParametersWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultParametersInput, opts ...request.Option) (*neptune.DescribeEngineDefaultParametersOutput, error)
+	DescribeEngineDefaultParametersPagesWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultParametersInput, cb func(*neptune.DescribeEngineDefaultParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventCategoriesWithContext(ctx context.Context, input *neptune.DescribeEventCategoriesInput, opts ...request.Option) (*neptune.DescribeEventCategoriesOutput, error)
 	DescribeEventSubscriptionsWithContext(ctx context.Context, input *neptune.DescribeEventSubscriptionsInput, opts ...request.Option) (*neptune.DescribeEventSubscriptionsOutput, error)
+	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *neptune.DescribeEventSubscriptionsInput, cb func(*neptune.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *neptune.DescribeEventsInput, opts ...request.Option) (*neptune.DescribeEventsOutput, error)
+	DescribeEventsPagesWithContext(ctx context.Context, input *neptune.DescribeEventsInput, cb func(*neptune.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error)
+	DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, cb func(*neptune.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *neptune.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*neptune.DescribePendingMaintenanceActionsOutput, error)
 	DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *neptune.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*neptune.DescribeValidDBInstanceModificationsOutput, error)
 	FailoverDBClusterWithContext(ctx context.Context, input *neptune.FailoverDBClusterInput, opts ...request.Option) (*neptune.FailoverDBClusterOutput, error)
@@ -652,6 +661,26 @@ func (c *Client) DescribeDBEngineVersionsWithContext(ctx context.Context, input 
 	return req.Output.(*neptune.DescribeDBEngineVersionsOutput), req.Error
 }
 
+func (c *Client) DescribeDBEngineVersionsPagesWithContext(ctx context.Context, input *neptune.DescribeDBEngineVersionsInput, cb func(*neptune.DescribeDBEngineVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBEngineVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeDBEngineVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *neptune.DescribeDBInstancesInput, opts ...request.Option) (*neptune.DescribeDBInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -671,6 +700,26 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, input *nept
 	})
 
 	return req.Output.(*neptune.DescribeDBInstancesOutput), req.Error
+}
+
+func (c *Client) DescribeDBInstancesPagesWithContext(ctx context.Context, input *neptune.DescribeDBInstancesInput, cb func(*neptune.DescribeDBInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeDBInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBParameterGroupsOutput, error) {
@@ -694,6 +743,26 @@ func (c *Client) DescribeDBParameterGroupsWithContext(ctx context.Context, input
 	return req.Output.(*neptune.DescribeDBParameterGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeDBParameterGroupsPagesWithContext(ctx context.Context, input *neptune.DescribeDBParameterGroupsInput, cb func(*neptune.DescribeDBParameterGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBParameterGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeDBParameterGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBParametersWithContext(ctx context.Context, input *neptune.DescribeDBParametersInput, opts ...request.Option) (*neptune.DescribeDBParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -715,6 +784,26 @@ func (c *Client) DescribeDBParametersWithContext(ctx context.Context, input *nep
 	return req.Output.(*neptune.DescribeDBParametersOutput), req.Error
 }
 
+func (c *Client) DescribeDBParametersPagesWithContext(ctx context.Context, input *neptune.DescribeDBParametersInput, cb func(*neptune.DescribeDBParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeDBParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *neptune.DescribeDBSubnetGroupsInput, opts ...request.Option) (*neptune.DescribeDBSubnetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -734,6 +823,26 @@ func (c *Client) DescribeDBSubnetGroupsWithContext(ctx context.Context, input *n
 	})
 
 	return req.Output.(*neptune.DescribeDBSubnetGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeDBSubnetGroupsPagesWithContext(ctx context.Context, input *neptune.DescribeDBSubnetGroupsInput, cb func(*neptune.DescribeDBSubnetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBSubnetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeDBSubnetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeEngineDefaultClusterParametersWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultClusterParametersInput, opts ...request.Option) (*neptune.DescribeEngineDefaultClusterParametersOutput, error) {
@@ -778,6 +887,26 @@ func (c *Client) DescribeEngineDefaultParametersWithContext(ctx context.Context,
 	return req.Output.(*neptune.DescribeEngineDefaultParametersOutput), req.Error
 }
 
+func (c *Client) DescribeEngineDefaultParametersPagesWithContext(ctx context.Context, input *neptune.DescribeEngineDefaultParametersInput, cb func(*neptune.DescribeEngineDefaultParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeEngineDefaultParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeEngineDefaultParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *neptune.DescribeEventCategoriesInput, opts ...request.Option) (*neptune.DescribeEventCategoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -820,6 +949,26 @@ func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, inpu
 	return req.Output.(*neptune.DescribeEventSubscriptionsOutput), req.Error
 }
 
+func (c *Client) DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *neptune.DescribeEventSubscriptionsInput, cb func(*neptune.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeEventSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeEventSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *neptune.DescribeEventsInput, opts ...request.Option) (*neptune.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -841,6 +990,26 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *neptune.D
 	return req.Output.(*neptune.DescribeEventsOutput), req.Error
 }
 
+func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *neptune.DescribeEventsInput, cb func(*neptune.DescribeEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -860,6 +1029,26 @@ func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*neptune.DescribeOrderableDBInstanceOptionsOutput), req.Error
+}
+
+func (c *Client) DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, cb func(*neptune.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeOrderableDBInstanceOptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeOrderableDBInstanceOptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *neptune.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*neptune.DescribePendingMaintenanceActionsOutput, error) {

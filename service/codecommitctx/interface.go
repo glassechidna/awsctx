@@ -24,25 +24,34 @@ type CodeCommit interface {
 	DeleteFileWithContext(ctx context.Context, input *codecommit.DeleteFileInput, opts ...request.Option) (*codecommit.DeleteFileOutput, error)
 	DeleteRepositoryWithContext(ctx context.Context, input *codecommit.DeleteRepositoryInput, opts ...request.Option) (*codecommit.DeleteRepositoryOutput, error)
 	DescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.DescribeMergeConflictsInput, opts ...request.Option) (*codecommit.DescribeMergeConflictsOutput, error)
+	DescribeMergeConflictsPagesWithContext(ctx context.Context, input *codecommit.DescribeMergeConflictsInput, cb func(*codecommit.DescribeMergeConflictsOutput, bool) bool, opts ...request.Option) error
 	DescribePullRequestEventsWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, opts ...request.Option) (*codecommit.DescribePullRequestEventsOutput, error)
+	DescribePullRequestEventsPagesWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, cb func(*codecommit.DescribePullRequestEventsOutput, bool) bool, opts ...request.Option) error
 	GetBlobWithContext(ctx context.Context, input *codecommit.GetBlobInput, opts ...request.Option) (*codecommit.GetBlobOutput, error)
 	GetBranchWithContext(ctx context.Context, input *codecommit.GetBranchInput, opts ...request.Option) (*codecommit.GetBranchOutput, error)
 	GetCommentWithContext(ctx context.Context, input *codecommit.GetCommentInput, opts ...request.Option) (*codecommit.GetCommentOutput, error)
 	GetCommentsForComparedCommitWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, opts ...request.Option) (*codecommit.GetCommentsForComparedCommitOutput, error)
+	GetCommentsForComparedCommitPagesWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, cb func(*codecommit.GetCommentsForComparedCommitOutput, bool) bool, opts ...request.Option) error
 	GetCommentsForPullRequestWithContext(ctx context.Context, input *codecommit.GetCommentsForPullRequestInput, opts ...request.Option) (*codecommit.GetCommentsForPullRequestOutput, error)
+	GetCommentsForPullRequestPagesWithContext(ctx context.Context, input *codecommit.GetCommentsForPullRequestInput, cb func(*codecommit.GetCommentsForPullRequestOutput, bool) bool, opts ...request.Option) error
 	GetCommitWithContext(ctx context.Context, input *codecommit.GetCommitInput, opts ...request.Option) (*codecommit.GetCommitOutput, error)
 	GetDifferencesWithContext(ctx context.Context, input *codecommit.GetDifferencesInput, opts ...request.Option) (*codecommit.GetDifferencesOutput, error)
+	GetDifferencesPagesWithContext(ctx context.Context, input *codecommit.GetDifferencesInput, cb func(*codecommit.GetDifferencesOutput, bool) bool, opts ...request.Option) error
 	GetFileWithContext(ctx context.Context, input *codecommit.GetFileInput, opts ...request.Option) (*codecommit.GetFileOutput, error)
 	GetFolderWithContext(ctx context.Context, input *codecommit.GetFolderInput, opts ...request.Option) (*codecommit.GetFolderOutput, error)
 	GetMergeCommitWithContext(ctx context.Context, input *codecommit.GetMergeCommitInput, opts ...request.Option) (*codecommit.GetMergeCommitOutput, error)
 	GetMergeConflictsWithContext(ctx context.Context, input *codecommit.GetMergeConflictsInput, opts ...request.Option) (*codecommit.GetMergeConflictsOutput, error)
+	GetMergeConflictsPagesWithContext(ctx context.Context, input *codecommit.GetMergeConflictsInput, cb func(*codecommit.GetMergeConflictsOutput, bool) bool, opts ...request.Option) error
 	GetMergeOptionsWithContext(ctx context.Context, input *codecommit.GetMergeOptionsInput, opts ...request.Option) (*codecommit.GetMergeOptionsOutput, error)
 	GetPullRequestWithContext(ctx context.Context, input *codecommit.GetPullRequestInput, opts ...request.Option) (*codecommit.GetPullRequestOutput, error)
 	GetRepositoryWithContext(ctx context.Context, input *codecommit.GetRepositoryInput, opts ...request.Option) (*codecommit.GetRepositoryOutput, error)
 	GetRepositoryTriggersWithContext(ctx context.Context, input *codecommit.GetRepositoryTriggersInput, opts ...request.Option) (*codecommit.GetRepositoryTriggersOutput, error)
 	ListBranchesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, opts ...request.Option) (*codecommit.ListBranchesOutput, error)
+	ListBranchesPagesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, cb func(*codecommit.ListBranchesOutput, bool) bool, opts ...request.Option) error
 	ListPullRequestsWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, opts ...request.Option) (*codecommit.ListPullRequestsOutput, error)
+	ListPullRequestsPagesWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, cb func(*codecommit.ListPullRequestsOutput, bool) bool, opts ...request.Option) error
 	ListRepositoriesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, opts ...request.Option) (*codecommit.ListRepositoriesOutput, error)
+	ListRepositoriesPagesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, cb func(*codecommit.ListRepositoriesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *codecommit.ListTagsForResourceInput, opts ...request.Option) (*codecommit.ListTagsForResourceOutput, error)
 	MergeBranchesByFastForwardWithContext(ctx context.Context, input *codecommit.MergeBranchesByFastForwardInput, opts ...request.Option) (*codecommit.MergeBranchesByFastForwardOutput, error)
 	MergeBranchesBySquashWithContext(ctx context.Context, input *codecommit.MergeBranchesBySquashInput, opts ...request.Option) (*codecommit.MergeBranchesBySquashOutput, error)
@@ -355,6 +364,26 @@ func (c *Client) DescribeMergeConflictsWithContext(ctx context.Context, input *c
 	return req.Output.(*codecommit.DescribeMergeConflictsOutput), req.Error
 }
 
+func (c *Client) DescribeMergeConflictsPagesWithContext(ctx context.Context, input *codecommit.DescribeMergeConflictsInput, cb func(*codecommit.DescribeMergeConflictsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "DescribeMergeConflicts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.DescribeMergeConflictsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePullRequestEventsWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, opts ...request.Option) (*codecommit.DescribePullRequestEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -374,6 +403,26 @@ func (c *Client) DescribePullRequestEventsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*codecommit.DescribePullRequestEventsOutput), req.Error
+}
+
+func (c *Client) DescribePullRequestEventsPagesWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, cb func(*codecommit.DescribePullRequestEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "DescribePullRequestEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.DescribePullRequestEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetBlobWithContext(ctx context.Context, input *codecommit.GetBlobInput, opts ...request.Option) (*codecommit.GetBlobOutput, error) {
@@ -460,6 +509,26 @@ func (c *Client) GetCommentsForComparedCommitWithContext(ctx context.Context, in
 	return req.Output.(*codecommit.GetCommentsForComparedCommitOutput), req.Error
 }
 
+func (c *Client) GetCommentsForComparedCommitPagesWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, cb func(*codecommit.GetCommentsForComparedCommitOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetCommentsForComparedCommit",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.GetCommentsForComparedCommitPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetCommentsForPullRequestWithContext(ctx context.Context, input *codecommit.GetCommentsForPullRequestInput, opts ...request.Option) (*codecommit.GetCommentsForPullRequestOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -479,6 +548,26 @@ func (c *Client) GetCommentsForPullRequestWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*codecommit.GetCommentsForPullRequestOutput), req.Error
+}
+
+func (c *Client) GetCommentsForPullRequestPagesWithContext(ctx context.Context, input *codecommit.GetCommentsForPullRequestInput, cb func(*codecommit.GetCommentsForPullRequestOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetCommentsForPullRequest",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.GetCommentsForPullRequestPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCommitWithContext(ctx context.Context, input *codecommit.GetCommitInput, opts ...request.Option) (*codecommit.GetCommitOutput, error) {
@@ -521,6 +610,26 @@ func (c *Client) GetDifferencesWithContext(ctx context.Context, input *codecommi
 	})
 
 	return req.Output.(*codecommit.GetDifferencesOutput), req.Error
+}
+
+func (c *Client) GetDifferencesPagesWithContext(ctx context.Context, input *codecommit.GetDifferencesInput, cb func(*codecommit.GetDifferencesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetDifferences",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.GetDifferencesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetFileWithContext(ctx context.Context, input *codecommit.GetFileInput, opts ...request.Option) (*codecommit.GetFileOutput, error) {
@@ -605,6 +714,26 @@ func (c *Client) GetMergeConflictsWithContext(ctx context.Context, input *codeco
 	})
 
 	return req.Output.(*codecommit.GetMergeConflictsOutput), req.Error
+}
+
+func (c *Client) GetMergeConflictsPagesWithContext(ctx context.Context, input *codecommit.GetMergeConflictsInput, cb func(*codecommit.GetMergeConflictsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetMergeConflicts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.GetMergeConflictsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetMergeOptionsWithContext(ctx context.Context, input *codecommit.GetMergeOptionsInput, opts ...request.Option) (*codecommit.GetMergeOptionsOutput, error) {
@@ -712,6 +841,26 @@ func (c *Client) ListBranchesWithContext(ctx context.Context, input *codecommit.
 	return req.Output.(*codecommit.ListBranchesOutput), req.Error
 }
 
+func (c *Client) ListBranchesPagesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, cb func(*codecommit.ListBranchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListBranches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListBranchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPullRequestsWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, opts ...request.Option) (*codecommit.ListPullRequestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -733,6 +882,26 @@ func (c *Client) ListPullRequestsWithContext(ctx context.Context, input *codecom
 	return req.Output.(*codecommit.ListPullRequestsOutput), req.Error
 }
 
+func (c *Client) ListPullRequestsPagesWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, cb func(*codecommit.ListPullRequestsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListPullRequests",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListPullRequestsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRepositoriesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, opts ...request.Option) (*codecommit.ListRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -752,6 +921,26 @@ func (c *Client) ListRepositoriesWithContext(ctx context.Context, input *codecom
 	})
 
 	return req.Output.(*codecommit.ListRepositoriesOutput), req.Error
+}
+
+func (c *Client) ListRepositoriesPagesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, cb func(*codecommit.ListRepositoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListRepositories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListRepositoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *codecommit.ListTagsForResourceInput, opts ...request.Option) (*codecommit.ListTagsForResourceOutput, error) {

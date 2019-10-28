@@ -53,20 +53,25 @@ type APIGateway interface {
 	GetAccountWithContext(ctx context.Context, input *apigateway.GetAccountInput, opts ...request.Option) (*apigateway.Account, error)
 	GetApiKeyWithContext(ctx context.Context, input *apigateway.GetApiKeyInput, opts ...request.Option) (*apigateway.ApiKey, error)
 	GetApiKeysWithContext(ctx context.Context, input *apigateway.GetApiKeysInput, opts ...request.Option) (*apigateway.GetApiKeysOutput, error)
+	GetApiKeysPagesWithContext(ctx context.Context, input *apigateway.GetApiKeysInput, cb func(*apigateway.GetApiKeysOutput, bool) bool, opts ...request.Option) error
 	GetAuthorizerWithContext(ctx context.Context, input *apigateway.GetAuthorizerInput, opts ...request.Option) (*apigateway.Authorizer, error)
 	GetAuthorizersWithContext(ctx context.Context, input *apigateway.GetAuthorizersInput, opts ...request.Option) (*apigateway.GetAuthorizersOutput, error)
 	GetBasePathMappingWithContext(ctx context.Context, input *apigateway.GetBasePathMappingInput, opts ...request.Option) (*apigateway.BasePathMapping, error)
 	GetBasePathMappingsWithContext(ctx context.Context, input *apigateway.GetBasePathMappingsInput, opts ...request.Option) (*apigateway.GetBasePathMappingsOutput, error)
+	GetBasePathMappingsPagesWithContext(ctx context.Context, input *apigateway.GetBasePathMappingsInput, cb func(*apigateway.GetBasePathMappingsOutput, bool) bool, opts ...request.Option) error
 	GetClientCertificateWithContext(ctx context.Context, input *apigateway.GetClientCertificateInput, opts ...request.Option) (*apigateway.ClientCertificate, error)
 	GetClientCertificatesWithContext(ctx context.Context, input *apigateway.GetClientCertificatesInput, opts ...request.Option) (*apigateway.GetClientCertificatesOutput, error)
+	GetClientCertificatesPagesWithContext(ctx context.Context, input *apigateway.GetClientCertificatesInput, cb func(*apigateway.GetClientCertificatesOutput, bool) bool, opts ...request.Option) error
 	GetDeploymentWithContext(ctx context.Context, input *apigateway.GetDeploymentInput, opts ...request.Option) (*apigateway.Deployment, error)
 	GetDeploymentsWithContext(ctx context.Context, input *apigateway.GetDeploymentsInput, opts ...request.Option) (*apigateway.GetDeploymentsOutput, error)
+	GetDeploymentsPagesWithContext(ctx context.Context, input *apigateway.GetDeploymentsInput, cb func(*apigateway.GetDeploymentsOutput, bool) bool, opts ...request.Option) error
 	GetDocumentationPartWithContext(ctx context.Context, input *apigateway.GetDocumentationPartInput, opts ...request.Option) (*apigateway.DocumentationPart, error)
 	GetDocumentationPartsWithContext(ctx context.Context, input *apigateway.GetDocumentationPartsInput, opts ...request.Option) (*apigateway.GetDocumentationPartsOutput, error)
 	GetDocumentationVersionWithContext(ctx context.Context, input *apigateway.GetDocumentationVersionInput, opts ...request.Option) (*apigateway.DocumentationVersion, error)
 	GetDocumentationVersionsWithContext(ctx context.Context, input *apigateway.GetDocumentationVersionsInput, opts ...request.Option) (*apigateway.GetDocumentationVersionsOutput, error)
 	GetDomainNameWithContext(ctx context.Context, input *apigateway.GetDomainNameInput, opts ...request.Option) (*apigateway.DomainName, error)
 	GetDomainNamesWithContext(ctx context.Context, input *apigateway.GetDomainNamesInput, opts ...request.Option) (*apigateway.GetDomainNamesOutput, error)
+	GetDomainNamesPagesWithContext(ctx context.Context, input *apigateway.GetDomainNamesInput, cb func(*apigateway.GetDomainNamesOutput, bool) bool, opts ...request.Option) error
 	GetExportWithContext(ctx context.Context, input *apigateway.GetExportInput, opts ...request.Option) (*apigateway.GetExportOutput, error)
 	GetGatewayResponseWithContext(ctx context.Context, input *apigateway.GetGatewayResponseInput, opts ...request.Option) (*apigateway.UpdateGatewayResponseOutput, error)
 	GetGatewayResponsesWithContext(ctx context.Context, input *apigateway.GetGatewayResponsesInput, opts ...request.Option) (*apigateway.GetGatewayResponsesOutput, error)
@@ -77,12 +82,15 @@ type APIGateway interface {
 	GetModelWithContext(ctx context.Context, input *apigateway.GetModelInput, opts ...request.Option) (*apigateway.Model, error)
 	GetModelTemplateWithContext(ctx context.Context, input *apigateway.GetModelTemplateInput, opts ...request.Option) (*apigateway.GetModelTemplateOutput, error)
 	GetModelsWithContext(ctx context.Context, input *apigateway.GetModelsInput, opts ...request.Option) (*apigateway.GetModelsOutput, error)
+	GetModelsPagesWithContext(ctx context.Context, input *apigateway.GetModelsInput, cb func(*apigateway.GetModelsOutput, bool) bool, opts ...request.Option) error
 	GetRequestValidatorWithContext(ctx context.Context, input *apigateway.GetRequestValidatorInput, opts ...request.Option) (*apigateway.UpdateRequestValidatorOutput, error)
 	GetRequestValidatorsWithContext(ctx context.Context, input *apigateway.GetRequestValidatorsInput, opts ...request.Option) (*apigateway.GetRequestValidatorsOutput, error)
 	GetResourceWithContext(ctx context.Context, input *apigateway.GetResourceInput, opts ...request.Option) (*apigateway.Resource, error)
 	GetResourcesWithContext(ctx context.Context, input *apigateway.GetResourcesInput, opts ...request.Option) (*apigateway.GetResourcesOutput, error)
+	GetResourcesPagesWithContext(ctx context.Context, input *apigateway.GetResourcesInput, cb func(*apigateway.GetResourcesOutput, bool) bool, opts ...request.Option) error
 	GetRestApiWithContext(ctx context.Context, input *apigateway.GetRestApiInput, opts ...request.Option) (*apigateway.RestApi, error)
 	GetRestApisWithContext(ctx context.Context, input *apigateway.GetRestApisInput, opts ...request.Option) (*apigateway.GetRestApisOutput, error)
+	GetRestApisPagesWithContext(ctx context.Context, input *apigateway.GetRestApisInput, cb func(*apigateway.GetRestApisOutput, bool) bool, opts ...request.Option) error
 	GetSdkWithContext(ctx context.Context, input *apigateway.GetSdkInput, opts ...request.Option) (*apigateway.GetSdkOutput, error)
 	GetSdkTypeWithContext(ctx context.Context, input *apigateway.GetSdkTypeInput, opts ...request.Option) (*apigateway.SdkType, error)
 	GetSdkTypesWithContext(ctx context.Context, input *apigateway.GetSdkTypesInput, opts ...request.Option) (*apigateway.GetSdkTypesOutput, error)
@@ -90,12 +98,16 @@ type APIGateway interface {
 	GetStagesWithContext(ctx context.Context, input *apigateway.GetStagesInput, opts ...request.Option) (*apigateway.GetStagesOutput, error)
 	GetTagsWithContext(ctx context.Context, input *apigateway.GetTagsInput, opts ...request.Option) (*apigateway.GetTagsOutput, error)
 	GetUsageWithContext(ctx context.Context, input *apigateway.GetUsageInput, opts ...request.Option) (*apigateway.Usage, error)
+	GetUsagePagesWithContext(ctx context.Context, input *apigateway.GetUsageInput, cb func(*apigateway.Usage, bool) bool, opts ...request.Option) error
 	GetUsagePlanWithContext(ctx context.Context, input *apigateway.GetUsagePlanInput, opts ...request.Option) (*apigateway.UsagePlan, error)
 	GetUsagePlanKeyWithContext(ctx context.Context, input *apigateway.GetUsagePlanKeyInput, opts ...request.Option) (*apigateway.UsagePlanKey, error)
 	GetUsagePlanKeysWithContext(ctx context.Context, input *apigateway.GetUsagePlanKeysInput, opts ...request.Option) (*apigateway.GetUsagePlanKeysOutput, error)
+	GetUsagePlanKeysPagesWithContext(ctx context.Context, input *apigateway.GetUsagePlanKeysInput, cb func(*apigateway.GetUsagePlanKeysOutput, bool) bool, opts ...request.Option) error
 	GetUsagePlansWithContext(ctx context.Context, input *apigateway.GetUsagePlansInput, opts ...request.Option) (*apigateway.GetUsagePlansOutput, error)
+	GetUsagePlansPagesWithContext(ctx context.Context, input *apigateway.GetUsagePlansInput, cb func(*apigateway.GetUsagePlansOutput, bool) bool, opts ...request.Option) error
 	GetVpcLinkWithContext(ctx context.Context, input *apigateway.GetVpcLinkInput, opts ...request.Option) (*apigateway.UpdateVpcLinkOutput, error)
 	GetVpcLinksWithContext(ctx context.Context, input *apigateway.GetVpcLinksInput, opts ...request.Option) (*apigateway.GetVpcLinksOutput, error)
+	GetVpcLinksPagesWithContext(ctx context.Context, input *apigateway.GetVpcLinksInput, cb func(*apigateway.GetVpcLinksOutput, bool) bool, opts ...request.Option) error
 	ImportApiKeysWithContext(ctx context.Context, input *apigateway.ImportApiKeysInput, opts ...request.Option) (*apigateway.ImportApiKeysOutput, error)
 	ImportDocumentationPartsWithContext(ctx context.Context, input *apigateway.ImportDocumentationPartsInput, opts ...request.Option) (*apigateway.ImportDocumentationPartsOutput, error)
 	ImportRestApiWithContext(ctx context.Context, input *apigateway.ImportRestApiInput, opts ...request.Option) (*apigateway.RestApi, error)
@@ -1030,6 +1042,26 @@ func (c *Client) GetApiKeysWithContext(ctx context.Context, input *apigateway.Ge
 	return req.Output.(*apigateway.GetApiKeysOutput), req.Error
 }
 
+func (c *Client) GetApiKeysPagesWithContext(ctx context.Context, input *apigateway.GetApiKeysInput, cb func(*apigateway.GetApiKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetApiKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetApiKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetAuthorizerWithContext(ctx context.Context, input *apigateway.GetAuthorizerInput, opts ...request.Option) (*apigateway.Authorizer, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1114,6 +1146,26 @@ func (c *Client) GetBasePathMappingsWithContext(ctx context.Context, input *apig
 	return req.Output.(*apigateway.GetBasePathMappingsOutput), req.Error
 }
 
+func (c *Client) GetBasePathMappingsPagesWithContext(ctx context.Context, input *apigateway.GetBasePathMappingsInput, cb func(*apigateway.GetBasePathMappingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetBasePathMappings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetBasePathMappingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetClientCertificateWithContext(ctx context.Context, input *apigateway.GetClientCertificateInput, opts ...request.Option) (*apigateway.ClientCertificate, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1156,6 +1208,26 @@ func (c *Client) GetClientCertificatesWithContext(ctx context.Context, input *ap
 	return req.Output.(*apigateway.GetClientCertificatesOutput), req.Error
 }
 
+func (c *Client) GetClientCertificatesPagesWithContext(ctx context.Context, input *apigateway.GetClientCertificatesInput, cb func(*apigateway.GetClientCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetClientCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetClientCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetDeploymentWithContext(ctx context.Context, input *apigateway.GetDeploymentInput, opts ...request.Option) (*apigateway.Deployment, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1196,6 +1268,26 @@ func (c *Client) GetDeploymentsWithContext(ctx context.Context, input *apigatewa
 	})
 
 	return req.Output.(*apigateway.GetDeploymentsOutput), req.Error
+}
+
+func (c *Client) GetDeploymentsPagesWithContext(ctx context.Context, input *apigateway.GetDeploymentsInput, cb func(*apigateway.GetDeploymentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetDeployments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetDeploymentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetDocumentationPartWithContext(ctx context.Context, input *apigateway.GetDocumentationPartInput, opts ...request.Option) (*apigateway.DocumentationPart, error) {
@@ -1322,6 +1414,26 @@ func (c *Client) GetDomainNamesWithContext(ctx context.Context, input *apigatewa
 	})
 
 	return req.Output.(*apigateway.GetDomainNamesOutput), req.Error
+}
+
+func (c *Client) GetDomainNamesPagesWithContext(ctx context.Context, input *apigateway.GetDomainNamesInput, cb func(*apigateway.GetDomainNamesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetDomainNames",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetDomainNamesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetExportWithContext(ctx context.Context, input *apigateway.GetExportInput, opts ...request.Option) (*apigateway.GetExportOutput, error) {
@@ -1534,6 +1646,26 @@ func (c *Client) GetModelsWithContext(ctx context.Context, input *apigateway.Get
 	return req.Output.(*apigateway.GetModelsOutput), req.Error
 }
 
+func (c *Client) GetModelsPagesWithContext(ctx context.Context, input *apigateway.GetModelsInput, cb func(*apigateway.GetModelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetModels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetModelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetRequestValidatorWithContext(ctx context.Context, input *apigateway.GetRequestValidatorInput, opts ...request.Option) (*apigateway.UpdateRequestValidatorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1618,6 +1750,26 @@ func (c *Client) GetResourcesWithContext(ctx context.Context, input *apigateway.
 	return req.Output.(*apigateway.GetResourcesOutput), req.Error
 }
 
+func (c *Client) GetResourcesPagesWithContext(ctx context.Context, input *apigateway.GetResourcesInput, cb func(*apigateway.GetResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetRestApiWithContext(ctx context.Context, input *apigateway.GetRestApiInput, opts ...request.Option) (*apigateway.RestApi, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1658,6 +1810,26 @@ func (c *Client) GetRestApisWithContext(ctx context.Context, input *apigateway.G
 	})
 
 	return req.Output.(*apigateway.GetRestApisOutput), req.Error
+}
+
+func (c *Client) GetRestApisPagesWithContext(ctx context.Context, input *apigateway.GetRestApisInput, cb func(*apigateway.GetRestApisOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetRestApis",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetRestApisPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetSdkWithContext(ctx context.Context, input *apigateway.GetSdkInput, opts ...request.Option) (*apigateway.GetSdkOutput, error) {
@@ -1807,6 +1979,26 @@ func (c *Client) GetUsageWithContext(ctx context.Context, input *apigateway.GetU
 	return req.Output.(*apigateway.Usage), req.Error
 }
 
+func (c *Client) GetUsagePagesWithContext(ctx context.Context, input *apigateway.GetUsageInput, cb func(*apigateway.Usage, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetUsage",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetUsagePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetUsagePlanWithContext(ctx context.Context, input *apigateway.GetUsagePlanInput, opts ...request.Option) (*apigateway.UsagePlan, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1870,6 +2062,26 @@ func (c *Client) GetUsagePlanKeysWithContext(ctx context.Context, input *apigate
 	return req.Output.(*apigateway.GetUsagePlanKeysOutput), req.Error
 }
 
+func (c *Client) GetUsagePlanKeysPagesWithContext(ctx context.Context, input *apigateway.GetUsagePlanKeysInput, cb func(*apigateway.GetUsagePlanKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetUsagePlanKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetUsagePlanKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetUsagePlansWithContext(ctx context.Context, input *apigateway.GetUsagePlansInput, opts ...request.Option) (*apigateway.GetUsagePlansOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigateway",
@@ -1889,6 +2101,26 @@ func (c *Client) GetUsagePlansWithContext(ctx context.Context, input *apigateway
 	})
 
 	return req.Output.(*apigateway.GetUsagePlansOutput), req.Error
+}
+
+func (c *Client) GetUsagePlansPagesWithContext(ctx context.Context, input *apigateway.GetUsagePlansInput, cb func(*apigateway.GetUsagePlansOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetUsagePlans",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetUsagePlansPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetVpcLinkWithContext(ctx context.Context, input *apigateway.GetVpcLinkInput, opts ...request.Option) (*apigateway.UpdateVpcLinkOutput, error) {
@@ -1931,6 +2163,26 @@ func (c *Client) GetVpcLinksWithContext(ctx context.Context, input *apigateway.G
 	})
 
 	return req.Output.(*apigateway.GetVpcLinksOutput), req.Error
+}
+
+func (c *Client) GetVpcLinksPagesWithContext(ctx context.Context, input *apigateway.GetVpcLinksInput, cb func(*apigateway.GetVpcLinksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "apigateway",
+		Action:  "GetVpcLinks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.APIGatewayAPI.GetVpcLinksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ImportApiKeysWithContext(ctx context.Context, input *apigateway.ImportApiKeysInput, opts ...request.Option) (*apigateway.ImportApiKeysOutput, error) {

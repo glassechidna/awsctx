@@ -27,11 +27,17 @@ type AppMesh interface {
 	DescribeVirtualRouterWithContext(ctx context.Context, input *appmesh.DescribeVirtualRouterInput, opts ...request.Option) (*appmesh.DescribeVirtualRouterOutput, error)
 	DescribeVirtualServiceWithContext(ctx context.Context, input *appmesh.DescribeVirtualServiceInput, opts ...request.Option) (*appmesh.DescribeVirtualServiceOutput, error)
 	ListMeshesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, opts ...request.Option) (*appmesh.ListMeshesOutput, error)
+	ListMeshesPagesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, cb func(*appmesh.ListMeshesOutput, bool) bool, opts ...request.Option) error
 	ListRoutesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, opts ...request.Option) (*appmesh.ListRoutesOutput, error)
+	ListRoutesPagesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, cb func(*appmesh.ListRoutesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, opts ...request.Option) (*appmesh.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, cb func(*appmesh.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListVirtualNodesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, opts ...request.Option) (*appmesh.ListVirtualNodesOutput, error)
+	ListVirtualNodesPagesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, cb func(*appmesh.ListVirtualNodesOutput, bool) bool, opts ...request.Option) error
 	ListVirtualRoutersWithContext(ctx context.Context, input *appmesh.ListVirtualRoutersInput, opts ...request.Option) (*appmesh.ListVirtualRoutersOutput, error)
+	ListVirtualRoutersPagesWithContext(ctx context.Context, input *appmesh.ListVirtualRoutersInput, cb func(*appmesh.ListVirtualRoutersOutput, bool) bool, opts ...request.Option) error
 	ListVirtualServicesWithContext(ctx context.Context, input *appmesh.ListVirtualServicesInput, opts ...request.Option) (*appmesh.ListVirtualServicesOutput, error)
+	ListVirtualServicesPagesWithContext(ctx context.Context, input *appmesh.ListVirtualServicesInput, cb func(*appmesh.ListVirtualServicesOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *appmesh.TagResourceInput, opts ...request.Option) (*appmesh.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *appmesh.UntagResourceInput, opts ...request.Option) (*appmesh.UntagResourceOutput, error)
 	UpdateMeshWithContext(ctx context.Context, input *appmesh.UpdateMeshInput, opts ...request.Option) (*appmesh.UpdateMeshOutput, error)
@@ -392,6 +398,26 @@ func (c *Client) ListMeshesWithContext(ctx context.Context, input *appmesh.ListM
 	return req.Output.(*appmesh.ListMeshesOutput), req.Error
 }
 
+func (c *Client) ListMeshesPagesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, cb func(*appmesh.ListMeshesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListMeshes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListMeshesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRoutesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, opts ...request.Option) (*appmesh.ListRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
@@ -411,6 +437,26 @@ func (c *Client) ListRoutesWithContext(ctx context.Context, input *appmesh.ListR
 	})
 
 	return req.Output.(*appmesh.ListRoutesOutput), req.Error
+}
+
+func (c *Client) ListRoutesPagesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, cb func(*appmesh.ListRoutesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListRoutes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListRoutesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, opts ...request.Option) (*appmesh.ListTagsForResourceOutput, error) {
@@ -434,6 +480,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appm
 	return req.Output.(*appmesh.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, cb func(*appmesh.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListVirtualNodesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, opts ...request.Option) (*appmesh.ListVirtualNodesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
@@ -453,6 +519,26 @@ func (c *Client) ListVirtualNodesWithContext(ctx context.Context, input *appmesh
 	})
 
 	return req.Output.(*appmesh.ListVirtualNodesOutput), req.Error
+}
+
+func (c *Client) ListVirtualNodesPagesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, cb func(*appmesh.ListVirtualNodesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListVirtualNodes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListVirtualNodesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListVirtualRoutersWithContext(ctx context.Context, input *appmesh.ListVirtualRoutersInput, opts ...request.Option) (*appmesh.ListVirtualRoutersOutput, error) {
@@ -476,6 +562,26 @@ func (c *Client) ListVirtualRoutersWithContext(ctx context.Context, input *appme
 	return req.Output.(*appmesh.ListVirtualRoutersOutput), req.Error
 }
 
+func (c *Client) ListVirtualRoutersPagesWithContext(ctx context.Context, input *appmesh.ListVirtualRoutersInput, cb func(*appmesh.ListVirtualRoutersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListVirtualRouters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListVirtualRoutersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListVirtualServicesWithContext(ctx context.Context, input *appmesh.ListVirtualServicesInput, opts ...request.Option) (*appmesh.ListVirtualServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
@@ -495,6 +601,26 @@ func (c *Client) ListVirtualServicesWithContext(ctx context.Context, input *appm
 	})
 
 	return req.Output.(*appmesh.ListVirtualServicesOutput), req.Error
+}
+
+func (c *Client) ListVirtualServicesPagesWithContext(ctx context.Context, input *appmesh.ListVirtualServicesInput, cb func(*appmesh.ListVirtualServicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListVirtualServices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListVirtualServicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *appmesh.TagResourceInput, opts ...request.Option) (*appmesh.TagResourceOutput, error) {

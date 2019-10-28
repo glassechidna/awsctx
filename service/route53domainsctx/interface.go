@@ -23,7 +23,9 @@ type Route53Domains interface {
 	GetDomainSuggestionsWithContext(ctx context.Context, input *route53domains.GetDomainSuggestionsInput, opts ...request.Option) (*route53domains.GetDomainSuggestionsOutput, error)
 	GetOperationDetailWithContext(ctx context.Context, input *route53domains.GetOperationDetailInput, opts ...request.Option) (*route53domains.GetOperationDetailOutput, error)
 	ListDomainsWithContext(ctx context.Context, input *route53domains.ListDomainsInput, opts ...request.Option) (*route53domains.ListDomainsOutput, error)
+	ListDomainsPagesWithContext(ctx context.Context, input *route53domains.ListDomainsInput, cb func(*route53domains.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	ListOperationsWithContext(ctx context.Context, input *route53domains.ListOperationsInput, opts ...request.Option) (*route53domains.ListOperationsOutput, error)
+	ListOperationsPagesWithContext(ctx context.Context, input *route53domains.ListOperationsInput, cb func(*route53domains.ListOperationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForDomainWithContext(ctx context.Context, input *route53domains.ListTagsForDomainInput, opts ...request.Option) (*route53domains.ListTagsForDomainOutput, error)
 	RegisterDomainWithContext(ctx context.Context, input *route53domains.RegisterDomainInput, opts ...request.Option) (*route53domains.RegisterDomainOutput, error)
 	RenewDomainWithContext(ctx context.Context, input *route53domains.RenewDomainInput, opts ...request.Option) (*route53domains.RenewDomainOutput, error)
@@ -304,6 +306,26 @@ func (c *Client) ListDomainsWithContext(ctx context.Context, input *route53domai
 	return req.Output.(*route53domains.ListDomainsOutput), req.Error
 }
 
+func (c *Client) ListDomainsPagesWithContext(ctx context.Context, input *route53domains.ListDomainsInput, cb func(*route53domains.ListDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "ListDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53DomainsAPI.ListDomainsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOperationsWithContext(ctx context.Context, input *route53domains.ListOperationsInput, opts ...request.Option) (*route53domains.ListOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
@@ -323,6 +345,26 @@ func (c *Client) ListOperationsWithContext(ctx context.Context, input *route53do
 	})
 
 	return req.Output.(*route53domains.ListOperationsOutput), req.Error
+}
+
+func (c *Client) ListOperationsPagesWithContext(ctx context.Context, input *route53domains.ListOperationsInput, cb func(*route53domains.ListOperationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "ListOperations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53DomainsAPI.ListOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForDomainWithContext(ctx context.Context, input *route53domains.ListTagsForDomainInput, opts ...request.Option) (*route53domains.ListTagsForDomainOutput, error) {

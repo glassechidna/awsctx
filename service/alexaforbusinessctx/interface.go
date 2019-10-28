@@ -62,15 +62,25 @@ type AlexaForBusiness interface {
 	GetRoomSkillParameterWithContext(ctx context.Context, input *alexaforbusiness.GetRoomSkillParameterInput, opts ...request.Option) (*alexaforbusiness.GetRoomSkillParameterOutput, error)
 	GetSkillGroupWithContext(ctx context.Context, input *alexaforbusiness.GetSkillGroupInput, opts ...request.Option) (*alexaforbusiness.GetSkillGroupOutput, error)
 	ListBusinessReportSchedulesWithContext(ctx context.Context, input *alexaforbusiness.ListBusinessReportSchedulesInput, opts ...request.Option) (*alexaforbusiness.ListBusinessReportSchedulesOutput, error)
+	ListBusinessReportSchedulesPagesWithContext(ctx context.Context, input *alexaforbusiness.ListBusinessReportSchedulesInput, cb func(*alexaforbusiness.ListBusinessReportSchedulesOutput, bool) bool, opts ...request.Option) error
 	ListConferenceProvidersWithContext(ctx context.Context, input *alexaforbusiness.ListConferenceProvidersInput, opts ...request.Option) (*alexaforbusiness.ListConferenceProvidersOutput, error)
+	ListConferenceProvidersPagesWithContext(ctx context.Context, input *alexaforbusiness.ListConferenceProvidersInput, cb func(*alexaforbusiness.ListConferenceProvidersOutput, bool) bool, opts ...request.Option) error
 	ListDeviceEventsWithContext(ctx context.Context, input *alexaforbusiness.ListDeviceEventsInput, opts ...request.Option) (*alexaforbusiness.ListDeviceEventsOutput, error)
+	ListDeviceEventsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListDeviceEventsInput, cb func(*alexaforbusiness.ListDeviceEventsOutput, bool) bool, opts ...request.Option) error
 	ListGatewayGroupsWithContext(ctx context.Context, input *alexaforbusiness.ListGatewayGroupsInput, opts ...request.Option) (*alexaforbusiness.ListGatewayGroupsOutput, error)
+	ListGatewayGroupsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListGatewayGroupsInput, cb func(*alexaforbusiness.ListGatewayGroupsOutput, bool) bool, opts ...request.Option) error
 	ListGatewaysWithContext(ctx context.Context, input *alexaforbusiness.ListGatewaysInput, opts ...request.Option) (*alexaforbusiness.ListGatewaysOutput, error)
+	ListGatewaysPagesWithContext(ctx context.Context, input *alexaforbusiness.ListGatewaysInput, cb func(*alexaforbusiness.ListGatewaysOutput, bool) bool, opts ...request.Option) error
 	ListSkillsWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsInput, opts ...request.Option) (*alexaforbusiness.ListSkillsOutput, error)
+	ListSkillsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsInput, cb func(*alexaforbusiness.ListSkillsOutput, bool) bool, opts ...request.Option) error
 	ListSkillsStoreCategoriesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreCategoriesInput, opts ...request.Option) (*alexaforbusiness.ListSkillsStoreCategoriesOutput, error)
+	ListSkillsStoreCategoriesPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreCategoriesInput, cb func(*alexaforbusiness.ListSkillsStoreCategoriesOutput, bool) bool, opts ...request.Option) error
 	ListSkillsStoreSkillsByCategoryWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreSkillsByCategoryInput, opts ...request.Option) (*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput, error)
+	ListSkillsStoreSkillsByCategoryPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreSkillsByCategoryInput, cb func(*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput, bool) bool, opts ...request.Option) error
 	ListSmartHomeAppliancesWithContext(ctx context.Context, input *alexaforbusiness.ListSmartHomeAppliancesInput, opts ...request.Option) (*alexaforbusiness.ListSmartHomeAppliancesOutput, error)
+	ListSmartHomeAppliancesPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSmartHomeAppliancesInput, cb func(*alexaforbusiness.ListSmartHomeAppliancesOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *alexaforbusiness.ListTagsInput, opts ...request.Option) (*alexaforbusiness.ListTagsOutput, error)
+	ListTagsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListTagsInput, cb func(*alexaforbusiness.ListTagsOutput, bool) bool, opts ...request.Option) error
 	PutConferencePreferenceWithContext(ctx context.Context, input *alexaforbusiness.PutConferencePreferenceInput, opts ...request.Option) (*alexaforbusiness.PutConferencePreferenceOutput, error)
 	PutInvitationConfigurationWithContext(ctx context.Context, input *alexaforbusiness.PutInvitationConfigurationInput, opts ...request.Option) (*alexaforbusiness.PutInvitationConfigurationOutput, error)
 	PutRoomSkillParameterWithContext(ctx context.Context, input *alexaforbusiness.PutRoomSkillParameterInput, opts ...request.Option) (*alexaforbusiness.PutRoomSkillParameterOutput, error)
@@ -80,13 +90,21 @@ type AlexaForBusiness interface {
 	ResolveRoomWithContext(ctx context.Context, input *alexaforbusiness.ResolveRoomInput, opts ...request.Option) (*alexaforbusiness.ResolveRoomOutput, error)
 	RevokeInvitationWithContext(ctx context.Context, input *alexaforbusiness.RevokeInvitationInput, opts ...request.Option) (*alexaforbusiness.RevokeInvitationOutput, error)
 	SearchAddressBooksWithContext(ctx context.Context, input *alexaforbusiness.SearchAddressBooksInput, opts ...request.Option) (*alexaforbusiness.SearchAddressBooksOutput, error)
+	SearchAddressBooksPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchAddressBooksInput, cb func(*alexaforbusiness.SearchAddressBooksOutput, bool) bool, opts ...request.Option) error
 	SearchContactsWithContext(ctx context.Context, input *alexaforbusiness.SearchContactsInput, opts ...request.Option) (*alexaforbusiness.SearchContactsOutput, error)
+	SearchContactsPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchContactsInput, cb func(*alexaforbusiness.SearchContactsOutput, bool) bool, opts ...request.Option) error
 	SearchDevicesWithContext(ctx context.Context, input *alexaforbusiness.SearchDevicesInput, opts ...request.Option) (*alexaforbusiness.SearchDevicesOutput, error)
+	SearchDevicesPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchDevicesInput, cb func(*alexaforbusiness.SearchDevicesOutput, bool) bool, opts ...request.Option) error
 	SearchNetworkProfilesWithContext(ctx context.Context, input *alexaforbusiness.SearchNetworkProfilesInput, opts ...request.Option) (*alexaforbusiness.SearchNetworkProfilesOutput, error)
+	SearchNetworkProfilesPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchNetworkProfilesInput, cb func(*alexaforbusiness.SearchNetworkProfilesOutput, bool) bool, opts ...request.Option) error
 	SearchProfilesWithContext(ctx context.Context, input *alexaforbusiness.SearchProfilesInput, opts ...request.Option) (*alexaforbusiness.SearchProfilesOutput, error)
+	SearchProfilesPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchProfilesInput, cb func(*alexaforbusiness.SearchProfilesOutput, bool) bool, opts ...request.Option) error
 	SearchRoomsWithContext(ctx context.Context, input *alexaforbusiness.SearchRoomsInput, opts ...request.Option) (*alexaforbusiness.SearchRoomsOutput, error)
+	SearchRoomsPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchRoomsInput, cb func(*alexaforbusiness.SearchRoomsOutput, bool) bool, opts ...request.Option) error
 	SearchSkillGroupsWithContext(ctx context.Context, input *alexaforbusiness.SearchSkillGroupsInput, opts ...request.Option) (*alexaforbusiness.SearchSkillGroupsOutput, error)
+	SearchSkillGroupsPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchSkillGroupsInput, cb func(*alexaforbusiness.SearchSkillGroupsOutput, bool) bool, opts ...request.Option) error
 	SearchUsersWithContext(ctx context.Context, input *alexaforbusiness.SearchUsersInput, opts ...request.Option) (*alexaforbusiness.SearchUsersOutput, error)
+	SearchUsersPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchUsersInput, cb func(*alexaforbusiness.SearchUsersOutput, bool) bool, opts ...request.Option) error
 	SendAnnouncementWithContext(ctx context.Context, input *alexaforbusiness.SendAnnouncementInput, opts ...request.Option) (*alexaforbusiness.SendAnnouncementOutput, error)
 	SendInvitationWithContext(ctx context.Context, input *alexaforbusiness.SendInvitationInput, opts ...request.Option) (*alexaforbusiness.SendInvitationOutput, error)
 	StartDeviceSyncWithContext(ctx context.Context, input *alexaforbusiness.StartDeviceSyncInput, opts ...request.Option) (*alexaforbusiness.StartDeviceSyncOutput, error)
@@ -1192,6 +1210,26 @@ func (c *Client) ListBusinessReportSchedulesWithContext(ctx context.Context, inp
 	return req.Output.(*alexaforbusiness.ListBusinessReportSchedulesOutput), req.Error
 }
 
+func (c *Client) ListBusinessReportSchedulesPagesWithContext(ctx context.Context, input *alexaforbusiness.ListBusinessReportSchedulesInput, cb func(*alexaforbusiness.ListBusinessReportSchedulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListBusinessReportSchedules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListBusinessReportSchedulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListConferenceProvidersWithContext(ctx context.Context, input *alexaforbusiness.ListConferenceProvidersInput, opts ...request.Option) (*alexaforbusiness.ListConferenceProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1211,6 +1249,26 @@ func (c *Client) ListConferenceProvidersWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*alexaforbusiness.ListConferenceProvidersOutput), req.Error
+}
+
+func (c *Client) ListConferenceProvidersPagesWithContext(ctx context.Context, input *alexaforbusiness.ListConferenceProvidersInput, cb func(*alexaforbusiness.ListConferenceProvidersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListConferenceProviders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListConferenceProvidersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDeviceEventsWithContext(ctx context.Context, input *alexaforbusiness.ListDeviceEventsInput, opts ...request.Option) (*alexaforbusiness.ListDeviceEventsOutput, error) {
@@ -1234,6 +1292,26 @@ func (c *Client) ListDeviceEventsWithContext(ctx context.Context, input *alexafo
 	return req.Output.(*alexaforbusiness.ListDeviceEventsOutput), req.Error
 }
 
+func (c *Client) ListDeviceEventsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListDeviceEventsInput, cb func(*alexaforbusiness.ListDeviceEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListDeviceEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListDeviceEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGatewayGroupsWithContext(ctx context.Context, input *alexaforbusiness.ListGatewayGroupsInput, opts ...request.Option) (*alexaforbusiness.ListGatewayGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1253,6 +1331,26 @@ func (c *Client) ListGatewayGroupsWithContext(ctx context.Context, input *alexaf
 	})
 
 	return req.Output.(*alexaforbusiness.ListGatewayGroupsOutput), req.Error
+}
+
+func (c *Client) ListGatewayGroupsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListGatewayGroupsInput, cb func(*alexaforbusiness.ListGatewayGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListGatewayGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListGatewayGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGatewaysWithContext(ctx context.Context, input *alexaforbusiness.ListGatewaysInput, opts ...request.Option) (*alexaforbusiness.ListGatewaysOutput, error) {
@@ -1276,6 +1374,26 @@ func (c *Client) ListGatewaysWithContext(ctx context.Context, input *alexaforbus
 	return req.Output.(*alexaforbusiness.ListGatewaysOutput), req.Error
 }
 
+func (c *Client) ListGatewaysPagesWithContext(ctx context.Context, input *alexaforbusiness.ListGatewaysInput, cb func(*alexaforbusiness.ListGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSkillsWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsInput, opts ...request.Option) (*alexaforbusiness.ListSkillsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1295,6 +1413,26 @@ func (c *Client) ListSkillsWithContext(ctx context.Context, input *alexaforbusin
 	})
 
 	return req.Output.(*alexaforbusiness.ListSkillsOutput), req.Error
+}
+
+func (c *Client) ListSkillsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsInput, cb func(*alexaforbusiness.ListSkillsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListSkills",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListSkillsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSkillsStoreCategoriesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreCategoriesInput, opts ...request.Option) (*alexaforbusiness.ListSkillsStoreCategoriesOutput, error) {
@@ -1318,6 +1456,26 @@ func (c *Client) ListSkillsStoreCategoriesWithContext(ctx context.Context, input
 	return req.Output.(*alexaforbusiness.ListSkillsStoreCategoriesOutput), req.Error
 }
 
+func (c *Client) ListSkillsStoreCategoriesPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreCategoriesInput, cb func(*alexaforbusiness.ListSkillsStoreCategoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListSkillsStoreCategories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListSkillsStoreCategoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSkillsStoreSkillsByCategoryWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreSkillsByCategoryInput, opts ...request.Option) (*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1337,6 +1495,26 @@ func (c *Client) ListSkillsStoreSkillsByCategoryWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput), req.Error
+}
+
+func (c *Client) ListSkillsStoreSkillsByCategoryPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSkillsStoreSkillsByCategoryInput, cb func(*alexaforbusiness.ListSkillsStoreSkillsByCategoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListSkillsStoreSkillsByCategory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListSkillsStoreSkillsByCategoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSmartHomeAppliancesWithContext(ctx context.Context, input *alexaforbusiness.ListSmartHomeAppliancesInput, opts ...request.Option) (*alexaforbusiness.ListSmartHomeAppliancesOutput, error) {
@@ -1360,6 +1538,26 @@ func (c *Client) ListSmartHomeAppliancesWithContext(ctx context.Context, input *
 	return req.Output.(*alexaforbusiness.ListSmartHomeAppliancesOutput), req.Error
 }
 
+func (c *Client) ListSmartHomeAppliancesPagesWithContext(ctx context.Context, input *alexaforbusiness.ListSmartHomeAppliancesInput, cb func(*alexaforbusiness.ListSmartHomeAppliancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListSmartHomeAppliances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListSmartHomeAppliancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsWithContext(ctx context.Context, input *alexaforbusiness.ListTagsInput, opts ...request.Option) (*alexaforbusiness.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1379,6 +1577,26 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *alexaforbusines
 	})
 
 	return req.Output.(*alexaforbusiness.ListTagsOutput), req.Error
+}
+
+func (c *Client) ListTagsPagesWithContext(ctx context.Context, input *alexaforbusiness.ListTagsInput, cb func(*alexaforbusiness.ListTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "ListTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.ListTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutConferencePreferenceWithContext(ctx context.Context, input *alexaforbusiness.PutConferencePreferenceInput, opts ...request.Option) (*alexaforbusiness.PutConferencePreferenceOutput, error) {
@@ -1570,6 +1788,26 @@ func (c *Client) SearchAddressBooksWithContext(ctx context.Context, input *alexa
 	return req.Output.(*alexaforbusiness.SearchAddressBooksOutput), req.Error
 }
 
+func (c *Client) SearchAddressBooksPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchAddressBooksInput, cb func(*alexaforbusiness.SearchAddressBooksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchAddressBooks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchAddressBooksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchContactsWithContext(ctx context.Context, input *alexaforbusiness.SearchContactsInput, opts ...request.Option) (*alexaforbusiness.SearchContactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1589,6 +1827,26 @@ func (c *Client) SearchContactsWithContext(ctx context.Context, input *alexaforb
 	})
 
 	return req.Output.(*alexaforbusiness.SearchContactsOutput), req.Error
+}
+
+func (c *Client) SearchContactsPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchContactsInput, cb func(*alexaforbusiness.SearchContactsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchContacts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchContactsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchDevicesWithContext(ctx context.Context, input *alexaforbusiness.SearchDevicesInput, opts ...request.Option) (*alexaforbusiness.SearchDevicesOutput, error) {
@@ -1612,6 +1870,26 @@ func (c *Client) SearchDevicesWithContext(ctx context.Context, input *alexaforbu
 	return req.Output.(*alexaforbusiness.SearchDevicesOutput), req.Error
 }
 
+func (c *Client) SearchDevicesPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchDevicesInput, cb func(*alexaforbusiness.SearchDevicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchDevices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchDevicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchNetworkProfilesWithContext(ctx context.Context, input *alexaforbusiness.SearchNetworkProfilesInput, opts ...request.Option) (*alexaforbusiness.SearchNetworkProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1631,6 +1909,26 @@ func (c *Client) SearchNetworkProfilesWithContext(ctx context.Context, input *al
 	})
 
 	return req.Output.(*alexaforbusiness.SearchNetworkProfilesOutput), req.Error
+}
+
+func (c *Client) SearchNetworkProfilesPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchNetworkProfilesInput, cb func(*alexaforbusiness.SearchNetworkProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchNetworkProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchNetworkProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchProfilesWithContext(ctx context.Context, input *alexaforbusiness.SearchProfilesInput, opts ...request.Option) (*alexaforbusiness.SearchProfilesOutput, error) {
@@ -1654,6 +1952,26 @@ func (c *Client) SearchProfilesWithContext(ctx context.Context, input *alexaforb
 	return req.Output.(*alexaforbusiness.SearchProfilesOutput), req.Error
 }
 
+func (c *Client) SearchProfilesPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchProfilesInput, cb func(*alexaforbusiness.SearchProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchRoomsWithContext(ctx context.Context, input *alexaforbusiness.SearchRoomsInput, opts ...request.Option) (*alexaforbusiness.SearchRoomsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1673,6 +1991,26 @@ func (c *Client) SearchRoomsWithContext(ctx context.Context, input *alexaforbusi
 	})
 
 	return req.Output.(*alexaforbusiness.SearchRoomsOutput), req.Error
+}
+
+func (c *Client) SearchRoomsPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchRoomsInput, cb func(*alexaforbusiness.SearchRoomsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchRooms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchRoomsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchSkillGroupsWithContext(ctx context.Context, input *alexaforbusiness.SearchSkillGroupsInput, opts ...request.Option) (*alexaforbusiness.SearchSkillGroupsOutput, error) {
@@ -1696,6 +2034,26 @@ func (c *Client) SearchSkillGroupsWithContext(ctx context.Context, input *alexaf
 	return req.Output.(*alexaforbusiness.SearchSkillGroupsOutput), req.Error
 }
 
+func (c *Client) SearchSkillGroupsPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchSkillGroupsInput, cb func(*alexaforbusiness.SearchSkillGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchSkillGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchSkillGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchUsersWithContext(ctx context.Context, input *alexaforbusiness.SearchUsersInput, opts ...request.Option) (*alexaforbusiness.SearchUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "alexaforbusiness",
@@ -1715,6 +2073,26 @@ func (c *Client) SearchUsersWithContext(ctx context.Context, input *alexaforbusi
 	})
 
 	return req.Output.(*alexaforbusiness.SearchUsersOutput), req.Error
+}
+
+func (c *Client) SearchUsersPagesWithContext(ctx context.Context, input *alexaforbusiness.SearchUsersInput, cb func(*alexaforbusiness.SearchUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "alexaforbusiness",
+		Action:  "SearchUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AlexaForBusinessAPI.SearchUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SendAnnouncementWithContext(ctx context.Context, input *alexaforbusiness.SendAnnouncementInput, opts ...request.Option) (*alexaforbusiness.SendAnnouncementOutput, error) {

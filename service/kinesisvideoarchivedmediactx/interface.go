@@ -15,6 +15,7 @@ type KinesisVideoArchivedMedia interface {
 	GetHLSStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetHLSStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetHLSStreamingSessionURLOutput, error)
 	GetMediaForFragmentListWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetMediaForFragmentListInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetMediaForFragmentListOutput, error)
 	ListFragmentsWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.ListFragmentsInput, opts ...request.Option) (*kinesisvideoarchivedmedia.ListFragmentsOutput, error)
+	ListFragmentsPagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.ListFragmentsInput, cb func(*kinesisvideoarchivedmedia.ListFragmentsOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -114,4 +115,24 @@ func (c *Client) ListFragmentsWithContext(ctx context.Context, input *kinesisvid
 	})
 
 	return req.Output.(*kinesisvideoarchivedmedia.ListFragmentsOutput), req.Error
+}
+
+func (c *Client) ListFragmentsPagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.ListFragmentsInput, cb func(*kinesisvideoarchivedmedia.ListFragmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideoarchivedmedia",
+		Action:  "ListFragments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisVideoArchivedMediaAPI.ListFragmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }

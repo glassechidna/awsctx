@@ -17,7 +17,9 @@ type MediaConnect interface {
 	DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error)
 	GrantFlowEntitlementsWithContext(ctx context.Context, input *mediaconnect.GrantFlowEntitlementsInput, opts ...request.Option) (*mediaconnect.GrantFlowEntitlementsOutput, error)
 	ListEntitlementsWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, opts ...request.Option) (*mediaconnect.ListEntitlementsOutput, error)
+	ListEntitlementsPagesWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, cb func(*mediaconnect.ListEntitlementsOutput, bool) bool, opts ...request.Option) error
 	ListFlowsWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, opts ...request.Option) (*mediaconnect.ListFlowsOutput, error)
+	ListFlowsPagesWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, cb func(*mediaconnect.ListFlowsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error)
 	RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error)
 	RevokeFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.RevokeFlowEntitlementInput, opts ...request.Option) (*mediaconnect.RevokeFlowEntitlementOutput, error)
@@ -171,6 +173,26 @@ func (c *Client) ListEntitlementsWithContext(ctx context.Context, input *mediaco
 	return req.Output.(*mediaconnect.ListEntitlementsOutput), req.Error
 }
 
+func (c *Client) ListEntitlementsPagesWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, cb func(*mediaconnect.ListEntitlementsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListEntitlements",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListEntitlementsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListFlowsWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, opts ...request.Option) (*mediaconnect.ListFlowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -190,6 +212,26 @@ func (c *Client) ListFlowsWithContext(ctx context.Context, input *mediaconnect.L
 	})
 
 	return req.Output.(*mediaconnect.ListFlowsOutput), req.Error
+}
+
+func (c *Client) ListFlowsPagesWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, cb func(*mediaconnect.ListFlowsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListFlows",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListFlowsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error) {

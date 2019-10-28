@@ -17,8 +17,11 @@ type ResourceGroups interface {
 	GetGroupQueryWithContext(ctx context.Context, input *resourcegroups.GetGroupQueryInput, opts ...request.Option) (*resourcegroups.GetGroupQueryOutput, error)
 	GetTagsWithContext(ctx context.Context, input *resourcegroups.GetTagsInput, opts ...request.Option) (*resourcegroups.GetTagsOutput, error)
 	ListGroupResourcesWithContext(ctx context.Context, input *resourcegroups.ListGroupResourcesInput, opts ...request.Option) (*resourcegroups.ListGroupResourcesOutput, error)
+	ListGroupResourcesPagesWithContext(ctx context.Context, input *resourcegroups.ListGroupResourcesInput, cb func(*resourcegroups.ListGroupResourcesOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, opts ...request.Option) (*resourcegroups.ListGroupsOutput, error)
+	ListGroupsPagesWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, cb func(*resourcegroups.ListGroupsOutput, bool) bool, opts ...request.Option) error
 	SearchResourcesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, opts ...request.Option) (*resourcegroups.SearchResourcesOutput, error)
+	SearchResourcesPagesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, cb func(*resourcegroups.SearchResourcesOutput, bool) bool, opts ...request.Option) error
 	TagWithContext(ctx context.Context, input *resourcegroups.TagInput, opts ...request.Option) (*resourcegroups.TagOutput, error)
 	UntagWithContext(ctx context.Context, input *resourcegroups.UntagInput, opts ...request.Option) (*resourcegroups.UntagOutput, error)
 	UpdateGroupWithContext(ctx context.Context, input *resourcegroups.UpdateGroupInput, opts ...request.Option) (*resourcegroups.UpdateGroupOutput, error)
@@ -166,6 +169,26 @@ func (c *Client) ListGroupResourcesWithContext(ctx context.Context, input *resou
 	return req.Output.(*resourcegroups.ListGroupResourcesOutput), req.Error
 }
 
+func (c *Client) ListGroupResourcesPagesWithContext(ctx context.Context, input *resourcegroups.ListGroupResourcesInput, cb func(*resourcegroups.ListGroupResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroups",
+		Action:  "ListGroupResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ResourceGroupsAPI.ListGroupResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGroupsWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, opts ...request.Option) (*resourcegroups.ListGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
@@ -187,6 +210,26 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *resourcegroup
 	return req.Output.(*resourcegroups.ListGroupsOutput), req.Error
 }
 
+func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, cb func(*resourcegroups.ListGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroups",
+		Action:  "ListGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ResourceGroupsAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchResourcesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, opts ...request.Option) (*resourcegroups.SearchResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "resourcegroups",
@@ -206,6 +249,26 @@ func (c *Client) SearchResourcesWithContext(ctx context.Context, input *resource
 	})
 
 	return req.Output.(*resourcegroups.SearchResourcesOutput), req.Error
+}
+
+func (c *Client) SearchResourcesPagesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, cb func(*resourcegroups.SearchResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroups",
+		Action:  "SearchResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ResourceGroupsAPI.SearchResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagWithContext(ctx context.Context, input *resourcegroups.TagInput, opts ...request.Option) (*resourcegroups.TagOutput, error) {

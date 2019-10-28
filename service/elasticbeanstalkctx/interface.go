@@ -37,6 +37,7 @@ type ElasticBeanstalk interface {
 	DescribeEnvironmentResourcesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentResourcesInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentResourcesOutput, error)
 	DescribeEnvironmentsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentsInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescriptionsMessage, error)
 	DescribeEventsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEventsInput, opts ...request.Option) (*elasticbeanstalk.DescribeEventsOutput, error)
+	DescribeEventsPagesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEventsInput, cb func(*elasticbeanstalk.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancesHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeInstancesHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeInstancesHealthOutput, error)
 	DescribePlatformVersionWithContext(ctx context.Context, input *elasticbeanstalk.DescribePlatformVersionInput, opts ...request.Option) (*elasticbeanstalk.DescribePlatformVersionOutput, error)
 	ListAvailableSolutionStacksWithContext(ctx context.Context, input *elasticbeanstalk.ListAvailableSolutionStacksInput, opts ...request.Option) (*elasticbeanstalk.ListAvailableSolutionStacksOutput, error)
@@ -616,6 +617,26 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *elasticbe
 	})
 
 	return req.Output.(*elasticbeanstalk.DescribeEventsOutput), req.Error
+}
+
+func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEventsInput, cb func(*elasticbeanstalk.DescribeEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "DescribeEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticBeanstalkAPI.DescribeEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstancesHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeInstancesHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeInstancesHealthOutput, error) {

@@ -20,6 +20,7 @@ type CloudTrail interface {
 	ListPublicKeysWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, opts ...request.Option) (*cloudtrail.ListPublicKeysOutput, error)
 	ListTagsWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, opts ...request.Option) (*cloudtrail.ListTagsOutput, error)
 	LookupEventsWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, opts ...request.Option) (*cloudtrail.LookupEventsOutput, error)
+	LookupEventsPagesWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, cb func(*cloudtrail.LookupEventsOutput, bool) bool, opts ...request.Option) error
 	PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error)
 	StartLoggingWithContext(ctx context.Context, input *cloudtrail.StartLoggingInput, opts ...request.Option) (*cloudtrail.StartLoggingOutput, error)
@@ -229,6 +230,26 @@ func (c *Client) LookupEventsWithContext(ctx context.Context, input *cloudtrail.
 	})
 
 	return req.Output.(*cloudtrail.LookupEventsOutput), req.Error
+}
+
+func (c *Client) LookupEventsPagesWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, cb func(*cloudtrail.LookupEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "LookupEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.LookupEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error) {

@@ -28,11 +28,17 @@ type MediaLive interface {
 	DescribeOfferingWithContext(ctx context.Context, input *medialive.DescribeOfferingInput, opts ...request.Option) (*medialive.DescribeOfferingOutput, error)
 	DescribeReservationWithContext(ctx context.Context, input *medialive.DescribeReservationInput, opts ...request.Option) (*medialive.DescribeReservationOutput, error)
 	DescribeScheduleWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, opts ...request.Option) (*medialive.DescribeScheduleOutput, error)
+	DescribeSchedulePagesWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, cb func(*medialive.DescribeScheduleOutput, bool) bool, opts ...request.Option) error
 	ListChannelsWithContext(ctx context.Context, input *medialive.ListChannelsInput, opts ...request.Option) (*medialive.ListChannelsOutput, error)
+	ListChannelsPagesWithContext(ctx context.Context, input *medialive.ListChannelsInput, cb func(*medialive.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListInputSecurityGroupsWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, opts ...request.Option) (*medialive.ListInputSecurityGroupsOutput, error)
+	ListInputSecurityGroupsPagesWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, cb func(*medialive.ListInputSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	ListInputsWithContext(ctx context.Context, input *medialive.ListInputsInput, opts ...request.Option) (*medialive.ListInputsOutput, error)
+	ListInputsPagesWithContext(ctx context.Context, input *medialive.ListInputsInput, cb func(*medialive.ListInputsOutput, bool) bool, opts ...request.Option) error
 	ListOfferingsWithContext(ctx context.Context, input *medialive.ListOfferingsInput, opts ...request.Option) (*medialive.ListOfferingsOutput, error)
+	ListOfferingsPagesWithContext(ctx context.Context, input *medialive.ListOfferingsInput, cb func(*medialive.ListOfferingsOutput, bool) bool, opts ...request.Option) error
 	ListReservationsWithContext(ctx context.Context, input *medialive.ListReservationsInput, opts ...request.Option) (*medialive.ListReservationsOutput, error)
+	ListReservationsPagesWithContext(ctx context.Context, input *medialive.ListReservationsInput, cb func(*medialive.ListReservationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *medialive.ListTagsForResourceInput, opts ...request.Option) (*medialive.ListTagsForResourceOutput, error)
 	PurchaseOfferingWithContext(ctx context.Context, input *medialive.PurchaseOfferingInput, opts ...request.Option) (*medialive.PurchaseOfferingOutput, error)
 	StartChannelWithContext(ctx context.Context, input *medialive.StartChannelInput, opts ...request.Option) (*medialive.StartChannelOutput, error)
@@ -416,6 +422,26 @@ func (c *Client) DescribeScheduleWithContext(ctx context.Context, input *mediali
 	return req.Output.(*medialive.DescribeScheduleOutput), req.Error
 }
 
+func (c *Client) DescribeSchedulePagesWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, cb func(*medialive.DescribeScheduleOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DescribeSchedule",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.DescribeSchedulePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListChannelsWithContext(ctx context.Context, input *medialive.ListChannelsInput, opts ...request.Option) (*medialive.ListChannelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -435,6 +461,26 @@ func (c *Client) ListChannelsWithContext(ctx context.Context, input *medialive.L
 	})
 
 	return req.Output.(*medialive.ListChannelsOutput), req.Error
+}
+
+func (c *Client) ListChannelsPagesWithContext(ctx context.Context, input *medialive.ListChannelsInput, cb func(*medialive.ListChannelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListChannels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListChannelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInputSecurityGroupsWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, opts ...request.Option) (*medialive.ListInputSecurityGroupsOutput, error) {
@@ -458,6 +504,26 @@ func (c *Client) ListInputSecurityGroupsWithContext(ctx context.Context, input *
 	return req.Output.(*medialive.ListInputSecurityGroupsOutput), req.Error
 }
 
+func (c *Client) ListInputSecurityGroupsPagesWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, cb func(*medialive.ListInputSecurityGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListInputSecurityGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListInputSecurityGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListInputsWithContext(ctx context.Context, input *medialive.ListInputsInput, opts ...request.Option) (*medialive.ListInputsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -477,6 +543,26 @@ func (c *Client) ListInputsWithContext(ctx context.Context, input *medialive.Lis
 	})
 
 	return req.Output.(*medialive.ListInputsOutput), req.Error
+}
+
+func (c *Client) ListInputsPagesWithContext(ctx context.Context, input *medialive.ListInputsInput, cb func(*medialive.ListInputsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListInputs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListInputsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOfferingsWithContext(ctx context.Context, input *medialive.ListOfferingsInput, opts ...request.Option) (*medialive.ListOfferingsOutput, error) {
@@ -500,6 +586,26 @@ func (c *Client) ListOfferingsWithContext(ctx context.Context, input *medialive.
 	return req.Output.(*medialive.ListOfferingsOutput), req.Error
 }
 
+func (c *Client) ListOfferingsPagesWithContext(ctx context.Context, input *medialive.ListOfferingsInput, cb func(*medialive.ListOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListReservationsWithContext(ctx context.Context, input *medialive.ListReservationsInput, opts ...request.Option) (*medialive.ListReservationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -519,6 +625,26 @@ func (c *Client) ListReservationsWithContext(ctx context.Context, input *mediali
 	})
 
 	return req.Output.(*medialive.ListReservationsOutput), req.Error
+}
+
+func (c *Client) ListReservationsPagesWithContext(ctx context.Context, input *medialive.ListReservationsInput, cb func(*medialive.ListReservationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListReservations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListReservationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medialive.ListTagsForResourceInput, opts ...request.Option) (*medialive.ListTagsForResourceOutput, error) {

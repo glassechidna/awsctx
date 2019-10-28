@@ -26,12 +26,17 @@ type SNS interface {
 	GetSubscriptionAttributesWithContext(ctx context.Context, input *sns.GetSubscriptionAttributesInput, opts ...request.Option) (*sns.GetSubscriptionAttributesOutput, error)
 	GetTopicAttributesWithContext(ctx context.Context, input *sns.GetTopicAttributesInput, opts ...request.Option) (*sns.GetTopicAttributesOutput, error)
 	ListEndpointsByPlatformApplicationWithContext(ctx context.Context, input *sns.ListEndpointsByPlatformApplicationInput, opts ...request.Option) (*sns.ListEndpointsByPlatformApplicationOutput, error)
+	ListEndpointsByPlatformApplicationPagesWithContext(ctx context.Context, input *sns.ListEndpointsByPlatformApplicationInput, cb func(*sns.ListEndpointsByPlatformApplicationOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersOptedOutWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, opts ...request.Option) (*sns.ListPhoneNumbersOptedOutOutput, error)
 	ListPlatformApplicationsWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, opts ...request.Option) (*sns.ListPlatformApplicationsOutput, error)
+	ListPlatformApplicationsPagesWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, cb func(*sns.ListPlatformApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListSubscriptionsWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, opts ...request.Option) (*sns.ListSubscriptionsOutput, error)
+	ListSubscriptionsPagesWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, cb func(*sns.ListSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	ListSubscriptionsByTopicWithContext(ctx context.Context, input *sns.ListSubscriptionsByTopicInput, opts ...request.Option) (*sns.ListSubscriptionsByTopicOutput, error)
+	ListSubscriptionsByTopicPagesWithContext(ctx context.Context, input *sns.ListSubscriptionsByTopicInput, cb func(*sns.ListSubscriptionsByTopicOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *sns.ListTagsForResourceInput, opts ...request.Option) (*sns.ListTagsForResourceOutput, error)
 	ListTopicsWithContext(ctx context.Context, input *sns.ListTopicsInput, opts ...request.Option) (*sns.ListTopicsOutput, error)
+	ListTopicsPagesWithContext(ctx context.Context, input *sns.ListTopicsInput, cb func(*sns.ListTopicsOutput, bool) bool, opts ...request.Option) error
 	OptInPhoneNumberWithContext(ctx context.Context, input *sns.OptInPhoneNumberInput, opts ...request.Option) (*sns.OptInPhoneNumberOutput, error)
 	PublishWithContext(ctx context.Context, input *sns.PublishInput, opts ...request.Option) (*sns.PublishOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *sns.RemovePermissionInput, opts ...request.Option) (*sns.RemovePermissionOutput, error)
@@ -376,6 +381,26 @@ func (c *Client) ListEndpointsByPlatformApplicationWithContext(ctx context.Conte
 	return req.Output.(*sns.ListEndpointsByPlatformApplicationOutput), req.Error
 }
 
+func (c *Client) ListEndpointsByPlatformApplicationPagesWithContext(ctx context.Context, input *sns.ListEndpointsByPlatformApplicationInput, cb func(*sns.ListEndpointsByPlatformApplicationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListEndpointsByPlatformApplication",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListEndpointsByPlatformApplicationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPhoneNumbersOptedOutWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, opts ...request.Option) (*sns.ListPhoneNumbersOptedOutOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
@@ -418,6 +443,26 @@ func (c *Client) ListPlatformApplicationsWithContext(ctx context.Context, input 
 	return req.Output.(*sns.ListPlatformApplicationsOutput), req.Error
 }
 
+func (c *Client) ListPlatformApplicationsPagesWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, cb func(*sns.ListPlatformApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListPlatformApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListPlatformApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSubscriptionsWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, opts ...request.Option) (*sns.ListSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
@@ -439,6 +484,26 @@ func (c *Client) ListSubscriptionsWithContext(ctx context.Context, input *sns.Li
 	return req.Output.(*sns.ListSubscriptionsOutput), req.Error
 }
 
+func (c *Client) ListSubscriptionsPagesWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, cb func(*sns.ListSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSubscriptionsByTopicWithContext(ctx context.Context, input *sns.ListSubscriptionsByTopicInput, opts ...request.Option) (*sns.ListSubscriptionsByTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
@@ -458,6 +523,26 @@ func (c *Client) ListSubscriptionsByTopicWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*sns.ListSubscriptionsByTopicOutput), req.Error
+}
+
+func (c *Client) ListSubscriptionsByTopicPagesWithContext(ctx context.Context, input *sns.ListSubscriptionsByTopicInput, cb func(*sns.ListSubscriptionsByTopicOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListSubscriptionsByTopic",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListSubscriptionsByTopicPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sns.ListTagsForResourceInput, opts ...request.Option) (*sns.ListTagsForResourceOutput, error) {
@@ -500,6 +585,26 @@ func (c *Client) ListTopicsWithContext(ctx context.Context, input *sns.ListTopic
 	})
 
 	return req.Output.(*sns.ListTopicsOutput), req.Error
+}
+
+func (c *Client) ListTopicsPagesWithContext(ctx context.Context, input *sns.ListTopicsInput, cb func(*sns.ListTopicsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListTopics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListTopicsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) OptInPhoneNumberWithContext(ctx context.Context, input *sns.OptInPhoneNumberInput, opts ...request.Option) (*sns.OptInPhoneNumberOutput, error) {

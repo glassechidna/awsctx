@@ -18,10 +18,14 @@ type Batch interface {
 	DeleteJobQueueWithContext(ctx context.Context, input *batch.DeleteJobQueueInput, opts ...request.Option) (*batch.DeleteJobQueueOutput, error)
 	DeregisterJobDefinitionWithContext(ctx context.Context, input *batch.DeregisterJobDefinitionInput, opts ...request.Option) (*batch.DeregisterJobDefinitionOutput, error)
 	DescribeComputeEnvironmentsWithContext(ctx context.Context, input *batch.DescribeComputeEnvironmentsInput, opts ...request.Option) (*batch.DescribeComputeEnvironmentsOutput, error)
+	DescribeComputeEnvironmentsPagesWithContext(ctx context.Context, input *batch.DescribeComputeEnvironmentsInput, cb func(*batch.DescribeComputeEnvironmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeJobDefinitionsWithContext(ctx context.Context, input *batch.DescribeJobDefinitionsInput, opts ...request.Option) (*batch.DescribeJobDefinitionsOutput, error)
+	DescribeJobDefinitionsPagesWithContext(ctx context.Context, input *batch.DescribeJobDefinitionsInput, cb func(*batch.DescribeJobDefinitionsOutput, bool) bool, opts ...request.Option) error
 	DescribeJobQueuesWithContext(ctx context.Context, input *batch.DescribeJobQueuesInput, opts ...request.Option) (*batch.DescribeJobQueuesOutput, error)
+	DescribeJobQueuesPagesWithContext(ctx context.Context, input *batch.DescribeJobQueuesInput, cb func(*batch.DescribeJobQueuesOutput, bool) bool, opts ...request.Option) error
 	DescribeJobsWithContext(ctx context.Context, input *batch.DescribeJobsInput, opts ...request.Option) (*batch.DescribeJobsOutput, error)
 	ListJobsWithContext(ctx context.Context, input *batch.ListJobsInput, opts ...request.Option) (*batch.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *batch.ListJobsInput, cb func(*batch.ListJobsOutput, bool) bool, opts ...request.Option) error
 	RegisterJobDefinitionWithContext(ctx context.Context, input *batch.RegisterJobDefinitionInput, opts ...request.Option) (*batch.RegisterJobDefinitionOutput, error)
 	SubmitJobWithContext(ctx context.Context, input *batch.SubmitJobInput, opts ...request.Option) (*batch.SubmitJobOutput, error)
 	TerminateJobWithContext(ctx context.Context, input *batch.TerminateJobInput, opts ...request.Option) (*batch.TerminateJobOutput, error)
@@ -191,6 +195,26 @@ func (c *Client) DescribeComputeEnvironmentsWithContext(ctx context.Context, inp
 	return req.Output.(*batch.DescribeComputeEnvironmentsOutput), req.Error
 }
 
+func (c *Client) DescribeComputeEnvironmentsPagesWithContext(ctx context.Context, input *batch.DescribeComputeEnvironmentsInput, cb func(*batch.DescribeComputeEnvironmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "DescribeComputeEnvironments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BatchAPI.DescribeComputeEnvironmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeJobDefinitionsWithContext(ctx context.Context, input *batch.DescribeJobDefinitionsInput, opts ...request.Option) (*batch.DescribeJobDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
@@ -212,6 +236,26 @@ func (c *Client) DescribeJobDefinitionsWithContext(ctx context.Context, input *b
 	return req.Output.(*batch.DescribeJobDefinitionsOutput), req.Error
 }
 
+func (c *Client) DescribeJobDefinitionsPagesWithContext(ctx context.Context, input *batch.DescribeJobDefinitionsInput, cb func(*batch.DescribeJobDefinitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "DescribeJobDefinitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BatchAPI.DescribeJobDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeJobQueuesWithContext(ctx context.Context, input *batch.DescribeJobQueuesInput, opts ...request.Option) (*batch.DescribeJobQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
@@ -231,6 +275,26 @@ func (c *Client) DescribeJobQueuesWithContext(ctx context.Context, input *batch.
 	})
 
 	return req.Output.(*batch.DescribeJobQueuesOutput), req.Error
+}
+
+func (c *Client) DescribeJobQueuesPagesWithContext(ctx context.Context, input *batch.DescribeJobQueuesInput, cb func(*batch.DescribeJobQueuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "DescribeJobQueues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BatchAPI.DescribeJobQueuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeJobsWithContext(ctx context.Context, input *batch.DescribeJobsInput, opts ...request.Option) (*batch.DescribeJobsOutput, error) {
@@ -273,6 +337,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *batch.ListJobsI
 	})
 
 	return req.Output.(*batch.ListJobsOutput), req.Error
+}
+
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *batch.ListJobsInput, cb func(*batch.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BatchAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RegisterJobDefinitionWithContext(ctx context.Context, input *batch.RegisterJobDefinitionInput, opts ...request.Option) (*batch.RegisterJobDefinitionOutput, error) {

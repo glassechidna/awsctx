@@ -12,8 +12,11 @@ import (
 
 type Pricing interface {
 	DescribeServicesWithContext(ctx context.Context, input *pricing.DescribeServicesInput, opts ...request.Option) (*pricing.DescribeServicesOutput, error)
+	DescribeServicesPagesWithContext(ctx context.Context, input *pricing.DescribeServicesInput, cb func(*pricing.DescribeServicesOutput, bool) bool, opts ...request.Option) error
 	GetAttributeValuesWithContext(ctx context.Context, input *pricing.GetAttributeValuesInput, opts ...request.Option) (*pricing.GetAttributeValuesOutput, error)
+	GetAttributeValuesPagesWithContext(ctx context.Context, input *pricing.GetAttributeValuesInput, cb func(*pricing.GetAttributeValuesOutput, bool) bool, opts ...request.Option) error
 	GetProductsWithContext(ctx context.Context, input *pricing.GetProductsInput, opts ...request.Option) (*pricing.GetProductsOutput, error)
+	GetProductsPagesWithContext(ctx context.Context, input *pricing.GetProductsInput, cb func(*pricing.GetProductsOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -52,6 +55,26 @@ func (c *Client) DescribeServicesWithContext(ctx context.Context, input *pricing
 	return req.Output.(*pricing.DescribeServicesOutput), req.Error
 }
 
+func (c *Client) DescribeServicesPagesWithContext(ctx context.Context, input *pricing.DescribeServicesInput, cb func(*pricing.DescribeServicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pricing",
+		Action:  "DescribeServices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PricingAPI.DescribeServicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetAttributeValuesWithContext(ctx context.Context, input *pricing.GetAttributeValuesInput, opts ...request.Option) (*pricing.GetAttributeValuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pricing",
@@ -73,6 +96,26 @@ func (c *Client) GetAttributeValuesWithContext(ctx context.Context, input *prici
 	return req.Output.(*pricing.GetAttributeValuesOutput), req.Error
 }
 
+func (c *Client) GetAttributeValuesPagesWithContext(ctx context.Context, input *pricing.GetAttributeValuesInput, cb func(*pricing.GetAttributeValuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pricing",
+		Action:  "GetAttributeValues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PricingAPI.GetAttributeValuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetProductsWithContext(ctx context.Context, input *pricing.GetProductsInput, opts ...request.Option) (*pricing.GetProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pricing",
@@ -92,4 +135,24 @@ func (c *Client) GetProductsWithContext(ctx context.Context, input *pricing.GetP
 	})
 
 	return req.Output.(*pricing.GetProductsOutput), req.Error
+}
+
+func (c *Client) GetProductsPagesWithContext(ctx context.Context, input *pricing.GetProductsInput, cb func(*pricing.GetProductsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pricing",
+		Action:  "GetProducts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PricingAPI.GetProductsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }

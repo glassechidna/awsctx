@@ -20,9 +20,11 @@ type ApplicationDiscoveryService interface {
 	DescribeAgentsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeAgentsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeAgentsOutput, error)
 	DescribeConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeConfigurationsOutput, error)
 	DescribeContinuousExportsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeContinuousExportsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeContinuousExportsOutput, error)
+	DescribeContinuousExportsPagesWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeContinuousExportsInput, cb func(*applicationdiscoveryservice.DescribeContinuousExportsOutput, bool) bool, opts ...request.Option) error
 	DescribeExportConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeExportConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeExportConfigurationsOutput, error)
 	DescribeExportTasksWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeExportTasksInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeExportTasksOutput, error)
 	DescribeImportTasksWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeImportTasksInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeImportTasksOutput, error)
+	DescribeImportTasksPagesWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeImportTasksInput, cb func(*applicationdiscoveryservice.DescribeImportTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeTagsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeTagsOutput, error)
 	DisassociateConfigurationItemsFromApplicationWithContext(ctx context.Context, input *applicationdiscoveryservice.DisassociateConfigurationItemsFromApplicationInput, opts ...request.Option) (*applicationdiscoveryservice.DisassociateConfigurationItemsFromApplicationOutput, error)
 	ExportConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.ExportConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.ExportConfigurationsOutput, error)
@@ -242,6 +244,26 @@ func (c *Client) DescribeContinuousExportsWithContext(ctx context.Context, input
 	return req.Output.(*applicationdiscoveryservice.DescribeContinuousExportsOutput), req.Error
 }
 
+func (c *Client) DescribeContinuousExportsPagesWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeContinuousExportsInput, cb func(*applicationdiscoveryservice.DescribeContinuousExportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationdiscoveryservice",
+		Action:  "DescribeContinuousExports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationDiscoveryServiceAPI.DescribeContinuousExportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeExportConfigurationsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeExportConfigurationsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeExportConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationdiscoveryservice",
@@ -303,6 +325,26 @@ func (c *Client) DescribeImportTasksWithContext(ctx context.Context, input *appl
 	})
 
 	return req.Output.(*applicationdiscoveryservice.DescribeImportTasksOutput), req.Error
+}
+
+func (c *Client) DescribeImportTasksPagesWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeImportTasksInput, cb func(*applicationdiscoveryservice.DescribeImportTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationdiscoveryservice",
+		Action:  "DescribeImportTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationDiscoveryServiceAPI.DescribeImportTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *applicationdiscoveryservice.DescribeTagsInput, opts ...request.Option) (*applicationdiscoveryservice.DescribeTagsOutput, error) {

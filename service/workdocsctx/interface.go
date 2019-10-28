@@ -32,12 +32,15 @@ type WorkDocs interface {
 	DescribeActivitiesWithContext(ctx context.Context, input *workdocs.DescribeActivitiesInput, opts ...request.Option) (*workdocs.DescribeActivitiesOutput, error)
 	DescribeCommentsWithContext(ctx context.Context, input *workdocs.DescribeCommentsInput, opts ...request.Option) (*workdocs.DescribeCommentsOutput, error)
 	DescribeDocumentVersionsWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, opts ...request.Option) (*workdocs.DescribeDocumentVersionsOutput, error)
+	DescribeDocumentVersionsPagesWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, cb func(*workdocs.DescribeDocumentVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeFolderContentsWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, opts ...request.Option) (*workdocs.DescribeFolderContentsOutput, error)
+	DescribeFolderContentsPagesWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, cb func(*workdocs.DescribeFolderContentsOutput, bool) bool, opts ...request.Option) error
 	DescribeGroupsWithContext(ctx context.Context, input *workdocs.DescribeGroupsInput, opts ...request.Option) (*workdocs.DescribeGroupsOutput, error)
 	DescribeNotificationSubscriptionsWithContext(ctx context.Context, input *workdocs.DescribeNotificationSubscriptionsInput, opts ...request.Option) (*workdocs.DescribeNotificationSubscriptionsOutput, error)
 	DescribeResourcePermissionsWithContext(ctx context.Context, input *workdocs.DescribeResourcePermissionsInput, opts ...request.Option) (*workdocs.DescribeResourcePermissionsOutput, error)
 	DescribeRootFoldersWithContext(ctx context.Context, input *workdocs.DescribeRootFoldersInput, opts ...request.Option) (*workdocs.DescribeRootFoldersOutput, error)
 	DescribeUsersWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, opts ...request.Option) (*workdocs.DescribeUsersOutput, error)
+	DescribeUsersPagesWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, cb func(*workdocs.DescribeUsersOutput, bool) bool, opts ...request.Option) error
 	GetCurrentUserWithContext(ctx context.Context, input *workdocs.GetCurrentUserInput, opts ...request.Option) (*workdocs.GetCurrentUserOutput, error)
 	GetDocumentWithContext(ctx context.Context, input *workdocs.GetDocumentInput, opts ...request.Option) (*workdocs.GetDocumentOutput, error)
 	GetDocumentPathWithContext(ctx context.Context, input *workdocs.GetDocumentPathInput, opts ...request.Option) (*workdocs.GetDocumentPathOutput, error)
@@ -510,6 +513,26 @@ func (c *Client) DescribeDocumentVersionsWithContext(ctx context.Context, input 
 	return req.Output.(*workdocs.DescribeDocumentVersionsOutput), req.Error
 }
 
+func (c *Client) DescribeDocumentVersionsPagesWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, cb func(*workdocs.DescribeDocumentVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeDocumentVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeDocumentVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeFolderContentsWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, opts ...request.Option) (*workdocs.DescribeFolderContentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
@@ -529,6 +552,26 @@ func (c *Client) DescribeFolderContentsWithContext(ctx context.Context, input *w
 	})
 
 	return req.Output.(*workdocs.DescribeFolderContentsOutput), req.Error
+}
+
+func (c *Client) DescribeFolderContentsPagesWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, cb func(*workdocs.DescribeFolderContentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeFolderContents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeFolderContentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeGroupsWithContext(ctx context.Context, input *workdocs.DescribeGroupsInput, opts ...request.Option) (*workdocs.DescribeGroupsOutput, error) {
@@ -634,6 +677,26 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, input *workdocs.D
 	})
 
 	return req.Output.(*workdocs.DescribeUsersOutput), req.Error
+}
+
+func (c *Client) DescribeUsersPagesWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, cb func(*workdocs.DescribeUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCurrentUserWithContext(ctx context.Context, input *workdocs.GetCurrentUserInput, opts ...request.Option) (*workdocs.GetCurrentUserOutput, error) {

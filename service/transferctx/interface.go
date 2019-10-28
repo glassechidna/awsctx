@@ -20,8 +20,11 @@ type Transfer interface {
 	DescribeUserWithContext(ctx context.Context, input *transfer.DescribeUserInput, opts ...request.Option) (*transfer.DescribeUserOutput, error)
 	ImportSshPublicKeyWithContext(ctx context.Context, input *transfer.ImportSshPublicKeyInput, opts ...request.Option) (*transfer.ImportSshPublicKeyOutput, error)
 	ListServersWithContext(ctx context.Context, input *transfer.ListServersInput, opts ...request.Option) (*transfer.ListServersOutput, error)
+	ListServersPagesWithContext(ctx context.Context, input *transfer.ListServersInput, cb func(*transfer.ListServersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *transfer.ListTagsForResourceInput, opts ...request.Option) (*transfer.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *transfer.ListTagsForResourceInput, cb func(*transfer.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *transfer.ListUsersInput, opts ...request.Option) (*transfer.ListUsersOutput, error)
+	ListUsersPagesWithContext(ctx context.Context, input *transfer.ListUsersInput, cb func(*transfer.ListUsersOutput, bool) bool, opts ...request.Option) error
 	StartServerWithContext(ctx context.Context, input *transfer.StartServerInput, opts ...request.Option) (*transfer.StartServerOutput, error)
 	StopServerWithContext(ctx context.Context, input *transfer.StopServerInput, opts ...request.Option) (*transfer.StopServerOutput, error)
 	TagResourceWithContext(ctx context.Context, input *transfer.TagResourceInput, opts ...request.Option) (*transfer.TagResourceOutput, error)
@@ -235,6 +238,26 @@ func (c *Client) ListServersWithContext(ctx context.Context, input *transfer.Lis
 	return req.Output.(*transfer.ListServersOutput), req.Error
 }
 
+func (c *Client) ListServersPagesWithContext(ctx context.Context, input *transfer.ListServersInput, cb func(*transfer.ListServersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListServers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TransferAPI.ListServersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *transfer.ListTagsForResourceInput, opts ...request.Option) (*transfer.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
@@ -256,6 +279,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *tran
 	return req.Output.(*transfer.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *transfer.ListTagsForResourceInput, cb func(*transfer.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TransferAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUsersWithContext(ctx context.Context, input *transfer.ListUsersInput, opts ...request.Option) (*transfer.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
@@ -275,6 +318,26 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *transfer.ListU
 	})
 
 	return req.Output.(*transfer.ListUsersOutput), req.Error
+}
+
+func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *transfer.ListUsersInput, cb func(*transfer.ListUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TransferAPI.ListUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) StartServerWithContext(ctx context.Context, input *transfer.StartServerInput, opts ...request.Option) (*transfer.StartServerOutput, error) {

@@ -20,8 +20,11 @@ type MediaPackage interface {
 	DescribeHarvestJobWithContext(ctx context.Context, input *mediapackage.DescribeHarvestJobInput, opts ...request.Option) (*mediapackage.DescribeHarvestJobOutput, error)
 	DescribeOriginEndpointWithContext(ctx context.Context, input *mediapackage.DescribeOriginEndpointInput, opts ...request.Option) (*mediapackage.DescribeOriginEndpointOutput, error)
 	ListChannelsWithContext(ctx context.Context, input *mediapackage.ListChannelsInput, opts ...request.Option) (*mediapackage.ListChannelsOutput, error)
+	ListChannelsPagesWithContext(ctx context.Context, input *mediapackage.ListChannelsInput, cb func(*mediapackage.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListHarvestJobsWithContext(ctx context.Context, input *mediapackage.ListHarvestJobsInput, opts ...request.Option) (*mediapackage.ListHarvestJobsOutput, error)
+	ListHarvestJobsPagesWithContext(ctx context.Context, input *mediapackage.ListHarvestJobsInput, cb func(*mediapackage.ListHarvestJobsOutput, bool) bool, opts ...request.Option) error
 	ListOriginEndpointsWithContext(ctx context.Context, input *mediapackage.ListOriginEndpointsInput, opts ...request.Option) (*mediapackage.ListOriginEndpointsOutput, error)
+	ListOriginEndpointsPagesWithContext(ctx context.Context, input *mediapackage.ListOriginEndpointsInput, cb func(*mediapackage.ListOriginEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediapackage.ListTagsForResourceInput, opts ...request.Option) (*mediapackage.ListTagsForResourceOutput, error)
 	RotateChannelCredentialsWithContext(ctx context.Context, input *mediapackage.RotateChannelCredentialsInput, opts ...request.Option) (*mediapackage.RotateChannelCredentialsOutput, error)
 	RotateIngestEndpointCredentialsWithContext(ctx context.Context, input *mediapackage.RotateIngestEndpointCredentialsInput, opts ...request.Option) (*mediapackage.RotateIngestEndpointCredentialsOutput, error)
@@ -235,6 +238,26 @@ func (c *Client) ListChannelsWithContext(ctx context.Context, input *mediapackag
 	return req.Output.(*mediapackage.ListChannelsOutput), req.Error
 }
 
+func (c *Client) ListChannelsPagesWithContext(ctx context.Context, input *mediapackage.ListChannelsInput, cb func(*mediapackage.ListChannelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "ListChannels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaPackageAPI.ListChannelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListHarvestJobsWithContext(ctx context.Context, input *mediapackage.ListHarvestJobsInput, opts ...request.Option) (*mediapackage.ListHarvestJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackage",
@@ -256,6 +279,26 @@ func (c *Client) ListHarvestJobsWithContext(ctx context.Context, input *mediapac
 	return req.Output.(*mediapackage.ListHarvestJobsOutput), req.Error
 }
 
+func (c *Client) ListHarvestJobsPagesWithContext(ctx context.Context, input *mediapackage.ListHarvestJobsInput, cb func(*mediapackage.ListHarvestJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "ListHarvestJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaPackageAPI.ListHarvestJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOriginEndpointsWithContext(ctx context.Context, input *mediapackage.ListOriginEndpointsInput, opts ...request.Option) (*mediapackage.ListOriginEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediapackage",
@@ -275,6 +318,26 @@ func (c *Client) ListOriginEndpointsWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*mediapackage.ListOriginEndpointsOutput), req.Error
+}
+
+func (c *Client) ListOriginEndpointsPagesWithContext(ctx context.Context, input *mediapackage.ListOriginEndpointsInput, cb func(*mediapackage.ListOriginEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "ListOriginEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaPackageAPI.ListOriginEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediapackage.ListTagsForResourceInput, opts ...request.Option) (*mediapackage.ListTagsForResourceOutput, error) {

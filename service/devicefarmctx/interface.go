@@ -35,6 +35,7 @@ type DeviceFarm interface {
 	GetJobWithContext(ctx context.Context, input *devicefarm.GetJobInput, opts ...request.Option) (*devicefarm.GetJobOutput, error)
 	GetNetworkProfileWithContext(ctx context.Context, input *devicefarm.GetNetworkProfileInput, opts ...request.Option) (*devicefarm.GetNetworkProfileOutput, error)
 	GetOfferingStatusWithContext(ctx context.Context, input *devicefarm.GetOfferingStatusInput, opts ...request.Option) (*devicefarm.GetOfferingStatusOutput, error)
+	GetOfferingStatusPagesWithContext(ctx context.Context, input *devicefarm.GetOfferingStatusInput, cb func(*devicefarm.GetOfferingStatusOutput, bool) bool, opts ...request.Option) error
 	GetProjectWithContext(ctx context.Context, input *devicefarm.GetProjectInput, opts ...request.Option) (*devicefarm.GetProjectOutput, error)
 	GetRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.GetRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.GetRemoteAccessSessionOutput, error)
 	GetRunWithContext(ctx context.Context, input *devicefarm.GetRunInput, opts ...request.Option) (*devicefarm.GetRunOutput, error)
@@ -44,24 +45,37 @@ type DeviceFarm interface {
 	GetVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.GetVPCEConfigurationInput, opts ...request.Option) (*devicefarm.GetVPCEConfigurationOutput, error)
 	InstallToRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.InstallToRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.InstallToRemoteAccessSessionOutput, error)
 	ListArtifactsWithContext(ctx context.Context, input *devicefarm.ListArtifactsInput, opts ...request.Option) (*devicefarm.ListArtifactsOutput, error)
+	ListArtifactsPagesWithContext(ctx context.Context, input *devicefarm.ListArtifactsInput, cb func(*devicefarm.ListArtifactsOutput, bool) bool, opts ...request.Option) error
 	ListDeviceInstancesWithContext(ctx context.Context, input *devicefarm.ListDeviceInstancesInput, opts ...request.Option) (*devicefarm.ListDeviceInstancesOutput, error)
 	ListDevicePoolsWithContext(ctx context.Context, input *devicefarm.ListDevicePoolsInput, opts ...request.Option) (*devicefarm.ListDevicePoolsOutput, error)
+	ListDevicePoolsPagesWithContext(ctx context.Context, input *devicefarm.ListDevicePoolsInput, cb func(*devicefarm.ListDevicePoolsOutput, bool) bool, opts ...request.Option) error
 	ListDevicesWithContext(ctx context.Context, input *devicefarm.ListDevicesInput, opts ...request.Option) (*devicefarm.ListDevicesOutput, error)
+	ListDevicesPagesWithContext(ctx context.Context, input *devicefarm.ListDevicesInput, cb func(*devicefarm.ListDevicesOutput, bool) bool, opts ...request.Option) error
 	ListInstanceProfilesWithContext(ctx context.Context, input *devicefarm.ListInstanceProfilesInput, opts ...request.Option) (*devicefarm.ListInstanceProfilesOutput, error)
 	ListJobsWithContext(ctx context.Context, input *devicefarm.ListJobsInput, opts ...request.Option) (*devicefarm.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *devicefarm.ListJobsInput, cb func(*devicefarm.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListNetworkProfilesWithContext(ctx context.Context, input *devicefarm.ListNetworkProfilesInput, opts ...request.Option) (*devicefarm.ListNetworkProfilesOutput, error)
 	ListOfferingPromotionsWithContext(ctx context.Context, input *devicefarm.ListOfferingPromotionsInput, opts ...request.Option) (*devicefarm.ListOfferingPromotionsOutput, error)
 	ListOfferingTransactionsWithContext(ctx context.Context, input *devicefarm.ListOfferingTransactionsInput, opts ...request.Option) (*devicefarm.ListOfferingTransactionsOutput, error)
+	ListOfferingTransactionsPagesWithContext(ctx context.Context, input *devicefarm.ListOfferingTransactionsInput, cb func(*devicefarm.ListOfferingTransactionsOutput, bool) bool, opts ...request.Option) error
 	ListOfferingsWithContext(ctx context.Context, input *devicefarm.ListOfferingsInput, opts ...request.Option) (*devicefarm.ListOfferingsOutput, error)
+	ListOfferingsPagesWithContext(ctx context.Context, input *devicefarm.ListOfferingsInput, cb func(*devicefarm.ListOfferingsOutput, bool) bool, opts ...request.Option) error
 	ListProjectsWithContext(ctx context.Context, input *devicefarm.ListProjectsInput, opts ...request.Option) (*devicefarm.ListProjectsOutput, error)
+	ListProjectsPagesWithContext(ctx context.Context, input *devicefarm.ListProjectsInput, cb func(*devicefarm.ListProjectsOutput, bool) bool, opts ...request.Option) error
 	ListRemoteAccessSessionsWithContext(ctx context.Context, input *devicefarm.ListRemoteAccessSessionsInput, opts ...request.Option) (*devicefarm.ListRemoteAccessSessionsOutput, error)
 	ListRunsWithContext(ctx context.Context, input *devicefarm.ListRunsInput, opts ...request.Option) (*devicefarm.ListRunsOutput, error)
+	ListRunsPagesWithContext(ctx context.Context, input *devicefarm.ListRunsInput, cb func(*devicefarm.ListRunsOutput, bool) bool, opts ...request.Option) error
 	ListSamplesWithContext(ctx context.Context, input *devicefarm.ListSamplesInput, opts ...request.Option) (*devicefarm.ListSamplesOutput, error)
+	ListSamplesPagesWithContext(ctx context.Context, input *devicefarm.ListSamplesInput, cb func(*devicefarm.ListSamplesOutput, bool) bool, opts ...request.Option) error
 	ListSuitesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, opts ...request.Option) (*devicefarm.ListSuitesOutput, error)
+	ListSuitesPagesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, cb func(*devicefarm.ListSuitesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *devicefarm.ListTagsForResourceInput, opts ...request.Option) (*devicefarm.ListTagsForResourceOutput, error)
 	ListTestsWithContext(ctx context.Context, input *devicefarm.ListTestsInput, opts ...request.Option) (*devicefarm.ListTestsOutput, error)
+	ListTestsPagesWithContext(ctx context.Context, input *devicefarm.ListTestsInput, cb func(*devicefarm.ListTestsOutput, bool) bool, opts ...request.Option) error
 	ListUniqueProblemsWithContext(ctx context.Context, input *devicefarm.ListUniqueProblemsInput, opts ...request.Option) (*devicefarm.ListUniqueProblemsOutput, error)
+	ListUniqueProblemsPagesWithContext(ctx context.Context, input *devicefarm.ListUniqueProblemsInput, cb func(*devicefarm.ListUniqueProblemsOutput, bool) bool, opts ...request.Option) error
 	ListUploadsWithContext(ctx context.Context, input *devicefarm.ListUploadsInput, opts ...request.Option) (*devicefarm.ListUploadsOutput, error)
+	ListUploadsPagesWithContext(ctx context.Context, input *devicefarm.ListUploadsInput, cb func(*devicefarm.ListUploadsOutput, bool) bool, opts ...request.Option) error
 	ListVPCEConfigurationsWithContext(ctx context.Context, input *devicefarm.ListVPCEConfigurationsInput, opts ...request.Option) (*devicefarm.ListVPCEConfigurationsOutput, error)
 	PurchaseOfferingWithContext(ctx context.Context, input *devicefarm.PurchaseOfferingInput, opts ...request.Option) (*devicefarm.PurchaseOfferingOutput, error)
 	RenewOfferingWithContext(ctx context.Context, input *devicefarm.RenewOfferingInput, opts ...request.Option) (*devicefarm.RenewOfferingOutput, error)
@@ -599,6 +613,26 @@ func (c *Client) GetOfferingStatusWithContext(ctx context.Context, input *device
 	return req.Output.(*devicefarm.GetOfferingStatusOutput), req.Error
 }
 
+func (c *Client) GetOfferingStatusPagesWithContext(ctx context.Context, input *devicefarm.GetOfferingStatusInput, cb func(*devicefarm.GetOfferingStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "GetOfferingStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.GetOfferingStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetProjectWithContext(ctx context.Context, input *devicefarm.GetProjectInput, opts ...request.Option) (*devicefarm.GetProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -788,6 +822,26 @@ func (c *Client) ListArtifactsWithContext(ctx context.Context, input *devicefarm
 	return req.Output.(*devicefarm.ListArtifactsOutput), req.Error
 }
 
+func (c *Client) ListArtifactsPagesWithContext(ctx context.Context, input *devicefarm.ListArtifactsInput, cb func(*devicefarm.ListArtifactsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListArtifacts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListArtifactsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDeviceInstancesWithContext(ctx context.Context, input *devicefarm.ListDeviceInstancesInput, opts ...request.Option) (*devicefarm.ListDeviceInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -830,6 +884,26 @@ func (c *Client) ListDevicePoolsWithContext(ctx context.Context, input *devicefa
 	return req.Output.(*devicefarm.ListDevicePoolsOutput), req.Error
 }
 
+func (c *Client) ListDevicePoolsPagesWithContext(ctx context.Context, input *devicefarm.ListDevicePoolsInput, cb func(*devicefarm.ListDevicePoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListDevicePools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListDevicePoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDevicesWithContext(ctx context.Context, input *devicefarm.ListDevicesInput, opts ...request.Option) (*devicefarm.ListDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -849,6 +923,26 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, input *devicefarm.L
 	})
 
 	return req.Output.(*devicefarm.ListDevicesOutput), req.Error
+}
+
+func (c *Client) ListDevicesPagesWithContext(ctx context.Context, input *devicefarm.ListDevicesInput, cb func(*devicefarm.ListDevicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListDevices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListDevicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *devicefarm.ListInstanceProfilesInput, opts ...request.Option) (*devicefarm.ListInstanceProfilesOutput, error) {
@@ -891,6 +985,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *devicefarm.List
 	})
 
 	return req.Output.(*devicefarm.ListJobsOutput), req.Error
+}
+
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *devicefarm.ListJobsInput, cb func(*devicefarm.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListNetworkProfilesWithContext(ctx context.Context, input *devicefarm.ListNetworkProfilesInput, opts ...request.Option) (*devicefarm.ListNetworkProfilesOutput, error) {
@@ -956,6 +1070,26 @@ func (c *Client) ListOfferingTransactionsWithContext(ctx context.Context, input 
 	return req.Output.(*devicefarm.ListOfferingTransactionsOutput), req.Error
 }
 
+func (c *Client) ListOfferingTransactionsPagesWithContext(ctx context.Context, input *devicefarm.ListOfferingTransactionsInput, cb func(*devicefarm.ListOfferingTransactionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListOfferingTransactions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListOfferingTransactionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOfferingsWithContext(ctx context.Context, input *devicefarm.ListOfferingsInput, opts ...request.Option) (*devicefarm.ListOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -977,6 +1111,26 @@ func (c *Client) ListOfferingsWithContext(ctx context.Context, input *devicefarm
 	return req.Output.(*devicefarm.ListOfferingsOutput), req.Error
 }
 
+func (c *Client) ListOfferingsPagesWithContext(ctx context.Context, input *devicefarm.ListOfferingsInput, cb func(*devicefarm.ListOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProjectsWithContext(ctx context.Context, input *devicefarm.ListProjectsInput, opts ...request.Option) (*devicefarm.ListProjectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -996,6 +1150,26 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *devicefarm.
 	})
 
 	return req.Output.(*devicefarm.ListProjectsOutput), req.Error
+}
+
+func (c *Client) ListProjectsPagesWithContext(ctx context.Context, input *devicefarm.ListProjectsInput, cb func(*devicefarm.ListProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRemoteAccessSessionsWithContext(ctx context.Context, input *devicefarm.ListRemoteAccessSessionsInput, opts ...request.Option) (*devicefarm.ListRemoteAccessSessionsOutput, error) {
@@ -1040,6 +1214,26 @@ func (c *Client) ListRunsWithContext(ctx context.Context, input *devicefarm.List
 	return req.Output.(*devicefarm.ListRunsOutput), req.Error
 }
 
+func (c *Client) ListRunsPagesWithContext(ctx context.Context, input *devicefarm.ListRunsInput, cb func(*devicefarm.ListRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSamplesWithContext(ctx context.Context, input *devicefarm.ListSamplesInput, opts ...request.Option) (*devicefarm.ListSamplesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -1061,6 +1255,26 @@ func (c *Client) ListSamplesWithContext(ctx context.Context, input *devicefarm.L
 	return req.Output.(*devicefarm.ListSamplesOutput), req.Error
 }
 
+func (c *Client) ListSamplesPagesWithContext(ctx context.Context, input *devicefarm.ListSamplesInput, cb func(*devicefarm.ListSamplesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListSamples",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListSamplesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSuitesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, opts ...request.Option) (*devicefarm.ListSuitesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -1080,6 +1294,26 @@ func (c *Client) ListSuitesWithContext(ctx context.Context, input *devicefarm.Li
 	})
 
 	return req.Output.(*devicefarm.ListSuitesOutput), req.Error
+}
+
+func (c *Client) ListSuitesPagesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, cb func(*devicefarm.ListSuitesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListSuites",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListSuitesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *devicefarm.ListTagsForResourceInput, opts ...request.Option) (*devicefarm.ListTagsForResourceOutput, error) {
@@ -1124,6 +1358,26 @@ func (c *Client) ListTestsWithContext(ctx context.Context, input *devicefarm.Lis
 	return req.Output.(*devicefarm.ListTestsOutput), req.Error
 }
 
+func (c *Client) ListTestsPagesWithContext(ctx context.Context, input *devicefarm.ListTestsInput, cb func(*devicefarm.ListTestsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTests",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListTestsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUniqueProblemsWithContext(ctx context.Context, input *devicefarm.ListUniqueProblemsInput, opts ...request.Option) (*devicefarm.ListUniqueProblemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -1145,6 +1399,26 @@ func (c *Client) ListUniqueProblemsWithContext(ctx context.Context, input *devic
 	return req.Output.(*devicefarm.ListUniqueProblemsOutput), req.Error
 }
 
+func (c *Client) ListUniqueProblemsPagesWithContext(ctx context.Context, input *devicefarm.ListUniqueProblemsInput, cb func(*devicefarm.ListUniqueProblemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListUniqueProblems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListUniqueProblemsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUploadsWithContext(ctx context.Context, input *devicefarm.ListUploadsInput, opts ...request.Option) (*devicefarm.ListUploadsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -1164,6 +1438,26 @@ func (c *Client) ListUploadsWithContext(ctx context.Context, input *devicefarm.L
 	})
 
 	return req.Output.(*devicefarm.ListUploadsOutput), req.Error
+}
+
+func (c *Client) ListUploadsPagesWithContext(ctx context.Context, input *devicefarm.ListUploadsInput, cb func(*devicefarm.ListUploadsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListUploads",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListUploadsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListVPCEConfigurationsWithContext(ctx context.Context, input *devicefarm.ListVPCEConfigurationsInput, opts ...request.Option) (*devicefarm.ListVPCEConfigurationsOutput, error) {

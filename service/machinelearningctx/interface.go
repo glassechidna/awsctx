@@ -26,9 +26,13 @@ type MachineLearning interface {
 	DeleteRealtimeEndpointWithContext(ctx context.Context, input *machinelearning.DeleteRealtimeEndpointInput, opts ...request.Option) (*machinelearning.DeleteRealtimeEndpointOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *machinelearning.DeleteTagsInput, opts ...request.Option) (*machinelearning.DeleteTagsOutput, error)
 	DescribeBatchPredictionsWithContext(ctx context.Context, input *machinelearning.DescribeBatchPredictionsInput, opts ...request.Option) (*machinelearning.DescribeBatchPredictionsOutput, error)
+	DescribeBatchPredictionsPagesWithContext(ctx context.Context, input *machinelearning.DescribeBatchPredictionsInput, cb func(*machinelearning.DescribeBatchPredictionsOutput, bool) bool, opts ...request.Option) error
 	DescribeDataSourcesWithContext(ctx context.Context, input *machinelearning.DescribeDataSourcesInput, opts ...request.Option) (*machinelearning.DescribeDataSourcesOutput, error)
+	DescribeDataSourcesPagesWithContext(ctx context.Context, input *machinelearning.DescribeDataSourcesInput, cb func(*machinelearning.DescribeDataSourcesOutput, bool) bool, opts ...request.Option) error
 	DescribeEvaluationsWithContext(ctx context.Context, input *machinelearning.DescribeEvaluationsInput, opts ...request.Option) (*machinelearning.DescribeEvaluationsOutput, error)
+	DescribeEvaluationsPagesWithContext(ctx context.Context, input *machinelearning.DescribeEvaluationsInput, cb func(*machinelearning.DescribeEvaluationsOutput, bool) bool, opts ...request.Option) error
 	DescribeMLModelsWithContext(ctx context.Context, input *machinelearning.DescribeMLModelsInput, opts ...request.Option) (*machinelearning.DescribeMLModelsOutput, error)
+	DescribeMLModelsPagesWithContext(ctx context.Context, input *machinelearning.DescribeMLModelsInput, cb func(*machinelearning.DescribeMLModelsOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *machinelearning.DescribeTagsInput, opts ...request.Option) (*machinelearning.DescribeTagsOutput, error)
 	GetBatchPredictionWithContext(ctx context.Context, input *machinelearning.GetBatchPredictionInput, opts ...request.Option) (*machinelearning.GetBatchPredictionOutput, error)
 	GetDataSourceWithContext(ctx context.Context, input *machinelearning.GetDataSourceInput, opts ...request.Option) (*machinelearning.GetDataSourceOutput, error)
@@ -371,6 +375,26 @@ func (c *Client) DescribeBatchPredictionsWithContext(ctx context.Context, input 
 	return req.Output.(*machinelearning.DescribeBatchPredictionsOutput), req.Error
 }
 
+func (c *Client) DescribeBatchPredictionsPagesWithContext(ctx context.Context, input *machinelearning.DescribeBatchPredictionsInput, cb func(*machinelearning.DescribeBatchPredictionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "machinelearning",
+		Action:  "DescribeBatchPredictions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MachineLearningAPI.DescribeBatchPredictionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDataSourcesWithContext(ctx context.Context, input *machinelearning.DescribeDataSourcesInput, opts ...request.Option) (*machinelearning.DescribeDataSourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
@@ -390,6 +414,26 @@ func (c *Client) DescribeDataSourcesWithContext(ctx context.Context, input *mach
 	})
 
 	return req.Output.(*machinelearning.DescribeDataSourcesOutput), req.Error
+}
+
+func (c *Client) DescribeDataSourcesPagesWithContext(ctx context.Context, input *machinelearning.DescribeDataSourcesInput, cb func(*machinelearning.DescribeDataSourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "machinelearning",
+		Action:  "DescribeDataSources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MachineLearningAPI.DescribeDataSourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeEvaluationsWithContext(ctx context.Context, input *machinelearning.DescribeEvaluationsInput, opts ...request.Option) (*machinelearning.DescribeEvaluationsOutput, error) {
@@ -413,6 +457,26 @@ func (c *Client) DescribeEvaluationsWithContext(ctx context.Context, input *mach
 	return req.Output.(*machinelearning.DescribeEvaluationsOutput), req.Error
 }
 
+func (c *Client) DescribeEvaluationsPagesWithContext(ctx context.Context, input *machinelearning.DescribeEvaluationsInput, cb func(*machinelearning.DescribeEvaluationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "machinelearning",
+		Action:  "DescribeEvaluations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MachineLearningAPI.DescribeEvaluationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeMLModelsWithContext(ctx context.Context, input *machinelearning.DescribeMLModelsInput, opts ...request.Option) (*machinelearning.DescribeMLModelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "machinelearning",
@@ -432,6 +496,26 @@ func (c *Client) DescribeMLModelsWithContext(ctx context.Context, input *machine
 	})
 
 	return req.Output.(*machinelearning.DescribeMLModelsOutput), req.Error
+}
+
+func (c *Client) DescribeMLModelsPagesWithContext(ctx context.Context, input *machinelearning.DescribeMLModelsInput, cb func(*machinelearning.DescribeMLModelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "machinelearning",
+		Action:  "DescribeMLModels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MachineLearningAPI.DescribeMLModelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *machinelearning.DescribeTagsInput, opts ...request.Option) (*machinelearning.DescribeTagsOutput, error) {

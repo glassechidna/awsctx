@@ -30,6 +30,7 @@ type ELB interface {
 	DescribeLoadBalancerPoliciesWithContext(ctx context.Context, input *elb.DescribeLoadBalancerPoliciesInput, opts ...request.Option) (*elb.DescribeLoadBalancerPoliciesOutput, error)
 	DescribeLoadBalancerPolicyTypesWithContext(ctx context.Context, input *elb.DescribeLoadBalancerPolicyTypesInput, opts ...request.Option) (*elb.DescribeLoadBalancerPolicyTypesOutput, error)
 	DescribeLoadBalancersWithContext(ctx context.Context, input *elb.DescribeLoadBalancersInput, opts ...request.Option) (*elb.DescribeLoadBalancersOutput, error)
+	DescribeLoadBalancersPagesWithContext(ctx context.Context, input *elb.DescribeLoadBalancersInput, cb func(*elb.DescribeLoadBalancersOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *elb.DescribeTagsInput, opts ...request.Option) (*elb.DescribeTagsOutput, error)
 	DetachLoadBalancerFromSubnetsWithContext(ctx context.Context, input *elb.DetachLoadBalancerFromSubnetsInput, opts ...request.Option) (*elb.DetachLoadBalancerFromSubnetsOutput, error)
 	DisableAvailabilityZonesForLoadBalancerWithContext(ctx context.Context, input *elb.DisableAvailabilityZonesForLoadBalancerInput, opts ...request.Option) (*elb.DisableAvailabilityZonesForLoadBalancerOutput, error)
@@ -454,6 +455,26 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *el
 	})
 
 	return req.Output.(*elb.DescribeLoadBalancersOutput), req.Error
+}
+
+func (c *Client) DescribeLoadBalancersPagesWithContext(ctx context.Context, input *elb.DescribeLoadBalancersInput, cb func(*elb.DescribeLoadBalancersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elb",
+		Action:  "DescribeLoadBalancers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ELBAPI.DescribeLoadBalancersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *elb.DescribeTagsInput, opts ...request.Option) (*elb.DescribeTagsOutput, error) {

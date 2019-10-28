@@ -12,6 +12,7 @@ import (
 
 type XRay interface {
 	BatchGetTracesWithContext(ctx context.Context, input *xray.BatchGetTracesInput, opts ...request.Option) (*xray.BatchGetTracesOutput, error)
+	BatchGetTracesPagesWithContext(ctx context.Context, input *xray.BatchGetTracesInput, cb func(*xray.BatchGetTracesOutput, bool) bool, opts ...request.Option) error
 	CreateGroupWithContext(ctx context.Context, input *xray.CreateGroupInput, opts ...request.Option) (*xray.CreateGroupOutput, error)
 	CreateSamplingRuleWithContext(ctx context.Context, input *xray.CreateSamplingRuleInput, opts ...request.Option) (*xray.CreateSamplingRuleOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *xray.DeleteGroupInput, opts ...request.Option) (*xray.DeleteGroupOutput, error)
@@ -19,13 +20,20 @@ type XRay interface {
 	GetEncryptionConfigWithContext(ctx context.Context, input *xray.GetEncryptionConfigInput, opts ...request.Option) (*xray.GetEncryptionConfigOutput, error)
 	GetGroupWithContext(ctx context.Context, input *xray.GetGroupInput, opts ...request.Option) (*xray.GetGroupOutput, error)
 	GetGroupsWithContext(ctx context.Context, input *xray.GetGroupsInput, opts ...request.Option) (*xray.GetGroupsOutput, error)
+	GetGroupsPagesWithContext(ctx context.Context, input *xray.GetGroupsInput, cb func(*xray.GetGroupsOutput, bool) bool, opts ...request.Option) error
 	GetSamplingRulesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, opts ...request.Option) (*xray.GetSamplingRulesOutput, error)
+	GetSamplingRulesPagesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, cb func(*xray.GetSamplingRulesOutput, bool) bool, opts ...request.Option) error
 	GetSamplingStatisticSummariesWithContext(ctx context.Context, input *xray.GetSamplingStatisticSummariesInput, opts ...request.Option) (*xray.GetSamplingStatisticSummariesOutput, error)
+	GetSamplingStatisticSummariesPagesWithContext(ctx context.Context, input *xray.GetSamplingStatisticSummariesInput, cb func(*xray.GetSamplingStatisticSummariesOutput, bool) bool, opts ...request.Option) error
 	GetSamplingTargetsWithContext(ctx context.Context, input *xray.GetSamplingTargetsInput, opts ...request.Option) (*xray.GetSamplingTargetsOutput, error)
 	GetServiceGraphWithContext(ctx context.Context, input *xray.GetServiceGraphInput, opts ...request.Option) (*xray.GetServiceGraphOutput, error)
+	GetServiceGraphPagesWithContext(ctx context.Context, input *xray.GetServiceGraphInput, cb func(*xray.GetServiceGraphOutput, bool) bool, opts ...request.Option) error
 	GetTimeSeriesServiceStatisticsWithContext(ctx context.Context, input *xray.GetTimeSeriesServiceStatisticsInput, opts ...request.Option) (*xray.GetTimeSeriesServiceStatisticsOutput, error)
+	GetTimeSeriesServiceStatisticsPagesWithContext(ctx context.Context, input *xray.GetTimeSeriesServiceStatisticsInput, cb func(*xray.GetTimeSeriesServiceStatisticsOutput, bool) bool, opts ...request.Option) error
 	GetTraceGraphWithContext(ctx context.Context, input *xray.GetTraceGraphInput, opts ...request.Option) (*xray.GetTraceGraphOutput, error)
+	GetTraceGraphPagesWithContext(ctx context.Context, input *xray.GetTraceGraphInput, cb func(*xray.GetTraceGraphOutput, bool) bool, opts ...request.Option) error
 	GetTraceSummariesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, opts ...request.Option) (*xray.GetTraceSummariesOutput, error)
+	GetTraceSummariesPagesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, cb func(*xray.GetTraceSummariesOutput, bool) bool, opts ...request.Option) error
 	PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error)
 	PutTelemetryRecordsWithContext(ctx context.Context, input *xray.PutTelemetryRecordsInput, opts ...request.Option) (*xray.PutTelemetryRecordsOutput, error)
 	PutTraceSegmentsWithContext(ctx context.Context, input *xray.PutTraceSegmentsInput, opts ...request.Option) (*xray.PutTraceSegmentsOutput, error)
@@ -67,6 +75,26 @@ func (c *Client) BatchGetTracesWithContext(ctx context.Context, input *xray.Batc
 	})
 
 	return req.Output.(*xray.BatchGetTracesOutput), req.Error
+}
+
+func (c *Client) BatchGetTracesPagesWithContext(ctx context.Context, input *xray.BatchGetTracesInput, cb func(*xray.BatchGetTracesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "BatchGetTraces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.BatchGetTracesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *xray.CreateGroupInput, opts ...request.Option) (*xray.CreateGroupOutput, error) {
@@ -216,6 +244,26 @@ func (c *Client) GetGroupsWithContext(ctx context.Context, input *xray.GetGroups
 	return req.Output.(*xray.GetGroupsOutput), req.Error
 }
 
+func (c *Client) GetGroupsPagesWithContext(ctx context.Context, input *xray.GetGroupsInput, cb func(*xray.GetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetSamplingRulesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, opts ...request.Option) (*xray.GetSamplingRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -237,6 +285,26 @@ func (c *Client) GetSamplingRulesWithContext(ctx context.Context, input *xray.Ge
 	return req.Output.(*xray.GetSamplingRulesOutput), req.Error
 }
 
+func (c *Client) GetSamplingRulesPagesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, cb func(*xray.GetSamplingRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetSamplingRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetSamplingRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetSamplingStatisticSummariesWithContext(ctx context.Context, input *xray.GetSamplingStatisticSummariesInput, opts ...request.Option) (*xray.GetSamplingStatisticSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -256,6 +324,26 @@ func (c *Client) GetSamplingStatisticSummariesWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*xray.GetSamplingStatisticSummariesOutput), req.Error
+}
+
+func (c *Client) GetSamplingStatisticSummariesPagesWithContext(ctx context.Context, input *xray.GetSamplingStatisticSummariesInput, cb func(*xray.GetSamplingStatisticSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetSamplingStatisticSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetSamplingStatisticSummariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetSamplingTargetsWithContext(ctx context.Context, input *xray.GetSamplingTargetsInput, opts ...request.Option) (*xray.GetSamplingTargetsOutput, error) {
@@ -300,6 +388,26 @@ func (c *Client) GetServiceGraphWithContext(ctx context.Context, input *xray.Get
 	return req.Output.(*xray.GetServiceGraphOutput), req.Error
 }
 
+func (c *Client) GetServiceGraphPagesWithContext(ctx context.Context, input *xray.GetServiceGraphInput, cb func(*xray.GetServiceGraphOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetServiceGraph",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetServiceGraphPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTimeSeriesServiceStatisticsWithContext(ctx context.Context, input *xray.GetTimeSeriesServiceStatisticsInput, opts ...request.Option) (*xray.GetTimeSeriesServiceStatisticsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -319,6 +427,26 @@ func (c *Client) GetTimeSeriesServiceStatisticsWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*xray.GetTimeSeriesServiceStatisticsOutput), req.Error
+}
+
+func (c *Client) GetTimeSeriesServiceStatisticsPagesWithContext(ctx context.Context, input *xray.GetTimeSeriesServiceStatisticsInput, cb func(*xray.GetTimeSeriesServiceStatisticsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetTimeSeriesServiceStatistics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetTimeSeriesServiceStatisticsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetTraceGraphWithContext(ctx context.Context, input *xray.GetTraceGraphInput, opts ...request.Option) (*xray.GetTraceGraphOutput, error) {
@@ -342,6 +470,26 @@ func (c *Client) GetTraceGraphWithContext(ctx context.Context, input *xray.GetTr
 	return req.Output.(*xray.GetTraceGraphOutput), req.Error
 }
 
+func (c *Client) GetTraceGraphPagesWithContext(ctx context.Context, input *xray.GetTraceGraphInput, cb func(*xray.GetTraceGraphOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetTraceGraph",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetTraceGraphPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTraceSummariesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, opts ...request.Option) (*xray.GetTraceSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -361,6 +509,26 @@ func (c *Client) GetTraceSummariesWithContext(ctx context.Context, input *xray.G
 	})
 
 	return req.Output.(*xray.GetTraceSummariesOutput), req.Error
+}
+
+func (c *Client) GetTraceSummariesPagesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, cb func(*xray.GetTraceSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetTraceSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetTraceSummariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error) {

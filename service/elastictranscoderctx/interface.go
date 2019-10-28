@@ -18,9 +18,13 @@ type ElasticTranscoder interface {
 	DeletePipelineWithContext(ctx context.Context, input *elastictranscoder.DeletePipelineInput, opts ...request.Option) (*elastictranscoder.DeletePipelineOutput, error)
 	DeletePresetWithContext(ctx context.Context, input *elastictranscoder.DeletePresetInput, opts ...request.Option) (*elastictranscoder.DeletePresetOutput, error)
 	ListJobsByPipelineWithContext(ctx context.Context, input *elastictranscoder.ListJobsByPipelineInput, opts ...request.Option) (*elastictranscoder.ListJobsByPipelineOutput, error)
+	ListJobsByPipelinePagesWithContext(ctx context.Context, input *elastictranscoder.ListJobsByPipelineInput, cb func(*elastictranscoder.ListJobsByPipelineOutput, bool) bool, opts ...request.Option) error
 	ListJobsByStatusWithContext(ctx context.Context, input *elastictranscoder.ListJobsByStatusInput, opts ...request.Option) (*elastictranscoder.ListJobsByStatusOutput, error)
+	ListJobsByStatusPagesWithContext(ctx context.Context, input *elastictranscoder.ListJobsByStatusInput, cb func(*elastictranscoder.ListJobsByStatusOutput, bool) bool, opts ...request.Option) error
 	ListPipelinesWithContext(ctx context.Context, input *elastictranscoder.ListPipelinesInput, opts ...request.Option) (*elastictranscoder.ListPipelinesOutput, error)
+	ListPipelinesPagesWithContext(ctx context.Context, input *elastictranscoder.ListPipelinesInput, cb func(*elastictranscoder.ListPipelinesOutput, bool) bool, opts ...request.Option) error
 	ListPresetsWithContext(ctx context.Context, input *elastictranscoder.ListPresetsInput, opts ...request.Option) (*elastictranscoder.ListPresetsOutput, error)
+	ListPresetsPagesWithContext(ctx context.Context, input *elastictranscoder.ListPresetsInput, cb func(*elastictranscoder.ListPresetsOutput, bool) bool, opts ...request.Option) error
 	ReadJobWithContext(ctx context.Context, input *elastictranscoder.ReadJobInput, opts ...request.Option) (*elastictranscoder.ReadJobOutput, error)
 	ReadPipelineWithContext(ctx context.Context, input *elastictranscoder.ReadPipelineInput, opts ...request.Option) (*elastictranscoder.ReadPipelineOutput, error)
 	ReadPresetWithContext(ctx context.Context, input *elastictranscoder.ReadPresetInput, opts ...request.Option) (*elastictranscoder.ReadPresetOutput, error)
@@ -192,6 +196,26 @@ func (c *Client) ListJobsByPipelineWithContext(ctx context.Context, input *elast
 	return req.Output.(*elastictranscoder.ListJobsByPipelineOutput), req.Error
 }
 
+func (c *Client) ListJobsByPipelinePagesWithContext(ctx context.Context, input *elastictranscoder.ListJobsByPipelineInput, cb func(*elastictranscoder.ListJobsByPipelineOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elastictranscoder",
+		Action:  "ListJobsByPipeline",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticTranscoderAPI.ListJobsByPipelinePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListJobsByStatusWithContext(ctx context.Context, input *elastictranscoder.ListJobsByStatusInput, opts ...request.Option) (*elastictranscoder.ListJobsByStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
@@ -211,6 +235,26 @@ func (c *Client) ListJobsByStatusWithContext(ctx context.Context, input *elastic
 	})
 
 	return req.Output.(*elastictranscoder.ListJobsByStatusOutput), req.Error
+}
+
+func (c *Client) ListJobsByStatusPagesWithContext(ctx context.Context, input *elastictranscoder.ListJobsByStatusInput, cb func(*elastictranscoder.ListJobsByStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elastictranscoder",
+		Action:  "ListJobsByStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticTranscoderAPI.ListJobsByStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPipelinesWithContext(ctx context.Context, input *elastictranscoder.ListPipelinesInput, opts ...request.Option) (*elastictranscoder.ListPipelinesOutput, error) {
@@ -234,6 +278,26 @@ func (c *Client) ListPipelinesWithContext(ctx context.Context, input *elastictra
 	return req.Output.(*elastictranscoder.ListPipelinesOutput), req.Error
 }
 
+func (c *Client) ListPipelinesPagesWithContext(ctx context.Context, input *elastictranscoder.ListPipelinesInput, cb func(*elastictranscoder.ListPipelinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elastictranscoder",
+		Action:  "ListPipelines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticTranscoderAPI.ListPipelinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPresetsWithContext(ctx context.Context, input *elastictranscoder.ListPresetsInput, opts ...request.Option) (*elastictranscoder.ListPresetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elastictranscoder",
@@ -253,6 +317,26 @@ func (c *Client) ListPresetsWithContext(ctx context.Context, input *elastictrans
 	})
 
 	return req.Output.(*elastictranscoder.ListPresetsOutput), req.Error
+}
+
+func (c *Client) ListPresetsPagesWithContext(ctx context.Context, input *elastictranscoder.ListPresetsInput, cb func(*elastictranscoder.ListPresetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elastictranscoder",
+		Action:  "ListPresets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticTranscoderAPI.ListPresetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ReadJobWithContext(ctx context.Context, input *elastictranscoder.ReadJobInput, opts ...request.Option) (*elastictranscoder.ReadJobOutput, error) {

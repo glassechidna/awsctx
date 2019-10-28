@@ -31,11 +31,17 @@ type ForecastService interface {
 	DescribePredictorWithContext(ctx context.Context, input *forecastservice.DescribePredictorInput, opts ...request.Option) (*forecastservice.DescribePredictorOutput, error)
 	GetAccuracyMetricsWithContext(ctx context.Context, input *forecastservice.GetAccuracyMetricsInput, opts ...request.Option) (*forecastservice.GetAccuracyMetricsOutput, error)
 	ListDatasetGroupsWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, opts ...request.Option) (*forecastservice.ListDatasetGroupsOutput, error)
+	ListDatasetGroupsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, cb func(*forecastservice.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetImportJobsWithContext(ctx context.Context, input *forecastservice.ListDatasetImportJobsInput, opts ...request.Option) (*forecastservice.ListDatasetImportJobsOutput, error)
+	ListDatasetImportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetImportJobsInput, cb func(*forecastservice.ListDatasetImportJobsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetsWithContext(ctx context.Context, input *forecastservice.ListDatasetsInput, opts ...request.Option) (*forecastservice.ListDatasetsOutput, error)
+	ListDatasetsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetsInput, cb func(*forecastservice.ListDatasetsOutput, bool) bool, opts ...request.Option) error
 	ListForecastExportJobsWithContext(ctx context.Context, input *forecastservice.ListForecastExportJobsInput, opts ...request.Option) (*forecastservice.ListForecastExportJobsOutput, error)
+	ListForecastExportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastExportJobsInput, cb func(*forecastservice.ListForecastExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListForecastsWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, opts ...request.Option) (*forecastservice.ListForecastsOutput, error)
+	ListForecastsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, cb func(*forecastservice.ListForecastsOutput, bool) bool, opts ...request.Option) error
 	ListPredictorsWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, opts ...request.Option) (*forecastservice.ListPredictorsOutput, error)
+	ListPredictorsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, cb func(*forecastservice.ListPredictorsOutput, bool) bool, opts ...request.Option) error
 	UpdateDatasetGroupWithContext(ctx context.Context, input *forecastservice.UpdateDatasetGroupInput, opts ...request.Option) (*forecastservice.UpdateDatasetGroupOutput, error)
 }
 
@@ -474,6 +480,26 @@ func (c *Client) ListDatasetGroupsWithContext(ctx context.Context, input *foreca
 	return req.Output.(*forecastservice.ListDatasetGroupsOutput), req.Error
 }
 
+func (c *Client) ListDatasetGroupsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, cb func(*forecastservice.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListDatasetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListDatasetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDatasetImportJobsWithContext(ctx context.Context, input *forecastservice.ListDatasetImportJobsInput, opts ...request.Option) (*forecastservice.ListDatasetImportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -493,6 +519,26 @@ func (c *Client) ListDatasetImportJobsWithContext(ctx context.Context, input *fo
 	})
 
 	return req.Output.(*forecastservice.ListDatasetImportJobsOutput), req.Error
+}
+
+func (c *Client) ListDatasetImportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetImportJobsInput, cb func(*forecastservice.ListDatasetImportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListDatasetImportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListDatasetImportJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDatasetsWithContext(ctx context.Context, input *forecastservice.ListDatasetsInput, opts ...request.Option) (*forecastservice.ListDatasetsOutput, error) {
@@ -516,6 +562,26 @@ func (c *Client) ListDatasetsWithContext(ctx context.Context, input *forecastser
 	return req.Output.(*forecastservice.ListDatasetsOutput), req.Error
 }
 
+func (c *Client) ListDatasetsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetsInput, cb func(*forecastservice.ListDatasetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListDatasets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListDatasetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListForecastExportJobsWithContext(ctx context.Context, input *forecastservice.ListForecastExportJobsInput, opts ...request.Option) (*forecastservice.ListForecastExportJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -535,6 +601,26 @@ func (c *Client) ListForecastExportJobsWithContext(ctx context.Context, input *f
 	})
 
 	return req.Output.(*forecastservice.ListForecastExportJobsOutput), req.Error
+}
+
+func (c *Client) ListForecastExportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastExportJobsInput, cb func(*forecastservice.ListForecastExportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListForecastExportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListForecastExportJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListForecastsWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, opts ...request.Option) (*forecastservice.ListForecastsOutput, error) {
@@ -558,6 +644,26 @@ func (c *Client) ListForecastsWithContext(ctx context.Context, input *forecastse
 	return req.Output.(*forecastservice.ListForecastsOutput), req.Error
 }
 
+func (c *Client) ListForecastsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, cb func(*forecastservice.ListForecastsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListForecasts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListForecastsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPredictorsWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, opts ...request.Option) (*forecastservice.ListPredictorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -577,6 +683,26 @@ func (c *Client) ListPredictorsWithContext(ctx context.Context, input *forecasts
 	})
 
 	return req.Output.(*forecastservice.ListPredictorsOutput), req.Error
+}
+
+func (c *Client) ListPredictorsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, cb func(*forecastservice.ListPredictorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListPredictors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListPredictorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateDatasetGroupWithContext(ctx context.Context, input *forecastservice.UpdateDatasetGroupInput, opts ...request.Option) (*forecastservice.UpdateDatasetGroupOutput, error) {
