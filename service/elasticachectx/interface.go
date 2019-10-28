@@ -15,6 +15,7 @@ type ElastiCache interface {
 	AuthorizeCacheSecurityGroupIngressWithContext(ctx context.Context, input *elasticache.AuthorizeCacheSecurityGroupIngressInput, opts ...request.Option) (*elasticache.AuthorizeCacheSecurityGroupIngressOutput, error)
 	BatchApplyUpdateActionWithContext(ctx context.Context, input *elasticache.BatchApplyUpdateActionInput, opts ...request.Option) (*elasticache.BatchApplyUpdateActionOutput, error)
 	BatchStopUpdateActionWithContext(ctx context.Context, input *elasticache.BatchStopUpdateActionInput, opts ...request.Option) (*elasticache.BatchStopUpdateActionOutput, error)
+	CompleteMigrationWithContext(ctx context.Context, input *elasticache.CompleteMigrationInput, opts ...request.Option) (*elasticache.CompleteMigrationOutput, error)
 	CopySnapshotWithContext(ctx context.Context, input *elasticache.CopySnapshotInput, opts ...request.Option) (*elasticache.CopySnapshotOutput, error)
 	CreateCacheClusterWithContext(ctx context.Context, input *elasticache.CreateCacheClusterInput, opts ...request.Option) (*elasticache.CreateCacheClusterOutput, error)
 	CreateCacheParameterGroupWithContext(ctx context.Context, input *elasticache.CreateCacheParameterGroupInput, opts ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error)
@@ -70,6 +71,7 @@ type ElastiCache interface {
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *elasticache.RemoveTagsFromResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error)
 	ResetCacheParameterGroupWithContext(ctx context.Context, input *elasticache.ResetCacheParameterGroupInput, opts ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
 	RevokeCacheSecurityGroupIngressWithContext(ctx context.Context, input *elasticache.RevokeCacheSecurityGroupIngressInput, opts ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error)
+	StartMigrationWithContext(ctx context.Context, input *elasticache.StartMigrationInput, opts ...request.Option) (*elasticache.StartMigrationOutput, error)
 	TestFailoverWithContext(ctx context.Context, input *elasticache.TestFailoverInput, opts ...request.Option) (*elasticache.TestFailoverOutput, error)
 }
 
@@ -170,6 +172,27 @@ func (c *Client) BatchStopUpdateActionWithContext(ctx context.Context, input *el
 	})
 
 	return req.Output.(*elasticache.BatchStopUpdateActionOutput), req.Error
+}
+
+func (c *Client) CompleteMigrationWithContext(ctx context.Context, input *elasticache.CompleteMigrationInput, opts ...request.Option) (*elasticache.CompleteMigrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "CompleteMigration",
+		Input:   input,
+		Output:  (*elasticache.CompleteMigrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.CompleteMigrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.CompleteMigrationOutput), req.Error
 }
 
 func (c *Client) CopySnapshotWithContext(ctx context.Context, input *elasticache.CopySnapshotInput, opts ...request.Option) (*elasticache.CopySnapshotOutput, error) {
@@ -1311,6 +1334,27 @@ func (c *Client) RevokeCacheSecurityGroupIngressWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*elasticache.RevokeCacheSecurityGroupIngressOutput), req.Error
+}
+
+func (c *Client) StartMigrationWithContext(ctx context.Context, input *elasticache.StartMigrationInput, opts ...request.Option) (*elasticache.StartMigrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "StartMigration",
+		Input:   input,
+		Output:  (*elasticache.StartMigrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.StartMigrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.StartMigrationOutput), req.Error
 }
 
 func (c *Client) TestFailoverWithContext(ctx context.Context, input *elasticache.TestFailoverInput, opts ...request.Option) (*elasticache.TestFailoverOutput, error) {
