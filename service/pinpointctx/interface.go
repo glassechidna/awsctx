@@ -16,6 +16,7 @@ type Pinpoint interface {
 	CreateEmailTemplateWithContext(ctx context.Context, input *pinpoint.CreateEmailTemplateInput, opts ...request.Option) (*pinpoint.CreateEmailTemplateOutput, error)
 	CreateExportJobWithContext(ctx context.Context, input *pinpoint.CreateExportJobInput, opts ...request.Option) (*pinpoint.CreateExportJobOutput, error)
 	CreateImportJobWithContext(ctx context.Context, input *pinpoint.CreateImportJobInput, opts ...request.Option) (*pinpoint.CreateImportJobOutput, error)
+	CreateJourneyWithContext(ctx context.Context, input *pinpoint.CreateJourneyInput, opts ...request.Option) (*pinpoint.CreateJourneyOutput, error)
 	CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error)
 	CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error)
 	CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error)
@@ -32,6 +33,7 @@ type Pinpoint interface {
 	DeleteEndpointWithContext(ctx context.Context, input *pinpoint.DeleteEndpointInput, opts ...request.Option) (*pinpoint.DeleteEndpointOutput, error)
 	DeleteEventStreamWithContext(ctx context.Context, input *pinpoint.DeleteEventStreamInput, opts ...request.Option) (*pinpoint.DeleteEventStreamOutput, error)
 	DeleteGcmChannelWithContext(ctx context.Context, input *pinpoint.DeleteGcmChannelInput, opts ...request.Option) (*pinpoint.DeleteGcmChannelOutput, error)
+	DeleteJourneyWithContext(ctx context.Context, input *pinpoint.DeleteJourneyInput, opts ...request.Option) (*pinpoint.DeleteJourneyOutput, error)
 	DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error)
 	DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error)
 	DeleteSmsChannelWithContext(ctx context.Context, input *pinpoint.DeleteSmsChannelInput, opts ...request.Option) (*pinpoint.DeleteSmsChannelOutput, error)
@@ -64,6 +66,10 @@ type Pinpoint interface {
 	GetGcmChannelWithContext(ctx context.Context, input *pinpoint.GetGcmChannelInput, opts ...request.Option) (*pinpoint.GetGcmChannelOutput, error)
 	GetImportJobWithContext(ctx context.Context, input *pinpoint.GetImportJobInput, opts ...request.Option) (*pinpoint.GetImportJobOutput, error)
 	GetImportJobsWithContext(ctx context.Context, input *pinpoint.GetImportJobsInput, opts ...request.Option) (*pinpoint.GetImportJobsOutput, error)
+	GetJourneyWithContext(ctx context.Context, input *pinpoint.GetJourneyInput, opts ...request.Option) (*pinpoint.GetJourneyOutput, error)
+	GetJourneyDateRangeKpiWithContext(ctx context.Context, input *pinpoint.GetJourneyDateRangeKpiInput, opts ...request.Option) (*pinpoint.GetJourneyDateRangeKpiOutput, error)
+	GetJourneyExecutionActivityMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionActivityMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionActivityMetricsOutput, error)
+	GetJourneyExecutionMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionMetricsOutput, error)
 	GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error)
 	GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error)
 	GetSegmentExportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentExportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentExportJobsOutput, error)
@@ -75,6 +81,7 @@ type Pinpoint interface {
 	GetSmsTemplateWithContext(ctx context.Context, input *pinpoint.GetSmsTemplateInput, opts ...request.Option) (*pinpoint.GetSmsTemplateOutput, error)
 	GetUserEndpointsWithContext(ctx context.Context, input *pinpoint.GetUserEndpointsInput, opts ...request.Option) (*pinpoint.GetUserEndpointsOutput, error)
 	GetVoiceChannelWithContext(ctx context.Context, input *pinpoint.GetVoiceChannelInput, opts ...request.Option) (*pinpoint.GetVoiceChannelOutput, error)
+	ListJourneysWithContext(ctx context.Context, input *pinpoint.ListJourneysInput, opts ...request.Option) (*pinpoint.ListJourneysOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error)
 	ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error)
 	PhoneNumberValidateWithContext(ctx context.Context, input *pinpoint.PhoneNumberValidateInput, opts ...request.Option) (*pinpoint.PhoneNumberValidateOutput, error)
@@ -98,6 +105,8 @@ type Pinpoint interface {
 	UpdateEndpointWithContext(ctx context.Context, input *pinpoint.UpdateEndpointInput, opts ...request.Option) (*pinpoint.UpdateEndpointOutput, error)
 	UpdateEndpointsBatchWithContext(ctx context.Context, input *pinpoint.UpdateEndpointsBatchInput, opts ...request.Option) (*pinpoint.UpdateEndpointsBatchOutput, error)
 	UpdateGcmChannelWithContext(ctx context.Context, input *pinpoint.UpdateGcmChannelInput, opts ...request.Option) (*pinpoint.UpdateGcmChannelOutput, error)
+	UpdateJourneyWithContext(ctx context.Context, input *pinpoint.UpdateJourneyInput, opts ...request.Option) (*pinpoint.UpdateJourneyOutput, error)
+	UpdateJourneyStateWithContext(ctx context.Context, input *pinpoint.UpdateJourneyStateInput, opts ...request.Option) (*pinpoint.UpdateJourneyStateOutput, error)
 	UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error)
 	UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error)
 	UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error)
@@ -223,6 +232,27 @@ func (c *Client) CreateImportJobWithContext(ctx context.Context, input *pinpoint
 	})
 
 	return req.Output.(*pinpoint.CreateImportJobOutput), req.Error
+}
+
+func (c *Client) CreateJourneyWithContext(ctx context.Context, input *pinpoint.CreateJourneyInput, opts ...request.Option) (*pinpoint.CreateJourneyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "CreateJourney",
+		Input:   input,
+		Output:  (*pinpoint.CreateJourneyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.CreateJourneyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.CreateJourneyOutput), req.Error
 }
 
 func (c *Client) CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error) {
@@ -559,6 +589,27 @@ func (c *Client) DeleteGcmChannelWithContext(ctx context.Context, input *pinpoin
 	})
 
 	return req.Output.(*pinpoint.DeleteGcmChannelOutput), req.Error
+}
+
+func (c *Client) DeleteJourneyWithContext(ctx context.Context, input *pinpoint.DeleteJourneyInput, opts ...request.Option) (*pinpoint.DeleteJourneyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "DeleteJourney",
+		Input:   input,
+		Output:  (*pinpoint.DeleteJourneyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.DeleteJourneyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.DeleteJourneyOutput), req.Error
 }
 
 func (c *Client) DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error) {
@@ -1233,6 +1284,90 @@ func (c *Client) GetImportJobsWithContext(ctx context.Context, input *pinpoint.G
 	return req.Output.(*pinpoint.GetImportJobsOutput), req.Error
 }
 
+func (c *Client) GetJourneyWithContext(ctx context.Context, input *pinpoint.GetJourneyInput, opts ...request.Option) (*pinpoint.GetJourneyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourney",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyOutput), req.Error
+}
+
+func (c *Client) GetJourneyDateRangeKpiWithContext(ctx context.Context, input *pinpoint.GetJourneyDateRangeKpiInput, opts ...request.Option) (*pinpoint.GetJourneyDateRangeKpiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourneyDateRangeKpi",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyDateRangeKpiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyDateRangeKpiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyDateRangeKpiOutput), req.Error
+}
+
+func (c *Client) GetJourneyExecutionActivityMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionActivityMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionActivityMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourneyExecutionActivityMetrics",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyExecutionActivityMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyExecutionActivityMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyExecutionActivityMetricsOutput), req.Error
+}
+
+func (c *Client) GetJourneyExecutionMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourneyExecutionMetrics",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyExecutionMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyExecutionMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyExecutionMetricsOutput), req.Error
+}
+
 func (c *Client) GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -1462,6 +1597,27 @@ func (c *Client) GetVoiceChannelWithContext(ctx context.Context, input *pinpoint
 	})
 
 	return req.Output.(*pinpoint.GetVoiceChannelOutput), req.Error
+}
+
+func (c *Client) ListJourneysWithContext(ctx context.Context, input *pinpoint.ListJourneysInput, opts ...request.Option) (*pinpoint.ListJourneysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "ListJourneys",
+		Input:   input,
+		Output:  (*pinpoint.ListJourneysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.ListJourneysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.ListJourneysOutput), req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error) {
@@ -1945,6 +2101,48 @@ func (c *Client) UpdateGcmChannelWithContext(ctx context.Context, input *pinpoin
 	})
 
 	return req.Output.(*pinpoint.UpdateGcmChannelOutput), req.Error
+}
+
+func (c *Client) UpdateJourneyWithContext(ctx context.Context, input *pinpoint.UpdateJourneyInput, opts ...request.Option) (*pinpoint.UpdateJourneyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateJourney",
+		Input:   input,
+		Output:  (*pinpoint.UpdateJourneyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateJourneyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateJourneyOutput), req.Error
+}
+
+func (c *Client) UpdateJourneyStateWithContext(ctx context.Context, input *pinpoint.UpdateJourneyStateInput, opts ...request.Option) (*pinpoint.UpdateJourneyStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateJourneyState",
+		Input:   input,
+		Output:  (*pinpoint.UpdateJourneyStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateJourneyStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateJourneyStateOutput), req.Error
 }
 
 func (c *Client) UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error) {

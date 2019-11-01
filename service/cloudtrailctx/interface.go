@@ -16,9 +16,14 @@ type CloudTrail interface {
 	DeleteTrailWithContext(ctx context.Context, input *cloudtrail.DeleteTrailInput, opts ...request.Option) (*cloudtrail.DeleteTrailOutput, error)
 	DescribeTrailsWithContext(ctx context.Context, input *cloudtrail.DescribeTrailsInput, opts ...request.Option) (*cloudtrail.DescribeTrailsOutput, error)
 	GetEventSelectorsWithContext(ctx context.Context, input *cloudtrail.GetEventSelectorsInput, opts ...request.Option) (*cloudtrail.GetEventSelectorsOutput, error)
+	GetTrailWithContext(ctx context.Context, input *cloudtrail.GetTrailInput, opts ...request.Option) (*cloudtrail.GetTrailOutput, error)
 	GetTrailStatusWithContext(ctx context.Context, input *cloudtrail.GetTrailStatusInput, opts ...request.Option) (*cloudtrail.GetTrailStatusOutput, error)
 	ListPublicKeysWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, opts ...request.Option) (*cloudtrail.ListPublicKeysOutput, error)
+	ListPublicKeysPagesWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, cb func(*cloudtrail.ListPublicKeysOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, opts ...request.Option) (*cloudtrail.ListTagsOutput, error)
+	ListTagsPagesWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, cb func(*cloudtrail.ListTagsOutput, bool) bool, opts ...request.Option) error
+	ListTrailsWithContext(ctx context.Context, input *cloudtrail.ListTrailsInput, opts ...request.Option) (*cloudtrail.ListTrailsOutput, error)
+	ListTrailsPagesWithContext(ctx context.Context, input *cloudtrail.ListTrailsInput, cb func(*cloudtrail.ListTrailsOutput, bool) bool, opts ...request.Option) error
 	LookupEventsWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, opts ...request.Option) (*cloudtrail.LookupEventsOutput, error)
 	LookupEventsPagesWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, cb func(*cloudtrail.LookupEventsOutput, bool) bool, opts ...request.Option) error
 	PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error)
@@ -148,6 +153,27 @@ func (c *Client) GetEventSelectorsWithContext(ctx context.Context, input *cloudt
 	return req.Output.(*cloudtrail.GetEventSelectorsOutput), req.Error
 }
 
+func (c *Client) GetTrailWithContext(ctx context.Context, input *cloudtrail.GetTrailInput, opts ...request.Option) (*cloudtrail.GetTrailOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "GetTrail",
+		Input:   input,
+		Output:  (*cloudtrail.GetTrailOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.GetTrailWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.GetTrailOutput), req.Error
+}
+
 func (c *Client) GetTrailStatusWithContext(ctx context.Context, input *cloudtrail.GetTrailStatusInput, opts ...request.Option) (*cloudtrail.GetTrailStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -190,6 +216,26 @@ func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudtrai
 	return req.Output.(*cloudtrail.ListPublicKeysOutput), req.Error
 }
 
+func (c *Client) ListPublicKeysPagesWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, cb func(*cloudtrail.ListPublicKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListPublicKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.ListPublicKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, opts ...request.Option) (*cloudtrail.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -209,6 +255,67 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *cloudtrail.List
 	})
 
 	return req.Output.(*cloudtrail.ListTagsOutput), req.Error
+}
+
+func (c *Client) ListTagsPagesWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, cb func(*cloudtrail.ListTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.ListTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTrailsWithContext(ctx context.Context, input *cloudtrail.ListTrailsInput, opts ...request.Option) (*cloudtrail.ListTrailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListTrails",
+		Input:   input,
+		Output:  (*cloudtrail.ListTrailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.ListTrailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.ListTrailsOutput), req.Error
+}
+
+func (c *Client) ListTrailsPagesWithContext(ctx context.Context, input *cloudtrail.ListTrailsInput, cb func(*cloudtrail.ListTrailsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListTrails",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.ListTrailsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) LookupEventsWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, opts ...request.Option) (*cloudtrail.LookupEventsOutput, error) {
