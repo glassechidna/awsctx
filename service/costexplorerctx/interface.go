@@ -18,6 +18,12 @@ type CostExplorer interface {
 	GetReservationPurchaseRecommendationWithContext(ctx context.Context, input *costexplorer.GetReservationPurchaseRecommendationInput, opts ...request.Option) (*costexplorer.GetReservationPurchaseRecommendationOutput, error)
 	GetReservationUtilizationWithContext(ctx context.Context, input *costexplorer.GetReservationUtilizationInput, opts ...request.Option) (*costexplorer.GetReservationUtilizationOutput, error)
 	GetRightsizingRecommendationWithContext(ctx context.Context, input *costexplorer.GetRightsizingRecommendationInput, opts ...request.Option) (*costexplorer.GetRightsizingRecommendationOutput, error)
+	GetSavingsPlansCoverageWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, opts ...request.Option) (*costexplorer.GetSavingsPlansCoverageOutput, error)
+	GetSavingsPlansCoveragePagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, cb func(*costexplorer.GetSavingsPlansCoverageOutput, bool) bool, opts ...request.Option) error
+	GetSavingsPlansPurchaseRecommendationWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansPurchaseRecommendationInput, opts ...request.Option) (*costexplorer.GetSavingsPlansPurchaseRecommendationOutput, error)
+	GetSavingsPlansUtilizationWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationInput, opts ...request.Option) (*costexplorer.GetSavingsPlansUtilizationOutput, error)
+	GetSavingsPlansUtilizationDetailsWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationDetailsInput, opts ...request.Option) (*costexplorer.GetSavingsPlansUtilizationDetailsOutput, error)
+	GetSavingsPlansUtilizationDetailsPagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationDetailsInput, cb func(*costexplorer.GetSavingsPlansUtilizationDetailsOutput, bool) bool, opts ...request.Option) error
 	GetTagsWithContext(ctx context.Context, input *costexplorer.GetTagsInput, opts ...request.Option) (*costexplorer.GetTagsOutput, error)
 	GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error)
 }
@@ -182,6 +188,130 @@ func (c *Client) GetRightsizingRecommendationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*costexplorer.GetRightsizingRecommendationOutput), req.Error
+}
+
+func (c *Client) GetSavingsPlansCoverageWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, opts ...request.Option) (*costexplorer.GetSavingsPlansCoverageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlansCoverage",
+		Input:   input,
+		Output:  (*costexplorer.GetSavingsPlansCoverageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetSavingsPlansCoverageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetSavingsPlansCoverageOutput), req.Error
+}
+
+func (c *Client) GetSavingsPlansCoveragePagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, cb func(*costexplorer.GetSavingsPlansCoverageOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlansCoverage",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CostExplorerAPI.GetSavingsPlansCoveragePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetSavingsPlansPurchaseRecommendationWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansPurchaseRecommendationInput, opts ...request.Option) (*costexplorer.GetSavingsPlansPurchaseRecommendationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlansPurchaseRecommendation",
+		Input:   input,
+		Output:  (*costexplorer.GetSavingsPlansPurchaseRecommendationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetSavingsPlansPurchaseRecommendationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetSavingsPlansPurchaseRecommendationOutput), req.Error
+}
+
+func (c *Client) GetSavingsPlansUtilizationWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationInput, opts ...request.Option) (*costexplorer.GetSavingsPlansUtilizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlansUtilization",
+		Input:   input,
+		Output:  (*costexplorer.GetSavingsPlansUtilizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetSavingsPlansUtilizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetSavingsPlansUtilizationOutput), req.Error
+}
+
+func (c *Client) GetSavingsPlansUtilizationDetailsWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationDetailsInput, opts ...request.Option) (*costexplorer.GetSavingsPlansUtilizationDetailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlansUtilizationDetails",
+		Input:   input,
+		Output:  (*costexplorer.GetSavingsPlansUtilizationDetailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetSavingsPlansUtilizationDetailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetSavingsPlansUtilizationDetailsOutput), req.Error
+}
+
+func (c *Client) GetSavingsPlansUtilizationDetailsPagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationDetailsInput, cb func(*costexplorer.GetSavingsPlansUtilizationDetailsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlansUtilizationDetails",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CostExplorerAPI.GetSavingsPlansUtilizationDetailsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetTagsWithContext(ctx context.Context, input *costexplorer.GetTagsInput, opts ...request.Option) (*costexplorer.GetTagsOutput, error) {

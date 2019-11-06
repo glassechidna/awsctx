@@ -21,8 +21,11 @@ type Signer interface {
 	ListSigningPlatformsPagesWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, cb func(*signer.ListSigningPlatformsOutput, bool) bool, opts ...request.Option) error
 	ListSigningProfilesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, opts ...request.Option) (*signer.ListSigningProfilesOutput, error)
 	ListSigningProfilesPagesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, cb func(*signer.ListSigningProfilesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *signer.ListTagsForResourceInput, opts ...request.Option) (*signer.ListTagsForResourceOutput, error)
 	PutSigningProfileWithContext(ctx context.Context, input *signer.PutSigningProfileInput, opts ...request.Option) (*signer.PutSigningProfileOutput, error)
 	StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error)
+	TagResourceWithContext(ctx context.Context, input *signer.TagResourceInput, opts ...request.Option) (*signer.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *signer.UntagResourceInput, opts ...request.Option) (*signer.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -247,6 +250,27 @@ func (c *Client) ListSigningProfilesPagesWithContext(ctx context.Context, input 
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *signer.ListTagsForResourceInput, opts ...request.Option) (*signer.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*signer.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutSigningProfileWithContext(ctx context.Context, input *signer.PutSigningProfileInput, opts ...request.Option) (*signer.PutSigningProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "signer",
@@ -287,4 +311,46 @@ func (c *Client) StartSigningJobWithContext(ctx context.Context, input *signer.S
 	})
 
 	return req.Output.(*signer.StartSigningJobOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *signer.TagResourceInput, opts ...request.Option) (*signer.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*signer.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *signer.UntagResourceInput, opts ...request.Option) (*signer.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*signer.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.UntagResourceOutput), req.Error
 }
