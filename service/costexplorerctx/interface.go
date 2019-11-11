@@ -12,6 +12,7 @@ import (
 
 type CostExplorer interface {
 	GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error)
+	GetCostAndUsageWithResourcesWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageWithResourcesInput, opts ...request.Option) (*costexplorer.GetCostAndUsageWithResourcesOutput, error)
 	GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error)
 	GetDimensionValuesWithContext(ctx context.Context, input *costexplorer.GetDimensionValuesInput, opts ...request.Option) (*costexplorer.GetDimensionValuesOutput, error)
 	GetReservationCoverageWithContext(ctx context.Context, input *costexplorer.GetReservationCoverageInput, opts ...request.Option) (*costexplorer.GetReservationCoverageOutput, error)
@@ -62,6 +63,27 @@ func (c *Client) GetCostAndUsageWithContext(ctx context.Context, input *costexpl
 	})
 
 	return req.Output.(*costexplorer.GetCostAndUsageOutput), req.Error
+}
+
+func (c *Client) GetCostAndUsageWithResourcesWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageWithResourcesInput, opts ...request.Option) (*costexplorer.GetCostAndUsageWithResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetCostAndUsageWithResources",
+		Input:   input,
+		Output:  (*costexplorer.GetCostAndUsageWithResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetCostAndUsageWithResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetCostAndUsageWithResourcesOutput), req.Error
 }
 
 func (c *Client) GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error) {
