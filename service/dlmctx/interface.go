@@ -15,6 +15,9 @@ type DLM interface {
 	DeleteLifecyclePolicyWithContext(ctx context.Context, input *dlm.DeleteLifecyclePolicyInput, opts ...request.Option) (*dlm.DeleteLifecyclePolicyOutput, error)
 	GetLifecyclePoliciesWithContext(ctx context.Context, input *dlm.GetLifecyclePoliciesInput, opts ...request.Option) (*dlm.GetLifecyclePoliciesOutput, error)
 	GetLifecyclePolicyWithContext(ctx context.Context, input *dlm.GetLifecyclePolicyInput, opts ...request.Option) (*dlm.GetLifecyclePolicyOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *dlm.ListTagsForResourceInput, opts ...request.Option) (*dlm.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *dlm.TagResourceInput, opts ...request.Option) (*dlm.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *dlm.UntagResourceInput, opts ...request.Option) (*dlm.UntagResourceOutput, error)
 	UpdateLifecyclePolicyWithContext(ctx context.Context, input *dlm.UpdateLifecyclePolicyInput, opts ...request.Option) (*dlm.UpdateLifecyclePolicyOutput, error)
 }
 
@@ -115,6 +118,69 @@ func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *dlm.G
 	})
 
 	return req.Output.(*dlm.GetLifecyclePolicyOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *dlm.ListTagsForResourceInput, opts ...request.Option) (*dlm.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dlm",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*dlm.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DLMAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dlm.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *dlm.TagResourceInput, opts ...request.Option) (*dlm.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dlm",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*dlm.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DLMAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dlm.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *dlm.UntagResourceInput, opts ...request.Option) (*dlm.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dlm",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*dlm.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DLMAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dlm.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateLifecyclePolicyWithContext(ctx context.Context, input *dlm.UpdateLifecyclePolicyInput, opts ...request.Option) (*dlm.UpdateLifecyclePolicyOutput, error) {

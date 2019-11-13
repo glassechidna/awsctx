@@ -95,11 +95,13 @@ type IoT interface {
 	DetachThingPrincipalWithContext(ctx context.Context, input *iot.DetachThingPrincipalInput, opts ...request.Option) (*iot.DetachThingPrincipalOutput, error)
 	DisableTopicRuleWithContext(ctx context.Context, input *iot.DisableTopicRuleInput, opts ...request.Option) (*iot.DisableTopicRuleOutput, error)
 	EnableTopicRuleWithContext(ctx context.Context, input *iot.EnableTopicRuleInput, opts ...request.Option) (*iot.EnableTopicRuleOutput, error)
+	GetCardinalityWithContext(ctx context.Context, input *iot.GetCardinalityInput, opts ...request.Option) (*iot.GetCardinalityOutput, error)
 	GetEffectivePoliciesWithContext(ctx context.Context, input *iot.GetEffectivePoliciesInput, opts ...request.Option) (*iot.GetEffectivePoliciesOutput, error)
 	GetIndexingConfigurationWithContext(ctx context.Context, input *iot.GetIndexingConfigurationInput, opts ...request.Option) (*iot.GetIndexingConfigurationOutput, error)
 	GetJobDocumentWithContext(ctx context.Context, input *iot.GetJobDocumentInput, opts ...request.Option) (*iot.GetJobDocumentOutput, error)
 	GetLoggingOptionsWithContext(ctx context.Context, input *iot.GetLoggingOptionsInput, opts ...request.Option) (*iot.GetLoggingOptionsOutput, error)
 	GetOTAUpdateWithContext(ctx context.Context, input *iot.GetOTAUpdateInput, opts ...request.Option) (*iot.GetOTAUpdateOutput, error)
+	GetPercentilesWithContext(ctx context.Context, input *iot.GetPercentilesInput, opts ...request.Option) (*iot.GetPercentilesOutput, error)
 	GetPolicyWithContext(ctx context.Context, input *iot.GetPolicyInput, opts ...request.Option) (*iot.GetPolicyOutput, error)
 	GetPolicyVersionWithContext(ctx context.Context, input *iot.GetPolicyVersionInput, opts ...request.Option) (*iot.GetPolicyVersionOutput, error)
 	GetRegistrationCodeWithContext(ctx context.Context, input *iot.GetRegistrationCodeInput, opts ...request.Option) (*iot.GetRegistrationCodeOutput, error)
@@ -1970,6 +1972,27 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, input *iot.Enab
 	return req.Output.(*iot.EnableTopicRuleOutput), req.Error
 }
 
+func (c *Client) GetCardinalityWithContext(ctx context.Context, input *iot.GetCardinalityInput, opts ...request.Option) (*iot.GetCardinalityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetCardinality",
+		Input:   input,
+		Output:  (*iot.GetCardinalityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetCardinalityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetCardinalityOutput), req.Error
+}
+
 func (c *Client) GetEffectivePoliciesWithContext(ctx context.Context, input *iot.GetEffectivePoliciesInput, opts ...request.Option) (*iot.GetEffectivePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2073,6 +2096,27 @@ func (c *Client) GetOTAUpdateWithContext(ctx context.Context, input *iot.GetOTAU
 	})
 
 	return req.Output.(*iot.GetOTAUpdateOutput), req.Error
+}
+
+func (c *Client) GetPercentilesWithContext(ctx context.Context, input *iot.GetPercentilesInput, opts ...request.Option) (*iot.GetPercentilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetPercentiles",
+		Input:   input,
+		Output:  (*iot.GetPercentilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetPercentilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetPercentilesOutput), req.Error
 }
 
 func (c *Client) GetPolicyWithContext(ctx context.Context, input *iot.GetPolicyInput, opts ...request.Option) (*iot.GetPolicyOutput, error) {

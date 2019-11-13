@@ -24,6 +24,7 @@ type CloudSearch interface {
 	DeleteSuggesterWithContext(ctx context.Context, input *cloudsearch.DeleteSuggesterInput, opts ...request.Option) (*cloudsearch.DeleteSuggesterOutput, error)
 	DescribeAnalysisSchemesWithContext(ctx context.Context, input *cloudsearch.DescribeAnalysisSchemesInput, opts ...request.Option) (*cloudsearch.DescribeAnalysisSchemesOutput, error)
 	DescribeAvailabilityOptionsWithContext(ctx context.Context, input *cloudsearch.DescribeAvailabilityOptionsInput, opts ...request.Option) (*cloudsearch.DescribeAvailabilityOptionsOutput, error)
+	DescribeDomainEndpointOptionsWithContext(ctx context.Context, input *cloudsearch.DescribeDomainEndpointOptionsInput, opts ...request.Option) (*cloudsearch.DescribeDomainEndpointOptionsOutput, error)
 	DescribeDomainsWithContext(ctx context.Context, input *cloudsearch.DescribeDomainsInput, opts ...request.Option) (*cloudsearch.DescribeDomainsOutput, error)
 	DescribeExpressionsWithContext(ctx context.Context, input *cloudsearch.DescribeExpressionsInput, opts ...request.Option) (*cloudsearch.DescribeExpressionsOutput, error)
 	DescribeIndexFieldsWithContext(ctx context.Context, input *cloudsearch.DescribeIndexFieldsInput, opts ...request.Option) (*cloudsearch.DescribeIndexFieldsOutput, error)
@@ -33,6 +34,7 @@ type CloudSearch interface {
 	IndexDocumentsWithContext(ctx context.Context, input *cloudsearch.IndexDocumentsInput, opts ...request.Option) (*cloudsearch.IndexDocumentsOutput, error)
 	ListDomainNamesWithContext(ctx context.Context, input *cloudsearch.ListDomainNamesInput, opts ...request.Option) (*cloudsearch.ListDomainNamesOutput, error)
 	UpdateAvailabilityOptionsWithContext(ctx context.Context, input *cloudsearch.UpdateAvailabilityOptionsInput, opts ...request.Option) (*cloudsearch.UpdateAvailabilityOptionsOutput, error)
+	UpdateDomainEndpointOptionsWithContext(ctx context.Context, input *cloudsearch.UpdateDomainEndpointOptionsInput, opts ...request.Option) (*cloudsearch.UpdateDomainEndpointOptionsOutput, error)
 	UpdateScalingParametersWithContext(ctx context.Context, input *cloudsearch.UpdateScalingParametersInput, opts ...request.Option) (*cloudsearch.UpdateScalingParametersOutput, error)
 	UpdateServiceAccessPoliciesWithContext(ctx context.Context, input *cloudsearch.UpdateServiceAccessPoliciesInput, opts ...request.Option) (*cloudsearch.UpdateServiceAccessPoliciesOutput, error)
 }
@@ -325,6 +327,27 @@ func (c *Client) DescribeAvailabilityOptionsWithContext(ctx context.Context, inp
 	return req.Output.(*cloudsearch.DescribeAvailabilityOptionsOutput), req.Error
 }
 
+func (c *Client) DescribeDomainEndpointOptionsWithContext(ctx context.Context, input *cloudsearch.DescribeDomainEndpointOptionsInput, opts ...request.Option) (*cloudsearch.DescribeDomainEndpointOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudsearch",
+		Action:  "DescribeDomainEndpointOptions",
+		Input:   input,
+		Output:  (*cloudsearch.DescribeDomainEndpointOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudSearchAPI.DescribeDomainEndpointOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudsearch.DescribeDomainEndpointOptionsOutput), req.Error
+}
+
 func (c *Client) DescribeDomainsWithContext(ctx context.Context, input *cloudsearch.DescribeDomainsInput, opts ...request.Option) (*cloudsearch.DescribeDomainsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudsearch",
@@ -512,6 +535,27 @@ func (c *Client) UpdateAvailabilityOptionsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*cloudsearch.UpdateAvailabilityOptionsOutput), req.Error
+}
+
+func (c *Client) UpdateDomainEndpointOptionsWithContext(ctx context.Context, input *cloudsearch.UpdateDomainEndpointOptionsInput, opts ...request.Option) (*cloudsearch.UpdateDomainEndpointOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudsearch",
+		Action:  "UpdateDomainEndpointOptions",
+		Input:   input,
+		Output:  (*cloudsearch.UpdateDomainEndpointOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudSearchAPI.UpdateDomainEndpointOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudsearch.UpdateDomainEndpointOptionsOutput), req.Error
 }
 
 func (c *Client) UpdateScalingParametersWithContext(ctx context.Context, input *cloudsearch.UpdateScalingParametersInput, opts ...request.Option) (*cloudsearch.UpdateScalingParametersOutput, error) {
