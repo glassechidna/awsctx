@@ -11,6 +11,7 @@ import (
 )
 
 type Personalize interface {
+	CreateBatchInferenceJobWithContext(ctx context.Context, input *personalize.CreateBatchInferenceJobInput, opts ...request.Option) (*personalize.CreateBatchInferenceJobOutput, error)
 	CreateCampaignWithContext(ctx context.Context, input *personalize.CreateCampaignInput, opts ...request.Option) (*personalize.CreateCampaignOutput, error)
 	CreateDatasetWithContext(ctx context.Context, input *personalize.CreateDatasetInput, opts ...request.Option) (*personalize.CreateDatasetOutput, error)
 	CreateDatasetGroupWithContext(ctx context.Context, input *personalize.CreateDatasetGroupInput, opts ...request.Option) (*personalize.CreateDatasetGroupOutput, error)
@@ -26,6 +27,7 @@ type Personalize interface {
 	DeleteSchemaWithContext(ctx context.Context, input *personalize.DeleteSchemaInput, opts ...request.Option) (*personalize.DeleteSchemaOutput, error)
 	DeleteSolutionWithContext(ctx context.Context, input *personalize.DeleteSolutionInput, opts ...request.Option) (*personalize.DeleteSolutionOutput, error)
 	DescribeAlgorithmWithContext(ctx context.Context, input *personalize.DescribeAlgorithmInput, opts ...request.Option) (*personalize.DescribeAlgorithmOutput, error)
+	DescribeBatchInferenceJobWithContext(ctx context.Context, input *personalize.DescribeBatchInferenceJobInput, opts ...request.Option) (*personalize.DescribeBatchInferenceJobOutput, error)
 	DescribeCampaignWithContext(ctx context.Context, input *personalize.DescribeCampaignInput, opts ...request.Option) (*personalize.DescribeCampaignOutput, error)
 	DescribeDatasetWithContext(ctx context.Context, input *personalize.DescribeDatasetInput, opts ...request.Option) (*personalize.DescribeDatasetOutput, error)
 	DescribeDatasetGroupWithContext(ctx context.Context, input *personalize.DescribeDatasetGroupInput, opts ...request.Option) (*personalize.DescribeDatasetGroupOutput, error)
@@ -37,6 +39,8 @@ type Personalize interface {
 	DescribeSolutionWithContext(ctx context.Context, input *personalize.DescribeSolutionInput, opts ...request.Option) (*personalize.DescribeSolutionOutput, error)
 	DescribeSolutionVersionWithContext(ctx context.Context, input *personalize.DescribeSolutionVersionInput, opts ...request.Option) (*personalize.DescribeSolutionVersionOutput, error)
 	GetSolutionMetricsWithContext(ctx context.Context, input *personalize.GetSolutionMetricsInput, opts ...request.Option) (*personalize.GetSolutionMetricsOutput, error)
+	ListBatchInferenceJobsWithContext(ctx context.Context, input *personalize.ListBatchInferenceJobsInput, opts ...request.Option) (*personalize.ListBatchInferenceJobsOutput, error)
+	ListBatchInferenceJobsPagesWithContext(ctx context.Context, input *personalize.ListBatchInferenceJobsInput, cb func(*personalize.ListBatchInferenceJobsOutput, bool) bool, opts ...request.Option) error
 	ListCampaignsWithContext(ctx context.Context, input *personalize.ListCampaignsInput, opts ...request.Option) (*personalize.ListCampaignsOutput, error)
 	ListCampaignsPagesWithContext(ctx context.Context, input *personalize.ListCampaignsInput, cb func(*personalize.ListCampaignsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetGroupsWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, opts ...request.Option) (*personalize.ListDatasetGroupsOutput, error)
@@ -72,6 +76,27 @@ func New(base personalizeiface.PersonalizeAPI, ctxer awsctx.Contexter) Personali
 
 var _ Personalize = (*personalize.Personalize)(nil)
 var _ Personalize = (*Client)(nil)
+
+func (c *Client) CreateBatchInferenceJobWithContext(ctx context.Context, input *personalize.CreateBatchInferenceJobInput, opts ...request.Option) (*personalize.CreateBatchInferenceJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "CreateBatchInferenceJob",
+		Input:   input,
+		Output:  (*personalize.CreateBatchInferenceJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.CreateBatchInferenceJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.CreateBatchInferenceJobOutput), req.Error
+}
 
 func (c *Client) CreateCampaignWithContext(ctx context.Context, input *personalize.CreateCampaignInput, opts ...request.Option) (*personalize.CreateCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -388,6 +413,27 @@ func (c *Client) DescribeAlgorithmWithContext(ctx context.Context, input *person
 	return req.Output.(*personalize.DescribeAlgorithmOutput), req.Error
 }
 
+func (c *Client) DescribeBatchInferenceJobWithContext(ctx context.Context, input *personalize.DescribeBatchInferenceJobInput, opts ...request.Option) (*personalize.DescribeBatchInferenceJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "DescribeBatchInferenceJob",
+		Input:   input,
+		Output:  (*personalize.DescribeBatchInferenceJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.DescribeBatchInferenceJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.DescribeBatchInferenceJobOutput), req.Error
+}
+
 func (c *Client) DescribeCampaignWithContext(ctx context.Context, input *personalize.DescribeCampaignInput, opts ...request.Option) (*personalize.DescribeCampaignOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -617,6 +663,47 @@ func (c *Client) GetSolutionMetricsWithContext(ctx context.Context, input *perso
 	})
 
 	return req.Output.(*personalize.GetSolutionMetricsOutput), req.Error
+}
+
+func (c *Client) ListBatchInferenceJobsWithContext(ctx context.Context, input *personalize.ListBatchInferenceJobsInput, opts ...request.Option) (*personalize.ListBatchInferenceJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListBatchInferenceJobs",
+		Input:   input,
+		Output:  (*personalize.ListBatchInferenceJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.ListBatchInferenceJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.ListBatchInferenceJobsOutput), req.Error
+}
+
+func (c *Client) ListBatchInferenceJobsPagesWithContext(ctx context.Context, input *personalize.ListBatchInferenceJobsInput, cb func(*personalize.ListBatchInferenceJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListBatchInferenceJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListBatchInferenceJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCampaignsWithContext(ctx context.Context, input *personalize.ListCampaignsInput, opts ...request.Option) (*personalize.ListCampaignsOutput, error) {

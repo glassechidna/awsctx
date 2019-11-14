@@ -34,12 +34,15 @@ type Connect interface {
 	ListRoutingProfilesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, cb func(*connect.ListRoutingProfilesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
 	ListSecurityProfilesPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, cb func(*connect.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error)
 	ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error)
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
 	StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error)
 	StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error)
+	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error)
 	UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error)
 	UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error)
 	UpdateUserIdentityInfoWithContext(ctx context.Context, input *connect.UpdateUserIdentityInfoInput, opts ...request.Option) (*connect.UpdateUserIdentityInfoOutput, error)
@@ -538,6 +541,27 @@ func (c *Client) ListSecurityProfilesPagesWithContext(ctx context.Context, input
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*connect.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -660,6 +684,48 @@ func (c *Client) StopContactWithContext(ctx context.Context, input *connect.Stop
 	})
 
 	return req.Output.(*connect.StopContactOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*connect.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*connect.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error) {
