@@ -12,11 +12,16 @@ import (
 
 type EKS interface {
 	CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error)
+	CreateNodegroupWithContext(ctx context.Context, input *eks.CreateNodegroupInput, opts ...request.Option) (*eks.CreateNodegroupOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error)
+	DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
+	DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error)
 	DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error)
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error
+	ListNodegroupsWithContext(ctx context.Context, input *eks.ListNodegroupsInput, opts ...request.Option) (*eks.ListNodegroupsOutput, error)
+	ListNodegroupsPagesWithContext(ctx context.Context, input *eks.ListNodegroupsInput, cb func(*eks.ListNodegroupsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error)
 	ListUpdatesWithContext(ctx context.Context, input *eks.ListUpdatesInput, opts ...request.Option) (*eks.ListUpdatesOutput, error)
 	ListUpdatesPagesWithContext(ctx context.Context, input *eks.ListUpdatesInput, cb func(*eks.ListUpdatesOutput, bool) bool, opts ...request.Option) error
@@ -24,6 +29,8 @@ type EKS interface {
 	UntagResourceWithContext(ctx context.Context, input *eks.UntagResourceInput, opts ...request.Option) (*eks.UntagResourceOutput, error)
 	UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error)
 	UpdateClusterVersionWithContext(ctx context.Context, input *eks.UpdateClusterVersionInput, opts ...request.Option) (*eks.UpdateClusterVersionOutput, error)
+	UpdateNodegroupConfigWithContext(ctx context.Context, input *eks.UpdateNodegroupConfigInput, opts ...request.Option) (*eks.UpdateNodegroupConfigOutput, error)
+	UpdateNodegroupVersionWithContext(ctx context.Context, input *eks.UpdateNodegroupVersionInput, opts ...request.Option) (*eks.UpdateNodegroupVersionOutput, error)
 }
 
 type Client struct {
@@ -62,6 +69,27 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *eks.Create
 	return req.Output.(*eks.CreateClusterOutput), req.Error
 }
 
+func (c *Client) CreateNodegroupWithContext(ctx context.Context, input *eks.CreateNodegroupInput, opts ...request.Option) (*eks.CreateNodegroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "CreateNodegroup",
+		Input:   input,
+		Output:  (*eks.CreateNodegroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.CreateNodegroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.CreateNodegroupOutput), req.Error
+}
+
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -83,6 +111,27 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.Delete
 	return req.Output.(*eks.DeleteClusterOutput), req.Error
 }
 
+func (c *Client) DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DeleteNodegroup",
+		Input:   input,
+		Output:  (*eks.DeleteNodegroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DeleteNodegroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DeleteNodegroupOutput), req.Error
+}
+
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -102,6 +151,27 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.Desc
 	})
 
 	return req.Output.(*eks.DescribeClusterOutput), req.Error
+}
+
+func (c *Client) DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeNodegroup",
+		Input:   input,
+		Output:  (*eks.DescribeNodegroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeNodegroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeNodegroupOutput), req.Error
 }
 
 func (c *Client) DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error) {
@@ -161,6 +231,47 @@ func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *eks.Li
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EKSAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListNodegroupsWithContext(ctx context.Context, input *eks.ListNodegroupsInput, opts ...request.Option) (*eks.ListNodegroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListNodegroups",
+		Input:   input,
+		Output:  (*eks.ListNodegroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.ListNodegroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.ListNodegroupsOutput), req.Error
+}
+
+func (c *Client) ListNodegroupsPagesWithContext(ctx context.Context, input *eks.ListNodegroupsInput, cb func(*eks.ListNodegroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListNodegroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.ListNodegroupsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -310,4 +421,46 @@ func (c *Client) UpdateClusterVersionWithContext(ctx context.Context, input *eks
 	})
 
 	return req.Output.(*eks.UpdateClusterVersionOutput), req.Error
+}
+
+func (c *Client) UpdateNodegroupConfigWithContext(ctx context.Context, input *eks.UpdateNodegroupConfigInput, opts ...request.Option) (*eks.UpdateNodegroupConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "UpdateNodegroupConfig",
+		Input:   input,
+		Output:  (*eks.UpdateNodegroupConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.UpdateNodegroupConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.UpdateNodegroupConfigOutput), req.Error
+}
+
+func (c *Client) UpdateNodegroupVersionWithContext(ctx context.Context, input *eks.UpdateNodegroupVersionInput, opts ...request.Option) (*eks.UpdateNodegroupVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "UpdateNodegroupVersion",
+		Input:   input,
+		Output:  (*eks.UpdateNodegroupVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.UpdateNodegroupVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.UpdateNodegroupVersionOutput), req.Error
 }

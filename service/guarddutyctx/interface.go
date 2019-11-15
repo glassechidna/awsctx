@@ -17,6 +17,7 @@ type GuardDuty interface {
 	CreateFilterWithContext(ctx context.Context, input *guardduty.CreateFilterInput, opts ...request.Option) (*guardduty.CreateFilterOutput, error)
 	CreateIPSetWithContext(ctx context.Context, input *guardduty.CreateIPSetInput, opts ...request.Option) (*guardduty.CreateIPSetOutput, error)
 	CreateMembersWithContext(ctx context.Context, input *guardduty.CreateMembersInput, opts ...request.Option) (*guardduty.CreateMembersOutput, error)
+	CreatePublishingDestinationWithContext(ctx context.Context, input *guardduty.CreatePublishingDestinationInput, opts ...request.Option) (*guardduty.CreatePublishingDestinationOutput, error)
 	CreateSampleFindingsWithContext(ctx context.Context, input *guardduty.CreateSampleFindingsInput, opts ...request.Option) (*guardduty.CreateSampleFindingsOutput, error)
 	CreateThreatIntelSetWithContext(ctx context.Context, input *guardduty.CreateThreatIntelSetInput, opts ...request.Option) (*guardduty.CreateThreatIntelSetOutput, error)
 	DeclineInvitationsWithContext(ctx context.Context, input *guardduty.DeclineInvitationsInput, opts ...request.Option) (*guardduty.DeclineInvitationsOutput, error)
@@ -25,7 +26,9 @@ type GuardDuty interface {
 	DeleteIPSetWithContext(ctx context.Context, input *guardduty.DeleteIPSetInput, opts ...request.Option) (*guardduty.DeleteIPSetOutput, error)
 	DeleteInvitationsWithContext(ctx context.Context, input *guardduty.DeleteInvitationsInput, opts ...request.Option) (*guardduty.DeleteInvitationsOutput, error)
 	DeleteMembersWithContext(ctx context.Context, input *guardduty.DeleteMembersInput, opts ...request.Option) (*guardduty.DeleteMembersOutput, error)
+	DeletePublishingDestinationWithContext(ctx context.Context, input *guardduty.DeletePublishingDestinationInput, opts ...request.Option) (*guardduty.DeletePublishingDestinationOutput, error)
 	DeleteThreatIntelSetWithContext(ctx context.Context, input *guardduty.DeleteThreatIntelSetInput, opts ...request.Option) (*guardduty.DeleteThreatIntelSetOutput, error)
+	DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error)
 	DisassociateMembersWithContext(ctx context.Context, input *guardduty.DisassociateMembersInput, opts ...request.Option) (*guardduty.DisassociateMembersOutput, error)
 	GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error)
@@ -50,6 +53,8 @@ type GuardDuty interface {
 	ListInvitationsPagesWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, cb func(*guardduty.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *guardduty.ListMembersInput, opts ...request.Option) (*guardduty.ListMembersOutput, error)
 	ListMembersPagesWithContext(ctx context.Context, input *guardduty.ListMembersInput, cb func(*guardduty.ListMembersOutput, bool) bool, opts ...request.Option) error
+	ListPublishingDestinationsWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, opts ...request.Option) (*guardduty.ListPublishingDestinationsOutput, error)
+	ListPublishingDestinationsPagesWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, cb func(*guardduty.ListPublishingDestinationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error)
 	ListThreatIntelSetsWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, opts ...request.Option) (*guardduty.ListThreatIntelSetsOutput, error)
 	ListThreatIntelSetsPagesWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, cb func(*guardduty.ListThreatIntelSetsOutput, bool) bool, opts ...request.Option) error
@@ -62,6 +67,7 @@ type GuardDuty interface {
 	UpdateFilterWithContext(ctx context.Context, input *guardduty.UpdateFilterInput, opts ...request.Option) (*guardduty.UpdateFilterOutput, error)
 	UpdateFindingsFeedbackWithContext(ctx context.Context, input *guardduty.UpdateFindingsFeedbackInput, opts ...request.Option) (*guardduty.UpdateFindingsFeedbackOutput, error)
 	UpdateIPSetWithContext(ctx context.Context, input *guardduty.UpdateIPSetInput, opts ...request.Option) (*guardduty.UpdateIPSetOutput, error)
+	UpdatePublishingDestinationWithContext(ctx context.Context, input *guardduty.UpdatePublishingDestinationInput, opts ...request.Option) (*guardduty.UpdatePublishingDestinationOutput, error)
 	UpdateThreatIntelSetWithContext(ctx context.Context, input *guardduty.UpdateThreatIntelSetInput, opts ...request.Option) (*guardduty.UpdateThreatIntelSetOutput, error)
 }
 
@@ -204,6 +210,27 @@ func (c *Client) CreateMembersWithContext(ctx context.Context, input *guardduty.
 	})
 
 	return req.Output.(*guardduty.CreateMembersOutput), req.Error
+}
+
+func (c *Client) CreatePublishingDestinationWithContext(ctx context.Context, input *guardduty.CreatePublishingDestinationInput, opts ...request.Option) (*guardduty.CreatePublishingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "CreatePublishingDestination",
+		Input:   input,
+		Output:  (*guardduty.CreatePublishingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.CreatePublishingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.CreatePublishingDestinationOutput), req.Error
 }
 
 func (c *Client) CreateSampleFindingsWithContext(ctx context.Context, input *guardduty.CreateSampleFindingsInput, opts ...request.Option) (*guardduty.CreateSampleFindingsOutput, error) {
@@ -374,6 +401,27 @@ func (c *Client) DeleteMembersWithContext(ctx context.Context, input *guardduty.
 	return req.Output.(*guardduty.DeleteMembersOutput), req.Error
 }
 
+func (c *Client) DeletePublishingDestinationWithContext(ctx context.Context, input *guardduty.DeletePublishingDestinationInput, opts ...request.Option) (*guardduty.DeletePublishingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DeletePublishingDestination",
+		Input:   input,
+		Output:  (*guardduty.DeletePublishingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.DeletePublishingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.DeletePublishingDestinationOutput), req.Error
+}
+
 func (c *Client) DeleteThreatIntelSetWithContext(ctx context.Context, input *guardduty.DeleteThreatIntelSetInput, opts ...request.Option) (*guardduty.DeleteThreatIntelSetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -393,6 +441,27 @@ func (c *Client) DeleteThreatIntelSetWithContext(ctx context.Context, input *gua
 	})
 
 	return req.Output.(*guardduty.DeleteThreatIntelSetOutput), req.Error
+}
+
+func (c *Client) DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DescribePublishingDestination",
+		Input:   input,
+		Output:  (*guardduty.DescribePublishingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.DescribePublishingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.DescribePublishingDestinationOutput), req.Error
 }
 
 func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error) {
@@ -893,6 +962,47 @@ func (c *Client) ListMembersPagesWithContext(ctx context.Context, input *guarddu
 	return req.Error
 }
 
+func (c *Client) ListPublishingDestinationsWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, opts ...request.Option) (*guardduty.ListPublishingDestinationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListPublishingDestinations",
+		Input:   input,
+		Output:  (*guardduty.ListPublishingDestinationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.ListPublishingDestinationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.ListPublishingDestinationsOutput), req.Error
+}
+
+func (c *Client) ListPublishingDestinationsPagesWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, cb func(*guardduty.ListPublishingDestinationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListPublishingDestinations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListPublishingDestinationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -1142,6 +1252,27 @@ func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *guardduty.Up
 	})
 
 	return req.Output.(*guardduty.UpdateIPSetOutput), req.Error
+}
+
+func (c *Client) UpdatePublishingDestinationWithContext(ctx context.Context, input *guardduty.UpdatePublishingDestinationInput, opts ...request.Option) (*guardduty.UpdatePublishingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "UpdatePublishingDestination",
+		Input:   input,
+		Output:  (*guardduty.UpdatePublishingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.UpdatePublishingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.UpdatePublishingDestinationOutput), req.Error
 }
 
 func (c *Client) UpdateThreatIntelSetWithContext(ctx context.Context, input *guardduty.UpdateThreatIntelSetInput, opts ...request.Option) (*guardduty.UpdateThreatIntelSetOutput, error) {

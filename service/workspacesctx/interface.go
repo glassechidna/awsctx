@@ -20,6 +20,7 @@ type WorkSpaces interface {
 	DeleteIpGroupWithContext(ctx context.Context, input *workspaces.DeleteIpGroupInput, opts ...request.Option) (*workspaces.DeleteIpGroupOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *workspaces.DeleteTagsInput, opts ...request.Option) (*workspaces.DeleteTagsOutput, error)
 	DeleteWorkspaceImageWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceImageInput, opts ...request.Option) (*workspaces.DeleteWorkspaceImageOutput, error)
+	DeregisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.DeregisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.DeregisterWorkspaceDirectoryOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error)
 	DescribeAccountModificationsWithContext(ctx context.Context, input *workspaces.DescribeAccountModificationsInput, opts ...request.Option) (*workspaces.DescribeAccountModificationsOutput, error)
 	DescribeClientPropertiesWithContext(ctx context.Context, input *workspaces.DescribeClientPropertiesInput, opts ...request.Option) (*workspaces.DescribeClientPropertiesOutput, error)
@@ -39,10 +40,14 @@ type WorkSpaces interface {
 	ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
 	ModifyAccountWithContext(ctx context.Context, input *workspaces.ModifyAccountInput, opts ...request.Option) (*workspaces.ModifyAccountOutput, error)
 	ModifyClientPropertiesWithContext(ctx context.Context, input *workspaces.ModifyClientPropertiesInput, opts ...request.Option) (*workspaces.ModifyClientPropertiesOutput, error)
+	ModifySelfservicePermissionsWithContext(ctx context.Context, input *workspaces.ModifySelfservicePermissionsInput, opts ...request.Option) (*workspaces.ModifySelfservicePermissionsOutput, error)
+	ModifyWorkspaceAccessPropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceAccessPropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspaceAccessPropertiesOutput, error)
+	ModifyWorkspaceCreationPropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceCreationPropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspaceCreationPropertiesOutput, error)
 	ModifyWorkspacePropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspacePropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspacePropertiesOutput, error)
 	ModifyWorkspaceStateWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceStateInput, opts ...request.Option) (*workspaces.ModifyWorkspaceStateOutput, error)
 	RebootWorkspacesWithContext(ctx context.Context, input *workspaces.RebootWorkspacesInput, opts ...request.Option) (*workspaces.RebootWorkspacesOutput, error)
 	RebuildWorkspacesWithContext(ctx context.Context, input *workspaces.RebuildWorkspacesInput, opts ...request.Option) (*workspaces.RebuildWorkspacesOutput, error)
+	RegisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.RegisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.RegisterWorkspaceDirectoryOutput, error)
 	RestoreWorkspaceWithContext(ctx context.Context, input *workspaces.RestoreWorkspaceInput, opts ...request.Option) (*workspaces.RestoreWorkspaceOutput, error)
 	RevokeIpRulesWithContext(ctx context.Context, input *workspaces.RevokeIpRulesInput, opts ...request.Option) (*workspaces.RevokeIpRulesOutput, error)
 	StartWorkspacesWithContext(ctx context.Context, input *workspaces.StartWorkspacesInput, opts ...request.Option) (*workspaces.StartWorkspacesOutput, error)
@@ -253,6 +258,27 @@ func (c *Client) DeleteWorkspaceImageWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workspaces.DeleteWorkspaceImageOutput), req.Error
+}
+
+func (c *Client) DeregisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.DeregisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.DeregisterWorkspaceDirectoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DeregisterWorkspaceDirectory",
+		Input:   input,
+		Output:  (*workspaces.DeregisterWorkspaceDirectoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DeregisterWorkspaceDirectoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DeregisterWorkspaceDirectoryOutput), req.Error
 }
 
 func (c *Client) DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error) {
@@ -651,6 +677,69 @@ func (c *Client) ModifyClientPropertiesWithContext(ctx context.Context, input *w
 	return req.Output.(*workspaces.ModifyClientPropertiesOutput), req.Error
 }
 
+func (c *Client) ModifySelfservicePermissionsWithContext(ctx context.Context, input *workspaces.ModifySelfservicePermissionsInput, opts ...request.Option) (*workspaces.ModifySelfservicePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "ModifySelfservicePermissions",
+		Input:   input,
+		Output:  (*workspaces.ModifySelfservicePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.ModifySelfservicePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.ModifySelfservicePermissionsOutput), req.Error
+}
+
+func (c *Client) ModifyWorkspaceAccessPropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceAccessPropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspaceAccessPropertiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "ModifyWorkspaceAccessProperties",
+		Input:   input,
+		Output:  (*workspaces.ModifyWorkspaceAccessPropertiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.ModifyWorkspaceAccessPropertiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.ModifyWorkspaceAccessPropertiesOutput), req.Error
+}
+
+func (c *Client) ModifyWorkspaceCreationPropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceCreationPropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspaceCreationPropertiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "ModifyWorkspaceCreationProperties",
+		Input:   input,
+		Output:  (*workspaces.ModifyWorkspaceCreationPropertiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.ModifyWorkspaceCreationPropertiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.ModifyWorkspaceCreationPropertiesOutput), req.Error
+}
+
 func (c *Client) ModifyWorkspacePropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspacePropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspacePropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
@@ -733,6 +822,27 @@ func (c *Client) RebuildWorkspacesWithContext(ctx context.Context, input *worksp
 	})
 
 	return req.Output.(*workspaces.RebuildWorkspacesOutput), req.Error
+}
+
+func (c *Client) RegisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.RegisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.RegisterWorkspaceDirectoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "RegisterWorkspaceDirectory",
+		Input:   input,
+		Output:  (*workspaces.RegisterWorkspaceDirectoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.RegisterWorkspaceDirectoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.RegisterWorkspaceDirectoryOutput), req.Error
 }
 
 func (c *Client) RestoreWorkspaceWithContext(ctx context.Context, input *workspaces.RestoreWorkspaceInput, opts ...request.Option) (*workspaces.RestoreWorkspaceOutput, error) {
