@@ -20,6 +20,7 @@ type Pinpoint interface {
 	CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error)
 	CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error)
 	CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error)
+	CreateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.CreateVoiceTemplateInput, opts ...request.Option) (*pinpoint.CreateVoiceTemplateOutput, error)
 	DeleteAdmChannelWithContext(ctx context.Context, input *pinpoint.DeleteAdmChannelInput, opts ...request.Option) (*pinpoint.DeleteAdmChannelOutput, error)
 	DeleteApnsChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsChannelOutput, error)
 	DeleteApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.DeleteApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.DeleteApnsSandboxChannelOutput, error)
@@ -40,6 +41,7 @@ type Pinpoint interface {
 	DeleteSmsTemplateWithContext(ctx context.Context, input *pinpoint.DeleteSmsTemplateInput, opts ...request.Option) (*pinpoint.DeleteSmsTemplateOutput, error)
 	DeleteUserEndpointsWithContext(ctx context.Context, input *pinpoint.DeleteUserEndpointsInput, opts ...request.Option) (*pinpoint.DeleteUserEndpointsOutput, error)
 	DeleteVoiceChannelWithContext(ctx context.Context, input *pinpoint.DeleteVoiceChannelInput, opts ...request.Option) (*pinpoint.DeleteVoiceChannelOutput, error)
+	DeleteVoiceTemplateWithContext(ctx context.Context, input *pinpoint.DeleteVoiceTemplateInput, opts ...request.Option) (*pinpoint.DeleteVoiceTemplateOutput, error)
 	GetAdmChannelWithContext(ctx context.Context, input *pinpoint.GetAdmChannelInput, opts ...request.Option) (*pinpoint.GetAdmChannelOutput, error)
 	GetApnsChannelWithContext(ctx context.Context, input *pinpoint.GetApnsChannelInput, opts ...request.Option) (*pinpoint.GetApnsChannelOutput, error)
 	GetApnsSandboxChannelWithContext(ctx context.Context, input *pinpoint.GetApnsSandboxChannelInput, opts ...request.Option) (*pinpoint.GetApnsSandboxChannelOutput, error)
@@ -81,6 +83,7 @@ type Pinpoint interface {
 	GetSmsTemplateWithContext(ctx context.Context, input *pinpoint.GetSmsTemplateInput, opts ...request.Option) (*pinpoint.GetSmsTemplateOutput, error)
 	GetUserEndpointsWithContext(ctx context.Context, input *pinpoint.GetUserEndpointsInput, opts ...request.Option) (*pinpoint.GetUserEndpointsOutput, error)
 	GetVoiceChannelWithContext(ctx context.Context, input *pinpoint.GetVoiceChannelInput, opts ...request.Option) (*pinpoint.GetVoiceChannelOutput, error)
+	GetVoiceTemplateWithContext(ctx context.Context, input *pinpoint.GetVoiceTemplateInput, opts ...request.Option) (*pinpoint.GetVoiceTemplateOutput, error)
 	ListJourneysWithContext(ctx context.Context, input *pinpoint.ListJourneysInput, opts ...request.Option) (*pinpoint.ListJourneysOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error)
 	ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error)
@@ -112,6 +115,7 @@ type Pinpoint interface {
 	UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error)
 	UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error)
 	UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error)
+	UpdateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.UpdateVoiceTemplateInput, opts ...request.Option) (*pinpoint.UpdateVoiceTemplateOutput, error)
 }
 
 type Client struct {
@@ -316,6 +320,27 @@ func (c *Client) CreateSmsTemplateWithContext(ctx context.Context, input *pinpoi
 	})
 
 	return req.Output.(*pinpoint.CreateSmsTemplateOutput), req.Error
+}
+
+func (c *Client) CreateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.CreateVoiceTemplateInput, opts ...request.Option) (*pinpoint.CreateVoiceTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "CreateVoiceTemplate",
+		Input:   input,
+		Output:  (*pinpoint.CreateVoiceTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.CreateVoiceTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.CreateVoiceTemplateOutput), req.Error
 }
 
 func (c *Client) DeleteAdmChannelWithContext(ctx context.Context, input *pinpoint.DeleteAdmChannelInput, opts ...request.Option) (*pinpoint.DeleteAdmChannelOutput, error) {
@@ -736,6 +761,27 @@ func (c *Client) DeleteVoiceChannelWithContext(ctx context.Context, input *pinpo
 	})
 
 	return req.Output.(*pinpoint.DeleteVoiceChannelOutput), req.Error
+}
+
+func (c *Client) DeleteVoiceTemplateWithContext(ctx context.Context, input *pinpoint.DeleteVoiceTemplateInput, opts ...request.Option) (*pinpoint.DeleteVoiceTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "DeleteVoiceTemplate",
+		Input:   input,
+		Output:  (*pinpoint.DeleteVoiceTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.DeleteVoiceTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.DeleteVoiceTemplateOutput), req.Error
 }
 
 func (c *Client) GetAdmChannelWithContext(ctx context.Context, input *pinpoint.GetAdmChannelInput, opts ...request.Option) (*pinpoint.GetAdmChannelOutput, error) {
@@ -1599,6 +1645,27 @@ func (c *Client) GetVoiceChannelWithContext(ctx context.Context, input *pinpoint
 	return req.Output.(*pinpoint.GetVoiceChannelOutput), req.Error
 }
 
+func (c *Client) GetVoiceTemplateWithContext(ctx context.Context, input *pinpoint.GetVoiceTemplateInput, opts ...request.Option) (*pinpoint.GetVoiceTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetVoiceTemplate",
+		Input:   input,
+		Output:  (*pinpoint.GetVoiceTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetVoiceTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetVoiceTemplateOutput), req.Error
+}
+
 func (c *Client) ListJourneysWithContext(ctx context.Context, input *pinpoint.ListJourneysInput, opts ...request.Option) (*pinpoint.ListJourneysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -2248,4 +2315,25 @@ func (c *Client) UpdateVoiceChannelWithContext(ctx context.Context, input *pinpo
 	})
 
 	return req.Output.(*pinpoint.UpdateVoiceChannelOutput), req.Error
+}
+
+func (c *Client) UpdateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.UpdateVoiceTemplateInput, opts ...request.Option) (*pinpoint.UpdateVoiceTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateVoiceTemplate",
+		Input:   input,
+		Output:  (*pinpoint.UpdateVoiceTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateVoiceTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateVoiceTemplateOutput), req.Error
 }
