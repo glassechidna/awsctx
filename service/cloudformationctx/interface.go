@@ -40,6 +40,7 @@ type CloudFormation interface {
 	DescribeTypeRegistrationWithContext(ctx context.Context, input *cloudformation.DescribeTypeRegistrationInput, opts ...request.Option) (*cloudformation.DescribeTypeRegistrationOutput, error)
 	DetectStackDriftWithContext(ctx context.Context, input *cloudformation.DetectStackDriftInput, opts ...request.Option) (*cloudformation.DetectStackDriftOutput, error)
 	DetectStackResourceDriftWithContext(ctx context.Context, input *cloudformation.DetectStackResourceDriftInput, opts ...request.Option) (*cloudformation.DetectStackResourceDriftOutput, error)
+	DetectStackSetDriftWithContext(ctx context.Context, input *cloudformation.DetectStackSetDriftInput, opts ...request.Option) (*cloudformation.DetectStackSetDriftOutput, error)
 	EstimateTemplateCostWithContext(ctx context.Context, input *cloudformation.EstimateTemplateCostInput, opts ...request.Option) (*cloudformation.EstimateTemplateCostOutput, error)
 	ExecuteChangeSetWithContext(ctx context.Context, input *cloudformation.ExecuteChangeSetInput, opts ...request.Option) (*cloudformation.ExecuteChangeSetOutput, error)
 	GetStackPolicyWithContext(ctx context.Context, input *cloudformation.GetStackPolicyInput, opts ...request.Option) (*cloudformation.GetStackPolicyOutput, error)
@@ -696,6 +697,27 @@ func (c *Client) DetectStackResourceDriftWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*cloudformation.DetectStackResourceDriftOutput), req.Error
+}
+
+func (c *Client) DetectStackSetDriftWithContext(ctx context.Context, input *cloudformation.DetectStackSetDriftInput, opts ...request.Option) (*cloudformation.DetectStackSetDriftOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DetectStackSetDrift",
+		Input:   input,
+		Output:  (*cloudformation.DetectStackSetDriftOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.DetectStackSetDriftWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.DetectStackSetDriftOutput), req.Error
 }
 
 func (c *Client) EstimateTemplateCostWithContext(ctx context.Context, input *cloudformation.EstimateTemplateCostInput, opts ...request.Option) (*cloudformation.EstimateTemplateCostOutput, error) {

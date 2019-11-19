@@ -25,6 +25,7 @@ type IoT interface {
 	CancelJobWithContext(ctx context.Context, input *iot.CancelJobInput, opts ...request.Option) (*iot.CancelJobOutput, error)
 	CancelJobExecutionWithContext(ctx context.Context, input *iot.CancelJobExecutionInput, opts ...request.Option) (*iot.CancelJobExecutionOutput, error)
 	ClearDefaultAuthorizerWithContext(ctx context.Context, input *iot.ClearDefaultAuthorizerInput, opts ...request.Option) (*iot.ClearDefaultAuthorizerOutput, error)
+	ConfirmTopicRuleDestinationWithContext(ctx context.Context, input *iot.ConfirmTopicRuleDestinationInput, opts ...request.Option) (*iot.ConfirmTopicRuleDestinationOutput, error)
 	CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error)
 	CreateBillingGroupWithContext(ctx context.Context, input *iot.CreateBillingGroupInput, opts ...request.Option) (*iot.CreateBillingGroupOutput, error)
 	CreateCertificateFromCsrWithContext(ctx context.Context, input *iot.CreateCertificateFromCsrInput, opts ...request.Option) (*iot.CreateCertificateFromCsrOutput, error)
@@ -43,6 +44,7 @@ type IoT interface {
 	CreateThingGroupWithContext(ctx context.Context, input *iot.CreateThingGroupInput, opts ...request.Option) (*iot.CreateThingGroupOutput, error)
 	CreateThingTypeWithContext(ctx context.Context, input *iot.CreateThingTypeInput, opts ...request.Option) (*iot.CreateThingTypeOutput, error)
 	CreateTopicRuleWithContext(ctx context.Context, input *iot.CreateTopicRuleInput, opts ...request.Option) (*iot.CreateTopicRuleOutput, error)
+	CreateTopicRuleDestinationWithContext(ctx context.Context, input *iot.CreateTopicRuleDestinationInput, opts ...request.Option) (*iot.CreateTopicRuleDestinationOutput, error)
 	DeleteAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DeleteAccountAuditConfigurationInput, opts ...request.Option) (*iot.DeleteAccountAuditConfigurationOutput, error)
 	DeleteAuthorizerWithContext(ctx context.Context, input *iot.DeleteAuthorizerInput, opts ...request.Option) (*iot.DeleteAuthorizerOutput, error)
 	DeleteBillingGroupWithContext(ctx context.Context, input *iot.DeleteBillingGroupInput, opts ...request.Option) (*iot.DeleteBillingGroupOutput, error)
@@ -64,6 +66,7 @@ type IoT interface {
 	DeleteThingGroupWithContext(ctx context.Context, input *iot.DeleteThingGroupInput, opts ...request.Option) (*iot.DeleteThingGroupOutput, error)
 	DeleteThingTypeWithContext(ctx context.Context, input *iot.DeleteThingTypeInput, opts ...request.Option) (*iot.DeleteThingTypeOutput, error)
 	DeleteTopicRuleWithContext(ctx context.Context, input *iot.DeleteTopicRuleInput, opts ...request.Option) (*iot.DeleteTopicRuleOutput, error)
+	DeleteTopicRuleDestinationWithContext(ctx context.Context, input *iot.DeleteTopicRuleDestinationInput, opts ...request.Option) (*iot.DeleteTopicRuleDestinationOutput, error)
 	DeleteV2LoggingLevelWithContext(ctx context.Context, input *iot.DeleteV2LoggingLevelInput, opts ...request.Option) (*iot.DeleteV2LoggingLevelOutput, error)
 	DeprecateThingTypeWithContext(ctx context.Context, input *iot.DeprecateThingTypeInput, opts ...request.Option) (*iot.DeprecateThingTypeOutput, error)
 	DescribeAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DescribeAccountAuditConfigurationInput, opts ...request.Option) (*iot.DescribeAccountAuditConfigurationOutput, error)
@@ -107,6 +110,7 @@ type IoT interface {
 	GetRegistrationCodeWithContext(ctx context.Context, input *iot.GetRegistrationCodeInput, opts ...request.Option) (*iot.GetRegistrationCodeOutput, error)
 	GetStatisticsWithContext(ctx context.Context, input *iot.GetStatisticsInput, opts ...request.Option) (*iot.GetStatisticsOutput, error)
 	GetTopicRuleWithContext(ctx context.Context, input *iot.GetTopicRuleInput, opts ...request.Option) (*iot.GetTopicRuleOutput, error)
+	GetTopicRuleDestinationWithContext(ctx context.Context, input *iot.GetTopicRuleDestinationInput, opts ...request.Option) (*iot.GetTopicRuleDestinationOutput, error)
 	GetV2LoggingOptionsWithContext(ctx context.Context, input *iot.GetV2LoggingOptionsInput, opts ...request.Option) (*iot.GetV2LoggingOptionsOutput, error)
 	ListActiveViolationsWithContext(ctx context.Context, input *iot.ListActiveViolationsInput, opts ...request.Option) (*iot.ListActiveViolationsOutput, error)
 	ListAttachedPoliciesWithContext(ctx context.Context, input *iot.ListAttachedPoliciesInput, opts ...request.Option) (*iot.ListAttachedPoliciesOutput, error)
@@ -148,6 +152,7 @@ type IoT interface {
 	ListThingsWithContext(ctx context.Context, input *iot.ListThingsInput, opts ...request.Option) (*iot.ListThingsOutput, error)
 	ListThingsInBillingGroupWithContext(ctx context.Context, input *iot.ListThingsInBillingGroupInput, opts ...request.Option) (*iot.ListThingsInBillingGroupOutput, error)
 	ListThingsInThingGroupWithContext(ctx context.Context, input *iot.ListThingsInThingGroupInput, opts ...request.Option) (*iot.ListThingsInThingGroupOutput, error)
+	ListTopicRuleDestinationsWithContext(ctx context.Context, input *iot.ListTopicRuleDestinationsInput, opts ...request.Option) (*iot.ListTopicRuleDestinationsOutput, error)
 	ListTopicRulesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, opts ...request.Option) (*iot.ListTopicRulesOutput, error)
 	ListV2LoggingLevelsWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, opts ...request.Option) (*iot.ListV2LoggingLevelsOutput, error)
 	ListViolationEventsWithContext(ctx context.Context, input *iot.ListViolationEventsInput, opts ...request.Option) (*iot.ListViolationEventsOutput, error)
@@ -190,6 +195,7 @@ type IoT interface {
 	UpdateThingWithContext(ctx context.Context, input *iot.UpdateThingInput, opts ...request.Option) (*iot.UpdateThingOutput, error)
 	UpdateThingGroupWithContext(ctx context.Context, input *iot.UpdateThingGroupInput, opts ...request.Option) (*iot.UpdateThingGroupOutput, error)
 	UpdateThingGroupsForThingWithContext(ctx context.Context, input *iot.UpdateThingGroupsForThingInput, opts ...request.Option) (*iot.UpdateThingGroupsForThingOutput, error)
+	UpdateTopicRuleDestinationWithContext(ctx context.Context, input *iot.UpdateTopicRuleDestinationInput, opts ...request.Option) (*iot.UpdateTopicRuleDestinationOutput, error)
 	ValidateSecurityProfileBehaviorsWithContext(ctx context.Context, input *iot.ValidateSecurityProfileBehaviorsInput, opts ...request.Option) (*iot.ValidateSecurityProfileBehaviorsOutput, error)
 }
 
@@ -500,6 +506,27 @@ func (c *Client) ClearDefaultAuthorizerWithContext(ctx context.Context, input *i
 	})
 
 	return req.Output.(*iot.ClearDefaultAuthorizerOutput), req.Error
+}
+
+func (c *Client) ConfirmTopicRuleDestinationWithContext(ctx context.Context, input *iot.ConfirmTopicRuleDestinationInput, opts ...request.Option) (*iot.ConfirmTopicRuleDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ConfirmTopicRuleDestination",
+		Input:   input,
+		Output:  (*iot.ConfirmTopicRuleDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ConfirmTopicRuleDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ConfirmTopicRuleDestinationOutput), req.Error
 }
 
 func (c *Client) CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error) {
@@ -878,6 +905,27 @@ func (c *Client) CreateTopicRuleWithContext(ctx context.Context, input *iot.Crea
 	})
 
 	return req.Output.(*iot.CreateTopicRuleOutput), req.Error
+}
+
+func (c *Client) CreateTopicRuleDestinationWithContext(ctx context.Context, input *iot.CreateTopicRuleDestinationInput, opts ...request.Option) (*iot.CreateTopicRuleDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreateTopicRuleDestination",
+		Input:   input,
+		Output:  (*iot.CreateTopicRuleDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreateTopicRuleDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreateTopicRuleDestinationOutput), req.Error
 }
 
 func (c *Client) DeleteAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DeleteAccountAuditConfigurationInput, opts ...request.Option) (*iot.DeleteAccountAuditConfigurationOutput, error) {
@@ -1319,6 +1367,27 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, input *iot.Dele
 	})
 
 	return req.Output.(*iot.DeleteTopicRuleOutput), req.Error
+}
+
+func (c *Client) DeleteTopicRuleDestinationWithContext(ctx context.Context, input *iot.DeleteTopicRuleDestinationInput, opts ...request.Option) (*iot.DeleteTopicRuleDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeleteTopicRuleDestination",
+		Input:   input,
+		Output:  (*iot.DeleteTopicRuleDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeleteTopicRuleDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeleteTopicRuleDestinationOutput), req.Error
 }
 
 func (c *Client) DeleteV2LoggingLevelWithContext(ctx context.Context, input *iot.DeleteV2LoggingLevelInput, opts ...request.Option) (*iot.DeleteV2LoggingLevelOutput, error) {
@@ -2224,6 +2293,27 @@ func (c *Client) GetTopicRuleWithContext(ctx context.Context, input *iot.GetTopi
 	return req.Output.(*iot.GetTopicRuleOutput), req.Error
 }
 
+func (c *Client) GetTopicRuleDestinationWithContext(ctx context.Context, input *iot.GetTopicRuleDestinationInput, opts ...request.Option) (*iot.GetTopicRuleDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetTopicRuleDestination",
+		Input:   input,
+		Output:  (*iot.GetTopicRuleDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetTopicRuleDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetTopicRuleDestinationOutput), req.Error
+}
+
 func (c *Client) GetV2LoggingOptionsWithContext(ctx context.Context, input *iot.GetV2LoggingOptionsInput, opts ...request.Option) (*iot.GetV2LoggingOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3083,6 +3173,27 @@ func (c *Client) ListThingsInThingGroupWithContext(ctx context.Context, input *i
 	})
 
 	return req.Output.(*iot.ListThingsInThingGroupOutput), req.Error
+}
+
+func (c *Client) ListTopicRuleDestinationsWithContext(ctx context.Context, input *iot.ListTopicRuleDestinationsInput, opts ...request.Option) (*iot.ListTopicRuleDestinationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListTopicRuleDestinations",
+		Input:   input,
+		Output:  (*iot.ListTopicRuleDestinationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListTopicRuleDestinationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListTopicRuleDestinationsOutput), req.Error
 }
 
 func (c *Client) ListTopicRulesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, opts ...request.Option) (*iot.ListTopicRulesOutput, error) {
@@ -3965,6 +4076,27 @@ func (c *Client) UpdateThingGroupsForThingWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iot.UpdateThingGroupsForThingOutput), req.Error
+}
+
+func (c *Client) UpdateTopicRuleDestinationWithContext(ctx context.Context, input *iot.UpdateTopicRuleDestinationInput, opts ...request.Option) (*iot.UpdateTopicRuleDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdateTopicRuleDestination",
+		Input:   input,
+		Output:  (*iot.UpdateTopicRuleDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdateTopicRuleDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdateTopicRuleDestinationOutput), req.Error
 }
 
 func (c *Client) ValidateSecurityProfileBehaviorsWithContext(ctx context.Context, input *iot.ValidateSecurityProfileBehaviorsInput, opts ...request.Option) (*iot.ValidateSecurityProfileBehaviorsOutput, error) {

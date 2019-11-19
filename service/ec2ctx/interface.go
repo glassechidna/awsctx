@@ -368,6 +368,7 @@ type EC2 interface {
 	ModifyInstanceCapacityReservationAttributesWithContext(ctx context.Context, input *ec2.ModifyInstanceCapacityReservationAttributesInput, opts ...request.Option) (*ec2.ModifyInstanceCapacityReservationAttributesOutput, error)
 	ModifyInstanceCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyInstanceCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyInstanceCreditSpecificationOutput, error)
 	ModifyInstanceEventStartTimeWithContext(ctx context.Context, input *ec2.ModifyInstanceEventStartTimeInput, opts ...request.Option) (*ec2.ModifyInstanceEventStartTimeOutput, error)
+	ModifyInstanceMetadataOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMetadataOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMetadataOptionsOutput, error)
 	ModifyInstancePlacementWithContext(ctx context.Context, input *ec2.ModifyInstancePlacementInput, opts ...request.Option) (*ec2.ModifyInstancePlacementOutput, error)
 	ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error)
 	ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error)
@@ -7882,6 +7883,27 @@ func (c *Client) ModifyInstanceEventStartTimeWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.ModifyInstanceEventStartTimeOutput), req.Error
+}
+
+func (c *Client) ModifyInstanceMetadataOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMetadataOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMetadataOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyInstanceMetadataOptions",
+		Input:   input,
+		Output:  (*ec2.ModifyInstanceMetadataOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyInstanceMetadataOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyInstanceMetadataOptionsOutput), req.Error
 }
 
 func (c *Client) ModifyInstancePlacementWithContext(ctx context.Context, input *ec2.ModifyInstancePlacementInput, opts ...request.Option) (*ec2.ModifyInstancePlacementOutput, error) {
