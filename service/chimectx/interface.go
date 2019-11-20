@@ -14,6 +14,7 @@ type Chime interface {
 	AssociatePhoneNumberWithUserWithContext(ctx context.Context, input *chime.AssociatePhoneNumberWithUserInput, opts ...request.Option) (*chime.AssociatePhoneNumberWithUserOutput, error)
 	AssociatePhoneNumbersWithVoiceConnectorWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorOutput, error)
 	AssociatePhoneNumbersWithVoiceConnectorGroupWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorGroupInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput, error)
+	BatchCreateAttendeeWithContext(ctx context.Context, input *chime.BatchCreateAttendeeInput, opts ...request.Option) (*chime.BatchCreateAttendeeOutput, error)
 	BatchCreateRoomMembershipWithContext(ctx context.Context, input *chime.BatchCreateRoomMembershipInput, opts ...request.Option) (*chime.BatchCreateRoomMembershipOutput, error)
 	BatchDeletePhoneNumberWithContext(ctx context.Context, input *chime.BatchDeletePhoneNumberInput, opts ...request.Option) (*chime.BatchDeletePhoneNumberOutput, error)
 	BatchSuspendUserWithContext(ctx context.Context, input *chime.BatchSuspendUserInput, opts ...request.Option) (*chime.BatchSuspendUserOutput, error)
@@ -21,14 +22,18 @@ type Chime interface {
 	BatchUpdatePhoneNumberWithContext(ctx context.Context, input *chime.BatchUpdatePhoneNumberInput, opts ...request.Option) (*chime.BatchUpdatePhoneNumberOutput, error)
 	BatchUpdateUserWithContext(ctx context.Context, input *chime.BatchUpdateUserInput, opts ...request.Option) (*chime.BatchUpdateUserOutput, error)
 	CreateAccountWithContext(ctx context.Context, input *chime.CreateAccountInput, opts ...request.Option) (*chime.CreateAccountOutput, error)
+	CreateAttendeeWithContext(ctx context.Context, input *chime.CreateAttendeeInput, opts ...request.Option) (*chime.CreateAttendeeOutput, error)
 	CreateBotWithContext(ctx context.Context, input *chime.CreateBotInput, opts ...request.Option) (*chime.CreateBotOutput, error)
+	CreateMeetingWithContext(ctx context.Context, input *chime.CreateMeetingInput, opts ...request.Option) (*chime.CreateMeetingOutput, error)
 	CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error)
 	CreateRoomWithContext(ctx context.Context, input *chime.CreateRoomInput, opts ...request.Option) (*chime.CreateRoomOutput, error)
 	CreateRoomMembershipWithContext(ctx context.Context, input *chime.CreateRoomMembershipInput, opts ...request.Option) (*chime.CreateRoomMembershipOutput, error)
 	CreateVoiceConnectorWithContext(ctx context.Context, input *chime.CreateVoiceConnectorInput, opts ...request.Option) (*chime.CreateVoiceConnectorOutput, error)
 	CreateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.CreateVoiceConnectorGroupInput, opts ...request.Option) (*chime.CreateVoiceConnectorGroupOutput, error)
 	DeleteAccountWithContext(ctx context.Context, input *chime.DeleteAccountInput, opts ...request.Option) (*chime.DeleteAccountOutput, error)
+	DeleteAttendeeWithContext(ctx context.Context, input *chime.DeleteAttendeeInput, opts ...request.Option) (*chime.DeleteAttendeeOutput, error)
 	DeleteEventsConfigurationWithContext(ctx context.Context, input *chime.DeleteEventsConfigurationInput, opts ...request.Option) (*chime.DeleteEventsConfigurationOutput, error)
+	DeleteMeetingWithContext(ctx context.Context, input *chime.DeleteMeetingInput, opts ...request.Option) (*chime.DeleteMeetingOutput, error)
 	DeletePhoneNumberWithContext(ctx context.Context, input *chime.DeletePhoneNumberInput, opts ...request.Option) (*chime.DeletePhoneNumberOutput, error)
 	DeleteRoomWithContext(ctx context.Context, input *chime.DeleteRoomInput, opts ...request.Option) (*chime.DeleteRoomOutput, error)
 	DeleteRoomMembershipWithContext(ctx context.Context, input *chime.DeleteRoomMembershipInput, opts ...request.Option) (*chime.DeleteRoomMembershipOutput, error)
@@ -43,9 +48,11 @@ type Chime interface {
 	DisassociatePhoneNumbersFromVoiceConnectorGroupWithContext(ctx context.Context, input *chime.DisassociatePhoneNumbersFromVoiceConnectorGroupInput, opts ...request.Option) (*chime.DisassociatePhoneNumbersFromVoiceConnectorGroupOutput, error)
 	GetAccountWithContext(ctx context.Context, input *chime.GetAccountInput, opts ...request.Option) (*chime.GetAccountOutput, error)
 	GetAccountSettingsWithContext(ctx context.Context, input *chime.GetAccountSettingsInput, opts ...request.Option) (*chime.GetAccountSettingsOutput, error)
+	GetAttendeeWithContext(ctx context.Context, input *chime.GetAttendeeInput, opts ...request.Option) (*chime.GetAttendeeOutput, error)
 	GetBotWithContext(ctx context.Context, input *chime.GetBotInput, opts ...request.Option) (*chime.GetBotOutput, error)
 	GetEventsConfigurationWithContext(ctx context.Context, input *chime.GetEventsConfigurationInput, opts ...request.Option) (*chime.GetEventsConfigurationOutput, error)
 	GetGlobalSettingsWithContext(ctx context.Context, input *chime.GetGlobalSettingsInput, opts ...request.Option) (*chime.GetGlobalSettingsOutput, error)
+	GetMeetingWithContext(ctx context.Context, input *chime.GetMeetingInput, opts ...request.Option) (*chime.GetMeetingOutput, error)
 	GetPhoneNumberWithContext(ctx context.Context, input *chime.GetPhoneNumberInput, opts ...request.Option) (*chime.GetPhoneNumberOutput, error)
 	GetPhoneNumberOrderWithContext(ctx context.Context, input *chime.GetPhoneNumberOrderInput, opts ...request.Option) (*chime.GetPhoneNumberOrderOutput, error)
 	GetPhoneNumberSettingsWithContext(ctx context.Context, input *chime.GetPhoneNumberSettingsInput, opts ...request.Option) (*chime.GetPhoneNumberSettingsOutput, error)
@@ -62,8 +69,12 @@ type Chime interface {
 	InviteUsersWithContext(ctx context.Context, input *chime.InviteUsersInput, opts ...request.Option) (*chime.InviteUsersOutput, error)
 	ListAccountsWithContext(ctx context.Context, input *chime.ListAccountsInput, opts ...request.Option) (*chime.ListAccountsOutput, error)
 	ListAccountsPagesWithContext(ctx context.Context, input *chime.ListAccountsInput, cb func(*chime.ListAccountsOutput, bool) bool, opts ...request.Option) error
+	ListAttendeesWithContext(ctx context.Context, input *chime.ListAttendeesInput, opts ...request.Option) (*chime.ListAttendeesOutput, error)
+	ListAttendeesPagesWithContext(ctx context.Context, input *chime.ListAttendeesInput, cb func(*chime.ListAttendeesOutput, bool) bool, opts ...request.Option) error
 	ListBotsWithContext(ctx context.Context, input *chime.ListBotsInput, opts ...request.Option) (*chime.ListBotsOutput, error)
 	ListBotsPagesWithContext(ctx context.Context, input *chime.ListBotsInput, cb func(*chime.ListBotsOutput, bool) bool, opts ...request.Option) error
+	ListMeetingsWithContext(ctx context.Context, input *chime.ListMeetingsInput, opts ...request.Option) (*chime.ListMeetingsOutput, error)
+	ListMeetingsPagesWithContext(ctx context.Context, input *chime.ListMeetingsInput, cb func(*chime.ListMeetingsOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumberOrdersWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, opts ...request.Option) (*chime.ListPhoneNumberOrdersOutput, error)
 	ListPhoneNumberOrdersPagesWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, cb func(*chime.ListPhoneNumberOrdersOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersWithContext(ctx context.Context, input *chime.ListPhoneNumbersInput, opts ...request.Option) (*chime.ListPhoneNumbersOutput, error)
@@ -180,6 +191,27 @@ func (c *Client) AssociatePhoneNumbersWithVoiceConnectorGroupWithContext(ctx con
 	})
 
 	return req.Output.(*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput), req.Error
+}
+
+func (c *Client) BatchCreateAttendeeWithContext(ctx context.Context, input *chime.BatchCreateAttendeeInput, opts ...request.Option) (*chime.BatchCreateAttendeeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "BatchCreateAttendee",
+		Input:   input,
+		Output:  (*chime.BatchCreateAttendeeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.BatchCreateAttendeeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.BatchCreateAttendeeOutput), req.Error
 }
 
 func (c *Client) BatchCreateRoomMembershipWithContext(ctx context.Context, input *chime.BatchCreateRoomMembershipInput, opts ...request.Option) (*chime.BatchCreateRoomMembershipOutput, error) {
@@ -329,6 +361,27 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, input *chime.Crea
 	return req.Output.(*chime.CreateAccountOutput), req.Error
 }
 
+func (c *Client) CreateAttendeeWithContext(ctx context.Context, input *chime.CreateAttendeeInput, opts ...request.Option) (*chime.CreateAttendeeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateAttendee",
+		Input:   input,
+		Output:  (*chime.CreateAttendeeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateAttendeeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateAttendeeOutput), req.Error
+}
+
 func (c *Client) CreateBotWithContext(ctx context.Context, input *chime.CreateBotInput, opts ...request.Option) (*chime.CreateBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -348,6 +401,27 @@ func (c *Client) CreateBotWithContext(ctx context.Context, input *chime.CreateBo
 	})
 
 	return req.Output.(*chime.CreateBotOutput), req.Error
+}
+
+func (c *Client) CreateMeetingWithContext(ctx context.Context, input *chime.CreateMeetingInput, opts ...request.Option) (*chime.CreateMeetingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateMeeting",
+		Input:   input,
+		Output:  (*chime.CreateMeetingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateMeetingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateMeetingOutput), req.Error
 }
 
 func (c *Client) CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error) {
@@ -476,6 +550,27 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, input *chime.Dele
 	return req.Output.(*chime.DeleteAccountOutput), req.Error
 }
 
+func (c *Client) DeleteAttendeeWithContext(ctx context.Context, input *chime.DeleteAttendeeInput, opts ...request.Option) (*chime.DeleteAttendeeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DeleteAttendee",
+		Input:   input,
+		Output:  (*chime.DeleteAttendeeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DeleteAttendeeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DeleteAttendeeOutput), req.Error
+}
+
 func (c *Client) DeleteEventsConfigurationWithContext(ctx context.Context, input *chime.DeleteEventsConfigurationInput, opts ...request.Option) (*chime.DeleteEventsConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -495,6 +590,27 @@ func (c *Client) DeleteEventsConfigurationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*chime.DeleteEventsConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteMeetingWithContext(ctx context.Context, input *chime.DeleteMeetingInput, opts ...request.Option) (*chime.DeleteMeetingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DeleteMeeting",
+		Input:   input,
+		Output:  (*chime.DeleteMeetingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DeleteMeetingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DeleteMeetingOutput), req.Error
 }
 
 func (c *Client) DeletePhoneNumberWithContext(ctx context.Context, input *chime.DeletePhoneNumberInput, opts ...request.Option) (*chime.DeletePhoneNumberOutput, error) {
@@ -791,6 +907,27 @@ func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *chime
 	return req.Output.(*chime.GetAccountSettingsOutput), req.Error
 }
 
+func (c *Client) GetAttendeeWithContext(ctx context.Context, input *chime.GetAttendeeInput, opts ...request.Option) (*chime.GetAttendeeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetAttendee",
+		Input:   input,
+		Output:  (*chime.GetAttendeeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetAttendeeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetAttendeeOutput), req.Error
+}
+
 func (c *Client) GetBotWithContext(ctx context.Context, input *chime.GetBotInput, opts ...request.Option) (*chime.GetBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -852,6 +989,27 @@ func (c *Client) GetGlobalSettingsWithContext(ctx context.Context, input *chime.
 	})
 
 	return req.Output.(*chime.GetGlobalSettingsOutput), req.Error
+}
+
+func (c *Client) GetMeetingWithContext(ctx context.Context, input *chime.GetMeetingInput, opts ...request.Option) (*chime.GetMeetingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetMeeting",
+		Input:   input,
+		Output:  (*chime.GetMeetingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetMeetingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetMeetingOutput), req.Error
 }
 
 func (c *Client) GetPhoneNumberWithContext(ctx context.Context, input *chime.GetPhoneNumberInput, opts ...request.Option) (*chime.GetPhoneNumberOutput, error) {
@@ -1189,6 +1347,47 @@ func (c *Client) ListAccountsPagesWithContext(ctx context.Context, input *chime.
 	return req.Error
 }
 
+func (c *Client) ListAttendeesWithContext(ctx context.Context, input *chime.ListAttendeesInput, opts ...request.Option) (*chime.ListAttendeesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListAttendees",
+		Input:   input,
+		Output:  (*chime.ListAttendeesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListAttendeesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListAttendeesOutput), req.Error
+}
+
+func (c *Client) ListAttendeesPagesWithContext(ctx context.Context, input *chime.ListAttendeesInput, cb func(*chime.ListAttendeesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListAttendees",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListAttendeesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBotsWithContext(ctx context.Context, input *chime.ListBotsInput, opts ...request.Option) (*chime.ListBotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1225,6 +1424,47 @@ func (c *Client) ListBotsPagesWithContext(ctx context.Context, input *chime.List
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ChimeAPI.ListBotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMeetingsWithContext(ctx context.Context, input *chime.ListMeetingsInput, opts ...request.Option) (*chime.ListMeetingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListMeetings",
+		Input:   input,
+		Output:  (*chime.ListMeetingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListMeetingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListMeetingsOutput), req.Error
+}
+
+func (c *Client) ListMeetingsPagesWithContext(ctx context.Context, input *chime.ListMeetingsInput, cb func(*chime.ListMeetingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListMeetings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.ListMeetingsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

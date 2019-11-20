@@ -11,21 +11,78 @@ import (
 )
 
 type QuickSight interface {
+	CancelIngestionWithContext(ctx context.Context, input *quicksight.CancelIngestionInput, opts ...request.Option) (*quicksight.CancelIngestionOutput, error)
+	CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error)
+	CreateDataSetWithContext(ctx context.Context, input *quicksight.CreateDataSetInput, opts ...request.Option) (*quicksight.CreateDataSetOutput, error)
+	CreateDataSourceWithContext(ctx context.Context, input *quicksight.CreateDataSourceInput, opts ...request.Option) (*quicksight.CreateDataSourceOutput, error)
 	CreateGroupWithContext(ctx context.Context, input *quicksight.CreateGroupInput, opts ...request.Option) (*quicksight.CreateGroupOutput, error)
 	CreateGroupMembershipWithContext(ctx context.Context, input *quicksight.CreateGroupMembershipInput, opts ...request.Option) (*quicksight.CreateGroupMembershipOutput, error)
+	CreateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.CreateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.CreateIAMPolicyAssignmentOutput, error)
+	CreateIngestionWithContext(ctx context.Context, input *quicksight.CreateIngestionInput, opts ...request.Option) (*quicksight.CreateIngestionOutput, error)
+	CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error)
+	CreateTemplateAliasWithContext(ctx context.Context, input *quicksight.CreateTemplateAliasInput, opts ...request.Option) (*quicksight.CreateTemplateAliasOutput, error)
+	DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error)
+	DeleteDataSetWithContext(ctx context.Context, input *quicksight.DeleteDataSetInput, opts ...request.Option) (*quicksight.DeleteDataSetOutput, error)
+	DeleteDataSourceWithContext(ctx context.Context, input *quicksight.DeleteDataSourceInput, opts ...request.Option) (*quicksight.DeleteDataSourceOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *quicksight.DeleteGroupInput, opts ...request.Option) (*quicksight.DeleteGroupOutput, error)
 	DeleteGroupMembershipWithContext(ctx context.Context, input *quicksight.DeleteGroupMembershipInput, opts ...request.Option) (*quicksight.DeleteGroupMembershipOutput, error)
+	DeleteIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DeleteIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DeleteIAMPolicyAssignmentOutput, error)
+	DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error)
+	DeleteTemplateAliasWithContext(ctx context.Context, input *quicksight.DeleteTemplateAliasInput, opts ...request.Option) (*quicksight.DeleteTemplateAliasOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error)
 	DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error)
+	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
+	DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error)
+	DescribeDataSetWithContext(ctx context.Context, input *quicksight.DescribeDataSetInput, opts ...request.Option) (*quicksight.DescribeDataSetOutput, error)
+	DescribeDataSetPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDataSetPermissionsInput, opts ...request.Option) (*quicksight.DescribeDataSetPermissionsOutput, error)
+	DescribeDataSourceWithContext(ctx context.Context, input *quicksight.DescribeDataSourceInput, opts ...request.Option) (*quicksight.DescribeDataSourceOutput, error)
+	DescribeDataSourcePermissionsWithContext(ctx context.Context, input *quicksight.DescribeDataSourcePermissionsInput, opts ...request.Option) (*quicksight.DescribeDataSourcePermissionsOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error)
+	DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error)
+	DescribeIngestionWithContext(ctx context.Context, input *quicksight.DescribeIngestionInput, opts ...request.Option) (*quicksight.DescribeIngestionOutput, error)
+	DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error)
+	DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error)
+	DescribeTemplatePermissionsWithContext(ctx context.Context, input *quicksight.DescribeTemplatePermissionsInput, opts ...request.Option) (*quicksight.DescribeTemplatePermissionsOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error)
 	GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error)
+	ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error)
+	ListDashboardVersionsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, cb func(*quicksight.ListDashboardVersionsOutput, bool) bool, opts ...request.Option) error
+	ListDashboardsWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, opts ...request.Option) (*quicksight.ListDashboardsOutput, error)
+	ListDashboardsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, cb func(*quicksight.ListDashboardsOutput, bool) bool, opts ...request.Option) error
+	ListDataSetsWithContext(ctx context.Context, input *quicksight.ListDataSetsInput, opts ...request.Option) (*quicksight.ListDataSetsOutput, error)
+	ListDataSetsPagesWithContext(ctx context.Context, input *quicksight.ListDataSetsInput, cb func(*quicksight.ListDataSetsOutput, bool) bool, opts ...request.Option) error
+	ListDataSourcesWithContext(ctx context.Context, input *quicksight.ListDataSourcesInput, opts ...request.Option) (*quicksight.ListDataSourcesOutput, error)
+	ListDataSourcesPagesWithContext(ctx context.Context, input *quicksight.ListDataSourcesInput, cb func(*quicksight.ListDataSourcesOutput, bool) bool, opts ...request.Option) error
 	ListGroupMembershipsWithContext(ctx context.Context, input *quicksight.ListGroupMembershipsInput, opts ...request.Option) (*quicksight.ListGroupMembershipsOutput, error)
 	ListGroupsWithContext(ctx context.Context, input *quicksight.ListGroupsInput, opts ...request.Option) (*quicksight.ListGroupsOutput, error)
+	ListIAMPolicyAssignmentsWithContext(ctx context.Context, input *quicksight.ListIAMPolicyAssignmentsInput, opts ...request.Option) (*quicksight.ListIAMPolicyAssignmentsOutput, error)
+	ListIAMPolicyAssignmentsForUserWithContext(ctx context.Context, input *quicksight.ListIAMPolicyAssignmentsForUserInput, opts ...request.Option) (*quicksight.ListIAMPolicyAssignmentsForUserOutput, error)
+	ListIngestionsWithContext(ctx context.Context, input *quicksight.ListIngestionsInput, opts ...request.Option) (*quicksight.ListIngestionsOutput, error)
+	ListIngestionsPagesWithContext(ctx context.Context, input *quicksight.ListIngestionsInput, cb func(*quicksight.ListIngestionsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *quicksight.ListTagsForResourceInput, opts ...request.Option) (*quicksight.ListTagsForResourceOutput, error)
+	ListTemplateAliasesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, opts ...request.Option) (*quicksight.ListTemplateAliasesOutput, error)
+	ListTemplateAliasesPagesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, cb func(*quicksight.ListTemplateAliasesOutput, bool) bool, opts ...request.Option) error
+	ListTemplateVersionsWithContext(ctx context.Context, input *quicksight.ListTemplateVersionsInput, opts ...request.Option) (*quicksight.ListTemplateVersionsOutput, error)
+	ListTemplateVersionsPagesWithContext(ctx context.Context, input *quicksight.ListTemplateVersionsInput, cb func(*quicksight.ListTemplateVersionsOutput, bool) bool, opts ...request.Option) error
+	ListTemplatesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, opts ...request.Option) (*quicksight.ListTemplatesOutput, error)
+	ListTemplatesPagesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, cb func(*quicksight.ListTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error)
 	RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error)
+	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error)
+	UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error)
+	UpdateDashboardPermissionsWithContext(ctx context.Context, input *quicksight.UpdateDashboardPermissionsInput, opts ...request.Option) (*quicksight.UpdateDashboardPermissionsOutput, error)
+	UpdateDashboardPublishedVersionWithContext(ctx context.Context, input *quicksight.UpdateDashboardPublishedVersionInput, opts ...request.Option) (*quicksight.UpdateDashboardPublishedVersionOutput, error)
+	UpdateDataSetWithContext(ctx context.Context, input *quicksight.UpdateDataSetInput, opts ...request.Option) (*quicksight.UpdateDataSetOutput, error)
+	UpdateDataSetPermissionsWithContext(ctx context.Context, input *quicksight.UpdateDataSetPermissionsInput, opts ...request.Option) (*quicksight.UpdateDataSetPermissionsOutput, error)
+	UpdateDataSourceWithContext(ctx context.Context, input *quicksight.UpdateDataSourceInput, opts ...request.Option) (*quicksight.UpdateDataSourceOutput, error)
+	UpdateDataSourcePermissionsWithContext(ctx context.Context, input *quicksight.UpdateDataSourcePermissionsInput, opts ...request.Option) (*quicksight.UpdateDataSourcePermissionsOutput, error)
 	UpdateGroupWithContext(ctx context.Context, input *quicksight.UpdateGroupInput, opts ...request.Option) (*quicksight.UpdateGroupOutput, error)
+	UpdateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.UpdateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.UpdateIAMPolicyAssignmentOutput, error)
+	UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error)
+	UpdateTemplateAliasWithContext(ctx context.Context, input *quicksight.UpdateTemplateAliasInput, opts ...request.Option) (*quicksight.UpdateTemplateAliasOutput, error)
+	UpdateTemplatePermissionsWithContext(ctx context.Context, input *quicksight.UpdateTemplatePermissionsInput, opts ...request.Option) (*quicksight.UpdateTemplatePermissionsOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error)
 }
 
@@ -43,6 +100,90 @@ func New(base quicksightiface.QuickSightAPI, ctxer awsctx.Contexter) QuickSight 
 
 var _ QuickSight = (*quicksight.QuickSight)(nil)
 var _ QuickSight = (*Client)(nil)
+
+func (c *Client) CancelIngestionWithContext(ctx context.Context, input *quicksight.CancelIngestionInput, opts ...request.Option) (*quicksight.CancelIngestionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CancelIngestion",
+		Input:   input,
+		Output:  (*quicksight.CancelIngestionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CancelIngestionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CancelIngestionOutput), req.Error
+}
+
+func (c *Client) CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateDashboard",
+		Input:   input,
+		Output:  (*quicksight.CreateDashboardOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateDashboardWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateDashboardOutput), req.Error
+}
+
+func (c *Client) CreateDataSetWithContext(ctx context.Context, input *quicksight.CreateDataSetInput, opts ...request.Option) (*quicksight.CreateDataSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateDataSet",
+		Input:   input,
+		Output:  (*quicksight.CreateDataSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateDataSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateDataSetOutput), req.Error
+}
+
+func (c *Client) CreateDataSourceWithContext(ctx context.Context, input *quicksight.CreateDataSourceInput, opts ...request.Option) (*quicksight.CreateDataSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateDataSource",
+		Input:   input,
+		Output:  (*quicksight.CreateDataSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateDataSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateDataSourceOutput), req.Error
+}
 
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *quicksight.CreateGroupInput, opts ...request.Option) (*quicksight.CreateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -84,6 +225,153 @@ func (c *Client) CreateGroupMembershipWithContext(ctx context.Context, input *qu
 	})
 
 	return req.Output.(*quicksight.CreateGroupMembershipOutput), req.Error
+}
+
+func (c *Client) CreateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.CreateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.CreateIAMPolicyAssignmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateIAMPolicyAssignment",
+		Input:   input,
+		Output:  (*quicksight.CreateIAMPolicyAssignmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateIAMPolicyAssignmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateIAMPolicyAssignmentOutput), req.Error
+}
+
+func (c *Client) CreateIngestionWithContext(ctx context.Context, input *quicksight.CreateIngestionInput, opts ...request.Option) (*quicksight.CreateIngestionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateIngestion",
+		Input:   input,
+		Output:  (*quicksight.CreateIngestionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateIngestionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateIngestionOutput), req.Error
+}
+
+func (c *Client) CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateTemplate",
+		Input:   input,
+		Output:  (*quicksight.CreateTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateTemplateOutput), req.Error
+}
+
+func (c *Client) CreateTemplateAliasWithContext(ctx context.Context, input *quicksight.CreateTemplateAliasInput, opts ...request.Option) (*quicksight.CreateTemplateAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateTemplateAlias",
+		Input:   input,
+		Output:  (*quicksight.CreateTemplateAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateTemplateAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateTemplateAliasOutput), req.Error
+}
+
+func (c *Client) DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteDashboard",
+		Input:   input,
+		Output:  (*quicksight.DeleteDashboardOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteDashboardWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteDashboardOutput), req.Error
+}
+
+func (c *Client) DeleteDataSetWithContext(ctx context.Context, input *quicksight.DeleteDataSetInput, opts ...request.Option) (*quicksight.DeleteDataSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteDataSet",
+		Input:   input,
+		Output:  (*quicksight.DeleteDataSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteDataSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteDataSetOutput), req.Error
+}
+
+func (c *Client) DeleteDataSourceWithContext(ctx context.Context, input *quicksight.DeleteDataSourceInput, opts ...request.Option) (*quicksight.DeleteDataSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteDataSource",
+		Input:   input,
+		Output:  (*quicksight.DeleteDataSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteDataSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteDataSourceOutput), req.Error
 }
 
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *quicksight.DeleteGroupInput, opts ...request.Option) (*quicksight.DeleteGroupOutput, error) {
@@ -128,6 +416,69 @@ func (c *Client) DeleteGroupMembershipWithContext(ctx context.Context, input *qu
 	return req.Output.(*quicksight.DeleteGroupMembershipOutput), req.Error
 }
 
+func (c *Client) DeleteIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DeleteIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DeleteIAMPolicyAssignmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteIAMPolicyAssignment",
+		Input:   input,
+		Output:  (*quicksight.DeleteIAMPolicyAssignmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteIAMPolicyAssignmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteIAMPolicyAssignmentOutput), req.Error
+}
+
+func (c *Client) DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteTemplate",
+		Input:   input,
+		Output:  (*quicksight.DeleteTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteTemplateOutput), req.Error
+}
+
+func (c *Client) DeleteTemplateAliasWithContext(ctx context.Context, input *quicksight.DeleteTemplateAliasInput, opts ...request.Option) (*quicksight.DeleteTemplateAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteTemplateAlias",
+		Input:   input,
+		Output:  (*quicksight.DeleteTemplateAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteTemplateAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteTemplateAliasOutput), req.Error
+}
+
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -170,6 +521,132 @@ func (c *Client) DeleteUserByPrincipalIdWithContext(ctx context.Context, input *
 	return req.Output.(*quicksight.DeleteUserByPrincipalIdOutput), req.Error
 }
 
+func (c *Client) DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDashboard",
+		Input:   input,
+		Output:  (*quicksight.DescribeDashboardOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDashboardWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDashboardOutput), req.Error
+}
+
+func (c *Client) DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDashboardPermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeDashboardPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDashboardPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDashboardPermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeDataSetWithContext(ctx context.Context, input *quicksight.DescribeDataSetInput, opts ...request.Option) (*quicksight.DescribeDataSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDataSet",
+		Input:   input,
+		Output:  (*quicksight.DescribeDataSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDataSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDataSetOutput), req.Error
+}
+
+func (c *Client) DescribeDataSetPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDataSetPermissionsInput, opts ...request.Option) (*quicksight.DescribeDataSetPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDataSetPermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeDataSetPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDataSetPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDataSetPermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeDataSourceWithContext(ctx context.Context, input *quicksight.DescribeDataSourceInput, opts ...request.Option) (*quicksight.DescribeDataSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDataSource",
+		Input:   input,
+		Output:  (*quicksight.DescribeDataSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDataSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDataSourceOutput), req.Error
+}
+
+func (c *Client) DescribeDataSourcePermissionsWithContext(ctx context.Context, input *quicksight.DescribeDataSourcePermissionsInput, opts ...request.Option) (*quicksight.DescribeDataSourcePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDataSourcePermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeDataSourcePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDataSourcePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDataSourcePermissionsOutput), req.Error
+}
+
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -189,6 +666,111 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, input *quicksight
 	})
 
 	return req.Output.(*quicksight.DescribeGroupOutput), req.Error
+}
+
+func (c *Client) DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeIAMPolicyAssignment",
+		Input:   input,
+		Output:  (*quicksight.DescribeIAMPolicyAssignmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeIAMPolicyAssignmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeIAMPolicyAssignmentOutput), req.Error
+}
+
+func (c *Client) DescribeIngestionWithContext(ctx context.Context, input *quicksight.DescribeIngestionInput, opts ...request.Option) (*quicksight.DescribeIngestionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeIngestion",
+		Input:   input,
+		Output:  (*quicksight.DescribeIngestionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeIngestionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeIngestionOutput), req.Error
+}
+
+func (c *Client) DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTemplate",
+		Input:   input,
+		Output:  (*quicksight.DescribeTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTemplateOutput), req.Error
+}
+
+func (c *Client) DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTemplateAlias",
+		Input:   input,
+		Output:  (*quicksight.DescribeTemplateAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTemplateAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTemplateAliasOutput), req.Error
+}
+
+func (c *Client) DescribeTemplatePermissionsWithContext(ctx context.Context, input *quicksight.DescribeTemplatePermissionsInput, opts ...request.Option) (*quicksight.DescribeTemplatePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTemplatePermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeTemplatePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTemplatePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTemplatePermissionsOutput), req.Error
 }
 
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error) {
@@ -233,6 +815,170 @@ func (c *Client) GetDashboardEmbedUrlWithContext(ctx context.Context, input *qui
 	return req.Output.(*quicksight.GetDashboardEmbedUrlOutput), req.Error
 }
 
+func (c *Client) ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDashboardVersions",
+		Input:   input,
+		Output:  (*quicksight.ListDashboardVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListDashboardVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListDashboardVersionsOutput), req.Error
+}
+
+func (c *Client) ListDashboardVersionsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, cb func(*quicksight.ListDashboardVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDashboardVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListDashboardVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDashboardsWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, opts ...request.Option) (*quicksight.ListDashboardsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDashboards",
+		Input:   input,
+		Output:  (*quicksight.ListDashboardsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListDashboardsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListDashboardsOutput), req.Error
+}
+
+func (c *Client) ListDashboardsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, cb func(*quicksight.ListDashboardsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDashboards",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListDashboardsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDataSetsWithContext(ctx context.Context, input *quicksight.ListDataSetsInput, opts ...request.Option) (*quicksight.ListDataSetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDataSets",
+		Input:   input,
+		Output:  (*quicksight.ListDataSetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListDataSetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListDataSetsOutput), req.Error
+}
+
+func (c *Client) ListDataSetsPagesWithContext(ctx context.Context, input *quicksight.ListDataSetsInput, cb func(*quicksight.ListDataSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDataSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListDataSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDataSourcesWithContext(ctx context.Context, input *quicksight.ListDataSourcesInput, opts ...request.Option) (*quicksight.ListDataSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDataSources",
+		Input:   input,
+		Output:  (*quicksight.ListDataSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListDataSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListDataSourcesOutput), req.Error
+}
+
+func (c *Client) ListDataSourcesPagesWithContext(ctx context.Context, input *quicksight.ListDataSourcesInput, cb func(*quicksight.ListDataSourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListDataSources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListDataSourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListGroupMembershipsWithContext(ctx context.Context, input *quicksight.ListGroupMembershipsInput, opts ...request.Option) (*quicksight.ListGroupMembershipsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -273,6 +1019,233 @@ func (c *Client) ListGroupsWithContext(ctx context.Context, input *quicksight.Li
 	})
 
 	return req.Output.(*quicksight.ListGroupsOutput), req.Error
+}
+
+func (c *Client) ListIAMPolicyAssignmentsWithContext(ctx context.Context, input *quicksight.ListIAMPolicyAssignmentsInput, opts ...request.Option) (*quicksight.ListIAMPolicyAssignmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListIAMPolicyAssignments",
+		Input:   input,
+		Output:  (*quicksight.ListIAMPolicyAssignmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListIAMPolicyAssignmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListIAMPolicyAssignmentsOutput), req.Error
+}
+
+func (c *Client) ListIAMPolicyAssignmentsForUserWithContext(ctx context.Context, input *quicksight.ListIAMPolicyAssignmentsForUserInput, opts ...request.Option) (*quicksight.ListIAMPolicyAssignmentsForUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListIAMPolicyAssignmentsForUser",
+		Input:   input,
+		Output:  (*quicksight.ListIAMPolicyAssignmentsForUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListIAMPolicyAssignmentsForUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListIAMPolicyAssignmentsForUserOutput), req.Error
+}
+
+func (c *Client) ListIngestionsWithContext(ctx context.Context, input *quicksight.ListIngestionsInput, opts ...request.Option) (*quicksight.ListIngestionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListIngestions",
+		Input:   input,
+		Output:  (*quicksight.ListIngestionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListIngestionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListIngestionsOutput), req.Error
+}
+
+func (c *Client) ListIngestionsPagesWithContext(ctx context.Context, input *quicksight.ListIngestionsInput, cb func(*quicksight.ListIngestionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListIngestions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListIngestionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *quicksight.ListTagsForResourceInput, opts ...request.Option) (*quicksight.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*quicksight.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTemplateAliasesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, opts ...request.Option) (*quicksight.ListTemplateAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTemplateAliases",
+		Input:   input,
+		Output:  (*quicksight.ListTemplateAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListTemplateAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListTemplateAliasesOutput), req.Error
+}
+
+func (c *Client) ListTemplateAliasesPagesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, cb func(*quicksight.ListTemplateAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTemplateAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListTemplateAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTemplateVersionsWithContext(ctx context.Context, input *quicksight.ListTemplateVersionsInput, opts ...request.Option) (*quicksight.ListTemplateVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTemplateVersions",
+		Input:   input,
+		Output:  (*quicksight.ListTemplateVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListTemplateVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListTemplateVersionsOutput), req.Error
+}
+
+func (c *Client) ListTemplateVersionsPagesWithContext(ctx context.Context, input *quicksight.ListTemplateVersionsInput, cb func(*quicksight.ListTemplateVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTemplateVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListTemplateVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTemplatesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, opts ...request.Option) (*quicksight.ListTemplatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTemplates",
+		Input:   input,
+		Output:  (*quicksight.ListTemplatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListTemplatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListTemplatesOutput), req.Error
+}
+
+func (c *Client) ListTemplatesPagesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, cb func(*quicksight.ListTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error) {
@@ -338,6 +1311,195 @@ func (c *Client) RegisterUserWithContext(ctx context.Context, input *quicksight.
 	return req.Output.(*quicksight.RegisterUserOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*quicksight.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*quicksight.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDashboard",
+		Input:   input,
+		Output:  (*quicksight.UpdateDashboardOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDashboardWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDashboardOutput), req.Error
+}
+
+func (c *Client) UpdateDashboardPermissionsWithContext(ctx context.Context, input *quicksight.UpdateDashboardPermissionsInput, opts ...request.Option) (*quicksight.UpdateDashboardPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDashboardPermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateDashboardPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDashboardPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDashboardPermissionsOutput), req.Error
+}
+
+func (c *Client) UpdateDashboardPublishedVersionWithContext(ctx context.Context, input *quicksight.UpdateDashboardPublishedVersionInput, opts ...request.Option) (*quicksight.UpdateDashboardPublishedVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDashboardPublishedVersion",
+		Input:   input,
+		Output:  (*quicksight.UpdateDashboardPublishedVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDashboardPublishedVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDashboardPublishedVersionOutput), req.Error
+}
+
+func (c *Client) UpdateDataSetWithContext(ctx context.Context, input *quicksight.UpdateDataSetInput, opts ...request.Option) (*quicksight.UpdateDataSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDataSet",
+		Input:   input,
+		Output:  (*quicksight.UpdateDataSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDataSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDataSetOutput), req.Error
+}
+
+func (c *Client) UpdateDataSetPermissionsWithContext(ctx context.Context, input *quicksight.UpdateDataSetPermissionsInput, opts ...request.Option) (*quicksight.UpdateDataSetPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDataSetPermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateDataSetPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDataSetPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDataSetPermissionsOutput), req.Error
+}
+
+func (c *Client) UpdateDataSourceWithContext(ctx context.Context, input *quicksight.UpdateDataSourceInput, opts ...request.Option) (*quicksight.UpdateDataSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDataSource",
+		Input:   input,
+		Output:  (*quicksight.UpdateDataSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDataSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDataSourceOutput), req.Error
+}
+
+func (c *Client) UpdateDataSourcePermissionsWithContext(ctx context.Context, input *quicksight.UpdateDataSourcePermissionsInput, opts ...request.Option) (*quicksight.UpdateDataSourcePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateDataSourcePermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateDataSourcePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateDataSourcePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateDataSourcePermissionsOutput), req.Error
+}
+
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *quicksight.UpdateGroupInput, opts ...request.Option) (*quicksight.UpdateGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -357,6 +1519,90 @@ func (c *Client) UpdateGroupWithContext(ctx context.Context, input *quicksight.U
 	})
 
 	return req.Output.(*quicksight.UpdateGroupOutput), req.Error
+}
+
+func (c *Client) UpdateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.UpdateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.UpdateIAMPolicyAssignmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateIAMPolicyAssignment",
+		Input:   input,
+		Output:  (*quicksight.UpdateIAMPolicyAssignmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateIAMPolicyAssignmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateIAMPolicyAssignmentOutput), req.Error
+}
+
+func (c *Client) UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTemplate",
+		Input:   input,
+		Output:  (*quicksight.UpdateTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateTemplateOutput), req.Error
+}
+
+func (c *Client) UpdateTemplateAliasWithContext(ctx context.Context, input *quicksight.UpdateTemplateAliasInput, opts ...request.Option) (*quicksight.UpdateTemplateAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTemplateAlias",
+		Input:   input,
+		Output:  (*quicksight.UpdateTemplateAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateTemplateAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateTemplateAliasOutput), req.Error
+}
+
+func (c *Client) UpdateTemplatePermissionsWithContext(ctx context.Context, input *quicksight.UpdateTemplatePermissionsInput, opts ...request.Option) (*quicksight.UpdateTemplatePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTemplatePermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateTemplatePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateTemplatePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateTemplatePermissionsOutput), req.Error
 }
 
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error) {

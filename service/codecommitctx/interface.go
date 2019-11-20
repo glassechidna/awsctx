@@ -11,22 +11,32 @@ import (
 )
 
 type CodeCommit interface {
+	AssociateApprovalRuleTemplateWithRepositoryWithContext(ctx context.Context, input *codecommit.AssociateApprovalRuleTemplateWithRepositoryInput, opts ...request.Option) (*codecommit.AssociateApprovalRuleTemplateWithRepositoryOutput, error)
+	BatchAssociateApprovalRuleTemplateWithRepositoriesWithContext(ctx context.Context, input *codecommit.BatchAssociateApprovalRuleTemplateWithRepositoriesInput, opts ...request.Option) (*codecommit.BatchAssociateApprovalRuleTemplateWithRepositoriesOutput, error)
 	BatchDescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.BatchDescribeMergeConflictsInput, opts ...request.Option) (*codecommit.BatchDescribeMergeConflictsOutput, error)
+	BatchDisassociateApprovalRuleTemplateFromRepositoriesWithContext(ctx context.Context, input *codecommit.BatchDisassociateApprovalRuleTemplateFromRepositoriesInput, opts ...request.Option) (*codecommit.BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput, error)
 	BatchGetCommitsWithContext(ctx context.Context, input *codecommit.BatchGetCommitsInput, opts ...request.Option) (*codecommit.BatchGetCommitsOutput, error)
 	BatchGetRepositoriesWithContext(ctx context.Context, input *codecommit.BatchGetRepositoriesInput, opts ...request.Option) (*codecommit.BatchGetRepositoriesOutput, error)
+	CreateApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.CreateApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.CreateApprovalRuleTemplateOutput, error)
 	CreateBranchWithContext(ctx context.Context, input *codecommit.CreateBranchInput, opts ...request.Option) (*codecommit.CreateBranchOutput, error)
 	CreateCommitWithContext(ctx context.Context, input *codecommit.CreateCommitInput, opts ...request.Option) (*codecommit.CreateCommitOutput, error)
 	CreatePullRequestWithContext(ctx context.Context, input *codecommit.CreatePullRequestInput, opts ...request.Option) (*codecommit.CreatePullRequestOutput, error)
+	CreatePullRequestApprovalRuleWithContext(ctx context.Context, input *codecommit.CreatePullRequestApprovalRuleInput, opts ...request.Option) (*codecommit.CreatePullRequestApprovalRuleOutput, error)
 	CreateRepositoryWithContext(ctx context.Context, input *codecommit.CreateRepositoryInput, opts ...request.Option) (*codecommit.CreateRepositoryOutput, error)
 	CreateUnreferencedMergeCommitWithContext(ctx context.Context, input *codecommit.CreateUnreferencedMergeCommitInput, opts ...request.Option) (*codecommit.CreateUnreferencedMergeCommitOutput, error)
+	DeleteApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.DeleteApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.DeleteApprovalRuleTemplateOutput, error)
 	DeleteBranchWithContext(ctx context.Context, input *codecommit.DeleteBranchInput, opts ...request.Option) (*codecommit.DeleteBranchOutput, error)
 	DeleteCommentContentWithContext(ctx context.Context, input *codecommit.DeleteCommentContentInput, opts ...request.Option) (*codecommit.DeleteCommentContentOutput, error)
 	DeleteFileWithContext(ctx context.Context, input *codecommit.DeleteFileInput, opts ...request.Option) (*codecommit.DeleteFileOutput, error)
+	DeletePullRequestApprovalRuleWithContext(ctx context.Context, input *codecommit.DeletePullRequestApprovalRuleInput, opts ...request.Option) (*codecommit.DeletePullRequestApprovalRuleOutput, error)
 	DeleteRepositoryWithContext(ctx context.Context, input *codecommit.DeleteRepositoryInput, opts ...request.Option) (*codecommit.DeleteRepositoryOutput, error)
 	DescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.DescribeMergeConflictsInput, opts ...request.Option) (*codecommit.DescribeMergeConflictsOutput, error)
 	DescribeMergeConflictsPagesWithContext(ctx context.Context, input *codecommit.DescribeMergeConflictsInput, cb func(*codecommit.DescribeMergeConflictsOutput, bool) bool, opts ...request.Option) error
 	DescribePullRequestEventsWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, opts ...request.Option) (*codecommit.DescribePullRequestEventsOutput, error)
 	DescribePullRequestEventsPagesWithContext(ctx context.Context, input *codecommit.DescribePullRequestEventsInput, cb func(*codecommit.DescribePullRequestEventsOutput, bool) bool, opts ...request.Option) error
+	DisassociateApprovalRuleTemplateFromRepositoryWithContext(ctx context.Context, input *codecommit.DisassociateApprovalRuleTemplateFromRepositoryInput, opts ...request.Option) (*codecommit.DisassociateApprovalRuleTemplateFromRepositoryOutput, error)
+	EvaluatePullRequestApprovalRulesWithContext(ctx context.Context, input *codecommit.EvaluatePullRequestApprovalRulesInput, opts ...request.Option) (*codecommit.EvaluatePullRequestApprovalRulesOutput, error)
+	GetApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.GetApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.GetApprovalRuleTemplateOutput, error)
 	GetBlobWithContext(ctx context.Context, input *codecommit.GetBlobInput, opts ...request.Option) (*codecommit.GetBlobOutput, error)
 	GetBranchWithContext(ctx context.Context, input *codecommit.GetBranchInput, opts ...request.Option) (*codecommit.GetBranchOutput, error)
 	GetCommentWithContext(ctx context.Context, input *codecommit.GetCommentInput, opts ...request.Option) (*codecommit.GetCommentOutput, error)
@@ -44,14 +54,22 @@ type CodeCommit interface {
 	GetMergeConflictsPagesWithContext(ctx context.Context, input *codecommit.GetMergeConflictsInput, cb func(*codecommit.GetMergeConflictsOutput, bool) bool, opts ...request.Option) error
 	GetMergeOptionsWithContext(ctx context.Context, input *codecommit.GetMergeOptionsInput, opts ...request.Option) (*codecommit.GetMergeOptionsOutput, error)
 	GetPullRequestWithContext(ctx context.Context, input *codecommit.GetPullRequestInput, opts ...request.Option) (*codecommit.GetPullRequestOutput, error)
+	GetPullRequestApprovalStatesWithContext(ctx context.Context, input *codecommit.GetPullRequestApprovalStatesInput, opts ...request.Option) (*codecommit.GetPullRequestApprovalStatesOutput, error)
+	GetPullRequestOverrideStateWithContext(ctx context.Context, input *codecommit.GetPullRequestOverrideStateInput, opts ...request.Option) (*codecommit.GetPullRequestOverrideStateOutput, error)
 	GetRepositoryWithContext(ctx context.Context, input *codecommit.GetRepositoryInput, opts ...request.Option) (*codecommit.GetRepositoryOutput, error)
 	GetRepositoryTriggersWithContext(ctx context.Context, input *codecommit.GetRepositoryTriggersInput, opts ...request.Option) (*codecommit.GetRepositoryTriggersOutput, error)
+	ListApprovalRuleTemplatesWithContext(ctx context.Context, input *codecommit.ListApprovalRuleTemplatesInput, opts ...request.Option) (*codecommit.ListApprovalRuleTemplatesOutput, error)
+	ListApprovalRuleTemplatesPagesWithContext(ctx context.Context, input *codecommit.ListApprovalRuleTemplatesInput, cb func(*codecommit.ListApprovalRuleTemplatesOutput, bool) bool, opts ...request.Option) error
+	ListAssociatedApprovalRuleTemplatesForRepositoryWithContext(ctx context.Context, input *codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryInput, opts ...request.Option) (*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput, error)
+	ListAssociatedApprovalRuleTemplatesForRepositoryPagesWithContext(ctx context.Context, input *codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryInput, cb func(*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput, bool) bool, opts ...request.Option) error
 	ListBranchesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, opts ...request.Option) (*codecommit.ListBranchesOutput, error)
 	ListBranchesPagesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, cb func(*codecommit.ListBranchesOutput, bool) bool, opts ...request.Option) error
 	ListPullRequestsWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, opts ...request.Option) (*codecommit.ListPullRequestsOutput, error)
 	ListPullRequestsPagesWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, cb func(*codecommit.ListPullRequestsOutput, bool) bool, opts ...request.Option) error
 	ListRepositoriesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, opts ...request.Option) (*codecommit.ListRepositoriesOutput, error)
 	ListRepositoriesPagesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, cb func(*codecommit.ListRepositoriesOutput, bool) bool, opts ...request.Option) error
+	ListRepositoriesForApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.ListRepositoriesForApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.ListRepositoriesForApprovalRuleTemplateOutput, error)
+	ListRepositoriesForApprovalRuleTemplatePagesWithContext(ctx context.Context, input *codecommit.ListRepositoriesForApprovalRuleTemplateInput, cb func(*codecommit.ListRepositoriesForApprovalRuleTemplateOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *codecommit.ListTagsForResourceInput, opts ...request.Option) (*codecommit.ListTagsForResourceOutput, error)
 	MergeBranchesByFastForwardWithContext(ctx context.Context, input *codecommit.MergeBranchesByFastForwardInput, opts ...request.Option) (*codecommit.MergeBranchesByFastForwardOutput, error)
 	MergeBranchesBySquashWithContext(ctx context.Context, input *codecommit.MergeBranchesBySquashInput, opts ...request.Option) (*codecommit.MergeBranchesBySquashOutput, error)
@@ -59,6 +77,7 @@ type CodeCommit interface {
 	MergePullRequestByFastForwardWithContext(ctx context.Context, input *codecommit.MergePullRequestByFastForwardInput, opts ...request.Option) (*codecommit.MergePullRequestByFastForwardOutput, error)
 	MergePullRequestBySquashWithContext(ctx context.Context, input *codecommit.MergePullRequestBySquashInput, opts ...request.Option) (*codecommit.MergePullRequestBySquashOutput, error)
 	MergePullRequestByThreeWayWithContext(ctx context.Context, input *codecommit.MergePullRequestByThreeWayInput, opts ...request.Option) (*codecommit.MergePullRequestByThreeWayOutput, error)
+	OverridePullRequestApprovalRulesWithContext(ctx context.Context, input *codecommit.OverridePullRequestApprovalRulesInput, opts ...request.Option) (*codecommit.OverridePullRequestApprovalRulesOutput, error)
 	PostCommentForComparedCommitWithContext(ctx context.Context, input *codecommit.PostCommentForComparedCommitInput, opts ...request.Option) (*codecommit.PostCommentForComparedCommitOutput, error)
 	PostCommentForPullRequestWithContext(ctx context.Context, input *codecommit.PostCommentForPullRequestInput, opts ...request.Option) (*codecommit.PostCommentForPullRequestOutput, error)
 	PostCommentReplyWithContext(ctx context.Context, input *codecommit.PostCommentReplyInput, opts ...request.Option) (*codecommit.PostCommentReplyOutput, error)
@@ -67,8 +86,13 @@ type CodeCommit interface {
 	TagResourceWithContext(ctx context.Context, input *codecommit.TagResourceInput, opts ...request.Option) (*codecommit.TagResourceOutput, error)
 	TestRepositoryTriggersWithContext(ctx context.Context, input *codecommit.TestRepositoryTriggersInput, opts ...request.Option) (*codecommit.TestRepositoryTriggersOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *codecommit.UntagResourceInput, opts ...request.Option) (*codecommit.UntagResourceOutput, error)
+	UpdateApprovalRuleTemplateContentWithContext(ctx context.Context, input *codecommit.UpdateApprovalRuleTemplateContentInput, opts ...request.Option) (*codecommit.UpdateApprovalRuleTemplateContentOutput, error)
+	UpdateApprovalRuleTemplateDescriptionWithContext(ctx context.Context, input *codecommit.UpdateApprovalRuleTemplateDescriptionInput, opts ...request.Option) (*codecommit.UpdateApprovalRuleTemplateDescriptionOutput, error)
+	UpdateApprovalRuleTemplateNameWithContext(ctx context.Context, input *codecommit.UpdateApprovalRuleTemplateNameInput, opts ...request.Option) (*codecommit.UpdateApprovalRuleTemplateNameOutput, error)
 	UpdateCommentWithContext(ctx context.Context, input *codecommit.UpdateCommentInput, opts ...request.Option) (*codecommit.UpdateCommentOutput, error)
 	UpdateDefaultBranchWithContext(ctx context.Context, input *codecommit.UpdateDefaultBranchInput, opts ...request.Option) (*codecommit.UpdateDefaultBranchOutput, error)
+	UpdatePullRequestApprovalRuleContentWithContext(ctx context.Context, input *codecommit.UpdatePullRequestApprovalRuleContentInput, opts ...request.Option) (*codecommit.UpdatePullRequestApprovalRuleContentOutput, error)
+	UpdatePullRequestApprovalStateWithContext(ctx context.Context, input *codecommit.UpdatePullRequestApprovalStateInput, opts ...request.Option) (*codecommit.UpdatePullRequestApprovalStateOutput, error)
 	UpdatePullRequestDescriptionWithContext(ctx context.Context, input *codecommit.UpdatePullRequestDescriptionInput, opts ...request.Option) (*codecommit.UpdatePullRequestDescriptionOutput, error)
 	UpdatePullRequestStatusWithContext(ctx context.Context, input *codecommit.UpdatePullRequestStatusInput, opts ...request.Option) (*codecommit.UpdatePullRequestStatusOutput, error)
 	UpdatePullRequestTitleWithContext(ctx context.Context, input *codecommit.UpdatePullRequestTitleInput, opts ...request.Option) (*codecommit.UpdatePullRequestTitleOutput, error)
@@ -91,6 +115,48 @@ func New(base codecommitiface.CodeCommitAPI, ctxer awsctx.Contexter) CodeCommit 
 var _ CodeCommit = (*codecommit.CodeCommit)(nil)
 var _ CodeCommit = (*Client)(nil)
 
+func (c *Client) AssociateApprovalRuleTemplateWithRepositoryWithContext(ctx context.Context, input *codecommit.AssociateApprovalRuleTemplateWithRepositoryInput, opts ...request.Option) (*codecommit.AssociateApprovalRuleTemplateWithRepositoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "AssociateApprovalRuleTemplateWithRepository",
+		Input:   input,
+		Output:  (*codecommit.AssociateApprovalRuleTemplateWithRepositoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.AssociateApprovalRuleTemplateWithRepositoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.AssociateApprovalRuleTemplateWithRepositoryOutput), req.Error
+}
+
+func (c *Client) BatchAssociateApprovalRuleTemplateWithRepositoriesWithContext(ctx context.Context, input *codecommit.BatchAssociateApprovalRuleTemplateWithRepositoriesInput, opts ...request.Option) (*codecommit.BatchAssociateApprovalRuleTemplateWithRepositoriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "BatchAssociateApprovalRuleTemplateWithRepositories",
+		Input:   input,
+		Output:  (*codecommit.BatchAssociateApprovalRuleTemplateWithRepositoriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.BatchAssociateApprovalRuleTemplateWithRepositoriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.BatchAssociateApprovalRuleTemplateWithRepositoriesOutput), req.Error
+}
+
 func (c *Client) BatchDescribeMergeConflictsWithContext(ctx context.Context, input *codecommit.BatchDescribeMergeConflictsInput, opts ...request.Option) (*codecommit.BatchDescribeMergeConflictsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -110,6 +176,27 @@ func (c *Client) BatchDescribeMergeConflictsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*codecommit.BatchDescribeMergeConflictsOutput), req.Error
+}
+
+func (c *Client) BatchDisassociateApprovalRuleTemplateFromRepositoriesWithContext(ctx context.Context, input *codecommit.BatchDisassociateApprovalRuleTemplateFromRepositoriesInput, opts ...request.Option) (*codecommit.BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "BatchDisassociateApprovalRuleTemplateFromRepositories",
+		Input:   input,
+		Output:  (*codecommit.BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.BatchDisassociateApprovalRuleTemplateFromRepositoriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput), req.Error
 }
 
 func (c *Client) BatchGetCommitsWithContext(ctx context.Context, input *codecommit.BatchGetCommitsInput, opts ...request.Option) (*codecommit.BatchGetCommitsOutput, error) {
@@ -152,6 +239,27 @@ func (c *Client) BatchGetRepositoriesWithContext(ctx context.Context, input *cod
 	})
 
 	return req.Output.(*codecommit.BatchGetRepositoriesOutput), req.Error
+}
+
+func (c *Client) CreateApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.CreateApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.CreateApprovalRuleTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "CreateApprovalRuleTemplate",
+		Input:   input,
+		Output:  (*codecommit.CreateApprovalRuleTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.CreateApprovalRuleTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.CreateApprovalRuleTemplateOutput), req.Error
 }
 
 func (c *Client) CreateBranchWithContext(ctx context.Context, input *codecommit.CreateBranchInput, opts ...request.Option) (*codecommit.CreateBranchOutput, error) {
@@ -217,6 +325,27 @@ func (c *Client) CreatePullRequestWithContext(ctx context.Context, input *codeco
 	return req.Output.(*codecommit.CreatePullRequestOutput), req.Error
 }
 
+func (c *Client) CreatePullRequestApprovalRuleWithContext(ctx context.Context, input *codecommit.CreatePullRequestApprovalRuleInput, opts ...request.Option) (*codecommit.CreatePullRequestApprovalRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "CreatePullRequestApprovalRule",
+		Input:   input,
+		Output:  (*codecommit.CreatePullRequestApprovalRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.CreatePullRequestApprovalRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.CreatePullRequestApprovalRuleOutput), req.Error
+}
+
 func (c *Client) CreateRepositoryWithContext(ctx context.Context, input *codecommit.CreateRepositoryInput, opts ...request.Option) (*codecommit.CreateRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -257,6 +386,27 @@ func (c *Client) CreateUnreferencedMergeCommitWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*codecommit.CreateUnreferencedMergeCommitOutput), req.Error
+}
+
+func (c *Client) DeleteApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.DeleteApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.DeleteApprovalRuleTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "DeleteApprovalRuleTemplate",
+		Input:   input,
+		Output:  (*codecommit.DeleteApprovalRuleTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.DeleteApprovalRuleTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.DeleteApprovalRuleTemplateOutput), req.Error
 }
 
 func (c *Client) DeleteBranchWithContext(ctx context.Context, input *codecommit.DeleteBranchInput, opts ...request.Option) (*codecommit.DeleteBranchOutput, error) {
@@ -320,6 +470,27 @@ func (c *Client) DeleteFileWithContext(ctx context.Context, input *codecommit.De
 	})
 
 	return req.Output.(*codecommit.DeleteFileOutput), req.Error
+}
+
+func (c *Client) DeletePullRequestApprovalRuleWithContext(ctx context.Context, input *codecommit.DeletePullRequestApprovalRuleInput, opts ...request.Option) (*codecommit.DeletePullRequestApprovalRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "DeletePullRequestApprovalRule",
+		Input:   input,
+		Output:  (*codecommit.DeletePullRequestApprovalRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.DeletePullRequestApprovalRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.DeletePullRequestApprovalRuleOutput), req.Error
 }
 
 func (c *Client) DeleteRepositoryWithContext(ctx context.Context, input *codecommit.DeleteRepositoryInput, opts ...request.Option) (*codecommit.DeleteRepositoryOutput, error) {
@@ -423,6 +594,69 @@ func (c *Client) DescribePullRequestEventsPagesWithContext(ctx context.Context, 
 	})
 
 	return req.Error
+}
+
+func (c *Client) DisassociateApprovalRuleTemplateFromRepositoryWithContext(ctx context.Context, input *codecommit.DisassociateApprovalRuleTemplateFromRepositoryInput, opts ...request.Option) (*codecommit.DisassociateApprovalRuleTemplateFromRepositoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "DisassociateApprovalRuleTemplateFromRepository",
+		Input:   input,
+		Output:  (*codecommit.DisassociateApprovalRuleTemplateFromRepositoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.DisassociateApprovalRuleTemplateFromRepositoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.DisassociateApprovalRuleTemplateFromRepositoryOutput), req.Error
+}
+
+func (c *Client) EvaluatePullRequestApprovalRulesWithContext(ctx context.Context, input *codecommit.EvaluatePullRequestApprovalRulesInput, opts ...request.Option) (*codecommit.EvaluatePullRequestApprovalRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "EvaluatePullRequestApprovalRules",
+		Input:   input,
+		Output:  (*codecommit.EvaluatePullRequestApprovalRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.EvaluatePullRequestApprovalRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.EvaluatePullRequestApprovalRulesOutput), req.Error
+}
+
+func (c *Client) GetApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.GetApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.GetApprovalRuleTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetApprovalRuleTemplate",
+		Input:   input,
+		Output:  (*codecommit.GetApprovalRuleTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.GetApprovalRuleTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.GetApprovalRuleTemplateOutput), req.Error
 }
 
 func (c *Client) GetBlobWithContext(ctx context.Context, input *codecommit.GetBlobInput, opts ...request.Option) (*codecommit.GetBlobOutput, error) {
@@ -778,6 +1012,48 @@ func (c *Client) GetPullRequestWithContext(ctx context.Context, input *codecommi
 	return req.Output.(*codecommit.GetPullRequestOutput), req.Error
 }
 
+func (c *Client) GetPullRequestApprovalStatesWithContext(ctx context.Context, input *codecommit.GetPullRequestApprovalStatesInput, opts ...request.Option) (*codecommit.GetPullRequestApprovalStatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetPullRequestApprovalStates",
+		Input:   input,
+		Output:  (*codecommit.GetPullRequestApprovalStatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.GetPullRequestApprovalStatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.GetPullRequestApprovalStatesOutput), req.Error
+}
+
+func (c *Client) GetPullRequestOverrideStateWithContext(ctx context.Context, input *codecommit.GetPullRequestOverrideStateInput, opts ...request.Option) (*codecommit.GetPullRequestOverrideStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetPullRequestOverrideState",
+		Input:   input,
+		Output:  (*codecommit.GetPullRequestOverrideStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.GetPullRequestOverrideStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.GetPullRequestOverrideStateOutput), req.Error
+}
+
 func (c *Client) GetRepositoryWithContext(ctx context.Context, input *codecommit.GetRepositoryInput, opts ...request.Option) (*codecommit.GetRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -818,6 +1094,88 @@ func (c *Client) GetRepositoryTriggersWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*codecommit.GetRepositoryTriggersOutput), req.Error
+}
+
+func (c *Client) ListApprovalRuleTemplatesWithContext(ctx context.Context, input *codecommit.ListApprovalRuleTemplatesInput, opts ...request.Option) (*codecommit.ListApprovalRuleTemplatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListApprovalRuleTemplates",
+		Input:   input,
+		Output:  (*codecommit.ListApprovalRuleTemplatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.ListApprovalRuleTemplatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.ListApprovalRuleTemplatesOutput), req.Error
+}
+
+func (c *Client) ListApprovalRuleTemplatesPagesWithContext(ctx context.Context, input *codecommit.ListApprovalRuleTemplatesInput, cb func(*codecommit.ListApprovalRuleTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListApprovalRuleTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListApprovalRuleTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAssociatedApprovalRuleTemplatesForRepositoryWithContext(ctx context.Context, input *codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryInput, opts ...request.Option) (*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListAssociatedApprovalRuleTemplatesForRepository",
+		Input:   input,
+		Output:  (*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.ListAssociatedApprovalRuleTemplatesForRepositoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput), req.Error
+}
+
+func (c *Client) ListAssociatedApprovalRuleTemplatesForRepositoryPagesWithContext(ctx context.Context, input *codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryInput, cb func(*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListAssociatedApprovalRuleTemplatesForRepository",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListAssociatedApprovalRuleTemplatesForRepositoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListBranchesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, opts ...request.Option) (*codecommit.ListBranchesOutput, error) {
@@ -938,6 +1296,47 @@ func (c *Client) ListRepositoriesPagesWithContext(ctx context.Context, input *co
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.CodeCommitAPI.ListRepositoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListRepositoriesForApprovalRuleTemplateWithContext(ctx context.Context, input *codecommit.ListRepositoriesForApprovalRuleTemplateInput, opts ...request.Option) (*codecommit.ListRepositoriesForApprovalRuleTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListRepositoriesForApprovalRuleTemplate",
+		Input:   input,
+		Output:  (*codecommit.ListRepositoriesForApprovalRuleTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.ListRepositoriesForApprovalRuleTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.ListRepositoriesForApprovalRuleTemplateOutput), req.Error
+}
+
+func (c *Client) ListRepositoriesForApprovalRuleTemplatePagesWithContext(ctx context.Context, input *codecommit.ListRepositoriesForApprovalRuleTemplateInput, cb func(*codecommit.ListRepositoriesForApprovalRuleTemplateOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListRepositoriesForApprovalRuleTemplate",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListRepositoriesForApprovalRuleTemplatePagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1088,6 +1487,27 @@ func (c *Client) MergePullRequestByThreeWayWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*codecommit.MergePullRequestByThreeWayOutput), req.Error
+}
+
+func (c *Client) OverridePullRequestApprovalRulesWithContext(ctx context.Context, input *codecommit.OverridePullRequestApprovalRulesInput, opts ...request.Option) (*codecommit.OverridePullRequestApprovalRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "OverridePullRequestApprovalRules",
+		Input:   input,
+		Output:  (*codecommit.OverridePullRequestApprovalRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.OverridePullRequestApprovalRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.OverridePullRequestApprovalRulesOutput), req.Error
 }
 
 func (c *Client) PostCommentForComparedCommitWithContext(ctx context.Context, input *codecommit.PostCommentForComparedCommitInput, opts ...request.Option) (*codecommit.PostCommentForComparedCommitOutput, error) {
@@ -1258,6 +1678,69 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *codecommit
 	return req.Output.(*codecommit.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateApprovalRuleTemplateContentWithContext(ctx context.Context, input *codecommit.UpdateApprovalRuleTemplateContentInput, opts ...request.Option) (*codecommit.UpdateApprovalRuleTemplateContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "UpdateApprovalRuleTemplateContent",
+		Input:   input,
+		Output:  (*codecommit.UpdateApprovalRuleTemplateContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.UpdateApprovalRuleTemplateContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.UpdateApprovalRuleTemplateContentOutput), req.Error
+}
+
+func (c *Client) UpdateApprovalRuleTemplateDescriptionWithContext(ctx context.Context, input *codecommit.UpdateApprovalRuleTemplateDescriptionInput, opts ...request.Option) (*codecommit.UpdateApprovalRuleTemplateDescriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "UpdateApprovalRuleTemplateDescription",
+		Input:   input,
+		Output:  (*codecommit.UpdateApprovalRuleTemplateDescriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.UpdateApprovalRuleTemplateDescriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.UpdateApprovalRuleTemplateDescriptionOutput), req.Error
+}
+
+func (c *Client) UpdateApprovalRuleTemplateNameWithContext(ctx context.Context, input *codecommit.UpdateApprovalRuleTemplateNameInput, opts ...request.Option) (*codecommit.UpdateApprovalRuleTemplateNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "UpdateApprovalRuleTemplateName",
+		Input:   input,
+		Output:  (*codecommit.UpdateApprovalRuleTemplateNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.UpdateApprovalRuleTemplateNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.UpdateApprovalRuleTemplateNameOutput), req.Error
+}
+
 func (c *Client) UpdateCommentWithContext(ctx context.Context, input *codecommit.UpdateCommentInput, opts ...request.Option) (*codecommit.UpdateCommentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codecommit",
@@ -1298,6 +1781,48 @@ func (c *Client) UpdateDefaultBranchWithContext(ctx context.Context, input *code
 	})
 
 	return req.Output.(*codecommit.UpdateDefaultBranchOutput), req.Error
+}
+
+func (c *Client) UpdatePullRequestApprovalRuleContentWithContext(ctx context.Context, input *codecommit.UpdatePullRequestApprovalRuleContentInput, opts ...request.Option) (*codecommit.UpdatePullRequestApprovalRuleContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "UpdatePullRequestApprovalRuleContent",
+		Input:   input,
+		Output:  (*codecommit.UpdatePullRequestApprovalRuleContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.UpdatePullRequestApprovalRuleContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.UpdatePullRequestApprovalRuleContentOutput), req.Error
+}
+
+func (c *Client) UpdatePullRequestApprovalStateWithContext(ctx context.Context, input *codecommit.UpdatePullRequestApprovalStateInput, opts ...request.Option) (*codecommit.UpdatePullRequestApprovalStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "UpdatePullRequestApprovalState",
+		Input:   input,
+		Output:  (*codecommit.UpdatePullRequestApprovalStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.UpdatePullRequestApprovalStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.UpdatePullRequestApprovalStateOutput), req.Error
 }
 
 func (c *Client) UpdatePullRequestDescriptionWithContext(ctx context.Context, input *codecommit.UpdatePullRequestDescriptionInput, opts ...request.Option) (*codecommit.UpdatePullRequestDescriptionOutput, error) {

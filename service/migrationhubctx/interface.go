@@ -21,9 +21,13 @@ type MigrationHub interface {
 	DisassociateDiscoveredResourceWithContext(ctx context.Context, input *migrationhub.DisassociateDiscoveredResourceInput, opts ...request.Option) (*migrationhub.DisassociateDiscoveredResourceOutput, error)
 	ImportMigrationTaskWithContext(ctx context.Context, input *migrationhub.ImportMigrationTaskInput, opts ...request.Option) (*migrationhub.ImportMigrationTaskOutput, error)
 	ListCreatedArtifactsWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, opts ...request.Option) (*migrationhub.ListCreatedArtifactsOutput, error)
+	ListCreatedArtifactsPagesWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, cb func(*migrationhub.ListCreatedArtifactsOutput, bool) bool, opts ...request.Option) error
 	ListDiscoveredResourcesWithContext(ctx context.Context, input *migrationhub.ListDiscoveredResourcesInput, opts ...request.Option) (*migrationhub.ListDiscoveredResourcesOutput, error)
+	ListDiscoveredResourcesPagesWithContext(ctx context.Context, input *migrationhub.ListDiscoveredResourcesInput, cb func(*migrationhub.ListDiscoveredResourcesOutput, bool) bool, opts ...request.Option) error
 	ListMigrationTasksWithContext(ctx context.Context, input *migrationhub.ListMigrationTasksInput, opts ...request.Option) (*migrationhub.ListMigrationTasksOutput, error)
+	ListMigrationTasksPagesWithContext(ctx context.Context, input *migrationhub.ListMigrationTasksInput, cb func(*migrationhub.ListMigrationTasksOutput, bool) bool, opts ...request.Option) error
 	ListProgressUpdateStreamsWithContext(ctx context.Context, input *migrationhub.ListProgressUpdateStreamsInput, opts ...request.Option) (*migrationhub.ListProgressUpdateStreamsOutput, error)
+	ListProgressUpdateStreamsPagesWithContext(ctx context.Context, input *migrationhub.ListProgressUpdateStreamsInput, cb func(*migrationhub.ListProgressUpdateStreamsOutput, bool) bool, opts ...request.Option) error
 	NotifyApplicationStateWithContext(ctx context.Context, input *migrationhub.NotifyApplicationStateInput, opts ...request.Option) (*migrationhub.NotifyApplicationStateOutput, error)
 	NotifyMigrationTaskStateWithContext(ctx context.Context, input *migrationhub.NotifyMigrationTaskStateInput, opts ...request.Option) (*migrationhub.NotifyMigrationTaskStateOutput, error)
 	PutResourceAttributesWithContext(ctx context.Context, input *migrationhub.PutResourceAttributesInput, opts ...request.Option) (*migrationhub.PutResourceAttributesOutput, error)
@@ -254,6 +258,26 @@ func (c *Client) ListCreatedArtifactsWithContext(ctx context.Context, input *mig
 	return req.Output.(*migrationhub.ListCreatedArtifactsOutput), req.Error
 }
 
+func (c *Client) ListCreatedArtifactsPagesWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, cb func(*migrationhub.ListCreatedArtifactsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "migrationhub",
+		Action:  "ListCreatedArtifacts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MigrationHubAPI.ListCreatedArtifactsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *migrationhub.ListDiscoveredResourcesInput, opts ...request.Option) (*migrationhub.ListDiscoveredResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
@@ -273,6 +297,26 @@ func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*migrationhub.ListDiscoveredResourcesOutput), req.Error
+}
+
+func (c *Client) ListDiscoveredResourcesPagesWithContext(ctx context.Context, input *migrationhub.ListDiscoveredResourcesInput, cb func(*migrationhub.ListDiscoveredResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "migrationhub",
+		Action:  "ListDiscoveredResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MigrationHubAPI.ListDiscoveredResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListMigrationTasksWithContext(ctx context.Context, input *migrationhub.ListMigrationTasksInput, opts ...request.Option) (*migrationhub.ListMigrationTasksOutput, error) {
@@ -296,6 +340,26 @@ func (c *Client) ListMigrationTasksWithContext(ctx context.Context, input *migra
 	return req.Output.(*migrationhub.ListMigrationTasksOutput), req.Error
 }
 
+func (c *Client) ListMigrationTasksPagesWithContext(ctx context.Context, input *migrationhub.ListMigrationTasksInput, cb func(*migrationhub.ListMigrationTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "migrationhub",
+		Action:  "ListMigrationTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MigrationHubAPI.ListMigrationTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProgressUpdateStreamsWithContext(ctx context.Context, input *migrationhub.ListProgressUpdateStreamsInput, opts ...request.Option) (*migrationhub.ListProgressUpdateStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "migrationhub",
@@ -315,6 +379,26 @@ func (c *Client) ListProgressUpdateStreamsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*migrationhub.ListProgressUpdateStreamsOutput), req.Error
+}
+
+func (c *Client) ListProgressUpdateStreamsPagesWithContext(ctx context.Context, input *migrationhub.ListProgressUpdateStreamsInput, cb func(*migrationhub.ListProgressUpdateStreamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "migrationhub",
+		Action:  "ListProgressUpdateStreams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MigrationHubAPI.ListProgressUpdateStreamsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) NotifyApplicationStateWithContext(ctx context.Context, input *migrationhub.NotifyApplicationStateInput, opts ...request.Option) (*migrationhub.NotifyApplicationStateOutput, error) {

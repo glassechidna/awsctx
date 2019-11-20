@@ -173,7 +173,10 @@ type EC2 interface {
 	DescribeEgressOnlyInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeEgressOnlyInternetGatewaysInput, cb func(*ec2.DescribeEgressOnlyInternetGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeElasticGpusWithContext(ctx context.Context, input *ec2.DescribeElasticGpusInput, opts ...request.Option) (*ec2.DescribeElasticGpusOutput, error)
 	DescribeExportImageTasksWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, opts ...request.Option) (*ec2.DescribeExportImageTasksOutput, error)
+	DescribeExportImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, cb func(*ec2.DescribeExportImageTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeExportTasksWithContext(ctx context.Context, input *ec2.DescribeExportTasksInput, opts ...request.Option) (*ec2.DescribeExportTasksOutput, error)
+	DescribeFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DescribeFastSnapshotRestoresOutput, error)
+	DescribeFastSnapshotRestoresPagesWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, cb func(*ec2.DescribeFastSnapshotRestoresOutput, bool) bool, opts ...request.Option) error
 	DescribeFleetHistoryWithContext(ctx context.Context, input *ec2.DescribeFleetHistoryInput, opts ...request.Option) (*ec2.DescribeFleetHistoryOutput, error)
 	DescribeFleetInstancesWithContext(ctx context.Context, input *ec2.DescribeFleetInstancesInput, opts ...request.Option) (*ec2.DescribeFleetInstancesOutput, error)
 	DescribeFleetsWithContext(ctx context.Context, input *ec2.DescribeFleetsInput, opts ...request.Option) (*ec2.DescribeFleetsOutput, error)
@@ -313,6 +316,7 @@ type EC2 interface {
 	DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error)
 	DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error)
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
+	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
 	DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error)
 	DisableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.DisableVgwRoutePropagationInput, opts ...request.Option) (*ec2.DisableVgwRoutePropagationOutput, error)
 	DisableVpcClassicLinkWithContext(ctx context.Context, input *ec2.DisableVpcClassicLinkInput, opts ...request.Option) (*ec2.DisableVpcClassicLinkOutput, error)
@@ -325,6 +329,7 @@ type EC2 interface {
 	DisassociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayRouteTableOutput, error)
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
+	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
 	EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error)
 	EnableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.EnableVgwRoutePropagationInput, opts ...request.Option) (*ec2.EnableVgwRoutePropagationOutput, error)
 	EnableVolumeIOWithContext(ctx context.Context, input *ec2.EnableVolumeIOInput, opts ...request.Option) (*ec2.EnableVolumeIOOutput, error)
@@ -3847,6 +3852,26 @@ func (c *Client) DescribeExportImageTasksWithContext(ctx context.Context, input 
 	return req.Output.(*ec2.DescribeExportImageTasksOutput), req.Error
 }
 
+func (c *Client) DescribeExportImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, cb func(*ec2.DescribeExportImageTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeExportImageTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeExportImageTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *ec2.DescribeExportTasksInput, opts ...request.Option) (*ec2.DescribeExportTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3866,6 +3891,47 @@ func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *ec2.
 	})
 
 	return req.Output.(*ec2.DescribeExportTasksOutput), req.Error
+}
+
+func (c *Client) DescribeFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DescribeFastSnapshotRestoresOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFastSnapshotRestores",
+		Input:   input,
+		Output:  (*ec2.DescribeFastSnapshotRestoresOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeFastSnapshotRestoresWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeFastSnapshotRestoresOutput), req.Error
+}
+
+func (c *Client) DescribeFastSnapshotRestoresPagesWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, cb func(*ec2.DescribeFastSnapshotRestoresOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFastSnapshotRestores",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeFastSnapshotRestoresPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeFleetHistoryWithContext(ctx context.Context, input *ec2.DescribeFleetHistoryInput, opts ...request.Option) (*ec2.DescribeFleetHistoryOutput, error) {
@@ -6733,6 +6799,27 @@ func (c *Client) DisableEbsEncryptionByDefaultWithContext(ctx context.Context, i
 	return req.Output.(*ec2.DisableEbsEncryptionByDefaultOutput), req.Error
 }
 
+func (c *Client) DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableFastSnapshotRestores",
+		Input:   input,
+		Output:  (*ec2.DisableFastSnapshotRestoresOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableFastSnapshotRestoresWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableFastSnapshotRestoresOutput), req.Error
+}
+
 func (c *Client) DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -6983,6 +7070,27 @@ func (c *Client) EnableEbsEncryptionByDefaultWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.EnableEbsEncryptionByDefaultOutput), req.Error
+}
+
+func (c *Client) EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableFastSnapshotRestores",
+		Input:   input,
+		Output:  (*ec2.EnableFastSnapshotRestoresOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableFastSnapshotRestoresWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableFastSnapshotRestoresOutput), req.Error
 }
 
 func (c *Client) EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error) {

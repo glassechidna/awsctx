@@ -36,6 +36,7 @@ type StorageGateway interface {
 	DeleteTapeWithContext(ctx context.Context, input *storagegateway.DeleteTapeInput, opts ...request.Option) (*storagegateway.DeleteTapeOutput, error)
 	DeleteTapeArchiveWithContext(ctx context.Context, input *storagegateway.DeleteTapeArchiveInput, opts ...request.Option) (*storagegateway.DeleteTapeArchiveOutput, error)
 	DeleteVolumeWithContext(ctx context.Context, input *storagegateway.DeleteVolumeInput, opts ...request.Option) (*storagegateway.DeleteVolumeOutput, error)
+	DescribeAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.DescribeAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.DescribeAvailabilityMonitorTestOutput, error)
 	DescribeBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitOutput, error)
 	DescribeCacheWithContext(ctx context.Context, input *storagegateway.DescribeCacheInput, opts ...request.Option) (*storagegateway.DescribeCacheOutput, error)
 	DescribeCachediSCSIVolumesWithContext(ctx context.Context, input *storagegateway.DescribeCachediSCSIVolumesInput, opts ...request.Option) (*storagegateway.DescribeCachediSCSIVolumesOutput, error)
@@ -82,6 +83,7 @@ type StorageGateway interface {
 	SetLocalConsolePasswordWithContext(ctx context.Context, input *storagegateway.SetLocalConsolePasswordInput, opts ...request.Option) (*storagegateway.SetLocalConsolePasswordOutput, error)
 	SetSMBGuestPasswordWithContext(ctx context.Context, input *storagegateway.SetSMBGuestPasswordInput, opts ...request.Option) (*storagegateway.SetSMBGuestPasswordOutput, error)
 	ShutdownGatewayWithContext(ctx context.Context, input *storagegateway.ShutdownGatewayInput, opts ...request.Option) (*storagegateway.ShutdownGatewayOutput, error)
+	StartAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.StartAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.StartAvailabilityMonitorTestOutput, error)
 	StartGatewayWithContext(ctx context.Context, input *storagegateway.StartGatewayInput, opts ...request.Option) (*storagegateway.StartGatewayOutput, error)
 	UpdateBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitOutput, error)
 	UpdateChapCredentialsWithContext(ctx context.Context, input *storagegateway.UpdateChapCredentialsInput, opts ...request.Option) (*storagegateway.UpdateChapCredentialsOutput, error)
@@ -633,6 +635,27 @@ func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *storagegate
 	})
 
 	return req.Output.(*storagegateway.DeleteVolumeOutput), req.Error
+}
+
+func (c *Client) DescribeAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.DescribeAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.DescribeAvailabilityMonitorTestOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeAvailabilityMonitorTest",
+		Input:   input,
+		Output:  (*storagegateway.DescribeAvailabilityMonitorTestOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.DescribeAvailabilityMonitorTestWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.DescribeAvailabilityMonitorTestOutput), req.Error
 }
 
 func (c *Client) DescribeBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitOutput, error) {
@@ -1590,6 +1613,27 @@ func (c *Client) ShutdownGatewayWithContext(ctx context.Context, input *storageg
 	})
 
 	return req.Output.(*storagegateway.ShutdownGatewayOutput), req.Error
+}
+
+func (c *Client) StartAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.StartAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.StartAvailabilityMonitorTestOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "StartAvailabilityMonitorTest",
+		Input:   input,
+		Output:  (*storagegateway.StartAvailabilityMonitorTestOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.StartAvailabilityMonitorTestWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.StartAvailabilityMonitorTestOutput), req.Error
 }
 
 func (c *Client) StartGatewayWithContext(ctx context.Context, input *storagegateway.StartGatewayInput, opts ...request.Option) (*storagegateway.StartGatewayOutput, error) {

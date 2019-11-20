@@ -16,6 +16,7 @@ type CloudTrail interface {
 	DeleteTrailWithContext(ctx context.Context, input *cloudtrail.DeleteTrailInput, opts ...request.Option) (*cloudtrail.DeleteTrailOutput, error)
 	DescribeTrailsWithContext(ctx context.Context, input *cloudtrail.DescribeTrailsInput, opts ...request.Option) (*cloudtrail.DescribeTrailsOutput, error)
 	GetEventSelectorsWithContext(ctx context.Context, input *cloudtrail.GetEventSelectorsInput, opts ...request.Option) (*cloudtrail.GetEventSelectorsOutput, error)
+	GetInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.GetInsightSelectorsInput, opts ...request.Option) (*cloudtrail.GetInsightSelectorsOutput, error)
 	GetTrailWithContext(ctx context.Context, input *cloudtrail.GetTrailInput, opts ...request.Option) (*cloudtrail.GetTrailOutput, error)
 	GetTrailStatusWithContext(ctx context.Context, input *cloudtrail.GetTrailStatusInput, opts ...request.Option) (*cloudtrail.GetTrailStatusOutput, error)
 	ListPublicKeysWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, opts ...request.Option) (*cloudtrail.ListPublicKeysOutput, error)
@@ -27,6 +28,7 @@ type CloudTrail interface {
 	LookupEventsWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, opts ...request.Option) (*cloudtrail.LookupEventsOutput, error)
 	LookupEventsPagesWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, cb func(*cloudtrail.LookupEventsOutput, bool) bool, opts ...request.Option) error
 	PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error)
+	PutInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.PutInsightSelectorsInput, opts ...request.Option) (*cloudtrail.PutInsightSelectorsOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error)
 	StartLoggingWithContext(ctx context.Context, input *cloudtrail.StartLoggingInput, opts ...request.Option) (*cloudtrail.StartLoggingOutput, error)
 	StopLoggingWithContext(ctx context.Context, input *cloudtrail.StopLoggingInput, opts ...request.Option) (*cloudtrail.StopLoggingOutput, error)
@@ -151,6 +153,27 @@ func (c *Client) GetEventSelectorsWithContext(ctx context.Context, input *cloudt
 	})
 
 	return req.Output.(*cloudtrail.GetEventSelectorsOutput), req.Error
+}
+
+func (c *Client) GetInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.GetInsightSelectorsInput, opts ...request.Option) (*cloudtrail.GetInsightSelectorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "GetInsightSelectors",
+		Input:   input,
+		Output:  (*cloudtrail.GetInsightSelectorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.GetInsightSelectorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.GetInsightSelectorsOutput), req.Error
 }
 
 func (c *Client) GetTrailWithContext(ctx context.Context, input *cloudtrail.GetTrailInput, opts ...request.Option) (*cloudtrail.GetTrailOutput, error) {
@@ -378,6 +401,27 @@ func (c *Client) PutEventSelectorsWithContext(ctx context.Context, input *cloudt
 	})
 
 	return req.Output.(*cloudtrail.PutEventSelectorsOutput), req.Error
+}
+
+func (c *Client) PutInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.PutInsightSelectorsInput, opts ...request.Option) (*cloudtrail.PutInsightSelectorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "PutInsightSelectors",
+		Input:   input,
+		Output:  (*cloudtrail.PutInsightSelectorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.PutInsightSelectorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.PutInsightSelectorsOutput), req.Error
 }
 
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error) {
