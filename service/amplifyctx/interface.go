@@ -12,11 +12,13 @@ import (
 
 type Amplify interface {
 	CreateAppWithContext(ctx context.Context, input *amplify.CreateAppInput, opts ...request.Option) (*amplify.CreateAppOutput, error)
+	CreateBackendEnvironmentWithContext(ctx context.Context, input *amplify.CreateBackendEnvironmentInput, opts ...request.Option) (*amplify.CreateBackendEnvironmentOutput, error)
 	CreateBranchWithContext(ctx context.Context, input *amplify.CreateBranchInput, opts ...request.Option) (*amplify.CreateBranchOutput, error)
 	CreateDeploymentWithContext(ctx context.Context, input *amplify.CreateDeploymentInput, opts ...request.Option) (*amplify.CreateDeploymentOutput, error)
 	CreateDomainAssociationWithContext(ctx context.Context, input *amplify.CreateDomainAssociationInput, opts ...request.Option) (*amplify.CreateDomainAssociationOutput, error)
 	CreateWebhookWithContext(ctx context.Context, input *amplify.CreateWebhookInput, opts ...request.Option) (*amplify.CreateWebhookOutput, error)
 	DeleteAppWithContext(ctx context.Context, input *amplify.DeleteAppInput, opts ...request.Option) (*amplify.DeleteAppOutput, error)
+	DeleteBackendEnvironmentWithContext(ctx context.Context, input *amplify.DeleteBackendEnvironmentInput, opts ...request.Option) (*amplify.DeleteBackendEnvironmentOutput, error)
 	DeleteBranchWithContext(ctx context.Context, input *amplify.DeleteBranchInput, opts ...request.Option) (*amplify.DeleteBranchOutput, error)
 	DeleteDomainAssociationWithContext(ctx context.Context, input *amplify.DeleteDomainAssociationInput, opts ...request.Option) (*amplify.DeleteDomainAssociationOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *amplify.DeleteJobInput, opts ...request.Option) (*amplify.DeleteJobOutput, error)
@@ -24,12 +26,14 @@ type Amplify interface {
 	GenerateAccessLogsWithContext(ctx context.Context, input *amplify.GenerateAccessLogsInput, opts ...request.Option) (*amplify.GenerateAccessLogsOutput, error)
 	GetAppWithContext(ctx context.Context, input *amplify.GetAppInput, opts ...request.Option) (*amplify.GetAppOutput, error)
 	GetArtifactUrlWithContext(ctx context.Context, input *amplify.GetArtifactUrlInput, opts ...request.Option) (*amplify.GetArtifactUrlOutput, error)
+	GetBackendEnvironmentWithContext(ctx context.Context, input *amplify.GetBackendEnvironmentInput, opts ...request.Option) (*amplify.GetBackendEnvironmentOutput, error)
 	GetBranchWithContext(ctx context.Context, input *amplify.GetBranchInput, opts ...request.Option) (*amplify.GetBranchOutput, error)
 	GetDomainAssociationWithContext(ctx context.Context, input *amplify.GetDomainAssociationInput, opts ...request.Option) (*amplify.GetDomainAssociationOutput, error)
 	GetJobWithContext(ctx context.Context, input *amplify.GetJobInput, opts ...request.Option) (*amplify.GetJobOutput, error)
 	GetWebhookWithContext(ctx context.Context, input *amplify.GetWebhookInput, opts ...request.Option) (*amplify.GetWebhookOutput, error)
 	ListAppsWithContext(ctx context.Context, input *amplify.ListAppsInput, opts ...request.Option) (*amplify.ListAppsOutput, error)
 	ListArtifactsWithContext(ctx context.Context, input *amplify.ListArtifactsInput, opts ...request.Option) (*amplify.ListArtifactsOutput, error)
+	ListBackendEnvironmentsWithContext(ctx context.Context, input *amplify.ListBackendEnvironmentsInput, opts ...request.Option) (*amplify.ListBackendEnvironmentsOutput, error)
 	ListBranchesWithContext(ctx context.Context, input *amplify.ListBranchesInput, opts ...request.Option) (*amplify.ListBranchesOutput, error)
 	ListDomainAssociationsWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, opts ...request.Option) (*amplify.ListDomainAssociationsOutput, error)
 	ListJobsWithContext(ctx context.Context, input *amplify.ListJobsInput, opts ...request.Option) (*amplify.ListJobsOutput, error)
@@ -80,6 +84,27 @@ func (c *Client) CreateAppWithContext(ctx context.Context, input *amplify.Create
 	})
 
 	return req.Output.(*amplify.CreateAppOutput), req.Error
+}
+
+func (c *Client) CreateBackendEnvironmentWithContext(ctx context.Context, input *amplify.CreateBackendEnvironmentInput, opts ...request.Option) (*amplify.CreateBackendEnvironmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "CreateBackendEnvironment",
+		Input:   input,
+		Output:  (*amplify.CreateBackendEnvironmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.CreateBackendEnvironmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.CreateBackendEnvironmentOutput), req.Error
 }
 
 func (c *Client) CreateBranchWithContext(ctx context.Context, input *amplify.CreateBranchInput, opts ...request.Option) (*amplify.CreateBranchOutput, error) {
@@ -185,6 +210,27 @@ func (c *Client) DeleteAppWithContext(ctx context.Context, input *amplify.Delete
 	})
 
 	return req.Output.(*amplify.DeleteAppOutput), req.Error
+}
+
+func (c *Client) DeleteBackendEnvironmentWithContext(ctx context.Context, input *amplify.DeleteBackendEnvironmentInput, opts ...request.Option) (*amplify.DeleteBackendEnvironmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "DeleteBackendEnvironment",
+		Input:   input,
+		Output:  (*amplify.DeleteBackendEnvironmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.DeleteBackendEnvironmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.DeleteBackendEnvironmentOutput), req.Error
 }
 
 func (c *Client) DeleteBranchWithContext(ctx context.Context, input *amplify.DeleteBranchInput, opts ...request.Option) (*amplify.DeleteBranchOutput, error) {
@@ -334,6 +380,27 @@ func (c *Client) GetArtifactUrlWithContext(ctx context.Context, input *amplify.G
 	return req.Output.(*amplify.GetArtifactUrlOutput), req.Error
 }
 
+func (c *Client) GetBackendEnvironmentWithContext(ctx context.Context, input *amplify.GetBackendEnvironmentInput, opts ...request.Option) (*amplify.GetBackendEnvironmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "GetBackendEnvironment",
+		Input:   input,
+		Output:  (*amplify.GetBackendEnvironmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.GetBackendEnvironmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.GetBackendEnvironmentOutput), req.Error
+}
+
 func (c *Client) GetBranchWithContext(ctx context.Context, input *amplify.GetBranchInput, opts ...request.Option) (*amplify.GetBranchOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
@@ -458,6 +525,27 @@ func (c *Client) ListArtifactsWithContext(ctx context.Context, input *amplify.Li
 	})
 
 	return req.Output.(*amplify.ListArtifactsOutput), req.Error
+}
+
+func (c *Client) ListBackendEnvironmentsWithContext(ctx context.Context, input *amplify.ListBackendEnvironmentsInput, opts ...request.Option) (*amplify.ListBackendEnvironmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "ListBackendEnvironments",
+		Input:   input,
+		Output:  (*amplify.ListBackendEnvironmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AmplifyAPI.ListBackendEnvironmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*amplify.ListBackendEnvironmentsOutput), req.Error
 }
 
 func (c *Client) ListBranchesWithContext(ctx context.Context, input *amplify.ListBranchesInput, opts ...request.Option) (*amplify.ListBranchesOutput, error) {

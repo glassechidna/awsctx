@@ -25,6 +25,7 @@ type ConfigService interface {
 	DeletePendingAggregationRequestWithContext(ctx context.Context, input *configservice.DeletePendingAggregationRequestInput, opts ...request.Option) (*configservice.DeletePendingAggregationRequestOutput, error)
 	DeleteRemediationConfigurationWithContext(ctx context.Context, input *configservice.DeleteRemediationConfigurationInput, opts ...request.Option) (*configservice.DeleteRemediationConfigurationOutput, error)
 	DeleteRemediationExceptionsWithContext(ctx context.Context, input *configservice.DeleteRemediationExceptionsInput, opts ...request.Option) (*configservice.DeleteRemediationExceptionsOutput, error)
+	DeleteResourceConfigWithContext(ctx context.Context, input *configservice.DeleteResourceConfigInput, opts ...request.Option) (*configservice.DeleteResourceConfigOutput, error)
 	DeleteRetentionConfigurationWithContext(ctx context.Context, input *configservice.DeleteRetentionConfigurationInput, opts ...request.Option) (*configservice.DeleteRetentionConfigurationOutput, error)
 	DeliverConfigSnapshotWithContext(ctx context.Context, input *configservice.DeliverConfigSnapshotInput, opts ...request.Option) (*configservice.DeliverConfigSnapshotOutput, error)
 	DescribeAggregateComplianceByConfigRulesWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConfigRulesInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConfigRulesOutput, error)
@@ -82,6 +83,7 @@ type ConfigService interface {
 	PutOrganizationConformancePackWithContext(ctx context.Context, input *configservice.PutOrganizationConformancePackInput, opts ...request.Option) (*configservice.PutOrganizationConformancePackOutput, error)
 	PutRemediationConfigurationsWithContext(ctx context.Context, input *configservice.PutRemediationConfigurationsInput, opts ...request.Option) (*configservice.PutRemediationConfigurationsOutput, error)
 	PutRemediationExceptionsWithContext(ctx context.Context, input *configservice.PutRemediationExceptionsInput, opts ...request.Option) (*configservice.PutRemediationExceptionsOutput, error)
+	PutResourceConfigWithContext(ctx context.Context, input *configservice.PutResourceConfigInput, opts ...request.Option) (*configservice.PutResourceConfigOutput, error)
 	PutRetentionConfigurationWithContext(ctx context.Context, input *configservice.PutRetentionConfigurationInput, opts ...request.Option) (*configservice.PutRetentionConfigurationOutput, error)
 	SelectResourceConfigWithContext(ctx context.Context, input *configservice.SelectResourceConfigInput, opts ...request.Option) (*configservice.SelectResourceConfigOutput, error)
 	StartConfigRulesEvaluationWithContext(ctx context.Context, input *configservice.StartConfigRulesEvaluationInput, opts ...request.Option) (*configservice.StartConfigRulesEvaluationOutput, error)
@@ -399,6 +401,27 @@ func (c *Client) DeleteRemediationExceptionsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*configservice.DeleteRemediationExceptionsOutput), req.Error
+}
+
+func (c *Client) DeleteResourceConfigWithContext(ctx context.Context, input *configservice.DeleteResourceConfigInput, opts ...request.Option) (*configservice.DeleteResourceConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DeleteResourceConfig",
+		Input:   input,
+		Output:  (*configservice.DeleteResourceConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.DeleteResourceConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.DeleteResourceConfigOutput), req.Error
 }
 
 func (c *Client) DeleteRetentionConfigurationWithContext(ctx context.Context, input *configservice.DeleteRetentionConfigurationInput, opts ...request.Option) (*configservice.DeleteRetentionConfigurationOutput, error) {
@@ -1593,6 +1616,27 @@ func (c *Client) PutRemediationExceptionsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*configservice.PutRemediationExceptionsOutput), req.Error
+}
+
+func (c *Client) PutResourceConfigWithContext(ctx context.Context, input *configservice.PutResourceConfigInput, opts ...request.Option) (*configservice.PutResourceConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "PutResourceConfig",
+		Input:   input,
+		Output:  (*configservice.PutResourceConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.PutResourceConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.PutResourceConfigOutput), req.Error
 }
 
 func (c *Client) PutRetentionConfigurationWithContext(ctx context.Context, input *configservice.PutRetentionConfigurationInput, opts ...request.Option) (*configservice.PutRetentionConfigurationOutput, error) {

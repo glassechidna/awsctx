@@ -39,6 +39,7 @@ type Connect interface {
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
+	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
 	StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error)
 	StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error)
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
@@ -642,6 +643,27 @@ func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *connect.L
 	})
 
 	return req.Error
+}
+
+func (c *Client) StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StartChatContact",
+		Input:   input,
+		Output:  (*connect.StartChatContactOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StartChatContactWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StartChatContactOutput), req.Error
 }
 
 func (c *Client) StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error) {

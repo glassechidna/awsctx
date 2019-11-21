@@ -27,6 +27,7 @@ type DynamoDB interface {
 	DescribeGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableSettingsOutput, error)
 	DescribeLimitsWithContext(ctx context.Context, input *dynamodb.DescribeLimitsInput, opts ...request.Option) (*dynamodb.DescribeLimitsOutput, error)
 	DescribeTableWithContext(ctx context.Context, input *dynamodb.DescribeTableInput, opts ...request.Option) (*dynamodb.DescribeTableOutput, error)
+	DescribeTableReplicaAutoScalingWithContext(ctx context.Context, input *dynamodb.DescribeTableReplicaAutoScalingInput, opts ...request.Option) (*dynamodb.DescribeTableReplicaAutoScalingOutput, error)
 	DescribeTimeToLiveWithContext(ctx context.Context, input *dynamodb.DescribeTimeToLiveInput, opts ...request.Option) (*dynamodb.DescribeTimeToLiveOutput, error)
 	GetItemWithContext(ctx context.Context, input *dynamodb.GetItemInput, opts ...request.Option) (*dynamodb.GetItemOutput, error)
 	ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error)
@@ -50,6 +51,7 @@ type DynamoDB interface {
 	UpdateGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.UpdateGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.UpdateGlobalTableSettingsOutput, error)
 	UpdateItemWithContext(ctx context.Context, input *dynamodb.UpdateItemInput, opts ...request.Option) (*dynamodb.UpdateItemOutput, error)
 	UpdateTableWithContext(ctx context.Context, input *dynamodb.UpdateTableInput, opts ...request.Option) (*dynamodb.UpdateTableOutput, error)
+	UpdateTableReplicaAutoScalingWithContext(ctx context.Context, input *dynamodb.UpdateTableReplicaAutoScalingInput, opts ...request.Option) (*dynamodb.UpdateTableReplicaAutoScalingOutput, error)
 	UpdateTimeToLiveWithContext(ctx context.Context, input *dynamodb.UpdateTimeToLiveInput, opts ...request.Option) (*dynamodb.UpdateTimeToLiveOutput, error)
 }
 
@@ -401,6 +403,27 @@ func (c *Client) DescribeTableWithContext(ctx context.Context, input *dynamodb.D
 	})
 
 	return req.Output.(*dynamodb.DescribeTableOutput), req.Error
+}
+
+func (c *Client) DescribeTableReplicaAutoScalingWithContext(ctx context.Context, input *dynamodb.DescribeTableReplicaAutoScalingInput, opts ...request.Option) (*dynamodb.DescribeTableReplicaAutoScalingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "DescribeTableReplicaAutoScaling",
+		Input:   input,
+		Output:  (*dynamodb.DescribeTableReplicaAutoScalingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.DescribeTableReplicaAutoScalingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.DescribeTableReplicaAutoScalingOutput), req.Error
 }
 
 func (c *Client) DescribeTimeToLiveWithContext(ctx context.Context, input *dynamodb.DescribeTimeToLiveInput, opts ...request.Option) (*dynamodb.DescribeTimeToLiveOutput, error) {
@@ -881,6 +904,27 @@ func (c *Client) UpdateTableWithContext(ctx context.Context, input *dynamodb.Upd
 	})
 
 	return req.Output.(*dynamodb.UpdateTableOutput), req.Error
+}
+
+func (c *Client) UpdateTableReplicaAutoScalingWithContext(ctx context.Context, input *dynamodb.UpdateTableReplicaAutoScalingInput, opts ...request.Option) (*dynamodb.UpdateTableReplicaAutoScalingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "UpdateTableReplicaAutoScaling",
+		Input:   input,
+		Output:  (*dynamodb.UpdateTableReplicaAutoScalingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.UpdateTableReplicaAutoScalingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.UpdateTableReplicaAutoScalingOutput), req.Error
 }
 
 func (c *Client) UpdateTimeToLiveWithContext(ctx context.Context, input *dynamodb.UpdateTimeToLiveInput, opts ...request.Option) (*dynamodb.UpdateTimeToLiveOutput, error) {

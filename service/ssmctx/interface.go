@@ -139,6 +139,7 @@ type SSM interface {
 	UpdateManagedInstanceRoleWithContext(ctx context.Context, input *ssm.UpdateManagedInstanceRoleInput, opts ...request.Option) (*ssm.UpdateManagedInstanceRoleOutput, error)
 	UpdateOpsItemWithContext(ctx context.Context, input *ssm.UpdateOpsItemInput, opts ...request.Option) (*ssm.UpdateOpsItemOutput, error)
 	UpdatePatchBaselineWithContext(ctx context.Context, input *ssm.UpdatePatchBaselineInput, opts ...request.Option) (*ssm.UpdatePatchBaselineOutput, error)
+	UpdateResourceDataSyncWithContext(ctx context.Context, input *ssm.UpdateResourceDataSyncInput, opts ...request.Option) (*ssm.UpdateResourceDataSyncOutput, error)
 	UpdateServiceSettingWithContext(ctx context.Context, input *ssm.UpdateServiceSettingInput, opts ...request.Option) (*ssm.UpdateServiceSettingOutput, error)
 }
 
@@ -2834,6 +2835,27 @@ func (c *Client) UpdatePatchBaselineWithContext(ctx context.Context, input *ssm.
 	})
 
 	return req.Output.(*ssm.UpdatePatchBaselineOutput), req.Error
+}
+
+func (c *Client) UpdateResourceDataSyncWithContext(ctx context.Context, input *ssm.UpdateResourceDataSyncInput, opts ...request.Option) (*ssm.UpdateResourceDataSyncOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "UpdateResourceDataSync",
+		Input:   input,
+		Output:  (*ssm.UpdateResourceDataSyncOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.UpdateResourceDataSyncWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.UpdateResourceDataSyncOutput), req.Error
 }
 
 func (c *Client) UpdateServiceSettingWithContext(ctx context.Context, input *ssm.UpdateServiceSettingInput, opts ...request.Option) (*ssm.UpdateServiceSettingOutput, error) {

@@ -11,18 +11,22 @@ import (
 )
 
 type AppSync interface {
+	CreateApiCacheWithContext(ctx context.Context, input *appsync.CreateApiCacheInput, opts ...request.Option) (*appsync.CreateApiCacheOutput, error)
 	CreateApiKeyWithContext(ctx context.Context, input *appsync.CreateApiKeyInput, opts ...request.Option) (*appsync.CreateApiKeyOutput, error)
 	CreateDataSourceWithContext(ctx context.Context, input *appsync.CreateDataSourceInput, opts ...request.Option) (*appsync.CreateDataSourceOutput, error)
 	CreateFunctionWithContext(ctx context.Context, input *appsync.CreateFunctionInput, opts ...request.Option) (*appsync.CreateFunctionOutput, error)
 	CreateGraphqlApiWithContext(ctx context.Context, input *appsync.CreateGraphqlApiInput, opts ...request.Option) (*appsync.CreateGraphqlApiOutput, error)
 	CreateResolverWithContext(ctx context.Context, input *appsync.CreateResolverInput, opts ...request.Option) (*appsync.CreateResolverOutput, error)
 	CreateTypeWithContext(ctx context.Context, input *appsync.CreateTypeInput, opts ...request.Option) (*appsync.CreateTypeOutput, error)
+	DeleteApiCacheWithContext(ctx context.Context, input *appsync.DeleteApiCacheInput, opts ...request.Option) (*appsync.DeleteApiCacheOutput, error)
 	DeleteApiKeyWithContext(ctx context.Context, input *appsync.DeleteApiKeyInput, opts ...request.Option) (*appsync.DeleteApiKeyOutput, error)
 	DeleteDataSourceWithContext(ctx context.Context, input *appsync.DeleteDataSourceInput, opts ...request.Option) (*appsync.DeleteDataSourceOutput, error)
 	DeleteFunctionWithContext(ctx context.Context, input *appsync.DeleteFunctionInput, opts ...request.Option) (*appsync.DeleteFunctionOutput, error)
 	DeleteGraphqlApiWithContext(ctx context.Context, input *appsync.DeleteGraphqlApiInput, opts ...request.Option) (*appsync.DeleteGraphqlApiOutput, error)
 	DeleteResolverWithContext(ctx context.Context, input *appsync.DeleteResolverInput, opts ...request.Option) (*appsync.DeleteResolverOutput, error)
 	DeleteTypeWithContext(ctx context.Context, input *appsync.DeleteTypeInput, opts ...request.Option) (*appsync.DeleteTypeOutput, error)
+	FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error)
+	GetApiCacheWithContext(ctx context.Context, input *appsync.GetApiCacheInput, opts ...request.Option) (*appsync.GetApiCacheOutput, error)
 	GetDataSourceWithContext(ctx context.Context, input *appsync.GetDataSourceInput, opts ...request.Option) (*appsync.GetDataSourceOutput, error)
 	GetFunctionWithContext(ctx context.Context, input *appsync.GetFunctionInput, opts ...request.Option) (*appsync.GetFunctionOutput, error)
 	GetGraphqlApiWithContext(ctx context.Context, input *appsync.GetGraphqlApiInput, opts ...request.Option) (*appsync.GetGraphqlApiOutput, error)
@@ -41,6 +45,7 @@ type AppSync interface {
 	StartSchemaCreationWithContext(ctx context.Context, input *appsync.StartSchemaCreationInput, opts ...request.Option) (*appsync.StartSchemaCreationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *appsync.TagResourceInput, opts ...request.Option) (*appsync.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *appsync.UntagResourceInput, opts ...request.Option) (*appsync.UntagResourceOutput, error)
+	UpdateApiCacheWithContext(ctx context.Context, input *appsync.UpdateApiCacheInput, opts ...request.Option) (*appsync.UpdateApiCacheOutput, error)
 	UpdateApiKeyWithContext(ctx context.Context, input *appsync.UpdateApiKeyInput, opts ...request.Option) (*appsync.UpdateApiKeyOutput, error)
 	UpdateDataSourceWithContext(ctx context.Context, input *appsync.UpdateDataSourceInput, opts ...request.Option) (*appsync.UpdateDataSourceOutput, error)
 	UpdateFunctionWithContext(ctx context.Context, input *appsync.UpdateFunctionInput, opts ...request.Option) (*appsync.UpdateFunctionOutput, error)
@@ -63,6 +68,27 @@ func New(base appsynciface.AppSyncAPI, ctxer awsctx.Contexter) AppSync {
 
 var _ AppSync = (*appsync.AppSync)(nil)
 var _ AppSync = (*Client)(nil)
+
+func (c *Client) CreateApiCacheWithContext(ctx context.Context, input *appsync.CreateApiCacheInput, opts ...request.Option) (*appsync.CreateApiCacheOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "CreateApiCache",
+		Input:   input,
+		Output:  (*appsync.CreateApiCacheOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.CreateApiCacheWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.CreateApiCacheOutput), req.Error
+}
 
 func (c *Client) CreateApiKeyWithContext(ctx context.Context, input *appsync.CreateApiKeyInput, opts ...request.Option) (*appsync.CreateApiKeyOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -190,6 +216,27 @@ func (c *Client) CreateTypeWithContext(ctx context.Context, input *appsync.Creat
 	return req.Output.(*appsync.CreateTypeOutput), req.Error
 }
 
+func (c *Client) DeleteApiCacheWithContext(ctx context.Context, input *appsync.DeleteApiCacheInput, opts ...request.Option) (*appsync.DeleteApiCacheOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "DeleteApiCache",
+		Input:   input,
+		Output:  (*appsync.DeleteApiCacheOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.DeleteApiCacheWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.DeleteApiCacheOutput), req.Error
+}
+
 func (c *Client) DeleteApiKeyWithContext(ctx context.Context, input *appsync.DeleteApiKeyInput, opts ...request.Option) (*appsync.DeleteApiKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -314,6 +361,48 @@ func (c *Client) DeleteTypeWithContext(ctx context.Context, input *appsync.Delet
 	})
 
 	return req.Output.(*appsync.DeleteTypeOutput), req.Error
+}
+
+func (c *Client) FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "FlushApiCache",
+		Input:   input,
+		Output:  (*appsync.FlushApiCacheOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.FlushApiCacheWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.FlushApiCacheOutput), req.Error
+}
+
+func (c *Client) GetApiCacheWithContext(ctx context.Context, input *appsync.GetApiCacheInput, opts ...request.Option) (*appsync.GetApiCacheOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "GetApiCache",
+		Input:   input,
+		Output:  (*appsync.GetApiCacheOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.GetApiCacheWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.GetApiCacheOutput), req.Error
 }
 
 func (c *Client) GetDataSourceWithContext(ctx context.Context, input *appsync.GetDataSourceInput, opts ...request.Option) (*appsync.GetDataSourceOutput, error) {
@@ -692,6 +781,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *appsync.Un
 	})
 
 	return req.Output.(*appsync.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateApiCacheWithContext(ctx context.Context, input *appsync.UpdateApiCacheInput, opts ...request.Option) (*appsync.UpdateApiCacheOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "UpdateApiCache",
+		Input:   input,
+		Output:  (*appsync.UpdateApiCacheOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.UpdateApiCacheWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.UpdateApiCacheOutput), req.Error
 }
 
 func (c *Client) UpdateApiKeyWithContext(ctx context.Context, input *appsync.UpdateApiKeyInput, opts ...request.Option) (*appsync.UpdateApiKeyOutput, error) {
