@@ -37,6 +37,7 @@ type EMR interface {
 	ListSecurityConfigurationsPagesWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, cb func(*emr.ListSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error)
 	ListStepsPagesWithContext(ctx context.Context, input *emr.ListStepsInput, cb func(*emr.ListStepsOutput, bool) bool, opts ...request.Option) error
+	ModifyClusterWithContext(ctx context.Context, input *emr.ModifyClusterInput, opts ...request.Option) (*emr.ModifyClusterOutput, error)
 	ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error)
 	ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error)
 	PutAutoScalingPolicyWithContext(ctx context.Context, input *emr.PutAutoScalingPolicyInput, opts ...request.Option) (*emr.PutAutoScalingPolicyOutput, error)
@@ -601,6 +602,27 @@ func (c *Client) ListStepsPagesWithContext(ctx context.Context, input *emr.ListS
 	})
 
 	return req.Error
+}
+
+func (c *Client) ModifyClusterWithContext(ctx context.Context, input *emr.ModifyClusterInput, opts ...request.Option) (*emr.ModifyClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ModifyCluster",
+		Input:   input,
+		Output:  (*emr.ModifyClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.ModifyClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.ModifyClusterOutput), req.Error
 }
 
 func (c *Client) ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error) {

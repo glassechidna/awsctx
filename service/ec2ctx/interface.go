@@ -207,6 +207,8 @@ type EC2 interface {
 	DescribeInstanceCreditSpecificationsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, cb func(*ec2.DescribeInstanceCreditSpecificationsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error)
 	DescribeInstanceStatusPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, cb func(*ec2.DescribeInstanceStatusOutput, bool) bool, opts ...request.Option) error
+	DescribeInstanceTypeOfferingsWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, opts ...request.Option) (*ec2.DescribeInstanceTypeOfferingsOutput, error)
+	DescribeInstanceTypesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, opts ...request.Option) (*ec2.DescribeInstanceTypesOutput, error)
 	DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error)
 	DescribeInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, cb func(*ec2.DescribeInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error)
@@ -4551,6 +4553,48 @@ func (c *Client) DescribeInstanceStatusPagesWithContext(ctx context.Context, inp
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeInstanceTypeOfferingsWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, opts ...request.Option) (*ec2.DescribeInstanceTypeOfferingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceTypeOfferings",
+		Input:   input,
+		Output:  (*ec2.DescribeInstanceTypeOfferingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeInstanceTypeOfferingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeInstanceTypeOfferingsOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceTypesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, opts ...request.Option) (*ec2.DescribeInstanceTypesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceTypes",
+		Input:   input,
+		Output:  (*ec2.DescribeInstanceTypesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeInstanceTypesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeInstanceTypesOutput), req.Error
 }
 
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error) {
