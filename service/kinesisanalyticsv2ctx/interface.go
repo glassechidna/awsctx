@@ -16,6 +16,7 @@ type KinesisAnalyticsV2 interface {
 	AddApplicationInputProcessingConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationInputProcessingConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationInputProcessingConfigurationOutput, error)
 	AddApplicationOutputWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationOutputInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationOutputOutput, error)
 	AddApplicationReferenceDataSourceWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationReferenceDataSourceInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationReferenceDataSourceOutput, error)
+	AddApplicationVpcConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationVpcConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationVpcConfigurationOutput, error)
 	CreateApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationOutput, error)
 	CreateApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationSnapshotOutput, error)
 	DeleteApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationOutput, error)
@@ -24,6 +25,7 @@ type KinesisAnalyticsV2 interface {
 	DeleteApplicationOutputWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationOutputInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationOutputOutput, error)
 	DeleteApplicationReferenceDataSourceWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationReferenceDataSourceInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationReferenceDataSourceOutput, error)
 	DeleteApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationSnapshotOutput, error)
+	DeleteApplicationVpcConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationVpcConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationVpcConfigurationOutput, error)
 	DescribeApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationOutput, error)
 	DescribeApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationSnapshotOutput, error)
 	DiscoverInputSchemaWithContext(ctx context.Context, input *kinesisanalyticsv2.DiscoverInputSchemaInput, opts ...request.Option) (*kinesisanalyticsv2.DiscoverInputSchemaOutput, error)
@@ -155,6 +157,27 @@ func (c *Client) AddApplicationReferenceDataSourceWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*kinesisanalyticsv2.AddApplicationReferenceDataSourceOutput), req.Error
+}
+
+func (c *Client) AddApplicationVpcConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationVpcConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationVpcConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "AddApplicationVpcConfiguration",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.AddApplicationVpcConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.AddApplicationVpcConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.AddApplicationVpcConfigurationOutput), req.Error
 }
 
 func (c *Client) CreateApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationOutput, error) {
@@ -323,6 +346,27 @@ func (c *Client) DeleteApplicationSnapshotWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*kinesisanalyticsv2.DeleteApplicationSnapshotOutput), req.Error
+}
+
+func (c *Client) DeleteApplicationVpcConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationVpcConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationVpcConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "DeleteApplicationVpcConfiguration",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.DeleteApplicationVpcConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.DeleteApplicationVpcConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.DeleteApplicationVpcConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationOutput, error) {

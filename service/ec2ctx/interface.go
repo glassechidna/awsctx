@@ -344,6 +344,7 @@ type EC2 interface {
 	GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error)
 	GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error)
 	GetConsoleScreenshotWithContext(ctx context.Context, input *ec2.GetConsoleScreenshotInput, opts ...request.Option) (*ec2.GetConsoleScreenshotOutput, error)
+	GetDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.GetDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.GetDefaultCreditSpecificationOutput, error)
 	GetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.GetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.GetEbsDefaultKmsKeyIdOutput, error)
 	GetEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.GetEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.GetEbsEncryptionByDefaultOutput, error)
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
@@ -364,6 +365,7 @@ type EC2 interface {
 	ImportVolumeWithContext(ctx context.Context, input *ec2.ImportVolumeInput, opts ...request.Option) (*ec2.ImportVolumeOutput, error)
 	ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error)
 	ModifyClientVpnEndpointWithContext(ctx context.Context, input *ec2.ModifyClientVpnEndpointInput, opts ...request.Option) (*ec2.ModifyClientVpnEndpointOutput, error)
+	ModifyDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyDefaultCreditSpecificationOutput, error)
 	ModifyEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ModifyEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ModifyEbsDefaultKmsKeyIdOutput, error)
 	ModifyFleetWithContext(ctx context.Context, input *ec2.ModifyFleetInput, opts ...request.Option) (*ec2.ModifyFleetOutput, error)
 	ModifyFpgaImageAttributeWithContext(ctx context.Context, input *ec2.ModifyFpgaImageAttributeInput, opts ...request.Option) (*ec2.ModifyFpgaImageAttributeOutput, error)
@@ -7389,6 +7391,27 @@ func (c *Client) GetConsoleScreenshotWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.GetConsoleScreenshotOutput), req.Error
 }
 
+func (c *Client) GetDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.GetDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.GetDefaultCreditSpecificationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetDefaultCreditSpecification",
+		Input:   input,
+		Output:  (*ec2.GetDefaultCreditSpecificationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetDefaultCreditSpecificationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetDefaultCreditSpecificationOutput), req.Error
+}
+
 func (c *Client) GetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.GetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.GetEbsDefaultKmsKeyIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -7804,6 +7827,27 @@ func (c *Client) ModifyClientVpnEndpointWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.ModifyClientVpnEndpointOutput), req.Error
+}
+
+func (c *Client) ModifyDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyDefaultCreditSpecificationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyDefaultCreditSpecification",
+		Input:   input,
+		Output:  (*ec2.ModifyDefaultCreditSpecificationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyDefaultCreditSpecificationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyDefaultCreditSpecificationOutput), req.Error
 }
 
 func (c *Client) ModifyEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ModifyEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ModifyEbsDefaultKmsKeyIdOutput, error) {

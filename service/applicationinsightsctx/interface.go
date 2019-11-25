@@ -13,12 +13,15 @@ import (
 type ApplicationInsights interface {
 	CreateApplicationWithContext(ctx context.Context, input *applicationinsights.CreateApplicationInput, opts ...request.Option) (*applicationinsights.CreateApplicationOutput, error)
 	CreateComponentWithContext(ctx context.Context, input *applicationinsights.CreateComponentInput, opts ...request.Option) (*applicationinsights.CreateComponentOutput, error)
+	CreateLogPatternWithContext(ctx context.Context, input *applicationinsights.CreateLogPatternInput, opts ...request.Option) (*applicationinsights.CreateLogPatternOutput, error)
 	DeleteApplicationWithContext(ctx context.Context, input *applicationinsights.DeleteApplicationInput, opts ...request.Option) (*applicationinsights.DeleteApplicationOutput, error)
 	DeleteComponentWithContext(ctx context.Context, input *applicationinsights.DeleteComponentInput, opts ...request.Option) (*applicationinsights.DeleteComponentOutput, error)
+	DeleteLogPatternWithContext(ctx context.Context, input *applicationinsights.DeleteLogPatternInput, opts ...request.Option) (*applicationinsights.DeleteLogPatternOutput, error)
 	DescribeApplicationWithContext(ctx context.Context, input *applicationinsights.DescribeApplicationInput, opts ...request.Option) (*applicationinsights.DescribeApplicationOutput, error)
 	DescribeComponentWithContext(ctx context.Context, input *applicationinsights.DescribeComponentInput, opts ...request.Option) (*applicationinsights.DescribeComponentOutput, error)
 	DescribeComponentConfigurationWithContext(ctx context.Context, input *applicationinsights.DescribeComponentConfigurationInput, opts ...request.Option) (*applicationinsights.DescribeComponentConfigurationOutput, error)
 	DescribeComponentConfigurationRecommendationWithContext(ctx context.Context, input *applicationinsights.DescribeComponentConfigurationRecommendationInput, opts ...request.Option) (*applicationinsights.DescribeComponentConfigurationRecommendationOutput, error)
+	DescribeLogPatternWithContext(ctx context.Context, input *applicationinsights.DescribeLogPatternInput, opts ...request.Option) (*applicationinsights.DescribeLogPatternOutput, error)
 	DescribeObservationWithContext(ctx context.Context, input *applicationinsights.DescribeObservationInput, opts ...request.Option) (*applicationinsights.DescribeObservationOutput, error)
 	DescribeProblemWithContext(ctx context.Context, input *applicationinsights.DescribeProblemInput, opts ...request.Option) (*applicationinsights.DescribeProblemOutput, error)
 	DescribeProblemObservationsWithContext(ctx context.Context, input *applicationinsights.DescribeProblemObservationsInput, opts ...request.Option) (*applicationinsights.DescribeProblemObservationsOutput, error)
@@ -26,11 +29,19 @@ type ApplicationInsights interface {
 	ListApplicationsPagesWithContext(ctx context.Context, input *applicationinsights.ListApplicationsInput, cb func(*applicationinsights.ListApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListComponentsWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, opts ...request.Option) (*applicationinsights.ListComponentsOutput, error)
 	ListComponentsPagesWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, cb func(*applicationinsights.ListComponentsOutput, bool) bool, opts ...request.Option) error
+	ListLogPatternSetsWithContext(ctx context.Context, input *applicationinsights.ListLogPatternSetsInput, opts ...request.Option) (*applicationinsights.ListLogPatternSetsOutput, error)
+	ListLogPatternSetsPagesWithContext(ctx context.Context, input *applicationinsights.ListLogPatternSetsInput, cb func(*applicationinsights.ListLogPatternSetsOutput, bool) bool, opts ...request.Option) error
+	ListLogPatternsWithContext(ctx context.Context, input *applicationinsights.ListLogPatternsInput, opts ...request.Option) (*applicationinsights.ListLogPatternsOutput, error)
+	ListLogPatternsPagesWithContext(ctx context.Context, input *applicationinsights.ListLogPatternsInput, cb func(*applicationinsights.ListLogPatternsOutput, bool) bool, opts ...request.Option) error
 	ListProblemsWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, opts ...request.Option) (*applicationinsights.ListProblemsOutput, error)
 	ListProblemsPagesWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, cb func(*applicationinsights.ListProblemsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *applicationinsights.ListTagsForResourceInput, opts ...request.Option) (*applicationinsights.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *applicationinsights.TagResourceInput, opts ...request.Option) (*applicationinsights.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *applicationinsights.UntagResourceInput, opts ...request.Option) (*applicationinsights.UntagResourceOutput, error)
 	UpdateApplicationWithContext(ctx context.Context, input *applicationinsights.UpdateApplicationInput, opts ...request.Option) (*applicationinsights.UpdateApplicationOutput, error)
 	UpdateComponentWithContext(ctx context.Context, input *applicationinsights.UpdateComponentInput, opts ...request.Option) (*applicationinsights.UpdateComponentOutput, error)
 	UpdateComponentConfigurationWithContext(ctx context.Context, input *applicationinsights.UpdateComponentConfigurationInput, opts ...request.Option) (*applicationinsights.UpdateComponentConfigurationOutput, error)
+	UpdateLogPatternWithContext(ctx context.Context, input *applicationinsights.UpdateLogPatternInput, opts ...request.Option) (*applicationinsights.UpdateLogPatternOutput, error)
 }
 
 type Client struct {
@@ -90,6 +101,27 @@ func (c *Client) CreateComponentWithContext(ctx context.Context, input *applicat
 	return req.Output.(*applicationinsights.CreateComponentOutput), req.Error
 }
 
+func (c *Client) CreateLogPatternWithContext(ctx context.Context, input *applicationinsights.CreateLogPatternInput, opts ...request.Option) (*applicationinsights.CreateLogPatternOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "CreateLogPattern",
+		Input:   input,
+		Output:  (*applicationinsights.CreateLogPatternOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.CreateLogPatternWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.CreateLogPatternOutput), req.Error
+}
+
 func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *applicationinsights.DeleteApplicationInput, opts ...request.Option) (*applicationinsights.DeleteApplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
@@ -130,6 +162,27 @@ func (c *Client) DeleteComponentWithContext(ctx context.Context, input *applicat
 	})
 
 	return req.Output.(*applicationinsights.DeleteComponentOutput), req.Error
+}
+
+func (c *Client) DeleteLogPatternWithContext(ctx context.Context, input *applicationinsights.DeleteLogPatternInput, opts ...request.Option) (*applicationinsights.DeleteLogPatternOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "DeleteLogPattern",
+		Input:   input,
+		Output:  (*applicationinsights.DeleteLogPatternOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.DeleteLogPatternWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.DeleteLogPatternOutput), req.Error
 }
 
 func (c *Client) DescribeApplicationWithContext(ctx context.Context, input *applicationinsights.DescribeApplicationInput, opts ...request.Option) (*applicationinsights.DescribeApplicationOutput, error) {
@@ -214,6 +267,27 @@ func (c *Client) DescribeComponentConfigurationRecommendationWithContext(ctx con
 	})
 
 	return req.Output.(*applicationinsights.DescribeComponentConfigurationRecommendationOutput), req.Error
+}
+
+func (c *Client) DescribeLogPatternWithContext(ctx context.Context, input *applicationinsights.DescribeLogPatternInput, opts ...request.Option) (*applicationinsights.DescribeLogPatternOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "DescribeLogPattern",
+		Input:   input,
+		Output:  (*applicationinsights.DescribeLogPatternOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.DescribeLogPatternWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.DescribeLogPatternOutput), req.Error
 }
 
 func (c *Client) DescribeObservationWithContext(ctx context.Context, input *applicationinsights.DescribeObservationInput, opts ...request.Option) (*applicationinsights.DescribeObservationOutput, error) {
@@ -361,6 +435,88 @@ func (c *Client) ListComponentsPagesWithContext(ctx context.Context, input *appl
 	return req.Error
 }
 
+func (c *Client) ListLogPatternSetsWithContext(ctx context.Context, input *applicationinsights.ListLogPatternSetsInput, opts ...request.Option) (*applicationinsights.ListLogPatternSetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListLogPatternSets",
+		Input:   input,
+		Output:  (*applicationinsights.ListLogPatternSetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.ListLogPatternSetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.ListLogPatternSetsOutput), req.Error
+}
+
+func (c *Client) ListLogPatternSetsPagesWithContext(ctx context.Context, input *applicationinsights.ListLogPatternSetsInput, cb func(*applicationinsights.ListLogPatternSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListLogPatternSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationInsightsAPI.ListLogPatternSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListLogPatternsWithContext(ctx context.Context, input *applicationinsights.ListLogPatternsInput, opts ...request.Option) (*applicationinsights.ListLogPatternsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListLogPatterns",
+		Input:   input,
+		Output:  (*applicationinsights.ListLogPatternsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.ListLogPatternsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.ListLogPatternsOutput), req.Error
+}
+
+func (c *Client) ListLogPatternsPagesWithContext(ctx context.Context, input *applicationinsights.ListLogPatternsInput, cb func(*applicationinsights.ListLogPatternsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListLogPatterns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationInsightsAPI.ListLogPatternsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProblemsWithContext(ctx context.Context, input *applicationinsights.ListProblemsInput, opts ...request.Option) (*applicationinsights.ListProblemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationinsights",
@@ -400,6 +556,69 @@ func (c *Client) ListProblemsPagesWithContext(ctx context.Context, input *applic
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *applicationinsights.ListTagsForResourceInput, opts ...request.Option) (*applicationinsights.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*applicationinsights.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *applicationinsights.TagResourceInput, opts ...request.Option) (*applicationinsights.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*applicationinsights.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *applicationinsights.UntagResourceInput, opts ...request.Option) (*applicationinsights.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*applicationinsights.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *applicationinsights.UpdateApplicationInput, opts ...request.Option) (*applicationinsights.UpdateApplicationOutput, error) {
@@ -463,4 +682,25 @@ func (c *Client) UpdateComponentConfigurationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*applicationinsights.UpdateComponentConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateLogPatternWithContext(ctx context.Context, input *applicationinsights.UpdateLogPatternInput, opts ...request.Option) (*applicationinsights.UpdateLogPatternOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "UpdateLogPattern",
+		Input:   input,
+		Output:  (*applicationinsights.UpdateLogPatternOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.UpdateLogPatternWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.UpdateLogPatternOutput), req.Error
 }

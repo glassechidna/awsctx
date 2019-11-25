@@ -26,6 +26,7 @@ type Redshift interface {
 	CreateEventSubscriptionWithContext(ctx context.Context, input *redshift.CreateEventSubscriptionInput, opts ...request.Option) (*redshift.CreateEventSubscriptionOutput, error)
 	CreateHsmClientCertificateWithContext(ctx context.Context, input *redshift.CreateHsmClientCertificateInput, opts ...request.Option) (*redshift.CreateHsmClientCertificateOutput, error)
 	CreateHsmConfigurationWithContext(ctx context.Context, input *redshift.CreateHsmConfigurationInput, opts ...request.Option) (*redshift.CreateHsmConfigurationOutput, error)
+	CreateScheduledActionWithContext(ctx context.Context, input *redshift.CreateScheduledActionInput, opts ...request.Option) (*redshift.CreateScheduledActionOutput, error)
 	CreateSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.CreateSnapshotCopyGrantInput, opts ...request.Option) (*redshift.CreateSnapshotCopyGrantOutput, error)
 	CreateSnapshotScheduleWithContext(ctx context.Context, input *redshift.CreateSnapshotScheduleInput, opts ...request.Option) (*redshift.CreateSnapshotScheduleOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *redshift.CreateTagsInput, opts ...request.Option) (*redshift.CreateTagsOutput, error)
@@ -37,6 +38,7 @@ type Redshift interface {
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *redshift.DeleteEventSubscriptionInput, opts ...request.Option) (*redshift.DeleteEventSubscriptionOutput, error)
 	DeleteHsmClientCertificateWithContext(ctx context.Context, input *redshift.DeleteHsmClientCertificateInput, opts ...request.Option) (*redshift.DeleteHsmClientCertificateOutput, error)
 	DeleteHsmConfigurationWithContext(ctx context.Context, input *redshift.DeleteHsmConfigurationInput, opts ...request.Option) (*redshift.DeleteHsmConfigurationOutput, error)
+	DeleteScheduledActionWithContext(ctx context.Context, input *redshift.DeleteScheduledActionInput, opts ...request.Option) (*redshift.DeleteScheduledActionOutput, error)
 	DeleteSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.DeleteSnapshotCopyGrantInput, opts ...request.Option) (*redshift.DeleteSnapshotCopyGrantOutput, error)
 	DeleteSnapshotScheduleWithContext(ctx context.Context, input *redshift.DeleteSnapshotScheduleInput, opts ...request.Option) (*redshift.DeleteSnapshotScheduleOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *redshift.DeleteTagsInput, opts ...request.Option) (*redshift.DeleteTagsOutput, error)
@@ -78,6 +80,8 @@ type Redshift interface {
 	DescribeReservedNodesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, opts ...request.Option) (*redshift.DescribeReservedNodesOutput, error)
 	DescribeReservedNodesPagesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, cb func(*redshift.DescribeReservedNodesOutput, bool) bool, opts ...request.Option) error
 	DescribeResizeWithContext(ctx context.Context, input *redshift.DescribeResizeInput, opts ...request.Option) (*redshift.DescribeResizeOutput, error)
+	DescribeScheduledActionsWithContext(ctx context.Context, input *redshift.DescribeScheduledActionsInput, opts ...request.Option) (*redshift.DescribeScheduledActionsOutput, error)
+	DescribeScheduledActionsPagesWithContext(ctx context.Context, input *redshift.DescribeScheduledActionsInput, cb func(*redshift.DescribeScheduledActionsOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotCopyGrantsWithContext(ctx context.Context, input *redshift.DescribeSnapshotCopyGrantsInput, opts ...request.Option) (*redshift.DescribeSnapshotCopyGrantsOutput, error)
 	DescribeSnapshotSchedulesWithContext(ctx context.Context, input *redshift.DescribeSnapshotSchedulesInput, opts ...request.Option) (*redshift.DescribeSnapshotSchedulesOutput, error)
 	DescribeStorageWithContext(ctx context.Context, input *redshift.DescribeStorageInput, opts ...request.Option) (*redshift.DescribeStorageOutput, error)
@@ -98,6 +102,7 @@ type Redshift interface {
 	ModifyClusterSnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotScheduleInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotScheduleOutput, error)
 	ModifyClusterSubnetGroupWithContext(ctx context.Context, input *redshift.ModifyClusterSubnetGroupInput, opts ...request.Option) (*redshift.ModifyClusterSubnetGroupOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *redshift.ModifyEventSubscriptionInput, opts ...request.Option) (*redshift.ModifyEventSubscriptionOutput, error)
+	ModifyScheduledActionWithContext(ctx context.Context, input *redshift.ModifyScheduledActionInput, opts ...request.Option) (*redshift.ModifyScheduledActionOutput, error)
 	ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Context, input *redshift.ModifySnapshotCopyRetentionPeriodInput, opts ...request.Option) (*redshift.ModifySnapshotCopyRetentionPeriodOutput, error)
 	ModifySnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifySnapshotScheduleInput, opts ...request.Option) (*redshift.ModifySnapshotScheduleOutput, error)
 	PurchaseReservedNodeOfferingWithContext(ctx context.Context, input *redshift.PurchaseReservedNodeOfferingInput, opts ...request.Option) (*redshift.PurchaseReservedNodeOfferingOutput, error)
@@ -441,6 +446,27 @@ func (c *Client) CreateHsmConfigurationWithContext(ctx context.Context, input *r
 	return req.Output.(*redshift.CreateHsmConfigurationOutput), req.Error
 }
 
+func (c *Client) CreateScheduledActionWithContext(ctx context.Context, input *redshift.CreateScheduledActionInput, opts ...request.Option) (*redshift.CreateScheduledActionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "CreateScheduledAction",
+		Input:   input,
+		Output:  (*redshift.CreateScheduledActionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.CreateScheduledActionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.CreateScheduledActionOutput), req.Error
+}
+
 func (c *Client) CreateSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.CreateSnapshotCopyGrantInput, opts ...request.Option) (*redshift.CreateSnapshotCopyGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -670,6 +696,27 @@ func (c *Client) DeleteHsmConfigurationWithContext(ctx context.Context, input *r
 	})
 
 	return req.Output.(*redshift.DeleteHsmConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, input *redshift.DeleteScheduledActionInput, opts ...request.Option) (*redshift.DeleteScheduledActionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeleteScheduledAction",
+		Input:   input,
+		Output:  (*redshift.DeleteScheduledActionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeleteScheduledActionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeleteScheduledActionOutput), req.Error
 }
 
 func (c *Client) DeleteSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.DeleteSnapshotCopyGrantInput, opts ...request.Option) (*redshift.DeleteSnapshotCopyGrantOutput, error) {
@@ -1517,6 +1564,47 @@ func (c *Client) DescribeResizeWithContext(ctx context.Context, input *redshift.
 	return req.Output.(*redshift.DescribeResizeOutput), req.Error
 }
 
+func (c *Client) DescribeScheduledActionsWithContext(ctx context.Context, input *redshift.DescribeScheduledActionsInput, opts ...request.Option) (*redshift.DescribeScheduledActionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeScheduledActions",
+		Input:   input,
+		Output:  (*redshift.DescribeScheduledActionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeScheduledActionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeScheduledActionsOutput), req.Error
+}
+
+func (c *Client) DescribeScheduledActionsPagesWithContext(ctx context.Context, input *redshift.DescribeScheduledActionsInput, cb func(*redshift.DescribeScheduledActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeScheduledActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeScheduledActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSnapshotCopyGrantsWithContext(ctx context.Context, input *redshift.DescribeSnapshotCopyGrantsInput, opts ...request.Option) (*redshift.DescribeSnapshotCopyGrantsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1935,6 +2023,27 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*redshift.ModifyEventSubscriptionOutput), req.Error
+}
+
+func (c *Client) ModifyScheduledActionWithContext(ctx context.Context, input *redshift.ModifyScheduledActionInput, opts ...request.Option) (*redshift.ModifyScheduledActionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ModifyScheduledAction",
+		Input:   input,
+		Output:  (*redshift.ModifyScheduledActionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ModifyScheduledActionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ModifyScheduledActionOutput), req.Error
 }
 
 func (c *Client) ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Context, input *redshift.ModifySnapshotCopyRetentionPeriodInput, opts ...request.Option) (*redshift.ModifySnapshotCopyRetentionPeriodOutput, error) {

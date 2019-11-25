@@ -16,13 +16,17 @@ type Comprehend interface {
 	BatchDetectKeyPhrasesWithContext(ctx context.Context, input *comprehend.BatchDetectKeyPhrasesInput, opts ...request.Option) (*comprehend.BatchDetectKeyPhrasesOutput, error)
 	BatchDetectSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectSentimentInput, opts ...request.Option) (*comprehend.BatchDetectSentimentOutput, error)
 	BatchDetectSyntaxWithContext(ctx context.Context, input *comprehend.BatchDetectSyntaxInput, opts ...request.Option) (*comprehend.BatchDetectSyntaxOutput, error)
+	ClassifyDocumentWithContext(ctx context.Context, input *comprehend.ClassifyDocumentInput, opts ...request.Option) (*comprehend.ClassifyDocumentOutput, error)
 	CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error)
+	CreateEndpointWithContext(ctx context.Context, input *comprehend.CreateEndpointInput, opts ...request.Option) (*comprehend.CreateEndpointOutput, error)
 	CreateEntityRecognizerWithContext(ctx context.Context, input *comprehend.CreateEntityRecognizerInput, opts ...request.Option) (*comprehend.CreateEntityRecognizerOutput, error)
 	DeleteDocumentClassifierWithContext(ctx context.Context, input *comprehend.DeleteDocumentClassifierInput, opts ...request.Option) (*comprehend.DeleteDocumentClassifierOutput, error)
+	DeleteEndpointWithContext(ctx context.Context, input *comprehend.DeleteEndpointInput, opts ...request.Option) (*comprehend.DeleteEndpointOutput, error)
 	DeleteEntityRecognizerWithContext(ctx context.Context, input *comprehend.DeleteEntityRecognizerInput, opts ...request.Option) (*comprehend.DeleteEntityRecognizerOutput, error)
 	DescribeDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassificationJobInput, opts ...request.Option) (*comprehend.DescribeDocumentClassificationJobOutput, error)
 	DescribeDocumentClassifierWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassifierInput, opts ...request.Option) (*comprehend.DescribeDocumentClassifierOutput, error)
 	DescribeDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.DescribeDominantLanguageDetectionJobOutput, error)
+	DescribeEndpointWithContext(ctx context.Context, input *comprehend.DescribeEndpointInput, opts ...request.Option) (*comprehend.DescribeEndpointOutput, error)
 	DescribeEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEntitiesDetectionJobOutput, error)
 	DescribeEntityRecognizerWithContext(ctx context.Context, input *comprehend.DescribeEntityRecognizerInput, opts ...request.Option) (*comprehend.DescribeEntityRecognizerOutput, error)
 	DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeKeyPhrasesDetectionJobOutput, error)
@@ -39,6 +43,7 @@ type Comprehend interface {
 	ListDocumentClassifiersPagesWithContext(ctx context.Context, input *comprehend.ListDocumentClassifiersInput, cb func(*comprehend.ListDocumentClassifiersOutput, bool) bool, opts ...request.Option) error
 	ListDominantLanguageDetectionJobsWithContext(ctx context.Context, input *comprehend.ListDominantLanguageDetectionJobsInput, opts ...request.Option) (*comprehend.ListDominantLanguageDetectionJobsOutput, error)
 	ListDominantLanguageDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListDominantLanguageDetectionJobsInput, cb func(*comprehend.ListDominantLanguageDetectionJobsOutput, bool) bool, opts ...request.Option) error
+	ListEndpointsWithContext(ctx context.Context, input *comprehend.ListEndpointsInput, opts ...request.Option) (*comprehend.ListEndpointsOutput, error)
 	ListEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListEntitiesDetectionJobsOutput, error)
 	ListEntitiesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, cb func(*comprehend.ListEntitiesDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListEntityRecognizersWithContext(ctx context.Context, input *comprehend.ListEntityRecognizersInput, opts ...request.Option) (*comprehend.ListEntityRecognizersOutput, error)
@@ -64,6 +69,7 @@ type Comprehend interface {
 	StopTrainingEntityRecognizerWithContext(ctx context.Context, input *comprehend.StopTrainingEntityRecognizerInput, opts ...request.Option) (*comprehend.StopTrainingEntityRecognizerOutput, error)
 	TagResourceWithContext(ctx context.Context, input *comprehend.TagResourceInput, opts ...request.Option) (*comprehend.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *comprehend.UntagResourceInput, opts ...request.Option) (*comprehend.UntagResourceOutput, error)
+	UpdateEndpointWithContext(ctx context.Context, input *comprehend.UpdateEndpointInput, opts ...request.Option) (*comprehend.UpdateEndpointOutput, error)
 }
 
 type Client struct {
@@ -186,6 +192,27 @@ func (c *Client) BatchDetectSyntaxWithContext(ctx context.Context, input *compre
 	return req.Output.(*comprehend.BatchDetectSyntaxOutput), req.Error
 }
 
+func (c *Client) ClassifyDocumentWithContext(ctx context.Context, input *comprehend.ClassifyDocumentInput, opts ...request.Option) (*comprehend.ClassifyDocumentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ClassifyDocument",
+		Input:   input,
+		Output:  (*comprehend.ClassifyDocumentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ClassifyDocumentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ClassifyDocumentOutput), req.Error
+}
+
 func (c *Client) CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -205,6 +232,27 @@ func (c *Client) CreateDocumentClassifierWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*comprehend.CreateDocumentClassifierOutput), req.Error
+}
+
+func (c *Client) CreateEndpointWithContext(ctx context.Context, input *comprehend.CreateEndpointInput, opts ...request.Option) (*comprehend.CreateEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "CreateEndpoint",
+		Input:   input,
+		Output:  (*comprehend.CreateEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.CreateEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.CreateEndpointOutput), req.Error
 }
 
 func (c *Client) CreateEntityRecognizerWithContext(ctx context.Context, input *comprehend.CreateEntityRecognizerInput, opts ...request.Option) (*comprehend.CreateEntityRecognizerOutput, error) {
@@ -247,6 +295,27 @@ func (c *Client) DeleteDocumentClassifierWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*comprehend.DeleteDocumentClassifierOutput), req.Error
+}
+
+func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *comprehend.DeleteEndpointInput, opts ...request.Option) (*comprehend.DeleteEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DeleteEndpoint",
+		Input:   input,
+		Output:  (*comprehend.DeleteEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DeleteEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DeleteEndpointOutput), req.Error
 }
 
 func (c *Client) DeleteEntityRecognizerWithContext(ctx context.Context, input *comprehend.DeleteEntityRecognizerInput, opts ...request.Option) (*comprehend.DeleteEntityRecognizerOutput, error) {
@@ -331,6 +400,27 @@ func (c *Client) DescribeDominantLanguageDetectionJobWithContext(ctx context.Con
 	})
 
 	return req.Output.(*comprehend.DescribeDominantLanguageDetectionJobOutput), req.Error
+}
+
+func (c *Client) DescribeEndpointWithContext(ctx context.Context, input *comprehend.DescribeEndpointInput, opts ...request.Option) (*comprehend.DescribeEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DescribeEndpoint",
+		Input:   input,
+		Output:  (*comprehend.DescribeEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DescribeEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DescribeEndpointOutput), req.Error
 }
 
 func (c *Client) DescribeEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEntitiesDetectionJobOutput, error) {
@@ -664,6 +754,27 @@ func (c *Client) ListDominantLanguageDetectionJobsPagesWithContext(ctx context.C
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListEndpointsWithContext(ctx context.Context, input *comprehend.ListEndpointsInput, opts ...request.Option) (*comprehend.ListEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListEndpoints",
+		Input:   input,
+		Output:  (*comprehend.ListEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ListEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ListEndpointsOutput), req.Error
 }
 
 func (c *Client) ListEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListEntitiesDetectionJobsOutput, error) {
@@ -1184,4 +1295,25 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *comprehend
 	})
 
 	return req.Output.(*comprehend.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *comprehend.UpdateEndpointInput, opts ...request.Option) (*comprehend.UpdateEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "UpdateEndpoint",
+		Input:   input,
+		Output:  (*comprehend.UpdateEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.UpdateEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.UpdateEndpointOutput), req.Error
 }

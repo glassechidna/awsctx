@@ -30,11 +30,14 @@ type KMS interface {
 	EnableKeyRotationWithContext(ctx context.Context, input *kms.EnableKeyRotationInput, opts ...request.Option) (*kms.EnableKeyRotationOutput, error)
 	EncryptWithContext(ctx context.Context, input *kms.EncryptInput, opts ...request.Option) (*kms.EncryptOutput, error)
 	GenerateDataKeyWithContext(ctx context.Context, input *kms.GenerateDataKeyInput, opts ...request.Option) (*kms.GenerateDataKeyOutput, error)
+	GenerateDataKeyPairWithContext(ctx context.Context, input *kms.GenerateDataKeyPairInput, opts ...request.Option) (*kms.GenerateDataKeyPairOutput, error)
+	GenerateDataKeyPairWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyPairWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyPairWithoutPlaintextOutput, error)
 	GenerateDataKeyWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyWithoutPlaintextOutput, error)
 	GenerateRandomWithContext(ctx context.Context, input *kms.GenerateRandomInput, opts ...request.Option) (*kms.GenerateRandomOutput, error)
 	GetKeyPolicyWithContext(ctx context.Context, input *kms.GetKeyPolicyInput, opts ...request.Option) (*kms.GetKeyPolicyOutput, error)
 	GetKeyRotationStatusWithContext(ctx context.Context, input *kms.GetKeyRotationStatusInput, opts ...request.Option) (*kms.GetKeyRotationStatusOutput, error)
 	GetParametersForImportWithContext(ctx context.Context, input *kms.GetParametersForImportInput, opts ...request.Option) (*kms.GetParametersForImportOutput, error)
+	GetPublicKeyWithContext(ctx context.Context, input *kms.GetPublicKeyInput, opts ...request.Option) (*kms.GetPublicKeyOutput, error)
 	ImportKeyMaterialWithContext(ctx context.Context, input *kms.ImportKeyMaterialInput, opts ...request.Option) (*kms.ImportKeyMaterialOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *kms.ListAliasesInput, opts ...request.Option) (*kms.ListAliasesOutput, error)
 	ListAliasesPagesWithContext(ctx context.Context, input *kms.ListAliasesInput, cb func(*kms.ListAliasesOutput, bool) bool, opts ...request.Option) error
@@ -51,11 +54,13 @@ type KMS interface {
 	RetireGrantWithContext(ctx context.Context, input *kms.RetireGrantInput, opts ...request.Option) (*kms.RetireGrantOutput, error)
 	RevokeGrantWithContext(ctx context.Context, input *kms.RevokeGrantInput, opts ...request.Option) (*kms.RevokeGrantOutput, error)
 	ScheduleKeyDeletionWithContext(ctx context.Context, input *kms.ScheduleKeyDeletionInput, opts ...request.Option) (*kms.ScheduleKeyDeletionOutput, error)
+	SignWithContext(ctx context.Context, input *kms.SignInput, opts ...request.Option) (*kms.SignOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kms.TagResourceInput, opts ...request.Option) (*kms.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *kms.UntagResourceInput, opts ...request.Option) (*kms.UntagResourceOutput, error)
 	UpdateAliasWithContext(ctx context.Context, input *kms.UpdateAliasInput, opts ...request.Option) (*kms.UpdateAliasOutput, error)
 	UpdateCustomKeyStoreWithContext(ctx context.Context, input *kms.UpdateCustomKeyStoreInput, opts ...request.Option) (*kms.UpdateCustomKeyStoreOutput, error)
 	UpdateKeyDescriptionWithContext(ctx context.Context, input *kms.UpdateKeyDescriptionInput, opts ...request.Option) (*kms.UpdateKeyDescriptionOutput, error)
+	VerifyWithContext(ctx context.Context, input *kms.VerifyInput, opts ...request.Option) (*kms.VerifyOutput, error)
 }
 
 type Client struct {
@@ -472,6 +477,48 @@ func (c *Client) GenerateDataKeyWithContext(ctx context.Context, input *kms.Gene
 	return req.Output.(*kms.GenerateDataKeyOutput), req.Error
 }
 
+func (c *Client) GenerateDataKeyPairWithContext(ctx context.Context, input *kms.GenerateDataKeyPairInput, opts ...request.Option) (*kms.GenerateDataKeyPairOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "GenerateDataKeyPair",
+		Input:   input,
+		Output:  (*kms.GenerateDataKeyPairOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.GenerateDataKeyPairWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.GenerateDataKeyPairOutput), req.Error
+}
+
+func (c *Client) GenerateDataKeyPairWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyPairWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyPairWithoutPlaintextOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "GenerateDataKeyPairWithoutPlaintext",
+		Input:   input,
+		Output:  (*kms.GenerateDataKeyPairWithoutPlaintextOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.GenerateDataKeyPairWithoutPlaintextWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.GenerateDataKeyPairWithoutPlaintextOutput), req.Error
+}
+
 func (c *Client) GenerateDataKeyWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyWithoutPlaintextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
@@ -575,6 +622,27 @@ func (c *Client) GetParametersForImportWithContext(ctx context.Context, input *k
 	})
 
 	return req.Output.(*kms.GetParametersForImportOutput), req.Error
+}
+
+func (c *Client) GetPublicKeyWithContext(ctx context.Context, input *kms.GetPublicKeyInput, opts ...request.Option) (*kms.GetPublicKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "GetPublicKey",
+		Input:   input,
+		Output:  (*kms.GetPublicKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.GetPublicKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.GetPublicKeyOutput), req.Error
 }
 
 func (c *Client) ImportKeyMaterialWithContext(ctx context.Context, input *kms.ImportKeyMaterialInput, opts ...request.Option) (*kms.ImportKeyMaterialOutput, error) {
@@ -909,6 +977,27 @@ func (c *Client) ScheduleKeyDeletionWithContext(ctx context.Context, input *kms.
 	return req.Output.(*kms.ScheduleKeyDeletionOutput), req.Error
 }
 
+func (c *Client) SignWithContext(ctx context.Context, input *kms.SignInput, opts ...request.Option) (*kms.SignOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "Sign",
+		Input:   input,
+		Output:  (*kms.SignOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.SignWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.SignOutput), req.Error
+}
+
 func (c *Client) TagResourceWithContext(ctx context.Context, input *kms.TagResourceInput, opts ...request.Option) (*kms.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
@@ -1012,4 +1101,25 @@ func (c *Client) UpdateKeyDescriptionWithContext(ctx context.Context, input *kms
 	})
 
 	return req.Output.(*kms.UpdateKeyDescriptionOutput), req.Error
+}
+
+func (c *Client) VerifyWithContext(ctx context.Context, input *kms.VerifyInput, opts ...request.Option) (*kms.VerifyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "Verify",
+		Input:   input,
+		Output:  (*kms.VerifyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.VerifyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.VerifyOutput), req.Error
 }

@@ -14,15 +14,21 @@ type CloudWatch interface {
 	DeleteAlarmsWithContext(ctx context.Context, input *cloudwatch.DeleteAlarmsInput, opts ...request.Option) (*cloudwatch.DeleteAlarmsOutput, error)
 	DeleteAnomalyDetectorWithContext(ctx context.Context, input *cloudwatch.DeleteAnomalyDetectorInput, opts ...request.Option) (*cloudwatch.DeleteAnomalyDetectorOutput, error)
 	DeleteDashboardsWithContext(ctx context.Context, input *cloudwatch.DeleteDashboardsInput, opts ...request.Option) (*cloudwatch.DeleteDashboardsOutput, error)
+	DeleteInsightRulesWithContext(ctx context.Context, input *cloudwatch.DeleteInsightRulesInput, opts ...request.Option) (*cloudwatch.DeleteInsightRulesOutput, error)
 	DescribeAlarmHistoryWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, opts ...request.Option) (*cloudwatch.DescribeAlarmHistoryOutput, error)
 	DescribeAlarmHistoryPagesWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, cb func(*cloudwatch.DescribeAlarmHistoryOutput, bool) bool, opts ...request.Option) error
 	DescribeAlarmsWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsInput, opts ...request.Option) (*cloudwatch.DescribeAlarmsOutput, error)
 	DescribeAlarmsPagesWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsInput, cb func(*cloudwatch.DescribeAlarmsOutput, bool) bool, opts ...request.Option) error
 	DescribeAlarmsForMetricWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsForMetricInput, opts ...request.Option) (*cloudwatch.DescribeAlarmsForMetricOutput, error)
 	DescribeAnomalyDetectorsWithContext(ctx context.Context, input *cloudwatch.DescribeAnomalyDetectorsInput, opts ...request.Option) (*cloudwatch.DescribeAnomalyDetectorsOutput, error)
+	DescribeInsightRulesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, opts ...request.Option) (*cloudwatch.DescribeInsightRulesOutput, error)
+	DescribeInsightRulesPagesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, cb func(*cloudwatch.DescribeInsightRulesOutput, bool) bool, opts ...request.Option) error
 	DisableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.DisableAlarmActionsInput, opts ...request.Option) (*cloudwatch.DisableAlarmActionsOutput, error)
+	DisableInsightRulesWithContext(ctx context.Context, input *cloudwatch.DisableInsightRulesInput, opts ...request.Option) (*cloudwatch.DisableInsightRulesOutput, error)
 	EnableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.EnableAlarmActionsInput, opts ...request.Option) (*cloudwatch.EnableAlarmActionsOutput, error)
+	EnableInsightRulesWithContext(ctx context.Context, input *cloudwatch.EnableInsightRulesInput, opts ...request.Option) (*cloudwatch.EnableInsightRulesOutput, error)
 	GetDashboardWithContext(ctx context.Context, input *cloudwatch.GetDashboardInput, opts ...request.Option) (*cloudwatch.GetDashboardOutput, error)
+	GetInsightRuleReportWithContext(ctx context.Context, input *cloudwatch.GetInsightRuleReportInput, opts ...request.Option) (*cloudwatch.GetInsightRuleReportOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *cloudwatch.GetMetricDataInput, opts ...request.Option) (*cloudwatch.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *cloudwatch.GetMetricDataInput, cb func(*cloudwatch.GetMetricDataOutput, bool) bool, opts ...request.Option) error
 	GetMetricStatisticsWithContext(ctx context.Context, input *cloudwatch.GetMetricStatisticsInput, opts ...request.Option) (*cloudwatch.GetMetricStatisticsOutput, error)
@@ -34,6 +40,7 @@ type CloudWatch interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudwatch.ListTagsForResourceInput, opts ...request.Option) (*cloudwatch.ListTagsForResourceOutput, error)
 	PutAnomalyDetectorWithContext(ctx context.Context, input *cloudwatch.PutAnomalyDetectorInput, opts ...request.Option) (*cloudwatch.PutAnomalyDetectorOutput, error)
 	PutDashboardWithContext(ctx context.Context, input *cloudwatch.PutDashboardInput, opts ...request.Option) (*cloudwatch.PutDashboardOutput, error)
+	PutInsightRuleWithContext(ctx context.Context, input *cloudwatch.PutInsightRuleInput, opts ...request.Option) (*cloudwatch.PutInsightRuleOutput, error)
 	PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error)
 	PutMetricDataWithContext(ctx context.Context, input *cloudwatch.PutMetricDataInput, opts ...request.Option) (*cloudwatch.PutMetricDataOutput, error)
 	SetAlarmStateWithContext(ctx context.Context, input *cloudwatch.SetAlarmStateInput, opts ...request.Option) (*cloudwatch.SetAlarmStateOutput, error)
@@ -117,6 +124,27 @@ func (c *Client) DeleteDashboardsWithContext(ctx context.Context, input *cloudwa
 	})
 
 	return req.Output.(*cloudwatch.DeleteDashboardsOutput), req.Error
+}
+
+func (c *Client) DeleteInsightRulesWithContext(ctx context.Context, input *cloudwatch.DeleteInsightRulesInput, opts ...request.Option) (*cloudwatch.DeleteInsightRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "DeleteInsightRules",
+		Input:   input,
+		Output:  (*cloudwatch.DeleteInsightRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.DeleteInsightRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.DeleteInsightRulesOutput), req.Error
 }
 
 func (c *Client) DescribeAlarmHistoryWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, opts ...request.Option) (*cloudwatch.DescribeAlarmHistoryOutput, error) {
@@ -243,6 +271,47 @@ func (c *Client) DescribeAnomalyDetectorsWithContext(ctx context.Context, input 
 	return req.Output.(*cloudwatch.DescribeAnomalyDetectorsOutput), req.Error
 }
 
+func (c *Client) DescribeInsightRulesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, opts ...request.Option) (*cloudwatch.DescribeInsightRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "DescribeInsightRules",
+		Input:   input,
+		Output:  (*cloudwatch.DescribeInsightRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.DescribeInsightRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.DescribeInsightRulesOutput), req.Error
+}
+
+func (c *Client) DescribeInsightRulesPagesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, cb func(*cloudwatch.DescribeInsightRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "DescribeInsightRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchAPI.DescribeInsightRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DisableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.DisableAlarmActionsInput, opts ...request.Option) (*cloudwatch.DisableAlarmActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
@@ -262,6 +331,27 @@ func (c *Client) DisableAlarmActionsWithContext(ctx context.Context, input *clou
 	})
 
 	return req.Output.(*cloudwatch.DisableAlarmActionsOutput), req.Error
+}
+
+func (c *Client) DisableInsightRulesWithContext(ctx context.Context, input *cloudwatch.DisableInsightRulesInput, opts ...request.Option) (*cloudwatch.DisableInsightRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "DisableInsightRules",
+		Input:   input,
+		Output:  (*cloudwatch.DisableInsightRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.DisableInsightRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.DisableInsightRulesOutput), req.Error
 }
 
 func (c *Client) EnableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.EnableAlarmActionsInput, opts ...request.Option) (*cloudwatch.EnableAlarmActionsOutput, error) {
@@ -285,6 +375,27 @@ func (c *Client) EnableAlarmActionsWithContext(ctx context.Context, input *cloud
 	return req.Output.(*cloudwatch.EnableAlarmActionsOutput), req.Error
 }
 
+func (c *Client) EnableInsightRulesWithContext(ctx context.Context, input *cloudwatch.EnableInsightRulesInput, opts ...request.Option) (*cloudwatch.EnableInsightRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "EnableInsightRules",
+		Input:   input,
+		Output:  (*cloudwatch.EnableInsightRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.EnableInsightRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.EnableInsightRulesOutput), req.Error
+}
+
 func (c *Client) GetDashboardWithContext(ctx context.Context, input *cloudwatch.GetDashboardInput, opts ...request.Option) (*cloudwatch.GetDashboardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
@@ -304,6 +415,27 @@ func (c *Client) GetDashboardWithContext(ctx context.Context, input *cloudwatch.
 	})
 
 	return req.Output.(*cloudwatch.GetDashboardOutput), req.Error
+}
+
+func (c *Client) GetInsightRuleReportWithContext(ctx context.Context, input *cloudwatch.GetInsightRuleReportInput, opts ...request.Option) (*cloudwatch.GetInsightRuleReportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "GetInsightRuleReport",
+		Input:   input,
+		Output:  (*cloudwatch.GetInsightRuleReportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.GetInsightRuleReportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.GetInsightRuleReportOutput), req.Error
 }
 
 func (c *Client) GetMetricDataWithContext(ctx context.Context, input *cloudwatch.GetMetricDataInput, opts ...request.Option) (*cloudwatch.GetMetricDataOutput, error) {
@@ -532,6 +664,27 @@ func (c *Client) PutDashboardWithContext(ctx context.Context, input *cloudwatch.
 	})
 
 	return req.Output.(*cloudwatch.PutDashboardOutput), req.Error
+}
+
+func (c *Client) PutInsightRuleWithContext(ctx context.Context, input *cloudwatch.PutInsightRuleInput, opts ...request.Option) (*cloudwatch.PutInsightRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "PutInsightRule",
+		Input:   input,
+		Output:  (*cloudwatch.PutInsightRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.PutInsightRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.PutInsightRuleOutput), req.Error
 }
 
 func (c *Client) PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error) {

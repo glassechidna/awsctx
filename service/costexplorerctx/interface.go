@@ -11,6 +11,9 @@ import (
 )
 
 type CostExplorer interface {
+	CreateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.CreateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.CreateCostCategoryDefinitionOutput, error)
+	DeleteCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DeleteCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DeleteCostCategoryDefinitionOutput, error)
+	DescribeCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DescribeCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DescribeCostCategoryDefinitionOutput, error)
 	GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error)
 	GetCostAndUsageWithResourcesWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageWithResourcesInput, opts ...request.Option) (*costexplorer.GetCostAndUsageWithResourcesOutput, error)
 	GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error)
@@ -27,6 +30,8 @@ type CostExplorer interface {
 	GetSavingsPlansUtilizationDetailsPagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationDetailsInput, cb func(*costexplorer.GetSavingsPlansUtilizationDetailsOutput, bool) bool, opts ...request.Option) error
 	GetTagsWithContext(ctx context.Context, input *costexplorer.GetTagsInput, opts ...request.Option) (*costexplorer.GetTagsOutput, error)
 	GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error)
+	ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error)
+	UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error)
 }
 
 type Client struct {
@@ -43,6 +48,69 @@ func New(base costexploreriface.CostExplorerAPI, ctxer awsctx.Contexter) CostExp
 
 var _ CostExplorer = (*costexplorer.CostExplorer)(nil)
 var _ CostExplorer = (*Client)(nil)
+
+func (c *Client) CreateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.CreateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.CreateCostCategoryDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "CreateCostCategoryDefinition",
+		Input:   input,
+		Output:  (*costexplorer.CreateCostCategoryDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.CreateCostCategoryDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.CreateCostCategoryDefinitionOutput), req.Error
+}
+
+func (c *Client) DeleteCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DeleteCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DeleteCostCategoryDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "DeleteCostCategoryDefinition",
+		Input:   input,
+		Output:  (*costexplorer.DeleteCostCategoryDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.DeleteCostCategoryDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.DeleteCostCategoryDefinitionOutput), req.Error
+}
+
+func (c *Client) DescribeCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DescribeCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DescribeCostCategoryDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "DescribeCostCategoryDefinition",
+		Input:   input,
+		Output:  (*costexplorer.DescribeCostCategoryDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.DescribeCostCategoryDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.DescribeCostCategoryDefinitionOutput), req.Error
+}
 
 func (c *Client) GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -376,4 +444,46 @@ func (c *Client) GetUsageForecastWithContext(ctx context.Context, input *costexp
 	})
 
 	return req.Output.(*costexplorer.GetUsageForecastOutput), req.Error
+}
+
+func (c *Client) ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ListCostCategoryDefinitions",
+		Input:   input,
+		Output:  (*costexplorer.ListCostCategoryDefinitionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.ListCostCategoryDefinitionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.ListCostCategoryDefinitionsOutput), req.Error
+}
+
+func (c *Client) UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "UpdateCostCategoryDefinition",
+		Input:   input,
+		Output:  (*costexplorer.UpdateCostCategoryDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.UpdateCostCategoryDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.UpdateCostCategoryDefinitionOutput), req.Error
 }

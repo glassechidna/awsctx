@@ -15,16 +15,22 @@ type MediaLive interface {
 	CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error)
 	CreateInputWithContext(ctx context.Context, input *medialive.CreateInputInput, opts ...request.Option) (*medialive.CreateInputOutput, error)
 	CreateInputSecurityGroupWithContext(ctx context.Context, input *medialive.CreateInputSecurityGroupInput, opts ...request.Option) (*medialive.CreateInputSecurityGroupOutput, error)
+	CreateMultiplexWithContext(ctx context.Context, input *medialive.CreateMultiplexInput, opts ...request.Option) (*medialive.CreateMultiplexOutput, error)
+	CreateMultiplexProgramWithContext(ctx context.Context, input *medialive.CreateMultiplexProgramInput, opts ...request.Option) (*medialive.CreateMultiplexProgramOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *medialive.CreateTagsInput, opts ...request.Option) (*medialive.CreateTagsOutput, error)
 	DeleteChannelWithContext(ctx context.Context, input *medialive.DeleteChannelInput, opts ...request.Option) (*medialive.DeleteChannelOutput, error)
 	DeleteInputWithContext(ctx context.Context, input *medialive.DeleteInputInput, opts ...request.Option) (*medialive.DeleteInputOutput, error)
 	DeleteInputSecurityGroupWithContext(ctx context.Context, input *medialive.DeleteInputSecurityGroupInput, opts ...request.Option) (*medialive.DeleteInputSecurityGroupOutput, error)
+	DeleteMultiplexWithContext(ctx context.Context, input *medialive.DeleteMultiplexInput, opts ...request.Option) (*medialive.DeleteMultiplexOutput, error)
+	DeleteMultiplexProgramWithContext(ctx context.Context, input *medialive.DeleteMultiplexProgramInput, opts ...request.Option) (*medialive.DeleteMultiplexProgramOutput, error)
 	DeleteReservationWithContext(ctx context.Context, input *medialive.DeleteReservationInput, opts ...request.Option) (*medialive.DeleteReservationOutput, error)
 	DeleteScheduleWithContext(ctx context.Context, input *medialive.DeleteScheduleInput, opts ...request.Option) (*medialive.DeleteScheduleOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *medialive.DeleteTagsInput, opts ...request.Option) (*medialive.DeleteTagsOutput, error)
 	DescribeChannelWithContext(ctx context.Context, input *medialive.DescribeChannelInput, opts ...request.Option) (*medialive.DescribeChannelOutput, error)
 	DescribeInputWithContext(ctx context.Context, input *medialive.DescribeInputInput, opts ...request.Option) (*medialive.DescribeInputOutput, error)
 	DescribeInputSecurityGroupWithContext(ctx context.Context, input *medialive.DescribeInputSecurityGroupInput, opts ...request.Option) (*medialive.DescribeInputSecurityGroupOutput, error)
+	DescribeMultiplexWithContext(ctx context.Context, input *medialive.DescribeMultiplexInput, opts ...request.Option) (*medialive.DescribeMultiplexOutput, error)
+	DescribeMultiplexProgramWithContext(ctx context.Context, input *medialive.DescribeMultiplexProgramInput, opts ...request.Option) (*medialive.DescribeMultiplexProgramOutput, error)
 	DescribeOfferingWithContext(ctx context.Context, input *medialive.DescribeOfferingInput, opts ...request.Option) (*medialive.DescribeOfferingOutput, error)
 	DescribeReservationWithContext(ctx context.Context, input *medialive.DescribeReservationInput, opts ...request.Option) (*medialive.DescribeReservationOutput, error)
 	DescribeScheduleWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, opts ...request.Option) (*medialive.DescribeScheduleOutput, error)
@@ -35,6 +41,10 @@ type MediaLive interface {
 	ListInputSecurityGroupsPagesWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, cb func(*medialive.ListInputSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	ListInputsWithContext(ctx context.Context, input *medialive.ListInputsInput, opts ...request.Option) (*medialive.ListInputsOutput, error)
 	ListInputsPagesWithContext(ctx context.Context, input *medialive.ListInputsInput, cb func(*medialive.ListInputsOutput, bool) bool, opts ...request.Option) error
+	ListMultiplexProgramsWithContext(ctx context.Context, input *medialive.ListMultiplexProgramsInput, opts ...request.Option) (*medialive.ListMultiplexProgramsOutput, error)
+	ListMultiplexProgramsPagesWithContext(ctx context.Context, input *medialive.ListMultiplexProgramsInput, cb func(*medialive.ListMultiplexProgramsOutput, bool) bool, opts ...request.Option) error
+	ListMultiplexesWithContext(ctx context.Context, input *medialive.ListMultiplexesInput, opts ...request.Option) (*medialive.ListMultiplexesOutput, error)
+	ListMultiplexesPagesWithContext(ctx context.Context, input *medialive.ListMultiplexesInput, cb func(*medialive.ListMultiplexesOutput, bool) bool, opts ...request.Option) error
 	ListOfferingsWithContext(ctx context.Context, input *medialive.ListOfferingsInput, opts ...request.Option) (*medialive.ListOfferingsOutput, error)
 	ListOfferingsPagesWithContext(ctx context.Context, input *medialive.ListOfferingsInput, cb func(*medialive.ListOfferingsOutput, bool) bool, opts ...request.Option) error
 	ListReservationsWithContext(ctx context.Context, input *medialive.ListReservationsInput, opts ...request.Option) (*medialive.ListReservationsOutput, error)
@@ -42,11 +52,15 @@ type MediaLive interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *medialive.ListTagsForResourceInput, opts ...request.Option) (*medialive.ListTagsForResourceOutput, error)
 	PurchaseOfferingWithContext(ctx context.Context, input *medialive.PurchaseOfferingInput, opts ...request.Option) (*medialive.PurchaseOfferingOutput, error)
 	StartChannelWithContext(ctx context.Context, input *medialive.StartChannelInput, opts ...request.Option) (*medialive.StartChannelOutput, error)
+	StartMultiplexWithContext(ctx context.Context, input *medialive.StartMultiplexInput, opts ...request.Option) (*medialive.StartMultiplexOutput, error)
 	StopChannelWithContext(ctx context.Context, input *medialive.StopChannelInput, opts ...request.Option) (*medialive.StopChannelOutput, error)
+	StopMultiplexWithContext(ctx context.Context, input *medialive.StopMultiplexInput, opts ...request.Option) (*medialive.StopMultiplexOutput, error)
 	UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error)
 	UpdateChannelClassWithContext(ctx context.Context, input *medialive.UpdateChannelClassInput, opts ...request.Option) (*medialive.UpdateChannelClassOutput, error)
 	UpdateInputWithContext(ctx context.Context, input *medialive.UpdateInputInput, opts ...request.Option) (*medialive.UpdateInputOutput, error)
 	UpdateInputSecurityGroupWithContext(ctx context.Context, input *medialive.UpdateInputSecurityGroupInput, opts ...request.Option) (*medialive.UpdateInputSecurityGroupOutput, error)
+	UpdateMultiplexWithContext(ctx context.Context, input *medialive.UpdateMultiplexInput, opts ...request.Option) (*medialive.UpdateMultiplexOutput, error)
+	UpdateMultiplexProgramWithContext(ctx context.Context, input *medialive.UpdateMultiplexProgramInput, opts ...request.Option) (*medialive.UpdateMultiplexProgramOutput, error)
 	UpdateReservationWithContext(ctx context.Context, input *medialive.UpdateReservationInput, opts ...request.Option) (*medialive.UpdateReservationOutput, error)
 }
 
@@ -149,6 +163,48 @@ func (c *Client) CreateInputSecurityGroupWithContext(ctx context.Context, input 
 	return req.Output.(*medialive.CreateInputSecurityGroupOutput), req.Error
 }
 
+func (c *Client) CreateMultiplexWithContext(ctx context.Context, input *medialive.CreateMultiplexInput, opts ...request.Option) (*medialive.CreateMultiplexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "CreateMultiplex",
+		Input:   input,
+		Output:  (*medialive.CreateMultiplexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.CreateMultiplexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.CreateMultiplexOutput), req.Error
+}
+
+func (c *Client) CreateMultiplexProgramWithContext(ctx context.Context, input *medialive.CreateMultiplexProgramInput, opts ...request.Option) (*medialive.CreateMultiplexProgramOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "CreateMultiplexProgram",
+		Input:   input,
+		Output:  (*medialive.CreateMultiplexProgramOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.CreateMultiplexProgramWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.CreateMultiplexProgramOutput), req.Error
+}
+
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *medialive.CreateTagsInput, opts ...request.Option) (*medialive.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -231,6 +287,48 @@ func (c *Client) DeleteInputSecurityGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*medialive.DeleteInputSecurityGroupOutput), req.Error
+}
+
+func (c *Client) DeleteMultiplexWithContext(ctx context.Context, input *medialive.DeleteMultiplexInput, opts ...request.Option) (*medialive.DeleteMultiplexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DeleteMultiplex",
+		Input:   input,
+		Output:  (*medialive.DeleteMultiplexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DeleteMultiplexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DeleteMultiplexOutput), req.Error
+}
+
+func (c *Client) DeleteMultiplexProgramWithContext(ctx context.Context, input *medialive.DeleteMultiplexProgramInput, opts ...request.Option) (*medialive.DeleteMultiplexProgramOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DeleteMultiplexProgram",
+		Input:   input,
+		Output:  (*medialive.DeleteMultiplexProgramOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DeleteMultiplexProgramWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DeleteMultiplexProgramOutput), req.Error
 }
 
 func (c *Client) DeleteReservationWithContext(ctx context.Context, input *medialive.DeleteReservationInput, opts ...request.Option) (*medialive.DeleteReservationOutput, error) {
@@ -357,6 +455,48 @@ func (c *Client) DescribeInputSecurityGroupWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*medialive.DescribeInputSecurityGroupOutput), req.Error
+}
+
+func (c *Client) DescribeMultiplexWithContext(ctx context.Context, input *medialive.DescribeMultiplexInput, opts ...request.Option) (*medialive.DescribeMultiplexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DescribeMultiplex",
+		Input:   input,
+		Output:  (*medialive.DescribeMultiplexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DescribeMultiplexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DescribeMultiplexOutput), req.Error
+}
+
+func (c *Client) DescribeMultiplexProgramWithContext(ctx context.Context, input *medialive.DescribeMultiplexProgramInput, opts ...request.Option) (*medialive.DescribeMultiplexProgramOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DescribeMultiplexProgram",
+		Input:   input,
+		Output:  (*medialive.DescribeMultiplexProgramOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DescribeMultiplexProgramWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DescribeMultiplexProgramOutput), req.Error
 }
 
 func (c *Client) DescribeOfferingWithContext(ctx context.Context, input *medialive.DescribeOfferingInput, opts ...request.Option) (*medialive.DescribeOfferingOutput, error) {
@@ -565,6 +705,88 @@ func (c *Client) ListInputsPagesWithContext(ctx context.Context, input *medialiv
 	return req.Error
 }
 
+func (c *Client) ListMultiplexProgramsWithContext(ctx context.Context, input *medialive.ListMultiplexProgramsInput, opts ...request.Option) (*medialive.ListMultiplexProgramsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListMultiplexPrograms",
+		Input:   input,
+		Output:  (*medialive.ListMultiplexProgramsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.ListMultiplexProgramsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.ListMultiplexProgramsOutput), req.Error
+}
+
+func (c *Client) ListMultiplexProgramsPagesWithContext(ctx context.Context, input *medialive.ListMultiplexProgramsInput, cb func(*medialive.ListMultiplexProgramsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListMultiplexPrograms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListMultiplexProgramsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMultiplexesWithContext(ctx context.Context, input *medialive.ListMultiplexesInput, opts ...request.Option) (*medialive.ListMultiplexesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListMultiplexes",
+		Input:   input,
+		Output:  (*medialive.ListMultiplexesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.ListMultiplexesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.ListMultiplexesOutput), req.Error
+}
+
+func (c *Client) ListMultiplexesPagesWithContext(ctx context.Context, input *medialive.ListMultiplexesInput, cb func(*medialive.ListMultiplexesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListMultiplexes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListMultiplexesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOfferingsWithContext(ctx context.Context, input *medialive.ListOfferingsInput, opts ...request.Option) (*medialive.ListOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -710,6 +932,27 @@ func (c *Client) StartChannelWithContext(ctx context.Context, input *medialive.S
 	return req.Output.(*medialive.StartChannelOutput), req.Error
 }
 
+func (c *Client) StartMultiplexWithContext(ctx context.Context, input *medialive.StartMultiplexInput, opts ...request.Option) (*medialive.StartMultiplexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "StartMultiplex",
+		Input:   input,
+		Output:  (*medialive.StartMultiplexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.StartMultiplexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.StartMultiplexOutput), req.Error
+}
+
 func (c *Client) StopChannelWithContext(ctx context.Context, input *medialive.StopChannelInput, opts ...request.Option) (*medialive.StopChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -729,6 +972,27 @@ func (c *Client) StopChannelWithContext(ctx context.Context, input *medialive.St
 	})
 
 	return req.Output.(*medialive.StopChannelOutput), req.Error
+}
+
+func (c *Client) StopMultiplexWithContext(ctx context.Context, input *medialive.StopMultiplexInput, opts ...request.Option) (*medialive.StopMultiplexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "StopMultiplex",
+		Input:   input,
+		Output:  (*medialive.StopMultiplexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.StopMultiplexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.StopMultiplexOutput), req.Error
 }
 
 func (c *Client) UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error) {
@@ -813,6 +1077,48 @@ func (c *Client) UpdateInputSecurityGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*medialive.UpdateInputSecurityGroupOutput), req.Error
+}
+
+func (c *Client) UpdateMultiplexWithContext(ctx context.Context, input *medialive.UpdateMultiplexInput, opts ...request.Option) (*medialive.UpdateMultiplexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "UpdateMultiplex",
+		Input:   input,
+		Output:  (*medialive.UpdateMultiplexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.UpdateMultiplexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.UpdateMultiplexOutput), req.Error
+}
+
+func (c *Client) UpdateMultiplexProgramWithContext(ctx context.Context, input *medialive.UpdateMultiplexProgramInput, opts ...request.Option) (*medialive.UpdateMultiplexProgramOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "UpdateMultiplexProgram",
+		Input:   input,
+		Output:  (*medialive.UpdateMultiplexProgramOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.UpdateMultiplexProgramWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.UpdateMultiplexProgramOutput), req.Error
 }
 
 func (c *Client) UpdateReservationWithContext(ctx context.Context, input *medialive.UpdateReservationInput, opts ...request.Option) (*medialive.UpdateReservationOutput, error) {

@@ -14,21 +14,31 @@ type CodeBuild interface {
 	BatchDeleteBuildsWithContext(ctx context.Context, input *codebuild.BatchDeleteBuildsInput, opts ...request.Option) (*codebuild.BatchDeleteBuildsOutput, error)
 	BatchGetBuildsWithContext(ctx context.Context, input *codebuild.BatchGetBuildsInput, opts ...request.Option) (*codebuild.BatchGetBuildsOutput, error)
 	BatchGetProjectsWithContext(ctx context.Context, input *codebuild.BatchGetProjectsInput, opts ...request.Option) (*codebuild.BatchGetProjectsOutput, error)
+	BatchGetReportGroupsWithContext(ctx context.Context, input *codebuild.BatchGetReportGroupsInput, opts ...request.Option) (*codebuild.BatchGetReportGroupsOutput, error)
+	BatchGetReportsWithContext(ctx context.Context, input *codebuild.BatchGetReportsInput, opts ...request.Option) (*codebuild.BatchGetReportsOutput, error)
 	CreateProjectWithContext(ctx context.Context, input *codebuild.CreateProjectInput, opts ...request.Option) (*codebuild.CreateProjectOutput, error)
+	CreateReportGroupWithContext(ctx context.Context, input *codebuild.CreateReportGroupInput, opts ...request.Option) (*codebuild.CreateReportGroupOutput, error)
 	CreateWebhookWithContext(ctx context.Context, input *codebuild.CreateWebhookInput, opts ...request.Option) (*codebuild.CreateWebhookOutput, error)
 	DeleteProjectWithContext(ctx context.Context, input *codebuild.DeleteProjectInput, opts ...request.Option) (*codebuild.DeleteProjectOutput, error)
+	DeleteReportWithContext(ctx context.Context, input *codebuild.DeleteReportInput, opts ...request.Option) (*codebuild.DeleteReportOutput, error)
+	DeleteReportGroupWithContext(ctx context.Context, input *codebuild.DeleteReportGroupInput, opts ...request.Option) (*codebuild.DeleteReportGroupOutput, error)
 	DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error)
 	DeleteWebhookWithContext(ctx context.Context, input *codebuild.DeleteWebhookInput, opts ...request.Option) (*codebuild.DeleteWebhookOutput, error)
+	DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error)
 	ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error)
 	InvalidateProjectCacheWithContext(ctx context.Context, input *codebuild.InvalidateProjectCacheInput, opts ...request.Option) (*codebuild.InvalidateProjectCacheOutput, error)
 	ListBuildsWithContext(ctx context.Context, input *codebuild.ListBuildsInput, opts ...request.Option) (*codebuild.ListBuildsOutput, error)
 	ListBuildsForProjectWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, opts ...request.Option) (*codebuild.ListBuildsForProjectOutput, error)
 	ListCuratedEnvironmentImagesWithContext(ctx context.Context, input *codebuild.ListCuratedEnvironmentImagesInput, opts ...request.Option) (*codebuild.ListCuratedEnvironmentImagesOutput, error)
 	ListProjectsWithContext(ctx context.Context, input *codebuild.ListProjectsInput, opts ...request.Option) (*codebuild.ListProjectsOutput, error)
+	ListReportGroupsWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, opts ...request.Option) (*codebuild.ListReportGroupsOutput, error)
+	ListReportsWithContext(ctx context.Context, input *codebuild.ListReportsInput, opts ...request.Option) (*codebuild.ListReportsOutput, error)
+	ListReportsForReportGroupWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, opts ...request.Option) (*codebuild.ListReportsForReportGroupOutput, error)
 	ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error)
 	StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error)
 	StopBuildWithContext(ctx context.Context, input *codebuild.StopBuildInput, opts ...request.Option) (*codebuild.StopBuildOutput, error)
 	UpdateProjectWithContext(ctx context.Context, input *codebuild.UpdateProjectInput, opts ...request.Option) (*codebuild.UpdateProjectOutput, error)
+	UpdateReportGroupWithContext(ctx context.Context, input *codebuild.UpdateReportGroupInput, opts ...request.Option) (*codebuild.UpdateReportGroupOutput, error)
 	UpdateWebhookWithContext(ctx context.Context, input *codebuild.UpdateWebhookInput, opts ...request.Option) (*codebuild.UpdateWebhookOutput, error)
 }
 
@@ -110,6 +120,48 @@ func (c *Client) BatchGetProjectsWithContext(ctx context.Context, input *codebui
 	return req.Output.(*codebuild.BatchGetProjectsOutput), req.Error
 }
 
+func (c *Client) BatchGetReportGroupsWithContext(ctx context.Context, input *codebuild.BatchGetReportGroupsInput, opts ...request.Option) (*codebuild.BatchGetReportGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "BatchGetReportGroups",
+		Input:   input,
+		Output:  (*codebuild.BatchGetReportGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.BatchGetReportGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.BatchGetReportGroupsOutput), req.Error
+}
+
+func (c *Client) BatchGetReportsWithContext(ctx context.Context, input *codebuild.BatchGetReportsInput, opts ...request.Option) (*codebuild.BatchGetReportsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "BatchGetReports",
+		Input:   input,
+		Output:  (*codebuild.BatchGetReportsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.BatchGetReportsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.BatchGetReportsOutput), req.Error
+}
+
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *codebuild.CreateProjectInput, opts ...request.Option) (*codebuild.CreateProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -129,6 +181,27 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, input *codebuild.
 	})
 
 	return req.Output.(*codebuild.CreateProjectOutput), req.Error
+}
+
+func (c *Client) CreateReportGroupWithContext(ctx context.Context, input *codebuild.CreateReportGroupInput, opts ...request.Option) (*codebuild.CreateReportGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "CreateReportGroup",
+		Input:   input,
+		Output:  (*codebuild.CreateReportGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.CreateReportGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.CreateReportGroupOutput), req.Error
 }
 
 func (c *Client) CreateWebhookWithContext(ctx context.Context, input *codebuild.CreateWebhookInput, opts ...request.Option) (*codebuild.CreateWebhookOutput, error) {
@@ -173,6 +246,48 @@ func (c *Client) DeleteProjectWithContext(ctx context.Context, input *codebuild.
 	return req.Output.(*codebuild.DeleteProjectOutput), req.Error
 }
 
+func (c *Client) DeleteReportWithContext(ctx context.Context, input *codebuild.DeleteReportInput, opts ...request.Option) (*codebuild.DeleteReportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DeleteReport",
+		Input:   input,
+		Output:  (*codebuild.DeleteReportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.DeleteReportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.DeleteReportOutput), req.Error
+}
+
+func (c *Client) DeleteReportGroupWithContext(ctx context.Context, input *codebuild.DeleteReportGroupInput, opts ...request.Option) (*codebuild.DeleteReportGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DeleteReportGroup",
+		Input:   input,
+		Output:  (*codebuild.DeleteReportGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.DeleteReportGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.DeleteReportGroupOutput), req.Error
+}
+
 func (c *Client) DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -213,6 +328,27 @@ func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *codebuild.
 	})
 
 	return req.Output.(*codebuild.DeleteWebhookOutput), req.Error
+}
+
+func (c *Client) DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DescribeTestCases",
+		Input:   input,
+		Output:  (*codebuild.DescribeTestCasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.DescribeTestCasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.DescribeTestCasesOutput), req.Error
 }
 
 func (c *Client) ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error) {
@@ -341,6 +477,69 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *codebuild.L
 	return req.Output.(*codebuild.ListProjectsOutput), req.Error
 }
 
+func (c *Client) ListReportGroupsWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, opts ...request.Option) (*codebuild.ListReportGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListReportGroups",
+		Input:   input,
+		Output:  (*codebuild.ListReportGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListReportGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListReportGroupsOutput), req.Error
+}
+
+func (c *Client) ListReportsWithContext(ctx context.Context, input *codebuild.ListReportsInput, opts ...request.Option) (*codebuild.ListReportsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListReports",
+		Input:   input,
+		Output:  (*codebuild.ListReportsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListReportsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListReportsOutput), req.Error
+}
+
+func (c *Client) ListReportsForReportGroupWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, opts ...request.Option) (*codebuild.ListReportsForReportGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListReportsForReportGroup",
+		Input:   input,
+		Output:  (*codebuild.ListReportsForReportGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListReportsForReportGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListReportsForReportGroupOutput), req.Error
+}
+
 func (c *Client) ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -423,6 +622,27 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codebuild.
 	})
 
 	return req.Output.(*codebuild.UpdateProjectOutput), req.Error
+}
+
+func (c *Client) UpdateReportGroupWithContext(ctx context.Context, input *codebuild.UpdateReportGroupInput, opts ...request.Option) (*codebuild.UpdateReportGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "UpdateReportGroup",
+		Input:   input,
+		Output:  (*codebuild.UpdateReportGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.UpdateReportGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.UpdateReportGroupOutput), req.Error
 }
 
 func (c *Client) UpdateWebhookWithContext(ctx context.Context, input *codebuild.UpdateWebhookInput, opts ...request.Option) (*codebuild.UpdateWebhookOutput, error) {
