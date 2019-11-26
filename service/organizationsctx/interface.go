@@ -25,6 +25,7 @@ type Organizations interface {
 	DeletePolicyWithContext(ctx context.Context, input *organizations.DeletePolicyInput, opts ...request.Option) (*organizations.DeletePolicyOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *organizations.DescribeAccountInput, opts ...request.Option) (*organizations.DescribeAccountOutput, error)
 	DescribeCreateAccountStatusWithContext(ctx context.Context, input *organizations.DescribeCreateAccountStatusInput, opts ...request.Option) (*organizations.DescribeCreateAccountStatusOutput, error)
+	DescribeEffectivePolicyWithContext(ctx context.Context, input *organizations.DescribeEffectivePolicyInput, opts ...request.Option) (*organizations.DescribeEffectivePolicyOutput, error)
 	DescribeHandshakeWithContext(ctx context.Context, input *organizations.DescribeHandshakeInput, opts ...request.Option) (*organizations.DescribeHandshakeOutput, error)
 	DescribeOrganizationWithContext(ctx context.Context, input *organizations.DescribeOrganizationInput, opts ...request.Option) (*organizations.DescribeOrganizationOutput, error)
 	DescribeOrganizationalUnitWithContext(ctx context.Context, input *organizations.DescribeOrganizationalUnitInput, opts ...request.Option) (*organizations.DescribeOrganizationalUnitOutput, error)
@@ -380,6 +381,27 @@ func (c *Client) DescribeCreateAccountStatusWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*organizations.DescribeCreateAccountStatusOutput), req.Error
+}
+
+func (c *Client) DescribeEffectivePolicyWithContext(ctx context.Context, input *organizations.DescribeEffectivePolicyInput, opts ...request.Option) (*organizations.DescribeEffectivePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "DescribeEffectivePolicy",
+		Input:   input,
+		Output:  (*organizations.DescribeEffectivePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.DescribeEffectivePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.DescribeEffectivePolicyOutput), req.Error
 }
 
 func (c *Client) DescribeHandshakeWithContext(ctx context.Context, input *organizations.DescribeHandshakeInput, opts ...request.Option) (*organizations.DescribeHandshakeOutput, error) {

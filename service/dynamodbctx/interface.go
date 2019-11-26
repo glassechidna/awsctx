@@ -22,6 +22,7 @@ type DynamoDB interface {
 	DeleteTableWithContext(ctx context.Context, input *dynamodb.DeleteTableInput, opts ...request.Option) (*dynamodb.DeleteTableOutput, error)
 	DescribeBackupWithContext(ctx context.Context, input *dynamodb.DescribeBackupInput, opts ...request.Option) (*dynamodb.DescribeBackupOutput, error)
 	DescribeContinuousBackupsWithContext(ctx context.Context, input *dynamodb.DescribeContinuousBackupsInput, opts ...request.Option) (*dynamodb.DescribeContinuousBackupsOutput, error)
+	DescribeContributorInsightsWithContext(ctx context.Context, input *dynamodb.DescribeContributorInsightsInput, opts ...request.Option) (*dynamodb.DescribeContributorInsightsOutput, error)
 	DescribeEndpointsWithContext(ctx context.Context, input *dynamodb.DescribeEndpointsInput, opts ...request.Option) (*dynamodb.DescribeEndpointsOutput, error)
 	DescribeGlobalTableWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableOutput, error)
 	DescribeGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableSettingsOutput, error)
@@ -31,6 +32,8 @@ type DynamoDB interface {
 	DescribeTimeToLiveWithContext(ctx context.Context, input *dynamodb.DescribeTimeToLiveInput, opts ...request.Option) (*dynamodb.DescribeTimeToLiveOutput, error)
 	GetItemWithContext(ctx context.Context, input *dynamodb.GetItemInput, opts ...request.Option) (*dynamodb.GetItemOutput, error)
 	ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error)
+	ListContributorInsightsWithContext(ctx context.Context, input *dynamodb.ListContributorInsightsInput, opts ...request.Option) (*dynamodb.ListContributorInsightsOutput, error)
+	ListContributorInsightsPagesWithContext(ctx context.Context, input *dynamodb.ListContributorInsightsInput, cb func(*dynamodb.ListContributorInsightsOutput, bool) bool, opts ...request.Option) error
 	ListGlobalTablesWithContext(ctx context.Context, input *dynamodb.ListGlobalTablesInput, opts ...request.Option) (*dynamodb.ListGlobalTablesOutput, error)
 	ListTablesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, opts ...request.Option) (*dynamodb.ListTablesOutput, error)
 	ListTablesPagesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, cb func(*dynamodb.ListTablesOutput, bool) bool, opts ...request.Option) error
@@ -47,6 +50,7 @@ type DynamoDB interface {
 	TransactWriteItemsWithContext(ctx context.Context, input *dynamodb.TransactWriteItemsInput, opts ...request.Option) (*dynamodb.TransactWriteItemsOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *dynamodb.UntagResourceInput, opts ...request.Option) (*dynamodb.UntagResourceOutput, error)
 	UpdateContinuousBackupsWithContext(ctx context.Context, input *dynamodb.UpdateContinuousBackupsInput, opts ...request.Option) (*dynamodb.UpdateContinuousBackupsOutput, error)
+	UpdateContributorInsightsWithContext(ctx context.Context, input *dynamodb.UpdateContributorInsightsInput, opts ...request.Option) (*dynamodb.UpdateContributorInsightsOutput, error)
 	UpdateGlobalTableWithContext(ctx context.Context, input *dynamodb.UpdateGlobalTableInput, opts ...request.Option) (*dynamodb.UpdateGlobalTableOutput, error)
 	UpdateGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.UpdateGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.UpdateGlobalTableSettingsOutput, error)
 	UpdateItemWithContext(ctx context.Context, input *dynamodb.UpdateItemInput, opts ...request.Option) (*dynamodb.UpdateItemOutput, error)
@@ -300,6 +304,27 @@ func (c *Client) DescribeContinuousBackupsWithContext(ctx context.Context, input
 	return req.Output.(*dynamodb.DescribeContinuousBackupsOutput), req.Error
 }
 
+func (c *Client) DescribeContributorInsightsWithContext(ctx context.Context, input *dynamodb.DescribeContributorInsightsInput, opts ...request.Option) (*dynamodb.DescribeContributorInsightsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "DescribeContributorInsights",
+		Input:   input,
+		Output:  (*dynamodb.DescribeContributorInsightsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.DescribeContributorInsightsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.DescribeContributorInsightsOutput), req.Error
+}
+
 func (c *Client) DescribeEndpointsWithContext(ctx context.Context, input *dynamodb.DescribeEndpointsInput, opts ...request.Option) (*dynamodb.DescribeEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
@@ -487,6 +512,47 @@ func (c *Client) ListBackupsWithContext(ctx context.Context, input *dynamodb.Lis
 	})
 
 	return req.Output.(*dynamodb.ListBackupsOutput), req.Error
+}
+
+func (c *Client) ListContributorInsightsWithContext(ctx context.Context, input *dynamodb.ListContributorInsightsInput, opts ...request.Option) (*dynamodb.ListContributorInsightsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ListContributorInsights",
+		Input:   input,
+		Output:  (*dynamodb.ListContributorInsightsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.ListContributorInsightsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.ListContributorInsightsOutput), req.Error
+}
+
+func (c *Client) ListContributorInsightsPagesWithContext(ctx context.Context, input *dynamodb.ListContributorInsightsInput, cb func(*dynamodb.ListContributorInsightsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ListContributorInsights",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DynamoDBAPI.ListContributorInsightsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGlobalTablesWithContext(ctx context.Context, input *dynamodb.ListGlobalTablesInput, opts ...request.Option) (*dynamodb.ListGlobalTablesOutput, error) {
@@ -820,6 +886,27 @@ func (c *Client) UpdateContinuousBackupsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*dynamodb.UpdateContinuousBackupsOutput), req.Error
+}
+
+func (c *Client) UpdateContributorInsightsWithContext(ctx context.Context, input *dynamodb.UpdateContributorInsightsInput, opts ...request.Option) (*dynamodb.UpdateContributorInsightsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "UpdateContributorInsights",
+		Input:   input,
+		Output:  (*dynamodb.UpdateContributorInsightsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.UpdateContributorInsightsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.UpdateContributorInsightsOutput), req.Error
 }
 
 func (c *Client) UpdateGlobalTableWithContext(ctx context.Context, input *dynamodb.UpdateGlobalTableInput, opts ...request.Option) (*dynamodb.UpdateGlobalTableOutput, error) {

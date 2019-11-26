@@ -29,25 +29,32 @@ type DirectoryService interface {
 	DeleteLogSubscriptionWithContext(ctx context.Context, input *directoryservice.DeleteLogSubscriptionInput, opts ...request.Option) (*directoryservice.DeleteLogSubscriptionOutput, error)
 	DeleteSnapshotWithContext(ctx context.Context, input *directoryservice.DeleteSnapshotInput, opts ...request.Option) (*directoryservice.DeleteSnapshotOutput, error)
 	DeleteTrustWithContext(ctx context.Context, input *directoryservice.DeleteTrustInput, opts ...request.Option) (*directoryservice.DeleteTrustOutput, error)
+	DeregisterCertificateWithContext(ctx context.Context, input *directoryservice.DeregisterCertificateInput, opts ...request.Option) (*directoryservice.DeregisterCertificateOutput, error)
 	DeregisterEventTopicWithContext(ctx context.Context, input *directoryservice.DeregisterEventTopicInput, opts ...request.Option) (*directoryservice.DeregisterEventTopicOutput, error)
+	DescribeCertificateWithContext(ctx context.Context, input *directoryservice.DescribeCertificateInput, opts ...request.Option) (*directoryservice.DescribeCertificateOutput, error)
 	DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error)
 	DescribeDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeDirectoriesOutput, error)
 	DescribeDomainControllersWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, opts ...request.Option) (*directoryservice.DescribeDomainControllersOutput, error)
 	DescribeDomainControllersPagesWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, cb func(*directoryservice.DescribeDomainControllersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error)
+	DescribeLDAPSSettingsWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, opts ...request.Option) (*directoryservice.DescribeLDAPSSettingsOutput, error)
 	DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error)
 	DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error)
 	DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error)
+	DisableLDAPSWithContext(ctx context.Context, input *directoryservice.DisableLDAPSInput, opts ...request.Option) (*directoryservice.DisableLDAPSOutput, error)
 	DisableRadiusWithContext(ctx context.Context, input *directoryservice.DisableRadiusInput, opts ...request.Option) (*directoryservice.DisableRadiusOutput, error)
 	DisableSsoWithContext(ctx context.Context, input *directoryservice.DisableSsoInput, opts ...request.Option) (*directoryservice.DisableSsoOutput, error)
+	EnableLDAPSWithContext(ctx context.Context, input *directoryservice.EnableLDAPSInput, opts ...request.Option) (*directoryservice.EnableLDAPSOutput, error)
 	EnableRadiusWithContext(ctx context.Context, input *directoryservice.EnableRadiusInput, opts ...request.Option) (*directoryservice.EnableRadiusOutput, error)
 	EnableSsoWithContext(ctx context.Context, input *directoryservice.EnableSsoInput, opts ...request.Option) (*directoryservice.EnableSsoOutput, error)
 	GetDirectoryLimitsWithContext(ctx context.Context, input *directoryservice.GetDirectoryLimitsInput, opts ...request.Option) (*directoryservice.GetDirectoryLimitsOutput, error)
 	GetSnapshotLimitsWithContext(ctx context.Context, input *directoryservice.GetSnapshotLimitsInput, opts ...request.Option) (*directoryservice.GetSnapshotLimitsOutput, error)
+	ListCertificatesWithContext(ctx context.Context, input *directoryservice.ListCertificatesInput, opts ...request.Option) (*directoryservice.ListCertificatesOutput, error)
 	ListIpRoutesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, opts ...request.Option) (*directoryservice.ListIpRoutesOutput, error)
 	ListLogSubscriptionsWithContext(ctx context.Context, input *directoryservice.ListLogSubscriptionsInput, opts ...request.Option) (*directoryservice.ListLogSubscriptionsOutput, error)
 	ListSchemaExtensionsWithContext(ctx context.Context, input *directoryservice.ListSchemaExtensionsInput, opts ...request.Option) (*directoryservice.ListSchemaExtensionsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *directoryservice.ListTagsForResourceInput, opts ...request.Option) (*directoryservice.ListTagsForResourceOutput, error)
+	RegisterCertificateWithContext(ctx context.Context, input *directoryservice.RegisterCertificateInput, opts ...request.Option) (*directoryservice.RegisterCertificateOutput, error)
 	RegisterEventTopicWithContext(ctx context.Context, input *directoryservice.RegisterEventTopicInput, opts ...request.Option) (*directoryservice.RegisterEventTopicOutput, error)
 	RejectSharedDirectoryWithContext(ctx context.Context, input *directoryservice.RejectSharedDirectoryInput, opts ...request.Option) (*directoryservice.RejectSharedDirectoryOutput, error)
 	RemoveIpRoutesWithContext(ctx context.Context, input *directoryservice.RemoveIpRoutesInput, opts ...request.Option) (*directoryservice.RemoveIpRoutesOutput, error)
@@ -457,6 +464,27 @@ func (c *Client) DeleteTrustWithContext(ctx context.Context, input *directoryser
 	return req.Output.(*directoryservice.DeleteTrustOutput), req.Error
 }
 
+func (c *Client) DeregisterCertificateWithContext(ctx context.Context, input *directoryservice.DeregisterCertificateInput, opts ...request.Option) (*directoryservice.DeregisterCertificateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DeregisterCertificate",
+		Input:   input,
+		Output:  (*directoryservice.DeregisterCertificateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DeregisterCertificateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DeregisterCertificateOutput), req.Error
+}
+
 func (c *Client) DeregisterEventTopicWithContext(ctx context.Context, input *directoryservice.DeregisterEventTopicInput, opts ...request.Option) (*directoryservice.DeregisterEventTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -476,6 +504,27 @@ func (c *Client) DeregisterEventTopicWithContext(ctx context.Context, input *dir
 	})
 
 	return req.Output.(*directoryservice.DeregisterEventTopicOutput), req.Error
+}
+
+func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *directoryservice.DescribeCertificateInput, opts ...request.Option) (*directoryservice.DescribeCertificateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeCertificate",
+		Input:   input,
+		Output:  (*directoryservice.DescribeCertificateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DescribeCertificateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DescribeCertificateOutput), req.Error
 }
 
 func (c *Client) DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error) {
@@ -582,6 +631,27 @@ func (c *Client) DescribeEventTopicsWithContext(ctx context.Context, input *dire
 	return req.Output.(*directoryservice.DescribeEventTopicsOutput), req.Error
 }
 
+func (c *Client) DescribeLDAPSSettingsWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, opts ...request.Option) (*directoryservice.DescribeLDAPSSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeLDAPSSettings",
+		Input:   input,
+		Output:  (*directoryservice.DescribeLDAPSSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DescribeLDAPSSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DescribeLDAPSSettingsOutput), req.Error
+}
+
 func (c *Client) DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -645,6 +715,27 @@ func (c *Client) DescribeTrustsWithContext(ctx context.Context, input *directory
 	return req.Output.(*directoryservice.DescribeTrustsOutput), req.Error
 }
 
+func (c *Client) DisableLDAPSWithContext(ctx context.Context, input *directoryservice.DisableLDAPSInput, opts ...request.Option) (*directoryservice.DisableLDAPSOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DisableLDAPS",
+		Input:   input,
+		Output:  (*directoryservice.DisableLDAPSOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DisableLDAPSWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DisableLDAPSOutput), req.Error
+}
+
 func (c *Client) DisableRadiusWithContext(ctx context.Context, input *directoryservice.DisableRadiusInput, opts ...request.Option) (*directoryservice.DisableRadiusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -685,6 +776,27 @@ func (c *Client) DisableSsoWithContext(ctx context.Context, input *directoryserv
 	})
 
 	return req.Output.(*directoryservice.DisableSsoOutput), req.Error
+}
+
+func (c *Client) EnableLDAPSWithContext(ctx context.Context, input *directoryservice.EnableLDAPSInput, opts ...request.Option) (*directoryservice.EnableLDAPSOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "EnableLDAPS",
+		Input:   input,
+		Output:  (*directoryservice.EnableLDAPSOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.EnableLDAPSWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.EnableLDAPSOutput), req.Error
 }
 
 func (c *Client) EnableRadiusWithContext(ctx context.Context, input *directoryservice.EnableRadiusInput, opts ...request.Option) (*directoryservice.EnableRadiusOutput, error) {
@@ -771,6 +883,27 @@ func (c *Client) GetSnapshotLimitsWithContext(ctx context.Context, input *direct
 	return req.Output.(*directoryservice.GetSnapshotLimitsOutput), req.Error
 }
 
+func (c *Client) ListCertificatesWithContext(ctx context.Context, input *directoryservice.ListCertificatesInput, opts ...request.Option) (*directoryservice.ListCertificatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "ListCertificates",
+		Input:   input,
+		Output:  (*directoryservice.ListCertificatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.ListCertificatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.ListCertificatesOutput), req.Error
+}
+
 func (c *Client) ListIpRoutesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, opts ...request.Option) (*directoryservice.ListIpRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -853,6 +986,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *dire
 	})
 
 	return req.Output.(*directoryservice.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) RegisterCertificateWithContext(ctx context.Context, input *directoryservice.RegisterCertificateInput, opts ...request.Option) (*directoryservice.RegisterCertificateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "RegisterCertificate",
+		Input:   input,
+		Output:  (*directoryservice.RegisterCertificateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.RegisterCertificateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.RegisterCertificateOutput), req.Error
 }
 
 func (c *Client) RegisterEventTopicWithContext(ctx context.Context, input *directoryservice.RegisterEventTopicInput, opts ...request.Option) (*directoryservice.RegisterEventTopicOutput, error) {
