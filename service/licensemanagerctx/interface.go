@@ -16,6 +16,7 @@ type LicenseManager interface {
 	GetLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.GetLicenseConfigurationInput, opts ...request.Option) (*licensemanager.GetLicenseConfigurationOutput, error)
 	GetServiceSettingsWithContext(ctx context.Context, input *licensemanager.GetServiceSettingsInput, opts ...request.Option) (*licensemanager.GetServiceSettingsOutput, error)
 	ListAssociationsForLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.ListAssociationsForLicenseConfigurationInput, opts ...request.Option) (*licensemanager.ListAssociationsForLicenseConfigurationOutput, error)
+	ListFailuresForLicenseConfigurationOperationsWithContext(ctx context.Context, input *licensemanager.ListFailuresForLicenseConfigurationOperationsInput, opts ...request.Option) (*licensemanager.ListFailuresForLicenseConfigurationOperationsOutput, error)
 	ListLicenseConfigurationsWithContext(ctx context.Context, input *licensemanager.ListLicenseConfigurationsInput, opts ...request.Option) (*licensemanager.ListLicenseConfigurationsOutput, error)
 	ListLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.ListLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.ListLicenseSpecificationsForResourceOutput, error)
 	ListResourceInventoryWithContext(ctx context.Context, input *licensemanager.ListResourceInventoryInput, opts ...request.Option) (*licensemanager.ListResourceInventoryOutput, error)
@@ -146,6 +147,27 @@ func (c *Client) ListAssociationsForLicenseConfigurationWithContext(ctx context.
 	})
 
 	return req.Output.(*licensemanager.ListAssociationsForLicenseConfigurationOutput), req.Error
+}
+
+func (c *Client) ListFailuresForLicenseConfigurationOperationsWithContext(ctx context.Context, input *licensemanager.ListFailuresForLicenseConfigurationOperationsInput, opts ...request.Option) (*licensemanager.ListFailuresForLicenseConfigurationOperationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "ListFailuresForLicenseConfigurationOperations",
+		Input:   input,
+		Output:  (*licensemanager.ListFailuresForLicenseConfigurationOperationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.ListFailuresForLicenseConfigurationOperationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.ListFailuresForLicenseConfigurationOperationsOutput), req.Error
 }
 
 func (c *Client) ListLicenseConfigurationsWithContext(ctx context.Context, input *licensemanager.ListLicenseConfigurationsInput, opts ...request.Option) (*licensemanager.ListLicenseConfigurationsOutput, error) {
