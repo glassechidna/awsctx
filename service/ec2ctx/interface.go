@@ -12,6 +12,7 @@ import (
 
 type EC2 interface {
 	AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.AcceptReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.AcceptReservedInstancesExchangeQuoteOutput, error)
+	AcceptTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayPeeringAttachmentOutput, error)
 	AcceptTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayVpcAttachmentOutput, error)
 	AcceptVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.AcceptVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.AcceptVpcEndpointConnectionsOutput, error)
 	AcceptVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.AcceptVpcPeeringConnectionInput, opts ...request.Option) (*ec2.AcceptVpcPeeringConnectionOutput, error)
@@ -27,6 +28,7 @@ type EC2 interface {
 	AssociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.AssociateIamInstanceProfileInput, opts ...request.Option) (*ec2.AssociateIamInstanceProfileOutput, error)
 	AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error)
 	AssociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.AssociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.AssociateSubnetCidrBlockOutput, error)
+	AssociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.AssociateTransitGatewayMulticastDomainOutput, error)
 	AssociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.AssociateTransitGatewayRouteTableOutput, error)
 	AssociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.AssociateVpcCidrBlockInput, opts ...request.Option) (*ec2.AssociateVpcCidrBlockOutput, error)
 	AttachClassicLinkVpcWithContext(ctx context.Context, input *ec2.AttachClassicLinkVpcInput, opts ...request.Option) (*ec2.AttachClassicLinkVpcOutput, error)
@@ -67,6 +69,8 @@ type EC2 interface {
 	CreateKeyPairWithContext(ctx context.Context, input *ec2.CreateKeyPairInput, opts ...request.Option) (*ec2.CreateKeyPairOutput, error)
 	CreateLaunchTemplateWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateInput, opts ...request.Option) (*ec2.CreateLaunchTemplateOutput, error)
 	CreateLaunchTemplateVersionWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateVersionInput, opts ...request.Option) (*ec2.CreateLaunchTemplateVersionOutput, error)
+	CreateLocalGatewayRouteWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteOutput, error)
+	CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput, error)
 	CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error)
 	CreateNetworkAclWithContext(ctx context.Context, input *ec2.CreateNetworkAclInput, opts ...request.Option) (*ec2.CreateNetworkAclOutput, error)
 	CreateNetworkAclEntryWithContext(ctx context.Context, input *ec2.CreateNetworkAclEntryInput, opts ...request.Option) (*ec2.CreateNetworkAclEntryOutput, error)
@@ -87,6 +91,8 @@ type EC2 interface {
 	CreateTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorSessionInput, opts ...request.Option) (*ec2.CreateTrafficMirrorSessionOutput, error)
 	CreateTrafficMirrorTargetWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorTargetInput, opts ...request.Option) (*ec2.CreateTrafficMirrorTargetOutput, error)
 	CreateTransitGatewayWithContext(ctx context.Context, input *ec2.CreateTransitGatewayInput, opts ...request.Option) (*ec2.CreateTransitGatewayOutput, error)
+	CreateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.CreateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.CreateTransitGatewayMulticastDomainOutput, error)
+	CreateTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayPeeringAttachmentOutput, error)
 	CreateTransitGatewayRouteWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteOutput, error)
 	CreateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteTableOutput, error)
 	CreateTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayVpcAttachmentOutput, error)
@@ -111,6 +117,8 @@ type EC2 interface {
 	DeleteKeyPairWithContext(ctx context.Context, input *ec2.DeleteKeyPairInput, opts ...request.Option) (*ec2.DeleteKeyPairOutput, error)
 	DeleteLaunchTemplateWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateOutput, error)
 	DeleteLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateVersionsOutput, error)
+	DeleteLocalGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteOutput, error)
+	DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput, error)
 	DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error)
 	DeleteNetworkAclWithContext(ctx context.Context, input *ec2.DeleteNetworkAclInput, opts ...request.Option) (*ec2.DeleteNetworkAclOutput, error)
 	DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec2.DeleteNetworkAclEntryInput, opts ...request.Option) (*ec2.DeleteNetworkAclEntryOutput, error)
@@ -130,6 +138,8 @@ type EC2 interface {
 	DeleteTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorSessionInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorSessionOutput, error)
 	DeleteTrafficMirrorTargetWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorTargetInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorTargetOutput, error)
 	DeleteTransitGatewayWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayInput, opts ...request.Option) (*ec2.DeleteTransitGatewayOutput, error)
+	DeleteTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DeleteTransitGatewayMulticastDomainOutput, error)
+	DeleteTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPeeringAttachmentOutput, error)
 	DeleteTransitGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteOutput, error)
 	DeleteTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteTableOutput, error)
 	DeleteTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayVpcAttachmentOutput, error)
@@ -144,6 +154,8 @@ type EC2 interface {
 	DeleteVpnGatewayWithContext(ctx context.Context, input *ec2.DeleteVpnGatewayInput, opts ...request.Option) (*ec2.DeleteVpnGatewayOutput, error)
 	DeprovisionByoipCidrWithContext(ctx context.Context, input *ec2.DeprovisionByoipCidrInput, opts ...request.Option) (*ec2.DeprovisionByoipCidrOutput, error)
 	DeregisterImageWithContext(ctx context.Context, input *ec2.DeregisterImageInput, opts ...request.Option) (*ec2.DeregisterImageOutput, error)
+	DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput, error)
+	DeregisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *ec2.DescribeAccountAttributesInput, opts ...request.Option) (*ec2.DescribeAccountAttributesOutput, error)
 	DescribeAddressesWithContext(ctx context.Context, input *ec2.DescribeAddressesInput, opts ...request.Option) (*ec2.DescribeAddressesOutput, error)
 	DescribeAggregateIdFormatWithContext(ctx context.Context, input *ec2.DescribeAggregateIdFormatInput, opts ...request.Option) (*ec2.DescribeAggregateIdFormatOutput, error)
@@ -165,6 +177,7 @@ type EC2 interface {
 	DescribeClientVpnRoutesPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnRoutesInput, cb func(*ec2.DescribeClientVpnRoutesOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnTargetNetworksWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, opts ...request.Option) (*ec2.DescribeClientVpnTargetNetworksOutput, error)
 	DescribeClientVpnTargetNetworksPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, cb func(*ec2.DescribeClientVpnTargetNetworksOutput, bool) bool, opts ...request.Option) error
+	DescribeCoipPoolsWithContext(ctx context.Context, input *ec2.DescribeCoipPoolsInput, opts ...request.Option) (*ec2.DescribeCoipPoolsOutput, error)
 	DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error)
 	DescribeCustomerGatewaysWithContext(ctx context.Context, input *ec2.DescribeCustomerGatewaysInput, opts ...request.Option) (*ec2.DescribeCustomerGatewaysOutput, error)
 	DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, opts ...request.Option) (*ec2.DescribeDhcpOptionsOutput, error)
@@ -218,6 +231,12 @@ type EC2 interface {
 	DescribeLaunchTemplateVersionsPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, cb func(*ec2.DescribeLaunchTemplateVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeLaunchTemplatesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, opts ...request.Option) (*ec2.DescribeLaunchTemplatesOutput, error)
 	DescribeLaunchTemplatesPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, cb func(*ec2.DescribeLaunchTemplatesOutput, bool) bool, opts ...request.Option) error
+	DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, error)
+	DescribeLocalGatewayRouteTableVpcAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVpcAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, error)
+	DescribeLocalGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTablesOutput, error)
+	DescribeLocalGatewayVirtualInterfaceGroupsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfaceGroupsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, error)
+	DescribeLocalGatewayVirtualInterfacesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfacesOutput, error)
+	DescribeLocalGatewaysWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, opts ...request.Option) (*ec2.DescribeLocalGatewaysOutput, error)
 	DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error)
 	DescribeMovingAddressesPagesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, cb func(*ec2.DescribeMovingAddressesOutput, bool) bool, opts ...request.Option) error
 	DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, opts ...request.Option) (*ec2.DescribeNatGatewaysOutput, error)
@@ -278,6 +297,8 @@ type EC2 interface {
 	DescribeTrafficMirrorTargetsPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, cb func(*ec2.DescribeTrafficMirrorTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayAttachmentsOutput, error)
 	DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, cb func(*ec2.DescribeTransitGatewayAttachmentsOutput, bool) bool, opts ...request.Option) error
+	DescribeTransitGatewayMulticastDomainsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayMulticastDomainsOutput, error)
+	DescribeTransitGatewayPeeringAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, error)
 	DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error)
 	DescribeTransitGatewayRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, cb func(*ec2.DescribeTransitGatewayRouteTablesOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayVpcAttachmentsOutput, error)
@@ -328,6 +349,7 @@ type EC2 interface {
 	DisassociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.DisassociateIamInstanceProfileInput, opts ...request.Option) (*ec2.DisassociateIamInstanceProfileOutput, error)
 	DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error)
 	DisassociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.DisassociateSubnetCidrBlockOutput, error)
+	DisassociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayMulticastDomainOutput, error)
 	DisassociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayRouteTableOutput, error)
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
@@ -342,6 +364,7 @@ type EC2 interface {
 	ExportImageWithContext(ctx context.Context, input *ec2.ExportImageInput, opts ...request.Option) (*ec2.ExportImageOutput, error)
 	ExportTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.ExportTransitGatewayRoutesInput, opts ...request.Option) (*ec2.ExportTransitGatewayRoutesOutput, error)
 	GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error)
+	GetCoipPoolUsageWithContext(ctx context.Context, input *ec2.GetCoipPoolUsageInput, opts ...request.Option) (*ec2.GetCoipPoolUsageOutput, error)
 	GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error)
 	GetConsoleScreenshotWithContext(ctx context.Context, input *ec2.GetConsoleScreenshotInput, opts ...request.Option) (*ec2.GetConsoleScreenshotOutput, error)
 	GetDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.GetDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.GetDefaultCreditSpecificationOutput, error)
@@ -353,6 +376,7 @@ type EC2 interface {
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
+	GetTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, error)
 	GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error)
 	GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error)
@@ -409,6 +433,9 @@ type EC2 interface {
 	PurchaseScheduledInstancesWithContext(ctx context.Context, input *ec2.PurchaseScheduledInstancesInput, opts ...request.Option) (*ec2.PurchaseScheduledInstancesOutput, error)
 	RebootInstancesWithContext(ctx context.Context, input *ec2.RebootInstancesInput, opts ...request.Option) (*ec2.RebootInstancesOutput, error)
 	RegisterImageWithContext(ctx context.Context, input *ec2.RegisterImageInput, opts ...request.Option) (*ec2.RegisterImageOutput, error)
+	RegisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupMembersOutput, error)
+	RegisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput, error)
+	RejectTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayPeeringAttachmentOutput, error)
 	RejectTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayVpcAttachmentOutput, error)
 	RejectVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.RejectVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.RejectVpcEndpointConnectionsOutput, error)
 	RejectVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.RejectVpcPeeringConnectionInput, opts ...request.Option) (*ec2.RejectVpcPeeringConnectionOutput, error)
@@ -435,6 +462,8 @@ type EC2 interface {
 	RevokeSecurityGroupIngressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupIngressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupIngressOutput, error)
 	RunInstancesWithContext(ctx context.Context, input *ec2.RunInstancesInput, opts ...request.Option) (*ec2.Reservation, error)
 	RunScheduledInstancesWithContext(ctx context.Context, input *ec2.RunScheduledInstancesInput, opts ...request.Option) (*ec2.RunScheduledInstancesOutput, error)
+	SearchLocalGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchLocalGatewayRoutesInput, opts ...request.Option) (*ec2.SearchLocalGatewayRoutesOutput, error)
+	SearchTransitGatewayMulticastGroupsWithContext(ctx context.Context, input *ec2.SearchTransitGatewayMulticastGroupsInput, opts ...request.Option) (*ec2.SearchTransitGatewayMulticastGroupsOutput, error)
 	SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error)
 	SendDiagnosticInterruptWithContext(ctx context.Context, input *ec2.SendDiagnosticInterruptInput, opts ...request.Option) (*ec2.SendDiagnosticInterruptOutput, error)
 	StartInstancesWithContext(ctx context.Context, input *ec2.StartInstancesInput, opts ...request.Option) (*ec2.StartInstancesOutput, error)
@@ -483,6 +512,27 @@ func (c *Client) AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Con
 	})
 
 	return req.Output.(*ec2.AcceptReservedInstancesExchangeQuoteOutput), req.Error
+}
+
+func (c *Client) AcceptTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayPeeringAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AcceptTransitGatewayPeeringAttachment",
+		Input:   input,
+		Output:  (*ec2.AcceptTransitGatewayPeeringAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AcceptTransitGatewayPeeringAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AcceptTransitGatewayPeeringAttachmentOutput), req.Error
 }
 
 func (c *Client) AcceptTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayVpcAttachmentOutput, error) {
@@ -798,6 +848,27 @@ func (c *Client) AssociateSubnetCidrBlockWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*ec2.AssociateSubnetCidrBlockOutput), req.Error
+}
+
+func (c *Client) AssociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.AssociateTransitGatewayMulticastDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AssociateTransitGatewayMulticastDomain",
+		Input:   input,
+		Output:  (*ec2.AssociateTransitGatewayMulticastDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AssociateTransitGatewayMulticastDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AssociateTransitGatewayMulticastDomainOutput), req.Error
 }
 
 func (c *Client) AssociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.AssociateTransitGatewayRouteTableOutput, error) {
@@ -1640,6 +1711,48 @@ func (c *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context, inp
 	return req.Output.(*ec2.CreateLaunchTemplateVersionOutput), req.Error
 }
 
+func (c *Client) CreateLocalGatewayRouteWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateLocalGatewayRoute",
+		Input:   input,
+		Output:  (*ec2.CreateLocalGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateLocalGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateLocalGatewayRouteOutput), req.Error
+}
+
+func (c *Client) CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateLocalGatewayRouteTableVpcAssociation",
+		Input:   input,
+		Output:  (*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput), req.Error
+}
+
 func (c *Client) CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2058,6 +2171,48 @@ func (c *Client) CreateTransitGatewayWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.CreateTransitGatewayOutput), req.Error
+}
+
+func (c *Client) CreateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.CreateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.CreateTransitGatewayMulticastDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateTransitGatewayMulticastDomain",
+		Input:   input,
+		Output:  (*ec2.CreateTransitGatewayMulticastDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateTransitGatewayMulticastDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateTransitGatewayMulticastDomainOutput), req.Error
+}
+
+func (c *Client) CreateTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayPeeringAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateTransitGatewayPeeringAttachment",
+		Input:   input,
+		Output:  (*ec2.CreateTransitGatewayPeeringAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateTransitGatewayPeeringAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateTransitGatewayPeeringAttachmentOutput), req.Error
 }
 
 func (c *Client) CreateTransitGatewayRouteWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteOutput, error) {
@@ -2564,6 +2719,48 @@ func (c *Client) DeleteLaunchTemplateVersionsWithContext(ctx context.Context, in
 	return req.Output.(*ec2.DeleteLaunchTemplateVersionsOutput), req.Error
 }
 
+func (c *Client) DeleteLocalGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteLocalGatewayRoute",
+		Input:   input,
+		Output:  (*ec2.DeleteLocalGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteLocalGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteLocalGatewayRouteOutput), req.Error
+}
+
+func (c *Client) DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteLocalGatewayRouteTableVpcAssociation",
+		Input:   input,
+		Output:  (*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput), req.Error
+}
+
 func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2963,6 +3160,48 @@ func (c *Client) DeleteTransitGatewayWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.DeleteTransitGatewayOutput), req.Error
 }
 
+func (c *Client) DeleteTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DeleteTransitGatewayMulticastDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteTransitGatewayMulticastDomain",
+		Input:   input,
+		Output:  (*ec2.DeleteTransitGatewayMulticastDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteTransitGatewayMulticastDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteTransitGatewayMulticastDomainOutput), req.Error
+}
+
+func (c *Client) DeleteTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPeeringAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteTransitGatewayPeeringAttachment",
+		Input:   input,
+		Output:  (*ec2.DeleteTransitGatewayPeeringAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteTransitGatewayPeeringAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteTransitGatewayPeeringAttachmentOutput), req.Error
+}
+
 func (c *Client) DeleteTransitGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3255,6 +3494,48 @@ func (c *Client) DeregisterImageWithContext(ctx context.Context, input *ec2.Dere
 	})
 
 	return req.Output.(*ec2.DeregisterImageOutput), req.Error
+}
+
+func (c *Client) DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeregisterTransitGatewayMulticastGroupMembers",
+		Input:   input,
+		Output:  (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput), req.Error
+}
+
+func (c *Client) DeregisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeregisterTransitGatewayMulticastGroupSources",
+		Input:   input,
+		Output:  (*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeregisterTransitGatewayMulticastGroupSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput), req.Error
 }
 
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *ec2.DescribeAccountAttributesInput, opts ...request.Option) (*ec2.DescribeAccountAttributesOutput, error) {
@@ -3688,6 +3969,27 @@ func (c *Client) DescribeClientVpnTargetNetworksPagesWithContext(ctx context.Con
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeCoipPoolsWithContext(ctx context.Context, input *ec2.DescribeCoipPoolsInput, opts ...request.Option) (*ec2.DescribeCoipPoolsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCoipPools",
+		Input:   input,
+		Output:  (*ec2.DescribeCoipPoolsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeCoipPoolsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeCoipPoolsOutput), req.Error
 }
 
 func (c *Client) DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error) {
@@ -4782,6 +5084,132 @@ func (c *Client) DescribeLaunchTemplatesPagesWithContext(ctx context.Context, in
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
+		Input:   input,
+		Output:  (*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewayRouteTableVpcAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVpcAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayRouteTableVpcAssociations",
+		Input:   input,
+		Output:  (*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLocalGatewayRouteTableVpcAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTablesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayRouteTables",
+		Input:   input,
+		Output:  (*ec2.DescribeLocalGatewayRouteTablesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLocalGatewayRouteTablesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLocalGatewayRouteTablesOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewayVirtualInterfaceGroupsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfaceGroupsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayVirtualInterfaceGroups",
+		Input:   input,
+		Output:  (*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLocalGatewayVirtualInterfaceGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewayVirtualInterfacesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfacesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayVirtualInterfaces",
+		Input:   input,
+		Output:  (*ec2.DescribeLocalGatewayVirtualInterfacesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLocalGatewayVirtualInterfacesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLocalGatewayVirtualInterfacesOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewaysWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, opts ...request.Option) (*ec2.DescribeLocalGatewaysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGateways",
+		Input:   input,
+		Output:  (*ec2.DescribeLocalGatewaysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLocalGatewaysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLocalGatewaysOutput), req.Error
 }
 
 func (c *Client) DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error) {
@@ -6019,6 +6447,48 @@ func (c *Client) DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.C
 	return req.Error
 }
 
+func (c *Client) DescribeTransitGatewayMulticastDomainsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayMulticastDomainsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayMulticastDomains",
+		Input:   input,
+		Output:  (*ec2.DescribeTransitGatewayMulticastDomainsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeTransitGatewayMulticastDomainsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeTransitGatewayMulticastDomainsOutput), req.Error
+}
+
+func (c *Client) DescribeTransitGatewayPeeringAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayPeeringAttachments",
+		Input:   input,
+		Output:  (*ec2.DescribeTransitGatewayPeeringAttachmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeTransitGatewayPeeringAttachmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeTransitGatewayPeeringAttachmentsOutput), req.Error
+}
+
 func (c *Client) DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -7055,6 +7525,27 @@ func (c *Client) DisassociateSubnetCidrBlockWithContext(ctx context.Context, inp
 	return req.Output.(*ec2.DisassociateSubnetCidrBlockOutput), req.Error
 }
 
+func (c *Client) DisassociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayMulticastDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisassociateTransitGatewayMulticastDomain",
+		Input:   input,
+		Output:  (*ec2.DisassociateTransitGatewayMulticastDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisassociateTransitGatewayMulticastDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisassociateTransitGatewayMulticastDomainOutput), req.Error
+}
+
 func (c *Client) DisassociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -7349,6 +7840,27 @@ func (c *Client) GetCapacityReservationUsageWithContext(ctx context.Context, inp
 	return req.Output.(*ec2.GetCapacityReservationUsageOutput), req.Error
 }
 
+func (c *Client) GetCoipPoolUsageWithContext(ctx context.Context, input *ec2.GetCoipPoolUsageInput, opts ...request.Option) (*ec2.GetCoipPoolUsageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetCoipPoolUsage",
+		Input:   input,
+		Output:  (*ec2.GetCoipPoolUsageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetCoipPoolUsageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetCoipPoolUsageOutput), req.Error
+}
+
 func (c *Client) GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -7577,6 +8089,27 @@ func (c *Client) GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx con
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayMulticastDomainAssociations",
+		Input:   input,
+		Output:  (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetTransitGatewayMulticastDomainAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetTransitGatewayMulticastDomainAssociationsOutput), req.Error
 }
 
 func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error) {
@@ -8753,6 +9286,69 @@ func (c *Client) RegisterImageWithContext(ctx context.Context, input *ec2.Regist
 	return req.Output.(*ec2.RegisterImageOutput), req.Error
 }
 
+func (c *Client) RegisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupMembersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RegisterTransitGatewayMulticastGroupMembers",
+		Input:   input,
+		Output:  (*ec2.RegisterTransitGatewayMulticastGroupMembersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RegisterTransitGatewayMulticastGroupMembersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RegisterTransitGatewayMulticastGroupMembersOutput), req.Error
+}
+
+func (c *Client) RegisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RegisterTransitGatewayMulticastGroupSources",
+		Input:   input,
+		Output:  (*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RegisterTransitGatewayMulticastGroupSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput), req.Error
+}
+
+func (c *Client) RejectTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayPeeringAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RejectTransitGatewayPeeringAttachment",
+		Input:   input,
+		Output:  (*ec2.RejectTransitGatewayPeeringAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RejectTransitGatewayPeeringAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RejectTransitGatewayPeeringAttachmentOutput), req.Error
+}
+
 func (c *Client) RejectTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayVpcAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9297,6 +9893,48 @@ func (c *Client) RunScheduledInstancesWithContext(ctx context.Context, input *ec
 	})
 
 	return req.Output.(*ec2.RunScheduledInstancesOutput), req.Error
+}
+
+func (c *Client) SearchLocalGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchLocalGatewayRoutesInput, opts ...request.Option) (*ec2.SearchLocalGatewayRoutesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "SearchLocalGatewayRoutes",
+		Input:   input,
+		Output:  (*ec2.SearchLocalGatewayRoutesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.SearchLocalGatewayRoutesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.SearchLocalGatewayRoutesOutput), req.Error
+}
+
+func (c *Client) SearchTransitGatewayMulticastGroupsWithContext(ctx context.Context, input *ec2.SearchTransitGatewayMulticastGroupsInput, opts ...request.Option) (*ec2.SearchTransitGatewayMulticastGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "SearchTransitGatewayMulticastGroups",
+		Input:   input,
+		Output:  (*ec2.SearchTransitGatewayMulticastGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.SearchTransitGatewayMulticastGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.SearchTransitGatewayMulticastGroupsOutput), req.Error
 }
 
 func (c *Client) SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error) {

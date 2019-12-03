@@ -11,6 +11,7 @@ import (
 )
 
 type ECS interface {
+	CreateCapacityProviderWithContext(ctx context.Context, input *ecs.CreateCapacityProviderInput, opts ...request.Option) (*ecs.CreateCapacityProviderOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *ecs.CreateClusterInput, opts ...request.Option) (*ecs.CreateClusterOutput, error)
 	CreateServiceWithContext(ctx context.Context, input *ecs.CreateServiceInput, opts ...request.Option) (*ecs.CreateServiceOutput, error)
 	CreateTaskSetWithContext(ctx context.Context, input *ecs.CreateTaskSetInput, opts ...request.Option) (*ecs.CreateTaskSetOutput, error)
@@ -21,6 +22,7 @@ type ECS interface {
 	DeleteTaskSetWithContext(ctx context.Context, input *ecs.DeleteTaskSetInput, opts ...request.Option) (*ecs.DeleteTaskSetOutput, error)
 	DeregisterContainerInstanceWithContext(ctx context.Context, input *ecs.DeregisterContainerInstanceInput, opts ...request.Option) (*ecs.DeregisterContainerInstanceOutput, error)
 	DeregisterTaskDefinitionWithContext(ctx context.Context, input *ecs.DeregisterTaskDefinitionInput, opts ...request.Option) (*ecs.DeregisterTaskDefinitionOutput, error)
+	DescribeCapacityProvidersWithContext(ctx context.Context, input *ecs.DescribeCapacityProvidersInput, opts ...request.Option) (*ecs.DescribeCapacityProvidersOutput, error)
 	DescribeClustersWithContext(ctx context.Context, input *ecs.DescribeClustersInput, opts ...request.Option) (*ecs.DescribeClustersOutput, error)
 	DescribeContainerInstancesWithContext(ctx context.Context, input *ecs.DescribeContainerInstancesInput, opts ...request.Option) (*ecs.DescribeContainerInstancesOutput, error)
 	DescribeServicesWithContext(ctx context.Context, input *ecs.DescribeServicesInput, opts ...request.Option) (*ecs.DescribeServicesOutput, error)
@@ -30,6 +32,7 @@ type ECS interface {
 	DiscoverPollEndpointWithContext(ctx context.Context, input *ecs.DiscoverPollEndpointInput, opts ...request.Option) (*ecs.DiscoverPollEndpointOutput, error)
 	ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error)
 	ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error)
+	ListAttributesPagesWithContext(ctx context.Context, input *ecs.ListAttributesInput, cb func(*ecs.ListAttributesOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *ecs.ListClustersInput, opts ...request.Option) (*ecs.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *ecs.ListClustersInput, cb func(*ecs.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListContainerInstancesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, opts ...request.Option) (*ecs.ListContainerInstancesOutput, error)
@@ -46,6 +49,7 @@ type ECS interface {
 	PutAccountSettingWithContext(ctx context.Context, input *ecs.PutAccountSettingInput, opts ...request.Option) (*ecs.PutAccountSettingOutput, error)
 	PutAccountSettingDefaultWithContext(ctx context.Context, input *ecs.PutAccountSettingDefaultInput, opts ...request.Option) (*ecs.PutAccountSettingDefaultOutput, error)
 	PutAttributesWithContext(ctx context.Context, input *ecs.PutAttributesInput, opts ...request.Option) (*ecs.PutAttributesOutput, error)
+	PutClusterCapacityProvidersWithContext(ctx context.Context, input *ecs.PutClusterCapacityProvidersInput, opts ...request.Option) (*ecs.PutClusterCapacityProvidersOutput, error)
 	RegisterContainerInstanceWithContext(ctx context.Context, input *ecs.RegisterContainerInstanceInput, opts ...request.Option) (*ecs.RegisterContainerInstanceOutput, error)
 	RegisterTaskDefinitionWithContext(ctx context.Context, input *ecs.RegisterTaskDefinitionInput, opts ...request.Option) (*ecs.RegisterTaskDefinitionOutput, error)
 	RunTaskWithContext(ctx context.Context, input *ecs.RunTaskInput, opts ...request.Option) (*ecs.RunTaskOutput, error)
@@ -78,6 +82,27 @@ func New(base ecsiface.ECSAPI, ctxer awsctx.Contexter) ECS {
 
 var _ ECS = (*ecs.ECS)(nil)
 var _ ECS = (*Client)(nil)
+
+func (c *Client) CreateCapacityProviderWithContext(ctx context.Context, input *ecs.CreateCapacityProviderInput, opts ...request.Option) (*ecs.CreateCapacityProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "CreateCapacityProvider",
+		Input:   input,
+		Output:  (*ecs.CreateCapacityProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.CreateCapacityProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.CreateCapacityProviderOutput), req.Error
+}
 
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *ecs.CreateClusterInput, opts ...request.Option) (*ecs.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -289,6 +314,27 @@ func (c *Client) DeregisterTaskDefinitionWithContext(ctx context.Context, input 
 	return req.Output.(*ecs.DeregisterTaskDefinitionOutput), req.Error
 }
 
+func (c *Client) DescribeCapacityProvidersWithContext(ctx context.Context, input *ecs.DescribeCapacityProvidersInput, opts ...request.Option) (*ecs.DescribeCapacityProvidersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "DescribeCapacityProviders",
+		Input:   input,
+		Output:  (*ecs.DescribeCapacityProvidersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.DescribeCapacityProvidersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.DescribeCapacityProvidersOutput), req.Error
+}
+
 func (c *Client) DescribeClustersWithContext(ctx context.Context, input *ecs.DescribeClustersInput, opts ...request.Option) (*ecs.DescribeClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecs",
@@ -476,6 +522,26 @@ func (c *Client) ListAttributesWithContext(ctx context.Context, input *ecs.ListA
 	})
 
 	return req.Output.(*ecs.ListAttributesOutput), req.Error
+}
+
+func (c *Client) ListAttributesPagesWithContext(ctx context.Context, input *ecs.ListAttributesInput, cb func(*ecs.ListAttributesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListAttributes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListAttributesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListClustersWithContext(ctx context.Context, input *ecs.ListClustersInput, opts ...request.Option) (*ecs.ListClustersOutput, error) {
@@ -806,6 +872,27 @@ func (c *Client) PutAttributesWithContext(ctx context.Context, input *ecs.PutAtt
 	})
 
 	return req.Output.(*ecs.PutAttributesOutput), req.Error
+}
+
+func (c *Client) PutClusterCapacityProvidersWithContext(ctx context.Context, input *ecs.PutClusterCapacityProvidersInput, opts ...request.Option) (*ecs.PutClusterCapacityProvidersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "PutClusterCapacityProviders",
+		Input:   input,
+		Output:  (*ecs.PutClusterCapacityProvidersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.PutClusterCapacityProvidersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.PutClusterCapacityProvidersOutput), req.Error
 }
 
 func (c *Client) RegisterContainerInstanceWithContext(ctx context.Context, input *ecs.RegisterContainerInstanceInput, opts ...request.Option) (*ecs.RegisterContainerInstanceOutput, error) {

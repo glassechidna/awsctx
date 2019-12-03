@@ -11,12 +11,21 @@ import (
 )
 
 type S3Control interface {
+	CreateAccessPointWithContext(ctx context.Context, input *s3control.CreateAccessPointInput, opts ...request.Option) (*s3control.CreateAccessPointOutput, error)
 	CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error)
+	DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error)
+	DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error)
 	DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error)
+	GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error)
+	GetAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyInput, opts ...request.Option) (*s3control.GetAccessPointPolicyOutput, error)
+	GetAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusOutput, error)
 	GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error)
+	ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error)
+	ListAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, cb func(*s3control.ListAccessPointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *s3control.ListJobsInput, cb func(*s3control.ListJobsOutput, bool) bool, opts ...request.Option) error
+	PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error)
 	PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error)
 	UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error)
 	UpdateJobStatusWithContext(ctx context.Context, input *s3control.UpdateJobStatusInput, opts ...request.Option) (*s3control.UpdateJobStatusOutput, error)
@@ -37,6 +46,27 @@ func New(base s3controliface.S3ControlAPI, ctxer awsctx.Contexter) S3Control {
 var _ S3Control = (*s3control.S3Control)(nil)
 var _ S3Control = (*Client)(nil)
 
+func (c *Client) CreateAccessPointWithContext(ctx context.Context, input *s3control.CreateAccessPointInput, opts ...request.Option) (*s3control.CreateAccessPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "CreateAccessPoint",
+		Input:   input,
+		Output:  (*s3control.CreateAccessPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.CreateAccessPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.CreateAccessPointOutput), req.Error
+}
+
 func (c *Client) CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -56,6 +86,48 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *s3control.Crea
 	})
 
 	return req.Output.(*s3control.CreateJobOutput), req.Error
+}
+
+func (c *Client) DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteAccessPoint",
+		Input:   input,
+		Output:  (*s3control.DeleteAccessPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteAccessPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteAccessPointOutput), req.Error
+}
+
+func (c *Client) DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteAccessPointPolicy",
+		Input:   input,
+		Output:  (*s3control.DeleteAccessPointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteAccessPointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteAccessPointPolicyOutput), req.Error
 }
 
 func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error) {
@@ -100,6 +172,69 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *s3control.De
 	return req.Output.(*s3control.DescribeJobOutput), req.Error
 }
 
+func (c *Client) GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPoint",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointOutput), req.Error
+}
+
+func (c *Client) GetAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyInput, opts ...request.Option) (*s3control.GetAccessPointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPointPolicy",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointPolicyOutput), req.Error
+}
+
+func (c *Client) GetAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPointPolicyStatus",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointPolicyStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointPolicyStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointPolicyStatusOutput), req.Error
+}
+
 func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -119,6 +254,47 @@ func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3c
 	})
 
 	return req.Output.(*s3control.GetPublicAccessBlockOutput), req.Error
+}
+
+func (c *Client) ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListAccessPoints",
+		Input:   input,
+		Output:  (*s3control.ListAccessPointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.ListAccessPointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.ListAccessPointsOutput), req.Error
+}
+
+func (c *Client) ListAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, cb func(*s3control.ListAccessPointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListAccessPoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3ControlAPI.ListAccessPointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error) {
@@ -160,6 +336,27 @@ func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *s3control.
 	})
 
 	return req.Error
+}
+
+func (c *Client) PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutAccessPointPolicy",
+		Input:   input,
+		Output:  (*s3control.PutAccessPointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutAccessPointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutAccessPointPolicyOutput), req.Error
 }
 
 func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error) {

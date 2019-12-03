@@ -12,14 +12,19 @@ import (
 
 type EKS interface {
 	CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error)
+	CreateFargateProfileWithContext(ctx context.Context, input *eks.CreateFargateProfileInput, opts ...request.Option) (*eks.CreateFargateProfileOutput, error)
 	CreateNodegroupWithContext(ctx context.Context, input *eks.CreateNodegroupInput, opts ...request.Option) (*eks.CreateNodegroupOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error)
+	DeleteFargateProfileWithContext(ctx context.Context, input *eks.DeleteFargateProfileInput, opts ...request.Option) (*eks.DeleteFargateProfileOutput, error)
 	DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
+	DescribeFargateProfileWithContext(ctx context.Context, input *eks.DescribeFargateProfileInput, opts ...request.Option) (*eks.DescribeFargateProfileOutput, error)
 	DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error)
 	DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error)
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error
+	ListFargateProfilesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, opts ...request.Option) (*eks.ListFargateProfilesOutput, error)
+	ListFargateProfilesPagesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, cb func(*eks.ListFargateProfilesOutput, bool) bool, opts ...request.Option) error
 	ListNodegroupsWithContext(ctx context.Context, input *eks.ListNodegroupsInput, opts ...request.Option) (*eks.ListNodegroupsOutput, error)
 	ListNodegroupsPagesWithContext(ctx context.Context, input *eks.ListNodegroupsInput, cb func(*eks.ListNodegroupsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error)
@@ -69,6 +74,27 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *eks.Create
 	return req.Output.(*eks.CreateClusterOutput), req.Error
 }
 
+func (c *Client) CreateFargateProfileWithContext(ctx context.Context, input *eks.CreateFargateProfileInput, opts ...request.Option) (*eks.CreateFargateProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "CreateFargateProfile",
+		Input:   input,
+		Output:  (*eks.CreateFargateProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.CreateFargateProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.CreateFargateProfileOutput), req.Error
+}
+
 func (c *Client) CreateNodegroupWithContext(ctx context.Context, input *eks.CreateNodegroupInput, opts ...request.Option) (*eks.CreateNodegroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -111,6 +137,27 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.Delete
 	return req.Output.(*eks.DeleteClusterOutput), req.Error
 }
 
+func (c *Client) DeleteFargateProfileWithContext(ctx context.Context, input *eks.DeleteFargateProfileInput, opts ...request.Option) (*eks.DeleteFargateProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DeleteFargateProfile",
+		Input:   input,
+		Output:  (*eks.DeleteFargateProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DeleteFargateProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DeleteFargateProfileOutput), req.Error
+}
+
 func (c *Client) DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -151,6 +198,27 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.Desc
 	})
 
 	return req.Output.(*eks.DescribeClusterOutput), req.Error
+}
+
+func (c *Client) DescribeFargateProfileWithContext(ctx context.Context, input *eks.DescribeFargateProfileInput, opts ...request.Option) (*eks.DescribeFargateProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeFargateProfile",
+		Input:   input,
+		Output:  (*eks.DescribeFargateProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeFargateProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeFargateProfileOutput), req.Error
 }
 
 func (c *Client) DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error) {
@@ -231,6 +299,47 @@ func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *eks.Li
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EKSAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFargateProfilesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, opts ...request.Option) (*eks.ListFargateProfilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListFargateProfiles",
+		Input:   input,
+		Output:  (*eks.ListFargateProfilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.ListFargateProfilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.ListFargateProfilesOutput), req.Error
+}
+
+func (c *Client) ListFargateProfilesPagesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, cb func(*eks.ListFargateProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListFargateProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.ListFargateProfilesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
