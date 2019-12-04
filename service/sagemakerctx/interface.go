@@ -12,55 +12,104 @@ import (
 
 type SageMaker interface {
 	AddTagsWithContext(ctx context.Context, input *sagemaker.AddTagsInput, opts ...request.Option) (*sagemaker.AddTagsOutput, error)
+	AssociateTrialComponentWithContext(ctx context.Context, input *sagemaker.AssociateTrialComponentInput, opts ...request.Option) (*sagemaker.AssociateTrialComponentOutput, error)
 	CreateAlgorithmWithContext(ctx context.Context, input *sagemaker.CreateAlgorithmInput, opts ...request.Option) (*sagemaker.CreateAlgorithmOutput, error)
+	CreateAppWithContext(ctx context.Context, input *sagemaker.CreateAppInput, opts ...request.Option) (*sagemaker.CreateAppOutput, error)
+	CreateAutoMLJobWithContext(ctx context.Context, input *sagemaker.CreateAutoMLJobInput, opts ...request.Option) (*sagemaker.CreateAutoMLJobOutput, error)
 	CreateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.CreateCodeRepositoryInput, opts ...request.Option) (*sagemaker.CreateCodeRepositoryOutput, error)
 	CreateCompilationJobWithContext(ctx context.Context, input *sagemaker.CreateCompilationJobInput, opts ...request.Option) (*sagemaker.CreateCompilationJobOutput, error)
+	CreateDomainWithContext(ctx context.Context, input *sagemaker.CreateDomainInput, opts ...request.Option) (*sagemaker.CreateDomainOutput, error)
 	CreateEndpointWithContext(ctx context.Context, input *sagemaker.CreateEndpointInput, opts ...request.Option) (*sagemaker.CreateEndpointOutput, error)
 	CreateEndpointConfigWithContext(ctx context.Context, input *sagemaker.CreateEndpointConfigInput, opts ...request.Option) (*sagemaker.CreateEndpointConfigOutput, error)
+	CreateExperimentWithContext(ctx context.Context, input *sagemaker.CreateExperimentInput, opts ...request.Option) (*sagemaker.CreateExperimentOutput, error)
+	CreateFlowDefinitionWithContext(ctx context.Context, input *sagemaker.CreateFlowDefinitionInput, opts ...request.Option) (*sagemaker.CreateFlowDefinitionOutput, error)
+	CreateHumanTaskUiWithContext(ctx context.Context, input *sagemaker.CreateHumanTaskUiInput, opts ...request.Option) (*sagemaker.CreateHumanTaskUiOutput, error)
 	CreateHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.CreateHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.CreateHyperParameterTuningJobOutput, error)
 	CreateLabelingJobWithContext(ctx context.Context, input *sagemaker.CreateLabelingJobInput, opts ...request.Option) (*sagemaker.CreateLabelingJobOutput, error)
 	CreateModelWithContext(ctx context.Context, input *sagemaker.CreateModelInput, opts ...request.Option) (*sagemaker.CreateModelOutput, error)
 	CreateModelPackageWithContext(ctx context.Context, input *sagemaker.CreateModelPackageInput, opts ...request.Option) (*sagemaker.CreateModelPackageOutput, error)
+	CreateMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.CreateMonitoringScheduleInput, opts ...request.Option) (*sagemaker.CreateMonitoringScheduleOutput, error)
 	CreateNotebookInstanceWithContext(ctx context.Context, input *sagemaker.CreateNotebookInstanceInput, opts ...request.Option) (*sagemaker.CreateNotebookInstanceOutput, error)
 	CreateNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.CreateNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.CreateNotebookInstanceLifecycleConfigOutput, error)
+	CreatePresignedDomainUrlWithContext(ctx context.Context, input *sagemaker.CreatePresignedDomainUrlInput, opts ...request.Option) (*sagemaker.CreatePresignedDomainUrlOutput, error)
 	CreatePresignedNotebookInstanceUrlWithContext(ctx context.Context, input *sagemaker.CreatePresignedNotebookInstanceUrlInput, opts ...request.Option) (*sagemaker.CreatePresignedNotebookInstanceUrlOutput, error)
+	CreateProcessingJobWithContext(ctx context.Context, input *sagemaker.CreateProcessingJobInput, opts ...request.Option) (*sagemaker.CreateProcessingJobOutput, error)
 	CreateTrainingJobWithContext(ctx context.Context, input *sagemaker.CreateTrainingJobInput, opts ...request.Option) (*sagemaker.CreateTrainingJobOutput, error)
 	CreateTransformJobWithContext(ctx context.Context, input *sagemaker.CreateTransformJobInput, opts ...request.Option) (*sagemaker.CreateTransformJobOutput, error)
+	CreateTrialWithContext(ctx context.Context, input *sagemaker.CreateTrialInput, opts ...request.Option) (*sagemaker.CreateTrialOutput, error)
+	CreateTrialComponentWithContext(ctx context.Context, input *sagemaker.CreateTrialComponentInput, opts ...request.Option) (*sagemaker.CreateTrialComponentOutput, error)
+	CreateUserProfileWithContext(ctx context.Context, input *sagemaker.CreateUserProfileInput, opts ...request.Option) (*sagemaker.CreateUserProfileOutput, error)
 	CreateWorkteamWithContext(ctx context.Context, input *sagemaker.CreateWorkteamInput, opts ...request.Option) (*sagemaker.CreateWorkteamOutput, error)
 	DeleteAlgorithmWithContext(ctx context.Context, input *sagemaker.DeleteAlgorithmInput, opts ...request.Option) (*sagemaker.DeleteAlgorithmOutput, error)
+	DeleteAppWithContext(ctx context.Context, input *sagemaker.DeleteAppInput, opts ...request.Option) (*sagemaker.DeleteAppOutput, error)
 	DeleteCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DeleteCodeRepositoryInput, opts ...request.Option) (*sagemaker.DeleteCodeRepositoryOutput, error)
+	DeleteDomainWithContext(ctx context.Context, input *sagemaker.DeleteDomainInput, opts ...request.Option) (*sagemaker.DeleteDomainOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *sagemaker.DeleteEndpointInput, opts ...request.Option) (*sagemaker.DeleteEndpointOutput, error)
 	DeleteEndpointConfigWithContext(ctx context.Context, input *sagemaker.DeleteEndpointConfigInput, opts ...request.Option) (*sagemaker.DeleteEndpointConfigOutput, error)
+	DeleteExperimentWithContext(ctx context.Context, input *sagemaker.DeleteExperimentInput, opts ...request.Option) (*sagemaker.DeleteExperimentOutput, error)
+	DeleteFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DeleteFlowDefinitionInput, opts ...request.Option) (*sagemaker.DeleteFlowDefinitionOutput, error)
 	DeleteModelWithContext(ctx context.Context, input *sagemaker.DeleteModelInput, opts ...request.Option) (*sagemaker.DeleteModelOutput, error)
 	DeleteModelPackageWithContext(ctx context.Context, input *sagemaker.DeleteModelPackageInput, opts ...request.Option) (*sagemaker.DeleteModelPackageOutput, error)
+	DeleteMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.DeleteMonitoringScheduleInput, opts ...request.Option) (*sagemaker.DeleteMonitoringScheduleOutput, error)
 	DeleteNotebookInstanceWithContext(ctx context.Context, input *sagemaker.DeleteNotebookInstanceInput, opts ...request.Option) (*sagemaker.DeleteNotebookInstanceOutput, error)
 	DeleteNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.DeleteNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.DeleteNotebookInstanceLifecycleConfigOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *sagemaker.DeleteTagsInput, opts ...request.Option) (*sagemaker.DeleteTagsOutput, error)
+	DeleteTrialWithContext(ctx context.Context, input *sagemaker.DeleteTrialInput, opts ...request.Option) (*sagemaker.DeleteTrialOutput, error)
+	DeleteTrialComponentWithContext(ctx context.Context, input *sagemaker.DeleteTrialComponentInput, opts ...request.Option) (*sagemaker.DeleteTrialComponentOutput, error)
+	DeleteUserProfileWithContext(ctx context.Context, input *sagemaker.DeleteUserProfileInput, opts ...request.Option) (*sagemaker.DeleteUserProfileOutput, error)
 	DeleteWorkteamWithContext(ctx context.Context, input *sagemaker.DeleteWorkteamInput, opts ...request.Option) (*sagemaker.DeleteWorkteamOutput, error)
 	DescribeAlgorithmWithContext(ctx context.Context, input *sagemaker.DescribeAlgorithmInput, opts ...request.Option) (*sagemaker.DescribeAlgorithmOutput, error)
+	DescribeAppWithContext(ctx context.Context, input *sagemaker.DescribeAppInput, opts ...request.Option) (*sagemaker.DescribeAppOutput, error)
+	DescribeAutoMLJobWithContext(ctx context.Context, input *sagemaker.DescribeAutoMLJobInput, opts ...request.Option) (*sagemaker.DescribeAutoMLJobOutput, error)
 	DescribeCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DescribeCodeRepositoryInput, opts ...request.Option) (*sagemaker.DescribeCodeRepositoryOutput, error)
 	DescribeCompilationJobWithContext(ctx context.Context, input *sagemaker.DescribeCompilationJobInput, opts ...request.Option) (*sagemaker.DescribeCompilationJobOutput, error)
+	DescribeDomainWithContext(ctx context.Context, input *sagemaker.DescribeDomainInput, opts ...request.Option) (*sagemaker.DescribeDomainOutput, error)
 	DescribeEndpointWithContext(ctx context.Context, input *sagemaker.DescribeEndpointInput, opts ...request.Option) (*sagemaker.DescribeEndpointOutput, error)
 	DescribeEndpointConfigWithContext(ctx context.Context, input *sagemaker.DescribeEndpointConfigInput, opts ...request.Option) (*sagemaker.DescribeEndpointConfigOutput, error)
+	DescribeExperimentWithContext(ctx context.Context, input *sagemaker.DescribeExperimentInput, opts ...request.Option) (*sagemaker.DescribeExperimentOutput, error)
+	DescribeFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DescribeFlowDefinitionInput, opts ...request.Option) (*sagemaker.DescribeFlowDefinitionOutput, error)
+	DescribeHumanTaskUiWithContext(ctx context.Context, input *sagemaker.DescribeHumanTaskUiInput, opts ...request.Option) (*sagemaker.DescribeHumanTaskUiOutput, error)
 	DescribeHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.DescribeHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.DescribeHyperParameterTuningJobOutput, error)
 	DescribeLabelingJobWithContext(ctx context.Context, input *sagemaker.DescribeLabelingJobInput, opts ...request.Option) (*sagemaker.DescribeLabelingJobOutput, error)
 	DescribeModelWithContext(ctx context.Context, input *sagemaker.DescribeModelInput, opts ...request.Option) (*sagemaker.DescribeModelOutput, error)
 	DescribeModelPackageWithContext(ctx context.Context, input *sagemaker.DescribeModelPackageInput, opts ...request.Option) (*sagemaker.DescribeModelPackageOutput, error)
+	DescribeMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.DescribeMonitoringScheduleInput, opts ...request.Option) (*sagemaker.DescribeMonitoringScheduleOutput, error)
 	DescribeNotebookInstanceWithContext(ctx context.Context, input *sagemaker.DescribeNotebookInstanceInput, opts ...request.Option) (*sagemaker.DescribeNotebookInstanceOutput, error)
 	DescribeNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.DescribeNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.DescribeNotebookInstanceLifecycleConfigOutput, error)
+	DescribeProcessingJobWithContext(ctx context.Context, input *sagemaker.DescribeProcessingJobInput, opts ...request.Option) (*sagemaker.DescribeProcessingJobOutput, error)
 	DescribeSubscribedWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeSubscribedWorkteamInput, opts ...request.Option) (*sagemaker.DescribeSubscribedWorkteamOutput, error)
 	DescribeTrainingJobWithContext(ctx context.Context, input *sagemaker.DescribeTrainingJobInput, opts ...request.Option) (*sagemaker.DescribeTrainingJobOutput, error)
 	DescribeTransformJobWithContext(ctx context.Context, input *sagemaker.DescribeTransformJobInput, opts ...request.Option) (*sagemaker.DescribeTransformJobOutput, error)
+	DescribeTrialWithContext(ctx context.Context, input *sagemaker.DescribeTrialInput, opts ...request.Option) (*sagemaker.DescribeTrialOutput, error)
+	DescribeTrialComponentWithContext(ctx context.Context, input *sagemaker.DescribeTrialComponentInput, opts ...request.Option) (*sagemaker.DescribeTrialComponentOutput, error)
+	DescribeUserProfileWithContext(ctx context.Context, input *sagemaker.DescribeUserProfileInput, opts ...request.Option) (*sagemaker.DescribeUserProfileOutput, error)
 	DescribeWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeWorkteamInput, opts ...request.Option) (*sagemaker.DescribeWorkteamOutput, error)
+	DisassociateTrialComponentWithContext(ctx context.Context, input *sagemaker.DisassociateTrialComponentInput, opts ...request.Option) (*sagemaker.DisassociateTrialComponentOutput, error)
 	GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error)
 	ListAlgorithmsWithContext(ctx context.Context, input *sagemaker.ListAlgorithmsInput, opts ...request.Option) (*sagemaker.ListAlgorithmsOutput, error)
+	ListAlgorithmsPagesWithContext(ctx context.Context, input *sagemaker.ListAlgorithmsInput, cb func(*sagemaker.ListAlgorithmsOutput, bool) bool, opts ...request.Option) error
+	ListAppsWithContext(ctx context.Context, input *sagemaker.ListAppsInput, opts ...request.Option) (*sagemaker.ListAppsOutput, error)
+	ListAppsPagesWithContext(ctx context.Context, input *sagemaker.ListAppsInput, cb func(*sagemaker.ListAppsOutput, bool) bool, opts ...request.Option) error
+	ListAutoMLJobsWithContext(ctx context.Context, input *sagemaker.ListAutoMLJobsInput, opts ...request.Option) (*sagemaker.ListAutoMLJobsOutput, error)
+	ListAutoMLJobsPagesWithContext(ctx context.Context, input *sagemaker.ListAutoMLJobsInput, cb func(*sagemaker.ListAutoMLJobsOutput, bool) bool, opts ...request.Option) error
+	ListCandidatesForAutoMLJobWithContext(ctx context.Context, input *sagemaker.ListCandidatesForAutoMLJobInput, opts ...request.Option) (*sagemaker.ListCandidatesForAutoMLJobOutput, error)
+	ListCandidatesForAutoMLJobPagesWithContext(ctx context.Context, input *sagemaker.ListCandidatesForAutoMLJobInput, cb func(*sagemaker.ListCandidatesForAutoMLJobOutput, bool) bool, opts ...request.Option) error
 	ListCodeRepositoriesWithContext(ctx context.Context, input *sagemaker.ListCodeRepositoriesInput, opts ...request.Option) (*sagemaker.ListCodeRepositoriesOutput, error)
+	ListCodeRepositoriesPagesWithContext(ctx context.Context, input *sagemaker.ListCodeRepositoriesInput, cb func(*sagemaker.ListCodeRepositoriesOutput, bool) bool, opts ...request.Option) error
 	ListCompilationJobsWithContext(ctx context.Context, input *sagemaker.ListCompilationJobsInput, opts ...request.Option) (*sagemaker.ListCompilationJobsOutput, error)
 	ListCompilationJobsPagesWithContext(ctx context.Context, input *sagemaker.ListCompilationJobsInput, cb func(*sagemaker.ListCompilationJobsOutput, bool) bool, opts ...request.Option) error
+	ListDomainsWithContext(ctx context.Context, input *sagemaker.ListDomainsInput, opts ...request.Option) (*sagemaker.ListDomainsOutput, error)
+	ListDomainsPagesWithContext(ctx context.Context, input *sagemaker.ListDomainsInput, cb func(*sagemaker.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	ListEndpointConfigsWithContext(ctx context.Context, input *sagemaker.ListEndpointConfigsInput, opts ...request.Option) (*sagemaker.ListEndpointConfigsOutput, error)
 	ListEndpointConfigsPagesWithContext(ctx context.Context, input *sagemaker.ListEndpointConfigsInput, cb func(*sagemaker.ListEndpointConfigsOutput, bool) bool, opts ...request.Option) error
 	ListEndpointsWithContext(ctx context.Context, input *sagemaker.ListEndpointsInput, opts ...request.Option) (*sagemaker.ListEndpointsOutput, error)
 	ListEndpointsPagesWithContext(ctx context.Context, input *sagemaker.ListEndpointsInput, cb func(*sagemaker.ListEndpointsOutput, bool) bool, opts ...request.Option) error
+	ListExperimentsWithContext(ctx context.Context, input *sagemaker.ListExperimentsInput, opts ...request.Option) (*sagemaker.ListExperimentsOutput, error)
+	ListExperimentsPagesWithContext(ctx context.Context, input *sagemaker.ListExperimentsInput, cb func(*sagemaker.ListExperimentsOutput, bool) bool, opts ...request.Option) error
+	ListFlowDefinitionsWithContext(ctx context.Context, input *sagemaker.ListFlowDefinitionsInput, opts ...request.Option) (*sagemaker.ListFlowDefinitionsOutput, error)
+	ListFlowDefinitionsPagesWithContext(ctx context.Context, input *sagemaker.ListFlowDefinitionsInput, cb func(*sagemaker.ListFlowDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ListHumanTaskUisWithContext(ctx context.Context, input *sagemaker.ListHumanTaskUisInput, opts ...request.Option) (*sagemaker.ListHumanTaskUisOutput, error)
+	ListHumanTaskUisPagesWithContext(ctx context.Context, input *sagemaker.ListHumanTaskUisInput, cb func(*sagemaker.ListHumanTaskUisOutput, bool) bool, opts ...request.Option) error
 	ListHyperParameterTuningJobsWithContext(ctx context.Context, input *sagemaker.ListHyperParameterTuningJobsInput, opts ...request.Option) (*sagemaker.ListHyperParameterTuningJobsOutput, error)
 	ListHyperParameterTuningJobsPagesWithContext(ctx context.Context, input *sagemaker.ListHyperParameterTuningJobsInput, cb func(*sagemaker.ListHyperParameterTuningJobsOutput, bool) bool, opts ...request.Option) error
 	ListLabelingJobsWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsInput, opts ...request.Option) (*sagemaker.ListLabelingJobsOutput, error)
@@ -68,12 +117,19 @@ type SageMaker interface {
 	ListLabelingJobsForWorkteamWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsForWorkteamInput, opts ...request.Option) (*sagemaker.ListLabelingJobsForWorkteamOutput, error)
 	ListLabelingJobsForWorkteamPagesWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsForWorkteamInput, cb func(*sagemaker.ListLabelingJobsForWorkteamOutput, bool) bool, opts ...request.Option) error
 	ListModelPackagesWithContext(ctx context.Context, input *sagemaker.ListModelPackagesInput, opts ...request.Option) (*sagemaker.ListModelPackagesOutput, error)
+	ListModelPackagesPagesWithContext(ctx context.Context, input *sagemaker.ListModelPackagesInput, cb func(*sagemaker.ListModelPackagesOutput, bool) bool, opts ...request.Option) error
 	ListModelsWithContext(ctx context.Context, input *sagemaker.ListModelsInput, opts ...request.Option) (*sagemaker.ListModelsOutput, error)
 	ListModelsPagesWithContext(ctx context.Context, input *sagemaker.ListModelsInput, cb func(*sagemaker.ListModelsOutput, bool) bool, opts ...request.Option) error
+	ListMonitoringExecutionsWithContext(ctx context.Context, input *sagemaker.ListMonitoringExecutionsInput, opts ...request.Option) (*sagemaker.ListMonitoringExecutionsOutput, error)
+	ListMonitoringExecutionsPagesWithContext(ctx context.Context, input *sagemaker.ListMonitoringExecutionsInput, cb func(*sagemaker.ListMonitoringExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListMonitoringSchedulesWithContext(ctx context.Context, input *sagemaker.ListMonitoringSchedulesInput, opts ...request.Option) (*sagemaker.ListMonitoringSchedulesOutput, error)
+	ListMonitoringSchedulesPagesWithContext(ctx context.Context, input *sagemaker.ListMonitoringSchedulesInput, cb func(*sagemaker.ListMonitoringSchedulesOutput, bool) bool, opts ...request.Option) error
 	ListNotebookInstanceLifecycleConfigsWithContext(ctx context.Context, input *sagemaker.ListNotebookInstanceLifecycleConfigsInput, opts ...request.Option) (*sagemaker.ListNotebookInstanceLifecycleConfigsOutput, error)
 	ListNotebookInstanceLifecycleConfigsPagesWithContext(ctx context.Context, input *sagemaker.ListNotebookInstanceLifecycleConfigsInput, cb func(*sagemaker.ListNotebookInstanceLifecycleConfigsOutput, bool) bool, opts ...request.Option) error
 	ListNotebookInstancesWithContext(ctx context.Context, input *sagemaker.ListNotebookInstancesInput, opts ...request.Option) (*sagemaker.ListNotebookInstancesOutput, error)
 	ListNotebookInstancesPagesWithContext(ctx context.Context, input *sagemaker.ListNotebookInstancesInput, cb func(*sagemaker.ListNotebookInstancesOutput, bool) bool, opts ...request.Option) error
+	ListProcessingJobsWithContext(ctx context.Context, input *sagemaker.ListProcessingJobsInput, opts ...request.Option) (*sagemaker.ListProcessingJobsOutput, error)
+	ListProcessingJobsPagesWithContext(ctx context.Context, input *sagemaker.ListProcessingJobsInput, cb func(*sagemaker.ListProcessingJobsOutput, bool) bool, opts ...request.Option) error
 	ListSubscribedWorkteamsWithContext(ctx context.Context, input *sagemaker.ListSubscribedWorkteamsInput, opts ...request.Option) (*sagemaker.ListSubscribedWorkteamsOutput, error)
 	ListSubscribedWorkteamsPagesWithContext(ctx context.Context, input *sagemaker.ListSubscribedWorkteamsInput, cb func(*sagemaker.ListSubscribedWorkteamsOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *sagemaker.ListTagsInput, opts ...request.Option) (*sagemaker.ListTagsOutput, error)
@@ -84,23 +140,39 @@ type SageMaker interface {
 	ListTrainingJobsForHyperParameterTuningJobPagesWithContext(ctx context.Context, input *sagemaker.ListTrainingJobsForHyperParameterTuningJobInput, cb func(*sagemaker.ListTrainingJobsForHyperParameterTuningJobOutput, bool) bool, opts ...request.Option) error
 	ListTransformJobsWithContext(ctx context.Context, input *sagemaker.ListTransformJobsInput, opts ...request.Option) (*sagemaker.ListTransformJobsOutput, error)
 	ListTransformJobsPagesWithContext(ctx context.Context, input *sagemaker.ListTransformJobsInput, cb func(*sagemaker.ListTransformJobsOutput, bool) bool, opts ...request.Option) error
+	ListTrialComponentsWithContext(ctx context.Context, input *sagemaker.ListTrialComponentsInput, opts ...request.Option) (*sagemaker.ListTrialComponentsOutput, error)
+	ListTrialComponentsPagesWithContext(ctx context.Context, input *sagemaker.ListTrialComponentsInput, cb func(*sagemaker.ListTrialComponentsOutput, bool) bool, opts ...request.Option) error
+	ListTrialsWithContext(ctx context.Context, input *sagemaker.ListTrialsInput, opts ...request.Option) (*sagemaker.ListTrialsOutput, error)
+	ListTrialsPagesWithContext(ctx context.Context, input *sagemaker.ListTrialsInput, cb func(*sagemaker.ListTrialsOutput, bool) bool, opts ...request.Option) error
+	ListUserProfilesWithContext(ctx context.Context, input *sagemaker.ListUserProfilesInput, opts ...request.Option) (*sagemaker.ListUserProfilesOutput, error)
+	ListUserProfilesPagesWithContext(ctx context.Context, input *sagemaker.ListUserProfilesInput, cb func(*sagemaker.ListUserProfilesOutput, bool) bool, opts ...request.Option) error
 	ListWorkteamsWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, opts ...request.Option) (*sagemaker.ListWorkteamsOutput, error)
 	ListWorkteamsPagesWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, cb func(*sagemaker.ListWorkteamsOutput, bool) bool, opts ...request.Option) error
 	RenderUiTemplateWithContext(ctx context.Context, input *sagemaker.RenderUiTemplateInput, opts ...request.Option) (*sagemaker.RenderUiTemplateOutput, error)
 	SearchWithContext(ctx context.Context, input *sagemaker.SearchInput, opts ...request.Option) (*sagemaker.SearchOutput, error)
 	SearchPagesWithContext(ctx context.Context, input *sagemaker.SearchInput, cb func(*sagemaker.SearchOutput, bool) bool, opts ...request.Option) error
+	StartMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StartMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StartMonitoringScheduleOutput, error)
 	StartNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StartNotebookInstanceInput, opts ...request.Option) (*sagemaker.StartNotebookInstanceOutput, error)
+	StopAutoMLJobWithContext(ctx context.Context, input *sagemaker.StopAutoMLJobInput, opts ...request.Option) (*sagemaker.StopAutoMLJobOutput, error)
 	StopCompilationJobWithContext(ctx context.Context, input *sagemaker.StopCompilationJobInput, opts ...request.Option) (*sagemaker.StopCompilationJobOutput, error)
 	StopHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.StopHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.StopHyperParameterTuningJobOutput, error)
 	StopLabelingJobWithContext(ctx context.Context, input *sagemaker.StopLabelingJobInput, opts ...request.Option) (*sagemaker.StopLabelingJobOutput, error)
+	StopMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StopMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StopMonitoringScheduleOutput, error)
 	StopNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StopNotebookInstanceInput, opts ...request.Option) (*sagemaker.StopNotebookInstanceOutput, error)
+	StopProcessingJobWithContext(ctx context.Context, input *sagemaker.StopProcessingJobInput, opts ...request.Option) (*sagemaker.StopProcessingJobOutput, error)
 	StopTrainingJobWithContext(ctx context.Context, input *sagemaker.StopTrainingJobInput, opts ...request.Option) (*sagemaker.StopTrainingJobOutput, error)
 	StopTransformJobWithContext(ctx context.Context, input *sagemaker.StopTransformJobInput, opts ...request.Option) (*sagemaker.StopTransformJobOutput, error)
 	UpdateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.UpdateCodeRepositoryInput, opts ...request.Option) (*sagemaker.UpdateCodeRepositoryOutput, error)
+	UpdateDomainWithContext(ctx context.Context, input *sagemaker.UpdateDomainInput, opts ...request.Option) (*sagemaker.UpdateDomainOutput, error)
 	UpdateEndpointWithContext(ctx context.Context, input *sagemaker.UpdateEndpointInput, opts ...request.Option) (*sagemaker.UpdateEndpointOutput, error)
 	UpdateEndpointWeightsAndCapacitiesWithContext(ctx context.Context, input *sagemaker.UpdateEndpointWeightsAndCapacitiesInput, opts ...request.Option) (*sagemaker.UpdateEndpointWeightsAndCapacitiesOutput, error)
+	UpdateExperimentWithContext(ctx context.Context, input *sagemaker.UpdateExperimentInput, opts ...request.Option) (*sagemaker.UpdateExperimentOutput, error)
+	UpdateMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.UpdateMonitoringScheduleInput, opts ...request.Option) (*sagemaker.UpdateMonitoringScheduleOutput, error)
 	UpdateNotebookInstanceWithContext(ctx context.Context, input *sagemaker.UpdateNotebookInstanceInput, opts ...request.Option) (*sagemaker.UpdateNotebookInstanceOutput, error)
 	UpdateNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.UpdateNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.UpdateNotebookInstanceLifecycleConfigOutput, error)
+	UpdateTrialWithContext(ctx context.Context, input *sagemaker.UpdateTrialInput, opts ...request.Option) (*sagemaker.UpdateTrialOutput, error)
+	UpdateTrialComponentWithContext(ctx context.Context, input *sagemaker.UpdateTrialComponentInput, opts ...request.Option) (*sagemaker.UpdateTrialComponentOutput, error)
+	UpdateUserProfileWithContext(ctx context.Context, input *sagemaker.UpdateUserProfileInput, opts ...request.Option) (*sagemaker.UpdateUserProfileOutput, error)
 	UpdateWorkteamWithContext(ctx context.Context, input *sagemaker.UpdateWorkteamInput, opts ...request.Option) (*sagemaker.UpdateWorkteamOutput, error)
 }
 
@@ -140,6 +212,27 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *sagemaker.AddTag
 	return req.Output.(*sagemaker.AddTagsOutput), req.Error
 }
 
+func (c *Client) AssociateTrialComponentWithContext(ctx context.Context, input *sagemaker.AssociateTrialComponentInput, opts ...request.Option) (*sagemaker.AssociateTrialComponentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "AssociateTrialComponent",
+		Input:   input,
+		Output:  (*sagemaker.AssociateTrialComponentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.AssociateTrialComponentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.AssociateTrialComponentOutput), req.Error
+}
+
 func (c *Client) CreateAlgorithmWithContext(ctx context.Context, input *sagemaker.CreateAlgorithmInput, opts ...request.Option) (*sagemaker.CreateAlgorithmOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -159,6 +252,48 @@ func (c *Client) CreateAlgorithmWithContext(ctx context.Context, input *sagemake
 	})
 
 	return req.Output.(*sagemaker.CreateAlgorithmOutput), req.Error
+}
+
+func (c *Client) CreateAppWithContext(ctx context.Context, input *sagemaker.CreateAppInput, opts ...request.Option) (*sagemaker.CreateAppOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateApp",
+		Input:   input,
+		Output:  (*sagemaker.CreateAppOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateAppWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateAppOutput), req.Error
+}
+
+func (c *Client) CreateAutoMLJobWithContext(ctx context.Context, input *sagemaker.CreateAutoMLJobInput, opts ...request.Option) (*sagemaker.CreateAutoMLJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateAutoMLJob",
+		Input:   input,
+		Output:  (*sagemaker.CreateAutoMLJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateAutoMLJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateAutoMLJobOutput), req.Error
 }
 
 func (c *Client) CreateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.CreateCodeRepositoryInput, opts ...request.Option) (*sagemaker.CreateCodeRepositoryOutput, error) {
@@ -203,6 +338,27 @@ func (c *Client) CreateCompilationJobWithContext(ctx context.Context, input *sag
 	return req.Output.(*sagemaker.CreateCompilationJobOutput), req.Error
 }
 
+func (c *Client) CreateDomainWithContext(ctx context.Context, input *sagemaker.CreateDomainInput, opts ...request.Option) (*sagemaker.CreateDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateDomain",
+		Input:   input,
+		Output:  (*sagemaker.CreateDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateDomainOutput), req.Error
+}
+
 func (c *Client) CreateEndpointWithContext(ctx context.Context, input *sagemaker.CreateEndpointInput, opts ...request.Option) (*sagemaker.CreateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -243,6 +399,69 @@ func (c *Client) CreateEndpointConfigWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.CreateEndpointConfigOutput), req.Error
+}
+
+func (c *Client) CreateExperimentWithContext(ctx context.Context, input *sagemaker.CreateExperimentInput, opts ...request.Option) (*sagemaker.CreateExperimentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateExperiment",
+		Input:   input,
+		Output:  (*sagemaker.CreateExperimentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateExperimentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateExperimentOutput), req.Error
+}
+
+func (c *Client) CreateFlowDefinitionWithContext(ctx context.Context, input *sagemaker.CreateFlowDefinitionInput, opts ...request.Option) (*sagemaker.CreateFlowDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateFlowDefinition",
+		Input:   input,
+		Output:  (*sagemaker.CreateFlowDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateFlowDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateFlowDefinitionOutput), req.Error
+}
+
+func (c *Client) CreateHumanTaskUiWithContext(ctx context.Context, input *sagemaker.CreateHumanTaskUiInput, opts ...request.Option) (*sagemaker.CreateHumanTaskUiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateHumanTaskUi",
+		Input:   input,
+		Output:  (*sagemaker.CreateHumanTaskUiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateHumanTaskUiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateHumanTaskUiOutput), req.Error
 }
 
 func (c *Client) CreateHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.CreateHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.CreateHyperParameterTuningJobOutput, error) {
@@ -329,6 +548,27 @@ func (c *Client) CreateModelPackageWithContext(ctx context.Context, input *sagem
 	return req.Output.(*sagemaker.CreateModelPackageOutput), req.Error
 }
 
+func (c *Client) CreateMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.CreateMonitoringScheduleInput, opts ...request.Option) (*sagemaker.CreateMonitoringScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateMonitoringSchedule",
+		Input:   input,
+		Output:  (*sagemaker.CreateMonitoringScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateMonitoringScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateMonitoringScheduleOutput), req.Error
+}
+
 func (c *Client) CreateNotebookInstanceWithContext(ctx context.Context, input *sagemaker.CreateNotebookInstanceInput, opts ...request.Option) (*sagemaker.CreateNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -371,6 +611,27 @@ func (c *Client) CreateNotebookInstanceLifecycleConfigWithContext(ctx context.Co
 	return req.Output.(*sagemaker.CreateNotebookInstanceLifecycleConfigOutput), req.Error
 }
 
+func (c *Client) CreatePresignedDomainUrlWithContext(ctx context.Context, input *sagemaker.CreatePresignedDomainUrlInput, opts ...request.Option) (*sagemaker.CreatePresignedDomainUrlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreatePresignedDomainUrl",
+		Input:   input,
+		Output:  (*sagemaker.CreatePresignedDomainUrlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreatePresignedDomainUrlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreatePresignedDomainUrlOutput), req.Error
+}
+
 func (c *Client) CreatePresignedNotebookInstanceUrlWithContext(ctx context.Context, input *sagemaker.CreatePresignedNotebookInstanceUrlInput, opts ...request.Option) (*sagemaker.CreatePresignedNotebookInstanceUrlOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -390,6 +651,27 @@ func (c *Client) CreatePresignedNotebookInstanceUrlWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*sagemaker.CreatePresignedNotebookInstanceUrlOutput), req.Error
+}
+
+func (c *Client) CreateProcessingJobWithContext(ctx context.Context, input *sagemaker.CreateProcessingJobInput, opts ...request.Option) (*sagemaker.CreateProcessingJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateProcessingJob",
+		Input:   input,
+		Output:  (*sagemaker.CreateProcessingJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateProcessingJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateProcessingJobOutput), req.Error
 }
 
 func (c *Client) CreateTrainingJobWithContext(ctx context.Context, input *sagemaker.CreateTrainingJobInput, opts ...request.Option) (*sagemaker.CreateTrainingJobOutput, error) {
@@ -434,6 +716,69 @@ func (c *Client) CreateTransformJobWithContext(ctx context.Context, input *sagem
 	return req.Output.(*sagemaker.CreateTransformJobOutput), req.Error
 }
 
+func (c *Client) CreateTrialWithContext(ctx context.Context, input *sagemaker.CreateTrialInput, opts ...request.Option) (*sagemaker.CreateTrialOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateTrial",
+		Input:   input,
+		Output:  (*sagemaker.CreateTrialOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateTrialWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateTrialOutput), req.Error
+}
+
+func (c *Client) CreateTrialComponentWithContext(ctx context.Context, input *sagemaker.CreateTrialComponentInput, opts ...request.Option) (*sagemaker.CreateTrialComponentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateTrialComponent",
+		Input:   input,
+		Output:  (*sagemaker.CreateTrialComponentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateTrialComponentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateTrialComponentOutput), req.Error
+}
+
+func (c *Client) CreateUserProfileWithContext(ctx context.Context, input *sagemaker.CreateUserProfileInput, opts ...request.Option) (*sagemaker.CreateUserProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateUserProfile",
+		Input:   input,
+		Output:  (*sagemaker.CreateUserProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateUserProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateUserProfileOutput), req.Error
+}
+
 func (c *Client) CreateWorkteamWithContext(ctx context.Context, input *sagemaker.CreateWorkteamInput, opts ...request.Option) (*sagemaker.CreateWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -476,6 +821,27 @@ func (c *Client) DeleteAlgorithmWithContext(ctx context.Context, input *sagemake
 	return req.Output.(*sagemaker.DeleteAlgorithmOutput), req.Error
 }
 
+func (c *Client) DeleteAppWithContext(ctx context.Context, input *sagemaker.DeleteAppInput, opts ...request.Option) (*sagemaker.DeleteAppOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteApp",
+		Input:   input,
+		Output:  (*sagemaker.DeleteAppOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteAppWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteAppOutput), req.Error
+}
+
 func (c *Client) DeleteCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DeleteCodeRepositoryInput, opts ...request.Option) (*sagemaker.DeleteCodeRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -495,6 +861,27 @@ func (c *Client) DeleteCodeRepositoryWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.DeleteCodeRepositoryOutput), req.Error
+}
+
+func (c *Client) DeleteDomainWithContext(ctx context.Context, input *sagemaker.DeleteDomainInput, opts ...request.Option) (*sagemaker.DeleteDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteDomain",
+		Input:   input,
+		Output:  (*sagemaker.DeleteDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteDomainOutput), req.Error
 }
 
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *sagemaker.DeleteEndpointInput, opts ...request.Option) (*sagemaker.DeleteEndpointOutput, error) {
@@ -539,6 +926,48 @@ func (c *Client) DeleteEndpointConfigWithContext(ctx context.Context, input *sag
 	return req.Output.(*sagemaker.DeleteEndpointConfigOutput), req.Error
 }
 
+func (c *Client) DeleteExperimentWithContext(ctx context.Context, input *sagemaker.DeleteExperimentInput, opts ...request.Option) (*sagemaker.DeleteExperimentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteExperiment",
+		Input:   input,
+		Output:  (*sagemaker.DeleteExperimentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteExperimentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteExperimentOutput), req.Error
+}
+
+func (c *Client) DeleteFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DeleteFlowDefinitionInput, opts ...request.Option) (*sagemaker.DeleteFlowDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteFlowDefinition",
+		Input:   input,
+		Output:  (*sagemaker.DeleteFlowDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteFlowDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteFlowDefinitionOutput), req.Error
+}
+
 func (c *Client) DeleteModelWithContext(ctx context.Context, input *sagemaker.DeleteModelInput, opts ...request.Option) (*sagemaker.DeleteModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -579,6 +1008,27 @@ func (c *Client) DeleteModelPackageWithContext(ctx context.Context, input *sagem
 	})
 
 	return req.Output.(*sagemaker.DeleteModelPackageOutput), req.Error
+}
+
+func (c *Client) DeleteMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.DeleteMonitoringScheduleInput, opts ...request.Option) (*sagemaker.DeleteMonitoringScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteMonitoringSchedule",
+		Input:   input,
+		Output:  (*sagemaker.DeleteMonitoringScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteMonitoringScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteMonitoringScheduleOutput), req.Error
 }
 
 func (c *Client) DeleteNotebookInstanceWithContext(ctx context.Context, input *sagemaker.DeleteNotebookInstanceInput, opts ...request.Option) (*sagemaker.DeleteNotebookInstanceOutput, error) {
@@ -644,6 +1094,69 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *sagemaker.Del
 	return req.Output.(*sagemaker.DeleteTagsOutput), req.Error
 }
 
+func (c *Client) DeleteTrialWithContext(ctx context.Context, input *sagemaker.DeleteTrialInput, opts ...request.Option) (*sagemaker.DeleteTrialOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteTrial",
+		Input:   input,
+		Output:  (*sagemaker.DeleteTrialOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteTrialWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteTrialOutput), req.Error
+}
+
+func (c *Client) DeleteTrialComponentWithContext(ctx context.Context, input *sagemaker.DeleteTrialComponentInput, opts ...request.Option) (*sagemaker.DeleteTrialComponentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteTrialComponent",
+		Input:   input,
+		Output:  (*sagemaker.DeleteTrialComponentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteTrialComponentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteTrialComponentOutput), req.Error
+}
+
+func (c *Client) DeleteUserProfileWithContext(ctx context.Context, input *sagemaker.DeleteUserProfileInput, opts ...request.Option) (*sagemaker.DeleteUserProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteUserProfile",
+		Input:   input,
+		Output:  (*sagemaker.DeleteUserProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteUserProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteUserProfileOutput), req.Error
+}
+
 func (c *Client) DeleteWorkteamWithContext(ctx context.Context, input *sagemaker.DeleteWorkteamInput, opts ...request.Option) (*sagemaker.DeleteWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -684,6 +1197,48 @@ func (c *Client) DescribeAlgorithmWithContext(ctx context.Context, input *sagema
 	})
 
 	return req.Output.(*sagemaker.DescribeAlgorithmOutput), req.Error
+}
+
+func (c *Client) DescribeAppWithContext(ctx context.Context, input *sagemaker.DescribeAppInput, opts ...request.Option) (*sagemaker.DescribeAppOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeApp",
+		Input:   input,
+		Output:  (*sagemaker.DescribeAppOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeAppWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeAppOutput), req.Error
+}
+
+func (c *Client) DescribeAutoMLJobWithContext(ctx context.Context, input *sagemaker.DescribeAutoMLJobInput, opts ...request.Option) (*sagemaker.DescribeAutoMLJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeAutoMLJob",
+		Input:   input,
+		Output:  (*sagemaker.DescribeAutoMLJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeAutoMLJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeAutoMLJobOutput), req.Error
 }
 
 func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DescribeCodeRepositoryInput, opts ...request.Option) (*sagemaker.DescribeCodeRepositoryOutput, error) {
@@ -728,6 +1283,27 @@ func (c *Client) DescribeCompilationJobWithContext(ctx context.Context, input *s
 	return req.Output.(*sagemaker.DescribeCompilationJobOutput), req.Error
 }
 
+func (c *Client) DescribeDomainWithContext(ctx context.Context, input *sagemaker.DescribeDomainInput, opts ...request.Option) (*sagemaker.DescribeDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeDomain",
+		Input:   input,
+		Output:  (*sagemaker.DescribeDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeDomainOutput), req.Error
+}
+
 func (c *Client) DescribeEndpointWithContext(ctx context.Context, input *sagemaker.DescribeEndpointInput, opts ...request.Option) (*sagemaker.DescribeEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -768,6 +1344,69 @@ func (c *Client) DescribeEndpointConfigWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*sagemaker.DescribeEndpointConfigOutput), req.Error
+}
+
+func (c *Client) DescribeExperimentWithContext(ctx context.Context, input *sagemaker.DescribeExperimentInput, opts ...request.Option) (*sagemaker.DescribeExperimentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeExperiment",
+		Input:   input,
+		Output:  (*sagemaker.DescribeExperimentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeExperimentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeExperimentOutput), req.Error
+}
+
+func (c *Client) DescribeFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DescribeFlowDefinitionInput, opts ...request.Option) (*sagemaker.DescribeFlowDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeFlowDefinition",
+		Input:   input,
+		Output:  (*sagemaker.DescribeFlowDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeFlowDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeFlowDefinitionOutput), req.Error
+}
+
+func (c *Client) DescribeHumanTaskUiWithContext(ctx context.Context, input *sagemaker.DescribeHumanTaskUiInput, opts ...request.Option) (*sagemaker.DescribeHumanTaskUiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeHumanTaskUi",
+		Input:   input,
+		Output:  (*sagemaker.DescribeHumanTaskUiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeHumanTaskUiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeHumanTaskUiOutput), req.Error
 }
 
 func (c *Client) DescribeHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.DescribeHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.DescribeHyperParameterTuningJobOutput, error) {
@@ -854,6 +1493,27 @@ func (c *Client) DescribeModelPackageWithContext(ctx context.Context, input *sag
 	return req.Output.(*sagemaker.DescribeModelPackageOutput), req.Error
 }
 
+func (c *Client) DescribeMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.DescribeMonitoringScheduleInput, opts ...request.Option) (*sagemaker.DescribeMonitoringScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeMonitoringSchedule",
+		Input:   input,
+		Output:  (*sagemaker.DescribeMonitoringScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeMonitoringScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeMonitoringScheduleOutput), req.Error
+}
+
 func (c *Client) DescribeNotebookInstanceWithContext(ctx context.Context, input *sagemaker.DescribeNotebookInstanceInput, opts ...request.Option) (*sagemaker.DescribeNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -894,6 +1554,27 @@ func (c *Client) DescribeNotebookInstanceLifecycleConfigWithContext(ctx context.
 	})
 
 	return req.Output.(*sagemaker.DescribeNotebookInstanceLifecycleConfigOutput), req.Error
+}
+
+func (c *Client) DescribeProcessingJobWithContext(ctx context.Context, input *sagemaker.DescribeProcessingJobInput, opts ...request.Option) (*sagemaker.DescribeProcessingJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeProcessingJob",
+		Input:   input,
+		Output:  (*sagemaker.DescribeProcessingJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeProcessingJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeProcessingJobOutput), req.Error
 }
 
 func (c *Client) DescribeSubscribedWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeSubscribedWorkteamInput, opts ...request.Option) (*sagemaker.DescribeSubscribedWorkteamOutput, error) {
@@ -959,6 +1640,69 @@ func (c *Client) DescribeTransformJobWithContext(ctx context.Context, input *sag
 	return req.Output.(*sagemaker.DescribeTransformJobOutput), req.Error
 }
 
+func (c *Client) DescribeTrialWithContext(ctx context.Context, input *sagemaker.DescribeTrialInput, opts ...request.Option) (*sagemaker.DescribeTrialOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeTrial",
+		Input:   input,
+		Output:  (*sagemaker.DescribeTrialOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeTrialWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeTrialOutput), req.Error
+}
+
+func (c *Client) DescribeTrialComponentWithContext(ctx context.Context, input *sagemaker.DescribeTrialComponentInput, opts ...request.Option) (*sagemaker.DescribeTrialComponentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeTrialComponent",
+		Input:   input,
+		Output:  (*sagemaker.DescribeTrialComponentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeTrialComponentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeTrialComponentOutput), req.Error
+}
+
+func (c *Client) DescribeUserProfileWithContext(ctx context.Context, input *sagemaker.DescribeUserProfileInput, opts ...request.Option) (*sagemaker.DescribeUserProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeUserProfile",
+		Input:   input,
+		Output:  (*sagemaker.DescribeUserProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeUserProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeUserProfileOutput), req.Error
+}
+
 func (c *Client) DescribeWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeWorkteamInput, opts ...request.Option) (*sagemaker.DescribeWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -978,6 +1722,27 @@ func (c *Client) DescribeWorkteamWithContext(ctx context.Context, input *sagemak
 	})
 
 	return req.Output.(*sagemaker.DescribeWorkteamOutput), req.Error
+}
+
+func (c *Client) DisassociateTrialComponentWithContext(ctx context.Context, input *sagemaker.DisassociateTrialComponentInput, opts ...request.Option) (*sagemaker.DisassociateTrialComponentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DisassociateTrialComponent",
+		Input:   input,
+		Output:  (*sagemaker.DisassociateTrialComponentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DisassociateTrialComponentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DisassociateTrialComponentOutput), req.Error
 }
 
 func (c *Client) GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error) {
@@ -1022,6 +1787,149 @@ func (c *Client) ListAlgorithmsWithContext(ctx context.Context, input *sagemaker
 	return req.Output.(*sagemaker.ListAlgorithmsOutput), req.Error
 }
 
+func (c *Client) ListAlgorithmsPagesWithContext(ctx context.Context, input *sagemaker.ListAlgorithmsInput, cb func(*sagemaker.ListAlgorithmsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListAlgorithms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListAlgorithmsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAppsWithContext(ctx context.Context, input *sagemaker.ListAppsInput, opts ...request.Option) (*sagemaker.ListAppsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListApps",
+		Input:   input,
+		Output:  (*sagemaker.ListAppsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListAppsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListAppsOutput), req.Error
+}
+
+func (c *Client) ListAppsPagesWithContext(ctx context.Context, input *sagemaker.ListAppsInput, cb func(*sagemaker.ListAppsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListApps",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListAppsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAutoMLJobsWithContext(ctx context.Context, input *sagemaker.ListAutoMLJobsInput, opts ...request.Option) (*sagemaker.ListAutoMLJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListAutoMLJobs",
+		Input:   input,
+		Output:  (*sagemaker.ListAutoMLJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListAutoMLJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListAutoMLJobsOutput), req.Error
+}
+
+func (c *Client) ListAutoMLJobsPagesWithContext(ctx context.Context, input *sagemaker.ListAutoMLJobsInput, cb func(*sagemaker.ListAutoMLJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListAutoMLJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListAutoMLJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCandidatesForAutoMLJobWithContext(ctx context.Context, input *sagemaker.ListCandidatesForAutoMLJobInput, opts ...request.Option) (*sagemaker.ListCandidatesForAutoMLJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListCandidatesForAutoMLJob",
+		Input:   input,
+		Output:  (*sagemaker.ListCandidatesForAutoMLJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListCandidatesForAutoMLJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListCandidatesForAutoMLJobOutput), req.Error
+}
+
+func (c *Client) ListCandidatesForAutoMLJobPagesWithContext(ctx context.Context, input *sagemaker.ListCandidatesForAutoMLJobInput, cb func(*sagemaker.ListCandidatesForAutoMLJobOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListCandidatesForAutoMLJob",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListCandidatesForAutoMLJobPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListCodeRepositoriesWithContext(ctx context.Context, input *sagemaker.ListCodeRepositoriesInput, opts ...request.Option) (*sagemaker.ListCodeRepositoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1041,6 +1949,26 @@ func (c *Client) ListCodeRepositoriesWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.ListCodeRepositoriesOutput), req.Error
+}
+
+func (c *Client) ListCodeRepositoriesPagesWithContext(ctx context.Context, input *sagemaker.ListCodeRepositoriesInput, cb func(*sagemaker.ListCodeRepositoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListCodeRepositories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListCodeRepositoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCompilationJobsWithContext(ctx context.Context, input *sagemaker.ListCompilationJobsInput, opts ...request.Option) (*sagemaker.ListCompilationJobsOutput, error) {
@@ -1079,6 +2007,47 @@ func (c *Client) ListCompilationJobsPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListCompilationJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDomainsWithContext(ctx context.Context, input *sagemaker.ListDomainsInput, opts ...request.Option) (*sagemaker.ListDomainsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListDomains",
+		Input:   input,
+		Output:  (*sagemaker.ListDomainsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListDomainsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListDomainsOutput), req.Error
+}
+
+func (c *Client) ListDomainsPagesWithContext(ctx context.Context, input *sagemaker.ListDomainsInput, cb func(*sagemaker.ListDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListDomainsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1161,6 +2130,129 @@ func (c *Client) ListEndpointsPagesWithContext(ctx context.Context, input *sagem
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListExperimentsWithContext(ctx context.Context, input *sagemaker.ListExperimentsInput, opts ...request.Option) (*sagemaker.ListExperimentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListExperiments",
+		Input:   input,
+		Output:  (*sagemaker.ListExperimentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListExperimentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListExperimentsOutput), req.Error
+}
+
+func (c *Client) ListExperimentsPagesWithContext(ctx context.Context, input *sagemaker.ListExperimentsInput, cb func(*sagemaker.ListExperimentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListExperiments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListExperimentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFlowDefinitionsWithContext(ctx context.Context, input *sagemaker.ListFlowDefinitionsInput, opts ...request.Option) (*sagemaker.ListFlowDefinitionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListFlowDefinitions",
+		Input:   input,
+		Output:  (*sagemaker.ListFlowDefinitionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListFlowDefinitionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListFlowDefinitionsOutput), req.Error
+}
+
+func (c *Client) ListFlowDefinitionsPagesWithContext(ctx context.Context, input *sagemaker.ListFlowDefinitionsInput, cb func(*sagemaker.ListFlowDefinitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListFlowDefinitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListFlowDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListHumanTaskUisWithContext(ctx context.Context, input *sagemaker.ListHumanTaskUisInput, opts ...request.Option) (*sagemaker.ListHumanTaskUisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListHumanTaskUis",
+		Input:   input,
+		Output:  (*sagemaker.ListHumanTaskUisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListHumanTaskUisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListHumanTaskUisOutput), req.Error
+}
+
+func (c *Client) ListHumanTaskUisPagesWithContext(ctx context.Context, input *sagemaker.ListHumanTaskUisInput, cb func(*sagemaker.ListHumanTaskUisOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListHumanTaskUis",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListHumanTaskUisPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1310,6 +2402,26 @@ func (c *Client) ListModelPackagesWithContext(ctx context.Context, input *sagema
 	return req.Output.(*sagemaker.ListModelPackagesOutput), req.Error
 }
 
+func (c *Client) ListModelPackagesPagesWithContext(ctx context.Context, input *sagemaker.ListModelPackagesInput, cb func(*sagemaker.ListModelPackagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListModelPackages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListModelPackagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListModelsWithContext(ctx context.Context, input *sagemaker.ListModelsInput, opts ...request.Option) (*sagemaker.ListModelsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1346,6 +2458,88 @@ func (c *Client) ListModelsPagesWithContext(ctx context.Context, input *sagemake
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListModelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMonitoringExecutionsWithContext(ctx context.Context, input *sagemaker.ListMonitoringExecutionsInput, opts ...request.Option) (*sagemaker.ListMonitoringExecutionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListMonitoringExecutions",
+		Input:   input,
+		Output:  (*sagemaker.ListMonitoringExecutionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListMonitoringExecutionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListMonitoringExecutionsOutput), req.Error
+}
+
+func (c *Client) ListMonitoringExecutionsPagesWithContext(ctx context.Context, input *sagemaker.ListMonitoringExecutionsInput, cb func(*sagemaker.ListMonitoringExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListMonitoringExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListMonitoringExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMonitoringSchedulesWithContext(ctx context.Context, input *sagemaker.ListMonitoringSchedulesInput, opts ...request.Option) (*sagemaker.ListMonitoringSchedulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListMonitoringSchedules",
+		Input:   input,
+		Output:  (*sagemaker.ListMonitoringSchedulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListMonitoringSchedulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListMonitoringSchedulesOutput), req.Error
+}
+
+func (c *Client) ListMonitoringSchedulesPagesWithContext(ctx context.Context, input *sagemaker.ListMonitoringSchedulesInput, cb func(*sagemaker.ListMonitoringSchedulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListMonitoringSchedules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListMonitoringSchedulesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1428,6 +2622,47 @@ func (c *Client) ListNotebookInstancesPagesWithContext(ctx context.Context, inpu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListNotebookInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListProcessingJobsWithContext(ctx context.Context, input *sagemaker.ListProcessingJobsInput, opts ...request.Option) (*sagemaker.ListProcessingJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListProcessingJobs",
+		Input:   input,
+		Output:  (*sagemaker.ListProcessingJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListProcessingJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListProcessingJobsOutput), req.Error
+}
+
+func (c *Client) ListProcessingJobsPagesWithContext(ctx context.Context, input *sagemaker.ListProcessingJobsInput, cb func(*sagemaker.ListProcessingJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListProcessingJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListProcessingJobsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1638,6 +2873,129 @@ func (c *Client) ListTransformJobsPagesWithContext(ctx context.Context, input *s
 	return req.Error
 }
 
+func (c *Client) ListTrialComponentsWithContext(ctx context.Context, input *sagemaker.ListTrialComponentsInput, opts ...request.Option) (*sagemaker.ListTrialComponentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListTrialComponents",
+		Input:   input,
+		Output:  (*sagemaker.ListTrialComponentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListTrialComponentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListTrialComponentsOutput), req.Error
+}
+
+func (c *Client) ListTrialComponentsPagesWithContext(ctx context.Context, input *sagemaker.ListTrialComponentsInput, cb func(*sagemaker.ListTrialComponentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListTrialComponents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListTrialComponentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTrialsWithContext(ctx context.Context, input *sagemaker.ListTrialsInput, opts ...request.Option) (*sagemaker.ListTrialsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListTrials",
+		Input:   input,
+		Output:  (*sagemaker.ListTrialsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListTrialsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListTrialsOutput), req.Error
+}
+
+func (c *Client) ListTrialsPagesWithContext(ctx context.Context, input *sagemaker.ListTrialsInput, cb func(*sagemaker.ListTrialsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListTrials",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListTrialsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListUserProfilesWithContext(ctx context.Context, input *sagemaker.ListUserProfilesInput, opts ...request.Option) (*sagemaker.ListUserProfilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListUserProfiles",
+		Input:   input,
+		Output:  (*sagemaker.ListUserProfilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListUserProfilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListUserProfilesOutput), req.Error
+}
+
+func (c *Client) ListUserProfilesPagesWithContext(ctx context.Context, input *sagemaker.ListUserProfilesInput, cb func(*sagemaker.ListUserProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListUserProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListUserProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListWorkteamsWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, opts ...request.Option) (*sagemaker.ListWorkteamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1741,6 +3099,27 @@ func (c *Client) SearchPagesWithContext(ctx context.Context, input *sagemaker.Se
 	return req.Error
 }
 
+func (c *Client) StartMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StartMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StartMonitoringScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "StartMonitoringSchedule",
+		Input:   input,
+		Output:  (*sagemaker.StartMonitoringScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.StartMonitoringScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.StartMonitoringScheduleOutput), req.Error
+}
+
 func (c *Client) StartNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StartNotebookInstanceInput, opts ...request.Option) (*sagemaker.StartNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1760,6 +3139,27 @@ func (c *Client) StartNotebookInstanceWithContext(ctx context.Context, input *sa
 	})
 
 	return req.Output.(*sagemaker.StartNotebookInstanceOutput), req.Error
+}
+
+func (c *Client) StopAutoMLJobWithContext(ctx context.Context, input *sagemaker.StopAutoMLJobInput, opts ...request.Option) (*sagemaker.StopAutoMLJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "StopAutoMLJob",
+		Input:   input,
+		Output:  (*sagemaker.StopAutoMLJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.StopAutoMLJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.StopAutoMLJobOutput), req.Error
 }
 
 func (c *Client) StopCompilationJobWithContext(ctx context.Context, input *sagemaker.StopCompilationJobInput, opts ...request.Option) (*sagemaker.StopCompilationJobOutput, error) {
@@ -1825,6 +3225,27 @@ func (c *Client) StopLabelingJobWithContext(ctx context.Context, input *sagemake
 	return req.Output.(*sagemaker.StopLabelingJobOutput), req.Error
 }
 
+func (c *Client) StopMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StopMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StopMonitoringScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "StopMonitoringSchedule",
+		Input:   input,
+		Output:  (*sagemaker.StopMonitoringScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.StopMonitoringScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.StopMonitoringScheduleOutput), req.Error
+}
+
 func (c *Client) StopNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StopNotebookInstanceInput, opts ...request.Option) (*sagemaker.StopNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1844,6 +3265,27 @@ func (c *Client) StopNotebookInstanceWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.StopNotebookInstanceOutput), req.Error
+}
+
+func (c *Client) StopProcessingJobWithContext(ctx context.Context, input *sagemaker.StopProcessingJobInput, opts ...request.Option) (*sagemaker.StopProcessingJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "StopProcessingJob",
+		Input:   input,
+		Output:  (*sagemaker.StopProcessingJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.StopProcessingJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.StopProcessingJobOutput), req.Error
 }
 
 func (c *Client) StopTrainingJobWithContext(ctx context.Context, input *sagemaker.StopTrainingJobInput, opts ...request.Option) (*sagemaker.StopTrainingJobOutput, error) {
@@ -1909,6 +3351,27 @@ func (c *Client) UpdateCodeRepositoryWithContext(ctx context.Context, input *sag
 	return req.Output.(*sagemaker.UpdateCodeRepositoryOutput), req.Error
 }
 
+func (c *Client) UpdateDomainWithContext(ctx context.Context, input *sagemaker.UpdateDomainInput, opts ...request.Option) (*sagemaker.UpdateDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateDomain",
+		Input:   input,
+		Output:  (*sagemaker.UpdateDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateDomainOutput), req.Error
+}
+
 func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *sagemaker.UpdateEndpointInput, opts ...request.Option) (*sagemaker.UpdateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1951,6 +3414,48 @@ func (c *Client) UpdateEndpointWeightsAndCapacitiesWithContext(ctx context.Conte
 	return req.Output.(*sagemaker.UpdateEndpointWeightsAndCapacitiesOutput), req.Error
 }
 
+func (c *Client) UpdateExperimentWithContext(ctx context.Context, input *sagemaker.UpdateExperimentInput, opts ...request.Option) (*sagemaker.UpdateExperimentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateExperiment",
+		Input:   input,
+		Output:  (*sagemaker.UpdateExperimentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateExperimentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateExperimentOutput), req.Error
+}
+
+func (c *Client) UpdateMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.UpdateMonitoringScheduleInput, opts ...request.Option) (*sagemaker.UpdateMonitoringScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateMonitoringSchedule",
+		Input:   input,
+		Output:  (*sagemaker.UpdateMonitoringScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateMonitoringScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateMonitoringScheduleOutput), req.Error
+}
+
 func (c *Client) UpdateNotebookInstanceWithContext(ctx context.Context, input *sagemaker.UpdateNotebookInstanceInput, opts ...request.Option) (*sagemaker.UpdateNotebookInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1991,6 +3496,69 @@ func (c *Client) UpdateNotebookInstanceLifecycleConfigWithContext(ctx context.Co
 	})
 
 	return req.Output.(*sagemaker.UpdateNotebookInstanceLifecycleConfigOutput), req.Error
+}
+
+func (c *Client) UpdateTrialWithContext(ctx context.Context, input *sagemaker.UpdateTrialInput, opts ...request.Option) (*sagemaker.UpdateTrialOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateTrial",
+		Input:   input,
+		Output:  (*sagemaker.UpdateTrialOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateTrialWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateTrialOutput), req.Error
+}
+
+func (c *Client) UpdateTrialComponentWithContext(ctx context.Context, input *sagemaker.UpdateTrialComponentInput, opts ...request.Option) (*sagemaker.UpdateTrialComponentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateTrialComponent",
+		Input:   input,
+		Output:  (*sagemaker.UpdateTrialComponentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateTrialComponentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateTrialComponentOutput), req.Error
+}
+
+func (c *Client) UpdateUserProfileWithContext(ctx context.Context, input *sagemaker.UpdateUserProfileInput, opts ...request.Option) (*sagemaker.UpdateUserProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateUserProfile",
+		Input:   input,
+		Output:  (*sagemaker.UpdateUserProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateUserProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateUserProfileOutput), req.Error
 }
 
 func (c *Client) UpdateWorkteamWithContext(ctx context.Context, input *sagemaker.UpdateWorkteamInput, opts ...request.Option) (*sagemaker.UpdateWorkteamOutput, error) {

@@ -13,12 +13,19 @@ import (
 type Rekognition interface {
 	CompareFacesWithContext(ctx context.Context, input *rekognition.CompareFacesInput, opts ...request.Option) (*rekognition.CompareFacesOutput, error)
 	CreateCollectionWithContext(ctx context.Context, input *rekognition.CreateCollectionInput, opts ...request.Option) (*rekognition.CreateCollectionOutput, error)
+	CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error)
+	CreateProjectVersionWithContext(ctx context.Context, input *rekognition.CreateProjectVersionInput, opts ...request.Option) (*rekognition.CreateProjectVersionOutput, error)
 	CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error)
 	DeleteCollectionWithContext(ctx context.Context, input *rekognition.DeleteCollectionInput, opts ...request.Option) (*rekognition.DeleteCollectionOutput, error)
 	DeleteFacesWithContext(ctx context.Context, input *rekognition.DeleteFacesInput, opts ...request.Option) (*rekognition.DeleteFacesOutput, error)
 	DeleteStreamProcessorWithContext(ctx context.Context, input *rekognition.DeleteStreamProcessorInput, opts ...request.Option) (*rekognition.DeleteStreamProcessorOutput, error)
 	DescribeCollectionWithContext(ctx context.Context, input *rekognition.DescribeCollectionInput, opts ...request.Option) (*rekognition.DescribeCollectionOutput, error)
+	DescribeProjectVersionsWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, opts ...request.Option) (*rekognition.DescribeProjectVersionsOutput, error)
+	DescribeProjectVersionsPagesWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, cb func(*rekognition.DescribeProjectVersionsOutput, bool) bool, opts ...request.Option) error
+	DescribeProjectsWithContext(ctx context.Context, input *rekognition.DescribeProjectsInput, opts ...request.Option) (*rekognition.DescribeProjectsOutput, error)
+	DescribeProjectsPagesWithContext(ctx context.Context, input *rekognition.DescribeProjectsInput, cb func(*rekognition.DescribeProjectsOutput, bool) bool, opts ...request.Option) error
 	DescribeStreamProcessorWithContext(ctx context.Context, input *rekognition.DescribeStreamProcessorInput, opts ...request.Option) (*rekognition.DescribeStreamProcessorOutput, error)
+	DetectCustomLabelsWithContext(ctx context.Context, input *rekognition.DetectCustomLabelsInput, opts ...request.Option) (*rekognition.DetectCustomLabelsOutput, error)
 	DetectFacesWithContext(ctx context.Context, input *rekognition.DetectFacesInput, opts ...request.Option) (*rekognition.DetectFacesOutput, error)
 	DetectLabelsWithContext(ctx context.Context, input *rekognition.DetectLabelsInput, opts ...request.Option) (*rekognition.DetectLabelsOutput, error)
 	DetectModerationLabelsWithContext(ctx context.Context, input *rekognition.DetectModerationLabelsInput, opts ...request.Option) (*rekognition.DetectModerationLabelsOutput, error)
@@ -52,7 +59,9 @@ type Rekognition interface {
 	StartFaceSearchWithContext(ctx context.Context, input *rekognition.StartFaceSearchInput, opts ...request.Option) (*rekognition.StartFaceSearchOutput, error)
 	StartLabelDetectionWithContext(ctx context.Context, input *rekognition.StartLabelDetectionInput, opts ...request.Option) (*rekognition.StartLabelDetectionOutput, error)
 	StartPersonTrackingWithContext(ctx context.Context, input *rekognition.StartPersonTrackingInput, opts ...request.Option) (*rekognition.StartPersonTrackingOutput, error)
+	StartProjectVersionWithContext(ctx context.Context, input *rekognition.StartProjectVersionInput, opts ...request.Option) (*rekognition.StartProjectVersionOutput, error)
 	StartStreamProcessorWithContext(ctx context.Context, input *rekognition.StartStreamProcessorInput, opts ...request.Option) (*rekognition.StartStreamProcessorOutput, error)
+	StopProjectVersionWithContext(ctx context.Context, input *rekognition.StopProjectVersionInput, opts ...request.Option) (*rekognition.StopProjectVersionOutput, error)
 	StopStreamProcessorWithContext(ctx context.Context, input *rekognition.StopStreamProcessorInput, opts ...request.Option) (*rekognition.StopStreamProcessorOutput, error)
 }
 
@@ -111,6 +120,48 @@ func (c *Client) CreateCollectionWithContext(ctx context.Context, input *rekogni
 	})
 
 	return req.Output.(*rekognition.CreateCollectionOutput), req.Error
+}
+
+func (c *Client) CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "CreateProject",
+		Input:   input,
+		Output:  (*rekognition.CreateProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.CreateProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.CreateProjectOutput), req.Error
+}
+
+func (c *Client) CreateProjectVersionWithContext(ctx context.Context, input *rekognition.CreateProjectVersionInput, opts ...request.Option) (*rekognition.CreateProjectVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "CreateProjectVersion",
+		Input:   input,
+		Output:  (*rekognition.CreateProjectVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.CreateProjectVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.CreateProjectVersionOutput), req.Error
 }
 
 func (c *Client) CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error) {
@@ -218,6 +269,88 @@ func (c *Client) DescribeCollectionWithContext(ctx context.Context, input *rekog
 	return req.Output.(*rekognition.DescribeCollectionOutput), req.Error
 }
 
+func (c *Client) DescribeProjectVersionsWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, opts ...request.Option) (*rekognition.DescribeProjectVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DescribeProjectVersions",
+		Input:   input,
+		Output:  (*rekognition.DescribeProjectVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DescribeProjectVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DescribeProjectVersionsOutput), req.Error
+}
+
+func (c *Client) DescribeProjectVersionsPagesWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, cb func(*rekognition.DescribeProjectVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DescribeProjectVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.DescribeProjectVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeProjectsWithContext(ctx context.Context, input *rekognition.DescribeProjectsInput, opts ...request.Option) (*rekognition.DescribeProjectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DescribeProjects",
+		Input:   input,
+		Output:  (*rekognition.DescribeProjectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DescribeProjectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DescribeProjectsOutput), req.Error
+}
+
+func (c *Client) DescribeProjectsPagesWithContext(ctx context.Context, input *rekognition.DescribeProjectsInput, cb func(*rekognition.DescribeProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DescribeProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.DescribeProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeStreamProcessorWithContext(ctx context.Context, input *rekognition.DescribeStreamProcessorInput, opts ...request.Option) (*rekognition.DescribeStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -237,6 +370,27 @@ func (c *Client) DescribeStreamProcessorWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*rekognition.DescribeStreamProcessorOutput), req.Error
+}
+
+func (c *Client) DetectCustomLabelsWithContext(ctx context.Context, input *rekognition.DetectCustomLabelsInput, opts ...request.Option) (*rekognition.DetectCustomLabelsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DetectCustomLabels",
+		Input:   input,
+		Output:  (*rekognition.DetectCustomLabelsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DetectCustomLabelsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DetectCustomLabelsOutput), req.Error
 }
 
 func (c *Client) DetectFacesWithContext(ctx context.Context, input *rekognition.DetectFacesInput, opts ...request.Option) (*rekognition.DetectFacesOutput, error) {
@@ -923,6 +1077,27 @@ func (c *Client) StartPersonTrackingWithContext(ctx context.Context, input *reko
 	return req.Output.(*rekognition.StartPersonTrackingOutput), req.Error
 }
 
+func (c *Client) StartProjectVersionWithContext(ctx context.Context, input *rekognition.StartProjectVersionInput, opts ...request.Option) (*rekognition.StartProjectVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "StartProjectVersion",
+		Input:   input,
+		Output:  (*rekognition.StartProjectVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.StartProjectVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.StartProjectVersionOutput), req.Error
+}
+
 func (c *Client) StartStreamProcessorWithContext(ctx context.Context, input *rekognition.StartStreamProcessorInput, opts ...request.Option) (*rekognition.StartStreamProcessorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -942,6 +1117,27 @@ func (c *Client) StartStreamProcessorWithContext(ctx context.Context, input *rek
 	})
 
 	return req.Output.(*rekognition.StartStreamProcessorOutput), req.Error
+}
+
+func (c *Client) StopProjectVersionWithContext(ctx context.Context, input *rekognition.StopProjectVersionInput, opts ...request.Option) (*rekognition.StopProjectVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "StopProjectVersion",
+		Input:   input,
+		Output:  (*rekognition.StopProjectVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.StopProjectVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.StopProjectVersionOutput), req.Error
 }
 
 func (c *Client) StopStreamProcessorWithContext(ctx context.Context, input *rekognition.StopStreamProcessorInput, opts ...request.Option) (*rekognition.StopStreamProcessorOutput, error) {

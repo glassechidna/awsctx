@@ -22,16 +22,19 @@ type Lambda interface {
 	DeleteFunctionConcurrencyWithContext(ctx context.Context, input *lambda.DeleteFunctionConcurrencyInput, opts ...request.Option) (*lambda.DeleteFunctionConcurrencyOutput, error)
 	DeleteFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.DeleteFunctionEventInvokeConfigOutput, error)
 	DeleteLayerVersionWithContext(ctx context.Context, input *lambda.DeleteLayerVersionInput, opts ...request.Option) (*lambda.DeleteLayerVersionOutput, error)
+	DeleteProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.DeleteProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.DeleteProvisionedConcurrencyConfigOutput, error)
 	GetAccountSettingsWithContext(ctx context.Context, input *lambda.GetAccountSettingsInput, opts ...request.Option) (*lambda.GetAccountSettingsOutput, error)
 	GetAliasWithContext(ctx context.Context, input *lambda.GetAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error)
 	GetEventSourceMappingWithContext(ctx context.Context, input *lambda.GetEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
 	GetFunctionWithContext(ctx context.Context, input *lambda.GetFunctionInput, opts ...request.Option) (*lambda.GetFunctionOutput, error)
+	GetFunctionConcurrencyWithContext(ctx context.Context, input *lambda.GetFunctionConcurrencyInput, opts ...request.Option) (*lambda.GetFunctionConcurrencyOutput, error)
 	GetFunctionConfigurationWithContext(ctx context.Context, input *lambda.GetFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	GetFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.GetFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.GetFunctionEventInvokeConfigOutput, error)
 	GetLayerVersionWithContext(ctx context.Context, input *lambda.GetLayerVersionInput, opts ...request.Option) (*lambda.GetLayerVersionOutput, error)
 	GetLayerVersionByArnWithContext(ctx context.Context, input *lambda.GetLayerVersionByArnInput, opts ...request.Option) (*lambda.GetLayerVersionByArnOutput, error)
 	GetLayerVersionPolicyWithContext(ctx context.Context, input *lambda.GetLayerVersionPolicyInput, opts ...request.Option) (*lambda.GetLayerVersionPolicyOutput, error)
 	GetPolicyWithContext(ctx context.Context, input *lambda.GetPolicyInput, opts ...request.Option) (*lambda.GetPolicyOutput, error)
+	GetProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.GetProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.GetProvisionedConcurrencyConfigOutput, error)
 	InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error)
 	InvokeAsyncWithContext(ctx context.Context, input *lambda.InvokeAsyncInput, opts ...request.Option) (*lambda.InvokeAsyncOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error)
@@ -46,6 +49,8 @@ type Lambda interface {
 	ListLayerVersionsPagesWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, cb func(*lambda.ListLayerVersionsOutput, bool) bool, opts ...request.Option) error
 	ListLayersWithContext(ctx context.Context, input *lambda.ListLayersInput, opts ...request.Option) (*lambda.ListLayersOutput, error)
 	ListLayersPagesWithContext(ctx context.Context, input *lambda.ListLayersInput, cb func(*lambda.ListLayersOutput, bool) bool, opts ...request.Option) error
+	ListProvisionedConcurrencyConfigsWithContext(ctx context.Context, input *lambda.ListProvisionedConcurrencyConfigsInput, opts ...request.Option) (*lambda.ListProvisionedConcurrencyConfigsOutput, error)
+	ListProvisionedConcurrencyConfigsPagesWithContext(ctx context.Context, input *lambda.ListProvisionedConcurrencyConfigsInput, cb func(*lambda.ListProvisionedConcurrencyConfigsOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *lambda.ListTagsInput, opts ...request.Option) (*lambda.ListTagsOutput, error)
 	ListVersionsByFunctionWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, opts ...request.Option) (*lambda.ListVersionsByFunctionOutput, error)
 	ListVersionsByFunctionPagesWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, cb func(*lambda.ListVersionsByFunctionOutput, bool) bool, opts ...request.Option) error
@@ -53,6 +58,7 @@ type Lambda interface {
 	PublishVersionWithContext(ctx context.Context, input *lambda.PublishVersionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	PutFunctionConcurrencyWithContext(ctx context.Context, input *lambda.PutFunctionConcurrencyInput, opts ...request.Option) (*lambda.PutFunctionConcurrencyOutput, error)
 	PutFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.PutFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.PutFunctionEventInvokeConfigOutput, error)
+	PutProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.PutProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.PutProvisionedConcurrencyConfigOutput, error)
 	RemoveLayerVersionPermissionWithContext(ctx context.Context, input *lambda.RemoveLayerVersionPermissionInput, opts ...request.Option) (*lambda.RemoveLayerVersionPermissionOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *lambda.RemovePermissionInput, opts ...request.Option) (*lambda.RemovePermissionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *lambda.TagResourceInput, opts ...request.Option) (*lambda.TagResourceOutput, error)
@@ -310,6 +316,27 @@ func (c *Client) DeleteLayerVersionWithContext(ctx context.Context, input *lambd
 	return req.Output.(*lambda.DeleteLayerVersionOutput), req.Error
 }
 
+func (c *Client) DeleteProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.DeleteProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.DeleteProvisionedConcurrencyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "DeleteProvisionedConcurrencyConfig",
+		Input:   input,
+		Output:  (*lambda.DeleteProvisionedConcurrencyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.DeleteProvisionedConcurrencyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.DeleteProvisionedConcurrencyConfigOutput), req.Error
+}
+
 func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *lambda.GetAccountSettingsInput, opts ...request.Option) (*lambda.GetAccountSettingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -392,6 +419,27 @@ func (c *Client) GetFunctionWithContext(ctx context.Context, input *lambda.GetFu
 	})
 
 	return req.Output.(*lambda.GetFunctionOutput), req.Error
+}
+
+func (c *Client) GetFunctionConcurrencyWithContext(ctx context.Context, input *lambda.GetFunctionConcurrencyInput, opts ...request.Option) (*lambda.GetFunctionConcurrencyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "GetFunctionConcurrency",
+		Input:   input,
+		Output:  (*lambda.GetFunctionConcurrencyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.GetFunctionConcurrencyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.GetFunctionConcurrencyOutput), req.Error
 }
 
 func (c *Client) GetFunctionConfigurationWithContext(ctx context.Context, input *lambda.GetFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error) {
@@ -518,6 +566,27 @@ func (c *Client) GetPolicyWithContext(ctx context.Context, input *lambda.GetPoli
 	})
 
 	return req.Output.(*lambda.GetPolicyOutput), req.Error
+}
+
+func (c *Client) GetProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.GetProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.GetProvisionedConcurrencyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "GetProvisionedConcurrencyConfig",
+		Input:   input,
+		Output:  (*lambda.GetProvisionedConcurrencyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.GetProvisionedConcurrencyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.GetProvisionedConcurrencyConfigOutput), req.Error
 }
 
 func (c *Client) InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error) {
@@ -808,6 +877,47 @@ func (c *Client) ListLayersPagesWithContext(ctx context.Context, input *lambda.L
 	return req.Error
 }
 
+func (c *Client) ListProvisionedConcurrencyConfigsWithContext(ctx context.Context, input *lambda.ListProvisionedConcurrencyConfigsInput, opts ...request.Option) (*lambda.ListProvisionedConcurrencyConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListProvisionedConcurrencyConfigs",
+		Input:   input,
+		Output:  (*lambda.ListProvisionedConcurrencyConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.ListProvisionedConcurrencyConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.ListProvisionedConcurrencyConfigsOutput), req.Error
+}
+
+func (c *Client) ListProvisionedConcurrencyConfigsPagesWithContext(ctx context.Context, input *lambda.ListProvisionedConcurrencyConfigsInput, cb func(*lambda.ListProvisionedConcurrencyConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListProvisionedConcurrencyConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListProvisionedConcurrencyConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsWithContext(ctx context.Context, input *lambda.ListTagsInput, opts ...request.Option) (*lambda.ListTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -952,6 +1062,27 @@ func (c *Client) PutFunctionEventInvokeConfigWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*lambda.PutFunctionEventInvokeConfigOutput), req.Error
+}
+
+func (c *Client) PutProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.PutProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.PutProvisionedConcurrencyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "PutProvisionedConcurrencyConfig",
+		Input:   input,
+		Output:  (*lambda.PutProvisionedConcurrencyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.PutProvisionedConcurrencyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.PutProvisionedConcurrencyConfigOutput), req.Error
 }
 
 func (c *Client) RemoveLayerVersionPermissionWithContext(ctx context.Context, input *lambda.RemoveLayerVersionPermissionInput, opts ...request.Option) (*lambda.RemoveLayerVersionPermissionOutput, error) {

@@ -31,6 +31,7 @@ type RDS interface {
 	CreateDBInstanceWithContext(ctx context.Context, input *rds.CreateDBInstanceInput, opts ...request.Option) (*rds.CreateDBInstanceOutput, error)
 	CreateDBInstanceReadReplicaWithContext(ctx context.Context, input *rds.CreateDBInstanceReadReplicaInput, opts ...request.Option) (*rds.CreateDBInstanceReadReplicaOutput, error)
 	CreateDBParameterGroupWithContext(ctx context.Context, input *rds.CreateDBParameterGroupInput, opts ...request.Option) (*rds.CreateDBParameterGroupOutput, error)
+	CreateDBProxyWithContext(ctx context.Context, input *rds.CreateDBProxyInput, opts ...request.Option) (*rds.CreateDBProxyOutput, error)
 	CreateDBSecurityGroupWithContext(ctx context.Context, input *rds.CreateDBSecurityGroupInput, opts ...request.Option) (*rds.CreateDBSecurityGroupOutput, error)
 	CreateDBSnapshotWithContext(ctx context.Context, input *rds.CreateDBSnapshotInput, opts ...request.Option) (*rds.CreateDBSnapshotOutput, error)
 	CreateDBSubnetGroupWithContext(ctx context.Context, input *rds.CreateDBSubnetGroupInput, opts ...request.Option) (*rds.CreateDBSubnetGroupOutput, error)
@@ -45,6 +46,7 @@ type RDS interface {
 	DeleteDBInstanceWithContext(ctx context.Context, input *rds.DeleteDBInstanceInput, opts ...request.Option) (*rds.DeleteDBInstanceOutput, error)
 	DeleteDBInstanceAutomatedBackupWithContext(ctx context.Context, input *rds.DeleteDBInstanceAutomatedBackupInput, opts ...request.Option) (*rds.DeleteDBInstanceAutomatedBackupOutput, error)
 	DeleteDBParameterGroupWithContext(ctx context.Context, input *rds.DeleteDBParameterGroupInput, opts ...request.Option) (*rds.DeleteDBParameterGroupOutput, error)
+	DeleteDBProxyWithContext(ctx context.Context, input *rds.DeleteDBProxyInput, opts ...request.Option) (*rds.DeleteDBProxyOutput, error)
 	DeleteDBSecurityGroupWithContext(ctx context.Context, input *rds.DeleteDBSecurityGroupInput, opts ...request.Option) (*rds.DeleteDBSecurityGroupOutput, error)
 	DeleteDBSnapshotWithContext(ctx context.Context, input *rds.DeleteDBSnapshotInput, opts ...request.Option) (*rds.DeleteDBSnapshotOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *rds.DeleteDBSubnetGroupInput, opts ...request.Option) (*rds.DeleteDBSubnetGroupOutput, error)
@@ -52,6 +54,7 @@ type RDS interface {
 	DeleteGlobalClusterWithContext(ctx context.Context, input *rds.DeleteGlobalClusterInput, opts ...request.Option) (*rds.DeleteGlobalClusterOutput, error)
 	DeleteInstallationMediaWithContext(ctx context.Context, input *rds.DeleteInstallationMediaInput, opts ...request.Option) (*rds.DeleteInstallationMediaOutput, error)
 	DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error)
+	DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error)
 	DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error)
 	DescribeCustomAvailabilityZonesWithContext(ctx context.Context, input *rds.DescribeCustomAvailabilityZonesInput, opts ...request.Option) (*rds.DescribeCustomAvailabilityZonesOutput, error)
@@ -76,6 +79,12 @@ type RDS interface {
 	DescribeDBParameterGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBParameterGroupsInput, cb func(*rds.DescribeDBParameterGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBParametersWithContext(ctx context.Context, input *rds.DescribeDBParametersInput, opts ...request.Option) (*rds.DescribeDBParametersOutput, error)
 	DescribeDBParametersPagesWithContext(ctx context.Context, input *rds.DescribeDBParametersInput, cb func(*rds.DescribeDBParametersOutput, bool) bool, opts ...request.Option) error
+	DescribeDBProxiesWithContext(ctx context.Context, input *rds.DescribeDBProxiesInput, opts ...request.Option) (*rds.DescribeDBProxiesOutput, error)
+	DescribeDBProxiesPagesWithContext(ctx context.Context, input *rds.DescribeDBProxiesInput, cb func(*rds.DescribeDBProxiesOutput, bool) bool, opts ...request.Option) error
+	DescribeDBProxyTargetGroupsWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetGroupsInput, opts ...request.Option) (*rds.DescribeDBProxyTargetGroupsOutput, error)
+	DescribeDBProxyTargetGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetGroupsInput, cb func(*rds.DescribeDBProxyTargetGroupsOutput, bool) bool, opts ...request.Option) error
+	DescribeDBProxyTargetsWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetsInput, opts ...request.Option) (*rds.DescribeDBProxyTargetsOutput, error)
+	DescribeDBProxyTargetsPagesWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetsInput, cb func(*rds.DescribeDBProxyTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBSecurityGroupsWithContext(ctx context.Context, input *rds.DescribeDBSecurityGroupsInput, opts ...request.Option) (*rds.DescribeDBSecurityGroupsOutput, error)
 	DescribeDBSecurityGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBSecurityGroupsInput, cb func(*rds.DescribeDBSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBSnapshotAttributesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotAttributesInput, opts ...request.Option) (*rds.DescribeDBSnapshotAttributesOutput, error)
@@ -120,6 +129,8 @@ type RDS interface {
 	ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context, input *rds.ModifyDBClusterSnapshotAttributeInput, opts ...request.Option) (*rds.ModifyDBClusterSnapshotAttributeOutput, error)
 	ModifyDBInstanceWithContext(ctx context.Context, input *rds.ModifyDBInstanceInput, opts ...request.Option) (*rds.ModifyDBInstanceOutput, error)
 	ModifyDBParameterGroupWithContext(ctx context.Context, input *rds.ModifyDBParameterGroupInput, opts ...request.Option) (*rds.DBParameterGroupNameMessage, error)
+	ModifyDBProxyWithContext(ctx context.Context, input *rds.ModifyDBProxyInput, opts ...request.Option) (*rds.ModifyDBProxyOutput, error)
+	ModifyDBProxyTargetGroupWithContext(ctx context.Context, input *rds.ModifyDBProxyTargetGroupInput, opts ...request.Option) (*rds.ModifyDBProxyTargetGroupOutput, error)
 	ModifyDBSnapshotWithContext(ctx context.Context, input *rds.ModifyDBSnapshotInput, opts ...request.Option) (*rds.ModifyDBSnapshotOutput, error)
 	ModifyDBSnapshotAttributeWithContext(ctx context.Context, input *rds.ModifyDBSnapshotAttributeInput, opts ...request.Option) (*rds.ModifyDBSnapshotAttributeOutput, error)
 	ModifyDBSubnetGroupWithContext(ctx context.Context, input *rds.ModifyDBSubnetGroupInput, opts ...request.Option) (*rds.ModifyDBSubnetGroupOutput, error)
@@ -130,6 +141,7 @@ type RDS interface {
 	PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *rds.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*rds.PromoteReadReplicaDBClusterOutput, error)
 	PurchaseReservedDBInstancesOfferingWithContext(ctx context.Context, input *rds.PurchaseReservedDBInstancesOfferingInput, opts ...request.Option) (*rds.PurchaseReservedDBInstancesOfferingOutput, error)
 	RebootDBInstanceWithContext(ctx context.Context, input *rds.RebootDBInstanceInput, opts ...request.Option) (*rds.RebootDBInstanceOutput, error)
+	RegisterDBProxyTargetsWithContext(ctx context.Context, input *rds.RegisterDBProxyTargetsInput, opts ...request.Option) (*rds.RegisterDBProxyTargetsOutput, error)
 	RemoveFromGlobalClusterWithContext(ctx context.Context, input *rds.RemoveFromGlobalClusterInput, opts ...request.Option) (*rds.RemoveFromGlobalClusterOutput, error)
 	RemoveRoleFromDBClusterWithContext(ctx context.Context, input *rds.RemoveRoleFromDBClusterInput, opts ...request.Option) (*rds.RemoveRoleFromDBClusterOutput, error)
 	RemoveRoleFromDBInstanceWithContext(ctx context.Context, input *rds.RemoveRoleFromDBInstanceInput, opts ...request.Option) (*rds.RemoveRoleFromDBInstanceOutput, error)
@@ -587,6 +599,27 @@ func (c *Client) CreateDBParameterGroupWithContext(ctx context.Context, input *r
 	return req.Output.(*rds.CreateDBParameterGroupOutput), req.Error
 }
 
+func (c *Client) CreateDBProxyWithContext(ctx context.Context, input *rds.CreateDBProxyInput, opts ...request.Option) (*rds.CreateDBProxyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CreateDBProxy",
+		Input:   input,
+		Output:  (*rds.CreateDBProxyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CreateDBProxyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CreateDBProxyOutput), req.Error
+}
+
 func (c *Client) CreateDBSecurityGroupWithContext(ctx context.Context, input *rds.CreateDBSecurityGroupInput, opts ...request.Option) (*rds.CreateDBSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -881,6 +914,27 @@ func (c *Client) DeleteDBParameterGroupWithContext(ctx context.Context, input *r
 	return req.Output.(*rds.DeleteDBParameterGroupOutput), req.Error
 }
 
+func (c *Client) DeleteDBProxyWithContext(ctx context.Context, input *rds.DeleteDBProxyInput, opts ...request.Option) (*rds.DeleteDBProxyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteDBProxy",
+		Input:   input,
+		Output:  (*rds.DeleteDBProxyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteDBProxyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteDBProxyOutput), req.Error
+}
+
 func (c *Client) DeleteDBSecurityGroupWithContext(ctx context.Context, input *rds.DeleteDBSecurityGroupInput, opts ...request.Option) (*rds.DeleteDBSecurityGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1026,6 +1080,27 @@ func (c *Client) DeleteOptionGroupWithContext(ctx context.Context, input *rds.De
 	})
 
 	return req.Output.(*rds.DeleteOptionGroupOutput), req.Error
+}
+
+func (c *Client) DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeregisterDBProxyTargets",
+		Input:   input,
+		Output:  (*rds.DeregisterDBProxyTargetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeregisterDBProxyTargetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeregisterDBProxyTargetsOutput), req.Error
 }
 
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error) {
@@ -1519,6 +1594,129 @@ func (c *Client) DescribeDBParametersPagesWithContext(ctx context.Context, input
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RDSAPI.DescribeDBParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeDBProxiesWithContext(ctx context.Context, input *rds.DescribeDBProxiesInput, opts ...request.Option) (*rds.DescribeDBProxiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBProxies",
+		Input:   input,
+		Output:  (*rds.DescribeDBProxiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeDBProxiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeDBProxiesOutput), req.Error
+}
+
+func (c *Client) DescribeDBProxiesPagesWithContext(ctx context.Context, input *rds.DescribeDBProxiesInput, cb func(*rds.DescribeDBProxiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBProxies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBProxiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeDBProxyTargetGroupsWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetGroupsInput, opts ...request.Option) (*rds.DescribeDBProxyTargetGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBProxyTargetGroups",
+		Input:   input,
+		Output:  (*rds.DescribeDBProxyTargetGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeDBProxyTargetGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeDBProxyTargetGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeDBProxyTargetGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetGroupsInput, cb func(*rds.DescribeDBProxyTargetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBProxyTargetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBProxyTargetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeDBProxyTargetsWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetsInput, opts ...request.Option) (*rds.DescribeDBProxyTargetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBProxyTargets",
+		Input:   input,
+		Output:  (*rds.DescribeDBProxyTargetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeDBProxyTargetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeDBProxyTargetsOutput), req.Error
+}
+
+func (c *Client) DescribeDBProxyTargetsPagesWithContext(ctx context.Context, input *rds.DescribeDBProxyTargetsInput, cb func(*rds.DescribeDBProxyTargetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBProxyTargets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBProxyTargetsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -2434,6 +2632,48 @@ func (c *Client) ModifyDBParameterGroupWithContext(ctx context.Context, input *r
 	return req.Output.(*rds.DBParameterGroupNameMessage), req.Error
 }
 
+func (c *Client) ModifyDBProxyWithContext(ctx context.Context, input *rds.ModifyDBProxyInput, opts ...request.Option) (*rds.ModifyDBProxyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ModifyDBProxy",
+		Input:   input,
+		Output:  (*rds.ModifyDBProxyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ModifyDBProxyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ModifyDBProxyOutput), req.Error
+}
+
+func (c *Client) ModifyDBProxyTargetGroupWithContext(ctx context.Context, input *rds.ModifyDBProxyTargetGroupInput, opts ...request.Option) (*rds.ModifyDBProxyTargetGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ModifyDBProxyTargetGroup",
+		Input:   input,
+		Output:  (*rds.ModifyDBProxyTargetGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ModifyDBProxyTargetGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ModifyDBProxyTargetGroupOutput), req.Error
+}
+
 func (c *Client) ModifyDBSnapshotWithContext(ctx context.Context, input *rds.ModifyDBSnapshotInput, opts ...request.Option) (*rds.ModifyDBSnapshotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -2642,6 +2882,27 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *rds.Reb
 	})
 
 	return req.Output.(*rds.RebootDBInstanceOutput), req.Error
+}
+
+func (c *Client) RegisterDBProxyTargetsWithContext(ctx context.Context, input *rds.RegisterDBProxyTargetsInput, opts ...request.Option) (*rds.RegisterDBProxyTargetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "RegisterDBProxyTargets",
+		Input:   input,
+		Output:  (*rds.RegisterDBProxyTargetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.RegisterDBProxyTargetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.RegisterDBProxyTargetsOutput), req.Error
 }
 
 func (c *Client) RemoveFromGlobalClusterWithContext(ctx context.Context, input *rds.RemoveFromGlobalClusterInput, opts ...request.Option) (*rds.RemoveFromGlobalClusterOutput, error) {
