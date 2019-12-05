@@ -11,16 +11,26 @@ import (
 )
 
 type KinesisVideo interface {
+	CreateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.CreateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.CreateSignalingChannelOutput, error)
 	CreateStreamWithContext(ctx context.Context, input *kinesisvideo.CreateStreamInput, opts ...request.Option) (*kinesisvideo.CreateStreamOutput, error)
+	DeleteSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DeleteSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DeleteSignalingChannelOutput, error)
 	DeleteStreamWithContext(ctx context.Context, input *kinesisvideo.DeleteStreamInput, opts ...request.Option) (*kinesisvideo.DeleteStreamOutput, error)
+	DescribeSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DescribeSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DescribeSignalingChannelOutput, error)
 	DescribeStreamWithContext(ctx context.Context, input *kinesisvideo.DescribeStreamInput, opts ...request.Option) (*kinesisvideo.DescribeStreamOutput, error)
 	GetDataEndpointWithContext(ctx context.Context, input *kinesisvideo.GetDataEndpointInput, opts ...request.Option) (*kinesisvideo.GetDataEndpointOutput, error)
+	GetSignalingChannelEndpointWithContext(ctx context.Context, input *kinesisvideo.GetSignalingChannelEndpointInput, opts ...request.Option) (*kinesisvideo.GetSignalingChannelEndpointOutput, error)
+	ListSignalingChannelsWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, opts ...request.Option) (*kinesisvideo.ListSignalingChannelsOutput, error)
+	ListSignalingChannelsPagesWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, cb func(*kinesisvideo.ListSignalingChannelsOutput, bool) bool, opts ...request.Option) error
 	ListStreamsWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, opts ...request.Option) (*kinesisvideo.ListStreamsOutput, error)
 	ListStreamsPagesWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, cb func(*kinesisvideo.ListStreamsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *kinesisvideo.ListTagsForResourceInput, opts ...request.Option) (*kinesisvideo.ListTagsForResourceOutput, error)
 	ListTagsForStreamWithContext(ctx context.Context, input *kinesisvideo.ListTagsForStreamInput, opts ...request.Option) (*kinesisvideo.ListTagsForStreamOutput, error)
+	TagResourceWithContext(ctx context.Context, input *kinesisvideo.TagResourceInput, opts ...request.Option) (*kinesisvideo.TagResourceOutput, error)
 	TagStreamWithContext(ctx context.Context, input *kinesisvideo.TagStreamInput, opts ...request.Option) (*kinesisvideo.TagStreamOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *kinesisvideo.UntagResourceInput, opts ...request.Option) (*kinesisvideo.UntagResourceOutput, error)
 	UntagStreamWithContext(ctx context.Context, input *kinesisvideo.UntagStreamInput, opts ...request.Option) (*kinesisvideo.UntagStreamOutput, error)
 	UpdateDataRetentionWithContext(ctx context.Context, input *kinesisvideo.UpdateDataRetentionInput, opts ...request.Option) (*kinesisvideo.UpdateDataRetentionOutput, error)
+	UpdateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.UpdateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.UpdateSignalingChannelOutput, error)
 	UpdateStreamWithContext(ctx context.Context, input *kinesisvideo.UpdateStreamInput, opts ...request.Option) (*kinesisvideo.UpdateStreamOutput, error)
 }
 
@@ -38,6 +48,27 @@ func New(base kinesisvideoiface.KinesisVideoAPI, ctxer awsctx.Contexter) Kinesis
 
 var _ KinesisVideo = (*kinesisvideo.KinesisVideo)(nil)
 var _ KinesisVideo = (*Client)(nil)
+
+func (c *Client) CreateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.CreateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.CreateSignalingChannelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "CreateSignalingChannel",
+		Input:   input,
+		Output:  (*kinesisvideo.CreateSignalingChannelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.CreateSignalingChannelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.CreateSignalingChannelOutput), req.Error
+}
 
 func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesisvideo.CreateStreamInput, opts ...request.Option) (*kinesisvideo.CreateStreamOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -60,6 +91,27 @@ func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesisvide
 	return req.Output.(*kinesisvideo.CreateStreamOutput), req.Error
 }
 
+func (c *Client) DeleteSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DeleteSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DeleteSignalingChannelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "DeleteSignalingChannel",
+		Input:   input,
+		Output:  (*kinesisvideo.DeleteSignalingChannelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.DeleteSignalingChannelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.DeleteSignalingChannelOutput), req.Error
+}
+
 func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesisvideo.DeleteStreamInput, opts ...request.Option) (*kinesisvideo.DeleteStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
@@ -79,6 +131,27 @@ func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesisvide
 	})
 
 	return req.Output.(*kinesisvideo.DeleteStreamOutput), req.Error
+}
+
+func (c *Client) DescribeSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DescribeSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DescribeSignalingChannelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "DescribeSignalingChannel",
+		Input:   input,
+		Output:  (*kinesisvideo.DescribeSignalingChannelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.DescribeSignalingChannelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.DescribeSignalingChannelOutput), req.Error
 }
 
 func (c *Client) DescribeStreamWithContext(ctx context.Context, input *kinesisvideo.DescribeStreamInput, opts ...request.Option) (*kinesisvideo.DescribeStreamOutput, error) {
@@ -123,6 +196,68 @@ func (c *Client) GetDataEndpointWithContext(ctx context.Context, input *kinesisv
 	return req.Output.(*kinesisvideo.GetDataEndpointOutput), req.Error
 }
 
+func (c *Client) GetSignalingChannelEndpointWithContext(ctx context.Context, input *kinesisvideo.GetSignalingChannelEndpointInput, opts ...request.Option) (*kinesisvideo.GetSignalingChannelEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "GetSignalingChannelEndpoint",
+		Input:   input,
+		Output:  (*kinesisvideo.GetSignalingChannelEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.GetSignalingChannelEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.GetSignalingChannelEndpointOutput), req.Error
+}
+
+func (c *Client) ListSignalingChannelsWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, opts ...request.Option) (*kinesisvideo.ListSignalingChannelsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "ListSignalingChannels",
+		Input:   input,
+		Output:  (*kinesisvideo.ListSignalingChannelsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.ListSignalingChannelsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.ListSignalingChannelsOutput), req.Error
+}
+
+func (c *Client) ListSignalingChannelsPagesWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, cb func(*kinesisvideo.ListSignalingChannelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "ListSignalingChannels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisVideoAPI.ListSignalingChannelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, opts ...request.Option) (*kinesisvideo.ListStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
@@ -164,6 +299,27 @@ func (c *Client) ListStreamsPagesWithContext(ctx context.Context, input *kinesis
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kinesisvideo.ListTagsForResourceInput, opts ...request.Option) (*kinesisvideo.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*kinesisvideo.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesisvideo.ListTagsForStreamInput, opts ...request.Option) (*kinesisvideo.ListTagsForStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
@@ -185,6 +341,27 @@ func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesi
 	return req.Output.(*kinesisvideo.ListTagsForStreamOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *kinesisvideo.TagResourceInput, opts ...request.Option) (*kinesisvideo.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*kinesisvideo.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.TagResourceOutput), req.Error
+}
+
 func (c *Client) TagStreamWithContext(ctx context.Context, input *kinesisvideo.TagStreamInput, opts ...request.Option) (*kinesisvideo.TagStreamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisvideo",
@@ -204,6 +381,27 @@ func (c *Client) TagStreamWithContext(ctx context.Context, input *kinesisvideo.T
 	})
 
 	return req.Output.(*kinesisvideo.TagStreamOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *kinesisvideo.UntagResourceInput, opts ...request.Option) (*kinesisvideo.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*kinesisvideo.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UntagStreamWithContext(ctx context.Context, input *kinesisvideo.UntagStreamInput, opts ...request.Option) (*kinesisvideo.UntagStreamOutput, error) {
@@ -246,6 +444,27 @@ func (c *Client) UpdateDataRetentionWithContext(ctx context.Context, input *kine
 	})
 
 	return req.Output.(*kinesisvideo.UpdateDataRetentionOutput), req.Error
+}
+
+func (c *Client) UpdateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.UpdateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.UpdateSignalingChannelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "UpdateSignalingChannel",
+		Input:   input,
+		Output:  (*kinesisvideo.UpdateSignalingChannelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.UpdateSignalingChannelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.UpdateSignalingChannelOutput), req.Error
 }
 
 func (c *Client) UpdateStreamWithContext(ctx context.Context, input *kinesisvideo.UpdateStreamInput, opts ...request.Option) (*kinesisvideo.UpdateStreamOutput, error) {

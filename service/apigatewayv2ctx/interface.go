@@ -25,6 +25,7 @@ type ApiGatewayV2 interface {
 	DeleteApiWithContext(ctx context.Context, input *apigatewayv2.DeleteApiInput, opts ...request.Option) (*apigatewayv2.DeleteApiOutput, error)
 	DeleteApiMappingWithContext(ctx context.Context, input *apigatewayv2.DeleteApiMappingInput, opts ...request.Option) (*apigatewayv2.DeleteApiMappingOutput, error)
 	DeleteAuthorizerWithContext(ctx context.Context, input *apigatewayv2.DeleteAuthorizerInput, opts ...request.Option) (*apigatewayv2.DeleteAuthorizerOutput, error)
+	DeleteCorsConfigurationWithContext(ctx context.Context, input *apigatewayv2.DeleteCorsConfigurationInput, opts ...request.Option) (*apigatewayv2.DeleteCorsConfigurationOutput, error)
 	DeleteDeploymentWithContext(ctx context.Context, input *apigatewayv2.DeleteDeploymentInput, opts ...request.Option) (*apigatewayv2.DeleteDeploymentOutput, error)
 	DeleteDomainNameWithContext(ctx context.Context, input *apigatewayv2.DeleteDomainNameInput, opts ...request.Option) (*apigatewayv2.DeleteDomainNameOutput, error)
 	DeleteIntegrationWithContext(ctx context.Context, input *apigatewayv2.DeleteIntegrationInput, opts ...request.Option) (*apigatewayv2.DeleteIntegrationOutput, error)
@@ -32,6 +33,7 @@ type ApiGatewayV2 interface {
 	DeleteModelWithContext(ctx context.Context, input *apigatewayv2.DeleteModelInput, opts ...request.Option) (*apigatewayv2.DeleteModelOutput, error)
 	DeleteRouteWithContext(ctx context.Context, input *apigatewayv2.DeleteRouteInput, opts ...request.Option) (*apigatewayv2.DeleteRouteOutput, error)
 	DeleteRouteResponseWithContext(ctx context.Context, input *apigatewayv2.DeleteRouteResponseInput, opts ...request.Option) (*apigatewayv2.DeleteRouteResponseOutput, error)
+	DeleteRouteSettingsWithContext(ctx context.Context, input *apigatewayv2.DeleteRouteSettingsInput, opts ...request.Option) (*apigatewayv2.DeleteRouteSettingsOutput, error)
 	DeleteStageWithContext(ctx context.Context, input *apigatewayv2.DeleteStageInput, opts ...request.Option) (*apigatewayv2.DeleteStageOutput, error)
 	GetApiWithContext(ctx context.Context, input *apigatewayv2.GetApiInput, opts ...request.Option) (*apigatewayv2.GetApiOutput, error)
 	GetApiMappingWithContext(ctx context.Context, input *apigatewayv2.GetApiMappingInput, opts ...request.Option) (*apigatewayv2.GetApiMappingOutput, error)
@@ -57,6 +59,8 @@ type ApiGatewayV2 interface {
 	GetStageWithContext(ctx context.Context, input *apigatewayv2.GetStageInput, opts ...request.Option) (*apigatewayv2.GetStageOutput, error)
 	GetStagesWithContext(ctx context.Context, input *apigatewayv2.GetStagesInput, opts ...request.Option) (*apigatewayv2.GetStagesOutput, error)
 	GetTagsWithContext(ctx context.Context, input *apigatewayv2.GetTagsInput, opts ...request.Option) (*apigatewayv2.GetTagsOutput, error)
+	ImportApiWithContext(ctx context.Context, input *apigatewayv2.ImportApiInput, opts ...request.Option) (*apigatewayv2.ImportApiOutput, error)
+	ReimportApiWithContext(ctx context.Context, input *apigatewayv2.ReimportApiInput, opts ...request.Option) (*apigatewayv2.ReimportApiOutput, error)
 	TagResourceWithContext(ctx context.Context, input *apigatewayv2.TagResourceInput, opts ...request.Option) (*apigatewayv2.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *apigatewayv2.UntagResourceInput, opts ...request.Option) (*apigatewayv2.UntagResourceOutput, error)
 	UpdateApiWithContext(ctx context.Context, input *apigatewayv2.UpdateApiInput, opts ...request.Option) (*apigatewayv2.UpdateApiOutput, error)
@@ -381,6 +385,27 @@ func (c *Client) DeleteAuthorizerWithContext(ctx context.Context, input *apigate
 	return req.Output.(*apigatewayv2.DeleteAuthorizerOutput), req.Error
 }
 
+func (c *Client) DeleteCorsConfigurationWithContext(ctx context.Context, input *apigatewayv2.DeleteCorsConfigurationInput, opts ...request.Option) (*apigatewayv2.DeleteCorsConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewayv2",
+		Action:  "DeleteCorsConfiguration",
+		Input:   input,
+		Output:  (*apigatewayv2.DeleteCorsConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayV2API.DeleteCorsConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewayv2.DeleteCorsConfigurationOutput), req.Error
+}
+
 func (c *Client) DeleteDeploymentWithContext(ctx context.Context, input *apigatewayv2.DeleteDeploymentInput, opts ...request.Option) (*apigatewayv2.DeleteDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "apigatewayv2",
@@ -526,6 +551,27 @@ func (c *Client) DeleteRouteResponseWithContext(ctx context.Context, input *apig
 	})
 
 	return req.Output.(*apigatewayv2.DeleteRouteResponseOutput), req.Error
+}
+
+func (c *Client) DeleteRouteSettingsWithContext(ctx context.Context, input *apigatewayv2.DeleteRouteSettingsInput, opts ...request.Option) (*apigatewayv2.DeleteRouteSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewayv2",
+		Action:  "DeleteRouteSettings",
+		Input:   input,
+		Output:  (*apigatewayv2.DeleteRouteSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayV2API.DeleteRouteSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewayv2.DeleteRouteSettingsOutput), req.Error
 }
 
 func (c *Client) DeleteStageWithContext(ctx context.Context, input *apigatewayv2.DeleteStageInput, opts ...request.Option) (*apigatewayv2.DeleteStageOutput, error) {
@@ -1051,6 +1097,48 @@ func (c *Client) GetTagsWithContext(ctx context.Context, input *apigatewayv2.Get
 	})
 
 	return req.Output.(*apigatewayv2.GetTagsOutput), req.Error
+}
+
+func (c *Client) ImportApiWithContext(ctx context.Context, input *apigatewayv2.ImportApiInput, opts ...request.Option) (*apigatewayv2.ImportApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewayv2",
+		Action:  "ImportApi",
+		Input:   input,
+		Output:  (*apigatewayv2.ImportApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayV2API.ImportApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewayv2.ImportApiOutput), req.Error
+}
+
+func (c *Client) ReimportApiWithContext(ctx context.Context, input *apigatewayv2.ReimportApiInput, opts ...request.Option) (*apigatewayv2.ReimportApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewayv2",
+		Action:  "ReimportApi",
+		Input:   input,
+		Output:  (*apigatewayv2.ReimportApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayV2API.ReimportApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewayv2.ReimportApiOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *apigatewayv2.TagResourceInput, opts ...request.Option) (*apigatewayv2.TagResourceOutput, error) {
