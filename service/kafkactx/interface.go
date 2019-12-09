@@ -35,6 +35,7 @@ type Kafka interface {
 	UpdateBrokerCountWithContext(ctx context.Context, input *kafka.UpdateBrokerCountInput, opts ...request.Option) (*kafka.UpdateBrokerCountOutput, error)
 	UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error)
 	UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error)
+	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
 }
 
 type Client struct {
@@ -549,4 +550,25 @@ func (c *Client) UpdateClusterConfigurationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*kafka.UpdateClusterConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateMonitoring",
+		Input:   input,
+		Output:  (*kafka.UpdateMonitoringOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateMonitoringWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateMonitoringOutput), req.Error
 }

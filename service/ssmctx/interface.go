@@ -71,6 +71,7 @@ type SSM interface {
 	DescribePatchPropertiesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, opts ...request.Option) (*ssm.DescribePatchPropertiesOutput, error)
 	DescribeSessionsWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, opts ...request.Option) (*ssm.DescribeSessionsOutput, error)
 	GetAutomationExecutionWithContext(ctx context.Context, input *ssm.GetAutomationExecutionInput, opts ...request.Option) (*ssm.GetAutomationExecutionOutput, error)
+	GetCalendarStateWithContext(ctx context.Context, input *ssm.GetCalendarStateInput, opts ...request.Option) (*ssm.GetCalendarStateOutput, error)
 	GetCommandInvocationWithContext(ctx context.Context, input *ssm.GetCommandInvocationInput, opts ...request.Option) (*ssm.GetCommandInvocationOutput, error)
 	GetConnectionStatusWithContext(ctx context.Context, input *ssm.GetConnectionStatusInput, opts ...request.Option) (*ssm.GetConnectionStatusOutput, error)
 	GetDefaultPatchBaselineWithContext(ctx context.Context, input *ssm.GetDefaultPatchBaselineInput, opts ...request.Option) (*ssm.GetDefaultPatchBaselineOutput, error)
@@ -1413,6 +1414,27 @@ func (c *Client) GetAutomationExecutionWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*ssm.GetAutomationExecutionOutput), req.Error
+}
+
+func (c *Client) GetCalendarStateWithContext(ctx context.Context, input *ssm.GetCalendarStateInput, opts ...request.Option) (*ssm.GetCalendarStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "GetCalendarState",
+		Input:   input,
+		Output:  (*ssm.GetCalendarStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.GetCalendarStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.GetCalendarStateOutput), req.Error
 }
 
 func (c *Client) GetCommandInvocationWithContext(ctx context.Context, input *ssm.GetCommandInvocationInput, opts ...request.Option) (*ssm.GetCommandInvocationOutput, error) {
