@@ -22,9 +22,11 @@ type CodeBuild interface {
 	DeleteProjectWithContext(ctx context.Context, input *codebuild.DeleteProjectInput, opts ...request.Option) (*codebuild.DeleteProjectOutput, error)
 	DeleteReportWithContext(ctx context.Context, input *codebuild.DeleteReportInput, opts ...request.Option) (*codebuild.DeleteReportOutput, error)
 	DeleteReportGroupWithContext(ctx context.Context, input *codebuild.DeleteReportGroupInput, opts ...request.Option) (*codebuild.DeleteReportGroupOutput, error)
+	DeleteResourcePolicyWithContext(ctx context.Context, input *codebuild.DeleteResourcePolicyInput, opts ...request.Option) (*codebuild.DeleteResourcePolicyOutput, error)
 	DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error)
 	DeleteWebhookWithContext(ctx context.Context, input *codebuild.DeleteWebhookInput, opts ...request.Option) (*codebuild.DeleteWebhookOutput, error)
 	DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error)
+	GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error)
 	ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error)
 	InvalidateProjectCacheWithContext(ctx context.Context, input *codebuild.InvalidateProjectCacheInput, opts ...request.Option) (*codebuild.InvalidateProjectCacheOutput, error)
 	ListBuildsWithContext(ctx context.Context, input *codebuild.ListBuildsInput, opts ...request.Option) (*codebuild.ListBuildsOutput, error)
@@ -34,7 +36,10 @@ type CodeBuild interface {
 	ListReportGroupsWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, opts ...request.Option) (*codebuild.ListReportGroupsOutput, error)
 	ListReportsWithContext(ctx context.Context, input *codebuild.ListReportsInput, opts ...request.Option) (*codebuild.ListReportsOutput, error)
 	ListReportsForReportGroupWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, opts ...request.Option) (*codebuild.ListReportsForReportGroupOutput, error)
+	ListSharedProjectsWithContext(ctx context.Context, input *codebuild.ListSharedProjectsInput, opts ...request.Option) (*codebuild.ListSharedProjectsOutput, error)
+	ListSharedReportGroupsWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, opts ...request.Option) (*codebuild.ListSharedReportGroupsOutput, error)
 	ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error)
+	PutResourcePolicyWithContext(ctx context.Context, input *codebuild.PutResourcePolicyInput, opts ...request.Option) (*codebuild.PutResourcePolicyOutput, error)
 	StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error)
 	StopBuildWithContext(ctx context.Context, input *codebuild.StopBuildInput, opts ...request.Option) (*codebuild.StopBuildOutput, error)
 	UpdateProjectWithContext(ctx context.Context, input *codebuild.UpdateProjectInput, opts ...request.Option) (*codebuild.UpdateProjectOutput, error)
@@ -288,6 +293,27 @@ func (c *Client) DeleteReportGroupWithContext(ctx context.Context, input *codebu
 	return req.Output.(*codebuild.DeleteReportGroupOutput), req.Error
 }
 
+func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *codebuild.DeleteResourcePolicyInput, opts ...request.Option) (*codebuild.DeleteResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DeleteResourcePolicy",
+		Input:   input,
+		Output:  (*codebuild.DeleteResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.DeleteResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.DeleteResourcePolicyOutput), req.Error
+}
+
 func (c *Client) DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -349,6 +375,27 @@ func (c *Client) DescribeTestCasesWithContext(ctx context.Context, input *codebu
 	})
 
 	return req.Output.(*codebuild.DescribeTestCasesOutput), req.Error
+}
+
+func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "GetResourcePolicy",
+		Input:   input,
+		Output:  (*codebuild.GetResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.GetResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.GetResourcePolicyOutput), req.Error
 }
 
 func (c *Client) ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error) {
@@ -540,6 +587,48 @@ func (c *Client) ListReportsForReportGroupWithContext(ctx context.Context, input
 	return req.Output.(*codebuild.ListReportsForReportGroupOutput), req.Error
 }
 
+func (c *Client) ListSharedProjectsWithContext(ctx context.Context, input *codebuild.ListSharedProjectsInput, opts ...request.Option) (*codebuild.ListSharedProjectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListSharedProjects",
+		Input:   input,
+		Output:  (*codebuild.ListSharedProjectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListSharedProjectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListSharedProjectsOutput), req.Error
+}
+
+func (c *Client) ListSharedReportGroupsWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, opts ...request.Option) (*codebuild.ListSharedReportGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListSharedReportGroups",
+		Input:   input,
+		Output:  (*codebuild.ListSharedReportGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListSharedReportGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListSharedReportGroupsOutput), req.Error
+}
+
 func (c *Client) ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -559,6 +648,27 @@ func (c *Client) ListSourceCredentialsWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*codebuild.ListSourceCredentialsOutput), req.Error
+}
+
+func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *codebuild.PutResourcePolicyInput, opts ...request.Option) (*codebuild.PutResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "PutResourcePolicy",
+		Input:   input,
+		Output:  (*codebuild.PutResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.PutResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.PutResourcePolicyOutput), req.Error
 }
 
 func (c *Client) StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error) {
