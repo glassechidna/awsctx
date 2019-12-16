@@ -16,6 +16,8 @@ type ComprehendMedical interface {
 	DetectEntitiesWithContext(ctx context.Context, input *comprehendmedical.DetectEntitiesInput, opts ...request.Option) (*comprehendmedical.DetectEntitiesOutput, error)
 	DetectEntitiesV2WithContext(ctx context.Context, input *comprehendmedical.DetectEntitiesV2Input, opts ...request.Option) (*comprehendmedical.DetectEntitiesV2Output, error)
 	DetectPHIWithContext(ctx context.Context, input *comprehendmedical.DetectPHIInput, opts ...request.Option) (*comprehendmedical.DetectPHIOutput, error)
+	InferICD10CMWithContext(ctx context.Context, input *comprehendmedical.InferICD10CMInput, opts ...request.Option) (*comprehendmedical.InferICD10CMOutput, error)
+	InferRxNormWithContext(ctx context.Context, input *comprehendmedical.InferRxNormInput, opts ...request.Option) (*comprehendmedical.InferRxNormOutput, error)
 	ListEntitiesDetectionV2JobsWithContext(ctx context.Context, input *comprehendmedical.ListEntitiesDetectionV2JobsInput, opts ...request.Option) (*comprehendmedical.ListEntitiesDetectionV2JobsOutput, error)
 	ListPHIDetectionJobsWithContext(ctx context.Context, input *comprehendmedical.ListPHIDetectionJobsInput, opts ...request.Option) (*comprehendmedical.ListPHIDetectionJobsOutput, error)
 	StartEntitiesDetectionV2JobWithContext(ctx context.Context, input *comprehendmedical.StartEntitiesDetectionV2JobInput, opts ...request.Option) (*comprehendmedical.StartEntitiesDetectionV2JobOutput, error)
@@ -142,6 +144,48 @@ func (c *Client) DetectPHIWithContext(ctx context.Context, input *comprehendmedi
 	})
 
 	return req.Output.(*comprehendmedical.DetectPHIOutput), req.Error
+}
+
+func (c *Client) InferICD10CMWithContext(ctx context.Context, input *comprehendmedical.InferICD10CMInput, opts ...request.Option) (*comprehendmedical.InferICD10CMOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehendmedical",
+		Action:  "InferICD10CM",
+		Input:   input,
+		Output:  (*comprehendmedical.InferICD10CMOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendMedicalAPI.InferICD10CMWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehendmedical.InferICD10CMOutput), req.Error
+}
+
+func (c *Client) InferRxNormWithContext(ctx context.Context, input *comprehendmedical.InferRxNormInput, opts ...request.Option) (*comprehendmedical.InferRxNormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehendmedical",
+		Action:  "InferRxNorm",
+		Input:   input,
+		Output:  (*comprehendmedical.InferRxNormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendMedicalAPI.InferRxNormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehendmedical.InferRxNormOutput), req.Error
 }
 
 func (c *Client) ListEntitiesDetectionV2JobsWithContext(ctx context.Context, input *comprehendmedical.ListEntitiesDetectionV2JobsInput, opts ...request.Option) (*comprehendmedical.ListEntitiesDetectionV2JobsOutput, error) {
