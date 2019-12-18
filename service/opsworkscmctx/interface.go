@@ -23,8 +23,11 @@ type OpsWorksCM interface {
 	DescribeServersWithContext(ctx context.Context, input *opsworkscm.DescribeServersInput, opts ...request.Option) (*opsworkscm.DescribeServersOutput, error)
 	DisassociateNodeWithContext(ctx context.Context, input *opsworkscm.DisassociateNodeInput, opts ...request.Option) (*opsworkscm.DisassociateNodeOutput, error)
 	ExportServerEngineAttributeWithContext(ctx context.Context, input *opsworkscm.ExportServerEngineAttributeInput, opts ...request.Option) (*opsworkscm.ExportServerEngineAttributeOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *opsworkscm.ListTagsForResourceInput, opts ...request.Option) (*opsworkscm.ListTagsForResourceOutput, error)
 	RestoreServerWithContext(ctx context.Context, input *opsworkscm.RestoreServerInput, opts ...request.Option) (*opsworkscm.RestoreServerOutput, error)
 	StartMaintenanceWithContext(ctx context.Context, input *opsworkscm.StartMaintenanceInput, opts ...request.Option) (*opsworkscm.StartMaintenanceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *opsworkscm.TagResourceInput, opts ...request.Option) (*opsworkscm.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *opsworkscm.UntagResourceInput, opts ...request.Option) (*opsworkscm.UntagResourceOutput, error)
 	UpdateServerWithContext(ctx context.Context, input *opsworkscm.UpdateServerInput, opts ...request.Option) (*opsworkscm.UpdateServerOutput, error)
 	UpdateServerEngineAttributesWithContext(ctx context.Context, input *opsworkscm.UpdateServerEngineAttributesInput, opts ...request.Option) (*opsworkscm.UpdateServerEngineAttributesOutput, error)
 }
@@ -296,6 +299,27 @@ func (c *Client) ExportServerEngineAttributeWithContext(ctx context.Context, inp
 	return req.Output.(*opsworkscm.ExportServerEngineAttributeOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *opsworkscm.ListTagsForResourceInput, opts ...request.Option) (*opsworkscm.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*opsworkscm.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OpsWorksCMAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*opsworkscm.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) RestoreServerWithContext(ctx context.Context, input *opsworkscm.RestoreServerInput, opts ...request.Option) (*opsworkscm.RestoreServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
@@ -336,6 +360,48 @@ func (c *Client) StartMaintenanceWithContext(ctx context.Context, input *opswork
 	})
 
 	return req.Output.(*opsworkscm.StartMaintenanceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *opsworkscm.TagResourceInput, opts ...request.Option) (*opsworkscm.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*opsworkscm.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OpsWorksCMAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*opsworkscm.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *opsworkscm.UntagResourceInput, opts ...request.Option) (*opsworkscm.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*opsworkscm.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OpsWorksCMAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*opsworkscm.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateServerWithContext(ctx context.Context, input *opsworkscm.UpdateServerInput, opts ...request.Option) (*opsworkscm.UpdateServerOutput, error) {
