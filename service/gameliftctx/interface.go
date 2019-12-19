@@ -62,6 +62,7 @@ type GameLift interface {
 	ListBuildsWithContext(ctx context.Context, input *gamelift.ListBuildsInput, opts ...request.Option) (*gamelift.ListBuildsOutput, error)
 	ListFleetsWithContext(ctx context.Context, input *gamelift.ListFleetsInput, opts ...request.Option) (*gamelift.ListFleetsOutput, error)
 	ListScriptsWithContext(ctx context.Context, input *gamelift.ListScriptsInput, opts ...request.Option) (*gamelift.ListScriptsOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *gamelift.ListTagsForResourceInput, opts ...request.Option) (*gamelift.ListTagsForResourceOutput, error)
 	PutScalingPolicyWithContext(ctx context.Context, input *gamelift.PutScalingPolicyInput, opts ...request.Option) (*gamelift.PutScalingPolicyOutput, error)
 	RequestUploadCredentialsWithContext(ctx context.Context, input *gamelift.RequestUploadCredentialsInput, opts ...request.Option) (*gamelift.RequestUploadCredentialsOutput, error)
 	ResolveAliasWithContext(ctx context.Context, input *gamelift.ResolveAliasInput, opts ...request.Option) (*gamelift.ResolveAliasOutput, error)
@@ -73,6 +74,8 @@ type GameLift interface {
 	StopFleetActionsWithContext(ctx context.Context, input *gamelift.StopFleetActionsInput, opts ...request.Option) (*gamelift.StopFleetActionsOutput, error)
 	StopGameSessionPlacementWithContext(ctx context.Context, input *gamelift.StopGameSessionPlacementInput, opts ...request.Option) (*gamelift.StopGameSessionPlacementOutput, error)
 	StopMatchmakingWithContext(ctx context.Context, input *gamelift.StopMatchmakingInput, opts ...request.Option) (*gamelift.StopMatchmakingOutput, error)
+	TagResourceWithContext(ctx context.Context, input *gamelift.TagResourceInput, opts ...request.Option) (*gamelift.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *gamelift.UntagResourceInput, opts ...request.Option) (*gamelift.UntagResourceOutput, error)
 	UpdateAliasWithContext(ctx context.Context, input *gamelift.UpdateAliasInput, opts ...request.Option) (*gamelift.UpdateAliasOutput, error)
 	UpdateBuildWithContext(ctx context.Context, input *gamelift.UpdateBuildInput, opts ...request.Option) (*gamelift.UpdateBuildOutput, error)
 	UpdateFleetAttributesWithContext(ctx context.Context, input *gamelift.UpdateFleetAttributesInput, opts ...request.Option) (*gamelift.UpdateFleetAttributesOutput, error)
@@ -1172,6 +1175,27 @@ func (c *Client) ListScriptsWithContext(ctx context.Context, input *gamelift.Lis
 	return req.Output.(*gamelift.ListScriptsOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *gamelift.ListTagsForResourceInput, opts ...request.Option) (*gamelift.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*gamelift.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *gamelift.PutScalingPolicyInput, opts ...request.Option) (*gamelift.PutScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
@@ -1401,6 +1425,48 @@ func (c *Client) StopMatchmakingWithContext(ctx context.Context, input *gamelift
 	})
 
 	return req.Output.(*gamelift.StopMatchmakingOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *gamelift.TagResourceInput, opts ...request.Option) (*gamelift.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*gamelift.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *gamelift.UntagResourceInput, opts ...request.Option) (*gamelift.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*gamelift.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateAliasWithContext(ctx context.Context, input *gamelift.UpdateAliasInput, opts ...request.Option) (*gamelift.UpdateAliasOutput, error) {
