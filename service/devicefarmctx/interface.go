@@ -16,6 +16,8 @@ type DeviceFarm interface {
 	CreateNetworkProfileWithContext(ctx context.Context, input *devicefarm.CreateNetworkProfileInput, opts ...request.Option) (*devicefarm.CreateNetworkProfileOutput, error)
 	CreateProjectWithContext(ctx context.Context, input *devicefarm.CreateProjectInput, opts ...request.Option) (*devicefarm.CreateProjectOutput, error)
 	CreateRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.CreateRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.CreateRemoteAccessSessionOutput, error)
+	CreateTestGridProjectWithContext(ctx context.Context, input *devicefarm.CreateTestGridProjectInput, opts ...request.Option) (*devicefarm.CreateTestGridProjectOutput, error)
+	CreateTestGridUrlWithContext(ctx context.Context, input *devicefarm.CreateTestGridUrlInput, opts ...request.Option) (*devicefarm.CreateTestGridUrlOutput, error)
 	CreateUploadWithContext(ctx context.Context, input *devicefarm.CreateUploadInput, opts ...request.Option) (*devicefarm.CreateUploadOutput, error)
 	CreateVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.CreateVPCEConfigurationInput, opts ...request.Option) (*devicefarm.CreateVPCEConfigurationOutput, error)
 	DeleteDevicePoolWithContext(ctx context.Context, input *devicefarm.DeleteDevicePoolInput, opts ...request.Option) (*devicefarm.DeleteDevicePoolOutput, error)
@@ -24,6 +26,7 @@ type DeviceFarm interface {
 	DeleteProjectWithContext(ctx context.Context, input *devicefarm.DeleteProjectInput, opts ...request.Option) (*devicefarm.DeleteProjectOutput, error)
 	DeleteRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.DeleteRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.DeleteRemoteAccessSessionOutput, error)
 	DeleteRunWithContext(ctx context.Context, input *devicefarm.DeleteRunInput, opts ...request.Option) (*devicefarm.DeleteRunOutput, error)
+	DeleteTestGridProjectWithContext(ctx context.Context, input *devicefarm.DeleteTestGridProjectInput, opts ...request.Option) (*devicefarm.DeleteTestGridProjectOutput, error)
 	DeleteUploadWithContext(ctx context.Context, input *devicefarm.DeleteUploadInput, opts ...request.Option) (*devicefarm.DeleteUploadOutput, error)
 	DeleteVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.DeleteVPCEConfigurationInput, opts ...request.Option) (*devicefarm.DeleteVPCEConfigurationOutput, error)
 	GetAccountSettingsWithContext(ctx context.Context, input *devicefarm.GetAccountSettingsInput, opts ...request.Option) (*devicefarm.GetAccountSettingsOutput, error)
@@ -41,6 +44,8 @@ type DeviceFarm interface {
 	GetRunWithContext(ctx context.Context, input *devicefarm.GetRunInput, opts ...request.Option) (*devicefarm.GetRunOutput, error)
 	GetSuiteWithContext(ctx context.Context, input *devicefarm.GetSuiteInput, opts ...request.Option) (*devicefarm.GetSuiteOutput, error)
 	GetTestWithContext(ctx context.Context, input *devicefarm.GetTestInput, opts ...request.Option) (*devicefarm.GetTestOutput, error)
+	GetTestGridProjectWithContext(ctx context.Context, input *devicefarm.GetTestGridProjectInput, opts ...request.Option) (*devicefarm.GetTestGridProjectOutput, error)
+	GetTestGridSessionWithContext(ctx context.Context, input *devicefarm.GetTestGridSessionInput, opts ...request.Option) (*devicefarm.GetTestGridSessionOutput, error)
 	GetUploadWithContext(ctx context.Context, input *devicefarm.GetUploadInput, opts ...request.Option) (*devicefarm.GetUploadOutput, error)
 	GetVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.GetVPCEConfigurationInput, opts ...request.Option) (*devicefarm.GetVPCEConfigurationOutput, error)
 	InstallToRemoteAccessSessionWithContext(ctx context.Context, input *devicefarm.InstallToRemoteAccessSessionInput, opts ...request.Option) (*devicefarm.InstallToRemoteAccessSessionOutput, error)
@@ -70,6 +75,14 @@ type DeviceFarm interface {
 	ListSuitesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, opts ...request.Option) (*devicefarm.ListSuitesOutput, error)
 	ListSuitesPagesWithContext(ctx context.Context, input *devicefarm.ListSuitesInput, cb func(*devicefarm.ListSuitesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *devicefarm.ListTagsForResourceInput, opts ...request.Option) (*devicefarm.ListTagsForResourceOutput, error)
+	ListTestGridProjectsWithContext(ctx context.Context, input *devicefarm.ListTestGridProjectsInput, opts ...request.Option) (*devicefarm.ListTestGridProjectsOutput, error)
+	ListTestGridProjectsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridProjectsInput, cb func(*devicefarm.ListTestGridProjectsOutput, bool) bool, opts ...request.Option) error
+	ListTestGridSessionActionsWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionActionsInput, opts ...request.Option) (*devicefarm.ListTestGridSessionActionsOutput, error)
+	ListTestGridSessionActionsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionActionsInput, cb func(*devicefarm.ListTestGridSessionActionsOutput, bool) bool, opts ...request.Option) error
+	ListTestGridSessionArtifactsWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionArtifactsInput, opts ...request.Option) (*devicefarm.ListTestGridSessionArtifactsOutput, error)
+	ListTestGridSessionArtifactsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionArtifactsInput, cb func(*devicefarm.ListTestGridSessionArtifactsOutput, bool) bool, opts ...request.Option) error
+	ListTestGridSessionsWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionsInput, opts ...request.Option) (*devicefarm.ListTestGridSessionsOutput, error)
+	ListTestGridSessionsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionsInput, cb func(*devicefarm.ListTestGridSessionsOutput, bool) bool, opts ...request.Option) error
 	ListTestsWithContext(ctx context.Context, input *devicefarm.ListTestsInput, opts ...request.Option) (*devicefarm.ListTestsOutput, error)
 	ListTestsPagesWithContext(ctx context.Context, input *devicefarm.ListTestsInput, cb func(*devicefarm.ListTestsOutput, bool) bool, opts ...request.Option) error
 	ListUniqueProblemsWithContext(ctx context.Context, input *devicefarm.ListUniqueProblemsInput, opts ...request.Option) (*devicefarm.ListUniqueProblemsOutput, error)
@@ -90,6 +103,7 @@ type DeviceFarm interface {
 	UpdateInstanceProfileWithContext(ctx context.Context, input *devicefarm.UpdateInstanceProfileInput, opts ...request.Option) (*devicefarm.UpdateInstanceProfileOutput, error)
 	UpdateNetworkProfileWithContext(ctx context.Context, input *devicefarm.UpdateNetworkProfileInput, opts ...request.Option) (*devicefarm.UpdateNetworkProfileOutput, error)
 	UpdateProjectWithContext(ctx context.Context, input *devicefarm.UpdateProjectInput, opts ...request.Option) (*devicefarm.UpdateProjectOutput, error)
+	UpdateTestGridProjectWithContext(ctx context.Context, input *devicefarm.UpdateTestGridProjectInput, opts ...request.Option) (*devicefarm.UpdateTestGridProjectOutput, error)
 	UpdateUploadWithContext(ctx context.Context, input *devicefarm.UpdateUploadInput, opts ...request.Option) (*devicefarm.UpdateUploadOutput, error)
 	UpdateVPCEConfigurationWithContext(ctx context.Context, input *devicefarm.UpdateVPCEConfigurationInput, opts ...request.Option) (*devicefarm.UpdateVPCEConfigurationOutput, error)
 }
@@ -212,6 +226,48 @@ func (c *Client) CreateRemoteAccessSessionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*devicefarm.CreateRemoteAccessSessionOutput), req.Error
+}
+
+func (c *Client) CreateTestGridProjectWithContext(ctx context.Context, input *devicefarm.CreateTestGridProjectInput, opts ...request.Option) (*devicefarm.CreateTestGridProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "CreateTestGridProject",
+		Input:   input,
+		Output:  (*devicefarm.CreateTestGridProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.CreateTestGridProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.CreateTestGridProjectOutput), req.Error
+}
+
+func (c *Client) CreateTestGridUrlWithContext(ctx context.Context, input *devicefarm.CreateTestGridUrlInput, opts ...request.Option) (*devicefarm.CreateTestGridUrlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "CreateTestGridUrl",
+		Input:   input,
+		Output:  (*devicefarm.CreateTestGridUrlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.CreateTestGridUrlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.CreateTestGridUrlOutput), req.Error
 }
 
 func (c *Client) CreateUploadWithContext(ctx context.Context, input *devicefarm.CreateUploadInput, opts ...request.Option) (*devicefarm.CreateUploadOutput, error) {
@@ -380,6 +436,27 @@ func (c *Client) DeleteRunWithContext(ctx context.Context, input *devicefarm.Del
 	})
 
 	return req.Output.(*devicefarm.DeleteRunOutput), req.Error
+}
+
+func (c *Client) DeleteTestGridProjectWithContext(ctx context.Context, input *devicefarm.DeleteTestGridProjectInput, opts ...request.Option) (*devicefarm.DeleteTestGridProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "DeleteTestGridProject",
+		Input:   input,
+		Output:  (*devicefarm.DeleteTestGridProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.DeleteTestGridProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.DeleteTestGridProjectOutput), req.Error
 }
 
 func (c *Client) DeleteUploadWithContext(ctx context.Context, input *devicefarm.DeleteUploadInput, opts ...request.Option) (*devicefarm.DeleteUploadOutput, error) {
@@ -736,6 +813,48 @@ func (c *Client) GetTestWithContext(ctx context.Context, input *devicefarm.GetTe
 	})
 
 	return req.Output.(*devicefarm.GetTestOutput), req.Error
+}
+
+func (c *Client) GetTestGridProjectWithContext(ctx context.Context, input *devicefarm.GetTestGridProjectInput, opts ...request.Option) (*devicefarm.GetTestGridProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "GetTestGridProject",
+		Input:   input,
+		Output:  (*devicefarm.GetTestGridProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.GetTestGridProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.GetTestGridProjectOutput), req.Error
+}
+
+func (c *Client) GetTestGridSessionWithContext(ctx context.Context, input *devicefarm.GetTestGridSessionInput, opts ...request.Option) (*devicefarm.GetTestGridSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "GetTestGridSession",
+		Input:   input,
+		Output:  (*devicefarm.GetTestGridSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.GetTestGridSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.GetTestGridSessionOutput), req.Error
 }
 
 func (c *Client) GetUploadWithContext(ctx context.Context, input *devicefarm.GetUploadInput, opts ...request.Option) (*devicefarm.GetUploadOutput, error) {
@@ -1337,6 +1456,170 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *devi
 	return req.Output.(*devicefarm.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTestGridProjectsWithContext(ctx context.Context, input *devicefarm.ListTestGridProjectsInput, opts ...request.Option) (*devicefarm.ListTestGridProjectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridProjects",
+		Input:   input,
+		Output:  (*devicefarm.ListTestGridProjectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.ListTestGridProjectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.ListTestGridProjectsOutput), req.Error
+}
+
+func (c *Client) ListTestGridProjectsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridProjectsInput, cb func(*devicefarm.ListTestGridProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListTestGridProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTestGridSessionActionsWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionActionsInput, opts ...request.Option) (*devicefarm.ListTestGridSessionActionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridSessionActions",
+		Input:   input,
+		Output:  (*devicefarm.ListTestGridSessionActionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.ListTestGridSessionActionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.ListTestGridSessionActionsOutput), req.Error
+}
+
+func (c *Client) ListTestGridSessionActionsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionActionsInput, cb func(*devicefarm.ListTestGridSessionActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridSessionActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListTestGridSessionActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTestGridSessionArtifactsWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionArtifactsInput, opts ...request.Option) (*devicefarm.ListTestGridSessionArtifactsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridSessionArtifacts",
+		Input:   input,
+		Output:  (*devicefarm.ListTestGridSessionArtifactsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.ListTestGridSessionArtifactsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.ListTestGridSessionArtifactsOutput), req.Error
+}
+
+func (c *Client) ListTestGridSessionArtifactsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionArtifactsInput, cb func(*devicefarm.ListTestGridSessionArtifactsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridSessionArtifacts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListTestGridSessionArtifactsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTestGridSessionsWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionsInput, opts ...request.Option) (*devicefarm.ListTestGridSessionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridSessions",
+		Input:   input,
+		Output:  (*devicefarm.ListTestGridSessionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.ListTestGridSessionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.ListTestGridSessionsOutput), req.Error
+}
+
+func (c *Client) ListTestGridSessionsPagesWithContext(ctx context.Context, input *devicefarm.ListTestGridSessionsInput, cb func(*devicefarm.ListTestGridSessionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "ListTestGridSessions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DeviceFarmAPI.ListTestGridSessionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTestsWithContext(ctx context.Context, input *devicefarm.ListTestsInput, opts ...request.Option) (*devicefarm.ListTestsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "devicefarm",
@@ -1752,6 +2035,27 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, input *devicefarm
 	})
 
 	return req.Output.(*devicefarm.UpdateProjectOutput), req.Error
+}
+
+func (c *Client) UpdateTestGridProjectWithContext(ctx context.Context, input *devicefarm.UpdateTestGridProjectInput, opts ...request.Option) (*devicefarm.UpdateTestGridProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "devicefarm",
+		Action:  "UpdateTestGridProject",
+		Input:   input,
+		Output:  (*devicefarm.UpdateTestGridProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DeviceFarmAPI.UpdateTestGridProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*devicefarm.UpdateTestGridProjectOutput), req.Error
 }
 
 func (c *Client) UpdateUploadWithContext(ctx context.Context, input *devicefarm.UpdateUploadInput, opts ...request.Option) (*devicefarm.UpdateUploadOutput, error) {

@@ -86,6 +86,7 @@ type Pinpoint interface {
 	GetVoiceTemplateWithContext(ctx context.Context, input *pinpoint.GetVoiceTemplateInput, opts ...request.Option) (*pinpoint.GetVoiceTemplateOutput, error)
 	ListJourneysWithContext(ctx context.Context, input *pinpoint.ListJourneysInput, opts ...request.Option) (*pinpoint.ListJourneysOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *pinpoint.ListTagsForResourceInput, opts ...request.Option) (*pinpoint.ListTagsForResourceOutput, error)
+	ListTemplateVersionsWithContext(ctx context.Context, input *pinpoint.ListTemplateVersionsInput, opts ...request.Option) (*pinpoint.ListTemplateVersionsOutput, error)
 	ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error)
 	PhoneNumberValidateWithContext(ctx context.Context, input *pinpoint.PhoneNumberValidateInput, opts ...request.Option) (*pinpoint.PhoneNumberValidateOutput, error)
 	PutEventStreamWithContext(ctx context.Context, input *pinpoint.PutEventStreamInput, opts ...request.Option) (*pinpoint.PutEventStreamOutput, error)
@@ -114,6 +115,7 @@ type Pinpoint interface {
 	UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error)
 	UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error)
 	UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error)
+	UpdateTemplateActiveVersionWithContext(ctx context.Context, input *pinpoint.UpdateTemplateActiveVersionInput, opts ...request.Option) (*pinpoint.UpdateTemplateActiveVersionOutput, error)
 	UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error)
 	UpdateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.UpdateVoiceTemplateInput, opts ...request.Option) (*pinpoint.UpdateVoiceTemplateOutput, error)
 }
@@ -1708,6 +1710,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pinp
 	return req.Output.(*pinpoint.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTemplateVersionsWithContext(ctx context.Context, input *pinpoint.ListTemplateVersionsInput, opts ...request.Option) (*pinpoint.ListTemplateVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "ListTemplateVersions",
+		Input:   input,
+		Output:  (*pinpoint.ListTemplateVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.ListTemplateVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.ListTemplateVersionsOutput), req.Error
+}
+
 func (c *Client) ListTemplatesWithContext(ctx context.Context, input *pinpoint.ListTemplatesInput, opts ...request.Option) (*pinpoint.ListTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pinpoint",
@@ -2294,6 +2317,27 @@ func (c *Client) UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoi
 	})
 
 	return req.Output.(*pinpoint.UpdateSmsTemplateOutput), req.Error
+}
+
+func (c *Client) UpdateTemplateActiveVersionWithContext(ctx context.Context, input *pinpoint.UpdateTemplateActiveVersionInput, opts ...request.Option) (*pinpoint.UpdateTemplateActiveVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateTemplateActiveVersion",
+		Input:   input,
+		Output:  (*pinpoint.UpdateTemplateActiveVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateTemplateActiveVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateTemplateActiveVersionOutput), req.Error
 }
 
 func (c *Client) UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error) {
