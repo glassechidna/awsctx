@@ -11,13 +11,17 @@ import (
 )
 
 type FSx interface {
+	CancelDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CancelDataRepositoryTaskInput, opts ...request.Option) (*fsx.CancelDataRepositoryTaskOutput, error)
 	CreateBackupWithContext(ctx context.Context, input *fsx.CreateBackupInput, opts ...request.Option) (*fsx.CreateBackupOutput, error)
+	CreateDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CreateDataRepositoryTaskInput, opts ...request.Option) (*fsx.CreateDataRepositoryTaskOutput, error)
 	CreateFileSystemWithContext(ctx context.Context, input *fsx.CreateFileSystemInput, opts ...request.Option) (*fsx.CreateFileSystemOutput, error)
 	CreateFileSystemFromBackupWithContext(ctx context.Context, input *fsx.CreateFileSystemFromBackupInput, opts ...request.Option) (*fsx.CreateFileSystemFromBackupOutput, error)
 	DeleteBackupWithContext(ctx context.Context, input *fsx.DeleteBackupInput, opts ...request.Option) (*fsx.DeleteBackupOutput, error)
 	DeleteFileSystemWithContext(ctx context.Context, input *fsx.DeleteFileSystemInput, opts ...request.Option) (*fsx.DeleteFileSystemOutput, error)
 	DescribeBackupsWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, opts ...request.Option) (*fsx.DescribeBackupsOutput, error)
 	DescribeBackupsPagesWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, cb func(*fsx.DescribeBackupsOutput, bool) bool, opts ...request.Option) error
+	DescribeDataRepositoryTasksWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, opts ...request.Option) (*fsx.DescribeDataRepositoryTasksOutput, error)
+	DescribeDataRepositoryTasksPagesWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, cb func(*fsx.DescribeDataRepositoryTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeFileSystemsWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, opts ...request.Option) (*fsx.DescribeFileSystemsOutput, error)
 	DescribeFileSystemsPagesWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, cb func(*fsx.DescribeFileSystemsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, opts ...request.Option) (*fsx.ListTagsForResourceOutput, error)
@@ -41,6 +45,27 @@ func New(base fsxiface.FSxAPI, ctxer awsctx.Contexter) FSx {
 var _ FSx = (*fsx.FSx)(nil)
 var _ FSx = (*Client)(nil)
 
+func (c *Client) CancelDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CancelDataRepositoryTaskInput, opts ...request.Option) (*fsx.CancelDataRepositoryTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "CancelDataRepositoryTask",
+		Input:   input,
+		Output:  (*fsx.CancelDataRepositoryTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.CancelDataRepositoryTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.CancelDataRepositoryTaskOutput), req.Error
+}
+
 func (c *Client) CreateBackupWithContext(ctx context.Context, input *fsx.CreateBackupInput, opts ...request.Option) (*fsx.CreateBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
@@ -60,6 +85,27 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, input *fsx.CreateB
 	})
 
 	return req.Output.(*fsx.CreateBackupOutput), req.Error
+}
+
+func (c *Client) CreateDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CreateDataRepositoryTaskInput, opts ...request.Option) (*fsx.CreateDataRepositoryTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "CreateDataRepositoryTask",
+		Input:   input,
+		Output:  (*fsx.CreateDataRepositoryTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.CreateDataRepositoryTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.CreateDataRepositoryTaskOutput), req.Error
 }
 
 func (c *Client) CreateFileSystemWithContext(ctx context.Context, input *fsx.CreateFileSystemInput, opts ...request.Option) (*fsx.CreateFileSystemOutput, error) {
@@ -182,6 +228,47 @@ func (c *Client) DescribeBackupsPagesWithContext(ctx context.Context, input *fsx
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.FSxAPI.DescribeBackupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeDataRepositoryTasksWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, opts ...request.Option) (*fsx.DescribeDataRepositoryTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeDataRepositoryTasks",
+		Input:   input,
+		Output:  (*fsx.DescribeDataRepositoryTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DescribeDataRepositoryTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DescribeDataRepositoryTasksOutput), req.Error
+}
+
+func (c *Client) DescribeDataRepositoryTasksPagesWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, cb func(*fsx.DescribeDataRepositoryTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeDataRepositoryTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FSxAPI.DescribeDataRepositoryTasksPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

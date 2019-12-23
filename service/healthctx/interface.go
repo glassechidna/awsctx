@@ -11,16 +11,26 @@ import (
 )
 
 type Health interface {
+	DescribeAffectedAccountsForOrganizationWithContext(ctx context.Context, input *health.DescribeAffectedAccountsForOrganizationInput, opts ...request.Option) (*health.DescribeAffectedAccountsForOrganizationOutput, error)
+	DescribeAffectedAccountsForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeAffectedAccountsForOrganizationInput, cb func(*health.DescribeAffectedAccountsForOrganizationOutput, bool) bool, opts ...request.Option) error
 	DescribeAffectedEntitiesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesInput, opts ...request.Option) (*health.DescribeAffectedEntitiesOutput, error)
 	DescribeAffectedEntitiesPagesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesInput, cb func(*health.DescribeAffectedEntitiesOutput, bool) bool, opts ...request.Option) error
+	DescribeAffectedEntitiesForOrganizationWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesForOrganizationInput, opts ...request.Option) (*health.DescribeAffectedEntitiesForOrganizationOutput, error)
+	DescribeAffectedEntitiesForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesForOrganizationInput, cb func(*health.DescribeAffectedEntitiesForOrganizationOutput, bool) bool, opts ...request.Option) error
 	DescribeEntityAggregatesWithContext(ctx context.Context, input *health.DescribeEntityAggregatesInput, opts ...request.Option) (*health.DescribeEntityAggregatesOutput, error)
 	DescribeEventAggregatesWithContext(ctx context.Context, input *health.DescribeEventAggregatesInput, opts ...request.Option) (*health.DescribeEventAggregatesOutput, error)
 	DescribeEventAggregatesPagesWithContext(ctx context.Context, input *health.DescribeEventAggregatesInput, cb func(*health.DescribeEventAggregatesOutput, bool) bool, opts ...request.Option) error
 	DescribeEventDetailsWithContext(ctx context.Context, input *health.DescribeEventDetailsInput, opts ...request.Option) (*health.DescribeEventDetailsOutput, error)
+	DescribeEventDetailsForOrganizationWithContext(ctx context.Context, input *health.DescribeEventDetailsForOrganizationInput, opts ...request.Option) (*health.DescribeEventDetailsForOrganizationOutput, error)
 	DescribeEventTypesWithContext(ctx context.Context, input *health.DescribeEventTypesInput, opts ...request.Option) (*health.DescribeEventTypesOutput, error)
 	DescribeEventTypesPagesWithContext(ctx context.Context, input *health.DescribeEventTypesInput, cb func(*health.DescribeEventTypesOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *health.DescribeEventsInput, opts ...request.Option) (*health.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *health.DescribeEventsInput, cb func(*health.DescribeEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeEventsForOrganizationWithContext(ctx context.Context, input *health.DescribeEventsForOrganizationInput, opts ...request.Option) (*health.DescribeEventsForOrganizationOutput, error)
+	DescribeEventsForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeEventsForOrganizationInput, cb func(*health.DescribeEventsForOrganizationOutput, bool) bool, opts ...request.Option) error
+	DescribeHealthServiceStatusForOrganizationWithContext(ctx context.Context, input *health.DescribeHealthServiceStatusForOrganizationInput, opts ...request.Option) (*health.DescribeHealthServiceStatusForOrganizationOutput, error)
+	DisableHealthServiceAccessForOrganizationWithContext(ctx context.Context, input *health.DisableHealthServiceAccessForOrganizationInput, opts ...request.Option) (*health.DisableHealthServiceAccessForOrganizationOutput, error)
+	EnableHealthServiceAccessForOrganizationWithContext(ctx context.Context, input *health.EnableHealthServiceAccessForOrganizationInput, opts ...request.Option) (*health.EnableHealthServiceAccessForOrganizationOutput, error)
 }
 
 type Client struct {
@@ -37,6 +47,47 @@ func New(base healthiface.HealthAPI, ctxer awsctx.Contexter) Health {
 
 var _ Health = (*health.Health)(nil)
 var _ Health = (*Client)(nil)
+
+func (c *Client) DescribeAffectedAccountsForOrganizationWithContext(ctx context.Context, input *health.DescribeAffectedAccountsForOrganizationInput, opts ...request.Option) (*health.DescribeAffectedAccountsForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeAffectedAccountsForOrganization",
+		Input:   input,
+		Output:  (*health.DescribeAffectedAccountsForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DescribeAffectedAccountsForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DescribeAffectedAccountsForOrganizationOutput), req.Error
+}
+
+func (c *Client) DescribeAffectedAccountsForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeAffectedAccountsForOrganizationInput, cb func(*health.DescribeAffectedAccountsForOrganizationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeAffectedAccountsForOrganization",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.HealthAPI.DescribeAffectedAccountsForOrganizationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
 
 func (c *Client) DescribeAffectedEntitiesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesInput, opts ...request.Option) (*health.DescribeAffectedEntitiesOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -74,6 +125,47 @@ func (c *Client) DescribeAffectedEntitiesPagesWithContext(ctx context.Context, i
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.HealthAPI.DescribeAffectedEntitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeAffectedEntitiesForOrganizationWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesForOrganizationInput, opts ...request.Option) (*health.DescribeAffectedEntitiesForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeAffectedEntitiesForOrganization",
+		Input:   input,
+		Output:  (*health.DescribeAffectedEntitiesForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DescribeAffectedEntitiesForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DescribeAffectedEntitiesForOrganizationOutput), req.Error
+}
+
+func (c *Client) DescribeAffectedEntitiesForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesForOrganizationInput, cb func(*health.DescribeAffectedEntitiesForOrganizationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeAffectedEntitiesForOrganization",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.HealthAPI.DescribeAffectedEntitiesForOrganizationPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -162,6 +254,27 @@ func (c *Client) DescribeEventDetailsWithContext(ctx context.Context, input *hea
 	return req.Output.(*health.DescribeEventDetailsOutput), req.Error
 }
 
+func (c *Client) DescribeEventDetailsForOrganizationWithContext(ctx context.Context, input *health.DescribeEventDetailsForOrganizationInput, opts ...request.Option) (*health.DescribeEventDetailsForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeEventDetailsForOrganization",
+		Input:   input,
+		Output:  (*health.DescribeEventDetailsForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DescribeEventDetailsForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DescribeEventDetailsForOrganizationOutput), req.Error
+}
+
 func (c *Client) DescribeEventTypesWithContext(ctx context.Context, input *health.DescribeEventTypesInput, opts ...request.Option) (*health.DescribeEventTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "health",
@@ -242,4 +355,108 @@ func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *heal
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeEventsForOrganizationWithContext(ctx context.Context, input *health.DescribeEventsForOrganizationInput, opts ...request.Option) (*health.DescribeEventsForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeEventsForOrganization",
+		Input:   input,
+		Output:  (*health.DescribeEventsForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DescribeEventsForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DescribeEventsForOrganizationOutput), req.Error
+}
+
+func (c *Client) DescribeEventsForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeEventsForOrganizationInput, cb func(*health.DescribeEventsForOrganizationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeEventsForOrganization",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.HealthAPI.DescribeEventsForOrganizationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeHealthServiceStatusForOrganizationWithContext(ctx context.Context, input *health.DescribeHealthServiceStatusForOrganizationInput, opts ...request.Option) (*health.DescribeHealthServiceStatusForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeHealthServiceStatusForOrganization",
+		Input:   input,
+		Output:  (*health.DescribeHealthServiceStatusForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DescribeHealthServiceStatusForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DescribeHealthServiceStatusForOrganizationOutput), req.Error
+}
+
+func (c *Client) DisableHealthServiceAccessForOrganizationWithContext(ctx context.Context, input *health.DisableHealthServiceAccessForOrganizationInput, opts ...request.Option) (*health.DisableHealthServiceAccessForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DisableHealthServiceAccessForOrganization",
+		Input:   input,
+		Output:  (*health.DisableHealthServiceAccessForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DisableHealthServiceAccessForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DisableHealthServiceAccessForOrganizationOutput), req.Error
+}
+
+func (c *Client) EnableHealthServiceAccessForOrganizationWithContext(ctx context.Context, input *health.EnableHealthServiceAccessForOrganizationInput, opts ...request.Option) (*health.EnableHealthServiceAccessForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "EnableHealthServiceAccessForOrganization",
+		Input:   input,
+		Output:  (*health.EnableHealthServiceAccessForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.EnableHealthServiceAccessForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.EnableHealthServiceAccessForOrganizationOutput), req.Error
 }
