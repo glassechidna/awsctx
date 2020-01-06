@@ -467,6 +467,7 @@ type EC2 interface {
 	SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error)
 	SendDiagnosticInterruptWithContext(ctx context.Context, input *ec2.SendDiagnosticInterruptInput, opts ...request.Option) (*ec2.SendDiagnosticInterruptOutput, error)
 	StartInstancesWithContext(ctx context.Context, input *ec2.StartInstancesInput, opts ...request.Option) (*ec2.StartInstancesOutput, error)
+	StartVpcEndpointServicePrivateDnsVerificationWithContext(ctx context.Context, input *ec2.StartVpcEndpointServicePrivateDnsVerificationInput, opts ...request.Option) (*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput, error)
 	StopInstancesWithContext(ctx context.Context, input *ec2.StopInstancesInput, opts ...request.Option) (*ec2.StopInstancesOutput, error)
 	TerminateClientVpnConnectionsWithContext(ctx context.Context, input *ec2.TerminateClientVpnConnectionsInput, opts ...request.Option) (*ec2.TerminateClientVpnConnectionsOutput, error)
 	TerminateInstancesWithContext(ctx context.Context, input *ec2.TerminateInstancesInput, opts ...request.Option) (*ec2.TerminateInstancesOutput, error)
@@ -9998,6 +9999,27 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, input *ec2.Start
 	})
 
 	return req.Output.(*ec2.StartInstancesOutput), req.Error
+}
+
+func (c *Client) StartVpcEndpointServicePrivateDnsVerificationWithContext(ctx context.Context, input *ec2.StartVpcEndpointServicePrivateDnsVerificationInput, opts ...request.Option) (*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "StartVpcEndpointServicePrivateDnsVerification",
+		Input:   input,
+		Output:  (*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.StartVpcEndpointServicePrivateDnsVerificationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput), req.Error
 }
 
 func (c *Client) StopInstancesWithContext(ctx context.Context, input *ec2.StopInstancesInput, opts ...request.Option) (*ec2.StopInstancesOutput, error) {
