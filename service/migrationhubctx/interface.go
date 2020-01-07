@@ -20,6 +20,8 @@ type MigrationHub interface {
 	DisassociateCreatedArtifactWithContext(ctx context.Context, input *migrationhub.DisassociateCreatedArtifactInput, opts ...request.Option) (*migrationhub.DisassociateCreatedArtifactOutput, error)
 	DisassociateDiscoveredResourceWithContext(ctx context.Context, input *migrationhub.DisassociateDiscoveredResourceInput, opts ...request.Option) (*migrationhub.DisassociateDiscoveredResourceOutput, error)
 	ImportMigrationTaskWithContext(ctx context.Context, input *migrationhub.ImportMigrationTaskInput, opts ...request.Option) (*migrationhub.ImportMigrationTaskOutput, error)
+	ListApplicationStatesWithContext(ctx context.Context, input *migrationhub.ListApplicationStatesInput, opts ...request.Option) (*migrationhub.ListApplicationStatesOutput, error)
+	ListApplicationStatesPagesWithContext(ctx context.Context, input *migrationhub.ListApplicationStatesInput, cb func(*migrationhub.ListApplicationStatesOutput, bool) bool, opts ...request.Option) error
 	ListCreatedArtifactsWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, opts ...request.Option) (*migrationhub.ListCreatedArtifactsOutput, error)
 	ListCreatedArtifactsPagesWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, cb func(*migrationhub.ListCreatedArtifactsOutput, bool) bool, opts ...request.Option) error
 	ListDiscoveredResourcesWithContext(ctx context.Context, input *migrationhub.ListDiscoveredResourcesInput, opts ...request.Option) (*migrationhub.ListDiscoveredResourcesOutput, error)
@@ -235,6 +237,47 @@ func (c *Client) ImportMigrationTaskWithContext(ctx context.Context, input *migr
 	})
 
 	return req.Output.(*migrationhub.ImportMigrationTaskOutput), req.Error
+}
+
+func (c *Client) ListApplicationStatesWithContext(ctx context.Context, input *migrationhub.ListApplicationStatesInput, opts ...request.Option) (*migrationhub.ListApplicationStatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "migrationhub",
+		Action:  "ListApplicationStates",
+		Input:   input,
+		Output:  (*migrationhub.ListApplicationStatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MigrationHubAPI.ListApplicationStatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*migrationhub.ListApplicationStatesOutput), req.Error
+}
+
+func (c *Client) ListApplicationStatesPagesWithContext(ctx context.Context, input *migrationhub.ListApplicationStatesInput, cb func(*migrationhub.ListApplicationStatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "migrationhub",
+		Action:  "ListApplicationStates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MigrationHubAPI.ListApplicationStatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCreatedArtifactsWithContext(ctx context.Context, input *migrationhub.ListCreatedArtifactsInput, opts ...request.Option) (*migrationhub.ListCreatedArtifactsOutput, error) {
