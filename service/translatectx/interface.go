@@ -12,9 +12,15 @@ import (
 
 type Translate interface {
 	DeleteTerminologyWithContext(ctx context.Context, input *translate.DeleteTerminologyInput, opts ...request.Option) (*translate.DeleteTerminologyOutput, error)
+	DescribeTextTranslationJobWithContext(ctx context.Context, input *translate.DescribeTextTranslationJobInput, opts ...request.Option) (*translate.DescribeTextTranslationJobOutput, error)
 	GetTerminologyWithContext(ctx context.Context, input *translate.GetTerminologyInput, opts ...request.Option) (*translate.GetTerminologyOutput, error)
 	ImportTerminologyWithContext(ctx context.Context, input *translate.ImportTerminologyInput, opts ...request.Option) (*translate.ImportTerminologyOutput, error)
 	ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error)
+	ListTerminologiesPagesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, cb func(*translate.ListTerminologiesOutput, bool) bool, opts ...request.Option) error
+	ListTextTranslationJobsWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, opts ...request.Option) (*translate.ListTextTranslationJobsOutput, error)
+	ListTextTranslationJobsPagesWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, cb func(*translate.ListTextTranslationJobsOutput, bool) bool, opts ...request.Option) error
+	StartTextTranslationJobWithContext(ctx context.Context, input *translate.StartTextTranslationJobInput, opts ...request.Option) (*translate.StartTextTranslationJobOutput, error)
+	StopTextTranslationJobWithContext(ctx context.Context, input *translate.StopTextTranslationJobInput, opts ...request.Option) (*translate.StopTextTranslationJobOutput, error)
 	TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error)
 }
 
@@ -52,6 +58,27 @@ func (c *Client) DeleteTerminologyWithContext(ctx context.Context, input *transl
 	})
 
 	return req.Output.(*translate.DeleteTerminologyOutput), req.Error
+}
+
+func (c *Client) DescribeTextTranslationJobWithContext(ctx context.Context, input *translate.DescribeTextTranslationJobInput, opts ...request.Option) (*translate.DescribeTextTranslationJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "DescribeTextTranslationJob",
+		Input:   input,
+		Output:  (*translate.DescribeTextTranslationJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.DescribeTextTranslationJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.DescribeTextTranslationJobOutput), req.Error
 }
 
 func (c *Client) GetTerminologyWithContext(ctx context.Context, input *translate.GetTerminologyInput, opts ...request.Option) (*translate.GetTerminologyOutput, error) {
@@ -115,6 +142,109 @@ func (c *Client) ListTerminologiesWithContext(ctx context.Context, input *transl
 	})
 
 	return req.Output.(*translate.ListTerminologiesOutput), req.Error
+}
+
+func (c *Client) ListTerminologiesPagesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, cb func(*translate.ListTerminologiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListTerminologies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranslateAPI.ListTerminologiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTextTranslationJobsWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, opts ...request.Option) (*translate.ListTextTranslationJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListTextTranslationJobs",
+		Input:   input,
+		Output:  (*translate.ListTextTranslationJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.ListTextTranslationJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.ListTextTranslationJobsOutput), req.Error
+}
+
+func (c *Client) ListTextTranslationJobsPagesWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, cb func(*translate.ListTextTranslationJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListTextTranslationJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranslateAPI.ListTextTranslationJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) StartTextTranslationJobWithContext(ctx context.Context, input *translate.StartTextTranslationJobInput, opts ...request.Option) (*translate.StartTextTranslationJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "StartTextTranslationJob",
+		Input:   input,
+		Output:  (*translate.StartTextTranslationJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.StartTextTranslationJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.StartTextTranslationJobOutput), req.Error
+}
+
+func (c *Client) StopTextTranslationJobWithContext(ctx context.Context, input *translate.StopTextTranslationJobInput, opts ...request.Option) (*translate.StopTextTranslationJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "StopTextTranslationJob",
+		Input:   input,
+		Output:  (*translate.StopTextTranslationJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.StopTextTranslationJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.StopTextTranslationJobOutput), req.Error
 }
 
 func (c *Client) TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error) {

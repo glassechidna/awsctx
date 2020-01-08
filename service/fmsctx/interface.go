@@ -26,8 +26,11 @@ type FMS interface {
 	ListMemberAccountsPagesWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, cb func(*fms.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error)
 	ListPoliciesPagesWithContext(ctx context.Context, input *fms.ListPoliciesInput, cb func(*fms.ListPoliciesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error)
 	PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error)
 	PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyInput, opts ...request.Option) (*fms.PutPolicyOutput, error)
+	TagResourceWithContext(ctx context.Context, input *fms.TagResourceInput, opts ...request.Option) (*fms.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *fms.UntagResourceInput, opts ...request.Option) (*fms.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -357,6 +360,27 @@ func (c *Client) ListPoliciesPagesWithContext(ctx context.Context, input *fms.Li
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*fms.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -397,4 +421,46 @@ func (c *Client) PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyI
 	})
 
 	return req.Output.(*fms.PutPolicyOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *fms.TagResourceInput, opts ...request.Option) (*fms.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*fms.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *fms.UntagResourceInput, opts ...request.Option) (*fms.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*fms.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.UntagResourceOutput), req.Error
 }
