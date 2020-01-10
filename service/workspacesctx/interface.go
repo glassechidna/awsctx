@@ -38,6 +38,7 @@ type WorkSpaces interface {
 	DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error)
 	ImportWorkspaceImageWithContext(ctx context.Context, input *workspaces.ImportWorkspaceImageInput, opts ...request.Option) (*workspaces.ImportWorkspaceImageOutput, error)
 	ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
+	MigrateWorkspaceWithContext(ctx context.Context, input *workspaces.MigrateWorkspaceInput, opts ...request.Option) (*workspaces.MigrateWorkspaceOutput, error)
 	ModifyAccountWithContext(ctx context.Context, input *workspaces.ModifyAccountInput, opts ...request.Option) (*workspaces.ModifyAccountOutput, error)
 	ModifyClientPropertiesWithContext(ctx context.Context, input *workspaces.ModifyClientPropertiesInput, opts ...request.Option) (*workspaces.ModifyClientPropertiesOutput, error)
 	ModifySelfservicePermissionsWithContext(ctx context.Context, input *workspaces.ModifySelfservicePermissionsInput, opts ...request.Option) (*workspaces.ModifySelfservicePermissionsOutput, error)
@@ -633,6 +634,27 @@ func (c *Client) ListAvailableManagementCidrRangesWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*workspaces.ListAvailableManagementCidrRangesOutput), req.Error
+}
+
+func (c *Client) MigrateWorkspaceWithContext(ctx context.Context, input *workspaces.MigrateWorkspaceInput, opts ...request.Option) (*workspaces.MigrateWorkspaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "MigrateWorkspace",
+		Input:   input,
+		Output:  (*workspaces.MigrateWorkspaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.MigrateWorkspaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.MigrateWorkspaceOutput), req.Error
 }
 
 func (c *Client) ModifyAccountWithContext(ctx context.Context, input *workspaces.ModifyAccountInput, opts ...request.Option) (*workspaces.ModifyAccountOutput, error) {

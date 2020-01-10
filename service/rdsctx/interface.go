@@ -122,6 +122,7 @@ type RDS interface {
 	FailoverDBClusterWithContext(ctx context.Context, input *rds.FailoverDBClusterInput, opts ...request.Option) (*rds.FailoverDBClusterOutput, error)
 	ImportInstallationMediaWithContext(ctx context.Context, input *rds.ImportInstallationMediaInput, opts ...request.Option) (*rds.ImportInstallationMediaOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error)
+	ModifyCertificatesWithContext(ctx context.Context, input *rds.ModifyCertificatesInput, opts ...request.Option) (*rds.ModifyCertificatesOutput, error)
 	ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, input *rds.ModifyCurrentDBClusterCapacityInput, opts ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error)
 	ModifyDBClusterWithContext(ctx context.Context, input *rds.ModifyDBClusterInput, opts ...request.Option) (*rds.ModifyDBClusterOutput, error)
 	ModifyDBClusterEndpointWithContext(ctx context.Context, input *rds.ModifyDBClusterEndpointInput, opts ...request.Option) (*rds.ModifyDBClusterEndpointOutput, error)
@@ -2483,6 +2484,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rds.
 	})
 
 	return req.Output.(*rds.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ModifyCertificatesWithContext(ctx context.Context, input *rds.ModifyCertificatesInput, opts ...request.Option) (*rds.ModifyCertificatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ModifyCertificates",
+		Input:   input,
+		Output:  (*rds.ModifyCertificatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ModifyCertificatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ModifyCertificatesOutput), req.Error
 }
 
 func (c *Client) ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, input *rds.ModifyCurrentDBClusterCapacityInput, opts ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error) {
