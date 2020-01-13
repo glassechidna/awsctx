@@ -22,6 +22,7 @@ type Backup interface {
 	DeleteRecoveryPointWithContext(ctx context.Context, input *backup.DeleteRecoveryPointInput, opts ...request.Option) (*backup.DeleteRecoveryPointOutput, error)
 	DescribeBackupJobWithContext(ctx context.Context, input *backup.DescribeBackupJobInput, opts ...request.Option) (*backup.DescribeBackupJobOutput, error)
 	DescribeBackupVaultWithContext(ctx context.Context, input *backup.DescribeBackupVaultInput, opts ...request.Option) (*backup.DescribeBackupVaultOutput, error)
+	DescribeCopyJobWithContext(ctx context.Context, input *backup.DescribeCopyJobInput, opts ...request.Option) (*backup.DescribeCopyJobOutput, error)
 	DescribeProtectedResourceWithContext(ctx context.Context, input *backup.DescribeProtectedResourceInput, opts ...request.Option) (*backup.DescribeProtectedResourceOutput, error)
 	DescribeRecoveryPointWithContext(ctx context.Context, input *backup.DescribeRecoveryPointInput, opts ...request.Option) (*backup.DescribeRecoveryPointOutput, error)
 	DescribeRestoreJobWithContext(ctx context.Context, input *backup.DescribeRestoreJobInput, opts ...request.Option) (*backup.DescribeRestoreJobOutput, error)
@@ -46,6 +47,8 @@ type Backup interface {
 	ListBackupSelectionsPagesWithContext(ctx context.Context, input *backup.ListBackupSelectionsInput, cb func(*backup.ListBackupSelectionsOutput, bool) bool, opts ...request.Option) error
 	ListBackupVaultsWithContext(ctx context.Context, input *backup.ListBackupVaultsInput, opts ...request.Option) (*backup.ListBackupVaultsOutput, error)
 	ListBackupVaultsPagesWithContext(ctx context.Context, input *backup.ListBackupVaultsInput, cb func(*backup.ListBackupVaultsOutput, bool) bool, opts ...request.Option) error
+	ListCopyJobsWithContext(ctx context.Context, input *backup.ListCopyJobsInput, opts ...request.Option) (*backup.ListCopyJobsOutput, error)
+	ListCopyJobsPagesWithContext(ctx context.Context, input *backup.ListCopyJobsInput, cb func(*backup.ListCopyJobsOutput, bool) bool, opts ...request.Option) error
 	ListProtectedResourcesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, opts ...request.Option) (*backup.ListProtectedResourcesOutput, error)
 	ListProtectedResourcesPagesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, cb func(*backup.ListProtectedResourcesOutput, bool) bool, opts ...request.Option) error
 	ListRecoveryPointsByBackupVaultWithContext(ctx context.Context, input *backup.ListRecoveryPointsByBackupVaultInput, opts ...request.Option) (*backup.ListRecoveryPointsByBackupVaultOutput, error)
@@ -59,6 +62,7 @@ type Backup interface {
 	PutBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.PutBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.PutBackupVaultAccessPolicyOutput, error)
 	PutBackupVaultNotificationsWithContext(ctx context.Context, input *backup.PutBackupVaultNotificationsInput, opts ...request.Option) (*backup.PutBackupVaultNotificationsOutput, error)
 	StartBackupJobWithContext(ctx context.Context, input *backup.StartBackupJobInput, opts ...request.Option) (*backup.StartBackupJobOutput, error)
+	StartCopyJobWithContext(ctx context.Context, input *backup.StartCopyJobInput, opts ...request.Option) (*backup.StartCopyJobOutput, error)
 	StartRestoreJobWithContext(ctx context.Context, input *backup.StartRestoreJobInput, opts ...request.Option) (*backup.StartRestoreJobOutput, error)
 	StopBackupJobWithContext(ctx context.Context, input *backup.StopBackupJobInput, opts ...request.Option) (*backup.StopBackupJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *backup.TagResourceInput, opts ...request.Option) (*backup.TagResourceOutput, error)
@@ -311,6 +315,27 @@ func (c *Client) DescribeBackupVaultWithContext(ctx context.Context, input *back
 	})
 
 	return req.Output.(*backup.DescribeBackupVaultOutput), req.Error
+}
+
+func (c *Client) DescribeCopyJobWithContext(ctx context.Context, input *backup.DescribeCopyJobInput, opts ...request.Option) (*backup.DescribeCopyJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "DescribeCopyJob",
+		Input:   input,
+		Output:  (*backup.DescribeCopyJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.DescribeCopyJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.DescribeCopyJobOutput), req.Error
 }
 
 func (c *Client) DescribeProtectedResourceWithContext(ctx context.Context, input *backup.DescribeProtectedResourceInput, opts ...request.Option) (*backup.DescribeProtectedResourceOutput, error) {
@@ -811,6 +836,47 @@ func (c *Client) ListBackupVaultsPagesWithContext(ctx context.Context, input *ba
 	return req.Error
 }
 
+func (c *Client) ListCopyJobsWithContext(ctx context.Context, input *backup.ListCopyJobsInput, opts ...request.Option) (*backup.ListCopyJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListCopyJobs",
+		Input:   input,
+		Output:  (*backup.ListCopyJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListCopyJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListCopyJobsOutput), req.Error
+}
+
+func (c *Client) ListCopyJobsPagesWithContext(ctx context.Context, input *backup.ListCopyJobsInput, cb func(*backup.ListCopyJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListCopyJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListCopyJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProtectedResourcesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, opts ...request.Option) (*backup.ListProtectedResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
@@ -1077,6 +1143,27 @@ func (c *Client) StartBackupJobWithContext(ctx context.Context, input *backup.St
 	})
 
 	return req.Output.(*backup.StartBackupJobOutput), req.Error
+}
+
+func (c *Client) StartCopyJobWithContext(ctx context.Context, input *backup.StartCopyJobInput, opts ...request.Option) (*backup.StartCopyJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "StartCopyJob",
+		Input:   input,
+		Output:  (*backup.StartCopyJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.StartCopyJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.StartCopyJobOutput), req.Error
 }
 
 func (c *Client) StartRestoreJobWithContext(ctx context.Context, input *backup.StartRestoreJobInput, opts ...request.Option) (*backup.StartRestoreJobOutput, error) {
