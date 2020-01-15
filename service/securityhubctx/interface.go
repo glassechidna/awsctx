@@ -28,6 +28,7 @@ type SecurityHub interface {
 	DescribeHubWithContext(ctx context.Context, input *securityhub.DescribeHubInput, opts ...request.Option) (*securityhub.DescribeHubOutput, error)
 	DescribeProductsWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, opts ...request.Option) (*securityhub.DescribeProductsOutput, error)
 	DescribeProductsPagesWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, cb func(*securityhub.DescribeProductsOutput, bool) bool, opts ...request.Option) error
+	DescribeStandardsControlsWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, opts ...request.Option) (*securityhub.DescribeStandardsControlsOutput, error)
 	DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error)
 	DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error)
@@ -54,6 +55,7 @@ type SecurityHub interface {
 	UpdateActionTargetWithContext(ctx context.Context, input *securityhub.UpdateActionTargetInput, opts ...request.Option) (*securityhub.UpdateActionTargetOutput, error)
 	UpdateFindingsWithContext(ctx context.Context, input *securityhub.UpdateFindingsInput, opts ...request.Option) (*securityhub.UpdateFindingsOutput, error)
 	UpdateInsightWithContext(ctx context.Context, input *securityhub.UpdateInsightInput, opts ...request.Option) (*securityhub.UpdateInsightOutput, error)
+	UpdateStandardsControlWithContext(ctx context.Context, input *securityhub.UpdateStandardsControlInput, opts ...request.Option) (*securityhub.UpdateStandardsControlOutput, error)
 }
 
 type Client struct {
@@ -424,6 +426,27 @@ func (c *Client) DescribeProductsPagesWithContext(ctx context.Context, input *se
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeStandardsControlsWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, opts ...request.Option) (*securityhub.DescribeStandardsControlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeStandardsControls",
+		Input:   input,
+		Output:  (*securityhub.DescribeStandardsControlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.DescribeStandardsControlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.DescribeStandardsControlsOutput), req.Error
 }
 
 func (c *Client) DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error) {
@@ -967,4 +990,25 @@ func (c *Client) UpdateInsightWithContext(ctx context.Context, input *securityhu
 	})
 
 	return req.Output.(*securityhub.UpdateInsightOutput), req.Error
+}
+
+func (c *Client) UpdateStandardsControlWithContext(ctx context.Context, input *securityhub.UpdateStandardsControlInput, opts ...request.Option) (*securityhub.UpdateStandardsControlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "UpdateStandardsControl",
+		Input:   input,
+		Output:  (*securityhub.UpdateStandardsControlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.UpdateStandardsControlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.UpdateStandardsControlOutput), req.Error
 }
