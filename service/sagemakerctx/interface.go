@@ -83,6 +83,7 @@ type SageMaker interface {
 	DescribeTrialWithContext(ctx context.Context, input *sagemaker.DescribeTrialInput, opts ...request.Option) (*sagemaker.DescribeTrialOutput, error)
 	DescribeTrialComponentWithContext(ctx context.Context, input *sagemaker.DescribeTrialComponentInput, opts ...request.Option) (*sagemaker.DescribeTrialComponentOutput, error)
 	DescribeUserProfileWithContext(ctx context.Context, input *sagemaker.DescribeUserProfileInput, opts ...request.Option) (*sagemaker.DescribeUserProfileOutput, error)
+	DescribeWorkforceWithContext(ctx context.Context, input *sagemaker.DescribeWorkforceInput, opts ...request.Option) (*sagemaker.DescribeWorkforceOutput, error)
 	DescribeWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeWorkteamInput, opts ...request.Option) (*sagemaker.DescribeWorkteamOutput, error)
 	DisassociateTrialComponentWithContext(ctx context.Context, input *sagemaker.DisassociateTrialComponentInput, opts ...request.Option) (*sagemaker.DisassociateTrialComponentOutput, error)
 	GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error)
@@ -173,6 +174,7 @@ type SageMaker interface {
 	UpdateTrialWithContext(ctx context.Context, input *sagemaker.UpdateTrialInput, opts ...request.Option) (*sagemaker.UpdateTrialOutput, error)
 	UpdateTrialComponentWithContext(ctx context.Context, input *sagemaker.UpdateTrialComponentInput, opts ...request.Option) (*sagemaker.UpdateTrialComponentOutput, error)
 	UpdateUserProfileWithContext(ctx context.Context, input *sagemaker.UpdateUserProfileInput, opts ...request.Option) (*sagemaker.UpdateUserProfileOutput, error)
+	UpdateWorkforceWithContext(ctx context.Context, input *sagemaker.UpdateWorkforceInput, opts ...request.Option) (*sagemaker.UpdateWorkforceOutput, error)
 	UpdateWorkteamWithContext(ctx context.Context, input *sagemaker.UpdateWorkteamInput, opts ...request.Option) (*sagemaker.UpdateWorkteamOutput, error)
 }
 
@@ -1701,6 +1703,27 @@ func (c *Client) DescribeUserProfileWithContext(ctx context.Context, input *sage
 	})
 
 	return req.Output.(*sagemaker.DescribeUserProfileOutput), req.Error
+}
+
+func (c *Client) DescribeWorkforceWithContext(ctx context.Context, input *sagemaker.DescribeWorkforceInput, opts ...request.Option) (*sagemaker.DescribeWorkforceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeWorkforce",
+		Input:   input,
+		Output:  (*sagemaker.DescribeWorkforceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeWorkforceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeWorkforceOutput), req.Error
 }
 
 func (c *Client) DescribeWorkteamWithContext(ctx context.Context, input *sagemaker.DescribeWorkteamInput, opts ...request.Option) (*sagemaker.DescribeWorkteamOutput, error) {
@@ -3559,6 +3582,27 @@ func (c *Client) UpdateUserProfileWithContext(ctx context.Context, input *sagema
 	})
 
 	return req.Output.(*sagemaker.UpdateUserProfileOutput), req.Error
+}
+
+func (c *Client) UpdateWorkforceWithContext(ctx context.Context, input *sagemaker.UpdateWorkforceInput, opts ...request.Option) (*sagemaker.UpdateWorkforceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateWorkforce",
+		Input:   input,
+		Output:  (*sagemaker.UpdateWorkforceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateWorkforceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateWorkforceOutput), req.Error
 }
 
 func (c *Client) UpdateWorkteamWithContext(ctx context.Context, input *sagemaker.UpdateWorkteamInput, opts ...request.Option) (*sagemaker.UpdateWorkteamOutput, error) {
