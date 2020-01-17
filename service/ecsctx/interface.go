@@ -31,6 +31,7 @@ type ECS interface {
 	DescribeTasksWithContext(ctx context.Context, input *ecs.DescribeTasksInput, opts ...request.Option) (*ecs.DescribeTasksOutput, error)
 	DiscoverPollEndpointWithContext(ctx context.Context, input *ecs.DiscoverPollEndpointInput, opts ...request.Option) (*ecs.DiscoverPollEndpointOutput, error)
 	ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error)
+	ListAccountSettingsPagesWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, cb func(*ecs.ListAccountSettingsOutput, bool) bool, opts ...request.Option) error
 	ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error)
 	ListAttributesPagesWithContext(ctx context.Context, input *ecs.ListAttributesInput, cb func(*ecs.ListAttributesOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *ecs.ListClustersInput, opts ...request.Option) (*ecs.ListClustersOutput, error)
@@ -501,6 +502,26 @@ func (c *Client) ListAccountSettingsWithContext(ctx context.Context, input *ecs.
 	})
 
 	return req.Output.(*ecs.ListAccountSettingsOutput), req.Error
+}
+
+func (c *Client) ListAccountSettingsPagesWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, cb func(*ecs.ListAccountSettingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListAccountSettings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListAccountSettingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error) {
