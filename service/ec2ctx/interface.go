@@ -226,6 +226,8 @@ type EC2 interface {
 	DescribeInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, cb func(*ec2.DescribeInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error)
 	DescribeInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, cb func(*ec2.DescribeInternetGatewaysOutput, bool) bool, opts ...request.Option) error
+	DescribeIpv6PoolsWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, opts ...request.Option) (*ec2.DescribeIpv6PoolsOutput, error)
+	DescribeIpv6PoolsPagesWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, cb func(*ec2.DescribeIpv6PoolsOutput, bool) bool, opts ...request.Option) error
 	DescribeKeyPairsWithContext(ctx context.Context, input *ec2.DescribeKeyPairsInput, opts ...request.Option) (*ec2.DescribeKeyPairsOutput, error)
 	DescribeLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DescribeLaunchTemplateVersionsOutput, error)
 	DescribeLaunchTemplateVersionsPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplateVersionsInput, cb func(*ec2.DescribeLaunchTemplateVersionsOutput, bool) bool, opts ...request.Option) error
@@ -363,6 +365,8 @@ type EC2 interface {
 	ExportClientVpnClientConfigurationWithContext(ctx context.Context, input *ec2.ExportClientVpnClientConfigurationInput, opts ...request.Option) (*ec2.ExportClientVpnClientConfigurationOutput, error)
 	ExportImageWithContext(ctx context.Context, input *ec2.ExportImageInput, opts ...request.Option) (*ec2.ExportImageOutput, error)
 	ExportTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.ExportTransitGatewayRoutesInput, opts ...request.Option) (*ec2.ExportTransitGatewayRoutesOutput, error)
+	GetAssociatedIpv6PoolCidrsWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, opts ...request.Option) (*ec2.GetAssociatedIpv6PoolCidrsOutput, error)
+	GetAssociatedIpv6PoolCidrsPagesWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, cb func(*ec2.GetAssociatedIpv6PoolCidrsOutput, bool) bool, opts ...request.Option) error
 	GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error)
 	GetCoipPoolUsageWithContext(ctx context.Context, input *ec2.GetCoipPoolUsageInput, opts ...request.Option) (*ec2.GetCoipPoolUsageOutput, error)
 	GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error)
@@ -4984,6 +4988,47 @@ func (c *Client) DescribeInternetGatewaysPagesWithContext(ctx context.Context, i
 	return req.Error
 }
 
+func (c *Client) DescribeIpv6PoolsWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, opts ...request.Option) (*ec2.DescribeIpv6PoolsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpv6Pools",
+		Input:   input,
+		Output:  (*ec2.DescribeIpv6PoolsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeIpv6PoolsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeIpv6PoolsOutput), req.Error
+}
+
+func (c *Client) DescribeIpv6PoolsPagesWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, cb func(*ec2.DescribeIpv6PoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpv6Pools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIpv6PoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeKeyPairsWithContext(ctx context.Context, input *ec2.DescribeKeyPairsInput, opts ...request.Option) (*ec2.DescribeKeyPairsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -7818,6 +7863,47 @@ func (c *Client) ExportTransitGatewayRoutesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.ExportTransitGatewayRoutesOutput), req.Error
+}
+
+func (c *Client) GetAssociatedIpv6PoolCidrsWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, opts ...request.Option) (*ec2.GetAssociatedIpv6PoolCidrsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetAssociatedIpv6PoolCidrs",
+		Input:   input,
+		Output:  (*ec2.GetAssociatedIpv6PoolCidrsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetAssociatedIpv6PoolCidrsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetAssociatedIpv6PoolCidrsOutput), req.Error
+}
+
+func (c *Client) GetAssociatedIpv6PoolCidrsPagesWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, cb func(*ec2.GetAssociatedIpv6PoolCidrsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetAssociatedIpv6PoolCidrs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetAssociatedIpv6PoolCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error) {

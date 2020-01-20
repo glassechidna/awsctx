@@ -29,6 +29,8 @@ type ApplicationInsights interface {
 	ListApplicationsPagesWithContext(ctx context.Context, input *applicationinsights.ListApplicationsInput, cb func(*applicationinsights.ListApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListComponentsWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, opts ...request.Option) (*applicationinsights.ListComponentsOutput, error)
 	ListComponentsPagesWithContext(ctx context.Context, input *applicationinsights.ListComponentsInput, cb func(*applicationinsights.ListComponentsOutput, bool) bool, opts ...request.Option) error
+	ListConfigurationHistoryWithContext(ctx context.Context, input *applicationinsights.ListConfigurationHistoryInput, opts ...request.Option) (*applicationinsights.ListConfigurationHistoryOutput, error)
+	ListConfigurationHistoryPagesWithContext(ctx context.Context, input *applicationinsights.ListConfigurationHistoryInput, cb func(*applicationinsights.ListConfigurationHistoryOutput, bool) bool, opts ...request.Option) error
 	ListLogPatternSetsWithContext(ctx context.Context, input *applicationinsights.ListLogPatternSetsInput, opts ...request.Option) (*applicationinsights.ListLogPatternSetsOutput, error)
 	ListLogPatternSetsPagesWithContext(ctx context.Context, input *applicationinsights.ListLogPatternSetsInput, cb func(*applicationinsights.ListLogPatternSetsOutput, bool) bool, opts ...request.Option) error
 	ListLogPatternsWithContext(ctx context.Context, input *applicationinsights.ListLogPatternsInput, opts ...request.Option) (*applicationinsights.ListLogPatternsOutput, error)
@@ -430,6 +432,47 @@ func (c *Client) ListComponentsPagesWithContext(ctx context.Context, input *appl
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ApplicationInsightsAPI.ListComponentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListConfigurationHistoryWithContext(ctx context.Context, input *applicationinsights.ListConfigurationHistoryInput, opts ...request.Option) (*applicationinsights.ListConfigurationHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListConfigurationHistory",
+		Input:   input,
+		Output:  (*applicationinsights.ListConfigurationHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationInsightsAPI.ListConfigurationHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationinsights.ListConfigurationHistoryOutput), req.Error
+}
+
+func (c *Client) ListConfigurationHistoryPagesWithContext(ctx context.Context, input *applicationinsights.ListConfigurationHistoryInput, cb func(*applicationinsights.ListConfigurationHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "applicationinsights",
+		Action:  "ListConfigurationHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ApplicationInsightsAPI.ListConfigurationHistoryPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
