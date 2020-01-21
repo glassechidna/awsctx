@@ -50,6 +50,7 @@ type CodePipeline interface {
 	RegisterWebhookWithThirdPartyWithContext(ctx context.Context, input *codepipeline.RegisterWebhookWithThirdPartyInput, opts ...request.Option) (*codepipeline.RegisterWebhookWithThirdPartyOutput, error)
 	RetryStageExecutionWithContext(ctx context.Context, input *codepipeline.RetryStageExecutionInput, opts ...request.Option) (*codepipeline.RetryStageExecutionOutput, error)
 	StartPipelineExecutionWithContext(ctx context.Context, input *codepipeline.StartPipelineExecutionInput, opts ...request.Option) (*codepipeline.StartPipelineExecutionOutput, error)
+	StopPipelineExecutionWithContext(ctx context.Context, input *codepipeline.StopPipelineExecutionInput, opts ...request.Option) (*codepipeline.StopPipelineExecutionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *codepipeline.TagResourceInput, opts ...request.Option) (*codepipeline.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *codepipeline.UntagResourceInput, opts ...request.Option) (*codepipeline.UntagResourceOutput, error)
 	UpdatePipelineWithContext(ctx context.Context, input *codepipeline.UpdatePipelineInput, opts ...request.Option) (*codepipeline.UpdatePipelineOutput, error)
@@ -881,6 +882,27 @@ func (c *Client) StartPipelineExecutionWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*codepipeline.StartPipelineExecutionOutput), req.Error
+}
+
+func (c *Client) StopPipelineExecutionWithContext(ctx context.Context, input *codepipeline.StopPipelineExecutionInput, opts ...request.Option) (*codepipeline.StopPipelineExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "StopPipelineExecution",
+		Input:   input,
+		Output:  (*codepipeline.StopPipelineExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodePipelineAPI.StopPipelineExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codepipeline.StopPipelineExecutionOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *codepipeline.TagResourceInput, opts ...request.Option) (*codepipeline.TagResourceOutput, error) {
