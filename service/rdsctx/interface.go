@@ -18,6 +18,7 @@ type RDS interface {
 	ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *rds.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*rds.ApplyPendingMaintenanceActionOutput, error)
 	AuthorizeDBSecurityGroupIngressWithContext(ctx context.Context, input *rds.AuthorizeDBSecurityGroupIngressInput, opts ...request.Option) (*rds.AuthorizeDBSecurityGroupIngressOutput, error)
 	BacktrackDBClusterWithContext(ctx context.Context, input *rds.BacktrackDBClusterInput, opts ...request.Option) (*rds.BacktrackDBClusterOutput, error)
+	CancelExportTaskWithContext(ctx context.Context, input *rds.CancelExportTaskInput, opts ...request.Option) (*rds.CancelExportTaskOutput, error)
 	CopyDBClusterParameterGroupWithContext(ctx context.Context, input *rds.CopyDBClusterParameterGroupInput, opts ...request.Option) (*rds.CopyDBClusterParameterGroupOutput, error)
 	CopyDBClusterSnapshotWithContext(ctx context.Context, input *rds.CopyDBClusterSnapshotInput, opts ...request.Option) (*rds.CopyDBClusterSnapshotOutput, error)
 	CopyDBParameterGroupWithContext(ctx context.Context, input *rds.CopyDBParameterGroupInput, opts ...request.Option) (*rds.CopyDBParameterGroupOutput, error)
@@ -100,6 +101,8 @@ type RDS interface {
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *rds.DescribeEventSubscriptionsInput, cb func(*rds.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *rds.DescribeEventsInput, opts ...request.Option) (*rds.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *rds.DescribeEventsInput, cb func(*rds.DescribeEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeExportTasksWithContext(ctx context.Context, input *rds.DescribeExportTasksInput, opts ...request.Option) (*rds.DescribeExportTasksOutput, error)
+	DescribeExportTasksPagesWithContext(ctx context.Context, input *rds.DescribeExportTasksInput, cb func(*rds.DescribeExportTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeGlobalClustersWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, opts ...request.Option) (*rds.DescribeGlobalClustersOutput, error)
 	DescribeGlobalClustersPagesWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, cb func(*rds.DescribeGlobalClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeInstallationMediaWithContext(ctx context.Context, input *rds.DescribeInstallationMediaInput, opts ...request.Option) (*rds.DescribeInstallationMediaOutput, error)
@@ -160,6 +163,7 @@ type RDS interface {
 	StartActivityStreamWithContext(ctx context.Context, input *rds.StartActivityStreamInput, opts ...request.Option) (*rds.StartActivityStreamOutput, error)
 	StartDBClusterWithContext(ctx context.Context, input *rds.StartDBClusterInput, opts ...request.Option) (*rds.StartDBClusterOutput, error)
 	StartDBInstanceWithContext(ctx context.Context, input *rds.StartDBInstanceInput, opts ...request.Option) (*rds.StartDBInstanceOutput, error)
+	StartExportTaskWithContext(ctx context.Context, input *rds.StartExportTaskInput, opts ...request.Option) (*rds.StartExportTaskOutput, error)
 	StopActivityStreamWithContext(ctx context.Context, input *rds.StopActivityStreamInput, opts ...request.Option) (*rds.StopActivityStreamOutput, error)
 	StopDBClusterWithContext(ctx context.Context, input *rds.StopDBClusterInput, opts ...request.Option) (*rds.StopDBClusterOutput, error)
 	StopDBInstanceWithContext(ctx context.Context, input *rds.StopDBInstanceInput, opts ...request.Option) (*rds.StopDBInstanceOutput, error)
@@ -325,6 +329,27 @@ func (c *Client) BacktrackDBClusterWithContext(ctx context.Context, input *rds.B
 	})
 
 	return req.Output.(*rds.BacktrackDBClusterOutput), req.Error
+}
+
+func (c *Client) CancelExportTaskWithContext(ctx context.Context, input *rds.CancelExportTaskInput, opts ...request.Option) (*rds.CancelExportTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CancelExportTask",
+		Input:   input,
+		Output:  (*rds.CancelExportTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CancelExportTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CancelExportTaskOutput), req.Error
 }
 
 func (c *Client) CopyDBClusterParameterGroupWithContext(ctx context.Context, input *rds.CopyDBClusterParameterGroupInput, opts ...request.Option) (*rds.CopyDBClusterParameterGroupOutput, error) {
@@ -2032,6 +2057,47 @@ func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *rds.
 	return req.Error
 }
 
+func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *rds.DescribeExportTasksInput, opts ...request.Option) (*rds.DescribeExportTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeExportTasks",
+		Input:   input,
+		Output:  (*rds.DescribeExportTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeExportTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeExportTasksOutput), req.Error
+}
+
+func (c *Client) DescribeExportTasksPagesWithContext(ctx context.Context, input *rds.DescribeExportTasksInput, cb func(*rds.DescribeExportTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeExportTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeExportTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, opts ...request.Option) (*rds.DescribeGlobalClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -3282,6 +3348,27 @@ func (c *Client) StartDBInstanceWithContext(ctx context.Context, input *rds.Star
 	})
 
 	return req.Output.(*rds.StartDBInstanceOutput), req.Error
+}
+
+func (c *Client) StartExportTaskWithContext(ctx context.Context, input *rds.StartExportTaskInput, opts ...request.Option) (*rds.StartExportTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "StartExportTask",
+		Input:   input,
+		Output:  (*rds.StartExportTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.StartExportTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.StartExportTaskOutput), req.Error
 }
 
 func (c *Client) StopActivityStreamWithContext(ctx context.Context, input *rds.StopActivityStreamInput, opts ...request.Option) (*rds.StopActivityStreamOutput, error) {
