@@ -27,6 +27,8 @@ type Kafka interface {
 	ListConfigurationRevisionsPagesWithContext(ctx context.Context, input *kafka.ListConfigurationRevisionsInput, cb func(*kafka.ListConfigurationRevisionsOutput, bool) bool, opts ...request.Option) error
 	ListConfigurationsWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, opts ...request.Option) (*kafka.ListConfigurationsOutput, error)
 	ListConfigurationsPagesWithContext(ctx context.Context, input *kafka.ListConfigurationsInput, cb func(*kafka.ListConfigurationsOutput, bool) bool, opts ...request.Option) error
+	ListKafkaVersionsWithContext(ctx context.Context, input *kafka.ListKafkaVersionsInput, opts ...request.Option) (*kafka.ListKafkaVersionsOutput, error)
+	ListKafkaVersionsPagesWithContext(ctx context.Context, input *kafka.ListKafkaVersionsInput, cb func(*kafka.ListKafkaVersionsOutput, bool) bool, opts ...request.Option) error
 	ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error)
 	ListNodesPagesWithContext(ctx context.Context, input *kafka.ListNodesInput, cb func(*kafka.ListNodesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error)
@@ -380,6 +382,47 @@ func (c *Client) ListConfigurationsPagesWithContext(ctx context.Context, input *
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.KafkaAPI.ListConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListKafkaVersionsWithContext(ctx context.Context, input *kafka.ListKafkaVersionsInput, opts ...request.Option) (*kafka.ListKafkaVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListKafkaVersions",
+		Input:   input,
+		Output:  (*kafka.ListKafkaVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.ListKafkaVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.ListKafkaVersionsOutput), req.Error
+}
+
+func (c *Client) ListKafkaVersionsPagesWithContext(ctx context.Context, input *kafka.ListKafkaVersionsInput, cb func(*kafka.ListKafkaVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListKafkaVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListKafkaVersionsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

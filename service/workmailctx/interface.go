@@ -44,11 +44,14 @@ type WorkMail interface {
 	ListResourceDelegatesPagesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, cb func(*workmail.ListResourceDelegatesOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *workmail.ListResourcesInput, opts ...request.Option) (*workmail.ListResourcesOutput, error)
 	ListResourcesPagesWithContext(ctx context.Context, input *workmail.ListResourcesInput, cb func(*workmail.ListResourcesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *workmail.ListTagsForResourceInput, opts ...request.Option) (*workmail.ListTagsForResourceOutput, error)
 	ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
 	RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error)
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
+	TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
 	UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error)
 	UpdateResourceWithContext(ctx context.Context, input *workmail.UpdateResourceInput, opts ...request.Option) (*workmail.UpdateResourceOutput, error)
@@ -755,6 +758,27 @@ func (c *Client) ListResourcesPagesWithContext(ctx context.Context, input *workm
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *workmail.ListTagsForResourceInput, opts ...request.Option) (*workmail.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*workmail.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -857,6 +881,48 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, input *workmail.R
 	})
 
 	return req.Output.(*workmail.ResetPasswordOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*workmail.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*workmail.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error) {
