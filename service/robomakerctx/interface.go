@@ -14,6 +14,7 @@ type RoboMaker interface {
 	BatchDescribeSimulationJobWithContext(ctx context.Context, input *robomaker.BatchDescribeSimulationJobInput, opts ...request.Option) (*robomaker.BatchDescribeSimulationJobOutput, error)
 	CancelDeploymentJobWithContext(ctx context.Context, input *robomaker.CancelDeploymentJobInput, opts ...request.Option) (*robomaker.CancelDeploymentJobOutput, error)
 	CancelSimulationJobWithContext(ctx context.Context, input *robomaker.CancelSimulationJobInput, opts ...request.Option) (*robomaker.CancelSimulationJobOutput, error)
+	CancelSimulationJobBatchWithContext(ctx context.Context, input *robomaker.CancelSimulationJobBatchInput, opts ...request.Option) (*robomaker.CancelSimulationJobBatchOutput, error)
 	CreateDeploymentJobWithContext(ctx context.Context, input *robomaker.CreateDeploymentJobInput, opts ...request.Option) (*robomaker.CreateDeploymentJobOutput, error)
 	CreateFleetWithContext(ctx context.Context, input *robomaker.CreateFleetInput, opts ...request.Option) (*robomaker.CreateFleetOutput, error)
 	CreateRobotWithContext(ctx context.Context, input *robomaker.CreateRobotInput, opts ...request.Option) (*robomaker.CreateRobotOutput, error)
@@ -33,6 +34,7 @@ type RoboMaker interface {
 	DescribeRobotApplicationWithContext(ctx context.Context, input *robomaker.DescribeRobotApplicationInput, opts ...request.Option) (*robomaker.DescribeRobotApplicationOutput, error)
 	DescribeSimulationApplicationWithContext(ctx context.Context, input *robomaker.DescribeSimulationApplicationInput, opts ...request.Option) (*robomaker.DescribeSimulationApplicationOutput, error)
 	DescribeSimulationJobWithContext(ctx context.Context, input *robomaker.DescribeSimulationJobInput, opts ...request.Option) (*robomaker.DescribeSimulationJobOutput, error)
+	DescribeSimulationJobBatchWithContext(ctx context.Context, input *robomaker.DescribeSimulationJobBatchInput, opts ...request.Option) (*robomaker.DescribeSimulationJobBatchOutput, error)
 	ListDeploymentJobsWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, opts ...request.Option) (*robomaker.ListDeploymentJobsOutput, error)
 	ListDeploymentJobsPagesWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, cb func(*robomaker.ListDeploymentJobsOutput, bool) bool, opts ...request.Option) error
 	ListFleetsWithContext(ctx context.Context, input *robomaker.ListFleetsInput, opts ...request.Option) (*robomaker.ListFleetsOutput, error)
@@ -43,11 +45,14 @@ type RoboMaker interface {
 	ListRobotsPagesWithContext(ctx context.Context, input *robomaker.ListRobotsInput, cb func(*robomaker.ListRobotsOutput, bool) bool, opts ...request.Option) error
 	ListSimulationApplicationsWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, opts ...request.Option) (*robomaker.ListSimulationApplicationsOutput, error)
 	ListSimulationApplicationsPagesWithContext(ctx context.Context, input *robomaker.ListSimulationApplicationsInput, cb func(*robomaker.ListSimulationApplicationsOutput, bool) bool, opts ...request.Option) error
+	ListSimulationJobBatchesWithContext(ctx context.Context, input *robomaker.ListSimulationJobBatchesInput, opts ...request.Option) (*robomaker.ListSimulationJobBatchesOutput, error)
+	ListSimulationJobBatchesPagesWithContext(ctx context.Context, input *robomaker.ListSimulationJobBatchesInput, cb func(*robomaker.ListSimulationJobBatchesOutput, bool) bool, opts ...request.Option) error
 	ListSimulationJobsWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, opts ...request.Option) (*robomaker.ListSimulationJobsOutput, error)
 	ListSimulationJobsPagesWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, cb func(*robomaker.ListSimulationJobsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *robomaker.ListTagsForResourceInput, opts ...request.Option) (*robomaker.ListTagsForResourceOutput, error)
 	RegisterRobotWithContext(ctx context.Context, input *robomaker.RegisterRobotInput, opts ...request.Option) (*robomaker.RegisterRobotOutput, error)
 	RestartSimulationJobWithContext(ctx context.Context, input *robomaker.RestartSimulationJobInput, opts ...request.Option) (*robomaker.RestartSimulationJobOutput, error)
+	StartSimulationJobBatchWithContext(ctx context.Context, input *robomaker.StartSimulationJobBatchInput, opts ...request.Option) (*robomaker.StartSimulationJobBatchOutput, error)
 	SyncDeploymentJobWithContext(ctx context.Context, input *robomaker.SyncDeploymentJobInput, opts ...request.Option) (*robomaker.SyncDeploymentJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *robomaker.TagResourceInput, opts ...request.Option) (*robomaker.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *robomaker.UntagResourceInput, opts ...request.Option) (*robomaker.UntagResourceOutput, error)
@@ -131,6 +136,27 @@ func (c *Client) CancelSimulationJobWithContext(ctx context.Context, input *robo
 	})
 
 	return req.Output.(*robomaker.CancelSimulationJobOutput), req.Error
+}
+
+func (c *Client) CancelSimulationJobBatchWithContext(ctx context.Context, input *robomaker.CancelSimulationJobBatchInput, opts ...request.Option) (*robomaker.CancelSimulationJobBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "CancelSimulationJobBatch",
+		Input:   input,
+		Output:  (*robomaker.CancelSimulationJobBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RoboMakerAPI.CancelSimulationJobBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*robomaker.CancelSimulationJobBatchOutput), req.Error
 }
 
 func (c *Client) CreateDeploymentJobWithContext(ctx context.Context, input *robomaker.CreateDeploymentJobInput, opts ...request.Option) (*robomaker.CreateDeploymentJobOutput, error) {
@@ -532,6 +558,27 @@ func (c *Client) DescribeSimulationJobWithContext(ctx context.Context, input *ro
 	return req.Output.(*robomaker.DescribeSimulationJobOutput), req.Error
 }
 
+func (c *Client) DescribeSimulationJobBatchWithContext(ctx context.Context, input *robomaker.DescribeSimulationJobBatchInput, opts ...request.Option) (*robomaker.DescribeSimulationJobBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "DescribeSimulationJobBatch",
+		Input:   input,
+		Output:  (*robomaker.DescribeSimulationJobBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RoboMakerAPI.DescribeSimulationJobBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*robomaker.DescribeSimulationJobBatchOutput), req.Error
+}
+
 func (c *Client) ListDeploymentJobsWithContext(ctx context.Context, input *robomaker.ListDeploymentJobsInput, opts ...request.Option) (*robomaker.ListDeploymentJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
@@ -737,6 +784,47 @@ func (c *Client) ListSimulationApplicationsPagesWithContext(ctx context.Context,
 	return req.Error
 }
 
+func (c *Client) ListSimulationJobBatchesWithContext(ctx context.Context, input *robomaker.ListSimulationJobBatchesInput, opts ...request.Option) (*robomaker.ListSimulationJobBatchesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListSimulationJobBatches",
+		Input:   input,
+		Output:  (*robomaker.ListSimulationJobBatchesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RoboMakerAPI.ListSimulationJobBatchesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*robomaker.ListSimulationJobBatchesOutput), req.Error
+}
+
+func (c *Client) ListSimulationJobBatchesPagesWithContext(ctx context.Context, input *robomaker.ListSimulationJobBatchesInput, cb func(*robomaker.ListSimulationJobBatchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "ListSimulationJobBatches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RoboMakerAPI.ListSimulationJobBatchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSimulationJobsWithContext(ctx context.Context, input *robomaker.ListSimulationJobsInput, opts ...request.Option) (*robomaker.ListSimulationJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "robomaker",
@@ -839,6 +927,27 @@ func (c *Client) RestartSimulationJobWithContext(ctx context.Context, input *rob
 	})
 
 	return req.Output.(*robomaker.RestartSimulationJobOutput), req.Error
+}
+
+func (c *Client) StartSimulationJobBatchWithContext(ctx context.Context, input *robomaker.StartSimulationJobBatchInput, opts ...request.Option) (*robomaker.StartSimulationJobBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "robomaker",
+		Action:  "StartSimulationJobBatch",
+		Input:   input,
+		Output:  (*robomaker.StartSimulationJobBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RoboMakerAPI.StartSimulationJobBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*robomaker.StartSimulationJobBatchOutput), req.Error
 }
 
 func (c *Client) SyncDeploymentJobWithContext(ctx context.Context, input *robomaker.SyncDeploymentJobInput, opts ...request.Option) (*robomaker.SyncDeploymentJobOutput, error) {
