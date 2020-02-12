@@ -17,6 +17,7 @@ type WorkMail interface {
 	CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error)
 	CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error)
 	CreateUserWithContext(ctx context.Context, input *workmail.CreateUserInput, opts ...request.Option) (*workmail.CreateUserOutput, error)
+	DeleteAccessControlRuleWithContext(ctx context.Context, input *workmail.DeleteAccessControlRuleInput, opts ...request.Option) (*workmail.DeleteAccessControlRuleOutput, error)
 	DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
@@ -29,7 +30,9 @@ type WorkMail interface {
 	DescribeUserWithContext(ctx context.Context, input *workmail.DescribeUserInput, opts ...request.Option) (*workmail.DescribeUserOutput, error)
 	DisassociateDelegateFromResourceWithContext(ctx context.Context, input *workmail.DisassociateDelegateFromResourceInput, opts ...request.Option) (*workmail.DisassociateDelegateFromResourceOutput, error)
 	DisassociateMemberFromGroupWithContext(ctx context.Context, input *workmail.DisassociateMemberFromGroupInput, opts ...request.Option) (*workmail.DisassociateMemberFromGroupOutput, error)
+	GetAccessControlEffectWithContext(ctx context.Context, input *workmail.GetAccessControlEffectInput, opts ...request.Option) (*workmail.GetAccessControlEffectOutput, error)
 	GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error)
+	ListAccessControlRulesWithContext(ctx context.Context, input *workmail.ListAccessControlRulesInput, opts ...request.Option) (*workmail.ListAccessControlRulesOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error)
 	ListAliasesPagesWithContext(ctx context.Context, input *workmail.ListAliasesInput, cb func(*workmail.ListAliasesOutput, bool) bool, opts ...request.Option) error
 	ListGroupMembersWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, opts ...request.Option) (*workmail.ListGroupMembersOutput, error)
@@ -47,6 +50,7 @@ type WorkMail interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *workmail.ListTagsForResourceInput, opts ...request.Option) (*workmail.ListTagsForResourceOutput, error)
 	ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error
+	PutAccessControlRuleWithContext(ctx context.Context, input *workmail.PutAccessControlRuleInput, opts ...request.Option) (*workmail.PutAccessControlRuleOutput, error)
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
 	RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error)
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
@@ -196,6 +200,27 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *workmail.Crea
 	})
 
 	return req.Output.(*workmail.CreateUserOutput), req.Error
+}
+
+func (c *Client) DeleteAccessControlRuleWithContext(ctx context.Context, input *workmail.DeleteAccessControlRuleInput, opts ...request.Option) (*workmail.DeleteAccessControlRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteAccessControlRule",
+		Input:   input,
+		Output:  (*workmail.DeleteAccessControlRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteAccessControlRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteAccessControlRuleOutput), req.Error
 }
 
 func (c *Client) DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error) {
@@ -450,6 +475,27 @@ func (c *Client) DisassociateMemberFromGroupWithContext(ctx context.Context, inp
 	return req.Output.(*workmail.DisassociateMemberFromGroupOutput), req.Error
 }
 
+func (c *Client) GetAccessControlEffectWithContext(ctx context.Context, input *workmail.GetAccessControlEffectInput, opts ...request.Option) (*workmail.GetAccessControlEffectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "GetAccessControlEffect",
+		Input:   input,
+		Output:  (*workmail.GetAccessControlEffectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.GetAccessControlEffectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.GetAccessControlEffectOutput), req.Error
+}
+
 func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -469,6 +515,27 @@ func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workma
 	})
 
 	return req.Output.(*workmail.GetMailboxDetailsOutput), req.Error
+}
+
+func (c *Client) ListAccessControlRulesWithContext(ctx context.Context, input *workmail.ListAccessControlRulesInput, opts ...request.Option) (*workmail.ListAccessControlRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListAccessControlRules",
+		Input:   input,
+		Output:  (*workmail.ListAccessControlRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListAccessControlRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListAccessControlRulesOutput), req.Error
 }
 
 func (c *Client) ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error) {
@@ -818,6 +885,27 @@ func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *workmail.
 	})
 
 	return req.Error
+}
+
+func (c *Client) PutAccessControlRuleWithContext(ctx context.Context, input *workmail.PutAccessControlRuleInput, opts ...request.Option) (*workmail.PutAccessControlRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "PutAccessControlRule",
+		Input:   input,
+		Output:  (*workmail.PutAccessControlRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.PutAccessControlRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.PutAccessControlRuleOutput), req.Error
 }
 
 func (c *Client) PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error) {

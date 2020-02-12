@@ -77,6 +77,8 @@ type Neptune interface {
 	ResetDBParameterGroupWithContext(ctx context.Context, input *neptune.ResetDBParameterGroupInput, opts ...request.Option) (*neptune.ResetDBParameterGroupOutput, error)
 	RestoreDBClusterFromSnapshotWithContext(ctx context.Context, input *neptune.RestoreDBClusterFromSnapshotInput, opts ...request.Option) (*neptune.RestoreDBClusterFromSnapshotOutput, error)
 	RestoreDBClusterToPointInTimeWithContext(ctx context.Context, input *neptune.RestoreDBClusterToPointInTimeInput, opts ...request.Option) (*neptune.RestoreDBClusterToPointInTimeOutput, error)
+	StartDBClusterWithContext(ctx context.Context, input *neptune.StartDBClusterInput, opts ...request.Option) (*neptune.StartDBClusterOutput, error)
+	StopDBClusterWithContext(ctx context.Context, input *neptune.StopDBClusterInput, opts ...request.Option) (*neptune.StopDBClusterOutput, error)
 }
 
 type Client struct {
@@ -1469,4 +1471,46 @@ func (c *Client) RestoreDBClusterToPointInTimeWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*neptune.RestoreDBClusterToPointInTimeOutput), req.Error
+}
+
+func (c *Client) StartDBClusterWithContext(ctx context.Context, input *neptune.StartDBClusterInput, opts ...request.Option) (*neptune.StartDBClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "StartDBCluster",
+		Input:   input,
+		Output:  (*neptune.StartDBClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.StartDBClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.StartDBClusterOutput), req.Error
+}
+
+func (c *Client) StopDBClusterWithContext(ctx context.Context, input *neptune.StopDBClusterInput, opts ...request.Option) (*neptune.StopDBClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "StopDBCluster",
+		Input:   input,
+		Output:  (*neptune.StopDBClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.StopDBClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.StopDBClusterOutput), req.Error
 }
