@@ -28,7 +28,10 @@ type SecurityHub interface {
 	DescribeHubWithContext(ctx context.Context, input *securityhub.DescribeHubInput, opts ...request.Option) (*securityhub.DescribeHubOutput, error)
 	DescribeProductsWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, opts ...request.Option) (*securityhub.DescribeProductsOutput, error)
 	DescribeProductsPagesWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, cb func(*securityhub.DescribeProductsOutput, bool) bool, opts ...request.Option) error
+	DescribeStandardsWithContext(ctx context.Context, input *securityhub.DescribeStandardsInput, opts ...request.Option) (*securityhub.DescribeStandardsOutput, error)
+	DescribeStandardsPagesWithContext(ctx context.Context, input *securityhub.DescribeStandardsInput, cb func(*securityhub.DescribeStandardsOutput, bool) bool, opts ...request.Option) error
 	DescribeStandardsControlsWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, opts ...request.Option) (*securityhub.DescribeStandardsControlsOutput, error)
+	DescribeStandardsControlsPagesWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, cb func(*securityhub.DescribeStandardsControlsOutput, bool) bool, opts ...request.Option) error
 	DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error)
 	DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error)
@@ -36,6 +39,7 @@ type SecurityHub interface {
 	EnableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.EnableImportFindingsForProductInput, opts ...request.Option) (*securityhub.EnableImportFindingsForProductOutput, error)
 	EnableSecurityHubWithContext(ctx context.Context, input *securityhub.EnableSecurityHubInput, opts ...request.Option) (*securityhub.EnableSecurityHubOutput, error)
 	GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error)
+	GetEnabledStandardsPagesWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, cb func(*securityhub.GetEnabledStandardsOutput, bool) bool, opts ...request.Option) error
 	GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error)
 	GetFindingsPagesWithContext(ctx context.Context, input *securityhub.GetFindingsInput, cb func(*securityhub.GetFindingsOutput, bool) bool, opts ...request.Option) error
 	GetInsightResultsWithContext(ctx context.Context, input *securityhub.GetInsightResultsInput, opts ...request.Option) (*securityhub.GetInsightResultsOutput, error)
@@ -48,7 +52,9 @@ type SecurityHub interface {
 	ListEnabledProductsForImportWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, opts ...request.Option) (*securityhub.ListEnabledProductsForImportOutput, error)
 	ListEnabledProductsForImportPagesWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, cb func(*securityhub.ListEnabledProductsForImportOutput, bool) bool, opts ...request.Option) error
 	ListInvitationsWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, opts ...request.Option) (*securityhub.ListInvitationsOutput, error)
+	ListInvitationsPagesWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, cb func(*securityhub.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *securityhub.ListMembersInput, opts ...request.Option) (*securityhub.ListMembersOutput, error)
+	ListMembersPagesWithContext(ctx context.Context, input *securityhub.ListMembersInput, cb func(*securityhub.ListMembersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *securityhub.TagResourceInput, opts ...request.Option) (*securityhub.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *securityhub.UntagResourceInput, opts ...request.Option) (*securityhub.UntagResourceOutput, error)
@@ -428,6 +434,47 @@ func (c *Client) DescribeProductsPagesWithContext(ctx context.Context, input *se
 	return req.Error
 }
 
+func (c *Client) DescribeStandardsWithContext(ctx context.Context, input *securityhub.DescribeStandardsInput, opts ...request.Option) (*securityhub.DescribeStandardsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeStandards",
+		Input:   input,
+		Output:  (*securityhub.DescribeStandardsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.DescribeStandardsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.DescribeStandardsOutput), req.Error
+}
+
+func (c *Client) DescribeStandardsPagesWithContext(ctx context.Context, input *securityhub.DescribeStandardsInput, cb func(*securityhub.DescribeStandardsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeStandards",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.DescribeStandardsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeStandardsControlsWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, opts ...request.Option) (*securityhub.DescribeStandardsControlsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -447,6 +494,26 @@ func (c *Client) DescribeStandardsControlsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*securityhub.DescribeStandardsControlsOutput), req.Error
+}
+
+func (c *Client) DescribeStandardsControlsPagesWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, cb func(*securityhub.DescribeStandardsControlsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeStandardsControls",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.DescribeStandardsControlsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error) {
@@ -594,6 +661,26 @@ func (c *Client) GetEnabledStandardsWithContext(ctx context.Context, input *secu
 	})
 
 	return req.Output.(*securityhub.GetEnabledStandardsOutput), req.Error
+}
+
+func (c *Client) GetEnabledStandardsPagesWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, cb func(*securityhub.GetEnabledStandardsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetEnabledStandards",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.GetEnabledStandardsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error) {
@@ -845,6 +932,26 @@ func (c *Client) ListInvitationsWithContext(ctx context.Context, input *security
 	return req.Output.(*securityhub.ListInvitationsOutput), req.Error
 }
 
+func (c *Client) ListInvitationsPagesWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, cb func(*securityhub.ListInvitationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListInvitations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListInvitationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMembersWithContext(ctx context.Context, input *securityhub.ListMembersInput, opts ...request.Option) (*securityhub.ListMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -864,6 +971,26 @@ func (c *Client) ListMembersWithContext(ctx context.Context, input *securityhub.
 	})
 
 	return req.Output.(*securityhub.ListMembersOutput), req.Error
+}
+
+func (c *Client) ListMembersPagesWithContext(ctx context.Context, input *securityhub.ListMembersInput, cb func(*securityhub.ListMembersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListMembers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListMembersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error) {

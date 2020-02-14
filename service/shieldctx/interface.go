@@ -13,6 +13,7 @@ import (
 type Shield interface {
 	AssociateDRTLogBucketWithContext(ctx context.Context, input *shield.AssociateDRTLogBucketInput, opts ...request.Option) (*shield.AssociateDRTLogBucketOutput, error)
 	AssociateDRTRoleWithContext(ctx context.Context, input *shield.AssociateDRTRoleInput, opts ...request.Option) (*shield.AssociateDRTRoleOutput, error)
+	AssociateHealthCheckWithContext(ctx context.Context, input *shield.AssociateHealthCheckInput, opts ...request.Option) (*shield.AssociateHealthCheckOutput, error)
 	CreateProtectionWithContext(ctx context.Context, input *shield.CreateProtectionInput, opts ...request.Option) (*shield.CreateProtectionOutput, error)
 	CreateSubscriptionWithContext(ctx context.Context, input *shield.CreateSubscriptionInput, opts ...request.Option) (*shield.CreateSubscriptionOutput, error)
 	DeleteProtectionWithContext(ctx context.Context, input *shield.DeleteProtectionInput, opts ...request.Option) (*shield.DeleteProtectionOutput, error)
@@ -24,6 +25,7 @@ type Shield interface {
 	DescribeSubscriptionWithContext(ctx context.Context, input *shield.DescribeSubscriptionInput, opts ...request.Option) (*shield.DescribeSubscriptionOutput, error)
 	DisassociateDRTLogBucketWithContext(ctx context.Context, input *shield.DisassociateDRTLogBucketInput, opts ...request.Option) (*shield.DisassociateDRTLogBucketOutput, error)
 	DisassociateDRTRoleWithContext(ctx context.Context, input *shield.DisassociateDRTRoleInput, opts ...request.Option) (*shield.DisassociateDRTRoleOutput, error)
+	DisassociateHealthCheckWithContext(ctx context.Context, input *shield.DisassociateHealthCheckInput, opts ...request.Option) (*shield.DisassociateHealthCheckOutput, error)
 	GetSubscriptionStateWithContext(ctx context.Context, input *shield.GetSubscriptionStateInput, opts ...request.Option) (*shield.GetSubscriptionStateOutput, error)
 	ListAttacksWithContext(ctx context.Context, input *shield.ListAttacksInput, opts ...request.Option) (*shield.ListAttacksOutput, error)
 	ListProtectionsWithContext(ctx context.Context, input *shield.ListProtectionsInput, opts ...request.Option) (*shield.ListProtectionsOutput, error)
@@ -86,6 +88,27 @@ func (c *Client) AssociateDRTRoleWithContext(ctx context.Context, input *shield.
 	})
 
 	return req.Output.(*shield.AssociateDRTRoleOutput), req.Error
+}
+
+func (c *Client) AssociateHealthCheckWithContext(ctx context.Context, input *shield.AssociateHealthCheckInput, opts ...request.Option) (*shield.AssociateHealthCheckOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "AssociateHealthCheck",
+		Input:   input,
+		Output:  (*shield.AssociateHealthCheckOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.AssociateHealthCheckWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.AssociateHealthCheckOutput), req.Error
 }
 
 func (c *Client) CreateProtectionWithContext(ctx context.Context, input *shield.CreateProtectionInput, opts ...request.Option) (*shield.CreateProtectionOutput, error) {
@@ -317,6 +340,27 @@ func (c *Client) DisassociateDRTRoleWithContext(ctx context.Context, input *shie
 	})
 
 	return req.Output.(*shield.DisassociateDRTRoleOutput), req.Error
+}
+
+func (c *Client) DisassociateHealthCheckWithContext(ctx context.Context, input *shield.DisassociateHealthCheckInput, opts ...request.Option) (*shield.DisassociateHealthCheckOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "DisassociateHealthCheck",
+		Input:   input,
+		Output:  (*shield.DisassociateHealthCheckOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.DisassociateHealthCheckWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.DisassociateHealthCheckOutput), req.Error
 }
 
 func (c *Client) GetSubscriptionStateWithContext(ctx context.Context, input *shield.GetSubscriptionStateInput, opts ...request.Option) (*shield.GetSubscriptionStateOutput, error) {
