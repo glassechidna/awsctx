@@ -21,6 +21,9 @@ type Cloud9 interface {
 	DescribeEnvironmentsWithContext(ctx context.Context, input *cloud9.DescribeEnvironmentsInput, opts ...request.Option) (*cloud9.DescribeEnvironmentsOutput, error)
 	ListEnvironmentsWithContext(ctx context.Context, input *cloud9.ListEnvironmentsInput, opts ...request.Option) (*cloud9.ListEnvironmentsOutput, error)
 	ListEnvironmentsPagesWithContext(ctx context.Context, input *cloud9.ListEnvironmentsInput, cb func(*cloud9.ListEnvironmentsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *cloud9.ListTagsForResourceInput, opts ...request.Option) (*cloud9.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *cloud9.TagResourceInput, opts ...request.Option) (*cloud9.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *cloud9.UntagResourceInput, opts ...request.Option) (*cloud9.UntagResourceOutput, error)
 	UpdateEnvironmentWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentInput, opts ...request.Option) (*cloud9.UpdateEnvironmentOutput, error)
 	UpdateEnvironmentMembershipWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentMembershipInput, opts ...request.Option) (*cloud9.UpdateEnvironmentMembershipOutput, error)
 }
@@ -246,6 +249,69 @@ func (c *Client) ListEnvironmentsPagesWithContext(ctx context.Context, input *cl
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cloud9.ListTagsForResourceInput, opts ...request.Option) (*cloud9.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloud9",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*cloud9.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Cloud9API.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloud9.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *cloud9.TagResourceInput, opts ...request.Option) (*cloud9.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloud9",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*cloud9.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Cloud9API.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloud9.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloud9.UntagResourceInput, opts ...request.Option) (*cloud9.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloud9",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*cloud9.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Cloud9API.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloud9.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateEnvironmentWithContext(ctx context.Context, input *cloud9.UpdateEnvironmentInput, opts ...request.Option) (*cloud9.UpdateEnvironmentOutput, error) {
