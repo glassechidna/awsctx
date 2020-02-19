@@ -72,6 +72,7 @@ type ServiceCatalog interface {
 	ListOrganizationPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListOrganizationPortfolioAccessOutput, error)
 	ListOrganizationPortfolioAccessPagesWithContext(ctx context.Context, input *servicecatalog.ListOrganizationPortfolioAccessInput, cb func(*servicecatalog.ListOrganizationPortfolioAccessOutput, bool) bool, opts ...request.Option) error
 	ListPortfolioAccessWithContext(ctx context.Context, input *servicecatalog.ListPortfolioAccessInput, opts ...request.Option) (*servicecatalog.ListPortfolioAccessOutput, error)
+	ListPortfolioAccessPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfolioAccessInput, cb func(*servicecatalog.ListPortfolioAccessOutput, bool) bool, opts ...request.Option) error
 	ListPortfoliosWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, opts ...request.Option) (*servicecatalog.ListPortfoliosOutput, error)
 	ListPortfoliosPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, cb func(*servicecatalog.ListPortfoliosOutput, bool) bool, opts ...request.Option) error
 	ListPortfoliosForProductWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosForProductInput, opts ...request.Option) (*servicecatalog.ListPortfoliosForProductOutput, error)
@@ -1401,6 +1402,26 @@ func (c *Client) ListPortfolioAccessWithContext(ctx context.Context, input *serv
 	})
 
 	return req.Output.(*servicecatalog.ListPortfolioAccessOutput), req.Error
+}
+
+func (c *Client) ListPortfolioAccessPagesWithContext(ctx context.Context, input *servicecatalog.ListPortfolioAccessInput, cb func(*servicecatalog.ListPortfolioAccessOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ListPortfolioAccess",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.ListPortfolioAccessPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPortfoliosWithContext(ctx context.Context, input *servicecatalog.ListPortfoliosInput, opts ...request.Option) (*servicecatalog.ListPortfoliosOutput, error) {
