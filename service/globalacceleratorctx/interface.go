@@ -11,23 +11,31 @@ import (
 )
 
 type GlobalAccelerator interface {
+	AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error)
 	CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error)
 	CreateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateEndpointGroupOutput, error)
 	CreateListenerWithContext(ctx context.Context, input *globalaccelerator.CreateListenerInput, opts ...request.Option) (*globalaccelerator.CreateListenerOutput, error)
 	DeleteAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteAcceleratorOutput, error)
 	DeleteEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteEndpointGroupOutput, error)
 	DeleteListenerWithContext(ctx context.Context, input *globalaccelerator.DeleteListenerInput, opts ...request.Option) (*globalaccelerator.DeleteListenerOutput, error)
+	DeprovisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.DeprovisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.DeprovisionByoipCidrOutput, error)
 	DescribeAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorOutput, error)
 	DescribeAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorAttributesOutput, error)
 	DescribeEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeEndpointGroupOutput, error)
 	DescribeListenerWithContext(ctx context.Context, input *globalaccelerator.DescribeListenerInput, opts ...request.Option) (*globalaccelerator.DescribeListenerOutput, error)
 	ListAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListAcceleratorsOutput, error)
+	ListByoipCidrsWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, opts ...request.Option) (*globalaccelerator.ListByoipCidrsOutput, error)
 	ListEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListEndpointGroupsOutput, error)
 	ListListenersWithContext(ctx context.Context, input *globalaccelerator.ListListenersInput, opts ...request.Option) (*globalaccelerator.ListListenersOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *globalaccelerator.ListTagsForResourceInput, opts ...request.Option) (*globalaccelerator.ListTagsForResourceOutput, error)
+	ProvisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.ProvisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.ProvisionByoipCidrOutput, error)
+	TagResourceWithContext(ctx context.Context, input *globalaccelerator.TagResourceInput, opts ...request.Option) (*globalaccelerator.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *globalaccelerator.UntagResourceInput, opts ...request.Option) (*globalaccelerator.UntagResourceOutput, error)
 	UpdateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorOutput, error)
 	UpdateAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorAttributesOutput, error)
 	UpdateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.UpdateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.UpdateEndpointGroupOutput, error)
 	UpdateListenerWithContext(ctx context.Context, input *globalaccelerator.UpdateListenerInput, opts ...request.Option) (*globalaccelerator.UpdateListenerOutput, error)
+	WithdrawByoipCidrWithContext(ctx context.Context, input *globalaccelerator.WithdrawByoipCidrInput, opts ...request.Option) (*globalaccelerator.WithdrawByoipCidrOutput, error)
 }
 
 type Client struct {
@@ -44,6 +52,27 @@ func New(base globalacceleratoriface.GlobalAcceleratorAPI, ctxer awsctx.Contexte
 
 var _ GlobalAccelerator = (*globalaccelerator.GlobalAccelerator)(nil)
 var _ GlobalAccelerator = (*Client)(nil)
+
+func (c *Client) AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "AdvertiseByoipCidr",
+		Input:   input,
+		Output:  (*globalaccelerator.AdvertiseByoipCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.AdvertiseByoipCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.AdvertiseByoipCidrOutput), req.Error
+}
 
 func (c *Client) CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -171,6 +200,27 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, input *globalacc
 	return req.Output.(*globalaccelerator.DeleteListenerOutput), req.Error
 }
 
+func (c *Client) DeprovisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.DeprovisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.DeprovisionByoipCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DeprovisionByoipCidr",
+		Input:   input,
+		Output:  (*globalaccelerator.DeprovisionByoipCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DeprovisionByoipCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DeprovisionByoipCidrOutput), req.Error
+}
+
 func (c *Client) DescribeAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -276,6 +326,27 @@ func (c *Client) ListAcceleratorsWithContext(ctx context.Context, input *globala
 	return req.Output.(*globalaccelerator.ListAcceleratorsOutput), req.Error
 }
 
+func (c *Client) ListByoipCidrsWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, opts ...request.Option) (*globalaccelerator.ListByoipCidrsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListByoipCidrs",
+		Input:   input,
+		Output:  (*globalaccelerator.ListByoipCidrsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListByoipCidrsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListByoipCidrsOutput), req.Error
+}
+
 func (c *Client) ListEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListEndpointGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -316,6 +387,90 @@ func (c *Client) ListListenersWithContext(ctx context.Context, input *globalacce
 	})
 
 	return req.Output.(*globalaccelerator.ListListenersOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *globalaccelerator.ListTagsForResourceInput, opts ...request.Option) (*globalaccelerator.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*globalaccelerator.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ProvisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.ProvisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.ProvisionByoipCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ProvisionByoipCidr",
+		Input:   input,
+		Output:  (*globalaccelerator.ProvisionByoipCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ProvisionByoipCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ProvisionByoipCidrOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *globalaccelerator.TagResourceInput, opts ...request.Option) (*globalaccelerator.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*globalaccelerator.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *globalaccelerator.UntagResourceInput, opts ...request.Option) (*globalaccelerator.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*globalaccelerator.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorOutput, error) {
@@ -400,4 +555,25 @@ func (c *Client) UpdateListenerWithContext(ctx context.Context, input *globalacc
 	})
 
 	return req.Output.(*globalaccelerator.UpdateListenerOutput), req.Error
+}
+
+func (c *Client) WithdrawByoipCidrWithContext(ctx context.Context, input *globalaccelerator.WithdrawByoipCidrInput, opts ...request.Option) (*globalaccelerator.WithdrawByoipCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "WithdrawByoipCidr",
+		Input:   input,
+		Output:  (*globalaccelerator.WithdrawByoipCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.WithdrawByoipCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.WithdrawByoipCidrOutput), req.Error
 }
