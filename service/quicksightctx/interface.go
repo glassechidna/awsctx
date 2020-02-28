@@ -69,6 +69,8 @@ type QuickSight interface {
 	ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error)
 	RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error)
+	SearchDashboardsWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, opts ...request.Option) (*quicksight.SearchDashboardsOutput, error)
+	SearchDashboardsPagesWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, cb func(*quicksight.SearchDashboardsOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error)
 	UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error)
@@ -1309,6 +1311,47 @@ func (c *Client) RegisterUserWithContext(ctx context.Context, input *quicksight.
 	})
 
 	return req.Output.(*quicksight.RegisterUserOutput), req.Error
+}
+
+func (c *Client) SearchDashboardsWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, opts ...request.Option) (*quicksight.SearchDashboardsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchDashboards",
+		Input:   input,
+		Output:  (*quicksight.SearchDashboardsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.SearchDashboardsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.SearchDashboardsOutput), req.Error
+}
+
+func (c *Client) SearchDashboardsPagesWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, cb func(*quicksight.SearchDashboardsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchDashboards",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.SearchDashboardsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error) {

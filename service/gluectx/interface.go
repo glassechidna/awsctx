@@ -120,6 +120,8 @@ type Glue interface {
 	ListDevEndpointsPagesWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, cb func(*glue.ListDevEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *glue.ListJobsInput, opts ...request.Option) (*glue.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *glue.ListJobsInput, cb func(*glue.ListJobsOutput, bool) bool, opts ...request.Option) error
+	ListMLTransformsWithContext(ctx context.Context, input *glue.ListMLTransformsInput, opts ...request.Option) (*glue.ListMLTransformsOutput, error)
+	ListMLTransformsPagesWithContext(ctx context.Context, input *glue.ListMLTransformsInput, cb func(*glue.ListMLTransformsOutput, bool) bool, opts ...request.Option) error
 	ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error)
 	ListTriggersPagesWithContext(ctx context.Context, input *glue.ListTriggersInput, cb func(*glue.ListTriggersOutput, bool) bool, opts ...request.Option) error
 	ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error)
@@ -2438,6 +2440,47 @@ func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *glue.ListJ
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.GlueAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMLTransformsWithContext(ctx context.Context, input *glue.ListMLTransformsInput, opts ...request.Option) (*glue.ListMLTransformsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListMLTransforms",
+		Input:   input,
+		Output:  (*glue.ListMLTransformsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListMLTransformsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListMLTransformsOutput), req.Error
+}
+
+func (c *Client) ListMLTransformsPagesWithContext(ctx context.Context, input *glue.ListMLTransformsInput, cb func(*glue.ListMLTransformsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListMLTransforms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListMLTransformsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

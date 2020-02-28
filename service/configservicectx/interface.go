@@ -85,6 +85,8 @@ type ConfigService interface {
 	PutRemediationExceptionsWithContext(ctx context.Context, input *configservice.PutRemediationExceptionsInput, opts ...request.Option) (*configservice.PutRemediationExceptionsOutput, error)
 	PutResourceConfigWithContext(ctx context.Context, input *configservice.PutResourceConfigInput, opts ...request.Option) (*configservice.PutResourceConfigOutput, error)
 	PutRetentionConfigurationWithContext(ctx context.Context, input *configservice.PutRetentionConfigurationInput, opts ...request.Option) (*configservice.PutRetentionConfigurationOutput, error)
+	SelectAggregateResourceConfigWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, opts ...request.Option) (*configservice.SelectAggregateResourceConfigOutput, error)
+	SelectAggregateResourceConfigPagesWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, cb func(*configservice.SelectAggregateResourceConfigOutput, bool) bool, opts ...request.Option) error
 	SelectResourceConfigWithContext(ctx context.Context, input *configservice.SelectResourceConfigInput, opts ...request.Option) (*configservice.SelectResourceConfigOutput, error)
 	StartConfigRulesEvaluationWithContext(ctx context.Context, input *configservice.StartConfigRulesEvaluationInput, opts ...request.Option) (*configservice.StartConfigRulesEvaluationOutput, error)
 	StartConfigurationRecorderWithContext(ctx context.Context, input *configservice.StartConfigurationRecorderInput, opts ...request.Option) (*configservice.StartConfigurationRecorderOutput, error)
@@ -1658,6 +1660,47 @@ func (c *Client) PutRetentionConfigurationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*configservice.PutRetentionConfigurationOutput), req.Error
+}
+
+func (c *Client) SelectAggregateResourceConfigWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, opts ...request.Option) (*configservice.SelectAggregateResourceConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "SelectAggregateResourceConfig",
+		Input:   input,
+		Output:  (*configservice.SelectAggregateResourceConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.SelectAggregateResourceConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.SelectAggregateResourceConfigOutput), req.Error
+}
+
+func (c *Client) SelectAggregateResourceConfigPagesWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, cb func(*configservice.SelectAggregateResourceConfigOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "SelectAggregateResourceConfig",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.SelectAggregateResourceConfigPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SelectResourceConfigWithContext(ctx context.Context, input *configservice.SelectResourceConfigInput, opts ...request.Option) (*configservice.SelectResourceConfigOutput, error) {
