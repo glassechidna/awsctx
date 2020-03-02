@@ -39,6 +39,7 @@ type CloudWatch interface {
 	ListMetricsPagesWithContext(ctx context.Context, input *cloudwatch.ListMetricsInput, cb func(*cloudwatch.ListMetricsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudwatch.ListTagsForResourceInput, opts ...request.Option) (*cloudwatch.ListTagsForResourceOutput, error)
 	PutAnomalyDetectorWithContext(ctx context.Context, input *cloudwatch.PutAnomalyDetectorInput, opts ...request.Option) (*cloudwatch.PutAnomalyDetectorOutput, error)
+	PutCompositeAlarmWithContext(ctx context.Context, input *cloudwatch.PutCompositeAlarmInput, opts ...request.Option) (*cloudwatch.PutCompositeAlarmOutput, error)
 	PutDashboardWithContext(ctx context.Context, input *cloudwatch.PutDashboardInput, opts ...request.Option) (*cloudwatch.PutDashboardOutput, error)
 	PutInsightRuleWithContext(ctx context.Context, input *cloudwatch.PutInsightRuleInput, opts ...request.Option) (*cloudwatch.PutInsightRuleOutput, error)
 	PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error)
@@ -643,6 +644,27 @@ func (c *Client) PutAnomalyDetectorWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*cloudwatch.PutAnomalyDetectorOutput), req.Error
+}
+
+func (c *Client) PutCompositeAlarmWithContext(ctx context.Context, input *cloudwatch.PutCompositeAlarmInput, opts ...request.Option) (*cloudwatch.PutCompositeAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "PutCompositeAlarm",
+		Input:   input,
+		Output:  (*cloudwatch.PutCompositeAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.PutCompositeAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.PutCompositeAlarmOutput), req.Error
 }
 
 func (c *Client) PutDashboardWithContext(ctx context.Context, input *cloudwatch.PutDashboardInput, opts ...request.Option) (*cloudwatch.PutDashboardOutput, error) {
