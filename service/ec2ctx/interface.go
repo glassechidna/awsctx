@@ -178,6 +178,7 @@ type EC2 interface {
 	DescribeClientVpnTargetNetworksWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, opts ...request.Option) (*ec2.DescribeClientVpnTargetNetworksOutput, error)
 	DescribeClientVpnTargetNetworksPagesWithContext(ctx context.Context, input *ec2.DescribeClientVpnTargetNetworksInput, cb func(*ec2.DescribeClientVpnTargetNetworksOutput, bool) bool, opts ...request.Option) error
 	DescribeCoipPoolsWithContext(ctx context.Context, input *ec2.DescribeCoipPoolsInput, opts ...request.Option) (*ec2.DescribeCoipPoolsOutput, error)
+	DescribeCoipPoolsPagesWithContext(ctx context.Context, input *ec2.DescribeCoipPoolsInput, cb func(*ec2.DescribeCoipPoolsOutput, bool) bool, opts ...request.Option) error
 	DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error)
 	DescribeCustomerGatewaysWithContext(ctx context.Context, input *ec2.DescribeCustomerGatewaysInput, opts ...request.Option) (*ec2.DescribeCustomerGatewaysOutput, error)
 	DescribeDhcpOptionsWithContext(ctx context.Context, input *ec2.DescribeDhcpOptionsInput, opts ...request.Option) (*ec2.DescribeDhcpOptionsOutput, error)
@@ -221,7 +222,9 @@ type EC2 interface {
 	DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error)
 	DescribeInstanceStatusPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, cb func(*ec2.DescribeInstanceStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceTypeOfferingsWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, opts ...request.Option) (*ec2.DescribeInstanceTypeOfferingsOutput, error)
+	DescribeInstanceTypeOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, cb func(*ec2.DescribeInstanceTypeOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceTypesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, opts ...request.Option) (*ec2.DescribeInstanceTypesOutput, error)
+	DescribeInstanceTypesPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, cb func(*ec2.DescribeInstanceTypesOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error)
 	DescribeInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, cb func(*ec2.DescribeInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error)
@@ -234,11 +237,17 @@ type EC2 interface {
 	DescribeLaunchTemplatesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, opts ...request.Option) (*ec2.DescribeLaunchTemplatesOutput, error)
 	DescribeLaunchTemplatesPagesWithContext(ctx context.Context, input *ec2.DescribeLaunchTemplatesInput, cb func(*ec2.DescribeLaunchTemplatesOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, error)
+	DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsInput, cb func(*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewayRouteTableVpcAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVpcAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, error)
+	DescribeLocalGatewayRouteTableVpcAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVpcAssociationsInput, cb func(*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTablesOutput, error)
+	DescribeLocalGatewayRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTablesInput, cb func(*ec2.DescribeLocalGatewayRouteTablesOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewayVirtualInterfaceGroupsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfaceGroupsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, error)
+	DescribeLocalGatewayVirtualInterfaceGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfaceGroupsInput, cb func(*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewayVirtualInterfacesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfacesOutput, error)
+	DescribeLocalGatewayVirtualInterfacesPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, cb func(*ec2.DescribeLocalGatewayVirtualInterfacesOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewaysWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, opts ...request.Option) (*ec2.DescribeLocalGatewaysOutput, error)
+	DescribeLocalGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, cb func(*ec2.DescribeLocalGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error)
 	DescribeMovingAddressesPagesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, cb func(*ec2.DescribeMovingAddressesOutput, bool) bool, opts ...request.Option) error
 	DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, opts ...request.Option) (*ec2.DescribeNatGatewaysOutput, error)
@@ -300,7 +309,9 @@ type EC2 interface {
 	DescribeTransitGatewayAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayAttachmentsOutput, error)
 	DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, cb func(*ec2.DescribeTransitGatewayAttachmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayMulticastDomainsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayMulticastDomainsOutput, error)
+	DescribeTransitGatewayMulticastDomainsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, cb func(*ec2.DescribeTransitGatewayMulticastDomainsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayPeeringAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, error)
+	DescribeTransitGatewayPeeringAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, cb func(*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error)
 	DescribeTransitGatewayRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, cb func(*ec2.DescribeTransitGatewayRouteTablesOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayVpcAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayVpcAttachmentsOutput, error)
@@ -381,6 +392,7 @@ type EC2 interface {
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, error)
+	GetTransitGatewayMulticastDomainAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, cb func(*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error)
 	GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error)
@@ -467,7 +479,9 @@ type EC2 interface {
 	RunInstancesWithContext(ctx context.Context, input *ec2.RunInstancesInput, opts ...request.Option) (*ec2.Reservation, error)
 	RunScheduledInstancesWithContext(ctx context.Context, input *ec2.RunScheduledInstancesInput, opts ...request.Option) (*ec2.RunScheduledInstancesOutput, error)
 	SearchLocalGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchLocalGatewayRoutesInput, opts ...request.Option) (*ec2.SearchLocalGatewayRoutesOutput, error)
+	SearchLocalGatewayRoutesPagesWithContext(ctx context.Context, input *ec2.SearchLocalGatewayRoutesInput, cb func(*ec2.SearchLocalGatewayRoutesOutput, bool) bool, opts ...request.Option) error
 	SearchTransitGatewayMulticastGroupsWithContext(ctx context.Context, input *ec2.SearchTransitGatewayMulticastGroupsInput, opts ...request.Option) (*ec2.SearchTransitGatewayMulticastGroupsOutput, error)
+	SearchTransitGatewayMulticastGroupsPagesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayMulticastGroupsInput, cb func(*ec2.SearchTransitGatewayMulticastGroupsOutput, bool) bool, opts ...request.Option) error
 	SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error)
 	SendDiagnosticInterruptWithContext(ctx context.Context, input *ec2.SendDiagnosticInterruptInput, opts ...request.Option) (*ec2.SendDiagnosticInterruptOutput, error)
 	StartInstancesWithContext(ctx context.Context, input *ec2.StartInstancesInput, opts ...request.Option) (*ec2.StartInstancesOutput, error)
@@ -3997,6 +4011,26 @@ func (c *Client) DescribeCoipPoolsWithContext(ctx context.Context, input *ec2.De
 	return req.Output.(*ec2.DescribeCoipPoolsOutput), req.Error
 }
 
+func (c *Client) DescribeCoipPoolsPagesWithContext(ctx context.Context, input *ec2.DescribeCoipPoolsInput, cb func(*ec2.DescribeCoipPoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCoipPools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeCoipPoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeConversionTasksWithContext(ctx context.Context, input *ec2.DescribeConversionTasksInput, opts ...request.Option) (*ec2.DescribeConversionTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4885,6 +4919,26 @@ func (c *Client) DescribeInstanceTypeOfferingsWithContext(ctx context.Context, i
 	return req.Output.(*ec2.DescribeInstanceTypeOfferingsOutput), req.Error
 }
 
+func (c *Client) DescribeInstanceTypeOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, cb func(*ec2.DescribeInstanceTypeOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceTypeOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstanceTypeOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeInstanceTypesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, opts ...request.Option) (*ec2.DescribeInstanceTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4904,6 +4958,26 @@ func (c *Client) DescribeInstanceTypesWithContext(ctx context.Context, input *ec
 	})
 
 	return req.Output.(*ec2.DescribeInstanceTypesOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceTypesPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, cb func(*ec2.DescribeInstanceTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstanceTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, opts ...request.Option) (*ec2.DescribeInstancesOutput, error) {
@@ -5153,6 +5227,26 @@ func (c *Client) DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
 	return req.Output.(*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput), req.Error
 }
 
+func (c *Client) DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsInput, cb func(*ec2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLocalGatewayRouteTableVpcAssociationsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVpcAssociationsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5172,6 +5266,26 @@ func (c *Client) DescribeLocalGatewayRouteTableVpcAssociationsWithContext(ctx co
 	})
 
 	return req.Output.(*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewayRouteTableVpcAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTableVpcAssociationsInput, cb func(*ec2.DescribeLocalGatewayRouteTableVpcAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayRouteTableVpcAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLocalGatewayRouteTableVpcAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeLocalGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayRouteTablesOutput, error) {
@@ -5195,6 +5309,26 @@ func (c *Client) DescribeLocalGatewayRouteTablesWithContext(ctx context.Context,
 	return req.Output.(*ec2.DescribeLocalGatewayRouteTablesOutput), req.Error
 }
 
+func (c *Client) DescribeLocalGatewayRouteTablesPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayRouteTablesInput, cb func(*ec2.DescribeLocalGatewayRouteTablesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayRouteTables",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLocalGatewayRouteTablesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLocalGatewayVirtualInterfaceGroupsWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfaceGroupsInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5214,6 +5348,26 @@ func (c *Client) DescribeLocalGatewayVirtualInterfaceGroupsWithContext(ctx conte
 	})
 
 	return req.Output.(*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewayVirtualInterfaceGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfaceGroupsInput, cb func(*ec2.DescribeLocalGatewayVirtualInterfaceGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayVirtualInterfaceGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLocalGatewayVirtualInterfaceGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeLocalGatewayVirtualInterfacesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, opts ...request.Option) (*ec2.DescribeLocalGatewayVirtualInterfacesOutput, error) {
@@ -5237,6 +5391,26 @@ func (c *Client) DescribeLocalGatewayVirtualInterfacesWithContext(ctx context.Co
 	return req.Output.(*ec2.DescribeLocalGatewayVirtualInterfacesOutput), req.Error
 }
 
+func (c *Client) DescribeLocalGatewayVirtualInterfacesPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, cb func(*ec2.DescribeLocalGatewayVirtualInterfacesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGatewayVirtualInterfaces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLocalGatewayVirtualInterfacesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLocalGatewaysWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, opts ...request.Option) (*ec2.DescribeLocalGatewaysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -5256,6 +5430,26 @@ func (c *Client) DescribeLocalGatewaysWithContext(ctx context.Context, input *ec
 	})
 
 	return req.Output.(*ec2.DescribeLocalGatewaysOutput), req.Error
+}
+
+func (c *Client) DescribeLocalGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, cb func(*ec2.DescribeLocalGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLocalGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeLocalGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error) {
@@ -6514,6 +6708,26 @@ func (c *Client) DescribeTransitGatewayMulticastDomainsWithContext(ctx context.C
 	return req.Output.(*ec2.DescribeTransitGatewayMulticastDomainsOutput), req.Error
 }
 
+func (c *Client) DescribeTransitGatewayMulticastDomainsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, cb func(*ec2.DescribeTransitGatewayMulticastDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayMulticastDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayMulticastDomainsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTransitGatewayPeeringAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -6533,6 +6747,26 @@ func (c *Client) DescribeTransitGatewayPeeringAttachmentsWithContext(ctx context
 	})
 
 	return req.Output.(*ec2.DescribeTransitGatewayPeeringAttachmentsOutput), req.Error
+}
+
+func (c *Client) DescribeTransitGatewayPeeringAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, cb func(*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayPeeringAttachments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayPeeringAttachmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeTransitGatewayRouteTablesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayRouteTablesInput, opts ...request.Option) (*ec2.DescribeTransitGatewayRouteTablesOutput, error) {
@@ -8197,6 +8431,26 @@ func (c *Client) GetTransitGatewayMulticastDomainAssociationsWithContext(ctx con
 	})
 
 	return req.Output.(*ec2.GetTransitGatewayMulticastDomainAssociationsOutput), req.Error
+}
+
+func (c *Client) GetTransitGatewayMulticastDomainAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, cb func(*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayMulticastDomainAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetTransitGatewayMulticastDomainAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error) {
@@ -10003,6 +10257,26 @@ func (c *Client) SearchLocalGatewayRoutesWithContext(ctx context.Context, input 
 	return req.Output.(*ec2.SearchLocalGatewayRoutesOutput), req.Error
 }
 
+func (c *Client) SearchLocalGatewayRoutesPagesWithContext(ctx context.Context, input *ec2.SearchLocalGatewayRoutesInput, cb func(*ec2.SearchLocalGatewayRoutesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "SearchLocalGatewayRoutes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.SearchLocalGatewayRoutesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchTransitGatewayMulticastGroupsWithContext(ctx context.Context, input *ec2.SearchTransitGatewayMulticastGroupsInput, opts ...request.Option) (*ec2.SearchTransitGatewayMulticastGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10022,6 +10296,26 @@ func (c *Client) SearchTransitGatewayMulticastGroupsWithContext(ctx context.Cont
 	})
 
 	return req.Output.(*ec2.SearchTransitGatewayMulticastGroupsOutput), req.Error
+}
+
+func (c *Client) SearchTransitGatewayMulticastGroupsPagesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayMulticastGroupsInput, cb func(*ec2.SearchTransitGatewayMulticastGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "SearchTransitGatewayMulticastGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.SearchTransitGatewayMulticastGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error) {
