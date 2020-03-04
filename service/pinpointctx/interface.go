@@ -18,6 +18,7 @@ type Pinpoint interface {
 	CreateImportJobWithContext(ctx context.Context, input *pinpoint.CreateImportJobInput, opts ...request.Option) (*pinpoint.CreateImportJobOutput, error)
 	CreateJourneyWithContext(ctx context.Context, input *pinpoint.CreateJourneyInput, opts ...request.Option) (*pinpoint.CreateJourneyOutput, error)
 	CreatePushTemplateWithContext(ctx context.Context, input *pinpoint.CreatePushTemplateInput, opts ...request.Option) (*pinpoint.CreatePushTemplateOutput, error)
+	CreateRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.CreateRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.CreateRecommenderConfigurationOutput, error)
 	CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error)
 	CreateSmsTemplateWithContext(ctx context.Context, input *pinpoint.CreateSmsTemplateInput, opts ...request.Option) (*pinpoint.CreateSmsTemplateOutput, error)
 	CreateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.CreateVoiceTemplateInput, opts ...request.Option) (*pinpoint.CreateVoiceTemplateOutput, error)
@@ -36,6 +37,7 @@ type Pinpoint interface {
 	DeleteGcmChannelWithContext(ctx context.Context, input *pinpoint.DeleteGcmChannelInput, opts ...request.Option) (*pinpoint.DeleteGcmChannelOutput, error)
 	DeleteJourneyWithContext(ctx context.Context, input *pinpoint.DeleteJourneyInput, opts ...request.Option) (*pinpoint.DeleteJourneyOutput, error)
 	DeletePushTemplateWithContext(ctx context.Context, input *pinpoint.DeletePushTemplateInput, opts ...request.Option) (*pinpoint.DeletePushTemplateOutput, error)
+	DeleteRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.DeleteRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.DeleteRecommenderConfigurationOutput, error)
 	DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error)
 	DeleteSmsChannelWithContext(ctx context.Context, input *pinpoint.DeleteSmsChannelInput, opts ...request.Option) (*pinpoint.DeleteSmsChannelOutput, error)
 	DeleteSmsTemplateWithContext(ctx context.Context, input *pinpoint.DeleteSmsTemplateInput, opts ...request.Option) (*pinpoint.DeleteSmsTemplateOutput, error)
@@ -73,6 +75,8 @@ type Pinpoint interface {
 	GetJourneyExecutionActivityMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionActivityMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionActivityMetricsOutput, error)
 	GetJourneyExecutionMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionMetricsOutput, error)
 	GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error)
+	GetRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.GetRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.GetRecommenderConfigurationOutput, error)
+	GetRecommenderConfigurationsWithContext(ctx context.Context, input *pinpoint.GetRecommenderConfigurationsInput, opts ...request.Option) (*pinpoint.GetRecommenderConfigurationsOutput, error)
 	GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error)
 	GetSegmentExportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentExportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentExportJobsOutput, error)
 	GetSegmentImportJobsWithContext(ctx context.Context, input *pinpoint.GetSegmentImportJobsInput, opts ...request.Option) (*pinpoint.GetSegmentImportJobsOutput, error)
@@ -112,6 +116,7 @@ type Pinpoint interface {
 	UpdateJourneyWithContext(ctx context.Context, input *pinpoint.UpdateJourneyInput, opts ...request.Option) (*pinpoint.UpdateJourneyOutput, error)
 	UpdateJourneyStateWithContext(ctx context.Context, input *pinpoint.UpdateJourneyStateInput, opts ...request.Option) (*pinpoint.UpdateJourneyStateOutput, error)
 	UpdatePushTemplateWithContext(ctx context.Context, input *pinpoint.UpdatePushTemplateInput, opts ...request.Option) (*pinpoint.UpdatePushTemplateOutput, error)
+	UpdateRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.UpdateRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.UpdateRecommenderConfigurationOutput, error)
 	UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error)
 	UpdateSmsChannelWithContext(ctx context.Context, input *pinpoint.UpdateSmsChannelInput, opts ...request.Option) (*pinpoint.UpdateSmsChannelOutput, error)
 	UpdateSmsTemplateWithContext(ctx context.Context, input *pinpoint.UpdateSmsTemplateInput, opts ...request.Option) (*pinpoint.UpdateSmsTemplateOutput, error)
@@ -280,6 +285,27 @@ func (c *Client) CreatePushTemplateWithContext(ctx context.Context, input *pinpo
 	})
 
 	return req.Output.(*pinpoint.CreatePushTemplateOutput), req.Error
+}
+
+func (c *Client) CreateRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.CreateRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.CreateRecommenderConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "CreateRecommenderConfiguration",
+		Input:   input,
+		Output:  (*pinpoint.CreateRecommenderConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.CreateRecommenderConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.CreateRecommenderConfigurationOutput), req.Error
 }
 
 func (c *Client) CreateSegmentWithContext(ctx context.Context, input *pinpoint.CreateSegmentInput, opts ...request.Option) (*pinpoint.CreateSegmentOutput, error) {
@@ -658,6 +684,27 @@ func (c *Client) DeletePushTemplateWithContext(ctx context.Context, input *pinpo
 	})
 
 	return req.Output.(*pinpoint.DeletePushTemplateOutput), req.Error
+}
+
+func (c *Client) DeleteRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.DeleteRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.DeleteRecommenderConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "DeleteRecommenderConfiguration",
+		Input:   input,
+		Output:  (*pinpoint.DeleteRecommenderConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.DeleteRecommenderConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.DeleteRecommenderConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteSegmentWithContext(ctx context.Context, input *pinpoint.DeleteSegmentInput, opts ...request.Option) (*pinpoint.DeleteSegmentOutput, error) {
@@ -1435,6 +1482,48 @@ func (c *Client) GetPushTemplateWithContext(ctx context.Context, input *pinpoint
 	})
 
 	return req.Output.(*pinpoint.GetPushTemplateOutput), req.Error
+}
+
+func (c *Client) GetRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.GetRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.GetRecommenderConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetRecommenderConfiguration",
+		Input:   input,
+		Output:  (*pinpoint.GetRecommenderConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetRecommenderConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetRecommenderConfigurationOutput), req.Error
+}
+
+func (c *Client) GetRecommenderConfigurationsWithContext(ctx context.Context, input *pinpoint.GetRecommenderConfigurationsInput, opts ...request.Option) (*pinpoint.GetRecommenderConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetRecommenderConfigurations",
+		Input:   input,
+		Output:  (*pinpoint.GetRecommenderConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetRecommenderConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetRecommenderConfigurationsOutput), req.Error
 }
 
 func (c *Client) GetSegmentWithContext(ctx context.Context, input *pinpoint.GetSegmentInput, opts ...request.Option) (*pinpoint.GetSegmentOutput, error) {
@@ -2254,6 +2343,27 @@ func (c *Client) UpdatePushTemplateWithContext(ctx context.Context, input *pinpo
 	})
 
 	return req.Output.(*pinpoint.UpdatePushTemplateOutput), req.Error
+}
+
+func (c *Client) UpdateRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.UpdateRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.UpdateRecommenderConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "UpdateRecommenderConfiguration",
+		Input:   input,
+		Output:  (*pinpoint.UpdateRecommenderConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.UpdateRecommenderConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.UpdateRecommenderConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateSegmentWithContext(ctx context.Context, input *pinpoint.UpdateSegmentInput, opts ...request.Option) (*pinpoint.UpdateSegmentOutput, error) {
