@@ -403,6 +403,7 @@ type EC2 interface {
 	ImportKeyPairWithContext(ctx context.Context, input *ec2.ImportKeyPairInput, opts ...request.Option) (*ec2.ImportKeyPairOutput, error)
 	ImportSnapshotWithContext(ctx context.Context, input *ec2.ImportSnapshotInput, opts ...request.Option) (*ec2.ImportSnapshotOutput, error)
 	ImportVolumeWithContext(ctx context.Context, input *ec2.ImportVolumeInput, opts ...request.Option) (*ec2.ImportVolumeOutput, error)
+	ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error)
 	ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error)
 	ModifyClientVpnEndpointWithContext(ctx context.Context, input *ec2.ModifyClientVpnEndpointInput, opts ...request.Option) (*ec2.ModifyClientVpnEndpointOutput, error)
 	ModifyDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyDefaultCreditSpecificationOutput, error)
@@ -8659,6 +8660,27 @@ func (c *Client) ImportVolumeWithContext(ctx context.Context, input *ec2.ImportV
 	})
 
 	return req.Output.(*ec2.ImportVolumeOutput), req.Error
+}
+
+func (c *Client) ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyAvailabilityZoneGroup",
+		Input:   input,
+		Output:  (*ec2.ModifyAvailabilityZoneGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyAvailabilityZoneGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyAvailabilityZoneGroupOutput), req.Error
 }
 
 func (c *Client) ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error) {
