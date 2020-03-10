@@ -26,6 +26,7 @@ type ServerlessApplicationRepository interface {
 	ListApplicationsWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, opts ...request.Option) (*serverlessapplicationrepository.ListApplicationsOutput, error)
 	ListApplicationsPagesWithContext(ctx context.Context, input *serverlessapplicationrepository.ListApplicationsInput, cb func(*serverlessapplicationrepository.ListApplicationsOutput, bool) bool, opts ...request.Option) error
 	PutApplicationPolicyWithContext(ctx context.Context, input *serverlessapplicationrepository.PutApplicationPolicyInput, opts ...request.Option) (*serverlessapplicationrepository.PutApplicationPolicyOutput, error)
+	UnshareApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.UnshareApplicationInput, opts ...request.Option) (*serverlessapplicationrepository.UnshareApplicationOutput, error)
 	UpdateApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.UpdateApplicationRequest, opts ...request.Option) (*serverlessapplicationrepository.UpdateApplicationOutput, error)
 }
 
@@ -354,6 +355,27 @@ func (c *Client) PutApplicationPolicyWithContext(ctx context.Context, input *ser
 	})
 
 	return req.Output.(*serverlessapplicationrepository.PutApplicationPolicyOutput), req.Error
+}
+
+func (c *Client) UnshareApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.UnshareApplicationInput, opts ...request.Option) (*serverlessapplicationrepository.UnshareApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "serverlessapplicationrepository",
+		Action:  "UnshareApplication",
+		Input:   input,
+		Output:  (*serverlessapplicationrepository.UnshareApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServerlessApplicationRepositoryAPI.UnshareApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*serverlessapplicationrepository.UnshareApplicationOutput), req.Error
 }
 
 func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *serverlessapplicationrepository.UpdateApplicationRequest, opts ...request.Option) (*serverlessapplicationrepository.UpdateApplicationOutput, error) {
