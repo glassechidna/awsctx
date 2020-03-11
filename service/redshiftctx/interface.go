@@ -105,12 +105,14 @@ type Redshift interface {
 	ModifyScheduledActionWithContext(ctx context.Context, input *redshift.ModifyScheduledActionInput, opts ...request.Option) (*redshift.ModifyScheduledActionOutput, error)
 	ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Context, input *redshift.ModifySnapshotCopyRetentionPeriodInput, opts ...request.Option) (*redshift.ModifySnapshotCopyRetentionPeriodOutput, error)
 	ModifySnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifySnapshotScheduleInput, opts ...request.Option) (*redshift.ModifySnapshotScheduleOutput, error)
+	PauseClusterWithContext(ctx context.Context, input *redshift.PauseClusterInput, opts ...request.Option) (*redshift.PauseClusterOutput, error)
 	PurchaseReservedNodeOfferingWithContext(ctx context.Context, input *redshift.PurchaseReservedNodeOfferingInput, opts ...request.Option) (*redshift.PurchaseReservedNodeOfferingOutput, error)
 	RebootClusterWithContext(ctx context.Context, input *redshift.RebootClusterInput, opts ...request.Option) (*redshift.RebootClusterOutput, error)
 	ResetClusterParameterGroupWithContext(ctx context.Context, input *redshift.ResetClusterParameterGroupInput, opts ...request.Option) (*redshift.ClusterParameterGroupNameMessage, error)
 	ResizeClusterWithContext(ctx context.Context, input *redshift.ResizeClusterInput, opts ...request.Option) (*redshift.ResizeClusterOutput, error)
 	RestoreFromClusterSnapshotWithContext(ctx context.Context, input *redshift.RestoreFromClusterSnapshotInput, opts ...request.Option) (*redshift.RestoreFromClusterSnapshotOutput, error)
 	RestoreTableFromClusterSnapshotWithContext(ctx context.Context, input *redshift.RestoreTableFromClusterSnapshotInput, opts ...request.Option) (*redshift.RestoreTableFromClusterSnapshotOutput, error)
+	ResumeClusterWithContext(ctx context.Context, input *redshift.ResumeClusterInput, opts ...request.Option) (*redshift.ResumeClusterOutput, error)
 	RevokeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.RevokeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.RevokeClusterSecurityGroupIngressOutput, error)
 	RevokeSnapshotAccessWithContext(ctx context.Context, input *redshift.RevokeSnapshotAccessInput, opts ...request.Option) (*redshift.RevokeSnapshotAccessOutput, error)
 	RotateEncryptionKeyWithContext(ctx context.Context, input *redshift.RotateEncryptionKeyInput, opts ...request.Option) (*redshift.RotateEncryptionKeyOutput, error)
@@ -2088,6 +2090,27 @@ func (c *Client) ModifySnapshotScheduleWithContext(ctx context.Context, input *r
 	return req.Output.(*redshift.ModifySnapshotScheduleOutput), req.Error
 }
 
+func (c *Client) PauseClusterWithContext(ctx context.Context, input *redshift.PauseClusterInput, opts ...request.Option) (*redshift.PauseClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "PauseCluster",
+		Input:   input,
+		Output:  (*redshift.PauseClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.PauseClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.PauseClusterOutput), req.Error
+}
+
 func (c *Client) PurchaseReservedNodeOfferingWithContext(ctx context.Context, input *redshift.PurchaseReservedNodeOfferingInput, opts ...request.Option) (*redshift.PurchaseReservedNodeOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -2212,6 +2235,27 @@ func (c *Client) RestoreTableFromClusterSnapshotWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*redshift.RestoreTableFromClusterSnapshotOutput), req.Error
+}
+
+func (c *Client) ResumeClusterWithContext(ctx context.Context, input *redshift.ResumeClusterInput, opts ...request.Option) (*redshift.ResumeClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ResumeCluster",
+		Input:   input,
+		Output:  (*redshift.ResumeClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ResumeClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ResumeClusterOutput), req.Error
 }
 
 func (c *Client) RevokeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.RevokeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.RevokeClusterSecurityGroupIngressOutput, error) {
