@@ -52,11 +52,14 @@ type LexModelBuildingService interface {
 	GetSlotTypesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypesOutput, error)
 	GetSlotTypesPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypesInput, cb func(*lexmodelbuildingservice.GetSlotTypesOutput, bool) bool, opts ...request.Option) error
 	GetUtterancesViewWithContext(ctx context.Context, input *lexmodelbuildingservice.GetUtterancesViewInput, opts ...request.Option) (*lexmodelbuildingservice.GetUtterancesViewOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.ListTagsForResourceInput, opts ...request.Option) (*lexmodelbuildingservice.ListTagsForResourceOutput, error)
 	PutBotWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotOutput, error)
 	PutBotAliasWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotAliasInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotAliasOutput, error)
 	PutIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.PutIntentInput, opts ...request.Option) (*lexmodelbuildingservice.PutIntentOutput, error)
 	PutSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.PutSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.PutSlotTypeOutput, error)
 	StartImportWithContext(ctx context.Context, input *lexmodelbuildingservice.StartImportInput, opts ...request.Option) (*lexmodelbuildingservice.StartImportOutput, error)
+	TagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.TagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.UntagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -925,6 +928,27 @@ func (c *Client) GetUtterancesViewWithContext(ctx context.Context, input *lexmod
 	return req.Output.(*lexmodelbuildingservice.GetUtterancesViewOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.ListTagsForResourceInput, opts ...request.Option) (*lexmodelbuildingservice.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*lexmodelbuildingservice.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LexModelBuildingServiceAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lexmodelbuildingservice.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutBotWithContext(ctx context.Context, input *lexmodelbuildingservice.PutBotInput, opts ...request.Option) (*lexmodelbuildingservice.PutBotOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -1028,4 +1052,46 @@ func (c *Client) StartImportWithContext(ctx context.Context, input *lexmodelbuil
 	})
 
 	return req.Output.(*lexmodelbuildingservice.StartImportOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.TagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*lexmodelbuildingservice.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LexModelBuildingServiceAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lexmodelbuildingservice.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.UntagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*lexmodelbuildingservice.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LexModelBuildingServiceAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lexmodelbuildingservice.UntagResourceOutput), req.Error
 }
