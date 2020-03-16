@@ -21,13 +21,16 @@ type ElastiCache interface {
 	CreateCacheParameterGroupWithContext(ctx context.Context, input *elasticache.CreateCacheParameterGroupInput, opts ...request.Option) (*elasticache.CreateCacheParameterGroupOutput, error)
 	CreateCacheSecurityGroupWithContext(ctx context.Context, input *elasticache.CreateCacheSecurityGroupInput, opts ...request.Option) (*elasticache.CreateCacheSecurityGroupOutput, error)
 	CreateCacheSubnetGroupWithContext(ctx context.Context, input *elasticache.CreateCacheSubnetGroupInput, opts ...request.Option) (*elasticache.CreateCacheSubnetGroupOutput, error)
+	CreateGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.CreateGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.CreateGlobalReplicationGroupOutput, error)
 	CreateReplicationGroupWithContext(ctx context.Context, input *elasticache.CreateReplicationGroupInput, opts ...request.Option) (*elasticache.CreateReplicationGroupOutput, error)
 	CreateSnapshotWithContext(ctx context.Context, input *elasticache.CreateSnapshotInput, opts ...request.Option) (*elasticache.CreateSnapshotOutput, error)
+	DecreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error)
 	DecreaseReplicaCountWithContext(ctx context.Context, input *elasticache.DecreaseReplicaCountInput, opts ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error)
 	DeleteCacheClusterWithContext(ctx context.Context, input *elasticache.DeleteCacheClusterInput, opts ...request.Option) (*elasticache.DeleteCacheClusterOutput, error)
 	DeleteCacheParameterGroupWithContext(ctx context.Context, input *elasticache.DeleteCacheParameterGroupInput, opts ...request.Option) (*elasticache.DeleteCacheParameterGroupOutput, error)
 	DeleteCacheSecurityGroupWithContext(ctx context.Context, input *elasticache.DeleteCacheSecurityGroupInput, opts ...request.Option) (*elasticache.DeleteCacheSecurityGroupOutput, error)
 	DeleteCacheSubnetGroupWithContext(ctx context.Context, input *elasticache.DeleteCacheSubnetGroupInput, opts ...request.Option) (*elasticache.DeleteCacheSubnetGroupOutput, error)
+	DeleteGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.DeleteGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.DeleteGlobalReplicationGroupOutput, error)
 	DeleteReplicationGroupWithContext(ctx context.Context, input *elasticache.DeleteReplicationGroupInput, opts ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error)
 	DeleteSnapshotWithContext(ctx context.Context, input *elasticache.DeleteSnapshotInput, opts ...request.Option) (*elasticache.DeleteSnapshotOutput, error)
 	DescribeCacheClustersWithContext(ctx context.Context, input *elasticache.DescribeCacheClustersInput, opts ...request.Option) (*elasticache.DescribeCacheClustersOutput, error)
@@ -46,6 +49,8 @@ type ElastiCache interface {
 	DescribeEngineDefaultParametersPagesWithContext(ctx context.Context, input *elasticache.DescribeEngineDefaultParametersInput, cb func(*elasticache.DescribeEngineDefaultParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, opts ...request.Option) (*elasticache.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *elasticache.DescribeEventsInput, cb func(*elasticache.DescribeEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeGlobalReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeGlobalReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeGlobalReplicationGroupsOutput, error)
+	DescribeGlobalReplicationGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeGlobalReplicationGroupsInput, cb func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error)
 	DescribeReplicationGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, cb func(*elasticache.DescribeReplicationGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedCacheNodesWithContext(ctx context.Context, input *elasticache.DescribeReservedCacheNodesInput, opts ...request.Option) (*elasticache.DescribeReservedCacheNodesOutput, error)
@@ -58,15 +63,20 @@ type ElastiCache interface {
 	DescribeSnapshotsPagesWithContext(ctx context.Context, input *elasticache.DescribeSnapshotsInput, cb func(*elasticache.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeUpdateActionsWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, opts ...request.Option) (*elasticache.DescribeUpdateActionsOutput, error)
 	DescribeUpdateActionsPagesWithContext(ctx context.Context, input *elasticache.DescribeUpdateActionsInput, cb func(*elasticache.DescribeUpdateActionsOutput, bool) bool, opts ...request.Option) error
+	DisassociateGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.DisassociateGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.DisassociateGlobalReplicationGroupOutput, error)
+	FailoverGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.FailoverGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.FailoverGlobalReplicationGroupOutput, error)
+	IncreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error)
 	IncreaseReplicaCountWithContext(ctx context.Context, input *elasticache.IncreaseReplicaCountInput, opts ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error)
 	ListAllowedNodeTypeModificationsWithContext(ctx context.Context, input *elasticache.ListAllowedNodeTypeModificationsInput, opts ...request.Option) (*elasticache.ListAllowedNodeTypeModificationsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *elasticache.ListTagsForResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error)
 	ModifyCacheClusterWithContext(ctx context.Context, input *elasticache.ModifyCacheClusterInput, opts ...request.Option) (*elasticache.ModifyCacheClusterOutput, error)
 	ModifyCacheParameterGroupWithContext(ctx context.Context, input *elasticache.ModifyCacheParameterGroupInput, opts ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
 	ModifyCacheSubnetGroupWithContext(ctx context.Context, input *elasticache.ModifyCacheSubnetGroupInput, opts ...request.Option) (*elasticache.ModifyCacheSubnetGroupOutput, error)
+	ModifyGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.ModifyGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.ModifyGlobalReplicationGroupOutput, error)
 	ModifyReplicationGroupWithContext(ctx context.Context, input *elasticache.ModifyReplicationGroupInput, opts ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error)
 	ModifyReplicationGroupShardConfigurationWithContext(ctx context.Context, input *elasticache.ModifyReplicationGroupShardConfigurationInput, opts ...request.Option) (*elasticache.ModifyReplicationGroupShardConfigurationOutput, error)
 	PurchaseReservedCacheNodesOfferingWithContext(ctx context.Context, input *elasticache.PurchaseReservedCacheNodesOfferingInput, opts ...request.Option) (*elasticache.PurchaseReservedCacheNodesOfferingOutput, error)
+	RebalanceSlotsInGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.RebalanceSlotsInGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error)
 	RebootCacheClusterWithContext(ctx context.Context, input *elasticache.RebootCacheClusterInput, opts ...request.Option) (*elasticache.RebootCacheClusterOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *elasticache.RemoveTagsFromResourceInput, opts ...request.Option) (*elasticache.TagListMessage, error)
 	ResetCacheParameterGroupWithContext(ctx context.Context, input *elasticache.ResetCacheParameterGroupInput, opts ...request.Option) (*elasticache.CacheParameterGroupNameMessage, error)
@@ -300,6 +310,27 @@ func (c *Client) CreateCacheSubnetGroupWithContext(ctx context.Context, input *e
 	return req.Output.(*elasticache.CreateCacheSubnetGroupOutput), req.Error
 }
 
+func (c *Client) CreateGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.CreateGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.CreateGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "CreateGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.CreateGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.CreateGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.CreateGlobalReplicationGroupOutput), req.Error
+}
+
 func (c *Client) CreateReplicationGroupWithContext(ctx context.Context, input *elasticache.CreateReplicationGroupInput, opts ...request.Option) (*elasticache.CreateReplicationGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -340,6 +371,27 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, input *elasticac
 	})
 
 	return req.Output.(*elasticache.CreateSnapshotOutput), req.Error
+}
+
+func (c *Client) DecreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.DecreaseNodeGroupsInGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DecreaseNodeGroupsInGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.DecreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.DecreaseNodeGroupsInGlobalReplicationGroupOutput), req.Error
 }
 
 func (c *Client) DecreaseReplicaCountWithContext(ctx context.Context, input *elasticache.DecreaseReplicaCountInput, opts ...request.Option) (*elasticache.DecreaseReplicaCountOutput, error) {
@@ -445,6 +497,27 @@ func (c *Client) DeleteCacheSubnetGroupWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*elasticache.DeleteCacheSubnetGroupOutput), req.Error
+}
+
+func (c *Client) DeleteGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.DeleteGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.DeleteGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DeleteGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.DeleteGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.DeleteGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.DeleteGlobalReplicationGroupOutput), req.Error
 }
 
 func (c *Client) DeleteReplicationGroupWithContext(ctx context.Context, input *elasticache.DeleteReplicationGroupInput, opts ...request.Option) (*elasticache.DeleteReplicationGroupOutput, error) {
@@ -817,6 +890,47 @@ func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *elas
 	return req.Error
 }
 
+func (c *Client) DescribeGlobalReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeGlobalReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeGlobalReplicationGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeGlobalReplicationGroups",
+		Input:   input,
+		Output:  (*elasticache.DescribeGlobalReplicationGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.DescribeGlobalReplicationGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.DescribeGlobalReplicationGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeGlobalReplicationGroupsPagesWithContext(ctx context.Context, input *elasticache.DescribeGlobalReplicationGroupsInput, cb func(*elasticache.DescribeGlobalReplicationGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DescribeGlobalReplicationGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElastiCacheAPI.DescribeGlobalReplicationGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReplicationGroupsWithContext(ctx context.Context, input *elasticache.DescribeReplicationGroupsInput, opts ...request.Option) (*elasticache.DescribeReplicationGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -1063,6 +1177,69 @@ func (c *Client) DescribeUpdateActionsPagesWithContext(ctx context.Context, inpu
 	return req.Error
 }
 
+func (c *Client) DisassociateGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.DisassociateGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.DisassociateGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "DisassociateGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.DisassociateGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.DisassociateGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.DisassociateGlobalReplicationGroupOutput), req.Error
+}
+
+func (c *Client) FailoverGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.FailoverGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.FailoverGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "FailoverGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.FailoverGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.FailoverGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.FailoverGlobalReplicationGroupOutput), req.Error
+}
+
+func (c *Client) IncreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.IncreaseNodeGroupsInGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "IncreaseNodeGroupsInGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.IncreaseNodeGroupsInGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.IncreaseNodeGroupsInGlobalReplicationGroupOutput), req.Error
+}
+
 func (c *Client) IncreaseReplicaCountWithContext(ctx context.Context, input *elasticache.IncreaseReplicaCountInput, opts ...request.Option) (*elasticache.IncreaseReplicaCountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -1189,6 +1366,27 @@ func (c *Client) ModifyCacheSubnetGroupWithContext(ctx context.Context, input *e
 	return req.Output.(*elasticache.ModifyCacheSubnetGroupOutput), req.Error
 }
 
+func (c *Client) ModifyGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.ModifyGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.ModifyGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "ModifyGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.ModifyGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.ModifyGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.ModifyGlobalReplicationGroupOutput), req.Error
+}
+
 func (c *Client) ModifyReplicationGroupWithContext(ctx context.Context, input *elasticache.ModifyReplicationGroupInput, opts ...request.Option) (*elasticache.ModifyReplicationGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticache",
@@ -1250,6 +1448,27 @@ func (c *Client) PurchaseReservedCacheNodesOfferingWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*elasticache.PurchaseReservedCacheNodesOfferingOutput), req.Error
+}
+
+func (c *Client) RebalanceSlotsInGlobalReplicationGroupWithContext(ctx context.Context, input *elasticache.RebalanceSlotsInGlobalReplicationGroupInput, opts ...request.Option) (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "RebalanceSlotsInGlobalReplicationGroup",
+		Input:   input,
+		Output:  (*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.RebalanceSlotsInGlobalReplicationGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.RebalanceSlotsInGlobalReplicationGroupOutput), req.Error
 }
 
 func (c *Client) RebootCacheClusterWithContext(ctx context.Context, input *elasticache.RebootCacheClusterInput, opts ...request.Option) (*elasticache.RebootCacheClusterOutput, error) {

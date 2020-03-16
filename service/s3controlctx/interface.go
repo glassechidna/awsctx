@@ -15,17 +15,20 @@ type S3Control interface {
 	CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error)
 	DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error)
 	DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error)
+	DeleteJobTaggingWithContext(ctx context.Context, input *s3control.DeleteJobTaggingInput, opts ...request.Option) (*s3control.DeleteJobTaggingOutput, error)
 	DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error)
 	GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error)
 	GetAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyInput, opts ...request.Option) (*s3control.GetAccessPointPolicyOutput, error)
 	GetAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusOutput, error)
+	GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error)
 	GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error)
 	ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error)
 	ListAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, cb func(*s3control.ListAccessPointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *s3control.ListJobsInput, cb func(*s3control.ListJobsOutput, bool) bool, opts ...request.Option) error
 	PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error)
+	PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error)
 	PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error)
 	UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error)
 	UpdateJobStatusWithContext(ctx context.Context, input *s3control.UpdateJobStatusInput, opts ...request.Option) (*s3control.UpdateJobStatusOutput, error)
@@ -128,6 +131,27 @@ func (c *Client) DeleteAccessPointPolicyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*s3control.DeleteAccessPointPolicyOutput), req.Error
+}
+
+func (c *Client) DeleteJobTaggingWithContext(ctx context.Context, input *s3control.DeleteJobTaggingInput, opts ...request.Option) (*s3control.DeleteJobTaggingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteJobTagging",
+		Input:   input,
+		Output:  (*s3control.DeleteJobTaggingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteJobTaggingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteJobTaggingOutput), req.Error
 }
 
 func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error) {
@@ -233,6 +257,27 @@ func (c *Client) GetAccessPointPolicyStatusWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*s3control.GetAccessPointPolicyStatusOutput), req.Error
+}
+
+func (c *Client) GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetJobTagging",
+		Input:   input,
+		Output:  (*s3control.GetJobTaggingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetJobTaggingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetJobTaggingOutput), req.Error
 }
 
 func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error) {
@@ -357,6 +402,27 @@ func (c *Client) PutAccessPointPolicyWithContext(ctx context.Context, input *s3c
 	})
 
 	return req.Output.(*s3control.PutAccessPointPolicyOutput), req.Error
+}
+
+func (c *Client) PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutJobTagging",
+		Input:   input,
+		Output:  (*s3control.PutJobTaggingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutJobTaggingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutJobTaggingOutput), req.Error
 }
 
 func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error) {
