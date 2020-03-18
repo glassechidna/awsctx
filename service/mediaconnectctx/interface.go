@@ -12,6 +12,7 @@ import (
 
 type MediaConnect interface {
 	AddFlowOutputsWithContext(ctx context.Context, input *mediaconnect.AddFlowOutputsInput, opts ...request.Option) (*mediaconnect.AddFlowOutputsOutput, error)
+	AddFlowSourcesWithContext(ctx context.Context, input *mediaconnect.AddFlowSourcesInput, opts ...request.Option) (*mediaconnect.AddFlowSourcesOutput, error)
 	CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error)
 	DeleteFlowWithContext(ctx context.Context, input *mediaconnect.DeleteFlowInput, opts ...request.Option) (*mediaconnect.DeleteFlowOutput, error)
 	DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error)
@@ -22,11 +23,13 @@ type MediaConnect interface {
 	ListFlowsPagesWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, cb func(*mediaconnect.ListFlowsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error)
 	RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error)
+	RemoveFlowSourceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowSourceInput, opts ...request.Option) (*mediaconnect.RemoveFlowSourceOutput, error)
 	RevokeFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.RevokeFlowEntitlementInput, opts ...request.Option) (*mediaconnect.RevokeFlowEntitlementOutput, error)
 	StartFlowWithContext(ctx context.Context, input *mediaconnect.StartFlowInput, opts ...request.Option) (*mediaconnect.StartFlowOutput, error)
 	StopFlowWithContext(ctx context.Context, input *mediaconnect.StopFlowInput, opts ...request.Option) (*mediaconnect.StopFlowOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediaconnect.TagResourceInput, opts ...request.Option) (*mediaconnect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *mediaconnect.UntagResourceInput, opts ...request.Option) (*mediaconnect.UntagResourceOutput, error)
+	UpdateFlowWithContext(ctx context.Context, input *mediaconnect.UpdateFlowInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutput, error)
 	UpdateFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.UpdateFlowEntitlementInput, opts ...request.Option) (*mediaconnect.UpdateFlowEntitlementOutput, error)
 	UpdateFlowOutputWithContext(ctx context.Context, input *mediaconnect.UpdateFlowOutputInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutputOutput, error)
 	UpdateFlowSourceWithContext(ctx context.Context, input *mediaconnect.UpdateFlowSourceInput, opts ...request.Option) (*mediaconnect.UpdateFlowSourceOutput, error)
@@ -66,6 +69,27 @@ func (c *Client) AddFlowOutputsWithContext(ctx context.Context, input *mediaconn
 	})
 
 	return req.Output.(*mediaconnect.AddFlowOutputsOutput), req.Error
+}
+
+func (c *Client) AddFlowSourcesWithContext(ctx context.Context, input *mediaconnect.AddFlowSourcesInput, opts ...request.Option) (*mediaconnect.AddFlowSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "AddFlowSources",
+		Input:   input,
+		Output:  (*mediaconnect.AddFlowSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.AddFlowSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.AddFlowSourcesOutput), req.Error
 }
 
 func (c *Client) CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error) {
@@ -276,6 +300,27 @@ func (c *Client) RemoveFlowOutputWithContext(ctx context.Context, input *mediaco
 	return req.Output.(*mediaconnect.RemoveFlowOutputOutput), req.Error
 }
 
+func (c *Client) RemoveFlowSourceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowSourceInput, opts ...request.Option) (*mediaconnect.RemoveFlowSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "RemoveFlowSource",
+		Input:   input,
+		Output:  (*mediaconnect.RemoveFlowSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.RemoveFlowSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.RemoveFlowSourceOutput), req.Error
+}
+
 func (c *Client) RevokeFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.RevokeFlowEntitlementInput, opts ...request.Option) (*mediaconnect.RevokeFlowEntitlementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -379,6 +424,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediaconne
 	})
 
 	return req.Output.(*mediaconnect.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateFlowWithContext(ctx context.Context, input *mediaconnect.UpdateFlowInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateFlow",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateFlowOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateFlowWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateFlowOutput), req.Error
 }
 
 func (c *Client) UpdateFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.UpdateFlowEntitlementInput, opts ...request.Option) (*mediaconnect.UpdateFlowEntitlementOutput, error) {
