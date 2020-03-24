@@ -23,6 +23,7 @@ type Organizations interface {
 	DeleteOrganizationWithContext(ctx context.Context, input *organizations.DeleteOrganizationInput, opts ...request.Option) (*organizations.DeleteOrganizationOutput, error)
 	DeleteOrganizationalUnitWithContext(ctx context.Context, input *organizations.DeleteOrganizationalUnitInput, opts ...request.Option) (*organizations.DeleteOrganizationalUnitOutput, error)
 	DeletePolicyWithContext(ctx context.Context, input *organizations.DeletePolicyInput, opts ...request.Option) (*organizations.DeletePolicyOutput, error)
+	DeregisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.DeregisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.DeregisterDelegatedAdministratorOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *organizations.DescribeAccountInput, opts ...request.Option) (*organizations.DescribeAccountOutput, error)
 	DescribeCreateAccountStatusWithContext(ctx context.Context, input *organizations.DescribeCreateAccountStatusInput, opts ...request.Option) (*organizations.DescribeCreateAccountStatusOutput, error)
 	DescribeEffectivePolicyWithContext(ctx context.Context, input *organizations.DescribeEffectivePolicyInput, opts ...request.Option) (*organizations.DescribeEffectivePolicyOutput, error)
@@ -48,6 +49,10 @@ type Organizations interface {
 	ListChildrenPagesWithContext(ctx context.Context, input *organizations.ListChildrenInput, cb func(*organizations.ListChildrenOutput, bool) bool, opts ...request.Option) error
 	ListCreateAccountStatusWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, opts ...request.Option) (*organizations.ListCreateAccountStatusOutput, error)
 	ListCreateAccountStatusPagesWithContext(ctx context.Context, input *organizations.ListCreateAccountStatusInput, cb func(*organizations.ListCreateAccountStatusOutput, bool) bool, opts ...request.Option) error
+	ListDelegatedAdministratorsWithContext(ctx context.Context, input *organizations.ListDelegatedAdministratorsInput, opts ...request.Option) (*organizations.ListDelegatedAdministratorsOutput, error)
+	ListDelegatedAdministratorsPagesWithContext(ctx context.Context, input *organizations.ListDelegatedAdministratorsInput, cb func(*organizations.ListDelegatedAdministratorsOutput, bool) bool, opts ...request.Option) error
+	ListDelegatedServicesForAccountWithContext(ctx context.Context, input *organizations.ListDelegatedServicesForAccountInput, opts ...request.Option) (*organizations.ListDelegatedServicesForAccountOutput, error)
+	ListDelegatedServicesForAccountPagesWithContext(ctx context.Context, input *organizations.ListDelegatedServicesForAccountInput, cb func(*organizations.ListDelegatedServicesForAccountOutput, bool) bool, opts ...request.Option) error
 	ListHandshakesForAccountWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, opts ...request.Option) (*organizations.ListHandshakesForAccountOutput, error)
 	ListHandshakesForAccountPagesWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, cb func(*organizations.ListHandshakesForAccountOutput, bool) bool, opts ...request.Option) error
 	ListHandshakesForOrganizationWithContext(ctx context.Context, input *organizations.ListHandshakesForOrganizationInput, opts ...request.Option) (*organizations.ListHandshakesForOrganizationOutput, error)
@@ -67,6 +72,7 @@ type Organizations interface {
 	ListTargetsForPolicyWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, opts ...request.Option) (*organizations.ListTargetsForPolicyOutput, error)
 	ListTargetsForPolicyPagesWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, cb func(*organizations.ListTargetsForPolicyOutput, bool) bool, opts ...request.Option) error
 	MoveAccountWithContext(ctx context.Context, input *organizations.MoveAccountInput, opts ...request.Option) (*organizations.MoveAccountOutput, error)
+	RegisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.RegisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.RegisterDelegatedAdministratorOutput, error)
 	RemoveAccountFromOrganizationWithContext(ctx context.Context, input *organizations.RemoveAccountFromOrganizationInput, opts ...request.Option) (*organizations.RemoveAccountFromOrganizationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *organizations.TagResourceInput, opts ...request.Option) (*organizations.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *organizations.UntagResourceInput, opts ...request.Option) (*organizations.UntagResourceOutput, error)
@@ -339,6 +345,27 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *organizatio
 	})
 
 	return req.Output.(*organizations.DeletePolicyOutput), req.Error
+}
+
+func (c *Client) DeregisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.DeregisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.DeregisterDelegatedAdministratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "DeregisterDelegatedAdministrator",
+		Input:   input,
+		Output:  (*organizations.DeregisterDelegatedAdministratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.DeregisterDelegatedAdministratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.DeregisterDelegatedAdministratorOutput), req.Error
 }
 
 func (c *Client) DescribeAccountWithContext(ctx context.Context, input *organizations.DescribeAccountInput, opts ...request.Option) (*organizations.DescribeAccountOutput, error) {
@@ -861,6 +888,88 @@ func (c *Client) ListCreateAccountStatusPagesWithContext(ctx context.Context, in
 	return req.Error
 }
 
+func (c *Client) ListDelegatedAdministratorsWithContext(ctx context.Context, input *organizations.ListDelegatedAdministratorsInput, opts ...request.Option) (*organizations.ListDelegatedAdministratorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListDelegatedAdministrators",
+		Input:   input,
+		Output:  (*organizations.ListDelegatedAdministratorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.ListDelegatedAdministratorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.ListDelegatedAdministratorsOutput), req.Error
+}
+
+func (c *Client) ListDelegatedAdministratorsPagesWithContext(ctx context.Context, input *organizations.ListDelegatedAdministratorsInput, cb func(*organizations.ListDelegatedAdministratorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListDelegatedAdministrators",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListDelegatedAdministratorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDelegatedServicesForAccountWithContext(ctx context.Context, input *organizations.ListDelegatedServicesForAccountInput, opts ...request.Option) (*organizations.ListDelegatedServicesForAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListDelegatedServicesForAccount",
+		Input:   input,
+		Output:  (*organizations.ListDelegatedServicesForAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.ListDelegatedServicesForAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.ListDelegatedServicesForAccountOutput), req.Error
+}
+
+func (c *Client) ListDelegatedServicesForAccountPagesWithContext(ctx context.Context, input *organizations.ListDelegatedServicesForAccountInput, cb func(*organizations.ListDelegatedServicesForAccountOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "ListDelegatedServicesForAccount",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OrganizationsAPI.ListDelegatedServicesForAccountPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListHandshakesForAccountWithContext(ctx context.Context, input *organizations.ListHandshakesForAccountInput, opts ...request.Option) (*organizations.ListHandshakesForAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -1249,6 +1358,27 @@ func (c *Client) MoveAccountWithContext(ctx context.Context, input *organization
 	})
 
 	return req.Output.(*organizations.MoveAccountOutput), req.Error
+}
+
+func (c *Client) RegisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.RegisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.RegisterDelegatedAdministratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "RegisterDelegatedAdministrator",
+		Input:   input,
+		Output:  (*organizations.RegisterDelegatedAdministratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.RegisterDelegatedAdministratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.RegisterDelegatedAdministratorOutput), req.Error
 }
 
 func (c *Client) RemoveAccountFromOrganizationWithContext(ctx context.Context, input *organizations.RemoveAccountFromOrganizationInput, opts ...request.Option) (*organizations.RemoveAccountFromOrganizationOutput, error) {
