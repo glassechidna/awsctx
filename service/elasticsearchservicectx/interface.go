@@ -12,27 +12,37 @@ import (
 
 type ElasticsearchService interface {
 	AddTagsWithContext(ctx context.Context, input *elasticsearchservice.AddTagsInput, opts ...request.Option) (*elasticsearchservice.AddTagsOutput, error)
+	AssociatePackageWithContext(ctx context.Context, input *elasticsearchservice.AssociatePackageInput, opts ...request.Option) (*elasticsearchservice.AssociatePackageOutput, error)
 	CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput, error)
 	CreateElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.CreateElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.CreateElasticsearchDomainOutput, error)
+	CreatePackageWithContext(ctx context.Context, input *elasticsearchservice.CreatePackageInput, opts ...request.Option) (*elasticsearchservice.CreatePackageOutput, error)
 	DeleteElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchDomainOutput, error)
 	DeleteElasticsearchServiceRoleWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchServiceRoleInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchServiceRoleOutput, error)
+	DeletePackageWithContext(ctx context.Context, input *elasticsearchservice.DeletePackageInput, opts ...request.Option) (*elasticsearchservice.DeletePackageOutput, error)
 	DescribeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainOutput, error)
 	DescribeElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainConfigOutput, error)
 	DescribeElasticsearchDomainsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainsOutput, error)
 	DescribeElasticsearchInstanceTypeLimitsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsOutput, error)
+	DescribePackagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, opts ...request.Option) (*elasticsearchservice.DescribePackagesOutput, error)
+	DescribePackagesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, cb func(*elasticsearchservice.DescribePackagesOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedElasticsearchInstanceOfferingsWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput, error)
 	DescribeReservedElasticsearchInstanceOfferingsPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsInput, cb func(*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedElasticsearchInstancesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstancesInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput, error)
 	DescribeReservedElasticsearchInstancesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstancesInput, cb func(*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput, bool) bool, opts ...request.Option) error
+	DissociatePackageWithContext(ctx context.Context, input *elasticsearchservice.DissociatePackageInput, opts ...request.Option) (*elasticsearchservice.DissociatePackageOutput, error)
 	GetCompatibleElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.GetCompatibleElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput, error)
 	GetUpgradeHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeHistoryInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeHistoryOutput, error)
 	GetUpgradeHistoryPagesWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeHistoryInput, cb func(*elasticsearchservice.GetUpgradeHistoryOutput, bool) bool, opts ...request.Option) error
 	GetUpgradeStatusWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeStatusInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeStatusOutput, error)
 	ListDomainNamesWithContext(ctx context.Context, input *elasticsearchservice.ListDomainNamesInput, opts ...request.Option) (*elasticsearchservice.ListDomainNamesOutput, error)
+	ListDomainsForPackageWithContext(ctx context.Context, input *elasticsearchservice.ListDomainsForPackageInput, opts ...request.Option) (*elasticsearchservice.ListDomainsForPackageOutput, error)
+	ListDomainsForPackagePagesWithContext(ctx context.Context, input *elasticsearchservice.ListDomainsForPackageInput, cb func(*elasticsearchservice.ListDomainsForPackageOutput, bool) bool, opts ...request.Option) error
 	ListElasticsearchInstanceTypesWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchInstanceTypesInput, opts ...request.Option) (*elasticsearchservice.ListElasticsearchInstanceTypesOutput, error)
 	ListElasticsearchInstanceTypesPagesWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchInstanceTypesInput, cb func(*elasticsearchservice.ListElasticsearchInstanceTypesOutput, bool) bool, opts ...request.Option) error
 	ListElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.ListElasticsearchVersionsOutput, error)
 	ListElasticsearchVersionsPagesWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchVersionsInput, cb func(*elasticsearchservice.ListElasticsearchVersionsOutput, bool) bool, opts ...request.Option) error
+	ListPackagesForDomainWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, opts ...request.Option) (*elasticsearchservice.ListPackagesForDomainOutput, error)
+	ListPackagesForDomainPagesWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, cb func(*elasticsearchservice.ListPackagesForDomainOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *elasticsearchservice.ListTagsInput, opts ...request.Option) (*elasticsearchservice.ListTagsOutput, error)
 	PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx context.Context, input *elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingInput, opts ...request.Option) (*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *elasticsearchservice.RemoveTagsInput, opts ...request.Option) (*elasticsearchservice.RemoveTagsOutput, error)
@@ -77,6 +87,27 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *elasticsearchser
 	return req.Output.(*elasticsearchservice.AddTagsOutput), req.Error
 }
 
+func (c *Client) AssociatePackageWithContext(ctx context.Context, input *elasticsearchservice.AssociatePackageInput, opts ...request.Option) (*elasticsearchservice.AssociatePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "AssociatePackage",
+		Input:   input,
+		Output:  (*elasticsearchservice.AssociatePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.AssociatePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.AssociatePackageOutput), req.Error
+}
+
 func (c *Client) CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -119,6 +150,27 @@ func (c *Client) CreateElasticsearchDomainWithContext(ctx context.Context, input
 	return req.Output.(*elasticsearchservice.CreateElasticsearchDomainOutput), req.Error
 }
 
+func (c *Client) CreatePackageWithContext(ctx context.Context, input *elasticsearchservice.CreatePackageInput, opts ...request.Option) (*elasticsearchservice.CreatePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "CreatePackage",
+		Input:   input,
+		Output:  (*elasticsearchservice.CreatePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.CreatePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.CreatePackageOutput), req.Error
+}
+
 func (c *Client) DeleteElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -159,6 +211,27 @@ func (c *Client) DeleteElasticsearchServiceRoleWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*elasticsearchservice.DeleteElasticsearchServiceRoleOutput), req.Error
+}
+
+func (c *Client) DeletePackageWithContext(ctx context.Context, input *elasticsearchservice.DeletePackageInput, opts ...request.Option) (*elasticsearchservice.DeletePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DeletePackage",
+		Input:   input,
+		Output:  (*elasticsearchservice.DeletePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DeletePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DeletePackageOutput), req.Error
 }
 
 func (c *Client) DescribeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainOutput, error) {
@@ -245,6 +318,47 @@ func (c *Client) DescribeElasticsearchInstanceTypeLimitsWithContext(ctx context.
 	return req.Output.(*elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsOutput), req.Error
 }
 
+func (c *Client) DescribePackagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, opts ...request.Option) (*elasticsearchservice.DescribePackagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribePackages",
+		Input:   input,
+		Output:  (*elasticsearchservice.DescribePackagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DescribePackagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DescribePackagesOutput), req.Error
+}
+
+func (c *Client) DescribePackagesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, cb func(*elasticsearchservice.DescribePackagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribePackages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.DescribePackagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReservedElasticsearchInstanceOfferingsWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -325,6 +439,27 @@ func (c *Client) DescribeReservedElasticsearchInstancesPagesWithContext(ctx cont
 	})
 
 	return req.Error
+}
+
+func (c *Client) DissociatePackageWithContext(ctx context.Context, input *elasticsearchservice.DissociatePackageInput, opts ...request.Option) (*elasticsearchservice.DissociatePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DissociatePackage",
+		Input:   input,
+		Output:  (*elasticsearchservice.DissociatePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DissociatePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DissociatePackageOutput), req.Error
 }
 
 func (c *Client) GetCompatibleElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.GetCompatibleElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput, error) {
@@ -431,6 +566,47 @@ func (c *Client) ListDomainNamesWithContext(ctx context.Context, input *elastics
 	return req.Output.(*elasticsearchservice.ListDomainNamesOutput), req.Error
 }
 
+func (c *Client) ListDomainsForPackageWithContext(ctx context.Context, input *elasticsearchservice.ListDomainsForPackageInput, opts ...request.Option) (*elasticsearchservice.ListDomainsForPackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListDomainsForPackage",
+		Input:   input,
+		Output:  (*elasticsearchservice.ListDomainsForPackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.ListDomainsForPackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.ListDomainsForPackageOutput), req.Error
+}
+
+func (c *Client) ListDomainsForPackagePagesWithContext(ctx context.Context, input *elasticsearchservice.ListDomainsForPackageInput, cb func(*elasticsearchservice.ListDomainsForPackageOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListDomainsForPackage",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.ListDomainsForPackagePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListElasticsearchInstanceTypesWithContext(ctx context.Context, input *elasticsearchservice.ListElasticsearchInstanceTypesInput, opts ...request.Option) (*elasticsearchservice.ListElasticsearchInstanceTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -508,6 +684,47 @@ func (c *Client) ListElasticsearchVersionsPagesWithContext(ctx context.Context, 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ElasticsearchServiceAPI.ListElasticsearchVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPackagesForDomainWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, opts ...request.Option) (*elasticsearchservice.ListPackagesForDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListPackagesForDomain",
+		Input:   input,
+		Output:  (*elasticsearchservice.ListPackagesForDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.ListPackagesForDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.ListPackagesForDomainOutput), req.Error
+}
+
+func (c *Client) ListPackagesForDomainPagesWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, cb func(*elasticsearchservice.ListPackagesForDomainOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListPackagesForDomain",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.ListPackagesForDomainPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

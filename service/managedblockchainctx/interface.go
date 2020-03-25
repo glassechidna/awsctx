@@ -34,6 +34,8 @@ type ManagedBlockchain interface {
 	ListProposalsWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, opts ...request.Option) (*managedblockchain.ListProposalsOutput, error)
 	ListProposalsPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, cb func(*managedblockchain.ListProposalsOutput, bool) bool, opts ...request.Option) error
 	RejectInvitationWithContext(ctx context.Context, input *managedblockchain.RejectInvitationInput, opts ...request.Option) (*managedblockchain.RejectInvitationOutput, error)
+	UpdateMemberWithContext(ctx context.Context, input *managedblockchain.UpdateMemberInput, opts ...request.Option) (*managedblockchain.UpdateMemberOutput, error)
+	UpdateNodeWithContext(ctx context.Context, input *managedblockchain.UpdateNodeInput, opts ...request.Option) (*managedblockchain.UpdateNodeOutput, error)
 	VoteOnProposalWithContext(ctx context.Context, input *managedblockchain.VoteOnProposalInput, opts ...request.Option) (*managedblockchain.VoteOnProposalOutput, error)
 }
 
@@ -527,6 +529,48 @@ func (c *Client) RejectInvitationWithContext(ctx context.Context, input *managed
 	})
 
 	return req.Output.(*managedblockchain.RejectInvitationOutput), req.Error
+}
+
+func (c *Client) UpdateMemberWithContext(ctx context.Context, input *managedblockchain.UpdateMemberInput, opts ...request.Option) (*managedblockchain.UpdateMemberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "UpdateMember",
+		Input:   input,
+		Output:  (*managedblockchain.UpdateMemberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.UpdateMemberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.UpdateMemberOutput), req.Error
+}
+
+func (c *Client) UpdateNodeWithContext(ctx context.Context, input *managedblockchain.UpdateNodeInput, opts ...request.Option) (*managedblockchain.UpdateNodeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "UpdateNode",
+		Input:   input,
+		Output:  (*managedblockchain.UpdateNodeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.UpdateNodeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.UpdateNodeOutput), req.Error
 }
 
 func (c *Client) VoteOnProposalWithContext(ctx context.Context, input *managedblockchain.VoteOnProposalInput, opts ...request.Option) (*managedblockchain.VoteOnProposalOutput, error) {
