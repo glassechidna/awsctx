@@ -16,16 +16,19 @@ type MediaStore interface {
 	DeleteContainerPolicyWithContext(ctx context.Context, input *mediastore.DeleteContainerPolicyInput, opts ...request.Option) (*mediastore.DeleteContainerPolicyOutput, error)
 	DeleteCorsPolicyWithContext(ctx context.Context, input *mediastore.DeleteCorsPolicyInput, opts ...request.Option) (*mediastore.DeleteCorsPolicyOutput, error)
 	DeleteLifecyclePolicyWithContext(ctx context.Context, input *mediastore.DeleteLifecyclePolicyInput, opts ...request.Option) (*mediastore.DeleteLifecyclePolicyOutput, error)
+	DeleteMetricPolicyWithContext(ctx context.Context, input *mediastore.DeleteMetricPolicyInput, opts ...request.Option) (*mediastore.DeleteMetricPolicyOutput, error)
 	DescribeContainerWithContext(ctx context.Context, input *mediastore.DescribeContainerInput, opts ...request.Option) (*mediastore.DescribeContainerOutput, error)
 	GetContainerPolicyWithContext(ctx context.Context, input *mediastore.GetContainerPolicyInput, opts ...request.Option) (*mediastore.GetContainerPolicyOutput, error)
 	GetCorsPolicyWithContext(ctx context.Context, input *mediastore.GetCorsPolicyInput, opts ...request.Option) (*mediastore.GetCorsPolicyOutput, error)
 	GetLifecyclePolicyWithContext(ctx context.Context, input *mediastore.GetLifecyclePolicyInput, opts ...request.Option) (*mediastore.GetLifecyclePolicyOutput, error)
+	GetMetricPolicyWithContext(ctx context.Context, input *mediastore.GetMetricPolicyInput, opts ...request.Option) (*mediastore.GetMetricPolicyOutput, error)
 	ListContainersWithContext(ctx context.Context, input *mediastore.ListContainersInput, opts ...request.Option) (*mediastore.ListContainersOutput, error)
 	ListContainersPagesWithContext(ctx context.Context, input *mediastore.ListContainersInput, cb func(*mediastore.ListContainersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediastore.ListTagsForResourceInput, opts ...request.Option) (*mediastore.ListTagsForResourceOutput, error)
 	PutContainerPolicyWithContext(ctx context.Context, input *mediastore.PutContainerPolicyInput, opts ...request.Option) (*mediastore.PutContainerPolicyOutput, error)
 	PutCorsPolicyWithContext(ctx context.Context, input *mediastore.PutCorsPolicyInput, opts ...request.Option) (*mediastore.PutCorsPolicyOutput, error)
 	PutLifecyclePolicyWithContext(ctx context.Context, input *mediastore.PutLifecyclePolicyInput, opts ...request.Option) (*mediastore.PutLifecyclePolicyOutput, error)
+	PutMetricPolicyWithContext(ctx context.Context, input *mediastore.PutMetricPolicyInput, opts ...request.Option) (*mediastore.PutMetricPolicyOutput, error)
 	StartAccessLoggingWithContext(ctx context.Context, input *mediastore.StartAccessLoggingInput, opts ...request.Option) (*mediastore.StartAccessLoggingOutput, error)
 	StopAccessLoggingWithContext(ctx context.Context, input *mediastore.StopAccessLoggingInput, opts ...request.Option) (*mediastore.StopAccessLoggingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediastore.TagResourceInput, opts ...request.Option) (*mediastore.TagResourceOutput, error)
@@ -152,6 +155,27 @@ func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *me
 	return req.Output.(*mediastore.DeleteLifecyclePolicyOutput), req.Error
 }
 
+func (c *Client) DeleteMetricPolicyWithContext(ctx context.Context, input *mediastore.DeleteMetricPolicyInput, opts ...request.Option) (*mediastore.DeleteMetricPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediastore",
+		Action:  "DeleteMetricPolicy",
+		Input:   input,
+		Output:  (*mediastore.DeleteMetricPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaStoreAPI.DeleteMetricPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediastore.DeleteMetricPolicyOutput), req.Error
+}
+
 func (c *Client) DescribeContainerWithContext(ctx context.Context, input *mediastore.DescribeContainerInput, opts ...request.Option) (*mediastore.DescribeContainerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediastore",
@@ -234,6 +258,27 @@ func (c *Client) GetLifecyclePolicyWithContext(ctx context.Context, input *media
 	})
 
 	return req.Output.(*mediastore.GetLifecyclePolicyOutput), req.Error
+}
+
+func (c *Client) GetMetricPolicyWithContext(ctx context.Context, input *mediastore.GetMetricPolicyInput, opts ...request.Option) (*mediastore.GetMetricPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediastore",
+		Action:  "GetMetricPolicy",
+		Input:   input,
+		Output:  (*mediastore.GetMetricPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaStoreAPI.GetMetricPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediastore.GetMetricPolicyOutput), req.Error
 }
 
 func (c *Client) ListContainersWithContext(ctx context.Context, input *mediastore.ListContainersInput, opts ...request.Option) (*mediastore.ListContainersOutput, error) {
@@ -359,6 +404,27 @@ func (c *Client) PutLifecyclePolicyWithContext(ctx context.Context, input *media
 	})
 
 	return req.Output.(*mediastore.PutLifecyclePolicyOutput), req.Error
+}
+
+func (c *Client) PutMetricPolicyWithContext(ctx context.Context, input *mediastore.PutMetricPolicyInput, opts ...request.Option) (*mediastore.PutMetricPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediastore",
+		Action:  "PutMetricPolicy",
+		Input:   input,
+		Output:  (*mediastore.PutMetricPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaStoreAPI.PutMetricPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediastore.PutMetricPolicyOutput), req.Error
 }
 
 func (c *Client) StartAccessLoggingWithContext(ctx context.Context, input *mediastore.StartAccessLoggingInput, opts ...request.Option) (*mediastore.StartAccessLoggingOutput, error) {

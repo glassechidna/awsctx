@@ -18,6 +18,8 @@ type Rekognition interface {
 	CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error)
 	DeleteCollectionWithContext(ctx context.Context, input *rekognition.DeleteCollectionInput, opts ...request.Option) (*rekognition.DeleteCollectionOutput, error)
 	DeleteFacesWithContext(ctx context.Context, input *rekognition.DeleteFacesInput, opts ...request.Option) (*rekognition.DeleteFacesOutput, error)
+	DeleteProjectWithContext(ctx context.Context, input *rekognition.DeleteProjectInput, opts ...request.Option) (*rekognition.DeleteProjectOutput, error)
+	DeleteProjectVersionWithContext(ctx context.Context, input *rekognition.DeleteProjectVersionInput, opts ...request.Option) (*rekognition.DeleteProjectVersionOutput, error)
 	DeleteStreamProcessorWithContext(ctx context.Context, input *rekognition.DeleteStreamProcessorInput, opts ...request.Option) (*rekognition.DeleteStreamProcessorOutput, error)
 	DescribeCollectionWithContext(ctx context.Context, input *rekognition.DescribeCollectionInput, opts ...request.Option) (*rekognition.DescribeCollectionOutput, error)
 	DescribeProjectVersionsWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, opts ...request.Option) (*rekognition.DescribeProjectVersionsOutput, error)
@@ -228,6 +230,48 @@ func (c *Client) DeleteFacesWithContext(ctx context.Context, input *rekognition.
 	})
 
 	return req.Output.(*rekognition.DeleteFacesOutput), req.Error
+}
+
+func (c *Client) DeleteProjectWithContext(ctx context.Context, input *rekognition.DeleteProjectInput, opts ...request.Option) (*rekognition.DeleteProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DeleteProject",
+		Input:   input,
+		Output:  (*rekognition.DeleteProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DeleteProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DeleteProjectOutput), req.Error
+}
+
+func (c *Client) DeleteProjectVersionWithContext(ctx context.Context, input *rekognition.DeleteProjectVersionInput, opts ...request.Option) (*rekognition.DeleteProjectVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DeleteProjectVersion",
+		Input:   input,
+		Output:  (*rekognition.DeleteProjectVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DeleteProjectVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DeleteProjectVersionOutput), req.Error
 }
 
 func (c *Client) DeleteStreamProcessorWithContext(ctx context.Context, input *rekognition.DeleteStreamProcessorInput, opts ...request.Option) (*rekognition.DeleteStreamProcessorOutput, error) {
