@@ -13,6 +13,7 @@ import (
 type MediaConnect interface {
 	AddFlowOutputsWithContext(ctx context.Context, input *mediaconnect.AddFlowOutputsInput, opts ...request.Option) (*mediaconnect.AddFlowOutputsOutput, error)
 	AddFlowSourcesWithContext(ctx context.Context, input *mediaconnect.AddFlowSourcesInput, opts ...request.Option) (*mediaconnect.AddFlowSourcesOutput, error)
+	AddFlowVpcInterfacesWithContext(ctx context.Context, input *mediaconnect.AddFlowVpcInterfacesInput, opts ...request.Option) (*mediaconnect.AddFlowVpcInterfacesOutput, error)
 	CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error)
 	DeleteFlowWithContext(ctx context.Context, input *mediaconnect.DeleteFlowInput, opts ...request.Option) (*mediaconnect.DeleteFlowOutput, error)
 	DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error)
@@ -24,6 +25,7 @@ type MediaConnect interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error)
 	RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error)
 	RemoveFlowSourceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowSourceInput, opts ...request.Option) (*mediaconnect.RemoveFlowSourceOutput, error)
+	RemoveFlowVpcInterfaceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowVpcInterfaceInput, opts ...request.Option) (*mediaconnect.RemoveFlowVpcInterfaceOutput, error)
 	RevokeFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.RevokeFlowEntitlementInput, opts ...request.Option) (*mediaconnect.RevokeFlowEntitlementOutput, error)
 	StartFlowWithContext(ctx context.Context, input *mediaconnect.StartFlowInput, opts ...request.Option) (*mediaconnect.StartFlowOutput, error)
 	StopFlowWithContext(ctx context.Context, input *mediaconnect.StopFlowInput, opts ...request.Option) (*mediaconnect.StopFlowOutput, error)
@@ -90,6 +92,27 @@ func (c *Client) AddFlowSourcesWithContext(ctx context.Context, input *mediaconn
 	})
 
 	return req.Output.(*mediaconnect.AddFlowSourcesOutput), req.Error
+}
+
+func (c *Client) AddFlowVpcInterfacesWithContext(ctx context.Context, input *mediaconnect.AddFlowVpcInterfacesInput, opts ...request.Option) (*mediaconnect.AddFlowVpcInterfacesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "AddFlowVpcInterfaces",
+		Input:   input,
+		Output:  (*mediaconnect.AddFlowVpcInterfacesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.AddFlowVpcInterfacesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.AddFlowVpcInterfacesOutput), req.Error
 }
 
 func (c *Client) CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error) {
@@ -319,6 +342,27 @@ func (c *Client) RemoveFlowSourceWithContext(ctx context.Context, input *mediaco
 	})
 
 	return req.Output.(*mediaconnect.RemoveFlowSourceOutput), req.Error
+}
+
+func (c *Client) RemoveFlowVpcInterfaceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowVpcInterfaceInput, opts ...request.Option) (*mediaconnect.RemoveFlowVpcInterfaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "RemoveFlowVpcInterface",
+		Input:   input,
+		Output:  (*mediaconnect.RemoveFlowVpcInterfaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.RemoveFlowVpcInterfaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.RemoveFlowVpcInterfaceOutput), req.Error
 }
 
 func (c *Client) RevokeFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.RevokeFlowEntitlementInput, opts ...request.Option) (*mediaconnect.RevokeFlowEntitlementOutput, error) {

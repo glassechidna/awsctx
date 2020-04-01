@@ -29,6 +29,7 @@ type IoT interface {
 	CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error)
 	CreateBillingGroupWithContext(ctx context.Context, input *iot.CreateBillingGroupInput, opts ...request.Option) (*iot.CreateBillingGroupOutput, error)
 	CreateCertificateFromCsrWithContext(ctx context.Context, input *iot.CreateCertificateFromCsrInput, opts ...request.Option) (*iot.CreateCertificateFromCsrOutput, error)
+	CreateDimensionWithContext(ctx context.Context, input *iot.CreateDimensionInput, opts ...request.Option) (*iot.CreateDimensionOutput, error)
 	CreateDomainConfigurationWithContext(ctx context.Context, input *iot.CreateDomainConfigurationInput, opts ...request.Option) (*iot.CreateDomainConfigurationOutput, error)
 	CreateDynamicThingGroupWithContext(ctx context.Context, input *iot.CreateDynamicThingGroupInput, opts ...request.Option) (*iot.CreateDynamicThingGroupOutput, error)
 	CreateJobWithContext(ctx context.Context, input *iot.CreateJobInput, opts ...request.Option) (*iot.CreateJobOutput, error)
@@ -54,6 +55,7 @@ type IoT interface {
 	DeleteBillingGroupWithContext(ctx context.Context, input *iot.DeleteBillingGroupInput, opts ...request.Option) (*iot.DeleteBillingGroupOutput, error)
 	DeleteCACertificateWithContext(ctx context.Context, input *iot.DeleteCACertificateInput, opts ...request.Option) (*iot.DeleteCACertificateOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *iot.DeleteCertificateInput, opts ...request.Option) (*iot.DeleteCertificateOutput, error)
+	DeleteDimensionWithContext(ctx context.Context, input *iot.DeleteDimensionInput, opts ...request.Option) (*iot.DeleteDimensionOutput, error)
 	DeleteDomainConfigurationWithContext(ctx context.Context, input *iot.DeleteDomainConfigurationInput, opts ...request.Option) (*iot.DeleteDomainConfigurationOutput, error)
 	DeleteDynamicThingGroupWithContext(ctx context.Context, input *iot.DeleteDynamicThingGroupInput, opts ...request.Option) (*iot.DeleteDynamicThingGroupOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *iot.DeleteJobInput, opts ...request.Option) (*iot.DeleteJobOutput, error)
@@ -85,6 +87,7 @@ type IoT interface {
 	DescribeCACertificateWithContext(ctx context.Context, input *iot.DescribeCACertificateInput, opts ...request.Option) (*iot.DescribeCACertificateOutput, error)
 	DescribeCertificateWithContext(ctx context.Context, input *iot.DescribeCertificateInput, opts ...request.Option) (*iot.DescribeCertificateOutput, error)
 	DescribeDefaultAuthorizerWithContext(ctx context.Context, input *iot.DescribeDefaultAuthorizerInput, opts ...request.Option) (*iot.DescribeDefaultAuthorizerOutput, error)
+	DescribeDimensionWithContext(ctx context.Context, input *iot.DescribeDimensionInput, opts ...request.Option) (*iot.DescribeDimensionOutput, error)
 	DescribeDomainConfigurationWithContext(ctx context.Context, input *iot.DescribeDomainConfigurationInput, opts ...request.Option) (*iot.DescribeDomainConfigurationOutput, error)
 	DescribeEndpointWithContext(ctx context.Context, input *iot.DescribeEndpointInput, opts ...request.Option) (*iot.DescribeEndpointOutput, error)
 	DescribeEventConfigurationsWithContext(ctx context.Context, input *iot.DescribeEventConfigurationsInput, opts ...request.Option) (*iot.DescribeEventConfigurationsOutput, error)
@@ -133,6 +136,7 @@ type IoT interface {
 	ListCACertificatesWithContext(ctx context.Context, input *iot.ListCACertificatesInput, opts ...request.Option) (*iot.ListCACertificatesOutput, error)
 	ListCertificatesWithContext(ctx context.Context, input *iot.ListCertificatesInput, opts ...request.Option) (*iot.ListCertificatesOutput, error)
 	ListCertificatesByCAWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, opts ...request.Option) (*iot.ListCertificatesByCAOutput, error)
+	ListDimensionsWithContext(ctx context.Context, input *iot.ListDimensionsInput, opts ...request.Option) (*iot.ListDimensionsOutput, error)
 	ListDomainConfigurationsWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, opts ...request.Option) (*iot.ListDomainConfigurationsOutput, error)
 	ListIndicesWithContext(ctx context.Context, input *iot.ListIndicesInput, opts ...request.Option) (*iot.ListIndicesOutput, error)
 	ListJobExecutionsForJobWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, opts ...request.Option) (*iot.ListJobExecutionsForJobOutput, error)
@@ -196,6 +200,7 @@ type IoT interface {
 	UpdateBillingGroupWithContext(ctx context.Context, input *iot.UpdateBillingGroupInput, opts ...request.Option) (*iot.UpdateBillingGroupOutput, error)
 	UpdateCACertificateWithContext(ctx context.Context, input *iot.UpdateCACertificateInput, opts ...request.Option) (*iot.UpdateCACertificateOutput, error)
 	UpdateCertificateWithContext(ctx context.Context, input *iot.UpdateCertificateInput, opts ...request.Option) (*iot.UpdateCertificateOutput, error)
+	UpdateDimensionWithContext(ctx context.Context, input *iot.UpdateDimensionInput, opts ...request.Option) (*iot.UpdateDimensionOutput, error)
 	UpdateDomainConfigurationWithContext(ctx context.Context, input *iot.UpdateDomainConfigurationInput, opts ...request.Option) (*iot.UpdateDomainConfigurationOutput, error)
 	UpdateDynamicThingGroupWithContext(ctx context.Context, input *iot.UpdateDynamicThingGroupInput, opts ...request.Option) (*iot.UpdateDynamicThingGroupOutput, error)
 	UpdateEventConfigurationsWithContext(ctx context.Context, input *iot.UpdateEventConfigurationsInput, opts ...request.Option) (*iot.UpdateEventConfigurationsOutput, error)
@@ -605,6 +610,27 @@ func (c *Client) CreateCertificateFromCsrWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*iot.CreateCertificateFromCsrOutput), req.Error
+}
+
+func (c *Client) CreateDimensionWithContext(ctx context.Context, input *iot.CreateDimensionInput, opts ...request.Option) (*iot.CreateDimensionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreateDimension",
+		Input:   input,
+		Output:  (*iot.CreateDimensionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreateDimensionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreateDimensionOutput), req.Error
 }
 
 func (c *Client) CreateDomainConfigurationWithContext(ctx context.Context, input *iot.CreateDomainConfigurationInput, opts ...request.Option) (*iot.CreateDomainConfigurationOutput, error) {
@@ -1130,6 +1156,27 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *iot.De
 	})
 
 	return req.Output.(*iot.DeleteCertificateOutput), req.Error
+}
+
+func (c *Client) DeleteDimensionWithContext(ctx context.Context, input *iot.DeleteDimensionInput, opts ...request.Option) (*iot.DeleteDimensionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeleteDimension",
+		Input:   input,
+		Output:  (*iot.DeleteDimensionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeleteDimensionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeleteDimensionOutput), req.Error
 }
 
 func (c *Client) DeleteDomainConfigurationWithContext(ctx context.Context, input *iot.DeleteDomainConfigurationInput, opts ...request.Option) (*iot.DeleteDomainConfigurationOutput, error) {
@@ -1781,6 +1828,27 @@ func (c *Client) DescribeDefaultAuthorizerWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iot.DescribeDefaultAuthorizerOutput), req.Error
+}
+
+func (c *Client) DescribeDimensionWithContext(ctx context.Context, input *iot.DescribeDimensionInput, opts ...request.Option) (*iot.DescribeDimensionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeDimension",
+		Input:   input,
+		Output:  (*iot.DescribeDimensionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeDimensionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeDimensionOutput), req.Error
 }
 
 func (c *Client) DescribeDomainConfigurationWithContext(ctx context.Context, input *iot.DescribeDomainConfigurationInput, opts ...request.Option) (*iot.DescribeDomainConfigurationOutput, error) {
@@ -2789,6 +2857,27 @@ func (c *Client) ListCertificatesByCAWithContext(ctx context.Context, input *iot
 	})
 
 	return req.Output.(*iot.ListCertificatesByCAOutput), req.Error
+}
+
+func (c *Client) ListDimensionsWithContext(ctx context.Context, input *iot.ListDimensionsInput, opts ...request.Option) (*iot.ListDimensionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDimensions",
+		Input:   input,
+		Output:  (*iot.ListDimensionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListDimensionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListDimensionsOutput), req.Error
 }
 
 func (c *Client) ListDomainConfigurationsWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, opts ...request.Option) (*iot.ListDomainConfigurationsOutput, error) {
@@ -4112,6 +4201,27 @@ func (c *Client) UpdateCertificateWithContext(ctx context.Context, input *iot.Up
 	})
 
 	return req.Output.(*iot.UpdateCertificateOutput), req.Error
+}
+
+func (c *Client) UpdateDimensionWithContext(ctx context.Context, input *iot.UpdateDimensionInput, opts ...request.Option) (*iot.UpdateDimensionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdateDimension",
+		Input:   input,
+		Output:  (*iot.UpdateDimensionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdateDimensionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdateDimensionOutput), req.Error
 }
 
 func (c *Client) UpdateDomainConfigurationWithContext(ctx context.Context, input *iot.UpdateDomainConfigurationInput, opts ...request.Option) (*iot.UpdateDomainConfigurationOutput, error) {
