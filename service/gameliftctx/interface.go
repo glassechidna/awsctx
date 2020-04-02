@@ -12,9 +12,11 @@ import (
 
 type GameLift interface {
 	AcceptMatchWithContext(ctx context.Context, input *gamelift.AcceptMatchInput, opts ...request.Option) (*gamelift.AcceptMatchOutput, error)
+	ClaimGameServerWithContext(ctx context.Context, input *gamelift.ClaimGameServerInput, opts ...request.Option) (*gamelift.ClaimGameServerOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *gamelift.CreateAliasInput, opts ...request.Option) (*gamelift.CreateAliasOutput, error)
 	CreateBuildWithContext(ctx context.Context, input *gamelift.CreateBuildInput, opts ...request.Option) (*gamelift.CreateBuildOutput, error)
 	CreateFleetWithContext(ctx context.Context, input *gamelift.CreateFleetInput, opts ...request.Option) (*gamelift.CreateFleetOutput, error)
+	CreateGameServerGroupWithContext(ctx context.Context, input *gamelift.CreateGameServerGroupInput, opts ...request.Option) (*gamelift.CreateGameServerGroupOutput, error)
 	CreateGameSessionWithContext(ctx context.Context, input *gamelift.CreateGameSessionInput, opts ...request.Option) (*gamelift.CreateGameSessionOutput, error)
 	CreateGameSessionQueueWithContext(ctx context.Context, input *gamelift.CreateGameSessionQueueInput, opts ...request.Option) (*gamelift.CreateGameSessionQueueOutput, error)
 	CreateMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.CreateMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.CreateMatchmakingConfigurationOutput, error)
@@ -27,6 +29,7 @@ type GameLift interface {
 	DeleteAliasWithContext(ctx context.Context, input *gamelift.DeleteAliasInput, opts ...request.Option) (*gamelift.DeleteAliasOutput, error)
 	DeleteBuildWithContext(ctx context.Context, input *gamelift.DeleteBuildInput, opts ...request.Option) (*gamelift.DeleteBuildOutput, error)
 	DeleteFleetWithContext(ctx context.Context, input *gamelift.DeleteFleetInput, opts ...request.Option) (*gamelift.DeleteFleetOutput, error)
+	DeleteGameServerGroupWithContext(ctx context.Context, input *gamelift.DeleteGameServerGroupInput, opts ...request.Option) (*gamelift.DeleteGameServerGroupOutput, error)
 	DeleteGameSessionQueueWithContext(ctx context.Context, input *gamelift.DeleteGameSessionQueueInput, opts ...request.Option) (*gamelift.DeleteGameSessionQueueOutput, error)
 	DeleteMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.DeleteMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.DeleteMatchmakingConfigurationOutput, error)
 	DeleteMatchmakingRuleSetWithContext(ctx context.Context, input *gamelift.DeleteMatchmakingRuleSetInput, opts ...request.Option) (*gamelift.DeleteMatchmakingRuleSetOutput, error)
@@ -34,6 +37,7 @@ type GameLift interface {
 	DeleteScriptWithContext(ctx context.Context, input *gamelift.DeleteScriptInput, opts ...request.Option) (*gamelift.DeleteScriptOutput, error)
 	DeleteVpcPeeringAuthorizationWithContext(ctx context.Context, input *gamelift.DeleteVpcPeeringAuthorizationInput, opts ...request.Option) (*gamelift.DeleteVpcPeeringAuthorizationOutput, error)
 	DeleteVpcPeeringConnectionWithContext(ctx context.Context, input *gamelift.DeleteVpcPeeringConnectionInput, opts ...request.Option) (*gamelift.DeleteVpcPeeringConnectionOutput, error)
+	DeregisterGameServerWithContext(ctx context.Context, input *gamelift.DeregisterGameServerInput, opts ...request.Option) (*gamelift.DeregisterGameServerOutput, error)
 	DescribeAliasWithContext(ctx context.Context, input *gamelift.DescribeAliasInput, opts ...request.Option) (*gamelift.DescribeAliasOutput, error)
 	DescribeBuildWithContext(ctx context.Context, input *gamelift.DescribeBuildInput, opts ...request.Option) (*gamelift.DescribeBuildOutput, error)
 	DescribeEC2InstanceLimitsWithContext(ctx context.Context, input *gamelift.DescribeEC2InstanceLimitsInput, opts ...request.Option) (*gamelift.DescribeEC2InstanceLimitsOutput, error)
@@ -42,6 +46,8 @@ type GameLift interface {
 	DescribeFleetEventsWithContext(ctx context.Context, input *gamelift.DescribeFleetEventsInput, opts ...request.Option) (*gamelift.DescribeFleetEventsOutput, error)
 	DescribeFleetPortSettingsWithContext(ctx context.Context, input *gamelift.DescribeFleetPortSettingsInput, opts ...request.Option) (*gamelift.DescribeFleetPortSettingsOutput, error)
 	DescribeFleetUtilizationWithContext(ctx context.Context, input *gamelift.DescribeFleetUtilizationInput, opts ...request.Option) (*gamelift.DescribeFleetUtilizationOutput, error)
+	DescribeGameServerWithContext(ctx context.Context, input *gamelift.DescribeGameServerInput, opts ...request.Option) (*gamelift.DescribeGameServerOutput, error)
+	DescribeGameServerGroupWithContext(ctx context.Context, input *gamelift.DescribeGameServerGroupInput, opts ...request.Option) (*gamelift.DescribeGameServerGroupOutput, error)
 	DescribeGameSessionDetailsWithContext(ctx context.Context, input *gamelift.DescribeGameSessionDetailsInput, opts ...request.Option) (*gamelift.DescribeGameSessionDetailsOutput, error)
 	DescribeGameSessionPlacementWithContext(ctx context.Context, input *gamelift.DescribeGameSessionPlacementInput, opts ...request.Option) (*gamelift.DescribeGameSessionPlacementOutput, error)
 	DescribeGameSessionQueuesWithContext(ctx context.Context, input *gamelift.DescribeGameSessionQueuesInput, opts ...request.Option) (*gamelift.DescribeGameSessionQueuesOutput, error)
@@ -61,11 +67,15 @@ type GameLift interface {
 	ListAliasesWithContext(ctx context.Context, input *gamelift.ListAliasesInput, opts ...request.Option) (*gamelift.ListAliasesOutput, error)
 	ListBuildsWithContext(ctx context.Context, input *gamelift.ListBuildsInput, opts ...request.Option) (*gamelift.ListBuildsOutput, error)
 	ListFleetsWithContext(ctx context.Context, input *gamelift.ListFleetsInput, opts ...request.Option) (*gamelift.ListFleetsOutput, error)
+	ListGameServerGroupsWithContext(ctx context.Context, input *gamelift.ListGameServerGroupsInput, opts ...request.Option) (*gamelift.ListGameServerGroupsOutput, error)
+	ListGameServersWithContext(ctx context.Context, input *gamelift.ListGameServersInput, opts ...request.Option) (*gamelift.ListGameServersOutput, error)
 	ListScriptsWithContext(ctx context.Context, input *gamelift.ListScriptsInput, opts ...request.Option) (*gamelift.ListScriptsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *gamelift.ListTagsForResourceInput, opts ...request.Option) (*gamelift.ListTagsForResourceOutput, error)
 	PutScalingPolicyWithContext(ctx context.Context, input *gamelift.PutScalingPolicyInput, opts ...request.Option) (*gamelift.PutScalingPolicyOutput, error)
+	RegisterGameServerWithContext(ctx context.Context, input *gamelift.RegisterGameServerInput, opts ...request.Option) (*gamelift.RegisterGameServerOutput, error)
 	RequestUploadCredentialsWithContext(ctx context.Context, input *gamelift.RequestUploadCredentialsInput, opts ...request.Option) (*gamelift.RequestUploadCredentialsOutput, error)
 	ResolveAliasWithContext(ctx context.Context, input *gamelift.ResolveAliasInput, opts ...request.Option) (*gamelift.ResolveAliasOutput, error)
+	ResumeGameServerGroupWithContext(ctx context.Context, input *gamelift.ResumeGameServerGroupInput, opts ...request.Option) (*gamelift.ResumeGameServerGroupOutput, error)
 	SearchGameSessionsWithContext(ctx context.Context, input *gamelift.SearchGameSessionsInput, opts ...request.Option) (*gamelift.SearchGameSessionsOutput, error)
 	StartFleetActionsWithContext(ctx context.Context, input *gamelift.StartFleetActionsInput, opts ...request.Option) (*gamelift.StartFleetActionsOutput, error)
 	StartGameSessionPlacementWithContext(ctx context.Context, input *gamelift.StartGameSessionPlacementInput, opts ...request.Option) (*gamelift.StartGameSessionPlacementOutput, error)
@@ -74,6 +84,7 @@ type GameLift interface {
 	StopFleetActionsWithContext(ctx context.Context, input *gamelift.StopFleetActionsInput, opts ...request.Option) (*gamelift.StopFleetActionsOutput, error)
 	StopGameSessionPlacementWithContext(ctx context.Context, input *gamelift.StopGameSessionPlacementInput, opts ...request.Option) (*gamelift.StopGameSessionPlacementOutput, error)
 	StopMatchmakingWithContext(ctx context.Context, input *gamelift.StopMatchmakingInput, opts ...request.Option) (*gamelift.StopMatchmakingOutput, error)
+	SuspendGameServerGroupWithContext(ctx context.Context, input *gamelift.SuspendGameServerGroupInput, opts ...request.Option) (*gamelift.SuspendGameServerGroupOutput, error)
 	TagResourceWithContext(ctx context.Context, input *gamelift.TagResourceInput, opts ...request.Option) (*gamelift.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *gamelift.UntagResourceInput, opts ...request.Option) (*gamelift.UntagResourceOutput, error)
 	UpdateAliasWithContext(ctx context.Context, input *gamelift.UpdateAliasInput, opts ...request.Option) (*gamelift.UpdateAliasOutput, error)
@@ -81,6 +92,8 @@ type GameLift interface {
 	UpdateFleetAttributesWithContext(ctx context.Context, input *gamelift.UpdateFleetAttributesInput, opts ...request.Option) (*gamelift.UpdateFleetAttributesOutput, error)
 	UpdateFleetCapacityWithContext(ctx context.Context, input *gamelift.UpdateFleetCapacityInput, opts ...request.Option) (*gamelift.UpdateFleetCapacityOutput, error)
 	UpdateFleetPortSettingsWithContext(ctx context.Context, input *gamelift.UpdateFleetPortSettingsInput, opts ...request.Option) (*gamelift.UpdateFleetPortSettingsOutput, error)
+	UpdateGameServerWithContext(ctx context.Context, input *gamelift.UpdateGameServerInput, opts ...request.Option) (*gamelift.UpdateGameServerOutput, error)
+	UpdateGameServerGroupWithContext(ctx context.Context, input *gamelift.UpdateGameServerGroupInput, opts ...request.Option) (*gamelift.UpdateGameServerGroupOutput, error)
 	UpdateGameSessionWithContext(ctx context.Context, input *gamelift.UpdateGameSessionInput, opts ...request.Option) (*gamelift.UpdateGameSessionOutput, error)
 	UpdateGameSessionQueueWithContext(ctx context.Context, input *gamelift.UpdateGameSessionQueueInput, opts ...request.Option) (*gamelift.UpdateGameSessionQueueOutput, error)
 	UpdateMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.UpdateMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.UpdateMatchmakingConfigurationOutput, error)
@@ -123,6 +136,27 @@ func (c *Client) AcceptMatchWithContext(ctx context.Context, input *gamelift.Acc
 	})
 
 	return req.Output.(*gamelift.AcceptMatchOutput), req.Error
+}
+
+func (c *Client) ClaimGameServerWithContext(ctx context.Context, input *gamelift.ClaimGameServerInput, opts ...request.Option) (*gamelift.ClaimGameServerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "ClaimGameServer",
+		Input:   input,
+		Output:  (*gamelift.ClaimGameServerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.ClaimGameServerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.ClaimGameServerOutput), req.Error
 }
 
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *gamelift.CreateAliasInput, opts ...request.Option) (*gamelift.CreateAliasOutput, error) {
@@ -186,6 +220,27 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *gamelift.Cre
 	})
 
 	return req.Output.(*gamelift.CreateFleetOutput), req.Error
+}
+
+func (c *Client) CreateGameServerGroupWithContext(ctx context.Context, input *gamelift.CreateGameServerGroupInput, opts ...request.Option) (*gamelift.CreateGameServerGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "CreateGameServerGroup",
+		Input:   input,
+		Output:  (*gamelift.CreateGameServerGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.CreateGameServerGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.CreateGameServerGroupOutput), req.Error
 }
 
 func (c *Client) CreateGameSessionWithContext(ctx context.Context, input *gamelift.CreateGameSessionInput, opts ...request.Option) (*gamelift.CreateGameSessionOutput, error) {
@@ -440,6 +495,27 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, input *gamelift.Del
 	return req.Output.(*gamelift.DeleteFleetOutput), req.Error
 }
 
+func (c *Client) DeleteGameServerGroupWithContext(ctx context.Context, input *gamelift.DeleteGameServerGroupInput, opts ...request.Option) (*gamelift.DeleteGameServerGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DeleteGameServerGroup",
+		Input:   input,
+		Output:  (*gamelift.DeleteGameServerGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DeleteGameServerGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DeleteGameServerGroupOutput), req.Error
+}
+
 func (c *Client) DeleteGameSessionQueueWithContext(ctx context.Context, input *gamelift.DeleteGameSessionQueueInput, opts ...request.Option) (*gamelift.DeleteGameSessionQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
@@ -585,6 +661,27 @@ func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*gamelift.DeleteVpcPeeringConnectionOutput), req.Error
+}
+
+func (c *Client) DeregisterGameServerWithContext(ctx context.Context, input *gamelift.DeregisterGameServerInput, opts ...request.Option) (*gamelift.DeregisterGameServerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DeregisterGameServer",
+		Input:   input,
+		Output:  (*gamelift.DeregisterGameServerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DeregisterGameServerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DeregisterGameServerOutput), req.Error
 }
 
 func (c *Client) DescribeAliasWithContext(ctx context.Context, input *gamelift.DescribeAliasInput, opts ...request.Option) (*gamelift.DescribeAliasOutput, error) {
@@ -753,6 +850,48 @@ func (c *Client) DescribeFleetUtilizationWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*gamelift.DescribeFleetUtilizationOutput), req.Error
+}
+
+func (c *Client) DescribeGameServerWithContext(ctx context.Context, input *gamelift.DescribeGameServerInput, opts ...request.Option) (*gamelift.DescribeGameServerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DescribeGameServer",
+		Input:   input,
+		Output:  (*gamelift.DescribeGameServerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DescribeGameServerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DescribeGameServerOutput), req.Error
+}
+
+func (c *Client) DescribeGameServerGroupWithContext(ctx context.Context, input *gamelift.DescribeGameServerGroupInput, opts ...request.Option) (*gamelift.DescribeGameServerGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DescribeGameServerGroup",
+		Input:   input,
+		Output:  (*gamelift.DescribeGameServerGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DescribeGameServerGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DescribeGameServerGroupOutput), req.Error
 }
 
 func (c *Client) DescribeGameSessionDetailsWithContext(ctx context.Context, input *gamelift.DescribeGameSessionDetailsInput, opts ...request.Option) (*gamelift.DescribeGameSessionDetailsOutput, error) {
@@ -1154,6 +1293,48 @@ func (c *Client) ListFleetsWithContext(ctx context.Context, input *gamelift.List
 	return req.Output.(*gamelift.ListFleetsOutput), req.Error
 }
 
+func (c *Client) ListGameServerGroupsWithContext(ctx context.Context, input *gamelift.ListGameServerGroupsInput, opts ...request.Option) (*gamelift.ListGameServerGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "ListGameServerGroups",
+		Input:   input,
+		Output:  (*gamelift.ListGameServerGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.ListGameServerGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.ListGameServerGroupsOutput), req.Error
+}
+
+func (c *Client) ListGameServersWithContext(ctx context.Context, input *gamelift.ListGameServersInput, opts ...request.Option) (*gamelift.ListGameServersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "ListGameServers",
+		Input:   input,
+		Output:  (*gamelift.ListGameServersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.ListGameServersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.ListGameServersOutput), req.Error
+}
+
 func (c *Client) ListScriptsWithContext(ctx context.Context, input *gamelift.ListScriptsInput, opts ...request.Option) (*gamelift.ListScriptsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
@@ -1217,6 +1398,27 @@ func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *gamelif
 	return req.Output.(*gamelift.PutScalingPolicyOutput), req.Error
 }
 
+func (c *Client) RegisterGameServerWithContext(ctx context.Context, input *gamelift.RegisterGameServerInput, opts ...request.Option) (*gamelift.RegisterGameServerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "RegisterGameServer",
+		Input:   input,
+		Output:  (*gamelift.RegisterGameServerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.RegisterGameServerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.RegisterGameServerOutput), req.Error
+}
+
 func (c *Client) RequestUploadCredentialsWithContext(ctx context.Context, input *gamelift.RequestUploadCredentialsInput, opts ...request.Option) (*gamelift.RequestUploadCredentialsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
@@ -1257,6 +1459,27 @@ func (c *Client) ResolveAliasWithContext(ctx context.Context, input *gamelift.Re
 	})
 
 	return req.Output.(*gamelift.ResolveAliasOutput), req.Error
+}
+
+func (c *Client) ResumeGameServerGroupWithContext(ctx context.Context, input *gamelift.ResumeGameServerGroupInput, opts ...request.Option) (*gamelift.ResumeGameServerGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "ResumeGameServerGroup",
+		Input:   input,
+		Output:  (*gamelift.ResumeGameServerGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.ResumeGameServerGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.ResumeGameServerGroupOutput), req.Error
 }
 
 func (c *Client) SearchGameSessionsWithContext(ctx context.Context, input *gamelift.SearchGameSessionsInput, opts ...request.Option) (*gamelift.SearchGameSessionsOutput, error) {
@@ -1427,6 +1650,27 @@ func (c *Client) StopMatchmakingWithContext(ctx context.Context, input *gamelift
 	return req.Output.(*gamelift.StopMatchmakingOutput), req.Error
 }
 
+func (c *Client) SuspendGameServerGroupWithContext(ctx context.Context, input *gamelift.SuspendGameServerGroupInput, opts ...request.Option) (*gamelift.SuspendGameServerGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "SuspendGameServerGroup",
+		Input:   input,
+		Output:  (*gamelift.SuspendGameServerGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.SuspendGameServerGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.SuspendGameServerGroupOutput), req.Error
+}
+
 func (c *Client) TagResourceWithContext(ctx context.Context, input *gamelift.TagResourceInput, opts ...request.Option) (*gamelift.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "gamelift",
@@ -1572,6 +1816,48 @@ func (c *Client) UpdateFleetPortSettingsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*gamelift.UpdateFleetPortSettingsOutput), req.Error
+}
+
+func (c *Client) UpdateGameServerWithContext(ctx context.Context, input *gamelift.UpdateGameServerInput, opts ...request.Option) (*gamelift.UpdateGameServerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "UpdateGameServer",
+		Input:   input,
+		Output:  (*gamelift.UpdateGameServerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.UpdateGameServerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.UpdateGameServerOutput), req.Error
+}
+
+func (c *Client) UpdateGameServerGroupWithContext(ctx context.Context, input *gamelift.UpdateGameServerGroupInput, opts ...request.Option) (*gamelift.UpdateGameServerGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "UpdateGameServerGroup",
+		Input:   input,
+		Output:  (*gamelift.UpdateGameServerGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.UpdateGameServerGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.UpdateGameServerGroupOutput), req.Error
 }
 
 func (c *Client) UpdateGameSessionWithContext(ctx context.Context, input *gamelift.UpdateGameSessionInput, opts ...request.Option) (*gamelift.UpdateGameSessionOutput, error) {
