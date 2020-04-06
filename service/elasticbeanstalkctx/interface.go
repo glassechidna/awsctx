@@ -41,6 +41,8 @@ type ElasticBeanstalk interface {
 	DescribeInstancesHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeInstancesHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeInstancesHealthOutput, error)
 	DescribePlatformVersionWithContext(ctx context.Context, input *elasticbeanstalk.DescribePlatformVersionInput, opts ...request.Option) (*elasticbeanstalk.DescribePlatformVersionOutput, error)
 	ListAvailableSolutionStacksWithContext(ctx context.Context, input *elasticbeanstalk.ListAvailableSolutionStacksInput, opts ...request.Option) (*elasticbeanstalk.ListAvailableSolutionStacksOutput, error)
+	ListPlatformBranchesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformBranchesOutput, error)
+	ListPlatformBranchesPagesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, cb func(*elasticbeanstalk.ListPlatformBranchesOutput, bool) bool, opts ...request.Option) error
 	ListPlatformVersionsWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformVersionsInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformVersionsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *elasticbeanstalk.ListTagsForResourceInput, opts ...request.Option) (*elasticbeanstalk.ListTagsForResourceOutput, error)
 	RebuildEnvironmentWithContext(ctx context.Context, input *elasticbeanstalk.RebuildEnvironmentInput, opts ...request.Option) (*elasticbeanstalk.RebuildEnvironmentOutput, error)
@@ -700,6 +702,47 @@ func (c *Client) ListAvailableSolutionStacksWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*elasticbeanstalk.ListAvailableSolutionStacksOutput), req.Error
+}
+
+func (c *Client) ListPlatformBranchesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformBranchesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "ListPlatformBranches",
+		Input:   input,
+		Output:  (*elasticbeanstalk.ListPlatformBranchesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticBeanstalkAPI.ListPlatformBranchesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticbeanstalk.ListPlatformBranchesOutput), req.Error
+}
+
+func (c *Client) ListPlatformBranchesPagesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, cb func(*elasticbeanstalk.ListPlatformBranchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "ListPlatformBranches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticBeanstalkAPI.ListPlatformBranchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPlatformVersionsWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformVersionsInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformVersionsOutput, error) {
