@@ -77,10 +77,12 @@ type Chime interface {
 	InviteUsersWithContext(ctx context.Context, input *chime.InviteUsersInput, opts ...request.Option) (*chime.InviteUsersOutput, error)
 	ListAccountsWithContext(ctx context.Context, input *chime.ListAccountsInput, opts ...request.Option) (*chime.ListAccountsOutput, error)
 	ListAccountsPagesWithContext(ctx context.Context, input *chime.ListAccountsInput, cb func(*chime.ListAccountsOutput, bool) bool, opts ...request.Option) error
+	ListAttendeeTagsWithContext(ctx context.Context, input *chime.ListAttendeeTagsInput, opts ...request.Option) (*chime.ListAttendeeTagsOutput, error)
 	ListAttendeesWithContext(ctx context.Context, input *chime.ListAttendeesInput, opts ...request.Option) (*chime.ListAttendeesOutput, error)
 	ListAttendeesPagesWithContext(ctx context.Context, input *chime.ListAttendeesInput, cb func(*chime.ListAttendeesOutput, bool) bool, opts ...request.Option) error
 	ListBotsWithContext(ctx context.Context, input *chime.ListBotsInput, opts ...request.Option) (*chime.ListBotsOutput, error)
 	ListBotsPagesWithContext(ctx context.Context, input *chime.ListBotsInput, cb func(*chime.ListBotsOutput, bool) bool, opts ...request.Option) error
+	ListMeetingTagsWithContext(ctx context.Context, input *chime.ListMeetingTagsInput, opts ...request.Option) (*chime.ListMeetingTagsOutput, error)
 	ListMeetingsWithContext(ctx context.Context, input *chime.ListMeetingsInput, opts ...request.Option) (*chime.ListMeetingsOutput, error)
 	ListMeetingsPagesWithContext(ctx context.Context, input *chime.ListMeetingsInput, cb func(*chime.ListMeetingsOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumberOrdersWithContext(ctx context.Context, input *chime.ListPhoneNumberOrdersInput, opts ...request.Option) (*chime.ListPhoneNumberOrdersOutput, error)
@@ -93,6 +95,7 @@ type Chime interface {
 	ListRoomMembershipsPagesWithContext(ctx context.Context, input *chime.ListRoomMembershipsInput, cb func(*chime.ListRoomMembershipsOutput, bool) bool, opts ...request.Option) error
 	ListRoomsWithContext(ctx context.Context, input *chime.ListRoomsInput, opts ...request.Option) (*chime.ListRoomsOutput, error)
 	ListRoomsPagesWithContext(ctx context.Context, input *chime.ListRoomsInput, cb func(*chime.ListRoomsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *chime.ListTagsForResourceInput, opts ...request.Option) (*chime.ListTagsForResourceOutput, error)
 	ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *chime.ListUsersInput, cb func(*chime.ListUsersOutput, bool) bool, opts ...request.Option) error
 	ListVoiceConnectorGroupsWithContext(ctx context.Context, input *chime.ListVoiceConnectorGroupsInput, opts ...request.Option) (*chime.ListVoiceConnectorGroupsOutput, error)
@@ -112,6 +115,12 @@ type Chime interface {
 	ResetPersonalPINWithContext(ctx context.Context, input *chime.ResetPersonalPINInput, opts ...request.Option) (*chime.ResetPersonalPINOutput, error)
 	RestorePhoneNumberWithContext(ctx context.Context, input *chime.RestorePhoneNumberInput, opts ...request.Option) (*chime.RestorePhoneNumberOutput, error)
 	SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*chime.SearchAvailablePhoneNumbersOutput, error)
+	TagAttendeeWithContext(ctx context.Context, input *chime.TagAttendeeInput, opts ...request.Option) (*chime.TagAttendeeOutput, error)
+	TagMeetingWithContext(ctx context.Context, input *chime.TagMeetingInput, opts ...request.Option) (*chime.TagMeetingOutput, error)
+	TagResourceWithContext(ctx context.Context, input *chime.TagResourceInput, opts ...request.Option) (*chime.TagResourceOutput, error)
+	UntagAttendeeWithContext(ctx context.Context, input *chime.UntagAttendeeInput, opts ...request.Option) (*chime.UntagAttendeeOutput, error)
+	UntagMeetingWithContext(ctx context.Context, input *chime.UntagMeetingInput, opts ...request.Option) (*chime.UntagMeetingOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *chime.UntagResourceInput, opts ...request.Option) (*chime.UntagResourceOutput, error)
 	UpdateAccountWithContext(ctx context.Context, input *chime.UpdateAccountInput, opts ...request.Option) (*chime.UpdateAccountOutput, error)
 	UpdateAccountSettingsWithContext(ctx context.Context, input *chime.UpdateAccountSettingsInput, opts ...request.Option) (*chime.UpdateAccountSettingsOutput, error)
 	UpdateBotWithContext(ctx context.Context, input *chime.UpdateBotInput, opts ...request.Option) (*chime.UpdateBotOutput, error)
@@ -1527,6 +1536,27 @@ func (c *Client) ListAccountsPagesWithContext(ctx context.Context, input *chime.
 	return req.Error
 }
 
+func (c *Client) ListAttendeeTagsWithContext(ctx context.Context, input *chime.ListAttendeeTagsInput, opts ...request.Option) (*chime.ListAttendeeTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListAttendeeTags",
+		Input:   input,
+		Output:  (*chime.ListAttendeeTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListAttendeeTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListAttendeeTagsOutput), req.Error
+}
+
 func (c *Client) ListAttendeesWithContext(ctx context.Context, input *chime.ListAttendeesInput, opts ...request.Option) (*chime.ListAttendeesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -1607,6 +1637,27 @@ func (c *Client) ListBotsPagesWithContext(ctx context.Context, input *chime.List
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListMeetingTagsWithContext(ctx context.Context, input *chime.ListMeetingTagsInput, opts ...request.Option) (*chime.ListMeetingTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListMeetingTags",
+		Input:   input,
+		Output:  (*chime.ListMeetingTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListMeetingTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListMeetingTagsOutput), req.Error
 }
 
 func (c *Client) ListMeetingsWithContext(ctx context.Context, input *chime.ListMeetingsInput, opts ...request.Option) (*chime.ListMeetingsOutput, error) {
@@ -1853,6 +1904,27 @@ func (c *Client) ListRoomsPagesWithContext(ctx context.Context, input *chime.Lis
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *chime.ListTagsForResourceInput, opts ...request.Option) (*chime.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*chime.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListTagsForResourceOutput), req.Error
 }
 
 func (c *Client) ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error) {
@@ -2249,6 +2321,132 @@ func (c *Client) SearchAvailablePhoneNumbersWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*chime.SearchAvailablePhoneNumbersOutput), req.Error
+}
+
+func (c *Client) TagAttendeeWithContext(ctx context.Context, input *chime.TagAttendeeInput, opts ...request.Option) (*chime.TagAttendeeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "TagAttendee",
+		Input:   input,
+		Output:  (*chime.TagAttendeeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.TagAttendeeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.TagAttendeeOutput), req.Error
+}
+
+func (c *Client) TagMeetingWithContext(ctx context.Context, input *chime.TagMeetingInput, opts ...request.Option) (*chime.TagMeetingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "TagMeeting",
+		Input:   input,
+		Output:  (*chime.TagMeetingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.TagMeetingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.TagMeetingOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *chime.TagResourceInput, opts ...request.Option) (*chime.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*chime.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagAttendeeWithContext(ctx context.Context, input *chime.UntagAttendeeInput, opts ...request.Option) (*chime.UntagAttendeeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UntagAttendee",
+		Input:   input,
+		Output:  (*chime.UntagAttendeeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UntagAttendeeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UntagAttendeeOutput), req.Error
+}
+
+func (c *Client) UntagMeetingWithContext(ctx context.Context, input *chime.UntagMeetingInput, opts ...request.Option) (*chime.UntagMeetingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UntagMeeting",
+		Input:   input,
+		Output:  (*chime.UntagMeetingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UntagMeetingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UntagMeetingOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *chime.UntagResourceInput, opts ...request.Option) (*chime.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*chime.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateAccountWithContext(ctx context.Context, input *chime.UpdateAccountInput, opts ...request.Option) (*chime.UpdateAccountOutput, error) {

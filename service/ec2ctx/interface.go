@@ -154,6 +154,7 @@ type EC2 interface {
 	DeleteVpnGatewayWithContext(ctx context.Context, input *ec2.DeleteVpnGatewayInput, opts ...request.Option) (*ec2.DeleteVpnGatewayOutput, error)
 	DeprovisionByoipCidrWithContext(ctx context.Context, input *ec2.DeprovisionByoipCidrInput, opts ...request.Option) (*ec2.DeprovisionByoipCidrOutput, error)
 	DeregisterImageWithContext(ctx context.Context, input *ec2.DeregisterImageInput, opts ...request.Option) (*ec2.DeregisterImageOutput, error)
+	DeregisterInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.DeregisterInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.DeregisterInstanceEventNotificationAttributesOutput, error)
 	DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput, error)
 	DeregisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *ec2.DescribeAccountAttributesInput, opts ...request.Option) (*ec2.DescribeAccountAttributesOutput, error)
@@ -219,6 +220,7 @@ type EC2 interface {
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *ec2.DescribeInstanceAttributeInput, opts ...request.Option) (*ec2.DescribeInstanceAttributeOutput, error)
 	DescribeInstanceCreditSpecificationsWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, opts ...request.Option) (*ec2.DescribeInstanceCreditSpecificationsOutput, error)
 	DescribeInstanceCreditSpecificationsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, cb func(*ec2.DescribeInstanceCreditSpecificationsOutput, bool) bool, opts ...request.Option) error
+	DescribeInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.DescribeInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.DescribeInstanceEventNotificationAttributesOutput, error)
 	DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error)
 	DescribeInstanceStatusPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, cb func(*ec2.DescribeInstanceStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceTypeOfferingsWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, opts ...request.Option) (*ec2.DescribeInstanceTypeOfferingsOutput, error)
@@ -450,6 +452,7 @@ type EC2 interface {
 	PurchaseScheduledInstancesWithContext(ctx context.Context, input *ec2.PurchaseScheduledInstancesInput, opts ...request.Option) (*ec2.PurchaseScheduledInstancesOutput, error)
 	RebootInstancesWithContext(ctx context.Context, input *ec2.RebootInstancesInput, opts ...request.Option) (*ec2.RebootInstancesOutput, error)
 	RegisterImageWithContext(ctx context.Context, input *ec2.RegisterImageInput, opts ...request.Option) (*ec2.RegisterImageOutput, error)
+	RegisterInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.RegisterInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.RegisterInstanceEventNotificationAttributesOutput, error)
 	RegisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupMembersOutput, error)
 	RegisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput, error)
 	RejectTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayPeeringAttachmentOutput, error)
@@ -3516,6 +3519,27 @@ func (c *Client) DeregisterImageWithContext(ctx context.Context, input *ec2.Dere
 	return req.Output.(*ec2.DeregisterImageOutput), req.Error
 }
 
+func (c *Client) DeregisterInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.DeregisterInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.DeregisterInstanceEventNotificationAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeregisterInstanceEventNotificationAttributes",
+		Input:   input,
+		Output:  (*ec2.DeregisterInstanceEventNotificationAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeregisterInstanceEventNotificationAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeregisterInstanceEventNotificationAttributesOutput), req.Error
+}
+
 func (c *Client) DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4856,6 +4880,27 @@ func (c *Client) DescribeInstanceCreditSpecificationsPagesWithContext(ctx contex
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.DescribeInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.DescribeInstanceEventNotificationAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceEventNotificationAttributes",
+		Input:   input,
+		Output:  (*ec2.DescribeInstanceEventNotificationAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeInstanceEventNotificationAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeInstanceEventNotificationAttributesOutput), req.Error
 }
 
 func (c *Client) DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error) {
@@ -9647,6 +9692,27 @@ func (c *Client) RegisterImageWithContext(ctx context.Context, input *ec2.Regist
 	})
 
 	return req.Output.(*ec2.RegisterImageOutput), req.Error
+}
+
+func (c *Client) RegisterInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.RegisterInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.RegisterInstanceEventNotificationAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RegisterInstanceEventNotificationAttributes",
+		Input:   input,
+		Output:  (*ec2.RegisterInstanceEventNotificationAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RegisterInstanceEventNotificationAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RegisterInstanceEventNotificationAttributesOutput), req.Error
 }
 
 func (c *Client) RegisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupMembersOutput, error) {
