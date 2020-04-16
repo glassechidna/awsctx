@@ -15,6 +15,7 @@ type SecurityHub interface {
 	BatchDisableStandardsWithContext(ctx context.Context, input *securityhub.BatchDisableStandardsInput, opts ...request.Option) (*securityhub.BatchDisableStandardsOutput, error)
 	BatchEnableStandardsWithContext(ctx context.Context, input *securityhub.BatchEnableStandardsInput, opts ...request.Option) (*securityhub.BatchEnableStandardsOutput, error)
 	BatchImportFindingsWithContext(ctx context.Context, input *securityhub.BatchImportFindingsInput, opts ...request.Option) (*securityhub.BatchImportFindingsOutput, error)
+	BatchUpdateFindingsWithContext(ctx context.Context, input *securityhub.BatchUpdateFindingsInput, opts ...request.Option) (*securityhub.BatchUpdateFindingsOutput, error)
 	CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error)
 	CreateInsightWithContext(ctx context.Context, input *securityhub.CreateInsightInput, opts ...request.Option) (*securityhub.CreateInsightOutput, error)
 	CreateMembersWithContext(ctx context.Context, input *securityhub.CreateMembersInput, opts ...request.Option) (*securityhub.CreateMembersOutput, error)
@@ -161,6 +162,27 @@ func (c *Client) BatchImportFindingsWithContext(ctx context.Context, input *secu
 	})
 
 	return req.Output.(*securityhub.BatchImportFindingsOutput), req.Error
+}
+
+func (c *Client) BatchUpdateFindingsWithContext(ctx context.Context, input *securityhub.BatchUpdateFindingsInput, opts ...request.Option) (*securityhub.BatchUpdateFindingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchUpdateFindings",
+		Input:   input,
+		Output:  (*securityhub.BatchUpdateFindingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchUpdateFindingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchUpdateFindingsOutput), req.Error
 }
 
 func (c *Client) CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error) {
