@@ -18,12 +18,16 @@ type OpsWorksCM interface {
 	DeleteServerWithContext(ctx context.Context, input *opsworkscm.DeleteServerInput, opts ...request.Option) (*opsworkscm.DeleteServerOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *opsworkscm.DescribeAccountAttributesInput, opts ...request.Option) (*opsworkscm.DescribeAccountAttributesOutput, error)
 	DescribeBackupsWithContext(ctx context.Context, input *opsworkscm.DescribeBackupsInput, opts ...request.Option) (*opsworkscm.DescribeBackupsOutput, error)
+	DescribeBackupsPagesWithContext(ctx context.Context, input *opsworkscm.DescribeBackupsInput, cb func(*opsworkscm.DescribeBackupsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *opsworkscm.DescribeEventsInput, opts ...request.Option) (*opsworkscm.DescribeEventsOutput, error)
+	DescribeEventsPagesWithContext(ctx context.Context, input *opsworkscm.DescribeEventsInput, cb func(*opsworkscm.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeNodeAssociationStatusWithContext(ctx context.Context, input *opsworkscm.DescribeNodeAssociationStatusInput, opts ...request.Option) (*opsworkscm.DescribeNodeAssociationStatusOutput, error)
 	DescribeServersWithContext(ctx context.Context, input *opsworkscm.DescribeServersInput, opts ...request.Option) (*opsworkscm.DescribeServersOutput, error)
+	DescribeServersPagesWithContext(ctx context.Context, input *opsworkscm.DescribeServersInput, cb func(*opsworkscm.DescribeServersOutput, bool) bool, opts ...request.Option) error
 	DisassociateNodeWithContext(ctx context.Context, input *opsworkscm.DisassociateNodeInput, opts ...request.Option) (*opsworkscm.DisassociateNodeOutput, error)
 	ExportServerEngineAttributeWithContext(ctx context.Context, input *opsworkscm.ExportServerEngineAttributeInput, opts ...request.Option) (*opsworkscm.ExportServerEngineAttributeOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *opsworkscm.ListTagsForResourceInput, opts ...request.Option) (*opsworkscm.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *opsworkscm.ListTagsForResourceInput, cb func(*opsworkscm.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	RestoreServerWithContext(ctx context.Context, input *opsworkscm.RestoreServerInput, opts ...request.Option) (*opsworkscm.RestoreServerOutput, error)
 	StartMaintenanceWithContext(ctx context.Context, input *opsworkscm.StartMaintenanceInput, opts ...request.Option) (*opsworkscm.StartMaintenanceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *opsworkscm.TagResourceInput, opts ...request.Option) (*opsworkscm.TagResourceOutput, error)
@@ -194,6 +198,26 @@ func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *opsworks
 	return req.Output.(*opsworkscm.DescribeBackupsOutput), req.Error
 }
 
+func (c *Client) DescribeBackupsPagesWithContext(ctx context.Context, input *opsworkscm.DescribeBackupsInput, cb func(*opsworkscm.DescribeBackupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "DescribeBackups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OpsWorksCMAPI.DescribeBackupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *opsworkscm.DescribeEventsInput, opts ...request.Option) (*opsworkscm.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "opsworkscm",
@@ -213,6 +237,26 @@ func (c *Client) DescribeEventsWithContext(ctx context.Context, input *opsworksc
 	})
 
 	return req.Output.(*opsworkscm.DescribeEventsOutput), req.Error
+}
+
+func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *opsworkscm.DescribeEventsInput, cb func(*opsworkscm.DescribeEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "DescribeEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OpsWorksCMAPI.DescribeEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeNodeAssociationStatusWithContext(ctx context.Context, input *opsworkscm.DescribeNodeAssociationStatusInput, opts ...request.Option) (*opsworkscm.DescribeNodeAssociationStatusOutput, error) {
@@ -255,6 +299,26 @@ func (c *Client) DescribeServersWithContext(ctx context.Context, input *opsworks
 	})
 
 	return req.Output.(*opsworkscm.DescribeServersOutput), req.Error
+}
+
+func (c *Client) DescribeServersPagesWithContext(ctx context.Context, input *opsworkscm.DescribeServersInput, cb func(*opsworkscm.DescribeServersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "DescribeServers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OpsWorksCMAPI.DescribeServersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DisassociateNodeWithContext(ctx context.Context, input *opsworkscm.DisassociateNodeInput, opts ...request.Option) (*opsworkscm.DisassociateNodeOutput, error) {
@@ -318,6 +382,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *opsw
 	})
 
 	return req.Output.(*opsworkscm.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *opsworkscm.ListTagsForResourceInput, cb func(*opsworkscm.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "opsworkscm",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.OpsWorksCMAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RestoreServerWithContext(ctx context.Context, input *opsworkscm.RestoreServerInput, opts ...request.Option) (*opsworkscm.RestoreServerOutput, error) {
