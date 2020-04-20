@@ -39,6 +39,7 @@ type ApiGatewayV2 interface {
 	DeleteRouteSettingsWithContext(ctx context.Context, input *apigatewayv2.DeleteRouteSettingsInput, opts ...request.Option) (*apigatewayv2.DeleteRouteSettingsOutput, error)
 	DeleteStageWithContext(ctx context.Context, input *apigatewayv2.DeleteStageInput, opts ...request.Option) (*apigatewayv2.DeleteStageOutput, error)
 	DeleteVpcLinkWithContext(ctx context.Context, input *apigatewayv2.DeleteVpcLinkInput, opts ...request.Option) (*apigatewayv2.DeleteVpcLinkOutput, error)
+	ExportApiWithContext(ctx context.Context, input *apigatewayv2.ExportApiInput, opts ...request.Option) (*apigatewayv2.ExportApiOutput, error)
 	GetApiWithContext(ctx context.Context, input *apigatewayv2.GetApiInput, opts ...request.Option) (*apigatewayv2.GetApiOutput, error)
 	GetApiMappingWithContext(ctx context.Context, input *apigatewayv2.GetApiMappingInput, opts ...request.Option) (*apigatewayv2.GetApiMappingOutput, error)
 	GetApiMappingsWithContext(ctx context.Context, input *apigatewayv2.GetApiMappingsInput, opts ...request.Option) (*apigatewayv2.GetApiMappingsOutput, error)
@@ -684,6 +685,27 @@ func (c *Client) DeleteVpcLinkWithContext(ctx context.Context, input *apigateway
 	})
 
 	return req.Output.(*apigatewayv2.DeleteVpcLinkOutput), req.Error
+}
+
+func (c *Client) ExportApiWithContext(ctx context.Context, input *apigatewayv2.ExportApiInput, opts ...request.Option) (*apigatewayv2.ExportApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewayv2",
+		Action:  "ExportApi",
+		Input:   input,
+		Output:  (*apigatewayv2.ExportApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayV2API.ExportApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewayv2.ExportApiOutput), req.Error
 }
 
 func (c *Client) GetApiWithContext(ctx context.Context, input *apigatewayv2.GetApiInput, opts ...request.Option) (*apigatewayv2.GetApiOutput, error) {

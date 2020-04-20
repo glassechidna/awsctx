@@ -31,6 +31,7 @@ type CostExplorer interface {
 	GetTagsWithContext(ctx context.Context, input *costexplorer.GetTagsInput, opts ...request.Option) (*costexplorer.GetTagsOutput, error)
 	GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error)
 	ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error)
+	ListCostCategoryDefinitionsPagesWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, cb func(*costexplorer.ListCostCategoryDefinitionsOutput, bool) bool, opts ...request.Option) error
 	UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error)
 }
 
@@ -465,6 +466,26 @@ func (c *Client) ListCostCategoryDefinitionsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*costexplorer.ListCostCategoryDefinitionsOutput), req.Error
+}
+
+func (c *Client) ListCostCategoryDefinitionsPagesWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, cb func(*costexplorer.ListCostCategoryDefinitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ListCostCategoryDefinitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CostExplorerAPI.ListCostCategoryDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error) {
