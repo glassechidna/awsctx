@@ -11,6 +11,8 @@ import (
 )
 
 type Route53Domains interface {
+	AcceptDomainTransferFromAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.AcceptDomainTransferFromAnotherAwsAccountInput, opts ...request.Option) (*route53domains.AcceptDomainTransferFromAnotherAwsAccountOutput, error)
+	CancelDomainTransferToAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.CancelDomainTransferToAnotherAwsAccountInput, opts ...request.Option) (*route53domains.CancelDomainTransferToAnotherAwsAccountOutput, error)
 	CheckDomainAvailabilityWithContext(ctx context.Context, input *route53domains.CheckDomainAvailabilityInput, opts ...request.Option) (*route53domains.CheckDomainAvailabilityOutput, error)
 	CheckDomainTransferabilityWithContext(ctx context.Context, input *route53domains.CheckDomainTransferabilityInput, opts ...request.Option) (*route53domains.CheckDomainTransferabilityOutput, error)
 	DeleteTagsForDomainWithContext(ctx context.Context, input *route53domains.DeleteTagsForDomainInput, opts ...request.Option) (*route53domains.DeleteTagsForDomainOutput, error)
@@ -28,10 +30,12 @@ type Route53Domains interface {
 	ListOperationsPagesWithContext(ctx context.Context, input *route53domains.ListOperationsInput, cb func(*route53domains.ListOperationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForDomainWithContext(ctx context.Context, input *route53domains.ListTagsForDomainInput, opts ...request.Option) (*route53domains.ListTagsForDomainOutput, error)
 	RegisterDomainWithContext(ctx context.Context, input *route53domains.RegisterDomainInput, opts ...request.Option) (*route53domains.RegisterDomainOutput, error)
+	RejectDomainTransferFromAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.RejectDomainTransferFromAnotherAwsAccountInput, opts ...request.Option) (*route53domains.RejectDomainTransferFromAnotherAwsAccountOutput, error)
 	RenewDomainWithContext(ctx context.Context, input *route53domains.RenewDomainInput, opts ...request.Option) (*route53domains.RenewDomainOutput, error)
 	ResendContactReachabilityEmailWithContext(ctx context.Context, input *route53domains.ResendContactReachabilityEmailInput, opts ...request.Option) (*route53domains.ResendContactReachabilityEmailOutput, error)
 	RetrieveDomainAuthCodeWithContext(ctx context.Context, input *route53domains.RetrieveDomainAuthCodeInput, opts ...request.Option) (*route53domains.RetrieveDomainAuthCodeOutput, error)
 	TransferDomainWithContext(ctx context.Context, input *route53domains.TransferDomainInput, opts ...request.Option) (*route53domains.TransferDomainOutput, error)
+	TransferDomainToAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.TransferDomainToAnotherAwsAccountInput, opts ...request.Option) (*route53domains.TransferDomainToAnotherAwsAccountOutput, error)
 	UpdateDomainContactWithContext(ctx context.Context, input *route53domains.UpdateDomainContactInput, opts ...request.Option) (*route53domains.UpdateDomainContactOutput, error)
 	UpdateDomainContactPrivacyWithContext(ctx context.Context, input *route53domains.UpdateDomainContactPrivacyInput, opts ...request.Option) (*route53domains.UpdateDomainContactPrivacyOutput, error)
 	UpdateDomainNameserversWithContext(ctx context.Context, input *route53domains.UpdateDomainNameserversInput, opts ...request.Option) (*route53domains.UpdateDomainNameserversOutput, error)
@@ -53,6 +57,48 @@ func New(base route53domainsiface.Route53DomainsAPI, ctxer awsctx.Contexter) Rou
 
 var _ Route53Domains = (*route53domains.Route53Domains)(nil)
 var _ Route53Domains = (*Client)(nil)
+
+func (c *Client) AcceptDomainTransferFromAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.AcceptDomainTransferFromAnotherAwsAccountInput, opts ...request.Option) (*route53domains.AcceptDomainTransferFromAnotherAwsAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "AcceptDomainTransferFromAnotherAwsAccount",
+		Input:   input,
+		Output:  (*route53domains.AcceptDomainTransferFromAnotherAwsAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53DomainsAPI.AcceptDomainTransferFromAnotherAwsAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53domains.AcceptDomainTransferFromAnotherAwsAccountOutput), req.Error
+}
+
+func (c *Client) CancelDomainTransferToAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.CancelDomainTransferToAnotherAwsAccountInput, opts ...request.Option) (*route53domains.CancelDomainTransferToAnotherAwsAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "CancelDomainTransferToAnotherAwsAccount",
+		Input:   input,
+		Output:  (*route53domains.CancelDomainTransferToAnotherAwsAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53DomainsAPI.CancelDomainTransferToAnotherAwsAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53domains.CancelDomainTransferToAnotherAwsAccountOutput), req.Error
+}
 
 func (c *Client) CheckDomainAvailabilityWithContext(ctx context.Context, input *route53domains.CheckDomainAvailabilityInput, opts ...request.Option) (*route53domains.CheckDomainAvailabilityOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -409,6 +455,27 @@ func (c *Client) RegisterDomainWithContext(ctx context.Context, input *route53do
 	return req.Output.(*route53domains.RegisterDomainOutput), req.Error
 }
 
+func (c *Client) RejectDomainTransferFromAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.RejectDomainTransferFromAnotherAwsAccountInput, opts ...request.Option) (*route53domains.RejectDomainTransferFromAnotherAwsAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "RejectDomainTransferFromAnotherAwsAccount",
+		Input:   input,
+		Output:  (*route53domains.RejectDomainTransferFromAnotherAwsAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53DomainsAPI.RejectDomainTransferFromAnotherAwsAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53domains.RejectDomainTransferFromAnotherAwsAccountOutput), req.Error
+}
+
 func (c *Client) RenewDomainWithContext(ctx context.Context, input *route53domains.RenewDomainInput, opts ...request.Option) (*route53domains.RenewDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53domains",
@@ -491,6 +558,27 @@ func (c *Client) TransferDomainWithContext(ctx context.Context, input *route53do
 	})
 
 	return req.Output.(*route53domains.TransferDomainOutput), req.Error
+}
+
+func (c *Client) TransferDomainToAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.TransferDomainToAnotherAwsAccountInput, opts ...request.Option) (*route53domains.TransferDomainToAnotherAwsAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "TransferDomainToAnotherAwsAccount",
+		Input:   input,
+		Output:  (*route53domains.TransferDomainToAnotherAwsAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53DomainsAPI.TransferDomainToAnotherAwsAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53domains.TransferDomainToAnotherAwsAccountOutput), req.Error
 }
 
 func (c *Client) UpdateDomainContactWithContext(ctx context.Context, input *route53domains.UpdateDomainContactInput, opts ...request.Option) (*route53domains.UpdateDomainContactOutput, error) {

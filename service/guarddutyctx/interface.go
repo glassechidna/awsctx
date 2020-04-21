@@ -28,9 +28,12 @@ type GuardDuty interface {
 	DeleteMembersWithContext(ctx context.Context, input *guardduty.DeleteMembersInput, opts ...request.Option) (*guardduty.DeleteMembersOutput, error)
 	DeletePublishingDestinationWithContext(ctx context.Context, input *guardduty.DeletePublishingDestinationInput, opts ...request.Option) (*guardduty.DeletePublishingDestinationOutput, error)
 	DeleteThreatIntelSetWithContext(ctx context.Context, input *guardduty.DeleteThreatIntelSetInput, opts ...request.Option) (*guardduty.DeleteThreatIntelSetOutput, error)
+	DescribeOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, opts ...request.Option) (*guardduty.DescribeOrganizationConfigurationOutput, error)
 	DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error)
+	DisableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.DisableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.DisableOrganizationAdminAccountOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error)
 	DisassociateMembersWithContext(ctx context.Context, input *guardduty.DisassociateMembersInput, opts ...request.Option) (*guardduty.DisassociateMembersOutput, error)
+	EnableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.EnableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.EnableOrganizationAdminAccountOutput, error)
 	GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error)
 	GetFilterWithContext(ctx context.Context, input *guardduty.GetFilterInput, opts ...request.Option) (*guardduty.GetFilterOutput, error)
 	GetFindingsWithContext(ctx context.Context, input *guardduty.GetFindingsInput, opts ...request.Option) (*guardduty.GetFindingsOutput, error)
@@ -53,6 +56,8 @@ type GuardDuty interface {
 	ListInvitationsPagesWithContext(ctx context.Context, input *guardduty.ListInvitationsInput, cb func(*guardduty.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *guardduty.ListMembersInput, opts ...request.Option) (*guardduty.ListMembersOutput, error)
 	ListMembersPagesWithContext(ctx context.Context, input *guardduty.ListMembersInput, cb func(*guardduty.ListMembersOutput, bool) bool, opts ...request.Option) error
+	ListOrganizationAdminAccountsWithContext(ctx context.Context, input *guardduty.ListOrganizationAdminAccountsInput, opts ...request.Option) (*guardduty.ListOrganizationAdminAccountsOutput, error)
+	ListOrganizationAdminAccountsPagesWithContext(ctx context.Context, input *guardduty.ListOrganizationAdminAccountsInput, cb func(*guardduty.ListOrganizationAdminAccountsOutput, bool) bool, opts ...request.Option) error
 	ListPublishingDestinationsWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, opts ...request.Option) (*guardduty.ListPublishingDestinationsOutput, error)
 	ListPublishingDestinationsPagesWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, cb func(*guardduty.ListPublishingDestinationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error)
@@ -67,6 +72,7 @@ type GuardDuty interface {
 	UpdateFilterWithContext(ctx context.Context, input *guardduty.UpdateFilterInput, opts ...request.Option) (*guardduty.UpdateFilterOutput, error)
 	UpdateFindingsFeedbackWithContext(ctx context.Context, input *guardduty.UpdateFindingsFeedbackInput, opts ...request.Option) (*guardduty.UpdateFindingsFeedbackOutput, error)
 	UpdateIPSetWithContext(ctx context.Context, input *guardduty.UpdateIPSetInput, opts ...request.Option) (*guardduty.UpdateIPSetOutput, error)
+	UpdateOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.UpdateOrganizationConfigurationInput, opts ...request.Option) (*guardduty.UpdateOrganizationConfigurationOutput, error)
 	UpdatePublishingDestinationWithContext(ctx context.Context, input *guardduty.UpdatePublishingDestinationInput, opts ...request.Option) (*guardduty.UpdatePublishingDestinationOutput, error)
 	UpdateThreatIntelSetWithContext(ctx context.Context, input *guardduty.UpdateThreatIntelSetInput, opts ...request.Option) (*guardduty.UpdateThreatIntelSetOutput, error)
 }
@@ -443,6 +449,27 @@ func (c *Client) DeleteThreatIntelSetWithContext(ctx context.Context, input *gua
 	return req.Output.(*guardduty.DeleteThreatIntelSetOutput), req.Error
 }
 
+func (c *Client) DescribeOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, opts ...request.Option) (*guardduty.DescribeOrganizationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DescribeOrganizationConfiguration",
+		Input:   input,
+		Output:  (*guardduty.DescribeOrganizationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.DescribeOrganizationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.DescribeOrganizationConfigurationOutput), req.Error
+}
+
 func (c *Client) DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -462,6 +489,27 @@ func (c *Client) DescribePublishingDestinationWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*guardduty.DescribePublishingDestinationOutput), req.Error
+}
+
+func (c *Client) DisableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.DisableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.DisableOrganizationAdminAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DisableOrganizationAdminAccount",
+		Input:   input,
+		Output:  (*guardduty.DisableOrganizationAdminAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.DisableOrganizationAdminAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.DisableOrganizationAdminAccountOutput), req.Error
 }
 
 func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error) {
@@ -504,6 +552,27 @@ func (c *Client) DisassociateMembersWithContext(ctx context.Context, input *guar
 	})
 
 	return req.Output.(*guardduty.DisassociateMembersOutput), req.Error
+}
+
+func (c *Client) EnableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.EnableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.EnableOrganizationAdminAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "EnableOrganizationAdminAccount",
+		Input:   input,
+		Output:  (*guardduty.EnableOrganizationAdminAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.EnableOrganizationAdminAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.EnableOrganizationAdminAccountOutput), req.Error
 }
 
 func (c *Client) GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error) {
@@ -962,6 +1031,47 @@ func (c *Client) ListMembersPagesWithContext(ctx context.Context, input *guarddu
 	return req.Error
 }
 
+func (c *Client) ListOrganizationAdminAccountsWithContext(ctx context.Context, input *guardduty.ListOrganizationAdminAccountsInput, opts ...request.Option) (*guardduty.ListOrganizationAdminAccountsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListOrganizationAdminAccounts",
+		Input:   input,
+		Output:  (*guardduty.ListOrganizationAdminAccountsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.ListOrganizationAdminAccountsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.ListOrganizationAdminAccountsOutput), req.Error
+}
+
+func (c *Client) ListOrganizationAdminAccountsPagesWithContext(ctx context.Context, input *guardduty.ListOrganizationAdminAccountsInput, cb func(*guardduty.ListOrganizationAdminAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListOrganizationAdminAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListOrganizationAdminAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPublishingDestinationsWithContext(ctx context.Context, input *guardduty.ListPublishingDestinationsInput, opts ...request.Option) (*guardduty.ListPublishingDestinationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -1252,6 +1362,27 @@ func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *guardduty.Up
 	})
 
 	return req.Output.(*guardduty.UpdateIPSetOutput), req.Error
+}
+
+func (c *Client) UpdateOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.UpdateOrganizationConfigurationInput, opts ...request.Option) (*guardduty.UpdateOrganizationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "UpdateOrganizationConfiguration",
+		Input:   input,
+		Output:  (*guardduty.UpdateOrganizationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.UpdateOrganizationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.UpdateOrganizationConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdatePublishingDestinationWithContext(ctx context.Context, input *guardduty.UpdatePublishingDestinationInput, opts ...request.Option) (*guardduty.UpdatePublishingDestinationOutput, error) {
