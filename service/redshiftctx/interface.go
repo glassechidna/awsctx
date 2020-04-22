@@ -30,6 +30,7 @@ type Redshift interface {
 	CreateSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.CreateSnapshotCopyGrantInput, opts ...request.Option) (*redshift.CreateSnapshotCopyGrantOutput, error)
 	CreateSnapshotScheduleWithContext(ctx context.Context, input *redshift.CreateSnapshotScheduleInput, opts ...request.Option) (*redshift.CreateSnapshotScheduleOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *redshift.CreateTagsInput, opts ...request.Option) (*redshift.CreateTagsOutput, error)
+	CreateUsageLimitWithContext(ctx context.Context, input *redshift.CreateUsageLimitInput, opts ...request.Option) (*redshift.CreateUsageLimitOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *redshift.DeleteClusterInput, opts ...request.Option) (*redshift.DeleteClusterOutput, error)
 	DeleteClusterParameterGroupWithContext(ctx context.Context, input *redshift.DeleteClusterParameterGroupInput, opts ...request.Option) (*redshift.DeleteClusterParameterGroupOutput, error)
 	DeleteClusterSecurityGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSecurityGroupInput, opts ...request.Option) (*redshift.DeleteClusterSecurityGroupOutput, error)
@@ -42,6 +43,7 @@ type Redshift interface {
 	DeleteSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.DeleteSnapshotCopyGrantInput, opts ...request.Option) (*redshift.DeleteSnapshotCopyGrantOutput, error)
 	DeleteSnapshotScheduleWithContext(ctx context.Context, input *redshift.DeleteSnapshotScheduleInput, opts ...request.Option) (*redshift.DeleteSnapshotScheduleOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *redshift.DeleteTagsInput, opts ...request.Option) (*redshift.DeleteTagsOutput, error)
+	DeleteUsageLimitWithContext(ctx context.Context, input *redshift.DeleteUsageLimitInput, opts ...request.Option) (*redshift.DeleteUsageLimitOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *redshift.DescribeAccountAttributesInput, opts ...request.Option) (*redshift.DescribeAccountAttributesOutput, error)
 	DescribeClusterDbRevisionsWithContext(ctx context.Context, input *redshift.DescribeClusterDbRevisionsInput, opts ...request.Option) (*redshift.DescribeClusterDbRevisionsOutput, error)
 	DescribeClusterParameterGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterParameterGroupsInput, opts ...request.Option) (*redshift.DescribeClusterParameterGroupsOutput, error)
@@ -87,6 +89,8 @@ type Redshift interface {
 	DescribeStorageWithContext(ctx context.Context, input *redshift.DescribeStorageInput, opts ...request.Option) (*redshift.DescribeStorageOutput, error)
 	DescribeTableRestoreStatusWithContext(ctx context.Context, input *redshift.DescribeTableRestoreStatusInput, opts ...request.Option) (*redshift.DescribeTableRestoreStatusOutput, error)
 	DescribeTagsWithContext(ctx context.Context, input *redshift.DescribeTagsInput, opts ...request.Option) (*redshift.DescribeTagsOutput, error)
+	DescribeUsageLimitsWithContext(ctx context.Context, input *redshift.DescribeUsageLimitsInput, opts ...request.Option) (*redshift.DescribeUsageLimitsOutput, error)
+	DescribeUsageLimitsPagesWithContext(ctx context.Context, input *redshift.DescribeUsageLimitsInput, cb func(*redshift.DescribeUsageLimitsOutput, bool) bool, opts ...request.Option) error
 	DisableLoggingWithContext(ctx context.Context, input *redshift.DisableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error)
 	DisableSnapshotCopyWithContext(ctx context.Context, input *redshift.DisableSnapshotCopyInput, opts ...request.Option) (*redshift.DisableSnapshotCopyOutput, error)
 	EnableLoggingWithContext(ctx context.Context, input *redshift.EnableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error)
@@ -105,6 +109,7 @@ type Redshift interface {
 	ModifyScheduledActionWithContext(ctx context.Context, input *redshift.ModifyScheduledActionInput, opts ...request.Option) (*redshift.ModifyScheduledActionOutput, error)
 	ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Context, input *redshift.ModifySnapshotCopyRetentionPeriodInput, opts ...request.Option) (*redshift.ModifySnapshotCopyRetentionPeriodOutput, error)
 	ModifySnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifySnapshotScheduleInput, opts ...request.Option) (*redshift.ModifySnapshotScheduleOutput, error)
+	ModifyUsageLimitWithContext(ctx context.Context, input *redshift.ModifyUsageLimitInput, opts ...request.Option) (*redshift.ModifyUsageLimitOutput, error)
 	PauseClusterWithContext(ctx context.Context, input *redshift.PauseClusterInput, opts ...request.Option) (*redshift.PauseClusterOutput, error)
 	PurchaseReservedNodeOfferingWithContext(ctx context.Context, input *redshift.PurchaseReservedNodeOfferingInput, opts ...request.Option) (*redshift.PurchaseReservedNodeOfferingOutput, error)
 	RebootClusterWithContext(ctx context.Context, input *redshift.RebootClusterInput, opts ...request.Option) (*redshift.RebootClusterOutput, error)
@@ -532,6 +537,27 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *redshift.Crea
 	return req.Output.(*redshift.CreateTagsOutput), req.Error
 }
 
+func (c *Client) CreateUsageLimitWithContext(ctx context.Context, input *redshift.CreateUsageLimitInput, opts ...request.Option) (*redshift.CreateUsageLimitOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "CreateUsageLimit",
+		Input:   input,
+		Output:  (*redshift.CreateUsageLimitOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.CreateUsageLimitWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.CreateUsageLimitOutput), req.Error
+}
+
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *redshift.DeleteClusterInput, opts ...request.Option) (*redshift.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -782,6 +808,27 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *redshift.Dele
 	})
 
 	return req.Output.(*redshift.DeleteTagsOutput), req.Error
+}
+
+func (c *Client) DeleteUsageLimitWithContext(ctx context.Context, input *redshift.DeleteUsageLimitInput, opts ...request.Option) (*redshift.DeleteUsageLimitOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeleteUsageLimit",
+		Input:   input,
+		Output:  (*redshift.DeleteUsageLimitOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeleteUsageLimitWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeleteUsageLimitOutput), req.Error
 }
 
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *redshift.DescribeAccountAttributesInput, opts ...request.Option) (*redshift.DescribeAccountAttributesOutput, error) {
@@ -1712,6 +1759,47 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *redshift.De
 	return req.Output.(*redshift.DescribeTagsOutput), req.Error
 }
 
+func (c *Client) DescribeUsageLimitsWithContext(ctx context.Context, input *redshift.DescribeUsageLimitsInput, opts ...request.Option) (*redshift.DescribeUsageLimitsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeUsageLimits",
+		Input:   input,
+		Output:  (*redshift.DescribeUsageLimitsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeUsageLimitsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeUsageLimitsOutput), req.Error
+}
+
+func (c *Client) DescribeUsageLimitsPagesWithContext(ctx context.Context, input *redshift.DescribeUsageLimitsInput, cb func(*redshift.DescribeUsageLimitsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeUsageLimits",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeUsageLimitsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DisableLoggingWithContext(ctx context.Context, input *redshift.DisableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -2088,6 +2176,27 @@ func (c *Client) ModifySnapshotScheduleWithContext(ctx context.Context, input *r
 	})
 
 	return req.Output.(*redshift.ModifySnapshotScheduleOutput), req.Error
+}
+
+func (c *Client) ModifyUsageLimitWithContext(ctx context.Context, input *redshift.ModifyUsageLimitInput, opts ...request.Option) (*redshift.ModifyUsageLimitOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ModifyUsageLimit",
+		Input:   input,
+		Output:  (*redshift.ModifyUsageLimitOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ModifyUsageLimitWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ModifyUsageLimitOutput), req.Error
 }
 
 func (c *Client) PauseClusterWithContext(ctx context.Context, input *redshift.PauseClusterInput, opts ...request.Option) (*redshift.PauseClusterOutput, error) {
