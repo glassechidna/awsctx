@@ -26,6 +26,9 @@ type MediaPackageVod interface {
 	ListPackagingConfigurationsPagesWithContext(ctx context.Context, input *mediapackagevod.ListPackagingConfigurationsInput, cb func(*mediapackagevod.ListPackagingConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListPackagingGroupsWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, opts ...request.Option) (*mediapackagevod.ListPackagingGroupsOutput, error)
 	ListPackagingGroupsPagesWithContext(ctx context.Context, input *mediapackagevod.ListPackagingGroupsInput, cb func(*mediapackagevod.ListPackagingGroupsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *mediapackagevod.ListTagsForResourceInput, opts ...request.Option) (*mediapackagevod.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *mediapackagevod.TagResourceInput, opts ...request.Option) (*mediapackagevod.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *mediapackagevod.UntagResourceInput, opts ...request.Option) (*mediapackagevod.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -353,4 +356,67 @@ func (c *Client) ListPackagingGroupsPagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediapackagevod.ListTagsForResourceInput, opts ...request.Option) (*mediapackagevod.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*mediapackagevod.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageVodAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackagevod.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *mediapackagevod.TagResourceInput, opts ...request.Option) (*mediapackagevod.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*mediapackagevod.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageVodAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackagevod.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediapackagevod.UntagResourceInput, opts ...request.Option) (*mediapackagevod.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*mediapackagevod.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageVodAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackagevod.UntagResourceOutput), req.Error
 }

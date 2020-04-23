@@ -28,6 +28,7 @@ type StorageGateway interface {
 	CreateStorediSCSIVolumeWithContext(ctx context.Context, input *storagegateway.CreateStorediSCSIVolumeInput, opts ...request.Option) (*storagegateway.CreateStorediSCSIVolumeOutput, error)
 	CreateTapeWithBarcodeWithContext(ctx context.Context, input *storagegateway.CreateTapeWithBarcodeInput, opts ...request.Option) (*storagegateway.CreateTapeWithBarcodeOutput, error)
 	CreateTapesWithContext(ctx context.Context, input *storagegateway.CreateTapesInput, opts ...request.Option) (*storagegateway.CreateTapesOutput, error)
+	DeleteAutomaticTapeCreationPolicyWithContext(ctx context.Context, input *storagegateway.DeleteAutomaticTapeCreationPolicyInput, opts ...request.Option) (*storagegateway.DeleteAutomaticTapeCreationPolicyOutput, error)
 	DeleteBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DeleteBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DeleteBandwidthRateLimitOutput, error)
 	DeleteChapCredentialsWithContext(ctx context.Context, input *storagegateway.DeleteChapCredentialsInput, opts ...request.Option) (*storagegateway.DeleteChapCredentialsOutput, error)
 	DeleteFileShareWithContext(ctx context.Context, input *storagegateway.DeleteFileShareInput, opts ...request.Option) (*storagegateway.DeleteFileShareOutput, error)
@@ -61,6 +62,7 @@ type StorageGateway interface {
 	DetachVolumeWithContext(ctx context.Context, input *storagegateway.DetachVolumeInput, opts ...request.Option) (*storagegateway.DetachVolumeOutput, error)
 	DisableGatewayWithContext(ctx context.Context, input *storagegateway.DisableGatewayInput, opts ...request.Option) (*storagegateway.DisableGatewayOutput, error)
 	JoinDomainWithContext(ctx context.Context, input *storagegateway.JoinDomainInput, opts ...request.Option) (*storagegateway.JoinDomainOutput, error)
+	ListAutomaticTapeCreationPoliciesWithContext(ctx context.Context, input *storagegateway.ListAutomaticTapeCreationPoliciesInput, opts ...request.Option) (*storagegateway.ListAutomaticTapeCreationPoliciesOutput, error)
 	ListFileSharesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, opts ...request.Option) (*storagegateway.ListFileSharesOutput, error)
 	ListFileSharesPagesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, cb func(*storagegateway.ListFileSharesOutput, bool) bool, opts ...request.Option) error
 	ListGatewaysWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, opts ...request.Option) (*storagegateway.ListGatewaysOutput, error)
@@ -85,6 +87,7 @@ type StorageGateway interface {
 	ShutdownGatewayWithContext(ctx context.Context, input *storagegateway.ShutdownGatewayInput, opts ...request.Option) (*storagegateway.ShutdownGatewayOutput, error)
 	StartAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.StartAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.StartAvailabilityMonitorTestOutput, error)
 	StartGatewayWithContext(ctx context.Context, input *storagegateway.StartGatewayInput, opts ...request.Option) (*storagegateway.StartGatewayOutput, error)
+	UpdateAutomaticTapeCreationPolicyWithContext(ctx context.Context, input *storagegateway.UpdateAutomaticTapeCreationPolicyInput, opts ...request.Option) (*storagegateway.UpdateAutomaticTapeCreationPolicyOutput, error)
 	UpdateBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitOutput, error)
 	UpdateChapCredentialsWithContext(ctx context.Context, input *storagegateway.UpdateChapCredentialsInput, opts ...request.Option) (*storagegateway.UpdateChapCredentialsOutput, error)
 	UpdateGatewayInformationWithContext(ctx context.Context, input *storagegateway.UpdateGatewayInformationInput, opts ...request.Option) (*storagegateway.UpdateGatewayInformationOutput, error)
@@ -467,6 +470,27 @@ func (c *Client) CreateTapesWithContext(ctx context.Context, input *storagegatew
 	})
 
 	return req.Output.(*storagegateway.CreateTapesOutput), req.Error
+}
+
+func (c *Client) DeleteAutomaticTapeCreationPolicyWithContext(ctx context.Context, input *storagegateway.DeleteAutomaticTapeCreationPolicyInput, opts ...request.Option) (*storagegateway.DeleteAutomaticTapeCreationPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DeleteAutomaticTapeCreationPolicy",
+		Input:   input,
+		Output:  (*storagegateway.DeleteAutomaticTapeCreationPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.DeleteAutomaticTapeCreationPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.DeleteAutomaticTapeCreationPolicyOutput), req.Error
 }
 
 func (c *Client) DeleteBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DeleteBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DeleteBandwidthRateLimitOutput, error) {
@@ -1158,6 +1182,27 @@ func (c *Client) JoinDomainWithContext(ctx context.Context, input *storagegatewa
 	return req.Output.(*storagegateway.JoinDomainOutput), req.Error
 }
 
+func (c *Client) ListAutomaticTapeCreationPoliciesWithContext(ctx context.Context, input *storagegateway.ListAutomaticTapeCreationPoliciesInput, opts ...request.Option) (*storagegateway.ListAutomaticTapeCreationPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListAutomaticTapeCreationPolicies",
+		Input:   input,
+		Output:  (*storagegateway.ListAutomaticTapeCreationPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.ListAutomaticTapeCreationPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.ListAutomaticTapeCreationPoliciesOutput), req.Error
+}
+
 func (c *Client) ListFileSharesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, opts ...request.Option) (*storagegateway.ListFileSharesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -1655,6 +1700,27 @@ func (c *Client) StartGatewayWithContext(ctx context.Context, input *storagegate
 	})
 
 	return req.Output.(*storagegateway.StartGatewayOutput), req.Error
+}
+
+func (c *Client) UpdateAutomaticTapeCreationPolicyWithContext(ctx context.Context, input *storagegateway.UpdateAutomaticTapeCreationPolicyInput, opts ...request.Option) (*storagegateway.UpdateAutomaticTapeCreationPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "UpdateAutomaticTapeCreationPolicy",
+		Input:   input,
+		Output:  (*storagegateway.UpdateAutomaticTapeCreationPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.UpdateAutomaticTapeCreationPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.UpdateAutomaticTapeCreationPolicyOutput), req.Error
 }
 
 func (c *Client) UpdateBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitOutput, error) {

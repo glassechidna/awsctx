@@ -34,6 +34,7 @@ type RAM interface {
 	ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error)
 	ListPrincipalsPagesWithContext(ctx context.Context, input *ram.ListPrincipalsInput, cb func(*ram.ListPrincipalsOutput, bool) bool, opts ...request.Option) error
 	ListResourceSharePermissionsWithContext(ctx context.Context, input *ram.ListResourceSharePermissionsInput, opts ...request.Option) (*ram.ListResourceSharePermissionsOutput, error)
+	ListResourceTypesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, opts ...request.Option) (*ram.ListResourceTypesOutput, error)
 	ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error)
 	ListResourcesPagesWithContext(ctx context.Context, input *ram.ListResourcesInput, cb func(*ram.ListResourcesOutput, bool) bool, opts ...request.Option) error
 	PromoteResourceShareCreatedFromPolicyWithContext(ctx context.Context, input *ram.PromoteResourceShareCreatedFromPolicyInput, opts ...request.Option) (*ram.PromoteResourceShareCreatedFromPolicyOutput, error)
@@ -533,6 +534,27 @@ func (c *Client) ListResourceSharePermissionsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ram.ListResourceSharePermissionsOutput), req.Error
+}
+
+func (c *Client) ListResourceTypesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, opts ...request.Option) (*ram.ListResourceTypesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListResourceTypes",
+		Input:   input,
+		Output:  (*ram.ListResourceTypesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.ListResourceTypesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.ListResourceTypesOutput), req.Error
 }
 
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error) {
