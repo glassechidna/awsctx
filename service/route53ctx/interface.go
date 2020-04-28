@@ -54,6 +54,7 @@ type Route53 interface {
 	ListHostedZonesPagesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, cb func(*route53.ListHostedZonesOutput, bool) bool, opts ...request.Option) error
 	ListHostedZonesByNameWithContext(ctx context.Context, input *route53.ListHostedZonesByNameInput, opts ...request.Option) (*route53.ListHostedZonesByNameOutput, error)
 	ListQueryLoggingConfigsWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, opts ...request.Option) (*route53.ListQueryLoggingConfigsOutput, error)
+	ListQueryLoggingConfigsPagesWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, cb func(*route53.ListQueryLoggingConfigsOutput, bool) bool, opts ...request.Option) error
 	ListResourceRecordSetsWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, opts ...request.Option) (*route53.ListResourceRecordSetsOutput, error)
 	ListResourceRecordSetsPagesWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, cb func(*route53.ListResourceRecordSetsOutput, bool) bool, opts ...request.Option) error
 	ListReusableDelegationSetsWithContext(ctx context.Context, input *route53.ListReusableDelegationSetsInput, opts ...request.Option) (*route53.ListReusableDelegationSetsOutput, error)
@@ -986,6 +987,26 @@ func (c *Client) ListQueryLoggingConfigsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*route53.ListQueryLoggingConfigsOutput), req.Error
+}
+
+func (c *Client) ListQueryLoggingConfigsPagesWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, cb func(*route53.ListQueryLoggingConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListQueryLoggingConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListQueryLoggingConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResourceRecordSetsWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, opts ...request.Option) (*route53.ListResourceRecordSetsOutput, error) {

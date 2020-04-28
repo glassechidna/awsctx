@@ -11,6 +11,7 @@ import (
 )
 
 type KinesisVideoArchivedMedia interface {
+	GetClipWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetClipInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetClipOutput, error)
 	GetDASHStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetDASHStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetDASHStreamingSessionURLOutput, error)
 	GetHLSStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetHLSStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetHLSStreamingSessionURLOutput, error)
 	GetMediaForFragmentListWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetMediaForFragmentListInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetMediaForFragmentListOutput, error)
@@ -32,6 +33,27 @@ func New(base kinesisvideoarchivedmediaiface.KinesisVideoArchivedMediaAPI, ctxer
 
 var _ KinesisVideoArchivedMedia = (*kinesisvideoarchivedmedia.KinesisVideoArchivedMedia)(nil)
 var _ KinesisVideoArchivedMedia = (*Client)(nil)
+
+func (c *Client) GetClipWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetClipInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetClipOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideoarchivedmedia",
+		Action:  "GetClip",
+		Input:   input,
+		Output:  (*kinesisvideoarchivedmedia.GetClipOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoArchivedMediaAPI.GetClipWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideoarchivedmedia.GetClipOutput), req.Error
+}
 
 func (c *Client) GetDASHStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetDASHStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetDASHStreamingSessionURLOutput, error) {
 	req := &awsctx.AwsRequest{
