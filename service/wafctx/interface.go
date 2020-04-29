@@ -22,6 +22,7 @@ type WAF interface {
 	CreateSizeConstraintSetWithContext(ctx context.Context, input *waf.CreateSizeConstraintSetInput, opts ...request.Option) (*waf.CreateSizeConstraintSetOutput, error)
 	CreateSqlInjectionMatchSetWithContext(ctx context.Context, input *waf.CreateSqlInjectionMatchSetInput, opts ...request.Option) (*waf.CreateSqlInjectionMatchSetOutput, error)
 	CreateWebACLWithContext(ctx context.Context, input *waf.CreateWebACLInput, opts ...request.Option) (*waf.CreateWebACLOutput, error)
+	CreateWebACLMigrationStackWithContext(ctx context.Context, input *waf.CreateWebACLMigrationStackInput, opts ...request.Option) (*waf.CreateWebACLMigrationStackOutput, error)
 	CreateXssMatchSetWithContext(ctx context.Context, input *waf.CreateXssMatchSetInput, opts ...request.Option) (*waf.CreateXssMatchSetOutput, error)
 	DeleteByteMatchSetWithContext(ctx context.Context, input *waf.DeleteByteMatchSetInput, opts ...request.Option) (*waf.DeleteByteMatchSetOutput, error)
 	DeleteGeoMatchSetWithContext(ctx context.Context, input *waf.DeleteGeoMatchSetInput, opts ...request.Option) (*waf.DeleteGeoMatchSetOutput, error)
@@ -333,6 +334,27 @@ func (c *Client) CreateWebACLWithContext(ctx context.Context, input *waf.CreateW
 	})
 
 	return req.Output.(*waf.CreateWebACLOutput), req.Error
+}
+
+func (c *Client) CreateWebACLMigrationStackWithContext(ctx context.Context, input *waf.CreateWebACLMigrationStackInput, opts ...request.Option) (*waf.CreateWebACLMigrationStackOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "waf",
+		Action:  "CreateWebACLMigrationStack",
+		Input:   input,
+		Output:  (*waf.CreateWebACLMigrationStackOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WAFAPI.CreateWebACLMigrationStackWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*waf.CreateWebACLMigrationStackOutput), req.Error
 }
 
 func (c *Client) CreateXssMatchSetWithContext(ctx context.Context, input *waf.CreateXssMatchSetInput, opts ...request.Option) (*waf.CreateXssMatchSetOutput, error) {
