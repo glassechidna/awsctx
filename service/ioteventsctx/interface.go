@@ -27,7 +27,6 @@ type IoTEvents interface {
 	UntagResourceWithContext(ctx context.Context, input *iotevents.UntagResourceInput, opts ...request.Option) (*iotevents.UntagResourceOutput, error)
 	UpdateDetectorModelWithContext(ctx context.Context, input *iotevents.UpdateDetectorModelInput, opts ...request.Option) (*iotevents.UpdateDetectorModelOutput, error)
 	UpdateInputWithContext(ctx context.Context, input *iotevents.UpdateInputInput, opts ...request.Option) (*iotevents.UpdateInputOutput, error)
-	VerifyResourcesExistForTagrisWithContext(ctx context.Context, input *iotevents.VerifyResourcesExistForTagrisInput, opts ...request.Option) (*iotevents.VerifyResourcesExistForTagrisOutput, error)
 }
 
 type Client struct {
@@ -379,25 +378,4 @@ func (c *Client) UpdateInputWithContext(ctx context.Context, input *iotevents.Up
 	})
 
 	return req.Output.(*iotevents.UpdateInputOutput), req.Error
-}
-
-func (c *Client) VerifyResourcesExistForTagrisWithContext(ctx context.Context, input *iotevents.VerifyResourcesExistForTagrisInput, opts ...request.Option) (*iotevents.VerifyResourcesExistForTagrisOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "iotevents",
-		Action:  "VerifyResourcesExistForTagris",
-		Input:   input,
-		Output:  (*iotevents.VerifyResourcesExistForTagrisOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.IoTEventsAPI.VerifyResourcesExistForTagrisWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*iotevents.VerifyResourcesExistForTagrisOutput), req.Error
 }

@@ -175,6 +175,7 @@ type IoT interface {
 	ListViolationEventsWithContext(ctx context.Context, input *iot.ListViolationEventsInput, opts ...request.Option) (*iot.ListViolationEventsOutput, error)
 	RegisterCACertificateWithContext(ctx context.Context, input *iot.RegisterCACertificateInput, opts ...request.Option) (*iot.RegisterCACertificateOutput, error)
 	RegisterCertificateWithContext(ctx context.Context, input *iot.RegisterCertificateInput, opts ...request.Option) (*iot.RegisterCertificateOutput, error)
+	RegisterCertificateWithoutCAWithContext(ctx context.Context, input *iot.RegisterCertificateWithoutCAInput, opts ...request.Option) (*iot.RegisterCertificateWithoutCAOutput, error)
 	RegisterThingWithContext(ctx context.Context, input *iot.RegisterThingInput, opts ...request.Option) (*iot.RegisterThingOutput, error)
 	RejectCertificateTransferWithContext(ctx context.Context, input *iot.RejectCertificateTransferInput, opts ...request.Option) (*iot.RejectCertificateTransferOutput, error)
 	RemoveThingFromBillingGroupWithContext(ctx context.Context, input *iot.RemoveThingFromBillingGroupInput, opts ...request.Option) (*iot.RemoveThingFromBillingGroupOutput, error)
@@ -3676,6 +3677,27 @@ func (c *Client) RegisterCertificateWithContext(ctx context.Context, input *iot.
 	})
 
 	return req.Output.(*iot.RegisterCertificateOutput), req.Error
+}
+
+func (c *Client) RegisterCertificateWithoutCAWithContext(ctx context.Context, input *iot.RegisterCertificateWithoutCAInput, opts ...request.Option) (*iot.RegisterCertificateWithoutCAOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "RegisterCertificateWithoutCA",
+		Input:   input,
+		Output:  (*iot.RegisterCertificateWithoutCAOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.RegisterCertificateWithoutCAWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.RegisterCertificateWithoutCAOutput), req.Error
 }
 
 func (c *Client) RegisterThingWithContext(ctx context.Context, input *iot.RegisterThingInput, opts ...request.Option) (*iot.RegisterThingOutput, error) {
