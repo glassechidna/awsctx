@@ -26,18 +26,27 @@ type CodeBuild interface {
 	DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error)
 	DeleteWebhookWithContext(ctx context.Context, input *codebuild.DeleteWebhookInput, opts ...request.Option) (*codebuild.DeleteWebhookOutput, error)
 	DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error)
+	DescribeTestCasesPagesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, cb func(*codebuild.DescribeTestCasesOutput, bool) bool, opts ...request.Option) error
 	GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error)
 	ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error)
 	InvalidateProjectCacheWithContext(ctx context.Context, input *codebuild.InvalidateProjectCacheInput, opts ...request.Option) (*codebuild.InvalidateProjectCacheOutput, error)
 	ListBuildsWithContext(ctx context.Context, input *codebuild.ListBuildsInput, opts ...request.Option) (*codebuild.ListBuildsOutput, error)
+	ListBuildsPagesWithContext(ctx context.Context, input *codebuild.ListBuildsInput, cb func(*codebuild.ListBuildsOutput, bool) bool, opts ...request.Option) error
 	ListBuildsForProjectWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, opts ...request.Option) (*codebuild.ListBuildsForProjectOutput, error)
+	ListBuildsForProjectPagesWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, cb func(*codebuild.ListBuildsForProjectOutput, bool) bool, opts ...request.Option) error
 	ListCuratedEnvironmentImagesWithContext(ctx context.Context, input *codebuild.ListCuratedEnvironmentImagesInput, opts ...request.Option) (*codebuild.ListCuratedEnvironmentImagesOutput, error)
 	ListProjectsWithContext(ctx context.Context, input *codebuild.ListProjectsInput, opts ...request.Option) (*codebuild.ListProjectsOutput, error)
+	ListProjectsPagesWithContext(ctx context.Context, input *codebuild.ListProjectsInput, cb func(*codebuild.ListProjectsOutput, bool) bool, opts ...request.Option) error
 	ListReportGroupsWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, opts ...request.Option) (*codebuild.ListReportGroupsOutput, error)
+	ListReportGroupsPagesWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, cb func(*codebuild.ListReportGroupsOutput, bool) bool, opts ...request.Option) error
 	ListReportsWithContext(ctx context.Context, input *codebuild.ListReportsInput, opts ...request.Option) (*codebuild.ListReportsOutput, error)
+	ListReportsPagesWithContext(ctx context.Context, input *codebuild.ListReportsInput, cb func(*codebuild.ListReportsOutput, bool) bool, opts ...request.Option) error
 	ListReportsForReportGroupWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, opts ...request.Option) (*codebuild.ListReportsForReportGroupOutput, error)
+	ListReportsForReportGroupPagesWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, cb func(*codebuild.ListReportsForReportGroupOutput, bool) bool, opts ...request.Option) error
 	ListSharedProjectsWithContext(ctx context.Context, input *codebuild.ListSharedProjectsInput, opts ...request.Option) (*codebuild.ListSharedProjectsOutput, error)
+	ListSharedProjectsPagesWithContext(ctx context.Context, input *codebuild.ListSharedProjectsInput, cb func(*codebuild.ListSharedProjectsOutput, bool) bool, opts ...request.Option) error
 	ListSharedReportGroupsWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, opts ...request.Option) (*codebuild.ListSharedReportGroupsOutput, error)
+	ListSharedReportGroupsPagesWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, cb func(*codebuild.ListSharedReportGroupsOutput, bool) bool, opts ...request.Option) error
 	ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error)
 	PutResourcePolicyWithContext(ctx context.Context, input *codebuild.PutResourcePolicyInput, opts ...request.Option) (*codebuild.PutResourcePolicyOutput, error)
 	StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error)
@@ -377,6 +386,26 @@ func (c *Client) DescribeTestCasesWithContext(ctx context.Context, input *codebu
 	return req.Output.(*codebuild.DescribeTestCasesOutput), req.Error
 }
 
+func (c *Client) DescribeTestCasesPagesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, cb func(*codebuild.DescribeTestCasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DescribeTestCases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.DescribeTestCasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -461,6 +490,26 @@ func (c *Client) ListBuildsWithContext(ctx context.Context, input *codebuild.Lis
 	return req.Output.(*codebuild.ListBuildsOutput), req.Error
 }
 
+func (c *Client) ListBuildsPagesWithContext(ctx context.Context, input *codebuild.ListBuildsInput, cb func(*codebuild.ListBuildsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListBuilds",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListBuildsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBuildsForProjectWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, opts ...request.Option) (*codebuild.ListBuildsForProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -480,6 +529,26 @@ func (c *Client) ListBuildsForProjectWithContext(ctx context.Context, input *cod
 	})
 
 	return req.Output.(*codebuild.ListBuildsForProjectOutput), req.Error
+}
+
+func (c *Client) ListBuildsForProjectPagesWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, cb func(*codebuild.ListBuildsForProjectOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListBuildsForProject",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListBuildsForProjectPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCuratedEnvironmentImagesWithContext(ctx context.Context, input *codebuild.ListCuratedEnvironmentImagesInput, opts ...request.Option) (*codebuild.ListCuratedEnvironmentImagesOutput, error) {
@@ -524,6 +593,26 @@ func (c *Client) ListProjectsWithContext(ctx context.Context, input *codebuild.L
 	return req.Output.(*codebuild.ListProjectsOutput), req.Error
 }
 
+func (c *Client) ListProjectsPagesWithContext(ctx context.Context, input *codebuild.ListProjectsInput, cb func(*codebuild.ListProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListReportGroupsWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, opts ...request.Option) (*codebuild.ListReportGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -543,6 +632,26 @@ func (c *Client) ListReportGroupsWithContext(ctx context.Context, input *codebui
 	})
 
 	return req.Output.(*codebuild.ListReportGroupsOutput), req.Error
+}
+
+func (c *Client) ListReportGroupsPagesWithContext(ctx context.Context, input *codebuild.ListReportGroupsInput, cb func(*codebuild.ListReportGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListReportGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListReportGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListReportsWithContext(ctx context.Context, input *codebuild.ListReportsInput, opts ...request.Option) (*codebuild.ListReportsOutput, error) {
@@ -566,6 +675,26 @@ func (c *Client) ListReportsWithContext(ctx context.Context, input *codebuild.Li
 	return req.Output.(*codebuild.ListReportsOutput), req.Error
 }
 
+func (c *Client) ListReportsPagesWithContext(ctx context.Context, input *codebuild.ListReportsInput, cb func(*codebuild.ListReportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListReports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListReportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListReportsForReportGroupWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, opts ...request.Option) (*codebuild.ListReportsForReportGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -585,6 +714,26 @@ func (c *Client) ListReportsForReportGroupWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*codebuild.ListReportsForReportGroupOutput), req.Error
+}
+
+func (c *Client) ListReportsForReportGroupPagesWithContext(ctx context.Context, input *codebuild.ListReportsForReportGroupInput, cb func(*codebuild.ListReportsForReportGroupOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListReportsForReportGroup",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListReportsForReportGroupPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSharedProjectsWithContext(ctx context.Context, input *codebuild.ListSharedProjectsInput, opts ...request.Option) (*codebuild.ListSharedProjectsOutput, error) {
@@ -608,6 +757,26 @@ func (c *Client) ListSharedProjectsWithContext(ctx context.Context, input *codeb
 	return req.Output.(*codebuild.ListSharedProjectsOutput), req.Error
 }
 
+func (c *Client) ListSharedProjectsPagesWithContext(ctx context.Context, input *codebuild.ListSharedProjectsInput, cb func(*codebuild.ListSharedProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListSharedProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListSharedProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSharedReportGroupsWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, opts ...request.Option) (*codebuild.ListSharedReportGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -627,6 +796,26 @@ func (c *Client) ListSharedReportGroupsWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*codebuild.ListSharedReportGroupsOutput), req.Error
+}
+
+func (c *Client) ListSharedReportGroupsPagesWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, cb func(*codebuild.ListSharedReportGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListSharedReportGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListSharedReportGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error) {

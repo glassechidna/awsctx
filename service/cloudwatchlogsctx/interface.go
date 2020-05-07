@@ -20,6 +20,7 @@ type CloudWatchLogs interface {
 	DeleteLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.DeleteLogGroupInput, opts ...request.Option) (*cloudwatchlogs.DeleteLogGroupOutput, error)
 	DeleteLogStreamWithContext(ctx context.Context, input *cloudwatchlogs.DeleteLogStreamInput, opts ...request.Option) (*cloudwatchlogs.DeleteLogStreamOutput, error)
 	DeleteMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.DeleteMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.DeleteMetricFilterOutput, error)
+	DeleteQueryDefinitionWithContext(ctx context.Context, input *cloudwatchlogs.DeleteQueryDefinitionInput, opts ...request.Option) (*cloudwatchlogs.DeleteQueryDefinitionOutput, error)
 	DeleteResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteResourcePolicyOutput, error)
 	DeleteRetentionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteRetentionPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteRetentionPolicyOutput, error)
 	DeleteSubscriptionFilterWithContext(ctx context.Context, input *cloudwatchlogs.DeleteSubscriptionFilterInput, opts ...request.Option) (*cloudwatchlogs.DeleteSubscriptionFilterOutput, error)
@@ -33,6 +34,7 @@ type CloudWatchLogs interface {
 	DescribeMetricFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeMetricFiltersOutput, error)
 	DescribeMetricFiltersPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeMetricFiltersInput, cb func(*cloudwatchlogs.DescribeMetricFiltersOutput, bool) bool, opts ...request.Option) error
 	DescribeQueriesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeQueriesInput, opts ...request.Option) (*cloudwatchlogs.DescribeQueriesOutput, error)
+	DescribeQueryDefinitionsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeQueryDefinitionsInput, opts ...request.Option) (*cloudwatchlogs.DescribeQueryDefinitionsOutput, error)
 	DescribeResourcePoliciesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeResourcePoliciesInput, opts ...request.Option) (*cloudwatchlogs.DescribeResourcePoliciesOutput, error)
 	DescribeSubscriptionFiltersWithContext(ctx context.Context, input *cloudwatchlogs.DescribeSubscriptionFiltersInput, opts ...request.Option) (*cloudwatchlogs.DescribeSubscriptionFiltersOutput, error)
 	DescribeSubscriptionFiltersPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeSubscriptionFiltersInput, cb func(*cloudwatchlogs.DescribeSubscriptionFiltersOutput, bool) bool, opts ...request.Option) error
@@ -49,6 +51,7 @@ type CloudWatchLogs interface {
 	PutDestinationPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationPolicyOutput, error)
 	PutLogEventsWithContext(ctx context.Context, input *cloudwatchlogs.PutLogEventsInput, opts ...request.Option) (*cloudwatchlogs.PutLogEventsOutput, error)
 	PutMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.PutMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.PutMetricFilterOutput, error)
+	PutQueryDefinitionWithContext(ctx context.Context, input *cloudwatchlogs.PutQueryDefinitionInput, opts ...request.Option) (*cloudwatchlogs.PutQueryDefinitionOutput, error)
 	PutResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.PutResourcePolicyOutput, error)
 	PutRetentionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutRetentionPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutRetentionPolicyOutput, error)
 	PutSubscriptionFilterWithContext(ctx context.Context, input *cloudwatchlogs.PutSubscriptionFilterInput, opts ...request.Option) (*cloudwatchlogs.PutSubscriptionFilterOutput, error)
@@ -261,6 +264,27 @@ func (c *Client) DeleteMetricFilterWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*cloudwatchlogs.DeleteMetricFilterOutput), req.Error
+}
+
+func (c *Client) DeleteQueryDefinitionWithContext(ctx context.Context, input *cloudwatchlogs.DeleteQueryDefinitionInput, opts ...request.Option) (*cloudwatchlogs.DeleteQueryDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DeleteQueryDefinition",
+		Input:   input,
+		Output:  (*cloudwatchlogs.DeleteQueryDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.DeleteQueryDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.DeleteQueryDefinitionOutput), req.Error
 }
 
 func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteResourcePolicyOutput, error) {
@@ -530,6 +554,27 @@ func (c *Client) DescribeQueriesWithContext(ctx context.Context, input *cloudwat
 	})
 
 	return req.Output.(*cloudwatchlogs.DescribeQueriesOutput), req.Error
+}
+
+func (c *Client) DescribeQueryDefinitionsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeQueryDefinitionsInput, opts ...request.Option) (*cloudwatchlogs.DescribeQueryDefinitionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeQueryDefinitions",
+		Input:   input,
+		Output:  (*cloudwatchlogs.DescribeQueryDefinitionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.DescribeQueryDefinitionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.DescribeQueryDefinitionsOutput), req.Error
 }
 
 func (c *Client) DescribeResourcePoliciesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeResourcePoliciesInput, opts ...request.Option) (*cloudwatchlogs.DescribeResourcePoliciesOutput, error) {
@@ -863,6 +908,27 @@ func (c *Client) PutMetricFilterWithContext(ctx context.Context, input *cloudwat
 	})
 
 	return req.Output.(*cloudwatchlogs.PutMetricFilterOutput), req.Error
+}
+
+func (c *Client) PutQueryDefinitionWithContext(ctx context.Context, input *cloudwatchlogs.PutQueryDefinitionInput, opts ...request.Option) (*cloudwatchlogs.PutQueryDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "PutQueryDefinition",
+		Input:   input,
+		Output:  (*cloudwatchlogs.PutQueryDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.PutQueryDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.PutQueryDefinitionOutput), req.Error
 }
 
 func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.PutResourcePolicyOutput, error) {
