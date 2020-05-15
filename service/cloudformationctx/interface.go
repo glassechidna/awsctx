@@ -23,6 +23,7 @@ type CloudFormation interface {
 	DeleteStackSetWithContext(ctx context.Context, input *cloudformation.DeleteStackSetInput, opts ...request.Option) (*cloudformation.DeleteStackSetOutput, error)
 	DeregisterTypeWithContext(ctx context.Context, input *cloudformation.DeregisterTypeInput, opts ...request.Option) (*cloudformation.DeregisterTypeOutput, error)
 	DescribeAccountLimitsWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, opts ...request.Option) (*cloudformation.DescribeAccountLimitsOutput, error)
+	DescribeAccountLimitsPagesWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, cb func(*cloudformation.DescribeAccountLimitsOutput, bool) bool, opts ...request.Option) error
 	DescribeChangeSetWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetInput, opts ...request.Option) (*cloudformation.DescribeChangeSetOutput, error)
 	DescribeStackDriftDetectionStatusWithContext(ctx context.Context, input *cloudformation.DescribeStackDriftDetectionStatusInput, opts ...request.Option) (*cloudformation.DescribeStackDriftDetectionStatusOutput, error)
 	DescribeStackEventsWithContext(ctx context.Context, input *cloudformation.DescribeStackEventsInput, opts ...request.Option) (*cloudformation.DescribeStackEventsOutput, error)
@@ -47,16 +48,21 @@ type CloudFormation interface {
 	GetTemplateWithContext(ctx context.Context, input *cloudformation.GetTemplateInput, opts ...request.Option) (*cloudformation.GetTemplateOutput, error)
 	GetTemplateSummaryWithContext(ctx context.Context, input *cloudformation.GetTemplateSummaryInput, opts ...request.Option) (*cloudformation.GetTemplateSummaryOutput, error)
 	ListChangeSetsWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, opts ...request.Option) (*cloudformation.ListChangeSetsOutput, error)
+	ListChangeSetsPagesWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, cb func(*cloudformation.ListChangeSetsOutput, bool) bool, opts ...request.Option) error
 	ListExportsWithContext(ctx context.Context, input *cloudformation.ListExportsInput, opts ...request.Option) (*cloudformation.ListExportsOutput, error)
 	ListExportsPagesWithContext(ctx context.Context, input *cloudformation.ListExportsInput, cb func(*cloudformation.ListExportsOutput, bool) bool, opts ...request.Option) error
 	ListImportsWithContext(ctx context.Context, input *cloudformation.ListImportsInput, opts ...request.Option) (*cloudformation.ListImportsOutput, error)
 	ListImportsPagesWithContext(ctx context.Context, input *cloudformation.ListImportsInput, cb func(*cloudformation.ListImportsOutput, bool) bool, opts ...request.Option) error
 	ListStackInstancesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, opts ...request.Option) (*cloudformation.ListStackInstancesOutput, error)
+	ListStackInstancesPagesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, cb func(*cloudformation.ListStackInstancesOutput, bool) bool, opts ...request.Option) error
 	ListStackResourcesWithContext(ctx context.Context, input *cloudformation.ListStackResourcesInput, opts ...request.Option) (*cloudformation.ListStackResourcesOutput, error)
 	ListStackResourcesPagesWithContext(ctx context.Context, input *cloudformation.ListStackResourcesInput, cb func(*cloudformation.ListStackResourcesOutput, bool) bool, opts ...request.Option) error
 	ListStackSetOperationResultsWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationResultsInput, opts ...request.Option) (*cloudformation.ListStackSetOperationResultsOutput, error)
+	ListStackSetOperationResultsPagesWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationResultsInput, cb func(*cloudformation.ListStackSetOperationResultsOutput, bool) bool, opts ...request.Option) error
 	ListStackSetOperationsWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationsInput, opts ...request.Option) (*cloudformation.ListStackSetOperationsOutput, error)
+	ListStackSetOperationsPagesWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationsInput, cb func(*cloudformation.ListStackSetOperationsOutput, bool) bool, opts ...request.Option) error
 	ListStackSetsWithContext(ctx context.Context, input *cloudformation.ListStackSetsInput, opts ...request.Option) (*cloudformation.ListStackSetsOutput, error)
+	ListStackSetsPagesWithContext(ctx context.Context, input *cloudformation.ListStackSetsInput, cb func(*cloudformation.ListStackSetsOutput, bool) bool, opts ...request.Option) error
 	ListStacksWithContext(ctx context.Context, input *cloudformation.ListStacksInput, opts ...request.Option) (*cloudformation.ListStacksOutput, error)
 	ListStacksPagesWithContext(ctx context.Context, input *cloudformation.ListStacksInput, cb func(*cloudformation.ListStacksOutput, bool) bool, opts ...request.Option) error
 	ListTypeRegistrationsWithContext(ctx context.Context, input *cloudformation.ListTypeRegistrationsInput, opts ...request.Option) (*cloudformation.ListTypeRegistrationsOutput, error)
@@ -343,6 +349,26 @@ func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *cl
 	})
 
 	return req.Output.(*cloudformation.DescribeAccountLimitsOutput), req.Error
+}
+
+func (c *Client) DescribeAccountLimitsPagesWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, cb func(*cloudformation.DescribeAccountLimitsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DescribeAccountLimits",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudFormationAPI.DescribeAccountLimitsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeChangeSetWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetInput, opts ...request.Option) (*cloudformation.DescribeChangeSetOutput, error) {
@@ -846,6 +872,26 @@ func (c *Client) ListChangeSetsWithContext(ctx context.Context, input *cloudform
 	return req.Output.(*cloudformation.ListChangeSetsOutput), req.Error
 }
 
+func (c *Client) ListChangeSetsPagesWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, cb func(*cloudformation.ListChangeSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ListChangeSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudFormationAPI.ListChangeSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListExportsWithContext(ctx context.Context, input *cloudformation.ListExportsInput, opts ...request.Option) (*cloudformation.ListExportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
@@ -949,6 +995,26 @@ func (c *Client) ListStackInstancesWithContext(ctx context.Context, input *cloud
 	return req.Output.(*cloudformation.ListStackInstancesOutput), req.Error
 }
 
+func (c *Client) ListStackInstancesPagesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, cb func(*cloudformation.ListStackInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ListStackInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudFormationAPI.ListStackInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStackResourcesWithContext(ctx context.Context, input *cloudformation.ListStackResourcesInput, opts ...request.Option) (*cloudformation.ListStackResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
@@ -1011,6 +1077,26 @@ func (c *Client) ListStackSetOperationResultsWithContext(ctx context.Context, in
 	return req.Output.(*cloudformation.ListStackSetOperationResultsOutput), req.Error
 }
 
+func (c *Client) ListStackSetOperationResultsPagesWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationResultsInput, cb func(*cloudformation.ListStackSetOperationResultsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ListStackSetOperationResults",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudFormationAPI.ListStackSetOperationResultsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStackSetOperationsWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationsInput, opts ...request.Option) (*cloudformation.ListStackSetOperationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
@@ -1032,6 +1118,26 @@ func (c *Client) ListStackSetOperationsWithContext(ctx context.Context, input *c
 	return req.Output.(*cloudformation.ListStackSetOperationsOutput), req.Error
 }
 
+func (c *Client) ListStackSetOperationsPagesWithContext(ctx context.Context, input *cloudformation.ListStackSetOperationsInput, cb func(*cloudformation.ListStackSetOperationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ListStackSetOperations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudFormationAPI.ListStackSetOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListStackSetsWithContext(ctx context.Context, input *cloudformation.ListStackSetsInput, opts ...request.Option) (*cloudformation.ListStackSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
@@ -1051,6 +1157,26 @@ func (c *Client) ListStackSetsWithContext(ctx context.Context, input *cloudforma
 	})
 
 	return req.Output.(*cloudformation.ListStackSetsOutput), req.Error
+}
+
+func (c *Client) ListStackSetsPagesWithContext(ctx context.Context, input *cloudformation.ListStackSetsInput, cb func(*cloudformation.ListStackSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ListStackSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudFormationAPI.ListStackSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListStacksWithContext(ctx context.Context, input *cloudformation.ListStacksInput, opts ...request.Option) (*cloudformation.ListStacksOutput, error) {

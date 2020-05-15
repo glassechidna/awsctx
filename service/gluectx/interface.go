@@ -144,6 +144,7 @@ type Glue interface {
 	StopCrawlerWithContext(ctx context.Context, input *glue.StopCrawlerInput, opts ...request.Option) (*glue.StopCrawlerOutput, error)
 	StopCrawlerScheduleWithContext(ctx context.Context, input *glue.StopCrawlerScheduleInput, opts ...request.Option) (*glue.StopCrawlerScheduleOutput, error)
 	StopTriggerWithContext(ctx context.Context, input *glue.StopTriggerInput, opts ...request.Option) (*glue.StopTriggerOutput, error)
+	StopWorkflowRunWithContext(ctx context.Context, input *glue.StopWorkflowRunInput, opts ...request.Option) (*glue.StopWorkflowRunOutput, error)
 	TagResourceWithContext(ctx context.Context, input *glue.TagResourceInput, opts ...request.Option) (*glue.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *glue.UntagResourceInput, opts ...request.Option) (*glue.UntagResourceOutput, error)
 	UpdateClassifierWithContext(ctx context.Context, input *glue.UpdateClassifierInput, opts ...request.Option) (*glue.UpdateClassifierOutput, error)
@@ -2943,6 +2944,27 @@ func (c *Client) StopTriggerWithContext(ctx context.Context, input *glue.StopTri
 	})
 
 	return req.Output.(*glue.StopTriggerOutput), req.Error
+}
+
+func (c *Client) StopWorkflowRunWithContext(ctx context.Context, input *glue.StopWorkflowRunInput, opts ...request.Option) (*glue.StopWorkflowRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StopWorkflowRun",
+		Input:   input,
+		Output:  (*glue.StopWorkflowRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StopWorkflowRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StopWorkflowRunOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *glue.TagResourceInput, opts ...request.Option) (*glue.TagResourceOutput, error) {
