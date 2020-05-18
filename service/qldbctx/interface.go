@@ -11,14 +11,18 @@ import (
 )
 
 type QLDB interface {
+	CancelJournalKinesisStreamWithContext(ctx context.Context, input *qldb.CancelJournalKinesisStreamInput, opts ...request.Option) (*qldb.CancelJournalKinesisStreamOutput, error)
 	CreateLedgerWithContext(ctx context.Context, input *qldb.CreateLedgerInput, opts ...request.Option) (*qldb.CreateLedgerOutput, error)
 	DeleteLedgerWithContext(ctx context.Context, input *qldb.DeleteLedgerInput, opts ...request.Option) (*qldb.DeleteLedgerOutput, error)
+	DescribeJournalKinesisStreamWithContext(ctx context.Context, input *qldb.DescribeJournalKinesisStreamInput, opts ...request.Option) (*qldb.DescribeJournalKinesisStreamOutput, error)
 	DescribeJournalS3ExportWithContext(ctx context.Context, input *qldb.DescribeJournalS3ExportInput, opts ...request.Option) (*qldb.DescribeJournalS3ExportOutput, error)
 	DescribeLedgerWithContext(ctx context.Context, input *qldb.DescribeLedgerInput, opts ...request.Option) (*qldb.DescribeLedgerOutput, error)
 	ExportJournalToS3WithContext(ctx context.Context, input *qldb.ExportJournalToS3Input, opts ...request.Option) (*qldb.ExportJournalToS3Output, error)
 	GetBlockWithContext(ctx context.Context, input *qldb.GetBlockInput, opts ...request.Option) (*qldb.GetBlockOutput, error)
 	GetDigestWithContext(ctx context.Context, input *qldb.GetDigestInput, opts ...request.Option) (*qldb.GetDigestOutput, error)
 	GetRevisionWithContext(ctx context.Context, input *qldb.GetRevisionInput, opts ...request.Option) (*qldb.GetRevisionOutput, error)
+	ListJournalKinesisStreamsForLedgerWithContext(ctx context.Context, input *qldb.ListJournalKinesisStreamsForLedgerInput, opts ...request.Option) (*qldb.ListJournalKinesisStreamsForLedgerOutput, error)
+	ListJournalKinesisStreamsForLedgerPagesWithContext(ctx context.Context, input *qldb.ListJournalKinesisStreamsForLedgerInput, cb func(*qldb.ListJournalKinesisStreamsForLedgerOutput, bool) bool, opts ...request.Option) error
 	ListJournalS3ExportsWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsInput, opts ...request.Option) (*qldb.ListJournalS3ExportsOutput, error)
 	ListJournalS3ExportsPagesWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsInput, cb func(*qldb.ListJournalS3ExportsOutput, bool) bool, opts ...request.Option) error
 	ListJournalS3ExportsForLedgerWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsForLedgerInput, opts ...request.Option) (*qldb.ListJournalS3ExportsForLedgerOutput, error)
@@ -26,6 +30,7 @@ type QLDB interface {
 	ListLedgersWithContext(ctx context.Context, input *qldb.ListLedgersInput, opts ...request.Option) (*qldb.ListLedgersOutput, error)
 	ListLedgersPagesWithContext(ctx context.Context, input *qldb.ListLedgersInput, cb func(*qldb.ListLedgersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *qldb.ListTagsForResourceInput, opts ...request.Option) (*qldb.ListTagsForResourceOutput, error)
+	StreamJournalToKinesisWithContext(ctx context.Context, input *qldb.StreamJournalToKinesisInput, opts ...request.Option) (*qldb.StreamJournalToKinesisOutput, error)
 	TagResourceWithContext(ctx context.Context, input *qldb.TagResourceInput, opts ...request.Option) (*qldb.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *qldb.UntagResourceInput, opts ...request.Option) (*qldb.UntagResourceOutput, error)
 	UpdateLedgerWithContext(ctx context.Context, input *qldb.UpdateLedgerInput, opts ...request.Option) (*qldb.UpdateLedgerOutput, error)
@@ -45,6 +50,27 @@ func New(base qldbiface.QLDBAPI, ctxer awsctx.Contexter) QLDB {
 
 var _ QLDB = (*qldb.QLDB)(nil)
 var _ QLDB = (*Client)(nil)
+
+func (c *Client) CancelJournalKinesisStreamWithContext(ctx context.Context, input *qldb.CancelJournalKinesisStreamInput, opts ...request.Option) (*qldb.CancelJournalKinesisStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "CancelJournalKinesisStream",
+		Input:   input,
+		Output:  (*qldb.CancelJournalKinesisStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QLDBAPI.CancelJournalKinesisStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*qldb.CancelJournalKinesisStreamOutput), req.Error
+}
 
 func (c *Client) CreateLedgerWithContext(ctx context.Context, input *qldb.CreateLedgerInput, opts ...request.Option) (*qldb.CreateLedgerOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -86,6 +112,27 @@ func (c *Client) DeleteLedgerWithContext(ctx context.Context, input *qldb.Delete
 	})
 
 	return req.Output.(*qldb.DeleteLedgerOutput), req.Error
+}
+
+func (c *Client) DescribeJournalKinesisStreamWithContext(ctx context.Context, input *qldb.DescribeJournalKinesisStreamInput, opts ...request.Option) (*qldb.DescribeJournalKinesisStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "DescribeJournalKinesisStream",
+		Input:   input,
+		Output:  (*qldb.DescribeJournalKinesisStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QLDBAPI.DescribeJournalKinesisStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*qldb.DescribeJournalKinesisStreamOutput), req.Error
 }
 
 func (c *Client) DescribeJournalS3ExportWithContext(ctx context.Context, input *qldb.DescribeJournalS3ExportInput, opts ...request.Option) (*qldb.DescribeJournalS3ExportOutput, error) {
@@ -212,6 +259,47 @@ func (c *Client) GetRevisionWithContext(ctx context.Context, input *qldb.GetRevi
 	})
 
 	return req.Output.(*qldb.GetRevisionOutput), req.Error
+}
+
+func (c *Client) ListJournalKinesisStreamsForLedgerWithContext(ctx context.Context, input *qldb.ListJournalKinesisStreamsForLedgerInput, opts ...request.Option) (*qldb.ListJournalKinesisStreamsForLedgerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "ListJournalKinesisStreamsForLedger",
+		Input:   input,
+		Output:  (*qldb.ListJournalKinesisStreamsForLedgerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QLDBAPI.ListJournalKinesisStreamsForLedgerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*qldb.ListJournalKinesisStreamsForLedgerOutput), req.Error
+}
+
+func (c *Client) ListJournalKinesisStreamsForLedgerPagesWithContext(ctx context.Context, input *qldb.ListJournalKinesisStreamsForLedgerInput, cb func(*qldb.ListJournalKinesisStreamsForLedgerOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "ListJournalKinesisStreamsForLedger",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QLDBAPI.ListJournalKinesisStreamsForLedgerPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJournalS3ExportsWithContext(ctx context.Context, input *qldb.ListJournalS3ExportsInput, opts ...request.Option) (*qldb.ListJournalS3ExportsOutput, error) {
@@ -356,6 +444,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *qldb
 	})
 
 	return req.Output.(*qldb.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) StreamJournalToKinesisWithContext(ctx context.Context, input *qldb.StreamJournalToKinesisInput, opts ...request.Option) (*qldb.StreamJournalToKinesisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "StreamJournalToKinesis",
+		Input:   input,
+		Output:  (*qldb.StreamJournalToKinesisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QLDBAPI.StreamJournalToKinesisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*qldb.StreamJournalToKinesisOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *qldb.TagResourceInput, opts ...request.Option) (*qldb.TagResourceOutput, error) {

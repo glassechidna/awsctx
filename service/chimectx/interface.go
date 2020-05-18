@@ -111,6 +111,8 @@ type Chime interface {
 	PutVoiceConnectorStreamingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorStreamingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorStreamingConfigurationOutput, error)
 	PutVoiceConnectorTerminationWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationOutput, error)
 	PutVoiceConnectorTerminationCredentialsWithContext(ctx context.Context, input *chime.PutVoiceConnectorTerminationCredentialsInput, opts ...request.Option) (*chime.PutVoiceConnectorTerminationCredentialsOutput, error)
+	RedactConversationMessageWithContext(ctx context.Context, input *chime.RedactConversationMessageInput, opts ...request.Option) (*chime.RedactConversationMessageOutput, error)
+	RedactRoomMessageWithContext(ctx context.Context, input *chime.RedactRoomMessageInput, opts ...request.Option) (*chime.RedactRoomMessageOutput, error)
 	RegenerateSecurityTokenWithContext(ctx context.Context, input *chime.RegenerateSecurityTokenInput, opts ...request.Option) (*chime.RegenerateSecurityTokenOutput, error)
 	ResetPersonalPINWithContext(ctx context.Context, input *chime.ResetPersonalPINInput, opts ...request.Option) (*chime.ResetPersonalPINOutput, error)
 	RestorePhoneNumberWithContext(ctx context.Context, input *chime.RestorePhoneNumberInput, opts ...request.Option) (*chime.RestorePhoneNumberOutput, error)
@@ -2237,6 +2239,48 @@ func (c *Client) PutVoiceConnectorTerminationCredentialsWithContext(ctx context.
 	})
 
 	return req.Output.(*chime.PutVoiceConnectorTerminationCredentialsOutput), req.Error
+}
+
+func (c *Client) RedactConversationMessageWithContext(ctx context.Context, input *chime.RedactConversationMessageInput, opts ...request.Option) (*chime.RedactConversationMessageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "RedactConversationMessage",
+		Input:   input,
+		Output:  (*chime.RedactConversationMessageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.RedactConversationMessageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.RedactConversationMessageOutput), req.Error
+}
+
+func (c *Client) RedactRoomMessageWithContext(ctx context.Context, input *chime.RedactRoomMessageInput, opts ...request.Option) (*chime.RedactRoomMessageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "RedactRoomMessage",
+		Input:   input,
+		Output:  (*chime.RedactRoomMessageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.RedactRoomMessageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.RedactRoomMessageOutput), req.Error
 }
 
 func (c *Client) RegenerateSecurityTokenWithContext(ctx context.Context, input *chime.RegenerateSecurityTokenInput, opts ...request.Option) (*chime.RegenerateSecurityTokenOutput, error) {
