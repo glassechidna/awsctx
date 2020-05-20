@@ -28,6 +28,7 @@ type CodeDeploy interface {
 	DeleteDeploymentConfigWithContext(ctx context.Context, input *codedeploy.DeleteDeploymentConfigInput, opts ...request.Option) (*codedeploy.DeleteDeploymentConfigOutput, error)
 	DeleteDeploymentGroupWithContext(ctx context.Context, input *codedeploy.DeleteDeploymentGroupInput, opts ...request.Option) (*codedeploy.DeleteDeploymentGroupOutput, error)
 	DeleteGitHubAccountTokenWithContext(ctx context.Context, input *codedeploy.DeleteGitHubAccountTokenInput, opts ...request.Option) (*codedeploy.DeleteGitHubAccountTokenOutput, error)
+	DeleteResourcesByExternalIdWithContext(ctx context.Context, input *codedeploy.DeleteResourcesByExternalIdInput, opts ...request.Option) (*codedeploy.DeleteResourcesByExternalIdOutput, error)
 	DeregisterOnPremisesInstanceWithContext(ctx context.Context, input *codedeploy.DeregisterOnPremisesInstanceInput, opts ...request.Option) (*codedeploy.DeregisterOnPremisesInstanceOutput, error)
 	GetApplicationWithContext(ctx context.Context, input *codedeploy.GetApplicationInput, opts ...request.Option) (*codedeploy.GetApplicationOutput, error)
 	GetApplicationRevisionWithContext(ctx context.Context, input *codedeploy.GetApplicationRevisionInput, opts ...request.Option) (*codedeploy.GetApplicationRevisionOutput, error)
@@ -435,6 +436,27 @@ func (c *Client) DeleteGitHubAccountTokenWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*codedeploy.DeleteGitHubAccountTokenOutput), req.Error
+}
+
+func (c *Client) DeleteResourcesByExternalIdWithContext(ctx context.Context, input *codedeploy.DeleteResourcesByExternalIdInput, opts ...request.Option) (*codedeploy.DeleteResourcesByExternalIdOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codedeploy",
+		Action:  "DeleteResourcesByExternalId",
+		Input:   input,
+		Output:  (*codedeploy.DeleteResourcesByExternalIdOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeDeployAPI.DeleteResourcesByExternalIdWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codedeploy.DeleteResourcesByExternalIdOutput), req.Error
 }
 
 func (c *Client) DeregisterOnPremisesInstanceWithContext(ctx context.Context, input *codedeploy.DeregisterOnPremisesInstanceInput, opts ...request.Option) (*codedeploy.DeregisterOnPremisesInstanceOutput, error) {

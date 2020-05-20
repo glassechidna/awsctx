@@ -63,6 +63,7 @@ type Chime interface {
 	GetPhoneNumberOrderWithContext(ctx context.Context, input *chime.GetPhoneNumberOrderInput, opts ...request.Option) (*chime.GetPhoneNumberOrderOutput, error)
 	GetPhoneNumberSettingsWithContext(ctx context.Context, input *chime.GetPhoneNumberSettingsInput, opts ...request.Option) (*chime.GetPhoneNumberSettingsOutput, error)
 	GetProxySessionWithContext(ctx context.Context, input *chime.GetProxySessionInput, opts ...request.Option) (*chime.GetProxySessionOutput, error)
+	GetRetentionSettingsWithContext(ctx context.Context, input *chime.GetRetentionSettingsInput, opts ...request.Option) (*chime.GetRetentionSettingsOutput, error)
 	GetRoomWithContext(ctx context.Context, input *chime.GetRoomInput, opts ...request.Option) (*chime.GetRoomOutput, error)
 	GetUserWithContext(ctx context.Context, input *chime.GetUserInput, opts ...request.Option) (*chime.GetUserOutput, error)
 	GetUserSettingsWithContext(ctx context.Context, input *chime.GetUserSettingsInput, opts ...request.Option) (*chime.GetUserSettingsOutput, error)
@@ -105,6 +106,7 @@ type Chime interface {
 	ListVoiceConnectorsPagesWithContext(ctx context.Context, input *chime.ListVoiceConnectorsInput, cb func(*chime.ListVoiceConnectorsOutput, bool) bool, opts ...request.Option) error
 	LogoutUserWithContext(ctx context.Context, input *chime.LogoutUserInput, opts ...request.Option) (*chime.LogoutUserOutput, error)
 	PutEventsConfigurationWithContext(ctx context.Context, input *chime.PutEventsConfigurationInput, opts ...request.Option) (*chime.PutEventsConfigurationOutput, error)
+	PutRetentionSettingsWithContext(ctx context.Context, input *chime.PutRetentionSettingsInput, opts ...request.Option) (*chime.PutRetentionSettingsOutput, error)
 	PutVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorLoggingConfigurationOutput, error)
 	PutVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.PutVoiceConnectorOriginationInput, opts ...request.Option) (*chime.PutVoiceConnectorOriginationOutput, error)
 	PutVoiceConnectorProxyWithContext(ctx context.Context, input *chime.PutVoiceConnectorProxyInput, opts ...request.Option) (*chime.PutVoiceConnectorProxyOutput, error)
@@ -1245,6 +1247,27 @@ func (c *Client) GetProxySessionWithContext(ctx context.Context, input *chime.Ge
 	return req.Output.(*chime.GetProxySessionOutput), req.Error
 }
 
+func (c *Client) GetRetentionSettingsWithContext(ctx context.Context, input *chime.GetRetentionSettingsInput, opts ...request.Option) (*chime.GetRetentionSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetRetentionSettings",
+		Input:   input,
+		Output:  (*chime.GetRetentionSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetRetentionSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetRetentionSettingsOutput), req.Error
+}
+
 func (c *Client) GetRoomWithContext(ctx context.Context, input *chime.GetRoomInput, opts ...request.Option) (*chime.GetRoomOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -2113,6 +2136,27 @@ func (c *Client) PutEventsConfigurationWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*chime.PutEventsConfigurationOutput), req.Error
+}
+
+func (c *Client) PutRetentionSettingsWithContext(ctx context.Context, input *chime.PutRetentionSettingsInput, opts ...request.Option) (*chime.PutRetentionSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "PutRetentionSettings",
+		Input:   input,
+		Output:  (*chime.PutRetentionSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.PutRetentionSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.PutRetentionSettingsOutput), req.Error
 }
 
 func (c *Client) PutVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorLoggingConfigurationOutput, error) {

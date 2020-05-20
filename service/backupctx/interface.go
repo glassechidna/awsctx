@@ -25,6 +25,7 @@ type Backup interface {
 	DescribeCopyJobWithContext(ctx context.Context, input *backup.DescribeCopyJobInput, opts ...request.Option) (*backup.DescribeCopyJobOutput, error)
 	DescribeProtectedResourceWithContext(ctx context.Context, input *backup.DescribeProtectedResourceInput, opts ...request.Option) (*backup.DescribeProtectedResourceOutput, error)
 	DescribeRecoveryPointWithContext(ctx context.Context, input *backup.DescribeRecoveryPointInput, opts ...request.Option) (*backup.DescribeRecoveryPointOutput, error)
+	DescribeRegionSettingsWithContext(ctx context.Context, input *backup.DescribeRegionSettingsInput, opts ...request.Option) (*backup.DescribeRegionSettingsOutput, error)
 	DescribeRestoreJobWithContext(ctx context.Context, input *backup.DescribeRestoreJobInput, opts ...request.Option) (*backup.DescribeRestoreJobOutput, error)
 	ExportBackupPlanTemplateWithContext(ctx context.Context, input *backup.ExportBackupPlanTemplateInput, opts ...request.Option) (*backup.ExportBackupPlanTemplateOutput, error)
 	GetBackupPlanWithContext(ctx context.Context, input *backup.GetBackupPlanInput, opts ...request.Option) (*backup.GetBackupPlanOutput, error)
@@ -69,6 +70,7 @@ type Backup interface {
 	UntagResourceWithContext(ctx context.Context, input *backup.UntagResourceInput, opts ...request.Option) (*backup.UntagResourceOutput, error)
 	UpdateBackupPlanWithContext(ctx context.Context, input *backup.UpdateBackupPlanInput, opts ...request.Option) (*backup.UpdateBackupPlanOutput, error)
 	UpdateRecoveryPointLifecycleWithContext(ctx context.Context, input *backup.UpdateRecoveryPointLifecycleInput, opts ...request.Option) (*backup.UpdateRecoveryPointLifecycleOutput, error)
+	UpdateRegionSettingsWithContext(ctx context.Context, input *backup.UpdateRegionSettingsInput, opts ...request.Option) (*backup.UpdateRegionSettingsOutput, error)
 }
 
 type Client struct {
@@ -378,6 +380,27 @@ func (c *Client) DescribeRecoveryPointWithContext(ctx context.Context, input *ba
 	})
 
 	return req.Output.(*backup.DescribeRecoveryPointOutput), req.Error
+}
+
+func (c *Client) DescribeRegionSettingsWithContext(ctx context.Context, input *backup.DescribeRegionSettingsInput, opts ...request.Option) (*backup.DescribeRegionSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "DescribeRegionSettings",
+		Input:   input,
+		Output:  (*backup.DescribeRegionSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.DescribeRegionSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.DescribeRegionSettingsOutput), req.Error
 }
 
 func (c *Client) DescribeRestoreJobWithContext(ctx context.Context, input *backup.DescribeRestoreJobInput, opts ...request.Option) (*backup.DescribeRestoreJobOutput, error) {
@@ -1290,4 +1313,25 @@ func (c *Client) UpdateRecoveryPointLifecycleWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*backup.UpdateRecoveryPointLifecycleOutput), req.Error
+}
+
+func (c *Client) UpdateRegionSettingsWithContext(ctx context.Context, input *backup.UpdateRegionSettingsInput, opts ...request.Option) (*backup.UpdateRegionSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "UpdateRegionSettings",
+		Input:   input,
+		Output:  (*backup.UpdateRegionSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.UpdateRegionSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.UpdateRegionSettingsOutput), req.Error
 }
