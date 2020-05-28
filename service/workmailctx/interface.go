@@ -22,6 +22,7 @@ type WorkMail interface {
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
 	DeleteResourceWithContext(ctx context.Context, input *workmail.DeleteResourceInput, opts ...request.Option) (*workmail.DeleteResourceOutput, error)
+	DeleteRetentionPolicyWithContext(ctx context.Context, input *workmail.DeleteRetentionPolicyInput, opts ...request.Option) (*workmail.DeleteRetentionPolicyOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error)
 	DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error)
@@ -31,6 +32,7 @@ type WorkMail interface {
 	DisassociateDelegateFromResourceWithContext(ctx context.Context, input *workmail.DisassociateDelegateFromResourceInput, opts ...request.Option) (*workmail.DisassociateDelegateFromResourceOutput, error)
 	DisassociateMemberFromGroupWithContext(ctx context.Context, input *workmail.DisassociateMemberFromGroupInput, opts ...request.Option) (*workmail.DisassociateMemberFromGroupOutput, error)
 	GetAccessControlEffectWithContext(ctx context.Context, input *workmail.GetAccessControlEffectInput, opts ...request.Option) (*workmail.GetAccessControlEffectOutput, error)
+	GetDefaultRetentionPolicyWithContext(ctx context.Context, input *workmail.GetDefaultRetentionPolicyInput, opts ...request.Option) (*workmail.GetDefaultRetentionPolicyOutput, error)
 	GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error)
 	ListAccessControlRulesWithContext(ctx context.Context, input *workmail.ListAccessControlRulesInput, opts ...request.Option) (*workmail.ListAccessControlRulesOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error)
@@ -52,6 +54,7 @@ type WorkMail interface {
 	ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error
 	PutAccessControlRuleWithContext(ctx context.Context, input *workmail.PutAccessControlRuleInput, opts ...request.Option) (*workmail.PutAccessControlRuleOutput, error)
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
+	PutRetentionPolicyWithContext(ctx context.Context, input *workmail.PutRetentionPolicyInput, opts ...request.Option) (*workmail.PutRetentionPolicyOutput, error)
 	RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error)
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
 	TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error)
@@ -307,6 +310,27 @@ func (c *Client) DeleteResourceWithContext(ctx context.Context, input *workmail.
 	return req.Output.(*workmail.DeleteResourceOutput), req.Error
 }
 
+func (c *Client) DeleteRetentionPolicyWithContext(ctx context.Context, input *workmail.DeleteRetentionPolicyInput, opts ...request.Option) (*workmail.DeleteRetentionPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteRetentionPolicy",
+		Input:   input,
+		Output:  (*workmail.DeleteRetentionPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteRetentionPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteRetentionPolicyOutput), req.Error
+}
+
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -494,6 +518,27 @@ func (c *Client) GetAccessControlEffectWithContext(ctx context.Context, input *w
 	})
 
 	return req.Output.(*workmail.GetAccessControlEffectOutput), req.Error
+}
+
+func (c *Client) GetDefaultRetentionPolicyWithContext(ctx context.Context, input *workmail.GetDefaultRetentionPolicyInput, opts ...request.Option) (*workmail.GetDefaultRetentionPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "GetDefaultRetentionPolicy",
+		Input:   input,
+		Output:  (*workmail.GetDefaultRetentionPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.GetDefaultRetentionPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.GetDefaultRetentionPolicyOutput), req.Error
 }
 
 func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error) {
@@ -927,6 +972,27 @@ func (c *Client) PutMailboxPermissionsWithContext(ctx context.Context, input *wo
 	})
 
 	return req.Output.(*workmail.PutMailboxPermissionsOutput), req.Error
+}
+
+func (c *Client) PutRetentionPolicyWithContext(ctx context.Context, input *workmail.PutRetentionPolicyInput, opts ...request.Option) (*workmail.PutRetentionPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "PutRetentionPolicy",
+		Input:   input,
+		Output:  (*workmail.PutRetentionPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.PutRetentionPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.PutRetentionPolicyOutput), req.Error
 }
 
 func (c *Client) RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error) {

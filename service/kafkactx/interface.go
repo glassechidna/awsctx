@@ -19,6 +19,7 @@ type Kafka interface {
 	DescribeConfigurationWithContext(ctx context.Context, input *kafka.DescribeConfigurationInput, opts ...request.Option) (*kafka.DescribeConfigurationOutput, error)
 	DescribeConfigurationRevisionWithContext(ctx context.Context, input *kafka.DescribeConfigurationRevisionInput, opts ...request.Option) (*kafka.DescribeConfigurationRevisionOutput, error)
 	GetBootstrapBrokersWithContext(ctx context.Context, input *kafka.GetBootstrapBrokersInput, opts ...request.Option) (*kafka.GetBootstrapBrokersOutput, error)
+	GetCompatibleKafkaVersionsWithContext(ctx context.Context, input *kafka.GetCompatibleKafkaVersionsInput, opts ...request.Option) (*kafka.GetCompatibleKafkaVersionsOutput, error)
 	ListClusterOperationsWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, opts ...request.Option) (*kafka.ListClusterOperationsOutput, error)
 	ListClusterOperationsPagesWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, cb func(*kafka.ListClusterOperationsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *kafka.ListClustersInput, opts ...request.Option) (*kafka.ListClustersOutput, error)
@@ -37,6 +38,7 @@ type Kafka interface {
 	UpdateBrokerCountWithContext(ctx context.Context, input *kafka.UpdateBrokerCountInput, opts ...request.Option) (*kafka.UpdateBrokerCountOutput, error)
 	UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error)
 	UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error)
+	UpdateClusterKafkaVersionWithContext(ctx context.Context, input *kafka.UpdateClusterKafkaVersionInput, opts ...request.Option) (*kafka.UpdateClusterKafkaVersionOutput, error)
 	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
 }
 
@@ -221,6 +223,27 @@ func (c *Client) GetBootstrapBrokersWithContext(ctx context.Context, input *kafk
 	})
 
 	return req.Output.(*kafka.GetBootstrapBrokersOutput), req.Error
+}
+
+func (c *Client) GetCompatibleKafkaVersionsWithContext(ctx context.Context, input *kafka.GetCompatibleKafkaVersionsInput, opts ...request.Option) (*kafka.GetCompatibleKafkaVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "GetCompatibleKafkaVersions",
+		Input:   input,
+		Output:  (*kafka.GetCompatibleKafkaVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.GetCompatibleKafkaVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.GetCompatibleKafkaVersionsOutput), req.Error
 }
 
 func (c *Client) ListClusterOperationsWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, opts ...request.Option) (*kafka.ListClusterOperationsOutput, error) {
@@ -593,6 +616,27 @@ func (c *Client) UpdateClusterConfigurationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*kafka.UpdateClusterConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateClusterKafkaVersionWithContext(ctx context.Context, input *kafka.UpdateClusterKafkaVersionInput, opts ...request.Option) (*kafka.UpdateClusterKafkaVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateClusterKafkaVersion",
+		Input:   input,
+		Output:  (*kafka.UpdateClusterKafkaVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateClusterKafkaVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateClusterKafkaVersionOutput), req.Error
 }
 
 func (c *Client) UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error) {
