@@ -33,6 +33,7 @@ type WorkLink interface {
 	ListDomainsPagesWithContext(ctx context.Context, input *worklink.ListDomainsInput, cb func(*worklink.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	ListFleetsWithContext(ctx context.Context, input *worklink.ListFleetsInput, opts ...request.Option) (*worklink.ListFleetsOutput, error)
 	ListFleetsPagesWithContext(ctx context.Context, input *worklink.ListFleetsInput, cb func(*worklink.ListFleetsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *worklink.ListTagsForResourceInput, opts ...request.Option) (*worklink.ListTagsForResourceOutput, error)
 	ListWebsiteAuthorizationProvidersWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, opts ...request.Option) (*worklink.ListWebsiteAuthorizationProvidersOutput, error)
 	ListWebsiteAuthorizationProvidersPagesWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, cb func(*worklink.ListWebsiteAuthorizationProvidersOutput, bool) bool, opts ...request.Option) error
 	ListWebsiteCertificateAuthoritiesWithContext(ctx context.Context, input *worklink.ListWebsiteCertificateAuthoritiesInput, opts ...request.Option) (*worklink.ListWebsiteCertificateAuthoritiesOutput, error)
@@ -40,6 +41,8 @@ type WorkLink interface {
 	RestoreDomainAccessWithContext(ctx context.Context, input *worklink.RestoreDomainAccessInput, opts ...request.Option) (*worklink.RestoreDomainAccessOutput, error)
 	RevokeDomainAccessWithContext(ctx context.Context, input *worklink.RevokeDomainAccessInput, opts ...request.Option) (*worklink.RevokeDomainAccessOutput, error)
 	SignOutUserWithContext(ctx context.Context, input *worklink.SignOutUserInput, opts ...request.Option) (*worklink.SignOutUserOutput, error)
+	TagResourceWithContext(ctx context.Context, input *worklink.TagResourceInput, opts ...request.Option) (*worklink.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *worklink.UntagResourceInput, opts ...request.Option) (*worklink.UntagResourceOutput, error)
 	UpdateAuditStreamConfigurationWithContext(ctx context.Context, input *worklink.UpdateAuditStreamConfigurationInput, opts ...request.Option) (*worklink.UpdateAuditStreamConfigurationOutput, error)
 	UpdateCompanyNetworkConfigurationWithContext(ctx context.Context, input *worklink.UpdateCompanyNetworkConfigurationInput, opts ...request.Option) (*worklink.UpdateCompanyNetworkConfigurationOutput, error)
 	UpdateDevicePolicyConfigurationWithContext(ctx context.Context, input *worklink.UpdateDevicePolicyConfigurationInput, opts ...request.Option) (*worklink.UpdateDevicePolicyConfigurationOutput, error)
@@ -522,6 +525,27 @@ func (c *Client) ListFleetsPagesWithContext(ctx context.Context, input *worklink
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *worklink.ListTagsForResourceInput, opts ...request.Option) (*worklink.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*worklink.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkLinkAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*worklink.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListWebsiteAuthorizationProvidersWithContext(ctx context.Context, input *worklink.ListWebsiteAuthorizationProvidersInput, opts ...request.Option) (*worklink.ListWebsiteAuthorizationProvidersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "worklink",
@@ -665,6 +689,48 @@ func (c *Client) SignOutUserWithContext(ctx context.Context, input *worklink.Sig
 	})
 
 	return req.Output.(*worklink.SignOutUserOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *worklink.TagResourceInput, opts ...request.Option) (*worklink.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*worklink.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkLinkAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*worklink.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *worklink.UntagResourceInput, opts ...request.Option) (*worklink.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "worklink",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*worklink.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkLinkAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*worklink.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateAuditStreamConfigurationWithContext(ctx context.Context, input *worklink.UpdateAuditStreamConfigurationInput, opts ...request.Option) (*worklink.UpdateAuditStreamConfigurationOutput, error) {
