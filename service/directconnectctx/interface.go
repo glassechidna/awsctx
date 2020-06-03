@@ -59,6 +59,9 @@ type DirectConnect interface {
 	DescribeVirtualGatewaysWithContext(ctx context.Context, input *directconnect.DescribeVirtualGatewaysInput, opts ...request.Option) (*directconnect.DescribeVirtualGatewaysOutput, error)
 	DescribeVirtualInterfacesWithContext(ctx context.Context, input *directconnect.DescribeVirtualInterfacesInput, opts ...request.Option) (*directconnect.DescribeVirtualInterfacesOutput, error)
 	DisassociateConnectionFromLagWithContext(ctx context.Context, input *directconnect.DisassociateConnectionFromLagInput, opts ...request.Option) (*directconnect.Connection, error)
+	ListVirtualInterfaceTestHistoryWithContext(ctx context.Context, input *directconnect.ListVirtualInterfaceTestHistoryInput, opts ...request.Option) (*directconnect.ListVirtualInterfaceTestHistoryOutput, error)
+	StartBgpFailoverTestWithContext(ctx context.Context, input *directconnect.StartBgpFailoverTestInput, opts ...request.Option) (*directconnect.StartBgpFailoverTestOutput, error)
+	StopBgpFailoverTestWithContext(ctx context.Context, input *directconnect.StopBgpFailoverTestInput, opts ...request.Option) (*directconnect.StopBgpFailoverTestOutput, error)
 	TagResourceWithContext(ctx context.Context, input *directconnect.TagResourceInput, opts ...request.Option) (*directconnect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *directconnect.UntagResourceInput, opts ...request.Option) (*directconnect.UntagResourceOutput, error)
 	UpdateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayAssociationOutput, error)
@@ -1087,6 +1090,69 @@ func (c *Client) DisassociateConnectionFromLagWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*directconnect.Connection), req.Error
+}
+
+func (c *Client) ListVirtualInterfaceTestHistoryWithContext(ctx context.Context, input *directconnect.ListVirtualInterfaceTestHistoryInput, opts ...request.Option) (*directconnect.ListVirtualInterfaceTestHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "ListVirtualInterfaceTestHistory",
+		Input:   input,
+		Output:  (*directconnect.ListVirtualInterfaceTestHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.ListVirtualInterfaceTestHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.ListVirtualInterfaceTestHistoryOutput), req.Error
+}
+
+func (c *Client) StartBgpFailoverTestWithContext(ctx context.Context, input *directconnect.StartBgpFailoverTestInput, opts ...request.Option) (*directconnect.StartBgpFailoverTestOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "StartBgpFailoverTest",
+		Input:   input,
+		Output:  (*directconnect.StartBgpFailoverTestOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.StartBgpFailoverTestWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.StartBgpFailoverTestOutput), req.Error
+}
+
+func (c *Client) StopBgpFailoverTestWithContext(ctx context.Context, input *directconnect.StopBgpFailoverTestInput, opts ...request.Option) (*directconnect.StopBgpFailoverTestOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "StopBgpFailoverTest",
+		Input:   input,
+		Output:  (*directconnect.StopBgpFailoverTestOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.StopBgpFailoverTestWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.StopBgpFailoverTestOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *directconnect.TagResourceInput, opts ...request.Option) (*directconnect.TagResourceOutput, error) {

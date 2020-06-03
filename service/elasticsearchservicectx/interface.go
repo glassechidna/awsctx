@@ -11,18 +11,26 @@ import (
 )
 
 type ElasticsearchService interface {
+	AcceptInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.AcceptInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.AcceptInboundCrossClusterSearchConnectionOutput, error)
 	AddTagsWithContext(ctx context.Context, input *elasticsearchservice.AddTagsInput, opts ...request.Option) (*elasticsearchservice.AddTagsOutput, error)
 	AssociatePackageWithContext(ctx context.Context, input *elasticsearchservice.AssociatePackageInput, opts ...request.Option) (*elasticsearchservice.AssociatePackageOutput, error)
 	CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput, error)
 	CreateElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.CreateElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.CreateElasticsearchDomainOutput, error)
+	CreateOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.CreateOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.CreateOutboundCrossClusterSearchConnectionOutput, error)
 	CreatePackageWithContext(ctx context.Context, input *elasticsearchservice.CreatePackageInput, opts ...request.Option) (*elasticsearchservice.CreatePackageOutput, error)
 	DeleteElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchDomainOutput, error)
 	DeleteElasticsearchServiceRoleWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchServiceRoleInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchServiceRoleOutput, error)
+	DeleteInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteInboundCrossClusterSearchConnectionOutput, error)
+	DeleteOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionOutput, error)
 	DeletePackageWithContext(ctx context.Context, input *elasticsearchservice.DeletePackageInput, opts ...request.Option) (*elasticsearchservice.DeletePackageOutput, error)
 	DescribeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainOutput, error)
 	DescribeElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainConfigOutput, error)
 	DescribeElasticsearchDomainsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainsOutput, error)
 	DescribeElasticsearchInstanceTypeLimitsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsOutput, error)
+	DescribeInboundCrossClusterSearchConnectionsWithContext(ctx context.Context, input *elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsInput, opts ...request.Option) (*elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsOutput, error)
+	DescribeInboundCrossClusterSearchConnectionsPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsInput, cb func(*elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsOutput, bool) bool, opts ...request.Option) error
+	DescribeOutboundCrossClusterSearchConnectionsWithContext(ctx context.Context, input *elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsInput, opts ...request.Option) (*elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsOutput, error)
+	DescribeOutboundCrossClusterSearchConnectionsPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsInput, cb func(*elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsOutput, bool) bool, opts ...request.Option) error
 	DescribePackagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, opts ...request.Option) (*elasticsearchservice.DescribePackagesOutput, error)
 	DescribePackagesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, cb func(*elasticsearchservice.DescribePackagesOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedElasticsearchInstanceOfferingsWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput, error)
@@ -45,6 +53,7 @@ type ElasticsearchService interface {
 	ListPackagesForDomainPagesWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, cb func(*elasticsearchservice.ListPackagesForDomainOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *elasticsearchservice.ListTagsInput, opts ...request.Option) (*elasticsearchservice.ListTagsOutput, error)
 	PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx context.Context, input *elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingInput, opts ...request.Option) (*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput, error)
+	RejectInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.RejectInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.RejectInboundCrossClusterSearchConnectionOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *elasticsearchservice.RemoveTagsInput, opts ...request.Option) (*elasticsearchservice.RemoveTagsOutput, error)
 	StartElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.StartElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.StartElasticsearchServiceSoftwareUpdateOutput, error)
 	UpdateElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.UpdateElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.UpdateElasticsearchDomainConfigOutput, error)
@@ -65,6 +74,27 @@ func New(base elasticsearchserviceiface.ElasticsearchServiceAPI, ctxer awsctx.Co
 
 var _ ElasticsearchService = (*elasticsearchservice.ElasticsearchService)(nil)
 var _ ElasticsearchService = (*Client)(nil)
+
+func (c *Client) AcceptInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.AcceptInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.AcceptInboundCrossClusterSearchConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "AcceptInboundCrossClusterSearchConnection",
+		Input:   input,
+		Output:  (*elasticsearchservice.AcceptInboundCrossClusterSearchConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.AcceptInboundCrossClusterSearchConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.AcceptInboundCrossClusterSearchConnectionOutput), req.Error
+}
 
 func (c *Client) AddTagsWithContext(ctx context.Context, input *elasticsearchservice.AddTagsInput, opts ...request.Option) (*elasticsearchservice.AddTagsOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -150,6 +180,27 @@ func (c *Client) CreateElasticsearchDomainWithContext(ctx context.Context, input
 	return req.Output.(*elasticsearchservice.CreateElasticsearchDomainOutput), req.Error
 }
 
+func (c *Client) CreateOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.CreateOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.CreateOutboundCrossClusterSearchConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "CreateOutboundCrossClusterSearchConnection",
+		Input:   input,
+		Output:  (*elasticsearchservice.CreateOutboundCrossClusterSearchConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.CreateOutboundCrossClusterSearchConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.CreateOutboundCrossClusterSearchConnectionOutput), req.Error
+}
+
 func (c *Client) CreatePackageWithContext(ctx context.Context, input *elasticsearchservice.CreatePackageInput, opts ...request.Option) (*elasticsearchservice.CreatePackageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -211,6 +262,48 @@ func (c *Client) DeleteElasticsearchServiceRoleWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*elasticsearchservice.DeleteElasticsearchServiceRoleOutput), req.Error
+}
+
+func (c *Client) DeleteInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteInboundCrossClusterSearchConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DeleteInboundCrossClusterSearchConnection",
+		Input:   input,
+		Output:  (*elasticsearchservice.DeleteInboundCrossClusterSearchConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DeleteInboundCrossClusterSearchConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DeleteInboundCrossClusterSearchConnectionOutput), req.Error
+}
+
+func (c *Client) DeleteOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DeleteOutboundCrossClusterSearchConnection",
+		Input:   input,
+		Output:  (*elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DeleteOutboundCrossClusterSearchConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionOutput), req.Error
 }
 
 func (c *Client) DeletePackageWithContext(ctx context.Context, input *elasticsearchservice.DeletePackageInput, opts ...request.Option) (*elasticsearchservice.DeletePackageOutput, error) {
@@ -316,6 +409,88 @@ func (c *Client) DescribeElasticsearchInstanceTypeLimitsWithContext(ctx context.
 	})
 
 	return req.Output.(*elasticsearchservice.DescribeElasticsearchInstanceTypeLimitsOutput), req.Error
+}
+
+func (c *Client) DescribeInboundCrossClusterSearchConnectionsWithContext(ctx context.Context, input *elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsInput, opts ...request.Option) (*elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeInboundCrossClusterSearchConnections",
+		Input:   input,
+		Output:  (*elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DescribeInboundCrossClusterSearchConnectionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsOutput), req.Error
+}
+
+func (c *Client) DescribeInboundCrossClusterSearchConnectionsPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsInput, cb func(*elasticsearchservice.DescribeInboundCrossClusterSearchConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeInboundCrossClusterSearchConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.DescribeInboundCrossClusterSearchConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeOutboundCrossClusterSearchConnectionsWithContext(ctx context.Context, input *elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsInput, opts ...request.Option) (*elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeOutboundCrossClusterSearchConnections",
+		Input:   input,
+		Output:  (*elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DescribeOutboundCrossClusterSearchConnectionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsOutput), req.Error
+}
+
+func (c *Client) DescribeOutboundCrossClusterSearchConnectionsPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsInput, cb func(*elasticsearchservice.DescribeOutboundCrossClusterSearchConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeOutboundCrossClusterSearchConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.DescribeOutboundCrossClusterSearchConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribePackagesWithContext(ctx context.Context, input *elasticsearchservice.DescribePackagesInput, opts ...request.Option) (*elasticsearchservice.DescribePackagesOutput, error) {
@@ -770,6 +945,27 @@ func (c *Client) PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx co
 	})
 
 	return req.Output.(*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput), req.Error
+}
+
+func (c *Client) RejectInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.RejectInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.RejectInboundCrossClusterSearchConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "RejectInboundCrossClusterSearchConnection",
+		Input:   input,
+		Output:  (*elasticsearchservice.RejectInboundCrossClusterSearchConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.RejectInboundCrossClusterSearchConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.RejectInboundCrossClusterSearchConnectionOutput), req.Error
 }
 
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elasticsearchservice.RemoveTagsInput, opts ...request.Option) (*elasticsearchservice.RemoveTagsOutput, error) {
