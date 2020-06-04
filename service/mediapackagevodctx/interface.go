@@ -29,6 +29,7 @@ type MediaPackageVod interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *mediapackagevod.ListTagsForResourceInput, opts ...request.Option) (*mediapackagevod.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediapackagevod.TagResourceInput, opts ...request.Option) (*mediapackagevod.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *mediapackagevod.UntagResourceInput, opts ...request.Option) (*mediapackagevod.UntagResourceOutput, error)
+	UpdatePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.UpdatePackagingGroupInput, opts ...request.Option) (*mediapackagevod.UpdatePackagingGroupOutput, error)
 }
 
 type Client struct {
@@ -419,4 +420,25 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediapacka
 	})
 
 	return req.Output.(*mediapackagevod.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdatePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.UpdatePackagingGroupInput, opts ...request.Option) (*mediapackagevod.UpdatePackagingGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "UpdatePackagingGroup",
+		Input:   input,
+		Output:  (*mediapackagevod.UpdatePackagingGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageVodAPI.UpdatePackagingGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackagevod.UpdatePackagingGroupOutput), req.Error
 }
