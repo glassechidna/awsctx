@@ -13,6 +13,7 @@ import (
 type ElasticBeanstalk interface {
 	AbortEnvironmentUpdateWithContext(ctx context.Context, input *elasticbeanstalk.AbortEnvironmentUpdateInput, opts ...request.Option) (*elasticbeanstalk.AbortEnvironmentUpdateOutput, error)
 	ApplyEnvironmentManagedActionWithContext(ctx context.Context, input *elasticbeanstalk.ApplyEnvironmentManagedActionInput, opts ...request.Option) (*elasticbeanstalk.ApplyEnvironmentManagedActionOutput, error)
+	AssociateEnvironmentOperationsRoleWithContext(ctx context.Context, input *elasticbeanstalk.AssociateEnvironmentOperationsRoleInput, opts ...request.Option) (*elasticbeanstalk.AssociateEnvironmentOperationsRoleOutput, error)
 	CheckDNSAvailabilityWithContext(ctx context.Context, input *elasticbeanstalk.CheckDNSAvailabilityInput, opts ...request.Option) (*elasticbeanstalk.CheckDNSAvailabilityOutput, error)
 	ComposeEnvironmentsWithContext(ctx context.Context, input *elasticbeanstalk.ComposeEnvironmentsInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescriptionsMessage, error)
 	CreateApplicationWithContext(ctx context.Context, input *elasticbeanstalk.CreateApplicationInput, opts ...request.Option) (*elasticbeanstalk.ApplicationDescriptionMessage, error)
@@ -40,6 +41,7 @@ type ElasticBeanstalk interface {
 	DescribeEventsPagesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEventsInput, cb func(*elasticbeanstalk.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancesHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeInstancesHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeInstancesHealthOutput, error)
 	DescribePlatformVersionWithContext(ctx context.Context, input *elasticbeanstalk.DescribePlatformVersionInput, opts ...request.Option) (*elasticbeanstalk.DescribePlatformVersionOutput, error)
+	DisassociateEnvironmentOperationsRoleWithContext(ctx context.Context, input *elasticbeanstalk.DisassociateEnvironmentOperationsRoleInput, opts ...request.Option) (*elasticbeanstalk.DisassociateEnvironmentOperationsRoleOutput, error)
 	ListAvailableSolutionStacksWithContext(ctx context.Context, input *elasticbeanstalk.ListAvailableSolutionStacksInput, opts ...request.Option) (*elasticbeanstalk.ListAvailableSolutionStacksOutput, error)
 	ListPlatformBranchesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformBranchesOutput, error)
 	ListPlatformBranchesPagesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, cb func(*elasticbeanstalk.ListPlatformBranchesOutput, bool) bool, opts ...request.Option) error
@@ -115,6 +117,27 @@ func (c *Client) ApplyEnvironmentManagedActionWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*elasticbeanstalk.ApplyEnvironmentManagedActionOutput), req.Error
+}
+
+func (c *Client) AssociateEnvironmentOperationsRoleWithContext(ctx context.Context, input *elasticbeanstalk.AssociateEnvironmentOperationsRoleInput, opts ...request.Option) (*elasticbeanstalk.AssociateEnvironmentOperationsRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "AssociateEnvironmentOperationsRole",
+		Input:   input,
+		Output:  (*elasticbeanstalk.AssociateEnvironmentOperationsRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticBeanstalkAPI.AssociateEnvironmentOperationsRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticbeanstalk.AssociateEnvironmentOperationsRoleOutput), req.Error
 }
 
 func (c *Client) CheckDNSAvailabilityWithContext(ctx context.Context, input *elasticbeanstalk.CheckDNSAvailabilityInput, opts ...request.Option) (*elasticbeanstalk.CheckDNSAvailabilityOutput, error) {
@@ -681,6 +704,27 @@ func (c *Client) DescribePlatformVersionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*elasticbeanstalk.DescribePlatformVersionOutput), req.Error
+}
+
+func (c *Client) DisassociateEnvironmentOperationsRoleWithContext(ctx context.Context, input *elasticbeanstalk.DisassociateEnvironmentOperationsRoleInput, opts ...request.Option) (*elasticbeanstalk.DisassociateEnvironmentOperationsRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "DisassociateEnvironmentOperationsRole",
+		Input:   input,
+		Output:  (*elasticbeanstalk.DisassociateEnvironmentOperationsRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticBeanstalkAPI.DisassociateEnvironmentOperationsRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticbeanstalk.DisassociateEnvironmentOperationsRoleOutput), req.Error
 }
 
 func (c *Client) ListAvailableSolutionStacksWithContext(ctx context.Context, input *elasticbeanstalk.ListAvailableSolutionStacksInput, opts ...request.Option) (*elasticbeanstalk.ListAvailableSolutionStacksOutput, error) {
