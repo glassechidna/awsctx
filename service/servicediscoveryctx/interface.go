@@ -33,7 +33,10 @@ type ServiceDiscovery interface {
 	ListOperationsPagesWithContext(ctx context.Context, input *servicediscovery.ListOperationsInput, cb func(*servicediscovery.ListOperationsOutput, bool) bool, opts ...request.Option) error
 	ListServicesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, opts ...request.Option) (*servicediscovery.ListServicesOutput, error)
 	ListServicesPagesWithContext(ctx context.Context, input *servicediscovery.ListServicesInput, cb func(*servicediscovery.ListServicesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *servicediscovery.ListTagsForResourceInput, opts ...request.Option) (*servicediscovery.ListTagsForResourceOutput, error)
 	RegisterInstanceWithContext(ctx context.Context, input *servicediscovery.RegisterInstanceInput, opts ...request.Option) (*servicediscovery.RegisterInstanceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *servicediscovery.TagResourceInput, opts ...request.Option) (*servicediscovery.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *servicediscovery.UntagResourceInput, opts ...request.Option) (*servicediscovery.UntagResourceOutput, error)
 	UpdateInstanceCustomHealthStatusWithContext(ctx context.Context, input *servicediscovery.UpdateInstanceCustomHealthStatusInput, opts ...request.Option) (*servicediscovery.UpdateInstanceCustomHealthStatusOutput, error)
 	UpdateServiceWithContext(ctx context.Context, input *servicediscovery.UpdateServiceInput, opts ...request.Option) (*servicediscovery.UpdateServiceOutput, error)
 }
@@ -510,6 +513,27 @@ func (c *Client) ListServicesPagesWithContext(ctx context.Context, input *servic
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *servicediscovery.ListTagsForResourceInput, opts ...request.Option) (*servicediscovery.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*servicediscovery.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *servicediscovery.RegisterInstanceInput, opts ...request.Option) (*servicediscovery.RegisterInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
@@ -529,6 +553,48 @@ func (c *Client) RegisterInstanceWithContext(ctx context.Context, input *service
 	})
 
 	return req.Output.(*servicediscovery.RegisterInstanceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *servicediscovery.TagResourceInput, opts ...request.Option) (*servicediscovery.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*servicediscovery.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *servicediscovery.UntagResourceInput, opts ...request.Option) (*servicediscovery.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*servicediscovery.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateInstanceCustomHealthStatusWithContext(ctx context.Context, input *servicediscovery.UpdateInstanceCustomHealthStatusInput, opts ...request.Option) (*servicediscovery.UpdateInstanceCustomHealthStatusOutput, error) {

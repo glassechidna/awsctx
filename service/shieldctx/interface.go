@@ -14,6 +14,7 @@ type Shield interface {
 	AssociateDRTLogBucketWithContext(ctx context.Context, input *shield.AssociateDRTLogBucketInput, opts ...request.Option) (*shield.AssociateDRTLogBucketOutput, error)
 	AssociateDRTRoleWithContext(ctx context.Context, input *shield.AssociateDRTRoleInput, opts ...request.Option) (*shield.AssociateDRTRoleOutput, error)
 	AssociateHealthCheckWithContext(ctx context.Context, input *shield.AssociateHealthCheckInput, opts ...request.Option) (*shield.AssociateHealthCheckOutput, error)
+	AssociateProactiveEngagementDetailsWithContext(ctx context.Context, input *shield.AssociateProactiveEngagementDetailsInput, opts ...request.Option) (*shield.AssociateProactiveEngagementDetailsOutput, error)
 	CreateProtectionWithContext(ctx context.Context, input *shield.CreateProtectionInput, opts ...request.Option) (*shield.CreateProtectionOutput, error)
 	CreateSubscriptionWithContext(ctx context.Context, input *shield.CreateSubscriptionInput, opts ...request.Option) (*shield.CreateSubscriptionOutput, error)
 	DeleteProtectionWithContext(ctx context.Context, input *shield.DeleteProtectionInput, opts ...request.Option) (*shield.DeleteProtectionOutput, error)
@@ -23,12 +24,16 @@ type Shield interface {
 	DescribeEmergencyContactSettingsWithContext(ctx context.Context, input *shield.DescribeEmergencyContactSettingsInput, opts ...request.Option) (*shield.DescribeEmergencyContactSettingsOutput, error)
 	DescribeProtectionWithContext(ctx context.Context, input *shield.DescribeProtectionInput, opts ...request.Option) (*shield.DescribeProtectionOutput, error)
 	DescribeSubscriptionWithContext(ctx context.Context, input *shield.DescribeSubscriptionInput, opts ...request.Option) (*shield.DescribeSubscriptionOutput, error)
+	DisableProactiveEngagementWithContext(ctx context.Context, input *shield.DisableProactiveEngagementInput, opts ...request.Option) (*shield.DisableProactiveEngagementOutput, error)
 	DisassociateDRTLogBucketWithContext(ctx context.Context, input *shield.DisassociateDRTLogBucketInput, opts ...request.Option) (*shield.DisassociateDRTLogBucketOutput, error)
 	DisassociateDRTRoleWithContext(ctx context.Context, input *shield.DisassociateDRTRoleInput, opts ...request.Option) (*shield.DisassociateDRTRoleOutput, error)
 	DisassociateHealthCheckWithContext(ctx context.Context, input *shield.DisassociateHealthCheckInput, opts ...request.Option) (*shield.DisassociateHealthCheckOutput, error)
+	EnableProactiveEngagementWithContext(ctx context.Context, input *shield.EnableProactiveEngagementInput, opts ...request.Option) (*shield.EnableProactiveEngagementOutput, error)
 	GetSubscriptionStateWithContext(ctx context.Context, input *shield.GetSubscriptionStateInput, opts ...request.Option) (*shield.GetSubscriptionStateOutput, error)
 	ListAttacksWithContext(ctx context.Context, input *shield.ListAttacksInput, opts ...request.Option) (*shield.ListAttacksOutput, error)
+	ListAttacksPagesWithContext(ctx context.Context, input *shield.ListAttacksInput, cb func(*shield.ListAttacksOutput, bool) bool, opts ...request.Option) error
 	ListProtectionsWithContext(ctx context.Context, input *shield.ListProtectionsInput, opts ...request.Option) (*shield.ListProtectionsOutput, error)
+	ListProtectionsPagesWithContext(ctx context.Context, input *shield.ListProtectionsInput, cb func(*shield.ListProtectionsOutput, bool) bool, opts ...request.Option) error
 	UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error)
 	UpdateSubscriptionWithContext(ctx context.Context, input *shield.UpdateSubscriptionInput, opts ...request.Option) (*shield.UpdateSubscriptionOutput, error)
 }
@@ -109,6 +114,27 @@ func (c *Client) AssociateHealthCheckWithContext(ctx context.Context, input *shi
 	})
 
 	return req.Output.(*shield.AssociateHealthCheckOutput), req.Error
+}
+
+func (c *Client) AssociateProactiveEngagementDetailsWithContext(ctx context.Context, input *shield.AssociateProactiveEngagementDetailsInput, opts ...request.Option) (*shield.AssociateProactiveEngagementDetailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "AssociateProactiveEngagementDetails",
+		Input:   input,
+		Output:  (*shield.AssociateProactiveEngagementDetailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.AssociateProactiveEngagementDetailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.AssociateProactiveEngagementDetailsOutput), req.Error
 }
 
 func (c *Client) CreateProtectionWithContext(ctx context.Context, input *shield.CreateProtectionInput, opts ...request.Option) (*shield.CreateProtectionOutput, error) {
@@ -300,6 +326,27 @@ func (c *Client) DescribeSubscriptionWithContext(ctx context.Context, input *shi
 	return req.Output.(*shield.DescribeSubscriptionOutput), req.Error
 }
 
+func (c *Client) DisableProactiveEngagementWithContext(ctx context.Context, input *shield.DisableProactiveEngagementInput, opts ...request.Option) (*shield.DisableProactiveEngagementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "DisableProactiveEngagement",
+		Input:   input,
+		Output:  (*shield.DisableProactiveEngagementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.DisableProactiveEngagementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.DisableProactiveEngagementOutput), req.Error
+}
+
 func (c *Client) DisassociateDRTLogBucketWithContext(ctx context.Context, input *shield.DisassociateDRTLogBucketInput, opts ...request.Option) (*shield.DisassociateDRTLogBucketOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
@@ -363,6 +410,27 @@ func (c *Client) DisassociateHealthCheckWithContext(ctx context.Context, input *
 	return req.Output.(*shield.DisassociateHealthCheckOutput), req.Error
 }
 
+func (c *Client) EnableProactiveEngagementWithContext(ctx context.Context, input *shield.EnableProactiveEngagementInput, opts ...request.Option) (*shield.EnableProactiveEngagementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "EnableProactiveEngagement",
+		Input:   input,
+		Output:  (*shield.EnableProactiveEngagementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.EnableProactiveEngagementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.EnableProactiveEngagementOutput), req.Error
+}
+
 func (c *Client) GetSubscriptionStateWithContext(ctx context.Context, input *shield.GetSubscriptionStateInput, opts ...request.Option) (*shield.GetSubscriptionStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
@@ -405,6 +473,26 @@ func (c *Client) ListAttacksWithContext(ctx context.Context, input *shield.ListA
 	return req.Output.(*shield.ListAttacksOutput), req.Error
 }
 
+func (c *Client) ListAttacksPagesWithContext(ctx context.Context, input *shield.ListAttacksInput, cb func(*shield.ListAttacksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "ListAttacks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ShieldAPI.ListAttacksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProtectionsWithContext(ctx context.Context, input *shield.ListProtectionsInput, opts ...request.Option) (*shield.ListProtectionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
@@ -424,6 +512,26 @@ func (c *Client) ListProtectionsWithContext(ctx context.Context, input *shield.L
 	})
 
 	return req.Output.(*shield.ListProtectionsOutput), req.Error
+}
+
+func (c *Client) ListProtectionsPagesWithContext(ctx context.Context, input *shield.ListProtectionsInput, cb func(*shield.ListProtectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "ListProtections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ShieldAPI.ListProtectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error) {
