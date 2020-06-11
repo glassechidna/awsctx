@@ -13,6 +13,7 @@ import (
 type IoTDataPlane interface {
 	DeleteThingShadowWithContext(ctx context.Context, input *iotdataplane.DeleteThingShadowInput, opts ...request.Option) (*iotdataplane.DeleteThingShadowOutput, error)
 	GetThingShadowWithContext(ctx context.Context, input *iotdataplane.GetThingShadowInput, opts ...request.Option) (*iotdataplane.GetThingShadowOutput, error)
+	ListNamedShadowsForThingWithContext(ctx context.Context, input *iotdataplane.ListNamedShadowsForThingInput, opts ...request.Option) (*iotdataplane.ListNamedShadowsForThingOutput, error)
 	PublishWithContext(ctx context.Context, input *iotdataplane.PublishInput, opts ...request.Option) (*iotdataplane.PublishOutput, error)
 	UpdateThingShadowWithContext(ctx context.Context, input *iotdataplane.UpdateThingShadowInput, opts ...request.Option) (*iotdataplane.UpdateThingShadowOutput, error)
 }
@@ -72,6 +73,27 @@ func (c *Client) GetThingShadowWithContext(ctx context.Context, input *iotdatapl
 	})
 
 	return req.Output.(*iotdataplane.GetThingShadowOutput), req.Error
+}
+
+func (c *Client) ListNamedShadowsForThingWithContext(ctx context.Context, input *iotdataplane.ListNamedShadowsForThingInput, opts ...request.Option) (*iotdataplane.ListNamedShadowsForThingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotdataplane",
+		Action:  "ListNamedShadowsForThing",
+		Input:   input,
+		Output:  (*iotdataplane.ListNamedShadowsForThingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTDataPlaneAPI.ListNamedShadowsForThingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotdataplane.ListNamedShadowsForThingOutput), req.Error
 }
 
 func (c *Client) PublishWithContext(ctx context.Context, input *iotdataplane.PublishInput, opts ...request.Option) (*iotdataplane.PublishOutput, error) {

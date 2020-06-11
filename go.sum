@@ -304,6 +304,8 @@ github.com/aws/aws-sdk-go v1.31.14 h1:uRC2riabEXPMHl1CDylsfCod5DKjiOSXhYvxg/Eb9V
 github.com/aws/aws-sdk-go v1.31.14/go.mod h1:5zCpMtNQVjRREroY7sYe8lOMRSxkhG6MZveU8YkpAk0=
 github.com/aws/aws-sdk-go v1.31.15 h1:1Ahi6nvJLg5cjO5i3U7BWh91/zOw//tqOTLpLnIeyss=
 github.com/aws/aws-sdk-go v1.31.15/go.mod h1:5zCpMtNQVjRREroY7sYe8lOMRSxkhG6MZveU8YkpAk0=
+github.com/aws/aws-sdk-go v1.32.0 h1:P38SNbJIasEcA9gAlz/AG309VvhNv2CfNIJXQ61Oh6I=
+github.com/aws/aws-sdk-go v1.32.0/go.mod h1:5zCpMtNQVjRREroY7sYe8lOMRSxkhG6MZveU8YkpAk0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

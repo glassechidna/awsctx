@@ -17,6 +17,7 @@ type ECS interface {
 	CreateTaskSetWithContext(ctx context.Context, input *ecs.CreateTaskSetInput, opts ...request.Option) (*ecs.CreateTaskSetOutput, error)
 	DeleteAccountSettingWithContext(ctx context.Context, input *ecs.DeleteAccountSettingInput, opts ...request.Option) (*ecs.DeleteAccountSettingOutput, error)
 	DeleteAttributesWithContext(ctx context.Context, input *ecs.DeleteAttributesInput, opts ...request.Option) (*ecs.DeleteAttributesOutput, error)
+	DeleteCapacityProviderWithContext(ctx context.Context, input *ecs.DeleteCapacityProviderInput, opts ...request.Option) (*ecs.DeleteCapacityProviderOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *ecs.DeleteClusterInput, opts ...request.Option) (*ecs.DeleteClusterOutput, error)
 	DeleteServiceWithContext(ctx context.Context, input *ecs.DeleteServiceInput, opts ...request.Option) (*ecs.DeleteServiceOutput, error)
 	DeleteTaskSetWithContext(ctx context.Context, input *ecs.DeleteTaskSetInput, opts ...request.Option) (*ecs.DeleteTaskSetOutput, error)
@@ -208,6 +209,27 @@ func (c *Client) DeleteAttributesWithContext(ctx context.Context, input *ecs.Del
 	})
 
 	return req.Output.(*ecs.DeleteAttributesOutput), req.Error
+}
+
+func (c *Client) DeleteCapacityProviderWithContext(ctx context.Context, input *ecs.DeleteCapacityProviderInput, opts ...request.Option) (*ecs.DeleteCapacityProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "DeleteCapacityProvider",
+		Input:   input,
+		Output:  (*ecs.DeleteCapacityProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.DeleteCapacityProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.DeleteCapacityProviderOutput), req.Error
 }
 
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *ecs.DeleteClusterInput, opts ...request.Option) (*ecs.DeleteClusterOutput, error) {
