@@ -26,6 +26,7 @@ type Chime interface {
 	CreateAttendeeWithContext(ctx context.Context, input *chime.CreateAttendeeInput, opts ...request.Option) (*chime.CreateAttendeeOutput, error)
 	CreateBotWithContext(ctx context.Context, input *chime.CreateBotInput, opts ...request.Option) (*chime.CreateBotOutput, error)
 	CreateMeetingWithContext(ctx context.Context, input *chime.CreateMeetingInput, opts ...request.Option) (*chime.CreateMeetingOutput, error)
+	CreateMeetingWithAttendeesWithContext(ctx context.Context, input *chime.CreateMeetingWithAttendeesInput, opts ...request.Option) (*chime.CreateMeetingWithAttendeesOutput, error)
 	CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error)
 	CreateProxySessionWithContext(ctx context.Context, input *chime.CreateProxySessionInput, opts ...request.Option) (*chime.CreateProxySessionOutput, error)
 	CreateRoomWithContext(ctx context.Context, input *chime.CreateRoomInput, opts ...request.Option) (*chime.CreateRoomOutput, error)
@@ -468,6 +469,27 @@ func (c *Client) CreateMeetingWithContext(ctx context.Context, input *chime.Crea
 	})
 
 	return req.Output.(*chime.CreateMeetingOutput), req.Error
+}
+
+func (c *Client) CreateMeetingWithAttendeesWithContext(ctx context.Context, input *chime.CreateMeetingWithAttendeesInput, opts ...request.Option) (*chime.CreateMeetingWithAttendeesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateMeetingWithAttendees",
+		Input:   input,
+		Output:  (*chime.CreateMeetingWithAttendeesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateMeetingWithAttendeesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateMeetingWithAttendeesOutput), req.Error
 }
 
 func (c *Client) CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error) {
