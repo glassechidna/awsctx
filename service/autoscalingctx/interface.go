@@ -16,6 +16,7 @@ type AutoScaling interface {
 	AttachLoadBalancersWithContext(ctx context.Context, input *autoscaling.AttachLoadBalancersInput, opts ...request.Option) (*autoscaling.AttachLoadBalancersOutput, error)
 	BatchDeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.BatchDeleteScheduledActionInput, opts ...request.Option) (*autoscaling.BatchDeleteScheduledActionOutput, error)
 	BatchPutScheduledUpdateGroupActionWithContext(ctx context.Context, input *autoscaling.BatchPutScheduledUpdateGroupActionInput, opts ...request.Option) (*autoscaling.BatchPutScheduledUpdateGroupActionOutput, error)
+	CancelInstanceRefreshWithContext(ctx context.Context, input *autoscaling.CancelInstanceRefreshInput, opts ...request.Option) (*autoscaling.CancelInstanceRefreshOutput, error)
 	CompleteLifecycleActionWithContext(ctx context.Context, input *autoscaling.CompleteLifecycleActionInput, opts ...request.Option) (*autoscaling.CompleteLifecycleActionOutput, error)
 	CreateAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.CreateAutoScalingGroupInput, opts ...request.Option) (*autoscaling.CreateAutoScalingGroupOutput, error)
 	CreateLaunchConfigurationWithContext(ctx context.Context, input *autoscaling.CreateLaunchConfigurationInput, opts ...request.Option) (*autoscaling.CreateLaunchConfigurationOutput, error)
@@ -34,6 +35,7 @@ type AutoScaling interface {
 	DescribeAutoScalingInstancesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingInstancesOutput, error)
 	DescribeAutoScalingInstancesPagesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, cb func(*autoscaling.DescribeAutoScalingInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeAutoScalingNotificationTypesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingNotificationTypesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingNotificationTypesOutput, error)
+	DescribeInstanceRefreshesWithContext(ctx context.Context, input *autoscaling.DescribeInstanceRefreshesInput, opts ...request.Option) (*autoscaling.DescribeInstanceRefreshesOutput, error)
 	DescribeLaunchConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeLaunchConfigurationsOutput, error)
 	DescribeLaunchConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, cb func(*autoscaling.DescribeLaunchConfigurationsOutput, bool) bool, opts ...request.Option) error
 	DescribeLifecycleHookTypesWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHookTypesInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHookTypesOutput, error)
@@ -70,6 +72,7 @@ type AutoScaling interface {
 	SetDesiredCapacityWithContext(ctx context.Context, input *autoscaling.SetDesiredCapacityInput, opts ...request.Option) (*autoscaling.SetDesiredCapacityOutput, error)
 	SetInstanceHealthWithContext(ctx context.Context, input *autoscaling.SetInstanceHealthInput, opts ...request.Option) (*autoscaling.SetInstanceHealthOutput, error)
 	SetInstanceProtectionWithContext(ctx context.Context, input *autoscaling.SetInstanceProtectionInput, opts ...request.Option) (*autoscaling.SetInstanceProtectionOutput, error)
+	StartInstanceRefreshWithContext(ctx context.Context, input *autoscaling.StartInstanceRefreshInput, opts ...request.Option) (*autoscaling.StartInstanceRefreshOutput, error)
 	SuspendProcessesWithContext(ctx context.Context, input *autoscaling.ScalingProcessQuery, opts ...request.Option) (*autoscaling.SuspendProcessesOutput, error)
 	TerminateInstanceInAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.TerminateInstanceInAutoScalingGroupInput, opts ...request.Option) (*autoscaling.TerminateInstanceInAutoScalingGroupOutput, error)
 	UpdateAutoScalingGroupWithContext(ctx context.Context, input *autoscaling.UpdateAutoScalingGroupInput, opts ...request.Option) (*autoscaling.UpdateAutoScalingGroupOutput, error)
@@ -193,6 +196,27 @@ func (c *Client) BatchPutScheduledUpdateGroupActionWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*autoscaling.BatchPutScheduledUpdateGroupActionOutput), req.Error
+}
+
+func (c *Client) CancelInstanceRefreshWithContext(ctx context.Context, input *autoscaling.CancelInstanceRefreshInput, opts ...request.Option) (*autoscaling.CancelInstanceRefreshOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "CancelInstanceRefresh",
+		Input:   input,
+		Output:  (*autoscaling.CancelInstanceRefreshOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.CancelInstanceRefreshWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.CancelInstanceRefreshOutput), req.Error
 }
 
 func (c *Client) CompleteLifecycleActionWithContext(ctx context.Context, input *autoscaling.CompleteLifecycleActionInput, opts ...request.Option) (*autoscaling.CompleteLifecycleActionOutput, error) {
@@ -569,6 +593,27 @@ func (c *Client) DescribeAutoScalingNotificationTypesWithContext(ctx context.Con
 	})
 
 	return req.Output.(*autoscaling.DescribeAutoScalingNotificationTypesOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceRefreshesWithContext(ctx context.Context, input *autoscaling.DescribeInstanceRefreshesInput, opts ...request.Option) (*autoscaling.DescribeInstanceRefreshesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeInstanceRefreshes",
+		Input:   input,
+		Output:  (*autoscaling.DescribeInstanceRefreshesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.DescribeInstanceRefreshesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.DescribeInstanceRefreshesOutput), req.Error
 }
 
 func (c *Client) DescribeLaunchConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeLaunchConfigurationsOutput, error) {
@@ -1319,6 +1364,27 @@ func (c *Client) SetInstanceProtectionWithContext(ctx context.Context, input *au
 	})
 
 	return req.Output.(*autoscaling.SetInstanceProtectionOutput), req.Error
+}
+
+func (c *Client) StartInstanceRefreshWithContext(ctx context.Context, input *autoscaling.StartInstanceRefreshInput, opts ...request.Option) (*autoscaling.StartInstanceRefreshOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "StartInstanceRefresh",
+		Input:   input,
+		Output:  (*autoscaling.StartInstanceRefreshOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.StartInstanceRefreshWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.StartInstanceRefreshOutput), req.Error
 }
 
 func (c *Client) SuspendProcessesWithContext(ctx context.Context, input *autoscaling.ScalingProcessQuery, opts ...request.Option) (*autoscaling.SuspendProcessesOutput, error) {
