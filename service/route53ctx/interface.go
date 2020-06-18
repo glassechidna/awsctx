@@ -53,6 +53,7 @@ type Route53 interface {
 	ListHostedZonesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, opts ...request.Option) (*route53.ListHostedZonesOutput, error)
 	ListHostedZonesPagesWithContext(ctx context.Context, input *route53.ListHostedZonesInput, cb func(*route53.ListHostedZonesOutput, bool) bool, opts ...request.Option) error
 	ListHostedZonesByNameWithContext(ctx context.Context, input *route53.ListHostedZonesByNameInput, opts ...request.Option) (*route53.ListHostedZonesByNameOutput, error)
+	ListHostedZonesByVPCWithContext(ctx context.Context, input *route53.ListHostedZonesByVPCInput, opts ...request.Option) (*route53.ListHostedZonesByVPCOutput, error)
 	ListQueryLoggingConfigsWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, opts ...request.Option) (*route53.ListQueryLoggingConfigsOutput, error)
 	ListQueryLoggingConfigsPagesWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, cb func(*route53.ListQueryLoggingConfigsOutput, bool) bool, opts ...request.Option) error
 	ListResourceRecordSetsWithContext(ctx context.Context, input *route53.ListResourceRecordSetsInput, opts ...request.Option) (*route53.ListResourceRecordSetsOutput, error)
@@ -966,6 +967,27 @@ func (c *Client) ListHostedZonesByNameWithContext(ctx context.Context, input *ro
 	})
 
 	return req.Output.(*route53.ListHostedZonesByNameOutput), req.Error
+}
+
+func (c *Client) ListHostedZonesByVPCWithContext(ctx context.Context, input *route53.ListHostedZonesByVPCInput, opts ...request.Option) (*route53.ListHostedZonesByVPCOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListHostedZonesByVPC",
+		Input:   input,
+		Output:  (*route53.ListHostedZonesByVPCOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.ListHostedZonesByVPCWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.ListHostedZonesByVPCOutput), req.Error
 }
 
 func (c *Client) ListQueryLoggingConfigsWithContext(ctx context.Context, input *route53.ListQueryLoggingConfigsInput, opts ...request.Option) (*route53.ListQueryLoggingConfigsOutput, error) {
