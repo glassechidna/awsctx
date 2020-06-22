@@ -21,8 +21,10 @@ type SQS interface {
 	GetQueueAttributesWithContext(ctx context.Context, input *sqs.GetQueueAttributesInput, opts ...request.Option) (*sqs.GetQueueAttributesOutput, error)
 	GetQueueUrlWithContext(ctx context.Context, input *sqs.GetQueueUrlInput, opts ...request.Option) (*sqs.GetQueueUrlOutput, error)
 	ListDeadLetterSourceQueuesWithContext(ctx context.Context, input *sqs.ListDeadLetterSourceQueuesInput, opts ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error)
+	ListDeadLetterSourceQueuesPagesWithContext(ctx context.Context, input *sqs.ListDeadLetterSourceQueuesInput, cb func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, opts ...request.Option) error
 	ListQueueTagsWithContext(ctx context.Context, input *sqs.ListQueueTagsInput, opts ...request.Option) (*sqs.ListQueueTagsOutput, error)
 	ListQueuesWithContext(ctx context.Context, input *sqs.ListQueuesInput, opts ...request.Option) (*sqs.ListQueuesOutput, error)
+	ListQueuesPagesWithContext(ctx context.Context, input *sqs.ListQueuesInput, cb func(*sqs.ListQueuesOutput, bool) bool, opts ...request.Option) error
 	PurgeQueueWithContext(ctx context.Context, input *sqs.PurgeQueueInput, opts ...request.Option) (*sqs.PurgeQueueOutput, error)
 	ReceiveMessageWithContext(ctx context.Context, input *sqs.ReceiveMessageInput, opts ...request.Option) (*sqs.ReceiveMessageOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *sqs.RemovePermissionInput, opts ...request.Option) (*sqs.RemovePermissionOutput, error)
@@ -258,6 +260,26 @@ func (c *Client) ListDeadLetterSourceQueuesWithContext(ctx context.Context, inpu
 	return req.Output.(*sqs.ListDeadLetterSourceQueuesOutput), req.Error
 }
 
+func (c *Client) ListDeadLetterSourceQueuesPagesWithContext(ctx context.Context, input *sqs.ListDeadLetterSourceQueuesInput, cb func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sqs",
+		Action:  "ListDeadLetterSourceQueues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SQSAPI.ListDeadLetterSourceQueuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListQueueTagsWithContext(ctx context.Context, input *sqs.ListQueueTagsInput, opts ...request.Option) (*sqs.ListQueueTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
@@ -298,6 +320,26 @@ func (c *Client) ListQueuesWithContext(ctx context.Context, input *sqs.ListQueue
 	})
 
 	return req.Output.(*sqs.ListQueuesOutput), req.Error
+}
+
+func (c *Client) ListQueuesPagesWithContext(ctx context.Context, input *sqs.ListQueuesInput, cb func(*sqs.ListQueuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sqs",
+		Action:  "ListQueues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SQSAPI.ListQueuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PurgeQueueWithContext(ctx context.Context, input *sqs.PurgeQueueInput, opts ...request.Option) (*sqs.PurgeQueueOutput, error) {

@@ -58,14 +58,20 @@ type RDS interface {
 	DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error)
 	DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error)
+	DescribeCertificatesPagesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, cb func(*rds.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeCustomAvailabilityZonesWithContext(ctx context.Context, input *rds.DescribeCustomAvailabilityZonesInput, opts ...request.Option) (*rds.DescribeCustomAvailabilityZonesOutput, error)
 	DescribeCustomAvailabilityZonesPagesWithContext(ctx context.Context, input *rds.DescribeCustomAvailabilityZonesInput, cb func(*rds.DescribeCustomAvailabilityZonesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error)
+	DescribeDBClusterBacktracksPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, cb func(*rds.DescribeDBClusterBacktracksOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterEndpointsWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, opts ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error)
+	DescribeDBClusterEndpointsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, cb func(*rds.DescribeDBClusterEndpointsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *rds.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*rds.DescribeDBClusterParameterGroupsOutput, error)
+	DescribeDBClusterParameterGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterParameterGroupsInput, cb func(*rds.DescribeDBClusterParameterGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParametersWithContext(ctx context.Context, input *rds.DescribeDBClusterParametersInput, opts ...request.Option) (*rds.DescribeDBClusterParametersOutput, error)
+	DescribeDBClusterParametersPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterParametersInput, cb func(*rds.DescribeDBClusterParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*rds.DescribeDBClusterSnapshotAttributesOutput, error)
 	DescribeDBClusterSnapshotsWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotsInput, opts ...request.Option) (*rds.DescribeDBClusterSnapshotsOutput, error)
+	DescribeDBClusterSnapshotsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotsInput, cb func(*rds.DescribeDBClusterSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClustersWithContext(ctx context.Context, input *rds.DescribeDBClustersInput, opts ...request.Option) (*rds.DescribeDBClustersOutput, error)
 	DescribeDBClustersPagesWithContext(ctx context.Context, input *rds.DescribeDBClustersInput, cb func(*rds.DescribeDBClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeDBEngineVersionsWithContext(ctx context.Context, input *rds.DescribeDBEngineVersionsInput, opts ...request.Option) (*rds.DescribeDBEngineVersionsOutput, error)
@@ -114,11 +120,13 @@ type RDS interface {
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *rds.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*rds.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *rds.DescribeOrderableDBInstanceOptionsInput, cb func(*rds.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *rds.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*rds.DescribePendingMaintenanceActionsOutput, error)
+	DescribePendingMaintenanceActionsPagesWithContext(ctx context.Context, input *rds.DescribePendingMaintenanceActionsInput, cb func(*rds.DescribePendingMaintenanceActionsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedDBInstancesWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesInput, opts ...request.Option) (*rds.DescribeReservedDBInstancesOutput, error)
 	DescribeReservedDBInstancesPagesWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesInput, cb func(*rds.DescribeReservedDBInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedDBInstancesOfferingsWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesOfferingsInput, opts ...request.Option) (*rds.DescribeReservedDBInstancesOfferingsOutput, error)
 	DescribeReservedDBInstancesOfferingsPagesWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesOfferingsInput, cb func(*rds.DescribeReservedDBInstancesOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeSourceRegionsWithContext(ctx context.Context, input *rds.DescribeSourceRegionsInput, opts ...request.Option) (*rds.DescribeSourceRegionsOutput, error)
+	DescribeSourceRegionsPagesWithContext(ctx context.Context, input *rds.DescribeSourceRegionsInput, cb func(*rds.DescribeSourceRegionsOutput, bool) bool, opts ...request.Option) error
 	DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *rds.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error)
 	DownloadDBLogFilePortionWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, opts ...request.Option) (*rds.DownloadDBLogFilePortionOutput, error)
 	DownloadDBLogFilePortionPagesWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, cb func(*rds.DownloadDBLogFilePortionOutput, bool) bool, opts ...request.Option) error
@@ -1171,6 +1179,26 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *rds
 	return req.Output.(*rds.DescribeCertificatesOutput), req.Error
 }
 
+func (c *Client) DescribeCertificatesPagesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, cb func(*rds.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCustomAvailabilityZonesWithContext(ctx context.Context, input *rds.DescribeCustomAvailabilityZonesInput, opts ...request.Option) (*rds.DescribeCustomAvailabilityZonesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1233,6 +1261,26 @@ func (c *Client) DescribeDBClusterBacktracksWithContext(ctx context.Context, inp
 	return req.Output.(*rds.DescribeDBClusterBacktracksOutput), req.Error
 }
 
+func (c *Client) DescribeDBClusterBacktracksPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, cb func(*rds.DescribeDBClusterBacktracksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterBacktracks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBClusterBacktracksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, opts ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1252,6 +1300,26 @@ func (c *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*rds.DescribeDBClusterEndpointsOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterEndpointsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, cb func(*rds.DescribeDBClusterEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBClusterEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *rds.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*rds.DescribeDBClusterParameterGroupsOutput, error) {
@@ -1275,6 +1343,26 @@ func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context
 	return req.Output.(*rds.DescribeDBClusterParameterGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeDBClusterParameterGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterParameterGroupsInput, cb func(*rds.DescribeDBClusterParameterGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterParameterGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBClusterParameterGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, input *rds.DescribeDBClusterParametersInput, opts ...request.Option) (*rds.DescribeDBClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1294,6 +1382,26 @@ func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*rds.DescribeDBClusterParametersOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterParametersPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterParametersInput, cb func(*rds.DescribeDBClusterParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBClusterParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*rds.DescribeDBClusterSnapshotAttributesOutput, error) {
@@ -1336,6 +1444,26 @@ func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*rds.DescribeDBClusterSnapshotsOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterSnapshotsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterSnapshotsInput, cb func(*rds.DescribeDBClusterSnapshotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterSnapshots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBClusterSnapshotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *rds.DescribeDBClustersInput, opts ...request.Option) (*rds.DescribeDBClustersOutput, error) {
@@ -2324,6 +2452,26 @@ func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Contex
 	return req.Output.(*rds.DescribePendingMaintenanceActionsOutput), req.Error
 }
 
+func (c *Client) DescribePendingMaintenanceActionsPagesWithContext(ctx context.Context, input *rds.DescribePendingMaintenanceActionsInput, cb func(*rds.DescribePendingMaintenanceActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribePendingMaintenanceActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribePendingMaintenanceActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReservedDBInstancesWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesInput, opts ...request.Option) (*rds.DescribeReservedDBInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -2425,6 +2573,26 @@ func (c *Client) DescribeSourceRegionsWithContext(ctx context.Context, input *rd
 	})
 
 	return req.Output.(*rds.DescribeSourceRegionsOutput), req.Error
+}
+
+func (c *Client) DescribeSourceRegionsPagesWithContext(ctx context.Context, input *rds.DescribeSourceRegionsInput, cb func(*rds.DescribeSourceRegionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeSourceRegions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeSourceRegionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *rds.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error) {

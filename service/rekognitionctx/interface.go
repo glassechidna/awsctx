@@ -45,6 +45,8 @@ type Rekognition interface {
 	GetLabelDetectionPagesWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, cb func(*rekognition.GetLabelDetectionOutput, bool) bool, opts ...request.Option) error
 	GetPersonTrackingWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, opts ...request.Option) (*rekognition.GetPersonTrackingOutput, error)
 	GetPersonTrackingPagesWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, cb func(*rekognition.GetPersonTrackingOutput, bool) bool, opts ...request.Option) error
+	GetSegmentDetectionWithContext(ctx context.Context, input *rekognition.GetSegmentDetectionInput, opts ...request.Option) (*rekognition.GetSegmentDetectionOutput, error)
+	GetSegmentDetectionPagesWithContext(ctx context.Context, input *rekognition.GetSegmentDetectionInput, cb func(*rekognition.GetSegmentDetectionOutput, bool) bool, opts ...request.Option) error
 	GetTextDetectionWithContext(ctx context.Context, input *rekognition.GetTextDetectionInput, opts ...request.Option) (*rekognition.GetTextDetectionOutput, error)
 	GetTextDetectionPagesWithContext(ctx context.Context, input *rekognition.GetTextDetectionInput, cb func(*rekognition.GetTextDetectionOutput, bool) bool, opts ...request.Option) error
 	IndexFacesWithContext(ctx context.Context, input *rekognition.IndexFacesInput, opts ...request.Option) (*rekognition.IndexFacesOutput, error)
@@ -64,6 +66,7 @@ type Rekognition interface {
 	StartLabelDetectionWithContext(ctx context.Context, input *rekognition.StartLabelDetectionInput, opts ...request.Option) (*rekognition.StartLabelDetectionOutput, error)
 	StartPersonTrackingWithContext(ctx context.Context, input *rekognition.StartPersonTrackingInput, opts ...request.Option) (*rekognition.StartPersonTrackingOutput, error)
 	StartProjectVersionWithContext(ctx context.Context, input *rekognition.StartProjectVersionInput, opts ...request.Option) (*rekognition.StartProjectVersionOutput, error)
+	StartSegmentDetectionWithContext(ctx context.Context, input *rekognition.StartSegmentDetectionInput, opts ...request.Option) (*rekognition.StartSegmentDetectionOutput, error)
 	StartStreamProcessorWithContext(ctx context.Context, input *rekognition.StartStreamProcessorInput, opts ...request.Option) (*rekognition.StartStreamProcessorOutput, error)
 	StartTextDetectionWithContext(ctx context.Context, input *rekognition.StartTextDetectionInput, opts ...request.Option) (*rekognition.StartTextDetectionOutput, error)
 	StopProjectVersionWithContext(ctx context.Context, input *rekognition.StopProjectVersionInput, opts ...request.Option) (*rekognition.StopProjectVersionOutput, error)
@@ -791,6 +794,47 @@ func (c *Client) GetPersonTrackingPagesWithContext(ctx context.Context, input *r
 	return req.Error
 }
 
+func (c *Client) GetSegmentDetectionWithContext(ctx context.Context, input *rekognition.GetSegmentDetectionInput, opts ...request.Option) (*rekognition.GetSegmentDetectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetSegmentDetection",
+		Input:   input,
+		Output:  (*rekognition.GetSegmentDetectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.GetSegmentDetectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.GetSegmentDetectionOutput), req.Error
+}
+
+func (c *Client) GetSegmentDetectionPagesWithContext(ctx context.Context, input *rekognition.GetSegmentDetectionInput, cb func(*rekognition.GetSegmentDetectionOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetSegmentDetection",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.GetSegmentDetectionPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTextDetectionWithContext(ctx context.Context, input *rekognition.GetTextDetectionInput, opts ...request.Option) (*rekognition.GetTextDetectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -1184,6 +1228,27 @@ func (c *Client) StartProjectVersionWithContext(ctx context.Context, input *reko
 	})
 
 	return req.Output.(*rekognition.StartProjectVersionOutput), req.Error
+}
+
+func (c *Client) StartSegmentDetectionWithContext(ctx context.Context, input *rekognition.StartSegmentDetectionInput, opts ...request.Option) (*rekognition.StartSegmentDetectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "StartSegmentDetection",
+		Input:   input,
+		Output:  (*rekognition.StartSegmentDetectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.StartSegmentDetectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.StartSegmentDetectionOutput), req.Error
 }
 
 func (c *Client) StartStreamProcessorWithContext(ctx context.Context, input *rekognition.StartStreamProcessorInput, opts ...request.Option) (*rekognition.StartStreamProcessorOutput, error) {
