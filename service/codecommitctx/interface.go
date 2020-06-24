@@ -40,6 +40,8 @@ type CodeCommit interface {
 	GetBlobWithContext(ctx context.Context, input *codecommit.GetBlobInput, opts ...request.Option) (*codecommit.GetBlobOutput, error)
 	GetBranchWithContext(ctx context.Context, input *codecommit.GetBranchInput, opts ...request.Option) (*codecommit.GetBranchOutput, error)
 	GetCommentWithContext(ctx context.Context, input *codecommit.GetCommentInput, opts ...request.Option) (*codecommit.GetCommentOutput, error)
+	GetCommentReactionsWithContext(ctx context.Context, input *codecommit.GetCommentReactionsInput, opts ...request.Option) (*codecommit.GetCommentReactionsOutput, error)
+	GetCommentReactionsPagesWithContext(ctx context.Context, input *codecommit.GetCommentReactionsInput, cb func(*codecommit.GetCommentReactionsOutput, bool) bool, opts ...request.Option) error
 	GetCommentsForComparedCommitWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, opts ...request.Option) (*codecommit.GetCommentsForComparedCommitOutput, error)
 	GetCommentsForComparedCommitPagesWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, cb func(*codecommit.GetCommentsForComparedCommitOutput, bool) bool, opts ...request.Option) error
 	GetCommentsForPullRequestWithContext(ctx context.Context, input *codecommit.GetCommentsForPullRequestInput, opts ...request.Option) (*codecommit.GetCommentsForPullRequestOutput, error)
@@ -81,6 +83,7 @@ type CodeCommit interface {
 	PostCommentForComparedCommitWithContext(ctx context.Context, input *codecommit.PostCommentForComparedCommitInput, opts ...request.Option) (*codecommit.PostCommentForComparedCommitOutput, error)
 	PostCommentForPullRequestWithContext(ctx context.Context, input *codecommit.PostCommentForPullRequestInput, opts ...request.Option) (*codecommit.PostCommentForPullRequestOutput, error)
 	PostCommentReplyWithContext(ctx context.Context, input *codecommit.PostCommentReplyInput, opts ...request.Option) (*codecommit.PostCommentReplyOutput, error)
+	PutCommentReactionWithContext(ctx context.Context, input *codecommit.PutCommentReactionInput, opts ...request.Option) (*codecommit.PutCommentReactionOutput, error)
 	PutFileWithContext(ctx context.Context, input *codecommit.PutFileInput, opts ...request.Option) (*codecommit.PutFileOutput, error)
 	PutRepositoryTriggersWithContext(ctx context.Context, input *codecommit.PutRepositoryTriggersInput, opts ...request.Option) (*codecommit.PutRepositoryTriggersOutput, error)
 	TagResourceWithContext(ctx context.Context, input *codecommit.TagResourceInput, opts ...request.Option) (*codecommit.TagResourceOutput, error)
@@ -720,6 +723,47 @@ func (c *Client) GetCommentWithContext(ctx context.Context, input *codecommit.Ge
 	})
 
 	return req.Output.(*codecommit.GetCommentOutput), req.Error
+}
+
+func (c *Client) GetCommentReactionsWithContext(ctx context.Context, input *codecommit.GetCommentReactionsInput, opts ...request.Option) (*codecommit.GetCommentReactionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetCommentReactions",
+		Input:   input,
+		Output:  (*codecommit.GetCommentReactionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.GetCommentReactionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.GetCommentReactionsOutput), req.Error
+}
+
+func (c *Client) GetCommentReactionsPagesWithContext(ctx context.Context, input *codecommit.GetCommentReactionsInput, cb func(*codecommit.GetCommentReactionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "GetCommentReactions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.GetCommentReactionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCommentsForComparedCommitWithContext(ctx context.Context, input *codecommit.GetCommentsForComparedCommitInput, opts ...request.Option) (*codecommit.GetCommentsForComparedCommitOutput, error) {
@@ -1571,6 +1615,27 @@ func (c *Client) PostCommentReplyWithContext(ctx context.Context, input *codecom
 	})
 
 	return req.Output.(*codecommit.PostCommentReplyOutput), req.Error
+}
+
+func (c *Client) PutCommentReactionWithContext(ctx context.Context, input *codecommit.PutCommentReactionInput, opts ...request.Option) (*codecommit.PutCommentReactionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "PutCommentReaction",
+		Input:   input,
+		Output:  (*codecommit.PutCommentReactionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.PutCommentReactionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.PutCommentReactionOutput), req.Error
 }
 
 func (c *Client) PutFileWithContext(ctx context.Context, input *codecommit.PutFileInput, opts ...request.Option) (*codecommit.PutFileOutput, error) {
