@@ -39,6 +39,8 @@ type Glue interface {
 	CreateUserDefinedFunctionWithContext(ctx context.Context, input *glue.CreateUserDefinedFunctionInput, opts ...request.Option) (*glue.CreateUserDefinedFunctionOutput, error)
 	CreateWorkflowWithContext(ctx context.Context, input *glue.CreateWorkflowInput, opts ...request.Option) (*glue.CreateWorkflowOutput, error)
 	DeleteClassifierWithContext(ctx context.Context, input *glue.DeleteClassifierInput, opts ...request.Option) (*glue.DeleteClassifierOutput, error)
+	DeleteColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForPartitionOutput, error)
+	DeleteColumnStatisticsForTableWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForTableInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForTableOutput, error)
 	DeleteConnectionWithContext(ctx context.Context, input *glue.DeleteConnectionInput, opts ...request.Option) (*glue.DeleteConnectionOutput, error)
 	DeleteCrawlerWithContext(ctx context.Context, input *glue.DeleteCrawlerInput, opts ...request.Option) (*glue.DeleteCrawlerOutput, error)
 	DeleteDatabaseWithContext(ctx context.Context, input *glue.DeleteDatabaseInput, opts ...request.Option) (*glue.DeleteDatabaseOutput, error)
@@ -57,6 +59,8 @@ type Glue interface {
 	GetClassifierWithContext(ctx context.Context, input *glue.GetClassifierInput, opts ...request.Option) (*glue.GetClassifierOutput, error)
 	GetClassifiersWithContext(ctx context.Context, input *glue.GetClassifiersInput, opts ...request.Option) (*glue.GetClassifiersOutput, error)
 	GetClassifiersPagesWithContext(ctx context.Context, input *glue.GetClassifiersInput, cb func(*glue.GetClassifiersOutput, bool) bool, opts ...request.Option) error
+	GetColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.GetColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.GetColumnStatisticsForPartitionOutput, error)
+	GetColumnStatisticsForTableWithContext(ctx context.Context, input *glue.GetColumnStatisticsForTableInput, opts ...request.Option) (*glue.GetColumnStatisticsForTableOutput, error)
 	GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error)
 	GetConnectionsWithContext(ctx context.Context, input *glue.GetConnectionsInput, opts ...request.Option) (*glue.GetConnectionsOutput, error)
 	GetConnectionsPagesWithContext(ctx context.Context, input *glue.GetConnectionsInput, cb func(*glue.GetConnectionsOutput, bool) bool, opts ...request.Option) error
@@ -148,6 +152,8 @@ type Glue interface {
 	TagResourceWithContext(ctx context.Context, input *glue.TagResourceInput, opts ...request.Option) (*glue.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *glue.UntagResourceInput, opts ...request.Option) (*glue.UntagResourceOutput, error)
 	UpdateClassifierWithContext(ctx context.Context, input *glue.UpdateClassifierInput, opts ...request.Option) (*glue.UpdateClassifierOutput, error)
+	UpdateColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.UpdateColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.UpdateColumnStatisticsForPartitionOutput, error)
+	UpdateColumnStatisticsForTableWithContext(ctx context.Context, input *glue.UpdateColumnStatisticsForTableInput, opts ...request.Option) (*glue.UpdateColumnStatisticsForTableOutput, error)
 	UpdateConnectionWithContext(ctx context.Context, input *glue.UpdateConnectionInput, opts ...request.Option) (*glue.UpdateConnectionOutput, error)
 	UpdateCrawlerWithContext(ctx context.Context, input *glue.UpdateCrawlerInput, opts ...request.Option) (*glue.UpdateCrawlerOutput, error)
 	UpdateCrawlerScheduleWithContext(ctx context.Context, input *glue.UpdateCrawlerScheduleInput, opts ...request.Option) (*glue.UpdateCrawlerScheduleOutput, error)
@@ -765,6 +771,48 @@ func (c *Client) DeleteClassifierWithContext(ctx context.Context, input *glue.De
 	return req.Output.(*glue.DeleteClassifierOutput), req.Error
 }
 
+func (c *Client) DeleteColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForPartitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteColumnStatisticsForPartition",
+		Input:   input,
+		Output:  (*glue.DeleteColumnStatisticsForPartitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteColumnStatisticsForPartitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteColumnStatisticsForPartitionOutput), req.Error
+}
+
+func (c *Client) DeleteColumnStatisticsForTableWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForTableInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForTableOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteColumnStatisticsForTable",
+		Input:   input,
+		Output:  (*glue.DeleteColumnStatisticsForTableOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteColumnStatisticsForTableWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteColumnStatisticsForTableOutput), req.Error
+}
+
 func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *glue.DeleteConnectionInput, opts ...request.Option) (*glue.DeleteConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1140,6 +1188,48 @@ func (c *Client) GetClassifiersPagesWithContext(ctx context.Context, input *glue
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.GetColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.GetColumnStatisticsForPartitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetColumnStatisticsForPartition",
+		Input:   input,
+		Output:  (*glue.GetColumnStatisticsForPartitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetColumnStatisticsForPartitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetColumnStatisticsForPartitionOutput), req.Error
+}
+
+func (c *Client) GetColumnStatisticsForTableWithContext(ctx context.Context, input *glue.GetColumnStatisticsForTableInput, opts ...request.Option) (*glue.GetColumnStatisticsForTableOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetColumnStatisticsForTable",
+		Input:   input,
+		Output:  (*glue.GetColumnStatisticsForTableOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetColumnStatisticsForTableWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetColumnStatisticsForTableOutput), req.Error
 }
 
 func (c *Client) GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error) {
@@ -3028,6 +3118,48 @@ func (c *Client) UpdateClassifierWithContext(ctx context.Context, input *glue.Up
 	})
 
 	return req.Output.(*glue.UpdateClassifierOutput), req.Error
+}
+
+func (c *Client) UpdateColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.UpdateColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.UpdateColumnStatisticsForPartitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateColumnStatisticsForPartition",
+		Input:   input,
+		Output:  (*glue.UpdateColumnStatisticsForPartitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateColumnStatisticsForPartitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateColumnStatisticsForPartitionOutput), req.Error
+}
+
+func (c *Client) UpdateColumnStatisticsForTableWithContext(ctx context.Context, input *glue.UpdateColumnStatisticsForTableInput, opts ...request.Option) (*glue.UpdateColumnStatisticsForTableOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateColumnStatisticsForTable",
+		Input:   input,
+		Output:  (*glue.UpdateColumnStatisticsForTableOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateColumnStatisticsForTableWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateColumnStatisticsForTableOutput), req.Error
 }
 
 func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *glue.UpdateConnectionInput, opts ...request.Option) (*glue.UpdateConnectionOutput, error) {
