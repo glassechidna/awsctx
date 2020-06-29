@@ -71,6 +71,7 @@ type EC2 interface {
 	CreateLaunchTemplateVersionWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateVersionInput, opts ...request.Option) (*ec2.CreateLaunchTemplateVersionOutput, error)
 	CreateLocalGatewayRouteWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteOutput, error)
 	CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput, error)
+	CreateManagedPrefixListWithContext(ctx context.Context, input *ec2.CreateManagedPrefixListInput, opts ...request.Option) (*ec2.CreateManagedPrefixListOutput, error)
 	CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error)
 	CreateNetworkAclWithContext(ctx context.Context, input *ec2.CreateNetworkAclInput, opts ...request.Option) (*ec2.CreateNetworkAclOutput, error)
 	CreateNetworkAclEntryWithContext(ctx context.Context, input *ec2.CreateNetworkAclEntryInput, opts ...request.Option) (*ec2.CreateNetworkAclEntryOutput, error)
@@ -119,6 +120,7 @@ type EC2 interface {
 	DeleteLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateVersionsOutput, error)
 	DeleteLocalGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteOutput, error)
 	DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput, error)
+	DeleteManagedPrefixListWithContext(ctx context.Context, input *ec2.DeleteManagedPrefixListInput, opts ...request.Option) (*ec2.DeleteManagedPrefixListOutput, error)
 	DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error)
 	DeleteNetworkAclWithContext(ctx context.Context, input *ec2.DeleteNetworkAclInput, opts ...request.Option) (*ec2.DeleteNetworkAclOutput, error)
 	DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec2.DeleteNetworkAclEntryInput, opts ...request.Option) (*ec2.DeleteNetworkAclEntryOutput, error)
@@ -250,6 +252,8 @@ type EC2 interface {
 	DescribeLocalGatewayVirtualInterfacesPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, cb func(*ec2.DescribeLocalGatewayVirtualInterfacesOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewaysWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, opts ...request.Option) (*ec2.DescribeLocalGatewaysOutput, error)
 	DescribeLocalGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, cb func(*ec2.DescribeLocalGatewaysOutput, bool) bool, opts ...request.Option) error
+	DescribeManagedPrefixListsWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, opts ...request.Option) (*ec2.DescribeManagedPrefixListsOutput, error)
+	DescribeManagedPrefixListsPagesWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, cb func(*ec2.DescribeManagedPrefixListsOutput, bool) bool, opts ...request.Option) error
 	DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error)
 	DescribeMovingAddressesPagesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, cb func(*ec2.DescribeMovingAddressesOutput, bool) bool, opts ...request.Option) error
 	DescribeNatGatewaysWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, opts ...request.Option) (*ec2.DescribeNatGatewaysOutput, error)
@@ -389,6 +393,10 @@ type EC2 interface {
 	GetEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.GetEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.GetEbsEncryptionByDefaultOutput, error)
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
 	GetLaunchTemplateDataWithContext(ctx context.Context, input *ec2.GetLaunchTemplateDataInput, opts ...request.Option) (*ec2.GetLaunchTemplateDataOutput, error)
+	GetManagedPrefixListAssociationsWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, opts ...request.Option) (*ec2.GetManagedPrefixListAssociationsOutput, error)
+	GetManagedPrefixListAssociationsPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, cb func(*ec2.GetManagedPrefixListAssociationsOutput, bool) bool, opts ...request.Option) error
+	GetManagedPrefixListEntriesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, opts ...request.Option) (*ec2.GetManagedPrefixListEntriesOutput, error)
+	GetManagedPrefixListEntriesPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, cb func(*ec2.GetManagedPrefixListEntriesOutput, bool) bool, opts ...request.Option) error
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
@@ -423,6 +431,7 @@ type EC2 interface {
 	ModifyInstanceMetadataOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMetadataOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMetadataOptionsOutput, error)
 	ModifyInstancePlacementWithContext(ctx context.Context, input *ec2.ModifyInstancePlacementInput, opts ...request.Option) (*ec2.ModifyInstancePlacementOutput, error)
 	ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error)
+	ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error)
 	ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error)
 	ModifyReservedInstancesWithContext(ctx context.Context, input *ec2.ModifyReservedInstancesInput, opts ...request.Option) (*ec2.ModifyReservedInstancesOutput, error)
 	ModifySnapshotAttributeWithContext(ctx context.Context, input *ec2.ModifySnapshotAttributeInput, opts ...request.Option) (*ec2.ModifySnapshotAttributeOutput, error)
@@ -477,6 +486,7 @@ type EC2 interface {
 	ResetNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ResetNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ResetNetworkInterfaceAttributeOutput, error)
 	ResetSnapshotAttributeWithContext(ctx context.Context, input *ec2.ResetSnapshotAttributeInput, opts ...request.Option) (*ec2.ResetSnapshotAttributeOutput, error)
 	RestoreAddressToClassicWithContext(ctx context.Context, input *ec2.RestoreAddressToClassicInput, opts ...request.Option) (*ec2.RestoreAddressToClassicOutput, error)
+	RestoreManagedPrefixListVersionWithContext(ctx context.Context, input *ec2.RestoreManagedPrefixListVersionInput, opts ...request.Option) (*ec2.RestoreManagedPrefixListVersionOutput, error)
 	RevokeClientVpnIngressWithContext(ctx context.Context, input *ec2.RevokeClientVpnIngressInput, opts ...request.Option) (*ec2.RevokeClientVpnIngressOutput, error)
 	RevokeSecurityGroupEgressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupEgressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupEgressOutput, error)
 	RevokeSecurityGroupIngressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupIngressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupIngressOutput, error)
@@ -1776,6 +1786,27 @@ func (c *Client) CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx conte
 	return req.Output.(*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput), req.Error
 }
 
+func (c *Client) CreateManagedPrefixListWithContext(ctx context.Context, input *ec2.CreateManagedPrefixListInput, opts ...request.Option) (*ec2.CreateManagedPrefixListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateManagedPrefixList",
+		Input:   input,
+		Output:  (*ec2.CreateManagedPrefixListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateManagedPrefixListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateManagedPrefixListOutput), req.Error
+}
+
 func (c *Client) CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2782,6 +2813,27 @@ func (c *Client) DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx conte
 	})
 
 	return req.Output.(*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput), req.Error
+}
+
+func (c *Client) DeleteManagedPrefixListWithContext(ctx context.Context, input *ec2.DeleteManagedPrefixListInput, opts ...request.Option) (*ec2.DeleteManagedPrefixListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteManagedPrefixList",
+		Input:   input,
+		Output:  (*ec2.DeleteManagedPrefixListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteManagedPrefixListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteManagedPrefixListOutput), req.Error
 }
 
 func (c *Client) DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error) {
@@ -5493,6 +5545,47 @@ func (c *Client) DescribeLocalGatewaysPagesWithContext(ctx context.Context, inpu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeLocalGatewaysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeManagedPrefixListsWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, opts ...request.Option) (*ec2.DescribeManagedPrefixListsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeManagedPrefixLists",
+		Input:   input,
+		Output:  (*ec2.DescribeManagedPrefixListsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeManagedPrefixListsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeManagedPrefixListsOutput), req.Error
+}
+
+func (c *Client) DescribeManagedPrefixListsPagesWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, cb func(*ec2.DescribeManagedPrefixListsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeManagedPrefixLists",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeManagedPrefixListsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -8375,6 +8468,88 @@ func (c *Client) GetLaunchTemplateDataWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.GetLaunchTemplateDataOutput), req.Error
 }
 
+func (c *Client) GetManagedPrefixListAssociationsWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, opts ...request.Option) (*ec2.GetManagedPrefixListAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetManagedPrefixListAssociations",
+		Input:   input,
+		Output:  (*ec2.GetManagedPrefixListAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetManagedPrefixListAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetManagedPrefixListAssociationsOutput), req.Error
+}
+
+func (c *Client) GetManagedPrefixListAssociationsPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, cb func(*ec2.GetManagedPrefixListAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetManagedPrefixListAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetManagedPrefixListAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetManagedPrefixListEntriesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, opts ...request.Option) (*ec2.GetManagedPrefixListEntriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetManagedPrefixListEntries",
+		Input:   input,
+		Output:  (*ec2.GetManagedPrefixListEntriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetManagedPrefixListEntriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetManagedPrefixListEntriesOutput), req.Error
+}
+
+func (c *Client) GetManagedPrefixListEntriesPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, cb func(*ec2.GetManagedPrefixListEntriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetManagedPrefixListEntries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetManagedPrefixListEntriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9083,6 +9258,27 @@ func (c *Client) ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.ModifyLaunchTemplateOutput), req.Error
+}
+
+func (c *Client) ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyManagedPrefixList",
+		Input:   input,
+		Output:  (*ec2.ModifyManagedPrefixListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyManagedPrefixListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyManagedPrefixListOutput), req.Error
 }
 
 func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error) {
@@ -10217,6 +10413,27 @@ func (c *Client) RestoreAddressToClassicWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.RestoreAddressToClassicOutput), req.Error
+}
+
+func (c *Client) RestoreManagedPrefixListVersionWithContext(ctx context.Context, input *ec2.RestoreManagedPrefixListVersionInput, opts ...request.Option) (*ec2.RestoreManagedPrefixListVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RestoreManagedPrefixListVersion",
+		Input:   input,
+		Output:  (*ec2.RestoreManagedPrefixListVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RestoreManagedPrefixListVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RestoreManagedPrefixListVersionOutput), req.Error
 }
 
 func (c *Client) RevokeClientVpnIngressWithContext(ctx context.Context, input *ec2.RevokeClientVpnIngressInput, opts ...request.Option) (*ec2.RevokeClientVpnIngressOutput, error) {
