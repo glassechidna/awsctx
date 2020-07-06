@@ -21,6 +21,8 @@ type QuickSight interface {
 	CreateIngestionWithContext(ctx context.Context, input *quicksight.CreateIngestionInput, opts ...request.Option) (*quicksight.CreateIngestionOutput, error)
 	CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error)
 	CreateTemplateAliasWithContext(ctx context.Context, input *quicksight.CreateTemplateAliasInput, opts ...request.Option) (*quicksight.CreateTemplateAliasOutput, error)
+	CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error)
+	CreateThemeAliasWithContext(ctx context.Context, input *quicksight.CreateThemeAliasInput, opts ...request.Option) (*quicksight.CreateThemeAliasOutput, error)
 	DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error)
 	DeleteDataSetWithContext(ctx context.Context, input *quicksight.DeleteDataSetInput, opts ...request.Option) (*quicksight.DeleteDataSetOutput, error)
 	DeleteDataSourceWithContext(ctx context.Context, input *quicksight.DeleteDataSourceInput, opts ...request.Option) (*quicksight.DeleteDataSourceOutput, error)
@@ -29,6 +31,8 @@ type QuickSight interface {
 	DeleteIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DeleteIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DeleteIAMPolicyAssignmentOutput, error)
 	DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error)
 	DeleteTemplateAliasWithContext(ctx context.Context, input *quicksight.DeleteTemplateAliasInput, opts ...request.Option) (*quicksight.DeleteTemplateAliasOutput, error)
+	DeleteThemeWithContext(ctx context.Context, input *quicksight.DeleteThemeInput, opts ...request.Option) (*quicksight.DeleteThemeOutput, error)
+	DeleteThemeAliasWithContext(ctx context.Context, input *quicksight.DeleteThemeAliasInput, opts ...request.Option) (*quicksight.DeleteThemeAliasOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error)
 	DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error)
 	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
@@ -43,6 +47,9 @@ type QuickSight interface {
 	DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error)
 	DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error)
 	DescribeTemplatePermissionsWithContext(ctx context.Context, input *quicksight.DescribeTemplatePermissionsInput, opts ...request.Option) (*quicksight.DescribeTemplatePermissionsOutput, error)
+	DescribeThemeWithContext(ctx context.Context, input *quicksight.DescribeThemeInput, opts ...request.Option) (*quicksight.DescribeThemeOutput, error)
+	DescribeThemeAliasWithContext(ctx context.Context, input *quicksight.DescribeThemeAliasInput, opts ...request.Option) (*quicksight.DescribeThemeAliasOutput, error)
+	DescribeThemePermissionsWithContext(ctx context.Context, input *quicksight.DescribeThemePermissionsInput, opts ...request.Option) (*quicksight.DescribeThemePermissionsOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error)
 	GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error)
 	ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error)
@@ -66,6 +73,9 @@ type QuickSight interface {
 	ListTemplateVersionsPagesWithContext(ctx context.Context, input *quicksight.ListTemplateVersionsInput, cb func(*quicksight.ListTemplateVersionsOutput, bool) bool, opts ...request.Option) error
 	ListTemplatesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, opts ...request.Option) (*quicksight.ListTemplatesOutput, error)
 	ListTemplatesPagesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, cb func(*quicksight.ListTemplatesOutput, bool) bool, opts ...request.Option) error
+	ListThemeAliasesWithContext(ctx context.Context, input *quicksight.ListThemeAliasesInput, opts ...request.Option) (*quicksight.ListThemeAliasesOutput, error)
+	ListThemeVersionsWithContext(ctx context.Context, input *quicksight.ListThemeVersionsInput, opts ...request.Option) (*quicksight.ListThemeVersionsOutput, error)
+	ListThemesWithContext(ctx context.Context, input *quicksight.ListThemesInput, opts ...request.Option) (*quicksight.ListThemesOutput, error)
 	ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error)
 	RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error)
@@ -85,6 +95,9 @@ type QuickSight interface {
 	UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error)
 	UpdateTemplateAliasWithContext(ctx context.Context, input *quicksight.UpdateTemplateAliasInput, opts ...request.Option) (*quicksight.UpdateTemplateAliasOutput, error)
 	UpdateTemplatePermissionsWithContext(ctx context.Context, input *quicksight.UpdateTemplatePermissionsInput, opts ...request.Option) (*quicksight.UpdateTemplatePermissionsOutput, error)
+	UpdateThemeWithContext(ctx context.Context, input *quicksight.UpdateThemeInput, opts ...request.Option) (*quicksight.UpdateThemeOutput, error)
+	UpdateThemeAliasWithContext(ctx context.Context, input *quicksight.UpdateThemeAliasInput, opts ...request.Option) (*quicksight.UpdateThemeAliasOutput, error)
+	UpdateThemePermissionsWithContext(ctx context.Context, input *quicksight.UpdateThemePermissionsInput, opts ...request.Option) (*quicksight.UpdateThemePermissionsOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error)
 }
 
@@ -313,6 +326,48 @@ func (c *Client) CreateTemplateAliasWithContext(ctx context.Context, input *quic
 	return req.Output.(*quicksight.CreateTemplateAliasOutput), req.Error
 }
 
+func (c *Client) CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateTheme",
+		Input:   input,
+		Output:  (*quicksight.CreateThemeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateThemeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateThemeOutput), req.Error
+}
+
+func (c *Client) CreateThemeAliasWithContext(ctx context.Context, input *quicksight.CreateThemeAliasInput, opts ...request.Option) (*quicksight.CreateThemeAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateThemeAlias",
+		Input:   input,
+		Output:  (*quicksight.CreateThemeAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateThemeAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateThemeAliasOutput), req.Error
+}
+
 func (c *Client) DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -479,6 +534,48 @@ func (c *Client) DeleteTemplateAliasWithContext(ctx context.Context, input *quic
 	})
 
 	return req.Output.(*quicksight.DeleteTemplateAliasOutput), req.Error
+}
+
+func (c *Client) DeleteThemeWithContext(ctx context.Context, input *quicksight.DeleteThemeInput, opts ...request.Option) (*quicksight.DeleteThemeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteTheme",
+		Input:   input,
+		Output:  (*quicksight.DeleteThemeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteThemeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteThemeOutput), req.Error
+}
+
+func (c *Client) DeleteThemeAliasWithContext(ctx context.Context, input *quicksight.DeleteThemeAliasInput, opts ...request.Option) (*quicksight.DeleteThemeAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteThemeAlias",
+		Input:   input,
+		Output:  (*quicksight.DeleteThemeAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteThemeAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteThemeAliasOutput), req.Error
 }
 
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error) {
@@ -773,6 +870,69 @@ func (c *Client) DescribeTemplatePermissionsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*quicksight.DescribeTemplatePermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeThemeWithContext(ctx context.Context, input *quicksight.DescribeThemeInput, opts ...request.Option) (*quicksight.DescribeThemeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTheme",
+		Input:   input,
+		Output:  (*quicksight.DescribeThemeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeThemeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeThemeOutput), req.Error
+}
+
+func (c *Client) DescribeThemeAliasWithContext(ctx context.Context, input *quicksight.DescribeThemeAliasInput, opts ...request.Option) (*quicksight.DescribeThemeAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeThemeAlias",
+		Input:   input,
+		Output:  (*quicksight.DescribeThemeAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeThemeAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeThemeAliasOutput), req.Error
+}
+
+func (c *Client) DescribeThemePermissionsWithContext(ctx context.Context, input *quicksight.DescribeThemePermissionsInput, opts ...request.Option) (*quicksight.DescribeThemePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeThemePermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeThemePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeThemePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeThemePermissionsOutput), req.Error
 }
 
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error) {
@@ -1250,6 +1410,69 @@ func (c *Client) ListTemplatesPagesWithContext(ctx context.Context, input *quick
 	return req.Error
 }
 
+func (c *Client) ListThemeAliasesWithContext(ctx context.Context, input *quicksight.ListThemeAliasesInput, opts ...request.Option) (*quicksight.ListThemeAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListThemeAliases",
+		Input:   input,
+		Output:  (*quicksight.ListThemeAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListThemeAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListThemeAliasesOutput), req.Error
+}
+
+func (c *Client) ListThemeVersionsWithContext(ctx context.Context, input *quicksight.ListThemeVersionsInput, opts ...request.Option) (*quicksight.ListThemeVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListThemeVersions",
+		Input:   input,
+		Output:  (*quicksight.ListThemeVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListThemeVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListThemeVersionsOutput), req.Error
+}
+
+func (c *Client) ListThemesWithContext(ctx context.Context, input *quicksight.ListThemesInput, opts ...request.Option) (*quicksight.ListThemesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListThemes",
+		Input:   input,
+		Output:  (*quicksight.ListThemesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListThemesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListThemesOutput), req.Error
+}
+
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -1646,6 +1869,69 @@ func (c *Client) UpdateTemplatePermissionsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*quicksight.UpdateTemplatePermissionsOutput), req.Error
+}
+
+func (c *Client) UpdateThemeWithContext(ctx context.Context, input *quicksight.UpdateThemeInput, opts ...request.Option) (*quicksight.UpdateThemeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTheme",
+		Input:   input,
+		Output:  (*quicksight.UpdateThemeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateThemeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateThemeOutput), req.Error
+}
+
+func (c *Client) UpdateThemeAliasWithContext(ctx context.Context, input *quicksight.UpdateThemeAliasInput, opts ...request.Option) (*quicksight.UpdateThemeAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateThemeAlias",
+		Input:   input,
+		Output:  (*quicksight.UpdateThemeAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateThemeAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateThemeAliasOutput), req.Error
+}
+
+func (c *Client) UpdateThemePermissionsWithContext(ctx context.Context, input *quicksight.UpdateThemePermissionsInput, opts ...request.Option) (*quicksight.UpdateThemePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateThemePermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateThemePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateThemePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateThemePermissionsOutput), req.Error
 }
 
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error) {
