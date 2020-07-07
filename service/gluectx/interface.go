@@ -95,6 +95,7 @@ type Glue interface {
 	GetPartitionsWithContext(ctx context.Context, input *glue.GetPartitionsInput, opts ...request.Option) (*glue.GetPartitionsOutput, error)
 	GetPartitionsPagesWithContext(ctx context.Context, input *glue.GetPartitionsInput, cb func(*glue.GetPartitionsOutput, bool) bool, opts ...request.Option) error
 	GetPlanWithContext(ctx context.Context, input *glue.GetPlanInput, opts ...request.Option) (*glue.GetPlanOutput, error)
+	GetResourcePoliciesWithContext(ctx context.Context, input *glue.GetResourcePoliciesInput, opts ...request.Option) (*glue.GetResourcePoliciesOutput, error)
 	GetResourcePolicyWithContext(ctx context.Context, input *glue.GetResourcePolicyInput, opts ...request.Option) (*glue.GetResourcePolicyOutput, error)
 	GetSecurityConfigurationWithContext(ctx context.Context, input *glue.GetSecurityConfigurationInput, opts ...request.Option) (*glue.GetSecurityConfigurationOutput, error)
 	GetSecurityConfigurationsWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, opts ...request.Option) (*glue.GetSecurityConfigurationsOutput, error)
@@ -1934,6 +1935,27 @@ func (c *Client) GetPlanWithContext(ctx context.Context, input *glue.GetPlanInpu
 	})
 
 	return req.Output.(*glue.GetPlanOutput), req.Error
+}
+
+func (c *Client) GetResourcePoliciesWithContext(ctx context.Context, input *glue.GetResourcePoliciesInput, opts ...request.Option) (*glue.GetResourcePoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetResourcePolicies",
+		Input:   input,
+		Output:  (*glue.GetResourcePoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetResourcePoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetResourcePoliciesOutput), req.Error
 }
 
 func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *glue.GetResourcePolicyInput, opts ...request.Option) (*glue.GetResourcePolicyOutput, error) {

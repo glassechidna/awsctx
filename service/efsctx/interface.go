@@ -22,6 +22,7 @@ type EFS interface {
 	DeleteTagsWithContext(ctx context.Context, input *efs.DeleteTagsInput, opts ...request.Option) (*efs.DeleteTagsOutput, error)
 	DescribeAccessPointsWithContext(ctx context.Context, input *efs.DescribeAccessPointsInput, opts ...request.Option) (*efs.DescribeAccessPointsOutput, error)
 	DescribeAccessPointsPagesWithContext(ctx context.Context, input *efs.DescribeAccessPointsInput, cb func(*efs.DescribeAccessPointsOutput, bool) bool, opts ...request.Option) error
+	DescribeBackupPolicyWithContext(ctx context.Context, input *efs.DescribeBackupPolicyInput, opts ...request.Option) (*efs.DescribeBackupPolicyOutput, error)
 	DescribeFileSystemPolicyWithContext(ctx context.Context, input *efs.DescribeFileSystemPolicyInput, opts ...request.Option) (*efs.DescribeFileSystemPolicyOutput, error)
 	DescribeFileSystemsWithContext(ctx context.Context, input *efs.DescribeFileSystemsInput, opts ...request.Option) (*efs.DescribeFileSystemsOutput, error)
 	DescribeFileSystemsPagesWithContext(ctx context.Context, input *efs.DescribeFileSystemsInput, cb func(*efs.DescribeFileSystemsOutput, bool) bool, opts ...request.Option) error
@@ -33,6 +34,7 @@ type EFS interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *efs.ListTagsForResourceInput, opts ...request.Option) (*efs.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *efs.ListTagsForResourceInput, cb func(*efs.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ModifyMountTargetSecurityGroupsWithContext(ctx context.Context, input *efs.ModifyMountTargetSecurityGroupsInput, opts ...request.Option) (*efs.ModifyMountTargetSecurityGroupsOutput, error)
+	PutBackupPolicyWithContext(ctx context.Context, input *efs.PutBackupPolicyInput, opts ...request.Option) (*efs.PutBackupPolicyOutput, error)
 	PutFileSystemPolicyWithContext(ctx context.Context, input *efs.PutFileSystemPolicyInput, opts ...request.Option) (*efs.PutFileSystemPolicyOutput, error)
 	PutLifecycleConfigurationWithContext(ctx context.Context, input *efs.PutLifecycleConfigurationInput, opts ...request.Option) (*efs.PutLifecycleConfigurationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *efs.TagResourceInput, opts ...request.Option) (*efs.TagResourceOutput, error)
@@ -285,6 +287,27 @@ func (c *Client) DescribeAccessPointsPagesWithContext(ctx context.Context, input
 	return req.Error
 }
 
+func (c *Client) DescribeBackupPolicyWithContext(ctx context.Context, input *efs.DescribeBackupPolicyInput, opts ...request.Option) (*efs.DescribeBackupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "efs",
+		Action:  "DescribeBackupPolicy",
+		Input:   input,
+		Output:  (*efs.DescribeBackupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EFSAPI.DescribeBackupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*efs.DescribeBackupPolicyOutput), req.Error
+}
+
 func (c *Client) DescribeFileSystemPolicyWithContext(ctx context.Context, input *efs.DescribeFileSystemPolicyInput, opts ...request.Option) (*efs.DescribeFileSystemPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "efs",
@@ -511,6 +534,27 @@ func (c *Client) ModifyMountTargetSecurityGroupsWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*efs.ModifyMountTargetSecurityGroupsOutput), req.Error
+}
+
+func (c *Client) PutBackupPolicyWithContext(ctx context.Context, input *efs.PutBackupPolicyInput, opts ...request.Option) (*efs.PutBackupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "efs",
+		Action:  "PutBackupPolicy",
+		Input:   input,
+		Output:  (*efs.PutBackupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EFSAPI.PutBackupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*efs.PutBackupPolicyOutput), req.Error
 }
 
 func (c *Client) PutFileSystemPolicyWithContext(ctx context.Context, input *efs.PutFileSystemPolicyInput, opts ...request.Option) (*efs.PutFileSystemPolicyOutput, error) {
