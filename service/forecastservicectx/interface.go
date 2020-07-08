@@ -42,6 +42,9 @@ type ForecastService interface {
 	ListForecastsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, cb func(*forecastservice.ListForecastsOutput, bool) bool, opts ...request.Option) error
 	ListPredictorsWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, opts ...request.Option) (*forecastservice.ListPredictorsOutput, error)
 	ListPredictorsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, cb func(*forecastservice.ListPredictorsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *forecastservice.ListTagsForResourceInput, opts ...request.Option) (*forecastservice.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *forecastservice.TagResourceInput, opts ...request.Option) (*forecastservice.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *forecastservice.UntagResourceInput, opts ...request.Option) (*forecastservice.UntagResourceOutput, error)
 	UpdateDatasetGroupWithContext(ctx context.Context, input *forecastservice.UpdateDatasetGroupInput, opts ...request.Option) (*forecastservice.UpdateDatasetGroupOutput, error)
 }
 
@@ -703,6 +706,69 @@ func (c *Client) ListPredictorsPagesWithContext(ctx context.Context, input *fore
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *forecastservice.ListTagsForResourceInput, opts ...request.Option) (*forecastservice.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*forecastservice.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *forecastservice.TagResourceInput, opts ...request.Option) (*forecastservice.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*forecastservice.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *forecastservice.UntagResourceInput, opts ...request.Option) (*forecastservice.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*forecastservice.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateDatasetGroupWithContext(ctx context.Context, input *forecastservice.UpdateDatasetGroupInput, opts ...request.Option) (*forecastservice.UpdateDatasetGroupOutput, error) {
