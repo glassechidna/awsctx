@@ -48,6 +48,7 @@ type SageMaker interface {
 	DeleteEndpointConfigWithContext(ctx context.Context, input *sagemaker.DeleteEndpointConfigInput, opts ...request.Option) (*sagemaker.DeleteEndpointConfigOutput, error)
 	DeleteExperimentWithContext(ctx context.Context, input *sagemaker.DeleteExperimentInput, opts ...request.Option) (*sagemaker.DeleteExperimentOutput, error)
 	DeleteFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DeleteFlowDefinitionInput, opts ...request.Option) (*sagemaker.DeleteFlowDefinitionOutput, error)
+	DeleteHumanTaskUiWithContext(ctx context.Context, input *sagemaker.DeleteHumanTaskUiInput, opts ...request.Option) (*sagemaker.DeleteHumanTaskUiOutput, error)
 	DeleteModelWithContext(ctx context.Context, input *sagemaker.DeleteModelInput, opts ...request.Option) (*sagemaker.DeleteModelOutput, error)
 	DeleteModelPackageWithContext(ctx context.Context, input *sagemaker.DeleteModelPackageInput, opts ...request.Option) (*sagemaker.DeleteModelPackageOutput, error)
 	DeleteMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.DeleteMonitoringScheduleInput, opts ...request.Option) (*sagemaker.DeleteMonitoringScheduleOutput, error)
@@ -968,6 +969,27 @@ func (c *Client) DeleteFlowDefinitionWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.DeleteFlowDefinitionOutput), req.Error
+}
+
+func (c *Client) DeleteHumanTaskUiWithContext(ctx context.Context, input *sagemaker.DeleteHumanTaskUiInput, opts ...request.Option) (*sagemaker.DeleteHumanTaskUiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteHumanTaskUi",
+		Input:   input,
+		Output:  (*sagemaker.DeleteHumanTaskUiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteHumanTaskUiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteHumanTaskUiOutput), req.Error
 }
 
 func (c *Client) DeleteModelWithContext(ctx context.Context, input *sagemaker.DeleteModelInput, opts ...request.Option) (*sagemaker.DeleteModelOutput, error) {

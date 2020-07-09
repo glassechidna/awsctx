@@ -11,27 +11,37 @@ import (
 )
 
 type AppMesh interface {
+	CreateGatewayRouteWithContext(ctx context.Context, input *appmesh.CreateGatewayRouteInput, opts ...request.Option) (*appmesh.CreateGatewayRouteOutput, error)
 	CreateMeshWithContext(ctx context.Context, input *appmesh.CreateMeshInput, opts ...request.Option) (*appmesh.CreateMeshOutput, error)
 	CreateRouteWithContext(ctx context.Context, input *appmesh.CreateRouteInput, opts ...request.Option) (*appmesh.CreateRouteOutput, error)
+	CreateVirtualGatewayWithContext(ctx context.Context, input *appmesh.CreateVirtualGatewayInput, opts ...request.Option) (*appmesh.CreateVirtualGatewayOutput, error)
 	CreateVirtualNodeWithContext(ctx context.Context, input *appmesh.CreateVirtualNodeInput, opts ...request.Option) (*appmesh.CreateVirtualNodeOutput, error)
 	CreateVirtualRouterWithContext(ctx context.Context, input *appmesh.CreateVirtualRouterInput, opts ...request.Option) (*appmesh.CreateVirtualRouterOutput, error)
 	CreateVirtualServiceWithContext(ctx context.Context, input *appmesh.CreateVirtualServiceInput, opts ...request.Option) (*appmesh.CreateVirtualServiceOutput, error)
+	DeleteGatewayRouteWithContext(ctx context.Context, input *appmesh.DeleteGatewayRouteInput, opts ...request.Option) (*appmesh.DeleteGatewayRouteOutput, error)
 	DeleteMeshWithContext(ctx context.Context, input *appmesh.DeleteMeshInput, opts ...request.Option) (*appmesh.DeleteMeshOutput, error)
 	DeleteRouteWithContext(ctx context.Context, input *appmesh.DeleteRouteInput, opts ...request.Option) (*appmesh.DeleteRouteOutput, error)
+	DeleteVirtualGatewayWithContext(ctx context.Context, input *appmesh.DeleteVirtualGatewayInput, opts ...request.Option) (*appmesh.DeleteVirtualGatewayOutput, error)
 	DeleteVirtualNodeWithContext(ctx context.Context, input *appmesh.DeleteVirtualNodeInput, opts ...request.Option) (*appmesh.DeleteVirtualNodeOutput, error)
 	DeleteVirtualRouterWithContext(ctx context.Context, input *appmesh.DeleteVirtualRouterInput, opts ...request.Option) (*appmesh.DeleteVirtualRouterOutput, error)
 	DeleteVirtualServiceWithContext(ctx context.Context, input *appmesh.DeleteVirtualServiceInput, opts ...request.Option) (*appmesh.DeleteVirtualServiceOutput, error)
+	DescribeGatewayRouteWithContext(ctx context.Context, input *appmesh.DescribeGatewayRouteInput, opts ...request.Option) (*appmesh.DescribeGatewayRouteOutput, error)
 	DescribeMeshWithContext(ctx context.Context, input *appmesh.DescribeMeshInput, opts ...request.Option) (*appmesh.DescribeMeshOutput, error)
 	DescribeRouteWithContext(ctx context.Context, input *appmesh.DescribeRouteInput, opts ...request.Option) (*appmesh.DescribeRouteOutput, error)
+	DescribeVirtualGatewayWithContext(ctx context.Context, input *appmesh.DescribeVirtualGatewayInput, opts ...request.Option) (*appmesh.DescribeVirtualGatewayOutput, error)
 	DescribeVirtualNodeWithContext(ctx context.Context, input *appmesh.DescribeVirtualNodeInput, opts ...request.Option) (*appmesh.DescribeVirtualNodeOutput, error)
 	DescribeVirtualRouterWithContext(ctx context.Context, input *appmesh.DescribeVirtualRouterInput, opts ...request.Option) (*appmesh.DescribeVirtualRouterOutput, error)
 	DescribeVirtualServiceWithContext(ctx context.Context, input *appmesh.DescribeVirtualServiceInput, opts ...request.Option) (*appmesh.DescribeVirtualServiceOutput, error)
+	ListGatewayRoutesWithContext(ctx context.Context, input *appmesh.ListGatewayRoutesInput, opts ...request.Option) (*appmesh.ListGatewayRoutesOutput, error)
+	ListGatewayRoutesPagesWithContext(ctx context.Context, input *appmesh.ListGatewayRoutesInput, cb func(*appmesh.ListGatewayRoutesOutput, bool) bool, opts ...request.Option) error
 	ListMeshesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, opts ...request.Option) (*appmesh.ListMeshesOutput, error)
 	ListMeshesPagesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, cb func(*appmesh.ListMeshesOutput, bool) bool, opts ...request.Option) error
 	ListRoutesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, opts ...request.Option) (*appmesh.ListRoutesOutput, error)
 	ListRoutesPagesWithContext(ctx context.Context, input *appmesh.ListRoutesInput, cb func(*appmesh.ListRoutesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, opts ...request.Option) (*appmesh.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *appmesh.ListTagsForResourceInput, cb func(*appmesh.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
+	ListVirtualGatewaysWithContext(ctx context.Context, input *appmesh.ListVirtualGatewaysInput, opts ...request.Option) (*appmesh.ListVirtualGatewaysOutput, error)
+	ListVirtualGatewaysPagesWithContext(ctx context.Context, input *appmesh.ListVirtualGatewaysInput, cb func(*appmesh.ListVirtualGatewaysOutput, bool) bool, opts ...request.Option) error
 	ListVirtualNodesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, opts ...request.Option) (*appmesh.ListVirtualNodesOutput, error)
 	ListVirtualNodesPagesWithContext(ctx context.Context, input *appmesh.ListVirtualNodesInput, cb func(*appmesh.ListVirtualNodesOutput, bool) bool, opts ...request.Option) error
 	ListVirtualRoutersWithContext(ctx context.Context, input *appmesh.ListVirtualRoutersInput, opts ...request.Option) (*appmesh.ListVirtualRoutersOutput, error)
@@ -40,8 +50,10 @@ type AppMesh interface {
 	ListVirtualServicesPagesWithContext(ctx context.Context, input *appmesh.ListVirtualServicesInput, cb func(*appmesh.ListVirtualServicesOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *appmesh.TagResourceInput, opts ...request.Option) (*appmesh.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *appmesh.UntagResourceInput, opts ...request.Option) (*appmesh.UntagResourceOutput, error)
+	UpdateGatewayRouteWithContext(ctx context.Context, input *appmesh.UpdateGatewayRouteInput, opts ...request.Option) (*appmesh.UpdateGatewayRouteOutput, error)
 	UpdateMeshWithContext(ctx context.Context, input *appmesh.UpdateMeshInput, opts ...request.Option) (*appmesh.UpdateMeshOutput, error)
 	UpdateRouteWithContext(ctx context.Context, input *appmesh.UpdateRouteInput, opts ...request.Option) (*appmesh.UpdateRouteOutput, error)
+	UpdateVirtualGatewayWithContext(ctx context.Context, input *appmesh.UpdateVirtualGatewayInput, opts ...request.Option) (*appmesh.UpdateVirtualGatewayOutput, error)
 	UpdateVirtualNodeWithContext(ctx context.Context, input *appmesh.UpdateVirtualNodeInput, opts ...request.Option) (*appmesh.UpdateVirtualNodeOutput, error)
 	UpdateVirtualRouterWithContext(ctx context.Context, input *appmesh.UpdateVirtualRouterInput, opts ...request.Option) (*appmesh.UpdateVirtualRouterOutput, error)
 	UpdateVirtualServiceWithContext(ctx context.Context, input *appmesh.UpdateVirtualServiceInput, opts ...request.Option) (*appmesh.UpdateVirtualServiceOutput, error)
@@ -61,6 +73,27 @@ func New(base appmeshiface.AppMeshAPI, ctxer awsctx.Contexter) AppMesh {
 
 var _ AppMesh = (*appmesh.AppMesh)(nil)
 var _ AppMesh = (*Client)(nil)
+
+func (c *Client) CreateGatewayRouteWithContext(ctx context.Context, input *appmesh.CreateGatewayRouteInput, opts ...request.Option) (*appmesh.CreateGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "CreateGatewayRoute",
+		Input:   input,
+		Output:  (*appmesh.CreateGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.CreateGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.CreateGatewayRouteOutput), req.Error
+}
 
 func (c *Client) CreateMeshWithContext(ctx context.Context, input *appmesh.CreateMeshInput, opts ...request.Option) (*appmesh.CreateMeshOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -102,6 +135,27 @@ func (c *Client) CreateRouteWithContext(ctx context.Context, input *appmesh.Crea
 	})
 
 	return req.Output.(*appmesh.CreateRouteOutput), req.Error
+}
+
+func (c *Client) CreateVirtualGatewayWithContext(ctx context.Context, input *appmesh.CreateVirtualGatewayInput, opts ...request.Option) (*appmesh.CreateVirtualGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "CreateVirtualGateway",
+		Input:   input,
+		Output:  (*appmesh.CreateVirtualGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.CreateVirtualGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.CreateVirtualGatewayOutput), req.Error
 }
 
 func (c *Client) CreateVirtualNodeWithContext(ctx context.Context, input *appmesh.CreateVirtualNodeInput, opts ...request.Option) (*appmesh.CreateVirtualNodeOutput, error) {
@@ -167,6 +221,27 @@ func (c *Client) CreateVirtualServiceWithContext(ctx context.Context, input *app
 	return req.Output.(*appmesh.CreateVirtualServiceOutput), req.Error
 }
 
+func (c *Client) DeleteGatewayRouteWithContext(ctx context.Context, input *appmesh.DeleteGatewayRouteInput, opts ...request.Option) (*appmesh.DeleteGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "DeleteGatewayRoute",
+		Input:   input,
+		Output:  (*appmesh.DeleteGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.DeleteGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.DeleteGatewayRouteOutput), req.Error
+}
+
 func (c *Client) DeleteMeshWithContext(ctx context.Context, input *appmesh.DeleteMeshInput, opts ...request.Option) (*appmesh.DeleteMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
@@ -207,6 +282,27 @@ func (c *Client) DeleteRouteWithContext(ctx context.Context, input *appmesh.Dele
 	})
 
 	return req.Output.(*appmesh.DeleteRouteOutput), req.Error
+}
+
+func (c *Client) DeleteVirtualGatewayWithContext(ctx context.Context, input *appmesh.DeleteVirtualGatewayInput, opts ...request.Option) (*appmesh.DeleteVirtualGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "DeleteVirtualGateway",
+		Input:   input,
+		Output:  (*appmesh.DeleteVirtualGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.DeleteVirtualGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.DeleteVirtualGatewayOutput), req.Error
 }
 
 func (c *Client) DeleteVirtualNodeWithContext(ctx context.Context, input *appmesh.DeleteVirtualNodeInput, opts ...request.Option) (*appmesh.DeleteVirtualNodeOutput, error) {
@@ -272,6 +368,27 @@ func (c *Client) DeleteVirtualServiceWithContext(ctx context.Context, input *app
 	return req.Output.(*appmesh.DeleteVirtualServiceOutput), req.Error
 }
 
+func (c *Client) DescribeGatewayRouteWithContext(ctx context.Context, input *appmesh.DescribeGatewayRouteInput, opts ...request.Option) (*appmesh.DescribeGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "DescribeGatewayRoute",
+		Input:   input,
+		Output:  (*appmesh.DescribeGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.DescribeGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.DescribeGatewayRouteOutput), req.Error
+}
+
 func (c *Client) DescribeMeshWithContext(ctx context.Context, input *appmesh.DescribeMeshInput, opts ...request.Option) (*appmesh.DescribeMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
@@ -312,6 +429,27 @@ func (c *Client) DescribeRouteWithContext(ctx context.Context, input *appmesh.De
 	})
 
 	return req.Output.(*appmesh.DescribeRouteOutput), req.Error
+}
+
+func (c *Client) DescribeVirtualGatewayWithContext(ctx context.Context, input *appmesh.DescribeVirtualGatewayInput, opts ...request.Option) (*appmesh.DescribeVirtualGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "DescribeVirtualGateway",
+		Input:   input,
+		Output:  (*appmesh.DescribeVirtualGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.DescribeVirtualGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.DescribeVirtualGatewayOutput), req.Error
 }
 
 func (c *Client) DescribeVirtualNodeWithContext(ctx context.Context, input *appmesh.DescribeVirtualNodeInput, opts ...request.Option) (*appmesh.DescribeVirtualNodeOutput, error) {
@@ -375,6 +513,47 @@ func (c *Client) DescribeVirtualServiceWithContext(ctx context.Context, input *a
 	})
 
 	return req.Output.(*appmesh.DescribeVirtualServiceOutput), req.Error
+}
+
+func (c *Client) ListGatewayRoutesWithContext(ctx context.Context, input *appmesh.ListGatewayRoutesInput, opts ...request.Option) (*appmesh.ListGatewayRoutesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListGatewayRoutes",
+		Input:   input,
+		Output:  (*appmesh.ListGatewayRoutesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.ListGatewayRoutesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.ListGatewayRoutesOutput), req.Error
+}
+
+func (c *Client) ListGatewayRoutesPagesWithContext(ctx context.Context, input *appmesh.ListGatewayRoutesInput, cb func(*appmesh.ListGatewayRoutesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListGatewayRoutes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListGatewayRoutesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListMeshesWithContext(ctx context.Context, input *appmesh.ListMeshesInput, opts ...request.Option) (*appmesh.ListMeshesOutput, error) {
@@ -495,6 +674,47 @@ func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.AppMeshAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListVirtualGatewaysWithContext(ctx context.Context, input *appmesh.ListVirtualGatewaysInput, opts ...request.Option) (*appmesh.ListVirtualGatewaysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListVirtualGateways",
+		Input:   input,
+		Output:  (*appmesh.ListVirtualGatewaysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.ListVirtualGatewaysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.ListVirtualGatewaysOutput), req.Error
+}
+
+func (c *Client) ListVirtualGatewaysPagesWithContext(ctx context.Context, input *appmesh.ListVirtualGatewaysInput, cb func(*appmesh.ListVirtualGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "ListVirtualGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AppMeshAPI.ListVirtualGatewaysPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -665,6 +885,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *appmesh.Un
 	return req.Output.(*appmesh.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateGatewayRouteWithContext(ctx context.Context, input *appmesh.UpdateGatewayRouteInput, opts ...request.Option) (*appmesh.UpdateGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "UpdateGatewayRoute",
+		Input:   input,
+		Output:  (*appmesh.UpdateGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.UpdateGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.UpdateGatewayRouteOutput), req.Error
+}
+
 func (c *Client) UpdateMeshWithContext(ctx context.Context, input *appmesh.UpdateMeshInput, opts ...request.Option) (*appmesh.UpdateMeshOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appmesh",
@@ -705,6 +946,27 @@ func (c *Client) UpdateRouteWithContext(ctx context.Context, input *appmesh.Upda
 	})
 
 	return req.Output.(*appmesh.UpdateRouteOutput), req.Error
+}
+
+func (c *Client) UpdateVirtualGatewayWithContext(ctx context.Context, input *appmesh.UpdateVirtualGatewayInput, opts ...request.Option) (*appmesh.UpdateVirtualGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appmesh",
+		Action:  "UpdateVirtualGateway",
+		Input:   input,
+		Output:  (*appmesh.UpdateVirtualGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppMeshAPI.UpdateVirtualGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appmesh.UpdateVirtualGatewayOutput), req.Error
 }
 
 func (c *Client) UpdateVirtualNodeWithContext(ctx context.Context, input *appmesh.UpdateVirtualNodeInput, opts ...request.Option) (*appmesh.UpdateVirtualNodeOutput, error) {

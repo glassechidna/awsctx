@@ -31,6 +31,7 @@ type SecretsManager interface {
 	UntagResourceWithContext(ctx context.Context, input *secretsmanager.UntagResourceInput, opts ...request.Option) (*secretsmanager.UntagResourceOutput, error)
 	UpdateSecretWithContext(ctx context.Context, input *secretsmanager.UpdateSecretInput, opts ...request.Option) (*secretsmanager.UpdateSecretOutput, error)
 	UpdateSecretVersionStageWithContext(ctx context.Context, input *secretsmanager.UpdateSecretVersionStageInput, opts ...request.Option) (*secretsmanager.UpdateSecretVersionStageOutput, error)
+	ValidateResourcePolicyWithContext(ctx context.Context, input *secretsmanager.ValidateResourcePolicyInput, opts ...request.Option) (*secretsmanager.ValidateResourcePolicyOutput, error)
 }
 
 type Client struct {
@@ -464,4 +465,25 @@ func (c *Client) UpdateSecretVersionStageWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*secretsmanager.UpdateSecretVersionStageOutput), req.Error
+}
+
+func (c *Client) ValidateResourcePolicyWithContext(ctx context.Context, input *secretsmanager.ValidateResourcePolicyInput, opts ...request.Option) (*secretsmanager.ValidateResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "secretsmanager",
+		Action:  "ValidateResourcePolicy",
+		Input:   input,
+		Output:  (*secretsmanager.ValidateResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecretsManagerAPI.ValidateResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*secretsmanager.ValidateResourcePolicyOutput), req.Error
 }
