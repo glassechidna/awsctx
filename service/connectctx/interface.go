@@ -39,9 +39,13 @@ type Connect interface {
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
+	ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error)
 	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
+	StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error)
 	StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error)
 	StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error)
+	StopContactRecordingWithContext(ctx context.Context, input *connect.StopContactRecordingInput, opts ...request.Option) (*connect.StopContactRecordingOutput, error)
+	SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error)
 	UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error)
@@ -645,6 +649,27 @@ func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *connect.L
 	return req.Error
 }
 
+func (c *Client) ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ResumeContactRecording",
+		Input:   input,
+		Output:  (*connect.ResumeContactRecordingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ResumeContactRecordingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ResumeContactRecordingOutput), req.Error
+}
+
 func (c *Client) StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -664,6 +689,27 @@ func (c *Client) StartChatContactWithContext(ctx context.Context, input *connect
 	})
 
 	return req.Output.(*connect.StartChatContactOutput), req.Error
+}
+
+func (c *Client) StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StartContactRecording",
+		Input:   input,
+		Output:  (*connect.StartContactRecordingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StartContactRecordingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StartContactRecordingOutput), req.Error
 }
 
 func (c *Client) StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error) {
@@ -706,6 +752,48 @@ func (c *Client) StopContactWithContext(ctx context.Context, input *connect.Stop
 	})
 
 	return req.Output.(*connect.StopContactOutput), req.Error
+}
+
+func (c *Client) StopContactRecordingWithContext(ctx context.Context, input *connect.StopContactRecordingInput, opts ...request.Option) (*connect.StopContactRecordingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StopContactRecording",
+		Input:   input,
+		Output:  (*connect.StopContactRecordingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StopContactRecordingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StopContactRecordingOutput), req.Error
+}
+
+func (c *Client) SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SuspendContactRecording",
+		Input:   input,
+		Output:  (*connect.SuspendContactRecordingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SuspendContactRecordingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SuspendContactRecordingOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error) {

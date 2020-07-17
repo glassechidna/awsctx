@@ -34,6 +34,7 @@ type ElasticBeanstalk interface {
 	DescribeConfigurationSettingsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeConfigurationSettingsInput, opts ...request.Option) (*elasticbeanstalk.DescribeConfigurationSettingsOutput, error)
 	DescribeEnvironmentHealthWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentHealthInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentHealthOutput, error)
 	DescribeEnvironmentManagedActionHistoryWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionHistoryInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentManagedActionHistoryOutput, error)
+	DescribeEnvironmentManagedActionHistoryPagesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionHistoryInput, cb func(*elasticbeanstalk.DescribeEnvironmentManagedActionHistoryOutput, bool) bool, opts ...request.Option) error
 	DescribeEnvironmentManagedActionsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionsInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentManagedActionsOutput, error)
 	DescribeEnvironmentResourcesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentResourcesInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentResourcesOutput, error)
 	DescribeEnvironmentsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentsInput, opts ...request.Option) (*elasticbeanstalk.EnvironmentDescriptionsMessage, error)
@@ -46,6 +47,7 @@ type ElasticBeanstalk interface {
 	ListPlatformBranchesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformBranchesOutput, error)
 	ListPlatformBranchesPagesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformBranchesInput, cb func(*elasticbeanstalk.ListPlatformBranchesOutput, bool) bool, opts ...request.Option) error
 	ListPlatformVersionsWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformVersionsInput, opts ...request.Option) (*elasticbeanstalk.ListPlatformVersionsOutput, error)
+	ListPlatformVersionsPagesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformVersionsInput, cb func(*elasticbeanstalk.ListPlatformVersionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *elasticbeanstalk.ListTagsForResourceInput, opts ...request.Option) (*elasticbeanstalk.ListTagsForResourceOutput, error)
 	RebuildEnvironmentWithContext(ctx context.Context, input *elasticbeanstalk.RebuildEnvironmentInput, opts ...request.Option) (*elasticbeanstalk.RebuildEnvironmentOutput, error)
 	RequestEnvironmentInfoWithContext(ctx context.Context, input *elasticbeanstalk.RequestEnvironmentInfoInput, opts ...request.Option) (*elasticbeanstalk.RequestEnvironmentInfoOutput, error)
@@ -560,6 +562,26 @@ func (c *Client) DescribeEnvironmentManagedActionHistoryWithContext(ctx context.
 	return req.Output.(*elasticbeanstalk.DescribeEnvironmentManagedActionHistoryOutput), req.Error
 }
 
+func (c *Client) DescribeEnvironmentManagedActionHistoryPagesWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionHistoryInput, cb func(*elasticbeanstalk.DescribeEnvironmentManagedActionHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "DescribeEnvironmentManagedActionHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticBeanstalkAPI.DescribeEnvironmentManagedActionHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEnvironmentManagedActionsWithContext(ctx context.Context, input *elasticbeanstalk.DescribeEnvironmentManagedActionsInput, opts ...request.Option) (*elasticbeanstalk.DescribeEnvironmentManagedActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticbeanstalk",
@@ -808,6 +830,26 @@ func (c *Client) ListPlatformVersionsWithContext(ctx context.Context, input *ela
 	})
 
 	return req.Output.(*elasticbeanstalk.ListPlatformVersionsOutput), req.Error
+}
+
+func (c *Client) ListPlatformVersionsPagesWithContext(ctx context.Context, input *elasticbeanstalk.ListPlatformVersionsInput, cb func(*elasticbeanstalk.ListPlatformVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticbeanstalk",
+		Action:  "ListPlatformVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticBeanstalkAPI.ListPlatformVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *elasticbeanstalk.ListTagsForResourceInput, opts ...request.Option) (*elasticbeanstalk.ListTagsForResourceOutput, error) {
