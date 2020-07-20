@@ -12,23 +12,32 @@ import (
 
 type FMS interface {
 	AssociateAdminAccountWithContext(ctx context.Context, input *fms.AssociateAdminAccountInput, opts ...request.Option) (*fms.AssociateAdminAccountOutput, error)
+	DeleteAppsListWithContext(ctx context.Context, input *fms.DeleteAppsListInput, opts ...request.Option) (*fms.DeleteAppsListOutput, error)
 	DeleteNotificationChannelWithContext(ctx context.Context, input *fms.DeleteNotificationChannelInput, opts ...request.Option) (*fms.DeleteNotificationChannelOutput, error)
 	DeletePolicyWithContext(ctx context.Context, input *fms.DeletePolicyInput, opts ...request.Option) (*fms.DeletePolicyOutput, error)
+	DeleteProtocolsListWithContext(ctx context.Context, input *fms.DeleteProtocolsListInput, opts ...request.Option) (*fms.DeleteProtocolsListOutput, error)
 	DisassociateAdminAccountWithContext(ctx context.Context, input *fms.DisassociateAdminAccountInput, opts ...request.Option) (*fms.DisassociateAdminAccountOutput, error)
 	GetAdminAccountWithContext(ctx context.Context, input *fms.GetAdminAccountInput, opts ...request.Option) (*fms.GetAdminAccountOutput, error)
+	GetAppsListWithContext(ctx context.Context, input *fms.GetAppsListInput, opts ...request.Option) (*fms.GetAppsListOutput, error)
 	GetComplianceDetailWithContext(ctx context.Context, input *fms.GetComplianceDetailInput, opts ...request.Option) (*fms.GetComplianceDetailOutput, error)
 	GetNotificationChannelWithContext(ctx context.Context, input *fms.GetNotificationChannelInput, opts ...request.Option) (*fms.GetNotificationChannelOutput, error)
 	GetPolicyWithContext(ctx context.Context, input *fms.GetPolicyInput, opts ...request.Option) (*fms.GetPolicyOutput, error)
 	GetProtectionStatusWithContext(ctx context.Context, input *fms.GetProtectionStatusInput, opts ...request.Option) (*fms.GetProtectionStatusOutput, error)
+	GetProtocolsListWithContext(ctx context.Context, input *fms.GetProtocolsListInput, opts ...request.Option) (*fms.GetProtocolsListOutput, error)
+	GetViolationDetailsWithContext(ctx context.Context, input *fms.GetViolationDetailsInput, opts ...request.Option) (*fms.GetViolationDetailsOutput, error)
+	ListAppsListsWithContext(ctx context.Context, input *fms.ListAppsListsInput, opts ...request.Option) (*fms.ListAppsListsOutput, error)
 	ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error)
 	ListComplianceStatusPagesWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, cb func(*fms.ListComplianceStatusOutput, bool) bool, opts ...request.Option) error
 	ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error)
 	ListMemberAccountsPagesWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, cb func(*fms.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error)
 	ListPoliciesPagesWithContext(ctx context.Context, input *fms.ListPoliciesInput, cb func(*fms.ListPoliciesOutput, bool) bool, opts ...request.Option) error
+	ListProtocolsListsWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, opts ...request.Option) (*fms.ListProtocolsListsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error)
+	PutAppsListWithContext(ctx context.Context, input *fms.PutAppsListInput, opts ...request.Option) (*fms.PutAppsListOutput, error)
 	PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error)
 	PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyInput, opts ...request.Option) (*fms.PutPolicyOutput, error)
+	PutProtocolsListWithContext(ctx context.Context, input *fms.PutProtocolsListInput, opts ...request.Option) (*fms.PutProtocolsListOutput, error)
 	TagResourceWithContext(ctx context.Context, input *fms.TagResourceInput, opts ...request.Option) (*fms.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *fms.UntagResourceInput, opts ...request.Option) (*fms.UntagResourceOutput, error)
 }
@@ -67,6 +76,27 @@ func (c *Client) AssociateAdminAccountWithContext(ctx context.Context, input *fm
 	})
 
 	return req.Output.(*fms.AssociateAdminAccountOutput), req.Error
+}
+
+func (c *Client) DeleteAppsListWithContext(ctx context.Context, input *fms.DeleteAppsListInput, opts ...request.Option) (*fms.DeleteAppsListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "DeleteAppsList",
+		Input:   input,
+		Output:  (*fms.DeleteAppsListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.DeleteAppsListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.DeleteAppsListOutput), req.Error
 }
 
 func (c *Client) DeleteNotificationChannelWithContext(ctx context.Context, input *fms.DeleteNotificationChannelInput, opts ...request.Option) (*fms.DeleteNotificationChannelOutput, error) {
@@ -111,6 +141,27 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *fms.DeleteP
 	return req.Output.(*fms.DeletePolicyOutput), req.Error
 }
 
+func (c *Client) DeleteProtocolsListWithContext(ctx context.Context, input *fms.DeleteProtocolsListInput, opts ...request.Option) (*fms.DeleteProtocolsListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "DeleteProtocolsList",
+		Input:   input,
+		Output:  (*fms.DeleteProtocolsListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.DeleteProtocolsListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.DeleteProtocolsListOutput), req.Error
+}
+
 func (c *Client) DisassociateAdminAccountWithContext(ctx context.Context, input *fms.DisassociateAdminAccountInput, opts ...request.Option) (*fms.DisassociateAdminAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -151,6 +202,27 @@ func (c *Client) GetAdminAccountWithContext(ctx context.Context, input *fms.GetA
 	})
 
 	return req.Output.(*fms.GetAdminAccountOutput), req.Error
+}
+
+func (c *Client) GetAppsListWithContext(ctx context.Context, input *fms.GetAppsListInput, opts ...request.Option) (*fms.GetAppsListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "GetAppsList",
+		Input:   input,
+		Output:  (*fms.GetAppsListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.GetAppsListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.GetAppsListOutput), req.Error
 }
 
 func (c *Client) GetComplianceDetailWithContext(ctx context.Context, input *fms.GetComplianceDetailInput, opts ...request.Option) (*fms.GetComplianceDetailOutput, error) {
@@ -235,6 +307,69 @@ func (c *Client) GetProtectionStatusWithContext(ctx context.Context, input *fms.
 	})
 
 	return req.Output.(*fms.GetProtectionStatusOutput), req.Error
+}
+
+func (c *Client) GetProtocolsListWithContext(ctx context.Context, input *fms.GetProtocolsListInput, opts ...request.Option) (*fms.GetProtocolsListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "GetProtocolsList",
+		Input:   input,
+		Output:  (*fms.GetProtocolsListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.GetProtocolsListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.GetProtocolsListOutput), req.Error
+}
+
+func (c *Client) GetViolationDetailsWithContext(ctx context.Context, input *fms.GetViolationDetailsInput, opts ...request.Option) (*fms.GetViolationDetailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "GetViolationDetails",
+		Input:   input,
+		Output:  (*fms.GetViolationDetailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.GetViolationDetailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.GetViolationDetailsOutput), req.Error
+}
+
+func (c *Client) ListAppsListsWithContext(ctx context.Context, input *fms.ListAppsListsInput, opts ...request.Option) (*fms.ListAppsListsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListAppsLists",
+		Input:   input,
+		Output:  (*fms.ListAppsListsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.ListAppsListsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.ListAppsListsOutput), req.Error
 }
 
 func (c *Client) ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error) {
@@ -360,6 +495,27 @@ func (c *Client) ListPoliciesPagesWithContext(ctx context.Context, input *fms.Li
 	return req.Error
 }
 
+func (c *Client) ListProtocolsListsWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, opts ...request.Option) (*fms.ListProtocolsListsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListProtocolsLists",
+		Input:   input,
+		Output:  (*fms.ListProtocolsListsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.ListProtocolsListsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.ListProtocolsListsOutput), req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -379,6 +535,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fms.
 	})
 
 	return req.Output.(*fms.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) PutAppsListWithContext(ctx context.Context, input *fms.PutAppsListInput, opts ...request.Option) (*fms.PutAppsListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "PutAppsList",
+		Input:   input,
+		Output:  (*fms.PutAppsListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.PutAppsListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.PutAppsListOutput), req.Error
 }
 
 func (c *Client) PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error) {
@@ -421,6 +598,27 @@ func (c *Client) PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyI
 	})
 
 	return req.Output.(*fms.PutPolicyOutput), req.Error
+}
+
+func (c *Client) PutProtocolsListWithContext(ctx context.Context, input *fms.PutProtocolsListInput, opts ...request.Option) (*fms.PutProtocolsListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "PutProtocolsList",
+		Input:   input,
+		Output:  (*fms.PutProtocolsListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.PutProtocolsListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.PutProtocolsListOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *fms.TagResourceInput, opts ...request.Option) (*fms.TagResourceOutput, error) {

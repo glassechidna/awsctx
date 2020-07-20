@@ -11,21 +11,27 @@ import (
 )
 
 type CloudFront interface {
+	CreateCachePolicyWithContext(ctx context.Context, input *cloudfront.CreateCachePolicyInput, opts ...request.Option) (*cloudfront.CreateCachePolicyOutput, error)
 	CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.CreateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.CreateCloudFrontOriginAccessIdentityOutput, error)
 	CreateDistributionWithContext(ctx context.Context, input *cloudfront.CreateDistributionInput, opts ...request.Option) (*cloudfront.CreateDistributionOutput, error)
 	CreateDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateDistributionWithTagsOutput, error)
 	CreateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionConfigOutput, error)
 	CreateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionProfileOutput, error)
 	CreateInvalidationWithContext(ctx context.Context, input *cloudfront.CreateInvalidationInput, opts ...request.Option) (*cloudfront.CreateInvalidationOutput, error)
+	CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error)
 	CreatePublicKeyWithContext(ctx context.Context, input *cloudfront.CreatePublicKeyInput, opts ...request.Option) (*cloudfront.CreatePublicKeyOutput, error)
 	CreateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionOutput, error)
 	CreateStreamingDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionWithTagsOutput, error)
+	DeleteCachePolicyWithContext(ctx context.Context, input *cloudfront.DeleteCachePolicyInput, opts ...request.Option) (*cloudfront.DeleteCachePolicyOutput, error)
 	DeleteCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.DeleteCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.DeleteCloudFrontOriginAccessIdentityOutput, error)
 	DeleteDistributionWithContext(ctx context.Context, input *cloudfront.DeleteDistributionInput, opts ...request.Option) (*cloudfront.DeleteDistributionOutput, error)
 	DeleteFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionConfigOutput, error)
 	DeleteFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionProfileOutput, error)
+	DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error)
 	DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error)
 	DeleteStreamingDistributionWithContext(ctx context.Context, input *cloudfront.DeleteStreamingDistributionInput, opts ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error)
+	GetCachePolicyWithContext(ctx context.Context, input *cloudfront.GetCachePolicyInput, opts ...request.Option) (*cloudfront.GetCachePolicyOutput, error)
+	GetCachePolicyConfigWithContext(ctx context.Context, input *cloudfront.GetCachePolicyConfigInput, opts ...request.Option) (*cloudfront.GetCachePolicyConfigOutput, error)
 	GetCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityOutput, error)
 	GetCloudFrontOriginAccessIdentityConfigWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityConfigInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityConfigOutput, error)
 	GetDistributionWithContext(ctx context.Context, input *cloudfront.GetDistributionInput, opts ...request.Option) (*cloudfront.GetDistributionOutput, error)
@@ -35,29 +41,37 @@ type CloudFront interface {
 	GetFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileOutput, error)
 	GetFieldLevelEncryptionProfileConfigWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileConfigInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileConfigOutput, error)
 	GetInvalidationWithContext(ctx context.Context, input *cloudfront.GetInvalidationInput, opts ...request.Option) (*cloudfront.GetInvalidationOutput, error)
+	GetOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyOutput, error)
+	GetOriginRequestPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyConfigInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyConfigOutput, error)
 	GetPublicKeyWithContext(ctx context.Context, input *cloudfront.GetPublicKeyInput, opts ...request.Option) (*cloudfront.GetPublicKeyOutput, error)
 	GetPublicKeyConfigWithContext(ctx context.Context, input *cloudfront.GetPublicKeyConfigInput, opts ...request.Option) (*cloudfront.GetPublicKeyConfigOutput, error)
 	GetStreamingDistributionWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionOutput, error)
 	GetStreamingDistributionConfigWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionConfigInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionConfigOutput, error)
+	ListCachePoliciesWithContext(ctx context.Context, input *cloudfront.ListCachePoliciesInput, opts ...request.Option) (*cloudfront.ListCachePoliciesOutput, error)
 	ListCloudFrontOriginAccessIdentitiesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, opts ...request.Option) (*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, error)
 	ListCloudFrontOriginAccessIdentitiesPagesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, cb func(*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, bool) bool, opts ...request.Option) error
 	ListDistributionsWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, opts ...request.Option) (*cloudfront.ListDistributionsOutput, error)
 	ListDistributionsPagesWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, cb func(*cloudfront.ListDistributionsOutput, bool) bool, opts ...request.Option) error
+	ListDistributionsByCachePolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByCachePolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByCachePolicyIdOutput, error)
+	ListDistributionsByOriginRequestPolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByOriginRequestPolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByOriginRequestPolicyIdOutput, error)
 	ListDistributionsByWebACLIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByWebACLIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByWebACLIdOutput, error)
 	ListFieldLevelEncryptionConfigsWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionConfigsInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionConfigsOutput, error)
 	ListFieldLevelEncryptionProfilesWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionProfilesInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionProfilesOutput, error)
 	ListInvalidationsWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, opts ...request.Option) (*cloudfront.ListInvalidationsOutput, error)
 	ListInvalidationsPagesWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, cb func(*cloudfront.ListInvalidationsOutput, bool) bool, opts ...request.Option) error
+	ListOriginRequestPoliciesWithContext(ctx context.Context, input *cloudfront.ListOriginRequestPoliciesInput, opts ...request.Option) (*cloudfront.ListOriginRequestPoliciesOutput, error)
 	ListPublicKeysWithContext(ctx context.Context, input *cloudfront.ListPublicKeysInput, opts ...request.Option) (*cloudfront.ListPublicKeysOutput, error)
 	ListStreamingDistributionsWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, opts ...request.Option) (*cloudfront.ListStreamingDistributionsOutput, error)
 	ListStreamingDistributionsPagesWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, cb func(*cloudfront.ListStreamingDistributionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudfront.ListTagsForResourceInput, opts ...request.Option) (*cloudfront.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *cloudfront.TagResourceInput, opts ...request.Option) (*cloudfront.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *cloudfront.UntagResourceInput, opts ...request.Option) (*cloudfront.UntagResourceOutput, error)
+	UpdateCachePolicyWithContext(ctx context.Context, input *cloudfront.UpdateCachePolicyInput, opts ...request.Option) (*cloudfront.UpdateCachePolicyOutput, error)
 	UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.UpdateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput, error)
 	UpdateDistributionWithContext(ctx context.Context, input *cloudfront.UpdateDistributionInput, opts ...request.Option) (*cloudfront.UpdateDistributionOutput, error)
 	UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionConfigOutput, error)
 	UpdateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionProfileOutput, error)
+	UpdateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.UpdateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.UpdateOriginRequestPolicyOutput, error)
 	UpdatePublicKeyWithContext(ctx context.Context, input *cloudfront.UpdatePublicKeyInput, opts ...request.Option) (*cloudfront.UpdatePublicKeyOutput, error)
 	UpdateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.UpdateStreamingDistributionInput, opts ...request.Option) (*cloudfront.UpdateStreamingDistributionOutput, error)
 }
@@ -76,6 +90,27 @@ func New(base cloudfrontiface.CloudFrontAPI, ctxer awsctx.Contexter) CloudFront 
 
 var _ CloudFront = (*cloudfront.CloudFront)(nil)
 var _ CloudFront = (*Client)(nil)
+
+func (c *Client) CreateCachePolicyWithContext(ctx context.Context, input *cloudfront.CreateCachePolicyInput, opts ...request.Option) (*cloudfront.CreateCachePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateCachePolicy",
+		Input:   input,
+		Output:  (*cloudfront.CreateCachePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateCachePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateCachePolicyOutput), req.Error
+}
 
 func (c *Client) CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.CreateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.CreateCloudFrontOriginAccessIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -203,6 +238,27 @@ func (c *Client) CreateInvalidationWithContext(ctx context.Context, input *cloud
 	return req.Output.(*cloudfront.CreateInvalidationOutput), req.Error
 }
 
+func (c *Client) CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateOriginRequestPolicy",
+		Input:   input,
+		Output:  (*cloudfront.CreateOriginRequestPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateOriginRequestPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateOriginRequestPolicyOutput), req.Error
+}
+
 func (c *Client) CreatePublicKeyWithContext(ctx context.Context, input *cloudfront.CreatePublicKeyInput, opts ...request.Option) (*cloudfront.CreatePublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -264,6 +320,27 @@ func (c *Client) CreateStreamingDistributionWithTagsWithContext(ctx context.Cont
 	})
 
 	return req.Output.(*cloudfront.CreateStreamingDistributionWithTagsOutput), req.Error
+}
+
+func (c *Client) DeleteCachePolicyWithContext(ctx context.Context, input *cloudfront.DeleteCachePolicyInput, opts ...request.Option) (*cloudfront.DeleteCachePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteCachePolicy",
+		Input:   input,
+		Output:  (*cloudfront.DeleteCachePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteCachePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteCachePolicyOutput), req.Error
 }
 
 func (c *Client) DeleteCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.DeleteCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.DeleteCloudFrontOriginAccessIdentityOutput, error) {
@@ -350,6 +427,27 @@ func (c *Client) DeleteFieldLevelEncryptionProfileWithContext(ctx context.Contex
 	return req.Output.(*cloudfront.DeleteFieldLevelEncryptionProfileOutput), req.Error
 }
 
+func (c *Client) DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteOriginRequestPolicy",
+		Input:   input,
+		Output:  (*cloudfront.DeleteOriginRequestPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteOriginRequestPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteOriginRequestPolicyOutput), req.Error
+}
+
 func (c *Client) DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -390,6 +488,48 @@ func (c *Client) DeleteStreamingDistributionWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*cloudfront.DeleteStreamingDistributionOutput), req.Error
+}
+
+func (c *Client) GetCachePolicyWithContext(ctx context.Context, input *cloudfront.GetCachePolicyInput, opts ...request.Option) (*cloudfront.GetCachePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetCachePolicy",
+		Input:   input,
+		Output:  (*cloudfront.GetCachePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetCachePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetCachePolicyOutput), req.Error
+}
+
+func (c *Client) GetCachePolicyConfigWithContext(ctx context.Context, input *cloudfront.GetCachePolicyConfigInput, opts ...request.Option) (*cloudfront.GetCachePolicyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetCachePolicyConfig",
+		Input:   input,
+		Output:  (*cloudfront.GetCachePolicyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetCachePolicyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetCachePolicyConfigOutput), req.Error
 }
 
 func (c *Client) GetCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityOutput, error) {
@@ -581,6 +721,48 @@ func (c *Client) GetInvalidationWithContext(ctx context.Context, input *cloudfro
 	return req.Output.(*cloudfront.GetInvalidationOutput), req.Error
 }
 
+func (c *Client) GetOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetOriginRequestPolicy",
+		Input:   input,
+		Output:  (*cloudfront.GetOriginRequestPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetOriginRequestPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetOriginRequestPolicyOutput), req.Error
+}
+
+func (c *Client) GetOriginRequestPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyConfigInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetOriginRequestPolicyConfig",
+		Input:   input,
+		Output:  (*cloudfront.GetOriginRequestPolicyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetOriginRequestPolicyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetOriginRequestPolicyConfigOutput), req.Error
+}
+
 func (c *Client) GetPublicKeyWithContext(ctx context.Context, input *cloudfront.GetPublicKeyInput, opts ...request.Option) (*cloudfront.GetPublicKeyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -665,6 +847,27 @@ func (c *Client) GetStreamingDistributionConfigWithContext(ctx context.Context, 
 	return req.Output.(*cloudfront.GetStreamingDistributionConfigOutput), req.Error
 }
 
+func (c *Client) ListCachePoliciesWithContext(ctx context.Context, input *cloudfront.ListCachePoliciesInput, opts ...request.Option) (*cloudfront.ListCachePoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListCachePolicies",
+		Input:   input,
+		Output:  (*cloudfront.ListCachePoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListCachePoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListCachePoliciesOutput), req.Error
+}
+
 func (c *Client) ListCloudFrontOriginAccessIdentitiesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, opts ...request.Option) (*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -745,6 +948,48 @@ func (c *Client) ListDistributionsPagesWithContext(ctx context.Context, input *c
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListDistributionsByCachePolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByCachePolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByCachePolicyIdOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListDistributionsByCachePolicyId",
+		Input:   input,
+		Output:  (*cloudfront.ListDistributionsByCachePolicyIdOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListDistributionsByCachePolicyIdWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListDistributionsByCachePolicyIdOutput), req.Error
+}
+
+func (c *Client) ListDistributionsByOriginRequestPolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByOriginRequestPolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByOriginRequestPolicyIdOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListDistributionsByOriginRequestPolicyId",
+		Input:   input,
+		Output:  (*cloudfront.ListDistributionsByOriginRequestPolicyIdOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListDistributionsByOriginRequestPolicyIdWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListDistributionsByOriginRequestPolicyIdOutput), req.Error
 }
 
 func (c *Client) ListDistributionsByWebACLIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByWebACLIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByWebACLIdOutput, error) {
@@ -849,6 +1094,27 @@ func (c *Client) ListInvalidationsPagesWithContext(ctx context.Context, input *c
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListOriginRequestPoliciesWithContext(ctx context.Context, input *cloudfront.ListOriginRequestPoliciesInput, opts ...request.Option) (*cloudfront.ListOriginRequestPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListOriginRequestPolicies",
+		Input:   input,
+		Output:  (*cloudfront.ListOriginRequestPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListOriginRequestPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListOriginRequestPoliciesOutput), req.Error
 }
 
 func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudfront.ListPublicKeysInput, opts ...request.Option) (*cloudfront.ListPublicKeysOutput, error) {
@@ -976,6 +1242,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudfront
 	return req.Output.(*cloudfront.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateCachePolicyWithContext(ctx context.Context, input *cloudfront.UpdateCachePolicyInput, opts ...request.Option) (*cloudfront.UpdateCachePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateCachePolicy",
+		Input:   input,
+		Output:  (*cloudfront.UpdateCachePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateCachePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateCachePolicyOutput), req.Error
+}
+
 func (c *Client) UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.UpdateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -1058,6 +1345,27 @@ func (c *Client) UpdateFieldLevelEncryptionProfileWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*cloudfront.UpdateFieldLevelEncryptionProfileOutput), req.Error
+}
+
+func (c *Client) UpdateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.UpdateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.UpdateOriginRequestPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateOriginRequestPolicy",
+		Input:   input,
+		Output:  (*cloudfront.UpdateOriginRequestPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateOriginRequestPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateOriginRequestPolicyOutput), req.Error
 }
 
 func (c *Client) UpdatePublicKeyWithContext(ctx context.Context, input *cloudfront.UpdatePublicKeyInput, opts ...request.Option) (*cloudfront.UpdatePublicKeyOutput, error) {
