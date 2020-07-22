@@ -29,6 +29,7 @@ type MediaLive interface {
 	DescribeChannelWithContext(ctx context.Context, input *medialive.DescribeChannelInput, opts ...request.Option) (*medialive.DescribeChannelOutput, error)
 	DescribeInputWithContext(ctx context.Context, input *medialive.DescribeInputInput, opts ...request.Option) (*medialive.DescribeInputOutput, error)
 	DescribeInputDeviceWithContext(ctx context.Context, input *medialive.DescribeInputDeviceInput, opts ...request.Option) (*medialive.DescribeInputDeviceOutput, error)
+	DescribeInputDeviceThumbnailWithContext(ctx context.Context, input *medialive.DescribeInputDeviceThumbnailInput, opts ...request.Option) (*medialive.DescribeInputDeviceThumbnailOutput, error)
 	DescribeInputSecurityGroupWithContext(ctx context.Context, input *medialive.DescribeInputSecurityGroupInput, opts ...request.Option) (*medialive.DescribeInputSecurityGroupOutput, error)
 	DescribeMultiplexWithContext(ctx context.Context, input *medialive.DescribeMultiplexInput, opts ...request.Option) (*medialive.DescribeMultiplexOutput, error)
 	DescribeMultiplexProgramWithContext(ctx context.Context, input *medialive.DescribeMultiplexProgramInput, opts ...request.Option) (*medialive.DescribeMultiplexProgramOutput, error)
@@ -459,6 +460,27 @@ func (c *Client) DescribeInputDeviceWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*medialive.DescribeInputDeviceOutput), req.Error
+}
+
+func (c *Client) DescribeInputDeviceThumbnailWithContext(ctx context.Context, input *medialive.DescribeInputDeviceThumbnailInput, opts ...request.Option) (*medialive.DescribeInputDeviceThumbnailOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DescribeInputDeviceThumbnail",
+		Input:   input,
+		Output:  (*medialive.DescribeInputDeviceThumbnailOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DescribeInputDeviceThumbnailWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DescribeInputDeviceThumbnailOutput), req.Error
 }
 
 func (c *Client) DescribeInputSecurityGroupWithContext(ctx context.Context, input *medialive.DescribeInputSecurityGroupInput, opts ...request.Option) (*medialive.DescribeInputSecurityGroupOutput, error) {

@@ -12,6 +12,7 @@ import (
 
 type QuickSight interface {
 	CancelIngestionWithContext(ctx context.Context, input *quicksight.CancelIngestionInput, opts ...request.Option) (*quicksight.CancelIngestionOutput, error)
+	CreateAccountCustomizationWithContext(ctx context.Context, input *quicksight.CreateAccountCustomizationInput, opts ...request.Option) (*quicksight.CreateAccountCustomizationOutput, error)
 	CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error)
 	CreateDataSetWithContext(ctx context.Context, input *quicksight.CreateDataSetInput, opts ...request.Option) (*quicksight.CreateDataSetOutput, error)
 	CreateDataSourceWithContext(ctx context.Context, input *quicksight.CreateDataSourceInput, opts ...request.Option) (*quicksight.CreateDataSourceOutput, error)
@@ -19,22 +20,27 @@ type QuickSight interface {
 	CreateGroupMembershipWithContext(ctx context.Context, input *quicksight.CreateGroupMembershipInput, opts ...request.Option) (*quicksight.CreateGroupMembershipOutput, error)
 	CreateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.CreateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.CreateIAMPolicyAssignmentOutput, error)
 	CreateIngestionWithContext(ctx context.Context, input *quicksight.CreateIngestionInput, opts ...request.Option) (*quicksight.CreateIngestionOutput, error)
+	CreateNamespaceWithContext(ctx context.Context, input *quicksight.CreateNamespaceInput, opts ...request.Option) (*quicksight.CreateNamespaceOutput, error)
 	CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error)
 	CreateTemplateAliasWithContext(ctx context.Context, input *quicksight.CreateTemplateAliasInput, opts ...request.Option) (*quicksight.CreateTemplateAliasOutput, error)
 	CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error)
 	CreateThemeAliasWithContext(ctx context.Context, input *quicksight.CreateThemeAliasInput, opts ...request.Option) (*quicksight.CreateThemeAliasOutput, error)
+	DeleteAccountCustomizationWithContext(ctx context.Context, input *quicksight.DeleteAccountCustomizationInput, opts ...request.Option) (*quicksight.DeleteAccountCustomizationOutput, error)
 	DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error)
 	DeleteDataSetWithContext(ctx context.Context, input *quicksight.DeleteDataSetInput, opts ...request.Option) (*quicksight.DeleteDataSetOutput, error)
 	DeleteDataSourceWithContext(ctx context.Context, input *quicksight.DeleteDataSourceInput, opts ...request.Option) (*quicksight.DeleteDataSourceOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *quicksight.DeleteGroupInput, opts ...request.Option) (*quicksight.DeleteGroupOutput, error)
 	DeleteGroupMembershipWithContext(ctx context.Context, input *quicksight.DeleteGroupMembershipInput, opts ...request.Option) (*quicksight.DeleteGroupMembershipOutput, error)
 	DeleteIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DeleteIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DeleteIAMPolicyAssignmentOutput, error)
+	DeleteNamespaceWithContext(ctx context.Context, input *quicksight.DeleteNamespaceInput, opts ...request.Option) (*quicksight.DeleteNamespaceOutput, error)
 	DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error)
 	DeleteTemplateAliasWithContext(ctx context.Context, input *quicksight.DeleteTemplateAliasInput, opts ...request.Option) (*quicksight.DeleteTemplateAliasOutput, error)
 	DeleteThemeWithContext(ctx context.Context, input *quicksight.DeleteThemeInput, opts ...request.Option) (*quicksight.DeleteThemeOutput, error)
 	DeleteThemeAliasWithContext(ctx context.Context, input *quicksight.DeleteThemeAliasInput, opts ...request.Option) (*quicksight.DeleteThemeAliasOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error)
 	DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error)
+	DescribeAccountCustomizationWithContext(ctx context.Context, input *quicksight.DescribeAccountCustomizationInput, opts ...request.Option) (*quicksight.DescribeAccountCustomizationOutput, error)
+	DescribeAccountSettingsWithContext(ctx context.Context, input *quicksight.DescribeAccountSettingsInput, opts ...request.Option) (*quicksight.DescribeAccountSettingsOutput, error)
 	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
 	DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error)
 	DescribeDataSetWithContext(ctx context.Context, input *quicksight.DescribeDataSetInput, opts ...request.Option) (*quicksight.DescribeDataSetOutput, error)
@@ -44,6 +50,7 @@ type QuickSight interface {
 	DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error)
 	DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error)
 	DescribeIngestionWithContext(ctx context.Context, input *quicksight.DescribeIngestionInput, opts ...request.Option) (*quicksight.DescribeIngestionOutput, error)
+	DescribeNamespaceWithContext(ctx context.Context, input *quicksight.DescribeNamespaceInput, opts ...request.Option) (*quicksight.DescribeNamespaceOutput, error)
 	DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error)
 	DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error)
 	DescribeTemplatePermissionsWithContext(ctx context.Context, input *quicksight.DescribeTemplatePermissionsInput, opts ...request.Option) (*quicksight.DescribeTemplatePermissionsOutput, error)
@@ -52,6 +59,7 @@ type QuickSight interface {
 	DescribeThemePermissionsWithContext(ctx context.Context, input *quicksight.DescribeThemePermissionsInput, opts ...request.Option) (*quicksight.DescribeThemePermissionsOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error)
 	GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error)
+	GetSessionEmbedUrlWithContext(ctx context.Context, input *quicksight.GetSessionEmbedUrlInput, opts ...request.Option) (*quicksight.GetSessionEmbedUrlOutput, error)
 	ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error)
 	ListDashboardVersionsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, cb func(*quicksight.ListDashboardVersionsOutput, bool) bool, opts ...request.Option) error
 	ListDashboardsWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, opts ...request.Option) (*quicksight.ListDashboardsOutput, error)
@@ -66,6 +74,8 @@ type QuickSight interface {
 	ListIAMPolicyAssignmentsForUserWithContext(ctx context.Context, input *quicksight.ListIAMPolicyAssignmentsForUserInput, opts ...request.Option) (*quicksight.ListIAMPolicyAssignmentsForUserOutput, error)
 	ListIngestionsWithContext(ctx context.Context, input *quicksight.ListIngestionsInput, opts ...request.Option) (*quicksight.ListIngestionsOutput, error)
 	ListIngestionsPagesWithContext(ctx context.Context, input *quicksight.ListIngestionsInput, cb func(*quicksight.ListIngestionsOutput, bool) bool, opts ...request.Option) error
+	ListNamespacesWithContext(ctx context.Context, input *quicksight.ListNamespacesInput, opts ...request.Option) (*quicksight.ListNamespacesOutput, error)
+	ListNamespacesPagesWithContext(ctx context.Context, input *quicksight.ListNamespacesInput, cb func(*quicksight.ListNamespacesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *quicksight.ListTagsForResourceInput, opts ...request.Option) (*quicksight.ListTagsForResourceOutput, error)
 	ListTemplateAliasesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, opts ...request.Option) (*quicksight.ListTemplateAliasesOutput, error)
 	ListTemplateAliasesPagesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, cb func(*quicksight.ListTemplateAliasesOutput, bool) bool, opts ...request.Option) error
@@ -83,6 +93,8 @@ type QuickSight interface {
 	SearchDashboardsPagesWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, cb func(*quicksight.SearchDashboardsOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error)
+	UpdateAccountCustomizationWithContext(ctx context.Context, input *quicksight.UpdateAccountCustomizationInput, opts ...request.Option) (*quicksight.UpdateAccountCustomizationOutput, error)
+	UpdateAccountSettingsWithContext(ctx context.Context, input *quicksight.UpdateAccountSettingsInput, opts ...request.Option) (*quicksight.UpdateAccountSettingsOutput, error)
 	UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error)
 	UpdateDashboardPermissionsWithContext(ctx context.Context, input *quicksight.UpdateDashboardPermissionsInput, opts ...request.Option) (*quicksight.UpdateDashboardPermissionsOutput, error)
 	UpdateDashboardPublishedVersionWithContext(ctx context.Context, input *quicksight.UpdateDashboardPublishedVersionInput, opts ...request.Option) (*quicksight.UpdateDashboardPublishedVersionOutput, error)
@@ -135,6 +147,27 @@ func (c *Client) CancelIngestionWithContext(ctx context.Context, input *quicksig
 	})
 
 	return req.Output.(*quicksight.CancelIngestionOutput), req.Error
+}
+
+func (c *Client) CreateAccountCustomizationWithContext(ctx context.Context, input *quicksight.CreateAccountCustomizationInput, opts ...request.Option) (*quicksight.CreateAccountCustomizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateAccountCustomization",
+		Input:   input,
+		Output:  (*quicksight.CreateAccountCustomizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateAccountCustomizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateAccountCustomizationOutput), req.Error
 }
 
 func (c *Client) CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error) {
@@ -284,6 +317,27 @@ func (c *Client) CreateIngestionWithContext(ctx context.Context, input *quicksig
 	return req.Output.(*quicksight.CreateIngestionOutput), req.Error
 }
 
+func (c *Client) CreateNamespaceWithContext(ctx context.Context, input *quicksight.CreateNamespaceInput, opts ...request.Option) (*quicksight.CreateNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateNamespace",
+		Input:   input,
+		Output:  (*quicksight.CreateNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateNamespaceOutput), req.Error
+}
+
 func (c *Client) CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -366,6 +420,27 @@ func (c *Client) CreateThemeAliasWithContext(ctx context.Context, input *quicksi
 	})
 
 	return req.Output.(*quicksight.CreateThemeAliasOutput), req.Error
+}
+
+func (c *Client) DeleteAccountCustomizationWithContext(ctx context.Context, input *quicksight.DeleteAccountCustomizationInput, opts ...request.Option) (*quicksight.DeleteAccountCustomizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteAccountCustomization",
+		Input:   input,
+		Output:  (*quicksight.DeleteAccountCustomizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteAccountCustomizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteAccountCustomizationOutput), req.Error
 }
 
 func (c *Client) DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error) {
@@ -494,6 +569,27 @@ func (c *Client) DeleteIAMPolicyAssignmentWithContext(ctx context.Context, input
 	return req.Output.(*quicksight.DeleteIAMPolicyAssignmentOutput), req.Error
 }
 
+func (c *Client) DeleteNamespaceWithContext(ctx context.Context, input *quicksight.DeleteNamespaceInput, opts ...request.Option) (*quicksight.DeleteNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteNamespace",
+		Input:   input,
+		Output:  (*quicksight.DeleteNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteNamespaceOutput), req.Error
+}
+
 func (c *Client) DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -618,6 +714,48 @@ func (c *Client) DeleteUserByPrincipalIdWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*quicksight.DeleteUserByPrincipalIdOutput), req.Error
+}
+
+func (c *Client) DescribeAccountCustomizationWithContext(ctx context.Context, input *quicksight.DescribeAccountCustomizationInput, opts ...request.Option) (*quicksight.DescribeAccountCustomizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAccountCustomization",
+		Input:   input,
+		Output:  (*quicksight.DescribeAccountCustomizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAccountCustomizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAccountCustomizationOutput), req.Error
+}
+
+func (c *Client) DescribeAccountSettingsWithContext(ctx context.Context, input *quicksight.DescribeAccountSettingsInput, opts ...request.Option) (*quicksight.DescribeAccountSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAccountSettings",
+		Input:   input,
+		Output:  (*quicksight.DescribeAccountSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAccountSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAccountSettingsOutput), req.Error
 }
 
 func (c *Client) DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error) {
@@ -809,6 +947,27 @@ func (c *Client) DescribeIngestionWithContext(ctx context.Context, input *quicks
 	return req.Output.(*quicksight.DescribeIngestionOutput), req.Error
 }
 
+func (c *Client) DescribeNamespaceWithContext(ctx context.Context, input *quicksight.DescribeNamespaceInput, opts ...request.Option) (*quicksight.DescribeNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeNamespace",
+		Input:   input,
+		Output:  (*quicksight.DescribeNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeNamespaceOutput), req.Error
+}
+
 func (c *Client) DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -975,6 +1134,27 @@ func (c *Client) GetDashboardEmbedUrlWithContext(ctx context.Context, input *qui
 	})
 
 	return req.Output.(*quicksight.GetDashboardEmbedUrlOutput), req.Error
+}
+
+func (c *Client) GetSessionEmbedUrlWithContext(ctx context.Context, input *quicksight.GetSessionEmbedUrlInput, opts ...request.Option) (*quicksight.GetSessionEmbedUrlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "GetSessionEmbedUrl",
+		Input:   input,
+		Output:  (*quicksight.GetSessionEmbedUrlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.GetSessionEmbedUrlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.GetSessionEmbedUrlOutput), req.Error
 }
 
 func (c *Client) ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error) {
@@ -1261,6 +1441,47 @@ func (c *Client) ListIngestionsPagesWithContext(ctx context.Context, input *quic
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.QuickSightAPI.ListIngestionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListNamespacesWithContext(ctx context.Context, input *quicksight.ListNamespacesInput, opts ...request.Option) (*quicksight.ListNamespacesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListNamespaces",
+		Input:   input,
+		Output:  (*quicksight.ListNamespacesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListNamespacesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListNamespacesOutput), req.Error
+}
+
+func (c *Client) ListNamespacesPagesWithContext(ctx context.Context, input *quicksight.ListNamespacesInput, cb func(*quicksight.ListNamespacesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListNamespaces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListNamespacesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1617,6 +1838,48 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *quicksight
 	})
 
 	return req.Output.(*quicksight.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAccountCustomizationWithContext(ctx context.Context, input *quicksight.UpdateAccountCustomizationInput, opts ...request.Option) (*quicksight.UpdateAccountCustomizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateAccountCustomization",
+		Input:   input,
+		Output:  (*quicksight.UpdateAccountCustomizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateAccountCustomizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateAccountCustomizationOutput), req.Error
+}
+
+func (c *Client) UpdateAccountSettingsWithContext(ctx context.Context, input *quicksight.UpdateAccountSettingsInput, opts ...request.Option) (*quicksight.UpdateAccountSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateAccountSettings",
+		Input:   input,
+		Output:  (*quicksight.UpdateAccountSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateAccountSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateAccountSettingsOutput), req.Error
 }
 
 func (c *Client) UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error) {
