@@ -30,6 +30,7 @@ type WorkSpaces interface {
 	DescribeWorkspaceBundlesPagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, cb func(*workspaces.DescribeWorkspaceBundlesOutput, bool) bool, opts ...request.Option) error
 	DescribeWorkspaceDirectoriesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceDirectoriesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceDirectoriesOutput, error)
 	DescribeWorkspaceDirectoriesPagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceDirectoriesInput, cb func(*workspaces.DescribeWorkspaceDirectoriesOutput, bool) bool, opts ...request.Option) error
+	DescribeWorkspaceImagePermissionsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceImagePermissionsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceImagePermissionsOutput, error)
 	DescribeWorkspaceImagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceImagesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceImagesOutput, error)
 	DescribeWorkspaceSnapshotsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceSnapshotsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceSnapshotsOutput, error)
 	DescribeWorkspacesWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesInput, opts ...request.Option) (*workspaces.DescribeWorkspacesOutput, error)
@@ -55,6 +56,7 @@ type WorkSpaces interface {
 	StopWorkspacesWithContext(ctx context.Context, input *workspaces.StopWorkspacesInput, opts ...request.Option) (*workspaces.StopWorkspacesOutput, error)
 	TerminateWorkspacesWithContext(ctx context.Context, input *workspaces.TerminateWorkspacesInput, opts ...request.Option) (*workspaces.TerminateWorkspacesOutput, error)
 	UpdateRulesOfIpGroupWithContext(ctx context.Context, input *workspaces.UpdateRulesOfIpGroupInput, opts ...request.Option) (*workspaces.UpdateRulesOfIpGroupOutput, error)
+	UpdateWorkspaceImagePermissionWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceImagePermissionInput, opts ...request.Option) (*workspaces.UpdateWorkspaceImagePermissionOutput, error)
 }
 
 type Client struct {
@@ -467,6 +469,27 @@ func (c *Client) DescribeWorkspaceDirectoriesPagesWithContext(ctx context.Contex
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeWorkspaceImagePermissionsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceImagePermissionsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceImagePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeWorkspaceImagePermissions",
+		Input:   input,
+		Output:  (*workspaces.DescribeWorkspaceImagePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeWorkspaceImagePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeWorkspaceImagePermissionsOutput), req.Error
 }
 
 func (c *Client) DescribeWorkspaceImagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceImagesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceImagesOutput, error) {
@@ -991,4 +1014,25 @@ func (c *Client) UpdateRulesOfIpGroupWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workspaces.UpdateRulesOfIpGroupOutput), req.Error
+}
+
+func (c *Client) UpdateWorkspaceImagePermissionWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceImagePermissionInput, opts ...request.Option) (*workspaces.UpdateWorkspaceImagePermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "UpdateWorkspaceImagePermission",
+		Input:   input,
+		Output:  (*workspaces.UpdateWorkspaceImagePermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.UpdateWorkspaceImagePermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.UpdateWorkspaceImagePermissionOutput), req.Error
 }
