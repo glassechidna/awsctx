@@ -39,6 +39,7 @@ type SageMaker interface {
 	CreateTrialWithContext(ctx context.Context, input *sagemaker.CreateTrialInput, opts ...request.Option) (*sagemaker.CreateTrialOutput, error)
 	CreateTrialComponentWithContext(ctx context.Context, input *sagemaker.CreateTrialComponentInput, opts ...request.Option) (*sagemaker.CreateTrialComponentOutput, error)
 	CreateUserProfileWithContext(ctx context.Context, input *sagemaker.CreateUserProfileInput, opts ...request.Option) (*sagemaker.CreateUserProfileOutput, error)
+	CreateWorkforceWithContext(ctx context.Context, input *sagemaker.CreateWorkforceInput, opts ...request.Option) (*sagemaker.CreateWorkforceOutput, error)
 	CreateWorkteamWithContext(ctx context.Context, input *sagemaker.CreateWorkteamInput, opts ...request.Option) (*sagemaker.CreateWorkteamOutput, error)
 	DeleteAlgorithmWithContext(ctx context.Context, input *sagemaker.DeleteAlgorithmInput, opts ...request.Option) (*sagemaker.DeleteAlgorithmOutput, error)
 	DeleteAppWithContext(ctx context.Context, input *sagemaker.DeleteAppInput, opts ...request.Option) (*sagemaker.DeleteAppOutput, error)
@@ -58,6 +59,7 @@ type SageMaker interface {
 	DeleteTrialWithContext(ctx context.Context, input *sagemaker.DeleteTrialInput, opts ...request.Option) (*sagemaker.DeleteTrialOutput, error)
 	DeleteTrialComponentWithContext(ctx context.Context, input *sagemaker.DeleteTrialComponentInput, opts ...request.Option) (*sagemaker.DeleteTrialComponentOutput, error)
 	DeleteUserProfileWithContext(ctx context.Context, input *sagemaker.DeleteUserProfileInput, opts ...request.Option) (*sagemaker.DeleteUserProfileOutput, error)
+	DeleteWorkforceWithContext(ctx context.Context, input *sagemaker.DeleteWorkforceInput, opts ...request.Option) (*sagemaker.DeleteWorkforceOutput, error)
 	DeleteWorkteamWithContext(ctx context.Context, input *sagemaker.DeleteWorkteamInput, opts ...request.Option) (*sagemaker.DeleteWorkteamOutput, error)
 	DescribeAlgorithmWithContext(ctx context.Context, input *sagemaker.DescribeAlgorithmInput, opts ...request.Option) (*sagemaker.DescribeAlgorithmOutput, error)
 	DescribeAppWithContext(ctx context.Context, input *sagemaker.DescribeAppInput, opts ...request.Option) (*sagemaker.DescribeAppOutput, error)
@@ -148,6 +150,8 @@ type SageMaker interface {
 	ListTrialsPagesWithContext(ctx context.Context, input *sagemaker.ListTrialsInput, cb func(*sagemaker.ListTrialsOutput, bool) bool, opts ...request.Option) error
 	ListUserProfilesWithContext(ctx context.Context, input *sagemaker.ListUserProfilesInput, opts ...request.Option) (*sagemaker.ListUserProfilesOutput, error)
 	ListUserProfilesPagesWithContext(ctx context.Context, input *sagemaker.ListUserProfilesInput, cb func(*sagemaker.ListUserProfilesOutput, bool) bool, opts ...request.Option) error
+	ListWorkforcesWithContext(ctx context.Context, input *sagemaker.ListWorkforcesInput, opts ...request.Option) (*sagemaker.ListWorkforcesOutput, error)
+	ListWorkforcesPagesWithContext(ctx context.Context, input *sagemaker.ListWorkforcesInput, cb func(*sagemaker.ListWorkforcesOutput, bool) bool, opts ...request.Option) error
 	ListWorkteamsWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, opts ...request.Option) (*sagemaker.ListWorkteamsOutput, error)
 	ListWorkteamsPagesWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, cb func(*sagemaker.ListWorkteamsOutput, bool) bool, opts ...request.Option) error
 	RenderUiTemplateWithContext(ctx context.Context, input *sagemaker.RenderUiTemplateInput, opts ...request.Option) (*sagemaker.RenderUiTemplateOutput, error)
@@ -782,6 +786,27 @@ func (c *Client) CreateUserProfileWithContext(ctx context.Context, input *sagema
 	return req.Output.(*sagemaker.CreateUserProfileOutput), req.Error
 }
 
+func (c *Client) CreateWorkforceWithContext(ctx context.Context, input *sagemaker.CreateWorkforceInput, opts ...request.Option) (*sagemaker.CreateWorkforceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateWorkforce",
+		Input:   input,
+		Output:  (*sagemaker.CreateWorkforceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateWorkforceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateWorkforceOutput), req.Error
+}
+
 func (c *Client) CreateWorkteamWithContext(ctx context.Context, input *sagemaker.CreateWorkteamInput, opts ...request.Option) (*sagemaker.CreateWorkteamOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -1179,6 +1204,27 @@ func (c *Client) DeleteUserProfileWithContext(ctx context.Context, input *sagema
 	})
 
 	return req.Output.(*sagemaker.DeleteUserProfileOutput), req.Error
+}
+
+func (c *Client) DeleteWorkforceWithContext(ctx context.Context, input *sagemaker.DeleteWorkforceInput, opts ...request.Option) (*sagemaker.DeleteWorkforceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DeleteWorkforce",
+		Input:   input,
+		Output:  (*sagemaker.DeleteWorkforceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DeleteWorkforceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DeleteWorkforceOutput), req.Error
 }
 
 func (c *Client) DeleteWorkteamWithContext(ctx context.Context, input *sagemaker.DeleteWorkteamInput, opts ...request.Option) (*sagemaker.DeleteWorkteamOutput, error) {
@@ -3036,6 +3082,47 @@ func (c *Client) ListUserProfilesPagesWithContext(ctx context.Context, input *sa
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListUserProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListWorkforcesWithContext(ctx context.Context, input *sagemaker.ListWorkforcesInput, opts ...request.Option) (*sagemaker.ListWorkforcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListWorkforces",
+		Input:   input,
+		Output:  (*sagemaker.ListWorkforcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListWorkforcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListWorkforcesOutput), req.Error
+}
+
+func (c *Client) ListWorkforcesPagesWithContext(ctx context.Context, input *sagemaker.ListWorkforcesInput, cb func(*sagemaker.ListWorkforcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListWorkforces",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListWorkforcesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

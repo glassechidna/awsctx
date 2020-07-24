@@ -25,6 +25,7 @@ type MQ interface {
 	DescribeConfigurationRevisionWithContext(ctx context.Context, input *mq.DescribeConfigurationRevisionInput, opts ...request.Option) (*mq.DescribeConfigurationRevisionResponse, error)
 	DescribeUserWithContext(ctx context.Context, input *mq.DescribeUserInput, opts ...request.Option) (*mq.DescribeUserResponse, error)
 	ListBrokersWithContext(ctx context.Context, input *mq.ListBrokersInput, opts ...request.Option) (*mq.ListBrokersResponse, error)
+	ListBrokersPagesWithContext(ctx context.Context, input *mq.ListBrokersInput, cb func(*mq.ListBrokersResponse, bool) bool, opts ...request.Option) error
 	ListConfigurationRevisionsWithContext(ctx context.Context, input *mq.ListConfigurationRevisionsInput, opts ...request.Option) (*mq.ListConfigurationRevisionsResponse, error)
 	ListConfigurationsWithContext(ctx context.Context, input *mq.ListConfigurationsInput, opts ...request.Option) (*mq.ListConfigurationsResponse, error)
 	ListTagsWithContext(ctx context.Context, input *mq.ListTagsInput, opts ...request.Option) (*mq.ListTagsOutput, error)
@@ -342,6 +343,26 @@ func (c *Client) ListBrokersWithContext(ctx context.Context, input *mq.ListBroke
 	})
 
 	return req.Output.(*mq.ListBrokersResponse), req.Error
+}
+
+func (c *Client) ListBrokersPagesWithContext(ctx context.Context, input *mq.ListBrokersInput, cb func(*mq.ListBrokersResponse, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mq",
+		Action:  "ListBrokers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MQAPI.ListBrokersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListConfigurationRevisionsWithContext(ctx context.Context, input *mq.ListConfigurationRevisionsInput, opts ...request.Option) (*mq.ListConfigurationRevisionsResponse, error) {
