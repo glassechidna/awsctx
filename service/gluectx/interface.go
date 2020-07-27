@@ -135,6 +135,7 @@ type Glue interface {
 	PutResourcePolicyWithContext(ctx context.Context, input *glue.PutResourcePolicyInput, opts ...request.Option) (*glue.PutResourcePolicyOutput, error)
 	PutWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.PutWorkflowRunPropertiesInput, opts ...request.Option) (*glue.PutWorkflowRunPropertiesOutput, error)
 	ResetJobBookmarkWithContext(ctx context.Context, input *glue.ResetJobBookmarkInput, opts ...request.Option) (*glue.ResetJobBookmarkOutput, error)
+	ResumeWorkflowRunWithContext(ctx context.Context, input *glue.ResumeWorkflowRunInput, opts ...request.Option) (*glue.ResumeWorkflowRunOutput, error)
 	SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error)
 	SearchTablesPagesWithContext(ctx context.Context, input *glue.SearchTablesInput, cb func(*glue.SearchTablesOutput, bool) bool, opts ...request.Option) error
 	StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error)
@@ -2763,6 +2764,27 @@ func (c *Client) ResetJobBookmarkWithContext(ctx context.Context, input *glue.Re
 	})
 
 	return req.Output.(*glue.ResetJobBookmarkOutput), req.Error
+}
+
+func (c *Client) ResumeWorkflowRunWithContext(ctx context.Context, input *glue.ResumeWorkflowRunInput, opts ...request.Option) (*glue.ResumeWorkflowRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ResumeWorkflowRun",
+		Input:   input,
+		Output:  (*glue.ResumeWorkflowRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ResumeWorkflowRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ResumeWorkflowRunOutput), req.Error
 }
 
 func (c *Client) SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error) {

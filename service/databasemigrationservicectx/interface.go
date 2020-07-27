@@ -13,6 +13,7 @@ import (
 type DatabaseMigrationService interface {
 	AddTagsToResourceWithContext(ctx context.Context, input *databasemigrationservice.AddTagsToResourceInput, opts ...request.Option) (*databasemigrationservice.AddTagsToResourceOutput, error)
 	ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *databasemigrationservice.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*databasemigrationservice.ApplyPendingMaintenanceActionOutput, error)
+	CancelReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.CancelReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.CancelReplicationTaskAssessmentRunOutput, error)
 	CreateEndpointWithContext(ctx context.Context, input *databasemigrationservice.CreateEndpointInput, opts ...request.Option) (*databasemigrationservice.CreateEndpointOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.CreateEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.CreateEventSubscriptionOutput, error)
 	CreateReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationInstanceOutput, error)
@@ -25,7 +26,10 @@ type DatabaseMigrationService interface {
 	DeleteReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationInstanceOutput, error)
 	DeleteReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationSubnetGroupOutput, error)
 	DeleteReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationTaskOutput, error)
+	DeleteReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationTaskAssessmentRunOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *databasemigrationservice.DescribeAccountAttributesInput, opts ...request.Option) (*databasemigrationservice.DescribeAccountAttributesOutput, error)
+	DescribeApplicableIndividualAssessmentsWithContext(ctx context.Context, input *databasemigrationservice.DescribeApplicableIndividualAssessmentsInput, opts ...request.Option) (*databasemigrationservice.DescribeApplicableIndividualAssessmentsOutput, error)
+	DescribeApplicableIndividualAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeApplicableIndividualAssessmentsInput, cb func(*databasemigrationservice.DescribeApplicableIndividualAssessmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeCertificatesWithContext(ctx context.Context, input *databasemigrationservice.DescribeCertificatesInput, opts ...request.Option) (*databasemigrationservice.DescribeCertificatesOutput, error)
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeCertificatesInput, cb func(*databasemigrationservice.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeConnectionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeConnectionsInput, opts ...request.Option) (*databasemigrationservice.DescribeConnectionsOutput, error)
@@ -52,6 +56,10 @@ type DatabaseMigrationService interface {
 	DescribeReplicationSubnetGroupsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationSubnetGroupsInput, cb func(*databasemigrationservice.DescribeReplicationSubnetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationTaskAssessmentResultsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentResultsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskAssessmentResultsOutput, error)
 	DescribeReplicationTaskAssessmentResultsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentResultsInput, cb func(*databasemigrationservice.DescribeReplicationTaskAssessmentResultsOutput, bool) bool, opts ...request.Option) error
+	DescribeReplicationTaskAssessmentRunsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentRunsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput, error)
+	DescribeReplicationTaskAssessmentRunsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentRunsInput, cb func(*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput, bool) bool, opts ...request.Option) error
+	DescribeReplicationTaskIndividualAssessmentsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput, error)
+	DescribeReplicationTaskIndividualAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsInput, cb func(*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationTasksWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTasksInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTasksOutput, error)
 	DescribeReplicationTasksPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTasksInput, cb func(*databasemigrationservice.DescribeReplicationTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeSchemasWithContext(ctx context.Context, input *databasemigrationservice.DescribeSchemasInput, opts ...request.Option) (*databasemigrationservice.DescribeSchemasOutput, error)
@@ -71,6 +79,7 @@ type DatabaseMigrationService interface {
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *databasemigrationservice.RemoveTagsFromResourceInput, opts ...request.Option) (*databasemigrationservice.RemoveTagsFromResourceOutput, error)
 	StartReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskOutput, error)
 	StartReplicationTaskAssessmentWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentOutput, error)
+	StartReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentRunOutput, error)
 	StopReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StopReplicationTaskOutput, error)
 	TestConnectionWithContext(ctx context.Context, input *databasemigrationservice.TestConnectionInput, opts ...request.Option) (*databasemigrationservice.TestConnectionOutput, error)
 }
@@ -130,6 +139,27 @@ func (c *Client) ApplyPendingMaintenanceActionWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*databasemigrationservice.ApplyPendingMaintenanceActionOutput), req.Error
+}
+
+func (c *Client) CancelReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.CancelReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.CancelReplicationTaskAssessmentRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "CancelReplicationTaskAssessmentRun",
+		Input:   input,
+		Output:  (*databasemigrationservice.CancelReplicationTaskAssessmentRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.CancelReplicationTaskAssessmentRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.CancelReplicationTaskAssessmentRunOutput), req.Error
 }
 
 func (c *Client) CreateEndpointWithContext(ctx context.Context, input *databasemigrationservice.CreateEndpointInput, opts ...request.Option) (*databasemigrationservice.CreateEndpointOutput, error) {
@@ -384,6 +414,27 @@ func (c *Client) DeleteReplicationTaskWithContext(ctx context.Context, input *da
 	return req.Output.(*databasemigrationservice.DeleteReplicationTaskOutput), req.Error
 }
 
+func (c *Client) DeleteReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationTaskAssessmentRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DeleteReplicationTaskAssessmentRun",
+		Input:   input,
+		Output:  (*databasemigrationservice.DeleteReplicationTaskAssessmentRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DeleteReplicationTaskAssessmentRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DeleteReplicationTaskAssessmentRunOutput), req.Error
+}
+
 func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input *databasemigrationservice.DescribeAccountAttributesInput, opts ...request.Option) (*databasemigrationservice.DescribeAccountAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -403,6 +454,47 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*databasemigrationservice.DescribeAccountAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeApplicableIndividualAssessmentsWithContext(ctx context.Context, input *databasemigrationservice.DescribeApplicableIndividualAssessmentsInput, opts ...request.Option) (*databasemigrationservice.DescribeApplicableIndividualAssessmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeApplicableIndividualAssessments",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeApplicableIndividualAssessmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeApplicableIndividualAssessmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeApplicableIndividualAssessmentsOutput), req.Error
+}
+
+func (c *Client) DescribeApplicableIndividualAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeApplicableIndividualAssessmentsInput, cb func(*databasemigrationservice.DescribeApplicableIndividualAssessmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeApplicableIndividualAssessments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeApplicableIndividualAssessmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *databasemigrationservice.DescribeCertificatesInput, opts ...request.Option) (*databasemigrationservice.DescribeCertificatesOutput, error) {
@@ -939,6 +1031,88 @@ func (c *Client) DescribeReplicationTaskAssessmentResultsPagesWithContext(ctx co
 	return req.Error
 }
 
+func (c *Client) DescribeReplicationTaskAssessmentRunsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentRunsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationTaskAssessmentRuns",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTaskAssessmentRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput), req.Error
+}
+
+func (c *Client) DescribeReplicationTaskAssessmentRunsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentRunsInput, cb func(*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationTaskAssessmentRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTaskAssessmentRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeReplicationTaskIndividualAssessmentsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationTaskIndividualAssessments",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTaskIndividualAssessmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput), req.Error
+}
+
+func (c *Client) DescribeReplicationTaskIndividualAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsInput, cb func(*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationTaskIndividualAssessments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTaskIndividualAssessmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReplicationTasksWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTasksInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1333,6 +1507,27 @@ func (c *Client) StartReplicationTaskAssessmentWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*databasemigrationservice.StartReplicationTaskAssessmentOutput), req.Error
+}
+
+func (c *Client) StartReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartReplicationTaskAssessmentRun",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartReplicationTaskAssessmentRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartReplicationTaskAssessmentRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartReplicationTaskAssessmentRunOutput), req.Error
 }
 
 func (c *Client) StopReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StopReplicationTaskOutput, error) {
