@@ -62,6 +62,7 @@ type SecurityHub interface {
 	UpdateActionTargetWithContext(ctx context.Context, input *securityhub.UpdateActionTargetInput, opts ...request.Option) (*securityhub.UpdateActionTargetOutput, error)
 	UpdateFindingsWithContext(ctx context.Context, input *securityhub.UpdateFindingsInput, opts ...request.Option) (*securityhub.UpdateFindingsOutput, error)
 	UpdateInsightWithContext(ctx context.Context, input *securityhub.UpdateInsightInput, opts ...request.Option) (*securityhub.UpdateInsightOutput, error)
+	UpdateSecurityHubConfigurationWithContext(ctx context.Context, input *securityhub.UpdateSecurityHubConfigurationInput, opts ...request.Option) (*securityhub.UpdateSecurityHubConfigurationOutput, error)
 	UpdateStandardsControlWithContext(ctx context.Context, input *securityhub.UpdateStandardsControlInput, opts ...request.Option) (*securityhub.UpdateStandardsControlOutput, error)
 }
 
@@ -1139,6 +1140,27 @@ func (c *Client) UpdateInsightWithContext(ctx context.Context, input *securityhu
 	})
 
 	return req.Output.(*securityhub.UpdateInsightOutput), req.Error
+}
+
+func (c *Client) UpdateSecurityHubConfigurationWithContext(ctx context.Context, input *securityhub.UpdateSecurityHubConfigurationInput, opts ...request.Option) (*securityhub.UpdateSecurityHubConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "UpdateSecurityHubConfiguration",
+		Input:   input,
+		Output:  (*securityhub.UpdateSecurityHubConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.UpdateSecurityHubConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.UpdateSecurityHubConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateStandardsControlWithContext(ctx context.Context, input *securityhub.UpdateStandardsControlInput, opts ...request.Option) (*securityhub.UpdateStandardsControlOutput, error) {
