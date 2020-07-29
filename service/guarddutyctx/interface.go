@@ -41,6 +41,7 @@ type GuardDuty interface {
 	GetIPSetWithContext(ctx context.Context, input *guardduty.GetIPSetInput, opts ...request.Option) (*guardduty.GetIPSetOutput, error)
 	GetInvitationsCountWithContext(ctx context.Context, input *guardduty.GetInvitationsCountInput, opts ...request.Option) (*guardduty.GetInvitationsCountOutput, error)
 	GetMasterAccountWithContext(ctx context.Context, input *guardduty.GetMasterAccountInput, opts ...request.Option) (*guardduty.GetMasterAccountOutput, error)
+	GetMemberDetectorsWithContext(ctx context.Context, input *guardduty.GetMemberDetectorsInput, opts ...request.Option) (*guardduty.GetMemberDetectorsOutput, error)
 	GetMembersWithContext(ctx context.Context, input *guardduty.GetMembersInput, opts ...request.Option) (*guardduty.GetMembersOutput, error)
 	GetThreatIntelSetWithContext(ctx context.Context, input *guardduty.GetThreatIntelSetInput, opts ...request.Option) (*guardduty.GetThreatIntelSetOutput, error)
 	InviteMembersWithContext(ctx context.Context, input *guardduty.InviteMembersInput, opts ...request.Option) (*guardduty.InviteMembersOutput, error)
@@ -72,6 +73,7 @@ type GuardDuty interface {
 	UpdateFilterWithContext(ctx context.Context, input *guardduty.UpdateFilterInput, opts ...request.Option) (*guardduty.UpdateFilterOutput, error)
 	UpdateFindingsFeedbackWithContext(ctx context.Context, input *guardduty.UpdateFindingsFeedbackInput, opts ...request.Option) (*guardduty.UpdateFindingsFeedbackOutput, error)
 	UpdateIPSetWithContext(ctx context.Context, input *guardduty.UpdateIPSetInput, opts ...request.Option) (*guardduty.UpdateIPSetOutput, error)
+	UpdateMemberDetectorsWithContext(ctx context.Context, input *guardduty.UpdateMemberDetectorsInput, opts ...request.Option) (*guardduty.UpdateMemberDetectorsOutput, error)
 	UpdateOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.UpdateOrganizationConfigurationInput, opts ...request.Option) (*guardduty.UpdateOrganizationConfigurationOutput, error)
 	UpdatePublishingDestinationWithContext(ctx context.Context, input *guardduty.UpdatePublishingDestinationInput, opts ...request.Option) (*guardduty.UpdatePublishingDestinationOutput, error)
 	UpdateThreatIntelSetWithContext(ctx context.Context, input *guardduty.UpdateThreatIntelSetInput, opts ...request.Option) (*guardduty.UpdateThreatIntelSetOutput, error)
@@ -722,6 +724,27 @@ func (c *Client) GetMasterAccountWithContext(ctx context.Context, input *guarddu
 	return req.Output.(*guardduty.GetMasterAccountOutput), req.Error
 }
 
+func (c *Client) GetMemberDetectorsWithContext(ctx context.Context, input *guardduty.GetMemberDetectorsInput, opts ...request.Option) (*guardduty.GetMemberDetectorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetMemberDetectors",
+		Input:   input,
+		Output:  (*guardduty.GetMemberDetectorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.GetMemberDetectorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.GetMemberDetectorsOutput), req.Error
+}
+
 func (c *Client) GetMembersWithContext(ctx context.Context, input *guardduty.GetMembersInput, opts ...request.Option) (*guardduty.GetMembersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -1362,6 +1385,27 @@ func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *guardduty.Up
 	})
 
 	return req.Output.(*guardduty.UpdateIPSetOutput), req.Error
+}
+
+func (c *Client) UpdateMemberDetectorsWithContext(ctx context.Context, input *guardduty.UpdateMemberDetectorsInput, opts ...request.Option) (*guardduty.UpdateMemberDetectorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "UpdateMemberDetectors",
+		Input:   input,
+		Output:  (*guardduty.UpdateMemberDetectorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.UpdateMemberDetectorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.UpdateMemberDetectorsOutput), req.Error
 }
 
 func (c *Client) UpdateOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.UpdateOrganizationConfigurationInput, opts ...request.Option) (*guardduty.UpdateOrganizationConfigurationOutput, error) {
