@@ -33,6 +33,7 @@ type Kafka interface {
 	ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error)
 	ListNodesPagesWithContext(ctx context.Context, input *kafka.ListNodesInput, cb func(*kafka.ListNodesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error)
+	RebootBrokerWithContext(ctx context.Context, input *kafka.RebootBrokerInput, opts ...request.Option) (*kafka.RebootBrokerOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kafka.TagResourceInput, opts ...request.Option) (*kafka.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *kafka.UntagResourceInput, opts ...request.Option) (*kafka.UntagResourceOutput, error)
 	UpdateBrokerCountWithContext(ctx context.Context, input *kafka.UpdateBrokerCountInput, opts ...request.Option) (*kafka.UpdateBrokerCountOutput, error)
@@ -511,6 +512,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kafk
 	})
 
 	return req.Output.(*kafka.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) RebootBrokerWithContext(ctx context.Context, input *kafka.RebootBrokerInput, opts ...request.Option) (*kafka.RebootBrokerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "RebootBroker",
+		Input:   input,
+		Output:  (*kafka.RebootBrokerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.RebootBrokerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.RebootBrokerOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *kafka.TagResourceInput, opts ...request.Option) (*kafka.TagResourceOutput, error) {

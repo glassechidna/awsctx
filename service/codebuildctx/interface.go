@@ -12,6 +12,7 @@ import (
 
 type CodeBuild interface {
 	BatchDeleteBuildsWithContext(ctx context.Context, input *codebuild.BatchDeleteBuildsInput, opts ...request.Option) (*codebuild.BatchDeleteBuildsOutput, error)
+	BatchGetBuildBatchesWithContext(ctx context.Context, input *codebuild.BatchGetBuildBatchesInput, opts ...request.Option) (*codebuild.BatchGetBuildBatchesOutput, error)
 	BatchGetBuildsWithContext(ctx context.Context, input *codebuild.BatchGetBuildsInput, opts ...request.Option) (*codebuild.BatchGetBuildsOutput, error)
 	BatchGetProjectsWithContext(ctx context.Context, input *codebuild.BatchGetProjectsInput, opts ...request.Option) (*codebuild.BatchGetProjectsOutput, error)
 	BatchGetReportGroupsWithContext(ctx context.Context, input *codebuild.BatchGetReportGroupsInput, opts ...request.Option) (*codebuild.BatchGetReportGroupsOutput, error)
@@ -19,17 +20,24 @@ type CodeBuild interface {
 	CreateProjectWithContext(ctx context.Context, input *codebuild.CreateProjectInput, opts ...request.Option) (*codebuild.CreateProjectOutput, error)
 	CreateReportGroupWithContext(ctx context.Context, input *codebuild.CreateReportGroupInput, opts ...request.Option) (*codebuild.CreateReportGroupOutput, error)
 	CreateWebhookWithContext(ctx context.Context, input *codebuild.CreateWebhookInput, opts ...request.Option) (*codebuild.CreateWebhookOutput, error)
+	DeleteBuildBatchWithContext(ctx context.Context, input *codebuild.DeleteBuildBatchInput, opts ...request.Option) (*codebuild.DeleteBuildBatchOutput, error)
 	DeleteProjectWithContext(ctx context.Context, input *codebuild.DeleteProjectInput, opts ...request.Option) (*codebuild.DeleteProjectOutput, error)
 	DeleteReportWithContext(ctx context.Context, input *codebuild.DeleteReportInput, opts ...request.Option) (*codebuild.DeleteReportOutput, error)
 	DeleteReportGroupWithContext(ctx context.Context, input *codebuild.DeleteReportGroupInput, opts ...request.Option) (*codebuild.DeleteReportGroupOutput, error)
 	DeleteResourcePolicyWithContext(ctx context.Context, input *codebuild.DeleteResourcePolicyInput, opts ...request.Option) (*codebuild.DeleteResourcePolicyOutput, error)
 	DeleteSourceCredentialsWithContext(ctx context.Context, input *codebuild.DeleteSourceCredentialsInput, opts ...request.Option) (*codebuild.DeleteSourceCredentialsOutput, error)
 	DeleteWebhookWithContext(ctx context.Context, input *codebuild.DeleteWebhookInput, opts ...request.Option) (*codebuild.DeleteWebhookOutput, error)
+	DescribeCodeCoveragesWithContext(ctx context.Context, input *codebuild.DescribeCodeCoveragesInput, opts ...request.Option) (*codebuild.DescribeCodeCoveragesOutput, error)
+	DescribeCodeCoveragesPagesWithContext(ctx context.Context, input *codebuild.DescribeCodeCoveragesInput, cb func(*codebuild.DescribeCodeCoveragesOutput, bool) bool, opts ...request.Option) error
 	DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error)
 	DescribeTestCasesPagesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, cb func(*codebuild.DescribeTestCasesOutput, bool) bool, opts ...request.Option) error
 	GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error)
 	ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error)
 	InvalidateProjectCacheWithContext(ctx context.Context, input *codebuild.InvalidateProjectCacheInput, opts ...request.Option) (*codebuild.InvalidateProjectCacheOutput, error)
+	ListBuildBatchesWithContext(ctx context.Context, input *codebuild.ListBuildBatchesInput, opts ...request.Option) (*codebuild.ListBuildBatchesOutput, error)
+	ListBuildBatchesPagesWithContext(ctx context.Context, input *codebuild.ListBuildBatchesInput, cb func(*codebuild.ListBuildBatchesOutput, bool) bool, opts ...request.Option) error
+	ListBuildBatchesForProjectWithContext(ctx context.Context, input *codebuild.ListBuildBatchesForProjectInput, opts ...request.Option) (*codebuild.ListBuildBatchesForProjectOutput, error)
+	ListBuildBatchesForProjectPagesWithContext(ctx context.Context, input *codebuild.ListBuildBatchesForProjectInput, cb func(*codebuild.ListBuildBatchesForProjectOutput, bool) bool, opts ...request.Option) error
 	ListBuildsWithContext(ctx context.Context, input *codebuild.ListBuildsInput, opts ...request.Option) (*codebuild.ListBuildsOutput, error)
 	ListBuildsPagesWithContext(ctx context.Context, input *codebuild.ListBuildsInput, cb func(*codebuild.ListBuildsOutput, bool) bool, opts ...request.Option) error
 	ListBuildsForProjectWithContext(ctx context.Context, input *codebuild.ListBuildsForProjectInput, opts ...request.Option) (*codebuild.ListBuildsForProjectOutput, error)
@@ -49,8 +57,12 @@ type CodeBuild interface {
 	ListSharedReportGroupsPagesWithContext(ctx context.Context, input *codebuild.ListSharedReportGroupsInput, cb func(*codebuild.ListSharedReportGroupsOutput, bool) bool, opts ...request.Option) error
 	ListSourceCredentialsWithContext(ctx context.Context, input *codebuild.ListSourceCredentialsInput, opts ...request.Option) (*codebuild.ListSourceCredentialsOutput, error)
 	PutResourcePolicyWithContext(ctx context.Context, input *codebuild.PutResourcePolicyInput, opts ...request.Option) (*codebuild.PutResourcePolicyOutput, error)
+	RetryBuildWithContext(ctx context.Context, input *codebuild.RetryBuildInput, opts ...request.Option) (*codebuild.RetryBuildOutput, error)
+	RetryBuildBatchWithContext(ctx context.Context, input *codebuild.RetryBuildBatchInput, opts ...request.Option) (*codebuild.RetryBuildBatchOutput, error)
 	StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error)
+	StartBuildBatchWithContext(ctx context.Context, input *codebuild.StartBuildBatchInput, opts ...request.Option) (*codebuild.StartBuildBatchOutput, error)
 	StopBuildWithContext(ctx context.Context, input *codebuild.StopBuildInput, opts ...request.Option) (*codebuild.StopBuildOutput, error)
+	StopBuildBatchWithContext(ctx context.Context, input *codebuild.StopBuildBatchInput, opts ...request.Option) (*codebuild.StopBuildBatchOutput, error)
 	UpdateProjectWithContext(ctx context.Context, input *codebuild.UpdateProjectInput, opts ...request.Option) (*codebuild.UpdateProjectOutput, error)
 	UpdateReportGroupWithContext(ctx context.Context, input *codebuild.UpdateReportGroupInput, opts ...request.Option) (*codebuild.UpdateReportGroupOutput, error)
 	UpdateWebhookWithContext(ctx context.Context, input *codebuild.UpdateWebhookInput, opts ...request.Option) (*codebuild.UpdateWebhookOutput, error)
@@ -90,6 +102,27 @@ func (c *Client) BatchDeleteBuildsWithContext(ctx context.Context, input *codebu
 	})
 
 	return req.Output.(*codebuild.BatchDeleteBuildsOutput), req.Error
+}
+
+func (c *Client) BatchGetBuildBatchesWithContext(ctx context.Context, input *codebuild.BatchGetBuildBatchesInput, opts ...request.Option) (*codebuild.BatchGetBuildBatchesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "BatchGetBuildBatches",
+		Input:   input,
+		Output:  (*codebuild.BatchGetBuildBatchesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.BatchGetBuildBatchesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.BatchGetBuildBatchesOutput), req.Error
 }
 
 func (c *Client) BatchGetBuildsWithContext(ctx context.Context, input *codebuild.BatchGetBuildsInput, opts ...request.Option) (*codebuild.BatchGetBuildsOutput, error) {
@@ -239,6 +272,27 @@ func (c *Client) CreateWebhookWithContext(ctx context.Context, input *codebuild.
 	return req.Output.(*codebuild.CreateWebhookOutput), req.Error
 }
 
+func (c *Client) DeleteBuildBatchWithContext(ctx context.Context, input *codebuild.DeleteBuildBatchInput, opts ...request.Option) (*codebuild.DeleteBuildBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DeleteBuildBatch",
+		Input:   input,
+		Output:  (*codebuild.DeleteBuildBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.DeleteBuildBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.DeleteBuildBatchOutput), req.Error
+}
+
 func (c *Client) DeleteProjectWithContext(ctx context.Context, input *codebuild.DeleteProjectInput, opts ...request.Option) (*codebuild.DeleteProjectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -365,6 +419,47 @@ func (c *Client) DeleteWebhookWithContext(ctx context.Context, input *codebuild.
 	return req.Output.(*codebuild.DeleteWebhookOutput), req.Error
 }
 
+func (c *Client) DescribeCodeCoveragesWithContext(ctx context.Context, input *codebuild.DescribeCodeCoveragesInput, opts ...request.Option) (*codebuild.DescribeCodeCoveragesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DescribeCodeCoverages",
+		Input:   input,
+		Output:  (*codebuild.DescribeCodeCoveragesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.DescribeCodeCoveragesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.DescribeCodeCoveragesOutput), req.Error
+}
+
+func (c *Client) DescribeCodeCoveragesPagesWithContext(ctx context.Context, input *codebuild.DescribeCodeCoveragesInput, cb func(*codebuild.DescribeCodeCoveragesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "DescribeCodeCoverages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.DescribeCodeCoveragesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -467,6 +562,88 @@ func (c *Client) InvalidateProjectCacheWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*codebuild.InvalidateProjectCacheOutput), req.Error
+}
+
+func (c *Client) ListBuildBatchesWithContext(ctx context.Context, input *codebuild.ListBuildBatchesInput, opts ...request.Option) (*codebuild.ListBuildBatchesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListBuildBatches",
+		Input:   input,
+		Output:  (*codebuild.ListBuildBatchesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListBuildBatchesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListBuildBatchesOutput), req.Error
+}
+
+func (c *Client) ListBuildBatchesPagesWithContext(ctx context.Context, input *codebuild.ListBuildBatchesInput, cb func(*codebuild.ListBuildBatchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListBuildBatches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListBuildBatchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListBuildBatchesForProjectWithContext(ctx context.Context, input *codebuild.ListBuildBatchesForProjectInput, opts ...request.Option) (*codebuild.ListBuildBatchesForProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListBuildBatchesForProject",
+		Input:   input,
+		Output:  (*codebuild.ListBuildBatchesForProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.ListBuildBatchesForProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.ListBuildBatchesForProjectOutput), req.Error
+}
+
+func (c *Client) ListBuildBatchesForProjectPagesWithContext(ctx context.Context, input *codebuild.ListBuildBatchesForProjectInput, cb func(*codebuild.ListBuildBatchesForProjectOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "ListBuildBatchesForProject",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeBuildAPI.ListBuildBatchesForProjectPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListBuildsWithContext(ctx context.Context, input *codebuild.ListBuildsInput, opts ...request.Option) (*codebuild.ListBuildsOutput, error) {
@@ -860,6 +1037,48 @@ func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *codebu
 	return req.Output.(*codebuild.PutResourcePolicyOutput), req.Error
 }
 
+func (c *Client) RetryBuildWithContext(ctx context.Context, input *codebuild.RetryBuildInput, opts ...request.Option) (*codebuild.RetryBuildOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "RetryBuild",
+		Input:   input,
+		Output:  (*codebuild.RetryBuildOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.RetryBuildWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.RetryBuildOutput), req.Error
+}
+
+func (c *Client) RetryBuildBatchWithContext(ctx context.Context, input *codebuild.RetryBuildBatchInput, opts ...request.Option) (*codebuild.RetryBuildBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "RetryBuildBatch",
+		Input:   input,
+		Output:  (*codebuild.RetryBuildBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.RetryBuildBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.RetryBuildBatchOutput), req.Error
+}
+
 func (c *Client) StartBuildWithContext(ctx context.Context, input *codebuild.StartBuildInput, opts ...request.Option) (*codebuild.StartBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -881,6 +1100,27 @@ func (c *Client) StartBuildWithContext(ctx context.Context, input *codebuild.Sta
 	return req.Output.(*codebuild.StartBuildOutput), req.Error
 }
 
+func (c *Client) StartBuildBatchWithContext(ctx context.Context, input *codebuild.StartBuildBatchInput, opts ...request.Option) (*codebuild.StartBuildBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "StartBuildBatch",
+		Input:   input,
+		Output:  (*codebuild.StartBuildBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.StartBuildBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.StartBuildBatchOutput), req.Error
+}
+
 func (c *Client) StopBuildWithContext(ctx context.Context, input *codebuild.StopBuildInput, opts ...request.Option) (*codebuild.StopBuildOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "codebuild",
@@ -900,6 +1140,27 @@ func (c *Client) StopBuildWithContext(ctx context.Context, input *codebuild.Stop
 	})
 
 	return req.Output.(*codebuild.StopBuildOutput), req.Error
+}
+
+func (c *Client) StopBuildBatchWithContext(ctx context.Context, input *codebuild.StopBuildBatchInput, opts ...request.Option) (*codebuild.StopBuildBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "StopBuildBatch",
+		Input:   input,
+		Output:  (*codebuild.StopBuildBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.StopBuildBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.StopBuildBatchOutput), req.Error
 }
 
 func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codebuild.UpdateProjectInput, opts ...request.Option) (*codebuild.UpdateProjectOutput, error) {

@@ -44,6 +44,8 @@ type GuardDuty interface {
 	GetMemberDetectorsWithContext(ctx context.Context, input *guardduty.GetMemberDetectorsInput, opts ...request.Option) (*guardduty.GetMemberDetectorsOutput, error)
 	GetMembersWithContext(ctx context.Context, input *guardduty.GetMembersInput, opts ...request.Option) (*guardduty.GetMembersOutput, error)
 	GetThreatIntelSetWithContext(ctx context.Context, input *guardduty.GetThreatIntelSetInput, opts ...request.Option) (*guardduty.GetThreatIntelSetOutput, error)
+	GetUsageStatisticsWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, opts ...request.Option) (*guardduty.GetUsageStatisticsOutput, error)
+	GetUsageStatisticsPagesWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, cb func(*guardduty.GetUsageStatisticsOutput, bool) bool, opts ...request.Option) error
 	InviteMembersWithContext(ctx context.Context, input *guardduty.InviteMembersInput, opts ...request.Option) (*guardduty.InviteMembersOutput, error)
 	ListDetectorsWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, opts ...request.Option) (*guardduty.ListDetectorsOutput, error)
 	ListDetectorsPagesWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, cb func(*guardduty.ListDetectorsOutput, bool) bool, opts ...request.Option) error
@@ -785,6 +787,47 @@ func (c *Client) GetThreatIntelSetWithContext(ctx context.Context, input *guardd
 	})
 
 	return req.Output.(*guardduty.GetThreatIntelSetOutput), req.Error
+}
+
+func (c *Client) GetUsageStatisticsWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, opts ...request.Option) (*guardduty.GetUsageStatisticsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetUsageStatistics",
+		Input:   input,
+		Output:  (*guardduty.GetUsageStatisticsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.GetUsageStatisticsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.GetUsageStatisticsOutput), req.Error
+}
+
+func (c *Client) GetUsageStatisticsPagesWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, cb func(*guardduty.GetUsageStatisticsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetUsageStatistics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.GetUsageStatisticsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) InviteMembersWithContext(ctx context.Context, input *guardduty.InviteMembersInput, opts ...request.Option) (*guardduty.InviteMembersOutput, error) {
