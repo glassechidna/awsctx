@@ -39,37 +39,62 @@ type SSM interface {
 	DescribeActivationsPagesWithContext(ctx context.Context, input *ssm.DescribeActivationsInput, cb func(*ssm.DescribeActivationsOutput, bool) bool, opts ...request.Option) error
 	DescribeAssociationWithContext(ctx context.Context, input *ssm.DescribeAssociationInput, opts ...request.Option) (*ssm.DescribeAssociationOutput, error)
 	DescribeAssociationExecutionTargetsWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionTargetsInput, opts ...request.Option) (*ssm.DescribeAssociationExecutionTargetsOutput, error)
+	DescribeAssociationExecutionTargetsPagesWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionTargetsInput, cb func(*ssm.DescribeAssociationExecutionTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeAssociationExecutionsWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionsInput, opts ...request.Option) (*ssm.DescribeAssociationExecutionsOutput, error)
+	DescribeAssociationExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionsInput, cb func(*ssm.DescribeAssociationExecutionsOutput, bool) bool, opts ...request.Option) error
 	DescribeAutomationExecutionsWithContext(ctx context.Context, input *ssm.DescribeAutomationExecutionsInput, opts ...request.Option) (*ssm.DescribeAutomationExecutionsOutput, error)
+	DescribeAutomationExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeAutomationExecutionsInput, cb func(*ssm.DescribeAutomationExecutionsOutput, bool) bool, opts ...request.Option) error
 	DescribeAutomationStepExecutionsWithContext(ctx context.Context, input *ssm.DescribeAutomationStepExecutionsInput, opts ...request.Option) (*ssm.DescribeAutomationStepExecutionsOutput, error)
+	DescribeAutomationStepExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeAutomationStepExecutionsInput, cb func(*ssm.DescribeAutomationStepExecutionsOutput, bool) bool, opts ...request.Option) error
 	DescribeAvailablePatchesWithContext(ctx context.Context, input *ssm.DescribeAvailablePatchesInput, opts ...request.Option) (*ssm.DescribeAvailablePatchesOutput, error)
+	DescribeAvailablePatchesPagesWithContext(ctx context.Context, input *ssm.DescribeAvailablePatchesInput, cb func(*ssm.DescribeAvailablePatchesOutput, bool) bool, opts ...request.Option) error
 	DescribeDocumentWithContext(ctx context.Context, input *ssm.DescribeDocumentInput, opts ...request.Option) (*ssm.DescribeDocumentOutput, error)
 	DescribeDocumentPermissionWithContext(ctx context.Context, input *ssm.DescribeDocumentPermissionInput, opts ...request.Option) (*ssm.DescribeDocumentPermissionOutput, error)
 	DescribeEffectiveInstanceAssociationsWithContext(ctx context.Context, input *ssm.DescribeEffectiveInstanceAssociationsInput, opts ...request.Option) (*ssm.DescribeEffectiveInstanceAssociationsOutput, error)
+	DescribeEffectiveInstanceAssociationsPagesWithContext(ctx context.Context, input *ssm.DescribeEffectiveInstanceAssociationsInput, cb func(*ssm.DescribeEffectiveInstanceAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeEffectivePatchesForPatchBaselineWithContext(ctx context.Context, input *ssm.DescribeEffectivePatchesForPatchBaselineInput, opts ...request.Option) (*ssm.DescribeEffectivePatchesForPatchBaselineOutput, error)
+	DescribeEffectivePatchesForPatchBaselinePagesWithContext(ctx context.Context, input *ssm.DescribeEffectivePatchesForPatchBaselineInput, cb func(*ssm.DescribeEffectivePatchesForPatchBaselineOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceAssociationsStatusWithContext(ctx context.Context, input *ssm.DescribeInstanceAssociationsStatusInput, opts ...request.Option) (*ssm.DescribeInstanceAssociationsStatusOutput, error)
+	DescribeInstanceAssociationsStatusPagesWithContext(ctx context.Context, input *ssm.DescribeInstanceAssociationsStatusInput, cb func(*ssm.DescribeInstanceAssociationsStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceInformationWithContext(ctx context.Context, input *ssm.DescribeInstanceInformationInput, opts ...request.Option) (*ssm.DescribeInstanceInformationOutput, error)
 	DescribeInstanceInformationPagesWithContext(ctx context.Context, input *ssm.DescribeInstanceInformationInput, cb func(*ssm.DescribeInstanceInformationOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancePatchStatesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesInput, opts ...request.Option) (*ssm.DescribeInstancePatchStatesOutput, error)
+	DescribeInstancePatchStatesPagesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesInput, cb func(*ssm.DescribeInstancePatchStatesOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancePatchStatesForPatchGroupWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesForPatchGroupInput, opts ...request.Option) (*ssm.DescribeInstancePatchStatesForPatchGroupOutput, error)
+	DescribeInstancePatchStatesForPatchGroupPagesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesForPatchGroupInput, cb func(*ssm.DescribeInstancePatchStatesForPatchGroupOutput, bool) bool, opts ...request.Option) error
 	DescribeInstancePatchesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchesInput, opts ...request.Option) (*ssm.DescribeInstancePatchesOutput, error)
+	DescribeInstancePatchesPagesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchesInput, cb func(*ssm.DescribeInstancePatchesOutput, bool) bool, opts ...request.Option) error
 	DescribeInventoryDeletionsWithContext(ctx context.Context, input *ssm.DescribeInventoryDeletionsInput, opts ...request.Option) (*ssm.DescribeInventoryDeletionsOutput, error)
+	DescribeInventoryDeletionsPagesWithContext(ctx context.Context, input *ssm.DescribeInventoryDeletionsInput, cb func(*ssm.DescribeInventoryDeletionsOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, error)
+	DescribeMaintenanceWindowExecutionTaskInvocationsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, cb func(*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowExecutionTasksWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTasksInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTasksOutput, error)
+	DescribeMaintenanceWindowExecutionTasksPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTasksInput, cb func(*ssm.DescribeMaintenanceWindowExecutionTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowExecutionsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionsOutput, error)
+	DescribeMaintenanceWindowExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionsInput, cb func(*ssm.DescribeMaintenanceWindowExecutionsOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowScheduleWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowScheduleInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowScheduleOutput, error)
+	DescribeMaintenanceWindowSchedulePagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowScheduleInput, cb func(*ssm.DescribeMaintenanceWindowScheduleOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowTargetsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTargetsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowTargetsOutput, error)
+	DescribeMaintenanceWindowTargetsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTargetsInput, cb func(*ssm.DescribeMaintenanceWindowTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowTasksWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTasksInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowTasksOutput, error)
+	DescribeMaintenanceWindowTasksPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTasksInput, cb func(*ssm.DescribeMaintenanceWindowTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowsOutput, error)
+	DescribeMaintenanceWindowsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsInput, cb func(*ssm.DescribeMaintenanceWindowsOutput, bool) bool, opts ...request.Option) error
 	DescribeMaintenanceWindowsForTargetWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsForTargetInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error)
+	DescribeMaintenanceWindowsForTargetPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsForTargetInput, cb func(*ssm.DescribeMaintenanceWindowsForTargetOutput, bool) bool, opts ...request.Option) error
 	DescribeOpsItemsWithContext(ctx context.Context, input *ssm.DescribeOpsItemsInput, opts ...request.Option) (*ssm.DescribeOpsItemsOutput, error)
+	DescribeOpsItemsPagesWithContext(ctx context.Context, input *ssm.DescribeOpsItemsInput, cb func(*ssm.DescribeOpsItemsOutput, bool) bool, opts ...request.Option) error
 	DescribeParametersWithContext(ctx context.Context, input *ssm.DescribeParametersInput, opts ...request.Option) (*ssm.DescribeParametersOutput, error)
 	DescribeParametersPagesWithContext(ctx context.Context, input *ssm.DescribeParametersInput, cb func(*ssm.DescribeParametersOutput, bool) bool, opts ...request.Option) error
 	DescribePatchBaselinesWithContext(ctx context.Context, input *ssm.DescribePatchBaselinesInput, opts ...request.Option) (*ssm.DescribePatchBaselinesOutput, error)
+	DescribePatchBaselinesPagesWithContext(ctx context.Context, input *ssm.DescribePatchBaselinesInput, cb func(*ssm.DescribePatchBaselinesOutput, bool) bool, opts ...request.Option) error
 	DescribePatchGroupStateWithContext(ctx context.Context, input *ssm.DescribePatchGroupStateInput, opts ...request.Option) (*ssm.DescribePatchGroupStateOutput, error)
 	DescribePatchGroupsWithContext(ctx context.Context, input *ssm.DescribePatchGroupsInput, opts ...request.Option) (*ssm.DescribePatchGroupsOutput, error)
+	DescribePatchGroupsPagesWithContext(ctx context.Context, input *ssm.DescribePatchGroupsInput, cb func(*ssm.DescribePatchGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribePatchPropertiesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, opts ...request.Option) (*ssm.DescribePatchPropertiesOutput, error)
+	DescribePatchPropertiesPagesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, cb func(*ssm.DescribePatchPropertiesOutput, bool) bool, opts ...request.Option) error
 	DescribeSessionsWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, opts ...request.Option) (*ssm.DescribeSessionsOutput, error)
+	DescribeSessionsPagesWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, cb func(*ssm.DescribeSessionsOutput, bool) bool, opts ...request.Option) error
 	GetAutomationExecutionWithContext(ctx context.Context, input *ssm.GetAutomationExecutionInput, opts ...request.Option) (*ssm.GetAutomationExecutionOutput, error)
 	GetCalendarStateWithContext(ctx context.Context, input *ssm.GetCalendarStateInput, opts ...request.Option) (*ssm.GetCalendarStateOutput, error)
 	GetCommandInvocationWithContext(ctx context.Context, input *ssm.GetCommandInvocationInput, opts ...request.Option) (*ssm.GetCommandInvocationOutput, error)
@@ -78,7 +103,9 @@ type SSM interface {
 	GetDeployablePatchSnapshotForInstanceWithContext(ctx context.Context, input *ssm.GetDeployablePatchSnapshotForInstanceInput, opts ...request.Option) (*ssm.GetDeployablePatchSnapshotForInstanceOutput, error)
 	GetDocumentWithContext(ctx context.Context, input *ssm.GetDocumentInput, opts ...request.Option) (*ssm.GetDocumentOutput, error)
 	GetInventoryWithContext(ctx context.Context, input *ssm.GetInventoryInput, opts ...request.Option) (*ssm.GetInventoryOutput, error)
+	GetInventoryPagesWithContext(ctx context.Context, input *ssm.GetInventoryInput, cb func(*ssm.GetInventoryOutput, bool) bool, opts ...request.Option) error
 	GetInventorySchemaWithContext(ctx context.Context, input *ssm.GetInventorySchemaInput, opts ...request.Option) (*ssm.GetInventorySchemaOutput, error)
+	GetInventorySchemaPagesWithContext(ctx context.Context, input *ssm.GetInventorySchemaInput, cb func(*ssm.GetInventorySchemaOutput, bool) bool, opts ...request.Option) error
 	GetMaintenanceWindowWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowInput, opts ...request.Option) (*ssm.GetMaintenanceWindowOutput, error)
 	GetMaintenanceWindowExecutionWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowExecutionInput, opts ...request.Option) (*ssm.GetMaintenanceWindowExecutionOutput, error)
 	GetMaintenanceWindowExecutionTaskWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowExecutionTaskInput, opts ...request.Option) (*ssm.GetMaintenanceWindowExecutionTaskOutput, error)
@@ -86,6 +113,7 @@ type SSM interface {
 	GetMaintenanceWindowTaskWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowTaskInput, opts ...request.Option) (*ssm.GetMaintenanceWindowTaskOutput, error)
 	GetOpsItemWithContext(ctx context.Context, input *ssm.GetOpsItemInput, opts ...request.Option) (*ssm.GetOpsItemOutput, error)
 	GetOpsSummaryWithContext(ctx context.Context, input *ssm.GetOpsSummaryInput, opts ...request.Option) (*ssm.GetOpsSummaryOutput, error)
+	GetOpsSummaryPagesWithContext(ctx context.Context, input *ssm.GetOpsSummaryInput, cb func(*ssm.GetOpsSummaryOutput, bool) bool, opts ...request.Option) error
 	GetParameterWithContext(ctx context.Context, input *ssm.GetParameterInput, opts ...request.Option) (*ssm.GetParameterOutput, error)
 	GetParameterHistoryWithContext(ctx context.Context, input *ssm.GetParameterHistoryInput, opts ...request.Option) (*ssm.GetParameterHistoryOutput, error)
 	GetParameterHistoryPagesWithContext(ctx context.Context, input *ssm.GetParameterHistoryInput, cb func(*ssm.GetParameterHistoryOutput, bool) bool, opts ...request.Option) error
@@ -97,6 +125,7 @@ type SSM interface {
 	GetServiceSettingWithContext(ctx context.Context, input *ssm.GetServiceSettingInput, opts ...request.Option) (*ssm.GetServiceSettingOutput, error)
 	LabelParameterVersionWithContext(ctx context.Context, input *ssm.LabelParameterVersionInput, opts ...request.Option) (*ssm.LabelParameterVersionOutput, error)
 	ListAssociationVersionsWithContext(ctx context.Context, input *ssm.ListAssociationVersionsInput, opts ...request.Option) (*ssm.ListAssociationVersionsOutput, error)
+	ListAssociationVersionsPagesWithContext(ctx context.Context, input *ssm.ListAssociationVersionsInput, cb func(*ssm.ListAssociationVersionsOutput, bool) bool, opts ...request.Option) error
 	ListAssociationsWithContext(ctx context.Context, input *ssm.ListAssociationsInput, opts ...request.Option) (*ssm.ListAssociationsOutput, error)
 	ListAssociationsPagesWithContext(ctx context.Context, input *ssm.ListAssociationsInput, cb func(*ssm.ListAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListCommandInvocationsWithContext(ctx context.Context, input *ssm.ListCommandInvocationsInput, opts ...request.Option) (*ssm.ListCommandInvocationsOutput, error)
@@ -104,13 +133,18 @@ type SSM interface {
 	ListCommandsWithContext(ctx context.Context, input *ssm.ListCommandsInput, opts ...request.Option) (*ssm.ListCommandsOutput, error)
 	ListCommandsPagesWithContext(ctx context.Context, input *ssm.ListCommandsInput, cb func(*ssm.ListCommandsOutput, bool) bool, opts ...request.Option) error
 	ListComplianceItemsWithContext(ctx context.Context, input *ssm.ListComplianceItemsInput, opts ...request.Option) (*ssm.ListComplianceItemsOutput, error)
+	ListComplianceItemsPagesWithContext(ctx context.Context, input *ssm.ListComplianceItemsInput, cb func(*ssm.ListComplianceItemsOutput, bool) bool, opts ...request.Option) error
 	ListComplianceSummariesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, opts ...request.Option) (*ssm.ListComplianceSummariesOutput, error)
+	ListComplianceSummariesPagesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, cb func(*ssm.ListComplianceSummariesOutput, bool) bool, opts ...request.Option) error
 	ListDocumentVersionsWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, opts ...request.Option) (*ssm.ListDocumentVersionsOutput, error)
+	ListDocumentVersionsPagesWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, cb func(*ssm.ListDocumentVersionsOutput, bool) bool, opts ...request.Option) error
 	ListDocumentsWithContext(ctx context.Context, input *ssm.ListDocumentsInput, opts ...request.Option) (*ssm.ListDocumentsOutput, error)
 	ListDocumentsPagesWithContext(ctx context.Context, input *ssm.ListDocumentsInput, cb func(*ssm.ListDocumentsOutput, bool) bool, opts ...request.Option) error
 	ListInventoryEntriesWithContext(ctx context.Context, input *ssm.ListInventoryEntriesInput, opts ...request.Option) (*ssm.ListInventoryEntriesOutput, error)
 	ListResourceComplianceSummariesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, opts ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error)
+	ListResourceComplianceSummariesPagesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, cb func(*ssm.ListResourceComplianceSummariesOutput, bool) bool, opts ...request.Option) error
 	ListResourceDataSyncWithContext(ctx context.Context, input *ssm.ListResourceDataSyncInput, opts ...request.Option) (*ssm.ListResourceDataSyncOutput, error)
+	ListResourceDataSyncPagesWithContext(ctx context.Context, input *ssm.ListResourceDataSyncInput, cb func(*ssm.ListResourceDataSyncOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *ssm.ListTagsForResourceInput, opts ...request.Option) (*ssm.ListTagsForResourceOutput, error)
 	ModifyDocumentPermissionWithContext(ctx context.Context, input *ssm.ModifyDocumentPermissionInput, opts ...request.Option) (*ssm.ModifyDocumentPermissionOutput, error)
 	PutComplianceItemsWithContext(ctx context.Context, input *ssm.PutComplianceItemsInput, opts ...request.Option) (*ssm.PutComplianceItemsOutput, error)
@@ -746,6 +780,26 @@ func (c *Client) DescribeAssociationExecutionTargetsWithContext(ctx context.Cont
 	return req.Output.(*ssm.DescribeAssociationExecutionTargetsOutput), req.Error
 }
 
+func (c *Client) DescribeAssociationExecutionTargetsPagesWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionTargetsInput, cb func(*ssm.DescribeAssociationExecutionTargetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeAssociationExecutionTargets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeAssociationExecutionTargetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeAssociationExecutionsWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionsInput, opts ...request.Option) (*ssm.DescribeAssociationExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -765,6 +819,26 @@ func (c *Client) DescribeAssociationExecutionsWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*ssm.DescribeAssociationExecutionsOutput), req.Error
+}
+
+func (c *Client) DescribeAssociationExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeAssociationExecutionsInput, cb func(*ssm.DescribeAssociationExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeAssociationExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeAssociationExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeAutomationExecutionsWithContext(ctx context.Context, input *ssm.DescribeAutomationExecutionsInput, opts ...request.Option) (*ssm.DescribeAutomationExecutionsOutput, error) {
@@ -788,6 +862,26 @@ func (c *Client) DescribeAutomationExecutionsWithContext(ctx context.Context, in
 	return req.Output.(*ssm.DescribeAutomationExecutionsOutput), req.Error
 }
 
+func (c *Client) DescribeAutomationExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeAutomationExecutionsInput, cb func(*ssm.DescribeAutomationExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeAutomationExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeAutomationExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeAutomationStepExecutionsWithContext(ctx context.Context, input *ssm.DescribeAutomationStepExecutionsInput, opts ...request.Option) (*ssm.DescribeAutomationStepExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -809,6 +903,26 @@ func (c *Client) DescribeAutomationStepExecutionsWithContext(ctx context.Context
 	return req.Output.(*ssm.DescribeAutomationStepExecutionsOutput), req.Error
 }
 
+func (c *Client) DescribeAutomationStepExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeAutomationStepExecutionsInput, cb func(*ssm.DescribeAutomationStepExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeAutomationStepExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeAutomationStepExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeAvailablePatchesWithContext(ctx context.Context, input *ssm.DescribeAvailablePatchesInput, opts ...request.Option) (*ssm.DescribeAvailablePatchesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -828,6 +942,26 @@ func (c *Client) DescribeAvailablePatchesWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*ssm.DescribeAvailablePatchesOutput), req.Error
+}
+
+func (c *Client) DescribeAvailablePatchesPagesWithContext(ctx context.Context, input *ssm.DescribeAvailablePatchesInput, cb func(*ssm.DescribeAvailablePatchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeAvailablePatches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeAvailablePatchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDocumentWithContext(ctx context.Context, input *ssm.DescribeDocumentInput, opts ...request.Option) (*ssm.DescribeDocumentOutput, error) {
@@ -893,6 +1027,26 @@ func (c *Client) DescribeEffectiveInstanceAssociationsWithContext(ctx context.Co
 	return req.Output.(*ssm.DescribeEffectiveInstanceAssociationsOutput), req.Error
 }
 
+func (c *Client) DescribeEffectiveInstanceAssociationsPagesWithContext(ctx context.Context, input *ssm.DescribeEffectiveInstanceAssociationsInput, cb func(*ssm.DescribeEffectiveInstanceAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeEffectiveInstanceAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeEffectiveInstanceAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEffectivePatchesForPatchBaselineWithContext(ctx context.Context, input *ssm.DescribeEffectivePatchesForPatchBaselineInput, opts ...request.Option) (*ssm.DescribeEffectivePatchesForPatchBaselineOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -914,6 +1068,26 @@ func (c *Client) DescribeEffectivePatchesForPatchBaselineWithContext(ctx context
 	return req.Output.(*ssm.DescribeEffectivePatchesForPatchBaselineOutput), req.Error
 }
 
+func (c *Client) DescribeEffectivePatchesForPatchBaselinePagesWithContext(ctx context.Context, input *ssm.DescribeEffectivePatchesForPatchBaselineInput, cb func(*ssm.DescribeEffectivePatchesForPatchBaselineOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeEffectivePatchesForPatchBaseline",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeEffectivePatchesForPatchBaselinePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeInstanceAssociationsStatusWithContext(ctx context.Context, input *ssm.DescribeInstanceAssociationsStatusInput, opts ...request.Option) (*ssm.DescribeInstanceAssociationsStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -933,6 +1107,26 @@ func (c *Client) DescribeInstanceAssociationsStatusWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*ssm.DescribeInstanceAssociationsStatusOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceAssociationsStatusPagesWithContext(ctx context.Context, input *ssm.DescribeInstanceAssociationsStatusInput, cb func(*ssm.DescribeInstanceAssociationsStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeInstanceAssociationsStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeInstanceAssociationsStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstanceInformationWithContext(ctx context.Context, input *ssm.DescribeInstanceInformationInput, opts ...request.Option) (*ssm.DescribeInstanceInformationOutput, error) {
@@ -997,6 +1191,26 @@ func (c *Client) DescribeInstancePatchStatesWithContext(ctx context.Context, inp
 	return req.Output.(*ssm.DescribeInstancePatchStatesOutput), req.Error
 }
 
+func (c *Client) DescribeInstancePatchStatesPagesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesInput, cb func(*ssm.DescribeInstancePatchStatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeInstancePatchStates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeInstancePatchStatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeInstancePatchStatesForPatchGroupWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesForPatchGroupInput, opts ...request.Option) (*ssm.DescribeInstancePatchStatesForPatchGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1016,6 +1230,26 @@ func (c *Client) DescribeInstancePatchStatesForPatchGroupWithContext(ctx context
 	})
 
 	return req.Output.(*ssm.DescribeInstancePatchStatesForPatchGroupOutput), req.Error
+}
+
+func (c *Client) DescribeInstancePatchStatesForPatchGroupPagesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchStatesForPatchGroupInput, cb func(*ssm.DescribeInstancePatchStatesForPatchGroupOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeInstancePatchStatesForPatchGroup",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeInstancePatchStatesForPatchGroupPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstancePatchesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchesInput, opts ...request.Option) (*ssm.DescribeInstancePatchesOutput, error) {
@@ -1039,6 +1273,26 @@ func (c *Client) DescribeInstancePatchesWithContext(ctx context.Context, input *
 	return req.Output.(*ssm.DescribeInstancePatchesOutput), req.Error
 }
 
+func (c *Client) DescribeInstancePatchesPagesWithContext(ctx context.Context, input *ssm.DescribeInstancePatchesInput, cb func(*ssm.DescribeInstancePatchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeInstancePatches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeInstancePatchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeInventoryDeletionsWithContext(ctx context.Context, input *ssm.DescribeInventoryDeletionsInput, opts ...request.Option) (*ssm.DescribeInventoryDeletionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1058,6 +1312,26 @@ func (c *Client) DescribeInventoryDeletionsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ssm.DescribeInventoryDeletionsOutput), req.Error
+}
+
+func (c *Client) DescribeInventoryDeletionsPagesWithContext(ctx context.Context, input *ssm.DescribeInventoryDeletionsInput, cb func(*ssm.DescribeInventoryDeletionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeInventoryDeletions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeInventoryDeletionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, error) {
@@ -1081,6 +1355,26 @@ func (c *Client) DescribeMaintenanceWindowExecutionTaskInvocationsWithContext(ct
 	return req.Output.(*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput), req.Error
 }
 
+func (c *Client) DescribeMaintenanceWindowExecutionTaskInvocationsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTaskInvocationsInput, cb func(*ssm.DescribeMaintenanceWindowExecutionTaskInvocationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowExecutionTaskInvocations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowExecutionTaskInvocationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeMaintenanceWindowExecutionTasksWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTasksInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1100,6 +1394,26 @@ func (c *Client) DescribeMaintenanceWindowExecutionTasksWithContext(ctx context.
 	})
 
 	return req.Output.(*ssm.DescribeMaintenanceWindowExecutionTasksOutput), req.Error
+}
+
+func (c *Client) DescribeMaintenanceWindowExecutionTasksPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionTasksInput, cb func(*ssm.DescribeMaintenanceWindowExecutionTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowExecutionTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowExecutionTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMaintenanceWindowExecutionsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowExecutionsOutput, error) {
@@ -1123,6 +1437,26 @@ func (c *Client) DescribeMaintenanceWindowExecutionsWithContext(ctx context.Cont
 	return req.Output.(*ssm.DescribeMaintenanceWindowExecutionsOutput), req.Error
 }
 
+func (c *Client) DescribeMaintenanceWindowExecutionsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowExecutionsInput, cb func(*ssm.DescribeMaintenanceWindowExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeMaintenanceWindowScheduleWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowScheduleInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1142,6 +1476,26 @@ func (c *Client) DescribeMaintenanceWindowScheduleWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ssm.DescribeMaintenanceWindowScheduleOutput), req.Error
+}
+
+func (c *Client) DescribeMaintenanceWindowSchedulePagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowScheduleInput, cb func(*ssm.DescribeMaintenanceWindowScheduleOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowSchedule",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowSchedulePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMaintenanceWindowTargetsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTargetsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowTargetsOutput, error) {
@@ -1165,6 +1519,26 @@ func (c *Client) DescribeMaintenanceWindowTargetsWithContext(ctx context.Context
 	return req.Output.(*ssm.DescribeMaintenanceWindowTargetsOutput), req.Error
 }
 
+func (c *Client) DescribeMaintenanceWindowTargetsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTargetsInput, cb func(*ssm.DescribeMaintenanceWindowTargetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowTargets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowTargetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeMaintenanceWindowTasksWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTasksInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1184,6 +1558,26 @@ func (c *Client) DescribeMaintenanceWindowTasksWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*ssm.DescribeMaintenanceWindowTasksOutput), req.Error
+}
+
+func (c *Client) DescribeMaintenanceWindowTasksPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowTasksInput, cb func(*ssm.DescribeMaintenanceWindowTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMaintenanceWindowsWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowsOutput, error) {
@@ -1207,6 +1601,26 @@ func (c *Client) DescribeMaintenanceWindowsWithContext(ctx context.Context, inpu
 	return req.Output.(*ssm.DescribeMaintenanceWindowsOutput), req.Error
 }
 
+func (c *Client) DescribeMaintenanceWindowsPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsInput, cb func(*ssm.DescribeMaintenanceWindowsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindows",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeMaintenanceWindowsForTargetWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsForTargetInput, opts ...request.Option) (*ssm.DescribeMaintenanceWindowsForTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1228,6 +1642,26 @@ func (c *Client) DescribeMaintenanceWindowsForTargetWithContext(ctx context.Cont
 	return req.Output.(*ssm.DescribeMaintenanceWindowsForTargetOutput), req.Error
 }
 
+func (c *Client) DescribeMaintenanceWindowsForTargetPagesWithContext(ctx context.Context, input *ssm.DescribeMaintenanceWindowsForTargetInput, cb func(*ssm.DescribeMaintenanceWindowsForTargetOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeMaintenanceWindowsForTarget",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeMaintenanceWindowsForTargetPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeOpsItemsWithContext(ctx context.Context, input *ssm.DescribeOpsItemsInput, opts ...request.Option) (*ssm.DescribeOpsItemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1247,6 +1681,26 @@ func (c *Client) DescribeOpsItemsWithContext(ctx context.Context, input *ssm.Des
 	})
 
 	return req.Output.(*ssm.DescribeOpsItemsOutput), req.Error
+}
+
+func (c *Client) DescribeOpsItemsPagesWithContext(ctx context.Context, input *ssm.DescribeOpsItemsInput, cb func(*ssm.DescribeOpsItemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeOpsItems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeOpsItemsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeParametersWithContext(ctx context.Context, input *ssm.DescribeParametersInput, opts ...request.Option) (*ssm.DescribeParametersOutput, error) {
@@ -1311,6 +1765,26 @@ func (c *Client) DescribePatchBaselinesWithContext(ctx context.Context, input *s
 	return req.Output.(*ssm.DescribePatchBaselinesOutput), req.Error
 }
 
+func (c *Client) DescribePatchBaselinesPagesWithContext(ctx context.Context, input *ssm.DescribePatchBaselinesInput, cb func(*ssm.DescribePatchBaselinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribePatchBaselines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribePatchBaselinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePatchGroupStateWithContext(ctx context.Context, input *ssm.DescribePatchGroupStateInput, opts ...request.Option) (*ssm.DescribePatchGroupStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1353,6 +1827,26 @@ func (c *Client) DescribePatchGroupsWithContext(ctx context.Context, input *ssm.
 	return req.Output.(*ssm.DescribePatchGroupsOutput), req.Error
 }
 
+func (c *Client) DescribePatchGroupsPagesWithContext(ctx context.Context, input *ssm.DescribePatchGroupsInput, cb func(*ssm.DescribePatchGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribePatchGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribePatchGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribePatchPropertiesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, opts ...request.Option) (*ssm.DescribePatchPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1374,6 +1868,26 @@ func (c *Client) DescribePatchPropertiesWithContext(ctx context.Context, input *
 	return req.Output.(*ssm.DescribePatchPropertiesOutput), req.Error
 }
 
+func (c *Client) DescribePatchPropertiesPagesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, cb func(*ssm.DescribePatchPropertiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribePatchProperties",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribePatchPropertiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, opts ...request.Option) (*ssm.DescribeSessionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1393,6 +1907,26 @@ func (c *Client) DescribeSessionsWithContext(ctx context.Context, input *ssm.Des
 	})
 
 	return req.Output.(*ssm.DescribeSessionsOutput), req.Error
+}
+
+func (c *Client) DescribeSessionsPagesWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, cb func(*ssm.DescribeSessionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DescribeSessions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.DescribeSessionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetAutomationExecutionWithContext(ctx context.Context, input *ssm.GetAutomationExecutionInput, opts ...request.Option) (*ssm.GetAutomationExecutionOutput, error) {
@@ -1563,6 +2097,26 @@ func (c *Client) GetInventoryWithContext(ctx context.Context, input *ssm.GetInve
 	return req.Output.(*ssm.GetInventoryOutput), req.Error
 }
 
+func (c *Client) GetInventoryPagesWithContext(ctx context.Context, input *ssm.GetInventoryInput, cb func(*ssm.GetInventoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "GetInventory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.GetInventoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetInventorySchemaWithContext(ctx context.Context, input *ssm.GetInventorySchemaInput, opts ...request.Option) (*ssm.GetInventorySchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -1582,6 +2136,26 @@ func (c *Client) GetInventorySchemaWithContext(ctx context.Context, input *ssm.G
 	})
 
 	return req.Output.(*ssm.GetInventorySchemaOutput), req.Error
+}
+
+func (c *Client) GetInventorySchemaPagesWithContext(ctx context.Context, input *ssm.GetInventorySchemaInput, cb func(*ssm.GetInventorySchemaOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "GetInventorySchema",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.GetInventorySchemaPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetMaintenanceWindowWithContext(ctx context.Context, input *ssm.GetMaintenanceWindowInput, opts ...request.Option) (*ssm.GetMaintenanceWindowOutput, error) {
@@ -1729,6 +2303,26 @@ func (c *Client) GetOpsSummaryWithContext(ctx context.Context, input *ssm.GetOps
 	})
 
 	return req.Output.(*ssm.GetOpsSummaryOutput), req.Error
+}
+
+func (c *Client) GetOpsSummaryPagesWithContext(ctx context.Context, input *ssm.GetOpsSummaryInput, cb func(*ssm.GetOpsSummaryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "GetOpsSummary",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.GetOpsSummaryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetParameterWithContext(ctx context.Context, input *ssm.GetParameterInput, opts ...request.Option) (*ssm.GetParameterOutput, error) {
@@ -1960,6 +2554,26 @@ func (c *Client) ListAssociationVersionsWithContext(ctx context.Context, input *
 	return req.Output.(*ssm.ListAssociationVersionsOutput), req.Error
 }
 
+func (c *Client) ListAssociationVersionsPagesWithContext(ctx context.Context, input *ssm.ListAssociationVersionsInput, cb func(*ssm.ListAssociationVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListAssociationVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListAssociationVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAssociationsWithContext(ctx context.Context, input *ssm.ListAssociationsInput, opts ...request.Option) (*ssm.ListAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -2104,6 +2718,26 @@ func (c *Client) ListComplianceItemsWithContext(ctx context.Context, input *ssm.
 	return req.Output.(*ssm.ListComplianceItemsOutput), req.Error
 }
 
+func (c *Client) ListComplianceItemsPagesWithContext(ctx context.Context, input *ssm.ListComplianceItemsInput, cb func(*ssm.ListComplianceItemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListComplianceItems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListComplianceItemsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListComplianceSummariesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, opts ...request.Option) (*ssm.ListComplianceSummariesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -2125,6 +2759,26 @@ func (c *Client) ListComplianceSummariesWithContext(ctx context.Context, input *
 	return req.Output.(*ssm.ListComplianceSummariesOutput), req.Error
 }
 
+func (c *Client) ListComplianceSummariesPagesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, cb func(*ssm.ListComplianceSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListComplianceSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListComplianceSummariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDocumentVersionsWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, opts ...request.Option) (*ssm.ListDocumentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -2144,6 +2798,26 @@ func (c *Client) ListDocumentVersionsWithContext(ctx context.Context, input *ssm
 	})
 
 	return req.Output.(*ssm.ListDocumentVersionsOutput), req.Error
+}
+
+func (c *Client) ListDocumentVersionsPagesWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, cb func(*ssm.ListDocumentVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListDocumentVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListDocumentVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDocumentsWithContext(ctx context.Context, input *ssm.ListDocumentsInput, opts ...request.Option) (*ssm.ListDocumentsOutput, error) {
@@ -2229,6 +2903,26 @@ func (c *Client) ListResourceComplianceSummariesWithContext(ctx context.Context,
 	return req.Output.(*ssm.ListResourceComplianceSummariesOutput), req.Error
 }
 
+func (c *Client) ListResourceComplianceSummariesPagesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, cb func(*ssm.ListResourceComplianceSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListResourceComplianceSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListResourceComplianceSummariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResourceDataSyncWithContext(ctx context.Context, input *ssm.ListResourceDataSyncInput, opts ...request.Option) (*ssm.ListResourceDataSyncOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -2248,6 +2942,26 @@ func (c *Client) ListResourceDataSyncWithContext(ctx context.Context, input *ssm
 	})
 
 	return req.Output.(*ssm.ListResourceDataSyncOutput), req.Error
+}
+
+func (c *Client) ListResourceDataSyncPagesWithContext(ctx context.Context, input *ssm.ListResourceDataSyncInput, cb func(*ssm.ListResourceDataSyncOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListResourceDataSync",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListResourceDataSyncPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *ssm.ListTagsForResourceInput, opts ...request.Option) (*ssm.ListTagsForResourceOutput, error) {
