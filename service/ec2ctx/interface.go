@@ -53,6 +53,7 @@ type EC2 interface {
 	CopyImageWithContext(ctx context.Context, input *ec2.CopyImageInput, opts ...request.Option) (*ec2.CopyImageOutput, error)
 	CopySnapshotWithContext(ctx context.Context, input *ec2.CopySnapshotInput, opts ...request.Option) (*ec2.CopySnapshotOutput, error)
 	CreateCapacityReservationWithContext(ctx context.Context, input *ec2.CreateCapacityReservationInput, opts ...request.Option) (*ec2.CreateCapacityReservationOutput, error)
+	CreateCarrierGatewayWithContext(ctx context.Context, input *ec2.CreateCarrierGatewayInput, opts ...request.Option) (*ec2.CreateCarrierGatewayOutput, error)
 	CreateClientVpnEndpointWithContext(ctx context.Context, input *ec2.CreateClientVpnEndpointInput, opts ...request.Option) (*ec2.CreateClientVpnEndpointOutput, error)
 	CreateClientVpnRouteWithContext(ctx context.Context, input *ec2.CreateClientVpnRouteInput, opts ...request.Option) (*ec2.CreateClientVpnRouteOutput, error)
 	CreateCustomerGatewayWithContext(ctx context.Context, input *ec2.CreateCustomerGatewayInput, opts ...request.Option) (*ec2.CreateCustomerGatewayOutput, error)
@@ -106,6 +107,7 @@ type EC2 interface {
 	CreateVpnConnectionWithContext(ctx context.Context, input *ec2.CreateVpnConnectionInput, opts ...request.Option) (*ec2.CreateVpnConnectionOutput, error)
 	CreateVpnConnectionRouteWithContext(ctx context.Context, input *ec2.CreateVpnConnectionRouteInput, opts ...request.Option) (*ec2.CreateVpnConnectionRouteOutput, error)
 	CreateVpnGatewayWithContext(ctx context.Context, input *ec2.CreateVpnGatewayInput, opts ...request.Option) (*ec2.CreateVpnGatewayOutput, error)
+	DeleteCarrierGatewayWithContext(ctx context.Context, input *ec2.DeleteCarrierGatewayInput, opts ...request.Option) (*ec2.DeleteCarrierGatewayOutput, error)
 	DeleteClientVpnEndpointWithContext(ctx context.Context, input *ec2.DeleteClientVpnEndpointInput, opts ...request.Option) (*ec2.DeleteClientVpnEndpointOutput, error)
 	DeleteClientVpnRouteWithContext(ctx context.Context, input *ec2.DeleteClientVpnRouteInput, opts ...request.Option) (*ec2.DeleteClientVpnRouteOutput, error)
 	DeleteCustomerGatewayWithContext(ctx context.Context, input *ec2.DeleteCustomerGatewayInput, opts ...request.Option) (*ec2.DeleteCustomerGatewayOutput, error)
@@ -168,6 +170,8 @@ type EC2 interface {
 	DescribeByoipCidrsPagesWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, cb func(*ec2.DescribeByoipCidrsOutput, bool) bool, opts ...request.Option) error
 	DescribeCapacityReservationsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationsOutput, error)
 	DescribeCapacityReservationsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, cb func(*ec2.DescribeCapacityReservationsOutput, bool) bool, opts ...request.Option) error
+	DescribeCarrierGatewaysWithContext(ctx context.Context, input *ec2.DescribeCarrierGatewaysInput, opts ...request.Option) (*ec2.DescribeCarrierGatewaysOutput, error)
+	DescribeCarrierGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeCarrierGatewaysInput, cb func(*ec2.DescribeCarrierGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeClassicLinkInstancesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, opts ...request.Option) (*ec2.DescribeClassicLinkInstancesOutput, error)
 	DescribeClassicLinkInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeClassicLinkInstancesInput, cb func(*ec2.DescribeClassicLinkInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeClientVpnAuthorizationRulesWithContext(ctx context.Context, input *ec2.DescribeClientVpnAuthorizationRulesInput, opts ...request.Option) (*ec2.DescribeClientVpnAuthorizationRulesOutput, error)
@@ -1410,6 +1414,27 @@ func (c *Client) CreateCapacityReservationWithContext(ctx context.Context, input
 	return req.Output.(*ec2.CreateCapacityReservationOutput), req.Error
 }
 
+func (c *Client) CreateCarrierGatewayWithContext(ctx context.Context, input *ec2.CreateCarrierGatewayInput, opts ...request.Option) (*ec2.CreateCarrierGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateCarrierGateway",
+		Input:   input,
+		Output:  (*ec2.CreateCarrierGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateCarrierGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateCarrierGatewayOutput), req.Error
+}
+
 func (c *Client) CreateClientVpnEndpointWithContext(ctx context.Context, input *ec2.CreateClientVpnEndpointInput, opts ...request.Option) (*ec2.CreateClientVpnEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2521,6 +2546,27 @@ func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, input *ec2.Cre
 	})
 
 	return req.Output.(*ec2.CreateVpnGatewayOutput), req.Error
+}
+
+func (c *Client) DeleteCarrierGatewayWithContext(ctx context.Context, input *ec2.DeleteCarrierGatewayInput, opts ...request.Option) (*ec2.DeleteCarrierGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteCarrierGateway",
+		Input:   input,
+		Output:  (*ec2.DeleteCarrierGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteCarrierGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteCarrierGatewayOutput), req.Error
 }
 
 func (c *Client) DeleteClientVpnEndpointWithContext(ctx context.Context, input *ec2.DeleteClientVpnEndpointInput, opts ...request.Option) (*ec2.DeleteClientVpnEndpointOutput, error) {
@@ -3818,6 +3864,47 @@ func (c *Client) DescribeCapacityReservationsPagesWithContext(ctx context.Contex
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeCapacityReservationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeCarrierGatewaysWithContext(ctx context.Context, input *ec2.DescribeCarrierGatewaysInput, opts ...request.Option) (*ec2.DescribeCarrierGatewaysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCarrierGateways",
+		Input:   input,
+		Output:  (*ec2.DescribeCarrierGatewaysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeCarrierGatewaysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeCarrierGatewaysOutput), req.Error
+}
+
+func (c *Client) DescribeCarrierGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeCarrierGatewaysInput, cb func(*ec2.DescribeCarrierGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCarrierGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeCarrierGatewaysPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
