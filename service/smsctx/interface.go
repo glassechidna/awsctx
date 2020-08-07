@@ -16,6 +16,7 @@ type SMS interface {
 	DeleteAppWithContext(ctx context.Context, input *sms.DeleteAppInput, opts ...request.Option) (*sms.DeleteAppOutput, error)
 	DeleteAppLaunchConfigurationWithContext(ctx context.Context, input *sms.DeleteAppLaunchConfigurationInput, opts ...request.Option) (*sms.DeleteAppLaunchConfigurationOutput, error)
 	DeleteAppReplicationConfigurationWithContext(ctx context.Context, input *sms.DeleteAppReplicationConfigurationInput, opts ...request.Option) (*sms.DeleteAppReplicationConfigurationOutput, error)
+	DeleteAppValidationConfigurationWithContext(ctx context.Context, input *sms.DeleteAppValidationConfigurationInput, opts ...request.Option) (*sms.DeleteAppValidationConfigurationOutput, error)
 	DeleteReplicationJobWithContext(ctx context.Context, input *sms.DeleteReplicationJobInput, opts ...request.Option) (*sms.DeleteReplicationJobOutput, error)
 	DeleteServerCatalogWithContext(ctx context.Context, input *sms.DeleteServerCatalogInput, opts ...request.Option) (*sms.DeleteServerCatalogOutput, error)
 	DisassociateConnectorWithContext(ctx context.Context, input *sms.DisassociateConnectorInput, opts ...request.Option) (*sms.DisassociateConnectorOutput, error)
@@ -24,6 +25,8 @@ type SMS interface {
 	GetAppWithContext(ctx context.Context, input *sms.GetAppInput, opts ...request.Option) (*sms.GetAppOutput, error)
 	GetAppLaunchConfigurationWithContext(ctx context.Context, input *sms.GetAppLaunchConfigurationInput, opts ...request.Option) (*sms.GetAppLaunchConfigurationOutput, error)
 	GetAppReplicationConfigurationWithContext(ctx context.Context, input *sms.GetAppReplicationConfigurationInput, opts ...request.Option) (*sms.GetAppReplicationConfigurationOutput, error)
+	GetAppValidationConfigurationWithContext(ctx context.Context, input *sms.GetAppValidationConfigurationInput, opts ...request.Option) (*sms.GetAppValidationConfigurationOutput, error)
+	GetAppValidationOutputWithContext(ctx context.Context, input *sms.GetAppValidationOutputInput, opts ...request.Option) (*sms.GetAppValidationOutputOutput, error)
 	GetConnectorsWithContext(ctx context.Context, input *sms.GetConnectorsInput, opts ...request.Option) (*sms.GetConnectorsOutput, error)
 	GetConnectorsPagesWithContext(ctx context.Context, input *sms.GetConnectorsInput, cb func(*sms.GetConnectorsOutput, bool) bool, opts ...request.Option) error
 	GetReplicationJobsWithContext(ctx context.Context, input *sms.GetReplicationJobsInput, opts ...request.Option) (*sms.GetReplicationJobsOutput, error)
@@ -32,12 +35,16 @@ type SMS interface {
 	GetReplicationRunsPagesWithContext(ctx context.Context, input *sms.GetReplicationRunsInput, cb func(*sms.GetReplicationRunsOutput, bool) bool, opts ...request.Option) error
 	GetServersWithContext(ctx context.Context, input *sms.GetServersInput, opts ...request.Option) (*sms.GetServersOutput, error)
 	GetServersPagesWithContext(ctx context.Context, input *sms.GetServersInput, cb func(*sms.GetServersOutput, bool) bool, opts ...request.Option) error
+	ImportAppCatalogWithContext(ctx context.Context, input *sms.ImportAppCatalogInput, opts ...request.Option) (*sms.ImportAppCatalogOutput, error)
 	ImportServerCatalogWithContext(ctx context.Context, input *sms.ImportServerCatalogInput, opts ...request.Option) (*sms.ImportServerCatalogOutput, error)
 	LaunchAppWithContext(ctx context.Context, input *sms.LaunchAppInput, opts ...request.Option) (*sms.LaunchAppOutput, error)
 	ListAppsWithContext(ctx context.Context, input *sms.ListAppsInput, opts ...request.Option) (*sms.ListAppsOutput, error)
+	NotifyAppValidationOutputWithContext(ctx context.Context, input *sms.NotifyAppValidationOutputInput, opts ...request.Option) (*sms.NotifyAppValidationOutputOutput, error)
 	PutAppLaunchConfigurationWithContext(ctx context.Context, input *sms.PutAppLaunchConfigurationInput, opts ...request.Option) (*sms.PutAppLaunchConfigurationOutput, error)
 	PutAppReplicationConfigurationWithContext(ctx context.Context, input *sms.PutAppReplicationConfigurationInput, opts ...request.Option) (*sms.PutAppReplicationConfigurationOutput, error)
+	PutAppValidationConfigurationWithContext(ctx context.Context, input *sms.PutAppValidationConfigurationInput, opts ...request.Option) (*sms.PutAppValidationConfigurationOutput, error)
 	StartAppReplicationWithContext(ctx context.Context, input *sms.StartAppReplicationInput, opts ...request.Option) (*sms.StartAppReplicationOutput, error)
+	StartOnDemandAppReplicationWithContext(ctx context.Context, input *sms.StartOnDemandAppReplicationInput, opts ...request.Option) (*sms.StartOnDemandAppReplicationOutput, error)
 	StartOnDemandReplicationRunWithContext(ctx context.Context, input *sms.StartOnDemandReplicationRunInput, opts ...request.Option) (*sms.StartOnDemandReplicationRunOutput, error)
 	StopAppReplicationWithContext(ctx context.Context, input *sms.StopAppReplicationInput, opts ...request.Option) (*sms.StopAppReplicationOutput, error)
 	TerminateAppWithContext(ctx context.Context, input *sms.TerminateAppInput, opts ...request.Option) (*sms.TerminateAppOutput, error)
@@ -163,6 +170,27 @@ func (c *Client) DeleteAppReplicationConfigurationWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*sms.DeleteAppReplicationConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteAppValidationConfigurationWithContext(ctx context.Context, input *sms.DeleteAppValidationConfigurationInput, opts ...request.Option) (*sms.DeleteAppValidationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "DeleteAppValidationConfiguration",
+		Input:   input,
+		Output:  (*sms.DeleteAppValidationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.DeleteAppValidationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.DeleteAppValidationConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteReplicationJobWithContext(ctx context.Context, input *sms.DeleteReplicationJobInput, opts ...request.Option) (*sms.DeleteReplicationJobOutput, error) {
@@ -333,6 +361,48 @@ func (c *Client) GetAppReplicationConfigurationWithContext(ctx context.Context, 
 	return req.Output.(*sms.GetAppReplicationConfigurationOutput), req.Error
 }
 
+func (c *Client) GetAppValidationConfigurationWithContext(ctx context.Context, input *sms.GetAppValidationConfigurationInput, opts ...request.Option) (*sms.GetAppValidationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "GetAppValidationConfiguration",
+		Input:   input,
+		Output:  (*sms.GetAppValidationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.GetAppValidationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.GetAppValidationConfigurationOutput), req.Error
+}
+
+func (c *Client) GetAppValidationOutputWithContext(ctx context.Context, input *sms.GetAppValidationOutputInput, opts ...request.Option) (*sms.GetAppValidationOutputOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "GetAppValidationOutput",
+		Input:   input,
+		Output:  (*sms.GetAppValidationOutputOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.GetAppValidationOutputWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.GetAppValidationOutputOutput), req.Error
+}
+
 func (c *Client) GetConnectorsWithContext(ctx context.Context, input *sms.GetConnectorsInput, opts ...request.Option) (*sms.GetConnectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
@@ -497,6 +567,27 @@ func (c *Client) GetServersPagesWithContext(ctx context.Context, input *sms.GetS
 	return req.Error
 }
 
+func (c *Client) ImportAppCatalogWithContext(ctx context.Context, input *sms.ImportAppCatalogInput, opts ...request.Option) (*sms.ImportAppCatalogOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "ImportAppCatalog",
+		Input:   input,
+		Output:  (*sms.ImportAppCatalogOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.ImportAppCatalogWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.ImportAppCatalogOutput), req.Error
+}
+
 func (c *Client) ImportServerCatalogWithContext(ctx context.Context, input *sms.ImportServerCatalogInput, opts ...request.Option) (*sms.ImportServerCatalogOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
@@ -560,6 +651,27 @@ func (c *Client) ListAppsWithContext(ctx context.Context, input *sms.ListAppsInp
 	return req.Output.(*sms.ListAppsOutput), req.Error
 }
 
+func (c *Client) NotifyAppValidationOutputWithContext(ctx context.Context, input *sms.NotifyAppValidationOutputInput, opts ...request.Option) (*sms.NotifyAppValidationOutputOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "NotifyAppValidationOutput",
+		Input:   input,
+		Output:  (*sms.NotifyAppValidationOutputOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.NotifyAppValidationOutputWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.NotifyAppValidationOutputOutput), req.Error
+}
+
 func (c *Client) PutAppLaunchConfigurationWithContext(ctx context.Context, input *sms.PutAppLaunchConfigurationInput, opts ...request.Option) (*sms.PutAppLaunchConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
@@ -602,6 +714,27 @@ func (c *Client) PutAppReplicationConfigurationWithContext(ctx context.Context, 
 	return req.Output.(*sms.PutAppReplicationConfigurationOutput), req.Error
 }
 
+func (c *Client) PutAppValidationConfigurationWithContext(ctx context.Context, input *sms.PutAppValidationConfigurationInput, opts ...request.Option) (*sms.PutAppValidationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "PutAppValidationConfiguration",
+		Input:   input,
+		Output:  (*sms.PutAppValidationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.PutAppValidationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.PutAppValidationConfigurationOutput), req.Error
+}
+
 func (c *Client) StartAppReplicationWithContext(ctx context.Context, input *sms.StartAppReplicationInput, opts ...request.Option) (*sms.StartAppReplicationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sms",
@@ -621,6 +754,27 @@ func (c *Client) StartAppReplicationWithContext(ctx context.Context, input *sms.
 	})
 
 	return req.Output.(*sms.StartAppReplicationOutput), req.Error
+}
+
+func (c *Client) StartOnDemandAppReplicationWithContext(ctx context.Context, input *sms.StartOnDemandAppReplicationInput, opts ...request.Option) (*sms.StartOnDemandAppReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sms",
+		Action:  "StartOnDemandAppReplication",
+		Input:   input,
+		Output:  (*sms.StartOnDemandAppReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SMSAPI.StartOnDemandAppReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sms.StartOnDemandAppReplicationOutput), req.Error
 }
 
 func (c *Client) StartOnDemandReplicationRunWithContext(ctx context.Context, input *sms.StartOnDemandReplicationRunInput, opts ...request.Option) (*sms.StartOnDemandReplicationRunOutput, error) {
