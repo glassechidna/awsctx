@@ -26,6 +26,7 @@ type IoT interface {
 	CancelJobExecutionWithContext(ctx context.Context, input *iot.CancelJobExecutionInput, opts ...request.Option) (*iot.CancelJobExecutionOutput, error)
 	ClearDefaultAuthorizerWithContext(ctx context.Context, input *iot.ClearDefaultAuthorizerInput, opts ...request.Option) (*iot.ClearDefaultAuthorizerOutput, error)
 	ConfirmTopicRuleDestinationWithContext(ctx context.Context, input *iot.ConfirmTopicRuleDestinationInput, opts ...request.Option) (*iot.ConfirmTopicRuleDestinationOutput, error)
+	CreateAuditSuppressionWithContext(ctx context.Context, input *iot.CreateAuditSuppressionInput, opts ...request.Option) (*iot.CreateAuditSuppressionOutput, error)
 	CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error)
 	CreateBillingGroupWithContext(ctx context.Context, input *iot.CreateBillingGroupInput, opts ...request.Option) (*iot.CreateBillingGroupOutput, error)
 	CreateCertificateFromCsrWithContext(ctx context.Context, input *iot.CreateCertificateFromCsrInput, opts ...request.Option) (*iot.CreateCertificateFromCsrOutput, error)
@@ -51,6 +52,7 @@ type IoT interface {
 	CreateTopicRuleWithContext(ctx context.Context, input *iot.CreateTopicRuleInput, opts ...request.Option) (*iot.CreateTopicRuleOutput, error)
 	CreateTopicRuleDestinationWithContext(ctx context.Context, input *iot.CreateTopicRuleDestinationInput, opts ...request.Option) (*iot.CreateTopicRuleDestinationOutput, error)
 	DeleteAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DeleteAccountAuditConfigurationInput, opts ...request.Option) (*iot.DeleteAccountAuditConfigurationOutput, error)
+	DeleteAuditSuppressionWithContext(ctx context.Context, input *iot.DeleteAuditSuppressionInput, opts ...request.Option) (*iot.DeleteAuditSuppressionOutput, error)
 	DeleteAuthorizerWithContext(ctx context.Context, input *iot.DeleteAuthorizerInput, opts ...request.Option) (*iot.DeleteAuthorizerOutput, error)
 	DeleteBillingGroupWithContext(ctx context.Context, input *iot.DeleteBillingGroupInput, opts ...request.Option) (*iot.DeleteBillingGroupOutput, error)
 	DeleteCACertificateWithContext(ctx context.Context, input *iot.DeleteCACertificateInput, opts ...request.Option) (*iot.DeleteCACertificateOutput, error)
@@ -81,6 +83,7 @@ type IoT interface {
 	DescribeAccountAuditConfigurationWithContext(ctx context.Context, input *iot.DescribeAccountAuditConfigurationInput, opts ...request.Option) (*iot.DescribeAccountAuditConfigurationOutput, error)
 	DescribeAuditFindingWithContext(ctx context.Context, input *iot.DescribeAuditFindingInput, opts ...request.Option) (*iot.DescribeAuditFindingOutput, error)
 	DescribeAuditMitigationActionsTaskWithContext(ctx context.Context, input *iot.DescribeAuditMitigationActionsTaskInput, opts ...request.Option) (*iot.DescribeAuditMitigationActionsTaskOutput, error)
+	DescribeAuditSuppressionWithContext(ctx context.Context, input *iot.DescribeAuditSuppressionInput, opts ...request.Option) (*iot.DescribeAuditSuppressionOutput, error)
 	DescribeAuditTaskWithContext(ctx context.Context, input *iot.DescribeAuditTaskInput, opts ...request.Option) (*iot.DescribeAuditTaskOutput, error)
 	DescribeAuthorizerWithContext(ctx context.Context, input *iot.DescribeAuthorizerInput, opts ...request.Option) (*iot.DescribeAuthorizerOutput, error)
 	DescribeBillingGroupWithContext(ctx context.Context, input *iot.DescribeBillingGroupInput, opts ...request.Option) (*iot.DescribeBillingGroupOutput, error)
@@ -126,53 +129,101 @@ type IoT interface {
 	GetTopicRuleDestinationWithContext(ctx context.Context, input *iot.GetTopicRuleDestinationInput, opts ...request.Option) (*iot.GetTopicRuleDestinationOutput, error)
 	GetV2LoggingOptionsWithContext(ctx context.Context, input *iot.GetV2LoggingOptionsInput, opts ...request.Option) (*iot.GetV2LoggingOptionsOutput, error)
 	ListActiveViolationsWithContext(ctx context.Context, input *iot.ListActiveViolationsInput, opts ...request.Option) (*iot.ListActiveViolationsOutput, error)
+	ListActiveViolationsPagesWithContext(ctx context.Context, input *iot.ListActiveViolationsInput, cb func(*iot.ListActiveViolationsOutput, bool) bool, opts ...request.Option) error
 	ListAttachedPoliciesWithContext(ctx context.Context, input *iot.ListAttachedPoliciesInput, opts ...request.Option) (*iot.ListAttachedPoliciesOutput, error)
+	ListAttachedPoliciesPagesWithContext(ctx context.Context, input *iot.ListAttachedPoliciesInput, cb func(*iot.ListAttachedPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListAuditFindingsWithContext(ctx context.Context, input *iot.ListAuditFindingsInput, opts ...request.Option) (*iot.ListAuditFindingsOutput, error)
+	ListAuditFindingsPagesWithContext(ctx context.Context, input *iot.ListAuditFindingsInput, cb func(*iot.ListAuditFindingsOutput, bool) bool, opts ...request.Option) error
 	ListAuditMitigationActionsExecutionsWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsExecutionsInput, opts ...request.Option) (*iot.ListAuditMitigationActionsExecutionsOutput, error)
+	ListAuditMitigationActionsExecutionsPagesWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsExecutionsInput, cb func(*iot.ListAuditMitigationActionsExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListAuditMitigationActionsTasksWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsTasksInput, opts ...request.Option) (*iot.ListAuditMitigationActionsTasksOutput, error)
+	ListAuditMitigationActionsTasksPagesWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsTasksInput, cb func(*iot.ListAuditMitigationActionsTasksOutput, bool) bool, opts ...request.Option) error
+	ListAuditSuppressionsWithContext(ctx context.Context, input *iot.ListAuditSuppressionsInput, opts ...request.Option) (*iot.ListAuditSuppressionsOutput, error)
+	ListAuditSuppressionsPagesWithContext(ctx context.Context, input *iot.ListAuditSuppressionsInput, cb func(*iot.ListAuditSuppressionsOutput, bool) bool, opts ...request.Option) error
 	ListAuditTasksWithContext(ctx context.Context, input *iot.ListAuditTasksInput, opts ...request.Option) (*iot.ListAuditTasksOutput, error)
+	ListAuditTasksPagesWithContext(ctx context.Context, input *iot.ListAuditTasksInput, cb func(*iot.ListAuditTasksOutput, bool) bool, opts ...request.Option) error
 	ListAuthorizersWithContext(ctx context.Context, input *iot.ListAuthorizersInput, opts ...request.Option) (*iot.ListAuthorizersOutput, error)
+	ListAuthorizersPagesWithContext(ctx context.Context, input *iot.ListAuthorizersInput, cb func(*iot.ListAuthorizersOutput, bool) bool, opts ...request.Option) error
 	ListBillingGroupsWithContext(ctx context.Context, input *iot.ListBillingGroupsInput, opts ...request.Option) (*iot.ListBillingGroupsOutput, error)
+	ListBillingGroupsPagesWithContext(ctx context.Context, input *iot.ListBillingGroupsInput, cb func(*iot.ListBillingGroupsOutput, bool) bool, opts ...request.Option) error
 	ListCACertificatesWithContext(ctx context.Context, input *iot.ListCACertificatesInput, opts ...request.Option) (*iot.ListCACertificatesOutput, error)
+	ListCACertificatesPagesWithContext(ctx context.Context, input *iot.ListCACertificatesInput, cb func(*iot.ListCACertificatesOutput, bool) bool, opts ...request.Option) error
 	ListCertificatesWithContext(ctx context.Context, input *iot.ListCertificatesInput, opts ...request.Option) (*iot.ListCertificatesOutput, error)
+	ListCertificatesPagesWithContext(ctx context.Context, input *iot.ListCertificatesInput, cb func(*iot.ListCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListCertificatesByCAWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, opts ...request.Option) (*iot.ListCertificatesByCAOutput, error)
+	ListCertificatesByCAPagesWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, cb func(*iot.ListCertificatesByCAOutput, bool) bool, opts ...request.Option) error
 	ListDimensionsWithContext(ctx context.Context, input *iot.ListDimensionsInput, opts ...request.Option) (*iot.ListDimensionsOutput, error)
+	ListDimensionsPagesWithContext(ctx context.Context, input *iot.ListDimensionsInput, cb func(*iot.ListDimensionsOutput, bool) bool, opts ...request.Option) error
 	ListDomainConfigurationsWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, opts ...request.Option) (*iot.ListDomainConfigurationsOutput, error)
+	ListDomainConfigurationsPagesWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, cb func(*iot.ListDomainConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListIndicesWithContext(ctx context.Context, input *iot.ListIndicesInput, opts ...request.Option) (*iot.ListIndicesOutput, error)
+	ListIndicesPagesWithContext(ctx context.Context, input *iot.ListIndicesInput, cb func(*iot.ListIndicesOutput, bool) bool, opts ...request.Option) error
 	ListJobExecutionsForJobWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, opts ...request.Option) (*iot.ListJobExecutionsForJobOutput, error)
+	ListJobExecutionsForJobPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, cb func(*iot.ListJobExecutionsForJobOutput, bool) bool, opts ...request.Option) error
 	ListJobExecutionsForThingWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, opts ...request.Option) (*iot.ListJobExecutionsForThingOutput, error)
+	ListJobExecutionsForThingPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, cb func(*iot.ListJobExecutionsForThingOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error)
+	ListMitigationActionsPagesWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, cb func(*iot.ListMitigationActionsOutput, bool) bool, opts ...request.Option) error
 	ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, opts ...request.Option) (*iot.ListOTAUpdatesOutput, error)
+	ListOTAUpdatesPagesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, cb func(*iot.ListOTAUpdatesOutput, bool) bool, opts ...request.Option) error
 	ListOutgoingCertificatesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, opts ...request.Option) (*iot.ListOutgoingCertificatesOutput, error)
+	ListOutgoingCertificatesPagesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, cb func(*iot.ListOutgoingCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *iot.ListPoliciesInput, opts ...request.Option) (*iot.ListPoliciesOutput, error)
+	ListPoliciesPagesWithContext(ctx context.Context, input *iot.ListPoliciesInput, cb func(*iot.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListPolicyPrincipalsWithContext(ctx context.Context, input *iot.ListPolicyPrincipalsInput, opts ...request.Option) (*iot.ListPolicyPrincipalsOutput, error)
+	ListPolicyPrincipalsPagesWithContext(ctx context.Context, input *iot.ListPolicyPrincipalsInput, cb func(*iot.ListPolicyPrincipalsOutput, bool) bool, opts ...request.Option) error
 	ListPolicyVersionsWithContext(ctx context.Context, input *iot.ListPolicyVersionsInput, opts ...request.Option) (*iot.ListPolicyVersionsOutput, error)
 	ListPrincipalPoliciesWithContext(ctx context.Context, input *iot.ListPrincipalPoliciesInput, opts ...request.Option) (*iot.ListPrincipalPoliciesOutput, error)
+	ListPrincipalPoliciesPagesWithContext(ctx context.Context, input *iot.ListPrincipalPoliciesInput, cb func(*iot.ListPrincipalPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListPrincipalThingsWithContext(ctx context.Context, input *iot.ListPrincipalThingsInput, opts ...request.Option) (*iot.ListPrincipalThingsOutput, error)
+	ListPrincipalThingsPagesWithContext(ctx context.Context, input *iot.ListPrincipalThingsInput, cb func(*iot.ListPrincipalThingsOutput, bool) bool, opts ...request.Option) error
 	ListProvisioningTemplateVersionsWithContext(ctx context.Context, input *iot.ListProvisioningTemplateVersionsInput, opts ...request.Option) (*iot.ListProvisioningTemplateVersionsOutput, error)
+	ListProvisioningTemplateVersionsPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplateVersionsInput, cb func(*iot.ListProvisioningTemplateVersionsOutput, bool) bool, opts ...request.Option) error
 	ListProvisioningTemplatesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, opts ...request.Option) (*iot.ListProvisioningTemplatesOutput, error)
+	ListProvisioningTemplatesPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, cb func(*iot.ListProvisioningTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error)
+	ListRoleAliasesPagesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, cb func(*iot.ListRoleAliasesOutput, bool) bool, opts ...request.Option) error
 	ListScheduledAuditsWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, opts ...request.Option) (*iot.ListScheduledAuditsOutput, error)
+	ListScheduledAuditsPagesWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, cb func(*iot.ListScheduledAuditsOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesWithContext(ctx context.Context, input *iot.ListSecurityProfilesInput, opts ...request.Option) (*iot.ListSecurityProfilesOutput, error)
+	ListSecurityProfilesPagesWithContext(ctx context.Context, input *iot.ListSecurityProfilesInput, cb func(*iot.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesForTargetWithContext(ctx context.Context, input *iot.ListSecurityProfilesForTargetInput, opts ...request.Option) (*iot.ListSecurityProfilesForTargetOutput, error)
+	ListSecurityProfilesForTargetPagesWithContext(ctx context.Context, input *iot.ListSecurityProfilesForTargetInput, cb func(*iot.ListSecurityProfilesForTargetOutput, bool) bool, opts ...request.Option) error
 	ListStreamsWithContext(ctx context.Context, input *iot.ListStreamsInput, opts ...request.Option) (*iot.ListStreamsOutput, error)
+	ListStreamsPagesWithContext(ctx context.Context, input *iot.ListStreamsInput, cb func(*iot.ListStreamsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *iot.ListTagsForResourceInput, opts ...request.Option) (*iot.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *iot.ListTagsForResourceInput, cb func(*iot.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTargetsForPolicyWithContext(ctx context.Context, input *iot.ListTargetsForPolicyInput, opts ...request.Option) (*iot.ListTargetsForPolicyOutput, error)
+	ListTargetsForPolicyPagesWithContext(ctx context.Context, input *iot.ListTargetsForPolicyInput, cb func(*iot.ListTargetsForPolicyOutput, bool) bool, opts ...request.Option) error
 	ListTargetsForSecurityProfileWithContext(ctx context.Context, input *iot.ListTargetsForSecurityProfileInput, opts ...request.Option) (*iot.ListTargetsForSecurityProfileOutput, error)
+	ListTargetsForSecurityProfilePagesWithContext(ctx context.Context, input *iot.ListTargetsForSecurityProfileInput, cb func(*iot.ListTargetsForSecurityProfileOutput, bool) bool, opts ...request.Option) error
 	ListThingGroupsWithContext(ctx context.Context, input *iot.ListThingGroupsInput, opts ...request.Option) (*iot.ListThingGroupsOutput, error)
+	ListThingGroupsPagesWithContext(ctx context.Context, input *iot.ListThingGroupsInput, cb func(*iot.ListThingGroupsOutput, bool) bool, opts ...request.Option) error
 	ListThingGroupsForThingWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, opts ...request.Option) (*iot.ListThingGroupsForThingOutput, error)
+	ListThingGroupsForThingPagesWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, cb func(*iot.ListThingGroupsForThingOutput, bool) bool, opts ...request.Option) error
 	ListThingPrincipalsWithContext(ctx context.Context, input *iot.ListThingPrincipalsInput, opts ...request.Option) (*iot.ListThingPrincipalsOutput, error)
 	ListThingRegistrationTaskReportsWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, opts ...request.Option) (*iot.ListThingRegistrationTaskReportsOutput, error)
+	ListThingRegistrationTaskReportsPagesWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, cb func(*iot.ListThingRegistrationTaskReportsOutput, bool) bool, opts ...request.Option) error
 	ListThingRegistrationTasksWithContext(ctx context.Context, input *iot.ListThingRegistrationTasksInput, opts ...request.Option) (*iot.ListThingRegistrationTasksOutput, error)
+	ListThingRegistrationTasksPagesWithContext(ctx context.Context, input *iot.ListThingRegistrationTasksInput, cb func(*iot.ListThingRegistrationTasksOutput, bool) bool, opts ...request.Option) error
 	ListThingTypesWithContext(ctx context.Context, input *iot.ListThingTypesInput, opts ...request.Option) (*iot.ListThingTypesOutput, error)
+	ListThingTypesPagesWithContext(ctx context.Context, input *iot.ListThingTypesInput, cb func(*iot.ListThingTypesOutput, bool) bool, opts ...request.Option) error
 	ListThingsWithContext(ctx context.Context, input *iot.ListThingsInput, opts ...request.Option) (*iot.ListThingsOutput, error)
+	ListThingsPagesWithContext(ctx context.Context, input *iot.ListThingsInput, cb func(*iot.ListThingsOutput, bool) bool, opts ...request.Option) error
 	ListThingsInBillingGroupWithContext(ctx context.Context, input *iot.ListThingsInBillingGroupInput, opts ...request.Option) (*iot.ListThingsInBillingGroupOutput, error)
+	ListThingsInBillingGroupPagesWithContext(ctx context.Context, input *iot.ListThingsInBillingGroupInput, cb func(*iot.ListThingsInBillingGroupOutput, bool) bool, opts ...request.Option) error
 	ListThingsInThingGroupWithContext(ctx context.Context, input *iot.ListThingsInThingGroupInput, opts ...request.Option) (*iot.ListThingsInThingGroupOutput, error)
+	ListThingsInThingGroupPagesWithContext(ctx context.Context, input *iot.ListThingsInThingGroupInput, cb func(*iot.ListThingsInThingGroupOutput, bool) bool, opts ...request.Option) error
 	ListTopicRuleDestinationsWithContext(ctx context.Context, input *iot.ListTopicRuleDestinationsInput, opts ...request.Option) (*iot.ListTopicRuleDestinationsOutput, error)
+	ListTopicRuleDestinationsPagesWithContext(ctx context.Context, input *iot.ListTopicRuleDestinationsInput, cb func(*iot.ListTopicRuleDestinationsOutput, bool) bool, opts ...request.Option) error
 	ListTopicRulesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, opts ...request.Option) (*iot.ListTopicRulesOutput, error)
+	ListTopicRulesPagesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, cb func(*iot.ListTopicRulesOutput, bool) bool, opts ...request.Option) error
 	ListV2LoggingLevelsWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, opts ...request.Option) (*iot.ListV2LoggingLevelsOutput, error)
+	ListV2LoggingLevelsPagesWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, cb func(*iot.ListV2LoggingLevelsOutput, bool) bool, opts ...request.Option) error
 	ListViolationEventsWithContext(ctx context.Context, input *iot.ListViolationEventsInput, opts ...request.Option) (*iot.ListViolationEventsOutput, error)
+	ListViolationEventsPagesWithContext(ctx context.Context, input *iot.ListViolationEventsInput, cb func(*iot.ListViolationEventsOutput, bool) bool, opts ...request.Option) error
 	RegisterCACertificateWithContext(ctx context.Context, input *iot.RegisterCACertificateInput, opts ...request.Option) (*iot.RegisterCACertificateOutput, error)
 	RegisterCertificateWithContext(ctx context.Context, input *iot.RegisterCertificateInput, opts ...request.Option) (*iot.RegisterCertificateOutput, error)
 	RegisterCertificateWithoutCAWithContext(ctx context.Context, input *iot.RegisterCertificateWithoutCAInput, opts ...request.Option) (*iot.RegisterCertificateWithoutCAOutput, error)
@@ -197,6 +248,7 @@ type IoT interface {
 	TransferCertificateWithContext(ctx context.Context, input *iot.TransferCertificateInput, opts ...request.Option) (*iot.TransferCertificateOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *iot.UntagResourceInput, opts ...request.Option) (*iot.UntagResourceOutput, error)
 	UpdateAccountAuditConfigurationWithContext(ctx context.Context, input *iot.UpdateAccountAuditConfigurationInput, opts ...request.Option) (*iot.UpdateAccountAuditConfigurationOutput, error)
+	UpdateAuditSuppressionWithContext(ctx context.Context, input *iot.UpdateAuditSuppressionInput, opts ...request.Option) (*iot.UpdateAuditSuppressionOutput, error)
 	UpdateAuthorizerWithContext(ctx context.Context, input *iot.UpdateAuthorizerInput, opts ...request.Option) (*iot.UpdateAuthorizerOutput, error)
 	UpdateBillingGroupWithContext(ctx context.Context, input *iot.UpdateBillingGroupInput, opts ...request.Option) (*iot.UpdateBillingGroupOutput, error)
 	UpdateCACertificateWithContext(ctx context.Context, input *iot.UpdateCACertificateInput, opts ...request.Option) (*iot.UpdateCACertificateOutput, error)
@@ -548,6 +600,27 @@ func (c *Client) ConfirmTopicRuleDestinationWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*iot.ConfirmTopicRuleDestinationOutput), req.Error
+}
+
+func (c *Client) CreateAuditSuppressionWithContext(ctx context.Context, input *iot.CreateAuditSuppressionInput, opts ...request.Option) (*iot.CreateAuditSuppressionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreateAuditSuppression",
+		Input:   input,
+		Output:  (*iot.CreateAuditSuppressionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreateAuditSuppressionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreateAuditSuppressionOutput), req.Error
 }
 
 func (c *Client) CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error) {
@@ -1073,6 +1146,27 @@ func (c *Client) DeleteAccountAuditConfigurationWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*iot.DeleteAccountAuditConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteAuditSuppressionWithContext(ctx context.Context, input *iot.DeleteAuditSuppressionInput, opts ...request.Option) (*iot.DeleteAuditSuppressionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeleteAuditSuppression",
+		Input:   input,
+		Output:  (*iot.DeleteAuditSuppressionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeleteAuditSuppressionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeleteAuditSuppressionOutput), req.Error
 }
 
 func (c *Client) DeleteAuthorizerWithContext(ctx context.Context, input *iot.DeleteAuthorizerInput, opts ...request.Option) (*iot.DeleteAuthorizerOutput, error) {
@@ -1703,6 +1797,27 @@ func (c *Client) DescribeAuditMitigationActionsTaskWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*iot.DescribeAuditMitigationActionsTaskOutput), req.Error
+}
+
+func (c *Client) DescribeAuditSuppressionWithContext(ctx context.Context, input *iot.DescribeAuditSuppressionInput, opts ...request.Option) (*iot.DescribeAuditSuppressionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeAuditSuppression",
+		Input:   input,
+		Output:  (*iot.DescribeAuditSuppressionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeAuditSuppressionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeAuditSuppressionOutput), req.Error
 }
 
 func (c *Client) DescribeAuditTaskWithContext(ctx context.Context, input *iot.DescribeAuditTaskInput, opts ...request.Option) (*iot.DescribeAuditTaskOutput, error) {
@@ -2650,6 +2765,26 @@ func (c *Client) ListActiveViolationsWithContext(ctx context.Context, input *iot
 	return req.Output.(*iot.ListActiveViolationsOutput), req.Error
 }
 
+func (c *Client) ListActiveViolationsPagesWithContext(ctx context.Context, input *iot.ListActiveViolationsInput, cb func(*iot.ListActiveViolationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListActiveViolations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListActiveViolationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAttachedPoliciesWithContext(ctx context.Context, input *iot.ListAttachedPoliciesInput, opts ...request.Option) (*iot.ListAttachedPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2669,6 +2804,26 @@ func (c *Client) ListAttachedPoliciesWithContext(ctx context.Context, input *iot
 	})
 
 	return req.Output.(*iot.ListAttachedPoliciesOutput), req.Error
+}
+
+func (c *Client) ListAttachedPoliciesPagesWithContext(ctx context.Context, input *iot.ListAttachedPoliciesInput, cb func(*iot.ListAttachedPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAttachedPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAttachedPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAuditFindingsWithContext(ctx context.Context, input *iot.ListAuditFindingsInput, opts ...request.Option) (*iot.ListAuditFindingsOutput, error) {
@@ -2692,6 +2847,26 @@ func (c *Client) ListAuditFindingsWithContext(ctx context.Context, input *iot.Li
 	return req.Output.(*iot.ListAuditFindingsOutput), req.Error
 }
 
+func (c *Client) ListAuditFindingsPagesWithContext(ctx context.Context, input *iot.ListAuditFindingsInput, cb func(*iot.ListAuditFindingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuditFindings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAuditFindingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAuditMitigationActionsExecutionsWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsExecutionsInput, opts ...request.Option) (*iot.ListAuditMitigationActionsExecutionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2711,6 +2886,26 @@ func (c *Client) ListAuditMitigationActionsExecutionsWithContext(ctx context.Con
 	})
 
 	return req.Output.(*iot.ListAuditMitigationActionsExecutionsOutput), req.Error
+}
+
+func (c *Client) ListAuditMitigationActionsExecutionsPagesWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsExecutionsInput, cb func(*iot.ListAuditMitigationActionsExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuditMitigationActionsExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAuditMitigationActionsExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAuditMitigationActionsTasksWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsTasksInput, opts ...request.Option) (*iot.ListAuditMitigationActionsTasksOutput, error) {
@@ -2734,6 +2929,67 @@ func (c *Client) ListAuditMitigationActionsTasksWithContext(ctx context.Context,
 	return req.Output.(*iot.ListAuditMitigationActionsTasksOutput), req.Error
 }
 
+func (c *Client) ListAuditMitigationActionsTasksPagesWithContext(ctx context.Context, input *iot.ListAuditMitigationActionsTasksInput, cb func(*iot.ListAuditMitigationActionsTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuditMitigationActionsTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAuditMitigationActionsTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAuditSuppressionsWithContext(ctx context.Context, input *iot.ListAuditSuppressionsInput, opts ...request.Option) (*iot.ListAuditSuppressionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuditSuppressions",
+		Input:   input,
+		Output:  (*iot.ListAuditSuppressionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListAuditSuppressionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListAuditSuppressionsOutput), req.Error
+}
+
+func (c *Client) ListAuditSuppressionsPagesWithContext(ctx context.Context, input *iot.ListAuditSuppressionsInput, cb func(*iot.ListAuditSuppressionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuditSuppressions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAuditSuppressionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAuditTasksWithContext(ctx context.Context, input *iot.ListAuditTasksInput, opts ...request.Option) (*iot.ListAuditTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2753,6 +3009,26 @@ func (c *Client) ListAuditTasksWithContext(ctx context.Context, input *iot.ListA
 	})
 
 	return req.Output.(*iot.ListAuditTasksOutput), req.Error
+}
+
+func (c *Client) ListAuditTasksPagesWithContext(ctx context.Context, input *iot.ListAuditTasksInput, cb func(*iot.ListAuditTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuditTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAuditTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListAuthorizersWithContext(ctx context.Context, input *iot.ListAuthorizersInput, opts ...request.Option) (*iot.ListAuthorizersOutput, error) {
@@ -2776,6 +3052,26 @@ func (c *Client) ListAuthorizersWithContext(ctx context.Context, input *iot.List
 	return req.Output.(*iot.ListAuthorizersOutput), req.Error
 }
 
+func (c *Client) ListAuthorizersPagesWithContext(ctx context.Context, input *iot.ListAuthorizersInput, cb func(*iot.ListAuthorizersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListAuthorizers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListAuthorizersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBillingGroupsWithContext(ctx context.Context, input *iot.ListBillingGroupsInput, opts ...request.Option) (*iot.ListBillingGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2795,6 +3091,26 @@ func (c *Client) ListBillingGroupsWithContext(ctx context.Context, input *iot.Li
 	})
 
 	return req.Output.(*iot.ListBillingGroupsOutput), req.Error
+}
+
+func (c *Client) ListBillingGroupsPagesWithContext(ctx context.Context, input *iot.ListBillingGroupsInput, cb func(*iot.ListBillingGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListBillingGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListBillingGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCACertificatesWithContext(ctx context.Context, input *iot.ListCACertificatesInput, opts ...request.Option) (*iot.ListCACertificatesOutput, error) {
@@ -2818,6 +3134,26 @@ func (c *Client) ListCACertificatesWithContext(ctx context.Context, input *iot.L
 	return req.Output.(*iot.ListCACertificatesOutput), req.Error
 }
 
+func (c *Client) ListCACertificatesPagesWithContext(ctx context.Context, input *iot.ListCACertificatesInput, cb func(*iot.ListCACertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListCACertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListCACertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListCertificatesWithContext(ctx context.Context, input *iot.ListCertificatesInput, opts ...request.Option) (*iot.ListCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2837,6 +3173,26 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, input *iot.Lis
 	})
 
 	return req.Output.(*iot.ListCertificatesOutput), req.Error
+}
+
+func (c *Client) ListCertificatesPagesWithContext(ctx context.Context, input *iot.ListCertificatesInput, cb func(*iot.ListCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCertificatesByCAWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, opts ...request.Option) (*iot.ListCertificatesByCAOutput, error) {
@@ -2860,6 +3216,26 @@ func (c *Client) ListCertificatesByCAWithContext(ctx context.Context, input *iot
 	return req.Output.(*iot.ListCertificatesByCAOutput), req.Error
 }
 
+func (c *Client) ListCertificatesByCAPagesWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, cb func(*iot.ListCertificatesByCAOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListCertificatesByCA",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListCertificatesByCAPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDimensionsWithContext(ctx context.Context, input *iot.ListDimensionsInput, opts ...request.Option) (*iot.ListDimensionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2879,6 +3255,26 @@ func (c *Client) ListDimensionsWithContext(ctx context.Context, input *iot.ListD
 	})
 
 	return req.Output.(*iot.ListDimensionsOutput), req.Error
+}
+
+func (c *Client) ListDimensionsPagesWithContext(ctx context.Context, input *iot.ListDimensionsInput, cb func(*iot.ListDimensionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDimensions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListDimensionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDomainConfigurationsWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, opts ...request.Option) (*iot.ListDomainConfigurationsOutput, error) {
@@ -2902,6 +3298,26 @@ func (c *Client) ListDomainConfigurationsWithContext(ctx context.Context, input 
 	return req.Output.(*iot.ListDomainConfigurationsOutput), req.Error
 }
 
+func (c *Client) ListDomainConfigurationsPagesWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, cb func(*iot.ListDomainConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDomainConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListDomainConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListIndicesWithContext(ctx context.Context, input *iot.ListIndicesInput, opts ...request.Option) (*iot.ListIndicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2921,6 +3337,26 @@ func (c *Client) ListIndicesWithContext(ctx context.Context, input *iot.ListIndi
 	})
 
 	return req.Output.(*iot.ListIndicesOutput), req.Error
+}
+
+func (c *Client) ListIndicesPagesWithContext(ctx context.Context, input *iot.ListIndicesInput, cb func(*iot.ListIndicesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListIndices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListIndicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJobExecutionsForJobWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, opts ...request.Option) (*iot.ListJobExecutionsForJobOutput, error) {
@@ -2944,6 +3380,26 @@ func (c *Client) ListJobExecutionsForJobWithContext(ctx context.Context, input *
 	return req.Output.(*iot.ListJobExecutionsForJobOutput), req.Error
 }
 
+func (c *Client) ListJobExecutionsForJobPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, cb func(*iot.ListJobExecutionsForJobOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListJobExecutionsForJob",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListJobExecutionsForJobPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListJobExecutionsForThingWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, opts ...request.Option) (*iot.ListJobExecutionsForThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2963,6 +3419,26 @@ func (c *Client) ListJobExecutionsForThingWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iot.ListJobExecutionsForThingOutput), req.Error
+}
+
+func (c *Client) ListJobExecutionsForThingPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, cb func(*iot.ListJobExecutionsForThingOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListJobExecutionsForThing",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListJobExecutionsForThingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error) {
@@ -2986,6 +3462,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *iot.ListJobsInp
 	return req.Output.(*iot.ListJobsOutput), req.Error
 }
 
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3005,6 +3501,26 @@ func (c *Client) ListMitigationActionsWithContext(ctx context.Context, input *io
 	})
 
 	return req.Output.(*iot.ListMitigationActionsOutput), req.Error
+}
+
+func (c *Client) ListMitigationActionsPagesWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, cb func(*iot.ListMitigationActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListMitigationActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListMitigationActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, opts ...request.Option) (*iot.ListOTAUpdatesOutput, error) {
@@ -3028,6 +3544,26 @@ func (c *Client) ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListO
 	return req.Output.(*iot.ListOTAUpdatesOutput), req.Error
 }
 
+func (c *Client) ListOTAUpdatesPagesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, cb func(*iot.ListOTAUpdatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListOTAUpdates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListOTAUpdatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOutgoingCertificatesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, opts ...request.Option) (*iot.ListOutgoingCertificatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3047,6 +3583,26 @@ func (c *Client) ListOutgoingCertificatesWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*iot.ListOutgoingCertificatesOutput), req.Error
+}
+
+func (c *Client) ListOutgoingCertificatesPagesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, cb func(*iot.ListOutgoingCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListOutgoingCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListOutgoingCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iot.ListPoliciesInput, opts ...request.Option) (*iot.ListPoliciesOutput, error) {
@@ -3070,6 +3626,26 @@ func (c *Client) ListPoliciesWithContext(ctx context.Context, input *iot.ListPol
 	return req.Output.(*iot.ListPoliciesOutput), req.Error
 }
 
+func (c *Client) ListPoliciesPagesWithContext(ctx context.Context, input *iot.ListPoliciesInput, cb func(*iot.ListPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPolicyPrincipalsWithContext(ctx context.Context, input *iot.ListPolicyPrincipalsInput, opts ...request.Option) (*iot.ListPolicyPrincipalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3089,6 +3665,26 @@ func (c *Client) ListPolicyPrincipalsWithContext(ctx context.Context, input *iot
 	})
 
 	return req.Output.(*iot.ListPolicyPrincipalsOutput), req.Error
+}
+
+func (c *Client) ListPolicyPrincipalsPagesWithContext(ctx context.Context, input *iot.ListPolicyPrincipalsInput, cb func(*iot.ListPolicyPrincipalsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPolicyPrincipals",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListPolicyPrincipalsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iot.ListPolicyVersionsInput, opts ...request.Option) (*iot.ListPolicyVersionsOutput, error) {
@@ -3133,6 +3729,26 @@ func (c *Client) ListPrincipalPoliciesWithContext(ctx context.Context, input *io
 	return req.Output.(*iot.ListPrincipalPoliciesOutput), req.Error
 }
 
+func (c *Client) ListPrincipalPoliciesPagesWithContext(ctx context.Context, input *iot.ListPrincipalPoliciesInput, cb func(*iot.ListPrincipalPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPrincipalPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListPrincipalPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPrincipalThingsWithContext(ctx context.Context, input *iot.ListPrincipalThingsInput, opts ...request.Option) (*iot.ListPrincipalThingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3152,6 +3768,26 @@ func (c *Client) ListPrincipalThingsWithContext(ctx context.Context, input *iot.
 	})
 
 	return req.Output.(*iot.ListPrincipalThingsOutput), req.Error
+}
+
+func (c *Client) ListPrincipalThingsPagesWithContext(ctx context.Context, input *iot.ListPrincipalThingsInput, cb func(*iot.ListPrincipalThingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPrincipalThings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListPrincipalThingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListProvisioningTemplateVersionsWithContext(ctx context.Context, input *iot.ListProvisioningTemplateVersionsInput, opts ...request.Option) (*iot.ListProvisioningTemplateVersionsOutput, error) {
@@ -3175,6 +3811,26 @@ func (c *Client) ListProvisioningTemplateVersionsWithContext(ctx context.Context
 	return req.Output.(*iot.ListProvisioningTemplateVersionsOutput), req.Error
 }
 
+func (c *Client) ListProvisioningTemplateVersionsPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplateVersionsInput, cb func(*iot.ListProvisioningTemplateVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListProvisioningTemplateVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListProvisioningTemplateVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProvisioningTemplatesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, opts ...request.Option) (*iot.ListProvisioningTemplatesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3194,6 +3850,26 @@ func (c *Client) ListProvisioningTemplatesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iot.ListProvisioningTemplatesOutput), req.Error
+}
+
+func (c *Client) ListProvisioningTemplatesPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, cb func(*iot.ListProvisioningTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListProvisioningTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListProvisioningTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error) {
@@ -3217,6 +3893,26 @@ func (c *Client) ListRoleAliasesWithContext(ctx context.Context, input *iot.List
 	return req.Output.(*iot.ListRoleAliasesOutput), req.Error
 }
 
+func (c *Client) ListRoleAliasesPagesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, cb func(*iot.ListRoleAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListRoleAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListRoleAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListScheduledAuditsWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, opts ...request.Option) (*iot.ListScheduledAuditsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3236,6 +3932,26 @@ func (c *Client) ListScheduledAuditsWithContext(ctx context.Context, input *iot.
 	})
 
 	return req.Output.(*iot.ListScheduledAuditsOutput), req.Error
+}
+
+func (c *Client) ListScheduledAuditsPagesWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, cb func(*iot.ListScheduledAuditsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListScheduledAudits",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListScheduledAuditsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *iot.ListSecurityProfilesInput, opts ...request.Option) (*iot.ListSecurityProfilesOutput, error) {
@@ -3259,6 +3975,26 @@ func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *iot
 	return req.Output.(*iot.ListSecurityProfilesOutput), req.Error
 }
 
+func (c *Client) ListSecurityProfilesPagesWithContext(ctx context.Context, input *iot.ListSecurityProfilesInput, cb func(*iot.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListSecurityProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListSecurityProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSecurityProfilesForTargetWithContext(ctx context.Context, input *iot.ListSecurityProfilesForTargetInput, opts ...request.Option) (*iot.ListSecurityProfilesForTargetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3278,6 +4014,26 @@ func (c *Client) ListSecurityProfilesForTargetWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*iot.ListSecurityProfilesForTargetOutput), req.Error
+}
+
+func (c *Client) ListSecurityProfilesForTargetPagesWithContext(ctx context.Context, input *iot.ListSecurityProfilesForTargetInput, cb func(*iot.ListSecurityProfilesForTargetOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListSecurityProfilesForTarget",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListSecurityProfilesForTargetPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListStreamsWithContext(ctx context.Context, input *iot.ListStreamsInput, opts ...request.Option) (*iot.ListStreamsOutput, error) {
@@ -3301,6 +4057,26 @@ func (c *Client) ListStreamsWithContext(ctx context.Context, input *iot.ListStre
 	return req.Output.(*iot.ListStreamsOutput), req.Error
 }
 
+func (c *Client) ListStreamsPagesWithContext(ctx context.Context, input *iot.ListStreamsInput, cb func(*iot.ListStreamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListStreams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListStreamsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot.ListTagsForResourceInput, opts ...request.Option) (*iot.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3320,6 +4096,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *iot.
 	})
 
 	return req.Output.(*iot.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *iot.ListTagsForResourceInput, cb func(*iot.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *iot.ListTargetsForPolicyInput, opts ...request.Option) (*iot.ListTargetsForPolicyOutput, error) {
@@ -3343,6 +4139,26 @@ func (c *Client) ListTargetsForPolicyWithContext(ctx context.Context, input *iot
 	return req.Output.(*iot.ListTargetsForPolicyOutput), req.Error
 }
 
+func (c *Client) ListTargetsForPolicyPagesWithContext(ctx context.Context, input *iot.ListTargetsForPolicyInput, cb func(*iot.ListTargetsForPolicyOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListTargetsForPolicy",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListTargetsForPolicyPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTargetsForSecurityProfileWithContext(ctx context.Context, input *iot.ListTargetsForSecurityProfileInput, opts ...request.Option) (*iot.ListTargetsForSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3362,6 +4178,26 @@ func (c *Client) ListTargetsForSecurityProfileWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*iot.ListTargetsForSecurityProfileOutput), req.Error
+}
+
+func (c *Client) ListTargetsForSecurityProfilePagesWithContext(ctx context.Context, input *iot.ListTargetsForSecurityProfileInput, cb func(*iot.ListTargetsForSecurityProfileOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListTargetsForSecurityProfile",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListTargetsForSecurityProfilePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListThingGroupsWithContext(ctx context.Context, input *iot.ListThingGroupsInput, opts ...request.Option) (*iot.ListThingGroupsOutput, error) {
@@ -3385,6 +4221,26 @@ func (c *Client) ListThingGroupsWithContext(ctx context.Context, input *iot.List
 	return req.Output.(*iot.ListThingGroupsOutput), req.Error
 }
 
+func (c *Client) ListThingGroupsPagesWithContext(ctx context.Context, input *iot.ListThingGroupsInput, cb func(*iot.ListThingGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListThingGroupsForThingWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, opts ...request.Option) (*iot.ListThingGroupsForThingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3404,6 +4260,26 @@ func (c *Client) ListThingGroupsForThingWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*iot.ListThingGroupsForThingOutput), req.Error
+}
+
+func (c *Client) ListThingGroupsForThingPagesWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, cb func(*iot.ListThingGroupsForThingOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingGroupsForThing",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingGroupsForThingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListThingPrincipalsWithContext(ctx context.Context, input *iot.ListThingPrincipalsInput, opts ...request.Option) (*iot.ListThingPrincipalsOutput, error) {
@@ -3448,6 +4324,26 @@ func (c *Client) ListThingRegistrationTaskReportsWithContext(ctx context.Context
 	return req.Output.(*iot.ListThingRegistrationTaskReportsOutput), req.Error
 }
 
+func (c *Client) ListThingRegistrationTaskReportsPagesWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, cb func(*iot.ListThingRegistrationTaskReportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingRegistrationTaskReports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingRegistrationTaskReportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListThingRegistrationTasksWithContext(ctx context.Context, input *iot.ListThingRegistrationTasksInput, opts ...request.Option) (*iot.ListThingRegistrationTasksOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3467,6 +4363,26 @@ func (c *Client) ListThingRegistrationTasksWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*iot.ListThingRegistrationTasksOutput), req.Error
+}
+
+func (c *Client) ListThingRegistrationTasksPagesWithContext(ctx context.Context, input *iot.ListThingRegistrationTasksInput, cb func(*iot.ListThingRegistrationTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingRegistrationTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingRegistrationTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListThingTypesWithContext(ctx context.Context, input *iot.ListThingTypesInput, opts ...request.Option) (*iot.ListThingTypesOutput, error) {
@@ -3490,6 +4406,26 @@ func (c *Client) ListThingTypesWithContext(ctx context.Context, input *iot.ListT
 	return req.Output.(*iot.ListThingTypesOutput), req.Error
 }
 
+func (c *Client) ListThingTypesPagesWithContext(ctx context.Context, input *iot.ListThingTypesInput, cb func(*iot.ListThingTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListThingsWithContext(ctx context.Context, input *iot.ListThingsInput, opts ...request.Option) (*iot.ListThingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3509,6 +4445,26 @@ func (c *Client) ListThingsWithContext(ctx context.Context, input *iot.ListThing
 	})
 
 	return req.Output.(*iot.ListThingsOutput), req.Error
+}
+
+func (c *Client) ListThingsPagesWithContext(ctx context.Context, input *iot.ListThingsInput, cb func(*iot.ListThingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListThingsInBillingGroupWithContext(ctx context.Context, input *iot.ListThingsInBillingGroupInput, opts ...request.Option) (*iot.ListThingsInBillingGroupOutput, error) {
@@ -3532,6 +4488,26 @@ func (c *Client) ListThingsInBillingGroupWithContext(ctx context.Context, input 
 	return req.Output.(*iot.ListThingsInBillingGroupOutput), req.Error
 }
 
+func (c *Client) ListThingsInBillingGroupPagesWithContext(ctx context.Context, input *iot.ListThingsInBillingGroupInput, cb func(*iot.ListThingsInBillingGroupOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingsInBillingGroup",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingsInBillingGroupPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListThingsInThingGroupWithContext(ctx context.Context, input *iot.ListThingsInThingGroupInput, opts ...request.Option) (*iot.ListThingsInThingGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3551,6 +4527,26 @@ func (c *Client) ListThingsInThingGroupWithContext(ctx context.Context, input *i
 	})
 
 	return req.Output.(*iot.ListThingsInThingGroupOutput), req.Error
+}
+
+func (c *Client) ListThingsInThingGroupPagesWithContext(ctx context.Context, input *iot.ListThingsInThingGroupInput, cb func(*iot.ListThingsInThingGroupOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingsInThingGroup",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingsInThingGroupPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTopicRuleDestinationsWithContext(ctx context.Context, input *iot.ListTopicRuleDestinationsInput, opts ...request.Option) (*iot.ListTopicRuleDestinationsOutput, error) {
@@ -3574,6 +4570,26 @@ func (c *Client) ListTopicRuleDestinationsWithContext(ctx context.Context, input
 	return req.Output.(*iot.ListTopicRuleDestinationsOutput), req.Error
 }
 
+func (c *Client) ListTopicRuleDestinationsPagesWithContext(ctx context.Context, input *iot.ListTopicRuleDestinationsInput, cb func(*iot.ListTopicRuleDestinationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListTopicRuleDestinations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListTopicRuleDestinationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTopicRulesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, opts ...request.Option) (*iot.ListTopicRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3593,6 +4609,26 @@ func (c *Client) ListTopicRulesWithContext(ctx context.Context, input *iot.ListT
 	})
 
 	return req.Output.(*iot.ListTopicRulesOutput), req.Error
+}
+
+func (c *Client) ListTopicRulesPagesWithContext(ctx context.Context, input *iot.ListTopicRulesInput, cb func(*iot.ListTopicRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListTopicRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListTopicRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListV2LoggingLevelsWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, opts ...request.Option) (*iot.ListV2LoggingLevelsOutput, error) {
@@ -3616,6 +4652,26 @@ func (c *Client) ListV2LoggingLevelsWithContext(ctx context.Context, input *iot.
 	return req.Output.(*iot.ListV2LoggingLevelsOutput), req.Error
 }
 
+func (c *Client) ListV2LoggingLevelsPagesWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, cb func(*iot.ListV2LoggingLevelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListV2LoggingLevels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListV2LoggingLevelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListViolationEventsWithContext(ctx context.Context, input *iot.ListViolationEventsInput, opts ...request.Option) (*iot.ListViolationEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3635,6 +4691,26 @@ func (c *Client) ListViolationEventsWithContext(ctx context.Context, input *iot.
 	})
 
 	return req.Output.(*iot.ListViolationEventsOutput), req.Error
+}
+
+func (c *Client) ListViolationEventsPagesWithContext(ctx context.Context, input *iot.ListViolationEventsInput, cb func(*iot.ListViolationEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListViolationEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListViolationEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RegisterCACertificateWithContext(ctx context.Context, input *iot.RegisterCACertificateInput, opts ...request.Option) (*iot.RegisterCACertificateOutput, error) {
@@ -4139,6 +5215,27 @@ func (c *Client) UpdateAccountAuditConfigurationWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*iot.UpdateAccountAuditConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateAuditSuppressionWithContext(ctx context.Context, input *iot.UpdateAuditSuppressionInput, opts ...request.Option) (*iot.UpdateAuditSuppressionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdateAuditSuppression",
+		Input:   input,
+		Output:  (*iot.UpdateAuditSuppressionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdateAuditSuppressionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdateAuditSuppressionOutput), req.Error
 }
 
 func (c *Client) UpdateAuthorizerWithContext(ctx context.Context, input *iot.UpdateAuthorizerInput, opts ...request.Option) (*iot.UpdateAuthorizerOutput, error) {

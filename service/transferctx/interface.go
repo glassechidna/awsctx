@@ -16,9 +16,12 @@ type Transfer interface {
 	DeleteServerWithContext(ctx context.Context, input *transfer.DeleteServerInput, opts ...request.Option) (*transfer.DeleteServerOutput, error)
 	DeleteSshPublicKeyWithContext(ctx context.Context, input *transfer.DeleteSshPublicKeyInput, opts ...request.Option) (*transfer.DeleteSshPublicKeyOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *transfer.DeleteUserInput, opts ...request.Option) (*transfer.DeleteUserOutput, error)
+	DescribeSecurityPolicyWithContext(ctx context.Context, input *transfer.DescribeSecurityPolicyInput, opts ...request.Option) (*transfer.DescribeSecurityPolicyOutput, error)
 	DescribeServerWithContext(ctx context.Context, input *transfer.DescribeServerInput, opts ...request.Option) (*transfer.DescribeServerOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *transfer.DescribeUserInput, opts ...request.Option) (*transfer.DescribeUserOutput, error)
 	ImportSshPublicKeyWithContext(ctx context.Context, input *transfer.ImportSshPublicKeyInput, opts ...request.Option) (*transfer.ImportSshPublicKeyOutput, error)
+	ListSecurityPoliciesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, opts ...request.Option) (*transfer.ListSecurityPoliciesOutput, error)
+	ListSecurityPoliciesPagesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, cb func(*transfer.ListSecurityPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListServersWithContext(ctx context.Context, input *transfer.ListServersInput, opts ...request.Option) (*transfer.ListServersOutput, error)
 	ListServersPagesWithContext(ctx context.Context, input *transfer.ListServersInput, cb func(*transfer.ListServersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *transfer.ListTagsForResourceInput, opts ...request.Option) (*transfer.ListTagsForResourceOutput, error)
@@ -154,6 +157,27 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *transfer.Dele
 	return req.Output.(*transfer.DeleteUserOutput), req.Error
 }
 
+func (c *Client) DescribeSecurityPolicyWithContext(ctx context.Context, input *transfer.DescribeSecurityPolicyInput, opts ...request.Option) (*transfer.DescribeSecurityPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "DescribeSecurityPolicy",
+		Input:   input,
+		Output:  (*transfer.DescribeSecurityPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.DescribeSecurityPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.DescribeSecurityPolicyOutput), req.Error
+}
+
 func (c *Client) DescribeServerWithContext(ctx context.Context, input *transfer.DescribeServerInput, opts ...request.Option) (*transfer.DescribeServerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
@@ -215,6 +239,47 @@ func (c *Client) ImportSshPublicKeyWithContext(ctx context.Context, input *trans
 	})
 
 	return req.Output.(*transfer.ImportSshPublicKeyOutput), req.Error
+}
+
+func (c *Client) ListSecurityPoliciesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, opts ...request.Option) (*transfer.ListSecurityPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListSecurityPolicies",
+		Input:   input,
+		Output:  (*transfer.ListSecurityPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.ListSecurityPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.ListSecurityPoliciesOutput), req.Error
+}
+
+func (c *Client) ListSecurityPoliciesPagesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, cb func(*transfer.ListSecurityPoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListSecurityPolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TransferAPI.ListSecurityPoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListServersWithContext(ctx context.Context, input *transfer.ListServersInput, opts ...request.Option) (*transfer.ListServersOutput, error) {
