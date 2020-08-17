@@ -13,6 +13,7 @@ import (
 type QuickSight interface {
 	CancelIngestionWithContext(ctx context.Context, input *quicksight.CancelIngestionInput, opts ...request.Option) (*quicksight.CancelIngestionOutput, error)
 	CreateAccountCustomizationWithContext(ctx context.Context, input *quicksight.CreateAccountCustomizationInput, opts ...request.Option) (*quicksight.CreateAccountCustomizationOutput, error)
+	CreateAnalysisWithContext(ctx context.Context, input *quicksight.CreateAnalysisInput, opts ...request.Option) (*quicksight.CreateAnalysisOutput, error)
 	CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error)
 	CreateDataSetWithContext(ctx context.Context, input *quicksight.CreateDataSetInput, opts ...request.Option) (*quicksight.CreateDataSetOutput, error)
 	CreateDataSourceWithContext(ctx context.Context, input *quicksight.CreateDataSourceInput, opts ...request.Option) (*quicksight.CreateDataSourceOutput, error)
@@ -26,6 +27,7 @@ type QuickSight interface {
 	CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error)
 	CreateThemeAliasWithContext(ctx context.Context, input *quicksight.CreateThemeAliasInput, opts ...request.Option) (*quicksight.CreateThemeAliasOutput, error)
 	DeleteAccountCustomizationWithContext(ctx context.Context, input *quicksight.DeleteAccountCustomizationInput, opts ...request.Option) (*quicksight.DeleteAccountCustomizationOutput, error)
+	DeleteAnalysisWithContext(ctx context.Context, input *quicksight.DeleteAnalysisInput, opts ...request.Option) (*quicksight.DeleteAnalysisOutput, error)
 	DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error)
 	DeleteDataSetWithContext(ctx context.Context, input *quicksight.DeleteDataSetInput, opts ...request.Option) (*quicksight.DeleteDataSetOutput, error)
 	DeleteDataSourceWithContext(ctx context.Context, input *quicksight.DeleteDataSourceInput, opts ...request.Option) (*quicksight.DeleteDataSourceOutput, error)
@@ -41,6 +43,8 @@ type QuickSight interface {
 	DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error)
 	DescribeAccountCustomizationWithContext(ctx context.Context, input *quicksight.DescribeAccountCustomizationInput, opts ...request.Option) (*quicksight.DescribeAccountCustomizationOutput, error)
 	DescribeAccountSettingsWithContext(ctx context.Context, input *quicksight.DescribeAccountSettingsInput, opts ...request.Option) (*quicksight.DescribeAccountSettingsOutput, error)
+	DescribeAnalysisWithContext(ctx context.Context, input *quicksight.DescribeAnalysisInput, opts ...request.Option) (*quicksight.DescribeAnalysisOutput, error)
+	DescribeAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.DescribeAnalysisPermissionsInput, opts ...request.Option) (*quicksight.DescribeAnalysisPermissionsOutput, error)
 	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
 	DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error)
 	DescribeDataSetWithContext(ctx context.Context, input *quicksight.DescribeDataSetInput, opts ...request.Option) (*quicksight.DescribeDataSetOutput, error)
@@ -60,6 +64,8 @@ type QuickSight interface {
 	DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error)
 	GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error)
 	GetSessionEmbedUrlWithContext(ctx context.Context, input *quicksight.GetSessionEmbedUrlInput, opts ...request.Option) (*quicksight.GetSessionEmbedUrlOutput, error)
+	ListAnalysesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, opts ...request.Option) (*quicksight.ListAnalysesOutput, error)
+	ListAnalysesPagesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, cb func(*quicksight.ListAnalysesOutput, bool) bool, opts ...request.Option) error
 	ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error)
 	ListDashboardVersionsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, cb func(*quicksight.ListDashboardVersionsOutput, bool) bool, opts ...request.Option) error
 	ListDashboardsWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, opts ...request.Option) (*quicksight.ListDashboardsOutput, error)
@@ -89,12 +95,17 @@ type QuickSight interface {
 	ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error)
 	RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error)
+	RestoreAnalysisWithContext(ctx context.Context, input *quicksight.RestoreAnalysisInput, opts ...request.Option) (*quicksight.RestoreAnalysisOutput, error)
+	SearchAnalysesWithContext(ctx context.Context, input *quicksight.SearchAnalysesInput, opts ...request.Option) (*quicksight.SearchAnalysesOutput, error)
+	SearchAnalysesPagesWithContext(ctx context.Context, input *quicksight.SearchAnalysesInput, cb func(*quicksight.SearchAnalysesOutput, bool) bool, opts ...request.Option) error
 	SearchDashboardsWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, opts ...request.Option) (*quicksight.SearchDashboardsOutput, error)
 	SearchDashboardsPagesWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, cb func(*quicksight.SearchDashboardsOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error)
 	UpdateAccountCustomizationWithContext(ctx context.Context, input *quicksight.UpdateAccountCustomizationInput, opts ...request.Option) (*quicksight.UpdateAccountCustomizationOutput, error)
 	UpdateAccountSettingsWithContext(ctx context.Context, input *quicksight.UpdateAccountSettingsInput, opts ...request.Option) (*quicksight.UpdateAccountSettingsOutput, error)
+	UpdateAnalysisWithContext(ctx context.Context, input *quicksight.UpdateAnalysisInput, opts ...request.Option) (*quicksight.UpdateAnalysisOutput, error)
+	UpdateAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.UpdateAnalysisPermissionsInput, opts ...request.Option) (*quicksight.UpdateAnalysisPermissionsOutput, error)
 	UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error)
 	UpdateDashboardPermissionsWithContext(ctx context.Context, input *quicksight.UpdateDashboardPermissionsInput, opts ...request.Option) (*quicksight.UpdateDashboardPermissionsOutput, error)
 	UpdateDashboardPublishedVersionWithContext(ctx context.Context, input *quicksight.UpdateDashboardPublishedVersionInput, opts ...request.Option) (*quicksight.UpdateDashboardPublishedVersionOutput, error)
@@ -168,6 +179,27 @@ func (c *Client) CreateAccountCustomizationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*quicksight.CreateAccountCustomizationOutput), req.Error
+}
+
+func (c *Client) CreateAnalysisWithContext(ctx context.Context, input *quicksight.CreateAnalysisInput, opts ...request.Option) (*quicksight.CreateAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateAnalysis",
+		Input:   input,
+		Output:  (*quicksight.CreateAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateAnalysisOutput), req.Error
 }
 
 func (c *Client) CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error) {
@@ -441,6 +473,27 @@ func (c *Client) DeleteAccountCustomizationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*quicksight.DeleteAccountCustomizationOutput), req.Error
+}
+
+func (c *Client) DeleteAnalysisWithContext(ctx context.Context, input *quicksight.DeleteAnalysisInput, opts ...request.Option) (*quicksight.DeleteAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteAnalysis",
+		Input:   input,
+		Output:  (*quicksight.DeleteAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteAnalysisOutput), req.Error
 }
 
 func (c *Client) DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error) {
@@ -756,6 +809,48 @@ func (c *Client) DescribeAccountSettingsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*quicksight.DescribeAccountSettingsOutput), req.Error
+}
+
+func (c *Client) DescribeAnalysisWithContext(ctx context.Context, input *quicksight.DescribeAnalysisInput, opts ...request.Option) (*quicksight.DescribeAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAnalysis",
+		Input:   input,
+		Output:  (*quicksight.DescribeAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAnalysisOutput), req.Error
+}
+
+func (c *Client) DescribeAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.DescribeAnalysisPermissionsInput, opts ...request.Option) (*quicksight.DescribeAnalysisPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAnalysisPermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeAnalysisPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAnalysisPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAnalysisPermissionsOutput), req.Error
 }
 
 func (c *Client) DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error) {
@@ -1155,6 +1250,47 @@ func (c *Client) GetSessionEmbedUrlWithContext(ctx context.Context, input *quick
 	})
 
 	return req.Output.(*quicksight.GetSessionEmbedUrlOutput), req.Error
+}
+
+func (c *Client) ListAnalysesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, opts ...request.Option) (*quicksight.ListAnalysesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListAnalyses",
+		Input:   input,
+		Output:  (*quicksight.ListAnalysesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListAnalysesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListAnalysesOutput), req.Error
+}
+
+func (c *Client) ListAnalysesPagesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, cb func(*quicksight.ListAnalysesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListAnalyses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListAnalysesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error) {
@@ -1757,6 +1893,68 @@ func (c *Client) RegisterUserWithContext(ctx context.Context, input *quicksight.
 	return req.Output.(*quicksight.RegisterUserOutput), req.Error
 }
 
+func (c *Client) RestoreAnalysisWithContext(ctx context.Context, input *quicksight.RestoreAnalysisInput, opts ...request.Option) (*quicksight.RestoreAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "RestoreAnalysis",
+		Input:   input,
+		Output:  (*quicksight.RestoreAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.RestoreAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.RestoreAnalysisOutput), req.Error
+}
+
+func (c *Client) SearchAnalysesWithContext(ctx context.Context, input *quicksight.SearchAnalysesInput, opts ...request.Option) (*quicksight.SearchAnalysesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchAnalyses",
+		Input:   input,
+		Output:  (*quicksight.SearchAnalysesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.SearchAnalysesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.SearchAnalysesOutput), req.Error
+}
+
+func (c *Client) SearchAnalysesPagesWithContext(ctx context.Context, input *quicksight.SearchAnalysesInput, cb func(*quicksight.SearchAnalysesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchAnalyses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.SearchAnalysesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) SearchDashboardsWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, opts ...request.Option) (*quicksight.SearchDashboardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -1880,6 +2078,48 @@ func (c *Client) UpdateAccountSettingsWithContext(ctx context.Context, input *qu
 	})
 
 	return req.Output.(*quicksight.UpdateAccountSettingsOutput), req.Error
+}
+
+func (c *Client) UpdateAnalysisWithContext(ctx context.Context, input *quicksight.UpdateAnalysisInput, opts ...request.Option) (*quicksight.UpdateAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateAnalysis",
+		Input:   input,
+		Output:  (*quicksight.UpdateAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateAnalysisOutput), req.Error
+}
+
+func (c *Client) UpdateAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.UpdateAnalysisPermissionsInput, opts ...request.Option) (*quicksight.UpdateAnalysisPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateAnalysisPermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateAnalysisPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateAnalysisPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateAnalysisPermissionsOutput), req.Error
 }
 
 func (c *Client) UpdateDashboardWithContext(ctx context.Context, input *quicksight.UpdateDashboardInput, opts ...request.Option) (*quicksight.UpdateDashboardOutput, error) {
