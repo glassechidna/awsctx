@@ -26,6 +26,7 @@ type StorageGateway interface {
 	CreateSnapshotWithContext(ctx context.Context, input *storagegateway.CreateSnapshotInput, opts ...request.Option) (*storagegateway.CreateSnapshotOutput, error)
 	CreateSnapshotFromVolumeRecoveryPointWithContext(ctx context.Context, input *storagegateway.CreateSnapshotFromVolumeRecoveryPointInput, opts ...request.Option) (*storagegateway.CreateSnapshotFromVolumeRecoveryPointOutput, error)
 	CreateStorediSCSIVolumeWithContext(ctx context.Context, input *storagegateway.CreateStorediSCSIVolumeInput, opts ...request.Option) (*storagegateway.CreateStorediSCSIVolumeOutput, error)
+	CreateTapePoolWithContext(ctx context.Context, input *storagegateway.CreateTapePoolInput, opts ...request.Option) (*storagegateway.CreateTapePoolOutput, error)
 	CreateTapeWithBarcodeWithContext(ctx context.Context, input *storagegateway.CreateTapeWithBarcodeInput, opts ...request.Option) (*storagegateway.CreateTapeWithBarcodeOutput, error)
 	CreateTapesWithContext(ctx context.Context, input *storagegateway.CreateTapesInput, opts ...request.Option) (*storagegateway.CreateTapesOutput, error)
 	DeleteAutomaticTapeCreationPolicyWithContext(ctx context.Context, input *storagegateway.DeleteAutomaticTapeCreationPolicyInput, opts ...request.Option) (*storagegateway.DeleteAutomaticTapeCreationPolicyOutput, error)
@@ -36,6 +37,7 @@ type StorageGateway interface {
 	DeleteSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.DeleteSnapshotScheduleInput, opts ...request.Option) (*storagegateway.DeleteSnapshotScheduleOutput, error)
 	DeleteTapeWithContext(ctx context.Context, input *storagegateway.DeleteTapeInput, opts ...request.Option) (*storagegateway.DeleteTapeOutput, error)
 	DeleteTapeArchiveWithContext(ctx context.Context, input *storagegateway.DeleteTapeArchiveInput, opts ...request.Option) (*storagegateway.DeleteTapeArchiveOutput, error)
+	DeleteTapePoolWithContext(ctx context.Context, input *storagegateway.DeleteTapePoolInput, opts ...request.Option) (*storagegateway.DeleteTapePoolOutput, error)
 	DeleteVolumeWithContext(ctx context.Context, input *storagegateway.DeleteVolumeInput, opts ...request.Option) (*storagegateway.DeleteVolumeOutput, error)
 	DescribeAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.DescribeAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.DescribeAvailabilityMonitorTestOutput, error)
 	DescribeBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitOutput, error)
@@ -70,6 +72,7 @@ type StorageGateway interface {
 	ListLocalDisksWithContext(ctx context.Context, input *storagegateway.ListLocalDisksInput, opts ...request.Option) (*storagegateway.ListLocalDisksOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, opts ...request.Option) (*storagegateway.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, cb func(*storagegateway.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
+	ListTapePoolsWithContext(ctx context.Context, input *storagegateway.ListTapePoolsInput, opts ...request.Option) (*storagegateway.ListTapePoolsOutput, error)
 	ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error)
 	ListTapesPagesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, cb func(*storagegateway.ListTapesOutput, bool) bool, opts ...request.Option) error
 	ListVolumeInitiatorsWithContext(ctx context.Context, input *storagegateway.ListVolumeInitiatorsInput, opts ...request.Option) (*storagegateway.ListVolumeInitiatorsOutput, error)
@@ -430,6 +433,27 @@ func (c *Client) CreateStorediSCSIVolumeWithContext(ctx context.Context, input *
 	return req.Output.(*storagegateway.CreateStorediSCSIVolumeOutput), req.Error
 }
 
+func (c *Client) CreateTapePoolWithContext(ctx context.Context, input *storagegateway.CreateTapePoolInput, opts ...request.Option) (*storagegateway.CreateTapePoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "CreateTapePool",
+		Input:   input,
+		Output:  (*storagegateway.CreateTapePoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.CreateTapePoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.CreateTapePoolOutput), req.Error
+}
+
 func (c *Client) CreateTapeWithBarcodeWithContext(ctx context.Context, input *storagegateway.CreateTapeWithBarcodeInput, opts ...request.Option) (*storagegateway.CreateTapeWithBarcodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -638,6 +662,27 @@ func (c *Client) DeleteTapeArchiveWithContext(ctx context.Context, input *storag
 	})
 
 	return req.Output.(*storagegateway.DeleteTapeArchiveOutput), req.Error
+}
+
+func (c *Client) DeleteTapePoolWithContext(ctx context.Context, input *storagegateway.DeleteTapePoolInput, opts ...request.Option) (*storagegateway.DeleteTapePoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DeleteTapePool",
+		Input:   input,
+		Output:  (*storagegateway.DeleteTapePoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.DeleteTapePoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.DeleteTapePoolOutput), req.Error
 }
 
 func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *storagegateway.DeleteVolumeInput, opts ...request.Option) (*storagegateway.DeleteVolumeOutput, error) {
@@ -1345,6 +1390,27 @@ func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTapePoolsWithContext(ctx context.Context, input *storagegateway.ListTapePoolsInput, opts ...request.Option) (*storagegateway.ListTapePoolsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListTapePools",
+		Input:   input,
+		Output:  (*storagegateway.ListTapePoolsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.ListTapePoolsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.ListTapePoolsOutput), req.Error
 }
 
 func (c *Client) ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error) {
