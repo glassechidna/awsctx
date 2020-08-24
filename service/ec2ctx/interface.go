@@ -95,6 +95,7 @@ type EC2 interface {
 	CreateTransitGatewayWithContext(ctx context.Context, input *ec2.CreateTransitGatewayInput, opts ...request.Option) (*ec2.CreateTransitGatewayOutput, error)
 	CreateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.CreateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.CreateTransitGatewayMulticastDomainOutput, error)
 	CreateTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayPeeringAttachmentOutput, error)
+	CreateTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.CreateTransitGatewayPrefixListReferenceOutput, error)
 	CreateTransitGatewayRouteWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteOutput, error)
 	CreateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteTableOutput, error)
 	CreateTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayVpcAttachmentOutput, error)
@@ -144,6 +145,7 @@ type EC2 interface {
 	DeleteTransitGatewayWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayInput, opts ...request.Option) (*ec2.DeleteTransitGatewayOutput, error)
 	DeleteTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DeleteTransitGatewayMulticastDomainOutput, error)
 	DeleteTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPeeringAttachmentOutput, error)
+	DeleteTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPrefixListReferenceOutput, error)
 	DeleteTransitGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteOutput, error)
 	DeleteTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteTableOutput, error)
 	DeleteTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayVpcAttachmentOutput, error)
@@ -409,6 +411,8 @@ type EC2 interface {
 	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, error)
 	GetTransitGatewayMulticastDomainAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, cb func(*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, bool) bool, opts ...request.Option) error
+	GetTransitGatewayPrefixListReferencesWithContext(ctx context.Context, input *ec2.GetTransitGatewayPrefixListReferencesInput, opts ...request.Option) (*ec2.GetTransitGatewayPrefixListReferencesOutput, error)
+	GetTransitGatewayPrefixListReferencesPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayPrefixListReferencesInput, cb func(*ec2.GetTransitGatewayPrefixListReferencesOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error)
 	GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error)
@@ -446,6 +450,8 @@ type EC2 interface {
 	ModifyTrafficMirrorFilterNetworkServicesWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorFilterNetworkServicesInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorFilterNetworkServicesOutput, error)
 	ModifyTrafficMirrorFilterRuleWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorFilterRuleInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorFilterRuleOutput, error)
 	ModifyTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorSessionInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorSessionOutput, error)
+	ModifyTransitGatewayWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayInput, opts ...request.Option) (*ec2.ModifyTransitGatewayOutput, error)
+	ModifyTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.ModifyTransitGatewayPrefixListReferenceOutput, error)
 	ModifyTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.ModifyTransitGatewayVpcAttachmentOutput, error)
 	ModifyVolumeWithContext(ctx context.Context, input *ec2.ModifyVolumeInput, opts ...request.Option) (*ec2.ModifyVolumeOutput, error)
 	ModifyVolumeAttributeWithContext(ctx context.Context, input *ec2.ModifyVolumeAttributeInput, opts ...request.Option) (*ec2.ModifyVolumeAttributeOutput, error)
@@ -2296,6 +2302,27 @@ func (c *Client) CreateTransitGatewayPeeringAttachmentWithContext(ctx context.Co
 	return req.Output.(*ec2.CreateTransitGatewayPeeringAttachmentOutput), req.Error
 }
 
+func (c *Client) CreateTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.CreateTransitGatewayPrefixListReferenceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateTransitGatewayPrefixListReference",
+		Input:   input,
+		Output:  (*ec2.CreateTransitGatewayPrefixListReferenceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateTransitGatewayPrefixListReferenceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateTransitGatewayPrefixListReferenceOutput), req.Error
+}
+
 func (c *Client) CreateTransitGatewayRouteWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3323,6 +3350,27 @@ func (c *Client) DeleteTransitGatewayPeeringAttachmentWithContext(ctx context.Co
 	})
 
 	return req.Output.(*ec2.DeleteTransitGatewayPeeringAttachmentOutput), req.Error
+}
+
+func (c *Client) DeleteTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPrefixListReferenceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteTransitGatewayPrefixListReference",
+		Input:   input,
+		Output:  (*ec2.DeleteTransitGatewayPrefixListReferenceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteTransitGatewayPrefixListReferenceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteTransitGatewayPrefixListReferenceOutput), req.Error
 }
 
 func (c *Client) DeleteTransitGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteOutput, error) {
@@ -8804,6 +8852,47 @@ func (c *Client) GetTransitGatewayMulticastDomainAssociationsPagesWithContext(ct
 	return req.Error
 }
 
+func (c *Client) GetTransitGatewayPrefixListReferencesWithContext(ctx context.Context, input *ec2.GetTransitGatewayPrefixListReferencesInput, opts ...request.Option) (*ec2.GetTransitGatewayPrefixListReferencesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayPrefixListReferences",
+		Input:   input,
+		Output:  (*ec2.GetTransitGatewayPrefixListReferencesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetTransitGatewayPrefixListReferencesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetTransitGatewayPrefixListReferencesOutput), req.Error
+}
+
+func (c *Client) GetTransitGatewayPrefixListReferencesPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayPrefixListReferencesInput, cb func(*ec2.GetTransitGatewayPrefixListReferencesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetTransitGatewayPrefixListReferences",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetTransitGatewayPrefixListReferencesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTransitGatewayRouteTableAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTableAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9577,6 +9666,48 @@ func (c *Client) ModifyTrafficMirrorSessionWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.ModifyTrafficMirrorSessionOutput), req.Error
+}
+
+func (c *Client) ModifyTransitGatewayWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayInput, opts ...request.Option) (*ec2.ModifyTransitGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyTransitGateway",
+		Input:   input,
+		Output:  (*ec2.ModifyTransitGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyTransitGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyTransitGatewayOutput), req.Error
+}
+
+func (c *Client) ModifyTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.ModifyTransitGatewayPrefixListReferenceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyTransitGatewayPrefixListReference",
+		Input:   input,
+		Output:  (*ec2.ModifyTransitGatewayPrefixListReferenceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyTransitGatewayPrefixListReferenceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyTransitGatewayPrefixListReferenceOutput), req.Error
 }
 
 func (c *Client) ModifyTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.ModifyTransitGatewayVpcAttachmentOutput, error) {

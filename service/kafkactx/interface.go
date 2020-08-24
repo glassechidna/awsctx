@@ -14,6 +14,7 @@ type Kafka interface {
 	CreateClusterWithContext(ctx context.Context, input *kafka.CreateClusterInput, opts ...request.Option) (*kafka.CreateClusterOutput, error)
 	CreateConfigurationWithContext(ctx context.Context, input *kafka.CreateConfigurationInput, opts ...request.Option) (*kafka.CreateConfigurationOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *kafka.DeleteClusterInput, opts ...request.Option) (*kafka.DeleteClusterOutput, error)
+	DeleteConfigurationWithContext(ctx context.Context, input *kafka.DeleteConfigurationInput, opts ...request.Option) (*kafka.DeleteConfigurationOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *kafka.DescribeClusterInput, opts ...request.Option) (*kafka.DescribeClusterOutput, error)
 	DescribeClusterOperationWithContext(ctx context.Context, input *kafka.DescribeClusterOperationInput, opts ...request.Option) (*kafka.DescribeClusterOperationOutput, error)
 	DescribeConfigurationWithContext(ctx context.Context, input *kafka.DescribeConfigurationInput, opts ...request.Option) (*kafka.DescribeConfigurationOutput, error)
@@ -40,6 +41,7 @@ type Kafka interface {
 	UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error)
 	UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error)
 	UpdateClusterKafkaVersionWithContext(ctx context.Context, input *kafka.UpdateClusterKafkaVersionInput, opts ...request.Option) (*kafka.UpdateClusterKafkaVersionOutput, error)
+	UpdateConfigurationWithContext(ctx context.Context, input *kafka.UpdateConfigurationInput, opts ...request.Option) (*kafka.UpdateConfigurationOutput, error)
 	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
 }
 
@@ -119,6 +121,27 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *kafka.Dele
 	})
 
 	return req.Output.(*kafka.DeleteClusterOutput), req.Error
+}
+
+func (c *Client) DeleteConfigurationWithContext(ctx context.Context, input *kafka.DeleteConfigurationInput, opts ...request.Option) (*kafka.DeleteConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "DeleteConfiguration",
+		Input:   input,
+		Output:  (*kafka.DeleteConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.DeleteConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.DeleteConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *kafka.DescribeClusterInput, opts ...request.Option) (*kafka.DescribeClusterOutput, error) {
@@ -659,6 +682,27 @@ func (c *Client) UpdateClusterKafkaVersionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*kafka.UpdateClusterKafkaVersionOutput), req.Error
+}
+
+func (c *Client) UpdateConfigurationWithContext(ctx context.Context, input *kafka.UpdateConfigurationInput, opts ...request.Option) (*kafka.UpdateConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateConfiguration",
+		Input:   input,
+		Output:  (*kafka.UpdateConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error) {

@@ -34,9 +34,12 @@ type XRay interface {
 	GetTraceGraphPagesWithContext(ctx context.Context, input *xray.GetTraceGraphInput, cb func(*xray.GetTraceGraphOutput, bool) bool, opts ...request.Option) error
 	GetTraceSummariesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, opts ...request.Option) (*xray.GetTraceSummariesOutput, error)
 	GetTraceSummariesPagesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, cb func(*xray.GetTraceSummariesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *xray.ListTagsForResourceInput, opts ...request.Option) (*xray.ListTagsForResourceOutput, error)
 	PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error)
 	PutTelemetryRecordsWithContext(ctx context.Context, input *xray.PutTelemetryRecordsInput, opts ...request.Option) (*xray.PutTelemetryRecordsOutput, error)
 	PutTraceSegmentsWithContext(ctx context.Context, input *xray.PutTraceSegmentsInput, opts ...request.Option) (*xray.PutTraceSegmentsOutput, error)
+	TagResourceWithContext(ctx context.Context, input *xray.TagResourceInput, opts ...request.Option) (*xray.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *xray.UntagResourceInput, opts ...request.Option) (*xray.UntagResourceOutput, error)
 	UpdateGroupWithContext(ctx context.Context, input *xray.UpdateGroupInput, opts ...request.Option) (*xray.UpdateGroupOutput, error)
 	UpdateSamplingRuleWithContext(ctx context.Context, input *xray.UpdateSamplingRuleInput, opts ...request.Option) (*xray.UpdateSamplingRuleOutput, error)
 }
@@ -531,6 +534,27 @@ func (c *Client) GetTraceSummariesPagesWithContext(ctx context.Context, input *x
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *xray.ListTagsForResourceInput, opts ...request.Option) (*xray.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*xray.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -592,6 +616,48 @@ func (c *Client) PutTraceSegmentsWithContext(ctx context.Context, input *xray.Pu
 	})
 
 	return req.Output.(*xray.PutTraceSegmentsOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *xray.TagResourceInput, opts ...request.Option) (*xray.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*xray.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *xray.UntagResourceInput, opts ...request.Option) (*xray.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*xray.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *xray.UpdateGroupInput, opts ...request.Option) (*xray.UpdateGroupOutput, error) {
