@@ -12,14 +12,21 @@ import (
 
 type Route53Resolver interface {
 	AssociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.AssociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.AssociateResolverEndpointIpAddressOutput, error)
+	AssociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.AssociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.AssociateResolverQueryLogConfigOutput, error)
 	AssociateResolverRuleWithContext(ctx context.Context, input *route53resolver.AssociateResolverRuleInput, opts ...request.Option) (*route53resolver.AssociateResolverRuleOutput, error)
 	CreateResolverEndpointWithContext(ctx context.Context, input *route53resolver.CreateResolverEndpointInput, opts ...request.Option) (*route53resolver.CreateResolverEndpointOutput, error)
+	CreateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.CreateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.CreateResolverQueryLogConfigOutput, error)
 	CreateResolverRuleWithContext(ctx context.Context, input *route53resolver.CreateResolverRuleInput, opts ...request.Option) (*route53resolver.CreateResolverRuleOutput, error)
 	DeleteResolverEndpointWithContext(ctx context.Context, input *route53resolver.DeleteResolverEndpointInput, opts ...request.Option) (*route53resolver.DeleteResolverEndpointOutput, error)
+	DeleteResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DeleteResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DeleteResolverQueryLogConfigOutput, error)
 	DeleteResolverRuleWithContext(ctx context.Context, input *route53resolver.DeleteResolverRuleInput, opts ...request.Option) (*route53resolver.DeleteResolverRuleOutput, error)
 	DisassociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.DisassociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.DisassociateResolverEndpointIpAddressOutput, error)
+	DisassociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DisassociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DisassociateResolverQueryLogConfigOutput, error)
 	DisassociateResolverRuleWithContext(ctx context.Context, input *route53resolver.DisassociateResolverRuleInput, opts ...request.Option) (*route53resolver.DisassociateResolverRuleOutput, error)
 	GetResolverEndpointWithContext(ctx context.Context, input *route53resolver.GetResolverEndpointInput, opts ...request.Option) (*route53resolver.GetResolverEndpointOutput, error)
+	GetResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigOutput, error)
+	GetResolverQueryLogConfigAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigAssociationInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigAssociationOutput, error)
+	GetResolverQueryLogConfigPolicyWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigPolicyInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigPolicyOutput, error)
 	GetResolverRuleWithContext(ctx context.Context, input *route53resolver.GetResolverRuleInput, opts ...request.Option) (*route53resolver.GetResolverRuleOutput, error)
 	GetResolverRuleAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverRuleAssociationInput, opts ...request.Option) (*route53resolver.GetResolverRuleAssociationOutput, error)
 	GetResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.GetResolverRulePolicyInput, opts ...request.Option) (*route53resolver.GetResolverRulePolicyOutput, error)
@@ -27,11 +34,17 @@ type Route53Resolver interface {
 	ListResolverEndpointIpAddressesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, cb func(*route53resolver.ListResolverEndpointIpAddressesOutput, bool) bool, opts ...request.Option) error
 	ListResolverEndpointsWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, opts ...request.Option) (*route53resolver.ListResolverEndpointsOutput, error)
 	ListResolverEndpointsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, cb func(*route53resolver.ListResolverEndpointsOutput, bool) bool, opts ...request.Option) error
+	ListResolverQueryLogConfigAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverQueryLogConfigAssociationsOutput, error)
+	ListResolverQueryLogConfigAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigAssociationsInput, cb func(*route53resolver.ListResolverQueryLogConfigAssociationsOutput, bool) bool, opts ...request.Option) error
+	ListResolverQueryLogConfigsWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigsInput, opts ...request.Option) (*route53resolver.ListResolverQueryLogConfigsOutput, error)
+	ListResolverQueryLogConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigsInput, cb func(*route53resolver.ListResolverQueryLogConfigsOutput, bool) bool, opts ...request.Option) error
 	ListResolverRuleAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverRuleAssociationsOutput, error)
 	ListResolverRuleAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, cb func(*route53resolver.ListResolverRuleAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListResolverRulesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, opts ...request.Option) (*route53resolver.ListResolverRulesOutput, error)
 	ListResolverRulesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, cb func(*route53resolver.ListResolverRulesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, opts ...request.Option) (*route53resolver.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, cb func(*route53resolver.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
+	PutResolverQueryLogConfigPolicyWithContext(ctx context.Context, input *route53resolver.PutResolverQueryLogConfigPolicyInput, opts ...request.Option) (*route53resolver.PutResolverQueryLogConfigPolicyOutput, error)
 	PutResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.PutResolverRulePolicyInput, opts ...request.Option) (*route53resolver.PutResolverRulePolicyOutput, error)
 	TagResourceWithContext(ctx context.Context, input *route53resolver.TagResourceInput, opts ...request.Option) (*route53resolver.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *route53resolver.UntagResourceInput, opts ...request.Option) (*route53resolver.UntagResourceOutput, error)
@@ -73,6 +86,27 @@ func (c *Client) AssociateResolverEndpointIpAddressWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*route53resolver.AssociateResolverEndpointIpAddressOutput), req.Error
+}
+
+func (c *Client) AssociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.AssociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.AssociateResolverQueryLogConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "AssociateResolverQueryLogConfig",
+		Input:   input,
+		Output:  (*route53resolver.AssociateResolverQueryLogConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.AssociateResolverQueryLogConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.AssociateResolverQueryLogConfigOutput), req.Error
 }
 
 func (c *Client) AssociateResolverRuleWithContext(ctx context.Context, input *route53resolver.AssociateResolverRuleInput, opts ...request.Option) (*route53resolver.AssociateResolverRuleOutput, error) {
@@ -117,6 +151,27 @@ func (c *Client) CreateResolverEndpointWithContext(ctx context.Context, input *r
 	return req.Output.(*route53resolver.CreateResolverEndpointOutput), req.Error
 }
 
+func (c *Client) CreateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.CreateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.CreateResolverQueryLogConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "CreateResolverQueryLogConfig",
+		Input:   input,
+		Output:  (*route53resolver.CreateResolverQueryLogConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.CreateResolverQueryLogConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.CreateResolverQueryLogConfigOutput), req.Error
+}
+
 func (c *Client) CreateResolverRuleWithContext(ctx context.Context, input *route53resolver.CreateResolverRuleInput, opts ...request.Option) (*route53resolver.CreateResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -157,6 +212,27 @@ func (c *Client) DeleteResolverEndpointWithContext(ctx context.Context, input *r
 	})
 
 	return req.Output.(*route53resolver.DeleteResolverEndpointOutput), req.Error
+}
+
+func (c *Client) DeleteResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DeleteResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DeleteResolverQueryLogConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "DeleteResolverQueryLogConfig",
+		Input:   input,
+		Output:  (*route53resolver.DeleteResolverQueryLogConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.DeleteResolverQueryLogConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.DeleteResolverQueryLogConfigOutput), req.Error
 }
 
 func (c *Client) DeleteResolverRuleWithContext(ctx context.Context, input *route53resolver.DeleteResolverRuleInput, opts ...request.Option) (*route53resolver.DeleteResolverRuleOutput, error) {
@@ -201,6 +277,27 @@ func (c *Client) DisassociateResolverEndpointIpAddressWithContext(ctx context.Co
 	return req.Output.(*route53resolver.DisassociateResolverEndpointIpAddressOutput), req.Error
 }
 
+func (c *Client) DisassociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DisassociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DisassociateResolverQueryLogConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "DisassociateResolverQueryLogConfig",
+		Input:   input,
+		Output:  (*route53resolver.DisassociateResolverQueryLogConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.DisassociateResolverQueryLogConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.DisassociateResolverQueryLogConfigOutput), req.Error
+}
+
 func (c *Client) DisassociateResolverRuleWithContext(ctx context.Context, input *route53resolver.DisassociateResolverRuleInput, opts ...request.Option) (*route53resolver.DisassociateResolverRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -241,6 +338,69 @@ func (c *Client) GetResolverEndpointWithContext(ctx context.Context, input *rout
 	})
 
 	return req.Output.(*route53resolver.GetResolverEndpointOutput), req.Error
+}
+
+func (c *Client) GetResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetResolverQueryLogConfig",
+		Input:   input,
+		Output:  (*route53resolver.GetResolverQueryLogConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetResolverQueryLogConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetResolverQueryLogConfigOutput), req.Error
+}
+
+func (c *Client) GetResolverQueryLogConfigAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigAssociationInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetResolverQueryLogConfigAssociation",
+		Input:   input,
+		Output:  (*route53resolver.GetResolverQueryLogConfigAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetResolverQueryLogConfigAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetResolverQueryLogConfigAssociationOutput), req.Error
+}
+
+func (c *Client) GetResolverQueryLogConfigPolicyWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigPolicyInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetResolverQueryLogConfigPolicy",
+		Input:   input,
+		Output:  (*route53resolver.GetResolverQueryLogConfigPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetResolverQueryLogConfigPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetResolverQueryLogConfigPolicyOutput), req.Error
 }
 
 func (c *Client) GetResolverRuleWithContext(ctx context.Context, input *route53resolver.GetResolverRuleInput, opts ...request.Option) (*route53resolver.GetResolverRuleOutput, error) {
@@ -388,6 +548,88 @@ func (c *Client) ListResolverEndpointsPagesWithContext(ctx context.Context, inpu
 	return req.Error
 }
 
+func (c *Client) ListResolverQueryLogConfigAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverQueryLogConfigAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverQueryLogConfigAssociations",
+		Input:   input,
+		Output:  (*route53resolver.ListResolverQueryLogConfigAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListResolverQueryLogConfigAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListResolverQueryLogConfigAssociationsOutput), req.Error
+}
+
+func (c *Client) ListResolverQueryLogConfigAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigAssociationsInput, cb func(*route53resolver.ListResolverQueryLogConfigAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverQueryLogConfigAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverQueryLogConfigAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListResolverQueryLogConfigsWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigsInput, opts ...request.Option) (*route53resolver.ListResolverQueryLogConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverQueryLogConfigs",
+		Input:   input,
+		Output:  (*route53resolver.ListResolverQueryLogConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListResolverQueryLogConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListResolverQueryLogConfigsOutput), req.Error
+}
+
+func (c *Client) ListResolverQueryLogConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverQueryLogConfigsInput, cb func(*route53resolver.ListResolverQueryLogConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverQueryLogConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverQueryLogConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResolverRuleAssociationsWithContext(ctx context.Context, input *route53resolver.ListResolverRuleAssociationsInput, opts ...request.Option) (*route53resolver.ListResolverRuleAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -489,6 +731,47 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rout
 	})
 
 	return req.Output.(*route53resolver.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, cb func(*route53resolver.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) PutResolverQueryLogConfigPolicyWithContext(ctx context.Context, input *route53resolver.PutResolverQueryLogConfigPolicyInput, opts ...request.Option) (*route53resolver.PutResolverQueryLogConfigPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "PutResolverQueryLogConfigPolicy",
+		Input:   input,
+		Output:  (*route53resolver.PutResolverQueryLogConfigPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.PutResolverQueryLogConfigPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.PutResolverQueryLogConfigPolicyOutput), req.Error
 }
 
 func (c *Client) PutResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.PutResolverRulePolicyInput, opts ...request.Option) (*route53resolver.PutResolverRulePolicyOutput, error) {
