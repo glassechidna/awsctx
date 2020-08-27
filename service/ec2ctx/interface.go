@@ -463,6 +463,7 @@ type EC2 interface {
 	ModifyVpcPeeringConnectionOptionsWithContext(ctx context.Context, input *ec2.ModifyVpcPeeringConnectionOptionsInput, opts ...request.Option) (*ec2.ModifyVpcPeeringConnectionOptionsOutput, error)
 	ModifyVpcTenancyWithContext(ctx context.Context, input *ec2.ModifyVpcTenancyInput, opts ...request.Option) (*ec2.ModifyVpcTenancyOutput, error)
 	ModifyVpnConnectionWithContext(ctx context.Context, input *ec2.ModifyVpnConnectionInput, opts ...request.Option) (*ec2.ModifyVpnConnectionOutput, error)
+	ModifyVpnConnectionOptionsWithContext(ctx context.Context, input *ec2.ModifyVpnConnectionOptionsInput, opts ...request.Option) (*ec2.ModifyVpnConnectionOptionsOutput, error)
 	ModifyVpnTunnelCertificateWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelCertificateInput, opts ...request.Option) (*ec2.ModifyVpnTunnelCertificateOutput, error)
 	ModifyVpnTunnelOptionsWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelOptionsInput, opts ...request.Option) (*ec2.ModifyVpnTunnelOptionsOutput, error)
 	MonitorInstancesWithContext(ctx context.Context, input *ec2.MonitorInstancesInput, opts ...request.Option) (*ec2.MonitorInstancesOutput, error)
@@ -9939,6 +9940,27 @@ func (c *Client) ModifyVpnConnectionWithContext(ctx context.Context, input *ec2.
 	})
 
 	return req.Output.(*ec2.ModifyVpnConnectionOutput), req.Error
+}
+
+func (c *Client) ModifyVpnConnectionOptionsWithContext(ctx context.Context, input *ec2.ModifyVpnConnectionOptionsInput, opts ...request.Option) (*ec2.ModifyVpnConnectionOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVpnConnectionOptions",
+		Input:   input,
+		Output:  (*ec2.ModifyVpnConnectionOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVpnConnectionOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVpnConnectionOptionsOutput), req.Error
 }
 
 func (c *Client) ModifyVpnTunnelCertificateWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelCertificateInput, opts ...request.Option) (*ec2.ModifyVpnTunnelCertificateOutput, error) {
