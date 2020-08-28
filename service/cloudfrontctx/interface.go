@@ -18,6 +18,7 @@ type CloudFront interface {
 	CreateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionConfigOutput, error)
 	CreateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionProfileOutput, error)
 	CreateInvalidationWithContext(ctx context.Context, input *cloudfront.CreateInvalidationInput, opts ...request.Option) (*cloudfront.CreateInvalidationOutput, error)
+	CreateMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.CreateMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.CreateMonitoringSubscriptionOutput, error)
 	CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error)
 	CreatePublicKeyWithContext(ctx context.Context, input *cloudfront.CreatePublicKeyInput, opts ...request.Option) (*cloudfront.CreatePublicKeyOutput, error)
 	CreateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionOutput, error)
@@ -27,6 +28,7 @@ type CloudFront interface {
 	DeleteDistributionWithContext(ctx context.Context, input *cloudfront.DeleteDistributionInput, opts ...request.Option) (*cloudfront.DeleteDistributionOutput, error)
 	DeleteFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionConfigOutput, error)
 	DeleteFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionProfileOutput, error)
+	DeleteMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.DeleteMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.DeleteMonitoringSubscriptionOutput, error)
 	DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error)
 	DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error)
 	DeleteStreamingDistributionWithContext(ctx context.Context, input *cloudfront.DeleteStreamingDistributionInput, opts ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error)
@@ -41,6 +43,7 @@ type CloudFront interface {
 	GetFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileOutput, error)
 	GetFieldLevelEncryptionProfileConfigWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileConfigInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileConfigOutput, error)
 	GetInvalidationWithContext(ctx context.Context, input *cloudfront.GetInvalidationInput, opts ...request.Option) (*cloudfront.GetInvalidationOutput, error)
+	GetMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.GetMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.GetMonitoringSubscriptionOutput, error)
 	GetOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyOutput, error)
 	GetOriginRequestPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyConfigInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyConfigOutput, error)
 	GetPublicKeyWithContext(ctx context.Context, input *cloudfront.GetPublicKeyInput, opts ...request.Option) (*cloudfront.GetPublicKeyOutput, error)
@@ -238,6 +241,27 @@ func (c *Client) CreateInvalidationWithContext(ctx context.Context, input *cloud
 	return req.Output.(*cloudfront.CreateInvalidationOutput), req.Error
 }
 
+func (c *Client) CreateMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.CreateMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.CreateMonitoringSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateMonitoringSubscription",
+		Input:   input,
+		Output:  (*cloudfront.CreateMonitoringSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateMonitoringSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateMonitoringSubscriptionOutput), req.Error
+}
+
 func (c *Client) CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -425,6 +449,27 @@ func (c *Client) DeleteFieldLevelEncryptionProfileWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*cloudfront.DeleteFieldLevelEncryptionProfileOutput), req.Error
+}
+
+func (c *Client) DeleteMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.DeleteMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.DeleteMonitoringSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteMonitoringSubscription",
+		Input:   input,
+		Output:  (*cloudfront.DeleteMonitoringSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteMonitoringSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteMonitoringSubscriptionOutput), req.Error
 }
 
 func (c *Client) DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error) {
@@ -719,6 +764,27 @@ func (c *Client) GetInvalidationWithContext(ctx context.Context, input *cloudfro
 	})
 
 	return req.Output.(*cloudfront.GetInvalidationOutput), req.Error
+}
+
+func (c *Client) GetMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.GetMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.GetMonitoringSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetMonitoringSubscription",
+		Input:   input,
+		Output:  (*cloudfront.GetMonitoringSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetMonitoringSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetMonitoringSubscriptionOutput), req.Error
 }
 
 func (c *Client) GetOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyOutput, error) {

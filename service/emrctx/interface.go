@@ -20,6 +20,7 @@ type EMR interface {
 	DeleteSecurityConfigurationWithContext(ctx context.Context, input *emr.DeleteSecurityConfigurationInput, opts ...request.Option) (*emr.DeleteSecurityConfigurationOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *emr.DescribeClusterInput, opts ...request.Option) (*emr.DescribeClusterOutput, error)
 	DescribeJobFlowsWithContext(ctx context.Context, input *emr.DescribeJobFlowsInput, opts ...request.Option) (*emr.DescribeJobFlowsOutput, error)
+	DescribeNotebookExecutionWithContext(ctx context.Context, input *emr.DescribeNotebookExecutionInput, opts ...request.Option) (*emr.DescribeNotebookExecutionOutput, error)
 	DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error)
 	DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error)
 	GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error)
@@ -34,6 +35,8 @@ type EMR interface {
 	ListInstanceGroupsPagesWithContext(ctx context.Context, input *emr.ListInstanceGroupsInput, cb func(*emr.ListInstanceGroupsOutput, bool) bool, opts ...request.Option) error
 	ListInstancesWithContext(ctx context.Context, input *emr.ListInstancesInput, opts ...request.Option) (*emr.ListInstancesOutput, error)
 	ListInstancesPagesWithContext(ctx context.Context, input *emr.ListInstancesInput, cb func(*emr.ListInstancesOutput, bool) bool, opts ...request.Option) error
+	ListNotebookExecutionsWithContext(ctx context.Context, input *emr.ListNotebookExecutionsInput, opts ...request.Option) (*emr.ListNotebookExecutionsOutput, error)
+	ListNotebookExecutionsPagesWithContext(ctx context.Context, input *emr.ListNotebookExecutionsInput, cb func(*emr.ListNotebookExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListSecurityConfigurationsWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, opts ...request.Option) (*emr.ListSecurityConfigurationsOutput, error)
 	ListSecurityConfigurationsPagesWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, cb func(*emr.ListSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error)
@@ -50,6 +53,8 @@ type EMR interface {
 	RunJobFlowWithContext(ctx context.Context, input *emr.RunJobFlowInput, opts ...request.Option) (*emr.RunJobFlowOutput, error)
 	SetTerminationProtectionWithContext(ctx context.Context, input *emr.SetTerminationProtectionInput, opts ...request.Option) (*emr.SetTerminationProtectionOutput, error)
 	SetVisibleToAllUsersWithContext(ctx context.Context, input *emr.SetVisibleToAllUsersInput, opts ...request.Option) (*emr.SetVisibleToAllUsersOutput, error)
+	StartNotebookExecutionWithContext(ctx context.Context, input *emr.StartNotebookExecutionInput, opts ...request.Option) (*emr.StartNotebookExecutionOutput, error)
+	StopNotebookExecutionWithContext(ctx context.Context, input *emr.StopNotebookExecutionInput, opts ...request.Option) (*emr.StopNotebookExecutionOutput, error)
 	TerminateJobFlowsWithContext(ctx context.Context, input *emr.TerminateJobFlowsInput, opts ...request.Option) (*emr.TerminateJobFlowsOutput, error)
 }
 
@@ -255,6 +260,27 @@ func (c *Client) DescribeJobFlowsWithContext(ctx context.Context, input *emr.Des
 	})
 
 	return req.Output.(*emr.DescribeJobFlowsOutput), req.Error
+}
+
+func (c *Client) DescribeNotebookExecutionWithContext(ctx context.Context, input *emr.DescribeNotebookExecutionInput, opts ...request.Option) (*emr.DescribeNotebookExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "DescribeNotebookExecution",
+		Input:   input,
+		Output:  (*emr.DescribeNotebookExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.DescribeNotebookExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.DescribeNotebookExecutionOutput), req.Error
 }
 
 func (c *Client) DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error) {
@@ -541,6 +567,47 @@ func (c *Client) ListInstancesPagesWithContext(ctx context.Context, input *emr.L
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EMRAPI.ListInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListNotebookExecutionsWithContext(ctx context.Context, input *emr.ListNotebookExecutionsInput, opts ...request.Option) (*emr.ListNotebookExecutionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListNotebookExecutions",
+		Input:   input,
+		Output:  (*emr.ListNotebookExecutionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.ListNotebookExecutionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.ListNotebookExecutionsOutput), req.Error
+}
+
+func (c *Client) ListNotebookExecutionsPagesWithContext(ctx context.Context, input *emr.ListNotebookExecutionsInput, cb func(*emr.ListNotebookExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListNotebookExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListNotebookExecutionsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -878,6 +945,48 @@ func (c *Client) SetVisibleToAllUsersWithContext(ctx context.Context, input *emr
 	})
 
 	return req.Output.(*emr.SetVisibleToAllUsersOutput), req.Error
+}
+
+func (c *Client) StartNotebookExecutionWithContext(ctx context.Context, input *emr.StartNotebookExecutionInput, opts ...request.Option) (*emr.StartNotebookExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "StartNotebookExecution",
+		Input:   input,
+		Output:  (*emr.StartNotebookExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.StartNotebookExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.StartNotebookExecutionOutput), req.Error
+}
+
+func (c *Client) StopNotebookExecutionWithContext(ctx context.Context, input *emr.StopNotebookExecutionInput, opts ...request.Option) (*emr.StopNotebookExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "StopNotebookExecution",
+		Input:   input,
+		Output:  (*emr.StopNotebookExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.StopNotebookExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.StopNotebookExecutionOutput), req.Error
 }
 
 func (c *Client) TerminateJobFlowsWithContext(ctx context.Context, input *emr.TerminateJobFlowsInput, opts ...request.Option) (*emr.TerminateJobFlowsOutput, error) {
