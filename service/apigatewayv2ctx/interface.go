@@ -68,6 +68,7 @@ type ApiGatewayV2 interface {
 	GetVpcLinksWithContext(ctx context.Context, input *apigatewayv2.GetVpcLinksInput, opts ...request.Option) (*apigatewayv2.GetVpcLinksOutput, error)
 	ImportApiWithContext(ctx context.Context, input *apigatewayv2.ImportApiInput, opts ...request.Option) (*apigatewayv2.ImportApiOutput, error)
 	ReimportApiWithContext(ctx context.Context, input *apigatewayv2.ReimportApiInput, opts ...request.Option) (*apigatewayv2.ReimportApiOutput, error)
+	ResetAuthorizersCacheWithContext(ctx context.Context, input *apigatewayv2.ResetAuthorizersCacheInput, opts ...request.Option) (*apigatewayv2.ResetAuthorizersCacheOutput, error)
 	TagResourceWithContext(ctx context.Context, input *apigatewayv2.TagResourceInput, opts ...request.Option) (*apigatewayv2.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *apigatewayv2.UntagResourceInput, opts ...request.Option) (*apigatewayv2.UntagResourceOutput, error)
 	UpdateApiWithContext(ctx context.Context, input *apigatewayv2.UpdateApiInput, opts ...request.Option) (*apigatewayv2.UpdateApiOutput, error)
@@ -1294,6 +1295,27 @@ func (c *Client) ReimportApiWithContext(ctx context.Context, input *apigatewayv2
 	})
 
 	return req.Output.(*apigatewayv2.ReimportApiOutput), req.Error
+}
+
+func (c *Client) ResetAuthorizersCacheWithContext(ctx context.Context, input *apigatewayv2.ResetAuthorizersCacheInput, opts ...request.Option) (*apigatewayv2.ResetAuthorizersCacheOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "apigatewayv2",
+		Action:  "ResetAuthorizersCache",
+		Input:   input,
+		Output:  (*apigatewayv2.ResetAuthorizersCacheOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApiGatewayV2API.ResetAuthorizersCacheWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*apigatewayv2.ResetAuthorizersCacheOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *apigatewayv2.TagResourceInput, opts ...request.Option) (*apigatewayv2.TagResourceOutput, error) {
