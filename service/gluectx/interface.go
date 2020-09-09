@@ -92,6 +92,8 @@ type Glue interface {
 	GetMLTransformsPagesWithContext(ctx context.Context, input *glue.GetMLTransformsInput, cb func(*glue.GetMLTransformsOutput, bool) bool, opts ...request.Option) error
 	GetMappingWithContext(ctx context.Context, input *glue.GetMappingInput, opts ...request.Option) (*glue.GetMappingOutput, error)
 	GetPartitionWithContext(ctx context.Context, input *glue.GetPartitionInput, opts ...request.Option) (*glue.GetPartitionOutput, error)
+	GetPartitionIndexesWithContext(ctx context.Context, input *glue.GetPartitionIndexesInput, opts ...request.Option) (*glue.GetPartitionIndexesOutput, error)
+	GetPartitionIndexesPagesWithContext(ctx context.Context, input *glue.GetPartitionIndexesInput, cb func(*glue.GetPartitionIndexesOutput, bool) bool, opts ...request.Option) error
 	GetPartitionsWithContext(ctx context.Context, input *glue.GetPartitionsInput, opts ...request.Option) (*glue.GetPartitionsOutput, error)
 	GetPartitionsPagesWithContext(ctx context.Context, input *glue.GetPartitionsInput, cb func(*glue.GetPartitionsOutput, bool) bool, opts ...request.Option) error
 	GetPlanWithContext(ctx context.Context, input *glue.GetPlanInput, opts ...request.Option) (*glue.GetPlanOutput, error)
@@ -1874,6 +1876,47 @@ func (c *Client) GetPartitionWithContext(ctx context.Context, input *glue.GetPar
 	})
 
 	return req.Output.(*glue.GetPartitionOutput), req.Error
+}
+
+func (c *Client) GetPartitionIndexesWithContext(ctx context.Context, input *glue.GetPartitionIndexesInput, opts ...request.Option) (*glue.GetPartitionIndexesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetPartitionIndexes",
+		Input:   input,
+		Output:  (*glue.GetPartitionIndexesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetPartitionIndexesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetPartitionIndexesOutput), req.Error
+}
+
+func (c *Client) GetPartitionIndexesPagesWithContext(ctx context.Context, input *glue.GetPartitionIndexesInput, cb func(*glue.GetPartitionIndexesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetPartitionIndexes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetPartitionIndexesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetPartitionsWithContext(ctx context.Context, input *glue.GetPartitionsInput, opts ...request.Option) (*glue.GetPartitionsOutput, error) {
