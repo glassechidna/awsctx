@@ -11,12 +11,15 @@ import (
 )
 
 type WorkSpaces interface {
+	AssociateConnectionAliasWithContext(ctx context.Context, input *workspaces.AssociateConnectionAliasInput, opts ...request.Option) (*workspaces.AssociateConnectionAliasOutput, error)
 	AssociateIpGroupsWithContext(ctx context.Context, input *workspaces.AssociateIpGroupsInput, opts ...request.Option) (*workspaces.AssociateIpGroupsOutput, error)
 	AuthorizeIpRulesWithContext(ctx context.Context, input *workspaces.AuthorizeIpRulesInput, opts ...request.Option) (*workspaces.AuthorizeIpRulesOutput, error)
 	CopyWorkspaceImageWithContext(ctx context.Context, input *workspaces.CopyWorkspaceImageInput, opts ...request.Option) (*workspaces.CopyWorkspaceImageOutput, error)
+	CreateConnectionAliasWithContext(ctx context.Context, input *workspaces.CreateConnectionAliasInput, opts ...request.Option) (*workspaces.CreateConnectionAliasOutput, error)
 	CreateIpGroupWithContext(ctx context.Context, input *workspaces.CreateIpGroupInput, opts ...request.Option) (*workspaces.CreateIpGroupOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *workspaces.CreateTagsInput, opts ...request.Option) (*workspaces.CreateTagsOutput, error)
 	CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error)
+	DeleteConnectionAliasWithContext(ctx context.Context, input *workspaces.DeleteConnectionAliasInput, opts ...request.Option) (*workspaces.DeleteConnectionAliasOutput, error)
 	DeleteIpGroupWithContext(ctx context.Context, input *workspaces.DeleteIpGroupInput, opts ...request.Option) (*workspaces.DeleteIpGroupOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *workspaces.DeleteTagsInput, opts ...request.Option) (*workspaces.DeleteTagsOutput, error)
 	DeleteWorkspaceImageWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceImageInput, opts ...request.Option) (*workspaces.DeleteWorkspaceImageOutput, error)
@@ -24,6 +27,8 @@ type WorkSpaces interface {
 	DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error)
 	DescribeAccountModificationsWithContext(ctx context.Context, input *workspaces.DescribeAccountModificationsInput, opts ...request.Option) (*workspaces.DescribeAccountModificationsOutput, error)
 	DescribeClientPropertiesWithContext(ctx context.Context, input *workspaces.DescribeClientPropertiesInput, opts ...request.Option) (*workspaces.DescribeClientPropertiesOutput, error)
+	DescribeConnectionAliasPermissionsWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasPermissionsInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasPermissionsOutput, error)
+	DescribeConnectionAliasesWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasesInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasesOutput, error)
 	DescribeIpGroupsWithContext(ctx context.Context, input *workspaces.DescribeIpGroupsInput, opts ...request.Option) (*workspaces.DescribeIpGroupsOutput, error)
 	DescribeTagsWithContext(ctx context.Context, input *workspaces.DescribeTagsInput, opts ...request.Option) (*workspaces.DescribeTagsOutput, error)
 	DescribeWorkspaceBundlesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceBundlesOutput, error)
@@ -36,6 +41,7 @@ type WorkSpaces interface {
 	DescribeWorkspacesWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesInput, opts ...request.Option) (*workspaces.DescribeWorkspacesOutput, error)
 	DescribeWorkspacesPagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesInput, cb func(*workspaces.DescribeWorkspacesOutput, bool) bool, opts ...request.Option) error
 	DescribeWorkspacesConnectionStatusWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesConnectionStatusInput, opts ...request.Option) (*workspaces.DescribeWorkspacesConnectionStatusOutput, error)
+	DisassociateConnectionAliasWithContext(ctx context.Context, input *workspaces.DisassociateConnectionAliasInput, opts ...request.Option) (*workspaces.DisassociateConnectionAliasOutput, error)
 	DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error)
 	ImportWorkspaceImageWithContext(ctx context.Context, input *workspaces.ImportWorkspaceImageInput, opts ...request.Option) (*workspaces.ImportWorkspaceImageOutput, error)
 	ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
@@ -55,6 +61,7 @@ type WorkSpaces interface {
 	StartWorkspacesWithContext(ctx context.Context, input *workspaces.StartWorkspacesInput, opts ...request.Option) (*workspaces.StartWorkspacesOutput, error)
 	StopWorkspacesWithContext(ctx context.Context, input *workspaces.StopWorkspacesInput, opts ...request.Option) (*workspaces.StopWorkspacesOutput, error)
 	TerminateWorkspacesWithContext(ctx context.Context, input *workspaces.TerminateWorkspacesInput, opts ...request.Option) (*workspaces.TerminateWorkspacesOutput, error)
+	UpdateConnectionAliasPermissionWithContext(ctx context.Context, input *workspaces.UpdateConnectionAliasPermissionInput, opts ...request.Option) (*workspaces.UpdateConnectionAliasPermissionOutput, error)
 	UpdateRulesOfIpGroupWithContext(ctx context.Context, input *workspaces.UpdateRulesOfIpGroupInput, opts ...request.Option) (*workspaces.UpdateRulesOfIpGroupOutput, error)
 	UpdateWorkspaceImagePermissionWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceImagePermissionInput, opts ...request.Option) (*workspaces.UpdateWorkspaceImagePermissionOutput, error)
 }
@@ -73,6 +80,27 @@ func New(base workspacesiface.WorkSpacesAPI, ctxer awsctx.Contexter) WorkSpaces 
 
 var _ WorkSpaces = (*workspaces.WorkSpaces)(nil)
 var _ WorkSpaces = (*Client)(nil)
+
+func (c *Client) AssociateConnectionAliasWithContext(ctx context.Context, input *workspaces.AssociateConnectionAliasInput, opts ...request.Option) (*workspaces.AssociateConnectionAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "AssociateConnectionAlias",
+		Input:   input,
+		Output:  (*workspaces.AssociateConnectionAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.AssociateConnectionAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.AssociateConnectionAliasOutput), req.Error
+}
 
 func (c *Client) AssociateIpGroupsWithContext(ctx context.Context, input *workspaces.AssociateIpGroupsInput, opts ...request.Option) (*workspaces.AssociateIpGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -137,6 +165,27 @@ func (c *Client) CopyWorkspaceImageWithContext(ctx context.Context, input *works
 	return req.Output.(*workspaces.CopyWorkspaceImageOutput), req.Error
 }
 
+func (c *Client) CreateConnectionAliasWithContext(ctx context.Context, input *workspaces.CreateConnectionAliasInput, opts ...request.Option) (*workspaces.CreateConnectionAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "CreateConnectionAlias",
+		Input:   input,
+		Output:  (*workspaces.CreateConnectionAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.CreateConnectionAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.CreateConnectionAliasOutput), req.Error
+}
+
 func (c *Client) CreateIpGroupWithContext(ctx context.Context, input *workspaces.CreateIpGroupInput, opts ...request.Option) (*workspaces.CreateIpGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
@@ -198,6 +247,27 @@ func (c *Client) CreateWorkspacesWithContext(ctx context.Context, input *workspa
 	})
 
 	return req.Output.(*workspaces.CreateWorkspacesOutput), req.Error
+}
+
+func (c *Client) DeleteConnectionAliasWithContext(ctx context.Context, input *workspaces.DeleteConnectionAliasInput, opts ...request.Option) (*workspaces.DeleteConnectionAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DeleteConnectionAlias",
+		Input:   input,
+		Output:  (*workspaces.DeleteConnectionAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DeleteConnectionAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DeleteConnectionAliasOutput), req.Error
 }
 
 func (c *Client) DeleteIpGroupWithContext(ctx context.Context, input *workspaces.DeleteIpGroupInput, opts ...request.Option) (*workspaces.DeleteIpGroupOutput, error) {
@@ -345,6 +415,48 @@ func (c *Client) DescribeClientPropertiesWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*workspaces.DescribeClientPropertiesOutput), req.Error
+}
+
+func (c *Client) DescribeConnectionAliasPermissionsWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasPermissionsInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeConnectionAliasPermissions",
+		Input:   input,
+		Output:  (*workspaces.DescribeConnectionAliasPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeConnectionAliasPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeConnectionAliasPermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeConnectionAliasesWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasesInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeConnectionAliases",
+		Input:   input,
+		Output:  (*workspaces.DescribeConnectionAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeConnectionAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeConnectionAliasesOutput), req.Error
 }
 
 func (c *Client) DescribeIpGroupsWithContext(ctx context.Context, input *workspaces.DescribeIpGroupsInput, opts ...request.Option) (*workspaces.DescribeIpGroupsOutput, error) {
@@ -594,6 +706,27 @@ func (c *Client) DescribeWorkspacesConnectionStatusWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*workspaces.DescribeWorkspacesConnectionStatusOutput), req.Error
+}
+
+func (c *Client) DisassociateConnectionAliasWithContext(ctx context.Context, input *workspaces.DisassociateConnectionAliasInput, opts ...request.Option) (*workspaces.DisassociateConnectionAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DisassociateConnectionAlias",
+		Input:   input,
+		Output:  (*workspaces.DisassociateConnectionAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DisassociateConnectionAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DisassociateConnectionAliasOutput), req.Error
 }
 
 func (c *Client) DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error) {
@@ -993,6 +1126,27 @@ func (c *Client) TerminateWorkspacesWithContext(ctx context.Context, input *work
 	})
 
 	return req.Output.(*workspaces.TerminateWorkspacesOutput), req.Error
+}
+
+func (c *Client) UpdateConnectionAliasPermissionWithContext(ctx context.Context, input *workspaces.UpdateConnectionAliasPermissionInput, opts ...request.Option) (*workspaces.UpdateConnectionAliasPermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "UpdateConnectionAliasPermission",
+		Input:   input,
+		Output:  (*workspaces.UpdateConnectionAliasPermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.UpdateConnectionAliasPermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.UpdateConnectionAliasPermissionOutput), req.Error
 }
 
 func (c *Client) UpdateRulesOfIpGroupWithContext(ctx context.Context, input *workspaces.UpdateRulesOfIpGroupInput, opts ...request.Option) (*workspaces.UpdateRulesOfIpGroupOutput, error) {
