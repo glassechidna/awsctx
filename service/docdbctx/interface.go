@@ -26,10 +26,14 @@ type DocDB interface {
 	DeleteDBInstanceWithContext(ctx context.Context, input *docdb.DeleteDBInstanceInput, opts ...request.Option) (*docdb.DeleteDBInstanceOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *docdb.DeleteDBSubnetGroupInput, opts ...request.Option) (*docdb.DeleteDBSubnetGroupOutput, error)
 	DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error)
+	DescribeCertificatesPagesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, cb func(*docdb.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*docdb.DescribeDBClusterParameterGroupsOutput, error)
+	DescribeDBClusterParameterGroupsPagesWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, cb func(*docdb.DescribeDBClusterParameterGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParametersWithContext(ctx context.Context, input *docdb.DescribeDBClusterParametersInput, opts ...request.Option) (*docdb.DescribeDBClusterParametersOutput, error)
+	DescribeDBClusterParametersPagesWithContext(ctx context.Context, input *docdb.DescribeDBClusterParametersInput, cb func(*docdb.DescribeDBClusterParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*docdb.DescribeDBClusterSnapshotAttributesOutput, error)
 	DescribeDBClusterSnapshotsWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotsInput, opts ...request.Option) (*docdb.DescribeDBClusterSnapshotsOutput, error)
+	DescribeDBClusterSnapshotsPagesWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotsInput, cb func(*docdb.DescribeDBClusterSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClustersWithContext(ctx context.Context, input *docdb.DescribeDBClustersInput, opts ...request.Option) (*docdb.DescribeDBClustersOutput, error)
 	DescribeDBClustersPagesWithContext(ctx context.Context, input *docdb.DescribeDBClustersInput, cb func(*docdb.DescribeDBClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeDBEngineVersionsWithContext(ctx context.Context, input *docdb.DescribeDBEngineVersionsInput, opts ...request.Option) (*docdb.DescribeDBEngineVersionsOutput, error)
@@ -45,6 +49,7 @@ type DocDB interface {
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, cb func(*docdb.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *docdb.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*docdb.DescribePendingMaintenanceActionsOutput, error)
+	DescribePendingMaintenanceActionsPagesWithContext(ctx context.Context, input *docdb.DescribePendingMaintenanceActionsInput, cb func(*docdb.DescribePendingMaintenanceActionsOutput, bool) bool, opts ...request.Option) error
 	FailoverDBClusterWithContext(ctx context.Context, input *docdb.FailoverDBClusterInput, opts ...request.Option) (*docdb.FailoverDBClusterOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *docdb.ListTagsForResourceInput, opts ...request.Option) (*docdb.ListTagsForResourceOutput, error)
 	ModifyDBClusterWithContext(ctx context.Context, input *docdb.ModifyDBClusterInput, opts ...request.Option) (*docdb.ModifyDBClusterOutput, error)
@@ -391,6 +396,26 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *doc
 	return req.Output.(*docdb.DescribeCertificatesOutput), req.Error
 }
 
+func (c *Client) DescribeCertificatesPagesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, cb func(*docdb.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribeCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*docdb.DescribeDBClusterParameterGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -412,6 +437,26 @@ func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context
 	return req.Output.(*docdb.DescribeDBClusterParameterGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeDBClusterParameterGroupsPagesWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, cb func(*docdb.DescribeDBClusterParameterGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeDBClusterParameterGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribeDBClusterParameterGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, input *docdb.DescribeDBClusterParametersInput, opts ...request.Option) (*docdb.DescribeDBClusterParametersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -431,6 +476,26 @@ func (c *Client) DescribeDBClusterParametersWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*docdb.DescribeDBClusterParametersOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterParametersPagesWithContext(ctx context.Context, input *docdb.DescribeDBClusterParametersInput, cb func(*docdb.DescribeDBClusterParametersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeDBClusterParameters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribeDBClusterParametersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*docdb.DescribeDBClusterSnapshotAttributesOutput, error) {
@@ -473,6 +538,26 @@ func (c *Client) DescribeDBClusterSnapshotsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*docdb.DescribeDBClusterSnapshotsOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterSnapshotsPagesWithContext(ctx context.Context, input *docdb.DescribeDBClusterSnapshotsInput, cb func(*docdb.DescribeDBClusterSnapshotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeDBClusterSnapshots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribeDBClusterSnapshotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClustersWithContext(ctx context.Context, input *docdb.DescribeDBClustersInput, opts ...request.Option) (*docdb.DescribeDBClustersOutput, error) {
@@ -782,6 +867,26 @@ func (c *Client) DescribePendingMaintenanceActionsWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*docdb.DescribePendingMaintenanceActionsOutput), req.Error
+}
+
+func (c *Client) DescribePendingMaintenanceActionsPagesWithContext(ctx context.Context, input *docdb.DescribePendingMaintenanceActionsInput, cb func(*docdb.DescribePendingMaintenanceActionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribePendingMaintenanceActions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribePendingMaintenanceActionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *docdb.FailoverDBClusterInput, opts ...request.Option) (*docdb.FailoverDBClusterOutput, error) {
