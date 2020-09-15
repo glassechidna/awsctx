@@ -11,6 +11,8 @@ import (
 )
 
 type Kafka interface {
+	BatchAssociateScramSecretWithContext(ctx context.Context, input *kafka.BatchAssociateScramSecretInput, opts ...request.Option) (*kafka.BatchAssociateScramSecretOutput, error)
+	BatchDisassociateScramSecretWithContext(ctx context.Context, input *kafka.BatchDisassociateScramSecretInput, opts ...request.Option) (*kafka.BatchDisassociateScramSecretOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *kafka.CreateClusterInput, opts ...request.Option) (*kafka.CreateClusterOutput, error)
 	CreateConfigurationWithContext(ctx context.Context, input *kafka.CreateConfigurationInput, opts ...request.Option) (*kafka.CreateConfigurationOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *kafka.DeleteClusterInput, opts ...request.Option) (*kafka.DeleteClusterOutput, error)
@@ -33,6 +35,8 @@ type Kafka interface {
 	ListKafkaVersionsPagesWithContext(ctx context.Context, input *kafka.ListKafkaVersionsInput, cb func(*kafka.ListKafkaVersionsOutput, bool) bool, opts ...request.Option) error
 	ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error)
 	ListNodesPagesWithContext(ctx context.Context, input *kafka.ListNodesInput, cb func(*kafka.ListNodesOutput, bool) bool, opts ...request.Option) error
+	ListScramSecretsWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, opts ...request.Option) (*kafka.ListScramSecretsOutput, error)
+	ListScramSecretsPagesWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, cb func(*kafka.ListScramSecretsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error)
 	RebootBrokerWithContext(ctx context.Context, input *kafka.RebootBrokerInput, opts ...request.Option) (*kafka.RebootBrokerOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kafka.TagResourceInput, opts ...request.Option) (*kafka.TagResourceOutput, error)
@@ -59,6 +63,48 @@ func New(base kafkaiface.KafkaAPI, ctxer awsctx.Contexter) Kafka {
 
 var _ Kafka = (*kafka.Kafka)(nil)
 var _ Kafka = (*Client)(nil)
+
+func (c *Client) BatchAssociateScramSecretWithContext(ctx context.Context, input *kafka.BatchAssociateScramSecretInput, opts ...request.Option) (*kafka.BatchAssociateScramSecretOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "BatchAssociateScramSecret",
+		Input:   input,
+		Output:  (*kafka.BatchAssociateScramSecretOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.BatchAssociateScramSecretWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.BatchAssociateScramSecretOutput), req.Error
+}
+
+func (c *Client) BatchDisassociateScramSecretWithContext(ctx context.Context, input *kafka.BatchDisassociateScramSecretInput, opts ...request.Option) (*kafka.BatchDisassociateScramSecretOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "BatchDisassociateScramSecret",
+		Input:   input,
+		Output:  (*kafka.BatchDisassociateScramSecretOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.BatchDisassociateScramSecretWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.BatchDisassociateScramSecretOutput), req.Error
+}
 
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *kafka.CreateClusterInput, opts ...request.Option) (*kafka.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -511,6 +557,47 @@ func (c *Client) ListNodesPagesWithContext(ctx context.Context, input *kafka.Lis
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.KafkaAPI.ListNodesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListScramSecretsWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, opts ...request.Option) (*kafka.ListScramSecretsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListScramSecrets",
+		Input:   input,
+		Output:  (*kafka.ListScramSecretsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.ListScramSecretsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.ListScramSecretsOutput), req.Error
+}
+
+func (c *Client) ListScramSecretsPagesWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, cb func(*kafka.ListScramSecretsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListScramSecrets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListScramSecretsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
