@@ -11,11 +11,17 @@ import (
 )
 
 type Connect interface {
+	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
+	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
+	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
+	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
+	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
 	DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error)
 	DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error)
+	DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error)
 	GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error)
 	GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error)
 	GetCurrentMetricDataPagesWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, cb func(*connect.GetCurrentMetricDataOutput, bool) bool, opts ...request.Option) error
@@ -28,8 +34,12 @@ type Connect interface {
 	ListHoursOfOperationsPagesWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, cb func(*connect.ListHoursOfOperationsOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, opts ...request.Option) (*connect.ListPhoneNumbersOutput, error)
 	ListPhoneNumbersPagesWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, cb func(*connect.ListPhoneNumbersOutput, bool) bool, opts ...request.Option) error
+	ListPromptsWithContext(ctx context.Context, input *connect.ListPromptsInput, opts ...request.Option) (*connect.ListPromptsOutput, error)
+	ListPromptsPagesWithContext(ctx context.Context, input *connect.ListPromptsInput, cb func(*connect.ListPromptsOutput, bool) bool, opts ...request.Option) error
 	ListQueuesWithContext(ctx context.Context, input *connect.ListQueuesInput, opts ...request.Option) (*connect.ListQueuesOutput, error)
 	ListQueuesPagesWithContext(ctx context.Context, input *connect.ListQueuesInput, cb func(*connect.ListQueuesOutput, bool) bool, opts ...request.Option) error
+	ListRoutingProfileQueuesWithContext(ctx context.Context, input *connect.ListRoutingProfileQueuesInput, opts ...request.Option) (*connect.ListRoutingProfileQueuesOutput, error)
+	ListRoutingProfileQueuesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfileQueuesInput, cb func(*connect.ListRoutingProfileQueuesOutput, bool) bool, opts ...request.Option) error
 	ListRoutingProfilesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, opts ...request.Option) (*connect.ListRoutingProfilesOutput, error)
 	ListRoutingProfilesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, cb func(*connect.ListRoutingProfilesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
@@ -49,6 +59,12 @@ type Connect interface {
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error)
 	UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error)
+	UpdateContactFlowContentWithContext(ctx context.Context, input *connect.UpdateContactFlowContentInput, opts ...request.Option) (*connect.UpdateContactFlowContentOutput, error)
+	UpdateContactFlowNameWithContext(ctx context.Context, input *connect.UpdateContactFlowNameInput, opts ...request.Option) (*connect.UpdateContactFlowNameOutput, error)
+	UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error)
+	UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx context.Context, input *connect.UpdateRoutingProfileDefaultOutboundQueueInput, opts ...request.Option) (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput, error)
+	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
+	UpdateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.UpdateRoutingProfileQueuesInput, opts ...request.Option) (*connect.UpdateRoutingProfileQueuesOutput, error)
 	UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error)
 	UpdateUserIdentityInfoWithContext(ctx context.Context, input *connect.UpdateUserIdentityInfoInput, opts ...request.Option) (*connect.UpdateUserIdentityInfoOutput, error)
 	UpdateUserPhoneConfigWithContext(ctx context.Context, input *connect.UpdateUserPhoneConfigInput, opts ...request.Option) (*connect.UpdateUserPhoneConfigOutput, error)
@@ -70,6 +86,69 @@ func New(base connectiface.ConnectAPI, ctxer awsctx.Contexter) Connect {
 
 var _ Connect = (*connect.Connect)(nil)
 var _ Connect = (*Client)(nil)
+
+func (c *Client) AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateRoutingProfileQueues",
+		Input:   input,
+		Output:  (*connect.AssociateRoutingProfileQueuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateRoutingProfileQueuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateRoutingProfileQueuesOutput), req.Error
+}
+
+func (c *Client) CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateContactFlow",
+		Input:   input,
+		Output:  (*connect.CreateContactFlowOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateContactFlowWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateContactFlowOutput), req.Error
+}
+
+func (c *Client) CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateRoutingProfile",
+		Input:   input,
+		Output:  (*connect.CreateRoutingProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateRoutingProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateRoutingProfileOutput), req.Error
+}
 
 func (c *Client) CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -111,6 +190,48 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.Delet
 	})
 
 	return req.Output.(*connect.DeleteUserOutput), req.Error
+}
+
+func (c *Client) DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeContactFlow",
+		Input:   input,
+		Output:  (*connect.DescribeContactFlowOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeContactFlowWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeContactFlowOutput), req.Error
+}
+
+func (c *Client) DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeRoutingProfile",
+		Input:   input,
+		Output:  (*connect.DescribeRoutingProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeRoutingProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeRoutingProfileOutput), req.Error
 }
 
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error) {
@@ -174,6 +295,27 @@ func (c *Client) DescribeUserHierarchyStructureWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*connect.DescribeUserHierarchyStructureOutput), req.Error
+}
+
+func (c *Client) DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateRoutingProfileQueues",
+		Input:   input,
+		Output:  (*connect.DisassociateRoutingProfileQueuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateRoutingProfileQueuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateRoutingProfileQueuesOutput), req.Error
 }
 
 func (c *Client) GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error) {
@@ -423,6 +565,47 @@ func (c *Client) ListPhoneNumbersPagesWithContext(ctx context.Context, input *co
 	return req.Error
 }
 
+func (c *Client) ListPromptsWithContext(ctx context.Context, input *connect.ListPromptsInput, opts ...request.Option) (*connect.ListPromptsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListPrompts",
+		Input:   input,
+		Output:  (*connect.ListPromptsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListPromptsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListPromptsOutput), req.Error
+}
+
+func (c *Client) ListPromptsPagesWithContext(ctx context.Context, input *connect.ListPromptsInput, cb func(*connect.ListPromptsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListPrompts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListPromptsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListQueuesWithContext(ctx context.Context, input *connect.ListQueuesInput, opts ...request.Option) (*connect.ListQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -459,6 +642,47 @@ func (c *Client) ListQueuesPagesWithContext(ctx context.Context, input *connect.
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListQueuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListRoutingProfileQueuesWithContext(ctx context.Context, input *connect.ListRoutingProfileQueuesInput, opts ...request.Option) (*connect.ListRoutingProfileQueuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListRoutingProfileQueues",
+		Input:   input,
+		Output:  (*connect.ListRoutingProfileQueuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListRoutingProfileQueuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListRoutingProfileQueuesOutput), req.Error
+}
+
+func (c *Client) ListRoutingProfileQueuesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfileQueuesInput, cb func(*connect.ListRoutingProfileQueuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListRoutingProfileQueues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListRoutingProfileQueuesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -857,6 +1081,132 @@ func (c *Client) UpdateContactAttributesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.UpdateContactAttributesOutput), req.Error
+}
+
+func (c *Client) UpdateContactFlowContentWithContext(ctx context.Context, input *connect.UpdateContactFlowContentInput, opts ...request.Option) (*connect.UpdateContactFlowContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateContactFlowContent",
+		Input:   input,
+		Output:  (*connect.UpdateContactFlowContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateContactFlowContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateContactFlowContentOutput), req.Error
+}
+
+func (c *Client) UpdateContactFlowNameWithContext(ctx context.Context, input *connect.UpdateContactFlowNameInput, opts ...request.Option) (*connect.UpdateContactFlowNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateContactFlowName",
+		Input:   input,
+		Output:  (*connect.UpdateContactFlowNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateContactFlowNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateContactFlowNameOutput), req.Error
+}
+
+func (c *Client) UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateRoutingProfileConcurrency",
+		Input:   input,
+		Output:  (*connect.UpdateRoutingProfileConcurrencyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateRoutingProfileConcurrencyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateRoutingProfileConcurrencyOutput), req.Error
+}
+
+func (c *Client) UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx context.Context, input *connect.UpdateRoutingProfileDefaultOutboundQueueInput, opts ...request.Option) (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateRoutingProfileDefaultOutboundQueue",
+		Input:   input,
+		Output:  (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateRoutingProfileDefaultOutboundQueueOutput), req.Error
+}
+
+func (c *Client) UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateRoutingProfileName",
+		Input:   input,
+		Output:  (*connect.UpdateRoutingProfileNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateRoutingProfileNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateRoutingProfileNameOutput), req.Error
+}
+
+func (c *Client) UpdateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.UpdateRoutingProfileQueuesInput, opts ...request.Option) (*connect.UpdateRoutingProfileQueuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateRoutingProfileQueues",
+		Input:   input,
+		Output:  (*connect.UpdateRoutingProfileQueuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateRoutingProfileQueuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateRoutingProfileQueuesOutput), req.Error
 }
 
 func (c *Client) UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error) {

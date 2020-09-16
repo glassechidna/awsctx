@@ -65,6 +65,7 @@ type Greengrass interface {
 	GetServiceRoleForAccountWithContext(ctx context.Context, input *greengrass.GetServiceRoleForAccountInput, opts ...request.Option) (*greengrass.GetServiceRoleForAccountOutput, error)
 	GetSubscriptionDefinitionWithContext(ctx context.Context, input *greengrass.GetSubscriptionDefinitionInput, opts ...request.Option) (*greengrass.GetSubscriptionDefinitionOutput, error)
 	GetSubscriptionDefinitionVersionWithContext(ctx context.Context, input *greengrass.GetSubscriptionDefinitionVersionInput, opts ...request.Option) (*greengrass.GetSubscriptionDefinitionVersionOutput, error)
+	GetThingRuntimeConfigurationWithContext(ctx context.Context, input *greengrass.GetThingRuntimeConfigurationInput, opts ...request.Option) (*greengrass.GetThingRuntimeConfigurationOutput, error)
 	ListBulkDeploymentDetailedReportsWithContext(ctx context.Context, input *greengrass.ListBulkDeploymentDetailedReportsInput, opts ...request.Option) (*greengrass.ListBulkDeploymentDetailedReportsOutput, error)
 	ListBulkDeploymentsWithContext(ctx context.Context, input *greengrass.ListBulkDeploymentsInput, opts ...request.Option) (*greengrass.ListBulkDeploymentsOutput, error)
 	ListConnectorDefinitionVersionsWithContext(ctx context.Context, input *greengrass.ListConnectorDefinitionVersionsInput, opts ...request.Option) (*greengrass.ListConnectorDefinitionVersionsOutput, error)
@@ -101,6 +102,7 @@ type Greengrass interface {
 	UpdateLoggerDefinitionWithContext(ctx context.Context, input *greengrass.UpdateLoggerDefinitionInput, opts ...request.Option) (*greengrass.UpdateLoggerDefinitionOutput, error)
 	UpdateResourceDefinitionWithContext(ctx context.Context, input *greengrass.UpdateResourceDefinitionInput, opts ...request.Option) (*greengrass.UpdateResourceDefinitionOutput, error)
 	UpdateSubscriptionDefinitionWithContext(ctx context.Context, input *greengrass.UpdateSubscriptionDefinitionInput, opts ...request.Option) (*greengrass.UpdateSubscriptionDefinitionOutput, error)
+	UpdateThingRuntimeConfigurationWithContext(ctx context.Context, input *greengrass.UpdateThingRuntimeConfigurationInput, opts ...request.Option) (*greengrass.UpdateThingRuntimeConfigurationOutput, error)
 }
 
 type Client struct {
@@ -1252,6 +1254,27 @@ func (c *Client) GetSubscriptionDefinitionVersionWithContext(ctx context.Context
 	return req.Output.(*greengrass.GetSubscriptionDefinitionVersionOutput), req.Error
 }
 
+func (c *Client) GetThingRuntimeConfigurationWithContext(ctx context.Context, input *greengrass.GetThingRuntimeConfigurationInput, opts ...request.Option) (*greengrass.GetThingRuntimeConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "greengrass",
+		Action:  "GetThingRuntimeConfiguration",
+		Input:   input,
+		Output:  (*greengrass.GetThingRuntimeConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GreengrassAPI.GetThingRuntimeConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*greengrass.GetThingRuntimeConfigurationOutput), req.Error
+}
+
 func (c *Client) ListBulkDeploymentDetailedReportsWithContext(ctx context.Context, input *greengrass.ListBulkDeploymentDetailedReportsInput, opts ...request.Option) (*greengrass.ListBulkDeploymentDetailedReportsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "greengrass",
@@ -2006,4 +2029,25 @@ func (c *Client) UpdateSubscriptionDefinitionWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*greengrass.UpdateSubscriptionDefinitionOutput), req.Error
+}
+
+func (c *Client) UpdateThingRuntimeConfigurationWithContext(ctx context.Context, input *greengrass.UpdateThingRuntimeConfigurationInput, opts ...request.Option) (*greengrass.UpdateThingRuntimeConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "greengrass",
+		Action:  "UpdateThingRuntimeConfiguration",
+		Input:   input,
+		Output:  (*greengrass.UpdateThingRuntimeConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GreengrassAPI.UpdateThingRuntimeConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*greengrass.UpdateThingRuntimeConfigurationOutput), req.Error
 }
