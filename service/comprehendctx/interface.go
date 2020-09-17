@@ -30,11 +30,13 @@ type Comprehend interface {
 	DescribeEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEntitiesDetectionJobOutput, error)
 	DescribeEntityRecognizerWithContext(ctx context.Context, input *comprehend.DescribeEntityRecognizerInput, opts ...request.Option) (*comprehend.DescribeEntityRecognizerOutput, error)
 	DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeKeyPhrasesDetectionJobOutput, error)
+	DescribePiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribePiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribePiiEntitiesDetectionJobOutput, error)
 	DescribeSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeSentimentDetectionJobInput, opts ...request.Option) (*comprehend.DescribeSentimentDetectionJobOutput, error)
 	DescribeTopicsDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeTopicsDetectionJobInput, opts ...request.Option) (*comprehend.DescribeTopicsDetectionJobOutput, error)
 	DetectDominantLanguageWithContext(ctx context.Context, input *comprehend.DetectDominantLanguageInput, opts ...request.Option) (*comprehend.DetectDominantLanguageOutput, error)
 	DetectEntitiesWithContext(ctx context.Context, input *comprehend.DetectEntitiesInput, opts ...request.Option) (*comprehend.DetectEntitiesOutput, error)
 	DetectKeyPhrasesWithContext(ctx context.Context, input *comprehend.DetectKeyPhrasesInput, opts ...request.Option) (*comprehend.DetectKeyPhrasesOutput, error)
+	DetectPiiEntitiesWithContext(ctx context.Context, input *comprehend.DetectPiiEntitiesInput, opts ...request.Option) (*comprehend.DetectPiiEntitiesOutput, error)
 	DetectSentimentWithContext(ctx context.Context, input *comprehend.DetectSentimentInput, opts ...request.Option) (*comprehend.DetectSentimentOutput, error)
 	DetectSyntaxWithContext(ctx context.Context, input *comprehend.DetectSyntaxInput, opts ...request.Option) (*comprehend.DetectSyntaxOutput, error)
 	ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error)
@@ -50,6 +52,7 @@ type Comprehend interface {
 	ListEntityRecognizersPagesWithContext(ctx context.Context, input *comprehend.ListEntityRecognizersInput, cb func(*comprehend.ListEntityRecognizersOutput, bool) bool, opts ...request.Option) error
 	ListKeyPhrasesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, opts ...request.Option) (*comprehend.ListKeyPhrasesDetectionJobsOutput, error)
 	ListKeyPhrasesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, cb func(*comprehend.ListKeyPhrasesDetectionJobsOutput, bool) bool, opts ...request.Option) error
+	ListPiiEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListPiiEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListPiiEntitiesDetectionJobsOutput, error)
 	ListSentimentDetectionJobsWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, opts ...request.Option) (*comprehend.ListSentimentDetectionJobsOutput, error)
 	ListSentimentDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, cb func(*comprehend.ListSentimentDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *comprehend.ListTagsForResourceInput, opts ...request.Option) (*comprehend.ListTagsForResourceOutput, error)
@@ -59,11 +62,13 @@ type Comprehend interface {
 	StartDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.StartDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.StartDominantLanguageDetectionJobOutput, error)
 	StartEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartEntitiesDetectionJobOutput, error)
 	StartKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.StartKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.StartKeyPhrasesDetectionJobOutput, error)
+	StartPiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartPiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartPiiEntitiesDetectionJobOutput, error)
 	StartSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StartSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StartSentimentDetectionJobOutput, error)
 	StartTopicsDetectionJobWithContext(ctx context.Context, input *comprehend.StartTopicsDetectionJobInput, opts ...request.Option) (*comprehend.StartTopicsDetectionJobOutput, error)
 	StopDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.StopDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.StopDominantLanguageDetectionJobOutput, error)
 	StopEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StopEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StopEntitiesDetectionJobOutput, error)
 	StopKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.StopKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.StopKeyPhrasesDetectionJobOutput, error)
+	StopPiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StopPiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StopPiiEntitiesDetectionJobOutput, error)
 	StopSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StopSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StopSentimentDetectionJobOutput, error)
 	StopTrainingDocumentClassifierWithContext(ctx context.Context, input *comprehend.StopTrainingDocumentClassifierInput, opts ...request.Option) (*comprehend.StopTrainingDocumentClassifierOutput, error)
 	StopTrainingEntityRecognizerWithContext(ctx context.Context, input *comprehend.StopTrainingEntityRecognizerInput, opts ...request.Option) (*comprehend.StopTrainingEntityRecognizerOutput, error)
@@ -486,6 +491,27 @@ func (c *Client) DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, 
 	return req.Output.(*comprehend.DescribeKeyPhrasesDetectionJobOutput), req.Error
 }
 
+func (c *Client) DescribePiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribePiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribePiiEntitiesDetectionJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DescribePiiEntitiesDetectionJob",
+		Input:   input,
+		Output:  (*comprehend.DescribePiiEntitiesDetectionJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DescribePiiEntitiesDetectionJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DescribePiiEntitiesDetectionJobOutput), req.Error
+}
+
 func (c *Client) DescribeSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeSentimentDetectionJobInput, opts ...request.Option) (*comprehend.DescribeSentimentDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -589,6 +615,27 @@ func (c *Client) DetectKeyPhrasesWithContext(ctx context.Context, input *compreh
 	})
 
 	return req.Output.(*comprehend.DetectKeyPhrasesOutput), req.Error
+}
+
+func (c *Client) DetectPiiEntitiesWithContext(ctx context.Context, input *comprehend.DetectPiiEntitiesInput, opts ...request.Option) (*comprehend.DetectPiiEntitiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DetectPiiEntities",
+		Input:   input,
+		Output:  (*comprehend.DetectPiiEntitiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DetectPiiEntitiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DetectPiiEntitiesOutput), req.Error
 }
 
 func (c *Client) DetectSentimentWithContext(ctx context.Context, input *comprehend.DetectSentimentInput, opts ...request.Option) (*comprehend.DetectSentimentOutput, error) {
@@ -900,6 +947,27 @@ func (c *Client) ListKeyPhrasesDetectionJobsPagesWithContext(ctx context.Context
 	return req.Error
 }
 
+func (c *Client) ListPiiEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListPiiEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListPiiEntitiesDetectionJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListPiiEntitiesDetectionJobs",
+		Input:   input,
+		Output:  (*comprehend.ListPiiEntitiesDetectionJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ListPiiEntitiesDetectionJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ListPiiEntitiesDetectionJobsOutput), req.Error
+}
+
 func (c *Client) ListSentimentDetectionJobsWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, opts ...request.Option) (*comprehend.ListSentimentDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -1087,6 +1155,27 @@ func (c *Client) StartKeyPhrasesDetectionJobWithContext(ctx context.Context, inp
 	return req.Output.(*comprehend.StartKeyPhrasesDetectionJobOutput), req.Error
 }
 
+func (c *Client) StartPiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartPiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartPiiEntitiesDetectionJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "StartPiiEntitiesDetectionJob",
+		Input:   input,
+		Output:  (*comprehend.StartPiiEntitiesDetectionJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.StartPiiEntitiesDetectionJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.StartPiiEntitiesDetectionJobOutput), req.Error
+}
+
 func (c *Client) StartSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StartSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StartSentimentDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -1190,6 +1279,27 @@ func (c *Client) StopKeyPhrasesDetectionJobWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*comprehend.StopKeyPhrasesDetectionJobOutput), req.Error
+}
+
+func (c *Client) StopPiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StopPiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StopPiiEntitiesDetectionJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "StopPiiEntitiesDetectionJob",
+		Input:   input,
+		Output:  (*comprehend.StopPiiEntitiesDetectionJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.StopPiiEntitiesDetectionJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.StopPiiEntitiesDetectionJobOutput), req.Error
 }
 
 func (c *Client) StopSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StopSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StopSentimentDetectionJobOutput, error) {
