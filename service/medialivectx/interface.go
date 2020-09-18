@@ -11,6 +11,9 @@ import (
 )
 
 type MediaLive interface {
+	BatchDeleteWithContext(ctx context.Context, input *medialive.BatchDeleteInput, opts ...request.Option) (*medialive.BatchDeleteOutput, error)
+	BatchStartWithContext(ctx context.Context, input *medialive.BatchStartInput, opts ...request.Option) (*medialive.BatchStartOutput, error)
+	BatchStopWithContext(ctx context.Context, input *medialive.BatchStopInput, opts ...request.Option) (*medialive.BatchStopOutput, error)
 	BatchUpdateScheduleWithContext(ctx context.Context, input *medialive.BatchUpdateScheduleInput, opts ...request.Option) (*medialive.BatchUpdateScheduleOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error)
 	CreateInputWithContext(ctx context.Context, input *medialive.CreateInputInput, opts ...request.Option) (*medialive.CreateInputOutput, error)
@@ -83,6 +86,69 @@ func New(base medialiveiface.MediaLiveAPI, ctxer awsctx.Contexter) MediaLive {
 
 var _ MediaLive = (*medialive.MediaLive)(nil)
 var _ MediaLive = (*Client)(nil)
+
+func (c *Client) BatchDeleteWithContext(ctx context.Context, input *medialive.BatchDeleteInput, opts ...request.Option) (*medialive.BatchDeleteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "BatchDelete",
+		Input:   input,
+		Output:  (*medialive.BatchDeleteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.BatchDeleteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.BatchDeleteOutput), req.Error
+}
+
+func (c *Client) BatchStartWithContext(ctx context.Context, input *medialive.BatchStartInput, opts ...request.Option) (*medialive.BatchStartOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "BatchStart",
+		Input:   input,
+		Output:  (*medialive.BatchStartOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.BatchStartWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.BatchStartOutput), req.Error
+}
+
+func (c *Client) BatchStopWithContext(ctx context.Context, input *medialive.BatchStopInput, opts ...request.Option) (*medialive.BatchStopOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "BatchStop",
+		Input:   input,
+		Output:  (*medialive.BatchStopOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.BatchStopWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.BatchStopOutput), req.Error
+}
 
 func (c *Client) BatchUpdateScheduleWithContext(ctx context.Context, input *medialive.BatchUpdateScheduleInput, opts ...request.Option) (*medialive.BatchUpdateScheduleOutput, error) {
 	req := &awsctx.AwsRequest{
