@@ -23,6 +23,7 @@ type Glue interface {
 	BatchGetTriggersWithContext(ctx context.Context, input *glue.BatchGetTriggersInput, opts ...request.Option) (*glue.BatchGetTriggersOutput, error)
 	BatchGetWorkflowsWithContext(ctx context.Context, input *glue.BatchGetWorkflowsInput, opts ...request.Option) (*glue.BatchGetWorkflowsOutput, error)
 	BatchStopJobRunWithContext(ctx context.Context, input *glue.BatchStopJobRunInput, opts ...request.Option) (*glue.BatchStopJobRunOutput, error)
+	BatchUpdatePartitionWithContext(ctx context.Context, input *glue.BatchUpdatePartitionInput, opts ...request.Option) (*glue.BatchUpdatePartitionOutput, error)
 	CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error)
 	CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error)
 	CreateConnectionWithContext(ctx context.Context, input *glue.CreateConnectionInput, opts ...request.Option) (*glue.CreateConnectionOutput, error)
@@ -437,6 +438,27 @@ func (c *Client) BatchStopJobRunWithContext(ctx context.Context, input *glue.Bat
 	})
 
 	return req.Output.(*glue.BatchStopJobRunOutput), req.Error
+}
+
+func (c *Client) BatchUpdatePartitionWithContext(ctx context.Context, input *glue.BatchUpdatePartitionInput, opts ...request.Option) (*glue.BatchUpdatePartitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "BatchUpdatePartition",
+		Input:   input,
+		Output:  (*glue.BatchUpdatePartitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.BatchUpdatePartitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.BatchUpdatePartitionOutput), req.Error
 }
 
 func (c *Client) CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error) {
