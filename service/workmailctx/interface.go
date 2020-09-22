@@ -13,6 +13,7 @@ import (
 type WorkMail interface {
 	AssociateDelegateToResourceWithContext(ctx context.Context, input *workmail.AssociateDelegateToResourceInput, opts ...request.Option) (*workmail.AssociateDelegateToResourceOutput, error)
 	AssociateMemberToGroupWithContext(ctx context.Context, input *workmail.AssociateMemberToGroupInput, opts ...request.Option) (*workmail.AssociateMemberToGroupOutput, error)
+	CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error)
 	CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error)
 	CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error)
@@ -26,6 +27,7 @@ type WorkMail interface {
 	DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error)
 	DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error)
+	DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error)
 	DescribeOrganizationWithContext(ctx context.Context, input *workmail.DescribeOrganizationInput, opts ...request.Option) (*workmail.DescribeOrganizationOutput, error)
 	DescribeResourceWithContext(ctx context.Context, input *workmail.DescribeResourceInput, opts ...request.Option) (*workmail.DescribeResourceOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *workmail.DescribeUserInput, opts ...request.Option) (*workmail.DescribeUserOutput, error)
@@ -41,6 +43,8 @@ type WorkMail interface {
 	ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error)
 	ListGroupsPagesWithContext(ctx context.Context, input *workmail.ListGroupsInput, cb func(*workmail.ListGroupsOutput, bool) bool, opts ...request.Option) error
+	ListMailboxExportJobsWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, opts ...request.Option) (*workmail.ListMailboxExportJobsOutput, error)
+	ListMailboxExportJobsPagesWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, cb func(*workmail.ListMailboxExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListMailboxPermissionsWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, opts ...request.Option) (*workmail.ListMailboxPermissionsOutput, error)
 	ListMailboxPermissionsPagesWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, cb func(*workmail.ListMailboxPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListOrganizationsWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, opts ...request.Option) (*workmail.ListOrganizationsOutput, error)
@@ -57,6 +61,7 @@ type WorkMail interface {
 	PutRetentionPolicyWithContext(ctx context.Context, input *workmail.PutRetentionPolicyInput, opts ...request.Option) (*workmail.PutRetentionPolicyOutput, error)
 	RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error)
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
+	StartMailboxExportJobWithContext(ctx context.Context, input *workmail.StartMailboxExportJobInput, opts ...request.Option) (*workmail.StartMailboxExportJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
@@ -119,6 +124,27 @@ func (c *Client) AssociateMemberToGroupWithContext(ctx context.Context, input *w
 	})
 
 	return req.Output.(*workmail.AssociateMemberToGroupOutput), req.Error
+}
+
+func (c *Client) CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "CancelMailboxExportJob",
+		Input:   input,
+		Output:  (*workmail.CancelMailboxExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.CancelMailboxExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.CancelMailboxExportJobOutput), req.Error
 }
 
 func (c *Client) CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error) {
@@ -392,6 +418,27 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.D
 	})
 
 	return req.Output.(*workmail.DescribeGroupOutput), req.Error
+}
+
+func (c *Client) DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DescribeMailboxExportJob",
+		Input:   input,
+		Output:  (*workmail.DescribeMailboxExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DescribeMailboxExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DescribeMailboxExportJobOutput), req.Error
 }
 
 func (c *Client) DescribeOrganizationWithContext(ctx context.Context, input *workmail.DescribeOrganizationInput, opts ...request.Option) (*workmail.DescribeOrganizationOutput, error) {
@@ -701,6 +748,47 @@ func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *workmail
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.WorkMailAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMailboxExportJobsWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, opts ...request.Option) (*workmail.ListMailboxExportJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListMailboxExportJobs",
+		Input:   input,
+		Output:  (*workmail.ListMailboxExportJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListMailboxExportJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListMailboxExportJobsOutput), req.Error
+}
+
+func (c *Client) ListMailboxExportJobsPagesWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, cb func(*workmail.ListMailboxExportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListMailboxExportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListMailboxExportJobsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1035,6 +1123,27 @@ func (c *Client) ResetPasswordWithContext(ctx context.Context, input *workmail.R
 	})
 
 	return req.Output.(*workmail.ResetPasswordOutput), req.Error
+}
+
+func (c *Client) StartMailboxExportJobWithContext(ctx context.Context, input *workmail.StartMailboxExportJobInput, opts ...request.Option) (*workmail.StartMailboxExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "StartMailboxExportJob",
+		Input:   input,
+		Output:  (*workmail.StartMailboxExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.StartMailboxExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.StartMailboxExportJobOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error) {
