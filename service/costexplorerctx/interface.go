@@ -11,9 +11,16 @@ import (
 )
 
 type CostExplorer interface {
+	CreateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.CreateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.CreateAnomalyMonitorOutput, error)
+	CreateAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.CreateAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.CreateAnomalySubscriptionOutput, error)
 	CreateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.CreateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.CreateCostCategoryDefinitionOutput, error)
+	DeleteAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.DeleteAnomalyMonitorInput, opts ...request.Option) (*costexplorer.DeleteAnomalyMonitorOutput, error)
+	DeleteAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.DeleteAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.DeleteAnomalySubscriptionOutput, error)
 	DeleteCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DeleteCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DeleteCostCategoryDefinitionOutput, error)
 	DescribeCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DescribeCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DescribeCostCategoryDefinitionOutput, error)
+	GetAnomaliesWithContext(ctx context.Context, input *costexplorer.GetAnomaliesInput, opts ...request.Option) (*costexplorer.GetAnomaliesOutput, error)
+	GetAnomalyMonitorsWithContext(ctx context.Context, input *costexplorer.GetAnomalyMonitorsInput, opts ...request.Option) (*costexplorer.GetAnomalyMonitorsOutput, error)
+	GetAnomalySubscriptionsWithContext(ctx context.Context, input *costexplorer.GetAnomalySubscriptionsInput, opts ...request.Option) (*costexplorer.GetAnomalySubscriptionsOutput, error)
 	GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error)
 	GetCostAndUsageWithResourcesWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageWithResourcesInput, opts ...request.Option) (*costexplorer.GetCostAndUsageWithResourcesOutput, error)
 	GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error)
@@ -32,6 +39,9 @@ type CostExplorer interface {
 	GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error)
 	ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error)
 	ListCostCategoryDefinitionsPagesWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, cb func(*costexplorer.ListCostCategoryDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ProvideAnomalyFeedbackWithContext(ctx context.Context, input *costexplorer.ProvideAnomalyFeedbackInput, opts ...request.Option) (*costexplorer.ProvideAnomalyFeedbackOutput, error)
+	UpdateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.UpdateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.UpdateAnomalyMonitorOutput, error)
+	UpdateAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.UpdateAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.UpdateAnomalySubscriptionOutput, error)
 	UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error)
 }
 
@@ -49,6 +59,48 @@ func New(base costexploreriface.CostExplorerAPI, ctxer awsctx.Contexter) CostExp
 
 var _ CostExplorer = (*costexplorer.CostExplorer)(nil)
 var _ CostExplorer = (*Client)(nil)
+
+func (c *Client) CreateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.CreateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.CreateAnomalyMonitorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "CreateAnomalyMonitor",
+		Input:   input,
+		Output:  (*costexplorer.CreateAnomalyMonitorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.CreateAnomalyMonitorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.CreateAnomalyMonitorOutput), req.Error
+}
+
+func (c *Client) CreateAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.CreateAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.CreateAnomalySubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "CreateAnomalySubscription",
+		Input:   input,
+		Output:  (*costexplorer.CreateAnomalySubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.CreateAnomalySubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.CreateAnomalySubscriptionOutput), req.Error
+}
 
 func (c *Client) CreateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.CreateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.CreateCostCategoryDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -69,6 +121,48 @@ func (c *Client) CreateCostCategoryDefinitionWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*costexplorer.CreateCostCategoryDefinitionOutput), req.Error
+}
+
+func (c *Client) DeleteAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.DeleteAnomalyMonitorInput, opts ...request.Option) (*costexplorer.DeleteAnomalyMonitorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "DeleteAnomalyMonitor",
+		Input:   input,
+		Output:  (*costexplorer.DeleteAnomalyMonitorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.DeleteAnomalyMonitorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.DeleteAnomalyMonitorOutput), req.Error
+}
+
+func (c *Client) DeleteAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.DeleteAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.DeleteAnomalySubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "DeleteAnomalySubscription",
+		Input:   input,
+		Output:  (*costexplorer.DeleteAnomalySubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.DeleteAnomalySubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.DeleteAnomalySubscriptionOutput), req.Error
 }
 
 func (c *Client) DeleteCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.DeleteCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.DeleteCostCategoryDefinitionOutput, error) {
@@ -111,6 +205,69 @@ func (c *Client) DescribeCostCategoryDefinitionWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*costexplorer.DescribeCostCategoryDefinitionOutput), req.Error
+}
+
+func (c *Client) GetAnomaliesWithContext(ctx context.Context, input *costexplorer.GetAnomaliesInput, opts ...request.Option) (*costexplorer.GetAnomaliesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetAnomalies",
+		Input:   input,
+		Output:  (*costexplorer.GetAnomaliesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetAnomaliesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetAnomaliesOutput), req.Error
+}
+
+func (c *Client) GetAnomalyMonitorsWithContext(ctx context.Context, input *costexplorer.GetAnomalyMonitorsInput, opts ...request.Option) (*costexplorer.GetAnomalyMonitorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetAnomalyMonitors",
+		Input:   input,
+		Output:  (*costexplorer.GetAnomalyMonitorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetAnomalyMonitorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetAnomalyMonitorsOutput), req.Error
+}
+
+func (c *Client) GetAnomalySubscriptionsWithContext(ctx context.Context, input *costexplorer.GetAnomalySubscriptionsInput, opts ...request.Option) (*costexplorer.GetAnomalySubscriptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetAnomalySubscriptions",
+		Input:   input,
+		Output:  (*costexplorer.GetAnomalySubscriptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetAnomalySubscriptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetAnomalySubscriptionsOutput), req.Error
 }
 
 func (c *Client) GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error) {
@@ -486,6 +643,69 @@ func (c *Client) ListCostCategoryDefinitionsPagesWithContext(ctx context.Context
 	})
 
 	return req.Error
+}
+
+func (c *Client) ProvideAnomalyFeedbackWithContext(ctx context.Context, input *costexplorer.ProvideAnomalyFeedbackInput, opts ...request.Option) (*costexplorer.ProvideAnomalyFeedbackOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ProvideAnomalyFeedback",
+		Input:   input,
+		Output:  (*costexplorer.ProvideAnomalyFeedbackOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.ProvideAnomalyFeedbackWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.ProvideAnomalyFeedbackOutput), req.Error
+}
+
+func (c *Client) UpdateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.UpdateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.UpdateAnomalyMonitorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "UpdateAnomalyMonitor",
+		Input:   input,
+		Output:  (*costexplorer.UpdateAnomalyMonitorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.UpdateAnomalyMonitorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.UpdateAnomalyMonitorOutput), req.Error
+}
+
+func (c *Client) UpdateAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.UpdateAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.UpdateAnomalySubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "UpdateAnomalySubscription",
+		Input:   input,
+		Output:  (*costexplorer.UpdateAnomalySubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.UpdateAnomalySubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.UpdateAnomalySubscriptionOutput), req.Error
 }
 
 func (c *Client) UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error) {
