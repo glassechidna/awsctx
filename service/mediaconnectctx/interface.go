@@ -17,12 +17,19 @@ type MediaConnect interface {
 	CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error)
 	DeleteFlowWithContext(ctx context.Context, input *mediaconnect.DeleteFlowInput, opts ...request.Option) (*mediaconnect.DeleteFlowOutput, error)
 	DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error)
+	DescribeOfferingWithContext(ctx context.Context, input *mediaconnect.DescribeOfferingInput, opts ...request.Option) (*mediaconnect.DescribeOfferingOutput, error)
+	DescribeReservationWithContext(ctx context.Context, input *mediaconnect.DescribeReservationInput, opts ...request.Option) (*mediaconnect.DescribeReservationOutput, error)
 	GrantFlowEntitlementsWithContext(ctx context.Context, input *mediaconnect.GrantFlowEntitlementsInput, opts ...request.Option) (*mediaconnect.GrantFlowEntitlementsOutput, error)
 	ListEntitlementsWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, opts ...request.Option) (*mediaconnect.ListEntitlementsOutput, error)
 	ListEntitlementsPagesWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, cb func(*mediaconnect.ListEntitlementsOutput, bool) bool, opts ...request.Option) error
 	ListFlowsWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, opts ...request.Option) (*mediaconnect.ListFlowsOutput, error)
 	ListFlowsPagesWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, cb func(*mediaconnect.ListFlowsOutput, bool) bool, opts ...request.Option) error
+	ListOfferingsWithContext(ctx context.Context, input *mediaconnect.ListOfferingsInput, opts ...request.Option) (*mediaconnect.ListOfferingsOutput, error)
+	ListOfferingsPagesWithContext(ctx context.Context, input *mediaconnect.ListOfferingsInput, cb func(*mediaconnect.ListOfferingsOutput, bool) bool, opts ...request.Option) error
+	ListReservationsWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, opts ...request.Option) (*mediaconnect.ListReservationsOutput, error)
+	ListReservationsPagesWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, cb func(*mediaconnect.ListReservationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error)
+	PurchaseOfferingWithContext(ctx context.Context, input *mediaconnect.PurchaseOfferingInput, opts ...request.Option) (*mediaconnect.PurchaseOfferingOutput, error)
 	RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error)
 	RemoveFlowSourceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowSourceInput, opts ...request.Option) (*mediaconnect.RemoveFlowSourceOutput, error)
 	RemoveFlowVpcInterfaceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowVpcInterfaceInput, opts ...request.Option) (*mediaconnect.RemoveFlowVpcInterfaceOutput, error)
@@ -178,6 +185,48 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, input *mediaconnec
 	return req.Output.(*mediaconnect.DescribeFlowOutput), req.Error
 }
 
+func (c *Client) DescribeOfferingWithContext(ctx context.Context, input *mediaconnect.DescribeOfferingInput, opts ...request.Option) (*mediaconnect.DescribeOfferingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DescribeOffering",
+		Input:   input,
+		Output:  (*mediaconnect.DescribeOfferingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DescribeOfferingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DescribeOfferingOutput), req.Error
+}
+
+func (c *Client) DescribeReservationWithContext(ctx context.Context, input *mediaconnect.DescribeReservationInput, opts ...request.Option) (*mediaconnect.DescribeReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DescribeReservation",
+		Input:   input,
+		Output:  (*mediaconnect.DescribeReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DescribeReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DescribeReservationOutput), req.Error
+}
+
 func (c *Client) GrantFlowEntitlementsWithContext(ctx context.Context, input *mediaconnect.GrantFlowEntitlementsInput, opts ...request.Option) (*mediaconnect.GrantFlowEntitlementsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -281,6 +330,88 @@ func (c *Client) ListFlowsPagesWithContext(ctx context.Context, input *mediaconn
 	return req.Error
 }
 
+func (c *Client) ListOfferingsWithContext(ctx context.Context, input *mediaconnect.ListOfferingsInput, opts ...request.Option) (*mediaconnect.ListOfferingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListOfferings",
+		Input:   input,
+		Output:  (*mediaconnect.ListOfferingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.ListOfferingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.ListOfferingsOutput), req.Error
+}
+
+func (c *Client) ListOfferingsPagesWithContext(ctx context.Context, input *mediaconnect.ListOfferingsInput, cb func(*mediaconnect.ListOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListOfferingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListReservationsWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, opts ...request.Option) (*mediaconnect.ListReservationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListReservations",
+		Input:   input,
+		Output:  (*mediaconnect.ListReservationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.ListReservationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.ListReservationsOutput), req.Error
+}
+
+func (c *Client) ListReservationsPagesWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, cb func(*mediaconnect.ListReservationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListReservations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListReservationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -300,6 +431,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*mediaconnect.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *mediaconnect.PurchaseOfferingInput, opts ...request.Option) (*mediaconnect.PurchaseOfferingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "PurchaseOffering",
+		Input:   input,
+		Output:  (*mediaconnect.PurchaseOfferingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.PurchaseOfferingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.PurchaseOfferingOutput), req.Error
 }
 
 func (c *Client) RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error) {
