@@ -26,9 +26,12 @@ type Batch interface {
 	DescribeJobsWithContext(ctx context.Context, input *batch.DescribeJobsInput, opts ...request.Option) (*batch.DescribeJobsOutput, error)
 	ListJobsWithContext(ctx context.Context, input *batch.ListJobsInput, opts ...request.Option) (*batch.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *batch.ListJobsInput, cb func(*batch.ListJobsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *batch.ListTagsForResourceInput, opts ...request.Option) (*batch.ListTagsForResourceOutput, error)
 	RegisterJobDefinitionWithContext(ctx context.Context, input *batch.RegisterJobDefinitionInput, opts ...request.Option) (*batch.RegisterJobDefinitionOutput, error)
 	SubmitJobWithContext(ctx context.Context, input *batch.SubmitJobInput, opts ...request.Option) (*batch.SubmitJobOutput, error)
+	TagResourceWithContext(ctx context.Context, input *batch.TagResourceInput, opts ...request.Option) (*batch.TagResourceOutput, error)
 	TerminateJobWithContext(ctx context.Context, input *batch.TerminateJobInput, opts ...request.Option) (*batch.TerminateJobOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *batch.UntagResourceInput, opts ...request.Option) (*batch.UntagResourceOutput, error)
 	UpdateComputeEnvironmentWithContext(ctx context.Context, input *batch.UpdateComputeEnvironmentInput, opts ...request.Option) (*batch.UpdateComputeEnvironmentOutput, error)
 	UpdateJobQueueWithContext(ctx context.Context, input *batch.UpdateJobQueueInput, opts ...request.Option) (*batch.UpdateJobQueueOutput, error)
 }
@@ -359,6 +362,27 @@ func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *batch.List
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *batch.ListTagsForResourceInput, opts ...request.Option) (*batch.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*batch.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BatchAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*batch.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) RegisterJobDefinitionWithContext(ctx context.Context, input *batch.RegisterJobDefinitionInput, opts ...request.Option) (*batch.RegisterJobDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
@@ -401,6 +425,27 @@ func (c *Client) SubmitJobWithContext(ctx context.Context, input *batch.SubmitJo
 	return req.Output.(*batch.SubmitJobOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *batch.TagResourceInput, opts ...request.Option) (*batch.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*batch.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BatchAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*batch.TagResourceOutput), req.Error
+}
+
 func (c *Client) TerminateJobWithContext(ctx context.Context, input *batch.TerminateJobInput, opts ...request.Option) (*batch.TerminateJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "batch",
@@ -420,6 +465,27 @@ func (c *Client) TerminateJobWithContext(ctx context.Context, input *batch.Termi
 	})
 
 	return req.Output.(*batch.TerminateJobOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *batch.UntagResourceInput, opts ...request.Option) (*batch.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "batch",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*batch.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BatchAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*batch.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateComputeEnvironmentWithContext(ctx context.Context, input *batch.UpdateComputeEnvironmentInput, opts ...request.Option) (*batch.UpdateComputeEnvironmentOutput, error) {

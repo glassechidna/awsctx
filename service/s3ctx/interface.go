@@ -23,6 +23,7 @@ type S3 interface {
 	DeleteBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketInventoryConfigurationInput, opts ...request.Option) (*s3.DeleteBucketInventoryConfigurationOutput, error)
 	DeleteBucketLifecycleWithContext(ctx context.Context, input *s3.DeleteBucketLifecycleInput, opts ...request.Option) (*s3.DeleteBucketLifecycleOutput, error)
 	DeleteBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketMetricsConfigurationInput, opts ...request.Option) (*s3.DeleteBucketMetricsConfigurationOutput, error)
+	DeleteBucketOwnershipControlsWithContext(ctx context.Context, input *s3.DeleteBucketOwnershipControlsInput, opts ...request.Option) (*s3.DeleteBucketOwnershipControlsOutput, error)
 	DeleteBucketPolicyWithContext(ctx context.Context, input *s3.DeleteBucketPolicyInput, opts ...request.Option) (*s3.DeleteBucketPolicyOutput, error)
 	DeleteBucketReplicationWithContext(ctx context.Context, input *s3.DeleteBucketReplicationInput, opts ...request.Option) (*s3.DeleteBucketReplicationOutput, error)
 	DeleteBucketTaggingWithContext(ctx context.Context, input *s3.DeleteBucketTaggingInput, opts ...request.Option) (*s3.DeleteBucketTaggingOutput, error)
@@ -44,6 +45,7 @@ type S3 interface {
 	GetBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.GetBucketMetricsConfigurationInput, opts ...request.Option) (*s3.GetBucketMetricsConfigurationOutput, error)
 	GetBucketNotificationWithContext(ctx context.Context, input *s3.GetBucketNotificationConfigurationRequest, opts ...request.Option) (*s3.NotificationConfigurationDeprecated, error)
 	GetBucketNotificationConfigurationWithContext(ctx context.Context, input *s3.GetBucketNotificationConfigurationRequest, opts ...request.Option) (*s3.NotificationConfiguration, error)
+	GetBucketOwnershipControlsWithContext(ctx context.Context, input *s3.GetBucketOwnershipControlsInput, opts ...request.Option) (*s3.GetBucketOwnershipControlsOutput, error)
 	GetBucketPolicyWithContext(ctx context.Context, input *s3.GetBucketPolicyInput, opts ...request.Option) (*s3.GetBucketPolicyOutput, error)
 	GetBucketPolicyStatusWithContext(ctx context.Context, input *s3.GetBucketPolicyStatusInput, opts ...request.Option) (*s3.GetBucketPolicyStatusOutput, error)
 	GetBucketReplicationWithContext(ctx context.Context, input *s3.GetBucketReplicationInput, opts ...request.Option) (*s3.GetBucketReplicationOutput, error)
@@ -87,6 +89,7 @@ type S3 interface {
 	PutBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.PutBucketMetricsConfigurationInput, opts ...request.Option) (*s3.PutBucketMetricsConfigurationOutput, error)
 	PutBucketNotificationWithContext(ctx context.Context, input *s3.PutBucketNotificationInput, opts ...request.Option) (*s3.PutBucketNotificationOutput, error)
 	PutBucketNotificationConfigurationWithContext(ctx context.Context, input *s3.PutBucketNotificationConfigurationInput, opts ...request.Option) (*s3.PutBucketNotificationConfigurationOutput, error)
+	PutBucketOwnershipControlsWithContext(ctx context.Context, input *s3.PutBucketOwnershipControlsInput, opts ...request.Option) (*s3.PutBucketOwnershipControlsOutput, error)
 	PutBucketPolicyWithContext(ctx context.Context, input *s3.PutBucketPolicyInput, opts ...request.Option) (*s3.PutBucketPolicyOutput, error)
 	PutBucketReplicationWithContext(ctx context.Context, input *s3.PutBucketReplicationInput, opts ...request.Option) (*s3.PutBucketReplicationOutput, error)
 	PutBucketRequestPaymentWithContext(ctx context.Context, input *s3.PutBucketRequestPaymentInput, opts ...request.Option) (*s3.PutBucketRequestPaymentOutput, error)
@@ -371,6 +374,27 @@ func (c *Client) DeleteBucketMetricsConfigurationWithContext(ctx context.Context
 	})
 
 	return req.Output.(*s3.DeleteBucketMetricsConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteBucketOwnershipControlsWithContext(ctx context.Context, input *s3.DeleteBucketOwnershipControlsInput, opts ...request.Option) (*s3.DeleteBucketOwnershipControlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "DeleteBucketOwnershipControls",
+		Input:   input,
+		Output:  (*s3.DeleteBucketOwnershipControlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.DeleteBucketOwnershipControlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.DeleteBucketOwnershipControlsOutput), req.Error
 }
 
 func (c *Client) DeleteBucketPolicyWithContext(ctx context.Context, input *s3.DeleteBucketPolicyInput, opts ...request.Option) (*s3.DeleteBucketPolicyOutput, error) {
@@ -812,6 +836,27 @@ func (c *Client) GetBucketNotificationConfigurationWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*s3.NotificationConfiguration), req.Error
+}
+
+func (c *Client) GetBucketOwnershipControlsWithContext(ctx context.Context, input *s3.GetBucketOwnershipControlsInput, opts ...request.Option) (*s3.GetBucketOwnershipControlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "GetBucketOwnershipControls",
+		Input:   input,
+		Output:  (*s3.GetBucketOwnershipControlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.GetBucketOwnershipControlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.GetBucketOwnershipControlsOutput), req.Error
 }
 
 func (c *Client) GetBucketPolicyWithContext(ctx context.Context, input *s3.GetBucketPolicyInput, opts ...request.Option) (*s3.GetBucketPolicyOutput, error) {
@@ -1710,6 +1755,27 @@ func (c *Client) PutBucketNotificationConfigurationWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*s3.PutBucketNotificationConfigurationOutput), req.Error
+}
+
+func (c *Client) PutBucketOwnershipControlsWithContext(ctx context.Context, input *s3.PutBucketOwnershipControlsInput, opts ...request.Option) (*s3.PutBucketOwnershipControlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "PutBucketOwnershipControls",
+		Input:   input,
+		Output:  (*s3.PutBucketOwnershipControlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.PutBucketOwnershipControlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.PutBucketOwnershipControlsOutput), req.Error
 }
 
 func (c *Client) PutBucketPolicyWithContext(ctx context.Context, input *s3.PutBucketPolicyInput, opts ...request.Option) (*s3.PutBucketPolicyOutput, error) {
