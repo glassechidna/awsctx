@@ -11,6 +11,7 @@ import (
 )
 
 type MediaPackage interface {
+	ConfigureLogsWithContext(ctx context.Context, input *mediapackage.ConfigureLogsInput, opts ...request.Option) (*mediapackage.ConfigureLogsOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *mediapackage.CreateChannelInput, opts ...request.Option) (*mediapackage.CreateChannelOutput, error)
 	CreateHarvestJobWithContext(ctx context.Context, input *mediapackage.CreateHarvestJobInput, opts ...request.Option) (*mediapackage.CreateHarvestJobOutput, error)
 	CreateOriginEndpointWithContext(ctx context.Context, input *mediapackage.CreateOriginEndpointInput, opts ...request.Option) (*mediapackage.CreateOriginEndpointOutput, error)
@@ -48,6 +49,27 @@ func New(base mediapackageiface.MediaPackageAPI, ctxer awsctx.Contexter) MediaPa
 
 var _ MediaPackage = (*mediapackage.MediaPackage)(nil)
 var _ MediaPackage = (*Client)(nil)
+
+func (c *Client) ConfigureLogsWithContext(ctx context.Context, input *mediapackage.ConfigureLogsInput, opts ...request.Option) (*mediapackage.ConfigureLogsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackage",
+		Action:  "ConfigureLogs",
+		Input:   input,
+		Output:  (*mediapackage.ConfigureLogsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageAPI.ConfigureLogsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackage.ConfigureLogsOutput), req.Error
+}
 
 func (c *Client) CreateChannelWithContext(ctx context.Context, input *mediapackage.CreateChannelInput, opts ...request.Option) (*mediapackage.CreateChannelOutput, error) {
 	req := &awsctx.AwsRequest{
