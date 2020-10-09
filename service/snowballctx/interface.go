@@ -16,11 +16,13 @@ type Snowball interface {
 	CreateAddressWithContext(ctx context.Context, input *snowball.CreateAddressInput, opts ...request.Option) (*snowball.CreateAddressOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *snowball.CreateClusterInput, opts ...request.Option) (*snowball.CreateClusterOutput, error)
 	CreateJobWithContext(ctx context.Context, input *snowball.CreateJobInput, opts ...request.Option) (*snowball.CreateJobOutput, error)
+	CreateReturnShippingLabelWithContext(ctx context.Context, input *snowball.CreateReturnShippingLabelInput, opts ...request.Option) (*snowball.CreateReturnShippingLabelOutput, error)
 	DescribeAddressWithContext(ctx context.Context, input *snowball.DescribeAddressInput, opts ...request.Option) (*snowball.DescribeAddressOutput, error)
 	DescribeAddressesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, opts ...request.Option) (*snowball.DescribeAddressesOutput, error)
 	DescribeAddressesPagesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, cb func(*snowball.DescribeAddressesOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterWithContext(ctx context.Context, input *snowball.DescribeClusterInput, opts ...request.Option) (*snowball.DescribeClusterOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *snowball.DescribeJobInput, opts ...request.Option) (*snowball.DescribeJobOutput, error)
+	DescribeReturnShippingLabelWithContext(ctx context.Context, input *snowball.DescribeReturnShippingLabelInput, opts ...request.Option) (*snowball.DescribeReturnShippingLabelOutput, error)
 	GetJobManifestWithContext(ctx context.Context, input *snowball.GetJobManifestInput, opts ...request.Option) (*snowball.GetJobManifestOutput, error)
 	GetJobUnlockCodeWithContext(ctx context.Context, input *snowball.GetJobUnlockCodeInput, opts ...request.Option) (*snowball.GetJobUnlockCodeOutput, error)
 	GetSnowballUsageWithContext(ctx context.Context, input *snowball.GetSnowballUsageInput, opts ...request.Option) (*snowball.GetSnowballUsageOutput, error)
@@ -32,6 +34,7 @@ type Snowball interface {
 	ListJobsPagesWithContext(ctx context.Context, input *snowball.ListJobsInput, cb func(*snowball.ListJobsOutput, bool) bool, opts ...request.Option) error
 	UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *snowball.UpdateJobInput, opts ...request.Option) (*snowball.UpdateJobOutput, error)
+	UpdateJobShipmentStateWithContext(ctx context.Context, input *snowball.UpdateJobShipmentStateInput, opts ...request.Option) (*snowball.UpdateJobShipmentStateOutput, error)
 }
 
 type Client struct {
@@ -154,6 +157,27 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *snowball.Creat
 	return req.Output.(*snowball.CreateJobOutput), req.Error
 }
 
+func (c *Client) CreateReturnShippingLabelWithContext(ctx context.Context, input *snowball.CreateReturnShippingLabelInput, opts ...request.Option) (*snowball.CreateReturnShippingLabelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "CreateReturnShippingLabel",
+		Input:   input,
+		Output:  (*snowball.CreateReturnShippingLabelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.CreateReturnShippingLabelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.CreateReturnShippingLabelOutput), req.Error
+}
+
 func (c *Client) DescribeAddressWithContext(ctx context.Context, input *snowball.DescribeAddressInput, opts ...request.Option) (*snowball.DescribeAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
@@ -256,6 +280,27 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *snowball.Des
 	})
 
 	return req.Output.(*snowball.DescribeJobOutput), req.Error
+}
+
+func (c *Client) DescribeReturnShippingLabelWithContext(ctx context.Context, input *snowball.DescribeReturnShippingLabelInput, opts ...request.Option) (*snowball.DescribeReturnShippingLabelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "DescribeReturnShippingLabel",
+		Input:   input,
+		Output:  (*snowball.DescribeReturnShippingLabelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.DescribeReturnShippingLabelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.DescribeReturnShippingLabelOutput), req.Error
 }
 
 func (c *Client) GetJobManifestWithContext(ctx context.Context, input *snowball.GetJobManifestInput, opts ...request.Option) (*snowball.GetJobManifestOutput, error) {
@@ -486,4 +531,25 @@ func (c *Client) UpdateJobWithContext(ctx context.Context, input *snowball.Updat
 	})
 
 	return req.Output.(*snowball.UpdateJobOutput), req.Error
+}
+
+func (c *Client) UpdateJobShipmentStateWithContext(ctx context.Context, input *snowball.UpdateJobShipmentStateInput, opts ...request.Option) (*snowball.UpdateJobShipmentStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "UpdateJobShipmentState",
+		Input:   input,
+		Output:  (*snowball.UpdateJobShipmentStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.UpdateJobShipmentStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.UpdateJobShipmentStateOutput), req.Error
 }
