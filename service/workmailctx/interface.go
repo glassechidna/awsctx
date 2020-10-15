@@ -16,12 +16,14 @@ type WorkMail interface {
 	CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error)
 	CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error)
+	CreateOrganizationWithContext(ctx context.Context, input *workmail.CreateOrganizationInput, opts ...request.Option) (*workmail.CreateOrganizationOutput, error)
 	CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error)
 	CreateUserWithContext(ctx context.Context, input *workmail.CreateUserInput, opts ...request.Option) (*workmail.CreateUserOutput, error)
 	DeleteAccessControlRuleWithContext(ctx context.Context, input *workmail.DeleteAccessControlRuleInput, opts ...request.Option) (*workmail.DeleteAccessControlRuleOutput, error)
 	DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
+	DeleteOrganizationWithContext(ctx context.Context, input *workmail.DeleteOrganizationInput, opts ...request.Option) (*workmail.DeleteOrganizationOutput, error)
 	DeleteResourceWithContext(ctx context.Context, input *workmail.DeleteResourceInput, opts ...request.Option) (*workmail.DeleteResourceOutput, error)
 	DeleteRetentionPolicyWithContext(ctx context.Context, input *workmail.DeleteRetentionPolicyInput, opts ...request.Option) (*workmail.DeleteRetentionPolicyOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error)
@@ -189,6 +191,27 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *workmail.Cre
 	return req.Output.(*workmail.CreateGroupOutput), req.Error
 }
 
+func (c *Client) CreateOrganizationWithContext(ctx context.Context, input *workmail.CreateOrganizationInput, opts ...request.Option) (*workmail.CreateOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "CreateOrganization",
+		Input:   input,
+		Output:  (*workmail.CreateOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.CreateOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.CreateOrganizationOutput), req.Error
+}
+
 func (c *Client) CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -313,6 +336,27 @@ func (c *Client) DeleteMailboxPermissionsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*workmail.DeleteMailboxPermissionsOutput), req.Error
+}
+
+func (c *Client) DeleteOrganizationWithContext(ctx context.Context, input *workmail.DeleteOrganizationInput, opts ...request.Option) (*workmail.DeleteOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteOrganization",
+		Input:   input,
+		Output:  (*workmail.DeleteOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteOrganizationOutput), req.Error
 }
 
 func (c *Client) DeleteResourceWithContext(ctx context.Context, input *workmail.DeleteResourceInput, opts ...request.Option) (*workmail.DeleteResourceOutput, error) {

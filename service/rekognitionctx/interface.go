@@ -31,6 +31,7 @@ type Rekognition interface {
 	DetectFacesWithContext(ctx context.Context, input *rekognition.DetectFacesInput, opts ...request.Option) (*rekognition.DetectFacesOutput, error)
 	DetectLabelsWithContext(ctx context.Context, input *rekognition.DetectLabelsInput, opts ...request.Option) (*rekognition.DetectLabelsOutput, error)
 	DetectModerationLabelsWithContext(ctx context.Context, input *rekognition.DetectModerationLabelsInput, opts ...request.Option) (*rekognition.DetectModerationLabelsOutput, error)
+	DetectProtectiveEquipmentWithContext(ctx context.Context, input *rekognition.DetectProtectiveEquipmentInput, opts ...request.Option) (*rekognition.DetectProtectiveEquipmentOutput, error)
 	DetectTextWithContext(ctx context.Context, input *rekognition.DetectTextInput, opts ...request.Option) (*rekognition.DetectTextOutput, error)
 	GetCelebrityInfoWithContext(ctx context.Context, input *rekognition.GetCelebrityInfoInput, opts ...request.Option) (*rekognition.GetCelebrityInfoOutput, error)
 	GetCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, opts ...request.Option) (*rekognition.GetCelebrityRecognitionOutput, error)
@@ -504,6 +505,27 @@ func (c *Client) DetectModerationLabelsWithContext(ctx context.Context, input *r
 	})
 
 	return req.Output.(*rekognition.DetectModerationLabelsOutput), req.Error
+}
+
+func (c *Client) DetectProtectiveEquipmentWithContext(ctx context.Context, input *rekognition.DetectProtectiveEquipmentInput, opts ...request.Option) (*rekognition.DetectProtectiveEquipmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DetectProtectiveEquipment",
+		Input:   input,
+		Output:  (*rekognition.DetectProtectiveEquipmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DetectProtectiveEquipmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DetectProtectiveEquipmentOutput), req.Error
 }
 
 func (c *Client) DetectTextWithContext(ctx context.Context, input *rekognition.DetectTextInput, opts ...request.Option) (*rekognition.DetectTextOutput, error) {
