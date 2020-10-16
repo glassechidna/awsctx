@@ -11,10 +11,12 @@ import (
 )
 
 type MediaLive interface {
+	AcceptInputDeviceTransferWithContext(ctx context.Context, input *medialive.AcceptInputDeviceTransferInput, opts ...request.Option) (*medialive.AcceptInputDeviceTransferOutput, error)
 	BatchDeleteWithContext(ctx context.Context, input *medialive.BatchDeleteInput, opts ...request.Option) (*medialive.BatchDeleteOutput, error)
 	BatchStartWithContext(ctx context.Context, input *medialive.BatchStartInput, opts ...request.Option) (*medialive.BatchStartOutput, error)
 	BatchStopWithContext(ctx context.Context, input *medialive.BatchStopInput, opts ...request.Option) (*medialive.BatchStopOutput, error)
 	BatchUpdateScheduleWithContext(ctx context.Context, input *medialive.BatchUpdateScheduleInput, opts ...request.Option) (*medialive.BatchUpdateScheduleOutput, error)
+	CancelInputDeviceTransferWithContext(ctx context.Context, input *medialive.CancelInputDeviceTransferInput, opts ...request.Option) (*medialive.CancelInputDeviceTransferOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error)
 	CreateInputWithContext(ctx context.Context, input *medialive.CreateInputInput, opts ...request.Option) (*medialive.CreateInputOutput, error)
 	CreateInputSecurityGroupWithContext(ctx context.Context, input *medialive.CreateInputSecurityGroupInput, opts ...request.Option) (*medialive.CreateInputSecurityGroupOutput, error)
@@ -42,6 +44,8 @@ type MediaLive interface {
 	DescribeSchedulePagesWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, cb func(*medialive.DescribeScheduleOutput, bool) bool, opts ...request.Option) error
 	ListChannelsWithContext(ctx context.Context, input *medialive.ListChannelsInput, opts ...request.Option) (*medialive.ListChannelsOutput, error)
 	ListChannelsPagesWithContext(ctx context.Context, input *medialive.ListChannelsInput, cb func(*medialive.ListChannelsOutput, bool) bool, opts ...request.Option) error
+	ListInputDeviceTransfersWithContext(ctx context.Context, input *medialive.ListInputDeviceTransfersInput, opts ...request.Option) (*medialive.ListInputDeviceTransfersOutput, error)
+	ListInputDeviceTransfersPagesWithContext(ctx context.Context, input *medialive.ListInputDeviceTransfersInput, cb func(*medialive.ListInputDeviceTransfersOutput, bool) bool, opts ...request.Option) error
 	ListInputDevicesWithContext(ctx context.Context, input *medialive.ListInputDevicesInput, opts ...request.Option) (*medialive.ListInputDevicesOutput, error)
 	ListInputDevicesPagesWithContext(ctx context.Context, input *medialive.ListInputDevicesInput, cb func(*medialive.ListInputDevicesOutput, bool) bool, opts ...request.Option) error
 	ListInputSecurityGroupsWithContext(ctx context.Context, input *medialive.ListInputSecurityGroupsInput, opts ...request.Option) (*medialive.ListInputSecurityGroupsOutput, error)
@@ -58,10 +62,12 @@ type MediaLive interface {
 	ListReservationsPagesWithContext(ctx context.Context, input *medialive.ListReservationsInput, cb func(*medialive.ListReservationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *medialive.ListTagsForResourceInput, opts ...request.Option) (*medialive.ListTagsForResourceOutput, error)
 	PurchaseOfferingWithContext(ctx context.Context, input *medialive.PurchaseOfferingInput, opts ...request.Option) (*medialive.PurchaseOfferingOutput, error)
+	RejectInputDeviceTransferWithContext(ctx context.Context, input *medialive.RejectInputDeviceTransferInput, opts ...request.Option) (*medialive.RejectInputDeviceTransferOutput, error)
 	StartChannelWithContext(ctx context.Context, input *medialive.StartChannelInput, opts ...request.Option) (*medialive.StartChannelOutput, error)
 	StartMultiplexWithContext(ctx context.Context, input *medialive.StartMultiplexInput, opts ...request.Option) (*medialive.StartMultiplexOutput, error)
 	StopChannelWithContext(ctx context.Context, input *medialive.StopChannelInput, opts ...request.Option) (*medialive.StopChannelOutput, error)
 	StopMultiplexWithContext(ctx context.Context, input *medialive.StopMultiplexInput, opts ...request.Option) (*medialive.StopMultiplexOutput, error)
+	TransferInputDeviceWithContext(ctx context.Context, input *medialive.TransferInputDeviceInput, opts ...request.Option) (*medialive.TransferInputDeviceOutput, error)
 	UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error)
 	UpdateChannelClassWithContext(ctx context.Context, input *medialive.UpdateChannelClassInput, opts ...request.Option) (*medialive.UpdateChannelClassOutput, error)
 	UpdateInputWithContext(ctx context.Context, input *medialive.UpdateInputInput, opts ...request.Option) (*medialive.UpdateInputOutput, error)
@@ -86,6 +92,27 @@ func New(base medialiveiface.MediaLiveAPI, ctxer awsctx.Contexter) MediaLive {
 
 var _ MediaLive = (*medialive.MediaLive)(nil)
 var _ MediaLive = (*Client)(nil)
+
+func (c *Client) AcceptInputDeviceTransferWithContext(ctx context.Context, input *medialive.AcceptInputDeviceTransferInput, opts ...request.Option) (*medialive.AcceptInputDeviceTransferOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "AcceptInputDeviceTransfer",
+		Input:   input,
+		Output:  (*medialive.AcceptInputDeviceTransferOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.AcceptInputDeviceTransferWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.AcceptInputDeviceTransferOutput), req.Error
+}
 
 func (c *Client) BatchDeleteWithContext(ctx context.Context, input *medialive.BatchDeleteInput, opts ...request.Option) (*medialive.BatchDeleteOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -169,6 +196,27 @@ func (c *Client) BatchUpdateScheduleWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*medialive.BatchUpdateScheduleOutput), req.Error
+}
+
+func (c *Client) CancelInputDeviceTransferWithContext(ctx context.Context, input *medialive.CancelInputDeviceTransferInput, opts ...request.Option) (*medialive.CancelInputDeviceTransferOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "CancelInputDeviceTransfer",
+		Input:   input,
+		Output:  (*medialive.CancelInputDeviceTransferOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.CancelInputDeviceTransferWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.CancelInputDeviceTransferOutput), req.Error
 }
 
 func (c *Client) CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error) {
@@ -736,6 +784,47 @@ func (c *Client) ListChannelsPagesWithContext(ctx context.Context, input *medial
 	return req.Error
 }
 
+func (c *Client) ListInputDeviceTransfersWithContext(ctx context.Context, input *medialive.ListInputDeviceTransfersInput, opts ...request.Option) (*medialive.ListInputDeviceTransfersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListInputDeviceTransfers",
+		Input:   input,
+		Output:  (*medialive.ListInputDeviceTransfersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.ListInputDeviceTransfersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.ListInputDeviceTransfersOutput), req.Error
+}
+
+func (c *Client) ListInputDeviceTransfersPagesWithContext(ctx context.Context, input *medialive.ListInputDeviceTransfersInput, cb func(*medialive.ListInputDeviceTransfersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ListInputDeviceTransfers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaLiveAPI.ListInputDeviceTransfersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListInputDevicesWithContext(ctx context.Context, input *medialive.ListInputDevicesInput, opts ...request.Option) (*medialive.ListInputDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -1065,6 +1154,27 @@ func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *mediali
 	return req.Output.(*medialive.PurchaseOfferingOutput), req.Error
 }
 
+func (c *Client) RejectInputDeviceTransferWithContext(ctx context.Context, input *medialive.RejectInputDeviceTransferInput, opts ...request.Option) (*medialive.RejectInputDeviceTransferOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "RejectInputDeviceTransfer",
+		Input:   input,
+		Output:  (*medialive.RejectInputDeviceTransferOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.RejectInputDeviceTransferWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.RejectInputDeviceTransferOutput), req.Error
+}
+
 func (c *Client) StartChannelWithContext(ctx context.Context, input *medialive.StartChannelInput, opts ...request.Option) (*medialive.StartChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -1147,6 +1257,27 @@ func (c *Client) StopMultiplexWithContext(ctx context.Context, input *medialive.
 	})
 
 	return req.Output.(*medialive.StopMultiplexOutput), req.Error
+}
+
+func (c *Client) TransferInputDeviceWithContext(ctx context.Context, input *medialive.TransferInputDeviceInput, opts ...request.Option) (*medialive.TransferInputDeviceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "TransferInputDevice",
+		Input:   input,
+		Output:  (*medialive.TransferInputDeviceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.TransferInputDeviceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.TransferInputDeviceOutput), req.Error
 }
 
 func (c *Client) UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error) {
