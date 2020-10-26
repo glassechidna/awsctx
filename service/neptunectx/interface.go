@@ -19,6 +19,7 @@ type Neptune interface {
 	CopyDBClusterSnapshotWithContext(ctx context.Context, input *neptune.CopyDBClusterSnapshotInput, opts ...request.Option) (*neptune.CopyDBClusterSnapshotOutput, error)
 	CopyDBParameterGroupWithContext(ctx context.Context, input *neptune.CopyDBParameterGroupInput, opts ...request.Option) (*neptune.CopyDBParameterGroupOutput, error)
 	CreateDBClusterWithContext(ctx context.Context, input *neptune.CreateDBClusterInput, opts ...request.Option) (*neptune.CreateDBClusterOutput, error)
+	CreateDBClusterEndpointWithContext(ctx context.Context, input *neptune.CreateDBClusterEndpointInput, opts ...request.Option) (*neptune.CreateDBClusterEndpointOutput, error)
 	CreateDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.CreateDBClusterParameterGroupInput, opts ...request.Option) (*neptune.CreateDBClusterParameterGroupOutput, error)
 	CreateDBClusterSnapshotWithContext(ctx context.Context, input *neptune.CreateDBClusterSnapshotInput, opts ...request.Option) (*neptune.CreateDBClusterSnapshotOutput, error)
 	CreateDBInstanceWithContext(ctx context.Context, input *neptune.CreateDBInstanceInput, opts ...request.Option) (*neptune.CreateDBInstanceOutput, error)
@@ -26,12 +27,15 @@ type Neptune interface {
 	CreateDBSubnetGroupWithContext(ctx context.Context, input *neptune.CreateDBSubnetGroupInput, opts ...request.Option) (*neptune.CreateDBSubnetGroupOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *neptune.CreateEventSubscriptionInput, opts ...request.Option) (*neptune.CreateEventSubscriptionOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *neptune.DeleteDBClusterInput, opts ...request.Option) (*neptune.DeleteDBClusterOutput, error)
+	DeleteDBClusterEndpointWithContext(ctx context.Context, input *neptune.DeleteDBClusterEndpointInput, opts ...request.Option) (*neptune.DeleteDBClusterEndpointOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBClusterParameterGroupOutput, error)
 	DeleteDBClusterSnapshotWithContext(ctx context.Context, input *neptune.DeleteDBClusterSnapshotInput, opts ...request.Option) (*neptune.DeleteDBClusterSnapshotOutput, error)
 	DeleteDBInstanceWithContext(ctx context.Context, input *neptune.DeleteDBInstanceInput, opts ...request.Option) (*neptune.DeleteDBInstanceOutput, error)
 	DeleteDBParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBParameterGroupOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *neptune.DeleteDBSubnetGroupInput, opts ...request.Option) (*neptune.DeleteDBSubnetGroupOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *neptune.DeleteEventSubscriptionInput, opts ...request.Option) (*neptune.DeleteEventSubscriptionOutput, error)
+	DescribeDBClusterEndpointsWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, opts ...request.Option) (*neptune.DescribeDBClusterEndpointsOutput, error)
+	DescribeDBClusterEndpointsPagesWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, cb func(*neptune.DescribeDBClusterEndpointsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBClusterParameterGroupsOutput, error)
 	DescribeDBClusterParametersWithContext(ctx context.Context, input *neptune.DescribeDBClusterParametersInput, opts ...request.Option) (*neptune.DescribeDBClusterParametersOutput, error)
 	DescribeDBClusterSnapshotAttributesWithContext(ctx context.Context, input *neptune.DescribeDBClusterSnapshotAttributesInput, opts ...request.Option) (*neptune.DescribeDBClusterSnapshotAttributesOutput, error)
@@ -62,6 +66,7 @@ type Neptune interface {
 	FailoverDBClusterWithContext(ctx context.Context, input *neptune.FailoverDBClusterInput, opts ...request.Option) (*neptune.FailoverDBClusterOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *neptune.ListTagsForResourceInput, opts ...request.Option) (*neptune.ListTagsForResourceOutput, error)
 	ModifyDBClusterWithContext(ctx context.Context, input *neptune.ModifyDBClusterInput, opts ...request.Option) (*neptune.ModifyDBClusterOutput, error)
+	ModifyDBClusterEndpointWithContext(ctx context.Context, input *neptune.ModifyDBClusterEndpointInput, opts ...request.Option) (*neptune.ModifyDBClusterEndpointOutput, error)
 	ModifyDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.ModifyDBClusterParameterGroupInput, opts ...request.Option) (*neptune.ResetDBClusterParameterGroupOutput, error)
 	ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context, input *neptune.ModifyDBClusterSnapshotAttributeInput, opts ...request.Option) (*neptune.ModifyDBClusterSnapshotAttributeOutput, error)
 	ModifyDBInstanceWithContext(ctx context.Context, input *neptune.ModifyDBInstanceInput, opts ...request.Option) (*neptune.ModifyDBInstanceOutput, error)
@@ -264,6 +269,27 @@ func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *neptune.
 	return req.Output.(*neptune.CreateDBClusterOutput), req.Error
 }
 
+func (c *Client) CreateDBClusterEndpointWithContext(ctx context.Context, input *neptune.CreateDBClusterEndpointInput, opts ...request.Option) (*neptune.CreateDBClusterEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "CreateDBClusterEndpoint",
+		Input:   input,
+		Output:  (*neptune.CreateDBClusterEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.CreateDBClusterEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.CreateDBClusterEndpointOutput), req.Error
+}
+
 func (c *Client) CreateDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.CreateDBClusterParameterGroupInput, opts ...request.Option) (*neptune.CreateDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -411,6 +437,27 @@ func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *neptune.
 	return req.Output.(*neptune.DeleteDBClusterOutput), req.Error
 }
 
+func (c *Client) DeleteDBClusterEndpointWithContext(ctx context.Context, input *neptune.DeleteDBClusterEndpointInput, opts ...request.Option) (*neptune.DeleteDBClusterEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DeleteDBClusterEndpoint",
+		Input:   input,
+		Output:  (*neptune.DeleteDBClusterEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.DeleteDBClusterEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.DeleteDBClusterEndpointOutput), req.Error
+}
+
 func (c *Client) DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBClusterParameterGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -535,6 +582,47 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*neptune.DeleteEventSubscriptionOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, opts ...request.Option) (*neptune.DescribeDBClusterEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBClusterEndpoints",
+		Input:   input,
+		Output:  (*neptune.DescribeDBClusterEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.DescribeDBClusterEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.DescribeDBClusterEndpointsOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterEndpointsPagesWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, cb func(*neptune.DescribeDBClusterEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeDBClusterEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeDBClusterEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBClusterParameterGroupsOutput, error) {
@@ -1156,6 +1244,27 @@ func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *neptune.
 	})
 
 	return req.Output.(*neptune.ModifyDBClusterOutput), req.Error
+}
+
+func (c *Client) ModifyDBClusterEndpointWithContext(ctx context.Context, input *neptune.ModifyDBClusterEndpointInput, opts ...request.Option) (*neptune.ModifyDBClusterEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "ModifyDBClusterEndpoint",
+		Input:   input,
+		Output:  (*neptune.ModifyDBClusterEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.ModifyDBClusterEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.ModifyDBClusterEndpointOutput), req.Error
 }
 
 func (c *Client) ModifyDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.ModifyDBClusterParameterGroupInput, opts ...request.Option) (*neptune.ResetDBClusterParameterGroupOutput, error) {
