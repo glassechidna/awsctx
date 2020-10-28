@@ -25,6 +25,7 @@ type EC2 interface {
 	AssociateAddressWithContext(ctx context.Context, input *ec2.AssociateAddressInput, opts ...request.Option) (*ec2.AssociateAddressOutput, error)
 	AssociateClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.AssociateClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.AssociateClientVpnTargetNetworkOutput, error)
 	AssociateDhcpOptionsWithContext(ctx context.Context, input *ec2.AssociateDhcpOptionsInput, opts ...request.Option) (*ec2.AssociateDhcpOptionsOutput, error)
+	AssociateEnclaveCertificateIamRoleWithContext(ctx context.Context, input *ec2.AssociateEnclaveCertificateIamRoleInput, opts ...request.Option) (*ec2.AssociateEnclaveCertificateIamRoleOutput, error)
 	AssociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.AssociateIamInstanceProfileInput, opts ...request.Option) (*ec2.AssociateIamInstanceProfileOutput, error)
 	AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error)
 	AssociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.AssociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.AssociateSubnetCidrBlockOutput, error)
@@ -371,6 +372,7 @@ type EC2 interface {
 	DisableVpcClassicLinkDnsSupportWithContext(ctx context.Context, input *ec2.DisableVpcClassicLinkDnsSupportInput, opts ...request.Option) (*ec2.DisableVpcClassicLinkDnsSupportOutput, error)
 	DisassociateAddressWithContext(ctx context.Context, input *ec2.DisassociateAddressInput, opts ...request.Option) (*ec2.DisassociateAddressOutput, error)
 	DisassociateClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.DisassociateClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.DisassociateClientVpnTargetNetworkOutput, error)
+	DisassociateEnclaveCertificateIamRoleWithContext(ctx context.Context, input *ec2.DisassociateEnclaveCertificateIamRoleInput, opts ...request.Option) (*ec2.DisassociateEnclaveCertificateIamRoleOutput, error)
 	DisassociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.DisassociateIamInstanceProfileInput, opts ...request.Option) (*ec2.DisassociateIamInstanceProfileOutput, error)
 	DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error)
 	DisassociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.DisassociateSubnetCidrBlockOutput, error)
@@ -388,6 +390,7 @@ type EC2 interface {
 	ExportClientVpnClientConfigurationWithContext(ctx context.Context, input *ec2.ExportClientVpnClientConfigurationInput, opts ...request.Option) (*ec2.ExportClientVpnClientConfigurationOutput, error)
 	ExportImageWithContext(ctx context.Context, input *ec2.ExportImageInput, opts ...request.Option) (*ec2.ExportImageOutput, error)
 	ExportTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.ExportTransitGatewayRoutesInput, opts ...request.Option) (*ec2.ExportTransitGatewayRoutesOutput, error)
+	GetAssociatedEnclaveCertificateIamRolesWithContext(ctx context.Context, input *ec2.GetAssociatedEnclaveCertificateIamRolesInput, opts ...request.Option) (*ec2.GetAssociatedEnclaveCertificateIamRolesOutput, error)
 	GetAssociatedIpv6PoolCidrsWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, opts ...request.Option) (*ec2.GetAssociatedIpv6PoolCidrsOutput, error)
 	GetAssociatedIpv6PoolCidrsPagesWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, cb func(*ec2.GetAssociatedIpv6PoolCidrsOutput, bool) bool, opts ...request.Option) error
 	GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error)
@@ -831,6 +834,27 @@ func (c *Client) AssociateDhcpOptionsWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.AssociateDhcpOptionsOutput), req.Error
+}
+
+func (c *Client) AssociateEnclaveCertificateIamRoleWithContext(ctx context.Context, input *ec2.AssociateEnclaveCertificateIamRoleInput, opts ...request.Option) (*ec2.AssociateEnclaveCertificateIamRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AssociateEnclaveCertificateIamRole",
+		Input:   input,
+		Output:  (*ec2.AssociateEnclaveCertificateIamRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AssociateEnclaveCertificateIamRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AssociateEnclaveCertificateIamRoleOutput), req.Error
 }
 
 func (c *Client) AssociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.AssociateIamInstanceProfileInput, opts ...request.Option) (*ec2.AssociateIamInstanceProfileOutput, error) {
@@ -8019,6 +8043,27 @@ func (c *Client) DisassociateClientVpnTargetNetworkWithContext(ctx context.Conte
 	return req.Output.(*ec2.DisassociateClientVpnTargetNetworkOutput), req.Error
 }
 
+func (c *Client) DisassociateEnclaveCertificateIamRoleWithContext(ctx context.Context, input *ec2.DisassociateEnclaveCertificateIamRoleInput, opts ...request.Option) (*ec2.DisassociateEnclaveCertificateIamRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisassociateEnclaveCertificateIamRole",
+		Input:   input,
+		Output:  (*ec2.DisassociateEnclaveCertificateIamRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisassociateEnclaveCertificateIamRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisassociateEnclaveCertificateIamRoleOutput), req.Error
+}
+
 func (c *Client) DisassociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.DisassociateIamInstanceProfileInput, opts ...request.Option) (*ec2.DisassociateIamInstanceProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -8374,6 +8419,27 @@ func (c *Client) ExportTransitGatewayRoutesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.ExportTransitGatewayRoutesOutput), req.Error
+}
+
+func (c *Client) GetAssociatedEnclaveCertificateIamRolesWithContext(ctx context.Context, input *ec2.GetAssociatedEnclaveCertificateIamRolesInput, opts ...request.Option) (*ec2.GetAssociatedEnclaveCertificateIamRolesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetAssociatedEnclaveCertificateIamRoles",
+		Input:   input,
+		Output:  (*ec2.GetAssociatedEnclaveCertificateIamRolesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetAssociatedEnclaveCertificateIamRolesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetAssociatedEnclaveCertificateIamRolesOutput), req.Error
 }
 
 func (c *Client) GetAssociatedIpv6PoolCidrsWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, opts ...request.Option) (*ec2.GetAssociatedIpv6PoolCidrsOutput, error) {

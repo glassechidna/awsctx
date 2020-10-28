@@ -480,6 +480,8 @@ github.com/aws/aws-sdk-go v1.35.15 h1:JdQNM8hJe+9N9xP53S54NDmX8GCaZn8CCJ4LBHfom4
 github.com/aws/aws-sdk-go v1.35.15/go.mod h1:tlPOdRjfxPBpNIwqDj61rmsnA85v9jc0Ps9+muhnW+k=
 github.com/aws/aws-sdk-go v1.35.16 h1:kaYAh0lYwMUTmb/t6whBkj2nZzi3yAeQuwv0QB6dQcg=
 github.com/aws/aws-sdk-go v1.35.16/go.mod h1:tlPOdRjfxPBpNIwqDj61rmsnA85v9jc0Ps9+muhnW+k=
+github.com/aws/aws-sdk-go v1.35.17 h1:zhahppAMdPvJ9GP302SMOPW5SNoAbnjdOyaTmxA9WJU=
+github.com/aws/aws-sdk-go v1.35.17/go.mod h1:tlPOdRjfxPBpNIwqDj61rmsnA85v9jc0Ps9+muhnW+k=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
