@@ -98,6 +98,7 @@ type StorageGateway interface {
 	UpdateMaintenanceStartTimeWithContext(ctx context.Context, input *storagegateway.UpdateMaintenanceStartTimeInput, opts ...request.Option) (*storagegateway.UpdateMaintenanceStartTimeOutput, error)
 	UpdateNFSFileShareWithContext(ctx context.Context, input *storagegateway.UpdateNFSFileShareInput, opts ...request.Option) (*storagegateway.UpdateNFSFileShareOutput, error)
 	UpdateSMBFileShareWithContext(ctx context.Context, input *storagegateway.UpdateSMBFileShareInput, opts ...request.Option) (*storagegateway.UpdateSMBFileShareOutput, error)
+	UpdateSMBFileShareVisibilityWithContext(ctx context.Context, input *storagegateway.UpdateSMBFileShareVisibilityInput, opts ...request.Option) (*storagegateway.UpdateSMBFileShareVisibilityOutput, error)
 	UpdateSMBSecurityStrategyWithContext(ctx context.Context, input *storagegateway.UpdateSMBSecurityStrategyInput, opts ...request.Option) (*storagegateway.UpdateSMBSecurityStrategyOutput, error)
 	UpdateSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.UpdateSnapshotScheduleInput, opts ...request.Option) (*storagegateway.UpdateSnapshotScheduleOutput, error)
 	UpdateVTLDeviceTypeWithContext(ctx context.Context, input *storagegateway.UpdateVTLDeviceTypeInput, opts ...request.Option) (*storagegateway.UpdateVTLDeviceTypeOutput, error)
@@ -1934,6 +1935,27 @@ func (c *Client) UpdateSMBFileShareWithContext(ctx context.Context, input *stora
 	})
 
 	return req.Output.(*storagegateway.UpdateSMBFileShareOutput), req.Error
+}
+
+func (c *Client) UpdateSMBFileShareVisibilityWithContext(ctx context.Context, input *storagegateway.UpdateSMBFileShareVisibilityInput, opts ...request.Option) (*storagegateway.UpdateSMBFileShareVisibilityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "UpdateSMBFileShareVisibility",
+		Input:   input,
+		Output:  (*storagegateway.UpdateSMBFileShareVisibilityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.UpdateSMBFileShareVisibilityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.UpdateSMBFileShareVisibilityOutput), req.Error
 }
 
 func (c *Client) UpdateSMBSecurityStrategyWithContext(ctx context.Context, input *storagegateway.UpdateSMBSecurityStrategyInput, opts ...request.Option) (*storagegateway.UpdateSMBSecurityStrategyOutput, error) {
