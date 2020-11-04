@@ -21,6 +21,12 @@ type XRay interface {
 	GetGroupWithContext(ctx context.Context, input *xray.GetGroupInput, opts ...request.Option) (*xray.GetGroupOutput, error)
 	GetGroupsWithContext(ctx context.Context, input *xray.GetGroupsInput, opts ...request.Option) (*xray.GetGroupsOutput, error)
 	GetGroupsPagesWithContext(ctx context.Context, input *xray.GetGroupsInput, cb func(*xray.GetGroupsOutput, bool) bool, opts ...request.Option) error
+	GetInsightWithContext(ctx context.Context, input *xray.GetInsightInput, opts ...request.Option) (*xray.GetInsightOutput, error)
+	GetInsightEventsWithContext(ctx context.Context, input *xray.GetInsightEventsInput, opts ...request.Option) (*xray.GetInsightEventsOutput, error)
+	GetInsightEventsPagesWithContext(ctx context.Context, input *xray.GetInsightEventsInput, cb func(*xray.GetInsightEventsOutput, bool) bool, opts ...request.Option) error
+	GetInsightImpactGraphWithContext(ctx context.Context, input *xray.GetInsightImpactGraphInput, opts ...request.Option) (*xray.GetInsightImpactGraphOutput, error)
+	GetInsightSummariesWithContext(ctx context.Context, input *xray.GetInsightSummariesInput, opts ...request.Option) (*xray.GetInsightSummariesOutput, error)
+	GetInsightSummariesPagesWithContext(ctx context.Context, input *xray.GetInsightSummariesInput, cb func(*xray.GetInsightSummariesOutput, bool) bool, opts ...request.Option) error
 	GetSamplingRulesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, opts ...request.Option) (*xray.GetSamplingRulesOutput, error)
 	GetSamplingRulesPagesWithContext(ctx context.Context, input *xray.GetSamplingRulesInput, cb func(*xray.GetSamplingRulesOutput, bool) bool, opts ...request.Option) error
 	GetSamplingStatisticSummariesWithContext(ctx context.Context, input *xray.GetSamplingStatisticSummariesInput, opts ...request.Option) (*xray.GetSamplingStatisticSummariesOutput, error)
@@ -262,6 +268,130 @@ func (c *Client) GetGroupsPagesWithContext(ctx context.Context, input *xray.GetG
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.XRayAPI.GetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetInsightWithContext(ctx context.Context, input *xray.GetInsightInput, opts ...request.Option) (*xray.GetInsightOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetInsight",
+		Input:   input,
+		Output:  (*xray.GetInsightOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.GetInsightWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.GetInsightOutput), req.Error
+}
+
+func (c *Client) GetInsightEventsWithContext(ctx context.Context, input *xray.GetInsightEventsInput, opts ...request.Option) (*xray.GetInsightEventsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetInsightEvents",
+		Input:   input,
+		Output:  (*xray.GetInsightEventsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.GetInsightEventsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.GetInsightEventsOutput), req.Error
+}
+
+func (c *Client) GetInsightEventsPagesWithContext(ctx context.Context, input *xray.GetInsightEventsInput, cb func(*xray.GetInsightEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetInsightEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetInsightEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetInsightImpactGraphWithContext(ctx context.Context, input *xray.GetInsightImpactGraphInput, opts ...request.Option) (*xray.GetInsightImpactGraphOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetInsightImpactGraph",
+		Input:   input,
+		Output:  (*xray.GetInsightImpactGraphOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.GetInsightImpactGraphWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.GetInsightImpactGraphOutput), req.Error
+}
+
+func (c *Client) GetInsightSummariesWithContext(ctx context.Context, input *xray.GetInsightSummariesInput, opts ...request.Option) (*xray.GetInsightSummariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetInsightSummaries",
+		Input:   input,
+		Output:  (*xray.GetInsightSummariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.GetInsightSummariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.GetInsightSummariesOutput), req.Error
+}
+
+func (c *Client) GetInsightSummariesPagesWithContext(ctx context.Context, input *xray.GetInsightSummariesInput, cb func(*xray.GetInsightSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "GetInsightSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.GetInsightSummariesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

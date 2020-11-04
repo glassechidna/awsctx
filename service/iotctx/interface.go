@@ -204,6 +204,7 @@ type IoT interface {
 	ListThingGroupsForThingWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, opts ...request.Option) (*iot.ListThingGroupsForThingOutput, error)
 	ListThingGroupsForThingPagesWithContext(ctx context.Context, input *iot.ListThingGroupsForThingInput, cb func(*iot.ListThingGroupsForThingOutput, bool) bool, opts ...request.Option) error
 	ListThingPrincipalsWithContext(ctx context.Context, input *iot.ListThingPrincipalsInput, opts ...request.Option) (*iot.ListThingPrincipalsOutput, error)
+	ListThingPrincipalsPagesWithContext(ctx context.Context, input *iot.ListThingPrincipalsInput, cb func(*iot.ListThingPrincipalsOutput, bool) bool, opts ...request.Option) error
 	ListThingRegistrationTaskReportsWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, opts ...request.Option) (*iot.ListThingRegistrationTaskReportsOutput, error)
 	ListThingRegistrationTaskReportsPagesWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, cb func(*iot.ListThingRegistrationTaskReportsOutput, bool) bool, opts ...request.Option) error
 	ListThingRegistrationTasksWithContext(ctx context.Context, input *iot.ListThingRegistrationTasksInput, opts ...request.Option) (*iot.ListThingRegistrationTasksOutput, error)
@@ -4301,6 +4302,26 @@ func (c *Client) ListThingPrincipalsWithContext(ctx context.Context, input *iot.
 	})
 
 	return req.Output.(*iot.ListThingPrincipalsOutput), req.Error
+}
+
+func (c *Client) ListThingPrincipalsPagesWithContext(ctx context.Context, input *iot.ListThingPrincipalsInput, cb func(*iot.ListThingPrincipalsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListThingPrincipals",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListThingPrincipalsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListThingRegistrationTaskReportsWithContext(ctx context.Context, input *iot.ListThingRegistrationTaskReportsInput, opts ...request.Option) (*iot.ListThingRegistrationTaskReportsOutput, error) {
