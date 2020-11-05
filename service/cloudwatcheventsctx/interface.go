@@ -12,22 +12,29 @@ import (
 
 type CloudWatchEvents interface {
 	ActivateEventSourceWithContext(ctx context.Context, input *cloudwatchevents.ActivateEventSourceInput, opts ...request.Option) (*cloudwatchevents.ActivateEventSourceOutput, error)
+	CancelReplayWithContext(ctx context.Context, input *cloudwatchevents.CancelReplayInput, opts ...request.Option) (*cloudwatchevents.CancelReplayOutput, error)
+	CreateArchiveWithContext(ctx context.Context, input *cloudwatchevents.CreateArchiveInput, opts ...request.Option) (*cloudwatchevents.CreateArchiveOutput, error)
 	CreateEventBusWithContext(ctx context.Context, input *cloudwatchevents.CreateEventBusInput, opts ...request.Option) (*cloudwatchevents.CreateEventBusOutput, error)
 	CreatePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.CreatePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.CreatePartnerEventSourceOutput, error)
 	DeactivateEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DeactivateEventSourceInput, opts ...request.Option) (*cloudwatchevents.DeactivateEventSourceOutput, error)
+	DeleteArchiveWithContext(ctx context.Context, input *cloudwatchevents.DeleteArchiveInput, opts ...request.Option) (*cloudwatchevents.DeleteArchiveOutput, error)
 	DeleteEventBusWithContext(ctx context.Context, input *cloudwatchevents.DeleteEventBusInput, opts ...request.Option) (*cloudwatchevents.DeleteEventBusOutput, error)
 	DeletePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DeletePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.DeletePartnerEventSourceOutput, error)
 	DeleteRuleWithContext(ctx context.Context, input *cloudwatchevents.DeleteRuleInput, opts ...request.Option) (*cloudwatchevents.DeleteRuleOutput, error)
+	DescribeArchiveWithContext(ctx context.Context, input *cloudwatchevents.DescribeArchiveInput, opts ...request.Option) (*cloudwatchevents.DescribeArchiveOutput, error)
 	DescribeEventBusWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventBusInput, opts ...request.Option) (*cloudwatchevents.DescribeEventBusOutput, error)
 	DescribeEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventSourceInput, opts ...request.Option) (*cloudwatchevents.DescribeEventSourceOutput, error)
 	DescribePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DescribePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.DescribePartnerEventSourceOutput, error)
+	DescribeReplayWithContext(ctx context.Context, input *cloudwatchevents.DescribeReplayInput, opts ...request.Option) (*cloudwatchevents.DescribeReplayOutput, error)
 	DescribeRuleWithContext(ctx context.Context, input *cloudwatchevents.DescribeRuleInput, opts ...request.Option) (*cloudwatchevents.DescribeRuleOutput, error)
 	DisableRuleWithContext(ctx context.Context, input *cloudwatchevents.DisableRuleInput, opts ...request.Option) (*cloudwatchevents.DisableRuleOutput, error)
 	EnableRuleWithContext(ctx context.Context, input *cloudwatchevents.EnableRuleInput, opts ...request.Option) (*cloudwatchevents.EnableRuleOutput, error)
+	ListArchivesWithContext(ctx context.Context, input *cloudwatchevents.ListArchivesInput, opts ...request.Option) (*cloudwatchevents.ListArchivesOutput, error)
 	ListEventBusesWithContext(ctx context.Context, input *cloudwatchevents.ListEventBusesInput, opts ...request.Option) (*cloudwatchevents.ListEventBusesOutput, error)
 	ListEventSourcesWithContext(ctx context.Context, input *cloudwatchevents.ListEventSourcesInput, opts ...request.Option) (*cloudwatchevents.ListEventSourcesOutput, error)
 	ListPartnerEventSourceAccountsWithContext(ctx context.Context, input *cloudwatchevents.ListPartnerEventSourceAccountsInput, opts ...request.Option) (*cloudwatchevents.ListPartnerEventSourceAccountsOutput, error)
 	ListPartnerEventSourcesWithContext(ctx context.Context, input *cloudwatchevents.ListPartnerEventSourcesInput, opts ...request.Option) (*cloudwatchevents.ListPartnerEventSourcesOutput, error)
+	ListReplaysWithContext(ctx context.Context, input *cloudwatchevents.ListReplaysInput, opts ...request.Option) (*cloudwatchevents.ListReplaysOutput, error)
 	ListRuleNamesByTargetWithContext(ctx context.Context, input *cloudwatchevents.ListRuleNamesByTargetInput, opts ...request.Option) (*cloudwatchevents.ListRuleNamesByTargetOutput, error)
 	ListRulesWithContext(ctx context.Context, input *cloudwatchevents.ListRulesInput, opts ...request.Option) (*cloudwatchevents.ListRulesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudwatchevents.ListTagsForResourceInput, opts ...request.Option) (*cloudwatchevents.ListTagsForResourceOutput, error)
@@ -39,9 +46,11 @@ type CloudWatchEvents interface {
 	PutTargetsWithContext(ctx context.Context, input *cloudwatchevents.PutTargetsInput, opts ...request.Option) (*cloudwatchevents.PutTargetsOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *cloudwatchevents.RemovePermissionInput, opts ...request.Option) (*cloudwatchevents.RemovePermissionOutput, error)
 	RemoveTargetsWithContext(ctx context.Context, input *cloudwatchevents.RemoveTargetsInput, opts ...request.Option) (*cloudwatchevents.RemoveTargetsOutput, error)
+	StartReplayWithContext(ctx context.Context, input *cloudwatchevents.StartReplayInput, opts ...request.Option) (*cloudwatchevents.StartReplayOutput, error)
 	TagResourceWithContext(ctx context.Context, input *cloudwatchevents.TagResourceInput, opts ...request.Option) (*cloudwatchevents.TagResourceOutput, error)
 	TestEventPatternWithContext(ctx context.Context, input *cloudwatchevents.TestEventPatternInput, opts ...request.Option) (*cloudwatchevents.TestEventPatternOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *cloudwatchevents.UntagResourceInput, opts ...request.Option) (*cloudwatchevents.UntagResourceOutput, error)
+	UpdateArchiveWithContext(ctx context.Context, input *cloudwatchevents.UpdateArchiveInput, opts ...request.Option) (*cloudwatchevents.UpdateArchiveOutput, error)
 }
 
 type Client struct {
@@ -78,6 +87,48 @@ func (c *Client) ActivateEventSourceWithContext(ctx context.Context, input *clou
 	})
 
 	return req.Output.(*cloudwatchevents.ActivateEventSourceOutput), req.Error
+}
+
+func (c *Client) CancelReplayWithContext(ctx context.Context, input *cloudwatchevents.CancelReplayInput, opts ...request.Option) (*cloudwatchevents.CancelReplayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "CancelReplay",
+		Input:   input,
+		Output:  (*cloudwatchevents.CancelReplayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.CancelReplayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.CancelReplayOutput), req.Error
+}
+
+func (c *Client) CreateArchiveWithContext(ctx context.Context, input *cloudwatchevents.CreateArchiveInput, opts ...request.Option) (*cloudwatchevents.CreateArchiveOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "CreateArchive",
+		Input:   input,
+		Output:  (*cloudwatchevents.CreateArchiveOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.CreateArchiveWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.CreateArchiveOutput), req.Error
 }
 
 func (c *Client) CreateEventBusWithContext(ctx context.Context, input *cloudwatchevents.CreateEventBusInput, opts ...request.Option) (*cloudwatchevents.CreateEventBusOutput, error) {
@@ -143,6 +194,27 @@ func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *cl
 	return req.Output.(*cloudwatchevents.DeactivateEventSourceOutput), req.Error
 }
 
+func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *cloudwatchevents.DeleteArchiveInput, opts ...request.Option) (*cloudwatchevents.DeleteArchiveOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DeleteArchive",
+		Input:   input,
+		Output:  (*cloudwatchevents.DeleteArchiveOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DeleteArchiveWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DeleteArchiveOutput), req.Error
+}
+
 func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *cloudwatchevents.DeleteEventBusInput, opts ...request.Option) (*cloudwatchevents.DeleteEventBusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -204,6 +276,27 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *cloudwatcheve
 	})
 
 	return req.Output.(*cloudwatchevents.DeleteRuleOutput), req.Error
+}
+
+func (c *Client) DescribeArchiveWithContext(ctx context.Context, input *cloudwatchevents.DescribeArchiveInput, opts ...request.Option) (*cloudwatchevents.DescribeArchiveOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DescribeArchive",
+		Input:   input,
+		Output:  (*cloudwatchevents.DescribeArchiveOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DescribeArchiveWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DescribeArchiveOutput), req.Error
 }
 
 func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventBusInput, opts ...request.Option) (*cloudwatchevents.DescribeEventBusOutput, error) {
@@ -269,6 +362,27 @@ func (c *Client) DescribePartnerEventSourceWithContext(ctx context.Context, inpu
 	return req.Output.(*cloudwatchevents.DescribePartnerEventSourceOutput), req.Error
 }
 
+func (c *Client) DescribeReplayWithContext(ctx context.Context, input *cloudwatchevents.DescribeReplayInput, opts ...request.Option) (*cloudwatchevents.DescribeReplayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DescribeReplay",
+		Input:   input,
+		Output:  (*cloudwatchevents.DescribeReplayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DescribeReplayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DescribeReplayOutput), req.Error
+}
+
 func (c *Client) DescribeRuleWithContext(ctx context.Context, input *cloudwatchevents.DescribeRuleInput, opts ...request.Option) (*cloudwatchevents.DescribeRuleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -330,6 +444,27 @@ func (c *Client) EnableRuleWithContext(ctx context.Context, input *cloudwatcheve
 	})
 
 	return req.Output.(*cloudwatchevents.EnableRuleOutput), req.Error
+}
+
+func (c *Client) ListArchivesWithContext(ctx context.Context, input *cloudwatchevents.ListArchivesInput, opts ...request.Option) (*cloudwatchevents.ListArchivesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "ListArchives",
+		Input:   input,
+		Output:  (*cloudwatchevents.ListArchivesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.ListArchivesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.ListArchivesOutput), req.Error
 }
 
 func (c *Client) ListEventBusesWithContext(ctx context.Context, input *cloudwatchevents.ListEventBusesInput, opts ...request.Option) (*cloudwatchevents.ListEventBusesOutput, error) {
@@ -414,6 +549,27 @@ func (c *Client) ListPartnerEventSourcesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*cloudwatchevents.ListPartnerEventSourcesOutput), req.Error
+}
+
+func (c *Client) ListReplaysWithContext(ctx context.Context, input *cloudwatchevents.ListReplaysInput, opts ...request.Option) (*cloudwatchevents.ListReplaysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "ListReplays",
+		Input:   input,
+		Output:  (*cloudwatchevents.ListReplaysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.ListReplaysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.ListReplaysOutput), req.Error
 }
 
 func (c *Client) ListRuleNamesByTargetWithContext(ctx context.Context, input *cloudwatchevents.ListRuleNamesByTargetInput, opts ...request.Option) (*cloudwatchevents.ListRuleNamesByTargetOutput, error) {
@@ -647,6 +803,27 @@ func (c *Client) RemoveTargetsWithContext(ctx context.Context, input *cloudwatch
 	return req.Output.(*cloudwatchevents.RemoveTargetsOutput), req.Error
 }
 
+func (c *Client) StartReplayWithContext(ctx context.Context, input *cloudwatchevents.StartReplayInput, opts ...request.Option) (*cloudwatchevents.StartReplayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "StartReplay",
+		Input:   input,
+		Output:  (*cloudwatchevents.StartReplayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.StartReplayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.StartReplayOutput), req.Error
+}
+
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatchevents.TagResourceInput, opts ...request.Option) (*cloudwatchevents.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -708,4 +885,25 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudwatch
 	})
 
 	return req.Output.(*cloudwatchevents.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateArchiveWithContext(ctx context.Context, input *cloudwatchevents.UpdateArchiveInput, opts ...request.Option) (*cloudwatchevents.UpdateArchiveOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "UpdateArchive",
+		Input:   input,
+		Output:  (*cloudwatchevents.UpdateArchiveOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.UpdateArchiveWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.UpdateArchiveOutput), req.Error
 }
