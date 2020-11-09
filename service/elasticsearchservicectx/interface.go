@@ -39,6 +39,8 @@ type ElasticsearchService interface {
 	DescribeReservedElasticsearchInstancesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstancesInput, cb func(*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput, bool) bool, opts ...request.Option) error
 	DissociatePackageWithContext(ctx context.Context, input *elasticsearchservice.DissociatePackageInput, opts ...request.Option) (*elasticsearchservice.DissociatePackageOutput, error)
 	GetCompatibleElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.GetCompatibleElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput, error)
+	GetPackageVersionHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetPackageVersionHistoryInput, opts ...request.Option) (*elasticsearchservice.GetPackageVersionHistoryOutput, error)
+	GetPackageVersionHistoryPagesWithContext(ctx context.Context, input *elasticsearchservice.GetPackageVersionHistoryInput, cb func(*elasticsearchservice.GetPackageVersionHistoryOutput, bool) bool, opts ...request.Option) error
 	GetUpgradeHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeHistoryInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeHistoryOutput, error)
 	GetUpgradeHistoryPagesWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeHistoryInput, cb func(*elasticsearchservice.GetUpgradeHistoryOutput, bool) bool, opts ...request.Option) error
 	GetUpgradeStatusWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeStatusInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeStatusOutput, error)
@@ -57,6 +59,7 @@ type ElasticsearchService interface {
 	RemoveTagsWithContext(ctx context.Context, input *elasticsearchservice.RemoveTagsInput, opts ...request.Option) (*elasticsearchservice.RemoveTagsOutput, error)
 	StartElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.StartElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.StartElasticsearchServiceSoftwareUpdateOutput, error)
 	UpdateElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.UpdateElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.UpdateElasticsearchDomainConfigOutput, error)
+	UpdatePackageWithContext(ctx context.Context, input *elasticsearchservice.UpdatePackageInput, opts ...request.Option) (*elasticsearchservice.UpdatePackageOutput, error)
 	UpgradeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.UpgradeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.UpgradeElasticsearchDomainOutput, error)
 }
 
@@ -658,6 +661,47 @@ func (c *Client) GetCompatibleElasticsearchVersionsWithContext(ctx context.Conte
 	return req.Output.(*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput), req.Error
 }
 
+func (c *Client) GetPackageVersionHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetPackageVersionHistoryInput, opts ...request.Option) (*elasticsearchservice.GetPackageVersionHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "GetPackageVersionHistory",
+		Input:   input,
+		Output:  (*elasticsearchservice.GetPackageVersionHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.GetPackageVersionHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.GetPackageVersionHistoryOutput), req.Error
+}
+
+func (c *Client) GetPackageVersionHistoryPagesWithContext(ctx context.Context, input *elasticsearchservice.GetPackageVersionHistoryInput, cb func(*elasticsearchservice.GetPackageVersionHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "GetPackageVersionHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.GetPackageVersionHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetUpgradeHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetUpgradeHistoryInput, opts ...request.Option) (*elasticsearchservice.GetUpgradeHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -1029,6 +1073,27 @@ func (c *Client) UpdateElasticsearchDomainConfigWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*elasticsearchservice.UpdateElasticsearchDomainConfigOutput), req.Error
+}
+
+func (c *Client) UpdatePackageWithContext(ctx context.Context, input *elasticsearchservice.UpdatePackageInput, opts ...request.Option) (*elasticsearchservice.UpdatePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "UpdatePackage",
+		Input:   input,
+		Output:  (*elasticsearchservice.UpdatePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.UpdatePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.UpdatePackageOutput), req.Error
 }
 
 func (c *Client) UpgradeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.UpgradeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.UpgradeElasticsearchDomainOutput, error) {

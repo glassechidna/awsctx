@@ -20,6 +20,7 @@ type S3 interface {
 	DeleteBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.DeleteBucketAnalyticsConfigurationOutput, error)
 	DeleteBucketCorsWithContext(ctx context.Context, input *s3.DeleteBucketCorsInput, opts ...request.Option) (*s3.DeleteBucketCorsOutput, error)
 	DeleteBucketEncryptionWithContext(ctx context.Context, input *s3.DeleteBucketEncryptionInput, opts ...request.Option) (*s3.DeleteBucketEncryptionOutput, error)
+	DeleteBucketIntelligentTieringConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketIntelligentTieringConfigurationInput, opts ...request.Option) (*s3.DeleteBucketIntelligentTieringConfigurationOutput, error)
 	DeleteBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketInventoryConfigurationInput, opts ...request.Option) (*s3.DeleteBucketInventoryConfigurationOutput, error)
 	DeleteBucketLifecycleWithContext(ctx context.Context, input *s3.DeleteBucketLifecycleInput, opts ...request.Option) (*s3.DeleteBucketLifecycleOutput, error)
 	DeleteBucketMetricsConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketMetricsConfigurationInput, opts ...request.Option) (*s3.DeleteBucketMetricsConfigurationOutput, error)
@@ -37,6 +38,7 @@ type S3 interface {
 	GetBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.GetBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.GetBucketAnalyticsConfigurationOutput, error)
 	GetBucketCorsWithContext(ctx context.Context, input *s3.GetBucketCorsInput, opts ...request.Option) (*s3.GetBucketCorsOutput, error)
 	GetBucketEncryptionWithContext(ctx context.Context, input *s3.GetBucketEncryptionInput, opts ...request.Option) (*s3.GetBucketEncryptionOutput, error)
+	GetBucketIntelligentTieringConfigurationWithContext(ctx context.Context, input *s3.GetBucketIntelligentTieringConfigurationInput, opts ...request.Option) (*s3.GetBucketIntelligentTieringConfigurationOutput, error)
 	GetBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.GetBucketInventoryConfigurationInput, opts ...request.Option) (*s3.GetBucketInventoryConfigurationOutput, error)
 	GetBucketLifecycleWithContext(ctx context.Context, input *s3.GetBucketLifecycleInput, opts ...request.Option) (*s3.GetBucketLifecycleOutput, error)
 	GetBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3.GetBucketLifecycleConfigurationInput, opts ...request.Option) (*s3.GetBucketLifecycleConfigurationOutput, error)
@@ -64,6 +66,7 @@ type S3 interface {
 	HeadBucketWithContext(ctx context.Context, input *s3.HeadBucketInput, opts ...request.Option) (*s3.HeadBucketOutput, error)
 	HeadObjectWithContext(ctx context.Context, input *s3.HeadObjectInput, opts ...request.Option) (*s3.HeadObjectOutput, error)
 	ListBucketAnalyticsConfigurationsWithContext(ctx context.Context, input *s3.ListBucketAnalyticsConfigurationsInput, opts ...request.Option) (*s3.ListBucketAnalyticsConfigurationsOutput, error)
+	ListBucketIntelligentTieringConfigurationsWithContext(ctx context.Context, input *s3.ListBucketIntelligentTieringConfigurationsInput, opts ...request.Option) (*s3.ListBucketIntelligentTieringConfigurationsOutput, error)
 	ListBucketInventoryConfigurationsWithContext(ctx context.Context, input *s3.ListBucketInventoryConfigurationsInput, opts ...request.Option) (*s3.ListBucketInventoryConfigurationsOutput, error)
 	ListBucketMetricsConfigurationsWithContext(ctx context.Context, input *s3.ListBucketMetricsConfigurationsInput, opts ...request.Option) (*s3.ListBucketMetricsConfigurationsOutput, error)
 	ListBucketsWithContext(ctx context.Context, input *s3.ListBucketsInput, opts ...request.Option) (*s3.ListBucketsOutput, error)
@@ -82,6 +85,7 @@ type S3 interface {
 	PutBucketAnalyticsConfigurationWithContext(ctx context.Context, input *s3.PutBucketAnalyticsConfigurationInput, opts ...request.Option) (*s3.PutBucketAnalyticsConfigurationOutput, error)
 	PutBucketCorsWithContext(ctx context.Context, input *s3.PutBucketCorsInput, opts ...request.Option) (*s3.PutBucketCorsOutput, error)
 	PutBucketEncryptionWithContext(ctx context.Context, input *s3.PutBucketEncryptionInput, opts ...request.Option) (*s3.PutBucketEncryptionOutput, error)
+	PutBucketIntelligentTieringConfigurationWithContext(ctx context.Context, input *s3.PutBucketIntelligentTieringConfigurationInput, opts ...request.Option) (*s3.PutBucketIntelligentTieringConfigurationOutput, error)
 	PutBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.PutBucketInventoryConfigurationInput, opts ...request.Option) (*s3.PutBucketInventoryConfigurationOutput, error)
 	PutBucketLifecycleWithContext(ctx context.Context, input *s3.PutBucketLifecycleInput, opts ...request.Option) (*s3.PutBucketLifecycleOutput, error)
 	PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3.PutBucketLifecycleConfigurationOutput, error)
@@ -311,6 +315,27 @@ func (c *Client) DeleteBucketEncryptionWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*s3.DeleteBucketEncryptionOutput), req.Error
+}
+
+func (c *Client) DeleteBucketIntelligentTieringConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketIntelligentTieringConfigurationInput, opts ...request.Option) (*s3.DeleteBucketIntelligentTieringConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "DeleteBucketIntelligentTieringConfiguration",
+		Input:   input,
+		Output:  (*s3.DeleteBucketIntelligentTieringConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.DeleteBucketIntelligentTieringConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.DeleteBucketIntelligentTieringConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.DeleteBucketInventoryConfigurationInput, opts ...request.Option) (*s3.DeleteBucketInventoryConfigurationOutput, error) {
@@ -668,6 +693,27 @@ func (c *Client) GetBucketEncryptionWithContext(ctx context.Context, input *s3.G
 	})
 
 	return req.Output.(*s3.GetBucketEncryptionOutput), req.Error
+}
+
+func (c *Client) GetBucketIntelligentTieringConfigurationWithContext(ctx context.Context, input *s3.GetBucketIntelligentTieringConfigurationInput, opts ...request.Option) (*s3.GetBucketIntelligentTieringConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "GetBucketIntelligentTieringConfiguration",
+		Input:   input,
+		Output:  (*s3.GetBucketIntelligentTieringConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.GetBucketIntelligentTieringConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.GetBucketIntelligentTieringConfigurationOutput), req.Error
 }
 
 func (c *Client) GetBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.GetBucketInventoryConfigurationInput, opts ...request.Option) (*s3.GetBucketInventoryConfigurationOutput, error) {
@@ -1237,6 +1283,27 @@ func (c *Client) ListBucketAnalyticsConfigurationsWithContext(ctx context.Contex
 	return req.Output.(*s3.ListBucketAnalyticsConfigurationsOutput), req.Error
 }
 
+func (c *Client) ListBucketIntelligentTieringConfigurationsWithContext(ctx context.Context, input *s3.ListBucketIntelligentTieringConfigurationsInput, opts ...request.Option) (*s3.ListBucketIntelligentTieringConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "ListBucketIntelligentTieringConfigurations",
+		Input:   input,
+		Output:  (*s3.ListBucketIntelligentTieringConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.ListBucketIntelligentTieringConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.ListBucketIntelligentTieringConfigurationsOutput), req.Error
+}
+
 func (c *Client) ListBucketInventoryConfigurationsWithContext(ctx context.Context, input *s3.ListBucketInventoryConfigurationsInput, opts ...request.Option) (*s3.ListBucketInventoryConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3",
@@ -1608,6 +1675,27 @@ func (c *Client) PutBucketEncryptionWithContext(ctx context.Context, input *s3.P
 	})
 
 	return req.Output.(*s3.PutBucketEncryptionOutput), req.Error
+}
+
+func (c *Client) PutBucketIntelligentTieringConfigurationWithContext(ctx context.Context, input *s3.PutBucketIntelligentTieringConfigurationInput, opts ...request.Option) (*s3.PutBucketIntelligentTieringConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "PutBucketIntelligentTieringConfiguration",
+		Input:   input,
+		Output:  (*s3.PutBucketIntelligentTieringConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.PutBucketIntelligentTieringConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.PutBucketIntelligentTieringConfigurationOutput), req.Error
 }
 
 func (c *Client) PutBucketInventoryConfigurationWithContext(ctx context.Context, input *s3.PutBucketInventoryConfigurationInput, opts ...request.Option) (*s3.PutBucketInventoryConfigurationOutput, error) {

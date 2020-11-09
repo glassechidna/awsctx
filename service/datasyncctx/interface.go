@@ -47,6 +47,7 @@ type DataSync interface {
 	UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error)
 	UpdateAgentWithContext(ctx context.Context, input *datasync.UpdateAgentInput, opts ...request.Option) (*datasync.UpdateAgentOutput, error)
 	UpdateTaskWithContext(ctx context.Context, input *datasync.UpdateTaskInput, opts ...request.Option) (*datasync.UpdateTaskOutput, error)
+	UpdateTaskExecutionWithContext(ctx context.Context, input *datasync.UpdateTaskExecutionInput, opts ...request.Option) (*datasync.UpdateTaskExecutionOutput, error)
 }
 
 type Client struct {
@@ -813,4 +814,25 @@ func (c *Client) UpdateTaskWithContext(ctx context.Context, input *datasync.Upda
 	})
 
 	return req.Output.(*datasync.UpdateTaskOutput), req.Error
+}
+
+func (c *Client) UpdateTaskExecutionWithContext(ctx context.Context, input *datasync.UpdateTaskExecutionInput, opts ...request.Option) (*datasync.UpdateTaskExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateTaskExecution",
+		Input:   input,
+		Output:  (*datasync.UpdateTaskExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateTaskExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateTaskExecutionOutput), req.Error
 }

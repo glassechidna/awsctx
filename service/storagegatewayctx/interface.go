@@ -41,6 +41,7 @@ type StorageGateway interface {
 	DeleteVolumeWithContext(ctx context.Context, input *storagegateway.DeleteVolumeInput, opts ...request.Option) (*storagegateway.DeleteVolumeOutput, error)
 	DescribeAvailabilityMonitorTestWithContext(ctx context.Context, input *storagegateway.DescribeAvailabilityMonitorTestInput, opts ...request.Option) (*storagegateway.DescribeAvailabilityMonitorTestOutput, error)
 	DescribeBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitOutput, error)
+	DescribeBandwidthRateLimitScheduleWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitScheduleInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitScheduleOutput, error)
 	DescribeCacheWithContext(ctx context.Context, input *storagegateway.DescribeCacheInput, opts ...request.Option) (*storagegateway.DescribeCacheOutput, error)
 	DescribeCachediSCSIVolumesWithContext(ctx context.Context, input *storagegateway.DescribeCachediSCSIVolumesInput, opts ...request.Option) (*storagegateway.DescribeCachediSCSIVolumesOutput, error)
 	DescribeChapCredentialsWithContext(ctx context.Context, input *storagegateway.DescribeChapCredentialsInput, opts ...request.Option) (*storagegateway.DescribeChapCredentialsOutput, error)
@@ -73,6 +74,7 @@ type StorageGateway interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, opts ...request.Option) (*storagegateway.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *storagegateway.ListTagsForResourceInput, cb func(*storagegateway.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTapePoolsWithContext(ctx context.Context, input *storagegateway.ListTapePoolsInput, opts ...request.Option) (*storagegateway.ListTapePoolsOutput, error)
+	ListTapePoolsPagesWithContext(ctx context.Context, input *storagegateway.ListTapePoolsInput, cb func(*storagegateway.ListTapePoolsOutput, bool) bool, opts ...request.Option) error
 	ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error)
 	ListTapesPagesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, cb func(*storagegateway.ListTapesOutput, bool) bool, opts ...request.Option) error
 	ListVolumeInitiatorsWithContext(ctx context.Context, input *storagegateway.ListVolumeInitiatorsInput, opts ...request.Option) (*storagegateway.ListVolumeInitiatorsOutput, error)
@@ -92,6 +94,7 @@ type StorageGateway interface {
 	StartGatewayWithContext(ctx context.Context, input *storagegateway.StartGatewayInput, opts ...request.Option) (*storagegateway.StartGatewayOutput, error)
 	UpdateAutomaticTapeCreationPolicyWithContext(ctx context.Context, input *storagegateway.UpdateAutomaticTapeCreationPolicyInput, opts ...request.Option) (*storagegateway.UpdateAutomaticTapeCreationPolicyOutput, error)
 	UpdateBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitOutput, error)
+	UpdateBandwidthRateLimitScheduleWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitScheduleInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitScheduleOutput, error)
 	UpdateChapCredentialsWithContext(ctx context.Context, input *storagegateway.UpdateChapCredentialsInput, opts ...request.Option) (*storagegateway.UpdateChapCredentialsOutput, error)
 	UpdateGatewayInformationWithContext(ctx context.Context, input *storagegateway.UpdateGatewayInformationInput, opts ...request.Option) (*storagegateway.UpdateGatewayInformationOutput, error)
 	UpdateGatewaySoftwareNowWithContext(ctx context.Context, input *storagegateway.UpdateGatewaySoftwareNowInput, opts ...request.Option) (*storagegateway.UpdateGatewaySoftwareNowOutput, error)
@@ -747,6 +750,27 @@ func (c *Client) DescribeBandwidthRateLimitWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*storagegateway.DescribeBandwidthRateLimitOutput), req.Error
+}
+
+func (c *Client) DescribeBandwidthRateLimitScheduleWithContext(ctx context.Context, input *storagegateway.DescribeBandwidthRateLimitScheduleInput, opts ...request.Option) (*storagegateway.DescribeBandwidthRateLimitScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeBandwidthRateLimitSchedule",
+		Input:   input,
+		Output:  (*storagegateway.DescribeBandwidthRateLimitScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.DescribeBandwidthRateLimitScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.DescribeBandwidthRateLimitScheduleOutput), req.Error
 }
 
 func (c *Client) DescribeCacheWithContext(ctx context.Context, input *storagegateway.DescribeCacheInput, opts ...request.Option) (*storagegateway.DescribeCacheOutput, error) {
@@ -1414,6 +1438,26 @@ func (c *Client) ListTapePoolsWithContext(ctx context.Context, input *storagegat
 	return req.Output.(*storagegateway.ListTapePoolsOutput), req.Error
 }
 
+func (c *Client) ListTapePoolsPagesWithContext(ctx context.Context, input *storagegateway.ListTapePoolsInput, cb func(*storagegateway.ListTapePoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListTapePools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListTapePoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTapesWithContext(ctx context.Context, input *storagegateway.ListTapesInput, opts ...request.Option) (*storagegateway.ListTapesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -1809,6 +1853,27 @@ func (c *Client) UpdateBandwidthRateLimitWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*storagegateway.UpdateBandwidthRateLimitOutput), req.Error
+}
+
+func (c *Client) UpdateBandwidthRateLimitScheduleWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitScheduleInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "UpdateBandwidthRateLimitSchedule",
+		Input:   input,
+		Output:  (*storagegateway.UpdateBandwidthRateLimitScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.UpdateBandwidthRateLimitScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.UpdateBandwidthRateLimitScheduleOutput), req.Error
 }
 
 func (c *Client) UpdateChapCredentialsWithContext(ctx context.Context, input *storagegateway.UpdateChapCredentialsInput, opts ...request.Option) (*storagegateway.UpdateChapCredentialsOutput, error) {

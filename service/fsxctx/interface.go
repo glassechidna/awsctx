@@ -11,6 +11,7 @@ import (
 )
 
 type FSx interface {
+	AssociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.AssociateFileSystemAliasesInput, opts ...request.Option) (*fsx.AssociateFileSystemAliasesOutput, error)
 	CancelDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CancelDataRepositoryTaskInput, opts ...request.Option) (*fsx.CancelDataRepositoryTaskOutput, error)
 	CreateBackupWithContext(ctx context.Context, input *fsx.CreateBackupInput, opts ...request.Option) (*fsx.CreateBackupOutput, error)
 	CreateDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CreateDataRepositoryTaskInput, opts ...request.Option) (*fsx.CreateDataRepositoryTaskOutput, error)
@@ -22,8 +23,11 @@ type FSx interface {
 	DescribeBackupsPagesWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, cb func(*fsx.DescribeBackupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDataRepositoryTasksWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, opts ...request.Option) (*fsx.DescribeDataRepositoryTasksOutput, error)
 	DescribeDataRepositoryTasksPagesWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, cb func(*fsx.DescribeDataRepositoryTasksOutput, bool) bool, opts ...request.Option) error
+	DescribeFileSystemAliasesWithContext(ctx context.Context, input *fsx.DescribeFileSystemAliasesInput, opts ...request.Option) (*fsx.DescribeFileSystemAliasesOutput, error)
+	DescribeFileSystemAliasesPagesWithContext(ctx context.Context, input *fsx.DescribeFileSystemAliasesInput, cb func(*fsx.DescribeFileSystemAliasesOutput, bool) bool, opts ...request.Option) error
 	DescribeFileSystemsWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, opts ...request.Option) (*fsx.DescribeFileSystemsOutput, error)
 	DescribeFileSystemsPagesWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, cb func(*fsx.DescribeFileSystemsOutput, bool) bool, opts ...request.Option) error
+	DisassociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.DisassociateFileSystemAliasesInput, opts ...request.Option) (*fsx.DisassociateFileSystemAliasesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, opts ...request.Option) (*fsx.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *fsx.TagResourceInput, opts ...request.Option) (*fsx.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *fsx.UntagResourceInput, opts ...request.Option) (*fsx.UntagResourceOutput, error)
@@ -44,6 +48,27 @@ func New(base fsxiface.FSxAPI, ctxer awsctx.Contexter) FSx {
 
 var _ FSx = (*fsx.FSx)(nil)
 var _ FSx = (*Client)(nil)
+
+func (c *Client) AssociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.AssociateFileSystemAliasesInput, opts ...request.Option) (*fsx.AssociateFileSystemAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "AssociateFileSystemAliases",
+		Input:   input,
+		Output:  (*fsx.AssociateFileSystemAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.AssociateFileSystemAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.AssociateFileSystemAliasesOutput), req.Error
+}
 
 func (c *Client) CancelDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CancelDataRepositoryTaskInput, opts ...request.Option) (*fsx.CancelDataRepositoryTaskOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -274,6 +299,47 @@ func (c *Client) DescribeDataRepositoryTasksPagesWithContext(ctx context.Context
 	return req.Error
 }
 
+func (c *Client) DescribeFileSystemAliasesWithContext(ctx context.Context, input *fsx.DescribeFileSystemAliasesInput, opts ...request.Option) (*fsx.DescribeFileSystemAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeFileSystemAliases",
+		Input:   input,
+		Output:  (*fsx.DescribeFileSystemAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DescribeFileSystemAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DescribeFileSystemAliasesOutput), req.Error
+}
+
+func (c *Client) DescribeFileSystemAliasesPagesWithContext(ctx context.Context, input *fsx.DescribeFileSystemAliasesInput, cb func(*fsx.DescribeFileSystemAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeFileSystemAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FSxAPI.DescribeFileSystemAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, opts ...request.Option) (*fsx.DescribeFileSystemsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
@@ -313,6 +379,27 @@ func (c *Client) DescribeFileSystemsPagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) DisassociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.DisassociateFileSystemAliasesInput, opts ...request.Option) (*fsx.DisassociateFileSystemAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DisassociateFileSystemAliases",
+		Input:   input,
+		Output:  (*fsx.DisassociateFileSystemAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DisassociateFileSystemAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DisassociateFileSystemAliasesOutput), req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, opts ...request.Option) (*fsx.ListTagsForResourceOutput, error) {
