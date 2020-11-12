@@ -22,6 +22,9 @@ type Lightsail interface {
 	CreateCertificateWithContext(ctx context.Context, input *lightsail.CreateCertificateInput, opts ...request.Option) (*lightsail.CreateCertificateOutput, error)
 	CreateCloudFormationStackWithContext(ctx context.Context, input *lightsail.CreateCloudFormationStackInput, opts ...request.Option) (*lightsail.CreateCloudFormationStackOutput, error)
 	CreateContactMethodWithContext(ctx context.Context, input *lightsail.CreateContactMethodInput, opts ...request.Option) (*lightsail.CreateContactMethodOutput, error)
+	CreateContainerServiceWithContext(ctx context.Context, input *lightsail.CreateContainerServiceInput, opts ...request.Option) (*lightsail.CreateContainerServiceOutput, error)
+	CreateContainerServiceDeploymentWithContext(ctx context.Context, input *lightsail.CreateContainerServiceDeploymentInput, opts ...request.Option) (*lightsail.CreateContainerServiceDeploymentOutput, error)
+	CreateContainerServiceRegistryLoginWithContext(ctx context.Context, input *lightsail.CreateContainerServiceRegistryLoginInput, opts ...request.Option) (*lightsail.CreateContainerServiceRegistryLoginOutput, error)
 	CreateDiskWithContext(ctx context.Context, input *lightsail.CreateDiskInput, opts ...request.Option) (*lightsail.CreateDiskOutput, error)
 	CreateDiskFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateDiskFromSnapshotInput, opts ...request.Option) (*lightsail.CreateDiskFromSnapshotOutput, error)
 	CreateDiskSnapshotWithContext(ctx context.Context, input *lightsail.CreateDiskSnapshotInput, opts ...request.Option) (*lightsail.CreateDiskSnapshotOutput, error)
@@ -41,6 +44,8 @@ type Lightsail interface {
 	DeleteAutoSnapshotWithContext(ctx context.Context, input *lightsail.DeleteAutoSnapshotInput, opts ...request.Option) (*lightsail.DeleteAutoSnapshotOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *lightsail.DeleteCertificateInput, opts ...request.Option) (*lightsail.DeleteCertificateOutput, error)
 	DeleteContactMethodWithContext(ctx context.Context, input *lightsail.DeleteContactMethodInput, opts ...request.Option) (*lightsail.DeleteContactMethodOutput, error)
+	DeleteContainerImageWithContext(ctx context.Context, input *lightsail.DeleteContainerImageInput, opts ...request.Option) (*lightsail.DeleteContainerImageOutput, error)
+	DeleteContainerServiceWithContext(ctx context.Context, input *lightsail.DeleteContainerServiceInput, opts ...request.Option) (*lightsail.DeleteContainerServiceOutput, error)
 	DeleteDiskWithContext(ctx context.Context, input *lightsail.DeleteDiskInput, opts ...request.Option) (*lightsail.DeleteDiskOutput, error)
 	DeleteDiskSnapshotWithContext(ctx context.Context, input *lightsail.DeleteDiskSnapshotInput, opts ...request.Option) (*lightsail.DeleteDiskSnapshotOutput, error)
 	DeleteDistributionWithContext(ctx context.Context, input *lightsail.DeleteDistributionInput, opts ...request.Option) (*lightsail.DeleteDistributionOutput, error)
@@ -70,6 +75,13 @@ type Lightsail interface {
 	GetCertificatesWithContext(ctx context.Context, input *lightsail.GetCertificatesInput, opts ...request.Option) (*lightsail.GetCertificatesOutput, error)
 	GetCloudFormationStackRecordsWithContext(ctx context.Context, input *lightsail.GetCloudFormationStackRecordsInput, opts ...request.Option) (*lightsail.GetCloudFormationStackRecordsOutput, error)
 	GetContactMethodsWithContext(ctx context.Context, input *lightsail.GetContactMethodsInput, opts ...request.Option) (*lightsail.GetContactMethodsOutput, error)
+	GetContainerAPIMetadataWithContext(ctx context.Context, input *lightsail.GetContainerAPIMetadataInput, opts ...request.Option) (*lightsail.GetContainerAPIMetadataOutput, error)
+	GetContainerImagesWithContext(ctx context.Context, input *lightsail.GetContainerImagesInput, opts ...request.Option) (*lightsail.GetContainerImagesOutput, error)
+	GetContainerLogWithContext(ctx context.Context, input *lightsail.GetContainerLogInput, opts ...request.Option) (*lightsail.GetContainerLogOutput, error)
+	GetContainerServiceDeploymentsWithContext(ctx context.Context, input *lightsail.GetContainerServiceDeploymentsInput, opts ...request.Option) (*lightsail.GetContainerServiceDeploymentsOutput, error)
+	GetContainerServiceMetricDataWithContext(ctx context.Context, input *lightsail.GetContainerServiceMetricDataInput, opts ...request.Option) (*lightsail.GetContainerServiceMetricDataOutput, error)
+	GetContainerServicePowersWithContext(ctx context.Context, input *lightsail.GetContainerServicePowersInput, opts ...request.Option) (*lightsail.GetContainerServicePowersOutput, error)
+	GetContainerServicesWithContext(ctx context.Context, input *lightsail.GetContainerServicesInput, opts ...request.Option) (*lightsail.GetContainerServicesOutput, error)
 	GetDiskWithContext(ctx context.Context, input *lightsail.GetDiskInput, opts ...request.Option) (*lightsail.GetDiskOutput, error)
 	GetDiskSnapshotWithContext(ctx context.Context, input *lightsail.GetDiskSnapshotInput, opts ...request.Option) (*lightsail.GetDiskSnapshotOutput, error)
 	GetDiskSnapshotsWithContext(ctx context.Context, input *lightsail.GetDiskSnapshotsInput, opts ...request.Option) (*lightsail.GetDiskSnapshotsOutput, error)
@@ -121,6 +133,7 @@ type Lightsail interface {
 	PutInstancePublicPortsWithContext(ctx context.Context, input *lightsail.PutInstancePublicPortsInput, opts ...request.Option) (*lightsail.PutInstancePublicPortsOutput, error)
 	RebootInstanceWithContext(ctx context.Context, input *lightsail.RebootInstanceInput, opts ...request.Option) (*lightsail.RebootInstanceOutput, error)
 	RebootRelationalDatabaseWithContext(ctx context.Context, input *lightsail.RebootRelationalDatabaseInput, opts ...request.Option) (*lightsail.RebootRelationalDatabaseOutput, error)
+	RegisterContainerImageWithContext(ctx context.Context, input *lightsail.RegisterContainerImageInput, opts ...request.Option) (*lightsail.RegisterContainerImageOutput, error)
 	ReleaseStaticIpWithContext(ctx context.Context, input *lightsail.ReleaseStaticIpInput, opts ...request.Option) (*lightsail.ReleaseStaticIpOutput, error)
 	ResetDistributionCacheWithContext(ctx context.Context, input *lightsail.ResetDistributionCacheInput, opts ...request.Option) (*lightsail.ResetDistributionCacheOutput, error)
 	SendContactMethodVerificationWithContext(ctx context.Context, input *lightsail.SendContactMethodVerificationInput, opts ...request.Option) (*lightsail.SendContactMethodVerificationOutput, error)
@@ -132,6 +145,7 @@ type Lightsail interface {
 	TestAlarmWithContext(ctx context.Context, input *lightsail.TestAlarmInput, opts ...request.Option) (*lightsail.TestAlarmOutput, error)
 	UnpeerVpcWithContext(ctx context.Context, input *lightsail.UnpeerVpcInput, opts ...request.Option) (*lightsail.UnpeerVpcOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *lightsail.UntagResourceInput, opts ...request.Option) (*lightsail.UntagResourceOutput, error)
+	UpdateContainerServiceWithContext(ctx context.Context, input *lightsail.UpdateContainerServiceInput, opts ...request.Option) (*lightsail.UpdateContainerServiceOutput, error)
 	UpdateDistributionWithContext(ctx context.Context, input *lightsail.UpdateDistributionInput, opts ...request.Option) (*lightsail.UpdateDistributionOutput, error)
 	UpdateDistributionBundleWithContext(ctx context.Context, input *lightsail.UpdateDistributionBundleInput, opts ...request.Option) (*lightsail.UpdateDistributionBundleOutput, error)
 	UpdateDomainEntryWithContext(ctx context.Context, input *lightsail.UpdateDomainEntryInput, opts ...request.Option) (*lightsail.UpdateDomainEntryOutput, error)
@@ -384,6 +398,69 @@ func (c *Client) CreateContactMethodWithContext(ctx context.Context, input *ligh
 	})
 
 	return req.Output.(*lightsail.CreateContactMethodOutput), req.Error
+}
+
+func (c *Client) CreateContainerServiceWithContext(ctx context.Context, input *lightsail.CreateContainerServiceInput, opts ...request.Option) (*lightsail.CreateContainerServiceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "CreateContainerService",
+		Input:   input,
+		Output:  (*lightsail.CreateContainerServiceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.CreateContainerServiceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.CreateContainerServiceOutput), req.Error
+}
+
+func (c *Client) CreateContainerServiceDeploymentWithContext(ctx context.Context, input *lightsail.CreateContainerServiceDeploymentInput, opts ...request.Option) (*lightsail.CreateContainerServiceDeploymentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "CreateContainerServiceDeployment",
+		Input:   input,
+		Output:  (*lightsail.CreateContainerServiceDeploymentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.CreateContainerServiceDeploymentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.CreateContainerServiceDeploymentOutput), req.Error
+}
+
+func (c *Client) CreateContainerServiceRegistryLoginWithContext(ctx context.Context, input *lightsail.CreateContainerServiceRegistryLoginInput, opts ...request.Option) (*lightsail.CreateContainerServiceRegistryLoginOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "CreateContainerServiceRegistryLogin",
+		Input:   input,
+		Output:  (*lightsail.CreateContainerServiceRegistryLoginOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.CreateContainerServiceRegistryLoginWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.CreateContainerServiceRegistryLoginOutput), req.Error
 }
 
 func (c *Client) CreateDiskWithContext(ctx context.Context, input *lightsail.CreateDiskInput, opts ...request.Option) (*lightsail.CreateDiskOutput, error) {
@@ -783,6 +860,48 @@ func (c *Client) DeleteContactMethodWithContext(ctx context.Context, input *ligh
 	})
 
 	return req.Output.(*lightsail.DeleteContactMethodOutput), req.Error
+}
+
+func (c *Client) DeleteContainerImageWithContext(ctx context.Context, input *lightsail.DeleteContainerImageInput, opts ...request.Option) (*lightsail.DeleteContainerImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DeleteContainerImage",
+		Input:   input,
+		Output:  (*lightsail.DeleteContainerImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DeleteContainerImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DeleteContainerImageOutput), req.Error
+}
+
+func (c *Client) DeleteContainerServiceWithContext(ctx context.Context, input *lightsail.DeleteContainerServiceInput, opts ...request.Option) (*lightsail.DeleteContainerServiceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DeleteContainerService",
+		Input:   input,
+		Output:  (*lightsail.DeleteContainerServiceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DeleteContainerServiceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DeleteContainerServiceOutput), req.Error
 }
 
 func (c *Client) DeleteDiskWithContext(ctx context.Context, input *lightsail.DeleteDiskInput, opts ...request.Option) (*lightsail.DeleteDiskOutput, error) {
@@ -1392,6 +1511,153 @@ func (c *Client) GetContactMethodsWithContext(ctx context.Context, input *lights
 	})
 
 	return req.Output.(*lightsail.GetContactMethodsOutput), req.Error
+}
+
+func (c *Client) GetContainerAPIMetadataWithContext(ctx context.Context, input *lightsail.GetContainerAPIMetadataInput, opts ...request.Option) (*lightsail.GetContainerAPIMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerAPIMetadata",
+		Input:   input,
+		Output:  (*lightsail.GetContainerAPIMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerAPIMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerAPIMetadataOutput), req.Error
+}
+
+func (c *Client) GetContainerImagesWithContext(ctx context.Context, input *lightsail.GetContainerImagesInput, opts ...request.Option) (*lightsail.GetContainerImagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerImages",
+		Input:   input,
+		Output:  (*lightsail.GetContainerImagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerImagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerImagesOutput), req.Error
+}
+
+func (c *Client) GetContainerLogWithContext(ctx context.Context, input *lightsail.GetContainerLogInput, opts ...request.Option) (*lightsail.GetContainerLogOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerLog",
+		Input:   input,
+		Output:  (*lightsail.GetContainerLogOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerLogWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerLogOutput), req.Error
+}
+
+func (c *Client) GetContainerServiceDeploymentsWithContext(ctx context.Context, input *lightsail.GetContainerServiceDeploymentsInput, opts ...request.Option) (*lightsail.GetContainerServiceDeploymentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerServiceDeployments",
+		Input:   input,
+		Output:  (*lightsail.GetContainerServiceDeploymentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerServiceDeploymentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerServiceDeploymentsOutput), req.Error
+}
+
+func (c *Client) GetContainerServiceMetricDataWithContext(ctx context.Context, input *lightsail.GetContainerServiceMetricDataInput, opts ...request.Option) (*lightsail.GetContainerServiceMetricDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerServiceMetricData",
+		Input:   input,
+		Output:  (*lightsail.GetContainerServiceMetricDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerServiceMetricDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerServiceMetricDataOutput), req.Error
+}
+
+func (c *Client) GetContainerServicePowersWithContext(ctx context.Context, input *lightsail.GetContainerServicePowersInput, opts ...request.Option) (*lightsail.GetContainerServicePowersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerServicePowers",
+		Input:   input,
+		Output:  (*lightsail.GetContainerServicePowersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerServicePowersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerServicePowersOutput), req.Error
+}
+
+func (c *Client) GetContainerServicesWithContext(ctx context.Context, input *lightsail.GetContainerServicesInput, opts ...request.Option) (*lightsail.GetContainerServicesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetContainerServices",
+		Input:   input,
+		Output:  (*lightsail.GetContainerServicesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetContainerServicesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetContainerServicesOutput), req.Error
 }
 
 func (c *Client) GetDiskWithContext(ctx context.Context, input *lightsail.GetDiskInput, opts ...request.Option) (*lightsail.GetDiskOutput, error) {
@@ -2465,6 +2731,27 @@ func (c *Client) RebootRelationalDatabaseWithContext(ctx context.Context, input 
 	return req.Output.(*lightsail.RebootRelationalDatabaseOutput), req.Error
 }
 
+func (c *Client) RegisterContainerImageWithContext(ctx context.Context, input *lightsail.RegisterContainerImageInput, opts ...request.Option) (*lightsail.RegisterContainerImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "RegisterContainerImage",
+		Input:   input,
+		Output:  (*lightsail.RegisterContainerImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.RegisterContainerImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.RegisterContainerImageOutput), req.Error
+}
+
 func (c *Client) ReleaseStaticIpWithContext(ctx context.Context, input *lightsail.ReleaseStaticIpInput, opts ...request.Option) (*lightsail.ReleaseStaticIpOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
@@ -2694,6 +2981,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *lightsail.
 	})
 
 	return req.Output.(*lightsail.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateContainerServiceWithContext(ctx context.Context, input *lightsail.UpdateContainerServiceInput, opts ...request.Option) (*lightsail.UpdateContainerServiceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "UpdateContainerService",
+		Input:   input,
+		Output:  (*lightsail.UpdateContainerServiceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.UpdateContainerServiceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.UpdateContainerServiceOutput), req.Error
 }
 
 func (c *Client) UpdateDistributionWithContext(ctx context.Context, input *lightsail.UpdateDistributionInput, opts ...request.Option) (*lightsail.UpdateDistributionOutput, error) {
