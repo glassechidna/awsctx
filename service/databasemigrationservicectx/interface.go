@@ -73,6 +73,7 @@ type DatabaseMigrationService interface {
 	ModifyReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationInstanceOutput, error)
 	ModifyReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationSubnetGroupOutput, error)
 	ModifyReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationTaskOutput, error)
+	MoveReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.MoveReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.MoveReplicationTaskOutput, error)
 	RebootReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.RebootReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.RebootReplicationInstanceOutput, error)
 	RefreshSchemasWithContext(ctx context.Context, input *databasemigrationservice.RefreshSchemasInput, opts ...request.Option) (*databasemigrationservice.RefreshSchemasOutput, error)
 	ReloadTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadTablesOutput, error)
@@ -1381,6 +1382,27 @@ func (c *Client) ModifyReplicationTaskWithContext(ctx context.Context, input *da
 	})
 
 	return req.Output.(*databasemigrationservice.ModifyReplicationTaskOutput), req.Error
+}
+
+func (c *Client) MoveReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.MoveReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.MoveReplicationTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "MoveReplicationTask",
+		Input:   input,
+		Output:  (*databasemigrationservice.MoveReplicationTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.MoveReplicationTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.MoveReplicationTaskOutput), req.Error
 }
 
 func (c *Client) RebootReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.RebootReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.RebootReplicationInstanceOutput, error) {

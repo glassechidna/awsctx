@@ -63,6 +63,7 @@ type ServiceCatalog interface {
 	GetAWSOrganizationsAccessStatusWithContext(ctx context.Context, input *servicecatalog.GetAWSOrganizationsAccessStatusInput, opts ...request.Option) (*servicecatalog.GetAWSOrganizationsAccessStatusOutput, error)
 	GetProvisionedProductOutputsWithContext(ctx context.Context, input *servicecatalog.GetProvisionedProductOutputsInput, opts ...request.Option) (*servicecatalog.GetProvisionedProductOutputsOutput, error)
 	GetProvisionedProductOutputsPagesWithContext(ctx context.Context, input *servicecatalog.GetProvisionedProductOutputsInput, cb func(*servicecatalog.GetProvisionedProductOutputsOutput, bool) bool, opts ...request.Option) error
+	ImportAsProvisionedProductWithContext(ctx context.Context, input *servicecatalog.ImportAsProvisionedProductInput, opts ...request.Option) (*servicecatalog.ImportAsProvisionedProductOutput, error)
 	ListAcceptedPortfolioSharesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, opts ...request.Option) (*servicecatalog.ListAcceptedPortfolioSharesOutput, error)
 	ListAcceptedPortfolioSharesPagesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, cb func(*servicecatalog.ListAcceptedPortfolioSharesOutput, bool) bool, opts ...request.Option) error
 	ListBudgetsForResourceWithContext(ctx context.Context, input *servicecatalog.ListBudgetsForResourceInput, opts ...request.Option) (*servicecatalog.ListBudgetsForResourceOutput, error)
@@ -1219,6 +1220,27 @@ func (c *Client) GetProvisionedProductOutputsPagesWithContext(ctx context.Contex
 	})
 
 	return req.Error
+}
+
+func (c *Client) ImportAsProvisionedProductWithContext(ctx context.Context, input *servicecatalog.ImportAsProvisionedProductInput, opts ...request.Option) (*servicecatalog.ImportAsProvisionedProductOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "ImportAsProvisionedProduct",
+		Input:   input,
+		Output:  (*servicecatalog.ImportAsProvisionedProductOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceCatalogAPI.ImportAsProvisionedProductWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicecatalog.ImportAsProvisionedProductOutput), req.Error
 }
 
 func (c *Client) ListAcceptedPortfolioSharesWithContext(ctx context.Context, input *servicecatalog.ListAcceptedPortfolioSharesInput, opts ...request.Option) (*servicecatalog.ListAcceptedPortfolioSharesOutput, error) {
