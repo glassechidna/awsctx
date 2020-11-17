@@ -26,11 +26,15 @@ type Chime interface {
 	CreateAttendeeWithContext(ctx context.Context, input *chime.CreateAttendeeInput, opts ...request.Option) (*chime.CreateAttendeeOutput, error)
 	CreateBotWithContext(ctx context.Context, input *chime.CreateBotInput, opts ...request.Option) (*chime.CreateBotOutput, error)
 	CreateMeetingWithContext(ctx context.Context, input *chime.CreateMeetingInput, opts ...request.Option) (*chime.CreateMeetingOutput, error)
+	CreateMeetingDialOutWithContext(ctx context.Context, input *chime.CreateMeetingDialOutInput, opts ...request.Option) (*chime.CreateMeetingDialOutOutput, error)
 	CreateMeetingWithAttendeesWithContext(ctx context.Context, input *chime.CreateMeetingWithAttendeesInput, opts ...request.Option) (*chime.CreateMeetingWithAttendeesOutput, error)
 	CreatePhoneNumberOrderWithContext(ctx context.Context, input *chime.CreatePhoneNumberOrderInput, opts ...request.Option) (*chime.CreatePhoneNumberOrderOutput, error)
 	CreateProxySessionWithContext(ctx context.Context, input *chime.CreateProxySessionInput, opts ...request.Option) (*chime.CreateProxySessionOutput, error)
 	CreateRoomWithContext(ctx context.Context, input *chime.CreateRoomInput, opts ...request.Option) (*chime.CreateRoomOutput, error)
 	CreateRoomMembershipWithContext(ctx context.Context, input *chime.CreateRoomMembershipInput, opts ...request.Option) (*chime.CreateRoomMembershipOutput, error)
+	CreateSipMediaApplicationWithContext(ctx context.Context, input *chime.CreateSipMediaApplicationInput, opts ...request.Option) (*chime.CreateSipMediaApplicationOutput, error)
+	CreateSipMediaApplicationCallWithContext(ctx context.Context, input *chime.CreateSipMediaApplicationCallInput, opts ...request.Option) (*chime.CreateSipMediaApplicationCallOutput, error)
+	CreateSipRuleWithContext(ctx context.Context, input *chime.CreateSipRuleInput, opts ...request.Option) (*chime.CreateSipRuleOutput, error)
 	CreateUserWithContext(ctx context.Context, input *chime.CreateUserInput, opts ...request.Option) (*chime.CreateUserOutput, error)
 	CreateVoiceConnectorWithContext(ctx context.Context, input *chime.CreateVoiceConnectorInput, opts ...request.Option) (*chime.CreateVoiceConnectorOutput, error)
 	CreateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.CreateVoiceConnectorGroupInput, opts ...request.Option) (*chime.CreateVoiceConnectorGroupOutput, error)
@@ -42,6 +46,8 @@ type Chime interface {
 	DeleteProxySessionWithContext(ctx context.Context, input *chime.DeleteProxySessionInput, opts ...request.Option) (*chime.DeleteProxySessionOutput, error)
 	DeleteRoomWithContext(ctx context.Context, input *chime.DeleteRoomInput, opts ...request.Option) (*chime.DeleteRoomOutput, error)
 	DeleteRoomMembershipWithContext(ctx context.Context, input *chime.DeleteRoomMembershipInput, opts ...request.Option) (*chime.DeleteRoomMembershipOutput, error)
+	DeleteSipMediaApplicationWithContext(ctx context.Context, input *chime.DeleteSipMediaApplicationInput, opts ...request.Option) (*chime.DeleteSipMediaApplicationOutput, error)
+	DeleteSipRuleWithContext(ctx context.Context, input *chime.DeleteSipRuleInput, opts ...request.Option) (*chime.DeleteSipRuleOutput, error)
 	DeleteVoiceConnectorWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOutput, error)
 	DeleteVoiceConnectorEmergencyCallingConfigurationWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorEmergencyCallingConfigurationInput, opts ...request.Option) (*chime.DeleteVoiceConnectorEmergencyCallingConfigurationOutput, error)
 	DeleteVoiceConnectorGroupWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorGroupInput, opts ...request.Option) (*chime.DeleteVoiceConnectorGroupOutput, error)
@@ -67,6 +73,9 @@ type Chime interface {
 	GetProxySessionWithContext(ctx context.Context, input *chime.GetProxySessionInput, opts ...request.Option) (*chime.GetProxySessionOutput, error)
 	GetRetentionSettingsWithContext(ctx context.Context, input *chime.GetRetentionSettingsInput, opts ...request.Option) (*chime.GetRetentionSettingsOutput, error)
 	GetRoomWithContext(ctx context.Context, input *chime.GetRoomInput, opts ...request.Option) (*chime.GetRoomOutput, error)
+	GetSipMediaApplicationWithContext(ctx context.Context, input *chime.GetSipMediaApplicationInput, opts ...request.Option) (*chime.GetSipMediaApplicationOutput, error)
+	GetSipMediaApplicationLoggingConfigurationWithContext(ctx context.Context, input *chime.GetSipMediaApplicationLoggingConfigurationInput, opts ...request.Option) (*chime.GetSipMediaApplicationLoggingConfigurationOutput, error)
+	GetSipRuleWithContext(ctx context.Context, input *chime.GetSipRuleInput, opts ...request.Option) (*chime.GetSipRuleOutput, error)
 	GetUserWithContext(ctx context.Context, input *chime.GetUserInput, opts ...request.Option) (*chime.GetUserOutput, error)
 	GetUserSettingsWithContext(ctx context.Context, input *chime.GetUserSettingsInput, opts ...request.Option) (*chime.GetUserSettingsOutput, error)
 	GetVoiceConnectorWithContext(ctx context.Context, input *chime.GetVoiceConnectorInput, opts ...request.Option) (*chime.GetVoiceConnectorOutput, error)
@@ -99,6 +108,8 @@ type Chime interface {
 	ListRoomMembershipsPagesWithContext(ctx context.Context, input *chime.ListRoomMembershipsInput, cb func(*chime.ListRoomMembershipsOutput, bool) bool, opts ...request.Option) error
 	ListRoomsWithContext(ctx context.Context, input *chime.ListRoomsInput, opts ...request.Option) (*chime.ListRoomsOutput, error)
 	ListRoomsPagesWithContext(ctx context.Context, input *chime.ListRoomsInput, cb func(*chime.ListRoomsOutput, bool) bool, opts ...request.Option) error
+	ListSipMediaApplicationsWithContext(ctx context.Context, input *chime.ListSipMediaApplicationsInput, opts ...request.Option) (*chime.ListSipMediaApplicationsOutput, error)
+	ListSipRulesWithContext(ctx context.Context, input *chime.ListSipRulesInput, opts ...request.Option) (*chime.ListSipRulesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *chime.ListTagsForResourceInput, opts ...request.Option) (*chime.ListTagsForResourceOutput, error)
 	ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *chime.ListUsersInput, cb func(*chime.ListUsersOutput, bool) bool, opts ...request.Option) error
@@ -110,6 +121,7 @@ type Chime interface {
 	LogoutUserWithContext(ctx context.Context, input *chime.LogoutUserInput, opts ...request.Option) (*chime.LogoutUserOutput, error)
 	PutEventsConfigurationWithContext(ctx context.Context, input *chime.PutEventsConfigurationInput, opts ...request.Option) (*chime.PutEventsConfigurationOutput, error)
 	PutRetentionSettingsWithContext(ctx context.Context, input *chime.PutRetentionSettingsInput, opts ...request.Option) (*chime.PutRetentionSettingsOutput, error)
+	PutSipMediaApplicationLoggingConfigurationWithContext(ctx context.Context, input *chime.PutSipMediaApplicationLoggingConfigurationInput, opts ...request.Option) (*chime.PutSipMediaApplicationLoggingConfigurationOutput, error)
 	PutVoiceConnectorEmergencyCallingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorEmergencyCallingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorEmergencyCallingConfigurationOutput, error)
 	PutVoiceConnectorLoggingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorLoggingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorLoggingConfigurationOutput, error)
 	PutVoiceConnectorOriginationWithContext(ctx context.Context, input *chime.PutVoiceConnectorOriginationInput, opts ...request.Option) (*chime.PutVoiceConnectorOriginationOutput, error)
@@ -138,6 +150,8 @@ type Chime interface {
 	UpdateProxySessionWithContext(ctx context.Context, input *chime.UpdateProxySessionInput, opts ...request.Option) (*chime.UpdateProxySessionOutput, error)
 	UpdateRoomWithContext(ctx context.Context, input *chime.UpdateRoomInput, opts ...request.Option) (*chime.UpdateRoomOutput, error)
 	UpdateRoomMembershipWithContext(ctx context.Context, input *chime.UpdateRoomMembershipInput, opts ...request.Option) (*chime.UpdateRoomMembershipOutput, error)
+	UpdateSipMediaApplicationWithContext(ctx context.Context, input *chime.UpdateSipMediaApplicationInput, opts ...request.Option) (*chime.UpdateSipMediaApplicationOutput, error)
+	UpdateSipRuleWithContext(ctx context.Context, input *chime.UpdateSipRuleInput, opts ...request.Option) (*chime.UpdateSipRuleOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *chime.UpdateUserInput, opts ...request.Option) (*chime.UpdateUserOutput, error)
 	UpdateUserSettingsWithContext(ctx context.Context, input *chime.UpdateUserSettingsInput, opts ...request.Option) (*chime.UpdateUserSettingsOutput, error)
 	UpdateVoiceConnectorWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorInput, opts ...request.Option) (*chime.UpdateVoiceConnectorOutput, error)
@@ -474,6 +488,27 @@ func (c *Client) CreateMeetingWithContext(ctx context.Context, input *chime.Crea
 	return req.Output.(*chime.CreateMeetingOutput), req.Error
 }
 
+func (c *Client) CreateMeetingDialOutWithContext(ctx context.Context, input *chime.CreateMeetingDialOutInput, opts ...request.Option) (*chime.CreateMeetingDialOutOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateMeetingDialOut",
+		Input:   input,
+		Output:  (*chime.CreateMeetingDialOutOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateMeetingDialOutWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateMeetingDialOutOutput), req.Error
+}
+
 func (c *Client) CreateMeetingWithAttendeesWithContext(ctx context.Context, input *chime.CreateMeetingWithAttendeesInput, opts ...request.Option) (*chime.CreateMeetingWithAttendeesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -577,6 +612,69 @@ func (c *Client) CreateRoomMembershipWithContext(ctx context.Context, input *chi
 	})
 
 	return req.Output.(*chime.CreateRoomMembershipOutput), req.Error
+}
+
+func (c *Client) CreateSipMediaApplicationWithContext(ctx context.Context, input *chime.CreateSipMediaApplicationInput, opts ...request.Option) (*chime.CreateSipMediaApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateSipMediaApplication",
+		Input:   input,
+		Output:  (*chime.CreateSipMediaApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateSipMediaApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateSipMediaApplicationOutput), req.Error
+}
+
+func (c *Client) CreateSipMediaApplicationCallWithContext(ctx context.Context, input *chime.CreateSipMediaApplicationCallInput, opts ...request.Option) (*chime.CreateSipMediaApplicationCallOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateSipMediaApplicationCall",
+		Input:   input,
+		Output:  (*chime.CreateSipMediaApplicationCallOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateSipMediaApplicationCallWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateSipMediaApplicationCallOutput), req.Error
+}
+
+func (c *Client) CreateSipRuleWithContext(ctx context.Context, input *chime.CreateSipRuleInput, opts ...request.Option) (*chime.CreateSipRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "CreateSipRule",
+		Input:   input,
+		Output:  (*chime.CreateSipRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.CreateSipRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.CreateSipRuleOutput), req.Error
 }
 
 func (c *Client) CreateUserWithContext(ctx context.Context, input *chime.CreateUserInput, opts ...request.Option) (*chime.CreateUserOutput, error) {
@@ -808,6 +906,48 @@ func (c *Client) DeleteRoomMembershipWithContext(ctx context.Context, input *chi
 	})
 
 	return req.Output.(*chime.DeleteRoomMembershipOutput), req.Error
+}
+
+func (c *Client) DeleteSipMediaApplicationWithContext(ctx context.Context, input *chime.DeleteSipMediaApplicationInput, opts ...request.Option) (*chime.DeleteSipMediaApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DeleteSipMediaApplication",
+		Input:   input,
+		Output:  (*chime.DeleteSipMediaApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DeleteSipMediaApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DeleteSipMediaApplicationOutput), req.Error
+}
+
+func (c *Client) DeleteSipRuleWithContext(ctx context.Context, input *chime.DeleteSipRuleInput, opts ...request.Option) (*chime.DeleteSipRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "DeleteSipRule",
+		Input:   input,
+		Output:  (*chime.DeleteSipRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.DeleteSipRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.DeleteSipRuleOutput), req.Error
 }
 
 func (c *Client) DeleteVoiceConnectorWithContext(ctx context.Context, input *chime.DeleteVoiceConnectorInput, opts ...request.Option) (*chime.DeleteVoiceConnectorOutput, error) {
@@ -1333,6 +1473,69 @@ func (c *Client) GetRoomWithContext(ctx context.Context, input *chime.GetRoomInp
 	})
 
 	return req.Output.(*chime.GetRoomOutput), req.Error
+}
+
+func (c *Client) GetSipMediaApplicationWithContext(ctx context.Context, input *chime.GetSipMediaApplicationInput, opts ...request.Option) (*chime.GetSipMediaApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetSipMediaApplication",
+		Input:   input,
+		Output:  (*chime.GetSipMediaApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetSipMediaApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetSipMediaApplicationOutput), req.Error
+}
+
+func (c *Client) GetSipMediaApplicationLoggingConfigurationWithContext(ctx context.Context, input *chime.GetSipMediaApplicationLoggingConfigurationInput, opts ...request.Option) (*chime.GetSipMediaApplicationLoggingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetSipMediaApplicationLoggingConfiguration",
+		Input:   input,
+		Output:  (*chime.GetSipMediaApplicationLoggingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetSipMediaApplicationLoggingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetSipMediaApplicationLoggingConfigurationOutput), req.Error
+}
+
+func (c *Client) GetSipRuleWithContext(ctx context.Context, input *chime.GetSipRuleInput, opts ...request.Option) (*chime.GetSipRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "GetSipRule",
+		Input:   input,
+		Output:  (*chime.GetSipRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.GetSipRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.GetSipRuleOutput), req.Error
 }
 
 func (c *Client) GetUserWithContext(ctx context.Context, input *chime.GetUserInput, opts ...request.Option) (*chime.GetUserOutput, error) {
@@ -1998,6 +2201,48 @@ func (c *Client) ListRoomsPagesWithContext(ctx context.Context, input *chime.Lis
 	return req.Error
 }
 
+func (c *Client) ListSipMediaApplicationsWithContext(ctx context.Context, input *chime.ListSipMediaApplicationsInput, opts ...request.Option) (*chime.ListSipMediaApplicationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListSipMediaApplications",
+		Input:   input,
+		Output:  (*chime.ListSipMediaApplicationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListSipMediaApplicationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListSipMediaApplicationsOutput), req.Error
+}
+
+func (c *Client) ListSipRulesWithContext(ctx context.Context, input *chime.ListSipRulesInput, opts ...request.Option) (*chime.ListSipRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListSipRules",
+		Input:   input,
+		Output:  (*chime.ListSipRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListSipRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListSipRulesOutput), req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *chime.ListTagsForResourceInput, opts ...request.Option) (*chime.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -2224,6 +2469,27 @@ func (c *Client) PutRetentionSettingsWithContext(ctx context.Context, input *chi
 	})
 
 	return req.Output.(*chime.PutRetentionSettingsOutput), req.Error
+}
+
+func (c *Client) PutSipMediaApplicationLoggingConfigurationWithContext(ctx context.Context, input *chime.PutSipMediaApplicationLoggingConfigurationInput, opts ...request.Option) (*chime.PutSipMediaApplicationLoggingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "PutSipMediaApplicationLoggingConfiguration",
+		Input:   input,
+		Output:  (*chime.PutSipMediaApplicationLoggingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.PutSipMediaApplicationLoggingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.PutSipMediaApplicationLoggingConfigurationOutput), req.Error
 }
 
 func (c *Client) PutVoiceConnectorEmergencyCallingConfigurationWithContext(ctx context.Context, input *chime.PutVoiceConnectorEmergencyCallingConfigurationInput, opts ...request.Option) (*chime.PutVoiceConnectorEmergencyCallingConfigurationOutput, error) {
@@ -2812,6 +3078,48 @@ func (c *Client) UpdateRoomMembershipWithContext(ctx context.Context, input *chi
 	})
 
 	return req.Output.(*chime.UpdateRoomMembershipOutput), req.Error
+}
+
+func (c *Client) UpdateSipMediaApplicationWithContext(ctx context.Context, input *chime.UpdateSipMediaApplicationInput, opts ...request.Option) (*chime.UpdateSipMediaApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UpdateSipMediaApplication",
+		Input:   input,
+		Output:  (*chime.UpdateSipMediaApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UpdateSipMediaApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UpdateSipMediaApplicationOutput), req.Error
+}
+
+func (c *Client) UpdateSipRuleWithContext(ctx context.Context, input *chime.UpdateSipRuleInput, opts ...request.Option) (*chime.UpdateSipRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UpdateSipRule",
+		Input:   input,
+		Output:  (*chime.UpdateSipRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UpdateSipRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UpdateSipRuleOutput), req.Error
 }
 
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *chime.UpdateUserInput, opts ...request.Option) (*chime.UpdateUserOutput, error) {

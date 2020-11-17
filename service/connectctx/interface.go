@@ -15,7 +15,9 @@ type Connect interface {
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
+	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
+	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
@@ -66,6 +68,8 @@ type Connect interface {
 	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
 	UpdateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.UpdateRoutingProfileQueuesInput, opts ...request.Option) (*connect.UpdateRoutingProfileQueuesOutput, error)
 	UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error)
+	UpdateUserHierarchyGroupNameWithContext(ctx context.Context, input *connect.UpdateUserHierarchyGroupNameInput, opts ...request.Option) (*connect.UpdateUserHierarchyGroupNameOutput, error)
+	UpdateUserHierarchyStructureWithContext(ctx context.Context, input *connect.UpdateUserHierarchyStructureInput, opts ...request.Option) (*connect.UpdateUserHierarchyStructureOutput, error)
 	UpdateUserIdentityInfoWithContext(ctx context.Context, input *connect.UpdateUserIdentityInfoInput, opts ...request.Option) (*connect.UpdateUserIdentityInfoOutput, error)
 	UpdateUserPhoneConfigWithContext(ctx context.Context, input *connect.UpdateUserPhoneConfigInput, opts ...request.Option) (*connect.UpdateUserPhoneConfigOutput, error)
 	UpdateUserRoutingProfileWithContext(ctx context.Context, input *connect.UpdateUserRoutingProfileInput, opts ...request.Option) (*connect.UpdateUserRoutingProfileOutput, error)
@@ -171,6 +175,27 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *connect.Creat
 	return req.Output.(*connect.CreateUserOutput), req.Error
 }
 
+func (c *Client) CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateUserHierarchyGroup",
+		Input:   input,
+		Output:  (*connect.CreateUserHierarchyGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateUserHierarchyGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateUserHierarchyGroupOutput), req.Error
+}
+
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -190,6 +215,27 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.Delet
 	})
 
 	return req.Output.(*connect.DeleteUserOutput), req.Error
+}
+
+func (c *Client) DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteUserHierarchyGroup",
+		Input:   input,
+		Output:  (*connect.DeleteUserHierarchyGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteUserHierarchyGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteUserHierarchyGroupOutput), req.Error
 }
 
 func (c *Client) DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error) {
@@ -1228,6 +1274,48 @@ func (c *Client) UpdateUserHierarchyWithContext(ctx context.Context, input *conn
 	})
 
 	return req.Output.(*connect.UpdateUserHierarchyOutput), req.Error
+}
+
+func (c *Client) UpdateUserHierarchyGroupNameWithContext(ctx context.Context, input *connect.UpdateUserHierarchyGroupNameInput, opts ...request.Option) (*connect.UpdateUserHierarchyGroupNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateUserHierarchyGroupName",
+		Input:   input,
+		Output:  (*connect.UpdateUserHierarchyGroupNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateUserHierarchyGroupNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateUserHierarchyGroupNameOutput), req.Error
+}
+
+func (c *Client) UpdateUserHierarchyStructureWithContext(ctx context.Context, input *connect.UpdateUserHierarchyStructureInput, opts ...request.Option) (*connect.UpdateUserHierarchyStructureOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateUserHierarchyStructure",
+		Input:   input,
+		Output:  (*connect.UpdateUserHierarchyStructureOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateUserHierarchyStructureWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateUserHierarchyStructureOutput), req.Error
 }
 
 func (c *Client) UpdateUserIdentityInfoWithContext(ctx context.Context, input *connect.UpdateUserIdentityInfoInput, opts ...request.Option) (*connect.UpdateUserIdentityInfoOutput, error) {
