@@ -22,6 +22,8 @@ type S3Control interface {
 	DeleteBucketTaggingWithContext(ctx context.Context, input *s3control.DeleteBucketTaggingInput, opts ...request.Option) (*s3control.DeleteBucketTaggingOutput, error)
 	DeleteJobTaggingWithContext(ctx context.Context, input *s3control.DeleteJobTaggingInput, opts ...request.Option) (*s3control.DeleteJobTaggingOutput, error)
 	DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error)
+	DeleteStorageLensConfigurationWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationOutput, error)
+	DeleteStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationTaggingOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error)
 	GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error)
 	GetAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyInput, opts ...request.Option) (*s3control.GetAccessPointPolicyOutput, error)
@@ -32,18 +34,23 @@ type S3Control interface {
 	GetBucketTaggingWithContext(ctx context.Context, input *s3control.GetBucketTaggingInput, opts ...request.Option) (*s3control.GetBucketTaggingOutput, error)
 	GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error)
 	GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error)
+	GetStorageLensConfigurationWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationOutput, error)
+	GetStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationTaggingOutput, error)
 	ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error)
 	ListAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, cb func(*s3control.ListAccessPointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *s3control.ListJobsInput, cb func(*s3control.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListRegionalBucketsWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, opts ...request.Option) (*s3control.ListRegionalBucketsOutput, error)
 	ListRegionalBucketsPagesWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, cb func(*s3control.ListRegionalBucketsOutput, bool) bool, opts ...request.Option) error
+	ListStorageLensConfigurationsWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, opts ...request.Option) (*s3control.ListStorageLensConfigurationsOutput, error)
 	PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error)
 	PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.PutBucketLifecycleConfigurationOutput, error)
 	PutBucketPolicyWithContext(ctx context.Context, input *s3control.PutBucketPolicyInput, opts ...request.Option) (*s3control.PutBucketPolicyOutput, error)
 	PutBucketTaggingWithContext(ctx context.Context, input *s3control.PutBucketTaggingInput, opts ...request.Option) (*s3control.PutBucketTaggingOutput, error)
 	PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error)
 	PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error)
+	PutStorageLensConfigurationWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationOutput, error)
+	PutStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationTaggingOutput, error)
 	UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error)
 	UpdateJobStatusWithContext(ctx context.Context, input *s3control.UpdateJobStatusInput, opts ...request.Option) (*s3control.UpdateJobStatusOutput, error)
 }
@@ -294,6 +301,48 @@ func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *
 	return req.Output.(*s3control.DeletePublicAccessBlockOutput), req.Error
 }
 
+func (c *Client) DeleteStorageLensConfigurationWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteStorageLensConfiguration",
+		Input:   input,
+		Output:  (*s3control.DeleteStorageLensConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteStorageLensConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteStorageLensConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationTaggingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteStorageLensConfigurationTagging",
+		Input:   input,
+		Output:  (*s3control.DeleteStorageLensConfigurationTaggingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteStorageLensConfigurationTaggingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteStorageLensConfigurationTaggingOutput), req.Error
+}
+
 func (c *Client) DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -504,6 +553,48 @@ func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3c
 	return req.Output.(*s3control.GetPublicAccessBlockOutput), req.Error
 }
 
+func (c *Client) GetStorageLensConfigurationWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetStorageLensConfiguration",
+		Input:   input,
+		Output:  (*s3control.GetStorageLensConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetStorageLensConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetStorageLensConfigurationOutput), req.Error
+}
+
+func (c *Client) GetStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationTaggingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetStorageLensConfigurationTagging",
+		Input:   input,
+		Output:  (*s3control.GetStorageLensConfigurationTaggingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetStorageLensConfigurationTaggingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetStorageLensConfigurationTaggingOutput), req.Error
+}
+
 func (c *Client) ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -625,6 +716,27 @@ func (c *Client) ListRegionalBucketsPagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListStorageLensConfigurationsWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, opts ...request.Option) (*s3control.ListStorageLensConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListStorageLensConfigurations",
+		Input:   input,
+		Output:  (*s3control.ListStorageLensConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.ListStorageLensConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.ListStorageLensConfigurationsOutput), req.Error
 }
 
 func (c *Client) PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error) {
@@ -751,6 +863,48 @@ func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3c
 	})
 
 	return req.Output.(*s3control.PutPublicAccessBlockOutput), req.Error
+}
+
+func (c *Client) PutStorageLensConfigurationWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutStorageLensConfiguration",
+		Input:   input,
+		Output:  (*s3control.PutStorageLensConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutStorageLensConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutStorageLensConfigurationOutput), req.Error
+}
+
+func (c *Client) PutStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationTaggingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutStorageLensConfigurationTagging",
+		Input:   input,
+		Output:  (*s3control.PutStorageLensConfigurationTaggingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutStorageLensConfigurationTaggingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutStorageLensConfigurationTaggingOutput), req.Error
 }
 
 func (c *Client) UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error) {

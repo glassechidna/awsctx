@@ -23,6 +23,7 @@ type Backup interface {
 	DescribeBackupJobWithContext(ctx context.Context, input *backup.DescribeBackupJobInput, opts ...request.Option) (*backup.DescribeBackupJobOutput, error)
 	DescribeBackupVaultWithContext(ctx context.Context, input *backup.DescribeBackupVaultInput, opts ...request.Option) (*backup.DescribeBackupVaultOutput, error)
 	DescribeCopyJobWithContext(ctx context.Context, input *backup.DescribeCopyJobInput, opts ...request.Option) (*backup.DescribeCopyJobOutput, error)
+	DescribeGlobalSettingsWithContext(ctx context.Context, input *backup.DescribeGlobalSettingsInput, opts ...request.Option) (*backup.DescribeGlobalSettingsOutput, error)
 	DescribeProtectedResourceWithContext(ctx context.Context, input *backup.DescribeProtectedResourceInput, opts ...request.Option) (*backup.DescribeProtectedResourceOutput, error)
 	DescribeRecoveryPointWithContext(ctx context.Context, input *backup.DescribeRecoveryPointInput, opts ...request.Option) (*backup.DescribeRecoveryPointOutput, error)
 	DescribeRegionSettingsWithContext(ctx context.Context, input *backup.DescribeRegionSettingsInput, opts ...request.Option) (*backup.DescribeRegionSettingsOutput, error)
@@ -69,6 +70,7 @@ type Backup interface {
 	TagResourceWithContext(ctx context.Context, input *backup.TagResourceInput, opts ...request.Option) (*backup.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *backup.UntagResourceInput, opts ...request.Option) (*backup.UntagResourceOutput, error)
 	UpdateBackupPlanWithContext(ctx context.Context, input *backup.UpdateBackupPlanInput, opts ...request.Option) (*backup.UpdateBackupPlanOutput, error)
+	UpdateGlobalSettingsWithContext(ctx context.Context, input *backup.UpdateGlobalSettingsInput, opts ...request.Option) (*backup.UpdateGlobalSettingsOutput, error)
 	UpdateRecoveryPointLifecycleWithContext(ctx context.Context, input *backup.UpdateRecoveryPointLifecycleInput, opts ...request.Option) (*backup.UpdateRecoveryPointLifecycleOutput, error)
 	UpdateRegionSettingsWithContext(ctx context.Context, input *backup.UpdateRegionSettingsInput, opts ...request.Option) (*backup.UpdateRegionSettingsOutput, error)
 }
@@ -338,6 +340,27 @@ func (c *Client) DescribeCopyJobWithContext(ctx context.Context, input *backup.D
 	})
 
 	return req.Output.(*backup.DescribeCopyJobOutput), req.Error
+}
+
+func (c *Client) DescribeGlobalSettingsWithContext(ctx context.Context, input *backup.DescribeGlobalSettingsInput, opts ...request.Option) (*backup.DescribeGlobalSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "DescribeGlobalSettings",
+		Input:   input,
+		Output:  (*backup.DescribeGlobalSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.DescribeGlobalSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.DescribeGlobalSettingsOutput), req.Error
 }
 
 func (c *Client) DescribeProtectedResourceWithContext(ctx context.Context, input *backup.DescribeProtectedResourceInput, opts ...request.Option) (*backup.DescribeProtectedResourceOutput, error) {
@@ -1292,6 +1315,27 @@ func (c *Client) UpdateBackupPlanWithContext(ctx context.Context, input *backup.
 	})
 
 	return req.Output.(*backup.UpdateBackupPlanOutput), req.Error
+}
+
+func (c *Client) UpdateGlobalSettingsWithContext(ctx context.Context, input *backup.UpdateGlobalSettingsInput, opts ...request.Option) (*backup.UpdateGlobalSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "UpdateGlobalSettings",
+		Input:   input,
+		Output:  (*backup.UpdateGlobalSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.UpdateGlobalSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.UpdateGlobalSettingsOutput), req.Error
 }
 
 func (c *Client) UpdateRecoveryPointLifecycleWithContext(ctx context.Context, input *backup.UpdateRecoveryPointLifecycleInput, opts ...request.Option) (*backup.UpdateRecoveryPointLifecycleOutput, error) {
