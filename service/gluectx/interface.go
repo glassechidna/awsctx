@@ -25,6 +25,7 @@ type Glue interface {
 	BatchStopJobRunWithContext(ctx context.Context, input *glue.BatchStopJobRunInput, opts ...request.Option) (*glue.BatchStopJobRunOutput, error)
 	BatchUpdatePartitionWithContext(ctx context.Context, input *glue.BatchUpdatePartitionInput, opts ...request.Option) (*glue.BatchUpdatePartitionOutput, error)
 	CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error)
+	CheckSchemaVersionValidityWithContext(ctx context.Context, input *glue.CheckSchemaVersionValidityInput, opts ...request.Option) (*glue.CheckSchemaVersionValidityOutput, error)
 	CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error)
 	CreateConnectionWithContext(ctx context.Context, input *glue.CreateConnectionInput, opts ...request.Option) (*glue.CreateConnectionOutput, error)
 	CreateCrawlerWithContext(ctx context.Context, input *glue.CreateCrawlerInput, opts ...request.Option) (*glue.CreateCrawlerOutput, error)
@@ -33,6 +34,8 @@ type Glue interface {
 	CreateJobWithContext(ctx context.Context, input *glue.CreateJobInput, opts ...request.Option) (*glue.CreateJobOutput, error)
 	CreateMLTransformWithContext(ctx context.Context, input *glue.CreateMLTransformInput, opts ...request.Option) (*glue.CreateMLTransformOutput, error)
 	CreatePartitionWithContext(ctx context.Context, input *glue.CreatePartitionInput, opts ...request.Option) (*glue.CreatePartitionOutput, error)
+	CreateRegistryWithContext(ctx context.Context, input *glue.CreateRegistryInput, opts ...request.Option) (*glue.CreateRegistryOutput, error)
+	CreateSchemaWithContext(ctx context.Context, input *glue.CreateSchemaInput, opts ...request.Option) (*glue.CreateSchemaOutput, error)
 	CreateScriptWithContext(ctx context.Context, input *glue.CreateScriptInput, opts ...request.Option) (*glue.CreateScriptOutput, error)
 	CreateSecurityConfigurationWithContext(ctx context.Context, input *glue.CreateSecurityConfigurationInput, opts ...request.Option) (*glue.CreateSecurityConfigurationOutput, error)
 	CreateTableWithContext(ctx context.Context, input *glue.CreateTableInput, opts ...request.Option) (*glue.CreateTableOutput, error)
@@ -49,7 +52,10 @@ type Glue interface {
 	DeleteJobWithContext(ctx context.Context, input *glue.DeleteJobInput, opts ...request.Option) (*glue.DeleteJobOutput, error)
 	DeleteMLTransformWithContext(ctx context.Context, input *glue.DeleteMLTransformInput, opts ...request.Option) (*glue.DeleteMLTransformOutput, error)
 	DeletePartitionWithContext(ctx context.Context, input *glue.DeletePartitionInput, opts ...request.Option) (*glue.DeletePartitionOutput, error)
+	DeleteRegistryWithContext(ctx context.Context, input *glue.DeleteRegistryInput, opts ...request.Option) (*glue.DeleteRegistryOutput, error)
 	DeleteResourcePolicyWithContext(ctx context.Context, input *glue.DeleteResourcePolicyInput, opts ...request.Option) (*glue.DeleteResourcePolicyOutput, error)
+	DeleteSchemaWithContext(ctx context.Context, input *glue.DeleteSchemaInput, opts ...request.Option) (*glue.DeleteSchemaOutput, error)
+	DeleteSchemaVersionsWithContext(ctx context.Context, input *glue.DeleteSchemaVersionsInput, opts ...request.Option) (*glue.DeleteSchemaVersionsOutput, error)
 	DeleteSecurityConfigurationWithContext(ctx context.Context, input *glue.DeleteSecurityConfigurationInput, opts ...request.Option) (*glue.DeleteSecurityConfigurationOutput, error)
 	DeleteTableWithContext(ctx context.Context, input *glue.DeleteTableInput, opts ...request.Option) (*glue.DeleteTableOutput, error)
 	DeleteTableVersionWithContext(ctx context.Context, input *glue.DeleteTableVersionInput, opts ...request.Option) (*glue.DeleteTableVersionOutput, error)
@@ -98,8 +104,14 @@ type Glue interface {
 	GetPartitionsWithContext(ctx context.Context, input *glue.GetPartitionsInput, opts ...request.Option) (*glue.GetPartitionsOutput, error)
 	GetPartitionsPagesWithContext(ctx context.Context, input *glue.GetPartitionsInput, cb func(*glue.GetPartitionsOutput, bool) bool, opts ...request.Option) error
 	GetPlanWithContext(ctx context.Context, input *glue.GetPlanInput, opts ...request.Option) (*glue.GetPlanOutput, error)
+	GetRegistryWithContext(ctx context.Context, input *glue.GetRegistryInput, opts ...request.Option) (*glue.GetRegistryOutput, error)
 	GetResourcePoliciesWithContext(ctx context.Context, input *glue.GetResourcePoliciesInput, opts ...request.Option) (*glue.GetResourcePoliciesOutput, error)
+	GetResourcePoliciesPagesWithContext(ctx context.Context, input *glue.GetResourcePoliciesInput, cb func(*glue.GetResourcePoliciesOutput, bool) bool, opts ...request.Option) error
 	GetResourcePolicyWithContext(ctx context.Context, input *glue.GetResourcePolicyInput, opts ...request.Option) (*glue.GetResourcePolicyOutput, error)
+	GetSchemaWithContext(ctx context.Context, input *glue.GetSchemaInput, opts ...request.Option) (*glue.GetSchemaOutput, error)
+	GetSchemaByDefinitionWithContext(ctx context.Context, input *glue.GetSchemaByDefinitionInput, opts ...request.Option) (*glue.GetSchemaByDefinitionOutput, error)
+	GetSchemaVersionWithContext(ctx context.Context, input *glue.GetSchemaVersionInput, opts ...request.Option) (*glue.GetSchemaVersionOutput, error)
+	GetSchemaVersionsDiffWithContext(ctx context.Context, input *glue.GetSchemaVersionsDiffInput, opts ...request.Option) (*glue.GetSchemaVersionsDiffOutput, error)
 	GetSecurityConfigurationWithContext(ctx context.Context, input *glue.GetSecurityConfigurationInput, opts ...request.Option) (*glue.GetSecurityConfigurationOutput, error)
 	GetSecurityConfigurationsWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, opts ...request.Option) (*glue.GetSecurityConfigurationsOutput, error)
 	GetSecurityConfigurationsPagesWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, cb func(*glue.GetSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
@@ -130,13 +142,23 @@ type Glue interface {
 	ListJobsPagesWithContext(ctx context.Context, input *glue.ListJobsInput, cb func(*glue.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListMLTransformsWithContext(ctx context.Context, input *glue.ListMLTransformsInput, opts ...request.Option) (*glue.ListMLTransformsOutput, error)
 	ListMLTransformsPagesWithContext(ctx context.Context, input *glue.ListMLTransformsInput, cb func(*glue.ListMLTransformsOutput, bool) bool, opts ...request.Option) error
+	ListRegistriesWithContext(ctx context.Context, input *glue.ListRegistriesInput, opts ...request.Option) (*glue.ListRegistriesOutput, error)
+	ListRegistriesPagesWithContext(ctx context.Context, input *glue.ListRegistriesInput, cb func(*glue.ListRegistriesOutput, bool) bool, opts ...request.Option) error
+	ListSchemaVersionsWithContext(ctx context.Context, input *glue.ListSchemaVersionsInput, opts ...request.Option) (*glue.ListSchemaVersionsOutput, error)
+	ListSchemaVersionsPagesWithContext(ctx context.Context, input *glue.ListSchemaVersionsInput, cb func(*glue.ListSchemaVersionsOutput, bool) bool, opts ...request.Option) error
+	ListSchemasWithContext(ctx context.Context, input *glue.ListSchemasInput, opts ...request.Option) (*glue.ListSchemasOutput, error)
+	ListSchemasPagesWithContext(ctx context.Context, input *glue.ListSchemasInput, cb func(*glue.ListSchemasOutput, bool) bool, opts ...request.Option) error
 	ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error)
 	ListTriggersPagesWithContext(ctx context.Context, input *glue.ListTriggersInput, cb func(*glue.ListTriggersOutput, bool) bool, opts ...request.Option) error
 	ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error)
 	ListWorkflowsPagesWithContext(ctx context.Context, input *glue.ListWorkflowsInput, cb func(*glue.ListWorkflowsOutput, bool) bool, opts ...request.Option) error
 	PutDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.PutDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.PutDataCatalogEncryptionSettingsOutput, error)
 	PutResourcePolicyWithContext(ctx context.Context, input *glue.PutResourcePolicyInput, opts ...request.Option) (*glue.PutResourcePolicyOutput, error)
+	PutSchemaVersionMetadataWithContext(ctx context.Context, input *glue.PutSchemaVersionMetadataInput, opts ...request.Option) (*glue.PutSchemaVersionMetadataOutput, error)
 	PutWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.PutWorkflowRunPropertiesInput, opts ...request.Option) (*glue.PutWorkflowRunPropertiesOutput, error)
+	QuerySchemaVersionMetadataWithContext(ctx context.Context, input *glue.QuerySchemaVersionMetadataInput, opts ...request.Option) (*glue.QuerySchemaVersionMetadataOutput, error)
+	RegisterSchemaVersionWithContext(ctx context.Context, input *glue.RegisterSchemaVersionInput, opts ...request.Option) (*glue.RegisterSchemaVersionOutput, error)
+	RemoveSchemaVersionMetadataWithContext(ctx context.Context, input *glue.RemoveSchemaVersionMetadataInput, opts ...request.Option) (*glue.RemoveSchemaVersionMetadataOutput, error)
 	ResetJobBookmarkWithContext(ctx context.Context, input *glue.ResetJobBookmarkInput, opts ...request.Option) (*glue.ResetJobBookmarkOutput, error)
 	ResumeWorkflowRunWithContext(ctx context.Context, input *glue.ResumeWorkflowRunInput, opts ...request.Option) (*glue.ResumeWorkflowRunOutput, error)
 	SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error)
@@ -167,6 +189,8 @@ type Glue interface {
 	UpdateJobWithContext(ctx context.Context, input *glue.UpdateJobInput, opts ...request.Option) (*glue.UpdateJobOutput, error)
 	UpdateMLTransformWithContext(ctx context.Context, input *glue.UpdateMLTransformInput, opts ...request.Option) (*glue.UpdateMLTransformOutput, error)
 	UpdatePartitionWithContext(ctx context.Context, input *glue.UpdatePartitionInput, opts ...request.Option) (*glue.UpdatePartitionOutput, error)
+	UpdateRegistryWithContext(ctx context.Context, input *glue.UpdateRegistryInput, opts ...request.Option) (*glue.UpdateRegistryOutput, error)
+	UpdateSchemaWithContext(ctx context.Context, input *glue.UpdateSchemaInput, opts ...request.Option) (*glue.UpdateSchemaOutput, error)
 	UpdateTableWithContext(ctx context.Context, input *glue.UpdateTableInput, opts ...request.Option) (*glue.UpdateTableOutput, error)
 	UpdateTriggerWithContext(ctx context.Context, input *glue.UpdateTriggerInput, opts ...request.Option) (*glue.UpdateTriggerOutput, error)
 	UpdateUserDefinedFunctionWithContext(ctx context.Context, input *glue.UpdateUserDefinedFunctionInput, opts ...request.Option) (*glue.UpdateUserDefinedFunctionOutput, error)
@@ -482,6 +506,27 @@ func (c *Client) CancelMLTaskRunWithContext(ctx context.Context, input *glue.Can
 	return req.Output.(*glue.CancelMLTaskRunOutput), req.Error
 }
 
+func (c *Client) CheckSchemaVersionValidityWithContext(ctx context.Context, input *glue.CheckSchemaVersionValidityInput, opts ...request.Option) (*glue.CheckSchemaVersionValidityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CheckSchemaVersionValidity",
+		Input:   input,
+		Output:  (*glue.CheckSchemaVersionValidityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CheckSchemaVersionValidityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CheckSchemaVersionValidityOutput), req.Error
+}
+
 func (c *Client) CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -648,6 +693,48 @@ func (c *Client) CreatePartitionWithContext(ctx context.Context, input *glue.Cre
 	})
 
 	return req.Output.(*glue.CreatePartitionOutput), req.Error
+}
+
+func (c *Client) CreateRegistryWithContext(ctx context.Context, input *glue.CreateRegistryInput, opts ...request.Option) (*glue.CreateRegistryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateRegistry",
+		Input:   input,
+		Output:  (*glue.CreateRegistryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateRegistryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateRegistryOutput), req.Error
+}
+
+func (c *Client) CreateSchemaWithContext(ctx context.Context, input *glue.CreateSchemaInput, opts ...request.Option) (*glue.CreateSchemaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateSchema",
+		Input:   input,
+		Output:  (*glue.CreateSchemaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateSchemaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateSchemaOutput), req.Error
 }
 
 func (c *Client) CreateScriptWithContext(ctx context.Context, input *glue.CreateScriptInput, opts ...request.Option) (*glue.CreateScriptOutput, error) {
@@ -986,6 +1073,27 @@ func (c *Client) DeletePartitionWithContext(ctx context.Context, input *glue.Del
 	return req.Output.(*glue.DeletePartitionOutput), req.Error
 }
 
+func (c *Client) DeleteRegistryWithContext(ctx context.Context, input *glue.DeleteRegistryInput, opts ...request.Option) (*glue.DeleteRegistryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteRegistry",
+		Input:   input,
+		Output:  (*glue.DeleteRegistryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteRegistryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteRegistryOutput), req.Error
+}
+
 func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *glue.DeleteResourcePolicyInput, opts ...request.Option) (*glue.DeleteResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1005,6 +1113,48 @@ func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *glu
 	})
 
 	return req.Output.(*glue.DeleteResourcePolicyOutput), req.Error
+}
+
+func (c *Client) DeleteSchemaWithContext(ctx context.Context, input *glue.DeleteSchemaInput, opts ...request.Option) (*glue.DeleteSchemaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteSchema",
+		Input:   input,
+		Output:  (*glue.DeleteSchemaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteSchemaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteSchemaOutput), req.Error
+}
+
+func (c *Client) DeleteSchemaVersionsWithContext(ctx context.Context, input *glue.DeleteSchemaVersionsInput, opts ...request.Option) (*glue.DeleteSchemaVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteSchemaVersions",
+		Input:   input,
+		Output:  (*glue.DeleteSchemaVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteSchemaVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteSchemaVersionsOutput), req.Error
 }
 
 func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, input *glue.DeleteSecurityConfigurationInput, opts ...request.Option) (*glue.DeleteSecurityConfigurationOutput, error) {
@@ -2003,6 +2153,27 @@ func (c *Client) GetPlanWithContext(ctx context.Context, input *glue.GetPlanInpu
 	return req.Output.(*glue.GetPlanOutput), req.Error
 }
 
+func (c *Client) GetRegistryWithContext(ctx context.Context, input *glue.GetRegistryInput, opts ...request.Option) (*glue.GetRegistryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetRegistry",
+		Input:   input,
+		Output:  (*glue.GetRegistryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetRegistryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetRegistryOutput), req.Error
+}
+
 func (c *Client) GetResourcePoliciesWithContext(ctx context.Context, input *glue.GetResourcePoliciesInput, opts ...request.Option) (*glue.GetResourcePoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -2024,6 +2195,26 @@ func (c *Client) GetResourcePoliciesWithContext(ctx context.Context, input *glue
 	return req.Output.(*glue.GetResourcePoliciesOutput), req.Error
 }
 
+func (c *Client) GetResourcePoliciesPagesWithContext(ctx context.Context, input *glue.GetResourcePoliciesInput, cb func(*glue.GetResourcePoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetResourcePolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetResourcePoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *glue.GetResourcePolicyInput, opts ...request.Option) (*glue.GetResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -2043,6 +2234,90 @@ func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *glue.G
 	})
 
 	return req.Output.(*glue.GetResourcePolicyOutput), req.Error
+}
+
+func (c *Client) GetSchemaWithContext(ctx context.Context, input *glue.GetSchemaInput, opts ...request.Option) (*glue.GetSchemaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetSchema",
+		Input:   input,
+		Output:  (*glue.GetSchemaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetSchemaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetSchemaOutput), req.Error
+}
+
+func (c *Client) GetSchemaByDefinitionWithContext(ctx context.Context, input *glue.GetSchemaByDefinitionInput, opts ...request.Option) (*glue.GetSchemaByDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetSchemaByDefinition",
+		Input:   input,
+		Output:  (*glue.GetSchemaByDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetSchemaByDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetSchemaByDefinitionOutput), req.Error
+}
+
+func (c *Client) GetSchemaVersionWithContext(ctx context.Context, input *glue.GetSchemaVersionInput, opts ...request.Option) (*glue.GetSchemaVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetSchemaVersion",
+		Input:   input,
+		Output:  (*glue.GetSchemaVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetSchemaVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetSchemaVersionOutput), req.Error
+}
+
+func (c *Client) GetSchemaVersionsDiffWithContext(ctx context.Context, input *glue.GetSchemaVersionsDiffInput, opts ...request.Option) (*glue.GetSchemaVersionsDiffOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetSchemaVersionsDiff",
+		Input:   input,
+		Output:  (*glue.GetSchemaVersionsDiffOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetSchemaVersionsDiffWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetSchemaVersionsDiffOutput), req.Error
 }
 
 func (c *Client) GetSecurityConfigurationWithContext(ctx context.Context, input *glue.GetSecurityConfigurationInput, opts ...request.Option) (*glue.GetSecurityConfigurationOutput, error) {
@@ -2665,6 +2940,129 @@ func (c *Client) ListMLTransformsPagesWithContext(ctx context.Context, input *gl
 	return req.Error
 }
 
+func (c *Client) ListRegistriesWithContext(ctx context.Context, input *glue.ListRegistriesInput, opts ...request.Option) (*glue.ListRegistriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListRegistries",
+		Input:   input,
+		Output:  (*glue.ListRegistriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListRegistriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListRegistriesOutput), req.Error
+}
+
+func (c *Client) ListRegistriesPagesWithContext(ctx context.Context, input *glue.ListRegistriesInput, cb func(*glue.ListRegistriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListRegistries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListRegistriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSchemaVersionsWithContext(ctx context.Context, input *glue.ListSchemaVersionsInput, opts ...request.Option) (*glue.ListSchemaVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListSchemaVersions",
+		Input:   input,
+		Output:  (*glue.ListSchemaVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListSchemaVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListSchemaVersionsOutput), req.Error
+}
+
+func (c *Client) ListSchemaVersionsPagesWithContext(ctx context.Context, input *glue.ListSchemaVersionsInput, cb func(*glue.ListSchemaVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListSchemaVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListSchemaVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSchemasWithContext(ctx context.Context, input *glue.ListSchemasInput, opts ...request.Option) (*glue.ListSchemasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListSchemas",
+		Input:   input,
+		Output:  (*glue.ListSchemasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListSchemasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListSchemasOutput), req.Error
+}
+
+func (c *Client) ListSchemasPagesWithContext(ctx context.Context, input *glue.ListSchemasInput, cb func(*glue.ListSchemasOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListSchemas",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListSchemasPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -2789,6 +3187,27 @@ func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *glue.P
 	return req.Output.(*glue.PutResourcePolicyOutput), req.Error
 }
 
+func (c *Client) PutSchemaVersionMetadataWithContext(ctx context.Context, input *glue.PutSchemaVersionMetadataInput, opts ...request.Option) (*glue.PutSchemaVersionMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "PutSchemaVersionMetadata",
+		Input:   input,
+		Output:  (*glue.PutSchemaVersionMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.PutSchemaVersionMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.PutSchemaVersionMetadataOutput), req.Error
+}
+
 func (c *Client) PutWorkflowRunPropertiesWithContext(ctx context.Context, input *glue.PutWorkflowRunPropertiesInput, opts ...request.Option) (*glue.PutWorkflowRunPropertiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -2808,6 +3227,69 @@ func (c *Client) PutWorkflowRunPropertiesWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*glue.PutWorkflowRunPropertiesOutput), req.Error
+}
+
+func (c *Client) QuerySchemaVersionMetadataWithContext(ctx context.Context, input *glue.QuerySchemaVersionMetadataInput, opts ...request.Option) (*glue.QuerySchemaVersionMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "QuerySchemaVersionMetadata",
+		Input:   input,
+		Output:  (*glue.QuerySchemaVersionMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.QuerySchemaVersionMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.QuerySchemaVersionMetadataOutput), req.Error
+}
+
+func (c *Client) RegisterSchemaVersionWithContext(ctx context.Context, input *glue.RegisterSchemaVersionInput, opts ...request.Option) (*glue.RegisterSchemaVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "RegisterSchemaVersion",
+		Input:   input,
+		Output:  (*glue.RegisterSchemaVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.RegisterSchemaVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.RegisterSchemaVersionOutput), req.Error
+}
+
+func (c *Client) RemoveSchemaVersionMetadataWithContext(ctx context.Context, input *glue.RemoveSchemaVersionMetadataInput, opts ...request.Option) (*glue.RemoveSchemaVersionMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "RemoveSchemaVersionMetadata",
+		Input:   input,
+		Output:  (*glue.RemoveSchemaVersionMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.RemoveSchemaVersionMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.RemoveSchemaVersionMetadataOutput), req.Error
 }
 
 func (c *Client) ResetJobBookmarkWithContext(ctx context.Context, input *glue.ResetJobBookmarkInput, opts ...request.Option) (*glue.ResetJobBookmarkOutput, error) {
@@ -3437,6 +3919,48 @@ func (c *Client) UpdatePartitionWithContext(ctx context.Context, input *glue.Upd
 	})
 
 	return req.Output.(*glue.UpdatePartitionOutput), req.Error
+}
+
+func (c *Client) UpdateRegistryWithContext(ctx context.Context, input *glue.UpdateRegistryInput, opts ...request.Option) (*glue.UpdateRegistryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateRegistry",
+		Input:   input,
+		Output:  (*glue.UpdateRegistryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateRegistryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateRegistryOutput), req.Error
+}
+
+func (c *Client) UpdateSchemaWithContext(ctx context.Context, input *glue.UpdateSchemaInput, opts ...request.Option) (*glue.UpdateSchemaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateSchema",
+		Input:   input,
+		Output:  (*glue.UpdateSchemaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateSchemaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateSchemaOutput), req.Error
 }
 
 func (c *Client) UpdateTableWithContext(ctx context.Context, input *glue.UpdateTableInput, opts ...request.Option) (*glue.UpdateTableOutput, error) {

@@ -18,6 +18,7 @@ type KinesisAnalyticsV2 interface {
 	AddApplicationReferenceDataSourceWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationReferenceDataSourceInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationReferenceDataSourceOutput, error)
 	AddApplicationVpcConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.AddApplicationVpcConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.AddApplicationVpcConfigurationOutput, error)
 	CreateApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationOutput, error)
+	CreateApplicationPresignedUrlWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationPresignedUrlInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationPresignedUrlOutput, error)
 	CreateApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationSnapshotOutput, error)
 	DeleteApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationOutput, error)
 	DeleteApplicationCloudWatchLoggingOptionWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationCloudWatchLoggingOptionInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationCloudWatchLoggingOptionOutput, error)
@@ -199,6 +200,27 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, input *kinesi
 	})
 
 	return req.Output.(*kinesisanalyticsv2.CreateApplicationOutput), req.Error
+}
+
+func (c *Client) CreateApplicationPresignedUrlWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationPresignedUrlInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationPresignedUrlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "CreateApplicationPresignedUrl",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.CreateApplicationPresignedUrlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.CreateApplicationPresignedUrlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.CreateApplicationPresignedUrlOutput), req.Error
 }
 
 func (c *Client) CreateApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.CreateApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.CreateApplicationSnapshotOutput, error) {

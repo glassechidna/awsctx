@@ -13,6 +13,7 @@ import (
 type DirectoryService interface {
 	AcceptSharedDirectoryWithContext(ctx context.Context, input *directoryservice.AcceptSharedDirectoryInput, opts ...request.Option) (*directoryservice.AcceptSharedDirectoryOutput, error)
 	AddIpRoutesWithContext(ctx context.Context, input *directoryservice.AddIpRoutesInput, opts ...request.Option) (*directoryservice.AddIpRoutesOutput, error)
+	AddRegionWithContext(ctx context.Context, input *directoryservice.AddRegionInput, opts ...request.Option) (*directoryservice.AddRegionOutput, error)
 	AddTagsToResourceWithContext(ctx context.Context, input *directoryservice.AddTagsToResourceInput, opts ...request.Option) (*directoryservice.AddTagsToResourceOutput, error)
 	CancelSchemaExtensionWithContext(ctx context.Context, input *directoryservice.CancelSchemaExtensionInput, opts ...request.Option) (*directoryservice.CancelSchemaExtensionOutput, error)
 	ConnectDirectoryWithContext(ctx context.Context, input *directoryservice.ConnectDirectoryInput, opts ...request.Option) (*directoryservice.ConnectDirectoryOutput, error)
@@ -38,6 +39,7 @@ type DirectoryService interface {
 	DescribeDomainControllersPagesWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, cb func(*directoryservice.DescribeDomainControllersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error)
 	DescribeLDAPSSettingsWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, opts ...request.Option) (*directoryservice.DescribeLDAPSSettingsOutput, error)
+	DescribeRegionsWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, opts ...request.Option) (*directoryservice.DescribeRegionsOutput, error)
 	DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error)
 	DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error)
 	DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error)
@@ -58,6 +60,7 @@ type DirectoryService interface {
 	RegisterEventTopicWithContext(ctx context.Context, input *directoryservice.RegisterEventTopicInput, opts ...request.Option) (*directoryservice.RegisterEventTopicOutput, error)
 	RejectSharedDirectoryWithContext(ctx context.Context, input *directoryservice.RejectSharedDirectoryInput, opts ...request.Option) (*directoryservice.RejectSharedDirectoryOutput, error)
 	RemoveIpRoutesWithContext(ctx context.Context, input *directoryservice.RemoveIpRoutesInput, opts ...request.Option) (*directoryservice.RemoveIpRoutesOutput, error)
+	RemoveRegionWithContext(ctx context.Context, input *directoryservice.RemoveRegionInput, opts ...request.Option) (*directoryservice.RemoveRegionOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *directoryservice.RemoveTagsFromResourceInput, opts ...request.Option) (*directoryservice.RemoveTagsFromResourceOutput, error)
 	ResetUserPasswordWithContext(ctx context.Context, input *directoryservice.ResetUserPasswordInput, opts ...request.Option) (*directoryservice.ResetUserPasswordOutput, error)
 	RestoreFromSnapshotWithContext(ctx context.Context, input *directoryservice.RestoreFromSnapshotInput, opts ...request.Option) (*directoryservice.RestoreFromSnapshotOutput, error)
@@ -126,6 +129,27 @@ func (c *Client) AddIpRoutesWithContext(ctx context.Context, input *directoryser
 	})
 
 	return req.Output.(*directoryservice.AddIpRoutesOutput), req.Error
+}
+
+func (c *Client) AddRegionWithContext(ctx context.Context, input *directoryservice.AddRegionInput, opts ...request.Option) (*directoryservice.AddRegionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "AddRegion",
+		Input:   input,
+		Output:  (*directoryservice.AddRegionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.AddRegionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.AddRegionOutput), req.Error
 }
 
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *directoryservice.AddTagsToResourceInput, opts ...request.Option) (*directoryservice.AddTagsToResourceOutput, error) {
@@ -652,6 +676,27 @@ func (c *Client) DescribeLDAPSSettingsWithContext(ctx context.Context, input *di
 	return req.Output.(*directoryservice.DescribeLDAPSSettingsOutput), req.Error
 }
 
+func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, opts ...request.Option) (*directoryservice.DescribeRegionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeRegions",
+		Input:   input,
+		Output:  (*directoryservice.DescribeRegionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DescribeRegionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DescribeRegionsOutput), req.Error
+}
+
 func (c *Client) DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -1070,6 +1115,27 @@ func (c *Client) RemoveIpRoutesWithContext(ctx context.Context, input *directory
 	})
 
 	return req.Output.(*directoryservice.RemoveIpRoutesOutput), req.Error
+}
+
+func (c *Client) RemoveRegionWithContext(ctx context.Context, input *directoryservice.RemoveRegionInput, opts ...request.Option) (*directoryservice.RemoveRegionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "RemoveRegion",
+		Input:   input,
+		Output:  (*directoryservice.RemoveRegionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.RemoveRegionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.RemoveRegionOutput), req.Error
 }
 
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *directoryservice.RemoveTagsFromResourceInput, opts ...request.Option) (*directoryservice.RemoveTagsFromResourceOutput, error) {
