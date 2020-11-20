@@ -23,6 +23,7 @@ type CognitoIdentity interface {
 	GetOpenIdTokenForDeveloperIdentityWithContext(ctx context.Context, input *cognitoidentity.GetOpenIdTokenForDeveloperIdentityInput, opts ...request.Option) (*cognitoidentity.GetOpenIdTokenForDeveloperIdentityOutput, error)
 	ListIdentitiesWithContext(ctx context.Context, input *cognitoidentity.ListIdentitiesInput, opts ...request.Option) (*cognitoidentity.ListIdentitiesOutput, error)
 	ListIdentityPoolsWithContext(ctx context.Context, input *cognitoidentity.ListIdentityPoolsInput, opts ...request.Option) (*cognitoidentity.ListIdentityPoolsOutput, error)
+	ListIdentityPoolsPagesWithContext(ctx context.Context, input *cognitoidentity.ListIdentityPoolsInput, cb func(*cognitoidentity.ListIdentityPoolsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cognitoidentity.ListTagsForResourceInput, opts ...request.Option) (*cognitoidentity.ListTagsForResourceOutput, error)
 	LookupDeveloperIdentityWithContext(ctx context.Context, input *cognitoidentity.LookupDeveloperIdentityInput, opts ...request.Option) (*cognitoidentity.LookupDeveloperIdentityOutput, error)
 	MergeDeveloperIdentitiesWithContext(ctx context.Context, input *cognitoidentity.MergeDeveloperIdentitiesInput, opts ...request.Option) (*cognitoidentity.MergeDeveloperIdentitiesOutput, error)
@@ -299,6 +300,26 @@ func (c *Client) ListIdentityPoolsWithContext(ctx context.Context, input *cognit
 	})
 
 	return req.Output.(*cognitoidentity.ListIdentityPoolsOutput), req.Error
+}
+
+func (c *Client) ListIdentityPoolsPagesWithContext(ctx context.Context, input *cognitoidentity.ListIdentityPoolsInput, cb func(*cognitoidentity.ListIdentityPoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentity",
+		Action:  "ListIdentityPools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CognitoIdentityAPI.ListIdentityPoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cognitoidentity.ListTagsForResourceInput, opts ...request.Option) (*cognitoidentity.ListTagsForResourceOutput, error) {

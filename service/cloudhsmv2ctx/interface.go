@@ -24,6 +24,8 @@ type CloudHSMV2 interface {
 	InitializeClusterWithContext(ctx context.Context, input *cloudhsmv2.InitializeClusterInput, opts ...request.Option) (*cloudhsmv2.InitializeClusterOutput, error)
 	ListTagsWithContext(ctx context.Context, input *cloudhsmv2.ListTagsInput, opts ...request.Option) (*cloudhsmv2.ListTagsOutput, error)
 	ListTagsPagesWithContext(ctx context.Context, input *cloudhsmv2.ListTagsInput, cb func(*cloudhsmv2.ListTagsOutput, bool) bool, opts ...request.Option) error
+	ModifyBackupAttributesWithContext(ctx context.Context, input *cloudhsmv2.ModifyBackupAttributesInput, opts ...request.Option) (*cloudhsmv2.ModifyBackupAttributesOutput, error)
+	ModifyClusterWithContext(ctx context.Context, input *cloudhsmv2.ModifyClusterInput, opts ...request.Option) (*cloudhsmv2.ModifyClusterOutput, error)
 	RestoreBackupWithContext(ctx context.Context, input *cloudhsmv2.RestoreBackupInput, opts ...request.Option) (*cloudhsmv2.RestoreBackupOutput, error)
 	TagResourceWithContext(ctx context.Context, input *cloudhsmv2.TagResourceInput, opts ...request.Option) (*cloudhsmv2.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *cloudhsmv2.UntagResourceInput, opts ...request.Option) (*cloudhsmv2.UntagResourceOutput, error)
@@ -312,6 +314,48 @@ func (c *Client) ListTagsPagesWithContext(ctx context.Context, input *cloudhsmv2
 	})
 
 	return req.Error
+}
+
+func (c *Client) ModifyBackupAttributesWithContext(ctx context.Context, input *cloudhsmv2.ModifyBackupAttributesInput, opts ...request.Option) (*cloudhsmv2.ModifyBackupAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudhsmv2",
+		Action:  "ModifyBackupAttributes",
+		Input:   input,
+		Output:  (*cloudhsmv2.ModifyBackupAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudHSMV2API.ModifyBackupAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudhsmv2.ModifyBackupAttributesOutput), req.Error
+}
+
+func (c *Client) ModifyClusterWithContext(ctx context.Context, input *cloudhsmv2.ModifyClusterInput, opts ...request.Option) (*cloudhsmv2.ModifyClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudhsmv2",
+		Action:  "ModifyCluster",
+		Input:   input,
+		Output:  (*cloudhsmv2.ModifyClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudHSMV2API.ModifyClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudhsmv2.ModifyClusterOutput), req.Error
 }
 
 func (c *Client) RestoreBackupWithContext(ctx context.Context, input *cloudhsmv2.RestoreBackupInput, opts ...request.Option) (*cloudhsmv2.RestoreBackupOutput, error) {

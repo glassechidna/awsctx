@@ -11,29 +11,56 @@ import (
 )
 
 type Connect interface {
+	AssociateApprovedOriginWithContext(ctx context.Context, input *connect.AssociateApprovedOriginInput, opts ...request.Option) (*connect.AssociateApprovedOriginOutput, error)
+	AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error)
+	AssociateLambdaFunctionWithContext(ctx context.Context, input *connect.AssociateLambdaFunctionInput, opts ...request.Option) (*connect.AssociateLambdaFunctionOutput, error)
+	AssociateLexBotWithContext(ctx context.Context, input *connect.AssociateLexBotInput, opts ...request.Option) (*connect.AssociateLexBotOutput, error)
 	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
+	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
+	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
+	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
+	DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error)
+	DescribeInstanceAttributeWithContext(ctx context.Context, input *connect.DescribeInstanceAttributeInput, opts ...request.Option) (*connect.DescribeInstanceAttributeOutput, error)
+	DescribeInstanceStorageConfigWithContext(ctx context.Context, input *connect.DescribeInstanceStorageConfigInput, opts ...request.Option) (*connect.DescribeInstanceStorageConfigOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
 	DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error)
 	DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error)
+	DisassociateApprovedOriginWithContext(ctx context.Context, input *connect.DisassociateApprovedOriginInput, opts ...request.Option) (*connect.DisassociateApprovedOriginOutput, error)
+	DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error)
+	DisassociateLambdaFunctionWithContext(ctx context.Context, input *connect.DisassociateLambdaFunctionInput, opts ...request.Option) (*connect.DisassociateLambdaFunctionOutput, error)
+	DisassociateLexBotWithContext(ctx context.Context, input *connect.DisassociateLexBotInput, opts ...request.Option) (*connect.DisassociateLexBotOutput, error)
 	DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error)
+	DisassociateSecurityKeyWithContext(ctx context.Context, input *connect.DisassociateSecurityKeyInput, opts ...request.Option) (*connect.DisassociateSecurityKeyOutput, error)
 	GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error)
 	GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error)
 	GetCurrentMetricDataPagesWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, cb func(*connect.GetCurrentMetricDataOutput, bool) bool, opts ...request.Option) error
 	GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
+	ListApprovedOriginsWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, opts ...request.Option) (*connect.ListApprovedOriginsOutput, error)
+	ListApprovedOriginsPagesWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, cb func(*connect.ListApprovedOriginsOutput, bool) bool, opts ...request.Option) error
 	ListContactFlowsWithContext(ctx context.Context, input *connect.ListContactFlowsInput, opts ...request.Option) (*connect.ListContactFlowsOutput, error)
 	ListContactFlowsPagesWithContext(ctx context.Context, input *connect.ListContactFlowsInput, cb func(*connect.ListContactFlowsOutput, bool) bool, opts ...request.Option) error
 	ListHoursOfOperationsWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, opts ...request.Option) (*connect.ListHoursOfOperationsOutput, error)
 	ListHoursOfOperationsPagesWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, cb func(*connect.ListHoursOfOperationsOutput, bool) bool, opts ...request.Option) error
+	ListInstanceAttributesWithContext(ctx context.Context, input *connect.ListInstanceAttributesInput, opts ...request.Option) (*connect.ListInstanceAttributesOutput, error)
+	ListInstanceAttributesPagesWithContext(ctx context.Context, input *connect.ListInstanceAttributesInput, cb func(*connect.ListInstanceAttributesOutput, bool) bool, opts ...request.Option) error
+	ListInstanceStorageConfigsWithContext(ctx context.Context, input *connect.ListInstanceStorageConfigsInput, opts ...request.Option) (*connect.ListInstanceStorageConfigsOutput, error)
+	ListInstanceStorageConfigsPagesWithContext(ctx context.Context, input *connect.ListInstanceStorageConfigsInput, cb func(*connect.ListInstanceStorageConfigsOutput, bool) bool, opts ...request.Option) error
+	ListInstancesWithContext(ctx context.Context, input *connect.ListInstancesInput, opts ...request.Option) (*connect.ListInstancesOutput, error)
+	ListInstancesPagesWithContext(ctx context.Context, input *connect.ListInstancesInput, cb func(*connect.ListInstancesOutput, bool) bool, opts ...request.Option) error
+	ListLambdaFunctionsWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, opts ...request.Option) (*connect.ListLambdaFunctionsOutput, error)
+	ListLambdaFunctionsPagesWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, cb func(*connect.ListLambdaFunctionsOutput, bool) bool, opts ...request.Option) error
+	ListLexBotsWithContext(ctx context.Context, input *connect.ListLexBotsInput, opts ...request.Option) (*connect.ListLexBotsOutput, error)
+	ListLexBotsPagesWithContext(ctx context.Context, input *connect.ListLexBotsInput, cb func(*connect.ListLexBotsOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, opts ...request.Option) (*connect.ListPhoneNumbersOutput, error)
 	ListPhoneNumbersPagesWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, cb func(*connect.ListPhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	ListPromptsWithContext(ctx context.Context, input *connect.ListPromptsInput, opts ...request.Option) (*connect.ListPromptsOutput, error)
@@ -44,6 +71,8 @@ type Connect interface {
 	ListRoutingProfileQueuesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfileQueuesInput, cb func(*connect.ListRoutingProfileQueuesOutput, bool) bool, opts ...request.Option) error
 	ListRoutingProfilesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, opts ...request.Option) (*connect.ListRoutingProfilesOutput, error)
 	ListRoutingProfilesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, cb func(*connect.ListRoutingProfilesOutput, bool) bool, opts ...request.Option) error
+	ListSecurityKeysWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, opts ...request.Option) (*connect.ListSecurityKeysOutput, error)
+	ListSecurityKeysPagesWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, cb func(*connect.ListSecurityKeysOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
 	ListSecurityProfilesPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, cb func(*connect.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error)
@@ -63,6 +92,8 @@ type Connect interface {
 	UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error)
 	UpdateContactFlowContentWithContext(ctx context.Context, input *connect.UpdateContactFlowContentInput, opts ...request.Option) (*connect.UpdateContactFlowContentOutput, error)
 	UpdateContactFlowNameWithContext(ctx context.Context, input *connect.UpdateContactFlowNameInput, opts ...request.Option) (*connect.UpdateContactFlowNameOutput, error)
+	UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error)
+	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
 	UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error)
 	UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx context.Context, input *connect.UpdateRoutingProfileDefaultOutboundQueueInput, opts ...request.Option) (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput, error)
 	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
@@ -91,6 +122,90 @@ func New(base connectiface.ConnectAPI, ctxer awsctx.Contexter) Connect {
 var _ Connect = (*connect.Connect)(nil)
 var _ Connect = (*Client)(nil)
 
+func (c *Client) AssociateApprovedOriginWithContext(ctx context.Context, input *connect.AssociateApprovedOriginInput, opts ...request.Option) (*connect.AssociateApprovedOriginOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateApprovedOrigin",
+		Input:   input,
+		Output:  (*connect.AssociateApprovedOriginOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateApprovedOriginWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateApprovedOriginOutput), req.Error
+}
+
+func (c *Client) AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateInstanceStorageConfig",
+		Input:   input,
+		Output:  (*connect.AssociateInstanceStorageConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateInstanceStorageConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateInstanceStorageConfigOutput), req.Error
+}
+
+func (c *Client) AssociateLambdaFunctionWithContext(ctx context.Context, input *connect.AssociateLambdaFunctionInput, opts ...request.Option) (*connect.AssociateLambdaFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateLambdaFunction",
+		Input:   input,
+		Output:  (*connect.AssociateLambdaFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateLambdaFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateLambdaFunctionOutput), req.Error
+}
+
+func (c *Client) AssociateLexBotWithContext(ctx context.Context, input *connect.AssociateLexBotInput, opts ...request.Option) (*connect.AssociateLexBotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateLexBot",
+		Input:   input,
+		Output:  (*connect.AssociateLexBotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateLexBotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateLexBotOutput), req.Error
+}
+
 func (c *Client) AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -112,6 +227,27 @@ func (c *Client) AssociateRoutingProfileQueuesWithContext(ctx context.Context, i
 	return req.Output.(*connect.AssociateRoutingProfileQueuesOutput), req.Error
 }
 
+func (c *Client) AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateSecurityKey",
+		Input:   input,
+		Output:  (*connect.AssociateSecurityKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateSecurityKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateSecurityKeyOutput), req.Error
+}
+
 func (c *Client) CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -131,6 +267,27 @@ func (c *Client) CreateContactFlowWithContext(ctx context.Context, input *connec
 	})
 
 	return req.Output.(*connect.CreateContactFlowOutput), req.Error
+}
+
+func (c *Client) CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateInstance",
+		Input:   input,
+		Output:  (*connect.CreateInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateInstanceOutput), req.Error
 }
 
 func (c *Client) CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error) {
@@ -196,6 +353,27 @@ func (c *Client) CreateUserHierarchyGroupWithContext(ctx context.Context, input 
 	return req.Output.(*connect.CreateUserHierarchyGroupOutput), req.Error
 }
 
+func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteInstance",
+		Input:   input,
+		Output:  (*connect.DeleteInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteInstanceOutput), req.Error
+}
+
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -257,6 +435,69 @@ func (c *Client) DescribeContactFlowWithContext(ctx context.Context, input *conn
 	})
 
 	return req.Output.(*connect.DescribeContactFlowOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeInstance",
+		Input:   input,
+		Output:  (*connect.DescribeInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeInstanceOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceAttributeWithContext(ctx context.Context, input *connect.DescribeInstanceAttributeInput, opts ...request.Option) (*connect.DescribeInstanceAttributeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeInstanceAttribute",
+		Input:   input,
+		Output:  (*connect.DescribeInstanceAttributeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeInstanceAttributeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeInstanceAttributeOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceStorageConfigWithContext(ctx context.Context, input *connect.DescribeInstanceStorageConfigInput, opts ...request.Option) (*connect.DescribeInstanceStorageConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeInstanceStorageConfig",
+		Input:   input,
+		Output:  (*connect.DescribeInstanceStorageConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeInstanceStorageConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeInstanceStorageConfigOutput), req.Error
 }
 
 func (c *Client) DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error) {
@@ -343,6 +584,90 @@ func (c *Client) DescribeUserHierarchyStructureWithContext(ctx context.Context, 
 	return req.Output.(*connect.DescribeUserHierarchyStructureOutput), req.Error
 }
 
+func (c *Client) DisassociateApprovedOriginWithContext(ctx context.Context, input *connect.DisassociateApprovedOriginInput, opts ...request.Option) (*connect.DisassociateApprovedOriginOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateApprovedOrigin",
+		Input:   input,
+		Output:  (*connect.DisassociateApprovedOriginOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateApprovedOriginWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateApprovedOriginOutput), req.Error
+}
+
+func (c *Client) DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateInstanceStorageConfig",
+		Input:   input,
+		Output:  (*connect.DisassociateInstanceStorageConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateInstanceStorageConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateInstanceStorageConfigOutput), req.Error
+}
+
+func (c *Client) DisassociateLambdaFunctionWithContext(ctx context.Context, input *connect.DisassociateLambdaFunctionInput, opts ...request.Option) (*connect.DisassociateLambdaFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateLambdaFunction",
+		Input:   input,
+		Output:  (*connect.DisassociateLambdaFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateLambdaFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateLambdaFunctionOutput), req.Error
+}
+
+func (c *Client) DisassociateLexBotWithContext(ctx context.Context, input *connect.DisassociateLexBotInput, opts ...request.Option) (*connect.DisassociateLexBotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateLexBot",
+		Input:   input,
+		Output:  (*connect.DisassociateLexBotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateLexBotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateLexBotOutput), req.Error
+}
+
 func (c *Client) DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -362,6 +687,27 @@ func (c *Client) DisassociateRoutingProfileQueuesWithContext(ctx context.Context
 	})
 
 	return req.Output.(*connect.DisassociateRoutingProfileQueuesOutput), req.Error
+}
+
+func (c *Client) DisassociateSecurityKeyWithContext(ctx context.Context, input *connect.DisassociateSecurityKeyInput, opts ...request.Option) (*connect.DisassociateSecurityKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateSecurityKey",
+		Input:   input,
+		Output:  (*connect.DisassociateSecurityKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateSecurityKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateSecurityKeyOutput), req.Error
 }
 
 func (c *Client) GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error) {
@@ -488,6 +834,47 @@ func (c *Client) GetMetricDataPagesWithContext(ctx context.Context, input *conne
 	return req.Error
 }
 
+func (c *Client) ListApprovedOriginsWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, opts ...request.Option) (*connect.ListApprovedOriginsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListApprovedOrigins",
+		Input:   input,
+		Output:  (*connect.ListApprovedOriginsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListApprovedOriginsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListApprovedOriginsOutput), req.Error
+}
+
+func (c *Client) ListApprovedOriginsPagesWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, cb func(*connect.ListApprovedOriginsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListApprovedOrigins",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListApprovedOriginsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListContactFlowsWithContext(ctx context.Context, input *connect.ListContactFlowsInput, opts ...request.Option) (*connect.ListContactFlowsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -565,6 +952,211 @@ func (c *Client) ListHoursOfOperationsPagesWithContext(ctx context.Context, inpu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListHoursOfOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListInstanceAttributesWithContext(ctx context.Context, input *connect.ListInstanceAttributesInput, opts ...request.Option) (*connect.ListInstanceAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListInstanceAttributes",
+		Input:   input,
+		Output:  (*connect.ListInstanceAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListInstanceAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListInstanceAttributesOutput), req.Error
+}
+
+func (c *Client) ListInstanceAttributesPagesWithContext(ctx context.Context, input *connect.ListInstanceAttributesInput, cb func(*connect.ListInstanceAttributesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListInstanceAttributes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListInstanceAttributesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListInstanceStorageConfigsWithContext(ctx context.Context, input *connect.ListInstanceStorageConfigsInput, opts ...request.Option) (*connect.ListInstanceStorageConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListInstanceStorageConfigs",
+		Input:   input,
+		Output:  (*connect.ListInstanceStorageConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListInstanceStorageConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListInstanceStorageConfigsOutput), req.Error
+}
+
+func (c *Client) ListInstanceStorageConfigsPagesWithContext(ctx context.Context, input *connect.ListInstanceStorageConfigsInput, cb func(*connect.ListInstanceStorageConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListInstanceStorageConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListInstanceStorageConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListInstancesWithContext(ctx context.Context, input *connect.ListInstancesInput, opts ...request.Option) (*connect.ListInstancesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListInstances",
+		Input:   input,
+		Output:  (*connect.ListInstancesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListInstancesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListInstancesOutput), req.Error
+}
+
+func (c *Client) ListInstancesPagesWithContext(ctx context.Context, input *connect.ListInstancesInput, cb func(*connect.ListInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListLambdaFunctionsWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, opts ...request.Option) (*connect.ListLambdaFunctionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListLambdaFunctions",
+		Input:   input,
+		Output:  (*connect.ListLambdaFunctionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListLambdaFunctionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListLambdaFunctionsOutput), req.Error
+}
+
+func (c *Client) ListLambdaFunctionsPagesWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, cb func(*connect.ListLambdaFunctionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListLambdaFunctions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListLambdaFunctionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListLexBotsWithContext(ctx context.Context, input *connect.ListLexBotsInput, opts ...request.Option) (*connect.ListLexBotsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListLexBots",
+		Input:   input,
+		Output:  (*connect.ListLexBotsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListLexBotsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListLexBotsOutput), req.Error
+}
+
+func (c *Client) ListLexBotsPagesWithContext(ctx context.Context, input *connect.ListLexBotsInput, cb func(*connect.ListLexBotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListLexBots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListLexBotsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -770,6 +1362,47 @@ func (c *Client) ListRoutingProfilesPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListRoutingProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSecurityKeysWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, opts ...request.Option) (*connect.ListSecurityKeysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListSecurityKeys",
+		Input:   input,
+		Output:  (*connect.ListSecurityKeysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListSecurityKeysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListSecurityKeysOutput), req.Error
+}
+
+func (c *Client) ListSecurityKeysPagesWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, cb func(*connect.ListSecurityKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListSecurityKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListSecurityKeysPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1169,6 +1802,48 @@ func (c *Client) UpdateContactFlowNameWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*connect.UpdateContactFlowNameOutput), req.Error
+}
+
+func (c *Client) UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateInstanceAttribute",
+		Input:   input,
+		Output:  (*connect.UpdateInstanceAttributeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateInstanceAttributeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateInstanceAttributeOutput), req.Error
+}
+
+func (c *Client) UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateInstanceStorageConfig",
+		Input:   input,
+		Output:  (*connect.UpdateInstanceStorageConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateInstanceStorageConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateInstanceStorageConfigOutput), req.Error
 }
 
 func (c *Client) UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error) {
