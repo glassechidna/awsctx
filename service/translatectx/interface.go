@@ -11,10 +11,15 @@ import (
 )
 
 type Translate interface {
+	CreateParallelDataWithContext(ctx context.Context, input *translate.CreateParallelDataInput, opts ...request.Option) (*translate.CreateParallelDataOutput, error)
+	DeleteParallelDataWithContext(ctx context.Context, input *translate.DeleteParallelDataInput, opts ...request.Option) (*translate.DeleteParallelDataOutput, error)
 	DeleteTerminologyWithContext(ctx context.Context, input *translate.DeleteTerminologyInput, opts ...request.Option) (*translate.DeleteTerminologyOutput, error)
 	DescribeTextTranslationJobWithContext(ctx context.Context, input *translate.DescribeTextTranslationJobInput, opts ...request.Option) (*translate.DescribeTextTranslationJobOutput, error)
+	GetParallelDataWithContext(ctx context.Context, input *translate.GetParallelDataInput, opts ...request.Option) (*translate.GetParallelDataOutput, error)
 	GetTerminologyWithContext(ctx context.Context, input *translate.GetTerminologyInput, opts ...request.Option) (*translate.GetTerminologyOutput, error)
 	ImportTerminologyWithContext(ctx context.Context, input *translate.ImportTerminologyInput, opts ...request.Option) (*translate.ImportTerminologyOutput, error)
+	ListParallelDataWithContext(ctx context.Context, input *translate.ListParallelDataInput, opts ...request.Option) (*translate.ListParallelDataOutput, error)
+	ListParallelDataPagesWithContext(ctx context.Context, input *translate.ListParallelDataInput, cb func(*translate.ListParallelDataOutput, bool) bool, opts ...request.Option) error
 	ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error)
 	ListTerminologiesPagesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, cb func(*translate.ListTerminologiesOutput, bool) bool, opts ...request.Option) error
 	ListTextTranslationJobsWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, opts ...request.Option) (*translate.ListTextTranslationJobsOutput, error)
@@ -22,6 +27,7 @@ type Translate interface {
 	StartTextTranslationJobWithContext(ctx context.Context, input *translate.StartTextTranslationJobInput, opts ...request.Option) (*translate.StartTextTranslationJobOutput, error)
 	StopTextTranslationJobWithContext(ctx context.Context, input *translate.StopTextTranslationJobInput, opts ...request.Option) (*translate.StopTextTranslationJobOutput, error)
 	TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error)
+	UpdateParallelDataWithContext(ctx context.Context, input *translate.UpdateParallelDataInput, opts ...request.Option) (*translate.UpdateParallelDataOutput, error)
 }
 
 type Client struct {
@@ -38,6 +44,48 @@ func New(base translateiface.TranslateAPI, ctxer awsctx.Contexter) Translate {
 
 var _ Translate = (*translate.Translate)(nil)
 var _ Translate = (*Client)(nil)
+
+func (c *Client) CreateParallelDataWithContext(ctx context.Context, input *translate.CreateParallelDataInput, opts ...request.Option) (*translate.CreateParallelDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "CreateParallelData",
+		Input:   input,
+		Output:  (*translate.CreateParallelDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.CreateParallelDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.CreateParallelDataOutput), req.Error
+}
+
+func (c *Client) DeleteParallelDataWithContext(ctx context.Context, input *translate.DeleteParallelDataInput, opts ...request.Option) (*translate.DeleteParallelDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "DeleteParallelData",
+		Input:   input,
+		Output:  (*translate.DeleteParallelDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.DeleteParallelDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.DeleteParallelDataOutput), req.Error
+}
 
 func (c *Client) DeleteTerminologyWithContext(ctx context.Context, input *translate.DeleteTerminologyInput, opts ...request.Option) (*translate.DeleteTerminologyOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -81,6 +129,27 @@ func (c *Client) DescribeTextTranslationJobWithContext(ctx context.Context, inpu
 	return req.Output.(*translate.DescribeTextTranslationJobOutput), req.Error
 }
 
+func (c *Client) GetParallelDataWithContext(ctx context.Context, input *translate.GetParallelDataInput, opts ...request.Option) (*translate.GetParallelDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "GetParallelData",
+		Input:   input,
+		Output:  (*translate.GetParallelDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.GetParallelDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.GetParallelDataOutput), req.Error
+}
+
 func (c *Client) GetTerminologyWithContext(ctx context.Context, input *translate.GetTerminologyInput, opts ...request.Option) (*translate.GetTerminologyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
@@ -121,6 +190,47 @@ func (c *Client) ImportTerminologyWithContext(ctx context.Context, input *transl
 	})
 
 	return req.Output.(*translate.ImportTerminologyOutput), req.Error
+}
+
+func (c *Client) ListParallelDataWithContext(ctx context.Context, input *translate.ListParallelDataInput, opts ...request.Option) (*translate.ListParallelDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListParallelData",
+		Input:   input,
+		Output:  (*translate.ListParallelDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.ListParallelDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.ListParallelDataOutput), req.Error
+}
+
+func (c *Client) ListParallelDataPagesWithContext(ctx context.Context, input *translate.ListParallelDataInput, cb func(*translate.ListParallelDataOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListParallelData",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranslateAPI.ListParallelDataPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error) {
@@ -266,4 +376,25 @@ func (c *Client) TextWithContext(ctx context.Context, input *translate.TextInput
 	})
 
 	return req.Output.(*translate.TextOutput), req.Error
+}
+
+func (c *Client) UpdateParallelDataWithContext(ctx context.Context, input *translate.UpdateParallelDataInput, opts ...request.Option) (*translate.UpdateParallelDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "UpdateParallelData",
+		Input:   input,
+		Output:  (*translate.UpdateParallelDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.UpdateParallelDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.UpdateParallelDataOutput), req.Error
 }

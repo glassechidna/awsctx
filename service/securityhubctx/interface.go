@@ -27,6 +27,7 @@ type SecurityHub interface {
 	DescribeActionTargetsWithContext(ctx context.Context, input *securityhub.DescribeActionTargetsInput, opts ...request.Option) (*securityhub.DescribeActionTargetsOutput, error)
 	DescribeActionTargetsPagesWithContext(ctx context.Context, input *securityhub.DescribeActionTargetsInput, cb func(*securityhub.DescribeActionTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeHubWithContext(ctx context.Context, input *securityhub.DescribeHubInput, opts ...request.Option) (*securityhub.DescribeHubOutput, error)
+	DescribeOrganizationConfigurationWithContext(ctx context.Context, input *securityhub.DescribeOrganizationConfigurationInput, opts ...request.Option) (*securityhub.DescribeOrganizationConfigurationOutput, error)
 	DescribeProductsWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, opts ...request.Option) (*securityhub.DescribeProductsOutput, error)
 	DescribeProductsPagesWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, cb func(*securityhub.DescribeProductsOutput, bool) bool, opts ...request.Option) error
 	DescribeStandardsWithContext(ctx context.Context, input *securityhub.DescribeStandardsInput, opts ...request.Option) (*securityhub.DescribeStandardsOutput, error)
@@ -34,10 +35,12 @@ type SecurityHub interface {
 	DescribeStandardsControlsWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, opts ...request.Option) (*securityhub.DescribeStandardsControlsOutput, error)
 	DescribeStandardsControlsPagesWithContext(ctx context.Context, input *securityhub.DescribeStandardsControlsInput, cb func(*securityhub.DescribeStandardsControlsOutput, bool) bool, opts ...request.Option) error
 	DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error)
+	DisableOrganizationAdminAccountWithContext(ctx context.Context, input *securityhub.DisableOrganizationAdminAccountInput, opts ...request.Option) (*securityhub.DisableOrganizationAdminAccountOutput, error)
 	DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error)
 	DisassociateMembersWithContext(ctx context.Context, input *securityhub.DisassociateMembersInput, opts ...request.Option) (*securityhub.DisassociateMembersOutput, error)
 	EnableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.EnableImportFindingsForProductInput, opts ...request.Option) (*securityhub.EnableImportFindingsForProductOutput, error)
+	EnableOrganizationAdminAccountWithContext(ctx context.Context, input *securityhub.EnableOrganizationAdminAccountInput, opts ...request.Option) (*securityhub.EnableOrganizationAdminAccountOutput, error)
 	EnableSecurityHubWithContext(ctx context.Context, input *securityhub.EnableSecurityHubInput, opts ...request.Option) (*securityhub.EnableSecurityHubOutput, error)
 	GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error)
 	GetEnabledStandardsPagesWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, cb func(*securityhub.GetEnabledStandardsOutput, bool) bool, opts ...request.Option) error
@@ -56,12 +59,15 @@ type SecurityHub interface {
 	ListInvitationsPagesWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, cb func(*securityhub.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *securityhub.ListMembersInput, opts ...request.Option) (*securityhub.ListMembersOutput, error)
 	ListMembersPagesWithContext(ctx context.Context, input *securityhub.ListMembersInput, cb func(*securityhub.ListMembersOutput, bool) bool, opts ...request.Option) error
+	ListOrganizationAdminAccountsWithContext(ctx context.Context, input *securityhub.ListOrganizationAdminAccountsInput, opts ...request.Option) (*securityhub.ListOrganizationAdminAccountsOutput, error)
+	ListOrganizationAdminAccountsPagesWithContext(ctx context.Context, input *securityhub.ListOrganizationAdminAccountsInput, cb func(*securityhub.ListOrganizationAdminAccountsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *securityhub.TagResourceInput, opts ...request.Option) (*securityhub.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *securityhub.UntagResourceInput, opts ...request.Option) (*securityhub.UntagResourceOutput, error)
 	UpdateActionTargetWithContext(ctx context.Context, input *securityhub.UpdateActionTargetInput, opts ...request.Option) (*securityhub.UpdateActionTargetOutput, error)
 	UpdateFindingsWithContext(ctx context.Context, input *securityhub.UpdateFindingsInput, opts ...request.Option) (*securityhub.UpdateFindingsOutput, error)
 	UpdateInsightWithContext(ctx context.Context, input *securityhub.UpdateInsightInput, opts ...request.Option) (*securityhub.UpdateInsightOutput, error)
+	UpdateOrganizationConfigurationWithContext(ctx context.Context, input *securityhub.UpdateOrganizationConfigurationInput, opts ...request.Option) (*securityhub.UpdateOrganizationConfigurationOutput, error)
 	UpdateSecurityHubConfigurationWithContext(ctx context.Context, input *securityhub.UpdateSecurityHubConfigurationInput, opts ...request.Option) (*securityhub.UpdateSecurityHubConfigurationOutput, error)
 	UpdateStandardsControlWithContext(ctx context.Context, input *securityhub.UpdateStandardsControlInput, opts ...request.Option) (*securityhub.UpdateStandardsControlOutput, error)
 }
@@ -416,6 +422,27 @@ func (c *Client) DescribeHubWithContext(ctx context.Context, input *securityhub.
 	return req.Output.(*securityhub.DescribeHubOutput), req.Error
 }
 
+func (c *Client) DescribeOrganizationConfigurationWithContext(ctx context.Context, input *securityhub.DescribeOrganizationConfigurationInput, opts ...request.Option) (*securityhub.DescribeOrganizationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DescribeOrganizationConfiguration",
+		Input:   input,
+		Output:  (*securityhub.DescribeOrganizationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.DescribeOrganizationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.DescribeOrganizationConfigurationOutput), req.Error
+}
+
 func (c *Client) DescribeProductsWithContext(ctx context.Context, input *securityhub.DescribeProductsInput, opts ...request.Option) (*securityhub.DescribeProductsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -560,6 +587,27 @@ func (c *Client) DisableImportFindingsForProductWithContext(ctx context.Context,
 	return req.Output.(*securityhub.DisableImportFindingsForProductOutput), req.Error
 }
 
+func (c *Client) DisableOrganizationAdminAccountWithContext(ctx context.Context, input *securityhub.DisableOrganizationAdminAccountInput, opts ...request.Option) (*securityhub.DisableOrganizationAdminAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DisableOrganizationAdminAccount",
+		Input:   input,
+		Output:  (*securityhub.DisableOrganizationAdminAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.DisableOrganizationAdminAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.DisableOrganizationAdminAccountOutput), req.Error
+}
+
 func (c *Client) DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -642,6 +690,27 @@ func (c *Client) EnableImportFindingsForProductWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*securityhub.EnableImportFindingsForProductOutput), req.Error
+}
+
+func (c *Client) EnableOrganizationAdminAccountWithContext(ctx context.Context, input *securityhub.EnableOrganizationAdminAccountInput, opts ...request.Option) (*securityhub.EnableOrganizationAdminAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "EnableOrganizationAdminAccount",
+		Input:   input,
+		Output:  (*securityhub.EnableOrganizationAdminAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.EnableOrganizationAdminAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.EnableOrganizationAdminAccountOutput), req.Error
 }
 
 func (c *Client) EnableSecurityHubWithContext(ctx context.Context, input *securityhub.EnableSecurityHubInput, opts ...request.Option) (*securityhub.EnableSecurityHubOutput, error) {
@@ -1016,6 +1085,47 @@ func (c *Client) ListMembersPagesWithContext(ctx context.Context, input *securit
 	return req.Error
 }
 
+func (c *Client) ListOrganizationAdminAccountsWithContext(ctx context.Context, input *securityhub.ListOrganizationAdminAccountsInput, opts ...request.Option) (*securityhub.ListOrganizationAdminAccountsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListOrganizationAdminAccounts",
+		Input:   input,
+		Output:  (*securityhub.ListOrganizationAdminAccountsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.ListOrganizationAdminAccountsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.ListOrganizationAdminAccountsOutput), req.Error
+}
+
+func (c *Client) ListOrganizationAdminAccountsPagesWithContext(ctx context.Context, input *securityhub.ListOrganizationAdminAccountsInput, cb func(*securityhub.ListOrganizationAdminAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListOrganizationAdminAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListOrganizationAdminAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -1140,6 +1250,27 @@ func (c *Client) UpdateInsightWithContext(ctx context.Context, input *securityhu
 	})
 
 	return req.Output.(*securityhub.UpdateInsightOutput), req.Error
+}
+
+func (c *Client) UpdateOrganizationConfigurationWithContext(ctx context.Context, input *securityhub.UpdateOrganizationConfigurationInput, opts ...request.Option) (*securityhub.UpdateOrganizationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "UpdateOrganizationConfiguration",
+		Input:   input,
+		Output:  (*securityhub.UpdateOrganizationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.UpdateOrganizationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.UpdateOrganizationConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateSecurityHubConfigurationWithContext(ctx context.Context, input *securityhub.UpdateSecurityHubConfigurationInput, opts ...request.Option) (*securityhub.UpdateSecurityHubConfigurationOutput, error) {

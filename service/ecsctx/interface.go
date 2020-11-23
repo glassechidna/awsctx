@@ -62,6 +62,7 @@ type ECS interface {
 	SubmitTaskStateChangeWithContext(ctx context.Context, input *ecs.SubmitTaskStateChangeInput, opts ...request.Option) (*ecs.SubmitTaskStateChangeOutput, error)
 	TagResourceWithContext(ctx context.Context, input *ecs.TagResourceInput, opts ...request.Option) (*ecs.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *ecs.UntagResourceInput, opts ...request.Option) (*ecs.UntagResourceOutput, error)
+	UpdateCapacityProviderWithContext(ctx context.Context, input *ecs.UpdateCapacityProviderInput, opts ...request.Option) (*ecs.UpdateCapacityProviderOutput, error)
 	UpdateClusterSettingsWithContext(ctx context.Context, input *ecs.UpdateClusterSettingsInput, opts ...request.Option) (*ecs.UpdateClusterSettingsOutput, error)
 	UpdateContainerAgentWithContext(ctx context.Context, input *ecs.UpdateContainerAgentInput, opts ...request.Option) (*ecs.UpdateContainerAgentOutput, error)
 	UpdateContainerInstancesStateWithContext(ctx context.Context, input *ecs.UpdateContainerInstancesStateInput, opts ...request.Option) (*ecs.UpdateContainerInstancesStateOutput, error)
@@ -1146,6 +1147,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *ecs.UntagR
 	})
 
 	return req.Output.(*ecs.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateCapacityProviderWithContext(ctx context.Context, input *ecs.UpdateCapacityProviderInput, opts ...request.Option) (*ecs.UpdateCapacityProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "UpdateCapacityProvider",
+		Input:   input,
+		Output:  (*ecs.UpdateCapacityProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.UpdateCapacityProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.UpdateCapacityProviderOutput), req.Error
 }
 
 func (c *Client) UpdateClusterSettingsWithContext(ctx context.Context, input *ecs.UpdateClusterSettingsInput, opts ...request.Option) (*ecs.UpdateClusterSettingsOutput, error) {

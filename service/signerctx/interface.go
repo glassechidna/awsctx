@@ -11,10 +11,12 @@ import (
 )
 
 type Signer interface {
+	AddProfilePermissionWithContext(ctx context.Context, input *signer.AddProfilePermissionInput, opts ...request.Option) (*signer.AddProfilePermissionOutput, error)
 	CancelSigningProfileWithContext(ctx context.Context, input *signer.CancelSigningProfileInput, opts ...request.Option) (*signer.CancelSigningProfileOutput, error)
 	DescribeSigningJobWithContext(ctx context.Context, input *signer.DescribeSigningJobInput, opts ...request.Option) (*signer.DescribeSigningJobOutput, error)
 	GetSigningPlatformWithContext(ctx context.Context, input *signer.GetSigningPlatformInput, opts ...request.Option) (*signer.GetSigningPlatformOutput, error)
 	GetSigningProfileWithContext(ctx context.Context, input *signer.GetSigningProfileInput, opts ...request.Option) (*signer.GetSigningProfileOutput, error)
+	ListProfilePermissionsWithContext(ctx context.Context, input *signer.ListProfilePermissionsInput, opts ...request.Option) (*signer.ListProfilePermissionsOutput, error)
 	ListSigningJobsWithContext(ctx context.Context, input *signer.ListSigningJobsInput, opts ...request.Option) (*signer.ListSigningJobsOutput, error)
 	ListSigningJobsPagesWithContext(ctx context.Context, input *signer.ListSigningJobsInput, cb func(*signer.ListSigningJobsOutput, bool) bool, opts ...request.Option) error
 	ListSigningPlatformsWithContext(ctx context.Context, input *signer.ListSigningPlatformsInput, opts ...request.Option) (*signer.ListSigningPlatformsOutput, error)
@@ -23,6 +25,9 @@ type Signer interface {
 	ListSigningProfilesPagesWithContext(ctx context.Context, input *signer.ListSigningProfilesInput, cb func(*signer.ListSigningProfilesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *signer.ListTagsForResourceInput, opts ...request.Option) (*signer.ListTagsForResourceOutput, error)
 	PutSigningProfileWithContext(ctx context.Context, input *signer.PutSigningProfileInput, opts ...request.Option) (*signer.PutSigningProfileOutput, error)
+	RemoveProfilePermissionWithContext(ctx context.Context, input *signer.RemoveProfilePermissionInput, opts ...request.Option) (*signer.RemoveProfilePermissionOutput, error)
+	RevokeSignatureWithContext(ctx context.Context, input *signer.RevokeSignatureInput, opts ...request.Option) (*signer.RevokeSignatureOutput, error)
+	RevokeSigningProfileWithContext(ctx context.Context, input *signer.RevokeSigningProfileInput, opts ...request.Option) (*signer.RevokeSigningProfileOutput, error)
 	StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *signer.TagResourceInput, opts ...request.Option) (*signer.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *signer.UntagResourceInput, opts ...request.Option) (*signer.UntagResourceOutput, error)
@@ -42,6 +47,27 @@ func New(base signeriface.SignerAPI, ctxer awsctx.Contexter) Signer {
 
 var _ Signer = (*signer.Signer)(nil)
 var _ Signer = (*Client)(nil)
+
+func (c *Client) AddProfilePermissionWithContext(ctx context.Context, input *signer.AddProfilePermissionInput, opts ...request.Option) (*signer.AddProfilePermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "AddProfilePermission",
+		Input:   input,
+		Output:  (*signer.AddProfilePermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.AddProfilePermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.AddProfilePermissionOutput), req.Error
+}
 
 func (c *Client) CancelSigningProfileWithContext(ctx context.Context, input *signer.CancelSigningProfileInput, opts ...request.Option) (*signer.CancelSigningProfileOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -125,6 +151,27 @@ func (c *Client) GetSigningProfileWithContext(ctx context.Context, input *signer
 	})
 
 	return req.Output.(*signer.GetSigningProfileOutput), req.Error
+}
+
+func (c *Client) ListProfilePermissionsWithContext(ctx context.Context, input *signer.ListProfilePermissionsInput, opts ...request.Option) (*signer.ListProfilePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "ListProfilePermissions",
+		Input:   input,
+		Output:  (*signer.ListProfilePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.ListProfilePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.ListProfilePermissionsOutput), req.Error
 }
 
 func (c *Client) ListSigningJobsWithContext(ctx context.Context, input *signer.ListSigningJobsInput, opts ...request.Option) (*signer.ListSigningJobsOutput, error) {
@@ -290,6 +337,69 @@ func (c *Client) PutSigningProfileWithContext(ctx context.Context, input *signer
 	})
 
 	return req.Output.(*signer.PutSigningProfileOutput), req.Error
+}
+
+func (c *Client) RemoveProfilePermissionWithContext(ctx context.Context, input *signer.RemoveProfilePermissionInput, opts ...request.Option) (*signer.RemoveProfilePermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "RemoveProfilePermission",
+		Input:   input,
+		Output:  (*signer.RemoveProfilePermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.RemoveProfilePermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.RemoveProfilePermissionOutput), req.Error
+}
+
+func (c *Client) RevokeSignatureWithContext(ctx context.Context, input *signer.RevokeSignatureInput, opts ...request.Option) (*signer.RevokeSignatureOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "RevokeSignature",
+		Input:   input,
+		Output:  (*signer.RevokeSignatureOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.RevokeSignatureWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.RevokeSignatureOutput), req.Error
+}
+
+func (c *Client) RevokeSigningProfileWithContext(ctx context.Context, input *signer.RevokeSigningProfileInput, opts ...request.Option) (*signer.RevokeSigningProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "RevokeSigningProfile",
+		Input:   input,
+		Output:  (*signer.RevokeSigningProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.RevokeSigningProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.RevokeSigningProfileOutput), req.Error
 }
 
 func (c *Client) StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error) {

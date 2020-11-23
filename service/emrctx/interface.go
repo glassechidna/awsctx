@@ -17,14 +17,20 @@ type EMR interface {
 	AddTagsWithContext(ctx context.Context, input *emr.AddTagsInput, opts ...request.Option) (*emr.AddTagsOutput, error)
 	CancelStepsWithContext(ctx context.Context, input *emr.CancelStepsInput, opts ...request.Option) (*emr.CancelStepsOutput, error)
 	CreateSecurityConfigurationWithContext(ctx context.Context, input *emr.CreateSecurityConfigurationInput, opts ...request.Option) (*emr.CreateSecurityConfigurationOutput, error)
+	CreateStudioWithContext(ctx context.Context, input *emr.CreateStudioInput, opts ...request.Option) (*emr.CreateStudioOutput, error)
+	CreateStudioSessionMappingWithContext(ctx context.Context, input *emr.CreateStudioSessionMappingInput, opts ...request.Option) (*emr.CreateStudioSessionMappingOutput, error)
 	DeleteSecurityConfigurationWithContext(ctx context.Context, input *emr.DeleteSecurityConfigurationInput, opts ...request.Option) (*emr.DeleteSecurityConfigurationOutput, error)
+	DeleteStudioWithContext(ctx context.Context, input *emr.DeleteStudioInput, opts ...request.Option) (*emr.DeleteStudioOutput, error)
+	DeleteStudioSessionMappingWithContext(ctx context.Context, input *emr.DeleteStudioSessionMappingInput, opts ...request.Option) (*emr.DeleteStudioSessionMappingOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *emr.DescribeClusterInput, opts ...request.Option) (*emr.DescribeClusterOutput, error)
 	DescribeJobFlowsWithContext(ctx context.Context, input *emr.DescribeJobFlowsInput, opts ...request.Option) (*emr.DescribeJobFlowsOutput, error)
 	DescribeNotebookExecutionWithContext(ctx context.Context, input *emr.DescribeNotebookExecutionInput, opts ...request.Option) (*emr.DescribeNotebookExecutionOutput, error)
 	DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error)
 	DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error)
+	DescribeStudioWithContext(ctx context.Context, input *emr.DescribeStudioInput, opts ...request.Option) (*emr.DescribeStudioOutput, error)
 	GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error)
 	GetManagedScalingPolicyWithContext(ctx context.Context, input *emr.GetManagedScalingPolicyInput, opts ...request.Option) (*emr.GetManagedScalingPolicyOutput, error)
+	GetStudioSessionMappingWithContext(ctx context.Context, input *emr.GetStudioSessionMappingInput, opts ...request.Option) (*emr.GetStudioSessionMappingOutput, error)
 	ListBootstrapActionsWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, opts ...request.Option) (*emr.ListBootstrapActionsOutput, error)
 	ListBootstrapActionsPagesWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, cb func(*emr.ListBootstrapActionsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *emr.ListClustersInput, opts ...request.Option) (*emr.ListClustersOutput, error)
@@ -41,6 +47,10 @@ type EMR interface {
 	ListSecurityConfigurationsPagesWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, cb func(*emr.ListSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error)
 	ListStepsPagesWithContext(ctx context.Context, input *emr.ListStepsInput, cb func(*emr.ListStepsOutput, bool) bool, opts ...request.Option) error
+	ListStudioSessionMappingsWithContext(ctx context.Context, input *emr.ListStudioSessionMappingsInput, opts ...request.Option) (*emr.ListStudioSessionMappingsOutput, error)
+	ListStudioSessionMappingsPagesWithContext(ctx context.Context, input *emr.ListStudioSessionMappingsInput, cb func(*emr.ListStudioSessionMappingsOutput, bool) bool, opts ...request.Option) error
+	ListStudiosWithContext(ctx context.Context, input *emr.ListStudiosInput, opts ...request.Option) (*emr.ListStudiosOutput, error)
+	ListStudiosPagesWithContext(ctx context.Context, input *emr.ListStudiosInput, cb func(*emr.ListStudiosOutput, bool) bool, opts ...request.Option) error
 	ModifyClusterWithContext(ctx context.Context, input *emr.ModifyClusterInput, opts ...request.Option) (*emr.ModifyClusterOutput, error)
 	ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error)
 	ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error)
@@ -56,6 +66,7 @@ type EMR interface {
 	StartNotebookExecutionWithContext(ctx context.Context, input *emr.StartNotebookExecutionInput, opts ...request.Option) (*emr.StartNotebookExecutionOutput, error)
 	StopNotebookExecutionWithContext(ctx context.Context, input *emr.StopNotebookExecutionInput, opts ...request.Option) (*emr.StopNotebookExecutionOutput, error)
 	TerminateJobFlowsWithContext(ctx context.Context, input *emr.TerminateJobFlowsInput, opts ...request.Option) (*emr.TerminateJobFlowsOutput, error)
+	UpdateStudioSessionMappingWithContext(ctx context.Context, input *emr.UpdateStudioSessionMappingInput, opts ...request.Option) (*emr.UpdateStudioSessionMappingOutput, error)
 }
 
 type Client struct {
@@ -199,6 +210,48 @@ func (c *Client) CreateSecurityConfigurationWithContext(ctx context.Context, inp
 	return req.Output.(*emr.CreateSecurityConfigurationOutput), req.Error
 }
 
+func (c *Client) CreateStudioWithContext(ctx context.Context, input *emr.CreateStudioInput, opts ...request.Option) (*emr.CreateStudioOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "CreateStudio",
+		Input:   input,
+		Output:  (*emr.CreateStudioOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.CreateStudioWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.CreateStudioOutput), req.Error
+}
+
+func (c *Client) CreateStudioSessionMappingWithContext(ctx context.Context, input *emr.CreateStudioSessionMappingInput, opts ...request.Option) (*emr.CreateStudioSessionMappingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "CreateStudioSessionMapping",
+		Input:   input,
+		Output:  (*emr.CreateStudioSessionMappingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.CreateStudioSessionMappingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.CreateStudioSessionMappingOutput), req.Error
+}
+
 func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, input *emr.DeleteSecurityConfigurationInput, opts ...request.Option) (*emr.DeleteSecurityConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -218,6 +271,48 @@ func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*emr.DeleteSecurityConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteStudioWithContext(ctx context.Context, input *emr.DeleteStudioInput, opts ...request.Option) (*emr.DeleteStudioOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "DeleteStudio",
+		Input:   input,
+		Output:  (*emr.DeleteStudioOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.DeleteStudioWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.DeleteStudioOutput), req.Error
+}
+
+func (c *Client) DeleteStudioSessionMappingWithContext(ctx context.Context, input *emr.DeleteStudioSessionMappingInput, opts ...request.Option) (*emr.DeleteStudioSessionMappingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "DeleteStudioSessionMapping",
+		Input:   input,
+		Output:  (*emr.DeleteStudioSessionMappingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.DeleteStudioSessionMappingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.DeleteStudioSessionMappingOutput), req.Error
 }
 
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *emr.DescribeClusterInput, opts ...request.Option) (*emr.DescribeClusterOutput, error) {
@@ -325,6 +420,27 @@ func (c *Client) DescribeStepWithContext(ctx context.Context, input *emr.Describ
 	return req.Output.(*emr.DescribeStepOutput), req.Error
 }
 
+func (c *Client) DescribeStudioWithContext(ctx context.Context, input *emr.DescribeStudioInput, opts ...request.Option) (*emr.DescribeStudioOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "DescribeStudio",
+		Input:   input,
+		Output:  (*emr.DescribeStudioOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.DescribeStudioWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.DescribeStudioOutput), req.Error
+}
+
 func (c *Client) GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -365,6 +481,27 @@ func (c *Client) GetManagedScalingPolicyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*emr.GetManagedScalingPolicyOutput), req.Error
+}
+
+func (c *Client) GetStudioSessionMappingWithContext(ctx context.Context, input *emr.GetStudioSessionMappingInput, opts ...request.Option) (*emr.GetStudioSessionMappingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "GetStudioSessionMapping",
+		Input:   input,
+		Output:  (*emr.GetStudioSessionMappingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.GetStudioSessionMappingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.GetStudioSessionMappingOutput), req.Error
 }
 
 func (c *Client) ListBootstrapActionsWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, opts ...request.Option) (*emr.ListBootstrapActionsOutput, error) {
@@ -695,6 +832,88 @@ func (c *Client) ListStepsPagesWithContext(ctx context.Context, input *emr.ListS
 	return req.Error
 }
 
+func (c *Client) ListStudioSessionMappingsWithContext(ctx context.Context, input *emr.ListStudioSessionMappingsInput, opts ...request.Option) (*emr.ListStudioSessionMappingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListStudioSessionMappings",
+		Input:   input,
+		Output:  (*emr.ListStudioSessionMappingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.ListStudioSessionMappingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.ListStudioSessionMappingsOutput), req.Error
+}
+
+func (c *Client) ListStudioSessionMappingsPagesWithContext(ctx context.Context, input *emr.ListStudioSessionMappingsInput, cb func(*emr.ListStudioSessionMappingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListStudioSessionMappings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListStudioSessionMappingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListStudiosWithContext(ctx context.Context, input *emr.ListStudiosInput, opts ...request.Option) (*emr.ListStudiosOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListStudios",
+		Input:   input,
+		Output:  (*emr.ListStudiosOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.ListStudiosWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.ListStudiosOutput), req.Error
+}
+
+func (c *Client) ListStudiosPagesWithContext(ctx context.Context, input *emr.ListStudiosInput, cb func(*emr.ListStudiosOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListStudios",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListStudiosPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ModifyClusterWithContext(ctx context.Context, input *emr.ModifyClusterInput, opts ...request.Option) (*emr.ModifyClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -1008,4 +1227,25 @@ func (c *Client) TerminateJobFlowsWithContext(ctx context.Context, input *emr.Te
 	})
 
 	return req.Output.(*emr.TerminateJobFlowsOutput), req.Error
+}
+
+func (c *Client) UpdateStudioSessionMappingWithContext(ctx context.Context, input *emr.UpdateStudioSessionMappingInput, opts ...request.Option) (*emr.UpdateStudioSessionMappingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "UpdateStudioSessionMapping",
+		Input:   input,
+		Output:  (*emr.UpdateStudioSessionMappingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.UpdateStudioSessionMappingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.UpdateStudioSessionMappingOutput), req.Error
 }

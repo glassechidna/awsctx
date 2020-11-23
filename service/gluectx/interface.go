@@ -34,6 +34,7 @@ type Glue interface {
 	CreateJobWithContext(ctx context.Context, input *glue.CreateJobInput, opts ...request.Option) (*glue.CreateJobOutput, error)
 	CreateMLTransformWithContext(ctx context.Context, input *glue.CreateMLTransformInput, opts ...request.Option) (*glue.CreateMLTransformOutput, error)
 	CreatePartitionWithContext(ctx context.Context, input *glue.CreatePartitionInput, opts ...request.Option) (*glue.CreatePartitionOutput, error)
+	CreatePartitionIndexWithContext(ctx context.Context, input *glue.CreatePartitionIndexInput, opts ...request.Option) (*glue.CreatePartitionIndexOutput, error)
 	CreateRegistryWithContext(ctx context.Context, input *glue.CreateRegistryInput, opts ...request.Option) (*glue.CreateRegistryOutput, error)
 	CreateSchemaWithContext(ctx context.Context, input *glue.CreateSchemaInput, opts ...request.Option) (*glue.CreateSchemaOutput, error)
 	CreateScriptWithContext(ctx context.Context, input *glue.CreateScriptInput, opts ...request.Option) (*glue.CreateScriptOutput, error)
@@ -52,6 +53,7 @@ type Glue interface {
 	DeleteJobWithContext(ctx context.Context, input *glue.DeleteJobInput, opts ...request.Option) (*glue.DeleteJobOutput, error)
 	DeleteMLTransformWithContext(ctx context.Context, input *glue.DeleteMLTransformInput, opts ...request.Option) (*glue.DeleteMLTransformOutput, error)
 	DeletePartitionWithContext(ctx context.Context, input *glue.DeletePartitionInput, opts ...request.Option) (*glue.DeletePartitionOutput, error)
+	DeletePartitionIndexWithContext(ctx context.Context, input *glue.DeletePartitionIndexInput, opts ...request.Option) (*glue.DeletePartitionIndexOutput, error)
 	DeleteRegistryWithContext(ctx context.Context, input *glue.DeleteRegistryInput, opts ...request.Option) (*glue.DeleteRegistryOutput, error)
 	DeleteResourcePolicyWithContext(ctx context.Context, input *glue.DeleteResourcePolicyInput, opts ...request.Option) (*glue.DeleteResourcePolicyOutput, error)
 	DeleteSchemaWithContext(ctx context.Context, input *glue.DeleteSchemaInput, opts ...request.Option) (*glue.DeleteSchemaOutput, error)
@@ -695,6 +697,27 @@ func (c *Client) CreatePartitionWithContext(ctx context.Context, input *glue.Cre
 	return req.Output.(*glue.CreatePartitionOutput), req.Error
 }
 
+func (c *Client) CreatePartitionIndexWithContext(ctx context.Context, input *glue.CreatePartitionIndexInput, opts ...request.Option) (*glue.CreatePartitionIndexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreatePartitionIndex",
+		Input:   input,
+		Output:  (*glue.CreatePartitionIndexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreatePartitionIndexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreatePartitionIndexOutput), req.Error
+}
+
 func (c *Client) CreateRegistryWithContext(ctx context.Context, input *glue.CreateRegistryInput, opts ...request.Option) (*glue.CreateRegistryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1071,6 +1094,27 @@ func (c *Client) DeletePartitionWithContext(ctx context.Context, input *glue.Del
 	})
 
 	return req.Output.(*glue.DeletePartitionOutput), req.Error
+}
+
+func (c *Client) DeletePartitionIndexWithContext(ctx context.Context, input *glue.DeletePartitionIndexInput, opts ...request.Option) (*glue.DeletePartitionIndexOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeletePartitionIndex",
+		Input:   input,
+		Output:  (*glue.DeletePartitionIndexOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeletePartitionIndexWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeletePartitionIndexOutput), req.Error
 }
 
 func (c *Client) DeleteRegistryWithContext(ctx context.Context, input *glue.DeleteRegistryInput, opts ...request.Option) (*glue.DeleteRegistryOutput, error) {

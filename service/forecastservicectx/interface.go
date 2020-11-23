@@ -17,18 +17,21 @@ type ForecastService interface {
 	CreateForecastWithContext(ctx context.Context, input *forecastservice.CreateForecastInput, opts ...request.Option) (*forecastservice.CreateForecastOutput, error)
 	CreateForecastExportJobWithContext(ctx context.Context, input *forecastservice.CreateForecastExportJobInput, opts ...request.Option) (*forecastservice.CreateForecastExportJobOutput, error)
 	CreatePredictorWithContext(ctx context.Context, input *forecastservice.CreatePredictorInput, opts ...request.Option) (*forecastservice.CreatePredictorOutput, error)
+	CreatePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.CreatePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.CreatePredictorBacktestExportJobOutput, error)
 	DeleteDatasetWithContext(ctx context.Context, input *forecastservice.DeleteDatasetInput, opts ...request.Option) (*forecastservice.DeleteDatasetOutput, error)
 	DeleteDatasetGroupWithContext(ctx context.Context, input *forecastservice.DeleteDatasetGroupInput, opts ...request.Option) (*forecastservice.DeleteDatasetGroupOutput, error)
 	DeleteDatasetImportJobWithContext(ctx context.Context, input *forecastservice.DeleteDatasetImportJobInput, opts ...request.Option) (*forecastservice.DeleteDatasetImportJobOutput, error)
 	DeleteForecastWithContext(ctx context.Context, input *forecastservice.DeleteForecastInput, opts ...request.Option) (*forecastservice.DeleteForecastOutput, error)
 	DeleteForecastExportJobWithContext(ctx context.Context, input *forecastservice.DeleteForecastExportJobInput, opts ...request.Option) (*forecastservice.DeleteForecastExportJobOutput, error)
 	DeletePredictorWithContext(ctx context.Context, input *forecastservice.DeletePredictorInput, opts ...request.Option) (*forecastservice.DeletePredictorOutput, error)
+	DeletePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DeletePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DeletePredictorBacktestExportJobOutput, error)
 	DescribeDatasetWithContext(ctx context.Context, input *forecastservice.DescribeDatasetInput, opts ...request.Option) (*forecastservice.DescribeDatasetOutput, error)
 	DescribeDatasetGroupWithContext(ctx context.Context, input *forecastservice.DescribeDatasetGroupInput, opts ...request.Option) (*forecastservice.DescribeDatasetGroupOutput, error)
 	DescribeDatasetImportJobWithContext(ctx context.Context, input *forecastservice.DescribeDatasetImportJobInput, opts ...request.Option) (*forecastservice.DescribeDatasetImportJobOutput, error)
 	DescribeForecastWithContext(ctx context.Context, input *forecastservice.DescribeForecastInput, opts ...request.Option) (*forecastservice.DescribeForecastOutput, error)
 	DescribeForecastExportJobWithContext(ctx context.Context, input *forecastservice.DescribeForecastExportJobInput, opts ...request.Option) (*forecastservice.DescribeForecastExportJobOutput, error)
 	DescribePredictorWithContext(ctx context.Context, input *forecastservice.DescribePredictorInput, opts ...request.Option) (*forecastservice.DescribePredictorOutput, error)
+	DescribePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DescribePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DescribePredictorBacktestExportJobOutput, error)
 	GetAccuracyMetricsWithContext(ctx context.Context, input *forecastservice.GetAccuracyMetricsInput, opts ...request.Option) (*forecastservice.GetAccuracyMetricsOutput, error)
 	ListDatasetGroupsWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, opts ...request.Option) (*forecastservice.ListDatasetGroupsOutput, error)
 	ListDatasetGroupsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, cb func(*forecastservice.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error
@@ -40,6 +43,8 @@ type ForecastService interface {
 	ListForecastExportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastExportJobsInput, cb func(*forecastservice.ListForecastExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListForecastsWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, opts ...request.Option) (*forecastservice.ListForecastsOutput, error)
 	ListForecastsPagesWithContext(ctx context.Context, input *forecastservice.ListForecastsInput, cb func(*forecastservice.ListForecastsOutput, bool) bool, opts ...request.Option) error
+	ListPredictorBacktestExportJobsWithContext(ctx context.Context, input *forecastservice.ListPredictorBacktestExportJobsInput, opts ...request.Option) (*forecastservice.ListPredictorBacktestExportJobsOutput, error)
+	ListPredictorBacktestExportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorBacktestExportJobsInput, cb func(*forecastservice.ListPredictorBacktestExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListPredictorsWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, opts ...request.Option) (*forecastservice.ListPredictorsOutput, error)
 	ListPredictorsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, cb func(*forecastservice.ListPredictorsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *forecastservice.ListTagsForResourceInput, opts ...request.Option) (*forecastservice.ListTagsForResourceOutput, error)
@@ -189,6 +194,27 @@ func (c *Client) CreatePredictorWithContext(ctx context.Context, input *forecast
 	return req.Output.(*forecastservice.CreatePredictorOutput), req.Error
 }
 
+func (c *Client) CreatePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.CreatePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.CreatePredictorBacktestExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "CreatePredictorBacktestExportJob",
+		Input:   input,
+		Output:  (*forecastservice.CreatePredictorBacktestExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.CreatePredictorBacktestExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.CreatePredictorBacktestExportJobOutput), req.Error
+}
+
 func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *forecastservice.DeleteDatasetInput, opts ...request.Option) (*forecastservice.DeleteDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -315,6 +341,27 @@ func (c *Client) DeletePredictorWithContext(ctx context.Context, input *forecast
 	return req.Output.(*forecastservice.DeletePredictorOutput), req.Error
 }
 
+func (c *Client) DeletePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DeletePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DeletePredictorBacktestExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DeletePredictorBacktestExportJob",
+		Input:   input,
+		Output:  (*forecastservice.DeletePredictorBacktestExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DeletePredictorBacktestExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DeletePredictorBacktestExportJobOutput), req.Error
+}
+
 func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *forecastservice.DescribeDatasetInput, opts ...request.Option) (*forecastservice.DescribeDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -439,6 +486,27 @@ func (c *Client) DescribePredictorWithContext(ctx context.Context, input *foreca
 	})
 
 	return req.Output.(*forecastservice.DescribePredictorOutput), req.Error
+}
+
+func (c *Client) DescribePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DescribePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DescribePredictorBacktestExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DescribePredictorBacktestExportJob",
+		Input:   input,
+		Output:  (*forecastservice.DescribePredictorBacktestExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DescribePredictorBacktestExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DescribePredictorBacktestExportJobOutput), req.Error
 }
 
 func (c *Client) GetAccuracyMetricsWithContext(ctx context.Context, input *forecastservice.GetAccuracyMetricsInput, opts ...request.Option) (*forecastservice.GetAccuracyMetricsOutput, error) {
@@ -662,6 +730,47 @@ func (c *Client) ListForecastsPagesWithContext(ctx context.Context, input *forec
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ForecastServiceAPI.ListForecastsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPredictorBacktestExportJobsWithContext(ctx context.Context, input *forecastservice.ListPredictorBacktestExportJobsInput, opts ...request.Option) (*forecastservice.ListPredictorBacktestExportJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListPredictorBacktestExportJobs",
+		Input:   input,
+		Output:  (*forecastservice.ListPredictorBacktestExportJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.ListPredictorBacktestExportJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.ListPredictorBacktestExportJobsOutput), req.Error
+}
+
+func (c *Client) ListPredictorBacktestExportJobsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorBacktestExportJobsInput, cb func(*forecastservice.ListPredictorBacktestExportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListPredictorBacktestExportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListPredictorBacktestExportJobsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

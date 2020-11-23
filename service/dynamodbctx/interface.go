@@ -11,6 +11,7 @@ import (
 )
 
 type DynamoDB interface {
+	BatchExecuteStatementWithContext(ctx context.Context, input *dynamodb.BatchExecuteStatementInput, opts ...request.Option) (*dynamodb.BatchExecuteStatementOutput, error)
 	BatchGetItemWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, opts ...request.Option) (*dynamodb.BatchGetItemOutput, error)
 	BatchGetItemPagesWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, cb func(*dynamodb.BatchGetItemOutput, bool) bool, opts ...request.Option) error
 	BatchWriteItemWithContext(ctx context.Context, input *dynamodb.BatchWriteItemInput, opts ...request.Option) (*dynamodb.BatchWriteItemOutput, error)
@@ -27,10 +28,15 @@ type DynamoDB interface {
 	DescribeExportWithContext(ctx context.Context, input *dynamodb.DescribeExportInput, opts ...request.Option) (*dynamodb.DescribeExportOutput, error)
 	DescribeGlobalTableWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableOutput, error)
 	DescribeGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableSettingsOutput, error)
+	DescribeKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.DescribeKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.DescribeKinesisStreamingDestinationOutput, error)
 	DescribeLimitsWithContext(ctx context.Context, input *dynamodb.DescribeLimitsInput, opts ...request.Option) (*dynamodb.DescribeLimitsOutput, error)
 	DescribeTableWithContext(ctx context.Context, input *dynamodb.DescribeTableInput, opts ...request.Option) (*dynamodb.DescribeTableOutput, error)
 	DescribeTableReplicaAutoScalingWithContext(ctx context.Context, input *dynamodb.DescribeTableReplicaAutoScalingInput, opts ...request.Option) (*dynamodb.DescribeTableReplicaAutoScalingOutput, error)
 	DescribeTimeToLiveWithContext(ctx context.Context, input *dynamodb.DescribeTimeToLiveInput, opts ...request.Option) (*dynamodb.DescribeTimeToLiveOutput, error)
+	DisableKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.DisableKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.DisableKinesisStreamingDestinationOutput, error)
+	EnableKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.EnableKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.EnableKinesisStreamingDestinationOutput, error)
+	ExecuteStatementWithContext(ctx context.Context, input *dynamodb.ExecuteStatementInput, opts ...request.Option) (*dynamodb.ExecuteStatementOutput, error)
+	ExecuteTransactionWithContext(ctx context.Context, input *dynamodb.ExecuteTransactionInput, opts ...request.Option) (*dynamodb.ExecuteTransactionOutput, error)
 	ExportTableToPointInTimeWithContext(ctx context.Context, input *dynamodb.ExportTableToPointInTimeInput, opts ...request.Option) (*dynamodb.ExportTableToPointInTimeOutput, error)
 	GetItemWithContext(ctx context.Context, input *dynamodb.GetItemInput, opts ...request.Option) (*dynamodb.GetItemOutput, error)
 	ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error)
@@ -77,6 +83,27 @@ func New(base dynamodbiface.DynamoDBAPI, ctxer awsctx.Contexter) DynamoDB {
 
 var _ DynamoDB = (*dynamodb.DynamoDB)(nil)
 var _ DynamoDB = (*Client)(nil)
+
+func (c *Client) BatchExecuteStatementWithContext(ctx context.Context, input *dynamodb.BatchExecuteStatementInput, opts ...request.Option) (*dynamodb.BatchExecuteStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "BatchExecuteStatement",
+		Input:   input,
+		Output:  (*dynamodb.BatchExecuteStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.BatchExecuteStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.BatchExecuteStatementOutput), req.Error
+}
 
 func (c *Client) BatchGetItemWithContext(ctx context.Context, input *dynamodb.BatchGetItemInput, opts ...request.Option) (*dynamodb.BatchGetItemOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -413,6 +440,27 @@ func (c *Client) DescribeGlobalTableSettingsWithContext(ctx context.Context, inp
 	return req.Output.(*dynamodb.DescribeGlobalTableSettingsOutput), req.Error
 }
 
+func (c *Client) DescribeKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.DescribeKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.DescribeKinesisStreamingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "DescribeKinesisStreamingDestination",
+		Input:   input,
+		Output:  (*dynamodb.DescribeKinesisStreamingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.DescribeKinesisStreamingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.DescribeKinesisStreamingDestinationOutput), req.Error
+}
+
 func (c *Client) DescribeLimitsWithContext(ctx context.Context, input *dynamodb.DescribeLimitsInput, opts ...request.Option) (*dynamodb.DescribeLimitsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
@@ -495,6 +543,90 @@ func (c *Client) DescribeTimeToLiveWithContext(ctx context.Context, input *dynam
 	})
 
 	return req.Output.(*dynamodb.DescribeTimeToLiveOutput), req.Error
+}
+
+func (c *Client) DisableKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.DisableKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.DisableKinesisStreamingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "DisableKinesisStreamingDestination",
+		Input:   input,
+		Output:  (*dynamodb.DisableKinesisStreamingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.DisableKinesisStreamingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.DisableKinesisStreamingDestinationOutput), req.Error
+}
+
+func (c *Client) EnableKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.EnableKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.EnableKinesisStreamingDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "EnableKinesisStreamingDestination",
+		Input:   input,
+		Output:  (*dynamodb.EnableKinesisStreamingDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.EnableKinesisStreamingDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.EnableKinesisStreamingDestinationOutput), req.Error
+}
+
+func (c *Client) ExecuteStatementWithContext(ctx context.Context, input *dynamodb.ExecuteStatementInput, opts ...request.Option) (*dynamodb.ExecuteStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ExecuteStatement",
+		Input:   input,
+		Output:  (*dynamodb.ExecuteStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.ExecuteStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.ExecuteStatementOutput), req.Error
+}
+
+func (c *Client) ExecuteTransactionWithContext(ctx context.Context, input *dynamodb.ExecuteTransactionInput, opts ...request.Option) (*dynamodb.ExecuteTransactionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ExecuteTransaction",
+		Input:   input,
+		Output:  (*dynamodb.ExecuteTransactionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.ExecuteTransactionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.ExecuteTransactionOutput), req.Error
 }
 
 func (c *Client) ExportTableToPointInTimeWithContext(ctx context.Context, input *dynamodb.ExportTableToPointInTimeInput, opts ...request.Option) (*dynamodb.ExportTableToPointInTimeOutput, error) {

@@ -14,19 +14,24 @@ type Lambda interface {
 	AddLayerVersionPermissionWithContext(ctx context.Context, input *lambda.AddLayerVersionPermissionInput, opts ...request.Option) (*lambda.AddLayerVersionPermissionOutput, error)
 	AddPermissionWithContext(ctx context.Context, input *lambda.AddPermissionInput, opts ...request.Option) (*lambda.AddPermissionOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *lambda.CreateAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error)
+	CreateCodeSigningConfigWithContext(ctx context.Context, input *lambda.CreateCodeSigningConfigInput, opts ...request.Option) (*lambda.CreateCodeSigningConfigOutput, error)
 	CreateEventSourceMappingWithContext(ctx context.Context, input *lambda.CreateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
 	CreateFunctionWithContext(ctx context.Context, input *lambda.CreateFunctionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	DeleteAliasWithContext(ctx context.Context, input *lambda.DeleteAliasInput, opts ...request.Option) (*lambda.DeleteAliasOutput, error)
+	DeleteCodeSigningConfigWithContext(ctx context.Context, input *lambda.DeleteCodeSigningConfigInput, opts ...request.Option) (*lambda.DeleteCodeSigningConfigOutput, error)
 	DeleteEventSourceMappingWithContext(ctx context.Context, input *lambda.DeleteEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
 	DeleteFunctionWithContext(ctx context.Context, input *lambda.DeleteFunctionInput, opts ...request.Option) (*lambda.DeleteFunctionOutput, error)
+	DeleteFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.DeleteFunctionCodeSigningConfigOutput, error)
 	DeleteFunctionConcurrencyWithContext(ctx context.Context, input *lambda.DeleteFunctionConcurrencyInput, opts ...request.Option) (*lambda.DeleteFunctionConcurrencyOutput, error)
 	DeleteFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.DeleteFunctionEventInvokeConfigOutput, error)
 	DeleteLayerVersionWithContext(ctx context.Context, input *lambda.DeleteLayerVersionInput, opts ...request.Option) (*lambda.DeleteLayerVersionOutput, error)
 	DeleteProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.DeleteProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.DeleteProvisionedConcurrencyConfigOutput, error)
 	GetAccountSettingsWithContext(ctx context.Context, input *lambda.GetAccountSettingsInput, opts ...request.Option) (*lambda.GetAccountSettingsOutput, error)
 	GetAliasWithContext(ctx context.Context, input *lambda.GetAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error)
+	GetCodeSigningConfigWithContext(ctx context.Context, input *lambda.GetCodeSigningConfigInput, opts ...request.Option) (*lambda.GetCodeSigningConfigOutput, error)
 	GetEventSourceMappingWithContext(ctx context.Context, input *lambda.GetEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
 	GetFunctionWithContext(ctx context.Context, input *lambda.GetFunctionInput, opts ...request.Option) (*lambda.GetFunctionOutput, error)
+	GetFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.GetFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.GetFunctionCodeSigningConfigOutput, error)
 	GetFunctionConcurrencyWithContext(ctx context.Context, input *lambda.GetFunctionConcurrencyInput, opts ...request.Option) (*lambda.GetFunctionConcurrencyOutput, error)
 	GetFunctionConfigurationWithContext(ctx context.Context, input *lambda.GetFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	GetFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.GetFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.GetFunctionEventInvokeConfigOutput, error)
@@ -39,12 +44,16 @@ type Lambda interface {
 	InvokeAsyncWithContext(ctx context.Context, input *lambda.InvokeAsyncInput, opts ...request.Option) (*lambda.InvokeAsyncOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error)
 	ListAliasesPagesWithContext(ctx context.Context, input *lambda.ListAliasesInput, cb func(*lambda.ListAliasesOutput, bool) bool, opts ...request.Option) error
+	ListCodeSigningConfigsWithContext(ctx context.Context, input *lambda.ListCodeSigningConfigsInput, opts ...request.Option) (*lambda.ListCodeSigningConfigsOutput, error)
+	ListCodeSigningConfigsPagesWithContext(ctx context.Context, input *lambda.ListCodeSigningConfigsInput, cb func(*lambda.ListCodeSigningConfigsOutput, bool) bool, opts ...request.Option) error
 	ListEventSourceMappingsWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, opts ...request.Option) (*lambda.ListEventSourceMappingsOutput, error)
 	ListEventSourceMappingsPagesWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, cb func(*lambda.ListEventSourceMappingsOutput, bool) bool, opts ...request.Option) error
 	ListFunctionEventInvokeConfigsWithContext(ctx context.Context, input *lambda.ListFunctionEventInvokeConfigsInput, opts ...request.Option) (*lambda.ListFunctionEventInvokeConfigsOutput, error)
 	ListFunctionEventInvokeConfigsPagesWithContext(ctx context.Context, input *lambda.ListFunctionEventInvokeConfigsInput, cb func(*lambda.ListFunctionEventInvokeConfigsOutput, bool) bool, opts ...request.Option) error
 	ListFunctionsWithContext(ctx context.Context, input *lambda.ListFunctionsInput, opts ...request.Option) (*lambda.ListFunctionsOutput, error)
 	ListFunctionsPagesWithContext(ctx context.Context, input *lambda.ListFunctionsInput, cb func(*lambda.ListFunctionsOutput, bool) bool, opts ...request.Option) error
+	ListFunctionsByCodeSigningConfigWithContext(ctx context.Context, input *lambda.ListFunctionsByCodeSigningConfigInput, opts ...request.Option) (*lambda.ListFunctionsByCodeSigningConfigOutput, error)
+	ListFunctionsByCodeSigningConfigPagesWithContext(ctx context.Context, input *lambda.ListFunctionsByCodeSigningConfigInput, cb func(*lambda.ListFunctionsByCodeSigningConfigOutput, bool) bool, opts ...request.Option) error
 	ListLayerVersionsWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, opts ...request.Option) (*lambda.ListLayerVersionsOutput, error)
 	ListLayerVersionsPagesWithContext(ctx context.Context, input *lambda.ListLayerVersionsInput, cb func(*lambda.ListLayerVersionsOutput, bool) bool, opts ...request.Option) error
 	ListLayersWithContext(ctx context.Context, input *lambda.ListLayersInput, opts ...request.Option) (*lambda.ListLayersOutput, error)
@@ -56,6 +65,7 @@ type Lambda interface {
 	ListVersionsByFunctionPagesWithContext(ctx context.Context, input *lambda.ListVersionsByFunctionInput, cb func(*lambda.ListVersionsByFunctionOutput, bool) bool, opts ...request.Option) error
 	PublishLayerVersionWithContext(ctx context.Context, input *lambda.PublishLayerVersionInput, opts ...request.Option) (*lambda.PublishLayerVersionOutput, error)
 	PublishVersionWithContext(ctx context.Context, input *lambda.PublishVersionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
+	PutFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.PutFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.PutFunctionCodeSigningConfigOutput, error)
 	PutFunctionConcurrencyWithContext(ctx context.Context, input *lambda.PutFunctionConcurrencyInput, opts ...request.Option) (*lambda.PutFunctionConcurrencyOutput, error)
 	PutFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.PutFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.PutFunctionEventInvokeConfigOutput, error)
 	PutProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.PutProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.PutProvisionedConcurrencyConfigOutput, error)
@@ -64,6 +74,7 @@ type Lambda interface {
 	TagResourceWithContext(ctx context.Context, input *lambda.TagResourceInput, opts ...request.Option) (*lambda.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *lambda.UntagResourceInput, opts ...request.Option) (*lambda.UntagResourceOutput, error)
 	UpdateAliasWithContext(ctx context.Context, input *lambda.UpdateAliasInput, opts ...request.Option) (*lambda.AliasConfiguration, error)
+	UpdateCodeSigningConfigWithContext(ctx context.Context, input *lambda.UpdateCodeSigningConfigInput, opts ...request.Option) (*lambda.UpdateCodeSigningConfigOutput, error)
 	UpdateEventSourceMappingWithContext(ctx context.Context, input *lambda.UpdateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
 	UpdateFunctionCodeWithContext(ctx context.Context, input *lambda.UpdateFunctionCodeInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	UpdateFunctionConfigurationWithContext(ctx context.Context, input *lambda.UpdateFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
@@ -148,6 +159,27 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *lambda.Creat
 	return req.Output.(*lambda.AliasConfiguration), req.Error
 }
 
+func (c *Client) CreateCodeSigningConfigWithContext(ctx context.Context, input *lambda.CreateCodeSigningConfigInput, opts ...request.Option) (*lambda.CreateCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "CreateCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.CreateCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.CreateCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.CreateCodeSigningConfigOutput), req.Error
+}
+
 func (c *Client) CreateEventSourceMappingWithContext(ctx context.Context, input *lambda.CreateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -211,6 +243,27 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *lambda.Delet
 	return req.Output.(*lambda.DeleteAliasOutput), req.Error
 }
 
+func (c *Client) DeleteCodeSigningConfigWithContext(ctx context.Context, input *lambda.DeleteCodeSigningConfigInput, opts ...request.Option) (*lambda.DeleteCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "DeleteCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.DeleteCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.DeleteCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.DeleteCodeSigningConfigOutput), req.Error
+}
+
 func (c *Client) DeleteEventSourceMappingWithContext(ctx context.Context, input *lambda.DeleteEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -251,6 +304,27 @@ func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *lambda.De
 	})
 
 	return req.Output.(*lambda.DeleteFunctionOutput), req.Error
+}
+
+func (c *Client) DeleteFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.DeleteFunctionCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "DeleteFunctionCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.DeleteFunctionCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.DeleteFunctionCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.DeleteFunctionCodeSigningConfigOutput), req.Error
 }
 
 func (c *Client) DeleteFunctionConcurrencyWithContext(ctx context.Context, input *lambda.DeleteFunctionConcurrencyInput, opts ...request.Option) (*lambda.DeleteFunctionConcurrencyOutput, error) {
@@ -379,6 +453,27 @@ func (c *Client) GetAliasWithContext(ctx context.Context, input *lambda.GetAlias
 	return req.Output.(*lambda.AliasConfiguration), req.Error
 }
 
+func (c *Client) GetCodeSigningConfigWithContext(ctx context.Context, input *lambda.GetCodeSigningConfigInput, opts ...request.Option) (*lambda.GetCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "GetCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.GetCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.GetCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.GetCodeSigningConfigOutput), req.Error
+}
+
 func (c *Client) GetEventSourceMappingWithContext(ctx context.Context, input *lambda.GetEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -419,6 +514,27 @@ func (c *Client) GetFunctionWithContext(ctx context.Context, input *lambda.GetFu
 	})
 
 	return req.Output.(*lambda.GetFunctionOutput), req.Error
+}
+
+func (c *Client) GetFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.GetFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.GetFunctionCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "GetFunctionCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.GetFunctionCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.GetFunctionCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.GetFunctionCodeSigningConfigOutput), req.Error
 }
 
 func (c *Client) GetFunctionConcurrencyWithContext(ctx context.Context, input *lambda.GetFunctionConcurrencyInput, opts ...request.Option) (*lambda.GetFunctionConcurrencyOutput, error) {
@@ -672,6 +788,47 @@ func (c *Client) ListAliasesPagesWithContext(ctx context.Context, input *lambda.
 	return req.Error
 }
 
+func (c *Client) ListCodeSigningConfigsWithContext(ctx context.Context, input *lambda.ListCodeSigningConfigsInput, opts ...request.Option) (*lambda.ListCodeSigningConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListCodeSigningConfigs",
+		Input:   input,
+		Output:  (*lambda.ListCodeSigningConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.ListCodeSigningConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.ListCodeSigningConfigsOutput), req.Error
+}
+
+func (c *Client) ListCodeSigningConfigsPagesWithContext(ctx context.Context, input *lambda.ListCodeSigningConfigsInput, cb func(*lambda.ListCodeSigningConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListCodeSigningConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListCodeSigningConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListEventSourceMappingsWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, opts ...request.Option) (*lambda.ListEventSourceMappingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -790,6 +947,47 @@ func (c *Client) ListFunctionsPagesWithContext(ctx context.Context, input *lambd
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.LambdaAPI.ListFunctionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFunctionsByCodeSigningConfigWithContext(ctx context.Context, input *lambda.ListFunctionsByCodeSigningConfigInput, opts ...request.Option) (*lambda.ListFunctionsByCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListFunctionsByCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.ListFunctionsByCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.ListFunctionsByCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.ListFunctionsByCodeSigningConfigOutput), req.Error
+}
+
+func (c *Client) ListFunctionsByCodeSigningConfigPagesWithContext(ctx context.Context, input *lambda.ListFunctionsByCodeSigningConfigInput, cb func(*lambda.ListFunctionsByCodeSigningConfigOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListFunctionsByCodeSigningConfig",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListFunctionsByCodeSigningConfigPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1022,6 +1220,27 @@ func (c *Client) PublishVersionWithContext(ctx context.Context, input *lambda.Pu
 	return req.Output.(*lambda.FunctionConfiguration), req.Error
 }
 
+func (c *Client) PutFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.PutFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.PutFunctionCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "PutFunctionCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.PutFunctionCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.PutFunctionCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.PutFunctionCodeSigningConfigOutput), req.Error
+}
+
 func (c *Client) PutFunctionConcurrencyWithContext(ctx context.Context, input *lambda.PutFunctionConcurrencyInput, opts ...request.Option) (*lambda.PutFunctionConcurrencyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -1188,6 +1407,27 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, input *lambda.Updat
 	})
 
 	return req.Output.(*lambda.AliasConfiguration), req.Error
+}
+
+func (c *Client) UpdateCodeSigningConfigWithContext(ctx context.Context, input *lambda.UpdateCodeSigningConfigInput, opts ...request.Option) (*lambda.UpdateCodeSigningConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "UpdateCodeSigningConfig",
+		Input:   input,
+		Output:  (*lambda.UpdateCodeSigningConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.UpdateCodeSigningConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.UpdateCodeSigningConfigOutput), req.Error
 }
 
 func (c *Client) UpdateEventSourceMappingWithContext(ctx context.Context, input *lambda.UpdateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error) {
