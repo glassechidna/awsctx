@@ -33,6 +33,7 @@ type SFN interface {
 	SendTaskHeartbeatWithContext(ctx context.Context, input *sfn.SendTaskHeartbeatInput, opts ...request.Option) (*sfn.SendTaskHeartbeatOutput, error)
 	SendTaskSuccessWithContext(ctx context.Context, input *sfn.SendTaskSuccessInput, opts ...request.Option) (*sfn.SendTaskSuccessOutput, error)
 	StartExecutionWithContext(ctx context.Context, input *sfn.StartExecutionInput, opts ...request.Option) (*sfn.StartExecutionOutput, error)
+	StartSyncExecutionWithContext(ctx context.Context, input *sfn.StartSyncExecutionInput, opts ...request.Option) (*sfn.StartSyncExecutionOutput, error)
 	StopExecutionWithContext(ctx context.Context, input *sfn.StopExecutionInput, opts ...request.Option) (*sfn.StopExecutionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *sfn.TagResourceInput, opts ...request.Option) (*sfn.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *sfn.UntagResourceInput, opts ...request.Option) (*sfn.UntagResourceOutput, error)
@@ -510,6 +511,27 @@ func (c *Client) StartExecutionWithContext(ctx context.Context, input *sfn.Start
 	})
 
 	return req.Output.(*sfn.StartExecutionOutput), req.Error
+}
+
+func (c *Client) StartSyncExecutionWithContext(ctx context.Context, input *sfn.StartSyncExecutionInput, opts ...request.Option) (*sfn.StartSyncExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "StartSyncExecution",
+		Input:   input,
+		Output:  (*sfn.StartSyncExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.StartSyncExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.StartSyncExecutionOutput), req.Error
 }
 
 func (c *Client) StopExecutionWithContext(ctx context.Context, input *sfn.StopExecutionInput, opts ...request.Option) (*sfn.StopExecutionOutput, error) {

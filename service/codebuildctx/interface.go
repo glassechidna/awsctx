@@ -31,6 +31,7 @@ type CodeBuild interface {
 	DescribeCodeCoveragesPagesWithContext(ctx context.Context, input *codebuild.DescribeCodeCoveragesInput, cb func(*codebuild.DescribeCodeCoveragesOutput, bool) bool, opts ...request.Option) error
 	DescribeTestCasesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, opts ...request.Option) (*codebuild.DescribeTestCasesOutput, error)
 	DescribeTestCasesPagesWithContext(ctx context.Context, input *codebuild.DescribeTestCasesInput, cb func(*codebuild.DescribeTestCasesOutput, bool) bool, opts ...request.Option) error
+	GetReportGroupTrendWithContext(ctx context.Context, input *codebuild.GetReportGroupTrendInput, opts ...request.Option) (*codebuild.GetReportGroupTrendOutput, error)
 	GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error)
 	ImportSourceCredentialsWithContext(ctx context.Context, input *codebuild.ImportSourceCredentialsInput, opts ...request.Option) (*codebuild.ImportSourceCredentialsOutput, error)
 	InvalidateProjectCacheWithContext(ctx context.Context, input *codebuild.InvalidateProjectCacheInput, opts ...request.Option) (*codebuild.InvalidateProjectCacheOutput, error)
@@ -499,6 +500,27 @@ func (c *Client) DescribeTestCasesPagesWithContext(ctx context.Context, input *c
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetReportGroupTrendWithContext(ctx context.Context, input *codebuild.GetReportGroupTrendInput, opts ...request.Option) (*codebuild.GetReportGroupTrendOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "GetReportGroupTrend",
+		Input:   input,
+		Output:  (*codebuild.GetReportGroupTrendOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.GetReportGroupTrendWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.GetReportGroupTrendOutput), req.Error
 }
 
 func (c *Client) GetResourcePolicyWithContext(ctx context.Context, input *codebuild.GetResourcePolicyInput, opts ...request.Option) (*codebuild.GetResourcePolicyOutput, error) {
