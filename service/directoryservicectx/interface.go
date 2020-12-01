@@ -43,9 +43,11 @@ type DirectoryService interface {
 	DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error)
 	DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error)
 	DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error)
+	DisableClientAuthenticationWithContext(ctx context.Context, input *directoryservice.DisableClientAuthenticationInput, opts ...request.Option) (*directoryservice.DisableClientAuthenticationOutput, error)
 	DisableLDAPSWithContext(ctx context.Context, input *directoryservice.DisableLDAPSInput, opts ...request.Option) (*directoryservice.DisableLDAPSOutput, error)
 	DisableRadiusWithContext(ctx context.Context, input *directoryservice.DisableRadiusInput, opts ...request.Option) (*directoryservice.DisableRadiusOutput, error)
 	DisableSsoWithContext(ctx context.Context, input *directoryservice.DisableSsoInput, opts ...request.Option) (*directoryservice.DisableSsoOutput, error)
+	EnableClientAuthenticationWithContext(ctx context.Context, input *directoryservice.EnableClientAuthenticationInput, opts ...request.Option) (*directoryservice.EnableClientAuthenticationOutput, error)
 	EnableLDAPSWithContext(ctx context.Context, input *directoryservice.EnableLDAPSInput, opts ...request.Option) (*directoryservice.EnableLDAPSOutput, error)
 	EnableRadiusWithContext(ctx context.Context, input *directoryservice.EnableRadiusInput, opts ...request.Option) (*directoryservice.EnableRadiusOutput, error)
 	EnableSsoWithContext(ctx context.Context, input *directoryservice.EnableSsoInput, opts ...request.Option) (*directoryservice.EnableSsoOutput, error)
@@ -760,6 +762,27 @@ func (c *Client) DescribeTrustsWithContext(ctx context.Context, input *directory
 	return req.Output.(*directoryservice.DescribeTrustsOutput), req.Error
 }
 
+func (c *Client) DisableClientAuthenticationWithContext(ctx context.Context, input *directoryservice.DisableClientAuthenticationInput, opts ...request.Option) (*directoryservice.DisableClientAuthenticationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DisableClientAuthentication",
+		Input:   input,
+		Output:  (*directoryservice.DisableClientAuthenticationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DisableClientAuthenticationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DisableClientAuthenticationOutput), req.Error
+}
+
 func (c *Client) DisableLDAPSWithContext(ctx context.Context, input *directoryservice.DisableLDAPSInput, opts ...request.Option) (*directoryservice.DisableLDAPSOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -821,6 +844,27 @@ func (c *Client) DisableSsoWithContext(ctx context.Context, input *directoryserv
 	})
 
 	return req.Output.(*directoryservice.DisableSsoOutput), req.Error
+}
+
+func (c *Client) EnableClientAuthenticationWithContext(ctx context.Context, input *directoryservice.EnableClientAuthenticationInput, opts ...request.Option) (*directoryservice.EnableClientAuthenticationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "EnableClientAuthentication",
+		Input:   input,
+		Output:  (*directoryservice.EnableClientAuthenticationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.EnableClientAuthenticationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.EnableClientAuthenticationOutput), req.Error
 }
 
 func (c *Client) EnableLDAPSWithContext(ctx context.Context, input *directoryservice.EnableLDAPSInput, opts ...request.Option) (*directoryservice.EnableLDAPSOutput, error) {

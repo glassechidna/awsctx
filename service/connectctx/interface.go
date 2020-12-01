@@ -19,10 +19,14 @@ type Connect interface {
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
+	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
+	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
+	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
+	DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
@@ -57,6 +61,8 @@ type Connect interface {
 	ListInstanceStorageConfigsPagesWithContext(ctx context.Context, input *connect.ListInstanceStorageConfigsInput, cb func(*connect.ListInstanceStorageConfigsOutput, bool) bool, opts ...request.Option) error
 	ListInstancesWithContext(ctx context.Context, input *connect.ListInstancesInput, opts ...request.Option) (*connect.ListInstancesOutput, error)
 	ListInstancesPagesWithContext(ctx context.Context, input *connect.ListInstancesInput, cb func(*connect.ListInstancesOutput, bool) bool, opts ...request.Option) error
+	ListIntegrationAssociationsWithContext(ctx context.Context, input *connect.ListIntegrationAssociationsInput, opts ...request.Option) (*connect.ListIntegrationAssociationsOutput, error)
+	ListIntegrationAssociationsPagesWithContext(ctx context.Context, input *connect.ListIntegrationAssociationsInput, cb func(*connect.ListIntegrationAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListLambdaFunctionsWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, opts ...request.Option) (*connect.ListLambdaFunctionsOutput, error)
 	ListLambdaFunctionsPagesWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, cb func(*connect.ListLambdaFunctionsOutput, bool) bool, opts ...request.Option) error
 	ListLexBotsWithContext(ctx context.Context, input *connect.ListLexBotsInput, opts ...request.Option) (*connect.ListLexBotsOutput, error)
@@ -76,6 +82,8 @@ type Connect interface {
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
 	ListSecurityProfilesPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, cb func(*connect.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error)
+	ListUseCasesWithContext(ctx context.Context, input *connect.ListUseCasesInput, opts ...request.Option) (*connect.ListUseCasesOutput, error)
+	ListUseCasesPagesWithContext(ctx context.Context, input *connect.ListUseCasesInput, cb func(*connect.ListUseCasesOutput, bool) bool, opts ...request.Option) error
 	ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error)
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
@@ -84,6 +92,7 @@ type Connect interface {
 	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
 	StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error)
 	StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error)
+	StartTaskContactWithContext(ctx context.Context, input *connect.StartTaskContactInput, opts ...request.Option) (*connect.StartTaskContactOutput, error)
 	StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error)
 	StopContactRecordingWithContext(ctx context.Context, input *connect.StopContactRecordingInput, opts ...request.Option) (*connect.StopContactRecordingOutput, error)
 	SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error)
@@ -290,6 +299,27 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, input *connect.C
 	return req.Output.(*connect.CreateInstanceOutput), req.Error
 }
 
+func (c *Client) CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateIntegrationAssociation",
+		Input:   input,
+		Output:  (*connect.CreateIntegrationAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateIntegrationAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateIntegrationAssociationOutput), req.Error
+}
+
 func (c *Client) CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -309,6 +339,27 @@ func (c *Client) CreateRoutingProfileWithContext(ctx context.Context, input *con
 	})
 
 	return req.Output.(*connect.CreateRoutingProfileOutput), req.Error
+}
+
+func (c *Client) CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateUseCase",
+		Input:   input,
+		Output:  (*connect.CreateUseCaseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateUseCaseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateUseCaseOutput), req.Error
 }
 
 func (c *Client) CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error) {
@@ -372,6 +423,48 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *connect.D
 	})
 
 	return req.Output.(*connect.DeleteInstanceOutput), req.Error
+}
+
+func (c *Client) DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteIntegrationAssociation",
+		Input:   input,
+		Output:  (*connect.DeleteIntegrationAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteIntegrationAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteIntegrationAssociationOutput), req.Error
+}
+
+func (c *Client) DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteUseCase",
+		Input:   input,
+		Output:  (*connect.DeleteUseCaseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteUseCaseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteUseCaseOutput), req.Error
 }
 
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error) {
@@ -1080,6 +1173,47 @@ func (c *Client) ListInstancesPagesWithContext(ctx context.Context, input *conne
 	return req.Error
 }
 
+func (c *Client) ListIntegrationAssociationsWithContext(ctx context.Context, input *connect.ListIntegrationAssociationsInput, opts ...request.Option) (*connect.ListIntegrationAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListIntegrationAssociations",
+		Input:   input,
+		Output:  (*connect.ListIntegrationAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListIntegrationAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListIntegrationAssociationsOutput), req.Error
+}
+
+func (c *Client) ListIntegrationAssociationsPagesWithContext(ctx context.Context, input *connect.ListIntegrationAssociationsInput, cb func(*connect.ListIntegrationAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListIntegrationAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListIntegrationAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLambdaFunctionsWithContext(ctx context.Context, input *connect.ListLambdaFunctionsInput, opts ...request.Option) (*connect.ListLambdaFunctionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1470,6 +1604,47 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *conn
 	return req.Output.(*connect.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListUseCasesWithContext(ctx context.Context, input *connect.ListUseCasesInput, opts ...request.Option) (*connect.ListUseCasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListUseCases",
+		Input:   input,
+		Output:  (*connect.ListUseCasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListUseCasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListUseCasesOutput), req.Error
+}
+
+func (c *Client) ListUseCasesPagesWithContext(ctx context.Context, input *connect.ListUseCasesInput, cb func(*connect.ListUseCasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListUseCases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListUseCasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1634,6 +1809,27 @@ func (c *Client) StartOutboundVoiceContactWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*connect.StartOutboundVoiceContactOutput), req.Error
+}
+
+func (c *Client) StartTaskContactWithContext(ctx context.Context, input *connect.StartTaskContactInput, opts ...request.Option) (*connect.StartTaskContactOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StartTaskContact",
+		Input:   input,
+		Output:  (*connect.StartTaskContactOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StartTaskContactWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StartTaskContactOutput), req.Error
 }
 
 func (c *Client) StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error) {

@@ -11,16 +11,23 @@ import (
 )
 
 type EKS interface {
+	CreateAddonWithContext(ctx context.Context, input *eks.CreateAddonInput, opts ...request.Option) (*eks.CreateAddonOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error)
 	CreateFargateProfileWithContext(ctx context.Context, input *eks.CreateFargateProfileInput, opts ...request.Option) (*eks.CreateFargateProfileOutput, error)
 	CreateNodegroupWithContext(ctx context.Context, input *eks.CreateNodegroupInput, opts ...request.Option) (*eks.CreateNodegroupOutput, error)
+	DeleteAddonWithContext(ctx context.Context, input *eks.DeleteAddonInput, opts ...request.Option) (*eks.DeleteAddonOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error)
 	DeleteFargateProfileWithContext(ctx context.Context, input *eks.DeleteFargateProfileInput, opts ...request.Option) (*eks.DeleteFargateProfileOutput, error)
 	DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error)
+	DescribeAddonWithContext(ctx context.Context, input *eks.DescribeAddonInput, opts ...request.Option) (*eks.DescribeAddonOutput, error)
+	DescribeAddonVersionsWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, opts ...request.Option) (*eks.DescribeAddonVersionsOutput, error)
+	DescribeAddonVersionsPagesWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, cb func(*eks.DescribeAddonVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
 	DescribeFargateProfileWithContext(ctx context.Context, input *eks.DescribeFargateProfileInput, opts ...request.Option) (*eks.DescribeFargateProfileOutput, error)
 	DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error)
 	DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error)
+	ListAddonsWithContext(ctx context.Context, input *eks.ListAddonsInput, opts ...request.Option) (*eks.ListAddonsOutput, error)
+	ListAddonsPagesWithContext(ctx context.Context, input *eks.ListAddonsInput, cb func(*eks.ListAddonsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListFargateProfilesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, opts ...request.Option) (*eks.ListFargateProfilesOutput, error)
@@ -32,6 +39,7 @@ type EKS interface {
 	ListUpdatesPagesWithContext(ctx context.Context, input *eks.ListUpdatesInput, cb func(*eks.ListUpdatesOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *eks.UntagResourceInput, opts ...request.Option) (*eks.UntagResourceOutput, error)
+	UpdateAddonWithContext(ctx context.Context, input *eks.UpdateAddonInput, opts ...request.Option) (*eks.UpdateAddonOutput, error)
 	UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error)
 	UpdateClusterVersionWithContext(ctx context.Context, input *eks.UpdateClusterVersionInput, opts ...request.Option) (*eks.UpdateClusterVersionOutput, error)
 	UpdateNodegroupConfigWithContext(ctx context.Context, input *eks.UpdateNodegroupConfigInput, opts ...request.Option) (*eks.UpdateNodegroupConfigOutput, error)
@@ -52,6 +60,27 @@ func New(base eksiface.EKSAPI, ctxer awsctx.Contexter) EKS {
 
 var _ EKS = (*eks.EKS)(nil)
 var _ EKS = (*Client)(nil)
+
+func (c *Client) CreateAddonWithContext(ctx context.Context, input *eks.CreateAddonInput, opts ...request.Option) (*eks.CreateAddonOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "CreateAddon",
+		Input:   input,
+		Output:  (*eks.CreateAddonOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.CreateAddonWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.CreateAddonOutput), req.Error
+}
 
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -116,6 +145,27 @@ func (c *Client) CreateNodegroupWithContext(ctx context.Context, input *eks.Crea
 	return req.Output.(*eks.CreateNodegroupOutput), req.Error
 }
 
+func (c *Client) DeleteAddonWithContext(ctx context.Context, input *eks.DeleteAddonInput, opts ...request.Option) (*eks.DeleteAddonOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DeleteAddon",
+		Input:   input,
+		Output:  (*eks.DeleteAddonOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DeleteAddonWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DeleteAddonOutput), req.Error
+}
+
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -177,6 +227,68 @@ func (c *Client) DeleteNodegroupWithContext(ctx context.Context, input *eks.Dele
 	})
 
 	return req.Output.(*eks.DeleteNodegroupOutput), req.Error
+}
+
+func (c *Client) DescribeAddonWithContext(ctx context.Context, input *eks.DescribeAddonInput, opts ...request.Option) (*eks.DescribeAddonOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeAddon",
+		Input:   input,
+		Output:  (*eks.DescribeAddonOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeAddonWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeAddonOutput), req.Error
+}
+
+func (c *Client) DescribeAddonVersionsWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, opts ...request.Option) (*eks.DescribeAddonVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeAddonVersions",
+		Input:   input,
+		Output:  (*eks.DescribeAddonVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeAddonVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeAddonVersionsOutput), req.Error
+}
+
+func (c *Client) DescribeAddonVersionsPagesWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, cb func(*eks.DescribeAddonVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeAddonVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.DescribeAddonVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error) {
@@ -261,6 +373,47 @@ func (c *Client) DescribeUpdateWithContext(ctx context.Context, input *eks.Descr
 	})
 
 	return req.Output.(*eks.DescribeUpdateOutput), req.Error
+}
+
+func (c *Client) ListAddonsWithContext(ctx context.Context, input *eks.ListAddonsInput, opts ...request.Option) (*eks.ListAddonsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListAddons",
+		Input:   input,
+		Output:  (*eks.ListAddonsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.ListAddonsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.ListAddonsOutput), req.Error
+}
+
+func (c *Client) ListAddonsPagesWithContext(ctx context.Context, input *eks.ListAddonsInput, cb func(*eks.ListAddonsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListAddons",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.ListAddonsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error) {
@@ -488,6 +641,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *eks.UntagR
 	})
 
 	return req.Output.(*eks.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAddonWithContext(ctx context.Context, input *eks.UpdateAddonInput, opts ...request.Option) (*eks.UpdateAddonOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "UpdateAddon",
+		Input:   input,
+		Output:  (*eks.UpdateAddonOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.UpdateAddonWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.UpdateAddonOutput), req.Error
 }
 
 func (c *Client) UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error) {
