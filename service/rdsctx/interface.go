@@ -171,10 +171,12 @@ type RDS interface {
 	StartActivityStreamWithContext(ctx context.Context, input *rds.StartActivityStreamInput, opts ...request.Option) (*rds.StartActivityStreamOutput, error)
 	StartDBClusterWithContext(ctx context.Context, input *rds.StartDBClusterInput, opts ...request.Option) (*rds.StartDBClusterOutput, error)
 	StartDBInstanceWithContext(ctx context.Context, input *rds.StartDBInstanceInput, opts ...request.Option) (*rds.StartDBInstanceOutput, error)
+	StartDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StartDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StartDBInstanceAutomatedBackupsReplicationOutput, error)
 	StartExportTaskWithContext(ctx context.Context, input *rds.StartExportTaskInput, opts ...request.Option) (*rds.StartExportTaskOutput, error)
 	StopActivityStreamWithContext(ctx context.Context, input *rds.StopActivityStreamInput, opts ...request.Option) (*rds.StopActivityStreamOutput, error)
 	StopDBClusterWithContext(ctx context.Context, input *rds.StopDBClusterInput, opts ...request.Option) (*rds.StopDBClusterOutput, error)
 	StopDBInstanceWithContext(ctx context.Context, input *rds.StopDBInstanceInput, opts ...request.Option) (*rds.StopDBInstanceOutput, error)
+	StopDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StopDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error)
 }
 
 type Client struct {
@@ -3518,6 +3520,27 @@ func (c *Client) StartDBInstanceWithContext(ctx context.Context, input *rds.Star
 	return req.Output.(*rds.StartDBInstanceOutput), req.Error
 }
 
+func (c *Client) StartDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StartDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StartDBInstanceAutomatedBackupsReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "StartDBInstanceAutomatedBackupsReplication",
+		Input:   input,
+		Output:  (*rds.StartDBInstanceAutomatedBackupsReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.StartDBInstanceAutomatedBackupsReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.StartDBInstanceAutomatedBackupsReplicationOutput), req.Error
+}
+
 func (c *Client) StartExportTaskWithContext(ctx context.Context, input *rds.StartExportTaskInput, opts ...request.Option) (*rds.StartExportTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -3600,4 +3623,25 @@ func (c *Client) StopDBInstanceWithContext(ctx context.Context, input *rds.StopD
 	})
 
 	return req.Output.(*rds.StopDBInstanceOutput), req.Error
+}
+
+func (c *Client) StopDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StopDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "StopDBInstanceAutomatedBackupsReplication",
+		Input:   input,
+		Output:  (*rds.StopDBInstanceAutomatedBackupsReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.StopDBInstanceAutomatedBackupsReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.StopDBInstanceAutomatedBackupsReplicationOutput), req.Error
 }
