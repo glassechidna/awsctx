@@ -17,12 +17,14 @@ type ECR interface {
 	CompleteLayerUploadWithContext(ctx context.Context, input *ecr.CompleteLayerUploadInput, opts ...request.Option) (*ecr.CompleteLayerUploadOutput, error)
 	CreateRepositoryWithContext(ctx context.Context, input *ecr.CreateRepositoryInput, opts ...request.Option) (*ecr.CreateRepositoryOutput, error)
 	DeleteLifecyclePolicyWithContext(ctx context.Context, input *ecr.DeleteLifecyclePolicyInput, opts ...request.Option) (*ecr.DeleteLifecyclePolicyOutput, error)
+	DeleteRegistryPolicyWithContext(ctx context.Context, input *ecr.DeleteRegistryPolicyInput, opts ...request.Option) (*ecr.DeleteRegistryPolicyOutput, error)
 	DeleteRepositoryWithContext(ctx context.Context, input *ecr.DeleteRepositoryInput, opts ...request.Option) (*ecr.DeleteRepositoryOutput, error)
 	DeleteRepositoryPolicyWithContext(ctx context.Context, input *ecr.DeleteRepositoryPolicyInput, opts ...request.Option) (*ecr.DeleteRepositoryPolicyOutput, error)
 	DescribeImageScanFindingsWithContext(ctx context.Context, input *ecr.DescribeImageScanFindingsInput, opts ...request.Option) (*ecr.DescribeImageScanFindingsOutput, error)
 	DescribeImageScanFindingsPagesWithContext(ctx context.Context, input *ecr.DescribeImageScanFindingsInput, cb func(*ecr.DescribeImageScanFindingsOutput, bool) bool, opts ...request.Option) error
 	DescribeImagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, opts ...request.Option) (*ecr.DescribeImagesOutput, error)
 	DescribeImagesPagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, cb func(*ecr.DescribeImagesOutput, bool) bool, opts ...request.Option) error
+	DescribeRegistryWithContext(ctx context.Context, input *ecr.DescribeRegistryInput, opts ...request.Option) (*ecr.DescribeRegistryOutput, error)
 	DescribeRepositoriesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, opts ...request.Option) (*ecr.DescribeRepositoriesOutput, error)
 	DescribeRepositoriesPagesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, cb func(*ecr.DescribeRepositoriesOutput, bool) bool, opts ...request.Option) error
 	GetAuthorizationTokenWithContext(ctx context.Context, input *ecr.GetAuthorizationTokenInput, opts ...request.Option) (*ecr.GetAuthorizationTokenOutput, error)
@@ -30,6 +32,7 @@ type ECR interface {
 	GetLifecyclePolicyWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyInput, opts ...request.Option) (*ecr.GetLifecyclePolicyOutput, error)
 	GetLifecyclePolicyPreviewWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyPreviewInput, opts ...request.Option) (*ecr.GetLifecyclePolicyPreviewOutput, error)
 	GetLifecyclePolicyPreviewPagesWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyPreviewInput, cb func(*ecr.GetLifecyclePolicyPreviewOutput, bool) bool, opts ...request.Option) error
+	GetRegistryPolicyWithContext(ctx context.Context, input *ecr.GetRegistryPolicyInput, opts ...request.Option) (*ecr.GetRegistryPolicyOutput, error)
 	GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.GetRepositoryPolicyInput, opts ...request.Option) (*ecr.GetRepositoryPolicyOutput, error)
 	InitiateLayerUploadWithContext(ctx context.Context, input *ecr.InitiateLayerUploadInput, opts ...request.Option) (*ecr.InitiateLayerUploadOutput, error)
 	ListImagesWithContext(ctx context.Context, input *ecr.ListImagesInput, opts ...request.Option) (*ecr.ListImagesOutput, error)
@@ -39,6 +42,8 @@ type ECR interface {
 	PutImageScanningConfigurationWithContext(ctx context.Context, input *ecr.PutImageScanningConfigurationInput, opts ...request.Option) (*ecr.PutImageScanningConfigurationOutput, error)
 	PutImageTagMutabilityWithContext(ctx context.Context, input *ecr.PutImageTagMutabilityInput, opts ...request.Option) (*ecr.PutImageTagMutabilityOutput, error)
 	PutLifecyclePolicyWithContext(ctx context.Context, input *ecr.PutLifecyclePolicyInput, opts ...request.Option) (*ecr.PutLifecyclePolicyOutput, error)
+	PutRegistryPolicyWithContext(ctx context.Context, input *ecr.PutRegistryPolicyInput, opts ...request.Option) (*ecr.PutRegistryPolicyOutput, error)
+	PutReplicationConfigurationWithContext(ctx context.Context, input *ecr.PutReplicationConfigurationInput, opts ...request.Option) (*ecr.PutReplicationConfigurationOutput, error)
 	SetRepositoryPolicyWithContext(ctx context.Context, input *ecr.SetRepositoryPolicyInput, opts ...request.Option) (*ecr.SetRepositoryPolicyOutput, error)
 	StartImageScanWithContext(ctx context.Context, input *ecr.StartImageScanInput, opts ...request.Option) (*ecr.StartImageScanOutput, error)
 	StartLifecyclePolicyPreviewWithContext(ctx context.Context, input *ecr.StartLifecyclePolicyPreviewInput, opts ...request.Option) (*ecr.StartLifecyclePolicyPreviewOutput, error)
@@ -188,6 +193,27 @@ func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *ec
 	return req.Output.(*ecr.DeleteLifecyclePolicyOutput), req.Error
 }
 
+func (c *Client) DeleteRegistryPolicyWithContext(ctx context.Context, input *ecr.DeleteRegistryPolicyInput, opts ...request.Option) (*ecr.DeleteRegistryPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DeleteRegistryPolicy",
+		Input:   input,
+		Output:  (*ecr.DeleteRegistryPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.DeleteRegistryPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.DeleteRegistryPolicyOutput), req.Error
+}
+
 func (c *Client) DeleteRepositoryWithContext(ctx context.Context, input *ecr.DeleteRepositoryInput, opts ...request.Option) (*ecr.DeleteRepositoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
@@ -310,6 +336,27 @@ func (c *Client) DescribeImagesPagesWithContext(ctx context.Context, input *ecr.
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeRegistryWithContext(ctx context.Context, input *ecr.DescribeRegistryInput, opts ...request.Option) (*ecr.DescribeRegistryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DescribeRegistry",
+		Input:   input,
+		Output:  (*ecr.DescribeRegistryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.DescribeRegistryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.DescribeRegistryOutput), req.Error
 }
 
 func (c *Client) DescribeRepositoriesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, opts ...request.Option) (*ecr.DescribeRepositoriesOutput, error) {
@@ -455,6 +502,27 @@ func (c *Client) GetLifecyclePolicyPreviewPagesWithContext(ctx context.Context, 
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetRegistryPolicyWithContext(ctx context.Context, input *ecr.GetRegistryPolicyInput, opts ...request.Option) (*ecr.GetRegistryPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "GetRegistryPolicy",
+		Input:   input,
+		Output:  (*ecr.GetRegistryPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.GetRegistryPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.GetRegistryPolicyOutput), req.Error
 }
 
 func (c *Client) GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.GetRepositoryPolicyInput, opts ...request.Option) (*ecr.GetRepositoryPolicyOutput, error) {
@@ -643,6 +711,48 @@ func (c *Client) PutLifecyclePolicyWithContext(ctx context.Context, input *ecr.P
 	})
 
 	return req.Output.(*ecr.PutLifecyclePolicyOutput), req.Error
+}
+
+func (c *Client) PutRegistryPolicyWithContext(ctx context.Context, input *ecr.PutRegistryPolicyInput, opts ...request.Option) (*ecr.PutRegistryPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "PutRegistryPolicy",
+		Input:   input,
+		Output:  (*ecr.PutRegistryPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.PutRegistryPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.PutRegistryPolicyOutput), req.Error
+}
+
+func (c *Client) PutReplicationConfigurationWithContext(ctx context.Context, input *ecr.PutReplicationConfigurationInput, opts ...request.Option) (*ecr.PutReplicationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "PutReplicationConfiguration",
+		Input:   input,
+		Output:  (*ecr.PutReplicationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.PutReplicationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.PutReplicationConfigurationOutput), req.Error
 }
 
 func (c *Client) SetRepositoryPolicyWithContext(ctx context.Context, input *ecr.SetRepositoryPolicyInput, opts ...request.Option) (*ecr.SetRepositoryPolicyOutput, error) {
