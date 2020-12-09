@@ -11,28 +11,58 @@ import (
 )
 
 type GlobalAccelerator interface {
+	AddCustomRoutingEndpointsWithContext(ctx context.Context, input *globalaccelerator.AddCustomRoutingEndpointsInput, opts ...request.Option) (*globalaccelerator.AddCustomRoutingEndpointsOutput, error)
 	AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error)
+	AllowCustomRoutingTrafficWithContext(ctx context.Context, input *globalaccelerator.AllowCustomRoutingTrafficInput, opts ...request.Option) (*globalaccelerator.AllowCustomRoutingTrafficOutput, error)
 	CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error)
+	CreateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingAcceleratorOutput, error)
+	CreateCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingEndpointGroupOutput, error)
+	CreateCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingListenerOutput, error)
 	CreateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateEndpointGroupOutput, error)
 	CreateListenerWithContext(ctx context.Context, input *globalaccelerator.CreateListenerInput, opts ...request.Option) (*globalaccelerator.CreateListenerOutput, error)
 	DeleteAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteAcceleratorOutput, error)
+	DeleteCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingAcceleratorOutput, error)
+	DeleteCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingEndpointGroupOutput, error)
+	DeleteCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingListenerOutput, error)
 	DeleteEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteEndpointGroupOutput, error)
 	DeleteListenerWithContext(ctx context.Context, input *globalaccelerator.DeleteListenerInput, opts ...request.Option) (*globalaccelerator.DeleteListenerOutput, error)
+	DenyCustomRoutingTrafficWithContext(ctx context.Context, input *globalaccelerator.DenyCustomRoutingTrafficInput, opts ...request.Option) (*globalaccelerator.DenyCustomRoutingTrafficOutput, error)
 	DeprovisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.DeprovisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.DeprovisionByoipCidrOutput, error)
 	DescribeAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorOutput, error)
 	DescribeAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorAttributesOutput, error)
+	DescribeCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorOutput, error)
+	DescribeCustomRoutingAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorAttributesOutput, error)
+	DescribeCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingEndpointGroupOutput, error)
+	DescribeCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingListenerOutput, error)
 	DescribeEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeEndpointGroupOutput, error)
 	DescribeListenerWithContext(ctx context.Context, input *globalaccelerator.DescribeListenerInput, opts ...request.Option) (*globalaccelerator.DescribeListenerOutput, error)
 	ListAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListAcceleratorsOutput, error)
+	ListAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, cb func(*globalaccelerator.ListAcceleratorsOutput, bool) bool, opts ...request.Option) error
 	ListByoipCidrsWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, opts ...request.Option) (*globalaccelerator.ListByoipCidrsOutput, error)
+	ListCustomRoutingAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingAcceleratorsOutput, error)
+	ListCustomRoutingAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, cb func(*globalaccelerator.ListCustomRoutingAcceleratorsOutput, bool) bool, opts ...request.Option) error
+	ListCustomRoutingEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingEndpointGroupsOutput, error)
+	ListCustomRoutingEndpointGroupsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingEndpointGroupsInput, cb func(*globalaccelerator.ListCustomRoutingEndpointGroupsOutput, bool) bool, opts ...request.Option) error
+	ListCustomRoutingListenersWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingListenersInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingListenersOutput, error)
+	ListCustomRoutingListenersPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingListenersInput, cb func(*globalaccelerator.ListCustomRoutingListenersOutput, bool) bool, opts ...request.Option) error
+	ListCustomRoutingPortMappingsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingPortMappingsOutput, error)
+	ListCustomRoutingPortMappingsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsInput, cb func(*globalaccelerator.ListCustomRoutingPortMappingsOutput, bool) bool, opts ...request.Option) error
+	ListCustomRoutingPortMappingsByDestinationWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsByDestinationInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingPortMappingsByDestinationOutput, error)
+	ListCustomRoutingPortMappingsByDestinationPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsByDestinationInput, cb func(*globalaccelerator.ListCustomRoutingPortMappingsByDestinationOutput, bool) bool, opts ...request.Option) error
 	ListEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListEndpointGroupsOutput, error)
+	ListEndpointGroupsPagesWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, cb func(*globalaccelerator.ListEndpointGroupsOutput, bool) bool, opts ...request.Option) error
 	ListListenersWithContext(ctx context.Context, input *globalaccelerator.ListListenersInput, opts ...request.Option) (*globalaccelerator.ListListenersOutput, error)
+	ListListenersPagesWithContext(ctx context.Context, input *globalaccelerator.ListListenersInput, cb func(*globalaccelerator.ListListenersOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *globalaccelerator.ListTagsForResourceInput, opts ...request.Option) (*globalaccelerator.ListTagsForResourceOutput, error)
 	ProvisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.ProvisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.ProvisionByoipCidrOutput, error)
+	RemoveCustomRoutingEndpointsWithContext(ctx context.Context, input *globalaccelerator.RemoveCustomRoutingEndpointsInput, opts ...request.Option) (*globalaccelerator.RemoveCustomRoutingEndpointsOutput, error)
 	TagResourceWithContext(ctx context.Context, input *globalaccelerator.TagResourceInput, opts ...request.Option) (*globalaccelerator.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *globalaccelerator.UntagResourceInput, opts ...request.Option) (*globalaccelerator.UntagResourceOutput, error)
 	UpdateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorOutput, error)
 	UpdateAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorAttributesOutput, error)
+	UpdateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorOutput, error)
+	UpdateCustomRoutingAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorAttributesOutput, error)
+	UpdateCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingListenerOutput, error)
 	UpdateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.UpdateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.UpdateEndpointGroupOutput, error)
 	UpdateListenerWithContext(ctx context.Context, input *globalaccelerator.UpdateListenerInput, opts ...request.Option) (*globalaccelerator.UpdateListenerOutput, error)
 	WithdrawByoipCidrWithContext(ctx context.Context, input *globalaccelerator.WithdrawByoipCidrInput, opts ...request.Option) (*globalaccelerator.WithdrawByoipCidrOutput, error)
@@ -52,6 +82,27 @@ func New(base globalacceleratoriface.GlobalAcceleratorAPI, ctxer awsctx.Contexte
 
 var _ GlobalAccelerator = (*globalaccelerator.GlobalAccelerator)(nil)
 var _ GlobalAccelerator = (*Client)(nil)
+
+func (c *Client) AddCustomRoutingEndpointsWithContext(ctx context.Context, input *globalaccelerator.AddCustomRoutingEndpointsInput, opts ...request.Option) (*globalaccelerator.AddCustomRoutingEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "AddCustomRoutingEndpoints",
+		Input:   input,
+		Output:  (*globalaccelerator.AddCustomRoutingEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.AddCustomRoutingEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.AddCustomRoutingEndpointsOutput), req.Error
+}
 
 func (c *Client) AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -74,6 +125,27 @@ func (c *Client) AdvertiseByoipCidrWithContext(ctx context.Context, input *globa
 	return req.Output.(*globalaccelerator.AdvertiseByoipCidrOutput), req.Error
 }
 
+func (c *Client) AllowCustomRoutingTrafficWithContext(ctx context.Context, input *globalaccelerator.AllowCustomRoutingTrafficInput, opts ...request.Option) (*globalaccelerator.AllowCustomRoutingTrafficOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "AllowCustomRoutingTraffic",
+		Input:   input,
+		Output:  (*globalaccelerator.AllowCustomRoutingTrafficOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.AllowCustomRoutingTrafficWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.AllowCustomRoutingTrafficOutput), req.Error
+}
+
 func (c *Client) CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -93,6 +165,69 @@ func (c *Client) CreateAcceleratorWithContext(ctx context.Context, input *global
 	})
 
 	return req.Output.(*globalaccelerator.CreateAcceleratorOutput), req.Error
+}
+
+func (c *Client) CreateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingAcceleratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "CreateCustomRoutingAccelerator",
+		Input:   input,
+		Output:  (*globalaccelerator.CreateCustomRoutingAcceleratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.CreateCustomRoutingAcceleratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.CreateCustomRoutingAcceleratorOutput), req.Error
+}
+
+func (c *Client) CreateCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingEndpointGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "CreateCustomRoutingEndpointGroup",
+		Input:   input,
+		Output:  (*globalaccelerator.CreateCustomRoutingEndpointGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.CreateCustomRoutingEndpointGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.CreateCustomRoutingEndpointGroupOutput), req.Error
+}
+
+func (c *Client) CreateCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingListenerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "CreateCustomRoutingListener",
+		Input:   input,
+		Output:  (*globalaccelerator.CreateCustomRoutingListenerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.CreateCustomRoutingListenerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.CreateCustomRoutingListenerOutput), req.Error
 }
 
 func (c *Client) CreateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateEndpointGroupOutput, error) {
@@ -158,6 +293,69 @@ func (c *Client) DeleteAcceleratorWithContext(ctx context.Context, input *global
 	return req.Output.(*globalaccelerator.DeleteAcceleratorOutput), req.Error
 }
 
+func (c *Client) DeleteCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingAcceleratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DeleteCustomRoutingAccelerator",
+		Input:   input,
+		Output:  (*globalaccelerator.DeleteCustomRoutingAcceleratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DeleteCustomRoutingAcceleratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DeleteCustomRoutingAcceleratorOutput), req.Error
+}
+
+func (c *Client) DeleteCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingEndpointGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DeleteCustomRoutingEndpointGroup",
+		Input:   input,
+		Output:  (*globalaccelerator.DeleteCustomRoutingEndpointGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DeleteCustomRoutingEndpointGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DeleteCustomRoutingEndpointGroupOutput), req.Error
+}
+
+func (c *Client) DeleteCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingListenerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DeleteCustomRoutingListener",
+		Input:   input,
+		Output:  (*globalaccelerator.DeleteCustomRoutingListenerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DeleteCustomRoutingListenerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DeleteCustomRoutingListenerOutput), req.Error
+}
+
 func (c *Client) DeleteEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -198,6 +396,27 @@ func (c *Client) DeleteListenerWithContext(ctx context.Context, input *globalacc
 	})
 
 	return req.Output.(*globalaccelerator.DeleteListenerOutput), req.Error
+}
+
+func (c *Client) DenyCustomRoutingTrafficWithContext(ctx context.Context, input *globalaccelerator.DenyCustomRoutingTrafficInput, opts ...request.Option) (*globalaccelerator.DenyCustomRoutingTrafficOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DenyCustomRoutingTraffic",
+		Input:   input,
+		Output:  (*globalaccelerator.DenyCustomRoutingTrafficOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DenyCustomRoutingTrafficWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DenyCustomRoutingTrafficOutput), req.Error
 }
 
 func (c *Client) DeprovisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.DeprovisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.DeprovisionByoipCidrOutput, error) {
@@ -263,6 +482,90 @@ func (c *Client) DescribeAcceleratorAttributesWithContext(ctx context.Context, i
 	return req.Output.(*globalaccelerator.DescribeAcceleratorAttributesOutput), req.Error
 }
 
+func (c *Client) DescribeCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DescribeCustomRoutingAccelerator",
+		Input:   input,
+		Output:  (*globalaccelerator.DescribeCustomRoutingAcceleratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DescribeCustomRoutingAcceleratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DescribeCustomRoutingAcceleratorOutput), req.Error
+}
+
+func (c *Client) DescribeCustomRoutingAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DescribeCustomRoutingAcceleratorAttributes",
+		Input:   input,
+		Output:  (*globalaccelerator.DescribeCustomRoutingAcceleratorAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DescribeCustomRoutingAcceleratorAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DescribeCustomRoutingAcceleratorAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingEndpointGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DescribeCustomRoutingEndpointGroup",
+		Input:   input,
+		Output:  (*globalaccelerator.DescribeCustomRoutingEndpointGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DescribeCustomRoutingEndpointGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DescribeCustomRoutingEndpointGroupOutput), req.Error
+}
+
+func (c *Client) DescribeCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingListenerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DescribeCustomRoutingListener",
+		Input:   input,
+		Output:  (*globalaccelerator.DescribeCustomRoutingListenerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DescribeCustomRoutingListenerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DescribeCustomRoutingListenerOutput), req.Error
+}
+
 func (c *Client) DescribeEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeEndpointGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -326,6 +629,26 @@ func (c *Client) ListAcceleratorsWithContext(ctx context.Context, input *globala
 	return req.Output.(*globalaccelerator.ListAcceleratorsOutput), req.Error
 }
 
+func (c *Client) ListAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, cb func(*globalaccelerator.ListAcceleratorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListAccelerators",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListAcceleratorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListByoipCidrsWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, opts ...request.Option) (*globalaccelerator.ListByoipCidrsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -345,6 +668,211 @@ func (c *Client) ListByoipCidrsWithContext(ctx context.Context, input *globalacc
 	})
 
 	return req.Output.(*globalaccelerator.ListByoipCidrsOutput), req.Error
+}
+
+func (c *Client) ListCustomRoutingAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingAcceleratorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingAccelerators",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCustomRoutingAcceleratorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingAcceleratorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCustomRoutingAcceleratorsOutput), req.Error
+}
+
+func (c *Client) ListCustomRoutingAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, cb func(*globalaccelerator.ListCustomRoutingAcceleratorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingAccelerators",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingAcceleratorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCustomRoutingEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingEndpointGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingEndpointGroups",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCustomRoutingEndpointGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingEndpointGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCustomRoutingEndpointGroupsOutput), req.Error
+}
+
+func (c *Client) ListCustomRoutingEndpointGroupsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingEndpointGroupsInput, cb func(*globalaccelerator.ListCustomRoutingEndpointGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingEndpointGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingEndpointGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCustomRoutingListenersWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingListenersInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingListenersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingListeners",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCustomRoutingListenersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingListenersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCustomRoutingListenersOutput), req.Error
+}
+
+func (c *Client) ListCustomRoutingListenersPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingListenersInput, cb func(*globalaccelerator.ListCustomRoutingListenersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingListeners",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingListenersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCustomRoutingPortMappingsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingPortMappingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingPortMappings",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCustomRoutingPortMappingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingPortMappingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCustomRoutingPortMappingsOutput), req.Error
+}
+
+func (c *Client) ListCustomRoutingPortMappingsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsInput, cb func(*globalaccelerator.ListCustomRoutingPortMappingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingPortMappings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingPortMappingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCustomRoutingPortMappingsByDestinationWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsByDestinationInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingPortMappingsByDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingPortMappingsByDestination",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCustomRoutingPortMappingsByDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingPortMappingsByDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCustomRoutingPortMappingsByDestinationOutput), req.Error
+}
+
+func (c *Client) ListCustomRoutingPortMappingsByDestinationPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingPortMappingsByDestinationInput, cb func(*globalaccelerator.ListCustomRoutingPortMappingsByDestinationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCustomRoutingPortMappingsByDestination",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCustomRoutingPortMappingsByDestinationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListEndpointGroupsOutput, error) {
@@ -368,6 +896,26 @@ func (c *Client) ListEndpointGroupsWithContext(ctx context.Context, input *globa
 	return req.Output.(*globalaccelerator.ListEndpointGroupsOutput), req.Error
 }
 
+func (c *Client) ListEndpointGroupsPagesWithContext(ctx context.Context, input *globalaccelerator.ListEndpointGroupsInput, cb func(*globalaccelerator.ListEndpointGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListEndpointGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListEndpointGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListListenersWithContext(ctx context.Context, input *globalaccelerator.ListListenersInput, opts ...request.Option) (*globalaccelerator.ListListenersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -387,6 +935,26 @@ func (c *Client) ListListenersWithContext(ctx context.Context, input *globalacce
 	})
 
 	return req.Output.(*globalaccelerator.ListListenersOutput), req.Error
+}
+
+func (c *Client) ListListenersPagesWithContext(ctx context.Context, input *globalaccelerator.ListListenersInput, cb func(*globalaccelerator.ListListenersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListListeners",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListListenersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *globalaccelerator.ListTagsForResourceInput, opts ...request.Option) (*globalaccelerator.ListTagsForResourceOutput, error) {
@@ -429,6 +997,27 @@ func (c *Client) ProvisionByoipCidrWithContext(ctx context.Context, input *globa
 	})
 
 	return req.Output.(*globalaccelerator.ProvisionByoipCidrOutput), req.Error
+}
+
+func (c *Client) RemoveCustomRoutingEndpointsWithContext(ctx context.Context, input *globalaccelerator.RemoveCustomRoutingEndpointsInput, opts ...request.Option) (*globalaccelerator.RemoveCustomRoutingEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "RemoveCustomRoutingEndpoints",
+		Input:   input,
+		Output:  (*globalaccelerator.RemoveCustomRoutingEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.RemoveCustomRoutingEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.RemoveCustomRoutingEndpointsOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *globalaccelerator.TagResourceInput, opts ...request.Option) (*globalaccelerator.TagResourceOutput, error) {
@@ -513,6 +1102,69 @@ func (c *Client) UpdateAcceleratorAttributesWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*globalaccelerator.UpdateAcceleratorAttributesOutput), req.Error
+}
+
+func (c *Client) UpdateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "UpdateCustomRoutingAccelerator",
+		Input:   input,
+		Output:  (*globalaccelerator.UpdateCustomRoutingAcceleratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.UpdateCustomRoutingAcceleratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.UpdateCustomRoutingAcceleratorOutput), req.Error
+}
+
+func (c *Client) UpdateCustomRoutingAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "UpdateCustomRoutingAcceleratorAttributes",
+		Input:   input,
+		Output:  (*globalaccelerator.UpdateCustomRoutingAcceleratorAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.UpdateCustomRoutingAcceleratorAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.UpdateCustomRoutingAcceleratorAttributesOutput), req.Error
+}
+
+func (c *Client) UpdateCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingListenerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "UpdateCustomRoutingListener",
+		Input:   input,
+		Output:  (*globalaccelerator.UpdateCustomRoutingListenerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.UpdateCustomRoutingListenerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.UpdateCustomRoutingListenerOutput), req.Error
 }
 
 func (c *Client) UpdateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.UpdateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.UpdateEndpointGroupOutput, error) {
