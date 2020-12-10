@@ -12,6 +12,7 @@ import (
 
 type EC2 interface {
 	AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.AcceptReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.AcceptReservedInstancesExchangeQuoteOutput, error)
+	AcceptTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.AcceptTransitGatewayMulticastDomainAssociationsOutput, error)
 	AcceptTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayPeeringAttachmentOutput, error)
 	AcceptTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayVpcAttachmentOutput, error)
 	AcceptVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.AcceptVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.AcceptVpcEndpointConnectionsOutput, error)
@@ -77,6 +78,7 @@ type EC2 interface {
 	CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error)
 	CreateNetworkAclWithContext(ctx context.Context, input *ec2.CreateNetworkAclInput, opts ...request.Option) (*ec2.CreateNetworkAclOutput, error)
 	CreateNetworkAclEntryWithContext(ctx context.Context, input *ec2.CreateNetworkAclEntryInput, opts ...request.Option) (*ec2.CreateNetworkAclEntryOutput, error)
+	CreateNetworkInsightsPathWithContext(ctx context.Context, input *ec2.CreateNetworkInsightsPathInput, opts ...request.Option) (*ec2.CreateNetworkInsightsPathOutput, error)
 	CreateNetworkInterfaceWithContext(ctx context.Context, input *ec2.CreateNetworkInterfaceInput, opts ...request.Option) (*ec2.CreateNetworkInterfaceOutput, error)
 	CreateNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.CreateNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.CreateNetworkInterfacePermissionOutput, error)
 	CreatePlacementGroupWithContext(ctx context.Context, input *ec2.CreatePlacementGroupInput, opts ...request.Option) (*ec2.CreatePlacementGroupOutput, error)
@@ -94,6 +96,8 @@ type EC2 interface {
 	CreateTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorSessionInput, opts ...request.Option) (*ec2.CreateTrafficMirrorSessionOutput, error)
 	CreateTrafficMirrorTargetWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorTargetInput, opts ...request.Option) (*ec2.CreateTrafficMirrorTargetOutput, error)
 	CreateTransitGatewayWithContext(ctx context.Context, input *ec2.CreateTransitGatewayInput, opts ...request.Option) (*ec2.CreateTransitGatewayOutput, error)
+	CreateTransitGatewayConnectWithContext(ctx context.Context, input *ec2.CreateTransitGatewayConnectInput, opts ...request.Option) (*ec2.CreateTransitGatewayConnectOutput, error)
+	CreateTransitGatewayConnectPeerWithContext(ctx context.Context, input *ec2.CreateTransitGatewayConnectPeerInput, opts ...request.Option) (*ec2.CreateTransitGatewayConnectPeerOutput, error)
 	CreateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.CreateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.CreateTransitGatewayMulticastDomainOutput, error)
 	CreateTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayPeeringAttachmentOutput, error)
 	CreateTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.CreateTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.CreateTransitGatewayPrefixListReferenceOutput, error)
@@ -128,6 +132,8 @@ type EC2 interface {
 	DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error)
 	DeleteNetworkAclWithContext(ctx context.Context, input *ec2.DeleteNetworkAclInput, opts ...request.Option) (*ec2.DeleteNetworkAclOutput, error)
 	DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec2.DeleteNetworkAclEntryInput, opts ...request.Option) (*ec2.DeleteNetworkAclEntryOutput, error)
+	DeleteNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAnalysisOutput, error)
+	DeleteNetworkInsightsPathWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsPathInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsPathOutput, error)
 	DeleteNetworkInterfaceWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfaceInput, opts ...request.Option) (*ec2.DeleteNetworkInterfaceOutput, error)
 	DeleteNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.DeleteNetworkInterfacePermissionOutput, error)
 	DeletePlacementGroupWithContext(ctx context.Context, input *ec2.DeletePlacementGroupInput, opts ...request.Option) (*ec2.DeletePlacementGroupOutput, error)
@@ -144,6 +150,8 @@ type EC2 interface {
 	DeleteTrafficMirrorSessionWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorSessionInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorSessionOutput, error)
 	DeleteTrafficMirrorTargetWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorTargetInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorTargetOutput, error)
 	DeleteTransitGatewayWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayInput, opts ...request.Option) (*ec2.DeleteTransitGatewayOutput, error)
+	DeleteTransitGatewayConnectWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayConnectInput, opts ...request.Option) (*ec2.DeleteTransitGatewayConnectOutput, error)
+	DeleteTransitGatewayConnectPeerWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayConnectPeerInput, opts ...request.Option) (*ec2.DeleteTransitGatewayConnectPeerOutput, error)
 	DeleteTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DeleteTransitGatewayMulticastDomainOutput, error)
 	DeleteTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPeeringAttachmentOutput, error)
 	DeleteTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.DeleteTransitGatewayPrefixListReferenceOutput, error)
@@ -267,6 +275,10 @@ type EC2 interface {
 	DescribeNatGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, cb func(*ec2.DescribeNatGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, opts ...request.Option) (*ec2.DescribeNetworkAclsOutput, error)
 	DescribeNetworkAclsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, cb func(*ec2.DescribeNetworkAclsOutput, bool) bool, opts ...request.Option) error
+	DescribeNetworkInsightsAnalysesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAnalysesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAnalysesOutput, error)
+	DescribeNetworkInsightsAnalysesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAnalysesInput, cb func(*ec2.DescribeNetworkInsightsAnalysesOutput, bool) bool, opts ...request.Option) error
+	DescribeNetworkInsightsPathsWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsPathsInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsPathsOutput, error)
+	DescribeNetworkInsightsPathsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsPathsInput, cb func(*ec2.DescribeNetworkInsightsPathsOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.DescribeNetworkInterfaceAttributeOutput, error)
 	DescribeNetworkInterfacePermissionsWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacePermissionsInput, opts ...request.Option) (*ec2.DescribeNetworkInterfacePermissionsOutput, error)
 	DescribeNetworkInterfacePermissionsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfacePermissionsInput, cb func(*ec2.DescribeNetworkInterfacePermissionsOutput, bool) bool, opts ...request.Option) error
@@ -321,6 +333,10 @@ type EC2 interface {
 	DescribeTrafficMirrorTargetsPagesWithContext(ctx context.Context, input *ec2.DescribeTrafficMirrorTargetsInput, cb func(*ec2.DescribeTrafficMirrorTargetsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayAttachmentsOutput, error)
 	DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayAttachmentsInput, cb func(*ec2.DescribeTransitGatewayAttachmentsOutput, bool) bool, opts ...request.Option) error
+	DescribeTransitGatewayConnectPeersWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectPeersInput, opts ...request.Option) (*ec2.DescribeTransitGatewayConnectPeersOutput, error)
+	DescribeTransitGatewayConnectPeersPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectPeersInput, cb func(*ec2.DescribeTransitGatewayConnectPeersOutput, bool) bool, opts ...request.Option) error
+	DescribeTransitGatewayConnectsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayConnectsOutput, error)
+	DescribeTransitGatewayConnectsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectsInput, cb func(*ec2.DescribeTransitGatewayConnectsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayMulticastDomainsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayMulticastDomainsOutput, error)
 	DescribeTransitGatewayMulticastDomainsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayMulticastDomainsInput, cb func(*ec2.DescribeTransitGatewayMulticastDomainsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewayPeeringAttachmentsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayPeeringAttachmentsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayPeeringAttachmentsOutput, error)
@@ -480,6 +496,7 @@ type EC2 interface {
 	RegisterInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.RegisterInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.RegisterInstanceEventNotificationAttributesOutput, error)
 	RegisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupMembersOutput, error)
 	RegisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.RegisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput, error)
+	RejectTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.RejectTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.RejectTransitGatewayMulticastDomainAssociationsOutput, error)
 	RejectTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayPeeringAttachmentOutput, error)
 	RejectTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayVpcAttachmentOutput, error)
 	RejectVpcEndpointConnectionsWithContext(ctx context.Context, input *ec2.RejectVpcEndpointConnectionsInput, opts ...request.Option) (*ec2.RejectVpcEndpointConnectionsOutput, error)
@@ -515,6 +532,7 @@ type EC2 interface {
 	SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error)
 	SendDiagnosticInterruptWithContext(ctx context.Context, input *ec2.SendDiagnosticInterruptInput, opts ...request.Option) (*ec2.SendDiagnosticInterruptOutput, error)
 	StartInstancesWithContext(ctx context.Context, input *ec2.StartInstancesInput, opts ...request.Option) (*ec2.StartInstancesOutput, error)
+	StartNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.StartNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.StartNetworkInsightsAnalysisOutput, error)
 	StartVpcEndpointServicePrivateDnsVerificationWithContext(ctx context.Context, input *ec2.StartVpcEndpointServicePrivateDnsVerificationInput, opts ...request.Option) (*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput, error)
 	StopInstancesWithContext(ctx context.Context, input *ec2.StopInstancesInput, opts ...request.Option) (*ec2.StopInstancesOutput, error)
 	TerminateClientVpnConnectionsWithContext(ctx context.Context, input *ec2.TerminateClientVpnConnectionsInput, opts ...request.Option) (*ec2.TerminateClientVpnConnectionsOutput, error)
@@ -561,6 +579,27 @@ func (c *Client) AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Con
 	})
 
 	return req.Output.(*ec2.AcceptReservedInstancesExchangeQuoteOutput), req.Error
+}
+
+func (c *Client) AcceptTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.AcceptTransitGatewayMulticastDomainAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AcceptTransitGatewayMulticastDomainAssociations",
+		Input:   input,
+		Output:  (*ec2.AcceptTransitGatewayMulticastDomainAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AcceptTransitGatewayMulticastDomainAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AcceptTransitGatewayMulticastDomainAssociationsOutput), req.Error
 }
 
 func (c *Client) AcceptTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayPeeringAttachmentOutput, error) {
@@ -1928,6 +1967,27 @@ func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.CreateNetworkAclEntryOutput), req.Error
 }
 
+func (c *Client) CreateNetworkInsightsPathWithContext(ctx context.Context, input *ec2.CreateNetworkInsightsPathInput, opts ...request.Option) (*ec2.CreateNetworkInsightsPathOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateNetworkInsightsPath",
+		Input:   input,
+		Output:  (*ec2.CreateNetworkInsightsPathOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateNetworkInsightsPathWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateNetworkInsightsPathOutput), req.Error
+}
+
 func (c *Client) CreateNetworkInterfaceWithContext(ctx context.Context, input *ec2.CreateNetworkInterfaceInput, opts ...request.Option) (*ec2.CreateNetworkInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2283,6 +2343,48 @@ func (c *Client) CreateTransitGatewayWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.CreateTransitGatewayOutput), req.Error
+}
+
+func (c *Client) CreateTransitGatewayConnectWithContext(ctx context.Context, input *ec2.CreateTransitGatewayConnectInput, opts ...request.Option) (*ec2.CreateTransitGatewayConnectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateTransitGatewayConnect",
+		Input:   input,
+		Output:  (*ec2.CreateTransitGatewayConnectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateTransitGatewayConnectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateTransitGatewayConnectOutput), req.Error
+}
+
+func (c *Client) CreateTransitGatewayConnectPeerWithContext(ctx context.Context, input *ec2.CreateTransitGatewayConnectPeerInput, opts ...request.Option) (*ec2.CreateTransitGatewayConnectPeerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateTransitGatewayConnectPeer",
+		Input:   input,
+		Output:  (*ec2.CreateTransitGatewayConnectPeerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateTransitGatewayConnectPeerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateTransitGatewayConnectPeerOutput), req.Error
 }
 
 func (c *Client) CreateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.CreateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.CreateTransitGatewayMulticastDomainOutput, error) {
@@ -2999,6 +3101,48 @@ func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.DeleteNetworkAclEntryOutput), req.Error
 }
 
+func (c *Client) DeleteNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteNetworkInsightsAnalysis",
+		Input:   input,
+		Output:  (*ec2.DeleteNetworkInsightsAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteNetworkInsightsAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteNetworkInsightsAnalysisOutput), req.Error
+}
+
+func (c *Client) DeleteNetworkInsightsPathWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsPathInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsPathOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteNetworkInsightsPath",
+		Input:   input,
+		Output:  (*ec2.DeleteNetworkInsightsPathOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteNetworkInsightsPathWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteNetworkInsightsPathOutput), req.Error
+}
+
 func (c *Client) DeleteNetworkInterfaceWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfaceInput, opts ...request.Option) (*ec2.DeleteNetworkInterfaceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3333,6 +3477,48 @@ func (c *Client) DeleteTransitGatewayWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.DeleteTransitGatewayOutput), req.Error
+}
+
+func (c *Client) DeleteTransitGatewayConnectWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayConnectInput, opts ...request.Option) (*ec2.DeleteTransitGatewayConnectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteTransitGatewayConnect",
+		Input:   input,
+		Output:  (*ec2.DeleteTransitGatewayConnectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteTransitGatewayConnectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteTransitGatewayConnectOutput), req.Error
+}
+
+func (c *Client) DeleteTransitGatewayConnectPeerWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayConnectPeerInput, opts ...request.Option) (*ec2.DeleteTransitGatewayConnectPeerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteTransitGatewayConnectPeer",
+		Input:   input,
+		Output:  (*ec2.DeleteTransitGatewayConnectPeerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteTransitGatewayConnectPeerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteTransitGatewayConnectPeerOutput), req.Error
 }
 
 func (c *Client) DeleteTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DeleteTransitGatewayMulticastDomainOutput, error) {
@@ -5876,6 +6062,88 @@ func (c *Client) DescribeNetworkAclsPagesWithContext(ctx context.Context, input 
 	return req.Error
 }
 
+func (c *Client) DescribeNetworkInsightsAnalysesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAnalysesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAnalysesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsAnalyses",
+		Input:   input,
+		Output:  (*ec2.DescribeNetworkInsightsAnalysesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeNetworkInsightsAnalysesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeNetworkInsightsAnalysesOutput), req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsAnalysesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAnalysesInput, cb func(*ec2.DescribeNetworkInsightsAnalysesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsAnalyses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkInsightsAnalysesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsPathsWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsPathsInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsPathsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsPaths",
+		Input:   input,
+		Output:  (*ec2.DescribeNetworkInsightsPathsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeNetworkInsightsPathsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeNetworkInsightsPathsOutput), req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsPathsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsPathsInput, cb func(*ec2.DescribeNetworkInsightsPathsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsPaths",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkInsightsPathsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.DescribeNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.DescribeNetworkInterfaceAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -6983,6 +7251,88 @@ func (c *Client) DescribeTransitGatewayAttachmentsPagesWithContext(ctx context.C
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeTransitGatewayAttachmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeTransitGatewayConnectPeersWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectPeersInput, opts ...request.Option) (*ec2.DescribeTransitGatewayConnectPeersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayConnectPeers",
+		Input:   input,
+		Output:  (*ec2.DescribeTransitGatewayConnectPeersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeTransitGatewayConnectPeersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeTransitGatewayConnectPeersOutput), req.Error
+}
+
+func (c *Client) DescribeTransitGatewayConnectPeersPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectPeersInput, cb func(*ec2.DescribeTransitGatewayConnectPeersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayConnectPeers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayConnectPeersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeTransitGatewayConnectsWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectsInput, opts ...request.Option) (*ec2.DescribeTransitGatewayConnectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayConnects",
+		Input:   input,
+		Output:  (*ec2.DescribeTransitGatewayConnectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeTransitGatewayConnectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeTransitGatewayConnectsOutput), req.Error
+}
+
+func (c *Client) DescribeTransitGatewayConnectsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayConnectsInput, cb func(*ec2.DescribeTransitGatewayConnectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTransitGatewayConnects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTransitGatewayConnectsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -10302,6 +10652,27 @@ func (c *Client) RegisterTransitGatewayMulticastGroupSourcesWithContext(ctx cont
 	return req.Output.(*ec2.RegisterTransitGatewayMulticastGroupSourcesOutput), req.Error
 }
 
+func (c *Client) RejectTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.RejectTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.RejectTransitGatewayMulticastDomainAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RejectTransitGatewayMulticastDomainAssociations",
+		Input:   input,
+		Output:  (*ec2.RejectTransitGatewayMulticastDomainAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RejectTransitGatewayMulticastDomainAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RejectTransitGatewayMulticastDomainAssociationsOutput), req.Error
+}
+
 func (c *Client) RejectTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.RejectTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.RejectTransitGatewayPeeringAttachmentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11033,6 +11404,27 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, input *ec2.Start
 	})
 
 	return req.Output.(*ec2.StartInstancesOutput), req.Error
+}
+
+func (c *Client) StartNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.StartNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.StartNetworkInsightsAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "StartNetworkInsightsAnalysis",
+		Input:   input,
+		Output:  (*ec2.StartNetworkInsightsAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.StartNetworkInsightsAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.StartNetworkInsightsAnalysisOutput), req.Error
 }
 
 func (c *Client) StartVpcEndpointServicePrivateDnsVerificationWithContext(ctx context.Context, input *ec2.StartVpcEndpointServicePrivateDnsVerificationInput, opts ...request.Option) (*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput, error) {
