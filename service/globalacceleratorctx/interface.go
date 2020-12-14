@@ -39,6 +39,7 @@ type GlobalAccelerator interface {
 	ListAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListAcceleratorsOutput, error)
 	ListAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, cb func(*globalaccelerator.ListAcceleratorsOutput, bool) bool, opts ...request.Option) error
 	ListByoipCidrsWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, opts ...request.Option) (*globalaccelerator.ListByoipCidrsOutput, error)
+	ListByoipCidrsPagesWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, cb func(*globalaccelerator.ListByoipCidrsOutput, bool) bool, opts ...request.Option) error
 	ListCustomRoutingAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingAcceleratorsOutput, error)
 	ListCustomRoutingAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, cb func(*globalaccelerator.ListCustomRoutingAcceleratorsOutput, bool) bool, opts ...request.Option) error
 	ListCustomRoutingEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingEndpointGroupsOutput, error)
@@ -668,6 +669,26 @@ func (c *Client) ListByoipCidrsWithContext(ctx context.Context, input *globalacc
 	})
 
 	return req.Output.(*globalaccelerator.ListByoipCidrsOutput), req.Error
+}
+
+func (c *Client) ListByoipCidrsPagesWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, cb func(*globalaccelerator.ListByoipCidrsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListByoipCidrs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListByoipCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListCustomRoutingAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingAcceleratorsOutput, error) {
