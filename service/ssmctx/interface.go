@@ -139,12 +139,16 @@ type SSM interface {
 	ListComplianceItemsPagesWithContext(ctx context.Context, input *ssm.ListComplianceItemsInput, cb func(*ssm.ListComplianceItemsOutput, bool) bool, opts ...request.Option) error
 	ListComplianceSummariesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, opts ...request.Option) (*ssm.ListComplianceSummariesOutput, error)
 	ListComplianceSummariesPagesWithContext(ctx context.Context, input *ssm.ListComplianceSummariesInput, cb func(*ssm.ListComplianceSummariesOutput, bool) bool, opts ...request.Option) error
+	ListDocumentMetadataHistoryWithContext(ctx context.Context, input *ssm.ListDocumentMetadataHistoryInput, opts ...request.Option) (*ssm.ListDocumentMetadataHistoryOutput, error)
 	ListDocumentVersionsWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, opts ...request.Option) (*ssm.ListDocumentVersionsOutput, error)
 	ListDocumentVersionsPagesWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, cb func(*ssm.ListDocumentVersionsOutput, bool) bool, opts ...request.Option) error
 	ListDocumentsWithContext(ctx context.Context, input *ssm.ListDocumentsInput, opts ...request.Option) (*ssm.ListDocumentsOutput, error)
 	ListDocumentsPagesWithContext(ctx context.Context, input *ssm.ListDocumentsInput, cb func(*ssm.ListDocumentsOutput, bool) bool, opts ...request.Option) error
 	ListInventoryEntriesWithContext(ctx context.Context, input *ssm.ListInventoryEntriesInput, opts ...request.Option) (*ssm.ListInventoryEntriesOutput, error)
+	ListOpsItemEventsWithContext(ctx context.Context, input *ssm.ListOpsItemEventsInput, opts ...request.Option) (*ssm.ListOpsItemEventsOutput, error)
+	ListOpsItemEventsPagesWithContext(ctx context.Context, input *ssm.ListOpsItemEventsInput, cb func(*ssm.ListOpsItemEventsOutput, bool) bool, opts ...request.Option) error
 	ListOpsMetadataWithContext(ctx context.Context, input *ssm.ListOpsMetadataInput, opts ...request.Option) (*ssm.ListOpsMetadataOutput, error)
+	ListOpsMetadataPagesWithContext(ctx context.Context, input *ssm.ListOpsMetadataInput, cb func(*ssm.ListOpsMetadataOutput, bool) bool, opts ...request.Option) error
 	ListResourceComplianceSummariesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, opts ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error)
 	ListResourceComplianceSummariesPagesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, cb func(*ssm.ListResourceComplianceSummariesOutput, bool) bool, opts ...request.Option) error
 	ListResourceDataSyncWithContext(ctx context.Context, input *ssm.ListResourceDataSyncInput, opts ...request.Option) (*ssm.ListResourceDataSyncOutput, error)
@@ -165,6 +169,7 @@ type SSM interface {
 	SendCommandWithContext(ctx context.Context, input *ssm.SendCommandInput, opts ...request.Option) (*ssm.SendCommandOutput, error)
 	StartAssociationsOnceWithContext(ctx context.Context, input *ssm.StartAssociationsOnceInput, opts ...request.Option) (*ssm.StartAssociationsOnceOutput, error)
 	StartAutomationExecutionWithContext(ctx context.Context, input *ssm.StartAutomationExecutionInput, opts ...request.Option) (*ssm.StartAutomationExecutionOutput, error)
+	StartChangeRequestExecutionWithContext(ctx context.Context, input *ssm.StartChangeRequestExecutionInput, opts ...request.Option) (*ssm.StartChangeRequestExecutionOutput, error)
 	StartSessionWithContext(ctx context.Context, input *ssm.StartSessionInput, opts ...request.Option) (*ssm.StartSessionOutput, error)
 	StopAutomationExecutionWithContext(ctx context.Context, input *ssm.StopAutomationExecutionInput, opts ...request.Option) (*ssm.StopAutomationExecutionOutput, error)
 	TerminateSessionWithContext(ctx context.Context, input *ssm.TerminateSessionInput, opts ...request.Option) (*ssm.TerminateSessionOutput, error)
@@ -172,6 +177,7 @@ type SSM interface {
 	UpdateAssociationStatusWithContext(ctx context.Context, input *ssm.UpdateAssociationStatusInput, opts ...request.Option) (*ssm.UpdateAssociationStatusOutput, error)
 	UpdateDocumentWithContext(ctx context.Context, input *ssm.UpdateDocumentInput, opts ...request.Option) (*ssm.UpdateDocumentOutput, error)
 	UpdateDocumentDefaultVersionWithContext(ctx context.Context, input *ssm.UpdateDocumentDefaultVersionInput, opts ...request.Option) (*ssm.UpdateDocumentDefaultVersionOutput, error)
+	UpdateDocumentMetadataWithContext(ctx context.Context, input *ssm.UpdateDocumentMetadataInput, opts ...request.Option) (*ssm.UpdateDocumentMetadataOutput, error)
 	UpdateMaintenanceWindowWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowOutput, error)
 	UpdateMaintenanceWindowTargetWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowTargetInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowTargetOutput, error)
 	UpdateMaintenanceWindowTaskWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowTaskInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowTaskOutput, error)
@@ -2847,6 +2853,27 @@ func (c *Client) ListComplianceSummariesPagesWithContext(ctx context.Context, in
 	return req.Error
 }
 
+func (c *Client) ListDocumentMetadataHistoryWithContext(ctx context.Context, input *ssm.ListDocumentMetadataHistoryInput, opts ...request.Option) (*ssm.ListDocumentMetadataHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListDocumentMetadataHistory",
+		Input:   input,
+		Output:  (*ssm.ListDocumentMetadataHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.ListDocumentMetadataHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.ListDocumentMetadataHistoryOutput), req.Error
+}
+
 func (c *Client) ListDocumentVersionsWithContext(ctx context.Context, input *ssm.ListDocumentVersionsInput, opts ...request.Option) (*ssm.ListDocumentVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -2950,6 +2977,47 @@ func (c *Client) ListInventoryEntriesWithContext(ctx context.Context, input *ssm
 	return req.Output.(*ssm.ListInventoryEntriesOutput), req.Error
 }
 
+func (c *Client) ListOpsItemEventsWithContext(ctx context.Context, input *ssm.ListOpsItemEventsInput, opts ...request.Option) (*ssm.ListOpsItemEventsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListOpsItemEvents",
+		Input:   input,
+		Output:  (*ssm.ListOpsItemEventsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.ListOpsItemEventsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.ListOpsItemEventsOutput), req.Error
+}
+
+func (c *Client) ListOpsItemEventsPagesWithContext(ctx context.Context, input *ssm.ListOpsItemEventsInput, cb func(*ssm.ListOpsItemEventsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListOpsItemEvents",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListOpsItemEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListOpsMetadataWithContext(ctx context.Context, input *ssm.ListOpsMetadataInput, opts ...request.Option) (*ssm.ListOpsMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -2969,6 +3037,26 @@ func (c *Client) ListOpsMetadataWithContext(ctx context.Context, input *ssm.List
 	})
 
 	return req.Output.(*ssm.ListOpsMetadataOutput), req.Error
+}
+
+func (c *Client) ListOpsMetadataPagesWithContext(ctx context.Context, input *ssm.ListOpsMetadataInput, cb func(*ssm.ListOpsMetadataOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListOpsMetadata",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListOpsMetadataPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResourceComplianceSummariesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, opts ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error) {
@@ -3389,6 +3477,27 @@ func (c *Client) StartAutomationExecutionWithContext(ctx context.Context, input 
 	return req.Output.(*ssm.StartAutomationExecutionOutput), req.Error
 }
 
+func (c *Client) StartChangeRequestExecutionWithContext(ctx context.Context, input *ssm.StartChangeRequestExecutionInput, opts ...request.Option) (*ssm.StartChangeRequestExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "StartChangeRequestExecution",
+		Input:   input,
+		Output:  (*ssm.StartChangeRequestExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.StartChangeRequestExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.StartChangeRequestExecutionOutput), req.Error
+}
+
 func (c *Client) StartSessionWithContext(ctx context.Context, input *ssm.StartSessionInput, opts ...request.Option) (*ssm.StartSessionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -3534,6 +3643,27 @@ func (c *Client) UpdateDocumentDefaultVersionWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ssm.UpdateDocumentDefaultVersionOutput), req.Error
+}
+
+func (c *Client) UpdateDocumentMetadataWithContext(ctx context.Context, input *ssm.UpdateDocumentMetadataInput, opts ...request.Option) (*ssm.UpdateDocumentMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "UpdateDocumentMetadata",
+		Input:   input,
+		Output:  (*ssm.UpdateDocumentMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.UpdateDocumentMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.UpdateDocumentMetadataOutput), req.Error
 }
 
 func (c *Client) UpdateMaintenanceWindowWithContext(ctx context.Context, input *ssm.UpdateMaintenanceWindowInput, opts ...request.Option) (*ssm.UpdateMaintenanceWindowOutput, error) {

@@ -22,6 +22,7 @@ type IoT interface {
 	CancelAuditMitigationActionsTaskWithContext(ctx context.Context, input *iot.CancelAuditMitigationActionsTaskInput, opts ...request.Option) (*iot.CancelAuditMitigationActionsTaskOutput, error)
 	CancelAuditTaskWithContext(ctx context.Context, input *iot.CancelAuditTaskInput, opts ...request.Option) (*iot.CancelAuditTaskOutput, error)
 	CancelCertificateTransferWithContext(ctx context.Context, input *iot.CancelCertificateTransferInput, opts ...request.Option) (*iot.CancelCertificateTransferOutput, error)
+	CancelDetectMitigationActionsTaskWithContext(ctx context.Context, input *iot.CancelDetectMitigationActionsTaskInput, opts ...request.Option) (*iot.CancelDetectMitigationActionsTaskOutput, error)
 	CancelJobWithContext(ctx context.Context, input *iot.CancelJobInput, opts ...request.Option) (*iot.CancelJobOutput, error)
 	CancelJobExecutionWithContext(ctx context.Context, input *iot.CancelJobExecutionInput, opts ...request.Option) (*iot.CancelJobExecutionOutput, error)
 	ClearDefaultAuthorizerWithContext(ctx context.Context, input *iot.ClearDefaultAuthorizerInput, opts ...request.Option) (*iot.ClearDefaultAuthorizerOutput, error)
@@ -30,6 +31,7 @@ type IoT interface {
 	CreateAuthorizerWithContext(ctx context.Context, input *iot.CreateAuthorizerInput, opts ...request.Option) (*iot.CreateAuthorizerOutput, error)
 	CreateBillingGroupWithContext(ctx context.Context, input *iot.CreateBillingGroupInput, opts ...request.Option) (*iot.CreateBillingGroupOutput, error)
 	CreateCertificateFromCsrWithContext(ctx context.Context, input *iot.CreateCertificateFromCsrInput, opts ...request.Option) (*iot.CreateCertificateFromCsrOutput, error)
+	CreateCustomMetricWithContext(ctx context.Context, input *iot.CreateCustomMetricInput, opts ...request.Option) (*iot.CreateCustomMetricOutput, error)
 	CreateDimensionWithContext(ctx context.Context, input *iot.CreateDimensionInput, opts ...request.Option) (*iot.CreateDimensionOutput, error)
 	CreateDomainConfigurationWithContext(ctx context.Context, input *iot.CreateDomainConfigurationInput, opts ...request.Option) (*iot.CreateDomainConfigurationOutput, error)
 	CreateDynamicThingGroupWithContext(ctx context.Context, input *iot.CreateDynamicThingGroupInput, opts ...request.Option) (*iot.CreateDynamicThingGroupOutput, error)
@@ -57,6 +59,7 @@ type IoT interface {
 	DeleteBillingGroupWithContext(ctx context.Context, input *iot.DeleteBillingGroupInput, opts ...request.Option) (*iot.DeleteBillingGroupOutput, error)
 	DeleteCACertificateWithContext(ctx context.Context, input *iot.DeleteCACertificateInput, opts ...request.Option) (*iot.DeleteCACertificateOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *iot.DeleteCertificateInput, opts ...request.Option) (*iot.DeleteCertificateOutput, error)
+	DeleteCustomMetricWithContext(ctx context.Context, input *iot.DeleteCustomMetricInput, opts ...request.Option) (*iot.DeleteCustomMetricOutput, error)
 	DeleteDimensionWithContext(ctx context.Context, input *iot.DeleteDimensionInput, opts ...request.Option) (*iot.DeleteDimensionOutput, error)
 	DeleteDomainConfigurationWithContext(ctx context.Context, input *iot.DeleteDomainConfigurationInput, opts ...request.Option) (*iot.DeleteDomainConfigurationOutput, error)
 	DeleteDynamicThingGroupWithContext(ctx context.Context, input *iot.DeleteDynamicThingGroupInput, opts ...request.Option) (*iot.DeleteDynamicThingGroupOutput, error)
@@ -89,7 +92,9 @@ type IoT interface {
 	DescribeBillingGroupWithContext(ctx context.Context, input *iot.DescribeBillingGroupInput, opts ...request.Option) (*iot.DescribeBillingGroupOutput, error)
 	DescribeCACertificateWithContext(ctx context.Context, input *iot.DescribeCACertificateInput, opts ...request.Option) (*iot.DescribeCACertificateOutput, error)
 	DescribeCertificateWithContext(ctx context.Context, input *iot.DescribeCertificateInput, opts ...request.Option) (*iot.DescribeCertificateOutput, error)
+	DescribeCustomMetricWithContext(ctx context.Context, input *iot.DescribeCustomMetricInput, opts ...request.Option) (*iot.DescribeCustomMetricOutput, error)
 	DescribeDefaultAuthorizerWithContext(ctx context.Context, input *iot.DescribeDefaultAuthorizerInput, opts ...request.Option) (*iot.DescribeDefaultAuthorizerOutput, error)
+	DescribeDetectMitigationActionsTaskWithContext(ctx context.Context, input *iot.DescribeDetectMitigationActionsTaskInput, opts ...request.Option) (*iot.DescribeDetectMitigationActionsTaskOutput, error)
 	DescribeDimensionWithContext(ctx context.Context, input *iot.DescribeDimensionInput, opts ...request.Option) (*iot.DescribeDimensionOutput, error)
 	DescribeDomainConfigurationWithContext(ctx context.Context, input *iot.DescribeDomainConfigurationInput, opts ...request.Option) (*iot.DescribeDomainConfigurationOutput, error)
 	DescribeEndpointWithContext(ctx context.Context, input *iot.DescribeEndpointInput, opts ...request.Option) (*iot.DescribeEndpointOutput, error)
@@ -114,6 +119,8 @@ type IoT interface {
 	DetachThingPrincipalWithContext(ctx context.Context, input *iot.DetachThingPrincipalInput, opts ...request.Option) (*iot.DetachThingPrincipalOutput, error)
 	DisableTopicRuleWithContext(ctx context.Context, input *iot.DisableTopicRuleInput, opts ...request.Option) (*iot.DisableTopicRuleOutput, error)
 	EnableTopicRuleWithContext(ctx context.Context, input *iot.EnableTopicRuleInput, opts ...request.Option) (*iot.EnableTopicRuleOutput, error)
+	GetBehaviorModelTrainingSummariesWithContext(ctx context.Context, input *iot.GetBehaviorModelTrainingSummariesInput, opts ...request.Option) (*iot.GetBehaviorModelTrainingSummariesOutput, error)
+	GetBehaviorModelTrainingSummariesPagesWithContext(ctx context.Context, input *iot.GetBehaviorModelTrainingSummariesInput, cb func(*iot.GetBehaviorModelTrainingSummariesOutput, bool) bool, opts ...request.Option) error
 	GetCardinalityWithContext(ctx context.Context, input *iot.GetCardinalityInput, opts ...request.Option) (*iot.GetCardinalityOutput, error)
 	GetEffectivePoliciesWithContext(ctx context.Context, input *iot.GetEffectivePoliciesInput, opts ...request.Option) (*iot.GetEffectivePoliciesOutput, error)
 	GetIndexingConfigurationWithContext(ctx context.Context, input *iot.GetIndexingConfigurationInput, opts ...request.Option) (*iot.GetIndexingConfigurationOutput, error)
@@ -152,6 +159,12 @@ type IoT interface {
 	ListCertificatesPagesWithContext(ctx context.Context, input *iot.ListCertificatesInput, cb func(*iot.ListCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListCertificatesByCAWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, opts ...request.Option) (*iot.ListCertificatesByCAOutput, error)
 	ListCertificatesByCAPagesWithContext(ctx context.Context, input *iot.ListCertificatesByCAInput, cb func(*iot.ListCertificatesByCAOutput, bool) bool, opts ...request.Option) error
+	ListCustomMetricsWithContext(ctx context.Context, input *iot.ListCustomMetricsInput, opts ...request.Option) (*iot.ListCustomMetricsOutput, error)
+	ListCustomMetricsPagesWithContext(ctx context.Context, input *iot.ListCustomMetricsInput, cb func(*iot.ListCustomMetricsOutput, bool) bool, opts ...request.Option) error
+	ListDetectMitigationActionsExecutionsWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsExecutionsInput, opts ...request.Option) (*iot.ListDetectMitigationActionsExecutionsOutput, error)
+	ListDetectMitigationActionsExecutionsPagesWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsExecutionsInput, cb func(*iot.ListDetectMitigationActionsExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListDetectMitigationActionsTasksWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsTasksInput, opts ...request.Option) (*iot.ListDetectMitigationActionsTasksOutput, error)
+	ListDetectMitigationActionsTasksPagesWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsTasksInput, cb func(*iot.ListDetectMitigationActionsTasksOutput, bool) bool, opts ...request.Option) error
 	ListDimensionsWithContext(ctx context.Context, input *iot.ListDimensionsInput, opts ...request.Option) (*iot.ListDimensionsOutput, error)
 	ListDimensionsPagesWithContext(ctx context.Context, input *iot.ListDimensionsInput, cb func(*iot.ListDimensionsOutput, bool) bool, opts ...request.Option) error
 	ListDomainConfigurationsWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, opts ...request.Option) (*iot.ListDomainConfigurationsOutput, error)
@@ -240,6 +253,7 @@ type IoT interface {
 	SetV2LoggingLevelWithContext(ctx context.Context, input *iot.SetV2LoggingLevelInput, opts ...request.Option) (*iot.SetV2LoggingLevelOutput, error)
 	SetV2LoggingOptionsWithContext(ctx context.Context, input *iot.SetV2LoggingOptionsInput, opts ...request.Option) (*iot.SetV2LoggingOptionsOutput, error)
 	StartAuditMitigationActionsTaskWithContext(ctx context.Context, input *iot.StartAuditMitigationActionsTaskInput, opts ...request.Option) (*iot.StartAuditMitigationActionsTaskOutput, error)
+	StartDetectMitigationActionsTaskWithContext(ctx context.Context, input *iot.StartDetectMitigationActionsTaskInput, opts ...request.Option) (*iot.StartDetectMitigationActionsTaskOutput, error)
 	StartOnDemandAuditTaskWithContext(ctx context.Context, input *iot.StartOnDemandAuditTaskInput, opts ...request.Option) (*iot.StartOnDemandAuditTaskOutput, error)
 	StartThingRegistrationTaskWithContext(ctx context.Context, input *iot.StartThingRegistrationTaskInput, opts ...request.Option) (*iot.StartThingRegistrationTaskOutput, error)
 	StopThingRegistrationTaskWithContext(ctx context.Context, input *iot.StopThingRegistrationTaskInput, opts ...request.Option) (*iot.StopThingRegistrationTaskOutput, error)
@@ -254,6 +268,7 @@ type IoT interface {
 	UpdateBillingGroupWithContext(ctx context.Context, input *iot.UpdateBillingGroupInput, opts ...request.Option) (*iot.UpdateBillingGroupOutput, error)
 	UpdateCACertificateWithContext(ctx context.Context, input *iot.UpdateCACertificateInput, opts ...request.Option) (*iot.UpdateCACertificateOutput, error)
 	UpdateCertificateWithContext(ctx context.Context, input *iot.UpdateCertificateInput, opts ...request.Option) (*iot.UpdateCertificateOutput, error)
+	UpdateCustomMetricWithContext(ctx context.Context, input *iot.UpdateCustomMetricInput, opts ...request.Option) (*iot.UpdateCustomMetricOutput, error)
 	UpdateDimensionWithContext(ctx context.Context, input *iot.UpdateDimensionInput, opts ...request.Option) (*iot.UpdateDimensionOutput, error)
 	UpdateDomainConfigurationWithContext(ctx context.Context, input *iot.UpdateDomainConfigurationInput, opts ...request.Option) (*iot.UpdateDomainConfigurationOutput, error)
 	UpdateDynamicThingGroupWithContext(ctx context.Context, input *iot.UpdateDynamicThingGroupInput, opts ...request.Option) (*iot.UpdateDynamicThingGroupOutput, error)
@@ -519,6 +534,27 @@ func (c *Client) CancelCertificateTransferWithContext(ctx context.Context, input
 	return req.Output.(*iot.CancelCertificateTransferOutput), req.Error
 }
 
+func (c *Client) CancelDetectMitigationActionsTaskWithContext(ctx context.Context, input *iot.CancelDetectMitigationActionsTaskInput, opts ...request.Option) (*iot.CancelDetectMitigationActionsTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CancelDetectMitigationActionsTask",
+		Input:   input,
+		Output:  (*iot.CancelDetectMitigationActionsTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CancelDetectMitigationActionsTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CancelDetectMitigationActionsTaskOutput), req.Error
+}
+
 func (c *Client) CancelJobWithContext(ctx context.Context, input *iot.CancelJobInput, opts ...request.Option) (*iot.CancelJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -685,6 +721,27 @@ func (c *Client) CreateCertificateFromCsrWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*iot.CreateCertificateFromCsrOutput), req.Error
+}
+
+func (c *Client) CreateCustomMetricWithContext(ctx context.Context, input *iot.CreateCustomMetricInput, opts ...request.Option) (*iot.CreateCustomMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreateCustomMetric",
+		Input:   input,
+		Output:  (*iot.CreateCustomMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreateCustomMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreateCustomMetricOutput), req.Error
 }
 
 func (c *Client) CreateDimensionWithContext(ctx context.Context, input *iot.CreateDimensionInput, opts ...request.Option) (*iot.CreateDimensionOutput, error) {
@@ -1252,6 +1309,27 @@ func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *iot.De
 	})
 
 	return req.Output.(*iot.DeleteCertificateOutput), req.Error
+}
+
+func (c *Client) DeleteCustomMetricWithContext(ctx context.Context, input *iot.DeleteCustomMetricInput, opts ...request.Option) (*iot.DeleteCustomMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeleteCustomMetric",
+		Input:   input,
+		Output:  (*iot.DeleteCustomMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeleteCustomMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeleteCustomMetricOutput), req.Error
 }
 
 func (c *Client) DeleteDimensionWithContext(ctx context.Context, input *iot.DeleteDimensionInput, opts ...request.Option) (*iot.DeleteDimensionOutput, error) {
@@ -1926,6 +2004,27 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *iot.
 	return req.Output.(*iot.DescribeCertificateOutput), req.Error
 }
 
+func (c *Client) DescribeCustomMetricWithContext(ctx context.Context, input *iot.DescribeCustomMetricInput, opts ...request.Option) (*iot.DescribeCustomMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeCustomMetric",
+		Input:   input,
+		Output:  (*iot.DescribeCustomMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeCustomMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeCustomMetricOutput), req.Error
+}
+
 func (c *Client) DescribeDefaultAuthorizerWithContext(ctx context.Context, input *iot.DescribeDefaultAuthorizerInput, opts ...request.Option) (*iot.DescribeDefaultAuthorizerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -1945,6 +2044,27 @@ func (c *Client) DescribeDefaultAuthorizerWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iot.DescribeDefaultAuthorizerOutput), req.Error
+}
+
+func (c *Client) DescribeDetectMitigationActionsTaskWithContext(ctx context.Context, input *iot.DescribeDetectMitigationActionsTaskInput, opts ...request.Option) (*iot.DescribeDetectMitigationActionsTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeDetectMitigationActionsTask",
+		Input:   input,
+		Output:  (*iot.DescribeDetectMitigationActionsTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeDetectMitigationActionsTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeDetectMitigationActionsTaskOutput), req.Error
 }
 
 func (c *Client) DescribeDimensionWithContext(ctx context.Context, input *iot.DescribeDimensionInput, opts ...request.Option) (*iot.DescribeDimensionOutput, error) {
@@ -2449,6 +2569,47 @@ func (c *Client) EnableTopicRuleWithContext(ctx context.Context, input *iot.Enab
 	})
 
 	return req.Output.(*iot.EnableTopicRuleOutput), req.Error
+}
+
+func (c *Client) GetBehaviorModelTrainingSummariesWithContext(ctx context.Context, input *iot.GetBehaviorModelTrainingSummariesInput, opts ...request.Option) (*iot.GetBehaviorModelTrainingSummariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetBehaviorModelTrainingSummaries",
+		Input:   input,
+		Output:  (*iot.GetBehaviorModelTrainingSummariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetBehaviorModelTrainingSummariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetBehaviorModelTrainingSummariesOutput), req.Error
+}
+
+func (c *Client) GetBehaviorModelTrainingSummariesPagesWithContext(ctx context.Context, input *iot.GetBehaviorModelTrainingSummariesInput, cb func(*iot.GetBehaviorModelTrainingSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetBehaviorModelTrainingSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.GetBehaviorModelTrainingSummariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCardinalityWithContext(ctx context.Context, input *iot.GetCardinalityInput, opts ...request.Option) (*iot.GetCardinalityOutput, error) {
@@ -3232,6 +3393,129 @@ func (c *Client) ListCertificatesByCAPagesWithContext(ctx context.Context, input
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.IoTAPI.ListCertificatesByCAPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCustomMetricsWithContext(ctx context.Context, input *iot.ListCustomMetricsInput, opts ...request.Option) (*iot.ListCustomMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListCustomMetrics",
+		Input:   input,
+		Output:  (*iot.ListCustomMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListCustomMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListCustomMetricsOutput), req.Error
+}
+
+func (c *Client) ListCustomMetricsPagesWithContext(ctx context.Context, input *iot.ListCustomMetricsInput, cb func(*iot.ListCustomMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListCustomMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListCustomMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDetectMitigationActionsExecutionsWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsExecutionsInput, opts ...request.Option) (*iot.ListDetectMitigationActionsExecutionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDetectMitigationActionsExecutions",
+		Input:   input,
+		Output:  (*iot.ListDetectMitigationActionsExecutionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListDetectMitigationActionsExecutionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListDetectMitigationActionsExecutionsOutput), req.Error
+}
+
+func (c *Client) ListDetectMitigationActionsExecutionsPagesWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsExecutionsInput, cb func(*iot.ListDetectMitigationActionsExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDetectMitigationActionsExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListDetectMitigationActionsExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDetectMitigationActionsTasksWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsTasksInput, opts ...request.Option) (*iot.ListDetectMitigationActionsTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDetectMitigationActionsTasks",
+		Input:   input,
+		Output:  (*iot.ListDetectMitigationActionsTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListDetectMitigationActionsTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListDetectMitigationActionsTasksOutput), req.Error
+}
+
+func (c *Client) ListDetectMitigationActionsTasksPagesWithContext(ctx context.Context, input *iot.ListDetectMitigationActionsTasksInput, cb func(*iot.ListDetectMitigationActionsTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListDetectMitigationActionsTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListDetectMitigationActionsTasksPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -5049,6 +5333,27 @@ func (c *Client) StartAuditMitigationActionsTaskWithContext(ctx context.Context,
 	return req.Output.(*iot.StartAuditMitigationActionsTaskOutput), req.Error
 }
 
+func (c *Client) StartDetectMitigationActionsTaskWithContext(ctx context.Context, input *iot.StartDetectMitigationActionsTaskInput, opts ...request.Option) (*iot.StartDetectMitigationActionsTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "StartDetectMitigationActionsTask",
+		Input:   input,
+		Output:  (*iot.StartDetectMitigationActionsTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.StartDetectMitigationActionsTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.StartDetectMitigationActionsTaskOutput), req.Error
+}
+
 func (c *Client) StartOnDemandAuditTaskWithContext(ctx context.Context, input *iot.StartOnDemandAuditTaskInput, opts ...request.Option) (*iot.StartOnDemandAuditTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -5341,6 +5646,27 @@ func (c *Client) UpdateCertificateWithContext(ctx context.Context, input *iot.Up
 	})
 
 	return req.Output.(*iot.UpdateCertificateOutput), req.Error
+}
+
+func (c *Client) UpdateCustomMetricWithContext(ctx context.Context, input *iot.UpdateCustomMetricInput, opts ...request.Option) (*iot.UpdateCustomMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdateCustomMetric",
+		Input:   input,
+		Output:  (*iot.UpdateCustomMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdateCustomMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdateCustomMetricOutput), req.Error
 }
 
 func (c *Client) UpdateDimensionWithContext(ctx context.Context, input *iot.UpdateDimensionInput, opts ...request.Option) (*iot.UpdateDimensionOutput, error) {
