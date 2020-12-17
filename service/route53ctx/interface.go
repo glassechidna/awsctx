@@ -11,28 +11,35 @@ import (
 )
 
 type Route53 interface {
+	ActivateKeySigningKeyWithContext(ctx context.Context, input *route53.ActivateKeySigningKeyInput, opts ...request.Option) (*route53.ActivateKeySigningKeyOutput, error)
 	AssociateVPCWithHostedZoneWithContext(ctx context.Context, input *route53.AssociateVPCWithHostedZoneInput, opts ...request.Option) (*route53.AssociateVPCWithHostedZoneOutput, error)
 	ChangeResourceRecordSetsWithContext(ctx context.Context, input *route53.ChangeResourceRecordSetsInput, opts ...request.Option) (*route53.ChangeResourceRecordSetsOutput, error)
 	ChangeTagsForResourceWithContext(ctx context.Context, input *route53.ChangeTagsForResourceInput, opts ...request.Option) (*route53.ChangeTagsForResourceOutput, error)
 	CreateHealthCheckWithContext(ctx context.Context, input *route53.CreateHealthCheckInput, opts ...request.Option) (*route53.CreateHealthCheckOutput, error)
 	CreateHostedZoneWithContext(ctx context.Context, input *route53.CreateHostedZoneInput, opts ...request.Option) (*route53.CreateHostedZoneOutput, error)
+	CreateKeySigningKeyWithContext(ctx context.Context, input *route53.CreateKeySigningKeyInput, opts ...request.Option) (*route53.CreateKeySigningKeyOutput, error)
 	CreateQueryLoggingConfigWithContext(ctx context.Context, input *route53.CreateQueryLoggingConfigInput, opts ...request.Option) (*route53.CreateQueryLoggingConfigOutput, error)
 	CreateReusableDelegationSetWithContext(ctx context.Context, input *route53.CreateReusableDelegationSetInput, opts ...request.Option) (*route53.CreateReusableDelegationSetOutput, error)
 	CreateTrafficPolicyWithContext(ctx context.Context, input *route53.CreateTrafficPolicyInput, opts ...request.Option) (*route53.CreateTrafficPolicyOutput, error)
 	CreateTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.CreateTrafficPolicyInstanceInput, opts ...request.Option) (*route53.CreateTrafficPolicyInstanceOutput, error)
 	CreateTrafficPolicyVersionWithContext(ctx context.Context, input *route53.CreateTrafficPolicyVersionInput, opts ...request.Option) (*route53.CreateTrafficPolicyVersionOutput, error)
 	CreateVPCAssociationAuthorizationWithContext(ctx context.Context, input *route53.CreateVPCAssociationAuthorizationInput, opts ...request.Option) (*route53.CreateVPCAssociationAuthorizationOutput, error)
+	DeactivateKeySigningKeyWithContext(ctx context.Context, input *route53.DeactivateKeySigningKeyInput, opts ...request.Option) (*route53.DeactivateKeySigningKeyOutput, error)
 	DeleteHealthCheckWithContext(ctx context.Context, input *route53.DeleteHealthCheckInput, opts ...request.Option) (*route53.DeleteHealthCheckOutput, error)
 	DeleteHostedZoneWithContext(ctx context.Context, input *route53.DeleteHostedZoneInput, opts ...request.Option) (*route53.DeleteHostedZoneOutput, error)
+	DeleteKeySigningKeyWithContext(ctx context.Context, input *route53.DeleteKeySigningKeyInput, opts ...request.Option) (*route53.DeleteKeySigningKeyOutput, error)
 	DeleteQueryLoggingConfigWithContext(ctx context.Context, input *route53.DeleteQueryLoggingConfigInput, opts ...request.Option) (*route53.DeleteQueryLoggingConfigOutput, error)
 	DeleteReusableDelegationSetWithContext(ctx context.Context, input *route53.DeleteReusableDelegationSetInput, opts ...request.Option) (*route53.DeleteReusableDelegationSetOutput, error)
 	DeleteTrafficPolicyWithContext(ctx context.Context, input *route53.DeleteTrafficPolicyInput, opts ...request.Option) (*route53.DeleteTrafficPolicyOutput, error)
 	DeleteTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.DeleteTrafficPolicyInstanceInput, opts ...request.Option) (*route53.DeleteTrafficPolicyInstanceOutput, error)
 	DeleteVPCAssociationAuthorizationWithContext(ctx context.Context, input *route53.DeleteVPCAssociationAuthorizationInput, opts ...request.Option) (*route53.DeleteVPCAssociationAuthorizationOutput, error)
+	DisableHostedZoneDNSSECWithContext(ctx context.Context, input *route53.DisableHostedZoneDNSSECInput, opts ...request.Option) (*route53.DisableHostedZoneDNSSECOutput, error)
 	DisassociateVPCFromHostedZoneWithContext(ctx context.Context, input *route53.DisassociateVPCFromHostedZoneInput, opts ...request.Option) (*route53.DisassociateVPCFromHostedZoneOutput, error)
+	EnableHostedZoneDNSSECWithContext(ctx context.Context, input *route53.EnableHostedZoneDNSSECInput, opts ...request.Option) (*route53.EnableHostedZoneDNSSECOutput, error)
 	GetAccountLimitWithContext(ctx context.Context, input *route53.GetAccountLimitInput, opts ...request.Option) (*route53.GetAccountLimitOutput, error)
 	GetChangeWithContext(ctx context.Context, input *route53.GetChangeInput, opts ...request.Option) (*route53.GetChangeOutput, error)
 	GetCheckerIpRangesWithContext(ctx context.Context, input *route53.GetCheckerIpRangesInput, opts ...request.Option) (*route53.GetCheckerIpRangesOutput, error)
+	GetDNSSECWithContext(ctx context.Context, input *route53.GetDNSSECInput, opts ...request.Option) (*route53.GetDNSSECOutput, error)
 	GetGeoLocationWithContext(ctx context.Context, input *route53.GetGeoLocationInput, opts ...request.Option) (*route53.GetGeoLocationOutput, error)
 	GetHealthCheckWithContext(ctx context.Context, input *route53.GetHealthCheckInput, opts ...request.Option) (*route53.GetHealthCheckOutput, error)
 	GetHealthCheckCountWithContext(ctx context.Context, input *route53.GetHealthCheckCountInput, opts ...request.Option) (*route53.GetHealthCheckCountOutput, error)
@@ -88,6 +95,27 @@ func New(base route53iface.Route53API, ctxer awsctx.Contexter) Route53 {
 
 var _ Route53 = (*route53.Route53)(nil)
 var _ Route53 = (*Client)(nil)
+
+func (c *Client) ActivateKeySigningKeyWithContext(ctx context.Context, input *route53.ActivateKeySigningKeyInput, opts ...request.Option) (*route53.ActivateKeySigningKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ActivateKeySigningKey",
+		Input:   input,
+		Output:  (*route53.ActivateKeySigningKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.ActivateKeySigningKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.ActivateKeySigningKeyOutput), req.Error
+}
 
 func (c *Client) AssociateVPCWithHostedZoneWithContext(ctx context.Context, input *route53.AssociateVPCWithHostedZoneInput, opts ...request.Option) (*route53.AssociateVPCWithHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -192,6 +220,27 @@ func (c *Client) CreateHostedZoneWithContext(ctx context.Context, input *route53
 	})
 
 	return req.Output.(*route53.CreateHostedZoneOutput), req.Error
+}
+
+func (c *Client) CreateKeySigningKeyWithContext(ctx context.Context, input *route53.CreateKeySigningKeyInput, opts ...request.Option) (*route53.CreateKeySigningKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "CreateKeySigningKey",
+		Input:   input,
+		Output:  (*route53.CreateKeySigningKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.CreateKeySigningKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.CreateKeySigningKeyOutput), req.Error
 }
 
 func (c *Client) CreateQueryLoggingConfigWithContext(ctx context.Context, input *route53.CreateQueryLoggingConfigInput, opts ...request.Option) (*route53.CreateQueryLoggingConfigOutput, error) {
@@ -320,6 +369,27 @@ func (c *Client) CreateVPCAssociationAuthorizationWithContext(ctx context.Contex
 	return req.Output.(*route53.CreateVPCAssociationAuthorizationOutput), req.Error
 }
 
+func (c *Client) DeactivateKeySigningKeyWithContext(ctx context.Context, input *route53.DeactivateKeySigningKeyInput, opts ...request.Option) (*route53.DeactivateKeySigningKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "DeactivateKeySigningKey",
+		Input:   input,
+		Output:  (*route53.DeactivateKeySigningKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.DeactivateKeySigningKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.DeactivateKeySigningKeyOutput), req.Error
+}
+
 func (c *Client) DeleteHealthCheckWithContext(ctx context.Context, input *route53.DeleteHealthCheckInput, opts ...request.Option) (*route53.DeleteHealthCheckOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
@@ -360,6 +430,27 @@ func (c *Client) DeleteHostedZoneWithContext(ctx context.Context, input *route53
 	})
 
 	return req.Output.(*route53.DeleteHostedZoneOutput), req.Error
+}
+
+func (c *Client) DeleteKeySigningKeyWithContext(ctx context.Context, input *route53.DeleteKeySigningKeyInput, opts ...request.Option) (*route53.DeleteKeySigningKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "DeleteKeySigningKey",
+		Input:   input,
+		Output:  (*route53.DeleteKeySigningKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.DeleteKeySigningKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.DeleteKeySigningKeyOutput), req.Error
 }
 
 func (c *Client) DeleteQueryLoggingConfigWithContext(ctx context.Context, input *route53.DeleteQueryLoggingConfigInput, opts ...request.Option) (*route53.DeleteQueryLoggingConfigOutput, error) {
@@ -467,6 +558,27 @@ func (c *Client) DeleteVPCAssociationAuthorizationWithContext(ctx context.Contex
 	return req.Output.(*route53.DeleteVPCAssociationAuthorizationOutput), req.Error
 }
 
+func (c *Client) DisableHostedZoneDNSSECWithContext(ctx context.Context, input *route53.DisableHostedZoneDNSSECInput, opts ...request.Option) (*route53.DisableHostedZoneDNSSECOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "DisableHostedZoneDNSSEC",
+		Input:   input,
+		Output:  (*route53.DisableHostedZoneDNSSECOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.DisableHostedZoneDNSSECWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.DisableHostedZoneDNSSECOutput), req.Error
+}
+
 func (c *Client) DisassociateVPCFromHostedZoneWithContext(ctx context.Context, input *route53.DisassociateVPCFromHostedZoneInput, opts ...request.Option) (*route53.DisassociateVPCFromHostedZoneOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
@@ -486,6 +598,27 @@ func (c *Client) DisassociateVPCFromHostedZoneWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*route53.DisassociateVPCFromHostedZoneOutput), req.Error
+}
+
+func (c *Client) EnableHostedZoneDNSSECWithContext(ctx context.Context, input *route53.EnableHostedZoneDNSSECInput, opts ...request.Option) (*route53.EnableHostedZoneDNSSECOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "EnableHostedZoneDNSSEC",
+		Input:   input,
+		Output:  (*route53.EnableHostedZoneDNSSECOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.EnableHostedZoneDNSSECWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.EnableHostedZoneDNSSECOutput), req.Error
 }
 
 func (c *Client) GetAccountLimitWithContext(ctx context.Context, input *route53.GetAccountLimitInput, opts ...request.Option) (*route53.GetAccountLimitOutput, error) {
@@ -549,6 +682,27 @@ func (c *Client) GetCheckerIpRangesWithContext(ctx context.Context, input *route
 	})
 
 	return req.Output.(*route53.GetCheckerIpRangesOutput), req.Error
+}
+
+func (c *Client) GetDNSSECWithContext(ctx context.Context, input *route53.GetDNSSECInput, opts ...request.Option) (*route53.GetDNSSECOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "GetDNSSEC",
+		Input:   input,
+		Output:  (*route53.GetDNSSECOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.GetDNSSECWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.GetDNSSECOutput), req.Error
 }
 
 func (c *Client) GetGeoLocationWithContext(ctx context.Context, input *route53.GetGeoLocationInput, opts ...request.Option) (*route53.GetGeoLocationOutput, error) {

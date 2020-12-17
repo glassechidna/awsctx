@@ -40,6 +40,8 @@ type ServiceCatalog interface {
 	DescribeCopyProductStatusWithContext(ctx context.Context, input *servicecatalog.DescribeCopyProductStatusInput, opts ...request.Option) (*servicecatalog.DescribeCopyProductStatusOutput, error)
 	DescribePortfolioWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioInput, opts ...request.Option) (*servicecatalog.DescribePortfolioOutput, error)
 	DescribePortfolioShareStatusWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioShareStatusInput, opts ...request.Option) (*servicecatalog.DescribePortfolioShareStatusOutput, error)
+	DescribePortfolioSharesWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioSharesInput, opts ...request.Option) (*servicecatalog.DescribePortfolioSharesOutput, error)
+	DescribePortfolioSharesPagesWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioSharesInput, cb func(*servicecatalog.DescribePortfolioSharesOutput, bool) bool, opts ...request.Option) error
 	DescribeProductWithContext(ctx context.Context, input *servicecatalog.DescribeProductInput, opts ...request.Option) (*servicecatalog.DescribeProductOutput, error)
 	DescribeProductAsAdminWithContext(ctx context.Context, input *servicecatalog.DescribeProductAsAdminInput, opts ...request.Option) (*servicecatalog.DescribeProductAsAdminOutput, error)
 	DescribeProductViewWithContext(ctx context.Context, input *servicecatalog.DescribeProductViewInput, opts ...request.Option) (*servicecatalog.DescribeProductViewOutput, error)
@@ -108,6 +110,7 @@ type ServiceCatalog interface {
 	TerminateProvisionedProductWithContext(ctx context.Context, input *servicecatalog.TerminateProvisionedProductInput, opts ...request.Option) (*servicecatalog.TerminateProvisionedProductOutput, error)
 	UpdateConstraintWithContext(ctx context.Context, input *servicecatalog.UpdateConstraintInput, opts ...request.Option) (*servicecatalog.UpdateConstraintOutput, error)
 	UpdatePortfolioWithContext(ctx context.Context, input *servicecatalog.UpdatePortfolioInput, opts ...request.Option) (*servicecatalog.UpdatePortfolioOutput, error)
+	UpdatePortfolioShareWithContext(ctx context.Context, input *servicecatalog.UpdatePortfolioShareInput, opts ...request.Option) (*servicecatalog.UpdatePortfolioShareOutput, error)
 	UpdateProductWithContext(ctx context.Context, input *servicecatalog.UpdateProductInput, opts ...request.Option) (*servicecatalog.UpdateProductOutput, error)
 	UpdateProvisionedProductWithContext(ctx context.Context, input *servicecatalog.UpdateProvisionedProductInput, opts ...request.Option) (*servicecatalog.UpdateProvisionedProductOutput, error)
 	UpdateProvisionedProductPropertiesWithContext(ctx context.Context, input *servicecatalog.UpdateProvisionedProductPropertiesInput, opts ...request.Option) (*servicecatalog.UpdateProvisionedProductPropertiesOutput, error)
@@ -738,6 +741,47 @@ func (c *Client) DescribePortfolioShareStatusWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*servicecatalog.DescribePortfolioShareStatusOutput), req.Error
+}
+
+func (c *Client) DescribePortfolioSharesWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioSharesInput, opts ...request.Option) (*servicecatalog.DescribePortfolioSharesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "DescribePortfolioShares",
+		Input:   input,
+		Output:  (*servicecatalog.DescribePortfolioSharesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceCatalogAPI.DescribePortfolioSharesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicecatalog.DescribePortfolioSharesOutput), req.Error
+}
+
+func (c *Client) DescribePortfolioSharesPagesWithContext(ctx context.Context, input *servicecatalog.DescribePortfolioSharesInput, cb func(*servicecatalog.DescribePortfolioSharesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "DescribePortfolioShares",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ServiceCatalogAPI.DescribePortfolioSharesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeProductWithContext(ctx context.Context, input *servicecatalog.DescribeProductInput, opts ...request.Option) (*servicecatalog.DescribeProductOutput, error) {
@@ -2148,6 +2192,27 @@ func (c *Client) UpdatePortfolioWithContext(ctx context.Context, input *servicec
 	})
 
 	return req.Output.(*servicecatalog.UpdatePortfolioOutput), req.Error
+}
+
+func (c *Client) UpdatePortfolioShareWithContext(ctx context.Context, input *servicecatalog.UpdatePortfolioShareInput, opts ...request.Option) (*servicecatalog.UpdatePortfolioShareOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "UpdatePortfolioShare",
+		Input:   input,
+		Output:  (*servicecatalog.UpdatePortfolioShareOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceCatalogAPI.UpdatePortfolioShareWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicecatalog.UpdatePortfolioShareOutput), req.Error
 }
 
 func (c *Client) UpdateProductWithContext(ctx context.Context, input *servicecatalog.UpdateProductInput, opts ...request.Option) (*servicecatalog.UpdateProductOutput, error) {

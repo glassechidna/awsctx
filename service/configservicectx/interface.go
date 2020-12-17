@@ -79,6 +79,7 @@ type ConfigService interface {
 	PutConformancePackWithContext(ctx context.Context, input *configservice.PutConformancePackInput, opts ...request.Option) (*configservice.PutConformancePackOutput, error)
 	PutDeliveryChannelWithContext(ctx context.Context, input *configservice.PutDeliveryChannelInput, opts ...request.Option) (*configservice.PutDeliveryChannelOutput, error)
 	PutEvaluationsWithContext(ctx context.Context, input *configservice.PutEvaluationsInput, opts ...request.Option) (*configservice.PutEvaluationsOutput, error)
+	PutExternalEvaluationWithContext(ctx context.Context, input *configservice.PutExternalEvaluationInput, opts ...request.Option) (*configservice.PutExternalEvaluationOutput, error)
 	PutOrganizationConfigRuleWithContext(ctx context.Context, input *configservice.PutOrganizationConfigRuleInput, opts ...request.Option) (*configservice.PutOrganizationConfigRuleOutput, error)
 	PutOrganizationConformancePackWithContext(ctx context.Context, input *configservice.PutOrganizationConformancePackInput, opts ...request.Option) (*configservice.PutOrganizationConformancePackOutput, error)
 	PutRemediationConfigurationsWithContext(ctx context.Context, input *configservice.PutRemediationConfigurationsInput, opts ...request.Option) (*configservice.PutRemediationConfigurationsOutput, error)
@@ -1534,6 +1535,27 @@ func (c *Client) PutEvaluationsWithContext(ctx context.Context, input *configser
 	})
 
 	return req.Output.(*configservice.PutEvaluationsOutput), req.Error
+}
+
+func (c *Client) PutExternalEvaluationWithContext(ctx context.Context, input *configservice.PutExternalEvaluationInput, opts ...request.Option) (*configservice.PutExternalEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "PutExternalEvaluation",
+		Input:   input,
+		Output:  (*configservice.PutExternalEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.PutExternalEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.PutExternalEvaluationOutput), req.Error
 }
 
 func (c *Client) PutOrganizationConfigRuleWithContext(ctx context.Context, input *configservice.PutOrganizationConfigRuleInput, opts ...request.Option) (*configservice.PutOrganizationConfigRuleOutput, error) {

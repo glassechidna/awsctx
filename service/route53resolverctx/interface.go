@@ -23,6 +23,7 @@ type Route53Resolver interface {
 	DisassociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.DisassociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.DisassociateResolverEndpointIpAddressOutput, error)
 	DisassociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DisassociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DisassociateResolverQueryLogConfigOutput, error)
 	DisassociateResolverRuleWithContext(ctx context.Context, input *route53resolver.DisassociateResolverRuleInput, opts ...request.Option) (*route53resolver.DisassociateResolverRuleOutput, error)
+	GetResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.GetResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.GetResolverDnssecConfigOutput, error)
 	GetResolverEndpointWithContext(ctx context.Context, input *route53resolver.GetResolverEndpointInput, opts ...request.Option) (*route53resolver.GetResolverEndpointOutput, error)
 	GetResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigOutput, error)
 	GetResolverQueryLogConfigAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigAssociationInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigAssociationOutput, error)
@@ -30,6 +31,8 @@ type Route53Resolver interface {
 	GetResolverRuleWithContext(ctx context.Context, input *route53resolver.GetResolverRuleInput, opts ...request.Option) (*route53resolver.GetResolverRuleOutput, error)
 	GetResolverRuleAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverRuleAssociationInput, opts ...request.Option) (*route53resolver.GetResolverRuleAssociationOutput, error)
 	GetResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.GetResolverRulePolicyInput, opts ...request.Option) (*route53resolver.GetResolverRulePolicyOutput, error)
+	ListResolverDnssecConfigsWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, opts ...request.Option) (*route53resolver.ListResolverDnssecConfigsOutput, error)
+	ListResolverDnssecConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, cb func(*route53resolver.ListResolverDnssecConfigsOutput, bool) bool, opts ...request.Option) error
 	ListResolverEndpointIpAddressesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, opts ...request.Option) (*route53resolver.ListResolverEndpointIpAddressesOutput, error)
 	ListResolverEndpointIpAddressesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, cb func(*route53resolver.ListResolverEndpointIpAddressesOutput, bool) bool, opts ...request.Option) error
 	ListResolverEndpointsWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointsInput, opts ...request.Option) (*route53resolver.ListResolverEndpointsOutput, error)
@@ -48,6 +51,7 @@ type Route53Resolver interface {
 	PutResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.PutResolverRulePolicyInput, opts ...request.Option) (*route53resolver.PutResolverRulePolicyOutput, error)
 	TagResourceWithContext(ctx context.Context, input *route53resolver.TagResourceInput, opts ...request.Option) (*route53resolver.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *route53resolver.UntagResourceInput, opts ...request.Option) (*route53resolver.UntagResourceOutput, error)
+	UpdateResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.UpdateResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.UpdateResolverDnssecConfigOutput, error)
 	UpdateResolverEndpointWithContext(ctx context.Context, input *route53resolver.UpdateResolverEndpointInput, opts ...request.Option) (*route53resolver.UpdateResolverEndpointOutput, error)
 	UpdateResolverRuleWithContext(ctx context.Context, input *route53resolver.UpdateResolverRuleInput, opts ...request.Option) (*route53resolver.UpdateResolverRuleOutput, error)
 }
@@ -319,6 +323,27 @@ func (c *Client) DisassociateResolverRuleWithContext(ctx context.Context, input 
 	return req.Output.(*route53resolver.DisassociateResolverRuleOutput), req.Error
 }
 
+func (c *Client) GetResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.GetResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.GetResolverDnssecConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetResolverDnssecConfig",
+		Input:   input,
+		Output:  (*route53resolver.GetResolverDnssecConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetResolverDnssecConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetResolverDnssecConfigOutput), req.Error
+}
+
 func (c *Client) GetResolverEndpointWithContext(ctx context.Context, input *route53resolver.GetResolverEndpointInput, opts ...request.Option) (*route53resolver.GetResolverEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -464,6 +489,47 @@ func (c *Client) GetResolverRulePolicyWithContext(ctx context.Context, input *ro
 	})
 
 	return req.Output.(*route53resolver.GetResolverRulePolicyOutput), req.Error
+}
+
+func (c *Client) ListResolverDnssecConfigsWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, opts ...request.Option) (*route53resolver.ListResolverDnssecConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverDnssecConfigs",
+		Input:   input,
+		Output:  (*route53resolver.ListResolverDnssecConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListResolverDnssecConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListResolverDnssecConfigsOutput), req.Error
+}
+
+func (c *Client) ListResolverDnssecConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, cb func(*route53resolver.ListResolverDnssecConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListResolverDnssecConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListResolverDnssecConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResolverEndpointIpAddressesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, opts ...request.Option) (*route53resolver.ListResolverEndpointIpAddressesOutput, error) {
@@ -835,6 +901,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *route53res
 	})
 
 	return req.Output.(*route53resolver.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.UpdateResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.UpdateResolverDnssecConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "UpdateResolverDnssecConfig",
+		Input:   input,
+		Output:  (*route53resolver.UpdateResolverDnssecConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.UpdateResolverDnssecConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.UpdateResolverDnssecConfigOutput), req.Error
 }
 
 func (c *Client) UpdateResolverEndpointWithContext(ctx context.Context, input *route53resolver.UpdateResolverEndpointInput, opts ...request.Option) (*route53resolver.UpdateResolverEndpointOutput, error) {
