@@ -31,8 +31,11 @@ type ServiceQuotas interface {
 	ListServiceQuotasPagesWithContext(ctx context.Context, input *servicequotas.ListServiceQuotasInput, cb func(*servicequotas.ListServiceQuotasOutput, bool) bool, opts ...request.Option) error
 	ListServicesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, opts ...request.Option) (*servicequotas.ListServicesOutput, error)
 	ListServicesPagesWithContext(ctx context.Context, input *servicequotas.ListServicesInput, cb func(*servicequotas.ListServicesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *servicequotas.ListTagsForResourceInput, opts ...request.Option) (*servicequotas.ListTagsForResourceOutput, error)
 	PutServiceQuotaIncreaseRequestIntoTemplateWithContext(ctx context.Context, input *servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateInput, opts ...request.Option) (*servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateOutput, error)
 	RequestServiceQuotaIncreaseWithContext(ctx context.Context, input *servicequotas.RequestServiceQuotaIncreaseInput, opts ...request.Option) (*servicequotas.RequestServiceQuotaIncreaseOutput, error)
+	TagResourceWithContext(ctx context.Context, input *servicequotas.TagResourceInput, opts ...request.Option) (*servicequotas.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *servicequotas.UntagResourceInput, opts ...request.Option) (*servicequotas.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -464,6 +467,27 @@ func (c *Client) ListServicesPagesWithContext(ctx context.Context, input *servic
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *servicequotas.ListTagsForResourceInput, opts ...request.Option) (*servicequotas.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*servicequotas.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceQuotasAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicequotas.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutServiceQuotaIncreaseRequestIntoTemplateWithContext(ctx context.Context, input *servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateInput, opts ...request.Option) (*servicequotas.PutServiceQuotaIncreaseRequestIntoTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicequotas",
@@ -504,4 +528,46 @@ func (c *Client) RequestServiceQuotaIncreaseWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*servicequotas.RequestServiceQuotaIncreaseOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *servicequotas.TagResourceInput, opts ...request.Option) (*servicequotas.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*servicequotas.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceQuotasAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicequotas.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *servicequotas.UntagResourceInput, opts ...request.Option) (*servicequotas.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicequotas",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*servicequotas.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceQuotasAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicequotas.UntagResourceOutput), req.Error
 }

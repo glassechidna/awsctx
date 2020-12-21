@@ -27,6 +27,7 @@ type ConfigService interface {
 	DeleteRemediationExceptionsWithContext(ctx context.Context, input *configservice.DeleteRemediationExceptionsInput, opts ...request.Option) (*configservice.DeleteRemediationExceptionsOutput, error)
 	DeleteResourceConfigWithContext(ctx context.Context, input *configservice.DeleteResourceConfigInput, opts ...request.Option) (*configservice.DeleteResourceConfigOutput, error)
 	DeleteRetentionConfigurationWithContext(ctx context.Context, input *configservice.DeleteRetentionConfigurationInput, opts ...request.Option) (*configservice.DeleteRetentionConfigurationOutput, error)
+	DeleteStoredQueryWithContext(ctx context.Context, input *configservice.DeleteStoredQueryInput, opts ...request.Option) (*configservice.DeleteStoredQueryOutput, error)
 	DeliverConfigSnapshotWithContext(ctx context.Context, input *configservice.DeliverConfigSnapshotInput, opts ...request.Option) (*configservice.DeliverConfigSnapshotOutput, error)
 	DescribeAggregateComplianceByConfigRulesWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConfigRulesInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConfigRulesOutput, error)
 	DescribeAggregationAuthorizationsWithContext(ctx context.Context, input *configservice.DescribeAggregationAuthorizationsInput, opts ...request.Option) (*configservice.DescribeAggregationAuthorizationsOutput, error)
@@ -69,8 +70,11 @@ type ConfigService interface {
 	GetOrganizationConformancePackDetailedStatusWithContext(ctx context.Context, input *configservice.GetOrganizationConformancePackDetailedStatusInput, opts ...request.Option) (*configservice.GetOrganizationConformancePackDetailedStatusOutput, error)
 	GetResourceConfigHistoryWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, opts ...request.Option) (*configservice.GetResourceConfigHistoryOutput, error)
 	GetResourceConfigHistoryPagesWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, cb func(*configservice.GetResourceConfigHistoryOutput, bool) bool, opts ...request.Option) error
+	GetStoredQueryWithContext(ctx context.Context, input *configservice.GetStoredQueryInput, opts ...request.Option) (*configservice.GetStoredQueryOutput, error)
 	ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error)
 	ListDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListDiscoveredResourcesOutput, error)
+	ListStoredQueriesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, opts ...request.Option) (*configservice.ListStoredQueriesOutput, error)
+	ListStoredQueriesPagesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, cb func(*configservice.ListStoredQueriesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *configservice.ListTagsForResourceInput, opts ...request.Option) (*configservice.ListTagsForResourceOutput, error)
 	PutAggregationAuthorizationWithContext(ctx context.Context, input *configservice.PutAggregationAuthorizationInput, opts ...request.Option) (*configservice.PutAggregationAuthorizationOutput, error)
 	PutConfigRuleWithContext(ctx context.Context, input *configservice.PutConfigRuleInput, opts ...request.Option) (*configservice.PutConfigRuleOutput, error)
@@ -86,6 +90,7 @@ type ConfigService interface {
 	PutRemediationExceptionsWithContext(ctx context.Context, input *configservice.PutRemediationExceptionsInput, opts ...request.Option) (*configservice.PutRemediationExceptionsOutput, error)
 	PutResourceConfigWithContext(ctx context.Context, input *configservice.PutResourceConfigInput, opts ...request.Option) (*configservice.PutResourceConfigOutput, error)
 	PutRetentionConfigurationWithContext(ctx context.Context, input *configservice.PutRetentionConfigurationInput, opts ...request.Option) (*configservice.PutRetentionConfigurationOutput, error)
+	PutStoredQueryWithContext(ctx context.Context, input *configservice.PutStoredQueryInput, opts ...request.Option) (*configservice.PutStoredQueryOutput, error)
 	SelectAggregateResourceConfigWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, opts ...request.Option) (*configservice.SelectAggregateResourceConfigOutput, error)
 	SelectAggregateResourceConfigPagesWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, cb func(*configservice.SelectAggregateResourceConfigOutput, bool) bool, opts ...request.Option) error
 	SelectResourceConfigWithContext(ctx context.Context, input *configservice.SelectResourceConfigInput, opts ...request.Option) (*configservice.SelectResourceConfigOutput, error)
@@ -446,6 +451,27 @@ func (c *Client) DeleteRetentionConfigurationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*configservice.DeleteRetentionConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteStoredQueryWithContext(ctx context.Context, input *configservice.DeleteStoredQueryInput, opts ...request.Option) (*configservice.DeleteStoredQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DeleteStoredQuery",
+		Input:   input,
+		Output:  (*configservice.DeleteStoredQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.DeleteStoredQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.DeleteStoredQueryOutput), req.Error
 }
 
 func (c *Client) DeliverConfigSnapshotWithContext(ctx context.Context, input *configservice.DeliverConfigSnapshotInput, opts ...request.Option) (*configservice.DeliverConfigSnapshotOutput, error) {
@@ -1327,6 +1353,27 @@ func (c *Client) GetResourceConfigHistoryPagesWithContext(ctx context.Context, i
 	return req.Error
 }
 
+func (c *Client) GetStoredQueryWithContext(ctx context.Context, input *configservice.GetStoredQueryInput, opts ...request.Option) (*configservice.GetStoredQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "GetStoredQuery",
+		Input:   input,
+		Output:  (*configservice.GetStoredQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.GetStoredQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.GetStoredQueryOutput), req.Error
+}
+
 func (c *Client) ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
@@ -1367,6 +1414,47 @@ func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*configservice.ListDiscoveredResourcesOutput), req.Error
+}
+
+func (c *Client) ListStoredQueriesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, opts ...request.Option) (*configservice.ListStoredQueriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "ListStoredQueries",
+		Input:   input,
+		Output:  (*configservice.ListStoredQueriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.ListStoredQueriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.ListStoredQueriesOutput), req.Error
+}
+
+func (c *Client) ListStoredQueriesPagesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, cb func(*configservice.ListStoredQueriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "ListStoredQueries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.ListStoredQueriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *configservice.ListTagsForResourceInput, opts ...request.Option) (*configservice.ListTagsForResourceOutput, error) {
@@ -1682,6 +1770,27 @@ func (c *Client) PutRetentionConfigurationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*configservice.PutRetentionConfigurationOutput), req.Error
+}
+
+func (c *Client) PutStoredQueryWithContext(ctx context.Context, input *configservice.PutStoredQueryInput, opts ...request.Option) (*configservice.PutStoredQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "PutStoredQuery",
+		Input:   input,
+		Output:  (*configservice.PutStoredQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.PutStoredQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.PutStoredQueryOutput), req.Error
 }
 
 func (c *Client) SelectAggregateResourceConfigWithContext(ctx context.Context, input *configservice.SelectAggregateResourceConfigInput, opts ...request.Option) (*configservice.SelectAggregateResourceConfigOutput, error) {
