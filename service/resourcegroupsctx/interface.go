@@ -22,6 +22,7 @@ type ResourceGroups interface {
 	ListGroupResourcesPagesWithContext(ctx context.Context, input *resourcegroups.ListGroupResourcesInput, cb func(*resourcegroups.ListGroupResourcesOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, opts ...request.Option) (*resourcegroups.ListGroupsOutput, error)
 	ListGroupsPagesWithContext(ctx context.Context, input *resourcegroups.ListGroupsInput, cb func(*resourcegroups.ListGroupsOutput, bool) bool, opts ...request.Option) error
+	PutGroupConfigurationWithContext(ctx context.Context, input *resourcegroups.PutGroupConfigurationInput, opts ...request.Option) (*resourcegroups.PutGroupConfigurationOutput, error)
 	SearchResourcesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, opts ...request.Option) (*resourcegroups.SearchResourcesOutput, error)
 	SearchResourcesPagesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, cb func(*resourcegroups.SearchResourcesOutput, bool) bool, opts ...request.Option) error
 	TagWithContext(ctx context.Context, input *resourcegroups.TagInput, opts ...request.Option) (*resourcegroups.TagOutput, error)
@@ -273,6 +274,27 @@ func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *resource
 	})
 
 	return req.Error
+}
+
+func (c *Client) PutGroupConfigurationWithContext(ctx context.Context, input *resourcegroups.PutGroupConfigurationInput, opts ...request.Option) (*resourcegroups.PutGroupConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroups",
+		Action:  "PutGroupConfiguration",
+		Input:   input,
+		Output:  (*resourcegroups.PutGroupConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ResourceGroupsAPI.PutGroupConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*resourcegroups.PutGroupConfigurationOutput), req.Error
 }
 
 func (c *Client) SearchResourcesWithContext(ctx context.Context, input *resourcegroups.SearchResourcesInput, opts ...request.Option) (*resourcegroups.SearchResourcesOutput, error) {
