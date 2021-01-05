@@ -23,6 +23,7 @@ type CostExplorer interface {
 	GetAnomalySubscriptionsWithContext(ctx context.Context, input *costexplorer.GetAnomalySubscriptionsInput, opts ...request.Option) (*costexplorer.GetAnomalySubscriptionsOutput, error)
 	GetCostAndUsageWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageInput, opts ...request.Option) (*costexplorer.GetCostAndUsageOutput, error)
 	GetCostAndUsageWithResourcesWithContext(ctx context.Context, input *costexplorer.GetCostAndUsageWithResourcesInput, opts ...request.Option) (*costexplorer.GetCostAndUsageWithResourcesOutput, error)
+	GetCostCategoriesWithContext(ctx context.Context, input *costexplorer.GetCostCategoriesInput, opts ...request.Option) (*costexplorer.GetCostCategoriesOutput, error)
 	GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error)
 	GetDimensionValuesWithContext(ctx context.Context, input *costexplorer.GetDimensionValuesInput, opts ...request.Option) (*costexplorer.GetDimensionValuesOutput, error)
 	GetReservationCoverageWithContext(ctx context.Context, input *costexplorer.GetReservationCoverageInput, opts ...request.Option) (*costexplorer.GetReservationCoverageOutput, error)
@@ -310,6 +311,27 @@ func (c *Client) GetCostAndUsageWithResourcesWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*costexplorer.GetCostAndUsageWithResourcesOutput), req.Error
+}
+
+func (c *Client) GetCostCategoriesWithContext(ctx context.Context, input *costexplorer.GetCostCategoriesInput, opts ...request.Option) (*costexplorer.GetCostCategoriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetCostCategories",
+		Input:   input,
+		Output:  (*costexplorer.GetCostCategoriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetCostCategoriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetCostCategoriesOutput), req.Error
 }
 
 func (c *Client) GetCostForecastWithContext(ctx context.Context, input *costexplorer.GetCostForecastInput, opts ...request.Option) (*costexplorer.GetCostForecastOutput, error) {
