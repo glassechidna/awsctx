@@ -137,6 +137,7 @@ type Lightsail interface {
 	ReleaseStaticIpWithContext(ctx context.Context, input *lightsail.ReleaseStaticIpInput, opts ...request.Option) (*lightsail.ReleaseStaticIpOutput, error)
 	ResetDistributionCacheWithContext(ctx context.Context, input *lightsail.ResetDistributionCacheInput, opts ...request.Option) (*lightsail.ResetDistributionCacheOutput, error)
 	SendContactMethodVerificationWithContext(ctx context.Context, input *lightsail.SendContactMethodVerificationInput, opts ...request.Option) (*lightsail.SendContactMethodVerificationOutput, error)
+	SetIpAddressTypeWithContext(ctx context.Context, input *lightsail.SetIpAddressTypeInput, opts ...request.Option) (*lightsail.SetIpAddressTypeOutput, error)
 	StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error)
 	StartRelationalDatabaseWithContext(ctx context.Context, input *lightsail.StartRelationalDatabaseInput, opts ...request.Option) (*lightsail.StartRelationalDatabaseOutput, error)
 	StopInstanceWithContext(ctx context.Context, input *lightsail.StopInstanceInput, opts ...request.Option) (*lightsail.StopInstanceOutput, error)
@@ -2813,6 +2814,27 @@ func (c *Client) SendContactMethodVerificationWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*lightsail.SendContactMethodVerificationOutput), req.Error
+}
+
+func (c *Client) SetIpAddressTypeWithContext(ctx context.Context, input *lightsail.SetIpAddressTypeInput, opts ...request.Option) (*lightsail.SetIpAddressTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "SetIpAddressType",
+		Input:   input,
+		Output:  (*lightsail.SetIpAddressTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.SetIpAddressTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.SetIpAddressTypeOutput), req.Error
 }
 
 func (c *Client) StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error) {
