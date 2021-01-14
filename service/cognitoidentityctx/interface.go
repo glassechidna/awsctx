@@ -21,6 +21,7 @@ type CognitoIdentity interface {
 	GetIdentityPoolRolesWithContext(ctx context.Context, input *cognitoidentity.GetIdentityPoolRolesInput, opts ...request.Option) (*cognitoidentity.GetIdentityPoolRolesOutput, error)
 	GetOpenIdTokenWithContext(ctx context.Context, input *cognitoidentity.GetOpenIdTokenInput, opts ...request.Option) (*cognitoidentity.GetOpenIdTokenOutput, error)
 	GetOpenIdTokenForDeveloperIdentityWithContext(ctx context.Context, input *cognitoidentity.GetOpenIdTokenForDeveloperIdentityInput, opts ...request.Option) (*cognitoidentity.GetOpenIdTokenForDeveloperIdentityOutput, error)
+	GetPrincipalTagAttributeMapWithContext(ctx context.Context, input *cognitoidentity.GetPrincipalTagAttributeMapInput, opts ...request.Option) (*cognitoidentity.GetPrincipalTagAttributeMapOutput, error)
 	ListIdentitiesWithContext(ctx context.Context, input *cognitoidentity.ListIdentitiesInput, opts ...request.Option) (*cognitoidentity.ListIdentitiesOutput, error)
 	ListIdentityPoolsWithContext(ctx context.Context, input *cognitoidentity.ListIdentityPoolsInput, opts ...request.Option) (*cognitoidentity.ListIdentityPoolsOutput, error)
 	ListIdentityPoolsPagesWithContext(ctx context.Context, input *cognitoidentity.ListIdentityPoolsInput, cb func(*cognitoidentity.ListIdentityPoolsOutput, bool) bool, opts ...request.Option) error
@@ -28,6 +29,7 @@ type CognitoIdentity interface {
 	LookupDeveloperIdentityWithContext(ctx context.Context, input *cognitoidentity.LookupDeveloperIdentityInput, opts ...request.Option) (*cognitoidentity.LookupDeveloperIdentityOutput, error)
 	MergeDeveloperIdentitiesWithContext(ctx context.Context, input *cognitoidentity.MergeDeveloperIdentitiesInput, opts ...request.Option) (*cognitoidentity.MergeDeveloperIdentitiesOutput, error)
 	SetIdentityPoolRolesWithContext(ctx context.Context, input *cognitoidentity.SetIdentityPoolRolesInput, opts ...request.Option) (*cognitoidentity.SetIdentityPoolRolesOutput, error)
+	SetPrincipalTagAttributeMapWithContext(ctx context.Context, input *cognitoidentity.SetPrincipalTagAttributeMapInput, opts ...request.Option) (*cognitoidentity.SetPrincipalTagAttributeMapOutput, error)
 	TagResourceWithContext(ctx context.Context, input *cognitoidentity.TagResourceInput, opts ...request.Option) (*cognitoidentity.TagResourceOutput, error)
 	UnlinkDeveloperIdentityWithContext(ctx context.Context, input *cognitoidentity.UnlinkDeveloperIdentityInput, opts ...request.Option) (*cognitoidentity.UnlinkDeveloperIdentityOutput, error)
 	UnlinkIdentityWithContext(ctx context.Context, input *cognitoidentity.UnlinkIdentityInput, opts ...request.Option) (*cognitoidentity.UnlinkIdentityOutput, error)
@@ -260,6 +262,27 @@ func (c *Client) GetOpenIdTokenForDeveloperIdentityWithContext(ctx context.Conte
 	return req.Output.(*cognitoidentity.GetOpenIdTokenForDeveloperIdentityOutput), req.Error
 }
 
+func (c *Client) GetPrincipalTagAttributeMapWithContext(ctx context.Context, input *cognitoidentity.GetPrincipalTagAttributeMapInput, opts ...request.Option) (*cognitoidentity.GetPrincipalTagAttributeMapOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentity",
+		Action:  "GetPrincipalTagAttributeMap",
+		Input:   input,
+		Output:  (*cognitoidentity.GetPrincipalTagAttributeMapOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CognitoIdentityAPI.GetPrincipalTagAttributeMapWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cognitoidentity.GetPrincipalTagAttributeMapOutput), req.Error
+}
+
 func (c *Client) ListIdentitiesWithContext(ctx context.Context, input *cognitoidentity.ListIdentitiesInput, opts ...request.Option) (*cognitoidentity.ListIdentitiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentity",
@@ -404,6 +427,27 @@ func (c *Client) SetIdentityPoolRolesWithContext(ctx context.Context, input *cog
 	})
 
 	return req.Output.(*cognitoidentity.SetIdentityPoolRolesOutput), req.Error
+}
+
+func (c *Client) SetPrincipalTagAttributeMapWithContext(ctx context.Context, input *cognitoidentity.SetPrincipalTagAttributeMapInput, opts ...request.Option) (*cognitoidentity.SetPrincipalTagAttributeMapOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentity",
+		Action:  "SetPrincipalTagAttributeMap",
+		Input:   input,
+		Output:  (*cognitoidentity.SetPrincipalTagAttributeMapOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CognitoIdentityAPI.SetPrincipalTagAttributeMapWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cognitoidentity.SetPrincipalTagAttributeMapOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cognitoidentity.TagResourceInput, opts ...request.Option) (*cognitoidentity.TagResourceOutput, error) {
