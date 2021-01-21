@@ -43,6 +43,7 @@ type Kafka interface {
 	UntagResourceWithContext(ctx context.Context, input *kafka.UntagResourceInput, opts ...request.Option) (*kafka.UntagResourceOutput, error)
 	UpdateBrokerCountWithContext(ctx context.Context, input *kafka.UpdateBrokerCountInput, opts ...request.Option) (*kafka.UpdateBrokerCountOutput, error)
 	UpdateBrokerStorageWithContext(ctx context.Context, input *kafka.UpdateBrokerStorageInput, opts ...request.Option) (*kafka.UpdateBrokerStorageOutput, error)
+	UpdateBrokerTypeWithContext(ctx context.Context, input *kafka.UpdateBrokerTypeInput, opts ...request.Option) (*kafka.UpdateBrokerTypeOutput, error)
 	UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error)
 	UpdateClusterKafkaVersionWithContext(ctx context.Context, input *kafka.UpdateClusterKafkaVersionInput, opts ...request.Option) (*kafka.UpdateClusterKafkaVersionOutput, error)
 	UpdateConfigurationWithContext(ctx context.Context, input *kafka.UpdateConfigurationInput, opts ...request.Option) (*kafka.UpdateConfigurationOutput, error)
@@ -727,6 +728,27 @@ func (c *Client) UpdateBrokerStorageWithContext(ctx context.Context, input *kafk
 	})
 
 	return req.Output.(*kafka.UpdateBrokerStorageOutput), req.Error
+}
+
+func (c *Client) UpdateBrokerTypeWithContext(ctx context.Context, input *kafka.UpdateBrokerTypeInput, opts ...request.Option) (*kafka.UpdateBrokerTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateBrokerType",
+		Input:   input,
+		Output:  (*kafka.UpdateBrokerTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateBrokerTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateBrokerTypeOutput), req.Error
 }
 
 func (c *Client) UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error) {
