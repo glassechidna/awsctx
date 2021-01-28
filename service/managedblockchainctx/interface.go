@@ -33,7 +33,10 @@ type ManagedBlockchain interface {
 	ListProposalVotesPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalVotesInput, cb func(*managedblockchain.ListProposalVotesOutput, bool) bool, opts ...request.Option) error
 	ListProposalsWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, opts ...request.Option) (*managedblockchain.ListProposalsOutput, error)
 	ListProposalsPagesWithContext(ctx context.Context, input *managedblockchain.ListProposalsInput, cb func(*managedblockchain.ListProposalsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *managedblockchain.ListTagsForResourceInput, opts ...request.Option) (*managedblockchain.ListTagsForResourceOutput, error)
 	RejectInvitationWithContext(ctx context.Context, input *managedblockchain.RejectInvitationInput, opts ...request.Option) (*managedblockchain.RejectInvitationOutput, error)
+	TagResourceWithContext(ctx context.Context, input *managedblockchain.TagResourceInput, opts ...request.Option) (*managedblockchain.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *managedblockchain.UntagResourceInput, opts ...request.Option) (*managedblockchain.UntagResourceOutput, error)
 	UpdateMemberWithContext(ctx context.Context, input *managedblockchain.UpdateMemberInput, opts ...request.Option) (*managedblockchain.UpdateMemberOutput, error)
 	UpdateNodeWithContext(ctx context.Context, input *managedblockchain.UpdateNodeInput, opts ...request.Option) (*managedblockchain.UpdateNodeOutput, error)
 	VoteOnProposalWithContext(ctx context.Context, input *managedblockchain.VoteOnProposalInput, opts ...request.Option) (*managedblockchain.VoteOnProposalOutput, error)
@@ -510,6 +513,27 @@ func (c *Client) ListProposalsPagesWithContext(ctx context.Context, input *manag
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *managedblockchain.ListTagsForResourceInput, opts ...request.Option) (*managedblockchain.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*managedblockchain.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) RejectInvitationWithContext(ctx context.Context, input *managedblockchain.RejectInvitationInput, opts ...request.Option) (*managedblockchain.RejectInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
@@ -529,6 +553,48 @@ func (c *Client) RejectInvitationWithContext(ctx context.Context, input *managed
 	})
 
 	return req.Output.(*managedblockchain.RejectInvitationOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *managedblockchain.TagResourceInput, opts ...request.Option) (*managedblockchain.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*managedblockchain.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *managedblockchain.UntagResourceInput, opts ...request.Option) (*managedblockchain.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*managedblockchain.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateMemberWithContext(ctx context.Context, input *managedblockchain.UpdateMemberInput, opts ...request.Option) (*managedblockchain.UpdateMemberOutput, error) {
