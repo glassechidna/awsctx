@@ -15,11 +15,13 @@ type Connect interface {
 	AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error)
 	AssociateLambdaFunctionWithContext(ctx context.Context, input *connect.AssociateLambdaFunctionInput, opts ...request.Option) (*connect.AssociateLambdaFunctionOutput, error)
 	AssociateLexBotWithContext(ctx context.Context, input *connect.AssociateLexBotInput, opts ...request.Option) (*connect.AssociateLexBotOutput, error)
+	AssociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.AssociateQueueQuickConnectsInput, opts ...request.Option) (*connect.AssociateQueueQuickConnectsOutput, error)
 	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
+	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
 	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
@@ -32,9 +34,11 @@ type Connect interface {
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
+	DescribeHoursOfOperationWithContext(ctx context.Context, input *connect.DescribeHoursOfOperationInput, opts ...request.Option) (*connect.DescribeHoursOfOperationOutput, error)
 	DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error)
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *connect.DescribeInstanceAttributeInput, opts ...request.Option) (*connect.DescribeInstanceAttributeOutput, error)
 	DescribeInstanceStorageConfigWithContext(ctx context.Context, input *connect.DescribeInstanceStorageConfigInput, opts ...request.Option) (*connect.DescribeInstanceStorageConfigOutput, error)
+	DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error)
 	DescribeQuickConnectWithContext(ctx context.Context, input *connect.DescribeQuickConnectInput, opts ...request.Option) (*connect.DescribeQuickConnectOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
@@ -44,6 +48,7 @@ type Connect interface {
 	DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error)
 	DisassociateLambdaFunctionWithContext(ctx context.Context, input *connect.DisassociateLambdaFunctionInput, opts ...request.Option) (*connect.DisassociateLambdaFunctionOutput, error)
 	DisassociateLexBotWithContext(ctx context.Context, input *connect.DisassociateLexBotInput, opts ...request.Option) (*connect.DisassociateLexBotOutput, error)
+	DisassociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.DisassociateQueueQuickConnectsInput, opts ...request.Option) (*connect.DisassociateQueueQuickConnectsOutput, error)
 	DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error)
 	DisassociateSecurityKeyWithContext(ctx context.Context, input *connect.DisassociateSecurityKeyInput, opts ...request.Option) (*connect.DisassociateSecurityKeyOutput, error)
 	GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error)
@@ -74,6 +79,8 @@ type Connect interface {
 	ListPhoneNumbersPagesWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, cb func(*connect.ListPhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	ListPromptsWithContext(ctx context.Context, input *connect.ListPromptsInput, opts ...request.Option) (*connect.ListPromptsOutput, error)
 	ListPromptsPagesWithContext(ctx context.Context, input *connect.ListPromptsInput, cb func(*connect.ListPromptsOutput, bool) bool, opts ...request.Option) error
+	ListQueueQuickConnectsWithContext(ctx context.Context, input *connect.ListQueueQuickConnectsInput, opts ...request.Option) (*connect.ListQueueQuickConnectsOutput, error)
+	ListQueueQuickConnectsPagesWithContext(ctx context.Context, input *connect.ListQueueQuickConnectsInput, cb func(*connect.ListQueueQuickConnectsOutput, bool) bool, opts ...request.Option) error
 	ListQueuesWithContext(ctx context.Context, input *connect.ListQueuesInput, opts ...request.Option) (*connect.ListQueuesOutput, error)
 	ListQueuesPagesWithContext(ctx context.Context, input *connect.ListQueuesInput, cb func(*connect.ListQueuesOutput, bool) bool, opts ...request.Option) error
 	ListQuickConnectsWithContext(ctx context.Context, input *connect.ListQuickConnectsInput, opts ...request.Option) (*connect.ListQuickConnectsOutput, error)
@@ -108,6 +115,11 @@ type Connect interface {
 	UpdateContactFlowNameWithContext(ctx context.Context, input *connect.UpdateContactFlowNameInput, opts ...request.Option) (*connect.UpdateContactFlowNameOutput, error)
 	UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error)
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
+	UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error)
+	UpdateQueueMaxContactsWithContext(ctx context.Context, input *connect.UpdateQueueMaxContactsInput, opts ...request.Option) (*connect.UpdateQueueMaxContactsOutput, error)
+	UpdateQueueNameWithContext(ctx context.Context, input *connect.UpdateQueueNameInput, opts ...request.Option) (*connect.UpdateQueueNameOutput, error)
+	UpdateQueueOutboundCallerConfigWithContext(ctx context.Context, input *connect.UpdateQueueOutboundCallerConfigInput, opts ...request.Option) (*connect.UpdateQueueOutboundCallerConfigOutput, error)
+	UpdateQueueStatusWithContext(ctx context.Context, input *connect.UpdateQueueStatusInput, opts ...request.Option) (*connect.UpdateQueueStatusOutput, error)
 	UpdateQuickConnectConfigWithContext(ctx context.Context, input *connect.UpdateQuickConnectConfigInput, opts ...request.Option) (*connect.UpdateQuickConnectConfigOutput, error)
 	UpdateQuickConnectNameWithContext(ctx context.Context, input *connect.UpdateQuickConnectNameInput, opts ...request.Option) (*connect.UpdateQuickConnectNameOutput, error)
 	UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error)
@@ -222,6 +234,27 @@ func (c *Client) AssociateLexBotWithContext(ctx context.Context, input *connect.
 	return req.Output.(*connect.AssociateLexBotOutput), req.Error
 }
 
+func (c *Client) AssociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.AssociateQueueQuickConnectsInput, opts ...request.Option) (*connect.AssociateQueueQuickConnectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateQueueQuickConnects",
+		Input:   input,
+		Output:  (*connect.AssociateQueueQuickConnectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateQueueQuickConnectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateQueueQuickConnectsOutput), req.Error
+}
+
 func (c *Client) AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -325,6 +358,27 @@ func (c *Client) CreateIntegrationAssociationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*connect.CreateIntegrationAssociationOutput), req.Error
+}
+
+func (c *Client) CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateQueue",
+		Input:   input,
+		Output:  (*connect.CreateQueueOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateQueueWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateQueueOutput), req.Error
 }
 
 func (c *Client) CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error) {
@@ -579,6 +633,27 @@ func (c *Client) DescribeContactFlowWithContext(ctx context.Context, input *conn
 	return req.Output.(*connect.DescribeContactFlowOutput), req.Error
 }
 
+func (c *Client) DescribeHoursOfOperationWithContext(ctx context.Context, input *connect.DescribeHoursOfOperationInput, opts ...request.Option) (*connect.DescribeHoursOfOperationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeHoursOfOperation",
+		Input:   input,
+		Output:  (*connect.DescribeHoursOfOperationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeHoursOfOperationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeHoursOfOperationOutput), req.Error
+}
+
 func (c *Client) DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -640,6 +715,27 @@ func (c *Client) DescribeInstanceStorageConfigWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*connect.DescribeInstanceStorageConfigOutput), req.Error
+}
+
+func (c *Client) DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeQueue",
+		Input:   input,
+		Output:  (*connect.DescribeQueueOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeQueueWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeQueueOutput), req.Error
 }
 
 func (c *Client) DescribeQuickConnectWithContext(ctx context.Context, input *connect.DescribeQuickConnectInput, opts ...request.Option) (*connect.DescribeQuickConnectOutput, error) {
@@ -829,6 +925,27 @@ func (c *Client) DisassociateLexBotWithContext(ctx context.Context, input *conne
 	})
 
 	return req.Output.(*connect.DisassociateLexBotOutput), req.Error
+}
+
+func (c *Client) DisassociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.DisassociateQueueQuickConnectsInput, opts ...request.Option) (*connect.DisassociateQueueQuickConnectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateQueueQuickConnects",
+		Input:   input,
+		Output:  (*connect.DisassociateQueueQuickConnectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateQueueQuickConnectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateQueueQuickConnectsOutput), req.Error
 }
 
 func (c *Client) DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error) {
@@ -1443,6 +1560,47 @@ func (c *Client) ListPromptsPagesWithContext(ctx context.Context, input *connect
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListPromptsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListQueueQuickConnectsWithContext(ctx context.Context, input *connect.ListQueueQuickConnectsInput, opts ...request.Option) (*connect.ListQueueQuickConnectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListQueueQuickConnects",
+		Input:   input,
+		Output:  (*connect.ListQueueQuickConnectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListQueueQuickConnectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListQueueQuickConnectsOutput), req.Error
+}
+
+func (c *Client) ListQueueQuickConnectsPagesWithContext(ctx context.Context, input *connect.ListQueueQuickConnectsInput, cb func(*connect.ListQueueQuickConnectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListQueueQuickConnects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListQueueQuickConnectsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -2151,6 +2309,111 @@ func (c *Client) UpdateInstanceStorageConfigWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*connect.UpdateInstanceStorageConfigOutput), req.Error
+}
+
+func (c *Client) UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateQueueHoursOfOperation",
+		Input:   input,
+		Output:  (*connect.UpdateQueueHoursOfOperationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateQueueHoursOfOperationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateQueueHoursOfOperationOutput), req.Error
+}
+
+func (c *Client) UpdateQueueMaxContactsWithContext(ctx context.Context, input *connect.UpdateQueueMaxContactsInput, opts ...request.Option) (*connect.UpdateQueueMaxContactsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateQueueMaxContacts",
+		Input:   input,
+		Output:  (*connect.UpdateQueueMaxContactsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateQueueMaxContactsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateQueueMaxContactsOutput), req.Error
+}
+
+func (c *Client) UpdateQueueNameWithContext(ctx context.Context, input *connect.UpdateQueueNameInput, opts ...request.Option) (*connect.UpdateQueueNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateQueueName",
+		Input:   input,
+		Output:  (*connect.UpdateQueueNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateQueueNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateQueueNameOutput), req.Error
+}
+
+func (c *Client) UpdateQueueOutboundCallerConfigWithContext(ctx context.Context, input *connect.UpdateQueueOutboundCallerConfigInput, opts ...request.Option) (*connect.UpdateQueueOutboundCallerConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateQueueOutboundCallerConfig",
+		Input:   input,
+		Output:  (*connect.UpdateQueueOutboundCallerConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateQueueOutboundCallerConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateQueueOutboundCallerConfigOutput), req.Error
+}
+
+func (c *Client) UpdateQueueStatusWithContext(ctx context.Context, input *connect.UpdateQueueStatusInput, opts ...request.Option) (*connect.UpdateQueueStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateQueueStatus",
+		Input:   input,
+		Output:  (*connect.UpdateQueueStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateQueueStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateQueueStatusOutput), req.Error
 }
 
 func (c *Client) UpdateQuickConnectConfigWithContext(ctx context.Context, input *connect.UpdateQuickConnectConfigInput, opts ...request.Option) (*connect.UpdateQuickConnectConfigOutput, error) {
