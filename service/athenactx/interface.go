@@ -31,6 +31,7 @@ type Athena interface {
 	ListDataCatalogsPagesWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, cb func(*athena.ListDataCatalogsOutput, bool) bool, opts ...request.Option) error
 	ListDatabasesWithContext(ctx context.Context, input *athena.ListDatabasesInput, opts ...request.Option) (*athena.ListDatabasesOutput, error)
 	ListDatabasesPagesWithContext(ctx context.Context, input *athena.ListDatabasesInput, cb func(*athena.ListDatabasesOutput, bool) bool, opts ...request.Option) error
+	ListEngineVersionsWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, opts ...request.Option) (*athena.ListEngineVersionsOutput, error)
 	ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error)
 	ListNamedQueriesPagesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, cb func(*athena.ListNamedQueriesOutput, bool) bool, opts ...request.Option) error
 	ListQueryExecutionsWithContext(ctx context.Context, input *athena.ListQueryExecutionsInput, opts ...request.Option) (*athena.ListQueryExecutionsOutput, error)
@@ -479,6 +480,27 @@ func (c *Client) ListDatabasesPagesWithContext(ctx context.Context, input *athen
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListEngineVersionsWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, opts ...request.Option) (*athena.ListEngineVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListEngineVersions",
+		Input:   input,
+		Output:  (*athena.ListEngineVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListEngineVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListEngineVersionsOutput), req.Error
 }
 
 func (c *Client) ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error) {

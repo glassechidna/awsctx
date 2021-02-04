@@ -174,8 +174,6 @@ type EC2 interface {
 	DeregisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *ec2.DescribeAccountAttributesInput, opts ...request.Option) (*ec2.DescribeAccountAttributesOutput, error)
 	DescribeAddressesWithContext(ctx context.Context, input *ec2.DescribeAddressesInput, opts ...request.Option) (*ec2.DescribeAddressesOutput, error)
-	DescribeAddressesAttributeWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, opts ...request.Option) (*ec2.DescribeAddressesAttributeOutput, error)
-	DescribeAddressesAttributePagesWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, cb func(*ec2.DescribeAddressesAttributeOutput, bool) bool, opts ...request.Option) error
 	DescribeAggregateIdFormatWithContext(ctx context.Context, input *ec2.DescribeAggregateIdFormatInput, opts ...request.Option) (*ec2.DescribeAggregateIdFormatOutput, error)
 	DescribeAvailabilityZonesWithContext(ctx context.Context, input *ec2.DescribeAvailabilityZonesInput, opts ...request.Option) (*ec2.DescribeAvailabilityZonesOutput, error)
 	DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error)
@@ -444,7 +442,6 @@ type EC2 interface {
 	ImportKeyPairWithContext(ctx context.Context, input *ec2.ImportKeyPairInput, opts ...request.Option) (*ec2.ImportKeyPairOutput, error)
 	ImportSnapshotWithContext(ctx context.Context, input *ec2.ImportSnapshotInput, opts ...request.Option) (*ec2.ImportSnapshotOutput, error)
 	ImportVolumeWithContext(ctx context.Context, input *ec2.ImportVolumeInput, opts ...request.Option) (*ec2.ImportVolumeOutput, error)
-	ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error)
 	ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error)
 	ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error)
 	ModifyClientVpnEndpointWithContext(ctx context.Context, input *ec2.ModifyClientVpnEndpointInput, opts ...request.Option) (*ec2.ModifyClientVpnEndpointOutput, error)
@@ -515,7 +512,6 @@ type EC2 interface {
 	ReportInstanceStatusWithContext(ctx context.Context, input *ec2.ReportInstanceStatusInput, opts ...request.Option) (*ec2.ReportInstanceStatusOutput, error)
 	RequestSpotFleetWithContext(ctx context.Context, input *ec2.RequestSpotFleetInput, opts ...request.Option) (*ec2.RequestSpotFleetOutput, error)
 	RequestSpotInstancesWithContext(ctx context.Context, input *ec2.RequestSpotInstancesInput, opts ...request.Option) (*ec2.RequestSpotInstancesOutput, error)
-	ResetAddressAttributeWithContext(ctx context.Context, input *ec2.ResetAddressAttributeInput, opts ...request.Option) (*ec2.ResetAddressAttributeOutput, error)
 	ResetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ResetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ResetEbsDefaultKmsKeyIdOutput, error)
 	ResetFpgaImageAttributeWithContext(ctx context.Context, input *ec2.ResetFpgaImageAttributeInput, opts ...request.Option) (*ec2.ResetFpgaImageAttributeOutput, error)
 	ResetImageAttributeWithContext(ctx context.Context, input *ec2.ResetImageAttributeInput, opts ...request.Option) (*ec2.ResetImageAttributeOutput, error)
@@ -3985,47 +3981,6 @@ func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *ec2.De
 	})
 
 	return req.Output.(*ec2.DescribeAddressesOutput), req.Error
-}
-
-func (c *Client) DescribeAddressesAttributeWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, opts ...request.Option) (*ec2.DescribeAddressesAttributeOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "ec2",
-		Action:  "DescribeAddressesAttribute",
-		Input:   input,
-		Output:  (*ec2.DescribeAddressesAttributeOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.EC2API.DescribeAddressesAttributeWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*ec2.DescribeAddressesAttributeOutput), req.Error
-}
-
-func (c *Client) DescribeAddressesAttributePagesWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, cb func(*ec2.DescribeAddressesAttributeOutput, bool) bool, opts ...request.Option) error {
-	req := &awsctx.AwsRequest{
-		Service: "ec2",
-		Action:  "DescribeAddressesAttribute",
-		Input:   input,
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Error = c.EC2API.DescribeAddressesAttributePagesWithContext(ctx, input, cb, opts...)
-	})
-
-	return req.Error
 }
 
 func (c *Client) DescribeAggregateIdFormatWithContext(ctx context.Context, input *ec2.DescribeAggregateIdFormatInput, opts ...request.Option) (*ec2.DescribeAggregateIdFormatOutput, error) {
@@ -9563,27 +9518,6 @@ func (c *Client) ImportVolumeWithContext(ctx context.Context, input *ec2.ImportV
 	return req.Output.(*ec2.ImportVolumeOutput), req.Error
 }
 
-func (c *Client) ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "ec2",
-		Action:  "ModifyAddressAttribute",
-		Input:   input,
-		Output:  (*ec2.ModifyAddressAttributeOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.EC2API.ModifyAddressAttributeWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*ec2.ModifyAddressAttributeOutput), req.Error
-}
-
 func (c *Client) ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11052,27 +10986,6 @@ func (c *Client) RequestSpotInstancesWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.RequestSpotInstancesOutput), req.Error
-}
-
-func (c *Client) ResetAddressAttributeWithContext(ctx context.Context, input *ec2.ResetAddressAttributeInput, opts ...request.Option) (*ec2.ResetAddressAttributeOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "ec2",
-		Action:  "ResetAddressAttribute",
-		Input:   input,
-		Output:  (*ec2.ResetAddressAttributeOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.EC2API.ResetAddressAttributeWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*ec2.ResetAddressAttributeOutput), req.Error
 }
 
 func (c *Client) ResetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ResetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ResetEbsDefaultKmsKeyIdOutput, error) {
