@@ -91,7 +91,9 @@ type QuickSight interface {
 	ListTemplatesPagesWithContext(ctx context.Context, input *quicksight.ListTemplatesInput, cb func(*quicksight.ListTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListThemeAliasesWithContext(ctx context.Context, input *quicksight.ListThemeAliasesInput, opts ...request.Option) (*quicksight.ListThemeAliasesOutput, error)
 	ListThemeVersionsWithContext(ctx context.Context, input *quicksight.ListThemeVersionsInput, opts ...request.Option) (*quicksight.ListThemeVersionsOutput, error)
+	ListThemeVersionsPagesWithContext(ctx context.Context, input *quicksight.ListThemeVersionsInput, cb func(*quicksight.ListThemeVersionsOutput, bool) bool, opts ...request.Option) error
 	ListThemesWithContext(ctx context.Context, input *quicksight.ListThemesInput, opts ...request.Option) (*quicksight.ListThemesOutput, error)
+	ListThemesPagesWithContext(ctx context.Context, input *quicksight.ListThemesInput, cb func(*quicksight.ListThemesOutput, bool) bool, opts ...request.Option) error
 	ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error)
 	RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error)
@@ -1809,6 +1811,26 @@ func (c *Client) ListThemeVersionsWithContext(ctx context.Context, input *quicks
 	return req.Output.(*quicksight.ListThemeVersionsOutput), req.Error
 }
 
+func (c *Client) ListThemeVersionsPagesWithContext(ctx context.Context, input *quicksight.ListThemeVersionsInput, cb func(*quicksight.ListThemeVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListThemeVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListThemeVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListThemesWithContext(ctx context.Context, input *quicksight.ListThemesInput, opts ...request.Option) (*quicksight.ListThemesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -1828,6 +1850,26 @@ func (c *Client) ListThemesWithContext(ctx context.Context, input *quicksight.Li
 	})
 
 	return req.Output.(*quicksight.ListThemesOutput), req.Error
+}
+
+func (c *Client) ListThemesPagesWithContext(ctx context.Context, input *quicksight.ListThemesInput, cb func(*quicksight.ListThemesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListThemes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListThemesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error) {
