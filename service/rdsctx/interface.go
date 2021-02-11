@@ -131,6 +131,7 @@ type RDS interface {
 	DownloadDBLogFilePortionWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, opts ...request.Option) (*rds.DownloadDBLogFilePortionOutput, error)
 	DownloadDBLogFilePortionPagesWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, cb func(*rds.DownloadDBLogFilePortionOutput, bool) bool, opts ...request.Option) error
 	FailoverDBClusterWithContext(ctx context.Context, input *rds.FailoverDBClusterInput, opts ...request.Option) (*rds.FailoverDBClusterOutput, error)
+	FailoverGlobalClusterWithContext(ctx context.Context, input *rds.FailoverGlobalClusterInput, opts ...request.Option) (*rds.FailoverGlobalClusterOutput, error)
 	ImportInstallationMediaWithContext(ctx context.Context, input *rds.ImportInstallationMediaInput, opts ...request.Option) (*rds.ImportInstallationMediaOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error)
 	ModifyCertificatesWithContext(ctx context.Context, input *rds.ModifyCertificatesInput, opts ...request.Option) (*rds.ModifyCertificatesOutput, error)
@@ -2678,6 +2679,27 @@ func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *rds.Fa
 	})
 
 	return req.Output.(*rds.FailoverDBClusterOutput), req.Error
+}
+
+func (c *Client) FailoverGlobalClusterWithContext(ctx context.Context, input *rds.FailoverGlobalClusterInput, opts ...request.Option) (*rds.FailoverGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "FailoverGlobalCluster",
+		Input:   input,
+		Output:  (*rds.FailoverGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.FailoverGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.FailoverGlobalClusterOutput), req.Error
 }
 
 func (c *Client) ImportInstallationMediaWithContext(ctx context.Context, input *rds.ImportInstallationMediaInput, opts ...request.Option) (*rds.ImportInstallationMediaOutput, error) {
