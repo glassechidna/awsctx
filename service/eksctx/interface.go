@@ -11,6 +11,7 @@ import (
 )
 
 type EKS interface {
+	AssociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.AssociateIdentityProviderConfigInput, opts ...request.Option) (*eks.AssociateIdentityProviderConfigOutput, error)
 	CreateAddonWithContext(ctx context.Context, input *eks.CreateAddonInput, opts ...request.Option) (*eks.CreateAddonOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error)
 	CreateFargateProfileWithContext(ctx context.Context, input *eks.CreateFargateProfileInput, opts ...request.Option) (*eks.CreateFargateProfileOutput, error)
@@ -24,14 +25,18 @@ type EKS interface {
 	DescribeAddonVersionsPagesWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, cb func(*eks.DescribeAddonVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
 	DescribeFargateProfileWithContext(ctx context.Context, input *eks.DescribeFargateProfileInput, opts ...request.Option) (*eks.DescribeFargateProfileOutput, error)
+	DescribeIdentityProviderConfigWithContext(ctx context.Context, input *eks.DescribeIdentityProviderConfigInput, opts ...request.Option) (*eks.DescribeIdentityProviderConfigOutput, error)
 	DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error)
 	DescribeUpdateWithContext(ctx context.Context, input *eks.DescribeUpdateInput, opts ...request.Option) (*eks.DescribeUpdateOutput, error)
+	DisassociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.DisassociateIdentityProviderConfigInput, opts ...request.Option) (*eks.DisassociateIdentityProviderConfigOutput, error)
 	ListAddonsWithContext(ctx context.Context, input *eks.ListAddonsInput, opts ...request.Option) (*eks.ListAddonsOutput, error)
 	ListAddonsPagesWithContext(ctx context.Context, input *eks.ListAddonsInput, cb func(*eks.ListAddonsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListFargateProfilesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, opts ...request.Option) (*eks.ListFargateProfilesOutput, error)
 	ListFargateProfilesPagesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, cb func(*eks.ListFargateProfilesOutput, bool) bool, opts ...request.Option) error
+	ListIdentityProviderConfigsWithContext(ctx context.Context, input *eks.ListIdentityProviderConfigsInput, opts ...request.Option) (*eks.ListIdentityProviderConfigsOutput, error)
+	ListIdentityProviderConfigsPagesWithContext(ctx context.Context, input *eks.ListIdentityProviderConfigsInput, cb func(*eks.ListIdentityProviderConfigsOutput, bool) bool, opts ...request.Option) error
 	ListNodegroupsWithContext(ctx context.Context, input *eks.ListNodegroupsInput, opts ...request.Option) (*eks.ListNodegroupsOutput, error)
 	ListNodegroupsPagesWithContext(ctx context.Context, input *eks.ListNodegroupsInput, cb func(*eks.ListNodegroupsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error)
@@ -60,6 +65,27 @@ func New(base eksiface.EKSAPI, ctxer awsctx.Contexter) EKS {
 
 var _ EKS = (*eks.EKS)(nil)
 var _ EKS = (*Client)(nil)
+
+func (c *Client) AssociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.AssociateIdentityProviderConfigInput, opts ...request.Option) (*eks.AssociateIdentityProviderConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "AssociateIdentityProviderConfig",
+		Input:   input,
+		Output:  (*eks.AssociateIdentityProviderConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.AssociateIdentityProviderConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.AssociateIdentityProviderConfigOutput), req.Error
+}
 
 func (c *Client) CreateAddonWithContext(ctx context.Context, input *eks.CreateAddonInput, opts ...request.Option) (*eks.CreateAddonOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -333,6 +359,27 @@ func (c *Client) DescribeFargateProfileWithContext(ctx context.Context, input *e
 	return req.Output.(*eks.DescribeFargateProfileOutput), req.Error
 }
 
+func (c *Client) DescribeIdentityProviderConfigWithContext(ctx context.Context, input *eks.DescribeIdentityProviderConfigInput, opts ...request.Option) (*eks.DescribeIdentityProviderConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeIdentityProviderConfig",
+		Input:   input,
+		Output:  (*eks.DescribeIdentityProviderConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeIdentityProviderConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeIdentityProviderConfigOutput), req.Error
+}
+
 func (c *Client) DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -373,6 +420,27 @@ func (c *Client) DescribeUpdateWithContext(ctx context.Context, input *eks.Descr
 	})
 
 	return req.Output.(*eks.DescribeUpdateOutput), req.Error
+}
+
+func (c *Client) DisassociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.DisassociateIdentityProviderConfigInput, opts ...request.Option) (*eks.DisassociateIdentityProviderConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DisassociateIdentityProviderConfig",
+		Input:   input,
+		Output:  (*eks.DisassociateIdentityProviderConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DisassociateIdentityProviderConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DisassociateIdentityProviderConfigOutput), req.Error
 }
 
 func (c *Client) ListAddonsWithContext(ctx context.Context, input *eks.ListAddonsInput, opts ...request.Option) (*eks.ListAddonsOutput, error) {
@@ -493,6 +561,47 @@ func (c *Client) ListFargateProfilesPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EKSAPI.ListFargateProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListIdentityProviderConfigsWithContext(ctx context.Context, input *eks.ListIdentityProviderConfigsInput, opts ...request.Option) (*eks.ListIdentityProviderConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListIdentityProviderConfigs",
+		Input:   input,
+		Output:  (*eks.ListIdentityProviderConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.ListIdentityProviderConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.ListIdentityProviderConfigsOutput), req.Error
+}
+
+func (c *Client) ListIdentityProviderConfigsPagesWithContext(ctx context.Context, input *eks.ListIdentityProviderConfigsInput, cb func(*eks.ListIdentityProviderConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListIdentityProviderConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EKSAPI.ListIdentityProviderConfigsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

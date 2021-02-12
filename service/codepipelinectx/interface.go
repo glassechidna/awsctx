@@ -21,6 +21,7 @@ type CodePipeline interface {
 	DeregisterWebhookWithThirdPartyWithContext(ctx context.Context, input *codepipeline.DeregisterWebhookWithThirdPartyInput, opts ...request.Option) (*codepipeline.DeregisterWebhookWithThirdPartyOutput, error)
 	DisableStageTransitionWithContext(ctx context.Context, input *codepipeline.DisableStageTransitionInput, opts ...request.Option) (*codepipeline.DisableStageTransitionOutput, error)
 	EnableStageTransitionWithContext(ctx context.Context, input *codepipeline.EnableStageTransitionInput, opts ...request.Option) (*codepipeline.EnableStageTransitionOutput, error)
+	GetActionTypeWithContext(ctx context.Context, input *codepipeline.GetActionTypeInput, opts ...request.Option) (*codepipeline.GetActionTypeOutput, error)
 	GetJobDetailsWithContext(ctx context.Context, input *codepipeline.GetJobDetailsInput, opts ...request.Option) (*codepipeline.GetJobDetailsOutput, error)
 	GetPipelineWithContext(ctx context.Context, input *codepipeline.GetPipelineInput, opts ...request.Option) (*codepipeline.GetPipelineOutput, error)
 	GetPipelineExecutionWithContext(ctx context.Context, input *codepipeline.GetPipelineExecutionInput, opts ...request.Option) (*codepipeline.GetPipelineExecutionOutput, error)
@@ -53,6 +54,7 @@ type CodePipeline interface {
 	StopPipelineExecutionWithContext(ctx context.Context, input *codepipeline.StopPipelineExecutionInput, opts ...request.Option) (*codepipeline.StopPipelineExecutionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *codepipeline.TagResourceInput, opts ...request.Option) (*codepipeline.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *codepipeline.UntagResourceInput, opts ...request.Option) (*codepipeline.UntagResourceOutput, error)
+	UpdateActionTypeWithContext(ctx context.Context, input *codepipeline.UpdateActionTypeInput, opts ...request.Option) (*codepipeline.UpdateActionTypeOutput, error)
 	UpdatePipelineWithContext(ctx context.Context, input *codepipeline.UpdatePipelineInput, opts ...request.Option) (*codepipeline.UpdatePipelineOutput, error)
 }
 
@@ -279,6 +281,27 @@ func (c *Client) EnableStageTransitionWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*codepipeline.EnableStageTransitionOutput), req.Error
+}
+
+func (c *Client) GetActionTypeWithContext(ctx context.Context, input *codepipeline.GetActionTypeInput, opts ...request.Option) (*codepipeline.GetActionTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "GetActionType",
+		Input:   input,
+		Output:  (*codepipeline.GetActionTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodePipelineAPI.GetActionTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codepipeline.GetActionTypeOutput), req.Error
 }
 
 func (c *Client) GetJobDetailsWithContext(ctx context.Context, input *codepipeline.GetJobDetailsInput, opts ...request.Option) (*codepipeline.GetJobDetailsOutput, error) {
@@ -945,6 +968,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *codepipeli
 	})
 
 	return req.Output.(*codepipeline.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateActionTypeWithContext(ctx context.Context, input *codepipeline.UpdateActionTypeInput, opts ...request.Option) (*codepipeline.UpdateActionTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codepipeline",
+		Action:  "UpdateActionType",
+		Input:   input,
+		Output:  (*codepipeline.UpdateActionTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodePipelineAPI.UpdateActionTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codepipeline.UpdateActionTypeOutput), req.Error
 }
 
 func (c *Client) UpdatePipelineWithContext(ctx context.Context, input *codepipeline.UpdatePipelineInput, opts ...request.Option) (*codepipeline.UpdatePipelineOutput, error) {
