@@ -22,6 +22,7 @@ type MediaLive interface {
 	CreateInputSecurityGroupWithContext(ctx context.Context, input *medialive.CreateInputSecurityGroupInput, opts ...request.Option) (*medialive.CreateInputSecurityGroupOutput, error)
 	CreateMultiplexWithContext(ctx context.Context, input *medialive.CreateMultiplexInput, opts ...request.Option) (*medialive.CreateMultiplexOutput, error)
 	CreateMultiplexProgramWithContext(ctx context.Context, input *medialive.CreateMultiplexProgramInput, opts ...request.Option) (*medialive.CreateMultiplexProgramOutput, error)
+	CreatePartnerInputWithContext(ctx context.Context, input *medialive.CreatePartnerInputInput, opts ...request.Option) (*medialive.CreatePartnerInputOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *medialive.CreateTagsInput, opts ...request.Option) (*medialive.CreateTagsOutput, error)
 	DeleteChannelWithContext(ctx context.Context, input *medialive.DeleteChannelInput, opts ...request.Option) (*medialive.DeleteChannelOutput, error)
 	DeleteInputWithContext(ctx context.Context, input *medialive.DeleteInputInput, opts ...request.Option) (*medialive.DeleteInputOutput, error)
@@ -322,6 +323,27 @@ func (c *Client) CreateMultiplexProgramWithContext(ctx context.Context, input *m
 	})
 
 	return req.Output.(*medialive.CreateMultiplexProgramOutput), req.Error
+}
+
+func (c *Client) CreatePartnerInputWithContext(ctx context.Context, input *medialive.CreatePartnerInputInput, opts ...request.Option) (*medialive.CreatePartnerInputOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "CreatePartnerInput",
+		Input:   input,
+		Output:  (*medialive.CreatePartnerInputOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.CreatePartnerInputWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.CreatePartnerInputOutput), req.Error
 }
 
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *medialive.CreateTagsInput, opts ...request.Option) (*medialive.CreateTagsOutput, error) {

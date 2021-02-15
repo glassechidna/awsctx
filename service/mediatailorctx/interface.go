@@ -14,6 +14,7 @@ type MediaTailor interface {
 	DeletePlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.DeletePlaybackConfigurationInput, opts ...request.Option) (*mediatailor.DeletePlaybackConfigurationOutput, error)
 	GetPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.GetPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.GetPlaybackConfigurationOutput, error)
 	ListPlaybackConfigurationsWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, opts ...request.Option) (*mediatailor.ListPlaybackConfigurationsOutput, error)
+	ListPlaybackConfigurationsPagesWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, cb func(*mediatailor.ListPlaybackConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediatailor.ListTagsForResourceInput, opts ...request.Option) (*mediatailor.ListTagsForResourceOutput, error)
 	PutPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.PutPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.PutPlaybackConfigurationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediatailor.TagResourceInput, opts ...request.Option) (*mediatailor.TagResourceOutput, error)
@@ -96,6 +97,26 @@ func (c *Client) ListPlaybackConfigurationsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*mediatailor.ListPlaybackConfigurationsOutput), req.Error
+}
+
+func (c *Client) ListPlaybackConfigurationsPagesWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, cb func(*mediatailor.ListPlaybackConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListPlaybackConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaTailorAPI.ListPlaybackConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *mediatailor.ListTagsForResourceInput, opts ...request.Option) (*mediatailor.ListTagsForResourceOutput, error) {

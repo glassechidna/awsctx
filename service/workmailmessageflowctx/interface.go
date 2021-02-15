@@ -12,6 +12,7 @@ import (
 
 type WorkMailMessageFlow interface {
 	GetRawMessageContentWithContext(ctx context.Context, input *workmailmessageflow.GetRawMessageContentInput, opts ...request.Option) (*workmailmessageflow.GetRawMessageContentOutput, error)
+	PutRawMessageContentWithContext(ctx context.Context, input *workmailmessageflow.PutRawMessageContentInput, opts ...request.Option) (*workmailmessageflow.PutRawMessageContentOutput, error)
 }
 
 type Client struct {
@@ -48,4 +49,25 @@ func (c *Client) GetRawMessageContentWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workmailmessageflow.GetRawMessageContentOutput), req.Error
+}
+
+func (c *Client) PutRawMessageContentWithContext(ctx context.Context, input *workmailmessageflow.PutRawMessageContentInput, opts ...request.Option) (*workmailmessageflow.PutRawMessageContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmailmessageflow",
+		Action:  "PutRawMessageContent",
+		Input:   input,
+		Output:  (*workmailmessageflow.PutRawMessageContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailMessageFlowAPI.PutRawMessageContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmailmessageflow.PutRawMessageContentOutput), req.Error
 }
