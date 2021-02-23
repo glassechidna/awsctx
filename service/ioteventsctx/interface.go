@@ -16,13 +16,16 @@ type IoTEvents interface {
 	DeleteDetectorModelWithContext(ctx context.Context, input *iotevents.DeleteDetectorModelInput, opts ...request.Option) (*iotevents.DeleteDetectorModelOutput, error)
 	DeleteInputWithContext(ctx context.Context, input *iotevents.DeleteInputInput, opts ...request.Option) (*iotevents.DeleteInputOutput, error)
 	DescribeDetectorModelWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelInput, opts ...request.Option) (*iotevents.DescribeDetectorModelOutput, error)
+	DescribeDetectorModelAnalysisWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelAnalysisInput, opts ...request.Option) (*iotevents.DescribeDetectorModelAnalysisOutput, error)
 	DescribeInputWithContext(ctx context.Context, input *iotevents.DescribeInputInput, opts ...request.Option) (*iotevents.DescribeInputOutput, error)
 	DescribeLoggingOptionsWithContext(ctx context.Context, input *iotevents.DescribeLoggingOptionsInput, opts ...request.Option) (*iotevents.DescribeLoggingOptionsOutput, error)
+	GetDetectorModelAnalysisResultsWithContext(ctx context.Context, input *iotevents.GetDetectorModelAnalysisResultsInput, opts ...request.Option) (*iotevents.GetDetectorModelAnalysisResultsOutput, error)
 	ListDetectorModelVersionsWithContext(ctx context.Context, input *iotevents.ListDetectorModelVersionsInput, opts ...request.Option) (*iotevents.ListDetectorModelVersionsOutput, error)
 	ListDetectorModelsWithContext(ctx context.Context, input *iotevents.ListDetectorModelsInput, opts ...request.Option) (*iotevents.ListDetectorModelsOutput, error)
 	ListInputsWithContext(ctx context.Context, input *iotevents.ListInputsInput, opts ...request.Option) (*iotevents.ListInputsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *iotevents.ListTagsForResourceInput, opts ...request.Option) (*iotevents.ListTagsForResourceOutput, error)
 	PutLoggingOptionsWithContext(ctx context.Context, input *iotevents.PutLoggingOptionsInput, opts ...request.Option) (*iotevents.PutLoggingOptionsOutput, error)
+	StartDetectorModelAnalysisWithContext(ctx context.Context, input *iotevents.StartDetectorModelAnalysisInput, opts ...request.Option) (*iotevents.StartDetectorModelAnalysisOutput, error)
 	TagResourceWithContext(ctx context.Context, input *iotevents.TagResourceInput, opts ...request.Option) (*iotevents.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *iotevents.UntagResourceInput, opts ...request.Option) (*iotevents.UntagResourceOutput, error)
 	UpdateDetectorModelWithContext(ctx context.Context, input *iotevents.UpdateDetectorModelInput, opts ...request.Option) (*iotevents.UpdateDetectorModelOutput, error)
@@ -149,6 +152,27 @@ func (c *Client) DescribeDetectorModelWithContext(ctx context.Context, input *io
 	return req.Output.(*iotevents.DescribeDetectorModelOutput), req.Error
 }
 
+func (c *Client) DescribeDetectorModelAnalysisWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelAnalysisInput, opts ...request.Option) (*iotevents.DescribeDetectorModelAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "DescribeDetectorModelAnalysis",
+		Input:   input,
+		Output:  (*iotevents.DescribeDetectorModelAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.DescribeDetectorModelAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.DescribeDetectorModelAnalysisOutput), req.Error
+}
+
 func (c *Client) DescribeInputWithContext(ctx context.Context, input *iotevents.DescribeInputInput, opts ...request.Option) (*iotevents.DescribeInputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
@@ -189,6 +213,27 @@ func (c *Client) DescribeLoggingOptionsWithContext(ctx context.Context, input *i
 	})
 
 	return req.Output.(*iotevents.DescribeLoggingOptionsOutput), req.Error
+}
+
+func (c *Client) GetDetectorModelAnalysisResultsWithContext(ctx context.Context, input *iotevents.GetDetectorModelAnalysisResultsInput, opts ...request.Option) (*iotevents.GetDetectorModelAnalysisResultsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "GetDetectorModelAnalysisResults",
+		Input:   input,
+		Output:  (*iotevents.GetDetectorModelAnalysisResultsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.GetDetectorModelAnalysisResultsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.GetDetectorModelAnalysisResultsOutput), req.Error
 }
 
 func (c *Client) ListDetectorModelVersionsWithContext(ctx context.Context, input *iotevents.ListDetectorModelVersionsInput, opts ...request.Option) (*iotevents.ListDetectorModelVersionsOutput, error) {
@@ -294,6 +339,27 @@ func (c *Client) PutLoggingOptionsWithContext(ctx context.Context, input *ioteve
 	})
 
 	return req.Output.(*iotevents.PutLoggingOptionsOutput), req.Error
+}
+
+func (c *Client) StartDetectorModelAnalysisWithContext(ctx context.Context, input *iotevents.StartDetectorModelAnalysisInput, opts ...request.Option) (*iotevents.StartDetectorModelAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "StartDetectorModelAnalysis",
+		Input:   input,
+		Output:  (*iotevents.StartDetectorModelAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.StartDetectorModelAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.StartDetectorModelAnalysisOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *iotevents.TagResourceInput, opts ...request.Option) (*iotevents.TagResourceOutput, error) {
