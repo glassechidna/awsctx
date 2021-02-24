@@ -23,6 +23,8 @@ type ElasticsearchService interface {
 	DeleteInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteInboundCrossClusterSearchConnectionOutput, error)
 	DeleteOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionOutput, error)
 	DeletePackageWithContext(ctx context.Context, input *elasticsearchservice.DeletePackageInput, opts ...request.Option) (*elasticsearchservice.DeletePackageOutput, error)
+	DescribeDomainAutoTunesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, opts ...request.Option) (*elasticsearchservice.DescribeDomainAutoTunesOutput, error)
+	DescribeDomainAutoTunesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, cb func(*elasticsearchservice.DescribeDomainAutoTunesOutput, bool) bool, opts ...request.Option) error
 	DescribeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainOutput, error)
 	DescribeElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainConfigOutput, error)
 	DescribeElasticsearchDomainsWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainsInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainsOutput, error)
@@ -328,6 +330,47 @@ func (c *Client) DeletePackageWithContext(ctx context.Context, input *elasticsea
 	})
 
 	return req.Output.(*elasticsearchservice.DeletePackageOutput), req.Error
+}
+
+func (c *Client) DescribeDomainAutoTunesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, opts ...request.Option) (*elasticsearchservice.DescribeDomainAutoTunesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeDomainAutoTunes",
+		Input:   input,
+		Output:  (*elasticsearchservice.DescribeDomainAutoTunesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DescribeDomainAutoTunesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DescribeDomainAutoTunesOutput), req.Error
+}
+
+func (c *Client) DescribeDomainAutoTunesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, cb func(*elasticsearchservice.DescribeDomainAutoTunesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeDomainAutoTunes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ElasticsearchServiceAPI.DescribeDomainAutoTunesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DescribeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DescribeElasticsearchDomainOutput, error) {

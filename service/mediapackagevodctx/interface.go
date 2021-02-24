@@ -11,6 +11,7 @@ import (
 )
 
 type MediaPackageVod interface {
+	ConfigureLogsWithContext(ctx context.Context, input *mediapackagevod.ConfigureLogsInput, opts ...request.Option) (*mediapackagevod.ConfigureLogsOutput, error)
 	CreateAssetWithContext(ctx context.Context, input *mediapackagevod.CreateAssetInput, opts ...request.Option) (*mediapackagevod.CreateAssetOutput, error)
 	CreatePackagingConfigurationWithContext(ctx context.Context, input *mediapackagevod.CreatePackagingConfigurationInput, opts ...request.Option) (*mediapackagevod.CreatePackagingConfigurationOutput, error)
 	CreatePackagingGroupWithContext(ctx context.Context, input *mediapackagevod.CreatePackagingGroupInput, opts ...request.Option) (*mediapackagevod.CreatePackagingGroupOutput, error)
@@ -46,6 +47,27 @@ func New(base mediapackagevodiface.MediaPackageVodAPI, ctxer awsctx.Contexter) M
 
 var _ MediaPackageVod = (*mediapackagevod.MediaPackageVod)(nil)
 var _ MediaPackageVod = (*Client)(nil)
+
+func (c *Client) ConfigureLogsWithContext(ctx context.Context, input *mediapackagevod.ConfigureLogsInput, opts ...request.Option) (*mediapackagevod.ConfigureLogsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediapackagevod",
+		Action:  "ConfigureLogs",
+		Input:   input,
+		Output:  (*mediapackagevod.ConfigureLogsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaPackageVodAPI.ConfigureLogsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediapackagevod.ConfigureLogsOutput), req.Error
+}
 
 func (c *Client) CreateAssetWithContext(ctx context.Context, input *mediapackagevod.CreateAssetInput, opts ...request.Option) (*mediapackagevod.CreateAssetOutput, error) {
 	req := &awsctx.AwsRequest{
