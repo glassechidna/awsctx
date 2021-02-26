@@ -11,6 +11,7 @@ import (
 )
 
 type EKS interface {
+	AssociateEncryptionConfigWithContext(ctx context.Context, input *eks.AssociateEncryptionConfigInput, opts ...request.Option) (*eks.AssociateEncryptionConfigOutput, error)
 	AssociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.AssociateIdentityProviderConfigInput, opts ...request.Option) (*eks.AssociateIdentityProviderConfigOutput, error)
 	CreateAddonWithContext(ctx context.Context, input *eks.CreateAddonInput, opts ...request.Option) (*eks.CreateAddonOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error)
@@ -65,6 +66,27 @@ func New(base eksiface.EKSAPI, ctxer awsctx.Contexter) EKS {
 
 var _ EKS = (*eks.EKS)(nil)
 var _ EKS = (*Client)(nil)
+
+func (c *Client) AssociateEncryptionConfigWithContext(ctx context.Context, input *eks.AssociateEncryptionConfigInput, opts ...request.Option) (*eks.AssociateEncryptionConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "AssociateEncryptionConfig",
+		Input:   input,
+		Output:  (*eks.AssociateEncryptionConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.AssociateEncryptionConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.AssociateEncryptionConfigOutput), req.Error
+}
 
 func (c *Client) AssociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.AssociateIdentityProviderConfigInput, opts ...request.Option) (*eks.AssociateIdentityProviderConfigOutput, error) {
 	req := &awsctx.AwsRequest{

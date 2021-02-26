@@ -66,6 +66,7 @@ type EMR interface {
 	StartNotebookExecutionWithContext(ctx context.Context, input *emr.StartNotebookExecutionInput, opts ...request.Option) (*emr.StartNotebookExecutionOutput, error)
 	StopNotebookExecutionWithContext(ctx context.Context, input *emr.StopNotebookExecutionInput, opts ...request.Option) (*emr.StopNotebookExecutionOutput, error)
 	TerminateJobFlowsWithContext(ctx context.Context, input *emr.TerminateJobFlowsInput, opts ...request.Option) (*emr.TerminateJobFlowsOutput, error)
+	UpdateStudioWithContext(ctx context.Context, input *emr.UpdateStudioInput, opts ...request.Option) (*emr.UpdateStudioOutput, error)
 	UpdateStudioSessionMappingWithContext(ctx context.Context, input *emr.UpdateStudioSessionMappingInput, opts ...request.Option) (*emr.UpdateStudioSessionMappingOutput, error)
 }
 
@@ -1227,6 +1228,27 @@ func (c *Client) TerminateJobFlowsWithContext(ctx context.Context, input *emr.Te
 	})
 
 	return req.Output.(*emr.TerminateJobFlowsOutput), req.Error
+}
+
+func (c *Client) UpdateStudioWithContext(ctx context.Context, input *emr.UpdateStudioInput, opts ...request.Option) (*emr.UpdateStudioOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "UpdateStudio",
+		Input:   input,
+		Output:  (*emr.UpdateStudioOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.UpdateStudioWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.UpdateStudioOutput), req.Error
 }
 
 func (c *Client) UpdateStudioSessionMappingWithContext(ctx context.Context, input *emr.UpdateStudioSessionMappingInput, opts ...request.Option) (*emr.UpdateStudioSessionMappingOutput, error) {
