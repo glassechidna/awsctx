@@ -46,6 +46,9 @@ type DataSync interface {
 	TagResourceWithContext(ctx context.Context, input *datasync.TagResourceInput, opts ...request.Option) (*datasync.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error)
 	UpdateAgentWithContext(ctx context.Context, input *datasync.UpdateAgentInput, opts ...request.Option) (*datasync.UpdateAgentOutput, error)
+	UpdateLocationNfsWithContext(ctx context.Context, input *datasync.UpdateLocationNfsInput, opts ...request.Option) (*datasync.UpdateLocationNfsOutput, error)
+	UpdateLocationObjectStorageWithContext(ctx context.Context, input *datasync.UpdateLocationObjectStorageInput, opts ...request.Option) (*datasync.UpdateLocationObjectStorageOutput, error)
+	UpdateLocationSmbWithContext(ctx context.Context, input *datasync.UpdateLocationSmbInput, opts ...request.Option) (*datasync.UpdateLocationSmbOutput, error)
 	UpdateTaskWithContext(ctx context.Context, input *datasync.UpdateTaskInput, opts ...request.Option) (*datasync.UpdateTaskOutput, error)
 	UpdateTaskExecutionWithContext(ctx context.Context, input *datasync.UpdateTaskExecutionInput, opts ...request.Option) (*datasync.UpdateTaskExecutionOutput, error)
 }
@@ -793,6 +796,69 @@ func (c *Client) UpdateAgentWithContext(ctx context.Context, input *datasync.Upd
 	})
 
 	return req.Output.(*datasync.UpdateAgentOutput), req.Error
+}
+
+func (c *Client) UpdateLocationNfsWithContext(ctx context.Context, input *datasync.UpdateLocationNfsInput, opts ...request.Option) (*datasync.UpdateLocationNfsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateLocationNfs",
+		Input:   input,
+		Output:  (*datasync.UpdateLocationNfsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateLocationNfsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateLocationNfsOutput), req.Error
+}
+
+func (c *Client) UpdateLocationObjectStorageWithContext(ctx context.Context, input *datasync.UpdateLocationObjectStorageInput, opts ...request.Option) (*datasync.UpdateLocationObjectStorageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateLocationObjectStorage",
+		Input:   input,
+		Output:  (*datasync.UpdateLocationObjectStorageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateLocationObjectStorageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateLocationObjectStorageOutput), req.Error
+}
+
+func (c *Client) UpdateLocationSmbWithContext(ctx context.Context, input *datasync.UpdateLocationSmbInput, opts ...request.Option) (*datasync.UpdateLocationSmbOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateLocationSmb",
+		Input:   input,
+		Output:  (*datasync.UpdateLocationSmbOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateLocationSmbWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateLocationSmbOutput), req.Error
 }
 
 func (c *Client) UpdateTaskWithContext(ctx context.Context, input *datasync.UpdateTaskInput, opts ...request.Option) (*datasync.UpdateTaskOutput, error) {
