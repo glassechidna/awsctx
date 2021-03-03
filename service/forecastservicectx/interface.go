@@ -48,6 +48,7 @@ type ForecastService interface {
 	ListPredictorsWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, opts ...request.Option) (*forecastservice.ListPredictorsOutput, error)
 	ListPredictorsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, cb func(*forecastservice.ListPredictorsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *forecastservice.ListTagsForResourceInput, opts ...request.Option) (*forecastservice.ListTagsForResourceOutput, error)
+	StopResourceWithContext(ctx context.Context, input *forecastservice.StopResourceInput, opts ...request.Option) (*forecastservice.StopResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *forecastservice.TagResourceInput, opts ...request.Option) (*forecastservice.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *forecastservice.UntagResourceInput, opts ...request.Option) (*forecastservice.UntagResourceOutput, error)
 	UpdateDatasetGroupWithContext(ctx context.Context, input *forecastservice.UpdateDatasetGroupInput, opts ...request.Option) (*forecastservice.UpdateDatasetGroupOutput, error)
@@ -836,6 +837,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fore
 	})
 
 	return req.Output.(*forecastservice.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) StopResourceWithContext(ctx context.Context, input *forecastservice.StopResourceInput, opts ...request.Option) (*forecastservice.StopResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "StopResource",
+		Input:   input,
+		Output:  (*forecastservice.StopResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.StopResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.StopResourceOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *forecastservice.TagResourceInput, opts ...request.Option) (*forecastservice.TagResourceOutput, error) {

@@ -25,8 +25,11 @@ type SecretsManager interface {
 	ListSecretsPagesWithContext(ctx context.Context, input *secretsmanager.ListSecretsInput, cb func(*secretsmanager.ListSecretsOutput, bool) bool, opts ...request.Option) error
 	PutResourcePolicyWithContext(ctx context.Context, input *secretsmanager.PutResourcePolicyInput, opts ...request.Option) (*secretsmanager.PutResourcePolicyOutput, error)
 	PutSecretValueWithContext(ctx context.Context, input *secretsmanager.PutSecretValueInput, opts ...request.Option) (*secretsmanager.PutSecretValueOutput, error)
+	RemoveRegionsFromReplicationWithContext(ctx context.Context, input *secretsmanager.RemoveRegionsFromReplicationInput, opts ...request.Option) (*secretsmanager.RemoveRegionsFromReplicationOutput, error)
+	ReplicateSecretToRegionsWithContext(ctx context.Context, input *secretsmanager.ReplicateSecretToRegionsInput, opts ...request.Option) (*secretsmanager.ReplicateSecretToRegionsOutput, error)
 	RestoreSecretWithContext(ctx context.Context, input *secretsmanager.RestoreSecretInput, opts ...request.Option) (*secretsmanager.RestoreSecretOutput, error)
 	RotateSecretWithContext(ctx context.Context, input *secretsmanager.RotateSecretInput, opts ...request.Option) (*secretsmanager.RotateSecretOutput, error)
+	StopReplicationToReplicaWithContext(ctx context.Context, input *secretsmanager.StopReplicationToReplicaInput, opts ...request.Option) (*secretsmanager.StopReplicationToReplicaOutput, error)
 	TagResourceWithContext(ctx context.Context, input *secretsmanager.TagResourceInput, opts ...request.Option) (*secretsmanager.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *secretsmanager.UntagResourceInput, opts ...request.Option) (*secretsmanager.UntagResourceOutput, error)
 	UpdateSecretWithContext(ctx context.Context, input *secretsmanager.UpdateSecretInput, opts ...request.Option) (*secretsmanager.UpdateSecretOutput, error)
@@ -341,6 +344,48 @@ func (c *Client) PutSecretValueWithContext(ctx context.Context, input *secretsma
 	return req.Output.(*secretsmanager.PutSecretValueOutput), req.Error
 }
 
+func (c *Client) RemoveRegionsFromReplicationWithContext(ctx context.Context, input *secretsmanager.RemoveRegionsFromReplicationInput, opts ...request.Option) (*secretsmanager.RemoveRegionsFromReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "secretsmanager",
+		Action:  "RemoveRegionsFromReplication",
+		Input:   input,
+		Output:  (*secretsmanager.RemoveRegionsFromReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecretsManagerAPI.RemoveRegionsFromReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*secretsmanager.RemoveRegionsFromReplicationOutput), req.Error
+}
+
+func (c *Client) ReplicateSecretToRegionsWithContext(ctx context.Context, input *secretsmanager.ReplicateSecretToRegionsInput, opts ...request.Option) (*secretsmanager.ReplicateSecretToRegionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "secretsmanager",
+		Action:  "ReplicateSecretToRegions",
+		Input:   input,
+		Output:  (*secretsmanager.ReplicateSecretToRegionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecretsManagerAPI.ReplicateSecretToRegionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*secretsmanager.ReplicateSecretToRegionsOutput), req.Error
+}
+
 func (c *Client) RestoreSecretWithContext(ctx context.Context, input *secretsmanager.RestoreSecretInput, opts ...request.Option) (*secretsmanager.RestoreSecretOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "secretsmanager",
@@ -381,6 +426,27 @@ func (c *Client) RotateSecretWithContext(ctx context.Context, input *secretsmana
 	})
 
 	return req.Output.(*secretsmanager.RotateSecretOutput), req.Error
+}
+
+func (c *Client) StopReplicationToReplicaWithContext(ctx context.Context, input *secretsmanager.StopReplicationToReplicaInput, opts ...request.Option) (*secretsmanager.StopReplicationToReplicaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "secretsmanager",
+		Action:  "StopReplicationToReplica",
+		Input:   input,
+		Output:  (*secretsmanager.StopReplicationToReplicaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecretsManagerAPI.StopReplicationToReplicaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*secretsmanager.StopReplicationToReplicaOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *secretsmanager.TagResourceInput, opts ...request.Option) (*secretsmanager.TagResourceOutput, error) {

@@ -15,11 +15,13 @@ type ACM interface {
 	DeleteCertificateWithContext(ctx context.Context, input *acm.DeleteCertificateInput, opts ...request.Option) (*acm.DeleteCertificateOutput, error)
 	DescribeCertificateWithContext(ctx context.Context, input *acm.DescribeCertificateInput, opts ...request.Option) (*acm.DescribeCertificateOutput, error)
 	ExportCertificateWithContext(ctx context.Context, input *acm.ExportCertificateInput, opts ...request.Option) (*acm.ExportCertificateOutput, error)
+	GetAccountConfigurationWithContext(ctx context.Context, input *acm.GetAccountConfigurationInput, opts ...request.Option) (*acm.GetAccountConfigurationOutput, error)
 	GetCertificateWithContext(ctx context.Context, input *acm.GetCertificateInput, opts ...request.Option) (*acm.GetCertificateOutput, error)
 	ImportCertificateWithContext(ctx context.Context, input *acm.ImportCertificateInput, opts ...request.Option) (*acm.ImportCertificateOutput, error)
 	ListCertificatesWithContext(ctx context.Context, input *acm.ListCertificatesInput, opts ...request.Option) (*acm.ListCertificatesOutput, error)
 	ListCertificatesPagesWithContext(ctx context.Context, input *acm.ListCertificatesInput, cb func(*acm.ListCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForCertificateWithContext(ctx context.Context, input *acm.ListTagsForCertificateInput, opts ...request.Option) (*acm.ListTagsForCertificateOutput, error)
+	PutAccountConfigurationWithContext(ctx context.Context, input *acm.PutAccountConfigurationInput, opts ...request.Option) (*acm.PutAccountConfigurationOutput, error)
 	RemoveTagsFromCertificateWithContext(ctx context.Context, input *acm.RemoveTagsFromCertificateInput, opts ...request.Option) (*acm.RemoveTagsFromCertificateOutput, error)
 	RenewCertificateWithContext(ctx context.Context, input *acm.RenewCertificateInput, opts ...request.Option) (*acm.RenewCertificateOutput, error)
 	RequestCertificateWithContext(ctx context.Context, input *acm.RequestCertificateInput, opts ...request.Option) (*acm.RequestCertificateOutput, error)
@@ -126,6 +128,27 @@ func (c *Client) ExportCertificateWithContext(ctx context.Context, input *acm.Ex
 	return req.Output.(*acm.ExportCertificateOutput), req.Error
 }
 
+func (c *Client) GetAccountConfigurationWithContext(ctx context.Context, input *acm.GetAccountConfigurationInput, opts ...request.Option) (*acm.GetAccountConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "acm",
+		Action:  "GetAccountConfiguration",
+		Input:   input,
+		Output:  (*acm.GetAccountConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ACMAPI.GetAccountConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*acm.GetAccountConfigurationOutput), req.Error
+}
+
 func (c *Client) GetCertificateWithContext(ctx context.Context, input *acm.GetCertificateInput, opts ...request.Option) (*acm.GetCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "acm",
@@ -228,6 +251,27 @@ func (c *Client) ListTagsForCertificateWithContext(ctx context.Context, input *a
 	})
 
 	return req.Output.(*acm.ListTagsForCertificateOutput), req.Error
+}
+
+func (c *Client) PutAccountConfigurationWithContext(ctx context.Context, input *acm.PutAccountConfigurationInput, opts ...request.Option) (*acm.PutAccountConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "acm",
+		Action:  "PutAccountConfiguration",
+		Input:   input,
+		Output:  (*acm.PutAccountConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ACMAPI.PutAccountConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*acm.PutAccountConfigurationOutput), req.Error
 }
 
 func (c *Client) RemoveTagsFromCertificateWithContext(ctx context.Context, input *acm.RemoveTagsFromCertificateInput, opts ...request.Option) (*acm.RemoveTagsFromCertificateOutput, error) {
