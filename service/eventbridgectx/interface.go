@@ -13,15 +13,22 @@ import (
 type EventBridge interface {
 	ActivateEventSourceWithContext(ctx context.Context, input *eventbridge.ActivateEventSourceInput, opts ...request.Option) (*eventbridge.ActivateEventSourceOutput, error)
 	CancelReplayWithContext(ctx context.Context, input *eventbridge.CancelReplayInput, opts ...request.Option) (*eventbridge.CancelReplayOutput, error)
+	CreateApiDestinationWithContext(ctx context.Context, input *eventbridge.CreateApiDestinationInput, opts ...request.Option) (*eventbridge.CreateApiDestinationOutput, error)
 	CreateArchiveWithContext(ctx context.Context, input *eventbridge.CreateArchiveInput, opts ...request.Option) (*eventbridge.CreateArchiveOutput, error)
+	CreateConnectionWithContext(ctx context.Context, input *eventbridge.CreateConnectionInput, opts ...request.Option) (*eventbridge.CreateConnectionOutput, error)
 	CreateEventBusWithContext(ctx context.Context, input *eventbridge.CreateEventBusInput, opts ...request.Option) (*eventbridge.CreateEventBusOutput, error)
 	CreatePartnerEventSourceWithContext(ctx context.Context, input *eventbridge.CreatePartnerEventSourceInput, opts ...request.Option) (*eventbridge.CreatePartnerEventSourceOutput, error)
 	DeactivateEventSourceWithContext(ctx context.Context, input *eventbridge.DeactivateEventSourceInput, opts ...request.Option) (*eventbridge.DeactivateEventSourceOutput, error)
+	DeauthorizeConnectionWithContext(ctx context.Context, input *eventbridge.DeauthorizeConnectionInput, opts ...request.Option) (*eventbridge.DeauthorizeConnectionOutput, error)
+	DeleteApiDestinationWithContext(ctx context.Context, input *eventbridge.DeleteApiDestinationInput, opts ...request.Option) (*eventbridge.DeleteApiDestinationOutput, error)
 	DeleteArchiveWithContext(ctx context.Context, input *eventbridge.DeleteArchiveInput, opts ...request.Option) (*eventbridge.DeleteArchiveOutput, error)
+	DeleteConnectionWithContext(ctx context.Context, input *eventbridge.DeleteConnectionInput, opts ...request.Option) (*eventbridge.DeleteConnectionOutput, error)
 	DeleteEventBusWithContext(ctx context.Context, input *eventbridge.DeleteEventBusInput, opts ...request.Option) (*eventbridge.DeleteEventBusOutput, error)
 	DeletePartnerEventSourceWithContext(ctx context.Context, input *eventbridge.DeletePartnerEventSourceInput, opts ...request.Option) (*eventbridge.DeletePartnerEventSourceOutput, error)
 	DeleteRuleWithContext(ctx context.Context, input *eventbridge.DeleteRuleInput, opts ...request.Option) (*eventbridge.DeleteRuleOutput, error)
+	DescribeApiDestinationWithContext(ctx context.Context, input *eventbridge.DescribeApiDestinationInput, opts ...request.Option) (*eventbridge.DescribeApiDestinationOutput, error)
 	DescribeArchiveWithContext(ctx context.Context, input *eventbridge.DescribeArchiveInput, opts ...request.Option) (*eventbridge.DescribeArchiveOutput, error)
+	DescribeConnectionWithContext(ctx context.Context, input *eventbridge.DescribeConnectionInput, opts ...request.Option) (*eventbridge.DescribeConnectionOutput, error)
 	DescribeEventBusWithContext(ctx context.Context, input *eventbridge.DescribeEventBusInput, opts ...request.Option) (*eventbridge.DescribeEventBusOutput, error)
 	DescribeEventSourceWithContext(ctx context.Context, input *eventbridge.DescribeEventSourceInput, opts ...request.Option) (*eventbridge.DescribeEventSourceOutput, error)
 	DescribePartnerEventSourceWithContext(ctx context.Context, input *eventbridge.DescribePartnerEventSourceInput, opts ...request.Option) (*eventbridge.DescribePartnerEventSourceOutput, error)
@@ -29,7 +36,9 @@ type EventBridge interface {
 	DescribeRuleWithContext(ctx context.Context, input *eventbridge.DescribeRuleInput, opts ...request.Option) (*eventbridge.DescribeRuleOutput, error)
 	DisableRuleWithContext(ctx context.Context, input *eventbridge.DisableRuleInput, opts ...request.Option) (*eventbridge.DisableRuleOutput, error)
 	EnableRuleWithContext(ctx context.Context, input *eventbridge.EnableRuleInput, opts ...request.Option) (*eventbridge.EnableRuleOutput, error)
+	ListApiDestinationsWithContext(ctx context.Context, input *eventbridge.ListApiDestinationsInput, opts ...request.Option) (*eventbridge.ListApiDestinationsOutput, error)
 	ListArchivesWithContext(ctx context.Context, input *eventbridge.ListArchivesInput, opts ...request.Option) (*eventbridge.ListArchivesOutput, error)
+	ListConnectionsWithContext(ctx context.Context, input *eventbridge.ListConnectionsInput, opts ...request.Option) (*eventbridge.ListConnectionsOutput, error)
 	ListEventBusesWithContext(ctx context.Context, input *eventbridge.ListEventBusesInput, opts ...request.Option) (*eventbridge.ListEventBusesOutput, error)
 	ListEventSourcesWithContext(ctx context.Context, input *eventbridge.ListEventSourcesInput, opts ...request.Option) (*eventbridge.ListEventSourcesOutput, error)
 	ListPartnerEventSourceAccountsWithContext(ctx context.Context, input *eventbridge.ListPartnerEventSourceAccountsInput, opts ...request.Option) (*eventbridge.ListPartnerEventSourceAccountsOutput, error)
@@ -50,7 +59,9 @@ type EventBridge interface {
 	TagResourceWithContext(ctx context.Context, input *eventbridge.TagResourceInput, opts ...request.Option) (*eventbridge.TagResourceOutput, error)
 	TestEventPatternWithContext(ctx context.Context, input *eventbridge.TestEventPatternInput, opts ...request.Option) (*eventbridge.TestEventPatternOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *eventbridge.UntagResourceInput, opts ...request.Option) (*eventbridge.UntagResourceOutput, error)
+	UpdateApiDestinationWithContext(ctx context.Context, input *eventbridge.UpdateApiDestinationInput, opts ...request.Option) (*eventbridge.UpdateApiDestinationOutput, error)
 	UpdateArchiveWithContext(ctx context.Context, input *eventbridge.UpdateArchiveInput, opts ...request.Option) (*eventbridge.UpdateArchiveOutput, error)
+	UpdateConnectionWithContext(ctx context.Context, input *eventbridge.UpdateConnectionInput, opts ...request.Option) (*eventbridge.UpdateConnectionOutput, error)
 }
 
 type Client struct {
@@ -110,6 +121,27 @@ func (c *Client) CancelReplayWithContext(ctx context.Context, input *eventbridge
 	return req.Output.(*eventbridge.CancelReplayOutput), req.Error
 }
 
+func (c *Client) CreateApiDestinationWithContext(ctx context.Context, input *eventbridge.CreateApiDestinationInput, opts ...request.Option) (*eventbridge.CreateApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "CreateApiDestination",
+		Input:   input,
+		Output:  (*eventbridge.CreateApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.CreateApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.CreateApiDestinationOutput), req.Error
+}
+
 func (c *Client) CreateArchiveWithContext(ctx context.Context, input *eventbridge.CreateArchiveInput, opts ...request.Option) (*eventbridge.CreateArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
@@ -129,6 +161,27 @@ func (c *Client) CreateArchiveWithContext(ctx context.Context, input *eventbridg
 	})
 
 	return req.Output.(*eventbridge.CreateArchiveOutput), req.Error
+}
+
+func (c *Client) CreateConnectionWithContext(ctx context.Context, input *eventbridge.CreateConnectionInput, opts ...request.Option) (*eventbridge.CreateConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "CreateConnection",
+		Input:   input,
+		Output:  (*eventbridge.CreateConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.CreateConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.CreateConnectionOutput), req.Error
 }
 
 func (c *Client) CreateEventBusWithContext(ctx context.Context, input *eventbridge.CreateEventBusInput, opts ...request.Option) (*eventbridge.CreateEventBusOutput, error) {
@@ -194,6 +247,48 @@ func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *ev
 	return req.Output.(*eventbridge.DeactivateEventSourceOutput), req.Error
 }
 
+func (c *Client) DeauthorizeConnectionWithContext(ctx context.Context, input *eventbridge.DeauthorizeConnectionInput, opts ...request.Option) (*eventbridge.DeauthorizeConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "DeauthorizeConnection",
+		Input:   input,
+		Output:  (*eventbridge.DeauthorizeConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.DeauthorizeConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.DeauthorizeConnectionOutput), req.Error
+}
+
+func (c *Client) DeleteApiDestinationWithContext(ctx context.Context, input *eventbridge.DeleteApiDestinationInput, opts ...request.Option) (*eventbridge.DeleteApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "DeleteApiDestination",
+		Input:   input,
+		Output:  (*eventbridge.DeleteApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.DeleteApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.DeleteApiDestinationOutput), req.Error
+}
+
 func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *eventbridge.DeleteArchiveInput, opts ...request.Option) (*eventbridge.DeleteArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
@@ -213,6 +308,27 @@ func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *eventbridg
 	})
 
 	return req.Output.(*eventbridge.DeleteArchiveOutput), req.Error
+}
+
+func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *eventbridge.DeleteConnectionInput, opts ...request.Option) (*eventbridge.DeleteConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "DeleteConnection",
+		Input:   input,
+		Output:  (*eventbridge.DeleteConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.DeleteConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.DeleteConnectionOutput), req.Error
 }
 
 func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *eventbridge.DeleteEventBusInput, opts ...request.Option) (*eventbridge.DeleteEventBusOutput, error) {
@@ -278,6 +394,27 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *eventbridge.D
 	return req.Output.(*eventbridge.DeleteRuleOutput), req.Error
 }
 
+func (c *Client) DescribeApiDestinationWithContext(ctx context.Context, input *eventbridge.DescribeApiDestinationInput, opts ...request.Option) (*eventbridge.DescribeApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "DescribeApiDestination",
+		Input:   input,
+		Output:  (*eventbridge.DescribeApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.DescribeApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.DescribeApiDestinationOutput), req.Error
+}
+
 func (c *Client) DescribeArchiveWithContext(ctx context.Context, input *eventbridge.DescribeArchiveInput, opts ...request.Option) (*eventbridge.DescribeArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
@@ -297,6 +434,27 @@ func (c *Client) DescribeArchiveWithContext(ctx context.Context, input *eventbri
 	})
 
 	return req.Output.(*eventbridge.DescribeArchiveOutput), req.Error
+}
+
+func (c *Client) DescribeConnectionWithContext(ctx context.Context, input *eventbridge.DescribeConnectionInput, opts ...request.Option) (*eventbridge.DescribeConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "DescribeConnection",
+		Input:   input,
+		Output:  (*eventbridge.DescribeConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.DescribeConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.DescribeConnectionOutput), req.Error
 }
 
 func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *eventbridge.DescribeEventBusInput, opts ...request.Option) (*eventbridge.DescribeEventBusOutput, error) {
@@ -446,6 +604,27 @@ func (c *Client) EnableRuleWithContext(ctx context.Context, input *eventbridge.E
 	return req.Output.(*eventbridge.EnableRuleOutput), req.Error
 }
 
+func (c *Client) ListApiDestinationsWithContext(ctx context.Context, input *eventbridge.ListApiDestinationsInput, opts ...request.Option) (*eventbridge.ListApiDestinationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "ListApiDestinations",
+		Input:   input,
+		Output:  (*eventbridge.ListApiDestinationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.ListApiDestinationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.ListApiDestinationsOutput), req.Error
+}
+
 func (c *Client) ListArchivesWithContext(ctx context.Context, input *eventbridge.ListArchivesInput, opts ...request.Option) (*eventbridge.ListArchivesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
@@ -465,6 +644,27 @@ func (c *Client) ListArchivesWithContext(ctx context.Context, input *eventbridge
 	})
 
 	return req.Output.(*eventbridge.ListArchivesOutput), req.Error
+}
+
+func (c *Client) ListConnectionsWithContext(ctx context.Context, input *eventbridge.ListConnectionsInput, opts ...request.Option) (*eventbridge.ListConnectionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "ListConnections",
+		Input:   input,
+		Output:  (*eventbridge.ListConnectionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.ListConnectionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.ListConnectionsOutput), req.Error
 }
 
 func (c *Client) ListEventBusesWithContext(ctx context.Context, input *eventbridge.ListEventBusesInput, opts ...request.Option) (*eventbridge.ListEventBusesOutput, error) {
@@ -887,6 +1087,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *eventbridg
 	return req.Output.(*eventbridge.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateApiDestinationWithContext(ctx context.Context, input *eventbridge.UpdateApiDestinationInput, opts ...request.Option) (*eventbridge.UpdateApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "UpdateApiDestination",
+		Input:   input,
+		Output:  (*eventbridge.UpdateApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.UpdateApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.UpdateApiDestinationOutput), req.Error
+}
+
 func (c *Client) UpdateArchiveWithContext(ctx context.Context, input *eventbridge.UpdateArchiveInput, opts ...request.Option) (*eventbridge.UpdateArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eventbridge",
@@ -906,4 +1127,25 @@ func (c *Client) UpdateArchiveWithContext(ctx context.Context, input *eventbridg
 	})
 
 	return req.Output.(*eventbridge.UpdateArchiveOutput), req.Error
+}
+
+func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *eventbridge.UpdateConnectionInput, opts ...request.Option) (*eventbridge.UpdateConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eventbridge",
+		Action:  "UpdateConnection",
+		Input:   input,
+		Output:  (*eventbridge.UpdateConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EventBridgeAPI.UpdateConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eventbridge.UpdateConnectionOutput), req.Error
 }

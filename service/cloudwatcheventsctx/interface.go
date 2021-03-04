@@ -13,15 +13,22 @@ import (
 type CloudWatchEvents interface {
 	ActivateEventSourceWithContext(ctx context.Context, input *cloudwatchevents.ActivateEventSourceInput, opts ...request.Option) (*cloudwatchevents.ActivateEventSourceOutput, error)
 	CancelReplayWithContext(ctx context.Context, input *cloudwatchevents.CancelReplayInput, opts ...request.Option) (*cloudwatchevents.CancelReplayOutput, error)
+	CreateApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.CreateApiDestinationInput, opts ...request.Option) (*cloudwatchevents.CreateApiDestinationOutput, error)
 	CreateArchiveWithContext(ctx context.Context, input *cloudwatchevents.CreateArchiveInput, opts ...request.Option) (*cloudwatchevents.CreateArchiveOutput, error)
+	CreateConnectionWithContext(ctx context.Context, input *cloudwatchevents.CreateConnectionInput, opts ...request.Option) (*cloudwatchevents.CreateConnectionOutput, error)
 	CreateEventBusWithContext(ctx context.Context, input *cloudwatchevents.CreateEventBusInput, opts ...request.Option) (*cloudwatchevents.CreateEventBusOutput, error)
 	CreatePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.CreatePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.CreatePartnerEventSourceOutput, error)
 	DeactivateEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DeactivateEventSourceInput, opts ...request.Option) (*cloudwatchevents.DeactivateEventSourceOutput, error)
+	DeauthorizeConnectionWithContext(ctx context.Context, input *cloudwatchevents.DeauthorizeConnectionInput, opts ...request.Option) (*cloudwatchevents.DeauthorizeConnectionOutput, error)
+	DeleteApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.DeleteApiDestinationInput, opts ...request.Option) (*cloudwatchevents.DeleteApiDestinationOutput, error)
 	DeleteArchiveWithContext(ctx context.Context, input *cloudwatchevents.DeleteArchiveInput, opts ...request.Option) (*cloudwatchevents.DeleteArchiveOutput, error)
+	DeleteConnectionWithContext(ctx context.Context, input *cloudwatchevents.DeleteConnectionInput, opts ...request.Option) (*cloudwatchevents.DeleteConnectionOutput, error)
 	DeleteEventBusWithContext(ctx context.Context, input *cloudwatchevents.DeleteEventBusInput, opts ...request.Option) (*cloudwatchevents.DeleteEventBusOutput, error)
 	DeletePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DeletePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.DeletePartnerEventSourceOutput, error)
 	DeleteRuleWithContext(ctx context.Context, input *cloudwatchevents.DeleteRuleInput, opts ...request.Option) (*cloudwatchevents.DeleteRuleOutput, error)
+	DescribeApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.DescribeApiDestinationInput, opts ...request.Option) (*cloudwatchevents.DescribeApiDestinationOutput, error)
 	DescribeArchiveWithContext(ctx context.Context, input *cloudwatchevents.DescribeArchiveInput, opts ...request.Option) (*cloudwatchevents.DescribeArchiveOutput, error)
+	DescribeConnectionWithContext(ctx context.Context, input *cloudwatchevents.DescribeConnectionInput, opts ...request.Option) (*cloudwatchevents.DescribeConnectionOutput, error)
 	DescribeEventBusWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventBusInput, opts ...request.Option) (*cloudwatchevents.DescribeEventBusOutput, error)
 	DescribeEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventSourceInput, opts ...request.Option) (*cloudwatchevents.DescribeEventSourceOutput, error)
 	DescribePartnerEventSourceWithContext(ctx context.Context, input *cloudwatchevents.DescribePartnerEventSourceInput, opts ...request.Option) (*cloudwatchevents.DescribePartnerEventSourceOutput, error)
@@ -29,7 +36,9 @@ type CloudWatchEvents interface {
 	DescribeRuleWithContext(ctx context.Context, input *cloudwatchevents.DescribeRuleInput, opts ...request.Option) (*cloudwatchevents.DescribeRuleOutput, error)
 	DisableRuleWithContext(ctx context.Context, input *cloudwatchevents.DisableRuleInput, opts ...request.Option) (*cloudwatchevents.DisableRuleOutput, error)
 	EnableRuleWithContext(ctx context.Context, input *cloudwatchevents.EnableRuleInput, opts ...request.Option) (*cloudwatchevents.EnableRuleOutput, error)
+	ListApiDestinationsWithContext(ctx context.Context, input *cloudwatchevents.ListApiDestinationsInput, opts ...request.Option) (*cloudwatchevents.ListApiDestinationsOutput, error)
 	ListArchivesWithContext(ctx context.Context, input *cloudwatchevents.ListArchivesInput, opts ...request.Option) (*cloudwatchevents.ListArchivesOutput, error)
+	ListConnectionsWithContext(ctx context.Context, input *cloudwatchevents.ListConnectionsInput, opts ...request.Option) (*cloudwatchevents.ListConnectionsOutput, error)
 	ListEventBusesWithContext(ctx context.Context, input *cloudwatchevents.ListEventBusesInput, opts ...request.Option) (*cloudwatchevents.ListEventBusesOutput, error)
 	ListEventSourcesWithContext(ctx context.Context, input *cloudwatchevents.ListEventSourcesInput, opts ...request.Option) (*cloudwatchevents.ListEventSourcesOutput, error)
 	ListPartnerEventSourceAccountsWithContext(ctx context.Context, input *cloudwatchevents.ListPartnerEventSourceAccountsInput, opts ...request.Option) (*cloudwatchevents.ListPartnerEventSourceAccountsOutput, error)
@@ -50,7 +59,9 @@ type CloudWatchEvents interface {
 	TagResourceWithContext(ctx context.Context, input *cloudwatchevents.TagResourceInput, opts ...request.Option) (*cloudwatchevents.TagResourceOutput, error)
 	TestEventPatternWithContext(ctx context.Context, input *cloudwatchevents.TestEventPatternInput, opts ...request.Option) (*cloudwatchevents.TestEventPatternOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *cloudwatchevents.UntagResourceInput, opts ...request.Option) (*cloudwatchevents.UntagResourceOutput, error)
+	UpdateApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.UpdateApiDestinationInput, opts ...request.Option) (*cloudwatchevents.UpdateApiDestinationOutput, error)
 	UpdateArchiveWithContext(ctx context.Context, input *cloudwatchevents.UpdateArchiveInput, opts ...request.Option) (*cloudwatchevents.UpdateArchiveOutput, error)
+	UpdateConnectionWithContext(ctx context.Context, input *cloudwatchevents.UpdateConnectionInput, opts ...request.Option) (*cloudwatchevents.UpdateConnectionOutput, error)
 }
 
 type Client struct {
@@ -110,6 +121,27 @@ func (c *Client) CancelReplayWithContext(ctx context.Context, input *cloudwatche
 	return req.Output.(*cloudwatchevents.CancelReplayOutput), req.Error
 }
 
+func (c *Client) CreateApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.CreateApiDestinationInput, opts ...request.Option) (*cloudwatchevents.CreateApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "CreateApiDestination",
+		Input:   input,
+		Output:  (*cloudwatchevents.CreateApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.CreateApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.CreateApiDestinationOutput), req.Error
+}
+
 func (c *Client) CreateArchiveWithContext(ctx context.Context, input *cloudwatchevents.CreateArchiveInput, opts ...request.Option) (*cloudwatchevents.CreateArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -129,6 +161,27 @@ func (c *Client) CreateArchiveWithContext(ctx context.Context, input *cloudwatch
 	})
 
 	return req.Output.(*cloudwatchevents.CreateArchiveOutput), req.Error
+}
+
+func (c *Client) CreateConnectionWithContext(ctx context.Context, input *cloudwatchevents.CreateConnectionInput, opts ...request.Option) (*cloudwatchevents.CreateConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "CreateConnection",
+		Input:   input,
+		Output:  (*cloudwatchevents.CreateConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.CreateConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.CreateConnectionOutput), req.Error
 }
 
 func (c *Client) CreateEventBusWithContext(ctx context.Context, input *cloudwatchevents.CreateEventBusInput, opts ...request.Option) (*cloudwatchevents.CreateEventBusOutput, error) {
@@ -194,6 +247,48 @@ func (c *Client) DeactivateEventSourceWithContext(ctx context.Context, input *cl
 	return req.Output.(*cloudwatchevents.DeactivateEventSourceOutput), req.Error
 }
 
+func (c *Client) DeauthorizeConnectionWithContext(ctx context.Context, input *cloudwatchevents.DeauthorizeConnectionInput, opts ...request.Option) (*cloudwatchevents.DeauthorizeConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DeauthorizeConnection",
+		Input:   input,
+		Output:  (*cloudwatchevents.DeauthorizeConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DeauthorizeConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DeauthorizeConnectionOutput), req.Error
+}
+
+func (c *Client) DeleteApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.DeleteApiDestinationInput, opts ...request.Option) (*cloudwatchevents.DeleteApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DeleteApiDestination",
+		Input:   input,
+		Output:  (*cloudwatchevents.DeleteApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DeleteApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DeleteApiDestinationOutput), req.Error
+}
+
 func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *cloudwatchevents.DeleteArchiveInput, opts ...request.Option) (*cloudwatchevents.DeleteArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -213,6 +308,27 @@ func (c *Client) DeleteArchiveWithContext(ctx context.Context, input *cloudwatch
 	})
 
 	return req.Output.(*cloudwatchevents.DeleteArchiveOutput), req.Error
+}
+
+func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *cloudwatchevents.DeleteConnectionInput, opts ...request.Option) (*cloudwatchevents.DeleteConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DeleteConnection",
+		Input:   input,
+		Output:  (*cloudwatchevents.DeleteConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DeleteConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DeleteConnectionOutput), req.Error
 }
 
 func (c *Client) DeleteEventBusWithContext(ctx context.Context, input *cloudwatchevents.DeleteEventBusInput, opts ...request.Option) (*cloudwatchevents.DeleteEventBusOutput, error) {
@@ -278,6 +394,27 @@ func (c *Client) DeleteRuleWithContext(ctx context.Context, input *cloudwatcheve
 	return req.Output.(*cloudwatchevents.DeleteRuleOutput), req.Error
 }
 
+func (c *Client) DescribeApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.DescribeApiDestinationInput, opts ...request.Option) (*cloudwatchevents.DescribeApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DescribeApiDestination",
+		Input:   input,
+		Output:  (*cloudwatchevents.DescribeApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DescribeApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DescribeApiDestinationOutput), req.Error
+}
+
 func (c *Client) DescribeArchiveWithContext(ctx context.Context, input *cloudwatchevents.DescribeArchiveInput, opts ...request.Option) (*cloudwatchevents.DescribeArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -297,6 +434,27 @@ func (c *Client) DescribeArchiveWithContext(ctx context.Context, input *cloudwat
 	})
 
 	return req.Output.(*cloudwatchevents.DescribeArchiveOutput), req.Error
+}
+
+func (c *Client) DescribeConnectionWithContext(ctx context.Context, input *cloudwatchevents.DescribeConnectionInput, opts ...request.Option) (*cloudwatchevents.DescribeConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "DescribeConnection",
+		Input:   input,
+		Output:  (*cloudwatchevents.DescribeConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.DescribeConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.DescribeConnectionOutput), req.Error
 }
 
 func (c *Client) DescribeEventBusWithContext(ctx context.Context, input *cloudwatchevents.DescribeEventBusInput, opts ...request.Option) (*cloudwatchevents.DescribeEventBusOutput, error) {
@@ -446,6 +604,27 @@ func (c *Client) EnableRuleWithContext(ctx context.Context, input *cloudwatcheve
 	return req.Output.(*cloudwatchevents.EnableRuleOutput), req.Error
 }
 
+func (c *Client) ListApiDestinationsWithContext(ctx context.Context, input *cloudwatchevents.ListApiDestinationsInput, opts ...request.Option) (*cloudwatchevents.ListApiDestinationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "ListApiDestinations",
+		Input:   input,
+		Output:  (*cloudwatchevents.ListApiDestinationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.ListApiDestinationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.ListApiDestinationsOutput), req.Error
+}
+
 func (c *Client) ListArchivesWithContext(ctx context.Context, input *cloudwatchevents.ListArchivesInput, opts ...request.Option) (*cloudwatchevents.ListArchivesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -465,6 +644,27 @@ func (c *Client) ListArchivesWithContext(ctx context.Context, input *cloudwatche
 	})
 
 	return req.Output.(*cloudwatchevents.ListArchivesOutput), req.Error
+}
+
+func (c *Client) ListConnectionsWithContext(ctx context.Context, input *cloudwatchevents.ListConnectionsInput, opts ...request.Option) (*cloudwatchevents.ListConnectionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "ListConnections",
+		Input:   input,
+		Output:  (*cloudwatchevents.ListConnectionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.ListConnectionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.ListConnectionsOutput), req.Error
 }
 
 func (c *Client) ListEventBusesWithContext(ctx context.Context, input *cloudwatchevents.ListEventBusesInput, opts ...request.Option) (*cloudwatchevents.ListEventBusesOutput, error) {
@@ -887,6 +1087,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudwatch
 	return req.Output.(*cloudwatchevents.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateApiDestinationWithContext(ctx context.Context, input *cloudwatchevents.UpdateApiDestinationInput, opts ...request.Option) (*cloudwatchevents.UpdateApiDestinationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "UpdateApiDestination",
+		Input:   input,
+		Output:  (*cloudwatchevents.UpdateApiDestinationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.UpdateApiDestinationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.UpdateApiDestinationOutput), req.Error
+}
+
 func (c *Client) UpdateArchiveWithContext(ctx context.Context, input *cloudwatchevents.UpdateArchiveInput, opts ...request.Option) (*cloudwatchevents.UpdateArchiveOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchevents",
@@ -906,4 +1127,25 @@ func (c *Client) UpdateArchiveWithContext(ctx context.Context, input *cloudwatch
 	})
 
 	return req.Output.(*cloudwatchevents.UpdateArchiveOutput), req.Error
+}
+
+func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *cloudwatchevents.UpdateConnectionInput, opts ...request.Option) (*cloudwatchevents.UpdateConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchevents",
+		Action:  "UpdateConnection",
+		Input:   input,
+		Output:  (*cloudwatchevents.UpdateConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchEventsAPI.UpdateConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchevents.UpdateConnectionOutput), req.Error
 }
