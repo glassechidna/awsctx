@@ -15,13 +15,16 @@ type Athena interface {
 	BatchGetQueryExecutionWithContext(ctx context.Context, input *athena.BatchGetQueryExecutionInput, opts ...request.Option) (*athena.BatchGetQueryExecutionOutput, error)
 	CreateDataCatalogWithContext(ctx context.Context, input *athena.CreateDataCatalogInput, opts ...request.Option) (*athena.CreateDataCatalogOutput, error)
 	CreateNamedQueryWithContext(ctx context.Context, input *athena.CreateNamedQueryInput, opts ...request.Option) (*athena.CreateNamedQueryOutput, error)
+	CreatePreparedStatementWithContext(ctx context.Context, input *athena.CreatePreparedStatementInput, opts ...request.Option) (*athena.CreatePreparedStatementOutput, error)
 	CreateWorkGroupWithContext(ctx context.Context, input *athena.CreateWorkGroupInput, opts ...request.Option) (*athena.CreateWorkGroupOutput, error)
 	DeleteDataCatalogWithContext(ctx context.Context, input *athena.DeleteDataCatalogInput, opts ...request.Option) (*athena.DeleteDataCatalogOutput, error)
 	DeleteNamedQueryWithContext(ctx context.Context, input *athena.DeleteNamedQueryInput, opts ...request.Option) (*athena.DeleteNamedQueryOutput, error)
+	DeletePreparedStatementWithContext(ctx context.Context, input *athena.DeletePreparedStatementInput, opts ...request.Option) (*athena.DeletePreparedStatementOutput, error)
 	DeleteWorkGroupWithContext(ctx context.Context, input *athena.DeleteWorkGroupInput, opts ...request.Option) (*athena.DeleteWorkGroupOutput, error)
 	GetDataCatalogWithContext(ctx context.Context, input *athena.GetDataCatalogInput, opts ...request.Option) (*athena.GetDataCatalogOutput, error)
 	GetDatabaseWithContext(ctx context.Context, input *athena.GetDatabaseInput, opts ...request.Option) (*athena.GetDatabaseOutput, error)
 	GetNamedQueryWithContext(ctx context.Context, input *athena.GetNamedQueryInput, opts ...request.Option) (*athena.GetNamedQueryOutput, error)
+	GetPreparedStatementWithContext(ctx context.Context, input *athena.GetPreparedStatementInput, opts ...request.Option) (*athena.GetPreparedStatementOutput, error)
 	GetQueryExecutionWithContext(ctx context.Context, input *athena.GetQueryExecutionInput, opts ...request.Option) (*athena.GetQueryExecutionOutput, error)
 	GetQueryResultsWithContext(ctx context.Context, input *athena.GetQueryResultsInput, opts ...request.Option) (*athena.GetQueryResultsOutput, error)
 	GetQueryResultsPagesWithContext(ctx context.Context, input *athena.GetQueryResultsInput, cb func(*athena.GetQueryResultsOutput, bool) bool, opts ...request.Option) error
@@ -34,6 +37,8 @@ type Athena interface {
 	ListEngineVersionsWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, opts ...request.Option) (*athena.ListEngineVersionsOutput, error)
 	ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error)
 	ListNamedQueriesPagesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, cb func(*athena.ListNamedQueriesOutput, bool) bool, opts ...request.Option) error
+	ListPreparedStatementsWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, opts ...request.Option) (*athena.ListPreparedStatementsOutput, error)
+	ListPreparedStatementsPagesWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, cb func(*athena.ListPreparedStatementsOutput, bool) bool, opts ...request.Option) error
 	ListQueryExecutionsWithContext(ctx context.Context, input *athena.ListQueryExecutionsInput, opts ...request.Option) (*athena.ListQueryExecutionsOutput, error)
 	ListQueryExecutionsPagesWithContext(ctx context.Context, input *athena.ListQueryExecutionsInput, cb func(*athena.ListQueryExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListTableMetadataWithContext(ctx context.Context, input *athena.ListTableMetadataInput, opts ...request.Option) (*athena.ListTableMetadataOutput, error)
@@ -47,6 +52,7 @@ type Athena interface {
 	TagResourceWithContext(ctx context.Context, input *athena.TagResourceInput, opts ...request.Option) (*athena.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *athena.UntagResourceInput, opts ...request.Option) (*athena.UntagResourceOutput, error)
 	UpdateDataCatalogWithContext(ctx context.Context, input *athena.UpdateDataCatalogInput, opts ...request.Option) (*athena.UpdateDataCatalogOutput, error)
+	UpdatePreparedStatementWithContext(ctx context.Context, input *athena.UpdatePreparedStatementInput, opts ...request.Option) (*athena.UpdatePreparedStatementOutput, error)
 	UpdateWorkGroupWithContext(ctx context.Context, input *athena.UpdateWorkGroupInput, opts ...request.Option) (*athena.UpdateWorkGroupOutput, error)
 }
 
@@ -149,6 +155,27 @@ func (c *Client) CreateNamedQueryWithContext(ctx context.Context, input *athena.
 	return req.Output.(*athena.CreateNamedQueryOutput), req.Error
 }
 
+func (c *Client) CreatePreparedStatementWithContext(ctx context.Context, input *athena.CreatePreparedStatementInput, opts ...request.Option) (*athena.CreatePreparedStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "CreatePreparedStatement",
+		Input:   input,
+		Output:  (*athena.CreatePreparedStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.CreatePreparedStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.CreatePreparedStatementOutput), req.Error
+}
+
 func (c *Client) CreateWorkGroupWithContext(ctx context.Context, input *athena.CreateWorkGroupInput, opts ...request.Option) (*athena.CreateWorkGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -210,6 +237,27 @@ func (c *Client) DeleteNamedQueryWithContext(ctx context.Context, input *athena.
 	})
 
 	return req.Output.(*athena.DeleteNamedQueryOutput), req.Error
+}
+
+func (c *Client) DeletePreparedStatementWithContext(ctx context.Context, input *athena.DeletePreparedStatementInput, opts ...request.Option) (*athena.DeletePreparedStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "DeletePreparedStatement",
+		Input:   input,
+		Output:  (*athena.DeletePreparedStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.DeletePreparedStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.DeletePreparedStatementOutput), req.Error
 }
 
 func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, input *athena.DeleteWorkGroupInput, opts ...request.Option) (*athena.DeleteWorkGroupOutput, error) {
@@ -294,6 +342,27 @@ func (c *Client) GetNamedQueryWithContext(ctx context.Context, input *athena.Get
 	})
 
 	return req.Output.(*athena.GetNamedQueryOutput), req.Error
+}
+
+func (c *Client) GetPreparedStatementWithContext(ctx context.Context, input *athena.GetPreparedStatementInput, opts ...request.Option) (*athena.GetPreparedStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetPreparedStatement",
+		Input:   input,
+		Output:  (*athena.GetPreparedStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetPreparedStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetPreparedStatementOutput), req.Error
 }
 
 func (c *Client) GetQueryExecutionWithContext(ctx context.Context, input *athena.GetQueryExecutionInput, opts ...request.Option) (*athena.GetQueryExecutionOutput, error) {
@@ -539,6 +608,47 @@ func (c *Client) ListNamedQueriesPagesWithContext(ctx context.Context, input *at
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.AthenaAPI.ListNamedQueriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPreparedStatementsWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, opts ...request.Option) (*athena.ListPreparedStatementsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListPreparedStatements",
+		Input:   input,
+		Output:  (*athena.ListPreparedStatementsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListPreparedStatementsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListPreparedStatementsOutput), req.Error
+}
+
+func (c *Client) ListPreparedStatementsPagesWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, cb func(*athena.ListPreparedStatementsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListPreparedStatements",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListPreparedStatementsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -811,6 +921,27 @@ func (c *Client) UpdateDataCatalogWithContext(ctx context.Context, input *athena
 	})
 
 	return req.Output.(*athena.UpdateDataCatalogOutput), req.Error
+}
+
+func (c *Client) UpdatePreparedStatementWithContext(ctx context.Context, input *athena.UpdatePreparedStatementInput, opts ...request.Option) (*athena.UpdatePreparedStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "UpdatePreparedStatement",
+		Input:   input,
+		Output:  (*athena.UpdatePreparedStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.UpdatePreparedStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.UpdatePreparedStatementOutput), req.Error
 }
 
 func (c *Client) UpdateWorkGroupWithContext(ctx context.Context, input *athena.UpdateWorkGroupInput, opts ...request.Option) (*athena.UpdateWorkGroupOutput, error) {

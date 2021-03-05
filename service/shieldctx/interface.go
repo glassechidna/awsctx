@@ -42,6 +42,9 @@ type Shield interface {
 	ListProtectionsPagesWithContext(ctx context.Context, input *shield.ListProtectionsInput, cb func(*shield.ListProtectionsOutput, bool) bool, opts ...request.Option) error
 	ListResourcesInProtectionGroupWithContext(ctx context.Context, input *shield.ListResourcesInProtectionGroupInput, opts ...request.Option) (*shield.ListResourcesInProtectionGroupOutput, error)
 	ListResourcesInProtectionGroupPagesWithContext(ctx context.Context, input *shield.ListResourcesInProtectionGroupInput, cb func(*shield.ListResourcesInProtectionGroupOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *shield.ListTagsForResourceInput, opts ...request.Option) (*shield.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *shield.TagResourceInput, opts ...request.Option) (*shield.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *shield.UntagResourceInput, opts ...request.Option) (*shield.UntagResourceOutput, error)
 	UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error)
 	UpdateProtectionGroupWithContext(ctx context.Context, input *shield.UpdateProtectionGroupInput, opts ...request.Option) (*shield.UpdateProtectionGroupOutput, error)
 	UpdateSubscriptionWithContext(ctx context.Context, input *shield.UpdateSubscriptionInput, opts ...request.Option) (*shield.UpdateSubscriptionOutput, error)
@@ -707,6 +710,69 @@ func (c *Client) ListResourcesInProtectionGroupPagesWithContext(ctx context.Cont
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *shield.ListTagsForResourceInput, opts ...request.Option) (*shield.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*shield.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *shield.TagResourceInput, opts ...request.Option) (*shield.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*shield.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *shield.UntagResourceInput, opts ...request.Option) (*shield.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*shield.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error) {
