@@ -28,6 +28,7 @@ type Backup interface {
 	DescribeRecoveryPointWithContext(ctx context.Context, input *backup.DescribeRecoveryPointInput, opts ...request.Option) (*backup.DescribeRecoveryPointOutput, error)
 	DescribeRegionSettingsWithContext(ctx context.Context, input *backup.DescribeRegionSettingsInput, opts ...request.Option) (*backup.DescribeRegionSettingsOutput, error)
 	DescribeRestoreJobWithContext(ctx context.Context, input *backup.DescribeRestoreJobInput, opts ...request.Option) (*backup.DescribeRestoreJobOutput, error)
+	DisassociateRecoveryPointWithContext(ctx context.Context, input *backup.DisassociateRecoveryPointInput, opts ...request.Option) (*backup.DisassociateRecoveryPointOutput, error)
 	ExportBackupPlanTemplateWithContext(ctx context.Context, input *backup.ExportBackupPlanTemplateInput, opts ...request.Option) (*backup.ExportBackupPlanTemplateOutput, error)
 	GetBackupPlanWithContext(ctx context.Context, input *backup.GetBackupPlanInput, opts ...request.Option) (*backup.GetBackupPlanOutput, error)
 	GetBackupPlanFromJSONWithContext(ctx context.Context, input *backup.GetBackupPlanFromJSONInput, opts ...request.Option) (*backup.GetBackupPlanFromJSONOutput, error)
@@ -445,6 +446,27 @@ func (c *Client) DescribeRestoreJobWithContext(ctx context.Context, input *backu
 	})
 
 	return req.Output.(*backup.DescribeRestoreJobOutput), req.Error
+}
+
+func (c *Client) DisassociateRecoveryPointWithContext(ctx context.Context, input *backup.DisassociateRecoveryPointInput, opts ...request.Option) (*backup.DisassociateRecoveryPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "DisassociateRecoveryPoint",
+		Input:   input,
+		Output:  (*backup.DisassociateRecoveryPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.DisassociateRecoveryPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.DisassociateRecoveryPointOutput), req.Error
 }
 
 func (c *Client) ExportBackupPlanTemplateWithContext(ctx context.Context, input *backup.ExportBackupPlanTemplateInput, opts ...request.Option) (*backup.ExportBackupPlanTemplateOutput, error) {
