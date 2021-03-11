@@ -17,6 +17,7 @@ type Comprehend interface {
 	BatchDetectSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectSentimentInput, opts ...request.Option) (*comprehend.BatchDetectSentimentOutput, error)
 	BatchDetectSyntaxWithContext(ctx context.Context, input *comprehend.BatchDetectSyntaxInput, opts ...request.Option) (*comprehend.BatchDetectSyntaxOutput, error)
 	ClassifyDocumentWithContext(ctx context.Context, input *comprehend.ClassifyDocumentInput, opts ...request.Option) (*comprehend.ClassifyDocumentOutput, error)
+	ContainsPiiEntitiesWithContext(ctx context.Context, input *comprehend.ContainsPiiEntitiesInput, opts ...request.Option) (*comprehend.ContainsPiiEntitiesOutput, error)
 	CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error)
 	CreateEndpointWithContext(ctx context.Context, input *comprehend.CreateEndpointInput, opts ...request.Option) (*comprehend.CreateEndpointOutput, error)
 	CreateEntityRecognizerWithContext(ctx context.Context, input *comprehend.CreateEntityRecognizerInput, opts ...request.Option) (*comprehend.CreateEntityRecognizerOutput, error)
@@ -221,6 +222,27 @@ func (c *Client) ClassifyDocumentWithContext(ctx context.Context, input *compreh
 	})
 
 	return req.Output.(*comprehend.ClassifyDocumentOutput), req.Error
+}
+
+func (c *Client) ContainsPiiEntitiesWithContext(ctx context.Context, input *comprehend.ContainsPiiEntitiesInput, opts ...request.Option) (*comprehend.ContainsPiiEntitiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ContainsPiiEntities",
+		Input:   input,
+		Output:  (*comprehend.ContainsPiiEntitiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ContainsPiiEntitiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ContainsPiiEntitiesOutput), req.Error
 }
 
 func (c *Client) CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error) {
