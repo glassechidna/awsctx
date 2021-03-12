@@ -18,10 +18,12 @@ type WorkSpaces interface {
 	CreateConnectionAliasWithContext(ctx context.Context, input *workspaces.CreateConnectionAliasInput, opts ...request.Option) (*workspaces.CreateConnectionAliasOutput, error)
 	CreateIpGroupWithContext(ctx context.Context, input *workspaces.CreateIpGroupInput, opts ...request.Option) (*workspaces.CreateIpGroupOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *workspaces.CreateTagsInput, opts ...request.Option) (*workspaces.CreateTagsOutput, error)
+	CreateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.CreateWorkspaceBundleInput, opts ...request.Option) (*workspaces.CreateWorkspaceBundleOutput, error)
 	CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error)
 	DeleteConnectionAliasWithContext(ctx context.Context, input *workspaces.DeleteConnectionAliasInput, opts ...request.Option) (*workspaces.DeleteConnectionAliasOutput, error)
 	DeleteIpGroupWithContext(ctx context.Context, input *workspaces.DeleteIpGroupInput, opts ...request.Option) (*workspaces.DeleteIpGroupOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *workspaces.DeleteTagsInput, opts ...request.Option) (*workspaces.DeleteTagsOutput, error)
+	DeleteWorkspaceBundleWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceBundleInput, opts ...request.Option) (*workspaces.DeleteWorkspaceBundleOutput, error)
 	DeleteWorkspaceImageWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceImageInput, opts ...request.Option) (*workspaces.DeleteWorkspaceImageOutput, error)
 	DeregisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.DeregisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.DeregisterWorkspaceDirectoryOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error)
@@ -63,6 +65,7 @@ type WorkSpaces interface {
 	TerminateWorkspacesWithContext(ctx context.Context, input *workspaces.TerminateWorkspacesInput, opts ...request.Option) (*workspaces.TerminateWorkspacesOutput, error)
 	UpdateConnectionAliasPermissionWithContext(ctx context.Context, input *workspaces.UpdateConnectionAliasPermissionInput, opts ...request.Option) (*workspaces.UpdateConnectionAliasPermissionOutput, error)
 	UpdateRulesOfIpGroupWithContext(ctx context.Context, input *workspaces.UpdateRulesOfIpGroupInput, opts ...request.Option) (*workspaces.UpdateRulesOfIpGroupOutput, error)
+	UpdateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceBundleInput, opts ...request.Option) (*workspaces.UpdateWorkspaceBundleOutput, error)
 	UpdateWorkspaceImagePermissionWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceImagePermissionInput, opts ...request.Option) (*workspaces.UpdateWorkspaceImagePermissionOutput, error)
 }
 
@@ -228,6 +231,27 @@ func (c *Client) CreateTagsWithContext(ctx context.Context, input *workspaces.Cr
 	return req.Output.(*workspaces.CreateTagsOutput), req.Error
 }
 
+func (c *Client) CreateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.CreateWorkspaceBundleInput, opts ...request.Option) (*workspaces.CreateWorkspaceBundleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "CreateWorkspaceBundle",
+		Input:   input,
+		Output:  (*workspaces.CreateWorkspaceBundleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.CreateWorkspaceBundleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.CreateWorkspaceBundleOutput), req.Error
+}
+
 func (c *Client) CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
@@ -310,6 +334,27 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *workspaces.De
 	})
 
 	return req.Output.(*workspaces.DeleteTagsOutput), req.Error
+}
+
+func (c *Client) DeleteWorkspaceBundleWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceBundleInput, opts ...request.Option) (*workspaces.DeleteWorkspaceBundleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DeleteWorkspaceBundle",
+		Input:   input,
+		Output:  (*workspaces.DeleteWorkspaceBundleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DeleteWorkspaceBundleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DeleteWorkspaceBundleOutput), req.Error
 }
 
 func (c *Client) DeleteWorkspaceImageWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceImageInput, opts ...request.Option) (*workspaces.DeleteWorkspaceImageOutput, error) {
@@ -1168,6 +1213,27 @@ func (c *Client) UpdateRulesOfIpGroupWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workspaces.UpdateRulesOfIpGroupOutput), req.Error
+}
+
+func (c *Client) UpdateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceBundleInput, opts ...request.Option) (*workspaces.UpdateWorkspaceBundleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "UpdateWorkspaceBundle",
+		Input:   input,
+		Output:  (*workspaces.UpdateWorkspaceBundleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.UpdateWorkspaceBundleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.UpdateWorkspaceBundleOutput), req.Error
 }
 
 func (c *Client) UpdateWorkspaceImagePermissionWithContext(ctx context.Context, input *workspaces.UpdateWorkspaceImagePermissionInput, opts ...request.Option) (*workspaces.UpdateWorkspaceImagePermissionOutput, error) {
