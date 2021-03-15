@@ -31,6 +31,7 @@ type ECS interface {
 	DescribeTaskSetsWithContext(ctx context.Context, input *ecs.DescribeTaskSetsInput, opts ...request.Option) (*ecs.DescribeTaskSetsOutput, error)
 	DescribeTasksWithContext(ctx context.Context, input *ecs.DescribeTasksInput, opts ...request.Option) (*ecs.DescribeTasksOutput, error)
 	DiscoverPollEndpointWithContext(ctx context.Context, input *ecs.DiscoverPollEndpointInput, opts ...request.Option) (*ecs.DiscoverPollEndpointOutput, error)
+	ExecuteCommandWithContext(ctx context.Context, input *ecs.ExecuteCommandInput, opts ...request.Option) (*ecs.ExecuteCommandOutput, error)
 	ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error)
 	ListAccountSettingsPagesWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, cb func(*ecs.ListAccountSettingsOutput, bool) bool, opts ...request.Option) error
 	ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error)
@@ -63,6 +64,7 @@ type ECS interface {
 	TagResourceWithContext(ctx context.Context, input *ecs.TagResourceInput, opts ...request.Option) (*ecs.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *ecs.UntagResourceInput, opts ...request.Option) (*ecs.UntagResourceOutput, error)
 	UpdateCapacityProviderWithContext(ctx context.Context, input *ecs.UpdateCapacityProviderInput, opts ...request.Option) (*ecs.UpdateCapacityProviderOutput, error)
+	UpdateClusterWithContext(ctx context.Context, input *ecs.UpdateClusterInput, opts ...request.Option) (*ecs.UpdateClusterOutput, error)
 	UpdateClusterSettingsWithContext(ctx context.Context, input *ecs.UpdateClusterSettingsInput, opts ...request.Option) (*ecs.UpdateClusterSettingsOutput, error)
 	UpdateContainerAgentWithContext(ctx context.Context, input *ecs.UpdateContainerAgentInput, opts ...request.Option) (*ecs.UpdateContainerAgentOutput, error)
 	UpdateContainerInstancesStateWithContext(ctx context.Context, input *ecs.UpdateContainerInstancesStateInput, opts ...request.Option) (*ecs.UpdateContainerInstancesStateOutput, error)
@@ -504,6 +506,27 @@ func (c *Client) DiscoverPollEndpointWithContext(ctx context.Context, input *ecs
 	})
 
 	return req.Output.(*ecs.DiscoverPollEndpointOutput), req.Error
+}
+
+func (c *Client) ExecuteCommandWithContext(ctx context.Context, input *ecs.ExecuteCommandInput, opts ...request.Option) (*ecs.ExecuteCommandOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ExecuteCommand",
+		Input:   input,
+		Output:  (*ecs.ExecuteCommandOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.ExecuteCommandWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.ExecuteCommandOutput), req.Error
 }
 
 func (c *Client) ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error) {
@@ -1168,6 +1191,27 @@ func (c *Client) UpdateCapacityProviderWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ecs.UpdateCapacityProviderOutput), req.Error
+}
+
+func (c *Client) UpdateClusterWithContext(ctx context.Context, input *ecs.UpdateClusterInput, opts ...request.Option) (*ecs.UpdateClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "UpdateCluster",
+		Input:   input,
+		Output:  (*ecs.UpdateClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.UpdateClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.UpdateClusterOutput), req.Error
 }
 
 func (c *Client) UpdateClusterSettingsWithContext(ctx context.Context, input *ecs.UpdateClusterSettingsInput, opts ...request.Option) (*ecs.UpdateClusterSettingsOutput, error) {
