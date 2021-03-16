@@ -16,6 +16,7 @@ type GameLift interface {
 	CreateAliasWithContext(ctx context.Context, input *gamelift.CreateAliasInput, opts ...request.Option) (*gamelift.CreateAliasOutput, error)
 	CreateBuildWithContext(ctx context.Context, input *gamelift.CreateBuildInput, opts ...request.Option) (*gamelift.CreateBuildOutput, error)
 	CreateFleetWithContext(ctx context.Context, input *gamelift.CreateFleetInput, opts ...request.Option) (*gamelift.CreateFleetOutput, error)
+	CreateFleetLocationsWithContext(ctx context.Context, input *gamelift.CreateFleetLocationsInput, opts ...request.Option) (*gamelift.CreateFleetLocationsOutput, error)
 	CreateGameServerGroupWithContext(ctx context.Context, input *gamelift.CreateGameServerGroupInput, opts ...request.Option) (*gamelift.CreateGameServerGroupOutput, error)
 	CreateGameSessionWithContext(ctx context.Context, input *gamelift.CreateGameSessionInput, opts ...request.Option) (*gamelift.CreateGameSessionOutput, error)
 	CreateGameSessionQueueWithContext(ctx context.Context, input *gamelift.CreateGameSessionQueueInput, opts ...request.Option) (*gamelift.CreateGameSessionQueueOutput, error)
@@ -29,6 +30,7 @@ type GameLift interface {
 	DeleteAliasWithContext(ctx context.Context, input *gamelift.DeleteAliasInput, opts ...request.Option) (*gamelift.DeleteAliasOutput, error)
 	DeleteBuildWithContext(ctx context.Context, input *gamelift.DeleteBuildInput, opts ...request.Option) (*gamelift.DeleteBuildOutput, error)
 	DeleteFleetWithContext(ctx context.Context, input *gamelift.DeleteFleetInput, opts ...request.Option) (*gamelift.DeleteFleetOutput, error)
+	DeleteFleetLocationsWithContext(ctx context.Context, input *gamelift.DeleteFleetLocationsInput, opts ...request.Option) (*gamelift.DeleteFleetLocationsOutput, error)
 	DeleteGameServerGroupWithContext(ctx context.Context, input *gamelift.DeleteGameServerGroupInput, opts ...request.Option) (*gamelift.DeleteGameServerGroupOutput, error)
 	DeleteGameSessionQueueWithContext(ctx context.Context, input *gamelift.DeleteGameSessionQueueInput, opts ...request.Option) (*gamelift.DeleteGameSessionQueueOutput, error)
 	DeleteMatchmakingConfigurationWithContext(ctx context.Context, input *gamelift.DeleteMatchmakingConfigurationInput, opts ...request.Option) (*gamelift.DeleteMatchmakingConfigurationOutput, error)
@@ -47,6 +49,10 @@ type GameLift interface {
 	DescribeFleetCapacityPagesWithContext(ctx context.Context, input *gamelift.DescribeFleetCapacityInput, cb func(*gamelift.DescribeFleetCapacityOutput, bool) bool, opts ...request.Option) error
 	DescribeFleetEventsWithContext(ctx context.Context, input *gamelift.DescribeFleetEventsInput, opts ...request.Option) (*gamelift.DescribeFleetEventsOutput, error)
 	DescribeFleetEventsPagesWithContext(ctx context.Context, input *gamelift.DescribeFleetEventsInput, cb func(*gamelift.DescribeFleetEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeFleetLocationAttributesWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationAttributesInput, opts ...request.Option) (*gamelift.DescribeFleetLocationAttributesOutput, error)
+	DescribeFleetLocationAttributesPagesWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationAttributesInput, cb func(*gamelift.DescribeFleetLocationAttributesOutput, bool) bool, opts ...request.Option) error
+	DescribeFleetLocationCapacityWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationCapacityInput, opts ...request.Option) (*gamelift.DescribeFleetLocationCapacityOutput, error)
+	DescribeFleetLocationUtilizationWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationUtilizationInput, opts ...request.Option) (*gamelift.DescribeFleetLocationUtilizationOutput, error)
 	DescribeFleetPortSettingsWithContext(ctx context.Context, input *gamelift.DescribeFleetPortSettingsInput, opts ...request.Option) (*gamelift.DescribeFleetPortSettingsOutput, error)
 	DescribeFleetUtilizationWithContext(ctx context.Context, input *gamelift.DescribeFleetUtilizationInput, opts ...request.Option) (*gamelift.DescribeFleetUtilizationOutput, error)
 	DescribeFleetUtilizationPagesWithContext(ctx context.Context, input *gamelift.DescribeFleetUtilizationInput, cb func(*gamelift.DescribeFleetUtilizationOutput, bool) bool, opts ...request.Option) error
@@ -241,6 +247,27 @@ func (c *Client) CreateFleetWithContext(ctx context.Context, input *gamelift.Cre
 	})
 
 	return req.Output.(*gamelift.CreateFleetOutput), req.Error
+}
+
+func (c *Client) CreateFleetLocationsWithContext(ctx context.Context, input *gamelift.CreateFleetLocationsInput, opts ...request.Option) (*gamelift.CreateFleetLocationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "CreateFleetLocations",
+		Input:   input,
+		Output:  (*gamelift.CreateFleetLocationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.CreateFleetLocationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.CreateFleetLocationsOutput), req.Error
 }
 
 func (c *Client) CreateGameServerGroupWithContext(ctx context.Context, input *gamelift.CreateGameServerGroupInput, opts ...request.Option) (*gamelift.CreateGameServerGroupOutput, error) {
@@ -514,6 +541,27 @@ func (c *Client) DeleteFleetWithContext(ctx context.Context, input *gamelift.Del
 	})
 
 	return req.Output.(*gamelift.DeleteFleetOutput), req.Error
+}
+
+func (c *Client) DeleteFleetLocationsWithContext(ctx context.Context, input *gamelift.DeleteFleetLocationsInput, opts ...request.Option) (*gamelift.DeleteFleetLocationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DeleteFleetLocations",
+		Input:   input,
+		Output:  (*gamelift.DeleteFleetLocationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DeleteFleetLocationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DeleteFleetLocationsOutput), req.Error
 }
 
 func (c *Client) DeleteGameServerGroupWithContext(ctx context.Context, input *gamelift.DeleteGameServerGroupInput, opts ...request.Option) (*gamelift.DeleteGameServerGroupOutput, error) {
@@ -889,6 +937,89 @@ func (c *Client) DescribeFleetEventsPagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeFleetLocationAttributesWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationAttributesInput, opts ...request.Option) (*gamelift.DescribeFleetLocationAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DescribeFleetLocationAttributes",
+		Input:   input,
+		Output:  (*gamelift.DescribeFleetLocationAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DescribeFleetLocationAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DescribeFleetLocationAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeFleetLocationAttributesPagesWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationAttributesInput, cb func(*gamelift.DescribeFleetLocationAttributesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DescribeFleetLocationAttributes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GameLiftAPI.DescribeFleetLocationAttributesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeFleetLocationCapacityWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationCapacityInput, opts ...request.Option) (*gamelift.DescribeFleetLocationCapacityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DescribeFleetLocationCapacity",
+		Input:   input,
+		Output:  (*gamelift.DescribeFleetLocationCapacityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DescribeFleetLocationCapacityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DescribeFleetLocationCapacityOutput), req.Error
+}
+
+func (c *Client) DescribeFleetLocationUtilizationWithContext(ctx context.Context, input *gamelift.DescribeFleetLocationUtilizationInput, opts ...request.Option) (*gamelift.DescribeFleetLocationUtilizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "gamelift",
+		Action:  "DescribeFleetLocationUtilization",
+		Input:   input,
+		Output:  (*gamelift.DescribeFleetLocationUtilizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GameLiftAPI.DescribeFleetLocationUtilizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*gamelift.DescribeFleetLocationUtilizationOutput), req.Error
 }
 
 func (c *Client) DescribeFleetPortSettingsWithContext(ctx context.Context, input *gamelift.DescribeFleetPortSettingsInput, opts ...request.Option) (*gamelift.DescribeFleetPortSettingsOutput, error) {

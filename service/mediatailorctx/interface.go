@@ -33,8 +33,6 @@ type MediaTailor interface {
 	ListChannelsPagesWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, cb func(*mediatailor.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListPlaybackConfigurationsWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, opts ...request.Option) (*mediatailor.ListPlaybackConfigurationsOutput, error)
 	ListPlaybackConfigurationsPagesWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, cb func(*mediatailor.ListPlaybackConfigurationsOutput, bool) bool, opts ...request.Option) error
-	ListProgramsWithContext(ctx context.Context, input *mediatailor.ListProgramsInput, opts ...request.Option) (*mediatailor.ListProgramsOutput, error)
-	ListProgramsPagesWithContext(ctx context.Context, input *mediatailor.ListProgramsInput, cb func(*mediatailor.ListProgramsOutput, bool) bool, opts ...request.Option) error
 	ListSourceLocationsWithContext(ctx context.Context, input *mediatailor.ListSourceLocationsInput, opts ...request.Option) (*mediatailor.ListSourceLocationsOutput, error)
 	ListSourceLocationsPagesWithContext(ctx context.Context, input *mediatailor.ListSourceLocationsInput, cb func(*mediatailor.ListSourceLocationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediatailor.ListTagsForResourceInput, opts ...request.Option) (*mediatailor.ListTagsForResourceOutput, error)
@@ -520,47 +518,6 @@ func (c *Client) ListPlaybackConfigurationsPagesWithContext(ctx context.Context,
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.MediaTailorAPI.ListPlaybackConfigurationsPagesWithContext(ctx, input, cb, opts...)
-	})
-
-	return req.Error
-}
-
-func (c *Client) ListProgramsWithContext(ctx context.Context, input *mediatailor.ListProgramsInput, opts ...request.Option) (*mediatailor.ListProgramsOutput, error) {
-	req := &awsctx.AwsRequest{
-		Service: "mediatailor",
-		Action:  "ListPrograms",
-		Input:   input,
-		Output:  (*mediatailor.ListProgramsOutput)(nil),
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Output, req.Error = c.MediaTailorAPI.ListProgramsWithContext(ctx, input, opts...)
-	})
-
-	return req.Output.(*mediatailor.ListProgramsOutput), req.Error
-}
-
-func (c *Client) ListProgramsPagesWithContext(ctx context.Context, input *mediatailor.ListProgramsInput, cb func(*mediatailor.ListProgramsOutput, bool) bool, opts ...request.Option) error {
-	req := &awsctx.AwsRequest{
-		Service: "mediatailor",
-		Action:  "ListPrograms",
-		Input:   input,
-		Error:   nil,
-	}
-
-	ctxer := c.Contexter
-	if ctxer == nil {
-		ctxer = awsctx.NoopContexter
-	}
-
-	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
-		req.Error = c.MediaTailorAPI.ListProgramsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
