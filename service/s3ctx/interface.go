@@ -111,6 +111,7 @@ type S3 interface {
 	SelectObjectContentWithContext(ctx context.Context, input *s3.SelectObjectContentInput, opts ...request.Option) (*s3.SelectObjectContentOutput, error)
 	UploadPartWithContext(ctx context.Context, input *s3.UploadPartInput, opts ...request.Option) (*s3.UploadPartOutput, error)
 	UploadPartCopyWithContext(ctx context.Context, input *s3.UploadPartCopyInput, opts ...request.Option) (*s3.UploadPartCopyOutput, error)
+	WriteGetObjectResponseWithContext(ctx context.Context, input *s3.WriteGetObjectResponseInput, opts ...request.Option) (*s3.WriteGetObjectResponseOutput, error)
 }
 
 type Client struct {
@@ -2221,4 +2222,25 @@ func (c *Client) UploadPartCopyWithContext(ctx context.Context, input *s3.Upload
 	})
 
 	return req.Output.(*s3.UploadPartCopyOutput), req.Error
+}
+
+func (c *Client) WriteGetObjectResponseWithContext(ctx context.Context, input *s3.WriteGetObjectResponseInput, opts ...request.Option) (*s3.WriteGetObjectResponseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "WriteGetObjectResponse",
+		Input:   input,
+		Output:  (*s3.WriteGetObjectResponseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.WriteGetObjectResponseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.WriteGetObjectResponseOutput), req.Error
 }

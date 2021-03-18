@@ -12,10 +12,13 @@ import (
 
 type S3Control interface {
 	CreateAccessPointWithContext(ctx context.Context, input *s3control.CreateAccessPointInput, opts ...request.Option) (*s3control.CreateAccessPointOutput, error)
+	CreateAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.CreateAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.CreateAccessPointForObjectLambdaOutput, error)
 	CreateBucketWithContext(ctx context.Context, input *s3control.CreateBucketInput, opts ...request.Option) (*s3control.CreateBucketOutput, error)
 	CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error)
 	DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error)
+	DeleteAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.DeleteAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.DeleteAccessPointForObjectLambdaOutput, error)
 	DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error)
+	DeleteAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyForObjectLambdaOutput, error)
 	DeleteBucketWithContext(ctx context.Context, input *s3control.DeleteBucketInput, opts ...request.Option) (*s3control.DeleteBucketOutput, error)
 	DeleteBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.DeleteBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.DeleteBucketLifecycleConfigurationOutput, error)
 	DeleteBucketPolicyWithContext(ctx context.Context, input *s3control.DeleteBucketPolicyInput, opts ...request.Option) (*s3control.DeleteBucketPolicyOutput, error)
@@ -26,8 +29,12 @@ type S3Control interface {
 	DeleteStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationTaggingOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error)
 	GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error)
+	GetAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointConfigurationForObjectLambdaOutput, error)
+	GetAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointForObjectLambdaOutput, error)
 	GetAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyInput, opts ...request.Option) (*s3control.GetAccessPointPolicyOutput, error)
+	GetAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointPolicyForObjectLambdaOutput, error)
 	GetAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusOutput, error)
+	GetAccessPointPolicyStatusForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusForObjectLambdaOutput, error)
 	GetBucketWithContext(ctx context.Context, input *s3control.GetBucketInput, opts ...request.Option) (*s3control.GetBucketOutput, error)
 	GetBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.GetBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.GetBucketLifecycleConfigurationOutput, error)
 	GetBucketPolicyWithContext(ctx context.Context, input *s3control.GetBucketPolicyInput, opts ...request.Option) (*s3control.GetBucketPolicyOutput, error)
@@ -38,12 +45,16 @@ type S3Control interface {
 	GetStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationTaggingOutput, error)
 	ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error)
 	ListAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, cb func(*s3control.ListAccessPointsOutput, bool) bool, opts ...request.Option) error
+	ListAccessPointsForObjectLambdaWithContext(ctx context.Context, input *s3control.ListAccessPointsForObjectLambdaInput, opts ...request.Option) (*s3control.ListAccessPointsForObjectLambdaOutput, error)
+	ListAccessPointsForObjectLambdaPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsForObjectLambdaInput, cb func(*s3control.ListAccessPointsForObjectLambdaOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *s3control.ListJobsInput, cb func(*s3control.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListRegionalBucketsWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, opts ...request.Option) (*s3control.ListRegionalBucketsOutput, error)
 	ListRegionalBucketsPagesWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, cb func(*s3control.ListRegionalBucketsOutput, bool) bool, opts ...request.Option) error
 	ListStorageLensConfigurationsWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, opts ...request.Option) (*s3control.ListStorageLensConfigurationsOutput, error)
+	PutAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointConfigurationForObjectLambdaOutput, error)
 	PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error)
+	PutAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointPolicyForObjectLambdaOutput, error)
 	PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.PutBucketLifecycleConfigurationOutput, error)
 	PutBucketPolicyWithContext(ctx context.Context, input *s3control.PutBucketPolicyInput, opts ...request.Option) (*s3control.PutBucketPolicyOutput, error)
 	PutBucketTaggingWithContext(ctx context.Context, input *s3control.PutBucketTaggingInput, opts ...request.Option) (*s3control.PutBucketTaggingOutput, error)
@@ -89,6 +100,27 @@ func (c *Client) CreateAccessPointWithContext(ctx context.Context, input *s3cont
 	})
 
 	return req.Output.(*s3control.CreateAccessPointOutput), req.Error
+}
+
+func (c *Client) CreateAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.CreateAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.CreateAccessPointForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "CreateAccessPointForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.CreateAccessPointForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.CreateAccessPointForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.CreateAccessPointForObjectLambdaOutput), req.Error
 }
 
 func (c *Client) CreateBucketWithContext(ctx context.Context, input *s3control.CreateBucketInput, opts ...request.Option) (*s3control.CreateBucketOutput, error) {
@@ -154,6 +186,27 @@ func (c *Client) DeleteAccessPointWithContext(ctx context.Context, input *s3cont
 	return req.Output.(*s3control.DeleteAccessPointOutput), req.Error
 }
 
+func (c *Client) DeleteAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.DeleteAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.DeleteAccessPointForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteAccessPointForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.DeleteAccessPointForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteAccessPointForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteAccessPointForObjectLambdaOutput), req.Error
+}
+
 func (c *Client) DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -173,6 +226,27 @@ func (c *Client) DeleteAccessPointPolicyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*s3control.DeleteAccessPointPolicyOutput), req.Error
+}
+
+func (c *Client) DeleteAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteAccessPointPolicyForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.DeleteAccessPointPolicyForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteAccessPointPolicyForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteAccessPointPolicyForObjectLambdaOutput), req.Error
 }
 
 func (c *Client) DeleteBucketWithContext(ctx context.Context, input *s3control.DeleteBucketInput, opts ...request.Option) (*s3control.DeleteBucketOutput, error) {
@@ -385,6 +459,48 @@ func (c *Client) GetAccessPointWithContext(ctx context.Context, input *s3control
 	return req.Output.(*s3control.GetAccessPointOutput), req.Error
 }
 
+func (c *Client) GetAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointConfigurationForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPointConfigurationForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointConfigurationForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointConfigurationForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointConfigurationForObjectLambdaOutput), req.Error
+}
+
+func (c *Client) GetAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPointForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointForObjectLambdaOutput), req.Error
+}
+
 func (c *Client) GetAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyInput, opts ...request.Option) (*s3control.GetAccessPointPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -406,6 +522,27 @@ func (c *Client) GetAccessPointPolicyWithContext(ctx context.Context, input *s3c
 	return req.Output.(*s3control.GetAccessPointPolicyOutput), req.Error
 }
 
+func (c *Client) GetAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointPolicyForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPointPolicyForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointPolicyForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointPolicyForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointPolicyForObjectLambdaOutput), req.Error
+}
+
 func (c *Client) GetAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -425,6 +562,27 @@ func (c *Client) GetAccessPointPolicyStatusWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*s3control.GetAccessPointPolicyStatusOutput), req.Error
+}
+
+func (c *Client) GetAccessPointPolicyStatusForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointPolicyStatusForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointPolicyStatusForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetAccessPointPolicyStatusForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.GetAccessPointPolicyStatusForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetAccessPointPolicyStatusForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetAccessPointPolicyStatusForObjectLambdaOutput), req.Error
 }
 
 func (c *Client) GetBucketWithContext(ctx context.Context, input *s3control.GetBucketInput, opts ...request.Option) (*s3control.GetBucketOutput, error) {
@@ -636,6 +794,47 @@ func (c *Client) ListAccessPointsPagesWithContext(ctx context.Context, input *s3
 	return req.Error
 }
 
+func (c *Client) ListAccessPointsForObjectLambdaWithContext(ctx context.Context, input *s3control.ListAccessPointsForObjectLambdaInput, opts ...request.Option) (*s3control.ListAccessPointsForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListAccessPointsForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.ListAccessPointsForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.ListAccessPointsForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.ListAccessPointsForObjectLambdaOutput), req.Error
+}
+
+func (c *Client) ListAccessPointsForObjectLambdaPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsForObjectLambdaInput, cb func(*s3control.ListAccessPointsForObjectLambdaOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListAccessPointsForObjectLambda",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3ControlAPI.ListAccessPointsForObjectLambdaPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -739,6 +938,27 @@ func (c *Client) ListStorageLensConfigurationsWithContext(ctx context.Context, i
 	return req.Output.(*s3control.ListStorageLensConfigurationsOutput), req.Error
 }
 
+func (c *Client) PutAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointConfigurationForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutAccessPointConfigurationForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.PutAccessPointConfigurationForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutAccessPointConfigurationForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutAccessPointConfigurationForObjectLambdaOutput), req.Error
+}
+
 func (c *Client) PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -758,6 +978,27 @@ func (c *Client) PutAccessPointPolicyWithContext(ctx context.Context, input *s3c
 	})
 
 	return req.Output.(*s3control.PutAccessPointPolicyOutput), req.Error
+}
+
+func (c *Client) PutAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointPolicyForObjectLambdaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutAccessPointPolicyForObjectLambda",
+		Input:   input,
+		Output:  (*s3control.PutAccessPointPolicyForObjectLambdaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutAccessPointPolicyForObjectLambdaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutAccessPointPolicyForObjectLambdaOutput), req.Error
 }
 
 func (c *Client) PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.PutBucketLifecycleConfigurationOutput, error) {
