@@ -104,6 +104,7 @@ type Redshift interface {
 	GetClusterCredentialsWithContext(ctx context.Context, input *redshift.GetClusterCredentialsInput, opts ...request.Option) (*redshift.GetClusterCredentialsOutput, error)
 	GetReservedNodeExchangeOfferingsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeOfferingsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeOfferingsOutput, error)
 	GetReservedNodeExchangeOfferingsPagesWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeOfferingsInput, cb func(*redshift.GetReservedNodeExchangeOfferingsOutput, bool) bool, opts ...request.Option) error
+	ModifyAquaConfigurationWithContext(ctx context.Context, input *redshift.ModifyAquaConfigurationInput, opts ...request.Option) (*redshift.ModifyAquaConfigurationOutput, error)
 	ModifyClusterWithContext(ctx context.Context, input *redshift.ModifyClusterInput, opts ...request.Option) (*redshift.ModifyClusterOutput, error)
 	ModifyClusterDbRevisionWithContext(ctx context.Context, input *redshift.ModifyClusterDbRevisionInput, opts ...request.Option) (*redshift.ModifyClusterDbRevisionOutput, error)
 	ModifyClusterIamRolesWithContext(ctx context.Context, input *redshift.ModifyClusterIamRolesInput, opts ...request.Option) (*redshift.ModifyClusterIamRolesOutput, error)
@@ -2071,6 +2072,27 @@ func (c *Client) GetReservedNodeExchangeOfferingsPagesWithContext(ctx context.Co
 	})
 
 	return req.Error
+}
+
+func (c *Client) ModifyAquaConfigurationWithContext(ctx context.Context, input *redshift.ModifyAquaConfigurationInput, opts ...request.Option) (*redshift.ModifyAquaConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ModifyAquaConfiguration",
+		Input:   input,
+		Output:  (*redshift.ModifyAquaConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ModifyAquaConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ModifyAquaConfigurationOutput), req.Error
 }
 
 func (c *Client) ModifyClusterWithContext(ctx context.Context, input *redshift.ModifyClusterInput, opts ...request.Option) (*redshift.ModifyClusterOutput, error) {
