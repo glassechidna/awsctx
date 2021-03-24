@@ -52,6 +52,7 @@ type S3Control interface {
 	ListRegionalBucketsWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, opts ...request.Option) (*s3control.ListRegionalBucketsOutput, error)
 	ListRegionalBucketsPagesWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, cb func(*s3control.ListRegionalBucketsOutput, bool) bool, opts ...request.Option) error
 	ListStorageLensConfigurationsWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, opts ...request.Option) (*s3control.ListStorageLensConfigurationsOutput, error)
+	ListStorageLensConfigurationsPagesWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, cb func(*s3control.ListStorageLensConfigurationsOutput, bool) bool, opts ...request.Option) error
 	PutAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointConfigurationForObjectLambdaOutput, error)
 	PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error)
 	PutAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointPolicyForObjectLambdaOutput, error)
@@ -936,6 +937,26 @@ func (c *Client) ListStorageLensConfigurationsWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*s3control.ListStorageLensConfigurationsOutput), req.Error
+}
+
+func (c *Client) ListStorageLensConfigurationsPagesWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, cb func(*s3control.ListStorageLensConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListStorageLensConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3ControlAPI.ListStorageLensConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointConfigurationForObjectLambdaOutput, error) {
