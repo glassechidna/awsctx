@@ -57,6 +57,7 @@ type Rekognition interface {
 	ListFacesPagesWithContext(ctx context.Context, input *rekognition.ListFacesInput, cb func(*rekognition.ListFacesOutput, bool) bool, opts ...request.Option) error
 	ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error)
 	ListStreamProcessorsPagesWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, cb func(*rekognition.ListStreamProcessorsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *rekognition.ListTagsForResourceInput, opts ...request.Option) (*rekognition.ListTagsForResourceOutput, error)
 	RecognizeCelebritiesWithContext(ctx context.Context, input *rekognition.RecognizeCelebritiesInput, opts ...request.Option) (*rekognition.RecognizeCelebritiesOutput, error)
 	SearchFacesWithContext(ctx context.Context, input *rekognition.SearchFacesInput, opts ...request.Option) (*rekognition.SearchFacesOutput, error)
 	SearchFacesByImageWithContext(ctx context.Context, input *rekognition.SearchFacesByImageInput, opts ...request.Option) (*rekognition.SearchFacesByImageOutput, error)
@@ -72,6 +73,8 @@ type Rekognition interface {
 	StartTextDetectionWithContext(ctx context.Context, input *rekognition.StartTextDetectionInput, opts ...request.Option) (*rekognition.StartTextDetectionOutput, error)
 	StopProjectVersionWithContext(ctx context.Context, input *rekognition.StopProjectVersionInput, opts ...request.Option) (*rekognition.StopProjectVersionOutput, error)
 	StopStreamProcessorWithContext(ctx context.Context, input *rekognition.StopStreamProcessorInput, opts ...request.Option) (*rekognition.StopStreamProcessorOutput, error)
+	TagResourceWithContext(ctx context.Context, input *rekognition.TagResourceInput, opts ...request.Option) (*rekognition.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *rekognition.UntagResourceInput, opts ...request.Option) (*rekognition.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -1042,6 +1045,27 @@ func (c *Client) ListStreamProcessorsPagesWithContext(ctx context.Context, input
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rekognition.ListTagsForResourceInput, opts ...request.Option) (*rekognition.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*rekognition.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) RecognizeCelebritiesWithContext(ctx context.Context, input *rekognition.RecognizeCelebritiesInput, opts ...request.Option) (*rekognition.RecognizeCelebritiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -1355,4 +1379,46 @@ func (c *Client) StopStreamProcessorWithContext(ctx context.Context, input *reko
 	})
 
 	return req.Output.(*rekognition.StopStreamProcessorOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *rekognition.TagResourceInput, opts ...request.Option) (*rekognition.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*rekognition.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *rekognition.UntagResourceInput, opts ...request.Option) (*rekognition.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*rekognition.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.UntagResourceOutput), req.Error
 }
