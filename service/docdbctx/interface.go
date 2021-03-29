@@ -11,6 +11,7 @@ import (
 )
 
 type DocDB interface {
+	AddSourceIdentifierToSubscriptionWithContext(ctx context.Context, input *docdb.AddSourceIdentifierToSubscriptionInput, opts ...request.Option) (*docdb.AddSourceIdentifierToSubscriptionOutput, error)
 	AddTagsToResourceWithContext(ctx context.Context, input *docdb.AddTagsToResourceInput, opts ...request.Option) (*docdb.AddTagsToResourceOutput, error)
 	ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *docdb.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*docdb.ApplyPendingMaintenanceActionOutput, error)
 	CopyDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.CopyDBClusterParameterGroupInput, opts ...request.Option) (*docdb.CopyDBClusterParameterGroupOutput, error)
@@ -20,11 +21,13 @@ type DocDB interface {
 	CreateDBClusterSnapshotWithContext(ctx context.Context, input *docdb.CreateDBClusterSnapshotInput, opts ...request.Option) (*docdb.CreateDBClusterSnapshotOutput, error)
 	CreateDBInstanceWithContext(ctx context.Context, input *docdb.CreateDBInstanceInput, opts ...request.Option) (*docdb.CreateDBInstanceOutput, error)
 	CreateDBSubnetGroupWithContext(ctx context.Context, input *docdb.CreateDBSubnetGroupInput, opts ...request.Option) (*docdb.CreateDBSubnetGroupOutput, error)
+	CreateEventSubscriptionWithContext(ctx context.Context, input *docdb.CreateEventSubscriptionInput, opts ...request.Option) (*docdb.CreateEventSubscriptionOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *docdb.DeleteDBClusterInput, opts ...request.Option) (*docdb.DeleteDBClusterOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*docdb.DeleteDBClusterParameterGroupOutput, error)
 	DeleteDBClusterSnapshotWithContext(ctx context.Context, input *docdb.DeleteDBClusterSnapshotInput, opts ...request.Option) (*docdb.DeleteDBClusterSnapshotOutput, error)
 	DeleteDBInstanceWithContext(ctx context.Context, input *docdb.DeleteDBInstanceInput, opts ...request.Option) (*docdb.DeleteDBInstanceOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *docdb.DeleteDBSubnetGroupInput, opts ...request.Option) (*docdb.DeleteDBSubnetGroupOutput, error)
+	DeleteEventSubscriptionWithContext(ctx context.Context, input *docdb.DeleteEventSubscriptionInput, opts ...request.Option) (*docdb.DeleteEventSubscriptionOutput, error)
 	DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error)
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, cb func(*docdb.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*docdb.DescribeDBClusterParameterGroupsOutput, error)
@@ -44,6 +47,8 @@ type DocDB interface {
 	DescribeDBSubnetGroupsPagesWithContext(ctx context.Context, input *docdb.DescribeDBSubnetGroupsInput, cb func(*docdb.DescribeDBSubnetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeEngineDefaultClusterParametersWithContext(ctx context.Context, input *docdb.DescribeEngineDefaultClusterParametersInput, opts ...request.Option) (*docdb.DescribeEngineDefaultClusterParametersOutput, error)
 	DescribeEventCategoriesWithContext(ctx context.Context, input *docdb.DescribeEventCategoriesInput, opts ...request.Option) (*docdb.DescribeEventCategoriesOutput, error)
+	DescribeEventSubscriptionsWithContext(ctx context.Context, input *docdb.DescribeEventSubscriptionsInput, opts ...request.Option) (*docdb.DescribeEventSubscriptionsOutput, error)
+	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *docdb.DescribeEventSubscriptionsInput, cb func(*docdb.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *docdb.DescribeEventsInput, opts ...request.Option) (*docdb.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *docdb.DescribeEventsInput, cb func(*docdb.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error)
@@ -57,7 +62,9 @@ type DocDB interface {
 	ModifyDBClusterSnapshotAttributeWithContext(ctx context.Context, input *docdb.ModifyDBClusterSnapshotAttributeInput, opts ...request.Option) (*docdb.ModifyDBClusterSnapshotAttributeOutput, error)
 	ModifyDBInstanceWithContext(ctx context.Context, input *docdb.ModifyDBInstanceInput, opts ...request.Option) (*docdb.ModifyDBInstanceOutput, error)
 	ModifyDBSubnetGroupWithContext(ctx context.Context, input *docdb.ModifyDBSubnetGroupInput, opts ...request.Option) (*docdb.ModifyDBSubnetGroupOutput, error)
+	ModifyEventSubscriptionWithContext(ctx context.Context, input *docdb.ModifyEventSubscriptionInput, opts ...request.Option) (*docdb.ModifyEventSubscriptionOutput, error)
 	RebootDBInstanceWithContext(ctx context.Context, input *docdb.RebootDBInstanceInput, opts ...request.Option) (*docdb.RebootDBInstanceOutput, error)
+	RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *docdb.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*docdb.RemoveSourceIdentifierFromSubscriptionOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *docdb.RemoveTagsFromResourceInput, opts ...request.Option) (*docdb.RemoveTagsFromResourceOutput, error)
 	ResetDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.ResetDBClusterParameterGroupInput, opts ...request.Option) (*docdb.ResetDBClusterParameterGroupOutput, error)
 	RestoreDBClusterFromSnapshotWithContext(ctx context.Context, input *docdb.RestoreDBClusterFromSnapshotInput, opts ...request.Option) (*docdb.RestoreDBClusterFromSnapshotOutput, error)
@@ -80,6 +87,27 @@ func New(base docdbiface.DocDBAPI, ctxer awsctx.Contexter) DocDB {
 
 var _ DocDB = (*docdb.DocDB)(nil)
 var _ DocDB = (*Client)(nil)
+
+func (c *Client) AddSourceIdentifierToSubscriptionWithContext(ctx context.Context, input *docdb.AddSourceIdentifierToSubscriptionInput, opts ...request.Option) (*docdb.AddSourceIdentifierToSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "AddSourceIdentifierToSubscription",
+		Input:   input,
+		Output:  (*docdb.AddSourceIdentifierToSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.AddSourceIdentifierToSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.AddSourceIdentifierToSubscriptionOutput), req.Error
+}
 
 func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *docdb.AddTagsToResourceInput, opts ...request.Option) (*docdb.AddTagsToResourceOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -270,6 +298,27 @@ func (c *Client) CreateDBSubnetGroupWithContext(ctx context.Context, input *docd
 	return req.Output.(*docdb.CreateDBSubnetGroupOutput), req.Error
 }
 
+func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *docdb.CreateEventSubscriptionInput, opts ...request.Option) (*docdb.CreateEventSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "CreateEventSubscription",
+		Input:   input,
+		Output:  (*docdb.CreateEventSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.CreateEventSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.CreateEventSubscriptionOutput), req.Error
+}
+
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *docdb.DeleteDBClusterInput, opts ...request.Option) (*docdb.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -373,6 +422,27 @@ func (c *Client) DeleteDBSubnetGroupWithContext(ctx context.Context, input *docd
 	})
 
 	return req.Output.(*docdb.DeleteDBSubnetGroupOutput), req.Error
+}
+
+func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *docdb.DeleteEventSubscriptionInput, opts ...request.Option) (*docdb.DeleteEventSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DeleteEventSubscription",
+		Input:   input,
+		Output:  (*docdb.DeleteEventSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.DeleteEventSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.DeleteEventSubscriptionOutput), req.Error
 }
 
 func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error) {
@@ -766,6 +836,47 @@ func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *
 	return req.Output.(*docdb.DescribeEventCategoriesOutput), req.Error
 }
 
+func (c *Client) DescribeEventSubscriptionsWithContext(ctx context.Context, input *docdb.DescribeEventSubscriptionsInput, opts ...request.Option) (*docdb.DescribeEventSubscriptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeEventSubscriptions",
+		Input:   input,
+		Output:  (*docdb.DescribeEventSubscriptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.DescribeEventSubscriptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.DescribeEventSubscriptionsOutput), req.Error
+}
+
+func (c *Client) DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *docdb.DescribeEventSubscriptionsInput, cb func(*docdb.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeEventSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribeEventSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEventsWithContext(ctx context.Context, input *docdb.DescribeEventsInput, opts ...request.Option) (*docdb.DescribeEventsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -1036,6 +1147,27 @@ func (c *Client) ModifyDBSubnetGroupWithContext(ctx context.Context, input *docd
 	return req.Output.(*docdb.ModifyDBSubnetGroupOutput), req.Error
 }
 
+func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *docdb.ModifyEventSubscriptionInput, opts ...request.Option) (*docdb.ModifyEventSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "ModifyEventSubscription",
+		Input:   input,
+		Output:  (*docdb.ModifyEventSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.ModifyEventSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.ModifyEventSubscriptionOutput), req.Error
+}
+
 func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *docdb.RebootDBInstanceInput, opts ...request.Option) (*docdb.RebootDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -1055,6 +1187,27 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *docdb.R
 	})
 
 	return req.Output.(*docdb.RebootDBInstanceOutput), req.Error
+}
+
+func (c *Client) RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *docdb.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*docdb.RemoveSourceIdentifierFromSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "RemoveSourceIdentifierFromSubscription",
+		Input:   input,
+		Output:  (*docdb.RemoveSourceIdentifierFromSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.RemoveSourceIdentifierFromSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.RemoveSourceIdentifierFromSubscriptionOutput), req.Error
 }
 
 func (c *Client) RemoveTagsFromResourceWithContext(ctx context.Context, input *docdb.RemoveTagsFromResourceInput, opts ...request.Option) (*docdb.RemoveTagsFromResourceOutput, error) {
