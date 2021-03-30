@@ -12,6 +12,7 @@ import (
 
 type EC2InstanceConnect interface {
 	SendSSHPublicKeyWithContext(ctx context.Context, input *ec2instanceconnect.SendSSHPublicKeyInput, opts ...request.Option) (*ec2instanceconnect.SendSSHPublicKeyOutput, error)
+	SendSerialConsoleSSHPublicKeyWithContext(ctx context.Context, input *ec2instanceconnect.SendSerialConsoleSSHPublicKeyInput, opts ...request.Option) (*ec2instanceconnect.SendSerialConsoleSSHPublicKeyOutput, error)
 }
 
 type Client struct {
@@ -48,4 +49,25 @@ func (c *Client) SendSSHPublicKeyWithContext(ctx context.Context, input *ec2inst
 	})
 
 	return req.Output.(*ec2instanceconnect.SendSSHPublicKeyOutput), req.Error
+}
+
+func (c *Client) SendSerialConsoleSSHPublicKeyWithContext(ctx context.Context, input *ec2instanceconnect.SendSerialConsoleSSHPublicKeyInput, opts ...request.Option) (*ec2instanceconnect.SendSerialConsoleSSHPublicKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2instanceconnect",
+		Action:  "SendSerialConsoleSSHPublicKey",
+		Input:   input,
+		Output:  (*ec2instanceconnect.SendSerialConsoleSSHPublicKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2InstanceConnectAPI.SendSerialConsoleSSHPublicKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2instanceconnect.SendSerialConsoleSSHPublicKeyOutput), req.Error
 }

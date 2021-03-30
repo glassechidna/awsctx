@@ -30,6 +30,7 @@ type ConfigService interface {
 	DeleteStoredQueryWithContext(ctx context.Context, input *configservice.DeleteStoredQueryInput, opts ...request.Option) (*configservice.DeleteStoredQueryOutput, error)
 	DeliverConfigSnapshotWithContext(ctx context.Context, input *configservice.DeliverConfigSnapshotInput, opts ...request.Option) (*configservice.DeliverConfigSnapshotOutput, error)
 	DescribeAggregateComplianceByConfigRulesWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConfigRulesInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConfigRulesOutput, error)
+	DescribeAggregateComplianceByConformancePacksWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConformancePacksInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConformancePacksOutput, error)
 	DescribeAggregationAuthorizationsWithContext(ctx context.Context, input *configservice.DescribeAggregationAuthorizationsInput, opts ...request.Option) (*configservice.DescribeAggregationAuthorizationsOutput, error)
 	DescribeComplianceByConfigRuleWithContext(ctx context.Context, input *configservice.DescribeComplianceByConfigRuleInput, opts ...request.Option) (*configservice.DescribeComplianceByConfigRuleOutput, error)
 	DescribeComplianceByResourceWithContext(ctx context.Context, input *configservice.DescribeComplianceByResourceInput, opts ...request.Option) (*configservice.DescribeComplianceByResourceOutput, error)
@@ -57,6 +58,7 @@ type ConfigService interface {
 	DescribeRetentionConfigurationsWithContext(ctx context.Context, input *configservice.DescribeRetentionConfigurationsInput, opts ...request.Option) (*configservice.DescribeRetentionConfigurationsOutput, error)
 	GetAggregateComplianceDetailsByConfigRuleWithContext(ctx context.Context, input *configservice.GetAggregateComplianceDetailsByConfigRuleInput, opts ...request.Option) (*configservice.GetAggregateComplianceDetailsByConfigRuleOutput, error)
 	GetAggregateConfigRuleComplianceSummaryWithContext(ctx context.Context, input *configservice.GetAggregateConfigRuleComplianceSummaryInput, opts ...request.Option) (*configservice.GetAggregateConfigRuleComplianceSummaryOutput, error)
+	GetAggregateConformancePackComplianceSummaryWithContext(ctx context.Context, input *configservice.GetAggregateConformancePackComplianceSummaryInput, opts ...request.Option) (*configservice.GetAggregateConformancePackComplianceSummaryOutput, error)
 	GetAggregateDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetAggregateDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetAggregateDiscoveredResourceCountsOutput, error)
 	GetAggregateResourceConfigWithContext(ctx context.Context, input *configservice.GetAggregateResourceConfigInput, opts ...request.Option) (*configservice.GetAggregateResourceConfigOutput, error)
 	GetComplianceDetailsByConfigRuleWithContext(ctx context.Context, input *configservice.GetComplianceDetailsByConfigRuleInput, opts ...request.Option) (*configservice.GetComplianceDetailsByConfigRuleOutput, error)
@@ -514,6 +516,27 @@ func (c *Client) DescribeAggregateComplianceByConfigRulesWithContext(ctx context
 	})
 
 	return req.Output.(*configservice.DescribeAggregateComplianceByConfigRulesOutput), req.Error
+}
+
+func (c *Client) DescribeAggregateComplianceByConformancePacksWithContext(ctx context.Context, input *configservice.DescribeAggregateComplianceByConformancePacksInput, opts ...request.Option) (*configservice.DescribeAggregateComplianceByConformancePacksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "DescribeAggregateComplianceByConformancePacks",
+		Input:   input,
+		Output:  (*configservice.DescribeAggregateComplianceByConformancePacksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.DescribeAggregateComplianceByConformancePacksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.DescribeAggregateComplianceByConformancePacksOutput), req.Error
 }
 
 func (c *Client) DescribeAggregationAuthorizationsWithContext(ctx context.Context, input *configservice.DescribeAggregationAuthorizationsInput, opts ...request.Option) (*configservice.DescribeAggregationAuthorizationsOutput, error) {
@@ -1079,6 +1102,27 @@ func (c *Client) GetAggregateConfigRuleComplianceSummaryWithContext(ctx context.
 	})
 
 	return req.Output.(*configservice.GetAggregateConfigRuleComplianceSummaryOutput), req.Error
+}
+
+func (c *Client) GetAggregateConformancePackComplianceSummaryWithContext(ctx context.Context, input *configservice.GetAggregateConformancePackComplianceSummaryInput, opts ...request.Option) (*configservice.GetAggregateConformancePackComplianceSummaryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "GetAggregateConformancePackComplianceSummary",
+		Input:   input,
+		Output:  (*configservice.GetAggregateConformancePackComplianceSummaryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.GetAggregateConformancePackComplianceSummaryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.GetAggregateConformancePackComplianceSummaryOutput), req.Error
 }
 
 func (c *Client) GetAggregateDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetAggregateDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetAggregateDiscoveredResourceCountsOutput, error) {

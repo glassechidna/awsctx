@@ -15,6 +15,7 @@ type CloudWatch interface {
 	DeleteAnomalyDetectorWithContext(ctx context.Context, input *cloudwatch.DeleteAnomalyDetectorInput, opts ...request.Option) (*cloudwatch.DeleteAnomalyDetectorOutput, error)
 	DeleteDashboardsWithContext(ctx context.Context, input *cloudwatch.DeleteDashboardsInput, opts ...request.Option) (*cloudwatch.DeleteDashboardsOutput, error)
 	DeleteInsightRulesWithContext(ctx context.Context, input *cloudwatch.DeleteInsightRulesInput, opts ...request.Option) (*cloudwatch.DeleteInsightRulesOutput, error)
+	DeleteMetricStreamWithContext(ctx context.Context, input *cloudwatch.DeleteMetricStreamInput, opts ...request.Option) (*cloudwatch.DeleteMetricStreamOutput, error)
 	DescribeAlarmHistoryWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, opts ...request.Option) (*cloudwatch.DescribeAlarmHistoryOutput, error)
 	DescribeAlarmHistoryPagesWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, cb func(*cloudwatch.DescribeAlarmHistoryOutput, bool) bool, opts ...request.Option) error
 	DescribeAlarmsWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsInput, opts ...request.Option) (*cloudwatch.DescribeAlarmsOutput, error)
@@ -32,9 +33,12 @@ type CloudWatch interface {
 	GetMetricDataWithContext(ctx context.Context, input *cloudwatch.GetMetricDataInput, opts ...request.Option) (*cloudwatch.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *cloudwatch.GetMetricDataInput, cb func(*cloudwatch.GetMetricDataOutput, bool) bool, opts ...request.Option) error
 	GetMetricStatisticsWithContext(ctx context.Context, input *cloudwatch.GetMetricStatisticsInput, opts ...request.Option) (*cloudwatch.GetMetricStatisticsOutput, error)
+	GetMetricStreamWithContext(ctx context.Context, input *cloudwatch.GetMetricStreamInput, opts ...request.Option) (*cloudwatch.GetMetricStreamOutput, error)
 	GetMetricWidgetImageWithContext(ctx context.Context, input *cloudwatch.GetMetricWidgetImageInput, opts ...request.Option) (*cloudwatch.GetMetricWidgetImageOutput, error)
 	ListDashboardsWithContext(ctx context.Context, input *cloudwatch.ListDashboardsInput, opts ...request.Option) (*cloudwatch.ListDashboardsOutput, error)
 	ListDashboardsPagesWithContext(ctx context.Context, input *cloudwatch.ListDashboardsInput, cb func(*cloudwatch.ListDashboardsOutput, bool) bool, opts ...request.Option) error
+	ListMetricStreamsWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, opts ...request.Option) (*cloudwatch.ListMetricStreamsOutput, error)
+	ListMetricStreamsPagesWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, cb func(*cloudwatch.ListMetricStreamsOutput, bool) bool, opts ...request.Option) error
 	ListMetricsWithContext(ctx context.Context, input *cloudwatch.ListMetricsInput, opts ...request.Option) (*cloudwatch.ListMetricsOutput, error)
 	ListMetricsPagesWithContext(ctx context.Context, input *cloudwatch.ListMetricsInput, cb func(*cloudwatch.ListMetricsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudwatch.ListTagsForResourceInput, opts ...request.Option) (*cloudwatch.ListTagsForResourceOutput, error)
@@ -44,7 +48,10 @@ type CloudWatch interface {
 	PutInsightRuleWithContext(ctx context.Context, input *cloudwatch.PutInsightRuleInput, opts ...request.Option) (*cloudwatch.PutInsightRuleOutput, error)
 	PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error)
 	PutMetricDataWithContext(ctx context.Context, input *cloudwatch.PutMetricDataInput, opts ...request.Option) (*cloudwatch.PutMetricDataOutput, error)
+	PutMetricStreamWithContext(ctx context.Context, input *cloudwatch.PutMetricStreamInput, opts ...request.Option) (*cloudwatch.PutMetricStreamOutput, error)
 	SetAlarmStateWithContext(ctx context.Context, input *cloudwatch.SetAlarmStateInput, opts ...request.Option) (*cloudwatch.SetAlarmStateOutput, error)
+	StartMetricStreamsWithContext(ctx context.Context, input *cloudwatch.StartMetricStreamsInput, opts ...request.Option) (*cloudwatch.StartMetricStreamsOutput, error)
+	StopMetricStreamsWithContext(ctx context.Context, input *cloudwatch.StopMetricStreamsInput, opts ...request.Option) (*cloudwatch.StopMetricStreamsOutput, error)
 	TagResourceWithContext(ctx context.Context, input *cloudwatch.TagResourceInput, opts ...request.Option) (*cloudwatch.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *cloudwatch.UntagResourceInput, opts ...request.Option) (*cloudwatch.UntagResourceOutput, error)
 }
@@ -146,6 +153,27 @@ func (c *Client) DeleteInsightRulesWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*cloudwatch.DeleteInsightRulesOutput), req.Error
+}
+
+func (c *Client) DeleteMetricStreamWithContext(ctx context.Context, input *cloudwatch.DeleteMetricStreamInput, opts ...request.Option) (*cloudwatch.DeleteMetricStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "DeleteMetricStream",
+		Input:   input,
+		Output:  (*cloudwatch.DeleteMetricStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.DeleteMetricStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.DeleteMetricStreamOutput), req.Error
 }
 
 func (c *Client) DescribeAlarmHistoryWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmHistoryInput, opts ...request.Option) (*cloudwatch.DescribeAlarmHistoryOutput, error) {
@@ -501,6 +529,27 @@ func (c *Client) GetMetricStatisticsWithContext(ctx context.Context, input *clou
 	return req.Output.(*cloudwatch.GetMetricStatisticsOutput), req.Error
 }
 
+func (c *Client) GetMetricStreamWithContext(ctx context.Context, input *cloudwatch.GetMetricStreamInput, opts ...request.Option) (*cloudwatch.GetMetricStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "GetMetricStream",
+		Input:   input,
+		Output:  (*cloudwatch.GetMetricStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.GetMetricStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.GetMetricStreamOutput), req.Error
+}
+
 func (c *Client) GetMetricWidgetImageWithContext(ctx context.Context, input *cloudwatch.GetMetricWidgetImageInput, opts ...request.Option) (*cloudwatch.GetMetricWidgetImageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
@@ -558,6 +607,47 @@ func (c *Client) ListDashboardsPagesWithContext(ctx context.Context, input *clou
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.CloudWatchAPI.ListDashboardsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMetricStreamsWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, opts ...request.Option) (*cloudwatch.ListMetricStreamsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "ListMetricStreams",
+		Input:   input,
+		Output:  (*cloudwatch.ListMetricStreamsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.ListMetricStreamsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.ListMetricStreamsOutput), req.Error
+}
+
+func (c *Client) ListMetricStreamsPagesWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, cb func(*cloudwatch.ListMetricStreamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "ListMetricStreams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchAPI.ListMetricStreamsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -751,6 +841,27 @@ func (c *Client) PutMetricDataWithContext(ctx context.Context, input *cloudwatch
 	return req.Output.(*cloudwatch.PutMetricDataOutput), req.Error
 }
 
+func (c *Client) PutMetricStreamWithContext(ctx context.Context, input *cloudwatch.PutMetricStreamInput, opts ...request.Option) (*cloudwatch.PutMetricStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "PutMetricStream",
+		Input:   input,
+		Output:  (*cloudwatch.PutMetricStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.PutMetricStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.PutMetricStreamOutput), req.Error
+}
+
 func (c *Client) SetAlarmStateWithContext(ctx context.Context, input *cloudwatch.SetAlarmStateInput, opts ...request.Option) (*cloudwatch.SetAlarmStateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
@@ -770,6 +881,48 @@ func (c *Client) SetAlarmStateWithContext(ctx context.Context, input *cloudwatch
 	})
 
 	return req.Output.(*cloudwatch.SetAlarmStateOutput), req.Error
+}
+
+func (c *Client) StartMetricStreamsWithContext(ctx context.Context, input *cloudwatch.StartMetricStreamsInput, opts ...request.Option) (*cloudwatch.StartMetricStreamsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "StartMetricStreams",
+		Input:   input,
+		Output:  (*cloudwatch.StartMetricStreamsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.StartMetricStreamsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.StartMetricStreamsOutput), req.Error
+}
+
+func (c *Client) StopMetricStreamsWithContext(ctx context.Context, input *cloudwatch.StopMetricStreamsInput, opts ...request.Option) (*cloudwatch.StopMetricStreamsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "StopMetricStreams",
+		Input:   input,
+		Output:  (*cloudwatch.StopMetricStreamsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.StopMetricStreamsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.StopMetricStreamsOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatch.TagResourceInput, opts ...request.Option) (*cloudwatch.TagResourceOutput, error) {

@@ -82,6 +82,7 @@ type EC2 interface {
 	CreateNetworkInterfaceWithContext(ctx context.Context, input *ec2.CreateNetworkInterfaceInput, opts ...request.Option) (*ec2.CreateNetworkInterfaceOutput, error)
 	CreateNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.CreateNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.CreateNetworkInterfacePermissionOutput, error)
 	CreatePlacementGroupWithContext(ctx context.Context, input *ec2.CreatePlacementGroupInput, opts ...request.Option) (*ec2.CreatePlacementGroupOutput, error)
+	CreateReplaceRootVolumeTaskWithContext(ctx context.Context, input *ec2.CreateReplaceRootVolumeTaskInput, opts ...request.Option) (*ec2.CreateReplaceRootVolumeTaskOutput, error)
 	CreateReservedInstancesListingWithContext(ctx context.Context, input *ec2.CreateReservedInstancesListingInput, opts ...request.Option) (*ec2.CreateReservedInstancesListingOutput, error)
 	CreateRouteWithContext(ctx context.Context, input *ec2.CreateRouteInput, opts ...request.Option) (*ec2.CreateRouteOutput, error)
 	CreateRouteTableWithContext(ctx context.Context, input *ec2.CreateRouteTableInput, opts ...request.Option) (*ec2.CreateRouteTableOutput, error)
@@ -294,6 +295,8 @@ type EC2 interface {
 	DescribePublicIpv4PoolsWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, opts ...request.Option) (*ec2.DescribePublicIpv4PoolsOutput, error)
 	DescribePublicIpv4PoolsPagesWithContext(ctx context.Context, input *ec2.DescribePublicIpv4PoolsInput, cb func(*ec2.DescribePublicIpv4PoolsOutput, bool) bool, opts ...request.Option) error
 	DescribeRegionsWithContext(ctx context.Context, input *ec2.DescribeRegionsInput, opts ...request.Option) (*ec2.DescribeRegionsOutput, error)
+	DescribeReplaceRootVolumeTasksWithContext(ctx context.Context, input *ec2.DescribeReplaceRootVolumeTasksInput, opts ...request.Option) (*ec2.DescribeReplaceRootVolumeTasksOutput, error)
+	DescribeReplaceRootVolumeTasksPagesWithContext(ctx context.Context, input *ec2.DescribeReplaceRootVolumeTasksInput, cb func(*ec2.DescribeReplaceRootVolumeTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedInstancesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOutput, error)
 	DescribeReservedInstancesListingsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesListingsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesListingsOutput, error)
 	DescribeReservedInstancesModificationsWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesModificationsInput, opts ...request.Option) (*ec2.DescribeReservedInstancesModificationsOutput, error)
@@ -384,6 +387,7 @@ type EC2 interface {
 	DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error)
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
+	DisableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.DisableSerialConsoleAccessInput, opts ...request.Option) (*ec2.DisableSerialConsoleAccessOutput, error)
 	DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error)
 	DisableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.DisableVgwRoutePropagationInput, opts ...request.Option) (*ec2.DisableVgwRoutePropagationOutput, error)
 	DisableVpcClassicLinkWithContext(ctx context.Context, input *ec2.DisableVpcClassicLinkInput, opts ...request.Option) (*ec2.DisableVpcClassicLinkOutput, error)
@@ -399,6 +403,7 @@ type EC2 interface {
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
+	EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error)
 	EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error)
 	EnableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.EnableVgwRoutePropagationInput, opts ...request.Option) (*ec2.EnableVgwRoutePropagationOutput, error)
 	EnableVolumeIOWithContext(ctx context.Context, input *ec2.EnableVolumeIOInput, opts ...request.Option) (*ec2.EnableVolumeIOOutput, error)
@@ -428,6 +433,7 @@ type EC2 interface {
 	GetManagedPrefixListEntriesPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, cb func(*ec2.GetManagedPrefixListEntriesOutput, bool) bool, opts ...request.Option) error
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
+	GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error)
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, error)
@@ -2053,6 +2059,27 @@ func (c *Client) CreatePlacementGroupWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.CreatePlacementGroupOutput), req.Error
+}
+
+func (c *Client) CreateReplaceRootVolumeTaskWithContext(ctx context.Context, input *ec2.CreateReplaceRootVolumeTaskInput, opts ...request.Option) (*ec2.CreateReplaceRootVolumeTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateReplaceRootVolumeTask",
+		Input:   input,
+		Output:  (*ec2.CreateReplaceRootVolumeTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateReplaceRootVolumeTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateReplaceRootVolumeTaskOutput), req.Error
 }
 
 func (c *Client) CreateReservedInstancesListingWithContext(ctx context.Context, input *ec2.CreateReservedInstancesListingInput, opts ...request.Option) (*ec2.CreateReservedInstancesListingOutput, error) {
@@ -6457,6 +6484,47 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *ec2.Desc
 	return req.Output.(*ec2.DescribeRegionsOutput), req.Error
 }
 
+func (c *Client) DescribeReplaceRootVolumeTasksWithContext(ctx context.Context, input *ec2.DescribeReplaceRootVolumeTasksInput, opts ...request.Option) (*ec2.DescribeReplaceRootVolumeTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeReplaceRootVolumeTasks",
+		Input:   input,
+		Output:  (*ec2.DescribeReplaceRootVolumeTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeReplaceRootVolumeTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeReplaceRootVolumeTasksOutput), req.Error
+}
+
+func (c *Client) DescribeReplaceRootVolumeTasksPagesWithContext(ctx context.Context, input *ec2.DescribeReplaceRootVolumeTasksInput, cb func(*ec2.DescribeReplaceRootVolumeTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeReplaceRootVolumeTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeReplaceRootVolumeTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReservedInstancesWithContext(ctx context.Context, input *ec2.DescribeReservedInstancesInput, opts ...request.Option) (*ec2.DescribeReservedInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -8312,6 +8380,27 @@ func (c *Client) DisableFastSnapshotRestoresWithContext(ctx context.Context, inp
 	return req.Output.(*ec2.DisableFastSnapshotRestoresOutput), req.Error
 }
 
+func (c *Client) DisableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.DisableSerialConsoleAccessInput, opts ...request.Option) (*ec2.DisableSerialConsoleAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableSerialConsoleAccess",
+		Input:   input,
+		Output:  (*ec2.DisableSerialConsoleAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableSerialConsoleAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableSerialConsoleAccessOutput), req.Error
+}
+
 func (c *Client) DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -8625,6 +8714,27 @@ func (c *Client) EnableFastSnapshotRestoresWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.EnableFastSnapshotRestoresOutput), req.Error
+}
+
+func (c *Client) EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableSerialConsoleAccess",
+		Input:   input,
+		Output:  (*ec2.EnableSerialConsoleAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableSerialConsoleAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableSerialConsoleAccessOutput), req.Error
 }
 
 func (c *Client) EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error) {
@@ -9230,6 +9340,27 @@ func (c *Client) GetReservedInstancesExchangeQuoteWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.GetReservedInstancesExchangeQuoteOutput), req.Error
+}
+
+func (c *Client) GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSerialConsoleAccessStatus",
+		Input:   input,
+		Output:  (*ec2.GetSerialConsoleAccessStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetSerialConsoleAccessStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetSerialConsoleAccessStatusOutput), req.Error
 }
 
 func (c *Client) GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error) {
