@@ -13,6 +13,7 @@ import (
 type Redshift interface {
 	AcceptReservedNodeExchangeWithContext(ctx context.Context, input *redshift.AcceptReservedNodeExchangeInput, opts ...request.Option) (*redshift.AcceptReservedNodeExchangeOutput, error)
 	AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.AuthorizeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.AuthorizeClusterSecurityGroupIngressOutput, error)
+	AuthorizeEndpointAccessWithContext(ctx context.Context, input *redshift.AuthorizeEndpointAccessInput, opts ...request.Option) (*redshift.AuthorizeEndpointAccessOutput, error)
 	AuthorizeSnapshotAccessWithContext(ctx context.Context, input *redshift.AuthorizeSnapshotAccessInput, opts ...request.Option) (*redshift.AuthorizeSnapshotAccessOutput, error)
 	BatchDeleteClusterSnapshotsWithContext(ctx context.Context, input *redshift.BatchDeleteClusterSnapshotsInput, opts ...request.Option) (*redshift.BatchDeleteClusterSnapshotsOutput, error)
 	BatchModifyClusterSnapshotsWithContext(ctx context.Context, input *redshift.BatchModifyClusterSnapshotsInput, opts ...request.Option) (*redshift.BatchModifyClusterSnapshotsOutput, error)
@@ -23,6 +24,7 @@ type Redshift interface {
 	CreateClusterSecurityGroupWithContext(ctx context.Context, input *redshift.CreateClusterSecurityGroupInput, opts ...request.Option) (*redshift.CreateClusterSecurityGroupOutput, error)
 	CreateClusterSnapshotWithContext(ctx context.Context, input *redshift.CreateClusterSnapshotInput, opts ...request.Option) (*redshift.CreateClusterSnapshotOutput, error)
 	CreateClusterSubnetGroupWithContext(ctx context.Context, input *redshift.CreateClusterSubnetGroupInput, opts ...request.Option) (*redshift.CreateClusterSubnetGroupOutput, error)
+	CreateEndpointAccessWithContext(ctx context.Context, input *redshift.CreateEndpointAccessInput, opts ...request.Option) (*redshift.CreateEndpointAccessOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *redshift.CreateEventSubscriptionInput, opts ...request.Option) (*redshift.CreateEventSubscriptionOutput, error)
 	CreateHsmClientCertificateWithContext(ctx context.Context, input *redshift.CreateHsmClientCertificateInput, opts ...request.Option) (*redshift.CreateHsmClientCertificateOutput, error)
 	CreateHsmConfigurationWithContext(ctx context.Context, input *redshift.CreateHsmConfigurationInput, opts ...request.Option) (*redshift.CreateHsmConfigurationOutput, error)
@@ -36,6 +38,7 @@ type Redshift interface {
 	DeleteClusterSecurityGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSecurityGroupInput, opts ...request.Option) (*redshift.DeleteClusterSecurityGroupOutput, error)
 	DeleteClusterSnapshotWithContext(ctx context.Context, input *redshift.DeleteClusterSnapshotInput, opts ...request.Option) (*redshift.DeleteClusterSnapshotOutput, error)
 	DeleteClusterSubnetGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSubnetGroupInput, opts ...request.Option) (*redshift.DeleteClusterSubnetGroupOutput, error)
+	DeleteEndpointAccessWithContext(ctx context.Context, input *redshift.DeleteEndpointAccessInput, opts ...request.Option) (*redshift.DeleteEndpointAccessOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *redshift.DeleteEventSubscriptionInput, opts ...request.Option) (*redshift.DeleteEventSubscriptionOutput, error)
 	DeleteHsmClientCertificateWithContext(ctx context.Context, input *redshift.DeleteHsmClientCertificateInput, opts ...request.Option) (*redshift.DeleteHsmClientCertificateOutput, error)
 	DeleteHsmConfigurationWithContext(ctx context.Context, input *redshift.DeleteHsmConfigurationInput, opts ...request.Option) (*redshift.DeleteHsmConfigurationOutput, error)
@@ -65,6 +68,8 @@ type Redshift interface {
 	DescribeClustersPagesWithContext(ctx context.Context, input *redshift.DescribeClustersInput, cb func(*redshift.DescribeClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error)
 	DescribeDefaultClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, cb func(*redshift.DescribeDefaultClusterParametersOutput, bool) bool, opts ...request.Option) error
+	DescribeEndpointAccessWithContext(ctx context.Context, input *redshift.DescribeEndpointAccessInput, opts ...request.Option) (*redshift.DescribeEndpointAccessOutput, error)
+	DescribeEndpointAuthorizationWithContext(ctx context.Context, input *redshift.DescribeEndpointAuthorizationInput, opts ...request.Option) (*redshift.DescribeEndpointAuthorizationOutput, error)
 	DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error)
 	DescribeEventSubscriptionsWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, opts ...request.Option) (*redshift.DescribeEventSubscriptionsOutput, error)
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, cb func(*redshift.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
@@ -112,6 +117,7 @@ type Redshift interface {
 	ModifyClusterSnapshotWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotOutput, error)
 	ModifyClusterSnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotScheduleInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotScheduleOutput, error)
 	ModifyClusterSubnetGroupWithContext(ctx context.Context, input *redshift.ModifyClusterSubnetGroupInput, opts ...request.Option) (*redshift.ModifyClusterSubnetGroupOutput, error)
+	ModifyEndpointAccessWithContext(ctx context.Context, input *redshift.ModifyEndpointAccessInput, opts ...request.Option) (*redshift.ModifyEndpointAccessOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *redshift.ModifyEventSubscriptionInput, opts ...request.Option) (*redshift.ModifyEventSubscriptionOutput, error)
 	ModifyScheduledActionWithContext(ctx context.Context, input *redshift.ModifyScheduledActionInput, opts ...request.Option) (*redshift.ModifyScheduledActionOutput, error)
 	ModifySnapshotCopyRetentionPeriodWithContext(ctx context.Context, input *redshift.ModifySnapshotCopyRetentionPeriodInput, opts ...request.Option) (*redshift.ModifySnapshotCopyRetentionPeriodOutput, error)
@@ -126,6 +132,7 @@ type Redshift interface {
 	RestoreTableFromClusterSnapshotWithContext(ctx context.Context, input *redshift.RestoreTableFromClusterSnapshotInput, opts ...request.Option) (*redshift.RestoreTableFromClusterSnapshotOutput, error)
 	ResumeClusterWithContext(ctx context.Context, input *redshift.ResumeClusterInput, opts ...request.Option) (*redshift.ResumeClusterOutput, error)
 	RevokeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.RevokeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.RevokeClusterSecurityGroupIngressOutput, error)
+	RevokeEndpointAccessWithContext(ctx context.Context, input *redshift.RevokeEndpointAccessInput, opts ...request.Option) (*redshift.RevokeEndpointAccessOutput, error)
 	RevokeSnapshotAccessWithContext(ctx context.Context, input *redshift.RevokeSnapshotAccessInput, opts ...request.Option) (*redshift.RevokeSnapshotAccessOutput, error)
 	RotateEncryptionKeyWithContext(ctx context.Context, input *redshift.RotateEncryptionKeyInput, opts ...request.Option) (*redshift.RotateEncryptionKeyOutput, error)
 }
@@ -185,6 +192,27 @@ func (c *Client) AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Con
 	})
 
 	return req.Output.(*redshift.AuthorizeClusterSecurityGroupIngressOutput), req.Error
+}
+
+func (c *Client) AuthorizeEndpointAccessWithContext(ctx context.Context, input *redshift.AuthorizeEndpointAccessInput, opts ...request.Option) (*redshift.AuthorizeEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "AuthorizeEndpointAccess",
+		Input:   input,
+		Output:  (*redshift.AuthorizeEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.AuthorizeEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.AuthorizeEndpointAccessOutput), req.Error
 }
 
 func (c *Client) AuthorizeSnapshotAccessWithContext(ctx context.Context, input *redshift.AuthorizeSnapshotAccessInput, opts ...request.Option) (*redshift.AuthorizeSnapshotAccessOutput, error) {
@@ -395,6 +423,27 @@ func (c *Client) CreateClusterSubnetGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*redshift.CreateClusterSubnetGroupOutput), req.Error
+}
+
+func (c *Client) CreateEndpointAccessWithContext(ctx context.Context, input *redshift.CreateEndpointAccessInput, opts ...request.Option) (*redshift.CreateEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "CreateEndpointAccess",
+		Input:   input,
+		Output:  (*redshift.CreateEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.CreateEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.CreateEndpointAccessOutput), req.Error
 }
 
 func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *redshift.CreateEventSubscriptionInput, opts ...request.Option) (*redshift.CreateEventSubscriptionOutput, error) {
@@ -668,6 +717,27 @@ func (c *Client) DeleteClusterSubnetGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*redshift.DeleteClusterSubnetGroupOutput), req.Error
+}
+
+func (c *Client) DeleteEndpointAccessWithContext(ctx context.Context, input *redshift.DeleteEndpointAccessInput, opts ...request.Option) (*redshift.DeleteEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeleteEndpointAccess",
+		Input:   input,
+		Output:  (*redshift.DeleteEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeleteEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeleteEndpointAccessOutput), req.Error
 }
 
 func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *redshift.DeleteEventSubscriptionInput, opts ...request.Option) (*redshift.DeleteEventSubscriptionOutput, error) {
@@ -1267,6 +1337,48 @@ func (c *Client) DescribeDefaultClusterParametersPagesWithContext(ctx context.Co
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeEndpointAccessWithContext(ctx context.Context, input *redshift.DescribeEndpointAccessInput, opts ...request.Option) (*redshift.DescribeEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeEndpointAccess",
+		Input:   input,
+		Output:  (*redshift.DescribeEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeEndpointAccessOutput), req.Error
+}
+
+func (c *Client) DescribeEndpointAuthorizationWithContext(ctx context.Context, input *redshift.DescribeEndpointAuthorizationInput, opts ...request.Option) (*redshift.DescribeEndpointAuthorizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeEndpointAuthorization",
+		Input:   input,
+		Output:  (*redshift.DescribeEndpointAuthorizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeEndpointAuthorizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeEndpointAuthorizationOutput), req.Error
 }
 
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error) {
@@ -2241,6 +2353,27 @@ func (c *Client) ModifyClusterSubnetGroupWithContext(ctx context.Context, input 
 	return req.Output.(*redshift.ModifyClusterSubnetGroupOutput), req.Error
 }
 
+func (c *Client) ModifyEndpointAccessWithContext(ctx context.Context, input *redshift.ModifyEndpointAccessInput, opts ...request.Option) (*redshift.ModifyEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ModifyEndpointAccess",
+		Input:   input,
+		Output:  (*redshift.ModifyEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ModifyEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ModifyEndpointAccessOutput), req.Error
+}
+
 func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *redshift.ModifyEventSubscriptionInput, opts ...request.Option) (*redshift.ModifyEventSubscriptionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -2533,6 +2666,27 @@ func (c *Client) RevokeClusterSecurityGroupIngressWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*redshift.RevokeClusterSecurityGroupIngressOutput), req.Error
+}
+
+func (c *Client) RevokeEndpointAccessWithContext(ctx context.Context, input *redshift.RevokeEndpointAccessInput, opts ...request.Option) (*redshift.RevokeEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "RevokeEndpointAccess",
+		Input:   input,
+		Output:  (*redshift.RevokeEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.RevokeEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.RevokeEndpointAccessOutput), req.Error
 }
 
 func (c *Client) RevokeSnapshotAccessWithContext(ctx context.Context, input *redshift.RevokeSnapshotAccessInput, opts ...request.Option) (*redshift.RevokeSnapshotAccessOutput, error) {

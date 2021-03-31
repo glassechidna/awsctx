@@ -16,6 +16,7 @@ type WorkMail interface {
 	CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error)
 	CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error)
+	CreateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.CreateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.CreateMobileDeviceAccessRuleOutput, error)
 	CreateOrganizationWithContext(ctx context.Context, input *workmail.CreateOrganizationInput, opts ...request.Option) (*workmail.CreateOrganizationOutput, error)
 	CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error)
 	CreateUserWithContext(ctx context.Context, input *workmail.CreateUserInput, opts ...request.Option) (*workmail.CreateUserOutput, error)
@@ -23,6 +24,7 @@ type WorkMail interface {
 	DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
+	DeleteMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.DeleteMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.DeleteMobileDeviceAccessRuleOutput, error)
 	DeleteOrganizationWithContext(ctx context.Context, input *workmail.DeleteOrganizationInput, opts ...request.Option) (*workmail.DeleteOrganizationOutput, error)
 	DeleteResourceWithContext(ctx context.Context, input *workmail.DeleteResourceInput, opts ...request.Option) (*workmail.DeleteResourceOutput, error)
 	DeleteRetentionPolicyWithContext(ctx context.Context, input *workmail.DeleteRetentionPolicyInput, opts ...request.Option) (*workmail.DeleteRetentionPolicyOutput, error)
@@ -38,6 +40,7 @@ type WorkMail interface {
 	GetAccessControlEffectWithContext(ctx context.Context, input *workmail.GetAccessControlEffectInput, opts ...request.Option) (*workmail.GetAccessControlEffectOutput, error)
 	GetDefaultRetentionPolicyWithContext(ctx context.Context, input *workmail.GetDefaultRetentionPolicyInput, opts ...request.Option) (*workmail.GetDefaultRetentionPolicyOutput, error)
 	GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error)
+	GetMobileDeviceAccessEffectWithContext(ctx context.Context, input *workmail.GetMobileDeviceAccessEffectInput, opts ...request.Option) (*workmail.GetMobileDeviceAccessEffectOutput, error)
 	ListAccessControlRulesWithContext(ctx context.Context, input *workmail.ListAccessControlRulesInput, opts ...request.Option) (*workmail.ListAccessControlRulesOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error)
 	ListAliasesPagesWithContext(ctx context.Context, input *workmail.ListAliasesInput, cb func(*workmail.ListAliasesOutput, bool) bool, opts ...request.Option) error
@@ -49,6 +52,7 @@ type WorkMail interface {
 	ListMailboxExportJobsPagesWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, cb func(*workmail.ListMailboxExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListMailboxPermissionsWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, opts ...request.Option) (*workmail.ListMailboxPermissionsOutput, error)
 	ListMailboxPermissionsPagesWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, cb func(*workmail.ListMailboxPermissionsOutput, bool) bool, opts ...request.Option) error
+	ListMobileDeviceAccessRulesWithContext(ctx context.Context, input *workmail.ListMobileDeviceAccessRulesInput, opts ...request.Option) (*workmail.ListMobileDeviceAccessRulesOutput, error)
 	ListOrganizationsWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, opts ...request.Option) (*workmail.ListOrganizationsOutput, error)
 	ListOrganizationsPagesWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, cb func(*workmail.ListOrganizationsOutput, bool) bool, opts ...request.Option) error
 	ListResourceDelegatesWithContext(ctx context.Context, input *workmail.ListResourceDelegatesInput, opts ...request.Option) (*workmail.ListResourceDelegatesOutput, error)
@@ -67,6 +71,7 @@ type WorkMail interface {
 	TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
+	UpdateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.UpdateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.UpdateMobileDeviceAccessRuleOutput, error)
 	UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error)
 	UpdateResourceWithContext(ctx context.Context, input *workmail.UpdateResourceInput, opts ...request.Option) (*workmail.UpdateResourceOutput, error)
 }
@@ -189,6 +194,27 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *workmail.Cre
 	})
 
 	return req.Output.(*workmail.CreateGroupOutput), req.Error
+}
+
+func (c *Client) CreateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.CreateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.CreateMobileDeviceAccessRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "CreateMobileDeviceAccessRule",
+		Input:   input,
+		Output:  (*workmail.CreateMobileDeviceAccessRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.CreateMobileDeviceAccessRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.CreateMobileDeviceAccessRuleOutput), req.Error
 }
 
 func (c *Client) CreateOrganizationWithContext(ctx context.Context, input *workmail.CreateOrganizationInput, opts ...request.Option) (*workmail.CreateOrganizationOutput, error) {
@@ -336,6 +362,27 @@ func (c *Client) DeleteMailboxPermissionsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*workmail.DeleteMailboxPermissionsOutput), req.Error
+}
+
+func (c *Client) DeleteMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.DeleteMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.DeleteMobileDeviceAccessRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteMobileDeviceAccessRule",
+		Input:   input,
+		Output:  (*workmail.DeleteMobileDeviceAccessRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteMobileDeviceAccessRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteMobileDeviceAccessRuleOutput), req.Error
 }
 
 func (c *Client) DeleteOrganizationWithContext(ctx context.Context, input *workmail.DeleteOrganizationInput, opts ...request.Option) (*workmail.DeleteOrganizationOutput, error) {
@@ -653,6 +700,27 @@ func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workma
 	return req.Output.(*workmail.GetMailboxDetailsOutput), req.Error
 }
 
+func (c *Client) GetMobileDeviceAccessEffectWithContext(ctx context.Context, input *workmail.GetMobileDeviceAccessEffectInput, opts ...request.Option) (*workmail.GetMobileDeviceAccessEffectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "GetMobileDeviceAccessEffect",
+		Input:   input,
+		Output:  (*workmail.GetMobileDeviceAccessEffectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.GetMobileDeviceAccessEffectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.GetMobileDeviceAccessEffectOutput), req.Error
+}
+
 func (c *Client) ListAccessControlRulesWithContext(ctx context.Context, input *workmail.ListAccessControlRulesInput, opts ...request.Option) (*workmail.ListAccessControlRulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -877,6 +945,27 @@ func (c *Client) ListMailboxPermissionsPagesWithContext(ctx context.Context, inp
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListMobileDeviceAccessRulesWithContext(ctx context.Context, input *workmail.ListMobileDeviceAccessRulesInput, opts ...request.Option) (*workmail.ListMobileDeviceAccessRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListMobileDeviceAccessRules",
+		Input:   input,
+		Output:  (*workmail.ListMobileDeviceAccessRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListMobileDeviceAccessRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListMobileDeviceAccessRulesOutput), req.Error
 }
 
 func (c *Client) ListOrganizationsWithContext(ctx context.Context, input *workmail.ListOrganizationsInput, opts ...request.Option) (*workmail.ListOrganizationsOutput, error) {
@@ -1251,6 +1340,27 @@ func (c *Client) UpdateMailboxQuotaWithContext(ctx context.Context, input *workm
 	})
 
 	return req.Output.(*workmail.UpdateMailboxQuotaOutput), req.Error
+}
+
+func (c *Client) UpdateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.UpdateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.UpdateMobileDeviceAccessRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UpdateMobileDeviceAccessRule",
+		Input:   input,
+		Output:  (*workmail.UpdateMobileDeviceAccessRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UpdateMobileDeviceAccessRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UpdateMobileDeviceAccessRuleOutput), req.Error
 }
 
 func (c *Client) UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error) {

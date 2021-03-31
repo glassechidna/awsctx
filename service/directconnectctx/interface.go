@@ -19,6 +19,7 @@ type DirectConnect interface {
 	AllocateTransitVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AllocateTransitVirtualInterfaceInput, opts ...request.Option) (*directconnect.AllocateTransitVirtualInterfaceOutput, error)
 	AssociateConnectionWithLagWithContext(ctx context.Context, input *directconnect.AssociateConnectionWithLagInput, opts ...request.Option) (*directconnect.Connection, error)
 	AssociateHostedConnectionWithContext(ctx context.Context, input *directconnect.AssociateHostedConnectionInput, opts ...request.Option) (*directconnect.Connection, error)
+	AssociateMacSecKeyWithContext(ctx context.Context, input *directconnect.AssociateMacSecKeyInput, opts ...request.Option) (*directconnect.AssociateMacSecKeyOutput, error)
 	AssociateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AssociateVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error)
 	ConfirmConnectionWithContext(ctx context.Context, input *directconnect.ConfirmConnectionInput, opts ...request.Option) (*directconnect.ConfirmConnectionOutput, error)
 	ConfirmPrivateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmPrivateVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmPrivateVirtualInterfaceOutput, error)
@@ -59,11 +60,13 @@ type DirectConnect interface {
 	DescribeVirtualGatewaysWithContext(ctx context.Context, input *directconnect.DescribeVirtualGatewaysInput, opts ...request.Option) (*directconnect.DescribeVirtualGatewaysOutput, error)
 	DescribeVirtualInterfacesWithContext(ctx context.Context, input *directconnect.DescribeVirtualInterfacesInput, opts ...request.Option) (*directconnect.DescribeVirtualInterfacesOutput, error)
 	DisassociateConnectionFromLagWithContext(ctx context.Context, input *directconnect.DisassociateConnectionFromLagInput, opts ...request.Option) (*directconnect.Connection, error)
+	DisassociateMacSecKeyWithContext(ctx context.Context, input *directconnect.DisassociateMacSecKeyInput, opts ...request.Option) (*directconnect.DisassociateMacSecKeyOutput, error)
 	ListVirtualInterfaceTestHistoryWithContext(ctx context.Context, input *directconnect.ListVirtualInterfaceTestHistoryInput, opts ...request.Option) (*directconnect.ListVirtualInterfaceTestHistoryOutput, error)
 	StartBgpFailoverTestWithContext(ctx context.Context, input *directconnect.StartBgpFailoverTestInput, opts ...request.Option) (*directconnect.StartBgpFailoverTestOutput, error)
 	StopBgpFailoverTestWithContext(ctx context.Context, input *directconnect.StopBgpFailoverTestInput, opts ...request.Option) (*directconnect.StopBgpFailoverTestOutput, error)
 	TagResourceWithContext(ctx context.Context, input *directconnect.TagResourceInput, opts ...request.Option) (*directconnect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *directconnect.UntagResourceInput, opts ...request.Option) (*directconnect.UntagResourceOutput, error)
+	UpdateConnectionWithContext(ctx context.Context, input *directconnect.UpdateConnectionInput, opts ...request.Option) (*directconnect.UpdateConnectionOutput, error)
 	UpdateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayAssociationOutput, error)
 	UpdateLagWithContext(ctx context.Context, input *directconnect.UpdateLagInput, opts ...request.Option) (*directconnect.Lag, error)
 	UpdateVirtualInterfaceAttributesWithContext(ctx context.Context, input *directconnect.UpdateVirtualInterfaceAttributesInput, opts ...request.Option) (*directconnect.UpdateVirtualInterfaceAttributesOutput, error)
@@ -250,6 +253,27 @@ func (c *Client) AssociateHostedConnectionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*directconnect.Connection), req.Error
+}
+
+func (c *Client) AssociateMacSecKeyWithContext(ctx context.Context, input *directconnect.AssociateMacSecKeyInput, opts ...request.Option) (*directconnect.AssociateMacSecKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "AssociateMacSecKey",
+		Input:   input,
+		Output:  (*directconnect.AssociateMacSecKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.AssociateMacSecKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.AssociateMacSecKeyOutput), req.Error
 }
 
 func (c *Client) AssociateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AssociateVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error) {
@@ -1092,6 +1116,27 @@ func (c *Client) DisassociateConnectionFromLagWithContext(ctx context.Context, i
 	return req.Output.(*directconnect.Connection), req.Error
 }
 
+func (c *Client) DisassociateMacSecKeyWithContext(ctx context.Context, input *directconnect.DisassociateMacSecKeyInput, opts ...request.Option) (*directconnect.DisassociateMacSecKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "DisassociateMacSecKey",
+		Input:   input,
+		Output:  (*directconnect.DisassociateMacSecKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.DisassociateMacSecKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.DisassociateMacSecKeyOutput), req.Error
+}
+
 func (c *Client) ListVirtualInterfaceTestHistoryWithContext(ctx context.Context, input *directconnect.ListVirtualInterfaceTestHistoryInput, opts ...request.Option) (*directconnect.ListVirtualInterfaceTestHistoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
@@ -1195,6 +1240,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *directconn
 	})
 
 	return req.Output.(*directconnect.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *directconnect.UpdateConnectionInput, opts ...request.Option) (*directconnect.UpdateConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "UpdateConnection",
+		Input:   input,
+		Output:  (*directconnect.UpdateConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.UpdateConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.UpdateConnectionOutput), req.Error
 }
 
 func (c *Client) UpdateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayAssociationOutput, error) {
