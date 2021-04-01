@@ -11,18 +11,31 @@ import (
 )
 
 type Route53Resolver interface {
+	AssociateFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.AssociateFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.AssociateFirewallRuleGroupOutput, error)
 	AssociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.AssociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.AssociateResolverEndpointIpAddressOutput, error)
 	AssociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.AssociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.AssociateResolverQueryLogConfigOutput, error)
 	AssociateResolverRuleWithContext(ctx context.Context, input *route53resolver.AssociateResolverRuleInput, opts ...request.Option) (*route53resolver.AssociateResolverRuleOutput, error)
+	CreateFirewallDomainListWithContext(ctx context.Context, input *route53resolver.CreateFirewallDomainListInput, opts ...request.Option) (*route53resolver.CreateFirewallDomainListOutput, error)
+	CreateFirewallRuleWithContext(ctx context.Context, input *route53resolver.CreateFirewallRuleInput, opts ...request.Option) (*route53resolver.CreateFirewallRuleOutput, error)
+	CreateFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.CreateFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.CreateFirewallRuleGroupOutput, error)
 	CreateResolverEndpointWithContext(ctx context.Context, input *route53resolver.CreateResolverEndpointInput, opts ...request.Option) (*route53resolver.CreateResolverEndpointOutput, error)
 	CreateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.CreateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.CreateResolverQueryLogConfigOutput, error)
 	CreateResolverRuleWithContext(ctx context.Context, input *route53resolver.CreateResolverRuleInput, opts ...request.Option) (*route53resolver.CreateResolverRuleOutput, error)
+	DeleteFirewallDomainListWithContext(ctx context.Context, input *route53resolver.DeleteFirewallDomainListInput, opts ...request.Option) (*route53resolver.DeleteFirewallDomainListOutput, error)
+	DeleteFirewallRuleWithContext(ctx context.Context, input *route53resolver.DeleteFirewallRuleInput, opts ...request.Option) (*route53resolver.DeleteFirewallRuleOutput, error)
+	DeleteFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.DeleteFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.DeleteFirewallRuleGroupOutput, error)
 	DeleteResolverEndpointWithContext(ctx context.Context, input *route53resolver.DeleteResolverEndpointInput, opts ...request.Option) (*route53resolver.DeleteResolverEndpointOutput, error)
 	DeleteResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DeleteResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DeleteResolverQueryLogConfigOutput, error)
 	DeleteResolverRuleWithContext(ctx context.Context, input *route53resolver.DeleteResolverRuleInput, opts ...request.Option) (*route53resolver.DeleteResolverRuleOutput, error)
+	DisassociateFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.DisassociateFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.DisassociateFirewallRuleGroupOutput, error)
 	DisassociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.DisassociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.DisassociateResolverEndpointIpAddressOutput, error)
 	DisassociateResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.DisassociateResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.DisassociateResolverQueryLogConfigOutput, error)
 	DisassociateResolverRuleWithContext(ctx context.Context, input *route53resolver.DisassociateResolverRuleInput, opts ...request.Option) (*route53resolver.DisassociateResolverRuleOutput, error)
+	GetFirewallConfigWithContext(ctx context.Context, input *route53resolver.GetFirewallConfigInput, opts ...request.Option) (*route53resolver.GetFirewallConfigOutput, error)
+	GetFirewallDomainListWithContext(ctx context.Context, input *route53resolver.GetFirewallDomainListInput, opts ...request.Option) (*route53resolver.GetFirewallDomainListOutput, error)
+	GetFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.GetFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.GetFirewallRuleGroupOutput, error)
+	GetFirewallRuleGroupAssociationWithContext(ctx context.Context, input *route53resolver.GetFirewallRuleGroupAssociationInput, opts ...request.Option) (*route53resolver.GetFirewallRuleGroupAssociationOutput, error)
+	GetFirewallRuleGroupPolicyWithContext(ctx context.Context, input *route53resolver.GetFirewallRuleGroupPolicyInput, opts ...request.Option) (*route53resolver.GetFirewallRuleGroupPolicyOutput, error)
 	GetResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.GetResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.GetResolverDnssecConfigOutput, error)
 	GetResolverEndpointWithContext(ctx context.Context, input *route53resolver.GetResolverEndpointInput, opts ...request.Option) (*route53resolver.GetResolverEndpointOutput, error)
 	GetResolverQueryLogConfigWithContext(ctx context.Context, input *route53resolver.GetResolverQueryLogConfigInput, opts ...request.Option) (*route53resolver.GetResolverQueryLogConfigOutput, error)
@@ -31,6 +44,19 @@ type Route53Resolver interface {
 	GetResolverRuleWithContext(ctx context.Context, input *route53resolver.GetResolverRuleInput, opts ...request.Option) (*route53resolver.GetResolverRuleOutput, error)
 	GetResolverRuleAssociationWithContext(ctx context.Context, input *route53resolver.GetResolverRuleAssociationInput, opts ...request.Option) (*route53resolver.GetResolverRuleAssociationOutput, error)
 	GetResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.GetResolverRulePolicyInput, opts ...request.Option) (*route53resolver.GetResolverRulePolicyOutput, error)
+	ImportFirewallDomainsWithContext(ctx context.Context, input *route53resolver.ImportFirewallDomainsInput, opts ...request.Option) (*route53resolver.ImportFirewallDomainsOutput, error)
+	ListFirewallConfigsWithContext(ctx context.Context, input *route53resolver.ListFirewallConfigsInput, opts ...request.Option) (*route53resolver.ListFirewallConfigsOutput, error)
+	ListFirewallConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallConfigsInput, cb func(*route53resolver.ListFirewallConfigsOutput, bool) bool, opts ...request.Option) error
+	ListFirewallDomainListsWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainListsInput, opts ...request.Option) (*route53resolver.ListFirewallDomainListsOutput, error)
+	ListFirewallDomainListsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainListsInput, cb func(*route53resolver.ListFirewallDomainListsOutput, bool) bool, opts ...request.Option) error
+	ListFirewallDomainsWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainsInput, opts ...request.Option) (*route53resolver.ListFirewallDomainsOutput, error)
+	ListFirewallDomainsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainsInput, cb func(*route53resolver.ListFirewallDomainsOutput, bool) bool, opts ...request.Option) error
+	ListFirewallRuleGroupAssociationsWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupAssociationsInput, opts ...request.Option) (*route53resolver.ListFirewallRuleGroupAssociationsOutput, error)
+	ListFirewallRuleGroupAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupAssociationsInput, cb func(*route53resolver.ListFirewallRuleGroupAssociationsOutput, bool) bool, opts ...request.Option) error
+	ListFirewallRuleGroupsWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupsInput, opts ...request.Option) (*route53resolver.ListFirewallRuleGroupsOutput, error)
+	ListFirewallRuleGroupsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupsInput, cb func(*route53resolver.ListFirewallRuleGroupsOutput, bool) bool, opts ...request.Option) error
+	ListFirewallRulesWithContext(ctx context.Context, input *route53resolver.ListFirewallRulesInput, opts ...request.Option) (*route53resolver.ListFirewallRulesOutput, error)
+	ListFirewallRulesPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallRulesInput, cb func(*route53resolver.ListFirewallRulesOutput, bool) bool, opts ...request.Option) error
 	ListResolverDnssecConfigsWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, opts ...request.Option) (*route53resolver.ListResolverDnssecConfigsOutput, error)
 	ListResolverDnssecConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, cb func(*route53resolver.ListResolverDnssecConfigsOutput, bool) bool, opts ...request.Option) error
 	ListResolverEndpointIpAddressesWithContext(ctx context.Context, input *route53resolver.ListResolverEndpointIpAddressesInput, opts ...request.Option) (*route53resolver.ListResolverEndpointIpAddressesOutput, error)
@@ -47,10 +73,15 @@ type Route53Resolver interface {
 	ListResolverRulesPagesWithContext(ctx context.Context, input *route53resolver.ListResolverRulesInput, cb func(*route53resolver.ListResolverRulesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, opts ...request.Option) (*route53resolver.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *route53resolver.ListTagsForResourceInput, cb func(*route53resolver.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
+	PutFirewallRuleGroupPolicyWithContext(ctx context.Context, input *route53resolver.PutFirewallRuleGroupPolicyInput, opts ...request.Option) (*route53resolver.PutFirewallRuleGroupPolicyOutput, error)
 	PutResolverQueryLogConfigPolicyWithContext(ctx context.Context, input *route53resolver.PutResolverQueryLogConfigPolicyInput, opts ...request.Option) (*route53resolver.PutResolverQueryLogConfigPolicyOutput, error)
 	PutResolverRulePolicyWithContext(ctx context.Context, input *route53resolver.PutResolverRulePolicyInput, opts ...request.Option) (*route53resolver.PutResolverRulePolicyOutput, error)
 	TagResourceWithContext(ctx context.Context, input *route53resolver.TagResourceInput, opts ...request.Option) (*route53resolver.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *route53resolver.UntagResourceInput, opts ...request.Option) (*route53resolver.UntagResourceOutput, error)
+	UpdateFirewallConfigWithContext(ctx context.Context, input *route53resolver.UpdateFirewallConfigInput, opts ...request.Option) (*route53resolver.UpdateFirewallConfigOutput, error)
+	UpdateFirewallDomainsWithContext(ctx context.Context, input *route53resolver.UpdateFirewallDomainsInput, opts ...request.Option) (*route53resolver.UpdateFirewallDomainsOutput, error)
+	UpdateFirewallRuleWithContext(ctx context.Context, input *route53resolver.UpdateFirewallRuleInput, opts ...request.Option) (*route53resolver.UpdateFirewallRuleOutput, error)
+	UpdateFirewallRuleGroupAssociationWithContext(ctx context.Context, input *route53resolver.UpdateFirewallRuleGroupAssociationInput, opts ...request.Option) (*route53resolver.UpdateFirewallRuleGroupAssociationOutput, error)
 	UpdateResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.UpdateResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.UpdateResolverDnssecConfigOutput, error)
 	UpdateResolverEndpointWithContext(ctx context.Context, input *route53resolver.UpdateResolverEndpointInput, opts ...request.Option) (*route53resolver.UpdateResolverEndpointOutput, error)
 	UpdateResolverRuleWithContext(ctx context.Context, input *route53resolver.UpdateResolverRuleInput, opts ...request.Option) (*route53resolver.UpdateResolverRuleOutput, error)
@@ -70,6 +101,27 @@ func New(base route53resolveriface.Route53ResolverAPI, ctxer awsctx.Contexter) R
 
 var _ Route53Resolver = (*route53resolver.Route53Resolver)(nil)
 var _ Route53Resolver = (*Client)(nil)
+
+func (c *Client) AssociateFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.AssociateFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.AssociateFirewallRuleGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "AssociateFirewallRuleGroup",
+		Input:   input,
+		Output:  (*route53resolver.AssociateFirewallRuleGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.AssociateFirewallRuleGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.AssociateFirewallRuleGroupOutput), req.Error
+}
 
 func (c *Client) AssociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.AssociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.AssociateResolverEndpointIpAddressOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -132,6 +184,69 @@ func (c *Client) AssociateResolverRuleWithContext(ctx context.Context, input *ro
 	})
 
 	return req.Output.(*route53resolver.AssociateResolverRuleOutput), req.Error
+}
+
+func (c *Client) CreateFirewallDomainListWithContext(ctx context.Context, input *route53resolver.CreateFirewallDomainListInput, opts ...request.Option) (*route53resolver.CreateFirewallDomainListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "CreateFirewallDomainList",
+		Input:   input,
+		Output:  (*route53resolver.CreateFirewallDomainListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.CreateFirewallDomainListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.CreateFirewallDomainListOutput), req.Error
+}
+
+func (c *Client) CreateFirewallRuleWithContext(ctx context.Context, input *route53resolver.CreateFirewallRuleInput, opts ...request.Option) (*route53resolver.CreateFirewallRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "CreateFirewallRule",
+		Input:   input,
+		Output:  (*route53resolver.CreateFirewallRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.CreateFirewallRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.CreateFirewallRuleOutput), req.Error
+}
+
+func (c *Client) CreateFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.CreateFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.CreateFirewallRuleGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "CreateFirewallRuleGroup",
+		Input:   input,
+		Output:  (*route53resolver.CreateFirewallRuleGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.CreateFirewallRuleGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.CreateFirewallRuleGroupOutput), req.Error
 }
 
 func (c *Client) CreateResolverEndpointWithContext(ctx context.Context, input *route53resolver.CreateResolverEndpointInput, opts ...request.Option) (*route53resolver.CreateResolverEndpointOutput, error) {
@@ -197,6 +312,69 @@ func (c *Client) CreateResolverRuleWithContext(ctx context.Context, input *route
 	return req.Output.(*route53resolver.CreateResolverRuleOutput), req.Error
 }
 
+func (c *Client) DeleteFirewallDomainListWithContext(ctx context.Context, input *route53resolver.DeleteFirewallDomainListInput, opts ...request.Option) (*route53resolver.DeleteFirewallDomainListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "DeleteFirewallDomainList",
+		Input:   input,
+		Output:  (*route53resolver.DeleteFirewallDomainListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.DeleteFirewallDomainListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.DeleteFirewallDomainListOutput), req.Error
+}
+
+func (c *Client) DeleteFirewallRuleWithContext(ctx context.Context, input *route53resolver.DeleteFirewallRuleInput, opts ...request.Option) (*route53resolver.DeleteFirewallRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "DeleteFirewallRule",
+		Input:   input,
+		Output:  (*route53resolver.DeleteFirewallRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.DeleteFirewallRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.DeleteFirewallRuleOutput), req.Error
+}
+
+func (c *Client) DeleteFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.DeleteFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.DeleteFirewallRuleGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "DeleteFirewallRuleGroup",
+		Input:   input,
+		Output:  (*route53resolver.DeleteFirewallRuleGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.DeleteFirewallRuleGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.DeleteFirewallRuleGroupOutput), req.Error
+}
+
 func (c *Client) DeleteResolverEndpointWithContext(ctx context.Context, input *route53resolver.DeleteResolverEndpointInput, opts ...request.Option) (*route53resolver.DeleteResolverEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -260,6 +438,27 @@ func (c *Client) DeleteResolverRuleWithContext(ctx context.Context, input *route
 	return req.Output.(*route53resolver.DeleteResolverRuleOutput), req.Error
 }
 
+func (c *Client) DisassociateFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.DisassociateFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.DisassociateFirewallRuleGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "DisassociateFirewallRuleGroup",
+		Input:   input,
+		Output:  (*route53resolver.DisassociateFirewallRuleGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.DisassociateFirewallRuleGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.DisassociateFirewallRuleGroupOutput), req.Error
+}
+
 func (c *Client) DisassociateResolverEndpointIpAddressWithContext(ctx context.Context, input *route53resolver.DisassociateResolverEndpointIpAddressInput, opts ...request.Option) (*route53resolver.DisassociateResolverEndpointIpAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -321,6 +520,111 @@ func (c *Client) DisassociateResolverRuleWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*route53resolver.DisassociateResolverRuleOutput), req.Error
+}
+
+func (c *Client) GetFirewallConfigWithContext(ctx context.Context, input *route53resolver.GetFirewallConfigInput, opts ...request.Option) (*route53resolver.GetFirewallConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetFirewallConfig",
+		Input:   input,
+		Output:  (*route53resolver.GetFirewallConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetFirewallConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetFirewallConfigOutput), req.Error
+}
+
+func (c *Client) GetFirewallDomainListWithContext(ctx context.Context, input *route53resolver.GetFirewallDomainListInput, opts ...request.Option) (*route53resolver.GetFirewallDomainListOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetFirewallDomainList",
+		Input:   input,
+		Output:  (*route53resolver.GetFirewallDomainListOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetFirewallDomainListWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetFirewallDomainListOutput), req.Error
+}
+
+func (c *Client) GetFirewallRuleGroupWithContext(ctx context.Context, input *route53resolver.GetFirewallRuleGroupInput, opts ...request.Option) (*route53resolver.GetFirewallRuleGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetFirewallRuleGroup",
+		Input:   input,
+		Output:  (*route53resolver.GetFirewallRuleGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetFirewallRuleGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetFirewallRuleGroupOutput), req.Error
+}
+
+func (c *Client) GetFirewallRuleGroupAssociationWithContext(ctx context.Context, input *route53resolver.GetFirewallRuleGroupAssociationInput, opts ...request.Option) (*route53resolver.GetFirewallRuleGroupAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetFirewallRuleGroupAssociation",
+		Input:   input,
+		Output:  (*route53resolver.GetFirewallRuleGroupAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetFirewallRuleGroupAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetFirewallRuleGroupAssociationOutput), req.Error
+}
+
+func (c *Client) GetFirewallRuleGroupPolicyWithContext(ctx context.Context, input *route53resolver.GetFirewallRuleGroupPolicyInput, opts ...request.Option) (*route53resolver.GetFirewallRuleGroupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "GetFirewallRuleGroupPolicy",
+		Input:   input,
+		Output:  (*route53resolver.GetFirewallRuleGroupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.GetFirewallRuleGroupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.GetFirewallRuleGroupPolicyOutput), req.Error
 }
 
 func (c *Client) GetResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.GetResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.GetResolverDnssecConfigOutput, error) {
@@ -489,6 +793,273 @@ func (c *Client) GetResolverRulePolicyWithContext(ctx context.Context, input *ro
 	})
 
 	return req.Output.(*route53resolver.GetResolverRulePolicyOutput), req.Error
+}
+
+func (c *Client) ImportFirewallDomainsWithContext(ctx context.Context, input *route53resolver.ImportFirewallDomainsInput, opts ...request.Option) (*route53resolver.ImportFirewallDomainsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ImportFirewallDomains",
+		Input:   input,
+		Output:  (*route53resolver.ImportFirewallDomainsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ImportFirewallDomainsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ImportFirewallDomainsOutput), req.Error
+}
+
+func (c *Client) ListFirewallConfigsWithContext(ctx context.Context, input *route53resolver.ListFirewallConfigsInput, opts ...request.Option) (*route53resolver.ListFirewallConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallConfigs",
+		Input:   input,
+		Output:  (*route53resolver.ListFirewallConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListFirewallConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListFirewallConfigsOutput), req.Error
+}
+
+func (c *Client) ListFirewallConfigsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallConfigsInput, cb func(*route53resolver.ListFirewallConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListFirewallConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFirewallDomainListsWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainListsInput, opts ...request.Option) (*route53resolver.ListFirewallDomainListsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallDomainLists",
+		Input:   input,
+		Output:  (*route53resolver.ListFirewallDomainListsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListFirewallDomainListsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListFirewallDomainListsOutput), req.Error
+}
+
+func (c *Client) ListFirewallDomainListsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainListsInput, cb func(*route53resolver.ListFirewallDomainListsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallDomainLists",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListFirewallDomainListsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFirewallDomainsWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainsInput, opts ...request.Option) (*route53resolver.ListFirewallDomainsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallDomains",
+		Input:   input,
+		Output:  (*route53resolver.ListFirewallDomainsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListFirewallDomainsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListFirewallDomainsOutput), req.Error
+}
+
+func (c *Client) ListFirewallDomainsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallDomainsInput, cb func(*route53resolver.ListFirewallDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListFirewallDomainsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFirewallRuleGroupAssociationsWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupAssociationsInput, opts ...request.Option) (*route53resolver.ListFirewallRuleGroupAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallRuleGroupAssociations",
+		Input:   input,
+		Output:  (*route53resolver.ListFirewallRuleGroupAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListFirewallRuleGroupAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListFirewallRuleGroupAssociationsOutput), req.Error
+}
+
+func (c *Client) ListFirewallRuleGroupAssociationsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupAssociationsInput, cb func(*route53resolver.ListFirewallRuleGroupAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallRuleGroupAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListFirewallRuleGroupAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFirewallRuleGroupsWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupsInput, opts ...request.Option) (*route53resolver.ListFirewallRuleGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallRuleGroups",
+		Input:   input,
+		Output:  (*route53resolver.ListFirewallRuleGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListFirewallRuleGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListFirewallRuleGroupsOutput), req.Error
+}
+
+func (c *Client) ListFirewallRuleGroupsPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallRuleGroupsInput, cb func(*route53resolver.ListFirewallRuleGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallRuleGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListFirewallRuleGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFirewallRulesWithContext(ctx context.Context, input *route53resolver.ListFirewallRulesInput, opts ...request.Option) (*route53resolver.ListFirewallRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallRules",
+		Input:   input,
+		Output:  (*route53resolver.ListFirewallRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.ListFirewallRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.ListFirewallRulesOutput), req.Error
+}
+
+func (c *Client) ListFirewallRulesPagesWithContext(ctx context.Context, input *route53resolver.ListFirewallRulesInput, cb func(*route53resolver.ListFirewallRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "ListFirewallRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53ResolverAPI.ListFirewallRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResolverDnssecConfigsWithContext(ctx context.Context, input *route53resolver.ListResolverDnssecConfigsInput, opts ...request.Option) (*route53resolver.ListResolverDnssecConfigsOutput, error) {
@@ -819,6 +1390,27 @@ func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input 
 	return req.Error
 }
 
+func (c *Client) PutFirewallRuleGroupPolicyWithContext(ctx context.Context, input *route53resolver.PutFirewallRuleGroupPolicyInput, opts ...request.Option) (*route53resolver.PutFirewallRuleGroupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "PutFirewallRuleGroupPolicy",
+		Input:   input,
+		Output:  (*route53resolver.PutFirewallRuleGroupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.PutFirewallRuleGroupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.PutFirewallRuleGroupPolicyOutput), req.Error
+}
+
 func (c *Client) PutResolverQueryLogConfigPolicyWithContext(ctx context.Context, input *route53resolver.PutResolverQueryLogConfigPolicyInput, opts ...request.Option) (*route53resolver.PutResolverQueryLogConfigPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53resolver",
@@ -901,6 +1493,90 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *route53res
 	})
 
 	return req.Output.(*route53resolver.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateFirewallConfigWithContext(ctx context.Context, input *route53resolver.UpdateFirewallConfigInput, opts ...request.Option) (*route53resolver.UpdateFirewallConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "UpdateFirewallConfig",
+		Input:   input,
+		Output:  (*route53resolver.UpdateFirewallConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.UpdateFirewallConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.UpdateFirewallConfigOutput), req.Error
+}
+
+func (c *Client) UpdateFirewallDomainsWithContext(ctx context.Context, input *route53resolver.UpdateFirewallDomainsInput, opts ...request.Option) (*route53resolver.UpdateFirewallDomainsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "UpdateFirewallDomains",
+		Input:   input,
+		Output:  (*route53resolver.UpdateFirewallDomainsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.UpdateFirewallDomainsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.UpdateFirewallDomainsOutput), req.Error
+}
+
+func (c *Client) UpdateFirewallRuleWithContext(ctx context.Context, input *route53resolver.UpdateFirewallRuleInput, opts ...request.Option) (*route53resolver.UpdateFirewallRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "UpdateFirewallRule",
+		Input:   input,
+		Output:  (*route53resolver.UpdateFirewallRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.UpdateFirewallRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.UpdateFirewallRuleOutput), req.Error
+}
+
+func (c *Client) UpdateFirewallRuleGroupAssociationWithContext(ctx context.Context, input *route53resolver.UpdateFirewallRuleGroupAssociationInput, opts ...request.Option) (*route53resolver.UpdateFirewallRuleGroupAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53resolver",
+		Action:  "UpdateFirewallRuleGroupAssociation",
+		Input:   input,
+		Output:  (*route53resolver.UpdateFirewallRuleGroupAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53ResolverAPI.UpdateFirewallRuleGroupAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53resolver.UpdateFirewallRuleGroupAssociationOutput), req.Error
 }
 
 func (c *Client) UpdateResolverDnssecConfigWithContext(ctx context.Context, input *route53resolver.UpdateResolverDnssecConfigInput, opts ...request.Option) (*route53resolver.UpdateResolverDnssecConfigOutput, error) {

@@ -423,6 +423,7 @@ type EC2 interface {
 	GetDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.GetDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.GetDefaultCreditSpecificationOutput, error)
 	GetEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.GetEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.GetEbsDefaultKmsKeyIdOutput, error)
 	GetEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.GetEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.GetEbsEncryptionByDefaultOutput, error)
+	GetFlowLogsIntegrationTemplateWithContext(ctx context.Context, input *ec2.GetFlowLogsIntegrationTemplateInput, opts ...request.Option) (*ec2.GetFlowLogsIntegrationTemplateOutput, error)
 	GetGroupsForCapacityReservationWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, opts ...request.Option) (*ec2.GetGroupsForCapacityReservationOutput, error)
 	GetGroupsForCapacityReservationPagesWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, cb func(*ec2.GetGroupsForCapacityReservationOutput, bool) bool, opts ...request.Option) error
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
@@ -9133,6 +9134,27 @@ func (c *Client) GetEbsEncryptionByDefaultWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.GetEbsEncryptionByDefaultOutput), req.Error
+}
+
+func (c *Client) GetFlowLogsIntegrationTemplateWithContext(ctx context.Context, input *ec2.GetFlowLogsIntegrationTemplateInput, opts ...request.Option) (*ec2.GetFlowLogsIntegrationTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetFlowLogsIntegrationTemplate",
+		Input:   input,
+		Output:  (*ec2.GetFlowLogsIntegrationTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetFlowLogsIntegrationTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetFlowLogsIntegrationTemplateOutput), req.Error
 }
 
 func (c *Client) GetGroupsForCapacityReservationWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, opts ...request.Option) (*ec2.GetGroupsForCapacityReservationOutput, error) {
