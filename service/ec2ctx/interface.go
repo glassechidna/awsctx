@@ -84,12 +84,14 @@ type EC2 interface {
 	CreatePlacementGroupWithContext(ctx context.Context, input *ec2.CreatePlacementGroupInput, opts ...request.Option) (*ec2.CreatePlacementGroupOutput, error)
 	CreateReplaceRootVolumeTaskWithContext(ctx context.Context, input *ec2.CreateReplaceRootVolumeTaskInput, opts ...request.Option) (*ec2.CreateReplaceRootVolumeTaskOutput, error)
 	CreateReservedInstancesListingWithContext(ctx context.Context, input *ec2.CreateReservedInstancesListingInput, opts ...request.Option) (*ec2.CreateReservedInstancesListingOutput, error)
+	CreateRestoreImageTaskWithContext(ctx context.Context, input *ec2.CreateRestoreImageTaskInput, opts ...request.Option) (*ec2.CreateRestoreImageTaskOutput, error)
 	CreateRouteWithContext(ctx context.Context, input *ec2.CreateRouteInput, opts ...request.Option) (*ec2.CreateRouteOutput, error)
 	CreateRouteTableWithContext(ctx context.Context, input *ec2.CreateRouteTableInput, opts ...request.Option) (*ec2.CreateRouteTableOutput, error)
 	CreateSecurityGroupWithContext(ctx context.Context, input *ec2.CreateSecurityGroupInput, opts ...request.Option) (*ec2.CreateSecurityGroupOutput, error)
 	CreateSnapshotWithContext(ctx context.Context, input *ec2.CreateSnapshotInput, opts ...request.Option) (*ec2.Snapshot, error)
 	CreateSnapshotsWithContext(ctx context.Context, input *ec2.CreateSnapshotsInput, opts ...request.Option) (*ec2.CreateSnapshotsOutput, error)
 	CreateSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.CreateSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.CreateSpotDatafeedSubscriptionOutput, error)
+	CreateStoreImageTaskWithContext(ctx context.Context, input *ec2.CreateStoreImageTaskInput, opts ...request.Option) (*ec2.CreateStoreImageTaskOutput, error)
 	CreateSubnetWithContext(ctx context.Context, input *ec2.CreateSubnetInput, opts ...request.Option) (*ec2.CreateSubnetOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *ec2.CreateTagsInput, opts ...request.Option) (*ec2.CreateTagsOutput, error)
 	CreateTrafficMirrorFilterWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorFilterInput, opts ...request.Option) (*ec2.CreateTrafficMirrorFilterOutput, error)
@@ -326,6 +328,7 @@ type EC2 interface {
 	DescribeSpotPriceHistoryPagesWithContext(ctx context.Context, input *ec2.DescribeSpotPriceHistoryInput, cb func(*ec2.DescribeSpotPriceHistoryOutput, bool) bool, opts ...request.Option) error
 	DescribeStaleSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeStaleSecurityGroupsOutput, error)
 	DescribeStaleSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, cb func(*ec2.DescribeStaleSecurityGroupsOutput, bool) bool, opts ...request.Option) error
+	DescribeStoreImageTasksWithContext(ctx context.Context, input *ec2.DescribeStoreImageTasksInput, opts ...request.Option) (*ec2.DescribeStoreImageTasksOutput, error)
 	DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error)
 	DescribeSubnetsPagesWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, cb func(*ec2.DescribeSubnetsOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *ec2.DescribeTagsInput, opts ...request.Option) (*ec2.DescribeTagsOutput, error)
@@ -2104,6 +2107,27 @@ func (c *Client) CreateReservedInstancesListingWithContext(ctx context.Context, 
 	return req.Output.(*ec2.CreateReservedInstancesListingOutput), req.Error
 }
 
+func (c *Client) CreateRestoreImageTaskWithContext(ctx context.Context, input *ec2.CreateRestoreImageTaskInput, opts ...request.Option) (*ec2.CreateRestoreImageTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateRestoreImageTask",
+		Input:   input,
+		Output:  (*ec2.CreateRestoreImageTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateRestoreImageTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateRestoreImageTaskOutput), req.Error
+}
+
 func (c *Client) CreateRouteWithContext(ctx context.Context, input *ec2.CreateRouteInput, opts ...request.Option) (*ec2.CreateRouteOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2228,6 +2252,27 @@ func (c *Client) CreateSpotDatafeedSubscriptionWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*ec2.CreateSpotDatafeedSubscriptionOutput), req.Error
+}
+
+func (c *Client) CreateStoreImageTaskWithContext(ctx context.Context, input *ec2.CreateStoreImageTaskInput, opts ...request.Option) (*ec2.CreateStoreImageTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateStoreImageTask",
+		Input:   input,
+		Output:  (*ec2.CreateStoreImageTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateStoreImageTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateStoreImageTaskOutput), req.Error
 }
 
 func (c *Client) CreateSubnetWithContext(ctx context.Context, input *ec2.CreateSubnetInput, opts ...request.Option) (*ec2.CreateSubnetOutput, error) {
@@ -7122,6 +7167,27 @@ func (c *Client) DescribeStaleSecurityGroupsPagesWithContext(ctx context.Context
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeStoreImageTasksWithContext(ctx context.Context, input *ec2.DescribeStoreImageTasksInput, opts ...request.Option) (*ec2.DescribeStoreImageTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeStoreImageTasks",
+		Input:   input,
+		Output:  (*ec2.DescribeStoreImageTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeStoreImageTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeStoreImageTasksOutput), req.Error
 }
 
 func (c *Client) DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error) {

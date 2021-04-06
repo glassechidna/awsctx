@@ -173,6 +173,7 @@ type SSM interface {
 	StartSessionWithContext(ctx context.Context, input *ssm.StartSessionInput, opts ...request.Option) (*ssm.StartSessionOutput, error)
 	StopAutomationExecutionWithContext(ctx context.Context, input *ssm.StopAutomationExecutionInput, opts ...request.Option) (*ssm.StopAutomationExecutionOutput, error)
 	TerminateSessionWithContext(ctx context.Context, input *ssm.TerminateSessionInput, opts ...request.Option) (*ssm.TerminateSessionOutput, error)
+	UnlabelParameterVersionWithContext(ctx context.Context, input *ssm.UnlabelParameterVersionInput, opts ...request.Option) (*ssm.UnlabelParameterVersionOutput, error)
 	UpdateAssociationWithContext(ctx context.Context, input *ssm.UpdateAssociationInput, opts ...request.Option) (*ssm.UpdateAssociationOutput, error)
 	UpdateAssociationStatusWithContext(ctx context.Context, input *ssm.UpdateAssociationStatusInput, opts ...request.Option) (*ssm.UpdateAssociationStatusOutput, error)
 	UpdateDocumentWithContext(ctx context.Context, input *ssm.UpdateDocumentInput, opts ...request.Option) (*ssm.UpdateDocumentOutput, error)
@@ -3559,6 +3560,27 @@ func (c *Client) TerminateSessionWithContext(ctx context.Context, input *ssm.Ter
 	})
 
 	return req.Output.(*ssm.TerminateSessionOutput), req.Error
+}
+
+func (c *Client) UnlabelParameterVersionWithContext(ctx context.Context, input *ssm.UnlabelParameterVersionInput, opts ...request.Option) (*ssm.UnlabelParameterVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "UnlabelParameterVersion",
+		Input:   input,
+		Output:  (*ssm.UnlabelParameterVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.UnlabelParameterVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.UnlabelParameterVersionOutput), req.Error
 }
 
 func (c *Client) UpdateAssociationWithContext(ctx context.Context, input *ssm.UpdateAssociationInput, opts ...request.Option) (*ssm.UpdateAssociationOutput, error) {
