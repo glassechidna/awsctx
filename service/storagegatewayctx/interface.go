@@ -17,6 +17,7 @@ type StorageGateway interface {
 	AddUploadBufferWithContext(ctx context.Context, input *storagegateway.AddUploadBufferInput, opts ...request.Option) (*storagegateway.AddUploadBufferOutput, error)
 	AddWorkingStorageWithContext(ctx context.Context, input *storagegateway.AddWorkingStorageInput, opts ...request.Option) (*storagegateway.AddWorkingStorageOutput, error)
 	AssignTapePoolWithContext(ctx context.Context, input *storagegateway.AssignTapePoolInput, opts ...request.Option) (*storagegateway.AssignTapePoolOutput, error)
+	AssociateFileSystemWithContext(ctx context.Context, input *storagegateway.AssociateFileSystemInput, opts ...request.Option) (*storagegateway.AssociateFileSystemOutput, error)
 	AttachVolumeWithContext(ctx context.Context, input *storagegateway.AttachVolumeInput, opts ...request.Option) (*storagegateway.AttachVolumeOutput, error)
 	CancelArchivalWithContext(ctx context.Context, input *storagegateway.CancelArchivalInput, opts ...request.Option) (*storagegateway.CancelArchivalOutput, error)
 	CancelRetrievalWithContext(ctx context.Context, input *storagegateway.CancelRetrievalInput, opts ...request.Option) (*storagegateway.CancelRetrievalOutput, error)
@@ -45,6 +46,7 @@ type StorageGateway interface {
 	DescribeCacheWithContext(ctx context.Context, input *storagegateway.DescribeCacheInput, opts ...request.Option) (*storagegateway.DescribeCacheOutput, error)
 	DescribeCachediSCSIVolumesWithContext(ctx context.Context, input *storagegateway.DescribeCachediSCSIVolumesInput, opts ...request.Option) (*storagegateway.DescribeCachediSCSIVolumesOutput, error)
 	DescribeChapCredentialsWithContext(ctx context.Context, input *storagegateway.DescribeChapCredentialsInput, opts ...request.Option) (*storagegateway.DescribeChapCredentialsOutput, error)
+	DescribeFileSystemAssociationsWithContext(ctx context.Context, input *storagegateway.DescribeFileSystemAssociationsInput, opts ...request.Option) (*storagegateway.DescribeFileSystemAssociationsOutput, error)
 	DescribeGatewayInformationWithContext(ctx context.Context, input *storagegateway.DescribeGatewayInformationInput, opts ...request.Option) (*storagegateway.DescribeGatewayInformationOutput, error)
 	DescribeMaintenanceStartTimeWithContext(ctx context.Context, input *storagegateway.DescribeMaintenanceStartTimeInput, opts ...request.Option) (*storagegateway.DescribeMaintenanceStartTimeOutput, error)
 	DescribeNFSFileSharesWithContext(ctx context.Context, input *storagegateway.DescribeNFSFileSharesInput, opts ...request.Option) (*storagegateway.DescribeNFSFileSharesOutput, error)
@@ -64,10 +66,13 @@ type StorageGateway interface {
 	DescribeWorkingStorageWithContext(ctx context.Context, input *storagegateway.DescribeWorkingStorageInput, opts ...request.Option) (*storagegateway.DescribeWorkingStorageOutput, error)
 	DetachVolumeWithContext(ctx context.Context, input *storagegateway.DetachVolumeInput, opts ...request.Option) (*storagegateway.DetachVolumeOutput, error)
 	DisableGatewayWithContext(ctx context.Context, input *storagegateway.DisableGatewayInput, opts ...request.Option) (*storagegateway.DisableGatewayOutput, error)
+	DisassociateFileSystemWithContext(ctx context.Context, input *storagegateway.DisassociateFileSystemInput, opts ...request.Option) (*storagegateway.DisassociateFileSystemOutput, error)
 	JoinDomainWithContext(ctx context.Context, input *storagegateway.JoinDomainInput, opts ...request.Option) (*storagegateway.JoinDomainOutput, error)
 	ListAutomaticTapeCreationPoliciesWithContext(ctx context.Context, input *storagegateway.ListAutomaticTapeCreationPoliciesInput, opts ...request.Option) (*storagegateway.ListAutomaticTapeCreationPoliciesOutput, error)
 	ListFileSharesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, opts ...request.Option) (*storagegateway.ListFileSharesOutput, error)
 	ListFileSharesPagesWithContext(ctx context.Context, input *storagegateway.ListFileSharesInput, cb func(*storagegateway.ListFileSharesOutput, bool) bool, opts ...request.Option) error
+	ListFileSystemAssociationsWithContext(ctx context.Context, input *storagegateway.ListFileSystemAssociationsInput, opts ...request.Option) (*storagegateway.ListFileSystemAssociationsOutput, error)
+	ListFileSystemAssociationsPagesWithContext(ctx context.Context, input *storagegateway.ListFileSystemAssociationsInput, cb func(*storagegateway.ListFileSystemAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListGatewaysWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, opts ...request.Option) (*storagegateway.ListGatewaysOutput, error)
 	ListGatewaysPagesWithContext(ctx context.Context, input *storagegateway.ListGatewaysInput, cb func(*storagegateway.ListGatewaysOutput, bool) bool, opts ...request.Option) error
 	ListLocalDisksWithContext(ctx context.Context, input *storagegateway.ListLocalDisksInput, opts ...request.Option) (*storagegateway.ListLocalDisksOutput, error)
@@ -96,6 +101,7 @@ type StorageGateway interface {
 	UpdateBandwidthRateLimitWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitOutput, error)
 	UpdateBandwidthRateLimitScheduleWithContext(ctx context.Context, input *storagegateway.UpdateBandwidthRateLimitScheduleInput, opts ...request.Option) (*storagegateway.UpdateBandwidthRateLimitScheduleOutput, error)
 	UpdateChapCredentialsWithContext(ctx context.Context, input *storagegateway.UpdateChapCredentialsInput, opts ...request.Option) (*storagegateway.UpdateChapCredentialsOutput, error)
+	UpdateFileSystemAssociationWithContext(ctx context.Context, input *storagegateway.UpdateFileSystemAssociationInput, opts ...request.Option) (*storagegateway.UpdateFileSystemAssociationOutput, error)
 	UpdateGatewayInformationWithContext(ctx context.Context, input *storagegateway.UpdateGatewayInformationInput, opts ...request.Option) (*storagegateway.UpdateGatewayInformationOutput, error)
 	UpdateGatewaySoftwareNowWithContext(ctx context.Context, input *storagegateway.UpdateGatewaySoftwareNowInput, opts ...request.Option) (*storagegateway.UpdateGatewaySoftwareNowOutput, error)
 	UpdateMaintenanceStartTimeWithContext(ctx context.Context, input *storagegateway.UpdateMaintenanceStartTimeInput, opts ...request.Option) (*storagegateway.UpdateMaintenanceStartTimeOutput, error)
@@ -246,6 +252,27 @@ func (c *Client) AssignTapePoolWithContext(ctx context.Context, input *storagega
 	})
 
 	return req.Output.(*storagegateway.AssignTapePoolOutput), req.Error
+}
+
+func (c *Client) AssociateFileSystemWithContext(ctx context.Context, input *storagegateway.AssociateFileSystemInput, opts ...request.Option) (*storagegateway.AssociateFileSystemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "AssociateFileSystem",
+		Input:   input,
+		Output:  (*storagegateway.AssociateFileSystemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.AssociateFileSystemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.AssociateFileSystemOutput), req.Error
 }
 
 func (c *Client) AttachVolumeWithContext(ctx context.Context, input *storagegateway.AttachVolumeInput, opts ...request.Option) (*storagegateway.AttachVolumeOutput, error) {
@@ -836,6 +863,27 @@ func (c *Client) DescribeChapCredentialsWithContext(ctx context.Context, input *
 	return req.Output.(*storagegateway.DescribeChapCredentialsOutput), req.Error
 }
 
+func (c *Client) DescribeFileSystemAssociationsWithContext(ctx context.Context, input *storagegateway.DescribeFileSystemAssociationsInput, opts ...request.Option) (*storagegateway.DescribeFileSystemAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DescribeFileSystemAssociations",
+		Input:   input,
+		Output:  (*storagegateway.DescribeFileSystemAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.DescribeFileSystemAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.DescribeFileSystemAssociationsOutput), req.Error
+}
+
 func (c *Client) DescribeGatewayInformationWithContext(ctx context.Context, input *storagegateway.DescribeGatewayInformationInput, opts ...request.Option) (*storagegateway.DescribeGatewayInformationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -1231,6 +1279,27 @@ func (c *Client) DisableGatewayWithContext(ctx context.Context, input *storagega
 	return req.Output.(*storagegateway.DisableGatewayOutput), req.Error
 }
 
+func (c *Client) DisassociateFileSystemWithContext(ctx context.Context, input *storagegateway.DisassociateFileSystemInput, opts ...request.Option) (*storagegateway.DisassociateFileSystemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "DisassociateFileSystem",
+		Input:   input,
+		Output:  (*storagegateway.DisassociateFileSystemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.DisassociateFileSystemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.DisassociateFileSystemOutput), req.Error
+}
+
 func (c *Client) JoinDomainWithContext(ctx context.Context, input *storagegateway.JoinDomainInput, opts ...request.Option) (*storagegateway.JoinDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "storagegateway",
@@ -1309,6 +1378,47 @@ func (c *Client) ListFileSharesPagesWithContext(ctx context.Context, input *stor
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.StorageGatewayAPI.ListFileSharesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFileSystemAssociationsWithContext(ctx context.Context, input *storagegateway.ListFileSystemAssociationsInput, opts ...request.Option) (*storagegateway.ListFileSystemAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListFileSystemAssociations",
+		Input:   input,
+		Output:  (*storagegateway.ListFileSystemAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.ListFileSystemAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.ListFileSystemAssociationsOutput), req.Error
+}
+
+func (c *Client) ListFileSystemAssociationsPagesWithContext(ctx context.Context, input *storagegateway.ListFileSystemAssociationsInput, cb func(*storagegateway.ListFileSystemAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "ListFileSystemAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.StorageGatewayAPI.ListFileSystemAssociationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1895,6 +2005,27 @@ func (c *Client) UpdateChapCredentialsWithContext(ctx context.Context, input *st
 	})
 
 	return req.Output.(*storagegateway.UpdateChapCredentialsOutput), req.Error
+}
+
+func (c *Client) UpdateFileSystemAssociationWithContext(ctx context.Context, input *storagegateway.UpdateFileSystemAssociationInput, opts ...request.Option) (*storagegateway.UpdateFileSystemAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "UpdateFileSystemAssociation",
+		Input:   input,
+		Output:  (*storagegateway.UpdateFileSystemAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.UpdateFileSystemAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.UpdateFileSystemAssociationOutput), req.Error
 }
 
 func (c *Client) UpdateGatewayInformationWithContext(ctx context.Context, input *storagegateway.UpdateGatewayInformationInput, opts ...request.Option) (*storagegateway.UpdateGatewayInformationOutput, error) {
