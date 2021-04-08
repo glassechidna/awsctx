@@ -21,6 +21,7 @@ type AppStream interface {
 	CreateImageBuilderStreamingURLWithContext(ctx context.Context, input *appstream.CreateImageBuilderStreamingURLInput, opts ...request.Option) (*appstream.CreateImageBuilderStreamingURLOutput, error)
 	CreateStackWithContext(ctx context.Context, input *appstream.CreateStackInput, opts ...request.Option) (*appstream.CreateStackOutput, error)
 	CreateStreamingURLWithContext(ctx context.Context, input *appstream.CreateStreamingURLInput, opts ...request.Option) (*appstream.CreateStreamingURLOutput, error)
+	CreateUpdatedImageWithContext(ctx context.Context, input *appstream.CreateUpdatedImageInput, opts ...request.Option) (*appstream.CreateUpdatedImageOutput, error)
 	CreateUsageReportSubscriptionWithContext(ctx context.Context, input *appstream.CreateUsageReportSubscriptionInput, opts ...request.Option) (*appstream.CreateUsageReportSubscriptionOutput, error)
 	CreateUserWithContext(ctx context.Context, input *appstream.CreateUserInput, opts ...request.Option) (*appstream.CreateUserOutput, error)
 	DeleteDirectoryConfigWithContext(ctx context.Context, input *appstream.DeleteDirectoryConfigInput, opts ...request.Option) (*appstream.DeleteDirectoryConfigOutput, error)
@@ -285,6 +286,27 @@ func (c *Client) CreateStreamingURLWithContext(ctx context.Context, input *appst
 	})
 
 	return req.Output.(*appstream.CreateStreamingURLOutput), req.Error
+}
+
+func (c *Client) CreateUpdatedImageWithContext(ctx context.Context, input *appstream.CreateUpdatedImageInput, opts ...request.Option) (*appstream.CreateUpdatedImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "CreateUpdatedImage",
+		Input:   input,
+		Output:  (*appstream.CreateUpdatedImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.CreateUpdatedImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.CreateUpdatedImageOutput), req.Error
 }
 
 func (c *Client) CreateUsageReportSubscriptionWithContext(ctx context.Context, input *appstream.CreateUsageReportSubscriptionInput, opts ...request.Option) (*appstream.CreateUsageReportSubscriptionOutput, error) {

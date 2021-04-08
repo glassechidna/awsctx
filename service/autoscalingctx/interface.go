@@ -28,6 +28,7 @@ type AutoScaling interface {
 	DeletePolicyWithContext(ctx context.Context, input *autoscaling.DeletePolicyInput, opts ...request.Option) (*autoscaling.DeletePolicyOutput, error)
 	DeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.DeleteScheduledActionInput, opts ...request.Option) (*autoscaling.DeleteScheduledActionOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *autoscaling.DeleteTagsInput, opts ...request.Option) (*autoscaling.DeleteTagsOutput, error)
+	DeleteWarmPoolWithContext(ctx context.Context, input *autoscaling.DeleteWarmPoolInput, opts ...request.Option) (*autoscaling.DeleteWarmPoolOutput, error)
 	DescribeAccountLimitsWithContext(ctx context.Context, input *autoscaling.DescribeAccountLimitsInput, opts ...request.Option) (*autoscaling.DescribeAccountLimitsOutput, error)
 	DescribeAdjustmentTypesWithContext(ctx context.Context, input *autoscaling.DescribeAdjustmentTypesInput, opts ...request.Option) (*autoscaling.DescribeAdjustmentTypesOutput, error)
 	DescribeAutoScalingGroupsWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingGroupsInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingGroupsOutput, error)
@@ -55,6 +56,7 @@ type AutoScaling interface {
 	DescribeTagsWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, opts ...request.Option) (*autoscaling.DescribeTagsOutput, error)
 	DescribeTagsPagesWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, cb func(*autoscaling.DescribeTagsOutput, bool) bool, opts ...request.Option) error
 	DescribeTerminationPolicyTypesWithContext(ctx context.Context, input *autoscaling.DescribeTerminationPolicyTypesInput, opts ...request.Option) (*autoscaling.DescribeTerminationPolicyTypesOutput, error)
+	DescribeWarmPoolWithContext(ctx context.Context, input *autoscaling.DescribeWarmPoolInput, opts ...request.Option) (*autoscaling.DescribeWarmPoolOutput, error)
 	DetachInstancesWithContext(ctx context.Context, input *autoscaling.DetachInstancesInput, opts ...request.Option) (*autoscaling.DetachInstancesOutput, error)
 	DetachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DetachLoadBalancerTargetGroupsOutput, error)
 	DetachLoadBalancersWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancersInput, opts ...request.Option) (*autoscaling.DetachLoadBalancersOutput, error)
@@ -67,6 +69,7 @@ type AutoScaling interface {
 	PutNotificationConfigurationWithContext(ctx context.Context, input *autoscaling.PutNotificationConfigurationInput, opts ...request.Option) (*autoscaling.PutNotificationConfigurationOutput, error)
 	PutScalingPolicyWithContext(ctx context.Context, input *autoscaling.PutScalingPolicyInput, opts ...request.Option) (*autoscaling.PutScalingPolicyOutput, error)
 	PutScheduledUpdateGroupActionWithContext(ctx context.Context, input *autoscaling.PutScheduledUpdateGroupActionInput, opts ...request.Option) (*autoscaling.PutScheduledUpdateGroupActionOutput, error)
+	PutWarmPoolWithContext(ctx context.Context, input *autoscaling.PutWarmPoolInput, opts ...request.Option) (*autoscaling.PutWarmPoolOutput, error)
 	RecordLifecycleActionHeartbeatWithContext(ctx context.Context, input *autoscaling.RecordLifecycleActionHeartbeatInput, opts ...request.Option) (*autoscaling.RecordLifecycleActionHeartbeatOutput, error)
 	ResumeProcessesWithContext(ctx context.Context, input *autoscaling.ScalingProcessQuery, opts ...request.Option) (*autoscaling.ResumeProcessesOutput, error)
 	SetDesiredCapacityWithContext(ctx context.Context, input *autoscaling.SetDesiredCapacityInput, opts ...request.Option) (*autoscaling.SetDesiredCapacityOutput, error)
@@ -448,6 +451,27 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *autoscaling.D
 	})
 
 	return req.Output.(*autoscaling.DeleteTagsOutput), req.Error
+}
+
+func (c *Client) DeleteWarmPoolWithContext(ctx context.Context, input *autoscaling.DeleteWarmPoolInput, opts ...request.Option) (*autoscaling.DeleteWarmPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DeleteWarmPool",
+		Input:   input,
+		Output:  (*autoscaling.DeleteWarmPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.DeleteWarmPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.DeleteWarmPoolOutput), req.Error
 }
 
 func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, input *autoscaling.DescribeAccountLimitsInput, opts ...request.Option) (*autoscaling.DescribeAccountLimitsOutput, error) {
@@ -1009,6 +1033,27 @@ func (c *Client) DescribeTerminationPolicyTypesWithContext(ctx context.Context, 
 	return req.Output.(*autoscaling.DescribeTerminationPolicyTypesOutput), req.Error
 }
 
+func (c *Client) DescribeWarmPoolWithContext(ctx context.Context, input *autoscaling.DescribeWarmPoolInput, opts ...request.Option) (*autoscaling.DescribeWarmPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeWarmPool",
+		Input:   input,
+		Output:  (*autoscaling.DescribeWarmPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.DescribeWarmPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.DescribeWarmPoolOutput), req.Error
+}
+
 func (c *Client) DetachInstancesWithContext(ctx context.Context, input *autoscaling.DetachInstancesInput, opts ...request.Option) (*autoscaling.DetachInstancesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -1259,6 +1304,27 @@ func (c *Client) PutScheduledUpdateGroupActionWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*autoscaling.PutScheduledUpdateGroupActionOutput), req.Error
+}
+
+func (c *Client) PutWarmPoolWithContext(ctx context.Context, input *autoscaling.PutWarmPoolInput, opts ...request.Option) (*autoscaling.PutWarmPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "PutWarmPool",
+		Input:   input,
+		Output:  (*autoscaling.PutWarmPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.PutWarmPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.PutWarmPoolOutput), req.Error
 }
 
 func (c *Client) RecordLifecycleActionHeartbeatWithContext(ctx context.Context, input *autoscaling.RecordLifecycleActionHeartbeatInput, opts ...request.Option) (*autoscaling.RecordLifecycleActionHeartbeatOutput, error) {
