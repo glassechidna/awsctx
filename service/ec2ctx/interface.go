@@ -329,6 +329,7 @@ type EC2 interface {
 	DescribeStaleSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeStaleSecurityGroupsOutput, error)
 	DescribeStaleSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeStaleSecurityGroupsInput, cb func(*ec2.DescribeStaleSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeStoreImageTasksWithContext(ctx context.Context, input *ec2.DescribeStoreImageTasksInput, opts ...request.Option) (*ec2.DescribeStoreImageTasksOutput, error)
+	DescribeStoreImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeStoreImageTasksInput, cb func(*ec2.DescribeStoreImageTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error)
 	DescribeSubnetsPagesWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, cb func(*ec2.DescribeSubnetsOutput, bool) bool, opts ...request.Option) error
 	DescribeTagsWithContext(ctx context.Context, input *ec2.DescribeTagsInput, opts ...request.Option) (*ec2.DescribeTagsOutput, error)
@@ -7188,6 +7189,26 @@ func (c *Client) DescribeStoreImageTasksWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.DescribeStoreImageTasksOutput), req.Error
+}
+
+func (c *Client) DescribeStoreImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeStoreImageTasksInput, cb func(*ec2.DescribeStoreImageTasksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeStoreImageTasks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeStoreImageTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSubnetsWithContext(ctx context.Context, input *ec2.DescribeSubnetsInput, opts ...request.Option) (*ec2.DescribeSubnetsOutput, error) {
