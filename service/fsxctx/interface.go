@@ -13,6 +13,7 @@ import (
 type FSx interface {
 	AssociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.AssociateFileSystemAliasesInput, opts ...request.Option) (*fsx.AssociateFileSystemAliasesOutput, error)
 	CancelDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CancelDataRepositoryTaskInput, opts ...request.Option) (*fsx.CancelDataRepositoryTaskOutput, error)
+	CopyBackupWithContext(ctx context.Context, input *fsx.CopyBackupInput, opts ...request.Option) (*fsx.CopyBackupOutput, error)
 	CreateBackupWithContext(ctx context.Context, input *fsx.CreateBackupInput, opts ...request.Option) (*fsx.CreateBackupOutput, error)
 	CreateDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CreateDataRepositoryTaskInput, opts ...request.Option) (*fsx.CreateDataRepositoryTaskOutput, error)
 	CreateFileSystemWithContext(ctx context.Context, input *fsx.CreateFileSystemInput, opts ...request.Option) (*fsx.CreateFileSystemOutput, error)
@@ -89,6 +90,27 @@ func (c *Client) CancelDataRepositoryTaskWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*fsx.CancelDataRepositoryTaskOutput), req.Error
+}
+
+func (c *Client) CopyBackupWithContext(ctx context.Context, input *fsx.CopyBackupInput, opts ...request.Option) (*fsx.CopyBackupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "CopyBackup",
+		Input:   input,
+		Output:  (*fsx.CopyBackupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.CopyBackupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.CopyBackupOutput), req.Error
 }
 
 func (c *Client) CreateBackupWithContext(ctx context.Context, input *fsx.CreateBackupInput, opts ...request.Option) (*fsx.CreateBackupOutput, error) {
