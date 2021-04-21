@@ -12,6 +12,7 @@ import (
 
 type Redshift interface {
 	AcceptReservedNodeExchangeWithContext(ctx context.Context, input *redshift.AcceptReservedNodeExchangeInput, opts ...request.Option) (*redshift.AcceptReservedNodeExchangeOutput, error)
+	AddPartnerWithContext(ctx context.Context, input *redshift.AddPartnerInput, opts ...request.Option) (*redshift.AddPartnerOutput, error)
 	AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.AuthorizeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.AuthorizeClusterSecurityGroupIngressOutput, error)
 	AuthorizeEndpointAccessWithContext(ctx context.Context, input *redshift.AuthorizeEndpointAccessInput, opts ...request.Option) (*redshift.AuthorizeEndpointAccessOutput, error)
 	AuthorizeSnapshotAccessWithContext(ctx context.Context, input *redshift.AuthorizeSnapshotAccessInput, opts ...request.Option) (*redshift.AuthorizeSnapshotAccessOutput, error)
@@ -42,6 +43,7 @@ type Redshift interface {
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *redshift.DeleteEventSubscriptionInput, opts ...request.Option) (*redshift.DeleteEventSubscriptionOutput, error)
 	DeleteHsmClientCertificateWithContext(ctx context.Context, input *redshift.DeleteHsmClientCertificateInput, opts ...request.Option) (*redshift.DeleteHsmClientCertificateOutput, error)
 	DeleteHsmConfigurationWithContext(ctx context.Context, input *redshift.DeleteHsmConfigurationInput, opts ...request.Option) (*redshift.DeleteHsmConfigurationOutput, error)
+	DeletePartnerWithContext(ctx context.Context, input *redshift.DeletePartnerInput, opts ...request.Option) (*redshift.DeletePartnerOutput, error)
 	DeleteScheduledActionWithContext(ctx context.Context, input *redshift.DeleteScheduledActionInput, opts ...request.Option) (*redshift.DeleteScheduledActionOutput, error)
 	DeleteSnapshotCopyGrantWithContext(ctx context.Context, input *redshift.DeleteSnapshotCopyGrantInput, opts ...request.Option) (*redshift.DeleteSnapshotCopyGrantOutput, error)
 	DeleteSnapshotScheduleWithContext(ctx context.Context, input *redshift.DeleteSnapshotScheduleInput, opts ...request.Option) (*redshift.DeleteSnapshotScheduleOutput, error)
@@ -69,7 +71,9 @@ type Redshift interface {
 	DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error)
 	DescribeDefaultClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, cb func(*redshift.DescribeDefaultClusterParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeEndpointAccessWithContext(ctx context.Context, input *redshift.DescribeEndpointAccessInput, opts ...request.Option) (*redshift.DescribeEndpointAccessOutput, error)
+	DescribeEndpointAccessPagesWithContext(ctx context.Context, input *redshift.DescribeEndpointAccessInput, cb func(*redshift.DescribeEndpointAccessOutput, bool) bool, opts ...request.Option) error
 	DescribeEndpointAuthorizationWithContext(ctx context.Context, input *redshift.DescribeEndpointAuthorizationInput, opts ...request.Option) (*redshift.DescribeEndpointAuthorizationOutput, error)
+	DescribeEndpointAuthorizationPagesWithContext(ctx context.Context, input *redshift.DescribeEndpointAuthorizationInput, cb func(*redshift.DescribeEndpointAuthorizationOutput, bool) bool, opts ...request.Option) error
 	DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error)
 	DescribeEventSubscriptionsWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, opts ...request.Option) (*redshift.DescribeEventSubscriptionsOutput, error)
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *redshift.DescribeEventSubscriptionsInput, cb func(*redshift.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
@@ -84,6 +88,7 @@ type Redshift interface {
 	DescribeNodeConfigurationOptionsPagesWithContext(ctx context.Context, input *redshift.DescribeNodeConfigurationOptionsInput, cb func(*redshift.DescribeNodeConfigurationOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableClusterOptionsWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, opts ...request.Option) (*redshift.DescribeOrderableClusterOptionsOutput, error)
 	DescribeOrderableClusterOptionsPagesWithContext(ctx context.Context, input *redshift.DescribeOrderableClusterOptionsInput, cb func(*redshift.DescribeOrderableClusterOptionsOutput, bool) bool, opts ...request.Option) error
+	DescribePartnersWithContext(ctx context.Context, input *redshift.DescribePartnersInput, opts ...request.Option) (*redshift.DescribePartnersOutput, error)
 	DescribeReservedNodeOfferingsWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, opts ...request.Option) (*redshift.DescribeReservedNodeOfferingsOutput, error)
 	DescribeReservedNodeOfferingsPagesWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, cb func(*redshift.DescribeReservedNodeOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedNodesWithContext(ctx context.Context, input *redshift.DescribeReservedNodesInput, opts ...request.Option) (*redshift.DescribeReservedNodesOutput, error)
@@ -136,6 +141,7 @@ type Redshift interface {
 	RevokeEndpointAccessWithContext(ctx context.Context, input *redshift.RevokeEndpointAccessInput, opts ...request.Option) (*redshift.RevokeEndpointAccessOutput, error)
 	RevokeSnapshotAccessWithContext(ctx context.Context, input *redshift.RevokeSnapshotAccessInput, opts ...request.Option) (*redshift.RevokeSnapshotAccessOutput, error)
 	RotateEncryptionKeyWithContext(ctx context.Context, input *redshift.RotateEncryptionKeyInput, opts ...request.Option) (*redshift.RotateEncryptionKeyOutput, error)
+	UpdatePartnerStatusWithContext(ctx context.Context, input *redshift.UpdatePartnerStatusInput, opts ...request.Option) (*redshift.UpdatePartnerStatusOutput, error)
 }
 
 type Client struct {
@@ -172,6 +178,27 @@ func (c *Client) AcceptReservedNodeExchangeWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*redshift.AcceptReservedNodeExchangeOutput), req.Error
+}
+
+func (c *Client) AddPartnerWithContext(ctx context.Context, input *redshift.AddPartnerInput, opts ...request.Option) (*redshift.AddPartnerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "AddPartner",
+		Input:   input,
+		Output:  (*redshift.AddPartnerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.AddPartnerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.AddPartnerOutput), req.Error
 }
 
 func (c *Client) AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.AuthorizeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.AuthorizeClusterSecurityGroupIngressOutput, error) {
@@ -804,6 +831,27 @@ func (c *Client) DeleteHsmConfigurationWithContext(ctx context.Context, input *r
 	return req.Output.(*redshift.DeleteHsmConfigurationOutput), req.Error
 }
 
+func (c *Client) DeletePartnerWithContext(ctx context.Context, input *redshift.DeletePartnerInput, opts ...request.Option) (*redshift.DeletePartnerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeletePartner",
+		Input:   input,
+		Output:  (*redshift.DeletePartnerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeletePartnerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeletePartnerOutput), req.Error
+}
+
 func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, input *redshift.DeleteScheduledActionInput, opts ...request.Option) (*redshift.DeleteScheduledActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1361,6 +1409,26 @@ func (c *Client) DescribeEndpointAccessWithContext(ctx context.Context, input *r
 	return req.Output.(*redshift.DescribeEndpointAccessOutput), req.Error
 }
 
+func (c *Client) DescribeEndpointAccessPagesWithContext(ctx context.Context, input *redshift.DescribeEndpointAccessInput, cb func(*redshift.DescribeEndpointAccessOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeEndpointAccess",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeEndpointAccessPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeEndpointAuthorizationWithContext(ctx context.Context, input *redshift.DescribeEndpointAuthorizationInput, opts ...request.Option) (*redshift.DescribeEndpointAuthorizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -1380,6 +1448,26 @@ func (c *Client) DescribeEndpointAuthorizationWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*redshift.DescribeEndpointAuthorizationOutput), req.Error
+}
+
+func (c *Client) DescribeEndpointAuthorizationPagesWithContext(ctx context.Context, input *redshift.DescribeEndpointAuthorizationInput, cb func(*redshift.DescribeEndpointAuthorizationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeEndpointAuthorization",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeEndpointAuthorizationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeEventCategoriesWithContext(ctx context.Context, input *redshift.DescribeEventCategoriesInput, opts ...request.Option) (*redshift.DescribeEventCategoriesOutput, error) {
@@ -1668,6 +1756,27 @@ func (c *Client) DescribeOrderableClusterOptionsPagesWithContext(ctx context.Con
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribePartnersWithContext(ctx context.Context, input *redshift.DescribePartnersInput, opts ...request.Option) (*redshift.DescribePartnersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribePartners",
+		Input:   input,
+		Output:  (*redshift.DescribePartnersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribePartnersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribePartnersOutput), req.Error
 }
 
 func (c *Client) DescribeReservedNodeOfferingsWithContext(ctx context.Context, input *redshift.DescribeReservedNodeOfferingsInput, opts ...request.Option) (*redshift.DescribeReservedNodeOfferingsOutput, error) {
@@ -2751,4 +2860,25 @@ func (c *Client) RotateEncryptionKeyWithContext(ctx context.Context, input *reds
 	})
 
 	return req.Output.(*redshift.RotateEncryptionKeyOutput), req.Error
+}
+
+func (c *Client) UpdatePartnerStatusWithContext(ctx context.Context, input *redshift.UpdatePartnerStatusInput, opts ...request.Option) (*redshift.UpdatePartnerStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "UpdatePartnerStatus",
+		Input:   input,
+		Output:  (*redshift.UpdatePartnerStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.UpdatePartnerStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.UpdatePartnerStatusOutput), req.Error
 }
