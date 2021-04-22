@@ -11,6 +11,7 @@ import (
 )
 
 type SecurityHub interface {
+	AcceptAdministratorInvitationWithContext(ctx context.Context, input *securityhub.AcceptAdministratorInvitationInput, opts ...request.Option) (*securityhub.AcceptAdministratorInvitationOutput, error)
 	AcceptInvitationWithContext(ctx context.Context, input *securityhub.AcceptInvitationInput, opts ...request.Option) (*securityhub.AcceptInvitationOutput, error)
 	BatchDisableStandardsWithContext(ctx context.Context, input *securityhub.BatchDisableStandardsInput, opts ...request.Option) (*securityhub.BatchDisableStandardsOutput, error)
 	BatchEnableStandardsWithContext(ctx context.Context, input *securityhub.BatchEnableStandardsInput, opts ...request.Option) (*securityhub.BatchEnableStandardsOutput, error)
@@ -37,11 +38,13 @@ type SecurityHub interface {
 	DisableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.DisableImportFindingsForProductInput, opts ...request.Option) (*securityhub.DisableImportFindingsForProductOutput, error)
 	DisableOrganizationAdminAccountWithContext(ctx context.Context, input *securityhub.DisableOrganizationAdminAccountInput, opts ...request.Option) (*securityhub.DisableOrganizationAdminAccountOutput, error)
 	DisableSecurityHubWithContext(ctx context.Context, input *securityhub.DisableSecurityHubInput, opts ...request.Option) (*securityhub.DisableSecurityHubOutput, error)
+	DisassociateFromAdministratorAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromAdministratorAccountInput, opts ...request.Option) (*securityhub.DisassociateFromAdministratorAccountOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error)
 	DisassociateMembersWithContext(ctx context.Context, input *securityhub.DisassociateMembersInput, opts ...request.Option) (*securityhub.DisassociateMembersOutput, error)
 	EnableImportFindingsForProductWithContext(ctx context.Context, input *securityhub.EnableImportFindingsForProductInput, opts ...request.Option) (*securityhub.EnableImportFindingsForProductOutput, error)
 	EnableOrganizationAdminAccountWithContext(ctx context.Context, input *securityhub.EnableOrganizationAdminAccountInput, opts ...request.Option) (*securityhub.EnableOrganizationAdminAccountOutput, error)
 	EnableSecurityHubWithContext(ctx context.Context, input *securityhub.EnableSecurityHubInput, opts ...request.Option) (*securityhub.EnableSecurityHubOutput, error)
+	GetAdministratorAccountWithContext(ctx context.Context, input *securityhub.GetAdministratorAccountInput, opts ...request.Option) (*securityhub.GetAdministratorAccountOutput, error)
 	GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error)
 	GetEnabledStandardsPagesWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, cb func(*securityhub.GetEnabledStandardsOutput, bool) bool, opts ...request.Option) error
 	GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error)
@@ -86,6 +89,27 @@ func New(base securityhubiface.SecurityHubAPI, ctxer awsctx.Contexter) SecurityH
 
 var _ SecurityHub = (*securityhub.SecurityHub)(nil)
 var _ SecurityHub = (*Client)(nil)
+
+func (c *Client) AcceptAdministratorInvitationWithContext(ctx context.Context, input *securityhub.AcceptAdministratorInvitationInput, opts ...request.Option) (*securityhub.AcceptAdministratorInvitationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "AcceptAdministratorInvitation",
+		Input:   input,
+		Output:  (*securityhub.AcceptAdministratorInvitationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.AcceptAdministratorInvitationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.AcceptAdministratorInvitationOutput), req.Error
+}
 
 func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *securityhub.AcceptInvitationInput, opts ...request.Option) (*securityhub.AcceptInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -629,6 +653,27 @@ func (c *Client) DisableSecurityHubWithContext(ctx context.Context, input *secur
 	return req.Output.(*securityhub.DisableSecurityHubOutput), req.Error
 }
 
+func (c *Client) DisassociateFromAdministratorAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromAdministratorAccountInput, opts ...request.Option) (*securityhub.DisassociateFromAdministratorAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DisassociateFromAdministratorAccount",
+		Input:   input,
+		Output:  (*securityhub.DisassociateFromAdministratorAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.DisassociateFromAdministratorAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.DisassociateFromAdministratorAccountOutput), req.Error
+}
+
 func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, input *securityhub.DisassociateFromMasterAccountInput, opts ...request.Option) (*securityhub.DisassociateFromMasterAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -732,6 +777,27 @@ func (c *Client) EnableSecurityHubWithContext(ctx context.Context, input *securi
 	})
 
 	return req.Output.(*securityhub.EnableSecurityHubOutput), req.Error
+}
+
+func (c *Client) GetAdministratorAccountWithContext(ctx context.Context, input *securityhub.GetAdministratorAccountInput, opts ...request.Option) (*securityhub.GetAdministratorAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetAdministratorAccount",
+		Input:   input,
+		Output:  (*securityhub.GetAdministratorAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.GetAdministratorAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.GetAdministratorAccountOutput), req.Error
 }
 
 func (c *Client) GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error) {
