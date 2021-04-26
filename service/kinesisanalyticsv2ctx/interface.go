@@ -38,6 +38,7 @@ type KinesisAnalyticsV2 interface {
 	TagResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.TagResourceInput, opts ...request.Option) (*kinesisanalyticsv2.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.UntagResourceInput, opts ...request.Option) (*kinesisanalyticsv2.UntagResourceOutput, error)
 	UpdateApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.UpdateApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.UpdateApplicationOutput, error)
+	UpdateApplicationMaintenanceConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.UpdateApplicationMaintenanceConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.UpdateApplicationMaintenanceConfigurationOutput, error)
 }
 
 type Client struct {
@@ -620,4 +621,25 @@ func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *kinesi
 	})
 
 	return req.Output.(*kinesisanalyticsv2.UpdateApplicationOutput), req.Error
+}
+
+func (c *Client) UpdateApplicationMaintenanceConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.UpdateApplicationMaintenanceConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.UpdateApplicationMaintenanceConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "UpdateApplicationMaintenanceConfiguration",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.UpdateApplicationMaintenanceConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.UpdateApplicationMaintenanceConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.UpdateApplicationMaintenanceConfigurationOutput), req.Error
 }

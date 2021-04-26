@@ -14,6 +14,7 @@ type Personalize interface {
 	CreateBatchInferenceJobWithContext(ctx context.Context, input *personalize.CreateBatchInferenceJobInput, opts ...request.Option) (*personalize.CreateBatchInferenceJobOutput, error)
 	CreateCampaignWithContext(ctx context.Context, input *personalize.CreateCampaignInput, opts ...request.Option) (*personalize.CreateCampaignOutput, error)
 	CreateDatasetWithContext(ctx context.Context, input *personalize.CreateDatasetInput, opts ...request.Option) (*personalize.CreateDatasetOutput, error)
+	CreateDatasetExportJobWithContext(ctx context.Context, input *personalize.CreateDatasetExportJobInput, opts ...request.Option) (*personalize.CreateDatasetExportJobOutput, error)
 	CreateDatasetGroupWithContext(ctx context.Context, input *personalize.CreateDatasetGroupInput, opts ...request.Option) (*personalize.CreateDatasetGroupOutput, error)
 	CreateDatasetImportJobWithContext(ctx context.Context, input *personalize.CreateDatasetImportJobInput, opts ...request.Option) (*personalize.CreateDatasetImportJobOutput, error)
 	CreateEventTrackerWithContext(ctx context.Context, input *personalize.CreateEventTrackerInput, opts ...request.Option) (*personalize.CreateEventTrackerOutput, error)
@@ -32,6 +33,7 @@ type Personalize interface {
 	DescribeBatchInferenceJobWithContext(ctx context.Context, input *personalize.DescribeBatchInferenceJobInput, opts ...request.Option) (*personalize.DescribeBatchInferenceJobOutput, error)
 	DescribeCampaignWithContext(ctx context.Context, input *personalize.DescribeCampaignInput, opts ...request.Option) (*personalize.DescribeCampaignOutput, error)
 	DescribeDatasetWithContext(ctx context.Context, input *personalize.DescribeDatasetInput, opts ...request.Option) (*personalize.DescribeDatasetOutput, error)
+	DescribeDatasetExportJobWithContext(ctx context.Context, input *personalize.DescribeDatasetExportJobInput, opts ...request.Option) (*personalize.DescribeDatasetExportJobOutput, error)
 	DescribeDatasetGroupWithContext(ctx context.Context, input *personalize.DescribeDatasetGroupInput, opts ...request.Option) (*personalize.DescribeDatasetGroupOutput, error)
 	DescribeDatasetImportJobWithContext(ctx context.Context, input *personalize.DescribeDatasetImportJobInput, opts ...request.Option) (*personalize.DescribeDatasetImportJobOutput, error)
 	DescribeEventTrackerWithContext(ctx context.Context, input *personalize.DescribeEventTrackerInput, opts ...request.Option) (*personalize.DescribeEventTrackerOutput, error)
@@ -46,6 +48,8 @@ type Personalize interface {
 	ListBatchInferenceJobsPagesWithContext(ctx context.Context, input *personalize.ListBatchInferenceJobsInput, cb func(*personalize.ListBatchInferenceJobsOutput, bool) bool, opts ...request.Option) error
 	ListCampaignsWithContext(ctx context.Context, input *personalize.ListCampaignsInput, opts ...request.Option) (*personalize.ListCampaignsOutput, error)
 	ListCampaignsPagesWithContext(ctx context.Context, input *personalize.ListCampaignsInput, cb func(*personalize.ListCampaignsOutput, bool) bool, opts ...request.Option) error
+	ListDatasetExportJobsWithContext(ctx context.Context, input *personalize.ListDatasetExportJobsInput, opts ...request.Option) (*personalize.ListDatasetExportJobsOutput, error)
+	ListDatasetExportJobsPagesWithContext(ctx context.Context, input *personalize.ListDatasetExportJobsInput, cb func(*personalize.ListDatasetExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetGroupsWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, opts ...request.Option) (*personalize.ListDatasetGroupsOutput, error)
 	ListDatasetGroupsPagesWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, cb func(*personalize.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error
 	ListDatasetImportJobsWithContext(ctx context.Context, input *personalize.ListDatasetImportJobsInput, opts ...request.Option) (*personalize.ListDatasetImportJobsOutput, error)
@@ -55,6 +59,7 @@ type Personalize interface {
 	ListEventTrackersWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, opts ...request.Option) (*personalize.ListEventTrackersOutput, error)
 	ListEventTrackersPagesWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, cb func(*personalize.ListEventTrackersOutput, bool) bool, opts ...request.Option) error
 	ListFiltersWithContext(ctx context.Context, input *personalize.ListFiltersInput, opts ...request.Option) (*personalize.ListFiltersOutput, error)
+	ListFiltersPagesWithContext(ctx context.Context, input *personalize.ListFiltersInput, cb func(*personalize.ListFiltersOutput, bool) bool, opts ...request.Option) error
 	ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error)
 	ListRecipesPagesWithContext(ctx context.Context, input *personalize.ListRecipesInput, cb func(*personalize.ListRecipesOutput, bool) bool, opts ...request.Option) error
 	ListSchemasWithContext(ctx context.Context, input *personalize.ListSchemasInput, opts ...request.Option) (*personalize.ListSchemasOutput, error)
@@ -142,6 +147,27 @@ func (c *Client) CreateDatasetWithContext(ctx context.Context, input *personaliz
 	})
 
 	return req.Output.(*personalize.CreateDatasetOutput), req.Error
+}
+
+func (c *Client) CreateDatasetExportJobWithContext(ctx context.Context, input *personalize.CreateDatasetExportJobInput, opts ...request.Option) (*personalize.CreateDatasetExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "CreateDatasetExportJob",
+		Input:   input,
+		Output:  (*personalize.CreateDatasetExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.CreateDatasetExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.CreateDatasetExportJobOutput), req.Error
 }
 
 func (c *Client) CreateDatasetGroupWithContext(ctx context.Context, input *personalize.CreateDatasetGroupInput, opts ...request.Option) (*personalize.CreateDatasetGroupOutput, error) {
@@ -522,6 +548,27 @@ func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *personal
 	return req.Output.(*personalize.DescribeDatasetOutput), req.Error
 }
 
+func (c *Client) DescribeDatasetExportJobWithContext(ctx context.Context, input *personalize.DescribeDatasetExportJobInput, opts ...request.Option) (*personalize.DescribeDatasetExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "DescribeDatasetExportJob",
+		Input:   input,
+		Output:  (*personalize.DescribeDatasetExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.DescribeDatasetExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.DescribeDatasetExportJobOutput), req.Error
+}
+
 func (c *Client) DescribeDatasetGroupWithContext(ctx context.Context, input *personalize.DescribeDatasetGroupInput, opts ...request.Option) (*personalize.DescribeDatasetGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -814,6 +861,47 @@ func (c *Client) ListCampaignsPagesWithContext(ctx context.Context, input *perso
 	return req.Error
 }
 
+func (c *Client) ListDatasetExportJobsWithContext(ctx context.Context, input *personalize.ListDatasetExportJobsInput, opts ...request.Option) (*personalize.ListDatasetExportJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListDatasetExportJobs",
+		Input:   input,
+		Output:  (*personalize.ListDatasetExportJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.ListDatasetExportJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.ListDatasetExportJobsOutput), req.Error
+}
+
+func (c *Client) ListDatasetExportJobsPagesWithContext(ctx context.Context, input *personalize.ListDatasetExportJobsInput, cb func(*personalize.ListDatasetExportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListDatasetExportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListDatasetExportJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDatasetGroupsWithContext(ctx context.Context, input *personalize.ListDatasetGroupsInput, opts ...request.Option) (*personalize.ListDatasetGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -997,6 +1085,26 @@ func (c *Client) ListFiltersWithContext(ctx context.Context, input *personalize.
 	})
 
 	return req.Output.(*personalize.ListFiltersOutput), req.Error
+}
+
+func (c *Client) ListFiltersPagesWithContext(ctx context.Context, input *personalize.ListFiltersInput, cb func(*personalize.ListFiltersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListFilters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListFiltersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error) {
