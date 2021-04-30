@@ -25,6 +25,7 @@ type ForecastService interface {
 	DeleteForecastExportJobWithContext(ctx context.Context, input *forecastservice.DeleteForecastExportJobInput, opts ...request.Option) (*forecastservice.DeleteForecastExportJobOutput, error)
 	DeletePredictorWithContext(ctx context.Context, input *forecastservice.DeletePredictorInput, opts ...request.Option) (*forecastservice.DeletePredictorOutput, error)
 	DeletePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DeletePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DeletePredictorBacktestExportJobOutput, error)
+	DeleteResourceTreeWithContext(ctx context.Context, input *forecastservice.DeleteResourceTreeInput, opts ...request.Option) (*forecastservice.DeleteResourceTreeOutput, error)
 	DescribeDatasetWithContext(ctx context.Context, input *forecastservice.DescribeDatasetInput, opts ...request.Option) (*forecastservice.DescribeDatasetOutput, error)
 	DescribeDatasetGroupWithContext(ctx context.Context, input *forecastservice.DescribeDatasetGroupInput, opts ...request.Option) (*forecastservice.DescribeDatasetGroupOutput, error)
 	DescribeDatasetImportJobWithContext(ctx context.Context, input *forecastservice.DescribeDatasetImportJobInput, opts ...request.Option) (*forecastservice.DescribeDatasetImportJobOutput, error)
@@ -361,6 +362,27 @@ func (c *Client) DeletePredictorBacktestExportJobWithContext(ctx context.Context
 	})
 
 	return req.Output.(*forecastservice.DeletePredictorBacktestExportJobOutput), req.Error
+}
+
+func (c *Client) DeleteResourceTreeWithContext(ctx context.Context, input *forecastservice.DeleteResourceTreeInput, opts ...request.Option) (*forecastservice.DeleteResourceTreeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DeleteResourceTree",
+		Input:   input,
+		Output:  (*forecastservice.DeleteResourceTreeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DeleteResourceTreeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DeleteResourceTreeOutput), req.Error
 }
 
 func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *forecastservice.DescribeDatasetInput, opts ...request.Option) (*forecastservice.DescribeDatasetOutput, error) {

@@ -17,6 +17,7 @@ type CloudFront interface {
 	CreateDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateDistributionWithTagsOutput, error)
 	CreateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionConfigOutput, error)
 	CreateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionProfileOutput, error)
+	CreateFunctionWithContext(ctx context.Context, input *cloudfront.CreateFunctionInput, opts ...request.Option) (*cloudfront.CreateFunctionOutput, error)
 	CreateInvalidationWithContext(ctx context.Context, input *cloudfront.CreateInvalidationInput, opts ...request.Option) (*cloudfront.CreateInvalidationOutput, error)
 	CreateKeyGroupWithContext(ctx context.Context, input *cloudfront.CreateKeyGroupInput, opts ...request.Option) (*cloudfront.CreateKeyGroupOutput, error)
 	CreateMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.CreateMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.CreateMonitoringSubscriptionOutput, error)
@@ -30,12 +31,14 @@ type CloudFront interface {
 	DeleteDistributionWithContext(ctx context.Context, input *cloudfront.DeleteDistributionInput, opts ...request.Option) (*cloudfront.DeleteDistributionOutput, error)
 	DeleteFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionConfigOutput, error)
 	DeleteFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionProfileOutput, error)
+	DeleteFunctionWithContext(ctx context.Context, input *cloudfront.DeleteFunctionInput, opts ...request.Option) (*cloudfront.DeleteFunctionOutput, error)
 	DeleteKeyGroupWithContext(ctx context.Context, input *cloudfront.DeleteKeyGroupInput, opts ...request.Option) (*cloudfront.DeleteKeyGroupOutput, error)
 	DeleteMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.DeleteMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.DeleteMonitoringSubscriptionOutput, error)
 	DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error)
 	DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error)
 	DeleteRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.DeleteRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.DeleteRealtimeLogConfigOutput, error)
 	DeleteStreamingDistributionWithContext(ctx context.Context, input *cloudfront.DeleteStreamingDistributionInput, opts ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error)
+	DescribeFunctionWithContext(ctx context.Context, input *cloudfront.DescribeFunctionInput, opts ...request.Option) (*cloudfront.DescribeFunctionOutput, error)
 	GetCachePolicyWithContext(ctx context.Context, input *cloudfront.GetCachePolicyInput, opts ...request.Option) (*cloudfront.GetCachePolicyOutput, error)
 	GetCachePolicyConfigWithContext(ctx context.Context, input *cloudfront.GetCachePolicyConfigInput, opts ...request.Option) (*cloudfront.GetCachePolicyConfigOutput, error)
 	GetCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityOutput, error)
@@ -46,6 +49,7 @@ type CloudFront interface {
 	GetFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionConfigOutput, error)
 	GetFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileOutput, error)
 	GetFieldLevelEncryptionProfileConfigWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionProfileConfigInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionProfileConfigOutput, error)
+	GetFunctionWithContext(ctx context.Context, input *cloudfront.GetFunctionInput, opts ...request.Option) (*cloudfront.GetFunctionOutput, error)
 	GetInvalidationWithContext(ctx context.Context, input *cloudfront.GetInvalidationInput, opts ...request.Option) (*cloudfront.GetInvalidationOutput, error)
 	GetKeyGroupWithContext(ctx context.Context, input *cloudfront.GetKeyGroupInput, opts ...request.Option) (*cloudfront.GetKeyGroupOutput, error)
 	GetKeyGroupConfigWithContext(ctx context.Context, input *cloudfront.GetKeyGroupConfigInput, opts ...request.Option) (*cloudfront.GetKeyGroupConfigOutput, error)
@@ -69,6 +73,7 @@ type CloudFront interface {
 	ListDistributionsByWebACLIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByWebACLIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByWebACLIdOutput, error)
 	ListFieldLevelEncryptionConfigsWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionConfigsInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionConfigsOutput, error)
 	ListFieldLevelEncryptionProfilesWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionProfilesInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionProfilesOutput, error)
+	ListFunctionsWithContext(ctx context.Context, input *cloudfront.ListFunctionsInput, opts ...request.Option) (*cloudfront.ListFunctionsOutput, error)
 	ListInvalidationsWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, opts ...request.Option) (*cloudfront.ListInvalidationsOutput, error)
 	ListInvalidationsPagesWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, cb func(*cloudfront.ListInvalidationsOutput, bool) bool, opts ...request.Option) error
 	ListKeyGroupsWithContext(ctx context.Context, input *cloudfront.ListKeyGroupsInput, opts ...request.Option) (*cloudfront.ListKeyGroupsOutput, error)
@@ -78,13 +83,16 @@ type CloudFront interface {
 	ListStreamingDistributionsWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, opts ...request.Option) (*cloudfront.ListStreamingDistributionsOutput, error)
 	ListStreamingDistributionsPagesWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, cb func(*cloudfront.ListStreamingDistributionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudfront.ListTagsForResourceInput, opts ...request.Option) (*cloudfront.ListTagsForResourceOutput, error)
+	PublishFunctionWithContext(ctx context.Context, input *cloudfront.PublishFunctionInput, opts ...request.Option) (*cloudfront.PublishFunctionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *cloudfront.TagResourceInput, opts ...request.Option) (*cloudfront.TagResourceOutput, error)
+	TestFunctionWithContext(ctx context.Context, input *cloudfront.TestFunctionInput, opts ...request.Option) (*cloudfront.TestFunctionOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *cloudfront.UntagResourceInput, opts ...request.Option) (*cloudfront.UntagResourceOutput, error)
 	UpdateCachePolicyWithContext(ctx context.Context, input *cloudfront.UpdateCachePolicyInput, opts ...request.Option) (*cloudfront.UpdateCachePolicyOutput, error)
 	UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.UpdateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput, error)
 	UpdateDistributionWithContext(ctx context.Context, input *cloudfront.UpdateDistributionInput, opts ...request.Option) (*cloudfront.UpdateDistributionOutput, error)
 	UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionConfigOutput, error)
 	UpdateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionProfileOutput, error)
+	UpdateFunctionWithContext(ctx context.Context, input *cloudfront.UpdateFunctionInput, opts ...request.Option) (*cloudfront.UpdateFunctionOutput, error)
 	UpdateKeyGroupWithContext(ctx context.Context, input *cloudfront.UpdateKeyGroupInput, opts ...request.Option) (*cloudfront.UpdateKeyGroupOutput, error)
 	UpdateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.UpdateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.UpdateOriginRequestPolicyOutput, error)
 	UpdatePublicKeyWithContext(ctx context.Context, input *cloudfront.UpdatePublicKeyInput, opts ...request.Option) (*cloudfront.UpdatePublicKeyOutput, error)
@@ -231,6 +239,27 @@ func (c *Client) CreateFieldLevelEncryptionProfileWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*cloudfront.CreateFieldLevelEncryptionProfileOutput), req.Error
+}
+
+func (c *Client) CreateFunctionWithContext(ctx context.Context, input *cloudfront.CreateFunctionInput, opts ...request.Option) (*cloudfront.CreateFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateFunction",
+		Input:   input,
+		Output:  (*cloudfront.CreateFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateFunctionOutput), req.Error
 }
 
 func (c *Client) CreateInvalidationWithContext(ctx context.Context, input *cloudfront.CreateInvalidationInput, opts ...request.Option) (*cloudfront.CreateInvalidationOutput, error) {
@@ -506,6 +535,27 @@ func (c *Client) DeleteFieldLevelEncryptionProfileWithContext(ctx context.Contex
 	return req.Output.(*cloudfront.DeleteFieldLevelEncryptionProfileOutput), req.Error
 }
 
+func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *cloudfront.DeleteFunctionInput, opts ...request.Option) (*cloudfront.DeleteFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteFunction",
+		Input:   input,
+		Output:  (*cloudfront.DeleteFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteFunctionOutput), req.Error
+}
+
 func (c *Client) DeleteKeyGroupWithContext(ctx context.Context, input *cloudfront.DeleteKeyGroupInput, opts ...request.Option) (*cloudfront.DeleteKeyGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -630,6 +680,27 @@ func (c *Client) DeleteStreamingDistributionWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*cloudfront.DeleteStreamingDistributionOutput), req.Error
+}
+
+func (c *Client) DescribeFunctionWithContext(ctx context.Context, input *cloudfront.DescribeFunctionInput, opts ...request.Option) (*cloudfront.DescribeFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DescribeFunction",
+		Input:   input,
+		Output:  (*cloudfront.DescribeFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DescribeFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DescribeFunctionOutput), req.Error
 }
 
 func (c *Client) GetCachePolicyWithContext(ctx context.Context, input *cloudfront.GetCachePolicyInput, opts ...request.Option) (*cloudfront.GetCachePolicyOutput, error) {
@@ -840,6 +911,27 @@ func (c *Client) GetFieldLevelEncryptionProfileConfigWithContext(ctx context.Con
 	})
 
 	return req.Output.(*cloudfront.GetFieldLevelEncryptionProfileConfigOutput), req.Error
+}
+
+func (c *Client) GetFunctionWithContext(ctx context.Context, input *cloudfront.GetFunctionInput, opts ...request.Option) (*cloudfront.GetFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetFunction",
+		Input:   input,
+		Output:  (*cloudfront.GetFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetFunctionOutput), req.Error
 }
 
 func (c *Client) GetInvalidationWithContext(ctx context.Context, input *cloudfront.GetInvalidationInput, opts ...request.Option) (*cloudfront.GetInvalidationOutput, error) {
@@ -1323,6 +1415,27 @@ func (c *Client) ListFieldLevelEncryptionProfilesWithContext(ctx context.Context
 	return req.Output.(*cloudfront.ListFieldLevelEncryptionProfilesOutput), req.Error
 }
 
+func (c *Client) ListFunctionsWithContext(ctx context.Context, input *cloudfront.ListFunctionsInput, opts ...request.Option) (*cloudfront.ListFunctionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListFunctions",
+		Input:   input,
+		Output:  (*cloudfront.ListFunctionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListFunctionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListFunctionsOutput), req.Error
+}
+
 func (c *Client) ListInvalidationsWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, opts ...request.Option) (*cloudfront.ListInvalidationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -1510,6 +1623,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *clou
 	return req.Output.(*cloudfront.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) PublishFunctionWithContext(ctx context.Context, input *cloudfront.PublishFunctionInput, opts ...request.Option) (*cloudfront.PublishFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "PublishFunction",
+		Input:   input,
+		Output:  (*cloudfront.PublishFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.PublishFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.PublishFunctionOutput), req.Error
+}
+
 func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudfront.TagResourceInput, opts ...request.Option) (*cloudfront.TagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -1529,6 +1663,27 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudfront.T
 	})
 
 	return req.Output.(*cloudfront.TagResourceOutput), req.Error
+}
+
+func (c *Client) TestFunctionWithContext(ctx context.Context, input *cloudfront.TestFunctionInput, opts ...request.Option) (*cloudfront.TestFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "TestFunction",
+		Input:   input,
+		Output:  (*cloudfront.TestFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.TestFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.TestFunctionOutput), req.Error
 }
 
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudfront.UntagResourceInput, opts ...request.Option) (*cloudfront.UntagResourceOutput, error) {
@@ -1655,6 +1810,27 @@ func (c *Client) UpdateFieldLevelEncryptionProfileWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*cloudfront.UpdateFieldLevelEncryptionProfileOutput), req.Error
+}
+
+func (c *Client) UpdateFunctionWithContext(ctx context.Context, input *cloudfront.UpdateFunctionInput, opts ...request.Option) (*cloudfront.UpdateFunctionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateFunction",
+		Input:   input,
+		Output:  (*cloudfront.UpdateFunctionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateFunctionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateFunctionOutput), req.Error
 }
 
 func (c *Client) UpdateKeyGroupWithContext(ctx context.Context, input *cloudfront.UpdateKeyGroupInput, opts ...request.Option) (*cloudfront.UpdateKeyGroupOutput, error) {
