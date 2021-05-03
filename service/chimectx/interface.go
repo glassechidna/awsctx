@@ -16,6 +16,7 @@ type Chime interface {
 	AssociatePhoneNumbersWithVoiceConnectorGroupWithContext(ctx context.Context, input *chime.AssociatePhoneNumbersWithVoiceConnectorGroupInput, opts ...request.Option) (*chime.AssociatePhoneNumbersWithVoiceConnectorGroupOutput, error)
 	AssociateSigninDelegateGroupsWithAccountWithContext(ctx context.Context, input *chime.AssociateSigninDelegateGroupsWithAccountInput, opts ...request.Option) (*chime.AssociateSigninDelegateGroupsWithAccountOutput, error)
 	BatchCreateAttendeeWithContext(ctx context.Context, input *chime.BatchCreateAttendeeInput, opts ...request.Option) (*chime.BatchCreateAttendeeOutput, error)
+	BatchCreateChannelMembershipWithContext(ctx context.Context, input *chime.BatchCreateChannelMembershipInput, opts ...request.Option) (*chime.BatchCreateChannelMembershipOutput, error)
 	BatchCreateRoomMembershipWithContext(ctx context.Context, input *chime.BatchCreateRoomMembershipInput, opts ...request.Option) (*chime.BatchCreateRoomMembershipOutput, error)
 	BatchDeletePhoneNumberWithContext(ctx context.Context, input *chime.BatchDeletePhoneNumberInput, opts ...request.Option) (*chime.BatchDeletePhoneNumberOutput, error)
 	BatchSuspendUserWithContext(ctx context.Context, input *chime.BatchSuspendUserInput, opts ...request.Option) (*chime.BatchSuspendUserOutput, error)
@@ -336,6 +337,27 @@ func (c *Client) BatchCreateAttendeeWithContext(ctx context.Context, input *chim
 	})
 
 	return req.Output.(*chime.BatchCreateAttendeeOutput), req.Error
+}
+
+func (c *Client) BatchCreateChannelMembershipWithContext(ctx context.Context, input *chime.BatchCreateChannelMembershipInput, opts ...request.Option) (*chime.BatchCreateChannelMembershipOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "BatchCreateChannelMembership",
+		Input:   input,
+		Output:  (*chime.BatchCreateChannelMembershipOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.BatchCreateChannelMembershipWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.BatchCreateChannelMembershipOutput), req.Error
 }
 
 func (c *Client) BatchCreateRoomMembershipWithContext(ctx context.Context, input *chime.BatchCreateRoomMembershipInput, opts ...request.Option) (*chime.BatchCreateRoomMembershipOutput, error) {
