@@ -162,6 +162,7 @@ type Chime interface {
 	ListSipMediaApplicationsPagesWithContext(ctx context.Context, input *chime.ListSipMediaApplicationsInput, cb func(*chime.ListSipMediaApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListSipRulesWithContext(ctx context.Context, input *chime.ListSipRulesInput, opts ...request.Option) (*chime.ListSipRulesOutput, error)
 	ListSipRulesPagesWithContext(ctx context.Context, input *chime.ListSipRulesInput, cb func(*chime.ListSipRulesOutput, bool) bool, opts ...request.Option) error
+	ListSupportedPhoneNumberCountriesWithContext(ctx context.Context, input *chime.ListSupportedPhoneNumberCountriesInput, opts ...request.Option) (*chime.ListSupportedPhoneNumberCountriesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *chime.ListTagsForResourceInput, opts ...request.Option) (*chime.ListTagsForResourceOutput, error)
 	ListUsersWithContext(ctx context.Context, input *chime.ListUsersInput, opts ...request.Option) (*chime.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *chime.ListUsersInput, cb func(*chime.ListUsersOutput, bool) bool, opts ...request.Option) error
@@ -190,6 +191,7 @@ type Chime interface {
 	ResetPersonalPINWithContext(ctx context.Context, input *chime.ResetPersonalPINInput, opts ...request.Option) (*chime.ResetPersonalPINOutput, error)
 	RestorePhoneNumberWithContext(ctx context.Context, input *chime.RestorePhoneNumberInput, opts ...request.Option) (*chime.RestorePhoneNumberOutput, error)
 	SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*chime.SearchAvailablePhoneNumbersOutput, error)
+	SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, cb func(*chime.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	SendChannelMessageWithContext(ctx context.Context, input *chime.SendChannelMessageInput, opts ...request.Option) (*chime.SendChannelMessageOutput, error)
 	TagAttendeeWithContext(ctx context.Context, input *chime.TagAttendeeInput, opts ...request.Option) (*chime.TagAttendeeOutput, error)
 	TagMeetingWithContext(ctx context.Context, input *chime.TagMeetingInput, opts ...request.Option) (*chime.TagMeetingOutput, error)
@@ -3384,6 +3386,27 @@ func (c *Client) ListSipRulesPagesWithContext(ctx context.Context, input *chime.
 	return req.Error
 }
 
+func (c *Client) ListSupportedPhoneNumberCountriesWithContext(ctx context.Context, input *chime.ListSupportedPhoneNumberCountriesInput, opts ...request.Option) (*chime.ListSupportedPhoneNumberCountriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ListSupportedPhoneNumberCountries",
+		Input:   input,
+		Output:  (*chime.ListSupportedPhoneNumberCountriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ListSupportedPhoneNumberCountriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ListSupportedPhoneNumberCountriesOutput), req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *chime.ListTagsForResourceInput, opts ...request.Option) (*chime.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "chime",
@@ -3967,6 +3990,26 @@ func (c *Client) SearchAvailablePhoneNumbersWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*chime.SearchAvailablePhoneNumbersOutput), req.Error
+}
+
+func (c *Client) SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, cb func(*chime.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "SearchAvailablePhoneNumbers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ChimeAPI.SearchAvailablePhoneNumbersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SendChannelMessageWithContext(ctx context.Context, input *chime.SendChannelMessageInput, opts ...request.Option) (*chime.SendChannelMessageOutput, error) {
