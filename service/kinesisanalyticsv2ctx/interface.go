@@ -33,6 +33,7 @@ type KinesisAnalyticsV2 interface {
 	ListApplicationSnapshotsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationSnapshotsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationSnapshotsOutput, error)
 	ListApplicationsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.ListTagsForResourceInput, opts ...request.Option) (*kinesisanalyticsv2.ListTagsForResourceOutput, error)
+	RollbackApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.RollbackApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.RollbackApplicationOutput, error)
 	StartApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.StartApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.StartApplicationOutput, error)
 	StopApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.StopApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.StopApplicationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.TagResourceInput, opts ...request.Option) (*kinesisanalyticsv2.TagResourceOutput, error)
@@ -516,6 +517,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *kine
 	})
 
 	return req.Output.(*kinesisanalyticsv2.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) RollbackApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.RollbackApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.RollbackApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "RollbackApplication",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.RollbackApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.RollbackApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.RollbackApplicationOutput), req.Error
 }
 
 func (c *Client) StartApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.StartApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.StartApplicationOutput, error) {
