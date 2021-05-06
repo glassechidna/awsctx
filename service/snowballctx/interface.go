@@ -16,6 +16,7 @@ type Snowball interface {
 	CreateAddressWithContext(ctx context.Context, input *snowball.CreateAddressInput, opts ...request.Option) (*snowball.CreateAddressOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *snowball.CreateClusterInput, opts ...request.Option) (*snowball.CreateClusterOutput, error)
 	CreateJobWithContext(ctx context.Context, input *snowball.CreateJobInput, opts ...request.Option) (*snowball.CreateJobOutput, error)
+	CreateLongTermPricingWithContext(ctx context.Context, input *snowball.CreateLongTermPricingInput, opts ...request.Option) (*snowball.CreateLongTermPricingOutput, error)
 	CreateReturnShippingLabelWithContext(ctx context.Context, input *snowball.CreateReturnShippingLabelInput, opts ...request.Option) (*snowball.CreateReturnShippingLabelOutput, error)
 	DescribeAddressWithContext(ctx context.Context, input *snowball.DescribeAddressInput, opts ...request.Option) (*snowball.DescribeAddressOutput, error)
 	DescribeAddressesWithContext(ctx context.Context, input *snowball.DescribeAddressesInput, opts ...request.Option) (*snowball.DescribeAddressesOutput, error)
@@ -32,9 +33,11 @@ type Snowball interface {
 	ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error)
 	ListJobsWithContext(ctx context.Context, input *snowball.ListJobsInput, opts ...request.Option) (*snowball.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *snowball.ListJobsInput, cb func(*snowball.ListJobsOutput, bool) bool, opts ...request.Option) error
+	ListLongTermPricingWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, opts ...request.Option) (*snowball.ListLongTermPricingOutput, error)
 	UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *snowball.UpdateJobInput, opts ...request.Option) (*snowball.UpdateJobOutput, error)
 	UpdateJobShipmentStateWithContext(ctx context.Context, input *snowball.UpdateJobShipmentStateInput, opts ...request.Option) (*snowball.UpdateJobShipmentStateOutput, error)
+	UpdateLongTermPricingWithContext(ctx context.Context, input *snowball.UpdateLongTermPricingInput, opts ...request.Option) (*snowball.UpdateLongTermPricingOutput, error)
 }
 
 type Client struct {
@@ -155,6 +158,27 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *snowball.Creat
 	})
 
 	return req.Output.(*snowball.CreateJobOutput), req.Error
+}
+
+func (c *Client) CreateLongTermPricingWithContext(ctx context.Context, input *snowball.CreateLongTermPricingInput, opts ...request.Option) (*snowball.CreateLongTermPricingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "CreateLongTermPricing",
+		Input:   input,
+		Output:  (*snowball.CreateLongTermPricingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.CreateLongTermPricingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.CreateLongTermPricingOutput), req.Error
 }
 
 func (c *Client) CreateReturnShippingLabelWithContext(ctx context.Context, input *snowball.CreateReturnShippingLabelInput, opts ...request.Option) (*snowball.CreateReturnShippingLabelOutput, error) {
@@ -491,6 +515,27 @@ func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *snowball.L
 	return req.Error
 }
 
+func (c *Client) ListLongTermPricingWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, opts ...request.Option) (*snowball.ListLongTermPricingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListLongTermPricing",
+		Input:   input,
+		Output:  (*snowball.ListLongTermPricingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.ListLongTermPricingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.ListLongTermPricingOutput), req.Error
+}
+
 func (c *Client) UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
@@ -552,4 +597,25 @@ func (c *Client) UpdateJobShipmentStateWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*snowball.UpdateJobShipmentStateOutput), req.Error
+}
+
+func (c *Client) UpdateLongTermPricingWithContext(ctx context.Context, input *snowball.UpdateLongTermPricingInput, opts ...request.Option) (*snowball.UpdateLongTermPricingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "UpdateLongTermPricing",
+		Input:   input,
+		Output:  (*snowball.UpdateLongTermPricingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.UpdateLongTermPricingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.UpdateLongTermPricingOutput), req.Error
 }
