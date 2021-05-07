@@ -11,21 +11,31 @@ import (
 )
 
 type LakeFormation interface {
+	AddLFTagsToResourceWithContext(ctx context.Context, input *lakeformation.AddLFTagsToResourceInput, opts ...request.Option) (*lakeformation.AddLFTagsToResourceOutput, error)
 	BatchGrantPermissionsWithContext(ctx context.Context, input *lakeformation.BatchGrantPermissionsInput, opts ...request.Option) (*lakeformation.BatchGrantPermissionsOutput, error)
 	BatchRevokePermissionsWithContext(ctx context.Context, input *lakeformation.BatchRevokePermissionsInput, opts ...request.Option) (*lakeformation.BatchRevokePermissionsOutput, error)
+	CreateLFTagWithContext(ctx context.Context, input *lakeformation.CreateLFTagInput, opts ...request.Option) (*lakeformation.CreateLFTagOutput, error)
+	DeleteLFTagWithContext(ctx context.Context, input *lakeformation.DeleteLFTagInput, opts ...request.Option) (*lakeformation.DeleteLFTagOutput, error)
 	DeregisterResourceWithContext(ctx context.Context, input *lakeformation.DeregisterResourceInput, opts ...request.Option) (*lakeformation.DeregisterResourceOutput, error)
 	DescribeResourceWithContext(ctx context.Context, input *lakeformation.DescribeResourceInput, opts ...request.Option) (*lakeformation.DescribeResourceOutput, error)
 	GetDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.GetDataLakeSettingsInput, opts ...request.Option) (*lakeformation.GetDataLakeSettingsOutput, error)
 	GetEffectivePermissionsForPathWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, opts ...request.Option) (*lakeformation.GetEffectivePermissionsForPathOutput, error)
 	GetEffectivePermissionsForPathPagesWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, cb func(*lakeformation.GetEffectivePermissionsForPathOutput, bool) bool, opts ...request.Option) error
+	GetLFTagWithContext(ctx context.Context, input *lakeformation.GetLFTagInput, opts ...request.Option) (*lakeformation.GetLFTagOutput, error)
+	GetResourceLFTagsWithContext(ctx context.Context, input *lakeformation.GetResourceLFTagsInput, opts ...request.Option) (*lakeformation.GetResourceLFTagsOutput, error)
 	GrantPermissionsWithContext(ctx context.Context, input *lakeformation.GrantPermissionsInput, opts ...request.Option) (*lakeformation.GrantPermissionsOutput, error)
+	ListLFTagsWithContext(ctx context.Context, input *lakeformation.ListLFTagsInput, opts ...request.Option) (*lakeformation.ListLFTagsOutput, error)
 	ListPermissionsWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, opts ...request.Option) (*lakeformation.ListPermissionsOutput, error)
 	ListPermissionsPagesWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, cb func(*lakeformation.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, opts ...request.Option) (*lakeformation.ListResourcesOutput, error)
 	ListResourcesPagesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, cb func(*lakeformation.ListResourcesOutput, bool) bool, opts ...request.Option) error
 	PutDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.PutDataLakeSettingsInput, opts ...request.Option) (*lakeformation.PutDataLakeSettingsOutput, error)
 	RegisterResourceWithContext(ctx context.Context, input *lakeformation.RegisterResourceInput, opts ...request.Option) (*lakeformation.RegisterResourceOutput, error)
+	RemoveLFTagsFromResourceWithContext(ctx context.Context, input *lakeformation.RemoveLFTagsFromResourceInput, opts ...request.Option) (*lakeformation.RemoveLFTagsFromResourceOutput, error)
 	RevokePermissionsWithContext(ctx context.Context, input *lakeformation.RevokePermissionsInput, opts ...request.Option) (*lakeformation.RevokePermissionsOutput, error)
+	SearchDatabasesByLFTagsWithContext(ctx context.Context, input *lakeformation.SearchDatabasesByLFTagsInput, opts ...request.Option) (*lakeformation.SearchDatabasesByLFTagsOutput, error)
+	SearchTablesByLFTagsWithContext(ctx context.Context, input *lakeformation.SearchTablesByLFTagsInput, opts ...request.Option) (*lakeformation.SearchTablesByLFTagsOutput, error)
+	UpdateLFTagWithContext(ctx context.Context, input *lakeformation.UpdateLFTagInput, opts ...request.Option) (*lakeformation.UpdateLFTagOutput, error)
 	UpdateResourceWithContext(ctx context.Context, input *lakeformation.UpdateResourceInput, opts ...request.Option) (*lakeformation.UpdateResourceOutput, error)
 }
 
@@ -43,6 +53,27 @@ func New(base lakeformationiface.LakeFormationAPI, ctxer awsctx.Contexter) LakeF
 
 var _ LakeFormation = (*lakeformation.LakeFormation)(nil)
 var _ LakeFormation = (*Client)(nil)
+
+func (c *Client) AddLFTagsToResourceWithContext(ctx context.Context, input *lakeformation.AddLFTagsToResourceInput, opts ...request.Option) (*lakeformation.AddLFTagsToResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "AddLFTagsToResource",
+		Input:   input,
+		Output:  (*lakeformation.AddLFTagsToResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.AddLFTagsToResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.AddLFTagsToResourceOutput), req.Error
+}
 
 func (c *Client) BatchGrantPermissionsWithContext(ctx context.Context, input *lakeformation.BatchGrantPermissionsInput, opts ...request.Option) (*lakeformation.BatchGrantPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -84,6 +115,48 @@ func (c *Client) BatchRevokePermissionsWithContext(ctx context.Context, input *l
 	})
 
 	return req.Output.(*lakeformation.BatchRevokePermissionsOutput), req.Error
+}
+
+func (c *Client) CreateLFTagWithContext(ctx context.Context, input *lakeformation.CreateLFTagInput, opts ...request.Option) (*lakeformation.CreateLFTagOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "CreateLFTag",
+		Input:   input,
+		Output:  (*lakeformation.CreateLFTagOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.CreateLFTagWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.CreateLFTagOutput), req.Error
+}
+
+func (c *Client) DeleteLFTagWithContext(ctx context.Context, input *lakeformation.DeleteLFTagInput, opts ...request.Option) (*lakeformation.DeleteLFTagOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "DeleteLFTag",
+		Input:   input,
+		Output:  (*lakeformation.DeleteLFTagOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.DeleteLFTagWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.DeleteLFTagOutput), req.Error
 }
 
 func (c *Client) DeregisterResourceWithContext(ctx context.Context, input *lakeformation.DeregisterResourceInput, opts ...request.Option) (*lakeformation.DeregisterResourceOutput, error) {
@@ -190,6 +263,48 @@ func (c *Client) GetEffectivePermissionsForPathPagesWithContext(ctx context.Cont
 	return req.Error
 }
 
+func (c *Client) GetLFTagWithContext(ctx context.Context, input *lakeformation.GetLFTagInput, opts ...request.Option) (*lakeformation.GetLFTagOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "GetLFTag",
+		Input:   input,
+		Output:  (*lakeformation.GetLFTagOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.GetLFTagWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.GetLFTagOutput), req.Error
+}
+
+func (c *Client) GetResourceLFTagsWithContext(ctx context.Context, input *lakeformation.GetResourceLFTagsInput, opts ...request.Option) (*lakeformation.GetResourceLFTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "GetResourceLFTags",
+		Input:   input,
+		Output:  (*lakeformation.GetResourceLFTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.GetResourceLFTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.GetResourceLFTagsOutput), req.Error
+}
+
 func (c *Client) GrantPermissionsWithContext(ctx context.Context, input *lakeformation.GrantPermissionsInput, opts ...request.Option) (*lakeformation.GrantPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
@@ -209,6 +324,27 @@ func (c *Client) GrantPermissionsWithContext(ctx context.Context, input *lakefor
 	})
 
 	return req.Output.(*lakeformation.GrantPermissionsOutput), req.Error
+}
+
+func (c *Client) ListLFTagsWithContext(ctx context.Context, input *lakeformation.ListLFTagsInput, opts ...request.Option) (*lakeformation.ListLFTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "ListLFTags",
+		Input:   input,
+		Output:  (*lakeformation.ListLFTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.ListLFTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.ListLFTagsOutput), req.Error
 }
 
 func (c *Client) ListPermissionsWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, opts ...request.Option) (*lakeformation.ListPermissionsOutput, error) {
@@ -335,6 +471,27 @@ func (c *Client) RegisterResourceWithContext(ctx context.Context, input *lakefor
 	return req.Output.(*lakeformation.RegisterResourceOutput), req.Error
 }
 
+func (c *Client) RemoveLFTagsFromResourceWithContext(ctx context.Context, input *lakeformation.RemoveLFTagsFromResourceInput, opts ...request.Option) (*lakeformation.RemoveLFTagsFromResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "RemoveLFTagsFromResource",
+		Input:   input,
+		Output:  (*lakeformation.RemoveLFTagsFromResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.RemoveLFTagsFromResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.RemoveLFTagsFromResourceOutput), req.Error
+}
+
 func (c *Client) RevokePermissionsWithContext(ctx context.Context, input *lakeformation.RevokePermissionsInput, opts ...request.Option) (*lakeformation.RevokePermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
@@ -354,6 +511,69 @@ func (c *Client) RevokePermissionsWithContext(ctx context.Context, input *lakefo
 	})
 
 	return req.Output.(*lakeformation.RevokePermissionsOutput), req.Error
+}
+
+func (c *Client) SearchDatabasesByLFTagsWithContext(ctx context.Context, input *lakeformation.SearchDatabasesByLFTagsInput, opts ...request.Option) (*lakeformation.SearchDatabasesByLFTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "SearchDatabasesByLFTags",
+		Input:   input,
+		Output:  (*lakeformation.SearchDatabasesByLFTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.SearchDatabasesByLFTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.SearchDatabasesByLFTagsOutput), req.Error
+}
+
+func (c *Client) SearchTablesByLFTagsWithContext(ctx context.Context, input *lakeformation.SearchTablesByLFTagsInput, opts ...request.Option) (*lakeformation.SearchTablesByLFTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "SearchTablesByLFTags",
+		Input:   input,
+		Output:  (*lakeformation.SearchTablesByLFTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.SearchTablesByLFTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.SearchTablesByLFTagsOutput), req.Error
+}
+
+func (c *Client) UpdateLFTagWithContext(ctx context.Context, input *lakeformation.UpdateLFTagInput, opts ...request.Option) (*lakeformation.UpdateLFTagOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "UpdateLFTag",
+		Input:   input,
+		Output:  (*lakeformation.UpdateLFTagOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.UpdateLFTagWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.UpdateLFTagOutput), req.Error
 }
 
 func (c *Client) UpdateResourceWithContext(ctx context.Context, input *lakeformation.UpdateResourceInput, opts ...request.Option) (*lakeformation.UpdateResourceOutput, error) {
