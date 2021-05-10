@@ -29,8 +29,10 @@ type KinesisAnalyticsV2 interface {
 	DeleteApplicationVpcConfigurationWithContext(ctx context.Context, input *kinesisanalyticsv2.DeleteApplicationVpcConfigurationInput, opts ...request.Option) (*kinesisanalyticsv2.DeleteApplicationVpcConfigurationOutput, error)
 	DescribeApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationOutput, error)
 	DescribeApplicationSnapshotWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationSnapshotInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationSnapshotOutput, error)
+	DescribeApplicationVersionWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationVersionInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationVersionOutput, error)
 	DiscoverInputSchemaWithContext(ctx context.Context, input *kinesisanalyticsv2.DiscoverInputSchemaInput, opts ...request.Option) (*kinesisanalyticsv2.DiscoverInputSchemaOutput, error)
 	ListApplicationSnapshotsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationSnapshotsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationSnapshotsOutput, error)
+	ListApplicationVersionsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationVersionsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationVersionsOutput, error)
 	ListApplicationsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *kinesisanalyticsv2.ListTagsForResourceInput, opts ...request.Option) (*kinesisanalyticsv2.ListTagsForResourceOutput, error)
 	RollbackApplicationWithContext(ctx context.Context, input *kinesisanalyticsv2.RollbackApplicationInput, opts ...request.Option) (*kinesisanalyticsv2.RollbackApplicationOutput, error)
@@ -435,6 +437,27 @@ func (c *Client) DescribeApplicationSnapshotWithContext(ctx context.Context, inp
 	return req.Output.(*kinesisanalyticsv2.DescribeApplicationSnapshotOutput), req.Error
 }
 
+func (c *Client) DescribeApplicationVersionWithContext(ctx context.Context, input *kinesisanalyticsv2.DescribeApplicationVersionInput, opts ...request.Option) (*kinesisanalyticsv2.DescribeApplicationVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "DescribeApplicationVersion",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.DescribeApplicationVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.DescribeApplicationVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.DescribeApplicationVersionOutput), req.Error
+}
+
 func (c *Client) DiscoverInputSchemaWithContext(ctx context.Context, input *kinesisanalyticsv2.DiscoverInputSchemaInput, opts ...request.Option) (*kinesisanalyticsv2.DiscoverInputSchemaOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kinesisanalyticsv2",
@@ -475,6 +498,27 @@ func (c *Client) ListApplicationSnapshotsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*kinesisanalyticsv2.ListApplicationSnapshotsOutput), req.Error
+}
+
+func (c *Client) ListApplicationVersionsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationVersionsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisanalyticsv2",
+		Action:  "ListApplicationVersions",
+		Input:   input,
+		Output:  (*kinesisanalyticsv2.ListApplicationVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAnalyticsV2API.ListApplicationVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisanalyticsv2.ListApplicationVersionsOutput), req.Error
 }
 
 func (c *Client) ListApplicationsWithContext(ctx context.Context, input *kinesisanalyticsv2.ListApplicationsInput, opts ...request.Option) (*kinesisanalyticsv2.ListApplicationsOutput, error) {

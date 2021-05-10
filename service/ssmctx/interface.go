@@ -12,6 +12,7 @@ import (
 
 type SSM interface {
 	AddTagsToResourceWithContext(ctx context.Context, input *ssm.AddTagsToResourceInput, opts ...request.Option) (*ssm.AddTagsToResourceOutput, error)
+	AssociateOpsItemRelatedItemWithContext(ctx context.Context, input *ssm.AssociateOpsItemRelatedItemInput, opts ...request.Option) (*ssm.AssociateOpsItemRelatedItemOutput, error)
 	CancelCommandWithContext(ctx context.Context, input *ssm.CancelCommandInput, opts ...request.Option) (*ssm.CancelCommandOutput, error)
 	CancelMaintenanceWindowExecutionWithContext(ctx context.Context, input *ssm.CancelMaintenanceWindowExecutionInput, opts ...request.Option) (*ssm.CancelMaintenanceWindowExecutionOutput, error)
 	CreateActivationWithContext(ctx context.Context, input *ssm.CreateActivationInput, opts ...request.Option) (*ssm.CreateActivationOutput, error)
@@ -97,6 +98,7 @@ type SSM interface {
 	DescribePatchPropertiesPagesWithContext(ctx context.Context, input *ssm.DescribePatchPropertiesInput, cb func(*ssm.DescribePatchPropertiesOutput, bool) bool, opts ...request.Option) error
 	DescribeSessionsWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, opts ...request.Option) (*ssm.DescribeSessionsOutput, error)
 	DescribeSessionsPagesWithContext(ctx context.Context, input *ssm.DescribeSessionsInput, cb func(*ssm.DescribeSessionsOutput, bool) bool, opts ...request.Option) error
+	DisassociateOpsItemRelatedItemWithContext(ctx context.Context, input *ssm.DisassociateOpsItemRelatedItemInput, opts ...request.Option) (*ssm.DisassociateOpsItemRelatedItemOutput, error)
 	GetAutomationExecutionWithContext(ctx context.Context, input *ssm.GetAutomationExecutionInput, opts ...request.Option) (*ssm.GetAutomationExecutionOutput, error)
 	GetCalendarStateWithContext(ctx context.Context, input *ssm.GetCalendarStateInput, opts ...request.Option) (*ssm.GetCalendarStateOutput, error)
 	GetCommandInvocationWithContext(ctx context.Context, input *ssm.GetCommandInvocationInput, opts ...request.Option) (*ssm.GetCommandInvocationOutput, error)
@@ -147,6 +149,8 @@ type SSM interface {
 	ListInventoryEntriesWithContext(ctx context.Context, input *ssm.ListInventoryEntriesInput, opts ...request.Option) (*ssm.ListInventoryEntriesOutput, error)
 	ListOpsItemEventsWithContext(ctx context.Context, input *ssm.ListOpsItemEventsInput, opts ...request.Option) (*ssm.ListOpsItemEventsOutput, error)
 	ListOpsItemEventsPagesWithContext(ctx context.Context, input *ssm.ListOpsItemEventsInput, cb func(*ssm.ListOpsItemEventsOutput, bool) bool, opts ...request.Option) error
+	ListOpsItemRelatedItemsWithContext(ctx context.Context, input *ssm.ListOpsItemRelatedItemsInput, opts ...request.Option) (*ssm.ListOpsItemRelatedItemsOutput, error)
+	ListOpsItemRelatedItemsPagesWithContext(ctx context.Context, input *ssm.ListOpsItemRelatedItemsInput, cb func(*ssm.ListOpsItemRelatedItemsOutput, bool) bool, opts ...request.Option) error
 	ListOpsMetadataWithContext(ctx context.Context, input *ssm.ListOpsMetadataInput, opts ...request.Option) (*ssm.ListOpsMetadataOutput, error)
 	ListOpsMetadataPagesWithContext(ctx context.Context, input *ssm.ListOpsMetadataInput, cb func(*ssm.ListOpsMetadataOutput, bool) bool, opts ...request.Option) error
 	ListResourceComplianceSummariesWithContext(ctx context.Context, input *ssm.ListResourceComplianceSummariesInput, opts ...request.Option) (*ssm.ListResourceComplianceSummariesOutput, error)
@@ -224,6 +228,27 @@ func (c *Client) AddTagsToResourceWithContext(ctx context.Context, input *ssm.Ad
 	})
 
 	return req.Output.(*ssm.AddTagsToResourceOutput), req.Error
+}
+
+func (c *Client) AssociateOpsItemRelatedItemWithContext(ctx context.Context, input *ssm.AssociateOpsItemRelatedItemInput, opts ...request.Option) (*ssm.AssociateOpsItemRelatedItemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "AssociateOpsItemRelatedItem",
+		Input:   input,
+		Output:  (*ssm.AssociateOpsItemRelatedItemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.AssociateOpsItemRelatedItemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.AssociateOpsItemRelatedItemOutput), req.Error
 }
 
 func (c *Client) CancelCommandWithContext(ctx context.Context, input *ssm.CancelCommandInput, opts ...request.Option) (*ssm.CancelCommandOutput, error) {
@@ -1983,6 +2008,27 @@ func (c *Client) DescribeSessionsPagesWithContext(ctx context.Context, input *ss
 	return req.Error
 }
 
+func (c *Client) DisassociateOpsItemRelatedItemWithContext(ctx context.Context, input *ssm.DisassociateOpsItemRelatedItemInput, opts ...request.Option) (*ssm.DisassociateOpsItemRelatedItemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DisassociateOpsItemRelatedItem",
+		Input:   input,
+		Output:  (*ssm.DisassociateOpsItemRelatedItemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.DisassociateOpsItemRelatedItemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.DisassociateOpsItemRelatedItemOutput), req.Error
+}
+
 func (c *Client) GetAutomationExecutionWithContext(ctx context.Context, input *ssm.GetAutomationExecutionInput, opts ...request.Option) (*ssm.GetAutomationExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -3014,6 +3060,47 @@ func (c *Client) ListOpsItemEventsPagesWithContext(ctx context.Context, input *s
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SSMAPI.ListOpsItemEventsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListOpsItemRelatedItemsWithContext(ctx context.Context, input *ssm.ListOpsItemRelatedItemsInput, opts ...request.Option) (*ssm.ListOpsItemRelatedItemsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListOpsItemRelatedItems",
+		Input:   input,
+		Output:  (*ssm.ListOpsItemRelatedItemsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.ListOpsItemRelatedItemsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.ListOpsItemRelatedItemsOutput), req.Error
+}
+
+func (c *Client) ListOpsItemRelatedItemsPagesWithContext(ctx context.Context, input *ssm.ListOpsItemRelatedItemsInput, cb func(*ssm.ListOpsItemRelatedItemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "ListOpsItemRelatedItems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.ListOpsItemRelatedItemsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
