@@ -11,6 +11,7 @@ import (
 )
 
 type MediaConnect interface {
+	AddFlowMediaStreamsWithContext(ctx context.Context, input *mediaconnect.AddFlowMediaStreamsInput, opts ...request.Option) (*mediaconnect.AddFlowMediaStreamsOutput, error)
 	AddFlowOutputsWithContext(ctx context.Context, input *mediaconnect.AddFlowOutputsInput, opts ...request.Option) (*mediaconnect.AddFlowOutputsOutput, error)
 	AddFlowSourcesWithContext(ctx context.Context, input *mediaconnect.AddFlowSourcesInput, opts ...request.Option) (*mediaconnect.AddFlowSourcesOutput, error)
 	AddFlowVpcInterfacesWithContext(ctx context.Context, input *mediaconnect.AddFlowVpcInterfacesInput, opts ...request.Option) (*mediaconnect.AddFlowVpcInterfacesOutput, error)
@@ -30,6 +31,7 @@ type MediaConnect interface {
 	ListReservationsPagesWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, cb func(*mediaconnect.ListReservationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error)
 	PurchaseOfferingWithContext(ctx context.Context, input *mediaconnect.PurchaseOfferingInput, opts ...request.Option) (*mediaconnect.PurchaseOfferingOutput, error)
+	RemoveFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.RemoveFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.RemoveFlowMediaStreamOutput, error)
 	RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error)
 	RemoveFlowSourceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowSourceInput, opts ...request.Option) (*mediaconnect.RemoveFlowSourceOutput, error)
 	RemoveFlowVpcInterfaceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowVpcInterfaceInput, opts ...request.Option) (*mediaconnect.RemoveFlowVpcInterfaceOutput, error)
@@ -40,6 +42,7 @@ type MediaConnect interface {
 	UntagResourceWithContext(ctx context.Context, input *mediaconnect.UntagResourceInput, opts ...request.Option) (*mediaconnect.UntagResourceOutput, error)
 	UpdateFlowWithContext(ctx context.Context, input *mediaconnect.UpdateFlowInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutput, error)
 	UpdateFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.UpdateFlowEntitlementInput, opts ...request.Option) (*mediaconnect.UpdateFlowEntitlementOutput, error)
+	UpdateFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.UpdateFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.UpdateFlowMediaStreamOutput, error)
 	UpdateFlowOutputWithContext(ctx context.Context, input *mediaconnect.UpdateFlowOutputInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutputOutput, error)
 	UpdateFlowSourceWithContext(ctx context.Context, input *mediaconnect.UpdateFlowSourceInput, opts ...request.Option) (*mediaconnect.UpdateFlowSourceOutput, error)
 }
@@ -58,6 +61,27 @@ func New(base mediaconnectiface.MediaConnectAPI, ctxer awsctx.Contexter) MediaCo
 
 var _ MediaConnect = (*mediaconnect.MediaConnect)(nil)
 var _ MediaConnect = (*Client)(nil)
+
+func (c *Client) AddFlowMediaStreamsWithContext(ctx context.Context, input *mediaconnect.AddFlowMediaStreamsInput, opts ...request.Option) (*mediaconnect.AddFlowMediaStreamsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "AddFlowMediaStreams",
+		Input:   input,
+		Output:  (*mediaconnect.AddFlowMediaStreamsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.AddFlowMediaStreamsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.AddFlowMediaStreamsOutput), req.Error
+}
 
 func (c *Client) AddFlowOutputsWithContext(ctx context.Context, input *mediaconnect.AddFlowOutputsInput, opts ...request.Option) (*mediaconnect.AddFlowOutputsOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -454,6 +478,27 @@ func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *mediaco
 	return req.Output.(*mediaconnect.PurchaseOfferingOutput), req.Error
 }
 
+func (c *Client) RemoveFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.RemoveFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.RemoveFlowMediaStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "RemoveFlowMediaStream",
+		Input:   input,
+		Output:  (*mediaconnect.RemoveFlowMediaStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.RemoveFlowMediaStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.RemoveFlowMediaStreamOutput), req.Error
+}
+
 func (c *Client) RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -662,6 +707,27 @@ func (c *Client) UpdateFlowEntitlementWithContext(ctx context.Context, input *me
 	})
 
 	return req.Output.(*mediaconnect.UpdateFlowEntitlementOutput), req.Error
+}
+
+func (c *Client) UpdateFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.UpdateFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.UpdateFlowMediaStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateFlowMediaStream",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateFlowMediaStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateFlowMediaStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateFlowMediaStreamOutput), req.Error
 }
 
 func (c *Client) UpdateFlowOutputWithContext(ctx context.Context, input *mediaconnect.UpdateFlowOutputInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutputOutput, error) {
