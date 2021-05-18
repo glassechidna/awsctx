@@ -19,23 +19,27 @@ type LicenseManager interface {
 	CreateGrantVersionWithContext(ctx context.Context, input *licensemanager.CreateGrantVersionInput, opts ...request.Option) (*licensemanager.CreateGrantVersionOutput, error)
 	CreateLicenseWithContext(ctx context.Context, input *licensemanager.CreateLicenseInput, opts ...request.Option) (*licensemanager.CreateLicenseOutput, error)
 	CreateLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.CreateLicenseConfigurationInput, opts ...request.Option) (*licensemanager.CreateLicenseConfigurationOutput, error)
+	CreateLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.CreateLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.CreateLicenseManagerReportGeneratorOutput, error)
 	CreateLicenseVersionWithContext(ctx context.Context, input *licensemanager.CreateLicenseVersionInput, opts ...request.Option) (*licensemanager.CreateLicenseVersionOutput, error)
 	CreateTokenWithContext(ctx context.Context, input *licensemanager.CreateTokenInput, opts ...request.Option) (*licensemanager.CreateTokenOutput, error)
 	DeleteGrantWithContext(ctx context.Context, input *licensemanager.DeleteGrantInput, opts ...request.Option) (*licensemanager.DeleteGrantOutput, error)
 	DeleteLicenseWithContext(ctx context.Context, input *licensemanager.DeleteLicenseInput, opts ...request.Option) (*licensemanager.DeleteLicenseOutput, error)
 	DeleteLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.DeleteLicenseConfigurationInput, opts ...request.Option) (*licensemanager.DeleteLicenseConfigurationOutput, error)
+	DeleteLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.DeleteLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.DeleteLicenseManagerReportGeneratorOutput, error)
 	DeleteTokenWithContext(ctx context.Context, input *licensemanager.DeleteTokenInput, opts ...request.Option) (*licensemanager.DeleteTokenOutput, error)
 	ExtendLicenseConsumptionWithContext(ctx context.Context, input *licensemanager.ExtendLicenseConsumptionInput, opts ...request.Option) (*licensemanager.ExtendLicenseConsumptionOutput, error)
 	GetAccessTokenWithContext(ctx context.Context, input *licensemanager.GetAccessTokenInput, opts ...request.Option) (*licensemanager.GetAccessTokenOutput, error)
 	GetGrantWithContext(ctx context.Context, input *licensemanager.GetGrantInput, opts ...request.Option) (*licensemanager.GetGrantOutput, error)
 	GetLicenseWithContext(ctx context.Context, input *licensemanager.GetLicenseInput, opts ...request.Option) (*licensemanager.GetLicenseOutput, error)
 	GetLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.GetLicenseConfigurationInput, opts ...request.Option) (*licensemanager.GetLicenseConfigurationOutput, error)
+	GetLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.GetLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.GetLicenseManagerReportGeneratorOutput, error)
 	GetLicenseUsageWithContext(ctx context.Context, input *licensemanager.GetLicenseUsageInput, opts ...request.Option) (*licensemanager.GetLicenseUsageOutput, error)
 	GetServiceSettingsWithContext(ctx context.Context, input *licensemanager.GetServiceSettingsInput, opts ...request.Option) (*licensemanager.GetServiceSettingsOutput, error)
 	ListAssociationsForLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.ListAssociationsForLicenseConfigurationInput, opts ...request.Option) (*licensemanager.ListAssociationsForLicenseConfigurationOutput, error)
 	ListDistributedGrantsWithContext(ctx context.Context, input *licensemanager.ListDistributedGrantsInput, opts ...request.Option) (*licensemanager.ListDistributedGrantsOutput, error)
 	ListFailuresForLicenseConfigurationOperationsWithContext(ctx context.Context, input *licensemanager.ListFailuresForLicenseConfigurationOperationsInput, opts ...request.Option) (*licensemanager.ListFailuresForLicenseConfigurationOperationsOutput, error)
 	ListLicenseConfigurationsWithContext(ctx context.Context, input *licensemanager.ListLicenseConfigurationsInput, opts ...request.Option) (*licensemanager.ListLicenseConfigurationsOutput, error)
+	ListLicenseManagerReportGeneratorsWithContext(ctx context.Context, input *licensemanager.ListLicenseManagerReportGeneratorsInput, opts ...request.Option) (*licensemanager.ListLicenseManagerReportGeneratorsOutput, error)
 	ListLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.ListLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.ListLicenseSpecificationsForResourceOutput, error)
 	ListLicenseVersionsWithContext(ctx context.Context, input *licensemanager.ListLicenseVersionsInput, opts ...request.Option) (*licensemanager.ListLicenseVersionsOutput, error)
 	ListLicensesWithContext(ctx context.Context, input *licensemanager.ListLicensesInput, opts ...request.Option) (*licensemanager.ListLicensesOutput, error)
@@ -49,6 +53,7 @@ type LicenseManager interface {
 	TagResourceWithContext(ctx context.Context, input *licensemanager.TagResourceInput, opts ...request.Option) (*licensemanager.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *licensemanager.UntagResourceInput, opts ...request.Option) (*licensemanager.UntagResourceOutput, error)
 	UpdateLicenseConfigurationWithContext(ctx context.Context, input *licensemanager.UpdateLicenseConfigurationInput, opts ...request.Option) (*licensemanager.UpdateLicenseConfigurationOutput, error)
+	UpdateLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.UpdateLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.UpdateLicenseManagerReportGeneratorOutput, error)
 	UpdateLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.UpdateLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.UpdateLicenseSpecificationsForResourceOutput, error)
 	UpdateServiceSettingsWithContext(ctx context.Context, input *licensemanager.UpdateServiceSettingsInput, opts ...request.Option) (*licensemanager.UpdateServiceSettingsOutput, error)
 }
@@ -236,6 +241,27 @@ func (c *Client) CreateLicenseConfigurationWithContext(ctx context.Context, inpu
 	return req.Output.(*licensemanager.CreateLicenseConfigurationOutput), req.Error
 }
 
+func (c *Client) CreateLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.CreateLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.CreateLicenseManagerReportGeneratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "CreateLicenseManagerReportGenerator",
+		Input:   input,
+		Output:  (*licensemanager.CreateLicenseManagerReportGeneratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.CreateLicenseManagerReportGeneratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.CreateLicenseManagerReportGeneratorOutput), req.Error
+}
+
 func (c *Client) CreateLicenseVersionWithContext(ctx context.Context, input *licensemanager.CreateLicenseVersionInput, opts ...request.Option) (*licensemanager.CreateLicenseVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
@@ -339,6 +365,27 @@ func (c *Client) DeleteLicenseConfigurationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*licensemanager.DeleteLicenseConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.DeleteLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.DeleteLicenseManagerReportGeneratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "DeleteLicenseManagerReportGenerator",
+		Input:   input,
+		Output:  (*licensemanager.DeleteLicenseManagerReportGeneratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.DeleteLicenseManagerReportGeneratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.DeleteLicenseManagerReportGeneratorOutput), req.Error
 }
 
 func (c *Client) DeleteTokenWithContext(ctx context.Context, input *licensemanager.DeleteTokenInput, opts ...request.Option) (*licensemanager.DeleteTokenOutput, error) {
@@ -467,6 +514,27 @@ func (c *Client) GetLicenseConfigurationWithContext(ctx context.Context, input *
 	return req.Output.(*licensemanager.GetLicenseConfigurationOutput), req.Error
 }
 
+func (c *Client) GetLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.GetLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.GetLicenseManagerReportGeneratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "GetLicenseManagerReportGenerator",
+		Input:   input,
+		Output:  (*licensemanager.GetLicenseManagerReportGeneratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.GetLicenseManagerReportGeneratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.GetLicenseManagerReportGeneratorOutput), req.Error
+}
+
 func (c *Client) GetLicenseUsageWithContext(ctx context.Context, input *licensemanager.GetLicenseUsageInput, opts ...request.Option) (*licensemanager.GetLicenseUsageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
@@ -591,6 +659,27 @@ func (c *Client) ListLicenseConfigurationsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*licensemanager.ListLicenseConfigurationsOutput), req.Error
+}
+
+func (c *Client) ListLicenseManagerReportGeneratorsWithContext(ctx context.Context, input *licensemanager.ListLicenseManagerReportGeneratorsInput, opts ...request.Option) (*licensemanager.ListLicenseManagerReportGeneratorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "ListLicenseManagerReportGenerators",
+		Input:   input,
+		Output:  (*licensemanager.ListLicenseManagerReportGeneratorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.ListLicenseManagerReportGeneratorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.ListLicenseManagerReportGeneratorsOutput), req.Error
 }
 
 func (c *Client) ListLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.ListLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.ListLicenseSpecificationsForResourceOutput, error) {
@@ -864,6 +953,27 @@ func (c *Client) UpdateLicenseConfigurationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*licensemanager.UpdateLicenseConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateLicenseManagerReportGeneratorWithContext(ctx context.Context, input *licensemanager.UpdateLicenseManagerReportGeneratorInput, opts ...request.Option) (*licensemanager.UpdateLicenseManagerReportGeneratorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "UpdateLicenseManagerReportGenerator",
+		Input:   input,
+		Output:  (*licensemanager.UpdateLicenseManagerReportGeneratorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.UpdateLicenseManagerReportGeneratorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.UpdateLicenseManagerReportGeneratorOutput), req.Error
 }
 
 func (c *Client) UpdateLicenseSpecificationsForResourceWithContext(ctx context.Context, input *licensemanager.UpdateLicenseSpecificationsForResourceInput, opts ...request.Option) (*licensemanager.UpdateLicenseSpecificationsForResourceOutput, error) {
