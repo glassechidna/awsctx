@@ -65,6 +65,7 @@ type AutoScaling interface {
 	EnterStandbyWithContext(ctx context.Context, input *autoscaling.EnterStandbyInput, opts ...request.Option) (*autoscaling.EnterStandbyOutput, error)
 	ExecutePolicyWithContext(ctx context.Context, input *autoscaling.ExecutePolicyInput, opts ...request.Option) (*autoscaling.ExecutePolicyOutput, error)
 	ExitStandbyWithContext(ctx context.Context, input *autoscaling.ExitStandbyInput, opts ...request.Option) (*autoscaling.ExitStandbyOutput, error)
+	GetPredictiveScalingForecastWithContext(ctx context.Context, input *autoscaling.GetPredictiveScalingForecastInput, opts ...request.Option) (*autoscaling.GetPredictiveScalingForecastOutput, error)
 	PutLifecycleHookWithContext(ctx context.Context, input *autoscaling.PutLifecycleHookInput, opts ...request.Option) (*autoscaling.PutLifecycleHookOutput, error)
 	PutNotificationConfigurationWithContext(ctx context.Context, input *autoscaling.PutNotificationConfigurationInput, opts ...request.Option) (*autoscaling.PutNotificationConfigurationOutput, error)
 	PutScalingPolicyWithContext(ctx context.Context, input *autoscaling.PutScalingPolicyInput, opts ...request.Option) (*autoscaling.PutScalingPolicyOutput, error)
@@ -1220,6 +1221,27 @@ func (c *Client) ExitStandbyWithContext(ctx context.Context, input *autoscaling.
 	})
 
 	return req.Output.(*autoscaling.ExitStandbyOutput), req.Error
+}
+
+func (c *Client) GetPredictiveScalingForecastWithContext(ctx context.Context, input *autoscaling.GetPredictiveScalingForecastInput, opts ...request.Option) (*autoscaling.GetPredictiveScalingForecastOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "GetPredictiveScalingForecast",
+		Input:   input,
+		Output:  (*autoscaling.GetPredictiveScalingForecastOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.GetPredictiveScalingForecastWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.GetPredictiveScalingForecastOutput), req.Error
 }
 
 func (c *Client) PutLifecycleHookWithContext(ctx context.Context, input *autoscaling.PutLifecycleHookInput, opts ...request.Option) (*autoscaling.PutLifecycleHookOutput, error) {

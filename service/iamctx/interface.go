@@ -142,6 +142,7 @@ type IAM interface {
 	ListUserPoliciesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, opts ...request.Option) (*iam.ListUserPoliciesOutput, error)
 	ListUserPoliciesPagesWithContext(ctx context.Context, input *iam.ListUserPoliciesInput, cb func(*iam.ListUserPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListUserTagsWithContext(ctx context.Context, input *iam.ListUserTagsInput, opts ...request.Option) (*iam.ListUserTagsOutput, error)
+	ListUserTagsPagesWithContext(ctx context.Context, input *iam.ListUserTagsInput, cb func(*iam.ListUserTagsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *iam.ListUsersInput, opts ...request.Option) (*iam.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *iam.ListUsersInput, cb func(*iam.ListUsersOutput, bool) bool, opts ...request.Option) error
 	ListVirtualMFADevicesWithContext(ctx context.Context, input *iam.ListVirtualMFADevicesInput, opts ...request.Option) (*iam.ListVirtualMFADevicesOutput, error)
@@ -2939,6 +2940,26 @@ func (c *Client) ListUserTagsWithContext(ctx context.Context, input *iam.ListUse
 	})
 
 	return req.Output.(*iam.ListUserTagsOutput), req.Error
+}
+
+func (c *Client) ListUserTagsPagesWithContext(ctx context.Context, input *iam.ListUserTagsInput, cb func(*iam.ListUserTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListUserTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListUserTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListUsersWithContext(ctx context.Context, input *iam.ListUsersInput, opts ...request.Option) (*iam.ListUsersOutput, error) {
