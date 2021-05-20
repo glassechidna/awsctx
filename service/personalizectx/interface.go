@@ -68,6 +68,7 @@ type Personalize interface {
 	ListSolutionVersionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, cb func(*personalize.ListSolutionVersionsOutput, bool) bool, opts ...request.Option) error
 	ListSolutionsWithContext(ctx context.Context, input *personalize.ListSolutionsInput, opts ...request.Option) (*personalize.ListSolutionsOutput, error)
 	ListSolutionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionsInput, cb func(*personalize.ListSolutionsOutput, bool) bool, opts ...request.Option) error
+	StopSolutionVersionCreationWithContext(ctx context.Context, input *personalize.StopSolutionVersionCreationInput, opts ...request.Option) (*personalize.StopSolutionVersionCreationOutput, error)
 	UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error)
 }
 
@@ -1269,6 +1270,27 @@ func (c *Client) ListSolutionsPagesWithContext(ctx context.Context, input *perso
 	})
 
 	return req.Error
+}
+
+func (c *Client) StopSolutionVersionCreationWithContext(ctx context.Context, input *personalize.StopSolutionVersionCreationInput, opts ...request.Option) (*personalize.StopSolutionVersionCreationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "StopSolutionVersionCreation",
+		Input:   input,
+		Output:  (*personalize.StopSolutionVersionCreationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.StopSolutionVersionCreationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.StopSolutionVersionCreationOutput), req.Error
 }
 
 func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error) {
