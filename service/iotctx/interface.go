@@ -36,6 +36,7 @@ type IoT interface {
 	CreateDomainConfigurationWithContext(ctx context.Context, input *iot.CreateDomainConfigurationInput, opts ...request.Option) (*iot.CreateDomainConfigurationOutput, error)
 	CreateDynamicThingGroupWithContext(ctx context.Context, input *iot.CreateDynamicThingGroupInput, opts ...request.Option) (*iot.CreateDynamicThingGroupOutput, error)
 	CreateJobWithContext(ctx context.Context, input *iot.CreateJobInput, opts ...request.Option) (*iot.CreateJobOutput, error)
+	CreateJobTemplateWithContext(ctx context.Context, input *iot.CreateJobTemplateInput, opts ...request.Option) (*iot.CreateJobTemplateOutput, error)
 	CreateKeysAndCertificateWithContext(ctx context.Context, input *iot.CreateKeysAndCertificateInput, opts ...request.Option) (*iot.CreateKeysAndCertificateOutput, error)
 	CreateMitigationActionWithContext(ctx context.Context, input *iot.CreateMitigationActionInput, opts ...request.Option) (*iot.CreateMitigationActionOutput, error)
 	CreateOTAUpdateWithContext(ctx context.Context, input *iot.CreateOTAUpdateInput, opts ...request.Option) (*iot.CreateOTAUpdateOutput, error)
@@ -65,6 +66,7 @@ type IoT interface {
 	DeleteDynamicThingGroupWithContext(ctx context.Context, input *iot.DeleteDynamicThingGroupInput, opts ...request.Option) (*iot.DeleteDynamicThingGroupOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *iot.DeleteJobInput, opts ...request.Option) (*iot.DeleteJobOutput, error)
 	DeleteJobExecutionWithContext(ctx context.Context, input *iot.DeleteJobExecutionInput, opts ...request.Option) (*iot.DeleteJobExecutionOutput, error)
+	DeleteJobTemplateWithContext(ctx context.Context, input *iot.DeleteJobTemplateInput, opts ...request.Option) (*iot.DeleteJobTemplateOutput, error)
 	DeleteMitigationActionWithContext(ctx context.Context, input *iot.DeleteMitigationActionInput, opts ...request.Option) (*iot.DeleteMitigationActionOutput, error)
 	DeleteOTAUpdateWithContext(ctx context.Context, input *iot.DeleteOTAUpdateInput, opts ...request.Option) (*iot.DeleteOTAUpdateOutput, error)
 	DeletePolicyWithContext(ctx context.Context, input *iot.DeletePolicyInput, opts ...request.Option) (*iot.DeletePolicyOutput, error)
@@ -102,6 +104,7 @@ type IoT interface {
 	DescribeIndexWithContext(ctx context.Context, input *iot.DescribeIndexInput, opts ...request.Option) (*iot.DescribeIndexOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *iot.DescribeJobInput, opts ...request.Option) (*iot.DescribeJobOutput, error)
 	DescribeJobExecutionWithContext(ctx context.Context, input *iot.DescribeJobExecutionInput, opts ...request.Option) (*iot.DescribeJobExecutionOutput, error)
+	DescribeJobTemplateWithContext(ctx context.Context, input *iot.DescribeJobTemplateInput, opts ...request.Option) (*iot.DescribeJobTemplateOutput, error)
 	DescribeMitigationActionWithContext(ctx context.Context, input *iot.DescribeMitigationActionInput, opts ...request.Option) (*iot.DescribeMitigationActionOutput, error)
 	DescribeProvisioningTemplateWithContext(ctx context.Context, input *iot.DescribeProvisioningTemplateInput, opts ...request.Option) (*iot.DescribeProvisioningTemplateOutput, error)
 	DescribeProvisioningTemplateVersionWithContext(ctx context.Context, input *iot.DescribeProvisioningTemplateVersionInput, opts ...request.Option) (*iot.DescribeProvisioningTemplateVersionOutput, error)
@@ -175,6 +178,7 @@ type IoT interface {
 	ListJobExecutionsForJobPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, cb func(*iot.ListJobExecutionsForJobOutput, bool) bool, opts ...request.Option) error
 	ListJobExecutionsForThingWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, opts ...request.Option) (*iot.ListJobExecutionsForThingOutput, error)
 	ListJobExecutionsForThingPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, cb func(*iot.ListJobExecutionsForThingOutput, bool) bool, opts ...request.Option) error
+	ListJobTemplatesWithContext(ctx context.Context, input *iot.ListJobTemplatesInput, opts ...request.Option) (*iot.ListJobTemplatesOutput, error)
 	ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error)
@@ -828,6 +832,27 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *iot.CreateJobI
 	return req.Output.(*iot.CreateJobOutput), req.Error
 }
 
+func (c *Client) CreateJobTemplateWithContext(ctx context.Context, input *iot.CreateJobTemplateInput, opts ...request.Option) (*iot.CreateJobTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreateJobTemplate",
+		Input:   input,
+		Output:  (*iot.CreateJobTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreateJobTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreateJobTemplateOutput), req.Error
+}
+
 func (c *Client) CreateKeysAndCertificateWithContext(ctx context.Context, input *iot.CreateKeysAndCertificateInput, opts ...request.Option) (*iot.CreateKeysAndCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -1435,6 +1460,27 @@ func (c *Client) DeleteJobExecutionWithContext(ctx context.Context, input *iot.D
 	})
 
 	return req.Output.(*iot.DeleteJobExecutionOutput), req.Error
+}
+
+func (c *Client) DeleteJobTemplateWithContext(ctx context.Context, input *iot.DeleteJobTemplateInput, opts ...request.Option) (*iot.DeleteJobTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeleteJobTemplate",
+		Input:   input,
+		Output:  (*iot.DeleteJobTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeleteJobTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeleteJobTemplateOutput), req.Error
 }
 
 func (c *Client) DeleteMitigationActionWithContext(ctx context.Context, input *iot.DeleteMitigationActionInput, opts ...request.Option) (*iot.DeleteMitigationActionOutput, error) {
@@ -2212,6 +2258,27 @@ func (c *Client) DescribeJobExecutionWithContext(ctx context.Context, input *iot
 	})
 
 	return req.Output.(*iot.DescribeJobExecutionOutput), req.Error
+}
+
+func (c *Client) DescribeJobTemplateWithContext(ctx context.Context, input *iot.DescribeJobTemplateInput, opts ...request.Option) (*iot.DescribeJobTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeJobTemplate",
+		Input:   input,
+		Output:  (*iot.DescribeJobTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeJobTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeJobTemplateOutput), req.Error
 }
 
 func (c *Client) DescribeMitigationActionWithContext(ctx context.Context, input *iot.DescribeMitigationActionInput, opts ...request.Option) (*iot.DescribeMitigationActionOutput, error) {
@@ -3724,6 +3791,27 @@ func (c *Client) ListJobExecutionsForThingPagesWithContext(ctx context.Context, 
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListJobTemplatesWithContext(ctx context.Context, input *iot.ListJobTemplatesInput, opts ...request.Option) (*iot.ListJobTemplatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListJobTemplates",
+		Input:   input,
+		Output:  (*iot.ListJobTemplatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListJobTemplatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListJobTemplatesOutput), req.Error
 }
 
 func (c *Client) ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error) {

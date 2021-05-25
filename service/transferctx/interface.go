@@ -11,15 +11,20 @@ import (
 )
 
 type Transfer interface {
+	CreateAccessWithContext(ctx context.Context, input *transfer.CreateAccessInput, opts ...request.Option) (*transfer.CreateAccessOutput, error)
 	CreateServerWithContext(ctx context.Context, input *transfer.CreateServerInput, opts ...request.Option) (*transfer.CreateServerOutput, error)
 	CreateUserWithContext(ctx context.Context, input *transfer.CreateUserInput, opts ...request.Option) (*transfer.CreateUserOutput, error)
+	DeleteAccessWithContext(ctx context.Context, input *transfer.DeleteAccessInput, opts ...request.Option) (*transfer.DeleteAccessOutput, error)
 	DeleteServerWithContext(ctx context.Context, input *transfer.DeleteServerInput, opts ...request.Option) (*transfer.DeleteServerOutput, error)
 	DeleteSshPublicKeyWithContext(ctx context.Context, input *transfer.DeleteSshPublicKeyInput, opts ...request.Option) (*transfer.DeleteSshPublicKeyOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *transfer.DeleteUserInput, opts ...request.Option) (*transfer.DeleteUserOutput, error)
+	DescribeAccessWithContext(ctx context.Context, input *transfer.DescribeAccessInput, opts ...request.Option) (*transfer.DescribeAccessOutput, error)
 	DescribeSecurityPolicyWithContext(ctx context.Context, input *transfer.DescribeSecurityPolicyInput, opts ...request.Option) (*transfer.DescribeSecurityPolicyOutput, error)
 	DescribeServerWithContext(ctx context.Context, input *transfer.DescribeServerInput, opts ...request.Option) (*transfer.DescribeServerOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *transfer.DescribeUserInput, opts ...request.Option) (*transfer.DescribeUserOutput, error)
 	ImportSshPublicKeyWithContext(ctx context.Context, input *transfer.ImportSshPublicKeyInput, opts ...request.Option) (*transfer.ImportSshPublicKeyOutput, error)
+	ListAccessesWithContext(ctx context.Context, input *transfer.ListAccessesInput, opts ...request.Option) (*transfer.ListAccessesOutput, error)
+	ListAccessesPagesWithContext(ctx context.Context, input *transfer.ListAccessesInput, cb func(*transfer.ListAccessesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityPoliciesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, opts ...request.Option) (*transfer.ListSecurityPoliciesOutput, error)
 	ListSecurityPoliciesPagesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, cb func(*transfer.ListSecurityPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListServersWithContext(ctx context.Context, input *transfer.ListServersInput, opts ...request.Option) (*transfer.ListServersOutput, error)
@@ -33,6 +38,7 @@ type Transfer interface {
 	TagResourceWithContext(ctx context.Context, input *transfer.TagResourceInput, opts ...request.Option) (*transfer.TagResourceOutput, error)
 	TestIdentityProviderWithContext(ctx context.Context, input *transfer.TestIdentityProviderInput, opts ...request.Option) (*transfer.TestIdentityProviderOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *transfer.UntagResourceInput, opts ...request.Option) (*transfer.UntagResourceOutput, error)
+	UpdateAccessWithContext(ctx context.Context, input *transfer.UpdateAccessInput, opts ...request.Option) (*transfer.UpdateAccessOutput, error)
 	UpdateServerWithContext(ctx context.Context, input *transfer.UpdateServerInput, opts ...request.Option) (*transfer.UpdateServerOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *transfer.UpdateUserInput, opts ...request.Option) (*transfer.UpdateUserOutput, error)
 }
@@ -51,6 +57,27 @@ func New(base transferiface.TransferAPI, ctxer awsctx.Contexter) Transfer {
 
 var _ Transfer = (*transfer.Transfer)(nil)
 var _ Transfer = (*Client)(nil)
+
+func (c *Client) CreateAccessWithContext(ctx context.Context, input *transfer.CreateAccessInput, opts ...request.Option) (*transfer.CreateAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "CreateAccess",
+		Input:   input,
+		Output:  (*transfer.CreateAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.CreateAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.CreateAccessOutput), req.Error
+}
 
 func (c *Client) CreateServerWithContext(ctx context.Context, input *transfer.CreateServerInput, opts ...request.Option) (*transfer.CreateServerOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -92,6 +119,27 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *transfer.Crea
 	})
 
 	return req.Output.(*transfer.CreateUserOutput), req.Error
+}
+
+func (c *Client) DeleteAccessWithContext(ctx context.Context, input *transfer.DeleteAccessInput, opts ...request.Option) (*transfer.DeleteAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "DeleteAccess",
+		Input:   input,
+		Output:  (*transfer.DeleteAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.DeleteAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.DeleteAccessOutput), req.Error
 }
 
 func (c *Client) DeleteServerWithContext(ctx context.Context, input *transfer.DeleteServerInput, opts ...request.Option) (*transfer.DeleteServerOutput, error) {
@@ -155,6 +203,27 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *transfer.Dele
 	})
 
 	return req.Output.(*transfer.DeleteUserOutput), req.Error
+}
+
+func (c *Client) DescribeAccessWithContext(ctx context.Context, input *transfer.DescribeAccessInput, opts ...request.Option) (*transfer.DescribeAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "DescribeAccess",
+		Input:   input,
+		Output:  (*transfer.DescribeAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.DescribeAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.DescribeAccessOutput), req.Error
 }
 
 func (c *Client) DescribeSecurityPolicyWithContext(ctx context.Context, input *transfer.DescribeSecurityPolicyInput, opts ...request.Option) (*transfer.DescribeSecurityPolicyOutput, error) {
@@ -239,6 +308,47 @@ func (c *Client) ImportSshPublicKeyWithContext(ctx context.Context, input *trans
 	})
 
 	return req.Output.(*transfer.ImportSshPublicKeyOutput), req.Error
+}
+
+func (c *Client) ListAccessesWithContext(ctx context.Context, input *transfer.ListAccessesInput, opts ...request.Option) (*transfer.ListAccessesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListAccesses",
+		Input:   input,
+		Output:  (*transfer.ListAccessesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.ListAccessesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.ListAccessesOutput), req.Error
+}
+
+func (c *Client) ListAccessesPagesWithContext(ctx context.Context, input *transfer.ListAccessesInput, cb func(*transfer.ListAccessesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListAccesses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TransferAPI.ListAccessesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSecurityPoliciesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, opts ...request.Option) (*transfer.ListSecurityPoliciesOutput, error) {
@@ -508,6 +618,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *transfer.U
 	})
 
 	return req.Output.(*transfer.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAccessWithContext(ctx context.Context, input *transfer.UpdateAccessInput, opts ...request.Option) (*transfer.UpdateAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "UpdateAccess",
+		Input:   input,
+		Output:  (*transfer.UpdateAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.UpdateAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.UpdateAccessOutput), req.Error
 }
 
 func (c *Client) UpdateServerWithContext(ctx context.Context, input *transfer.UpdateServerInput, opts ...request.Option) (*transfer.UpdateServerOutput, error) {
