@@ -34,6 +34,7 @@ type QLDB interface {
 	TagResourceWithContext(ctx context.Context, input *qldb.TagResourceInput, opts ...request.Option) (*qldb.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *qldb.UntagResourceInput, opts ...request.Option) (*qldb.UntagResourceOutput, error)
 	UpdateLedgerWithContext(ctx context.Context, input *qldb.UpdateLedgerInput, opts ...request.Option) (*qldb.UpdateLedgerOutput, error)
+	UpdateLedgerPermissionsModeWithContext(ctx context.Context, input *qldb.UpdateLedgerPermissionsModeInput, opts ...request.Option) (*qldb.UpdateLedgerPermissionsModeOutput, error)
 }
 
 type Client struct {
@@ -528,4 +529,25 @@ func (c *Client) UpdateLedgerWithContext(ctx context.Context, input *qldb.Update
 	})
 
 	return req.Output.(*qldb.UpdateLedgerOutput), req.Error
+}
+
+func (c *Client) UpdateLedgerPermissionsModeWithContext(ctx context.Context, input *qldb.UpdateLedgerPermissionsModeInput, opts ...request.Option) (*qldb.UpdateLedgerPermissionsModeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "qldb",
+		Action:  "UpdateLedgerPermissionsMode",
+		Input:   input,
+		Output:  (*qldb.UpdateLedgerPermissionsModeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QLDBAPI.UpdateLedgerPermissionsModeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*qldb.UpdateLedgerPermissionsModeOutput), req.Error
 }
