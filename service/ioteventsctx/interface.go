@@ -11,23 +11,30 @@ import (
 )
 
 type IoTEvents interface {
+	CreateAlarmModelWithContext(ctx context.Context, input *iotevents.CreateAlarmModelInput, opts ...request.Option) (*iotevents.CreateAlarmModelOutput, error)
 	CreateDetectorModelWithContext(ctx context.Context, input *iotevents.CreateDetectorModelInput, opts ...request.Option) (*iotevents.CreateDetectorModelOutput, error)
 	CreateInputWithContext(ctx context.Context, input *iotevents.CreateInputInput, opts ...request.Option) (*iotevents.CreateInputOutput, error)
+	DeleteAlarmModelWithContext(ctx context.Context, input *iotevents.DeleteAlarmModelInput, opts ...request.Option) (*iotevents.DeleteAlarmModelOutput, error)
 	DeleteDetectorModelWithContext(ctx context.Context, input *iotevents.DeleteDetectorModelInput, opts ...request.Option) (*iotevents.DeleteDetectorModelOutput, error)
 	DeleteInputWithContext(ctx context.Context, input *iotevents.DeleteInputInput, opts ...request.Option) (*iotevents.DeleteInputOutput, error)
+	DescribeAlarmModelWithContext(ctx context.Context, input *iotevents.DescribeAlarmModelInput, opts ...request.Option) (*iotevents.DescribeAlarmModelOutput, error)
 	DescribeDetectorModelWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelInput, opts ...request.Option) (*iotevents.DescribeDetectorModelOutput, error)
 	DescribeDetectorModelAnalysisWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelAnalysisInput, opts ...request.Option) (*iotevents.DescribeDetectorModelAnalysisOutput, error)
 	DescribeInputWithContext(ctx context.Context, input *iotevents.DescribeInputInput, opts ...request.Option) (*iotevents.DescribeInputOutput, error)
 	DescribeLoggingOptionsWithContext(ctx context.Context, input *iotevents.DescribeLoggingOptionsInput, opts ...request.Option) (*iotevents.DescribeLoggingOptionsOutput, error)
 	GetDetectorModelAnalysisResultsWithContext(ctx context.Context, input *iotevents.GetDetectorModelAnalysisResultsInput, opts ...request.Option) (*iotevents.GetDetectorModelAnalysisResultsOutput, error)
+	ListAlarmModelVersionsWithContext(ctx context.Context, input *iotevents.ListAlarmModelVersionsInput, opts ...request.Option) (*iotevents.ListAlarmModelVersionsOutput, error)
+	ListAlarmModelsWithContext(ctx context.Context, input *iotevents.ListAlarmModelsInput, opts ...request.Option) (*iotevents.ListAlarmModelsOutput, error)
 	ListDetectorModelVersionsWithContext(ctx context.Context, input *iotevents.ListDetectorModelVersionsInput, opts ...request.Option) (*iotevents.ListDetectorModelVersionsOutput, error)
 	ListDetectorModelsWithContext(ctx context.Context, input *iotevents.ListDetectorModelsInput, opts ...request.Option) (*iotevents.ListDetectorModelsOutput, error)
+	ListInputRoutingsWithContext(ctx context.Context, input *iotevents.ListInputRoutingsInput, opts ...request.Option) (*iotevents.ListInputRoutingsOutput, error)
 	ListInputsWithContext(ctx context.Context, input *iotevents.ListInputsInput, opts ...request.Option) (*iotevents.ListInputsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *iotevents.ListTagsForResourceInput, opts ...request.Option) (*iotevents.ListTagsForResourceOutput, error)
 	PutLoggingOptionsWithContext(ctx context.Context, input *iotevents.PutLoggingOptionsInput, opts ...request.Option) (*iotevents.PutLoggingOptionsOutput, error)
 	StartDetectorModelAnalysisWithContext(ctx context.Context, input *iotevents.StartDetectorModelAnalysisInput, opts ...request.Option) (*iotevents.StartDetectorModelAnalysisOutput, error)
 	TagResourceWithContext(ctx context.Context, input *iotevents.TagResourceInput, opts ...request.Option) (*iotevents.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *iotevents.UntagResourceInput, opts ...request.Option) (*iotevents.UntagResourceOutput, error)
+	UpdateAlarmModelWithContext(ctx context.Context, input *iotevents.UpdateAlarmModelInput, opts ...request.Option) (*iotevents.UpdateAlarmModelOutput, error)
 	UpdateDetectorModelWithContext(ctx context.Context, input *iotevents.UpdateDetectorModelInput, opts ...request.Option) (*iotevents.UpdateDetectorModelOutput, error)
 	UpdateInputWithContext(ctx context.Context, input *iotevents.UpdateInputInput, opts ...request.Option) (*iotevents.UpdateInputOutput, error)
 }
@@ -46,6 +53,27 @@ func New(base ioteventsiface.IoTEventsAPI, ctxer awsctx.Contexter) IoTEvents {
 
 var _ IoTEvents = (*iotevents.IoTEvents)(nil)
 var _ IoTEvents = (*Client)(nil)
+
+func (c *Client) CreateAlarmModelWithContext(ctx context.Context, input *iotevents.CreateAlarmModelInput, opts ...request.Option) (*iotevents.CreateAlarmModelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "CreateAlarmModel",
+		Input:   input,
+		Output:  (*iotevents.CreateAlarmModelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.CreateAlarmModelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.CreateAlarmModelOutput), req.Error
+}
 
 func (c *Client) CreateDetectorModelWithContext(ctx context.Context, input *iotevents.CreateDetectorModelInput, opts ...request.Option) (*iotevents.CreateDetectorModelOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -89,6 +117,27 @@ func (c *Client) CreateInputWithContext(ctx context.Context, input *iotevents.Cr
 	return req.Output.(*iotevents.CreateInputOutput), req.Error
 }
 
+func (c *Client) DeleteAlarmModelWithContext(ctx context.Context, input *iotevents.DeleteAlarmModelInput, opts ...request.Option) (*iotevents.DeleteAlarmModelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "DeleteAlarmModel",
+		Input:   input,
+		Output:  (*iotevents.DeleteAlarmModelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.DeleteAlarmModelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.DeleteAlarmModelOutput), req.Error
+}
+
 func (c *Client) DeleteDetectorModelWithContext(ctx context.Context, input *iotevents.DeleteDetectorModelInput, opts ...request.Option) (*iotevents.DeleteDetectorModelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
@@ -129,6 +178,27 @@ func (c *Client) DeleteInputWithContext(ctx context.Context, input *iotevents.De
 	})
 
 	return req.Output.(*iotevents.DeleteInputOutput), req.Error
+}
+
+func (c *Client) DescribeAlarmModelWithContext(ctx context.Context, input *iotevents.DescribeAlarmModelInput, opts ...request.Option) (*iotevents.DescribeAlarmModelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "DescribeAlarmModel",
+		Input:   input,
+		Output:  (*iotevents.DescribeAlarmModelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.DescribeAlarmModelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.DescribeAlarmModelOutput), req.Error
 }
 
 func (c *Client) DescribeDetectorModelWithContext(ctx context.Context, input *iotevents.DescribeDetectorModelInput, opts ...request.Option) (*iotevents.DescribeDetectorModelOutput, error) {
@@ -236,6 +306,48 @@ func (c *Client) GetDetectorModelAnalysisResultsWithContext(ctx context.Context,
 	return req.Output.(*iotevents.GetDetectorModelAnalysisResultsOutput), req.Error
 }
 
+func (c *Client) ListAlarmModelVersionsWithContext(ctx context.Context, input *iotevents.ListAlarmModelVersionsInput, opts ...request.Option) (*iotevents.ListAlarmModelVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "ListAlarmModelVersions",
+		Input:   input,
+		Output:  (*iotevents.ListAlarmModelVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.ListAlarmModelVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.ListAlarmModelVersionsOutput), req.Error
+}
+
+func (c *Client) ListAlarmModelsWithContext(ctx context.Context, input *iotevents.ListAlarmModelsInput, opts ...request.Option) (*iotevents.ListAlarmModelsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "ListAlarmModels",
+		Input:   input,
+		Output:  (*iotevents.ListAlarmModelsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.ListAlarmModelsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.ListAlarmModelsOutput), req.Error
+}
+
 func (c *Client) ListDetectorModelVersionsWithContext(ctx context.Context, input *iotevents.ListDetectorModelVersionsInput, opts ...request.Option) (*iotevents.ListDetectorModelVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iotevents",
@@ -276,6 +388,27 @@ func (c *Client) ListDetectorModelsWithContext(ctx context.Context, input *iotev
 	})
 
 	return req.Output.(*iotevents.ListDetectorModelsOutput), req.Error
+}
+
+func (c *Client) ListInputRoutingsWithContext(ctx context.Context, input *iotevents.ListInputRoutingsInput, opts ...request.Option) (*iotevents.ListInputRoutingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "ListInputRoutings",
+		Input:   input,
+		Output:  (*iotevents.ListInputRoutingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.ListInputRoutingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.ListInputRoutingsOutput), req.Error
 }
 
 func (c *Client) ListInputsWithContext(ctx context.Context, input *iotevents.ListInputsInput, opts ...request.Option) (*iotevents.ListInputsOutput, error) {
@@ -402,6 +535,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *iotevents.
 	})
 
 	return req.Output.(*iotevents.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAlarmModelWithContext(ctx context.Context, input *iotevents.UpdateAlarmModelInput, opts ...request.Option) (*iotevents.UpdateAlarmModelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotevents",
+		Action:  "UpdateAlarmModel",
+		Input:   input,
+		Output:  (*iotevents.UpdateAlarmModelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsAPI.UpdateAlarmModelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotevents.UpdateAlarmModelOutput), req.Error
 }
 
 func (c *Client) UpdateDetectorModelWithContext(ctx context.Context, input *iotevents.UpdateDetectorModelInput, opts ...request.Option) (*iotevents.UpdateDetectorModelOutput, error) {

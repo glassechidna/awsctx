@@ -11,9 +11,16 @@ import (
 )
 
 type IoTEventsData interface {
+	BatchAcknowledgeAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchAcknowledgeAlarmInput, opts ...request.Option) (*ioteventsdata.BatchAcknowledgeAlarmOutput, error)
+	BatchDisableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchDisableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchDisableAlarmOutput, error)
+	BatchEnableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchEnableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchEnableAlarmOutput, error)
 	BatchPutMessageWithContext(ctx context.Context, input *ioteventsdata.BatchPutMessageInput, opts ...request.Option) (*ioteventsdata.BatchPutMessageOutput, error)
+	BatchResetAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchResetAlarmInput, opts ...request.Option) (*ioteventsdata.BatchResetAlarmOutput, error)
+	BatchSnoozeAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchSnoozeAlarmInput, opts ...request.Option) (*ioteventsdata.BatchSnoozeAlarmOutput, error)
 	BatchUpdateDetectorWithContext(ctx context.Context, input *ioteventsdata.BatchUpdateDetectorInput, opts ...request.Option) (*ioteventsdata.BatchUpdateDetectorOutput, error)
+	DescribeAlarmWithContext(ctx context.Context, input *ioteventsdata.DescribeAlarmInput, opts ...request.Option) (*ioteventsdata.DescribeAlarmOutput, error)
 	DescribeDetectorWithContext(ctx context.Context, input *ioteventsdata.DescribeDetectorInput, opts ...request.Option) (*ioteventsdata.DescribeDetectorOutput, error)
+	ListAlarmsWithContext(ctx context.Context, input *ioteventsdata.ListAlarmsInput, opts ...request.Option) (*ioteventsdata.ListAlarmsOutput, error)
 	ListDetectorsWithContext(ctx context.Context, input *ioteventsdata.ListDetectorsInput, opts ...request.Option) (*ioteventsdata.ListDetectorsOutput, error)
 }
 
@@ -31,6 +38,69 @@ func New(base ioteventsdataiface.IoTEventsDataAPI, ctxer awsctx.Contexter) IoTEv
 
 var _ IoTEventsData = (*ioteventsdata.IoTEventsData)(nil)
 var _ IoTEventsData = (*Client)(nil)
+
+func (c *Client) BatchAcknowledgeAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchAcknowledgeAlarmInput, opts ...request.Option) (*ioteventsdata.BatchAcknowledgeAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "BatchAcknowledgeAlarm",
+		Input:   input,
+		Output:  (*ioteventsdata.BatchAcknowledgeAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.BatchAcknowledgeAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.BatchAcknowledgeAlarmOutput), req.Error
+}
+
+func (c *Client) BatchDisableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchDisableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchDisableAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "BatchDisableAlarm",
+		Input:   input,
+		Output:  (*ioteventsdata.BatchDisableAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.BatchDisableAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.BatchDisableAlarmOutput), req.Error
+}
+
+func (c *Client) BatchEnableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchEnableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchEnableAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "BatchEnableAlarm",
+		Input:   input,
+		Output:  (*ioteventsdata.BatchEnableAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.BatchEnableAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.BatchEnableAlarmOutput), req.Error
+}
 
 func (c *Client) BatchPutMessageWithContext(ctx context.Context, input *ioteventsdata.BatchPutMessageInput, opts ...request.Option) (*ioteventsdata.BatchPutMessageOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -51,6 +121,48 @@ func (c *Client) BatchPutMessageWithContext(ctx context.Context, input *iotevent
 	})
 
 	return req.Output.(*ioteventsdata.BatchPutMessageOutput), req.Error
+}
+
+func (c *Client) BatchResetAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchResetAlarmInput, opts ...request.Option) (*ioteventsdata.BatchResetAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "BatchResetAlarm",
+		Input:   input,
+		Output:  (*ioteventsdata.BatchResetAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.BatchResetAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.BatchResetAlarmOutput), req.Error
+}
+
+func (c *Client) BatchSnoozeAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchSnoozeAlarmInput, opts ...request.Option) (*ioteventsdata.BatchSnoozeAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "BatchSnoozeAlarm",
+		Input:   input,
+		Output:  (*ioteventsdata.BatchSnoozeAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.BatchSnoozeAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.BatchSnoozeAlarmOutput), req.Error
 }
 
 func (c *Client) BatchUpdateDetectorWithContext(ctx context.Context, input *ioteventsdata.BatchUpdateDetectorInput, opts ...request.Option) (*ioteventsdata.BatchUpdateDetectorOutput, error) {
@@ -74,6 +186,27 @@ func (c *Client) BatchUpdateDetectorWithContext(ctx context.Context, input *iote
 	return req.Output.(*ioteventsdata.BatchUpdateDetectorOutput), req.Error
 }
 
+func (c *Client) DescribeAlarmWithContext(ctx context.Context, input *ioteventsdata.DescribeAlarmInput, opts ...request.Option) (*ioteventsdata.DescribeAlarmOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "DescribeAlarm",
+		Input:   input,
+		Output:  (*ioteventsdata.DescribeAlarmOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.DescribeAlarmWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.DescribeAlarmOutput), req.Error
+}
+
 func (c *Client) DescribeDetectorWithContext(ctx context.Context, input *ioteventsdata.DescribeDetectorInput, opts ...request.Option) (*ioteventsdata.DescribeDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ioteventsdata",
@@ -93,6 +226,27 @@ func (c *Client) DescribeDetectorWithContext(ctx context.Context, input *ioteven
 	})
 
 	return req.Output.(*ioteventsdata.DescribeDetectorOutput), req.Error
+}
+
+func (c *Client) ListAlarmsWithContext(ctx context.Context, input *ioteventsdata.ListAlarmsInput, opts ...request.Option) (*ioteventsdata.ListAlarmsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "ListAlarms",
+		Input:   input,
+		Output:  (*ioteventsdata.ListAlarmsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.ListAlarmsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.ListAlarmsOutput), req.Error
 }
 
 func (c *Client) ListDetectorsWithContext(ctx context.Context, input *ioteventsdata.ListDetectorsInput, opts ...request.Option) (*ioteventsdata.ListDetectorsOutput, error) {
