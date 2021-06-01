@@ -16,20 +16,27 @@ type SNS interface {
 	ConfirmSubscriptionWithContext(ctx context.Context, input *sns.ConfirmSubscriptionInput, opts ...request.Option) (*sns.ConfirmSubscriptionOutput, error)
 	CreatePlatformApplicationWithContext(ctx context.Context, input *sns.CreatePlatformApplicationInput, opts ...request.Option) (*sns.CreatePlatformApplicationOutput, error)
 	CreatePlatformEndpointWithContext(ctx context.Context, input *sns.CreatePlatformEndpointInput, opts ...request.Option) (*sns.CreatePlatformEndpointOutput, error)
+	CreateSMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.CreateSMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.CreateSMSSandboxPhoneNumberOutput, error)
 	CreateTopicWithContext(ctx context.Context, input *sns.CreateTopicInput, opts ...request.Option) (*sns.CreateTopicOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *sns.DeleteEndpointInput, opts ...request.Option) (*sns.DeleteEndpointOutput, error)
 	DeletePlatformApplicationWithContext(ctx context.Context, input *sns.DeletePlatformApplicationInput, opts ...request.Option) (*sns.DeletePlatformApplicationOutput, error)
+	DeleteSMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.DeleteSMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.DeleteSMSSandboxPhoneNumberOutput, error)
 	DeleteTopicWithContext(ctx context.Context, input *sns.DeleteTopicInput, opts ...request.Option) (*sns.DeleteTopicOutput, error)
 	GetEndpointAttributesWithContext(ctx context.Context, input *sns.GetEndpointAttributesInput, opts ...request.Option) (*sns.GetEndpointAttributesOutput, error)
 	GetPlatformApplicationAttributesWithContext(ctx context.Context, input *sns.GetPlatformApplicationAttributesInput, opts ...request.Option) (*sns.GetPlatformApplicationAttributesOutput, error)
 	GetSMSAttributesWithContext(ctx context.Context, input *sns.GetSMSAttributesInput, opts ...request.Option) (*sns.GetSMSAttributesOutput, error)
+	GetSMSSandboxAccountStatusWithContext(ctx context.Context, input *sns.GetSMSSandboxAccountStatusInput, opts ...request.Option) (*sns.GetSMSSandboxAccountStatusOutput, error)
 	GetSubscriptionAttributesWithContext(ctx context.Context, input *sns.GetSubscriptionAttributesInput, opts ...request.Option) (*sns.GetSubscriptionAttributesOutput, error)
 	GetTopicAttributesWithContext(ctx context.Context, input *sns.GetTopicAttributesInput, opts ...request.Option) (*sns.GetTopicAttributesOutput, error)
 	ListEndpointsByPlatformApplicationWithContext(ctx context.Context, input *sns.ListEndpointsByPlatformApplicationInput, opts ...request.Option) (*sns.ListEndpointsByPlatformApplicationOutput, error)
 	ListEndpointsByPlatformApplicationPagesWithContext(ctx context.Context, input *sns.ListEndpointsByPlatformApplicationInput, cb func(*sns.ListEndpointsByPlatformApplicationOutput, bool) bool, opts ...request.Option) error
+	ListOriginationNumbersWithContext(ctx context.Context, input *sns.ListOriginationNumbersInput, opts ...request.Option) (*sns.ListOriginationNumbersOutput, error)
+	ListOriginationNumbersPagesWithContext(ctx context.Context, input *sns.ListOriginationNumbersInput, cb func(*sns.ListOriginationNumbersOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersOptedOutWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, opts ...request.Option) (*sns.ListPhoneNumbersOptedOutOutput, error)
 	ListPlatformApplicationsWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, opts ...request.Option) (*sns.ListPlatformApplicationsOutput, error)
 	ListPlatformApplicationsPagesWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, cb func(*sns.ListPlatformApplicationsOutput, bool) bool, opts ...request.Option) error
+	ListSMSSandboxPhoneNumbersWithContext(ctx context.Context, input *sns.ListSMSSandboxPhoneNumbersInput, opts ...request.Option) (*sns.ListSMSSandboxPhoneNumbersOutput, error)
+	ListSMSSandboxPhoneNumbersPagesWithContext(ctx context.Context, input *sns.ListSMSSandboxPhoneNumbersInput, cb func(*sns.ListSMSSandboxPhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	ListSubscriptionsWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, opts ...request.Option) (*sns.ListSubscriptionsOutput, error)
 	ListSubscriptionsPagesWithContext(ctx context.Context, input *sns.ListSubscriptionsInput, cb func(*sns.ListSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	ListSubscriptionsByTopicWithContext(ctx context.Context, input *sns.ListSubscriptionsByTopicInput, opts ...request.Option) (*sns.ListSubscriptionsByTopicOutput, error)
@@ -49,6 +56,7 @@ type SNS interface {
 	TagResourceWithContext(ctx context.Context, input *sns.TagResourceInput, opts ...request.Option) (*sns.TagResourceOutput, error)
 	UnsubscribeWithContext(ctx context.Context, input *sns.UnsubscribeInput, opts ...request.Option) (*sns.UnsubscribeOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *sns.UntagResourceInput, opts ...request.Option) (*sns.UntagResourceOutput, error)
+	VerifySMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.VerifySMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.VerifySMSSandboxPhoneNumberOutput, error)
 }
 
 type Client struct {
@@ -171,6 +179,27 @@ func (c *Client) CreatePlatformEndpointWithContext(ctx context.Context, input *s
 	return req.Output.(*sns.CreatePlatformEndpointOutput), req.Error
 }
 
+func (c *Client) CreateSMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.CreateSMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.CreateSMSSandboxPhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "CreateSMSSandboxPhoneNumber",
+		Input:   input,
+		Output:  (*sns.CreateSMSSandboxPhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.CreateSMSSandboxPhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.CreateSMSSandboxPhoneNumberOutput), req.Error
+}
+
 func (c *Client) CreateTopicWithContext(ctx context.Context, input *sns.CreateTopicInput, opts ...request.Option) (*sns.CreateTopicOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
@@ -232,6 +261,27 @@ func (c *Client) DeletePlatformApplicationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*sns.DeletePlatformApplicationOutput), req.Error
+}
+
+func (c *Client) DeleteSMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.DeleteSMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.DeleteSMSSandboxPhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "DeleteSMSSandboxPhoneNumber",
+		Input:   input,
+		Output:  (*sns.DeleteSMSSandboxPhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.DeleteSMSSandboxPhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.DeleteSMSSandboxPhoneNumberOutput), req.Error
 }
 
 func (c *Client) DeleteTopicWithContext(ctx context.Context, input *sns.DeleteTopicInput, opts ...request.Option) (*sns.DeleteTopicOutput, error) {
@@ -318,6 +368,27 @@ func (c *Client) GetSMSAttributesWithContext(ctx context.Context, input *sns.Get
 	return req.Output.(*sns.GetSMSAttributesOutput), req.Error
 }
 
+func (c *Client) GetSMSSandboxAccountStatusWithContext(ctx context.Context, input *sns.GetSMSSandboxAccountStatusInput, opts ...request.Option) (*sns.GetSMSSandboxAccountStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "GetSMSSandboxAccountStatus",
+		Input:   input,
+		Output:  (*sns.GetSMSSandboxAccountStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.GetSMSSandboxAccountStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.GetSMSSandboxAccountStatusOutput), req.Error
+}
+
 func (c *Client) GetSubscriptionAttributesWithContext(ctx context.Context, input *sns.GetSubscriptionAttributesInput, opts ...request.Option) (*sns.GetSubscriptionAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
@@ -401,6 +472,47 @@ func (c *Client) ListEndpointsByPlatformApplicationPagesWithContext(ctx context.
 	return req.Error
 }
 
+func (c *Client) ListOriginationNumbersWithContext(ctx context.Context, input *sns.ListOriginationNumbersInput, opts ...request.Option) (*sns.ListOriginationNumbersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListOriginationNumbers",
+		Input:   input,
+		Output:  (*sns.ListOriginationNumbersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.ListOriginationNumbersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.ListOriginationNumbersOutput), req.Error
+}
+
+func (c *Client) ListOriginationNumbersPagesWithContext(ctx context.Context, input *sns.ListOriginationNumbersInput, cb func(*sns.ListOriginationNumbersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListOriginationNumbers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListOriginationNumbersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPhoneNumbersOptedOutWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, opts ...request.Option) (*sns.ListPhoneNumbersOptedOutOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sns",
@@ -458,6 +570,47 @@ func (c *Client) ListPlatformApplicationsPagesWithContext(ctx context.Context, i
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SNSAPI.ListPlatformApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSMSSandboxPhoneNumbersWithContext(ctx context.Context, input *sns.ListSMSSandboxPhoneNumbersInput, opts ...request.Option) (*sns.ListSMSSandboxPhoneNumbersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListSMSSandboxPhoneNumbers",
+		Input:   input,
+		Output:  (*sns.ListSMSSandboxPhoneNumbersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.ListSMSSandboxPhoneNumbersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.ListSMSSandboxPhoneNumbersOutput), req.Error
+}
+
+func (c *Client) ListSMSSandboxPhoneNumbersPagesWithContext(ctx context.Context, input *sns.ListSMSSandboxPhoneNumbersInput, cb func(*sns.ListSMSSandboxPhoneNumbersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListSMSSandboxPhoneNumbers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListSMSSandboxPhoneNumbersPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -857,4 +1010,25 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *sns.UntagR
 	})
 
 	return req.Output.(*sns.UntagResourceOutput), req.Error
+}
+
+func (c *Client) VerifySMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.VerifySMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.VerifySMSSandboxPhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "VerifySMSSandboxPhoneNumber",
+		Input:   input,
+		Output:  (*sns.VerifySMSSandboxPhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.VerifySMSSandboxPhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.VerifySMSSandboxPhoneNumberOutput), req.Error
 }
