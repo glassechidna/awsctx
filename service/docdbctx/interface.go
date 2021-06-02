@@ -22,12 +22,14 @@ type DocDB interface {
 	CreateDBInstanceWithContext(ctx context.Context, input *docdb.CreateDBInstanceInput, opts ...request.Option) (*docdb.CreateDBInstanceOutput, error)
 	CreateDBSubnetGroupWithContext(ctx context.Context, input *docdb.CreateDBSubnetGroupInput, opts ...request.Option) (*docdb.CreateDBSubnetGroupOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *docdb.CreateEventSubscriptionInput, opts ...request.Option) (*docdb.CreateEventSubscriptionOutput, error)
+	CreateGlobalClusterWithContext(ctx context.Context, input *docdb.CreateGlobalClusterInput, opts ...request.Option) (*docdb.CreateGlobalClusterOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *docdb.DeleteDBClusterInput, opts ...request.Option) (*docdb.DeleteDBClusterOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*docdb.DeleteDBClusterParameterGroupOutput, error)
 	DeleteDBClusterSnapshotWithContext(ctx context.Context, input *docdb.DeleteDBClusterSnapshotInput, opts ...request.Option) (*docdb.DeleteDBClusterSnapshotOutput, error)
 	DeleteDBInstanceWithContext(ctx context.Context, input *docdb.DeleteDBInstanceInput, opts ...request.Option) (*docdb.DeleteDBInstanceOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *docdb.DeleteDBSubnetGroupInput, opts ...request.Option) (*docdb.DeleteDBSubnetGroupOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *docdb.DeleteEventSubscriptionInput, opts ...request.Option) (*docdb.DeleteEventSubscriptionOutput, error)
+	DeleteGlobalClusterWithContext(ctx context.Context, input *docdb.DeleteGlobalClusterInput, opts ...request.Option) (*docdb.DeleteGlobalClusterOutput, error)
 	DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error)
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, cb func(*docdb.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *docdb.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*docdb.DescribeDBClusterParameterGroupsOutput, error)
@@ -51,6 +53,8 @@ type DocDB interface {
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *docdb.DescribeEventSubscriptionsInput, cb func(*docdb.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *docdb.DescribeEventsInput, opts ...request.Option) (*docdb.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *docdb.DescribeEventsInput, cb func(*docdb.DescribeEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeGlobalClustersWithContext(ctx context.Context, input *docdb.DescribeGlobalClustersInput, opts ...request.Option) (*docdb.DescribeGlobalClustersOutput, error)
+	DescribeGlobalClustersPagesWithContext(ctx context.Context, input *docdb.DescribeGlobalClustersInput, cb func(*docdb.DescribeGlobalClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, cb func(*docdb.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *docdb.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*docdb.DescribePendingMaintenanceActionsOutput, error)
@@ -63,7 +67,9 @@ type DocDB interface {
 	ModifyDBInstanceWithContext(ctx context.Context, input *docdb.ModifyDBInstanceInput, opts ...request.Option) (*docdb.ModifyDBInstanceOutput, error)
 	ModifyDBSubnetGroupWithContext(ctx context.Context, input *docdb.ModifyDBSubnetGroupInput, opts ...request.Option) (*docdb.ModifyDBSubnetGroupOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *docdb.ModifyEventSubscriptionInput, opts ...request.Option) (*docdb.ModifyEventSubscriptionOutput, error)
+	ModifyGlobalClusterWithContext(ctx context.Context, input *docdb.ModifyGlobalClusterInput, opts ...request.Option) (*docdb.ModifyGlobalClusterOutput, error)
 	RebootDBInstanceWithContext(ctx context.Context, input *docdb.RebootDBInstanceInput, opts ...request.Option) (*docdb.RebootDBInstanceOutput, error)
+	RemoveFromGlobalClusterWithContext(ctx context.Context, input *docdb.RemoveFromGlobalClusterInput, opts ...request.Option) (*docdb.RemoveFromGlobalClusterOutput, error)
 	RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *docdb.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*docdb.RemoveSourceIdentifierFromSubscriptionOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *docdb.RemoveTagsFromResourceInput, opts ...request.Option) (*docdb.RemoveTagsFromResourceOutput, error)
 	ResetDBClusterParameterGroupWithContext(ctx context.Context, input *docdb.ResetDBClusterParameterGroupInput, opts ...request.Option) (*docdb.ResetDBClusterParameterGroupOutput, error)
@@ -319,6 +325,27 @@ func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *
 	return req.Output.(*docdb.CreateEventSubscriptionOutput), req.Error
 }
 
+func (c *Client) CreateGlobalClusterWithContext(ctx context.Context, input *docdb.CreateGlobalClusterInput, opts ...request.Option) (*docdb.CreateGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "CreateGlobalCluster",
+		Input:   input,
+		Output:  (*docdb.CreateGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.CreateGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.CreateGlobalClusterOutput), req.Error
+}
+
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *docdb.DeleteDBClusterInput, opts ...request.Option) (*docdb.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -443,6 +470,27 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*docdb.DeleteEventSubscriptionOutput), req.Error
+}
+
+func (c *Client) DeleteGlobalClusterWithContext(ctx context.Context, input *docdb.DeleteGlobalClusterInput, opts ...request.Option) (*docdb.DeleteGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DeleteGlobalCluster",
+		Input:   input,
+		Output:  (*docdb.DeleteGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.DeleteGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.DeleteGlobalClusterOutput), req.Error
 }
 
 func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *docdb.DescribeCertificatesInput, opts ...request.Option) (*docdb.DescribeCertificatesOutput, error) {
@@ -918,6 +966,47 @@ func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *docd
 	return req.Error
 }
 
+func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *docdb.DescribeGlobalClustersInput, opts ...request.Option) (*docdb.DescribeGlobalClustersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeGlobalClusters",
+		Input:   input,
+		Output:  (*docdb.DescribeGlobalClustersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.DescribeGlobalClustersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.DescribeGlobalClustersOutput), req.Error
+}
+
+func (c *Client) DescribeGlobalClustersPagesWithContext(ctx context.Context, input *docdb.DescribeGlobalClustersInput, cb func(*docdb.DescribeGlobalClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "DescribeGlobalClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DocDBAPI.DescribeGlobalClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *docdb.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*docdb.DescribeOrderableDBInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -1168,6 +1257,27 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 	return req.Output.(*docdb.ModifyEventSubscriptionOutput), req.Error
 }
 
+func (c *Client) ModifyGlobalClusterWithContext(ctx context.Context, input *docdb.ModifyGlobalClusterInput, opts ...request.Option) (*docdb.ModifyGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "ModifyGlobalCluster",
+		Input:   input,
+		Output:  (*docdb.ModifyGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.ModifyGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.ModifyGlobalClusterOutput), req.Error
+}
+
 func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *docdb.RebootDBInstanceInput, opts ...request.Option) (*docdb.RebootDBInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "docdb",
@@ -1187,6 +1297,27 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *docdb.R
 	})
 
 	return req.Output.(*docdb.RebootDBInstanceOutput), req.Error
+}
+
+func (c *Client) RemoveFromGlobalClusterWithContext(ctx context.Context, input *docdb.RemoveFromGlobalClusterInput, opts ...request.Option) (*docdb.RemoveFromGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "docdb",
+		Action:  "RemoveFromGlobalCluster",
+		Input:   input,
+		Output:  (*docdb.RemoveFromGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DocDBAPI.RemoveFromGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*docdb.RemoveFromGlobalClusterOutput), req.Error
 }
 
 func (c *Client) RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *docdb.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*docdb.RemoveSourceIdentifierFromSubscriptionOutput, error) {
