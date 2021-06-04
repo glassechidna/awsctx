@@ -12,6 +12,7 @@ import (
 
 type PI interface {
 	DescribeDimensionKeysWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, opts ...request.Option) (*pi.DescribeDimensionKeysOutput, error)
+	GetDimensionKeyDetailsWithContext(ctx context.Context, input *pi.GetDimensionKeyDetailsInput, opts ...request.Option) (*pi.GetDimensionKeyDetailsOutput, error)
 	GetResourceMetricsWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, opts ...request.Option) (*pi.GetResourceMetricsOutput, error)
 }
 
@@ -49,6 +50,27 @@ func (c *Client) DescribeDimensionKeysWithContext(ctx context.Context, input *pi
 	})
 
 	return req.Output.(*pi.DescribeDimensionKeysOutput), req.Error
+}
+
+func (c *Client) GetDimensionKeyDetailsWithContext(ctx context.Context, input *pi.GetDimensionKeyDetailsInput, opts ...request.Option) (*pi.GetDimensionKeyDetailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "GetDimensionKeyDetails",
+		Input:   input,
+		Output:  (*pi.GetDimensionKeyDetailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.GetDimensionKeyDetailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.GetDimensionKeyDetailsOutput), req.Error
 }
 
 func (c *Client) GetResourceMetricsWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, opts ...request.Option) (*pi.GetResourceMetricsOutput, error) {
