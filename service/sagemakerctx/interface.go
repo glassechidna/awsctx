@@ -260,6 +260,8 @@ type SageMaker interface {
 	RenderUiTemplateWithContext(ctx context.Context, input *sagemaker.RenderUiTemplateInput, opts ...request.Option) (*sagemaker.RenderUiTemplateOutput, error)
 	SearchWithContext(ctx context.Context, input *sagemaker.SearchInput, opts ...request.Option) (*sagemaker.SearchOutput, error)
 	SearchPagesWithContext(ctx context.Context, input *sagemaker.SearchInput, cb func(*sagemaker.SearchOutput, bool) bool, opts ...request.Option) error
+	SendPipelineExecutionStepFailureWithContext(ctx context.Context, input *sagemaker.SendPipelineExecutionStepFailureInput, opts ...request.Option) (*sagemaker.SendPipelineExecutionStepFailureOutput, error)
+	SendPipelineExecutionStepSuccessWithContext(ctx context.Context, input *sagemaker.SendPipelineExecutionStepSuccessInput, opts ...request.Option) (*sagemaker.SendPipelineExecutionStepSuccessOutput, error)
 	StartMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StartMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StartMonitoringScheduleOutput, error)
 	StartNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StartNotebookInstanceInput, opts ...request.Option) (*sagemaker.StartNotebookInstanceOutput, error)
 	StartPipelineExecutionWithContext(ctx context.Context, input *sagemaker.StartPipelineExecutionInput, opts ...request.Option) (*sagemaker.StartPipelineExecutionOutput, error)
@@ -5488,6 +5490,48 @@ func (c *Client) SearchPagesWithContext(ctx context.Context, input *sagemaker.Se
 	})
 
 	return req.Error
+}
+
+func (c *Client) SendPipelineExecutionStepFailureWithContext(ctx context.Context, input *sagemaker.SendPipelineExecutionStepFailureInput, opts ...request.Option) (*sagemaker.SendPipelineExecutionStepFailureOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "SendPipelineExecutionStepFailure",
+		Input:   input,
+		Output:  (*sagemaker.SendPipelineExecutionStepFailureOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.SendPipelineExecutionStepFailureWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.SendPipelineExecutionStepFailureOutput), req.Error
+}
+
+func (c *Client) SendPipelineExecutionStepSuccessWithContext(ctx context.Context, input *sagemaker.SendPipelineExecutionStepSuccessInput, opts ...request.Option) (*sagemaker.SendPipelineExecutionStepSuccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "SendPipelineExecutionStepSuccess",
+		Input:   input,
+		Output:  (*sagemaker.SendPipelineExecutionStepSuccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.SendPipelineExecutionStepSuccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.SendPipelineExecutionStepSuccessOutput), req.Error
 }
 
 func (c *Client) StartMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StartMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StartMonitoringScheduleOutput, error) {
