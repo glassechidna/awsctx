@@ -99,6 +99,7 @@ type CognitoIdentityProvider interface {
 	ListUsersInGroupPagesWithContext(ctx context.Context, input *cognitoidentityprovider.ListUsersInGroupInput, cb func(*cognitoidentityprovider.ListUsersInGroupOutput, bool) bool, opts ...request.Option) error
 	ResendConfirmationCodeWithContext(ctx context.Context, input *cognitoidentityprovider.ResendConfirmationCodeInput, opts ...request.Option) (*cognitoidentityprovider.ResendConfirmationCodeOutput, error)
 	RespondToAuthChallengeWithContext(ctx context.Context, input *cognitoidentityprovider.RespondToAuthChallengeInput, opts ...request.Option) (*cognitoidentityprovider.RespondToAuthChallengeOutput, error)
+	RevokeTokenWithContext(ctx context.Context, input *cognitoidentityprovider.RevokeTokenInput, opts ...request.Option) (*cognitoidentityprovider.RevokeTokenOutput, error)
 	SetRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetRiskConfigurationOutput, error)
 	SetUICustomizationWithContext(ctx context.Context, input *cognitoidentityprovider.SetUICustomizationInput, opts ...request.Option) (*cognitoidentityprovider.SetUICustomizationOutput, error)
 	SetUserMFAPreferenceWithContext(ctx context.Context, input *cognitoidentityprovider.SetUserMFAPreferenceInput, opts ...request.Option) (*cognitoidentityprovider.SetUserMFAPreferenceOutput, error)
@@ -1974,6 +1975,27 @@ func (c *Client) RespondToAuthChallengeWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*cognitoidentityprovider.RespondToAuthChallengeOutput), req.Error
+}
+
+func (c *Client) RevokeTokenWithContext(ctx context.Context, input *cognitoidentityprovider.RevokeTokenInput, opts ...request.Option) (*cognitoidentityprovider.RevokeTokenOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "RevokeToken",
+		Input:   input,
+		Output:  (*cognitoidentityprovider.RevokeTokenOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CognitoIdentityProviderAPI.RevokeTokenWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cognitoidentityprovider.RevokeTokenOutput), req.Error
 }
 
 func (c *Client) SetRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetRiskConfigurationOutput, error) {

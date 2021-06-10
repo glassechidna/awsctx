@@ -31,10 +31,13 @@ type RAM interface {
 	ListPendingInvitationResourcesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, opts ...request.Option) (*ram.ListPendingInvitationResourcesOutput, error)
 	ListPendingInvitationResourcesPagesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, cb func(*ram.ListPendingInvitationResourcesOutput, bool) bool, opts ...request.Option) error
 	ListPermissionsWithContext(ctx context.Context, input *ram.ListPermissionsInput, opts ...request.Option) (*ram.ListPermissionsOutput, error)
+	ListPermissionsPagesWithContext(ctx context.Context, input *ram.ListPermissionsInput, cb func(*ram.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error)
 	ListPrincipalsPagesWithContext(ctx context.Context, input *ram.ListPrincipalsInput, cb func(*ram.ListPrincipalsOutput, bool) bool, opts ...request.Option) error
 	ListResourceSharePermissionsWithContext(ctx context.Context, input *ram.ListResourceSharePermissionsInput, opts ...request.Option) (*ram.ListResourceSharePermissionsOutput, error)
+	ListResourceSharePermissionsPagesWithContext(ctx context.Context, input *ram.ListResourceSharePermissionsInput, cb func(*ram.ListResourceSharePermissionsOutput, bool) bool, opts ...request.Option) error
 	ListResourceTypesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, opts ...request.Option) (*ram.ListResourceTypesOutput, error)
+	ListResourceTypesPagesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, cb func(*ram.ListResourceTypesOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error)
 	ListResourcesPagesWithContext(ctx context.Context, input *ram.ListResourcesInput, cb func(*ram.ListResourcesOutput, bool) bool, opts ...request.Option) error
 	PromoteResourceShareCreatedFromPolicyWithContext(ctx context.Context, input *ram.PromoteResourceShareCreatedFromPolicyInput, opts ...request.Option) (*ram.PromoteResourceShareCreatedFromPolicyOutput, error)
@@ -474,6 +477,26 @@ func (c *Client) ListPermissionsWithContext(ctx context.Context, input *ram.List
 	return req.Output.(*ram.ListPermissionsOutput), req.Error
 }
 
+func (c *Client) ListPermissionsPagesWithContext(ctx context.Context, input *ram.ListPermissionsInput, cb func(*ram.ListPermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListPermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RAMAPI.ListPermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
@@ -536,6 +559,26 @@ func (c *Client) ListResourceSharePermissionsWithContext(ctx context.Context, in
 	return req.Output.(*ram.ListResourceSharePermissionsOutput), req.Error
 }
 
+func (c *Client) ListResourceSharePermissionsPagesWithContext(ctx context.Context, input *ram.ListResourceSharePermissionsInput, cb func(*ram.ListResourceSharePermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListResourceSharePermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RAMAPI.ListResourceSharePermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListResourceTypesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, opts ...request.Option) (*ram.ListResourceTypesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
@@ -555,6 +598,26 @@ func (c *Client) ListResourceTypesWithContext(ctx context.Context, input *ram.Li
 	})
 
 	return req.Output.(*ram.ListResourceTypesOutput), req.Error
+}
+
+func (c *Client) ListResourceTypesPagesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, cb func(*ram.ListResourceTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListResourceTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RAMAPI.ListResourceTypesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error) {
