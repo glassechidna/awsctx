@@ -12,6 +12,7 @@ import (
 
 type Connect interface {
 	AssociateApprovedOriginWithContext(ctx context.Context, input *connect.AssociateApprovedOriginInput, opts ...request.Option) (*connect.AssociateApprovedOriginOutput, error)
+	AssociateBotWithContext(ctx context.Context, input *connect.AssociateBotInput, opts ...request.Option) (*connect.AssociateBotOutput, error)
 	AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error)
 	AssociateLambdaFunctionWithContext(ctx context.Context, input *connect.AssociateLambdaFunctionInput, opts ...request.Option) (*connect.AssociateLambdaFunctionOutput, error)
 	AssociateLexBotWithContext(ctx context.Context, input *connect.AssociateLexBotInput, opts ...request.Option) (*connect.AssociateLexBotOutput, error)
@@ -45,6 +46,7 @@ type Connect interface {
 	DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error)
 	DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error)
 	DisassociateApprovedOriginWithContext(ctx context.Context, input *connect.DisassociateApprovedOriginInput, opts ...request.Option) (*connect.DisassociateApprovedOriginOutput, error)
+	DisassociateBotWithContext(ctx context.Context, input *connect.DisassociateBotInput, opts ...request.Option) (*connect.DisassociateBotOutput, error)
 	DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error)
 	DisassociateLambdaFunctionWithContext(ctx context.Context, input *connect.DisassociateLambdaFunctionInput, opts ...request.Option) (*connect.DisassociateLambdaFunctionOutput, error)
 	DisassociateLexBotWithContext(ctx context.Context, input *connect.DisassociateLexBotInput, opts ...request.Option) (*connect.DisassociateLexBotOutput, error)
@@ -59,6 +61,8 @@ type Connect interface {
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
 	ListApprovedOriginsWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, opts ...request.Option) (*connect.ListApprovedOriginsOutput, error)
 	ListApprovedOriginsPagesWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, cb func(*connect.ListApprovedOriginsOutput, bool) bool, opts ...request.Option) error
+	ListBotsWithContext(ctx context.Context, input *connect.ListBotsInput, opts ...request.Option) (*connect.ListBotsOutput, error)
+	ListBotsPagesWithContext(ctx context.Context, input *connect.ListBotsInput, cb func(*connect.ListBotsOutput, bool) bool, opts ...request.Option) error
 	ListContactFlowsWithContext(ctx context.Context, input *connect.ListContactFlowsInput, opts ...request.Option) (*connect.ListContactFlowsOutput, error)
 	ListContactFlowsPagesWithContext(ctx context.Context, input *connect.ListContactFlowsInput, cb func(*connect.ListContactFlowsOutput, bool) bool, opts ...request.Option) error
 	ListHoursOfOperationsWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, opts ...request.Option) (*connect.ListHoursOfOperationsOutput, error)
@@ -169,6 +173,27 @@ func (c *Client) AssociateApprovedOriginWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.AssociateApprovedOriginOutput), req.Error
+}
+
+func (c *Client) AssociateBotWithContext(ctx context.Context, input *connect.AssociateBotInput, opts ...request.Option) (*connect.AssociateBotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateBot",
+		Input:   input,
+		Output:  (*connect.AssociateBotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateBotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateBotOutput), req.Error
 }
 
 func (c *Client) AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error) {
@@ -864,6 +889,27 @@ func (c *Client) DisassociateApprovedOriginWithContext(ctx context.Context, inpu
 	return req.Output.(*connect.DisassociateApprovedOriginOutput), req.Error
 }
 
+func (c *Client) DisassociateBotWithContext(ctx context.Context, input *connect.DisassociateBotInput, opts ...request.Option) (*connect.DisassociateBotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateBot",
+		Input:   input,
+		Output:  (*connect.DisassociateBotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateBotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateBotOutput), req.Error
+}
+
 func (c *Client) DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1150,6 +1196,47 @@ func (c *Client) ListApprovedOriginsPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListApprovedOriginsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListBotsWithContext(ctx context.Context, input *connect.ListBotsInput, opts ...request.Option) (*connect.ListBotsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListBots",
+		Input:   input,
+		Output:  (*connect.ListBotsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListBotsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListBotsOutput), req.Error
+}
+
+func (c *Client) ListBotsPagesWithContext(ctx context.Context, input *connect.ListBotsInput, cb func(*connect.ListBotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListBots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListBotsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
