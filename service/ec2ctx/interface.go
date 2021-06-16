@@ -32,6 +32,7 @@ type EC2 interface {
 	AssociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.AssociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.AssociateSubnetCidrBlockOutput, error)
 	AssociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.AssociateTransitGatewayMulticastDomainOutput, error)
 	AssociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.AssociateTransitGatewayRouteTableOutput, error)
+	AssociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.AssociateTrunkInterfaceInput, opts ...request.Option) (*ec2.AssociateTrunkInterfaceOutput, error)
 	AssociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.AssociateVpcCidrBlockInput, opts ...request.Option) (*ec2.AssociateVpcCidrBlockOutput, error)
 	AttachClassicLinkVpcWithContext(ctx context.Context, input *ec2.AttachClassicLinkVpcInput, opts ...request.Option) (*ec2.AttachClassicLinkVpcOutput, error)
 	AttachInternetGatewayWithContext(ctx context.Context, input *ec2.AttachInternetGatewayInput, opts ...request.Option) (*ec2.AttachInternetGatewayOutput, error)
@@ -356,6 +357,7 @@ type EC2 interface {
 	DescribeTransitGatewayVpcAttachmentsPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewayVpcAttachmentsInput, cb func(*ec2.DescribeTransitGatewayVpcAttachmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeTransitGatewaysWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, opts ...request.Option) (*ec2.DescribeTransitGatewaysOutput, error)
 	DescribeTransitGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, cb func(*ec2.DescribeTransitGatewaysOutput, bool) bool, opts ...request.Option) error
+	DescribeTrunkInterfaceAssociationsWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, opts ...request.Option) (*ec2.DescribeTrunkInterfaceAssociationsOutput, error)
 	DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error)
 	DescribeVolumeStatusWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, opts ...request.Option) (*ec2.DescribeVolumeStatusOutput, error)
 	DescribeVolumeStatusPagesWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, cb func(*ec2.DescribeVolumeStatusOutput, bool) bool, opts ...request.Option) error
@@ -405,6 +407,7 @@ type EC2 interface {
 	DisassociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.DisassociateSubnetCidrBlockOutput, error)
 	DisassociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayMulticastDomainOutput, error)
 	DisassociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayRouteTableOutput, error)
+	DisassociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.DisassociateTrunkInterfaceInput, opts ...request.Option) (*ec2.DisassociateTrunkInterfaceOutput, error)
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
@@ -1016,6 +1019,27 @@ func (c *Client) AssociateTransitGatewayRouteTableWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.AssociateTransitGatewayRouteTableOutput), req.Error
+}
+
+func (c *Client) AssociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.AssociateTrunkInterfaceInput, opts ...request.Option) (*ec2.AssociateTrunkInterfaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AssociateTrunkInterface",
+		Input:   input,
+		Output:  (*ec2.AssociateTrunkInterfaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AssociateTrunkInterfaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AssociateTrunkInterfaceOutput), req.Error
 }
 
 func (c *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.AssociateVpcCidrBlockInput, opts ...request.Option) (*ec2.AssociateVpcCidrBlockOutput, error) {
@@ -7746,6 +7770,27 @@ func (c *Client) DescribeTransitGatewaysPagesWithContext(ctx context.Context, in
 	return req.Error
 }
 
+func (c *Client) DescribeTrunkInterfaceAssociationsWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, opts ...request.Option) (*ec2.DescribeTrunkInterfaceAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTrunkInterfaceAssociations",
+		Input:   input,
+		Output:  (*ec2.DescribeTrunkInterfaceAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeTrunkInterfaceAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeTrunkInterfaceAssociationsOutput), req.Error
+}
+
 func (c *Client) DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -8762,6 +8807,27 @@ func (c *Client) DisassociateTransitGatewayRouteTableWithContext(ctx context.Con
 	})
 
 	return req.Output.(*ec2.DisassociateTransitGatewayRouteTableOutput), req.Error
+}
+
+func (c *Client) DisassociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.DisassociateTrunkInterfaceInput, opts ...request.Option) (*ec2.DisassociateTrunkInterfaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisassociateTrunkInterface",
+		Input:   input,
+		Output:  (*ec2.DisassociateTrunkInterfaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisassociateTrunkInterfaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisassociateTrunkInterfaceOutput), req.Error
 }
 
 func (c *Client) DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error) {

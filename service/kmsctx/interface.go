@@ -51,6 +51,7 @@ type KMS interface {
 	ListRetirableGrantsWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error)
 	PutKeyPolicyWithContext(ctx context.Context, input *kms.PutKeyPolicyInput, opts ...request.Option) (*kms.PutKeyPolicyOutput, error)
 	ReEncryptWithContext(ctx context.Context, input *kms.ReEncryptInput, opts ...request.Option) (*kms.ReEncryptOutput, error)
+	ReplicateKeyWithContext(ctx context.Context, input *kms.ReplicateKeyInput, opts ...request.Option) (*kms.ReplicateKeyOutput, error)
 	RetireGrantWithContext(ctx context.Context, input *kms.RetireGrantInput, opts ...request.Option) (*kms.RetireGrantOutput, error)
 	RevokeGrantWithContext(ctx context.Context, input *kms.RevokeGrantInput, opts ...request.Option) (*kms.RevokeGrantOutput, error)
 	ScheduleKeyDeletionWithContext(ctx context.Context, input *kms.ScheduleKeyDeletionInput, opts ...request.Option) (*kms.ScheduleKeyDeletionOutput, error)
@@ -60,6 +61,7 @@ type KMS interface {
 	UpdateAliasWithContext(ctx context.Context, input *kms.UpdateAliasInput, opts ...request.Option) (*kms.UpdateAliasOutput, error)
 	UpdateCustomKeyStoreWithContext(ctx context.Context, input *kms.UpdateCustomKeyStoreInput, opts ...request.Option) (*kms.UpdateCustomKeyStoreOutput, error)
 	UpdateKeyDescriptionWithContext(ctx context.Context, input *kms.UpdateKeyDescriptionInput, opts ...request.Option) (*kms.UpdateKeyDescriptionOutput, error)
+	UpdatePrimaryRegionWithContext(ctx context.Context, input *kms.UpdatePrimaryRegionInput, opts ...request.Option) (*kms.UpdatePrimaryRegionOutput, error)
 	VerifyWithContext(ctx context.Context, input *kms.VerifyInput, opts ...request.Option) (*kms.VerifyOutput, error)
 }
 
@@ -914,6 +916,27 @@ func (c *Client) ReEncryptWithContext(ctx context.Context, input *kms.ReEncryptI
 	return req.Output.(*kms.ReEncryptOutput), req.Error
 }
 
+func (c *Client) ReplicateKeyWithContext(ctx context.Context, input *kms.ReplicateKeyInput, opts ...request.Option) (*kms.ReplicateKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ReplicateKey",
+		Input:   input,
+		Output:  (*kms.ReplicateKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.ReplicateKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.ReplicateKeyOutput), req.Error
+}
+
 func (c *Client) RetireGrantWithContext(ctx context.Context, input *kms.RetireGrantInput, opts ...request.Option) (*kms.RetireGrantOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
@@ -1101,6 +1124,27 @@ func (c *Client) UpdateKeyDescriptionWithContext(ctx context.Context, input *kms
 	})
 
 	return req.Output.(*kms.UpdateKeyDescriptionOutput), req.Error
+}
+
+func (c *Client) UpdatePrimaryRegionWithContext(ctx context.Context, input *kms.UpdatePrimaryRegionInput, opts ...request.Option) (*kms.UpdatePrimaryRegionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "UpdatePrimaryRegion",
+		Input:   input,
+		Output:  (*kms.UpdatePrimaryRegionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.UpdatePrimaryRegionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.UpdatePrimaryRegionOutput), req.Error
 }
 
 func (c *Client) VerifyWithContext(ctx context.Context, input *kms.VerifyInput, opts ...request.Option) (*kms.VerifyOutput, error) {
