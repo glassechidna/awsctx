@@ -214,6 +214,7 @@ type Chime interface {
 	UpdateRoomWithContext(ctx context.Context, input *chime.UpdateRoomInput, opts ...request.Option) (*chime.UpdateRoomOutput, error)
 	UpdateRoomMembershipWithContext(ctx context.Context, input *chime.UpdateRoomMembershipInput, opts ...request.Option) (*chime.UpdateRoomMembershipOutput, error)
 	UpdateSipMediaApplicationWithContext(ctx context.Context, input *chime.UpdateSipMediaApplicationInput, opts ...request.Option) (*chime.UpdateSipMediaApplicationOutput, error)
+	UpdateSipMediaApplicationCallWithContext(ctx context.Context, input *chime.UpdateSipMediaApplicationCallInput, opts ...request.Option) (*chime.UpdateSipMediaApplicationCallOutput, error)
 	UpdateSipRuleWithContext(ctx context.Context, input *chime.UpdateSipRuleInput, opts ...request.Option) (*chime.UpdateSipRuleOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *chime.UpdateUserInput, opts ...request.Option) (*chime.UpdateUserOutput, error)
 	UpdateUserSettingsWithContext(ctx context.Context, input *chime.UpdateUserSettingsInput, opts ...request.Option) (*chime.UpdateUserSettingsOutput, error)
@@ -4472,6 +4473,27 @@ func (c *Client) UpdateSipMediaApplicationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*chime.UpdateSipMediaApplicationOutput), req.Error
+}
+
+func (c *Client) UpdateSipMediaApplicationCallWithContext(ctx context.Context, input *chime.UpdateSipMediaApplicationCallInput, opts ...request.Option) (*chime.UpdateSipMediaApplicationCallOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "UpdateSipMediaApplicationCall",
+		Input:   input,
+		Output:  (*chime.UpdateSipMediaApplicationCallOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.UpdateSipMediaApplicationCallWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.UpdateSipMediaApplicationCallOutput), req.Error
 }
 
 func (c *Client) UpdateSipRuleWithContext(ctx context.Context, input *chime.UpdateSipRuleInput, opts ...request.Option) (*chime.UpdateSipRuleOutput, error) {
