@@ -11,12 +11,15 @@ import (
 )
 
 type CloudFormation interface {
+	ActivateTypeWithContext(ctx context.Context, input *cloudformation.ActivateTypeInput, opts ...request.Option) (*cloudformation.ActivateTypeOutput, error)
+	BatchDescribeTypeConfigurationsWithContext(ctx context.Context, input *cloudformation.BatchDescribeTypeConfigurationsInput, opts ...request.Option) (*cloudformation.BatchDescribeTypeConfigurationsOutput, error)
 	CancelUpdateStackWithContext(ctx context.Context, input *cloudformation.CancelUpdateStackInput, opts ...request.Option) (*cloudformation.CancelUpdateStackOutput, error)
 	ContinueUpdateRollbackWithContext(ctx context.Context, input *cloudformation.ContinueUpdateRollbackInput, opts ...request.Option) (*cloudformation.ContinueUpdateRollbackOutput, error)
 	CreateChangeSetWithContext(ctx context.Context, input *cloudformation.CreateChangeSetInput, opts ...request.Option) (*cloudformation.CreateChangeSetOutput, error)
 	CreateStackWithContext(ctx context.Context, input *cloudformation.CreateStackInput, opts ...request.Option) (*cloudformation.CreateStackOutput, error)
 	CreateStackInstancesWithContext(ctx context.Context, input *cloudformation.CreateStackInstancesInput, opts ...request.Option) (*cloudformation.CreateStackInstancesOutput, error)
 	CreateStackSetWithContext(ctx context.Context, input *cloudformation.CreateStackSetInput, opts ...request.Option) (*cloudformation.CreateStackSetOutput, error)
+	DeactivateTypeWithContext(ctx context.Context, input *cloudformation.DeactivateTypeInput, opts ...request.Option) (*cloudformation.DeactivateTypeOutput, error)
 	DeleteChangeSetWithContext(ctx context.Context, input *cloudformation.DeleteChangeSetInput, opts ...request.Option) (*cloudformation.DeleteChangeSetOutput, error)
 	DeleteStackWithContext(ctx context.Context, input *cloudformation.DeleteStackInput, opts ...request.Option) (*cloudformation.DeleteStackOutput, error)
 	DeleteStackInstancesWithContext(ctx context.Context, input *cloudformation.DeleteStackInstancesInput, opts ...request.Option) (*cloudformation.DeleteStackInstancesOutput, error)
@@ -25,6 +28,7 @@ type CloudFormation interface {
 	DescribeAccountLimitsWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, opts ...request.Option) (*cloudformation.DescribeAccountLimitsOutput, error)
 	DescribeAccountLimitsPagesWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, cb func(*cloudformation.DescribeAccountLimitsOutput, bool) bool, opts ...request.Option) error
 	DescribeChangeSetWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetInput, opts ...request.Option) (*cloudformation.DescribeChangeSetOutput, error)
+	DescribePublisherWithContext(ctx context.Context, input *cloudformation.DescribePublisherInput, opts ...request.Option) (*cloudformation.DescribePublisherOutput, error)
 	DescribeStackDriftDetectionStatusWithContext(ctx context.Context, input *cloudformation.DescribeStackDriftDetectionStatusInput, opts ...request.Option) (*cloudformation.DescribeStackDriftDetectionStatusOutput, error)
 	DescribeStackEventsWithContext(ctx context.Context, input *cloudformation.DescribeStackEventsInput, opts ...request.Option) (*cloudformation.DescribeStackEventsOutput, error)
 	DescribeStackEventsPagesWithContext(ctx context.Context, input *cloudformation.DescribeStackEventsInput, cb func(*cloudformation.DescribeStackEventsOutput, bool) bool, opts ...request.Option) error
@@ -71,12 +75,16 @@ type CloudFormation interface {
 	ListTypeVersionsPagesWithContext(ctx context.Context, input *cloudformation.ListTypeVersionsInput, cb func(*cloudformation.ListTypeVersionsOutput, bool) bool, opts ...request.Option) error
 	ListTypesWithContext(ctx context.Context, input *cloudformation.ListTypesInput, opts ...request.Option) (*cloudformation.ListTypesOutput, error)
 	ListTypesPagesWithContext(ctx context.Context, input *cloudformation.ListTypesInput, cb func(*cloudformation.ListTypesOutput, bool) bool, opts ...request.Option) error
+	PublishTypeWithContext(ctx context.Context, input *cloudformation.PublishTypeInput, opts ...request.Option) (*cloudformation.PublishTypeOutput, error)
 	RecordHandlerProgressWithContext(ctx context.Context, input *cloudformation.RecordHandlerProgressInput, opts ...request.Option) (*cloudformation.RecordHandlerProgressOutput, error)
+	RegisterPublisherWithContext(ctx context.Context, input *cloudformation.RegisterPublisherInput, opts ...request.Option) (*cloudformation.RegisterPublisherOutput, error)
 	RegisterTypeWithContext(ctx context.Context, input *cloudformation.RegisterTypeInput, opts ...request.Option) (*cloudformation.RegisterTypeOutput, error)
 	SetStackPolicyWithContext(ctx context.Context, input *cloudformation.SetStackPolicyInput, opts ...request.Option) (*cloudformation.SetStackPolicyOutput, error)
+	SetTypeConfigurationWithContext(ctx context.Context, input *cloudformation.SetTypeConfigurationInput, opts ...request.Option) (*cloudformation.SetTypeConfigurationOutput, error)
 	SetTypeDefaultVersionWithContext(ctx context.Context, input *cloudformation.SetTypeDefaultVersionInput, opts ...request.Option) (*cloudformation.SetTypeDefaultVersionOutput, error)
 	SignalResourceWithContext(ctx context.Context, input *cloudformation.SignalResourceInput, opts ...request.Option) (*cloudformation.SignalResourceOutput, error)
 	StopStackSetOperationWithContext(ctx context.Context, input *cloudformation.StopStackSetOperationInput, opts ...request.Option) (*cloudformation.StopStackSetOperationOutput, error)
+	TestTypeWithContext(ctx context.Context, input *cloudformation.TestTypeInput, opts ...request.Option) (*cloudformation.TestTypeOutput, error)
 	UpdateStackWithContext(ctx context.Context, input *cloudformation.UpdateStackInput, opts ...request.Option) (*cloudformation.UpdateStackOutput, error)
 	UpdateStackInstancesWithContext(ctx context.Context, input *cloudformation.UpdateStackInstancesInput, opts ...request.Option) (*cloudformation.UpdateStackInstancesOutput, error)
 	UpdateStackSetWithContext(ctx context.Context, input *cloudformation.UpdateStackSetInput, opts ...request.Option) (*cloudformation.UpdateStackSetOutput, error)
@@ -98,6 +106,48 @@ func New(base cloudformationiface.CloudFormationAPI, ctxer awsctx.Contexter) Clo
 
 var _ CloudFormation = (*cloudformation.CloudFormation)(nil)
 var _ CloudFormation = (*Client)(nil)
+
+func (c *Client) ActivateTypeWithContext(ctx context.Context, input *cloudformation.ActivateTypeInput, opts ...request.Option) (*cloudformation.ActivateTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ActivateType",
+		Input:   input,
+		Output:  (*cloudformation.ActivateTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.ActivateTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.ActivateTypeOutput), req.Error
+}
+
+func (c *Client) BatchDescribeTypeConfigurationsWithContext(ctx context.Context, input *cloudformation.BatchDescribeTypeConfigurationsInput, opts ...request.Option) (*cloudformation.BatchDescribeTypeConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "BatchDescribeTypeConfigurations",
+		Input:   input,
+		Output:  (*cloudformation.BatchDescribeTypeConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.BatchDescribeTypeConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.BatchDescribeTypeConfigurationsOutput), req.Error
+}
 
 func (c *Client) CancelUpdateStackWithContext(ctx context.Context, input *cloudformation.CancelUpdateStackInput, opts ...request.Option) (*cloudformation.CancelUpdateStackOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -223,6 +273,27 @@ func (c *Client) CreateStackSetWithContext(ctx context.Context, input *cloudform
 	})
 
 	return req.Output.(*cloudformation.CreateStackSetOutput), req.Error
+}
+
+func (c *Client) DeactivateTypeWithContext(ctx context.Context, input *cloudformation.DeactivateTypeInput, opts ...request.Option) (*cloudformation.DeactivateTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DeactivateType",
+		Input:   input,
+		Output:  (*cloudformation.DeactivateTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.DeactivateTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.DeactivateTypeOutput), req.Error
 }
 
 func (c *Client) DeleteChangeSetWithContext(ctx context.Context, input *cloudformation.DeleteChangeSetInput, opts ...request.Option) (*cloudformation.DeleteChangeSetOutput, error) {
@@ -390,6 +461,27 @@ func (c *Client) DescribeChangeSetWithContext(ctx context.Context, input *cloudf
 	})
 
 	return req.Output.(*cloudformation.DescribeChangeSetOutput), req.Error
+}
+
+func (c *Client) DescribePublisherWithContext(ctx context.Context, input *cloudformation.DescribePublisherInput, opts ...request.Option) (*cloudformation.DescribePublisherOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DescribePublisher",
+		Input:   input,
+		Output:  (*cloudformation.DescribePublisherOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.DescribePublisherWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.DescribePublisherOutput), req.Error
 }
 
 func (c *Client) DescribeStackDriftDetectionStatusWithContext(ctx context.Context, input *cloudformation.DescribeStackDriftDetectionStatusInput, opts ...request.Option) (*cloudformation.DescribeStackDriftDetectionStatusOutput, error) {
@@ -1343,6 +1435,27 @@ func (c *Client) ListTypesPagesWithContext(ctx context.Context, input *cloudform
 	return req.Error
 }
 
+func (c *Client) PublishTypeWithContext(ctx context.Context, input *cloudformation.PublishTypeInput, opts ...request.Option) (*cloudformation.PublishTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "PublishType",
+		Input:   input,
+		Output:  (*cloudformation.PublishTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.PublishTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.PublishTypeOutput), req.Error
+}
+
 func (c *Client) RecordHandlerProgressWithContext(ctx context.Context, input *cloudformation.RecordHandlerProgressInput, opts ...request.Option) (*cloudformation.RecordHandlerProgressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudformation",
@@ -1362,6 +1475,27 @@ func (c *Client) RecordHandlerProgressWithContext(ctx context.Context, input *cl
 	})
 
 	return req.Output.(*cloudformation.RecordHandlerProgressOutput), req.Error
+}
+
+func (c *Client) RegisterPublisherWithContext(ctx context.Context, input *cloudformation.RegisterPublisherInput, opts ...request.Option) (*cloudformation.RegisterPublisherOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "RegisterPublisher",
+		Input:   input,
+		Output:  (*cloudformation.RegisterPublisherOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.RegisterPublisherWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.RegisterPublisherOutput), req.Error
 }
 
 func (c *Client) RegisterTypeWithContext(ctx context.Context, input *cloudformation.RegisterTypeInput, opts ...request.Option) (*cloudformation.RegisterTypeOutput, error) {
@@ -1404,6 +1538,27 @@ func (c *Client) SetStackPolicyWithContext(ctx context.Context, input *cloudform
 	})
 
 	return req.Output.(*cloudformation.SetStackPolicyOutput), req.Error
+}
+
+func (c *Client) SetTypeConfigurationWithContext(ctx context.Context, input *cloudformation.SetTypeConfigurationInput, opts ...request.Option) (*cloudformation.SetTypeConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "SetTypeConfiguration",
+		Input:   input,
+		Output:  (*cloudformation.SetTypeConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.SetTypeConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.SetTypeConfigurationOutput), req.Error
 }
 
 func (c *Client) SetTypeDefaultVersionWithContext(ctx context.Context, input *cloudformation.SetTypeDefaultVersionInput, opts ...request.Option) (*cloudformation.SetTypeDefaultVersionOutput, error) {
@@ -1467,6 +1622,27 @@ func (c *Client) StopStackSetOperationWithContext(ctx context.Context, input *cl
 	})
 
 	return req.Output.(*cloudformation.StopStackSetOperationOutput), req.Error
+}
+
+func (c *Client) TestTypeWithContext(ctx context.Context, input *cloudformation.TestTypeInput, opts ...request.Option) (*cloudformation.TestTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "TestType",
+		Input:   input,
+		Output:  (*cloudformation.TestTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.TestTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.TestTypeOutput), req.Error
 }
 
 func (c *Client) UpdateStackWithContext(ctx context.Context, input *cloudformation.UpdateStackInput, opts ...request.Option) (*cloudformation.UpdateStackOutput, error) {
