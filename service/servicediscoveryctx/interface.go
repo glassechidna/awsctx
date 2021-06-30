@@ -37,7 +37,10 @@ type ServiceDiscovery interface {
 	RegisterInstanceWithContext(ctx context.Context, input *servicediscovery.RegisterInstanceInput, opts ...request.Option) (*servicediscovery.RegisterInstanceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *servicediscovery.TagResourceInput, opts ...request.Option) (*servicediscovery.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *servicediscovery.UntagResourceInput, opts ...request.Option) (*servicediscovery.UntagResourceOutput, error)
+	UpdateHttpNamespaceWithContext(ctx context.Context, input *servicediscovery.UpdateHttpNamespaceInput, opts ...request.Option) (*servicediscovery.UpdateHttpNamespaceOutput, error)
 	UpdateInstanceCustomHealthStatusWithContext(ctx context.Context, input *servicediscovery.UpdateInstanceCustomHealthStatusInput, opts ...request.Option) (*servicediscovery.UpdateInstanceCustomHealthStatusOutput, error)
+	UpdatePrivateDnsNamespaceWithContext(ctx context.Context, input *servicediscovery.UpdatePrivateDnsNamespaceInput, opts ...request.Option) (*servicediscovery.UpdatePrivateDnsNamespaceOutput, error)
+	UpdatePublicDnsNamespaceWithContext(ctx context.Context, input *servicediscovery.UpdatePublicDnsNamespaceInput, opts ...request.Option) (*servicediscovery.UpdatePublicDnsNamespaceOutput, error)
 	UpdateServiceWithContext(ctx context.Context, input *servicediscovery.UpdateServiceInput, opts ...request.Option) (*servicediscovery.UpdateServiceOutput, error)
 }
 
@@ -597,6 +600,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *servicedis
 	return req.Output.(*servicediscovery.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateHttpNamespaceWithContext(ctx context.Context, input *servicediscovery.UpdateHttpNamespaceInput, opts ...request.Option) (*servicediscovery.UpdateHttpNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "UpdateHttpNamespace",
+		Input:   input,
+		Output:  (*servicediscovery.UpdateHttpNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.UpdateHttpNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.UpdateHttpNamespaceOutput), req.Error
+}
+
 func (c *Client) UpdateInstanceCustomHealthStatusWithContext(ctx context.Context, input *servicediscovery.UpdateInstanceCustomHealthStatusInput, opts ...request.Option) (*servicediscovery.UpdateInstanceCustomHealthStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "servicediscovery",
@@ -616,6 +640,48 @@ func (c *Client) UpdateInstanceCustomHealthStatusWithContext(ctx context.Context
 	})
 
 	return req.Output.(*servicediscovery.UpdateInstanceCustomHealthStatusOutput), req.Error
+}
+
+func (c *Client) UpdatePrivateDnsNamespaceWithContext(ctx context.Context, input *servicediscovery.UpdatePrivateDnsNamespaceInput, opts ...request.Option) (*servicediscovery.UpdatePrivateDnsNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "UpdatePrivateDnsNamespace",
+		Input:   input,
+		Output:  (*servicediscovery.UpdatePrivateDnsNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.UpdatePrivateDnsNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.UpdatePrivateDnsNamespaceOutput), req.Error
+}
+
+func (c *Client) UpdatePublicDnsNamespaceWithContext(ctx context.Context, input *servicediscovery.UpdatePublicDnsNamespaceInput, opts ...request.Option) (*servicediscovery.UpdatePublicDnsNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "UpdatePublicDnsNamespace",
+		Input:   input,
+		Output:  (*servicediscovery.UpdatePublicDnsNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.UpdatePublicDnsNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.UpdatePublicDnsNamespaceOutput), req.Error
 }
 
 func (c *Client) UpdateServiceWithContext(ctx context.Context, input *servicediscovery.UpdateServiceInput, opts ...request.Option) (*servicediscovery.UpdateServiceOutput, error) {
