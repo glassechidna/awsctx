@@ -33,6 +33,7 @@ type SNS interface {
 	ListOriginationNumbersWithContext(ctx context.Context, input *sns.ListOriginationNumbersInput, opts ...request.Option) (*sns.ListOriginationNumbersOutput, error)
 	ListOriginationNumbersPagesWithContext(ctx context.Context, input *sns.ListOriginationNumbersInput, cb func(*sns.ListOriginationNumbersOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersOptedOutWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, opts ...request.Option) (*sns.ListPhoneNumbersOptedOutOutput, error)
+	ListPhoneNumbersOptedOutPagesWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, cb func(*sns.ListPhoneNumbersOptedOutOutput, bool) bool, opts ...request.Option) error
 	ListPlatformApplicationsWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, opts ...request.Option) (*sns.ListPlatformApplicationsOutput, error)
 	ListPlatformApplicationsPagesWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, cb func(*sns.ListPlatformApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListSMSSandboxPhoneNumbersWithContext(ctx context.Context, input *sns.ListSMSSandboxPhoneNumbersInput, opts ...request.Option) (*sns.ListSMSSandboxPhoneNumbersOutput, error)
@@ -532,6 +533,26 @@ func (c *Client) ListPhoneNumbersOptedOutWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*sns.ListPhoneNumbersOptedOutOutput), req.Error
+}
+
+func (c *Client) ListPhoneNumbersOptedOutPagesWithContext(ctx context.Context, input *sns.ListPhoneNumbersOptedOutInput, cb func(*sns.ListPhoneNumbersOptedOutOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "ListPhoneNumbersOptedOut",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SNSAPI.ListPhoneNumbersOptedOutPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListPlatformApplicationsWithContext(ctx context.Context, input *sns.ListPlatformApplicationsInput, opts ...request.Option) (*sns.ListPlatformApplicationsOutput, error) {
