@@ -313,6 +313,8 @@ type EC2 interface {
 	DescribeScheduledInstancesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, opts ...request.Option) (*ec2.DescribeScheduledInstancesOutput, error)
 	DescribeScheduledInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeScheduledInstancesInput, cb func(*ec2.DescribeScheduledInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeSecurityGroupReferencesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupReferencesInput, opts ...request.Option) (*ec2.DescribeSecurityGroupReferencesOutput, error)
+	DescribeSecurityGroupRulesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupRulesInput, opts ...request.Option) (*ec2.DescribeSecurityGroupRulesOutput, error)
+	DescribeSecurityGroupRulesPagesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupRulesInput, cb func(*ec2.DescribeSecurityGroupRulesOutput, bool) bool, opts ...request.Option) error
 	DescribeSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeSecurityGroupsOutput, error)
 	DescribeSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, cb func(*ec2.DescribeSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotAttributeWithContext(ctx context.Context, input *ec2.DescribeSnapshotAttributeInput, opts ...request.Option) (*ec2.DescribeSnapshotAttributeOutput, error)
@@ -482,6 +484,7 @@ type EC2 interface {
 	ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error)
 	ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error)
 	ModifyReservedInstancesWithContext(ctx context.Context, input *ec2.ModifyReservedInstancesInput, opts ...request.Option) (*ec2.ModifyReservedInstancesOutput, error)
+	ModifySecurityGroupRulesWithContext(ctx context.Context, input *ec2.ModifySecurityGroupRulesInput, opts ...request.Option) (*ec2.ModifySecurityGroupRulesOutput, error)
 	ModifySnapshotAttributeWithContext(ctx context.Context, input *ec2.ModifySnapshotAttributeInput, opts ...request.Option) (*ec2.ModifySnapshotAttributeOutput, error)
 	ModifySpotFleetRequestWithContext(ctx context.Context, input *ec2.ModifySpotFleetRequestInput, opts ...request.Option) (*ec2.ModifySpotFleetRequestOutput, error)
 	ModifySubnetAttributeWithContext(ctx context.Context, input *ec2.ModifySubnetAttributeInput, opts ...request.Option) (*ec2.ModifySubnetAttributeOutput, error)
@@ -6866,6 +6869,47 @@ func (c *Client) DescribeSecurityGroupReferencesWithContext(ctx context.Context,
 	return req.Output.(*ec2.DescribeSecurityGroupReferencesOutput), req.Error
 }
 
+func (c *Client) DescribeSecurityGroupRulesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupRulesInput, opts ...request.Option) (*ec2.DescribeSecurityGroupRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSecurityGroupRules",
+		Input:   input,
+		Output:  (*ec2.DescribeSecurityGroupRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeSecurityGroupRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeSecurityGroupRulesOutput), req.Error
+}
+
+func (c *Client) DescribeSecurityGroupRulesPagesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupRulesInput, cb func(*ec2.DescribeSecurityGroupRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSecurityGroupRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSecurityGroupRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeSecurityGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10373,6 +10417,27 @@ func (c *Client) ModifyReservedInstancesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.ModifyReservedInstancesOutput), req.Error
+}
+
+func (c *Client) ModifySecurityGroupRulesWithContext(ctx context.Context, input *ec2.ModifySecurityGroupRulesInput, opts ...request.Option) (*ec2.ModifySecurityGroupRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifySecurityGroupRules",
+		Input:   input,
+		Output:  (*ec2.ModifySecurityGroupRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifySecurityGroupRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifySecurityGroupRulesOutput), req.Error
 }
 
 func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, input *ec2.ModifySnapshotAttributeInput, opts ...request.Option) (*ec2.ModifySnapshotAttributeOutput, error) {

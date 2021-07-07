@@ -11,6 +11,7 @@ import (
 )
 
 type CloudFront interface {
+	AssociateAliasWithContext(ctx context.Context, input *cloudfront.AssociateAliasInput, opts ...request.Option) (*cloudfront.AssociateAliasOutput, error)
 	CreateCachePolicyWithContext(ctx context.Context, input *cloudfront.CreateCachePolicyInput, opts ...request.Option) (*cloudfront.CreateCachePolicyOutput, error)
 	CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.CreateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.CreateCloudFrontOriginAccessIdentityOutput, error)
 	CreateDistributionWithContext(ctx context.Context, input *cloudfront.CreateDistributionInput, opts ...request.Option) (*cloudfront.CreateDistributionOutput, error)
@@ -64,6 +65,7 @@ type CloudFront interface {
 	ListCachePoliciesWithContext(ctx context.Context, input *cloudfront.ListCachePoliciesInput, opts ...request.Option) (*cloudfront.ListCachePoliciesOutput, error)
 	ListCloudFrontOriginAccessIdentitiesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, opts ...request.Option) (*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, error)
 	ListCloudFrontOriginAccessIdentitiesPagesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, cb func(*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, bool) bool, opts ...request.Option) error
+	ListConflictingAliasesWithContext(ctx context.Context, input *cloudfront.ListConflictingAliasesInput, opts ...request.Option) (*cloudfront.ListConflictingAliasesOutput, error)
 	ListDistributionsWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, opts ...request.Option) (*cloudfront.ListDistributionsOutput, error)
 	ListDistributionsPagesWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, cb func(*cloudfront.ListDistributionsOutput, bool) bool, opts ...request.Option) error
 	ListDistributionsByCachePolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByCachePolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByCachePolicyIdOutput, error)
@@ -114,6 +116,27 @@ func New(base cloudfrontiface.CloudFrontAPI, ctxer awsctx.Contexter) CloudFront 
 
 var _ CloudFront = (*cloudfront.CloudFront)(nil)
 var _ CloudFront = (*Client)(nil)
+
+func (c *Client) AssociateAliasWithContext(ctx context.Context, input *cloudfront.AssociateAliasInput, opts ...request.Option) (*cloudfront.AssociateAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "AssociateAlias",
+		Input:   input,
+		Output:  (*cloudfront.AssociateAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.AssociateAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.AssociateAliasOutput), req.Error
+}
 
 func (c *Client) CreateCachePolicyWithContext(ctx context.Context, input *cloudfront.CreateCachePolicyInput, opts ...request.Option) (*cloudfront.CreateCachePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -1225,6 +1248,27 @@ func (c *Client) ListCloudFrontOriginAccessIdentitiesPagesWithContext(ctx contex
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListConflictingAliasesWithContext(ctx context.Context, input *cloudfront.ListConflictingAliasesInput, opts ...request.Option) (*cloudfront.ListConflictingAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListConflictingAliases",
+		Input:   input,
+		Output:  (*cloudfront.ListConflictingAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListConflictingAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListConflictingAliasesOutput), req.Error
 }
 
 func (c *Client) ListDistributionsWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, opts ...request.Option) (*cloudfront.ListDistributionsOutput, error) {
