@@ -26,6 +26,7 @@ type FMS interface {
 	GetProtocolsListWithContext(ctx context.Context, input *fms.GetProtocolsListInput, opts ...request.Option) (*fms.GetProtocolsListOutput, error)
 	GetViolationDetailsWithContext(ctx context.Context, input *fms.GetViolationDetailsInput, opts ...request.Option) (*fms.GetViolationDetailsOutput, error)
 	ListAppsListsWithContext(ctx context.Context, input *fms.ListAppsListsInput, opts ...request.Option) (*fms.ListAppsListsOutput, error)
+	ListAppsListsPagesWithContext(ctx context.Context, input *fms.ListAppsListsInput, cb func(*fms.ListAppsListsOutput, bool) bool, opts ...request.Option) error
 	ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error)
 	ListComplianceStatusPagesWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, cb func(*fms.ListComplianceStatusOutput, bool) bool, opts ...request.Option) error
 	ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error)
@@ -33,6 +34,7 @@ type FMS interface {
 	ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error)
 	ListPoliciesPagesWithContext(ctx context.Context, input *fms.ListPoliciesInput, cb func(*fms.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListProtocolsListsWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, opts ...request.Option) (*fms.ListProtocolsListsOutput, error)
+	ListProtocolsListsPagesWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, cb func(*fms.ListProtocolsListsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error)
 	PutAppsListWithContext(ctx context.Context, input *fms.PutAppsListInput, opts ...request.Option) (*fms.PutAppsListOutput, error)
 	PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error)
@@ -372,6 +374,26 @@ func (c *Client) ListAppsListsWithContext(ctx context.Context, input *fms.ListAp
 	return req.Output.(*fms.ListAppsListsOutput), req.Error
 }
 
+func (c *Client) ListAppsListsPagesWithContext(ctx context.Context, input *fms.ListAppsListsInput, cb func(*fms.ListAppsListsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListAppsLists",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FMSAPI.ListAppsListsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -514,6 +536,26 @@ func (c *Client) ListProtocolsListsWithContext(ctx context.Context, input *fms.L
 	})
 
 	return req.Output.(*fms.ListProtocolsListsOutput), req.Error
+}
+
+func (c *Client) ListProtocolsListsPagesWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, cb func(*fms.ListProtocolsListsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListProtocolsLists",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FMSAPI.ListProtocolsListsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error) {

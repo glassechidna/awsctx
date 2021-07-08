@@ -29,6 +29,8 @@ type MediaTailor interface {
 	GetChannelScheduleWithContext(ctx context.Context, input *mediatailor.GetChannelScheduleInput, opts ...request.Option) (*mediatailor.GetChannelScheduleOutput, error)
 	GetChannelSchedulePagesWithContext(ctx context.Context, input *mediatailor.GetChannelScheduleInput, cb func(*mediatailor.GetChannelScheduleOutput, bool) bool, opts ...request.Option) error
 	GetPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.GetPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.GetPlaybackConfigurationOutput, error)
+	ListAlertsWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, opts ...request.Option) (*mediatailor.ListAlertsOutput, error)
+	ListAlertsPagesWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, cb func(*mediatailor.ListAlertsOutput, bool) bool, opts ...request.Option) error
 	ListChannelsWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, opts ...request.Option) (*mediatailor.ListChannelsOutput, error)
 	ListChannelsPagesWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, cb func(*mediatailor.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListPlaybackConfigurationsWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, opts ...request.Option) (*mediatailor.ListPlaybackConfigurationsOutput, error)
@@ -439,6 +441,47 @@ func (c *Client) GetPlaybackConfigurationWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*mediatailor.GetPlaybackConfigurationOutput), req.Error
+}
+
+func (c *Client) ListAlertsWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, opts ...request.Option) (*mediatailor.ListAlertsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListAlerts",
+		Input:   input,
+		Output:  (*mediatailor.ListAlertsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.ListAlertsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.ListAlertsOutput), req.Error
+}
+
+func (c *Client) ListAlertsPagesWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, cb func(*mediatailor.ListAlertsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListAlerts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaTailorAPI.ListAlertsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListChannelsWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, opts ...request.Option) (*mediatailor.ListChannelsOutput, error) {
