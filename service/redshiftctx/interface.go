@@ -20,6 +20,7 @@ type Redshift interface {
 	BatchModifyClusterSnapshotsWithContext(ctx context.Context, input *redshift.BatchModifyClusterSnapshotsInput, opts ...request.Option) (*redshift.BatchModifyClusterSnapshotsOutput, error)
 	CancelResizeWithContext(ctx context.Context, input *redshift.CancelResizeInput, opts ...request.Option) (*redshift.CancelResizeOutput, error)
 	CopyClusterSnapshotWithContext(ctx context.Context, input *redshift.CopyClusterSnapshotInput, opts ...request.Option) (*redshift.CopyClusterSnapshotOutput, error)
+	CreateAuthenticationProfileWithContext(ctx context.Context, input *redshift.CreateAuthenticationProfileInput, opts ...request.Option) (*redshift.CreateAuthenticationProfileOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *redshift.CreateClusterInput, opts ...request.Option) (*redshift.CreateClusterOutput, error)
 	CreateClusterParameterGroupWithContext(ctx context.Context, input *redshift.CreateClusterParameterGroupInput, opts ...request.Option) (*redshift.CreateClusterParameterGroupOutput, error)
 	CreateClusterSecurityGroupWithContext(ctx context.Context, input *redshift.CreateClusterSecurityGroupInput, opts ...request.Option) (*redshift.CreateClusterSecurityGroupOutput, error)
@@ -34,6 +35,7 @@ type Redshift interface {
 	CreateSnapshotScheduleWithContext(ctx context.Context, input *redshift.CreateSnapshotScheduleInput, opts ...request.Option) (*redshift.CreateSnapshotScheduleOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *redshift.CreateTagsInput, opts ...request.Option) (*redshift.CreateTagsOutput, error)
 	CreateUsageLimitWithContext(ctx context.Context, input *redshift.CreateUsageLimitInput, opts ...request.Option) (*redshift.CreateUsageLimitOutput, error)
+	DeleteAuthenticationProfileWithContext(ctx context.Context, input *redshift.DeleteAuthenticationProfileInput, opts ...request.Option) (*redshift.DeleteAuthenticationProfileOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *redshift.DeleteClusterInput, opts ...request.Option) (*redshift.DeleteClusterOutput, error)
 	DeleteClusterParameterGroupWithContext(ctx context.Context, input *redshift.DeleteClusterParameterGroupInput, opts ...request.Option) (*redshift.DeleteClusterParameterGroupOutput, error)
 	DeleteClusterSecurityGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSecurityGroupInput, opts ...request.Option) (*redshift.DeleteClusterSecurityGroupOutput, error)
@@ -50,6 +52,7 @@ type Redshift interface {
 	DeleteTagsWithContext(ctx context.Context, input *redshift.DeleteTagsInput, opts ...request.Option) (*redshift.DeleteTagsOutput, error)
 	DeleteUsageLimitWithContext(ctx context.Context, input *redshift.DeleteUsageLimitInput, opts ...request.Option) (*redshift.DeleteUsageLimitOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *redshift.DescribeAccountAttributesInput, opts ...request.Option) (*redshift.DescribeAccountAttributesOutput, error)
+	DescribeAuthenticationProfilesWithContext(ctx context.Context, input *redshift.DescribeAuthenticationProfilesInput, opts ...request.Option) (*redshift.DescribeAuthenticationProfilesOutput, error)
 	DescribeClusterDbRevisionsWithContext(ctx context.Context, input *redshift.DescribeClusterDbRevisionsInput, opts ...request.Option) (*redshift.DescribeClusterDbRevisionsOutput, error)
 	DescribeClusterDbRevisionsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterDbRevisionsInput, cb func(*redshift.DescribeClusterDbRevisionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterParameterGroupsWithContext(ctx context.Context, input *redshift.DescribeClusterParameterGroupsInput, opts ...request.Option) (*redshift.DescribeClusterParameterGroupsOutput, error)
@@ -115,6 +118,7 @@ type Redshift interface {
 	GetReservedNodeExchangeOfferingsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeOfferingsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeOfferingsOutput, error)
 	GetReservedNodeExchangeOfferingsPagesWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeOfferingsInput, cb func(*redshift.GetReservedNodeExchangeOfferingsOutput, bool) bool, opts ...request.Option) error
 	ModifyAquaConfigurationWithContext(ctx context.Context, input *redshift.ModifyAquaConfigurationInput, opts ...request.Option) (*redshift.ModifyAquaConfigurationOutput, error)
+	ModifyAuthenticationProfileWithContext(ctx context.Context, input *redshift.ModifyAuthenticationProfileInput, opts ...request.Option) (*redshift.ModifyAuthenticationProfileOutput, error)
 	ModifyClusterWithContext(ctx context.Context, input *redshift.ModifyClusterInput, opts ...request.Option) (*redshift.ModifyClusterOutput, error)
 	ModifyClusterDbRevisionWithContext(ctx context.Context, input *redshift.ModifyClusterDbRevisionInput, opts ...request.Option) (*redshift.ModifyClusterDbRevisionOutput, error)
 	ModifyClusterIamRolesWithContext(ctx context.Context, input *redshift.ModifyClusterIamRolesInput, opts ...request.Option) (*redshift.ModifyClusterIamRolesOutput, error)
@@ -346,6 +350,27 @@ func (c *Client) CopyClusterSnapshotWithContext(ctx context.Context, input *reds
 	})
 
 	return req.Output.(*redshift.CopyClusterSnapshotOutput), req.Error
+}
+
+func (c *Client) CreateAuthenticationProfileWithContext(ctx context.Context, input *redshift.CreateAuthenticationProfileInput, opts ...request.Option) (*redshift.CreateAuthenticationProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "CreateAuthenticationProfile",
+		Input:   input,
+		Output:  (*redshift.CreateAuthenticationProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.CreateAuthenticationProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.CreateAuthenticationProfileOutput), req.Error
 }
 
 func (c *Client) CreateClusterWithContext(ctx context.Context, input *redshift.CreateClusterInput, opts ...request.Option) (*redshift.CreateClusterOutput, error) {
@@ -640,6 +665,27 @@ func (c *Client) CreateUsageLimitWithContext(ctx context.Context, input *redshif
 	})
 
 	return req.Output.(*redshift.CreateUsageLimitOutput), req.Error
+}
+
+func (c *Client) DeleteAuthenticationProfileWithContext(ctx context.Context, input *redshift.DeleteAuthenticationProfileInput, opts ...request.Option) (*redshift.DeleteAuthenticationProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeleteAuthenticationProfile",
+		Input:   input,
+		Output:  (*redshift.DeleteAuthenticationProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeleteAuthenticationProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeleteAuthenticationProfileOutput), req.Error
 }
 
 func (c *Client) DeleteClusterWithContext(ctx context.Context, input *redshift.DeleteClusterInput, opts ...request.Option) (*redshift.DeleteClusterOutput, error) {
@@ -976,6 +1022,27 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*redshift.DescribeAccountAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeAuthenticationProfilesWithContext(ctx context.Context, input *redshift.DescribeAuthenticationProfilesInput, opts ...request.Option) (*redshift.DescribeAuthenticationProfilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeAuthenticationProfiles",
+		Input:   input,
+		Output:  (*redshift.DescribeAuthenticationProfilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeAuthenticationProfilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeAuthenticationProfilesOutput), req.Error
 }
 
 func (c *Client) DescribeClusterDbRevisionsWithContext(ctx context.Context, input *redshift.DescribeClusterDbRevisionsInput, opts ...request.Option) (*redshift.DescribeClusterDbRevisionsOutput, error) {
@@ -2314,6 +2381,27 @@ func (c *Client) ModifyAquaConfigurationWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*redshift.ModifyAquaConfigurationOutput), req.Error
+}
+
+func (c *Client) ModifyAuthenticationProfileWithContext(ctx context.Context, input *redshift.ModifyAuthenticationProfileInput, opts ...request.Option) (*redshift.ModifyAuthenticationProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ModifyAuthenticationProfile",
+		Input:   input,
+		Output:  (*redshift.ModifyAuthenticationProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ModifyAuthenticationProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ModifyAuthenticationProfileOutput), req.Error
 }
 
 func (c *Client) ModifyClusterWithContext(ctx context.Context, input *redshift.ModifyClusterInput, opts ...request.Option) (*redshift.ModifyClusterOutput, error) {

@@ -46,6 +46,9 @@ type LexModelBuildingService interface {
 	GetIntentVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentVersionsInput, cb func(*lexmodelbuildingservice.GetIntentVersionsOutput, bool) bool, opts ...request.Option) error
 	GetIntentsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, opts ...request.Option) (*lexmodelbuildingservice.GetIntentsOutput, error)
 	GetIntentsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetIntentsInput, cb func(*lexmodelbuildingservice.GetIntentsOutput, bool) bool, opts ...request.Option) error
+	GetMigrationWithContext(ctx context.Context, input *lexmodelbuildingservice.GetMigrationInput, opts ...request.Option) (*lexmodelbuildingservice.GetMigrationOutput, error)
+	GetMigrationsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetMigrationsInput, opts ...request.Option) (*lexmodelbuildingservice.GetMigrationsOutput, error)
+	GetMigrationsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetMigrationsInput, cb func(*lexmodelbuildingservice.GetMigrationsOutput, bool) bool, opts ...request.Option) error
 	GetSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeOutput, error)
 	GetSlotTypeVersionsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeVersionsInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeVersionsOutput, error)
 	GetSlotTypeVersionsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeVersionsInput, cb func(*lexmodelbuildingservice.GetSlotTypeVersionsOutput, bool) bool, opts ...request.Option) error
@@ -58,6 +61,7 @@ type LexModelBuildingService interface {
 	PutIntentWithContext(ctx context.Context, input *lexmodelbuildingservice.PutIntentInput, opts ...request.Option) (*lexmodelbuildingservice.PutIntentOutput, error)
 	PutSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.PutSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.PutSlotTypeOutput, error)
 	StartImportWithContext(ctx context.Context, input *lexmodelbuildingservice.StartImportInput, opts ...request.Option) (*lexmodelbuildingservice.StartImportOutput, error)
+	StartMigrationWithContext(ctx context.Context, input *lexmodelbuildingservice.StartMigrationInput, opts ...request.Option) (*lexmodelbuildingservice.StartMigrationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.TagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.UntagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.UntagResourceOutput, error)
 }
@@ -804,6 +808,68 @@ func (c *Client) GetIntentsPagesWithContext(ctx context.Context, input *lexmodel
 	return req.Error
 }
 
+func (c *Client) GetMigrationWithContext(ctx context.Context, input *lexmodelbuildingservice.GetMigrationInput, opts ...request.Option) (*lexmodelbuildingservice.GetMigrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetMigration",
+		Input:   input,
+		Output:  (*lexmodelbuildingservice.GetMigrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LexModelBuildingServiceAPI.GetMigrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lexmodelbuildingservice.GetMigrationOutput), req.Error
+}
+
+func (c *Client) GetMigrationsWithContext(ctx context.Context, input *lexmodelbuildingservice.GetMigrationsInput, opts ...request.Option) (*lexmodelbuildingservice.GetMigrationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetMigrations",
+		Input:   input,
+		Output:  (*lexmodelbuildingservice.GetMigrationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LexModelBuildingServiceAPI.GetMigrationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lexmodelbuildingservice.GetMigrationsOutput), req.Error
+}
+
+func (c *Client) GetMigrationsPagesWithContext(ctx context.Context, input *lexmodelbuildingservice.GetMigrationsInput, cb func(*lexmodelbuildingservice.GetMigrationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "GetMigrations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LexModelBuildingServiceAPI.GetMigrationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetSlotTypeWithContext(ctx context.Context, input *lexmodelbuildingservice.GetSlotTypeInput, opts ...request.Option) (*lexmodelbuildingservice.GetSlotTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lexmodelbuildingservice",
@@ -1052,6 +1118,27 @@ func (c *Client) StartImportWithContext(ctx context.Context, input *lexmodelbuil
 	})
 
 	return req.Output.(*lexmodelbuildingservice.StartImportOutput), req.Error
+}
+
+func (c *Client) StartMigrationWithContext(ctx context.Context, input *lexmodelbuildingservice.StartMigrationInput, opts ...request.Option) (*lexmodelbuildingservice.StartMigrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lexmodelbuildingservice",
+		Action:  "StartMigration",
+		Input:   input,
+		Output:  (*lexmodelbuildingservice.StartMigrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LexModelBuildingServiceAPI.StartMigrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lexmodelbuildingservice.StartMigrationOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *lexmodelbuildingservice.TagResourceInput, opts ...request.Option) (*lexmodelbuildingservice.TagResourceOutput, error) {
