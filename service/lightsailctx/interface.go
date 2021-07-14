@@ -19,6 +19,8 @@ type Lightsail interface {
 	AttachStaticIpWithContext(ctx context.Context, input *lightsail.AttachStaticIpInput, opts ...request.Option) (*lightsail.AttachStaticIpOutput, error)
 	CloseInstancePublicPortsWithContext(ctx context.Context, input *lightsail.CloseInstancePublicPortsInput, opts ...request.Option) (*lightsail.CloseInstancePublicPortsOutput, error)
 	CopySnapshotWithContext(ctx context.Context, input *lightsail.CopySnapshotInput, opts ...request.Option) (*lightsail.CopySnapshotOutput, error)
+	CreateBucketWithContext(ctx context.Context, input *lightsail.CreateBucketInput, opts ...request.Option) (*lightsail.CreateBucketOutput, error)
+	CreateBucketAccessKeyWithContext(ctx context.Context, input *lightsail.CreateBucketAccessKeyInput, opts ...request.Option) (*lightsail.CreateBucketAccessKeyOutput, error)
 	CreateCertificateWithContext(ctx context.Context, input *lightsail.CreateCertificateInput, opts ...request.Option) (*lightsail.CreateCertificateOutput, error)
 	CreateCloudFormationStackWithContext(ctx context.Context, input *lightsail.CreateCloudFormationStackInput, opts ...request.Option) (*lightsail.CreateCloudFormationStackOutput, error)
 	CreateContactMethodWithContext(ctx context.Context, input *lightsail.CreateContactMethodInput, opts ...request.Option) (*lightsail.CreateContactMethodOutput, error)
@@ -42,6 +44,8 @@ type Lightsail interface {
 	CreateRelationalDatabaseSnapshotWithContext(ctx context.Context, input *lightsail.CreateRelationalDatabaseSnapshotInput, opts ...request.Option) (*lightsail.CreateRelationalDatabaseSnapshotOutput, error)
 	DeleteAlarmWithContext(ctx context.Context, input *lightsail.DeleteAlarmInput, opts ...request.Option) (*lightsail.DeleteAlarmOutput, error)
 	DeleteAutoSnapshotWithContext(ctx context.Context, input *lightsail.DeleteAutoSnapshotInput, opts ...request.Option) (*lightsail.DeleteAutoSnapshotOutput, error)
+	DeleteBucketWithContext(ctx context.Context, input *lightsail.DeleteBucketInput, opts ...request.Option) (*lightsail.DeleteBucketOutput, error)
+	DeleteBucketAccessKeyWithContext(ctx context.Context, input *lightsail.DeleteBucketAccessKeyInput, opts ...request.Option) (*lightsail.DeleteBucketAccessKeyOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *lightsail.DeleteCertificateInput, opts ...request.Option) (*lightsail.DeleteCertificateOutput, error)
 	DeleteContactMethodWithContext(ctx context.Context, input *lightsail.DeleteContactMethodInput, opts ...request.Option) (*lightsail.DeleteContactMethodOutput, error)
 	DeleteContainerImageWithContext(ctx context.Context, input *lightsail.DeleteContainerImageInput, opts ...request.Option) (*lightsail.DeleteContainerImageOutput, error)
@@ -71,6 +75,10 @@ type Lightsail interface {
 	GetAlarmsWithContext(ctx context.Context, input *lightsail.GetAlarmsInput, opts ...request.Option) (*lightsail.GetAlarmsOutput, error)
 	GetAutoSnapshotsWithContext(ctx context.Context, input *lightsail.GetAutoSnapshotsInput, opts ...request.Option) (*lightsail.GetAutoSnapshotsOutput, error)
 	GetBlueprintsWithContext(ctx context.Context, input *lightsail.GetBlueprintsInput, opts ...request.Option) (*lightsail.GetBlueprintsOutput, error)
+	GetBucketAccessKeysWithContext(ctx context.Context, input *lightsail.GetBucketAccessKeysInput, opts ...request.Option) (*lightsail.GetBucketAccessKeysOutput, error)
+	GetBucketBundlesWithContext(ctx context.Context, input *lightsail.GetBucketBundlesInput, opts ...request.Option) (*lightsail.GetBucketBundlesOutput, error)
+	GetBucketMetricDataWithContext(ctx context.Context, input *lightsail.GetBucketMetricDataInput, opts ...request.Option) (*lightsail.GetBucketMetricDataOutput, error)
+	GetBucketsWithContext(ctx context.Context, input *lightsail.GetBucketsInput, opts ...request.Option) (*lightsail.GetBucketsOutput, error)
 	GetBundlesWithContext(ctx context.Context, input *lightsail.GetBundlesInput, opts ...request.Option) (*lightsail.GetBundlesOutput, error)
 	GetCertificatesWithContext(ctx context.Context, input *lightsail.GetCertificatesInput, opts ...request.Option) (*lightsail.GetCertificatesOutput, error)
 	GetCloudFormationStackRecordsWithContext(ctx context.Context, input *lightsail.GetCloudFormationStackRecordsInput, opts ...request.Option) (*lightsail.GetCloudFormationStackRecordsOutput, error)
@@ -138,6 +146,7 @@ type Lightsail interface {
 	ResetDistributionCacheWithContext(ctx context.Context, input *lightsail.ResetDistributionCacheInput, opts ...request.Option) (*lightsail.ResetDistributionCacheOutput, error)
 	SendContactMethodVerificationWithContext(ctx context.Context, input *lightsail.SendContactMethodVerificationInput, opts ...request.Option) (*lightsail.SendContactMethodVerificationOutput, error)
 	SetIpAddressTypeWithContext(ctx context.Context, input *lightsail.SetIpAddressTypeInput, opts ...request.Option) (*lightsail.SetIpAddressTypeOutput, error)
+	SetResourceAccessForBucketWithContext(ctx context.Context, input *lightsail.SetResourceAccessForBucketInput, opts ...request.Option) (*lightsail.SetResourceAccessForBucketOutput, error)
 	StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error)
 	StartRelationalDatabaseWithContext(ctx context.Context, input *lightsail.StartRelationalDatabaseInput, opts ...request.Option) (*lightsail.StartRelationalDatabaseOutput, error)
 	StopInstanceWithContext(ctx context.Context, input *lightsail.StopInstanceInput, opts ...request.Option) (*lightsail.StopInstanceOutput, error)
@@ -146,6 +155,8 @@ type Lightsail interface {
 	TestAlarmWithContext(ctx context.Context, input *lightsail.TestAlarmInput, opts ...request.Option) (*lightsail.TestAlarmOutput, error)
 	UnpeerVpcWithContext(ctx context.Context, input *lightsail.UnpeerVpcInput, opts ...request.Option) (*lightsail.UnpeerVpcOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *lightsail.UntagResourceInput, opts ...request.Option) (*lightsail.UntagResourceOutput, error)
+	UpdateBucketWithContext(ctx context.Context, input *lightsail.UpdateBucketInput, opts ...request.Option) (*lightsail.UpdateBucketOutput, error)
+	UpdateBucketBundleWithContext(ctx context.Context, input *lightsail.UpdateBucketBundleInput, opts ...request.Option) (*lightsail.UpdateBucketBundleOutput, error)
 	UpdateContainerServiceWithContext(ctx context.Context, input *lightsail.UpdateContainerServiceInput, opts ...request.Option) (*lightsail.UpdateContainerServiceOutput, error)
 	UpdateDistributionWithContext(ctx context.Context, input *lightsail.UpdateDistributionInput, opts ...request.Option) (*lightsail.UpdateDistributionOutput, error)
 	UpdateDistributionBundleWithContext(ctx context.Context, input *lightsail.UpdateDistributionBundleInput, opts ...request.Option) (*lightsail.UpdateDistributionBundleOutput, error)
@@ -336,6 +347,48 @@ func (c *Client) CopySnapshotWithContext(ctx context.Context, input *lightsail.C
 	})
 
 	return req.Output.(*lightsail.CopySnapshotOutput), req.Error
+}
+
+func (c *Client) CreateBucketWithContext(ctx context.Context, input *lightsail.CreateBucketInput, opts ...request.Option) (*lightsail.CreateBucketOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "CreateBucket",
+		Input:   input,
+		Output:  (*lightsail.CreateBucketOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.CreateBucketWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.CreateBucketOutput), req.Error
+}
+
+func (c *Client) CreateBucketAccessKeyWithContext(ctx context.Context, input *lightsail.CreateBucketAccessKeyInput, opts ...request.Option) (*lightsail.CreateBucketAccessKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "CreateBucketAccessKey",
+		Input:   input,
+		Output:  (*lightsail.CreateBucketAccessKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.CreateBucketAccessKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.CreateBucketAccessKeyOutput), req.Error
 }
 
 func (c *Client) CreateCertificateWithContext(ctx context.Context, input *lightsail.CreateCertificateInput, opts ...request.Option) (*lightsail.CreateCertificateOutput, error) {
@@ -819,6 +872,48 @@ func (c *Client) DeleteAutoSnapshotWithContext(ctx context.Context, input *light
 	})
 
 	return req.Output.(*lightsail.DeleteAutoSnapshotOutput), req.Error
+}
+
+func (c *Client) DeleteBucketWithContext(ctx context.Context, input *lightsail.DeleteBucketInput, opts ...request.Option) (*lightsail.DeleteBucketOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DeleteBucket",
+		Input:   input,
+		Output:  (*lightsail.DeleteBucketOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DeleteBucketWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DeleteBucketOutput), req.Error
+}
+
+func (c *Client) DeleteBucketAccessKeyWithContext(ctx context.Context, input *lightsail.DeleteBucketAccessKeyInput, opts ...request.Option) (*lightsail.DeleteBucketAccessKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "DeleteBucketAccessKey",
+		Input:   input,
+		Output:  (*lightsail.DeleteBucketAccessKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.DeleteBucketAccessKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.DeleteBucketAccessKeyOutput), req.Error
 }
 
 func (c *Client) DeleteCertificateWithContext(ctx context.Context, input *lightsail.DeleteCertificateInput, opts ...request.Option) (*lightsail.DeleteCertificateOutput, error) {
@@ -1428,6 +1523,90 @@ func (c *Client) GetBlueprintsWithContext(ctx context.Context, input *lightsail.
 	})
 
 	return req.Output.(*lightsail.GetBlueprintsOutput), req.Error
+}
+
+func (c *Client) GetBucketAccessKeysWithContext(ctx context.Context, input *lightsail.GetBucketAccessKeysInput, opts ...request.Option) (*lightsail.GetBucketAccessKeysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetBucketAccessKeys",
+		Input:   input,
+		Output:  (*lightsail.GetBucketAccessKeysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetBucketAccessKeysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetBucketAccessKeysOutput), req.Error
+}
+
+func (c *Client) GetBucketBundlesWithContext(ctx context.Context, input *lightsail.GetBucketBundlesInput, opts ...request.Option) (*lightsail.GetBucketBundlesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetBucketBundles",
+		Input:   input,
+		Output:  (*lightsail.GetBucketBundlesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetBucketBundlesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetBucketBundlesOutput), req.Error
+}
+
+func (c *Client) GetBucketMetricDataWithContext(ctx context.Context, input *lightsail.GetBucketMetricDataInput, opts ...request.Option) (*lightsail.GetBucketMetricDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetBucketMetricData",
+		Input:   input,
+		Output:  (*lightsail.GetBucketMetricDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetBucketMetricDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetBucketMetricDataOutput), req.Error
+}
+
+func (c *Client) GetBucketsWithContext(ctx context.Context, input *lightsail.GetBucketsInput, opts ...request.Option) (*lightsail.GetBucketsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetBuckets",
+		Input:   input,
+		Output:  (*lightsail.GetBucketsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetBucketsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetBucketsOutput), req.Error
 }
 
 func (c *Client) GetBundlesWithContext(ctx context.Context, input *lightsail.GetBundlesInput, opts ...request.Option) (*lightsail.GetBundlesOutput, error) {
@@ -2837,6 +3016,27 @@ func (c *Client) SetIpAddressTypeWithContext(ctx context.Context, input *lightsa
 	return req.Output.(*lightsail.SetIpAddressTypeOutput), req.Error
 }
 
+func (c *Client) SetResourceAccessForBucketWithContext(ctx context.Context, input *lightsail.SetResourceAccessForBucketInput, opts ...request.Option) (*lightsail.SetResourceAccessForBucketOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "SetResourceAccessForBucket",
+		Input:   input,
+		Output:  (*lightsail.SetResourceAccessForBucketOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.SetResourceAccessForBucketWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.SetResourceAccessForBucketOutput), req.Error
+}
+
 func (c *Client) StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
@@ -3003,6 +3203,48 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *lightsail.
 	})
 
 	return req.Output.(*lightsail.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateBucketWithContext(ctx context.Context, input *lightsail.UpdateBucketInput, opts ...request.Option) (*lightsail.UpdateBucketOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "UpdateBucket",
+		Input:   input,
+		Output:  (*lightsail.UpdateBucketOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.UpdateBucketWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.UpdateBucketOutput), req.Error
+}
+
+func (c *Client) UpdateBucketBundleWithContext(ctx context.Context, input *lightsail.UpdateBucketBundleInput, opts ...request.Option) (*lightsail.UpdateBucketBundleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "UpdateBucketBundle",
+		Input:   input,
+		Output:  (*lightsail.UpdateBucketBundleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.UpdateBucketBundleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.UpdateBucketBundleOutput), req.Error
 }
 
 func (c *Client) UpdateContainerServiceWithContext(ctx context.Context, input *lightsail.UpdateContainerServiceInput, opts ...request.Option) (*lightsail.UpdateContainerServiceOutput, error) {
