@@ -25,6 +25,7 @@ type EMR interface {
 	DescribeClusterWithContext(ctx context.Context, input *emr.DescribeClusterInput, opts ...request.Option) (*emr.DescribeClusterOutput, error)
 	DescribeJobFlowsWithContext(ctx context.Context, input *emr.DescribeJobFlowsInput, opts ...request.Option) (*emr.DescribeJobFlowsOutput, error)
 	DescribeNotebookExecutionWithContext(ctx context.Context, input *emr.DescribeNotebookExecutionInput, opts ...request.Option) (*emr.DescribeNotebookExecutionOutput, error)
+	DescribeReleaseLabelWithContext(ctx context.Context, input *emr.DescribeReleaseLabelInput, opts ...request.Option) (*emr.DescribeReleaseLabelOutput, error)
 	DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error)
 	DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error)
 	DescribeStudioWithContext(ctx context.Context, input *emr.DescribeStudioInput, opts ...request.Option) (*emr.DescribeStudioOutput, error)
@@ -43,6 +44,8 @@ type EMR interface {
 	ListInstancesPagesWithContext(ctx context.Context, input *emr.ListInstancesInput, cb func(*emr.ListInstancesOutput, bool) bool, opts ...request.Option) error
 	ListNotebookExecutionsWithContext(ctx context.Context, input *emr.ListNotebookExecutionsInput, opts ...request.Option) (*emr.ListNotebookExecutionsOutput, error)
 	ListNotebookExecutionsPagesWithContext(ctx context.Context, input *emr.ListNotebookExecutionsInput, cb func(*emr.ListNotebookExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListReleaseLabelsWithContext(ctx context.Context, input *emr.ListReleaseLabelsInput, opts ...request.Option) (*emr.ListReleaseLabelsOutput, error)
+	ListReleaseLabelsPagesWithContext(ctx context.Context, input *emr.ListReleaseLabelsInput, cb func(*emr.ListReleaseLabelsOutput, bool) bool, opts ...request.Option) error
 	ListSecurityConfigurationsWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, opts ...request.Option) (*emr.ListSecurityConfigurationsOutput, error)
 	ListSecurityConfigurationsPagesWithContext(ctx context.Context, input *emr.ListSecurityConfigurationsInput, cb func(*emr.ListSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListStepsWithContext(ctx context.Context, input *emr.ListStepsInput, opts ...request.Option) (*emr.ListStepsOutput, error)
@@ -377,6 +380,27 @@ func (c *Client) DescribeNotebookExecutionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*emr.DescribeNotebookExecutionOutput), req.Error
+}
+
+func (c *Client) DescribeReleaseLabelWithContext(ctx context.Context, input *emr.DescribeReleaseLabelInput, opts ...request.Option) (*emr.DescribeReleaseLabelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "DescribeReleaseLabel",
+		Input:   input,
+		Output:  (*emr.DescribeReleaseLabelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.DescribeReleaseLabelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.DescribeReleaseLabelOutput), req.Error
 }
 
 func (c *Client) DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error) {
@@ -746,6 +770,47 @@ func (c *Client) ListNotebookExecutionsPagesWithContext(ctx context.Context, inp
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EMRAPI.ListNotebookExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListReleaseLabelsWithContext(ctx context.Context, input *emr.ListReleaseLabelsInput, opts ...request.Option) (*emr.ListReleaseLabelsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListReleaseLabels",
+		Input:   input,
+		Output:  (*emr.ListReleaseLabelsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.ListReleaseLabelsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.ListReleaseLabelsOutput), req.Error
+}
+
+func (c *Client) ListReleaseLabelsPagesWithContext(ctx context.Context, input *emr.ListReleaseLabelsInput, cb func(*emr.ListReleaseLabelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListReleaseLabels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListReleaseLabelsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
