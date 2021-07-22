@@ -96,6 +96,7 @@ type EC2 interface {
 	CreateSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.CreateSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.CreateSpotDatafeedSubscriptionOutput, error)
 	CreateStoreImageTaskWithContext(ctx context.Context, input *ec2.CreateStoreImageTaskInput, opts ...request.Option) (*ec2.CreateStoreImageTaskOutput, error)
 	CreateSubnetWithContext(ctx context.Context, input *ec2.CreateSubnetInput, opts ...request.Option) (*ec2.CreateSubnetOutput, error)
+	CreateSubnetCidrReservationWithContext(ctx context.Context, input *ec2.CreateSubnetCidrReservationInput, opts ...request.Option) (*ec2.CreateSubnetCidrReservationOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *ec2.CreateTagsInput, opts ...request.Option) (*ec2.CreateTagsOutput, error)
 	CreateTrafficMirrorFilterWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorFilterInput, opts ...request.Option) (*ec2.CreateTrafficMirrorFilterOutput, error)
 	CreateTrafficMirrorFilterRuleWithContext(ctx context.Context, input *ec2.CreateTrafficMirrorFilterRuleInput, opts ...request.Option) (*ec2.CreateTrafficMirrorFilterRuleOutput, error)
@@ -151,6 +152,7 @@ type EC2 interface {
 	DeleteSnapshotWithContext(ctx context.Context, input *ec2.DeleteSnapshotInput, opts ...request.Option) (*ec2.DeleteSnapshotOutput, error)
 	DeleteSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.DeleteSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.DeleteSpotDatafeedSubscriptionOutput, error)
 	DeleteSubnetWithContext(ctx context.Context, input *ec2.DeleteSubnetInput, opts ...request.Option) (*ec2.DeleteSubnetOutput, error)
+	DeleteSubnetCidrReservationWithContext(ctx context.Context, input *ec2.DeleteSubnetCidrReservationInput, opts ...request.Option) (*ec2.DeleteSubnetCidrReservationOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *ec2.DeleteTagsInput, opts ...request.Option) (*ec2.DeleteTagsOutput, error)
 	DeleteTrafficMirrorFilterWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorFilterInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorFilterOutput, error)
 	DeleteTrafficMirrorFilterRuleWithContext(ctx context.Context, input *ec2.DeleteTrafficMirrorFilterRuleInput, opts ...request.Option) (*ec2.DeleteTrafficMirrorFilterRuleOutput, error)
@@ -452,6 +454,7 @@ type EC2 interface {
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
 	GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error)
+	GetSubnetCidrReservationsWithContext(ctx context.Context, input *ec2.GetSubnetCidrReservationsInput, opts ...request.Option) (*ec2.GetSubnetCidrReservationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.GetTransitGatewayMulticastDomainAssociationsOutput, error)
@@ -2375,6 +2378,27 @@ func (c *Client) CreateSubnetWithContext(ctx context.Context, input *ec2.CreateS
 	return req.Output.(*ec2.CreateSubnetOutput), req.Error
 }
 
+func (c *Client) CreateSubnetCidrReservationWithContext(ctx context.Context, input *ec2.CreateSubnetCidrReservationInput, opts ...request.Option) (*ec2.CreateSubnetCidrReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateSubnetCidrReservation",
+		Input:   input,
+		Output:  (*ec2.CreateSubnetCidrReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateSubnetCidrReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateSubnetCidrReservationOutput), req.Error
+}
+
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *ec2.CreateTagsInput, opts ...request.Option) (*ec2.CreateTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3528,6 +3552,27 @@ func (c *Client) DeleteSubnetWithContext(ctx context.Context, input *ec2.DeleteS
 	})
 
 	return req.Output.(*ec2.DeleteSubnetOutput), req.Error
+}
+
+func (c *Client) DeleteSubnetCidrReservationWithContext(ctx context.Context, input *ec2.DeleteSubnetCidrReservationInput, opts ...request.Option) (*ec2.DeleteSubnetCidrReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteSubnetCidrReservation",
+		Input:   input,
+		Output:  (*ec2.DeleteSubnetCidrReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteSubnetCidrReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteSubnetCidrReservationOutput), req.Error
 }
 
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *ec2.DeleteTagsInput, opts ...request.Option) (*ec2.DeleteTagsOutput, error) {
@@ -9756,6 +9801,27 @@ func (c *Client) GetSerialConsoleAccessStatusWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.GetSerialConsoleAccessStatusOutput), req.Error
+}
+
+func (c *Client) GetSubnetCidrReservationsWithContext(ctx context.Context, input *ec2.GetSubnetCidrReservationsInput, opts ...request.Option) (*ec2.GetSubnetCidrReservationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSubnetCidrReservations",
+		Input:   input,
+		Output:  (*ec2.GetSubnetCidrReservationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetSubnetCidrReservationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetSubnetCidrReservationsOutput), req.Error
 }
 
 func (c *Client) GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error) {
