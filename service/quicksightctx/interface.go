@@ -69,6 +69,8 @@ type QuickSight interface {
 	DescribeThemeAliasWithContext(ctx context.Context, input *quicksight.DescribeThemeAliasInput, opts ...request.Option) (*quicksight.DescribeThemeAliasOutput, error)
 	DescribeThemePermissionsWithContext(ctx context.Context, input *quicksight.DescribeThemePermissionsInput, opts ...request.Option) (*quicksight.DescribeThemePermissionsOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error)
+	GenerateEmbedUrlForAnonymousUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForAnonymousUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForAnonymousUserOutput, error)
+	GenerateEmbedUrlForRegisteredUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForRegisteredUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForRegisteredUserOutput, error)
 	GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error)
 	GetSessionEmbedUrlWithContext(ctx context.Context, input *quicksight.GetSessionEmbedUrlInput, opts ...request.Option) (*quicksight.GetSessionEmbedUrlOutput, error)
 	ListAnalysesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, opts ...request.Option) (*quicksight.ListAnalysesOutput, error)
@@ -1369,6 +1371,48 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.
 	})
 
 	return req.Output.(*quicksight.DescribeUserOutput), req.Error
+}
+
+func (c *Client) GenerateEmbedUrlForAnonymousUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForAnonymousUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForAnonymousUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "GenerateEmbedUrlForAnonymousUser",
+		Input:   input,
+		Output:  (*quicksight.GenerateEmbedUrlForAnonymousUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.GenerateEmbedUrlForAnonymousUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.GenerateEmbedUrlForAnonymousUserOutput), req.Error
+}
+
+func (c *Client) GenerateEmbedUrlForRegisteredUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForRegisteredUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForRegisteredUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "GenerateEmbedUrlForRegisteredUser",
+		Input:   input,
+		Output:  (*quicksight.GenerateEmbedUrlForRegisteredUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.GenerateEmbedUrlForRegisteredUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.GenerateEmbedUrlForRegisteredUserOutput), req.Error
 }
 
 func (c *Client) GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error) {
