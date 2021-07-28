@@ -51,6 +51,7 @@ type CloudFormation interface {
 	GetStackPolicyWithContext(ctx context.Context, input *cloudformation.GetStackPolicyInput, opts ...request.Option) (*cloudformation.GetStackPolicyOutput, error)
 	GetTemplateWithContext(ctx context.Context, input *cloudformation.GetTemplateInput, opts ...request.Option) (*cloudformation.GetTemplateOutput, error)
 	GetTemplateSummaryWithContext(ctx context.Context, input *cloudformation.GetTemplateSummaryInput, opts ...request.Option) (*cloudformation.GetTemplateSummaryOutput, error)
+	ImportStacksToStackSetWithContext(ctx context.Context, input *cloudformation.ImportStacksToStackSetInput, opts ...request.Option) (*cloudformation.ImportStacksToStackSetOutput, error)
 	ListChangeSetsWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, opts ...request.Option) (*cloudformation.ListChangeSetsOutput, error)
 	ListChangeSetsPagesWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, cb func(*cloudformation.ListChangeSetsOutput, bool) bool, opts ...request.Option) error
 	ListExportsWithContext(ctx context.Context, input *cloudformation.ListExportsInput, opts ...request.Option) (*cloudformation.ListExportsOutput, error)
@@ -941,6 +942,27 @@ func (c *Client) GetTemplateSummaryWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*cloudformation.GetTemplateSummaryOutput), req.Error
+}
+
+func (c *Client) ImportStacksToStackSetWithContext(ctx context.Context, input *cloudformation.ImportStacksToStackSetInput, opts ...request.Option) (*cloudformation.ImportStacksToStackSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ImportStacksToStackSet",
+		Input:   input,
+		Output:  (*cloudformation.ImportStacksToStackSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.ImportStacksToStackSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.ImportStacksToStackSetOutput), req.Error
 }
 
 func (c *Client) ListChangeSetsWithContext(ctx context.Context, input *cloudformation.ListChangeSetsInput, opts ...request.Option) (*cloudformation.ListChangeSetsOutput, error) {
