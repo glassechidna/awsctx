@@ -198,6 +198,8 @@ type Chime interface {
 	SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*chime.SearchAvailablePhoneNumbersOutput, error)
 	SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *chime.SearchAvailablePhoneNumbersInput, cb func(*chime.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	SendChannelMessageWithContext(ctx context.Context, input *chime.SendChannelMessageInput, opts ...request.Option) (*chime.SendChannelMessageOutput, error)
+	StartMeetingTranscriptionWithContext(ctx context.Context, input *chime.StartMeetingTranscriptionInput, opts ...request.Option) (*chime.StartMeetingTranscriptionOutput, error)
+	StopMeetingTranscriptionWithContext(ctx context.Context, input *chime.StopMeetingTranscriptionInput, opts ...request.Option) (*chime.StopMeetingTranscriptionOutput, error)
 	TagAttendeeWithContext(ctx context.Context, input *chime.TagAttendeeInput, opts ...request.Option) (*chime.TagAttendeeOutput, error)
 	TagMeetingWithContext(ctx context.Context, input *chime.TagMeetingInput, opts ...request.Option) (*chime.TagMeetingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *chime.TagResourceInput, opts ...request.Option) (*chime.TagResourceOutput, error)
@@ -4141,6 +4143,48 @@ func (c *Client) SendChannelMessageWithContext(ctx context.Context, input *chime
 	})
 
 	return req.Output.(*chime.SendChannelMessageOutput), req.Error
+}
+
+func (c *Client) StartMeetingTranscriptionWithContext(ctx context.Context, input *chime.StartMeetingTranscriptionInput, opts ...request.Option) (*chime.StartMeetingTranscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "StartMeetingTranscription",
+		Input:   input,
+		Output:  (*chime.StartMeetingTranscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.StartMeetingTranscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.StartMeetingTranscriptionOutput), req.Error
+}
+
+func (c *Client) StopMeetingTranscriptionWithContext(ctx context.Context, input *chime.StopMeetingTranscriptionInput, opts ...request.Option) (*chime.StopMeetingTranscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "StopMeetingTranscription",
+		Input:   input,
+		Output:  (*chime.StopMeetingTranscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.StopMeetingTranscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.StopMeetingTranscriptionOutput), req.Error
 }
 
 func (c *Client) TagAttendeeWithContext(ctx context.Context, input *chime.TagAttendeeInput, opts ...request.Option) (*chime.TagAttendeeOutput, error) {
