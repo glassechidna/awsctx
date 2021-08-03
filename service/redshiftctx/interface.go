@@ -13,7 +13,9 @@ import (
 type Redshift interface {
 	AcceptReservedNodeExchangeWithContext(ctx context.Context, input *redshift.AcceptReservedNodeExchangeInput, opts ...request.Option) (*redshift.AcceptReservedNodeExchangeOutput, error)
 	AddPartnerWithContext(ctx context.Context, input *redshift.AddPartnerInput, opts ...request.Option) (*redshift.AddPartnerOutput, error)
+	AssociateDataShareConsumerWithContext(ctx context.Context, input *redshift.AssociateDataShareConsumerInput, opts ...request.Option) (*redshift.AssociateDataShareConsumerOutput, error)
 	AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.AuthorizeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.AuthorizeClusterSecurityGroupIngressOutput, error)
+	AuthorizeDataShareWithContext(ctx context.Context, input *redshift.AuthorizeDataShareInput, opts ...request.Option) (*redshift.AuthorizeDataShareOutput, error)
 	AuthorizeEndpointAccessWithContext(ctx context.Context, input *redshift.AuthorizeEndpointAccessInput, opts ...request.Option) (*redshift.AuthorizeEndpointAccessOutput, error)
 	AuthorizeSnapshotAccessWithContext(ctx context.Context, input *redshift.AuthorizeSnapshotAccessInput, opts ...request.Option) (*redshift.AuthorizeSnapshotAccessOutput, error)
 	BatchDeleteClusterSnapshotsWithContext(ctx context.Context, input *redshift.BatchDeleteClusterSnapshotsInput, opts ...request.Option) (*redshift.BatchDeleteClusterSnapshotsOutput, error)
@@ -35,6 +37,7 @@ type Redshift interface {
 	CreateSnapshotScheduleWithContext(ctx context.Context, input *redshift.CreateSnapshotScheduleInput, opts ...request.Option) (*redshift.CreateSnapshotScheduleOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *redshift.CreateTagsInput, opts ...request.Option) (*redshift.CreateTagsOutput, error)
 	CreateUsageLimitWithContext(ctx context.Context, input *redshift.CreateUsageLimitInput, opts ...request.Option) (*redshift.CreateUsageLimitOutput, error)
+	DeauthorizeDataShareWithContext(ctx context.Context, input *redshift.DeauthorizeDataShareInput, opts ...request.Option) (*redshift.DeauthorizeDataShareOutput, error)
 	DeleteAuthenticationProfileWithContext(ctx context.Context, input *redshift.DeleteAuthenticationProfileInput, opts ...request.Option) (*redshift.DeleteAuthenticationProfileOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *redshift.DeleteClusterInput, opts ...request.Option) (*redshift.DeleteClusterOutput, error)
 	DeleteClusterParameterGroupWithContext(ctx context.Context, input *redshift.DeleteClusterParameterGroupInput, opts ...request.Option) (*redshift.DeleteClusterParameterGroupOutput, error)
@@ -71,6 +74,9 @@ type Redshift interface {
 	DescribeClusterVersionsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterVersionsInput, cb func(*redshift.DescribeClusterVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClustersWithContext(ctx context.Context, input *redshift.DescribeClustersInput, opts ...request.Option) (*redshift.DescribeClustersOutput, error)
 	DescribeClustersPagesWithContext(ctx context.Context, input *redshift.DescribeClustersInput, cb func(*redshift.DescribeClustersOutput, bool) bool, opts ...request.Option) error
+	DescribeDataSharesWithContext(ctx context.Context, input *redshift.DescribeDataSharesInput, opts ...request.Option) (*redshift.DescribeDataSharesOutput, error)
+	DescribeDataSharesForConsumerWithContext(ctx context.Context, input *redshift.DescribeDataSharesForConsumerInput, opts ...request.Option) (*redshift.DescribeDataSharesForConsumerOutput, error)
+	DescribeDataSharesForProducerWithContext(ctx context.Context, input *redshift.DescribeDataSharesForProducerInput, opts ...request.Option) (*redshift.DescribeDataSharesForProducerOutput, error)
 	DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error)
 	DescribeDefaultClusterParametersPagesWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, cb func(*redshift.DescribeDefaultClusterParametersOutput, bool) bool, opts ...request.Option) error
 	DescribeEndpointAccessWithContext(ctx context.Context, input *redshift.DescribeEndpointAccessInput, opts ...request.Option) (*redshift.DescribeEndpointAccessOutput, error)
@@ -112,6 +118,7 @@ type Redshift interface {
 	DescribeUsageLimitsPagesWithContext(ctx context.Context, input *redshift.DescribeUsageLimitsInput, cb func(*redshift.DescribeUsageLimitsOutput, bool) bool, opts ...request.Option) error
 	DisableLoggingWithContext(ctx context.Context, input *redshift.DisableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error)
 	DisableSnapshotCopyWithContext(ctx context.Context, input *redshift.DisableSnapshotCopyInput, opts ...request.Option) (*redshift.DisableSnapshotCopyOutput, error)
+	DisassociateDataShareConsumerWithContext(ctx context.Context, input *redshift.DisassociateDataShareConsumerInput, opts ...request.Option) (*redshift.DisassociateDataShareConsumerOutput, error)
 	EnableLoggingWithContext(ctx context.Context, input *redshift.EnableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error)
 	EnableSnapshotCopyWithContext(ctx context.Context, input *redshift.EnableSnapshotCopyInput, opts ...request.Option) (*redshift.EnableSnapshotCopyOutput, error)
 	GetClusterCredentialsWithContext(ctx context.Context, input *redshift.GetClusterCredentialsInput, opts ...request.Option) (*redshift.GetClusterCredentialsOutput, error)
@@ -136,6 +143,7 @@ type Redshift interface {
 	PauseClusterWithContext(ctx context.Context, input *redshift.PauseClusterInput, opts ...request.Option) (*redshift.PauseClusterOutput, error)
 	PurchaseReservedNodeOfferingWithContext(ctx context.Context, input *redshift.PurchaseReservedNodeOfferingInput, opts ...request.Option) (*redshift.PurchaseReservedNodeOfferingOutput, error)
 	RebootClusterWithContext(ctx context.Context, input *redshift.RebootClusterInput, opts ...request.Option) (*redshift.RebootClusterOutput, error)
+	RejectDataShareWithContext(ctx context.Context, input *redshift.RejectDataShareInput, opts ...request.Option) (*redshift.RejectDataShareOutput, error)
 	ResetClusterParameterGroupWithContext(ctx context.Context, input *redshift.ResetClusterParameterGroupInput, opts ...request.Option) (*redshift.ClusterParameterGroupNameMessage, error)
 	ResizeClusterWithContext(ctx context.Context, input *redshift.ResizeClusterInput, opts ...request.Option) (*redshift.ResizeClusterOutput, error)
 	RestoreFromClusterSnapshotWithContext(ctx context.Context, input *redshift.RestoreFromClusterSnapshotInput, opts ...request.Option) (*redshift.RestoreFromClusterSnapshotOutput, error)
@@ -205,6 +213,27 @@ func (c *Client) AddPartnerWithContext(ctx context.Context, input *redshift.AddP
 	return req.Output.(*redshift.AddPartnerOutput), req.Error
 }
 
+func (c *Client) AssociateDataShareConsumerWithContext(ctx context.Context, input *redshift.AssociateDataShareConsumerInput, opts ...request.Option) (*redshift.AssociateDataShareConsumerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "AssociateDataShareConsumer",
+		Input:   input,
+		Output:  (*redshift.AssociateDataShareConsumerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.AssociateDataShareConsumerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.AssociateDataShareConsumerOutput), req.Error
+}
+
 func (c *Client) AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Context, input *redshift.AuthorizeClusterSecurityGroupIngressInput, opts ...request.Option) (*redshift.AuthorizeClusterSecurityGroupIngressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -224,6 +253,27 @@ func (c *Client) AuthorizeClusterSecurityGroupIngressWithContext(ctx context.Con
 	})
 
 	return req.Output.(*redshift.AuthorizeClusterSecurityGroupIngressOutput), req.Error
+}
+
+func (c *Client) AuthorizeDataShareWithContext(ctx context.Context, input *redshift.AuthorizeDataShareInput, opts ...request.Option) (*redshift.AuthorizeDataShareOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "AuthorizeDataShare",
+		Input:   input,
+		Output:  (*redshift.AuthorizeDataShareOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.AuthorizeDataShareWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.AuthorizeDataShareOutput), req.Error
 }
 
 func (c *Client) AuthorizeEndpointAccessWithContext(ctx context.Context, input *redshift.AuthorizeEndpointAccessInput, opts ...request.Option) (*redshift.AuthorizeEndpointAccessOutput, error) {
@@ -665,6 +715,27 @@ func (c *Client) CreateUsageLimitWithContext(ctx context.Context, input *redshif
 	})
 
 	return req.Output.(*redshift.CreateUsageLimitOutput), req.Error
+}
+
+func (c *Client) DeauthorizeDataShareWithContext(ctx context.Context, input *redshift.DeauthorizeDataShareInput, opts ...request.Option) (*redshift.DeauthorizeDataShareOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeauthorizeDataShare",
+		Input:   input,
+		Output:  (*redshift.DeauthorizeDataShareOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeauthorizeDataShareWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeauthorizeDataShareOutput), req.Error
 }
 
 func (c *Client) DeleteAuthenticationProfileWithContext(ctx context.Context, input *redshift.DeleteAuthenticationProfileInput, opts ...request.Option) (*redshift.DeleteAuthenticationProfileOutput, error) {
@@ -1412,6 +1483,69 @@ func (c *Client) DescribeClustersPagesWithContext(ctx context.Context, input *re
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeDataSharesWithContext(ctx context.Context, input *redshift.DescribeDataSharesInput, opts ...request.Option) (*redshift.DescribeDataSharesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeDataShares",
+		Input:   input,
+		Output:  (*redshift.DescribeDataSharesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeDataSharesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeDataSharesOutput), req.Error
+}
+
+func (c *Client) DescribeDataSharesForConsumerWithContext(ctx context.Context, input *redshift.DescribeDataSharesForConsumerInput, opts ...request.Option) (*redshift.DescribeDataSharesForConsumerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeDataSharesForConsumer",
+		Input:   input,
+		Output:  (*redshift.DescribeDataSharesForConsumerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeDataSharesForConsumerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeDataSharesForConsumerOutput), req.Error
+}
+
+func (c *Client) DescribeDataSharesForProducerWithContext(ctx context.Context, input *redshift.DescribeDataSharesForProducerInput, opts ...request.Option) (*redshift.DescribeDataSharesForProducerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeDataSharesForProducer",
+		Input:   input,
+		Output:  (*redshift.DescribeDataSharesForProducerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeDataSharesForProducerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeDataSharesForProducerOutput), req.Error
 }
 
 func (c *Client) DescribeDefaultClusterParametersWithContext(ctx context.Context, input *redshift.DescribeDefaultClusterParametersInput, opts ...request.Option) (*redshift.DescribeDefaultClusterParametersOutput, error) {
@@ -2258,6 +2392,27 @@ func (c *Client) DisableSnapshotCopyWithContext(ctx context.Context, input *reds
 	return req.Output.(*redshift.DisableSnapshotCopyOutput), req.Error
 }
 
+func (c *Client) DisassociateDataShareConsumerWithContext(ctx context.Context, input *redshift.DisassociateDataShareConsumerInput, opts ...request.Option) (*redshift.DisassociateDataShareConsumerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DisassociateDataShareConsumer",
+		Input:   input,
+		Output:  (*redshift.DisassociateDataShareConsumerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DisassociateDataShareConsumerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DisassociateDataShareConsumerOutput), req.Error
+}
+
 func (c *Client) EnableLoggingWithContext(ctx context.Context, input *redshift.EnableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -2759,6 +2914,27 @@ func (c *Client) RebootClusterWithContext(ctx context.Context, input *redshift.R
 	})
 
 	return req.Output.(*redshift.RebootClusterOutput), req.Error
+}
+
+func (c *Client) RejectDataShareWithContext(ctx context.Context, input *redshift.RejectDataShareInput, opts ...request.Option) (*redshift.RejectDataShareOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "RejectDataShare",
+		Input:   input,
+		Output:  (*redshift.RejectDataShareOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.RejectDataShareWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.RejectDataShareOutput), req.Error
 }
 
 func (c *Client) ResetClusterParameterGroupWithContext(ctx context.Context, input *redshift.ResetClusterParameterGroupInput, opts ...request.Option) (*redshift.ClusterParameterGroupNameMessage, error) {
