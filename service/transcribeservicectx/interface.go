@@ -11,10 +11,13 @@ import (
 )
 
 type TranscribeService interface {
+	CreateCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.CreateCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.CreateCallAnalyticsCategoryOutput, error)
 	CreateLanguageModelWithContext(ctx context.Context, input *transcribeservice.CreateLanguageModelInput, opts ...request.Option) (*transcribeservice.CreateLanguageModelOutput, error)
 	CreateMedicalVocabularyWithContext(ctx context.Context, input *transcribeservice.CreateMedicalVocabularyInput, opts ...request.Option) (*transcribeservice.CreateMedicalVocabularyOutput, error)
 	CreateVocabularyWithContext(ctx context.Context, input *transcribeservice.CreateVocabularyInput, opts ...request.Option) (*transcribeservice.CreateVocabularyOutput, error)
 	CreateVocabularyFilterWithContext(ctx context.Context, input *transcribeservice.CreateVocabularyFilterInput, opts ...request.Option) (*transcribeservice.CreateVocabularyFilterOutput, error)
+	DeleteCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.DeleteCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.DeleteCallAnalyticsCategoryOutput, error)
+	DeleteCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.DeleteCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.DeleteCallAnalyticsJobOutput, error)
 	DeleteLanguageModelWithContext(ctx context.Context, input *transcribeservice.DeleteLanguageModelInput, opts ...request.Option) (*transcribeservice.DeleteLanguageModelOutput, error)
 	DeleteMedicalTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.DeleteMedicalTranscriptionJobInput, opts ...request.Option) (*transcribeservice.DeleteMedicalTranscriptionJobOutput, error)
 	DeleteMedicalVocabularyWithContext(ctx context.Context, input *transcribeservice.DeleteMedicalVocabularyInput, opts ...request.Option) (*transcribeservice.DeleteMedicalVocabularyOutput, error)
@@ -22,11 +25,17 @@ type TranscribeService interface {
 	DeleteVocabularyWithContext(ctx context.Context, input *transcribeservice.DeleteVocabularyInput, opts ...request.Option) (*transcribeservice.DeleteVocabularyOutput, error)
 	DeleteVocabularyFilterWithContext(ctx context.Context, input *transcribeservice.DeleteVocabularyFilterInput, opts ...request.Option) (*transcribeservice.DeleteVocabularyFilterOutput, error)
 	DescribeLanguageModelWithContext(ctx context.Context, input *transcribeservice.DescribeLanguageModelInput, opts ...request.Option) (*transcribeservice.DescribeLanguageModelOutput, error)
+	GetCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.GetCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.GetCallAnalyticsCategoryOutput, error)
+	GetCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.GetCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.GetCallAnalyticsJobOutput, error)
 	GetMedicalTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.GetMedicalTranscriptionJobInput, opts ...request.Option) (*transcribeservice.GetMedicalTranscriptionJobOutput, error)
 	GetMedicalVocabularyWithContext(ctx context.Context, input *transcribeservice.GetMedicalVocabularyInput, opts ...request.Option) (*transcribeservice.GetMedicalVocabularyOutput, error)
 	GetTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.GetTranscriptionJobInput, opts ...request.Option) (*transcribeservice.GetTranscriptionJobOutput, error)
 	GetVocabularyWithContext(ctx context.Context, input *transcribeservice.GetVocabularyInput, opts ...request.Option) (*transcribeservice.GetVocabularyOutput, error)
 	GetVocabularyFilterWithContext(ctx context.Context, input *transcribeservice.GetVocabularyFilterInput, opts ...request.Option) (*transcribeservice.GetVocabularyFilterOutput, error)
+	ListCallAnalyticsCategoriesWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsCategoriesInput, opts ...request.Option) (*transcribeservice.ListCallAnalyticsCategoriesOutput, error)
+	ListCallAnalyticsCategoriesPagesWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsCategoriesInput, cb func(*transcribeservice.ListCallAnalyticsCategoriesOutput, bool) bool, opts ...request.Option) error
+	ListCallAnalyticsJobsWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsJobsInput, opts ...request.Option) (*transcribeservice.ListCallAnalyticsJobsOutput, error)
+	ListCallAnalyticsJobsPagesWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsJobsInput, cb func(*transcribeservice.ListCallAnalyticsJobsOutput, bool) bool, opts ...request.Option) error
 	ListLanguageModelsWithContext(ctx context.Context, input *transcribeservice.ListLanguageModelsInput, opts ...request.Option) (*transcribeservice.ListLanguageModelsOutput, error)
 	ListLanguageModelsPagesWithContext(ctx context.Context, input *transcribeservice.ListLanguageModelsInput, cb func(*transcribeservice.ListLanguageModelsOutput, bool) bool, opts ...request.Option) error
 	ListMedicalTranscriptionJobsWithContext(ctx context.Context, input *transcribeservice.ListMedicalTranscriptionJobsInput, opts ...request.Option) (*transcribeservice.ListMedicalTranscriptionJobsOutput, error)
@@ -39,8 +48,10 @@ type TranscribeService interface {
 	ListVocabulariesPagesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, cb func(*transcribeservice.ListVocabulariesOutput, bool) bool, opts ...request.Option) error
 	ListVocabularyFiltersWithContext(ctx context.Context, input *transcribeservice.ListVocabularyFiltersInput, opts ...request.Option) (*transcribeservice.ListVocabularyFiltersOutput, error)
 	ListVocabularyFiltersPagesWithContext(ctx context.Context, input *transcribeservice.ListVocabularyFiltersInput, cb func(*transcribeservice.ListVocabularyFiltersOutput, bool) bool, opts ...request.Option) error
+	StartCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.StartCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.StartCallAnalyticsJobOutput, error)
 	StartMedicalTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartMedicalTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartMedicalTranscriptionJobOutput, error)
 	StartTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartTranscriptionJobOutput, error)
+	UpdateCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.UpdateCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.UpdateCallAnalyticsCategoryOutput, error)
 	UpdateMedicalVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateMedicalVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateMedicalVocabularyOutput, error)
 	UpdateVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateVocabularyOutput, error)
 	UpdateVocabularyFilterWithContext(ctx context.Context, input *transcribeservice.UpdateVocabularyFilterInput, opts ...request.Option) (*transcribeservice.UpdateVocabularyFilterOutput, error)
@@ -60,6 +71,27 @@ func New(base transcribeserviceiface.TranscribeServiceAPI, ctxer awsctx.Contexte
 
 var _ TranscribeService = (*transcribeservice.TranscribeService)(nil)
 var _ TranscribeService = (*Client)(nil)
+
+func (c *Client) CreateCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.CreateCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.CreateCallAnalyticsCategoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "CreateCallAnalyticsCategory",
+		Input:   input,
+		Output:  (*transcribeservice.CreateCallAnalyticsCategoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.CreateCallAnalyticsCategoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.CreateCallAnalyticsCategoryOutput), req.Error
+}
 
 func (c *Client) CreateLanguageModelWithContext(ctx context.Context, input *transcribeservice.CreateLanguageModelInput, opts ...request.Option) (*transcribeservice.CreateLanguageModelOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -143,6 +175,48 @@ func (c *Client) CreateVocabularyFilterWithContext(ctx context.Context, input *t
 	})
 
 	return req.Output.(*transcribeservice.CreateVocabularyFilterOutput), req.Error
+}
+
+func (c *Client) DeleteCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.DeleteCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.DeleteCallAnalyticsCategoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "DeleteCallAnalyticsCategory",
+		Input:   input,
+		Output:  (*transcribeservice.DeleteCallAnalyticsCategoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.DeleteCallAnalyticsCategoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.DeleteCallAnalyticsCategoryOutput), req.Error
+}
+
+func (c *Client) DeleteCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.DeleteCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.DeleteCallAnalyticsJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "DeleteCallAnalyticsJob",
+		Input:   input,
+		Output:  (*transcribeservice.DeleteCallAnalyticsJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.DeleteCallAnalyticsJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.DeleteCallAnalyticsJobOutput), req.Error
 }
 
 func (c *Client) DeleteLanguageModelWithContext(ctx context.Context, input *transcribeservice.DeleteLanguageModelInput, opts ...request.Option) (*transcribeservice.DeleteLanguageModelOutput, error) {
@@ -292,6 +366,48 @@ func (c *Client) DescribeLanguageModelWithContext(ctx context.Context, input *tr
 	return req.Output.(*transcribeservice.DescribeLanguageModelOutput), req.Error
 }
 
+func (c *Client) GetCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.GetCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.GetCallAnalyticsCategoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "GetCallAnalyticsCategory",
+		Input:   input,
+		Output:  (*transcribeservice.GetCallAnalyticsCategoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.GetCallAnalyticsCategoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.GetCallAnalyticsCategoryOutput), req.Error
+}
+
+func (c *Client) GetCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.GetCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.GetCallAnalyticsJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "GetCallAnalyticsJob",
+		Input:   input,
+		Output:  (*transcribeservice.GetCallAnalyticsJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.GetCallAnalyticsJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.GetCallAnalyticsJobOutput), req.Error
+}
+
 func (c *Client) GetMedicalTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.GetMedicalTranscriptionJobInput, opts ...request.Option) (*transcribeservice.GetMedicalTranscriptionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
@@ -395,6 +511,88 @@ func (c *Client) GetVocabularyFilterWithContext(ctx context.Context, input *tran
 	})
 
 	return req.Output.(*transcribeservice.GetVocabularyFilterOutput), req.Error
+}
+
+func (c *Client) ListCallAnalyticsCategoriesWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsCategoriesInput, opts ...request.Option) (*transcribeservice.ListCallAnalyticsCategoriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListCallAnalyticsCategories",
+		Input:   input,
+		Output:  (*transcribeservice.ListCallAnalyticsCategoriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.ListCallAnalyticsCategoriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.ListCallAnalyticsCategoriesOutput), req.Error
+}
+
+func (c *Client) ListCallAnalyticsCategoriesPagesWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsCategoriesInput, cb func(*transcribeservice.ListCallAnalyticsCategoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListCallAnalyticsCategories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranscribeServiceAPI.ListCallAnalyticsCategoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCallAnalyticsJobsWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsJobsInput, opts ...request.Option) (*transcribeservice.ListCallAnalyticsJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListCallAnalyticsJobs",
+		Input:   input,
+		Output:  (*transcribeservice.ListCallAnalyticsJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.ListCallAnalyticsJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.ListCallAnalyticsJobsOutput), req.Error
+}
+
+func (c *Client) ListCallAnalyticsJobsPagesWithContext(ctx context.Context, input *transcribeservice.ListCallAnalyticsJobsInput, cb func(*transcribeservice.ListCallAnalyticsJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListCallAnalyticsJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranscribeServiceAPI.ListCallAnalyticsJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListLanguageModelsWithContext(ctx context.Context, input *transcribeservice.ListLanguageModelsInput, opts ...request.Option) (*transcribeservice.ListLanguageModelsOutput, error) {
@@ -643,6 +841,27 @@ func (c *Client) ListVocabularyFiltersPagesWithContext(ctx context.Context, inpu
 	return req.Error
 }
 
+func (c *Client) StartCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.StartCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.StartCallAnalyticsJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "StartCallAnalyticsJob",
+		Input:   input,
+		Output:  (*transcribeservice.StartCallAnalyticsJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.StartCallAnalyticsJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.StartCallAnalyticsJobOutput), req.Error
+}
+
 func (c *Client) StartMedicalTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartMedicalTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartMedicalTranscriptionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
@@ -683,6 +902,27 @@ func (c *Client) StartTranscriptionJobWithContext(ctx context.Context, input *tr
 	})
 
 	return req.Output.(*transcribeservice.StartTranscriptionJobOutput), req.Error
+}
+
+func (c *Client) UpdateCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.UpdateCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.UpdateCallAnalyticsCategoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "UpdateCallAnalyticsCategory",
+		Input:   input,
+		Output:  (*transcribeservice.UpdateCallAnalyticsCategoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.UpdateCallAnalyticsCategoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.UpdateCallAnalyticsCategoryOutput), req.Error
 }
 
 func (c *Client) UpdateMedicalVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateMedicalVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateMedicalVocabularyOutput, error) {
