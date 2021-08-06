@@ -19,7 +19,9 @@ type Connect interface {
 	AssociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.AssociateQueueQuickConnectsInput, opts ...request.Option) (*connect.AssociateQueueQuickConnectsOutput, error)
 	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
+	CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
+	CreateHoursOfOperationWithContext(ctx context.Context, input *connect.CreateHoursOfOperationInput, opts ...request.Option) (*connect.CreateHoursOfOperationOutput, error)
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
 	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
@@ -28,12 +30,14 @@ type Connect interface {
 	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
+	DeleteHoursOfOperationWithContext(ctx context.Context, input *connect.DeleteHoursOfOperationInput, opts ...request.Option) (*connect.DeleteHoursOfOperationOutput, error)
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
 	DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error)
 	DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
+	DescribeAgentStatusWithContext(ctx context.Context, input *connect.DescribeAgentStatusInput, opts ...request.Option) (*connect.DescribeAgentStatusOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
 	DescribeHoursOfOperationWithContext(ctx context.Context, input *connect.DescribeHoursOfOperationInput, opts ...request.Option) (*connect.DescribeHoursOfOperationOutput, error)
 	DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error)
@@ -59,6 +63,8 @@ type Connect interface {
 	GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
+	ListAgentStatusesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, opts ...request.Option) (*connect.ListAgentStatusesOutput, error)
+	ListAgentStatusesPagesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, cb func(*connect.ListAgentStatusesOutput, bool) bool, opts ...request.Option) error
 	ListApprovedOriginsWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, opts ...request.Option) (*connect.ListApprovedOriginsOutput, error)
 	ListApprovedOriginsPagesWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, cb func(*connect.ListApprovedOriginsOutput, bool) bool, opts ...request.Option) error
 	ListBotsWithContext(ctx context.Context, input *connect.ListBotsInput, opts ...request.Option) (*connect.ListBotsOutput, error)
@@ -114,9 +120,11 @@ type Connect interface {
 	SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error)
+	UpdateAgentStatusWithContext(ctx context.Context, input *connect.UpdateAgentStatusInput, opts ...request.Option) (*connect.UpdateAgentStatusOutput, error)
 	UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error)
 	UpdateContactFlowContentWithContext(ctx context.Context, input *connect.UpdateContactFlowContentInput, opts ...request.Option) (*connect.UpdateContactFlowContentOutput, error)
 	UpdateContactFlowNameWithContext(ctx context.Context, input *connect.UpdateContactFlowNameInput, opts ...request.Option) (*connect.UpdateContactFlowNameOutput, error)
+	UpdateHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateHoursOfOperationInput, opts ...request.Option) (*connect.UpdateHoursOfOperationOutput, error)
 	UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error)
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
 	UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error)
@@ -322,6 +330,27 @@ func (c *Client) AssociateSecurityKeyWithContext(ctx context.Context, input *con
 	return req.Output.(*connect.AssociateSecurityKeyOutput), req.Error
 }
 
+func (c *Client) CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateAgentStatus",
+		Input:   input,
+		Output:  (*connect.CreateAgentStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateAgentStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateAgentStatusOutput), req.Error
+}
+
 func (c *Client) CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -341,6 +370,27 @@ func (c *Client) CreateContactFlowWithContext(ctx context.Context, input *connec
 	})
 
 	return req.Output.(*connect.CreateContactFlowOutput), req.Error
+}
+
+func (c *Client) CreateHoursOfOperationWithContext(ctx context.Context, input *connect.CreateHoursOfOperationInput, opts ...request.Option) (*connect.CreateHoursOfOperationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateHoursOfOperation",
+		Input:   input,
+		Output:  (*connect.CreateHoursOfOperationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateHoursOfOperationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateHoursOfOperationOutput), req.Error
 }
 
 func (c *Client) CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error) {
@@ -511,6 +561,27 @@ func (c *Client) CreateUserHierarchyGroupWithContext(ctx context.Context, input 
 	return req.Output.(*connect.CreateUserHierarchyGroupOutput), req.Error
 }
 
+func (c *Client) DeleteHoursOfOperationWithContext(ctx context.Context, input *connect.DeleteHoursOfOperationInput, opts ...request.Option) (*connect.DeleteHoursOfOperationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteHoursOfOperation",
+		Input:   input,
+		Output:  (*connect.DeleteHoursOfOperationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteHoursOfOperationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteHoursOfOperationOutput), req.Error
+}
+
 func (c *Client) DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -635,6 +706,27 @@ func (c *Client) DeleteUserHierarchyGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*connect.DeleteUserHierarchyGroupOutput), req.Error
+}
+
+func (c *Client) DescribeAgentStatusWithContext(ctx context.Context, input *connect.DescribeAgentStatusInput, opts ...request.Option) (*connect.DescribeAgentStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeAgentStatus",
+		Input:   input,
+		Output:  (*connect.DescribeAgentStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeAgentStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeAgentStatusOutput), req.Error
 }
 
 func (c *Client) DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error) {
@@ -1155,6 +1247,47 @@ func (c *Client) GetMetricDataPagesWithContext(ctx context.Context, input *conne
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.GetMetricDataPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAgentStatusesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, opts ...request.Option) (*connect.ListAgentStatusesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListAgentStatuses",
+		Input:   input,
+		Output:  (*connect.ListAgentStatusesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListAgentStatusesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListAgentStatusesOutput), req.Error
+}
+
+func (c *Client) ListAgentStatusesPagesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, cb func(*connect.ListAgentStatusesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListAgentStatuses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListAgentStatusesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -2293,6 +2426,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *connect.Un
 	return req.Output.(*connect.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateAgentStatusWithContext(ctx context.Context, input *connect.UpdateAgentStatusInput, opts ...request.Option) (*connect.UpdateAgentStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateAgentStatus",
+		Input:   input,
+		Output:  (*connect.UpdateAgentStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateAgentStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateAgentStatusOutput), req.Error
+}
+
 func (c *Client) UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -2354,6 +2508,27 @@ func (c *Client) UpdateContactFlowNameWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*connect.UpdateContactFlowNameOutput), req.Error
+}
+
+func (c *Client) UpdateHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateHoursOfOperationInput, opts ...request.Option) (*connect.UpdateHoursOfOperationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateHoursOfOperation",
+		Input:   input,
+		Output:  (*connect.UpdateHoursOfOperationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateHoursOfOperationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateHoursOfOperationOutput), req.Error
 }
 
 func (c *Client) UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error) {
