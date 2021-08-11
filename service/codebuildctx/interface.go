@@ -65,6 +65,7 @@ type CodeBuild interface {
 	StopBuildWithContext(ctx context.Context, input *codebuild.StopBuildInput, opts ...request.Option) (*codebuild.StopBuildOutput, error)
 	StopBuildBatchWithContext(ctx context.Context, input *codebuild.StopBuildBatchInput, opts ...request.Option) (*codebuild.StopBuildBatchOutput, error)
 	UpdateProjectWithContext(ctx context.Context, input *codebuild.UpdateProjectInput, opts ...request.Option) (*codebuild.UpdateProjectOutput, error)
+	UpdateProjectVisibilityWithContext(ctx context.Context, input *codebuild.UpdateProjectVisibilityInput, opts ...request.Option) (*codebuild.UpdateProjectVisibilityOutput, error)
 	UpdateReportGroupWithContext(ctx context.Context, input *codebuild.UpdateReportGroupInput, opts ...request.Option) (*codebuild.UpdateReportGroupOutput, error)
 	UpdateWebhookWithContext(ctx context.Context, input *codebuild.UpdateWebhookInput, opts ...request.Option) (*codebuild.UpdateWebhookOutput, error)
 }
@@ -1204,6 +1205,27 @@ func (c *Client) UpdateProjectWithContext(ctx context.Context, input *codebuild.
 	})
 
 	return req.Output.(*codebuild.UpdateProjectOutput), req.Error
+}
+
+func (c *Client) UpdateProjectVisibilityWithContext(ctx context.Context, input *codebuild.UpdateProjectVisibilityInput, opts ...request.Option) (*codebuild.UpdateProjectVisibilityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codebuild",
+		Action:  "UpdateProjectVisibility",
+		Input:   input,
+		Output:  (*codebuild.UpdateProjectVisibilityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeBuildAPI.UpdateProjectVisibilityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codebuild.UpdateProjectVisibilityOutput), req.Error
 }
 
 func (c *Client) UpdateReportGroupWithContext(ctx context.Context, input *codebuild.UpdateReportGroupInput, opts ...request.Option) (*codebuild.UpdateReportGroupOutput, error) {
