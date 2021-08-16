@@ -33,6 +33,7 @@ type DirectoryService interface {
 	DeregisterCertificateWithContext(ctx context.Context, input *directoryservice.DeregisterCertificateInput, opts ...request.Option) (*directoryservice.DeregisterCertificateOutput, error)
 	DeregisterEventTopicWithContext(ctx context.Context, input *directoryservice.DeregisterEventTopicInput, opts ...request.Option) (*directoryservice.DeregisterEventTopicOutput, error)
 	DescribeCertificateWithContext(ctx context.Context, input *directoryservice.DescribeCertificateInput, opts ...request.Option) (*directoryservice.DescribeCertificateOutput, error)
+	DescribeClientAuthenticationSettingsWithContext(ctx context.Context, input *directoryservice.DescribeClientAuthenticationSettingsInput, opts ...request.Option) (*directoryservice.DescribeClientAuthenticationSettingsOutput, error)
 	DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error)
 	DescribeDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeDirectoriesOutput, error)
 	DescribeDomainControllersWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, opts ...request.Option) (*directoryservice.DescribeDomainControllersOutput, error)
@@ -551,6 +552,27 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, input *dire
 	})
 
 	return req.Output.(*directoryservice.DescribeCertificateOutput), req.Error
+}
+
+func (c *Client) DescribeClientAuthenticationSettingsWithContext(ctx context.Context, input *directoryservice.DescribeClientAuthenticationSettingsInput, opts ...request.Option) (*directoryservice.DescribeClientAuthenticationSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeClientAuthenticationSettings",
+		Input:   input,
+		Output:  (*directoryservice.DescribeClientAuthenticationSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DescribeClientAuthenticationSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DescribeClientAuthenticationSettingsOutput), req.Error
 }
 
 func (c *Client) DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error) {
