@@ -12,6 +12,7 @@ import (
 
 type SageMakerRuntime interface {
 	InvokeEndpointWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointOutput, error)
+	InvokeEndpointAsyncWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointAsyncInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointAsyncOutput, error)
 }
 
 type Client struct {
@@ -48,4 +49,25 @@ func (c *Client) InvokeEndpointWithContext(ctx context.Context, input *sagemaker
 	})
 
 	return req.Output.(*sagemakerruntime.InvokeEndpointOutput), req.Error
+}
+
+func (c *Client) InvokeEndpointAsyncWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointAsyncInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointAsyncOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemakerruntime",
+		Action:  "InvokeEndpointAsync",
+		Input:   input,
+		Output:  (*sagemakerruntime.InvokeEndpointAsyncOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerRuntimeAPI.InvokeEndpointAsyncWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemakerruntime.InvokeEndpointAsyncOutput), req.Error
 }
