@@ -367,6 +367,7 @@ type EC2 interface {
 	DescribeTransitGatewaysWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, opts ...request.Option) (*ec2.DescribeTransitGatewaysOutput, error)
 	DescribeTransitGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, cb func(*ec2.DescribeTransitGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeTrunkInterfaceAssociationsWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, opts ...request.Option) (*ec2.DescribeTrunkInterfaceAssociationsOutput, error)
+	DescribeTrunkInterfaceAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, cb func(*ec2.DescribeTrunkInterfaceAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error)
 	DescribeVolumeStatusWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, opts ...request.Option) (*ec2.DescribeVolumeStatusOutput, error)
 	DescribeVolumeStatusPagesWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, cb func(*ec2.DescribeVolumeStatusOutput, bool) bool, opts ...request.Option) error
@@ -7989,6 +7990,26 @@ func (c *Client) DescribeTrunkInterfaceAssociationsWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*ec2.DescribeTrunkInterfaceAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeTrunkInterfaceAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, cb func(*ec2.DescribeTrunkInterfaceAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeTrunkInterfaceAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeTrunkInterfaceAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error) {
