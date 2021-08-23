@@ -16,6 +16,7 @@ type Glue interface {
 	BatchDeletePartitionWithContext(ctx context.Context, input *glue.BatchDeletePartitionInput, opts ...request.Option) (*glue.BatchDeletePartitionOutput, error)
 	BatchDeleteTableWithContext(ctx context.Context, input *glue.BatchDeleteTableInput, opts ...request.Option) (*glue.BatchDeleteTableOutput, error)
 	BatchDeleteTableVersionWithContext(ctx context.Context, input *glue.BatchDeleteTableVersionInput, opts ...request.Option) (*glue.BatchDeleteTableVersionOutput, error)
+	BatchGetBlueprintsWithContext(ctx context.Context, input *glue.BatchGetBlueprintsInput, opts ...request.Option) (*glue.BatchGetBlueprintsOutput, error)
 	BatchGetCrawlersWithContext(ctx context.Context, input *glue.BatchGetCrawlersInput, opts ...request.Option) (*glue.BatchGetCrawlersOutput, error)
 	BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error)
 	BatchGetJobsWithContext(ctx context.Context, input *glue.BatchGetJobsInput, opts ...request.Option) (*glue.BatchGetJobsOutput, error)
@@ -26,6 +27,7 @@ type Glue interface {
 	BatchUpdatePartitionWithContext(ctx context.Context, input *glue.BatchUpdatePartitionInput, opts ...request.Option) (*glue.BatchUpdatePartitionOutput, error)
 	CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error)
 	CheckSchemaVersionValidityWithContext(ctx context.Context, input *glue.CheckSchemaVersionValidityInput, opts ...request.Option) (*glue.CheckSchemaVersionValidityOutput, error)
+	CreateBlueprintWithContext(ctx context.Context, input *glue.CreateBlueprintInput, opts ...request.Option) (*glue.CreateBlueprintOutput, error)
 	CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error)
 	CreateConnectionWithContext(ctx context.Context, input *glue.CreateConnectionInput, opts ...request.Option) (*glue.CreateConnectionOutput, error)
 	CreateCrawlerWithContext(ctx context.Context, input *glue.CreateCrawlerInput, opts ...request.Option) (*glue.CreateCrawlerOutput, error)
@@ -43,6 +45,7 @@ type Glue interface {
 	CreateTriggerWithContext(ctx context.Context, input *glue.CreateTriggerInput, opts ...request.Option) (*glue.CreateTriggerOutput, error)
 	CreateUserDefinedFunctionWithContext(ctx context.Context, input *glue.CreateUserDefinedFunctionInput, opts ...request.Option) (*glue.CreateUserDefinedFunctionOutput, error)
 	CreateWorkflowWithContext(ctx context.Context, input *glue.CreateWorkflowInput, opts ...request.Option) (*glue.CreateWorkflowOutput, error)
+	DeleteBlueprintWithContext(ctx context.Context, input *glue.DeleteBlueprintInput, opts ...request.Option) (*glue.DeleteBlueprintOutput, error)
 	DeleteClassifierWithContext(ctx context.Context, input *glue.DeleteClassifierInput, opts ...request.Option) (*glue.DeleteClassifierOutput, error)
 	DeleteColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForPartitionOutput, error)
 	DeleteColumnStatisticsForTableWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForTableInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForTableOutput, error)
@@ -64,6 +67,10 @@ type Glue interface {
 	DeleteTriggerWithContext(ctx context.Context, input *glue.DeleteTriggerInput, opts ...request.Option) (*glue.DeleteTriggerOutput, error)
 	DeleteUserDefinedFunctionWithContext(ctx context.Context, input *glue.DeleteUserDefinedFunctionInput, opts ...request.Option) (*glue.DeleteUserDefinedFunctionOutput, error)
 	DeleteWorkflowWithContext(ctx context.Context, input *glue.DeleteWorkflowInput, opts ...request.Option) (*glue.DeleteWorkflowOutput, error)
+	GetBlueprintWithContext(ctx context.Context, input *glue.GetBlueprintInput, opts ...request.Option) (*glue.GetBlueprintOutput, error)
+	GetBlueprintRunWithContext(ctx context.Context, input *glue.GetBlueprintRunInput, opts ...request.Option) (*glue.GetBlueprintRunOutput, error)
+	GetBlueprintRunsWithContext(ctx context.Context, input *glue.GetBlueprintRunsInput, opts ...request.Option) (*glue.GetBlueprintRunsOutput, error)
+	GetBlueprintRunsPagesWithContext(ctx context.Context, input *glue.GetBlueprintRunsInput, cb func(*glue.GetBlueprintRunsOutput, bool) bool, opts ...request.Option) error
 	GetCatalogImportStatusWithContext(ctx context.Context, input *glue.GetCatalogImportStatusInput, opts ...request.Option) (*glue.GetCatalogImportStatusOutput, error)
 	GetClassifierWithContext(ctx context.Context, input *glue.GetClassifierInput, opts ...request.Option) (*glue.GetClassifierOutput, error)
 	GetClassifiersWithContext(ctx context.Context, input *glue.GetClassifiersInput, opts ...request.Option) (*glue.GetClassifiersOutput, error)
@@ -136,6 +143,8 @@ type Glue interface {
 	GetWorkflowRunsWithContext(ctx context.Context, input *glue.GetWorkflowRunsInput, opts ...request.Option) (*glue.GetWorkflowRunsOutput, error)
 	GetWorkflowRunsPagesWithContext(ctx context.Context, input *glue.GetWorkflowRunsInput, cb func(*glue.GetWorkflowRunsOutput, bool) bool, opts ...request.Option) error
 	ImportCatalogToGlueWithContext(ctx context.Context, input *glue.ImportCatalogToGlueInput, opts ...request.Option) (*glue.ImportCatalogToGlueOutput, error)
+	ListBlueprintsWithContext(ctx context.Context, input *glue.ListBlueprintsInput, opts ...request.Option) (*glue.ListBlueprintsOutput, error)
+	ListBlueprintsPagesWithContext(ctx context.Context, input *glue.ListBlueprintsInput, cb func(*glue.ListBlueprintsOutput, bool) bool, opts ...request.Option) error
 	ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error)
 	ListCrawlersPagesWithContext(ctx context.Context, input *glue.ListCrawlersInput, cb func(*glue.ListCrawlersOutput, bool) bool, opts ...request.Option) error
 	ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error)
@@ -165,6 +174,7 @@ type Glue interface {
 	ResumeWorkflowRunWithContext(ctx context.Context, input *glue.ResumeWorkflowRunInput, opts ...request.Option) (*glue.ResumeWorkflowRunOutput, error)
 	SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error)
 	SearchTablesPagesWithContext(ctx context.Context, input *glue.SearchTablesInput, cb func(*glue.SearchTablesOutput, bool) bool, opts ...request.Option) error
+	StartBlueprintRunWithContext(ctx context.Context, input *glue.StartBlueprintRunInput, opts ...request.Option) (*glue.StartBlueprintRunOutput, error)
 	StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error)
 	StartCrawlerScheduleWithContext(ctx context.Context, input *glue.StartCrawlerScheduleInput, opts ...request.Option) (*glue.StartCrawlerScheduleOutput, error)
 	StartExportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartExportLabelsTaskRunInput, opts ...request.Option) (*glue.StartExportLabelsTaskRunOutput, error)
@@ -180,6 +190,7 @@ type Glue interface {
 	StopWorkflowRunWithContext(ctx context.Context, input *glue.StopWorkflowRunInput, opts ...request.Option) (*glue.StopWorkflowRunOutput, error)
 	TagResourceWithContext(ctx context.Context, input *glue.TagResourceInput, opts ...request.Option) (*glue.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *glue.UntagResourceInput, opts ...request.Option) (*glue.UntagResourceOutput, error)
+	UpdateBlueprintWithContext(ctx context.Context, input *glue.UpdateBlueprintInput, opts ...request.Option) (*glue.UpdateBlueprintOutput, error)
 	UpdateClassifierWithContext(ctx context.Context, input *glue.UpdateClassifierInput, opts ...request.Option) (*glue.UpdateClassifierOutput, error)
 	UpdateColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.UpdateColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.UpdateColumnStatisticsForPartitionOutput, error)
 	UpdateColumnStatisticsForTableWithContext(ctx context.Context, input *glue.UpdateColumnStatisticsForTableInput, opts ...request.Option) (*glue.UpdateColumnStatisticsForTableOutput, error)
@@ -317,6 +328,27 @@ func (c *Client) BatchDeleteTableVersionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*glue.BatchDeleteTableVersionOutput), req.Error
+}
+
+func (c *Client) BatchGetBlueprintsWithContext(ctx context.Context, input *glue.BatchGetBlueprintsInput, opts ...request.Option) (*glue.BatchGetBlueprintsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "BatchGetBlueprints",
+		Input:   input,
+		Output:  (*glue.BatchGetBlueprintsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.BatchGetBlueprintsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.BatchGetBlueprintsOutput), req.Error
 }
 
 func (c *Client) BatchGetCrawlersWithContext(ctx context.Context, input *glue.BatchGetCrawlersInput, opts ...request.Option) (*glue.BatchGetCrawlersOutput, error) {
@@ -527,6 +559,27 @@ func (c *Client) CheckSchemaVersionValidityWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*glue.CheckSchemaVersionValidityOutput), req.Error
+}
+
+func (c *Client) CreateBlueprintWithContext(ctx context.Context, input *glue.CreateBlueprintInput, opts ...request.Option) (*glue.CreateBlueprintOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateBlueprint",
+		Input:   input,
+		Output:  (*glue.CreateBlueprintOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateBlueprintWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateBlueprintOutput), req.Error
 }
 
 func (c *Client) CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error) {
@@ -884,6 +937,27 @@ func (c *Client) CreateWorkflowWithContext(ctx context.Context, input *glue.Crea
 	})
 
 	return req.Output.(*glue.CreateWorkflowOutput), req.Error
+}
+
+func (c *Client) DeleteBlueprintWithContext(ctx context.Context, input *glue.DeleteBlueprintInput, opts ...request.Option) (*glue.DeleteBlueprintOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteBlueprint",
+		Input:   input,
+		Output:  (*glue.DeleteBlueprintOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteBlueprintWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteBlueprintOutput), req.Error
 }
 
 func (c *Client) DeleteClassifierWithContext(ctx context.Context, input *glue.DeleteClassifierInput, opts ...request.Option) (*glue.DeleteClassifierOutput, error) {
@@ -1325,6 +1399,89 @@ func (c *Client) DeleteWorkflowWithContext(ctx context.Context, input *glue.Dele
 	})
 
 	return req.Output.(*glue.DeleteWorkflowOutput), req.Error
+}
+
+func (c *Client) GetBlueprintWithContext(ctx context.Context, input *glue.GetBlueprintInput, opts ...request.Option) (*glue.GetBlueprintOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetBlueprint",
+		Input:   input,
+		Output:  (*glue.GetBlueprintOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetBlueprintWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetBlueprintOutput), req.Error
+}
+
+func (c *Client) GetBlueprintRunWithContext(ctx context.Context, input *glue.GetBlueprintRunInput, opts ...request.Option) (*glue.GetBlueprintRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetBlueprintRun",
+		Input:   input,
+		Output:  (*glue.GetBlueprintRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetBlueprintRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetBlueprintRunOutput), req.Error
+}
+
+func (c *Client) GetBlueprintRunsWithContext(ctx context.Context, input *glue.GetBlueprintRunsInput, opts ...request.Option) (*glue.GetBlueprintRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetBlueprintRuns",
+		Input:   input,
+		Output:  (*glue.GetBlueprintRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetBlueprintRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetBlueprintRunsOutput), req.Error
+}
+
+func (c *Client) GetBlueprintRunsPagesWithContext(ctx context.Context, input *glue.GetBlueprintRunsInput, cb func(*glue.GetBlueprintRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetBlueprintRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetBlueprintRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetCatalogImportStatusWithContext(ctx context.Context, input *glue.GetCatalogImportStatusInput, opts ...request.Option) (*glue.GetCatalogImportStatusOutput, error) {
@@ -2820,6 +2977,47 @@ func (c *Client) ImportCatalogToGlueWithContext(ctx context.Context, input *glue
 	return req.Output.(*glue.ImportCatalogToGlueOutput), req.Error
 }
 
+func (c *Client) ListBlueprintsWithContext(ctx context.Context, input *glue.ListBlueprintsInput, opts ...request.Option) (*glue.ListBlueprintsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListBlueprints",
+		Input:   input,
+		Output:  (*glue.ListBlueprintsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListBlueprintsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListBlueprintsOutput), req.Error
+}
+
+func (c *Client) ListBlueprintsPagesWithContext(ctx context.Context, input *glue.ListBlueprintsInput, cb func(*glue.ListBlueprintsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListBlueprints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListBlueprintsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -3419,6 +3617,27 @@ func (c *Client) SearchTablesPagesWithContext(ctx context.Context, input *glue.S
 	return req.Error
 }
 
+func (c *Client) StartBlueprintRunWithContext(ctx context.Context, input *glue.StartBlueprintRunInput, opts ...request.Option) (*glue.StartBlueprintRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StartBlueprintRun",
+		Input:   input,
+		Output:  (*glue.StartBlueprintRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StartBlueprintRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StartBlueprintRunOutput), req.Error
+}
+
 func (c *Client) StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -3732,6 +3951,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *glue.Untag
 	})
 
 	return req.Output.(*glue.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateBlueprintWithContext(ctx context.Context, input *glue.UpdateBlueprintInput, opts ...request.Option) (*glue.UpdateBlueprintOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateBlueprint",
+		Input:   input,
+		Output:  (*glue.UpdateBlueprintOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateBlueprintWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateBlueprintOutput), req.Error
 }
 
 func (c *Client) UpdateClassifierWithContext(ctx context.Context, input *glue.UpdateClassifierInput, opts ...request.Option) (*glue.UpdateClassifierOutput, error) {
