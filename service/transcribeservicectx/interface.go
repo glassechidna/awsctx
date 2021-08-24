@@ -42,6 +42,7 @@ type TranscribeService interface {
 	ListMedicalTranscriptionJobsPagesWithContext(ctx context.Context, input *transcribeservice.ListMedicalTranscriptionJobsInput, cb func(*transcribeservice.ListMedicalTranscriptionJobsOutput, bool) bool, opts ...request.Option) error
 	ListMedicalVocabulariesWithContext(ctx context.Context, input *transcribeservice.ListMedicalVocabulariesInput, opts ...request.Option) (*transcribeservice.ListMedicalVocabulariesOutput, error)
 	ListMedicalVocabulariesPagesWithContext(ctx context.Context, input *transcribeservice.ListMedicalVocabulariesInput, cb func(*transcribeservice.ListMedicalVocabulariesOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *transcribeservice.ListTagsForResourceInput, opts ...request.Option) (*transcribeservice.ListTagsForResourceOutput, error)
 	ListTranscriptionJobsWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, opts ...request.Option) (*transcribeservice.ListTranscriptionJobsOutput, error)
 	ListTranscriptionJobsPagesWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, cb func(*transcribeservice.ListTranscriptionJobsOutput, bool) bool, opts ...request.Option) error
 	ListVocabulariesWithContext(ctx context.Context, input *transcribeservice.ListVocabulariesInput, opts ...request.Option) (*transcribeservice.ListVocabulariesOutput, error)
@@ -51,6 +52,8 @@ type TranscribeService interface {
 	StartCallAnalyticsJobWithContext(ctx context.Context, input *transcribeservice.StartCallAnalyticsJobInput, opts ...request.Option) (*transcribeservice.StartCallAnalyticsJobOutput, error)
 	StartMedicalTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartMedicalTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartMedicalTranscriptionJobOutput, error)
 	StartTranscriptionJobWithContext(ctx context.Context, input *transcribeservice.StartTranscriptionJobInput, opts ...request.Option) (*transcribeservice.StartTranscriptionJobOutput, error)
+	TagResourceWithContext(ctx context.Context, input *transcribeservice.TagResourceInput, opts ...request.Option) (*transcribeservice.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *transcribeservice.UntagResourceInput, opts ...request.Option) (*transcribeservice.UntagResourceOutput, error)
 	UpdateCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.UpdateCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.UpdateCallAnalyticsCategoryOutput, error)
 	UpdateMedicalVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateMedicalVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateMedicalVocabularyOutput, error)
 	UpdateVocabularyWithContext(ctx context.Context, input *transcribeservice.UpdateVocabularyInput, opts ...request.Option) (*transcribeservice.UpdateVocabularyOutput, error)
@@ -718,6 +721,27 @@ func (c *Client) ListMedicalVocabulariesPagesWithContext(ctx context.Context, in
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *transcribeservice.ListTagsForResourceInput, opts ...request.Option) (*transcribeservice.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*transcribeservice.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListTranscriptionJobsWithContext(ctx context.Context, input *transcribeservice.ListTranscriptionJobsInput, opts ...request.Option) (*transcribeservice.ListTranscriptionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transcribeservice",
@@ -902,6 +926,48 @@ func (c *Client) StartTranscriptionJobWithContext(ctx context.Context, input *tr
 	})
 
 	return req.Output.(*transcribeservice.StartTranscriptionJobOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *transcribeservice.TagResourceInput, opts ...request.Option) (*transcribeservice.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*transcribeservice.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *transcribeservice.UntagResourceInput, opts ...request.Option) (*transcribeservice.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transcribeservice",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*transcribeservice.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranscribeServiceAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transcribeservice.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateCallAnalyticsCategoryWithContext(ctx context.Context, input *transcribeservice.UpdateCallAnalyticsCategoryInput, opts ...request.Option) (*transcribeservice.UpdateCallAnalyticsCategoryOutput, error) {

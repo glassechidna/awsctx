@@ -12,8 +12,11 @@ import (
 
 type IoTDataPlane interface {
 	DeleteThingShadowWithContext(ctx context.Context, input *iotdataplane.DeleteThingShadowInput, opts ...request.Option) (*iotdataplane.DeleteThingShadowOutput, error)
+	GetRetainedMessageWithContext(ctx context.Context, input *iotdataplane.GetRetainedMessageInput, opts ...request.Option) (*iotdataplane.GetRetainedMessageOutput, error)
 	GetThingShadowWithContext(ctx context.Context, input *iotdataplane.GetThingShadowInput, opts ...request.Option) (*iotdataplane.GetThingShadowOutput, error)
 	ListNamedShadowsForThingWithContext(ctx context.Context, input *iotdataplane.ListNamedShadowsForThingInput, opts ...request.Option) (*iotdataplane.ListNamedShadowsForThingOutput, error)
+	ListRetainedMessagesWithContext(ctx context.Context, input *iotdataplane.ListRetainedMessagesInput, opts ...request.Option) (*iotdataplane.ListRetainedMessagesOutput, error)
+	ListRetainedMessagesPagesWithContext(ctx context.Context, input *iotdataplane.ListRetainedMessagesInput, cb func(*iotdataplane.ListRetainedMessagesOutput, bool) bool, opts ...request.Option) error
 	PublishWithContext(ctx context.Context, input *iotdataplane.PublishInput, opts ...request.Option) (*iotdataplane.PublishOutput, error)
 	UpdateThingShadowWithContext(ctx context.Context, input *iotdataplane.UpdateThingShadowInput, opts ...request.Option) (*iotdataplane.UpdateThingShadowOutput, error)
 }
@@ -52,6 +55,27 @@ func (c *Client) DeleteThingShadowWithContext(ctx context.Context, input *iotdat
 	})
 
 	return req.Output.(*iotdataplane.DeleteThingShadowOutput), req.Error
+}
+
+func (c *Client) GetRetainedMessageWithContext(ctx context.Context, input *iotdataplane.GetRetainedMessageInput, opts ...request.Option) (*iotdataplane.GetRetainedMessageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotdataplane",
+		Action:  "GetRetainedMessage",
+		Input:   input,
+		Output:  (*iotdataplane.GetRetainedMessageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTDataPlaneAPI.GetRetainedMessageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotdataplane.GetRetainedMessageOutput), req.Error
 }
 
 func (c *Client) GetThingShadowWithContext(ctx context.Context, input *iotdataplane.GetThingShadowInput, opts ...request.Option) (*iotdataplane.GetThingShadowOutput, error) {
@@ -94,6 +118,47 @@ func (c *Client) ListNamedShadowsForThingWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*iotdataplane.ListNamedShadowsForThingOutput), req.Error
+}
+
+func (c *Client) ListRetainedMessagesWithContext(ctx context.Context, input *iotdataplane.ListRetainedMessagesInput, opts ...request.Option) (*iotdataplane.ListRetainedMessagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iotdataplane",
+		Action:  "ListRetainedMessages",
+		Input:   input,
+		Output:  (*iotdataplane.ListRetainedMessagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTDataPlaneAPI.ListRetainedMessagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iotdataplane.ListRetainedMessagesOutput), req.Error
+}
+
+func (c *Client) ListRetainedMessagesPagesWithContext(ctx context.Context, input *iotdataplane.ListRetainedMessagesInput, cb func(*iotdataplane.ListRetainedMessagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iotdataplane",
+		Action:  "ListRetainedMessages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTDataPlaneAPI.ListRetainedMessagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PublishWithContext(ctx context.Context, input *iotdataplane.PublishInput, opts ...request.Option) (*iotdataplane.PublishOutput, error) {
