@@ -29,6 +29,7 @@ type EMR interface {
 	DescribeSecurityConfigurationWithContext(ctx context.Context, input *emr.DescribeSecurityConfigurationInput, opts ...request.Option) (*emr.DescribeSecurityConfigurationOutput, error)
 	DescribeStepWithContext(ctx context.Context, input *emr.DescribeStepInput, opts ...request.Option) (*emr.DescribeStepOutput, error)
 	DescribeStudioWithContext(ctx context.Context, input *emr.DescribeStudioInput, opts ...request.Option) (*emr.DescribeStudioOutput, error)
+	GetAutoTerminationPolicyWithContext(ctx context.Context, input *emr.GetAutoTerminationPolicyInput, opts ...request.Option) (*emr.GetAutoTerminationPolicyOutput, error)
 	GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error)
 	GetManagedScalingPolicyWithContext(ctx context.Context, input *emr.GetManagedScalingPolicyInput, opts ...request.Option) (*emr.GetManagedScalingPolicyOutput, error)
 	GetStudioSessionMappingWithContext(ctx context.Context, input *emr.GetStudioSessionMappingInput, opts ...request.Option) (*emr.GetStudioSessionMappingOutput, error)
@@ -58,9 +59,11 @@ type EMR interface {
 	ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error)
 	ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error)
 	PutAutoScalingPolicyWithContext(ctx context.Context, input *emr.PutAutoScalingPolicyInput, opts ...request.Option) (*emr.PutAutoScalingPolicyOutput, error)
+	PutAutoTerminationPolicyWithContext(ctx context.Context, input *emr.PutAutoTerminationPolicyInput, opts ...request.Option) (*emr.PutAutoTerminationPolicyOutput, error)
 	PutBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.PutBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.PutBlockPublicAccessConfigurationOutput, error)
 	PutManagedScalingPolicyWithContext(ctx context.Context, input *emr.PutManagedScalingPolicyInput, opts ...request.Option) (*emr.PutManagedScalingPolicyOutput, error)
 	RemoveAutoScalingPolicyWithContext(ctx context.Context, input *emr.RemoveAutoScalingPolicyInput, opts ...request.Option) (*emr.RemoveAutoScalingPolicyOutput, error)
+	RemoveAutoTerminationPolicyWithContext(ctx context.Context, input *emr.RemoveAutoTerminationPolicyInput, opts ...request.Option) (*emr.RemoveAutoTerminationPolicyOutput, error)
 	RemoveManagedScalingPolicyWithContext(ctx context.Context, input *emr.RemoveManagedScalingPolicyInput, opts ...request.Option) (*emr.RemoveManagedScalingPolicyOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *emr.RemoveTagsInput, opts ...request.Option) (*emr.RemoveTagsOutput, error)
 	RunJobFlowWithContext(ctx context.Context, input *emr.RunJobFlowInput, opts ...request.Option) (*emr.RunJobFlowOutput, error)
@@ -464,6 +467,27 @@ func (c *Client) DescribeStudioWithContext(ctx context.Context, input *emr.Descr
 	})
 
 	return req.Output.(*emr.DescribeStudioOutput), req.Error
+}
+
+func (c *Client) GetAutoTerminationPolicyWithContext(ctx context.Context, input *emr.GetAutoTerminationPolicyInput, opts ...request.Option) (*emr.GetAutoTerminationPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "GetAutoTerminationPolicy",
+		Input:   input,
+		Output:  (*emr.GetAutoTerminationPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.GetAutoTerminationPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.GetAutoTerminationPolicyOutput), req.Error
 }
 
 func (c *Client) GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error) {
@@ -1064,6 +1088,27 @@ func (c *Client) PutAutoScalingPolicyWithContext(ctx context.Context, input *emr
 	return req.Output.(*emr.PutAutoScalingPolicyOutput), req.Error
 }
 
+func (c *Client) PutAutoTerminationPolicyWithContext(ctx context.Context, input *emr.PutAutoTerminationPolicyInput, opts ...request.Option) (*emr.PutAutoTerminationPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "PutAutoTerminationPolicy",
+		Input:   input,
+		Output:  (*emr.PutAutoTerminationPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.PutAutoTerminationPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.PutAutoTerminationPolicyOutput), req.Error
+}
+
 func (c *Client) PutBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.PutBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.PutBlockPublicAccessConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "emr",
@@ -1125,6 +1170,27 @@ func (c *Client) RemoveAutoScalingPolicyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*emr.RemoveAutoScalingPolicyOutput), req.Error
+}
+
+func (c *Client) RemoveAutoTerminationPolicyWithContext(ctx context.Context, input *emr.RemoveAutoTerminationPolicyInput, opts ...request.Option) (*emr.RemoveAutoTerminationPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "RemoveAutoTerminationPolicy",
+		Input:   input,
+		Output:  (*emr.RemoveAutoTerminationPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.RemoveAutoTerminationPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.RemoveAutoTerminationPolicyOutput), req.Error
 }
 
 func (c *Client) RemoveManagedScalingPolicyWithContext(ctx context.Context, input *emr.RemoveManagedScalingPolicyInput, opts ...request.Option) (*emr.RemoveManagedScalingPolicyOutput, error) {
