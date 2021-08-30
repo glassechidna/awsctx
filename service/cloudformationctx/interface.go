@@ -80,6 +80,7 @@ type CloudFormation interface {
 	RecordHandlerProgressWithContext(ctx context.Context, input *cloudformation.RecordHandlerProgressInput, opts ...request.Option) (*cloudformation.RecordHandlerProgressOutput, error)
 	RegisterPublisherWithContext(ctx context.Context, input *cloudformation.RegisterPublisherInput, opts ...request.Option) (*cloudformation.RegisterPublisherOutput, error)
 	RegisterTypeWithContext(ctx context.Context, input *cloudformation.RegisterTypeInput, opts ...request.Option) (*cloudformation.RegisterTypeOutput, error)
+	RollbackStackWithContext(ctx context.Context, input *cloudformation.RollbackStackInput, opts ...request.Option) (*cloudformation.RollbackStackOutput, error)
 	SetStackPolicyWithContext(ctx context.Context, input *cloudformation.SetStackPolicyInput, opts ...request.Option) (*cloudformation.SetStackPolicyOutput, error)
 	SetTypeConfigurationWithContext(ctx context.Context, input *cloudformation.SetTypeConfigurationInput, opts ...request.Option) (*cloudformation.SetTypeConfigurationOutput, error)
 	SetTypeDefaultVersionWithContext(ctx context.Context, input *cloudformation.SetTypeDefaultVersionInput, opts ...request.Option) (*cloudformation.SetTypeDefaultVersionOutput, error)
@@ -1539,6 +1540,27 @@ func (c *Client) RegisterTypeWithContext(ctx context.Context, input *cloudformat
 	})
 
 	return req.Output.(*cloudformation.RegisterTypeOutput), req.Error
+}
+
+func (c *Client) RollbackStackWithContext(ctx context.Context, input *cloudformation.RollbackStackInput, opts ...request.Option) (*cloudformation.RollbackStackOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "RollbackStack",
+		Input:   input,
+		Output:  (*cloudformation.RollbackStackOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.RollbackStackWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.RollbackStackOutput), req.Error
 }
 
 func (c *Client) SetStackPolicyWithContext(ctx context.Context, input *cloudformation.SetStackPolicyInput, opts ...request.Option) (*cloudformation.SetStackPolicyOutput, error) {
