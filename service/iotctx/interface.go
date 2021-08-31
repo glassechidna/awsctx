@@ -35,6 +35,7 @@ type IoT interface {
 	CreateDimensionWithContext(ctx context.Context, input *iot.CreateDimensionInput, opts ...request.Option) (*iot.CreateDimensionOutput, error)
 	CreateDomainConfigurationWithContext(ctx context.Context, input *iot.CreateDomainConfigurationInput, opts ...request.Option) (*iot.CreateDomainConfigurationOutput, error)
 	CreateDynamicThingGroupWithContext(ctx context.Context, input *iot.CreateDynamicThingGroupInput, opts ...request.Option) (*iot.CreateDynamicThingGroupOutput, error)
+	CreateFleetMetricWithContext(ctx context.Context, input *iot.CreateFleetMetricInput, opts ...request.Option) (*iot.CreateFleetMetricOutput, error)
 	CreateJobWithContext(ctx context.Context, input *iot.CreateJobInput, opts ...request.Option) (*iot.CreateJobOutput, error)
 	CreateJobTemplateWithContext(ctx context.Context, input *iot.CreateJobTemplateInput, opts ...request.Option) (*iot.CreateJobTemplateOutput, error)
 	CreateKeysAndCertificateWithContext(ctx context.Context, input *iot.CreateKeysAndCertificateInput, opts ...request.Option) (*iot.CreateKeysAndCertificateOutput, error)
@@ -64,6 +65,7 @@ type IoT interface {
 	DeleteDimensionWithContext(ctx context.Context, input *iot.DeleteDimensionInput, opts ...request.Option) (*iot.DeleteDimensionOutput, error)
 	DeleteDomainConfigurationWithContext(ctx context.Context, input *iot.DeleteDomainConfigurationInput, opts ...request.Option) (*iot.DeleteDomainConfigurationOutput, error)
 	DeleteDynamicThingGroupWithContext(ctx context.Context, input *iot.DeleteDynamicThingGroupInput, opts ...request.Option) (*iot.DeleteDynamicThingGroupOutput, error)
+	DeleteFleetMetricWithContext(ctx context.Context, input *iot.DeleteFleetMetricInput, opts ...request.Option) (*iot.DeleteFleetMetricOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *iot.DeleteJobInput, opts ...request.Option) (*iot.DeleteJobOutput, error)
 	DeleteJobExecutionWithContext(ctx context.Context, input *iot.DeleteJobExecutionInput, opts ...request.Option) (*iot.DeleteJobExecutionOutput, error)
 	DeleteJobTemplateWithContext(ctx context.Context, input *iot.DeleteJobTemplateInput, opts ...request.Option) (*iot.DeleteJobTemplateOutput, error)
@@ -101,6 +103,7 @@ type IoT interface {
 	DescribeDomainConfigurationWithContext(ctx context.Context, input *iot.DescribeDomainConfigurationInput, opts ...request.Option) (*iot.DescribeDomainConfigurationOutput, error)
 	DescribeEndpointWithContext(ctx context.Context, input *iot.DescribeEndpointInput, opts ...request.Option) (*iot.DescribeEndpointOutput, error)
 	DescribeEventConfigurationsWithContext(ctx context.Context, input *iot.DescribeEventConfigurationsInput, opts ...request.Option) (*iot.DescribeEventConfigurationsOutput, error)
+	DescribeFleetMetricWithContext(ctx context.Context, input *iot.DescribeFleetMetricInput, opts ...request.Option) (*iot.DescribeFleetMetricOutput, error)
 	DescribeIndexWithContext(ctx context.Context, input *iot.DescribeIndexInput, opts ...request.Option) (*iot.DescribeIndexOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *iot.DescribeJobInput, opts ...request.Option) (*iot.DescribeJobOutput, error)
 	DescribeJobExecutionWithContext(ctx context.Context, input *iot.DescribeJobExecutionInput, opts ...request.Option) (*iot.DescribeJobExecutionOutput, error)
@@ -124,6 +127,7 @@ type IoT interface {
 	EnableTopicRuleWithContext(ctx context.Context, input *iot.EnableTopicRuleInput, opts ...request.Option) (*iot.EnableTopicRuleOutput, error)
 	GetBehaviorModelTrainingSummariesWithContext(ctx context.Context, input *iot.GetBehaviorModelTrainingSummariesInput, opts ...request.Option) (*iot.GetBehaviorModelTrainingSummariesOutput, error)
 	GetBehaviorModelTrainingSummariesPagesWithContext(ctx context.Context, input *iot.GetBehaviorModelTrainingSummariesInput, cb func(*iot.GetBehaviorModelTrainingSummariesOutput, bool) bool, opts ...request.Option) error
+	GetBucketsAggregationWithContext(ctx context.Context, input *iot.GetBucketsAggregationInput, opts ...request.Option) (*iot.GetBucketsAggregationOutput, error)
 	GetCardinalityWithContext(ctx context.Context, input *iot.GetCardinalityInput, opts ...request.Option) (*iot.GetCardinalityOutput, error)
 	GetEffectivePoliciesWithContext(ctx context.Context, input *iot.GetEffectivePoliciesInput, opts ...request.Option) (*iot.GetEffectivePoliciesOutput, error)
 	GetIndexingConfigurationWithContext(ctx context.Context, input *iot.GetIndexingConfigurationInput, opts ...request.Option) (*iot.GetIndexingConfigurationOutput, error)
@@ -172,6 +176,8 @@ type IoT interface {
 	ListDimensionsPagesWithContext(ctx context.Context, input *iot.ListDimensionsInput, cb func(*iot.ListDimensionsOutput, bool) bool, opts ...request.Option) error
 	ListDomainConfigurationsWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, opts ...request.Option) (*iot.ListDomainConfigurationsOutput, error)
 	ListDomainConfigurationsPagesWithContext(ctx context.Context, input *iot.ListDomainConfigurationsInput, cb func(*iot.ListDomainConfigurationsOutput, bool) bool, opts ...request.Option) error
+	ListFleetMetricsWithContext(ctx context.Context, input *iot.ListFleetMetricsInput, opts ...request.Option) (*iot.ListFleetMetricsOutput, error)
+	ListFleetMetricsPagesWithContext(ctx context.Context, input *iot.ListFleetMetricsInput, cb func(*iot.ListFleetMetricsOutput, bool) bool, opts ...request.Option) error
 	ListIndicesWithContext(ctx context.Context, input *iot.ListIndicesInput, opts ...request.Option) (*iot.ListIndicesOutput, error)
 	ListIndicesPagesWithContext(ctx context.Context, input *iot.ListIndicesInput, cb func(*iot.ListIndicesOutput, bool) bool, opts ...request.Option) error
 	ListJobExecutionsForJobWithContext(ctx context.Context, input *iot.ListJobExecutionsForJobInput, opts ...request.Option) (*iot.ListJobExecutionsForJobOutput, error)
@@ -179,6 +185,7 @@ type IoT interface {
 	ListJobExecutionsForThingWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, opts ...request.Option) (*iot.ListJobExecutionsForThingOutput, error)
 	ListJobExecutionsForThingPagesWithContext(ctx context.Context, input *iot.ListJobExecutionsForThingInput, cb func(*iot.ListJobExecutionsForThingOutput, bool) bool, opts ...request.Option) error
 	ListJobTemplatesWithContext(ctx context.Context, input *iot.ListJobTemplatesInput, opts ...request.Option) (*iot.ListJobTemplatesOutput, error)
+	ListJobTemplatesPagesWithContext(ctx context.Context, input *iot.ListJobTemplatesInput, cb func(*iot.ListJobTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error)
@@ -277,6 +284,7 @@ type IoT interface {
 	UpdateDomainConfigurationWithContext(ctx context.Context, input *iot.UpdateDomainConfigurationInput, opts ...request.Option) (*iot.UpdateDomainConfigurationOutput, error)
 	UpdateDynamicThingGroupWithContext(ctx context.Context, input *iot.UpdateDynamicThingGroupInput, opts ...request.Option) (*iot.UpdateDynamicThingGroupOutput, error)
 	UpdateEventConfigurationsWithContext(ctx context.Context, input *iot.UpdateEventConfigurationsInput, opts ...request.Option) (*iot.UpdateEventConfigurationsOutput, error)
+	UpdateFleetMetricWithContext(ctx context.Context, input *iot.UpdateFleetMetricInput, opts ...request.Option) (*iot.UpdateFleetMetricOutput, error)
 	UpdateIndexingConfigurationWithContext(ctx context.Context, input *iot.UpdateIndexingConfigurationInput, opts ...request.Option) (*iot.UpdateIndexingConfigurationOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *iot.UpdateJobInput, opts ...request.Option) (*iot.UpdateJobOutput, error)
 	UpdateMitigationActionWithContext(ctx context.Context, input *iot.UpdateMitigationActionInput, opts ...request.Option) (*iot.UpdateMitigationActionOutput, error)
@@ -809,6 +817,27 @@ func (c *Client) CreateDynamicThingGroupWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*iot.CreateDynamicThingGroupOutput), req.Error
+}
+
+func (c *Client) CreateFleetMetricWithContext(ctx context.Context, input *iot.CreateFleetMetricInput, opts ...request.Option) (*iot.CreateFleetMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreateFleetMetric",
+		Input:   input,
+		Output:  (*iot.CreateFleetMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreateFleetMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreateFleetMetricOutput), req.Error
 }
 
 func (c *Client) CreateJobWithContext(ctx context.Context, input *iot.CreateJobInput, opts ...request.Option) (*iot.CreateJobOutput, error) {
@@ -1418,6 +1447,27 @@ func (c *Client) DeleteDynamicThingGroupWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*iot.DeleteDynamicThingGroupOutput), req.Error
+}
+
+func (c *Client) DeleteFleetMetricWithContext(ctx context.Context, input *iot.DeleteFleetMetricInput, opts ...request.Option) (*iot.DeleteFleetMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeleteFleetMetric",
+		Input:   input,
+		Output:  (*iot.DeleteFleetMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeleteFleetMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeleteFleetMetricOutput), req.Error
 }
 
 func (c *Client) DeleteJobWithContext(ctx context.Context, input *iot.DeleteJobInput, opts ...request.Option) (*iot.DeleteJobOutput, error) {
@@ -2197,6 +2247,27 @@ func (c *Client) DescribeEventConfigurationsWithContext(ctx context.Context, inp
 	return req.Output.(*iot.DescribeEventConfigurationsOutput), req.Error
 }
 
+func (c *Client) DescribeFleetMetricWithContext(ctx context.Context, input *iot.DescribeFleetMetricInput, opts ...request.Option) (*iot.DescribeFleetMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeFleetMetric",
+		Input:   input,
+		Output:  (*iot.DescribeFleetMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeFleetMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeFleetMetricOutput), req.Error
+}
+
 func (c *Client) DescribeIndexWithContext(ctx context.Context, input *iot.DescribeIndexInput, opts ...request.Option) (*iot.DescribeIndexOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -2677,6 +2748,27 @@ func (c *Client) GetBehaviorModelTrainingSummariesPagesWithContext(ctx context.C
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetBucketsAggregationWithContext(ctx context.Context, input *iot.GetBucketsAggregationInput, opts ...request.Option) (*iot.GetBucketsAggregationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetBucketsAggregation",
+		Input:   input,
+		Output:  (*iot.GetBucketsAggregationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetBucketsAggregationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetBucketsAggregationOutput), req.Error
 }
 
 func (c *Client) GetCardinalityWithContext(ctx context.Context, input *iot.GetCardinalityInput, opts ...request.Option) (*iot.GetCardinalityOutput, error) {
@@ -3670,6 +3762,47 @@ func (c *Client) ListDomainConfigurationsPagesWithContext(ctx context.Context, i
 	return req.Error
 }
 
+func (c *Client) ListFleetMetricsWithContext(ctx context.Context, input *iot.ListFleetMetricsInput, opts ...request.Option) (*iot.ListFleetMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListFleetMetrics",
+		Input:   input,
+		Output:  (*iot.ListFleetMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListFleetMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListFleetMetricsOutput), req.Error
+}
+
+func (c *Client) ListFleetMetricsPagesWithContext(ctx context.Context, input *iot.ListFleetMetricsInput, cb func(*iot.ListFleetMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListFleetMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListFleetMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListIndicesWithContext(ctx context.Context, input *iot.ListIndicesInput, opts ...request.Option) (*iot.ListIndicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -3812,6 +3945,26 @@ func (c *Client) ListJobTemplatesWithContext(ctx context.Context, input *iot.Lis
 	})
 
 	return req.Output.(*iot.ListJobTemplatesOutput), req.Error
+}
+
+func (c *Client) ListJobTemplatesPagesWithContext(ctx context.Context, input *iot.ListJobTemplatesInput, cb func(*iot.ListJobTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListJobTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListJobTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error) {
@@ -5839,6 +5992,27 @@ func (c *Client) UpdateEventConfigurationsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iot.UpdateEventConfigurationsOutput), req.Error
+}
+
+func (c *Client) UpdateFleetMetricWithContext(ctx context.Context, input *iot.UpdateFleetMetricInput, opts ...request.Option) (*iot.UpdateFleetMetricOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdateFleetMetric",
+		Input:   input,
+		Output:  (*iot.UpdateFleetMetricOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdateFleetMetricWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdateFleetMetricOutput), req.Error
 }
 
 func (c *Client) UpdateIndexingConfigurationWithContext(ctx context.Context, input *iot.UpdateIndexingConfigurationInput, opts ...request.Option) (*iot.UpdateIndexingConfigurationOutput, error) {
