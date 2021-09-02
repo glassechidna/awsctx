@@ -18,8 +18,13 @@ type FSx interface {
 	CreateDataRepositoryTaskWithContext(ctx context.Context, input *fsx.CreateDataRepositoryTaskInput, opts ...request.Option) (*fsx.CreateDataRepositoryTaskOutput, error)
 	CreateFileSystemWithContext(ctx context.Context, input *fsx.CreateFileSystemInput, opts ...request.Option) (*fsx.CreateFileSystemOutput, error)
 	CreateFileSystemFromBackupWithContext(ctx context.Context, input *fsx.CreateFileSystemFromBackupInput, opts ...request.Option) (*fsx.CreateFileSystemFromBackupOutput, error)
+	CreateStorageVirtualMachineWithContext(ctx context.Context, input *fsx.CreateStorageVirtualMachineInput, opts ...request.Option) (*fsx.CreateStorageVirtualMachineOutput, error)
+	CreateVolumeWithContext(ctx context.Context, input *fsx.CreateVolumeInput, opts ...request.Option) (*fsx.CreateVolumeOutput, error)
+	CreateVolumeFromBackupWithContext(ctx context.Context, input *fsx.CreateVolumeFromBackupInput, opts ...request.Option) (*fsx.CreateVolumeFromBackupOutput, error)
 	DeleteBackupWithContext(ctx context.Context, input *fsx.DeleteBackupInput, opts ...request.Option) (*fsx.DeleteBackupOutput, error)
 	DeleteFileSystemWithContext(ctx context.Context, input *fsx.DeleteFileSystemInput, opts ...request.Option) (*fsx.DeleteFileSystemOutput, error)
+	DeleteStorageVirtualMachineWithContext(ctx context.Context, input *fsx.DeleteStorageVirtualMachineInput, opts ...request.Option) (*fsx.DeleteStorageVirtualMachineOutput, error)
+	DeleteVolumeWithContext(ctx context.Context, input *fsx.DeleteVolumeInput, opts ...request.Option) (*fsx.DeleteVolumeOutput, error)
 	DescribeBackupsWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, opts ...request.Option) (*fsx.DescribeBackupsOutput, error)
 	DescribeBackupsPagesWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, cb func(*fsx.DescribeBackupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDataRepositoryTasksWithContext(ctx context.Context, input *fsx.DescribeDataRepositoryTasksInput, opts ...request.Option) (*fsx.DescribeDataRepositoryTasksOutput, error)
@@ -28,11 +33,18 @@ type FSx interface {
 	DescribeFileSystemAliasesPagesWithContext(ctx context.Context, input *fsx.DescribeFileSystemAliasesInput, cb func(*fsx.DescribeFileSystemAliasesOutput, bool) bool, opts ...request.Option) error
 	DescribeFileSystemsWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, opts ...request.Option) (*fsx.DescribeFileSystemsOutput, error)
 	DescribeFileSystemsPagesWithContext(ctx context.Context, input *fsx.DescribeFileSystemsInput, cb func(*fsx.DescribeFileSystemsOutput, bool) bool, opts ...request.Option) error
+	DescribeStorageVirtualMachinesWithContext(ctx context.Context, input *fsx.DescribeStorageVirtualMachinesInput, opts ...request.Option) (*fsx.DescribeStorageVirtualMachinesOutput, error)
+	DescribeStorageVirtualMachinesPagesWithContext(ctx context.Context, input *fsx.DescribeStorageVirtualMachinesInput, cb func(*fsx.DescribeStorageVirtualMachinesOutput, bool) bool, opts ...request.Option) error
+	DescribeVolumesWithContext(ctx context.Context, input *fsx.DescribeVolumesInput, opts ...request.Option) (*fsx.DescribeVolumesOutput, error)
+	DescribeVolumesPagesWithContext(ctx context.Context, input *fsx.DescribeVolumesInput, cb func(*fsx.DescribeVolumesOutput, bool) bool, opts ...request.Option) error
 	DisassociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.DisassociateFileSystemAliasesInput, opts ...request.Option) (*fsx.DisassociateFileSystemAliasesOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, opts ...request.Option) (*fsx.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, cb func(*fsx.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	TagResourceWithContext(ctx context.Context, input *fsx.TagResourceInput, opts ...request.Option) (*fsx.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *fsx.UntagResourceInput, opts ...request.Option) (*fsx.UntagResourceOutput, error)
 	UpdateFileSystemWithContext(ctx context.Context, input *fsx.UpdateFileSystemInput, opts ...request.Option) (*fsx.UpdateFileSystemOutput, error)
+	UpdateStorageVirtualMachineWithContext(ctx context.Context, input *fsx.UpdateStorageVirtualMachineInput, opts ...request.Option) (*fsx.UpdateStorageVirtualMachineOutput, error)
+	UpdateVolumeWithContext(ctx context.Context, input *fsx.UpdateVolumeInput, opts ...request.Option) (*fsx.UpdateVolumeOutput, error)
 }
 
 type Client struct {
@@ -197,6 +209,69 @@ func (c *Client) CreateFileSystemFromBackupWithContext(ctx context.Context, inpu
 	return req.Output.(*fsx.CreateFileSystemFromBackupOutput), req.Error
 }
 
+func (c *Client) CreateStorageVirtualMachineWithContext(ctx context.Context, input *fsx.CreateStorageVirtualMachineInput, opts ...request.Option) (*fsx.CreateStorageVirtualMachineOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "CreateStorageVirtualMachine",
+		Input:   input,
+		Output:  (*fsx.CreateStorageVirtualMachineOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.CreateStorageVirtualMachineWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.CreateStorageVirtualMachineOutput), req.Error
+}
+
+func (c *Client) CreateVolumeWithContext(ctx context.Context, input *fsx.CreateVolumeInput, opts ...request.Option) (*fsx.CreateVolumeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "CreateVolume",
+		Input:   input,
+		Output:  (*fsx.CreateVolumeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.CreateVolumeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.CreateVolumeOutput), req.Error
+}
+
+func (c *Client) CreateVolumeFromBackupWithContext(ctx context.Context, input *fsx.CreateVolumeFromBackupInput, opts ...request.Option) (*fsx.CreateVolumeFromBackupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "CreateVolumeFromBackup",
+		Input:   input,
+		Output:  (*fsx.CreateVolumeFromBackupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.CreateVolumeFromBackupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.CreateVolumeFromBackupOutput), req.Error
+}
+
 func (c *Client) DeleteBackupWithContext(ctx context.Context, input *fsx.DeleteBackupInput, opts ...request.Option) (*fsx.DeleteBackupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
@@ -237,6 +312,48 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, input *fsx.Del
 	})
 
 	return req.Output.(*fsx.DeleteFileSystemOutput), req.Error
+}
+
+func (c *Client) DeleteStorageVirtualMachineWithContext(ctx context.Context, input *fsx.DeleteStorageVirtualMachineInput, opts ...request.Option) (*fsx.DeleteStorageVirtualMachineOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DeleteStorageVirtualMachine",
+		Input:   input,
+		Output:  (*fsx.DeleteStorageVirtualMachineOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DeleteStorageVirtualMachineWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DeleteStorageVirtualMachineOutput), req.Error
+}
+
+func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *fsx.DeleteVolumeInput, opts ...request.Option) (*fsx.DeleteVolumeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DeleteVolume",
+		Input:   input,
+		Output:  (*fsx.DeleteVolumeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DeleteVolumeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DeleteVolumeOutput), req.Error
 }
 
 func (c *Client) DescribeBackupsWithContext(ctx context.Context, input *fsx.DescribeBackupsInput, opts ...request.Option) (*fsx.DescribeBackupsOutput, error) {
@@ -403,6 +520,88 @@ func (c *Client) DescribeFileSystemsPagesWithContext(ctx context.Context, input 
 	return req.Error
 }
 
+func (c *Client) DescribeStorageVirtualMachinesWithContext(ctx context.Context, input *fsx.DescribeStorageVirtualMachinesInput, opts ...request.Option) (*fsx.DescribeStorageVirtualMachinesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeStorageVirtualMachines",
+		Input:   input,
+		Output:  (*fsx.DescribeStorageVirtualMachinesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DescribeStorageVirtualMachinesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DescribeStorageVirtualMachinesOutput), req.Error
+}
+
+func (c *Client) DescribeStorageVirtualMachinesPagesWithContext(ctx context.Context, input *fsx.DescribeStorageVirtualMachinesInput, cb func(*fsx.DescribeStorageVirtualMachinesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeStorageVirtualMachines",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FSxAPI.DescribeStorageVirtualMachinesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeVolumesWithContext(ctx context.Context, input *fsx.DescribeVolumesInput, opts ...request.Option) (*fsx.DescribeVolumesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeVolumes",
+		Input:   input,
+		Output:  (*fsx.DescribeVolumesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.DescribeVolumesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.DescribeVolumesOutput), req.Error
+}
+
+func (c *Client) DescribeVolumesPagesWithContext(ctx context.Context, input *fsx.DescribeVolumesInput, cb func(*fsx.DescribeVolumesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "DescribeVolumes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FSxAPI.DescribeVolumesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DisassociateFileSystemAliasesWithContext(ctx context.Context, input *fsx.DisassociateFileSystemAliasesInput, opts ...request.Option) (*fsx.DisassociateFileSystemAliasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fsx",
@@ -443,6 +642,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fsx.
 	})
 
 	return req.Output.(*fsx.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, cb func(*fsx.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.FSxAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *fsx.TagResourceInput, opts ...request.Option) (*fsx.TagResourceOutput, error) {
@@ -506,4 +725,46 @@ func (c *Client) UpdateFileSystemWithContext(ctx context.Context, input *fsx.Upd
 	})
 
 	return req.Output.(*fsx.UpdateFileSystemOutput), req.Error
+}
+
+func (c *Client) UpdateStorageVirtualMachineWithContext(ctx context.Context, input *fsx.UpdateStorageVirtualMachineInput, opts ...request.Option) (*fsx.UpdateStorageVirtualMachineOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "UpdateStorageVirtualMachine",
+		Input:   input,
+		Output:  (*fsx.UpdateStorageVirtualMachineOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.UpdateStorageVirtualMachineWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.UpdateStorageVirtualMachineOutput), req.Error
+}
+
+func (c *Client) UpdateVolumeWithContext(ctx context.Context, input *fsx.UpdateVolumeInput, opts ...request.Option) (*fsx.UpdateVolumeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "UpdateVolume",
+		Input:   input,
+		Output:  (*fsx.UpdateVolumeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.UpdateVolumeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.UpdateVolumeOutput), req.Error
 }

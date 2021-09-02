@@ -15,6 +15,7 @@ type S3Control interface {
 	CreateAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.CreateAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.CreateAccessPointForObjectLambdaOutput, error)
 	CreateBucketWithContext(ctx context.Context, input *s3control.CreateBucketInput, opts ...request.Option) (*s3control.CreateBucketOutput, error)
 	CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error)
+	CreateMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.CreateMultiRegionAccessPointInput, opts ...request.Option) (*s3control.CreateMultiRegionAccessPointOutput, error)
 	DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error)
 	DeleteAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.DeleteAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.DeleteAccessPointForObjectLambdaOutput, error)
 	DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error)
@@ -24,10 +25,12 @@ type S3Control interface {
 	DeleteBucketPolicyWithContext(ctx context.Context, input *s3control.DeleteBucketPolicyInput, opts ...request.Option) (*s3control.DeleteBucketPolicyOutput, error)
 	DeleteBucketTaggingWithContext(ctx context.Context, input *s3control.DeleteBucketTaggingInput, opts ...request.Option) (*s3control.DeleteBucketTaggingOutput, error)
 	DeleteJobTaggingWithContext(ctx context.Context, input *s3control.DeleteJobTaggingInput, opts ...request.Option) (*s3control.DeleteJobTaggingOutput, error)
+	DeleteMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.DeleteMultiRegionAccessPointInput, opts ...request.Option) (*s3control.DeleteMultiRegionAccessPointOutput, error)
 	DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error)
 	DeleteStorageLensConfigurationWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationOutput, error)
 	DeleteStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationTaggingOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error)
+	DescribeMultiRegionAccessPointOperationWithContext(ctx context.Context, input *s3control.DescribeMultiRegionAccessPointOperationInput, opts ...request.Option) (*s3control.DescribeMultiRegionAccessPointOperationOutput, error)
 	GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error)
 	GetAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointConfigurationForObjectLambdaOutput, error)
 	GetAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.GetAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.GetAccessPointForObjectLambdaOutput, error)
@@ -40,6 +43,9 @@ type S3Control interface {
 	GetBucketPolicyWithContext(ctx context.Context, input *s3control.GetBucketPolicyInput, opts ...request.Option) (*s3control.GetBucketPolicyOutput, error)
 	GetBucketTaggingWithContext(ctx context.Context, input *s3control.GetBucketTaggingInput, opts ...request.Option) (*s3control.GetBucketTaggingOutput, error)
 	GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error)
+	GetMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointOutput, error)
+	GetMultiRegionAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointPolicyInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointPolicyOutput, error)
+	GetMultiRegionAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointPolicyStatusOutput, error)
 	GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error)
 	GetStorageLensConfigurationWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationOutput, error)
 	GetStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationTaggingOutput, error)
@@ -49,6 +55,8 @@ type S3Control interface {
 	ListAccessPointsForObjectLambdaPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsForObjectLambdaInput, cb func(*s3control.ListAccessPointsForObjectLambdaOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *s3control.ListJobsInput, opts ...request.Option) (*s3control.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *s3control.ListJobsInput, cb func(*s3control.ListJobsOutput, bool) bool, opts ...request.Option) error
+	ListMultiRegionAccessPointsWithContext(ctx context.Context, input *s3control.ListMultiRegionAccessPointsInput, opts ...request.Option) (*s3control.ListMultiRegionAccessPointsOutput, error)
+	ListMultiRegionAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListMultiRegionAccessPointsInput, cb func(*s3control.ListMultiRegionAccessPointsOutput, bool) bool, opts ...request.Option) error
 	ListRegionalBucketsWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, opts ...request.Option) (*s3control.ListRegionalBucketsOutput, error)
 	ListRegionalBucketsPagesWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, cb func(*s3control.ListRegionalBucketsOutput, bool) bool, opts ...request.Option) error
 	ListStorageLensConfigurationsWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, opts ...request.Option) (*s3control.ListStorageLensConfigurationsOutput, error)
@@ -60,6 +68,7 @@ type S3Control interface {
 	PutBucketPolicyWithContext(ctx context.Context, input *s3control.PutBucketPolicyInput, opts ...request.Option) (*s3control.PutBucketPolicyOutput, error)
 	PutBucketTaggingWithContext(ctx context.Context, input *s3control.PutBucketTaggingInput, opts ...request.Option) (*s3control.PutBucketTaggingOutput, error)
 	PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error)
+	PutMultiRegionAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutMultiRegionAccessPointPolicyInput, opts ...request.Option) (*s3control.PutMultiRegionAccessPointPolicyOutput, error)
 	PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error)
 	PutStorageLensConfigurationWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationOutput, error)
 	PutStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationTaggingOutput, error)
@@ -164,6 +173,27 @@ func (c *Client) CreateJobWithContext(ctx context.Context, input *s3control.Crea
 	})
 
 	return req.Output.(*s3control.CreateJobOutput), req.Error
+}
+
+func (c *Client) CreateMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.CreateMultiRegionAccessPointInput, opts ...request.Option) (*s3control.CreateMultiRegionAccessPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "CreateMultiRegionAccessPoint",
+		Input:   input,
+		Output:  (*s3control.CreateMultiRegionAccessPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.CreateMultiRegionAccessPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.CreateMultiRegionAccessPointOutput), req.Error
 }
 
 func (c *Client) DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error) {
@@ -355,6 +385,27 @@ func (c *Client) DeleteJobTaggingWithContext(ctx context.Context, input *s3contr
 	return req.Output.(*s3control.DeleteJobTaggingOutput), req.Error
 }
 
+func (c *Client) DeleteMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.DeleteMultiRegionAccessPointInput, opts ...request.Option) (*s3control.DeleteMultiRegionAccessPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteMultiRegionAccessPoint",
+		Input:   input,
+		Output:  (*s3control.DeleteMultiRegionAccessPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteMultiRegionAccessPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteMultiRegionAccessPointOutput), req.Error
+}
+
 func (c *Client) DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -437,6 +488,27 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, input *s3control.De
 	})
 
 	return req.Output.(*s3control.DescribeJobOutput), req.Error
+}
+
+func (c *Client) DescribeMultiRegionAccessPointOperationWithContext(ctx context.Context, input *s3control.DescribeMultiRegionAccessPointOperationInput, opts ...request.Option) (*s3control.DescribeMultiRegionAccessPointOperationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DescribeMultiRegionAccessPointOperation",
+		Input:   input,
+		Output:  (*s3control.DescribeMultiRegionAccessPointOperationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DescribeMultiRegionAccessPointOperationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DescribeMultiRegionAccessPointOperationOutput), req.Error
 }
 
 func (c *Client) GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error) {
@@ -691,6 +763,69 @@ func (c *Client) GetJobTaggingWithContext(ctx context.Context, input *s3control.
 	return req.Output.(*s3control.GetJobTaggingOutput), req.Error
 }
 
+func (c *Client) GetMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetMultiRegionAccessPoint",
+		Input:   input,
+		Output:  (*s3control.GetMultiRegionAccessPointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetMultiRegionAccessPointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetMultiRegionAccessPointOutput), req.Error
+}
+
+func (c *Client) GetMultiRegionAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointPolicyInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetMultiRegionAccessPointPolicy",
+		Input:   input,
+		Output:  (*s3control.GetMultiRegionAccessPointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetMultiRegionAccessPointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetMultiRegionAccessPointPolicyOutput), req.Error
+}
+
+func (c *Client) GetMultiRegionAccessPointPolicyStatusWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointPolicyStatusInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointPolicyStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetMultiRegionAccessPointPolicyStatus",
+		Input:   input,
+		Output:  (*s3control.GetMultiRegionAccessPointPolicyStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetMultiRegionAccessPointPolicyStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetMultiRegionAccessPointPolicyStatusOutput), req.Error
+}
+
 func (c *Client) GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -872,6 +1007,47 @@ func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *s3control.
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.S3ControlAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMultiRegionAccessPointsWithContext(ctx context.Context, input *s3control.ListMultiRegionAccessPointsInput, opts ...request.Option) (*s3control.ListMultiRegionAccessPointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListMultiRegionAccessPoints",
+		Input:   input,
+		Output:  (*s3control.ListMultiRegionAccessPointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.ListMultiRegionAccessPointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.ListMultiRegionAccessPointsOutput), req.Error
+}
+
+func (c *Client) ListMultiRegionAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListMultiRegionAccessPointsInput, cb func(*s3control.ListMultiRegionAccessPointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListMultiRegionAccessPoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3ControlAPI.ListMultiRegionAccessPointsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1104,6 +1280,27 @@ func (c *Client) PutJobTaggingWithContext(ctx context.Context, input *s3control.
 	})
 
 	return req.Output.(*s3control.PutJobTaggingOutput), req.Error
+}
+
+func (c *Client) PutMultiRegionAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutMultiRegionAccessPointPolicyInput, opts ...request.Option) (*s3control.PutMultiRegionAccessPointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutMultiRegionAccessPointPolicy",
+		Input:   input,
+		Output:  (*s3control.PutMultiRegionAccessPointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutMultiRegionAccessPointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutMultiRegionAccessPointPolicyOutput), req.Error
 }
 
 func (c *Client) PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error) {
