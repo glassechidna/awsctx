@@ -21,6 +21,7 @@ type EKS interface {
 	DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error)
 	DeleteFargateProfileWithContext(ctx context.Context, input *eks.DeleteFargateProfileInput, opts ...request.Option) (*eks.DeleteFargateProfileOutput, error)
 	DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error)
+	DeregisterClusterWithContext(ctx context.Context, input *eks.DeregisterClusterInput, opts ...request.Option) (*eks.DeregisterClusterOutput, error)
 	DescribeAddonWithContext(ctx context.Context, input *eks.DescribeAddonInput, opts ...request.Option) (*eks.DescribeAddonOutput, error)
 	DescribeAddonVersionsWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, opts ...request.Option) (*eks.DescribeAddonVersionsOutput, error)
 	DescribeAddonVersionsPagesWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, cb func(*eks.DescribeAddonVersionsOutput, bool) bool, opts ...request.Option) error
@@ -43,6 +44,7 @@ type EKS interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *eks.ListTagsForResourceInput, opts ...request.Option) (*eks.ListTagsForResourceOutput, error)
 	ListUpdatesWithContext(ctx context.Context, input *eks.ListUpdatesInput, opts ...request.Option) (*eks.ListUpdatesOutput, error)
 	ListUpdatesPagesWithContext(ctx context.Context, input *eks.ListUpdatesInput, cb func(*eks.ListUpdatesOutput, bool) bool, opts ...request.Option) error
+	RegisterClusterWithContext(ctx context.Context, input *eks.RegisterClusterInput, opts ...request.Option) (*eks.RegisterClusterOutput, error)
 	TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *eks.UntagResourceInput, opts ...request.Option) (*eks.UntagResourceOutput, error)
 	UpdateAddonWithContext(ctx context.Context, input *eks.UpdateAddonInput, opts ...request.Option) (*eks.UpdateAddonOutput, error)
@@ -275,6 +277,27 @@ func (c *Client) DeleteNodegroupWithContext(ctx context.Context, input *eks.Dele
 	})
 
 	return req.Output.(*eks.DeleteNodegroupOutput), req.Error
+}
+
+func (c *Client) DeregisterClusterWithContext(ctx context.Context, input *eks.DeregisterClusterInput, opts ...request.Option) (*eks.DeregisterClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DeregisterCluster",
+		Input:   input,
+		Output:  (*eks.DeregisterClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DeregisterClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DeregisterClusterOutput), req.Error
 }
 
 func (c *Client) DescribeAddonWithContext(ctx context.Context, input *eks.DescribeAddonInput, opts ...request.Option) (*eks.DescribeAddonOutput, error) {
@@ -730,6 +753,27 @@ func (c *Client) ListUpdatesPagesWithContext(ctx context.Context, input *eks.Lis
 	})
 
 	return req.Error
+}
+
+func (c *Client) RegisterClusterWithContext(ctx context.Context, input *eks.RegisterClusterInput, opts ...request.Option) (*eks.RegisterClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "RegisterCluster",
+		Input:   input,
+		Output:  (*eks.RegisterClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.RegisterClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.RegisterClusterOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *eks.TagResourceInput, opts ...request.Option) (*eks.TagResourceOutput, error) {
