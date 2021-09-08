@@ -48,6 +48,7 @@ type Kafka interface {
 	UpdateClusterKafkaVersionWithContext(ctx context.Context, input *kafka.UpdateClusterKafkaVersionInput, opts ...request.Option) (*kafka.UpdateClusterKafkaVersionOutput, error)
 	UpdateConfigurationWithContext(ctx context.Context, input *kafka.UpdateConfigurationInput, opts ...request.Option) (*kafka.UpdateConfigurationOutput, error)
 	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
+	UpdateSecurityWithContext(ctx context.Context, input *kafka.UpdateSecurityInput, opts ...request.Option) (*kafka.UpdateSecurityOutput, error)
 }
 
 type Client struct {
@@ -833,4 +834,25 @@ func (c *Client) UpdateMonitoringWithContext(ctx context.Context, input *kafka.U
 	})
 
 	return req.Output.(*kafka.UpdateMonitoringOutput), req.Error
+}
+
+func (c *Client) UpdateSecurityWithContext(ctx context.Context, input *kafka.UpdateSecurityInput, opts ...request.Option) (*kafka.UpdateSecurityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateSecurity",
+		Input:   input,
+		Output:  (*kafka.UpdateSecurityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateSecurityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateSecurityOutput), req.Error
 }
