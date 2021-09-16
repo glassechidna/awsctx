@@ -263,6 +263,7 @@ type SageMaker interface {
 	PutModelPackageGroupPolicyWithContext(ctx context.Context, input *sagemaker.PutModelPackageGroupPolicyInput, opts ...request.Option) (*sagemaker.PutModelPackageGroupPolicyOutput, error)
 	RegisterDevicesWithContext(ctx context.Context, input *sagemaker.RegisterDevicesInput, opts ...request.Option) (*sagemaker.RegisterDevicesOutput, error)
 	RenderUiTemplateWithContext(ctx context.Context, input *sagemaker.RenderUiTemplateInput, opts ...request.Option) (*sagemaker.RenderUiTemplateOutput, error)
+	RetryPipelineExecutionWithContext(ctx context.Context, input *sagemaker.RetryPipelineExecutionInput, opts ...request.Option) (*sagemaker.RetryPipelineExecutionOutput, error)
 	SearchWithContext(ctx context.Context, input *sagemaker.SearchInput, opts ...request.Option) (*sagemaker.SearchOutput, error)
 	SearchPagesWithContext(ctx context.Context, input *sagemaker.SearchInput, cb func(*sagemaker.SearchOutput, bool) bool, opts ...request.Option) error
 	SendPipelineExecutionStepFailureWithContext(ctx context.Context, input *sagemaker.SendPipelineExecutionStepFailureInput, opts ...request.Option) (*sagemaker.SendPipelineExecutionStepFailureOutput, error)
@@ -5558,6 +5559,27 @@ func (c *Client) RenderUiTemplateWithContext(ctx context.Context, input *sagemak
 	})
 
 	return req.Output.(*sagemaker.RenderUiTemplateOutput), req.Error
+}
+
+func (c *Client) RetryPipelineExecutionWithContext(ctx context.Context, input *sagemaker.RetryPipelineExecutionInput, opts ...request.Option) (*sagemaker.RetryPipelineExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "RetryPipelineExecution",
+		Input:   input,
+		Output:  (*sagemaker.RetryPipelineExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.RetryPipelineExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.RetryPipelineExecutionOutput), req.Error
 }
 
 func (c *Client) SearchWithContext(ctx context.Context, input *sagemaker.SearchInput, opts ...request.Option) (*sagemaker.SearchOutput, error) {
