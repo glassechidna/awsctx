@@ -466,6 +466,9 @@ type EC2 interface {
 	GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error)
 	GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, cb func(*ec2.GetTransitGatewayRouteTablePropagationsOutput, bool) bool, opts ...request.Option) error
+	GetVpnConnectionDeviceSampleConfigurationWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceSampleConfigurationInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput, error)
+	GetVpnConnectionDeviceTypesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceTypesOutput, error)
+	GetVpnConnectionDeviceTypesPagesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, cb func(*ec2.GetVpnConnectionDeviceTypesOutput, bool) bool, opts ...request.Option) error
 	ImportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ImportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ImportClientVpnClientCertificateRevocationListOutput, error)
 	ImportImageWithContext(ctx context.Context, input *ec2.ImportImageInput, opts ...request.Option) (*ec2.ImportImageOutput, error)
 	ImportInstanceWithContext(ctx context.Context, input *ec2.ImportInstanceInput, opts ...request.Option) (*ec2.ImportInstanceOutput, error)
@@ -10045,6 +10048,68 @@ func (c *Client) GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx con
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetVpnConnectionDeviceSampleConfigurationWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceSampleConfigurationInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetVpnConnectionDeviceSampleConfiguration",
+		Input:   input,
+		Output:  (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetVpnConnectionDeviceSampleConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetVpnConnectionDeviceSampleConfigurationOutput), req.Error
+}
+
+func (c *Client) GetVpnConnectionDeviceTypesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceTypesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetVpnConnectionDeviceTypes",
+		Input:   input,
+		Output:  (*ec2.GetVpnConnectionDeviceTypesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetVpnConnectionDeviceTypesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetVpnConnectionDeviceTypesOutput), req.Error
+}
+
+func (c *Client) GetVpnConnectionDeviceTypesPagesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, cb func(*ec2.GetVpnConnectionDeviceTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetVpnConnectionDeviceTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetVpnConnectionDeviceTypesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

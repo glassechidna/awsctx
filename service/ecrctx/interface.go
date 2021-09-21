@@ -20,6 +20,7 @@ type ECR interface {
 	DeleteRegistryPolicyWithContext(ctx context.Context, input *ecr.DeleteRegistryPolicyInput, opts ...request.Option) (*ecr.DeleteRegistryPolicyOutput, error)
 	DeleteRepositoryWithContext(ctx context.Context, input *ecr.DeleteRepositoryInput, opts ...request.Option) (*ecr.DeleteRepositoryOutput, error)
 	DeleteRepositoryPolicyWithContext(ctx context.Context, input *ecr.DeleteRepositoryPolicyInput, opts ...request.Option) (*ecr.DeleteRepositoryPolicyOutput, error)
+	DescribeImageReplicationStatusWithContext(ctx context.Context, input *ecr.DescribeImageReplicationStatusInput, opts ...request.Option) (*ecr.DescribeImageReplicationStatusOutput, error)
 	DescribeImageScanFindingsWithContext(ctx context.Context, input *ecr.DescribeImageScanFindingsInput, opts ...request.Option) (*ecr.DescribeImageScanFindingsOutput, error)
 	DescribeImageScanFindingsPagesWithContext(ctx context.Context, input *ecr.DescribeImageScanFindingsInput, cb func(*ecr.DescribeImageScanFindingsOutput, bool) bool, opts ...request.Option) error
 	DescribeImagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, opts ...request.Option) (*ecr.DescribeImagesOutput, error)
@@ -254,6 +255,27 @@ func (c *Client) DeleteRepositoryPolicyWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ecr.DeleteRepositoryPolicyOutput), req.Error
+}
+
+func (c *Client) DescribeImageReplicationStatusWithContext(ctx context.Context, input *ecr.DescribeImageReplicationStatusInput, opts ...request.Option) (*ecr.DescribeImageReplicationStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DescribeImageReplicationStatus",
+		Input:   input,
+		Output:  (*ecr.DescribeImageReplicationStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.DescribeImageReplicationStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.DescribeImageReplicationStatusOutput), req.Error
 }
 
 func (c *Client) DescribeImageScanFindingsWithContext(ctx context.Context, input *ecr.DescribeImageScanFindingsInput, opts ...request.Option) (*ecr.DescribeImageScanFindingsOutput, error) {

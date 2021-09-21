@@ -249,6 +249,7 @@ type IoT interface {
 	ListV2LoggingLevelsPagesWithContext(ctx context.Context, input *iot.ListV2LoggingLevelsInput, cb func(*iot.ListV2LoggingLevelsOutput, bool) bool, opts ...request.Option) error
 	ListViolationEventsWithContext(ctx context.Context, input *iot.ListViolationEventsInput, opts ...request.Option) (*iot.ListViolationEventsOutput, error)
 	ListViolationEventsPagesWithContext(ctx context.Context, input *iot.ListViolationEventsInput, cb func(*iot.ListViolationEventsOutput, bool) bool, opts ...request.Option) error
+	PutVerificationStateOnViolationWithContext(ctx context.Context, input *iot.PutVerificationStateOnViolationInput, opts ...request.Option) (*iot.PutVerificationStateOnViolationOutput, error)
 	RegisterCACertificateWithContext(ctx context.Context, input *iot.RegisterCACertificateInput, opts ...request.Option) (*iot.RegisterCACertificateOutput, error)
 	RegisterCertificateWithContext(ctx context.Context, input *iot.RegisterCertificateInput, opts ...request.Option) (*iot.RegisterCertificateOutput, error)
 	RegisterCertificateWithoutCAWithContext(ctx context.Context, input *iot.RegisterCertificateWithoutCAInput, opts ...request.Option) (*iot.RegisterCertificateWithoutCAOutput, error)
@@ -5257,6 +5258,27 @@ func (c *Client) ListViolationEventsPagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) PutVerificationStateOnViolationWithContext(ctx context.Context, input *iot.PutVerificationStateOnViolationInput, opts ...request.Option) (*iot.PutVerificationStateOnViolationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "PutVerificationStateOnViolation",
+		Input:   input,
+		Output:  (*iot.PutVerificationStateOnViolationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.PutVerificationStateOnViolationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.PutVerificationStateOnViolationOutput), req.Error
 }
 
 func (c *Client) RegisterCACertificateWithContext(ctx context.Context, input *iot.RegisterCACertificateInput, opts ...request.Option) (*iot.RegisterCACertificateOutput, error) {
