@@ -32,6 +32,7 @@ type WorkMail interface {
 	DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error)
 	DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error)
+	DescribeInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.DescribeInboundDmarcSettingsInput, opts ...request.Option) (*workmail.DescribeInboundDmarcSettingsOutput, error)
 	DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error)
 	DescribeOrganizationWithContext(ctx context.Context, input *workmail.DescribeOrganizationInput, opts ...request.Option) (*workmail.DescribeOrganizationOutput, error)
 	DescribeResourceWithContext(ctx context.Context, input *workmail.DescribeResourceInput, opts ...request.Option) (*workmail.DescribeResourceOutput, error)
@@ -67,6 +68,7 @@ type WorkMail interface {
 	ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error
 	PutAccessControlRuleWithContext(ctx context.Context, input *workmail.PutAccessControlRuleInput, opts ...request.Option) (*workmail.PutAccessControlRuleOutput, error)
+	PutInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.PutInboundDmarcSettingsInput, opts ...request.Option) (*workmail.PutInboundDmarcSettingsOutput, error)
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
 	PutMobileDeviceAccessOverrideWithContext(ctx context.Context, input *workmail.PutMobileDeviceAccessOverrideInput, opts ...request.Option) (*workmail.PutMobileDeviceAccessOverrideOutput, error)
 	PutRetentionPolicyWithContext(ctx context.Context, input *workmail.PutRetentionPolicyInput, opts ...request.Option) (*workmail.PutRetentionPolicyOutput, error)
@@ -535,6 +537,27 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.D
 	})
 
 	return req.Output.(*workmail.DescribeGroupOutput), req.Error
+}
+
+func (c *Client) DescribeInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.DescribeInboundDmarcSettingsInput, opts ...request.Option) (*workmail.DescribeInboundDmarcSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DescribeInboundDmarcSettings",
+		Input:   input,
+		Output:  (*workmail.DescribeInboundDmarcSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DescribeInboundDmarcSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DescribeInboundDmarcSettingsOutput), req.Error
 }
 
 func (c *Client) DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error) {
@@ -1260,6 +1283,27 @@ func (c *Client) PutAccessControlRuleWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workmail.PutAccessControlRuleOutput), req.Error
+}
+
+func (c *Client) PutInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.PutInboundDmarcSettingsInput, opts ...request.Option) (*workmail.PutInboundDmarcSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "PutInboundDmarcSettings",
+		Input:   input,
+		Output:  (*workmail.PutInboundDmarcSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.PutInboundDmarcSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.PutInboundDmarcSettingsOutput), req.Error
 }
 
 func (c *Client) PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error) {

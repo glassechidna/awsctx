@@ -46,6 +46,7 @@ type EC2 interface {
 	BundleInstanceWithContext(ctx context.Context, input *ec2.BundleInstanceInput, opts ...request.Option) (*ec2.BundleInstanceOutput, error)
 	CancelBundleTaskWithContext(ctx context.Context, input *ec2.CancelBundleTaskInput, opts ...request.Option) (*ec2.CancelBundleTaskOutput, error)
 	CancelCapacityReservationWithContext(ctx context.Context, input *ec2.CancelCapacityReservationInput, opts ...request.Option) (*ec2.CancelCapacityReservationOutput, error)
+	CancelCapacityReservationFleetsWithContext(ctx context.Context, input *ec2.CancelCapacityReservationFleetsInput, opts ...request.Option) (*ec2.CancelCapacityReservationFleetsOutput, error)
 	CancelConversionTaskWithContext(ctx context.Context, input *ec2.CancelConversionTaskInput, opts ...request.Option) (*ec2.CancelConversionTaskOutput, error)
 	CancelExportTaskWithContext(ctx context.Context, input *ec2.CancelExportTaskInput, opts ...request.Option) (*ec2.CancelExportTaskOutput, error)
 	CancelImportTaskWithContext(ctx context.Context, input *ec2.CancelImportTaskInput, opts ...request.Option) (*ec2.CancelImportTaskOutput, error)
@@ -57,6 +58,7 @@ type EC2 interface {
 	CopyImageWithContext(ctx context.Context, input *ec2.CopyImageInput, opts ...request.Option) (*ec2.CopyImageOutput, error)
 	CopySnapshotWithContext(ctx context.Context, input *ec2.CopySnapshotInput, opts ...request.Option) (*ec2.CopySnapshotOutput, error)
 	CreateCapacityReservationWithContext(ctx context.Context, input *ec2.CreateCapacityReservationInput, opts ...request.Option) (*ec2.CreateCapacityReservationOutput, error)
+	CreateCapacityReservationFleetWithContext(ctx context.Context, input *ec2.CreateCapacityReservationFleetInput, opts ...request.Option) (*ec2.CreateCapacityReservationFleetOutput, error)
 	CreateCarrierGatewayWithContext(ctx context.Context, input *ec2.CreateCarrierGatewayInput, opts ...request.Option) (*ec2.CreateCarrierGatewayOutput, error)
 	CreateClientVpnEndpointWithContext(ctx context.Context, input *ec2.CreateClientVpnEndpointInput, opts ...request.Option) (*ec2.CreateClientVpnEndpointOutput, error)
 	CreateClientVpnRouteWithContext(ctx context.Context, input *ec2.CreateClientVpnRouteInput, opts ...request.Option) (*ec2.CreateClientVpnRouteOutput, error)
@@ -190,6 +192,8 @@ type EC2 interface {
 	DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error)
 	DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, opts ...request.Option) (*ec2.DescribeByoipCidrsOutput, error)
 	DescribeByoipCidrsPagesWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, cb func(*ec2.DescribeByoipCidrsOutput, bool) bool, opts ...request.Option) error
+	DescribeCapacityReservationFleetsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationFleetsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationFleetsOutput, error)
+	DescribeCapacityReservationFleetsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationFleetsInput, cb func(*ec2.DescribeCapacityReservationFleetsOutput, bool) bool, opts ...request.Option) error
 	DescribeCapacityReservationsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationsOutput, error)
 	DescribeCapacityReservationsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, cb func(*ec2.DescribeCapacityReservationsOutput, bool) bool, opts ...request.Option) error
 	DescribeCarrierGatewaysWithContext(ctx context.Context, input *ec2.DescribeCarrierGatewaysInput, opts ...request.Option) (*ec2.DescribeCarrierGatewaysOutput, error)
@@ -478,6 +482,7 @@ type EC2 interface {
 	ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error)
 	ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error)
 	ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error)
+	ModifyCapacityReservationFleetWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationFleetInput, opts ...request.Option) (*ec2.ModifyCapacityReservationFleetOutput, error)
 	ModifyClientVpnEndpointWithContext(ctx context.Context, input *ec2.ModifyClientVpnEndpointInput, opts ...request.Option) (*ec2.ModifyClientVpnEndpointOutput, error)
 	ModifyDefaultCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyDefaultCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyDefaultCreditSpecificationOutput, error)
 	ModifyEbsDefaultKmsKeyIdWithContext(ctx context.Context, input *ec2.ModifyEbsDefaultKmsKeyIdInput, opts ...request.Option) (*ec2.ModifyEbsDefaultKmsKeyIdOutput, error)
@@ -1332,6 +1337,27 @@ func (c *Client) CancelCapacityReservationWithContext(ctx context.Context, input
 	return req.Output.(*ec2.CancelCapacityReservationOutput), req.Error
 }
 
+func (c *Client) CancelCapacityReservationFleetsWithContext(ctx context.Context, input *ec2.CancelCapacityReservationFleetsInput, opts ...request.Option) (*ec2.CancelCapacityReservationFleetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CancelCapacityReservationFleets",
+		Input:   input,
+		Output:  (*ec2.CancelCapacityReservationFleetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CancelCapacityReservationFleetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CancelCapacityReservationFleetsOutput), req.Error
+}
+
 func (c *Client) CancelConversionTaskWithContext(ctx context.Context, input *ec2.CancelConversionTaskInput, opts ...request.Option) (*ec2.CancelConversionTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -1561,6 +1587,27 @@ func (c *Client) CreateCapacityReservationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.CreateCapacityReservationOutput), req.Error
+}
+
+func (c *Client) CreateCapacityReservationFleetWithContext(ctx context.Context, input *ec2.CreateCapacityReservationFleetInput, opts ...request.Option) (*ec2.CreateCapacityReservationFleetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateCapacityReservationFleet",
+		Input:   input,
+		Output:  (*ec2.CreateCapacityReservationFleetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateCapacityReservationFleetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateCapacityReservationFleetOutput), req.Error
 }
 
 func (c *Client) CreateCarrierGatewayWithContext(ctx context.Context, input *ec2.CreateCarrierGatewayInput, opts ...request.Option) (*ec2.CreateCarrierGatewayOutput, error) {
@@ -4349,6 +4396,47 @@ func (c *Client) DescribeByoipCidrsPagesWithContext(ctx context.Context, input *
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeByoipCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeCapacityReservationFleetsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationFleetsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationFleetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCapacityReservationFleets",
+		Input:   input,
+		Output:  (*ec2.DescribeCapacityReservationFleetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeCapacityReservationFleetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeCapacityReservationFleetsOutput), req.Error
+}
+
+func (c *Client) DescribeCapacityReservationFleetsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationFleetsInput, cb func(*ec2.DescribeCapacityReservationFleetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCapacityReservationFleets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeCapacityReservationFleetsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -10302,6 +10390,27 @@ func (c *Client) ModifyCapacityReservationWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.ModifyCapacityReservationOutput), req.Error
+}
+
+func (c *Client) ModifyCapacityReservationFleetWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationFleetInput, opts ...request.Option) (*ec2.ModifyCapacityReservationFleetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyCapacityReservationFleet",
+		Input:   input,
+		Output:  (*ec2.ModifyCapacityReservationFleetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyCapacityReservationFleetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyCapacityReservationFleetOutput), req.Error
 }
 
 func (c *Client) ModifyClientVpnEndpointWithContext(ctx context.Context, input *ec2.ModifyClientVpnEndpointInput, opts ...request.Option) (*ec2.ModifyClientVpnEndpointOutput, error) {
