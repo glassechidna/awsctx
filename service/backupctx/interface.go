@@ -20,6 +20,7 @@ type Backup interface {
 	DeleteBackupSelectionWithContext(ctx context.Context, input *backup.DeleteBackupSelectionInput, opts ...request.Option) (*backup.DeleteBackupSelectionOutput, error)
 	DeleteBackupVaultWithContext(ctx context.Context, input *backup.DeleteBackupVaultInput, opts ...request.Option) (*backup.DeleteBackupVaultOutput, error)
 	DeleteBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.DeleteBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.DeleteBackupVaultAccessPolicyOutput, error)
+	DeleteBackupVaultLockConfigurationWithContext(ctx context.Context, input *backup.DeleteBackupVaultLockConfigurationInput, opts ...request.Option) (*backup.DeleteBackupVaultLockConfigurationOutput, error)
 	DeleteBackupVaultNotificationsWithContext(ctx context.Context, input *backup.DeleteBackupVaultNotificationsInput, opts ...request.Option) (*backup.DeleteBackupVaultNotificationsOutput, error)
 	DeleteFrameworkWithContext(ctx context.Context, input *backup.DeleteFrameworkInput, opts ...request.Option) (*backup.DeleteFrameworkOutput, error)
 	DeleteRecoveryPointWithContext(ctx context.Context, input *backup.DeleteRecoveryPointInput, opts ...request.Option) (*backup.DeleteRecoveryPointOutput, error)
@@ -76,6 +77,7 @@ type Backup interface {
 	ListTagsWithContext(ctx context.Context, input *backup.ListTagsInput, opts ...request.Option) (*backup.ListTagsOutput, error)
 	ListTagsPagesWithContext(ctx context.Context, input *backup.ListTagsInput, cb func(*backup.ListTagsOutput, bool) bool, opts ...request.Option) error
 	PutBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.PutBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.PutBackupVaultAccessPolicyOutput, error)
+	PutBackupVaultLockConfigurationWithContext(ctx context.Context, input *backup.PutBackupVaultLockConfigurationInput, opts ...request.Option) (*backup.PutBackupVaultLockConfigurationOutput, error)
 	PutBackupVaultNotificationsWithContext(ctx context.Context, input *backup.PutBackupVaultNotificationsInput, opts ...request.Option) (*backup.PutBackupVaultNotificationsOutput, error)
 	StartBackupJobWithContext(ctx context.Context, input *backup.StartBackupJobInput, opts ...request.Option) (*backup.StartBackupJobOutput, error)
 	StartCopyJobWithContext(ctx context.Context, input *backup.StartCopyJobInput, opts ...request.Option) (*backup.StartCopyJobOutput, error)
@@ -294,6 +296,27 @@ func (c *Client) DeleteBackupVaultAccessPolicyWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*backup.DeleteBackupVaultAccessPolicyOutput), req.Error
+}
+
+func (c *Client) DeleteBackupVaultLockConfigurationWithContext(ctx context.Context, input *backup.DeleteBackupVaultLockConfigurationInput, opts ...request.Option) (*backup.DeleteBackupVaultLockConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "DeleteBackupVaultLockConfiguration",
+		Input:   input,
+		Output:  (*backup.DeleteBackupVaultLockConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.DeleteBackupVaultLockConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.DeleteBackupVaultLockConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteBackupVaultNotificationsWithContext(ctx context.Context, input *backup.DeleteBackupVaultNotificationsInput, opts ...request.Option) (*backup.DeleteBackupVaultNotificationsOutput, error) {
@@ -1455,6 +1478,27 @@ func (c *Client) PutBackupVaultAccessPolicyWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*backup.PutBackupVaultAccessPolicyOutput), req.Error
+}
+
+func (c *Client) PutBackupVaultLockConfigurationWithContext(ctx context.Context, input *backup.PutBackupVaultLockConfigurationInput, opts ...request.Option) (*backup.PutBackupVaultLockConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "PutBackupVaultLockConfiguration",
+		Input:   input,
+		Output:  (*backup.PutBackupVaultLockConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.PutBackupVaultLockConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.PutBackupVaultLockConfigurationOutput), req.Error
 }
 
 func (c *Client) PutBackupVaultNotificationsWithContext(ctx context.Context, input *backup.PutBackupVaultNotificationsInput, opts ...request.Option) (*backup.PutBackupVaultNotificationsOutput, error) {
