@@ -18,6 +18,7 @@ type MediaConvert interface {
 	CreatePresetWithContext(ctx context.Context, input *mediaconvert.CreatePresetInput, opts ...request.Option) (*mediaconvert.CreatePresetOutput, error)
 	CreateQueueWithContext(ctx context.Context, input *mediaconvert.CreateQueueInput, opts ...request.Option) (*mediaconvert.CreateQueueOutput, error)
 	DeleteJobTemplateWithContext(ctx context.Context, input *mediaconvert.DeleteJobTemplateInput, opts ...request.Option) (*mediaconvert.DeleteJobTemplateOutput, error)
+	DeletePolicyWithContext(ctx context.Context, input *mediaconvert.DeletePolicyInput, opts ...request.Option) (*mediaconvert.DeletePolicyOutput, error)
 	DeletePresetWithContext(ctx context.Context, input *mediaconvert.DeletePresetInput, opts ...request.Option) (*mediaconvert.DeletePresetOutput, error)
 	DeleteQueueWithContext(ctx context.Context, input *mediaconvert.DeleteQueueInput, opts ...request.Option) (*mediaconvert.DeleteQueueOutput, error)
 	DescribeEndpointsWithContext(ctx context.Context, input *mediaconvert.DescribeEndpointsInput, opts ...request.Option) (*mediaconvert.DescribeEndpointsOutput, error)
@@ -25,6 +26,7 @@ type MediaConvert interface {
 	DisassociateCertificateWithContext(ctx context.Context, input *mediaconvert.DisassociateCertificateInput, opts ...request.Option) (*mediaconvert.DisassociateCertificateOutput, error)
 	GetJobWithContext(ctx context.Context, input *mediaconvert.GetJobInput, opts ...request.Option) (*mediaconvert.GetJobOutput, error)
 	GetJobTemplateWithContext(ctx context.Context, input *mediaconvert.GetJobTemplateInput, opts ...request.Option) (*mediaconvert.GetJobTemplateOutput, error)
+	GetPolicyWithContext(ctx context.Context, input *mediaconvert.GetPolicyInput, opts ...request.Option) (*mediaconvert.GetPolicyOutput, error)
 	GetPresetWithContext(ctx context.Context, input *mediaconvert.GetPresetInput, opts ...request.Option) (*mediaconvert.GetPresetOutput, error)
 	GetQueueWithContext(ctx context.Context, input *mediaconvert.GetQueueInput, opts ...request.Option) (*mediaconvert.GetQueueOutput, error)
 	ListJobTemplatesWithContext(ctx context.Context, input *mediaconvert.ListJobTemplatesInput, opts ...request.Option) (*mediaconvert.ListJobTemplatesOutput, error)
@@ -36,6 +38,7 @@ type MediaConvert interface {
 	ListQueuesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, opts ...request.Option) (*mediaconvert.ListQueuesOutput, error)
 	ListQueuesPagesWithContext(ctx context.Context, input *mediaconvert.ListQueuesInput, cb func(*mediaconvert.ListQueuesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconvert.ListTagsForResourceInput, opts ...request.Option) (*mediaconvert.ListTagsForResourceOutput, error)
+	PutPolicyWithContext(ctx context.Context, input *mediaconvert.PutPolicyInput, opts ...request.Option) (*mediaconvert.PutPolicyOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediaconvert.TagResourceInput, opts ...request.Option) (*mediaconvert.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *mediaconvert.UntagResourceInput, opts ...request.Option) (*mediaconvert.UntagResourceOutput, error)
 	UpdateJobTemplateWithContext(ctx context.Context, input *mediaconvert.UpdateJobTemplateInput, opts ...request.Option) (*mediaconvert.UpdateJobTemplateOutput, error)
@@ -205,6 +208,27 @@ func (c *Client) DeleteJobTemplateWithContext(ctx context.Context, input *mediac
 	return req.Output.(*mediaconvert.DeleteJobTemplateOutput), req.Error
 }
 
+func (c *Client) DeletePolicyWithContext(ctx context.Context, input *mediaconvert.DeletePolicyInput, opts ...request.Option) (*mediaconvert.DeletePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "DeletePolicy",
+		Input:   input,
+		Output:  (*mediaconvert.DeletePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConvertAPI.DeletePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconvert.DeletePolicyOutput), req.Error
+}
+
 func (c *Client) DeletePresetWithContext(ctx context.Context, input *mediaconvert.DeletePresetInput, opts ...request.Option) (*mediaconvert.DeletePresetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconvert",
@@ -349,6 +373,27 @@ func (c *Client) GetJobTemplateWithContext(ctx context.Context, input *mediaconv
 	})
 
 	return req.Output.(*mediaconvert.GetJobTemplateOutput), req.Error
+}
+
+func (c *Client) GetPolicyWithContext(ctx context.Context, input *mediaconvert.GetPolicyInput, opts ...request.Option) (*mediaconvert.GetPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "GetPolicy",
+		Input:   input,
+		Output:  (*mediaconvert.GetPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConvertAPI.GetPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconvert.GetPolicyOutput), req.Error
 }
 
 func (c *Client) GetPresetWithContext(ctx context.Context, input *mediaconvert.GetPresetInput, opts ...request.Option) (*mediaconvert.GetPresetOutput, error) {
@@ -576,6 +621,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*mediaconvert.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) PutPolicyWithContext(ctx context.Context, input *mediaconvert.PutPolicyInput, opts ...request.Option) (*mediaconvert.PutPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconvert",
+		Action:  "PutPolicy",
+		Input:   input,
+		Output:  (*mediaconvert.PutPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConvertAPI.PutPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconvert.PutPolicyOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *mediaconvert.TagResourceInput, opts ...request.Option) (*mediaconvert.TagResourceOutput, error) {
