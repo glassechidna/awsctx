@@ -17,6 +17,7 @@ type MediaLive interface {
 	BatchStopWithContext(ctx context.Context, input *medialive.BatchStopInput, opts ...request.Option) (*medialive.BatchStopOutput, error)
 	BatchUpdateScheduleWithContext(ctx context.Context, input *medialive.BatchUpdateScheduleInput, opts ...request.Option) (*medialive.BatchUpdateScheduleOutput, error)
 	CancelInputDeviceTransferWithContext(ctx context.Context, input *medialive.CancelInputDeviceTransferInput, opts ...request.Option) (*medialive.CancelInputDeviceTransferOutput, error)
+	ClaimDeviceWithContext(ctx context.Context, input *medialive.ClaimDeviceInput, opts ...request.Option) (*medialive.ClaimDeviceOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error)
 	CreateInputWithContext(ctx context.Context, input *medialive.CreateInputInput, opts ...request.Option) (*medialive.CreateInputOutput, error)
 	CreateInputSecurityGroupWithContext(ctx context.Context, input *medialive.CreateInputSecurityGroupInput, opts ...request.Option) (*medialive.CreateInputSecurityGroupOutput, error)
@@ -218,6 +219,27 @@ func (c *Client) CancelInputDeviceTransferWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*medialive.CancelInputDeviceTransferOutput), req.Error
+}
+
+func (c *Client) ClaimDeviceWithContext(ctx context.Context, input *medialive.ClaimDeviceInput, opts ...request.Option) (*medialive.ClaimDeviceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "ClaimDevice",
+		Input:   input,
+		Output:  (*medialive.ClaimDeviceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.ClaimDeviceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.ClaimDeviceOutput), req.Error
 }
 
 func (c *Client) CreateChannelWithContext(ctx context.Context, input *medialive.CreateChannelInput, opts ...request.Option) (*medialive.CreateChannelOutput, error) {
