@@ -13,12 +13,14 @@ import (
 type MediaTailor interface {
 	ConfigureLogsForPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.ConfigureLogsForPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.ConfigureLogsForPlaybackConfigurationOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *mediatailor.CreateChannelInput, opts ...request.Option) (*mediatailor.CreateChannelOutput, error)
+	CreatePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.CreatePrefetchScheduleInput, opts ...request.Option) (*mediatailor.CreatePrefetchScheduleOutput, error)
 	CreateProgramWithContext(ctx context.Context, input *mediatailor.CreateProgramInput, opts ...request.Option) (*mediatailor.CreateProgramOutput, error)
 	CreateSourceLocationWithContext(ctx context.Context, input *mediatailor.CreateSourceLocationInput, opts ...request.Option) (*mediatailor.CreateSourceLocationOutput, error)
 	CreateVodSourceWithContext(ctx context.Context, input *mediatailor.CreateVodSourceInput, opts ...request.Option) (*mediatailor.CreateVodSourceOutput, error)
 	DeleteChannelWithContext(ctx context.Context, input *mediatailor.DeleteChannelInput, opts ...request.Option) (*mediatailor.DeleteChannelOutput, error)
 	DeleteChannelPolicyWithContext(ctx context.Context, input *mediatailor.DeleteChannelPolicyInput, opts ...request.Option) (*mediatailor.DeleteChannelPolicyOutput, error)
 	DeletePlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.DeletePlaybackConfigurationInput, opts ...request.Option) (*mediatailor.DeletePlaybackConfigurationOutput, error)
+	DeletePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.DeletePrefetchScheduleInput, opts ...request.Option) (*mediatailor.DeletePrefetchScheduleOutput, error)
 	DeleteProgramWithContext(ctx context.Context, input *mediatailor.DeleteProgramInput, opts ...request.Option) (*mediatailor.DeleteProgramOutput, error)
 	DeleteSourceLocationWithContext(ctx context.Context, input *mediatailor.DeleteSourceLocationInput, opts ...request.Option) (*mediatailor.DeleteSourceLocationOutput, error)
 	DeleteVodSourceWithContext(ctx context.Context, input *mediatailor.DeleteVodSourceInput, opts ...request.Option) (*mediatailor.DeleteVodSourceOutput, error)
@@ -30,12 +32,15 @@ type MediaTailor interface {
 	GetChannelScheduleWithContext(ctx context.Context, input *mediatailor.GetChannelScheduleInput, opts ...request.Option) (*mediatailor.GetChannelScheduleOutput, error)
 	GetChannelSchedulePagesWithContext(ctx context.Context, input *mediatailor.GetChannelScheduleInput, cb func(*mediatailor.GetChannelScheduleOutput, bool) bool, opts ...request.Option) error
 	GetPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.GetPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.GetPlaybackConfigurationOutput, error)
+	GetPrefetchScheduleWithContext(ctx context.Context, input *mediatailor.GetPrefetchScheduleInput, opts ...request.Option) (*mediatailor.GetPrefetchScheduleOutput, error)
 	ListAlertsWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, opts ...request.Option) (*mediatailor.ListAlertsOutput, error)
 	ListAlertsPagesWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, cb func(*mediatailor.ListAlertsOutput, bool) bool, opts ...request.Option) error
 	ListChannelsWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, opts ...request.Option) (*mediatailor.ListChannelsOutput, error)
 	ListChannelsPagesWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, cb func(*mediatailor.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListPlaybackConfigurationsWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, opts ...request.Option) (*mediatailor.ListPlaybackConfigurationsOutput, error)
 	ListPlaybackConfigurationsPagesWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, cb func(*mediatailor.ListPlaybackConfigurationsOutput, bool) bool, opts ...request.Option) error
+	ListPrefetchSchedulesWithContext(ctx context.Context, input *mediatailor.ListPrefetchSchedulesInput, opts ...request.Option) (*mediatailor.ListPrefetchSchedulesOutput, error)
+	ListPrefetchSchedulesPagesWithContext(ctx context.Context, input *mediatailor.ListPrefetchSchedulesInput, cb func(*mediatailor.ListPrefetchSchedulesOutput, bool) bool, opts ...request.Option) error
 	ListSourceLocationsWithContext(ctx context.Context, input *mediatailor.ListSourceLocationsInput, opts ...request.Option) (*mediatailor.ListSourceLocationsOutput, error)
 	ListSourceLocationsPagesWithContext(ctx context.Context, input *mediatailor.ListSourceLocationsInput, cb func(*mediatailor.ListSourceLocationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediatailor.ListTagsForResourceInput, opts ...request.Option) (*mediatailor.ListTagsForResourceOutput, error)
@@ -107,6 +112,27 @@ func (c *Client) CreateChannelWithContext(ctx context.Context, input *mediatailo
 	})
 
 	return req.Output.(*mediatailor.CreateChannelOutput), req.Error
+}
+
+func (c *Client) CreatePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.CreatePrefetchScheduleInput, opts ...request.Option) (*mediatailor.CreatePrefetchScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "CreatePrefetchSchedule",
+		Input:   input,
+		Output:  (*mediatailor.CreatePrefetchScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.CreatePrefetchScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.CreatePrefetchScheduleOutput), req.Error
 }
 
 func (c *Client) CreateProgramWithContext(ctx context.Context, input *mediatailor.CreateProgramInput, opts ...request.Option) (*mediatailor.CreateProgramOutput, error) {
@@ -233,6 +259,27 @@ func (c *Client) DeletePlaybackConfigurationWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*mediatailor.DeletePlaybackConfigurationOutput), req.Error
+}
+
+func (c *Client) DeletePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.DeletePrefetchScheduleInput, opts ...request.Option) (*mediatailor.DeletePrefetchScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "DeletePrefetchSchedule",
+		Input:   input,
+		Output:  (*mediatailor.DeletePrefetchScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.DeletePrefetchScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.DeletePrefetchScheduleOutput), req.Error
 }
 
 func (c *Client) DeleteProgramWithContext(ctx context.Context, input *mediatailor.DeleteProgramInput, opts ...request.Option) (*mediatailor.DeleteProgramOutput, error) {
@@ -465,6 +512,27 @@ func (c *Client) GetPlaybackConfigurationWithContext(ctx context.Context, input 
 	return req.Output.(*mediatailor.GetPlaybackConfigurationOutput), req.Error
 }
 
+func (c *Client) GetPrefetchScheduleWithContext(ctx context.Context, input *mediatailor.GetPrefetchScheduleInput, opts ...request.Option) (*mediatailor.GetPrefetchScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "GetPrefetchSchedule",
+		Input:   input,
+		Output:  (*mediatailor.GetPrefetchScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.GetPrefetchScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.GetPrefetchScheduleOutput), req.Error
+}
+
 func (c *Client) ListAlertsWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, opts ...request.Option) (*mediatailor.ListAlertsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
@@ -583,6 +651,47 @@ func (c *Client) ListPlaybackConfigurationsPagesWithContext(ctx context.Context,
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.MediaTailorAPI.ListPlaybackConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPrefetchSchedulesWithContext(ctx context.Context, input *mediatailor.ListPrefetchSchedulesInput, opts ...request.Option) (*mediatailor.ListPrefetchSchedulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListPrefetchSchedules",
+		Input:   input,
+		Output:  (*mediatailor.ListPrefetchSchedulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.ListPrefetchSchedulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.ListPrefetchSchedulesOutput), req.Error
+}
+
+func (c *Client) ListPrefetchSchedulesPagesWithContext(ctx context.Context, input *mediatailor.ListPrefetchSchedulesInput, cb func(*mediatailor.ListPrefetchSchedulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListPrefetchSchedules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaTailorAPI.ListPrefetchSchedulesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
