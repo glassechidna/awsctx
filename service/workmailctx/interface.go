@@ -31,6 +31,7 @@ type WorkMail interface {
 	DeleteRetentionPolicyWithContext(ctx context.Context, input *workmail.DeleteRetentionPolicyInput, opts ...request.Option) (*workmail.DeleteRetentionPolicyOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error)
 	DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error)
+	DeregisterMailDomainWithContext(ctx context.Context, input *workmail.DeregisterMailDomainInput, opts ...request.Option) (*workmail.DeregisterMailDomainOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error)
 	DescribeInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.DescribeInboundDmarcSettingsInput, opts ...request.Option) (*workmail.DescribeInboundDmarcSettingsOutput, error)
 	DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error)
@@ -41,6 +42,7 @@ type WorkMail interface {
 	DisassociateMemberFromGroupWithContext(ctx context.Context, input *workmail.DisassociateMemberFromGroupInput, opts ...request.Option) (*workmail.DisassociateMemberFromGroupOutput, error)
 	GetAccessControlEffectWithContext(ctx context.Context, input *workmail.GetAccessControlEffectInput, opts ...request.Option) (*workmail.GetAccessControlEffectOutput, error)
 	GetDefaultRetentionPolicyWithContext(ctx context.Context, input *workmail.GetDefaultRetentionPolicyInput, opts ...request.Option) (*workmail.GetDefaultRetentionPolicyOutput, error)
+	GetMailDomainWithContext(ctx context.Context, input *workmail.GetMailDomainInput, opts ...request.Option) (*workmail.GetMailDomainOutput, error)
 	GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error)
 	GetMobileDeviceAccessEffectWithContext(ctx context.Context, input *workmail.GetMobileDeviceAccessEffectInput, opts ...request.Option) (*workmail.GetMobileDeviceAccessEffectOutput, error)
 	GetMobileDeviceAccessOverrideWithContext(ctx context.Context, input *workmail.GetMobileDeviceAccessOverrideInput, opts ...request.Option) (*workmail.GetMobileDeviceAccessOverrideOutput, error)
@@ -51,6 +53,8 @@ type WorkMail interface {
 	ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error)
 	ListGroupsPagesWithContext(ctx context.Context, input *workmail.ListGroupsInput, cb func(*workmail.ListGroupsOutput, bool) bool, opts ...request.Option) error
+	ListMailDomainsWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, opts ...request.Option) (*workmail.ListMailDomainsOutput, error)
+	ListMailDomainsPagesWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, cb func(*workmail.ListMailDomainsOutput, bool) bool, opts ...request.Option) error
 	ListMailboxExportJobsWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, opts ...request.Option) (*workmail.ListMailboxExportJobsOutput, error)
 	ListMailboxExportJobsPagesWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, cb func(*workmail.ListMailboxExportJobsOutput, bool) bool, opts ...request.Option) error
 	ListMailboxPermissionsWithContext(ctx context.Context, input *workmail.ListMailboxPermissionsInput, opts ...request.Option) (*workmail.ListMailboxPermissionsOutput, error)
@@ -72,11 +76,13 @@ type WorkMail interface {
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
 	PutMobileDeviceAccessOverrideWithContext(ctx context.Context, input *workmail.PutMobileDeviceAccessOverrideInput, opts ...request.Option) (*workmail.PutMobileDeviceAccessOverrideOutput, error)
 	PutRetentionPolicyWithContext(ctx context.Context, input *workmail.PutRetentionPolicyInput, opts ...request.Option) (*workmail.PutRetentionPolicyOutput, error)
+	RegisterMailDomainWithContext(ctx context.Context, input *workmail.RegisterMailDomainInput, opts ...request.Option) (*workmail.RegisterMailDomainOutput, error)
 	RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error)
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
 	StartMailboxExportJobWithContext(ctx context.Context, input *workmail.StartMailboxExportJobInput, opts ...request.Option) (*workmail.StartMailboxExportJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
+	UpdateDefaultMailDomainWithContext(ctx context.Context, input *workmail.UpdateDefaultMailDomainInput, opts ...request.Option) (*workmail.UpdateDefaultMailDomainOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
 	UpdateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.UpdateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.UpdateMobileDeviceAccessRuleOutput, error)
 	UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error)
@@ -518,6 +524,27 @@ func (c *Client) DeregisterFromWorkMailWithContext(ctx context.Context, input *w
 	return req.Output.(*workmail.DeregisterFromWorkMailOutput), req.Error
 }
 
+func (c *Client) DeregisterMailDomainWithContext(ctx context.Context, input *workmail.DeregisterMailDomainInput, opts ...request.Option) (*workmail.DeregisterMailDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeregisterMailDomain",
+		Input:   input,
+		Output:  (*workmail.DeregisterMailDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeregisterMailDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeregisterMailDomainOutput), req.Error
+}
+
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -728,6 +755,27 @@ func (c *Client) GetDefaultRetentionPolicyWithContext(ctx context.Context, input
 	return req.Output.(*workmail.GetDefaultRetentionPolicyOutput), req.Error
 }
 
+func (c *Client) GetMailDomainWithContext(ctx context.Context, input *workmail.GetMailDomainInput, opts ...request.Option) (*workmail.GetMailDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "GetMailDomain",
+		Input:   input,
+		Output:  (*workmail.GetMailDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.GetMailDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.GetMailDomainOutput), req.Error
+}
+
 func (c *Client) GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -930,6 +978,47 @@ func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *workmail
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.WorkMailAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMailDomainsWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, opts ...request.Option) (*workmail.ListMailDomainsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListMailDomains",
+		Input:   input,
+		Output:  (*workmail.ListMailDomainsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListMailDomainsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListMailDomainsOutput), req.Error
+}
+
+func (c *Client) ListMailDomainsPagesWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, cb func(*workmail.ListMailDomainsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListMailDomains",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListMailDomainsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1369,6 +1458,27 @@ func (c *Client) PutRetentionPolicyWithContext(ctx context.Context, input *workm
 	return req.Output.(*workmail.PutRetentionPolicyOutput), req.Error
 }
 
+func (c *Client) RegisterMailDomainWithContext(ctx context.Context, input *workmail.RegisterMailDomainInput, opts ...request.Option) (*workmail.RegisterMailDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "RegisterMailDomain",
+		Input:   input,
+		Output:  (*workmail.RegisterMailDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.RegisterMailDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.RegisterMailDomainOutput), req.Error
+}
+
 func (c *Client) RegisterToWorkMailWithContext(ctx context.Context, input *workmail.RegisterToWorkMailInput, opts ...request.Option) (*workmail.RegisterToWorkMailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -1472,6 +1582,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *workmail.U
 	})
 
 	return req.Output.(*workmail.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateDefaultMailDomainWithContext(ctx context.Context, input *workmail.UpdateDefaultMailDomainInput, opts ...request.Option) (*workmail.UpdateDefaultMailDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UpdateDefaultMailDomain",
+		Input:   input,
+		Output:  (*workmail.UpdateDefaultMailDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UpdateDefaultMailDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UpdateDefaultMailDomainOutput), req.Error
 }
 
 func (c *Client) UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error) {

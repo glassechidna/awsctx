@@ -108,6 +108,7 @@ type StorageGateway interface {
 	UpdateNFSFileShareWithContext(ctx context.Context, input *storagegateway.UpdateNFSFileShareInput, opts ...request.Option) (*storagegateway.UpdateNFSFileShareOutput, error)
 	UpdateSMBFileShareWithContext(ctx context.Context, input *storagegateway.UpdateSMBFileShareInput, opts ...request.Option) (*storagegateway.UpdateSMBFileShareOutput, error)
 	UpdateSMBFileShareVisibilityWithContext(ctx context.Context, input *storagegateway.UpdateSMBFileShareVisibilityInput, opts ...request.Option) (*storagegateway.UpdateSMBFileShareVisibilityOutput, error)
+	UpdateSMBLocalGroupsWithContext(ctx context.Context, input *storagegateway.UpdateSMBLocalGroupsInput, opts ...request.Option) (*storagegateway.UpdateSMBLocalGroupsOutput, error)
 	UpdateSMBSecurityStrategyWithContext(ctx context.Context, input *storagegateway.UpdateSMBSecurityStrategyInput, opts ...request.Option) (*storagegateway.UpdateSMBSecurityStrategyOutput, error)
 	UpdateSnapshotScheduleWithContext(ctx context.Context, input *storagegateway.UpdateSnapshotScheduleInput, opts ...request.Option) (*storagegateway.UpdateSnapshotScheduleOutput, error)
 	UpdateVTLDeviceTypeWithContext(ctx context.Context, input *storagegateway.UpdateVTLDeviceTypeInput, opts ...request.Option) (*storagegateway.UpdateVTLDeviceTypeOutput, error)
@@ -2152,6 +2153,27 @@ func (c *Client) UpdateSMBFileShareVisibilityWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*storagegateway.UpdateSMBFileShareVisibilityOutput), req.Error
+}
+
+func (c *Client) UpdateSMBLocalGroupsWithContext(ctx context.Context, input *storagegateway.UpdateSMBLocalGroupsInput, opts ...request.Option) (*storagegateway.UpdateSMBLocalGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "storagegateway",
+		Action:  "UpdateSMBLocalGroups",
+		Input:   input,
+		Output:  (*storagegateway.UpdateSMBLocalGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.StorageGatewayAPI.UpdateSMBLocalGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*storagegateway.UpdateSMBLocalGroupsOutput), req.Error
 }
 
 func (c *Client) UpdateSMBSecurityStrategyWithContext(ctx context.Context, input *storagegateway.UpdateSMBSecurityStrategyInput, opts ...request.Option) (*storagegateway.UpdateSMBSecurityStrategyOutput, error) {
