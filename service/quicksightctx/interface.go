@@ -61,6 +61,7 @@ type QuickSight interface {
 	DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error)
 	DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error)
 	DescribeIngestionWithContext(ctx context.Context, input *quicksight.DescribeIngestionInput, opts ...request.Option) (*quicksight.DescribeIngestionOutput, error)
+	DescribeIpRestrictionWithContext(ctx context.Context, input *quicksight.DescribeIpRestrictionInput, opts ...request.Option) (*quicksight.DescribeIpRestrictionOutput, error)
 	DescribeNamespaceWithContext(ctx context.Context, input *quicksight.DescribeNamespaceInput, opts ...request.Option) (*quicksight.DescribeNamespaceOutput, error)
 	DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error)
 	DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error)
@@ -131,6 +132,7 @@ type QuickSight interface {
 	UpdateFolderPermissionsWithContext(ctx context.Context, input *quicksight.UpdateFolderPermissionsInput, opts ...request.Option) (*quicksight.UpdateFolderPermissionsOutput, error)
 	UpdateGroupWithContext(ctx context.Context, input *quicksight.UpdateGroupInput, opts ...request.Option) (*quicksight.UpdateGroupOutput, error)
 	UpdateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.UpdateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.UpdateIAMPolicyAssignmentOutput, error)
+	UpdateIpRestrictionWithContext(ctx context.Context, input *quicksight.UpdateIpRestrictionInput, opts ...request.Option) (*quicksight.UpdateIpRestrictionOutput, error)
 	UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error)
 	UpdateTemplateAliasWithContext(ctx context.Context, input *quicksight.UpdateTemplateAliasInput, opts ...request.Option) (*quicksight.UpdateTemplateAliasOutput, error)
 	UpdateTemplatePermissionsWithContext(ctx context.Context, input *quicksight.UpdateTemplatePermissionsInput, opts ...request.Option) (*quicksight.UpdateTemplatePermissionsOutput, error)
@@ -1203,6 +1205,27 @@ func (c *Client) DescribeIngestionWithContext(ctx context.Context, input *quicks
 	})
 
 	return req.Output.(*quicksight.DescribeIngestionOutput), req.Error
+}
+
+func (c *Client) DescribeIpRestrictionWithContext(ctx context.Context, input *quicksight.DescribeIpRestrictionInput, opts ...request.Option) (*quicksight.DescribeIpRestrictionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeIpRestriction",
+		Input:   input,
+		Output:  (*quicksight.DescribeIpRestrictionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeIpRestrictionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeIpRestrictionOutput), req.Error
 }
 
 func (c *Client) DescribeNamespaceWithContext(ctx context.Context, input *quicksight.DescribeNamespaceInput, opts ...request.Option) (*quicksight.DescribeNamespaceOutput, error) {
@@ -2659,6 +2682,27 @@ func (c *Client) UpdateIAMPolicyAssignmentWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*quicksight.UpdateIAMPolicyAssignmentOutput), req.Error
+}
+
+func (c *Client) UpdateIpRestrictionWithContext(ctx context.Context, input *quicksight.UpdateIpRestrictionInput, opts ...request.Option) (*quicksight.UpdateIpRestrictionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateIpRestriction",
+		Input:   input,
+		Output:  (*quicksight.UpdateIpRestrictionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateIpRestrictionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateIpRestrictionOutput), req.Error
 }
 
 func (c *Client) UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error) {
