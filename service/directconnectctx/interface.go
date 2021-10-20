@@ -22,6 +22,7 @@ type DirectConnect interface {
 	AssociateMacSecKeyWithContext(ctx context.Context, input *directconnect.AssociateMacSecKeyInput, opts ...request.Option) (*directconnect.AssociateMacSecKeyOutput, error)
 	AssociateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.AssociateVirtualInterfaceInput, opts ...request.Option) (*directconnect.VirtualInterface, error)
 	ConfirmConnectionWithContext(ctx context.Context, input *directconnect.ConfirmConnectionInput, opts ...request.Option) (*directconnect.ConfirmConnectionOutput, error)
+	ConfirmCustomerAgreementWithContext(ctx context.Context, input *directconnect.ConfirmCustomerAgreementInput, opts ...request.Option) (*directconnect.ConfirmCustomerAgreementOutput, error)
 	ConfirmPrivateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmPrivateVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmPrivateVirtualInterfaceOutput, error)
 	ConfirmPublicVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmPublicVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmPublicVirtualInterfaceOutput, error)
 	ConfirmTransitVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmTransitVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmTransitVirtualInterfaceOutput, error)
@@ -46,6 +47,7 @@ type DirectConnect interface {
 	DescribeConnectionLoaWithContext(ctx context.Context, input *directconnect.DescribeConnectionLoaInput, opts ...request.Option) (*directconnect.DescribeConnectionLoaOutput, error)
 	DescribeConnectionsWithContext(ctx context.Context, input *directconnect.DescribeConnectionsInput, opts ...request.Option) (*directconnect.Connections, error)
 	DescribeConnectionsOnInterconnectWithContext(ctx context.Context, input *directconnect.DescribeConnectionsOnInterconnectInput, opts ...request.Option) (*directconnect.Connections, error)
+	DescribeCustomerMetadataWithContext(ctx context.Context, input *directconnect.DescribeCustomerMetadataInput, opts ...request.Option) (*directconnect.DescribeCustomerMetadataOutput, error)
 	DescribeDirectConnectGatewayAssociationProposalsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAssociationProposalsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAssociationProposalsOutput, error)
 	DescribeDirectConnectGatewayAssociationsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAssociationsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAssociationsOutput, error)
 	DescribeDirectConnectGatewayAttachmentsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAttachmentsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAttachmentsOutput, error)
@@ -56,6 +58,7 @@ type DirectConnect interface {
 	DescribeLagsWithContext(ctx context.Context, input *directconnect.DescribeLagsInput, opts ...request.Option) (*directconnect.DescribeLagsOutput, error)
 	DescribeLoaWithContext(ctx context.Context, input *directconnect.DescribeLoaInput, opts ...request.Option) (*directconnect.Loa, error)
 	DescribeLocationsWithContext(ctx context.Context, input *directconnect.DescribeLocationsInput, opts ...request.Option) (*directconnect.DescribeLocationsOutput, error)
+	DescribeRouterConfigurationWithContext(ctx context.Context, input *directconnect.DescribeRouterConfigurationInput, opts ...request.Option) (*directconnect.DescribeRouterConfigurationOutput, error)
 	DescribeTagsWithContext(ctx context.Context, input *directconnect.DescribeTagsInput, opts ...request.Option) (*directconnect.DescribeTagsOutput, error)
 	DescribeVirtualGatewaysWithContext(ctx context.Context, input *directconnect.DescribeVirtualGatewaysInput, opts ...request.Option) (*directconnect.DescribeVirtualGatewaysOutput, error)
 	DescribeVirtualInterfacesWithContext(ctx context.Context, input *directconnect.DescribeVirtualInterfacesInput, opts ...request.Option) (*directconnect.DescribeVirtualInterfacesOutput, error)
@@ -67,6 +70,7 @@ type DirectConnect interface {
 	TagResourceWithContext(ctx context.Context, input *directconnect.TagResourceInput, opts ...request.Option) (*directconnect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *directconnect.UntagResourceInput, opts ...request.Option) (*directconnect.UntagResourceOutput, error)
 	UpdateConnectionWithContext(ctx context.Context, input *directconnect.UpdateConnectionInput, opts ...request.Option) (*directconnect.UpdateConnectionOutput, error)
+	UpdateDirectConnectGatewayWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayOutput, error)
 	UpdateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayAssociationOutput, error)
 	UpdateLagWithContext(ctx context.Context, input *directconnect.UpdateLagInput, opts ...request.Option) (*directconnect.Lag, error)
 	UpdateVirtualInterfaceAttributesWithContext(ctx context.Context, input *directconnect.UpdateVirtualInterfaceAttributesInput, opts ...request.Option) (*directconnect.UpdateVirtualInterfaceAttributesOutput, error)
@@ -316,6 +320,27 @@ func (c *Client) ConfirmConnectionWithContext(ctx context.Context, input *direct
 	})
 
 	return req.Output.(*directconnect.ConfirmConnectionOutput), req.Error
+}
+
+func (c *Client) ConfirmCustomerAgreementWithContext(ctx context.Context, input *directconnect.ConfirmCustomerAgreementInput, opts ...request.Option) (*directconnect.ConfirmCustomerAgreementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "ConfirmCustomerAgreement",
+		Input:   input,
+		Output:  (*directconnect.ConfirmCustomerAgreementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.ConfirmCustomerAgreementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.ConfirmCustomerAgreementOutput), req.Error
 }
 
 func (c *Client) ConfirmPrivateVirtualInterfaceWithContext(ctx context.Context, input *directconnect.ConfirmPrivateVirtualInterfaceInput, opts ...request.Option) (*directconnect.ConfirmPrivateVirtualInterfaceOutput, error) {
@@ -822,6 +847,27 @@ func (c *Client) DescribeConnectionsOnInterconnectWithContext(ctx context.Contex
 	return req.Output.(*directconnect.Connections), req.Error
 }
 
+func (c *Client) DescribeCustomerMetadataWithContext(ctx context.Context, input *directconnect.DescribeCustomerMetadataInput, opts ...request.Option) (*directconnect.DescribeCustomerMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "DescribeCustomerMetadata",
+		Input:   input,
+		Output:  (*directconnect.DescribeCustomerMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.DescribeCustomerMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.DescribeCustomerMetadataOutput), req.Error
+}
+
 func (c *Client) DescribeDirectConnectGatewayAssociationProposalsWithContext(ctx context.Context, input *directconnect.DescribeDirectConnectGatewayAssociationProposalsInput, opts ...request.Option) (*directconnect.DescribeDirectConnectGatewayAssociationProposalsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directconnect",
@@ -1030,6 +1076,27 @@ func (c *Client) DescribeLocationsWithContext(ctx context.Context, input *direct
 	})
 
 	return req.Output.(*directconnect.DescribeLocationsOutput), req.Error
+}
+
+func (c *Client) DescribeRouterConfigurationWithContext(ctx context.Context, input *directconnect.DescribeRouterConfigurationInput, opts ...request.Option) (*directconnect.DescribeRouterConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "DescribeRouterConfiguration",
+		Input:   input,
+		Output:  (*directconnect.DescribeRouterConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.DescribeRouterConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.DescribeRouterConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *directconnect.DescribeTagsInput, opts ...request.Option) (*directconnect.DescribeTagsOutput, error) {
@@ -1261,6 +1328,27 @@ func (c *Client) UpdateConnectionWithContext(ctx context.Context, input *directc
 	})
 
 	return req.Output.(*directconnect.UpdateConnectionOutput), req.Error
+}
+
+func (c *Client) UpdateDirectConnectGatewayWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directconnect",
+		Action:  "UpdateDirectConnectGateway",
+		Input:   input,
+		Output:  (*directconnect.UpdateDirectConnectGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectConnectAPI.UpdateDirectConnectGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directconnect.UpdateDirectConnectGatewayOutput), req.Error
 }
 
 func (c *Client) UpdateDirectConnectGatewayAssociationWithContext(ctx context.Context, input *directconnect.UpdateDirectConnectGatewayAssociationInput, opts ...request.Option) (*directconnect.UpdateDirectConnectGatewayAssociationOutput, error) {

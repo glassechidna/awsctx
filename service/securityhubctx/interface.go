@@ -18,10 +18,12 @@ type SecurityHub interface {
 	BatchImportFindingsWithContext(ctx context.Context, input *securityhub.BatchImportFindingsInput, opts ...request.Option) (*securityhub.BatchImportFindingsOutput, error)
 	BatchUpdateFindingsWithContext(ctx context.Context, input *securityhub.BatchUpdateFindingsInput, opts ...request.Option) (*securityhub.BatchUpdateFindingsOutput, error)
 	CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error)
+	CreateFindingAggregatorWithContext(ctx context.Context, input *securityhub.CreateFindingAggregatorInput, opts ...request.Option) (*securityhub.CreateFindingAggregatorOutput, error)
 	CreateInsightWithContext(ctx context.Context, input *securityhub.CreateInsightInput, opts ...request.Option) (*securityhub.CreateInsightOutput, error)
 	CreateMembersWithContext(ctx context.Context, input *securityhub.CreateMembersInput, opts ...request.Option) (*securityhub.CreateMembersOutput, error)
 	DeclineInvitationsWithContext(ctx context.Context, input *securityhub.DeclineInvitationsInput, opts ...request.Option) (*securityhub.DeclineInvitationsOutput, error)
 	DeleteActionTargetWithContext(ctx context.Context, input *securityhub.DeleteActionTargetInput, opts ...request.Option) (*securityhub.DeleteActionTargetOutput, error)
+	DeleteFindingAggregatorWithContext(ctx context.Context, input *securityhub.DeleteFindingAggregatorInput, opts ...request.Option) (*securityhub.DeleteFindingAggregatorOutput, error)
 	DeleteInsightWithContext(ctx context.Context, input *securityhub.DeleteInsightInput, opts ...request.Option) (*securityhub.DeleteInsightOutput, error)
 	DeleteInvitationsWithContext(ctx context.Context, input *securityhub.DeleteInvitationsInput, opts ...request.Option) (*securityhub.DeleteInvitationsOutput, error)
 	DeleteMembersWithContext(ctx context.Context, input *securityhub.DeleteMembersInput, opts ...request.Option) (*securityhub.DeleteMembersOutput, error)
@@ -47,6 +49,7 @@ type SecurityHub interface {
 	GetAdministratorAccountWithContext(ctx context.Context, input *securityhub.GetAdministratorAccountInput, opts ...request.Option) (*securityhub.GetAdministratorAccountOutput, error)
 	GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error)
 	GetEnabledStandardsPagesWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, cb func(*securityhub.GetEnabledStandardsOutput, bool) bool, opts ...request.Option) error
+	GetFindingAggregatorWithContext(ctx context.Context, input *securityhub.GetFindingAggregatorInput, opts ...request.Option) (*securityhub.GetFindingAggregatorOutput, error)
 	GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error)
 	GetFindingsPagesWithContext(ctx context.Context, input *securityhub.GetFindingsInput, cb func(*securityhub.GetFindingsOutput, bool) bool, opts ...request.Option) error
 	GetInsightResultsWithContext(ctx context.Context, input *securityhub.GetInsightResultsInput, opts ...request.Option) (*securityhub.GetInsightResultsOutput, error)
@@ -58,6 +61,8 @@ type SecurityHub interface {
 	InviteMembersWithContext(ctx context.Context, input *securityhub.InviteMembersInput, opts ...request.Option) (*securityhub.InviteMembersOutput, error)
 	ListEnabledProductsForImportWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, opts ...request.Option) (*securityhub.ListEnabledProductsForImportOutput, error)
 	ListEnabledProductsForImportPagesWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, cb func(*securityhub.ListEnabledProductsForImportOutput, bool) bool, opts ...request.Option) error
+	ListFindingAggregatorsWithContext(ctx context.Context, input *securityhub.ListFindingAggregatorsInput, opts ...request.Option) (*securityhub.ListFindingAggregatorsOutput, error)
+	ListFindingAggregatorsPagesWithContext(ctx context.Context, input *securityhub.ListFindingAggregatorsInput, cb func(*securityhub.ListFindingAggregatorsOutput, bool) bool, opts ...request.Option) error
 	ListInvitationsWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, opts ...request.Option) (*securityhub.ListInvitationsOutput, error)
 	ListInvitationsPagesWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, cb func(*securityhub.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *securityhub.ListMembersInput, opts ...request.Option) (*securityhub.ListMembersOutput, error)
@@ -68,6 +73,7 @@ type SecurityHub interface {
 	TagResourceWithContext(ctx context.Context, input *securityhub.TagResourceInput, opts ...request.Option) (*securityhub.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *securityhub.UntagResourceInput, opts ...request.Option) (*securityhub.UntagResourceOutput, error)
 	UpdateActionTargetWithContext(ctx context.Context, input *securityhub.UpdateActionTargetInput, opts ...request.Option) (*securityhub.UpdateActionTargetOutput, error)
+	UpdateFindingAggregatorWithContext(ctx context.Context, input *securityhub.UpdateFindingAggregatorInput, opts ...request.Option) (*securityhub.UpdateFindingAggregatorOutput, error)
 	UpdateFindingsWithContext(ctx context.Context, input *securityhub.UpdateFindingsInput, opts ...request.Option) (*securityhub.UpdateFindingsOutput, error)
 	UpdateInsightWithContext(ctx context.Context, input *securityhub.UpdateInsightInput, opts ...request.Option) (*securityhub.UpdateInsightOutput, error)
 	UpdateOrganizationConfigurationWithContext(ctx context.Context, input *securityhub.UpdateOrganizationConfigurationInput, opts ...request.Option) (*securityhub.UpdateOrganizationConfigurationOutput, error)
@@ -237,6 +243,27 @@ func (c *Client) CreateActionTargetWithContext(ctx context.Context, input *secur
 	return req.Output.(*securityhub.CreateActionTargetOutput), req.Error
 }
 
+func (c *Client) CreateFindingAggregatorWithContext(ctx context.Context, input *securityhub.CreateFindingAggregatorInput, opts ...request.Option) (*securityhub.CreateFindingAggregatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "CreateFindingAggregator",
+		Input:   input,
+		Output:  (*securityhub.CreateFindingAggregatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.CreateFindingAggregatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.CreateFindingAggregatorOutput), req.Error
+}
+
 func (c *Client) CreateInsightWithContext(ctx context.Context, input *securityhub.CreateInsightInput, opts ...request.Option) (*securityhub.CreateInsightOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -319,6 +346,27 @@ func (c *Client) DeleteActionTargetWithContext(ctx context.Context, input *secur
 	})
 
 	return req.Output.(*securityhub.DeleteActionTargetOutput), req.Error
+}
+
+func (c *Client) DeleteFindingAggregatorWithContext(ctx context.Context, input *securityhub.DeleteFindingAggregatorInput, opts ...request.Option) (*securityhub.DeleteFindingAggregatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "DeleteFindingAggregator",
+		Input:   input,
+		Output:  (*securityhub.DeleteFindingAggregatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.DeleteFindingAggregatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.DeleteFindingAggregatorOutput), req.Error
 }
 
 func (c *Client) DeleteInsightWithContext(ctx context.Context, input *securityhub.DeleteInsightInput, opts ...request.Option) (*securityhub.DeleteInsightOutput, error) {
@@ -841,6 +889,27 @@ func (c *Client) GetEnabledStandardsPagesWithContext(ctx context.Context, input 
 	return req.Error
 }
 
+func (c *Client) GetFindingAggregatorWithContext(ctx context.Context, input *securityhub.GetFindingAggregatorInput, opts ...request.Option) (*securityhub.GetFindingAggregatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetFindingAggregator",
+		Input:   input,
+		Output:  (*securityhub.GetFindingAggregatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.GetFindingAggregatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.GetFindingAggregatorOutput), req.Error
+}
+
 func (c *Client) GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -1069,6 +1138,47 @@ func (c *Client) ListEnabledProductsForImportPagesWithContext(ctx context.Contex
 	return req.Error
 }
 
+func (c *Client) ListFindingAggregatorsWithContext(ctx context.Context, input *securityhub.ListFindingAggregatorsInput, opts ...request.Option) (*securityhub.ListFindingAggregatorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListFindingAggregators",
+		Input:   input,
+		Output:  (*securityhub.ListFindingAggregatorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.ListFindingAggregatorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.ListFindingAggregatorsOutput), req.Error
+}
+
+func (c *Client) ListFindingAggregatorsPagesWithContext(ctx context.Context, input *securityhub.ListFindingAggregatorsInput, cb func(*securityhub.ListFindingAggregatorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListFindingAggregators",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListFindingAggregatorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *securityhub.ListInvitationsInput, opts ...request.Option) (*securityhub.ListInvitationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -1274,6 +1384,27 @@ func (c *Client) UpdateActionTargetWithContext(ctx context.Context, input *secur
 	})
 
 	return req.Output.(*securityhub.UpdateActionTargetOutput), req.Error
+}
+
+func (c *Client) UpdateFindingAggregatorWithContext(ctx context.Context, input *securityhub.UpdateFindingAggregatorInput, opts ...request.Option) (*securityhub.UpdateFindingAggregatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "UpdateFindingAggregator",
+		Input:   input,
+		Output:  (*securityhub.UpdateFindingAggregatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.UpdateFindingAggregatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.UpdateFindingAggregatorOutput), req.Error
 }
 
 func (c *Client) UpdateFindingsWithContext(ctx context.Context, input *securityhub.UpdateFindingsInput, opts ...request.Option) (*securityhub.UpdateFindingsOutput, error) {
