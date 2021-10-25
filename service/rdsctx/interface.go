@@ -25,6 +25,7 @@ type RDS interface {
 	CopyDBSnapshotWithContext(ctx context.Context, input *rds.CopyDBSnapshotInput, opts ...request.Option) (*rds.CopyDBSnapshotOutput, error)
 	CopyOptionGroupWithContext(ctx context.Context, input *rds.CopyOptionGroupInput, opts ...request.Option) (*rds.CopyOptionGroupOutput, error)
 	CreateCustomAvailabilityZoneWithContext(ctx context.Context, input *rds.CreateCustomAvailabilityZoneInput, opts ...request.Option) (*rds.CreateCustomAvailabilityZoneOutput, error)
+	CreateCustomDBEngineVersionWithContext(ctx context.Context, input *rds.CreateCustomDBEngineVersionInput, opts ...request.Option) (*rds.CreateCustomDBEngineVersionOutput, error)
 	CreateDBClusterWithContext(ctx context.Context, input *rds.CreateDBClusterInput, opts ...request.Option) (*rds.CreateDBClusterOutput, error)
 	CreateDBClusterEndpointWithContext(ctx context.Context, input *rds.CreateDBClusterEndpointInput, opts ...request.Option) (*rds.CreateDBClusterEndpointOutput, error)
 	CreateDBClusterParameterGroupWithContext(ctx context.Context, input *rds.CreateDBClusterParameterGroupInput, opts ...request.Option) (*rds.CreateDBClusterParameterGroupOutput, error)
@@ -41,6 +42,7 @@ type RDS interface {
 	CreateGlobalClusterWithContext(ctx context.Context, input *rds.CreateGlobalClusterInput, opts ...request.Option) (*rds.CreateGlobalClusterOutput, error)
 	CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error)
 	DeleteCustomAvailabilityZoneWithContext(ctx context.Context, input *rds.DeleteCustomAvailabilityZoneInput, opts ...request.Option) (*rds.DeleteCustomAvailabilityZoneOutput, error)
+	DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error)
 	DeleteDBClusterEndpointWithContext(ctx context.Context, input *rds.DeleteDBClusterEndpointInput, opts ...request.Option) (*rds.DeleteDBClusterEndpointOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *rds.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*rds.DeleteDBClusterParameterGroupOutput, error)
@@ -140,6 +142,7 @@ type RDS interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error)
 	ModifyCertificatesWithContext(ctx context.Context, input *rds.ModifyCertificatesInput, opts ...request.Option) (*rds.ModifyCertificatesOutput, error)
 	ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, input *rds.ModifyCurrentDBClusterCapacityInput, opts ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error)
+	ModifyCustomDBEngineVersionWithContext(ctx context.Context, input *rds.ModifyCustomDBEngineVersionInput, opts ...request.Option) (*rds.ModifyCustomDBEngineVersionOutput, error)
 	ModifyDBClusterWithContext(ctx context.Context, input *rds.ModifyDBClusterInput, opts ...request.Option) (*rds.ModifyDBClusterOutput, error)
 	ModifyDBClusterEndpointWithContext(ctx context.Context, input *rds.ModifyDBClusterEndpointInput, opts ...request.Option) (*rds.ModifyDBClusterEndpointOutput, error)
 	ModifyDBClusterParameterGroupWithContext(ctx context.Context, input *rds.ModifyDBClusterParameterGroupInput, opts ...request.Option) (*rds.DBClusterParameterGroupNameMessage, error)
@@ -494,6 +497,27 @@ func (c *Client) CreateCustomAvailabilityZoneWithContext(ctx context.Context, in
 	return req.Output.(*rds.CreateCustomAvailabilityZoneOutput), req.Error
 }
 
+func (c *Client) CreateCustomDBEngineVersionWithContext(ctx context.Context, input *rds.CreateCustomDBEngineVersionInput, opts ...request.Option) (*rds.CreateCustomDBEngineVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CreateCustomDBEngineVersion",
+		Input:   input,
+		Output:  (*rds.CreateCustomDBEngineVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CreateCustomDBEngineVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CreateCustomDBEngineVersionOutput), req.Error
+}
+
 func (c *Client) CreateDBClusterWithContext(ctx context.Context, input *rds.CreateDBClusterInput, opts ...request.Option) (*rds.CreateDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -828,6 +852,27 @@ func (c *Client) DeleteCustomAvailabilityZoneWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*rds.DeleteCustomAvailabilityZoneOutput), req.Error
+}
+
+func (c *Client) DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteCustomDBEngineVersion",
+		Input:   input,
+		Output:  (*rds.DeleteCustomDBEngineVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteCustomDBEngineVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteCustomDBEngineVersionOutput), req.Error
 }
 
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error) {
@@ -2872,6 +2917,27 @@ func (c *Client) ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*rds.ModifyCurrentDBClusterCapacityOutput), req.Error
+}
+
+func (c *Client) ModifyCustomDBEngineVersionWithContext(ctx context.Context, input *rds.ModifyCustomDBEngineVersionInput, opts ...request.Option) (*rds.ModifyCustomDBEngineVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ModifyCustomDBEngineVersion",
+		Input:   input,
+		Output:  (*rds.ModifyCustomDBEngineVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ModifyCustomDBEngineVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ModifyCustomDBEngineVersionOutput), req.Error
 }
 
 func (c *Client) ModifyDBClusterWithContext(ctx context.Context, input *rds.ModifyDBClusterInput, opts ...request.Option) (*rds.ModifyDBClusterOutput, error) {
