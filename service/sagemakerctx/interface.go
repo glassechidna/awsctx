@@ -14,6 +14,7 @@ type SageMaker interface {
 	AddAssociationWithContext(ctx context.Context, input *sagemaker.AddAssociationInput, opts ...request.Option) (*sagemaker.AddAssociationOutput, error)
 	AddTagsWithContext(ctx context.Context, input *sagemaker.AddTagsInput, opts ...request.Option) (*sagemaker.AddTagsOutput, error)
 	AssociateTrialComponentWithContext(ctx context.Context, input *sagemaker.AssociateTrialComponentInput, opts ...request.Option) (*sagemaker.AssociateTrialComponentOutput, error)
+	BatchDescribeModelPackageWithContext(ctx context.Context, input *sagemaker.BatchDescribeModelPackageInput, opts ...request.Option) (*sagemaker.BatchDescribeModelPackageOutput, error)
 	CreateActionWithContext(ctx context.Context, input *sagemaker.CreateActionInput, opts ...request.Option) (*sagemaker.CreateActionOutput, error)
 	CreateAlgorithmWithContext(ctx context.Context, input *sagemaker.CreateAlgorithmInput, opts ...request.Option) (*sagemaker.CreateAlgorithmOutput, error)
 	CreateAppWithContext(ctx context.Context, input *sagemaker.CreateAppInput, opts ...request.Option) (*sagemaker.CreateAppOutput, error)
@@ -300,6 +301,7 @@ type SageMaker interface {
 	UpdateNotebookInstanceLifecycleConfigWithContext(ctx context.Context, input *sagemaker.UpdateNotebookInstanceLifecycleConfigInput, opts ...request.Option) (*sagemaker.UpdateNotebookInstanceLifecycleConfigOutput, error)
 	UpdatePipelineWithContext(ctx context.Context, input *sagemaker.UpdatePipelineInput, opts ...request.Option) (*sagemaker.UpdatePipelineOutput, error)
 	UpdatePipelineExecutionWithContext(ctx context.Context, input *sagemaker.UpdatePipelineExecutionInput, opts ...request.Option) (*sagemaker.UpdatePipelineExecutionOutput, error)
+	UpdateProjectWithContext(ctx context.Context, input *sagemaker.UpdateProjectInput, opts ...request.Option) (*sagemaker.UpdateProjectOutput, error)
 	UpdateTrainingJobWithContext(ctx context.Context, input *sagemaker.UpdateTrainingJobInput, opts ...request.Option) (*sagemaker.UpdateTrainingJobOutput, error)
 	UpdateTrialWithContext(ctx context.Context, input *sagemaker.UpdateTrialInput, opts ...request.Option) (*sagemaker.UpdateTrialOutput, error)
 	UpdateTrialComponentWithContext(ctx context.Context, input *sagemaker.UpdateTrialComponentInput, opts ...request.Option) (*sagemaker.UpdateTrialComponentOutput, error)
@@ -384,6 +386,27 @@ func (c *Client) AssociateTrialComponentWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*sagemaker.AssociateTrialComponentOutput), req.Error
+}
+
+func (c *Client) BatchDescribeModelPackageWithContext(ctx context.Context, input *sagemaker.BatchDescribeModelPackageInput, opts ...request.Option) (*sagemaker.BatchDescribeModelPackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "BatchDescribeModelPackage",
+		Input:   input,
+		Output:  (*sagemaker.BatchDescribeModelPackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.BatchDescribeModelPackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.BatchDescribeModelPackageOutput), req.Error
 }
 
 func (c *Client) CreateActionWithContext(ctx context.Context, input *sagemaker.CreateActionInput, opts ...request.Option) (*sagemaker.CreateActionOutput, error) {
@@ -6335,6 +6358,27 @@ func (c *Client) UpdatePipelineExecutionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*sagemaker.UpdatePipelineExecutionOutput), req.Error
+}
+
+func (c *Client) UpdateProjectWithContext(ctx context.Context, input *sagemaker.UpdateProjectInput, opts ...request.Option) (*sagemaker.UpdateProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateProject",
+		Input:   input,
+		Output:  (*sagemaker.UpdateProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateProjectOutput), req.Error
 }
 
 func (c *Client) UpdateTrainingJobWithContext(ctx context.Context, input *sagemaker.UpdateTrainingJobInput, opts ...request.Option) (*sagemaker.UpdateTrainingJobOutput, error) {

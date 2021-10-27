@@ -451,6 +451,8 @@ type EC2 interface {
 	GetGroupsForCapacityReservationWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, opts ...request.Option) (*ec2.GetGroupsForCapacityReservationOutput, error)
 	GetGroupsForCapacityReservationPagesWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, cb func(*ec2.GetGroupsForCapacityReservationOutput, bool) bool, opts ...request.Option) error
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
+	GetInstanceTypesFromInstanceRequirementsWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, opts ...request.Option) (*ec2.GetInstanceTypesFromInstanceRequirementsOutput, error)
+	GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, cb func(*ec2.GetInstanceTypesFromInstanceRequirementsOutput, bool) bool, opts ...request.Option) error
 	GetLaunchTemplateDataWithContext(ctx context.Context, input *ec2.GetLaunchTemplateDataInput, opts ...request.Option) (*ec2.GetLaunchTemplateDataOutput, error)
 	GetManagedPrefixListAssociationsWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, opts ...request.Option) (*ec2.GetManagedPrefixListAssociationsOutput, error)
 	GetManagedPrefixListAssociationsPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, cb func(*ec2.GetManagedPrefixListAssociationsOutput, bool) bool, opts ...request.Option) error
@@ -459,6 +461,8 @@ type EC2 interface {
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
 	GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error)
+	GetSpotPlacementScoresWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, opts ...request.Option) (*ec2.GetSpotPlacementScoresOutput, error)
+	GetSpotPlacementScoresPagesWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, cb func(*ec2.GetSpotPlacementScoresOutput, bool) bool, opts ...request.Option) error
 	GetSubnetCidrReservationsWithContext(ctx context.Context, input *ec2.GetSubnetCidrReservationsInput, opts ...request.Option) (*ec2.GetSubnetCidrReservationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayAttachmentPropagationsOutput, error)
 	GetTransitGatewayAttachmentPropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayAttachmentPropagationsInput, cb func(*ec2.GetTransitGatewayAttachmentPropagationsOutput, bool) bool, opts ...request.Option) error
@@ -9749,6 +9753,47 @@ func (c *Client) GetHostReservationPurchasePreviewWithContext(ctx context.Contex
 	return req.Output.(*ec2.GetHostReservationPurchasePreviewOutput), req.Error
 }
 
+func (c *Client) GetInstanceTypesFromInstanceRequirementsWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, opts ...request.Option) (*ec2.GetInstanceTypesFromInstanceRequirementsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetInstanceTypesFromInstanceRequirements",
+		Input:   input,
+		Output:  (*ec2.GetInstanceTypesFromInstanceRequirementsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetInstanceTypesFromInstanceRequirementsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetInstanceTypesFromInstanceRequirementsOutput), req.Error
+}
+
+func (c *Client) GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, cb func(*ec2.GetInstanceTypesFromInstanceRequirementsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetInstanceTypesFromInstanceRequirements",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetLaunchTemplateDataWithContext(ctx context.Context, input *ec2.GetLaunchTemplateDataInput, opts ...request.Option) (*ec2.GetLaunchTemplateDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9913,6 +9958,47 @@ func (c *Client) GetSerialConsoleAccessStatusWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.GetSerialConsoleAccessStatusOutput), req.Error
+}
+
+func (c *Client) GetSpotPlacementScoresWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, opts ...request.Option) (*ec2.GetSpotPlacementScoresOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSpotPlacementScores",
+		Input:   input,
+		Output:  (*ec2.GetSpotPlacementScoresOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetSpotPlacementScoresWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetSpotPlacementScoresOutput), req.Error
+}
+
+func (c *Client) GetSpotPlacementScoresPagesWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, cb func(*ec2.GetSpotPlacementScoresOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSpotPlacementScores",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetSpotPlacementScoresPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetSubnetCidrReservationsWithContext(ctx context.Context, input *ec2.GetSubnetCidrReservationsInput, opts ...request.Option) (*ec2.GetSubnetCidrReservationsOutput, error) {

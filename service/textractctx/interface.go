@@ -16,8 +16,10 @@ type Textract interface {
 	DetectDocumentTextWithContext(ctx context.Context, input *textract.DetectDocumentTextInput, opts ...request.Option) (*textract.DetectDocumentTextOutput, error)
 	GetDocumentAnalysisWithContext(ctx context.Context, input *textract.GetDocumentAnalysisInput, opts ...request.Option) (*textract.GetDocumentAnalysisOutput, error)
 	GetDocumentTextDetectionWithContext(ctx context.Context, input *textract.GetDocumentTextDetectionInput, opts ...request.Option) (*textract.GetDocumentTextDetectionOutput, error)
+	GetExpenseAnalysisWithContext(ctx context.Context, input *textract.GetExpenseAnalysisInput, opts ...request.Option) (*textract.GetExpenseAnalysisOutput, error)
 	StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error)
 	StartDocumentTextDetectionWithContext(ctx context.Context, input *textract.StartDocumentTextDetectionInput, opts ...request.Option) (*textract.StartDocumentTextDetectionOutput, error)
+	StartExpenseAnalysisWithContext(ctx context.Context, input *textract.StartExpenseAnalysisInput, opts ...request.Option) (*textract.StartExpenseAnalysisOutput, error)
 }
 
 type Client struct {
@@ -140,6 +142,27 @@ func (c *Client) GetDocumentTextDetectionWithContext(ctx context.Context, input 
 	return req.Output.(*textract.GetDocumentTextDetectionOutput), req.Error
 }
 
+func (c *Client) GetExpenseAnalysisWithContext(ctx context.Context, input *textract.GetExpenseAnalysisInput, opts ...request.Option) (*textract.GetExpenseAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "GetExpenseAnalysis",
+		Input:   input,
+		Output:  (*textract.GetExpenseAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.GetExpenseAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.GetExpenseAnalysisOutput), req.Error
+}
+
 func (c *Client) StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
@@ -180,4 +203,25 @@ func (c *Client) StartDocumentTextDetectionWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*textract.StartDocumentTextDetectionOutput), req.Error
+}
+
+func (c *Client) StartExpenseAnalysisWithContext(ctx context.Context, input *textract.StartExpenseAnalysisInput, opts ...request.Option) (*textract.StartExpenseAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "StartExpenseAnalysis",
+		Input:   input,
+		Output:  (*textract.StartExpenseAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.StartExpenseAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.StartExpenseAnalysisOutput), req.Error
 }
