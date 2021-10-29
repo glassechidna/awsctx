@@ -113,10 +113,12 @@ type Connect interface {
 	ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error)
 	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
 	StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error)
+	StartContactStreamingWithContext(ctx context.Context, input *connect.StartContactStreamingInput, opts ...request.Option) (*connect.StartContactStreamingOutput, error)
 	StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error)
 	StartTaskContactWithContext(ctx context.Context, input *connect.StartTaskContactInput, opts ...request.Option) (*connect.StartTaskContactOutput, error)
 	StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error)
 	StopContactRecordingWithContext(ctx context.Context, input *connect.StopContactRecordingInput, opts ...request.Option) (*connect.StopContactRecordingOutput, error)
+	StopContactStreamingWithContext(ctx context.Context, input *connect.StopContactStreamingInput, opts ...request.Option) (*connect.StopContactStreamingOutput, error)
 	SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error)
@@ -2279,6 +2281,27 @@ func (c *Client) StartContactRecordingWithContext(ctx context.Context, input *co
 	return req.Output.(*connect.StartContactRecordingOutput), req.Error
 }
 
+func (c *Client) StartContactStreamingWithContext(ctx context.Context, input *connect.StartContactStreamingInput, opts ...request.Option) (*connect.StartContactStreamingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StartContactStreaming",
+		Input:   input,
+		Output:  (*connect.StartContactStreamingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StartContactStreamingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StartContactStreamingOutput), req.Error
+}
+
 func (c *Client) StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -2361,6 +2384,27 @@ func (c *Client) StopContactRecordingWithContext(ctx context.Context, input *con
 	})
 
 	return req.Output.(*connect.StopContactRecordingOutput), req.Error
+}
+
+func (c *Client) StopContactStreamingWithContext(ctx context.Context, input *connect.StopContactStreamingInput, opts ...request.Option) (*connect.StopContactStreamingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StopContactStreaming",
+		Input:   input,
+		Output:  (*connect.StopContactStreamingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StopContactStreamingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StopContactStreamingOutput), req.Error
 }
 
 func (c *Client) SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error) {
