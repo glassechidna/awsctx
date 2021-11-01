@@ -13,15 +13,18 @@ import (
 type Rekognition interface {
 	CompareFacesWithContext(ctx context.Context, input *rekognition.CompareFacesInput, opts ...request.Option) (*rekognition.CompareFacesOutput, error)
 	CreateCollectionWithContext(ctx context.Context, input *rekognition.CreateCollectionInput, opts ...request.Option) (*rekognition.CreateCollectionOutput, error)
+	CreateDatasetWithContext(ctx context.Context, input *rekognition.CreateDatasetInput, opts ...request.Option) (*rekognition.CreateDatasetOutput, error)
 	CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error)
 	CreateProjectVersionWithContext(ctx context.Context, input *rekognition.CreateProjectVersionInput, opts ...request.Option) (*rekognition.CreateProjectVersionOutput, error)
 	CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error)
 	DeleteCollectionWithContext(ctx context.Context, input *rekognition.DeleteCollectionInput, opts ...request.Option) (*rekognition.DeleteCollectionOutput, error)
+	DeleteDatasetWithContext(ctx context.Context, input *rekognition.DeleteDatasetInput, opts ...request.Option) (*rekognition.DeleteDatasetOutput, error)
 	DeleteFacesWithContext(ctx context.Context, input *rekognition.DeleteFacesInput, opts ...request.Option) (*rekognition.DeleteFacesOutput, error)
 	DeleteProjectWithContext(ctx context.Context, input *rekognition.DeleteProjectInput, opts ...request.Option) (*rekognition.DeleteProjectOutput, error)
 	DeleteProjectVersionWithContext(ctx context.Context, input *rekognition.DeleteProjectVersionInput, opts ...request.Option) (*rekognition.DeleteProjectVersionOutput, error)
 	DeleteStreamProcessorWithContext(ctx context.Context, input *rekognition.DeleteStreamProcessorInput, opts ...request.Option) (*rekognition.DeleteStreamProcessorOutput, error)
 	DescribeCollectionWithContext(ctx context.Context, input *rekognition.DescribeCollectionInput, opts ...request.Option) (*rekognition.DescribeCollectionOutput, error)
+	DescribeDatasetWithContext(ctx context.Context, input *rekognition.DescribeDatasetInput, opts ...request.Option) (*rekognition.DescribeDatasetOutput, error)
 	DescribeProjectVersionsWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, opts ...request.Option) (*rekognition.DescribeProjectVersionsOutput, error)
 	DescribeProjectVersionsPagesWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, cb func(*rekognition.DescribeProjectVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeProjectsWithContext(ctx context.Context, input *rekognition.DescribeProjectsInput, opts ...request.Option) (*rekognition.DescribeProjectsOutput, error)
@@ -33,6 +36,7 @@ type Rekognition interface {
 	DetectModerationLabelsWithContext(ctx context.Context, input *rekognition.DetectModerationLabelsInput, opts ...request.Option) (*rekognition.DetectModerationLabelsOutput, error)
 	DetectProtectiveEquipmentWithContext(ctx context.Context, input *rekognition.DetectProtectiveEquipmentInput, opts ...request.Option) (*rekognition.DetectProtectiveEquipmentOutput, error)
 	DetectTextWithContext(ctx context.Context, input *rekognition.DetectTextInput, opts ...request.Option) (*rekognition.DetectTextOutput, error)
+	DistributeDatasetEntriesWithContext(ctx context.Context, input *rekognition.DistributeDatasetEntriesInput, opts ...request.Option) (*rekognition.DistributeDatasetEntriesOutput, error)
 	GetCelebrityInfoWithContext(ctx context.Context, input *rekognition.GetCelebrityInfoInput, opts ...request.Option) (*rekognition.GetCelebrityInfoOutput, error)
 	GetCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, opts ...request.Option) (*rekognition.GetCelebrityRecognitionOutput, error)
 	GetCelebrityRecognitionPagesWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, cb func(*rekognition.GetCelebrityRecognitionOutput, bool) bool, opts ...request.Option) error
@@ -53,6 +57,10 @@ type Rekognition interface {
 	IndexFacesWithContext(ctx context.Context, input *rekognition.IndexFacesInput, opts ...request.Option) (*rekognition.IndexFacesOutput, error)
 	ListCollectionsWithContext(ctx context.Context, input *rekognition.ListCollectionsInput, opts ...request.Option) (*rekognition.ListCollectionsOutput, error)
 	ListCollectionsPagesWithContext(ctx context.Context, input *rekognition.ListCollectionsInput, cb func(*rekognition.ListCollectionsOutput, bool) bool, opts ...request.Option) error
+	ListDatasetEntriesWithContext(ctx context.Context, input *rekognition.ListDatasetEntriesInput, opts ...request.Option) (*rekognition.ListDatasetEntriesOutput, error)
+	ListDatasetEntriesPagesWithContext(ctx context.Context, input *rekognition.ListDatasetEntriesInput, cb func(*rekognition.ListDatasetEntriesOutput, bool) bool, opts ...request.Option) error
+	ListDatasetLabelsWithContext(ctx context.Context, input *rekognition.ListDatasetLabelsInput, opts ...request.Option) (*rekognition.ListDatasetLabelsOutput, error)
+	ListDatasetLabelsPagesWithContext(ctx context.Context, input *rekognition.ListDatasetLabelsInput, cb func(*rekognition.ListDatasetLabelsOutput, bool) bool, opts ...request.Option) error
 	ListFacesWithContext(ctx context.Context, input *rekognition.ListFacesInput, opts ...request.Option) (*rekognition.ListFacesOutput, error)
 	ListFacesPagesWithContext(ctx context.Context, input *rekognition.ListFacesInput, cb func(*rekognition.ListFacesOutput, bool) bool, opts ...request.Option) error
 	ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error)
@@ -75,6 +83,7 @@ type Rekognition interface {
 	StopStreamProcessorWithContext(ctx context.Context, input *rekognition.StopStreamProcessorInput, opts ...request.Option) (*rekognition.StopStreamProcessorOutput, error)
 	TagResourceWithContext(ctx context.Context, input *rekognition.TagResourceInput, opts ...request.Option) (*rekognition.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *rekognition.UntagResourceInput, opts ...request.Option) (*rekognition.UntagResourceOutput, error)
+	UpdateDatasetEntriesWithContext(ctx context.Context, input *rekognition.UpdateDatasetEntriesInput, opts ...request.Option) (*rekognition.UpdateDatasetEntriesOutput, error)
 }
 
 type Client struct {
@@ -132,6 +141,27 @@ func (c *Client) CreateCollectionWithContext(ctx context.Context, input *rekogni
 	})
 
 	return req.Output.(*rekognition.CreateCollectionOutput), req.Error
+}
+
+func (c *Client) CreateDatasetWithContext(ctx context.Context, input *rekognition.CreateDatasetInput, opts ...request.Option) (*rekognition.CreateDatasetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "CreateDataset",
+		Input:   input,
+		Output:  (*rekognition.CreateDatasetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.CreateDatasetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.CreateDatasetOutput), req.Error
 }
 
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error) {
@@ -216,6 +246,27 @@ func (c *Client) DeleteCollectionWithContext(ctx context.Context, input *rekogni
 	})
 
 	return req.Output.(*rekognition.DeleteCollectionOutput), req.Error
+}
+
+func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *rekognition.DeleteDatasetInput, opts ...request.Option) (*rekognition.DeleteDatasetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DeleteDataset",
+		Input:   input,
+		Output:  (*rekognition.DeleteDatasetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DeleteDatasetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DeleteDatasetOutput), req.Error
 }
 
 func (c *Client) DeleteFacesWithContext(ctx context.Context, input *rekognition.DeleteFacesInput, opts ...request.Option) (*rekognition.DeleteFacesOutput, error) {
@@ -321,6 +372,27 @@ func (c *Client) DescribeCollectionWithContext(ctx context.Context, input *rekog
 	})
 
 	return req.Output.(*rekognition.DescribeCollectionOutput), req.Error
+}
+
+func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *rekognition.DescribeDatasetInput, opts ...request.Option) (*rekognition.DescribeDatasetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DescribeDataset",
+		Input:   input,
+		Output:  (*rekognition.DescribeDatasetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DescribeDatasetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DescribeDatasetOutput), req.Error
 }
 
 func (c *Client) DescribeProjectVersionsWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, opts ...request.Option) (*rekognition.DescribeProjectVersionsOutput, error) {
@@ -550,6 +622,27 @@ func (c *Client) DetectTextWithContext(ctx context.Context, input *rekognition.D
 	})
 
 	return req.Output.(*rekognition.DetectTextOutput), req.Error
+}
+
+func (c *Client) DistributeDatasetEntriesWithContext(ctx context.Context, input *rekognition.DistributeDatasetEntriesInput, opts ...request.Option) (*rekognition.DistributeDatasetEntriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DistributeDatasetEntries",
+		Input:   input,
+		Output:  (*rekognition.DistributeDatasetEntriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DistributeDatasetEntriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DistributeDatasetEntriesOutput), req.Error
 }
 
 func (c *Client) GetCelebrityInfoWithContext(ctx context.Context, input *rekognition.GetCelebrityInfoInput, opts ...request.Option) (*rekognition.GetCelebrityInfoOutput, error) {
@@ -958,6 +1051,88 @@ func (c *Client) ListCollectionsPagesWithContext(ctx context.Context, input *rek
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RekognitionAPI.ListCollectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDatasetEntriesWithContext(ctx context.Context, input *rekognition.ListDatasetEntriesInput, opts ...request.Option) (*rekognition.ListDatasetEntriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListDatasetEntries",
+		Input:   input,
+		Output:  (*rekognition.ListDatasetEntriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.ListDatasetEntriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.ListDatasetEntriesOutput), req.Error
+}
+
+func (c *Client) ListDatasetEntriesPagesWithContext(ctx context.Context, input *rekognition.ListDatasetEntriesInput, cb func(*rekognition.ListDatasetEntriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListDatasetEntries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListDatasetEntriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDatasetLabelsWithContext(ctx context.Context, input *rekognition.ListDatasetLabelsInput, opts ...request.Option) (*rekognition.ListDatasetLabelsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListDatasetLabels",
+		Input:   input,
+		Output:  (*rekognition.ListDatasetLabelsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.ListDatasetLabelsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.ListDatasetLabelsOutput), req.Error
+}
+
+func (c *Client) ListDatasetLabelsPagesWithContext(ctx context.Context, input *rekognition.ListDatasetLabelsInput, cb func(*rekognition.ListDatasetLabelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListDatasetLabels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListDatasetLabelsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1421,4 +1596,25 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *rekognitio
 	})
 
 	return req.Output.(*rekognition.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateDatasetEntriesWithContext(ctx context.Context, input *rekognition.UpdateDatasetEntriesInput, opts ...request.Option) (*rekognition.UpdateDatasetEntriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "UpdateDatasetEntries",
+		Input:   input,
+		Output:  (*rekognition.UpdateDatasetEntriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.UpdateDatasetEntriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.UpdateDatasetEntriesOutput), req.Error
 }
