@@ -25,6 +25,7 @@ type CloudFront interface {
 	CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error)
 	CreatePublicKeyWithContext(ctx context.Context, input *cloudfront.CreatePublicKeyInput, opts ...request.Option) (*cloudfront.CreatePublicKeyOutput, error)
 	CreateRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.CreateRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.CreateRealtimeLogConfigOutput, error)
+	CreateResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.CreateResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.CreateResponseHeadersPolicyOutput, error)
 	CreateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionOutput, error)
 	CreateStreamingDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionWithTagsOutput, error)
 	DeleteCachePolicyWithContext(ctx context.Context, input *cloudfront.DeleteCachePolicyInput, opts ...request.Option) (*cloudfront.DeleteCachePolicyOutput, error)
@@ -38,6 +39,7 @@ type CloudFront interface {
 	DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error)
 	DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error)
 	DeleteRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.DeleteRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.DeleteRealtimeLogConfigOutput, error)
+	DeleteResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.DeleteResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.DeleteResponseHeadersPolicyOutput, error)
 	DeleteStreamingDistributionWithContext(ctx context.Context, input *cloudfront.DeleteStreamingDistributionInput, opts ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error)
 	DescribeFunctionWithContext(ctx context.Context, input *cloudfront.DescribeFunctionInput, opts ...request.Option) (*cloudfront.DescribeFunctionOutput, error)
 	GetCachePolicyWithContext(ctx context.Context, input *cloudfront.GetCachePolicyInput, opts ...request.Option) (*cloudfront.GetCachePolicyOutput, error)
@@ -60,6 +62,8 @@ type CloudFront interface {
 	GetPublicKeyWithContext(ctx context.Context, input *cloudfront.GetPublicKeyInput, opts ...request.Option) (*cloudfront.GetPublicKeyOutput, error)
 	GetPublicKeyConfigWithContext(ctx context.Context, input *cloudfront.GetPublicKeyConfigInput, opts ...request.Option) (*cloudfront.GetPublicKeyConfigOutput, error)
 	GetRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.GetRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.GetRealtimeLogConfigOutput, error)
+	GetResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.GetResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.GetResponseHeadersPolicyOutput, error)
+	GetResponseHeadersPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetResponseHeadersPolicyConfigInput, opts ...request.Option) (*cloudfront.GetResponseHeadersPolicyConfigOutput, error)
 	GetStreamingDistributionWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionOutput, error)
 	GetStreamingDistributionConfigWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionConfigInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionConfigOutput, error)
 	ListCachePoliciesWithContext(ctx context.Context, input *cloudfront.ListCachePoliciesInput, opts ...request.Option) (*cloudfront.ListCachePoliciesOutput, error)
@@ -72,6 +76,7 @@ type CloudFront interface {
 	ListDistributionsByKeyGroupWithContext(ctx context.Context, input *cloudfront.ListDistributionsByKeyGroupInput, opts ...request.Option) (*cloudfront.ListDistributionsByKeyGroupOutput, error)
 	ListDistributionsByOriginRequestPolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByOriginRequestPolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByOriginRequestPolicyIdOutput, error)
 	ListDistributionsByRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.ListDistributionsByRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.ListDistributionsByRealtimeLogConfigOutput, error)
+	ListDistributionsByResponseHeadersPolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByResponseHeadersPolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByResponseHeadersPolicyIdOutput, error)
 	ListDistributionsByWebACLIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByWebACLIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByWebACLIdOutput, error)
 	ListFieldLevelEncryptionConfigsWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionConfigsInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionConfigsOutput, error)
 	ListFieldLevelEncryptionProfilesWithContext(ctx context.Context, input *cloudfront.ListFieldLevelEncryptionProfilesInput, opts ...request.Option) (*cloudfront.ListFieldLevelEncryptionProfilesOutput, error)
@@ -82,6 +87,7 @@ type CloudFront interface {
 	ListOriginRequestPoliciesWithContext(ctx context.Context, input *cloudfront.ListOriginRequestPoliciesInput, opts ...request.Option) (*cloudfront.ListOriginRequestPoliciesOutput, error)
 	ListPublicKeysWithContext(ctx context.Context, input *cloudfront.ListPublicKeysInput, opts ...request.Option) (*cloudfront.ListPublicKeysOutput, error)
 	ListRealtimeLogConfigsWithContext(ctx context.Context, input *cloudfront.ListRealtimeLogConfigsInput, opts ...request.Option) (*cloudfront.ListRealtimeLogConfigsOutput, error)
+	ListResponseHeadersPoliciesWithContext(ctx context.Context, input *cloudfront.ListResponseHeadersPoliciesInput, opts ...request.Option) (*cloudfront.ListResponseHeadersPoliciesOutput, error)
 	ListStreamingDistributionsWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, opts ...request.Option) (*cloudfront.ListStreamingDistributionsOutput, error)
 	ListStreamingDistributionsPagesWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, cb func(*cloudfront.ListStreamingDistributionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudfront.ListTagsForResourceInput, opts ...request.Option) (*cloudfront.ListTagsForResourceOutput, error)
@@ -99,6 +105,7 @@ type CloudFront interface {
 	UpdateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.UpdateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.UpdateOriginRequestPolicyOutput, error)
 	UpdatePublicKeyWithContext(ctx context.Context, input *cloudfront.UpdatePublicKeyInput, opts ...request.Option) (*cloudfront.UpdatePublicKeyOutput, error)
 	UpdateRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.UpdateRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.UpdateRealtimeLogConfigOutput, error)
+	UpdateResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.UpdateResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.UpdateResponseHeadersPolicyOutput, error)
 	UpdateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.UpdateStreamingDistributionInput, opts ...request.Option) (*cloudfront.UpdateStreamingDistributionOutput, error)
 }
 
@@ -411,6 +418,27 @@ func (c *Client) CreateRealtimeLogConfigWithContext(ctx context.Context, input *
 	return req.Output.(*cloudfront.CreateRealtimeLogConfigOutput), req.Error
 }
 
+func (c *Client) CreateResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.CreateResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.CreateResponseHeadersPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateResponseHeadersPolicy",
+		Input:   input,
+		Output:  (*cloudfront.CreateResponseHeadersPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateResponseHeadersPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateResponseHeadersPolicyOutput), req.Error
+}
+
 func (c *Client) CreateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -682,6 +710,27 @@ func (c *Client) DeleteRealtimeLogConfigWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*cloudfront.DeleteRealtimeLogConfigOutput), req.Error
+}
+
+func (c *Client) DeleteResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.DeleteResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.DeleteResponseHeadersPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteResponseHeadersPolicy",
+		Input:   input,
+		Output:  (*cloudfront.DeleteResponseHeadersPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteResponseHeadersPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteResponseHeadersPolicyOutput), req.Error
 }
 
 func (c *Client) DeleteStreamingDistributionWithContext(ctx context.Context, input *cloudfront.DeleteStreamingDistributionInput, opts ...request.Option) (*cloudfront.DeleteStreamingDistributionOutput, error) {
@@ -1146,6 +1195,48 @@ func (c *Client) GetRealtimeLogConfigWithContext(ctx context.Context, input *clo
 	return req.Output.(*cloudfront.GetRealtimeLogConfigOutput), req.Error
 }
 
+func (c *Client) GetResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.GetResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.GetResponseHeadersPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetResponseHeadersPolicy",
+		Input:   input,
+		Output:  (*cloudfront.GetResponseHeadersPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetResponseHeadersPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetResponseHeadersPolicyOutput), req.Error
+}
+
+func (c *Client) GetResponseHeadersPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetResponseHeadersPolicyConfigInput, opts ...request.Option) (*cloudfront.GetResponseHeadersPolicyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetResponseHeadersPolicyConfig",
+		Input:   input,
+		Output:  (*cloudfront.GetResponseHeadersPolicyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetResponseHeadersPolicyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetResponseHeadersPolicyConfigOutput), req.Error
+}
+
 func (c *Client) GetStreamingDistributionWithContext(ctx context.Context, input *cloudfront.GetStreamingDistributionInput, opts ...request.Option) (*cloudfront.GetStreamingDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -1396,6 +1487,27 @@ func (c *Client) ListDistributionsByRealtimeLogConfigWithContext(ctx context.Con
 	return req.Output.(*cloudfront.ListDistributionsByRealtimeLogConfigOutput), req.Error
 }
 
+func (c *Client) ListDistributionsByResponseHeadersPolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByResponseHeadersPolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByResponseHeadersPolicyIdOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListDistributionsByResponseHeadersPolicyId",
+		Input:   input,
+		Output:  (*cloudfront.ListDistributionsByResponseHeadersPolicyIdOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListDistributionsByResponseHeadersPolicyIdWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListDistributionsByResponseHeadersPolicyIdOutput), req.Error
+}
+
 func (c *Client) ListDistributionsByWebACLIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByWebACLIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByWebACLIdOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -1603,6 +1715,27 @@ func (c *Client) ListRealtimeLogConfigsWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*cloudfront.ListRealtimeLogConfigsOutput), req.Error
+}
+
+func (c *Client) ListResponseHeadersPoliciesWithContext(ctx context.Context, input *cloudfront.ListResponseHeadersPoliciesInput, opts ...request.Option) (*cloudfront.ListResponseHeadersPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListResponseHeadersPolicies",
+		Input:   input,
+		Output:  (*cloudfront.ListResponseHeadersPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListResponseHeadersPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListResponseHeadersPoliciesOutput), req.Error
 }
 
 func (c *Client) ListStreamingDistributionsWithContext(ctx context.Context, input *cloudfront.ListStreamingDistributionsInput, opts ...request.Option) (*cloudfront.ListStreamingDistributionsOutput, error) {
@@ -1959,6 +2092,27 @@ func (c *Client) UpdateRealtimeLogConfigWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*cloudfront.UpdateRealtimeLogConfigOutput), req.Error
+}
+
+func (c *Client) UpdateResponseHeadersPolicyWithContext(ctx context.Context, input *cloudfront.UpdateResponseHeadersPolicyInput, opts ...request.Option) (*cloudfront.UpdateResponseHeadersPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateResponseHeadersPolicy",
+		Input:   input,
+		Output:  (*cloudfront.UpdateResponseHeadersPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateResponseHeadersPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateResponseHeadersPolicyOutput), req.Error
 }
 
 func (c *Client) UpdateStreamingDistributionWithContext(ctx context.Context, input *cloudfront.UpdateStreamingDistributionInput, opts ...request.Option) (*cloudfront.UpdateStreamingDistributionOutput, error) {
