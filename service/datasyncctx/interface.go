@@ -15,6 +15,7 @@ type DataSync interface {
 	CreateAgentWithContext(ctx context.Context, input *datasync.CreateAgentInput, opts ...request.Option) (*datasync.CreateAgentOutput, error)
 	CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error)
 	CreateLocationFsxWindowsWithContext(ctx context.Context, input *datasync.CreateLocationFsxWindowsInput, opts ...request.Option) (*datasync.CreateLocationFsxWindowsOutput, error)
+	CreateLocationHdfsWithContext(ctx context.Context, input *datasync.CreateLocationHdfsInput, opts ...request.Option) (*datasync.CreateLocationHdfsOutput, error)
 	CreateLocationNfsWithContext(ctx context.Context, input *datasync.CreateLocationNfsInput, opts ...request.Option) (*datasync.CreateLocationNfsOutput, error)
 	CreateLocationObjectStorageWithContext(ctx context.Context, input *datasync.CreateLocationObjectStorageInput, opts ...request.Option) (*datasync.CreateLocationObjectStorageOutput, error)
 	CreateLocationS3WithContext(ctx context.Context, input *datasync.CreateLocationS3Input, opts ...request.Option) (*datasync.CreateLocationS3Output, error)
@@ -26,6 +27,7 @@ type DataSync interface {
 	DescribeAgentWithContext(ctx context.Context, input *datasync.DescribeAgentInput, opts ...request.Option) (*datasync.DescribeAgentOutput, error)
 	DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error)
 	DescribeLocationFsxWindowsWithContext(ctx context.Context, input *datasync.DescribeLocationFsxWindowsInput, opts ...request.Option) (*datasync.DescribeLocationFsxWindowsOutput, error)
+	DescribeLocationHdfsWithContext(ctx context.Context, input *datasync.DescribeLocationHdfsInput, opts ...request.Option) (*datasync.DescribeLocationHdfsOutput, error)
 	DescribeLocationNfsWithContext(ctx context.Context, input *datasync.DescribeLocationNfsInput, opts ...request.Option) (*datasync.DescribeLocationNfsOutput, error)
 	DescribeLocationObjectStorageWithContext(ctx context.Context, input *datasync.DescribeLocationObjectStorageInput, opts ...request.Option) (*datasync.DescribeLocationObjectStorageOutput, error)
 	DescribeLocationS3WithContext(ctx context.Context, input *datasync.DescribeLocationS3Input, opts ...request.Option) (*datasync.DescribeLocationS3Output, error)
@@ -46,6 +48,7 @@ type DataSync interface {
 	TagResourceWithContext(ctx context.Context, input *datasync.TagResourceInput, opts ...request.Option) (*datasync.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error)
 	UpdateAgentWithContext(ctx context.Context, input *datasync.UpdateAgentInput, opts ...request.Option) (*datasync.UpdateAgentOutput, error)
+	UpdateLocationHdfsWithContext(ctx context.Context, input *datasync.UpdateLocationHdfsInput, opts ...request.Option) (*datasync.UpdateLocationHdfsOutput, error)
 	UpdateLocationNfsWithContext(ctx context.Context, input *datasync.UpdateLocationNfsInput, opts ...request.Option) (*datasync.UpdateLocationNfsOutput, error)
 	UpdateLocationObjectStorageWithContext(ctx context.Context, input *datasync.UpdateLocationObjectStorageInput, opts ...request.Option) (*datasync.UpdateLocationObjectStorageOutput, error)
 	UpdateLocationSmbWithContext(ctx context.Context, input *datasync.UpdateLocationSmbInput, opts ...request.Option) (*datasync.UpdateLocationSmbOutput, error)
@@ -150,6 +153,27 @@ func (c *Client) CreateLocationFsxWindowsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*datasync.CreateLocationFsxWindowsOutput), req.Error
+}
+
+func (c *Client) CreateLocationHdfsWithContext(ctx context.Context, input *datasync.CreateLocationHdfsInput, opts ...request.Option) (*datasync.CreateLocationHdfsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "CreateLocationHdfs",
+		Input:   input,
+		Output:  (*datasync.CreateLocationHdfsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.CreateLocationHdfsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.CreateLocationHdfsOutput), req.Error
 }
 
 func (c *Client) CreateLocationNfsWithContext(ctx context.Context, input *datasync.CreateLocationNfsInput, opts ...request.Option) (*datasync.CreateLocationNfsOutput, error) {
@@ -381,6 +405,27 @@ func (c *Client) DescribeLocationFsxWindowsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*datasync.DescribeLocationFsxWindowsOutput), req.Error
+}
+
+func (c *Client) DescribeLocationHdfsWithContext(ctx context.Context, input *datasync.DescribeLocationHdfsInput, opts ...request.Option) (*datasync.DescribeLocationHdfsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeLocationHdfs",
+		Input:   input,
+		Output:  (*datasync.DescribeLocationHdfsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeLocationHdfsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeLocationHdfsOutput), req.Error
 }
 
 func (c *Client) DescribeLocationNfsWithContext(ctx context.Context, input *datasync.DescribeLocationNfsInput, opts ...request.Option) (*datasync.DescribeLocationNfsOutput, error) {
@@ -796,6 +841,27 @@ func (c *Client) UpdateAgentWithContext(ctx context.Context, input *datasync.Upd
 	})
 
 	return req.Output.(*datasync.UpdateAgentOutput), req.Error
+}
+
+func (c *Client) UpdateLocationHdfsWithContext(ctx context.Context, input *datasync.UpdateLocationHdfsInput, opts ...request.Option) (*datasync.UpdateLocationHdfsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateLocationHdfs",
+		Input:   input,
+		Output:  (*datasync.UpdateLocationHdfsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateLocationHdfsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateLocationHdfsOutput), req.Error
 }
 
 func (c *Client) UpdateLocationNfsWithContext(ctx context.Context, input *datasync.UpdateLocationNfsInput, opts ...request.Option) (*datasync.UpdateLocationNfsOutput, error) {
