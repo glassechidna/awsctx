@@ -27,6 +27,7 @@ type Connect interface {
 	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
+	CreateSecurityProfileWithContext(ctx context.Context, input *connect.CreateSecurityProfileInput, opts ...request.Option) (*connect.CreateSecurityProfileOutput, error)
 	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
@@ -34,6 +35,7 @@ type Connect interface {
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
 	DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error)
+	DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error)
 	DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
@@ -46,6 +48,7 @@ type Connect interface {
 	DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error)
 	DescribeQuickConnectWithContext(ctx context.Context, input *connect.DescribeQuickConnectInput, opts ...request.Option) (*connect.DescribeQuickConnectOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
+	DescribeSecurityProfileWithContext(ctx context.Context, input *connect.DescribeSecurityProfileInput, opts ...request.Option) (*connect.DescribeSecurityProfileOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
 	DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error)
 	DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error)
@@ -101,6 +104,8 @@ type Connect interface {
 	ListRoutingProfilesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, cb func(*connect.ListRoutingProfilesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityKeysWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, opts ...request.Option) (*connect.ListSecurityKeysOutput, error)
 	ListSecurityKeysPagesWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, cb func(*connect.ListSecurityKeysOutput, bool) bool, opts ...request.Option) error
+	ListSecurityProfilePermissionsWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, opts ...request.Option) (*connect.ListSecurityProfilePermissionsOutput, error)
+	ListSecurityProfilePermissionsPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, cb func(*connect.ListSecurityProfilePermissionsOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
 	ListSecurityProfilesPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, cb func(*connect.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error)
@@ -140,6 +145,7 @@ type Connect interface {
 	UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx context.Context, input *connect.UpdateRoutingProfileDefaultOutboundQueueInput, opts ...request.Option) (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput, error)
 	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
 	UpdateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.UpdateRoutingProfileQueuesInput, opts ...request.Option) (*connect.UpdateRoutingProfileQueuesOutput, error)
+	UpdateSecurityProfileWithContext(ctx context.Context, input *connect.UpdateSecurityProfileInput, opts ...request.Option) (*connect.UpdateSecurityProfileOutput, error)
 	UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error)
 	UpdateUserHierarchyGroupNameWithContext(ctx context.Context, input *connect.UpdateUserHierarchyGroupNameInput, opts ...request.Option) (*connect.UpdateUserHierarchyGroupNameOutput, error)
 	UpdateUserHierarchyStructureWithContext(ctx context.Context, input *connect.UpdateUserHierarchyStructureInput, opts ...request.Option) (*connect.UpdateUserHierarchyStructureOutput, error)
@@ -500,6 +506,27 @@ func (c *Client) CreateRoutingProfileWithContext(ctx context.Context, input *con
 	return req.Output.(*connect.CreateRoutingProfileOutput), req.Error
 }
 
+func (c *Client) CreateSecurityProfileWithContext(ctx context.Context, input *connect.CreateSecurityProfileInput, opts ...request.Option) (*connect.CreateSecurityProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateSecurityProfile",
+		Input:   input,
+		Output:  (*connect.CreateSecurityProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateSecurityProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateSecurityProfileOutput), req.Error
+}
+
 func (c *Client) CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -645,6 +672,27 @@ func (c *Client) DeleteQuickConnectWithContext(ctx context.Context, input *conne
 	})
 
 	return req.Output.(*connect.DeleteQuickConnectOutput), req.Error
+}
+
+func (c *Client) DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteSecurityProfile",
+		Input:   input,
+		Output:  (*connect.DeleteSecurityProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteSecurityProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteSecurityProfileOutput), req.Error
 }
 
 func (c *Client) DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error) {
@@ -897,6 +945,27 @@ func (c *Client) DescribeRoutingProfileWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*connect.DescribeRoutingProfileOutput), req.Error
+}
+
+func (c *Client) DescribeSecurityProfileWithContext(ctx context.Context, input *connect.DescribeSecurityProfileInput, opts ...request.Option) (*connect.DescribeSecurityProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeSecurityProfile",
+		Input:   input,
+		Output:  (*connect.DescribeSecurityProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeSecurityProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeSecurityProfileOutput), req.Error
 }
 
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error) {
@@ -2033,6 +2102,47 @@ func (c *Client) ListSecurityKeysPagesWithContext(ctx context.Context, input *co
 	return req.Error
 }
 
+func (c *Client) ListSecurityProfilePermissionsWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, opts ...request.Option) (*connect.ListSecurityProfilePermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListSecurityProfilePermissions",
+		Input:   input,
+		Output:  (*connect.ListSecurityProfilePermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListSecurityProfilePermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListSecurityProfilePermissionsOutput), req.Error
+}
+
+func (c *Client) ListSecurityProfilePermissionsPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, cb func(*connect.ListSecurityProfilePermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListSecurityProfilePermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListSecurityProfilePermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -2846,6 +2956,27 @@ func (c *Client) UpdateRoutingProfileQueuesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*connect.UpdateRoutingProfileQueuesOutput), req.Error
+}
+
+func (c *Client) UpdateSecurityProfileWithContext(ctx context.Context, input *connect.UpdateSecurityProfileInput, opts ...request.Option) (*connect.UpdateSecurityProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateSecurityProfile",
+		Input:   input,
+		Output:  (*connect.UpdateSecurityProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateSecurityProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateSecurityProfileOutput), req.Error
 }
 
 func (c *Client) UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error) {
