@@ -47,6 +47,7 @@ type SNS interface {
 	ListTopicsPagesWithContext(ctx context.Context, input *sns.ListTopicsInput, cb func(*sns.ListTopicsOutput, bool) bool, opts ...request.Option) error
 	OptInPhoneNumberWithContext(ctx context.Context, input *sns.OptInPhoneNumberInput, opts ...request.Option) (*sns.OptInPhoneNumberOutput, error)
 	PublishWithContext(ctx context.Context, input *sns.PublishInput, opts ...request.Option) (*sns.PublishOutput, error)
+	PublishBatchWithContext(ctx context.Context, input *sns.PublishBatchInput, opts ...request.Option) (*sns.PublishBatchOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *sns.RemovePermissionInput, opts ...request.Option) (*sns.RemovePermissionOutput, error)
 	SetEndpointAttributesWithContext(ctx context.Context, input *sns.SetEndpointAttributesInput, opts ...request.Option) (*sns.SetEndpointAttributesOutput, error)
 	SetPlatformApplicationAttributesWithContext(ctx context.Context, input *sns.SetPlatformApplicationAttributesInput, opts ...request.Option) (*sns.SetPlatformApplicationAttributesOutput, error)
@@ -821,6 +822,27 @@ func (c *Client) PublishWithContext(ctx context.Context, input *sns.PublishInput
 	})
 
 	return req.Output.(*sns.PublishOutput), req.Error
+}
+
+func (c *Client) PublishBatchWithContext(ctx context.Context, input *sns.PublishBatchInput, opts ...request.Option) (*sns.PublishBatchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "PublishBatch",
+		Input:   input,
+		Output:  (*sns.PublishBatchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.PublishBatchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.PublishBatchOutput), req.Error
 }
 
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *sns.RemovePermissionInput, opts ...request.Option) (*sns.RemovePermissionOutput, error) {
