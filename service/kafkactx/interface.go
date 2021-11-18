@@ -47,6 +47,7 @@ type Kafka interface {
 	UpdateClusterConfigurationWithContext(ctx context.Context, input *kafka.UpdateClusterConfigurationInput, opts ...request.Option) (*kafka.UpdateClusterConfigurationOutput, error)
 	UpdateClusterKafkaVersionWithContext(ctx context.Context, input *kafka.UpdateClusterKafkaVersionInput, opts ...request.Option) (*kafka.UpdateClusterKafkaVersionOutput, error)
 	UpdateConfigurationWithContext(ctx context.Context, input *kafka.UpdateConfigurationInput, opts ...request.Option) (*kafka.UpdateConfigurationOutput, error)
+	UpdateConnectivityWithContext(ctx context.Context, input *kafka.UpdateConnectivityInput, opts ...request.Option) (*kafka.UpdateConnectivityOutput, error)
 	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
 	UpdateSecurityWithContext(ctx context.Context, input *kafka.UpdateSecurityInput, opts ...request.Option) (*kafka.UpdateSecurityOutput, error)
 }
@@ -813,6 +814,27 @@ func (c *Client) UpdateConfigurationWithContext(ctx context.Context, input *kafk
 	})
 
 	return req.Output.(*kafka.UpdateConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateConnectivityWithContext(ctx context.Context, input *kafka.UpdateConnectivityInput, opts ...request.Option) (*kafka.UpdateConnectivityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateConnectivity",
+		Input:   input,
+		Output:  (*kafka.UpdateConnectivityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateConnectivityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateConnectivityOutput), req.Error
 }
 
 func (c *Client) UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error) {
