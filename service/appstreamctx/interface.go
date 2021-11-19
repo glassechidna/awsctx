@@ -11,10 +11,13 @@ import (
 )
 
 type AppStream interface {
+	AssociateApplicationFleetWithContext(ctx context.Context, input *appstream.AssociateApplicationFleetInput, opts ...request.Option) (*appstream.AssociateApplicationFleetOutput, error)
 	AssociateFleetWithContext(ctx context.Context, input *appstream.AssociateFleetInput, opts ...request.Option) (*appstream.AssociateFleetOutput, error)
 	BatchAssociateUserStackWithContext(ctx context.Context, input *appstream.BatchAssociateUserStackInput, opts ...request.Option) (*appstream.BatchAssociateUserStackOutput, error)
 	BatchDisassociateUserStackWithContext(ctx context.Context, input *appstream.BatchDisassociateUserStackInput, opts ...request.Option) (*appstream.BatchDisassociateUserStackOutput, error)
 	CopyImageWithContext(ctx context.Context, input *appstream.CopyImageInput, opts ...request.Option) (*appstream.CopyImageOutput, error)
+	CreateAppBlockWithContext(ctx context.Context, input *appstream.CreateAppBlockInput, opts ...request.Option) (*appstream.CreateAppBlockOutput, error)
+	CreateApplicationWithContext(ctx context.Context, input *appstream.CreateApplicationInput, opts ...request.Option) (*appstream.CreateApplicationOutput, error)
 	CreateDirectoryConfigWithContext(ctx context.Context, input *appstream.CreateDirectoryConfigInput, opts ...request.Option) (*appstream.CreateDirectoryConfigOutput, error)
 	CreateFleetWithContext(ctx context.Context, input *appstream.CreateFleetInput, opts ...request.Option) (*appstream.CreateFleetOutput, error)
 	CreateImageBuilderWithContext(ctx context.Context, input *appstream.CreateImageBuilderInput, opts ...request.Option) (*appstream.CreateImageBuilderOutput, error)
@@ -24,6 +27,8 @@ type AppStream interface {
 	CreateUpdatedImageWithContext(ctx context.Context, input *appstream.CreateUpdatedImageInput, opts ...request.Option) (*appstream.CreateUpdatedImageOutput, error)
 	CreateUsageReportSubscriptionWithContext(ctx context.Context, input *appstream.CreateUsageReportSubscriptionInput, opts ...request.Option) (*appstream.CreateUsageReportSubscriptionOutput, error)
 	CreateUserWithContext(ctx context.Context, input *appstream.CreateUserInput, opts ...request.Option) (*appstream.CreateUserOutput, error)
+	DeleteAppBlockWithContext(ctx context.Context, input *appstream.DeleteAppBlockInput, opts ...request.Option) (*appstream.DeleteAppBlockOutput, error)
+	DeleteApplicationWithContext(ctx context.Context, input *appstream.DeleteApplicationInput, opts ...request.Option) (*appstream.DeleteApplicationOutput, error)
 	DeleteDirectoryConfigWithContext(ctx context.Context, input *appstream.DeleteDirectoryConfigInput, opts ...request.Option) (*appstream.DeleteDirectoryConfigOutput, error)
 	DeleteFleetWithContext(ctx context.Context, input *appstream.DeleteFleetInput, opts ...request.Option) (*appstream.DeleteFleetOutput, error)
 	DeleteImageWithContext(ctx context.Context, input *appstream.DeleteImageInput, opts ...request.Option) (*appstream.DeleteImageOutput, error)
@@ -32,6 +37,9 @@ type AppStream interface {
 	DeleteStackWithContext(ctx context.Context, input *appstream.DeleteStackInput, opts ...request.Option) (*appstream.DeleteStackOutput, error)
 	DeleteUsageReportSubscriptionWithContext(ctx context.Context, input *appstream.DeleteUsageReportSubscriptionInput, opts ...request.Option) (*appstream.DeleteUsageReportSubscriptionOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *appstream.DeleteUserInput, opts ...request.Option) (*appstream.DeleteUserOutput, error)
+	DescribeAppBlocksWithContext(ctx context.Context, input *appstream.DescribeAppBlocksInput, opts ...request.Option) (*appstream.DescribeAppBlocksOutput, error)
+	DescribeApplicationFleetAssociationsWithContext(ctx context.Context, input *appstream.DescribeApplicationFleetAssociationsInput, opts ...request.Option) (*appstream.DescribeApplicationFleetAssociationsOutput, error)
+	DescribeApplicationsWithContext(ctx context.Context, input *appstream.DescribeApplicationsInput, opts ...request.Option) (*appstream.DescribeApplicationsOutput, error)
 	DescribeDirectoryConfigsWithContext(ctx context.Context, input *appstream.DescribeDirectoryConfigsInput, opts ...request.Option) (*appstream.DescribeDirectoryConfigsOutput, error)
 	DescribeFleetsWithContext(ctx context.Context, input *appstream.DescribeFleetsInput, opts ...request.Option) (*appstream.DescribeFleetsOutput, error)
 	DescribeImageBuildersWithContext(ctx context.Context, input *appstream.DescribeImageBuildersInput, opts ...request.Option) (*appstream.DescribeImageBuildersOutput, error)
@@ -45,6 +53,7 @@ type AppStream interface {
 	DescribeUserStackAssociationsWithContext(ctx context.Context, input *appstream.DescribeUserStackAssociationsInput, opts ...request.Option) (*appstream.DescribeUserStackAssociationsOutput, error)
 	DescribeUsersWithContext(ctx context.Context, input *appstream.DescribeUsersInput, opts ...request.Option) (*appstream.DescribeUsersOutput, error)
 	DisableUserWithContext(ctx context.Context, input *appstream.DisableUserInput, opts ...request.Option) (*appstream.DisableUserOutput, error)
+	DisassociateApplicationFleetWithContext(ctx context.Context, input *appstream.DisassociateApplicationFleetInput, opts ...request.Option) (*appstream.DisassociateApplicationFleetOutput, error)
 	DisassociateFleetWithContext(ctx context.Context, input *appstream.DisassociateFleetInput, opts ...request.Option) (*appstream.DisassociateFleetOutput, error)
 	EnableUserWithContext(ctx context.Context, input *appstream.EnableUserInput, opts ...request.Option) (*appstream.EnableUserOutput, error)
 	ExpireSessionWithContext(ctx context.Context, input *appstream.ExpireSessionInput, opts ...request.Option) (*appstream.ExpireSessionOutput, error)
@@ -57,6 +66,7 @@ type AppStream interface {
 	StopImageBuilderWithContext(ctx context.Context, input *appstream.StopImageBuilderInput, opts ...request.Option) (*appstream.StopImageBuilderOutput, error)
 	TagResourceWithContext(ctx context.Context, input *appstream.TagResourceInput, opts ...request.Option) (*appstream.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *appstream.UntagResourceInput, opts ...request.Option) (*appstream.UntagResourceOutput, error)
+	UpdateApplicationWithContext(ctx context.Context, input *appstream.UpdateApplicationInput, opts ...request.Option) (*appstream.UpdateApplicationOutput, error)
 	UpdateDirectoryConfigWithContext(ctx context.Context, input *appstream.UpdateDirectoryConfigInput, opts ...request.Option) (*appstream.UpdateDirectoryConfigOutput, error)
 	UpdateFleetWithContext(ctx context.Context, input *appstream.UpdateFleetInput, opts ...request.Option) (*appstream.UpdateFleetOutput, error)
 	UpdateImagePermissionsWithContext(ctx context.Context, input *appstream.UpdateImagePermissionsInput, opts ...request.Option) (*appstream.UpdateImagePermissionsOutput, error)
@@ -77,6 +87,27 @@ func New(base appstreamiface.AppStreamAPI, ctxer awsctx.Contexter) AppStream {
 
 var _ AppStream = (*appstream.AppStream)(nil)
 var _ AppStream = (*Client)(nil)
+
+func (c *Client) AssociateApplicationFleetWithContext(ctx context.Context, input *appstream.AssociateApplicationFleetInput, opts ...request.Option) (*appstream.AssociateApplicationFleetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "AssociateApplicationFleet",
+		Input:   input,
+		Output:  (*appstream.AssociateApplicationFleetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.AssociateApplicationFleetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.AssociateApplicationFleetOutput), req.Error
+}
 
 func (c *Client) AssociateFleetWithContext(ctx context.Context, input *appstream.AssociateFleetInput, opts ...request.Option) (*appstream.AssociateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -160,6 +191,48 @@ func (c *Client) CopyImageWithContext(ctx context.Context, input *appstream.Copy
 	})
 
 	return req.Output.(*appstream.CopyImageOutput), req.Error
+}
+
+func (c *Client) CreateAppBlockWithContext(ctx context.Context, input *appstream.CreateAppBlockInput, opts ...request.Option) (*appstream.CreateAppBlockOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "CreateAppBlock",
+		Input:   input,
+		Output:  (*appstream.CreateAppBlockOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.CreateAppBlockWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.CreateAppBlockOutput), req.Error
+}
+
+func (c *Client) CreateApplicationWithContext(ctx context.Context, input *appstream.CreateApplicationInput, opts ...request.Option) (*appstream.CreateApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "CreateApplication",
+		Input:   input,
+		Output:  (*appstream.CreateApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.CreateApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.CreateApplicationOutput), req.Error
 }
 
 func (c *Client) CreateDirectoryConfigWithContext(ctx context.Context, input *appstream.CreateDirectoryConfigInput, opts ...request.Option) (*appstream.CreateDirectoryConfigOutput, error) {
@@ -351,6 +424,48 @@ func (c *Client) CreateUserWithContext(ctx context.Context, input *appstream.Cre
 	return req.Output.(*appstream.CreateUserOutput), req.Error
 }
 
+func (c *Client) DeleteAppBlockWithContext(ctx context.Context, input *appstream.DeleteAppBlockInput, opts ...request.Option) (*appstream.DeleteAppBlockOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DeleteAppBlock",
+		Input:   input,
+		Output:  (*appstream.DeleteAppBlockOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.DeleteAppBlockWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.DeleteAppBlockOutput), req.Error
+}
+
+func (c *Client) DeleteApplicationWithContext(ctx context.Context, input *appstream.DeleteApplicationInput, opts ...request.Option) (*appstream.DeleteApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DeleteApplication",
+		Input:   input,
+		Output:  (*appstream.DeleteApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.DeleteApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.DeleteApplicationOutput), req.Error
+}
+
 func (c *Client) DeleteDirectoryConfigWithContext(ctx context.Context, input *appstream.DeleteDirectoryConfigInput, opts ...request.Option) (*appstream.DeleteDirectoryConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
@@ -517,6 +632,69 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, input *appstream.Del
 	})
 
 	return req.Output.(*appstream.DeleteUserOutput), req.Error
+}
+
+func (c *Client) DescribeAppBlocksWithContext(ctx context.Context, input *appstream.DescribeAppBlocksInput, opts ...request.Option) (*appstream.DescribeAppBlocksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DescribeAppBlocks",
+		Input:   input,
+		Output:  (*appstream.DescribeAppBlocksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.DescribeAppBlocksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.DescribeAppBlocksOutput), req.Error
+}
+
+func (c *Client) DescribeApplicationFleetAssociationsWithContext(ctx context.Context, input *appstream.DescribeApplicationFleetAssociationsInput, opts ...request.Option) (*appstream.DescribeApplicationFleetAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DescribeApplicationFleetAssociations",
+		Input:   input,
+		Output:  (*appstream.DescribeApplicationFleetAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.DescribeApplicationFleetAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.DescribeApplicationFleetAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeApplicationsWithContext(ctx context.Context, input *appstream.DescribeApplicationsInput, opts ...request.Option) (*appstream.DescribeApplicationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DescribeApplications",
+		Input:   input,
+		Output:  (*appstream.DescribeApplicationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.DescribeApplicationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.DescribeApplicationsOutput), req.Error
 }
 
 func (c *Client) DescribeDirectoryConfigsWithContext(ctx context.Context, input *appstream.DescribeDirectoryConfigsInput, opts ...request.Option) (*appstream.DescribeDirectoryConfigsOutput, error) {
@@ -790,6 +968,27 @@ func (c *Client) DisableUserWithContext(ctx context.Context, input *appstream.Di
 	return req.Output.(*appstream.DisableUserOutput), req.Error
 }
 
+func (c *Client) DisassociateApplicationFleetWithContext(ctx context.Context, input *appstream.DisassociateApplicationFleetInput, opts ...request.Option) (*appstream.DisassociateApplicationFleetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "DisassociateApplicationFleet",
+		Input:   input,
+		Output:  (*appstream.DisassociateApplicationFleetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.DisassociateApplicationFleetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.DisassociateApplicationFleetOutput), req.Error
+}
+
 func (c *Client) DisassociateFleetWithContext(ctx context.Context, input *appstream.DisassociateFleetInput, opts ...request.Option) (*appstream.DisassociateFleetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appstream",
@@ -1040,6 +1239,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *appstream.
 	})
 
 	return req.Output.(*appstream.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateApplicationWithContext(ctx context.Context, input *appstream.UpdateApplicationInput, opts ...request.Option) (*appstream.UpdateApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appstream",
+		Action:  "UpdateApplication",
+		Input:   input,
+		Output:  (*appstream.UpdateApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppStreamAPI.UpdateApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appstream.UpdateApplicationOutput), req.Error
 }
 
 func (c *Client) UpdateDirectoryConfigWithContext(ctx context.Context, input *appstream.UpdateDirectoryConfigInput, opts ...request.Option) (*appstream.UpdateDirectoryConfigOutput, error) {

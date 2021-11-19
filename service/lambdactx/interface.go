@@ -17,6 +17,7 @@ type Lambda interface {
 	CreateCodeSigningConfigWithContext(ctx context.Context, input *lambda.CreateCodeSigningConfigInput, opts ...request.Option) (*lambda.CreateCodeSigningConfigOutput, error)
 	CreateEventSourceMappingWithContext(ctx context.Context, input *lambda.CreateEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
 	CreateFunctionWithContext(ctx context.Context, input *lambda.CreateFunctionInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
+	CreateFunctionUrlConfigWithContext(ctx context.Context, input *lambda.CreateFunctionUrlConfigInput, opts ...request.Option) (*lambda.CreateFunctionUrlConfigOutput, error)
 	DeleteAliasWithContext(ctx context.Context, input *lambda.DeleteAliasInput, opts ...request.Option) (*lambda.DeleteAliasOutput, error)
 	DeleteCodeSigningConfigWithContext(ctx context.Context, input *lambda.DeleteCodeSigningConfigInput, opts ...request.Option) (*lambda.DeleteCodeSigningConfigOutput, error)
 	DeleteEventSourceMappingWithContext(ctx context.Context, input *lambda.DeleteEventSourceMappingInput, opts ...request.Option) (*lambda.EventSourceMappingConfiguration, error)
@@ -24,6 +25,7 @@ type Lambda interface {
 	DeleteFunctionCodeSigningConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionCodeSigningConfigInput, opts ...request.Option) (*lambda.DeleteFunctionCodeSigningConfigOutput, error)
 	DeleteFunctionConcurrencyWithContext(ctx context.Context, input *lambda.DeleteFunctionConcurrencyInput, opts ...request.Option) (*lambda.DeleteFunctionConcurrencyOutput, error)
 	DeleteFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.DeleteFunctionEventInvokeConfigOutput, error)
+	DeleteFunctionUrlConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionUrlConfigInput, opts ...request.Option) (*lambda.DeleteFunctionUrlConfigOutput, error)
 	DeleteLayerVersionWithContext(ctx context.Context, input *lambda.DeleteLayerVersionInput, opts ...request.Option) (*lambda.DeleteLayerVersionOutput, error)
 	DeleteProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.DeleteProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.DeleteProvisionedConcurrencyConfigOutput, error)
 	GetAccountSettingsWithContext(ctx context.Context, input *lambda.GetAccountSettingsInput, opts ...request.Option) (*lambda.GetAccountSettingsOutput, error)
@@ -35,6 +37,7 @@ type Lambda interface {
 	GetFunctionConcurrencyWithContext(ctx context.Context, input *lambda.GetFunctionConcurrencyInput, opts ...request.Option) (*lambda.GetFunctionConcurrencyOutput, error)
 	GetFunctionConfigurationWithContext(ctx context.Context, input *lambda.GetFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	GetFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.GetFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.GetFunctionEventInvokeConfigOutput, error)
+	GetFunctionUrlConfigWithContext(ctx context.Context, input *lambda.GetFunctionUrlConfigInput, opts ...request.Option) (*lambda.GetFunctionUrlConfigOutput, error)
 	GetLayerVersionWithContext(ctx context.Context, input *lambda.GetLayerVersionInput, opts ...request.Option) (*lambda.GetLayerVersionOutput, error)
 	GetLayerVersionByArnWithContext(ctx context.Context, input *lambda.GetLayerVersionByArnInput, opts ...request.Option) (*lambda.GetLayerVersionByArnOutput, error)
 	GetLayerVersionPolicyWithContext(ctx context.Context, input *lambda.GetLayerVersionPolicyInput, opts ...request.Option) (*lambda.GetLayerVersionPolicyOutput, error)
@@ -50,6 +53,8 @@ type Lambda interface {
 	ListEventSourceMappingsPagesWithContext(ctx context.Context, input *lambda.ListEventSourceMappingsInput, cb func(*lambda.ListEventSourceMappingsOutput, bool) bool, opts ...request.Option) error
 	ListFunctionEventInvokeConfigsWithContext(ctx context.Context, input *lambda.ListFunctionEventInvokeConfigsInput, opts ...request.Option) (*lambda.ListFunctionEventInvokeConfigsOutput, error)
 	ListFunctionEventInvokeConfigsPagesWithContext(ctx context.Context, input *lambda.ListFunctionEventInvokeConfigsInput, cb func(*lambda.ListFunctionEventInvokeConfigsOutput, bool) bool, opts ...request.Option) error
+	ListFunctionUrlConfigsWithContext(ctx context.Context, input *lambda.ListFunctionUrlConfigsInput, opts ...request.Option) (*lambda.ListFunctionUrlConfigsOutput, error)
+	ListFunctionUrlConfigsPagesWithContext(ctx context.Context, input *lambda.ListFunctionUrlConfigsInput, cb func(*lambda.ListFunctionUrlConfigsOutput, bool) bool, opts ...request.Option) error
 	ListFunctionsWithContext(ctx context.Context, input *lambda.ListFunctionsInput, opts ...request.Option) (*lambda.ListFunctionsOutput, error)
 	ListFunctionsPagesWithContext(ctx context.Context, input *lambda.ListFunctionsInput, cb func(*lambda.ListFunctionsOutput, bool) bool, opts ...request.Option) error
 	ListFunctionsByCodeSigningConfigWithContext(ctx context.Context, input *lambda.ListFunctionsByCodeSigningConfigInput, opts ...request.Option) (*lambda.ListFunctionsByCodeSigningConfigOutput, error)
@@ -79,6 +84,7 @@ type Lambda interface {
 	UpdateFunctionCodeWithContext(ctx context.Context, input *lambda.UpdateFunctionCodeInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	UpdateFunctionConfigurationWithContext(ctx context.Context, input *lambda.UpdateFunctionConfigurationInput, opts ...request.Option) (*lambda.FunctionConfiguration, error)
 	UpdateFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.UpdateFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.UpdateFunctionEventInvokeConfigOutput, error)
+	UpdateFunctionUrlConfigWithContext(ctx context.Context, input *lambda.UpdateFunctionUrlConfigInput, opts ...request.Option) (*lambda.UpdateFunctionUrlConfigOutput, error)
 }
 
 type Client struct {
@@ -220,6 +226,27 @@ func (c *Client) CreateFunctionWithContext(ctx context.Context, input *lambda.Cr
 	})
 
 	return req.Output.(*lambda.FunctionConfiguration), req.Error
+}
+
+func (c *Client) CreateFunctionUrlConfigWithContext(ctx context.Context, input *lambda.CreateFunctionUrlConfigInput, opts ...request.Option) (*lambda.CreateFunctionUrlConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "CreateFunctionUrlConfig",
+		Input:   input,
+		Output:  (*lambda.CreateFunctionUrlConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.CreateFunctionUrlConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.CreateFunctionUrlConfigOutput), req.Error
 }
 
 func (c *Client) DeleteAliasWithContext(ctx context.Context, input *lambda.DeleteAliasInput, opts ...request.Option) (*lambda.DeleteAliasOutput, error) {
@@ -367,6 +394,27 @@ func (c *Client) DeleteFunctionEventInvokeConfigWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*lambda.DeleteFunctionEventInvokeConfigOutput), req.Error
+}
+
+func (c *Client) DeleteFunctionUrlConfigWithContext(ctx context.Context, input *lambda.DeleteFunctionUrlConfigInput, opts ...request.Option) (*lambda.DeleteFunctionUrlConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "DeleteFunctionUrlConfig",
+		Input:   input,
+		Output:  (*lambda.DeleteFunctionUrlConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.DeleteFunctionUrlConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.DeleteFunctionUrlConfigOutput), req.Error
 }
 
 func (c *Client) DeleteLayerVersionWithContext(ctx context.Context, input *lambda.DeleteLayerVersionInput, opts ...request.Option) (*lambda.DeleteLayerVersionOutput, error) {
@@ -598,6 +646,27 @@ func (c *Client) GetFunctionEventInvokeConfigWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*lambda.GetFunctionEventInvokeConfigOutput), req.Error
+}
+
+func (c *Client) GetFunctionUrlConfigWithContext(ctx context.Context, input *lambda.GetFunctionUrlConfigInput, opts ...request.Option) (*lambda.GetFunctionUrlConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "GetFunctionUrlConfig",
+		Input:   input,
+		Output:  (*lambda.GetFunctionUrlConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.GetFunctionUrlConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.GetFunctionUrlConfigOutput), req.Error
 }
 
 func (c *Client) GetLayerVersionWithContext(ctx context.Context, input *lambda.GetLayerVersionInput, opts ...request.Option) (*lambda.GetLayerVersionOutput, error) {
@@ -906,6 +975,47 @@ func (c *Client) ListFunctionEventInvokeConfigsPagesWithContext(ctx context.Cont
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.LambdaAPI.ListFunctionEventInvokeConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFunctionUrlConfigsWithContext(ctx context.Context, input *lambda.ListFunctionUrlConfigsInput, opts ...request.Option) (*lambda.ListFunctionUrlConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListFunctionUrlConfigs",
+		Input:   input,
+		Output:  (*lambda.ListFunctionUrlConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.ListFunctionUrlConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.ListFunctionUrlConfigsOutput), req.Error
+}
+
+func (c *Client) ListFunctionUrlConfigsPagesWithContext(ctx context.Context, input *lambda.ListFunctionUrlConfigsInput, cb func(*lambda.ListFunctionUrlConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "ListFunctionUrlConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LambdaAPI.ListFunctionUrlConfigsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1512,4 +1622,25 @@ func (c *Client) UpdateFunctionEventInvokeConfigWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*lambda.UpdateFunctionEventInvokeConfigOutput), req.Error
+}
+
+func (c *Client) UpdateFunctionUrlConfigWithContext(ctx context.Context, input *lambda.UpdateFunctionUrlConfigInput, opts ...request.Option) (*lambda.UpdateFunctionUrlConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "UpdateFunctionUrlConfig",
+		Input:   input,
+		Output:  (*lambda.UpdateFunctionUrlConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.UpdateFunctionUrlConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.UpdateFunctionUrlConfigOutput), req.Error
 }
