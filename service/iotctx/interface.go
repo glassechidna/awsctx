@@ -108,6 +108,7 @@ type IoT interface {
 	DescribeJobWithContext(ctx context.Context, input *iot.DescribeJobInput, opts ...request.Option) (*iot.DescribeJobOutput, error)
 	DescribeJobExecutionWithContext(ctx context.Context, input *iot.DescribeJobExecutionInput, opts ...request.Option) (*iot.DescribeJobExecutionOutput, error)
 	DescribeJobTemplateWithContext(ctx context.Context, input *iot.DescribeJobTemplateInput, opts ...request.Option) (*iot.DescribeJobTemplateOutput, error)
+	DescribeManagedJobTemplateWithContext(ctx context.Context, input *iot.DescribeManagedJobTemplateInput, opts ...request.Option) (*iot.DescribeManagedJobTemplateOutput, error)
 	DescribeMitigationActionWithContext(ctx context.Context, input *iot.DescribeMitigationActionInput, opts ...request.Option) (*iot.DescribeMitigationActionOutput, error)
 	DescribeProvisioningTemplateWithContext(ctx context.Context, input *iot.DescribeProvisioningTemplateInput, opts ...request.Option) (*iot.DescribeProvisioningTemplateOutput, error)
 	DescribeProvisioningTemplateVersionWithContext(ctx context.Context, input *iot.DescribeProvisioningTemplateVersionInput, opts ...request.Option) (*iot.DescribeProvisioningTemplateVersionOutput, error)
@@ -188,6 +189,7 @@ type IoT interface {
 	ListJobTemplatesPagesWithContext(ctx context.Context, input *iot.ListJobTemplatesInput, cb func(*iot.ListJobTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error
+	ListManagedJobTemplatesWithContext(ctx context.Context, input *iot.ListManagedJobTemplatesInput, opts ...request.Option) (*iot.ListManagedJobTemplatesOutput, error)
 	ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error)
 	ListMitigationActionsPagesWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, cb func(*iot.ListMitigationActionsOutput, bool) bool, opts ...request.Option) error
 	ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, opts ...request.Option) (*iot.ListOTAUpdatesOutput, error)
@@ -2353,6 +2355,27 @@ func (c *Client) DescribeJobTemplateWithContext(ctx context.Context, input *iot.
 	return req.Output.(*iot.DescribeJobTemplateOutput), req.Error
 }
 
+func (c *Client) DescribeManagedJobTemplateWithContext(ctx context.Context, input *iot.DescribeManagedJobTemplateInput, opts ...request.Option) (*iot.DescribeManagedJobTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DescribeManagedJobTemplate",
+		Input:   input,
+		Output:  (*iot.DescribeManagedJobTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DescribeManagedJobTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DescribeManagedJobTemplateOutput), req.Error
+}
+
 func (c *Client) DescribeMitigationActionWithContext(ctx context.Context, input *iot.DescribeMitigationActionInput, opts ...request.Option) (*iot.DescribeMitigationActionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -4007,6 +4030,27 @@ func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *iot.ListJo
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListManagedJobTemplatesWithContext(ctx context.Context, input *iot.ListManagedJobTemplatesInput, opts ...request.Option) (*iot.ListManagedJobTemplatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListManagedJobTemplates",
+		Input:   input,
+		Output:  (*iot.ListManagedJobTemplatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListManagedJobTemplatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListManagedJobTemplatesOutput), req.Error
 }
 
 func (c *Client) ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error) {

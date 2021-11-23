@@ -161,6 +161,7 @@ type RDS interface {
 	PromoteReadReplicaWithContext(ctx context.Context, input *rds.PromoteReadReplicaInput, opts ...request.Option) (*rds.PromoteReadReplicaOutput, error)
 	PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *rds.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*rds.PromoteReadReplicaDBClusterOutput, error)
 	PurchaseReservedDBInstancesOfferingWithContext(ctx context.Context, input *rds.PurchaseReservedDBInstancesOfferingInput, opts ...request.Option) (*rds.PurchaseReservedDBInstancesOfferingOutput, error)
+	RebootDBClusterWithContext(ctx context.Context, input *rds.RebootDBClusterInput, opts ...request.Option) (*rds.RebootDBClusterOutput, error)
 	RebootDBInstanceWithContext(ctx context.Context, input *rds.RebootDBInstanceInput, opts ...request.Option) (*rds.RebootDBInstanceOutput, error)
 	RegisterDBProxyTargetsWithContext(ctx context.Context, input *rds.RegisterDBProxyTargetsInput, opts ...request.Option) (*rds.RegisterDBProxyTargetsOutput, error)
 	RemoveFromGlobalClusterWithContext(ctx context.Context, input *rds.RemoveFromGlobalClusterInput, opts ...request.Option) (*rds.RemoveFromGlobalClusterOutput, error)
@@ -3316,6 +3317,27 @@ func (c *Client) PurchaseReservedDBInstancesOfferingWithContext(ctx context.Cont
 	})
 
 	return req.Output.(*rds.PurchaseReservedDBInstancesOfferingOutput), req.Error
+}
+
+func (c *Client) RebootDBClusterWithContext(ctx context.Context, input *rds.RebootDBClusterInput, opts ...request.Option) (*rds.RebootDBClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "RebootDBCluster",
+		Input:   input,
+		Output:  (*rds.RebootDBClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.RebootDBClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.RebootDBClusterOutput), req.Error
 }
 
 func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *rds.RebootDBInstanceInput, opts ...request.Option) (*rds.RebootDBInstanceOutput, error) {

@@ -506,6 +506,7 @@ type EC2 interface {
 	ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error)
 	ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error)
 	ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error)
+	ModifyPrivateDnsNameOptionsWithContext(ctx context.Context, input *ec2.ModifyPrivateDnsNameOptionsInput, opts ...request.Option) (*ec2.ModifyPrivateDnsNameOptionsOutput, error)
 	ModifyReservedInstancesWithContext(ctx context.Context, input *ec2.ModifyReservedInstancesInput, opts ...request.Option) (*ec2.ModifyReservedInstancesOutput, error)
 	ModifySecurityGroupRulesWithContext(ctx context.Context, input *ec2.ModifySecurityGroupRulesInput, opts ...request.Option) (*ec2.ModifySecurityGroupRulesOutput, error)
 	ModifySnapshotAttributeWithContext(ctx context.Context, input *ec2.ModifySnapshotAttributeInput, opts ...request.Option) (*ec2.ModifySnapshotAttributeOutput, error)
@@ -10896,6 +10897,27 @@ func (c *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*ec2.ModifyNetworkInterfaceAttributeOutput), req.Error
+}
+
+func (c *Client) ModifyPrivateDnsNameOptionsWithContext(ctx context.Context, input *ec2.ModifyPrivateDnsNameOptionsInput, opts ...request.Option) (*ec2.ModifyPrivateDnsNameOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyPrivateDnsNameOptions",
+		Input:   input,
+		Output:  (*ec2.ModifyPrivateDnsNameOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyPrivateDnsNameOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyPrivateDnsNameOptionsOutput), req.Error
 }
 
 func (c *Client) ModifyReservedInstancesWithContext(ctx context.Context, input *ec2.ModifyReservedInstancesInput, opts ...request.Option) (*ec2.ModifyReservedInstancesOutput, error) {
