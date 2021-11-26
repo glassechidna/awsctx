@@ -101,6 +101,7 @@ type Pinpoint interface {
 	PutEventsWithContext(ctx context.Context, input *pinpoint.PutEventsInput, opts ...request.Option) (*pinpoint.PutEventsOutput, error)
 	RemoveAttributesWithContext(ctx context.Context, input *pinpoint.RemoveAttributesInput, opts ...request.Option) (*pinpoint.RemoveAttributesOutput, error)
 	SendMessagesWithContext(ctx context.Context, input *pinpoint.SendMessagesInput, opts ...request.Option) (*pinpoint.SendMessagesOutput, error)
+	SendOTPMessageWithContext(ctx context.Context, input *pinpoint.SendOTPMessageInput, opts ...request.Option) (*pinpoint.SendOTPMessageOutput, error)
 	SendUsersMessagesWithContext(ctx context.Context, input *pinpoint.SendUsersMessagesInput, opts ...request.Option) (*pinpoint.SendUsersMessagesOutput, error)
 	TagResourceWithContext(ctx context.Context, input *pinpoint.TagResourceInput, opts ...request.Option) (*pinpoint.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *pinpoint.UntagResourceInput, opts ...request.Option) (*pinpoint.UntagResourceOutput, error)
@@ -2033,6 +2034,27 @@ func (c *Client) SendMessagesWithContext(ctx context.Context, input *pinpoint.Se
 	})
 
 	return req.Output.(*pinpoint.SendMessagesOutput), req.Error
+}
+
+func (c *Client) SendOTPMessageWithContext(ctx context.Context, input *pinpoint.SendOTPMessageInput, opts ...request.Option) (*pinpoint.SendOTPMessageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "SendOTPMessage",
+		Input:   input,
+		Output:  (*pinpoint.SendOTPMessageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.SendOTPMessageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.SendOTPMessageOutput), req.Error
 }
 
 func (c *Client) SendUsersMessagesWithContext(ctx context.Context, input *pinpoint.SendUsersMessagesInput, opts ...request.Option) (*pinpoint.SendUsersMessagesOutput, error) {
