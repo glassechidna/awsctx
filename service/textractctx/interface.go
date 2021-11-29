@@ -13,6 +13,7 @@ import (
 type Textract interface {
 	AnalyzeDocumentWithContext(ctx context.Context, input *textract.AnalyzeDocumentInput, opts ...request.Option) (*textract.AnalyzeDocumentOutput, error)
 	AnalyzeExpenseWithContext(ctx context.Context, input *textract.AnalyzeExpenseInput, opts ...request.Option) (*textract.AnalyzeExpenseOutput, error)
+	AnalyzeIDWithContext(ctx context.Context, input *textract.AnalyzeIDInput, opts ...request.Option) (*textract.AnalyzeIDOutput, error)
 	DetectDocumentTextWithContext(ctx context.Context, input *textract.DetectDocumentTextInput, opts ...request.Option) (*textract.DetectDocumentTextOutput, error)
 	GetDocumentAnalysisWithContext(ctx context.Context, input *textract.GetDocumentAnalysisInput, opts ...request.Option) (*textract.GetDocumentAnalysisOutput, error)
 	GetDocumentTextDetectionWithContext(ctx context.Context, input *textract.GetDocumentTextDetectionInput, opts ...request.Option) (*textract.GetDocumentTextDetectionOutput, error)
@@ -77,6 +78,27 @@ func (c *Client) AnalyzeExpenseWithContext(ctx context.Context, input *textract.
 	})
 
 	return req.Output.(*textract.AnalyzeExpenseOutput), req.Error
+}
+
+func (c *Client) AnalyzeIDWithContext(ctx context.Context, input *textract.AnalyzeIDInput, opts ...request.Option) (*textract.AnalyzeIDOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "AnalyzeID",
+		Input:   input,
+		Output:  (*textract.AnalyzeIDOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.AnalyzeIDWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.AnalyzeIDOutput), req.Error
 }
 
 func (c *Client) DetectDocumentTextWithContext(ctx context.Context, input *textract.DetectDocumentTextInput, opts ...request.Option) (*textract.DetectDocumentTextOutput, error) {
