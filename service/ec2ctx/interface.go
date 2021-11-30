@@ -329,6 +329,8 @@ type EC2 interface {
 	DescribeSecurityGroupsWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, opts ...request.Option) (*ec2.DescribeSecurityGroupsOutput, error)
 	DescribeSecurityGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeSecurityGroupsInput, cb func(*ec2.DescribeSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotAttributeWithContext(ctx context.Context, input *ec2.DescribeSnapshotAttributeInput, opts ...request.Option) (*ec2.DescribeSnapshotAttributeOutput, error)
+	DescribeSnapshotTierStatusWithContext(ctx context.Context, input *ec2.DescribeSnapshotTierStatusInput, opts ...request.Option) (*ec2.DescribeSnapshotTierStatusOutput, error)
+	DescribeSnapshotTierStatusPagesWithContext(ctx context.Context, input *ec2.DescribeSnapshotTierStatusInput, cb func(*ec2.DescribeSnapshotTierStatusOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotsWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, opts ...request.Option) (*ec2.DescribeSnapshotsOutput, error)
 	DescribeSnapshotsPagesWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, cb func(*ec2.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeSpotDatafeedSubscriptionWithContext(ctx context.Context, input *ec2.DescribeSpotDatafeedSubscriptionInput, opts ...request.Option) (*ec2.DescribeSpotDatafeedSubscriptionOutput, error)
@@ -483,6 +485,8 @@ type EC2 interface {
 	ImportKeyPairWithContext(ctx context.Context, input *ec2.ImportKeyPairInput, opts ...request.Option) (*ec2.ImportKeyPairOutput, error)
 	ImportSnapshotWithContext(ctx context.Context, input *ec2.ImportSnapshotInput, opts ...request.Option) (*ec2.ImportSnapshotOutput, error)
 	ImportVolumeWithContext(ctx context.Context, input *ec2.ImportVolumeInput, opts ...request.Option) (*ec2.ImportVolumeOutput, error)
+	ListSnapshotsInRecycleBinWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, opts ...request.Option) (*ec2.ListSnapshotsInRecycleBinOutput, error)
+	ListSnapshotsInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, cb func(*ec2.ListSnapshotsInRecycleBinOutput, bool) bool, opts ...request.Option) error
 	ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error)
 	ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error)
 	ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error)
@@ -510,6 +514,7 @@ type EC2 interface {
 	ModifyReservedInstancesWithContext(ctx context.Context, input *ec2.ModifyReservedInstancesInput, opts ...request.Option) (*ec2.ModifyReservedInstancesOutput, error)
 	ModifySecurityGroupRulesWithContext(ctx context.Context, input *ec2.ModifySecurityGroupRulesInput, opts ...request.Option) (*ec2.ModifySecurityGroupRulesOutput, error)
 	ModifySnapshotAttributeWithContext(ctx context.Context, input *ec2.ModifySnapshotAttributeInput, opts ...request.Option) (*ec2.ModifySnapshotAttributeOutput, error)
+	ModifySnapshotTierWithContext(ctx context.Context, input *ec2.ModifySnapshotTierInput, opts ...request.Option) (*ec2.ModifySnapshotTierOutput, error)
 	ModifySpotFleetRequestWithContext(ctx context.Context, input *ec2.ModifySpotFleetRequestInput, opts ...request.Option) (*ec2.ModifySpotFleetRequestOutput, error)
 	ModifySubnetAttributeWithContext(ctx context.Context, input *ec2.ModifySubnetAttributeInput, opts ...request.Option) (*ec2.ModifySubnetAttributeOutput, error)
 	ModifyTrafficMirrorFilterNetworkServicesWithContext(ctx context.Context, input *ec2.ModifyTrafficMirrorFilterNetworkServicesInput, opts ...request.Option) (*ec2.ModifyTrafficMirrorFilterNetworkServicesOutput, error)
@@ -567,6 +572,8 @@ type EC2 interface {
 	ResetSnapshotAttributeWithContext(ctx context.Context, input *ec2.ResetSnapshotAttributeInput, opts ...request.Option) (*ec2.ResetSnapshotAttributeOutput, error)
 	RestoreAddressToClassicWithContext(ctx context.Context, input *ec2.RestoreAddressToClassicInput, opts ...request.Option) (*ec2.RestoreAddressToClassicOutput, error)
 	RestoreManagedPrefixListVersionWithContext(ctx context.Context, input *ec2.RestoreManagedPrefixListVersionInput, opts ...request.Option) (*ec2.RestoreManagedPrefixListVersionOutput, error)
+	RestoreSnapshotFromRecycleBinWithContext(ctx context.Context, input *ec2.RestoreSnapshotFromRecycleBinInput, opts ...request.Option) (*ec2.RestoreSnapshotFromRecycleBinOutput, error)
+	RestoreSnapshotTierWithContext(ctx context.Context, input *ec2.RestoreSnapshotTierInput, opts ...request.Option) (*ec2.RestoreSnapshotTierOutput, error)
 	RevokeClientVpnIngressWithContext(ctx context.Context, input *ec2.RevokeClientVpnIngressInput, opts ...request.Option) (*ec2.RevokeClientVpnIngressOutput, error)
 	RevokeSecurityGroupEgressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupEgressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupEgressOutput, error)
 	RevokeSecurityGroupIngressWithContext(ctx context.Context, input *ec2.RevokeSecurityGroupIngressInput, opts ...request.Option) (*ec2.RevokeSecurityGroupIngressOutput, error)
@@ -7225,6 +7232,47 @@ func (c *Client) DescribeSnapshotAttributeWithContext(ctx context.Context, input
 	return req.Output.(*ec2.DescribeSnapshotAttributeOutput), req.Error
 }
 
+func (c *Client) DescribeSnapshotTierStatusWithContext(ctx context.Context, input *ec2.DescribeSnapshotTierStatusInput, opts ...request.Option) (*ec2.DescribeSnapshotTierStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSnapshotTierStatus",
+		Input:   input,
+		Output:  (*ec2.DescribeSnapshotTierStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeSnapshotTierStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeSnapshotTierStatusOutput), req.Error
+}
+
+func (c *Client) DescribeSnapshotTierStatusPagesWithContext(ctx context.Context, input *ec2.DescribeSnapshotTierStatusInput, cb func(*ec2.DescribeSnapshotTierStatusOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeSnapshotTierStatus",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeSnapshotTierStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *ec2.DescribeSnapshotsInput, opts ...request.Option) (*ec2.DescribeSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10416,6 +10464,47 @@ func (c *Client) ImportVolumeWithContext(ctx context.Context, input *ec2.ImportV
 	return req.Output.(*ec2.ImportVolumeOutput), req.Error
 }
 
+func (c *Client) ListSnapshotsInRecycleBinWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, opts ...request.Option) (*ec2.ListSnapshotsInRecycleBinOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ListSnapshotsInRecycleBin",
+		Input:   input,
+		Output:  (*ec2.ListSnapshotsInRecycleBinOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ListSnapshotsInRecycleBinWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ListSnapshotsInRecycleBinOutput), req.Error
+}
+
+func (c *Client) ListSnapshotsInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, cb func(*ec2.ListSnapshotsInRecycleBinOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ListSnapshotsInRecycleBin",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.ListSnapshotsInRecycleBinPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10981,6 +11070,27 @@ func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.ModifySnapshotAttributeOutput), req.Error
+}
+
+func (c *Client) ModifySnapshotTierWithContext(ctx context.Context, input *ec2.ModifySnapshotTierInput, opts ...request.Option) (*ec2.ModifySnapshotTierOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifySnapshotTier",
+		Input:   input,
+		Output:  (*ec2.ModifySnapshotTierOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifySnapshotTierWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifySnapshotTierOutput), req.Error
 }
 
 func (c *Client) ModifySpotFleetRequestWithContext(ctx context.Context, input *ec2.ModifySpotFleetRequestInput, opts ...request.Option) (*ec2.ModifySpotFleetRequestOutput, error) {
@@ -12178,6 +12288,48 @@ func (c *Client) RestoreManagedPrefixListVersionWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*ec2.RestoreManagedPrefixListVersionOutput), req.Error
+}
+
+func (c *Client) RestoreSnapshotFromRecycleBinWithContext(ctx context.Context, input *ec2.RestoreSnapshotFromRecycleBinInput, opts ...request.Option) (*ec2.RestoreSnapshotFromRecycleBinOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RestoreSnapshotFromRecycleBin",
+		Input:   input,
+		Output:  (*ec2.RestoreSnapshotFromRecycleBinOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RestoreSnapshotFromRecycleBinWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RestoreSnapshotFromRecycleBinOutput), req.Error
+}
+
+func (c *Client) RestoreSnapshotTierWithContext(ctx context.Context, input *ec2.RestoreSnapshotTierInput, opts ...request.Option) (*ec2.RestoreSnapshotTierOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RestoreSnapshotTier",
+		Input:   input,
+		Output:  (*ec2.RestoreSnapshotTierOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RestoreSnapshotTierWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RestoreSnapshotTierOutput), req.Error
 }
 
 func (c *Client) RevokeClientVpnIngressWithContext(ctx context.Context, input *ec2.RevokeClientVpnIngressInput, opts ...request.Option) (*ec2.RevokeClientVpnIngressOutput, error) {

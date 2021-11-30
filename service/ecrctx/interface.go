@@ -14,9 +14,12 @@ type ECR interface {
 	BatchCheckLayerAvailabilityWithContext(ctx context.Context, input *ecr.BatchCheckLayerAvailabilityInput, opts ...request.Option) (*ecr.BatchCheckLayerAvailabilityOutput, error)
 	BatchDeleteImageWithContext(ctx context.Context, input *ecr.BatchDeleteImageInput, opts ...request.Option) (*ecr.BatchDeleteImageOutput, error)
 	BatchGetImageWithContext(ctx context.Context, input *ecr.BatchGetImageInput, opts ...request.Option) (*ecr.BatchGetImageOutput, error)
+	BatchGetRepositoryScanningConfigurationWithContext(ctx context.Context, input *ecr.BatchGetRepositoryScanningConfigurationInput, opts ...request.Option) (*ecr.BatchGetRepositoryScanningConfigurationOutput, error)
 	CompleteLayerUploadWithContext(ctx context.Context, input *ecr.CompleteLayerUploadInput, opts ...request.Option) (*ecr.CompleteLayerUploadOutput, error)
+	CreatePullThroughCacheRuleWithContext(ctx context.Context, input *ecr.CreatePullThroughCacheRuleInput, opts ...request.Option) (*ecr.CreatePullThroughCacheRuleOutput, error)
 	CreateRepositoryWithContext(ctx context.Context, input *ecr.CreateRepositoryInput, opts ...request.Option) (*ecr.CreateRepositoryOutput, error)
 	DeleteLifecyclePolicyWithContext(ctx context.Context, input *ecr.DeleteLifecyclePolicyInput, opts ...request.Option) (*ecr.DeleteLifecyclePolicyOutput, error)
+	DeletePullThroughCacheRuleWithContext(ctx context.Context, input *ecr.DeletePullThroughCacheRuleInput, opts ...request.Option) (*ecr.DeletePullThroughCacheRuleOutput, error)
 	DeleteRegistryPolicyWithContext(ctx context.Context, input *ecr.DeleteRegistryPolicyInput, opts ...request.Option) (*ecr.DeleteRegistryPolicyOutput, error)
 	DeleteRepositoryWithContext(ctx context.Context, input *ecr.DeleteRepositoryInput, opts ...request.Option) (*ecr.DeleteRepositoryOutput, error)
 	DeleteRepositoryPolicyWithContext(ctx context.Context, input *ecr.DeleteRepositoryPolicyInput, opts ...request.Option) (*ecr.DeleteRepositoryPolicyOutput, error)
@@ -25,6 +28,8 @@ type ECR interface {
 	DescribeImageScanFindingsPagesWithContext(ctx context.Context, input *ecr.DescribeImageScanFindingsInput, cb func(*ecr.DescribeImageScanFindingsOutput, bool) bool, opts ...request.Option) error
 	DescribeImagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, opts ...request.Option) (*ecr.DescribeImagesOutput, error)
 	DescribeImagesPagesWithContext(ctx context.Context, input *ecr.DescribeImagesInput, cb func(*ecr.DescribeImagesOutput, bool) bool, opts ...request.Option) error
+	DescribePullThroughCacheRulesWithContext(ctx context.Context, input *ecr.DescribePullThroughCacheRulesInput, opts ...request.Option) (*ecr.DescribePullThroughCacheRulesOutput, error)
+	DescribePullThroughCacheRulesPagesWithContext(ctx context.Context, input *ecr.DescribePullThroughCacheRulesInput, cb func(*ecr.DescribePullThroughCacheRulesOutput, bool) bool, opts ...request.Option) error
 	DescribeRegistryWithContext(ctx context.Context, input *ecr.DescribeRegistryInput, opts ...request.Option) (*ecr.DescribeRegistryOutput, error)
 	DescribeRepositoriesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, opts ...request.Option) (*ecr.DescribeRepositoriesOutput, error)
 	DescribeRepositoriesPagesWithContext(ctx context.Context, input *ecr.DescribeRepositoriesInput, cb func(*ecr.DescribeRepositoriesOutput, bool) bool, opts ...request.Option) error
@@ -34,6 +39,7 @@ type ECR interface {
 	GetLifecyclePolicyPreviewWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyPreviewInput, opts ...request.Option) (*ecr.GetLifecyclePolicyPreviewOutput, error)
 	GetLifecyclePolicyPreviewPagesWithContext(ctx context.Context, input *ecr.GetLifecyclePolicyPreviewInput, cb func(*ecr.GetLifecyclePolicyPreviewOutput, bool) bool, opts ...request.Option) error
 	GetRegistryPolicyWithContext(ctx context.Context, input *ecr.GetRegistryPolicyInput, opts ...request.Option) (*ecr.GetRegistryPolicyOutput, error)
+	GetRegistryScanningConfigurationWithContext(ctx context.Context, input *ecr.GetRegistryScanningConfigurationInput, opts ...request.Option) (*ecr.GetRegistryScanningConfigurationOutput, error)
 	GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.GetRepositoryPolicyInput, opts ...request.Option) (*ecr.GetRepositoryPolicyOutput, error)
 	InitiateLayerUploadWithContext(ctx context.Context, input *ecr.InitiateLayerUploadInput, opts ...request.Option) (*ecr.InitiateLayerUploadOutput, error)
 	ListImagesWithContext(ctx context.Context, input *ecr.ListImagesInput, opts ...request.Option) (*ecr.ListImagesOutput, error)
@@ -44,6 +50,7 @@ type ECR interface {
 	PutImageTagMutabilityWithContext(ctx context.Context, input *ecr.PutImageTagMutabilityInput, opts ...request.Option) (*ecr.PutImageTagMutabilityOutput, error)
 	PutLifecyclePolicyWithContext(ctx context.Context, input *ecr.PutLifecyclePolicyInput, opts ...request.Option) (*ecr.PutLifecyclePolicyOutput, error)
 	PutRegistryPolicyWithContext(ctx context.Context, input *ecr.PutRegistryPolicyInput, opts ...request.Option) (*ecr.PutRegistryPolicyOutput, error)
+	PutRegistryScanningConfigurationWithContext(ctx context.Context, input *ecr.PutRegistryScanningConfigurationInput, opts ...request.Option) (*ecr.PutRegistryScanningConfigurationOutput, error)
 	PutReplicationConfigurationWithContext(ctx context.Context, input *ecr.PutReplicationConfigurationInput, opts ...request.Option) (*ecr.PutReplicationConfigurationOutput, error)
 	SetRepositoryPolicyWithContext(ctx context.Context, input *ecr.SetRepositoryPolicyInput, opts ...request.Option) (*ecr.SetRepositoryPolicyOutput, error)
 	StartImageScanWithContext(ctx context.Context, input *ecr.StartImageScanInput, opts ...request.Option) (*ecr.StartImageScanOutput, error)
@@ -131,6 +138,27 @@ func (c *Client) BatchGetImageWithContext(ctx context.Context, input *ecr.BatchG
 	return req.Output.(*ecr.BatchGetImageOutput), req.Error
 }
 
+func (c *Client) BatchGetRepositoryScanningConfigurationWithContext(ctx context.Context, input *ecr.BatchGetRepositoryScanningConfigurationInput, opts ...request.Option) (*ecr.BatchGetRepositoryScanningConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "BatchGetRepositoryScanningConfiguration",
+		Input:   input,
+		Output:  (*ecr.BatchGetRepositoryScanningConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.BatchGetRepositoryScanningConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.BatchGetRepositoryScanningConfigurationOutput), req.Error
+}
+
 func (c *Client) CompleteLayerUploadWithContext(ctx context.Context, input *ecr.CompleteLayerUploadInput, opts ...request.Option) (*ecr.CompleteLayerUploadOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ecr",
@@ -150,6 +178,27 @@ func (c *Client) CompleteLayerUploadWithContext(ctx context.Context, input *ecr.
 	})
 
 	return req.Output.(*ecr.CompleteLayerUploadOutput), req.Error
+}
+
+func (c *Client) CreatePullThroughCacheRuleWithContext(ctx context.Context, input *ecr.CreatePullThroughCacheRuleInput, opts ...request.Option) (*ecr.CreatePullThroughCacheRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "CreatePullThroughCacheRule",
+		Input:   input,
+		Output:  (*ecr.CreatePullThroughCacheRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.CreatePullThroughCacheRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.CreatePullThroughCacheRuleOutput), req.Error
 }
 
 func (c *Client) CreateRepositoryWithContext(ctx context.Context, input *ecr.CreateRepositoryInput, opts ...request.Option) (*ecr.CreateRepositoryOutput, error) {
@@ -192,6 +241,27 @@ func (c *Client) DeleteLifecyclePolicyWithContext(ctx context.Context, input *ec
 	})
 
 	return req.Output.(*ecr.DeleteLifecyclePolicyOutput), req.Error
+}
+
+func (c *Client) DeletePullThroughCacheRuleWithContext(ctx context.Context, input *ecr.DeletePullThroughCacheRuleInput, opts ...request.Option) (*ecr.DeletePullThroughCacheRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DeletePullThroughCacheRule",
+		Input:   input,
+		Output:  (*ecr.DeletePullThroughCacheRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.DeletePullThroughCacheRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.DeletePullThroughCacheRuleOutput), req.Error
 }
 
 func (c *Client) DeleteRegistryPolicyWithContext(ctx context.Context, input *ecr.DeleteRegistryPolicyInput, opts ...request.Option) (*ecr.DeleteRegistryPolicyOutput, error) {
@@ -355,6 +425,47 @@ func (c *Client) DescribeImagesPagesWithContext(ctx context.Context, input *ecr.
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ECRAPI.DescribeImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribePullThroughCacheRulesWithContext(ctx context.Context, input *ecr.DescribePullThroughCacheRulesInput, opts ...request.Option) (*ecr.DescribePullThroughCacheRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DescribePullThroughCacheRules",
+		Input:   input,
+		Output:  (*ecr.DescribePullThroughCacheRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.DescribePullThroughCacheRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.DescribePullThroughCacheRulesOutput), req.Error
+}
+
+func (c *Client) DescribePullThroughCacheRulesPagesWithContext(ctx context.Context, input *ecr.DescribePullThroughCacheRulesInput, cb func(*ecr.DescribePullThroughCacheRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "DescribePullThroughCacheRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECRAPI.DescribePullThroughCacheRulesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -545,6 +656,27 @@ func (c *Client) GetRegistryPolicyWithContext(ctx context.Context, input *ecr.Ge
 	})
 
 	return req.Output.(*ecr.GetRegistryPolicyOutput), req.Error
+}
+
+func (c *Client) GetRegistryScanningConfigurationWithContext(ctx context.Context, input *ecr.GetRegistryScanningConfigurationInput, opts ...request.Option) (*ecr.GetRegistryScanningConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "GetRegistryScanningConfiguration",
+		Input:   input,
+		Output:  (*ecr.GetRegistryScanningConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.GetRegistryScanningConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.GetRegistryScanningConfigurationOutput), req.Error
 }
 
 func (c *Client) GetRepositoryPolicyWithContext(ctx context.Context, input *ecr.GetRepositoryPolicyInput, opts ...request.Option) (*ecr.GetRepositoryPolicyOutput, error) {
@@ -754,6 +886,27 @@ func (c *Client) PutRegistryPolicyWithContext(ctx context.Context, input *ecr.Pu
 	})
 
 	return req.Output.(*ecr.PutRegistryPolicyOutput), req.Error
+}
+
+func (c *Client) PutRegistryScanningConfigurationWithContext(ctx context.Context, input *ecr.PutRegistryScanningConfigurationInput, opts ...request.Option) (*ecr.PutRegistryScanningConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecr",
+		Action:  "PutRegistryScanningConfiguration",
+		Input:   input,
+		Output:  (*ecr.PutRegistryScanningConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECRAPI.PutRegistryScanningConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecr.PutRegistryScanningConfigurationOutput), req.Error
 }
 
 func (c *Client) PutReplicationConfigurationWithContext(ctx context.Context, input *ecr.PutReplicationConfigurationInput, opts ...request.Option) (*ecr.PutReplicationConfigurationOutput, error) {
