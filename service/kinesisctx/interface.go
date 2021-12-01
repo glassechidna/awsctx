@@ -42,6 +42,7 @@ type Kinesis interface {
 	StopStreamEncryptionWithContext(ctx context.Context, input *kinesis.StopStreamEncryptionInput, opts ...request.Option) (*kinesis.StopStreamEncryptionOutput, error)
 	SubscribeToShardWithContext(ctx context.Context, input *kinesis.SubscribeToShardInput, opts ...request.Option) (*kinesis.SubscribeToShardOutput, error)
 	UpdateShardCountWithContext(ctx context.Context, input *kinesis.UpdateShardCountInput, opts ...request.Option) (*kinesis.UpdateShardCountOutput, error)
+	UpdateStreamModeWithContext(ctx context.Context, input *kinesis.UpdateStreamModeInput, opts ...request.Option) (*kinesis.UpdateStreamModeOutput, error)
 }
 
 type Client struct {
@@ -705,4 +706,25 @@ func (c *Client) UpdateShardCountWithContext(ctx context.Context, input *kinesis
 	})
 
 	return req.Output.(*kinesis.UpdateShardCountOutput), req.Error
+}
+
+func (c *Client) UpdateStreamModeWithContext(ctx context.Context, input *kinesis.UpdateStreamModeInput, opts ...request.Option) (*kinesis.UpdateStreamModeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesis",
+		Action:  "UpdateStreamMode",
+		Input:   input,
+		Output:  (*kinesis.UpdateStreamModeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisAPI.UpdateStreamModeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesis.UpdateStreamModeOutput), req.Error
 }
