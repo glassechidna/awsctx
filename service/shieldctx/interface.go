@@ -28,10 +28,12 @@ type Shield interface {
 	DescribeProtectionWithContext(ctx context.Context, input *shield.DescribeProtectionInput, opts ...request.Option) (*shield.DescribeProtectionOutput, error)
 	DescribeProtectionGroupWithContext(ctx context.Context, input *shield.DescribeProtectionGroupInput, opts ...request.Option) (*shield.DescribeProtectionGroupOutput, error)
 	DescribeSubscriptionWithContext(ctx context.Context, input *shield.DescribeSubscriptionInput, opts ...request.Option) (*shield.DescribeSubscriptionOutput, error)
+	DisableApplicationLayerAutomaticResponseWithContext(ctx context.Context, input *shield.DisableApplicationLayerAutomaticResponseInput, opts ...request.Option) (*shield.DisableApplicationLayerAutomaticResponseOutput, error)
 	DisableProactiveEngagementWithContext(ctx context.Context, input *shield.DisableProactiveEngagementInput, opts ...request.Option) (*shield.DisableProactiveEngagementOutput, error)
 	DisassociateDRTLogBucketWithContext(ctx context.Context, input *shield.DisassociateDRTLogBucketInput, opts ...request.Option) (*shield.DisassociateDRTLogBucketOutput, error)
 	DisassociateDRTRoleWithContext(ctx context.Context, input *shield.DisassociateDRTRoleInput, opts ...request.Option) (*shield.DisassociateDRTRoleOutput, error)
 	DisassociateHealthCheckWithContext(ctx context.Context, input *shield.DisassociateHealthCheckInput, opts ...request.Option) (*shield.DisassociateHealthCheckOutput, error)
+	EnableApplicationLayerAutomaticResponseWithContext(ctx context.Context, input *shield.EnableApplicationLayerAutomaticResponseInput, opts ...request.Option) (*shield.EnableApplicationLayerAutomaticResponseOutput, error)
 	EnableProactiveEngagementWithContext(ctx context.Context, input *shield.EnableProactiveEngagementInput, opts ...request.Option) (*shield.EnableProactiveEngagementOutput, error)
 	GetSubscriptionStateWithContext(ctx context.Context, input *shield.GetSubscriptionStateInput, opts ...request.Option) (*shield.GetSubscriptionStateOutput, error)
 	ListAttacksWithContext(ctx context.Context, input *shield.ListAttacksInput, opts ...request.Option) (*shield.ListAttacksOutput, error)
@@ -45,6 +47,7 @@ type Shield interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *shield.ListTagsForResourceInput, opts ...request.Option) (*shield.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *shield.TagResourceInput, opts ...request.Option) (*shield.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *shield.UntagResourceInput, opts ...request.Option) (*shield.UntagResourceOutput, error)
+	UpdateApplicationLayerAutomaticResponseWithContext(ctx context.Context, input *shield.UpdateApplicationLayerAutomaticResponseInput, opts ...request.Option) (*shield.UpdateApplicationLayerAutomaticResponseOutput, error)
 	UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error)
 	UpdateProtectionGroupWithContext(ctx context.Context, input *shield.UpdateProtectionGroupInput, opts ...request.Option) (*shield.UpdateProtectionGroupOutput, error)
 	UpdateSubscriptionWithContext(ctx context.Context, input *shield.UpdateSubscriptionInput, opts ...request.Option) (*shield.UpdateSubscriptionOutput, error)
@@ -422,6 +425,27 @@ func (c *Client) DescribeSubscriptionWithContext(ctx context.Context, input *shi
 	return req.Output.(*shield.DescribeSubscriptionOutput), req.Error
 }
 
+func (c *Client) DisableApplicationLayerAutomaticResponseWithContext(ctx context.Context, input *shield.DisableApplicationLayerAutomaticResponseInput, opts ...request.Option) (*shield.DisableApplicationLayerAutomaticResponseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "DisableApplicationLayerAutomaticResponse",
+		Input:   input,
+		Output:  (*shield.DisableApplicationLayerAutomaticResponseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.DisableApplicationLayerAutomaticResponseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.DisableApplicationLayerAutomaticResponseOutput), req.Error
+}
+
 func (c *Client) DisableProactiveEngagementWithContext(ctx context.Context, input *shield.DisableProactiveEngagementInput, opts ...request.Option) (*shield.DisableProactiveEngagementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "shield",
@@ -504,6 +528,27 @@ func (c *Client) DisassociateHealthCheckWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*shield.DisassociateHealthCheckOutput), req.Error
+}
+
+func (c *Client) EnableApplicationLayerAutomaticResponseWithContext(ctx context.Context, input *shield.EnableApplicationLayerAutomaticResponseInput, opts ...request.Option) (*shield.EnableApplicationLayerAutomaticResponseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "EnableApplicationLayerAutomaticResponse",
+		Input:   input,
+		Output:  (*shield.EnableApplicationLayerAutomaticResponseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.EnableApplicationLayerAutomaticResponseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.EnableApplicationLayerAutomaticResponseOutput), req.Error
 }
 
 func (c *Client) EnableProactiveEngagementWithContext(ctx context.Context, input *shield.EnableProactiveEngagementInput, opts ...request.Option) (*shield.EnableProactiveEngagementOutput, error) {
@@ -773,6 +818,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *shield.Unt
 	})
 
 	return req.Output.(*shield.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateApplicationLayerAutomaticResponseWithContext(ctx context.Context, input *shield.UpdateApplicationLayerAutomaticResponseInput, opts ...request.Option) (*shield.UpdateApplicationLayerAutomaticResponseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "shield",
+		Action:  "UpdateApplicationLayerAutomaticResponse",
+		Input:   input,
+		Output:  (*shield.UpdateApplicationLayerAutomaticResponseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ShieldAPI.UpdateApplicationLayerAutomaticResponseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*shield.UpdateApplicationLayerAutomaticResponseOutput), req.Error
 }
 
 func (c *Client) UpdateEmergencyContactSettingsWithContext(ctx context.Context, input *shield.UpdateEmergencyContactSettingsInput, opts ...request.Option) (*shield.UpdateEmergencyContactSettingsOutput, error) {

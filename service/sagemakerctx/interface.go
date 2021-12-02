@@ -37,6 +37,7 @@ type SageMaker interface {
 	CreateHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.CreateHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.CreateHyperParameterTuningJobOutput, error)
 	CreateImageWithContext(ctx context.Context, input *sagemaker.CreateImageInput, opts ...request.Option) (*sagemaker.CreateImageOutput, error)
 	CreateImageVersionWithContext(ctx context.Context, input *sagemaker.CreateImageVersionInput, opts ...request.Option) (*sagemaker.CreateImageVersionOutput, error)
+	CreateInferenceRecommendationsJobWithContext(ctx context.Context, input *sagemaker.CreateInferenceRecommendationsJobInput, opts ...request.Option) (*sagemaker.CreateInferenceRecommendationsJobOutput, error)
 	CreateLabelingJobWithContext(ctx context.Context, input *sagemaker.CreateLabelingJobInput, opts ...request.Option) (*sagemaker.CreateLabelingJobOutput, error)
 	CreateModelWithContext(ctx context.Context, input *sagemaker.CreateModelInput, opts ...request.Option) (*sagemaker.CreateModelOutput, error)
 	CreateModelBiasJobDefinitionWithContext(ctx context.Context, input *sagemaker.CreateModelBiasJobDefinitionInput, opts ...request.Option) (*sagemaker.CreateModelBiasJobDefinitionOutput, error)
@@ -122,7 +123,9 @@ type SageMaker interface {
 	DescribeHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.DescribeHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.DescribeHyperParameterTuningJobOutput, error)
 	DescribeImageWithContext(ctx context.Context, input *sagemaker.DescribeImageInput, opts ...request.Option) (*sagemaker.DescribeImageOutput, error)
 	DescribeImageVersionWithContext(ctx context.Context, input *sagemaker.DescribeImageVersionInput, opts ...request.Option) (*sagemaker.DescribeImageVersionOutput, error)
+	DescribeInferenceRecommendationsJobWithContext(ctx context.Context, input *sagemaker.DescribeInferenceRecommendationsJobInput, opts ...request.Option) (*sagemaker.DescribeInferenceRecommendationsJobOutput, error)
 	DescribeLabelingJobWithContext(ctx context.Context, input *sagemaker.DescribeLabelingJobInput, opts ...request.Option) (*sagemaker.DescribeLabelingJobOutput, error)
+	DescribeLineageGroupWithContext(ctx context.Context, input *sagemaker.DescribeLineageGroupInput, opts ...request.Option) (*sagemaker.DescribeLineageGroupOutput, error)
 	DescribeModelWithContext(ctx context.Context, input *sagemaker.DescribeModelInput, opts ...request.Option) (*sagemaker.DescribeModelOutput, error)
 	DescribeModelBiasJobDefinitionWithContext(ctx context.Context, input *sagemaker.DescribeModelBiasJobDefinitionInput, opts ...request.Option) (*sagemaker.DescribeModelBiasJobDefinitionOutput, error)
 	DescribeModelExplainabilityJobDefinitionWithContext(ctx context.Context, input *sagemaker.DescribeModelExplainabilityJobDefinitionInput, opts ...request.Option) (*sagemaker.DescribeModelExplainabilityJobDefinitionOutput, error)
@@ -150,6 +153,7 @@ type SageMaker interface {
 	DisassociateTrialComponentWithContext(ctx context.Context, input *sagemaker.DisassociateTrialComponentInput, opts ...request.Option) (*sagemaker.DisassociateTrialComponentOutput, error)
 	EnableSagemakerServicecatalogPortfolioWithContext(ctx context.Context, input *sagemaker.EnableSagemakerServicecatalogPortfolioInput, opts ...request.Option) (*sagemaker.EnableSagemakerServicecatalogPortfolioOutput, error)
 	GetDeviceFleetReportWithContext(ctx context.Context, input *sagemaker.GetDeviceFleetReportInput, opts ...request.Option) (*sagemaker.GetDeviceFleetReportOutput, error)
+	GetLineageGroupPolicyWithContext(ctx context.Context, input *sagemaker.GetLineageGroupPolicyInput, opts ...request.Option) (*sagemaker.GetLineageGroupPolicyOutput, error)
 	GetModelPackageGroupPolicyWithContext(ctx context.Context, input *sagemaker.GetModelPackageGroupPolicyInput, opts ...request.Option) (*sagemaker.GetModelPackageGroupPolicyOutput, error)
 	GetSagemakerServicecatalogPortfolioStatusWithContext(ctx context.Context, input *sagemaker.GetSagemakerServicecatalogPortfolioStatusInput, opts ...request.Option) (*sagemaker.GetSagemakerServicecatalogPortfolioStatusOutput, error)
 	GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error)
@@ -203,14 +207,20 @@ type SageMaker interface {
 	ListImageVersionsPagesWithContext(ctx context.Context, input *sagemaker.ListImageVersionsInput, cb func(*sagemaker.ListImageVersionsOutput, bool) bool, opts ...request.Option) error
 	ListImagesWithContext(ctx context.Context, input *sagemaker.ListImagesInput, opts ...request.Option) (*sagemaker.ListImagesOutput, error)
 	ListImagesPagesWithContext(ctx context.Context, input *sagemaker.ListImagesInput, cb func(*sagemaker.ListImagesOutput, bool) bool, opts ...request.Option) error
+	ListInferenceRecommendationsJobsWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobsInput, opts ...request.Option) (*sagemaker.ListInferenceRecommendationsJobsOutput, error)
+	ListInferenceRecommendationsJobsPagesWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobsInput, cb func(*sagemaker.ListInferenceRecommendationsJobsOutput, bool) bool, opts ...request.Option) error
 	ListLabelingJobsWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsInput, opts ...request.Option) (*sagemaker.ListLabelingJobsOutput, error)
 	ListLabelingJobsPagesWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsInput, cb func(*sagemaker.ListLabelingJobsOutput, bool) bool, opts ...request.Option) error
 	ListLabelingJobsForWorkteamWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsForWorkteamInput, opts ...request.Option) (*sagemaker.ListLabelingJobsForWorkteamOutput, error)
 	ListLabelingJobsForWorkteamPagesWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsForWorkteamInput, cb func(*sagemaker.ListLabelingJobsForWorkteamOutput, bool) bool, opts ...request.Option) error
+	ListLineageGroupsWithContext(ctx context.Context, input *sagemaker.ListLineageGroupsInput, opts ...request.Option) (*sagemaker.ListLineageGroupsOutput, error)
+	ListLineageGroupsPagesWithContext(ctx context.Context, input *sagemaker.ListLineageGroupsInput, cb func(*sagemaker.ListLineageGroupsOutput, bool) bool, opts ...request.Option) error
 	ListModelBiasJobDefinitionsWithContext(ctx context.Context, input *sagemaker.ListModelBiasJobDefinitionsInput, opts ...request.Option) (*sagemaker.ListModelBiasJobDefinitionsOutput, error)
 	ListModelBiasJobDefinitionsPagesWithContext(ctx context.Context, input *sagemaker.ListModelBiasJobDefinitionsInput, cb func(*sagemaker.ListModelBiasJobDefinitionsOutput, bool) bool, opts ...request.Option) error
 	ListModelExplainabilityJobDefinitionsWithContext(ctx context.Context, input *sagemaker.ListModelExplainabilityJobDefinitionsInput, opts ...request.Option) (*sagemaker.ListModelExplainabilityJobDefinitionsOutput, error)
 	ListModelExplainabilityJobDefinitionsPagesWithContext(ctx context.Context, input *sagemaker.ListModelExplainabilityJobDefinitionsInput, cb func(*sagemaker.ListModelExplainabilityJobDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ListModelMetadataWithContext(ctx context.Context, input *sagemaker.ListModelMetadataInput, opts ...request.Option) (*sagemaker.ListModelMetadataOutput, error)
+	ListModelMetadataPagesWithContext(ctx context.Context, input *sagemaker.ListModelMetadataInput, cb func(*sagemaker.ListModelMetadataOutput, bool) bool, opts ...request.Option) error
 	ListModelPackageGroupsWithContext(ctx context.Context, input *sagemaker.ListModelPackageGroupsInput, opts ...request.Option) (*sagemaker.ListModelPackageGroupsOutput, error)
 	ListModelPackageGroupsPagesWithContext(ctx context.Context, input *sagemaker.ListModelPackageGroupsInput, cb func(*sagemaker.ListModelPackageGroupsOutput, bool) bool, opts ...request.Option) error
 	ListModelPackagesWithContext(ctx context.Context, input *sagemaker.ListModelPackagesInput, opts ...request.Option) (*sagemaker.ListModelPackagesOutput, error)
@@ -262,6 +272,8 @@ type SageMaker interface {
 	ListWorkteamsWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, opts ...request.Option) (*sagemaker.ListWorkteamsOutput, error)
 	ListWorkteamsPagesWithContext(ctx context.Context, input *sagemaker.ListWorkteamsInput, cb func(*sagemaker.ListWorkteamsOutput, bool) bool, opts ...request.Option) error
 	PutModelPackageGroupPolicyWithContext(ctx context.Context, input *sagemaker.PutModelPackageGroupPolicyInput, opts ...request.Option) (*sagemaker.PutModelPackageGroupPolicyOutput, error)
+	QueryLineageWithContext(ctx context.Context, input *sagemaker.QueryLineageInput, opts ...request.Option) (*sagemaker.QueryLineageOutput, error)
+	QueryLineagePagesWithContext(ctx context.Context, input *sagemaker.QueryLineageInput, cb func(*sagemaker.QueryLineageOutput, bool) bool, opts ...request.Option) error
 	RegisterDevicesWithContext(ctx context.Context, input *sagemaker.RegisterDevicesInput, opts ...request.Option) (*sagemaker.RegisterDevicesOutput, error)
 	RenderUiTemplateWithContext(ctx context.Context, input *sagemaker.RenderUiTemplateInput, opts ...request.Option) (*sagemaker.RenderUiTemplateOutput, error)
 	RetryPipelineExecutionWithContext(ctx context.Context, input *sagemaker.RetryPipelineExecutionInput, opts ...request.Option) (*sagemaker.RetryPipelineExecutionOutput, error)
@@ -276,6 +288,7 @@ type SageMaker interface {
 	StopCompilationJobWithContext(ctx context.Context, input *sagemaker.StopCompilationJobInput, opts ...request.Option) (*sagemaker.StopCompilationJobOutput, error)
 	StopEdgePackagingJobWithContext(ctx context.Context, input *sagemaker.StopEdgePackagingJobInput, opts ...request.Option) (*sagemaker.StopEdgePackagingJobOutput, error)
 	StopHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.StopHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.StopHyperParameterTuningJobOutput, error)
+	StopInferenceRecommendationsJobWithContext(ctx context.Context, input *sagemaker.StopInferenceRecommendationsJobInput, opts ...request.Option) (*sagemaker.StopInferenceRecommendationsJobOutput, error)
 	StopLabelingJobWithContext(ctx context.Context, input *sagemaker.StopLabelingJobInput, opts ...request.Option) (*sagemaker.StopLabelingJobOutput, error)
 	StopMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.StopMonitoringScheduleInput, opts ...request.Option) (*sagemaker.StopMonitoringScheduleOutput, error)
 	StopNotebookInstanceWithContext(ctx context.Context, input *sagemaker.StopNotebookInstanceInput, opts ...request.Option) (*sagemaker.StopNotebookInstanceOutput, error)
@@ -869,6 +882,27 @@ func (c *Client) CreateImageVersionWithContext(ctx context.Context, input *sagem
 	})
 
 	return req.Output.(*sagemaker.CreateImageVersionOutput), req.Error
+}
+
+func (c *Client) CreateInferenceRecommendationsJobWithContext(ctx context.Context, input *sagemaker.CreateInferenceRecommendationsJobInput, opts ...request.Option) (*sagemaker.CreateInferenceRecommendationsJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateInferenceRecommendationsJob",
+		Input:   input,
+		Output:  (*sagemaker.CreateInferenceRecommendationsJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateInferenceRecommendationsJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateInferenceRecommendationsJobOutput), req.Error
 }
 
 func (c *Client) CreateLabelingJobWithContext(ctx context.Context, input *sagemaker.CreateLabelingJobInput, opts ...request.Option) (*sagemaker.CreateLabelingJobOutput, error) {
@@ -2656,6 +2690,27 @@ func (c *Client) DescribeImageVersionWithContext(ctx context.Context, input *sag
 	return req.Output.(*sagemaker.DescribeImageVersionOutput), req.Error
 }
 
+func (c *Client) DescribeInferenceRecommendationsJobWithContext(ctx context.Context, input *sagemaker.DescribeInferenceRecommendationsJobInput, opts ...request.Option) (*sagemaker.DescribeInferenceRecommendationsJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeInferenceRecommendationsJob",
+		Input:   input,
+		Output:  (*sagemaker.DescribeInferenceRecommendationsJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeInferenceRecommendationsJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeInferenceRecommendationsJobOutput), req.Error
+}
+
 func (c *Client) DescribeLabelingJobWithContext(ctx context.Context, input *sagemaker.DescribeLabelingJobInput, opts ...request.Option) (*sagemaker.DescribeLabelingJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -2675,6 +2730,27 @@ func (c *Client) DescribeLabelingJobWithContext(ctx context.Context, input *sage
 	})
 
 	return req.Output.(*sagemaker.DescribeLabelingJobOutput), req.Error
+}
+
+func (c *Client) DescribeLineageGroupWithContext(ctx context.Context, input *sagemaker.DescribeLineageGroupInput, opts ...request.Option) (*sagemaker.DescribeLineageGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeLineageGroup",
+		Input:   input,
+		Output:  (*sagemaker.DescribeLineageGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeLineageGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeLineageGroupOutput), req.Error
 }
 
 func (c *Client) DescribeModelWithContext(ctx context.Context, input *sagemaker.DescribeModelInput, opts ...request.Option) (*sagemaker.DescribeModelOutput, error) {
@@ -3242,6 +3318,27 @@ func (c *Client) GetDeviceFleetReportWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.GetDeviceFleetReportOutput), req.Error
+}
+
+func (c *Client) GetLineageGroupPolicyWithContext(ctx context.Context, input *sagemaker.GetLineageGroupPolicyInput, opts ...request.Option) (*sagemaker.GetLineageGroupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "GetLineageGroupPolicy",
+		Input:   input,
+		Output:  (*sagemaker.GetLineageGroupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.GetLineageGroupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.GetLineageGroupPolicyOutput), req.Error
 }
 
 func (c *Client) GetModelPackageGroupPolicyWithContext(ctx context.Context, input *sagemaker.GetModelPackageGroupPolicyInput, opts ...request.Option) (*sagemaker.GetModelPackageGroupPolicyOutput, error) {
@@ -4332,6 +4429,47 @@ func (c *Client) ListImagesPagesWithContext(ctx context.Context, input *sagemake
 	return req.Error
 }
 
+func (c *Client) ListInferenceRecommendationsJobsWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobsInput, opts ...request.Option) (*sagemaker.ListInferenceRecommendationsJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListInferenceRecommendationsJobs",
+		Input:   input,
+		Output:  (*sagemaker.ListInferenceRecommendationsJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListInferenceRecommendationsJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListInferenceRecommendationsJobsOutput), req.Error
+}
+
+func (c *Client) ListInferenceRecommendationsJobsPagesWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobsInput, cb func(*sagemaker.ListInferenceRecommendationsJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListInferenceRecommendationsJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListInferenceRecommendationsJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLabelingJobsWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsInput, opts ...request.Option) (*sagemaker.ListLabelingJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -4414,6 +4552,47 @@ func (c *Client) ListLabelingJobsForWorkteamPagesWithContext(ctx context.Context
 	return req.Error
 }
 
+func (c *Client) ListLineageGroupsWithContext(ctx context.Context, input *sagemaker.ListLineageGroupsInput, opts ...request.Option) (*sagemaker.ListLineageGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListLineageGroups",
+		Input:   input,
+		Output:  (*sagemaker.ListLineageGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListLineageGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListLineageGroupsOutput), req.Error
+}
+
+func (c *Client) ListLineageGroupsPagesWithContext(ctx context.Context, input *sagemaker.ListLineageGroupsInput, cb func(*sagemaker.ListLineageGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListLineageGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListLineageGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListModelBiasJobDefinitionsWithContext(ctx context.Context, input *sagemaker.ListModelBiasJobDefinitionsInput, opts ...request.Option) (*sagemaker.ListModelBiasJobDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -4491,6 +4670,47 @@ func (c *Client) ListModelExplainabilityJobDefinitionsPagesWithContext(ctx conte
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListModelExplainabilityJobDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListModelMetadataWithContext(ctx context.Context, input *sagemaker.ListModelMetadataInput, opts ...request.Option) (*sagemaker.ListModelMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListModelMetadata",
+		Input:   input,
+		Output:  (*sagemaker.ListModelMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListModelMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListModelMetadataOutput), req.Error
+}
+
+func (c *Client) ListModelMetadataPagesWithContext(ctx context.Context, input *sagemaker.ListModelMetadataInput, cb func(*sagemaker.ListModelMetadataOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListModelMetadata",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListModelMetadataPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -5542,6 +5762,47 @@ func (c *Client) PutModelPackageGroupPolicyWithContext(ctx context.Context, inpu
 	return req.Output.(*sagemaker.PutModelPackageGroupPolicyOutput), req.Error
 }
 
+func (c *Client) QueryLineageWithContext(ctx context.Context, input *sagemaker.QueryLineageInput, opts ...request.Option) (*sagemaker.QueryLineageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "QueryLineage",
+		Input:   input,
+		Output:  (*sagemaker.QueryLineageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.QueryLineageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.QueryLineageOutput), req.Error
+}
+
+func (c *Client) QueryLineagePagesWithContext(ctx context.Context, input *sagemaker.QueryLineageInput, cb func(*sagemaker.QueryLineageOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "QueryLineage",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.QueryLineagePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) RegisterDevicesWithContext(ctx context.Context, input *sagemaker.RegisterDevicesInput, opts ...request.Option) (*sagemaker.RegisterDevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -5833,6 +6094,27 @@ func (c *Client) StopHyperParameterTuningJobWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*sagemaker.StopHyperParameterTuningJobOutput), req.Error
+}
+
+func (c *Client) StopInferenceRecommendationsJobWithContext(ctx context.Context, input *sagemaker.StopInferenceRecommendationsJobInput, opts ...request.Option) (*sagemaker.StopInferenceRecommendationsJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "StopInferenceRecommendationsJob",
+		Input:   input,
+		Output:  (*sagemaker.StopInferenceRecommendationsJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.StopInferenceRecommendationsJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.StopInferenceRecommendationsJobOutput), req.Error
 }
 
 func (c *Client) StopLabelingJobWithContext(ctx context.Context, input *sagemaker.StopLabelingJobInput, opts ...request.Option) (*sagemaker.StopLabelingJobOutput, error) {

@@ -20,6 +20,7 @@ type EC2 interface {
 	AdvertiseByoipCidrWithContext(ctx context.Context, input *ec2.AdvertiseByoipCidrInput, opts ...request.Option) (*ec2.AdvertiseByoipCidrOutput, error)
 	AllocateAddressWithContext(ctx context.Context, input *ec2.AllocateAddressInput, opts ...request.Option) (*ec2.AllocateAddressOutput, error)
 	AllocateHostsWithContext(ctx context.Context, input *ec2.AllocateHostsInput, opts ...request.Option) (*ec2.AllocateHostsOutput, error)
+	AllocateIpamPoolCidrWithContext(ctx context.Context, input *ec2.AllocateIpamPoolCidrInput, opts ...request.Option) (*ec2.AllocateIpamPoolCidrOutput, error)
 	ApplySecurityGroupsToClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.ApplySecurityGroupsToClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.ApplySecurityGroupsToClientVpnTargetNetworkOutput, error)
 	AssignIpv6AddressesWithContext(ctx context.Context, input *ec2.AssignIpv6AddressesInput, opts ...request.Option) (*ec2.AssignIpv6AddressesOutput, error)
 	AssignPrivateIpAddressesWithContext(ctx context.Context, input *ec2.AssignPrivateIpAddressesInput, opts ...request.Option) (*ec2.AssignPrivateIpAddressesOutput, error)
@@ -74,6 +75,9 @@ type EC2 interface {
 	CreateInstanceEventWindowWithContext(ctx context.Context, input *ec2.CreateInstanceEventWindowInput, opts ...request.Option) (*ec2.CreateInstanceEventWindowOutput, error)
 	CreateInstanceExportTaskWithContext(ctx context.Context, input *ec2.CreateInstanceExportTaskInput, opts ...request.Option) (*ec2.CreateInstanceExportTaskOutput, error)
 	CreateInternetGatewayWithContext(ctx context.Context, input *ec2.CreateInternetGatewayInput, opts ...request.Option) (*ec2.CreateInternetGatewayOutput, error)
+	CreateIpamWithContext(ctx context.Context, input *ec2.CreateIpamInput, opts ...request.Option) (*ec2.CreateIpamOutput, error)
+	CreateIpamPoolWithContext(ctx context.Context, input *ec2.CreateIpamPoolInput, opts ...request.Option) (*ec2.CreateIpamPoolOutput, error)
+	CreateIpamScopeWithContext(ctx context.Context, input *ec2.CreateIpamScopeInput, opts ...request.Option) (*ec2.CreateIpamScopeOutput, error)
 	CreateKeyPairWithContext(ctx context.Context, input *ec2.CreateKeyPairInput, opts ...request.Option) (*ec2.CreateKeyPairOutput, error)
 	CreateLaunchTemplateWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateInput, opts ...request.Option) (*ec2.CreateLaunchTemplateOutput, error)
 	CreateLaunchTemplateVersionWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateVersionInput, opts ...request.Option) (*ec2.CreateLaunchTemplateVersionOutput, error)
@@ -83,10 +87,12 @@ type EC2 interface {
 	CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error)
 	CreateNetworkAclWithContext(ctx context.Context, input *ec2.CreateNetworkAclInput, opts ...request.Option) (*ec2.CreateNetworkAclOutput, error)
 	CreateNetworkAclEntryWithContext(ctx context.Context, input *ec2.CreateNetworkAclEntryInput, opts ...request.Option) (*ec2.CreateNetworkAclEntryOutput, error)
+	CreateNetworkInsightsAccessScopeWithContext(ctx context.Context, input *ec2.CreateNetworkInsightsAccessScopeInput, opts ...request.Option) (*ec2.CreateNetworkInsightsAccessScopeOutput, error)
 	CreateNetworkInsightsPathWithContext(ctx context.Context, input *ec2.CreateNetworkInsightsPathInput, opts ...request.Option) (*ec2.CreateNetworkInsightsPathOutput, error)
 	CreateNetworkInterfaceWithContext(ctx context.Context, input *ec2.CreateNetworkInterfaceInput, opts ...request.Option) (*ec2.CreateNetworkInterfaceOutput, error)
 	CreateNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.CreateNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.CreateNetworkInterfacePermissionOutput, error)
 	CreatePlacementGroupWithContext(ctx context.Context, input *ec2.CreatePlacementGroupInput, opts ...request.Option) (*ec2.CreatePlacementGroupOutput, error)
+	CreatePublicIpv4PoolWithContext(ctx context.Context, input *ec2.CreatePublicIpv4PoolInput, opts ...request.Option) (*ec2.CreatePublicIpv4PoolOutput, error)
 	CreateReplaceRootVolumeTaskWithContext(ctx context.Context, input *ec2.CreateReplaceRootVolumeTaskInput, opts ...request.Option) (*ec2.CreateReplaceRootVolumeTaskOutput, error)
 	CreateReservedInstancesListingWithContext(ctx context.Context, input *ec2.CreateReservedInstancesListingInput, opts ...request.Option) (*ec2.CreateReservedInstancesListingOutput, error)
 	CreateRestoreImageTaskWithContext(ctx context.Context, input *ec2.CreateRestoreImageTaskInput, opts ...request.Option) (*ec2.CreateRestoreImageTaskOutput, error)
@@ -133,6 +139,9 @@ type EC2 interface {
 	DeleteFpgaImageWithContext(ctx context.Context, input *ec2.DeleteFpgaImageInput, opts ...request.Option) (*ec2.DeleteFpgaImageOutput, error)
 	DeleteInstanceEventWindowWithContext(ctx context.Context, input *ec2.DeleteInstanceEventWindowInput, opts ...request.Option) (*ec2.DeleteInstanceEventWindowOutput, error)
 	DeleteInternetGatewayWithContext(ctx context.Context, input *ec2.DeleteInternetGatewayInput, opts ...request.Option) (*ec2.DeleteInternetGatewayOutput, error)
+	DeleteIpamWithContext(ctx context.Context, input *ec2.DeleteIpamInput, opts ...request.Option) (*ec2.DeleteIpamOutput, error)
+	DeleteIpamPoolWithContext(ctx context.Context, input *ec2.DeleteIpamPoolInput, opts ...request.Option) (*ec2.DeleteIpamPoolOutput, error)
+	DeleteIpamScopeWithContext(ctx context.Context, input *ec2.DeleteIpamScopeInput, opts ...request.Option) (*ec2.DeleteIpamScopeOutput, error)
 	DeleteKeyPairWithContext(ctx context.Context, input *ec2.DeleteKeyPairInput, opts ...request.Option) (*ec2.DeleteKeyPairOutput, error)
 	DeleteLaunchTemplateWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateOutput, error)
 	DeleteLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateVersionsOutput, error)
@@ -142,11 +151,14 @@ type EC2 interface {
 	DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error)
 	DeleteNetworkAclWithContext(ctx context.Context, input *ec2.DeleteNetworkAclInput, opts ...request.Option) (*ec2.DeleteNetworkAclOutput, error)
 	DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec2.DeleteNetworkAclEntryInput, opts ...request.Option) (*ec2.DeleteNetworkAclEntryOutput, error)
+	DeleteNetworkInsightsAccessScopeWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAccessScopeInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAccessScopeOutput, error)
+	DeleteNetworkInsightsAccessScopeAnalysisWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAccessScopeAnalysisInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAccessScopeAnalysisOutput, error)
 	DeleteNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAnalysisOutput, error)
 	DeleteNetworkInsightsPathWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsPathInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsPathOutput, error)
 	DeleteNetworkInterfaceWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfaceInput, opts ...request.Option) (*ec2.DeleteNetworkInterfaceOutput, error)
 	DeleteNetworkInterfacePermissionWithContext(ctx context.Context, input *ec2.DeleteNetworkInterfacePermissionInput, opts ...request.Option) (*ec2.DeleteNetworkInterfacePermissionOutput, error)
 	DeletePlacementGroupWithContext(ctx context.Context, input *ec2.DeletePlacementGroupInput, opts ...request.Option) (*ec2.DeletePlacementGroupOutput, error)
+	DeletePublicIpv4PoolWithContext(ctx context.Context, input *ec2.DeletePublicIpv4PoolInput, opts ...request.Option) (*ec2.DeletePublicIpv4PoolOutput, error)
 	DeleteQueuedReservedInstancesWithContext(ctx context.Context, input *ec2.DeleteQueuedReservedInstancesInput, opts ...request.Option) (*ec2.DeleteQueuedReservedInstancesOutput, error)
 	DeleteRouteWithContext(ctx context.Context, input *ec2.DeleteRouteInput, opts ...request.Option) (*ec2.DeleteRouteOutput, error)
 	DeleteRouteTableWithContext(ctx context.Context, input *ec2.DeleteRouteTableInput, opts ...request.Option) (*ec2.DeleteRouteTableOutput, error)
@@ -179,6 +191,8 @@ type EC2 interface {
 	DeleteVpnConnectionRouteWithContext(ctx context.Context, input *ec2.DeleteVpnConnectionRouteInput, opts ...request.Option) (*ec2.DeleteVpnConnectionRouteOutput, error)
 	DeleteVpnGatewayWithContext(ctx context.Context, input *ec2.DeleteVpnGatewayInput, opts ...request.Option) (*ec2.DeleteVpnGatewayOutput, error)
 	DeprovisionByoipCidrWithContext(ctx context.Context, input *ec2.DeprovisionByoipCidrInput, opts ...request.Option) (*ec2.DeprovisionByoipCidrOutput, error)
+	DeprovisionIpamPoolCidrWithContext(ctx context.Context, input *ec2.DeprovisionIpamPoolCidrInput, opts ...request.Option) (*ec2.DeprovisionIpamPoolCidrOutput, error)
+	DeprovisionPublicIpv4PoolCidrWithContext(ctx context.Context, input *ec2.DeprovisionPublicIpv4PoolCidrInput, opts ...request.Option) (*ec2.DeprovisionPublicIpv4PoolCidrOutput, error)
 	DeregisterImageWithContext(ctx context.Context, input *ec2.DeregisterImageInput, opts ...request.Option) (*ec2.DeregisterImageOutput, error)
 	DeregisterInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.DeregisterInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.DeregisterInstanceEventNotificationAttributesOutput, error)
 	DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput, error)
@@ -265,6 +279,12 @@ type EC2 interface {
 	DescribeInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeInstancesInput, cb func(*ec2.DescribeInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeInternetGatewaysWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, opts ...request.Option) (*ec2.DescribeInternetGatewaysOutput, error)
 	DescribeInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, cb func(*ec2.DescribeInternetGatewaysOutput, bool) bool, opts ...request.Option) error
+	DescribeIpamPoolsWithContext(ctx context.Context, input *ec2.DescribeIpamPoolsInput, opts ...request.Option) (*ec2.DescribeIpamPoolsOutput, error)
+	DescribeIpamPoolsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamPoolsInput, cb func(*ec2.DescribeIpamPoolsOutput, bool) bool, opts ...request.Option) error
+	DescribeIpamScopesWithContext(ctx context.Context, input *ec2.DescribeIpamScopesInput, opts ...request.Option) (*ec2.DescribeIpamScopesOutput, error)
+	DescribeIpamScopesPagesWithContext(ctx context.Context, input *ec2.DescribeIpamScopesInput, cb func(*ec2.DescribeIpamScopesOutput, bool) bool, opts ...request.Option) error
+	DescribeIpamsWithContext(ctx context.Context, input *ec2.DescribeIpamsInput, opts ...request.Option) (*ec2.DescribeIpamsOutput, error)
+	DescribeIpamsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamsInput, cb func(*ec2.DescribeIpamsOutput, bool) bool, opts ...request.Option) error
 	DescribeIpv6PoolsWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, opts ...request.Option) (*ec2.DescribeIpv6PoolsOutput, error)
 	DescribeIpv6PoolsPagesWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, cb func(*ec2.DescribeIpv6PoolsOutput, bool) bool, opts ...request.Option) error
 	DescribeKeyPairsWithContext(ctx context.Context, input *ec2.DescribeKeyPairsInput, opts ...request.Option) (*ec2.DescribeKeyPairsOutput, error)
@@ -292,6 +312,10 @@ type EC2 interface {
 	DescribeNatGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeNatGatewaysInput, cb func(*ec2.DescribeNatGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkAclsWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, opts ...request.Option) (*ec2.DescribeNetworkAclsOutput, error)
 	DescribeNetworkAclsPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkAclsInput, cb func(*ec2.DescribeNetworkAclsOutput, bool) bool, opts ...request.Option) error
+	DescribeNetworkInsightsAccessScopeAnalysesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopeAnalysesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput, error)
+	DescribeNetworkInsightsAccessScopeAnalysesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopeAnalysesInput, cb func(*ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput, bool) bool, opts ...request.Option) error
+	DescribeNetworkInsightsAccessScopesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAccessScopesOutput, error)
+	DescribeNetworkInsightsAccessScopesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopesInput, cb func(*ec2.DescribeNetworkInsightsAccessScopesOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkInsightsAnalysesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAnalysesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAnalysesOutput, error)
 	DescribeNetworkInsightsAnalysesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAnalysesInput, cb func(*ec2.DescribeNetworkInsightsAnalysesOutput, bool) bool, opts ...request.Option) error
 	DescribeNetworkInsightsPathsWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsPathsInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsPathsOutput, error)
@@ -410,6 +434,7 @@ type EC2 interface {
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
 	DisableImageDeprecationWithContext(ctx context.Context, input *ec2.DisableImageDeprecationInput, opts ...request.Option) (*ec2.DisableImageDeprecationOutput, error)
+	DisableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.DisableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.DisableIpamOrganizationAdminAccountOutput, error)
 	DisableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.DisableSerialConsoleAccessInput, opts ...request.Option) (*ec2.DisableSerialConsoleAccessOutput, error)
 	DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error)
 	DisableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.DisableVgwRoutePropagationInput, opts ...request.Option) (*ec2.DisableVgwRoutePropagationOutput, error)
@@ -429,6 +454,7 @@ type EC2 interface {
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
 	EnableImageDeprecationWithContext(ctx context.Context, input *ec2.EnableImageDeprecationInput, opts ...request.Option) (*ec2.EnableImageDeprecationOutput, error)
+	EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error)
 	EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error)
 	EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error)
 	EnableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.EnableVgwRoutePropagationInput, opts ...request.Option) (*ec2.EnableVgwRoutePropagationOutput, error)
@@ -455,11 +481,21 @@ type EC2 interface {
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
 	GetInstanceTypesFromInstanceRequirementsWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, opts ...request.Option) (*ec2.GetInstanceTypesFromInstanceRequirementsOutput, error)
 	GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, cb func(*ec2.GetInstanceTypesFromInstanceRequirementsOutput, bool) bool, opts ...request.Option) error
+	GetIpamAddressHistoryWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, opts ...request.Option) (*ec2.GetIpamAddressHistoryOutput, error)
+	GetIpamAddressHistoryPagesWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, cb func(*ec2.GetIpamAddressHistoryOutput, bool) bool, opts ...request.Option) error
+	GetIpamPoolAllocationsWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, opts ...request.Option) (*ec2.GetIpamPoolAllocationsOutput, error)
+	GetIpamPoolAllocationsPagesWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, cb func(*ec2.GetIpamPoolAllocationsOutput, bool) bool, opts ...request.Option) error
+	GetIpamPoolCidrsWithContext(ctx context.Context, input *ec2.GetIpamPoolCidrsInput, opts ...request.Option) (*ec2.GetIpamPoolCidrsOutput, error)
+	GetIpamPoolCidrsPagesWithContext(ctx context.Context, input *ec2.GetIpamPoolCidrsInput, cb func(*ec2.GetIpamPoolCidrsOutput, bool) bool, opts ...request.Option) error
+	GetIpamResourceCidrsWithContext(ctx context.Context, input *ec2.GetIpamResourceCidrsInput, opts ...request.Option) (*ec2.GetIpamResourceCidrsOutput, error)
+	GetIpamResourceCidrsPagesWithContext(ctx context.Context, input *ec2.GetIpamResourceCidrsInput, cb func(*ec2.GetIpamResourceCidrsOutput, bool) bool, opts ...request.Option) error
 	GetLaunchTemplateDataWithContext(ctx context.Context, input *ec2.GetLaunchTemplateDataInput, opts ...request.Option) (*ec2.GetLaunchTemplateDataOutput, error)
 	GetManagedPrefixListAssociationsWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, opts ...request.Option) (*ec2.GetManagedPrefixListAssociationsOutput, error)
 	GetManagedPrefixListAssociationsPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListAssociationsInput, cb func(*ec2.GetManagedPrefixListAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetManagedPrefixListEntriesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, opts ...request.Option) (*ec2.GetManagedPrefixListEntriesOutput, error)
 	GetManagedPrefixListEntriesPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, cb func(*ec2.GetManagedPrefixListEntriesOutput, bool) bool, opts ...request.Option) error
+	GetNetworkInsightsAccessScopeAnalysisFindingsWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeAnalysisFindingsInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput, error)
+	GetNetworkInsightsAccessScopeContentWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeContentInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeContentOutput, error)
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
 	GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error)
@@ -507,6 +543,10 @@ type EC2 interface {
 	ModifyInstanceEventWindowWithContext(ctx context.Context, input *ec2.ModifyInstanceEventWindowInput, opts ...request.Option) (*ec2.ModifyInstanceEventWindowOutput, error)
 	ModifyInstanceMetadataOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMetadataOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMetadataOptionsOutput, error)
 	ModifyInstancePlacementWithContext(ctx context.Context, input *ec2.ModifyInstancePlacementInput, opts ...request.Option) (*ec2.ModifyInstancePlacementOutput, error)
+	ModifyIpamWithContext(ctx context.Context, input *ec2.ModifyIpamInput, opts ...request.Option) (*ec2.ModifyIpamOutput, error)
+	ModifyIpamPoolWithContext(ctx context.Context, input *ec2.ModifyIpamPoolInput, opts ...request.Option) (*ec2.ModifyIpamPoolOutput, error)
+	ModifyIpamResourceCidrWithContext(ctx context.Context, input *ec2.ModifyIpamResourceCidrInput, opts ...request.Option) (*ec2.ModifyIpamResourceCidrOutput, error)
+	ModifyIpamScopeWithContext(ctx context.Context, input *ec2.ModifyIpamScopeInput, opts ...request.Option) (*ec2.ModifyIpamScopeOutput, error)
 	ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error)
 	ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error)
 	ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error)
@@ -538,7 +578,10 @@ type EC2 interface {
 	ModifyVpnTunnelOptionsWithContext(ctx context.Context, input *ec2.ModifyVpnTunnelOptionsInput, opts ...request.Option) (*ec2.ModifyVpnTunnelOptionsOutput, error)
 	MonitorInstancesWithContext(ctx context.Context, input *ec2.MonitorInstancesInput, opts ...request.Option) (*ec2.MonitorInstancesOutput, error)
 	MoveAddressToVpcWithContext(ctx context.Context, input *ec2.MoveAddressToVpcInput, opts ...request.Option) (*ec2.MoveAddressToVpcOutput, error)
+	MoveByoipCidrToIpamWithContext(ctx context.Context, input *ec2.MoveByoipCidrToIpamInput, opts ...request.Option) (*ec2.MoveByoipCidrToIpamOutput, error)
 	ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.ProvisionByoipCidrInput, opts ...request.Option) (*ec2.ProvisionByoipCidrOutput, error)
+	ProvisionIpamPoolCidrWithContext(ctx context.Context, input *ec2.ProvisionIpamPoolCidrInput, opts ...request.Option) (*ec2.ProvisionIpamPoolCidrOutput, error)
+	ProvisionPublicIpv4PoolCidrWithContext(ctx context.Context, input *ec2.ProvisionPublicIpv4PoolCidrInput, opts ...request.Option) (*ec2.ProvisionPublicIpv4PoolCidrOutput, error)
 	PurchaseHostReservationWithContext(ctx context.Context, input *ec2.PurchaseHostReservationInput, opts ...request.Option) (*ec2.PurchaseHostReservationOutput, error)
 	PurchaseReservedInstancesOfferingWithContext(ctx context.Context, input *ec2.PurchaseReservedInstancesOfferingInput, opts ...request.Option) (*ec2.PurchaseReservedInstancesOfferingOutput, error)
 	PurchaseScheduledInstancesWithContext(ctx context.Context, input *ec2.PurchaseScheduledInstancesInput, opts ...request.Option) (*ec2.PurchaseScheduledInstancesOutput, error)
@@ -554,6 +597,7 @@ type EC2 interface {
 	RejectVpcPeeringConnectionWithContext(ctx context.Context, input *ec2.RejectVpcPeeringConnectionInput, opts ...request.Option) (*ec2.RejectVpcPeeringConnectionOutput, error)
 	ReleaseAddressWithContext(ctx context.Context, input *ec2.ReleaseAddressInput, opts ...request.Option) (*ec2.ReleaseAddressOutput, error)
 	ReleaseHostsWithContext(ctx context.Context, input *ec2.ReleaseHostsInput, opts ...request.Option) (*ec2.ReleaseHostsOutput, error)
+	ReleaseIpamPoolAllocationWithContext(ctx context.Context, input *ec2.ReleaseIpamPoolAllocationInput, opts ...request.Option) (*ec2.ReleaseIpamPoolAllocationOutput, error)
 	ReplaceIamInstanceProfileAssociationWithContext(ctx context.Context, input *ec2.ReplaceIamInstanceProfileAssociationInput, opts ...request.Option) (*ec2.ReplaceIamInstanceProfileAssociationOutput, error)
 	ReplaceNetworkAclAssociationWithContext(ctx context.Context, input *ec2.ReplaceNetworkAclAssociationInput, opts ...request.Option) (*ec2.ReplaceNetworkAclAssociationOutput, error)
 	ReplaceNetworkAclEntryWithContext(ctx context.Context, input *ec2.ReplaceNetworkAclEntryInput, opts ...request.Option) (*ec2.ReplaceNetworkAclEntryOutput, error)
@@ -586,6 +630,7 @@ type EC2 interface {
 	SearchTransitGatewayRoutesWithContext(ctx context.Context, input *ec2.SearchTransitGatewayRoutesInput, opts ...request.Option) (*ec2.SearchTransitGatewayRoutesOutput, error)
 	SendDiagnosticInterruptWithContext(ctx context.Context, input *ec2.SendDiagnosticInterruptInput, opts ...request.Option) (*ec2.SendDiagnosticInterruptOutput, error)
 	StartInstancesWithContext(ctx context.Context, input *ec2.StartInstancesInput, opts ...request.Option) (*ec2.StartInstancesOutput, error)
+	StartNetworkInsightsAccessScopeAnalysisWithContext(ctx context.Context, input *ec2.StartNetworkInsightsAccessScopeAnalysisInput, opts ...request.Option) (*ec2.StartNetworkInsightsAccessScopeAnalysisOutput, error)
 	StartNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.StartNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.StartNetworkInsightsAnalysisOutput, error)
 	StartVpcEndpointServicePrivateDnsVerificationWithContext(ctx context.Context, input *ec2.StartVpcEndpointServicePrivateDnsVerificationInput, opts ...request.Option) (*ec2.StartVpcEndpointServicePrivateDnsVerificationOutput, error)
 	StopInstancesWithContext(ctx context.Context, input *ec2.StopInstancesInput, opts ...request.Option) (*ec2.StopInstancesOutput, error)
@@ -801,6 +846,27 @@ func (c *Client) AllocateHostsWithContext(ctx context.Context, input *ec2.Alloca
 	})
 
 	return req.Output.(*ec2.AllocateHostsOutput), req.Error
+}
+
+func (c *Client) AllocateIpamPoolCidrWithContext(ctx context.Context, input *ec2.AllocateIpamPoolCidrInput, opts ...request.Option) (*ec2.AllocateIpamPoolCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AllocateIpamPoolCidr",
+		Input:   input,
+		Output:  (*ec2.AllocateIpamPoolCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AllocateIpamPoolCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AllocateIpamPoolCidrOutput), req.Error
 }
 
 func (c *Client) ApplySecurityGroupsToClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.ApplySecurityGroupsToClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.ApplySecurityGroupsToClientVpnTargetNetworkOutput, error) {
@@ -1937,6 +2003,69 @@ func (c *Client) CreateInternetGatewayWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.CreateInternetGatewayOutput), req.Error
 }
 
+func (c *Client) CreateIpamWithContext(ctx context.Context, input *ec2.CreateIpamInput, opts ...request.Option) (*ec2.CreateIpamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateIpam",
+		Input:   input,
+		Output:  (*ec2.CreateIpamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateIpamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateIpamOutput), req.Error
+}
+
+func (c *Client) CreateIpamPoolWithContext(ctx context.Context, input *ec2.CreateIpamPoolInput, opts ...request.Option) (*ec2.CreateIpamPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateIpamPool",
+		Input:   input,
+		Output:  (*ec2.CreateIpamPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateIpamPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateIpamPoolOutput), req.Error
+}
+
+func (c *Client) CreateIpamScopeWithContext(ctx context.Context, input *ec2.CreateIpamScopeInput, opts ...request.Option) (*ec2.CreateIpamScopeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateIpamScope",
+		Input:   input,
+		Output:  (*ec2.CreateIpamScopeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateIpamScopeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateIpamScopeOutput), req.Error
+}
+
 func (c *Client) CreateKeyPairWithContext(ctx context.Context, input *ec2.CreateKeyPairInput, opts ...request.Option) (*ec2.CreateKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2126,6 +2255,27 @@ func (c *Client) CreateNetworkAclEntryWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.CreateNetworkAclEntryOutput), req.Error
 }
 
+func (c *Client) CreateNetworkInsightsAccessScopeWithContext(ctx context.Context, input *ec2.CreateNetworkInsightsAccessScopeInput, opts ...request.Option) (*ec2.CreateNetworkInsightsAccessScopeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateNetworkInsightsAccessScope",
+		Input:   input,
+		Output:  (*ec2.CreateNetworkInsightsAccessScopeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateNetworkInsightsAccessScopeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateNetworkInsightsAccessScopeOutput), req.Error
+}
+
 func (c *Client) CreateNetworkInsightsPathWithContext(ctx context.Context, input *ec2.CreateNetworkInsightsPathInput, opts ...request.Option) (*ec2.CreateNetworkInsightsPathOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2208,6 +2358,27 @@ func (c *Client) CreatePlacementGroupWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.CreatePlacementGroupOutput), req.Error
+}
+
+func (c *Client) CreatePublicIpv4PoolWithContext(ctx context.Context, input *ec2.CreatePublicIpv4PoolInput, opts ...request.Option) (*ec2.CreatePublicIpv4PoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreatePublicIpv4Pool",
+		Input:   input,
+		Output:  (*ec2.CreatePublicIpv4PoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreatePublicIpv4PoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreatePublicIpv4PoolOutput), req.Error
 }
 
 func (c *Client) CreateReplaceRootVolumeTaskWithContext(ctx context.Context, input *ec2.CreateReplaceRootVolumeTaskInput, opts ...request.Option) (*ec2.CreateReplaceRootVolumeTaskOutput, error) {
@@ -3176,6 +3347,69 @@ func (c *Client) DeleteInternetGatewayWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.DeleteInternetGatewayOutput), req.Error
 }
 
+func (c *Client) DeleteIpamWithContext(ctx context.Context, input *ec2.DeleteIpamInput, opts ...request.Option) (*ec2.DeleteIpamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteIpam",
+		Input:   input,
+		Output:  (*ec2.DeleteIpamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteIpamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteIpamOutput), req.Error
+}
+
+func (c *Client) DeleteIpamPoolWithContext(ctx context.Context, input *ec2.DeleteIpamPoolInput, opts ...request.Option) (*ec2.DeleteIpamPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteIpamPool",
+		Input:   input,
+		Output:  (*ec2.DeleteIpamPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteIpamPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteIpamPoolOutput), req.Error
+}
+
+func (c *Client) DeleteIpamScopeWithContext(ctx context.Context, input *ec2.DeleteIpamScopeInput, opts ...request.Option) (*ec2.DeleteIpamScopeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteIpamScope",
+		Input:   input,
+		Output:  (*ec2.DeleteIpamScopeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteIpamScopeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteIpamScopeOutput), req.Error
+}
+
 func (c *Client) DeleteKeyPairWithContext(ctx context.Context, input *ec2.DeleteKeyPairInput, opts ...request.Option) (*ec2.DeleteKeyPairOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3365,6 +3599,48 @@ func (c *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.DeleteNetworkAclEntryOutput), req.Error
 }
 
+func (c *Client) DeleteNetworkInsightsAccessScopeWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAccessScopeInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAccessScopeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteNetworkInsightsAccessScope",
+		Input:   input,
+		Output:  (*ec2.DeleteNetworkInsightsAccessScopeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteNetworkInsightsAccessScopeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteNetworkInsightsAccessScopeOutput), req.Error
+}
+
+func (c *Client) DeleteNetworkInsightsAccessScopeAnalysisWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAccessScopeAnalysisInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAccessScopeAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteNetworkInsightsAccessScopeAnalysis",
+		Input:   input,
+		Output:  (*ec2.DeleteNetworkInsightsAccessScopeAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteNetworkInsightsAccessScopeAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteNetworkInsightsAccessScopeAnalysisOutput), req.Error
+}
+
 func (c *Client) DeleteNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.DeleteNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.DeleteNetworkInsightsAnalysisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3468,6 +3744,27 @@ func (c *Client) DeletePlacementGroupWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.DeletePlacementGroupOutput), req.Error
+}
+
+func (c *Client) DeletePublicIpv4PoolWithContext(ctx context.Context, input *ec2.DeletePublicIpv4PoolInput, opts ...request.Option) (*ec2.DeletePublicIpv4PoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeletePublicIpv4Pool",
+		Input:   input,
+		Output:  (*ec2.DeletePublicIpv4PoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeletePublicIpv4PoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeletePublicIpv4PoolOutput), req.Error
 }
 
 func (c *Client) DeleteQueuedReservedInstancesWithContext(ctx context.Context, input *ec2.DeleteQueuedReservedInstancesInput, opts ...request.Option) (*ec2.DeleteQueuedReservedInstancesOutput, error) {
@@ -4140,6 +4437,48 @@ func (c *Client) DeprovisionByoipCidrWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.DeprovisionByoipCidrOutput), req.Error
+}
+
+func (c *Client) DeprovisionIpamPoolCidrWithContext(ctx context.Context, input *ec2.DeprovisionIpamPoolCidrInput, opts ...request.Option) (*ec2.DeprovisionIpamPoolCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeprovisionIpamPoolCidr",
+		Input:   input,
+		Output:  (*ec2.DeprovisionIpamPoolCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeprovisionIpamPoolCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeprovisionIpamPoolCidrOutput), req.Error
+}
+
+func (c *Client) DeprovisionPublicIpv4PoolCidrWithContext(ctx context.Context, input *ec2.DeprovisionPublicIpv4PoolCidrInput, opts ...request.Option) (*ec2.DeprovisionPublicIpv4PoolCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeprovisionPublicIpv4PoolCidr",
+		Input:   input,
+		Output:  (*ec2.DeprovisionPublicIpv4PoolCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeprovisionPublicIpv4PoolCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeprovisionPublicIpv4PoolCidrOutput), req.Error
 }
 
 func (c *Client) DeregisterImageWithContext(ctx context.Context, input *ec2.DeregisterImageInput, opts ...request.Option) (*ec2.DeregisterImageOutput, error) {
@@ -5916,6 +6255,129 @@ func (c *Client) DescribeInternetGatewaysPagesWithContext(ctx context.Context, i
 	return req.Error
 }
 
+func (c *Client) DescribeIpamPoolsWithContext(ctx context.Context, input *ec2.DescribeIpamPoolsInput, opts ...request.Option) (*ec2.DescribeIpamPoolsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamPools",
+		Input:   input,
+		Output:  (*ec2.DescribeIpamPoolsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeIpamPoolsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeIpamPoolsOutput), req.Error
+}
+
+func (c *Client) DescribeIpamPoolsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamPoolsInput, cb func(*ec2.DescribeIpamPoolsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamPools",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIpamPoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeIpamScopesWithContext(ctx context.Context, input *ec2.DescribeIpamScopesInput, opts ...request.Option) (*ec2.DescribeIpamScopesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamScopes",
+		Input:   input,
+		Output:  (*ec2.DescribeIpamScopesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeIpamScopesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeIpamScopesOutput), req.Error
+}
+
+func (c *Client) DescribeIpamScopesPagesWithContext(ctx context.Context, input *ec2.DescribeIpamScopesInput, cb func(*ec2.DescribeIpamScopesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamScopes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIpamScopesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeIpamsWithContext(ctx context.Context, input *ec2.DescribeIpamsInput, opts ...request.Option) (*ec2.DescribeIpamsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpams",
+		Input:   input,
+		Output:  (*ec2.DescribeIpamsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeIpamsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeIpamsOutput), req.Error
+}
+
+func (c *Client) DescribeIpamsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamsInput, cb func(*ec2.DescribeIpamsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpams",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIpamsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeIpv6PoolsWithContext(ctx context.Context, input *ec2.DescribeIpv6PoolsInput, opts ...request.Option) (*ec2.DescribeIpv6PoolsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -6465,6 +6927,88 @@ func (c *Client) DescribeNetworkAclsPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeNetworkAclsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsAccessScopeAnalysesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopeAnalysesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsAccessScopeAnalyses",
+		Input:   input,
+		Output:  (*ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeNetworkInsightsAccessScopeAnalysesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput), req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsAccessScopeAnalysesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopeAnalysesInput, cb func(*ec2.DescribeNetworkInsightsAccessScopeAnalysesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsAccessScopeAnalyses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkInsightsAccessScopeAnalysesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsAccessScopesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopesInput, opts ...request.Option) (*ec2.DescribeNetworkInsightsAccessScopesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsAccessScopes",
+		Input:   input,
+		Output:  (*ec2.DescribeNetworkInsightsAccessScopesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeNetworkInsightsAccessScopesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeNetworkInsightsAccessScopesOutput), req.Error
+}
+
+func (c *Client) DescribeNetworkInsightsAccessScopesPagesWithContext(ctx context.Context, input *ec2.DescribeNetworkInsightsAccessScopesInput, cb func(*ec2.DescribeNetworkInsightsAccessScopesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeNetworkInsightsAccessScopes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeNetworkInsightsAccessScopesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -8901,6 +9445,27 @@ func (c *Client) DisableImageDeprecationWithContext(ctx context.Context, input *
 	return req.Output.(*ec2.DisableImageDeprecationOutput), req.Error
 }
 
+func (c *Client) DisableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.DisableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.DisableIpamOrganizationAdminAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableIpamOrganizationAdminAccount",
+		Input:   input,
+		Output:  (*ec2.DisableIpamOrganizationAdminAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableIpamOrganizationAdminAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableIpamOrganizationAdminAccountOutput), req.Error
+}
+
 func (c *Client) DisableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.DisableSerialConsoleAccessInput, opts ...request.Option) (*ec2.DisableSerialConsoleAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9298,6 +9863,27 @@ func (c *Client) EnableImageDeprecationWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ec2.EnableImageDeprecationOutput), req.Error
+}
+
+func (c *Client) EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableIpamOrganizationAdminAccount",
+		Input:   input,
+		Output:  (*ec2.EnableIpamOrganizationAdminAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableIpamOrganizationAdminAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableIpamOrganizationAdminAccountOutput), req.Error
 }
 
 func (c *Client) EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error) {
@@ -9843,6 +10429,170 @@ func (c *Client) GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx co
 	return req.Error
 }
 
+func (c *Client) GetIpamAddressHistoryWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, opts ...request.Option) (*ec2.GetIpamAddressHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamAddressHistory",
+		Input:   input,
+		Output:  (*ec2.GetIpamAddressHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetIpamAddressHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetIpamAddressHistoryOutput), req.Error
+}
+
+func (c *Client) GetIpamAddressHistoryPagesWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, cb func(*ec2.GetIpamAddressHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamAddressHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetIpamAddressHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetIpamPoolAllocationsWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, opts ...request.Option) (*ec2.GetIpamPoolAllocationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamPoolAllocations",
+		Input:   input,
+		Output:  (*ec2.GetIpamPoolAllocationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetIpamPoolAllocationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetIpamPoolAllocationsOutput), req.Error
+}
+
+func (c *Client) GetIpamPoolAllocationsPagesWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, cb func(*ec2.GetIpamPoolAllocationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamPoolAllocations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetIpamPoolAllocationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetIpamPoolCidrsWithContext(ctx context.Context, input *ec2.GetIpamPoolCidrsInput, opts ...request.Option) (*ec2.GetIpamPoolCidrsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamPoolCidrs",
+		Input:   input,
+		Output:  (*ec2.GetIpamPoolCidrsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetIpamPoolCidrsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetIpamPoolCidrsOutput), req.Error
+}
+
+func (c *Client) GetIpamPoolCidrsPagesWithContext(ctx context.Context, input *ec2.GetIpamPoolCidrsInput, cb func(*ec2.GetIpamPoolCidrsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamPoolCidrs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetIpamPoolCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetIpamResourceCidrsWithContext(ctx context.Context, input *ec2.GetIpamResourceCidrsInput, opts ...request.Option) (*ec2.GetIpamResourceCidrsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamResourceCidrs",
+		Input:   input,
+		Output:  (*ec2.GetIpamResourceCidrsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetIpamResourceCidrsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetIpamResourceCidrsOutput), req.Error
+}
+
+func (c *Client) GetIpamResourceCidrsPagesWithContext(ctx context.Context, input *ec2.GetIpamResourceCidrsInput, cb func(*ec2.GetIpamResourceCidrsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamResourceCidrs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetIpamResourceCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetLaunchTemplateDataWithContext(ctx context.Context, input *ec2.GetLaunchTemplateDataInput, opts ...request.Option) (*ec2.GetLaunchTemplateDataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9944,6 +10694,48 @@ func (c *Client) GetManagedPrefixListEntriesPagesWithContext(ctx context.Context
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetNetworkInsightsAccessScopeAnalysisFindingsWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeAnalysisFindingsInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetNetworkInsightsAccessScopeAnalysisFindings",
+		Input:   input,
+		Output:  (*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetNetworkInsightsAccessScopeAnalysisFindingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput), req.Error
+}
+
+func (c *Client) GetNetworkInsightsAccessScopeContentWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeContentInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetNetworkInsightsAccessScopeContent",
+		Input:   input,
+		Output:  (*ec2.GetNetworkInsightsAccessScopeContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetNetworkInsightsAccessScopeContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetNetworkInsightsAccessScopeContentOutput), req.Error
 }
 
 func (c *Client) GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error) {
@@ -10925,6 +11717,90 @@ func (c *Client) ModifyInstancePlacementWithContext(ctx context.Context, input *
 	return req.Output.(*ec2.ModifyInstancePlacementOutput), req.Error
 }
 
+func (c *Client) ModifyIpamWithContext(ctx context.Context, input *ec2.ModifyIpamInput, opts ...request.Option) (*ec2.ModifyIpamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyIpam",
+		Input:   input,
+		Output:  (*ec2.ModifyIpamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyIpamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyIpamOutput), req.Error
+}
+
+func (c *Client) ModifyIpamPoolWithContext(ctx context.Context, input *ec2.ModifyIpamPoolInput, opts ...request.Option) (*ec2.ModifyIpamPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyIpamPool",
+		Input:   input,
+		Output:  (*ec2.ModifyIpamPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyIpamPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyIpamPoolOutput), req.Error
+}
+
+func (c *Client) ModifyIpamResourceCidrWithContext(ctx context.Context, input *ec2.ModifyIpamResourceCidrInput, opts ...request.Option) (*ec2.ModifyIpamResourceCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyIpamResourceCidr",
+		Input:   input,
+		Output:  (*ec2.ModifyIpamResourceCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyIpamResourceCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyIpamResourceCidrOutput), req.Error
+}
+
+func (c *Client) ModifyIpamScopeWithContext(ctx context.Context, input *ec2.ModifyIpamScopeInput, opts ...request.Option) (*ec2.ModifyIpamScopeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyIpamScope",
+		Input:   input,
+		Output:  (*ec2.ModifyIpamScopeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyIpamScopeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyIpamScopeOutput), req.Error
+}
+
 func (c *Client) ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11576,6 +12452,27 @@ func (c *Client) MoveAddressToVpcWithContext(ctx context.Context, input *ec2.Mov
 	return req.Output.(*ec2.MoveAddressToVpcOutput), req.Error
 }
 
+func (c *Client) MoveByoipCidrToIpamWithContext(ctx context.Context, input *ec2.MoveByoipCidrToIpamInput, opts ...request.Option) (*ec2.MoveByoipCidrToIpamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "MoveByoipCidrToIpam",
+		Input:   input,
+		Output:  (*ec2.MoveByoipCidrToIpamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.MoveByoipCidrToIpamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.MoveByoipCidrToIpamOutput), req.Error
+}
+
 func (c *Client) ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.ProvisionByoipCidrInput, opts ...request.Option) (*ec2.ProvisionByoipCidrOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11595,6 +12492,48 @@ func (c *Client) ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.P
 	})
 
 	return req.Output.(*ec2.ProvisionByoipCidrOutput), req.Error
+}
+
+func (c *Client) ProvisionIpamPoolCidrWithContext(ctx context.Context, input *ec2.ProvisionIpamPoolCidrInput, opts ...request.Option) (*ec2.ProvisionIpamPoolCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ProvisionIpamPoolCidr",
+		Input:   input,
+		Output:  (*ec2.ProvisionIpamPoolCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ProvisionIpamPoolCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ProvisionIpamPoolCidrOutput), req.Error
+}
+
+func (c *Client) ProvisionPublicIpv4PoolCidrWithContext(ctx context.Context, input *ec2.ProvisionPublicIpv4PoolCidrInput, opts ...request.Option) (*ec2.ProvisionPublicIpv4PoolCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ProvisionPublicIpv4PoolCidr",
+		Input:   input,
+		Output:  (*ec2.ProvisionPublicIpv4PoolCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ProvisionPublicIpv4PoolCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ProvisionPublicIpv4PoolCidrOutput), req.Error
 }
 
 func (c *Client) PurchaseHostReservationWithContext(ctx context.Context, input *ec2.PurchaseHostReservationInput, opts ...request.Option) (*ec2.PurchaseHostReservationOutput, error) {
@@ -11910,6 +12849,27 @@ func (c *Client) ReleaseHostsWithContext(ctx context.Context, input *ec2.Release
 	})
 
 	return req.Output.(*ec2.ReleaseHostsOutput), req.Error
+}
+
+func (c *Client) ReleaseIpamPoolAllocationWithContext(ctx context.Context, input *ec2.ReleaseIpamPoolAllocationInput, opts ...request.Option) (*ec2.ReleaseIpamPoolAllocationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ReleaseIpamPoolAllocation",
+		Input:   input,
+		Output:  (*ec2.ReleaseIpamPoolAllocationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ReleaseIpamPoolAllocationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ReleaseIpamPoolAllocationOutput), req.Error
 }
 
 func (c *Client) ReplaceIamInstanceProfileAssociationWithContext(ctx context.Context, input *ec2.ReplaceIamInstanceProfileAssociationInput, opts ...request.Option) (*ec2.ReplaceIamInstanceProfileAssociationOutput, error) {
@@ -12580,6 +13540,27 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, input *ec2.Start
 	})
 
 	return req.Output.(*ec2.StartInstancesOutput), req.Error
+}
+
+func (c *Client) StartNetworkInsightsAccessScopeAnalysisWithContext(ctx context.Context, input *ec2.StartNetworkInsightsAccessScopeAnalysisInput, opts ...request.Option) (*ec2.StartNetworkInsightsAccessScopeAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "StartNetworkInsightsAccessScopeAnalysis",
+		Input:   input,
+		Output:  (*ec2.StartNetworkInsightsAccessScopeAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.StartNetworkInsightsAccessScopeAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.StartNetworkInsightsAccessScopeAnalysisOutput), req.Error
 }
 
 func (c *Client) StartNetworkInsightsAnalysisWithContext(ctx context.Context, input *ec2.StartNetworkInsightsAnalysisInput, opts ...request.Option) (*ec2.StartNetworkInsightsAnalysisOutput, error) {
