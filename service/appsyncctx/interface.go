@@ -11,9 +11,11 @@ import (
 )
 
 type AppSync interface {
+	AssociateApiWithContext(ctx context.Context, input *appsync.AssociateApiInput, opts ...request.Option) (*appsync.AssociateApiOutput, error)
 	CreateApiCacheWithContext(ctx context.Context, input *appsync.CreateApiCacheInput, opts ...request.Option) (*appsync.CreateApiCacheOutput, error)
 	CreateApiKeyWithContext(ctx context.Context, input *appsync.CreateApiKeyInput, opts ...request.Option) (*appsync.CreateApiKeyOutput, error)
 	CreateDataSourceWithContext(ctx context.Context, input *appsync.CreateDataSourceInput, opts ...request.Option) (*appsync.CreateDataSourceOutput, error)
+	CreateDomainNameWithContext(ctx context.Context, input *appsync.CreateDomainNameInput, opts ...request.Option) (*appsync.CreateDomainNameOutput, error)
 	CreateFunctionWithContext(ctx context.Context, input *appsync.CreateFunctionInput, opts ...request.Option) (*appsync.CreateFunctionOutput, error)
 	CreateGraphqlApiWithContext(ctx context.Context, input *appsync.CreateGraphqlApiInput, opts ...request.Option) (*appsync.CreateGraphqlApiOutput, error)
 	CreateResolverWithContext(ctx context.Context, input *appsync.CreateResolverInput, opts ...request.Option) (*appsync.CreateResolverOutput, error)
@@ -21,13 +23,17 @@ type AppSync interface {
 	DeleteApiCacheWithContext(ctx context.Context, input *appsync.DeleteApiCacheInput, opts ...request.Option) (*appsync.DeleteApiCacheOutput, error)
 	DeleteApiKeyWithContext(ctx context.Context, input *appsync.DeleteApiKeyInput, opts ...request.Option) (*appsync.DeleteApiKeyOutput, error)
 	DeleteDataSourceWithContext(ctx context.Context, input *appsync.DeleteDataSourceInput, opts ...request.Option) (*appsync.DeleteDataSourceOutput, error)
+	DeleteDomainNameWithContext(ctx context.Context, input *appsync.DeleteDomainNameInput, opts ...request.Option) (*appsync.DeleteDomainNameOutput, error)
 	DeleteFunctionWithContext(ctx context.Context, input *appsync.DeleteFunctionInput, opts ...request.Option) (*appsync.DeleteFunctionOutput, error)
 	DeleteGraphqlApiWithContext(ctx context.Context, input *appsync.DeleteGraphqlApiInput, opts ...request.Option) (*appsync.DeleteGraphqlApiOutput, error)
 	DeleteResolverWithContext(ctx context.Context, input *appsync.DeleteResolverInput, opts ...request.Option) (*appsync.DeleteResolverOutput, error)
 	DeleteTypeWithContext(ctx context.Context, input *appsync.DeleteTypeInput, opts ...request.Option) (*appsync.DeleteTypeOutput, error)
+	DisassociateApiWithContext(ctx context.Context, input *appsync.DisassociateApiInput, opts ...request.Option) (*appsync.DisassociateApiOutput, error)
 	FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error)
+	GetApiAssociationWithContext(ctx context.Context, input *appsync.GetApiAssociationInput, opts ...request.Option) (*appsync.GetApiAssociationOutput, error)
 	GetApiCacheWithContext(ctx context.Context, input *appsync.GetApiCacheInput, opts ...request.Option) (*appsync.GetApiCacheOutput, error)
 	GetDataSourceWithContext(ctx context.Context, input *appsync.GetDataSourceInput, opts ...request.Option) (*appsync.GetDataSourceOutput, error)
+	GetDomainNameWithContext(ctx context.Context, input *appsync.GetDomainNameInput, opts ...request.Option) (*appsync.GetDomainNameOutput, error)
 	GetFunctionWithContext(ctx context.Context, input *appsync.GetFunctionInput, opts ...request.Option) (*appsync.GetFunctionOutput, error)
 	GetGraphqlApiWithContext(ctx context.Context, input *appsync.GetGraphqlApiInput, opts ...request.Option) (*appsync.GetGraphqlApiOutput, error)
 	GetIntrospectionSchemaWithContext(ctx context.Context, input *appsync.GetIntrospectionSchemaInput, opts ...request.Option) (*appsync.GetIntrospectionSchemaOutput, error)
@@ -36,6 +42,7 @@ type AppSync interface {
 	GetTypeWithContext(ctx context.Context, input *appsync.GetTypeInput, opts ...request.Option) (*appsync.GetTypeOutput, error)
 	ListApiKeysWithContext(ctx context.Context, input *appsync.ListApiKeysInput, opts ...request.Option) (*appsync.ListApiKeysOutput, error)
 	ListDataSourcesWithContext(ctx context.Context, input *appsync.ListDataSourcesInput, opts ...request.Option) (*appsync.ListDataSourcesOutput, error)
+	ListDomainNamesWithContext(ctx context.Context, input *appsync.ListDomainNamesInput, opts ...request.Option) (*appsync.ListDomainNamesOutput, error)
 	ListFunctionsWithContext(ctx context.Context, input *appsync.ListFunctionsInput, opts ...request.Option) (*appsync.ListFunctionsOutput, error)
 	ListGraphqlApisWithContext(ctx context.Context, input *appsync.ListGraphqlApisInput, opts ...request.Option) (*appsync.ListGraphqlApisOutput, error)
 	ListResolversWithContext(ctx context.Context, input *appsync.ListResolversInput, opts ...request.Option) (*appsync.ListResolversOutput, error)
@@ -48,6 +55,7 @@ type AppSync interface {
 	UpdateApiCacheWithContext(ctx context.Context, input *appsync.UpdateApiCacheInput, opts ...request.Option) (*appsync.UpdateApiCacheOutput, error)
 	UpdateApiKeyWithContext(ctx context.Context, input *appsync.UpdateApiKeyInput, opts ...request.Option) (*appsync.UpdateApiKeyOutput, error)
 	UpdateDataSourceWithContext(ctx context.Context, input *appsync.UpdateDataSourceInput, opts ...request.Option) (*appsync.UpdateDataSourceOutput, error)
+	UpdateDomainNameWithContext(ctx context.Context, input *appsync.UpdateDomainNameInput, opts ...request.Option) (*appsync.UpdateDomainNameOutput, error)
 	UpdateFunctionWithContext(ctx context.Context, input *appsync.UpdateFunctionInput, opts ...request.Option) (*appsync.UpdateFunctionOutput, error)
 	UpdateGraphqlApiWithContext(ctx context.Context, input *appsync.UpdateGraphqlApiInput, opts ...request.Option) (*appsync.UpdateGraphqlApiOutput, error)
 	UpdateResolverWithContext(ctx context.Context, input *appsync.UpdateResolverInput, opts ...request.Option) (*appsync.UpdateResolverOutput, error)
@@ -68,6 +76,27 @@ func New(base appsynciface.AppSyncAPI, ctxer awsctx.Contexter) AppSync {
 
 var _ AppSync = (*appsync.AppSync)(nil)
 var _ AppSync = (*Client)(nil)
+
+func (c *Client) AssociateApiWithContext(ctx context.Context, input *appsync.AssociateApiInput, opts ...request.Option) (*appsync.AssociateApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "AssociateApi",
+		Input:   input,
+		Output:  (*appsync.AssociateApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.AssociateApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.AssociateApiOutput), req.Error
+}
 
 func (c *Client) CreateApiCacheWithContext(ctx context.Context, input *appsync.CreateApiCacheInput, opts ...request.Option) (*appsync.CreateApiCacheOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -130,6 +159,27 @@ func (c *Client) CreateDataSourceWithContext(ctx context.Context, input *appsync
 	})
 
 	return req.Output.(*appsync.CreateDataSourceOutput), req.Error
+}
+
+func (c *Client) CreateDomainNameWithContext(ctx context.Context, input *appsync.CreateDomainNameInput, opts ...request.Option) (*appsync.CreateDomainNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "CreateDomainName",
+		Input:   input,
+		Output:  (*appsync.CreateDomainNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.CreateDomainNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.CreateDomainNameOutput), req.Error
 }
 
 func (c *Client) CreateFunctionWithContext(ctx context.Context, input *appsync.CreateFunctionInput, opts ...request.Option) (*appsync.CreateFunctionOutput, error) {
@@ -279,6 +329,27 @@ func (c *Client) DeleteDataSourceWithContext(ctx context.Context, input *appsync
 	return req.Output.(*appsync.DeleteDataSourceOutput), req.Error
 }
 
+func (c *Client) DeleteDomainNameWithContext(ctx context.Context, input *appsync.DeleteDomainNameInput, opts ...request.Option) (*appsync.DeleteDomainNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "DeleteDomainName",
+		Input:   input,
+		Output:  (*appsync.DeleteDomainNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.DeleteDomainNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.DeleteDomainNameOutput), req.Error
+}
+
 func (c *Client) DeleteFunctionWithContext(ctx context.Context, input *appsync.DeleteFunctionInput, opts ...request.Option) (*appsync.DeleteFunctionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -363,6 +434,27 @@ func (c *Client) DeleteTypeWithContext(ctx context.Context, input *appsync.Delet
 	return req.Output.(*appsync.DeleteTypeOutput), req.Error
 }
 
+func (c *Client) DisassociateApiWithContext(ctx context.Context, input *appsync.DisassociateApiInput, opts ...request.Option) (*appsync.DisassociateApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "DisassociateApi",
+		Input:   input,
+		Output:  (*appsync.DisassociateApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.DisassociateApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.DisassociateApiOutput), req.Error
+}
+
 func (c *Client) FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -382,6 +474,27 @@ func (c *Client) FlushApiCacheWithContext(ctx context.Context, input *appsync.Fl
 	})
 
 	return req.Output.(*appsync.FlushApiCacheOutput), req.Error
+}
+
+func (c *Client) GetApiAssociationWithContext(ctx context.Context, input *appsync.GetApiAssociationInput, opts ...request.Option) (*appsync.GetApiAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "GetApiAssociation",
+		Input:   input,
+		Output:  (*appsync.GetApiAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.GetApiAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.GetApiAssociationOutput), req.Error
 }
 
 func (c *Client) GetApiCacheWithContext(ctx context.Context, input *appsync.GetApiCacheInput, opts ...request.Option) (*appsync.GetApiCacheOutput, error) {
@@ -424,6 +537,27 @@ func (c *Client) GetDataSourceWithContext(ctx context.Context, input *appsync.Ge
 	})
 
 	return req.Output.(*appsync.GetDataSourceOutput), req.Error
+}
+
+func (c *Client) GetDomainNameWithContext(ctx context.Context, input *appsync.GetDomainNameInput, opts ...request.Option) (*appsync.GetDomainNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "GetDomainName",
+		Input:   input,
+		Output:  (*appsync.GetDomainNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.GetDomainNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.GetDomainNameOutput), req.Error
 }
 
 func (c *Client) GetFunctionWithContext(ctx context.Context, input *appsync.GetFunctionInput, opts ...request.Option) (*appsync.GetFunctionOutput, error) {
@@ -592,6 +726,27 @@ func (c *Client) ListDataSourcesWithContext(ctx context.Context, input *appsync.
 	})
 
 	return req.Output.(*appsync.ListDataSourcesOutput), req.Error
+}
+
+func (c *Client) ListDomainNamesWithContext(ctx context.Context, input *appsync.ListDomainNamesInput, opts ...request.Option) (*appsync.ListDomainNamesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "ListDomainNames",
+		Input:   input,
+		Output:  (*appsync.ListDomainNamesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.ListDomainNamesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.ListDomainNamesOutput), req.Error
 }
 
 func (c *Client) ListFunctionsWithContext(ctx context.Context, input *appsync.ListFunctionsInput, opts ...request.Option) (*appsync.ListFunctionsOutput, error) {
@@ -844,6 +999,27 @@ func (c *Client) UpdateDataSourceWithContext(ctx context.Context, input *appsync
 	})
 
 	return req.Output.(*appsync.UpdateDataSourceOutput), req.Error
+}
+
+func (c *Client) UpdateDomainNameWithContext(ctx context.Context, input *appsync.UpdateDomainNameInput, opts ...request.Option) (*appsync.UpdateDomainNameOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "UpdateDomainName",
+		Input:   input,
+		Output:  (*appsync.UpdateDomainNameOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.UpdateDomainNameWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.UpdateDomainNameOutput), req.Error
 }
 
 func (c *Client) UpdateFunctionWithContext(ctx context.Context, input *appsync.UpdateFunctionInput, opts ...request.Option) (*appsync.UpdateFunctionOutput, error) {
