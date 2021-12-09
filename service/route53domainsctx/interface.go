@@ -15,6 +15,7 @@ type Route53Domains interface {
 	CancelDomainTransferToAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.CancelDomainTransferToAnotherAwsAccountInput, opts ...request.Option) (*route53domains.CancelDomainTransferToAnotherAwsAccountOutput, error)
 	CheckDomainAvailabilityWithContext(ctx context.Context, input *route53domains.CheckDomainAvailabilityInput, opts ...request.Option) (*route53domains.CheckDomainAvailabilityOutput, error)
 	CheckDomainTransferabilityWithContext(ctx context.Context, input *route53domains.CheckDomainTransferabilityInput, opts ...request.Option) (*route53domains.CheckDomainTransferabilityOutput, error)
+	DeleteDomainWithContext(ctx context.Context, input *route53domains.DeleteDomainInput, opts ...request.Option) (*route53domains.DeleteDomainOutput, error)
 	DeleteTagsForDomainWithContext(ctx context.Context, input *route53domains.DeleteTagsForDomainInput, opts ...request.Option) (*route53domains.DeleteTagsForDomainOutput, error)
 	DisableDomainAutoRenewWithContext(ctx context.Context, input *route53domains.DisableDomainAutoRenewInput, opts ...request.Option) (*route53domains.DisableDomainAutoRenewOutput, error)
 	DisableDomainTransferLockWithContext(ctx context.Context, input *route53domains.DisableDomainTransferLockInput, opts ...request.Option) (*route53domains.DisableDomainTransferLockOutput, error)
@@ -28,6 +29,8 @@ type Route53Domains interface {
 	ListDomainsPagesWithContext(ctx context.Context, input *route53domains.ListDomainsInput, cb func(*route53domains.ListDomainsOutput, bool) bool, opts ...request.Option) error
 	ListOperationsWithContext(ctx context.Context, input *route53domains.ListOperationsInput, opts ...request.Option) (*route53domains.ListOperationsOutput, error)
 	ListOperationsPagesWithContext(ctx context.Context, input *route53domains.ListOperationsInput, cb func(*route53domains.ListOperationsOutput, bool) bool, opts ...request.Option) error
+	ListPricesWithContext(ctx context.Context, input *route53domains.ListPricesInput, opts ...request.Option) (*route53domains.ListPricesOutput, error)
+	ListPricesPagesWithContext(ctx context.Context, input *route53domains.ListPricesInput, cb func(*route53domains.ListPricesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForDomainWithContext(ctx context.Context, input *route53domains.ListTagsForDomainInput, opts ...request.Option) (*route53domains.ListTagsForDomainOutput, error)
 	RegisterDomainWithContext(ctx context.Context, input *route53domains.RegisterDomainInput, opts ...request.Option) (*route53domains.RegisterDomainOutput, error)
 	RejectDomainTransferFromAnotherAwsAccountWithContext(ctx context.Context, input *route53domains.RejectDomainTransferFromAnotherAwsAccountInput, opts ...request.Option) (*route53domains.RejectDomainTransferFromAnotherAwsAccountOutput, error)
@@ -41,6 +44,7 @@ type Route53Domains interface {
 	UpdateDomainNameserversWithContext(ctx context.Context, input *route53domains.UpdateDomainNameserversInput, opts ...request.Option) (*route53domains.UpdateDomainNameserversOutput, error)
 	UpdateTagsForDomainWithContext(ctx context.Context, input *route53domains.UpdateTagsForDomainInput, opts ...request.Option) (*route53domains.UpdateTagsForDomainOutput, error)
 	ViewBillingWithContext(ctx context.Context, input *route53domains.ViewBillingInput, opts ...request.Option) (*route53domains.ViewBillingOutput, error)
+	ViewBillingPagesWithContext(ctx context.Context, input *route53domains.ViewBillingInput, cb func(*route53domains.ViewBillingOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -140,6 +144,27 @@ func (c *Client) CheckDomainTransferabilityWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*route53domains.CheckDomainTransferabilityOutput), req.Error
+}
+
+func (c *Client) DeleteDomainWithContext(ctx context.Context, input *route53domains.DeleteDomainInput, opts ...request.Option) (*route53domains.DeleteDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "DeleteDomain",
+		Input:   input,
+		Output:  (*route53domains.DeleteDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53DomainsAPI.DeleteDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53domains.DeleteDomainOutput), req.Error
 }
 
 func (c *Client) DeleteTagsForDomainWithContext(ctx context.Context, input *route53domains.DeleteTagsForDomainInput, opts ...request.Option) (*route53domains.DeleteTagsForDomainOutput, error) {
@@ -408,6 +433,47 @@ func (c *Client) ListOperationsPagesWithContext(ctx context.Context, input *rout
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.Route53DomainsAPI.ListOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPricesWithContext(ctx context.Context, input *route53domains.ListPricesInput, opts ...request.Option) (*route53domains.ListPricesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "ListPrices",
+		Input:   input,
+		Output:  (*route53domains.ListPricesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53DomainsAPI.ListPricesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53domains.ListPricesOutput), req.Error
+}
+
+func (c *Client) ListPricesPagesWithContext(ctx context.Context, input *route53domains.ListPricesInput, cb func(*route53domains.ListPricesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "ListPrices",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53DomainsAPI.ListPricesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -684,4 +750,24 @@ func (c *Client) ViewBillingWithContext(ctx context.Context, input *route53domai
 	})
 
 	return req.Output.(*route53domains.ViewBillingOutput), req.Error
+}
+
+func (c *Client) ViewBillingPagesWithContext(ctx context.Context, input *route53domains.ViewBillingInput, cb func(*route53domains.ViewBillingOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53domains",
+		Action:  "ViewBilling",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53DomainsAPI.ViewBillingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
