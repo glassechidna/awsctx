@@ -22,6 +22,7 @@ type WorkMail interface {
 	CreateUserWithContext(ctx context.Context, input *workmail.CreateUserInput, opts ...request.Option) (*workmail.CreateUserOutput, error)
 	DeleteAccessControlRuleWithContext(ctx context.Context, input *workmail.DeleteAccessControlRuleInput, opts ...request.Option) (*workmail.DeleteAccessControlRuleOutput, error)
 	DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error)
+	DeleteEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DeleteEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DeleteEmailMonitoringConfigurationOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
 	DeleteMobileDeviceAccessOverrideWithContext(ctx context.Context, input *workmail.DeleteMobileDeviceAccessOverrideInput, opts ...request.Option) (*workmail.DeleteMobileDeviceAccessOverrideOutput, error)
@@ -32,6 +33,7 @@ type WorkMail interface {
 	DeleteUserWithContext(ctx context.Context, input *workmail.DeleteUserInput, opts ...request.Option) (*workmail.DeleteUserOutput, error)
 	DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error)
 	DeregisterMailDomainWithContext(ctx context.Context, input *workmail.DeregisterMailDomainInput, opts ...request.Option) (*workmail.DeregisterMailDomainOutput, error)
+	DescribeEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DescribeEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DescribeEmailMonitoringConfigurationOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error)
 	DescribeInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.DescribeInboundDmarcSettingsInput, opts ...request.Option) (*workmail.DescribeInboundDmarcSettingsOutput, error)
 	DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error)
@@ -72,6 +74,7 @@ type WorkMail interface {
 	ListUsersWithContext(ctx context.Context, input *workmail.ListUsersInput, opts ...request.Option) (*workmail.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *workmail.ListUsersInput, cb func(*workmail.ListUsersOutput, bool) bool, opts ...request.Option) error
 	PutAccessControlRuleWithContext(ctx context.Context, input *workmail.PutAccessControlRuleInput, opts ...request.Option) (*workmail.PutAccessControlRuleOutput, error)
+	PutEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.PutEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.PutEmailMonitoringConfigurationOutput, error)
 	PutInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.PutInboundDmarcSettingsInput, opts ...request.Option) (*workmail.PutInboundDmarcSettingsOutput, error)
 	PutMailboxPermissionsWithContext(ctx context.Context, input *workmail.PutMailboxPermissionsInput, opts ...request.Option) (*workmail.PutMailboxPermissionsOutput, error)
 	PutMobileDeviceAccessOverrideWithContext(ctx context.Context, input *workmail.PutMobileDeviceAccessOverrideInput, opts ...request.Option) (*workmail.PutMobileDeviceAccessOverrideOutput, error)
@@ -335,6 +338,27 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *workmail.Del
 	return req.Output.(*workmail.DeleteAliasOutput), req.Error
 }
 
+func (c *Client) DeleteEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DeleteEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DeleteEmailMonitoringConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteEmailMonitoringConfiguration",
+		Input:   input,
+		Output:  (*workmail.DeleteEmailMonitoringConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteEmailMonitoringConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteEmailMonitoringConfigurationOutput), req.Error
+}
+
 func (c *Client) DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -543,6 +567,27 @@ func (c *Client) DeregisterMailDomainWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workmail.DeregisterMailDomainOutput), req.Error
+}
+
+func (c *Client) DescribeEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DescribeEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DescribeEmailMonitoringConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DescribeEmailMonitoringConfiguration",
+		Input:   input,
+		Output:  (*workmail.DescribeEmailMonitoringConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DescribeEmailMonitoringConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DescribeEmailMonitoringConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error) {
@@ -1372,6 +1417,27 @@ func (c *Client) PutAccessControlRuleWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workmail.PutAccessControlRuleOutput), req.Error
+}
+
+func (c *Client) PutEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.PutEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.PutEmailMonitoringConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "PutEmailMonitoringConfiguration",
+		Input:   input,
+		Output:  (*workmail.PutEmailMonitoringConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.PutEmailMonitoringConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.PutEmailMonitoringConfigurationOutput), req.Error
 }
 
 func (c *Client) PutInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.PutInboundDmarcSettingsInput, opts ...request.Option) (*workmail.PutInboundDmarcSettingsOutput, error) {
