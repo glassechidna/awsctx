@@ -569,6 +569,7 @@ type EC2 interface {
 	ModifyVpcEndpointWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointInput, opts ...request.Option) (*ec2.ModifyVpcEndpointOutput, error)
 	ModifyVpcEndpointConnectionNotificationWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointConnectionNotificationInput, opts ...request.Option) (*ec2.ModifyVpcEndpointConnectionNotificationOutput, error)
 	ModifyVpcEndpointServiceConfigurationWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServiceConfigurationInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServiceConfigurationOutput, error)
+	ModifyVpcEndpointServicePayerResponsibilityWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServicePayerResponsibilityInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServicePayerResponsibilityOutput, error)
 	ModifyVpcEndpointServicePermissionsWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServicePermissionsInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServicePermissionsOutput, error)
 	ModifyVpcPeeringConnectionOptionsWithContext(ctx context.Context, input *ec2.ModifyVpcPeeringConnectionOptionsInput, opts ...request.Option) (*ec2.ModifyVpcPeeringConnectionOptionsOutput, error)
 	ModifyVpcTenancyWithContext(ctx context.Context, input *ec2.ModifyVpcTenancyInput, opts ...request.Option) (*ec2.ModifyVpcTenancyOutput, error)
@@ -12261,6 +12262,27 @@ func (c *Client) ModifyVpcEndpointServiceConfigurationWithContext(ctx context.Co
 	})
 
 	return req.Output.(*ec2.ModifyVpcEndpointServiceConfigurationOutput), req.Error
+}
+
+func (c *Client) ModifyVpcEndpointServicePayerResponsibilityWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServicePayerResponsibilityInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServicePayerResponsibilityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVpcEndpointServicePayerResponsibility",
+		Input:   input,
+		Output:  (*ec2.ModifyVpcEndpointServicePayerResponsibilityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVpcEndpointServicePayerResponsibilityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVpcEndpointServicePayerResponsibilityOutput), req.Error
 }
 
 func (c *Client) ModifyVpcEndpointServicePermissionsWithContext(ctx context.Context, input *ec2.ModifyVpcEndpointServicePermissionsInput, opts ...request.Option) (*ec2.ModifyVpcEndpointServicePermissionsOutput, error) {

@@ -134,6 +134,10 @@ type Glue interface {
 	GetTriggerWithContext(ctx context.Context, input *glue.GetTriggerInput, opts ...request.Option) (*glue.GetTriggerOutput, error)
 	GetTriggersWithContext(ctx context.Context, input *glue.GetTriggersInput, opts ...request.Option) (*glue.GetTriggersOutput, error)
 	GetTriggersPagesWithContext(ctx context.Context, input *glue.GetTriggersInput, cb func(*glue.GetTriggersOutput, bool) bool, opts ...request.Option) error
+	GetUnfilteredPartitionMetadataWithContext(ctx context.Context, input *glue.GetUnfilteredPartitionMetadataInput, opts ...request.Option) (*glue.GetUnfilteredPartitionMetadataOutput, error)
+	GetUnfilteredPartitionsMetadataWithContext(ctx context.Context, input *glue.GetUnfilteredPartitionsMetadataInput, opts ...request.Option) (*glue.GetUnfilteredPartitionsMetadataOutput, error)
+	GetUnfilteredPartitionsMetadataPagesWithContext(ctx context.Context, input *glue.GetUnfilteredPartitionsMetadataInput, cb func(*glue.GetUnfilteredPartitionsMetadataOutput, bool) bool, opts ...request.Option) error
+	GetUnfilteredTableMetadataWithContext(ctx context.Context, input *glue.GetUnfilteredTableMetadataInput, opts ...request.Option) (*glue.GetUnfilteredTableMetadataOutput, error)
 	GetUserDefinedFunctionWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionInput, opts ...request.Option) (*glue.GetUserDefinedFunctionOutput, error)
 	GetUserDefinedFunctionsWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionsInput, opts ...request.Option) (*glue.GetUserDefinedFunctionsOutput, error)
 	GetUserDefinedFunctionsPagesWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionsInput, cb func(*glue.GetUserDefinedFunctionsOutput, bool) bool, opts ...request.Option) error
@@ -2788,6 +2792,89 @@ func (c *Client) GetTriggersPagesWithContext(ctx context.Context, input *glue.Ge
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetUnfilteredPartitionMetadataWithContext(ctx context.Context, input *glue.GetUnfilteredPartitionMetadataInput, opts ...request.Option) (*glue.GetUnfilteredPartitionMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetUnfilteredPartitionMetadata",
+		Input:   input,
+		Output:  (*glue.GetUnfilteredPartitionMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetUnfilteredPartitionMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetUnfilteredPartitionMetadataOutput), req.Error
+}
+
+func (c *Client) GetUnfilteredPartitionsMetadataWithContext(ctx context.Context, input *glue.GetUnfilteredPartitionsMetadataInput, opts ...request.Option) (*glue.GetUnfilteredPartitionsMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetUnfilteredPartitionsMetadata",
+		Input:   input,
+		Output:  (*glue.GetUnfilteredPartitionsMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetUnfilteredPartitionsMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetUnfilteredPartitionsMetadataOutput), req.Error
+}
+
+func (c *Client) GetUnfilteredPartitionsMetadataPagesWithContext(ctx context.Context, input *glue.GetUnfilteredPartitionsMetadataInput, cb func(*glue.GetUnfilteredPartitionsMetadataOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetUnfilteredPartitionsMetadata",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetUnfilteredPartitionsMetadataPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetUnfilteredTableMetadataWithContext(ctx context.Context, input *glue.GetUnfilteredTableMetadataInput, opts ...request.Option) (*glue.GetUnfilteredTableMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetUnfilteredTableMetadata",
+		Input:   input,
+		Output:  (*glue.GetUnfilteredTableMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetUnfilteredTableMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetUnfilteredTableMetadataOutput), req.Error
 }
 
 func (c *Client) GetUserDefinedFunctionWithContext(ctx context.Context, input *glue.GetUserDefinedFunctionInput, opts ...request.Option) (*glue.GetUserDefinedFunctionOutput, error) {

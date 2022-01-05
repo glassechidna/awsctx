@@ -12,15 +12,26 @@ import (
 
 type CloudTrail interface {
 	AddTagsWithContext(ctx context.Context, input *cloudtrail.AddTagsInput, opts ...request.Option) (*cloudtrail.AddTagsOutput, error)
+	CancelQueryWithContext(ctx context.Context, input *cloudtrail.CancelQueryInput, opts ...request.Option) (*cloudtrail.CancelQueryOutput, error)
+	CreateEventDataStoreWithContext(ctx context.Context, input *cloudtrail.CreateEventDataStoreInput, opts ...request.Option) (*cloudtrail.CreateEventDataStoreOutput, error)
 	CreateTrailWithContext(ctx context.Context, input *cloudtrail.CreateTrailInput, opts ...request.Option) (*cloudtrail.CreateTrailOutput, error)
+	DeleteEventDataStoreWithContext(ctx context.Context, input *cloudtrail.DeleteEventDataStoreInput, opts ...request.Option) (*cloudtrail.DeleteEventDataStoreOutput, error)
 	DeleteTrailWithContext(ctx context.Context, input *cloudtrail.DeleteTrailInput, opts ...request.Option) (*cloudtrail.DeleteTrailOutput, error)
+	DescribeQueryWithContext(ctx context.Context, input *cloudtrail.DescribeQueryInput, opts ...request.Option) (*cloudtrail.DescribeQueryOutput, error)
 	DescribeTrailsWithContext(ctx context.Context, input *cloudtrail.DescribeTrailsInput, opts ...request.Option) (*cloudtrail.DescribeTrailsOutput, error)
+	GetEventDataStoreWithContext(ctx context.Context, input *cloudtrail.GetEventDataStoreInput, opts ...request.Option) (*cloudtrail.GetEventDataStoreOutput, error)
 	GetEventSelectorsWithContext(ctx context.Context, input *cloudtrail.GetEventSelectorsInput, opts ...request.Option) (*cloudtrail.GetEventSelectorsOutput, error)
 	GetInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.GetInsightSelectorsInput, opts ...request.Option) (*cloudtrail.GetInsightSelectorsOutput, error)
+	GetQueryResultsWithContext(ctx context.Context, input *cloudtrail.GetQueryResultsInput, opts ...request.Option) (*cloudtrail.GetQueryResultsOutput, error)
+	GetQueryResultsPagesWithContext(ctx context.Context, input *cloudtrail.GetQueryResultsInput, cb func(*cloudtrail.GetQueryResultsOutput, bool) bool, opts ...request.Option) error
 	GetTrailWithContext(ctx context.Context, input *cloudtrail.GetTrailInput, opts ...request.Option) (*cloudtrail.GetTrailOutput, error)
 	GetTrailStatusWithContext(ctx context.Context, input *cloudtrail.GetTrailStatusInput, opts ...request.Option) (*cloudtrail.GetTrailStatusOutput, error)
+	ListEventDataStoresWithContext(ctx context.Context, input *cloudtrail.ListEventDataStoresInput, opts ...request.Option) (*cloudtrail.ListEventDataStoresOutput, error)
+	ListEventDataStoresPagesWithContext(ctx context.Context, input *cloudtrail.ListEventDataStoresInput, cb func(*cloudtrail.ListEventDataStoresOutput, bool) bool, opts ...request.Option) error
 	ListPublicKeysWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, opts ...request.Option) (*cloudtrail.ListPublicKeysOutput, error)
 	ListPublicKeysPagesWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, cb func(*cloudtrail.ListPublicKeysOutput, bool) bool, opts ...request.Option) error
+	ListQueriesWithContext(ctx context.Context, input *cloudtrail.ListQueriesInput, opts ...request.Option) (*cloudtrail.ListQueriesOutput, error)
+	ListQueriesPagesWithContext(ctx context.Context, input *cloudtrail.ListQueriesInput, cb func(*cloudtrail.ListQueriesOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, opts ...request.Option) (*cloudtrail.ListTagsOutput, error)
 	ListTagsPagesWithContext(ctx context.Context, input *cloudtrail.ListTagsInput, cb func(*cloudtrail.ListTagsOutput, bool) bool, opts ...request.Option) error
 	ListTrailsWithContext(ctx context.Context, input *cloudtrail.ListTrailsInput, opts ...request.Option) (*cloudtrail.ListTrailsOutput, error)
@@ -30,8 +41,11 @@ type CloudTrail interface {
 	PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error)
 	PutInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.PutInsightSelectorsInput, opts ...request.Option) (*cloudtrail.PutInsightSelectorsOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error)
+	RestoreEventDataStoreWithContext(ctx context.Context, input *cloudtrail.RestoreEventDataStoreInput, opts ...request.Option) (*cloudtrail.RestoreEventDataStoreOutput, error)
 	StartLoggingWithContext(ctx context.Context, input *cloudtrail.StartLoggingInput, opts ...request.Option) (*cloudtrail.StartLoggingOutput, error)
+	StartQueryWithContext(ctx context.Context, input *cloudtrail.StartQueryInput, opts ...request.Option) (*cloudtrail.StartQueryOutput, error)
 	StopLoggingWithContext(ctx context.Context, input *cloudtrail.StopLoggingInput, opts ...request.Option) (*cloudtrail.StopLoggingOutput, error)
+	UpdateEventDataStoreWithContext(ctx context.Context, input *cloudtrail.UpdateEventDataStoreInput, opts ...request.Option) (*cloudtrail.UpdateEventDataStoreOutput, error)
 	UpdateTrailWithContext(ctx context.Context, input *cloudtrail.UpdateTrailInput, opts ...request.Option) (*cloudtrail.UpdateTrailOutput, error)
 }
 
@@ -71,6 +85,48 @@ func (c *Client) AddTagsWithContext(ctx context.Context, input *cloudtrail.AddTa
 	return req.Output.(*cloudtrail.AddTagsOutput), req.Error
 }
 
+func (c *Client) CancelQueryWithContext(ctx context.Context, input *cloudtrail.CancelQueryInput, opts ...request.Option) (*cloudtrail.CancelQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "CancelQuery",
+		Input:   input,
+		Output:  (*cloudtrail.CancelQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.CancelQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.CancelQueryOutput), req.Error
+}
+
+func (c *Client) CreateEventDataStoreWithContext(ctx context.Context, input *cloudtrail.CreateEventDataStoreInput, opts ...request.Option) (*cloudtrail.CreateEventDataStoreOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "CreateEventDataStore",
+		Input:   input,
+		Output:  (*cloudtrail.CreateEventDataStoreOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.CreateEventDataStoreWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.CreateEventDataStoreOutput), req.Error
+}
+
 func (c *Client) CreateTrailWithContext(ctx context.Context, input *cloudtrail.CreateTrailInput, opts ...request.Option) (*cloudtrail.CreateTrailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -90,6 +146,27 @@ func (c *Client) CreateTrailWithContext(ctx context.Context, input *cloudtrail.C
 	})
 
 	return req.Output.(*cloudtrail.CreateTrailOutput), req.Error
+}
+
+func (c *Client) DeleteEventDataStoreWithContext(ctx context.Context, input *cloudtrail.DeleteEventDataStoreInput, opts ...request.Option) (*cloudtrail.DeleteEventDataStoreOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "DeleteEventDataStore",
+		Input:   input,
+		Output:  (*cloudtrail.DeleteEventDataStoreOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.DeleteEventDataStoreWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.DeleteEventDataStoreOutput), req.Error
 }
 
 func (c *Client) DeleteTrailWithContext(ctx context.Context, input *cloudtrail.DeleteTrailInput, opts ...request.Option) (*cloudtrail.DeleteTrailOutput, error) {
@@ -113,6 +190,27 @@ func (c *Client) DeleteTrailWithContext(ctx context.Context, input *cloudtrail.D
 	return req.Output.(*cloudtrail.DeleteTrailOutput), req.Error
 }
 
+func (c *Client) DescribeQueryWithContext(ctx context.Context, input *cloudtrail.DescribeQueryInput, opts ...request.Option) (*cloudtrail.DescribeQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "DescribeQuery",
+		Input:   input,
+		Output:  (*cloudtrail.DescribeQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.DescribeQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.DescribeQueryOutput), req.Error
+}
+
 func (c *Client) DescribeTrailsWithContext(ctx context.Context, input *cloudtrail.DescribeTrailsInput, opts ...request.Option) (*cloudtrail.DescribeTrailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -132,6 +230,27 @@ func (c *Client) DescribeTrailsWithContext(ctx context.Context, input *cloudtrai
 	})
 
 	return req.Output.(*cloudtrail.DescribeTrailsOutput), req.Error
+}
+
+func (c *Client) GetEventDataStoreWithContext(ctx context.Context, input *cloudtrail.GetEventDataStoreInput, opts ...request.Option) (*cloudtrail.GetEventDataStoreOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "GetEventDataStore",
+		Input:   input,
+		Output:  (*cloudtrail.GetEventDataStoreOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.GetEventDataStoreWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.GetEventDataStoreOutput), req.Error
 }
 
 func (c *Client) GetEventSelectorsWithContext(ctx context.Context, input *cloudtrail.GetEventSelectorsInput, opts ...request.Option) (*cloudtrail.GetEventSelectorsOutput, error) {
@@ -176,6 +295,47 @@ func (c *Client) GetInsightSelectorsWithContext(ctx context.Context, input *clou
 	return req.Output.(*cloudtrail.GetInsightSelectorsOutput), req.Error
 }
 
+func (c *Client) GetQueryResultsWithContext(ctx context.Context, input *cloudtrail.GetQueryResultsInput, opts ...request.Option) (*cloudtrail.GetQueryResultsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "GetQueryResults",
+		Input:   input,
+		Output:  (*cloudtrail.GetQueryResultsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.GetQueryResultsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.GetQueryResultsOutput), req.Error
+}
+
+func (c *Client) GetQueryResultsPagesWithContext(ctx context.Context, input *cloudtrail.GetQueryResultsInput, cb func(*cloudtrail.GetQueryResultsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "GetQueryResults",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.GetQueryResultsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetTrailWithContext(ctx context.Context, input *cloudtrail.GetTrailInput, opts ...request.Option) (*cloudtrail.GetTrailOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -218,6 +378,47 @@ func (c *Client) GetTrailStatusWithContext(ctx context.Context, input *cloudtrai
 	return req.Output.(*cloudtrail.GetTrailStatusOutput), req.Error
 }
 
+func (c *Client) ListEventDataStoresWithContext(ctx context.Context, input *cloudtrail.ListEventDataStoresInput, opts ...request.Option) (*cloudtrail.ListEventDataStoresOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListEventDataStores",
+		Input:   input,
+		Output:  (*cloudtrail.ListEventDataStoresOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.ListEventDataStoresWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.ListEventDataStoresOutput), req.Error
+}
+
+func (c *Client) ListEventDataStoresPagesWithContext(ctx context.Context, input *cloudtrail.ListEventDataStoresInput, cb func(*cloudtrail.ListEventDataStoresOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListEventDataStores",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.ListEventDataStoresPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPublicKeysWithContext(ctx context.Context, input *cloudtrail.ListPublicKeysInput, opts ...request.Option) (*cloudtrail.ListPublicKeysOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -254,6 +455,47 @@ func (c *Client) ListPublicKeysPagesWithContext(ctx context.Context, input *clou
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.CloudTrailAPI.ListPublicKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListQueriesWithContext(ctx context.Context, input *cloudtrail.ListQueriesInput, opts ...request.Option) (*cloudtrail.ListQueriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListQueries",
+		Input:   input,
+		Output:  (*cloudtrail.ListQueriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.ListQueriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.ListQueriesOutput), req.Error
+}
+
+func (c *Client) ListQueriesPagesWithContext(ctx context.Context, input *cloudtrail.ListQueriesInput, cb func(*cloudtrail.ListQueriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "ListQueries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudTrailAPI.ListQueriesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -445,6 +687,27 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *cloudtrail.Re
 	return req.Output.(*cloudtrail.RemoveTagsOutput), req.Error
 }
 
+func (c *Client) RestoreEventDataStoreWithContext(ctx context.Context, input *cloudtrail.RestoreEventDataStoreInput, opts ...request.Option) (*cloudtrail.RestoreEventDataStoreOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "RestoreEventDataStore",
+		Input:   input,
+		Output:  (*cloudtrail.RestoreEventDataStoreOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.RestoreEventDataStoreWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.RestoreEventDataStoreOutput), req.Error
+}
+
 func (c *Client) StartLoggingWithContext(ctx context.Context, input *cloudtrail.StartLoggingInput, opts ...request.Option) (*cloudtrail.StartLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -466,6 +729,27 @@ func (c *Client) StartLoggingWithContext(ctx context.Context, input *cloudtrail.
 	return req.Output.(*cloudtrail.StartLoggingOutput), req.Error
 }
 
+func (c *Client) StartQueryWithContext(ctx context.Context, input *cloudtrail.StartQueryInput, opts ...request.Option) (*cloudtrail.StartQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "StartQuery",
+		Input:   input,
+		Output:  (*cloudtrail.StartQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.StartQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.StartQueryOutput), req.Error
+}
+
 func (c *Client) StopLoggingWithContext(ctx context.Context, input *cloudtrail.StopLoggingInput, opts ...request.Option) (*cloudtrail.StopLoggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -485,6 +769,27 @@ func (c *Client) StopLoggingWithContext(ctx context.Context, input *cloudtrail.S
 	})
 
 	return req.Output.(*cloudtrail.StopLoggingOutput), req.Error
+}
+
+func (c *Client) UpdateEventDataStoreWithContext(ctx context.Context, input *cloudtrail.UpdateEventDataStoreInput, opts ...request.Option) (*cloudtrail.UpdateEventDataStoreOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "UpdateEventDataStore",
+		Input:   input,
+		Output:  (*cloudtrail.UpdateEventDataStoreOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.UpdateEventDataStoreWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.UpdateEventDataStoreOutput), req.Error
 }
 
 func (c *Client) UpdateTrailWithContext(ctx context.Context, input *cloudtrail.UpdateTrailInput, opts ...request.Option) (*cloudtrail.UpdateTrailOutput, error) {

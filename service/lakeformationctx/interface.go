@@ -34,6 +34,8 @@ type LakeFormation interface {
 	GetResourceLFTagsWithContext(ctx context.Context, input *lakeformation.GetResourceLFTagsInput, opts ...request.Option) (*lakeformation.GetResourceLFTagsOutput, error)
 	GetTableObjectsWithContext(ctx context.Context, input *lakeformation.GetTableObjectsInput, opts ...request.Option) (*lakeformation.GetTableObjectsOutput, error)
 	GetTableObjectsPagesWithContext(ctx context.Context, input *lakeformation.GetTableObjectsInput, cb func(*lakeformation.GetTableObjectsOutput, bool) bool, opts ...request.Option) error
+	GetTemporaryGluePartitionCredentialsWithContext(ctx context.Context, input *lakeformation.GetTemporaryGluePartitionCredentialsInput, opts ...request.Option) (*lakeformation.GetTemporaryGluePartitionCredentialsOutput, error)
+	GetTemporaryGlueTableCredentialsWithContext(ctx context.Context, input *lakeformation.GetTemporaryGlueTableCredentialsInput, opts ...request.Option) (*lakeformation.GetTemporaryGlueTableCredentialsOutput, error)
 	GetWorkUnitResultsWithContext(ctx context.Context, input *lakeformation.GetWorkUnitResultsInput, opts ...request.Option) (*lakeformation.GetWorkUnitResultsOutput, error)
 	GetWorkUnitsWithContext(ctx context.Context, input *lakeformation.GetWorkUnitsInput, opts ...request.Option) (*lakeformation.GetWorkUnitsOutput, error)
 	GetWorkUnitsPagesWithContext(ctx context.Context, input *lakeformation.GetWorkUnitsInput, cb func(*lakeformation.GetWorkUnitsOutput, bool) bool, opts ...request.Option) error
@@ -560,6 +562,48 @@ func (c *Client) GetTableObjectsPagesWithContext(ctx context.Context, input *lak
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetTemporaryGluePartitionCredentialsWithContext(ctx context.Context, input *lakeformation.GetTemporaryGluePartitionCredentialsInput, opts ...request.Option) (*lakeformation.GetTemporaryGluePartitionCredentialsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "GetTemporaryGluePartitionCredentials",
+		Input:   input,
+		Output:  (*lakeformation.GetTemporaryGluePartitionCredentialsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.GetTemporaryGluePartitionCredentialsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.GetTemporaryGluePartitionCredentialsOutput), req.Error
+}
+
+func (c *Client) GetTemporaryGlueTableCredentialsWithContext(ctx context.Context, input *lakeformation.GetTemporaryGlueTableCredentialsInput, opts ...request.Option) (*lakeformation.GetTemporaryGlueTableCredentialsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "GetTemporaryGlueTableCredentials",
+		Input:   input,
+		Output:  (*lakeformation.GetTemporaryGlueTableCredentialsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.GetTemporaryGlueTableCredentialsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.GetTemporaryGlueTableCredentialsOutput), req.Error
 }
 
 func (c *Client) GetWorkUnitResultsWithContext(ctx context.Context, input *lakeformation.GetWorkUnitResultsInput, opts ...request.Option) (*lakeformation.GetWorkUnitResultsOutput, error) {
