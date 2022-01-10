@@ -236,6 +236,8 @@ type EC2 interface {
 	DescribeExportImageTasksWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, opts ...request.Option) (*ec2.DescribeExportImageTasksOutput, error)
 	DescribeExportImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeExportImageTasksInput, cb func(*ec2.DescribeExportImageTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeExportTasksWithContext(ctx context.Context, input *ec2.DescribeExportTasksInput, opts ...request.Option) (*ec2.DescribeExportTasksOutput, error)
+	DescribeFastLaunchImagesWithContext(ctx context.Context, input *ec2.DescribeFastLaunchImagesInput, opts ...request.Option) (*ec2.DescribeFastLaunchImagesOutput, error)
+	DescribeFastLaunchImagesPagesWithContext(ctx context.Context, input *ec2.DescribeFastLaunchImagesInput, cb func(*ec2.DescribeFastLaunchImagesOutput, bool) bool, opts ...request.Option) error
 	DescribeFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DescribeFastSnapshotRestoresOutput, error)
 	DescribeFastSnapshotRestoresPagesWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, cb func(*ec2.DescribeFastSnapshotRestoresOutput, bool) bool, opts ...request.Option) error
 	DescribeFleetHistoryWithContext(ctx context.Context, input *ec2.DescribeFleetHistoryInput, opts ...request.Option) (*ec2.DescribeFleetHistoryOutput, error)
@@ -432,6 +434,7 @@ type EC2 interface {
 	DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error)
 	DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error)
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
+	DisableFastLaunchWithContext(ctx context.Context, input *ec2.DisableFastLaunchInput, opts ...request.Option) (*ec2.DisableFastLaunchOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
 	DisableImageDeprecationWithContext(ctx context.Context, input *ec2.DisableImageDeprecationInput, opts ...request.Option) (*ec2.DisableImageDeprecationOutput, error)
 	DisableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.DisableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.DisableIpamOrganizationAdminAccountOutput, error)
@@ -452,6 +455,7 @@ type EC2 interface {
 	DisassociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.DisassociateTrunkInterfaceInput, opts ...request.Option) (*ec2.DisassociateTrunkInterfaceOutput, error)
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
+	EnableFastLaunchWithContext(ctx context.Context, input *ec2.EnableFastLaunchInput, opts ...request.Option) (*ec2.EnableFastLaunchOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
 	EnableImageDeprecationWithContext(ctx context.Context, input *ec2.EnableImageDeprecationInput, opts ...request.Option) (*ec2.EnableImageDeprecationOutput, error)
 	EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error)
@@ -5370,6 +5374,47 @@ func (c *Client) DescribeExportTasksWithContext(ctx context.Context, input *ec2.
 	return req.Output.(*ec2.DescribeExportTasksOutput), req.Error
 }
 
+func (c *Client) DescribeFastLaunchImagesWithContext(ctx context.Context, input *ec2.DescribeFastLaunchImagesInput, opts ...request.Option) (*ec2.DescribeFastLaunchImagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFastLaunchImages",
+		Input:   input,
+		Output:  (*ec2.DescribeFastLaunchImagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeFastLaunchImagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeFastLaunchImagesOutput), req.Error
+}
+
+func (c *Client) DescribeFastLaunchImagesPagesWithContext(ctx context.Context, input *ec2.DescribeFastLaunchImagesInput, cb func(*ec2.DescribeFastLaunchImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeFastLaunchImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeFastLaunchImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DescribeFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DescribeFastSnapshotRestoresOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9404,6 +9449,27 @@ func (c *Client) DisableEbsEncryptionByDefaultWithContext(ctx context.Context, i
 	return req.Output.(*ec2.DisableEbsEncryptionByDefaultOutput), req.Error
 }
 
+func (c *Client) DisableFastLaunchWithContext(ctx context.Context, input *ec2.DisableFastLaunchInput, opts ...request.Option) (*ec2.DisableFastLaunchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableFastLaunch",
+		Input:   input,
+		Output:  (*ec2.DisableFastLaunchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableFastLaunchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableFastLaunchOutput), req.Error
+}
+
 func (c *Client) DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9822,6 +9888,27 @@ func (c *Client) EnableEbsEncryptionByDefaultWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.EnableEbsEncryptionByDefaultOutput), req.Error
+}
+
+func (c *Client) EnableFastLaunchWithContext(ctx context.Context, input *ec2.EnableFastLaunchInput, opts ...request.Option) (*ec2.EnableFastLaunchOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableFastLaunch",
+		Input:   input,
+		Output:  (*ec2.EnableFastLaunchOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableFastLaunchWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableFastLaunchOutput), req.Error
 }
 
 func (c *Client) EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error) {
