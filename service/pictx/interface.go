@@ -12,8 +12,15 @@ import (
 
 type PI interface {
 	DescribeDimensionKeysWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, opts ...request.Option) (*pi.DescribeDimensionKeysOutput, error)
+	DescribeDimensionKeysPagesWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, cb func(*pi.DescribeDimensionKeysOutput, bool) bool, opts ...request.Option) error
 	GetDimensionKeyDetailsWithContext(ctx context.Context, input *pi.GetDimensionKeyDetailsInput, opts ...request.Option) (*pi.GetDimensionKeyDetailsOutput, error)
+	GetResourceMetadataWithContext(ctx context.Context, input *pi.GetResourceMetadataInput, opts ...request.Option) (*pi.GetResourceMetadataOutput, error)
 	GetResourceMetricsWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, opts ...request.Option) (*pi.GetResourceMetricsOutput, error)
+	GetResourceMetricsPagesWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, cb func(*pi.GetResourceMetricsOutput, bool) bool, opts ...request.Option) error
+	ListAvailableResourceDimensionsWithContext(ctx context.Context, input *pi.ListAvailableResourceDimensionsInput, opts ...request.Option) (*pi.ListAvailableResourceDimensionsOutput, error)
+	ListAvailableResourceDimensionsPagesWithContext(ctx context.Context, input *pi.ListAvailableResourceDimensionsInput, cb func(*pi.ListAvailableResourceDimensionsOutput, bool) bool, opts ...request.Option) error
+	ListAvailableResourceMetricsWithContext(ctx context.Context, input *pi.ListAvailableResourceMetricsInput, opts ...request.Option) (*pi.ListAvailableResourceMetricsOutput, error)
+	ListAvailableResourceMetricsPagesWithContext(ctx context.Context, input *pi.ListAvailableResourceMetricsInput, cb func(*pi.ListAvailableResourceMetricsOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -52,6 +59,26 @@ func (c *Client) DescribeDimensionKeysWithContext(ctx context.Context, input *pi
 	return req.Output.(*pi.DescribeDimensionKeysOutput), req.Error
 }
 
+func (c *Client) DescribeDimensionKeysPagesWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, cb func(*pi.DescribeDimensionKeysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "DescribeDimensionKeys",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PIAPI.DescribeDimensionKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetDimensionKeyDetailsWithContext(ctx context.Context, input *pi.GetDimensionKeyDetailsInput, opts ...request.Option) (*pi.GetDimensionKeyDetailsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pi",
@@ -73,6 +100,27 @@ func (c *Client) GetDimensionKeyDetailsWithContext(ctx context.Context, input *p
 	return req.Output.(*pi.GetDimensionKeyDetailsOutput), req.Error
 }
 
+func (c *Client) GetResourceMetadataWithContext(ctx context.Context, input *pi.GetResourceMetadataInput, opts ...request.Option) (*pi.GetResourceMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "GetResourceMetadata",
+		Input:   input,
+		Output:  (*pi.GetResourceMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.GetResourceMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.GetResourceMetadataOutput), req.Error
+}
+
 func (c *Client) GetResourceMetricsWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, opts ...request.Option) (*pi.GetResourceMetricsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "pi",
@@ -92,4 +140,106 @@ func (c *Client) GetResourceMetricsWithContext(ctx context.Context, input *pi.Ge
 	})
 
 	return req.Output.(*pi.GetResourceMetricsOutput), req.Error
+}
+
+func (c *Client) GetResourceMetricsPagesWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, cb func(*pi.GetResourceMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "GetResourceMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PIAPI.GetResourceMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAvailableResourceDimensionsWithContext(ctx context.Context, input *pi.ListAvailableResourceDimensionsInput, opts ...request.Option) (*pi.ListAvailableResourceDimensionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListAvailableResourceDimensions",
+		Input:   input,
+		Output:  (*pi.ListAvailableResourceDimensionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.ListAvailableResourceDimensionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.ListAvailableResourceDimensionsOutput), req.Error
+}
+
+func (c *Client) ListAvailableResourceDimensionsPagesWithContext(ctx context.Context, input *pi.ListAvailableResourceDimensionsInput, cb func(*pi.ListAvailableResourceDimensionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListAvailableResourceDimensions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PIAPI.ListAvailableResourceDimensionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAvailableResourceMetricsWithContext(ctx context.Context, input *pi.ListAvailableResourceMetricsInput, opts ...request.Option) (*pi.ListAvailableResourceMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListAvailableResourceMetrics",
+		Input:   input,
+		Output:  (*pi.ListAvailableResourceMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.ListAvailableResourceMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.ListAvailableResourceMetricsOutput), req.Error
+}
+
+func (c *Client) ListAvailableResourceMetricsPagesWithContext(ctx context.Context, input *pi.ListAvailableResourceMetricsInput, cb func(*pi.ListAvailableResourceMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListAvailableResourceMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PIAPI.ListAvailableResourceMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
