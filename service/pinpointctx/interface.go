@@ -129,6 +129,7 @@ type Pinpoint interface {
 	UpdateTemplateActiveVersionWithContext(ctx context.Context, input *pinpoint.UpdateTemplateActiveVersionInput, opts ...request.Option) (*pinpoint.UpdateTemplateActiveVersionOutput, error)
 	UpdateVoiceChannelWithContext(ctx context.Context, input *pinpoint.UpdateVoiceChannelInput, opts ...request.Option) (*pinpoint.UpdateVoiceChannelOutput, error)
 	UpdateVoiceTemplateWithContext(ctx context.Context, input *pinpoint.UpdateVoiceTemplateInput, opts ...request.Option) (*pinpoint.UpdateVoiceTemplateOutput, error)
+	VerifyOTPMessageWithContext(ctx context.Context, input *pinpoint.VerifyOTPMessageInput, opts ...request.Option) (*pinpoint.VerifyOTPMessageOutput, error)
 }
 
 type Client struct {
@@ -2622,4 +2623,25 @@ func (c *Client) UpdateVoiceTemplateWithContext(ctx context.Context, input *pinp
 	})
 
 	return req.Output.(*pinpoint.UpdateVoiceTemplateOutput), req.Error
+}
+
+func (c *Client) VerifyOTPMessageWithContext(ctx context.Context, input *pinpoint.VerifyOTPMessageInput, opts ...request.Option) (*pinpoint.VerifyOTPMessageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "VerifyOTPMessage",
+		Input:   input,
+		Output:  (*pinpoint.VerifyOTPMessageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.VerifyOTPMessageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.VerifyOTPMessageOutput), req.Error
 }
