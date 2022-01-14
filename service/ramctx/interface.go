@@ -30,6 +30,8 @@ type RAM interface {
 	GetResourceSharesPagesWithContext(ctx context.Context, input *ram.GetResourceSharesInput, cb func(*ram.GetResourceSharesOutput, bool) bool, opts ...request.Option) error
 	ListPendingInvitationResourcesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, opts ...request.Option) (*ram.ListPendingInvitationResourcesOutput, error)
 	ListPendingInvitationResourcesPagesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, cb func(*ram.ListPendingInvitationResourcesOutput, bool) bool, opts ...request.Option) error
+	ListPermissionVersionsWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, opts ...request.Option) (*ram.ListPermissionVersionsOutput, error)
+	ListPermissionVersionsPagesWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, cb func(*ram.ListPermissionVersionsOutput, bool) bool, opts ...request.Option) error
 	ListPermissionsWithContext(ctx context.Context, input *ram.ListPermissionsInput, opts ...request.Option) (*ram.ListPermissionsOutput, error)
 	ListPermissionsPagesWithContext(ctx context.Context, input *ram.ListPermissionsInput, cb func(*ram.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error)
@@ -451,6 +453,47 @@ func (c *Client) ListPendingInvitationResourcesPagesWithContext(ctx context.Cont
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RAMAPI.ListPendingInvitationResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPermissionVersionsWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, opts ...request.Option) (*ram.ListPermissionVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListPermissionVersions",
+		Input:   input,
+		Output:  (*ram.ListPermissionVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.ListPermissionVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.ListPermissionVersionsOutput), req.Error
+}
+
+func (c *Client) ListPermissionVersionsPagesWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, cb func(*ram.ListPermissionVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListPermissionVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RAMAPI.ListPermissionVersionsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
