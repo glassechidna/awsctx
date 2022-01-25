@@ -13,6 +13,7 @@ import (
 type Connect interface {
 	AssociateApprovedOriginWithContext(ctx context.Context, input *connect.AssociateApprovedOriginInput, opts ...request.Option) (*connect.AssociateApprovedOriginOutput, error)
 	AssociateBotWithContext(ctx context.Context, input *connect.AssociateBotInput, opts ...request.Option) (*connect.AssociateBotOutput, error)
+	AssociateDefaultVocabularyWithContext(ctx context.Context, input *connect.AssociateDefaultVocabularyInput, opts ...request.Option) (*connect.AssociateDefaultVocabularyOutput, error)
 	AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error)
 	AssociateLambdaFunctionWithContext(ctx context.Context, input *connect.AssociateLambdaFunctionInput, opts ...request.Option) (*connect.AssociateLambdaFunctionOutput, error)
 	AssociateLexBotWithContext(ctx context.Context, input *connect.AssociateLexBotInput, opts ...request.Option) (*connect.AssociateLexBotOutput, error)
@@ -32,6 +33,7 @@ type Connect interface {
 	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
+	CreateVocabularyWithContext(ctx context.Context, input *connect.CreateVocabularyInput, opts ...request.Option) (*connect.CreateVocabularyOutput, error)
 	DeleteContactFlowWithContext(ctx context.Context, input *connect.DeleteContactFlowInput, opts ...request.Option) (*connect.DeleteContactFlowOutput, error)
 	DeleteContactFlowModuleWithContext(ctx context.Context, input *connect.DeleteContactFlowModuleInput, opts ...request.Option) (*connect.DeleteContactFlowModuleOutput, error)
 	DeleteHoursOfOperationWithContext(ctx context.Context, input *connect.DeleteHoursOfOperationInput, opts ...request.Option) (*connect.DeleteHoursOfOperationOutput, error)
@@ -42,6 +44,7 @@ type Connect interface {
 	DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
+	DeleteVocabularyWithContext(ctx context.Context, input *connect.DeleteVocabularyInput, opts ...request.Option) (*connect.DeleteVocabularyOutput, error)
 	DescribeAgentStatusWithContext(ctx context.Context, input *connect.DescribeAgentStatusInput, opts ...request.Option) (*connect.DescribeAgentStatusOutput, error)
 	DescribeContactWithContext(ctx context.Context, input *connect.DescribeContactInput, opts ...request.Option) (*connect.DescribeContactOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
@@ -57,6 +60,7 @@ type Connect interface {
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
 	DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error)
 	DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error)
+	DescribeVocabularyWithContext(ctx context.Context, input *connect.DescribeVocabularyInput, opts ...request.Option) (*connect.DescribeVocabularyOutput, error)
 	DisassociateApprovedOriginWithContext(ctx context.Context, input *connect.DisassociateApprovedOriginInput, opts ...request.Option) (*connect.DisassociateApprovedOriginOutput, error)
 	DisassociateBotWithContext(ctx context.Context, input *connect.DisassociateBotInput, opts ...request.Option) (*connect.DisassociateBotOutput, error)
 	DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error)
@@ -83,6 +87,8 @@ type Connect interface {
 	ListContactFlowsPagesWithContext(ctx context.Context, input *connect.ListContactFlowsInput, cb func(*connect.ListContactFlowsOutput, bool) bool, opts ...request.Option) error
 	ListContactReferencesWithContext(ctx context.Context, input *connect.ListContactReferencesInput, opts ...request.Option) (*connect.ListContactReferencesOutput, error)
 	ListContactReferencesPagesWithContext(ctx context.Context, input *connect.ListContactReferencesInput, cb func(*connect.ListContactReferencesOutput, bool) bool, opts ...request.Option) error
+	ListDefaultVocabulariesWithContext(ctx context.Context, input *connect.ListDefaultVocabulariesInput, opts ...request.Option) (*connect.ListDefaultVocabulariesOutput, error)
+	ListDefaultVocabulariesPagesWithContext(ctx context.Context, input *connect.ListDefaultVocabulariesInput, cb func(*connect.ListDefaultVocabulariesOutput, bool) bool, opts ...request.Option) error
 	ListHoursOfOperationsWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, opts ...request.Option) (*connect.ListHoursOfOperationsOutput, error)
 	ListHoursOfOperationsPagesWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, cb func(*connect.ListHoursOfOperationsOutput, bool) bool, opts ...request.Option) error
 	ListInstanceAttributesWithContext(ctx context.Context, input *connect.ListInstanceAttributesInput, opts ...request.Option) (*connect.ListInstanceAttributesOutput, error)
@@ -125,6 +131,8 @@ type Connect interface {
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
 	ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error)
+	SearchVocabulariesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, opts ...request.Option) (*connect.SearchVocabulariesOutput, error)
+	SearchVocabulariesPagesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, cb func(*connect.SearchVocabulariesOutput, bool) bool, opts ...request.Option) error
 	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
 	StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error)
 	StartContactStreamingWithContext(ctx context.Context, input *connect.StartContactStreamingInput, opts ...request.Option) (*connect.StartContactStreamingOutput, error)
@@ -224,6 +232,27 @@ func (c *Client) AssociateBotWithContext(ctx context.Context, input *connect.Ass
 	})
 
 	return req.Output.(*connect.AssociateBotOutput), req.Error
+}
+
+func (c *Client) AssociateDefaultVocabularyWithContext(ctx context.Context, input *connect.AssociateDefaultVocabularyInput, opts ...request.Option) (*connect.AssociateDefaultVocabularyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateDefaultVocabulary",
+		Input:   input,
+		Output:  (*connect.AssociateDefaultVocabularyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateDefaultVocabularyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateDefaultVocabularyOutput), req.Error
 }
 
 func (c *Client) AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error) {
@@ -625,6 +654,27 @@ func (c *Client) CreateUserHierarchyGroupWithContext(ctx context.Context, input 
 	return req.Output.(*connect.CreateUserHierarchyGroupOutput), req.Error
 }
 
+func (c *Client) CreateVocabularyWithContext(ctx context.Context, input *connect.CreateVocabularyInput, opts ...request.Option) (*connect.CreateVocabularyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateVocabulary",
+		Input:   input,
+		Output:  (*connect.CreateVocabularyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateVocabularyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateVocabularyOutput), req.Error
+}
+
 func (c *Client) DeleteContactFlowWithContext(ctx context.Context, input *connect.DeleteContactFlowInput, opts ...request.Option) (*connect.DeleteContactFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -833,6 +883,27 @@ func (c *Client) DeleteUserHierarchyGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*connect.DeleteUserHierarchyGroupOutput), req.Error
+}
+
+func (c *Client) DeleteVocabularyWithContext(ctx context.Context, input *connect.DeleteVocabularyInput, opts ...request.Option) (*connect.DeleteVocabularyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteVocabulary",
+		Input:   input,
+		Output:  (*connect.DeleteVocabularyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteVocabularyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteVocabularyOutput), req.Error
 }
 
 func (c *Client) DescribeAgentStatusWithContext(ctx context.Context, input *connect.DescribeAgentStatusInput, opts ...request.Option) (*connect.DescribeAgentStatusOutput, error) {
@@ -1148,6 +1219,27 @@ func (c *Client) DescribeUserHierarchyStructureWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*connect.DescribeUserHierarchyStructureOutput), req.Error
+}
+
+func (c *Client) DescribeVocabularyWithContext(ctx context.Context, input *connect.DescribeVocabularyInput, opts ...request.Option) (*connect.DescribeVocabularyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeVocabulary",
+		Input:   input,
+		Output:  (*connect.DescribeVocabularyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeVocabularyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeVocabularyOutput), req.Error
 }
 
 func (c *Client) DisassociateApprovedOriginWithContext(ctx context.Context, input *connect.DisassociateApprovedOriginInput, opts ...request.Option) (*connect.DisassociateApprovedOriginOutput, error) {
@@ -1683,6 +1775,47 @@ func (c *Client) ListContactReferencesPagesWithContext(ctx context.Context, inpu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListContactReferencesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDefaultVocabulariesWithContext(ctx context.Context, input *connect.ListDefaultVocabulariesInput, opts ...request.Option) (*connect.ListDefaultVocabulariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListDefaultVocabularies",
+		Input:   input,
+		Output:  (*connect.ListDefaultVocabulariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListDefaultVocabulariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListDefaultVocabulariesOutput), req.Error
+}
+
+func (c *Client) ListDefaultVocabulariesPagesWithContext(ctx context.Context, input *connect.ListDefaultVocabulariesInput, cb func(*connect.ListDefaultVocabulariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListDefaultVocabularies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListDefaultVocabulariesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -2548,6 +2681,47 @@ func (c *Client) ResumeContactRecordingWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*connect.ResumeContactRecordingOutput), req.Error
+}
+
+func (c *Client) SearchVocabulariesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, opts ...request.Option) (*connect.SearchVocabulariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchVocabularies",
+		Input:   input,
+		Output:  (*connect.SearchVocabulariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SearchVocabulariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SearchVocabulariesOutput), req.Error
+}
+
+func (c *Client) SearchVocabulariesPagesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, cb func(*connect.SearchVocabulariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchVocabularies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.SearchVocabulariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error) {

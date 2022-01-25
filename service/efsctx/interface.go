@@ -14,11 +14,13 @@ type EFS interface {
 	CreateAccessPointWithContext(ctx context.Context, input *efs.CreateAccessPointInput, opts ...request.Option) (*efs.CreateAccessPointOutput, error)
 	CreateFileSystemWithContext(ctx context.Context, input *efs.CreateFileSystemInput, opts ...request.Option) (*efs.FileSystemDescription, error)
 	CreateMountTargetWithContext(ctx context.Context, input *efs.CreateMountTargetInput, opts ...request.Option) (*efs.MountTargetDescription, error)
+	CreateReplicationConfigurationWithContext(ctx context.Context, input *efs.CreateReplicationConfigurationInput, opts ...request.Option) (*efs.CreateReplicationConfigurationOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *efs.CreateTagsInput, opts ...request.Option) (*efs.CreateTagsOutput, error)
 	DeleteAccessPointWithContext(ctx context.Context, input *efs.DeleteAccessPointInput, opts ...request.Option) (*efs.DeleteAccessPointOutput, error)
 	DeleteFileSystemWithContext(ctx context.Context, input *efs.DeleteFileSystemInput, opts ...request.Option) (*efs.DeleteFileSystemOutput, error)
 	DeleteFileSystemPolicyWithContext(ctx context.Context, input *efs.DeleteFileSystemPolicyInput, opts ...request.Option) (*efs.DeleteFileSystemPolicyOutput, error)
 	DeleteMountTargetWithContext(ctx context.Context, input *efs.DeleteMountTargetInput, opts ...request.Option) (*efs.DeleteMountTargetOutput, error)
+	DeleteReplicationConfigurationWithContext(ctx context.Context, input *efs.DeleteReplicationConfigurationInput, opts ...request.Option) (*efs.DeleteReplicationConfigurationOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *efs.DeleteTagsInput, opts ...request.Option) (*efs.DeleteTagsOutput, error)
 	DescribeAccessPointsWithContext(ctx context.Context, input *efs.DescribeAccessPointsInput, opts ...request.Option) (*efs.DescribeAccessPointsOutput, error)
 	DescribeAccessPointsPagesWithContext(ctx context.Context, input *efs.DescribeAccessPointsInput, cb func(*efs.DescribeAccessPointsOutput, bool) bool, opts ...request.Option) error
@@ -30,6 +32,7 @@ type EFS interface {
 	DescribeLifecycleConfigurationWithContext(ctx context.Context, input *efs.DescribeLifecycleConfigurationInput, opts ...request.Option) (*efs.DescribeLifecycleConfigurationOutput, error)
 	DescribeMountTargetSecurityGroupsWithContext(ctx context.Context, input *efs.DescribeMountTargetSecurityGroupsInput, opts ...request.Option) (*efs.DescribeMountTargetSecurityGroupsOutput, error)
 	DescribeMountTargetsWithContext(ctx context.Context, input *efs.DescribeMountTargetsInput, opts ...request.Option) (*efs.DescribeMountTargetsOutput, error)
+	DescribeReplicationConfigurationsWithContext(ctx context.Context, input *efs.DescribeReplicationConfigurationsInput, opts ...request.Option) (*efs.DescribeReplicationConfigurationsOutput, error)
 	DescribeTagsWithContext(ctx context.Context, input *efs.DescribeTagsInput, opts ...request.Option) (*efs.DescribeTagsOutput, error)
 	DescribeTagsPagesWithContext(ctx context.Context, input *efs.DescribeTagsInput, cb func(*efs.DescribeTagsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *efs.ListTagsForResourceInput, opts ...request.Option) (*efs.ListTagsForResourceOutput, error)
@@ -120,6 +123,27 @@ func (c *Client) CreateMountTargetWithContext(ctx context.Context, input *efs.Cr
 	})
 
 	return req.Output.(*efs.MountTargetDescription), req.Error
+}
+
+func (c *Client) CreateReplicationConfigurationWithContext(ctx context.Context, input *efs.CreateReplicationConfigurationInput, opts ...request.Option) (*efs.CreateReplicationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "efs",
+		Action:  "CreateReplicationConfiguration",
+		Input:   input,
+		Output:  (*efs.CreateReplicationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EFSAPI.CreateReplicationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*efs.CreateReplicationConfigurationOutput), req.Error
 }
 
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *efs.CreateTagsInput, opts ...request.Option) (*efs.CreateTagsOutput, error) {
@@ -225,6 +249,27 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, input *efs.De
 	})
 
 	return req.Output.(*efs.DeleteMountTargetOutput), req.Error
+}
+
+func (c *Client) DeleteReplicationConfigurationWithContext(ctx context.Context, input *efs.DeleteReplicationConfigurationInput, opts ...request.Option) (*efs.DeleteReplicationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "efs",
+		Action:  "DeleteReplicationConfiguration",
+		Input:   input,
+		Output:  (*efs.DeleteReplicationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EFSAPI.DeleteReplicationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*efs.DeleteReplicationConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteTagsWithContext(ctx context.Context, input *efs.DeleteTagsInput, opts ...request.Option) (*efs.DeleteTagsOutput, error) {
@@ -454,6 +499,27 @@ func (c *Client) DescribeMountTargetsWithContext(ctx context.Context, input *efs
 	})
 
 	return req.Output.(*efs.DescribeMountTargetsOutput), req.Error
+}
+
+func (c *Client) DescribeReplicationConfigurationsWithContext(ctx context.Context, input *efs.DescribeReplicationConfigurationsInput, opts ...request.Option) (*efs.DescribeReplicationConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "efs",
+		Action:  "DescribeReplicationConfigurations",
+		Input:   input,
+		Output:  (*efs.DescribeReplicationConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EFSAPI.DescribeReplicationConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*efs.DescribeReplicationConfigurationsOutput), req.Error
 }
 
 func (c *Client) DescribeTagsWithContext(ctx context.Context, input *efs.DescribeTagsInput, opts ...request.Option) (*efs.DescribeTagsOutput, error) {
