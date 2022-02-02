@@ -24,6 +24,7 @@ type Comprehend interface {
 	DeleteDocumentClassifierWithContext(ctx context.Context, input *comprehend.DeleteDocumentClassifierInput, opts ...request.Option) (*comprehend.DeleteDocumentClassifierOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *comprehend.DeleteEndpointInput, opts ...request.Option) (*comprehend.DeleteEndpointOutput, error)
 	DeleteEntityRecognizerWithContext(ctx context.Context, input *comprehend.DeleteEntityRecognizerInput, opts ...request.Option) (*comprehend.DeleteEntityRecognizerOutput, error)
+	DeleteResourcePolicyWithContext(ctx context.Context, input *comprehend.DeleteResourcePolicyInput, opts ...request.Option) (*comprehend.DeleteResourcePolicyOutput, error)
 	DescribeDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassificationJobInput, opts ...request.Option) (*comprehend.DescribeDocumentClassificationJobOutput, error)
 	DescribeDocumentClassifierWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassifierInput, opts ...request.Option) (*comprehend.DescribeDocumentClassifierOutput, error)
 	DescribeDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.DescribeDominantLanguageDetectionJobOutput, error)
@@ -33,6 +34,7 @@ type Comprehend interface {
 	DescribeEventsDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEventsDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEventsDetectionJobOutput, error)
 	DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeKeyPhrasesDetectionJobOutput, error)
 	DescribePiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribePiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribePiiEntitiesDetectionJobOutput, error)
+	DescribeResourcePolicyWithContext(ctx context.Context, input *comprehend.DescribeResourcePolicyInput, opts ...request.Option) (*comprehend.DescribeResourcePolicyOutput, error)
 	DescribeSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeSentimentDetectionJobInput, opts ...request.Option) (*comprehend.DescribeSentimentDetectionJobOutput, error)
 	DescribeTopicsDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeTopicsDetectionJobInput, opts ...request.Option) (*comprehend.DescribeTopicsDetectionJobOutput, error)
 	DetectDominantLanguageWithContext(ctx context.Context, input *comprehend.DetectDominantLanguageInput, opts ...request.Option) (*comprehend.DetectDominantLanguageOutput, error)
@@ -41,6 +43,7 @@ type Comprehend interface {
 	DetectPiiEntitiesWithContext(ctx context.Context, input *comprehend.DetectPiiEntitiesInput, opts ...request.Option) (*comprehend.DetectPiiEntitiesOutput, error)
 	DetectSentimentWithContext(ctx context.Context, input *comprehend.DetectSentimentInput, opts ...request.Option) (*comprehend.DetectSentimentOutput, error)
 	DetectSyntaxWithContext(ctx context.Context, input *comprehend.DetectSyntaxInput, opts ...request.Option) (*comprehend.DetectSyntaxOutput, error)
+	ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error)
 	ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error)
 	ListDocumentClassificationJobsPagesWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, cb func(*comprehend.ListDocumentClassificationJobsOutput, bool) bool, opts ...request.Option) error
 	ListDocumentClassifierSummariesWithContext(ctx context.Context, input *comprehend.ListDocumentClassifierSummariesInput, opts ...request.Option) (*comprehend.ListDocumentClassifierSummariesOutput, error)
@@ -66,6 +69,7 @@ type Comprehend interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *comprehend.ListTagsForResourceInput, opts ...request.Option) (*comprehend.ListTagsForResourceOutput, error)
 	ListTopicsDetectionJobsWithContext(ctx context.Context, input *comprehend.ListTopicsDetectionJobsInput, opts ...request.Option) (*comprehend.ListTopicsDetectionJobsOutput, error)
 	ListTopicsDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListTopicsDetectionJobsInput, cb func(*comprehend.ListTopicsDetectionJobsOutput, bool) bool, opts ...request.Option) error
+	PutResourcePolicyWithContext(ctx context.Context, input *comprehend.PutResourcePolicyInput, opts ...request.Option) (*comprehend.PutResourcePolicyOutput, error)
 	StartDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.StartDocumentClassificationJobInput, opts ...request.Option) (*comprehend.StartDocumentClassificationJobOutput, error)
 	StartDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.StartDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.StartDominantLanguageDetectionJobOutput, error)
 	StartEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartEntitiesDetectionJobOutput, error)
@@ -375,6 +379,27 @@ func (c *Client) DeleteEntityRecognizerWithContext(ctx context.Context, input *c
 	return req.Output.(*comprehend.DeleteEntityRecognizerOutput), req.Error
 }
 
+func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *comprehend.DeleteResourcePolicyInput, opts ...request.Option) (*comprehend.DeleteResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DeleteResourcePolicy",
+		Input:   input,
+		Output:  (*comprehend.DeleteResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DeleteResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DeleteResourcePolicyOutput), req.Error
+}
+
 func (c *Client) DescribeDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassificationJobInput, opts ...request.Option) (*comprehend.DescribeDocumentClassificationJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -564,6 +589,27 @@ func (c *Client) DescribePiiEntitiesDetectionJobWithContext(ctx context.Context,
 	return req.Output.(*comprehend.DescribePiiEntitiesDetectionJobOutput), req.Error
 }
 
+func (c *Client) DescribeResourcePolicyWithContext(ctx context.Context, input *comprehend.DescribeResourcePolicyInput, opts ...request.Option) (*comprehend.DescribeResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DescribeResourcePolicy",
+		Input:   input,
+		Output:  (*comprehend.DescribeResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DescribeResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DescribeResourcePolicyOutput), req.Error
+}
+
 func (c *Client) DescribeSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeSentimentDetectionJobInput, opts ...request.Option) (*comprehend.DescribeSentimentDetectionJobOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -730,6 +776,27 @@ func (c *Client) DetectSyntaxWithContext(ctx context.Context, input *comprehend.
 	})
 
 	return req.Output.(*comprehend.DetectSyntaxOutput), req.Error
+}
+
+func (c *Client) ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ImportModel",
+		Input:   input,
+		Output:  (*comprehend.ImportModelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ImportModelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ImportModelOutput), req.Error
 }
 
 func (c *Client) ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error) {
@@ -1244,6 +1311,27 @@ func (c *Client) ListTopicsDetectionJobsPagesWithContext(ctx context.Context, in
 	})
 
 	return req.Error
+}
+
+func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *comprehend.PutResourcePolicyInput, opts ...request.Option) (*comprehend.PutResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "PutResourcePolicy",
+		Input:   input,
+		Output:  (*comprehend.PutResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.PutResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.PutResourcePolicyOutput), req.Error
 }
 
 func (c *Client) StartDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.StartDocumentClassificationJobInput, opts ...request.Option) (*comprehend.StartDocumentClassificationJobOutput, error) {
