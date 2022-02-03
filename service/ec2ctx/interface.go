@@ -525,6 +525,8 @@ type EC2 interface {
 	ImportKeyPairWithContext(ctx context.Context, input *ec2.ImportKeyPairInput, opts ...request.Option) (*ec2.ImportKeyPairOutput, error)
 	ImportSnapshotWithContext(ctx context.Context, input *ec2.ImportSnapshotInput, opts ...request.Option) (*ec2.ImportSnapshotOutput, error)
 	ImportVolumeWithContext(ctx context.Context, input *ec2.ImportVolumeInput, opts ...request.Option) (*ec2.ImportVolumeOutput, error)
+	ListImagesInRecycleBinWithContext(ctx context.Context, input *ec2.ListImagesInRecycleBinInput, opts ...request.Option) (*ec2.ListImagesInRecycleBinOutput, error)
+	ListImagesInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListImagesInRecycleBinInput, cb func(*ec2.ListImagesInRecycleBinOutput, bool) bool, opts ...request.Option) error
 	ListSnapshotsInRecycleBinWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, opts ...request.Option) (*ec2.ListSnapshotsInRecycleBinOutput, error)
 	ListSnapshotsInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, cb func(*ec2.ListSnapshotsInRecycleBinOutput, bool) bool, opts ...request.Option) error
 	ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error)
@@ -620,6 +622,7 @@ type EC2 interface {
 	ResetNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ResetNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ResetNetworkInterfaceAttributeOutput, error)
 	ResetSnapshotAttributeWithContext(ctx context.Context, input *ec2.ResetSnapshotAttributeInput, opts ...request.Option) (*ec2.ResetSnapshotAttributeOutput, error)
 	RestoreAddressToClassicWithContext(ctx context.Context, input *ec2.RestoreAddressToClassicInput, opts ...request.Option) (*ec2.RestoreAddressToClassicOutput, error)
+	RestoreImageFromRecycleBinWithContext(ctx context.Context, input *ec2.RestoreImageFromRecycleBinInput, opts ...request.Option) (*ec2.RestoreImageFromRecycleBinOutput, error)
 	RestoreManagedPrefixListVersionWithContext(ctx context.Context, input *ec2.RestoreManagedPrefixListVersionInput, opts ...request.Option) (*ec2.RestoreManagedPrefixListVersionOutput, error)
 	RestoreSnapshotFromRecycleBinWithContext(ctx context.Context, input *ec2.RestoreSnapshotFromRecycleBinInput, opts ...request.Option) (*ec2.RestoreSnapshotFromRecycleBinOutput, error)
 	RestoreSnapshotTierWithContext(ctx context.Context, input *ec2.RestoreSnapshotTierInput, opts ...request.Option) (*ec2.RestoreSnapshotTierOutput, error)
@@ -11344,6 +11347,47 @@ func (c *Client) ImportVolumeWithContext(ctx context.Context, input *ec2.ImportV
 	return req.Output.(*ec2.ImportVolumeOutput), req.Error
 }
 
+func (c *Client) ListImagesInRecycleBinWithContext(ctx context.Context, input *ec2.ListImagesInRecycleBinInput, opts ...request.Option) (*ec2.ListImagesInRecycleBinOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ListImagesInRecycleBin",
+		Input:   input,
+		Output:  (*ec2.ListImagesInRecycleBinOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ListImagesInRecycleBinWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ListImagesInRecycleBinOutput), req.Error
+}
+
+func (c *Client) ListImagesInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListImagesInRecycleBinInput, cb func(*ec2.ListImagesInRecycleBinOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ListImagesInRecycleBin",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.ListImagesInRecycleBinPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSnapshotsInRecycleBinWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, opts ...request.Option) (*ec2.ListSnapshotsInRecycleBinOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -13336,6 +13380,27 @@ func (c *Client) RestoreAddressToClassicWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.RestoreAddressToClassicOutput), req.Error
+}
+
+func (c *Client) RestoreImageFromRecycleBinWithContext(ctx context.Context, input *ec2.RestoreImageFromRecycleBinInput, opts ...request.Option) (*ec2.RestoreImageFromRecycleBinOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "RestoreImageFromRecycleBin",
+		Input:   input,
+		Output:  (*ec2.RestoreImageFromRecycleBinOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.RestoreImageFromRecycleBinWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.RestoreImageFromRecycleBinOutput), req.Error
 }
 
 func (c *Client) RestoreManagedPrefixListVersionWithContext(ctx context.Context, input *ec2.RestoreManagedPrefixListVersionInput, opts ...request.Option) (*ec2.RestoreManagedPrefixListVersionOutput, error) {
