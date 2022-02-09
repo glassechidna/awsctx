@@ -28,6 +28,7 @@ type CloudFormation interface {
 	DescribeAccountLimitsWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, opts ...request.Option) (*cloudformation.DescribeAccountLimitsOutput, error)
 	DescribeAccountLimitsPagesWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, cb func(*cloudformation.DescribeAccountLimitsOutput, bool) bool, opts ...request.Option) error
 	DescribeChangeSetWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetInput, opts ...request.Option) (*cloudformation.DescribeChangeSetOutput, error)
+	DescribeChangeSetHooksWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetHooksInput, opts ...request.Option) (*cloudformation.DescribeChangeSetHooksOutput, error)
 	DescribePublisherWithContext(ctx context.Context, input *cloudformation.DescribePublisherInput, opts ...request.Option) (*cloudformation.DescribePublisherOutput, error)
 	DescribeStackDriftDetectionStatusWithContext(ctx context.Context, input *cloudformation.DescribeStackDriftDetectionStatusInput, opts ...request.Option) (*cloudformation.DescribeStackDriftDetectionStatusOutput, error)
 	DescribeStackEventsWithContext(ctx context.Context, input *cloudformation.DescribeStackEventsInput, opts ...request.Option) (*cloudformation.DescribeStackEventsOutput, error)
@@ -463,6 +464,27 @@ func (c *Client) DescribeChangeSetWithContext(ctx context.Context, input *cloudf
 	})
 
 	return req.Output.(*cloudformation.DescribeChangeSetOutput), req.Error
+}
+
+func (c *Client) DescribeChangeSetHooksWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetHooksInput, opts ...request.Option) (*cloudformation.DescribeChangeSetHooksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DescribeChangeSetHooks",
+		Input:   input,
+		Output:  (*cloudformation.DescribeChangeSetHooksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.DescribeChangeSetHooksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.DescribeChangeSetHooksOutput), req.Error
 }
 
 func (c *Client) DescribePublisherWithContext(ctx context.Context, input *cloudformation.DescribePublisherInput, opts ...request.Option) (*cloudformation.DescribePublisherOutput, error) {
