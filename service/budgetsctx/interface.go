@@ -27,6 +27,8 @@ type Budgets interface {
 	DescribeBudgetActionsForAccountPagesWithContext(ctx context.Context, input *budgets.DescribeBudgetActionsForAccountInput, cb func(*budgets.DescribeBudgetActionsForAccountOutput, bool) bool, opts ...request.Option) error
 	DescribeBudgetActionsForBudgetWithContext(ctx context.Context, input *budgets.DescribeBudgetActionsForBudgetInput, opts ...request.Option) (*budgets.DescribeBudgetActionsForBudgetOutput, error)
 	DescribeBudgetActionsForBudgetPagesWithContext(ctx context.Context, input *budgets.DescribeBudgetActionsForBudgetInput, cb func(*budgets.DescribeBudgetActionsForBudgetOutput, bool) bool, opts ...request.Option) error
+	DescribeBudgetNotificationsForAccountWithContext(ctx context.Context, input *budgets.DescribeBudgetNotificationsForAccountInput, opts ...request.Option) (*budgets.DescribeBudgetNotificationsForAccountOutput, error)
+	DescribeBudgetNotificationsForAccountPagesWithContext(ctx context.Context, input *budgets.DescribeBudgetNotificationsForAccountInput, cb func(*budgets.DescribeBudgetNotificationsForAccountOutput, bool) bool, opts ...request.Option) error
 	DescribeBudgetPerformanceHistoryWithContext(ctx context.Context, input *budgets.DescribeBudgetPerformanceHistoryInput, opts ...request.Option) (*budgets.DescribeBudgetPerformanceHistoryOutput, error)
 	DescribeBudgetPerformanceHistoryPagesWithContext(ctx context.Context, input *budgets.DescribeBudgetPerformanceHistoryInput, cb func(*budgets.DescribeBudgetPerformanceHistoryOutput, bool) bool, opts ...request.Option) error
 	DescribeBudgetsWithContext(ctx context.Context, input *budgets.DescribeBudgetsInput, opts ...request.Option) (*budgets.DescribeBudgetsOutput, error)
@@ -385,6 +387,47 @@ func (c *Client) DescribeBudgetActionsForBudgetPagesWithContext(ctx context.Cont
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.BudgetsAPI.DescribeBudgetActionsForBudgetPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeBudgetNotificationsForAccountWithContext(ctx context.Context, input *budgets.DescribeBudgetNotificationsForAccountInput, opts ...request.Option) (*budgets.DescribeBudgetNotificationsForAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "budgets",
+		Action:  "DescribeBudgetNotificationsForAccount",
+		Input:   input,
+		Output:  (*budgets.DescribeBudgetNotificationsForAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BudgetsAPI.DescribeBudgetNotificationsForAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*budgets.DescribeBudgetNotificationsForAccountOutput), req.Error
+}
+
+func (c *Client) DescribeBudgetNotificationsForAccountPagesWithContext(ctx context.Context, input *budgets.DescribeBudgetNotificationsForAccountInput, cb func(*budgets.DescribeBudgetNotificationsForAccountOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "budgets",
+		Action:  "DescribeBudgetNotificationsForAccount",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BudgetsAPI.DescribeBudgetNotificationsForAccountPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
