@@ -57,6 +57,7 @@ type S3 interface {
 	GetBucketWebsiteWithContext(ctx context.Context, input *s3.GetBucketWebsiteInput, opts ...request.Option) (*s3.GetBucketWebsiteOutput, error)
 	GetObjectWithContext(ctx context.Context, input *s3.GetObjectInput, opts ...request.Option) (*s3.GetObjectOutput, error)
 	GetObjectAclWithContext(ctx context.Context, input *s3.GetObjectAclInput, opts ...request.Option) (*s3.GetObjectAclOutput, error)
+	GetObjectAttributesWithContext(ctx context.Context, input *s3.GetObjectAttributesInput, opts ...request.Option) (*s3.GetObjectAttributesOutput, error)
 	GetObjectLegalHoldWithContext(ctx context.Context, input *s3.GetObjectLegalHoldInput, opts ...request.Option) (*s3.GetObjectLegalHoldOutput, error)
 	GetObjectLockConfigurationWithContext(ctx context.Context, input *s3.GetObjectLockConfigurationInput, opts ...request.Option) (*s3.GetObjectLockConfigurationOutput, error)
 	GetObjectRetentionWithContext(ctx context.Context, input *s3.GetObjectRetentionInput, opts ...request.Option) (*s3.GetObjectRetentionOutput, error)
@@ -1093,6 +1094,27 @@ func (c *Client) GetObjectAclWithContext(ctx context.Context, input *s3.GetObjec
 	})
 
 	return req.Output.(*s3.GetObjectAclOutput), req.Error
+}
+
+func (c *Client) GetObjectAttributesWithContext(ctx context.Context, input *s3.GetObjectAttributesInput, opts ...request.Option) (*s3.GetObjectAttributesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3",
+		Action:  "GetObjectAttributes",
+		Input:   input,
+		Output:  (*s3.GetObjectAttributesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3API.GetObjectAttributesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3.GetObjectAttributesOutput), req.Error
 }
 
 func (c *Client) GetObjectLegalHoldWithContext(ctx context.Context, input *s3.GetObjectLegalHoldInput, opts ...request.Option) (*s3.GetObjectLegalHoldOutput, error) {
