@@ -52,6 +52,7 @@ type Athena interface {
 	TagResourceWithContext(ctx context.Context, input *athena.TagResourceInput, opts ...request.Option) (*athena.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *athena.UntagResourceInput, opts ...request.Option) (*athena.UntagResourceOutput, error)
 	UpdateDataCatalogWithContext(ctx context.Context, input *athena.UpdateDataCatalogInput, opts ...request.Option) (*athena.UpdateDataCatalogOutput, error)
+	UpdateNamedQueryWithContext(ctx context.Context, input *athena.UpdateNamedQueryInput, opts ...request.Option) (*athena.UpdateNamedQueryOutput, error)
 	UpdatePreparedStatementWithContext(ctx context.Context, input *athena.UpdatePreparedStatementInput, opts ...request.Option) (*athena.UpdatePreparedStatementOutput, error)
 	UpdateWorkGroupWithContext(ctx context.Context, input *athena.UpdateWorkGroupInput, opts ...request.Option) (*athena.UpdateWorkGroupOutput, error)
 }
@@ -921,6 +922,27 @@ func (c *Client) UpdateDataCatalogWithContext(ctx context.Context, input *athena
 	})
 
 	return req.Output.(*athena.UpdateDataCatalogOutput), req.Error
+}
+
+func (c *Client) UpdateNamedQueryWithContext(ctx context.Context, input *athena.UpdateNamedQueryInput, opts ...request.Option) (*athena.UpdateNamedQueryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "UpdateNamedQuery",
+		Input:   input,
+		Output:  (*athena.UpdateNamedQueryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.UpdateNamedQueryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.UpdateNamedQueryOutput), req.Error
 }
 
 func (c *Client) UpdatePreparedStatementWithContext(ctx context.Context, input *athena.UpdatePreparedStatementInput, opts ...request.Option) (*athena.UpdatePreparedStatementOutput, error) {
