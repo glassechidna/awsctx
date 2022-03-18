@@ -26,6 +26,7 @@ type Glue interface {
 	BatchStopJobRunWithContext(ctx context.Context, input *glue.BatchStopJobRunInput, opts ...request.Option) (*glue.BatchStopJobRunOutput, error)
 	BatchUpdatePartitionWithContext(ctx context.Context, input *glue.BatchUpdatePartitionInput, opts ...request.Option) (*glue.BatchUpdatePartitionOutput, error)
 	CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error)
+	CancelStatementWithContext(ctx context.Context, input *glue.CancelStatementInput, opts ...request.Option) (*glue.CancelStatementOutput, error)
 	CheckSchemaVersionValidityWithContext(ctx context.Context, input *glue.CheckSchemaVersionValidityInput, opts ...request.Option) (*glue.CheckSchemaVersionValidityOutput, error)
 	CreateBlueprintWithContext(ctx context.Context, input *glue.CreateBlueprintInput, opts ...request.Option) (*glue.CreateBlueprintOutput, error)
 	CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error)
@@ -41,6 +42,7 @@ type Glue interface {
 	CreateSchemaWithContext(ctx context.Context, input *glue.CreateSchemaInput, opts ...request.Option) (*glue.CreateSchemaOutput, error)
 	CreateScriptWithContext(ctx context.Context, input *glue.CreateScriptInput, opts ...request.Option) (*glue.CreateScriptOutput, error)
 	CreateSecurityConfigurationWithContext(ctx context.Context, input *glue.CreateSecurityConfigurationInput, opts ...request.Option) (*glue.CreateSecurityConfigurationOutput, error)
+	CreateSessionWithContext(ctx context.Context, input *glue.CreateSessionInput, opts ...request.Option) (*glue.CreateSessionOutput, error)
 	CreateTableWithContext(ctx context.Context, input *glue.CreateTableInput, opts ...request.Option) (*glue.CreateTableOutput, error)
 	CreateTriggerWithContext(ctx context.Context, input *glue.CreateTriggerInput, opts ...request.Option) (*glue.CreateTriggerOutput, error)
 	CreateUserDefinedFunctionWithContext(ctx context.Context, input *glue.CreateUserDefinedFunctionInput, opts ...request.Option) (*glue.CreateUserDefinedFunctionOutput, error)
@@ -62,6 +64,7 @@ type Glue interface {
 	DeleteSchemaWithContext(ctx context.Context, input *glue.DeleteSchemaInput, opts ...request.Option) (*glue.DeleteSchemaOutput, error)
 	DeleteSchemaVersionsWithContext(ctx context.Context, input *glue.DeleteSchemaVersionsInput, opts ...request.Option) (*glue.DeleteSchemaVersionsOutput, error)
 	DeleteSecurityConfigurationWithContext(ctx context.Context, input *glue.DeleteSecurityConfigurationInput, opts ...request.Option) (*glue.DeleteSecurityConfigurationOutput, error)
+	DeleteSessionWithContext(ctx context.Context, input *glue.DeleteSessionInput, opts ...request.Option) (*glue.DeleteSessionOutput, error)
 	DeleteTableWithContext(ctx context.Context, input *glue.DeleteTableInput, opts ...request.Option) (*glue.DeleteTableOutput, error)
 	DeleteTableVersionWithContext(ctx context.Context, input *glue.DeleteTableVersionInput, opts ...request.Option) (*glue.DeleteTableVersionOutput, error)
 	DeleteTriggerWithContext(ctx context.Context, input *glue.DeleteTriggerInput, opts ...request.Option) (*glue.DeleteTriggerOutput, error)
@@ -124,6 +127,8 @@ type Glue interface {
 	GetSecurityConfigurationWithContext(ctx context.Context, input *glue.GetSecurityConfigurationInput, opts ...request.Option) (*glue.GetSecurityConfigurationOutput, error)
 	GetSecurityConfigurationsWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, opts ...request.Option) (*glue.GetSecurityConfigurationsOutput, error)
 	GetSecurityConfigurationsPagesWithContext(ctx context.Context, input *glue.GetSecurityConfigurationsInput, cb func(*glue.GetSecurityConfigurationsOutput, bool) bool, opts ...request.Option) error
+	GetSessionWithContext(ctx context.Context, input *glue.GetSessionInput, opts ...request.Option) (*glue.GetSessionOutput, error)
+	GetStatementWithContext(ctx context.Context, input *glue.GetStatementInput, opts ...request.Option) (*glue.GetStatementOutput, error)
 	GetTableWithContext(ctx context.Context, input *glue.GetTableInput, opts ...request.Option) (*glue.GetTableOutput, error)
 	GetTableVersionWithContext(ctx context.Context, input *glue.GetTableVersionInput, opts ...request.Option) (*glue.GetTableVersionOutput, error)
 	GetTableVersionsWithContext(ctx context.Context, input *glue.GetTableVersionsInput, opts ...request.Option) (*glue.GetTableVersionsOutput, error)
@@ -163,6 +168,9 @@ type Glue interface {
 	ListSchemaVersionsPagesWithContext(ctx context.Context, input *glue.ListSchemaVersionsInput, cb func(*glue.ListSchemaVersionsOutput, bool) bool, opts ...request.Option) error
 	ListSchemasWithContext(ctx context.Context, input *glue.ListSchemasInput, opts ...request.Option) (*glue.ListSchemasOutput, error)
 	ListSchemasPagesWithContext(ctx context.Context, input *glue.ListSchemasInput, cb func(*glue.ListSchemasOutput, bool) bool, opts ...request.Option) error
+	ListSessionsWithContext(ctx context.Context, input *glue.ListSessionsInput, opts ...request.Option) (*glue.ListSessionsOutput, error)
+	ListSessionsPagesWithContext(ctx context.Context, input *glue.ListSessionsInput, cb func(*glue.ListSessionsOutput, bool) bool, opts ...request.Option) error
+	ListStatementsWithContext(ctx context.Context, input *glue.ListStatementsInput, opts ...request.Option) (*glue.ListStatementsOutput, error)
 	ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error)
 	ListTriggersPagesWithContext(ctx context.Context, input *glue.ListTriggersInput, cb func(*glue.ListTriggersOutput, bool) bool, opts ...request.Option) error
 	ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error)
@@ -176,6 +184,7 @@ type Glue interface {
 	RemoveSchemaVersionMetadataWithContext(ctx context.Context, input *glue.RemoveSchemaVersionMetadataInput, opts ...request.Option) (*glue.RemoveSchemaVersionMetadataOutput, error)
 	ResetJobBookmarkWithContext(ctx context.Context, input *glue.ResetJobBookmarkInput, opts ...request.Option) (*glue.ResetJobBookmarkOutput, error)
 	ResumeWorkflowRunWithContext(ctx context.Context, input *glue.ResumeWorkflowRunInput, opts ...request.Option) (*glue.ResumeWorkflowRunOutput, error)
+	RunStatementWithContext(ctx context.Context, input *glue.RunStatementInput, opts ...request.Option) (*glue.RunStatementOutput, error)
 	SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error)
 	SearchTablesPagesWithContext(ctx context.Context, input *glue.SearchTablesInput, cb func(*glue.SearchTablesOutput, bool) bool, opts ...request.Option) error
 	StartBlueprintRunWithContext(ctx context.Context, input *glue.StartBlueprintRunInput, opts ...request.Option) (*glue.StartBlueprintRunOutput, error)
@@ -190,6 +199,7 @@ type Glue interface {
 	StartWorkflowRunWithContext(ctx context.Context, input *glue.StartWorkflowRunInput, opts ...request.Option) (*glue.StartWorkflowRunOutput, error)
 	StopCrawlerWithContext(ctx context.Context, input *glue.StopCrawlerInput, opts ...request.Option) (*glue.StopCrawlerOutput, error)
 	StopCrawlerScheduleWithContext(ctx context.Context, input *glue.StopCrawlerScheduleInput, opts ...request.Option) (*glue.StopCrawlerScheduleOutput, error)
+	StopSessionWithContext(ctx context.Context, input *glue.StopSessionInput, opts ...request.Option) (*glue.StopSessionOutput, error)
 	StopTriggerWithContext(ctx context.Context, input *glue.StopTriggerInput, opts ...request.Option) (*glue.StopTriggerOutput, error)
 	StopWorkflowRunWithContext(ctx context.Context, input *glue.StopWorkflowRunInput, opts ...request.Option) (*glue.StopWorkflowRunOutput, error)
 	TagResourceWithContext(ctx context.Context, input *glue.TagResourceInput, opts ...request.Option) (*glue.TagResourceOutput, error)
@@ -544,6 +554,27 @@ func (c *Client) CancelMLTaskRunWithContext(ctx context.Context, input *glue.Can
 	return req.Output.(*glue.CancelMLTaskRunOutput), req.Error
 }
 
+func (c *Client) CancelStatementWithContext(ctx context.Context, input *glue.CancelStatementInput, opts ...request.Option) (*glue.CancelStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CancelStatement",
+		Input:   input,
+		Output:  (*glue.CancelStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CancelStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CancelStatementOutput), req.Error
+}
+
 func (c *Client) CheckSchemaVersionValidityWithContext(ctx context.Context, input *glue.CheckSchemaVersionValidityInput, opts ...request.Option) (*glue.CheckSchemaVersionValidityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -857,6 +888,27 @@ func (c *Client) CreateSecurityConfigurationWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*glue.CreateSecurityConfigurationOutput), req.Error
+}
+
+func (c *Client) CreateSessionWithContext(ctx context.Context, input *glue.CreateSessionInput, opts ...request.Option) (*glue.CreateSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateSession",
+		Input:   input,
+		Output:  (*glue.CreateSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateSessionOutput), req.Error
 }
 
 func (c *Client) CreateTableWithContext(ctx context.Context, input *glue.CreateTableInput, opts ...request.Option) (*glue.CreateTableOutput, error) {
@@ -1298,6 +1350,27 @@ func (c *Client) DeleteSecurityConfigurationWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*glue.DeleteSecurityConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteSessionWithContext(ctx context.Context, input *glue.DeleteSessionInput, opts ...request.Option) (*glue.DeleteSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteSession",
+		Input:   input,
+		Output:  (*glue.DeleteSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteSessionOutput), req.Error
 }
 
 func (c *Client) DeleteTableWithContext(ctx context.Context, input *glue.DeleteTableInput, opts ...request.Option) (*glue.DeleteTableOutput, error) {
@@ -2587,6 +2660,48 @@ func (c *Client) GetSecurityConfigurationsPagesWithContext(ctx context.Context, 
 	return req.Error
 }
 
+func (c *Client) GetSessionWithContext(ctx context.Context, input *glue.GetSessionInput, opts ...request.Option) (*glue.GetSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetSession",
+		Input:   input,
+		Output:  (*glue.GetSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetSessionOutput), req.Error
+}
+
+func (c *Client) GetStatementWithContext(ctx context.Context, input *glue.GetStatementInput, opts ...request.Option) (*glue.GetStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetStatement",
+		Input:   input,
+		Output:  (*glue.GetStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetStatementOutput), req.Error
+}
+
 func (c *Client) GetTableWithContext(ctx context.Context, input *glue.GetTableInput, opts ...request.Option) (*glue.GetTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -3392,6 +3507,68 @@ func (c *Client) ListSchemasPagesWithContext(ctx context.Context, input *glue.Li
 	return req.Error
 }
 
+func (c *Client) ListSessionsWithContext(ctx context.Context, input *glue.ListSessionsInput, opts ...request.Option) (*glue.ListSessionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListSessions",
+		Input:   input,
+		Output:  (*glue.ListSessionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListSessionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListSessionsOutput), req.Error
+}
+
+func (c *Client) ListSessionsPagesWithContext(ctx context.Context, input *glue.ListSessionsInput, cb func(*glue.ListSessionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListSessions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListSessionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListStatementsWithContext(ctx context.Context, input *glue.ListStatementsInput, opts ...request.Option) (*glue.ListStatementsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListStatements",
+		Input:   input,
+		Output:  (*glue.ListStatementsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListStatementsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListStatementsOutput), req.Error
+}
+
 func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -3661,6 +3838,27 @@ func (c *Client) ResumeWorkflowRunWithContext(ctx context.Context, input *glue.R
 	})
 
 	return req.Output.(*glue.ResumeWorkflowRunOutput), req.Error
+}
+
+func (c *Client) RunStatementWithContext(ctx context.Context, input *glue.RunStatementInput, opts ...request.Option) (*glue.RunStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "RunStatement",
+		Input:   input,
+		Output:  (*glue.RunStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.RunStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.RunStatementOutput), req.Error
 }
 
 func (c *Client) SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error) {
@@ -3954,6 +4152,27 @@ func (c *Client) StopCrawlerScheduleWithContext(ctx context.Context, input *glue
 	})
 
 	return req.Output.(*glue.StopCrawlerScheduleOutput), req.Error
+}
+
+func (c *Client) StopSessionWithContext(ctx context.Context, input *glue.StopSessionInput, opts ...request.Option) (*glue.StopSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StopSession",
+		Input:   input,
+		Output:  (*glue.StopSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StopSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StopSessionOutput), req.Error
 }
 
 func (c *Client) StopTriggerWithContext(ctx context.Context, input *glue.StopTriggerInput, opts ...request.Option) (*glue.StopTriggerOutput, error) {
