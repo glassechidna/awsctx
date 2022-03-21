@@ -59,6 +59,7 @@ type QuickSight interface {
 	DescribeFolderPermissionsWithContext(ctx context.Context, input *quicksight.DescribeFolderPermissionsInput, opts ...request.Option) (*quicksight.DescribeFolderPermissionsOutput, error)
 	DescribeFolderResolvedPermissionsWithContext(ctx context.Context, input *quicksight.DescribeFolderResolvedPermissionsInput, opts ...request.Option) (*quicksight.DescribeFolderResolvedPermissionsOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error)
+	DescribeGroupMembershipWithContext(ctx context.Context, input *quicksight.DescribeGroupMembershipInput, opts ...request.Option) (*quicksight.DescribeGroupMembershipOutput, error)
 	DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error)
 	DescribeIngestionWithContext(ctx context.Context, input *quicksight.DescribeIngestionInput, opts ...request.Option) (*quicksight.DescribeIngestionOutput, error)
 	DescribeIpRestrictionWithContext(ctx context.Context, input *quicksight.DescribeIpRestrictionInput, opts ...request.Option) (*quicksight.DescribeIpRestrictionOutput, error)
@@ -115,6 +116,7 @@ type QuickSight interface {
 	SearchDashboardsWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, opts ...request.Option) (*quicksight.SearchDashboardsOutput, error)
 	SearchDashboardsPagesWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, cb func(*quicksight.SearchDashboardsOutput, bool) bool, opts ...request.Option) error
 	SearchFoldersWithContext(ctx context.Context, input *quicksight.SearchFoldersInput, opts ...request.Option) (*quicksight.SearchFoldersOutput, error)
+	SearchGroupsWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, opts ...request.Option) (*quicksight.SearchGroupsOutput, error)
 	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error)
 	UpdateAccountCustomizationWithContext(ctx context.Context, input *quicksight.UpdateAccountCustomizationInput, opts ...request.Option) (*quicksight.UpdateAccountCustomizationOutput, error)
@@ -1163,6 +1165,27 @@ func (c *Client) DescribeGroupWithContext(ctx context.Context, input *quicksight
 	})
 
 	return req.Output.(*quicksight.DescribeGroupOutput), req.Error
+}
+
+func (c *Client) DescribeGroupMembershipWithContext(ctx context.Context, input *quicksight.DescribeGroupMembershipInput, opts ...request.Option) (*quicksight.DescribeGroupMembershipOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeGroupMembership",
+		Input:   input,
+		Output:  (*quicksight.DescribeGroupMembershipOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeGroupMembershipWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeGroupMembershipOutput), req.Error
 }
 
 func (c *Client) DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error) {
@@ -2325,6 +2348,27 @@ func (c *Client) SearchFoldersWithContext(ctx context.Context, input *quicksight
 	})
 
 	return req.Output.(*quicksight.SearchFoldersOutput), req.Error
+}
+
+func (c *Client) SearchGroupsWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, opts ...request.Option) (*quicksight.SearchGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchGroups",
+		Input:   input,
+		Output:  (*quicksight.SearchGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.SearchGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.SearchGroupsOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error) {
