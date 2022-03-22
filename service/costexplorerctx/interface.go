@@ -40,7 +40,10 @@ type CostExplorer interface {
 	GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error)
 	ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error)
 	ListCostCategoryDefinitionsPagesWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, cb func(*costexplorer.ListCostCategoryDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *costexplorer.ListTagsForResourceInput, opts ...request.Option) (*costexplorer.ListTagsForResourceOutput, error)
 	ProvideAnomalyFeedbackWithContext(ctx context.Context, input *costexplorer.ProvideAnomalyFeedbackInput, opts ...request.Option) (*costexplorer.ProvideAnomalyFeedbackOutput, error)
+	TagResourceWithContext(ctx context.Context, input *costexplorer.TagResourceInput, opts ...request.Option) (*costexplorer.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *costexplorer.UntagResourceInput, opts ...request.Option) (*costexplorer.UntagResourceOutput, error)
 	UpdateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.UpdateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.UpdateAnomalyMonitorOutput, error)
 	UpdateAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.UpdateAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.UpdateAnomalySubscriptionOutput, error)
 	UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error)
@@ -667,6 +670,27 @@ func (c *Client) ListCostCategoryDefinitionsPagesWithContext(ctx context.Context
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *costexplorer.ListTagsForResourceInput, opts ...request.Option) (*costexplorer.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*costexplorer.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ProvideAnomalyFeedbackWithContext(ctx context.Context, input *costexplorer.ProvideAnomalyFeedbackInput, opts ...request.Option) (*costexplorer.ProvideAnomalyFeedbackOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
@@ -686,6 +710,48 @@ func (c *Client) ProvideAnomalyFeedbackWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*costexplorer.ProvideAnomalyFeedbackOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *costexplorer.TagResourceInput, opts ...request.Option) (*costexplorer.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*costexplorer.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *costexplorer.UntagResourceInput, opts ...request.Option) (*costexplorer.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*costexplorer.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.UpdateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.UpdateAnomalyMonitorOutput, error) {
