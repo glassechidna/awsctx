@@ -93,12 +93,14 @@ type ConfigService interface {
 	GetConformancePackComplianceDetailsPagesWithContext(ctx context.Context, input *configservice.GetConformancePackComplianceDetailsInput, cb func(*configservice.GetConformancePackComplianceDetailsOutput, bool) bool, opts ...request.Option) error
 	GetConformancePackComplianceSummaryWithContext(ctx context.Context, input *configservice.GetConformancePackComplianceSummaryInput, opts ...request.Option) (*configservice.GetConformancePackComplianceSummaryOutput, error)
 	GetConformancePackComplianceSummaryPagesWithContext(ctx context.Context, input *configservice.GetConformancePackComplianceSummaryInput, cb func(*configservice.GetConformancePackComplianceSummaryOutput, bool) bool, opts ...request.Option) error
+	GetCustomRulePolicyWithContext(ctx context.Context, input *configservice.GetCustomRulePolicyInput, opts ...request.Option) (*configservice.GetCustomRulePolicyOutput, error)
 	GetDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetDiscoveredResourceCountsOutput, error)
 	GetDiscoveredResourceCountsPagesWithContext(ctx context.Context, input *configservice.GetDiscoveredResourceCountsInput, cb func(*configservice.GetDiscoveredResourceCountsOutput, bool) bool, opts ...request.Option) error
 	GetOrganizationConfigRuleDetailedStatusWithContext(ctx context.Context, input *configservice.GetOrganizationConfigRuleDetailedStatusInput, opts ...request.Option) (*configservice.GetOrganizationConfigRuleDetailedStatusOutput, error)
 	GetOrganizationConfigRuleDetailedStatusPagesWithContext(ctx context.Context, input *configservice.GetOrganizationConfigRuleDetailedStatusInput, cb func(*configservice.GetOrganizationConfigRuleDetailedStatusOutput, bool) bool, opts ...request.Option) error
 	GetOrganizationConformancePackDetailedStatusWithContext(ctx context.Context, input *configservice.GetOrganizationConformancePackDetailedStatusInput, opts ...request.Option) (*configservice.GetOrganizationConformancePackDetailedStatusOutput, error)
 	GetOrganizationConformancePackDetailedStatusPagesWithContext(ctx context.Context, input *configservice.GetOrganizationConformancePackDetailedStatusInput, cb func(*configservice.GetOrganizationConformancePackDetailedStatusOutput, bool) bool, opts ...request.Option) error
+	GetOrganizationCustomRulePolicyWithContext(ctx context.Context, input *configservice.GetOrganizationCustomRulePolicyInput, opts ...request.Option) (*configservice.GetOrganizationCustomRulePolicyOutput, error)
 	GetResourceConfigHistoryWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, opts ...request.Option) (*configservice.GetResourceConfigHistoryOutput, error)
 	GetResourceConfigHistoryPagesWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, cb func(*configservice.GetResourceConfigHistoryOutput, bool) bool, opts ...request.Option) error
 	GetStoredQueryWithContext(ctx context.Context, input *configservice.GetStoredQueryInput, opts ...request.Option) (*configservice.GetStoredQueryOutput, error)
@@ -1846,6 +1848,27 @@ func (c *Client) GetConformancePackComplianceSummaryPagesWithContext(ctx context
 	return req.Error
 }
 
+func (c *Client) GetCustomRulePolicyWithContext(ctx context.Context, input *configservice.GetCustomRulePolicyInput, opts ...request.Option) (*configservice.GetCustomRulePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "GetCustomRulePolicy",
+		Input:   input,
+		Output:  (*configservice.GetCustomRulePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.GetCustomRulePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.GetCustomRulePolicyOutput), req.Error
+}
+
 func (c *Client) GetDiscoveredResourceCountsWithContext(ctx context.Context, input *configservice.GetDiscoveredResourceCountsInput, opts ...request.Option) (*configservice.GetDiscoveredResourceCountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
@@ -1967,6 +1990,27 @@ func (c *Client) GetOrganizationConformancePackDetailedStatusPagesWithContext(ct
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetOrganizationCustomRulePolicyWithContext(ctx context.Context, input *configservice.GetOrganizationCustomRulePolicyInput, opts ...request.Option) (*configservice.GetOrganizationCustomRulePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "GetOrganizationCustomRulePolicy",
+		Input:   input,
+		Output:  (*configservice.GetOrganizationCustomRulePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.GetOrganizationCustomRulePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.GetOrganizationCustomRulePolicyOutput), req.Error
 }
 
 func (c *Client) GetResourceConfigHistoryWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, opts ...request.Option) (*configservice.GetResourceConfigHistoryOutput, error) {
