@@ -14,6 +14,7 @@ type Organizations interface {
 	AcceptHandshakeWithContext(ctx context.Context, input *organizations.AcceptHandshakeInput, opts ...request.Option) (*organizations.AcceptHandshakeOutput, error)
 	AttachPolicyWithContext(ctx context.Context, input *organizations.AttachPolicyInput, opts ...request.Option) (*organizations.AttachPolicyOutput, error)
 	CancelHandshakeWithContext(ctx context.Context, input *organizations.CancelHandshakeInput, opts ...request.Option) (*organizations.CancelHandshakeOutput, error)
+	CloseAccountWithContext(ctx context.Context, input *organizations.CloseAccountInput, opts ...request.Option) (*organizations.CloseAccountOutput, error)
 	CreateAccountWithContext(ctx context.Context, input *organizations.CreateAccountInput, opts ...request.Option) (*organizations.CreateAccountOutput, error)
 	CreateGovCloudAccountWithContext(ctx context.Context, input *organizations.CreateGovCloudAccountInput, opts ...request.Option) (*organizations.CreateGovCloudAccountOutput, error)
 	CreateOrganizationWithContext(ctx context.Context, input *organizations.CreateOrganizationInput, opts ...request.Option) (*organizations.CreateOrganizationOutput, error)
@@ -156,6 +157,27 @@ func (c *Client) CancelHandshakeWithContext(ctx context.Context, input *organiza
 	})
 
 	return req.Output.(*organizations.CancelHandshakeOutput), req.Error
+}
+
+func (c *Client) CloseAccountWithContext(ctx context.Context, input *organizations.CloseAccountInput, opts ...request.Option) (*organizations.CloseAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "CloseAccount",
+		Input:   input,
+		Output:  (*organizations.CloseAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.CloseAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.CloseAccountOutput), req.Error
 }
 
 func (c *Client) CreateAccountWithContext(ctx context.Context, input *organizations.CreateAccountInput, opts ...request.Option) (*organizations.CreateAccountOutput, error) {
