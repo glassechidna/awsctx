@@ -547,6 +547,7 @@ type EC2 interface {
 	ModifyInstanceCreditSpecificationWithContext(ctx context.Context, input *ec2.ModifyInstanceCreditSpecificationInput, opts ...request.Option) (*ec2.ModifyInstanceCreditSpecificationOutput, error)
 	ModifyInstanceEventStartTimeWithContext(ctx context.Context, input *ec2.ModifyInstanceEventStartTimeInput, opts ...request.Option) (*ec2.ModifyInstanceEventStartTimeOutput, error)
 	ModifyInstanceEventWindowWithContext(ctx context.Context, input *ec2.ModifyInstanceEventWindowInput, opts ...request.Option) (*ec2.ModifyInstanceEventWindowOutput, error)
+	ModifyInstanceMaintenanceOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMaintenanceOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMaintenanceOptionsOutput, error)
 	ModifyInstanceMetadataOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMetadataOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMetadataOptionsOutput, error)
 	ModifyInstancePlacementWithContext(ctx context.Context, input *ec2.ModifyInstancePlacementInput, opts ...request.Option) (*ec2.ModifyInstancePlacementOutput, error)
 	ModifyIpamWithContext(ctx context.Context, input *ec2.ModifyIpamInput, opts ...request.Option) (*ec2.ModifyIpamOutput, error)
@@ -11805,6 +11806,27 @@ func (c *Client) ModifyInstanceEventWindowWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.ModifyInstanceEventWindowOutput), req.Error
+}
+
+func (c *Client) ModifyInstanceMaintenanceOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMaintenanceOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMaintenanceOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyInstanceMaintenanceOptions",
+		Input:   input,
+		Output:  (*ec2.ModifyInstanceMaintenanceOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyInstanceMaintenanceOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyInstanceMaintenanceOptionsOutput), req.Error
 }
 
 func (c *Client) ModifyInstanceMetadataOptionsWithContext(ctx context.Context, input *ec2.ModifyInstanceMetadataOptionsInput, opts ...request.Option) (*ec2.ModifyInstanceMetadataOptionsOutput, error) {
