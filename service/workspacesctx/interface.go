@@ -22,6 +22,7 @@ type WorkSpaces interface {
 	CreateUpdatedWorkspaceImageWithContext(ctx context.Context, input *workspaces.CreateUpdatedWorkspaceImageInput, opts ...request.Option) (*workspaces.CreateUpdatedWorkspaceImageOutput, error)
 	CreateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.CreateWorkspaceBundleInput, opts ...request.Option) (*workspaces.CreateWorkspaceBundleOutput, error)
 	CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error)
+	DeleteClientBrandingWithContext(ctx context.Context, input *workspaces.DeleteClientBrandingInput, opts ...request.Option) (*workspaces.DeleteClientBrandingOutput, error)
 	DeleteConnectClientAddInWithContext(ctx context.Context, input *workspaces.DeleteConnectClientAddInInput, opts ...request.Option) (*workspaces.DeleteConnectClientAddInOutput, error)
 	DeleteConnectionAliasWithContext(ctx context.Context, input *workspaces.DeleteConnectionAliasInput, opts ...request.Option) (*workspaces.DeleteConnectionAliasOutput, error)
 	DeleteIpGroupWithContext(ctx context.Context, input *workspaces.DeleteIpGroupInput, opts ...request.Option) (*workspaces.DeleteIpGroupOutput, error)
@@ -31,6 +32,7 @@ type WorkSpaces interface {
 	DeregisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.DeregisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.DeregisterWorkspaceDirectoryOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error)
 	DescribeAccountModificationsWithContext(ctx context.Context, input *workspaces.DescribeAccountModificationsInput, opts ...request.Option) (*workspaces.DescribeAccountModificationsOutput, error)
+	DescribeClientBrandingWithContext(ctx context.Context, input *workspaces.DescribeClientBrandingInput, opts ...request.Option) (*workspaces.DescribeClientBrandingOutput, error)
 	DescribeClientPropertiesWithContext(ctx context.Context, input *workspaces.DescribeClientPropertiesInput, opts ...request.Option) (*workspaces.DescribeClientPropertiesOutput, error)
 	DescribeConnectClientAddInsWithContext(ctx context.Context, input *workspaces.DescribeConnectClientAddInsInput, opts ...request.Option) (*workspaces.DescribeConnectClientAddInsOutput, error)
 	DescribeConnectionAliasPermissionsWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasPermissionsInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasPermissionsOutput, error)
@@ -49,6 +51,7 @@ type WorkSpaces interface {
 	DescribeWorkspacesConnectionStatusWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesConnectionStatusInput, opts ...request.Option) (*workspaces.DescribeWorkspacesConnectionStatusOutput, error)
 	DisassociateConnectionAliasWithContext(ctx context.Context, input *workspaces.DisassociateConnectionAliasInput, opts ...request.Option) (*workspaces.DisassociateConnectionAliasOutput, error)
 	DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error)
+	ImportClientBrandingWithContext(ctx context.Context, input *workspaces.ImportClientBrandingInput, opts ...request.Option) (*workspaces.ImportClientBrandingOutput, error)
 	ImportWorkspaceImageWithContext(ctx context.Context, input *workspaces.ImportWorkspaceImageInput, opts ...request.Option) (*workspaces.ImportWorkspaceImageOutput, error)
 	ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
 	MigrateWorkspaceWithContext(ctx context.Context, input *workspaces.MigrateWorkspaceInput, opts ...request.Option) (*workspaces.MigrateWorkspaceOutput, error)
@@ -320,6 +323,27 @@ func (c *Client) CreateWorkspacesWithContext(ctx context.Context, input *workspa
 	return req.Output.(*workspaces.CreateWorkspacesOutput), req.Error
 }
 
+func (c *Client) DeleteClientBrandingWithContext(ctx context.Context, input *workspaces.DeleteClientBrandingInput, opts ...request.Option) (*workspaces.DeleteClientBrandingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DeleteClientBranding",
+		Input:   input,
+		Output:  (*workspaces.DeleteClientBrandingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DeleteClientBrandingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DeleteClientBrandingOutput), req.Error
+}
+
 func (c *Client) DeleteConnectClientAddInWithContext(ctx context.Context, input *workspaces.DeleteConnectClientAddInInput, opts ...request.Option) (*workspaces.DeleteConnectClientAddInOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
@@ -507,6 +531,27 @@ func (c *Client) DescribeAccountModificationsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*workspaces.DescribeAccountModificationsOutput), req.Error
+}
+
+func (c *Client) DescribeClientBrandingWithContext(ctx context.Context, input *workspaces.DescribeClientBrandingInput, opts ...request.Option) (*workspaces.DescribeClientBrandingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeClientBranding",
+		Input:   input,
+		Output:  (*workspaces.DescribeClientBrandingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeClientBrandingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeClientBrandingOutput), req.Error
 }
 
 func (c *Client) DescribeClientPropertiesWithContext(ctx context.Context, input *workspaces.DescribeClientPropertiesInput, opts ...request.Option) (*workspaces.DescribeClientPropertiesOutput, error) {
@@ -882,6 +927,27 @@ func (c *Client) DisassociateIpGroupsWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workspaces.DisassociateIpGroupsOutput), req.Error
+}
+
+func (c *Client) ImportClientBrandingWithContext(ctx context.Context, input *workspaces.ImportClientBrandingInput, opts ...request.Option) (*workspaces.ImportClientBrandingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "ImportClientBranding",
+		Input:   input,
+		Output:  (*workspaces.ImportClientBrandingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.ImportClientBrandingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.ImportClientBrandingOutput), req.Error
 }
 
 func (c *Client) ImportWorkspaceImageWithContext(ctx context.Context, input *workspaces.ImportWorkspaceImageInput, opts ...request.Option) (*workspaces.ImportWorkspaceImageOutput, error) {
