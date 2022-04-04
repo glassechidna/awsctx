@@ -190,6 +190,8 @@ type IoT interface {
 	ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListManagedJobTemplatesWithContext(ctx context.Context, input *iot.ListManagedJobTemplatesInput, opts ...request.Option) (*iot.ListManagedJobTemplatesOutput, error)
+	ListMetricValuesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, opts ...request.Option) (*iot.ListMetricValuesOutput, error)
+	ListMetricValuesPagesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, cb func(*iot.ListMetricValuesOutput, bool) bool, opts ...request.Option) error
 	ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error)
 	ListMitigationActionsPagesWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, cb func(*iot.ListMitigationActionsOutput, bool) bool, opts ...request.Option) error
 	ListOTAUpdatesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, opts ...request.Option) (*iot.ListOTAUpdatesOutput, error)
@@ -4051,6 +4053,47 @@ func (c *Client) ListManagedJobTemplatesWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*iot.ListManagedJobTemplatesOutput), req.Error
+}
+
+func (c *Client) ListMetricValuesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, opts ...request.Option) (*iot.ListMetricValuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListMetricValues",
+		Input:   input,
+		Output:  (*iot.ListMetricValuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListMetricValuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListMetricValuesOutput), req.Error
+}
+
+func (c *Client) ListMetricValuesPagesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, cb func(*iot.ListMetricValuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListMetricValues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListMetricValuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error) {
