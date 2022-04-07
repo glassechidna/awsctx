@@ -77,7 +77,10 @@ type Personalize interface {
 	ListSolutionVersionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionVersionsInput, cb func(*personalize.ListSolutionVersionsOutput, bool) bool, opts ...request.Option) error
 	ListSolutionsWithContext(ctx context.Context, input *personalize.ListSolutionsInput, opts ...request.Option) (*personalize.ListSolutionsOutput, error)
 	ListSolutionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionsInput, cb func(*personalize.ListSolutionsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *personalize.ListTagsForResourceInput, opts ...request.Option) (*personalize.ListTagsForResourceOutput, error)
 	StopSolutionVersionCreationWithContext(ctx context.Context, input *personalize.StopSolutionVersionCreationInput, opts ...request.Option) (*personalize.StopSolutionVersionCreationOutput, error)
+	TagResourceWithContext(ctx context.Context, input *personalize.TagResourceInput, opts ...request.Option) (*personalize.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *personalize.UntagResourceInput, opts ...request.Option) (*personalize.UntagResourceOutput, error)
 	UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error)
 	UpdateRecommenderWithContext(ctx context.Context, input *personalize.UpdateRecommenderInput, opts ...request.Option) (*personalize.UpdateRecommenderOutput, error)
 }
@@ -1469,6 +1472,27 @@ func (c *Client) ListSolutionsPagesWithContext(ctx context.Context, input *perso
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *personalize.ListTagsForResourceInput, opts ...request.Option) (*personalize.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*personalize.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) StopSolutionVersionCreationWithContext(ctx context.Context, input *personalize.StopSolutionVersionCreationInput, opts ...request.Option) (*personalize.StopSolutionVersionCreationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -1488,6 +1512,48 @@ func (c *Client) StopSolutionVersionCreationWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*personalize.StopSolutionVersionCreationOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *personalize.TagResourceInput, opts ...request.Option) (*personalize.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*personalize.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *personalize.UntagResourceInput, opts ...request.Option) (*personalize.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*personalize.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error) {
