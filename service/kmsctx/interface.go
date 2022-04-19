@@ -33,6 +33,7 @@ type KMS interface {
 	GenerateDataKeyPairWithContext(ctx context.Context, input *kms.GenerateDataKeyPairInput, opts ...request.Option) (*kms.GenerateDataKeyPairOutput, error)
 	GenerateDataKeyPairWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyPairWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyPairWithoutPlaintextOutput, error)
 	GenerateDataKeyWithoutPlaintextWithContext(ctx context.Context, input *kms.GenerateDataKeyWithoutPlaintextInput, opts ...request.Option) (*kms.GenerateDataKeyWithoutPlaintextOutput, error)
+	GenerateMacWithContext(ctx context.Context, input *kms.GenerateMacInput, opts ...request.Option) (*kms.GenerateMacOutput, error)
 	GenerateRandomWithContext(ctx context.Context, input *kms.GenerateRandomInput, opts ...request.Option) (*kms.GenerateRandomOutput, error)
 	GetKeyPolicyWithContext(ctx context.Context, input *kms.GetKeyPolicyInput, opts ...request.Option) (*kms.GetKeyPolicyOutput, error)
 	GetKeyRotationStatusWithContext(ctx context.Context, input *kms.GetKeyRotationStatusInput, opts ...request.Option) (*kms.GetKeyRotationStatusOutput, error)
@@ -63,6 +64,7 @@ type KMS interface {
 	UpdateKeyDescriptionWithContext(ctx context.Context, input *kms.UpdateKeyDescriptionInput, opts ...request.Option) (*kms.UpdateKeyDescriptionOutput, error)
 	UpdatePrimaryRegionWithContext(ctx context.Context, input *kms.UpdatePrimaryRegionInput, opts ...request.Option) (*kms.UpdatePrimaryRegionOutput, error)
 	VerifyWithContext(ctx context.Context, input *kms.VerifyInput, opts ...request.Option) (*kms.VerifyOutput, error)
+	VerifyMacWithContext(ctx context.Context, input *kms.VerifyMacInput, opts ...request.Option) (*kms.VerifyMacOutput, error)
 }
 
 type Client struct {
@@ -540,6 +542,27 @@ func (c *Client) GenerateDataKeyWithoutPlaintextWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*kms.GenerateDataKeyWithoutPlaintextOutput), req.Error
+}
+
+func (c *Client) GenerateMacWithContext(ctx context.Context, input *kms.GenerateMacInput, opts ...request.Option) (*kms.GenerateMacOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "GenerateMac",
+		Input:   input,
+		Output:  (*kms.GenerateMacOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.GenerateMacWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.GenerateMacOutput), req.Error
 }
 
 func (c *Client) GenerateRandomWithContext(ctx context.Context, input *kms.GenerateRandomInput, opts ...request.Option) (*kms.GenerateRandomOutput, error) {
@@ -1166,4 +1189,25 @@ func (c *Client) VerifyWithContext(ctx context.Context, input *kms.VerifyInput, 
 	})
 
 	return req.Output.(*kms.VerifyOutput), req.Error
+}
+
+func (c *Client) VerifyMacWithContext(ctx context.Context, input *kms.VerifyMacInput, opts ...request.Option) (*kms.VerifyMacOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "VerifyMac",
+		Input:   input,
+		Output:  (*kms.VerifyMacOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KMSAPI.VerifyMacWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kms.VerifyMacOutput), req.Error
 }

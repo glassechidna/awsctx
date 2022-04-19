@@ -78,6 +78,8 @@ type Personalize interface {
 	ListSolutionsWithContext(ctx context.Context, input *personalize.ListSolutionsInput, opts ...request.Option) (*personalize.ListSolutionsOutput, error)
 	ListSolutionsPagesWithContext(ctx context.Context, input *personalize.ListSolutionsInput, cb func(*personalize.ListSolutionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *personalize.ListTagsForResourceInput, opts ...request.Option) (*personalize.ListTagsForResourceOutput, error)
+	StartRecommenderWithContext(ctx context.Context, input *personalize.StartRecommenderInput, opts ...request.Option) (*personalize.StartRecommenderOutput, error)
+	StopRecommenderWithContext(ctx context.Context, input *personalize.StopRecommenderInput, opts ...request.Option) (*personalize.StopRecommenderOutput, error)
 	StopSolutionVersionCreationWithContext(ctx context.Context, input *personalize.StopSolutionVersionCreationInput, opts ...request.Option) (*personalize.StopSolutionVersionCreationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *personalize.TagResourceInput, opts ...request.Option) (*personalize.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *personalize.UntagResourceInput, opts ...request.Option) (*personalize.UntagResourceOutput, error)
@@ -1491,6 +1493,48 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pers
 	})
 
 	return req.Output.(*personalize.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) StartRecommenderWithContext(ctx context.Context, input *personalize.StartRecommenderInput, opts ...request.Option) (*personalize.StartRecommenderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "StartRecommender",
+		Input:   input,
+		Output:  (*personalize.StartRecommenderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.StartRecommenderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.StartRecommenderOutput), req.Error
+}
+
+func (c *Client) StopRecommenderWithContext(ctx context.Context, input *personalize.StopRecommenderInput, opts ...request.Option) (*personalize.StopRecommenderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "StopRecommender",
+		Input:   input,
+		Output:  (*personalize.StopRecommenderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.StopRecommenderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.StopRecommenderOutput), req.Error
 }
 
 func (c *Client) StopSolutionVersionCreationWithContext(ctx context.Context, input *personalize.StopSolutionVersionCreationInput, opts ...request.Option) (*personalize.StopSolutionVersionCreationOutput, error) {
