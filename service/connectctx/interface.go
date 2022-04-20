@@ -17,9 +17,11 @@ type Connect interface {
 	AssociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.AssociateInstanceStorageConfigInput, opts ...request.Option) (*connect.AssociateInstanceStorageConfigOutput, error)
 	AssociateLambdaFunctionWithContext(ctx context.Context, input *connect.AssociateLambdaFunctionInput, opts ...request.Option) (*connect.AssociateLambdaFunctionOutput, error)
 	AssociateLexBotWithContext(ctx context.Context, input *connect.AssociateLexBotInput, opts ...request.Option) (*connect.AssociateLexBotOutput, error)
+	AssociatePhoneNumberContactFlowWithContext(ctx context.Context, input *connect.AssociatePhoneNumberContactFlowInput, opts ...request.Option) (*connect.AssociatePhoneNumberContactFlowOutput, error)
 	AssociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.AssociateQueueQuickConnectsInput, opts ...request.Option) (*connect.AssociateQueueQuickConnectsOutput, error)
 	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
+	ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error)
 	CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
 	CreateContactFlowModuleWithContext(ctx context.Context, input *connect.CreateContactFlowModuleInput, opts ...request.Option) (*connect.CreateContactFlowModuleOutput, error)
@@ -53,6 +55,7 @@ type Connect interface {
 	DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error)
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *connect.DescribeInstanceAttributeInput, opts ...request.Option) (*connect.DescribeInstanceAttributeOutput, error)
 	DescribeInstanceStorageConfigWithContext(ctx context.Context, input *connect.DescribeInstanceStorageConfigInput, opts ...request.Option) (*connect.DescribeInstanceStorageConfigOutput, error)
+	DescribePhoneNumberWithContext(ctx context.Context, input *connect.DescribePhoneNumberInput, opts ...request.Option) (*connect.DescribePhoneNumberOutput, error)
 	DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error)
 	DescribeQuickConnectWithContext(ctx context.Context, input *connect.DescribeQuickConnectInput, opts ...request.Option) (*connect.DescribeQuickConnectOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
@@ -66,6 +69,7 @@ type Connect interface {
 	DisassociateInstanceStorageConfigWithContext(ctx context.Context, input *connect.DisassociateInstanceStorageConfigInput, opts ...request.Option) (*connect.DisassociateInstanceStorageConfigOutput, error)
 	DisassociateLambdaFunctionWithContext(ctx context.Context, input *connect.DisassociateLambdaFunctionInput, opts ...request.Option) (*connect.DisassociateLambdaFunctionOutput, error)
 	DisassociateLexBotWithContext(ctx context.Context, input *connect.DisassociateLexBotInput, opts ...request.Option) (*connect.DisassociateLexBotOutput, error)
+	DisassociatePhoneNumberContactFlowWithContext(ctx context.Context, input *connect.DisassociatePhoneNumberContactFlowInput, opts ...request.Option) (*connect.DisassociatePhoneNumberContactFlowOutput, error)
 	DisassociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.DisassociateQueueQuickConnectsInput, opts ...request.Option) (*connect.DisassociateQueueQuickConnectsOutput, error)
 	DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error)
 	DisassociateSecurityKeyWithContext(ctx context.Context, input *connect.DisassociateSecurityKeyInput, opts ...request.Option) (*connect.DisassociateSecurityKeyOutput, error)
@@ -105,6 +109,8 @@ type Connect interface {
 	ListLexBotsPagesWithContext(ctx context.Context, input *connect.ListLexBotsInput, cb func(*connect.ListLexBotsOutput, bool) bool, opts ...request.Option) error
 	ListPhoneNumbersWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, opts ...request.Option) (*connect.ListPhoneNumbersOutput, error)
 	ListPhoneNumbersPagesWithContext(ctx context.Context, input *connect.ListPhoneNumbersInput, cb func(*connect.ListPhoneNumbersOutput, bool) bool, opts ...request.Option) error
+	ListPhoneNumbersV2WithContext(ctx context.Context, input *connect.ListPhoneNumbersV2Input, opts ...request.Option) (*connect.ListPhoneNumbersV2Output, error)
+	ListPhoneNumbersV2PagesWithContext(ctx context.Context, input *connect.ListPhoneNumbersV2Input, cb func(*connect.ListPhoneNumbersV2Output, bool) bool, opts ...request.Option) error
 	ListPromptsWithContext(ctx context.Context, input *connect.ListPromptsInput, opts ...request.Option) (*connect.ListPromptsOutput, error)
 	ListPromptsPagesWithContext(ctx context.Context, input *connect.ListPromptsInput, cb func(*connect.ListPromptsOutput, bool) bool, opts ...request.Option) error
 	ListQueueQuickConnectsWithContext(ctx context.Context, input *connect.ListQueueQuickConnectsInput, opts ...request.Option) (*connect.ListQueueQuickConnectsOutput, error)
@@ -130,7 +136,10 @@ type Connect interface {
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
+	ReleasePhoneNumberWithContext(ctx context.Context, input *connect.ReleasePhoneNumberInput, opts ...request.Option) (*connect.ReleasePhoneNumberOutput, error)
 	ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error)
+	SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*connect.SearchAvailablePhoneNumbersOutput, error)
+	SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, cb func(*connect.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error
 	SearchVocabulariesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, opts ...request.Option) (*connect.SearchVocabulariesOutput, error)
 	SearchVocabulariesPagesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, cb func(*connect.SearchVocabulariesOutput, bool) bool, opts ...request.Option) error
 	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
@@ -156,6 +165,7 @@ type Connect interface {
 	UpdateHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateHoursOfOperationInput, opts ...request.Option) (*connect.UpdateHoursOfOperationOutput, error)
 	UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error)
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
+	UpdatePhoneNumberWithContext(ctx context.Context, input *connect.UpdatePhoneNumberInput, opts ...request.Option) (*connect.UpdatePhoneNumberOutput, error)
 	UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error)
 	UpdateQueueMaxContactsWithContext(ctx context.Context, input *connect.UpdateQueueMaxContactsInput, opts ...request.Option) (*connect.UpdateQueueMaxContactsOutput, error)
 	UpdateQueueNameWithContext(ctx context.Context, input *connect.UpdateQueueNameInput, opts ...request.Option) (*connect.UpdateQueueNameOutput, error)
@@ -318,6 +328,27 @@ func (c *Client) AssociateLexBotWithContext(ctx context.Context, input *connect.
 	return req.Output.(*connect.AssociateLexBotOutput), req.Error
 }
 
+func (c *Client) AssociatePhoneNumberContactFlowWithContext(ctx context.Context, input *connect.AssociatePhoneNumberContactFlowInput, opts ...request.Option) (*connect.AssociatePhoneNumberContactFlowOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociatePhoneNumberContactFlow",
+		Input:   input,
+		Output:  (*connect.AssociatePhoneNumberContactFlowOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociatePhoneNumberContactFlowWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociatePhoneNumberContactFlowOutput), req.Error
+}
+
 func (c *Client) AssociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.AssociateQueueQuickConnectsInput, opts ...request.Option) (*connect.AssociateQueueQuickConnectsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -379,6 +410,27 @@ func (c *Client) AssociateSecurityKeyWithContext(ctx context.Context, input *con
 	})
 
 	return req.Output.(*connect.AssociateSecurityKeyOutput), req.Error
+}
+
+func (c *Client) ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ClaimPhoneNumber",
+		Input:   input,
+		Output:  (*connect.ClaimPhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ClaimPhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ClaimPhoneNumberOutput), req.Error
 }
 
 func (c *Client) CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error) {
@@ -1074,6 +1126,27 @@ func (c *Client) DescribeInstanceStorageConfigWithContext(ctx context.Context, i
 	return req.Output.(*connect.DescribeInstanceStorageConfigOutput), req.Error
 }
 
+func (c *Client) DescribePhoneNumberWithContext(ctx context.Context, input *connect.DescribePhoneNumberInput, opts ...request.Option) (*connect.DescribePhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribePhoneNumber",
+		Input:   input,
+		Output:  (*connect.DescribePhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribePhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribePhoneNumberOutput), req.Error
+}
+
 func (c *Client) DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1345,6 +1418,27 @@ func (c *Client) DisassociateLexBotWithContext(ctx context.Context, input *conne
 	})
 
 	return req.Output.(*connect.DisassociateLexBotOutput), req.Error
+}
+
+func (c *Client) DisassociatePhoneNumberContactFlowWithContext(ctx context.Context, input *connect.DisassociatePhoneNumberContactFlowInput, opts ...request.Option) (*connect.DisassociatePhoneNumberContactFlowOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociatePhoneNumberContactFlow",
+		Input:   input,
+		Output:  (*connect.DisassociatePhoneNumberContactFlowOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociatePhoneNumberContactFlowWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociatePhoneNumberContactFlowOutput), req.Error
 }
 
 func (c *Client) DisassociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.DisassociateQueueQuickConnectsInput, opts ...request.Option) (*connect.DisassociateQueueQuickConnectsOutput, error) {
@@ -2149,6 +2243,47 @@ func (c *Client) ListPhoneNumbersPagesWithContext(ctx context.Context, input *co
 	return req.Error
 }
 
+func (c *Client) ListPhoneNumbersV2WithContext(ctx context.Context, input *connect.ListPhoneNumbersV2Input, opts ...request.Option) (*connect.ListPhoneNumbersV2Output, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListPhoneNumbersV2",
+		Input:   input,
+		Output:  (*connect.ListPhoneNumbersV2Output)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListPhoneNumbersV2WithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListPhoneNumbersV2Output), req.Error
+}
+
+func (c *Client) ListPhoneNumbersV2PagesWithContext(ctx context.Context, input *connect.ListPhoneNumbersV2Input, cb func(*connect.ListPhoneNumbersV2Output, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListPhoneNumbersV2",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListPhoneNumbersV2PagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPromptsWithContext(ctx context.Context, input *connect.ListPromptsInput, opts ...request.Option) (*connect.ListPromptsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -2662,6 +2797,27 @@ func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *connect.L
 	return req.Error
 }
 
+func (c *Client) ReleasePhoneNumberWithContext(ctx context.Context, input *connect.ReleasePhoneNumberInput, opts ...request.Option) (*connect.ReleasePhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ReleasePhoneNumber",
+		Input:   input,
+		Output:  (*connect.ReleasePhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ReleasePhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ReleasePhoneNumberOutput), req.Error
+}
+
 func (c *Client) ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -2681,6 +2837,47 @@ func (c *Client) ResumeContactRecordingWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*connect.ResumeContactRecordingOutput), req.Error
+}
+
+func (c *Client) SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*connect.SearchAvailablePhoneNumbersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchAvailablePhoneNumbers",
+		Input:   input,
+		Output:  (*connect.SearchAvailablePhoneNumbersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SearchAvailablePhoneNumbersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SearchAvailablePhoneNumbersOutput), req.Error
+}
+
+func (c *Client) SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, cb func(*connect.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchAvailablePhoneNumbers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.SearchAvailablePhoneNumbersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchVocabulariesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, opts ...request.Option) (*connect.SearchVocabulariesOutput, error) {
@@ -3205,6 +3402,27 @@ func (c *Client) UpdateInstanceStorageConfigWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*connect.UpdateInstanceStorageConfigOutput), req.Error
+}
+
+func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *connect.UpdatePhoneNumberInput, opts ...request.Option) (*connect.UpdatePhoneNumberOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdatePhoneNumber",
+		Input:   input,
+		Output:  (*connect.UpdatePhoneNumberOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdatePhoneNumberWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdatePhoneNumberOutput), req.Error
 }
 
 func (c *Client) UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error) {
