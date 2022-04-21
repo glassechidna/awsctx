@@ -18,6 +18,7 @@ type Glue interface {
 	BatchDeleteTableVersionWithContext(ctx context.Context, input *glue.BatchDeleteTableVersionInput, opts ...request.Option) (*glue.BatchDeleteTableVersionOutput, error)
 	BatchGetBlueprintsWithContext(ctx context.Context, input *glue.BatchGetBlueprintsInput, opts ...request.Option) (*glue.BatchGetBlueprintsOutput, error)
 	BatchGetCrawlersWithContext(ctx context.Context, input *glue.BatchGetCrawlersInput, opts ...request.Option) (*glue.BatchGetCrawlersOutput, error)
+	BatchGetCustomEntityTypesWithContext(ctx context.Context, input *glue.BatchGetCustomEntityTypesInput, opts ...request.Option) (*glue.BatchGetCustomEntityTypesOutput, error)
 	BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error)
 	BatchGetJobsWithContext(ctx context.Context, input *glue.BatchGetJobsInput, opts ...request.Option) (*glue.BatchGetJobsOutput, error)
 	BatchGetPartitionWithContext(ctx context.Context, input *glue.BatchGetPartitionInput, opts ...request.Option) (*glue.BatchGetPartitionOutput, error)
@@ -32,6 +33,7 @@ type Glue interface {
 	CreateClassifierWithContext(ctx context.Context, input *glue.CreateClassifierInput, opts ...request.Option) (*glue.CreateClassifierOutput, error)
 	CreateConnectionWithContext(ctx context.Context, input *glue.CreateConnectionInput, opts ...request.Option) (*glue.CreateConnectionOutput, error)
 	CreateCrawlerWithContext(ctx context.Context, input *glue.CreateCrawlerInput, opts ...request.Option) (*glue.CreateCrawlerOutput, error)
+	CreateCustomEntityTypeWithContext(ctx context.Context, input *glue.CreateCustomEntityTypeInput, opts ...request.Option) (*glue.CreateCustomEntityTypeOutput, error)
 	CreateDatabaseWithContext(ctx context.Context, input *glue.CreateDatabaseInput, opts ...request.Option) (*glue.CreateDatabaseOutput, error)
 	CreateDevEndpointWithContext(ctx context.Context, input *glue.CreateDevEndpointInput, opts ...request.Option) (*glue.CreateDevEndpointOutput, error)
 	CreateJobWithContext(ctx context.Context, input *glue.CreateJobInput, opts ...request.Option) (*glue.CreateJobOutput, error)
@@ -53,6 +55,7 @@ type Glue interface {
 	DeleteColumnStatisticsForTableWithContext(ctx context.Context, input *glue.DeleteColumnStatisticsForTableInput, opts ...request.Option) (*glue.DeleteColumnStatisticsForTableOutput, error)
 	DeleteConnectionWithContext(ctx context.Context, input *glue.DeleteConnectionInput, opts ...request.Option) (*glue.DeleteConnectionOutput, error)
 	DeleteCrawlerWithContext(ctx context.Context, input *glue.DeleteCrawlerInput, opts ...request.Option) (*glue.DeleteCrawlerOutput, error)
+	DeleteCustomEntityTypeWithContext(ctx context.Context, input *glue.DeleteCustomEntityTypeInput, opts ...request.Option) (*glue.DeleteCustomEntityTypeOutput, error)
 	DeleteDatabaseWithContext(ctx context.Context, input *glue.DeleteDatabaseInput, opts ...request.Option) (*glue.DeleteDatabaseOutput, error)
 	DeleteDevEndpointWithContext(ctx context.Context, input *glue.DeleteDevEndpointInput, opts ...request.Option) (*glue.DeleteDevEndpointOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *glue.DeleteJobInput, opts ...request.Option) (*glue.DeleteJobOutput, error)
@@ -88,6 +91,7 @@ type Glue interface {
 	GetCrawlerMetricsPagesWithContext(ctx context.Context, input *glue.GetCrawlerMetricsInput, cb func(*glue.GetCrawlerMetricsOutput, bool) bool, opts ...request.Option) error
 	GetCrawlersWithContext(ctx context.Context, input *glue.GetCrawlersInput, opts ...request.Option) (*glue.GetCrawlersOutput, error)
 	GetCrawlersPagesWithContext(ctx context.Context, input *glue.GetCrawlersInput, cb func(*glue.GetCrawlersOutput, bool) bool, opts ...request.Option) error
+	GetCustomEntityTypeWithContext(ctx context.Context, input *glue.GetCustomEntityTypeInput, opts ...request.Option) (*glue.GetCustomEntityTypeOutput, error)
 	GetDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.GetDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.GetDataCatalogEncryptionSettingsOutput, error)
 	GetDatabaseWithContext(ctx context.Context, input *glue.GetDatabaseInput, opts ...request.Option) (*glue.GetDatabaseOutput, error)
 	GetDatabasesWithContext(ctx context.Context, input *glue.GetDatabasesInput, opts ...request.Option) (*glue.GetDatabasesOutput, error)
@@ -156,6 +160,8 @@ type Glue interface {
 	ListBlueprintsPagesWithContext(ctx context.Context, input *glue.ListBlueprintsInput, cb func(*glue.ListBlueprintsOutput, bool) bool, opts ...request.Option) error
 	ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error)
 	ListCrawlersPagesWithContext(ctx context.Context, input *glue.ListCrawlersInput, cb func(*glue.ListCrawlersOutput, bool) bool, opts ...request.Option) error
+	ListCustomEntityTypesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, opts ...request.Option) (*glue.ListCustomEntityTypesOutput, error)
+	ListCustomEntityTypesPagesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, cb func(*glue.ListCustomEntityTypesOutput, bool) bool, opts ...request.Option) error
 	ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error)
 	ListDevEndpointsPagesWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, cb func(*glue.ListDevEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *glue.ListJobsInput, opts ...request.Option) (*glue.ListJobsOutput, error)
@@ -384,6 +390,27 @@ func (c *Client) BatchGetCrawlersWithContext(ctx context.Context, input *glue.Ba
 	})
 
 	return req.Output.(*glue.BatchGetCrawlersOutput), req.Error
+}
+
+func (c *Client) BatchGetCustomEntityTypesWithContext(ctx context.Context, input *glue.BatchGetCustomEntityTypesInput, opts ...request.Option) (*glue.BatchGetCustomEntityTypesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "BatchGetCustomEntityTypes",
+		Input:   input,
+		Output:  (*glue.BatchGetCustomEntityTypesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.BatchGetCustomEntityTypesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.BatchGetCustomEntityTypesOutput), req.Error
 }
 
 func (c *Client) BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error) {
@@ -678,6 +705,27 @@ func (c *Client) CreateCrawlerWithContext(ctx context.Context, input *glue.Creat
 	})
 
 	return req.Output.(*glue.CreateCrawlerOutput), req.Error
+}
+
+func (c *Client) CreateCustomEntityTypeWithContext(ctx context.Context, input *glue.CreateCustomEntityTypeInput, opts ...request.Option) (*glue.CreateCustomEntityTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateCustomEntityType",
+		Input:   input,
+		Output:  (*glue.CreateCustomEntityTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateCustomEntityTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateCustomEntityTypeOutput), req.Error
 }
 
 func (c *Client) CreateDatabaseWithContext(ctx context.Context, input *glue.CreateDatabaseInput, opts ...request.Option) (*glue.CreateDatabaseOutput, error) {
@@ -1119,6 +1167,27 @@ func (c *Client) DeleteCrawlerWithContext(ctx context.Context, input *glue.Delet
 	})
 
 	return req.Output.(*glue.DeleteCrawlerOutput), req.Error
+}
+
+func (c *Client) DeleteCustomEntityTypeWithContext(ctx context.Context, input *glue.DeleteCustomEntityTypeInput, opts ...request.Option) (*glue.DeleteCustomEntityTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteCustomEntityType",
+		Input:   input,
+		Output:  (*glue.DeleteCustomEntityTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteCustomEntityTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteCustomEntityTypeOutput), req.Error
 }
 
 func (c *Client) DeleteDatabaseWithContext(ctx context.Context, input *glue.DeleteDatabaseInput, opts ...request.Option) (*glue.DeleteDatabaseOutput, error) {
@@ -1849,6 +1918,27 @@ func (c *Client) GetCrawlersPagesWithContext(ctx context.Context, input *glue.Ge
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetCustomEntityTypeWithContext(ctx context.Context, input *glue.GetCustomEntityTypeInput, opts ...request.Option) (*glue.GetCustomEntityTypeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetCustomEntityType",
+		Input:   input,
+		Output:  (*glue.GetCustomEntityTypeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetCustomEntityTypeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetCustomEntityTypeOutput), req.Error
 }
 
 func (c *Client) GetDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.GetDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.GetDataCatalogEncryptionSettingsOutput, error) {
@@ -3256,6 +3346,47 @@ func (c *Client) ListCrawlersPagesWithContext(ctx context.Context, input *glue.L
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.GlueAPI.ListCrawlersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCustomEntityTypesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, opts ...request.Option) (*glue.ListCustomEntityTypesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListCustomEntityTypes",
+		Input:   input,
+		Output:  (*glue.ListCustomEntityTypesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListCustomEntityTypesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListCustomEntityTypesOutput), req.Error
+}
+
+func (c *Client) ListCustomEntityTypesPagesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, cb func(*glue.ListCustomEntityTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListCustomEntityTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListCustomEntityTypesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

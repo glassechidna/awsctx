@@ -13,18 +13,21 @@ import (
 type MediaTailor interface {
 	ConfigureLogsForPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.ConfigureLogsForPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.ConfigureLogsForPlaybackConfigurationOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *mediatailor.CreateChannelInput, opts ...request.Option) (*mediatailor.CreateChannelOutput, error)
+	CreateLiveSourceWithContext(ctx context.Context, input *mediatailor.CreateLiveSourceInput, opts ...request.Option) (*mediatailor.CreateLiveSourceOutput, error)
 	CreatePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.CreatePrefetchScheduleInput, opts ...request.Option) (*mediatailor.CreatePrefetchScheduleOutput, error)
 	CreateProgramWithContext(ctx context.Context, input *mediatailor.CreateProgramInput, opts ...request.Option) (*mediatailor.CreateProgramOutput, error)
 	CreateSourceLocationWithContext(ctx context.Context, input *mediatailor.CreateSourceLocationInput, opts ...request.Option) (*mediatailor.CreateSourceLocationOutput, error)
 	CreateVodSourceWithContext(ctx context.Context, input *mediatailor.CreateVodSourceInput, opts ...request.Option) (*mediatailor.CreateVodSourceOutput, error)
 	DeleteChannelWithContext(ctx context.Context, input *mediatailor.DeleteChannelInput, opts ...request.Option) (*mediatailor.DeleteChannelOutput, error)
 	DeleteChannelPolicyWithContext(ctx context.Context, input *mediatailor.DeleteChannelPolicyInput, opts ...request.Option) (*mediatailor.DeleteChannelPolicyOutput, error)
+	DeleteLiveSourceWithContext(ctx context.Context, input *mediatailor.DeleteLiveSourceInput, opts ...request.Option) (*mediatailor.DeleteLiveSourceOutput, error)
 	DeletePlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.DeletePlaybackConfigurationInput, opts ...request.Option) (*mediatailor.DeletePlaybackConfigurationOutput, error)
 	DeletePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.DeletePrefetchScheduleInput, opts ...request.Option) (*mediatailor.DeletePrefetchScheduleOutput, error)
 	DeleteProgramWithContext(ctx context.Context, input *mediatailor.DeleteProgramInput, opts ...request.Option) (*mediatailor.DeleteProgramOutput, error)
 	DeleteSourceLocationWithContext(ctx context.Context, input *mediatailor.DeleteSourceLocationInput, opts ...request.Option) (*mediatailor.DeleteSourceLocationOutput, error)
 	DeleteVodSourceWithContext(ctx context.Context, input *mediatailor.DeleteVodSourceInput, opts ...request.Option) (*mediatailor.DeleteVodSourceOutput, error)
 	DescribeChannelWithContext(ctx context.Context, input *mediatailor.DescribeChannelInput, opts ...request.Option) (*mediatailor.DescribeChannelOutput, error)
+	DescribeLiveSourceWithContext(ctx context.Context, input *mediatailor.DescribeLiveSourceInput, opts ...request.Option) (*mediatailor.DescribeLiveSourceOutput, error)
 	DescribeProgramWithContext(ctx context.Context, input *mediatailor.DescribeProgramInput, opts ...request.Option) (*mediatailor.DescribeProgramOutput, error)
 	DescribeSourceLocationWithContext(ctx context.Context, input *mediatailor.DescribeSourceLocationInput, opts ...request.Option) (*mediatailor.DescribeSourceLocationOutput, error)
 	DescribeVodSourceWithContext(ctx context.Context, input *mediatailor.DescribeVodSourceInput, opts ...request.Option) (*mediatailor.DescribeVodSourceOutput, error)
@@ -37,6 +40,8 @@ type MediaTailor interface {
 	ListAlertsPagesWithContext(ctx context.Context, input *mediatailor.ListAlertsInput, cb func(*mediatailor.ListAlertsOutput, bool) bool, opts ...request.Option) error
 	ListChannelsWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, opts ...request.Option) (*mediatailor.ListChannelsOutput, error)
 	ListChannelsPagesWithContext(ctx context.Context, input *mediatailor.ListChannelsInput, cb func(*mediatailor.ListChannelsOutput, bool) bool, opts ...request.Option) error
+	ListLiveSourcesWithContext(ctx context.Context, input *mediatailor.ListLiveSourcesInput, opts ...request.Option) (*mediatailor.ListLiveSourcesOutput, error)
+	ListLiveSourcesPagesWithContext(ctx context.Context, input *mediatailor.ListLiveSourcesInput, cb func(*mediatailor.ListLiveSourcesOutput, bool) bool, opts ...request.Option) error
 	ListPlaybackConfigurationsWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, opts ...request.Option) (*mediatailor.ListPlaybackConfigurationsOutput, error)
 	ListPlaybackConfigurationsPagesWithContext(ctx context.Context, input *mediatailor.ListPlaybackConfigurationsInput, cb func(*mediatailor.ListPlaybackConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListPrefetchSchedulesWithContext(ctx context.Context, input *mediatailor.ListPrefetchSchedulesInput, opts ...request.Option) (*mediatailor.ListPrefetchSchedulesOutput, error)
@@ -53,6 +58,7 @@ type MediaTailor interface {
 	TagResourceWithContext(ctx context.Context, input *mediatailor.TagResourceInput, opts ...request.Option) (*mediatailor.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *mediatailor.UntagResourceInput, opts ...request.Option) (*mediatailor.UntagResourceOutput, error)
 	UpdateChannelWithContext(ctx context.Context, input *mediatailor.UpdateChannelInput, opts ...request.Option) (*mediatailor.UpdateChannelOutput, error)
+	UpdateLiveSourceWithContext(ctx context.Context, input *mediatailor.UpdateLiveSourceInput, opts ...request.Option) (*mediatailor.UpdateLiveSourceOutput, error)
 	UpdateSourceLocationWithContext(ctx context.Context, input *mediatailor.UpdateSourceLocationInput, opts ...request.Option) (*mediatailor.UpdateSourceLocationOutput, error)
 	UpdateVodSourceWithContext(ctx context.Context, input *mediatailor.UpdateVodSourceInput, opts ...request.Option) (*mediatailor.UpdateVodSourceOutput, error)
 }
@@ -112,6 +118,27 @@ func (c *Client) CreateChannelWithContext(ctx context.Context, input *mediatailo
 	})
 
 	return req.Output.(*mediatailor.CreateChannelOutput), req.Error
+}
+
+func (c *Client) CreateLiveSourceWithContext(ctx context.Context, input *mediatailor.CreateLiveSourceInput, opts ...request.Option) (*mediatailor.CreateLiveSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "CreateLiveSource",
+		Input:   input,
+		Output:  (*mediatailor.CreateLiveSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.CreateLiveSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.CreateLiveSourceOutput), req.Error
 }
 
 func (c *Client) CreatePrefetchScheduleWithContext(ctx context.Context, input *mediatailor.CreatePrefetchScheduleInput, opts ...request.Option) (*mediatailor.CreatePrefetchScheduleOutput, error) {
@@ -240,6 +267,27 @@ func (c *Client) DeleteChannelPolicyWithContext(ctx context.Context, input *medi
 	return req.Output.(*mediatailor.DeleteChannelPolicyOutput), req.Error
 }
 
+func (c *Client) DeleteLiveSourceWithContext(ctx context.Context, input *mediatailor.DeleteLiveSourceInput, opts ...request.Option) (*mediatailor.DeleteLiveSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "DeleteLiveSource",
+		Input:   input,
+		Output:  (*mediatailor.DeleteLiveSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.DeleteLiveSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.DeleteLiveSourceOutput), req.Error
+}
+
 func (c *Client) DeletePlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.DeletePlaybackConfigurationInput, opts ...request.Option) (*mediatailor.DeletePlaybackConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediatailor",
@@ -364,6 +412,27 @@ func (c *Client) DescribeChannelWithContext(ctx context.Context, input *mediatai
 	})
 
 	return req.Output.(*mediatailor.DescribeChannelOutput), req.Error
+}
+
+func (c *Client) DescribeLiveSourceWithContext(ctx context.Context, input *mediatailor.DescribeLiveSourceInput, opts ...request.Option) (*mediatailor.DescribeLiveSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "DescribeLiveSource",
+		Input:   input,
+		Output:  (*mediatailor.DescribeLiveSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.DescribeLiveSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.DescribeLiveSourceOutput), req.Error
 }
 
 func (c *Client) DescribeProgramWithContext(ctx context.Context, input *mediatailor.DescribeProgramInput, opts ...request.Option) (*mediatailor.DescribeProgramOutput, error) {
@@ -610,6 +679,47 @@ func (c *Client) ListChannelsPagesWithContext(ctx context.Context, input *mediat
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.MediaTailorAPI.ListChannelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListLiveSourcesWithContext(ctx context.Context, input *mediatailor.ListLiveSourcesInput, opts ...request.Option) (*mediatailor.ListLiveSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListLiveSources",
+		Input:   input,
+		Output:  (*mediatailor.ListLiveSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.ListLiveSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.ListLiveSourcesOutput), req.Error
+}
+
+func (c *Client) ListLiveSourcesPagesWithContext(ctx context.Context, input *mediatailor.ListLiveSourcesInput, cb func(*mediatailor.ListLiveSourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ListLiveSources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaTailorAPI.ListLiveSourcesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -945,6 +1055,27 @@ func (c *Client) UpdateChannelWithContext(ctx context.Context, input *mediatailo
 	})
 
 	return req.Output.(*mediatailor.UpdateChannelOutput), req.Error
+}
+
+func (c *Client) UpdateLiveSourceWithContext(ctx context.Context, input *mediatailor.UpdateLiveSourceInput, opts ...request.Option) (*mediatailor.UpdateLiveSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "UpdateLiveSource",
+		Input:   input,
+		Output:  (*mediatailor.UpdateLiveSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.UpdateLiveSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.UpdateLiveSourceOutput), req.Error
 }
 
 func (c *Client) UpdateSourceLocationWithContext(ctx context.Context, input *mediatailor.UpdateSourceLocationInput, opts ...request.Option) (*mediatailor.UpdateSourceLocationOutput, error) {
