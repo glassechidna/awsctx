@@ -114,6 +114,7 @@ type Lightsail interface {
 	GetLoadBalancerWithContext(ctx context.Context, input *lightsail.GetLoadBalancerInput, opts ...request.Option) (*lightsail.GetLoadBalancerOutput, error)
 	GetLoadBalancerMetricDataWithContext(ctx context.Context, input *lightsail.GetLoadBalancerMetricDataInput, opts ...request.Option) (*lightsail.GetLoadBalancerMetricDataOutput, error)
 	GetLoadBalancerTlsCertificatesWithContext(ctx context.Context, input *lightsail.GetLoadBalancerTlsCertificatesInput, opts ...request.Option) (*lightsail.GetLoadBalancerTlsCertificatesOutput, error)
+	GetLoadBalancerTlsPoliciesWithContext(ctx context.Context, input *lightsail.GetLoadBalancerTlsPoliciesInput, opts ...request.Option) (*lightsail.GetLoadBalancerTlsPoliciesOutput, error)
 	GetLoadBalancersWithContext(ctx context.Context, input *lightsail.GetLoadBalancersInput, opts ...request.Option) (*lightsail.GetLoadBalancersOutput, error)
 	GetOperationWithContext(ctx context.Context, input *lightsail.GetOperationInput, opts ...request.Option) (*lightsail.GetOperationOutput, error)
 	GetOperationsWithContext(ctx context.Context, input *lightsail.GetOperationsInput, opts ...request.Option) (*lightsail.GetOperationsOutput, error)
@@ -2342,6 +2343,27 @@ func (c *Client) GetLoadBalancerTlsCertificatesWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*lightsail.GetLoadBalancerTlsCertificatesOutput), req.Error
+}
+
+func (c *Client) GetLoadBalancerTlsPoliciesWithContext(ctx context.Context, input *lightsail.GetLoadBalancerTlsPoliciesInput, opts ...request.Option) (*lightsail.GetLoadBalancerTlsPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetLoadBalancerTlsPolicies",
+		Input:   input,
+		Output:  (*lightsail.GetLoadBalancerTlsPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetLoadBalancerTlsPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetLoadBalancerTlsPoliciesOutput), req.Error
 }
 
 func (c *Client) GetLoadBalancersWithContext(ctx context.Context, input *lightsail.GetLoadBalancersInput, opts ...request.Option) (*lightsail.GetLoadBalancersOutput, error) {
