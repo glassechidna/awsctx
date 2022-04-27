@@ -84,6 +84,7 @@ type Rekognition interface {
 	TagResourceWithContext(ctx context.Context, input *rekognition.TagResourceInput, opts ...request.Option) (*rekognition.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *rekognition.UntagResourceInput, opts ...request.Option) (*rekognition.UntagResourceOutput, error)
 	UpdateDatasetEntriesWithContext(ctx context.Context, input *rekognition.UpdateDatasetEntriesInput, opts ...request.Option) (*rekognition.UpdateDatasetEntriesOutput, error)
+	UpdateStreamProcessorWithContext(ctx context.Context, input *rekognition.UpdateStreamProcessorInput, opts ...request.Option) (*rekognition.UpdateStreamProcessorOutput, error)
 }
 
 type Client struct {
@@ -1617,4 +1618,25 @@ func (c *Client) UpdateDatasetEntriesWithContext(ctx context.Context, input *rek
 	})
 
 	return req.Output.(*rekognition.UpdateDatasetEntriesOutput), req.Error
+}
+
+func (c *Client) UpdateStreamProcessorWithContext(ctx context.Context, input *rekognition.UpdateStreamProcessorInput, opts ...request.Option) (*rekognition.UpdateStreamProcessorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "UpdateStreamProcessor",
+		Input:   input,
+		Output:  (*rekognition.UpdateStreamProcessorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.UpdateStreamProcessorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.UpdateStreamProcessorOutput), req.Error
 }
