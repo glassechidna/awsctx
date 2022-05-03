@@ -15,6 +15,8 @@ type KinesisVideo interface {
 	CreateStreamWithContext(ctx context.Context, input *kinesisvideo.CreateStreamInput, opts ...request.Option) (*kinesisvideo.CreateStreamOutput, error)
 	DeleteSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DeleteSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DeleteSignalingChannelOutput, error)
 	DeleteStreamWithContext(ctx context.Context, input *kinesisvideo.DeleteStreamInput, opts ...request.Option) (*kinesisvideo.DeleteStreamOutput, error)
+	DescribeImageGenerationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeImageGenerationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeImageGenerationConfigurationOutput, error)
+	DescribeNotificationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeNotificationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeNotificationConfigurationOutput, error)
 	DescribeSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DescribeSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DescribeSignalingChannelOutput, error)
 	DescribeStreamWithContext(ctx context.Context, input *kinesisvideo.DescribeStreamInput, opts ...request.Option) (*kinesisvideo.DescribeStreamOutput, error)
 	GetDataEndpointWithContext(ctx context.Context, input *kinesisvideo.GetDataEndpointInput, opts ...request.Option) (*kinesisvideo.GetDataEndpointOutput, error)
@@ -30,6 +32,8 @@ type KinesisVideo interface {
 	UntagResourceWithContext(ctx context.Context, input *kinesisvideo.UntagResourceInput, opts ...request.Option) (*kinesisvideo.UntagResourceOutput, error)
 	UntagStreamWithContext(ctx context.Context, input *kinesisvideo.UntagStreamInput, opts ...request.Option) (*kinesisvideo.UntagStreamOutput, error)
 	UpdateDataRetentionWithContext(ctx context.Context, input *kinesisvideo.UpdateDataRetentionInput, opts ...request.Option) (*kinesisvideo.UpdateDataRetentionOutput, error)
+	UpdateImageGenerationConfigurationWithContext(ctx context.Context, input *kinesisvideo.UpdateImageGenerationConfigurationInput, opts ...request.Option) (*kinesisvideo.UpdateImageGenerationConfigurationOutput, error)
+	UpdateNotificationConfigurationWithContext(ctx context.Context, input *kinesisvideo.UpdateNotificationConfigurationInput, opts ...request.Option) (*kinesisvideo.UpdateNotificationConfigurationOutput, error)
 	UpdateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.UpdateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.UpdateSignalingChannelOutput, error)
 	UpdateStreamWithContext(ctx context.Context, input *kinesisvideo.UpdateStreamInput, opts ...request.Option) (*kinesisvideo.UpdateStreamOutput, error)
 }
@@ -131,6 +135,48 @@ func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesisvide
 	})
 
 	return req.Output.(*kinesisvideo.DeleteStreamOutput), req.Error
+}
+
+func (c *Client) DescribeImageGenerationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeImageGenerationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeImageGenerationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "DescribeImageGenerationConfiguration",
+		Input:   input,
+		Output:  (*kinesisvideo.DescribeImageGenerationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.DescribeImageGenerationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.DescribeImageGenerationConfigurationOutput), req.Error
+}
+
+func (c *Client) DescribeNotificationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeNotificationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeNotificationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "DescribeNotificationConfiguration",
+		Input:   input,
+		Output:  (*kinesisvideo.DescribeNotificationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.DescribeNotificationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.DescribeNotificationConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DescribeSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DescribeSignalingChannelOutput, error) {
@@ -444,6 +490,48 @@ func (c *Client) UpdateDataRetentionWithContext(ctx context.Context, input *kine
 	})
 
 	return req.Output.(*kinesisvideo.UpdateDataRetentionOutput), req.Error
+}
+
+func (c *Client) UpdateImageGenerationConfigurationWithContext(ctx context.Context, input *kinesisvideo.UpdateImageGenerationConfigurationInput, opts ...request.Option) (*kinesisvideo.UpdateImageGenerationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "UpdateImageGenerationConfiguration",
+		Input:   input,
+		Output:  (*kinesisvideo.UpdateImageGenerationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.UpdateImageGenerationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.UpdateImageGenerationConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdateNotificationConfigurationWithContext(ctx context.Context, input *kinesisvideo.UpdateNotificationConfigurationInput, opts ...request.Option) (*kinesisvideo.UpdateNotificationConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "UpdateNotificationConfiguration",
+		Input:   input,
+		Output:  (*kinesisvideo.UpdateNotificationConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.UpdateNotificationConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.UpdateNotificationConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.UpdateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.UpdateSignalingChannelOutput, error) {

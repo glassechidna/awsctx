@@ -14,6 +14,8 @@ type KinesisVideoArchivedMedia interface {
 	GetClipWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetClipInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetClipOutput, error)
 	GetDASHStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetDASHStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetDASHStreamingSessionURLOutput, error)
 	GetHLSStreamingSessionURLWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetHLSStreamingSessionURLInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetHLSStreamingSessionURLOutput, error)
+	GetImagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetImagesInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetImagesOutput, error)
+	GetImagesPagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetImagesInput, cb func(*kinesisvideoarchivedmedia.GetImagesOutput, bool) bool, opts ...request.Option) error
 	GetMediaForFragmentListWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetMediaForFragmentListInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetMediaForFragmentListOutput, error)
 	ListFragmentsWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.ListFragmentsInput, opts ...request.Option) (*kinesisvideoarchivedmedia.ListFragmentsOutput, error)
 	ListFragmentsPagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.ListFragmentsInput, cb func(*kinesisvideoarchivedmedia.ListFragmentsOutput, bool) bool, opts ...request.Option) error
@@ -95,6 +97,47 @@ func (c *Client) GetHLSStreamingSessionURLWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*kinesisvideoarchivedmedia.GetHLSStreamingSessionURLOutput), req.Error
+}
+
+func (c *Client) GetImagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetImagesInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetImagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideoarchivedmedia",
+		Action:  "GetImages",
+		Input:   input,
+		Output:  (*kinesisvideoarchivedmedia.GetImagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoArchivedMediaAPI.GetImagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideoarchivedmedia.GetImagesOutput), req.Error
+}
+
+func (c *Client) GetImagesPagesWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetImagesInput, cb func(*kinesisvideoarchivedmedia.GetImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideoarchivedmedia",
+		Action:  "GetImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisVideoArchivedMediaAPI.GetImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetMediaForFragmentListWithContext(ctx context.Context, input *kinesisvideoarchivedmedia.GetMediaForFragmentListInput, opts ...request.Option) (*kinesisvideoarchivedmedia.GetMediaForFragmentListOutput, error) {
