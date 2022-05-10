@@ -485,6 +485,7 @@ type EC2 interface {
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
 	GetInstanceTypesFromInstanceRequirementsWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, opts ...request.Option) (*ec2.GetInstanceTypesFromInstanceRequirementsOutput, error)
 	GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, cb func(*ec2.GetInstanceTypesFromInstanceRequirementsOutput, bool) bool, opts ...request.Option) error
+	GetInstanceUefiDataWithContext(ctx context.Context, input *ec2.GetInstanceUefiDataInput, opts ...request.Option) (*ec2.GetInstanceUefiDataOutput, error)
 	GetIpamAddressHistoryWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, opts ...request.Option) (*ec2.GetIpamAddressHistoryOutput, error)
 	GetIpamAddressHistoryPagesWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, cb func(*ec2.GetIpamAddressHistoryOutput, bool) bool, opts ...request.Option) error
 	GetIpamPoolAllocationsWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, opts ...request.Option) (*ec2.GetIpamPoolAllocationsOutput, error)
@@ -10519,6 +10520,27 @@ func (c *Client) GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx co
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetInstanceUefiDataWithContext(ctx context.Context, input *ec2.GetInstanceUefiDataInput, opts ...request.Option) (*ec2.GetInstanceUefiDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetInstanceUefiData",
+		Input:   input,
+		Output:  (*ec2.GetInstanceUefiDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetInstanceUefiDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetInstanceUefiDataOutput), req.Error
 }
 
 func (c *Client) GetIpamAddressHistoryWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, opts ...request.Option) (*ec2.GetIpamAddressHistoryOutput, error) {
