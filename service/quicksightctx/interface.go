@@ -135,6 +135,7 @@ type QuickSight interface {
 	UpdateGroupWithContext(ctx context.Context, input *quicksight.UpdateGroupInput, opts ...request.Option) (*quicksight.UpdateGroupOutput, error)
 	UpdateIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.UpdateIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.UpdateIAMPolicyAssignmentOutput, error)
 	UpdateIpRestrictionWithContext(ctx context.Context, input *quicksight.UpdateIpRestrictionInput, opts ...request.Option) (*quicksight.UpdateIpRestrictionOutput, error)
+	UpdatePublicSharingSettingsWithContext(ctx context.Context, input *quicksight.UpdatePublicSharingSettingsInput, opts ...request.Option) (*quicksight.UpdatePublicSharingSettingsOutput, error)
 	UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error)
 	UpdateTemplateAliasWithContext(ctx context.Context, input *quicksight.UpdateTemplateAliasInput, opts ...request.Option) (*quicksight.UpdateTemplateAliasOutput, error)
 	UpdateTemplatePermissionsWithContext(ctx context.Context, input *quicksight.UpdateTemplatePermissionsInput, opts ...request.Option) (*quicksight.UpdateTemplatePermissionsOutput, error)
@@ -2747,6 +2748,27 @@ func (c *Client) UpdateIpRestrictionWithContext(ctx context.Context, input *quic
 	})
 
 	return req.Output.(*quicksight.UpdateIpRestrictionOutput), req.Error
+}
+
+func (c *Client) UpdatePublicSharingSettingsWithContext(ctx context.Context, input *quicksight.UpdatePublicSharingSettingsInput, opts ...request.Option) (*quicksight.UpdatePublicSharingSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdatePublicSharingSettings",
+		Input:   input,
+		Output:  (*quicksight.UpdatePublicSharingSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdatePublicSharingSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdatePublicSharingSettingsOutput), req.Error
 }
 
 func (c *Client) UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error) {

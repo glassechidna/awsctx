@@ -12,6 +12,7 @@ import (
 
 type IoTEventsData interface {
 	BatchAcknowledgeAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchAcknowledgeAlarmInput, opts ...request.Option) (*ioteventsdata.BatchAcknowledgeAlarmOutput, error)
+	BatchDeleteDetectorWithContext(ctx context.Context, input *ioteventsdata.BatchDeleteDetectorInput, opts ...request.Option) (*ioteventsdata.BatchDeleteDetectorOutput, error)
 	BatchDisableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchDisableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchDisableAlarmOutput, error)
 	BatchEnableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchEnableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchEnableAlarmOutput, error)
 	BatchPutMessageWithContext(ctx context.Context, input *ioteventsdata.BatchPutMessageInput, opts ...request.Option) (*ioteventsdata.BatchPutMessageOutput, error)
@@ -58,6 +59,27 @@ func (c *Client) BatchAcknowledgeAlarmWithContext(ctx context.Context, input *io
 	})
 
 	return req.Output.(*ioteventsdata.BatchAcknowledgeAlarmOutput), req.Error
+}
+
+func (c *Client) BatchDeleteDetectorWithContext(ctx context.Context, input *ioteventsdata.BatchDeleteDetectorInput, opts ...request.Option) (*ioteventsdata.BatchDeleteDetectorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ioteventsdata",
+		Action:  "BatchDeleteDetector",
+		Input:   input,
+		Output:  (*ioteventsdata.BatchDeleteDetectorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTEventsDataAPI.BatchDeleteDetectorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ioteventsdata.BatchDeleteDetectorOutput), req.Error
 }
 
 func (c *Client) BatchDisableAlarmWithContext(ctx context.Context, input *ioteventsdata.BatchDisableAlarmInput, opts ...request.Option) (*ioteventsdata.BatchDisableAlarmOutput, error) {
