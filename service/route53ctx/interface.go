@@ -13,8 +13,10 @@ import (
 type Route53 interface {
 	ActivateKeySigningKeyWithContext(ctx context.Context, input *route53.ActivateKeySigningKeyInput, opts ...request.Option) (*route53.ActivateKeySigningKeyOutput, error)
 	AssociateVPCWithHostedZoneWithContext(ctx context.Context, input *route53.AssociateVPCWithHostedZoneInput, opts ...request.Option) (*route53.AssociateVPCWithHostedZoneOutput, error)
+	ChangeCidrCollectionWithContext(ctx context.Context, input *route53.ChangeCidrCollectionInput, opts ...request.Option) (*route53.ChangeCidrCollectionOutput, error)
 	ChangeResourceRecordSetsWithContext(ctx context.Context, input *route53.ChangeResourceRecordSetsInput, opts ...request.Option) (*route53.ChangeResourceRecordSetsOutput, error)
 	ChangeTagsForResourceWithContext(ctx context.Context, input *route53.ChangeTagsForResourceInput, opts ...request.Option) (*route53.ChangeTagsForResourceOutput, error)
+	CreateCidrCollectionWithContext(ctx context.Context, input *route53.CreateCidrCollectionInput, opts ...request.Option) (*route53.CreateCidrCollectionOutput, error)
 	CreateHealthCheckWithContext(ctx context.Context, input *route53.CreateHealthCheckInput, opts ...request.Option) (*route53.CreateHealthCheckOutput, error)
 	CreateHostedZoneWithContext(ctx context.Context, input *route53.CreateHostedZoneInput, opts ...request.Option) (*route53.CreateHostedZoneOutput, error)
 	CreateKeySigningKeyWithContext(ctx context.Context, input *route53.CreateKeySigningKeyInput, opts ...request.Option) (*route53.CreateKeySigningKeyOutput, error)
@@ -25,6 +27,7 @@ type Route53 interface {
 	CreateTrafficPolicyVersionWithContext(ctx context.Context, input *route53.CreateTrafficPolicyVersionInput, opts ...request.Option) (*route53.CreateTrafficPolicyVersionOutput, error)
 	CreateVPCAssociationAuthorizationWithContext(ctx context.Context, input *route53.CreateVPCAssociationAuthorizationInput, opts ...request.Option) (*route53.CreateVPCAssociationAuthorizationOutput, error)
 	DeactivateKeySigningKeyWithContext(ctx context.Context, input *route53.DeactivateKeySigningKeyInput, opts ...request.Option) (*route53.DeactivateKeySigningKeyOutput, error)
+	DeleteCidrCollectionWithContext(ctx context.Context, input *route53.DeleteCidrCollectionInput, opts ...request.Option) (*route53.DeleteCidrCollectionOutput, error)
 	DeleteHealthCheckWithContext(ctx context.Context, input *route53.DeleteHealthCheckInput, opts ...request.Option) (*route53.DeleteHealthCheckOutput, error)
 	DeleteHostedZoneWithContext(ctx context.Context, input *route53.DeleteHostedZoneInput, opts ...request.Option) (*route53.DeleteHostedZoneOutput, error)
 	DeleteKeySigningKeyWithContext(ctx context.Context, input *route53.DeleteKeySigningKeyInput, opts ...request.Option) (*route53.DeleteKeySigningKeyOutput, error)
@@ -54,6 +57,12 @@ type Route53 interface {
 	GetTrafficPolicyWithContext(ctx context.Context, input *route53.GetTrafficPolicyInput, opts ...request.Option) (*route53.GetTrafficPolicyOutput, error)
 	GetTrafficPolicyInstanceWithContext(ctx context.Context, input *route53.GetTrafficPolicyInstanceInput, opts ...request.Option) (*route53.GetTrafficPolicyInstanceOutput, error)
 	GetTrafficPolicyInstanceCountWithContext(ctx context.Context, input *route53.GetTrafficPolicyInstanceCountInput, opts ...request.Option) (*route53.GetTrafficPolicyInstanceCountOutput, error)
+	ListCidrBlocksWithContext(ctx context.Context, input *route53.ListCidrBlocksInput, opts ...request.Option) (*route53.ListCidrBlocksOutput, error)
+	ListCidrBlocksPagesWithContext(ctx context.Context, input *route53.ListCidrBlocksInput, cb func(*route53.ListCidrBlocksOutput, bool) bool, opts ...request.Option) error
+	ListCidrCollectionsWithContext(ctx context.Context, input *route53.ListCidrCollectionsInput, opts ...request.Option) (*route53.ListCidrCollectionsOutput, error)
+	ListCidrCollectionsPagesWithContext(ctx context.Context, input *route53.ListCidrCollectionsInput, cb func(*route53.ListCidrCollectionsOutput, bool) bool, opts ...request.Option) error
+	ListCidrLocationsWithContext(ctx context.Context, input *route53.ListCidrLocationsInput, opts ...request.Option) (*route53.ListCidrLocationsOutput, error)
+	ListCidrLocationsPagesWithContext(ctx context.Context, input *route53.ListCidrLocationsInput, cb func(*route53.ListCidrLocationsOutput, bool) bool, opts ...request.Option) error
 	ListGeoLocationsWithContext(ctx context.Context, input *route53.ListGeoLocationsInput, opts ...request.Option) (*route53.ListGeoLocationsOutput, error)
 	ListHealthChecksWithContext(ctx context.Context, input *route53.ListHealthChecksInput, opts ...request.Option) (*route53.ListHealthChecksOutput, error)
 	ListHealthChecksPagesWithContext(ctx context.Context, input *route53.ListHealthChecksInput, cb func(*route53.ListHealthChecksOutput, bool) bool, opts ...request.Option) error
@@ -138,6 +147,27 @@ func (c *Client) AssociateVPCWithHostedZoneWithContext(ctx context.Context, inpu
 	return req.Output.(*route53.AssociateVPCWithHostedZoneOutput), req.Error
 }
 
+func (c *Client) ChangeCidrCollectionWithContext(ctx context.Context, input *route53.ChangeCidrCollectionInput, opts ...request.Option) (*route53.ChangeCidrCollectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ChangeCidrCollection",
+		Input:   input,
+		Output:  (*route53.ChangeCidrCollectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.ChangeCidrCollectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.ChangeCidrCollectionOutput), req.Error
+}
+
 func (c *Client) ChangeResourceRecordSetsWithContext(ctx context.Context, input *route53.ChangeResourceRecordSetsInput, opts ...request.Option) (*route53.ChangeResourceRecordSetsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "route53",
@@ -178,6 +208,27 @@ func (c *Client) ChangeTagsForResourceWithContext(ctx context.Context, input *ro
 	})
 
 	return req.Output.(*route53.ChangeTagsForResourceOutput), req.Error
+}
+
+func (c *Client) CreateCidrCollectionWithContext(ctx context.Context, input *route53.CreateCidrCollectionInput, opts ...request.Option) (*route53.CreateCidrCollectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "CreateCidrCollection",
+		Input:   input,
+		Output:  (*route53.CreateCidrCollectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.CreateCidrCollectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.CreateCidrCollectionOutput), req.Error
 }
 
 func (c *Client) CreateHealthCheckWithContext(ctx context.Context, input *route53.CreateHealthCheckInput, opts ...request.Option) (*route53.CreateHealthCheckOutput, error) {
@@ -388,6 +439,27 @@ func (c *Client) DeactivateKeySigningKeyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*route53.DeactivateKeySigningKeyOutput), req.Error
+}
+
+func (c *Client) DeleteCidrCollectionWithContext(ctx context.Context, input *route53.DeleteCidrCollectionInput, opts ...request.Option) (*route53.DeleteCidrCollectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "DeleteCidrCollection",
+		Input:   input,
+		Output:  (*route53.DeleteCidrCollectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.DeleteCidrCollectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.DeleteCidrCollectionOutput), req.Error
 }
 
 func (c *Client) DeleteHealthCheckWithContext(ctx context.Context, input *route53.DeleteHealthCheckInput, opts ...request.Option) (*route53.DeleteHealthCheckOutput, error) {
@@ -997,6 +1069,129 @@ func (c *Client) GetTrafficPolicyInstanceCountWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*route53.GetTrafficPolicyInstanceCountOutput), req.Error
+}
+
+func (c *Client) ListCidrBlocksWithContext(ctx context.Context, input *route53.ListCidrBlocksInput, opts ...request.Option) (*route53.ListCidrBlocksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListCidrBlocks",
+		Input:   input,
+		Output:  (*route53.ListCidrBlocksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.ListCidrBlocksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.ListCidrBlocksOutput), req.Error
+}
+
+func (c *Client) ListCidrBlocksPagesWithContext(ctx context.Context, input *route53.ListCidrBlocksInput, cb func(*route53.ListCidrBlocksOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListCidrBlocks",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListCidrBlocksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCidrCollectionsWithContext(ctx context.Context, input *route53.ListCidrCollectionsInput, opts ...request.Option) (*route53.ListCidrCollectionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListCidrCollections",
+		Input:   input,
+		Output:  (*route53.ListCidrCollectionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.ListCidrCollectionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.ListCidrCollectionsOutput), req.Error
+}
+
+func (c *Client) ListCidrCollectionsPagesWithContext(ctx context.Context, input *route53.ListCidrCollectionsInput, cb func(*route53.ListCidrCollectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListCidrCollections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListCidrCollectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCidrLocationsWithContext(ctx context.Context, input *route53.ListCidrLocationsInput, opts ...request.Option) (*route53.ListCidrLocationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListCidrLocations",
+		Input:   input,
+		Output:  (*route53.ListCidrLocationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.Route53API.ListCidrLocationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*route53.ListCidrLocationsOutput), req.Error
+}
+
+func (c *Client) ListCidrLocationsPagesWithContext(ctx context.Context, input *route53.ListCidrLocationsInput, cb func(*route53.ListCidrLocationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "route53",
+		Action:  "ListCidrLocations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.Route53API.ListCidrLocationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGeoLocationsWithContext(ctx context.Context, input *route53.ListGeoLocationsInput, opts ...request.Option) (*route53.ListGeoLocationsOutput, error) {
