@@ -32,6 +32,7 @@ type Connect interface {
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
 	CreateSecurityProfileWithContext(ctx context.Context, input *connect.CreateSecurityProfileInput, opts ...request.Option) (*connect.CreateSecurityProfileOutput, error)
+	CreateTaskTemplateWithContext(ctx context.Context, input *connect.CreateTaskTemplateInput, opts ...request.Option) (*connect.CreateTaskTemplateOutput, error)
 	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
@@ -43,6 +44,7 @@ type Connect interface {
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
 	DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error)
 	DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error)
+	DeleteTaskTemplateWithContext(ctx context.Context, input *connect.DeleteTaskTemplateInput, opts ...request.Option) (*connect.DeleteTaskTemplateOutput, error)
 	DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
@@ -79,6 +81,7 @@ type Connect interface {
 	GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
+	GetTaskTemplateWithContext(ctx context.Context, input *connect.GetTaskTemplateInput, opts ...request.Option) (*connect.GetTaskTemplateOutput, error)
 	ListAgentStatusesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, opts ...request.Option) (*connect.ListAgentStatusesOutput, error)
 	ListAgentStatusesPagesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, cb func(*connect.ListAgentStatusesOutput, bool) bool, opts ...request.Option) error
 	ListApprovedOriginsWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, opts ...request.Option) (*connect.ListApprovedOriginsOutput, error)
@@ -130,6 +133,8 @@ type Connect interface {
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
 	ListSecurityProfilesPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, cb func(*connect.ListSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error)
+	ListTaskTemplatesWithContext(ctx context.Context, input *connect.ListTaskTemplatesInput, opts ...request.Option) (*connect.ListTaskTemplatesOutput, error)
+	ListTaskTemplatesPagesWithContext(ctx context.Context, input *connect.ListTaskTemplatesInput, cb func(*connect.ListTaskTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListUseCasesWithContext(ctx context.Context, input *connect.ListUseCasesInput, opts ...request.Option) (*connect.ListUseCasesOutput, error)
 	ListUseCasesPagesWithContext(ctx context.Context, input *connect.ListUseCasesInput, cb func(*connect.ListUseCasesOutput, bool) bool, opts ...request.Option) error
 	ListUserHierarchyGroupsWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, opts ...request.Option) (*connect.ListUserHierarchyGroupsOutput, error)
@@ -155,6 +160,7 @@ type Connect interface {
 	StopContactStreamingWithContext(ctx context.Context, input *connect.StopContactStreamingInput, opts ...request.Option) (*connect.StopContactStreamingOutput, error)
 	SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
+	TransferContactWithContext(ctx context.Context, input *connect.TransferContactInput, opts ...request.Option) (*connect.TransferContactOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error)
 	UpdateAgentStatusWithContext(ctx context.Context, input *connect.UpdateAgentStatusInput, opts ...request.Option) (*connect.UpdateAgentStatusOutput, error)
 	UpdateContactWithContext(ctx context.Context, input *connect.UpdateContactInput, opts ...request.Option) (*connect.UpdateContactOutput, error)
@@ -181,6 +187,7 @@ type Connect interface {
 	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
 	UpdateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.UpdateRoutingProfileQueuesInput, opts ...request.Option) (*connect.UpdateRoutingProfileQueuesOutput, error)
 	UpdateSecurityProfileWithContext(ctx context.Context, input *connect.UpdateSecurityProfileInput, opts ...request.Option) (*connect.UpdateSecurityProfileOutput, error)
+	UpdateTaskTemplateWithContext(ctx context.Context, input *connect.UpdateTaskTemplateInput, opts ...request.Option) (*connect.UpdateTaskTemplateOutput, error)
 	UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error)
 	UpdateUserHierarchyGroupNameWithContext(ctx context.Context, input *connect.UpdateUserHierarchyGroupNameInput, opts ...request.Option) (*connect.UpdateUserHierarchyGroupNameOutput, error)
 	UpdateUserHierarchyStructureWithContext(ctx context.Context, input *connect.UpdateUserHierarchyStructureInput, opts ...request.Option) (*connect.UpdateUserHierarchyStructureOutput, error)
@@ -646,6 +653,27 @@ func (c *Client) CreateSecurityProfileWithContext(ctx context.Context, input *co
 	return req.Output.(*connect.CreateSecurityProfileOutput), req.Error
 }
 
+func (c *Client) CreateTaskTemplateWithContext(ctx context.Context, input *connect.CreateTaskTemplateInput, opts ...request.Option) (*connect.CreateTaskTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateTaskTemplate",
+		Input:   input,
+		Output:  (*connect.CreateTaskTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateTaskTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateTaskTemplateOutput), req.Error
+}
+
 func (c *Client) CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -875,6 +903,27 @@ func (c *Client) DeleteSecurityProfileWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*connect.DeleteSecurityProfileOutput), req.Error
+}
+
+func (c *Client) DeleteTaskTemplateWithContext(ctx context.Context, input *connect.DeleteTaskTemplateInput, opts ...request.Option) (*connect.DeleteTaskTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteTaskTemplate",
+		Input:   input,
+		Output:  (*connect.DeleteTaskTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteTaskTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteTaskTemplateOutput), req.Error
 }
 
 func (c *Client) DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error) {
@@ -1629,6 +1678,27 @@ func (c *Client) GetMetricDataPagesWithContext(ctx context.Context, input *conne
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetTaskTemplateWithContext(ctx context.Context, input *connect.GetTaskTemplateInput, opts ...request.Option) (*connect.GetTaskTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "GetTaskTemplate",
+		Input:   input,
+		Output:  (*connect.GetTaskTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.GetTaskTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.GetTaskTemplateOutput), req.Error
 }
 
 func (c *Client) ListAgentStatusesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, opts ...request.Option) (*connect.ListAgentStatusesOutput, error) {
@@ -2677,6 +2747,47 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *conn
 	return req.Output.(*connect.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTaskTemplatesWithContext(ctx context.Context, input *connect.ListTaskTemplatesInput, opts ...request.Option) (*connect.ListTaskTemplatesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListTaskTemplates",
+		Input:   input,
+		Output:  (*connect.ListTaskTemplatesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListTaskTemplatesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListTaskTemplatesOutput), req.Error
+}
+
+func (c *Client) ListTaskTemplatesPagesWithContext(ctx context.Context, input *connect.ListTaskTemplatesInput, cb func(*connect.ListTaskTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListTaskTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListTaskTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUseCasesWithContext(ctx context.Context, input *connect.ListUseCasesInput, opts ...request.Option) (*connect.ListUseCasesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -3194,6 +3305,27 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *connect.TagR
 	})
 
 	return req.Output.(*connect.TagResourceOutput), req.Error
+}
+
+func (c *Client) TransferContactWithContext(ctx context.Context, input *connect.TransferContactInput, opts ...request.Option) (*connect.TransferContactOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "TransferContact",
+		Input:   input,
+		Output:  (*connect.TransferContactOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.TransferContactWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.TransferContactOutput), req.Error
 }
 
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *connect.UntagResourceInput, opts ...request.Option) (*connect.UntagResourceOutput, error) {
@@ -3740,6 +3872,27 @@ func (c *Client) UpdateSecurityProfileWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*connect.UpdateSecurityProfileOutput), req.Error
+}
+
+func (c *Client) UpdateTaskTemplateWithContext(ctx context.Context, input *connect.UpdateTaskTemplateInput, opts ...request.Option) (*connect.UpdateTaskTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateTaskTemplate",
+		Input:   input,
+		Output:  (*connect.UpdateTaskTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateTaskTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateTaskTemplateOutput), req.Error
 }
 
 func (c *Client) UpdateUserHierarchyWithContext(ctx context.Context, input *connect.UpdateUserHierarchyInput, opts ...request.Option) (*connect.UpdateUserHierarchyOutput, error) {
