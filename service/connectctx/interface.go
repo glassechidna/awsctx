@@ -78,6 +78,8 @@ type Connect interface {
 	GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error)
 	GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error)
 	GetCurrentMetricDataPagesWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, cb func(*connect.GetCurrentMetricDataOutput, bool) bool, opts ...request.Option) error
+	GetCurrentUserDataWithContext(ctx context.Context, input *connect.GetCurrentUserDataInput, opts ...request.Option) (*connect.GetCurrentUserDataOutput, error)
+	GetCurrentUserDataPagesWithContext(ctx context.Context, input *connect.GetCurrentUserDataInput, cb func(*connect.GetCurrentUserDataOutput, bool) bool, opts ...request.Option) error
 	GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
@@ -1613,6 +1615,47 @@ func (c *Client) GetCurrentMetricDataPagesWithContext(ctx context.Context, input
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.GetCurrentMetricDataPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetCurrentUserDataWithContext(ctx context.Context, input *connect.GetCurrentUserDataInput, opts ...request.Option) (*connect.GetCurrentUserDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "GetCurrentUserData",
+		Input:   input,
+		Output:  (*connect.GetCurrentUserDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.GetCurrentUserDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.GetCurrentUserDataOutput), req.Error
+}
+
+func (c *Client) GetCurrentUserDataPagesWithContext(ctx context.Context, input *connect.GetCurrentUserDataInput, cb func(*connect.GetCurrentUserDataOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "GetCurrentUserData",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.GetCurrentUserDataPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
