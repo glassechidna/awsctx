@@ -38,6 +38,8 @@ type CostExplorer interface {
 	GetSavingsPlansUtilizationDetailsPagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansUtilizationDetailsInput, cb func(*costexplorer.GetSavingsPlansUtilizationDetailsOutput, bool) bool, opts ...request.Option) error
 	GetTagsWithContext(ctx context.Context, input *costexplorer.GetTagsInput, opts ...request.Option) (*costexplorer.GetTagsOutput, error)
 	GetUsageForecastWithContext(ctx context.Context, input *costexplorer.GetUsageForecastInput, opts ...request.Option) (*costexplorer.GetUsageForecastOutput, error)
+	ListCostAllocationTagsWithContext(ctx context.Context, input *costexplorer.ListCostAllocationTagsInput, opts ...request.Option) (*costexplorer.ListCostAllocationTagsOutput, error)
+	ListCostAllocationTagsPagesWithContext(ctx context.Context, input *costexplorer.ListCostAllocationTagsInput, cb func(*costexplorer.ListCostAllocationTagsOutput, bool) bool, opts ...request.Option) error
 	ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error)
 	ListCostCategoryDefinitionsPagesWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, cb func(*costexplorer.ListCostCategoryDefinitionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *costexplorer.ListTagsForResourceInput, opts ...request.Option) (*costexplorer.ListTagsForResourceOutput, error)
@@ -46,6 +48,7 @@ type CostExplorer interface {
 	UntagResourceWithContext(ctx context.Context, input *costexplorer.UntagResourceInput, opts ...request.Option) (*costexplorer.UntagResourceOutput, error)
 	UpdateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.UpdateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.UpdateAnomalyMonitorOutput, error)
 	UpdateAnomalySubscriptionWithContext(ctx context.Context, input *costexplorer.UpdateAnomalySubscriptionInput, opts ...request.Option) (*costexplorer.UpdateAnomalySubscriptionOutput, error)
+	UpdateCostAllocationTagsStatusWithContext(ctx context.Context, input *costexplorer.UpdateCostAllocationTagsStatusInput, opts ...request.Option) (*costexplorer.UpdateCostAllocationTagsStatusOutput, error)
 	UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error)
 }
 
@@ -629,6 +632,47 @@ func (c *Client) GetUsageForecastWithContext(ctx context.Context, input *costexp
 	return req.Output.(*costexplorer.GetUsageForecastOutput), req.Error
 }
 
+func (c *Client) ListCostAllocationTagsWithContext(ctx context.Context, input *costexplorer.ListCostAllocationTagsInput, opts ...request.Option) (*costexplorer.ListCostAllocationTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ListCostAllocationTags",
+		Input:   input,
+		Output:  (*costexplorer.ListCostAllocationTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.ListCostAllocationTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.ListCostAllocationTagsOutput), req.Error
+}
+
+func (c *Client) ListCostAllocationTagsPagesWithContext(ctx context.Context, input *costexplorer.ListCostAllocationTagsInput, cb func(*costexplorer.ListCostAllocationTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ListCostAllocationTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CostExplorerAPI.ListCostAllocationTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
@@ -794,6 +838,27 @@ func (c *Client) UpdateAnomalySubscriptionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*costexplorer.UpdateAnomalySubscriptionOutput), req.Error
+}
+
+func (c *Client) UpdateCostAllocationTagsStatusWithContext(ctx context.Context, input *costexplorer.UpdateCostAllocationTagsStatusInput, opts ...request.Option) (*costexplorer.UpdateCostAllocationTagsStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "UpdateCostAllocationTagsStatus",
+		Input:   input,
+		Output:  (*costexplorer.UpdateCostAllocationTagsStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.UpdateCostAllocationTagsStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.UpdateCostAllocationTagsStatusOutput), req.Error
 }
 
 func (c *Client) UpdateCostCategoryDefinitionWithContext(ctx context.Context, input *costexplorer.UpdateCostCategoryDefinitionInput, opts ...request.Option) (*costexplorer.UpdateCostCategoryDefinitionOutput, error) {
