@@ -127,6 +127,7 @@ type Redshift interface {
 	EnableLoggingWithContext(ctx context.Context, input *redshift.EnableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error)
 	EnableSnapshotCopyWithContext(ctx context.Context, input *redshift.EnableSnapshotCopyInput, opts ...request.Option) (*redshift.EnableSnapshotCopyOutput, error)
 	GetClusterCredentialsWithContext(ctx context.Context, input *redshift.GetClusterCredentialsInput, opts ...request.Option) (*redshift.GetClusterCredentialsOutput, error)
+	GetClusterCredentialsWithIAMWithContext(ctx context.Context, input *redshift.GetClusterCredentialsWithIAMInput, opts ...request.Option) (*redshift.GetClusterCredentialsWithIAMOutput, error)
 	GetReservedNodeExchangeConfigurationOptionsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeConfigurationOptionsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeConfigurationOptionsOutput, error)
 	GetReservedNodeExchangeConfigurationOptionsPagesWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeConfigurationOptionsInput, cb func(*redshift.GetReservedNodeExchangeConfigurationOptionsOutput, bool) bool, opts ...request.Option) error
 	GetReservedNodeExchangeOfferingsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeOfferingsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeOfferingsOutput, error)
@@ -2582,6 +2583,27 @@ func (c *Client) GetClusterCredentialsWithContext(ctx context.Context, input *re
 	})
 
 	return req.Output.(*redshift.GetClusterCredentialsOutput), req.Error
+}
+
+func (c *Client) GetClusterCredentialsWithIAMWithContext(ctx context.Context, input *redshift.GetClusterCredentialsWithIAMInput, opts ...request.Option) (*redshift.GetClusterCredentialsWithIAMOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "GetClusterCredentialsWithIAM",
+		Input:   input,
+		Output:  (*redshift.GetClusterCredentialsWithIAMOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.GetClusterCredentialsWithIAMWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.GetClusterCredentialsWithIAMOutput), req.Error
 }
 
 func (c *Client) GetReservedNodeExchangeConfigurationOptionsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeConfigurationOptionsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeConfigurationOptionsOutput, error) {

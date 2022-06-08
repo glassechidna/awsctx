@@ -26,6 +26,7 @@ type Neptune interface {
 	CreateDBParameterGroupWithContext(ctx context.Context, input *neptune.CreateDBParameterGroupInput, opts ...request.Option) (*neptune.CreateDBParameterGroupOutput, error)
 	CreateDBSubnetGroupWithContext(ctx context.Context, input *neptune.CreateDBSubnetGroupInput, opts ...request.Option) (*neptune.CreateDBSubnetGroupOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *neptune.CreateEventSubscriptionInput, opts ...request.Option) (*neptune.CreateEventSubscriptionOutput, error)
+	CreateGlobalClusterWithContext(ctx context.Context, input *neptune.CreateGlobalClusterInput, opts ...request.Option) (*neptune.CreateGlobalClusterOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *neptune.DeleteDBClusterInput, opts ...request.Option) (*neptune.DeleteDBClusterOutput, error)
 	DeleteDBClusterEndpointWithContext(ctx context.Context, input *neptune.DeleteDBClusterEndpointInput, opts ...request.Option) (*neptune.DeleteDBClusterEndpointOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBClusterParameterGroupOutput, error)
@@ -34,6 +35,7 @@ type Neptune interface {
 	DeleteDBParameterGroupWithContext(ctx context.Context, input *neptune.DeleteDBParameterGroupInput, opts ...request.Option) (*neptune.DeleteDBParameterGroupOutput, error)
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *neptune.DeleteDBSubnetGroupInput, opts ...request.Option) (*neptune.DeleteDBSubnetGroupOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *neptune.DeleteEventSubscriptionInput, opts ...request.Option) (*neptune.DeleteEventSubscriptionOutput, error)
+	DeleteGlobalClusterWithContext(ctx context.Context, input *neptune.DeleteGlobalClusterInput, opts ...request.Option) (*neptune.DeleteGlobalClusterOutput, error)
 	DescribeDBClusterEndpointsWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, opts ...request.Option) (*neptune.DescribeDBClusterEndpointsOutput, error)
 	DescribeDBClusterEndpointsPagesWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, cb func(*neptune.DescribeDBClusterEndpointsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterParameterGroupsWithContext(ctx context.Context, input *neptune.DescribeDBClusterParameterGroupsInput, opts ...request.Option) (*neptune.DescribeDBClusterParameterGroupsOutput, error)
@@ -63,12 +65,14 @@ type Neptune interface {
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *neptune.DescribeEventSubscriptionsInput, cb func(*neptune.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *neptune.DescribeEventsInput, opts ...request.Option) (*neptune.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *neptune.DescribeEventsInput, cb func(*neptune.DescribeEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeGlobalClustersWithContext(ctx context.Context, input *neptune.DescribeGlobalClustersInput, opts ...request.Option) (*neptune.DescribeGlobalClustersOutput, error)
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, cb func(*neptune.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *neptune.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*neptune.DescribePendingMaintenanceActionsOutput, error)
 	DescribePendingMaintenanceActionsPagesWithContext(ctx context.Context, input *neptune.DescribePendingMaintenanceActionsInput, cb func(*neptune.DescribePendingMaintenanceActionsOutput, bool) bool, opts ...request.Option) error
 	DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *neptune.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*neptune.DescribeValidDBInstanceModificationsOutput, error)
 	FailoverDBClusterWithContext(ctx context.Context, input *neptune.FailoverDBClusterInput, opts ...request.Option) (*neptune.FailoverDBClusterOutput, error)
+	FailoverGlobalClusterWithContext(ctx context.Context, input *neptune.FailoverGlobalClusterInput, opts ...request.Option) (*neptune.FailoverGlobalClusterOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *neptune.ListTagsForResourceInput, opts ...request.Option) (*neptune.ListTagsForResourceOutput, error)
 	ModifyDBClusterWithContext(ctx context.Context, input *neptune.ModifyDBClusterInput, opts ...request.Option) (*neptune.ModifyDBClusterOutput, error)
 	ModifyDBClusterEndpointWithContext(ctx context.Context, input *neptune.ModifyDBClusterEndpointInput, opts ...request.Option) (*neptune.ModifyDBClusterEndpointOutput, error)
@@ -78,8 +82,10 @@ type Neptune interface {
 	ModifyDBParameterGroupWithContext(ctx context.Context, input *neptune.ModifyDBParameterGroupInput, opts ...request.Option) (*neptune.ResetDBParameterGroupOutput, error)
 	ModifyDBSubnetGroupWithContext(ctx context.Context, input *neptune.ModifyDBSubnetGroupInput, opts ...request.Option) (*neptune.ModifyDBSubnetGroupOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *neptune.ModifyEventSubscriptionInput, opts ...request.Option) (*neptune.ModifyEventSubscriptionOutput, error)
+	ModifyGlobalClusterWithContext(ctx context.Context, input *neptune.ModifyGlobalClusterInput, opts ...request.Option) (*neptune.ModifyGlobalClusterOutput, error)
 	PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *neptune.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*neptune.PromoteReadReplicaDBClusterOutput, error)
 	RebootDBInstanceWithContext(ctx context.Context, input *neptune.RebootDBInstanceInput, opts ...request.Option) (*neptune.RebootDBInstanceOutput, error)
+	RemoveFromGlobalClusterWithContext(ctx context.Context, input *neptune.RemoveFromGlobalClusterInput, opts ...request.Option) (*neptune.RemoveFromGlobalClusterOutput, error)
 	RemoveRoleFromDBClusterWithContext(ctx context.Context, input *neptune.RemoveRoleFromDBClusterInput, opts ...request.Option) (*neptune.RemoveRoleFromDBClusterOutput, error)
 	RemoveSourceIdentifierFromSubscriptionWithContext(ctx context.Context, input *neptune.RemoveSourceIdentifierFromSubscriptionInput, opts ...request.Option) (*neptune.RemoveSourceIdentifierFromSubscriptionOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *neptune.RemoveTagsFromResourceInput, opts ...request.Option) (*neptune.RemoveTagsFromResourceOutput, error)
@@ -421,6 +427,27 @@ func (c *Client) CreateEventSubscriptionWithContext(ctx context.Context, input *
 	return req.Output.(*neptune.CreateEventSubscriptionOutput), req.Error
 }
 
+func (c *Client) CreateGlobalClusterWithContext(ctx context.Context, input *neptune.CreateGlobalClusterInput, opts ...request.Option) (*neptune.CreateGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "CreateGlobalCluster",
+		Input:   input,
+		Output:  (*neptune.CreateGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.CreateGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.CreateGlobalClusterOutput), req.Error
+}
+
 func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *neptune.DeleteDBClusterInput, opts ...request.Option) (*neptune.DeleteDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -587,6 +614,27 @@ func (c *Client) DeleteEventSubscriptionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*neptune.DeleteEventSubscriptionOutput), req.Error
+}
+
+func (c *Client) DeleteGlobalClusterWithContext(ctx context.Context, input *neptune.DeleteGlobalClusterInput, opts ...request.Option) (*neptune.DeleteGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DeleteGlobalCluster",
+		Input:   input,
+		Output:  (*neptune.DeleteGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.DeleteGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.DeleteGlobalClusterOutput), req.Error
 }
 
 func (c *Client) DescribeDBClusterEndpointsWithContext(ctx context.Context, input *neptune.DescribeDBClusterEndpointsInput, opts ...request.Option) (*neptune.DescribeDBClusterEndpointsOutput, error) {
@@ -1185,6 +1233,27 @@ func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *nept
 	return req.Error
 }
 
+func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *neptune.DescribeGlobalClustersInput, opts ...request.Option) (*neptune.DescribeGlobalClustersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeGlobalClusters",
+		Input:   input,
+		Output:  (*neptune.DescribeGlobalClustersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.DescribeGlobalClustersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.DescribeGlobalClustersOutput), req.Error
+}
+
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -1307,6 +1376,27 @@ func (c *Client) FailoverDBClusterWithContext(ctx context.Context, input *neptun
 	})
 
 	return req.Output.(*neptune.FailoverDBClusterOutput), req.Error
+}
+
+func (c *Client) FailoverGlobalClusterWithContext(ctx context.Context, input *neptune.FailoverGlobalClusterInput, opts ...request.Option) (*neptune.FailoverGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "FailoverGlobalCluster",
+		Input:   input,
+		Output:  (*neptune.FailoverGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.FailoverGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.FailoverGlobalClusterOutput), req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *neptune.ListTagsForResourceInput, opts ...request.Option) (*neptune.ListTagsForResourceOutput, error) {
@@ -1498,6 +1588,27 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 	return req.Output.(*neptune.ModifyEventSubscriptionOutput), req.Error
 }
 
+func (c *Client) ModifyGlobalClusterWithContext(ctx context.Context, input *neptune.ModifyGlobalClusterInput, opts ...request.Option) (*neptune.ModifyGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "ModifyGlobalCluster",
+		Input:   input,
+		Output:  (*neptune.ModifyGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.ModifyGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.ModifyGlobalClusterOutput), req.Error
+}
+
 func (c *Client) PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *neptune.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*neptune.PromoteReadReplicaDBClusterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "neptune",
@@ -1538,6 +1649,27 @@ func (c *Client) RebootDBInstanceWithContext(ctx context.Context, input *neptune
 	})
 
 	return req.Output.(*neptune.RebootDBInstanceOutput), req.Error
+}
+
+func (c *Client) RemoveFromGlobalClusterWithContext(ctx context.Context, input *neptune.RemoveFromGlobalClusterInput, opts ...request.Option) (*neptune.RemoveFromGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "RemoveFromGlobalCluster",
+		Input:   input,
+		Output:  (*neptune.RemoveFromGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.NeptuneAPI.RemoveFromGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*neptune.RemoveFromGlobalClusterOutput), req.Error
 }
 
 func (c *Client) RemoveRoleFromDBClusterWithContext(ctx context.Context, input *neptune.RemoveRoleFromDBClusterInput, opts ...request.Option) (*neptune.RemoveRoleFromDBClusterOutput, error) {
