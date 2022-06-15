@@ -11,6 +11,7 @@ import (
 )
 
 type GuardDuty interface {
+	AcceptAdministratorInvitationWithContext(ctx context.Context, input *guardduty.AcceptAdministratorInvitationInput, opts ...request.Option) (*guardduty.AcceptAdministratorInvitationOutput, error)
 	AcceptInvitationWithContext(ctx context.Context, input *guardduty.AcceptInvitationInput, opts ...request.Option) (*guardduty.AcceptInvitationOutput, error)
 	ArchiveFindingsWithContext(ctx context.Context, input *guardduty.ArchiveFindingsInput, opts ...request.Option) (*guardduty.ArchiveFindingsOutput, error)
 	CreateDetectorWithContext(ctx context.Context, input *guardduty.CreateDetectorInput, opts ...request.Option) (*guardduty.CreateDetectorOutput, error)
@@ -31,9 +32,11 @@ type GuardDuty interface {
 	DescribeOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, opts ...request.Option) (*guardduty.DescribeOrganizationConfigurationOutput, error)
 	DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error)
 	DisableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.DisableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.DisableOrganizationAdminAccountOutput, error)
+	DisassociateFromAdministratorAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromAdministratorAccountInput, opts ...request.Option) (*guardduty.DisassociateFromAdministratorAccountOutput, error)
 	DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error)
 	DisassociateMembersWithContext(ctx context.Context, input *guardduty.DisassociateMembersInput, opts ...request.Option) (*guardduty.DisassociateMembersOutput, error)
 	EnableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.EnableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.EnableOrganizationAdminAccountOutput, error)
+	GetAdministratorAccountWithContext(ctx context.Context, input *guardduty.GetAdministratorAccountInput, opts ...request.Option) (*guardduty.GetAdministratorAccountOutput, error)
 	GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error)
 	GetFilterWithContext(ctx context.Context, input *guardduty.GetFilterInput, opts ...request.Option) (*guardduty.GetFilterOutput, error)
 	GetFindingsWithContext(ctx context.Context, input *guardduty.GetFindingsInput, opts ...request.Option) (*guardduty.GetFindingsOutput, error)
@@ -43,6 +46,7 @@ type GuardDuty interface {
 	GetMasterAccountWithContext(ctx context.Context, input *guardduty.GetMasterAccountInput, opts ...request.Option) (*guardduty.GetMasterAccountOutput, error)
 	GetMemberDetectorsWithContext(ctx context.Context, input *guardduty.GetMemberDetectorsInput, opts ...request.Option) (*guardduty.GetMemberDetectorsOutput, error)
 	GetMembersWithContext(ctx context.Context, input *guardduty.GetMembersInput, opts ...request.Option) (*guardduty.GetMembersOutput, error)
+	GetRemainingFreeTrialDaysWithContext(ctx context.Context, input *guardduty.GetRemainingFreeTrialDaysInput, opts ...request.Option) (*guardduty.GetRemainingFreeTrialDaysOutput, error)
 	GetThreatIntelSetWithContext(ctx context.Context, input *guardduty.GetThreatIntelSetInput, opts ...request.Option) (*guardduty.GetThreatIntelSetOutput, error)
 	GetUsageStatisticsWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, opts ...request.Option) (*guardduty.GetUsageStatisticsOutput, error)
 	GetUsageStatisticsPagesWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, cb func(*guardduty.GetUsageStatisticsOutput, bool) bool, opts ...request.Option) error
@@ -95,6 +99,27 @@ func New(base guarddutyiface.GuardDutyAPI, ctxer awsctx.Contexter) GuardDuty {
 
 var _ GuardDuty = (*guardduty.GuardDuty)(nil)
 var _ GuardDuty = (*Client)(nil)
+
+func (c *Client) AcceptAdministratorInvitationWithContext(ctx context.Context, input *guardduty.AcceptAdministratorInvitationInput, opts ...request.Option) (*guardduty.AcceptAdministratorInvitationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "AcceptAdministratorInvitation",
+		Input:   input,
+		Output:  (*guardduty.AcceptAdministratorInvitationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.AcceptAdministratorInvitationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.AcceptAdministratorInvitationOutput), req.Error
+}
 
 func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *guardduty.AcceptInvitationInput, opts ...request.Option) (*guardduty.AcceptInvitationOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -516,6 +541,27 @@ func (c *Client) DisableOrganizationAdminAccountWithContext(ctx context.Context,
 	return req.Output.(*guardduty.DisableOrganizationAdminAccountOutput), req.Error
 }
 
+func (c *Client) DisassociateFromAdministratorAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromAdministratorAccountInput, opts ...request.Option) (*guardduty.DisassociateFromAdministratorAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DisassociateFromAdministratorAccount",
+		Input:   input,
+		Output:  (*guardduty.DisassociateFromAdministratorAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.DisassociateFromAdministratorAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.DisassociateFromAdministratorAccountOutput), req.Error
+}
+
 func (c *Client) DisassociateFromMasterAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromMasterAccountInput, opts ...request.Option) (*guardduty.DisassociateFromMasterAccountOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -577,6 +623,27 @@ func (c *Client) EnableOrganizationAdminAccountWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*guardduty.EnableOrganizationAdminAccountOutput), req.Error
+}
+
+func (c *Client) GetAdministratorAccountWithContext(ctx context.Context, input *guardduty.GetAdministratorAccountInput, opts ...request.Option) (*guardduty.GetAdministratorAccountOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetAdministratorAccount",
+		Input:   input,
+		Output:  (*guardduty.GetAdministratorAccountOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.GetAdministratorAccountWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.GetAdministratorAccountOutput), req.Error
 }
 
 func (c *Client) GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error) {
@@ -766,6 +833,27 @@ func (c *Client) GetMembersWithContext(ctx context.Context, input *guardduty.Get
 	})
 
 	return req.Output.(*guardduty.GetMembersOutput), req.Error
+}
+
+func (c *Client) GetRemainingFreeTrialDaysWithContext(ctx context.Context, input *guardduty.GetRemainingFreeTrialDaysInput, opts ...request.Option) (*guardduty.GetRemainingFreeTrialDaysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetRemainingFreeTrialDays",
+		Input:   input,
+		Output:  (*guardduty.GetRemainingFreeTrialDaysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.GetRemainingFreeTrialDaysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.GetRemainingFreeTrialDaysOutput), req.Error
 }
 
 func (c *Client) GetThreatIntelSetWithContext(ctx context.Context, input *guardduty.GetThreatIntelSetInput, opts ...request.Option) (*guardduty.GetThreatIntelSetOutput, error) {
