@@ -41,6 +41,7 @@ type DirectoryService interface {
 	DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error)
 	DescribeLDAPSSettingsWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, opts ...request.Option) (*directoryservice.DescribeLDAPSSettingsOutput, error)
 	DescribeRegionsWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, opts ...request.Option) (*directoryservice.DescribeRegionsOutput, error)
+	DescribeSettingsWithContext(ctx context.Context, input *directoryservice.DescribeSettingsInput, opts ...request.Option) (*directoryservice.DescribeSettingsOutput, error)
 	DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error)
 	DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error)
 	DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error)
@@ -73,6 +74,7 @@ type DirectoryService interface {
 	UpdateConditionalForwarderWithContext(ctx context.Context, input *directoryservice.UpdateConditionalForwarderInput, opts ...request.Option) (*directoryservice.UpdateConditionalForwarderOutput, error)
 	UpdateNumberOfDomainControllersWithContext(ctx context.Context, input *directoryservice.UpdateNumberOfDomainControllersInput, opts ...request.Option) (*directoryservice.UpdateNumberOfDomainControllersOutput, error)
 	UpdateRadiusWithContext(ctx context.Context, input *directoryservice.UpdateRadiusInput, opts ...request.Option) (*directoryservice.UpdateRadiusOutput, error)
+	UpdateSettingsWithContext(ctx context.Context, input *directoryservice.UpdateSettingsInput, opts ...request.Option) (*directoryservice.UpdateSettingsOutput, error)
 	UpdateTrustWithContext(ctx context.Context, input *directoryservice.UpdateTrustInput, opts ...request.Option) (*directoryservice.UpdateTrustOutput, error)
 	VerifyTrustWithContext(ctx context.Context, input *directoryservice.VerifyTrustInput, opts ...request.Option) (*directoryservice.VerifyTrustOutput, error)
 }
@@ -719,6 +721,27 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *director
 	})
 
 	return req.Output.(*directoryservice.DescribeRegionsOutput), req.Error
+}
+
+func (c *Client) DescribeSettingsWithContext(ctx context.Context, input *directoryservice.DescribeSettingsInput, opts ...request.Option) (*directoryservice.DescribeSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeSettings",
+		Input:   input,
+		Output:  (*directoryservice.DescribeSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DescribeSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DescribeSettingsOutput), req.Error
 }
 
 func (c *Client) DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error) {
@@ -1391,6 +1414,27 @@ func (c *Client) UpdateRadiusWithContext(ctx context.Context, input *directoryse
 	})
 
 	return req.Output.(*directoryservice.UpdateRadiusOutput), req.Error
+}
+
+func (c *Client) UpdateSettingsWithContext(ctx context.Context, input *directoryservice.UpdateSettingsInput, opts ...request.Option) (*directoryservice.UpdateSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "UpdateSettings",
+		Input:   input,
+		Output:  (*directoryservice.UpdateSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.UpdateSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.UpdateSettingsOutput), req.Error
 }
 
 func (c *Client) UpdateTrustWithContext(ctx context.Context, input *directoryservice.UpdateTrustInput, opts ...request.Option) (*directoryservice.UpdateTrustOutput, error) {
