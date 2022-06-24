@@ -160,6 +160,7 @@ type Glue interface {
 	ListBlueprintsPagesWithContext(ctx context.Context, input *glue.ListBlueprintsInput, cb func(*glue.ListBlueprintsOutput, bool) bool, opts ...request.Option) error
 	ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error)
 	ListCrawlersPagesWithContext(ctx context.Context, input *glue.ListCrawlersInput, cb func(*glue.ListCrawlersOutput, bool) bool, opts ...request.Option) error
+	ListCrawlsWithContext(ctx context.Context, input *glue.ListCrawlsInput, opts ...request.Option) (*glue.ListCrawlsOutput, error)
 	ListCustomEntityTypesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, opts ...request.Option) (*glue.ListCustomEntityTypesOutput, error)
 	ListCustomEntityTypesPagesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, cb func(*glue.ListCustomEntityTypesOutput, bool) bool, opts ...request.Option) error
 	ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error)
@@ -3349,6 +3350,27 @@ func (c *Client) ListCrawlersPagesWithContext(ctx context.Context, input *glue.L
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListCrawlsWithContext(ctx context.Context, input *glue.ListCrawlsInput, opts ...request.Option) (*glue.ListCrawlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListCrawls",
+		Input:   input,
+		Output:  (*glue.ListCrawlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListCrawlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListCrawlsOutput), req.Error
 }
 
 func (c *Client) ListCustomEntityTypesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, opts ...request.Option) (*glue.ListCustomEntityTypesOutput, error) {
