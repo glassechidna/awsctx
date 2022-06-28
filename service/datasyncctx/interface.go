@@ -15,6 +15,7 @@ type DataSync interface {
 	CreateAgentWithContext(ctx context.Context, input *datasync.CreateAgentInput, opts ...request.Option) (*datasync.CreateAgentOutput, error)
 	CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error)
 	CreateLocationFsxLustreWithContext(ctx context.Context, input *datasync.CreateLocationFsxLustreInput, opts ...request.Option) (*datasync.CreateLocationFsxLustreOutput, error)
+	CreateLocationFsxOntapWithContext(ctx context.Context, input *datasync.CreateLocationFsxOntapInput, opts ...request.Option) (*datasync.CreateLocationFsxOntapOutput, error)
 	CreateLocationFsxOpenZfsWithContext(ctx context.Context, input *datasync.CreateLocationFsxOpenZfsInput, opts ...request.Option) (*datasync.CreateLocationFsxOpenZfsOutput, error)
 	CreateLocationFsxWindowsWithContext(ctx context.Context, input *datasync.CreateLocationFsxWindowsInput, opts ...request.Option) (*datasync.CreateLocationFsxWindowsOutput, error)
 	CreateLocationHdfsWithContext(ctx context.Context, input *datasync.CreateLocationHdfsInput, opts ...request.Option) (*datasync.CreateLocationHdfsOutput, error)
@@ -29,6 +30,7 @@ type DataSync interface {
 	DescribeAgentWithContext(ctx context.Context, input *datasync.DescribeAgentInput, opts ...request.Option) (*datasync.DescribeAgentOutput, error)
 	DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error)
 	DescribeLocationFsxLustreWithContext(ctx context.Context, input *datasync.DescribeLocationFsxLustreInput, opts ...request.Option) (*datasync.DescribeLocationFsxLustreOutput, error)
+	DescribeLocationFsxOntapWithContext(ctx context.Context, input *datasync.DescribeLocationFsxOntapInput, opts ...request.Option) (*datasync.DescribeLocationFsxOntapOutput, error)
 	DescribeLocationFsxOpenZfsWithContext(ctx context.Context, input *datasync.DescribeLocationFsxOpenZfsInput, opts ...request.Option) (*datasync.DescribeLocationFsxOpenZfsOutput, error)
 	DescribeLocationFsxWindowsWithContext(ctx context.Context, input *datasync.DescribeLocationFsxWindowsInput, opts ...request.Option) (*datasync.DescribeLocationFsxWindowsOutput, error)
 	DescribeLocationHdfsWithContext(ctx context.Context, input *datasync.DescribeLocationHdfsInput, opts ...request.Option) (*datasync.DescribeLocationHdfsOutput, error)
@@ -157,6 +159,27 @@ func (c *Client) CreateLocationFsxLustreWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*datasync.CreateLocationFsxLustreOutput), req.Error
+}
+
+func (c *Client) CreateLocationFsxOntapWithContext(ctx context.Context, input *datasync.CreateLocationFsxOntapInput, opts ...request.Option) (*datasync.CreateLocationFsxOntapOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "CreateLocationFsxOntap",
+		Input:   input,
+		Output:  (*datasync.CreateLocationFsxOntapOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.CreateLocationFsxOntapWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.CreateLocationFsxOntapOutput), req.Error
 }
 
 func (c *Client) CreateLocationFsxOpenZfsWithContext(ctx context.Context, input *datasync.CreateLocationFsxOpenZfsInput, opts ...request.Option) (*datasync.CreateLocationFsxOpenZfsOutput, error) {
@@ -451,6 +474,27 @@ func (c *Client) DescribeLocationFsxLustreWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*datasync.DescribeLocationFsxLustreOutput), req.Error
+}
+
+func (c *Client) DescribeLocationFsxOntapWithContext(ctx context.Context, input *datasync.DescribeLocationFsxOntapInput, opts ...request.Option) (*datasync.DescribeLocationFsxOntapOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeLocationFsxOntap",
+		Input:   input,
+		Output:  (*datasync.DescribeLocationFsxOntapOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeLocationFsxOntapWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeLocationFsxOntapOutput), req.Error
 }
 
 func (c *Client) DescribeLocationFsxOpenZfsWithContext(ctx context.Context, input *datasync.DescribeLocationFsxOpenZfsInput, opts ...request.Option) (*datasync.DescribeLocationFsxOpenZfsOutput, error) {
