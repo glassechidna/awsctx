@@ -118,6 +118,7 @@ type SageMaker interface {
 	DescribeEndpointConfigWithContext(ctx context.Context, input *sagemaker.DescribeEndpointConfigInput, opts ...request.Option) (*sagemaker.DescribeEndpointConfigOutput, error)
 	DescribeExperimentWithContext(ctx context.Context, input *sagemaker.DescribeExperimentInput, opts ...request.Option) (*sagemaker.DescribeExperimentOutput, error)
 	DescribeFeatureGroupWithContext(ctx context.Context, input *sagemaker.DescribeFeatureGroupInput, opts ...request.Option) (*sagemaker.DescribeFeatureGroupOutput, error)
+	DescribeFeatureMetadataWithContext(ctx context.Context, input *sagemaker.DescribeFeatureMetadataInput, opts ...request.Option) (*sagemaker.DescribeFeatureMetadataOutput, error)
 	DescribeFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DescribeFlowDefinitionInput, opts ...request.Option) (*sagemaker.DescribeFlowDefinitionOutput, error)
 	DescribeHumanTaskUiWithContext(ctx context.Context, input *sagemaker.DescribeHumanTaskUiInput, opts ...request.Option) (*sagemaker.DescribeHumanTaskUiOutput, error)
 	DescribeHyperParameterTuningJobWithContext(ctx context.Context, input *sagemaker.DescribeHyperParameterTuningJobInput, opts ...request.Option) (*sagemaker.DescribeHyperParameterTuningJobOutput, error)
@@ -307,6 +308,8 @@ type SageMaker interface {
 	UpdateEndpointWithContext(ctx context.Context, input *sagemaker.UpdateEndpointInput, opts ...request.Option) (*sagemaker.UpdateEndpointOutput, error)
 	UpdateEndpointWeightsAndCapacitiesWithContext(ctx context.Context, input *sagemaker.UpdateEndpointWeightsAndCapacitiesInput, opts ...request.Option) (*sagemaker.UpdateEndpointWeightsAndCapacitiesOutput, error)
 	UpdateExperimentWithContext(ctx context.Context, input *sagemaker.UpdateExperimentInput, opts ...request.Option) (*sagemaker.UpdateExperimentOutput, error)
+	UpdateFeatureGroupWithContext(ctx context.Context, input *sagemaker.UpdateFeatureGroupInput, opts ...request.Option) (*sagemaker.UpdateFeatureGroupOutput, error)
+	UpdateFeatureMetadataWithContext(ctx context.Context, input *sagemaker.UpdateFeatureMetadataInput, opts ...request.Option) (*sagemaker.UpdateFeatureMetadataOutput, error)
 	UpdateImageWithContext(ctx context.Context, input *sagemaker.UpdateImageInput, opts ...request.Option) (*sagemaker.UpdateImageOutput, error)
 	UpdateModelPackageWithContext(ctx context.Context, input *sagemaker.UpdateModelPackageInput, opts ...request.Option) (*sagemaker.UpdateModelPackageOutput, error)
 	UpdateMonitoringScheduleWithContext(ctx context.Context, input *sagemaker.UpdateMonitoringScheduleInput, opts ...request.Option) (*sagemaker.UpdateMonitoringScheduleOutput, error)
@@ -2583,6 +2586,27 @@ func (c *Client) DescribeFeatureGroupWithContext(ctx context.Context, input *sag
 	})
 
 	return req.Output.(*sagemaker.DescribeFeatureGroupOutput), req.Error
+}
+
+func (c *Client) DescribeFeatureMetadataWithContext(ctx context.Context, input *sagemaker.DescribeFeatureMetadataInput, opts ...request.Option) (*sagemaker.DescribeFeatureMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeFeatureMetadata",
+		Input:   input,
+		Output:  (*sagemaker.DescribeFeatureMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeFeatureMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeFeatureMetadataOutput), req.Error
 }
 
 func (c *Client) DescribeFlowDefinitionWithContext(ctx context.Context, input *sagemaker.DescribeFlowDefinitionInput, opts ...request.Option) (*sagemaker.DescribeFlowDefinitionOutput, error) {
@@ -6493,6 +6517,48 @@ func (c *Client) UpdateExperimentWithContext(ctx context.Context, input *sagemak
 	})
 
 	return req.Output.(*sagemaker.UpdateExperimentOutput), req.Error
+}
+
+func (c *Client) UpdateFeatureGroupWithContext(ctx context.Context, input *sagemaker.UpdateFeatureGroupInput, opts ...request.Option) (*sagemaker.UpdateFeatureGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateFeatureGroup",
+		Input:   input,
+		Output:  (*sagemaker.UpdateFeatureGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateFeatureGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateFeatureGroupOutput), req.Error
+}
+
+func (c *Client) UpdateFeatureMetadataWithContext(ctx context.Context, input *sagemaker.UpdateFeatureMetadataInput, opts ...request.Option) (*sagemaker.UpdateFeatureMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateFeatureMetadata",
+		Input:   input,
+		Output:  (*sagemaker.UpdateFeatureMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateFeatureMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateFeatureMetadataOutput), req.Error
 }
 
 func (c *Client) UpdateImageWithContext(ctx context.Context, input *sagemaker.UpdateImageInput, opts ...request.Option) (*sagemaker.UpdateImageOutput, error) {

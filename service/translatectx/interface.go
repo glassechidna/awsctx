@@ -18,6 +18,8 @@ type Translate interface {
 	GetParallelDataWithContext(ctx context.Context, input *translate.GetParallelDataInput, opts ...request.Option) (*translate.GetParallelDataOutput, error)
 	GetTerminologyWithContext(ctx context.Context, input *translate.GetTerminologyInput, opts ...request.Option) (*translate.GetTerminologyOutput, error)
 	ImportTerminologyWithContext(ctx context.Context, input *translate.ImportTerminologyInput, opts ...request.Option) (*translate.ImportTerminologyOutput, error)
+	ListLanguagesWithContext(ctx context.Context, input *translate.ListLanguagesInput, opts ...request.Option) (*translate.ListLanguagesOutput, error)
+	ListLanguagesPagesWithContext(ctx context.Context, input *translate.ListLanguagesInput, cb func(*translate.ListLanguagesOutput, bool) bool, opts ...request.Option) error
 	ListParallelDataWithContext(ctx context.Context, input *translate.ListParallelDataInput, opts ...request.Option) (*translate.ListParallelDataOutput, error)
 	ListParallelDataPagesWithContext(ctx context.Context, input *translate.ListParallelDataInput, cb func(*translate.ListParallelDataOutput, bool) bool, opts ...request.Option) error
 	ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error)
@@ -190,6 +192,47 @@ func (c *Client) ImportTerminologyWithContext(ctx context.Context, input *transl
 	})
 
 	return req.Output.(*translate.ImportTerminologyOutput), req.Error
+}
+
+func (c *Client) ListLanguagesWithContext(ctx context.Context, input *translate.ListLanguagesInput, opts ...request.Option) (*translate.ListLanguagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListLanguages",
+		Input:   input,
+		Output:  (*translate.ListLanguagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.ListLanguagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.ListLanguagesOutput), req.Error
+}
+
+func (c *Client) ListLanguagesPagesWithContext(ctx context.Context, input *translate.ListLanguagesInput, cb func(*translate.ListLanguagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListLanguages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TranslateAPI.ListLanguagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListParallelDataWithContext(ctx context.Context, input *translate.ListParallelDataInput, opts ...request.Option) (*translate.ListParallelDataOutput, error) {
