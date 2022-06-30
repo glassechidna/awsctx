@@ -12,6 +12,7 @@ import (
 
 type Athena interface {
 	BatchGetNamedQueryWithContext(ctx context.Context, input *athena.BatchGetNamedQueryInput, opts ...request.Option) (*athena.BatchGetNamedQueryOutput, error)
+	BatchGetPreparedStatementWithContext(ctx context.Context, input *athena.BatchGetPreparedStatementInput, opts ...request.Option) (*athena.BatchGetPreparedStatementOutput, error)
 	BatchGetQueryExecutionWithContext(ctx context.Context, input *athena.BatchGetQueryExecutionInput, opts ...request.Option) (*athena.BatchGetQueryExecutionOutput, error)
 	CreateDataCatalogWithContext(ctx context.Context, input *athena.CreateDataCatalogInput, opts ...request.Option) (*athena.CreateDataCatalogOutput, error)
 	CreateNamedQueryWithContext(ctx context.Context, input *athena.CreateNamedQueryInput, opts ...request.Option) (*athena.CreateNamedQueryOutput, error)
@@ -91,6 +92,27 @@ func (c *Client) BatchGetNamedQueryWithContext(ctx context.Context, input *athen
 	})
 
 	return req.Output.(*athena.BatchGetNamedQueryOutput), req.Error
+}
+
+func (c *Client) BatchGetPreparedStatementWithContext(ctx context.Context, input *athena.BatchGetPreparedStatementInput, opts ...request.Option) (*athena.BatchGetPreparedStatementOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "BatchGetPreparedStatement",
+		Input:   input,
+		Output:  (*athena.BatchGetPreparedStatementOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.BatchGetPreparedStatementWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.BatchGetPreparedStatementOutput), req.Error
 }
 
 func (c *Client) BatchGetQueryExecutionWithContext(ctx context.Context, input *athena.BatchGetQueryExecutionInput, opts ...request.Option) (*athena.BatchGetQueryExecutionOutput, error) {

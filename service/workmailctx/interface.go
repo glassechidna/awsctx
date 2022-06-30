@@ -15,6 +15,7 @@ type WorkMail interface {
 	AssociateMemberToGroupWithContext(ctx context.Context, input *workmail.AssociateMemberToGroupInput, opts ...request.Option) (*workmail.AssociateMemberToGroupOutput, error)
 	CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error)
+	CreateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.CreateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.CreateAvailabilityConfigurationOutput, error)
 	CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error)
 	CreateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.CreateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.CreateMobileDeviceAccessRuleOutput, error)
 	CreateOrganizationWithContext(ctx context.Context, input *workmail.CreateOrganizationInput, opts ...request.Option) (*workmail.CreateOrganizationOutput, error)
@@ -22,6 +23,7 @@ type WorkMail interface {
 	CreateUserWithContext(ctx context.Context, input *workmail.CreateUserInput, opts ...request.Option) (*workmail.CreateUserOutput, error)
 	DeleteAccessControlRuleWithContext(ctx context.Context, input *workmail.DeleteAccessControlRuleInput, opts ...request.Option) (*workmail.DeleteAccessControlRuleOutput, error)
 	DeleteAliasWithContext(ctx context.Context, input *workmail.DeleteAliasInput, opts ...request.Option) (*workmail.DeleteAliasOutput, error)
+	DeleteAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.DeleteAvailabilityConfigurationInput, opts ...request.Option) (*workmail.DeleteAvailabilityConfigurationOutput, error)
 	DeleteEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DeleteEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DeleteEmailMonitoringConfigurationOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
@@ -51,6 +53,8 @@ type WorkMail interface {
 	ListAccessControlRulesWithContext(ctx context.Context, input *workmail.ListAccessControlRulesInput, opts ...request.Option) (*workmail.ListAccessControlRulesOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *workmail.ListAliasesInput, opts ...request.Option) (*workmail.ListAliasesOutput, error)
 	ListAliasesPagesWithContext(ctx context.Context, input *workmail.ListAliasesInput, cb func(*workmail.ListAliasesOutput, bool) bool, opts ...request.Option) error
+	ListAvailabilityConfigurationsWithContext(ctx context.Context, input *workmail.ListAvailabilityConfigurationsInput, opts ...request.Option) (*workmail.ListAvailabilityConfigurationsOutput, error)
+	ListAvailabilityConfigurationsPagesWithContext(ctx context.Context, input *workmail.ListAvailabilityConfigurationsInput, cb func(*workmail.ListAvailabilityConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListGroupMembersWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, opts ...request.Option) (*workmail.ListGroupMembersOutput, error)
 	ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error)
@@ -84,7 +88,9 @@ type WorkMail interface {
 	ResetPasswordWithContext(ctx context.Context, input *workmail.ResetPasswordInput, opts ...request.Option) (*workmail.ResetPasswordOutput, error)
 	StartMailboxExportJobWithContext(ctx context.Context, input *workmail.StartMailboxExportJobInput, opts ...request.Option) (*workmail.StartMailboxExportJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *workmail.TagResourceInput, opts ...request.Option) (*workmail.TagResourceOutput, error)
+	TestAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.TestAvailabilityConfigurationInput, opts ...request.Option) (*workmail.TestAvailabilityConfigurationOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
+	UpdateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.UpdateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.UpdateAvailabilityConfigurationOutput, error)
 	UpdateDefaultMailDomainWithContext(ctx context.Context, input *workmail.UpdateDefaultMailDomainInput, opts ...request.Option) (*workmail.UpdateDefaultMailDomainOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
 	UpdateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.UpdateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.UpdateMobileDeviceAccessRuleOutput, error)
@@ -189,6 +195,27 @@ func (c *Client) CreateAliasWithContext(ctx context.Context, input *workmail.Cre
 	})
 
 	return req.Output.(*workmail.CreateAliasOutput), req.Error
+}
+
+func (c *Client) CreateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.CreateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.CreateAvailabilityConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "CreateAvailabilityConfiguration",
+		Input:   input,
+		Output:  (*workmail.CreateAvailabilityConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.CreateAvailabilityConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.CreateAvailabilityConfigurationOutput), req.Error
 }
 
 func (c *Client) CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error) {
@@ -336,6 +363,27 @@ func (c *Client) DeleteAliasWithContext(ctx context.Context, input *workmail.Del
 	})
 
 	return req.Output.(*workmail.DeleteAliasOutput), req.Error
+}
+
+func (c *Client) DeleteAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.DeleteAvailabilityConfigurationInput, opts ...request.Option) (*workmail.DeleteAvailabilityConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteAvailabilityConfiguration",
+		Input:   input,
+		Output:  (*workmail.DeleteAvailabilityConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteAvailabilityConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteAvailabilityConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DeleteEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DeleteEmailMonitoringConfigurationOutput, error) {
@@ -941,6 +989,47 @@ func (c *Client) ListAliasesPagesWithContext(ctx context.Context, input *workmai
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.WorkMailAPI.ListAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAvailabilityConfigurationsWithContext(ctx context.Context, input *workmail.ListAvailabilityConfigurationsInput, opts ...request.Option) (*workmail.ListAvailabilityConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListAvailabilityConfigurations",
+		Input:   input,
+		Output:  (*workmail.ListAvailabilityConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListAvailabilityConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListAvailabilityConfigurationsOutput), req.Error
+}
+
+func (c *Client) ListAvailabilityConfigurationsPagesWithContext(ctx context.Context, input *workmail.ListAvailabilityConfigurationsInput, cb func(*workmail.ListAvailabilityConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListAvailabilityConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListAvailabilityConfigurationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1629,6 +1718,27 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *workmail.Tag
 	return req.Output.(*workmail.TagResourceOutput), req.Error
 }
 
+func (c *Client) TestAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.TestAvailabilityConfigurationInput, opts ...request.Option) (*workmail.TestAvailabilityConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "TestAvailabilityConfiguration",
+		Input:   input,
+		Output:  (*workmail.TestAvailabilityConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.TestAvailabilityConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.TestAvailabilityConfigurationOutput), req.Error
+}
+
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -1648,6 +1758,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *workmail.U
 	})
 
 	return req.Output.(*workmail.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.UpdateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.UpdateAvailabilityConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UpdateAvailabilityConfiguration",
+		Input:   input,
+		Output:  (*workmail.UpdateAvailabilityConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UpdateAvailabilityConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UpdateAvailabilityConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateDefaultMailDomainWithContext(ctx context.Context, input *workmail.UpdateDefaultMailDomainInput, opts ...request.Option) (*workmail.UpdateDefaultMailDomainOutput, error) {
