@@ -13,6 +13,7 @@ import (
 type QuickSight interface {
 	CancelIngestionWithContext(ctx context.Context, input *quicksight.CancelIngestionInput, opts ...request.Option) (*quicksight.CancelIngestionOutput, error)
 	CreateAccountCustomizationWithContext(ctx context.Context, input *quicksight.CreateAccountCustomizationInput, opts ...request.Option) (*quicksight.CreateAccountCustomizationOutput, error)
+	CreateAccountSubscriptionWithContext(ctx context.Context, input *quicksight.CreateAccountSubscriptionInput, opts ...request.Option) (*quicksight.CreateAccountSubscriptionOutput, error)
 	CreateAnalysisWithContext(ctx context.Context, input *quicksight.CreateAnalysisInput, opts ...request.Option) (*quicksight.CreateAnalysisOutput, error)
 	CreateDashboardWithContext(ctx context.Context, input *quicksight.CreateDashboardInput, opts ...request.Option) (*quicksight.CreateDashboardOutput, error)
 	CreateDataSetWithContext(ctx context.Context, input *quicksight.CreateDataSetInput, opts ...request.Option) (*quicksight.CreateDataSetOutput, error)
@@ -47,6 +48,7 @@ type QuickSight interface {
 	DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error)
 	DescribeAccountCustomizationWithContext(ctx context.Context, input *quicksight.DescribeAccountCustomizationInput, opts ...request.Option) (*quicksight.DescribeAccountCustomizationOutput, error)
 	DescribeAccountSettingsWithContext(ctx context.Context, input *quicksight.DescribeAccountSettingsInput, opts ...request.Option) (*quicksight.DescribeAccountSettingsOutput, error)
+	DescribeAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DescribeAccountSubscriptionInput, opts ...request.Option) (*quicksight.DescribeAccountSubscriptionOutput, error)
 	DescribeAnalysisWithContext(ctx context.Context, input *quicksight.DescribeAnalysisInput, opts ...request.Option) (*quicksight.DescribeAnalysisOutput, error)
 	DescribeAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.DescribeAnalysisPermissionsInput, opts ...request.Option) (*quicksight.DescribeAnalysisPermissionsOutput, error)
 	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
@@ -200,6 +202,27 @@ func (c *Client) CreateAccountCustomizationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*quicksight.CreateAccountCustomizationOutput), req.Error
+}
+
+func (c *Client) CreateAccountSubscriptionWithContext(ctx context.Context, input *quicksight.CreateAccountSubscriptionInput, opts ...request.Option) (*quicksight.CreateAccountSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateAccountSubscription",
+		Input:   input,
+		Output:  (*quicksight.CreateAccountSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateAccountSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateAccountSubscriptionOutput), req.Error
 }
 
 func (c *Client) CreateAnalysisWithContext(ctx context.Context, input *quicksight.CreateAnalysisInput, opts ...request.Option) (*quicksight.CreateAnalysisOutput, error) {
@@ -914,6 +937,27 @@ func (c *Client) DescribeAccountSettingsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*quicksight.DescribeAccountSettingsOutput), req.Error
+}
+
+func (c *Client) DescribeAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DescribeAccountSubscriptionInput, opts ...request.Option) (*quicksight.DescribeAccountSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAccountSubscription",
+		Input:   input,
+		Output:  (*quicksight.DescribeAccountSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAccountSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAccountSubscriptionOutput), req.Error
 }
 
 func (c *Client) DescribeAnalysisWithContext(ctx context.Context, input *quicksight.DescribeAnalysisInput, opts ...request.Option) (*quicksight.DescribeAnalysisOutput, error) {
