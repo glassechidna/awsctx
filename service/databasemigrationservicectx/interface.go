@@ -99,6 +99,7 @@ type DatabaseMigrationService interface {
 	StartReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentRunOutput, error)
 	StopReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StopReplicationTaskOutput, error)
 	TestConnectionWithContext(ctx context.Context, input *databasemigrationservice.TestConnectionInput, opts ...request.Option) (*databasemigrationservice.TestConnectionOutput, error)
+	UpdateSubscriptionsToEventBridgeWithContext(ctx context.Context, input *databasemigrationservice.UpdateSubscriptionsToEventBridgeInput, opts ...request.Option) (*databasemigrationservice.UpdateSubscriptionsToEventBridgeOutput, error)
 }
 
 type Client struct {
@@ -1938,4 +1939,25 @@ func (c *Client) TestConnectionWithContext(ctx context.Context, input *databasem
 	})
 
 	return req.Output.(*databasemigrationservice.TestConnectionOutput), req.Error
+}
+
+func (c *Client) UpdateSubscriptionsToEventBridgeWithContext(ctx context.Context, input *databasemigrationservice.UpdateSubscriptionsToEventBridgeInput, opts ...request.Option) (*databasemigrationservice.UpdateSubscriptionsToEventBridgeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "UpdateSubscriptionsToEventBridge",
+		Input:   input,
+		Output:  (*databasemigrationservice.UpdateSubscriptionsToEventBridgeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.UpdateSubscriptionsToEventBridgeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.UpdateSubscriptionsToEventBridgeOutput), req.Error
 }
