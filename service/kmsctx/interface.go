@@ -22,6 +22,7 @@ type KMS interface {
 	DeleteCustomKeyStoreWithContext(ctx context.Context, input *kms.DeleteCustomKeyStoreInput, opts ...request.Option) (*kms.DeleteCustomKeyStoreOutput, error)
 	DeleteImportedKeyMaterialWithContext(ctx context.Context, input *kms.DeleteImportedKeyMaterialInput, opts ...request.Option) (*kms.DeleteImportedKeyMaterialOutput, error)
 	DescribeCustomKeyStoresWithContext(ctx context.Context, input *kms.DescribeCustomKeyStoresInput, opts ...request.Option) (*kms.DescribeCustomKeyStoresOutput, error)
+	DescribeCustomKeyStoresPagesWithContext(ctx context.Context, input *kms.DescribeCustomKeyStoresInput, cb func(*kms.DescribeCustomKeyStoresOutput, bool) bool, opts ...request.Option) error
 	DescribeKeyWithContext(ctx context.Context, input *kms.DescribeKeyInput, opts ...request.Option) (*kms.DescribeKeyOutput, error)
 	DisableKeyWithContext(ctx context.Context, input *kms.DisableKeyInput, opts ...request.Option) (*kms.DisableKeyOutput, error)
 	DisableKeyRotationWithContext(ctx context.Context, input *kms.DisableKeyRotationInput, opts ...request.Option) (*kms.DisableKeyRotationOutput, error)
@@ -49,7 +50,9 @@ type KMS interface {
 	ListKeysWithContext(ctx context.Context, input *kms.ListKeysInput, opts ...request.Option) (*kms.ListKeysOutput, error)
 	ListKeysPagesWithContext(ctx context.Context, input *kms.ListKeysInput, cb func(*kms.ListKeysOutput, bool) bool, opts ...request.Option) error
 	ListResourceTagsWithContext(ctx context.Context, input *kms.ListResourceTagsInput, opts ...request.Option) (*kms.ListResourceTagsOutput, error)
+	ListResourceTagsPagesWithContext(ctx context.Context, input *kms.ListResourceTagsInput, cb func(*kms.ListResourceTagsOutput, bool) bool, opts ...request.Option) error
 	ListRetirableGrantsWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error)
+	ListRetirableGrantsPagesWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, cb func(*kms.ListGrantsResponse, bool) bool, opts ...request.Option) error
 	PutKeyPolicyWithContext(ctx context.Context, input *kms.PutKeyPolicyInput, opts ...request.Option) (*kms.PutKeyPolicyOutput, error)
 	ReEncryptWithContext(ctx context.Context, input *kms.ReEncryptInput, opts ...request.Option) (*kms.ReEncryptOutput, error)
 	ReplicateKeyWithContext(ctx context.Context, input *kms.ReplicateKeyInput, opts ...request.Option) (*kms.ReplicateKeyOutput, error)
@@ -311,6 +314,26 @@ func (c *Client) DescribeCustomKeyStoresWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*kms.DescribeCustomKeyStoresOutput), req.Error
+}
+
+func (c *Client) DescribeCustomKeyStoresPagesWithContext(ctx context.Context, input *kms.DescribeCustomKeyStoresInput, cb func(*kms.DescribeCustomKeyStoresOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "DescribeCustomKeyStores",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.DescribeCustomKeyStoresPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeKeyWithContext(ctx context.Context, input *kms.DescribeKeyInput, opts ...request.Option) (*kms.DescribeKeyOutput, error) {
@@ -876,6 +899,26 @@ func (c *Client) ListResourceTagsWithContext(ctx context.Context, input *kms.Lis
 	return req.Output.(*kms.ListResourceTagsOutput), req.Error
 }
 
+func (c *Client) ListResourceTagsPagesWithContext(ctx context.Context, input *kms.ListResourceTagsInput, cb func(*kms.ListResourceTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ListResourceTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.ListResourceTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRetirableGrantsWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, opts ...request.Option) (*kms.ListGrantsResponse, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kms",
@@ -895,6 +938,26 @@ func (c *Client) ListRetirableGrantsWithContext(ctx context.Context, input *kms.
 	})
 
 	return req.Output.(*kms.ListGrantsResponse), req.Error
+}
+
+func (c *Client) ListRetirableGrantsPagesWithContext(ctx context.Context, input *kms.ListRetirableGrantsInput, cb func(*kms.ListGrantsResponse, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kms",
+		Action:  "ListRetirableGrants",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KMSAPI.ListRetirableGrantsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutKeyPolicyWithContext(ctx context.Context, input *kms.PutKeyPolicyInput, opts ...request.Option) (*kms.PutKeyPolicyOutput, error) {
