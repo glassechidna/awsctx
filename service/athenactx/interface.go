@@ -29,6 +29,7 @@ type Athena interface {
 	GetQueryExecutionWithContext(ctx context.Context, input *athena.GetQueryExecutionInput, opts ...request.Option) (*athena.GetQueryExecutionOutput, error)
 	GetQueryResultsWithContext(ctx context.Context, input *athena.GetQueryResultsInput, opts ...request.Option) (*athena.GetQueryResultsOutput, error)
 	GetQueryResultsPagesWithContext(ctx context.Context, input *athena.GetQueryResultsInput, cb func(*athena.GetQueryResultsOutput, bool) bool, opts ...request.Option) error
+	GetQueryRuntimeStatisticsWithContext(ctx context.Context, input *athena.GetQueryRuntimeStatisticsInput, opts ...request.Option) (*athena.GetQueryRuntimeStatisticsOutput, error)
 	GetTableMetadataWithContext(ctx context.Context, input *athena.GetTableMetadataInput, opts ...request.Option) (*athena.GetTableMetadataOutput, error)
 	GetWorkGroupWithContext(ctx context.Context, input *athena.GetWorkGroupInput, opts ...request.Option) (*athena.GetWorkGroupOutput, error)
 	ListDataCatalogsWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, opts ...request.Option) (*athena.ListDataCatalogsOutput, error)
@@ -36,6 +37,7 @@ type Athena interface {
 	ListDatabasesWithContext(ctx context.Context, input *athena.ListDatabasesInput, opts ...request.Option) (*athena.ListDatabasesOutput, error)
 	ListDatabasesPagesWithContext(ctx context.Context, input *athena.ListDatabasesInput, cb func(*athena.ListDatabasesOutput, bool) bool, opts ...request.Option) error
 	ListEngineVersionsWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, opts ...request.Option) (*athena.ListEngineVersionsOutput, error)
+	ListEngineVersionsPagesWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, cb func(*athena.ListEngineVersionsOutput, bool) bool, opts ...request.Option) error
 	ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error)
 	ListNamedQueriesPagesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, cb func(*athena.ListNamedQueriesOutput, bool) bool, opts ...request.Option) error
 	ListPreparedStatementsWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, opts ...request.Option) (*athena.ListPreparedStatementsOutput, error)
@@ -450,6 +452,27 @@ func (c *Client) GetQueryResultsPagesWithContext(ctx context.Context, input *ath
 	return req.Error
 }
 
+func (c *Client) GetQueryRuntimeStatisticsWithContext(ctx context.Context, input *athena.GetQueryRuntimeStatisticsInput, opts ...request.Option) (*athena.GetQueryRuntimeStatisticsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetQueryRuntimeStatistics",
+		Input:   input,
+		Output:  (*athena.GetQueryRuntimeStatisticsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetQueryRuntimeStatisticsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetQueryRuntimeStatisticsOutput), req.Error
+}
+
 func (c *Client) GetTableMetadataWithContext(ctx context.Context, input *athena.GetTableMetadataInput, opts ...request.Option) (*athena.GetTableMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -593,6 +616,26 @@ func (c *Client) ListEngineVersionsWithContext(ctx context.Context, input *athen
 	})
 
 	return req.Output.(*athena.ListEngineVersionsOutput), req.Error
+}
+
+func (c *Client) ListEngineVersionsPagesWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, cb func(*athena.ListEngineVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListEngineVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListEngineVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error) {
