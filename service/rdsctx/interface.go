@@ -132,6 +132,7 @@ type RDS interface {
 	FailoverDBClusterWithContext(ctx context.Context, input *rds.FailoverDBClusterInput, opts ...request.Option) (*rds.FailoverDBClusterOutput, error)
 	FailoverGlobalClusterWithContext(ctx context.Context, input *rds.FailoverGlobalClusterInput, opts ...request.Option) (*rds.FailoverGlobalClusterOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *rds.ListTagsForResourceInput, opts ...request.Option) (*rds.ListTagsForResourceOutput, error)
+	ModifyActivityStreamWithContext(ctx context.Context, input *rds.ModifyActivityStreamInput, opts ...request.Option) (*rds.ModifyActivityStreamOutput, error)
 	ModifyCertificatesWithContext(ctx context.Context, input *rds.ModifyCertificatesInput, opts ...request.Option) (*rds.ModifyCertificatesOutput, error)
 	ModifyCurrentDBClusterCapacityWithContext(ctx context.Context, input *rds.ModifyCurrentDBClusterCapacityInput, opts ...request.Option) (*rds.ModifyCurrentDBClusterCapacityOutput, error)
 	ModifyCustomDBEngineVersionWithContext(ctx context.Context, input *rds.ModifyCustomDBEngineVersionInput, opts ...request.Option) (*rds.ModifyCustomDBEngineVersionOutput, error)
@@ -2702,6 +2703,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *rds.
 	})
 
 	return req.Output.(*rds.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ModifyActivityStreamWithContext(ctx context.Context, input *rds.ModifyActivityStreamInput, opts ...request.Option) (*rds.ModifyActivityStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ModifyActivityStream",
+		Input:   input,
+		Output:  (*rds.ModifyActivityStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ModifyActivityStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ModifyActivityStreamOutput), req.Error
 }
 
 func (c *Client) ModifyCertificatesWithContext(ctx context.Context, input *rds.ModifyCertificatesInput, opts ...request.Option) (*rds.ModifyCertificatesOutput, error) {
