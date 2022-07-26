@@ -29,6 +29,8 @@ type GuardDuty interface {
 	DeleteMembersWithContext(ctx context.Context, input *guardduty.DeleteMembersInput, opts ...request.Option) (*guardduty.DeleteMembersOutput, error)
 	DeletePublishingDestinationWithContext(ctx context.Context, input *guardduty.DeletePublishingDestinationInput, opts ...request.Option) (*guardduty.DeletePublishingDestinationOutput, error)
 	DeleteThreatIntelSetWithContext(ctx context.Context, input *guardduty.DeleteThreatIntelSetInput, opts ...request.Option) (*guardduty.DeleteThreatIntelSetOutput, error)
+	DescribeMalwareScansWithContext(ctx context.Context, input *guardduty.DescribeMalwareScansInput, opts ...request.Option) (*guardduty.DescribeMalwareScansOutput, error)
+	DescribeMalwareScansPagesWithContext(ctx context.Context, input *guardduty.DescribeMalwareScansInput, cb func(*guardduty.DescribeMalwareScansOutput, bool) bool, opts ...request.Option) error
 	DescribeOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, opts ...request.Option) (*guardduty.DescribeOrganizationConfigurationOutput, error)
 	DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error)
 	DisableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.DisableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.DisableOrganizationAdminAccountOutput, error)
@@ -43,6 +45,7 @@ type GuardDuty interface {
 	GetFindingsStatisticsWithContext(ctx context.Context, input *guardduty.GetFindingsStatisticsInput, opts ...request.Option) (*guardduty.GetFindingsStatisticsOutput, error)
 	GetIPSetWithContext(ctx context.Context, input *guardduty.GetIPSetInput, opts ...request.Option) (*guardduty.GetIPSetOutput, error)
 	GetInvitationsCountWithContext(ctx context.Context, input *guardduty.GetInvitationsCountInput, opts ...request.Option) (*guardduty.GetInvitationsCountOutput, error)
+	GetMalwareScanSettingsWithContext(ctx context.Context, input *guardduty.GetMalwareScanSettingsInput, opts ...request.Option) (*guardduty.GetMalwareScanSettingsOutput, error)
 	GetMasterAccountWithContext(ctx context.Context, input *guardduty.GetMasterAccountInput, opts ...request.Option) (*guardduty.GetMasterAccountOutput, error)
 	GetMemberDetectorsWithContext(ctx context.Context, input *guardduty.GetMemberDetectorsInput, opts ...request.Option) (*guardduty.GetMemberDetectorsOutput, error)
 	GetMembersWithContext(ctx context.Context, input *guardduty.GetMembersInput, opts ...request.Option) (*guardduty.GetMembersOutput, error)
@@ -79,6 +82,7 @@ type GuardDuty interface {
 	UpdateFilterWithContext(ctx context.Context, input *guardduty.UpdateFilterInput, opts ...request.Option) (*guardduty.UpdateFilterOutput, error)
 	UpdateFindingsFeedbackWithContext(ctx context.Context, input *guardduty.UpdateFindingsFeedbackInput, opts ...request.Option) (*guardduty.UpdateFindingsFeedbackOutput, error)
 	UpdateIPSetWithContext(ctx context.Context, input *guardduty.UpdateIPSetInput, opts ...request.Option) (*guardduty.UpdateIPSetOutput, error)
+	UpdateMalwareScanSettingsWithContext(ctx context.Context, input *guardduty.UpdateMalwareScanSettingsInput, opts ...request.Option) (*guardduty.UpdateMalwareScanSettingsOutput, error)
 	UpdateMemberDetectorsWithContext(ctx context.Context, input *guardduty.UpdateMemberDetectorsInput, opts ...request.Option) (*guardduty.UpdateMemberDetectorsOutput, error)
 	UpdateOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.UpdateOrganizationConfigurationInput, opts ...request.Option) (*guardduty.UpdateOrganizationConfigurationOutput, error)
 	UpdatePublishingDestinationWithContext(ctx context.Context, input *guardduty.UpdatePublishingDestinationInput, opts ...request.Option) (*guardduty.UpdatePublishingDestinationOutput, error)
@@ -478,6 +482,47 @@ func (c *Client) DeleteThreatIntelSetWithContext(ctx context.Context, input *gua
 	return req.Output.(*guardduty.DeleteThreatIntelSetOutput), req.Error
 }
 
+func (c *Client) DescribeMalwareScansWithContext(ctx context.Context, input *guardduty.DescribeMalwareScansInput, opts ...request.Option) (*guardduty.DescribeMalwareScansOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DescribeMalwareScans",
+		Input:   input,
+		Output:  (*guardduty.DescribeMalwareScansOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.DescribeMalwareScansWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.DescribeMalwareScansOutput), req.Error
+}
+
+func (c *Client) DescribeMalwareScansPagesWithContext(ctx context.Context, input *guardduty.DescribeMalwareScansInput, cb func(*guardduty.DescribeMalwareScansOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DescribeMalwareScans",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.DescribeMalwareScansPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, opts ...request.Option) (*guardduty.DescribeOrganizationConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -770,6 +815,27 @@ func (c *Client) GetInvitationsCountWithContext(ctx context.Context, input *guar
 	})
 
 	return req.Output.(*guardduty.GetInvitationsCountOutput), req.Error
+}
+
+func (c *Client) GetMalwareScanSettingsWithContext(ctx context.Context, input *guardduty.GetMalwareScanSettingsInput, opts ...request.Option) (*guardduty.GetMalwareScanSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetMalwareScanSettings",
+		Input:   input,
+		Output:  (*guardduty.GetMalwareScanSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.GetMalwareScanSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.GetMalwareScanSettingsOutput), req.Error
 }
 
 func (c *Client) GetMasterAccountWithContext(ctx context.Context, input *guardduty.GetMasterAccountInput, opts ...request.Option) (*guardduty.GetMasterAccountOutput, error) {
@@ -1516,6 +1582,27 @@ func (c *Client) UpdateIPSetWithContext(ctx context.Context, input *guardduty.Up
 	})
 
 	return req.Output.(*guardduty.UpdateIPSetOutput), req.Error
+}
+
+func (c *Client) UpdateMalwareScanSettingsWithContext(ctx context.Context, input *guardduty.UpdateMalwareScanSettingsInput, opts ...request.Option) (*guardduty.UpdateMalwareScanSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "UpdateMalwareScanSettings",
+		Input:   input,
+		Output:  (*guardduty.UpdateMalwareScanSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.UpdateMalwareScanSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.UpdateMalwareScanSettingsOutput), req.Error
 }
 
 func (c *Client) UpdateMemberDetectorsWithContext(ctx context.Context, input *guardduty.UpdateMemberDetectorsInput, opts ...request.Option) (*guardduty.UpdateMemberDetectorsOutput, error) {

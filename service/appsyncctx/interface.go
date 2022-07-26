@@ -29,6 +29,7 @@ type AppSync interface {
 	DeleteResolverWithContext(ctx context.Context, input *appsync.DeleteResolverInput, opts ...request.Option) (*appsync.DeleteResolverOutput, error)
 	DeleteTypeWithContext(ctx context.Context, input *appsync.DeleteTypeInput, opts ...request.Option) (*appsync.DeleteTypeOutput, error)
 	DisassociateApiWithContext(ctx context.Context, input *appsync.DisassociateApiInput, opts ...request.Option) (*appsync.DisassociateApiOutput, error)
+	EvaluateMappingTemplateWithContext(ctx context.Context, input *appsync.EvaluateMappingTemplateInput, opts ...request.Option) (*appsync.EvaluateMappingTemplateOutput, error)
 	FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error)
 	GetApiAssociationWithContext(ctx context.Context, input *appsync.GetApiAssociationInput, opts ...request.Option) (*appsync.GetApiAssociationOutput, error)
 	GetApiCacheWithContext(ctx context.Context, input *appsync.GetApiCacheInput, opts ...request.Option) (*appsync.GetApiCacheOutput, error)
@@ -453,6 +454,27 @@ func (c *Client) DisassociateApiWithContext(ctx context.Context, input *appsync.
 	})
 
 	return req.Output.(*appsync.DisassociateApiOutput), req.Error
+}
+
+func (c *Client) EvaluateMappingTemplateWithContext(ctx context.Context, input *appsync.EvaluateMappingTemplateInput, opts ...request.Option) (*appsync.EvaluateMappingTemplateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "EvaluateMappingTemplate",
+		Input:   input,
+		Output:  (*appsync.EvaluateMappingTemplateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.EvaluateMappingTemplateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.EvaluateMappingTemplateOutput), req.Error
 }
 
 func (c *Client) FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error) {
