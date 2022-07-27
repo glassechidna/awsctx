@@ -21,6 +21,7 @@ type WorkSpaces interface {
 	CreateTagsWithContext(ctx context.Context, input *workspaces.CreateTagsInput, opts ...request.Option) (*workspaces.CreateTagsOutput, error)
 	CreateUpdatedWorkspaceImageWithContext(ctx context.Context, input *workspaces.CreateUpdatedWorkspaceImageInput, opts ...request.Option) (*workspaces.CreateUpdatedWorkspaceImageOutput, error)
 	CreateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.CreateWorkspaceBundleInput, opts ...request.Option) (*workspaces.CreateWorkspaceBundleOutput, error)
+	CreateWorkspaceImageWithContext(ctx context.Context, input *workspaces.CreateWorkspaceImageInput, opts ...request.Option) (*workspaces.CreateWorkspaceImageOutput, error)
 	CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error)
 	DeleteClientBrandingWithContext(ctx context.Context, input *workspaces.DeleteClientBrandingInput, opts ...request.Option) (*workspaces.DeleteClientBrandingOutput, error)
 	DeleteConnectClientAddInWithContext(ctx context.Context, input *workspaces.DeleteConnectClientAddInInput, opts ...request.Option) (*workspaces.DeleteConnectClientAddInOutput, error)
@@ -300,6 +301,27 @@ func (c *Client) CreateWorkspaceBundleWithContext(ctx context.Context, input *wo
 	})
 
 	return req.Output.(*workspaces.CreateWorkspaceBundleOutput), req.Error
+}
+
+func (c *Client) CreateWorkspaceImageWithContext(ctx context.Context, input *workspaces.CreateWorkspaceImageInput, opts ...request.Option) (*workspaces.CreateWorkspaceImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "CreateWorkspaceImage",
+		Input:   input,
+		Output:  (*workspaces.CreateWorkspaceImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.CreateWorkspaceImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.CreateWorkspaceImageOutput), req.Error
 }
 
 func (c *Client) CreateWorkspacesWithContext(ctx context.Context, input *workspaces.CreateWorkspacesInput, opts ...request.Option) (*workspaces.CreateWorkspacesOutput, error) {

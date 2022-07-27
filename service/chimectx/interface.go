@@ -227,6 +227,7 @@ type Chime interface {
 	UpdateUserSettingsWithContext(ctx context.Context, input *chime.UpdateUserSettingsInput, opts ...request.Option) (*chime.UpdateUserSettingsOutput, error)
 	UpdateVoiceConnectorWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorInput, opts ...request.Option) (*chime.UpdateVoiceConnectorOutput, error)
 	UpdateVoiceConnectorGroupWithContext(ctx context.Context, input *chime.UpdateVoiceConnectorGroupInput, opts ...request.Option) (*chime.UpdateVoiceConnectorGroupOutput, error)
+	ValidateE911AddressWithContext(ctx context.Context, input *chime.ValidateE911AddressInput, opts ...request.Option) (*chime.ValidateE911AddressOutput, error)
 }
 
 type Client struct {
@@ -4752,4 +4753,25 @@ func (c *Client) UpdateVoiceConnectorGroupWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*chime.UpdateVoiceConnectorGroupOutput), req.Error
+}
+
+func (c *Client) ValidateE911AddressWithContext(ctx context.Context, input *chime.ValidateE911AddressInput, opts ...request.Option) (*chime.ValidateE911AddressOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "chime",
+		Action:  "ValidateE911Address",
+		Input:   input,
+		Output:  (*chime.ValidateE911AddressOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ChimeAPI.ValidateE911AddressWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*chime.ValidateE911AddressOutput), req.Error
 }

@@ -106,6 +106,8 @@ type ConfigService interface {
 	GetStoredQueryWithContext(ctx context.Context, input *configservice.GetStoredQueryInput, opts ...request.Option) (*configservice.GetStoredQueryOutput, error)
 	ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error)
 	ListAggregateDiscoveredResourcesPagesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, cb func(*configservice.ListAggregateDiscoveredResourcesOutput, bool) bool, opts ...request.Option) error
+	ListConformancePackComplianceScoresWithContext(ctx context.Context, input *configservice.ListConformancePackComplianceScoresInput, opts ...request.Option) (*configservice.ListConformancePackComplianceScoresOutput, error)
+	ListConformancePackComplianceScoresPagesWithContext(ctx context.Context, input *configservice.ListConformancePackComplianceScoresInput, cb func(*configservice.ListConformancePackComplianceScoresOutput, bool) bool, opts ...request.Option) error
 	ListDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListDiscoveredResourcesOutput, error)
 	ListDiscoveredResourcesPagesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, cb func(*configservice.ListDiscoveredResourcesOutput, bool) bool, opts ...request.Option) error
 	ListStoredQueriesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, opts ...request.Option) (*configservice.ListStoredQueriesOutput, error)
@@ -2111,6 +2113,47 @@ func (c *Client) ListAggregateDiscoveredResourcesPagesWithContext(ctx context.Co
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConfigServiceAPI.ListAggregateDiscoveredResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListConformancePackComplianceScoresWithContext(ctx context.Context, input *configservice.ListConformancePackComplianceScoresInput, opts ...request.Option) (*configservice.ListConformancePackComplianceScoresOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "ListConformancePackComplianceScores",
+		Input:   input,
+		Output:  (*configservice.ListConformancePackComplianceScoresOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.ListConformancePackComplianceScoresWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.ListConformancePackComplianceScoresOutput), req.Error
+}
+
+func (c *Client) ListConformancePackComplianceScoresPagesWithContext(ctx context.Context, input *configservice.ListConformancePackComplianceScoresInput, cb func(*configservice.ListConformancePackComplianceScoresOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "ListConformancePackComplianceScores",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.ListConformancePackComplianceScoresPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
