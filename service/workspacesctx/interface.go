@@ -58,6 +58,7 @@ type WorkSpaces interface {
 	MigrateWorkspaceWithContext(ctx context.Context, input *workspaces.MigrateWorkspaceInput, opts ...request.Option) (*workspaces.MigrateWorkspaceOutput, error)
 	ModifyAccountWithContext(ctx context.Context, input *workspaces.ModifyAccountInput, opts ...request.Option) (*workspaces.ModifyAccountOutput, error)
 	ModifyClientPropertiesWithContext(ctx context.Context, input *workspaces.ModifyClientPropertiesInput, opts ...request.Option) (*workspaces.ModifyClientPropertiesOutput, error)
+	ModifySamlPropertiesWithContext(ctx context.Context, input *workspaces.ModifySamlPropertiesInput, opts ...request.Option) (*workspaces.ModifySamlPropertiesOutput, error)
 	ModifySelfservicePermissionsWithContext(ctx context.Context, input *workspaces.ModifySelfservicePermissionsInput, opts ...request.Option) (*workspaces.ModifySelfservicePermissionsOutput, error)
 	ModifyWorkspaceAccessPropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceAccessPropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspaceAccessPropertiesOutput, error)
 	ModifyWorkspaceCreationPropertiesWithContext(ctx context.Context, input *workspaces.ModifyWorkspaceCreationPropertiesInput, opts ...request.Option) (*workspaces.ModifyWorkspaceCreationPropertiesOutput, error)
@@ -1075,6 +1076,27 @@ func (c *Client) ModifyClientPropertiesWithContext(ctx context.Context, input *w
 	})
 
 	return req.Output.(*workspaces.ModifyClientPropertiesOutput), req.Error
+}
+
+func (c *Client) ModifySamlPropertiesWithContext(ctx context.Context, input *workspaces.ModifySamlPropertiesInput, opts ...request.Option) (*workspaces.ModifySamlPropertiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "ModifySamlProperties",
+		Input:   input,
+		Output:  (*workspaces.ModifySamlPropertiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.ModifySamlPropertiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.ModifySamlPropertiesOutput), req.Error
 }
 
 func (c *Client) ModifySelfservicePermissionsWithContext(ctx context.Context, input *workspaces.ModifySelfservicePermissionsInput, opts ...request.Option) (*workspaces.ModifySelfservicePermissionsOutput, error) {
