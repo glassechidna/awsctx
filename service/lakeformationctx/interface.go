@@ -12,6 +12,7 @@ import (
 
 type LakeFormation interface {
 	AddLFTagsToResourceWithContext(ctx context.Context, input *lakeformation.AddLFTagsToResourceInput, opts ...request.Option) (*lakeformation.AddLFTagsToResourceOutput, error)
+	AssumeDecoratedRoleWithSAMLWithContext(ctx context.Context, input *lakeformation.AssumeDecoratedRoleWithSAMLInput, opts ...request.Option) (*lakeformation.AssumeDecoratedRoleWithSAMLOutput, error)
 	BatchGrantPermissionsWithContext(ctx context.Context, input *lakeformation.BatchGrantPermissionsInput, opts ...request.Option) (*lakeformation.BatchGrantPermissionsOutput, error)
 	BatchRevokePermissionsWithContext(ctx context.Context, input *lakeformation.BatchRevokePermissionsInput, opts ...request.Option) (*lakeformation.BatchRevokePermissionsOutput, error)
 	CancelTransactionWithContext(ctx context.Context, input *lakeformation.CancelTransactionInput, opts ...request.Option) (*lakeformation.CancelTransactionOutput, error)
@@ -102,6 +103,27 @@ func (c *Client) AddLFTagsToResourceWithContext(ctx context.Context, input *lake
 	})
 
 	return req.Output.(*lakeformation.AddLFTagsToResourceOutput), req.Error
+}
+
+func (c *Client) AssumeDecoratedRoleWithSAMLWithContext(ctx context.Context, input *lakeformation.AssumeDecoratedRoleWithSAMLInput, opts ...request.Option) (*lakeformation.AssumeDecoratedRoleWithSAMLOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "AssumeDecoratedRoleWithSAML",
+		Input:   input,
+		Output:  (*lakeformation.AssumeDecoratedRoleWithSAMLOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.AssumeDecoratedRoleWithSAMLWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.AssumeDecoratedRoleWithSAMLOutput), req.Error
 }
 
 func (c *Client) BatchGrantPermissionsWithContext(ctx context.Context, input *lakeformation.BatchGrantPermissionsInput, opts ...request.Option) (*lakeformation.BatchGrantPermissionsOutput, error) {
