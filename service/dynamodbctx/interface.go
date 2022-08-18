@@ -28,6 +28,7 @@ type DynamoDB interface {
 	DescribeExportWithContext(ctx context.Context, input *dynamodb.DescribeExportInput, opts ...request.Option) (*dynamodb.DescribeExportOutput, error)
 	DescribeGlobalTableWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableOutput, error)
 	DescribeGlobalTableSettingsWithContext(ctx context.Context, input *dynamodb.DescribeGlobalTableSettingsInput, opts ...request.Option) (*dynamodb.DescribeGlobalTableSettingsOutput, error)
+	DescribeImportWithContext(ctx context.Context, input *dynamodb.DescribeImportInput, opts ...request.Option) (*dynamodb.DescribeImportOutput, error)
 	DescribeKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.DescribeKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.DescribeKinesisStreamingDestinationOutput, error)
 	DescribeLimitsWithContext(ctx context.Context, input *dynamodb.DescribeLimitsInput, opts ...request.Option) (*dynamodb.DescribeLimitsOutput, error)
 	DescribeTableWithContext(ctx context.Context, input *dynamodb.DescribeTableInput, opts ...request.Option) (*dynamodb.DescribeTableOutput, error)
@@ -39,12 +40,15 @@ type DynamoDB interface {
 	ExecuteTransactionWithContext(ctx context.Context, input *dynamodb.ExecuteTransactionInput, opts ...request.Option) (*dynamodb.ExecuteTransactionOutput, error)
 	ExportTableToPointInTimeWithContext(ctx context.Context, input *dynamodb.ExportTableToPointInTimeInput, opts ...request.Option) (*dynamodb.ExportTableToPointInTimeOutput, error)
 	GetItemWithContext(ctx context.Context, input *dynamodb.GetItemInput, opts ...request.Option) (*dynamodb.GetItemOutput, error)
+	ImportTableWithContext(ctx context.Context, input *dynamodb.ImportTableInput, opts ...request.Option) (*dynamodb.ImportTableOutput, error)
 	ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error)
 	ListContributorInsightsWithContext(ctx context.Context, input *dynamodb.ListContributorInsightsInput, opts ...request.Option) (*dynamodb.ListContributorInsightsOutput, error)
 	ListContributorInsightsPagesWithContext(ctx context.Context, input *dynamodb.ListContributorInsightsInput, cb func(*dynamodb.ListContributorInsightsOutput, bool) bool, opts ...request.Option) error
 	ListExportsWithContext(ctx context.Context, input *dynamodb.ListExportsInput, opts ...request.Option) (*dynamodb.ListExportsOutput, error)
 	ListExportsPagesWithContext(ctx context.Context, input *dynamodb.ListExportsInput, cb func(*dynamodb.ListExportsOutput, bool) bool, opts ...request.Option) error
 	ListGlobalTablesWithContext(ctx context.Context, input *dynamodb.ListGlobalTablesInput, opts ...request.Option) (*dynamodb.ListGlobalTablesOutput, error)
+	ListImportsWithContext(ctx context.Context, input *dynamodb.ListImportsInput, opts ...request.Option) (*dynamodb.ListImportsOutput, error)
+	ListImportsPagesWithContext(ctx context.Context, input *dynamodb.ListImportsInput, cb func(*dynamodb.ListImportsOutput, bool) bool, opts ...request.Option) error
 	ListTablesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, opts ...request.Option) (*dynamodb.ListTablesOutput, error)
 	ListTablesPagesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, cb func(*dynamodb.ListTablesOutput, bool) bool, opts ...request.Option) error
 	ListTagsOfResourceWithContext(ctx context.Context, input *dynamodb.ListTagsOfResourceInput, opts ...request.Option) (*dynamodb.ListTagsOfResourceOutput, error)
@@ -440,6 +444,27 @@ func (c *Client) DescribeGlobalTableSettingsWithContext(ctx context.Context, inp
 	return req.Output.(*dynamodb.DescribeGlobalTableSettingsOutput), req.Error
 }
 
+func (c *Client) DescribeImportWithContext(ctx context.Context, input *dynamodb.DescribeImportInput, opts ...request.Option) (*dynamodb.DescribeImportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "DescribeImport",
+		Input:   input,
+		Output:  (*dynamodb.DescribeImportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.DescribeImportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.DescribeImportOutput), req.Error
+}
+
 func (c *Client) DescribeKinesisStreamingDestinationWithContext(ctx context.Context, input *dynamodb.DescribeKinesisStreamingDestinationInput, opts ...request.Option) (*dynamodb.DescribeKinesisStreamingDestinationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
@@ -671,6 +696,27 @@ func (c *Client) GetItemWithContext(ctx context.Context, input *dynamodb.GetItem
 	return req.Output.(*dynamodb.GetItemOutput), req.Error
 }
 
+func (c *Client) ImportTableWithContext(ctx context.Context, input *dynamodb.ImportTableInput, opts ...request.Option) (*dynamodb.ImportTableOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ImportTable",
+		Input:   input,
+		Output:  (*dynamodb.ImportTableOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.ImportTableWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.ImportTableOutput), req.Error
+}
+
 func (c *Client) ListBackupsWithContext(ctx context.Context, input *dynamodb.ListBackupsInput, opts ...request.Option) (*dynamodb.ListBackupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "dynamodb",
@@ -793,6 +839,47 @@ func (c *Client) ListGlobalTablesWithContext(ctx context.Context, input *dynamod
 	})
 
 	return req.Output.(*dynamodb.ListGlobalTablesOutput), req.Error
+}
+
+func (c *Client) ListImportsWithContext(ctx context.Context, input *dynamodb.ListImportsInput, opts ...request.Option) (*dynamodb.ListImportsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ListImports",
+		Input:   input,
+		Output:  (*dynamodb.ListImportsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DynamoDBAPI.ListImportsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*dynamodb.ListImportsOutput), req.Error
+}
+
+func (c *Client) ListImportsPagesWithContext(ctx context.Context, input *dynamodb.ListImportsInput, cb func(*dynamodb.ListImportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "dynamodb",
+		Action:  "ListImports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DynamoDBAPI.ListImportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTablesWithContext(ctx context.Context, input *dynamodb.ListTablesInput, opts ...request.Option) (*dynamodb.ListTablesOutput, error) {

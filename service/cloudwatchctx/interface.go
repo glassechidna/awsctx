@@ -22,6 +22,7 @@ type CloudWatch interface {
 	DescribeAlarmsPagesWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsInput, cb func(*cloudwatch.DescribeAlarmsOutput, bool) bool, opts ...request.Option) error
 	DescribeAlarmsForMetricWithContext(ctx context.Context, input *cloudwatch.DescribeAlarmsForMetricInput, opts ...request.Option) (*cloudwatch.DescribeAlarmsForMetricOutput, error)
 	DescribeAnomalyDetectorsWithContext(ctx context.Context, input *cloudwatch.DescribeAnomalyDetectorsInput, opts ...request.Option) (*cloudwatch.DescribeAnomalyDetectorsOutput, error)
+	DescribeAnomalyDetectorsPagesWithContext(ctx context.Context, input *cloudwatch.DescribeAnomalyDetectorsInput, cb func(*cloudwatch.DescribeAnomalyDetectorsOutput, bool) bool, opts ...request.Option) error
 	DescribeInsightRulesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, opts ...request.Option) (*cloudwatch.DescribeInsightRulesOutput, error)
 	DescribeInsightRulesPagesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, cb func(*cloudwatch.DescribeInsightRulesOutput, bool) bool, opts ...request.Option) error
 	DisableAlarmActionsWithContext(ctx context.Context, input *cloudwatch.DisableAlarmActionsInput, opts ...request.Option) (*cloudwatch.DisableAlarmActionsOutput, error)
@@ -37,6 +38,8 @@ type CloudWatch interface {
 	GetMetricWidgetImageWithContext(ctx context.Context, input *cloudwatch.GetMetricWidgetImageInput, opts ...request.Option) (*cloudwatch.GetMetricWidgetImageOutput, error)
 	ListDashboardsWithContext(ctx context.Context, input *cloudwatch.ListDashboardsInput, opts ...request.Option) (*cloudwatch.ListDashboardsOutput, error)
 	ListDashboardsPagesWithContext(ctx context.Context, input *cloudwatch.ListDashboardsInput, cb func(*cloudwatch.ListDashboardsOutput, bool) bool, opts ...request.Option) error
+	ListManagedInsightRulesWithContext(ctx context.Context, input *cloudwatch.ListManagedInsightRulesInput, opts ...request.Option) (*cloudwatch.ListManagedInsightRulesOutput, error)
+	ListManagedInsightRulesPagesWithContext(ctx context.Context, input *cloudwatch.ListManagedInsightRulesInput, cb func(*cloudwatch.ListManagedInsightRulesOutput, bool) bool, opts ...request.Option) error
 	ListMetricStreamsWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, opts ...request.Option) (*cloudwatch.ListMetricStreamsOutput, error)
 	ListMetricStreamsPagesWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, cb func(*cloudwatch.ListMetricStreamsOutput, bool) bool, opts ...request.Option) error
 	ListMetricsWithContext(ctx context.Context, input *cloudwatch.ListMetricsInput, opts ...request.Option) (*cloudwatch.ListMetricsOutput, error)
@@ -46,6 +49,7 @@ type CloudWatch interface {
 	PutCompositeAlarmWithContext(ctx context.Context, input *cloudwatch.PutCompositeAlarmInput, opts ...request.Option) (*cloudwatch.PutCompositeAlarmOutput, error)
 	PutDashboardWithContext(ctx context.Context, input *cloudwatch.PutDashboardInput, opts ...request.Option) (*cloudwatch.PutDashboardOutput, error)
 	PutInsightRuleWithContext(ctx context.Context, input *cloudwatch.PutInsightRuleInput, opts ...request.Option) (*cloudwatch.PutInsightRuleOutput, error)
+	PutManagedInsightRulesWithContext(ctx context.Context, input *cloudwatch.PutManagedInsightRulesInput, opts ...request.Option) (*cloudwatch.PutManagedInsightRulesOutput, error)
 	PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error)
 	PutMetricDataWithContext(ctx context.Context, input *cloudwatch.PutMetricDataInput, opts ...request.Option) (*cloudwatch.PutMetricDataOutput, error)
 	PutMetricStreamWithContext(ctx context.Context, input *cloudwatch.PutMetricStreamInput, opts ...request.Option) (*cloudwatch.PutMetricStreamOutput, error)
@@ -298,6 +302,26 @@ func (c *Client) DescribeAnomalyDetectorsWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*cloudwatch.DescribeAnomalyDetectorsOutput), req.Error
+}
+
+func (c *Client) DescribeAnomalyDetectorsPagesWithContext(ctx context.Context, input *cloudwatch.DescribeAnomalyDetectorsInput, cb func(*cloudwatch.DescribeAnomalyDetectorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "DescribeAnomalyDetectors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchAPI.DescribeAnomalyDetectorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInsightRulesWithContext(ctx context.Context, input *cloudwatch.DescribeInsightRulesInput, opts ...request.Option) (*cloudwatch.DescribeInsightRulesOutput, error) {
@@ -612,6 +636,47 @@ func (c *Client) ListDashboardsPagesWithContext(ctx context.Context, input *clou
 	return req.Error
 }
 
+func (c *Client) ListManagedInsightRulesWithContext(ctx context.Context, input *cloudwatch.ListManagedInsightRulesInput, opts ...request.Option) (*cloudwatch.ListManagedInsightRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "ListManagedInsightRules",
+		Input:   input,
+		Output:  (*cloudwatch.ListManagedInsightRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.ListManagedInsightRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.ListManagedInsightRulesOutput), req.Error
+}
+
+func (c *Client) ListManagedInsightRulesPagesWithContext(ctx context.Context, input *cloudwatch.ListManagedInsightRulesInput, cb func(*cloudwatch.ListManagedInsightRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "ListManagedInsightRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CloudWatchAPI.ListManagedInsightRulesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMetricStreamsWithContext(ctx context.Context, input *cloudwatch.ListMetricStreamsInput, opts ...request.Option) (*cloudwatch.ListMetricStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatch",
@@ -797,6 +862,27 @@ func (c *Client) PutInsightRuleWithContext(ctx context.Context, input *cloudwatc
 	})
 
 	return req.Output.(*cloudwatch.PutInsightRuleOutput), req.Error
+}
+
+func (c *Client) PutManagedInsightRulesWithContext(ctx context.Context, input *cloudwatch.PutManagedInsightRulesInput, opts ...request.Option) (*cloudwatch.PutManagedInsightRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatch",
+		Action:  "PutManagedInsightRules",
+		Input:   input,
+		Output:  (*cloudwatch.PutManagedInsightRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchAPI.PutManagedInsightRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatch.PutManagedInsightRulesOutput), req.Error
 }
 
 func (c *Client) PutMetricAlarmWithContext(ctx context.Context, input *cloudwatch.PutMetricAlarmInput, opts ...request.Option) (*cloudwatch.PutMetricAlarmOutput, error) {
