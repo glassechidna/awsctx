@@ -148,6 +148,8 @@ type Connect interface {
 	ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error)
 	SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*connect.SearchAvailablePhoneNumbersOutput, error)
 	SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, cb func(*connect.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error
+	SearchSecurityProfilesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, opts ...request.Option) (*connect.SearchSecurityProfilesOutput, error)
+	SearchSecurityProfilesPagesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, cb func(*connect.SearchSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	SearchUsersWithContext(ctx context.Context, input *connect.SearchUsersInput, opts ...request.Option) (*connect.SearchUsersOutput, error)
 	SearchUsersPagesWithContext(ctx context.Context, input *connect.SearchUsersInput, cb func(*connect.SearchUsersOutput, bool) bool, opts ...request.Option) error
 	SearchVocabulariesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, opts ...request.Option) (*connect.SearchVocabulariesOutput, error)
@@ -3053,6 +3055,47 @@ func (c *Client) SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.SearchAvailablePhoneNumbersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) SearchSecurityProfilesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, opts ...request.Option) (*connect.SearchSecurityProfilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchSecurityProfiles",
+		Input:   input,
+		Output:  (*connect.SearchSecurityProfilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SearchSecurityProfilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SearchSecurityProfilesOutput), req.Error
+}
+
+func (c *Client) SearchSecurityProfilesPagesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, cb func(*connect.SearchSecurityProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchSecurityProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.SearchSecurityProfilesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
