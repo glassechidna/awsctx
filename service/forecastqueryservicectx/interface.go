@@ -12,6 +12,7 @@ import (
 
 type ForecastQueryService interface {
 	QueryForecastWithContext(ctx context.Context, input *forecastqueryservice.QueryForecastInput, opts ...request.Option) (*forecastqueryservice.QueryForecastOutput, error)
+	QueryWhatIfForecastWithContext(ctx context.Context, input *forecastqueryservice.QueryWhatIfForecastInput, opts ...request.Option) (*forecastqueryservice.QueryWhatIfForecastOutput, error)
 }
 
 type Client struct {
@@ -48,4 +49,25 @@ func (c *Client) QueryForecastWithContext(ctx context.Context, input *forecastqu
 	})
 
 	return req.Output.(*forecastqueryservice.QueryForecastOutput), req.Error
+}
+
+func (c *Client) QueryWhatIfForecastWithContext(ctx context.Context, input *forecastqueryservice.QueryWhatIfForecastInput, opts ...request.Option) (*forecastqueryservice.QueryWhatIfForecastOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastqueryservice",
+		Action:  "QueryWhatIfForecast",
+		Input:   input,
+		Output:  (*forecastqueryservice.QueryWhatIfForecastOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastQueryServiceAPI.QueryWhatIfForecastWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastqueryservice.QueryWhatIfForecastOutput), req.Error
 }

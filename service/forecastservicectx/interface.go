@@ -22,6 +22,9 @@ type ForecastService interface {
 	CreateMonitorWithContext(ctx context.Context, input *forecastservice.CreateMonitorInput, opts ...request.Option) (*forecastservice.CreateMonitorOutput, error)
 	CreatePredictorWithContext(ctx context.Context, input *forecastservice.CreatePredictorInput, opts ...request.Option) (*forecastservice.CreatePredictorOutput, error)
 	CreatePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.CreatePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.CreatePredictorBacktestExportJobOutput, error)
+	CreateWhatIfAnalysisWithContext(ctx context.Context, input *forecastservice.CreateWhatIfAnalysisInput, opts ...request.Option) (*forecastservice.CreateWhatIfAnalysisOutput, error)
+	CreateWhatIfForecastWithContext(ctx context.Context, input *forecastservice.CreateWhatIfForecastInput, opts ...request.Option) (*forecastservice.CreateWhatIfForecastOutput, error)
+	CreateWhatIfForecastExportWithContext(ctx context.Context, input *forecastservice.CreateWhatIfForecastExportInput, opts ...request.Option) (*forecastservice.CreateWhatIfForecastExportOutput, error)
 	DeleteDatasetWithContext(ctx context.Context, input *forecastservice.DeleteDatasetInput, opts ...request.Option) (*forecastservice.DeleteDatasetOutput, error)
 	DeleteDatasetGroupWithContext(ctx context.Context, input *forecastservice.DeleteDatasetGroupInput, opts ...request.Option) (*forecastservice.DeleteDatasetGroupOutput, error)
 	DeleteDatasetImportJobWithContext(ctx context.Context, input *forecastservice.DeleteDatasetImportJobInput, opts ...request.Option) (*forecastservice.DeleteDatasetImportJobOutput, error)
@@ -33,6 +36,9 @@ type ForecastService interface {
 	DeletePredictorWithContext(ctx context.Context, input *forecastservice.DeletePredictorInput, opts ...request.Option) (*forecastservice.DeletePredictorOutput, error)
 	DeletePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DeletePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DeletePredictorBacktestExportJobOutput, error)
 	DeleteResourceTreeWithContext(ctx context.Context, input *forecastservice.DeleteResourceTreeInput, opts ...request.Option) (*forecastservice.DeleteResourceTreeOutput, error)
+	DeleteWhatIfAnalysisWithContext(ctx context.Context, input *forecastservice.DeleteWhatIfAnalysisInput, opts ...request.Option) (*forecastservice.DeleteWhatIfAnalysisOutput, error)
+	DeleteWhatIfForecastWithContext(ctx context.Context, input *forecastservice.DeleteWhatIfForecastInput, opts ...request.Option) (*forecastservice.DeleteWhatIfForecastOutput, error)
+	DeleteWhatIfForecastExportWithContext(ctx context.Context, input *forecastservice.DeleteWhatIfForecastExportInput, opts ...request.Option) (*forecastservice.DeleteWhatIfForecastExportOutput, error)
 	DescribeAutoPredictorWithContext(ctx context.Context, input *forecastservice.DescribeAutoPredictorInput, opts ...request.Option) (*forecastservice.DescribeAutoPredictorOutput, error)
 	DescribeDatasetWithContext(ctx context.Context, input *forecastservice.DescribeDatasetInput, opts ...request.Option) (*forecastservice.DescribeDatasetOutput, error)
 	DescribeDatasetGroupWithContext(ctx context.Context, input *forecastservice.DescribeDatasetGroupInput, opts ...request.Option) (*forecastservice.DescribeDatasetGroupOutput, error)
@@ -44,6 +50,9 @@ type ForecastService interface {
 	DescribeMonitorWithContext(ctx context.Context, input *forecastservice.DescribeMonitorInput, opts ...request.Option) (*forecastservice.DescribeMonitorOutput, error)
 	DescribePredictorWithContext(ctx context.Context, input *forecastservice.DescribePredictorInput, opts ...request.Option) (*forecastservice.DescribePredictorOutput, error)
 	DescribePredictorBacktestExportJobWithContext(ctx context.Context, input *forecastservice.DescribePredictorBacktestExportJobInput, opts ...request.Option) (*forecastservice.DescribePredictorBacktestExportJobOutput, error)
+	DescribeWhatIfAnalysisWithContext(ctx context.Context, input *forecastservice.DescribeWhatIfAnalysisInput, opts ...request.Option) (*forecastservice.DescribeWhatIfAnalysisOutput, error)
+	DescribeWhatIfForecastWithContext(ctx context.Context, input *forecastservice.DescribeWhatIfForecastInput, opts ...request.Option) (*forecastservice.DescribeWhatIfForecastOutput, error)
+	DescribeWhatIfForecastExportWithContext(ctx context.Context, input *forecastservice.DescribeWhatIfForecastExportInput, opts ...request.Option) (*forecastservice.DescribeWhatIfForecastExportOutput, error)
 	GetAccuracyMetricsWithContext(ctx context.Context, input *forecastservice.GetAccuracyMetricsInput, opts ...request.Option) (*forecastservice.GetAccuracyMetricsOutput, error)
 	ListDatasetGroupsWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, opts ...request.Option) (*forecastservice.ListDatasetGroupsOutput, error)
 	ListDatasetGroupsPagesWithContext(ctx context.Context, input *forecastservice.ListDatasetGroupsInput, cb func(*forecastservice.ListDatasetGroupsOutput, bool) bool, opts ...request.Option) error
@@ -68,6 +77,12 @@ type ForecastService interface {
 	ListPredictorsWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, opts ...request.Option) (*forecastservice.ListPredictorsOutput, error)
 	ListPredictorsPagesWithContext(ctx context.Context, input *forecastservice.ListPredictorsInput, cb func(*forecastservice.ListPredictorsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *forecastservice.ListTagsForResourceInput, opts ...request.Option) (*forecastservice.ListTagsForResourceOutput, error)
+	ListWhatIfAnalysesWithContext(ctx context.Context, input *forecastservice.ListWhatIfAnalysesInput, opts ...request.Option) (*forecastservice.ListWhatIfAnalysesOutput, error)
+	ListWhatIfAnalysesPagesWithContext(ctx context.Context, input *forecastservice.ListWhatIfAnalysesInput, cb func(*forecastservice.ListWhatIfAnalysesOutput, bool) bool, opts ...request.Option) error
+	ListWhatIfForecastExportsWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastExportsInput, opts ...request.Option) (*forecastservice.ListWhatIfForecastExportsOutput, error)
+	ListWhatIfForecastExportsPagesWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastExportsInput, cb func(*forecastservice.ListWhatIfForecastExportsOutput, bool) bool, opts ...request.Option) error
+	ListWhatIfForecastsWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastsInput, opts ...request.Option) (*forecastservice.ListWhatIfForecastsOutput, error)
+	ListWhatIfForecastsPagesWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastsInput, cb func(*forecastservice.ListWhatIfForecastsOutput, bool) bool, opts ...request.Option) error
 	ResumeResourceWithContext(ctx context.Context, input *forecastservice.ResumeResourceInput, opts ...request.Option) (*forecastservice.ResumeResourceOutput, error)
 	StopResourceWithContext(ctx context.Context, input *forecastservice.StopResourceInput, opts ...request.Option) (*forecastservice.StopResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *forecastservice.TagResourceInput, opts ...request.Option) (*forecastservice.TagResourceOutput, error)
@@ -321,6 +336,69 @@ func (c *Client) CreatePredictorBacktestExportJobWithContext(ctx context.Context
 	return req.Output.(*forecastservice.CreatePredictorBacktestExportJobOutput), req.Error
 }
 
+func (c *Client) CreateWhatIfAnalysisWithContext(ctx context.Context, input *forecastservice.CreateWhatIfAnalysisInput, opts ...request.Option) (*forecastservice.CreateWhatIfAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "CreateWhatIfAnalysis",
+		Input:   input,
+		Output:  (*forecastservice.CreateWhatIfAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.CreateWhatIfAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.CreateWhatIfAnalysisOutput), req.Error
+}
+
+func (c *Client) CreateWhatIfForecastWithContext(ctx context.Context, input *forecastservice.CreateWhatIfForecastInput, opts ...request.Option) (*forecastservice.CreateWhatIfForecastOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "CreateWhatIfForecast",
+		Input:   input,
+		Output:  (*forecastservice.CreateWhatIfForecastOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.CreateWhatIfForecastWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.CreateWhatIfForecastOutput), req.Error
+}
+
+func (c *Client) CreateWhatIfForecastExportWithContext(ctx context.Context, input *forecastservice.CreateWhatIfForecastExportInput, opts ...request.Option) (*forecastservice.CreateWhatIfForecastExportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "CreateWhatIfForecastExport",
+		Input:   input,
+		Output:  (*forecastservice.CreateWhatIfForecastExportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.CreateWhatIfForecastExportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.CreateWhatIfForecastExportOutput), req.Error
+}
+
 func (c *Client) DeleteDatasetWithContext(ctx context.Context, input *forecastservice.DeleteDatasetInput, opts ...request.Option) (*forecastservice.DeleteDatasetOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -552,6 +630,69 @@ func (c *Client) DeleteResourceTreeWithContext(ctx context.Context, input *forec
 	return req.Output.(*forecastservice.DeleteResourceTreeOutput), req.Error
 }
 
+func (c *Client) DeleteWhatIfAnalysisWithContext(ctx context.Context, input *forecastservice.DeleteWhatIfAnalysisInput, opts ...request.Option) (*forecastservice.DeleteWhatIfAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DeleteWhatIfAnalysis",
+		Input:   input,
+		Output:  (*forecastservice.DeleteWhatIfAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DeleteWhatIfAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DeleteWhatIfAnalysisOutput), req.Error
+}
+
+func (c *Client) DeleteWhatIfForecastWithContext(ctx context.Context, input *forecastservice.DeleteWhatIfForecastInput, opts ...request.Option) (*forecastservice.DeleteWhatIfForecastOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DeleteWhatIfForecast",
+		Input:   input,
+		Output:  (*forecastservice.DeleteWhatIfForecastOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DeleteWhatIfForecastWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DeleteWhatIfForecastOutput), req.Error
+}
+
+func (c *Client) DeleteWhatIfForecastExportWithContext(ctx context.Context, input *forecastservice.DeleteWhatIfForecastExportInput, opts ...request.Option) (*forecastservice.DeleteWhatIfForecastExportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DeleteWhatIfForecastExport",
+		Input:   input,
+		Output:  (*forecastservice.DeleteWhatIfForecastExportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DeleteWhatIfForecastExportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DeleteWhatIfForecastExportOutput), req.Error
+}
+
 func (c *Client) DescribeAutoPredictorWithContext(ctx context.Context, input *forecastservice.DescribeAutoPredictorInput, opts ...request.Option) (*forecastservice.DescribeAutoPredictorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "forecastservice",
@@ -781,6 +922,69 @@ func (c *Client) DescribePredictorBacktestExportJobWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*forecastservice.DescribePredictorBacktestExportJobOutput), req.Error
+}
+
+func (c *Client) DescribeWhatIfAnalysisWithContext(ctx context.Context, input *forecastservice.DescribeWhatIfAnalysisInput, opts ...request.Option) (*forecastservice.DescribeWhatIfAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DescribeWhatIfAnalysis",
+		Input:   input,
+		Output:  (*forecastservice.DescribeWhatIfAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DescribeWhatIfAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DescribeWhatIfAnalysisOutput), req.Error
+}
+
+func (c *Client) DescribeWhatIfForecastWithContext(ctx context.Context, input *forecastservice.DescribeWhatIfForecastInput, opts ...request.Option) (*forecastservice.DescribeWhatIfForecastOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DescribeWhatIfForecast",
+		Input:   input,
+		Output:  (*forecastservice.DescribeWhatIfForecastOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DescribeWhatIfForecastWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DescribeWhatIfForecastOutput), req.Error
+}
+
+func (c *Client) DescribeWhatIfForecastExportWithContext(ctx context.Context, input *forecastservice.DescribeWhatIfForecastExportInput, opts ...request.Option) (*forecastservice.DescribeWhatIfForecastExportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "DescribeWhatIfForecastExport",
+		Input:   input,
+		Output:  (*forecastservice.DescribeWhatIfForecastExportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.DescribeWhatIfForecastExportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.DescribeWhatIfForecastExportOutput), req.Error
 }
 
 func (c *Client) GetAccuracyMetricsWithContext(ctx context.Context, input *forecastservice.GetAccuracyMetricsInput, opts ...request.Option) (*forecastservice.GetAccuracyMetricsOutput, error) {
@@ -1274,6 +1478,129 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fore
 	})
 
 	return req.Output.(*forecastservice.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListWhatIfAnalysesWithContext(ctx context.Context, input *forecastservice.ListWhatIfAnalysesInput, opts ...request.Option) (*forecastservice.ListWhatIfAnalysesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListWhatIfAnalyses",
+		Input:   input,
+		Output:  (*forecastservice.ListWhatIfAnalysesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.ListWhatIfAnalysesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.ListWhatIfAnalysesOutput), req.Error
+}
+
+func (c *Client) ListWhatIfAnalysesPagesWithContext(ctx context.Context, input *forecastservice.ListWhatIfAnalysesInput, cb func(*forecastservice.ListWhatIfAnalysesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListWhatIfAnalyses",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListWhatIfAnalysesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListWhatIfForecastExportsWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastExportsInput, opts ...request.Option) (*forecastservice.ListWhatIfForecastExportsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListWhatIfForecastExports",
+		Input:   input,
+		Output:  (*forecastservice.ListWhatIfForecastExportsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.ListWhatIfForecastExportsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.ListWhatIfForecastExportsOutput), req.Error
+}
+
+func (c *Client) ListWhatIfForecastExportsPagesWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastExportsInput, cb func(*forecastservice.ListWhatIfForecastExportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListWhatIfForecastExports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListWhatIfForecastExportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListWhatIfForecastsWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastsInput, opts ...request.Option) (*forecastservice.ListWhatIfForecastsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListWhatIfForecasts",
+		Input:   input,
+		Output:  (*forecastservice.ListWhatIfForecastsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ForecastServiceAPI.ListWhatIfForecastsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*forecastservice.ListWhatIfForecastsOutput), req.Error
+}
+
+func (c *Client) ListWhatIfForecastsPagesWithContext(ctx context.Context, input *forecastservice.ListWhatIfForecastsInput, cb func(*forecastservice.ListWhatIfForecastsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "forecastservice",
+		Action:  "ListWhatIfForecasts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ForecastServiceAPI.ListWhatIfForecastsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ResumeResourceWithContext(ctx context.Context, input *forecastservice.ResumeResourceInput, opts ...request.Option) (*forecastservice.ResumeResourceOutput, error) {
