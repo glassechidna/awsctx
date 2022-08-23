@@ -180,6 +180,7 @@ type RDS interface {
 	StopDBClusterWithContext(ctx context.Context, input *rds.StopDBClusterInput, opts ...request.Option) (*rds.StopDBClusterOutput, error)
 	StopDBInstanceWithContext(ctx context.Context, input *rds.StopDBInstanceInput, opts ...request.Option) (*rds.StopDBInstanceOutput, error)
 	StopDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StopDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error)
+	SwitchoverReadReplicaWithContext(ctx context.Context, input *rds.SwitchoverReadReplicaInput, opts ...request.Option) (*rds.SwitchoverReadReplicaOutput, error)
 }
 
 type Client struct {
@@ -3711,4 +3712,25 @@ func (c *Client) StopDBInstanceAutomatedBackupsReplicationWithContext(ctx contex
 	})
 
 	return req.Output.(*rds.StopDBInstanceAutomatedBackupsReplicationOutput), req.Error
+}
+
+func (c *Client) SwitchoverReadReplicaWithContext(ctx context.Context, input *rds.SwitchoverReadReplicaInput, opts ...request.Option) (*rds.SwitchoverReadReplicaOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "SwitchoverReadReplica",
+		Input:   input,
+		Output:  (*rds.SwitchoverReadReplicaOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.SwitchoverReadReplicaWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.SwitchoverReadReplicaOutput), req.Error
 }
