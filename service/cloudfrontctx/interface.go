@@ -22,6 +22,7 @@ type CloudFront interface {
 	CreateInvalidationWithContext(ctx context.Context, input *cloudfront.CreateInvalidationInput, opts ...request.Option) (*cloudfront.CreateInvalidationOutput, error)
 	CreateKeyGroupWithContext(ctx context.Context, input *cloudfront.CreateKeyGroupInput, opts ...request.Option) (*cloudfront.CreateKeyGroupOutput, error)
 	CreateMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.CreateMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.CreateMonitoringSubscriptionOutput, error)
+	CreateOriginAccessControlWithContext(ctx context.Context, input *cloudfront.CreateOriginAccessControlInput, opts ...request.Option) (*cloudfront.CreateOriginAccessControlOutput, error)
 	CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error)
 	CreatePublicKeyWithContext(ctx context.Context, input *cloudfront.CreatePublicKeyInput, opts ...request.Option) (*cloudfront.CreatePublicKeyOutput, error)
 	CreateRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.CreateRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.CreateRealtimeLogConfigOutput, error)
@@ -36,6 +37,7 @@ type CloudFront interface {
 	DeleteFunctionWithContext(ctx context.Context, input *cloudfront.DeleteFunctionInput, opts ...request.Option) (*cloudfront.DeleteFunctionOutput, error)
 	DeleteKeyGroupWithContext(ctx context.Context, input *cloudfront.DeleteKeyGroupInput, opts ...request.Option) (*cloudfront.DeleteKeyGroupOutput, error)
 	DeleteMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.DeleteMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.DeleteMonitoringSubscriptionOutput, error)
+	DeleteOriginAccessControlWithContext(ctx context.Context, input *cloudfront.DeleteOriginAccessControlInput, opts ...request.Option) (*cloudfront.DeleteOriginAccessControlOutput, error)
 	DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error)
 	DeletePublicKeyWithContext(ctx context.Context, input *cloudfront.DeletePublicKeyInput, opts ...request.Option) (*cloudfront.DeletePublicKeyOutput, error)
 	DeleteRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.DeleteRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.DeleteRealtimeLogConfigOutput, error)
@@ -57,6 +59,8 @@ type CloudFront interface {
 	GetKeyGroupWithContext(ctx context.Context, input *cloudfront.GetKeyGroupInput, opts ...request.Option) (*cloudfront.GetKeyGroupOutput, error)
 	GetKeyGroupConfigWithContext(ctx context.Context, input *cloudfront.GetKeyGroupConfigInput, opts ...request.Option) (*cloudfront.GetKeyGroupConfigOutput, error)
 	GetMonitoringSubscriptionWithContext(ctx context.Context, input *cloudfront.GetMonitoringSubscriptionInput, opts ...request.Option) (*cloudfront.GetMonitoringSubscriptionOutput, error)
+	GetOriginAccessControlWithContext(ctx context.Context, input *cloudfront.GetOriginAccessControlInput, opts ...request.Option) (*cloudfront.GetOriginAccessControlOutput, error)
+	GetOriginAccessControlConfigWithContext(ctx context.Context, input *cloudfront.GetOriginAccessControlConfigInput, opts ...request.Option) (*cloudfront.GetOriginAccessControlConfigOutput, error)
 	GetOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyOutput, error)
 	GetOriginRequestPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyConfigInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyConfigOutput, error)
 	GetPublicKeyWithContext(ctx context.Context, input *cloudfront.GetPublicKeyInput, opts ...request.Option) (*cloudfront.GetPublicKeyOutput, error)
@@ -84,6 +88,7 @@ type CloudFront interface {
 	ListInvalidationsWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, opts ...request.Option) (*cloudfront.ListInvalidationsOutput, error)
 	ListInvalidationsPagesWithContext(ctx context.Context, input *cloudfront.ListInvalidationsInput, cb func(*cloudfront.ListInvalidationsOutput, bool) bool, opts ...request.Option) error
 	ListKeyGroupsWithContext(ctx context.Context, input *cloudfront.ListKeyGroupsInput, opts ...request.Option) (*cloudfront.ListKeyGroupsOutput, error)
+	ListOriginAccessControlsWithContext(ctx context.Context, input *cloudfront.ListOriginAccessControlsInput, opts ...request.Option) (*cloudfront.ListOriginAccessControlsOutput, error)
 	ListOriginRequestPoliciesWithContext(ctx context.Context, input *cloudfront.ListOriginRequestPoliciesInput, opts ...request.Option) (*cloudfront.ListOriginRequestPoliciesOutput, error)
 	ListPublicKeysWithContext(ctx context.Context, input *cloudfront.ListPublicKeysInput, opts ...request.Option) (*cloudfront.ListPublicKeysOutput, error)
 	ListRealtimeLogConfigsWithContext(ctx context.Context, input *cloudfront.ListRealtimeLogConfigsInput, opts ...request.Option) (*cloudfront.ListRealtimeLogConfigsOutput, error)
@@ -102,6 +107,7 @@ type CloudFront interface {
 	UpdateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionProfileOutput, error)
 	UpdateFunctionWithContext(ctx context.Context, input *cloudfront.UpdateFunctionInput, opts ...request.Option) (*cloudfront.UpdateFunctionOutput, error)
 	UpdateKeyGroupWithContext(ctx context.Context, input *cloudfront.UpdateKeyGroupInput, opts ...request.Option) (*cloudfront.UpdateKeyGroupOutput, error)
+	UpdateOriginAccessControlWithContext(ctx context.Context, input *cloudfront.UpdateOriginAccessControlInput, opts ...request.Option) (*cloudfront.UpdateOriginAccessControlOutput, error)
 	UpdateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.UpdateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.UpdateOriginRequestPolicyOutput, error)
 	UpdatePublicKeyWithContext(ctx context.Context, input *cloudfront.UpdatePublicKeyInput, opts ...request.Option) (*cloudfront.UpdatePublicKeyOutput, error)
 	UpdateRealtimeLogConfigWithContext(ctx context.Context, input *cloudfront.UpdateRealtimeLogConfigInput, opts ...request.Option) (*cloudfront.UpdateRealtimeLogConfigOutput, error)
@@ -353,6 +359,27 @@ func (c *Client) CreateMonitoringSubscriptionWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*cloudfront.CreateMonitoringSubscriptionOutput), req.Error
+}
+
+func (c *Client) CreateOriginAccessControlWithContext(ctx context.Context, input *cloudfront.CreateOriginAccessControlInput, opts ...request.Option) (*cloudfront.CreateOriginAccessControlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateOriginAccessControl",
+		Input:   input,
+		Output:  (*cloudfront.CreateOriginAccessControlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateOriginAccessControlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateOriginAccessControlOutput), req.Error
 }
 
 func (c *Client) CreateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.CreateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.CreateOriginRequestPolicyOutput, error) {
@@ -647,6 +674,27 @@ func (c *Client) DeleteMonitoringSubscriptionWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*cloudfront.DeleteMonitoringSubscriptionOutput), req.Error
+}
+
+func (c *Client) DeleteOriginAccessControlWithContext(ctx context.Context, input *cloudfront.DeleteOriginAccessControlInput, opts ...request.Option) (*cloudfront.DeleteOriginAccessControlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteOriginAccessControl",
+		Input:   input,
+		Output:  (*cloudfront.DeleteOriginAccessControlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteOriginAccessControlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteOriginAccessControlOutput), req.Error
 }
 
 func (c *Client) DeleteOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.DeleteOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.DeleteOriginRequestPolicyOutput, error) {
@@ -1088,6 +1136,48 @@ func (c *Client) GetMonitoringSubscriptionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*cloudfront.GetMonitoringSubscriptionOutput), req.Error
+}
+
+func (c *Client) GetOriginAccessControlWithContext(ctx context.Context, input *cloudfront.GetOriginAccessControlInput, opts ...request.Option) (*cloudfront.GetOriginAccessControlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetOriginAccessControl",
+		Input:   input,
+		Output:  (*cloudfront.GetOriginAccessControlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetOriginAccessControlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetOriginAccessControlOutput), req.Error
+}
+
+func (c *Client) GetOriginAccessControlConfigWithContext(ctx context.Context, input *cloudfront.GetOriginAccessControlConfigInput, opts ...request.Option) (*cloudfront.GetOriginAccessControlConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetOriginAccessControlConfig",
+		Input:   input,
+		Output:  (*cloudfront.GetOriginAccessControlConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetOriginAccessControlConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetOriginAccessControlConfigOutput), req.Error
 }
 
 func (c *Client) GetOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.GetOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.GetOriginRequestPolicyOutput, error) {
@@ -1654,6 +1744,27 @@ func (c *Client) ListKeyGroupsWithContext(ctx context.Context, input *cloudfront
 	return req.Output.(*cloudfront.ListKeyGroupsOutput), req.Error
 }
 
+func (c *Client) ListOriginAccessControlsWithContext(ctx context.Context, input *cloudfront.ListOriginAccessControlsInput, opts ...request.Option) (*cloudfront.ListOriginAccessControlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListOriginAccessControls",
+		Input:   input,
+		Output:  (*cloudfront.ListOriginAccessControlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListOriginAccessControlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListOriginAccessControlsOutput), req.Error
+}
+
 func (c *Client) ListOriginRequestPoliciesWithContext(ctx context.Context, input *cloudfront.ListOriginRequestPoliciesInput, opts ...request.Option) (*cloudfront.ListOriginRequestPoliciesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -2029,6 +2140,27 @@ func (c *Client) UpdateKeyGroupWithContext(ctx context.Context, input *cloudfron
 	})
 
 	return req.Output.(*cloudfront.UpdateKeyGroupOutput), req.Error
+}
+
+func (c *Client) UpdateOriginAccessControlWithContext(ctx context.Context, input *cloudfront.UpdateOriginAccessControlInput, opts ...request.Option) (*cloudfront.UpdateOriginAccessControlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateOriginAccessControl",
+		Input:   input,
+		Output:  (*cloudfront.UpdateOriginAccessControlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateOriginAccessControlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateOriginAccessControlOutput), req.Error
 }
 
 func (c *Client) UpdateOriginRequestPolicyWithContext(ctx context.Context, input *cloudfront.UpdateOriginRequestPolicyInput, opts ...request.Option) (*cloudfront.UpdateOriginRequestPolicyOutput, error) {
