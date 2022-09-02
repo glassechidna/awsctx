@@ -148,6 +148,10 @@ type Connect interface {
 	ResumeContactRecordingWithContext(ctx context.Context, input *connect.ResumeContactRecordingInput, opts ...request.Option) (*connect.ResumeContactRecordingOutput, error)
 	SearchAvailablePhoneNumbersWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, opts ...request.Option) (*connect.SearchAvailablePhoneNumbersOutput, error)
 	SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context, input *connect.SearchAvailablePhoneNumbersInput, cb func(*connect.SearchAvailablePhoneNumbersOutput, bool) bool, opts ...request.Option) error
+	SearchQueuesWithContext(ctx context.Context, input *connect.SearchQueuesInput, opts ...request.Option) (*connect.SearchQueuesOutput, error)
+	SearchQueuesPagesWithContext(ctx context.Context, input *connect.SearchQueuesInput, cb func(*connect.SearchQueuesOutput, bool) bool, opts ...request.Option) error
+	SearchRoutingProfilesWithContext(ctx context.Context, input *connect.SearchRoutingProfilesInput, opts ...request.Option) (*connect.SearchRoutingProfilesOutput, error)
+	SearchRoutingProfilesPagesWithContext(ctx context.Context, input *connect.SearchRoutingProfilesInput, cb func(*connect.SearchRoutingProfilesOutput, bool) bool, opts ...request.Option) error
 	SearchSecurityProfilesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, opts ...request.Option) (*connect.SearchSecurityProfilesOutput, error)
 	SearchSecurityProfilesPagesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, cb func(*connect.SearchSecurityProfilesOutput, bool) bool, opts ...request.Option) error
 	SearchUsersWithContext(ctx context.Context, input *connect.SearchUsersInput, opts ...request.Option) (*connect.SearchUsersOutput, error)
@@ -3055,6 +3059,88 @@ func (c *Client) SearchAvailablePhoneNumbersPagesWithContext(ctx context.Context
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.SearchAvailablePhoneNumbersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) SearchQueuesWithContext(ctx context.Context, input *connect.SearchQueuesInput, opts ...request.Option) (*connect.SearchQueuesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchQueues",
+		Input:   input,
+		Output:  (*connect.SearchQueuesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SearchQueuesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SearchQueuesOutput), req.Error
+}
+
+func (c *Client) SearchQueuesPagesWithContext(ctx context.Context, input *connect.SearchQueuesInput, cb func(*connect.SearchQueuesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchQueues",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.SearchQueuesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) SearchRoutingProfilesWithContext(ctx context.Context, input *connect.SearchRoutingProfilesInput, opts ...request.Option) (*connect.SearchRoutingProfilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchRoutingProfiles",
+		Input:   input,
+		Output:  (*connect.SearchRoutingProfilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SearchRoutingProfilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SearchRoutingProfilesOutput), req.Error
+}
+
+func (c *Client) SearchRoutingProfilesPagesWithContext(ctx context.Context, input *connect.SearchRoutingProfilesInput, cb func(*connect.SearchRoutingProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchRoutingProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.SearchRoutingProfilesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
