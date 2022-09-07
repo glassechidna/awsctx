@@ -22,6 +22,7 @@ type SNS interface {
 	DeletePlatformApplicationWithContext(ctx context.Context, input *sns.DeletePlatformApplicationInput, opts ...request.Option) (*sns.DeletePlatformApplicationOutput, error)
 	DeleteSMSSandboxPhoneNumberWithContext(ctx context.Context, input *sns.DeleteSMSSandboxPhoneNumberInput, opts ...request.Option) (*sns.DeleteSMSSandboxPhoneNumberOutput, error)
 	DeleteTopicWithContext(ctx context.Context, input *sns.DeleteTopicInput, opts ...request.Option) (*sns.DeleteTopicOutput, error)
+	GetDataProtectionPolicyWithContext(ctx context.Context, input *sns.GetDataProtectionPolicyInput, opts ...request.Option) (*sns.GetDataProtectionPolicyOutput, error)
 	GetEndpointAttributesWithContext(ctx context.Context, input *sns.GetEndpointAttributesInput, opts ...request.Option) (*sns.GetEndpointAttributesOutput, error)
 	GetPlatformApplicationAttributesWithContext(ctx context.Context, input *sns.GetPlatformApplicationAttributesInput, opts ...request.Option) (*sns.GetPlatformApplicationAttributesOutput, error)
 	GetSMSAttributesWithContext(ctx context.Context, input *sns.GetSMSAttributesInput, opts ...request.Option) (*sns.GetSMSAttributesOutput, error)
@@ -48,6 +49,7 @@ type SNS interface {
 	OptInPhoneNumberWithContext(ctx context.Context, input *sns.OptInPhoneNumberInput, opts ...request.Option) (*sns.OptInPhoneNumberOutput, error)
 	PublishWithContext(ctx context.Context, input *sns.PublishInput, opts ...request.Option) (*sns.PublishOutput, error)
 	PublishBatchWithContext(ctx context.Context, input *sns.PublishBatchInput, opts ...request.Option) (*sns.PublishBatchOutput, error)
+	PutDataProtectionPolicyWithContext(ctx context.Context, input *sns.PutDataProtectionPolicyInput, opts ...request.Option) (*sns.PutDataProtectionPolicyOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *sns.RemovePermissionInput, opts ...request.Option) (*sns.RemovePermissionOutput, error)
 	SetEndpointAttributesWithContext(ctx context.Context, input *sns.SetEndpointAttributesInput, opts ...request.Option) (*sns.SetEndpointAttributesOutput, error)
 	SetPlatformApplicationAttributesWithContext(ctx context.Context, input *sns.SetPlatformApplicationAttributesInput, opts ...request.Option) (*sns.SetPlatformApplicationAttributesOutput, error)
@@ -305,6 +307,27 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, input *sns.DeleteTo
 	})
 
 	return req.Output.(*sns.DeleteTopicOutput), req.Error
+}
+
+func (c *Client) GetDataProtectionPolicyWithContext(ctx context.Context, input *sns.GetDataProtectionPolicyInput, opts ...request.Option) (*sns.GetDataProtectionPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "GetDataProtectionPolicy",
+		Input:   input,
+		Output:  (*sns.GetDataProtectionPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.GetDataProtectionPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.GetDataProtectionPolicyOutput), req.Error
 }
 
 func (c *Client) GetEndpointAttributesWithContext(ctx context.Context, input *sns.GetEndpointAttributesInput, opts ...request.Option) (*sns.GetEndpointAttributesOutput, error) {
@@ -843,6 +866,27 @@ func (c *Client) PublishBatchWithContext(ctx context.Context, input *sns.Publish
 	})
 
 	return req.Output.(*sns.PublishBatchOutput), req.Error
+}
+
+func (c *Client) PutDataProtectionPolicyWithContext(ctx context.Context, input *sns.PutDataProtectionPolicyInput, opts ...request.Option) (*sns.PutDataProtectionPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sns",
+		Action:  "PutDataProtectionPolicy",
+		Input:   input,
+		Output:  (*sns.PutDataProtectionPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SNSAPI.PutDataProtectionPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sns.PutDataProtectionPolicyOutput), req.Error
 }
 
 func (c *Client) RemovePermissionWithContext(ctx context.Context, input *sns.RemovePermissionInput, opts ...request.Option) (*sns.RemovePermissionOutput, error) {
