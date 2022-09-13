@@ -569,6 +569,7 @@ type EC2 interface {
 	ModifyIpamResourceCidrWithContext(ctx context.Context, input *ec2.ModifyIpamResourceCidrInput, opts ...request.Option) (*ec2.ModifyIpamResourceCidrOutput, error)
 	ModifyIpamScopeWithContext(ctx context.Context, input *ec2.ModifyIpamScopeInput, opts ...request.Option) (*ec2.ModifyIpamScopeOutput, error)
 	ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error)
+	ModifyLocalGatewayRouteWithContext(ctx context.Context, input *ec2.ModifyLocalGatewayRouteInput, opts ...request.Option) (*ec2.ModifyLocalGatewayRouteOutput, error)
 	ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error)
 	ModifyNetworkInterfaceAttributeWithContext(ctx context.Context, input *ec2.ModifyNetworkInterfaceAttributeInput, opts ...request.Option) (*ec2.ModifyNetworkInterfaceAttributeOutput, error)
 	ModifyPrivateDnsNameOptionsWithContext(ctx context.Context, input *ec2.ModifyPrivateDnsNameOptionsInput, opts ...request.Option) (*ec2.ModifyPrivateDnsNameOptionsOutput, error)
@@ -12279,6 +12280,27 @@ func (c *Client) ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2
 	})
 
 	return req.Output.(*ec2.ModifyLaunchTemplateOutput), req.Error
+}
+
+func (c *Client) ModifyLocalGatewayRouteWithContext(ctx context.Context, input *ec2.ModifyLocalGatewayRouteInput, opts ...request.Option) (*ec2.ModifyLocalGatewayRouteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyLocalGatewayRoute",
+		Input:   input,
+		Output:  (*ec2.ModifyLocalGatewayRouteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyLocalGatewayRouteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyLocalGatewayRouteOutput), req.Error
 }
 
 func (c *Client) ModifyManagedPrefixListWithContext(ctx context.Context, input *ec2.ModifyManagedPrefixListInput, opts ...request.Option) (*ec2.ModifyManagedPrefixListOutput, error) {

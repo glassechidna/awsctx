@@ -22,6 +22,7 @@ type Transfer interface {
 	DeleteAgreementWithContext(ctx context.Context, input *transfer.DeleteAgreementInput, opts ...request.Option) (*transfer.DeleteAgreementOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *transfer.DeleteCertificateInput, opts ...request.Option) (*transfer.DeleteCertificateOutput, error)
 	DeleteConnectorWithContext(ctx context.Context, input *transfer.DeleteConnectorInput, opts ...request.Option) (*transfer.DeleteConnectorOutput, error)
+	DeleteHostKeyWithContext(ctx context.Context, input *transfer.DeleteHostKeyInput, opts ...request.Option) (*transfer.DeleteHostKeyOutput, error)
 	DeleteProfileWithContext(ctx context.Context, input *transfer.DeleteProfileInput, opts ...request.Option) (*transfer.DeleteProfileOutput, error)
 	DeleteServerWithContext(ctx context.Context, input *transfer.DeleteServerInput, opts ...request.Option) (*transfer.DeleteServerOutput, error)
 	DeleteSshPublicKeyWithContext(ctx context.Context, input *transfer.DeleteSshPublicKeyInput, opts ...request.Option) (*transfer.DeleteSshPublicKeyOutput, error)
@@ -32,12 +33,14 @@ type Transfer interface {
 	DescribeCertificateWithContext(ctx context.Context, input *transfer.DescribeCertificateInput, opts ...request.Option) (*transfer.DescribeCertificateOutput, error)
 	DescribeConnectorWithContext(ctx context.Context, input *transfer.DescribeConnectorInput, opts ...request.Option) (*transfer.DescribeConnectorOutput, error)
 	DescribeExecutionWithContext(ctx context.Context, input *transfer.DescribeExecutionInput, opts ...request.Option) (*transfer.DescribeExecutionOutput, error)
+	DescribeHostKeyWithContext(ctx context.Context, input *transfer.DescribeHostKeyInput, opts ...request.Option) (*transfer.DescribeHostKeyOutput, error)
 	DescribeProfileWithContext(ctx context.Context, input *transfer.DescribeProfileInput, opts ...request.Option) (*transfer.DescribeProfileOutput, error)
 	DescribeSecurityPolicyWithContext(ctx context.Context, input *transfer.DescribeSecurityPolicyInput, opts ...request.Option) (*transfer.DescribeSecurityPolicyOutput, error)
 	DescribeServerWithContext(ctx context.Context, input *transfer.DescribeServerInput, opts ...request.Option) (*transfer.DescribeServerOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *transfer.DescribeUserInput, opts ...request.Option) (*transfer.DescribeUserOutput, error)
 	DescribeWorkflowWithContext(ctx context.Context, input *transfer.DescribeWorkflowInput, opts ...request.Option) (*transfer.DescribeWorkflowOutput, error)
 	ImportCertificateWithContext(ctx context.Context, input *transfer.ImportCertificateInput, opts ...request.Option) (*transfer.ImportCertificateOutput, error)
+	ImportHostKeyWithContext(ctx context.Context, input *transfer.ImportHostKeyInput, opts ...request.Option) (*transfer.ImportHostKeyOutput, error)
 	ImportSshPublicKeyWithContext(ctx context.Context, input *transfer.ImportSshPublicKeyInput, opts ...request.Option) (*transfer.ImportSshPublicKeyOutput, error)
 	ListAccessesWithContext(ctx context.Context, input *transfer.ListAccessesInput, opts ...request.Option) (*transfer.ListAccessesOutput, error)
 	ListAccessesPagesWithContext(ctx context.Context, input *transfer.ListAccessesInput, cb func(*transfer.ListAccessesOutput, bool) bool, opts ...request.Option) error
@@ -49,6 +52,7 @@ type Transfer interface {
 	ListConnectorsPagesWithContext(ctx context.Context, input *transfer.ListConnectorsInput, cb func(*transfer.ListConnectorsOutput, bool) bool, opts ...request.Option) error
 	ListExecutionsWithContext(ctx context.Context, input *transfer.ListExecutionsInput, opts ...request.Option) (*transfer.ListExecutionsOutput, error)
 	ListExecutionsPagesWithContext(ctx context.Context, input *transfer.ListExecutionsInput, cb func(*transfer.ListExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListHostKeysWithContext(ctx context.Context, input *transfer.ListHostKeysInput, opts ...request.Option) (*transfer.ListHostKeysOutput, error)
 	ListProfilesWithContext(ctx context.Context, input *transfer.ListProfilesInput, opts ...request.Option) (*transfer.ListProfilesOutput, error)
 	ListProfilesPagesWithContext(ctx context.Context, input *transfer.ListProfilesInput, cb func(*transfer.ListProfilesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityPoliciesWithContext(ctx context.Context, input *transfer.ListSecurityPoliciesInput, opts ...request.Option) (*transfer.ListSecurityPoliciesOutput, error)
@@ -72,6 +76,7 @@ type Transfer interface {
 	UpdateAgreementWithContext(ctx context.Context, input *transfer.UpdateAgreementInput, opts ...request.Option) (*transfer.UpdateAgreementOutput, error)
 	UpdateCertificateWithContext(ctx context.Context, input *transfer.UpdateCertificateInput, opts ...request.Option) (*transfer.UpdateCertificateOutput, error)
 	UpdateConnectorWithContext(ctx context.Context, input *transfer.UpdateConnectorInput, opts ...request.Option) (*transfer.UpdateConnectorOutput, error)
+	UpdateHostKeyWithContext(ctx context.Context, input *transfer.UpdateHostKeyInput, opts ...request.Option) (*transfer.UpdateHostKeyOutput, error)
 	UpdateProfileWithContext(ctx context.Context, input *transfer.UpdateProfileInput, opts ...request.Option) (*transfer.UpdateProfileOutput, error)
 	UpdateServerWithContext(ctx context.Context, input *transfer.UpdateServerInput, opts ...request.Option) (*transfer.UpdateServerOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *transfer.UpdateUserInput, opts ...request.Option) (*transfer.UpdateUserOutput, error)
@@ -323,6 +328,27 @@ func (c *Client) DeleteConnectorWithContext(ctx context.Context, input *transfer
 	return req.Output.(*transfer.DeleteConnectorOutput), req.Error
 }
 
+func (c *Client) DeleteHostKeyWithContext(ctx context.Context, input *transfer.DeleteHostKeyInput, opts ...request.Option) (*transfer.DeleteHostKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "DeleteHostKey",
+		Input:   input,
+		Output:  (*transfer.DeleteHostKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.DeleteHostKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.DeleteHostKeyOutput), req.Error
+}
+
 func (c *Client) DeleteProfileWithContext(ctx context.Context, input *transfer.DeleteProfileInput, opts ...request.Option) (*transfer.DeleteProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
@@ -533,6 +559,27 @@ func (c *Client) DescribeExecutionWithContext(ctx context.Context, input *transf
 	return req.Output.(*transfer.DescribeExecutionOutput), req.Error
 }
 
+func (c *Client) DescribeHostKeyWithContext(ctx context.Context, input *transfer.DescribeHostKeyInput, opts ...request.Option) (*transfer.DescribeHostKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "DescribeHostKey",
+		Input:   input,
+		Output:  (*transfer.DescribeHostKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.DescribeHostKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.DescribeHostKeyOutput), req.Error
+}
+
 func (c *Client) DescribeProfileWithContext(ctx context.Context, input *transfer.DescribeProfileInput, opts ...request.Option) (*transfer.DescribeProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "transfer",
@@ -657,6 +704,27 @@ func (c *Client) ImportCertificateWithContext(ctx context.Context, input *transf
 	})
 
 	return req.Output.(*transfer.ImportCertificateOutput), req.Error
+}
+
+func (c *Client) ImportHostKeyWithContext(ctx context.Context, input *transfer.ImportHostKeyInput, opts ...request.Option) (*transfer.ImportHostKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ImportHostKey",
+		Input:   input,
+		Output:  (*transfer.ImportHostKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.ImportHostKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.ImportHostKeyOutput), req.Error
 }
 
 func (c *Client) ImportSshPublicKeyWithContext(ctx context.Context, input *transfer.ImportSshPublicKeyInput, opts ...request.Option) (*transfer.ImportSshPublicKeyOutput, error) {
@@ -883,6 +951,27 @@ func (c *Client) ListExecutionsPagesWithContext(ctx context.Context, input *tran
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListHostKeysWithContext(ctx context.Context, input *transfer.ListHostKeysInput, opts ...request.Option) (*transfer.ListHostKeysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "ListHostKeys",
+		Input:   input,
+		Output:  (*transfer.ListHostKeysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.ListHostKeysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.ListHostKeysOutput), req.Error
 }
 
 func (c *Client) ListProfilesWithContext(ctx context.Context, input *transfer.ListProfilesInput, opts ...request.Option) (*transfer.ListProfilesOutput, error) {
@@ -1360,6 +1449,27 @@ func (c *Client) UpdateConnectorWithContext(ctx context.Context, input *transfer
 	})
 
 	return req.Output.(*transfer.UpdateConnectorOutput), req.Error
+}
+
+func (c *Client) UpdateHostKeyWithContext(ctx context.Context, input *transfer.UpdateHostKeyInput, opts ...request.Option) (*transfer.UpdateHostKeyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "UpdateHostKey",
+		Input:   input,
+		Output:  (*transfer.UpdateHostKeyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.UpdateHostKeyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.UpdateHostKeyOutput), req.Error
 }
 
 func (c *Client) UpdateProfileWithContext(ctx context.Context, input *transfer.UpdateProfileInput, opts ...request.Option) (*transfer.UpdateProfileOutput, error) {
