@@ -64,6 +64,8 @@ type EC2 interface {
 	CreateCarrierGatewayWithContext(ctx context.Context, input *ec2.CreateCarrierGatewayInput, opts ...request.Option) (*ec2.CreateCarrierGatewayOutput, error)
 	CreateClientVpnEndpointWithContext(ctx context.Context, input *ec2.CreateClientVpnEndpointInput, opts ...request.Option) (*ec2.CreateClientVpnEndpointOutput, error)
 	CreateClientVpnRouteWithContext(ctx context.Context, input *ec2.CreateClientVpnRouteInput, opts ...request.Option) (*ec2.CreateClientVpnRouteOutput, error)
+	CreateCoipCidrWithContext(ctx context.Context, input *ec2.CreateCoipCidrInput, opts ...request.Option) (*ec2.CreateCoipCidrOutput, error)
+	CreateCoipPoolWithContext(ctx context.Context, input *ec2.CreateCoipPoolInput, opts ...request.Option) (*ec2.CreateCoipPoolOutput, error)
 	CreateCustomerGatewayWithContext(ctx context.Context, input *ec2.CreateCustomerGatewayInput, opts ...request.Option) (*ec2.CreateCustomerGatewayOutput, error)
 	CreateDefaultSubnetWithContext(ctx context.Context, input *ec2.CreateDefaultSubnetInput, opts ...request.Option) (*ec2.CreateDefaultSubnetOutput, error)
 	CreateDefaultVpcWithContext(ctx context.Context, input *ec2.CreateDefaultVpcInput, opts ...request.Option) (*ec2.CreateDefaultVpcOutput, error)
@@ -83,6 +85,8 @@ type EC2 interface {
 	CreateLaunchTemplateWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateInput, opts ...request.Option) (*ec2.CreateLaunchTemplateOutput, error)
 	CreateLaunchTemplateVersionWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateVersionInput, opts ...request.Option) (*ec2.CreateLaunchTemplateVersionOutput, error)
 	CreateLocalGatewayRouteWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteOutput, error)
+	CreateLocalGatewayRouteTableWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableOutput, error)
+	CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput, error)
 	CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput, error)
 	CreateManagedPrefixListWithContext(ctx context.Context, input *ec2.CreateManagedPrefixListInput, opts ...request.Option) (*ec2.CreateManagedPrefixListOutput, error)
 	CreateNatGatewayWithContext(ctx context.Context, input *ec2.CreateNatGatewayInput, opts ...request.Option) (*ec2.CreateNatGatewayOutput, error)
@@ -134,6 +138,8 @@ type EC2 interface {
 	DeleteCarrierGatewayWithContext(ctx context.Context, input *ec2.DeleteCarrierGatewayInput, opts ...request.Option) (*ec2.DeleteCarrierGatewayOutput, error)
 	DeleteClientVpnEndpointWithContext(ctx context.Context, input *ec2.DeleteClientVpnEndpointInput, opts ...request.Option) (*ec2.DeleteClientVpnEndpointOutput, error)
 	DeleteClientVpnRouteWithContext(ctx context.Context, input *ec2.DeleteClientVpnRouteInput, opts ...request.Option) (*ec2.DeleteClientVpnRouteOutput, error)
+	DeleteCoipCidrWithContext(ctx context.Context, input *ec2.DeleteCoipCidrInput, opts ...request.Option) (*ec2.DeleteCoipCidrOutput, error)
+	DeleteCoipPoolWithContext(ctx context.Context, input *ec2.DeleteCoipPoolInput, opts ...request.Option) (*ec2.DeleteCoipPoolOutput, error)
 	DeleteCustomerGatewayWithContext(ctx context.Context, input *ec2.DeleteCustomerGatewayInput, opts ...request.Option) (*ec2.DeleteCustomerGatewayOutput, error)
 	DeleteDhcpOptionsWithContext(ctx context.Context, input *ec2.DeleteDhcpOptionsInput, opts ...request.Option) (*ec2.DeleteDhcpOptionsOutput, error)
 	DeleteEgressOnlyInternetGatewayWithContext(ctx context.Context, input *ec2.DeleteEgressOnlyInternetGatewayInput, opts ...request.Option) (*ec2.DeleteEgressOnlyInternetGatewayOutput, error)
@@ -149,6 +155,8 @@ type EC2 interface {
 	DeleteLaunchTemplateWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateOutput, error)
 	DeleteLaunchTemplateVersionsWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateVersionsInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateVersionsOutput, error)
 	DeleteLocalGatewayRouteWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteOutput, error)
+	DeleteLocalGatewayRouteTableWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableOutput, error)
+	DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput, error)
 	DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput, error)
 	DeleteManagedPrefixListWithContext(ctx context.Context, input *ec2.DeleteManagedPrefixListInput, opts ...request.Option) (*ec2.DeleteManagedPrefixListOutput, error)
 	DeleteNatGatewayWithContext(ctx context.Context, input *ec2.DeleteNatGatewayInput, opts ...request.Option) (*ec2.DeleteNatGatewayOutput, error)
@@ -1796,6 +1804,48 @@ func (c *Client) CreateClientVpnRouteWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.CreateClientVpnRouteOutput), req.Error
 }
 
+func (c *Client) CreateCoipCidrWithContext(ctx context.Context, input *ec2.CreateCoipCidrInput, opts ...request.Option) (*ec2.CreateCoipCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateCoipCidr",
+		Input:   input,
+		Output:  (*ec2.CreateCoipCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateCoipCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateCoipCidrOutput), req.Error
+}
+
+func (c *Client) CreateCoipPoolWithContext(ctx context.Context, input *ec2.CreateCoipPoolInput, opts ...request.Option) (*ec2.CreateCoipPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateCoipPool",
+		Input:   input,
+		Output:  (*ec2.CreateCoipPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateCoipPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateCoipPoolOutput), req.Error
+}
+
 func (c *Client) CreateCustomerGatewayWithContext(ctx context.Context, input *ec2.CreateCustomerGatewayInput, opts ...request.Option) (*ec2.CreateCustomerGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -2193,6 +2243,48 @@ func (c *Client) CreateLocalGatewayRouteWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.CreateLocalGatewayRouteOutput), req.Error
+}
+
+func (c *Client) CreateLocalGatewayRouteTableWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateLocalGatewayRouteTable",
+		Input:   input,
+		Output:  (*ec2.CreateLocalGatewayRouteTableOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateLocalGatewayRouteTableWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateLocalGatewayRouteTableOutput), req.Error
+}
+
+func (c *Client) CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
+		Input:   input,
+		Output:  (*ec2.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput), req.Error
 }
 
 func (c *Client) CreateLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.CreateLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.CreateLocalGatewayRouteTableVpcAssociationOutput, error) {
@@ -3266,6 +3358,48 @@ func (c *Client) DeleteClientVpnRouteWithContext(ctx context.Context, input *ec2
 	return req.Output.(*ec2.DeleteClientVpnRouteOutput), req.Error
 }
 
+func (c *Client) DeleteCoipCidrWithContext(ctx context.Context, input *ec2.DeleteCoipCidrInput, opts ...request.Option) (*ec2.DeleteCoipCidrOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteCoipCidr",
+		Input:   input,
+		Output:  (*ec2.DeleteCoipCidrOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteCoipCidrWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteCoipCidrOutput), req.Error
+}
+
+func (c *Client) DeleteCoipPoolWithContext(ctx context.Context, input *ec2.DeleteCoipPoolInput, opts ...request.Option) (*ec2.DeleteCoipPoolOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteCoipPool",
+		Input:   input,
+		Output:  (*ec2.DeleteCoipPoolOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteCoipPoolWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteCoipPoolOutput), req.Error
+}
+
 func (c *Client) DeleteCustomerGatewayWithContext(ctx context.Context, input *ec2.DeleteCustomerGatewayInput, opts ...request.Option) (*ec2.DeleteCustomerGatewayOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3579,6 +3713,48 @@ func (c *Client) DeleteLocalGatewayRouteWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ec2.DeleteLocalGatewayRouteOutput), req.Error
+}
+
+func (c *Client) DeleteLocalGatewayRouteTableWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteLocalGatewayRouteTable",
+		Input:   input,
+		Output:  (*ec2.DeleteLocalGatewayRouteTableOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteLocalGatewayRouteTableWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteLocalGatewayRouteTableOutput), req.Error
+}
+
+func (c *Client) DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
+		Input:   input,
+		Output:  (*ec2.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput), req.Error
 }
 
 func (c *Client) DeleteLocalGatewayRouteTableVpcAssociationWithContext(ctx context.Context, input *ec2.DeleteLocalGatewayRouteTableVpcAssociationInput, opts ...request.Option) (*ec2.DeleteLocalGatewayRouteTableVpcAssociationOutput, error) {
