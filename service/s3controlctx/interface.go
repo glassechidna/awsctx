@@ -42,6 +42,7 @@ type S3Control interface {
 	GetBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.GetBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.GetBucketLifecycleConfigurationOutput, error)
 	GetBucketPolicyWithContext(ctx context.Context, input *s3control.GetBucketPolicyInput, opts ...request.Option) (*s3control.GetBucketPolicyOutput, error)
 	GetBucketTaggingWithContext(ctx context.Context, input *s3control.GetBucketTaggingInput, opts ...request.Option) (*s3control.GetBucketTaggingOutput, error)
+	GetBucketVersioningWithContext(ctx context.Context, input *s3control.GetBucketVersioningInput, opts ...request.Option) (*s3control.GetBucketVersioningOutput, error)
 	GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error)
 	GetMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointOutput, error)
 	GetMultiRegionAccessPointPolicyWithContext(ctx context.Context, input *s3control.GetMultiRegionAccessPointPolicyInput, opts ...request.Option) (*s3control.GetMultiRegionAccessPointPolicyOutput, error)
@@ -67,6 +68,7 @@ type S3Control interface {
 	PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.PutBucketLifecycleConfigurationOutput, error)
 	PutBucketPolicyWithContext(ctx context.Context, input *s3control.PutBucketPolicyInput, opts ...request.Option) (*s3control.PutBucketPolicyOutput, error)
 	PutBucketTaggingWithContext(ctx context.Context, input *s3control.PutBucketTaggingInput, opts ...request.Option) (*s3control.PutBucketTaggingOutput, error)
+	PutBucketVersioningWithContext(ctx context.Context, input *s3control.PutBucketVersioningInput, opts ...request.Option) (*s3control.PutBucketVersioningOutput, error)
 	PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error)
 	PutMultiRegionAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutMultiRegionAccessPointPolicyInput, opts ...request.Option) (*s3control.PutMultiRegionAccessPointPolicyOutput, error)
 	PutPublicAccessBlockWithContext(ctx context.Context, input *s3control.PutPublicAccessBlockInput, opts ...request.Option) (*s3control.PutPublicAccessBlockOutput, error)
@@ -742,6 +744,27 @@ func (c *Client) GetBucketTaggingWithContext(ctx context.Context, input *s3contr
 	return req.Output.(*s3control.GetBucketTaggingOutput), req.Error
 }
 
+func (c *Client) GetBucketVersioningWithContext(ctx context.Context, input *s3control.GetBucketVersioningInput, opts ...request.Option) (*s3control.GetBucketVersioningOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetBucketVersioning",
+		Input:   input,
+		Output:  (*s3control.GetBucketVersioningOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetBucketVersioningWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetBucketVersioningOutput), req.Error
+}
+
 func (c *Client) GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -1259,6 +1282,27 @@ func (c *Client) PutBucketTaggingWithContext(ctx context.Context, input *s3contr
 	})
 
 	return req.Output.(*s3control.PutBucketTaggingOutput), req.Error
+}
+
+func (c *Client) PutBucketVersioningWithContext(ctx context.Context, input *s3control.PutBucketVersioningInput, opts ...request.Option) (*s3control.PutBucketVersioningOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutBucketVersioning",
+		Input:   input,
+		Output:  (*s3control.PutBucketVersioningOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutBucketVersioningWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutBucketVersioningOutput), req.Error
 }
 
 func (c *Client) PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error) {

@@ -16,6 +16,7 @@ type Comprehend interface {
 	BatchDetectKeyPhrasesWithContext(ctx context.Context, input *comprehend.BatchDetectKeyPhrasesInput, opts ...request.Option) (*comprehend.BatchDetectKeyPhrasesOutput, error)
 	BatchDetectSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectSentimentInput, opts ...request.Option) (*comprehend.BatchDetectSentimentOutput, error)
 	BatchDetectSyntaxWithContext(ctx context.Context, input *comprehend.BatchDetectSyntaxInput, opts ...request.Option) (*comprehend.BatchDetectSyntaxOutput, error)
+	BatchDetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectTargetedSentimentInput, opts ...request.Option) (*comprehend.BatchDetectTargetedSentimentOutput, error)
 	ClassifyDocumentWithContext(ctx context.Context, input *comprehend.ClassifyDocumentInput, opts ...request.Option) (*comprehend.ClassifyDocumentOutput, error)
 	ContainsPiiEntitiesWithContext(ctx context.Context, input *comprehend.ContainsPiiEntitiesInput, opts ...request.Option) (*comprehend.ContainsPiiEntitiesOutput, error)
 	CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error)
@@ -44,6 +45,7 @@ type Comprehend interface {
 	DetectPiiEntitiesWithContext(ctx context.Context, input *comprehend.DetectPiiEntitiesInput, opts ...request.Option) (*comprehend.DetectPiiEntitiesOutput, error)
 	DetectSentimentWithContext(ctx context.Context, input *comprehend.DetectSentimentInput, opts ...request.Option) (*comprehend.DetectSentimentOutput, error)
 	DetectSyntaxWithContext(ctx context.Context, input *comprehend.DetectSyntaxInput, opts ...request.Option) (*comprehend.DetectSyntaxOutput, error)
+	DetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.DetectTargetedSentimentInput, opts ...request.Option) (*comprehend.DetectTargetedSentimentOutput, error)
 	ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error)
 	ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error)
 	ListDocumentClassificationJobsPagesWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, cb func(*comprehend.ListDocumentClassificationJobsOutput, bool) bool, opts ...request.Option) error
@@ -214,6 +216,27 @@ func (c *Client) BatchDetectSyntaxWithContext(ctx context.Context, input *compre
 	})
 
 	return req.Output.(*comprehend.BatchDetectSyntaxOutput), req.Error
+}
+
+func (c *Client) BatchDetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectTargetedSentimentInput, opts ...request.Option) (*comprehend.BatchDetectTargetedSentimentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "BatchDetectTargetedSentiment",
+		Input:   input,
+		Output:  (*comprehend.BatchDetectTargetedSentimentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.BatchDetectTargetedSentimentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.BatchDetectTargetedSentimentOutput), req.Error
 }
 
 func (c *Client) ClassifyDocumentWithContext(ctx context.Context, input *comprehend.ClassifyDocumentInput, opts ...request.Option) (*comprehend.ClassifyDocumentOutput, error) {
@@ -802,6 +825,27 @@ func (c *Client) DetectSyntaxWithContext(ctx context.Context, input *comprehend.
 	})
 
 	return req.Output.(*comprehend.DetectSyntaxOutput), req.Error
+}
+
+func (c *Client) DetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.DetectTargetedSentimentInput, opts ...request.Option) (*comprehend.DetectTargetedSentimentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DetectTargetedSentiment",
+		Input:   input,
+		Output:  (*comprehend.DetectTargetedSentimentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DetectTargetedSentimentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DetectTargetedSentimentOutput), req.Error
 }
 
 func (c *Client) ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error) {
