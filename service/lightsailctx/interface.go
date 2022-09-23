@@ -162,6 +162,7 @@ type Lightsail interface {
 	UpdateDistributionWithContext(ctx context.Context, input *lightsail.UpdateDistributionInput, opts ...request.Option) (*lightsail.UpdateDistributionOutput, error)
 	UpdateDistributionBundleWithContext(ctx context.Context, input *lightsail.UpdateDistributionBundleInput, opts ...request.Option) (*lightsail.UpdateDistributionBundleOutput, error)
 	UpdateDomainEntryWithContext(ctx context.Context, input *lightsail.UpdateDomainEntryInput, opts ...request.Option) (*lightsail.UpdateDomainEntryOutput, error)
+	UpdateInstanceMetadataOptionsWithContext(ctx context.Context, input *lightsail.UpdateInstanceMetadataOptionsInput, opts ...request.Option) (*lightsail.UpdateInstanceMetadataOptionsOutput, error)
 	UpdateLoadBalancerAttributeWithContext(ctx context.Context, input *lightsail.UpdateLoadBalancerAttributeInput, opts ...request.Option) (*lightsail.UpdateLoadBalancerAttributeOutput, error)
 	UpdateRelationalDatabaseWithContext(ctx context.Context, input *lightsail.UpdateRelationalDatabaseInput, opts ...request.Option) (*lightsail.UpdateRelationalDatabaseOutput, error)
 	UpdateRelationalDatabaseParametersWithContext(ctx context.Context, input *lightsail.UpdateRelationalDatabaseParametersInput, opts ...request.Option) (*lightsail.UpdateRelationalDatabaseParametersOutput, error)
@@ -3351,6 +3352,27 @@ func (c *Client) UpdateDomainEntryWithContext(ctx context.Context, input *lights
 	})
 
 	return req.Output.(*lightsail.UpdateDomainEntryOutput), req.Error
+}
+
+func (c *Client) UpdateInstanceMetadataOptionsWithContext(ctx context.Context, input *lightsail.UpdateInstanceMetadataOptionsInput, opts ...request.Option) (*lightsail.UpdateInstanceMetadataOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "UpdateInstanceMetadataOptions",
+		Input:   input,
+		Output:  (*lightsail.UpdateInstanceMetadataOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.UpdateInstanceMetadataOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.UpdateInstanceMetadataOptionsOutput), req.Error
 }
 
 func (c *Client) UpdateLoadBalancerAttributeWithContext(ctx context.Context, input *lightsail.UpdateLoadBalancerAttributeInput, opts ...request.Option) (*lightsail.UpdateLoadBalancerAttributeOutput, error) {
