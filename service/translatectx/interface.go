@@ -22,13 +22,16 @@ type Translate interface {
 	ListLanguagesPagesWithContext(ctx context.Context, input *translate.ListLanguagesInput, cb func(*translate.ListLanguagesOutput, bool) bool, opts ...request.Option) error
 	ListParallelDataWithContext(ctx context.Context, input *translate.ListParallelDataInput, opts ...request.Option) (*translate.ListParallelDataOutput, error)
 	ListParallelDataPagesWithContext(ctx context.Context, input *translate.ListParallelDataInput, cb func(*translate.ListParallelDataOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *translate.ListTagsForResourceInput, opts ...request.Option) (*translate.ListTagsForResourceOutput, error)
 	ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error)
 	ListTerminologiesPagesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, cb func(*translate.ListTerminologiesOutput, bool) bool, opts ...request.Option) error
 	ListTextTranslationJobsWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, opts ...request.Option) (*translate.ListTextTranslationJobsOutput, error)
 	ListTextTranslationJobsPagesWithContext(ctx context.Context, input *translate.ListTextTranslationJobsInput, cb func(*translate.ListTextTranslationJobsOutput, bool) bool, opts ...request.Option) error
 	StartTextTranslationJobWithContext(ctx context.Context, input *translate.StartTextTranslationJobInput, opts ...request.Option) (*translate.StartTextTranslationJobOutput, error)
 	StopTextTranslationJobWithContext(ctx context.Context, input *translate.StopTextTranslationJobInput, opts ...request.Option) (*translate.StopTextTranslationJobOutput, error)
+	TagResourceWithContext(ctx context.Context, input *translate.TagResourceInput, opts ...request.Option) (*translate.TagResourceOutput, error)
 	TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *translate.UntagResourceInput, opts ...request.Option) (*translate.UntagResourceOutput, error)
 	UpdateParallelDataWithContext(ctx context.Context, input *translate.UpdateParallelDataInput, opts ...request.Option) (*translate.UpdateParallelDataOutput, error)
 }
 
@@ -276,6 +279,27 @@ func (c *Client) ListParallelDataPagesWithContext(ctx context.Context, input *tr
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *translate.ListTagsForResourceInput, opts ...request.Option) (*translate.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*translate.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListTerminologiesWithContext(ctx context.Context, input *translate.ListTerminologiesInput, opts ...request.Option) (*translate.ListTerminologiesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
@@ -400,6 +424,27 @@ func (c *Client) StopTextTranslationJobWithContext(ctx context.Context, input *t
 	return req.Output.(*translate.StopTextTranslationJobOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *translate.TagResourceInput, opts ...request.Option) (*translate.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*translate.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.TagResourceOutput), req.Error
+}
+
 func (c *Client) TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "translate",
@@ -419,6 +464,27 @@ func (c *Client) TextWithContext(ctx context.Context, input *translate.TextInput
 	})
 
 	return req.Output.(*translate.TextOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *translate.UntagResourceInput, opts ...request.Option) (*translate.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*translate.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.UntagResourceOutput), req.Error
 }
 
 func (c *Client) UpdateParallelDataWithContext(ctx context.Context, input *translate.UpdateParallelDataInput, opts ...request.Option) (*translate.UpdateParallelDataOutput, error) {
