@@ -29,11 +29,15 @@ type Snowball interface {
 	GetSnowballUsageWithContext(ctx context.Context, input *snowball.GetSnowballUsageInput, opts ...request.Option) (*snowball.GetSnowballUsageOutput, error)
 	GetSoftwareUpdatesWithContext(ctx context.Context, input *snowball.GetSoftwareUpdatesInput, opts ...request.Option) (*snowball.GetSoftwareUpdatesOutput, error)
 	ListClusterJobsWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, opts ...request.Option) (*snowball.ListClusterJobsOutput, error)
+	ListClusterJobsPagesWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, cb func(*snowball.ListClusterJobsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *snowball.ListClustersInput, opts ...request.Option) (*snowball.ListClustersOutput, error)
+	ListClustersPagesWithContext(ctx context.Context, input *snowball.ListClustersInput, cb func(*snowball.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error)
+	ListCompatibleImagesPagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, cb func(*snowball.ListCompatibleImagesOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *snowball.ListJobsInput, opts ...request.Option) (*snowball.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *snowball.ListJobsInput, cb func(*snowball.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListLongTermPricingWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, opts ...request.Option) (*snowball.ListLongTermPricingOutput, error)
+	ListLongTermPricingPagesWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, cb func(*snowball.ListLongTermPricingOutput, bool) bool, opts ...request.Option) error
 	UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *snowball.UpdateJobInput, opts ...request.Option) (*snowball.UpdateJobOutput, error)
 	UpdateJobShipmentStateWithContext(ctx context.Context, input *snowball.UpdateJobShipmentStateInput, opts ...request.Option) (*snowball.UpdateJobShipmentStateOutput, error)
@@ -432,6 +436,26 @@ func (c *Client) ListClusterJobsWithContext(ctx context.Context, input *snowball
 	return req.Output.(*snowball.ListClusterJobsOutput), req.Error
 }
 
+func (c *Client) ListClusterJobsPagesWithContext(ctx context.Context, input *snowball.ListClusterJobsInput, cb func(*snowball.ListClusterJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListClusterJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.ListClusterJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListClustersWithContext(ctx context.Context, input *snowball.ListClustersInput, opts ...request.Option) (*snowball.ListClustersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
@@ -453,6 +477,26 @@ func (c *Client) ListClustersWithContext(ctx context.Context, input *snowball.Li
 	return req.Output.(*snowball.ListClustersOutput), req.Error
 }
 
+func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *snowball.ListClustersInput, cb func(*snowball.ListClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.ListClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListCompatibleImagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, opts ...request.Option) (*snowball.ListCompatibleImagesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "snowball",
@@ -472,6 +516,26 @@ func (c *Client) ListCompatibleImagesWithContext(ctx context.Context, input *sno
 	})
 
 	return req.Output.(*snowball.ListCompatibleImagesOutput), req.Error
+}
+
+func (c *Client) ListCompatibleImagesPagesWithContext(ctx context.Context, input *snowball.ListCompatibleImagesInput, cb func(*snowball.ListCompatibleImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListCompatibleImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.ListCompatibleImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListJobsWithContext(ctx context.Context, input *snowball.ListJobsInput, opts ...request.Option) (*snowball.ListJobsOutput, error) {
@@ -534,6 +598,26 @@ func (c *Client) ListLongTermPricingWithContext(ctx context.Context, input *snow
 	})
 
 	return req.Output.(*snowball.ListLongTermPricingOutput), req.Error
+}
+
+func (c *Client) ListLongTermPricingPagesWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, cb func(*snowball.ListLongTermPricingOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListLongTermPricing",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.ListLongTermPricingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error) {
