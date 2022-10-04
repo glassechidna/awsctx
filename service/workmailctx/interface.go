@@ -13,10 +13,12 @@ import (
 type WorkMail interface {
 	AssociateDelegateToResourceWithContext(ctx context.Context, input *workmail.AssociateDelegateToResourceInput, opts ...request.Option) (*workmail.AssociateDelegateToResourceOutput, error)
 	AssociateMemberToGroupWithContext(ctx context.Context, input *workmail.AssociateMemberToGroupInput, opts ...request.Option) (*workmail.AssociateMemberToGroupOutput, error)
+	AssumeImpersonationRoleWithContext(ctx context.Context, input *workmail.AssumeImpersonationRoleInput, opts ...request.Option) (*workmail.AssumeImpersonationRoleOutput, error)
 	CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error)
 	CreateAliasWithContext(ctx context.Context, input *workmail.CreateAliasInput, opts ...request.Option) (*workmail.CreateAliasOutput, error)
 	CreateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.CreateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.CreateAvailabilityConfigurationOutput, error)
 	CreateGroupWithContext(ctx context.Context, input *workmail.CreateGroupInput, opts ...request.Option) (*workmail.CreateGroupOutput, error)
+	CreateImpersonationRoleWithContext(ctx context.Context, input *workmail.CreateImpersonationRoleInput, opts ...request.Option) (*workmail.CreateImpersonationRoleOutput, error)
 	CreateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.CreateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.CreateMobileDeviceAccessRuleOutput, error)
 	CreateOrganizationWithContext(ctx context.Context, input *workmail.CreateOrganizationInput, opts ...request.Option) (*workmail.CreateOrganizationOutput, error)
 	CreateResourceWithContext(ctx context.Context, input *workmail.CreateResourceInput, opts ...request.Option) (*workmail.CreateResourceOutput, error)
@@ -26,6 +28,7 @@ type WorkMail interface {
 	DeleteAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.DeleteAvailabilityConfigurationInput, opts ...request.Option) (*workmail.DeleteAvailabilityConfigurationOutput, error)
 	DeleteEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DeleteEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DeleteEmailMonitoringConfigurationOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *workmail.DeleteGroupInput, opts ...request.Option) (*workmail.DeleteGroupOutput, error)
+	DeleteImpersonationRoleWithContext(ctx context.Context, input *workmail.DeleteImpersonationRoleInput, opts ...request.Option) (*workmail.DeleteImpersonationRoleOutput, error)
 	DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error)
 	DeleteMobileDeviceAccessOverrideWithContext(ctx context.Context, input *workmail.DeleteMobileDeviceAccessOverrideInput, opts ...request.Option) (*workmail.DeleteMobileDeviceAccessOverrideOutput, error)
 	DeleteMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.DeleteMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.DeleteMobileDeviceAccessRuleOutput, error)
@@ -46,6 +49,8 @@ type WorkMail interface {
 	DisassociateMemberFromGroupWithContext(ctx context.Context, input *workmail.DisassociateMemberFromGroupInput, opts ...request.Option) (*workmail.DisassociateMemberFromGroupOutput, error)
 	GetAccessControlEffectWithContext(ctx context.Context, input *workmail.GetAccessControlEffectInput, opts ...request.Option) (*workmail.GetAccessControlEffectOutput, error)
 	GetDefaultRetentionPolicyWithContext(ctx context.Context, input *workmail.GetDefaultRetentionPolicyInput, opts ...request.Option) (*workmail.GetDefaultRetentionPolicyOutput, error)
+	GetImpersonationRoleWithContext(ctx context.Context, input *workmail.GetImpersonationRoleInput, opts ...request.Option) (*workmail.GetImpersonationRoleOutput, error)
+	GetImpersonationRoleEffectWithContext(ctx context.Context, input *workmail.GetImpersonationRoleEffectInput, opts ...request.Option) (*workmail.GetImpersonationRoleEffectOutput, error)
 	GetMailDomainWithContext(ctx context.Context, input *workmail.GetMailDomainInput, opts ...request.Option) (*workmail.GetMailDomainOutput, error)
 	GetMailboxDetailsWithContext(ctx context.Context, input *workmail.GetMailboxDetailsInput, opts ...request.Option) (*workmail.GetMailboxDetailsOutput, error)
 	GetMobileDeviceAccessEffectWithContext(ctx context.Context, input *workmail.GetMobileDeviceAccessEffectInput, opts ...request.Option) (*workmail.GetMobileDeviceAccessEffectOutput, error)
@@ -59,6 +64,8 @@ type WorkMail interface {
 	ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error)
 	ListGroupsPagesWithContext(ctx context.Context, input *workmail.ListGroupsInput, cb func(*workmail.ListGroupsOutput, bool) bool, opts ...request.Option) error
+	ListImpersonationRolesWithContext(ctx context.Context, input *workmail.ListImpersonationRolesInput, opts ...request.Option) (*workmail.ListImpersonationRolesOutput, error)
+	ListImpersonationRolesPagesWithContext(ctx context.Context, input *workmail.ListImpersonationRolesInput, cb func(*workmail.ListImpersonationRolesOutput, bool) bool, opts ...request.Option) error
 	ListMailDomainsWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, opts ...request.Option) (*workmail.ListMailDomainsOutput, error)
 	ListMailDomainsPagesWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, cb func(*workmail.ListMailDomainsOutput, bool) bool, opts ...request.Option) error
 	ListMailboxExportJobsWithContext(ctx context.Context, input *workmail.ListMailboxExportJobsInput, opts ...request.Option) (*workmail.ListMailboxExportJobsOutput, error)
@@ -92,6 +99,7 @@ type WorkMail interface {
 	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
 	UpdateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.UpdateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.UpdateAvailabilityConfigurationOutput, error)
 	UpdateDefaultMailDomainWithContext(ctx context.Context, input *workmail.UpdateDefaultMailDomainInput, opts ...request.Option) (*workmail.UpdateDefaultMailDomainOutput, error)
+	UpdateImpersonationRoleWithContext(ctx context.Context, input *workmail.UpdateImpersonationRoleInput, opts ...request.Option) (*workmail.UpdateImpersonationRoleOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
 	UpdateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.UpdateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.UpdateMobileDeviceAccessRuleOutput, error)
 	UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error)
@@ -153,6 +161,27 @@ func (c *Client) AssociateMemberToGroupWithContext(ctx context.Context, input *w
 	})
 
 	return req.Output.(*workmail.AssociateMemberToGroupOutput), req.Error
+}
+
+func (c *Client) AssumeImpersonationRoleWithContext(ctx context.Context, input *workmail.AssumeImpersonationRoleInput, opts ...request.Option) (*workmail.AssumeImpersonationRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "AssumeImpersonationRole",
+		Input:   input,
+		Output:  (*workmail.AssumeImpersonationRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.AssumeImpersonationRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.AssumeImpersonationRoleOutput), req.Error
 }
 
 func (c *Client) CancelMailboxExportJobWithContext(ctx context.Context, input *workmail.CancelMailboxExportJobInput, opts ...request.Option) (*workmail.CancelMailboxExportJobOutput, error) {
@@ -237,6 +266,27 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, input *workmail.Cre
 	})
 
 	return req.Output.(*workmail.CreateGroupOutput), req.Error
+}
+
+func (c *Client) CreateImpersonationRoleWithContext(ctx context.Context, input *workmail.CreateImpersonationRoleInput, opts ...request.Option) (*workmail.CreateImpersonationRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "CreateImpersonationRole",
+		Input:   input,
+		Output:  (*workmail.CreateImpersonationRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.CreateImpersonationRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.CreateImpersonationRoleOutput), req.Error
 }
 
 func (c *Client) CreateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.CreateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.CreateMobileDeviceAccessRuleOutput, error) {
@@ -426,6 +476,27 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *workmail.Del
 	})
 
 	return req.Output.(*workmail.DeleteGroupOutput), req.Error
+}
+
+func (c *Client) DeleteImpersonationRoleWithContext(ctx context.Context, input *workmail.DeleteImpersonationRoleInput, opts ...request.Option) (*workmail.DeleteImpersonationRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DeleteImpersonationRole",
+		Input:   input,
+		Output:  (*workmail.DeleteImpersonationRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DeleteImpersonationRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DeleteImpersonationRoleOutput), req.Error
 }
 
 func (c *Client) DeleteMailboxPermissionsWithContext(ctx context.Context, input *workmail.DeleteMailboxPermissionsInput, opts ...request.Option) (*workmail.DeleteMailboxPermissionsOutput, error) {
@@ -848,6 +919,48 @@ func (c *Client) GetDefaultRetentionPolicyWithContext(ctx context.Context, input
 	return req.Output.(*workmail.GetDefaultRetentionPolicyOutput), req.Error
 }
 
+func (c *Client) GetImpersonationRoleWithContext(ctx context.Context, input *workmail.GetImpersonationRoleInput, opts ...request.Option) (*workmail.GetImpersonationRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "GetImpersonationRole",
+		Input:   input,
+		Output:  (*workmail.GetImpersonationRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.GetImpersonationRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.GetImpersonationRoleOutput), req.Error
+}
+
+func (c *Client) GetImpersonationRoleEffectWithContext(ctx context.Context, input *workmail.GetImpersonationRoleEffectInput, opts ...request.Option) (*workmail.GetImpersonationRoleEffectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "GetImpersonationRoleEffect",
+		Input:   input,
+		Output:  (*workmail.GetImpersonationRoleEffectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.GetImpersonationRoleEffectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.GetImpersonationRoleEffectOutput), req.Error
+}
+
 func (c *Client) GetMailDomainWithContext(ctx context.Context, input *workmail.GetMailDomainInput, opts ...request.Option) (*workmail.GetMailDomainOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -1112,6 +1225,47 @@ func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *workmail
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.WorkMailAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListImpersonationRolesWithContext(ctx context.Context, input *workmail.ListImpersonationRolesInput, opts ...request.Option) (*workmail.ListImpersonationRolesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListImpersonationRoles",
+		Input:   input,
+		Output:  (*workmail.ListImpersonationRolesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListImpersonationRolesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListImpersonationRolesOutput), req.Error
+}
+
+func (c *Client) ListImpersonationRolesPagesWithContext(ctx context.Context, input *workmail.ListImpersonationRolesInput, cb func(*workmail.ListImpersonationRolesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListImpersonationRoles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListImpersonationRolesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1800,6 +1954,27 @@ func (c *Client) UpdateDefaultMailDomainWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*workmail.UpdateDefaultMailDomainOutput), req.Error
+}
+
+func (c *Client) UpdateImpersonationRoleWithContext(ctx context.Context, input *workmail.UpdateImpersonationRoleInput, opts ...request.Option) (*workmail.UpdateImpersonationRoleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UpdateImpersonationRole",
+		Input:   input,
+		Output:  (*workmail.UpdateImpersonationRoleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UpdateImpersonationRoleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UpdateImpersonationRoleOutput), req.Error
 }
 
 func (c *Client) UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error) {
