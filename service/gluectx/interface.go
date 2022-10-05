@@ -221,10 +221,12 @@ type Glue interface {
 	UpdateDatabaseWithContext(ctx context.Context, input *glue.UpdateDatabaseInput, opts ...request.Option) (*glue.UpdateDatabaseOutput, error)
 	UpdateDevEndpointWithContext(ctx context.Context, input *glue.UpdateDevEndpointInput, opts ...request.Option) (*glue.UpdateDevEndpointOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *glue.UpdateJobInput, opts ...request.Option) (*glue.UpdateJobOutput, error)
+	UpdateJobFromSourceControlWithContext(ctx context.Context, input *glue.UpdateJobFromSourceControlInput, opts ...request.Option) (*glue.UpdateJobFromSourceControlOutput, error)
 	UpdateMLTransformWithContext(ctx context.Context, input *glue.UpdateMLTransformInput, opts ...request.Option) (*glue.UpdateMLTransformOutput, error)
 	UpdatePartitionWithContext(ctx context.Context, input *glue.UpdatePartitionInput, opts ...request.Option) (*glue.UpdatePartitionOutput, error)
 	UpdateRegistryWithContext(ctx context.Context, input *glue.UpdateRegistryInput, opts ...request.Option) (*glue.UpdateRegistryOutput, error)
 	UpdateSchemaWithContext(ctx context.Context, input *glue.UpdateSchemaInput, opts ...request.Option) (*glue.UpdateSchemaOutput, error)
+	UpdateSourceControlFromJobWithContext(ctx context.Context, input *glue.UpdateSourceControlFromJobInput, opts ...request.Option) (*glue.UpdateSourceControlFromJobOutput, error)
 	UpdateTableWithContext(ctx context.Context, input *glue.UpdateTableInput, opts ...request.Option) (*glue.UpdateTableOutput, error)
 	UpdateTriggerWithContext(ctx context.Context, input *glue.UpdateTriggerInput, opts ...request.Option) (*glue.UpdateTriggerOutput, error)
 	UpdateUserDefinedFunctionWithContext(ctx context.Context, input *glue.UpdateUserDefinedFunctionInput, opts ...request.Option) (*glue.UpdateUserDefinedFunctionOutput, error)
@@ -4622,6 +4624,27 @@ func (c *Client) UpdateJobWithContext(ctx context.Context, input *glue.UpdateJob
 	return req.Output.(*glue.UpdateJobOutput), req.Error
 }
 
+func (c *Client) UpdateJobFromSourceControlWithContext(ctx context.Context, input *glue.UpdateJobFromSourceControlInput, opts ...request.Option) (*glue.UpdateJobFromSourceControlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateJobFromSourceControl",
+		Input:   input,
+		Output:  (*glue.UpdateJobFromSourceControlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateJobFromSourceControlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateJobFromSourceControlOutput), req.Error
+}
+
 func (c *Client) UpdateMLTransformWithContext(ctx context.Context, input *glue.UpdateMLTransformInput, opts ...request.Option) (*glue.UpdateMLTransformOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -4704,6 +4727,27 @@ func (c *Client) UpdateSchemaWithContext(ctx context.Context, input *glue.Update
 	})
 
 	return req.Output.(*glue.UpdateSchemaOutput), req.Error
+}
+
+func (c *Client) UpdateSourceControlFromJobWithContext(ctx context.Context, input *glue.UpdateSourceControlFromJobInput, opts ...request.Option) (*glue.UpdateSourceControlFromJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateSourceControlFromJob",
+		Input:   input,
+		Output:  (*glue.UpdateSourceControlFromJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateSourceControlFromJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateSourceControlFromJobOutput), req.Error
 }
 
 func (c *Client) UpdateTableWithContext(ctx context.Context, input *glue.UpdateTableInput, opts ...request.Option) (*glue.UpdateTableOutput, error) {
