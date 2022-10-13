@@ -34,17 +34,26 @@ type DirectoryService interface {
 	DeregisterEventTopicWithContext(ctx context.Context, input *directoryservice.DeregisterEventTopicInput, opts ...request.Option) (*directoryservice.DeregisterEventTopicOutput, error)
 	DescribeCertificateWithContext(ctx context.Context, input *directoryservice.DescribeCertificateInput, opts ...request.Option) (*directoryservice.DescribeCertificateOutput, error)
 	DescribeClientAuthenticationSettingsWithContext(ctx context.Context, input *directoryservice.DescribeClientAuthenticationSettingsInput, opts ...request.Option) (*directoryservice.DescribeClientAuthenticationSettingsOutput, error)
+	DescribeClientAuthenticationSettingsPagesWithContext(ctx context.Context, input *directoryservice.DescribeClientAuthenticationSettingsInput, cb func(*directoryservice.DescribeClientAuthenticationSettingsOutput, bool) bool, opts ...request.Option) error
 	DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error)
 	DescribeDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeDirectoriesOutput, error)
+	DescribeDirectoriesPagesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, cb func(*directoryservice.DescribeDirectoriesOutput, bool) bool, opts ...request.Option) error
 	DescribeDomainControllersWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, opts ...request.Option) (*directoryservice.DescribeDomainControllersOutput, error)
 	DescribeDomainControllersPagesWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, cb func(*directoryservice.DescribeDomainControllersOutput, bool) bool, opts ...request.Option) error
 	DescribeEventTopicsWithContext(ctx context.Context, input *directoryservice.DescribeEventTopicsInput, opts ...request.Option) (*directoryservice.DescribeEventTopicsOutput, error)
 	DescribeLDAPSSettingsWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, opts ...request.Option) (*directoryservice.DescribeLDAPSSettingsOutput, error)
+	DescribeLDAPSSettingsPagesWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, cb func(*directoryservice.DescribeLDAPSSettingsOutput, bool) bool, opts ...request.Option) error
 	DescribeRegionsWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, opts ...request.Option) (*directoryservice.DescribeRegionsOutput, error)
+	DescribeRegionsPagesWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, cb func(*directoryservice.DescribeRegionsOutput, bool) bool, opts ...request.Option) error
 	DescribeSettingsWithContext(ctx context.Context, input *directoryservice.DescribeSettingsInput, opts ...request.Option) (*directoryservice.DescribeSettingsOutput, error)
 	DescribeSharedDirectoriesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, opts ...request.Option) (*directoryservice.DescribeSharedDirectoriesOutput, error)
+	DescribeSharedDirectoriesPagesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, cb func(*directoryservice.DescribeSharedDirectoriesOutput, bool) bool, opts ...request.Option) error
 	DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error)
+	DescribeSnapshotsPagesWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, cb func(*directoryservice.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error)
+	DescribeTrustsPagesWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, cb func(*directoryservice.DescribeTrustsOutput, bool) bool, opts ...request.Option) error
+	DescribeUpdateDirectoryWithContext(ctx context.Context, input *directoryservice.DescribeUpdateDirectoryInput, opts ...request.Option) (*directoryservice.DescribeUpdateDirectoryOutput, error)
+	DescribeUpdateDirectoryPagesWithContext(ctx context.Context, input *directoryservice.DescribeUpdateDirectoryInput, cb func(*directoryservice.DescribeUpdateDirectoryOutput, bool) bool, opts ...request.Option) error
 	DisableClientAuthenticationWithContext(ctx context.Context, input *directoryservice.DisableClientAuthenticationInput, opts ...request.Option) (*directoryservice.DisableClientAuthenticationOutput, error)
 	DisableLDAPSWithContext(ctx context.Context, input *directoryservice.DisableLDAPSInput, opts ...request.Option) (*directoryservice.DisableLDAPSOutput, error)
 	DisableRadiusWithContext(ctx context.Context, input *directoryservice.DisableRadiusInput, opts ...request.Option) (*directoryservice.DisableRadiusOutput, error)
@@ -56,10 +65,15 @@ type DirectoryService interface {
 	GetDirectoryLimitsWithContext(ctx context.Context, input *directoryservice.GetDirectoryLimitsInput, opts ...request.Option) (*directoryservice.GetDirectoryLimitsOutput, error)
 	GetSnapshotLimitsWithContext(ctx context.Context, input *directoryservice.GetSnapshotLimitsInput, opts ...request.Option) (*directoryservice.GetSnapshotLimitsOutput, error)
 	ListCertificatesWithContext(ctx context.Context, input *directoryservice.ListCertificatesInput, opts ...request.Option) (*directoryservice.ListCertificatesOutput, error)
+	ListCertificatesPagesWithContext(ctx context.Context, input *directoryservice.ListCertificatesInput, cb func(*directoryservice.ListCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListIpRoutesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, opts ...request.Option) (*directoryservice.ListIpRoutesOutput, error)
+	ListIpRoutesPagesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, cb func(*directoryservice.ListIpRoutesOutput, bool) bool, opts ...request.Option) error
 	ListLogSubscriptionsWithContext(ctx context.Context, input *directoryservice.ListLogSubscriptionsInput, opts ...request.Option) (*directoryservice.ListLogSubscriptionsOutput, error)
+	ListLogSubscriptionsPagesWithContext(ctx context.Context, input *directoryservice.ListLogSubscriptionsInput, cb func(*directoryservice.ListLogSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	ListSchemaExtensionsWithContext(ctx context.Context, input *directoryservice.ListSchemaExtensionsInput, opts ...request.Option) (*directoryservice.ListSchemaExtensionsOutput, error)
+	ListSchemaExtensionsPagesWithContext(ctx context.Context, input *directoryservice.ListSchemaExtensionsInput, cb func(*directoryservice.ListSchemaExtensionsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *directoryservice.ListTagsForResourceInput, opts ...request.Option) (*directoryservice.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *directoryservice.ListTagsForResourceInput, cb func(*directoryservice.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	RegisterCertificateWithContext(ctx context.Context, input *directoryservice.RegisterCertificateInput, opts ...request.Option) (*directoryservice.RegisterCertificateOutput, error)
 	RegisterEventTopicWithContext(ctx context.Context, input *directoryservice.RegisterEventTopicInput, opts ...request.Option) (*directoryservice.RegisterEventTopicOutput, error)
 	RejectSharedDirectoryWithContext(ctx context.Context, input *directoryservice.RejectSharedDirectoryInput, opts ...request.Option) (*directoryservice.RejectSharedDirectoryOutput, error)
@@ -72,6 +86,7 @@ type DirectoryService interface {
 	StartSchemaExtensionWithContext(ctx context.Context, input *directoryservice.StartSchemaExtensionInput, opts ...request.Option) (*directoryservice.StartSchemaExtensionOutput, error)
 	UnshareDirectoryWithContext(ctx context.Context, input *directoryservice.UnshareDirectoryInput, opts ...request.Option) (*directoryservice.UnshareDirectoryOutput, error)
 	UpdateConditionalForwarderWithContext(ctx context.Context, input *directoryservice.UpdateConditionalForwarderInput, opts ...request.Option) (*directoryservice.UpdateConditionalForwarderOutput, error)
+	UpdateDirectorySetupWithContext(ctx context.Context, input *directoryservice.UpdateDirectorySetupInput, opts ...request.Option) (*directoryservice.UpdateDirectorySetupOutput, error)
 	UpdateNumberOfDomainControllersWithContext(ctx context.Context, input *directoryservice.UpdateNumberOfDomainControllersInput, opts ...request.Option) (*directoryservice.UpdateNumberOfDomainControllersOutput, error)
 	UpdateRadiusWithContext(ctx context.Context, input *directoryservice.UpdateRadiusInput, opts ...request.Option) (*directoryservice.UpdateRadiusOutput, error)
 	UpdateSettingsWithContext(ctx context.Context, input *directoryservice.UpdateSettingsInput, opts ...request.Option) (*directoryservice.UpdateSettingsOutput, error)
@@ -577,6 +592,26 @@ func (c *Client) DescribeClientAuthenticationSettingsWithContext(ctx context.Con
 	return req.Output.(*directoryservice.DescribeClientAuthenticationSettingsOutput), req.Error
 }
 
+func (c *Client) DescribeClientAuthenticationSettingsPagesWithContext(ctx context.Context, input *directoryservice.DescribeClientAuthenticationSettingsInput, cb func(*directoryservice.DescribeClientAuthenticationSettingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeClientAuthenticationSettings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeClientAuthenticationSettingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeConditionalForwardersWithContext(ctx context.Context, input *directoryservice.DescribeConditionalForwardersInput, opts ...request.Option) (*directoryservice.DescribeConditionalForwardersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -617,6 +652,26 @@ func (c *Client) DescribeDirectoriesWithContext(ctx context.Context, input *dire
 	})
 
 	return req.Output.(*directoryservice.DescribeDirectoriesOutput), req.Error
+}
+
+func (c *Client) DescribeDirectoriesPagesWithContext(ctx context.Context, input *directoryservice.DescribeDirectoriesInput, cb func(*directoryservice.DescribeDirectoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeDirectories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeDirectoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDomainControllersWithContext(ctx context.Context, input *directoryservice.DescribeDomainControllersInput, opts ...request.Option) (*directoryservice.DescribeDomainControllersOutput, error) {
@@ -702,6 +757,26 @@ func (c *Client) DescribeLDAPSSettingsWithContext(ctx context.Context, input *di
 	return req.Output.(*directoryservice.DescribeLDAPSSettingsOutput), req.Error
 }
 
+func (c *Client) DescribeLDAPSSettingsPagesWithContext(ctx context.Context, input *directoryservice.DescribeLDAPSSettingsInput, cb func(*directoryservice.DescribeLDAPSSettingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeLDAPSSettings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeLDAPSSettingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, opts ...request.Option) (*directoryservice.DescribeRegionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -721,6 +796,26 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, input *director
 	})
 
 	return req.Output.(*directoryservice.DescribeRegionsOutput), req.Error
+}
+
+func (c *Client) DescribeRegionsPagesWithContext(ctx context.Context, input *directoryservice.DescribeRegionsInput, cb func(*directoryservice.DescribeRegionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeRegions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeRegionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeSettingsWithContext(ctx context.Context, input *directoryservice.DescribeSettingsInput, opts ...request.Option) (*directoryservice.DescribeSettingsOutput, error) {
@@ -765,6 +860,26 @@ func (c *Client) DescribeSharedDirectoriesWithContext(ctx context.Context, input
 	return req.Output.(*directoryservice.DescribeSharedDirectoriesOutput), req.Error
 }
 
+func (c *Client) DescribeSharedDirectoriesPagesWithContext(ctx context.Context, input *directoryservice.DescribeSharedDirectoriesInput, cb func(*directoryservice.DescribeSharedDirectoriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeSharedDirectories",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeSharedDirectoriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, opts ...request.Option) (*directoryservice.DescribeSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -786,6 +901,26 @@ func (c *Client) DescribeSnapshotsWithContext(ctx context.Context, input *direct
 	return req.Output.(*directoryservice.DescribeSnapshotsOutput), req.Error
 }
 
+func (c *Client) DescribeSnapshotsPagesWithContext(ctx context.Context, input *directoryservice.DescribeSnapshotsInput, cb func(*directoryservice.DescribeSnapshotsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeSnapshots",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeSnapshotsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTrustsWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, opts ...request.Option) (*directoryservice.DescribeTrustsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -805,6 +940,67 @@ func (c *Client) DescribeTrustsWithContext(ctx context.Context, input *directory
 	})
 
 	return req.Output.(*directoryservice.DescribeTrustsOutput), req.Error
+}
+
+func (c *Client) DescribeTrustsPagesWithContext(ctx context.Context, input *directoryservice.DescribeTrustsInput, cb func(*directoryservice.DescribeTrustsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeTrusts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeTrustsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeUpdateDirectoryWithContext(ctx context.Context, input *directoryservice.DescribeUpdateDirectoryInput, opts ...request.Option) (*directoryservice.DescribeUpdateDirectoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeUpdateDirectory",
+		Input:   input,
+		Output:  (*directoryservice.DescribeUpdateDirectoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.DescribeUpdateDirectoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.DescribeUpdateDirectoryOutput), req.Error
+}
+
+func (c *Client) DescribeUpdateDirectoryPagesWithContext(ctx context.Context, input *directoryservice.DescribeUpdateDirectoryInput, cb func(*directoryservice.DescribeUpdateDirectoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "DescribeUpdateDirectory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.DescribeUpdateDirectoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DisableClientAuthenticationWithContext(ctx context.Context, input *directoryservice.DisableClientAuthenticationInput, opts ...request.Option) (*directoryservice.DisableClientAuthenticationOutput, error) {
@@ -1038,6 +1234,26 @@ func (c *Client) ListCertificatesWithContext(ctx context.Context, input *directo
 	return req.Output.(*directoryservice.ListCertificatesOutput), req.Error
 }
 
+func (c *Client) ListCertificatesPagesWithContext(ctx context.Context, input *directoryservice.ListCertificatesInput, cb func(*directoryservice.ListCertificatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "ListCertificates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.ListCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListIpRoutesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, opts ...request.Option) (*directoryservice.ListIpRoutesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -1057,6 +1273,26 @@ func (c *Client) ListIpRoutesWithContext(ctx context.Context, input *directoryse
 	})
 
 	return req.Output.(*directoryservice.ListIpRoutesOutput), req.Error
+}
+
+func (c *Client) ListIpRoutesPagesWithContext(ctx context.Context, input *directoryservice.ListIpRoutesInput, cb func(*directoryservice.ListIpRoutesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "ListIpRoutes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.ListIpRoutesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListLogSubscriptionsWithContext(ctx context.Context, input *directoryservice.ListLogSubscriptionsInput, opts ...request.Option) (*directoryservice.ListLogSubscriptionsOutput, error) {
@@ -1080,6 +1316,26 @@ func (c *Client) ListLogSubscriptionsWithContext(ctx context.Context, input *dir
 	return req.Output.(*directoryservice.ListLogSubscriptionsOutput), req.Error
 }
 
+func (c *Client) ListLogSubscriptionsPagesWithContext(ctx context.Context, input *directoryservice.ListLogSubscriptionsInput, cb func(*directoryservice.ListLogSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "ListLogSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.ListLogSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListSchemaExtensionsWithContext(ctx context.Context, input *directoryservice.ListSchemaExtensionsInput, opts ...request.Option) (*directoryservice.ListSchemaExtensionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -1101,6 +1357,26 @@ func (c *Client) ListSchemaExtensionsWithContext(ctx context.Context, input *dir
 	return req.Output.(*directoryservice.ListSchemaExtensionsOutput), req.Error
 }
 
+func (c *Client) ListSchemaExtensionsPagesWithContext(ctx context.Context, input *directoryservice.ListSchemaExtensionsInput, cb func(*directoryservice.ListSchemaExtensionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "ListSchemaExtensions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.ListSchemaExtensionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *directoryservice.ListTagsForResourceInput, opts ...request.Option) (*directoryservice.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "directoryservice",
@@ -1120,6 +1396,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *dire
 	})
 
 	return req.Output.(*directoryservice.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *directoryservice.ListTagsForResourceInput, cb func(*directoryservice.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DirectoryServiceAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) RegisterCertificateWithContext(ctx context.Context, input *directoryservice.RegisterCertificateInput, opts ...request.Option) (*directoryservice.RegisterCertificateOutput, error) {
@@ -1372,6 +1668,27 @@ func (c *Client) UpdateConditionalForwarderWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*directoryservice.UpdateConditionalForwarderOutput), req.Error
+}
+
+func (c *Client) UpdateDirectorySetupWithContext(ctx context.Context, input *directoryservice.UpdateDirectorySetupInput, opts ...request.Option) (*directoryservice.UpdateDirectorySetupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "directoryservice",
+		Action:  "UpdateDirectorySetup",
+		Input:   input,
+		Output:  (*directoryservice.UpdateDirectorySetupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DirectoryServiceAPI.UpdateDirectorySetupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*directoryservice.UpdateDirectorySetupOutput), req.Error
 }
 
 func (c *Client) UpdateNumberOfDomainControllersWithContext(ctx context.Context, input *directoryservice.UpdateNumberOfDomainControllersInput, opts ...request.Option) (*directoryservice.UpdateNumberOfDomainControllersOutput, error) {
