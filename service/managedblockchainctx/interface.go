@@ -11,16 +11,21 @@ import (
 )
 
 type ManagedBlockchain interface {
+	CreateAccessorWithContext(ctx context.Context, input *managedblockchain.CreateAccessorInput, opts ...request.Option) (*managedblockchain.CreateAccessorOutput, error)
 	CreateMemberWithContext(ctx context.Context, input *managedblockchain.CreateMemberInput, opts ...request.Option) (*managedblockchain.CreateMemberOutput, error)
 	CreateNetworkWithContext(ctx context.Context, input *managedblockchain.CreateNetworkInput, opts ...request.Option) (*managedblockchain.CreateNetworkOutput, error)
 	CreateNodeWithContext(ctx context.Context, input *managedblockchain.CreateNodeInput, opts ...request.Option) (*managedblockchain.CreateNodeOutput, error)
 	CreateProposalWithContext(ctx context.Context, input *managedblockchain.CreateProposalInput, opts ...request.Option) (*managedblockchain.CreateProposalOutput, error)
+	DeleteAccessorWithContext(ctx context.Context, input *managedblockchain.DeleteAccessorInput, opts ...request.Option) (*managedblockchain.DeleteAccessorOutput, error)
 	DeleteMemberWithContext(ctx context.Context, input *managedblockchain.DeleteMemberInput, opts ...request.Option) (*managedblockchain.DeleteMemberOutput, error)
 	DeleteNodeWithContext(ctx context.Context, input *managedblockchain.DeleteNodeInput, opts ...request.Option) (*managedblockchain.DeleteNodeOutput, error)
+	GetAccessorWithContext(ctx context.Context, input *managedblockchain.GetAccessorInput, opts ...request.Option) (*managedblockchain.GetAccessorOutput, error)
 	GetMemberWithContext(ctx context.Context, input *managedblockchain.GetMemberInput, opts ...request.Option) (*managedblockchain.GetMemberOutput, error)
 	GetNetworkWithContext(ctx context.Context, input *managedblockchain.GetNetworkInput, opts ...request.Option) (*managedblockchain.GetNetworkOutput, error)
 	GetNodeWithContext(ctx context.Context, input *managedblockchain.GetNodeInput, opts ...request.Option) (*managedblockchain.GetNodeOutput, error)
 	GetProposalWithContext(ctx context.Context, input *managedblockchain.GetProposalInput, opts ...request.Option) (*managedblockchain.GetProposalOutput, error)
+	ListAccessorsWithContext(ctx context.Context, input *managedblockchain.ListAccessorsInput, opts ...request.Option) (*managedblockchain.ListAccessorsOutput, error)
+	ListAccessorsPagesWithContext(ctx context.Context, input *managedblockchain.ListAccessorsInput, cb func(*managedblockchain.ListAccessorsOutput, bool) bool, opts ...request.Option) error
 	ListInvitationsWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, opts ...request.Option) (*managedblockchain.ListInvitationsOutput, error)
 	ListInvitationsPagesWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, cb func(*managedblockchain.ListInvitationsOutput, bool) bool, opts ...request.Option) error
 	ListMembersWithContext(ctx context.Context, input *managedblockchain.ListMembersInput, opts ...request.Option) (*managedblockchain.ListMembersOutput, error)
@@ -56,6 +61,27 @@ func New(base managedblockchainiface.ManagedBlockchainAPI, ctxer awsctx.Contexte
 
 var _ ManagedBlockchain = (*managedblockchain.ManagedBlockchain)(nil)
 var _ ManagedBlockchain = (*Client)(nil)
+
+func (c *Client) CreateAccessorWithContext(ctx context.Context, input *managedblockchain.CreateAccessorInput, opts ...request.Option) (*managedblockchain.CreateAccessorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "CreateAccessor",
+		Input:   input,
+		Output:  (*managedblockchain.CreateAccessorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.CreateAccessorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.CreateAccessorOutput), req.Error
+}
 
 func (c *Client) CreateMemberWithContext(ctx context.Context, input *managedblockchain.CreateMemberInput, opts ...request.Option) (*managedblockchain.CreateMemberOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -141,6 +167,27 @@ func (c *Client) CreateProposalWithContext(ctx context.Context, input *managedbl
 	return req.Output.(*managedblockchain.CreateProposalOutput), req.Error
 }
 
+func (c *Client) DeleteAccessorWithContext(ctx context.Context, input *managedblockchain.DeleteAccessorInput, opts ...request.Option) (*managedblockchain.DeleteAccessorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "DeleteAccessor",
+		Input:   input,
+		Output:  (*managedblockchain.DeleteAccessorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.DeleteAccessorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.DeleteAccessorOutput), req.Error
+}
+
 func (c *Client) DeleteMemberWithContext(ctx context.Context, input *managedblockchain.DeleteMemberInput, opts ...request.Option) (*managedblockchain.DeleteMemberOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "managedblockchain",
@@ -181,6 +228,27 @@ func (c *Client) DeleteNodeWithContext(ctx context.Context, input *managedblockc
 	})
 
 	return req.Output.(*managedblockchain.DeleteNodeOutput), req.Error
+}
+
+func (c *Client) GetAccessorWithContext(ctx context.Context, input *managedblockchain.GetAccessorInput, opts ...request.Option) (*managedblockchain.GetAccessorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "GetAccessor",
+		Input:   input,
+		Output:  (*managedblockchain.GetAccessorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.GetAccessorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.GetAccessorOutput), req.Error
 }
 
 func (c *Client) GetMemberWithContext(ctx context.Context, input *managedblockchain.GetMemberInput, opts ...request.Option) (*managedblockchain.GetMemberOutput, error) {
@@ -265,6 +333,47 @@ func (c *Client) GetProposalWithContext(ctx context.Context, input *managedblock
 	})
 
 	return req.Output.(*managedblockchain.GetProposalOutput), req.Error
+}
+
+func (c *Client) ListAccessorsWithContext(ctx context.Context, input *managedblockchain.ListAccessorsInput, opts ...request.Option) (*managedblockchain.ListAccessorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListAccessors",
+		Input:   input,
+		Output:  (*managedblockchain.ListAccessorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ManagedBlockchainAPI.ListAccessorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*managedblockchain.ListAccessorsOutput), req.Error
+}
+
+func (c *Client) ListAccessorsPagesWithContext(ctx context.Context, input *managedblockchain.ListAccessorsInput, cb func(*managedblockchain.ListAccessorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "managedblockchain",
+		Action:  "ListAccessors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ManagedBlockchainAPI.ListAccessorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListInvitationsWithContext(ctx context.Context, input *managedblockchain.ListInvitationsInput, opts ...request.Option) (*managedblockchain.ListInvitationsOutput, error) {
