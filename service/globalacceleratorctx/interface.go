@@ -12,6 +12,7 @@ import (
 
 type GlobalAccelerator interface {
 	AddCustomRoutingEndpointsWithContext(ctx context.Context, input *globalaccelerator.AddCustomRoutingEndpointsInput, opts ...request.Option) (*globalaccelerator.AddCustomRoutingEndpointsOutput, error)
+	AddEndpointsWithContext(ctx context.Context, input *globalaccelerator.AddEndpointsInput, opts ...request.Option) (*globalaccelerator.AddEndpointsOutput, error)
 	AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error)
 	AllowCustomRoutingTrafficWithContext(ctx context.Context, input *globalaccelerator.AllowCustomRoutingTrafficInput, opts ...request.Option) (*globalaccelerator.AllowCustomRoutingTrafficOutput, error)
 	CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error)
@@ -57,6 +58,7 @@ type GlobalAccelerator interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *globalaccelerator.ListTagsForResourceInput, opts ...request.Option) (*globalaccelerator.ListTagsForResourceOutput, error)
 	ProvisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.ProvisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.ProvisionByoipCidrOutput, error)
 	RemoveCustomRoutingEndpointsWithContext(ctx context.Context, input *globalaccelerator.RemoveCustomRoutingEndpointsInput, opts ...request.Option) (*globalaccelerator.RemoveCustomRoutingEndpointsOutput, error)
+	RemoveEndpointsWithContext(ctx context.Context, input *globalaccelerator.RemoveEndpointsInput, opts ...request.Option) (*globalaccelerator.RemoveEndpointsOutput, error)
 	TagResourceWithContext(ctx context.Context, input *globalaccelerator.TagResourceInput, opts ...request.Option) (*globalaccelerator.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *globalaccelerator.UntagResourceInput, opts ...request.Option) (*globalaccelerator.UntagResourceOutput, error)
 	UpdateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorOutput, error)
@@ -103,6 +105,27 @@ func (c *Client) AddCustomRoutingEndpointsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*globalaccelerator.AddCustomRoutingEndpointsOutput), req.Error
+}
+
+func (c *Client) AddEndpointsWithContext(ctx context.Context, input *globalaccelerator.AddEndpointsInput, opts ...request.Option) (*globalaccelerator.AddEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "AddEndpoints",
+		Input:   input,
+		Output:  (*globalaccelerator.AddEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.AddEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.AddEndpointsOutput), req.Error
 }
 
 func (c *Client) AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error) {
@@ -1039,6 +1062,27 @@ func (c *Client) RemoveCustomRoutingEndpointsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*globalaccelerator.RemoveCustomRoutingEndpointsOutput), req.Error
+}
+
+func (c *Client) RemoveEndpointsWithContext(ctx context.Context, input *globalaccelerator.RemoveEndpointsInput, opts ...request.Option) (*globalaccelerator.RemoveEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "RemoveEndpoints",
+		Input:   input,
+		Output:  (*globalaccelerator.RemoveEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.RemoveEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.RemoveEndpointsOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *globalaccelerator.TagResourceInput, opts ...request.Option) (*globalaccelerator.TagResourceOutput, error) {
