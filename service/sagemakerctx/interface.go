@@ -215,6 +215,8 @@ type SageMaker interface {
 	ListImageVersionsPagesWithContext(ctx context.Context, input *sagemaker.ListImageVersionsInput, cb func(*sagemaker.ListImageVersionsOutput, bool) bool, opts ...request.Option) error
 	ListImagesWithContext(ctx context.Context, input *sagemaker.ListImagesInput, opts ...request.Option) (*sagemaker.ListImagesOutput, error)
 	ListImagesPagesWithContext(ctx context.Context, input *sagemaker.ListImagesInput, cb func(*sagemaker.ListImagesOutput, bool) bool, opts ...request.Option) error
+	ListInferenceRecommendationsJobStepsWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobStepsInput, opts ...request.Option) (*sagemaker.ListInferenceRecommendationsJobStepsOutput, error)
+	ListInferenceRecommendationsJobStepsPagesWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobStepsInput, cb func(*sagemaker.ListInferenceRecommendationsJobStepsOutput, bool) bool, opts ...request.Option) error
 	ListInferenceRecommendationsJobsWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobsInput, opts ...request.Option) (*sagemaker.ListInferenceRecommendationsJobsOutput, error)
 	ListInferenceRecommendationsJobsPagesWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobsInput, cb func(*sagemaker.ListInferenceRecommendationsJobsOutput, bool) bool, opts ...request.Option) error
 	ListLabelingJobsWithContext(ctx context.Context, input *sagemaker.ListLabelingJobsInput, opts ...request.Option) (*sagemaker.ListLabelingJobsOutput, error)
@@ -4605,6 +4607,47 @@ func (c *Client) ListImagesPagesWithContext(ctx context.Context, input *sagemake
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListInferenceRecommendationsJobStepsWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobStepsInput, opts ...request.Option) (*sagemaker.ListInferenceRecommendationsJobStepsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListInferenceRecommendationsJobSteps",
+		Input:   input,
+		Output:  (*sagemaker.ListInferenceRecommendationsJobStepsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListInferenceRecommendationsJobStepsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListInferenceRecommendationsJobStepsOutput), req.Error
+}
+
+func (c *Client) ListInferenceRecommendationsJobStepsPagesWithContext(ctx context.Context, input *sagemaker.ListInferenceRecommendationsJobStepsInput, cb func(*sagemaker.ListInferenceRecommendationsJobStepsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListInferenceRecommendationsJobSteps",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListInferenceRecommendationsJobStepsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
