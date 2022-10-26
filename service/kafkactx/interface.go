@@ -54,6 +54,7 @@ type Kafka interface {
 	UpdateConnectivityWithContext(ctx context.Context, input *kafka.UpdateConnectivityInput, opts ...request.Option) (*kafka.UpdateConnectivityOutput, error)
 	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
 	UpdateSecurityWithContext(ctx context.Context, input *kafka.UpdateSecurityInput, opts ...request.Option) (*kafka.UpdateSecurityOutput, error)
+	UpdateStorageWithContext(ctx context.Context, input *kafka.UpdateStorageInput, opts ...request.Option) (*kafka.UpdateStorageOutput, error)
 }
 
 type Client struct {
@@ -964,4 +965,25 @@ func (c *Client) UpdateSecurityWithContext(ctx context.Context, input *kafka.Upd
 	})
 
 	return req.Output.(*kafka.UpdateSecurityOutput), req.Error
+}
+
+func (c *Client) UpdateStorageWithContext(ctx context.Context, input *kafka.UpdateStorageInput, opts ...request.Option) (*kafka.UpdateStorageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateStorage",
+		Input:   input,
+		Output:  (*kafka.UpdateStorageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateStorageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateStorageOutput), req.Error
 }

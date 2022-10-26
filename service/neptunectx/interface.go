@@ -66,6 +66,7 @@ type Neptune interface {
 	DescribeEventsWithContext(ctx context.Context, input *neptune.DescribeEventsInput, opts ...request.Option) (*neptune.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *neptune.DescribeEventsInput, cb func(*neptune.DescribeEventsOutput, bool) bool, opts ...request.Option) error
 	DescribeGlobalClustersWithContext(ctx context.Context, input *neptune.DescribeGlobalClustersInput, opts ...request.Option) (*neptune.DescribeGlobalClustersOutput, error)
+	DescribeGlobalClustersPagesWithContext(ctx context.Context, input *neptune.DescribeGlobalClustersInput, cb func(*neptune.DescribeGlobalClustersOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error)
 	DescribeOrderableDBInstanceOptionsPagesWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, cb func(*neptune.DescribeOrderableDBInstanceOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *neptune.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*neptune.DescribePendingMaintenanceActionsOutput, error)
@@ -1252,6 +1253,26 @@ func (c *Client) DescribeGlobalClustersWithContext(ctx context.Context, input *n
 	})
 
 	return req.Output.(*neptune.DescribeGlobalClustersOutput), req.Error
+}
+
+func (c *Client) DescribeGlobalClustersPagesWithContext(ctx context.Context, input *neptune.DescribeGlobalClustersInput, cb func(*neptune.DescribeGlobalClustersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "neptune",
+		Action:  "DescribeGlobalClusters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.NeptuneAPI.DescribeGlobalClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeOrderableDBInstanceOptionsWithContext(ctx context.Context, input *neptune.DescribeOrderableDBInstanceOptionsInput, opts ...request.Option) (*neptune.DescribeOrderableDBInstanceOptionsOutput, error) {
