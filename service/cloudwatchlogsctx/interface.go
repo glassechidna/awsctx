@@ -46,6 +46,7 @@ type CloudWatchLogs interface {
 	GetLogGroupFieldsWithContext(ctx context.Context, input *cloudwatchlogs.GetLogGroupFieldsInput, opts ...request.Option) (*cloudwatchlogs.GetLogGroupFieldsOutput, error)
 	GetLogRecordWithContext(ctx context.Context, input *cloudwatchlogs.GetLogRecordInput, opts ...request.Option) (*cloudwatchlogs.GetLogRecordOutput, error)
 	GetQueryResultsWithContext(ctx context.Context, input *cloudwatchlogs.GetQueryResultsInput, opts ...request.Option) (*cloudwatchlogs.GetQueryResultsOutput, error)
+	ListTagsForResourceWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsForResourceInput, opts ...request.Option) (*cloudwatchlogs.ListTagsForResourceOutput, error)
 	ListTagsLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsLogGroupInput, opts ...request.Option) (*cloudwatchlogs.ListTagsLogGroupOutput, error)
 	PutDestinationWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationOutput, error)
 	PutDestinationPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationPolicyOutput, error)
@@ -58,8 +59,10 @@ type CloudWatchLogs interface {
 	StartQueryWithContext(ctx context.Context, input *cloudwatchlogs.StartQueryInput, opts ...request.Option) (*cloudwatchlogs.StartQueryOutput, error)
 	StopQueryWithContext(ctx context.Context, input *cloudwatchlogs.StopQueryInput, opts ...request.Option) (*cloudwatchlogs.StopQueryOutput, error)
 	TagLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.TagLogGroupInput, opts ...request.Option) (*cloudwatchlogs.TagLogGroupOutput, error)
+	TagResourceWithContext(ctx context.Context, input *cloudwatchlogs.TagResourceInput, opts ...request.Option) (*cloudwatchlogs.TagResourceOutput, error)
 	TestMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.TestMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.TestMetricFilterOutput, error)
 	UntagLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.UntagLogGroupInput, opts ...request.Option) (*cloudwatchlogs.UntagLogGroupOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *cloudwatchlogs.UntagResourceInput, opts ...request.Option) (*cloudwatchlogs.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -805,6 +808,27 @@ func (c *Client) GetQueryResultsWithContext(ctx context.Context, input *cloudwat
 	return req.Output.(*cloudwatchlogs.GetQueryResultsOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsForResourceInput, opts ...request.Option) (*cloudwatchlogs.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*cloudwatchlogs.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ListTagsLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsLogGroupInput, opts ...request.Option) (*cloudwatchlogs.ListTagsLogGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -1057,6 +1081,27 @@ func (c *Client) TagLogGroupWithContext(ctx context.Context, input *cloudwatchlo
 	return req.Output.(*cloudwatchlogs.TagLogGroupOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *cloudwatchlogs.TagResourceInput, opts ...request.Option) (*cloudwatchlogs.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*cloudwatchlogs.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.TagResourceOutput), req.Error
+}
+
 func (c *Client) TestMetricFilterWithContext(ctx context.Context, input *cloudwatchlogs.TestMetricFilterInput, opts ...request.Option) (*cloudwatchlogs.TestMetricFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudwatchlogs",
@@ -1097,4 +1142,25 @@ func (c *Client) UntagLogGroupWithContext(ctx context.Context, input *cloudwatch
 	})
 
 	return req.Output.(*cloudwatchlogs.UntagLogGroupOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *cloudwatchlogs.UntagResourceInput, opts ...request.Option) (*cloudwatchlogs.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*cloudwatchlogs.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.UntagResourceOutput), req.Error
 }

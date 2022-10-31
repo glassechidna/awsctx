@@ -78,6 +78,7 @@ type Connect interface {
 	DisassociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.DisassociateQueueQuickConnectsInput, opts ...request.Option) (*connect.DisassociateQueueQuickConnectsOutput, error)
 	DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error)
 	DisassociateSecurityKeyWithContext(ctx context.Context, input *connect.DisassociateSecurityKeyInput, opts ...request.Option) (*connect.DisassociateSecurityKeyOutput, error)
+	DismissUserContactWithContext(ctx context.Context, input *connect.DismissUserContactInput, opts ...request.Option) (*connect.DismissUserContactOutput, error)
 	GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error)
 	GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error)
 	GetCurrentMetricDataPagesWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, cb func(*connect.GetCurrentMetricDataOutput, bool) bool, opts ...request.Option) error
@@ -1633,6 +1634,27 @@ func (c *Client) DisassociateSecurityKeyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.DisassociateSecurityKeyOutput), req.Error
+}
+
+func (c *Client) DismissUserContactWithContext(ctx context.Context, input *connect.DismissUserContactInput, opts ...request.Option) (*connect.DismissUserContactOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DismissUserContact",
+		Input:   input,
+		Output:  (*connect.DismissUserContactOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DismissUserContactWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DismissUserContactOutput), req.Error
 }
 
 func (c *Client) GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error) {

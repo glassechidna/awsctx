@@ -11,6 +11,7 @@ import (
 )
 
 type EC2 interface {
+	AcceptAddressTransferWithContext(ctx context.Context, input *ec2.AcceptAddressTransferInput, opts ...request.Option) (*ec2.AcceptAddressTransferOutput, error)
 	AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.AcceptReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.AcceptReservedInstancesExchangeQuoteOutput, error)
 	AcceptTransitGatewayMulticastDomainAssociationsWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayMulticastDomainAssociationsInput, opts ...request.Option) (*ec2.AcceptTransitGatewayMulticastDomainAssociationsOutput, error)
 	AcceptTransitGatewayPeeringAttachmentWithContext(ctx context.Context, input *ec2.AcceptTransitGatewayPeeringAttachmentInput, opts ...request.Option) (*ec2.AcceptTransitGatewayPeeringAttachmentOutput, error)
@@ -211,6 +212,8 @@ type EC2 interface {
 	DeregisterTransitGatewayMulticastGroupMembersWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupMembersInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupMembersOutput, error)
 	DeregisterTransitGatewayMulticastGroupSourcesWithContext(ctx context.Context, input *ec2.DeregisterTransitGatewayMulticastGroupSourcesInput, opts ...request.Option) (*ec2.DeregisterTransitGatewayMulticastGroupSourcesOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *ec2.DescribeAccountAttributesInput, opts ...request.Option) (*ec2.DescribeAccountAttributesOutput, error)
+	DescribeAddressTransfersWithContext(ctx context.Context, input *ec2.DescribeAddressTransfersInput, opts ...request.Option) (*ec2.DescribeAddressTransfersOutput, error)
+	DescribeAddressTransfersPagesWithContext(ctx context.Context, input *ec2.DescribeAddressTransfersInput, cb func(*ec2.DescribeAddressTransfersOutput, bool) bool, opts ...request.Option) error
 	DescribeAddressesWithContext(ctx context.Context, input *ec2.DescribeAddressesInput, opts ...request.Option) (*ec2.DescribeAddressesOutput, error)
 	DescribeAddressesAttributeWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, opts ...request.Option) (*ec2.DescribeAddressesAttributeOutput, error)
 	DescribeAddressesAttributePagesWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, cb func(*ec2.DescribeAddressesAttributeOutput, bool) bool, opts ...request.Option) error
@@ -450,6 +453,7 @@ type EC2 interface {
 	DetachNetworkInterfaceWithContext(ctx context.Context, input *ec2.DetachNetworkInterfaceInput, opts ...request.Option) (*ec2.DetachNetworkInterfaceOutput, error)
 	DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error)
 	DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error)
+	DisableAddressTransferWithContext(ctx context.Context, input *ec2.DisableAddressTransferInput, opts ...request.Option) (*ec2.DisableAddressTransferOutput, error)
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
 	DisableFastLaunchWithContext(ctx context.Context, input *ec2.DisableFastLaunchInput, opts ...request.Option) (*ec2.DisableFastLaunchOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
@@ -472,6 +476,7 @@ type EC2 interface {
 	DisassociateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayRouteTableOutput, error)
 	DisassociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.DisassociateTrunkInterfaceInput, opts ...request.Option) (*ec2.DisassociateTrunkInterfaceOutput, error)
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
+	EnableAddressTransferWithContext(ctx context.Context, input *ec2.EnableAddressTransferInput, opts ...request.Option) (*ec2.EnableAddressTransferOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastLaunchWithContext(ctx context.Context, input *ec2.EnableFastLaunchInput, opts ...request.Option) (*ec2.EnableFastLaunchOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
@@ -690,6 +695,27 @@ func New(base ec2iface.EC2API, ctxer awsctx.Contexter) EC2 {
 
 var _ EC2 = (*ec2.EC2)(nil)
 var _ EC2 = (*Client)(nil)
+
+func (c *Client) AcceptAddressTransferWithContext(ctx context.Context, input *ec2.AcceptAddressTransferInput, opts ...request.Option) (*ec2.AcceptAddressTransferOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AcceptAddressTransfer",
+		Input:   input,
+		Output:  (*ec2.AcceptAddressTransferOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AcceptAddressTransferWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AcceptAddressTransferOutput), req.Error
+}
 
 func (c *Client) AcceptReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.AcceptReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.AcceptReservedInstancesExchangeQuoteOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -4889,6 +4915,47 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.DescribeAccountAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeAddressTransfersWithContext(ctx context.Context, input *ec2.DescribeAddressTransfersInput, opts ...request.Option) (*ec2.DescribeAddressTransfersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeAddressTransfers",
+		Input:   input,
+		Output:  (*ec2.DescribeAddressTransfersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeAddressTransfersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeAddressTransfersOutput), req.Error
+}
+
+func (c *Client) DescribeAddressTransfersPagesWithContext(ctx context.Context, input *ec2.DescribeAddressTransfersInput, cb func(*ec2.DescribeAddressTransfersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeAddressTransfers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeAddressTransfersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeAddressesWithContext(ctx context.Context, input *ec2.DescribeAddressesInput, opts ...request.Option) (*ec2.DescribeAddressesOutput, error) {
@@ -9810,6 +9877,27 @@ func (c *Client) DetachVpnGatewayWithContext(ctx context.Context, input *ec2.Det
 	return req.Output.(*ec2.DetachVpnGatewayOutput), req.Error
 }
 
+func (c *Client) DisableAddressTransferWithContext(ctx context.Context, input *ec2.DisableAddressTransferInput, opts ...request.Option) (*ec2.DisableAddressTransferOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableAddressTransfer",
+		Input:   input,
+		Output:  (*ec2.DisableAddressTransferOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableAddressTransferWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableAddressTransferOutput), req.Error
+}
+
 func (c *Client) DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10270,6 +10358,27 @@ func (c *Client) DisassociateVpcCidrBlockWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*ec2.DisassociateVpcCidrBlockOutput), req.Error
+}
+
+func (c *Client) EnableAddressTransferWithContext(ctx context.Context, input *ec2.EnableAddressTransferInput, opts ...request.Option) (*ec2.EnableAddressTransferOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableAddressTransfer",
+		Input:   input,
+		Output:  (*ec2.EnableAddressTransferOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableAddressTransferWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableAddressTransferOutput), req.Error
 }
 
 func (c *Client) EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error) {
