@@ -52,6 +52,7 @@ type EC2 interface {
 	CancelCapacityReservationFleetsWithContext(ctx context.Context, input *ec2.CancelCapacityReservationFleetsInput, opts ...request.Option) (*ec2.CancelCapacityReservationFleetsOutput, error)
 	CancelConversionTaskWithContext(ctx context.Context, input *ec2.CancelConversionTaskInput, opts ...request.Option) (*ec2.CancelConversionTaskOutput, error)
 	CancelExportTaskWithContext(ctx context.Context, input *ec2.CancelExportTaskInput, opts ...request.Option) (*ec2.CancelExportTaskOutput, error)
+	CancelImageLaunchPermissionWithContext(ctx context.Context, input *ec2.CancelImageLaunchPermissionInput, opts ...request.Option) (*ec2.CancelImageLaunchPermissionOutput, error)
 	CancelImportTaskWithContext(ctx context.Context, input *ec2.CancelImportTaskInput, opts ...request.Option) (*ec2.CancelImportTaskOutput, error)
 	CancelReservedInstancesListingWithContext(ctx context.Context, input *ec2.CancelReservedInstancesListingInput, opts ...request.Option) (*ec2.CancelReservedInstancesListingOutput, error)
 	CancelSpotFleetRequestsWithContext(ctx context.Context, input *ec2.CancelSpotFleetRequestsInput, opts ...request.Option) (*ec2.CancelSpotFleetRequestsOutput, error)
@@ -1555,6 +1556,27 @@ func (c *Client) CancelExportTaskWithContext(ctx context.Context, input *ec2.Can
 	})
 
 	return req.Output.(*ec2.CancelExportTaskOutput), req.Error
+}
+
+func (c *Client) CancelImageLaunchPermissionWithContext(ctx context.Context, input *ec2.CancelImageLaunchPermissionInput, opts ...request.Option) (*ec2.CancelImageLaunchPermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CancelImageLaunchPermission",
+		Input:   input,
+		Output:  (*ec2.CancelImageLaunchPermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CancelImageLaunchPermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CancelImageLaunchPermissionOutput), req.Error
 }
 
 func (c *Client) CancelImportTaskWithContext(ctx context.Context, input *ec2.CancelImportTaskInput, opts ...request.Option) (*ec2.CancelImportTaskOutput, error) {
