@@ -17,6 +17,7 @@ type CloudTrail interface {
 	CreateTrailWithContext(ctx context.Context, input *cloudtrail.CreateTrailInput, opts ...request.Option) (*cloudtrail.CreateTrailOutput, error)
 	DeleteEventDataStoreWithContext(ctx context.Context, input *cloudtrail.DeleteEventDataStoreInput, opts ...request.Option) (*cloudtrail.DeleteEventDataStoreOutput, error)
 	DeleteTrailWithContext(ctx context.Context, input *cloudtrail.DeleteTrailInput, opts ...request.Option) (*cloudtrail.DeleteTrailOutput, error)
+	DeregisterOrganizationDelegatedAdminWithContext(ctx context.Context, input *cloudtrail.DeregisterOrganizationDelegatedAdminInput, opts ...request.Option) (*cloudtrail.DeregisterOrganizationDelegatedAdminOutput, error)
 	DescribeQueryWithContext(ctx context.Context, input *cloudtrail.DescribeQueryInput, opts ...request.Option) (*cloudtrail.DescribeQueryOutput, error)
 	DescribeTrailsWithContext(ctx context.Context, input *cloudtrail.DescribeTrailsInput, opts ...request.Option) (*cloudtrail.DescribeTrailsOutput, error)
 	GetChannelWithContext(ctx context.Context, input *cloudtrail.GetChannelInput, opts ...request.Option) (*cloudtrail.GetChannelOutput, error)
@@ -48,6 +49,7 @@ type CloudTrail interface {
 	LookupEventsPagesWithContext(ctx context.Context, input *cloudtrail.LookupEventsInput, cb func(*cloudtrail.LookupEventsOutput, bool) bool, opts ...request.Option) error
 	PutEventSelectorsWithContext(ctx context.Context, input *cloudtrail.PutEventSelectorsInput, opts ...request.Option) (*cloudtrail.PutEventSelectorsOutput, error)
 	PutInsightSelectorsWithContext(ctx context.Context, input *cloudtrail.PutInsightSelectorsInput, opts ...request.Option) (*cloudtrail.PutInsightSelectorsOutput, error)
+	RegisterOrganizationDelegatedAdminWithContext(ctx context.Context, input *cloudtrail.RegisterOrganizationDelegatedAdminInput, opts ...request.Option) (*cloudtrail.RegisterOrganizationDelegatedAdminOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error)
 	RestoreEventDataStoreWithContext(ctx context.Context, input *cloudtrail.RestoreEventDataStoreInput, opts ...request.Option) (*cloudtrail.RestoreEventDataStoreOutput, error)
 	StartImportWithContext(ctx context.Context, input *cloudtrail.StartImportInput, opts ...request.Option) (*cloudtrail.StartImportOutput, error)
@@ -198,6 +200,27 @@ func (c *Client) DeleteTrailWithContext(ctx context.Context, input *cloudtrail.D
 	})
 
 	return req.Output.(*cloudtrail.DeleteTrailOutput), req.Error
+}
+
+func (c *Client) DeregisterOrganizationDelegatedAdminWithContext(ctx context.Context, input *cloudtrail.DeregisterOrganizationDelegatedAdminInput, opts ...request.Option) (*cloudtrail.DeregisterOrganizationDelegatedAdminOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "DeregisterOrganizationDelegatedAdmin",
+		Input:   input,
+		Output:  (*cloudtrail.DeregisterOrganizationDelegatedAdminOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.DeregisterOrganizationDelegatedAdminWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.DeregisterOrganizationDelegatedAdminOutput), req.Error
 }
 
 func (c *Client) DescribeQueryWithContext(ctx context.Context, input *cloudtrail.DescribeQueryInput, opts ...request.Option) (*cloudtrail.DescribeQueryOutput, error) {
@@ -839,6 +862,27 @@ func (c *Client) PutInsightSelectorsWithContext(ctx context.Context, input *clou
 	})
 
 	return req.Output.(*cloudtrail.PutInsightSelectorsOutput), req.Error
+}
+
+func (c *Client) RegisterOrganizationDelegatedAdminWithContext(ctx context.Context, input *cloudtrail.RegisterOrganizationDelegatedAdminInput, opts ...request.Option) (*cloudtrail.RegisterOrganizationDelegatedAdminOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "RegisterOrganizationDelegatedAdmin",
+		Input:   input,
+		Output:  (*cloudtrail.RegisterOrganizationDelegatedAdminOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.RegisterOrganizationDelegatedAdminWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.RegisterOrganizationDelegatedAdminOutput), req.Error
 }
 
 func (c *Client) RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error) {
