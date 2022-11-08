@@ -13,10 +13,13 @@ import (
 type FMS interface {
 	AssociateAdminAccountWithContext(ctx context.Context, input *fms.AssociateAdminAccountInput, opts ...request.Option) (*fms.AssociateAdminAccountOutput, error)
 	AssociateThirdPartyFirewallWithContext(ctx context.Context, input *fms.AssociateThirdPartyFirewallInput, opts ...request.Option) (*fms.AssociateThirdPartyFirewallOutput, error)
+	BatchAssociateResourceWithContext(ctx context.Context, input *fms.BatchAssociateResourceInput, opts ...request.Option) (*fms.BatchAssociateResourceOutput, error)
+	BatchDisassociateResourceWithContext(ctx context.Context, input *fms.BatchDisassociateResourceInput, opts ...request.Option) (*fms.BatchDisassociateResourceOutput, error)
 	DeleteAppsListWithContext(ctx context.Context, input *fms.DeleteAppsListInput, opts ...request.Option) (*fms.DeleteAppsListOutput, error)
 	DeleteNotificationChannelWithContext(ctx context.Context, input *fms.DeleteNotificationChannelInput, opts ...request.Option) (*fms.DeleteNotificationChannelOutput, error)
 	DeletePolicyWithContext(ctx context.Context, input *fms.DeletePolicyInput, opts ...request.Option) (*fms.DeletePolicyOutput, error)
 	DeleteProtocolsListWithContext(ctx context.Context, input *fms.DeleteProtocolsListInput, opts ...request.Option) (*fms.DeleteProtocolsListOutput, error)
+	DeleteResourceSetWithContext(ctx context.Context, input *fms.DeleteResourceSetInput, opts ...request.Option) (*fms.DeleteResourceSetOutput, error)
 	DisassociateAdminAccountWithContext(ctx context.Context, input *fms.DisassociateAdminAccountInput, opts ...request.Option) (*fms.DisassociateAdminAccountOutput, error)
 	DisassociateThirdPartyFirewallWithContext(ctx context.Context, input *fms.DisassociateThirdPartyFirewallInput, opts ...request.Option) (*fms.DisassociateThirdPartyFirewallOutput, error)
 	GetAdminAccountWithContext(ctx context.Context, input *fms.GetAdminAccountInput, opts ...request.Option) (*fms.GetAdminAccountOutput, error)
@@ -26,18 +29,22 @@ type FMS interface {
 	GetPolicyWithContext(ctx context.Context, input *fms.GetPolicyInput, opts ...request.Option) (*fms.GetPolicyOutput, error)
 	GetProtectionStatusWithContext(ctx context.Context, input *fms.GetProtectionStatusInput, opts ...request.Option) (*fms.GetProtectionStatusOutput, error)
 	GetProtocolsListWithContext(ctx context.Context, input *fms.GetProtocolsListInput, opts ...request.Option) (*fms.GetProtocolsListOutput, error)
+	GetResourceSetWithContext(ctx context.Context, input *fms.GetResourceSetInput, opts ...request.Option) (*fms.GetResourceSetOutput, error)
 	GetThirdPartyFirewallAssociationStatusWithContext(ctx context.Context, input *fms.GetThirdPartyFirewallAssociationStatusInput, opts ...request.Option) (*fms.GetThirdPartyFirewallAssociationStatusOutput, error)
 	GetViolationDetailsWithContext(ctx context.Context, input *fms.GetViolationDetailsInput, opts ...request.Option) (*fms.GetViolationDetailsOutput, error)
 	ListAppsListsWithContext(ctx context.Context, input *fms.ListAppsListsInput, opts ...request.Option) (*fms.ListAppsListsOutput, error)
 	ListAppsListsPagesWithContext(ctx context.Context, input *fms.ListAppsListsInput, cb func(*fms.ListAppsListsOutput, bool) bool, opts ...request.Option) error
 	ListComplianceStatusWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, opts ...request.Option) (*fms.ListComplianceStatusOutput, error)
 	ListComplianceStatusPagesWithContext(ctx context.Context, input *fms.ListComplianceStatusInput, cb func(*fms.ListComplianceStatusOutput, bool) bool, opts ...request.Option) error
+	ListDiscoveredResourcesWithContext(ctx context.Context, input *fms.ListDiscoveredResourcesInput, opts ...request.Option) (*fms.ListDiscoveredResourcesOutput, error)
 	ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error)
 	ListMemberAccountsPagesWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, cb func(*fms.ListMemberAccountsOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *fms.ListPoliciesInput, opts ...request.Option) (*fms.ListPoliciesOutput, error)
 	ListPoliciesPagesWithContext(ctx context.Context, input *fms.ListPoliciesInput, cb func(*fms.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListProtocolsListsWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, opts ...request.Option) (*fms.ListProtocolsListsOutput, error)
 	ListProtocolsListsPagesWithContext(ctx context.Context, input *fms.ListProtocolsListsInput, cb func(*fms.ListProtocolsListsOutput, bool) bool, opts ...request.Option) error
+	ListResourceSetResourcesWithContext(ctx context.Context, input *fms.ListResourceSetResourcesInput, opts ...request.Option) (*fms.ListResourceSetResourcesOutput, error)
+	ListResourceSetsWithContext(ctx context.Context, input *fms.ListResourceSetsInput, opts ...request.Option) (*fms.ListResourceSetsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error)
 	ListThirdPartyFirewallFirewallPoliciesWithContext(ctx context.Context, input *fms.ListThirdPartyFirewallFirewallPoliciesInput, opts ...request.Option) (*fms.ListThirdPartyFirewallFirewallPoliciesOutput, error)
 	ListThirdPartyFirewallFirewallPoliciesPagesWithContext(ctx context.Context, input *fms.ListThirdPartyFirewallFirewallPoliciesInput, cb func(*fms.ListThirdPartyFirewallFirewallPoliciesOutput, bool) bool, opts ...request.Option) error
@@ -45,6 +52,7 @@ type FMS interface {
 	PutNotificationChannelWithContext(ctx context.Context, input *fms.PutNotificationChannelInput, opts ...request.Option) (*fms.PutNotificationChannelOutput, error)
 	PutPolicyWithContext(ctx context.Context, input *fms.PutPolicyInput, opts ...request.Option) (*fms.PutPolicyOutput, error)
 	PutProtocolsListWithContext(ctx context.Context, input *fms.PutProtocolsListInput, opts ...request.Option) (*fms.PutProtocolsListOutput, error)
+	PutResourceSetWithContext(ctx context.Context, input *fms.PutResourceSetInput, opts ...request.Option) (*fms.PutResourceSetOutput, error)
 	TagResourceWithContext(ctx context.Context, input *fms.TagResourceInput, opts ...request.Option) (*fms.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *fms.UntagResourceInput, opts ...request.Option) (*fms.UntagResourceOutput, error)
 }
@@ -104,6 +112,48 @@ func (c *Client) AssociateThirdPartyFirewallWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*fms.AssociateThirdPartyFirewallOutput), req.Error
+}
+
+func (c *Client) BatchAssociateResourceWithContext(ctx context.Context, input *fms.BatchAssociateResourceInput, opts ...request.Option) (*fms.BatchAssociateResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "BatchAssociateResource",
+		Input:   input,
+		Output:  (*fms.BatchAssociateResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.BatchAssociateResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.BatchAssociateResourceOutput), req.Error
+}
+
+func (c *Client) BatchDisassociateResourceWithContext(ctx context.Context, input *fms.BatchDisassociateResourceInput, opts ...request.Option) (*fms.BatchDisassociateResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "BatchDisassociateResource",
+		Input:   input,
+		Output:  (*fms.BatchDisassociateResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.BatchDisassociateResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.BatchDisassociateResourceOutput), req.Error
 }
 
 func (c *Client) DeleteAppsListWithContext(ctx context.Context, input *fms.DeleteAppsListInput, opts ...request.Option) (*fms.DeleteAppsListOutput, error) {
@@ -188,6 +238,27 @@ func (c *Client) DeleteProtocolsListWithContext(ctx context.Context, input *fms.
 	})
 
 	return req.Output.(*fms.DeleteProtocolsListOutput), req.Error
+}
+
+func (c *Client) DeleteResourceSetWithContext(ctx context.Context, input *fms.DeleteResourceSetInput, opts ...request.Option) (*fms.DeleteResourceSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "DeleteResourceSet",
+		Input:   input,
+		Output:  (*fms.DeleteResourceSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.DeleteResourceSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.DeleteResourceSetOutput), req.Error
 }
 
 func (c *Client) DisassociateAdminAccountWithContext(ctx context.Context, input *fms.DisassociateAdminAccountInput, opts ...request.Option) (*fms.DisassociateAdminAccountOutput, error) {
@@ -379,6 +450,27 @@ func (c *Client) GetProtocolsListWithContext(ctx context.Context, input *fms.Get
 	return req.Output.(*fms.GetProtocolsListOutput), req.Error
 }
 
+func (c *Client) GetResourceSetWithContext(ctx context.Context, input *fms.GetResourceSetInput, opts ...request.Option) (*fms.GetResourceSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "GetResourceSet",
+		Input:   input,
+		Output:  (*fms.GetResourceSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.GetResourceSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.GetResourceSetOutput), req.Error
+}
+
 func (c *Client) GetThirdPartyFirewallAssociationStatusWithContext(ctx context.Context, input *fms.GetThirdPartyFirewallAssociationStatusInput, opts ...request.Option) (*fms.GetThirdPartyFirewallAssociationStatusOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -503,6 +595,27 @@ func (c *Client) ListComplianceStatusPagesWithContext(ctx context.Context, input
 	return req.Error
 }
 
+func (c *Client) ListDiscoveredResourcesWithContext(ctx context.Context, input *fms.ListDiscoveredResourcesInput, opts ...request.Option) (*fms.ListDiscoveredResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListDiscoveredResources",
+		Input:   input,
+		Output:  (*fms.ListDiscoveredResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.ListDiscoveredResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.ListDiscoveredResourcesOutput), req.Error
+}
+
 func (c *Client) ListMemberAccountsWithContext(ctx context.Context, input *fms.ListMemberAccountsInput, opts ...request.Option) (*fms.ListMemberAccountsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "fms",
@@ -624,6 +737,48 @@ func (c *Client) ListProtocolsListsPagesWithContext(ctx context.Context, input *
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListResourceSetResourcesWithContext(ctx context.Context, input *fms.ListResourceSetResourcesInput, opts ...request.Option) (*fms.ListResourceSetResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListResourceSetResources",
+		Input:   input,
+		Output:  (*fms.ListResourceSetResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.ListResourceSetResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.ListResourceSetResourcesOutput), req.Error
+}
+
+func (c *Client) ListResourceSetsWithContext(ctx context.Context, input *fms.ListResourceSetsInput, opts ...request.Option) (*fms.ListResourceSetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "ListResourceSets",
+		Input:   input,
+		Output:  (*fms.ListResourceSetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.ListResourceSetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.ListResourceSetsOutput), req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *fms.ListTagsForResourceInput, opts ...request.Option) (*fms.ListTagsForResourceOutput, error) {
@@ -770,6 +925,27 @@ func (c *Client) PutProtocolsListWithContext(ctx context.Context, input *fms.Put
 	})
 
 	return req.Output.(*fms.PutProtocolsListOutput), req.Error
+}
+
+func (c *Client) PutResourceSetWithContext(ctx context.Context, input *fms.PutResourceSetInput, opts ...request.Option) (*fms.PutResourceSetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fms",
+		Action:  "PutResourceSet",
+		Input:   input,
+		Output:  (*fms.PutResourceSetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FMSAPI.PutResourceSetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fms.PutResourceSetOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *fms.TagResourceInput, opts ...request.Option) (*fms.TagResourceOutput, error) {
