@@ -14,11 +14,14 @@ type GroundStation interface {
 	CancelContactWithContext(ctx context.Context, input *groundstation.CancelContactInput, opts ...request.Option) (*groundstation.CancelContactOutput, error)
 	CreateConfigWithContext(ctx context.Context, input *groundstation.CreateConfigInput, opts ...request.Option) (*groundstation.CreateConfigOutput, error)
 	CreateDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.CreateDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.CreateDataflowEndpointGroupOutput, error)
+	CreateEphemerisWithContext(ctx context.Context, input *groundstation.CreateEphemerisInput, opts ...request.Option) (*groundstation.CreateEphemerisOutput, error)
 	CreateMissionProfileWithContext(ctx context.Context, input *groundstation.CreateMissionProfileInput, opts ...request.Option) (*groundstation.CreateMissionProfileOutput, error)
 	DeleteConfigWithContext(ctx context.Context, input *groundstation.DeleteConfigInput, opts ...request.Option) (*groundstation.DeleteConfigOutput, error)
 	DeleteDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.DeleteDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.DeleteDataflowEndpointGroupOutput, error)
+	DeleteEphemerisWithContext(ctx context.Context, input *groundstation.DeleteEphemerisInput, opts ...request.Option) (*groundstation.DeleteEphemerisOutput, error)
 	DeleteMissionProfileWithContext(ctx context.Context, input *groundstation.DeleteMissionProfileInput, opts ...request.Option) (*groundstation.DeleteMissionProfileOutput, error)
 	DescribeContactWithContext(ctx context.Context, input *groundstation.DescribeContactInput, opts ...request.Option) (*groundstation.DescribeContactOutput, error)
+	DescribeEphemerisWithContext(ctx context.Context, input *groundstation.DescribeEphemerisInput, opts ...request.Option) (*groundstation.DescribeEphemerisOutput, error)
 	GetConfigWithContext(ctx context.Context, input *groundstation.GetConfigInput, opts ...request.Option) (*groundstation.GetConfigOutput, error)
 	GetDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.GetDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.GetDataflowEndpointGroupOutput, error)
 	GetMinuteUsageWithContext(ctx context.Context, input *groundstation.GetMinuteUsageInput, opts ...request.Option) (*groundstation.GetMinuteUsageOutput, error)
@@ -30,6 +33,8 @@ type GroundStation interface {
 	ListContactsPagesWithContext(ctx context.Context, input *groundstation.ListContactsInput, cb func(*groundstation.ListContactsOutput, bool) bool, opts ...request.Option) error
 	ListDataflowEndpointGroupsWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, opts ...request.Option) (*groundstation.ListDataflowEndpointGroupsOutput, error)
 	ListDataflowEndpointGroupsPagesWithContext(ctx context.Context, input *groundstation.ListDataflowEndpointGroupsInput, cb func(*groundstation.ListDataflowEndpointGroupsOutput, bool) bool, opts ...request.Option) error
+	ListEphemeridesWithContext(ctx context.Context, input *groundstation.ListEphemeridesInput, opts ...request.Option) (*groundstation.ListEphemeridesOutput, error)
+	ListEphemeridesPagesWithContext(ctx context.Context, input *groundstation.ListEphemeridesInput, cb func(*groundstation.ListEphemeridesOutput, bool) bool, opts ...request.Option) error
 	ListGroundStationsWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, opts ...request.Option) (*groundstation.ListGroundStationsOutput, error)
 	ListGroundStationsPagesWithContext(ctx context.Context, input *groundstation.ListGroundStationsInput, cb func(*groundstation.ListGroundStationsOutput, bool) bool, opts ...request.Option) error
 	ListMissionProfilesWithContext(ctx context.Context, input *groundstation.ListMissionProfilesInput, opts ...request.Option) (*groundstation.ListMissionProfilesOutput, error)
@@ -41,6 +46,7 @@ type GroundStation interface {
 	TagResourceWithContext(ctx context.Context, input *groundstation.TagResourceInput, opts ...request.Option) (*groundstation.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *groundstation.UntagResourceInput, opts ...request.Option) (*groundstation.UntagResourceOutput, error)
 	UpdateConfigWithContext(ctx context.Context, input *groundstation.UpdateConfigInput, opts ...request.Option) (*groundstation.UpdateConfigOutput, error)
+	UpdateEphemerisWithContext(ctx context.Context, input *groundstation.UpdateEphemerisInput, opts ...request.Option) (*groundstation.UpdateEphemerisOutput, error)
 	UpdateMissionProfileWithContext(ctx context.Context, input *groundstation.UpdateMissionProfileInput, opts ...request.Option) (*groundstation.UpdateMissionProfileOutput, error)
 }
 
@@ -122,6 +128,27 @@ func (c *Client) CreateDataflowEndpointGroupWithContext(ctx context.Context, inp
 	return req.Output.(*groundstation.CreateDataflowEndpointGroupOutput), req.Error
 }
 
+func (c *Client) CreateEphemerisWithContext(ctx context.Context, input *groundstation.CreateEphemerisInput, opts ...request.Option) (*groundstation.CreateEphemerisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "CreateEphemeris",
+		Input:   input,
+		Output:  (*groundstation.CreateEphemerisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.CreateEphemerisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.CreateEphemerisOutput), req.Error
+}
+
 func (c *Client) CreateMissionProfileWithContext(ctx context.Context, input *groundstation.CreateMissionProfileInput, opts ...request.Option) (*groundstation.CreateMissionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
@@ -185,6 +212,27 @@ func (c *Client) DeleteDataflowEndpointGroupWithContext(ctx context.Context, inp
 	return req.Output.(*groundstation.DeleteDataflowEndpointGroupOutput), req.Error
 }
 
+func (c *Client) DeleteEphemerisWithContext(ctx context.Context, input *groundstation.DeleteEphemerisInput, opts ...request.Option) (*groundstation.DeleteEphemerisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "DeleteEphemeris",
+		Input:   input,
+		Output:  (*groundstation.DeleteEphemerisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.DeleteEphemerisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.DeleteEphemerisOutput), req.Error
+}
+
 func (c *Client) DeleteMissionProfileWithContext(ctx context.Context, input *groundstation.DeleteMissionProfileInput, opts ...request.Option) (*groundstation.DeleteMissionProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
@@ -225,6 +273,27 @@ func (c *Client) DescribeContactWithContext(ctx context.Context, input *groundst
 	})
 
 	return req.Output.(*groundstation.DescribeContactOutput), req.Error
+}
+
+func (c *Client) DescribeEphemerisWithContext(ctx context.Context, input *groundstation.DescribeEphemerisInput, opts ...request.Option) (*groundstation.DescribeEphemerisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "DescribeEphemeris",
+		Input:   input,
+		Output:  (*groundstation.DescribeEphemerisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.DescribeEphemerisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.DescribeEphemerisOutput), req.Error
 }
 
 func (c *Client) GetConfigWithContext(ctx context.Context, input *groundstation.GetConfigInput, opts ...request.Option) (*groundstation.GetConfigOutput, error) {
@@ -450,6 +519,47 @@ func (c *Client) ListDataflowEndpointGroupsPagesWithContext(ctx context.Context,
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.GroundStationAPI.ListDataflowEndpointGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListEphemeridesWithContext(ctx context.Context, input *groundstation.ListEphemeridesInput, opts ...request.Option) (*groundstation.ListEphemeridesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListEphemerides",
+		Input:   input,
+		Output:  (*groundstation.ListEphemeridesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.ListEphemeridesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.ListEphemeridesOutput), req.Error
+}
+
+func (c *Client) ListEphemeridesPagesWithContext(ctx context.Context, input *groundstation.ListEphemeridesInput, cb func(*groundstation.ListEphemeridesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "ListEphemerides",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GroundStationAPI.ListEphemeridesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -681,6 +791,27 @@ func (c *Client) UpdateConfigWithContext(ctx context.Context, input *groundstati
 	})
 
 	return req.Output.(*groundstation.UpdateConfigOutput), req.Error
+}
+
+func (c *Client) UpdateEphemerisWithContext(ctx context.Context, input *groundstation.UpdateEphemerisInput, opts ...request.Option) (*groundstation.UpdateEphemerisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "UpdateEphemeris",
+		Input:   input,
+		Output:  (*groundstation.UpdateEphemerisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.UpdateEphemerisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.UpdateEphemerisOutput), req.Error
 }
 
 func (c *Client) UpdateMissionProfileWithContext(ctx context.Context, input *groundstation.UpdateMissionProfileInput, opts ...request.Option) (*groundstation.UpdateMissionProfileOutput, error) {
