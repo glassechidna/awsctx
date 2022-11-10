@@ -14,15 +14,18 @@ type ElasticsearchService interface {
 	AcceptInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.AcceptInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.AcceptInboundCrossClusterSearchConnectionOutput, error)
 	AddTagsWithContext(ctx context.Context, input *elasticsearchservice.AddTagsInput, opts ...request.Option) (*elasticsearchservice.AddTagsOutput, error)
 	AssociatePackageWithContext(ctx context.Context, input *elasticsearchservice.AssociatePackageInput, opts ...request.Option) (*elasticsearchservice.AssociatePackageOutput, error)
+	AuthorizeVpcEndpointAccessWithContext(ctx context.Context, input *elasticsearchservice.AuthorizeVpcEndpointAccessInput, opts ...request.Option) (*elasticsearchservice.AuthorizeVpcEndpointAccessOutput, error)
 	CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput, error)
 	CreateElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.CreateElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.CreateElasticsearchDomainOutput, error)
 	CreateOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.CreateOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.CreateOutboundCrossClusterSearchConnectionOutput, error)
 	CreatePackageWithContext(ctx context.Context, input *elasticsearchservice.CreatePackageInput, opts ...request.Option) (*elasticsearchservice.CreatePackageOutput, error)
+	CreateVpcEndpointWithContext(ctx context.Context, input *elasticsearchservice.CreateVpcEndpointInput, opts ...request.Option) (*elasticsearchservice.CreateVpcEndpointOutput, error)
 	DeleteElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchDomainOutput, error)
 	DeleteElasticsearchServiceRoleWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchServiceRoleInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchServiceRoleOutput, error)
 	DeleteInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteInboundCrossClusterSearchConnectionOutput, error)
 	DeleteOutboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.DeleteOutboundCrossClusterSearchConnectionOutput, error)
 	DeletePackageWithContext(ctx context.Context, input *elasticsearchservice.DeletePackageInput, opts ...request.Option) (*elasticsearchservice.DeletePackageOutput, error)
+	DeleteVpcEndpointWithContext(ctx context.Context, input *elasticsearchservice.DeleteVpcEndpointInput, opts ...request.Option) (*elasticsearchservice.DeleteVpcEndpointOutput, error)
 	DescribeDomainAutoTunesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, opts ...request.Option) (*elasticsearchservice.DescribeDomainAutoTunesOutput, error)
 	DescribeDomainAutoTunesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, cb func(*elasticsearchservice.DescribeDomainAutoTunesOutput, bool) bool, opts ...request.Option) error
 	DescribeDomainChangeProgressWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainChangeProgressInput, opts ...request.Option) (*elasticsearchservice.DescribeDomainChangeProgressOutput, error)
@@ -40,6 +43,7 @@ type ElasticsearchService interface {
 	DescribeReservedElasticsearchInstanceOfferingsPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsInput, cb func(*elasticsearchservice.DescribeReservedElasticsearchInstanceOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeReservedElasticsearchInstancesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstancesInput, opts ...request.Option) (*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput, error)
 	DescribeReservedElasticsearchInstancesPagesWithContext(ctx context.Context, input *elasticsearchservice.DescribeReservedElasticsearchInstancesInput, cb func(*elasticsearchservice.DescribeReservedElasticsearchInstancesOutput, bool) bool, opts ...request.Option) error
+	DescribeVpcEndpointsWithContext(ctx context.Context, input *elasticsearchservice.DescribeVpcEndpointsInput, opts ...request.Option) (*elasticsearchservice.DescribeVpcEndpointsOutput, error)
 	DissociatePackageWithContext(ctx context.Context, input *elasticsearchservice.DissociatePackageInput, opts ...request.Option) (*elasticsearchservice.DissociatePackageOutput, error)
 	GetCompatibleElasticsearchVersionsWithContext(ctx context.Context, input *elasticsearchservice.GetCompatibleElasticsearchVersionsInput, opts ...request.Option) (*elasticsearchservice.GetCompatibleElasticsearchVersionsOutput, error)
 	GetPackageVersionHistoryWithContext(ctx context.Context, input *elasticsearchservice.GetPackageVersionHistoryInput, opts ...request.Option) (*elasticsearchservice.GetPackageVersionHistoryOutput, error)
@@ -57,12 +61,17 @@ type ElasticsearchService interface {
 	ListPackagesForDomainWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, opts ...request.Option) (*elasticsearchservice.ListPackagesForDomainOutput, error)
 	ListPackagesForDomainPagesWithContext(ctx context.Context, input *elasticsearchservice.ListPackagesForDomainInput, cb func(*elasticsearchservice.ListPackagesForDomainOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *elasticsearchservice.ListTagsInput, opts ...request.Option) (*elasticsearchservice.ListTagsOutput, error)
+	ListVpcEndpointAccessWithContext(ctx context.Context, input *elasticsearchservice.ListVpcEndpointAccessInput, opts ...request.Option) (*elasticsearchservice.ListVpcEndpointAccessOutput, error)
+	ListVpcEndpointsWithContext(ctx context.Context, input *elasticsearchservice.ListVpcEndpointsInput, opts ...request.Option) (*elasticsearchservice.ListVpcEndpointsOutput, error)
+	ListVpcEndpointsForDomainWithContext(ctx context.Context, input *elasticsearchservice.ListVpcEndpointsForDomainInput, opts ...request.Option) (*elasticsearchservice.ListVpcEndpointsForDomainOutput, error)
 	PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx context.Context, input *elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingInput, opts ...request.Option) (*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput, error)
 	RejectInboundCrossClusterSearchConnectionWithContext(ctx context.Context, input *elasticsearchservice.RejectInboundCrossClusterSearchConnectionInput, opts ...request.Option) (*elasticsearchservice.RejectInboundCrossClusterSearchConnectionOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *elasticsearchservice.RemoveTagsInput, opts ...request.Option) (*elasticsearchservice.RemoveTagsOutput, error)
+	RevokeVpcEndpointAccessWithContext(ctx context.Context, input *elasticsearchservice.RevokeVpcEndpointAccessInput, opts ...request.Option) (*elasticsearchservice.RevokeVpcEndpointAccessOutput, error)
 	StartElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.StartElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.StartElasticsearchServiceSoftwareUpdateOutput, error)
 	UpdateElasticsearchDomainConfigWithContext(ctx context.Context, input *elasticsearchservice.UpdateElasticsearchDomainConfigInput, opts ...request.Option) (*elasticsearchservice.UpdateElasticsearchDomainConfigOutput, error)
 	UpdatePackageWithContext(ctx context.Context, input *elasticsearchservice.UpdatePackageInput, opts ...request.Option) (*elasticsearchservice.UpdatePackageOutput, error)
+	UpdateVpcEndpointWithContext(ctx context.Context, input *elasticsearchservice.UpdateVpcEndpointInput, opts ...request.Option) (*elasticsearchservice.UpdateVpcEndpointOutput, error)
 	UpgradeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.UpgradeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.UpgradeElasticsearchDomainOutput, error)
 }
 
@@ -142,6 +151,27 @@ func (c *Client) AssociatePackageWithContext(ctx context.Context, input *elastic
 	})
 
 	return req.Output.(*elasticsearchservice.AssociatePackageOutput), req.Error
+}
+
+func (c *Client) AuthorizeVpcEndpointAccessWithContext(ctx context.Context, input *elasticsearchservice.AuthorizeVpcEndpointAccessInput, opts ...request.Option) (*elasticsearchservice.AuthorizeVpcEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "AuthorizeVpcEndpointAccess",
+		Input:   input,
+		Output:  (*elasticsearchservice.AuthorizeVpcEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.AuthorizeVpcEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.AuthorizeVpcEndpointAccessOutput), req.Error
 }
 
 func (c *Client) CancelElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.CancelElasticsearchServiceSoftwareUpdateOutput, error) {
@@ -226,6 +256,27 @@ func (c *Client) CreatePackageWithContext(ctx context.Context, input *elasticsea
 	})
 
 	return req.Output.(*elasticsearchservice.CreatePackageOutput), req.Error
+}
+
+func (c *Client) CreateVpcEndpointWithContext(ctx context.Context, input *elasticsearchservice.CreateVpcEndpointInput, opts ...request.Option) (*elasticsearchservice.CreateVpcEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "CreateVpcEndpoint",
+		Input:   input,
+		Output:  (*elasticsearchservice.CreateVpcEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.CreateVpcEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.CreateVpcEndpointOutput), req.Error
 }
 
 func (c *Client) DeleteElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.DeleteElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.DeleteElasticsearchDomainOutput, error) {
@@ -331,6 +382,27 @@ func (c *Client) DeletePackageWithContext(ctx context.Context, input *elasticsea
 	})
 
 	return req.Output.(*elasticsearchservice.DeletePackageOutput), req.Error
+}
+
+func (c *Client) DeleteVpcEndpointWithContext(ctx context.Context, input *elasticsearchservice.DeleteVpcEndpointInput, opts ...request.Option) (*elasticsearchservice.DeleteVpcEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DeleteVpcEndpoint",
+		Input:   input,
+		Output:  (*elasticsearchservice.DeleteVpcEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DeleteVpcEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DeleteVpcEndpointOutput), req.Error
 }
 
 func (c *Client) DescribeDomainAutoTunesWithContext(ctx context.Context, input *elasticsearchservice.DescribeDomainAutoTunesInput, opts ...request.Option) (*elasticsearchservice.DescribeDomainAutoTunesOutput, error) {
@@ -684,6 +756,27 @@ func (c *Client) DescribeReservedElasticsearchInstancesPagesWithContext(ctx cont
 	return req.Error
 }
 
+func (c *Client) DescribeVpcEndpointsWithContext(ctx context.Context, input *elasticsearchservice.DescribeVpcEndpointsInput, opts ...request.Option) (*elasticsearchservice.DescribeVpcEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "DescribeVpcEndpoints",
+		Input:   input,
+		Output:  (*elasticsearchservice.DescribeVpcEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.DescribeVpcEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.DescribeVpcEndpointsOutput), req.Error
+}
+
 func (c *Client) DissociatePackageWithContext(ctx context.Context, input *elasticsearchservice.DissociatePackageInput, opts ...request.Option) (*elasticsearchservice.DissociatePackageOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -1035,6 +1128,69 @@ func (c *Client) ListTagsWithContext(ctx context.Context, input *elasticsearchse
 	return req.Output.(*elasticsearchservice.ListTagsOutput), req.Error
 }
 
+func (c *Client) ListVpcEndpointAccessWithContext(ctx context.Context, input *elasticsearchservice.ListVpcEndpointAccessInput, opts ...request.Option) (*elasticsearchservice.ListVpcEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListVpcEndpointAccess",
+		Input:   input,
+		Output:  (*elasticsearchservice.ListVpcEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.ListVpcEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.ListVpcEndpointAccessOutput), req.Error
+}
+
+func (c *Client) ListVpcEndpointsWithContext(ctx context.Context, input *elasticsearchservice.ListVpcEndpointsInput, opts ...request.Option) (*elasticsearchservice.ListVpcEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListVpcEndpoints",
+		Input:   input,
+		Output:  (*elasticsearchservice.ListVpcEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.ListVpcEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.ListVpcEndpointsOutput), req.Error
+}
+
+func (c *Client) ListVpcEndpointsForDomainWithContext(ctx context.Context, input *elasticsearchservice.ListVpcEndpointsForDomainInput, opts ...request.Option) (*elasticsearchservice.ListVpcEndpointsForDomainOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "ListVpcEndpointsForDomain",
+		Input:   input,
+		Output:  (*elasticsearchservice.ListVpcEndpointsForDomainOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.ListVpcEndpointsForDomainWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.ListVpcEndpointsForDomainOutput), req.Error
+}
+
 func (c *Client) PurchaseReservedElasticsearchInstanceOfferingWithContext(ctx context.Context, input *elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingInput, opts ...request.Option) (*elasticsearchservice.PurchaseReservedElasticsearchInstanceOfferingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -1098,6 +1254,27 @@ func (c *Client) RemoveTagsWithContext(ctx context.Context, input *elasticsearch
 	return req.Output.(*elasticsearchservice.RemoveTagsOutput), req.Error
 }
 
+func (c *Client) RevokeVpcEndpointAccessWithContext(ctx context.Context, input *elasticsearchservice.RevokeVpcEndpointAccessInput, opts ...request.Option) (*elasticsearchservice.RevokeVpcEndpointAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "RevokeVpcEndpointAccess",
+		Input:   input,
+		Output:  (*elasticsearchservice.RevokeVpcEndpointAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.RevokeVpcEndpointAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.RevokeVpcEndpointAccessOutput), req.Error
+}
+
 func (c *Client) StartElasticsearchServiceSoftwareUpdateWithContext(ctx context.Context, input *elasticsearchservice.StartElasticsearchServiceSoftwareUpdateInput, opts ...request.Option) (*elasticsearchservice.StartElasticsearchServiceSoftwareUpdateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "elasticsearchservice",
@@ -1159,6 +1336,27 @@ func (c *Client) UpdatePackageWithContext(ctx context.Context, input *elasticsea
 	})
 
 	return req.Output.(*elasticsearchservice.UpdatePackageOutput), req.Error
+}
+
+func (c *Client) UpdateVpcEndpointWithContext(ctx context.Context, input *elasticsearchservice.UpdateVpcEndpointInput, opts ...request.Option) (*elasticsearchservice.UpdateVpcEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticsearchservice",
+		Action:  "UpdateVpcEndpoint",
+		Input:   input,
+		Output:  (*elasticsearchservice.UpdateVpcEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElasticsearchServiceAPI.UpdateVpcEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticsearchservice.UpdateVpcEndpointOutput), req.Error
 }
 
 func (c *Client) UpgradeElasticsearchDomainWithContext(ctx context.Context, input *elasticsearchservice.UpgradeElasticsearchDomainInput, opts ...request.Option) (*elasticsearchservice.UpgradeElasticsearchDomainOutput, error) {

@@ -32,6 +32,7 @@ type ECS interface {
 	DescribeTasksWithContext(ctx context.Context, input *ecs.DescribeTasksInput, opts ...request.Option) (*ecs.DescribeTasksOutput, error)
 	DiscoverPollEndpointWithContext(ctx context.Context, input *ecs.DiscoverPollEndpointInput, opts ...request.Option) (*ecs.DiscoverPollEndpointOutput, error)
 	ExecuteCommandWithContext(ctx context.Context, input *ecs.ExecuteCommandInput, opts ...request.Option) (*ecs.ExecuteCommandOutput, error)
+	GetTaskProtectionWithContext(ctx context.Context, input *ecs.GetTaskProtectionInput, opts ...request.Option) (*ecs.GetTaskProtectionOutput, error)
 	ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error)
 	ListAccountSettingsPagesWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, cb func(*ecs.ListAccountSettingsOutput, bool) bool, opts ...request.Option) error
 	ListAttributesWithContext(ctx context.Context, input *ecs.ListAttributesInput, opts ...request.Option) (*ecs.ListAttributesOutput, error)
@@ -70,6 +71,7 @@ type ECS interface {
 	UpdateContainerInstancesStateWithContext(ctx context.Context, input *ecs.UpdateContainerInstancesStateInput, opts ...request.Option) (*ecs.UpdateContainerInstancesStateOutput, error)
 	UpdateServiceWithContext(ctx context.Context, input *ecs.UpdateServiceInput, opts ...request.Option) (*ecs.UpdateServiceOutput, error)
 	UpdateServicePrimaryTaskSetWithContext(ctx context.Context, input *ecs.UpdateServicePrimaryTaskSetInput, opts ...request.Option) (*ecs.UpdateServicePrimaryTaskSetOutput, error)
+	UpdateTaskProtectionWithContext(ctx context.Context, input *ecs.UpdateTaskProtectionInput, opts ...request.Option) (*ecs.UpdateTaskProtectionOutput, error)
 	UpdateTaskSetWithContext(ctx context.Context, input *ecs.UpdateTaskSetInput, opts ...request.Option) (*ecs.UpdateTaskSetOutput, error)
 }
 
@@ -527,6 +529,27 @@ func (c *Client) ExecuteCommandWithContext(ctx context.Context, input *ecs.Execu
 	})
 
 	return req.Output.(*ecs.ExecuteCommandOutput), req.Error
+}
+
+func (c *Client) GetTaskProtectionWithContext(ctx context.Context, input *ecs.GetTaskProtectionInput, opts ...request.Option) (*ecs.GetTaskProtectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "GetTaskProtection",
+		Input:   input,
+		Output:  (*ecs.GetTaskProtectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.GetTaskProtectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.GetTaskProtectionOutput), req.Error
 }
 
 func (c *Client) ListAccountSettingsWithContext(ctx context.Context, input *ecs.ListAccountSettingsInput, opts ...request.Option) (*ecs.ListAccountSettingsOutput, error) {
@@ -1317,6 +1340,27 @@ func (c *Client) UpdateServicePrimaryTaskSetWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*ecs.UpdateServicePrimaryTaskSetOutput), req.Error
+}
+
+func (c *Client) UpdateTaskProtectionWithContext(ctx context.Context, input *ecs.UpdateTaskProtectionInput, opts ...request.Option) (*ecs.UpdateTaskProtectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "UpdateTaskProtection",
+		Input:   input,
+		Output:  (*ecs.UpdateTaskProtectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.UpdateTaskProtectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.UpdateTaskProtectionOutput), req.Error
 }
 
 func (c *Client) UpdateTaskSetWithContext(ctx context.Context, input *ecs.UpdateTaskSetInput, opts ...request.Option) (*ecs.UpdateTaskSetOutput, error) {
