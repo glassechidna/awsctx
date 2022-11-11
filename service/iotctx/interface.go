@@ -211,6 +211,7 @@ type IoT interface {
 	ListProvisioningTemplateVersionsPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplateVersionsInput, cb func(*iot.ListProvisioningTemplateVersionsOutput, bool) bool, opts ...request.Option) error
 	ListProvisioningTemplatesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, opts ...request.Option) (*iot.ListProvisioningTemplatesOutput, error)
 	ListProvisioningTemplatesPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, cb func(*iot.ListProvisioningTemplatesOutput, bool) bool, opts ...request.Option) error
+	ListRelatedResourcesForAuditFindingWithContext(ctx context.Context, input *iot.ListRelatedResourcesForAuditFindingInput, opts ...request.Option) (*iot.ListRelatedResourcesForAuditFindingOutput, error)
 	ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error)
 	ListRoleAliasesPagesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, cb func(*iot.ListRoleAliasesOutput, bool) bool, opts ...request.Option) error
 	ListScheduledAuditsWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, opts ...request.Option) (*iot.ListScheduledAuditsOutput, error)
@@ -4484,6 +4485,27 @@ func (c *Client) ListProvisioningTemplatesPagesWithContext(ctx context.Context, 
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListRelatedResourcesForAuditFindingWithContext(ctx context.Context, input *iot.ListRelatedResourcesForAuditFindingInput, opts ...request.Option) (*iot.ListRelatedResourcesForAuditFindingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListRelatedResourcesForAuditFinding",
+		Input:   input,
+		Output:  (*iot.ListRelatedResourcesForAuditFindingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListRelatedResourcesForAuditFindingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListRelatedResourcesForAuditFindingOutput), req.Error
 }
 
 func (c *Client) ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error) {

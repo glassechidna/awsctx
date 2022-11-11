@@ -47,7 +47,9 @@ type LicenseManager interface {
 	ListLicenseVersionsWithContext(ctx context.Context, input *licensemanager.ListLicenseVersionsInput, opts ...request.Option) (*licensemanager.ListLicenseVersionsOutput, error)
 	ListLicensesWithContext(ctx context.Context, input *licensemanager.ListLicensesInput, opts ...request.Option) (*licensemanager.ListLicensesOutput, error)
 	ListReceivedGrantsWithContext(ctx context.Context, input *licensemanager.ListReceivedGrantsInput, opts ...request.Option) (*licensemanager.ListReceivedGrantsOutput, error)
+	ListReceivedGrantsForOrganizationWithContext(ctx context.Context, input *licensemanager.ListReceivedGrantsForOrganizationInput, opts ...request.Option) (*licensemanager.ListReceivedGrantsForOrganizationOutput, error)
 	ListReceivedLicensesWithContext(ctx context.Context, input *licensemanager.ListReceivedLicensesInput, opts ...request.Option) (*licensemanager.ListReceivedLicensesOutput, error)
+	ListReceivedLicensesForOrganizationWithContext(ctx context.Context, input *licensemanager.ListReceivedLicensesForOrganizationInput, opts ...request.Option) (*licensemanager.ListReceivedLicensesForOrganizationOutput, error)
 	ListResourceInventoryWithContext(ctx context.Context, input *licensemanager.ListResourceInventoryInput, opts ...request.Option) (*licensemanager.ListResourceInventoryOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *licensemanager.ListTagsForResourceInput, opts ...request.Option) (*licensemanager.ListTagsForResourceOutput, error)
 	ListTokensWithContext(ctx context.Context, input *licensemanager.ListTokensInput, opts ...request.Option) (*licensemanager.ListTokensOutput, error)
@@ -832,6 +834,27 @@ func (c *Client) ListReceivedGrantsWithContext(ctx context.Context, input *licen
 	return req.Output.(*licensemanager.ListReceivedGrantsOutput), req.Error
 }
 
+func (c *Client) ListReceivedGrantsForOrganizationWithContext(ctx context.Context, input *licensemanager.ListReceivedGrantsForOrganizationInput, opts ...request.Option) (*licensemanager.ListReceivedGrantsForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "ListReceivedGrantsForOrganization",
+		Input:   input,
+		Output:  (*licensemanager.ListReceivedGrantsForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.ListReceivedGrantsForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.ListReceivedGrantsForOrganizationOutput), req.Error
+}
+
 func (c *Client) ListReceivedLicensesWithContext(ctx context.Context, input *licensemanager.ListReceivedLicensesInput, opts ...request.Option) (*licensemanager.ListReceivedLicensesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "licensemanager",
@@ -851,6 +874,27 @@ func (c *Client) ListReceivedLicensesWithContext(ctx context.Context, input *lic
 	})
 
 	return req.Output.(*licensemanager.ListReceivedLicensesOutput), req.Error
+}
+
+func (c *Client) ListReceivedLicensesForOrganizationWithContext(ctx context.Context, input *licensemanager.ListReceivedLicensesForOrganizationInput, opts ...request.Option) (*licensemanager.ListReceivedLicensesForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "licensemanager",
+		Action:  "ListReceivedLicensesForOrganization",
+		Input:   input,
+		Output:  (*licensemanager.ListReceivedLicensesForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LicenseManagerAPI.ListReceivedLicensesForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*licensemanager.ListReceivedLicensesForOrganizationOutput), req.Error
 }
 
 func (c *Client) ListResourceInventoryWithContext(ctx context.Context, input *licensemanager.ListResourceInventoryInput, opts ...request.Option) (*licensemanager.ListResourceInventoryOutput, error) {
