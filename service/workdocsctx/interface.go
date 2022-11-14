@@ -24,6 +24,7 @@ type WorkDocs interface {
 	DeleteCommentWithContext(ctx context.Context, input *workdocs.DeleteCommentInput, opts ...request.Option) (*workdocs.DeleteCommentOutput, error)
 	DeleteCustomMetadataWithContext(ctx context.Context, input *workdocs.DeleteCustomMetadataInput, opts ...request.Option) (*workdocs.DeleteCustomMetadataOutput, error)
 	DeleteDocumentWithContext(ctx context.Context, input *workdocs.DeleteDocumentInput, opts ...request.Option) (*workdocs.DeleteDocumentOutput, error)
+	DeleteDocumentVersionWithContext(ctx context.Context, input *workdocs.DeleteDocumentVersionInput, opts ...request.Option) (*workdocs.DeleteDocumentVersionOutput, error)
 	DeleteFolderWithContext(ctx context.Context, input *workdocs.DeleteFolderInput, opts ...request.Option) (*workdocs.DeleteFolderOutput, error)
 	DeleteFolderContentsWithContext(ctx context.Context, input *workdocs.DeleteFolderContentsInput, opts ...request.Option) (*workdocs.DeleteFolderContentsOutput, error)
 	DeleteLabelsWithContext(ctx context.Context, input *workdocs.DeleteLabelsInput, opts ...request.Option) (*workdocs.DeleteLabelsOutput, error)
@@ -51,6 +52,7 @@ type WorkDocs interface {
 	InitiateDocumentVersionUploadWithContext(ctx context.Context, input *workdocs.InitiateDocumentVersionUploadInput, opts ...request.Option) (*workdocs.InitiateDocumentVersionUploadOutput, error)
 	RemoveAllResourcePermissionsWithContext(ctx context.Context, input *workdocs.RemoveAllResourcePermissionsInput, opts ...request.Option) (*workdocs.RemoveAllResourcePermissionsOutput, error)
 	RemoveResourcePermissionWithContext(ctx context.Context, input *workdocs.RemoveResourcePermissionInput, opts ...request.Option) (*workdocs.RemoveResourcePermissionOutput, error)
+	RestoreDocumentVersionsWithContext(ctx context.Context, input *workdocs.RestoreDocumentVersionsInput, opts ...request.Option) (*workdocs.RestoreDocumentVersionsOutput, error)
 	UpdateDocumentWithContext(ctx context.Context, input *workdocs.UpdateDocumentInput, opts ...request.Option) (*workdocs.UpdateDocumentOutput, error)
 	UpdateDocumentVersionWithContext(ctx context.Context, input *workdocs.UpdateDocumentVersionInput, opts ...request.Option) (*workdocs.UpdateDocumentVersionOutput, error)
 	UpdateFolderWithContext(ctx context.Context, input *workdocs.UpdateFolderInput, opts ...request.Option) (*workdocs.UpdateFolderOutput, error)
@@ -343,6 +345,27 @@ func (c *Client) DeleteDocumentWithContext(ctx context.Context, input *workdocs.
 	})
 
 	return req.Output.(*workdocs.DeleteDocumentOutput), req.Error
+}
+
+func (c *Client) DeleteDocumentVersionWithContext(ctx context.Context, input *workdocs.DeleteDocumentVersionInput, opts ...request.Option) (*workdocs.DeleteDocumentVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DeleteDocumentVersion",
+		Input:   input,
+		Output:  (*workdocs.DeleteDocumentVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkDocsAPI.DeleteDocumentVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workdocs.DeleteDocumentVersionOutput), req.Error
 }
 
 func (c *Client) DeleteFolderWithContext(ctx context.Context, input *workdocs.DeleteFolderInput, opts ...request.Option) (*workdocs.DeleteFolderOutput, error) {
@@ -907,6 +930,27 @@ func (c *Client) RemoveResourcePermissionWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*workdocs.RemoveResourcePermissionOutput), req.Error
+}
+
+func (c *Client) RestoreDocumentVersionsWithContext(ctx context.Context, input *workdocs.RestoreDocumentVersionsInput, opts ...request.Option) (*workdocs.RestoreDocumentVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "RestoreDocumentVersions",
+		Input:   input,
+		Output:  (*workdocs.RestoreDocumentVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkDocsAPI.RestoreDocumentVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workdocs.RestoreDocumentVersionsOutput), req.Error
 }
 
 func (c *Client) UpdateDocumentWithContext(ctx context.Context, input *workdocs.UpdateDocumentInput, opts ...request.Option) (*workdocs.UpdateDocumentOutput, error) {
