@@ -57,6 +57,7 @@ type WorkSpaces interface {
 	ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
 	MigrateWorkspaceWithContext(ctx context.Context, input *workspaces.MigrateWorkspaceInput, opts ...request.Option) (*workspaces.MigrateWorkspaceOutput, error)
 	ModifyAccountWithContext(ctx context.Context, input *workspaces.ModifyAccountInput, opts ...request.Option) (*workspaces.ModifyAccountOutput, error)
+	ModifyCertificateBasedAuthPropertiesWithContext(ctx context.Context, input *workspaces.ModifyCertificateBasedAuthPropertiesInput, opts ...request.Option) (*workspaces.ModifyCertificateBasedAuthPropertiesOutput, error)
 	ModifyClientPropertiesWithContext(ctx context.Context, input *workspaces.ModifyClientPropertiesInput, opts ...request.Option) (*workspaces.ModifyClientPropertiesOutput, error)
 	ModifySamlPropertiesWithContext(ctx context.Context, input *workspaces.ModifySamlPropertiesInput, opts ...request.Option) (*workspaces.ModifySamlPropertiesOutput, error)
 	ModifySelfservicePermissionsWithContext(ctx context.Context, input *workspaces.ModifySelfservicePermissionsInput, opts ...request.Option) (*workspaces.ModifySelfservicePermissionsOutput, error)
@@ -1055,6 +1056,27 @@ func (c *Client) ModifyAccountWithContext(ctx context.Context, input *workspaces
 	})
 
 	return req.Output.(*workspaces.ModifyAccountOutput), req.Error
+}
+
+func (c *Client) ModifyCertificateBasedAuthPropertiesWithContext(ctx context.Context, input *workspaces.ModifyCertificateBasedAuthPropertiesInput, opts ...request.Option) (*workspaces.ModifyCertificateBasedAuthPropertiesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "ModifyCertificateBasedAuthProperties",
+		Input:   input,
+		Output:  (*workspaces.ModifyCertificateBasedAuthPropertiesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.ModifyCertificateBasedAuthPropertiesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.ModifyCertificateBasedAuthPropertiesOutput), req.Error
 }
 
 func (c *Client) ModifyClientPropertiesWithContext(ctx context.Context, input *workspaces.ModifyClientPropertiesInput, opts ...request.Option) (*workspaces.ModifyClientPropertiesOutput, error) {
