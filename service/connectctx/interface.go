@@ -150,6 +150,7 @@ type Connect interface {
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
+	MonitorContactWithContext(ctx context.Context, input *connect.MonitorContactInput, opts ...request.Option) (*connect.MonitorContactOutput, error)
 	PutUserStatusWithContext(ctx context.Context, input *connect.PutUserStatusInput, opts ...request.Option) (*connect.PutUserStatusOutput, error)
 	ReleasePhoneNumberWithContext(ctx context.Context, input *connect.ReleasePhoneNumberInput, opts ...request.Option) (*connect.ReleasePhoneNumberOutput, error)
 	ReplicateInstanceWithContext(ctx context.Context, input *connect.ReplicateInstanceInput, opts ...request.Option) (*connect.ReplicateInstanceOutput, error)
@@ -3113,6 +3114,27 @@ func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *connect.L
 	})
 
 	return req.Error
+}
+
+func (c *Client) MonitorContactWithContext(ctx context.Context, input *connect.MonitorContactInput, opts ...request.Option) (*connect.MonitorContactOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "MonitorContact",
+		Input:   input,
+		Output:  (*connect.MonitorContactOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.MonitorContactWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.MonitorContactOutput), req.Error
 }
 
 func (c *Client) PutUserStatusWithContext(ctx context.Context, input *connect.PutUserStatusInput, opts ...request.Option) (*connect.PutUserStatusOutput, error) {

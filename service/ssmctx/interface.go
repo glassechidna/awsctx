@@ -34,6 +34,7 @@ type SSM interface {
 	DeleteParametersWithContext(ctx context.Context, input *ssm.DeleteParametersInput, opts ...request.Option) (*ssm.DeleteParametersOutput, error)
 	DeletePatchBaselineWithContext(ctx context.Context, input *ssm.DeletePatchBaselineInput, opts ...request.Option) (*ssm.DeletePatchBaselineOutput, error)
 	DeleteResourceDataSyncWithContext(ctx context.Context, input *ssm.DeleteResourceDataSyncInput, opts ...request.Option) (*ssm.DeleteResourceDataSyncOutput, error)
+	DeleteResourcePolicyWithContext(ctx context.Context, input *ssm.DeleteResourcePolicyInput, opts ...request.Option) (*ssm.DeleteResourcePolicyOutput, error)
 	DeregisterManagedInstanceWithContext(ctx context.Context, input *ssm.DeregisterManagedInstanceInput, opts ...request.Option) (*ssm.DeregisterManagedInstanceOutput, error)
 	DeregisterPatchBaselineForPatchGroupWithContext(ctx context.Context, input *ssm.DeregisterPatchBaselineForPatchGroupInput, opts ...request.Option) (*ssm.DeregisterPatchBaselineForPatchGroupOutput, error)
 	DeregisterTargetFromMaintenanceWindowWithContext(ctx context.Context, input *ssm.DeregisterTargetFromMaintenanceWindowInput, opts ...request.Option) (*ssm.DeregisterTargetFromMaintenanceWindowOutput, error)
@@ -127,6 +128,8 @@ type SSM interface {
 	GetParametersByPathPagesWithContext(ctx context.Context, input *ssm.GetParametersByPathInput, cb func(*ssm.GetParametersByPathOutput, bool) bool, opts ...request.Option) error
 	GetPatchBaselineWithContext(ctx context.Context, input *ssm.GetPatchBaselineInput, opts ...request.Option) (*ssm.GetPatchBaselineOutput, error)
 	GetPatchBaselineForPatchGroupWithContext(ctx context.Context, input *ssm.GetPatchBaselineForPatchGroupInput, opts ...request.Option) (*ssm.GetPatchBaselineForPatchGroupOutput, error)
+	GetResourcePoliciesWithContext(ctx context.Context, input *ssm.GetResourcePoliciesInput, opts ...request.Option) (*ssm.GetResourcePoliciesOutput, error)
+	GetResourcePoliciesPagesWithContext(ctx context.Context, input *ssm.GetResourcePoliciesInput, cb func(*ssm.GetResourcePoliciesOutput, bool) bool, opts ...request.Option) error
 	GetServiceSettingWithContext(ctx context.Context, input *ssm.GetServiceSettingInput, opts ...request.Option) (*ssm.GetServiceSettingOutput, error)
 	LabelParameterVersionWithContext(ctx context.Context, input *ssm.LabelParameterVersionInput, opts ...request.Option) (*ssm.LabelParameterVersionOutput, error)
 	ListAssociationVersionsWithContext(ctx context.Context, input *ssm.ListAssociationVersionsInput, opts ...request.Option) (*ssm.ListAssociationVersionsOutput, error)
@@ -162,6 +165,7 @@ type SSM interface {
 	PutComplianceItemsWithContext(ctx context.Context, input *ssm.PutComplianceItemsInput, opts ...request.Option) (*ssm.PutComplianceItemsOutput, error)
 	PutInventoryWithContext(ctx context.Context, input *ssm.PutInventoryInput, opts ...request.Option) (*ssm.PutInventoryOutput, error)
 	PutParameterWithContext(ctx context.Context, input *ssm.PutParameterInput, opts ...request.Option) (*ssm.PutParameterOutput, error)
+	PutResourcePolicyWithContext(ctx context.Context, input *ssm.PutResourcePolicyInput, opts ...request.Option) (*ssm.PutResourcePolicyOutput, error)
 	RegisterDefaultPatchBaselineWithContext(ctx context.Context, input *ssm.RegisterDefaultPatchBaselineInput, opts ...request.Option) (*ssm.RegisterDefaultPatchBaselineOutput, error)
 	RegisterPatchBaselineForPatchGroupWithContext(ctx context.Context, input *ssm.RegisterPatchBaselineForPatchGroupInput, opts ...request.Option) (*ssm.RegisterPatchBaselineForPatchGroupOutput, error)
 	RegisterTargetWithMaintenanceWindowWithContext(ctx context.Context, input *ssm.RegisterTargetWithMaintenanceWindowInput, opts ...request.Option) (*ssm.RegisterTargetWithMaintenanceWindowOutput, error)
@@ -690,6 +694,27 @@ func (c *Client) DeleteResourceDataSyncWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*ssm.DeleteResourceDataSyncOutput), req.Error
+}
+
+func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *ssm.DeleteResourcePolicyInput, opts ...request.Option) (*ssm.DeleteResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DeleteResourcePolicy",
+		Input:   input,
+		Output:  (*ssm.DeleteResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.DeleteResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.DeleteResourcePolicyOutput), req.Error
 }
 
 func (c *Client) DeregisterManagedInstanceWithContext(ctx context.Context, input *ssm.DeregisterManagedInstanceInput, opts ...request.Option) (*ssm.DeregisterManagedInstanceOutput, error) {
@@ -2612,6 +2637,47 @@ func (c *Client) GetPatchBaselineForPatchGroupWithContext(ctx context.Context, i
 	return req.Output.(*ssm.GetPatchBaselineForPatchGroupOutput), req.Error
 }
 
+func (c *Client) GetResourcePoliciesWithContext(ctx context.Context, input *ssm.GetResourcePoliciesInput, opts ...request.Option) (*ssm.GetResourcePoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "GetResourcePolicies",
+		Input:   input,
+		Output:  (*ssm.GetResourcePoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.GetResourcePoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.GetResourcePoliciesOutput), req.Error
+}
+
+func (c *Client) GetResourcePoliciesPagesWithContext(ctx context.Context, input *ssm.GetResourcePoliciesInput, cb func(*ssm.GetResourcePoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "GetResourcePolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SSMAPI.GetResourcePoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetServiceSettingWithContext(ctx context.Context, input *ssm.GetServiceSettingInput, opts ...request.Option) (*ssm.GetServiceSettingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ssm",
@@ -3332,6 +3398,27 @@ func (c *Client) PutParameterWithContext(ctx context.Context, input *ssm.PutPara
 	})
 
 	return req.Output.(*ssm.PutParameterOutput), req.Error
+}
+
+func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *ssm.PutResourcePolicyInput, opts ...request.Option) (*ssm.PutResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "PutResourcePolicy",
+		Input:   input,
+		Output:  (*ssm.PutResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.PutResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.PutResourcePolicyOutput), req.Error
 }
 
 func (c *Client) RegisterDefaultPatchBaselineWithContext(ctx context.Context, input *ssm.RegisterDefaultPatchBaselineInput, opts ...request.Option) (*ssm.RegisterDefaultPatchBaselineOutput, error) {

@@ -16,6 +16,7 @@ type XRay interface {
 	CreateGroupWithContext(ctx context.Context, input *xray.CreateGroupInput, opts ...request.Option) (*xray.CreateGroupOutput, error)
 	CreateSamplingRuleWithContext(ctx context.Context, input *xray.CreateSamplingRuleInput, opts ...request.Option) (*xray.CreateSamplingRuleOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *xray.DeleteGroupInput, opts ...request.Option) (*xray.DeleteGroupOutput, error)
+	DeleteResourcePolicyWithContext(ctx context.Context, input *xray.DeleteResourcePolicyInput, opts ...request.Option) (*xray.DeleteResourcePolicyOutput, error)
 	DeleteSamplingRuleWithContext(ctx context.Context, input *xray.DeleteSamplingRuleInput, opts ...request.Option) (*xray.DeleteSamplingRuleOutput, error)
 	GetEncryptionConfigWithContext(ctx context.Context, input *xray.GetEncryptionConfigInput, opts ...request.Option) (*xray.GetEncryptionConfigOutput, error)
 	GetGroupWithContext(ctx context.Context, input *xray.GetGroupInput, opts ...request.Option) (*xray.GetGroupOutput, error)
@@ -40,8 +41,12 @@ type XRay interface {
 	GetTraceGraphPagesWithContext(ctx context.Context, input *xray.GetTraceGraphInput, cb func(*xray.GetTraceGraphOutput, bool) bool, opts ...request.Option) error
 	GetTraceSummariesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, opts ...request.Option) (*xray.GetTraceSummariesOutput, error)
 	GetTraceSummariesPagesWithContext(ctx context.Context, input *xray.GetTraceSummariesInput, cb func(*xray.GetTraceSummariesOutput, bool) bool, opts ...request.Option) error
+	ListResourcePoliciesWithContext(ctx context.Context, input *xray.ListResourcePoliciesInput, opts ...request.Option) (*xray.ListResourcePoliciesOutput, error)
+	ListResourcePoliciesPagesWithContext(ctx context.Context, input *xray.ListResourcePoliciesInput, cb func(*xray.ListResourcePoliciesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *xray.ListTagsForResourceInput, opts ...request.Option) (*xray.ListTagsForResourceOutput, error)
+	ListTagsForResourcePagesWithContext(ctx context.Context, input *xray.ListTagsForResourceInput, cb func(*xray.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error)
+	PutResourcePolicyWithContext(ctx context.Context, input *xray.PutResourcePolicyInput, opts ...request.Option) (*xray.PutResourcePolicyOutput, error)
 	PutTelemetryRecordsWithContext(ctx context.Context, input *xray.PutTelemetryRecordsInput, opts ...request.Option) (*xray.PutTelemetryRecordsOutput, error)
 	PutTraceSegmentsWithContext(ctx context.Context, input *xray.PutTraceSegmentsInput, opts ...request.Option) (*xray.PutTraceSegmentsOutput, error)
 	TagResourceWithContext(ctx context.Context, input *xray.TagResourceInput, opts ...request.Option) (*xray.TagResourceOutput, error)
@@ -167,6 +172,27 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *xray.DeleteG
 	})
 
 	return req.Output.(*xray.DeleteGroupOutput), req.Error
+}
+
+func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *xray.DeleteResourcePolicyInput, opts ...request.Option) (*xray.DeleteResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "DeleteResourcePolicy",
+		Input:   input,
+		Output:  (*xray.DeleteResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.DeleteResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.DeleteResourcePolicyOutput), req.Error
 }
 
 func (c *Client) DeleteSamplingRuleWithContext(ctx context.Context, input *xray.DeleteSamplingRuleInput, opts ...request.Option) (*xray.DeleteSamplingRuleOutput, error) {
@@ -664,6 +690,47 @@ func (c *Client) GetTraceSummariesPagesWithContext(ctx context.Context, input *x
 	return req.Error
 }
 
+func (c *Client) ListResourcePoliciesWithContext(ctx context.Context, input *xray.ListResourcePoliciesInput, opts ...request.Option) (*xray.ListResourcePoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "ListResourcePolicies",
+		Input:   input,
+		Output:  (*xray.ListResourcePoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.ListResourcePoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.ListResourcePoliciesOutput), req.Error
+}
+
+func (c *Client) ListResourcePoliciesPagesWithContext(ctx context.Context, input *xray.ListResourcePoliciesInput, cb func(*xray.ListResourcePoliciesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "ListResourcePolicies",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.ListResourcePoliciesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *xray.ListTagsForResourceInput, opts ...request.Option) (*xray.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -685,6 +752,26 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *xray
 	return req.Output.(*xray.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListTagsForResourcePagesWithContext(ctx context.Context, input *xray.ListTagsForResourceInput, cb func(*xray.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.XRayAPI.ListTagsForResourcePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) PutEncryptionConfigWithContext(ctx context.Context, input *xray.PutEncryptionConfigInput, opts ...request.Option) (*xray.PutEncryptionConfigOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "xray",
@@ -704,6 +791,27 @@ func (c *Client) PutEncryptionConfigWithContext(ctx context.Context, input *xray
 	})
 
 	return req.Output.(*xray.PutEncryptionConfigOutput), req.Error
+}
+
+func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *xray.PutResourcePolicyInput, opts ...request.Option) (*xray.PutResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "xray",
+		Action:  "PutResourcePolicy",
+		Input:   input,
+		Output:  (*xray.PutResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.XRayAPI.PutResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*xray.PutResourcePolicyOutput), req.Error
 }
 
 func (c *Client) PutTelemetryRecordsWithContext(ctx context.Context, input *xray.PutTelemetryRecordsInput, opts ...request.Option) (*xray.PutTelemetryRecordsOutput, error) {
