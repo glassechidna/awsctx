@@ -18,6 +18,7 @@ type WorkSpaces interface {
 	CreateConnectClientAddInWithContext(ctx context.Context, input *workspaces.CreateConnectClientAddInInput, opts ...request.Option) (*workspaces.CreateConnectClientAddInOutput, error)
 	CreateConnectionAliasWithContext(ctx context.Context, input *workspaces.CreateConnectionAliasInput, opts ...request.Option) (*workspaces.CreateConnectionAliasOutput, error)
 	CreateIpGroupWithContext(ctx context.Context, input *workspaces.CreateIpGroupInput, opts ...request.Option) (*workspaces.CreateIpGroupOutput, error)
+	CreateStandbyWorkspacesWithContext(ctx context.Context, input *workspaces.CreateStandbyWorkspacesInput, opts ...request.Option) (*workspaces.CreateStandbyWorkspacesOutput, error)
 	CreateTagsWithContext(ctx context.Context, input *workspaces.CreateTagsInput, opts ...request.Option) (*workspaces.CreateTagsOutput, error)
 	CreateUpdatedWorkspaceImageWithContext(ctx context.Context, input *workspaces.CreateUpdatedWorkspaceImageInput, opts ...request.Option) (*workspaces.CreateUpdatedWorkspaceImageOutput, error)
 	CreateWorkspaceBundleWithContext(ctx context.Context, input *workspaces.CreateWorkspaceBundleInput, opts ...request.Option) (*workspaces.CreateWorkspaceBundleOutput, error)
@@ -240,6 +241,27 @@ func (c *Client) CreateIpGroupWithContext(ctx context.Context, input *workspaces
 	})
 
 	return req.Output.(*workspaces.CreateIpGroupOutput), req.Error
+}
+
+func (c *Client) CreateStandbyWorkspacesWithContext(ctx context.Context, input *workspaces.CreateStandbyWorkspacesInput, opts ...request.Option) (*workspaces.CreateStandbyWorkspacesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "CreateStandbyWorkspaces",
+		Input:   input,
+		Output:  (*workspaces.CreateStandbyWorkspacesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.CreateStandbyWorkspacesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.CreateStandbyWorkspacesOutput), req.Error
 }
 
 func (c *Client) CreateTagsWithContext(ctx context.Context, input *workspaces.CreateTagsInput, opts ...request.Option) (*workspaces.CreateTagsOutput, error) {

@@ -29,6 +29,7 @@ type AppSync interface {
 	DeleteResolverWithContext(ctx context.Context, input *appsync.DeleteResolverInput, opts ...request.Option) (*appsync.DeleteResolverOutput, error)
 	DeleteTypeWithContext(ctx context.Context, input *appsync.DeleteTypeInput, opts ...request.Option) (*appsync.DeleteTypeOutput, error)
 	DisassociateApiWithContext(ctx context.Context, input *appsync.DisassociateApiInput, opts ...request.Option) (*appsync.DisassociateApiOutput, error)
+	EvaluateCodeWithContext(ctx context.Context, input *appsync.EvaluateCodeInput, opts ...request.Option) (*appsync.EvaluateCodeOutput, error)
 	EvaluateMappingTemplateWithContext(ctx context.Context, input *appsync.EvaluateMappingTemplateInput, opts ...request.Option) (*appsync.EvaluateMappingTemplateOutput, error)
 	FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error)
 	GetApiAssociationWithContext(ctx context.Context, input *appsync.GetApiAssociationInput, opts ...request.Option) (*appsync.GetApiAssociationOutput, error)
@@ -454,6 +455,27 @@ func (c *Client) DisassociateApiWithContext(ctx context.Context, input *appsync.
 	})
 
 	return req.Output.(*appsync.DisassociateApiOutput), req.Error
+}
+
+func (c *Client) EvaluateCodeWithContext(ctx context.Context, input *appsync.EvaluateCodeInput, opts ...request.Option) (*appsync.EvaluateCodeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "EvaluateCode",
+		Input:   input,
+		Output:  (*appsync.EvaluateCodeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.EvaluateCodeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.EvaluateCodeOutput), req.Error
 }
 
 func (c *Client) EvaluateMappingTemplateWithContext(ctx context.Context, input *appsync.EvaluateMappingTemplateInput, opts ...request.Option) (*appsync.EvaluateMappingTemplateOutput, error) {

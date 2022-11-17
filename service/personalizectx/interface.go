@@ -20,6 +20,7 @@ type Personalize interface {
 	CreateDatasetImportJobWithContext(ctx context.Context, input *personalize.CreateDatasetImportJobInput, opts ...request.Option) (*personalize.CreateDatasetImportJobOutput, error)
 	CreateEventTrackerWithContext(ctx context.Context, input *personalize.CreateEventTrackerInput, opts ...request.Option) (*personalize.CreateEventTrackerOutput, error)
 	CreateFilterWithContext(ctx context.Context, input *personalize.CreateFilterInput, opts ...request.Option) (*personalize.CreateFilterOutput, error)
+	CreateMetricAttributionWithContext(ctx context.Context, input *personalize.CreateMetricAttributionInput, opts ...request.Option) (*personalize.CreateMetricAttributionOutput, error)
 	CreateRecommenderWithContext(ctx context.Context, input *personalize.CreateRecommenderInput, opts ...request.Option) (*personalize.CreateRecommenderOutput, error)
 	CreateSchemaWithContext(ctx context.Context, input *personalize.CreateSchemaInput, opts ...request.Option) (*personalize.CreateSchemaOutput, error)
 	CreateSolutionWithContext(ctx context.Context, input *personalize.CreateSolutionInput, opts ...request.Option) (*personalize.CreateSolutionOutput, error)
@@ -29,6 +30,7 @@ type Personalize interface {
 	DeleteDatasetGroupWithContext(ctx context.Context, input *personalize.DeleteDatasetGroupInput, opts ...request.Option) (*personalize.DeleteDatasetGroupOutput, error)
 	DeleteEventTrackerWithContext(ctx context.Context, input *personalize.DeleteEventTrackerInput, opts ...request.Option) (*personalize.DeleteEventTrackerOutput, error)
 	DeleteFilterWithContext(ctx context.Context, input *personalize.DeleteFilterInput, opts ...request.Option) (*personalize.DeleteFilterOutput, error)
+	DeleteMetricAttributionWithContext(ctx context.Context, input *personalize.DeleteMetricAttributionInput, opts ...request.Option) (*personalize.DeleteMetricAttributionOutput, error)
 	DeleteRecommenderWithContext(ctx context.Context, input *personalize.DeleteRecommenderInput, opts ...request.Option) (*personalize.DeleteRecommenderOutput, error)
 	DeleteSchemaWithContext(ctx context.Context, input *personalize.DeleteSchemaInput, opts ...request.Option) (*personalize.DeleteSchemaOutput, error)
 	DeleteSolutionWithContext(ctx context.Context, input *personalize.DeleteSolutionInput, opts ...request.Option) (*personalize.DeleteSolutionOutput, error)
@@ -43,6 +45,7 @@ type Personalize interface {
 	DescribeEventTrackerWithContext(ctx context.Context, input *personalize.DescribeEventTrackerInput, opts ...request.Option) (*personalize.DescribeEventTrackerOutput, error)
 	DescribeFeatureTransformationWithContext(ctx context.Context, input *personalize.DescribeFeatureTransformationInput, opts ...request.Option) (*personalize.DescribeFeatureTransformationOutput, error)
 	DescribeFilterWithContext(ctx context.Context, input *personalize.DescribeFilterInput, opts ...request.Option) (*personalize.DescribeFilterOutput, error)
+	DescribeMetricAttributionWithContext(ctx context.Context, input *personalize.DescribeMetricAttributionInput, opts ...request.Option) (*personalize.DescribeMetricAttributionOutput, error)
 	DescribeRecipeWithContext(ctx context.Context, input *personalize.DescribeRecipeInput, opts ...request.Option) (*personalize.DescribeRecipeOutput, error)
 	DescribeRecommenderWithContext(ctx context.Context, input *personalize.DescribeRecommenderInput, opts ...request.Option) (*personalize.DescribeRecommenderOutput, error)
 	DescribeSchemaWithContext(ctx context.Context, input *personalize.DescribeSchemaInput, opts ...request.Option) (*personalize.DescribeSchemaOutput, error)
@@ -67,6 +70,10 @@ type Personalize interface {
 	ListEventTrackersPagesWithContext(ctx context.Context, input *personalize.ListEventTrackersInput, cb func(*personalize.ListEventTrackersOutput, bool) bool, opts ...request.Option) error
 	ListFiltersWithContext(ctx context.Context, input *personalize.ListFiltersInput, opts ...request.Option) (*personalize.ListFiltersOutput, error)
 	ListFiltersPagesWithContext(ctx context.Context, input *personalize.ListFiltersInput, cb func(*personalize.ListFiltersOutput, bool) bool, opts ...request.Option) error
+	ListMetricAttributionMetricsWithContext(ctx context.Context, input *personalize.ListMetricAttributionMetricsInput, opts ...request.Option) (*personalize.ListMetricAttributionMetricsOutput, error)
+	ListMetricAttributionMetricsPagesWithContext(ctx context.Context, input *personalize.ListMetricAttributionMetricsInput, cb func(*personalize.ListMetricAttributionMetricsOutput, bool) bool, opts ...request.Option) error
+	ListMetricAttributionsWithContext(ctx context.Context, input *personalize.ListMetricAttributionsInput, opts ...request.Option) (*personalize.ListMetricAttributionsOutput, error)
+	ListMetricAttributionsPagesWithContext(ctx context.Context, input *personalize.ListMetricAttributionsInput, cb func(*personalize.ListMetricAttributionsOutput, bool) bool, opts ...request.Option) error
 	ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error)
 	ListRecipesPagesWithContext(ctx context.Context, input *personalize.ListRecipesInput, cb func(*personalize.ListRecipesOutput, bool) bool, opts ...request.Option) error
 	ListRecommendersWithContext(ctx context.Context, input *personalize.ListRecommendersInput, opts ...request.Option) (*personalize.ListRecommendersOutput, error)
@@ -84,6 +91,7 @@ type Personalize interface {
 	TagResourceWithContext(ctx context.Context, input *personalize.TagResourceInput, opts ...request.Option) (*personalize.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *personalize.UntagResourceInput, opts ...request.Option) (*personalize.UntagResourceOutput, error)
 	UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error)
+	UpdateMetricAttributionWithContext(ctx context.Context, input *personalize.UpdateMetricAttributionInput, opts ...request.Option) (*personalize.UpdateMetricAttributionOutput, error)
 	UpdateRecommenderWithContext(ctx context.Context, input *personalize.UpdateRecommenderInput, opts ...request.Option) (*personalize.UpdateRecommenderOutput, error)
 }
 
@@ -291,6 +299,27 @@ func (c *Client) CreateFilterWithContext(ctx context.Context, input *personalize
 	return req.Output.(*personalize.CreateFilterOutput), req.Error
 }
 
+func (c *Client) CreateMetricAttributionWithContext(ctx context.Context, input *personalize.CreateMetricAttributionInput, opts ...request.Option) (*personalize.CreateMetricAttributionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "CreateMetricAttribution",
+		Input:   input,
+		Output:  (*personalize.CreateMetricAttributionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.CreateMetricAttributionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.CreateMetricAttributionOutput), req.Error
+}
+
 func (c *Client) CreateRecommenderWithContext(ctx context.Context, input *personalize.CreateRecommenderInput, opts ...request.Option) (*personalize.CreateRecommenderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -478,6 +507,27 @@ func (c *Client) DeleteFilterWithContext(ctx context.Context, input *personalize
 	})
 
 	return req.Output.(*personalize.DeleteFilterOutput), req.Error
+}
+
+func (c *Client) DeleteMetricAttributionWithContext(ctx context.Context, input *personalize.DeleteMetricAttributionInput, opts ...request.Option) (*personalize.DeleteMetricAttributionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "DeleteMetricAttribution",
+		Input:   input,
+		Output:  (*personalize.DeleteMetricAttributionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.DeleteMetricAttributionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.DeleteMetricAttributionOutput), req.Error
 }
 
 func (c *Client) DeleteRecommenderWithContext(ctx context.Context, input *personalize.DeleteRecommenderInput, opts ...request.Option) (*personalize.DeleteRecommenderOutput, error) {
@@ -772,6 +822,27 @@ func (c *Client) DescribeFilterWithContext(ctx context.Context, input *personali
 	})
 
 	return req.Output.(*personalize.DescribeFilterOutput), req.Error
+}
+
+func (c *Client) DescribeMetricAttributionWithContext(ctx context.Context, input *personalize.DescribeMetricAttributionInput, opts ...request.Option) (*personalize.DescribeMetricAttributionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "DescribeMetricAttribution",
+		Input:   input,
+		Output:  (*personalize.DescribeMetricAttributionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.DescribeMetricAttributionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.DescribeMetricAttributionOutput), req.Error
 }
 
 func (c *Client) DescribeRecipeWithContext(ctx context.Context, input *personalize.DescribeRecipeInput, opts ...request.Option) (*personalize.DescribeRecipeOutput, error) {
@@ -1269,6 +1340,88 @@ func (c *Client) ListFiltersPagesWithContext(ctx context.Context, input *persona
 	return req.Error
 }
 
+func (c *Client) ListMetricAttributionMetricsWithContext(ctx context.Context, input *personalize.ListMetricAttributionMetricsInput, opts ...request.Option) (*personalize.ListMetricAttributionMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListMetricAttributionMetrics",
+		Input:   input,
+		Output:  (*personalize.ListMetricAttributionMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.ListMetricAttributionMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.ListMetricAttributionMetricsOutput), req.Error
+}
+
+func (c *Client) ListMetricAttributionMetricsPagesWithContext(ctx context.Context, input *personalize.ListMetricAttributionMetricsInput, cb func(*personalize.ListMetricAttributionMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListMetricAttributionMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListMetricAttributionMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMetricAttributionsWithContext(ctx context.Context, input *personalize.ListMetricAttributionsInput, opts ...request.Option) (*personalize.ListMetricAttributionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListMetricAttributions",
+		Input:   input,
+		Output:  (*personalize.ListMetricAttributionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.ListMetricAttributionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.ListMetricAttributionsOutput), req.Error
+}
+
+func (c *Client) ListMetricAttributionsPagesWithContext(ctx context.Context, input *personalize.ListMetricAttributionsInput, cb func(*personalize.ListMetricAttributionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "ListMetricAttributions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PersonalizeAPI.ListMetricAttributionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRecipesWithContext(ctx context.Context, input *personalize.ListRecipesInput, opts ...request.Option) (*personalize.ListRecipesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "personalize",
@@ -1619,6 +1772,27 @@ func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *personali
 	})
 
 	return req.Output.(*personalize.UpdateCampaignOutput), req.Error
+}
+
+func (c *Client) UpdateMetricAttributionWithContext(ctx context.Context, input *personalize.UpdateMetricAttributionInput, opts ...request.Option) (*personalize.UpdateMetricAttributionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "UpdateMetricAttribution",
+		Input:   input,
+		Output:  (*personalize.UpdateMetricAttributionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.UpdateMetricAttributionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.UpdateMetricAttributionOutput), req.Error
 }
 
 func (c *Client) UpdateRecommenderWithContext(ctx context.Context, input *personalize.UpdateRecommenderInput, opts ...request.Option) (*personalize.UpdateRecommenderOutput, error) {
