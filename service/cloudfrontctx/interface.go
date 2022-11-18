@@ -12,8 +12,10 @@ import (
 
 type CloudFront interface {
 	AssociateAliasWithContext(ctx context.Context, input *cloudfront.AssociateAliasInput, opts ...request.Option) (*cloudfront.AssociateAliasOutput, error)
+	CopyDistributionWithContext(ctx context.Context, input *cloudfront.CopyDistributionInput, opts ...request.Option) (*cloudfront.CopyDistributionOutput, error)
 	CreateCachePolicyWithContext(ctx context.Context, input *cloudfront.CreateCachePolicyInput, opts ...request.Option) (*cloudfront.CreateCachePolicyOutput, error)
 	CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.CreateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.CreateCloudFrontOriginAccessIdentityOutput, error)
+	CreateContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.CreateContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.CreateContinuousDeploymentPolicyOutput, error)
 	CreateDistributionWithContext(ctx context.Context, input *cloudfront.CreateDistributionInput, opts ...request.Option) (*cloudfront.CreateDistributionOutput, error)
 	CreateDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateDistributionWithTagsOutput, error)
 	CreateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.CreateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.CreateFieldLevelEncryptionConfigOutput, error)
@@ -31,6 +33,7 @@ type CloudFront interface {
 	CreateStreamingDistributionWithTagsWithContext(ctx context.Context, input *cloudfront.CreateStreamingDistributionWithTagsInput, opts ...request.Option) (*cloudfront.CreateStreamingDistributionWithTagsOutput, error)
 	DeleteCachePolicyWithContext(ctx context.Context, input *cloudfront.DeleteCachePolicyInput, opts ...request.Option) (*cloudfront.DeleteCachePolicyOutput, error)
 	DeleteCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.DeleteCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.DeleteCloudFrontOriginAccessIdentityOutput, error)
+	DeleteContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.DeleteContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.DeleteContinuousDeploymentPolicyOutput, error)
 	DeleteDistributionWithContext(ctx context.Context, input *cloudfront.DeleteDistributionInput, opts ...request.Option) (*cloudfront.DeleteDistributionOutput, error)
 	DeleteFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionConfigOutput, error)
 	DeleteFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.DeleteFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.DeleteFieldLevelEncryptionProfileOutput, error)
@@ -48,6 +51,8 @@ type CloudFront interface {
 	GetCachePolicyConfigWithContext(ctx context.Context, input *cloudfront.GetCachePolicyConfigInput, opts ...request.Option) (*cloudfront.GetCachePolicyConfigOutput, error)
 	GetCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityOutput, error)
 	GetCloudFrontOriginAccessIdentityConfigWithContext(ctx context.Context, input *cloudfront.GetCloudFrontOriginAccessIdentityConfigInput, opts ...request.Option) (*cloudfront.GetCloudFrontOriginAccessIdentityConfigOutput, error)
+	GetContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.GetContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.GetContinuousDeploymentPolicyOutput, error)
+	GetContinuousDeploymentPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetContinuousDeploymentPolicyConfigInput, opts ...request.Option) (*cloudfront.GetContinuousDeploymentPolicyConfigOutput, error)
 	GetDistributionWithContext(ctx context.Context, input *cloudfront.GetDistributionInput, opts ...request.Option) (*cloudfront.GetDistributionOutput, error)
 	GetDistributionConfigWithContext(ctx context.Context, input *cloudfront.GetDistributionConfigInput, opts ...request.Option) (*cloudfront.GetDistributionConfigOutput, error)
 	GetFieldLevelEncryptionWithContext(ctx context.Context, input *cloudfront.GetFieldLevelEncryptionInput, opts ...request.Option) (*cloudfront.GetFieldLevelEncryptionOutput, error)
@@ -74,6 +79,7 @@ type CloudFront interface {
 	ListCloudFrontOriginAccessIdentitiesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, opts ...request.Option) (*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, error)
 	ListCloudFrontOriginAccessIdentitiesPagesWithContext(ctx context.Context, input *cloudfront.ListCloudFrontOriginAccessIdentitiesInput, cb func(*cloudfront.ListCloudFrontOriginAccessIdentitiesOutput, bool) bool, opts ...request.Option) error
 	ListConflictingAliasesWithContext(ctx context.Context, input *cloudfront.ListConflictingAliasesInput, opts ...request.Option) (*cloudfront.ListConflictingAliasesOutput, error)
+	ListContinuousDeploymentPoliciesWithContext(ctx context.Context, input *cloudfront.ListContinuousDeploymentPoliciesInput, opts ...request.Option) (*cloudfront.ListContinuousDeploymentPoliciesOutput, error)
 	ListDistributionsWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, opts ...request.Option) (*cloudfront.ListDistributionsOutput, error)
 	ListDistributionsPagesWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, cb func(*cloudfront.ListDistributionsOutput, bool) bool, opts ...request.Option) error
 	ListDistributionsByCachePolicyIdWithContext(ctx context.Context, input *cloudfront.ListDistributionsByCachePolicyIdInput, opts ...request.Option) (*cloudfront.ListDistributionsByCachePolicyIdOutput, error)
@@ -102,6 +108,7 @@ type CloudFront interface {
 	UntagResourceWithContext(ctx context.Context, input *cloudfront.UntagResourceInput, opts ...request.Option) (*cloudfront.UntagResourceOutput, error)
 	UpdateCachePolicyWithContext(ctx context.Context, input *cloudfront.UpdateCachePolicyInput, opts ...request.Option) (*cloudfront.UpdateCachePolicyOutput, error)
 	UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.UpdateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput, error)
+	UpdateContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.UpdateContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.UpdateContinuousDeploymentPolicyOutput, error)
 	UpdateDistributionWithContext(ctx context.Context, input *cloudfront.UpdateDistributionInput, opts ...request.Option) (*cloudfront.UpdateDistributionOutput, error)
 	UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionConfigOutput, error)
 	UpdateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionProfileOutput, error)
@@ -151,6 +158,27 @@ func (c *Client) AssociateAliasWithContext(ctx context.Context, input *cloudfron
 	return req.Output.(*cloudfront.AssociateAliasOutput), req.Error
 }
 
+func (c *Client) CopyDistributionWithContext(ctx context.Context, input *cloudfront.CopyDistributionInput, opts ...request.Option) (*cloudfront.CopyDistributionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CopyDistribution",
+		Input:   input,
+		Output:  (*cloudfront.CopyDistributionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CopyDistributionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CopyDistributionOutput), req.Error
+}
+
 func (c *Client) CreateCachePolicyWithContext(ctx context.Context, input *cloudfront.CreateCachePolicyInput, opts ...request.Option) (*cloudfront.CreateCachePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -191,6 +219,27 @@ func (c *Client) CreateCloudFrontOriginAccessIdentityWithContext(ctx context.Con
 	})
 
 	return req.Output.(*cloudfront.CreateCloudFrontOriginAccessIdentityOutput), req.Error
+}
+
+func (c *Client) CreateContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.CreateContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.CreateContinuousDeploymentPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "CreateContinuousDeploymentPolicy",
+		Input:   input,
+		Output:  (*cloudfront.CreateContinuousDeploymentPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.CreateContinuousDeploymentPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.CreateContinuousDeploymentPolicyOutput), req.Error
 }
 
 func (c *Client) CreateDistributionWithContext(ctx context.Context, input *cloudfront.CreateDistributionInput, opts ...request.Option) (*cloudfront.CreateDistributionOutput, error) {
@@ -550,6 +599,27 @@ func (c *Client) DeleteCloudFrontOriginAccessIdentityWithContext(ctx context.Con
 	return req.Output.(*cloudfront.DeleteCloudFrontOriginAccessIdentityOutput), req.Error
 }
 
+func (c *Client) DeleteContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.DeleteContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.DeleteContinuousDeploymentPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "DeleteContinuousDeploymentPolicy",
+		Input:   input,
+		Output:  (*cloudfront.DeleteContinuousDeploymentPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.DeleteContinuousDeploymentPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.DeleteContinuousDeploymentPolicyOutput), req.Error
+}
+
 func (c *Client) DeleteDistributionWithContext(ctx context.Context, input *cloudfront.DeleteDistributionInput, opts ...request.Option) (*cloudfront.DeleteDistributionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudfront",
@@ -905,6 +975,48 @@ func (c *Client) GetCloudFrontOriginAccessIdentityConfigWithContext(ctx context.
 	})
 
 	return req.Output.(*cloudfront.GetCloudFrontOriginAccessIdentityConfigOutput), req.Error
+}
+
+func (c *Client) GetContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.GetContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.GetContinuousDeploymentPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetContinuousDeploymentPolicy",
+		Input:   input,
+		Output:  (*cloudfront.GetContinuousDeploymentPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetContinuousDeploymentPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetContinuousDeploymentPolicyOutput), req.Error
+}
+
+func (c *Client) GetContinuousDeploymentPolicyConfigWithContext(ctx context.Context, input *cloudfront.GetContinuousDeploymentPolicyConfigInput, opts ...request.Option) (*cloudfront.GetContinuousDeploymentPolicyConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "GetContinuousDeploymentPolicyConfig",
+		Input:   input,
+		Output:  (*cloudfront.GetContinuousDeploymentPolicyConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.GetContinuousDeploymentPolicyConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.GetContinuousDeploymentPolicyConfigOutput), req.Error
 }
 
 func (c *Client) GetDistributionWithContext(ctx context.Context, input *cloudfront.GetDistributionInput, opts ...request.Option) (*cloudfront.GetDistributionOutput, error) {
@@ -1450,6 +1562,27 @@ func (c *Client) ListConflictingAliasesWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*cloudfront.ListConflictingAliasesOutput), req.Error
+}
+
+func (c *Client) ListContinuousDeploymentPoliciesWithContext(ctx context.Context, input *cloudfront.ListContinuousDeploymentPoliciesInput, opts ...request.Option) (*cloudfront.ListContinuousDeploymentPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "ListContinuousDeploymentPolicies",
+		Input:   input,
+		Output:  (*cloudfront.ListContinuousDeploymentPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.ListContinuousDeploymentPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.ListContinuousDeploymentPoliciesOutput), req.Error
 }
 
 func (c *Client) ListDistributionsWithContext(ctx context.Context, input *cloudfront.ListDistributionsInput, opts ...request.Option) (*cloudfront.ListDistributionsOutput, error) {
@@ -2035,6 +2168,27 @@ func (c *Client) UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Con
 	})
 
 	return req.Output.(*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput), req.Error
+}
+
+func (c *Client) UpdateContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.UpdateContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.UpdateContinuousDeploymentPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateContinuousDeploymentPolicy",
+		Input:   input,
+		Output:  (*cloudfront.UpdateContinuousDeploymentPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateContinuousDeploymentPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateContinuousDeploymentPolicyOutput), req.Error
 }
 
 func (c *Client) UpdateDistributionWithContext(ctx context.Context, input *cloudfront.UpdateDistributionInput, opts ...request.Option) (*cloudfront.UpdateDistributionOutput, error) {

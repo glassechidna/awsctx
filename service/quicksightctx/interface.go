@@ -30,6 +30,7 @@ type QuickSight interface {
 	CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error)
 	CreateThemeAliasWithContext(ctx context.Context, input *quicksight.CreateThemeAliasInput, opts ...request.Option) (*quicksight.CreateThemeAliasOutput, error)
 	DeleteAccountCustomizationWithContext(ctx context.Context, input *quicksight.DeleteAccountCustomizationInput, opts ...request.Option) (*quicksight.DeleteAccountCustomizationOutput, error)
+	DeleteAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DeleteAccountSubscriptionInput, opts ...request.Option) (*quicksight.DeleteAccountSubscriptionOutput, error)
 	DeleteAnalysisWithContext(ctx context.Context, input *quicksight.DeleteAnalysisInput, opts ...request.Option) (*quicksight.DeleteAnalysisOutput, error)
 	DeleteDashboardWithContext(ctx context.Context, input *quicksight.DeleteDashboardInput, opts ...request.Option) (*quicksight.DeleteDashboardOutput, error)
 	DeleteDataSetWithContext(ctx context.Context, input *quicksight.DeleteDataSetInput, opts ...request.Option) (*quicksight.DeleteDataSetOutput, error)
@@ -117,6 +118,10 @@ type QuickSight interface {
 	SearchAnalysesPagesWithContext(ctx context.Context, input *quicksight.SearchAnalysesInput, cb func(*quicksight.SearchAnalysesOutput, bool) bool, opts ...request.Option) error
 	SearchDashboardsWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, opts ...request.Option) (*quicksight.SearchDashboardsOutput, error)
 	SearchDashboardsPagesWithContext(ctx context.Context, input *quicksight.SearchDashboardsInput, cb func(*quicksight.SearchDashboardsOutput, bool) bool, opts ...request.Option) error
+	SearchDataSetsWithContext(ctx context.Context, input *quicksight.SearchDataSetsInput, opts ...request.Option) (*quicksight.SearchDataSetsOutput, error)
+	SearchDataSetsPagesWithContext(ctx context.Context, input *quicksight.SearchDataSetsInput, cb func(*quicksight.SearchDataSetsOutput, bool) bool, opts ...request.Option) error
+	SearchDataSourcesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, opts ...request.Option) (*quicksight.SearchDataSourcesOutput, error)
+	SearchDataSourcesPagesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, cb func(*quicksight.SearchDataSourcesOutput, bool) bool, opts ...request.Option) error
 	SearchFoldersWithContext(ctx context.Context, input *quicksight.SearchFoldersInput, opts ...request.Option) (*quicksight.SearchFoldersOutput, error)
 	SearchGroupsWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, opts ...request.Option) (*quicksight.SearchGroupsOutput, error)
 	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
@@ -559,6 +564,27 @@ func (c *Client) DeleteAccountCustomizationWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*quicksight.DeleteAccountCustomizationOutput), req.Error
+}
+
+func (c *Client) DeleteAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DeleteAccountSubscriptionInput, opts ...request.Option) (*quicksight.DeleteAccountSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteAccountSubscription",
+		Input:   input,
+		Output:  (*quicksight.DeleteAccountSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteAccountSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteAccountSubscriptionOutput), req.Error
 }
 
 func (c *Client) DeleteAnalysisWithContext(ctx context.Context, input *quicksight.DeleteAnalysisInput, opts ...request.Option) (*quicksight.DeleteAnalysisOutput, error) {
@@ -2369,6 +2395,88 @@ func (c *Client) SearchDashboardsPagesWithContext(ctx context.Context, input *qu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.QuickSightAPI.SearchDashboardsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) SearchDataSetsWithContext(ctx context.Context, input *quicksight.SearchDataSetsInput, opts ...request.Option) (*quicksight.SearchDataSetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchDataSets",
+		Input:   input,
+		Output:  (*quicksight.SearchDataSetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.SearchDataSetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.SearchDataSetsOutput), req.Error
+}
+
+func (c *Client) SearchDataSetsPagesWithContext(ctx context.Context, input *quicksight.SearchDataSetsInput, cb func(*quicksight.SearchDataSetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchDataSets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.SearchDataSetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) SearchDataSourcesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, opts ...request.Option) (*quicksight.SearchDataSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchDataSources",
+		Input:   input,
+		Output:  (*quicksight.SearchDataSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.SearchDataSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.SearchDataSourcesOutput), req.Error
+}
+
+func (c *Client) SearchDataSourcesPagesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, cb func(*quicksight.SearchDataSourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchDataSources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.SearchDataSourcesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
