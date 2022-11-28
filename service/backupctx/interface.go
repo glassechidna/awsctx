@@ -11,10 +11,12 @@ import (
 )
 
 type Backup interface {
+	CancelLegalHoldWithContext(ctx context.Context, input *backup.CancelLegalHoldInput, opts ...request.Option) (*backup.CancelLegalHoldOutput, error)
 	CreateBackupPlanWithContext(ctx context.Context, input *backup.CreateBackupPlanInput, opts ...request.Option) (*backup.CreateBackupPlanOutput, error)
 	CreateBackupSelectionWithContext(ctx context.Context, input *backup.CreateBackupSelectionInput, opts ...request.Option) (*backup.CreateBackupSelectionOutput, error)
 	CreateBackupVaultWithContext(ctx context.Context, input *backup.CreateBackupVaultInput, opts ...request.Option) (*backup.CreateBackupVaultOutput, error)
 	CreateFrameworkWithContext(ctx context.Context, input *backup.CreateFrameworkInput, opts ...request.Option) (*backup.CreateFrameworkOutput, error)
+	CreateLegalHoldWithContext(ctx context.Context, input *backup.CreateLegalHoldInput, opts ...request.Option) (*backup.CreateLegalHoldOutput, error)
 	CreateReportPlanWithContext(ctx context.Context, input *backup.CreateReportPlanInput, opts ...request.Option) (*backup.CreateReportPlanOutput, error)
 	DeleteBackupPlanWithContext(ctx context.Context, input *backup.DeleteBackupPlanInput, opts ...request.Option) (*backup.DeleteBackupPlanOutput, error)
 	DeleteBackupSelectionWithContext(ctx context.Context, input *backup.DeleteBackupSelectionInput, opts ...request.Option) (*backup.DeleteBackupSelectionOutput, error)
@@ -37,6 +39,7 @@ type Backup interface {
 	DescribeReportPlanWithContext(ctx context.Context, input *backup.DescribeReportPlanInput, opts ...request.Option) (*backup.DescribeReportPlanOutput, error)
 	DescribeRestoreJobWithContext(ctx context.Context, input *backup.DescribeRestoreJobInput, opts ...request.Option) (*backup.DescribeRestoreJobOutput, error)
 	DisassociateRecoveryPointWithContext(ctx context.Context, input *backup.DisassociateRecoveryPointInput, opts ...request.Option) (*backup.DisassociateRecoveryPointOutput, error)
+	DisassociateRecoveryPointFromParentWithContext(ctx context.Context, input *backup.DisassociateRecoveryPointFromParentInput, opts ...request.Option) (*backup.DisassociateRecoveryPointFromParentOutput, error)
 	ExportBackupPlanTemplateWithContext(ctx context.Context, input *backup.ExportBackupPlanTemplateInput, opts ...request.Option) (*backup.ExportBackupPlanTemplateOutput, error)
 	GetBackupPlanWithContext(ctx context.Context, input *backup.GetBackupPlanInput, opts ...request.Option) (*backup.GetBackupPlanOutput, error)
 	GetBackupPlanFromJSONWithContext(ctx context.Context, input *backup.GetBackupPlanFromJSONInput, opts ...request.Option) (*backup.GetBackupPlanFromJSONOutput, error)
@@ -44,6 +47,7 @@ type Backup interface {
 	GetBackupSelectionWithContext(ctx context.Context, input *backup.GetBackupSelectionInput, opts ...request.Option) (*backup.GetBackupSelectionOutput, error)
 	GetBackupVaultAccessPolicyWithContext(ctx context.Context, input *backup.GetBackupVaultAccessPolicyInput, opts ...request.Option) (*backup.GetBackupVaultAccessPolicyOutput, error)
 	GetBackupVaultNotificationsWithContext(ctx context.Context, input *backup.GetBackupVaultNotificationsInput, opts ...request.Option) (*backup.GetBackupVaultNotificationsOutput, error)
+	GetLegalHoldWithContext(ctx context.Context, input *backup.GetLegalHoldInput, opts ...request.Option) (*backup.GetLegalHoldOutput, error)
 	GetRecoveryPointRestoreMetadataWithContext(ctx context.Context, input *backup.GetRecoveryPointRestoreMetadataInput, opts ...request.Option) (*backup.GetRecoveryPointRestoreMetadataOutput, error)
 	GetSupportedResourceTypesWithContext(ctx context.Context, input *backup.GetSupportedResourceTypesInput, opts ...request.Option) (*backup.GetSupportedResourceTypesOutput, error)
 	ListBackupJobsWithContext(ctx context.Context, input *backup.ListBackupJobsInput, opts ...request.Option) (*backup.ListBackupJobsOutput, error)
@@ -62,10 +66,14 @@ type Backup interface {
 	ListCopyJobsPagesWithContext(ctx context.Context, input *backup.ListCopyJobsInput, cb func(*backup.ListCopyJobsOutput, bool) bool, opts ...request.Option) error
 	ListFrameworksWithContext(ctx context.Context, input *backup.ListFrameworksInput, opts ...request.Option) (*backup.ListFrameworksOutput, error)
 	ListFrameworksPagesWithContext(ctx context.Context, input *backup.ListFrameworksInput, cb func(*backup.ListFrameworksOutput, bool) bool, opts ...request.Option) error
+	ListLegalHoldsWithContext(ctx context.Context, input *backup.ListLegalHoldsInput, opts ...request.Option) (*backup.ListLegalHoldsOutput, error)
+	ListLegalHoldsPagesWithContext(ctx context.Context, input *backup.ListLegalHoldsInput, cb func(*backup.ListLegalHoldsOutput, bool) bool, opts ...request.Option) error
 	ListProtectedResourcesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, opts ...request.Option) (*backup.ListProtectedResourcesOutput, error)
 	ListProtectedResourcesPagesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, cb func(*backup.ListProtectedResourcesOutput, bool) bool, opts ...request.Option) error
 	ListRecoveryPointsByBackupVaultWithContext(ctx context.Context, input *backup.ListRecoveryPointsByBackupVaultInput, opts ...request.Option) (*backup.ListRecoveryPointsByBackupVaultOutput, error)
 	ListRecoveryPointsByBackupVaultPagesWithContext(ctx context.Context, input *backup.ListRecoveryPointsByBackupVaultInput, cb func(*backup.ListRecoveryPointsByBackupVaultOutput, bool) bool, opts ...request.Option) error
+	ListRecoveryPointsByLegalHoldWithContext(ctx context.Context, input *backup.ListRecoveryPointsByLegalHoldInput, opts ...request.Option) (*backup.ListRecoveryPointsByLegalHoldOutput, error)
+	ListRecoveryPointsByLegalHoldPagesWithContext(ctx context.Context, input *backup.ListRecoveryPointsByLegalHoldInput, cb func(*backup.ListRecoveryPointsByLegalHoldOutput, bool) bool, opts ...request.Option) error
 	ListRecoveryPointsByResourceWithContext(ctx context.Context, input *backup.ListRecoveryPointsByResourceInput, opts ...request.Option) (*backup.ListRecoveryPointsByResourceOutput, error)
 	ListRecoveryPointsByResourcePagesWithContext(ctx context.Context, input *backup.ListRecoveryPointsByResourceInput, cb func(*backup.ListRecoveryPointsByResourceOutput, bool) bool, opts ...request.Option) error
 	ListReportJobsWithContext(ctx context.Context, input *backup.ListReportJobsInput, opts ...request.Option) (*backup.ListReportJobsOutput, error)
@@ -108,6 +116,27 @@ func New(base backupiface.BackupAPI, ctxer awsctx.Contexter) Backup {
 
 var _ Backup = (*backup.Backup)(nil)
 var _ Backup = (*Client)(nil)
+
+func (c *Client) CancelLegalHoldWithContext(ctx context.Context, input *backup.CancelLegalHoldInput, opts ...request.Option) (*backup.CancelLegalHoldOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "CancelLegalHold",
+		Input:   input,
+		Output:  (*backup.CancelLegalHoldOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.CancelLegalHoldWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.CancelLegalHoldOutput), req.Error
+}
 
 func (c *Client) CreateBackupPlanWithContext(ctx context.Context, input *backup.CreateBackupPlanInput, opts ...request.Option) (*backup.CreateBackupPlanOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -191,6 +220,27 @@ func (c *Client) CreateFrameworkWithContext(ctx context.Context, input *backup.C
 	})
 
 	return req.Output.(*backup.CreateFrameworkOutput), req.Error
+}
+
+func (c *Client) CreateLegalHoldWithContext(ctx context.Context, input *backup.CreateLegalHoldInput, opts ...request.Option) (*backup.CreateLegalHoldOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "CreateLegalHold",
+		Input:   input,
+		Output:  (*backup.CreateLegalHoldOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.CreateLegalHoldWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.CreateLegalHoldOutput), req.Error
 }
 
 func (c *Client) CreateReportPlanWithContext(ctx context.Context, input *backup.CreateReportPlanInput, opts ...request.Option) (*backup.CreateReportPlanOutput, error) {
@@ -655,6 +705,27 @@ func (c *Client) DisassociateRecoveryPointWithContext(ctx context.Context, input
 	return req.Output.(*backup.DisassociateRecoveryPointOutput), req.Error
 }
 
+func (c *Client) DisassociateRecoveryPointFromParentWithContext(ctx context.Context, input *backup.DisassociateRecoveryPointFromParentInput, opts ...request.Option) (*backup.DisassociateRecoveryPointFromParentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "DisassociateRecoveryPointFromParent",
+		Input:   input,
+		Output:  (*backup.DisassociateRecoveryPointFromParentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.DisassociateRecoveryPointFromParentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.DisassociateRecoveryPointFromParentOutput), req.Error
+}
+
 func (c *Client) ExportBackupPlanTemplateWithContext(ctx context.Context, input *backup.ExportBackupPlanTemplateInput, opts ...request.Option) (*backup.ExportBackupPlanTemplateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
@@ -800,6 +871,27 @@ func (c *Client) GetBackupVaultNotificationsWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*backup.GetBackupVaultNotificationsOutput), req.Error
+}
+
+func (c *Client) GetLegalHoldWithContext(ctx context.Context, input *backup.GetLegalHoldInput, opts ...request.Option) (*backup.GetLegalHoldOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "GetLegalHold",
+		Input:   input,
+		Output:  (*backup.GetLegalHoldOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.GetLegalHoldWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.GetLegalHoldOutput), req.Error
 }
 
 func (c *Client) GetRecoveryPointRestoreMetadataWithContext(ctx context.Context, input *backup.GetRecoveryPointRestoreMetadataInput, opts ...request.Option) (*backup.GetRecoveryPointRestoreMetadataOutput, error) {
@@ -1172,6 +1264,47 @@ func (c *Client) ListFrameworksPagesWithContext(ctx context.Context, input *back
 	return req.Error
 }
 
+func (c *Client) ListLegalHoldsWithContext(ctx context.Context, input *backup.ListLegalHoldsInput, opts ...request.Option) (*backup.ListLegalHoldsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListLegalHolds",
+		Input:   input,
+		Output:  (*backup.ListLegalHoldsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListLegalHoldsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListLegalHoldsOutput), req.Error
+}
+
+func (c *Client) ListLegalHoldsPagesWithContext(ctx context.Context, input *backup.ListLegalHoldsInput, cb func(*backup.ListLegalHoldsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListLegalHolds",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListLegalHoldsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListProtectedResourcesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, opts ...request.Option) (*backup.ListProtectedResourcesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
@@ -1249,6 +1382,47 @@ func (c *Client) ListRecoveryPointsByBackupVaultPagesWithContext(ctx context.Con
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.BackupAPI.ListRecoveryPointsByBackupVaultPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListRecoveryPointsByLegalHoldWithContext(ctx context.Context, input *backup.ListRecoveryPointsByLegalHoldInput, opts ...request.Option) (*backup.ListRecoveryPointsByLegalHoldOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListRecoveryPointsByLegalHold",
+		Input:   input,
+		Output:  (*backup.ListRecoveryPointsByLegalHoldOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListRecoveryPointsByLegalHoldWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListRecoveryPointsByLegalHoldOutput), req.Error
+}
+
+func (c *Client) ListRecoveryPointsByLegalHoldPagesWithContext(ctx context.Context, input *backup.ListRecoveryPointsByLegalHoldInput, cb func(*backup.ListRecoveryPointsByLegalHoldOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListRecoveryPointsByLegalHold",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListRecoveryPointsByLegalHoldPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

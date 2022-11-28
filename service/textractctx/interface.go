@@ -18,9 +18,12 @@ type Textract interface {
 	GetDocumentAnalysisWithContext(ctx context.Context, input *textract.GetDocumentAnalysisInput, opts ...request.Option) (*textract.GetDocumentAnalysisOutput, error)
 	GetDocumentTextDetectionWithContext(ctx context.Context, input *textract.GetDocumentTextDetectionInput, opts ...request.Option) (*textract.GetDocumentTextDetectionOutput, error)
 	GetExpenseAnalysisWithContext(ctx context.Context, input *textract.GetExpenseAnalysisInput, opts ...request.Option) (*textract.GetExpenseAnalysisOutput, error)
+	GetLendingAnalysisWithContext(ctx context.Context, input *textract.GetLendingAnalysisInput, opts ...request.Option) (*textract.GetLendingAnalysisOutput, error)
+	GetLendingAnalysisSummaryWithContext(ctx context.Context, input *textract.GetLendingAnalysisSummaryInput, opts ...request.Option) (*textract.GetLendingAnalysisSummaryOutput, error)
 	StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error)
 	StartDocumentTextDetectionWithContext(ctx context.Context, input *textract.StartDocumentTextDetectionInput, opts ...request.Option) (*textract.StartDocumentTextDetectionOutput, error)
 	StartExpenseAnalysisWithContext(ctx context.Context, input *textract.StartExpenseAnalysisInput, opts ...request.Option) (*textract.StartExpenseAnalysisOutput, error)
+	StartLendingAnalysisWithContext(ctx context.Context, input *textract.StartLendingAnalysisInput, opts ...request.Option) (*textract.StartLendingAnalysisOutput, error)
 }
 
 type Client struct {
@@ -185,6 +188,48 @@ func (c *Client) GetExpenseAnalysisWithContext(ctx context.Context, input *textr
 	return req.Output.(*textract.GetExpenseAnalysisOutput), req.Error
 }
 
+func (c *Client) GetLendingAnalysisWithContext(ctx context.Context, input *textract.GetLendingAnalysisInput, opts ...request.Option) (*textract.GetLendingAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "GetLendingAnalysis",
+		Input:   input,
+		Output:  (*textract.GetLendingAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.GetLendingAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.GetLendingAnalysisOutput), req.Error
+}
+
+func (c *Client) GetLendingAnalysisSummaryWithContext(ctx context.Context, input *textract.GetLendingAnalysisSummaryInput, opts ...request.Option) (*textract.GetLendingAnalysisSummaryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "GetLendingAnalysisSummary",
+		Input:   input,
+		Output:  (*textract.GetLendingAnalysisSummaryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.GetLendingAnalysisSummaryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.GetLendingAnalysisSummaryOutput), req.Error
+}
+
 func (c *Client) StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
@@ -246,4 +291,25 @@ func (c *Client) StartExpenseAnalysisWithContext(ctx context.Context, input *tex
 	})
 
 	return req.Output.(*textract.StartExpenseAnalysisOutput), req.Error
+}
+
+func (c *Client) StartLendingAnalysisWithContext(ctx context.Context, input *textract.StartLendingAnalysisInput, opts ...request.Option) (*textract.StartLendingAnalysisOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "StartLendingAnalysis",
+		Input:   input,
+		Output:  (*textract.StartLendingAnalysisOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.StartLendingAnalysisWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.StartLendingAnalysisOutput), req.Error
 }

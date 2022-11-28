@@ -24,6 +24,7 @@ type Organizations interface {
 	DeleteOrganizationWithContext(ctx context.Context, input *organizations.DeleteOrganizationInput, opts ...request.Option) (*organizations.DeleteOrganizationOutput, error)
 	DeleteOrganizationalUnitWithContext(ctx context.Context, input *organizations.DeleteOrganizationalUnitInput, opts ...request.Option) (*organizations.DeleteOrganizationalUnitOutput, error)
 	DeletePolicyWithContext(ctx context.Context, input *organizations.DeletePolicyInput, opts ...request.Option) (*organizations.DeletePolicyOutput, error)
+	DeleteResourcePolicyWithContext(ctx context.Context, input *organizations.DeleteResourcePolicyInput, opts ...request.Option) (*organizations.DeleteResourcePolicyOutput, error)
 	DeregisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.DeregisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.DeregisterDelegatedAdministratorOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *organizations.DescribeAccountInput, opts ...request.Option) (*organizations.DescribeAccountOutput, error)
 	DescribeCreateAccountStatusWithContext(ctx context.Context, input *organizations.DescribeCreateAccountStatusInput, opts ...request.Option) (*organizations.DescribeCreateAccountStatusOutput, error)
@@ -32,6 +33,7 @@ type Organizations interface {
 	DescribeOrganizationWithContext(ctx context.Context, input *organizations.DescribeOrganizationInput, opts ...request.Option) (*organizations.DescribeOrganizationOutput, error)
 	DescribeOrganizationalUnitWithContext(ctx context.Context, input *organizations.DescribeOrganizationalUnitInput, opts ...request.Option) (*organizations.DescribeOrganizationalUnitOutput, error)
 	DescribePolicyWithContext(ctx context.Context, input *organizations.DescribePolicyInput, opts ...request.Option) (*organizations.DescribePolicyOutput, error)
+	DescribeResourcePolicyWithContext(ctx context.Context, input *organizations.DescribeResourcePolicyInput, opts ...request.Option) (*organizations.DescribeResourcePolicyOutput, error)
 	DetachPolicyWithContext(ctx context.Context, input *organizations.DetachPolicyInput, opts ...request.Option) (*organizations.DetachPolicyOutput, error)
 	DisableAWSServiceAccessWithContext(ctx context.Context, input *organizations.DisableAWSServiceAccessInput, opts ...request.Option) (*organizations.DisableAWSServiceAccessOutput, error)
 	DisablePolicyTypeWithContext(ctx context.Context, input *organizations.DisablePolicyTypeInput, opts ...request.Option) (*organizations.DisablePolicyTypeOutput, error)
@@ -73,6 +75,7 @@ type Organizations interface {
 	ListTargetsForPolicyWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, opts ...request.Option) (*organizations.ListTargetsForPolicyOutput, error)
 	ListTargetsForPolicyPagesWithContext(ctx context.Context, input *organizations.ListTargetsForPolicyInput, cb func(*organizations.ListTargetsForPolicyOutput, bool) bool, opts ...request.Option) error
 	MoveAccountWithContext(ctx context.Context, input *organizations.MoveAccountInput, opts ...request.Option) (*organizations.MoveAccountOutput, error)
+	PutResourcePolicyWithContext(ctx context.Context, input *organizations.PutResourcePolicyInput, opts ...request.Option) (*organizations.PutResourcePolicyOutput, error)
 	RegisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.RegisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.RegisterDelegatedAdministratorOutput, error)
 	RemoveAccountFromOrganizationWithContext(ctx context.Context, input *organizations.RemoveAccountFromOrganizationInput, opts ...request.Option) (*organizations.RemoveAccountFromOrganizationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *organizations.TagResourceInput, opts ...request.Option) (*organizations.TagResourceOutput, error)
@@ -369,6 +372,27 @@ func (c *Client) DeletePolicyWithContext(ctx context.Context, input *organizatio
 	return req.Output.(*organizations.DeletePolicyOutput), req.Error
 }
 
+func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *organizations.DeleteResourcePolicyInput, opts ...request.Option) (*organizations.DeleteResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "DeleteResourcePolicy",
+		Input:   input,
+		Output:  (*organizations.DeleteResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.DeleteResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.DeleteResourcePolicyOutput), req.Error
+}
+
 func (c *Client) DeregisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.DeregisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.DeregisterDelegatedAdministratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "organizations",
@@ -535,6 +559,27 @@ func (c *Client) DescribePolicyWithContext(ctx context.Context, input *organizat
 	})
 
 	return req.Output.(*organizations.DescribePolicyOutput), req.Error
+}
+
+func (c *Client) DescribeResourcePolicyWithContext(ctx context.Context, input *organizations.DescribeResourcePolicyInput, opts ...request.Option) (*organizations.DescribeResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "DescribeResourcePolicy",
+		Input:   input,
+		Output:  (*organizations.DescribeResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.DescribeResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.DescribeResourcePolicyOutput), req.Error
 }
 
 func (c *Client) DetachPolicyWithContext(ctx context.Context, input *organizations.DetachPolicyInput, opts ...request.Option) (*organizations.DetachPolicyOutput, error) {
@@ -1380,6 +1425,27 @@ func (c *Client) MoveAccountWithContext(ctx context.Context, input *organization
 	})
 
 	return req.Output.(*organizations.MoveAccountOutput), req.Error
+}
+
+func (c *Client) PutResourcePolicyWithContext(ctx context.Context, input *organizations.PutResourcePolicyInput, opts ...request.Option) (*organizations.PutResourcePolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "organizations",
+		Action:  "PutResourcePolicy",
+		Input:   input,
+		Output:  (*organizations.PutResourcePolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.OrganizationsAPI.PutResourcePolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*organizations.PutResourcePolicyOutput), req.Error
 }
 
 func (c *Client) RegisterDelegatedAdministratorWithContext(ctx context.Context, input *organizations.RegisterDelegatedAdministratorInput, opts ...request.Option) (*organizations.RegisterDelegatedAdministratorOutput, error) {

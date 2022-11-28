@@ -43,6 +43,8 @@ type ECS interface {
 	ListContainerInstancesPagesWithContext(ctx context.Context, input *ecs.ListContainerInstancesInput, cb func(*ecs.ListContainerInstancesOutput, bool) bool, opts ...request.Option) error
 	ListServicesWithContext(ctx context.Context, input *ecs.ListServicesInput, opts ...request.Option) (*ecs.ListServicesOutput, error)
 	ListServicesPagesWithContext(ctx context.Context, input *ecs.ListServicesInput, cb func(*ecs.ListServicesOutput, bool) bool, opts ...request.Option) error
+	ListServicesByNamespaceWithContext(ctx context.Context, input *ecs.ListServicesByNamespaceInput, opts ...request.Option) (*ecs.ListServicesByNamespaceOutput, error)
+	ListServicesByNamespacePagesWithContext(ctx context.Context, input *ecs.ListServicesByNamespaceInput, cb func(*ecs.ListServicesByNamespaceOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *ecs.ListTagsForResourceInput, opts ...request.Option) (*ecs.ListTagsForResourceOutput, error)
 	ListTaskDefinitionFamiliesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionFamiliesInput, opts ...request.Option) (*ecs.ListTaskDefinitionFamiliesOutput, error)
 	ListTaskDefinitionFamiliesPagesWithContext(ctx context.Context, input *ecs.ListTaskDefinitionFamiliesInput, cb func(*ecs.ListTaskDefinitionFamiliesOutput, bool) bool, opts ...request.Option) error
@@ -752,6 +754,47 @@ func (c *Client) ListServicesPagesWithContext(ctx context.Context, input *ecs.Li
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ECSAPI.ListServicesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListServicesByNamespaceWithContext(ctx context.Context, input *ecs.ListServicesByNamespaceInput, opts ...request.Option) (*ecs.ListServicesByNamespaceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListServicesByNamespace",
+		Input:   input,
+		Output:  (*ecs.ListServicesByNamespaceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.ListServicesByNamespaceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.ListServicesByNamespaceOutput), req.Error
+}
+
+func (c *Client) ListServicesByNamespacePagesWithContext(ctx context.Context, input *ecs.ListServicesByNamespaceInput, cb func(*ecs.ListServicesByNamespaceOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "ListServicesByNamespace",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ECSAPI.ListServicesByNamespacePagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

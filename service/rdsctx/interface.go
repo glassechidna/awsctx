@@ -24,6 +24,7 @@ type RDS interface {
 	CopyDBParameterGroupWithContext(ctx context.Context, input *rds.CopyDBParameterGroupInput, opts ...request.Option) (*rds.CopyDBParameterGroupOutput, error)
 	CopyDBSnapshotWithContext(ctx context.Context, input *rds.CopyDBSnapshotInput, opts ...request.Option) (*rds.CopyDBSnapshotOutput, error)
 	CopyOptionGroupWithContext(ctx context.Context, input *rds.CopyOptionGroupInput, opts ...request.Option) (*rds.CopyOptionGroupOutput, error)
+	CreateBlueGreenDeploymentWithContext(ctx context.Context, input *rds.CreateBlueGreenDeploymentInput, opts ...request.Option) (*rds.CreateBlueGreenDeploymentOutput, error)
 	CreateCustomDBEngineVersionWithContext(ctx context.Context, input *rds.CreateCustomDBEngineVersionInput, opts ...request.Option) (*rds.CreateCustomDBEngineVersionOutput, error)
 	CreateDBClusterWithContext(ctx context.Context, input *rds.CreateDBClusterInput, opts ...request.Option) (*rds.CreateDBClusterOutput, error)
 	CreateDBClusterEndpointWithContext(ctx context.Context, input *rds.CreateDBClusterEndpointInput, opts ...request.Option) (*rds.CreateDBClusterEndpointOutput, error)
@@ -40,6 +41,7 @@ type RDS interface {
 	CreateEventSubscriptionWithContext(ctx context.Context, input *rds.CreateEventSubscriptionInput, opts ...request.Option) (*rds.CreateEventSubscriptionOutput, error)
 	CreateGlobalClusterWithContext(ctx context.Context, input *rds.CreateGlobalClusterInput, opts ...request.Option) (*rds.CreateGlobalClusterOutput, error)
 	CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error)
+	DeleteBlueGreenDeploymentWithContext(ctx context.Context, input *rds.DeleteBlueGreenDeploymentInput, opts ...request.Option) (*rds.DeleteBlueGreenDeploymentOutput, error)
 	DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error)
 	DeleteDBClusterEndpointWithContext(ctx context.Context, input *rds.DeleteDBClusterEndpointInput, opts ...request.Option) (*rds.DeleteDBClusterEndpointOutput, error)
@@ -58,6 +60,8 @@ type RDS interface {
 	DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error)
 	DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error)
+	DescribeBlueGreenDeploymentsWithContext(ctx context.Context, input *rds.DescribeBlueGreenDeploymentsInput, opts ...request.Option) (*rds.DescribeBlueGreenDeploymentsOutput, error)
+	DescribeBlueGreenDeploymentsPagesWithContext(ctx context.Context, input *rds.DescribeBlueGreenDeploymentsInput, cb func(*rds.DescribeBlueGreenDeploymentsOutput, bool) bool, opts ...request.Option) error
 	DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error)
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, cb func(*rds.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error)
@@ -180,6 +184,7 @@ type RDS interface {
 	StopDBClusterWithContext(ctx context.Context, input *rds.StopDBClusterInput, opts ...request.Option) (*rds.StopDBClusterOutput, error)
 	StopDBInstanceWithContext(ctx context.Context, input *rds.StopDBInstanceInput, opts ...request.Option) (*rds.StopDBInstanceOutput, error)
 	StopDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StopDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error)
+	SwitchoverBlueGreenDeploymentWithContext(ctx context.Context, input *rds.SwitchoverBlueGreenDeploymentInput, opts ...request.Option) (*rds.SwitchoverBlueGreenDeploymentOutput, error)
 	SwitchoverReadReplicaWithContext(ctx context.Context, input *rds.SwitchoverReadReplicaInput, opts ...request.Option) (*rds.SwitchoverReadReplicaOutput, error)
 }
 
@@ -469,6 +474,27 @@ func (c *Client) CopyOptionGroupWithContext(ctx context.Context, input *rds.Copy
 	})
 
 	return req.Output.(*rds.CopyOptionGroupOutput), req.Error
+}
+
+func (c *Client) CreateBlueGreenDeploymentWithContext(ctx context.Context, input *rds.CreateBlueGreenDeploymentInput, opts ...request.Option) (*rds.CreateBlueGreenDeploymentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CreateBlueGreenDeployment",
+		Input:   input,
+		Output:  (*rds.CreateBlueGreenDeploymentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CreateBlueGreenDeploymentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CreateBlueGreenDeploymentOutput), req.Error
 }
 
 func (c *Client) CreateCustomDBEngineVersionWithContext(ctx context.Context, input *rds.CreateCustomDBEngineVersionInput, opts ...request.Option) (*rds.CreateCustomDBEngineVersionOutput, error) {
@@ -805,6 +831,27 @@ func (c *Client) CreateOptionGroupWithContext(ctx context.Context, input *rds.Cr
 	})
 
 	return req.Output.(*rds.CreateOptionGroupOutput), req.Error
+}
+
+func (c *Client) DeleteBlueGreenDeploymentWithContext(ctx context.Context, input *rds.DeleteBlueGreenDeploymentInput, opts ...request.Option) (*rds.DeleteBlueGreenDeploymentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteBlueGreenDeployment",
+		Input:   input,
+		Output:  (*rds.DeleteBlueGreenDeploymentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteBlueGreenDeploymentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteBlueGreenDeploymentOutput), req.Error
 }
 
 func (c *Client) DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error) {
@@ -1183,6 +1230,47 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*rds.DescribeAccountAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeBlueGreenDeploymentsWithContext(ctx context.Context, input *rds.DescribeBlueGreenDeploymentsInput, opts ...request.Option) (*rds.DescribeBlueGreenDeploymentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeBlueGreenDeployments",
+		Input:   input,
+		Output:  (*rds.DescribeBlueGreenDeploymentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeBlueGreenDeploymentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeBlueGreenDeploymentsOutput), req.Error
+}
+
+func (c *Client) DescribeBlueGreenDeploymentsPagesWithContext(ctx context.Context, input *rds.DescribeBlueGreenDeploymentsInput, cb func(*rds.DescribeBlueGreenDeploymentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeBlueGreenDeployments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeBlueGreenDeploymentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error) {
@@ -3712,6 +3800,27 @@ func (c *Client) StopDBInstanceAutomatedBackupsReplicationWithContext(ctx contex
 	})
 
 	return req.Output.(*rds.StopDBInstanceAutomatedBackupsReplicationOutput), req.Error
+}
+
+func (c *Client) SwitchoverBlueGreenDeploymentWithContext(ctx context.Context, input *rds.SwitchoverBlueGreenDeploymentInput, opts ...request.Option) (*rds.SwitchoverBlueGreenDeploymentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "SwitchoverBlueGreenDeployment",
+		Input:   input,
+		Output:  (*rds.SwitchoverBlueGreenDeploymentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.SwitchoverBlueGreenDeploymentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.SwitchoverBlueGreenDeploymentOutput), req.Error
 }
 
 func (c *Client) SwitchoverReadReplicaWithContext(ctx context.Context, input *rds.SwitchoverReadReplicaInput, opts ...request.Option) (*rds.SwitchoverReadReplicaOutput, error) {
