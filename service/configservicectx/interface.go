@@ -103,6 +103,7 @@ type ConfigService interface {
 	GetOrganizationCustomRulePolicyWithContext(ctx context.Context, input *configservice.GetOrganizationCustomRulePolicyInput, opts ...request.Option) (*configservice.GetOrganizationCustomRulePolicyOutput, error)
 	GetResourceConfigHistoryWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, opts ...request.Option) (*configservice.GetResourceConfigHistoryOutput, error)
 	GetResourceConfigHistoryPagesWithContext(ctx context.Context, input *configservice.GetResourceConfigHistoryInput, cb func(*configservice.GetResourceConfigHistoryOutput, bool) bool, opts ...request.Option) error
+	GetResourceEvaluationSummaryWithContext(ctx context.Context, input *configservice.GetResourceEvaluationSummaryInput, opts ...request.Option) (*configservice.GetResourceEvaluationSummaryOutput, error)
 	GetStoredQueryWithContext(ctx context.Context, input *configservice.GetStoredQueryInput, opts ...request.Option) (*configservice.GetStoredQueryOutput, error)
 	ListAggregateDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListAggregateDiscoveredResourcesOutput, error)
 	ListAggregateDiscoveredResourcesPagesWithContext(ctx context.Context, input *configservice.ListAggregateDiscoveredResourcesInput, cb func(*configservice.ListAggregateDiscoveredResourcesOutput, bool) bool, opts ...request.Option) error
@@ -110,6 +111,8 @@ type ConfigService interface {
 	ListConformancePackComplianceScoresPagesWithContext(ctx context.Context, input *configservice.ListConformancePackComplianceScoresInput, cb func(*configservice.ListConformancePackComplianceScoresOutput, bool) bool, opts ...request.Option) error
 	ListDiscoveredResourcesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, opts ...request.Option) (*configservice.ListDiscoveredResourcesOutput, error)
 	ListDiscoveredResourcesPagesWithContext(ctx context.Context, input *configservice.ListDiscoveredResourcesInput, cb func(*configservice.ListDiscoveredResourcesOutput, bool) bool, opts ...request.Option) error
+	ListResourceEvaluationsWithContext(ctx context.Context, input *configservice.ListResourceEvaluationsInput, opts ...request.Option) (*configservice.ListResourceEvaluationsOutput, error)
+	ListResourceEvaluationsPagesWithContext(ctx context.Context, input *configservice.ListResourceEvaluationsInput, cb func(*configservice.ListResourceEvaluationsOutput, bool) bool, opts ...request.Option) error
 	ListStoredQueriesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, opts ...request.Option) (*configservice.ListStoredQueriesOutput, error)
 	ListStoredQueriesPagesWithContext(ctx context.Context, input *configservice.ListStoredQueriesInput, cb func(*configservice.ListStoredQueriesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *configservice.ListTagsForResourceInput, opts ...request.Option) (*configservice.ListTagsForResourceOutput, error)
@@ -136,6 +139,7 @@ type ConfigService interface {
 	StartConfigRulesEvaluationWithContext(ctx context.Context, input *configservice.StartConfigRulesEvaluationInput, opts ...request.Option) (*configservice.StartConfigRulesEvaluationOutput, error)
 	StartConfigurationRecorderWithContext(ctx context.Context, input *configservice.StartConfigurationRecorderInput, opts ...request.Option) (*configservice.StartConfigurationRecorderOutput, error)
 	StartRemediationExecutionWithContext(ctx context.Context, input *configservice.StartRemediationExecutionInput, opts ...request.Option) (*configservice.StartRemediationExecutionOutput, error)
+	StartResourceEvaluationWithContext(ctx context.Context, input *configservice.StartResourceEvaluationInput, opts ...request.Option) (*configservice.StartResourceEvaluationOutput, error)
 	StopConfigurationRecorderWithContext(ctx context.Context, input *configservice.StopConfigurationRecorderInput, opts ...request.Option) (*configservice.StopConfigurationRecorderOutput, error)
 	TagResourceWithContext(ctx context.Context, input *configservice.TagResourceInput, opts ...request.Option) (*configservice.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *configservice.UntagResourceInput, opts ...request.Option) (*configservice.UntagResourceOutput, error)
@@ -2056,6 +2060,27 @@ func (c *Client) GetResourceConfigHistoryPagesWithContext(ctx context.Context, i
 	return req.Error
 }
 
+func (c *Client) GetResourceEvaluationSummaryWithContext(ctx context.Context, input *configservice.GetResourceEvaluationSummaryInput, opts ...request.Option) (*configservice.GetResourceEvaluationSummaryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "GetResourceEvaluationSummary",
+		Input:   input,
+		Output:  (*configservice.GetResourceEvaluationSummaryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.GetResourceEvaluationSummaryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.GetResourceEvaluationSummaryOutput), req.Error
+}
+
 func (c *Client) GetStoredQueryWithContext(ctx context.Context, input *configservice.GetStoredQueryInput, opts ...request.Option) (*configservice.GetStoredQueryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "configservice",
@@ -2195,6 +2220,47 @@ func (c *Client) ListDiscoveredResourcesPagesWithContext(ctx context.Context, in
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConfigServiceAPI.ListDiscoveredResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListResourceEvaluationsWithContext(ctx context.Context, input *configservice.ListResourceEvaluationsInput, opts ...request.Option) (*configservice.ListResourceEvaluationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "ListResourceEvaluations",
+		Input:   input,
+		Output:  (*configservice.ListResourceEvaluationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.ListResourceEvaluationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.ListResourceEvaluationsOutput), req.Error
+}
+
+func (c *Client) ListResourceEvaluationsPagesWithContext(ctx context.Context, input *configservice.ListResourceEvaluationsInput, cb func(*configservice.ListResourceEvaluationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "ListResourceEvaluations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConfigServiceAPI.ListResourceEvaluationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -2740,6 +2806,27 @@ func (c *Client) StartRemediationExecutionWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*configservice.StartRemediationExecutionOutput), req.Error
+}
+
+func (c *Client) StartResourceEvaluationWithContext(ctx context.Context, input *configservice.StartResourceEvaluationInput, opts ...request.Option) (*configservice.StartResourceEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "configservice",
+		Action:  "StartResourceEvaluation",
+		Input:   input,
+		Output:  (*configservice.StartResourceEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConfigServiceAPI.StartResourceEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*configservice.StartResourceEvaluationOutput), req.Error
 }
 
 func (c *Client) StopConfigurationRecorderWithContext(ctx context.Context, input *configservice.StopConfigurationRecorderInput, opts ...request.Option) (*configservice.StopConfigurationRecorderOutput, error) {

@@ -220,6 +220,8 @@ type EC2 interface {
 	DescribeAddressesAttributePagesWithContext(ctx context.Context, input *ec2.DescribeAddressesAttributeInput, cb func(*ec2.DescribeAddressesAttributeOutput, bool) bool, opts ...request.Option) error
 	DescribeAggregateIdFormatWithContext(ctx context.Context, input *ec2.DescribeAggregateIdFormatInput, opts ...request.Option) (*ec2.DescribeAggregateIdFormatOutput, error)
 	DescribeAvailabilityZonesWithContext(ctx context.Context, input *ec2.DescribeAvailabilityZonesInput, opts ...request.Option) (*ec2.DescribeAvailabilityZonesOutput, error)
+	DescribeAwsNetworkPerformanceMetricSubscriptionsWithContext(ctx context.Context, input *ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsInput, opts ...request.Option) (*ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput, error)
+	DescribeAwsNetworkPerformanceMetricSubscriptionsPagesWithContext(ctx context.Context, input *ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsInput, cb func(*ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error)
 	DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, opts ...request.Option) (*ec2.DescribeByoipCidrsOutput, error)
 	DescribeByoipCidrsPagesWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, cb func(*ec2.DescribeByoipCidrsOutput, bool) bool, opts ...request.Option) error
@@ -455,6 +457,7 @@ type EC2 interface {
 	DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error)
 	DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error)
 	DisableAddressTransferWithContext(ctx context.Context, input *ec2.DisableAddressTransferInput, opts ...request.Option) (*ec2.DisableAddressTransferOutput, error)
+	DisableAwsNetworkPerformanceMetricSubscriptionWithContext(ctx context.Context, input *ec2.DisableAwsNetworkPerformanceMetricSubscriptionInput, opts ...request.Option) (*ec2.DisableAwsNetworkPerformanceMetricSubscriptionOutput, error)
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
 	DisableFastLaunchWithContext(ctx context.Context, input *ec2.DisableFastLaunchInput, opts ...request.Option) (*ec2.DisableFastLaunchOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
@@ -478,11 +481,13 @@ type EC2 interface {
 	DisassociateTrunkInterfaceWithContext(ctx context.Context, input *ec2.DisassociateTrunkInterfaceInput, opts ...request.Option) (*ec2.DisassociateTrunkInterfaceOutput, error)
 	DisassociateVpcCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateVpcCidrBlockInput, opts ...request.Option) (*ec2.DisassociateVpcCidrBlockOutput, error)
 	EnableAddressTransferWithContext(ctx context.Context, input *ec2.EnableAddressTransferInput, opts ...request.Option) (*ec2.EnableAddressTransferOutput, error)
+	EnableAwsNetworkPerformanceMetricSubscriptionWithContext(ctx context.Context, input *ec2.EnableAwsNetworkPerformanceMetricSubscriptionInput, opts ...request.Option) (*ec2.EnableAwsNetworkPerformanceMetricSubscriptionOutput, error)
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastLaunchWithContext(ctx context.Context, input *ec2.EnableFastLaunchInput, opts ...request.Option) (*ec2.EnableFastLaunchOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
 	EnableImageDeprecationWithContext(ctx context.Context, input *ec2.EnableImageDeprecationInput, opts ...request.Option) (*ec2.EnableImageDeprecationOutput, error)
 	EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error)
+	EnableReachabilityAnalyzerOrganizationSharingWithContext(ctx context.Context, input *ec2.EnableReachabilityAnalyzerOrganizationSharingInput, opts ...request.Option) (*ec2.EnableReachabilityAnalyzerOrganizationSharingOutput, error)
 	EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error)
 	EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error)
 	EnableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.EnableVgwRoutePropagationInput, opts ...request.Option) (*ec2.EnableVgwRoutePropagationOutput, error)
@@ -496,6 +501,8 @@ type EC2 interface {
 	GetAssociatedEnclaveCertificateIamRolesWithContext(ctx context.Context, input *ec2.GetAssociatedEnclaveCertificateIamRolesInput, opts ...request.Option) (*ec2.GetAssociatedEnclaveCertificateIamRolesOutput, error)
 	GetAssociatedIpv6PoolCidrsWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, opts ...request.Option) (*ec2.GetAssociatedIpv6PoolCidrsOutput, error)
 	GetAssociatedIpv6PoolCidrsPagesWithContext(ctx context.Context, input *ec2.GetAssociatedIpv6PoolCidrsInput, cb func(*ec2.GetAssociatedIpv6PoolCidrsOutput, bool) bool, opts ...request.Option) error
+	GetAwsNetworkPerformanceDataWithContext(ctx context.Context, input *ec2.GetAwsNetworkPerformanceDataInput, opts ...request.Option) (*ec2.GetAwsNetworkPerformanceDataOutput, error)
+	GetAwsNetworkPerformanceDataPagesWithContext(ctx context.Context, input *ec2.GetAwsNetworkPerformanceDataInput, cb func(*ec2.GetAwsNetworkPerformanceDataOutput, bool) bool, opts ...request.Option) error
 	GetCapacityReservationUsageWithContext(ctx context.Context, input *ec2.GetCapacityReservationUsageInput, opts ...request.Option) (*ec2.GetCapacityReservationUsageOutput, error)
 	GetCoipPoolUsageWithContext(ctx context.Context, input *ec2.GetCoipPoolUsageInput, opts ...request.Option) (*ec2.GetCoipPoolUsageOutput, error)
 	GetConsoleOutputWithContext(ctx context.Context, input *ec2.GetConsoleOutputInput, opts ...request.Option) (*ec2.GetConsoleOutputOutput, error)
@@ -5082,6 +5089,47 @@ func (c *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.DescribeAvailabilityZonesOutput), req.Error
+}
+
+func (c *Client) DescribeAwsNetworkPerformanceMetricSubscriptionsWithContext(ctx context.Context, input *ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsInput, opts ...request.Option) (*ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeAwsNetworkPerformanceMetricSubscriptions",
+		Input:   input,
+		Output:  (*ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeAwsNetworkPerformanceMetricSubscriptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput), req.Error
+}
+
+func (c *Client) DescribeAwsNetworkPerformanceMetricSubscriptionsPagesWithContext(ctx context.Context, input *ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsInput, cb func(*ec2.DescribeAwsNetworkPerformanceMetricSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeAwsNetworkPerformanceMetricSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeAwsNetworkPerformanceMetricSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error) {
@@ -9920,6 +9968,27 @@ func (c *Client) DisableAddressTransferWithContext(ctx context.Context, input *e
 	return req.Output.(*ec2.DisableAddressTransferOutput), req.Error
 }
 
+func (c *Client) DisableAwsNetworkPerformanceMetricSubscriptionWithContext(ctx context.Context, input *ec2.DisableAwsNetworkPerformanceMetricSubscriptionInput, opts ...request.Option) (*ec2.DisableAwsNetworkPerformanceMetricSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableAwsNetworkPerformanceMetricSubscription",
+		Input:   input,
+		Output:  (*ec2.DisableAwsNetworkPerformanceMetricSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableAwsNetworkPerformanceMetricSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableAwsNetworkPerformanceMetricSubscriptionOutput), req.Error
+}
+
 func (c *Client) DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10403,6 +10472,27 @@ func (c *Client) EnableAddressTransferWithContext(ctx context.Context, input *ec
 	return req.Output.(*ec2.EnableAddressTransferOutput), req.Error
 }
 
+func (c *Client) EnableAwsNetworkPerformanceMetricSubscriptionWithContext(ctx context.Context, input *ec2.EnableAwsNetworkPerformanceMetricSubscriptionInput, opts ...request.Option) (*ec2.EnableAwsNetworkPerformanceMetricSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableAwsNetworkPerformanceMetricSubscription",
+		Input:   input,
+		Output:  (*ec2.EnableAwsNetworkPerformanceMetricSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableAwsNetworkPerformanceMetricSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableAwsNetworkPerformanceMetricSubscriptionOutput), req.Error
+}
+
 func (c *Client) EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -10506,6 +10596,27 @@ func (c *Client) EnableIpamOrganizationAdminAccountWithContext(ctx context.Conte
 	})
 
 	return req.Output.(*ec2.EnableIpamOrganizationAdminAccountOutput), req.Error
+}
+
+func (c *Client) EnableReachabilityAnalyzerOrganizationSharingWithContext(ctx context.Context, input *ec2.EnableReachabilityAnalyzerOrganizationSharingInput, opts ...request.Option) (*ec2.EnableReachabilityAnalyzerOrganizationSharingOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableReachabilityAnalyzerOrganizationSharing",
+		Input:   input,
+		Output:  (*ec2.EnableReachabilityAnalyzerOrganizationSharingOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableReachabilityAnalyzerOrganizationSharingWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableReachabilityAnalyzerOrganizationSharingOutput), req.Error
 }
 
 func (c *Client) EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error) {
@@ -10775,6 +10886,47 @@ func (c *Client) GetAssociatedIpv6PoolCidrsPagesWithContext(ctx context.Context,
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.GetAssociatedIpv6PoolCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetAwsNetworkPerformanceDataWithContext(ctx context.Context, input *ec2.GetAwsNetworkPerformanceDataInput, opts ...request.Option) (*ec2.GetAwsNetworkPerformanceDataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetAwsNetworkPerformanceData",
+		Input:   input,
+		Output:  (*ec2.GetAwsNetworkPerformanceDataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetAwsNetworkPerformanceDataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetAwsNetworkPerformanceDataOutput), req.Error
+}
+
+func (c *Client) GetAwsNetworkPerformanceDataPagesWithContext(ctx context.Context, input *ec2.GetAwsNetworkPerformanceDataInput, cb func(*ec2.GetAwsNetworkPerformanceDataOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetAwsNetworkPerformanceData",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetAwsNetworkPerformanceDataPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

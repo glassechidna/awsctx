@@ -51,8 +51,10 @@ type QuickSight interface {
 	DescribeAccountSettingsWithContext(ctx context.Context, input *quicksight.DescribeAccountSettingsInput, opts ...request.Option) (*quicksight.DescribeAccountSettingsOutput, error)
 	DescribeAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DescribeAccountSubscriptionInput, opts ...request.Option) (*quicksight.DescribeAccountSubscriptionOutput, error)
 	DescribeAnalysisWithContext(ctx context.Context, input *quicksight.DescribeAnalysisInput, opts ...request.Option) (*quicksight.DescribeAnalysisOutput, error)
+	DescribeAnalysisDefinitionWithContext(ctx context.Context, input *quicksight.DescribeAnalysisDefinitionInput, opts ...request.Option) (*quicksight.DescribeAnalysisDefinitionOutput, error)
 	DescribeAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.DescribeAnalysisPermissionsInput, opts ...request.Option) (*quicksight.DescribeAnalysisPermissionsOutput, error)
 	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
+	DescribeDashboardDefinitionWithContext(ctx context.Context, input *quicksight.DescribeDashboardDefinitionInput, opts ...request.Option) (*quicksight.DescribeDashboardDefinitionOutput, error)
 	DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error)
 	DescribeDataSetWithContext(ctx context.Context, input *quicksight.DescribeDataSetInput, opts ...request.Option) (*quicksight.DescribeDataSetOutput, error)
 	DescribeDataSetPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDataSetPermissionsInput, opts ...request.Option) (*quicksight.DescribeDataSetPermissionsOutput, error)
@@ -69,6 +71,7 @@ type QuickSight interface {
 	DescribeNamespaceWithContext(ctx context.Context, input *quicksight.DescribeNamespaceInput, opts ...request.Option) (*quicksight.DescribeNamespaceOutput, error)
 	DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error)
 	DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error)
+	DescribeTemplateDefinitionWithContext(ctx context.Context, input *quicksight.DescribeTemplateDefinitionInput, opts ...request.Option) (*quicksight.DescribeTemplateDefinitionOutput, error)
 	DescribeTemplatePermissionsWithContext(ctx context.Context, input *quicksight.DescribeTemplatePermissionsInput, opts ...request.Option) (*quicksight.DescribeTemplatePermissionsOutput, error)
 	DescribeThemeWithContext(ctx context.Context, input *quicksight.DescribeThemeInput, opts ...request.Option) (*quicksight.DescribeThemeOutput, error)
 	DescribeThemeAliasWithContext(ctx context.Context, input *quicksight.DescribeThemeAliasInput, opts ...request.Option) (*quicksight.DescribeThemeAliasOutput, error)
@@ -1007,6 +1010,27 @@ func (c *Client) DescribeAnalysisWithContext(ctx context.Context, input *quicksi
 	return req.Output.(*quicksight.DescribeAnalysisOutput), req.Error
 }
 
+func (c *Client) DescribeAnalysisDefinitionWithContext(ctx context.Context, input *quicksight.DescribeAnalysisDefinitionInput, opts ...request.Option) (*quicksight.DescribeAnalysisDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAnalysisDefinition",
+		Input:   input,
+		Output:  (*quicksight.DescribeAnalysisDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAnalysisDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAnalysisDefinitionOutput), req.Error
+}
+
 func (c *Client) DescribeAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.DescribeAnalysisPermissionsInput, opts ...request.Option) (*quicksight.DescribeAnalysisPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -1047,6 +1071,27 @@ func (c *Client) DescribeDashboardWithContext(ctx context.Context, input *quicks
 	})
 
 	return req.Output.(*quicksight.DescribeDashboardOutput), req.Error
+}
+
+func (c *Client) DescribeDashboardDefinitionWithContext(ctx context.Context, input *quicksight.DescribeDashboardDefinitionInput, opts ...request.Option) (*quicksight.DescribeDashboardDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeDashboardDefinition",
+		Input:   input,
+		Output:  (*quicksight.DescribeDashboardDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeDashboardDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeDashboardDefinitionOutput), req.Error
 }
 
 func (c *Client) DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error) {
@@ -1383,6 +1428,27 @@ func (c *Client) DescribeTemplateAliasWithContext(ctx context.Context, input *qu
 	})
 
 	return req.Output.(*quicksight.DescribeTemplateAliasOutput), req.Error
+}
+
+func (c *Client) DescribeTemplateDefinitionWithContext(ctx context.Context, input *quicksight.DescribeTemplateDefinitionInput, opts ...request.Option) (*quicksight.DescribeTemplateDefinitionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTemplateDefinition",
+		Input:   input,
+		Output:  (*quicksight.DescribeTemplateDefinitionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTemplateDefinitionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTemplateDefinitionOutput), req.Error
 }
 
 func (c *Client) DescribeTemplatePermissionsWithContext(ctx context.Context, input *quicksight.DescribeTemplatePermissionsInput, opts ...request.Option) (*quicksight.DescribeTemplatePermissionsOutput, error) {
