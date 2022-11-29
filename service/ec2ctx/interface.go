@@ -41,6 +41,7 @@ type EC2 interface {
 	AttachClassicLinkVpcWithContext(ctx context.Context, input *ec2.AttachClassicLinkVpcInput, opts ...request.Option) (*ec2.AttachClassicLinkVpcOutput, error)
 	AttachInternetGatewayWithContext(ctx context.Context, input *ec2.AttachInternetGatewayInput, opts ...request.Option) (*ec2.AttachInternetGatewayOutput, error)
 	AttachNetworkInterfaceWithContext(ctx context.Context, input *ec2.AttachNetworkInterfaceInput, opts ...request.Option) (*ec2.AttachNetworkInterfaceOutput, error)
+	AttachVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.AttachVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.AttachVerifiedAccessTrustProviderOutput, error)
 	AttachVolumeWithContext(ctx context.Context, input *ec2.AttachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error)
 	AttachVpnGatewayWithContext(ctx context.Context, input *ec2.AttachVpnGatewayInput, opts ...request.Option) (*ec2.AttachVpnGatewayOutput, error)
 	AuthorizeClientVpnIngressWithContext(ctx context.Context, input *ec2.AuthorizeClientVpnIngressInput, opts ...request.Option) (*ec2.AuthorizeClientVpnIngressOutput, error)
@@ -128,6 +129,10 @@ type EC2 interface {
 	CreateTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteTableOutput, error)
 	CreateTransitGatewayRouteTableAnnouncementWithContext(ctx context.Context, input *ec2.CreateTransitGatewayRouteTableAnnouncementInput, opts ...request.Option) (*ec2.CreateTransitGatewayRouteTableAnnouncementOutput, error)
 	CreateTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.CreateTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.CreateTransitGatewayVpcAttachmentOutput, error)
+	CreateVerifiedAccessEndpointWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessEndpointInput, opts ...request.Option) (*ec2.CreateVerifiedAccessEndpointOutput, error)
+	CreateVerifiedAccessGroupWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessGroupInput, opts ...request.Option) (*ec2.CreateVerifiedAccessGroupOutput, error)
+	CreateVerifiedAccessInstanceWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessInstanceInput, opts ...request.Option) (*ec2.CreateVerifiedAccessInstanceOutput, error)
+	CreateVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.CreateVerifiedAccessTrustProviderOutput, error)
 	CreateVolumeWithContext(ctx context.Context, input *ec2.CreateVolumeInput, opts ...request.Option) (*ec2.Volume, error)
 	CreateVpcWithContext(ctx context.Context, input *ec2.CreateVpcInput, opts ...request.Option) (*ec2.CreateVpcOutput, error)
 	CreateVpcEndpointWithContext(ctx context.Context, input *ec2.CreateVpcEndpointInput, opts ...request.Option) (*ec2.CreateVpcEndpointOutput, error)
@@ -196,6 +201,10 @@ type EC2 interface {
 	DeleteTransitGatewayRouteTableWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteTableInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteTableOutput, error)
 	DeleteTransitGatewayRouteTableAnnouncementWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayRouteTableAnnouncementInput, opts ...request.Option) (*ec2.DeleteTransitGatewayRouteTableAnnouncementOutput, error)
 	DeleteTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.DeleteTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.DeleteTransitGatewayVpcAttachmentOutput, error)
+	DeleteVerifiedAccessEndpointWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessEndpointInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessEndpointOutput, error)
+	DeleteVerifiedAccessGroupWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessGroupInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessGroupOutput, error)
+	DeleteVerifiedAccessInstanceWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessInstanceInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessInstanceOutput, error)
+	DeleteVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessTrustProviderOutput, error)
 	DeleteVolumeWithContext(ctx context.Context, input *ec2.DeleteVolumeInput, opts ...request.Option) (*ec2.DeleteVolumeOutput, error)
 	DeleteVpcWithContext(ctx context.Context, input *ec2.DeleteVpcInput, opts ...request.Option) (*ec2.DeleteVpcOutput, error)
 	DeleteVpcEndpointConnectionNotificationsWithContext(ctx context.Context, input *ec2.DeleteVpcEndpointConnectionNotificationsInput, opts ...request.Option) (*ec2.DeleteVpcEndpointConnectionNotificationsOutput, error)
@@ -423,6 +432,16 @@ type EC2 interface {
 	DescribeTransitGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeTransitGatewaysInput, cb func(*ec2.DescribeTransitGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeTrunkInterfaceAssociationsWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, opts ...request.Option) (*ec2.DescribeTrunkInterfaceAssociationsOutput, error)
 	DescribeTrunkInterfaceAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeTrunkInterfaceAssociationsInput, cb func(*ec2.DescribeTrunkInterfaceAssociationsOutput, bool) bool, opts ...request.Option) error
+	DescribeVerifiedAccessEndpointsWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessEndpointsInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessEndpointsOutput, error)
+	DescribeVerifiedAccessEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessEndpointsInput, cb func(*ec2.DescribeVerifiedAccessEndpointsOutput, bool) bool, opts ...request.Option) error
+	DescribeVerifiedAccessGroupsWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessGroupsInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessGroupsOutput, error)
+	DescribeVerifiedAccessGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessGroupsInput, cb func(*ec2.DescribeVerifiedAccessGroupsOutput, bool) bool, opts ...request.Option) error
+	DescribeVerifiedAccessInstanceLoggingConfigurationsWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput, error)
+	DescribeVerifiedAccessInstanceLoggingConfigurationsPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsInput, cb func(*ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput, bool) bool, opts ...request.Option) error
+	DescribeVerifiedAccessInstancesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstancesInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessInstancesOutput, error)
+	DescribeVerifiedAccessInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstancesInput, cb func(*ec2.DescribeVerifiedAccessInstancesOutput, bool) bool, opts ...request.Option) error
+	DescribeVerifiedAccessTrustProvidersWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessTrustProvidersInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessTrustProvidersOutput, error)
+	DescribeVerifiedAccessTrustProvidersPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessTrustProvidersInput, cb func(*ec2.DescribeVerifiedAccessTrustProvidersOutput, bool) bool, opts ...request.Option) error
 	DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error)
 	DescribeVolumeStatusWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, opts ...request.Option) (*ec2.DescribeVolumeStatusOutput, error)
 	DescribeVolumeStatusPagesWithContext(ctx context.Context, input *ec2.DescribeVolumeStatusInput, cb func(*ec2.DescribeVolumeStatusOutput, bool) bool, opts ...request.Option) error
@@ -454,6 +473,7 @@ type EC2 interface {
 	DetachClassicLinkVpcWithContext(ctx context.Context, input *ec2.DetachClassicLinkVpcInput, opts ...request.Option) (*ec2.DetachClassicLinkVpcOutput, error)
 	DetachInternetGatewayWithContext(ctx context.Context, input *ec2.DetachInternetGatewayInput, opts ...request.Option) (*ec2.DetachInternetGatewayOutput, error)
 	DetachNetworkInterfaceWithContext(ctx context.Context, input *ec2.DetachNetworkInterfaceInput, opts ...request.Option) (*ec2.DetachNetworkInterfaceOutput, error)
+	DetachVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.DetachVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.DetachVerifiedAccessTrustProviderOutput, error)
 	DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error)
 	DetachVpnGatewayWithContext(ctx context.Context, input *ec2.DetachVpnGatewayInput, opts ...request.Option) (*ec2.DetachVpnGatewayOutput, error)
 	DisableAddressTransferWithContext(ctx context.Context, input *ec2.DisableAddressTransferInput, opts ...request.Option) (*ec2.DisableAddressTransferOutput, error)
@@ -551,6 +571,8 @@ type EC2 interface {
 	GetTransitGatewayRouteTableAssociationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTableAssociationsInput, cb func(*ec2.GetTransitGatewayRouteTableAssociationsOutput, bool) bool, opts ...request.Option) error
 	GetTransitGatewayRouteTablePropagationsWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, opts ...request.Option) (*ec2.GetTransitGatewayRouteTablePropagationsOutput, error)
 	GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx context.Context, input *ec2.GetTransitGatewayRouteTablePropagationsInput, cb func(*ec2.GetTransitGatewayRouteTablePropagationsOutput, bool) bool, opts ...request.Option) error
+	GetVerifiedAccessEndpointPolicyWithContext(ctx context.Context, input *ec2.GetVerifiedAccessEndpointPolicyInput, opts ...request.Option) (*ec2.GetVerifiedAccessEndpointPolicyOutput, error)
+	GetVerifiedAccessGroupPolicyWithContext(ctx context.Context, input *ec2.GetVerifiedAccessGroupPolicyInput, opts ...request.Option) (*ec2.GetVerifiedAccessGroupPolicyOutput, error)
 	GetVpnConnectionDeviceSampleConfigurationWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceSampleConfigurationInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput, error)
 	GetVpnConnectionDeviceTypesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceTypesOutput, error)
 	GetVpnConnectionDeviceTypesPagesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, cb func(*ec2.GetVpnConnectionDeviceTypesOutput, bool) bool, opts ...request.Option) error
@@ -606,6 +628,13 @@ type EC2 interface {
 	ModifyTransitGatewayWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayInput, opts ...request.Option) (*ec2.ModifyTransitGatewayOutput, error)
 	ModifyTransitGatewayPrefixListReferenceWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayPrefixListReferenceInput, opts ...request.Option) (*ec2.ModifyTransitGatewayPrefixListReferenceOutput, error)
 	ModifyTransitGatewayVpcAttachmentWithContext(ctx context.Context, input *ec2.ModifyTransitGatewayVpcAttachmentInput, opts ...request.Option) (*ec2.ModifyTransitGatewayVpcAttachmentOutput, error)
+	ModifyVerifiedAccessEndpointWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessEndpointInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessEndpointOutput, error)
+	ModifyVerifiedAccessEndpointPolicyWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessEndpointPolicyInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessEndpointPolicyOutput, error)
+	ModifyVerifiedAccessGroupWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessGroupInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessGroupOutput, error)
+	ModifyVerifiedAccessGroupPolicyWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessGroupPolicyInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessGroupPolicyOutput, error)
+	ModifyVerifiedAccessInstanceWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessInstanceInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessInstanceOutput, error)
+	ModifyVerifiedAccessInstanceLoggingConfigurationWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessInstanceLoggingConfigurationInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessInstanceLoggingConfigurationOutput, error)
+	ModifyVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessTrustProviderOutput, error)
 	ModifyVolumeWithContext(ctx context.Context, input *ec2.ModifyVolumeInput, opts ...request.Option) (*ec2.ModifyVolumeOutput, error)
 	ModifyVolumeAttributeWithContext(ctx context.Context, input *ec2.ModifyVolumeAttributeInput, opts ...request.Option) (*ec2.ModifyVolumeAttributeOutput, error)
 	ModifyVpcAttributeWithContext(ctx context.Context, input *ec2.ModifyVpcAttributeInput, opts ...request.Option) (*ec2.ModifyVpcAttributeOutput, error)
@@ -1332,6 +1361,27 @@ func (c *Client) AttachNetworkInterfaceWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ec2.AttachNetworkInterfaceOutput), req.Error
+}
+
+func (c *Client) AttachVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.AttachVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.AttachVerifiedAccessTrustProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AttachVerifiedAccessTrustProvider",
+		Input:   input,
+		Output:  (*ec2.AttachVerifiedAccessTrustProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AttachVerifiedAccessTrustProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AttachVerifiedAccessTrustProviderOutput), req.Error
 }
 
 func (c *Client) AttachVolumeWithContext(ctx context.Context, input *ec2.AttachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error) {
@@ -3161,6 +3211,90 @@ func (c *Client) CreateTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 	return req.Output.(*ec2.CreateTransitGatewayVpcAttachmentOutput), req.Error
 }
 
+func (c *Client) CreateVerifiedAccessEndpointWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessEndpointInput, opts ...request.Option) (*ec2.CreateVerifiedAccessEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateVerifiedAccessEndpoint",
+		Input:   input,
+		Output:  (*ec2.CreateVerifiedAccessEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateVerifiedAccessEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateVerifiedAccessEndpointOutput), req.Error
+}
+
+func (c *Client) CreateVerifiedAccessGroupWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessGroupInput, opts ...request.Option) (*ec2.CreateVerifiedAccessGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateVerifiedAccessGroup",
+		Input:   input,
+		Output:  (*ec2.CreateVerifiedAccessGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateVerifiedAccessGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateVerifiedAccessGroupOutput), req.Error
+}
+
+func (c *Client) CreateVerifiedAccessInstanceWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessInstanceInput, opts ...request.Option) (*ec2.CreateVerifiedAccessInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateVerifiedAccessInstance",
+		Input:   input,
+		Output:  (*ec2.CreateVerifiedAccessInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateVerifiedAccessInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateVerifiedAccessInstanceOutput), req.Error
+}
+
+func (c *Client) CreateVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.CreateVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.CreateVerifiedAccessTrustProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateVerifiedAccessTrustProvider",
+		Input:   input,
+		Output:  (*ec2.CreateVerifiedAccessTrustProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateVerifiedAccessTrustProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateVerifiedAccessTrustProviderOutput), req.Error
+}
+
 func (c *Client) CreateVolumeWithContext(ctx context.Context, input *ec2.CreateVolumeInput, opts ...request.Option) (*ec2.Volume, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -4587,6 +4721,90 @@ func (c *Client) DeleteTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.DeleteTransitGatewayVpcAttachmentOutput), req.Error
+}
+
+func (c *Client) DeleteVerifiedAccessEndpointWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessEndpointInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteVerifiedAccessEndpoint",
+		Input:   input,
+		Output:  (*ec2.DeleteVerifiedAccessEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteVerifiedAccessEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteVerifiedAccessEndpointOutput), req.Error
+}
+
+func (c *Client) DeleteVerifiedAccessGroupWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessGroupInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteVerifiedAccessGroup",
+		Input:   input,
+		Output:  (*ec2.DeleteVerifiedAccessGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteVerifiedAccessGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteVerifiedAccessGroupOutput), req.Error
+}
+
+func (c *Client) DeleteVerifiedAccessInstanceWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessInstanceInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteVerifiedAccessInstance",
+		Input:   input,
+		Output:  (*ec2.DeleteVerifiedAccessInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteVerifiedAccessInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteVerifiedAccessInstanceOutput), req.Error
+}
+
+func (c *Client) DeleteVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.DeleteVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.DeleteVerifiedAccessTrustProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteVerifiedAccessTrustProvider",
+		Input:   input,
+		Output:  (*ec2.DeleteVerifiedAccessTrustProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteVerifiedAccessTrustProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteVerifiedAccessTrustProviderOutput), req.Error
 }
 
 func (c *Client) DeleteVolumeWithContext(ctx context.Context, input *ec2.DeleteVolumeInput, opts ...request.Option) (*ec2.DeleteVolumeOutput, error) {
@@ -9265,6 +9483,211 @@ func (c *Client) DescribeTrunkInterfaceAssociationsPagesWithContext(ctx context.
 	return req.Error
 }
 
+func (c *Client) DescribeVerifiedAccessEndpointsWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessEndpointsInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessEndpoints",
+		Input:   input,
+		Output:  (*ec2.DescribeVerifiedAccessEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeVerifiedAccessEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeVerifiedAccessEndpointsOutput), req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessEndpointsInput, cb func(*ec2.DescribeVerifiedAccessEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVerifiedAccessEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessGroupsWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessGroupsInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessGroups",
+		Input:   input,
+		Output:  (*ec2.DescribeVerifiedAccessGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeVerifiedAccessGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeVerifiedAccessGroupsOutput), req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessGroupsPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessGroupsInput, cb func(*ec2.DescribeVerifiedAccessGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVerifiedAccessGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessInstanceLoggingConfigurationsWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessInstanceLoggingConfigurations",
+		Input:   input,
+		Output:  (*ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeVerifiedAccessInstanceLoggingConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput), req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessInstanceLoggingConfigurationsPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsInput, cb func(*ec2.DescribeVerifiedAccessInstanceLoggingConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessInstanceLoggingConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVerifiedAccessInstanceLoggingConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessInstancesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstancesInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessInstancesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessInstances",
+		Input:   input,
+		Output:  (*ec2.DescribeVerifiedAccessInstancesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeVerifiedAccessInstancesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeVerifiedAccessInstancesOutput), req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessInstancesPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessInstancesInput, cb func(*ec2.DescribeVerifiedAccessInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVerifiedAccessInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessTrustProvidersWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessTrustProvidersInput, opts ...request.Option) (*ec2.DescribeVerifiedAccessTrustProvidersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessTrustProviders",
+		Input:   input,
+		Output:  (*ec2.DescribeVerifiedAccessTrustProvidersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeVerifiedAccessTrustProvidersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeVerifiedAccessTrustProvidersOutput), req.Error
+}
+
+func (c *Client) DescribeVerifiedAccessTrustProvidersPagesWithContext(ctx context.Context, input *ec2.DescribeVerifiedAccessTrustProvidersInput, cb func(*ec2.DescribeVerifiedAccessTrustProvidersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeVerifiedAccessTrustProviders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeVerifiedAccessTrustProvidersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeVolumeAttributeWithContext(ctx context.Context, input *ec2.DescribeVolumeAttributeInput, opts ...request.Option) (*ec2.DescribeVolumeAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -9903,6 +10326,27 @@ func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ec2.DetachNetworkInterfaceOutput), req.Error
+}
+
+func (c *Client) DetachVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.DetachVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.DetachVerifiedAccessTrustProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DetachVerifiedAccessTrustProvider",
+		Input:   input,
+		Output:  (*ec2.DetachVerifiedAccessTrustProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DetachVerifiedAccessTrustProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DetachVerifiedAccessTrustProviderOutput), req.Error
 }
 
 func (c *Client) DetachVolumeWithContext(ctx context.Context, input *ec2.DetachVolumeInput, opts ...request.Option) (*ec2.VolumeAttachment, error) {
@@ -11925,6 +12369,48 @@ func (c *Client) GetTransitGatewayRouteTablePropagationsPagesWithContext(ctx con
 	return req.Error
 }
 
+func (c *Client) GetVerifiedAccessEndpointPolicyWithContext(ctx context.Context, input *ec2.GetVerifiedAccessEndpointPolicyInput, opts ...request.Option) (*ec2.GetVerifiedAccessEndpointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetVerifiedAccessEndpointPolicy",
+		Input:   input,
+		Output:  (*ec2.GetVerifiedAccessEndpointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetVerifiedAccessEndpointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetVerifiedAccessEndpointPolicyOutput), req.Error
+}
+
+func (c *Client) GetVerifiedAccessGroupPolicyWithContext(ctx context.Context, input *ec2.GetVerifiedAccessGroupPolicyInput, opts ...request.Option) (*ec2.GetVerifiedAccessGroupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetVerifiedAccessGroupPolicy",
+		Input:   input,
+		Output:  (*ec2.GetVerifiedAccessGroupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetVerifiedAccessGroupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetVerifiedAccessGroupPolicyOutput), req.Error
+}
+
 func (c *Client) GetVpnConnectionDeviceSampleConfigurationWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceSampleConfigurationInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -13075,6 +13561,153 @@ func (c *Client) ModifyTransitGatewayVpcAttachmentWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.ModifyTransitGatewayVpcAttachmentOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessEndpointWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessEndpointInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessEndpoint",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessEndpointOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessEndpointPolicyWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessEndpointPolicyInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessEndpointPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessEndpointPolicy",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessEndpointPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessEndpointPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessEndpointPolicyOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessGroupWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessGroupInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessGroup",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessGroupOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessGroupPolicyWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessGroupPolicyInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessGroupPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessGroupPolicy",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessGroupPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessGroupPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessGroupPolicyOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessInstanceWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessInstanceInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessInstance",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessInstanceOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessInstanceLoggingConfigurationWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessInstanceLoggingConfigurationInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessInstanceLoggingConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessInstanceLoggingConfiguration",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessInstanceLoggingConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessInstanceLoggingConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessInstanceLoggingConfigurationOutput), req.Error
+}
+
+func (c *Client) ModifyVerifiedAccessTrustProviderWithContext(ctx context.Context, input *ec2.ModifyVerifiedAccessTrustProviderInput, opts ...request.Option) (*ec2.ModifyVerifiedAccessTrustProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyVerifiedAccessTrustProvider",
+		Input:   input,
+		Output:  (*ec2.ModifyVerifiedAccessTrustProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyVerifiedAccessTrustProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyVerifiedAccessTrustProviderOutput), req.Error
 }
 
 func (c *Client) ModifyVolumeWithContext(ctx context.Context, input *ec2.ModifyVolumeInput, opts ...request.Option) (*ec2.ModifyVolumeOutput, error) {
