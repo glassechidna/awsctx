@@ -19,6 +19,7 @@ type Glue interface {
 	BatchGetBlueprintsWithContext(ctx context.Context, input *glue.BatchGetBlueprintsInput, opts ...request.Option) (*glue.BatchGetBlueprintsOutput, error)
 	BatchGetCrawlersWithContext(ctx context.Context, input *glue.BatchGetCrawlersInput, opts ...request.Option) (*glue.BatchGetCrawlersOutput, error)
 	BatchGetCustomEntityTypesWithContext(ctx context.Context, input *glue.BatchGetCustomEntityTypesInput, opts ...request.Option) (*glue.BatchGetCustomEntityTypesOutput, error)
+	BatchGetDataQualityResultWithContext(ctx context.Context, input *glue.BatchGetDataQualityResultInput, opts ...request.Option) (*glue.BatchGetDataQualityResultOutput, error)
 	BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error)
 	BatchGetJobsWithContext(ctx context.Context, input *glue.BatchGetJobsInput, opts ...request.Option) (*glue.BatchGetJobsOutput, error)
 	BatchGetPartitionWithContext(ctx context.Context, input *glue.BatchGetPartitionInput, opts ...request.Option) (*glue.BatchGetPartitionOutput, error)
@@ -26,6 +27,8 @@ type Glue interface {
 	BatchGetWorkflowsWithContext(ctx context.Context, input *glue.BatchGetWorkflowsInput, opts ...request.Option) (*glue.BatchGetWorkflowsOutput, error)
 	BatchStopJobRunWithContext(ctx context.Context, input *glue.BatchStopJobRunInput, opts ...request.Option) (*glue.BatchStopJobRunOutput, error)
 	BatchUpdatePartitionWithContext(ctx context.Context, input *glue.BatchUpdatePartitionInput, opts ...request.Option) (*glue.BatchUpdatePartitionOutput, error)
+	CancelDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.CancelDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.CancelDataQualityRuleRecommendationRunOutput, error)
+	CancelDataQualityRulesetEvaluationRunWithContext(ctx context.Context, input *glue.CancelDataQualityRulesetEvaluationRunInput, opts ...request.Option) (*glue.CancelDataQualityRulesetEvaluationRunOutput, error)
 	CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error)
 	CancelStatementWithContext(ctx context.Context, input *glue.CancelStatementInput, opts ...request.Option) (*glue.CancelStatementOutput, error)
 	CheckSchemaVersionValidityWithContext(ctx context.Context, input *glue.CheckSchemaVersionValidityInput, opts ...request.Option) (*glue.CheckSchemaVersionValidityOutput, error)
@@ -34,6 +37,7 @@ type Glue interface {
 	CreateConnectionWithContext(ctx context.Context, input *glue.CreateConnectionInput, opts ...request.Option) (*glue.CreateConnectionOutput, error)
 	CreateCrawlerWithContext(ctx context.Context, input *glue.CreateCrawlerInput, opts ...request.Option) (*glue.CreateCrawlerOutput, error)
 	CreateCustomEntityTypeWithContext(ctx context.Context, input *glue.CreateCustomEntityTypeInput, opts ...request.Option) (*glue.CreateCustomEntityTypeOutput, error)
+	CreateDataQualityRulesetWithContext(ctx context.Context, input *glue.CreateDataQualityRulesetInput, opts ...request.Option) (*glue.CreateDataQualityRulesetOutput, error)
 	CreateDatabaseWithContext(ctx context.Context, input *glue.CreateDatabaseInput, opts ...request.Option) (*glue.CreateDatabaseOutput, error)
 	CreateDevEndpointWithContext(ctx context.Context, input *glue.CreateDevEndpointInput, opts ...request.Option) (*glue.CreateDevEndpointOutput, error)
 	CreateJobWithContext(ctx context.Context, input *glue.CreateJobInput, opts ...request.Option) (*glue.CreateJobOutput, error)
@@ -56,6 +60,7 @@ type Glue interface {
 	DeleteConnectionWithContext(ctx context.Context, input *glue.DeleteConnectionInput, opts ...request.Option) (*glue.DeleteConnectionOutput, error)
 	DeleteCrawlerWithContext(ctx context.Context, input *glue.DeleteCrawlerInput, opts ...request.Option) (*glue.DeleteCrawlerOutput, error)
 	DeleteCustomEntityTypeWithContext(ctx context.Context, input *glue.DeleteCustomEntityTypeInput, opts ...request.Option) (*glue.DeleteCustomEntityTypeOutput, error)
+	DeleteDataQualityRulesetWithContext(ctx context.Context, input *glue.DeleteDataQualityRulesetInput, opts ...request.Option) (*glue.DeleteDataQualityRulesetOutput, error)
 	DeleteDatabaseWithContext(ctx context.Context, input *glue.DeleteDatabaseInput, opts ...request.Option) (*glue.DeleteDatabaseOutput, error)
 	DeleteDevEndpointWithContext(ctx context.Context, input *glue.DeleteDevEndpointInput, opts ...request.Option) (*glue.DeleteDevEndpointOutput, error)
 	DeleteJobWithContext(ctx context.Context, input *glue.DeleteJobInput, opts ...request.Option) (*glue.DeleteJobOutput, error)
@@ -93,6 +98,10 @@ type Glue interface {
 	GetCrawlersPagesWithContext(ctx context.Context, input *glue.GetCrawlersInput, cb func(*glue.GetCrawlersOutput, bool) bool, opts ...request.Option) error
 	GetCustomEntityTypeWithContext(ctx context.Context, input *glue.GetCustomEntityTypeInput, opts ...request.Option) (*glue.GetCustomEntityTypeOutput, error)
 	GetDataCatalogEncryptionSettingsWithContext(ctx context.Context, input *glue.GetDataCatalogEncryptionSettingsInput, opts ...request.Option) (*glue.GetDataCatalogEncryptionSettingsOutput, error)
+	GetDataQualityResultWithContext(ctx context.Context, input *glue.GetDataQualityResultInput, opts ...request.Option) (*glue.GetDataQualityResultOutput, error)
+	GetDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.GetDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.GetDataQualityRuleRecommendationRunOutput, error)
+	GetDataQualityRulesetWithContext(ctx context.Context, input *glue.GetDataQualityRulesetInput, opts ...request.Option) (*glue.GetDataQualityRulesetOutput, error)
+	GetDataQualityRulesetEvaluationRunWithContext(ctx context.Context, input *glue.GetDataQualityRulesetEvaluationRunInput, opts ...request.Option) (*glue.GetDataQualityRulesetEvaluationRunOutput, error)
 	GetDatabaseWithContext(ctx context.Context, input *glue.GetDatabaseInput, opts ...request.Option) (*glue.GetDatabaseOutput, error)
 	GetDatabasesWithContext(ctx context.Context, input *glue.GetDatabasesInput, opts ...request.Option) (*glue.GetDatabasesOutput, error)
 	GetDatabasesPagesWithContext(ctx context.Context, input *glue.GetDatabasesInput, cb func(*glue.GetDatabasesOutput, bool) bool, opts ...request.Option) error
@@ -163,6 +172,14 @@ type Glue interface {
 	ListCrawlsWithContext(ctx context.Context, input *glue.ListCrawlsInput, opts ...request.Option) (*glue.ListCrawlsOutput, error)
 	ListCustomEntityTypesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, opts ...request.Option) (*glue.ListCustomEntityTypesOutput, error)
 	ListCustomEntityTypesPagesWithContext(ctx context.Context, input *glue.ListCustomEntityTypesInput, cb func(*glue.ListCustomEntityTypesOutput, bool) bool, opts ...request.Option) error
+	ListDataQualityResultsWithContext(ctx context.Context, input *glue.ListDataQualityResultsInput, opts ...request.Option) (*glue.ListDataQualityResultsOutput, error)
+	ListDataQualityResultsPagesWithContext(ctx context.Context, input *glue.ListDataQualityResultsInput, cb func(*glue.ListDataQualityResultsOutput, bool) bool, opts ...request.Option) error
+	ListDataQualityRuleRecommendationRunsWithContext(ctx context.Context, input *glue.ListDataQualityRuleRecommendationRunsInput, opts ...request.Option) (*glue.ListDataQualityRuleRecommendationRunsOutput, error)
+	ListDataQualityRuleRecommendationRunsPagesWithContext(ctx context.Context, input *glue.ListDataQualityRuleRecommendationRunsInput, cb func(*glue.ListDataQualityRuleRecommendationRunsOutput, bool) bool, opts ...request.Option) error
+	ListDataQualityRulesetEvaluationRunsWithContext(ctx context.Context, input *glue.ListDataQualityRulesetEvaluationRunsInput, opts ...request.Option) (*glue.ListDataQualityRulesetEvaluationRunsOutput, error)
+	ListDataQualityRulesetEvaluationRunsPagesWithContext(ctx context.Context, input *glue.ListDataQualityRulesetEvaluationRunsInput, cb func(*glue.ListDataQualityRulesetEvaluationRunsOutput, bool) bool, opts ...request.Option) error
+	ListDataQualityRulesetsWithContext(ctx context.Context, input *glue.ListDataQualityRulesetsInput, opts ...request.Option) (*glue.ListDataQualityRulesetsOutput, error)
+	ListDataQualityRulesetsPagesWithContext(ctx context.Context, input *glue.ListDataQualityRulesetsInput, cb func(*glue.ListDataQualityRulesetsOutput, bool) bool, opts ...request.Option) error
 	ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error)
 	ListDevEndpointsPagesWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, cb func(*glue.ListDevEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *glue.ListJobsInput, opts ...request.Option) (*glue.ListJobsOutput, error)
@@ -197,6 +214,8 @@ type Glue interface {
 	StartBlueprintRunWithContext(ctx context.Context, input *glue.StartBlueprintRunInput, opts ...request.Option) (*glue.StartBlueprintRunOutput, error)
 	StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error)
 	StartCrawlerScheduleWithContext(ctx context.Context, input *glue.StartCrawlerScheduleInput, opts ...request.Option) (*glue.StartCrawlerScheduleOutput, error)
+	StartDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.StartDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.StartDataQualityRuleRecommendationRunOutput, error)
+	StartDataQualityRulesetEvaluationRunWithContext(ctx context.Context, input *glue.StartDataQualityRulesetEvaluationRunInput, opts ...request.Option) (*glue.StartDataQualityRulesetEvaluationRunOutput, error)
 	StartExportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartExportLabelsTaskRunInput, opts ...request.Option) (*glue.StartExportLabelsTaskRunOutput, error)
 	StartImportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartImportLabelsTaskRunInput, opts ...request.Option) (*glue.StartImportLabelsTaskRunOutput, error)
 	StartJobRunWithContext(ctx context.Context, input *glue.StartJobRunInput, opts ...request.Option) (*glue.StartJobRunOutput, error)
@@ -218,6 +237,7 @@ type Glue interface {
 	UpdateConnectionWithContext(ctx context.Context, input *glue.UpdateConnectionInput, opts ...request.Option) (*glue.UpdateConnectionOutput, error)
 	UpdateCrawlerWithContext(ctx context.Context, input *glue.UpdateCrawlerInput, opts ...request.Option) (*glue.UpdateCrawlerOutput, error)
 	UpdateCrawlerScheduleWithContext(ctx context.Context, input *glue.UpdateCrawlerScheduleInput, opts ...request.Option) (*glue.UpdateCrawlerScheduleOutput, error)
+	UpdateDataQualityRulesetWithContext(ctx context.Context, input *glue.UpdateDataQualityRulesetInput, opts ...request.Option) (*glue.UpdateDataQualityRulesetOutput, error)
 	UpdateDatabaseWithContext(ctx context.Context, input *glue.UpdateDatabaseInput, opts ...request.Option) (*glue.UpdateDatabaseOutput, error)
 	UpdateDevEndpointWithContext(ctx context.Context, input *glue.UpdateDevEndpointInput, opts ...request.Option) (*glue.UpdateDevEndpointOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *glue.UpdateJobInput, opts ...request.Option) (*glue.UpdateJobOutput, error)
@@ -416,6 +436,27 @@ func (c *Client) BatchGetCustomEntityTypesWithContext(ctx context.Context, input
 	return req.Output.(*glue.BatchGetCustomEntityTypesOutput), req.Error
 }
 
+func (c *Client) BatchGetDataQualityResultWithContext(ctx context.Context, input *glue.BatchGetDataQualityResultInput, opts ...request.Option) (*glue.BatchGetDataQualityResultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "BatchGetDataQualityResult",
+		Input:   input,
+		Output:  (*glue.BatchGetDataQualityResultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.BatchGetDataQualityResultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.BatchGetDataQualityResultOutput), req.Error
+}
+
 func (c *Client) BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -561,6 +602,48 @@ func (c *Client) BatchUpdatePartitionWithContext(ctx context.Context, input *glu
 	})
 
 	return req.Output.(*glue.BatchUpdatePartitionOutput), req.Error
+}
+
+func (c *Client) CancelDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.CancelDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.CancelDataQualityRuleRecommendationRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CancelDataQualityRuleRecommendationRun",
+		Input:   input,
+		Output:  (*glue.CancelDataQualityRuleRecommendationRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CancelDataQualityRuleRecommendationRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CancelDataQualityRuleRecommendationRunOutput), req.Error
+}
+
+func (c *Client) CancelDataQualityRulesetEvaluationRunWithContext(ctx context.Context, input *glue.CancelDataQualityRulesetEvaluationRunInput, opts ...request.Option) (*glue.CancelDataQualityRulesetEvaluationRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CancelDataQualityRulesetEvaluationRun",
+		Input:   input,
+		Output:  (*glue.CancelDataQualityRulesetEvaluationRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CancelDataQualityRulesetEvaluationRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CancelDataQualityRulesetEvaluationRunOutput), req.Error
 }
 
 func (c *Client) CancelMLTaskRunWithContext(ctx context.Context, input *glue.CancelMLTaskRunInput, opts ...request.Option) (*glue.CancelMLTaskRunOutput, error) {
@@ -729,6 +812,27 @@ func (c *Client) CreateCustomEntityTypeWithContext(ctx context.Context, input *g
 	})
 
 	return req.Output.(*glue.CreateCustomEntityTypeOutput), req.Error
+}
+
+func (c *Client) CreateDataQualityRulesetWithContext(ctx context.Context, input *glue.CreateDataQualityRulesetInput, opts ...request.Option) (*glue.CreateDataQualityRulesetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateDataQualityRuleset",
+		Input:   input,
+		Output:  (*glue.CreateDataQualityRulesetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateDataQualityRulesetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateDataQualityRulesetOutput), req.Error
 }
 
 func (c *Client) CreateDatabaseWithContext(ctx context.Context, input *glue.CreateDatabaseInput, opts ...request.Option) (*glue.CreateDatabaseOutput, error) {
@@ -1191,6 +1295,27 @@ func (c *Client) DeleteCustomEntityTypeWithContext(ctx context.Context, input *g
 	})
 
 	return req.Output.(*glue.DeleteCustomEntityTypeOutput), req.Error
+}
+
+func (c *Client) DeleteDataQualityRulesetWithContext(ctx context.Context, input *glue.DeleteDataQualityRulesetInput, opts ...request.Option) (*glue.DeleteDataQualityRulesetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteDataQualityRuleset",
+		Input:   input,
+		Output:  (*glue.DeleteDataQualityRulesetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteDataQualityRulesetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteDataQualityRulesetOutput), req.Error
 }
 
 func (c *Client) DeleteDatabaseWithContext(ctx context.Context, input *glue.DeleteDatabaseInput, opts ...request.Option) (*glue.DeleteDatabaseOutput, error) {
@@ -1963,6 +2088,90 @@ func (c *Client) GetDataCatalogEncryptionSettingsWithContext(ctx context.Context
 	})
 
 	return req.Output.(*glue.GetDataCatalogEncryptionSettingsOutput), req.Error
+}
+
+func (c *Client) GetDataQualityResultWithContext(ctx context.Context, input *glue.GetDataQualityResultInput, opts ...request.Option) (*glue.GetDataQualityResultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetDataQualityResult",
+		Input:   input,
+		Output:  (*glue.GetDataQualityResultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetDataQualityResultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetDataQualityResultOutput), req.Error
+}
+
+func (c *Client) GetDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.GetDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.GetDataQualityRuleRecommendationRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetDataQualityRuleRecommendationRun",
+		Input:   input,
+		Output:  (*glue.GetDataQualityRuleRecommendationRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetDataQualityRuleRecommendationRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetDataQualityRuleRecommendationRunOutput), req.Error
+}
+
+func (c *Client) GetDataQualityRulesetWithContext(ctx context.Context, input *glue.GetDataQualityRulesetInput, opts ...request.Option) (*glue.GetDataQualityRulesetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetDataQualityRuleset",
+		Input:   input,
+		Output:  (*glue.GetDataQualityRulesetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetDataQualityRulesetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetDataQualityRulesetOutput), req.Error
+}
+
+func (c *Client) GetDataQualityRulesetEvaluationRunWithContext(ctx context.Context, input *glue.GetDataQualityRulesetEvaluationRunInput, opts ...request.Option) (*glue.GetDataQualityRulesetEvaluationRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetDataQualityRulesetEvaluationRun",
+		Input:   input,
+		Output:  (*glue.GetDataQualityRulesetEvaluationRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetDataQualityRulesetEvaluationRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetDataQualityRulesetEvaluationRunOutput), req.Error
 }
 
 func (c *Client) GetDatabaseWithContext(ctx context.Context, input *glue.GetDatabaseInput, opts ...request.Option) (*glue.GetDatabaseOutput, error) {
@@ -3416,6 +3625,170 @@ func (c *Client) ListCustomEntityTypesPagesWithContext(ctx context.Context, inpu
 	return req.Error
 }
 
+func (c *Client) ListDataQualityResultsWithContext(ctx context.Context, input *glue.ListDataQualityResultsInput, opts ...request.Option) (*glue.ListDataQualityResultsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityResults",
+		Input:   input,
+		Output:  (*glue.ListDataQualityResultsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListDataQualityResultsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListDataQualityResultsOutput), req.Error
+}
+
+func (c *Client) ListDataQualityResultsPagesWithContext(ctx context.Context, input *glue.ListDataQualityResultsInput, cb func(*glue.ListDataQualityResultsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityResults",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListDataQualityResultsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDataQualityRuleRecommendationRunsWithContext(ctx context.Context, input *glue.ListDataQualityRuleRecommendationRunsInput, opts ...request.Option) (*glue.ListDataQualityRuleRecommendationRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityRuleRecommendationRuns",
+		Input:   input,
+		Output:  (*glue.ListDataQualityRuleRecommendationRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListDataQualityRuleRecommendationRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListDataQualityRuleRecommendationRunsOutput), req.Error
+}
+
+func (c *Client) ListDataQualityRuleRecommendationRunsPagesWithContext(ctx context.Context, input *glue.ListDataQualityRuleRecommendationRunsInput, cb func(*glue.ListDataQualityRuleRecommendationRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityRuleRecommendationRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListDataQualityRuleRecommendationRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDataQualityRulesetEvaluationRunsWithContext(ctx context.Context, input *glue.ListDataQualityRulesetEvaluationRunsInput, opts ...request.Option) (*glue.ListDataQualityRulesetEvaluationRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityRulesetEvaluationRuns",
+		Input:   input,
+		Output:  (*glue.ListDataQualityRulesetEvaluationRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListDataQualityRulesetEvaluationRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListDataQualityRulesetEvaluationRunsOutput), req.Error
+}
+
+func (c *Client) ListDataQualityRulesetEvaluationRunsPagesWithContext(ctx context.Context, input *glue.ListDataQualityRulesetEvaluationRunsInput, cb func(*glue.ListDataQualityRulesetEvaluationRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityRulesetEvaluationRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListDataQualityRulesetEvaluationRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListDataQualityRulesetsWithContext(ctx context.Context, input *glue.ListDataQualityRulesetsInput, opts ...request.Option) (*glue.ListDataQualityRulesetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityRulesets",
+		Input:   input,
+		Output:  (*glue.ListDataQualityRulesetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListDataQualityRulesetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListDataQualityRulesetsOutput), req.Error
+}
+
+func (c *Client) ListDataQualityRulesetsPagesWithContext(ctx context.Context, input *glue.ListDataQualityRulesetsInput, cb func(*glue.ListDataQualityRulesetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListDataQualityRulesets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListDataQualityRulesetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDevEndpointsWithContext(ctx context.Context, input *glue.ListDevEndpointsInput, opts ...request.Option) (*glue.ListDevEndpointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -4120,6 +4493,48 @@ func (c *Client) StartCrawlerScheduleWithContext(ctx context.Context, input *glu
 	return req.Output.(*glue.StartCrawlerScheduleOutput), req.Error
 }
 
+func (c *Client) StartDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.StartDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.StartDataQualityRuleRecommendationRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StartDataQualityRuleRecommendationRun",
+		Input:   input,
+		Output:  (*glue.StartDataQualityRuleRecommendationRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StartDataQualityRuleRecommendationRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StartDataQualityRuleRecommendationRunOutput), req.Error
+}
+
+func (c *Client) StartDataQualityRulesetEvaluationRunWithContext(ctx context.Context, input *glue.StartDataQualityRulesetEvaluationRunInput, opts ...request.Option) (*glue.StartDataQualityRulesetEvaluationRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StartDataQualityRulesetEvaluationRun",
+		Input:   input,
+		Output:  (*glue.StartDataQualityRulesetEvaluationRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StartDataQualityRulesetEvaluationRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StartDataQualityRulesetEvaluationRunOutput), req.Error
+}
+
 func (c *Client) StartExportLabelsTaskRunWithContext(ctx context.Context, input *glue.StartExportLabelsTaskRunInput, opts ...request.Option) (*glue.StartExportLabelsTaskRunOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -4559,6 +4974,27 @@ func (c *Client) UpdateCrawlerScheduleWithContext(ctx context.Context, input *gl
 	})
 
 	return req.Output.(*glue.UpdateCrawlerScheduleOutput), req.Error
+}
+
+func (c *Client) UpdateDataQualityRulesetWithContext(ctx context.Context, input *glue.UpdateDataQualityRulesetInput, opts ...request.Option) (*glue.UpdateDataQualityRulesetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateDataQualityRuleset",
+		Input:   input,
+		Output:  (*glue.UpdateDataQualityRulesetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateDataQualityRulesetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateDataQualityRulesetOutput), req.Error
 }
 
 func (c *Client) UpdateDatabaseWithContext(ctx context.Context, input *glue.UpdateDatabaseInput, opts ...request.Option) (*glue.UpdateDatabaseOutput, error) {

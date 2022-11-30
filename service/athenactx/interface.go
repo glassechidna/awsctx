@@ -16,46 +16,73 @@ type Athena interface {
 	BatchGetQueryExecutionWithContext(ctx context.Context, input *athena.BatchGetQueryExecutionInput, opts ...request.Option) (*athena.BatchGetQueryExecutionOutput, error)
 	CreateDataCatalogWithContext(ctx context.Context, input *athena.CreateDataCatalogInput, opts ...request.Option) (*athena.CreateDataCatalogOutput, error)
 	CreateNamedQueryWithContext(ctx context.Context, input *athena.CreateNamedQueryInput, opts ...request.Option) (*athena.CreateNamedQueryOutput, error)
+	CreateNotebookWithContext(ctx context.Context, input *athena.CreateNotebookInput, opts ...request.Option) (*athena.CreateNotebookOutput, error)
 	CreatePreparedStatementWithContext(ctx context.Context, input *athena.CreatePreparedStatementInput, opts ...request.Option) (*athena.CreatePreparedStatementOutput, error)
+	CreatePresignedNotebookUrlWithContext(ctx context.Context, input *athena.CreatePresignedNotebookUrlInput, opts ...request.Option) (*athena.CreatePresignedNotebookUrlOutput, error)
 	CreateWorkGroupWithContext(ctx context.Context, input *athena.CreateWorkGroupInput, opts ...request.Option) (*athena.CreateWorkGroupOutput, error)
 	DeleteDataCatalogWithContext(ctx context.Context, input *athena.DeleteDataCatalogInput, opts ...request.Option) (*athena.DeleteDataCatalogOutput, error)
 	DeleteNamedQueryWithContext(ctx context.Context, input *athena.DeleteNamedQueryInput, opts ...request.Option) (*athena.DeleteNamedQueryOutput, error)
+	DeleteNotebookWithContext(ctx context.Context, input *athena.DeleteNotebookInput, opts ...request.Option) (*athena.DeleteNotebookOutput, error)
 	DeletePreparedStatementWithContext(ctx context.Context, input *athena.DeletePreparedStatementInput, opts ...request.Option) (*athena.DeletePreparedStatementOutput, error)
 	DeleteWorkGroupWithContext(ctx context.Context, input *athena.DeleteWorkGroupInput, opts ...request.Option) (*athena.DeleteWorkGroupOutput, error)
+	ExportNotebookWithContext(ctx context.Context, input *athena.ExportNotebookInput, opts ...request.Option) (*athena.ExportNotebookOutput, error)
+	GetCalculationExecutionWithContext(ctx context.Context, input *athena.GetCalculationExecutionInput, opts ...request.Option) (*athena.GetCalculationExecutionOutput, error)
+	GetCalculationExecutionCodeWithContext(ctx context.Context, input *athena.GetCalculationExecutionCodeInput, opts ...request.Option) (*athena.GetCalculationExecutionCodeOutput, error)
+	GetCalculationExecutionStatusWithContext(ctx context.Context, input *athena.GetCalculationExecutionStatusInput, opts ...request.Option) (*athena.GetCalculationExecutionStatusOutput, error)
 	GetDataCatalogWithContext(ctx context.Context, input *athena.GetDataCatalogInput, opts ...request.Option) (*athena.GetDataCatalogOutput, error)
 	GetDatabaseWithContext(ctx context.Context, input *athena.GetDatabaseInput, opts ...request.Option) (*athena.GetDatabaseOutput, error)
 	GetNamedQueryWithContext(ctx context.Context, input *athena.GetNamedQueryInput, opts ...request.Option) (*athena.GetNamedQueryOutput, error)
+	GetNotebookMetadataWithContext(ctx context.Context, input *athena.GetNotebookMetadataInput, opts ...request.Option) (*athena.GetNotebookMetadataOutput, error)
 	GetPreparedStatementWithContext(ctx context.Context, input *athena.GetPreparedStatementInput, opts ...request.Option) (*athena.GetPreparedStatementOutput, error)
 	GetQueryExecutionWithContext(ctx context.Context, input *athena.GetQueryExecutionInput, opts ...request.Option) (*athena.GetQueryExecutionOutput, error)
 	GetQueryResultsWithContext(ctx context.Context, input *athena.GetQueryResultsInput, opts ...request.Option) (*athena.GetQueryResultsOutput, error)
 	GetQueryResultsPagesWithContext(ctx context.Context, input *athena.GetQueryResultsInput, cb func(*athena.GetQueryResultsOutput, bool) bool, opts ...request.Option) error
 	GetQueryRuntimeStatisticsWithContext(ctx context.Context, input *athena.GetQueryRuntimeStatisticsInput, opts ...request.Option) (*athena.GetQueryRuntimeStatisticsOutput, error)
+	GetSessionWithContext(ctx context.Context, input *athena.GetSessionInput, opts ...request.Option) (*athena.GetSessionOutput, error)
+	GetSessionStatusWithContext(ctx context.Context, input *athena.GetSessionStatusInput, opts ...request.Option) (*athena.GetSessionStatusOutput, error)
 	GetTableMetadataWithContext(ctx context.Context, input *athena.GetTableMetadataInput, opts ...request.Option) (*athena.GetTableMetadataOutput, error)
 	GetWorkGroupWithContext(ctx context.Context, input *athena.GetWorkGroupInput, opts ...request.Option) (*athena.GetWorkGroupOutput, error)
+	ImportNotebookWithContext(ctx context.Context, input *athena.ImportNotebookInput, opts ...request.Option) (*athena.ImportNotebookOutput, error)
+	ListApplicationDPUSizesWithContext(ctx context.Context, input *athena.ListApplicationDPUSizesInput, opts ...request.Option) (*athena.ListApplicationDPUSizesOutput, error)
+	ListApplicationDPUSizesPagesWithContext(ctx context.Context, input *athena.ListApplicationDPUSizesInput, cb func(*athena.ListApplicationDPUSizesOutput, bool) bool, opts ...request.Option) error
+	ListCalculationExecutionsWithContext(ctx context.Context, input *athena.ListCalculationExecutionsInput, opts ...request.Option) (*athena.ListCalculationExecutionsOutput, error)
+	ListCalculationExecutionsPagesWithContext(ctx context.Context, input *athena.ListCalculationExecutionsInput, cb func(*athena.ListCalculationExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListDataCatalogsWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, opts ...request.Option) (*athena.ListDataCatalogsOutput, error)
 	ListDataCatalogsPagesWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, cb func(*athena.ListDataCatalogsOutput, bool) bool, opts ...request.Option) error
 	ListDatabasesWithContext(ctx context.Context, input *athena.ListDatabasesInput, opts ...request.Option) (*athena.ListDatabasesOutput, error)
 	ListDatabasesPagesWithContext(ctx context.Context, input *athena.ListDatabasesInput, cb func(*athena.ListDatabasesOutput, bool) bool, opts ...request.Option) error
 	ListEngineVersionsWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, opts ...request.Option) (*athena.ListEngineVersionsOutput, error)
 	ListEngineVersionsPagesWithContext(ctx context.Context, input *athena.ListEngineVersionsInput, cb func(*athena.ListEngineVersionsOutput, bool) bool, opts ...request.Option) error
+	ListExecutorsWithContext(ctx context.Context, input *athena.ListExecutorsInput, opts ...request.Option) (*athena.ListExecutorsOutput, error)
+	ListExecutorsPagesWithContext(ctx context.Context, input *athena.ListExecutorsInput, cb func(*athena.ListExecutorsOutput, bool) bool, opts ...request.Option) error
 	ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error)
 	ListNamedQueriesPagesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, cb func(*athena.ListNamedQueriesOutput, bool) bool, opts ...request.Option) error
+	ListNotebookMetadataWithContext(ctx context.Context, input *athena.ListNotebookMetadataInput, opts ...request.Option) (*athena.ListNotebookMetadataOutput, error)
+	ListNotebookSessionsWithContext(ctx context.Context, input *athena.ListNotebookSessionsInput, opts ...request.Option) (*athena.ListNotebookSessionsOutput, error)
 	ListPreparedStatementsWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, opts ...request.Option) (*athena.ListPreparedStatementsOutput, error)
 	ListPreparedStatementsPagesWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, cb func(*athena.ListPreparedStatementsOutput, bool) bool, opts ...request.Option) error
 	ListQueryExecutionsWithContext(ctx context.Context, input *athena.ListQueryExecutionsInput, opts ...request.Option) (*athena.ListQueryExecutionsOutput, error)
 	ListQueryExecutionsPagesWithContext(ctx context.Context, input *athena.ListQueryExecutionsInput, cb func(*athena.ListQueryExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListSessionsWithContext(ctx context.Context, input *athena.ListSessionsInput, opts ...request.Option) (*athena.ListSessionsOutput, error)
+	ListSessionsPagesWithContext(ctx context.Context, input *athena.ListSessionsInput, cb func(*athena.ListSessionsOutput, bool) bool, opts ...request.Option) error
 	ListTableMetadataWithContext(ctx context.Context, input *athena.ListTableMetadataInput, opts ...request.Option) (*athena.ListTableMetadataOutput, error)
 	ListTableMetadataPagesWithContext(ctx context.Context, input *athena.ListTableMetadataInput, cb func(*athena.ListTableMetadataOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *athena.ListTagsForResourceInput, opts ...request.Option) (*athena.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *athena.ListTagsForResourceInput, cb func(*athena.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListWorkGroupsWithContext(ctx context.Context, input *athena.ListWorkGroupsInput, opts ...request.Option) (*athena.ListWorkGroupsOutput, error)
 	ListWorkGroupsPagesWithContext(ctx context.Context, input *athena.ListWorkGroupsInput, cb func(*athena.ListWorkGroupsOutput, bool) bool, opts ...request.Option) error
+	StartCalculationExecutionWithContext(ctx context.Context, input *athena.StartCalculationExecutionInput, opts ...request.Option) (*athena.StartCalculationExecutionOutput, error)
 	StartQueryExecutionWithContext(ctx context.Context, input *athena.StartQueryExecutionInput, opts ...request.Option) (*athena.StartQueryExecutionOutput, error)
+	StartSessionWithContext(ctx context.Context, input *athena.StartSessionInput, opts ...request.Option) (*athena.StartSessionOutput, error)
+	StopCalculationExecutionWithContext(ctx context.Context, input *athena.StopCalculationExecutionInput, opts ...request.Option) (*athena.StopCalculationExecutionOutput, error)
 	StopQueryExecutionWithContext(ctx context.Context, input *athena.StopQueryExecutionInput, opts ...request.Option) (*athena.StopQueryExecutionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *athena.TagResourceInput, opts ...request.Option) (*athena.TagResourceOutput, error)
+	TerminateSessionWithContext(ctx context.Context, input *athena.TerminateSessionInput, opts ...request.Option) (*athena.TerminateSessionOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *athena.UntagResourceInput, opts ...request.Option) (*athena.UntagResourceOutput, error)
 	UpdateDataCatalogWithContext(ctx context.Context, input *athena.UpdateDataCatalogInput, opts ...request.Option) (*athena.UpdateDataCatalogOutput, error)
 	UpdateNamedQueryWithContext(ctx context.Context, input *athena.UpdateNamedQueryInput, opts ...request.Option) (*athena.UpdateNamedQueryOutput, error)
+	UpdateNotebookWithContext(ctx context.Context, input *athena.UpdateNotebookInput, opts ...request.Option) (*athena.UpdateNotebookOutput, error)
+	UpdateNotebookMetadataWithContext(ctx context.Context, input *athena.UpdateNotebookMetadataInput, opts ...request.Option) (*athena.UpdateNotebookMetadataOutput, error)
 	UpdatePreparedStatementWithContext(ctx context.Context, input *athena.UpdatePreparedStatementInput, opts ...request.Option) (*athena.UpdatePreparedStatementOutput, error)
 	UpdateWorkGroupWithContext(ctx context.Context, input *athena.UpdateWorkGroupInput, opts ...request.Option) (*athena.UpdateWorkGroupOutput, error)
 }
@@ -180,6 +207,27 @@ func (c *Client) CreateNamedQueryWithContext(ctx context.Context, input *athena.
 	return req.Output.(*athena.CreateNamedQueryOutput), req.Error
 }
 
+func (c *Client) CreateNotebookWithContext(ctx context.Context, input *athena.CreateNotebookInput, opts ...request.Option) (*athena.CreateNotebookOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "CreateNotebook",
+		Input:   input,
+		Output:  (*athena.CreateNotebookOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.CreateNotebookWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.CreateNotebookOutput), req.Error
+}
+
 func (c *Client) CreatePreparedStatementWithContext(ctx context.Context, input *athena.CreatePreparedStatementInput, opts ...request.Option) (*athena.CreatePreparedStatementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -199,6 +247,27 @@ func (c *Client) CreatePreparedStatementWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*athena.CreatePreparedStatementOutput), req.Error
+}
+
+func (c *Client) CreatePresignedNotebookUrlWithContext(ctx context.Context, input *athena.CreatePresignedNotebookUrlInput, opts ...request.Option) (*athena.CreatePresignedNotebookUrlOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "CreatePresignedNotebookUrl",
+		Input:   input,
+		Output:  (*athena.CreatePresignedNotebookUrlOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.CreatePresignedNotebookUrlWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.CreatePresignedNotebookUrlOutput), req.Error
 }
 
 func (c *Client) CreateWorkGroupWithContext(ctx context.Context, input *athena.CreateWorkGroupInput, opts ...request.Option) (*athena.CreateWorkGroupOutput, error) {
@@ -264,6 +333,27 @@ func (c *Client) DeleteNamedQueryWithContext(ctx context.Context, input *athena.
 	return req.Output.(*athena.DeleteNamedQueryOutput), req.Error
 }
 
+func (c *Client) DeleteNotebookWithContext(ctx context.Context, input *athena.DeleteNotebookInput, opts ...request.Option) (*athena.DeleteNotebookOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "DeleteNotebook",
+		Input:   input,
+		Output:  (*athena.DeleteNotebookOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.DeleteNotebookWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.DeleteNotebookOutput), req.Error
+}
+
 func (c *Client) DeletePreparedStatementWithContext(ctx context.Context, input *athena.DeletePreparedStatementInput, opts ...request.Option) (*athena.DeletePreparedStatementOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -304,6 +394,90 @@ func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, input *athena.D
 	})
 
 	return req.Output.(*athena.DeleteWorkGroupOutput), req.Error
+}
+
+func (c *Client) ExportNotebookWithContext(ctx context.Context, input *athena.ExportNotebookInput, opts ...request.Option) (*athena.ExportNotebookOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ExportNotebook",
+		Input:   input,
+		Output:  (*athena.ExportNotebookOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ExportNotebookWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ExportNotebookOutput), req.Error
+}
+
+func (c *Client) GetCalculationExecutionWithContext(ctx context.Context, input *athena.GetCalculationExecutionInput, opts ...request.Option) (*athena.GetCalculationExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetCalculationExecution",
+		Input:   input,
+		Output:  (*athena.GetCalculationExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetCalculationExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetCalculationExecutionOutput), req.Error
+}
+
+func (c *Client) GetCalculationExecutionCodeWithContext(ctx context.Context, input *athena.GetCalculationExecutionCodeInput, opts ...request.Option) (*athena.GetCalculationExecutionCodeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetCalculationExecutionCode",
+		Input:   input,
+		Output:  (*athena.GetCalculationExecutionCodeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetCalculationExecutionCodeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetCalculationExecutionCodeOutput), req.Error
+}
+
+func (c *Client) GetCalculationExecutionStatusWithContext(ctx context.Context, input *athena.GetCalculationExecutionStatusInput, opts ...request.Option) (*athena.GetCalculationExecutionStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetCalculationExecutionStatus",
+		Input:   input,
+		Output:  (*athena.GetCalculationExecutionStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetCalculationExecutionStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetCalculationExecutionStatusOutput), req.Error
 }
 
 func (c *Client) GetDataCatalogWithContext(ctx context.Context, input *athena.GetDataCatalogInput, opts ...request.Option) (*athena.GetDataCatalogOutput, error) {
@@ -367,6 +541,27 @@ func (c *Client) GetNamedQueryWithContext(ctx context.Context, input *athena.Get
 	})
 
 	return req.Output.(*athena.GetNamedQueryOutput), req.Error
+}
+
+func (c *Client) GetNotebookMetadataWithContext(ctx context.Context, input *athena.GetNotebookMetadataInput, opts ...request.Option) (*athena.GetNotebookMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetNotebookMetadata",
+		Input:   input,
+		Output:  (*athena.GetNotebookMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetNotebookMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetNotebookMetadataOutput), req.Error
 }
 
 func (c *Client) GetPreparedStatementWithContext(ctx context.Context, input *athena.GetPreparedStatementInput, opts ...request.Option) (*athena.GetPreparedStatementOutput, error) {
@@ -473,6 +668,48 @@ func (c *Client) GetQueryRuntimeStatisticsWithContext(ctx context.Context, input
 	return req.Output.(*athena.GetQueryRuntimeStatisticsOutput), req.Error
 }
 
+func (c *Client) GetSessionWithContext(ctx context.Context, input *athena.GetSessionInput, opts ...request.Option) (*athena.GetSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetSession",
+		Input:   input,
+		Output:  (*athena.GetSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetSessionOutput), req.Error
+}
+
+func (c *Client) GetSessionStatusWithContext(ctx context.Context, input *athena.GetSessionStatusInput, opts ...request.Option) (*athena.GetSessionStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetSessionStatus",
+		Input:   input,
+		Output:  (*athena.GetSessionStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetSessionStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetSessionStatusOutput), req.Error
+}
+
 func (c *Client) GetTableMetadataWithContext(ctx context.Context, input *athena.GetTableMetadataInput, opts ...request.Option) (*athena.GetTableMetadataOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -513,6 +750,109 @@ func (c *Client) GetWorkGroupWithContext(ctx context.Context, input *athena.GetW
 	})
 
 	return req.Output.(*athena.GetWorkGroupOutput), req.Error
+}
+
+func (c *Client) ImportNotebookWithContext(ctx context.Context, input *athena.ImportNotebookInput, opts ...request.Option) (*athena.ImportNotebookOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ImportNotebook",
+		Input:   input,
+		Output:  (*athena.ImportNotebookOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ImportNotebookWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ImportNotebookOutput), req.Error
+}
+
+func (c *Client) ListApplicationDPUSizesWithContext(ctx context.Context, input *athena.ListApplicationDPUSizesInput, opts ...request.Option) (*athena.ListApplicationDPUSizesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListApplicationDPUSizes",
+		Input:   input,
+		Output:  (*athena.ListApplicationDPUSizesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListApplicationDPUSizesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListApplicationDPUSizesOutput), req.Error
+}
+
+func (c *Client) ListApplicationDPUSizesPagesWithContext(ctx context.Context, input *athena.ListApplicationDPUSizesInput, cb func(*athena.ListApplicationDPUSizesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListApplicationDPUSizes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListApplicationDPUSizesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCalculationExecutionsWithContext(ctx context.Context, input *athena.ListCalculationExecutionsInput, opts ...request.Option) (*athena.ListCalculationExecutionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListCalculationExecutions",
+		Input:   input,
+		Output:  (*athena.ListCalculationExecutionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListCalculationExecutionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListCalculationExecutionsOutput), req.Error
+}
+
+func (c *Client) ListCalculationExecutionsPagesWithContext(ctx context.Context, input *athena.ListCalculationExecutionsInput, cb func(*athena.ListCalculationExecutionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListCalculationExecutions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListCalculationExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDataCatalogsWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, opts ...request.Option) (*athena.ListDataCatalogsOutput, error) {
@@ -638,6 +978,47 @@ func (c *Client) ListEngineVersionsPagesWithContext(ctx context.Context, input *
 	return req.Error
 }
 
+func (c *Client) ListExecutorsWithContext(ctx context.Context, input *athena.ListExecutorsInput, opts ...request.Option) (*athena.ListExecutorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListExecutors",
+		Input:   input,
+		Output:  (*athena.ListExecutorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListExecutorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListExecutorsOutput), req.Error
+}
+
+func (c *Client) ListExecutorsPagesWithContext(ctx context.Context, input *athena.ListExecutorsInput, cb func(*athena.ListExecutorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListExecutors",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListExecutorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListNamedQueriesWithContext(ctx context.Context, input *athena.ListNamedQueriesInput, opts ...request.Option) (*athena.ListNamedQueriesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -677,6 +1058,48 @@ func (c *Client) ListNamedQueriesPagesWithContext(ctx context.Context, input *at
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListNotebookMetadataWithContext(ctx context.Context, input *athena.ListNotebookMetadataInput, opts ...request.Option) (*athena.ListNotebookMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListNotebookMetadata",
+		Input:   input,
+		Output:  (*athena.ListNotebookMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListNotebookMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListNotebookMetadataOutput), req.Error
+}
+
+func (c *Client) ListNotebookSessionsWithContext(ctx context.Context, input *athena.ListNotebookSessionsInput, opts ...request.Option) (*athena.ListNotebookSessionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListNotebookSessions",
+		Input:   input,
+		Output:  (*athena.ListNotebookSessionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListNotebookSessionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListNotebookSessionsOutput), req.Error
 }
 
 func (c *Client) ListPreparedStatementsWithContext(ctx context.Context, input *athena.ListPreparedStatementsInput, opts ...request.Option) (*athena.ListPreparedStatementsOutput, error) {
@@ -756,6 +1179,47 @@ func (c *Client) ListQueryExecutionsPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.AthenaAPI.ListQueryExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSessionsWithContext(ctx context.Context, input *athena.ListSessionsInput, opts ...request.Option) (*athena.ListSessionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListSessions",
+		Input:   input,
+		Output:  (*athena.ListSessionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListSessionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListSessionsOutput), req.Error
+}
+
+func (c *Client) ListSessionsPagesWithContext(ctx context.Context, input *athena.ListSessionsInput, cb func(*athena.ListSessionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListSessions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListSessionsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -884,6 +1348,27 @@ func (c *Client) ListWorkGroupsPagesWithContext(ctx context.Context, input *athe
 	return req.Error
 }
 
+func (c *Client) StartCalculationExecutionWithContext(ctx context.Context, input *athena.StartCalculationExecutionInput, opts ...request.Option) (*athena.StartCalculationExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "StartCalculationExecution",
+		Input:   input,
+		Output:  (*athena.StartCalculationExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.StartCalculationExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.StartCalculationExecutionOutput), req.Error
+}
+
 func (c *Client) StartQueryExecutionWithContext(ctx context.Context, input *athena.StartQueryExecutionInput, opts ...request.Option) (*athena.StartQueryExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -903,6 +1388,48 @@ func (c *Client) StartQueryExecutionWithContext(ctx context.Context, input *athe
 	})
 
 	return req.Output.(*athena.StartQueryExecutionOutput), req.Error
+}
+
+func (c *Client) StartSessionWithContext(ctx context.Context, input *athena.StartSessionInput, opts ...request.Option) (*athena.StartSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "StartSession",
+		Input:   input,
+		Output:  (*athena.StartSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.StartSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.StartSessionOutput), req.Error
+}
+
+func (c *Client) StopCalculationExecutionWithContext(ctx context.Context, input *athena.StopCalculationExecutionInput, opts ...request.Option) (*athena.StopCalculationExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "StopCalculationExecution",
+		Input:   input,
+		Output:  (*athena.StopCalculationExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.StopCalculationExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.StopCalculationExecutionOutput), req.Error
 }
 
 func (c *Client) StopQueryExecutionWithContext(ctx context.Context, input *athena.StopQueryExecutionInput, opts ...request.Option) (*athena.StopQueryExecutionOutput, error) {
@@ -945,6 +1472,27 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *athena.TagRe
 	})
 
 	return req.Output.(*athena.TagResourceOutput), req.Error
+}
+
+func (c *Client) TerminateSessionWithContext(ctx context.Context, input *athena.TerminateSessionInput, opts ...request.Option) (*athena.TerminateSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "TerminateSession",
+		Input:   input,
+		Output:  (*athena.TerminateSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.TerminateSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.TerminateSessionOutput), req.Error
 }
 
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *athena.UntagResourceInput, opts ...request.Option) (*athena.UntagResourceOutput, error) {
@@ -1008,6 +1556,48 @@ func (c *Client) UpdateNamedQueryWithContext(ctx context.Context, input *athena.
 	})
 
 	return req.Output.(*athena.UpdateNamedQueryOutput), req.Error
+}
+
+func (c *Client) UpdateNotebookWithContext(ctx context.Context, input *athena.UpdateNotebookInput, opts ...request.Option) (*athena.UpdateNotebookOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "UpdateNotebook",
+		Input:   input,
+		Output:  (*athena.UpdateNotebookOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.UpdateNotebookWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.UpdateNotebookOutput), req.Error
+}
+
+func (c *Client) UpdateNotebookMetadataWithContext(ctx context.Context, input *athena.UpdateNotebookMetadataInput, opts ...request.Option) (*athena.UpdateNotebookMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "UpdateNotebookMetadata",
+		Input:   input,
+		Output:  (*athena.UpdateNotebookMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.UpdateNotebookMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.UpdateNotebookMetadataOutput), req.Error
 }
 
 func (c *Client) UpdatePreparedStatementWithContext(ctx context.Context, input *athena.UpdatePreparedStatementInput, opts ...request.Option) (*athena.UpdatePreparedStatementOutput, error) {
