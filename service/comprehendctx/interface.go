@@ -56,6 +56,7 @@ type Comprehend interface {
 	ListDominantLanguageDetectionJobsWithContext(ctx context.Context, input *comprehend.ListDominantLanguageDetectionJobsInput, opts ...request.Option) (*comprehend.ListDominantLanguageDetectionJobsOutput, error)
 	ListDominantLanguageDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListDominantLanguageDetectionJobsInput, cb func(*comprehend.ListDominantLanguageDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListEndpointsWithContext(ctx context.Context, input *comprehend.ListEndpointsInput, opts ...request.Option) (*comprehend.ListEndpointsOutput, error)
+	ListEndpointsPagesWithContext(ctx context.Context, input *comprehend.ListEndpointsInput, cb func(*comprehend.ListEndpointsOutput, bool) bool, opts ...request.Option) error
 	ListEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListEntitiesDetectionJobsOutput, error)
 	ListEntitiesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, cb func(*comprehend.ListEntitiesDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListEntityRecognizerSummariesWithContext(ctx context.Context, input *comprehend.ListEntityRecognizerSummariesInput, opts ...request.Option) (*comprehend.ListEntityRecognizerSummariesOutput, error)
@@ -67,6 +68,7 @@ type Comprehend interface {
 	ListKeyPhrasesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, opts ...request.Option) (*comprehend.ListKeyPhrasesDetectionJobsOutput, error)
 	ListKeyPhrasesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, cb func(*comprehend.ListKeyPhrasesDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListPiiEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListPiiEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListPiiEntitiesDetectionJobsOutput, error)
+	ListPiiEntitiesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListPiiEntitiesDetectionJobsInput, cb func(*comprehend.ListPiiEntitiesDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListSentimentDetectionJobsWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, opts ...request.Option) (*comprehend.ListSentimentDetectionJobsOutput, error)
 	ListSentimentDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, cb func(*comprehend.ListSentimentDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *comprehend.ListTagsForResourceInput, opts ...request.Option) (*comprehend.ListTagsForResourceOutput, error)
@@ -1054,6 +1056,26 @@ func (c *Client) ListEndpointsWithContext(ctx context.Context, input *comprehend
 	return req.Output.(*comprehend.ListEndpointsOutput), req.Error
 }
 
+func (c *Client) ListEndpointsPagesWithContext(ctx context.Context, input *comprehend.ListEndpointsInput, cb func(*comprehend.ListEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ComprehendAPI.ListEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListEntitiesDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -1278,6 +1300,26 @@ func (c *Client) ListPiiEntitiesDetectionJobsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*comprehend.ListPiiEntitiesDetectionJobsOutput), req.Error
+}
+
+func (c *Client) ListPiiEntitiesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListPiiEntitiesDetectionJobsInput, cb func(*comprehend.ListPiiEntitiesDetectionJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListPiiEntitiesDetectionJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ComprehendAPI.ListPiiEntitiesDetectionJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSentimentDetectionJobsWithContext(ctx context.Context, input *comprehend.ListSentimentDetectionJobsInput, opts ...request.Option) (*comprehend.ListSentimentDetectionJobsOutput, error) {

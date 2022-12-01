@@ -17,6 +17,7 @@ type SFN interface {
 	DeleteStateMachineWithContext(ctx context.Context, input *sfn.DeleteStateMachineInput, opts ...request.Option) (*sfn.DeleteStateMachineOutput, error)
 	DescribeActivityWithContext(ctx context.Context, input *sfn.DescribeActivityInput, opts ...request.Option) (*sfn.DescribeActivityOutput, error)
 	DescribeExecutionWithContext(ctx context.Context, input *sfn.DescribeExecutionInput, opts ...request.Option) (*sfn.DescribeExecutionOutput, error)
+	DescribeMapRunWithContext(ctx context.Context, input *sfn.DescribeMapRunInput, opts ...request.Option) (*sfn.DescribeMapRunOutput, error)
 	DescribeStateMachineWithContext(ctx context.Context, input *sfn.DescribeStateMachineInput, opts ...request.Option) (*sfn.DescribeStateMachineOutput, error)
 	DescribeStateMachineForExecutionWithContext(ctx context.Context, input *sfn.DescribeStateMachineForExecutionInput, opts ...request.Option) (*sfn.DescribeStateMachineForExecutionOutput, error)
 	GetActivityTaskWithContext(ctx context.Context, input *sfn.GetActivityTaskInput, opts ...request.Option) (*sfn.GetActivityTaskOutput, error)
@@ -26,6 +27,8 @@ type SFN interface {
 	ListActivitiesPagesWithContext(ctx context.Context, input *sfn.ListActivitiesInput, cb func(*sfn.ListActivitiesOutput, bool) bool, opts ...request.Option) error
 	ListExecutionsWithContext(ctx context.Context, input *sfn.ListExecutionsInput, opts ...request.Option) (*sfn.ListExecutionsOutput, error)
 	ListExecutionsPagesWithContext(ctx context.Context, input *sfn.ListExecutionsInput, cb func(*sfn.ListExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListMapRunsWithContext(ctx context.Context, input *sfn.ListMapRunsInput, opts ...request.Option) (*sfn.ListMapRunsOutput, error)
+	ListMapRunsPagesWithContext(ctx context.Context, input *sfn.ListMapRunsInput, cb func(*sfn.ListMapRunsOutput, bool) bool, opts ...request.Option) error
 	ListStateMachinesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, opts ...request.Option) (*sfn.ListStateMachinesOutput, error)
 	ListStateMachinesPagesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, cb func(*sfn.ListStateMachinesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *sfn.ListTagsForResourceInput, opts ...request.Option) (*sfn.ListTagsForResourceOutput, error)
@@ -37,6 +40,7 @@ type SFN interface {
 	StopExecutionWithContext(ctx context.Context, input *sfn.StopExecutionInput, opts ...request.Option) (*sfn.StopExecutionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *sfn.TagResourceInput, opts ...request.Option) (*sfn.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *sfn.UntagResourceInput, opts ...request.Option) (*sfn.UntagResourceOutput, error)
+	UpdateMapRunWithContext(ctx context.Context, input *sfn.UpdateMapRunInput, opts ...request.Option) (*sfn.UpdateMapRunOutput, error)
 	UpdateStateMachineWithContext(ctx context.Context, input *sfn.UpdateStateMachineInput, opts ...request.Option) (*sfn.UpdateStateMachineOutput, error)
 }
 
@@ -179,6 +183,27 @@ func (c *Client) DescribeExecutionWithContext(ctx context.Context, input *sfn.De
 	})
 
 	return req.Output.(*sfn.DescribeExecutionOutput), req.Error
+}
+
+func (c *Client) DescribeMapRunWithContext(ctx context.Context, input *sfn.DescribeMapRunInput, opts ...request.Option) (*sfn.DescribeMapRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "DescribeMapRun",
+		Input:   input,
+		Output:  (*sfn.DescribeMapRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.DescribeMapRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.DescribeMapRunOutput), req.Error
 }
 
 func (c *Client) DescribeStateMachineWithContext(ctx context.Context, input *sfn.DescribeStateMachineInput, opts ...request.Option) (*sfn.DescribeStateMachineOutput, error) {
@@ -362,6 +387,47 @@ func (c *Client) ListExecutionsPagesWithContext(ctx context.Context, input *sfn.
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SFNAPI.ListExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMapRunsWithContext(ctx context.Context, input *sfn.ListMapRunsInput, opts ...request.Option) (*sfn.ListMapRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListMapRuns",
+		Input:   input,
+		Output:  (*sfn.ListMapRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.ListMapRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.ListMapRunsOutput), req.Error
+}
+
+func (c *Client) ListMapRunsPagesWithContext(ctx context.Context, input *sfn.ListMapRunsInput, cb func(*sfn.ListMapRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListMapRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SFNAPI.ListMapRunsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -595,6 +661,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *sfn.UntagR
 	})
 
 	return req.Output.(*sfn.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateMapRunWithContext(ctx context.Context, input *sfn.UpdateMapRunInput, opts ...request.Option) (*sfn.UpdateMapRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "UpdateMapRun",
+		Input:   input,
+		Output:  (*sfn.UpdateMapRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.UpdateMapRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.UpdateMapRunOutput), req.Error
 }
 
 func (c *Client) UpdateStateMachineWithContext(ctx context.Context, input *sfn.UpdateStateMachineInput, opts ...request.Option) (*sfn.UpdateStateMachineOutput, error) {
