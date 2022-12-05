@@ -42,8 +42,10 @@ type CostExplorer interface {
 	ListCostAllocationTagsPagesWithContext(ctx context.Context, input *costexplorer.ListCostAllocationTagsInput, cb func(*costexplorer.ListCostAllocationTagsOutput, bool) bool, opts ...request.Option) error
 	ListCostCategoryDefinitionsWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, opts ...request.Option) (*costexplorer.ListCostCategoryDefinitionsOutput, error)
 	ListCostCategoryDefinitionsPagesWithContext(ctx context.Context, input *costexplorer.ListCostCategoryDefinitionsInput, cb func(*costexplorer.ListCostCategoryDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ListSavingsPlansPurchaseRecommendationGenerationWithContext(ctx context.Context, input *costexplorer.ListSavingsPlansPurchaseRecommendationGenerationInput, opts ...request.Option) (*costexplorer.ListSavingsPlansPurchaseRecommendationGenerationOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *costexplorer.ListTagsForResourceInput, opts ...request.Option) (*costexplorer.ListTagsForResourceOutput, error)
 	ProvideAnomalyFeedbackWithContext(ctx context.Context, input *costexplorer.ProvideAnomalyFeedbackInput, opts ...request.Option) (*costexplorer.ProvideAnomalyFeedbackOutput, error)
+	StartSavingsPlansPurchaseRecommendationGenerationWithContext(ctx context.Context, input *costexplorer.StartSavingsPlansPurchaseRecommendationGenerationInput, opts ...request.Option) (*costexplorer.StartSavingsPlansPurchaseRecommendationGenerationOutput, error)
 	TagResourceWithContext(ctx context.Context, input *costexplorer.TagResourceInput, opts ...request.Option) (*costexplorer.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *costexplorer.UntagResourceInput, opts ...request.Option) (*costexplorer.UntagResourceOutput, error)
 	UpdateAnomalyMonitorWithContext(ctx context.Context, input *costexplorer.UpdateAnomalyMonitorInput, opts ...request.Option) (*costexplorer.UpdateAnomalyMonitorOutput, error)
@@ -714,6 +716,27 @@ func (c *Client) ListCostCategoryDefinitionsPagesWithContext(ctx context.Context
 	return req.Error
 }
 
+func (c *Client) ListSavingsPlansPurchaseRecommendationGenerationWithContext(ctx context.Context, input *costexplorer.ListSavingsPlansPurchaseRecommendationGenerationInput, opts ...request.Option) (*costexplorer.ListSavingsPlansPurchaseRecommendationGenerationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "ListSavingsPlansPurchaseRecommendationGeneration",
+		Input:   input,
+		Output:  (*costexplorer.ListSavingsPlansPurchaseRecommendationGenerationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.ListSavingsPlansPurchaseRecommendationGenerationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.ListSavingsPlansPurchaseRecommendationGenerationOutput), req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *costexplorer.ListTagsForResourceInput, opts ...request.Option) (*costexplorer.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costexplorer",
@@ -754,6 +777,27 @@ func (c *Client) ProvideAnomalyFeedbackWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*costexplorer.ProvideAnomalyFeedbackOutput), req.Error
+}
+
+func (c *Client) StartSavingsPlansPurchaseRecommendationGenerationWithContext(ctx context.Context, input *costexplorer.StartSavingsPlansPurchaseRecommendationGenerationInput, opts ...request.Option) (*costexplorer.StartSavingsPlansPurchaseRecommendationGenerationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "StartSavingsPlansPurchaseRecommendationGeneration",
+		Input:   input,
+		Output:  (*costexplorer.StartSavingsPlansPurchaseRecommendationGenerationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.StartSavingsPlansPurchaseRecommendationGenerationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.StartSavingsPlansPurchaseRecommendationGenerationOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *costexplorer.TagResourceInput, opts ...request.Option) (*costexplorer.TagResourceOutput, error) {
