@@ -31,6 +31,7 @@ type Connect interface {
 	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
+	CreateRuleWithContext(ctx context.Context, input *connect.CreateRuleInput, opts ...request.Option) (*connect.CreateRuleOutput, error)
 	CreateSecurityProfileWithContext(ctx context.Context, input *connect.CreateSecurityProfileInput, opts ...request.Option) (*connect.CreateSecurityProfileOutput, error)
 	CreateTaskTemplateWithContext(ctx context.Context, input *connect.CreateTaskTemplateInput, opts ...request.Option) (*connect.CreateTaskTemplateOutput, error)
 	CreateTrafficDistributionGroupWithContext(ctx context.Context, input *connect.CreateTrafficDistributionGroupInput, opts ...request.Option) (*connect.CreateTrafficDistributionGroupOutput, error)
@@ -44,6 +45,7 @@ type Connect interface {
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
 	DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error)
+	DeleteRuleWithContext(ctx context.Context, input *connect.DeleteRuleInput, opts ...request.Option) (*connect.DeleteRuleOutput, error)
 	DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error)
 	DeleteTaskTemplateWithContext(ctx context.Context, input *connect.DeleteTaskTemplateInput, opts ...request.Option) (*connect.DeleteTaskTemplateOutput, error)
 	DeleteTrafficDistributionGroupWithContext(ctx context.Context, input *connect.DeleteTrafficDistributionGroupInput, opts ...request.Option) (*connect.DeleteTrafficDistributionGroupOutput, error)
@@ -63,6 +65,7 @@ type Connect interface {
 	DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error)
 	DescribeQuickConnectWithContext(ctx context.Context, input *connect.DescribeQuickConnectInput, opts ...request.Option) (*connect.DescribeQuickConnectOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
+	DescribeRuleWithContext(ctx context.Context, input *connect.DescribeRuleInput, opts ...request.Option) (*connect.DescribeRuleOutput, error)
 	DescribeSecurityProfileWithContext(ctx context.Context, input *connect.DescribeSecurityProfileInput, opts ...request.Option) (*connect.DescribeSecurityProfileOutput, error)
 	DescribeTrafficDistributionGroupWithContext(ctx context.Context, input *connect.DescribeTrafficDistributionGroupInput, opts ...request.Option) (*connect.DescribeTrafficDistributionGroupOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
@@ -133,6 +136,8 @@ type Connect interface {
 	ListRoutingProfileQueuesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfileQueuesInput, cb func(*connect.ListRoutingProfileQueuesOutput, bool) bool, opts ...request.Option) error
 	ListRoutingProfilesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, opts ...request.Option) (*connect.ListRoutingProfilesOutput, error)
 	ListRoutingProfilesPagesWithContext(ctx context.Context, input *connect.ListRoutingProfilesInput, cb func(*connect.ListRoutingProfilesOutput, bool) bool, opts ...request.Option) error
+	ListRulesWithContext(ctx context.Context, input *connect.ListRulesInput, opts ...request.Option) (*connect.ListRulesOutput, error)
+	ListRulesPagesWithContext(ctx context.Context, input *connect.ListRulesInput, cb func(*connect.ListRulesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityKeysWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, opts ...request.Option) (*connect.ListSecurityKeysOutput, error)
 	ListSecurityKeysPagesWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, cb func(*connect.ListSecurityKeysOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilePermissionsWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, opts ...request.Option) (*connect.ListSecurityProfilePermissionsOutput, error)
@@ -203,6 +208,7 @@ type Connect interface {
 	UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx context.Context, input *connect.UpdateRoutingProfileDefaultOutboundQueueInput, opts ...request.Option) (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput, error)
 	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
 	UpdateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.UpdateRoutingProfileQueuesInput, opts ...request.Option) (*connect.UpdateRoutingProfileQueuesOutput, error)
+	UpdateRuleWithContext(ctx context.Context, input *connect.UpdateRuleInput, opts ...request.Option) (*connect.UpdateRuleOutput, error)
 	UpdateSecurityProfileWithContext(ctx context.Context, input *connect.UpdateSecurityProfileInput, opts ...request.Option) (*connect.UpdateSecurityProfileOutput, error)
 	UpdateTaskTemplateWithContext(ctx context.Context, input *connect.UpdateTaskTemplateInput, opts ...request.Option) (*connect.UpdateTaskTemplateOutput, error)
 	UpdateTrafficDistributionWithContext(ctx context.Context, input *connect.UpdateTrafficDistributionInput, opts ...request.Option) (*connect.UpdateTrafficDistributionOutput, error)
@@ -650,6 +656,27 @@ func (c *Client) CreateRoutingProfileWithContext(ctx context.Context, input *con
 	return req.Output.(*connect.CreateRoutingProfileOutput), req.Error
 }
 
+func (c *Client) CreateRuleWithContext(ctx context.Context, input *connect.CreateRuleInput, opts ...request.Option) (*connect.CreateRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateRule",
+		Input:   input,
+		Output:  (*connect.CreateRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateRuleOutput), req.Error
+}
+
 func (c *Client) CreateSecurityProfileWithContext(ctx context.Context, input *connect.CreateSecurityProfileInput, opts ...request.Option) (*connect.CreateSecurityProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -921,6 +948,27 @@ func (c *Client) DeleteQuickConnectWithContext(ctx context.Context, input *conne
 	})
 
 	return req.Output.(*connect.DeleteQuickConnectOutput), req.Error
+}
+
+func (c *Client) DeleteRuleWithContext(ctx context.Context, input *connect.DeleteRuleInput, opts ...request.Option) (*connect.DeleteRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteRule",
+		Input:   input,
+		Output:  (*connect.DeleteRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteRuleOutput), req.Error
 }
 
 func (c *Client) DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error) {
@@ -1320,6 +1368,27 @@ func (c *Client) DescribeRoutingProfileWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*connect.DescribeRoutingProfileOutput), req.Error
+}
+
+func (c *Client) DescribeRuleWithContext(ctx context.Context, input *connect.DescribeRuleInput, opts ...request.Option) (*connect.DescribeRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeRule",
+		Input:   input,
+		Output:  (*connect.DescribeRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeRuleOutput), req.Error
 }
 
 func (c *Client) DescribeSecurityProfileWithContext(ctx context.Context, input *connect.DescribeSecurityProfileInput, opts ...request.Option) (*connect.DescribeSecurityProfileOutput, error) {
@@ -2762,6 +2831,47 @@ func (c *Client) ListRoutingProfilesPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListRoutingProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListRulesWithContext(ctx context.Context, input *connect.ListRulesInput, opts ...request.Option) (*connect.ListRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListRules",
+		Input:   input,
+		Output:  (*connect.ListRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListRulesOutput), req.Error
+}
+
+func (c *Client) ListRulesPagesWithContext(ctx context.Context, input *connect.ListRulesInput, cb func(*connect.ListRulesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListRules",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListRulesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -4221,6 +4331,27 @@ func (c *Client) UpdateRoutingProfileQueuesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*connect.UpdateRoutingProfileQueuesOutput), req.Error
+}
+
+func (c *Client) UpdateRuleWithContext(ctx context.Context, input *connect.UpdateRuleInput, opts ...request.Option) (*connect.UpdateRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateRule",
+		Input:   input,
+		Output:  (*connect.UpdateRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateRuleOutput), req.Error
 }
 
 func (c *Client) UpdateSecurityProfileWithContext(ctx context.Context, input *connect.UpdateSecurityProfileInput, opts ...request.Option) (*connect.UpdateSecurityProfileOutput, error) {
