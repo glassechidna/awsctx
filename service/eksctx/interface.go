@@ -23,6 +23,7 @@ type EKS interface {
 	DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error)
 	DeregisterClusterWithContext(ctx context.Context, input *eks.DeregisterClusterInput, opts ...request.Option) (*eks.DeregisterClusterOutput, error)
 	DescribeAddonWithContext(ctx context.Context, input *eks.DescribeAddonInput, opts ...request.Option) (*eks.DescribeAddonOutput, error)
+	DescribeAddonConfigurationWithContext(ctx context.Context, input *eks.DescribeAddonConfigurationInput, opts ...request.Option) (*eks.DescribeAddonConfigurationOutput, error)
 	DescribeAddonVersionsWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, opts ...request.Option) (*eks.DescribeAddonVersionsOutput, error)
 	DescribeAddonVersionsPagesWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, cb func(*eks.DescribeAddonVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
@@ -319,6 +320,27 @@ func (c *Client) DescribeAddonWithContext(ctx context.Context, input *eks.Descri
 	})
 
 	return req.Output.(*eks.DescribeAddonOutput), req.Error
+}
+
+func (c *Client) DescribeAddonConfigurationWithContext(ctx context.Context, input *eks.DescribeAddonConfigurationInput, opts ...request.Option) (*eks.DescribeAddonConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeAddonConfiguration",
+		Input:   input,
+		Output:  (*eks.DescribeAddonConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeAddonConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeAddonConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeAddonVersionsWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, opts ...request.Option) (*eks.DescribeAddonVersionsOutput, error) {

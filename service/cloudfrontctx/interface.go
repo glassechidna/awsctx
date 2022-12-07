@@ -110,6 +110,7 @@ type CloudFront interface {
 	UpdateCloudFrontOriginAccessIdentityWithContext(ctx context.Context, input *cloudfront.UpdateCloudFrontOriginAccessIdentityInput, opts ...request.Option) (*cloudfront.UpdateCloudFrontOriginAccessIdentityOutput, error)
 	UpdateContinuousDeploymentPolicyWithContext(ctx context.Context, input *cloudfront.UpdateContinuousDeploymentPolicyInput, opts ...request.Option) (*cloudfront.UpdateContinuousDeploymentPolicyOutput, error)
 	UpdateDistributionWithContext(ctx context.Context, input *cloudfront.UpdateDistributionInput, opts ...request.Option) (*cloudfront.UpdateDistributionOutput, error)
+	UpdateDistributionWithStagingConfigWithContext(ctx context.Context, input *cloudfront.UpdateDistributionWithStagingConfigInput, opts ...request.Option) (*cloudfront.UpdateDistributionWithStagingConfigOutput, error)
 	UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionConfigOutput, error)
 	UpdateFieldLevelEncryptionProfileWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionProfileInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionProfileOutput, error)
 	UpdateFunctionWithContext(ctx context.Context, input *cloudfront.UpdateFunctionInput, opts ...request.Option) (*cloudfront.UpdateFunctionOutput, error)
@@ -2210,6 +2211,27 @@ func (c *Client) UpdateDistributionWithContext(ctx context.Context, input *cloud
 	})
 
 	return req.Output.(*cloudfront.UpdateDistributionOutput), req.Error
+}
+
+func (c *Client) UpdateDistributionWithStagingConfigWithContext(ctx context.Context, input *cloudfront.UpdateDistributionWithStagingConfigInput, opts ...request.Option) (*cloudfront.UpdateDistributionWithStagingConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudfront",
+		Action:  "UpdateDistributionWithStagingConfig",
+		Input:   input,
+		Output:  (*cloudfront.UpdateDistributionWithStagingConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFrontAPI.UpdateDistributionWithStagingConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudfront.UpdateDistributionWithStagingConfigOutput), req.Error
 }
 
 func (c *Client) UpdateFieldLevelEncryptionConfigWithContext(ctx context.Context, input *cloudfront.UpdateFieldLevelEncryptionConfigInput, opts ...request.Option) (*cloudfront.UpdateFieldLevelEncryptionConfigOutput, error) {
