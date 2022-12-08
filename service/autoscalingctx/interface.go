@@ -14,6 +14,7 @@ type AutoScaling interface {
 	AttachInstancesWithContext(ctx context.Context, input *autoscaling.AttachInstancesInput, opts ...request.Option) (*autoscaling.AttachInstancesOutput, error)
 	AttachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.AttachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.AttachLoadBalancerTargetGroupsOutput, error)
 	AttachLoadBalancersWithContext(ctx context.Context, input *autoscaling.AttachLoadBalancersInput, opts ...request.Option) (*autoscaling.AttachLoadBalancersOutput, error)
+	AttachTrafficSourcesWithContext(ctx context.Context, input *autoscaling.AttachTrafficSourcesInput, opts ...request.Option) (*autoscaling.AttachTrafficSourcesOutput, error)
 	BatchDeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.BatchDeleteScheduledActionInput, opts ...request.Option) (*autoscaling.BatchDeleteScheduledActionOutput, error)
 	BatchPutScheduledUpdateGroupActionWithContext(ctx context.Context, input *autoscaling.BatchPutScheduledUpdateGroupActionInput, opts ...request.Option) (*autoscaling.BatchPutScheduledUpdateGroupActionOutput, error)
 	CancelInstanceRefreshWithContext(ctx context.Context, input *autoscaling.CancelInstanceRefreshInput, opts ...request.Option) (*autoscaling.CancelInstanceRefreshOutput, error)
@@ -56,10 +57,12 @@ type AutoScaling interface {
 	DescribeTagsWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, opts ...request.Option) (*autoscaling.DescribeTagsOutput, error)
 	DescribeTagsPagesWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, cb func(*autoscaling.DescribeTagsOutput, bool) bool, opts ...request.Option) error
 	DescribeTerminationPolicyTypesWithContext(ctx context.Context, input *autoscaling.DescribeTerminationPolicyTypesInput, opts ...request.Option) (*autoscaling.DescribeTerminationPolicyTypesOutput, error)
+	DescribeTrafficSourcesWithContext(ctx context.Context, input *autoscaling.DescribeTrafficSourcesInput, opts ...request.Option) (*autoscaling.DescribeTrafficSourcesOutput, error)
 	DescribeWarmPoolWithContext(ctx context.Context, input *autoscaling.DescribeWarmPoolInput, opts ...request.Option) (*autoscaling.DescribeWarmPoolOutput, error)
 	DetachInstancesWithContext(ctx context.Context, input *autoscaling.DetachInstancesInput, opts ...request.Option) (*autoscaling.DetachInstancesOutput, error)
 	DetachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DetachLoadBalancerTargetGroupsOutput, error)
 	DetachLoadBalancersWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancersInput, opts ...request.Option) (*autoscaling.DetachLoadBalancersOutput, error)
+	DetachTrafficSourcesWithContext(ctx context.Context, input *autoscaling.DetachTrafficSourcesInput, opts ...request.Option) (*autoscaling.DetachTrafficSourcesOutput, error)
 	DisableMetricsCollectionWithContext(ctx context.Context, input *autoscaling.DisableMetricsCollectionInput, opts ...request.Option) (*autoscaling.DisableMetricsCollectionOutput, error)
 	EnableMetricsCollectionWithContext(ctx context.Context, input *autoscaling.EnableMetricsCollectionInput, opts ...request.Option) (*autoscaling.EnableMetricsCollectionOutput, error)
 	EnterStandbyWithContext(ctx context.Context, input *autoscaling.EnterStandbyInput, opts ...request.Option) (*autoscaling.EnterStandbyOutput, error)
@@ -158,6 +161,27 @@ func (c *Client) AttachLoadBalancersWithContext(ctx context.Context, input *auto
 	})
 
 	return req.Output.(*autoscaling.AttachLoadBalancersOutput), req.Error
+}
+
+func (c *Client) AttachTrafficSourcesWithContext(ctx context.Context, input *autoscaling.AttachTrafficSourcesInput, opts ...request.Option) (*autoscaling.AttachTrafficSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "AttachTrafficSources",
+		Input:   input,
+		Output:  (*autoscaling.AttachTrafficSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.AttachTrafficSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.AttachTrafficSourcesOutput), req.Error
 }
 
 func (c *Client) BatchDeleteScheduledActionWithContext(ctx context.Context, input *autoscaling.BatchDeleteScheduledActionInput, opts ...request.Option) (*autoscaling.BatchDeleteScheduledActionOutput, error) {
@@ -1034,6 +1058,27 @@ func (c *Client) DescribeTerminationPolicyTypesWithContext(ctx context.Context, 
 	return req.Output.(*autoscaling.DescribeTerminationPolicyTypesOutput), req.Error
 }
 
+func (c *Client) DescribeTrafficSourcesWithContext(ctx context.Context, input *autoscaling.DescribeTrafficSourcesInput, opts ...request.Option) (*autoscaling.DescribeTrafficSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeTrafficSources",
+		Input:   input,
+		Output:  (*autoscaling.DescribeTrafficSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.DescribeTrafficSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.DescribeTrafficSourcesOutput), req.Error
+}
+
 func (c *Client) DescribeWarmPoolWithContext(ctx context.Context, input *autoscaling.DescribeWarmPoolInput, opts ...request.Option) (*autoscaling.DescribeWarmPoolOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -1116,6 +1161,27 @@ func (c *Client) DetachLoadBalancersWithContext(ctx context.Context, input *auto
 	})
 
 	return req.Output.(*autoscaling.DetachLoadBalancersOutput), req.Error
+}
+
+func (c *Client) DetachTrafficSourcesWithContext(ctx context.Context, input *autoscaling.DetachTrafficSourcesInput, opts ...request.Option) (*autoscaling.DetachTrafficSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DetachTrafficSources",
+		Input:   input,
+		Output:  (*autoscaling.DetachTrafficSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.DetachTrafficSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.DetachTrafficSourcesOutput), req.Error
 }
 
 func (c *Client) DisableMetricsCollectionWithContext(ctx context.Context, input *autoscaling.DisableMetricsCollectionInput, opts ...request.Option) (*autoscaling.DisableMetricsCollectionOutput, error) {
