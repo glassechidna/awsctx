@@ -15,6 +15,7 @@ type KinesisVideo interface {
 	CreateStreamWithContext(ctx context.Context, input *kinesisvideo.CreateStreamInput, opts ...request.Option) (*kinesisvideo.CreateStreamOutput, error)
 	DeleteSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DeleteSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DeleteSignalingChannelOutput, error)
 	DeleteStreamWithContext(ctx context.Context, input *kinesisvideo.DeleteStreamInput, opts ...request.Option) (*kinesisvideo.DeleteStreamOutput, error)
+	DescribeEdgeConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeEdgeConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeEdgeConfigurationOutput, error)
 	DescribeImageGenerationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeImageGenerationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeImageGenerationConfigurationOutput, error)
 	DescribeNotificationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeNotificationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeNotificationConfigurationOutput, error)
 	DescribeSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DescribeSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DescribeSignalingChannelOutput, error)
@@ -27,6 +28,7 @@ type KinesisVideo interface {
 	ListStreamsPagesWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, cb func(*kinesisvideo.ListStreamsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *kinesisvideo.ListTagsForResourceInput, opts ...request.Option) (*kinesisvideo.ListTagsForResourceOutput, error)
 	ListTagsForStreamWithContext(ctx context.Context, input *kinesisvideo.ListTagsForStreamInput, opts ...request.Option) (*kinesisvideo.ListTagsForStreamOutput, error)
+	StartEdgeConfigurationUpdateWithContext(ctx context.Context, input *kinesisvideo.StartEdgeConfigurationUpdateInput, opts ...request.Option) (*kinesisvideo.StartEdgeConfigurationUpdateOutput, error)
 	TagResourceWithContext(ctx context.Context, input *kinesisvideo.TagResourceInput, opts ...request.Option) (*kinesisvideo.TagResourceOutput, error)
 	TagStreamWithContext(ctx context.Context, input *kinesisvideo.TagStreamInput, opts ...request.Option) (*kinesisvideo.TagStreamOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *kinesisvideo.UntagResourceInput, opts ...request.Option) (*kinesisvideo.UntagResourceOutput, error)
@@ -135,6 +137,27 @@ func (c *Client) DeleteStreamWithContext(ctx context.Context, input *kinesisvide
 	})
 
 	return req.Output.(*kinesisvideo.DeleteStreamOutput), req.Error
+}
+
+func (c *Client) DescribeEdgeConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeEdgeConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeEdgeConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "DescribeEdgeConfiguration",
+		Input:   input,
+		Output:  (*kinesisvideo.DescribeEdgeConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.DescribeEdgeConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.DescribeEdgeConfigurationOutput), req.Error
 }
 
 func (c *Client) DescribeImageGenerationConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeImageGenerationConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeImageGenerationConfigurationOutput, error) {
@@ -385,6 +408,27 @@ func (c *Client) ListTagsForStreamWithContext(ctx context.Context, input *kinesi
 	})
 
 	return req.Output.(*kinesisvideo.ListTagsForStreamOutput), req.Error
+}
+
+func (c *Client) StartEdgeConfigurationUpdateWithContext(ctx context.Context, input *kinesisvideo.StartEdgeConfigurationUpdateInput, opts ...request.Option) (*kinesisvideo.StartEdgeConfigurationUpdateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "StartEdgeConfigurationUpdate",
+		Input:   input,
+		Output:  (*kinesisvideo.StartEdgeConfigurationUpdateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.StartEdgeConfigurationUpdateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.StartEdgeConfigurationUpdateOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *kinesisvideo.TagResourceInput, opts ...request.Option) (*kinesisvideo.TagResourceOutput, error) {
