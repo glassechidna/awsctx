@@ -184,6 +184,8 @@ type SageMaker interface {
 	ListActionsPagesWithContext(ctx context.Context, input *sagemaker.ListActionsInput, cb func(*sagemaker.ListActionsOutput, bool) bool, opts ...request.Option) error
 	ListAlgorithmsWithContext(ctx context.Context, input *sagemaker.ListAlgorithmsInput, opts ...request.Option) (*sagemaker.ListAlgorithmsOutput, error)
 	ListAlgorithmsPagesWithContext(ctx context.Context, input *sagemaker.ListAlgorithmsInput, cb func(*sagemaker.ListAlgorithmsOutput, bool) bool, opts ...request.Option) error
+	ListAliasesWithContext(ctx context.Context, input *sagemaker.ListAliasesInput, opts ...request.Option) (*sagemaker.ListAliasesOutput, error)
+	ListAliasesPagesWithContext(ctx context.Context, input *sagemaker.ListAliasesInput, cb func(*sagemaker.ListAliasesOutput, bool) bool, opts ...request.Option) error
 	ListAppImageConfigsWithContext(ctx context.Context, input *sagemaker.ListAppImageConfigsInput, opts ...request.Option) (*sagemaker.ListAppImageConfigsOutput, error)
 	ListAppImageConfigsPagesWithContext(ctx context.Context, input *sagemaker.ListAppImageConfigsInput, cb func(*sagemaker.ListAppImageConfigsOutput, bool) bool, opts ...request.Option) error
 	ListAppsWithContext(ctx context.Context, input *sagemaker.ListAppsInput, opts ...request.Option) (*sagemaker.ListAppsOutput, error)
@@ -361,6 +363,7 @@ type SageMaker interface {
 	UpdateFeatureMetadataWithContext(ctx context.Context, input *sagemaker.UpdateFeatureMetadataInput, opts ...request.Option) (*sagemaker.UpdateFeatureMetadataOutput, error)
 	UpdateHubWithContext(ctx context.Context, input *sagemaker.UpdateHubInput, opts ...request.Option) (*sagemaker.UpdateHubOutput, error)
 	UpdateImageWithContext(ctx context.Context, input *sagemaker.UpdateImageInput, opts ...request.Option) (*sagemaker.UpdateImageOutput, error)
+	UpdateImageVersionWithContext(ctx context.Context, input *sagemaker.UpdateImageVersionInput, opts ...request.Option) (*sagemaker.UpdateImageVersionOutput, error)
 	UpdateInferenceExperimentWithContext(ctx context.Context, input *sagemaker.UpdateInferenceExperimentInput, opts ...request.Option) (*sagemaker.UpdateInferenceExperimentOutput, error)
 	UpdateModelCardWithContext(ctx context.Context, input *sagemaker.UpdateModelCardInput, opts ...request.Option) (*sagemaker.UpdateModelCardOutput, error)
 	UpdateModelPackageWithContext(ctx context.Context, input *sagemaker.UpdateModelPackageInput, opts ...request.Option) (*sagemaker.UpdateModelPackageOutput, error)
@@ -4026,6 +4029,47 @@ func (c *Client) ListAlgorithmsPagesWithContext(ctx context.Context, input *sage
 	return req.Error
 }
 
+func (c *Client) ListAliasesWithContext(ctx context.Context, input *sagemaker.ListAliasesInput, opts ...request.Option) (*sagemaker.ListAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListAliases",
+		Input:   input,
+		Output:  (*sagemaker.ListAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListAliasesOutput), req.Error
+}
+
+func (c *Client) ListAliasesPagesWithContext(ctx context.Context, input *sagemaker.ListAliasesInput, cb func(*sagemaker.ListAliasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListAliases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListAliasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListAppImageConfigsWithContext(ctx context.Context, input *sagemaker.ListAppImageConfigsInput, opts ...request.Option) (*sagemaker.ListAppImageConfigsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sagemaker",
@@ -7674,6 +7718,27 @@ func (c *Client) UpdateImageWithContext(ctx context.Context, input *sagemaker.Up
 	})
 
 	return req.Output.(*sagemaker.UpdateImageOutput), req.Error
+}
+
+func (c *Client) UpdateImageVersionWithContext(ctx context.Context, input *sagemaker.UpdateImageVersionInput, opts ...request.Option) (*sagemaker.UpdateImageVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "UpdateImageVersion",
+		Input:   input,
+		Output:  (*sagemaker.UpdateImageVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.UpdateImageVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.UpdateImageVersionOutput), req.Error
 }
 
 func (c *Client) UpdateInferenceExperimentWithContext(ctx context.Context, input *sagemaker.UpdateInferenceExperimentInput, opts ...request.Option) (*sagemaker.UpdateInferenceExperimentOutput, error) {
