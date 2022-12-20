@@ -289,6 +289,7 @@ type EC2 interface {
 	DescribeIdentityIdFormatWithContext(ctx context.Context, input *ec2.DescribeIdentityIdFormatInput, opts ...request.Option) (*ec2.DescribeIdentityIdFormatOutput, error)
 	DescribeImageAttributeWithContext(ctx context.Context, input *ec2.DescribeImageAttributeInput, opts ...request.Option) (*ec2.DescribeImageAttributeOutput, error)
 	DescribeImagesWithContext(ctx context.Context, input *ec2.DescribeImagesInput, opts ...request.Option) (*ec2.DescribeImagesOutput, error)
+	DescribeImagesPagesWithContext(ctx context.Context, input *ec2.DescribeImagesInput, cb func(*ec2.DescribeImagesOutput, bool) bool, opts ...request.Option) error
 	DescribeImportImageTasksWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, opts ...request.Option) (*ec2.DescribeImportImageTasksOutput, error)
 	DescribeImportImageTasksPagesWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, cb func(*ec2.DescribeImportImageTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeImportSnapshotTasksWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, opts ...request.Option) (*ec2.DescribeImportSnapshotTasksOutput, error)
@@ -6543,6 +6544,26 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, input *ec2.Descr
 	})
 
 	return req.Output.(*ec2.DescribeImagesOutput), req.Error
+}
+
+func (c *Client) DescribeImagesPagesWithContext(ctx context.Context, input *ec2.DescribeImagesInput, cb func(*ec2.DescribeImagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeImages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeImagesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeImportImageTasksWithContext(ctx context.Context, input *ec2.DescribeImportImageTasksInput, opts ...request.Option) (*ec2.DescribeImportImageTasksOutput, error) {
