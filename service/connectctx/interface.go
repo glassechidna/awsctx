@@ -196,6 +196,7 @@ type Connect interface {
 	UpdateHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateHoursOfOperationInput, opts ...request.Option) (*connect.UpdateHoursOfOperationOutput, error)
 	UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error)
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
+	UpdateParticipantRoleConfigWithContext(ctx context.Context, input *connect.UpdateParticipantRoleConfigInput, opts ...request.Option) (*connect.UpdateParticipantRoleConfigOutput, error)
 	UpdatePhoneNumberWithContext(ctx context.Context, input *connect.UpdatePhoneNumberInput, opts ...request.Option) (*connect.UpdatePhoneNumberOutput, error)
 	UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error)
 	UpdateQueueMaxContactsWithContext(ctx context.Context, input *connect.UpdateQueueMaxContactsInput, opts ...request.Option) (*connect.UpdateQueueMaxContactsOutput, error)
@@ -4079,6 +4080,27 @@ func (c *Client) UpdateInstanceStorageConfigWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*connect.UpdateInstanceStorageConfigOutput), req.Error
+}
+
+func (c *Client) UpdateParticipantRoleConfigWithContext(ctx context.Context, input *connect.UpdateParticipantRoleConfigInput, opts ...request.Option) (*connect.UpdateParticipantRoleConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateParticipantRoleConfig",
+		Input:   input,
+		Output:  (*connect.UpdateParticipantRoleConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateParticipantRoleConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateParticipantRoleConfigOutput), req.Error
 }
 
 func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *connect.UpdatePhoneNumberInput, opts ...request.Option) (*connect.UpdatePhoneNumberOutput, error) {
