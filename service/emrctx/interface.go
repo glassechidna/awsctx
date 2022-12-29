@@ -31,6 +31,7 @@ type EMR interface {
 	DescribeStudioWithContext(ctx context.Context, input *emr.DescribeStudioInput, opts ...request.Option) (*emr.DescribeStudioOutput, error)
 	GetAutoTerminationPolicyWithContext(ctx context.Context, input *emr.GetAutoTerminationPolicyInput, opts ...request.Option) (*emr.GetAutoTerminationPolicyOutput, error)
 	GetBlockPublicAccessConfigurationWithContext(ctx context.Context, input *emr.GetBlockPublicAccessConfigurationInput, opts ...request.Option) (*emr.GetBlockPublicAccessConfigurationOutput, error)
+	GetClusterSessionCredentialsWithContext(ctx context.Context, input *emr.GetClusterSessionCredentialsInput, opts ...request.Option) (*emr.GetClusterSessionCredentialsOutput, error)
 	GetManagedScalingPolicyWithContext(ctx context.Context, input *emr.GetManagedScalingPolicyInput, opts ...request.Option) (*emr.GetManagedScalingPolicyOutput, error)
 	GetStudioSessionMappingWithContext(ctx context.Context, input *emr.GetStudioSessionMappingInput, opts ...request.Option) (*emr.GetStudioSessionMappingOutput, error)
 	ListBootstrapActionsWithContext(ctx context.Context, input *emr.ListBootstrapActionsInput, opts ...request.Option) (*emr.ListBootstrapActionsOutput, error)
@@ -509,6 +510,27 @@ func (c *Client) GetBlockPublicAccessConfigurationWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*emr.GetBlockPublicAccessConfigurationOutput), req.Error
+}
+
+func (c *Client) GetClusterSessionCredentialsWithContext(ctx context.Context, input *emr.GetClusterSessionCredentialsInput, opts ...request.Option) (*emr.GetClusterSessionCredentialsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "GetClusterSessionCredentials",
+		Input:   input,
+		Output:  (*emr.GetClusterSessionCredentialsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.GetClusterSessionCredentialsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.GetClusterSessionCredentialsOutput), req.Error
 }
 
 func (c *Client) GetManagedScalingPolicyWithContext(ctx context.Context, input *emr.GetManagedScalingPolicyInput, opts ...request.Option) (*emr.GetManagedScalingPolicyOutput, error) {
