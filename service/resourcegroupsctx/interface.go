@@ -13,6 +13,7 @@ import (
 type ResourceGroups interface {
 	CreateGroupWithContext(ctx context.Context, input *resourcegroups.CreateGroupInput, opts ...request.Option) (*resourcegroups.CreateGroupOutput, error)
 	DeleteGroupWithContext(ctx context.Context, input *resourcegroups.DeleteGroupInput, opts ...request.Option) (*resourcegroups.DeleteGroupOutput, error)
+	GetAccountSettingsWithContext(ctx context.Context, input *resourcegroups.GetAccountSettingsInput, opts ...request.Option) (*resourcegroups.GetAccountSettingsOutput, error)
 	GetGroupWithContext(ctx context.Context, input *resourcegroups.GetGroupInput, opts ...request.Option) (*resourcegroups.GetGroupOutput, error)
 	GetGroupConfigurationWithContext(ctx context.Context, input *resourcegroups.GetGroupConfigurationInput, opts ...request.Option) (*resourcegroups.GetGroupConfigurationOutput, error)
 	GetGroupQueryWithContext(ctx context.Context, input *resourcegroups.GetGroupQueryInput, opts ...request.Option) (*resourcegroups.GetGroupQueryOutput, error)
@@ -28,6 +29,7 @@ type ResourceGroups interface {
 	TagWithContext(ctx context.Context, input *resourcegroups.TagInput, opts ...request.Option) (*resourcegroups.TagOutput, error)
 	UngroupResourcesWithContext(ctx context.Context, input *resourcegroups.UngroupResourcesInput, opts ...request.Option) (*resourcegroups.UngroupResourcesOutput, error)
 	UntagWithContext(ctx context.Context, input *resourcegroups.UntagInput, opts ...request.Option) (*resourcegroups.UntagOutput, error)
+	UpdateAccountSettingsWithContext(ctx context.Context, input *resourcegroups.UpdateAccountSettingsInput, opts ...request.Option) (*resourcegroups.UpdateAccountSettingsOutput, error)
 	UpdateGroupWithContext(ctx context.Context, input *resourcegroups.UpdateGroupInput, opts ...request.Option) (*resourcegroups.UpdateGroupOutput, error)
 	UpdateGroupQueryWithContext(ctx context.Context, input *resourcegroups.UpdateGroupQueryInput, opts ...request.Option) (*resourcegroups.UpdateGroupQueryOutput, error)
 }
@@ -87,6 +89,27 @@ func (c *Client) DeleteGroupWithContext(ctx context.Context, input *resourcegrou
 	})
 
 	return req.Output.(*resourcegroups.DeleteGroupOutput), req.Error
+}
+
+func (c *Client) GetAccountSettingsWithContext(ctx context.Context, input *resourcegroups.GetAccountSettingsInput, opts ...request.Option) (*resourcegroups.GetAccountSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroups",
+		Action:  "GetAccountSettings",
+		Input:   input,
+		Output:  (*resourcegroups.GetAccountSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ResourceGroupsAPI.GetAccountSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*resourcegroups.GetAccountSettingsOutput), req.Error
 }
 
 func (c *Client) GetGroupWithContext(ctx context.Context, input *resourcegroups.GetGroupInput, opts ...request.Option) (*resourcegroups.GetGroupOutput, error) {
@@ -399,6 +422,27 @@ func (c *Client) UntagWithContext(ctx context.Context, input *resourcegroups.Unt
 	})
 
 	return req.Output.(*resourcegroups.UntagOutput), req.Error
+}
+
+func (c *Client) UpdateAccountSettingsWithContext(ctx context.Context, input *resourcegroups.UpdateAccountSettingsInput, opts ...request.Option) (*resourcegroups.UpdateAccountSettingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "resourcegroups",
+		Action:  "UpdateAccountSettings",
+		Input:   input,
+		Output:  (*resourcegroups.UpdateAccountSettingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ResourceGroupsAPI.UpdateAccountSettingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*resourcegroups.UpdateAccountSettingsOutput), req.Error
 }
 
 func (c *Client) UpdateGroupWithContext(ctx context.Context, input *resourcegroups.UpdateGroupInput, opts ...request.Option) (*resourcegroups.UpdateGroupOutput, error) {
