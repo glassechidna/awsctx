@@ -43,6 +43,7 @@ type Lambda interface {
 	GetLayerVersionPolicyWithContext(ctx context.Context, input *lambda.GetLayerVersionPolicyInput, opts ...request.Option) (*lambda.GetLayerVersionPolicyOutput, error)
 	GetPolicyWithContext(ctx context.Context, input *lambda.GetPolicyInput, opts ...request.Option) (*lambda.GetPolicyOutput, error)
 	GetProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.GetProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.GetProvisionedConcurrencyConfigOutput, error)
+	GetRuntimeManagementConfigWithContext(ctx context.Context, input *lambda.GetRuntimeManagementConfigInput, opts ...request.Option) (*lambda.GetRuntimeManagementConfigOutput, error)
 	InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error)
 	InvokeAsyncWithContext(ctx context.Context, input *lambda.InvokeAsyncInput, opts ...request.Option) (*lambda.InvokeAsyncOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error)
@@ -74,6 +75,7 @@ type Lambda interface {
 	PutFunctionConcurrencyWithContext(ctx context.Context, input *lambda.PutFunctionConcurrencyInput, opts ...request.Option) (*lambda.PutFunctionConcurrencyOutput, error)
 	PutFunctionEventInvokeConfigWithContext(ctx context.Context, input *lambda.PutFunctionEventInvokeConfigInput, opts ...request.Option) (*lambda.PutFunctionEventInvokeConfigOutput, error)
 	PutProvisionedConcurrencyConfigWithContext(ctx context.Context, input *lambda.PutProvisionedConcurrencyConfigInput, opts ...request.Option) (*lambda.PutProvisionedConcurrencyConfigOutput, error)
+	PutRuntimeManagementConfigWithContext(ctx context.Context, input *lambda.PutRuntimeManagementConfigInput, opts ...request.Option) (*lambda.PutRuntimeManagementConfigOutput, error)
 	RemoveLayerVersionPermissionWithContext(ctx context.Context, input *lambda.RemoveLayerVersionPermissionInput, opts ...request.Option) (*lambda.RemoveLayerVersionPermissionOutput, error)
 	RemovePermissionWithContext(ctx context.Context, input *lambda.RemovePermissionInput, opts ...request.Option) (*lambda.RemovePermissionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *lambda.TagResourceInput, opts ...request.Option) (*lambda.TagResourceOutput, error)
@@ -774,6 +776,27 @@ func (c *Client) GetProvisionedConcurrencyConfigWithContext(ctx context.Context,
 	return req.Output.(*lambda.GetProvisionedConcurrencyConfigOutput), req.Error
 }
 
+func (c *Client) GetRuntimeManagementConfigWithContext(ctx context.Context, input *lambda.GetRuntimeManagementConfigInput, opts ...request.Option) (*lambda.GetRuntimeManagementConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "GetRuntimeManagementConfig",
+		Input:   input,
+		Output:  (*lambda.GetRuntimeManagementConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.GetRuntimeManagementConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.GetRuntimeManagementConfigOutput), req.Error
+}
+
 func (c *Client) InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lambda",
@@ -1412,6 +1435,27 @@ func (c *Client) PutProvisionedConcurrencyConfigWithContext(ctx context.Context,
 	})
 
 	return req.Output.(*lambda.PutProvisionedConcurrencyConfigOutput), req.Error
+}
+
+func (c *Client) PutRuntimeManagementConfigWithContext(ctx context.Context, input *lambda.PutRuntimeManagementConfigInput, opts ...request.Option) (*lambda.PutRuntimeManagementConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "PutRuntimeManagementConfig",
+		Input:   input,
+		Output:  (*lambda.PutRuntimeManagementConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.PutRuntimeManagementConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.PutRuntimeManagementConfigOutput), req.Error
 }
 
 func (c *Client) RemoveLayerVersionPermissionWithContext(ctx context.Context, input *lambda.RemoveLayerVersionPermissionInput, opts ...request.Option) (*lambda.RemoveLayerVersionPermissionOutput, error) {
