@@ -31,6 +31,7 @@ type EC2 interface {
 	AssociateEnclaveCertificateIamRoleWithContext(ctx context.Context, input *ec2.AssociateEnclaveCertificateIamRoleInput, opts ...request.Option) (*ec2.AssociateEnclaveCertificateIamRoleOutput, error)
 	AssociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.AssociateIamInstanceProfileInput, opts ...request.Option) (*ec2.AssociateIamInstanceProfileOutput, error)
 	AssociateInstanceEventWindowWithContext(ctx context.Context, input *ec2.AssociateInstanceEventWindowInput, opts ...request.Option) (*ec2.AssociateInstanceEventWindowOutput, error)
+	AssociateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.AssociateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.AssociateIpamResourceDiscoveryOutput, error)
 	AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error)
 	AssociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.AssociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.AssociateSubnetCidrBlockOutput, error)
 	AssociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.AssociateTransitGatewayMulticastDomainOutput, error)
@@ -83,6 +84,7 @@ type EC2 interface {
 	CreateInternetGatewayWithContext(ctx context.Context, input *ec2.CreateInternetGatewayInput, opts ...request.Option) (*ec2.CreateInternetGatewayOutput, error)
 	CreateIpamWithContext(ctx context.Context, input *ec2.CreateIpamInput, opts ...request.Option) (*ec2.CreateIpamOutput, error)
 	CreateIpamPoolWithContext(ctx context.Context, input *ec2.CreateIpamPoolInput, opts ...request.Option) (*ec2.CreateIpamPoolOutput, error)
+	CreateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.CreateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.CreateIpamResourceDiscoveryOutput, error)
 	CreateIpamScopeWithContext(ctx context.Context, input *ec2.CreateIpamScopeInput, opts ...request.Option) (*ec2.CreateIpamScopeOutput, error)
 	CreateKeyPairWithContext(ctx context.Context, input *ec2.CreateKeyPairInput, opts ...request.Option) (*ec2.CreateKeyPairOutput, error)
 	CreateLaunchTemplateWithContext(ctx context.Context, input *ec2.CreateLaunchTemplateInput, opts ...request.Option) (*ec2.CreateLaunchTemplateOutput, error)
@@ -157,6 +159,7 @@ type EC2 interface {
 	DeleteInternetGatewayWithContext(ctx context.Context, input *ec2.DeleteInternetGatewayInput, opts ...request.Option) (*ec2.DeleteInternetGatewayOutput, error)
 	DeleteIpamWithContext(ctx context.Context, input *ec2.DeleteIpamInput, opts ...request.Option) (*ec2.DeleteIpamOutput, error)
 	DeleteIpamPoolWithContext(ctx context.Context, input *ec2.DeleteIpamPoolInput, opts ...request.Option) (*ec2.DeleteIpamPoolOutput, error)
+	DeleteIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.DeleteIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.DeleteIpamResourceDiscoveryOutput, error)
 	DeleteIpamScopeWithContext(ctx context.Context, input *ec2.DeleteIpamScopeInput, opts ...request.Option) (*ec2.DeleteIpamScopeOutput, error)
 	DeleteKeyPairWithContext(ctx context.Context, input *ec2.DeleteKeyPairInput, opts ...request.Option) (*ec2.DeleteKeyPairOutput, error)
 	DeleteLaunchTemplateWithContext(ctx context.Context, input *ec2.DeleteLaunchTemplateInput, opts ...request.Option) (*ec2.DeleteLaunchTemplateOutput, error)
@@ -312,6 +315,10 @@ type EC2 interface {
 	DescribeInternetGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeInternetGatewaysInput, cb func(*ec2.DescribeInternetGatewaysOutput, bool) bool, opts ...request.Option) error
 	DescribeIpamPoolsWithContext(ctx context.Context, input *ec2.DescribeIpamPoolsInput, opts ...request.Option) (*ec2.DescribeIpamPoolsOutput, error)
 	DescribeIpamPoolsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamPoolsInput, cb func(*ec2.DescribeIpamPoolsOutput, bool) bool, opts ...request.Option) error
+	DescribeIpamResourceDiscoveriesWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveriesInput, opts ...request.Option) (*ec2.DescribeIpamResourceDiscoveriesOutput, error)
+	DescribeIpamResourceDiscoveriesPagesWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveriesInput, cb func(*ec2.DescribeIpamResourceDiscoveriesOutput, bool) bool, opts ...request.Option) error
+	DescribeIpamResourceDiscoveryAssociationsWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveryAssociationsInput, opts ...request.Option) (*ec2.DescribeIpamResourceDiscoveryAssociationsOutput, error)
+	DescribeIpamResourceDiscoveryAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveryAssociationsInput, cb func(*ec2.DescribeIpamResourceDiscoveryAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeIpamScopesWithContext(ctx context.Context, input *ec2.DescribeIpamScopesInput, opts ...request.Option) (*ec2.DescribeIpamScopesOutput, error)
 	DescribeIpamScopesPagesWithContext(ctx context.Context, input *ec2.DescribeIpamScopesInput, cb func(*ec2.DescribeIpamScopesOutput, bool) bool, opts ...request.Option) error
 	DescribeIpamsWithContext(ctx context.Context, input *ec2.DescribeIpamsInput, opts ...request.Option) (*ec2.DescribeIpamsOutput, error)
@@ -494,6 +501,7 @@ type EC2 interface {
 	DisassociateEnclaveCertificateIamRoleWithContext(ctx context.Context, input *ec2.DisassociateEnclaveCertificateIamRoleInput, opts ...request.Option) (*ec2.DisassociateEnclaveCertificateIamRoleOutput, error)
 	DisassociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.DisassociateIamInstanceProfileInput, opts ...request.Option) (*ec2.DisassociateIamInstanceProfileOutput, error)
 	DisassociateInstanceEventWindowWithContext(ctx context.Context, input *ec2.DisassociateInstanceEventWindowInput, opts ...request.Option) (*ec2.DisassociateInstanceEventWindowOutput, error)
+	DisassociateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.DisassociateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.DisassociateIpamResourceDiscoveryOutput, error)
 	DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error)
 	DisassociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.DisassociateSubnetCidrBlockOutput, error)
 	DisassociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayMulticastDomainOutput, error)
@@ -540,6 +548,10 @@ type EC2 interface {
 	GetInstanceUefiDataWithContext(ctx context.Context, input *ec2.GetInstanceUefiDataInput, opts ...request.Option) (*ec2.GetInstanceUefiDataOutput, error)
 	GetIpamAddressHistoryWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, opts ...request.Option) (*ec2.GetIpamAddressHistoryOutput, error)
 	GetIpamAddressHistoryPagesWithContext(ctx context.Context, input *ec2.GetIpamAddressHistoryInput, cb func(*ec2.GetIpamAddressHistoryOutput, bool) bool, opts ...request.Option) error
+	GetIpamDiscoveredAccountsWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredAccountsInput, opts ...request.Option) (*ec2.GetIpamDiscoveredAccountsOutput, error)
+	GetIpamDiscoveredAccountsPagesWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredAccountsInput, cb func(*ec2.GetIpamDiscoveredAccountsOutput, bool) bool, opts ...request.Option) error
+	GetIpamDiscoveredResourceCidrsWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredResourceCidrsInput, opts ...request.Option) (*ec2.GetIpamDiscoveredResourceCidrsOutput, error)
+	GetIpamDiscoveredResourceCidrsPagesWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredResourceCidrsInput, cb func(*ec2.GetIpamDiscoveredResourceCidrsOutput, bool) bool, opts ...request.Option) error
 	GetIpamPoolAllocationsWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, opts ...request.Option) (*ec2.GetIpamPoolAllocationsOutput, error)
 	GetIpamPoolAllocationsPagesWithContext(ctx context.Context, input *ec2.GetIpamPoolAllocationsInput, cb func(*ec2.GetIpamPoolAllocationsOutput, bool) bool, opts ...request.Option) error
 	GetIpamPoolCidrsWithContext(ctx context.Context, input *ec2.GetIpamPoolCidrsInput, opts ...request.Option) (*ec2.GetIpamPoolCidrsOutput, error)
@@ -611,6 +623,7 @@ type EC2 interface {
 	ModifyIpamWithContext(ctx context.Context, input *ec2.ModifyIpamInput, opts ...request.Option) (*ec2.ModifyIpamOutput, error)
 	ModifyIpamPoolWithContext(ctx context.Context, input *ec2.ModifyIpamPoolInput, opts ...request.Option) (*ec2.ModifyIpamPoolOutput, error)
 	ModifyIpamResourceCidrWithContext(ctx context.Context, input *ec2.ModifyIpamResourceCidrInput, opts ...request.Option) (*ec2.ModifyIpamResourceCidrOutput, error)
+	ModifyIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.ModifyIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.ModifyIpamResourceDiscoveryOutput, error)
 	ModifyIpamScopeWithContext(ctx context.Context, input *ec2.ModifyIpamScopeInput, opts ...request.Option) (*ec2.ModifyIpamScopeOutput, error)
 	ModifyLaunchTemplateWithContext(ctx context.Context, input *ec2.ModifyLaunchTemplateInput, opts ...request.Option) (*ec2.ModifyLaunchTemplateOutput, error)
 	ModifyLocalGatewayRouteWithContext(ctx context.Context, input *ec2.ModifyLocalGatewayRouteInput, opts ...request.Option) (*ec2.ModifyLocalGatewayRouteOutput, error)
@@ -1152,6 +1165,27 @@ func (c *Client) AssociateInstanceEventWindowWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.AssociateInstanceEventWindowOutput), req.Error
+}
+
+func (c *Client) AssociateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.AssociateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.AssociateIpamResourceDiscoveryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AssociateIpamResourceDiscovery",
+		Input:   input,
+		Output:  (*ec2.AssociateIpamResourceDiscoveryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AssociateIpamResourceDiscoveryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AssociateIpamResourceDiscoveryOutput), req.Error
 }
 
 func (c *Client) AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error) {
@@ -2244,6 +2278,27 @@ func (c *Client) CreateIpamPoolWithContext(ctx context.Context, input *ec2.Creat
 	})
 
 	return req.Output.(*ec2.CreateIpamPoolOutput), req.Error
+}
+
+func (c *Client) CreateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.CreateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.CreateIpamResourceDiscoveryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateIpamResourceDiscovery",
+		Input:   input,
+		Output:  (*ec2.CreateIpamResourceDiscoveryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateIpamResourceDiscoveryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateIpamResourceDiscoveryOutput), req.Error
 }
 
 func (c *Client) CreateIpamScopeWithContext(ctx context.Context, input *ec2.CreateIpamScopeInput, opts ...request.Option) (*ec2.CreateIpamScopeOutput, error) {
@@ -3798,6 +3853,27 @@ func (c *Client) DeleteIpamPoolWithContext(ctx context.Context, input *ec2.Delet
 	})
 
 	return req.Output.(*ec2.DeleteIpamPoolOutput), req.Error
+}
+
+func (c *Client) DeleteIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.DeleteIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.DeleteIpamResourceDiscoveryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteIpamResourceDiscovery",
+		Input:   input,
+		Output:  (*ec2.DeleteIpamResourceDiscoveryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteIpamResourceDiscoveryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteIpamResourceDiscoveryOutput), req.Error
 }
 
 func (c *Client) DeleteIpamScopeWithContext(ctx context.Context, input *ec2.DeleteIpamScopeInput, opts ...request.Option) (*ec2.DeleteIpamScopeOutput, error) {
@@ -7013,6 +7089,88 @@ func (c *Client) DescribeIpamPoolsPagesWithContext(ctx context.Context, input *e
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeIpamPoolsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeIpamResourceDiscoveriesWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveriesInput, opts ...request.Option) (*ec2.DescribeIpamResourceDiscoveriesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamResourceDiscoveries",
+		Input:   input,
+		Output:  (*ec2.DescribeIpamResourceDiscoveriesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeIpamResourceDiscoveriesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeIpamResourceDiscoveriesOutput), req.Error
+}
+
+func (c *Client) DescribeIpamResourceDiscoveriesPagesWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveriesInput, cb func(*ec2.DescribeIpamResourceDiscoveriesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamResourceDiscoveries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIpamResourceDiscoveriesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeIpamResourceDiscoveryAssociationsWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveryAssociationsInput, opts ...request.Option) (*ec2.DescribeIpamResourceDiscoveryAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamResourceDiscoveryAssociations",
+		Input:   input,
+		Output:  (*ec2.DescribeIpamResourceDiscoveryAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeIpamResourceDiscoveryAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeIpamResourceDiscoveryAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeIpamResourceDiscoveryAssociationsPagesWithContext(ctx context.Context, input *ec2.DescribeIpamResourceDiscoveryAssociationsInput, cb func(*ec2.DescribeIpamResourceDiscoveryAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeIpamResourceDiscoveryAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeIpamResourceDiscoveryAssociationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -10769,6 +10927,27 @@ func (c *Client) DisassociateInstanceEventWindowWithContext(ctx context.Context,
 	return req.Output.(*ec2.DisassociateInstanceEventWindowOutput), req.Error
 }
 
+func (c *Client) DisassociateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.DisassociateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.DisassociateIpamResourceDiscoveryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisassociateIpamResourceDiscovery",
+		Input:   input,
+		Output:  (*ec2.DisassociateIpamResourceDiscoveryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisassociateIpamResourceDiscoveryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisassociateIpamResourceDiscoveryOutput), req.Error
+}
+
 func (c *Client) DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11725,6 +11904,88 @@ func (c *Client) GetIpamAddressHistoryPagesWithContext(ctx context.Context, inpu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.GetIpamAddressHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetIpamDiscoveredAccountsWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredAccountsInput, opts ...request.Option) (*ec2.GetIpamDiscoveredAccountsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamDiscoveredAccounts",
+		Input:   input,
+		Output:  (*ec2.GetIpamDiscoveredAccountsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetIpamDiscoveredAccountsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetIpamDiscoveredAccountsOutput), req.Error
+}
+
+func (c *Client) GetIpamDiscoveredAccountsPagesWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredAccountsInput, cb func(*ec2.GetIpamDiscoveredAccountsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamDiscoveredAccounts",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetIpamDiscoveredAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetIpamDiscoveredResourceCidrsWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredResourceCidrsInput, opts ...request.Option) (*ec2.GetIpamDiscoveredResourceCidrsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamDiscoveredResourceCidrs",
+		Input:   input,
+		Output:  (*ec2.GetIpamDiscoveredResourceCidrsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetIpamDiscoveredResourceCidrsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetIpamDiscoveredResourceCidrsOutput), req.Error
+}
+
+func (c *Client) GetIpamDiscoveredResourceCidrsPagesWithContext(ctx context.Context, input *ec2.GetIpamDiscoveredResourceCidrsInput, cb func(*ec2.GetIpamDiscoveredResourceCidrsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetIpamDiscoveredResourceCidrs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetIpamDiscoveredResourceCidrsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -13204,6 +13465,27 @@ func (c *Client) ModifyIpamResourceCidrWithContext(ctx context.Context, input *e
 	})
 
 	return req.Output.(*ec2.ModifyIpamResourceCidrOutput), req.Error
+}
+
+func (c *Client) ModifyIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.ModifyIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.ModifyIpamResourceDiscoveryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ModifyIpamResourceDiscovery",
+		Input:   input,
+		Output:  (*ec2.ModifyIpamResourceDiscoveryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ModifyIpamResourceDiscoveryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ModifyIpamResourceDiscoveryOutput), req.Error
 }
 
 func (c *Client) ModifyIpamScopeWithContext(ctx context.Context, input *ec2.ModifyIpamScopeInput, opts ...request.Option) (*ec2.ModifyIpamScopeOutput, error) {
