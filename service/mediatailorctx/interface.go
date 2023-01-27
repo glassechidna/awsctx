@@ -11,6 +11,7 @@ import (
 )
 
 type MediaTailor interface {
+	ConfigureLogsForChannelWithContext(ctx context.Context, input *mediatailor.ConfigureLogsForChannelInput, opts ...request.Option) (*mediatailor.ConfigureLogsForChannelOutput, error)
 	ConfigureLogsForPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.ConfigureLogsForPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.ConfigureLogsForPlaybackConfigurationOutput, error)
 	CreateChannelWithContext(ctx context.Context, input *mediatailor.CreateChannelInput, opts ...request.Option) (*mediatailor.CreateChannelOutput, error)
 	CreateLiveSourceWithContext(ctx context.Context, input *mediatailor.CreateLiveSourceInput, opts ...request.Option) (*mediatailor.CreateLiveSourceOutput, error)
@@ -77,6 +78,27 @@ func New(base mediatailoriface.MediaTailorAPI, ctxer awsctx.Contexter) MediaTail
 
 var _ MediaTailor = (*mediatailor.MediaTailor)(nil)
 var _ MediaTailor = (*Client)(nil)
+
+func (c *Client) ConfigureLogsForChannelWithContext(ctx context.Context, input *mediatailor.ConfigureLogsForChannelInput, opts ...request.Option) (*mediatailor.ConfigureLogsForChannelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "ConfigureLogsForChannel",
+		Input:   input,
+		Output:  (*mediatailor.ConfigureLogsForChannelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.ConfigureLogsForChannelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.ConfigureLogsForChannelOutput), req.Error
+}
 
 func (c *Client) ConfigureLogsForPlaybackConfigurationWithContext(ctx context.Context, input *mediatailor.ConfigureLogsForPlaybackConfigurationInput, opts ...request.Option) (*mediatailor.ConfigureLogsForPlaybackConfigurationOutput, error) {
 	req := &awsctx.AwsRequest{
