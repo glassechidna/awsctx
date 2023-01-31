@@ -22,6 +22,7 @@ type GroundStation interface {
 	DeleteMissionProfileWithContext(ctx context.Context, input *groundstation.DeleteMissionProfileInput, opts ...request.Option) (*groundstation.DeleteMissionProfileOutput, error)
 	DescribeContactWithContext(ctx context.Context, input *groundstation.DescribeContactInput, opts ...request.Option) (*groundstation.DescribeContactOutput, error)
 	DescribeEphemerisWithContext(ctx context.Context, input *groundstation.DescribeEphemerisInput, opts ...request.Option) (*groundstation.DescribeEphemerisOutput, error)
+	GetAgentConfigurationWithContext(ctx context.Context, input *groundstation.GetAgentConfigurationInput, opts ...request.Option) (*groundstation.GetAgentConfigurationOutput, error)
 	GetConfigWithContext(ctx context.Context, input *groundstation.GetConfigInput, opts ...request.Option) (*groundstation.GetConfigOutput, error)
 	GetDataflowEndpointGroupWithContext(ctx context.Context, input *groundstation.GetDataflowEndpointGroupInput, opts ...request.Option) (*groundstation.GetDataflowEndpointGroupOutput, error)
 	GetMinuteUsageWithContext(ctx context.Context, input *groundstation.GetMinuteUsageInput, opts ...request.Option) (*groundstation.GetMinuteUsageOutput, error)
@@ -42,9 +43,11 @@ type GroundStation interface {
 	ListSatellitesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, opts ...request.Option) (*groundstation.ListSatellitesOutput, error)
 	ListSatellitesPagesWithContext(ctx context.Context, input *groundstation.ListSatellitesInput, cb func(*groundstation.ListSatellitesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *groundstation.ListTagsForResourceInput, opts ...request.Option) (*groundstation.ListTagsForResourceOutput, error)
+	RegisterAgentWithContext(ctx context.Context, input *groundstation.RegisterAgentInput, opts ...request.Option) (*groundstation.RegisterAgentOutput, error)
 	ReserveContactWithContext(ctx context.Context, input *groundstation.ReserveContactInput, opts ...request.Option) (*groundstation.ReserveContactOutput, error)
 	TagResourceWithContext(ctx context.Context, input *groundstation.TagResourceInput, opts ...request.Option) (*groundstation.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *groundstation.UntagResourceInput, opts ...request.Option) (*groundstation.UntagResourceOutput, error)
+	UpdateAgentStatusWithContext(ctx context.Context, input *groundstation.UpdateAgentStatusInput, opts ...request.Option) (*groundstation.UpdateAgentStatusOutput, error)
 	UpdateConfigWithContext(ctx context.Context, input *groundstation.UpdateConfigInput, opts ...request.Option) (*groundstation.UpdateConfigOutput, error)
 	UpdateEphemerisWithContext(ctx context.Context, input *groundstation.UpdateEphemerisInput, opts ...request.Option) (*groundstation.UpdateEphemerisOutput, error)
 	UpdateMissionProfileWithContext(ctx context.Context, input *groundstation.UpdateMissionProfileInput, opts ...request.Option) (*groundstation.UpdateMissionProfileOutput, error)
@@ -294,6 +297,27 @@ func (c *Client) DescribeEphemerisWithContext(ctx context.Context, input *ground
 	})
 
 	return req.Output.(*groundstation.DescribeEphemerisOutput), req.Error
+}
+
+func (c *Client) GetAgentConfigurationWithContext(ctx context.Context, input *groundstation.GetAgentConfigurationInput, opts ...request.Option) (*groundstation.GetAgentConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "GetAgentConfiguration",
+		Input:   input,
+		Output:  (*groundstation.GetAgentConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.GetAgentConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.GetAgentConfigurationOutput), req.Error
 }
 
 func (c *Client) GetConfigWithContext(ctx context.Context, input *groundstation.GetConfigInput, opts ...request.Option) (*groundstation.GetConfigOutput, error) {
@@ -709,6 +733,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *grou
 	return req.Output.(*groundstation.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) RegisterAgentWithContext(ctx context.Context, input *groundstation.RegisterAgentInput, opts ...request.Option) (*groundstation.RegisterAgentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "RegisterAgent",
+		Input:   input,
+		Output:  (*groundstation.RegisterAgentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.RegisterAgentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.RegisterAgentOutput), req.Error
+}
+
 func (c *Client) ReserveContactWithContext(ctx context.Context, input *groundstation.ReserveContactInput, opts ...request.Option) (*groundstation.ReserveContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "groundstation",
@@ -770,6 +815,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *groundstat
 	})
 
 	return req.Output.(*groundstation.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAgentStatusWithContext(ctx context.Context, input *groundstation.UpdateAgentStatusInput, opts ...request.Option) (*groundstation.UpdateAgentStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "groundstation",
+		Action:  "UpdateAgentStatus",
+		Input:   input,
+		Output:  (*groundstation.UpdateAgentStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GroundStationAPI.UpdateAgentStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*groundstation.UpdateAgentStatusOutput), req.Error
 }
 
 func (c *Client) UpdateConfigWithContext(ctx context.Context, input *groundstation.UpdateConfigInput, opts ...request.Option) (*groundstation.UpdateConfigOutput, error) {

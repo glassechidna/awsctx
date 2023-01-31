@@ -25,6 +25,7 @@ type EC2 interface {
 	ApplySecurityGroupsToClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.ApplySecurityGroupsToClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.ApplySecurityGroupsToClientVpnTargetNetworkOutput, error)
 	AssignIpv6AddressesWithContext(ctx context.Context, input *ec2.AssignIpv6AddressesInput, opts ...request.Option) (*ec2.AssignIpv6AddressesOutput, error)
 	AssignPrivateIpAddressesWithContext(ctx context.Context, input *ec2.AssignPrivateIpAddressesInput, opts ...request.Option) (*ec2.AssignPrivateIpAddressesOutput, error)
+	AssignPrivateNatGatewayAddressWithContext(ctx context.Context, input *ec2.AssignPrivateNatGatewayAddressInput, opts ...request.Option) (*ec2.AssignPrivateNatGatewayAddressOutput, error)
 	AssociateAddressWithContext(ctx context.Context, input *ec2.AssociateAddressInput, opts ...request.Option) (*ec2.AssociateAddressOutput, error)
 	AssociateClientVpnTargetNetworkWithContext(ctx context.Context, input *ec2.AssociateClientVpnTargetNetworkInput, opts ...request.Option) (*ec2.AssociateClientVpnTargetNetworkOutput, error)
 	AssociateDhcpOptionsWithContext(ctx context.Context, input *ec2.AssociateDhcpOptionsInput, opts ...request.Option) (*ec2.AssociateDhcpOptionsOutput, error)
@@ -32,6 +33,7 @@ type EC2 interface {
 	AssociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.AssociateIamInstanceProfileInput, opts ...request.Option) (*ec2.AssociateIamInstanceProfileOutput, error)
 	AssociateInstanceEventWindowWithContext(ctx context.Context, input *ec2.AssociateInstanceEventWindowInput, opts ...request.Option) (*ec2.AssociateInstanceEventWindowOutput, error)
 	AssociateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.AssociateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.AssociateIpamResourceDiscoveryOutput, error)
+	AssociateNatGatewayAddressWithContext(ctx context.Context, input *ec2.AssociateNatGatewayAddressInput, opts ...request.Option) (*ec2.AssociateNatGatewayAddressOutput, error)
 	AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error)
 	AssociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.AssociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.AssociateSubnetCidrBlockOutput, error)
 	AssociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.AssociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.AssociateTransitGatewayMulticastDomainOutput, error)
@@ -502,6 +504,7 @@ type EC2 interface {
 	DisassociateIamInstanceProfileWithContext(ctx context.Context, input *ec2.DisassociateIamInstanceProfileInput, opts ...request.Option) (*ec2.DisassociateIamInstanceProfileOutput, error)
 	DisassociateInstanceEventWindowWithContext(ctx context.Context, input *ec2.DisassociateInstanceEventWindowInput, opts ...request.Option) (*ec2.DisassociateInstanceEventWindowOutput, error)
 	DisassociateIpamResourceDiscoveryWithContext(ctx context.Context, input *ec2.DisassociateIpamResourceDiscoveryInput, opts ...request.Option) (*ec2.DisassociateIpamResourceDiscoveryOutput, error)
+	DisassociateNatGatewayAddressWithContext(ctx context.Context, input *ec2.DisassociateNatGatewayAddressInput, opts ...request.Option) (*ec2.DisassociateNatGatewayAddressOutput, error)
 	DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error)
 	DisassociateSubnetCidrBlockWithContext(ctx context.Context, input *ec2.DisassociateSubnetCidrBlockInput, opts ...request.Option) (*ec2.DisassociateSubnetCidrBlockOutput, error)
 	DisassociateTransitGatewayMulticastDomainWithContext(ctx context.Context, input *ec2.DisassociateTransitGatewayMulticastDomainInput, opts ...request.Option) (*ec2.DisassociateTransitGatewayMulticastDomainOutput, error)
@@ -726,6 +729,7 @@ type EC2 interface {
 	TerminateInstancesWithContext(ctx context.Context, input *ec2.TerminateInstancesInput, opts ...request.Option) (*ec2.TerminateInstancesOutput, error)
 	UnassignIpv6AddressesWithContext(ctx context.Context, input *ec2.UnassignIpv6AddressesInput, opts ...request.Option) (*ec2.UnassignIpv6AddressesOutput, error)
 	UnassignPrivateIpAddressesWithContext(ctx context.Context, input *ec2.UnassignPrivateIpAddressesInput, opts ...request.Option) (*ec2.UnassignPrivateIpAddressesOutput, error)
+	UnassignPrivateNatGatewayAddressWithContext(ctx context.Context, input *ec2.UnassignPrivateNatGatewayAddressInput, opts ...request.Option) (*ec2.UnassignPrivateNatGatewayAddressOutput, error)
 	UnmonitorInstancesWithContext(ctx context.Context, input *ec2.UnmonitorInstancesInput, opts ...request.Option) (*ec2.UnmonitorInstancesOutput, error)
 	UpdateSecurityGroupRuleDescriptionsEgressWithContext(ctx context.Context, input *ec2.UpdateSecurityGroupRuleDescriptionsEgressInput, opts ...request.Option) (*ec2.UpdateSecurityGroupRuleDescriptionsEgressOutput, error)
 	UpdateSecurityGroupRuleDescriptionsIngressWithContext(ctx context.Context, input *ec2.UpdateSecurityGroupRuleDescriptionsIngressInput, opts ...request.Option) (*ec2.UpdateSecurityGroupRuleDescriptionsIngressOutput, error)
@@ -1041,6 +1045,27 @@ func (c *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, input 
 	return req.Output.(*ec2.AssignPrivateIpAddressesOutput), req.Error
 }
 
+func (c *Client) AssignPrivateNatGatewayAddressWithContext(ctx context.Context, input *ec2.AssignPrivateNatGatewayAddressInput, opts ...request.Option) (*ec2.AssignPrivateNatGatewayAddressOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AssignPrivateNatGatewayAddress",
+		Input:   input,
+		Output:  (*ec2.AssignPrivateNatGatewayAddressOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AssignPrivateNatGatewayAddressWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AssignPrivateNatGatewayAddressOutput), req.Error
+}
+
 func (c *Client) AssociateAddressWithContext(ctx context.Context, input *ec2.AssociateAddressInput, opts ...request.Option) (*ec2.AssociateAddressOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -1186,6 +1211,27 @@ func (c *Client) AssociateIpamResourceDiscoveryWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*ec2.AssociateIpamResourceDiscoveryOutput), req.Error
+}
+
+func (c *Client) AssociateNatGatewayAddressWithContext(ctx context.Context, input *ec2.AssociateNatGatewayAddressInput, opts ...request.Option) (*ec2.AssociateNatGatewayAddressOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "AssociateNatGatewayAddress",
+		Input:   input,
+		Output:  (*ec2.AssociateNatGatewayAddressOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.AssociateNatGatewayAddressWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.AssociateNatGatewayAddressOutput), req.Error
 }
 
 func (c *Client) AssociateRouteTableWithContext(ctx context.Context, input *ec2.AssociateRouteTableInput, opts ...request.Option) (*ec2.AssociateRouteTableOutput, error) {
@@ -10948,6 +10994,27 @@ func (c *Client) DisassociateIpamResourceDiscoveryWithContext(ctx context.Contex
 	return req.Output.(*ec2.DisassociateIpamResourceDiscoveryOutput), req.Error
 }
 
+func (c *Client) DisassociateNatGatewayAddressWithContext(ctx context.Context, input *ec2.DisassociateNatGatewayAddressInput, opts ...request.Option) (*ec2.DisassociateNatGatewayAddressOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisassociateNatGatewayAddress",
+		Input:   input,
+		Output:  (*ec2.DisassociateNatGatewayAddressOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisassociateNatGatewayAddressWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisassociateNatGatewayAddressOutput), req.Error
+}
+
 func (c *Client) DisassociateRouteTableWithContext(ctx context.Context, input *ec2.DisassociateRouteTableInput, opts ...request.Option) (*ec2.DisassociateRouteTableOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -15626,6 +15693,27 @@ func (c *Client) UnassignPrivateIpAddressesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.UnassignPrivateIpAddressesOutput), req.Error
+}
+
+func (c *Client) UnassignPrivateNatGatewayAddressWithContext(ctx context.Context, input *ec2.UnassignPrivateNatGatewayAddressInput, opts ...request.Option) (*ec2.UnassignPrivateNatGatewayAddressOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "UnassignPrivateNatGatewayAddress",
+		Input:   input,
+		Output:  (*ec2.UnassignPrivateNatGatewayAddressOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.UnassignPrivateNatGatewayAddressWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.UnassignPrivateNatGatewayAddressOutput), req.Error
 }
 
 func (c *Client) UnmonitorInstancesWithContext(ctx context.Context, input *ec2.UnmonitorInstancesInput, opts ...request.Option) (*ec2.UnmonitorInstancesOutput, error) {
