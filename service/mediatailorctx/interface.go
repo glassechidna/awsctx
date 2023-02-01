@@ -60,6 +60,7 @@ type MediaTailor interface {
 	UntagResourceWithContext(ctx context.Context, input *mediatailor.UntagResourceInput, opts ...request.Option) (*mediatailor.UntagResourceOutput, error)
 	UpdateChannelWithContext(ctx context.Context, input *mediatailor.UpdateChannelInput, opts ...request.Option) (*mediatailor.UpdateChannelOutput, error)
 	UpdateLiveSourceWithContext(ctx context.Context, input *mediatailor.UpdateLiveSourceInput, opts ...request.Option) (*mediatailor.UpdateLiveSourceOutput, error)
+	UpdateProgramWithContext(ctx context.Context, input *mediatailor.UpdateProgramInput, opts ...request.Option) (*mediatailor.UpdateProgramOutput, error)
 	UpdateSourceLocationWithContext(ctx context.Context, input *mediatailor.UpdateSourceLocationInput, opts ...request.Option) (*mediatailor.UpdateSourceLocationOutput, error)
 	UpdateVodSourceWithContext(ctx context.Context, input *mediatailor.UpdateVodSourceInput, opts ...request.Option) (*mediatailor.UpdateVodSourceOutput, error)
 }
@@ -1098,6 +1099,27 @@ func (c *Client) UpdateLiveSourceWithContext(ctx context.Context, input *mediata
 	})
 
 	return req.Output.(*mediatailor.UpdateLiveSourceOutput), req.Error
+}
+
+func (c *Client) UpdateProgramWithContext(ctx context.Context, input *mediatailor.UpdateProgramInput, opts ...request.Option) (*mediatailor.UpdateProgramOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediatailor",
+		Action:  "UpdateProgram",
+		Input:   input,
+		Output:  (*mediatailor.UpdateProgramOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaTailorAPI.UpdateProgramWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediatailor.UpdateProgramOutput), req.Error
 }
 
 func (c *Client) UpdateSourceLocationWithContext(ctx context.Context, input *mediatailor.UpdateSourceLocationInput, opts ...request.Option) (*mediatailor.UpdateSourceLocationOutput, error) {
