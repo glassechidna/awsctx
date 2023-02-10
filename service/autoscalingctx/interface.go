@@ -76,6 +76,7 @@ type AutoScaling interface {
 	PutWarmPoolWithContext(ctx context.Context, input *autoscaling.PutWarmPoolInput, opts ...request.Option) (*autoscaling.PutWarmPoolOutput, error)
 	RecordLifecycleActionHeartbeatWithContext(ctx context.Context, input *autoscaling.RecordLifecycleActionHeartbeatInput, opts ...request.Option) (*autoscaling.RecordLifecycleActionHeartbeatOutput, error)
 	ResumeProcessesWithContext(ctx context.Context, input *autoscaling.ScalingProcessQuery, opts ...request.Option) (*autoscaling.ResumeProcessesOutput, error)
+	RollbackInstanceRefreshWithContext(ctx context.Context, input *autoscaling.RollbackInstanceRefreshInput, opts ...request.Option) (*autoscaling.RollbackInstanceRefreshOutput, error)
 	SetDesiredCapacityWithContext(ctx context.Context, input *autoscaling.SetDesiredCapacityInput, opts ...request.Option) (*autoscaling.SetDesiredCapacityOutput, error)
 	SetInstanceHealthWithContext(ctx context.Context, input *autoscaling.SetInstanceHealthInput, opts ...request.Option) (*autoscaling.SetInstanceHealthOutput, error)
 	SetInstanceProtectionWithContext(ctx context.Context, input *autoscaling.SetInstanceProtectionInput, opts ...request.Option) (*autoscaling.SetInstanceProtectionOutput, error)
@@ -1455,6 +1456,27 @@ func (c *Client) ResumeProcessesWithContext(ctx context.Context, input *autoscal
 	})
 
 	return req.Output.(*autoscaling.ResumeProcessesOutput), req.Error
+}
+
+func (c *Client) RollbackInstanceRefreshWithContext(ctx context.Context, input *autoscaling.RollbackInstanceRefreshInput, opts ...request.Option) (*autoscaling.RollbackInstanceRefreshOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "RollbackInstanceRefresh",
+		Input:   input,
+		Output:  (*autoscaling.RollbackInstanceRefreshOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AutoScalingAPI.RollbackInstanceRefreshWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*autoscaling.RollbackInstanceRefreshOutput), req.Error
 }
 
 func (c *Client) SetDesiredCapacityWithContext(ctx context.Context, input *autoscaling.SetDesiredCapacityInput, opts ...request.Option) (*autoscaling.SetDesiredCapacityOutput, error) {
