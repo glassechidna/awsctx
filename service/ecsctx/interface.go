@@ -20,6 +20,7 @@ type ECS interface {
 	DeleteCapacityProviderWithContext(ctx context.Context, input *ecs.DeleteCapacityProviderInput, opts ...request.Option) (*ecs.DeleteCapacityProviderOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *ecs.DeleteClusterInput, opts ...request.Option) (*ecs.DeleteClusterOutput, error)
 	DeleteServiceWithContext(ctx context.Context, input *ecs.DeleteServiceInput, opts ...request.Option) (*ecs.DeleteServiceOutput, error)
+	DeleteTaskDefinitionsWithContext(ctx context.Context, input *ecs.DeleteTaskDefinitionsInput, opts ...request.Option) (*ecs.DeleteTaskDefinitionsOutput, error)
 	DeleteTaskSetWithContext(ctx context.Context, input *ecs.DeleteTaskSetInput, opts ...request.Option) (*ecs.DeleteTaskSetOutput, error)
 	DeregisterContainerInstanceWithContext(ctx context.Context, input *ecs.DeregisterContainerInstanceInput, opts ...request.Option) (*ecs.DeregisterContainerInstanceOutput, error)
 	DeregisterTaskDefinitionWithContext(ctx context.Context, input *ecs.DeregisterTaskDefinitionInput, opts ...request.Option) (*ecs.DeregisterTaskDefinitionOutput, error)
@@ -279,6 +280,27 @@ func (c *Client) DeleteServiceWithContext(ctx context.Context, input *ecs.Delete
 	})
 
 	return req.Output.(*ecs.DeleteServiceOutput), req.Error
+}
+
+func (c *Client) DeleteTaskDefinitionsWithContext(ctx context.Context, input *ecs.DeleteTaskDefinitionsInput, opts ...request.Option) (*ecs.DeleteTaskDefinitionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ecs",
+		Action:  "DeleteTaskDefinitions",
+		Input:   input,
+		Output:  (*ecs.DeleteTaskDefinitionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ECSAPI.DeleteTaskDefinitionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ecs.DeleteTaskDefinitionsOutput), req.Error
 }
 
 func (c *Client) DeleteTaskSetWithContext(ctx context.Context, input *ecs.DeleteTaskSetInput, opts ...request.Option) (*ecs.DeleteTaskSetOutput, error) {
