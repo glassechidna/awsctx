@@ -15,8 +15,11 @@ type SecurityHub interface {
 	AcceptInvitationWithContext(ctx context.Context, input *securityhub.AcceptInvitationInput, opts ...request.Option) (*securityhub.AcceptInvitationOutput, error)
 	BatchDisableStandardsWithContext(ctx context.Context, input *securityhub.BatchDisableStandardsInput, opts ...request.Option) (*securityhub.BatchDisableStandardsOutput, error)
 	BatchEnableStandardsWithContext(ctx context.Context, input *securityhub.BatchEnableStandardsInput, opts ...request.Option) (*securityhub.BatchEnableStandardsOutput, error)
+	BatchGetSecurityControlsWithContext(ctx context.Context, input *securityhub.BatchGetSecurityControlsInput, opts ...request.Option) (*securityhub.BatchGetSecurityControlsOutput, error)
+	BatchGetStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.BatchGetStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.BatchGetStandardsControlAssociationsOutput, error)
 	BatchImportFindingsWithContext(ctx context.Context, input *securityhub.BatchImportFindingsInput, opts ...request.Option) (*securityhub.BatchImportFindingsOutput, error)
 	BatchUpdateFindingsWithContext(ctx context.Context, input *securityhub.BatchUpdateFindingsInput, opts ...request.Option) (*securityhub.BatchUpdateFindingsOutput, error)
+	BatchUpdateStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.BatchUpdateStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.BatchUpdateStandardsControlAssociationsOutput, error)
 	CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error)
 	CreateFindingAggregatorWithContext(ctx context.Context, input *securityhub.CreateFindingAggregatorInput, opts ...request.Option) (*securityhub.CreateFindingAggregatorOutput, error)
 	CreateInsightWithContext(ctx context.Context, input *securityhub.CreateInsightInput, opts ...request.Option) (*securityhub.CreateInsightOutput, error)
@@ -69,6 +72,10 @@ type SecurityHub interface {
 	ListMembersPagesWithContext(ctx context.Context, input *securityhub.ListMembersInput, cb func(*securityhub.ListMembersOutput, bool) bool, opts ...request.Option) error
 	ListOrganizationAdminAccountsWithContext(ctx context.Context, input *securityhub.ListOrganizationAdminAccountsInput, opts ...request.Option) (*securityhub.ListOrganizationAdminAccountsOutput, error)
 	ListOrganizationAdminAccountsPagesWithContext(ctx context.Context, input *securityhub.ListOrganizationAdminAccountsInput, cb func(*securityhub.ListOrganizationAdminAccountsOutput, bool) bool, opts ...request.Option) error
+	ListSecurityControlDefinitionsWithContext(ctx context.Context, input *securityhub.ListSecurityControlDefinitionsInput, opts ...request.Option) (*securityhub.ListSecurityControlDefinitionsOutput, error)
+	ListSecurityControlDefinitionsPagesWithContext(ctx context.Context, input *securityhub.ListSecurityControlDefinitionsInput, cb func(*securityhub.ListSecurityControlDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ListStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.ListStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.ListStandardsControlAssociationsOutput, error)
+	ListStandardsControlAssociationsPagesWithContext(ctx context.Context, input *securityhub.ListStandardsControlAssociationsInput, cb func(*securityhub.ListStandardsControlAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *securityhub.ListTagsForResourceInput, opts ...request.Option) (*securityhub.ListTagsForResourceOutput, error)
 	TagResourceWithContext(ctx context.Context, input *securityhub.TagResourceInput, opts ...request.Option) (*securityhub.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *securityhub.UntagResourceInput, opts ...request.Option) (*securityhub.UntagResourceOutput, error)
@@ -180,6 +187,48 @@ func (c *Client) BatchEnableStandardsWithContext(ctx context.Context, input *sec
 	return req.Output.(*securityhub.BatchEnableStandardsOutput), req.Error
 }
 
+func (c *Client) BatchGetSecurityControlsWithContext(ctx context.Context, input *securityhub.BatchGetSecurityControlsInput, opts ...request.Option) (*securityhub.BatchGetSecurityControlsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchGetSecurityControls",
+		Input:   input,
+		Output:  (*securityhub.BatchGetSecurityControlsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchGetSecurityControlsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchGetSecurityControlsOutput), req.Error
+}
+
+func (c *Client) BatchGetStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.BatchGetStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.BatchGetStandardsControlAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchGetStandardsControlAssociations",
+		Input:   input,
+		Output:  (*securityhub.BatchGetStandardsControlAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchGetStandardsControlAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchGetStandardsControlAssociationsOutput), req.Error
+}
+
 func (c *Client) BatchImportFindingsWithContext(ctx context.Context, input *securityhub.BatchImportFindingsInput, opts ...request.Option) (*securityhub.BatchImportFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -220,6 +269,27 @@ func (c *Client) BatchUpdateFindingsWithContext(ctx context.Context, input *secu
 	})
 
 	return req.Output.(*securityhub.BatchUpdateFindingsOutput), req.Error
+}
+
+func (c *Client) BatchUpdateStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.BatchUpdateStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.BatchUpdateStandardsControlAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchUpdateStandardsControlAssociations",
+		Input:   input,
+		Output:  (*securityhub.BatchUpdateStandardsControlAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchUpdateStandardsControlAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchUpdateStandardsControlAssociationsOutput), req.Error
 }
 
 func (c *Client) CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error) {
@@ -1297,6 +1367,88 @@ func (c *Client) ListOrganizationAdminAccountsPagesWithContext(ctx context.Conte
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SecurityHubAPI.ListOrganizationAdminAccountsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSecurityControlDefinitionsWithContext(ctx context.Context, input *securityhub.ListSecurityControlDefinitionsInput, opts ...request.Option) (*securityhub.ListSecurityControlDefinitionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListSecurityControlDefinitions",
+		Input:   input,
+		Output:  (*securityhub.ListSecurityControlDefinitionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.ListSecurityControlDefinitionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.ListSecurityControlDefinitionsOutput), req.Error
+}
+
+func (c *Client) ListSecurityControlDefinitionsPagesWithContext(ctx context.Context, input *securityhub.ListSecurityControlDefinitionsInput, cb func(*securityhub.ListSecurityControlDefinitionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListSecurityControlDefinitions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListSecurityControlDefinitionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.ListStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.ListStandardsControlAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListStandardsControlAssociations",
+		Input:   input,
+		Output:  (*securityhub.ListStandardsControlAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.ListStandardsControlAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.ListStandardsControlAssociationsOutput), req.Error
+}
+
+func (c *Client) ListStandardsControlAssociationsPagesWithContext(ctx context.Context, input *securityhub.ListStandardsControlAssociationsInput, cb func(*securityhub.ListStandardsControlAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListStandardsControlAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.ListStandardsControlAssociationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
