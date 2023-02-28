@@ -33,6 +33,7 @@ type Lightsail interface {
 	CreateDistributionWithContext(ctx context.Context, input *lightsail.CreateDistributionInput, opts ...request.Option) (*lightsail.CreateDistributionOutput, error)
 	CreateDomainWithContext(ctx context.Context, input *lightsail.CreateDomainInput, opts ...request.Option) (*lightsail.CreateDomainOutput, error)
 	CreateDomainEntryWithContext(ctx context.Context, input *lightsail.CreateDomainEntryInput, opts ...request.Option) (*lightsail.CreateDomainEntryOutput, error)
+	CreateGUISessionAccessDetailsWithContext(ctx context.Context, input *lightsail.CreateGUISessionAccessDetailsInput, opts ...request.Option) (*lightsail.CreateGUISessionAccessDetailsOutput, error)
 	CreateInstanceSnapshotWithContext(ctx context.Context, input *lightsail.CreateInstanceSnapshotInput, opts ...request.Option) (*lightsail.CreateInstanceSnapshotOutput, error)
 	CreateInstancesWithContext(ctx context.Context, input *lightsail.CreateInstancesInput, opts ...request.Option) (*lightsail.CreateInstancesOutput, error)
 	CreateInstancesFromSnapshotWithContext(ctx context.Context, input *lightsail.CreateInstancesFromSnapshotInput, opts ...request.Option) (*lightsail.CreateInstancesFromSnapshotOutput, error)
@@ -90,6 +91,7 @@ type Lightsail interface {
 	GetContainerServiceMetricDataWithContext(ctx context.Context, input *lightsail.GetContainerServiceMetricDataInput, opts ...request.Option) (*lightsail.GetContainerServiceMetricDataOutput, error)
 	GetContainerServicePowersWithContext(ctx context.Context, input *lightsail.GetContainerServicePowersInput, opts ...request.Option) (*lightsail.GetContainerServicePowersOutput, error)
 	GetContainerServicesWithContext(ctx context.Context, input *lightsail.GetContainerServicesInput, opts ...request.Option) (*lightsail.GetContainerServicesOutput, error)
+	GetCostEstimateWithContext(ctx context.Context, input *lightsail.GetCostEstimateInput, opts ...request.Option) (*lightsail.GetCostEstimateOutput, error)
 	GetDiskWithContext(ctx context.Context, input *lightsail.GetDiskInput, opts ...request.Option) (*lightsail.GetDiskOutput, error)
 	GetDiskSnapshotWithContext(ctx context.Context, input *lightsail.GetDiskSnapshotInput, opts ...request.Option) (*lightsail.GetDiskSnapshotOutput, error)
 	GetDiskSnapshotsWithContext(ctx context.Context, input *lightsail.GetDiskSnapshotsInput, opts ...request.Option) (*lightsail.GetDiskSnapshotsOutput, error)
@@ -148,8 +150,10 @@ type Lightsail interface {
 	SendContactMethodVerificationWithContext(ctx context.Context, input *lightsail.SendContactMethodVerificationInput, opts ...request.Option) (*lightsail.SendContactMethodVerificationOutput, error)
 	SetIpAddressTypeWithContext(ctx context.Context, input *lightsail.SetIpAddressTypeInput, opts ...request.Option) (*lightsail.SetIpAddressTypeOutput, error)
 	SetResourceAccessForBucketWithContext(ctx context.Context, input *lightsail.SetResourceAccessForBucketInput, opts ...request.Option) (*lightsail.SetResourceAccessForBucketOutput, error)
+	StartGUISessionWithContext(ctx context.Context, input *lightsail.StartGUISessionInput, opts ...request.Option) (*lightsail.StartGUISessionOutput, error)
 	StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error)
 	StartRelationalDatabaseWithContext(ctx context.Context, input *lightsail.StartRelationalDatabaseInput, opts ...request.Option) (*lightsail.StartRelationalDatabaseOutput, error)
+	StopGUISessionWithContext(ctx context.Context, input *lightsail.StopGUISessionInput, opts ...request.Option) (*lightsail.StopGUISessionOutput, error)
 	StopInstanceWithContext(ctx context.Context, input *lightsail.StopInstanceInput, opts ...request.Option) (*lightsail.StopInstanceOutput, error)
 	StopRelationalDatabaseWithContext(ctx context.Context, input *lightsail.StopRelationalDatabaseInput, opts ...request.Option) (*lightsail.StopRelationalDatabaseOutput, error)
 	TagResourceWithContext(ctx context.Context, input *lightsail.TagResourceInput, opts ...request.Option) (*lightsail.TagResourceOutput, error)
@@ -643,6 +647,27 @@ func (c *Client) CreateDomainEntryWithContext(ctx context.Context, input *lights
 	})
 
 	return req.Output.(*lightsail.CreateDomainEntryOutput), req.Error
+}
+
+func (c *Client) CreateGUISessionAccessDetailsWithContext(ctx context.Context, input *lightsail.CreateGUISessionAccessDetailsInput, opts ...request.Option) (*lightsail.CreateGUISessionAccessDetailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "CreateGUISessionAccessDetails",
+		Input:   input,
+		Output:  (*lightsail.CreateGUISessionAccessDetailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.CreateGUISessionAccessDetailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.CreateGUISessionAccessDetailsOutput), req.Error
 }
 
 func (c *Client) CreateInstanceSnapshotWithContext(ctx context.Context, input *lightsail.CreateInstanceSnapshotInput, opts ...request.Option) (*lightsail.CreateInstanceSnapshotOutput, error) {
@@ -1840,6 +1865,27 @@ func (c *Client) GetContainerServicesWithContext(ctx context.Context, input *lig
 	})
 
 	return req.Output.(*lightsail.GetContainerServicesOutput), req.Error
+}
+
+func (c *Client) GetCostEstimateWithContext(ctx context.Context, input *lightsail.GetCostEstimateInput, opts ...request.Option) (*lightsail.GetCostEstimateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "GetCostEstimate",
+		Input:   input,
+		Output:  (*lightsail.GetCostEstimateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.GetCostEstimateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.GetCostEstimateOutput), req.Error
 }
 
 func (c *Client) GetDiskWithContext(ctx context.Context, input *lightsail.GetDiskInput, opts ...request.Option) (*lightsail.GetDiskOutput, error) {
@@ -3060,6 +3106,27 @@ func (c *Client) SetResourceAccessForBucketWithContext(ctx context.Context, inpu
 	return req.Output.(*lightsail.SetResourceAccessForBucketOutput), req.Error
 }
 
+func (c *Client) StartGUISessionWithContext(ctx context.Context, input *lightsail.StartGUISessionInput, opts ...request.Option) (*lightsail.StartGUISessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "StartGUISession",
+		Input:   input,
+		Output:  (*lightsail.StartGUISessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.StartGUISessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.StartGUISessionOutput), req.Error
+}
+
 func (c *Client) StartInstanceWithContext(ctx context.Context, input *lightsail.StartInstanceInput, opts ...request.Option) (*lightsail.StartInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lightsail",
@@ -3100,6 +3167,27 @@ func (c *Client) StartRelationalDatabaseWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*lightsail.StartRelationalDatabaseOutput), req.Error
+}
+
+func (c *Client) StopGUISessionWithContext(ctx context.Context, input *lightsail.StopGUISessionInput, opts ...request.Option) (*lightsail.StopGUISessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lightsail",
+		Action:  "StopGUISession",
+		Input:   input,
+		Output:  (*lightsail.StopGUISessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LightsailAPI.StopGUISessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lightsail.StopGUISessionOutput), req.Error
 }
 
 func (c *Client) StopInstanceWithContext(ctx context.Context, input *lightsail.StopInstanceInput, opts ...request.Option) (*lightsail.StopInstanceOutput, error) {

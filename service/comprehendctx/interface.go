@@ -19,13 +19,17 @@ type Comprehend interface {
 	BatchDetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.BatchDetectTargetedSentimentInput, opts ...request.Option) (*comprehend.BatchDetectTargetedSentimentOutput, error)
 	ClassifyDocumentWithContext(ctx context.Context, input *comprehend.ClassifyDocumentInput, opts ...request.Option) (*comprehend.ClassifyDocumentOutput, error)
 	ContainsPiiEntitiesWithContext(ctx context.Context, input *comprehend.ContainsPiiEntitiesInput, opts ...request.Option) (*comprehend.ContainsPiiEntitiesOutput, error)
+	CreateDatasetWithContext(ctx context.Context, input *comprehend.CreateDatasetInput, opts ...request.Option) (*comprehend.CreateDatasetOutput, error)
 	CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error)
 	CreateEndpointWithContext(ctx context.Context, input *comprehend.CreateEndpointInput, opts ...request.Option) (*comprehend.CreateEndpointOutput, error)
 	CreateEntityRecognizerWithContext(ctx context.Context, input *comprehend.CreateEntityRecognizerInput, opts ...request.Option) (*comprehend.CreateEntityRecognizerOutput, error)
+	CreateFlywheelWithContext(ctx context.Context, input *comprehend.CreateFlywheelInput, opts ...request.Option) (*comprehend.CreateFlywheelOutput, error)
 	DeleteDocumentClassifierWithContext(ctx context.Context, input *comprehend.DeleteDocumentClassifierInput, opts ...request.Option) (*comprehend.DeleteDocumentClassifierOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *comprehend.DeleteEndpointInput, opts ...request.Option) (*comprehend.DeleteEndpointOutput, error)
 	DeleteEntityRecognizerWithContext(ctx context.Context, input *comprehend.DeleteEntityRecognizerInput, opts ...request.Option) (*comprehend.DeleteEntityRecognizerOutput, error)
+	DeleteFlywheelWithContext(ctx context.Context, input *comprehend.DeleteFlywheelInput, opts ...request.Option) (*comprehend.DeleteFlywheelOutput, error)
 	DeleteResourcePolicyWithContext(ctx context.Context, input *comprehend.DeleteResourcePolicyInput, opts ...request.Option) (*comprehend.DeleteResourcePolicyOutput, error)
+	DescribeDatasetWithContext(ctx context.Context, input *comprehend.DescribeDatasetInput, opts ...request.Option) (*comprehend.DescribeDatasetOutput, error)
 	DescribeDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassificationJobInput, opts ...request.Option) (*comprehend.DescribeDocumentClassificationJobOutput, error)
 	DescribeDocumentClassifierWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassifierInput, opts ...request.Option) (*comprehend.DescribeDocumentClassifierOutput, error)
 	DescribeDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.DescribeDominantLanguageDetectionJobOutput, error)
@@ -33,6 +37,8 @@ type Comprehend interface {
 	DescribeEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEntitiesDetectionJobOutput, error)
 	DescribeEntityRecognizerWithContext(ctx context.Context, input *comprehend.DescribeEntityRecognizerInput, opts ...request.Option) (*comprehend.DescribeEntityRecognizerOutput, error)
 	DescribeEventsDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeEventsDetectionJobInput, opts ...request.Option) (*comprehend.DescribeEventsDetectionJobOutput, error)
+	DescribeFlywheelWithContext(ctx context.Context, input *comprehend.DescribeFlywheelInput, opts ...request.Option) (*comprehend.DescribeFlywheelOutput, error)
+	DescribeFlywheelIterationWithContext(ctx context.Context, input *comprehend.DescribeFlywheelIterationInput, opts ...request.Option) (*comprehend.DescribeFlywheelIterationOutput, error)
 	DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeKeyPhrasesDetectionJobOutput, error)
 	DescribePiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribePiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.DescribePiiEntitiesDetectionJobOutput, error)
 	DescribeResourcePolicyWithContext(ctx context.Context, input *comprehend.DescribeResourcePolicyInput, opts ...request.Option) (*comprehend.DescribeResourcePolicyOutput, error)
@@ -47,6 +53,8 @@ type Comprehend interface {
 	DetectSyntaxWithContext(ctx context.Context, input *comprehend.DetectSyntaxInput, opts ...request.Option) (*comprehend.DetectSyntaxOutput, error)
 	DetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.DetectTargetedSentimentInput, opts ...request.Option) (*comprehend.DetectTargetedSentimentOutput, error)
 	ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error)
+	ListDatasetsWithContext(ctx context.Context, input *comprehend.ListDatasetsInput, opts ...request.Option) (*comprehend.ListDatasetsOutput, error)
+	ListDatasetsPagesWithContext(ctx context.Context, input *comprehend.ListDatasetsInput, cb func(*comprehend.ListDatasetsOutput, bool) bool, opts ...request.Option) error
 	ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error)
 	ListDocumentClassificationJobsPagesWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, cb func(*comprehend.ListDocumentClassificationJobsOutput, bool) bool, opts ...request.Option) error
 	ListDocumentClassifierSummariesWithContext(ctx context.Context, input *comprehend.ListDocumentClassifierSummariesInput, opts ...request.Option) (*comprehend.ListDocumentClassifierSummariesOutput, error)
@@ -65,6 +73,10 @@ type Comprehend interface {
 	ListEntityRecognizersPagesWithContext(ctx context.Context, input *comprehend.ListEntityRecognizersInput, cb func(*comprehend.ListEntityRecognizersOutput, bool) bool, opts ...request.Option) error
 	ListEventsDetectionJobsWithContext(ctx context.Context, input *comprehend.ListEventsDetectionJobsInput, opts ...request.Option) (*comprehend.ListEventsDetectionJobsOutput, error)
 	ListEventsDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListEventsDetectionJobsInput, cb func(*comprehend.ListEventsDetectionJobsOutput, bool) bool, opts ...request.Option) error
+	ListFlywheelIterationHistoryWithContext(ctx context.Context, input *comprehend.ListFlywheelIterationHistoryInput, opts ...request.Option) (*comprehend.ListFlywheelIterationHistoryOutput, error)
+	ListFlywheelIterationHistoryPagesWithContext(ctx context.Context, input *comprehend.ListFlywheelIterationHistoryInput, cb func(*comprehend.ListFlywheelIterationHistoryOutput, bool) bool, opts ...request.Option) error
+	ListFlywheelsWithContext(ctx context.Context, input *comprehend.ListFlywheelsInput, opts ...request.Option) (*comprehend.ListFlywheelsOutput, error)
+	ListFlywheelsPagesWithContext(ctx context.Context, input *comprehend.ListFlywheelsInput, cb func(*comprehend.ListFlywheelsOutput, bool) bool, opts ...request.Option) error
 	ListKeyPhrasesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, opts ...request.Option) (*comprehend.ListKeyPhrasesDetectionJobsOutput, error)
 	ListKeyPhrasesDetectionJobsPagesWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, cb func(*comprehend.ListKeyPhrasesDetectionJobsOutput, bool) bool, opts ...request.Option) error
 	ListPiiEntitiesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListPiiEntitiesDetectionJobsInput, opts ...request.Option) (*comprehend.ListPiiEntitiesDetectionJobsOutput, error)
@@ -81,6 +93,7 @@ type Comprehend interface {
 	StartDominantLanguageDetectionJobWithContext(ctx context.Context, input *comprehend.StartDominantLanguageDetectionJobInput, opts ...request.Option) (*comprehend.StartDominantLanguageDetectionJobOutput, error)
 	StartEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartEntitiesDetectionJobOutput, error)
 	StartEventsDetectionJobWithContext(ctx context.Context, input *comprehend.StartEventsDetectionJobInput, opts ...request.Option) (*comprehend.StartEventsDetectionJobOutput, error)
+	StartFlywheelIterationWithContext(ctx context.Context, input *comprehend.StartFlywheelIterationInput, opts ...request.Option) (*comprehend.StartFlywheelIterationOutput, error)
 	StartKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.StartKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.StartKeyPhrasesDetectionJobOutput, error)
 	StartPiiEntitiesDetectionJobWithContext(ctx context.Context, input *comprehend.StartPiiEntitiesDetectionJobInput, opts ...request.Option) (*comprehend.StartPiiEntitiesDetectionJobOutput, error)
 	StartSentimentDetectionJobWithContext(ctx context.Context, input *comprehend.StartSentimentDetectionJobInput, opts ...request.Option) (*comprehend.StartSentimentDetectionJobOutput, error)
@@ -98,6 +111,7 @@ type Comprehend interface {
 	TagResourceWithContext(ctx context.Context, input *comprehend.TagResourceInput, opts ...request.Option) (*comprehend.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *comprehend.UntagResourceInput, opts ...request.Option) (*comprehend.UntagResourceOutput, error)
 	UpdateEndpointWithContext(ctx context.Context, input *comprehend.UpdateEndpointInput, opts ...request.Option) (*comprehend.UpdateEndpointOutput, error)
+	UpdateFlywheelWithContext(ctx context.Context, input *comprehend.UpdateFlywheelInput, opts ...request.Option) (*comprehend.UpdateFlywheelOutput, error)
 }
 
 type Client struct {
@@ -283,6 +297,27 @@ func (c *Client) ContainsPiiEntitiesWithContext(ctx context.Context, input *comp
 	return req.Output.(*comprehend.ContainsPiiEntitiesOutput), req.Error
 }
 
+func (c *Client) CreateDatasetWithContext(ctx context.Context, input *comprehend.CreateDatasetInput, opts ...request.Option) (*comprehend.CreateDatasetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "CreateDataset",
+		Input:   input,
+		Output:  (*comprehend.CreateDatasetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.CreateDatasetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.CreateDatasetOutput), req.Error
+}
+
 func (c *Client) CreateDocumentClassifierWithContext(ctx context.Context, input *comprehend.CreateDocumentClassifierInput, opts ...request.Option) (*comprehend.CreateDocumentClassifierOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -344,6 +379,27 @@ func (c *Client) CreateEntityRecognizerWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*comprehend.CreateEntityRecognizerOutput), req.Error
+}
+
+func (c *Client) CreateFlywheelWithContext(ctx context.Context, input *comprehend.CreateFlywheelInput, opts ...request.Option) (*comprehend.CreateFlywheelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "CreateFlywheel",
+		Input:   input,
+		Output:  (*comprehend.CreateFlywheelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.CreateFlywheelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.CreateFlywheelOutput), req.Error
 }
 
 func (c *Client) DeleteDocumentClassifierWithContext(ctx context.Context, input *comprehend.DeleteDocumentClassifierInput, opts ...request.Option) (*comprehend.DeleteDocumentClassifierOutput, error) {
@@ -409,6 +465,27 @@ func (c *Client) DeleteEntityRecognizerWithContext(ctx context.Context, input *c
 	return req.Output.(*comprehend.DeleteEntityRecognizerOutput), req.Error
 }
 
+func (c *Client) DeleteFlywheelWithContext(ctx context.Context, input *comprehend.DeleteFlywheelInput, opts ...request.Option) (*comprehend.DeleteFlywheelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DeleteFlywheel",
+		Input:   input,
+		Output:  (*comprehend.DeleteFlywheelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DeleteFlywheelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DeleteFlywheelOutput), req.Error
+}
+
 func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *comprehend.DeleteResourcePolicyInput, opts ...request.Option) (*comprehend.DeleteResourcePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -428,6 +505,27 @@ func (c *Client) DeleteResourcePolicyWithContext(ctx context.Context, input *com
 	})
 
 	return req.Output.(*comprehend.DeleteResourcePolicyOutput), req.Error
+}
+
+func (c *Client) DescribeDatasetWithContext(ctx context.Context, input *comprehend.DescribeDatasetInput, opts ...request.Option) (*comprehend.DescribeDatasetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DescribeDataset",
+		Input:   input,
+		Output:  (*comprehend.DescribeDatasetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DescribeDatasetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DescribeDatasetOutput), req.Error
 }
 
 func (c *Client) DescribeDocumentClassificationJobWithContext(ctx context.Context, input *comprehend.DescribeDocumentClassificationJobInput, opts ...request.Option) (*comprehend.DescribeDocumentClassificationJobOutput, error) {
@@ -575,6 +673,48 @@ func (c *Client) DescribeEventsDetectionJobWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*comprehend.DescribeEventsDetectionJobOutput), req.Error
+}
+
+func (c *Client) DescribeFlywheelWithContext(ctx context.Context, input *comprehend.DescribeFlywheelInput, opts ...request.Option) (*comprehend.DescribeFlywheelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DescribeFlywheel",
+		Input:   input,
+		Output:  (*comprehend.DescribeFlywheelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DescribeFlywheelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DescribeFlywheelOutput), req.Error
+}
+
+func (c *Client) DescribeFlywheelIterationWithContext(ctx context.Context, input *comprehend.DescribeFlywheelIterationInput, opts ...request.Option) (*comprehend.DescribeFlywheelIterationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DescribeFlywheelIteration",
+		Input:   input,
+		Output:  (*comprehend.DescribeFlywheelIterationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DescribeFlywheelIterationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DescribeFlywheelIterationOutput), req.Error
 }
 
 func (c *Client) DescribeKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.DescribeKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.DescribeKeyPhrasesDetectionJobOutput, error) {
@@ -869,6 +1009,47 @@ func (c *Client) ImportModelWithContext(ctx context.Context, input *comprehend.I
 	})
 
 	return req.Output.(*comprehend.ImportModelOutput), req.Error
+}
+
+func (c *Client) ListDatasetsWithContext(ctx context.Context, input *comprehend.ListDatasetsInput, opts ...request.Option) (*comprehend.ListDatasetsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListDatasets",
+		Input:   input,
+		Output:  (*comprehend.ListDatasetsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ListDatasetsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ListDatasetsOutput), req.Error
+}
+
+func (c *Client) ListDatasetsPagesWithContext(ctx context.Context, input *comprehend.ListDatasetsInput, cb func(*comprehend.ListDatasetsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListDatasets",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ComprehendAPI.ListDatasetsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDocumentClassificationJobsWithContext(ctx context.Context, input *comprehend.ListDocumentClassificationJobsInput, opts ...request.Option) (*comprehend.ListDocumentClassificationJobsOutput, error) {
@@ -1240,6 +1421,88 @@ func (c *Client) ListEventsDetectionJobsPagesWithContext(ctx context.Context, in
 	return req.Error
 }
 
+func (c *Client) ListFlywheelIterationHistoryWithContext(ctx context.Context, input *comprehend.ListFlywheelIterationHistoryInput, opts ...request.Option) (*comprehend.ListFlywheelIterationHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListFlywheelIterationHistory",
+		Input:   input,
+		Output:  (*comprehend.ListFlywheelIterationHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ListFlywheelIterationHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ListFlywheelIterationHistoryOutput), req.Error
+}
+
+func (c *Client) ListFlywheelIterationHistoryPagesWithContext(ctx context.Context, input *comprehend.ListFlywheelIterationHistoryInput, cb func(*comprehend.ListFlywheelIterationHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListFlywheelIterationHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ComprehendAPI.ListFlywheelIterationHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFlywheelsWithContext(ctx context.Context, input *comprehend.ListFlywheelsInput, opts ...request.Option) (*comprehend.ListFlywheelsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListFlywheels",
+		Input:   input,
+		Output:  (*comprehend.ListFlywheelsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.ListFlywheelsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.ListFlywheelsOutput), req.Error
+}
+
+func (c *Client) ListFlywheelsPagesWithContext(ctx context.Context, input *comprehend.ListFlywheelsInput, cb func(*comprehend.ListFlywheelsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "ListFlywheels",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ComprehendAPI.ListFlywheelsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListKeyPhrasesDetectionJobsWithContext(ctx context.Context, input *comprehend.ListKeyPhrasesDetectionJobsInput, opts ...request.Option) (*comprehend.ListKeyPhrasesDetectionJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "comprehend",
@@ -1569,6 +1832,27 @@ func (c *Client) StartEventsDetectionJobWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*comprehend.StartEventsDetectionJobOutput), req.Error
+}
+
+func (c *Client) StartFlywheelIterationWithContext(ctx context.Context, input *comprehend.StartFlywheelIterationInput, opts ...request.Option) (*comprehend.StartFlywheelIterationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "StartFlywheelIteration",
+		Input:   input,
+		Output:  (*comprehend.StartFlywheelIterationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.StartFlywheelIterationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.StartFlywheelIterationOutput), req.Error
 }
 
 func (c *Client) StartKeyPhrasesDetectionJobWithContext(ctx context.Context, input *comprehend.StartKeyPhrasesDetectionJobInput, opts ...request.Option) (*comprehend.StartKeyPhrasesDetectionJobOutput, error) {
@@ -1926,4 +2210,25 @@ func (c *Client) UpdateEndpointWithContext(ctx context.Context, input *comprehen
 	})
 
 	return req.Output.(*comprehend.UpdateEndpointOutput), req.Error
+}
+
+func (c *Client) UpdateFlywheelWithContext(ctx context.Context, input *comprehend.UpdateFlywheelInput, opts ...request.Option) (*comprehend.UpdateFlywheelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "UpdateFlywheel",
+		Input:   input,
+		Output:  (*comprehend.UpdateFlywheelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.UpdateFlywheelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.UpdateFlywheelOutput), req.Error
 }
