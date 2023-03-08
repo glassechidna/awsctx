@@ -26,6 +26,7 @@ type LakeFormation interface {
 	DescribeResourceWithContext(ctx context.Context, input *lakeformation.DescribeResourceInput, opts ...request.Option) (*lakeformation.DescribeResourceOutput, error)
 	DescribeTransactionWithContext(ctx context.Context, input *lakeformation.DescribeTransactionInput, opts ...request.Option) (*lakeformation.DescribeTransactionOutput, error)
 	ExtendTransactionWithContext(ctx context.Context, input *lakeformation.ExtendTransactionInput, opts ...request.Option) (*lakeformation.ExtendTransactionOutput, error)
+	GetDataCellsFilterWithContext(ctx context.Context, input *lakeformation.GetDataCellsFilterInput, opts ...request.Option) (*lakeformation.GetDataCellsFilterOutput, error)
 	GetDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.GetDataLakeSettingsInput, opts ...request.Option) (*lakeformation.GetDataLakeSettingsOutput, error)
 	GetEffectivePermissionsForPathWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, opts ...request.Option) (*lakeformation.GetEffectivePermissionsForPathOutput, error)
 	GetEffectivePermissionsForPathPagesWithContext(ctx context.Context, input *lakeformation.GetEffectivePermissionsForPathInput, cb func(*lakeformation.GetEffectivePermissionsForPathOutput, bool) bool, opts ...request.Option) error
@@ -63,6 +64,7 @@ type LakeFormation interface {
 	SearchTablesByLFTagsPagesWithContext(ctx context.Context, input *lakeformation.SearchTablesByLFTagsInput, cb func(*lakeformation.SearchTablesByLFTagsOutput, bool) bool, opts ...request.Option) error
 	StartQueryPlanningWithContext(ctx context.Context, input *lakeformation.StartQueryPlanningInput, opts ...request.Option) (*lakeformation.StartQueryPlanningOutput, error)
 	StartTransactionWithContext(ctx context.Context, input *lakeformation.StartTransactionInput, opts ...request.Option) (*lakeformation.StartTransactionOutput, error)
+	UpdateDataCellsFilterWithContext(ctx context.Context, input *lakeformation.UpdateDataCellsFilterInput, opts ...request.Option) (*lakeformation.UpdateDataCellsFilterOutput, error)
 	UpdateLFTagWithContext(ctx context.Context, input *lakeformation.UpdateLFTagInput, opts ...request.Option) (*lakeformation.UpdateLFTagOutput, error)
 	UpdateResourceWithContext(ctx context.Context, input *lakeformation.UpdateResourceInput, opts ...request.Option) (*lakeformation.UpdateResourceOutput, error)
 	UpdateTableObjectsWithContext(ctx context.Context, input *lakeformation.UpdateTableObjectsInput, opts ...request.Option) (*lakeformation.UpdateTableObjectsOutput, error)
@@ -397,6 +399,27 @@ func (c *Client) ExtendTransactionWithContext(ctx context.Context, input *lakefo
 	})
 
 	return req.Output.(*lakeformation.ExtendTransactionOutput), req.Error
+}
+
+func (c *Client) GetDataCellsFilterWithContext(ctx context.Context, input *lakeformation.GetDataCellsFilterInput, opts ...request.Option) (*lakeformation.GetDataCellsFilterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "GetDataCellsFilter",
+		Input:   input,
+		Output:  (*lakeformation.GetDataCellsFilterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.GetDataCellsFilterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.GetDataCellsFilterOutput), req.Error
 }
 
 func (c *Client) GetDataLakeSettingsWithContext(ctx context.Context, input *lakeformation.GetDataLakeSettingsInput, opts ...request.Option) (*lakeformation.GetDataLakeSettingsOutput, error) {
@@ -1163,6 +1186,27 @@ func (c *Client) StartTransactionWithContext(ctx context.Context, input *lakefor
 	})
 
 	return req.Output.(*lakeformation.StartTransactionOutput), req.Error
+}
+
+func (c *Client) UpdateDataCellsFilterWithContext(ctx context.Context, input *lakeformation.UpdateDataCellsFilterInput, opts ...request.Option) (*lakeformation.UpdateDataCellsFilterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "UpdateDataCellsFilter",
+		Input:   input,
+		Output:  (*lakeformation.UpdateDataCellsFilterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.UpdateDataCellsFilterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.UpdateDataCellsFilterOutput), req.Error
 }
 
 func (c *Client) UpdateLFTagWithContext(ctx context.Context, input *lakeformation.UpdateLFTagInput, opts ...request.Option) (*lakeformation.UpdateLFTagOutput, error) {
