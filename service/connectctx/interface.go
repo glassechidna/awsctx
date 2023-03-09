@@ -90,6 +90,8 @@ type Connect interface {
 	GetFederationTokenWithContext(ctx context.Context, input *connect.GetFederationTokenInput, opts ...request.Option) (*connect.GetFederationTokenOutput, error)
 	GetMetricDataWithContext(ctx context.Context, input *connect.GetMetricDataInput, opts ...request.Option) (*connect.GetMetricDataOutput, error)
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
+	GetMetricDataV2WithContext(ctx context.Context, input *connect.GetMetricDataV2Input, opts ...request.Option) (*connect.GetMetricDataV2Output, error)
+	GetMetricDataV2PagesWithContext(ctx context.Context, input *connect.GetMetricDataV2Input, cb func(*connect.GetMetricDataV2Output, bool) bool, opts ...request.Option) error
 	GetTaskTemplateWithContext(ctx context.Context, input *connect.GetTaskTemplateInput, opts ...request.Option) (*connect.GetTaskTemplateOutput, error)
 	GetTrafficDistributionWithContext(ctx context.Context, input *connect.GetTrafficDistributionInput, opts ...request.Option) (*connect.GetTrafficDistributionOutput, error)
 	ListAgentStatusesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, opts ...request.Option) (*connect.ListAgentStatusesOutput, error)
@@ -1888,6 +1890,47 @@ func (c *Client) GetMetricDataPagesWithContext(ctx context.Context, input *conne
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.GetMetricDataPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) GetMetricDataV2WithContext(ctx context.Context, input *connect.GetMetricDataV2Input, opts ...request.Option) (*connect.GetMetricDataV2Output, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "GetMetricDataV2",
+		Input:   input,
+		Output:  (*connect.GetMetricDataV2Output)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.GetMetricDataV2WithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.GetMetricDataV2Output), req.Error
+}
+
+func (c *Client) GetMetricDataV2PagesWithContext(ctx context.Context, input *connect.GetMetricDataV2Input, cb func(*connect.GetMetricDataV2Output, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "GetMetricDataV2",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.GetMetricDataV2PagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
