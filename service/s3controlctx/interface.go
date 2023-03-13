@@ -23,6 +23,7 @@ type S3Control interface {
 	DeleteBucketWithContext(ctx context.Context, input *s3control.DeleteBucketInput, opts ...request.Option) (*s3control.DeleteBucketOutput, error)
 	DeleteBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.DeleteBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.DeleteBucketLifecycleConfigurationOutput, error)
 	DeleteBucketPolicyWithContext(ctx context.Context, input *s3control.DeleteBucketPolicyInput, opts ...request.Option) (*s3control.DeleteBucketPolicyOutput, error)
+	DeleteBucketReplicationWithContext(ctx context.Context, input *s3control.DeleteBucketReplicationInput, opts ...request.Option) (*s3control.DeleteBucketReplicationOutput, error)
 	DeleteBucketTaggingWithContext(ctx context.Context, input *s3control.DeleteBucketTaggingInput, opts ...request.Option) (*s3control.DeleteBucketTaggingOutput, error)
 	DeleteJobTaggingWithContext(ctx context.Context, input *s3control.DeleteJobTaggingInput, opts ...request.Option) (*s3control.DeleteJobTaggingOutput, error)
 	DeleteMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.DeleteMultiRegionAccessPointInput, opts ...request.Option) (*s3control.DeleteMultiRegionAccessPointOutput, error)
@@ -41,6 +42,7 @@ type S3Control interface {
 	GetBucketWithContext(ctx context.Context, input *s3control.GetBucketInput, opts ...request.Option) (*s3control.GetBucketOutput, error)
 	GetBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.GetBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.GetBucketLifecycleConfigurationOutput, error)
 	GetBucketPolicyWithContext(ctx context.Context, input *s3control.GetBucketPolicyInput, opts ...request.Option) (*s3control.GetBucketPolicyOutput, error)
+	GetBucketReplicationWithContext(ctx context.Context, input *s3control.GetBucketReplicationInput, opts ...request.Option) (*s3control.GetBucketReplicationOutput, error)
 	GetBucketTaggingWithContext(ctx context.Context, input *s3control.GetBucketTaggingInput, opts ...request.Option) (*s3control.GetBucketTaggingOutput, error)
 	GetBucketVersioningWithContext(ctx context.Context, input *s3control.GetBucketVersioningInput, opts ...request.Option) (*s3control.GetBucketVersioningOutput, error)
 	GetJobTaggingWithContext(ctx context.Context, input *s3control.GetJobTaggingInput, opts ...request.Option) (*s3control.GetJobTaggingOutput, error)
@@ -68,6 +70,7 @@ type S3Control interface {
 	PutAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointPolicyForObjectLambdaOutput, error)
 	PutBucketLifecycleConfigurationWithContext(ctx context.Context, input *s3control.PutBucketLifecycleConfigurationInput, opts ...request.Option) (*s3control.PutBucketLifecycleConfigurationOutput, error)
 	PutBucketPolicyWithContext(ctx context.Context, input *s3control.PutBucketPolicyInput, opts ...request.Option) (*s3control.PutBucketPolicyOutput, error)
+	PutBucketReplicationWithContext(ctx context.Context, input *s3control.PutBucketReplicationInput, opts ...request.Option) (*s3control.PutBucketReplicationOutput, error)
 	PutBucketTaggingWithContext(ctx context.Context, input *s3control.PutBucketTaggingInput, opts ...request.Option) (*s3control.PutBucketTaggingOutput, error)
 	PutBucketVersioningWithContext(ctx context.Context, input *s3control.PutBucketVersioningInput, opts ...request.Option) (*s3control.PutBucketVersioningOutput, error)
 	PutJobTaggingWithContext(ctx context.Context, input *s3control.PutJobTaggingInput, opts ...request.Option) (*s3control.PutJobTaggingOutput, error)
@@ -345,6 +348,27 @@ func (c *Client) DeleteBucketPolicyWithContext(ctx context.Context, input *s3con
 	})
 
 	return req.Output.(*s3control.DeleteBucketPolicyOutput), req.Error
+}
+
+func (c *Client) DeleteBucketReplicationWithContext(ctx context.Context, input *s3control.DeleteBucketReplicationInput, opts ...request.Option) (*s3control.DeleteBucketReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteBucketReplication",
+		Input:   input,
+		Output:  (*s3control.DeleteBucketReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteBucketReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteBucketReplicationOutput), req.Error
 }
 
 func (c *Client) DeleteBucketTaggingWithContext(ctx context.Context, input *s3control.DeleteBucketTaggingInput, opts ...request.Option) (*s3control.DeleteBucketTaggingOutput, error) {
@@ -723,6 +747,27 @@ func (c *Client) GetBucketPolicyWithContext(ctx context.Context, input *s3contro
 	})
 
 	return req.Output.(*s3control.GetBucketPolicyOutput), req.Error
+}
+
+func (c *Client) GetBucketReplicationWithContext(ctx context.Context, input *s3control.GetBucketReplicationInput, opts ...request.Option) (*s3control.GetBucketReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetBucketReplication",
+		Input:   input,
+		Output:  (*s3control.GetBucketReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetBucketReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetBucketReplicationOutput), req.Error
 }
 
 func (c *Client) GetBucketTaggingWithContext(ctx context.Context, input *s3control.GetBucketTaggingInput, opts ...request.Option) (*s3control.GetBucketTaggingOutput, error) {
@@ -1284,6 +1329,27 @@ func (c *Client) PutBucketPolicyWithContext(ctx context.Context, input *s3contro
 	})
 
 	return req.Output.(*s3control.PutBucketPolicyOutput), req.Error
+}
+
+func (c *Client) PutBucketReplicationWithContext(ctx context.Context, input *s3control.PutBucketReplicationInput, opts ...request.Option) (*s3control.PutBucketReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "PutBucketReplication",
+		Input:   input,
+		Output:  (*s3control.PutBucketReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.PutBucketReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.PutBucketReplicationOutput), req.Error
 }
 
 func (c *Client) PutBucketTaggingWithContext(ctx context.Context, input *s3control.PutBucketTaggingInput, opts ...request.Option) (*s3control.PutBucketTaggingOutput, error) {
