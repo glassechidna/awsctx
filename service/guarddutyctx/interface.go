@@ -32,6 +32,7 @@ type GuardDuty interface {
 	DescribeMalwareScansWithContext(ctx context.Context, input *guardduty.DescribeMalwareScansInput, opts ...request.Option) (*guardduty.DescribeMalwareScansOutput, error)
 	DescribeMalwareScansPagesWithContext(ctx context.Context, input *guardduty.DescribeMalwareScansInput, cb func(*guardduty.DescribeMalwareScansOutput, bool) bool, opts ...request.Option) error
 	DescribeOrganizationConfigurationWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, opts ...request.Option) (*guardduty.DescribeOrganizationConfigurationOutput, error)
+	DescribeOrganizationConfigurationPagesWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, cb func(*guardduty.DescribeOrganizationConfigurationOutput, bool) bool, opts ...request.Option) error
 	DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error)
 	DisableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.DisableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.DisableOrganizationAdminAccountOutput, error)
 	DisassociateFromAdministratorAccountWithContext(ctx context.Context, input *guardduty.DisassociateFromAdministratorAccountInput, opts ...request.Option) (*guardduty.DisassociateFromAdministratorAccountOutput, error)
@@ -542,6 +543,26 @@ func (c *Client) DescribeOrganizationConfigurationWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*guardduty.DescribeOrganizationConfigurationOutput), req.Error
+}
+
+func (c *Client) DescribeOrganizationConfigurationPagesWithContext(ctx context.Context, input *guardduty.DescribeOrganizationConfigurationInput, cb func(*guardduty.DescribeOrganizationConfigurationOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "DescribeOrganizationConfiguration",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.DescribeOrganizationConfigurationPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribePublishingDestinationWithContext(ctx context.Context, input *guardduty.DescribePublishingDestinationInput, opts ...request.Option) (*guardduty.DescribePublishingDestinationOutput, error) {
