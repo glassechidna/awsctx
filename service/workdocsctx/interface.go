@@ -31,15 +31,21 @@ type WorkDocs interface {
 	DeleteNotificationSubscriptionWithContext(ctx context.Context, input *workdocs.DeleteNotificationSubscriptionInput, opts ...request.Option) (*workdocs.DeleteNotificationSubscriptionOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *workdocs.DeleteUserInput, opts ...request.Option) (*workdocs.DeleteUserOutput, error)
 	DescribeActivitiesWithContext(ctx context.Context, input *workdocs.DescribeActivitiesInput, opts ...request.Option) (*workdocs.DescribeActivitiesOutput, error)
+	DescribeActivitiesPagesWithContext(ctx context.Context, input *workdocs.DescribeActivitiesInput, cb func(*workdocs.DescribeActivitiesOutput, bool) bool, opts ...request.Option) error
 	DescribeCommentsWithContext(ctx context.Context, input *workdocs.DescribeCommentsInput, opts ...request.Option) (*workdocs.DescribeCommentsOutput, error)
+	DescribeCommentsPagesWithContext(ctx context.Context, input *workdocs.DescribeCommentsInput, cb func(*workdocs.DescribeCommentsOutput, bool) bool, opts ...request.Option) error
 	DescribeDocumentVersionsWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, opts ...request.Option) (*workdocs.DescribeDocumentVersionsOutput, error)
 	DescribeDocumentVersionsPagesWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, cb func(*workdocs.DescribeDocumentVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeFolderContentsWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, opts ...request.Option) (*workdocs.DescribeFolderContentsOutput, error)
 	DescribeFolderContentsPagesWithContext(ctx context.Context, input *workdocs.DescribeFolderContentsInput, cb func(*workdocs.DescribeFolderContentsOutput, bool) bool, opts ...request.Option) error
 	DescribeGroupsWithContext(ctx context.Context, input *workdocs.DescribeGroupsInput, opts ...request.Option) (*workdocs.DescribeGroupsOutput, error)
+	DescribeGroupsPagesWithContext(ctx context.Context, input *workdocs.DescribeGroupsInput, cb func(*workdocs.DescribeGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeNotificationSubscriptionsWithContext(ctx context.Context, input *workdocs.DescribeNotificationSubscriptionsInput, opts ...request.Option) (*workdocs.DescribeNotificationSubscriptionsOutput, error)
+	DescribeNotificationSubscriptionsPagesWithContext(ctx context.Context, input *workdocs.DescribeNotificationSubscriptionsInput, cb func(*workdocs.DescribeNotificationSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeResourcePermissionsWithContext(ctx context.Context, input *workdocs.DescribeResourcePermissionsInput, opts ...request.Option) (*workdocs.DescribeResourcePermissionsOutput, error)
+	DescribeResourcePermissionsPagesWithContext(ctx context.Context, input *workdocs.DescribeResourcePermissionsInput, cb func(*workdocs.DescribeResourcePermissionsOutput, bool) bool, opts ...request.Option) error
 	DescribeRootFoldersWithContext(ctx context.Context, input *workdocs.DescribeRootFoldersInput, opts ...request.Option) (*workdocs.DescribeRootFoldersOutput, error)
+	DescribeRootFoldersPagesWithContext(ctx context.Context, input *workdocs.DescribeRootFoldersInput, cb func(*workdocs.DescribeRootFoldersOutput, bool) bool, opts ...request.Option) error
 	DescribeUsersWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, opts ...request.Option) (*workdocs.DescribeUsersOutput, error)
 	DescribeUsersPagesWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, cb func(*workdocs.DescribeUsersOutput, bool) bool, opts ...request.Option) error
 	GetCurrentUserWithContext(ctx context.Context, input *workdocs.GetCurrentUserInput, opts ...request.Option) (*workdocs.GetCurrentUserOutput, error)
@@ -53,6 +59,8 @@ type WorkDocs interface {
 	RemoveAllResourcePermissionsWithContext(ctx context.Context, input *workdocs.RemoveAllResourcePermissionsInput, opts ...request.Option) (*workdocs.RemoveAllResourcePermissionsOutput, error)
 	RemoveResourcePermissionWithContext(ctx context.Context, input *workdocs.RemoveResourcePermissionInput, opts ...request.Option) (*workdocs.RemoveResourcePermissionOutput, error)
 	RestoreDocumentVersionsWithContext(ctx context.Context, input *workdocs.RestoreDocumentVersionsInput, opts ...request.Option) (*workdocs.RestoreDocumentVersionsOutput, error)
+	SearchResourcesWithContext(ctx context.Context, input *workdocs.SearchResourcesInput, opts ...request.Option) (*workdocs.SearchResourcesOutput, error)
+	SearchResourcesPagesWithContext(ctx context.Context, input *workdocs.SearchResourcesInput, cb func(*workdocs.SearchResourcesOutput, bool) bool, opts ...request.Option) error
 	UpdateDocumentWithContext(ctx context.Context, input *workdocs.UpdateDocumentInput, opts ...request.Option) (*workdocs.UpdateDocumentOutput, error)
 	UpdateDocumentVersionWithContext(ctx context.Context, input *workdocs.UpdateDocumentVersionInput, opts ...request.Option) (*workdocs.UpdateDocumentVersionOutput, error)
 	UpdateFolderWithContext(ctx context.Context, input *workdocs.UpdateFolderInput, opts ...request.Option) (*workdocs.UpdateFolderOutput, error)
@@ -494,6 +502,26 @@ func (c *Client) DescribeActivitiesWithContext(ctx context.Context, input *workd
 	return req.Output.(*workdocs.DescribeActivitiesOutput), req.Error
 }
 
+func (c *Client) DescribeActivitiesPagesWithContext(ctx context.Context, input *workdocs.DescribeActivitiesInput, cb func(*workdocs.DescribeActivitiesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeActivities",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeActivitiesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeCommentsWithContext(ctx context.Context, input *workdocs.DescribeCommentsInput, opts ...request.Option) (*workdocs.DescribeCommentsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
@@ -513,6 +541,26 @@ func (c *Client) DescribeCommentsWithContext(ctx context.Context, input *workdoc
 	})
 
 	return req.Output.(*workdocs.DescribeCommentsOutput), req.Error
+}
+
+func (c *Client) DescribeCommentsPagesWithContext(ctx context.Context, input *workdocs.DescribeCommentsInput, cb func(*workdocs.DescribeCommentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeComments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeCommentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDocumentVersionsWithContext(ctx context.Context, input *workdocs.DescribeDocumentVersionsInput, opts ...request.Option) (*workdocs.DescribeDocumentVersionsOutput, error) {
@@ -618,6 +666,26 @@ func (c *Client) DescribeGroupsWithContext(ctx context.Context, input *workdocs.
 	return req.Output.(*workdocs.DescribeGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeGroupsPagesWithContext(ctx context.Context, input *workdocs.DescribeGroupsInput, cb func(*workdocs.DescribeGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeNotificationSubscriptionsWithContext(ctx context.Context, input *workdocs.DescribeNotificationSubscriptionsInput, opts ...request.Option) (*workdocs.DescribeNotificationSubscriptionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
@@ -637,6 +705,26 @@ func (c *Client) DescribeNotificationSubscriptionsWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*workdocs.DescribeNotificationSubscriptionsOutput), req.Error
+}
+
+func (c *Client) DescribeNotificationSubscriptionsPagesWithContext(ctx context.Context, input *workdocs.DescribeNotificationSubscriptionsInput, cb func(*workdocs.DescribeNotificationSubscriptionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeNotificationSubscriptions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeNotificationSubscriptionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeResourcePermissionsWithContext(ctx context.Context, input *workdocs.DescribeResourcePermissionsInput, opts ...request.Option) (*workdocs.DescribeResourcePermissionsOutput, error) {
@@ -660,6 +748,26 @@ func (c *Client) DescribeResourcePermissionsWithContext(ctx context.Context, inp
 	return req.Output.(*workdocs.DescribeResourcePermissionsOutput), req.Error
 }
 
+func (c *Client) DescribeResourcePermissionsPagesWithContext(ctx context.Context, input *workdocs.DescribeResourcePermissionsInput, cb func(*workdocs.DescribeResourcePermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeResourcePermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeResourcePermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeRootFoldersWithContext(ctx context.Context, input *workdocs.DescribeRootFoldersInput, opts ...request.Option) (*workdocs.DescribeRootFoldersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workdocs",
@@ -679,6 +787,26 @@ func (c *Client) DescribeRootFoldersWithContext(ctx context.Context, input *work
 	})
 
 	return req.Output.(*workdocs.DescribeRootFoldersOutput), req.Error
+}
+
+func (c *Client) DescribeRootFoldersPagesWithContext(ctx context.Context, input *workdocs.DescribeRootFoldersInput, cb func(*workdocs.DescribeRootFoldersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "DescribeRootFolders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.DescribeRootFoldersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeUsersWithContext(ctx context.Context, input *workdocs.DescribeUsersInput, opts ...request.Option) (*workdocs.DescribeUsersOutput, error) {
@@ -951,6 +1079,47 @@ func (c *Client) RestoreDocumentVersionsWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*workdocs.RestoreDocumentVersionsOutput), req.Error
+}
+
+func (c *Client) SearchResourcesWithContext(ctx context.Context, input *workdocs.SearchResourcesInput, opts ...request.Option) (*workdocs.SearchResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "SearchResources",
+		Input:   input,
+		Output:  (*workdocs.SearchResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkDocsAPI.SearchResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workdocs.SearchResourcesOutput), req.Error
+}
+
+func (c *Client) SearchResourcesPagesWithContext(ctx context.Context, input *workdocs.SearchResourcesInput, cb func(*workdocs.SearchResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workdocs",
+		Action:  "SearchResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkDocsAPI.SearchResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) UpdateDocumentWithContext(ctx context.Context, input *workdocs.UpdateDocumentInput, opts ...request.Option) (*workdocs.UpdateDocumentOutput, error) {

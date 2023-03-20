@@ -22,9 +22,12 @@ type ApplicationAutoScaling interface {
 	DescribeScalingPoliciesPagesWithContext(ctx context.Context, input *applicationautoscaling.DescribeScalingPoliciesInput, cb func(*applicationautoscaling.DescribeScalingPoliciesOutput, bool) bool, opts ...request.Option) error
 	DescribeScheduledActionsWithContext(ctx context.Context, input *applicationautoscaling.DescribeScheduledActionsInput, opts ...request.Option) (*applicationautoscaling.DescribeScheduledActionsOutput, error)
 	DescribeScheduledActionsPagesWithContext(ctx context.Context, input *applicationautoscaling.DescribeScheduledActionsInput, cb func(*applicationautoscaling.DescribeScheduledActionsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *applicationautoscaling.ListTagsForResourceInput, opts ...request.Option) (*applicationautoscaling.ListTagsForResourceOutput, error)
 	PutScalingPolicyWithContext(ctx context.Context, input *applicationautoscaling.PutScalingPolicyInput, opts ...request.Option) (*applicationautoscaling.PutScalingPolicyOutput, error)
 	PutScheduledActionWithContext(ctx context.Context, input *applicationautoscaling.PutScheduledActionInput, opts ...request.Option) (*applicationautoscaling.PutScheduledActionOutput, error)
 	RegisterScalableTargetWithContext(ctx context.Context, input *applicationautoscaling.RegisterScalableTargetInput, opts ...request.Option) (*applicationautoscaling.RegisterScalableTargetOutput, error)
+	TagResourceWithContext(ctx context.Context, input *applicationautoscaling.TagResourceInput, opts ...request.Option) (*applicationautoscaling.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *applicationautoscaling.UntagResourceInput, opts ...request.Option) (*applicationautoscaling.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -269,6 +272,27 @@ func (c *Client) DescribeScheduledActionsPagesWithContext(ctx context.Context, i
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *applicationautoscaling.ListTagsForResourceInput, opts ...request.Option) (*applicationautoscaling.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationautoscaling",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*applicationautoscaling.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationAutoScalingAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationautoscaling.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) PutScalingPolicyWithContext(ctx context.Context, input *applicationautoscaling.PutScalingPolicyInput, opts ...request.Option) (*applicationautoscaling.PutScalingPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "applicationautoscaling",
@@ -330,4 +354,46 @@ func (c *Client) RegisterScalableTargetWithContext(ctx context.Context, input *a
 	})
 
 	return req.Output.(*applicationautoscaling.RegisterScalableTargetOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *applicationautoscaling.TagResourceInput, opts ...request.Option) (*applicationautoscaling.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationautoscaling",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*applicationautoscaling.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationAutoScalingAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationautoscaling.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *applicationautoscaling.UntagResourceInput, opts ...request.Option) (*applicationautoscaling.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "applicationautoscaling",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*applicationautoscaling.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ApplicationAutoScalingAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*applicationautoscaling.UntagResourceOutput), req.Error
 }
