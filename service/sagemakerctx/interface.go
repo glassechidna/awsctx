@@ -21,6 +21,7 @@ type SageMaker interface {
 	CreateAppImageConfigWithContext(ctx context.Context, input *sagemaker.CreateAppImageConfigInput, opts ...request.Option) (*sagemaker.CreateAppImageConfigOutput, error)
 	CreateArtifactWithContext(ctx context.Context, input *sagemaker.CreateArtifactInput, opts ...request.Option) (*sagemaker.CreateArtifactOutput, error)
 	CreateAutoMLJobWithContext(ctx context.Context, input *sagemaker.CreateAutoMLJobInput, opts ...request.Option) (*sagemaker.CreateAutoMLJobOutput, error)
+	CreateAutoMLJobV2WithContext(ctx context.Context, input *sagemaker.CreateAutoMLJobV2Input, opts ...request.Option) (*sagemaker.CreateAutoMLJobV2Output, error)
 	CreateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.CreateCodeRepositoryInput, opts ...request.Option) (*sagemaker.CreateCodeRepositoryOutput, error)
 	CreateCompilationJobWithContext(ctx context.Context, input *sagemaker.CreateCompilationJobInput, opts ...request.Option) (*sagemaker.CreateCompilationJobOutput, error)
 	CreateContextWithContext(ctx context.Context, input *sagemaker.CreateContextInput, opts ...request.Option) (*sagemaker.CreateContextOutput, error)
@@ -120,6 +121,7 @@ type SageMaker interface {
 	DescribeAppImageConfigWithContext(ctx context.Context, input *sagemaker.DescribeAppImageConfigInput, opts ...request.Option) (*sagemaker.DescribeAppImageConfigOutput, error)
 	DescribeArtifactWithContext(ctx context.Context, input *sagemaker.DescribeArtifactInput, opts ...request.Option) (*sagemaker.DescribeArtifactOutput, error)
 	DescribeAutoMLJobWithContext(ctx context.Context, input *sagemaker.DescribeAutoMLJobInput, opts ...request.Option) (*sagemaker.DescribeAutoMLJobOutput, error)
+	DescribeAutoMLJobV2WithContext(ctx context.Context, input *sagemaker.DescribeAutoMLJobV2Input, opts ...request.Option) (*sagemaker.DescribeAutoMLJobV2Output, error)
 	DescribeCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DescribeCodeRepositoryInput, opts ...request.Option) (*sagemaker.DescribeCodeRepositoryOutput, error)
 	DescribeCompilationJobWithContext(ctx context.Context, input *sagemaker.DescribeCompilationJobInput, opts ...request.Option) (*sagemaker.DescribeCompilationJobOutput, error)
 	DescribeContextWithContext(ctx context.Context, input *sagemaker.DescribeContextInput, opts ...request.Option) (*sagemaker.DescribeContextOutput, error)
@@ -606,6 +608,27 @@ func (c *Client) CreateAutoMLJobWithContext(ctx context.Context, input *sagemake
 	})
 
 	return req.Output.(*sagemaker.CreateAutoMLJobOutput), req.Error
+}
+
+func (c *Client) CreateAutoMLJobV2WithContext(ctx context.Context, input *sagemaker.CreateAutoMLJobV2Input, opts ...request.Option) (*sagemaker.CreateAutoMLJobV2Output, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "CreateAutoMLJobV2",
+		Input:   input,
+		Output:  (*sagemaker.CreateAutoMLJobV2Output)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.CreateAutoMLJobV2WithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.CreateAutoMLJobV2Output), req.Error
 }
 
 func (c *Client) CreateCodeRepositoryWithContext(ctx context.Context, input *sagemaker.CreateCodeRepositoryInput, opts ...request.Option) (*sagemaker.CreateCodeRepositoryOutput, error) {
@@ -2685,6 +2708,27 @@ func (c *Client) DescribeAutoMLJobWithContext(ctx context.Context, input *sagema
 	})
 
 	return req.Output.(*sagemaker.DescribeAutoMLJobOutput), req.Error
+}
+
+func (c *Client) DescribeAutoMLJobV2WithContext(ctx context.Context, input *sagemaker.DescribeAutoMLJobV2Input, opts ...request.Option) (*sagemaker.DescribeAutoMLJobV2Output, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "DescribeAutoMLJobV2",
+		Input:   input,
+		Output:  (*sagemaker.DescribeAutoMLJobV2Output)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.DescribeAutoMLJobV2WithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.DescribeAutoMLJobV2Output), req.Error
 }
 
 func (c *Client) DescribeCodeRepositoryWithContext(ctx context.Context, input *sagemaker.DescribeCodeRepositoryInput, opts ...request.Option) (*sagemaker.DescribeCodeRepositoryOutput, error) {
