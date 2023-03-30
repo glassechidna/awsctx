@@ -592,6 +592,7 @@ type EC2 interface {
 	GetVpnConnectionDeviceSampleConfigurationWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceSampleConfigurationInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceSampleConfigurationOutput, error)
 	GetVpnConnectionDeviceTypesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, opts ...request.Option) (*ec2.GetVpnConnectionDeviceTypesOutput, error)
 	GetVpnConnectionDeviceTypesPagesWithContext(ctx context.Context, input *ec2.GetVpnConnectionDeviceTypesInput, cb func(*ec2.GetVpnConnectionDeviceTypesOutput, bool) bool, opts ...request.Option) error
+	GetVpnTunnelReplacementStatusWithContext(ctx context.Context, input *ec2.GetVpnTunnelReplacementStatusInput, opts ...request.Option) (*ec2.GetVpnTunnelReplacementStatusOutput, error)
 	ImportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ImportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ImportClientVpnClientCertificateRevocationListOutput, error)
 	ImportImageWithContext(ctx context.Context, input *ec2.ImportImageInput, opts ...request.Option) (*ec2.ImportImageOutput, error)
 	ImportInstanceWithContext(ctx context.Context, input *ec2.ImportInstanceInput, opts ...request.Option) (*ec2.ImportInstanceOutput, error)
@@ -694,6 +695,7 @@ type EC2 interface {
 	ReplaceRouteWithContext(ctx context.Context, input *ec2.ReplaceRouteInput, opts ...request.Option) (*ec2.ReplaceRouteOutput, error)
 	ReplaceRouteTableAssociationWithContext(ctx context.Context, input *ec2.ReplaceRouteTableAssociationInput, opts ...request.Option) (*ec2.ReplaceRouteTableAssociationOutput, error)
 	ReplaceTransitGatewayRouteWithContext(ctx context.Context, input *ec2.ReplaceTransitGatewayRouteInput, opts ...request.Option) (*ec2.ReplaceTransitGatewayRouteOutput, error)
+	ReplaceVpnTunnelWithContext(ctx context.Context, input *ec2.ReplaceVpnTunnelInput, opts ...request.Option) (*ec2.ReplaceVpnTunnelOutput, error)
 	ReportInstanceStatusWithContext(ctx context.Context, input *ec2.ReportInstanceStatusInput, opts ...request.Option) (*ec2.ReportInstanceStatusOutput, error)
 	RequestSpotFleetWithContext(ctx context.Context, input *ec2.RequestSpotFleetInput, opts ...request.Option) (*ec2.RequestSpotFleetOutput, error)
 	RequestSpotInstancesWithContext(ctx context.Context, input *ec2.RequestSpotInstancesInput, opts ...request.Option) (*ec2.RequestSpotInstancesOutput, error)
@@ -12822,6 +12824,27 @@ func (c *Client) GetVpnConnectionDeviceTypesPagesWithContext(ctx context.Context
 	return req.Error
 }
 
+func (c *Client) GetVpnTunnelReplacementStatusWithContext(ctx context.Context, input *ec2.GetVpnTunnelReplacementStatusInput, opts ...request.Option) (*ec2.GetVpnTunnelReplacementStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetVpnTunnelReplacementStatus",
+		Input:   input,
+		Output:  (*ec2.GetVpnTunnelReplacementStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetVpnTunnelReplacementStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetVpnTunnelReplacementStatusOutput), req.Error
+}
+
 func (c *Client) ImportClientVpnClientCertificateRevocationListWithContext(ctx context.Context, input *ec2.ImportClientVpnClientCertificateRevocationListInput, opts ...request.Option) (*ec2.ImportClientVpnClientCertificateRevocationListOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -14960,6 +14983,27 @@ func (c *Client) ReplaceTransitGatewayRouteWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.ReplaceTransitGatewayRouteOutput), req.Error
+}
+
+func (c *Client) ReplaceVpnTunnelWithContext(ctx context.Context, input *ec2.ReplaceVpnTunnelInput, opts ...request.Option) (*ec2.ReplaceVpnTunnelOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "ReplaceVpnTunnel",
+		Input:   input,
+		Output:  (*ec2.ReplaceVpnTunnelOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.ReplaceVpnTunnelWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.ReplaceVpnTunnelOutput), req.Error
 }
 
 func (c *Client) ReportInstanceStatusWithContext(ctx context.Context, input *ec2.ReportInstanceStatusInput, opts ...request.Option) (*ec2.ReportInstanceStatusOutput, error) {

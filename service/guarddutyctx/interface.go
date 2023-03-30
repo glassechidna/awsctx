@@ -40,6 +40,7 @@ type GuardDuty interface {
 	DisassociateMembersWithContext(ctx context.Context, input *guardduty.DisassociateMembersInput, opts ...request.Option) (*guardduty.DisassociateMembersOutput, error)
 	EnableOrganizationAdminAccountWithContext(ctx context.Context, input *guardduty.EnableOrganizationAdminAccountInput, opts ...request.Option) (*guardduty.EnableOrganizationAdminAccountOutput, error)
 	GetAdministratorAccountWithContext(ctx context.Context, input *guardduty.GetAdministratorAccountInput, opts ...request.Option) (*guardduty.GetAdministratorAccountOutput, error)
+	GetCoverageStatisticsWithContext(ctx context.Context, input *guardduty.GetCoverageStatisticsInput, opts ...request.Option) (*guardduty.GetCoverageStatisticsOutput, error)
 	GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error)
 	GetFilterWithContext(ctx context.Context, input *guardduty.GetFilterInput, opts ...request.Option) (*guardduty.GetFilterOutput, error)
 	GetFindingsWithContext(ctx context.Context, input *guardduty.GetFindingsInput, opts ...request.Option) (*guardduty.GetFindingsOutput, error)
@@ -55,6 +56,8 @@ type GuardDuty interface {
 	GetUsageStatisticsWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, opts ...request.Option) (*guardduty.GetUsageStatisticsOutput, error)
 	GetUsageStatisticsPagesWithContext(ctx context.Context, input *guardduty.GetUsageStatisticsInput, cb func(*guardduty.GetUsageStatisticsOutput, bool) bool, opts ...request.Option) error
 	InviteMembersWithContext(ctx context.Context, input *guardduty.InviteMembersInput, opts ...request.Option) (*guardduty.InviteMembersOutput, error)
+	ListCoverageWithContext(ctx context.Context, input *guardduty.ListCoverageInput, opts ...request.Option) (*guardduty.ListCoverageOutput, error)
+	ListCoveragePagesWithContext(ctx context.Context, input *guardduty.ListCoverageInput, cb func(*guardduty.ListCoverageOutput, bool) bool, opts ...request.Option) error
 	ListDetectorsWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, opts ...request.Option) (*guardduty.ListDetectorsOutput, error)
 	ListDetectorsPagesWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, cb func(*guardduty.ListDetectorsOutput, bool) bool, opts ...request.Option) error
 	ListFiltersWithContext(ctx context.Context, input *guardduty.ListFiltersInput, opts ...request.Option) (*guardduty.ListFiltersOutput, error)
@@ -712,6 +715,27 @@ func (c *Client) GetAdministratorAccountWithContext(ctx context.Context, input *
 	return req.Output.(*guardduty.GetAdministratorAccountOutput), req.Error
 }
 
+func (c *Client) GetCoverageStatisticsWithContext(ctx context.Context, input *guardduty.GetCoverageStatisticsInput, opts ...request.Option) (*guardduty.GetCoverageStatisticsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "GetCoverageStatistics",
+		Input:   input,
+		Output:  (*guardduty.GetCoverageStatisticsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.GetCoverageStatisticsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.GetCoverageStatisticsOutput), req.Error
+}
+
 func (c *Client) GetDetectorWithContext(ctx context.Context, input *guardduty.GetDetectorInput, opts ...request.Option) (*guardduty.GetDetectorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "guardduty",
@@ -1024,6 +1048,47 @@ func (c *Client) InviteMembersWithContext(ctx context.Context, input *guardduty.
 	})
 
 	return req.Output.(*guardduty.InviteMembersOutput), req.Error
+}
+
+func (c *Client) ListCoverageWithContext(ctx context.Context, input *guardduty.ListCoverageInput, opts ...request.Option) (*guardduty.ListCoverageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListCoverage",
+		Input:   input,
+		Output:  (*guardduty.ListCoverageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.ListCoverageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.ListCoverageOutput), req.Error
+}
+
+func (c *Client) ListCoveragePagesWithContext(ctx context.Context, input *guardduty.ListCoverageInput, cb func(*guardduty.ListCoverageOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "ListCoverage",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GuardDutyAPI.ListCoveragePagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListDetectorsWithContext(ctx context.Context, input *guardduty.ListDetectorsInput, opts ...request.Option) (*guardduty.ListDetectorsOutput, error) {

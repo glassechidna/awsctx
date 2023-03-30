@@ -58,6 +58,7 @@ type AutoScaling interface {
 	DescribeTagsPagesWithContext(ctx context.Context, input *autoscaling.DescribeTagsInput, cb func(*autoscaling.DescribeTagsOutput, bool) bool, opts ...request.Option) error
 	DescribeTerminationPolicyTypesWithContext(ctx context.Context, input *autoscaling.DescribeTerminationPolicyTypesInput, opts ...request.Option) (*autoscaling.DescribeTerminationPolicyTypesOutput, error)
 	DescribeTrafficSourcesWithContext(ctx context.Context, input *autoscaling.DescribeTrafficSourcesInput, opts ...request.Option) (*autoscaling.DescribeTrafficSourcesOutput, error)
+	DescribeTrafficSourcesPagesWithContext(ctx context.Context, input *autoscaling.DescribeTrafficSourcesInput, cb func(*autoscaling.DescribeTrafficSourcesOutput, bool) bool, opts ...request.Option) error
 	DescribeWarmPoolWithContext(ctx context.Context, input *autoscaling.DescribeWarmPoolInput, opts ...request.Option) (*autoscaling.DescribeWarmPoolOutput, error)
 	DetachInstancesWithContext(ctx context.Context, input *autoscaling.DetachInstancesInput, opts ...request.Option) (*autoscaling.DetachInstancesOutput, error)
 	DetachLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DetachLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DetachLoadBalancerTargetGroupsOutput, error)
@@ -1078,6 +1079,26 @@ func (c *Client) DescribeTrafficSourcesWithContext(ctx context.Context, input *a
 	})
 
 	return req.Output.(*autoscaling.DescribeTrafficSourcesOutput), req.Error
+}
+
+func (c *Client) DescribeTrafficSourcesPagesWithContext(ctx context.Context, input *autoscaling.DescribeTrafficSourcesInput, cb func(*autoscaling.DescribeTrafficSourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeTrafficSources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeTrafficSourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeWarmPoolWithContext(ctx context.Context, input *autoscaling.DescribeWarmPoolInput, opts ...request.Option) (*autoscaling.DescribeWarmPoolOutput, error) {
