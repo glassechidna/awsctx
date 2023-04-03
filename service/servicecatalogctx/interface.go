@@ -98,6 +98,9 @@ type ServiceCatalog interface {
 	ListStackInstancesForProvisionedProductWithContext(ctx context.Context, input *servicecatalog.ListStackInstancesForProvisionedProductInput, opts ...request.Option) (*servicecatalog.ListStackInstancesForProvisionedProductOutput, error)
 	ListTagOptionsWithContext(ctx context.Context, input *servicecatalog.ListTagOptionsInput, opts ...request.Option) (*servicecatalog.ListTagOptionsOutput, error)
 	ListTagOptionsPagesWithContext(ctx context.Context, input *servicecatalog.ListTagOptionsInput, cb func(*servicecatalog.ListTagOptionsOutput, bool) bool, opts ...request.Option) error
+	NotifyProvisionProductEngineWorkflowResultWithContext(ctx context.Context, input *servicecatalog.NotifyProvisionProductEngineWorkflowResultInput, opts ...request.Option) (*servicecatalog.NotifyProvisionProductEngineWorkflowResultOutput, error)
+	NotifyTerminateProvisionedProductEngineWorkflowResultWithContext(ctx context.Context, input *servicecatalog.NotifyTerminateProvisionedProductEngineWorkflowResultInput, opts ...request.Option) (*servicecatalog.NotifyTerminateProvisionedProductEngineWorkflowResultOutput, error)
+	NotifyUpdateProvisionedProductEngineWorkflowResultWithContext(ctx context.Context, input *servicecatalog.NotifyUpdateProvisionedProductEngineWorkflowResultInput, opts ...request.Option) (*servicecatalog.NotifyUpdateProvisionedProductEngineWorkflowResultOutput, error)
 	ProvisionProductWithContext(ctx context.Context, input *servicecatalog.ProvisionProductInput, opts ...request.Option) (*servicecatalog.ProvisionProductOutput, error)
 	RejectPortfolioShareWithContext(ctx context.Context, input *servicecatalog.RejectPortfolioShareInput, opts ...request.Option) (*servicecatalog.RejectPortfolioShareOutput, error)
 	ScanProvisionedProductsWithContext(ctx context.Context, input *servicecatalog.ScanProvisionedProductsInput, opts ...request.Option) (*servicecatalog.ScanProvisionedProductsOutput, error)
@@ -1943,6 +1946,69 @@ func (c *Client) ListTagOptionsPagesWithContext(ctx context.Context, input *serv
 	})
 
 	return req.Error
+}
+
+func (c *Client) NotifyProvisionProductEngineWorkflowResultWithContext(ctx context.Context, input *servicecatalog.NotifyProvisionProductEngineWorkflowResultInput, opts ...request.Option) (*servicecatalog.NotifyProvisionProductEngineWorkflowResultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "NotifyProvisionProductEngineWorkflowResult",
+		Input:   input,
+		Output:  (*servicecatalog.NotifyProvisionProductEngineWorkflowResultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceCatalogAPI.NotifyProvisionProductEngineWorkflowResultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicecatalog.NotifyProvisionProductEngineWorkflowResultOutput), req.Error
+}
+
+func (c *Client) NotifyTerminateProvisionedProductEngineWorkflowResultWithContext(ctx context.Context, input *servicecatalog.NotifyTerminateProvisionedProductEngineWorkflowResultInput, opts ...request.Option) (*servicecatalog.NotifyTerminateProvisionedProductEngineWorkflowResultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "NotifyTerminateProvisionedProductEngineWorkflowResult",
+		Input:   input,
+		Output:  (*servicecatalog.NotifyTerminateProvisionedProductEngineWorkflowResultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceCatalogAPI.NotifyTerminateProvisionedProductEngineWorkflowResultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicecatalog.NotifyTerminateProvisionedProductEngineWorkflowResultOutput), req.Error
+}
+
+func (c *Client) NotifyUpdateProvisionedProductEngineWorkflowResultWithContext(ctx context.Context, input *servicecatalog.NotifyUpdateProvisionedProductEngineWorkflowResultInput, opts ...request.Option) (*servicecatalog.NotifyUpdateProvisionedProductEngineWorkflowResultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicecatalog",
+		Action:  "NotifyUpdateProvisionedProductEngineWorkflowResult",
+		Input:   input,
+		Output:  (*servicecatalog.NotifyUpdateProvisionedProductEngineWorkflowResultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceCatalogAPI.NotifyUpdateProvisionedProductEngineWorkflowResultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicecatalog.NotifyUpdateProvisionedProductEngineWorkflowResultOutput), req.Error
 }
 
 func (c *Client) ProvisionProductWithContext(ctx context.Context, input *servicecatalog.ProvisionProductInput, opts ...request.Option) (*servicecatalog.ProvisionProductOutput, error) {
