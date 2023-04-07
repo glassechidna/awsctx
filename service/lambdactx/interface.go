@@ -46,6 +46,7 @@ type Lambda interface {
 	GetRuntimeManagementConfigWithContext(ctx context.Context, input *lambda.GetRuntimeManagementConfigInput, opts ...request.Option) (*lambda.GetRuntimeManagementConfigOutput, error)
 	InvokeWithContext(ctx context.Context, input *lambda.InvokeInput, opts ...request.Option) (*lambda.InvokeOutput, error)
 	InvokeAsyncWithContext(ctx context.Context, input *lambda.InvokeAsyncInput, opts ...request.Option) (*lambda.InvokeAsyncOutput, error)
+	InvokeWithResponseStreamWithContext(ctx context.Context, input *lambda.InvokeWithResponseStreamInput, opts ...request.Option) (*lambda.InvokeWithResponseStreamOutput, error)
 	ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error)
 	ListAliasesPagesWithContext(ctx context.Context, input *lambda.ListAliasesInput, cb func(*lambda.ListAliasesOutput, bool) bool, opts ...request.Option) error
 	ListCodeSigningConfigsWithContext(ctx context.Context, input *lambda.ListCodeSigningConfigsInput, opts ...request.Option) (*lambda.ListCodeSigningConfigsOutput, error)
@@ -837,6 +838,27 @@ func (c *Client) InvokeAsyncWithContext(ctx context.Context, input *lambda.Invok
 	})
 
 	return req.Output.(*lambda.InvokeAsyncOutput), req.Error
+}
+
+func (c *Client) InvokeWithResponseStreamWithContext(ctx context.Context, input *lambda.InvokeWithResponseStreamInput, opts ...request.Option) (*lambda.InvokeWithResponseStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lambda",
+		Action:  "InvokeWithResponseStream",
+		Input:   input,
+		Output:  (*lambda.InvokeWithResponseStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LambdaAPI.InvokeWithResponseStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lambda.InvokeWithResponseStreamOutput), req.Error
 }
 
 func (c *Client) ListAliasesWithContext(ctx context.Context, input *lambda.ListAliasesInput, opts ...request.Option) (*lambda.ListAliasesOutput, error) {
