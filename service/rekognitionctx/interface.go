@@ -15,6 +15,7 @@ type Rekognition interface {
 	CopyProjectVersionWithContext(ctx context.Context, input *rekognition.CopyProjectVersionInput, opts ...request.Option) (*rekognition.CopyProjectVersionOutput, error)
 	CreateCollectionWithContext(ctx context.Context, input *rekognition.CreateCollectionInput, opts ...request.Option) (*rekognition.CreateCollectionOutput, error)
 	CreateDatasetWithContext(ctx context.Context, input *rekognition.CreateDatasetInput, opts ...request.Option) (*rekognition.CreateDatasetOutput, error)
+	CreateFaceLivenessSessionWithContext(ctx context.Context, input *rekognition.CreateFaceLivenessSessionInput, opts ...request.Option) (*rekognition.CreateFaceLivenessSessionOutput, error)
 	CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error)
 	CreateProjectVersionWithContext(ctx context.Context, input *rekognition.CreateProjectVersionInput, opts ...request.Option) (*rekognition.CreateProjectVersionOutput, error)
 	CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error)
@@ -46,6 +47,7 @@ type Rekognition interface {
 	GetContentModerationPagesWithContext(ctx context.Context, input *rekognition.GetContentModerationInput, cb func(*rekognition.GetContentModerationOutput, bool) bool, opts ...request.Option) error
 	GetFaceDetectionWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, opts ...request.Option) (*rekognition.GetFaceDetectionOutput, error)
 	GetFaceDetectionPagesWithContext(ctx context.Context, input *rekognition.GetFaceDetectionInput, cb func(*rekognition.GetFaceDetectionOutput, bool) bool, opts ...request.Option) error
+	GetFaceLivenessSessionResultsWithContext(ctx context.Context, input *rekognition.GetFaceLivenessSessionResultsInput, opts ...request.Option) (*rekognition.GetFaceLivenessSessionResultsOutput, error)
 	GetFaceSearchWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, opts ...request.Option) (*rekognition.GetFaceSearchOutput, error)
 	GetFaceSearchPagesWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, cb func(*rekognition.GetFaceSearchOutput, bool) bool, opts ...request.Option) error
 	GetLabelDetectionWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, opts ...request.Option) (*rekognition.GetLabelDetectionOutput, error)
@@ -189,6 +191,27 @@ func (c *Client) CreateDatasetWithContext(ctx context.Context, input *rekognitio
 	})
 
 	return req.Output.(*rekognition.CreateDatasetOutput), req.Error
+}
+
+func (c *Client) CreateFaceLivenessSessionWithContext(ctx context.Context, input *rekognition.CreateFaceLivenessSessionInput, opts ...request.Option) (*rekognition.CreateFaceLivenessSessionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "CreateFaceLivenessSession",
+		Input:   input,
+		Output:  (*rekognition.CreateFaceLivenessSessionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.CreateFaceLivenessSessionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.CreateFaceLivenessSessionOutput), req.Error
 }
 
 func (c *Client) CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error) {
@@ -835,6 +858,27 @@ func (c *Client) GetFaceDetectionPagesWithContext(ctx context.Context, input *re
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetFaceLivenessSessionResultsWithContext(ctx context.Context, input *rekognition.GetFaceLivenessSessionResultsInput, opts ...request.Option) (*rekognition.GetFaceLivenessSessionResultsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetFaceLivenessSessionResults",
+		Input:   input,
+		Output:  (*rekognition.GetFaceLivenessSessionResultsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.GetFaceLivenessSessionResultsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.GetFaceLivenessSessionResultsOutput), req.Error
 }
 
 func (c *Client) GetFaceSearchWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, opts ...request.Option) (*rekognition.GetFaceSearchOutput, error) {
