@@ -11,26 +11,44 @@ import (
 )
 
 type MediaConnect interface {
+	AddBridgeOutputsWithContext(ctx context.Context, input *mediaconnect.AddBridgeOutputsInput, opts ...request.Option) (*mediaconnect.AddBridgeOutputsOutput, error)
+	AddBridgeSourcesWithContext(ctx context.Context, input *mediaconnect.AddBridgeSourcesInput, opts ...request.Option) (*mediaconnect.AddBridgeSourcesOutput, error)
 	AddFlowMediaStreamsWithContext(ctx context.Context, input *mediaconnect.AddFlowMediaStreamsInput, opts ...request.Option) (*mediaconnect.AddFlowMediaStreamsOutput, error)
 	AddFlowOutputsWithContext(ctx context.Context, input *mediaconnect.AddFlowOutputsInput, opts ...request.Option) (*mediaconnect.AddFlowOutputsOutput, error)
 	AddFlowSourcesWithContext(ctx context.Context, input *mediaconnect.AddFlowSourcesInput, opts ...request.Option) (*mediaconnect.AddFlowSourcesOutput, error)
 	AddFlowVpcInterfacesWithContext(ctx context.Context, input *mediaconnect.AddFlowVpcInterfacesInput, opts ...request.Option) (*mediaconnect.AddFlowVpcInterfacesOutput, error)
+	CreateBridgeWithContext(ctx context.Context, input *mediaconnect.CreateBridgeInput, opts ...request.Option) (*mediaconnect.CreateBridgeOutput, error)
 	CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error)
+	CreateGatewayWithContext(ctx context.Context, input *mediaconnect.CreateGatewayInput, opts ...request.Option) (*mediaconnect.CreateGatewayOutput, error)
+	DeleteBridgeWithContext(ctx context.Context, input *mediaconnect.DeleteBridgeInput, opts ...request.Option) (*mediaconnect.DeleteBridgeOutput, error)
 	DeleteFlowWithContext(ctx context.Context, input *mediaconnect.DeleteFlowInput, opts ...request.Option) (*mediaconnect.DeleteFlowOutput, error)
+	DeleteGatewayWithContext(ctx context.Context, input *mediaconnect.DeleteGatewayInput, opts ...request.Option) (*mediaconnect.DeleteGatewayOutput, error)
+	DeregisterGatewayInstanceWithContext(ctx context.Context, input *mediaconnect.DeregisterGatewayInstanceInput, opts ...request.Option) (*mediaconnect.DeregisterGatewayInstanceOutput, error)
+	DescribeBridgeWithContext(ctx context.Context, input *mediaconnect.DescribeBridgeInput, opts ...request.Option) (*mediaconnect.DescribeBridgeOutput, error)
 	DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error)
+	DescribeGatewayWithContext(ctx context.Context, input *mediaconnect.DescribeGatewayInput, opts ...request.Option) (*mediaconnect.DescribeGatewayOutput, error)
+	DescribeGatewayInstanceWithContext(ctx context.Context, input *mediaconnect.DescribeGatewayInstanceInput, opts ...request.Option) (*mediaconnect.DescribeGatewayInstanceOutput, error)
 	DescribeOfferingWithContext(ctx context.Context, input *mediaconnect.DescribeOfferingInput, opts ...request.Option) (*mediaconnect.DescribeOfferingOutput, error)
 	DescribeReservationWithContext(ctx context.Context, input *mediaconnect.DescribeReservationInput, opts ...request.Option) (*mediaconnect.DescribeReservationOutput, error)
 	GrantFlowEntitlementsWithContext(ctx context.Context, input *mediaconnect.GrantFlowEntitlementsInput, opts ...request.Option) (*mediaconnect.GrantFlowEntitlementsOutput, error)
+	ListBridgesWithContext(ctx context.Context, input *mediaconnect.ListBridgesInput, opts ...request.Option) (*mediaconnect.ListBridgesOutput, error)
+	ListBridgesPagesWithContext(ctx context.Context, input *mediaconnect.ListBridgesInput, cb func(*mediaconnect.ListBridgesOutput, bool) bool, opts ...request.Option) error
 	ListEntitlementsWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, opts ...request.Option) (*mediaconnect.ListEntitlementsOutput, error)
 	ListEntitlementsPagesWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, cb func(*mediaconnect.ListEntitlementsOutput, bool) bool, opts ...request.Option) error
 	ListFlowsWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, opts ...request.Option) (*mediaconnect.ListFlowsOutput, error)
 	ListFlowsPagesWithContext(ctx context.Context, input *mediaconnect.ListFlowsInput, cb func(*mediaconnect.ListFlowsOutput, bool) bool, opts ...request.Option) error
+	ListGatewayInstancesWithContext(ctx context.Context, input *mediaconnect.ListGatewayInstancesInput, opts ...request.Option) (*mediaconnect.ListGatewayInstancesOutput, error)
+	ListGatewayInstancesPagesWithContext(ctx context.Context, input *mediaconnect.ListGatewayInstancesInput, cb func(*mediaconnect.ListGatewayInstancesOutput, bool) bool, opts ...request.Option) error
+	ListGatewaysWithContext(ctx context.Context, input *mediaconnect.ListGatewaysInput, opts ...request.Option) (*mediaconnect.ListGatewaysOutput, error)
+	ListGatewaysPagesWithContext(ctx context.Context, input *mediaconnect.ListGatewaysInput, cb func(*mediaconnect.ListGatewaysOutput, bool) bool, opts ...request.Option) error
 	ListOfferingsWithContext(ctx context.Context, input *mediaconnect.ListOfferingsInput, opts ...request.Option) (*mediaconnect.ListOfferingsOutput, error)
 	ListOfferingsPagesWithContext(ctx context.Context, input *mediaconnect.ListOfferingsInput, cb func(*mediaconnect.ListOfferingsOutput, bool) bool, opts ...request.Option) error
 	ListReservationsWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, opts ...request.Option) (*mediaconnect.ListReservationsOutput, error)
 	ListReservationsPagesWithContext(ctx context.Context, input *mediaconnect.ListReservationsInput, cb func(*mediaconnect.ListReservationsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *mediaconnect.ListTagsForResourceInput, opts ...request.Option) (*mediaconnect.ListTagsForResourceOutput, error)
 	PurchaseOfferingWithContext(ctx context.Context, input *mediaconnect.PurchaseOfferingInput, opts ...request.Option) (*mediaconnect.PurchaseOfferingOutput, error)
+	RemoveBridgeOutputWithContext(ctx context.Context, input *mediaconnect.RemoveBridgeOutputInput, opts ...request.Option) (*mediaconnect.RemoveBridgeOutputOutput, error)
+	RemoveBridgeSourceWithContext(ctx context.Context, input *mediaconnect.RemoveBridgeSourceInput, opts ...request.Option) (*mediaconnect.RemoveBridgeSourceOutput, error)
 	RemoveFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.RemoveFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.RemoveFlowMediaStreamOutput, error)
 	RemoveFlowOutputWithContext(ctx context.Context, input *mediaconnect.RemoveFlowOutputInput, opts ...request.Option) (*mediaconnect.RemoveFlowOutputOutput, error)
 	RemoveFlowSourceWithContext(ctx context.Context, input *mediaconnect.RemoveFlowSourceInput, opts ...request.Option) (*mediaconnect.RemoveFlowSourceOutput, error)
@@ -40,11 +58,16 @@ type MediaConnect interface {
 	StopFlowWithContext(ctx context.Context, input *mediaconnect.StopFlowInput, opts ...request.Option) (*mediaconnect.StopFlowOutput, error)
 	TagResourceWithContext(ctx context.Context, input *mediaconnect.TagResourceInput, opts ...request.Option) (*mediaconnect.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *mediaconnect.UntagResourceInput, opts ...request.Option) (*mediaconnect.UntagResourceOutput, error)
+	UpdateBridgeWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeInput, opts ...request.Option) (*mediaconnect.UpdateBridgeOutput, error)
+	UpdateBridgeOutputWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeOutputInput, opts ...request.Option) (*mediaconnect.UpdateBridgeOutputOutput, error)
+	UpdateBridgeSourceWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeSourceInput, opts ...request.Option) (*mediaconnect.UpdateBridgeSourceOutput, error)
+	UpdateBridgeStateWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeStateInput, opts ...request.Option) (*mediaconnect.UpdateBridgeStateOutput, error)
 	UpdateFlowWithContext(ctx context.Context, input *mediaconnect.UpdateFlowInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutput, error)
 	UpdateFlowEntitlementWithContext(ctx context.Context, input *mediaconnect.UpdateFlowEntitlementInput, opts ...request.Option) (*mediaconnect.UpdateFlowEntitlementOutput, error)
 	UpdateFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.UpdateFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.UpdateFlowMediaStreamOutput, error)
 	UpdateFlowOutputWithContext(ctx context.Context, input *mediaconnect.UpdateFlowOutputInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutputOutput, error)
 	UpdateFlowSourceWithContext(ctx context.Context, input *mediaconnect.UpdateFlowSourceInput, opts ...request.Option) (*mediaconnect.UpdateFlowSourceOutput, error)
+	UpdateGatewayInstanceWithContext(ctx context.Context, input *mediaconnect.UpdateGatewayInstanceInput, opts ...request.Option) (*mediaconnect.UpdateGatewayInstanceOutput, error)
 }
 
 type Client struct {
@@ -61,6 +84,48 @@ func New(base mediaconnectiface.MediaConnectAPI, ctxer awsctx.Contexter) MediaCo
 
 var _ MediaConnect = (*mediaconnect.MediaConnect)(nil)
 var _ MediaConnect = (*Client)(nil)
+
+func (c *Client) AddBridgeOutputsWithContext(ctx context.Context, input *mediaconnect.AddBridgeOutputsInput, opts ...request.Option) (*mediaconnect.AddBridgeOutputsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "AddBridgeOutputs",
+		Input:   input,
+		Output:  (*mediaconnect.AddBridgeOutputsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.AddBridgeOutputsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.AddBridgeOutputsOutput), req.Error
+}
+
+func (c *Client) AddBridgeSourcesWithContext(ctx context.Context, input *mediaconnect.AddBridgeSourcesInput, opts ...request.Option) (*mediaconnect.AddBridgeSourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "AddBridgeSources",
+		Input:   input,
+		Output:  (*mediaconnect.AddBridgeSourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.AddBridgeSourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.AddBridgeSourcesOutput), req.Error
+}
 
 func (c *Client) AddFlowMediaStreamsWithContext(ctx context.Context, input *mediaconnect.AddFlowMediaStreamsInput, opts ...request.Option) (*mediaconnect.AddFlowMediaStreamsOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -146,6 +211,27 @@ func (c *Client) AddFlowVpcInterfacesWithContext(ctx context.Context, input *med
 	return req.Output.(*mediaconnect.AddFlowVpcInterfacesOutput), req.Error
 }
 
+func (c *Client) CreateBridgeWithContext(ctx context.Context, input *mediaconnect.CreateBridgeInput, opts ...request.Option) (*mediaconnect.CreateBridgeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "CreateBridge",
+		Input:   input,
+		Output:  (*mediaconnect.CreateBridgeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.CreateBridgeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.CreateBridgeOutput), req.Error
+}
+
 func (c *Client) CreateFlowWithContext(ctx context.Context, input *mediaconnect.CreateFlowInput, opts ...request.Option) (*mediaconnect.CreateFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -165,6 +251,48 @@ func (c *Client) CreateFlowWithContext(ctx context.Context, input *mediaconnect.
 	})
 
 	return req.Output.(*mediaconnect.CreateFlowOutput), req.Error
+}
+
+func (c *Client) CreateGatewayWithContext(ctx context.Context, input *mediaconnect.CreateGatewayInput, opts ...request.Option) (*mediaconnect.CreateGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "CreateGateway",
+		Input:   input,
+		Output:  (*mediaconnect.CreateGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.CreateGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.CreateGatewayOutput), req.Error
+}
+
+func (c *Client) DeleteBridgeWithContext(ctx context.Context, input *mediaconnect.DeleteBridgeInput, opts ...request.Option) (*mediaconnect.DeleteBridgeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DeleteBridge",
+		Input:   input,
+		Output:  (*mediaconnect.DeleteBridgeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DeleteBridgeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DeleteBridgeOutput), req.Error
 }
 
 func (c *Client) DeleteFlowWithContext(ctx context.Context, input *mediaconnect.DeleteFlowInput, opts ...request.Option) (*mediaconnect.DeleteFlowOutput, error) {
@@ -188,6 +316,69 @@ func (c *Client) DeleteFlowWithContext(ctx context.Context, input *mediaconnect.
 	return req.Output.(*mediaconnect.DeleteFlowOutput), req.Error
 }
 
+func (c *Client) DeleteGatewayWithContext(ctx context.Context, input *mediaconnect.DeleteGatewayInput, opts ...request.Option) (*mediaconnect.DeleteGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DeleteGateway",
+		Input:   input,
+		Output:  (*mediaconnect.DeleteGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DeleteGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DeleteGatewayOutput), req.Error
+}
+
+func (c *Client) DeregisterGatewayInstanceWithContext(ctx context.Context, input *mediaconnect.DeregisterGatewayInstanceInput, opts ...request.Option) (*mediaconnect.DeregisterGatewayInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DeregisterGatewayInstance",
+		Input:   input,
+		Output:  (*mediaconnect.DeregisterGatewayInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DeregisterGatewayInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DeregisterGatewayInstanceOutput), req.Error
+}
+
+func (c *Client) DescribeBridgeWithContext(ctx context.Context, input *mediaconnect.DescribeBridgeInput, opts ...request.Option) (*mediaconnect.DescribeBridgeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DescribeBridge",
+		Input:   input,
+		Output:  (*mediaconnect.DescribeBridgeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DescribeBridgeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DescribeBridgeOutput), req.Error
+}
+
 func (c *Client) DescribeFlowWithContext(ctx context.Context, input *mediaconnect.DescribeFlowInput, opts ...request.Option) (*mediaconnect.DescribeFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -207,6 +398,48 @@ func (c *Client) DescribeFlowWithContext(ctx context.Context, input *mediaconnec
 	})
 
 	return req.Output.(*mediaconnect.DescribeFlowOutput), req.Error
+}
+
+func (c *Client) DescribeGatewayWithContext(ctx context.Context, input *mediaconnect.DescribeGatewayInput, opts ...request.Option) (*mediaconnect.DescribeGatewayOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DescribeGateway",
+		Input:   input,
+		Output:  (*mediaconnect.DescribeGatewayOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DescribeGatewayWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DescribeGatewayOutput), req.Error
+}
+
+func (c *Client) DescribeGatewayInstanceWithContext(ctx context.Context, input *mediaconnect.DescribeGatewayInstanceInput, opts ...request.Option) (*mediaconnect.DescribeGatewayInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "DescribeGatewayInstance",
+		Input:   input,
+		Output:  (*mediaconnect.DescribeGatewayInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.DescribeGatewayInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.DescribeGatewayInstanceOutput), req.Error
 }
 
 func (c *Client) DescribeOfferingWithContext(ctx context.Context, input *mediaconnect.DescribeOfferingInput, opts ...request.Option) (*mediaconnect.DescribeOfferingOutput, error) {
@@ -270,6 +503,47 @@ func (c *Client) GrantFlowEntitlementsWithContext(ctx context.Context, input *me
 	})
 
 	return req.Output.(*mediaconnect.GrantFlowEntitlementsOutput), req.Error
+}
+
+func (c *Client) ListBridgesWithContext(ctx context.Context, input *mediaconnect.ListBridgesInput, opts ...request.Option) (*mediaconnect.ListBridgesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListBridges",
+		Input:   input,
+		Output:  (*mediaconnect.ListBridgesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.ListBridgesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.ListBridgesOutput), req.Error
+}
+
+func (c *Client) ListBridgesPagesWithContext(ctx context.Context, input *mediaconnect.ListBridgesInput, cb func(*mediaconnect.ListBridgesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListBridges",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListBridgesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListEntitlementsWithContext(ctx context.Context, input *mediaconnect.ListEntitlementsInput, opts ...request.Option) (*mediaconnect.ListEntitlementsOutput, error) {
@@ -349,6 +623,88 @@ func (c *Client) ListFlowsPagesWithContext(ctx context.Context, input *mediaconn
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.MediaConnectAPI.ListFlowsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListGatewayInstancesWithContext(ctx context.Context, input *mediaconnect.ListGatewayInstancesInput, opts ...request.Option) (*mediaconnect.ListGatewayInstancesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListGatewayInstances",
+		Input:   input,
+		Output:  (*mediaconnect.ListGatewayInstancesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.ListGatewayInstancesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.ListGatewayInstancesOutput), req.Error
+}
+
+func (c *Client) ListGatewayInstancesPagesWithContext(ctx context.Context, input *mediaconnect.ListGatewayInstancesInput, cb func(*mediaconnect.ListGatewayInstancesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListGatewayInstances",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListGatewayInstancesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListGatewaysWithContext(ctx context.Context, input *mediaconnect.ListGatewaysInput, opts ...request.Option) (*mediaconnect.ListGatewaysOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListGateways",
+		Input:   input,
+		Output:  (*mediaconnect.ListGatewaysOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.ListGatewaysWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.ListGatewaysOutput), req.Error
+}
+
+func (c *Client) ListGatewaysPagesWithContext(ctx context.Context, input *mediaconnect.ListGatewaysInput, cb func(*mediaconnect.ListGatewaysOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "ListGateways",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MediaConnectAPI.ListGatewaysPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -476,6 +832,48 @@ func (c *Client) PurchaseOfferingWithContext(ctx context.Context, input *mediaco
 	})
 
 	return req.Output.(*mediaconnect.PurchaseOfferingOutput), req.Error
+}
+
+func (c *Client) RemoveBridgeOutputWithContext(ctx context.Context, input *mediaconnect.RemoveBridgeOutputInput, opts ...request.Option) (*mediaconnect.RemoveBridgeOutputOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "RemoveBridgeOutput",
+		Input:   input,
+		Output:  (*mediaconnect.RemoveBridgeOutputOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.RemoveBridgeOutputWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.RemoveBridgeOutputOutput), req.Error
+}
+
+func (c *Client) RemoveBridgeSourceWithContext(ctx context.Context, input *mediaconnect.RemoveBridgeSourceInput, opts ...request.Option) (*mediaconnect.RemoveBridgeSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "RemoveBridgeSource",
+		Input:   input,
+		Output:  (*mediaconnect.RemoveBridgeSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.RemoveBridgeSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.RemoveBridgeSourceOutput), req.Error
 }
 
 func (c *Client) RemoveFlowMediaStreamWithContext(ctx context.Context, input *mediaconnect.RemoveFlowMediaStreamInput, opts ...request.Option) (*mediaconnect.RemoveFlowMediaStreamOutput, error) {
@@ -667,6 +1065,90 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *mediaconne
 	return req.Output.(*mediaconnect.UntagResourceOutput), req.Error
 }
 
+func (c *Client) UpdateBridgeWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeInput, opts ...request.Option) (*mediaconnect.UpdateBridgeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateBridge",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateBridgeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateBridgeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateBridgeOutput), req.Error
+}
+
+func (c *Client) UpdateBridgeOutputWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeOutputInput, opts ...request.Option) (*mediaconnect.UpdateBridgeOutputOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateBridgeOutput",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateBridgeOutputOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateBridgeOutputWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateBridgeOutputOutput), req.Error
+}
+
+func (c *Client) UpdateBridgeSourceWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeSourceInput, opts ...request.Option) (*mediaconnect.UpdateBridgeSourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateBridgeSource",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateBridgeSourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateBridgeSourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateBridgeSourceOutput), req.Error
+}
+
+func (c *Client) UpdateBridgeStateWithContext(ctx context.Context, input *mediaconnect.UpdateBridgeStateInput, opts ...request.Option) (*mediaconnect.UpdateBridgeStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateBridgeState",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateBridgeStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateBridgeStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateBridgeStateOutput), req.Error
+}
+
 func (c *Client) UpdateFlowWithContext(ctx context.Context, input *mediaconnect.UpdateFlowInput, opts ...request.Option) (*mediaconnect.UpdateFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "mediaconnect",
@@ -770,4 +1252,25 @@ func (c *Client) UpdateFlowSourceWithContext(ctx context.Context, input *mediaco
 	})
 
 	return req.Output.(*mediaconnect.UpdateFlowSourceOutput), req.Error
+}
+
+func (c *Client) UpdateGatewayInstanceWithContext(ctx context.Context, input *mediaconnect.UpdateGatewayInstanceInput, opts ...request.Option) (*mediaconnect.UpdateGatewayInstanceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mediaconnect",
+		Action:  "UpdateGatewayInstance",
+		Input:   input,
+		Output:  (*mediaconnect.UpdateGatewayInstanceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaConnectAPI.UpdateGatewayInstanceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mediaconnect.UpdateGatewayInstanceOutput), req.Error
 }
