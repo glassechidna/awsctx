@@ -14,7 +14,11 @@ type RAM interface {
 	AcceptResourceShareInvitationWithContext(ctx context.Context, input *ram.AcceptResourceShareInvitationInput, opts ...request.Option) (*ram.AcceptResourceShareInvitationOutput, error)
 	AssociateResourceShareWithContext(ctx context.Context, input *ram.AssociateResourceShareInput, opts ...request.Option) (*ram.AssociateResourceShareOutput, error)
 	AssociateResourceSharePermissionWithContext(ctx context.Context, input *ram.AssociateResourceSharePermissionInput, opts ...request.Option) (*ram.AssociateResourceSharePermissionOutput, error)
+	CreatePermissionWithContext(ctx context.Context, input *ram.CreatePermissionInput, opts ...request.Option) (*ram.CreatePermissionOutput, error)
+	CreatePermissionVersionWithContext(ctx context.Context, input *ram.CreatePermissionVersionInput, opts ...request.Option) (*ram.CreatePermissionVersionOutput, error)
 	CreateResourceShareWithContext(ctx context.Context, input *ram.CreateResourceShareInput, opts ...request.Option) (*ram.CreateResourceShareOutput, error)
+	DeletePermissionWithContext(ctx context.Context, input *ram.DeletePermissionInput, opts ...request.Option) (*ram.DeletePermissionOutput, error)
+	DeletePermissionVersionWithContext(ctx context.Context, input *ram.DeletePermissionVersionInput, opts ...request.Option) (*ram.DeletePermissionVersionOutput, error)
 	DeleteResourceShareWithContext(ctx context.Context, input *ram.DeleteResourceShareInput, opts ...request.Option) (*ram.DeleteResourceShareOutput, error)
 	DisassociateResourceShareWithContext(ctx context.Context, input *ram.DisassociateResourceShareInput, opts ...request.Option) (*ram.DisassociateResourceShareOutput, error)
 	DisassociateResourceSharePermissionWithContext(ctx context.Context, input *ram.DisassociateResourceSharePermissionInput, opts ...request.Option) (*ram.DisassociateResourceSharePermissionOutput, error)
@@ -30,20 +34,27 @@ type RAM interface {
 	GetResourceSharesPagesWithContext(ctx context.Context, input *ram.GetResourceSharesInput, cb func(*ram.GetResourceSharesOutput, bool) bool, opts ...request.Option) error
 	ListPendingInvitationResourcesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, opts ...request.Option) (*ram.ListPendingInvitationResourcesOutput, error)
 	ListPendingInvitationResourcesPagesWithContext(ctx context.Context, input *ram.ListPendingInvitationResourcesInput, cb func(*ram.ListPendingInvitationResourcesOutput, bool) bool, opts ...request.Option) error
+	ListPermissionAssociationsWithContext(ctx context.Context, input *ram.ListPermissionAssociationsInput, opts ...request.Option) (*ram.ListPermissionAssociationsOutput, error)
+	ListPermissionAssociationsPagesWithContext(ctx context.Context, input *ram.ListPermissionAssociationsInput, cb func(*ram.ListPermissionAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListPermissionVersionsWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, opts ...request.Option) (*ram.ListPermissionVersionsOutput, error)
 	ListPermissionVersionsPagesWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, cb func(*ram.ListPermissionVersionsOutput, bool) bool, opts ...request.Option) error
 	ListPermissionsWithContext(ctx context.Context, input *ram.ListPermissionsInput, opts ...request.Option) (*ram.ListPermissionsOutput, error)
 	ListPermissionsPagesWithContext(ctx context.Context, input *ram.ListPermissionsInput, cb func(*ram.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListPrincipalsWithContext(ctx context.Context, input *ram.ListPrincipalsInput, opts ...request.Option) (*ram.ListPrincipalsOutput, error)
 	ListPrincipalsPagesWithContext(ctx context.Context, input *ram.ListPrincipalsInput, cb func(*ram.ListPrincipalsOutput, bool) bool, opts ...request.Option) error
+	ListReplacePermissionAssociationsWorkWithContext(ctx context.Context, input *ram.ListReplacePermissionAssociationsWorkInput, opts ...request.Option) (*ram.ListReplacePermissionAssociationsWorkOutput, error)
+	ListReplacePermissionAssociationsWorkPagesWithContext(ctx context.Context, input *ram.ListReplacePermissionAssociationsWorkInput, cb func(*ram.ListReplacePermissionAssociationsWorkOutput, bool) bool, opts ...request.Option) error
 	ListResourceSharePermissionsWithContext(ctx context.Context, input *ram.ListResourceSharePermissionsInput, opts ...request.Option) (*ram.ListResourceSharePermissionsOutput, error)
 	ListResourceSharePermissionsPagesWithContext(ctx context.Context, input *ram.ListResourceSharePermissionsInput, cb func(*ram.ListResourceSharePermissionsOutput, bool) bool, opts ...request.Option) error
 	ListResourceTypesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, opts ...request.Option) (*ram.ListResourceTypesOutput, error)
 	ListResourceTypesPagesWithContext(ctx context.Context, input *ram.ListResourceTypesInput, cb func(*ram.ListResourceTypesOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *ram.ListResourcesInput, opts ...request.Option) (*ram.ListResourcesOutput, error)
 	ListResourcesPagesWithContext(ctx context.Context, input *ram.ListResourcesInput, cb func(*ram.ListResourcesOutput, bool) bool, opts ...request.Option) error
+	PromotePermissionCreatedFromPolicyWithContext(ctx context.Context, input *ram.PromotePermissionCreatedFromPolicyInput, opts ...request.Option) (*ram.PromotePermissionCreatedFromPolicyOutput, error)
 	PromoteResourceShareCreatedFromPolicyWithContext(ctx context.Context, input *ram.PromoteResourceShareCreatedFromPolicyInput, opts ...request.Option) (*ram.PromoteResourceShareCreatedFromPolicyOutput, error)
 	RejectResourceShareInvitationWithContext(ctx context.Context, input *ram.RejectResourceShareInvitationInput, opts ...request.Option) (*ram.RejectResourceShareInvitationOutput, error)
+	ReplacePermissionAssociationsWithContext(ctx context.Context, input *ram.ReplacePermissionAssociationsInput, opts ...request.Option) (*ram.ReplacePermissionAssociationsOutput, error)
+	SetDefaultPermissionVersionWithContext(ctx context.Context, input *ram.SetDefaultPermissionVersionInput, opts ...request.Option) (*ram.SetDefaultPermissionVersionOutput, error)
 	TagResourceWithContext(ctx context.Context, input *ram.TagResourceInput, opts ...request.Option) (*ram.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *ram.UntagResourceInput, opts ...request.Option) (*ram.UntagResourceOutput, error)
 	UpdateResourceShareWithContext(ctx context.Context, input *ram.UpdateResourceShareInput, opts ...request.Option) (*ram.UpdateResourceShareOutput, error)
@@ -127,6 +138,48 @@ func (c *Client) AssociateResourceSharePermissionWithContext(ctx context.Context
 	return req.Output.(*ram.AssociateResourceSharePermissionOutput), req.Error
 }
 
+func (c *Client) CreatePermissionWithContext(ctx context.Context, input *ram.CreatePermissionInput, opts ...request.Option) (*ram.CreatePermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "CreatePermission",
+		Input:   input,
+		Output:  (*ram.CreatePermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.CreatePermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.CreatePermissionOutput), req.Error
+}
+
+func (c *Client) CreatePermissionVersionWithContext(ctx context.Context, input *ram.CreatePermissionVersionInput, opts ...request.Option) (*ram.CreatePermissionVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "CreatePermissionVersion",
+		Input:   input,
+		Output:  (*ram.CreatePermissionVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.CreatePermissionVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.CreatePermissionVersionOutput), req.Error
+}
+
 func (c *Client) CreateResourceShareWithContext(ctx context.Context, input *ram.CreateResourceShareInput, opts ...request.Option) (*ram.CreateResourceShareOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
@@ -146,6 +199,48 @@ func (c *Client) CreateResourceShareWithContext(ctx context.Context, input *ram.
 	})
 
 	return req.Output.(*ram.CreateResourceShareOutput), req.Error
+}
+
+func (c *Client) DeletePermissionWithContext(ctx context.Context, input *ram.DeletePermissionInput, opts ...request.Option) (*ram.DeletePermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "DeletePermission",
+		Input:   input,
+		Output:  (*ram.DeletePermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.DeletePermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.DeletePermissionOutput), req.Error
+}
+
+func (c *Client) DeletePermissionVersionWithContext(ctx context.Context, input *ram.DeletePermissionVersionInput, opts ...request.Option) (*ram.DeletePermissionVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "DeletePermissionVersion",
+		Input:   input,
+		Output:  (*ram.DeletePermissionVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.DeletePermissionVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.DeletePermissionVersionOutput), req.Error
 }
 
 func (c *Client) DeleteResourceShareWithContext(ctx context.Context, input *ram.DeleteResourceShareInput, opts ...request.Option) (*ram.DeleteResourceShareOutput, error) {
@@ -458,6 +553,47 @@ func (c *Client) ListPendingInvitationResourcesPagesWithContext(ctx context.Cont
 	return req.Error
 }
 
+func (c *Client) ListPermissionAssociationsWithContext(ctx context.Context, input *ram.ListPermissionAssociationsInput, opts ...request.Option) (*ram.ListPermissionAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListPermissionAssociations",
+		Input:   input,
+		Output:  (*ram.ListPermissionAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.ListPermissionAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.ListPermissionAssociationsOutput), req.Error
+}
+
+func (c *Client) ListPermissionAssociationsPagesWithContext(ctx context.Context, input *ram.ListPermissionAssociationsInput, cb func(*ram.ListPermissionAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListPermissionAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RAMAPI.ListPermissionAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPermissionVersionsWithContext(ctx context.Context, input *ram.ListPermissionVersionsInput, opts ...request.Option) (*ram.ListPermissionVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
@@ -576,6 +712,47 @@ func (c *Client) ListPrincipalsPagesWithContext(ctx context.Context, input *ram.
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RAMAPI.ListPrincipalsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListReplacePermissionAssociationsWorkWithContext(ctx context.Context, input *ram.ListReplacePermissionAssociationsWorkInput, opts ...request.Option) (*ram.ListReplacePermissionAssociationsWorkOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListReplacePermissionAssociationsWork",
+		Input:   input,
+		Output:  (*ram.ListReplacePermissionAssociationsWorkOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.ListReplacePermissionAssociationsWorkWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.ListReplacePermissionAssociationsWorkOutput), req.Error
+}
+
+func (c *Client) ListReplacePermissionAssociationsWorkPagesWithContext(ctx context.Context, input *ram.ListReplacePermissionAssociationsWorkInput, cb func(*ram.ListReplacePermissionAssociationsWorkOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ListReplacePermissionAssociationsWork",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RAMAPI.ListReplacePermissionAssociationsWorkPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -704,6 +881,27 @@ func (c *Client) ListResourcesPagesWithContext(ctx context.Context, input *ram.L
 	return req.Error
 }
 
+func (c *Client) PromotePermissionCreatedFromPolicyWithContext(ctx context.Context, input *ram.PromotePermissionCreatedFromPolicyInput, opts ...request.Option) (*ram.PromotePermissionCreatedFromPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "PromotePermissionCreatedFromPolicy",
+		Input:   input,
+		Output:  (*ram.PromotePermissionCreatedFromPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.PromotePermissionCreatedFromPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.PromotePermissionCreatedFromPolicyOutput), req.Error
+}
+
 func (c *Client) PromoteResourceShareCreatedFromPolicyWithContext(ctx context.Context, input *ram.PromoteResourceShareCreatedFromPolicyInput, opts ...request.Option) (*ram.PromoteResourceShareCreatedFromPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ram",
@@ -744,6 +942,48 @@ func (c *Client) RejectResourceShareInvitationWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*ram.RejectResourceShareInvitationOutput), req.Error
+}
+
+func (c *Client) ReplacePermissionAssociationsWithContext(ctx context.Context, input *ram.ReplacePermissionAssociationsInput, opts ...request.Option) (*ram.ReplacePermissionAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "ReplacePermissionAssociations",
+		Input:   input,
+		Output:  (*ram.ReplacePermissionAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.ReplacePermissionAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.ReplacePermissionAssociationsOutput), req.Error
+}
+
+func (c *Client) SetDefaultPermissionVersionWithContext(ctx context.Context, input *ram.SetDefaultPermissionVersionInput, opts ...request.Option) (*ram.SetDefaultPermissionVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ram",
+		Action:  "SetDefaultPermissionVersion",
+		Input:   input,
+		Output:  (*ram.SetDefaultPermissionVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RAMAPI.SetDefaultPermissionVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ram.SetDefaultPermissionVersionOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *ram.TagResourceInput, opts ...request.Option) (*ram.TagResourceOutput, error) {
