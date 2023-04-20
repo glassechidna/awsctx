@@ -190,6 +190,7 @@ type IoT interface {
 	ListJobsWithContext(ctx context.Context, input *iot.ListJobsInput, opts ...request.Option) (*iot.ListJobsOutput, error)
 	ListJobsPagesWithContext(ctx context.Context, input *iot.ListJobsInput, cb func(*iot.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListManagedJobTemplatesWithContext(ctx context.Context, input *iot.ListManagedJobTemplatesInput, opts ...request.Option) (*iot.ListManagedJobTemplatesOutput, error)
+	ListManagedJobTemplatesPagesWithContext(ctx context.Context, input *iot.ListManagedJobTemplatesInput, cb func(*iot.ListManagedJobTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListMetricValuesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, opts ...request.Option) (*iot.ListMetricValuesOutput, error)
 	ListMetricValuesPagesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, cb func(*iot.ListMetricValuesOutput, bool) bool, opts ...request.Option) error
 	ListMitigationActionsWithContext(ctx context.Context, input *iot.ListMitigationActionsInput, opts ...request.Option) (*iot.ListMitigationActionsOutput, error)
@@ -212,6 +213,7 @@ type IoT interface {
 	ListProvisioningTemplatesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, opts ...request.Option) (*iot.ListProvisioningTemplatesOutput, error)
 	ListProvisioningTemplatesPagesWithContext(ctx context.Context, input *iot.ListProvisioningTemplatesInput, cb func(*iot.ListProvisioningTemplatesOutput, bool) bool, opts ...request.Option) error
 	ListRelatedResourcesForAuditFindingWithContext(ctx context.Context, input *iot.ListRelatedResourcesForAuditFindingInput, opts ...request.Option) (*iot.ListRelatedResourcesForAuditFindingOutput, error)
+	ListRelatedResourcesForAuditFindingPagesWithContext(ctx context.Context, input *iot.ListRelatedResourcesForAuditFindingInput, cb func(*iot.ListRelatedResourcesForAuditFindingOutput, bool) bool, opts ...request.Option) error
 	ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error)
 	ListRoleAliasesPagesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, cb func(*iot.ListRoleAliasesOutput, bool) bool, opts ...request.Option) error
 	ListScheduledAuditsWithContext(ctx context.Context, input *iot.ListScheduledAuditsInput, opts ...request.Option) (*iot.ListScheduledAuditsOutput, error)
@@ -4056,6 +4058,26 @@ func (c *Client) ListManagedJobTemplatesWithContext(ctx context.Context, input *
 	return req.Output.(*iot.ListManagedJobTemplatesOutput), req.Error
 }
 
+func (c *Client) ListManagedJobTemplatesPagesWithContext(ctx context.Context, input *iot.ListManagedJobTemplatesInput, cb func(*iot.ListManagedJobTemplatesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListManagedJobTemplates",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListManagedJobTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMetricValuesWithContext(ctx context.Context, input *iot.ListMetricValuesInput, opts ...request.Option) (*iot.ListMetricValuesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -4506,6 +4528,26 @@ func (c *Client) ListRelatedResourcesForAuditFindingWithContext(ctx context.Cont
 	})
 
 	return req.Output.(*iot.ListRelatedResourcesForAuditFindingOutput), req.Error
+}
+
+func (c *Client) ListRelatedResourcesForAuditFindingPagesWithContext(ctx context.Context, input *iot.ListRelatedResourcesForAuditFindingInput, cb func(*iot.ListRelatedResourcesForAuditFindingOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListRelatedResourcesForAuditFinding",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListRelatedResourcesForAuditFindingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListRoleAliasesWithContext(ctx context.Context, input *iot.ListRoleAliasesInput, opts ...request.Option) (*iot.ListRoleAliasesOutput, error) {
