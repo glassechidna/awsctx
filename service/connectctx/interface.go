@@ -28,6 +28,7 @@ type Connect interface {
 	CreateHoursOfOperationWithContext(ctx context.Context, input *connect.CreateHoursOfOperationInput, opts ...request.Option) (*connect.CreateHoursOfOperationOutput, error)
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
+	CreateParticipantWithContext(ctx context.Context, input *connect.CreateParticipantInput, opts ...request.Option) (*connect.CreateParticipantOutput, error)
 	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
@@ -594,6 +595,27 @@ func (c *Client) CreateIntegrationAssociationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*connect.CreateIntegrationAssociationOutput), req.Error
+}
+
+func (c *Client) CreateParticipantWithContext(ctx context.Context, input *connect.CreateParticipantInput, opts ...request.Option) (*connect.CreateParticipantOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateParticipant",
+		Input:   input,
+		Output:  (*connect.CreateParticipantOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateParticipantWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateParticipantOutput), req.Error
 }
 
 func (c *Client) CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error) {
