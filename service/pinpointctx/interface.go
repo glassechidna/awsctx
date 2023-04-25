@@ -78,6 +78,9 @@ type Pinpoint interface {
 	GetJourneyDateRangeKpiWithContext(ctx context.Context, input *pinpoint.GetJourneyDateRangeKpiInput, opts ...request.Option) (*pinpoint.GetJourneyDateRangeKpiOutput, error)
 	GetJourneyExecutionActivityMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionActivityMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionActivityMetricsOutput, error)
 	GetJourneyExecutionMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyExecutionMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyExecutionMetricsOutput, error)
+	GetJourneyRunExecutionActivityMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyRunExecutionActivityMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyRunExecutionActivityMetricsOutput, error)
+	GetJourneyRunExecutionMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyRunExecutionMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyRunExecutionMetricsOutput, error)
+	GetJourneyRunsWithContext(ctx context.Context, input *pinpoint.GetJourneyRunsInput, opts ...request.Option) (*pinpoint.GetJourneyRunsOutput, error)
 	GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error)
 	GetRecommenderConfigurationWithContext(ctx context.Context, input *pinpoint.GetRecommenderConfigurationInput, opts ...request.Option) (*pinpoint.GetRecommenderConfigurationOutput, error)
 	GetRecommenderConfigurationsWithContext(ctx context.Context, input *pinpoint.GetRecommenderConfigurationsInput, opts ...request.Option) (*pinpoint.GetRecommenderConfigurationsOutput, error)
@@ -1552,6 +1555,69 @@ func (c *Client) GetJourneyExecutionMetricsWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*pinpoint.GetJourneyExecutionMetricsOutput), req.Error
+}
+
+func (c *Client) GetJourneyRunExecutionActivityMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyRunExecutionActivityMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyRunExecutionActivityMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourneyRunExecutionActivityMetrics",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyRunExecutionActivityMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyRunExecutionActivityMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyRunExecutionActivityMetricsOutput), req.Error
+}
+
+func (c *Client) GetJourneyRunExecutionMetricsWithContext(ctx context.Context, input *pinpoint.GetJourneyRunExecutionMetricsInput, opts ...request.Option) (*pinpoint.GetJourneyRunExecutionMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourneyRunExecutionMetrics",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyRunExecutionMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyRunExecutionMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyRunExecutionMetricsOutput), req.Error
+}
+
+func (c *Client) GetJourneyRunsWithContext(ctx context.Context, input *pinpoint.GetJourneyRunsInput, opts ...request.Option) (*pinpoint.GetJourneyRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pinpoint",
+		Action:  "GetJourneyRuns",
+		Input:   input,
+		Output:  (*pinpoint.GetJourneyRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PinpointAPI.GetJourneyRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pinpoint.GetJourneyRunsOutput), req.Error
 }
 
 func (c *Client) GetPushTemplateWithContext(ctx context.Context, input *pinpoint.GetPushTemplateInput, opts ...request.Option) (*pinpoint.GetPushTemplateOutput, error) {

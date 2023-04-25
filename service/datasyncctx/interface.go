@@ -11,6 +11,7 @@ import (
 )
 
 type DataSync interface {
+	AddStorageSystemWithContext(ctx context.Context, input *datasync.AddStorageSystemInput, opts ...request.Option) (*datasync.AddStorageSystemOutput, error)
 	CancelTaskExecutionWithContext(ctx context.Context, input *datasync.CancelTaskExecutionInput, opts ...request.Option) (*datasync.CancelTaskExecutionOutput, error)
 	CreateAgentWithContext(ctx context.Context, input *datasync.CreateAgentInput, opts ...request.Option) (*datasync.CreateAgentOutput, error)
 	CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error)
@@ -28,6 +29,7 @@ type DataSync interface {
 	DeleteLocationWithContext(ctx context.Context, input *datasync.DeleteLocationInput, opts ...request.Option) (*datasync.DeleteLocationOutput, error)
 	DeleteTaskWithContext(ctx context.Context, input *datasync.DeleteTaskInput, opts ...request.Option) (*datasync.DeleteTaskOutput, error)
 	DescribeAgentWithContext(ctx context.Context, input *datasync.DescribeAgentInput, opts ...request.Option) (*datasync.DescribeAgentOutput, error)
+	DescribeDiscoveryJobWithContext(ctx context.Context, input *datasync.DescribeDiscoveryJobInput, opts ...request.Option) (*datasync.DescribeDiscoveryJobOutput, error)
 	DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error)
 	DescribeLocationFsxLustreWithContext(ctx context.Context, input *datasync.DescribeLocationFsxLustreInput, opts ...request.Option) (*datasync.DescribeLocationFsxLustreOutput, error)
 	DescribeLocationFsxOntapWithContext(ctx context.Context, input *datasync.DescribeLocationFsxOntapInput, opts ...request.Option) (*datasync.DescribeLocationFsxOntapOutput, error)
@@ -38,26 +40,41 @@ type DataSync interface {
 	DescribeLocationObjectStorageWithContext(ctx context.Context, input *datasync.DescribeLocationObjectStorageInput, opts ...request.Option) (*datasync.DescribeLocationObjectStorageOutput, error)
 	DescribeLocationS3WithContext(ctx context.Context, input *datasync.DescribeLocationS3Input, opts ...request.Option) (*datasync.DescribeLocationS3Output, error)
 	DescribeLocationSmbWithContext(ctx context.Context, input *datasync.DescribeLocationSmbInput, opts ...request.Option) (*datasync.DescribeLocationSmbOutput, error)
+	DescribeStorageSystemWithContext(ctx context.Context, input *datasync.DescribeStorageSystemInput, opts ...request.Option) (*datasync.DescribeStorageSystemOutput, error)
+	DescribeStorageSystemResourceMetricsWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourceMetricsInput, opts ...request.Option) (*datasync.DescribeStorageSystemResourceMetricsOutput, error)
+	DescribeStorageSystemResourceMetricsPagesWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourceMetricsInput, cb func(*datasync.DescribeStorageSystemResourceMetricsOutput, bool) bool, opts ...request.Option) error
+	DescribeStorageSystemResourcesWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourcesInput, opts ...request.Option) (*datasync.DescribeStorageSystemResourcesOutput, error)
+	DescribeStorageSystemResourcesPagesWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourcesInput, cb func(*datasync.DescribeStorageSystemResourcesOutput, bool) bool, opts ...request.Option) error
 	DescribeTaskWithContext(ctx context.Context, input *datasync.DescribeTaskInput, opts ...request.Option) (*datasync.DescribeTaskOutput, error)
 	DescribeTaskExecutionWithContext(ctx context.Context, input *datasync.DescribeTaskExecutionInput, opts ...request.Option) (*datasync.DescribeTaskExecutionOutput, error)
+	GenerateRecommendationsWithContext(ctx context.Context, input *datasync.GenerateRecommendationsInput, opts ...request.Option) (*datasync.GenerateRecommendationsOutput, error)
 	ListAgentsWithContext(ctx context.Context, input *datasync.ListAgentsInput, opts ...request.Option) (*datasync.ListAgentsOutput, error)
 	ListAgentsPagesWithContext(ctx context.Context, input *datasync.ListAgentsInput, cb func(*datasync.ListAgentsOutput, bool) bool, opts ...request.Option) error
+	ListDiscoveryJobsWithContext(ctx context.Context, input *datasync.ListDiscoveryJobsInput, opts ...request.Option) (*datasync.ListDiscoveryJobsOutput, error)
+	ListDiscoveryJobsPagesWithContext(ctx context.Context, input *datasync.ListDiscoveryJobsInput, cb func(*datasync.ListDiscoveryJobsOutput, bool) bool, opts ...request.Option) error
 	ListLocationsWithContext(ctx context.Context, input *datasync.ListLocationsInput, opts ...request.Option) (*datasync.ListLocationsOutput, error)
 	ListLocationsPagesWithContext(ctx context.Context, input *datasync.ListLocationsInput, cb func(*datasync.ListLocationsOutput, bool) bool, opts ...request.Option) error
+	ListStorageSystemsWithContext(ctx context.Context, input *datasync.ListStorageSystemsInput, opts ...request.Option) (*datasync.ListStorageSystemsOutput, error)
+	ListStorageSystemsPagesWithContext(ctx context.Context, input *datasync.ListStorageSystemsInput, cb func(*datasync.ListStorageSystemsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, opts ...request.Option) (*datasync.ListTagsForResourceOutput, error)
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *datasync.ListTagsForResourceInput, cb func(*datasync.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListTaskExecutionsWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, opts ...request.Option) (*datasync.ListTaskExecutionsOutput, error)
 	ListTaskExecutionsPagesWithContext(ctx context.Context, input *datasync.ListTaskExecutionsInput, cb func(*datasync.ListTaskExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListTasksWithContext(ctx context.Context, input *datasync.ListTasksInput, opts ...request.Option) (*datasync.ListTasksOutput, error)
 	ListTasksPagesWithContext(ctx context.Context, input *datasync.ListTasksInput, cb func(*datasync.ListTasksOutput, bool) bool, opts ...request.Option) error
+	RemoveStorageSystemWithContext(ctx context.Context, input *datasync.RemoveStorageSystemInput, opts ...request.Option) (*datasync.RemoveStorageSystemOutput, error)
+	StartDiscoveryJobWithContext(ctx context.Context, input *datasync.StartDiscoveryJobInput, opts ...request.Option) (*datasync.StartDiscoveryJobOutput, error)
 	StartTaskExecutionWithContext(ctx context.Context, input *datasync.StartTaskExecutionInput, opts ...request.Option) (*datasync.StartTaskExecutionOutput, error)
+	StopDiscoveryJobWithContext(ctx context.Context, input *datasync.StopDiscoveryJobInput, opts ...request.Option) (*datasync.StopDiscoveryJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *datasync.TagResourceInput, opts ...request.Option) (*datasync.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error)
 	UpdateAgentWithContext(ctx context.Context, input *datasync.UpdateAgentInput, opts ...request.Option) (*datasync.UpdateAgentOutput, error)
+	UpdateDiscoveryJobWithContext(ctx context.Context, input *datasync.UpdateDiscoveryJobInput, opts ...request.Option) (*datasync.UpdateDiscoveryJobOutput, error)
 	UpdateLocationHdfsWithContext(ctx context.Context, input *datasync.UpdateLocationHdfsInput, opts ...request.Option) (*datasync.UpdateLocationHdfsOutput, error)
 	UpdateLocationNfsWithContext(ctx context.Context, input *datasync.UpdateLocationNfsInput, opts ...request.Option) (*datasync.UpdateLocationNfsOutput, error)
 	UpdateLocationObjectStorageWithContext(ctx context.Context, input *datasync.UpdateLocationObjectStorageInput, opts ...request.Option) (*datasync.UpdateLocationObjectStorageOutput, error)
 	UpdateLocationSmbWithContext(ctx context.Context, input *datasync.UpdateLocationSmbInput, opts ...request.Option) (*datasync.UpdateLocationSmbOutput, error)
+	UpdateStorageSystemWithContext(ctx context.Context, input *datasync.UpdateStorageSystemInput, opts ...request.Option) (*datasync.UpdateStorageSystemOutput, error)
 	UpdateTaskWithContext(ctx context.Context, input *datasync.UpdateTaskInput, opts ...request.Option) (*datasync.UpdateTaskOutput, error)
 	UpdateTaskExecutionWithContext(ctx context.Context, input *datasync.UpdateTaskExecutionInput, opts ...request.Option) (*datasync.UpdateTaskExecutionOutput, error)
 }
@@ -76,6 +93,27 @@ func New(base datasynciface.DataSyncAPI, ctxer awsctx.Contexter) DataSync {
 
 var _ DataSync = (*datasync.DataSync)(nil)
 var _ DataSync = (*Client)(nil)
+
+func (c *Client) AddStorageSystemWithContext(ctx context.Context, input *datasync.AddStorageSystemInput, opts ...request.Option) (*datasync.AddStorageSystemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "AddStorageSystem",
+		Input:   input,
+		Output:  (*datasync.AddStorageSystemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.AddStorageSystemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.AddStorageSystemOutput), req.Error
+}
 
 func (c *Client) CancelTaskExecutionWithContext(ctx context.Context, input *datasync.CancelTaskExecutionInput, opts ...request.Option) (*datasync.CancelTaskExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -434,6 +472,27 @@ func (c *Client) DescribeAgentWithContext(ctx context.Context, input *datasync.D
 	return req.Output.(*datasync.DescribeAgentOutput), req.Error
 }
 
+func (c *Client) DescribeDiscoveryJobWithContext(ctx context.Context, input *datasync.DescribeDiscoveryJobInput, opts ...request.Option) (*datasync.DescribeDiscoveryJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeDiscoveryJob",
+		Input:   input,
+		Output:  (*datasync.DescribeDiscoveryJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeDiscoveryJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeDiscoveryJobOutput), req.Error
+}
+
 func (c *Client) DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -644,6 +703,109 @@ func (c *Client) DescribeLocationSmbWithContext(ctx context.Context, input *data
 	return req.Output.(*datasync.DescribeLocationSmbOutput), req.Error
 }
 
+func (c *Client) DescribeStorageSystemWithContext(ctx context.Context, input *datasync.DescribeStorageSystemInput, opts ...request.Option) (*datasync.DescribeStorageSystemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeStorageSystem",
+		Input:   input,
+		Output:  (*datasync.DescribeStorageSystemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeStorageSystemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeStorageSystemOutput), req.Error
+}
+
+func (c *Client) DescribeStorageSystemResourceMetricsWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourceMetricsInput, opts ...request.Option) (*datasync.DescribeStorageSystemResourceMetricsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeStorageSystemResourceMetrics",
+		Input:   input,
+		Output:  (*datasync.DescribeStorageSystemResourceMetricsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeStorageSystemResourceMetricsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeStorageSystemResourceMetricsOutput), req.Error
+}
+
+func (c *Client) DescribeStorageSystemResourceMetricsPagesWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourceMetricsInput, cb func(*datasync.DescribeStorageSystemResourceMetricsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeStorageSystemResourceMetrics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.DescribeStorageSystemResourceMetricsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeStorageSystemResourcesWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourcesInput, opts ...request.Option) (*datasync.DescribeStorageSystemResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeStorageSystemResources",
+		Input:   input,
+		Output:  (*datasync.DescribeStorageSystemResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeStorageSystemResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeStorageSystemResourcesOutput), req.Error
+}
+
+func (c *Client) DescribeStorageSystemResourcesPagesWithContext(ctx context.Context, input *datasync.DescribeStorageSystemResourcesInput, cb func(*datasync.DescribeStorageSystemResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeStorageSystemResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.DescribeStorageSystemResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeTaskWithContext(ctx context.Context, input *datasync.DescribeTaskInput, opts ...request.Option) (*datasync.DescribeTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -684,6 +846,27 @@ func (c *Client) DescribeTaskExecutionWithContext(ctx context.Context, input *da
 	})
 
 	return req.Output.(*datasync.DescribeTaskExecutionOutput), req.Error
+}
+
+func (c *Client) GenerateRecommendationsWithContext(ctx context.Context, input *datasync.GenerateRecommendationsInput, opts ...request.Option) (*datasync.GenerateRecommendationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "GenerateRecommendations",
+		Input:   input,
+		Output:  (*datasync.GenerateRecommendationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.GenerateRecommendationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.GenerateRecommendationsOutput), req.Error
 }
 
 func (c *Client) ListAgentsWithContext(ctx context.Context, input *datasync.ListAgentsInput, opts ...request.Option) (*datasync.ListAgentsOutput, error) {
@@ -727,6 +910,47 @@ func (c *Client) ListAgentsPagesWithContext(ctx context.Context, input *datasync
 	return req.Error
 }
 
+func (c *Client) ListDiscoveryJobsWithContext(ctx context.Context, input *datasync.ListDiscoveryJobsInput, opts ...request.Option) (*datasync.ListDiscoveryJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListDiscoveryJobs",
+		Input:   input,
+		Output:  (*datasync.ListDiscoveryJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.ListDiscoveryJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.ListDiscoveryJobsOutput), req.Error
+}
+
+func (c *Client) ListDiscoveryJobsPagesWithContext(ctx context.Context, input *datasync.ListDiscoveryJobsInput, cb func(*datasync.ListDiscoveryJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListDiscoveryJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListDiscoveryJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListLocationsWithContext(ctx context.Context, input *datasync.ListLocationsInput, opts ...request.Option) (*datasync.ListLocationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -763,6 +987,47 @@ func (c *Client) ListLocationsPagesWithContext(ctx context.Context, input *datas
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.DataSyncAPI.ListLocationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListStorageSystemsWithContext(ctx context.Context, input *datasync.ListStorageSystemsInput, opts ...request.Option) (*datasync.ListStorageSystemsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListStorageSystems",
+		Input:   input,
+		Output:  (*datasync.ListStorageSystemsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.ListStorageSystemsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.ListStorageSystemsOutput), req.Error
+}
+
+func (c *Client) ListStorageSystemsPagesWithContext(ctx context.Context, input *datasync.ListStorageSystemsInput, cb func(*datasync.ListStorageSystemsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "ListStorageSystems",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DataSyncAPI.ListStorageSystemsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -891,6 +1156,48 @@ func (c *Client) ListTasksPagesWithContext(ctx context.Context, input *datasync.
 	return req.Error
 }
 
+func (c *Client) RemoveStorageSystemWithContext(ctx context.Context, input *datasync.RemoveStorageSystemInput, opts ...request.Option) (*datasync.RemoveStorageSystemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "RemoveStorageSystem",
+		Input:   input,
+		Output:  (*datasync.RemoveStorageSystemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.RemoveStorageSystemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.RemoveStorageSystemOutput), req.Error
+}
+
+func (c *Client) StartDiscoveryJobWithContext(ctx context.Context, input *datasync.StartDiscoveryJobInput, opts ...request.Option) (*datasync.StartDiscoveryJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "StartDiscoveryJob",
+		Input:   input,
+		Output:  (*datasync.StartDiscoveryJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.StartDiscoveryJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.StartDiscoveryJobOutput), req.Error
+}
+
 func (c *Client) StartTaskExecutionWithContext(ctx context.Context, input *datasync.StartTaskExecutionInput, opts ...request.Option) (*datasync.StartTaskExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "datasync",
@@ -910,6 +1217,27 @@ func (c *Client) StartTaskExecutionWithContext(ctx context.Context, input *datas
 	})
 
 	return req.Output.(*datasync.StartTaskExecutionOutput), req.Error
+}
+
+func (c *Client) StopDiscoveryJobWithContext(ctx context.Context, input *datasync.StopDiscoveryJobInput, opts ...request.Option) (*datasync.StopDiscoveryJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "StopDiscoveryJob",
+		Input:   input,
+		Output:  (*datasync.StopDiscoveryJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.StopDiscoveryJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.StopDiscoveryJobOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *datasync.TagResourceInput, opts ...request.Option) (*datasync.TagResourceOutput, error) {
@@ -973,6 +1301,27 @@ func (c *Client) UpdateAgentWithContext(ctx context.Context, input *datasync.Upd
 	})
 
 	return req.Output.(*datasync.UpdateAgentOutput), req.Error
+}
+
+func (c *Client) UpdateDiscoveryJobWithContext(ctx context.Context, input *datasync.UpdateDiscoveryJobInput, opts ...request.Option) (*datasync.UpdateDiscoveryJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateDiscoveryJob",
+		Input:   input,
+		Output:  (*datasync.UpdateDiscoveryJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateDiscoveryJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateDiscoveryJobOutput), req.Error
 }
 
 func (c *Client) UpdateLocationHdfsWithContext(ctx context.Context, input *datasync.UpdateLocationHdfsInput, opts ...request.Option) (*datasync.UpdateLocationHdfsOutput, error) {
@@ -1057,6 +1406,27 @@ func (c *Client) UpdateLocationSmbWithContext(ctx context.Context, input *datasy
 	})
 
 	return req.Output.(*datasync.UpdateLocationSmbOutput), req.Error
+}
+
+func (c *Client) UpdateStorageSystemWithContext(ctx context.Context, input *datasync.UpdateStorageSystemInput, opts ...request.Option) (*datasync.UpdateStorageSystemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateStorageSystem",
+		Input:   input,
+		Output:  (*datasync.UpdateStorageSystemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateStorageSystemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateStorageSystemOutput), req.Error
 }
 
 func (c *Client) UpdateTaskWithContext(ctx context.Context, input *datasync.UpdateTaskInput, opts ...request.Option) (*datasync.UpdateTaskOutput, error) {

@@ -11,6 +11,7 @@ import (
 )
 
 type Connect interface {
+	ActivateEvaluationFormWithContext(ctx context.Context, input *connect.ActivateEvaluationFormInput, opts ...request.Option) (*connect.ActivateEvaluationFormOutput, error)
 	AssociateApprovedOriginWithContext(ctx context.Context, input *connect.AssociateApprovedOriginInput, opts ...request.Option) (*connect.AssociateApprovedOriginOutput, error)
 	AssociateBotWithContext(ctx context.Context, input *connect.AssociateBotInput, opts ...request.Option) (*connect.AssociateBotOutput, error)
 	AssociateDefaultVocabularyWithContext(ctx context.Context, input *connect.AssociateDefaultVocabularyInput, opts ...request.Option) (*connect.AssociateDefaultVocabularyOutput, error)
@@ -25,6 +26,7 @@ type Connect interface {
 	CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
 	CreateContactFlowModuleWithContext(ctx context.Context, input *connect.CreateContactFlowModuleInput, opts ...request.Option) (*connect.CreateContactFlowModuleOutput, error)
+	CreateEvaluationFormWithContext(ctx context.Context, input *connect.CreateEvaluationFormInput, opts ...request.Option) (*connect.CreateEvaluationFormOutput, error)
 	CreateHoursOfOperationWithContext(ctx context.Context, input *connect.CreateHoursOfOperationInput, opts ...request.Option) (*connect.CreateHoursOfOperationOutput, error)
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
@@ -40,8 +42,11 @@ type Connect interface {
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
 	CreateVocabularyWithContext(ctx context.Context, input *connect.CreateVocabularyInput, opts ...request.Option) (*connect.CreateVocabularyOutput, error)
+	DeactivateEvaluationFormWithContext(ctx context.Context, input *connect.DeactivateEvaluationFormInput, opts ...request.Option) (*connect.DeactivateEvaluationFormOutput, error)
+	DeleteContactEvaluationWithContext(ctx context.Context, input *connect.DeleteContactEvaluationInput, opts ...request.Option) (*connect.DeleteContactEvaluationOutput, error)
 	DeleteContactFlowWithContext(ctx context.Context, input *connect.DeleteContactFlowInput, opts ...request.Option) (*connect.DeleteContactFlowOutput, error)
 	DeleteContactFlowModuleWithContext(ctx context.Context, input *connect.DeleteContactFlowModuleInput, opts ...request.Option) (*connect.DeleteContactFlowModuleOutput, error)
+	DeleteEvaluationFormWithContext(ctx context.Context, input *connect.DeleteEvaluationFormInput, opts ...request.Option) (*connect.DeleteEvaluationFormOutput, error)
 	DeleteHoursOfOperationWithContext(ctx context.Context, input *connect.DeleteHoursOfOperationInput, opts ...request.Option) (*connect.DeleteHoursOfOperationOutput, error)
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
@@ -56,8 +61,10 @@ type Connect interface {
 	DeleteVocabularyWithContext(ctx context.Context, input *connect.DeleteVocabularyInput, opts ...request.Option) (*connect.DeleteVocabularyOutput, error)
 	DescribeAgentStatusWithContext(ctx context.Context, input *connect.DescribeAgentStatusInput, opts ...request.Option) (*connect.DescribeAgentStatusOutput, error)
 	DescribeContactWithContext(ctx context.Context, input *connect.DescribeContactInput, opts ...request.Option) (*connect.DescribeContactOutput, error)
+	DescribeContactEvaluationWithContext(ctx context.Context, input *connect.DescribeContactEvaluationInput, opts ...request.Option) (*connect.DescribeContactEvaluationOutput, error)
 	DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error)
 	DescribeContactFlowModuleWithContext(ctx context.Context, input *connect.DescribeContactFlowModuleInput, opts ...request.Option) (*connect.DescribeContactFlowModuleOutput, error)
+	DescribeEvaluationFormWithContext(ctx context.Context, input *connect.DescribeEvaluationFormInput, opts ...request.Option) (*connect.DescribeEvaluationFormOutput, error)
 	DescribeHoursOfOperationWithContext(ctx context.Context, input *connect.DescribeHoursOfOperationInput, opts ...request.Option) (*connect.DescribeHoursOfOperationOutput, error)
 	DescribeInstanceWithContext(ctx context.Context, input *connect.DescribeInstanceInput, opts ...request.Option) (*connect.DescribeInstanceOutput, error)
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *connect.DescribeInstanceAttributeInput, opts ...request.Option) (*connect.DescribeInstanceAttributeOutput, error)
@@ -101,6 +108,8 @@ type Connect interface {
 	ListApprovedOriginsPagesWithContext(ctx context.Context, input *connect.ListApprovedOriginsInput, cb func(*connect.ListApprovedOriginsOutput, bool) bool, opts ...request.Option) error
 	ListBotsWithContext(ctx context.Context, input *connect.ListBotsInput, opts ...request.Option) (*connect.ListBotsOutput, error)
 	ListBotsPagesWithContext(ctx context.Context, input *connect.ListBotsInput, cb func(*connect.ListBotsOutput, bool) bool, opts ...request.Option) error
+	ListContactEvaluationsWithContext(ctx context.Context, input *connect.ListContactEvaluationsInput, opts ...request.Option) (*connect.ListContactEvaluationsOutput, error)
+	ListContactEvaluationsPagesWithContext(ctx context.Context, input *connect.ListContactEvaluationsInput, cb func(*connect.ListContactEvaluationsOutput, bool) bool, opts ...request.Option) error
 	ListContactFlowModulesWithContext(ctx context.Context, input *connect.ListContactFlowModulesInput, opts ...request.Option) (*connect.ListContactFlowModulesOutput, error)
 	ListContactFlowModulesPagesWithContext(ctx context.Context, input *connect.ListContactFlowModulesInput, cb func(*connect.ListContactFlowModulesOutput, bool) bool, opts ...request.Option) error
 	ListContactFlowsWithContext(ctx context.Context, input *connect.ListContactFlowsInput, opts ...request.Option) (*connect.ListContactFlowsOutput, error)
@@ -109,6 +118,10 @@ type Connect interface {
 	ListContactReferencesPagesWithContext(ctx context.Context, input *connect.ListContactReferencesInput, cb func(*connect.ListContactReferencesOutput, bool) bool, opts ...request.Option) error
 	ListDefaultVocabulariesWithContext(ctx context.Context, input *connect.ListDefaultVocabulariesInput, opts ...request.Option) (*connect.ListDefaultVocabulariesOutput, error)
 	ListDefaultVocabulariesPagesWithContext(ctx context.Context, input *connect.ListDefaultVocabulariesInput, cb func(*connect.ListDefaultVocabulariesOutput, bool) bool, opts ...request.Option) error
+	ListEvaluationFormVersionsWithContext(ctx context.Context, input *connect.ListEvaluationFormVersionsInput, opts ...request.Option) (*connect.ListEvaluationFormVersionsOutput, error)
+	ListEvaluationFormVersionsPagesWithContext(ctx context.Context, input *connect.ListEvaluationFormVersionsInput, cb func(*connect.ListEvaluationFormVersionsOutput, bool) bool, opts ...request.Option) error
+	ListEvaluationFormsWithContext(ctx context.Context, input *connect.ListEvaluationFormsInput, opts ...request.Option) (*connect.ListEvaluationFormsOutput, error)
+	ListEvaluationFormsPagesWithContext(ctx context.Context, input *connect.ListEvaluationFormsInput, cb func(*connect.ListEvaluationFormsOutput, bool) bool, opts ...request.Option) error
 	ListHoursOfOperationsWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, opts ...request.Option) (*connect.ListHoursOfOperationsOutput, error)
 	ListHoursOfOperationsPagesWithContext(ctx context.Context, input *connect.ListHoursOfOperationsInput, cb func(*connect.ListHoursOfOperationsOutput, bool) bool, opts ...request.Option) error
 	ListInstanceAttributesWithContext(ctx context.Context, input *connect.ListInstanceAttributesInput, opts ...request.Option) (*connect.ListInstanceAttributesOutput, error)
@@ -176,6 +189,7 @@ type Connect interface {
 	SearchVocabulariesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, opts ...request.Option) (*connect.SearchVocabulariesOutput, error)
 	SearchVocabulariesPagesWithContext(ctx context.Context, input *connect.SearchVocabulariesInput, cb func(*connect.SearchVocabulariesOutput, bool) bool, opts ...request.Option) error
 	StartChatContactWithContext(ctx context.Context, input *connect.StartChatContactInput, opts ...request.Option) (*connect.StartChatContactOutput, error)
+	StartContactEvaluationWithContext(ctx context.Context, input *connect.StartContactEvaluationInput, opts ...request.Option) (*connect.StartContactEvaluationOutput, error)
 	StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error)
 	StartContactStreamingWithContext(ctx context.Context, input *connect.StartContactStreamingInput, opts ...request.Option) (*connect.StartContactStreamingOutput, error)
 	StartOutboundVoiceContactWithContext(ctx context.Context, input *connect.StartOutboundVoiceContactInput, opts ...request.Option) (*connect.StartOutboundVoiceContactOutput, error)
@@ -183,6 +197,7 @@ type Connect interface {
 	StopContactWithContext(ctx context.Context, input *connect.StopContactInput, opts ...request.Option) (*connect.StopContactOutput, error)
 	StopContactRecordingWithContext(ctx context.Context, input *connect.StopContactRecordingInput, opts ...request.Option) (*connect.StopContactRecordingOutput, error)
 	StopContactStreamingWithContext(ctx context.Context, input *connect.StopContactStreamingInput, opts ...request.Option) (*connect.StopContactStreamingOutput, error)
+	SubmitContactEvaluationWithContext(ctx context.Context, input *connect.SubmitContactEvaluationInput, opts ...request.Option) (*connect.SubmitContactEvaluationOutput, error)
 	SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error)
 	TagResourceWithContext(ctx context.Context, input *connect.TagResourceInput, opts ...request.Option) (*connect.TagResourceOutput, error)
 	TransferContactWithContext(ctx context.Context, input *connect.TransferContactInput, opts ...request.Option) (*connect.TransferContactOutput, error)
@@ -190,12 +205,14 @@ type Connect interface {
 	UpdateAgentStatusWithContext(ctx context.Context, input *connect.UpdateAgentStatusInput, opts ...request.Option) (*connect.UpdateAgentStatusOutput, error)
 	UpdateContactWithContext(ctx context.Context, input *connect.UpdateContactInput, opts ...request.Option) (*connect.UpdateContactOutput, error)
 	UpdateContactAttributesWithContext(ctx context.Context, input *connect.UpdateContactAttributesInput, opts ...request.Option) (*connect.UpdateContactAttributesOutput, error)
+	UpdateContactEvaluationWithContext(ctx context.Context, input *connect.UpdateContactEvaluationInput, opts ...request.Option) (*connect.UpdateContactEvaluationOutput, error)
 	UpdateContactFlowContentWithContext(ctx context.Context, input *connect.UpdateContactFlowContentInput, opts ...request.Option) (*connect.UpdateContactFlowContentOutput, error)
 	UpdateContactFlowMetadataWithContext(ctx context.Context, input *connect.UpdateContactFlowMetadataInput, opts ...request.Option) (*connect.UpdateContactFlowMetadataOutput, error)
 	UpdateContactFlowModuleContentWithContext(ctx context.Context, input *connect.UpdateContactFlowModuleContentInput, opts ...request.Option) (*connect.UpdateContactFlowModuleContentOutput, error)
 	UpdateContactFlowModuleMetadataWithContext(ctx context.Context, input *connect.UpdateContactFlowModuleMetadataInput, opts ...request.Option) (*connect.UpdateContactFlowModuleMetadataOutput, error)
 	UpdateContactFlowNameWithContext(ctx context.Context, input *connect.UpdateContactFlowNameInput, opts ...request.Option) (*connect.UpdateContactFlowNameOutput, error)
 	UpdateContactScheduleWithContext(ctx context.Context, input *connect.UpdateContactScheduleInput, opts ...request.Option) (*connect.UpdateContactScheduleOutput, error)
+	UpdateEvaluationFormWithContext(ctx context.Context, input *connect.UpdateEvaluationFormInput, opts ...request.Option) (*connect.UpdateEvaluationFormOutput, error)
 	UpdateHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateHoursOfOperationInput, opts ...request.Option) (*connect.UpdateHoursOfOperationOutput, error)
 	UpdateInstanceAttributeWithContext(ctx context.Context, input *connect.UpdateInstanceAttributeInput, opts ...request.Option) (*connect.UpdateInstanceAttributeOutput, error)
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
@@ -239,6 +256,27 @@ func New(base connectiface.ConnectAPI, ctxer awsctx.Contexter) Connect {
 
 var _ Connect = (*connect.Connect)(nil)
 var _ Connect = (*Client)(nil)
+
+func (c *Client) ActivateEvaluationFormWithContext(ctx context.Context, input *connect.ActivateEvaluationFormInput, opts ...request.Option) (*connect.ActivateEvaluationFormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ActivateEvaluationForm",
+		Input:   input,
+		Output:  (*connect.ActivateEvaluationFormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ActivateEvaluationFormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ActivateEvaluationFormOutput), req.Error
+}
 
 func (c *Client) AssociateApprovedOriginWithContext(ctx context.Context, input *connect.AssociateApprovedOriginInput, opts ...request.Option) (*connect.AssociateApprovedOriginOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -532,6 +570,27 @@ func (c *Client) CreateContactFlowModuleWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.CreateContactFlowModuleOutput), req.Error
+}
+
+func (c *Client) CreateEvaluationFormWithContext(ctx context.Context, input *connect.CreateEvaluationFormInput, opts ...request.Option) (*connect.CreateEvaluationFormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateEvaluationForm",
+		Input:   input,
+		Output:  (*connect.CreateEvaluationFormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateEvaluationFormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateEvaluationFormOutput), req.Error
 }
 
 func (c *Client) CreateHoursOfOperationWithContext(ctx context.Context, input *connect.CreateHoursOfOperationInput, opts ...request.Option) (*connect.CreateHoursOfOperationOutput, error) {
@@ -849,6 +908,48 @@ func (c *Client) CreateVocabularyWithContext(ctx context.Context, input *connect
 	return req.Output.(*connect.CreateVocabularyOutput), req.Error
 }
 
+func (c *Client) DeactivateEvaluationFormWithContext(ctx context.Context, input *connect.DeactivateEvaluationFormInput, opts ...request.Option) (*connect.DeactivateEvaluationFormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeactivateEvaluationForm",
+		Input:   input,
+		Output:  (*connect.DeactivateEvaluationFormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeactivateEvaluationFormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeactivateEvaluationFormOutput), req.Error
+}
+
+func (c *Client) DeleteContactEvaluationWithContext(ctx context.Context, input *connect.DeleteContactEvaluationInput, opts ...request.Option) (*connect.DeleteContactEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteContactEvaluation",
+		Input:   input,
+		Output:  (*connect.DeleteContactEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteContactEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteContactEvaluationOutput), req.Error
+}
+
 func (c *Client) DeleteContactFlowWithContext(ctx context.Context, input *connect.DeleteContactFlowInput, opts ...request.Option) (*connect.DeleteContactFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -889,6 +990,27 @@ func (c *Client) DeleteContactFlowModuleWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.DeleteContactFlowModuleOutput), req.Error
+}
+
+func (c *Client) DeleteEvaluationFormWithContext(ctx context.Context, input *connect.DeleteEvaluationFormInput, opts ...request.Option) (*connect.DeleteEvaluationFormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteEvaluationForm",
+		Input:   input,
+		Output:  (*connect.DeleteEvaluationFormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteEvaluationFormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteEvaluationFormOutput), req.Error
 }
 
 func (c *Client) DeleteHoursOfOperationWithContext(ctx context.Context, input *connect.DeleteHoursOfOperationInput, opts ...request.Option) (*connect.DeleteHoursOfOperationOutput, error) {
@@ -1185,6 +1307,27 @@ func (c *Client) DescribeContactWithContext(ctx context.Context, input *connect.
 	return req.Output.(*connect.DescribeContactOutput), req.Error
 }
 
+func (c *Client) DescribeContactEvaluationWithContext(ctx context.Context, input *connect.DescribeContactEvaluationInput, opts ...request.Option) (*connect.DescribeContactEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeContactEvaluation",
+		Input:   input,
+		Output:  (*connect.DescribeContactEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeContactEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeContactEvaluationOutput), req.Error
+}
+
 func (c *Client) DescribeContactFlowWithContext(ctx context.Context, input *connect.DescribeContactFlowInput, opts ...request.Option) (*connect.DescribeContactFlowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1225,6 +1368,27 @@ func (c *Client) DescribeContactFlowModuleWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*connect.DescribeContactFlowModuleOutput), req.Error
+}
+
+func (c *Client) DescribeEvaluationFormWithContext(ctx context.Context, input *connect.DescribeEvaluationFormInput, opts ...request.Option) (*connect.DescribeEvaluationFormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeEvaluationForm",
+		Input:   input,
+		Output:  (*connect.DescribeEvaluationFormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeEvaluationFormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeEvaluationFormOutput), req.Error
 }
 
 func (c *Client) DescribeHoursOfOperationWithContext(ctx context.Context, input *connect.DescribeHoursOfOperationInput, opts ...request.Option) (*connect.DescribeHoursOfOperationOutput, error) {
@@ -2123,6 +2287,47 @@ func (c *Client) ListBotsPagesWithContext(ctx context.Context, input *connect.Li
 	return req.Error
 }
 
+func (c *Client) ListContactEvaluationsWithContext(ctx context.Context, input *connect.ListContactEvaluationsInput, opts ...request.Option) (*connect.ListContactEvaluationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListContactEvaluations",
+		Input:   input,
+		Output:  (*connect.ListContactEvaluationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListContactEvaluationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListContactEvaluationsOutput), req.Error
+}
+
+func (c *Client) ListContactEvaluationsPagesWithContext(ctx context.Context, input *connect.ListContactEvaluationsInput, cb func(*connect.ListContactEvaluationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListContactEvaluations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListContactEvaluationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListContactFlowModulesWithContext(ctx context.Context, input *connect.ListContactFlowModulesInput, opts ...request.Option) (*connect.ListContactFlowModulesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -2282,6 +2487,88 @@ func (c *Client) ListDefaultVocabulariesPagesWithContext(ctx context.Context, in
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListDefaultVocabulariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListEvaluationFormVersionsWithContext(ctx context.Context, input *connect.ListEvaluationFormVersionsInput, opts ...request.Option) (*connect.ListEvaluationFormVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListEvaluationFormVersions",
+		Input:   input,
+		Output:  (*connect.ListEvaluationFormVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListEvaluationFormVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListEvaluationFormVersionsOutput), req.Error
+}
+
+func (c *Client) ListEvaluationFormVersionsPagesWithContext(ctx context.Context, input *connect.ListEvaluationFormVersionsInput, cb func(*connect.ListEvaluationFormVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListEvaluationFormVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListEvaluationFormVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListEvaluationFormsWithContext(ctx context.Context, input *connect.ListEvaluationFormsInput, opts ...request.Option) (*connect.ListEvaluationFormsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListEvaluationForms",
+		Input:   input,
+		Output:  (*connect.ListEvaluationFormsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListEvaluationFormsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListEvaluationFormsOutput), req.Error
+}
+
+func (c *Client) ListEvaluationFormsPagesWithContext(ctx context.Context, input *connect.ListEvaluationFormsInput, cb func(*connect.ListEvaluationFormsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListEvaluationForms",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListEvaluationFormsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -3664,6 +3951,27 @@ func (c *Client) StartChatContactWithContext(ctx context.Context, input *connect
 	return req.Output.(*connect.StartChatContactOutput), req.Error
 }
 
+func (c *Client) StartContactEvaluationWithContext(ctx context.Context, input *connect.StartContactEvaluationInput, opts ...request.Option) (*connect.StartContactEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "StartContactEvaluation",
+		Input:   input,
+		Output:  (*connect.StartContactEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.StartContactEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.StartContactEvaluationOutput), req.Error
+}
+
 func (c *Client) StartContactRecordingWithContext(ctx context.Context, input *connect.StartContactRecordingInput, opts ...request.Option) (*connect.StartContactRecordingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -3809,6 +4117,27 @@ func (c *Client) StopContactStreamingWithContext(ctx context.Context, input *con
 	})
 
 	return req.Output.(*connect.StopContactStreamingOutput), req.Error
+}
+
+func (c *Client) SubmitContactEvaluationWithContext(ctx context.Context, input *connect.SubmitContactEvaluationInput, opts ...request.Option) (*connect.SubmitContactEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SubmitContactEvaluation",
+		Input:   input,
+		Output:  (*connect.SubmitContactEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SubmitContactEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SubmitContactEvaluationOutput), req.Error
 }
 
 func (c *Client) SuspendContactRecordingWithContext(ctx context.Context, input *connect.SuspendContactRecordingInput, opts ...request.Option) (*connect.SuspendContactRecordingOutput, error) {
@@ -3958,6 +4287,27 @@ func (c *Client) UpdateContactAttributesWithContext(ctx context.Context, input *
 	return req.Output.(*connect.UpdateContactAttributesOutput), req.Error
 }
 
+func (c *Client) UpdateContactEvaluationWithContext(ctx context.Context, input *connect.UpdateContactEvaluationInput, opts ...request.Option) (*connect.UpdateContactEvaluationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateContactEvaluation",
+		Input:   input,
+		Output:  (*connect.UpdateContactEvaluationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateContactEvaluationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateContactEvaluationOutput), req.Error
+}
+
 func (c *Client) UpdateContactFlowContentWithContext(ctx context.Context, input *connect.UpdateContactFlowContentInput, opts ...request.Option) (*connect.UpdateContactFlowContentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -4082,6 +4432,27 @@ func (c *Client) UpdateContactScheduleWithContext(ctx context.Context, input *co
 	})
 
 	return req.Output.(*connect.UpdateContactScheduleOutput), req.Error
+}
+
+func (c *Client) UpdateEvaluationFormWithContext(ctx context.Context, input *connect.UpdateEvaluationFormInput, opts ...request.Option) (*connect.UpdateEvaluationFormOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateEvaluationForm",
+		Input:   input,
+		Output:  (*connect.UpdateEvaluationFormOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateEvaluationFormWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateEvaluationFormOutput), req.Error
 }
 
 func (c *Client) UpdateHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateHoursOfOperationInput, opts ...request.Option) (*connect.UpdateHoursOfOperationOutput, error) {
