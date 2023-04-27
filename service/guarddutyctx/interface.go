@@ -77,6 +77,7 @@ type GuardDuty interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *guardduty.ListTagsForResourceInput, opts ...request.Option) (*guardduty.ListTagsForResourceOutput, error)
 	ListThreatIntelSetsWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, opts ...request.Option) (*guardduty.ListThreatIntelSetsOutput, error)
 	ListThreatIntelSetsPagesWithContext(ctx context.Context, input *guardduty.ListThreatIntelSetsInput, cb func(*guardduty.ListThreatIntelSetsOutput, bool) bool, opts ...request.Option) error
+	StartMalwareScanWithContext(ctx context.Context, input *guardduty.StartMalwareScanInput, opts ...request.Option) (*guardduty.StartMalwareScanOutput, error)
 	StartMonitoringMembersWithContext(ctx context.Context, input *guardduty.StartMonitoringMembersInput, opts ...request.Option) (*guardduty.StartMonitoringMembersOutput, error)
 	StopMonitoringMembersWithContext(ctx context.Context, input *guardduty.StopMonitoringMembersInput, opts ...request.Option) (*guardduty.StopMonitoringMembersOutput, error)
 	TagResourceWithContext(ctx context.Context, input *guardduty.TagResourceInput, opts ...request.Option) (*guardduty.TagResourceOutput, error)
@@ -1479,6 +1480,27 @@ func (c *Client) ListThreatIntelSetsPagesWithContext(ctx context.Context, input 
 	})
 
 	return req.Error
+}
+
+func (c *Client) StartMalwareScanWithContext(ctx context.Context, input *guardduty.StartMalwareScanInput, opts ...request.Option) (*guardduty.StartMalwareScanOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "guardduty",
+		Action:  "StartMalwareScan",
+		Input:   input,
+		Output:  (*guardduty.StartMalwareScanOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GuardDutyAPI.StartMalwareScanWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*guardduty.StartMalwareScanOutput), req.Error
 }
 
 func (c *Client) StartMonitoringMembersWithContext(ctx context.Context, input *guardduty.StartMonitoringMembersInput, opts ...request.Option) (*guardduty.StartMonitoringMembersOutput, error) {
