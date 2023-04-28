@@ -14,6 +14,8 @@ type Athena interface {
 	BatchGetNamedQueryWithContext(ctx context.Context, input *athena.BatchGetNamedQueryInput, opts ...request.Option) (*athena.BatchGetNamedQueryOutput, error)
 	BatchGetPreparedStatementWithContext(ctx context.Context, input *athena.BatchGetPreparedStatementInput, opts ...request.Option) (*athena.BatchGetPreparedStatementOutput, error)
 	BatchGetQueryExecutionWithContext(ctx context.Context, input *athena.BatchGetQueryExecutionInput, opts ...request.Option) (*athena.BatchGetQueryExecutionOutput, error)
+	CancelCapacityReservationWithContext(ctx context.Context, input *athena.CancelCapacityReservationInput, opts ...request.Option) (*athena.CancelCapacityReservationOutput, error)
+	CreateCapacityReservationWithContext(ctx context.Context, input *athena.CreateCapacityReservationInput, opts ...request.Option) (*athena.CreateCapacityReservationOutput, error)
 	CreateDataCatalogWithContext(ctx context.Context, input *athena.CreateDataCatalogInput, opts ...request.Option) (*athena.CreateDataCatalogOutput, error)
 	CreateNamedQueryWithContext(ctx context.Context, input *athena.CreateNamedQueryInput, opts ...request.Option) (*athena.CreateNamedQueryOutput, error)
 	CreateNotebookWithContext(ctx context.Context, input *athena.CreateNotebookInput, opts ...request.Option) (*athena.CreateNotebookOutput, error)
@@ -29,6 +31,8 @@ type Athena interface {
 	GetCalculationExecutionWithContext(ctx context.Context, input *athena.GetCalculationExecutionInput, opts ...request.Option) (*athena.GetCalculationExecutionOutput, error)
 	GetCalculationExecutionCodeWithContext(ctx context.Context, input *athena.GetCalculationExecutionCodeInput, opts ...request.Option) (*athena.GetCalculationExecutionCodeOutput, error)
 	GetCalculationExecutionStatusWithContext(ctx context.Context, input *athena.GetCalculationExecutionStatusInput, opts ...request.Option) (*athena.GetCalculationExecutionStatusOutput, error)
+	GetCapacityAssignmentConfigurationWithContext(ctx context.Context, input *athena.GetCapacityAssignmentConfigurationInput, opts ...request.Option) (*athena.GetCapacityAssignmentConfigurationOutput, error)
+	GetCapacityReservationWithContext(ctx context.Context, input *athena.GetCapacityReservationInput, opts ...request.Option) (*athena.GetCapacityReservationOutput, error)
 	GetDataCatalogWithContext(ctx context.Context, input *athena.GetDataCatalogInput, opts ...request.Option) (*athena.GetDataCatalogOutput, error)
 	GetDatabaseWithContext(ctx context.Context, input *athena.GetDatabaseInput, opts ...request.Option) (*athena.GetDatabaseOutput, error)
 	GetNamedQueryWithContext(ctx context.Context, input *athena.GetNamedQueryInput, opts ...request.Option) (*athena.GetNamedQueryOutput, error)
@@ -47,6 +51,8 @@ type Athena interface {
 	ListApplicationDPUSizesPagesWithContext(ctx context.Context, input *athena.ListApplicationDPUSizesInput, cb func(*athena.ListApplicationDPUSizesOutput, bool) bool, opts ...request.Option) error
 	ListCalculationExecutionsWithContext(ctx context.Context, input *athena.ListCalculationExecutionsInput, opts ...request.Option) (*athena.ListCalculationExecutionsOutput, error)
 	ListCalculationExecutionsPagesWithContext(ctx context.Context, input *athena.ListCalculationExecutionsInput, cb func(*athena.ListCalculationExecutionsOutput, bool) bool, opts ...request.Option) error
+	ListCapacityReservationsWithContext(ctx context.Context, input *athena.ListCapacityReservationsInput, opts ...request.Option) (*athena.ListCapacityReservationsOutput, error)
+	ListCapacityReservationsPagesWithContext(ctx context.Context, input *athena.ListCapacityReservationsInput, cb func(*athena.ListCapacityReservationsOutput, bool) bool, opts ...request.Option) error
 	ListDataCatalogsWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, opts ...request.Option) (*athena.ListDataCatalogsOutput, error)
 	ListDataCatalogsPagesWithContext(ctx context.Context, input *athena.ListDataCatalogsInput, cb func(*athena.ListDataCatalogsOutput, bool) bool, opts ...request.Option) error
 	ListDatabasesWithContext(ctx context.Context, input *athena.ListDatabasesInput, opts ...request.Option) (*athena.ListDatabasesOutput, error)
@@ -71,6 +77,7 @@ type Athena interface {
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *athena.ListTagsForResourceInput, cb func(*athena.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ListWorkGroupsWithContext(ctx context.Context, input *athena.ListWorkGroupsInput, opts ...request.Option) (*athena.ListWorkGroupsOutput, error)
 	ListWorkGroupsPagesWithContext(ctx context.Context, input *athena.ListWorkGroupsInput, cb func(*athena.ListWorkGroupsOutput, bool) bool, opts ...request.Option) error
+	PutCapacityAssignmentConfigurationWithContext(ctx context.Context, input *athena.PutCapacityAssignmentConfigurationInput, opts ...request.Option) (*athena.PutCapacityAssignmentConfigurationOutput, error)
 	StartCalculationExecutionWithContext(ctx context.Context, input *athena.StartCalculationExecutionInput, opts ...request.Option) (*athena.StartCalculationExecutionOutput, error)
 	StartQueryExecutionWithContext(ctx context.Context, input *athena.StartQueryExecutionInput, opts ...request.Option) (*athena.StartQueryExecutionOutput, error)
 	StartSessionWithContext(ctx context.Context, input *athena.StartSessionInput, opts ...request.Option) (*athena.StartSessionOutput, error)
@@ -79,6 +86,7 @@ type Athena interface {
 	TagResourceWithContext(ctx context.Context, input *athena.TagResourceInput, opts ...request.Option) (*athena.TagResourceOutput, error)
 	TerminateSessionWithContext(ctx context.Context, input *athena.TerminateSessionInput, opts ...request.Option) (*athena.TerminateSessionOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *athena.UntagResourceInput, opts ...request.Option) (*athena.UntagResourceOutput, error)
+	UpdateCapacityReservationWithContext(ctx context.Context, input *athena.UpdateCapacityReservationInput, opts ...request.Option) (*athena.UpdateCapacityReservationOutput, error)
 	UpdateDataCatalogWithContext(ctx context.Context, input *athena.UpdateDataCatalogInput, opts ...request.Option) (*athena.UpdateDataCatalogOutput, error)
 	UpdateNamedQueryWithContext(ctx context.Context, input *athena.UpdateNamedQueryInput, opts ...request.Option) (*athena.UpdateNamedQueryOutput, error)
 	UpdateNotebookWithContext(ctx context.Context, input *athena.UpdateNotebookInput, opts ...request.Option) (*athena.UpdateNotebookOutput, error)
@@ -163,6 +171,48 @@ func (c *Client) BatchGetQueryExecutionWithContext(ctx context.Context, input *a
 	})
 
 	return req.Output.(*athena.BatchGetQueryExecutionOutput), req.Error
+}
+
+func (c *Client) CancelCapacityReservationWithContext(ctx context.Context, input *athena.CancelCapacityReservationInput, opts ...request.Option) (*athena.CancelCapacityReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "CancelCapacityReservation",
+		Input:   input,
+		Output:  (*athena.CancelCapacityReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.CancelCapacityReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.CancelCapacityReservationOutput), req.Error
+}
+
+func (c *Client) CreateCapacityReservationWithContext(ctx context.Context, input *athena.CreateCapacityReservationInput, opts ...request.Option) (*athena.CreateCapacityReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "CreateCapacityReservation",
+		Input:   input,
+		Output:  (*athena.CreateCapacityReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.CreateCapacityReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.CreateCapacityReservationOutput), req.Error
 }
 
 func (c *Client) CreateDataCatalogWithContext(ctx context.Context, input *athena.CreateDataCatalogInput, opts ...request.Option) (*athena.CreateDataCatalogOutput, error) {
@@ -478,6 +528,48 @@ func (c *Client) GetCalculationExecutionStatusWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*athena.GetCalculationExecutionStatusOutput), req.Error
+}
+
+func (c *Client) GetCapacityAssignmentConfigurationWithContext(ctx context.Context, input *athena.GetCapacityAssignmentConfigurationInput, opts ...request.Option) (*athena.GetCapacityAssignmentConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetCapacityAssignmentConfiguration",
+		Input:   input,
+		Output:  (*athena.GetCapacityAssignmentConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetCapacityAssignmentConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetCapacityAssignmentConfigurationOutput), req.Error
+}
+
+func (c *Client) GetCapacityReservationWithContext(ctx context.Context, input *athena.GetCapacityReservationInput, opts ...request.Option) (*athena.GetCapacityReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "GetCapacityReservation",
+		Input:   input,
+		Output:  (*athena.GetCapacityReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.GetCapacityReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.GetCapacityReservationOutput), req.Error
 }
 
 func (c *Client) GetDataCatalogWithContext(ctx context.Context, input *athena.GetDataCatalogInput, opts ...request.Option) (*athena.GetDataCatalogOutput, error) {
@@ -850,6 +942,47 @@ func (c *Client) ListCalculationExecutionsPagesWithContext(ctx context.Context, 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.AthenaAPI.ListCalculationExecutionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCapacityReservationsWithContext(ctx context.Context, input *athena.ListCapacityReservationsInput, opts ...request.Option) (*athena.ListCapacityReservationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListCapacityReservations",
+		Input:   input,
+		Output:  (*athena.ListCapacityReservationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.ListCapacityReservationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.ListCapacityReservationsOutput), req.Error
+}
+
+func (c *Client) ListCapacityReservationsPagesWithContext(ctx context.Context, input *athena.ListCapacityReservationsInput, cb func(*athena.ListCapacityReservationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "ListCapacityReservations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AthenaAPI.ListCapacityReservationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1348,6 +1481,27 @@ func (c *Client) ListWorkGroupsPagesWithContext(ctx context.Context, input *athe
 	return req.Error
 }
 
+func (c *Client) PutCapacityAssignmentConfigurationWithContext(ctx context.Context, input *athena.PutCapacityAssignmentConfigurationInput, opts ...request.Option) (*athena.PutCapacityAssignmentConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "PutCapacityAssignmentConfiguration",
+		Input:   input,
+		Output:  (*athena.PutCapacityAssignmentConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.PutCapacityAssignmentConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.PutCapacityAssignmentConfigurationOutput), req.Error
+}
+
 func (c *Client) StartCalculationExecutionWithContext(ctx context.Context, input *athena.StartCalculationExecutionInput, opts ...request.Option) (*athena.StartCalculationExecutionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "athena",
@@ -1514,6 +1668,27 @@ func (c *Client) UntagResourceWithContext(ctx context.Context, input *athena.Unt
 	})
 
 	return req.Output.(*athena.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateCapacityReservationWithContext(ctx context.Context, input *athena.UpdateCapacityReservationInput, opts ...request.Option) (*athena.UpdateCapacityReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "UpdateCapacityReservation",
+		Input:   input,
+		Output:  (*athena.UpdateCapacityReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.UpdateCapacityReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.UpdateCapacityReservationOutput), req.Error
 }
 
 func (c *Client) UpdateDataCatalogWithContext(ctx context.Context, input *athena.UpdateDataCatalogInput, opts ...request.Option) (*athena.UpdateDataCatalogOutput, error) {
