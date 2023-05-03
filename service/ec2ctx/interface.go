@@ -567,6 +567,7 @@ type EC2 interface {
 	GetManagedPrefixListEntriesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, opts ...request.Option) (*ec2.GetManagedPrefixListEntriesOutput, error)
 	GetManagedPrefixListEntriesPagesWithContext(ctx context.Context, input *ec2.GetManagedPrefixListEntriesInput, cb func(*ec2.GetManagedPrefixListEntriesOutput, bool) bool, opts ...request.Option) error
 	GetNetworkInsightsAccessScopeAnalysisFindingsWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeAnalysisFindingsInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput, error)
+	GetNetworkInsightsAccessScopeAnalysisFindingsPagesWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeAnalysisFindingsInput, cb func(*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput, bool) bool, opts ...request.Option) error
 	GetNetworkInsightsAccessScopeContentWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeContentInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeContentOutput, error)
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
@@ -12305,6 +12306,26 @@ func (c *Client) GetNetworkInsightsAccessScopeAnalysisFindingsWithContext(ctx co
 	})
 
 	return req.Output.(*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput), req.Error
+}
+
+func (c *Client) GetNetworkInsightsAccessScopeAnalysisFindingsPagesWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeAnalysisFindingsInput, cb func(*ec2.GetNetworkInsightsAccessScopeAnalysisFindingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetNetworkInsightsAccessScopeAnalysisFindings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetNetworkInsightsAccessScopeAnalysisFindingsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetNetworkInsightsAccessScopeContentWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeContentInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeContentOutput, error) {
