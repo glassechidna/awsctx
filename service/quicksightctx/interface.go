@@ -30,6 +30,9 @@ type QuickSight interface {
 	CreateTemplateAliasWithContext(ctx context.Context, input *quicksight.CreateTemplateAliasInput, opts ...request.Option) (*quicksight.CreateTemplateAliasOutput, error)
 	CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error)
 	CreateThemeAliasWithContext(ctx context.Context, input *quicksight.CreateThemeAliasInput, opts ...request.Option) (*quicksight.CreateThemeAliasOutput, error)
+	CreateTopicWithContext(ctx context.Context, input *quicksight.CreateTopicInput, opts ...request.Option) (*quicksight.CreateTopicOutput, error)
+	CreateTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.CreateTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.CreateTopicRefreshScheduleOutput, error)
+	CreateVPCConnectionWithContext(ctx context.Context, input *quicksight.CreateVPCConnectionInput, opts ...request.Option) (*quicksight.CreateVPCConnectionOutput, error)
 	DeleteAccountCustomizationWithContext(ctx context.Context, input *quicksight.DeleteAccountCustomizationInput, opts ...request.Option) (*quicksight.DeleteAccountCustomizationOutput, error)
 	DeleteAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DeleteAccountSubscriptionInput, opts ...request.Option) (*quicksight.DeleteAccountSubscriptionOutput, error)
 	DeleteAnalysisWithContext(ctx context.Context, input *quicksight.DeleteAnalysisInput, opts ...request.Option) (*quicksight.DeleteAnalysisOutput, error)
@@ -48,8 +51,11 @@ type QuickSight interface {
 	DeleteTemplateAliasWithContext(ctx context.Context, input *quicksight.DeleteTemplateAliasInput, opts ...request.Option) (*quicksight.DeleteTemplateAliasOutput, error)
 	DeleteThemeWithContext(ctx context.Context, input *quicksight.DeleteThemeInput, opts ...request.Option) (*quicksight.DeleteThemeOutput, error)
 	DeleteThemeAliasWithContext(ctx context.Context, input *quicksight.DeleteThemeAliasInput, opts ...request.Option) (*quicksight.DeleteThemeAliasOutput, error)
+	DeleteTopicWithContext(ctx context.Context, input *quicksight.DeleteTopicInput, opts ...request.Option) (*quicksight.DeleteTopicOutput, error)
+	DeleteTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.DeleteTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.DeleteTopicRefreshScheduleOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error)
 	DeleteUserByPrincipalIdWithContext(ctx context.Context, input *quicksight.DeleteUserByPrincipalIdInput, opts ...request.Option) (*quicksight.DeleteUserByPrincipalIdOutput, error)
+	DeleteVPCConnectionWithContext(ctx context.Context, input *quicksight.DeleteVPCConnectionInput, opts ...request.Option) (*quicksight.DeleteVPCConnectionOutput, error)
 	DescribeAccountCustomizationWithContext(ctx context.Context, input *quicksight.DescribeAccountCustomizationInput, opts ...request.Option) (*quicksight.DescribeAccountCustomizationOutput, error)
 	DescribeAccountSettingsWithContext(ctx context.Context, input *quicksight.DescribeAccountSettingsInput, opts ...request.Option) (*quicksight.DescribeAccountSettingsOutput, error)
 	DescribeAccountSubscriptionWithContext(ctx context.Context, input *quicksight.DescribeAccountSubscriptionInput, opts ...request.Option) (*quicksight.DescribeAccountSubscriptionOutput, error)
@@ -81,7 +87,12 @@ type QuickSight interface {
 	DescribeThemeWithContext(ctx context.Context, input *quicksight.DescribeThemeInput, opts ...request.Option) (*quicksight.DescribeThemeOutput, error)
 	DescribeThemeAliasWithContext(ctx context.Context, input *quicksight.DescribeThemeAliasInput, opts ...request.Option) (*quicksight.DescribeThemeAliasOutput, error)
 	DescribeThemePermissionsWithContext(ctx context.Context, input *quicksight.DescribeThemePermissionsInput, opts ...request.Option) (*quicksight.DescribeThemePermissionsOutput, error)
+	DescribeTopicWithContext(ctx context.Context, input *quicksight.DescribeTopicInput, opts ...request.Option) (*quicksight.DescribeTopicOutput, error)
+	DescribeTopicPermissionsWithContext(ctx context.Context, input *quicksight.DescribeTopicPermissionsInput, opts ...request.Option) (*quicksight.DescribeTopicPermissionsOutput, error)
+	DescribeTopicRefreshWithContext(ctx context.Context, input *quicksight.DescribeTopicRefreshInput, opts ...request.Option) (*quicksight.DescribeTopicRefreshOutput, error)
+	DescribeTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.DescribeTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.DescribeTopicRefreshScheduleOutput, error)
 	DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error)
+	DescribeVPCConnectionWithContext(ctx context.Context, input *quicksight.DescribeVPCConnectionInput, opts ...request.Option) (*quicksight.DescribeVPCConnectionOutput, error)
 	GenerateEmbedUrlForAnonymousUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForAnonymousUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForAnonymousUserOutput, error)
 	GenerateEmbedUrlForRegisteredUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForRegisteredUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForRegisteredUserOutput, error)
 	GetDashboardEmbedUrlWithContext(ctx context.Context, input *quicksight.GetDashboardEmbedUrlInput, opts ...request.Option) (*quicksight.GetDashboardEmbedUrlOutput, error)
@@ -119,8 +130,13 @@ type QuickSight interface {
 	ListThemeVersionsPagesWithContext(ctx context.Context, input *quicksight.ListThemeVersionsInput, cb func(*quicksight.ListThemeVersionsOutput, bool) bool, opts ...request.Option) error
 	ListThemesWithContext(ctx context.Context, input *quicksight.ListThemesInput, opts ...request.Option) (*quicksight.ListThemesOutput, error)
 	ListThemesPagesWithContext(ctx context.Context, input *quicksight.ListThemesInput, cb func(*quicksight.ListThemesOutput, bool) bool, opts ...request.Option) error
+	ListTopicRefreshSchedulesWithContext(ctx context.Context, input *quicksight.ListTopicRefreshSchedulesInput, opts ...request.Option) (*quicksight.ListTopicRefreshSchedulesOutput, error)
+	ListTopicsWithContext(ctx context.Context, input *quicksight.ListTopicsInput, opts ...request.Option) (*quicksight.ListTopicsOutput, error)
+	ListTopicsPagesWithContext(ctx context.Context, input *quicksight.ListTopicsInput, cb func(*quicksight.ListTopicsOutput, bool) bool, opts ...request.Option) error
 	ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *quicksight.ListUsersInput, opts ...request.Option) (*quicksight.ListUsersOutput, error)
+	ListVPCConnectionsWithContext(ctx context.Context, input *quicksight.ListVPCConnectionsInput, opts ...request.Option) (*quicksight.ListVPCConnectionsOutput, error)
+	ListVPCConnectionsPagesWithContext(ctx context.Context, input *quicksight.ListVPCConnectionsInput, cb func(*quicksight.ListVPCConnectionsOutput, bool) bool, opts ...request.Option) error
 	PutDataSetRefreshPropertiesWithContext(ctx context.Context, input *quicksight.PutDataSetRefreshPropertiesInput, opts ...request.Option) (*quicksight.PutDataSetRefreshPropertiesOutput, error)
 	RegisterUserWithContext(ctx context.Context, input *quicksight.RegisterUserInput, opts ...request.Option) (*quicksight.RegisterUserOutput, error)
 	RestoreAnalysisWithContext(ctx context.Context, input *quicksight.RestoreAnalysisInput, opts ...request.Option) (*quicksight.RestoreAnalysisOutput, error)
@@ -160,7 +176,11 @@ type QuickSight interface {
 	UpdateThemeWithContext(ctx context.Context, input *quicksight.UpdateThemeInput, opts ...request.Option) (*quicksight.UpdateThemeOutput, error)
 	UpdateThemeAliasWithContext(ctx context.Context, input *quicksight.UpdateThemeAliasInput, opts ...request.Option) (*quicksight.UpdateThemeAliasOutput, error)
 	UpdateThemePermissionsWithContext(ctx context.Context, input *quicksight.UpdateThemePermissionsInput, opts ...request.Option) (*quicksight.UpdateThemePermissionsOutput, error)
+	UpdateTopicWithContext(ctx context.Context, input *quicksight.UpdateTopicInput, opts ...request.Option) (*quicksight.UpdateTopicOutput, error)
+	UpdateTopicPermissionsWithContext(ctx context.Context, input *quicksight.UpdateTopicPermissionsInput, opts ...request.Option) (*quicksight.UpdateTopicPermissionsOutput, error)
+	UpdateTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.UpdateTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.UpdateTopicRefreshScheduleOutput, error)
 	UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error)
+	UpdateVPCConnectionWithContext(ctx context.Context, input *quicksight.UpdateVPCConnectionInput, opts ...request.Option) (*quicksight.UpdateVPCConnectionOutput, error)
 }
 
 type Client struct {
@@ -577,6 +597,69 @@ func (c *Client) CreateThemeAliasWithContext(ctx context.Context, input *quicksi
 	return req.Output.(*quicksight.CreateThemeAliasOutput), req.Error
 }
 
+func (c *Client) CreateTopicWithContext(ctx context.Context, input *quicksight.CreateTopicInput, opts ...request.Option) (*quicksight.CreateTopicOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateTopic",
+		Input:   input,
+		Output:  (*quicksight.CreateTopicOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateTopicWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateTopicOutput), req.Error
+}
+
+func (c *Client) CreateTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.CreateTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.CreateTopicRefreshScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateTopicRefreshSchedule",
+		Input:   input,
+		Output:  (*quicksight.CreateTopicRefreshScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateTopicRefreshScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateTopicRefreshScheduleOutput), req.Error
+}
+
+func (c *Client) CreateVPCConnectionWithContext(ctx context.Context, input *quicksight.CreateVPCConnectionInput, opts ...request.Option) (*quicksight.CreateVPCConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateVPCConnection",
+		Input:   input,
+		Output:  (*quicksight.CreateVPCConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateVPCConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateVPCConnectionOutput), req.Error
+}
+
 func (c *Client) DeleteAccountCustomizationWithContext(ctx context.Context, input *quicksight.DeleteAccountCustomizationInput, opts ...request.Option) (*quicksight.DeleteAccountCustomizationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -955,6 +1038,48 @@ func (c *Client) DeleteThemeAliasWithContext(ctx context.Context, input *quicksi
 	return req.Output.(*quicksight.DeleteThemeAliasOutput), req.Error
 }
 
+func (c *Client) DeleteTopicWithContext(ctx context.Context, input *quicksight.DeleteTopicInput, opts ...request.Option) (*quicksight.DeleteTopicOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteTopic",
+		Input:   input,
+		Output:  (*quicksight.DeleteTopicOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteTopicWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteTopicOutput), req.Error
+}
+
+func (c *Client) DeleteTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.DeleteTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.DeleteTopicRefreshScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteTopicRefreshSchedule",
+		Input:   input,
+		Output:  (*quicksight.DeleteTopicRefreshScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteTopicRefreshScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteTopicRefreshScheduleOutput), req.Error
+}
+
 func (c *Client) DeleteUserWithContext(ctx context.Context, input *quicksight.DeleteUserInput, opts ...request.Option) (*quicksight.DeleteUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -995,6 +1120,27 @@ func (c *Client) DeleteUserByPrincipalIdWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*quicksight.DeleteUserByPrincipalIdOutput), req.Error
+}
+
+func (c *Client) DeleteVPCConnectionWithContext(ctx context.Context, input *quicksight.DeleteVPCConnectionInput, opts ...request.Option) (*quicksight.DeleteVPCConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteVPCConnection",
+		Input:   input,
+		Output:  (*quicksight.DeleteVPCConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteVPCConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteVPCConnectionOutput), req.Error
 }
 
 func (c *Client) DescribeAccountCustomizationWithContext(ctx context.Context, input *quicksight.DescribeAccountCustomizationInput, opts ...request.Option) (*quicksight.DescribeAccountCustomizationOutput, error) {
@@ -1648,6 +1794,90 @@ func (c *Client) DescribeThemePermissionsWithContext(ctx context.Context, input 
 	return req.Output.(*quicksight.DescribeThemePermissionsOutput), req.Error
 }
 
+func (c *Client) DescribeTopicWithContext(ctx context.Context, input *quicksight.DescribeTopicInput, opts ...request.Option) (*quicksight.DescribeTopicOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTopic",
+		Input:   input,
+		Output:  (*quicksight.DescribeTopicOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTopicWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTopicOutput), req.Error
+}
+
+func (c *Client) DescribeTopicPermissionsWithContext(ctx context.Context, input *quicksight.DescribeTopicPermissionsInput, opts ...request.Option) (*quicksight.DescribeTopicPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTopicPermissions",
+		Input:   input,
+		Output:  (*quicksight.DescribeTopicPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTopicPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTopicPermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeTopicRefreshWithContext(ctx context.Context, input *quicksight.DescribeTopicRefreshInput, opts ...request.Option) (*quicksight.DescribeTopicRefreshOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTopicRefresh",
+		Input:   input,
+		Output:  (*quicksight.DescribeTopicRefreshOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTopicRefreshWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTopicRefreshOutput), req.Error
+}
+
+func (c *Client) DescribeTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.DescribeTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.DescribeTopicRefreshScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeTopicRefreshSchedule",
+		Input:   input,
+		Output:  (*quicksight.DescribeTopicRefreshScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeTopicRefreshScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeTopicRefreshScheduleOutput), req.Error
+}
+
 func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.DescribeUserInput, opts ...request.Option) (*quicksight.DescribeUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -1667,6 +1897,27 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, input *quicksight.
 	})
 
 	return req.Output.(*quicksight.DescribeUserOutput), req.Error
+}
+
+func (c *Client) DescribeVPCConnectionWithContext(ctx context.Context, input *quicksight.DescribeVPCConnectionInput, opts ...request.Option) (*quicksight.DescribeVPCConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeVPCConnection",
+		Input:   input,
+		Output:  (*quicksight.DescribeVPCConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeVPCConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeVPCConnectionOutput), req.Error
 }
 
 func (c *Client) GenerateEmbedUrlForAnonymousUserWithContext(ctx context.Context, input *quicksight.GenerateEmbedUrlForAnonymousUserInput, opts ...request.Option) (*quicksight.GenerateEmbedUrlForAnonymousUserOutput, error) {
@@ -2434,6 +2685,68 @@ func (c *Client) ListThemesPagesWithContext(ctx context.Context, input *quicksig
 	return req.Error
 }
 
+func (c *Client) ListTopicRefreshSchedulesWithContext(ctx context.Context, input *quicksight.ListTopicRefreshSchedulesInput, opts ...request.Option) (*quicksight.ListTopicRefreshSchedulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTopicRefreshSchedules",
+		Input:   input,
+		Output:  (*quicksight.ListTopicRefreshSchedulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListTopicRefreshSchedulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListTopicRefreshSchedulesOutput), req.Error
+}
+
+func (c *Client) ListTopicsWithContext(ctx context.Context, input *quicksight.ListTopicsInput, opts ...request.Option) (*quicksight.ListTopicsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTopics",
+		Input:   input,
+		Output:  (*quicksight.ListTopicsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListTopicsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListTopicsOutput), req.Error
+}
+
+func (c *Client) ListTopicsPagesWithContext(ctx context.Context, input *quicksight.ListTopicsInput, cb func(*quicksight.ListTopicsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListTopics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListTopicsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListUserGroupsWithContext(ctx context.Context, input *quicksight.ListUserGroupsInput, opts ...request.Option) (*quicksight.ListUserGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -2474,6 +2787,47 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *quicksight.Lis
 	})
 
 	return req.Output.(*quicksight.ListUsersOutput), req.Error
+}
+
+func (c *Client) ListVPCConnectionsWithContext(ctx context.Context, input *quicksight.ListVPCConnectionsInput, opts ...request.Option) (*quicksight.ListVPCConnectionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListVPCConnections",
+		Input:   input,
+		Output:  (*quicksight.ListVPCConnectionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListVPCConnectionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListVPCConnectionsOutput), req.Error
+}
+
+func (c *Client) ListVPCConnectionsPagesWithContext(ctx context.Context, input *quicksight.ListVPCConnectionsInput, cb func(*quicksight.ListVPCConnectionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListVPCConnections",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListVPCConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) PutDataSetRefreshPropertiesWithContext(ctx context.Context, input *quicksight.PutDataSetRefreshPropertiesInput, opts ...request.Option) (*quicksight.PutDataSetRefreshPropertiesOutput, error) {
@@ -3291,6 +3645,69 @@ func (c *Client) UpdateThemePermissionsWithContext(ctx context.Context, input *q
 	return req.Output.(*quicksight.UpdateThemePermissionsOutput), req.Error
 }
 
+func (c *Client) UpdateTopicWithContext(ctx context.Context, input *quicksight.UpdateTopicInput, opts ...request.Option) (*quicksight.UpdateTopicOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTopic",
+		Input:   input,
+		Output:  (*quicksight.UpdateTopicOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateTopicWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateTopicOutput), req.Error
+}
+
+func (c *Client) UpdateTopicPermissionsWithContext(ctx context.Context, input *quicksight.UpdateTopicPermissionsInput, opts ...request.Option) (*quicksight.UpdateTopicPermissionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTopicPermissions",
+		Input:   input,
+		Output:  (*quicksight.UpdateTopicPermissionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateTopicPermissionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateTopicPermissionsOutput), req.Error
+}
+
+func (c *Client) UpdateTopicRefreshScheduleWithContext(ctx context.Context, input *quicksight.UpdateTopicRefreshScheduleInput, opts ...request.Option) (*quicksight.UpdateTopicRefreshScheduleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateTopicRefreshSchedule",
+		Input:   input,
+		Output:  (*quicksight.UpdateTopicRefreshScheduleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateTopicRefreshScheduleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateTopicRefreshScheduleOutput), req.Error
+}
+
 func (c *Client) UpdateUserWithContext(ctx context.Context, input *quicksight.UpdateUserInput, opts ...request.Option) (*quicksight.UpdateUserOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -3310,4 +3727,25 @@ func (c *Client) UpdateUserWithContext(ctx context.Context, input *quicksight.Up
 	})
 
 	return req.Output.(*quicksight.UpdateUserOutput), req.Error
+}
+
+func (c *Client) UpdateVPCConnectionWithContext(ctx context.Context, input *quicksight.UpdateVPCConnectionInput, opts ...request.Option) (*quicksight.UpdateVPCConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateVPCConnection",
+		Input:   input,
+		Output:  (*quicksight.UpdateVPCConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateVPCConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateVPCConnectionOutput), req.Error
 }

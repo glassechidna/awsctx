@@ -53,6 +53,8 @@ type SecurityHub interface {
 	GetEnabledStandardsWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, opts ...request.Option) (*securityhub.GetEnabledStandardsOutput, error)
 	GetEnabledStandardsPagesWithContext(ctx context.Context, input *securityhub.GetEnabledStandardsInput, cb func(*securityhub.GetEnabledStandardsOutput, bool) bool, opts ...request.Option) error
 	GetFindingAggregatorWithContext(ctx context.Context, input *securityhub.GetFindingAggregatorInput, opts ...request.Option) (*securityhub.GetFindingAggregatorOutput, error)
+	GetFindingHistoryWithContext(ctx context.Context, input *securityhub.GetFindingHistoryInput, opts ...request.Option) (*securityhub.GetFindingHistoryOutput, error)
+	GetFindingHistoryPagesWithContext(ctx context.Context, input *securityhub.GetFindingHistoryInput, cb func(*securityhub.GetFindingHistoryOutput, bool) bool, opts ...request.Option) error
 	GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error)
 	GetFindingsPagesWithContext(ctx context.Context, input *securityhub.GetFindingsInput, cb func(*securityhub.GetFindingsOutput, bool) bool, opts ...request.Option) error
 	GetInsightResultsWithContext(ctx context.Context, input *securityhub.GetInsightResultsInput, opts ...request.Option) (*securityhub.GetInsightResultsOutput, error)
@@ -978,6 +980,47 @@ func (c *Client) GetFindingAggregatorWithContext(ctx context.Context, input *sec
 	})
 
 	return req.Output.(*securityhub.GetFindingAggregatorOutput), req.Error
+}
+
+func (c *Client) GetFindingHistoryWithContext(ctx context.Context, input *securityhub.GetFindingHistoryInput, opts ...request.Option) (*securityhub.GetFindingHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetFindingHistory",
+		Input:   input,
+		Output:  (*securityhub.GetFindingHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.GetFindingHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.GetFindingHistoryOutput), req.Error
+}
+
+func (c *Client) GetFindingHistoryPagesWithContext(ctx context.Context, input *securityhub.GetFindingHistoryInput, cb func(*securityhub.GetFindingHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "GetFindingHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SecurityHubAPI.GetFindingHistoryPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetFindingsWithContext(ctx context.Context, input *securityhub.GetFindingsInput, opts ...request.Option) (*securityhub.GetFindingsOutput, error) {
