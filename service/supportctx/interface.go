@@ -19,8 +19,10 @@ type Support interface {
 	DescribeCasesPagesWithContext(ctx context.Context, input *support.DescribeCasesInput, cb func(*support.DescribeCasesOutput, bool) bool, opts ...request.Option) error
 	DescribeCommunicationsWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, opts ...request.Option) (*support.DescribeCommunicationsOutput, error)
 	DescribeCommunicationsPagesWithContext(ctx context.Context, input *support.DescribeCommunicationsInput, cb func(*support.DescribeCommunicationsOutput, bool) bool, opts ...request.Option) error
+	DescribeCreateCaseOptionsWithContext(ctx context.Context, input *support.DescribeCreateCaseOptionsInput, opts ...request.Option) (*support.DescribeCreateCaseOptionsOutput, error)
 	DescribeServicesWithContext(ctx context.Context, input *support.DescribeServicesInput, opts ...request.Option) (*support.DescribeServicesOutput, error)
 	DescribeSeverityLevelsWithContext(ctx context.Context, input *support.DescribeSeverityLevelsInput, opts ...request.Option) (*support.DescribeSeverityLevelsOutput, error)
+	DescribeSupportedLanguagesWithContext(ctx context.Context, input *support.DescribeSupportedLanguagesInput, opts ...request.Option) (*support.DescribeSupportedLanguagesOutput, error)
 	DescribeTrustedAdvisorCheckRefreshStatusesWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckRefreshStatusesInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckRefreshStatusesOutput, error)
 	DescribeTrustedAdvisorCheckResultWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckResultInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckResultOutput, error)
 	DescribeTrustedAdvisorCheckSummariesWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckSummariesInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckSummariesOutput, error)
@@ -210,6 +212,27 @@ func (c *Client) DescribeCommunicationsPagesWithContext(ctx context.Context, inp
 	return req.Error
 }
 
+func (c *Client) DescribeCreateCaseOptionsWithContext(ctx context.Context, input *support.DescribeCreateCaseOptionsInput, opts ...request.Option) (*support.DescribeCreateCaseOptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "support",
+		Action:  "DescribeCreateCaseOptions",
+		Input:   input,
+		Output:  (*support.DescribeCreateCaseOptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SupportAPI.DescribeCreateCaseOptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*support.DescribeCreateCaseOptionsOutput), req.Error
+}
+
 func (c *Client) DescribeServicesWithContext(ctx context.Context, input *support.DescribeServicesInput, opts ...request.Option) (*support.DescribeServicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "support",
@@ -250,6 +273,27 @@ func (c *Client) DescribeSeverityLevelsWithContext(ctx context.Context, input *s
 	})
 
 	return req.Output.(*support.DescribeSeverityLevelsOutput), req.Error
+}
+
+func (c *Client) DescribeSupportedLanguagesWithContext(ctx context.Context, input *support.DescribeSupportedLanguagesInput, opts ...request.Option) (*support.DescribeSupportedLanguagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "support",
+		Action:  "DescribeSupportedLanguages",
+		Input:   input,
+		Output:  (*support.DescribeSupportedLanguagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SupportAPI.DescribeSupportedLanguagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*support.DescribeSupportedLanguagesOutput), req.Error
 }
 
 func (c *Client) DescribeTrustedAdvisorCheckRefreshStatusesWithContext(ctx context.Context, input *support.DescribeTrustedAdvisorCheckRefreshStatusesInput, opts ...request.Option) (*support.DescribeTrustedAdvisorCheckRefreshStatusesOutput, error) {
