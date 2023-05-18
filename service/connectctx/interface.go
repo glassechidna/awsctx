@@ -31,6 +31,7 @@ type Connect interface {
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
 	CreateParticipantWithContext(ctx context.Context, input *connect.CreateParticipantInput, opts ...request.Option) (*connect.CreateParticipantOutput, error)
+	CreatePromptWithContext(ctx context.Context, input *connect.CreatePromptInput, opts ...request.Option) (*connect.CreatePromptOutput, error)
 	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
 	CreateRoutingProfileWithContext(ctx context.Context, input *connect.CreateRoutingProfileInput, opts ...request.Option) (*connect.CreateRoutingProfileOutput, error)
@@ -50,6 +51,7 @@ type Connect interface {
 	DeleteHoursOfOperationWithContext(ctx context.Context, input *connect.DeleteHoursOfOperationInput, opts ...request.Option) (*connect.DeleteHoursOfOperationOutput, error)
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
+	DeletePromptWithContext(ctx context.Context, input *connect.DeletePromptInput, opts ...request.Option) (*connect.DeletePromptOutput, error)
 	DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error)
 	DeleteRuleWithContext(ctx context.Context, input *connect.DeleteRuleInput, opts ...request.Option) (*connect.DeleteRuleOutput, error)
 	DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error)
@@ -70,6 +72,7 @@ type Connect interface {
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *connect.DescribeInstanceAttributeInput, opts ...request.Option) (*connect.DescribeInstanceAttributeOutput, error)
 	DescribeInstanceStorageConfigWithContext(ctx context.Context, input *connect.DescribeInstanceStorageConfigInput, opts ...request.Option) (*connect.DescribeInstanceStorageConfigOutput, error)
 	DescribePhoneNumberWithContext(ctx context.Context, input *connect.DescribePhoneNumberInput, opts ...request.Option) (*connect.DescribePhoneNumberOutput, error)
+	DescribePromptWithContext(ctx context.Context, input *connect.DescribePromptInput, opts ...request.Option) (*connect.DescribePromptOutput, error)
 	DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error)
 	DescribeQuickConnectWithContext(ctx context.Context, input *connect.DescribeQuickConnectInput, opts ...request.Option) (*connect.DescribeQuickConnectOutput, error)
 	DescribeRoutingProfileWithContext(ctx context.Context, input *connect.DescribeRoutingProfileInput, opts ...request.Option) (*connect.DescribeRoutingProfileOutput, error)
@@ -100,6 +103,7 @@ type Connect interface {
 	GetMetricDataPagesWithContext(ctx context.Context, input *connect.GetMetricDataInput, cb func(*connect.GetMetricDataOutput, bool) bool, opts ...request.Option) error
 	GetMetricDataV2WithContext(ctx context.Context, input *connect.GetMetricDataV2Input, opts ...request.Option) (*connect.GetMetricDataV2Output, error)
 	GetMetricDataV2PagesWithContext(ctx context.Context, input *connect.GetMetricDataV2Input, cb func(*connect.GetMetricDataV2Output, bool) bool, opts ...request.Option) error
+	GetPromptFileWithContext(ctx context.Context, input *connect.GetPromptFileInput, opts ...request.Option) (*connect.GetPromptFileOutput, error)
 	GetTaskTemplateWithContext(ctx context.Context, input *connect.GetTaskTemplateInput, opts ...request.Option) (*connect.GetTaskTemplateOutput, error)
 	GetTrafficDistributionWithContext(ctx context.Context, input *connect.GetTrafficDistributionInput, opts ...request.Option) (*connect.GetTrafficDistributionOutput, error)
 	ListAgentStatusesWithContext(ctx context.Context, input *connect.ListAgentStatusesInput, opts ...request.Option) (*connect.ListAgentStatusesOutput, error)
@@ -218,6 +222,7 @@ type Connect interface {
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
 	UpdateParticipantRoleConfigWithContext(ctx context.Context, input *connect.UpdateParticipantRoleConfigInput, opts ...request.Option) (*connect.UpdateParticipantRoleConfigOutput, error)
 	UpdatePhoneNumberWithContext(ctx context.Context, input *connect.UpdatePhoneNumberInput, opts ...request.Option) (*connect.UpdatePhoneNumberOutput, error)
+	UpdatePromptWithContext(ctx context.Context, input *connect.UpdatePromptInput, opts ...request.Option) (*connect.UpdatePromptOutput, error)
 	UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error)
 	UpdateQueueMaxContactsWithContext(ctx context.Context, input *connect.UpdateQueueMaxContactsInput, opts ...request.Option) (*connect.UpdateQueueMaxContactsOutput, error)
 	UpdateQueueNameWithContext(ctx context.Context, input *connect.UpdateQueueNameInput, opts ...request.Option) (*connect.UpdateQueueNameOutput, error)
@@ -677,6 +682,27 @@ func (c *Client) CreateParticipantWithContext(ctx context.Context, input *connec
 	return req.Output.(*connect.CreateParticipantOutput), req.Error
 }
 
+func (c *Client) CreatePromptWithContext(ctx context.Context, input *connect.CreatePromptInput, opts ...request.Option) (*connect.CreatePromptOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreatePrompt",
+		Input:   input,
+		Output:  (*connect.CreatePromptOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreatePromptWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreatePromptOutput), req.Error
+}
+
 func (c *Client) CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1074,6 +1100,27 @@ func (c *Client) DeleteIntegrationAssociationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*connect.DeleteIntegrationAssociationOutput), req.Error
+}
+
+func (c *Client) DeletePromptWithContext(ctx context.Context, input *connect.DeletePromptInput, opts ...request.Option) (*connect.DeletePromptOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeletePrompt",
+		Input:   input,
+		Output:  (*connect.DeletePromptOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeletePromptWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeletePromptOutput), req.Error
 }
 
 func (c *Client) DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error) {
@@ -1494,6 +1541,27 @@ func (c *Client) DescribePhoneNumberWithContext(ctx context.Context, input *conn
 	})
 
 	return req.Output.(*connect.DescribePhoneNumberOutput), req.Error
+}
+
+func (c *Client) DescribePromptWithContext(ctx context.Context, input *connect.DescribePromptInput, opts ...request.Option) (*connect.DescribePromptOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribePrompt",
+		Input:   input,
+		Output:  (*connect.DescribePromptOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribePromptWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribePromptOutput), req.Error
 }
 
 func (c *Client) DescribeQueueWithContext(ctx context.Context, input *connect.DescribeQueueInput, opts ...request.Option) (*connect.DescribeQueueOutput, error) {
@@ -2120,6 +2188,27 @@ func (c *Client) GetMetricDataV2PagesWithContext(ctx context.Context, input *con
 	})
 
 	return req.Error
+}
+
+func (c *Client) GetPromptFileWithContext(ctx context.Context, input *connect.GetPromptFileInput, opts ...request.Option) (*connect.GetPromptFileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "GetPromptFile",
+		Input:   input,
+		Output:  (*connect.GetPromptFileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.GetPromptFileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.GetPromptFileOutput), req.Error
 }
 
 func (c *Client) GetTaskTemplateWithContext(ctx context.Context, input *connect.GetTaskTemplateInput, opts ...request.Option) (*connect.GetTaskTemplateOutput, error) {
@@ -4558,6 +4647,27 @@ func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *connec
 	})
 
 	return req.Output.(*connect.UpdatePhoneNumberOutput), req.Error
+}
+
+func (c *Client) UpdatePromptWithContext(ctx context.Context, input *connect.UpdatePromptInput, opts ...request.Option) (*connect.UpdatePromptOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdatePrompt",
+		Input:   input,
+		Output:  (*connect.UpdatePromptOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdatePromptWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdatePromptOutput), req.Error
 }
 
 func (c *Client) UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error) {
