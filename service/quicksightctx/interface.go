@@ -62,6 +62,8 @@ type QuickSight interface {
 	DescribeAnalysisWithContext(ctx context.Context, input *quicksight.DescribeAnalysisInput, opts ...request.Option) (*quicksight.DescribeAnalysisOutput, error)
 	DescribeAnalysisDefinitionWithContext(ctx context.Context, input *quicksight.DescribeAnalysisDefinitionInput, opts ...request.Option) (*quicksight.DescribeAnalysisDefinitionOutput, error)
 	DescribeAnalysisPermissionsWithContext(ctx context.Context, input *quicksight.DescribeAnalysisPermissionsInput, opts ...request.Option) (*quicksight.DescribeAnalysisPermissionsOutput, error)
+	DescribeAssetBundleExportJobWithContext(ctx context.Context, input *quicksight.DescribeAssetBundleExportJobInput, opts ...request.Option) (*quicksight.DescribeAssetBundleExportJobOutput, error)
+	DescribeAssetBundleImportJobWithContext(ctx context.Context, input *quicksight.DescribeAssetBundleImportJobInput, opts ...request.Option) (*quicksight.DescribeAssetBundleImportJobOutput, error)
 	DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error)
 	DescribeDashboardDefinitionWithContext(ctx context.Context, input *quicksight.DescribeDashboardDefinitionInput, opts ...request.Option) (*quicksight.DescribeDashboardDefinitionOutput, error)
 	DescribeDashboardPermissionsWithContext(ctx context.Context, input *quicksight.DescribeDashboardPermissionsInput, opts ...request.Option) (*quicksight.DescribeDashboardPermissionsOutput, error)
@@ -99,6 +101,10 @@ type QuickSight interface {
 	GetSessionEmbedUrlWithContext(ctx context.Context, input *quicksight.GetSessionEmbedUrlInput, opts ...request.Option) (*quicksight.GetSessionEmbedUrlOutput, error)
 	ListAnalysesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, opts ...request.Option) (*quicksight.ListAnalysesOutput, error)
 	ListAnalysesPagesWithContext(ctx context.Context, input *quicksight.ListAnalysesInput, cb func(*quicksight.ListAnalysesOutput, bool) bool, opts ...request.Option) error
+	ListAssetBundleExportJobsWithContext(ctx context.Context, input *quicksight.ListAssetBundleExportJobsInput, opts ...request.Option) (*quicksight.ListAssetBundleExportJobsOutput, error)
+	ListAssetBundleExportJobsPagesWithContext(ctx context.Context, input *quicksight.ListAssetBundleExportJobsInput, cb func(*quicksight.ListAssetBundleExportJobsOutput, bool) bool, opts ...request.Option) error
+	ListAssetBundleImportJobsWithContext(ctx context.Context, input *quicksight.ListAssetBundleImportJobsInput, opts ...request.Option) (*quicksight.ListAssetBundleImportJobsOutput, error)
+	ListAssetBundleImportJobsPagesWithContext(ctx context.Context, input *quicksight.ListAssetBundleImportJobsInput, cb func(*quicksight.ListAssetBundleImportJobsOutput, bool) bool, opts ...request.Option) error
 	ListDashboardVersionsWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, opts ...request.Option) (*quicksight.ListDashboardVersionsOutput, error)
 	ListDashboardVersionsPagesWithContext(ctx context.Context, input *quicksight.ListDashboardVersionsInput, cb func(*quicksight.ListDashboardVersionsOutput, bool) bool, opts ...request.Option) error
 	ListDashboardsWithContext(ctx context.Context, input *quicksight.ListDashboardsInput, opts ...request.Option) (*quicksight.ListDashboardsOutput, error)
@@ -150,6 +156,8 @@ type QuickSight interface {
 	SearchDataSourcesPagesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, cb func(*quicksight.SearchDataSourcesOutput, bool) bool, opts ...request.Option) error
 	SearchFoldersWithContext(ctx context.Context, input *quicksight.SearchFoldersInput, opts ...request.Option) (*quicksight.SearchFoldersOutput, error)
 	SearchGroupsWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, opts ...request.Option) (*quicksight.SearchGroupsOutput, error)
+	StartAssetBundleExportJobWithContext(ctx context.Context, input *quicksight.StartAssetBundleExportJobInput, opts ...request.Option) (*quicksight.StartAssetBundleExportJobOutput, error)
+	StartAssetBundleImportJobWithContext(ctx context.Context, input *quicksight.StartAssetBundleImportJobInput, opts ...request.Option) (*quicksight.StartAssetBundleImportJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *quicksight.UntagResourceInput, opts ...request.Option) (*quicksight.UntagResourceOutput, error)
 	UpdateAccountCustomizationWithContext(ctx context.Context, input *quicksight.UpdateAccountCustomizationInput, opts ...request.Option) (*quicksight.UpdateAccountCustomizationOutput, error)
@@ -1269,6 +1277,48 @@ func (c *Client) DescribeAnalysisPermissionsWithContext(ctx context.Context, inp
 	return req.Output.(*quicksight.DescribeAnalysisPermissionsOutput), req.Error
 }
 
+func (c *Client) DescribeAssetBundleExportJobWithContext(ctx context.Context, input *quicksight.DescribeAssetBundleExportJobInput, opts ...request.Option) (*quicksight.DescribeAssetBundleExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAssetBundleExportJob",
+		Input:   input,
+		Output:  (*quicksight.DescribeAssetBundleExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAssetBundleExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAssetBundleExportJobOutput), req.Error
+}
+
+func (c *Client) DescribeAssetBundleImportJobWithContext(ctx context.Context, input *quicksight.DescribeAssetBundleImportJobInput, opts ...request.Option) (*quicksight.DescribeAssetBundleImportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeAssetBundleImportJob",
+		Input:   input,
+		Output:  (*quicksight.DescribeAssetBundleImportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeAssetBundleImportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeAssetBundleImportJobOutput), req.Error
+}
+
 func (c *Client) DescribeDashboardWithContext(ctx context.Context, input *quicksight.DescribeDashboardInput, opts ...request.Option) (*quicksight.DescribeDashboardOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -2040,6 +2090,88 @@ func (c *Client) ListAnalysesPagesWithContext(ctx context.Context, input *quicks
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.QuickSightAPI.ListAnalysesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAssetBundleExportJobsWithContext(ctx context.Context, input *quicksight.ListAssetBundleExportJobsInput, opts ...request.Option) (*quicksight.ListAssetBundleExportJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListAssetBundleExportJobs",
+		Input:   input,
+		Output:  (*quicksight.ListAssetBundleExportJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListAssetBundleExportJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListAssetBundleExportJobsOutput), req.Error
+}
+
+func (c *Client) ListAssetBundleExportJobsPagesWithContext(ctx context.Context, input *quicksight.ListAssetBundleExportJobsInput, cb func(*quicksight.ListAssetBundleExportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListAssetBundleExportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListAssetBundleExportJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAssetBundleImportJobsWithContext(ctx context.Context, input *quicksight.ListAssetBundleImportJobsInput, opts ...request.Option) (*quicksight.ListAssetBundleImportJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListAssetBundleImportJobs",
+		Input:   input,
+		Output:  (*quicksight.ListAssetBundleImportJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListAssetBundleImportJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListAssetBundleImportJobsOutput), req.Error
+}
+
+func (c *Client) ListAssetBundleImportJobsPagesWithContext(ctx context.Context, input *quicksight.ListAssetBundleImportJobsInput, cb func(*quicksight.ListAssetBundleImportJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListAssetBundleImportJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListAssetBundleImportJobsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -3097,6 +3229,48 @@ func (c *Client) SearchGroupsWithContext(ctx context.Context, input *quicksight.
 	})
 
 	return req.Output.(*quicksight.SearchGroupsOutput), req.Error
+}
+
+func (c *Client) StartAssetBundleExportJobWithContext(ctx context.Context, input *quicksight.StartAssetBundleExportJobInput, opts ...request.Option) (*quicksight.StartAssetBundleExportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "StartAssetBundleExportJob",
+		Input:   input,
+		Output:  (*quicksight.StartAssetBundleExportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.StartAssetBundleExportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.StartAssetBundleExportJobOutput), req.Error
+}
+
+func (c *Client) StartAssetBundleImportJobWithContext(ctx context.Context, input *quicksight.StartAssetBundleImportJobInput, opts ...request.Option) (*quicksight.StartAssetBundleImportJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "StartAssetBundleImportJob",
+		Input:   input,
+		Output:  (*quicksight.StartAssetBundleImportJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.StartAssetBundleImportJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.StartAssetBundleImportJobOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *quicksight.TagResourceInput, opts ...request.Option) (*quicksight.TagResourceOutput, error) {
