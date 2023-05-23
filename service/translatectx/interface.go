@@ -31,6 +31,7 @@ type Translate interface {
 	StopTextTranslationJobWithContext(ctx context.Context, input *translate.StopTextTranslationJobInput, opts ...request.Option) (*translate.StopTextTranslationJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *translate.TagResourceInput, opts ...request.Option) (*translate.TagResourceOutput, error)
 	TextWithContext(ctx context.Context, input *translate.TextInput, opts ...request.Option) (*translate.TextOutput, error)
+	TranslateDocumentWithContext(ctx context.Context, input *translate.TranslateDocumentInput, opts ...request.Option) (*translate.TranslateDocumentOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *translate.UntagResourceInput, opts ...request.Option) (*translate.UntagResourceOutput, error)
 	UpdateParallelDataWithContext(ctx context.Context, input *translate.UpdateParallelDataInput, opts ...request.Option) (*translate.UpdateParallelDataOutput, error)
 }
@@ -464,6 +465,27 @@ func (c *Client) TextWithContext(ctx context.Context, input *translate.TextInput
 	})
 
 	return req.Output.(*translate.TextOutput), req.Error
+}
+
+func (c *Client) TranslateDocumentWithContext(ctx context.Context, input *translate.TranslateDocumentInput, opts ...request.Option) (*translate.TranslateDocumentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "translate",
+		Action:  "TranslateDocument",
+		Input:   input,
+		Output:  (*translate.TranslateDocumentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TranslateAPI.TranslateDocumentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*translate.TranslateDocumentOutput), req.Error
 }
 
 func (c *Client) UntagResourceWithContext(ctx context.Context, input *translate.UntagResourceInput, opts ...request.Option) (*translate.UntagResourceOutput, error) {
