@@ -12,6 +12,8 @@ import (
 
 type AppSync interface {
 	AssociateApiWithContext(ctx context.Context, input *appsync.AssociateApiInput, opts ...request.Option) (*appsync.AssociateApiOutput, error)
+	AssociateMergedGraphqlApiWithContext(ctx context.Context, input *appsync.AssociateMergedGraphqlApiInput, opts ...request.Option) (*appsync.AssociateMergedGraphqlApiOutput, error)
+	AssociateSourceGraphqlApiWithContext(ctx context.Context, input *appsync.AssociateSourceGraphqlApiInput, opts ...request.Option) (*appsync.AssociateSourceGraphqlApiOutput, error)
 	CreateApiCacheWithContext(ctx context.Context, input *appsync.CreateApiCacheInput, opts ...request.Option) (*appsync.CreateApiCacheOutput, error)
 	CreateApiKeyWithContext(ctx context.Context, input *appsync.CreateApiKeyInput, opts ...request.Option) (*appsync.CreateApiKeyOutput, error)
 	CreateDataSourceWithContext(ctx context.Context, input *appsync.CreateDataSourceInput, opts ...request.Option) (*appsync.CreateDataSourceOutput, error)
@@ -29,6 +31,8 @@ type AppSync interface {
 	DeleteResolverWithContext(ctx context.Context, input *appsync.DeleteResolverInput, opts ...request.Option) (*appsync.DeleteResolverOutput, error)
 	DeleteTypeWithContext(ctx context.Context, input *appsync.DeleteTypeInput, opts ...request.Option) (*appsync.DeleteTypeOutput, error)
 	DisassociateApiWithContext(ctx context.Context, input *appsync.DisassociateApiInput, opts ...request.Option) (*appsync.DisassociateApiOutput, error)
+	DisassociateMergedGraphqlApiWithContext(ctx context.Context, input *appsync.DisassociateMergedGraphqlApiInput, opts ...request.Option) (*appsync.DisassociateMergedGraphqlApiOutput, error)
+	DisassociateSourceGraphqlApiWithContext(ctx context.Context, input *appsync.DisassociateSourceGraphqlApiInput, opts ...request.Option) (*appsync.DisassociateSourceGraphqlApiOutput, error)
 	EvaluateCodeWithContext(ctx context.Context, input *appsync.EvaluateCodeInput, opts ...request.Option) (*appsync.EvaluateCodeOutput, error)
 	EvaluateMappingTemplateWithContext(ctx context.Context, input *appsync.EvaluateMappingTemplateInput, opts ...request.Option) (*appsync.EvaluateMappingTemplateOutput, error)
 	FlushApiCacheWithContext(ctx context.Context, input *appsync.FlushApiCacheInput, opts ...request.Option) (*appsync.FlushApiCacheOutput, error)
@@ -41,6 +45,7 @@ type AppSync interface {
 	GetIntrospectionSchemaWithContext(ctx context.Context, input *appsync.GetIntrospectionSchemaInput, opts ...request.Option) (*appsync.GetIntrospectionSchemaOutput, error)
 	GetResolverWithContext(ctx context.Context, input *appsync.GetResolverInput, opts ...request.Option) (*appsync.GetResolverOutput, error)
 	GetSchemaCreationStatusWithContext(ctx context.Context, input *appsync.GetSchemaCreationStatusInput, opts ...request.Option) (*appsync.GetSchemaCreationStatusOutput, error)
+	GetSourceApiAssociationWithContext(ctx context.Context, input *appsync.GetSourceApiAssociationInput, opts ...request.Option) (*appsync.GetSourceApiAssociationOutput, error)
 	GetTypeWithContext(ctx context.Context, input *appsync.GetTypeInput, opts ...request.Option) (*appsync.GetTypeOutput, error)
 	ListApiKeysWithContext(ctx context.Context, input *appsync.ListApiKeysInput, opts ...request.Option) (*appsync.ListApiKeysOutput, error)
 	ListDataSourcesWithContext(ctx context.Context, input *appsync.ListDataSourcesInput, opts ...request.Option) (*appsync.ListDataSourcesOutput, error)
@@ -49,9 +54,12 @@ type AppSync interface {
 	ListGraphqlApisWithContext(ctx context.Context, input *appsync.ListGraphqlApisInput, opts ...request.Option) (*appsync.ListGraphqlApisOutput, error)
 	ListResolversWithContext(ctx context.Context, input *appsync.ListResolversInput, opts ...request.Option) (*appsync.ListResolversOutput, error)
 	ListResolversByFunctionWithContext(ctx context.Context, input *appsync.ListResolversByFunctionInput, opts ...request.Option) (*appsync.ListResolversByFunctionOutput, error)
+	ListSourceApiAssociationsWithContext(ctx context.Context, input *appsync.ListSourceApiAssociationsInput, opts ...request.Option) (*appsync.ListSourceApiAssociationsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *appsync.ListTagsForResourceInput, opts ...request.Option) (*appsync.ListTagsForResourceOutput, error)
 	ListTypesWithContext(ctx context.Context, input *appsync.ListTypesInput, opts ...request.Option) (*appsync.ListTypesOutput, error)
+	ListTypesByAssociationWithContext(ctx context.Context, input *appsync.ListTypesByAssociationInput, opts ...request.Option) (*appsync.ListTypesByAssociationOutput, error)
 	StartSchemaCreationWithContext(ctx context.Context, input *appsync.StartSchemaCreationInput, opts ...request.Option) (*appsync.StartSchemaCreationOutput, error)
+	StartSchemaMergeWithContext(ctx context.Context, input *appsync.StartSchemaMergeInput, opts ...request.Option) (*appsync.StartSchemaMergeOutput, error)
 	TagResourceWithContext(ctx context.Context, input *appsync.TagResourceInput, opts ...request.Option) (*appsync.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *appsync.UntagResourceInput, opts ...request.Option) (*appsync.UntagResourceOutput, error)
 	UpdateApiCacheWithContext(ctx context.Context, input *appsync.UpdateApiCacheInput, opts ...request.Option) (*appsync.UpdateApiCacheOutput, error)
@@ -61,6 +69,7 @@ type AppSync interface {
 	UpdateFunctionWithContext(ctx context.Context, input *appsync.UpdateFunctionInput, opts ...request.Option) (*appsync.UpdateFunctionOutput, error)
 	UpdateGraphqlApiWithContext(ctx context.Context, input *appsync.UpdateGraphqlApiInput, opts ...request.Option) (*appsync.UpdateGraphqlApiOutput, error)
 	UpdateResolverWithContext(ctx context.Context, input *appsync.UpdateResolverInput, opts ...request.Option) (*appsync.UpdateResolverOutput, error)
+	UpdateSourceApiAssociationWithContext(ctx context.Context, input *appsync.UpdateSourceApiAssociationInput, opts ...request.Option) (*appsync.UpdateSourceApiAssociationOutput, error)
 	UpdateTypeWithContext(ctx context.Context, input *appsync.UpdateTypeInput, opts ...request.Option) (*appsync.UpdateTypeOutput, error)
 }
 
@@ -98,6 +107,48 @@ func (c *Client) AssociateApiWithContext(ctx context.Context, input *appsync.Ass
 	})
 
 	return req.Output.(*appsync.AssociateApiOutput), req.Error
+}
+
+func (c *Client) AssociateMergedGraphqlApiWithContext(ctx context.Context, input *appsync.AssociateMergedGraphqlApiInput, opts ...request.Option) (*appsync.AssociateMergedGraphqlApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "AssociateMergedGraphqlApi",
+		Input:   input,
+		Output:  (*appsync.AssociateMergedGraphqlApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.AssociateMergedGraphqlApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.AssociateMergedGraphqlApiOutput), req.Error
+}
+
+func (c *Client) AssociateSourceGraphqlApiWithContext(ctx context.Context, input *appsync.AssociateSourceGraphqlApiInput, opts ...request.Option) (*appsync.AssociateSourceGraphqlApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "AssociateSourceGraphqlApi",
+		Input:   input,
+		Output:  (*appsync.AssociateSourceGraphqlApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.AssociateSourceGraphqlApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.AssociateSourceGraphqlApiOutput), req.Error
 }
 
 func (c *Client) CreateApiCacheWithContext(ctx context.Context, input *appsync.CreateApiCacheInput, opts ...request.Option) (*appsync.CreateApiCacheOutput, error) {
@@ -457,6 +508,48 @@ func (c *Client) DisassociateApiWithContext(ctx context.Context, input *appsync.
 	return req.Output.(*appsync.DisassociateApiOutput), req.Error
 }
 
+func (c *Client) DisassociateMergedGraphqlApiWithContext(ctx context.Context, input *appsync.DisassociateMergedGraphqlApiInput, opts ...request.Option) (*appsync.DisassociateMergedGraphqlApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "DisassociateMergedGraphqlApi",
+		Input:   input,
+		Output:  (*appsync.DisassociateMergedGraphqlApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.DisassociateMergedGraphqlApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.DisassociateMergedGraphqlApiOutput), req.Error
+}
+
+func (c *Client) DisassociateSourceGraphqlApiWithContext(ctx context.Context, input *appsync.DisassociateSourceGraphqlApiInput, opts ...request.Option) (*appsync.DisassociateSourceGraphqlApiOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "DisassociateSourceGraphqlApi",
+		Input:   input,
+		Output:  (*appsync.DisassociateSourceGraphqlApiOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.DisassociateSourceGraphqlApiWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.DisassociateSourceGraphqlApiOutput), req.Error
+}
+
 func (c *Client) EvaluateCodeWithContext(ctx context.Context, input *appsync.EvaluateCodeInput, opts ...request.Option) (*appsync.EvaluateCodeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -709,6 +802,27 @@ func (c *Client) GetSchemaCreationStatusWithContext(ctx context.Context, input *
 	return req.Output.(*appsync.GetSchemaCreationStatusOutput), req.Error
 }
 
+func (c *Client) GetSourceApiAssociationWithContext(ctx context.Context, input *appsync.GetSourceApiAssociationInput, opts ...request.Option) (*appsync.GetSourceApiAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "GetSourceApiAssociation",
+		Input:   input,
+		Output:  (*appsync.GetSourceApiAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.GetSourceApiAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.GetSourceApiAssociationOutput), req.Error
+}
+
 func (c *Client) GetTypeWithContext(ctx context.Context, input *appsync.GetTypeInput, opts ...request.Option) (*appsync.GetTypeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -877,6 +991,27 @@ func (c *Client) ListResolversByFunctionWithContext(ctx context.Context, input *
 	return req.Output.(*appsync.ListResolversByFunctionOutput), req.Error
 }
 
+func (c *Client) ListSourceApiAssociationsWithContext(ctx context.Context, input *appsync.ListSourceApiAssociationsInput, opts ...request.Option) (*appsync.ListSourceApiAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "ListSourceApiAssociations",
+		Input:   input,
+		Output:  (*appsync.ListSourceApiAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.ListSourceApiAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.ListSourceApiAssociationsOutput), req.Error
+}
+
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *appsync.ListTagsForResourceInput, opts ...request.Option) (*appsync.ListTagsForResourceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -919,6 +1054,27 @@ func (c *Client) ListTypesWithContext(ctx context.Context, input *appsync.ListTy
 	return req.Output.(*appsync.ListTypesOutput), req.Error
 }
 
+func (c *Client) ListTypesByAssociationWithContext(ctx context.Context, input *appsync.ListTypesByAssociationInput, opts ...request.Option) (*appsync.ListTypesByAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "ListTypesByAssociation",
+		Input:   input,
+		Output:  (*appsync.ListTypesByAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.ListTypesByAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.ListTypesByAssociationOutput), req.Error
+}
+
 func (c *Client) StartSchemaCreationWithContext(ctx context.Context, input *appsync.StartSchemaCreationInput, opts ...request.Option) (*appsync.StartSchemaCreationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "appsync",
@@ -938,6 +1094,27 @@ func (c *Client) StartSchemaCreationWithContext(ctx context.Context, input *apps
 	})
 
 	return req.Output.(*appsync.StartSchemaCreationOutput), req.Error
+}
+
+func (c *Client) StartSchemaMergeWithContext(ctx context.Context, input *appsync.StartSchemaMergeInput, opts ...request.Option) (*appsync.StartSchemaMergeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "StartSchemaMerge",
+		Input:   input,
+		Output:  (*appsync.StartSchemaMergeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.StartSchemaMergeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.StartSchemaMergeOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *appsync.TagResourceInput, opts ...request.Option) (*appsync.TagResourceOutput, error) {
@@ -1127,6 +1304,27 @@ func (c *Client) UpdateResolverWithContext(ctx context.Context, input *appsync.U
 	})
 
 	return req.Output.(*appsync.UpdateResolverOutput), req.Error
+}
+
+func (c *Client) UpdateSourceApiAssociationWithContext(ctx context.Context, input *appsync.UpdateSourceApiAssociationInput, opts ...request.Option) (*appsync.UpdateSourceApiAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "appsync",
+		Action:  "UpdateSourceApiAssociation",
+		Input:   input,
+		Output:  (*appsync.UpdateSourceApiAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AppSyncAPI.UpdateSourceApiAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*appsync.UpdateSourceApiAssociationOutput), req.Error
 }
 
 func (c *Client) UpdateTypeWithContext(ctx context.Context, input *appsync.UpdateTypeInput, opts ...request.Option) (*appsync.UpdateTypeOutput, error) {
