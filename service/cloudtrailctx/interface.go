@@ -57,9 +57,11 @@ type CloudTrail interface {
 	RegisterOrganizationDelegatedAdminWithContext(ctx context.Context, input *cloudtrail.RegisterOrganizationDelegatedAdminInput, opts ...request.Option) (*cloudtrail.RegisterOrganizationDelegatedAdminOutput, error)
 	RemoveTagsWithContext(ctx context.Context, input *cloudtrail.RemoveTagsInput, opts ...request.Option) (*cloudtrail.RemoveTagsOutput, error)
 	RestoreEventDataStoreWithContext(ctx context.Context, input *cloudtrail.RestoreEventDataStoreInput, opts ...request.Option) (*cloudtrail.RestoreEventDataStoreOutput, error)
+	StartEventDataStoreIngestionWithContext(ctx context.Context, input *cloudtrail.StartEventDataStoreIngestionInput, opts ...request.Option) (*cloudtrail.StartEventDataStoreIngestionOutput, error)
 	StartImportWithContext(ctx context.Context, input *cloudtrail.StartImportInput, opts ...request.Option) (*cloudtrail.StartImportOutput, error)
 	StartLoggingWithContext(ctx context.Context, input *cloudtrail.StartLoggingInput, opts ...request.Option) (*cloudtrail.StartLoggingOutput, error)
 	StartQueryWithContext(ctx context.Context, input *cloudtrail.StartQueryInput, opts ...request.Option) (*cloudtrail.StartQueryOutput, error)
+	StopEventDataStoreIngestionWithContext(ctx context.Context, input *cloudtrail.StopEventDataStoreIngestionInput, opts ...request.Option) (*cloudtrail.StopEventDataStoreIngestionOutput, error)
 	StopImportWithContext(ctx context.Context, input *cloudtrail.StopImportInput, opts ...request.Option) (*cloudtrail.StopImportOutput, error)
 	StopLoggingWithContext(ctx context.Context, input *cloudtrail.StopLoggingInput, opts ...request.Option) (*cloudtrail.StopLoggingOutput, error)
 	UpdateChannelWithContext(ctx context.Context, input *cloudtrail.UpdateChannelInput, opts ...request.Option) (*cloudtrail.UpdateChannelOutput, error)
@@ -1038,6 +1040,27 @@ func (c *Client) RestoreEventDataStoreWithContext(ctx context.Context, input *cl
 	return req.Output.(*cloudtrail.RestoreEventDataStoreOutput), req.Error
 }
 
+func (c *Client) StartEventDataStoreIngestionWithContext(ctx context.Context, input *cloudtrail.StartEventDataStoreIngestionInput, opts ...request.Option) (*cloudtrail.StartEventDataStoreIngestionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "StartEventDataStoreIngestion",
+		Input:   input,
+		Output:  (*cloudtrail.StartEventDataStoreIngestionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.StartEventDataStoreIngestionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.StartEventDataStoreIngestionOutput), req.Error
+}
+
 func (c *Client) StartImportWithContext(ctx context.Context, input *cloudtrail.StartImportInput, opts ...request.Option) (*cloudtrail.StartImportOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cloudtrail",
@@ -1099,6 +1122,27 @@ func (c *Client) StartQueryWithContext(ctx context.Context, input *cloudtrail.St
 	})
 
 	return req.Output.(*cloudtrail.StartQueryOutput), req.Error
+}
+
+func (c *Client) StopEventDataStoreIngestionWithContext(ctx context.Context, input *cloudtrail.StopEventDataStoreIngestionInput, opts ...request.Option) (*cloudtrail.StopEventDataStoreIngestionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudtrail",
+		Action:  "StopEventDataStoreIngestion",
+		Input:   input,
+		Output:  (*cloudtrail.StopEventDataStoreIngestionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudTrailAPI.StopEventDataStoreIngestionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudtrail.StopEventDataStoreIngestionOutput), req.Error
 }
 
 func (c *Client) StopImportWithContext(ctx context.Context, input *cloudtrail.StopImportInput, opts ...request.Option) (*cloudtrail.StopImportOutput, error) {

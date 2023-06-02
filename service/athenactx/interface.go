@@ -22,6 +22,7 @@ type Athena interface {
 	CreatePreparedStatementWithContext(ctx context.Context, input *athena.CreatePreparedStatementInput, opts ...request.Option) (*athena.CreatePreparedStatementOutput, error)
 	CreatePresignedNotebookUrlWithContext(ctx context.Context, input *athena.CreatePresignedNotebookUrlInput, opts ...request.Option) (*athena.CreatePresignedNotebookUrlOutput, error)
 	CreateWorkGroupWithContext(ctx context.Context, input *athena.CreateWorkGroupInput, opts ...request.Option) (*athena.CreateWorkGroupOutput, error)
+	DeleteCapacityReservationWithContext(ctx context.Context, input *athena.DeleteCapacityReservationInput, opts ...request.Option) (*athena.DeleteCapacityReservationOutput, error)
 	DeleteDataCatalogWithContext(ctx context.Context, input *athena.DeleteDataCatalogInput, opts ...request.Option) (*athena.DeleteDataCatalogOutput, error)
 	DeleteNamedQueryWithContext(ctx context.Context, input *athena.DeleteNamedQueryInput, opts ...request.Option) (*athena.DeleteNamedQueryOutput, error)
 	DeleteNotebookWithContext(ctx context.Context, input *athena.DeleteNotebookInput, opts ...request.Option) (*athena.DeleteNotebookOutput, error)
@@ -339,6 +340,27 @@ func (c *Client) CreateWorkGroupWithContext(ctx context.Context, input *athena.C
 	})
 
 	return req.Output.(*athena.CreateWorkGroupOutput), req.Error
+}
+
+func (c *Client) DeleteCapacityReservationWithContext(ctx context.Context, input *athena.DeleteCapacityReservationInput, opts ...request.Option) (*athena.DeleteCapacityReservationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "athena",
+		Action:  "DeleteCapacityReservation",
+		Input:   input,
+		Output:  (*athena.DeleteCapacityReservationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.AthenaAPI.DeleteCapacityReservationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*athena.DeleteCapacityReservationOutput), req.Error
 }
 
 func (c *Client) DeleteDataCatalogWithContext(ctx context.Context, input *athena.DeleteDataCatalogInput, opts ...request.Option) (*athena.DeleteDataCatalogOutput, error) {
