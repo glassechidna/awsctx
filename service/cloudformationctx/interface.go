@@ -11,6 +11,7 @@ import (
 )
 
 type CloudFormation interface {
+	ActivateOrganizationsAccessWithContext(ctx context.Context, input *cloudformation.ActivateOrganizationsAccessInput, opts ...request.Option) (*cloudformation.ActivateOrganizationsAccessOutput, error)
 	ActivateTypeWithContext(ctx context.Context, input *cloudformation.ActivateTypeInput, opts ...request.Option) (*cloudformation.ActivateTypeOutput, error)
 	BatchDescribeTypeConfigurationsWithContext(ctx context.Context, input *cloudformation.BatchDescribeTypeConfigurationsInput, opts ...request.Option) (*cloudformation.BatchDescribeTypeConfigurationsOutput, error)
 	CancelUpdateStackWithContext(ctx context.Context, input *cloudformation.CancelUpdateStackInput, opts ...request.Option) (*cloudformation.CancelUpdateStackOutput, error)
@@ -19,6 +20,7 @@ type CloudFormation interface {
 	CreateStackWithContext(ctx context.Context, input *cloudformation.CreateStackInput, opts ...request.Option) (*cloudformation.CreateStackOutput, error)
 	CreateStackInstancesWithContext(ctx context.Context, input *cloudformation.CreateStackInstancesInput, opts ...request.Option) (*cloudformation.CreateStackInstancesOutput, error)
 	CreateStackSetWithContext(ctx context.Context, input *cloudformation.CreateStackSetInput, opts ...request.Option) (*cloudformation.CreateStackSetOutput, error)
+	DeactivateOrganizationsAccessWithContext(ctx context.Context, input *cloudformation.DeactivateOrganizationsAccessInput, opts ...request.Option) (*cloudformation.DeactivateOrganizationsAccessOutput, error)
 	DeactivateTypeWithContext(ctx context.Context, input *cloudformation.DeactivateTypeInput, opts ...request.Option) (*cloudformation.DeactivateTypeOutput, error)
 	DeleteChangeSetWithContext(ctx context.Context, input *cloudformation.DeleteChangeSetInput, opts ...request.Option) (*cloudformation.DeleteChangeSetOutput, error)
 	DeleteStackWithContext(ctx context.Context, input *cloudformation.DeleteStackInput, opts ...request.Option) (*cloudformation.DeleteStackOutput, error)
@@ -29,6 +31,7 @@ type CloudFormation interface {
 	DescribeAccountLimitsPagesWithContext(ctx context.Context, input *cloudformation.DescribeAccountLimitsInput, cb func(*cloudformation.DescribeAccountLimitsOutput, bool) bool, opts ...request.Option) error
 	DescribeChangeSetWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetInput, opts ...request.Option) (*cloudformation.DescribeChangeSetOutput, error)
 	DescribeChangeSetHooksWithContext(ctx context.Context, input *cloudformation.DescribeChangeSetHooksInput, opts ...request.Option) (*cloudformation.DescribeChangeSetHooksOutput, error)
+	DescribeOrganizationsAccessWithContext(ctx context.Context, input *cloudformation.DescribeOrganizationsAccessInput, opts ...request.Option) (*cloudformation.DescribeOrganizationsAccessOutput, error)
 	DescribePublisherWithContext(ctx context.Context, input *cloudformation.DescribePublisherInput, opts ...request.Option) (*cloudformation.DescribePublisherOutput, error)
 	DescribeStackDriftDetectionStatusWithContext(ctx context.Context, input *cloudformation.DescribeStackDriftDetectionStatusInput, opts ...request.Option) (*cloudformation.DescribeStackDriftDetectionStatusOutput, error)
 	DescribeStackEventsWithContext(ctx context.Context, input *cloudformation.DescribeStackEventsInput, opts ...request.Option) (*cloudformation.DescribeStackEventsOutput, error)
@@ -109,6 +112,27 @@ func New(base cloudformationiface.CloudFormationAPI, ctxer awsctx.Contexter) Clo
 
 var _ CloudFormation = (*cloudformation.CloudFormation)(nil)
 var _ CloudFormation = (*Client)(nil)
+
+func (c *Client) ActivateOrganizationsAccessWithContext(ctx context.Context, input *cloudformation.ActivateOrganizationsAccessInput, opts ...request.Option) (*cloudformation.ActivateOrganizationsAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ActivateOrganizationsAccess",
+		Input:   input,
+		Output:  (*cloudformation.ActivateOrganizationsAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.ActivateOrganizationsAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.ActivateOrganizationsAccessOutput), req.Error
+}
 
 func (c *Client) ActivateTypeWithContext(ctx context.Context, input *cloudformation.ActivateTypeInput, opts ...request.Option) (*cloudformation.ActivateTypeOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -276,6 +300,27 @@ func (c *Client) CreateStackSetWithContext(ctx context.Context, input *cloudform
 	})
 
 	return req.Output.(*cloudformation.CreateStackSetOutput), req.Error
+}
+
+func (c *Client) DeactivateOrganizationsAccessWithContext(ctx context.Context, input *cloudformation.DeactivateOrganizationsAccessInput, opts ...request.Option) (*cloudformation.DeactivateOrganizationsAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DeactivateOrganizationsAccess",
+		Input:   input,
+		Output:  (*cloudformation.DeactivateOrganizationsAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.DeactivateOrganizationsAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.DeactivateOrganizationsAccessOutput), req.Error
 }
 
 func (c *Client) DeactivateTypeWithContext(ctx context.Context, input *cloudformation.DeactivateTypeInput, opts ...request.Option) (*cloudformation.DeactivateTypeOutput, error) {
@@ -485,6 +530,27 @@ func (c *Client) DescribeChangeSetHooksWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*cloudformation.DescribeChangeSetHooksOutput), req.Error
+}
+
+func (c *Client) DescribeOrganizationsAccessWithContext(ctx context.Context, input *cloudformation.DescribeOrganizationsAccessInput, opts ...request.Option) (*cloudformation.DescribeOrganizationsAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "DescribeOrganizationsAccess",
+		Input:   input,
+		Output:  (*cloudformation.DescribeOrganizationsAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.DescribeOrganizationsAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.DescribeOrganizationsAccessOutput), req.Error
 }
 
 func (c *Client) DescribePublisherWithContext(ctx context.Context, input *cloudformation.DescribePublisherInput, opts ...request.Option) (*cloudformation.DescribePublisherOutput, error) {
