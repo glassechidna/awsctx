@@ -14,6 +14,7 @@ type Signer interface {
 	AddProfilePermissionWithContext(ctx context.Context, input *signer.AddProfilePermissionInput, opts ...request.Option) (*signer.AddProfilePermissionOutput, error)
 	CancelSigningProfileWithContext(ctx context.Context, input *signer.CancelSigningProfileInput, opts ...request.Option) (*signer.CancelSigningProfileOutput, error)
 	DescribeSigningJobWithContext(ctx context.Context, input *signer.DescribeSigningJobInput, opts ...request.Option) (*signer.DescribeSigningJobOutput, error)
+	GetRevocationStatusWithContext(ctx context.Context, input *signer.GetRevocationStatusInput, opts ...request.Option) (*signer.GetRevocationStatusOutput, error)
 	GetSigningPlatformWithContext(ctx context.Context, input *signer.GetSigningPlatformInput, opts ...request.Option) (*signer.GetSigningPlatformOutput, error)
 	GetSigningProfileWithContext(ctx context.Context, input *signer.GetSigningProfileInput, opts ...request.Option) (*signer.GetSigningProfileOutput, error)
 	ListProfilePermissionsWithContext(ctx context.Context, input *signer.ListProfilePermissionsInput, opts ...request.Option) (*signer.ListProfilePermissionsOutput, error)
@@ -28,6 +29,7 @@ type Signer interface {
 	RemoveProfilePermissionWithContext(ctx context.Context, input *signer.RemoveProfilePermissionInput, opts ...request.Option) (*signer.RemoveProfilePermissionOutput, error)
 	RevokeSignatureWithContext(ctx context.Context, input *signer.RevokeSignatureInput, opts ...request.Option) (*signer.RevokeSignatureOutput, error)
 	RevokeSigningProfileWithContext(ctx context.Context, input *signer.RevokeSigningProfileInput, opts ...request.Option) (*signer.RevokeSigningProfileOutput, error)
+	SignPayloadWithContext(ctx context.Context, input *signer.SignPayloadInput, opts ...request.Option) (*signer.SignPayloadOutput, error)
 	StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error)
 	TagResourceWithContext(ctx context.Context, input *signer.TagResourceInput, opts ...request.Option) (*signer.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *signer.UntagResourceInput, opts ...request.Option) (*signer.UntagResourceOutput, error)
@@ -109,6 +111,27 @@ func (c *Client) DescribeSigningJobWithContext(ctx context.Context, input *signe
 	})
 
 	return req.Output.(*signer.DescribeSigningJobOutput), req.Error
+}
+
+func (c *Client) GetRevocationStatusWithContext(ctx context.Context, input *signer.GetRevocationStatusInput, opts ...request.Option) (*signer.GetRevocationStatusOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "GetRevocationStatus",
+		Input:   input,
+		Output:  (*signer.GetRevocationStatusOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.GetRevocationStatusWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.GetRevocationStatusOutput), req.Error
 }
 
 func (c *Client) GetSigningPlatformWithContext(ctx context.Context, input *signer.GetSigningPlatformInput, opts ...request.Option) (*signer.GetSigningPlatformOutput, error) {
@@ -400,6 +423,27 @@ func (c *Client) RevokeSigningProfileWithContext(ctx context.Context, input *sig
 	})
 
 	return req.Output.(*signer.RevokeSigningProfileOutput), req.Error
+}
+
+func (c *Client) SignPayloadWithContext(ctx context.Context, input *signer.SignPayloadInput, opts ...request.Option) (*signer.SignPayloadOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "signer",
+		Action:  "SignPayload",
+		Input:   input,
+		Output:  (*signer.SignPayloadOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SignerAPI.SignPayloadWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*signer.SignPayloadOutput), req.Error
 }
 
 func (c *Client) StartSigningJobWithContext(ctx context.Context, input *signer.StartSigningJobInput, opts ...request.Option) (*signer.StartSigningJobOutput, error) {

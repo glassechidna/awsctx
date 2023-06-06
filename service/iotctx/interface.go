@@ -41,6 +41,8 @@ type IoT interface {
 	CreateKeysAndCertificateWithContext(ctx context.Context, input *iot.CreateKeysAndCertificateInput, opts ...request.Option) (*iot.CreateKeysAndCertificateOutput, error)
 	CreateMitigationActionWithContext(ctx context.Context, input *iot.CreateMitigationActionInput, opts ...request.Option) (*iot.CreateMitigationActionOutput, error)
 	CreateOTAUpdateWithContext(ctx context.Context, input *iot.CreateOTAUpdateInput, opts ...request.Option) (*iot.CreateOTAUpdateOutput, error)
+	CreatePackageWithContext(ctx context.Context, input *iot.CreatePackageInput, opts ...request.Option) (*iot.CreatePackageOutput, error)
+	CreatePackageVersionWithContext(ctx context.Context, input *iot.CreatePackageVersionInput, opts ...request.Option) (*iot.CreatePackageVersionOutput, error)
 	CreatePolicyWithContext(ctx context.Context, input *iot.CreatePolicyInput, opts ...request.Option) (*iot.CreatePolicyOutput, error)
 	CreatePolicyVersionWithContext(ctx context.Context, input *iot.CreatePolicyVersionInput, opts ...request.Option) (*iot.CreatePolicyVersionOutput, error)
 	CreateProvisioningClaimWithContext(ctx context.Context, input *iot.CreateProvisioningClaimInput, opts ...request.Option) (*iot.CreateProvisioningClaimOutput, error)
@@ -71,6 +73,8 @@ type IoT interface {
 	DeleteJobTemplateWithContext(ctx context.Context, input *iot.DeleteJobTemplateInput, opts ...request.Option) (*iot.DeleteJobTemplateOutput, error)
 	DeleteMitigationActionWithContext(ctx context.Context, input *iot.DeleteMitigationActionInput, opts ...request.Option) (*iot.DeleteMitigationActionOutput, error)
 	DeleteOTAUpdateWithContext(ctx context.Context, input *iot.DeleteOTAUpdateInput, opts ...request.Option) (*iot.DeleteOTAUpdateOutput, error)
+	DeletePackageWithContext(ctx context.Context, input *iot.DeletePackageInput, opts ...request.Option) (*iot.DeletePackageOutput, error)
+	DeletePackageVersionWithContext(ctx context.Context, input *iot.DeletePackageVersionInput, opts ...request.Option) (*iot.DeletePackageVersionOutput, error)
 	DeletePolicyWithContext(ctx context.Context, input *iot.DeletePolicyInput, opts ...request.Option) (*iot.DeletePolicyOutput, error)
 	DeletePolicyVersionWithContext(ctx context.Context, input *iot.DeletePolicyVersionInput, opts ...request.Option) (*iot.DeletePolicyVersionOutput, error)
 	DeleteProvisioningTemplateWithContext(ctx context.Context, input *iot.DeleteProvisioningTemplateInput, opts ...request.Option) (*iot.DeleteProvisioningTemplateOutput, error)
@@ -135,6 +139,9 @@ type IoT interface {
 	GetJobDocumentWithContext(ctx context.Context, input *iot.GetJobDocumentInput, opts ...request.Option) (*iot.GetJobDocumentOutput, error)
 	GetLoggingOptionsWithContext(ctx context.Context, input *iot.GetLoggingOptionsInput, opts ...request.Option) (*iot.GetLoggingOptionsOutput, error)
 	GetOTAUpdateWithContext(ctx context.Context, input *iot.GetOTAUpdateInput, opts ...request.Option) (*iot.GetOTAUpdateOutput, error)
+	GetPackageWithContext(ctx context.Context, input *iot.GetPackageInput, opts ...request.Option) (*iot.GetPackageOutput, error)
+	GetPackageConfigurationWithContext(ctx context.Context, input *iot.GetPackageConfigurationInput, opts ...request.Option) (*iot.GetPackageConfigurationOutput, error)
+	GetPackageVersionWithContext(ctx context.Context, input *iot.GetPackageVersionInput, opts ...request.Option) (*iot.GetPackageVersionOutput, error)
 	GetPercentilesWithContext(ctx context.Context, input *iot.GetPercentilesInput, opts ...request.Option) (*iot.GetPercentilesOutput, error)
 	GetPolicyWithContext(ctx context.Context, input *iot.GetPolicyInput, opts ...request.Option) (*iot.GetPolicyOutput, error)
 	GetPolicyVersionWithContext(ctx context.Context, input *iot.GetPolicyVersionInput, opts ...request.Option) (*iot.GetPolicyVersionOutput, error)
@@ -199,6 +206,10 @@ type IoT interface {
 	ListOTAUpdatesPagesWithContext(ctx context.Context, input *iot.ListOTAUpdatesInput, cb func(*iot.ListOTAUpdatesOutput, bool) bool, opts ...request.Option) error
 	ListOutgoingCertificatesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, opts ...request.Option) (*iot.ListOutgoingCertificatesOutput, error)
 	ListOutgoingCertificatesPagesWithContext(ctx context.Context, input *iot.ListOutgoingCertificatesInput, cb func(*iot.ListOutgoingCertificatesOutput, bool) bool, opts ...request.Option) error
+	ListPackageVersionsWithContext(ctx context.Context, input *iot.ListPackageVersionsInput, opts ...request.Option) (*iot.ListPackageVersionsOutput, error)
+	ListPackageVersionsPagesWithContext(ctx context.Context, input *iot.ListPackageVersionsInput, cb func(*iot.ListPackageVersionsOutput, bool) bool, opts ...request.Option) error
+	ListPackagesWithContext(ctx context.Context, input *iot.ListPackagesInput, opts ...request.Option) (*iot.ListPackagesOutput, error)
+	ListPackagesPagesWithContext(ctx context.Context, input *iot.ListPackagesInput, cb func(*iot.ListPackagesOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesWithContext(ctx context.Context, input *iot.ListPoliciesInput, opts ...request.Option) (*iot.ListPoliciesOutput, error)
 	ListPoliciesPagesWithContext(ctx context.Context, input *iot.ListPoliciesInput, cb func(*iot.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListPolicyPrincipalsWithContext(ctx context.Context, input *iot.ListPolicyPrincipalsInput, opts ...request.Option) (*iot.ListPolicyPrincipalsOutput, error)
@@ -296,6 +307,9 @@ type IoT interface {
 	UpdateIndexingConfigurationWithContext(ctx context.Context, input *iot.UpdateIndexingConfigurationInput, opts ...request.Option) (*iot.UpdateIndexingConfigurationOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *iot.UpdateJobInput, opts ...request.Option) (*iot.UpdateJobOutput, error)
 	UpdateMitigationActionWithContext(ctx context.Context, input *iot.UpdateMitigationActionInput, opts ...request.Option) (*iot.UpdateMitigationActionOutput, error)
+	UpdatePackageWithContext(ctx context.Context, input *iot.UpdatePackageInput, opts ...request.Option) (*iot.UpdatePackageOutput, error)
+	UpdatePackageConfigurationWithContext(ctx context.Context, input *iot.UpdatePackageConfigurationInput, opts ...request.Option) (*iot.UpdatePackageConfigurationOutput, error)
+	UpdatePackageVersionWithContext(ctx context.Context, input *iot.UpdatePackageVersionInput, opts ...request.Option) (*iot.UpdatePackageVersionOutput, error)
 	UpdateProvisioningTemplateWithContext(ctx context.Context, input *iot.UpdateProvisioningTemplateInput, opts ...request.Option) (*iot.UpdateProvisioningTemplateOutput, error)
 	UpdateRoleAliasWithContext(ctx context.Context, input *iot.UpdateRoleAliasInput, opts ...request.Option) (*iot.UpdateRoleAliasOutput, error)
 	UpdateScheduledAuditWithContext(ctx context.Context, input *iot.UpdateScheduledAuditInput, opts ...request.Option) (*iot.UpdateScheduledAuditOutput, error)
@@ -953,6 +967,48 @@ func (c *Client) CreateOTAUpdateWithContext(ctx context.Context, input *iot.Crea
 	return req.Output.(*iot.CreateOTAUpdateOutput), req.Error
 }
 
+func (c *Client) CreatePackageWithContext(ctx context.Context, input *iot.CreatePackageInput, opts ...request.Option) (*iot.CreatePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreatePackage",
+		Input:   input,
+		Output:  (*iot.CreatePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreatePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreatePackageOutput), req.Error
+}
+
+func (c *Client) CreatePackageVersionWithContext(ctx context.Context, input *iot.CreatePackageVersionInput, opts ...request.Option) (*iot.CreatePackageVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "CreatePackageVersion",
+		Input:   input,
+		Output:  (*iot.CreatePackageVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.CreatePackageVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.CreatePackageVersionOutput), req.Error
+}
+
 func (c *Client) CreatePolicyWithContext(ctx context.Context, input *iot.CreatePolicyInput, opts ...request.Option) (*iot.CreatePolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -1581,6 +1637,48 @@ func (c *Client) DeleteOTAUpdateWithContext(ctx context.Context, input *iot.Dele
 	})
 
 	return req.Output.(*iot.DeleteOTAUpdateOutput), req.Error
+}
+
+func (c *Client) DeletePackageWithContext(ctx context.Context, input *iot.DeletePackageInput, opts ...request.Option) (*iot.DeletePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeletePackage",
+		Input:   input,
+		Output:  (*iot.DeletePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeletePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeletePackageOutput), req.Error
+}
+
+func (c *Client) DeletePackageVersionWithContext(ctx context.Context, input *iot.DeletePackageVersionInput, opts ...request.Option) (*iot.DeletePackageVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "DeletePackageVersion",
+		Input:   input,
+		Output:  (*iot.DeletePackageVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.DeletePackageVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.DeletePackageVersionOutput), req.Error
 }
 
 func (c *Client) DeletePolicyWithContext(ctx context.Context, input *iot.DeletePolicyInput, opts ...request.Option) (*iot.DeletePolicyOutput, error) {
@@ -2926,6 +3024,69 @@ func (c *Client) GetOTAUpdateWithContext(ctx context.Context, input *iot.GetOTAU
 	return req.Output.(*iot.GetOTAUpdateOutput), req.Error
 }
 
+func (c *Client) GetPackageWithContext(ctx context.Context, input *iot.GetPackageInput, opts ...request.Option) (*iot.GetPackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetPackage",
+		Input:   input,
+		Output:  (*iot.GetPackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetPackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetPackageOutput), req.Error
+}
+
+func (c *Client) GetPackageConfigurationWithContext(ctx context.Context, input *iot.GetPackageConfigurationInput, opts ...request.Option) (*iot.GetPackageConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetPackageConfiguration",
+		Input:   input,
+		Output:  (*iot.GetPackageConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetPackageConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetPackageConfigurationOutput), req.Error
+}
+
+func (c *Client) GetPackageVersionWithContext(ctx context.Context, input *iot.GetPackageVersionInput, opts ...request.Option) (*iot.GetPackageVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "GetPackageVersion",
+		Input:   input,
+		Output:  (*iot.GetPackageVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.GetPackageVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.GetPackageVersionOutput), req.Error
+}
+
 func (c *Client) GetPercentilesWithContext(ctx context.Context, input *iot.GetPercentilesInput, opts ...request.Option) (*iot.GetPercentilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iot",
@@ -4237,6 +4398,88 @@ func (c *Client) ListOutgoingCertificatesPagesWithContext(ctx context.Context, i
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.IoTAPI.ListOutgoingCertificatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPackageVersionsWithContext(ctx context.Context, input *iot.ListPackageVersionsInput, opts ...request.Option) (*iot.ListPackageVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPackageVersions",
+		Input:   input,
+		Output:  (*iot.ListPackageVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListPackageVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListPackageVersionsOutput), req.Error
+}
+
+func (c *Client) ListPackageVersionsPagesWithContext(ctx context.Context, input *iot.ListPackageVersionsInput, cb func(*iot.ListPackageVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPackageVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListPackageVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPackagesWithContext(ctx context.Context, input *iot.ListPackagesInput, opts ...request.Option) (*iot.ListPackagesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPackages",
+		Input:   input,
+		Output:  (*iot.ListPackagesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.ListPackagesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.ListPackagesOutput), req.Error
+}
+
+func (c *Client) ListPackagesPagesWithContext(ctx context.Context, input *iot.ListPackagesInput, cb func(*iot.ListPackagesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "ListPackages",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IoTAPI.ListPackagesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -6249,6 +6492,69 @@ func (c *Client) UpdateMitigationActionWithContext(ctx context.Context, input *i
 	})
 
 	return req.Output.(*iot.UpdateMitigationActionOutput), req.Error
+}
+
+func (c *Client) UpdatePackageWithContext(ctx context.Context, input *iot.UpdatePackageInput, opts ...request.Option) (*iot.UpdatePackageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdatePackage",
+		Input:   input,
+		Output:  (*iot.UpdatePackageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdatePackageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdatePackageOutput), req.Error
+}
+
+func (c *Client) UpdatePackageConfigurationWithContext(ctx context.Context, input *iot.UpdatePackageConfigurationInput, opts ...request.Option) (*iot.UpdatePackageConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdatePackageConfiguration",
+		Input:   input,
+		Output:  (*iot.UpdatePackageConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdatePackageConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdatePackageConfigurationOutput), req.Error
+}
+
+func (c *Client) UpdatePackageVersionWithContext(ctx context.Context, input *iot.UpdatePackageVersionInput, opts ...request.Option) (*iot.UpdatePackageVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iot",
+		Action:  "UpdatePackageVersion",
+		Input:   input,
+		Output:  (*iot.UpdatePackageVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IoTAPI.UpdatePackageVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iot.UpdatePackageVersionOutput), req.Error
 }
 
 func (c *Client) UpdateProvisioningTemplateWithContext(ctx context.Context, input *iot.UpdateProvisioningTemplateInput, opts ...request.Option) (*iot.UpdateProvisioningTemplateOutput, error) {

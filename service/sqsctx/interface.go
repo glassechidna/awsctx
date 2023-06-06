@@ -12,6 +12,7 @@ import (
 
 type SQS interface {
 	AddPermissionWithContext(ctx context.Context, input *sqs.AddPermissionInput, opts ...request.Option) (*sqs.AddPermissionOutput, error)
+	CancelMessageMoveTaskWithContext(ctx context.Context, input *sqs.CancelMessageMoveTaskInput, opts ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error)
 	ChangeMessageVisibilityWithContext(ctx context.Context, input *sqs.ChangeMessageVisibilityInput, opts ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error)
 	ChangeMessageVisibilityBatchWithContext(ctx context.Context, input *sqs.ChangeMessageVisibilityBatchInput, opts ...request.Option) (*sqs.ChangeMessageVisibilityBatchOutput, error)
 	CreateQueueWithContext(ctx context.Context, input *sqs.CreateQueueInput, opts ...request.Option) (*sqs.CreateQueueOutput, error)
@@ -22,6 +23,7 @@ type SQS interface {
 	GetQueueUrlWithContext(ctx context.Context, input *sqs.GetQueueUrlInput, opts ...request.Option) (*sqs.GetQueueUrlOutput, error)
 	ListDeadLetterSourceQueuesWithContext(ctx context.Context, input *sqs.ListDeadLetterSourceQueuesInput, opts ...request.Option) (*sqs.ListDeadLetterSourceQueuesOutput, error)
 	ListDeadLetterSourceQueuesPagesWithContext(ctx context.Context, input *sqs.ListDeadLetterSourceQueuesInput, cb func(*sqs.ListDeadLetterSourceQueuesOutput, bool) bool, opts ...request.Option) error
+	ListMessageMoveTasksWithContext(ctx context.Context, input *sqs.ListMessageMoveTasksInput, opts ...request.Option) (*sqs.ListMessageMoveTasksOutput, error)
 	ListQueueTagsWithContext(ctx context.Context, input *sqs.ListQueueTagsInput, opts ...request.Option) (*sqs.ListQueueTagsOutput, error)
 	ListQueuesWithContext(ctx context.Context, input *sqs.ListQueuesInput, opts ...request.Option) (*sqs.ListQueuesOutput, error)
 	ListQueuesPagesWithContext(ctx context.Context, input *sqs.ListQueuesInput, cb func(*sqs.ListQueuesOutput, bool) bool, opts ...request.Option) error
@@ -31,6 +33,7 @@ type SQS interface {
 	SendMessageWithContext(ctx context.Context, input *sqs.SendMessageInput, opts ...request.Option) (*sqs.SendMessageOutput, error)
 	SendMessageBatchWithContext(ctx context.Context, input *sqs.SendMessageBatchInput, opts ...request.Option) (*sqs.SendMessageBatchOutput, error)
 	SetQueueAttributesWithContext(ctx context.Context, input *sqs.SetQueueAttributesInput, opts ...request.Option) (*sqs.SetQueueAttributesOutput, error)
+	StartMessageMoveTaskWithContext(ctx context.Context, input *sqs.StartMessageMoveTaskInput, opts ...request.Option) (*sqs.StartMessageMoveTaskOutput, error)
 	TagQueueWithContext(ctx context.Context, input *sqs.TagQueueInput, opts ...request.Option) (*sqs.TagQueueOutput, error)
 	UntagQueueWithContext(ctx context.Context, input *sqs.UntagQueueInput, opts ...request.Option) (*sqs.UntagQueueOutput, error)
 }
@@ -69,6 +72,27 @@ func (c *Client) AddPermissionWithContext(ctx context.Context, input *sqs.AddPer
 	})
 
 	return req.Output.(*sqs.AddPermissionOutput), req.Error
+}
+
+func (c *Client) CancelMessageMoveTaskWithContext(ctx context.Context, input *sqs.CancelMessageMoveTaskInput, opts ...request.Option) (*sqs.CancelMessageMoveTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sqs",
+		Action:  "CancelMessageMoveTask",
+		Input:   input,
+		Output:  (*sqs.CancelMessageMoveTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SQSAPI.CancelMessageMoveTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sqs.CancelMessageMoveTaskOutput), req.Error
 }
 
 func (c *Client) ChangeMessageVisibilityWithContext(ctx context.Context, input *sqs.ChangeMessageVisibilityInput, opts ...request.Option) (*sqs.ChangeMessageVisibilityOutput, error) {
@@ -280,6 +304,27 @@ func (c *Client) ListDeadLetterSourceQueuesPagesWithContext(ctx context.Context,
 	return req.Error
 }
 
+func (c *Client) ListMessageMoveTasksWithContext(ctx context.Context, input *sqs.ListMessageMoveTasksInput, opts ...request.Option) (*sqs.ListMessageMoveTasksOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sqs",
+		Action:  "ListMessageMoveTasks",
+		Input:   input,
+		Output:  (*sqs.ListMessageMoveTasksOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SQSAPI.ListMessageMoveTasksWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sqs.ListMessageMoveTasksOutput), req.Error
+}
+
 func (c *Client) ListQueueTagsWithContext(ctx context.Context, input *sqs.ListQueueTagsInput, opts ...request.Option) (*sqs.ListQueueTagsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sqs",
@@ -466,6 +511,27 @@ func (c *Client) SetQueueAttributesWithContext(ctx context.Context, input *sqs.S
 	})
 
 	return req.Output.(*sqs.SetQueueAttributesOutput), req.Error
+}
+
+func (c *Client) StartMessageMoveTaskWithContext(ctx context.Context, input *sqs.StartMessageMoveTaskInput, opts ...request.Option) (*sqs.StartMessageMoveTaskOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sqs",
+		Action:  "StartMessageMoveTask",
+		Input:   input,
+		Output:  (*sqs.StartMessageMoveTaskOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SQSAPI.StartMessageMoveTaskWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sqs.StartMessageMoveTaskOutput), req.Error
 }
 
 func (c *Client) TagQueueWithContext(ctx context.Context, input *sqs.TagQueueInput, opts ...request.Option) (*sqs.TagQueueOutput, error) {
