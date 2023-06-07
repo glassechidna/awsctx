@@ -16,6 +16,7 @@ type CloudWatchLogs interface {
 	CreateExportTaskWithContext(ctx context.Context, input *cloudwatchlogs.CreateExportTaskInput, opts ...request.Option) (*cloudwatchlogs.CreateExportTaskOutput, error)
 	CreateLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.CreateLogGroupInput, opts ...request.Option) (*cloudwatchlogs.CreateLogGroupOutput, error)
 	CreateLogStreamWithContext(ctx context.Context, input *cloudwatchlogs.CreateLogStreamInput, opts ...request.Option) (*cloudwatchlogs.CreateLogStreamOutput, error)
+	DeleteAccountPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteAccountPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteAccountPolicyOutput, error)
 	DeleteDataProtectionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteDataProtectionPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteDataProtectionPolicyOutput, error)
 	DeleteDestinationWithContext(ctx context.Context, input *cloudwatchlogs.DeleteDestinationInput, opts ...request.Option) (*cloudwatchlogs.DeleteDestinationOutput, error)
 	DeleteLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.DeleteLogGroupInput, opts ...request.Option) (*cloudwatchlogs.DeleteLogGroupOutput, error)
@@ -25,6 +26,7 @@ type CloudWatchLogs interface {
 	DeleteResourcePolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteResourcePolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteResourcePolicyOutput, error)
 	DeleteRetentionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteRetentionPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteRetentionPolicyOutput, error)
 	DeleteSubscriptionFilterWithContext(ctx context.Context, input *cloudwatchlogs.DeleteSubscriptionFilterInput, opts ...request.Option) (*cloudwatchlogs.DeleteSubscriptionFilterOutput, error)
+	DescribeAccountPoliciesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeAccountPoliciesInput, opts ...request.Option) (*cloudwatchlogs.DescribeAccountPoliciesOutput, error)
 	DescribeDestinationsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, opts ...request.Option) (*cloudwatchlogs.DescribeDestinationsOutput, error)
 	DescribeDestinationsPagesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, cb func(*cloudwatchlogs.DescribeDestinationsOutput, bool) bool, opts ...request.Option) error
 	DescribeExportTasksWithContext(ctx context.Context, input *cloudwatchlogs.DescribeExportTasksInput, opts ...request.Option) (*cloudwatchlogs.DescribeExportTasksOutput, error)
@@ -50,6 +52,7 @@ type CloudWatchLogs interface {
 	GetQueryResultsWithContext(ctx context.Context, input *cloudwatchlogs.GetQueryResultsInput, opts ...request.Option) (*cloudwatchlogs.GetQueryResultsOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsForResourceInput, opts ...request.Option) (*cloudwatchlogs.ListTagsForResourceOutput, error)
 	ListTagsLogGroupWithContext(ctx context.Context, input *cloudwatchlogs.ListTagsLogGroupInput, opts ...request.Option) (*cloudwatchlogs.ListTagsLogGroupOutput, error)
+	PutAccountPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutAccountPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutAccountPolicyOutput, error)
 	PutDataProtectionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutDataProtectionPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutDataProtectionPolicyOutput, error)
 	PutDestinationWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationOutput, error)
 	PutDestinationPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutDestinationPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutDestinationPolicyOutput, error)
@@ -186,6 +189,27 @@ func (c *Client) CreateLogStreamWithContext(ctx context.Context, input *cloudwat
 	})
 
 	return req.Output.(*cloudwatchlogs.CreateLogStreamOutput), req.Error
+}
+
+func (c *Client) DeleteAccountPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteAccountPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteAccountPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DeleteAccountPolicy",
+		Input:   input,
+		Output:  (*cloudwatchlogs.DeleteAccountPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.DeleteAccountPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.DeleteAccountPolicyOutput), req.Error
 }
 
 func (c *Client) DeleteDataProtectionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.DeleteDataProtectionPolicyInput, opts ...request.Option) (*cloudwatchlogs.DeleteDataProtectionPolicyOutput, error) {
@@ -375,6 +399,27 @@ func (c *Client) DeleteSubscriptionFilterWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*cloudwatchlogs.DeleteSubscriptionFilterOutput), req.Error
+}
+
+func (c *Client) DescribeAccountPoliciesWithContext(ctx context.Context, input *cloudwatchlogs.DescribeAccountPoliciesInput, opts ...request.Option) (*cloudwatchlogs.DescribeAccountPoliciesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "DescribeAccountPolicies",
+		Input:   input,
+		Output:  (*cloudwatchlogs.DescribeAccountPoliciesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.DescribeAccountPoliciesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.DescribeAccountPoliciesOutput), req.Error
 }
 
 func (c *Client) DescribeDestinationsWithContext(ctx context.Context, input *cloudwatchlogs.DescribeDestinationsInput, opts ...request.Option) (*cloudwatchlogs.DescribeDestinationsOutput, error) {
@@ -893,6 +938,27 @@ func (c *Client) ListTagsLogGroupWithContext(ctx context.Context, input *cloudwa
 	})
 
 	return req.Output.(*cloudwatchlogs.ListTagsLogGroupOutput), req.Error
+}
+
+func (c *Client) PutAccountPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutAccountPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutAccountPolicyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudwatchlogs",
+		Action:  "PutAccountPolicy",
+		Input:   input,
+		Output:  (*cloudwatchlogs.PutAccountPolicyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudWatchLogsAPI.PutAccountPolicyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudwatchlogs.PutAccountPolicyOutput), req.Error
 }
 
 func (c *Client) PutDataProtectionPolicyWithContext(ctx context.Context, input *cloudwatchlogs.PutDataProtectionPolicyInput, opts ...request.Option) (*cloudwatchlogs.PutDataProtectionPolicyOutput, error) {
