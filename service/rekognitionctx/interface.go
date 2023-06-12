@@ -11,6 +11,7 @@ import (
 )
 
 type Rekognition interface {
+	AssociateFacesWithContext(ctx context.Context, input *rekognition.AssociateFacesInput, opts ...request.Option) (*rekognition.AssociateFacesOutput, error)
 	CompareFacesWithContext(ctx context.Context, input *rekognition.CompareFacesInput, opts ...request.Option) (*rekognition.CompareFacesOutput, error)
 	CopyProjectVersionWithContext(ctx context.Context, input *rekognition.CopyProjectVersionInput, opts ...request.Option) (*rekognition.CopyProjectVersionOutput, error)
 	CreateCollectionWithContext(ctx context.Context, input *rekognition.CreateCollectionInput, opts ...request.Option) (*rekognition.CreateCollectionOutput, error)
@@ -19,6 +20,7 @@ type Rekognition interface {
 	CreateProjectWithContext(ctx context.Context, input *rekognition.CreateProjectInput, opts ...request.Option) (*rekognition.CreateProjectOutput, error)
 	CreateProjectVersionWithContext(ctx context.Context, input *rekognition.CreateProjectVersionInput, opts ...request.Option) (*rekognition.CreateProjectVersionOutput, error)
 	CreateStreamProcessorWithContext(ctx context.Context, input *rekognition.CreateStreamProcessorInput, opts ...request.Option) (*rekognition.CreateStreamProcessorOutput, error)
+	CreateUserWithContext(ctx context.Context, input *rekognition.CreateUserInput, opts ...request.Option) (*rekognition.CreateUserOutput, error)
 	DeleteCollectionWithContext(ctx context.Context, input *rekognition.DeleteCollectionInput, opts ...request.Option) (*rekognition.DeleteCollectionOutput, error)
 	DeleteDatasetWithContext(ctx context.Context, input *rekognition.DeleteDatasetInput, opts ...request.Option) (*rekognition.DeleteDatasetOutput, error)
 	DeleteFacesWithContext(ctx context.Context, input *rekognition.DeleteFacesInput, opts ...request.Option) (*rekognition.DeleteFacesOutput, error)
@@ -26,6 +28,7 @@ type Rekognition interface {
 	DeleteProjectPolicyWithContext(ctx context.Context, input *rekognition.DeleteProjectPolicyInput, opts ...request.Option) (*rekognition.DeleteProjectPolicyOutput, error)
 	DeleteProjectVersionWithContext(ctx context.Context, input *rekognition.DeleteProjectVersionInput, opts ...request.Option) (*rekognition.DeleteProjectVersionOutput, error)
 	DeleteStreamProcessorWithContext(ctx context.Context, input *rekognition.DeleteStreamProcessorInput, opts ...request.Option) (*rekognition.DeleteStreamProcessorOutput, error)
+	DeleteUserWithContext(ctx context.Context, input *rekognition.DeleteUserInput, opts ...request.Option) (*rekognition.DeleteUserOutput, error)
 	DescribeCollectionWithContext(ctx context.Context, input *rekognition.DescribeCollectionInput, opts ...request.Option) (*rekognition.DescribeCollectionOutput, error)
 	DescribeDatasetWithContext(ctx context.Context, input *rekognition.DescribeDatasetInput, opts ...request.Option) (*rekognition.DescribeDatasetOutput, error)
 	DescribeProjectVersionsWithContext(ctx context.Context, input *rekognition.DescribeProjectVersionsInput, opts ...request.Option) (*rekognition.DescribeProjectVersionsOutput, error)
@@ -39,6 +42,7 @@ type Rekognition interface {
 	DetectModerationLabelsWithContext(ctx context.Context, input *rekognition.DetectModerationLabelsInput, opts ...request.Option) (*rekognition.DetectModerationLabelsOutput, error)
 	DetectProtectiveEquipmentWithContext(ctx context.Context, input *rekognition.DetectProtectiveEquipmentInput, opts ...request.Option) (*rekognition.DetectProtectiveEquipmentOutput, error)
 	DetectTextWithContext(ctx context.Context, input *rekognition.DetectTextInput, opts ...request.Option) (*rekognition.DetectTextOutput, error)
+	DisassociateFacesWithContext(ctx context.Context, input *rekognition.DisassociateFacesInput, opts ...request.Option) (*rekognition.DisassociateFacesOutput, error)
 	DistributeDatasetEntriesWithContext(ctx context.Context, input *rekognition.DistributeDatasetEntriesInput, opts ...request.Option) (*rekognition.DistributeDatasetEntriesOutput, error)
 	GetCelebrityInfoWithContext(ctx context.Context, input *rekognition.GetCelebrityInfoInput, opts ...request.Option) (*rekognition.GetCelebrityInfoOutput, error)
 	GetCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.GetCelebrityRecognitionInput, opts ...request.Option) (*rekognition.GetCelebrityRecognitionOutput, error)
@@ -72,10 +76,14 @@ type Rekognition interface {
 	ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error)
 	ListStreamProcessorsPagesWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, cb func(*rekognition.ListStreamProcessorsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *rekognition.ListTagsForResourceInput, opts ...request.Option) (*rekognition.ListTagsForResourceOutput, error)
+	ListUsersWithContext(ctx context.Context, input *rekognition.ListUsersInput, opts ...request.Option) (*rekognition.ListUsersOutput, error)
+	ListUsersPagesWithContext(ctx context.Context, input *rekognition.ListUsersInput, cb func(*rekognition.ListUsersOutput, bool) bool, opts ...request.Option) error
 	PutProjectPolicyWithContext(ctx context.Context, input *rekognition.PutProjectPolicyInput, opts ...request.Option) (*rekognition.PutProjectPolicyOutput, error)
 	RecognizeCelebritiesWithContext(ctx context.Context, input *rekognition.RecognizeCelebritiesInput, opts ...request.Option) (*rekognition.RecognizeCelebritiesOutput, error)
 	SearchFacesWithContext(ctx context.Context, input *rekognition.SearchFacesInput, opts ...request.Option) (*rekognition.SearchFacesOutput, error)
 	SearchFacesByImageWithContext(ctx context.Context, input *rekognition.SearchFacesByImageInput, opts ...request.Option) (*rekognition.SearchFacesByImageOutput, error)
+	SearchUsersWithContext(ctx context.Context, input *rekognition.SearchUsersInput, opts ...request.Option) (*rekognition.SearchUsersOutput, error)
+	SearchUsersByImageWithContext(ctx context.Context, input *rekognition.SearchUsersByImageInput, opts ...request.Option) (*rekognition.SearchUsersByImageOutput, error)
 	StartCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.StartCelebrityRecognitionInput, opts ...request.Option) (*rekognition.StartCelebrityRecognitionOutput, error)
 	StartContentModerationWithContext(ctx context.Context, input *rekognition.StartContentModerationInput, opts ...request.Option) (*rekognition.StartContentModerationOutput, error)
 	StartFaceDetectionWithContext(ctx context.Context, input *rekognition.StartFaceDetectionInput, opts ...request.Option) (*rekognition.StartFaceDetectionOutput, error)
@@ -108,6 +116,27 @@ func New(base rekognitioniface.RekognitionAPI, ctxer awsctx.Contexter) Rekogniti
 
 var _ Rekognition = (*rekognition.Rekognition)(nil)
 var _ Rekognition = (*Client)(nil)
+
+func (c *Client) AssociateFacesWithContext(ctx context.Context, input *rekognition.AssociateFacesInput, opts ...request.Option) (*rekognition.AssociateFacesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "AssociateFaces",
+		Input:   input,
+		Output:  (*rekognition.AssociateFacesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.AssociateFacesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.AssociateFacesOutput), req.Error
+}
 
 func (c *Client) CompareFacesWithContext(ctx context.Context, input *rekognition.CompareFacesInput, opts ...request.Option) (*rekognition.CompareFacesOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -277,6 +306,27 @@ func (c *Client) CreateStreamProcessorWithContext(ctx context.Context, input *re
 	return req.Output.(*rekognition.CreateStreamProcessorOutput), req.Error
 }
 
+func (c *Client) CreateUserWithContext(ctx context.Context, input *rekognition.CreateUserInput, opts ...request.Option) (*rekognition.CreateUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "CreateUser",
+		Input:   input,
+		Output:  (*rekognition.CreateUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.CreateUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.CreateUserOutput), req.Error
+}
+
 func (c *Client) DeleteCollectionWithContext(ctx context.Context, input *rekognition.DeleteCollectionInput, opts ...request.Option) (*rekognition.DeleteCollectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -422,6 +472,27 @@ func (c *Client) DeleteStreamProcessorWithContext(ctx context.Context, input *re
 	})
 
 	return req.Output.(*rekognition.DeleteStreamProcessorOutput), req.Error
+}
+
+func (c *Client) DeleteUserWithContext(ctx context.Context, input *rekognition.DeleteUserInput, opts ...request.Option) (*rekognition.DeleteUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DeleteUser",
+		Input:   input,
+		Output:  (*rekognition.DeleteUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DeleteUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DeleteUserOutput), req.Error
 }
 
 func (c *Client) DescribeCollectionWithContext(ctx context.Context, input *rekognition.DescribeCollectionInput, opts ...request.Option) (*rekognition.DescribeCollectionOutput, error) {
@@ -693,6 +764,27 @@ func (c *Client) DetectTextWithContext(ctx context.Context, input *rekognition.D
 	})
 
 	return req.Output.(*rekognition.DetectTextOutput), req.Error
+}
+
+func (c *Client) DisassociateFacesWithContext(ctx context.Context, input *rekognition.DisassociateFacesInput, opts ...request.Option) (*rekognition.DisassociateFacesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "DisassociateFaces",
+		Input:   input,
+		Output:  (*rekognition.DisassociateFacesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.DisassociateFacesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.DisassociateFacesOutput), req.Error
 }
 
 func (c *Client) DistributeDatasetEntriesWithContext(ctx context.Context, input *rekognition.DistributeDatasetEntriesInput, opts ...request.Option) (*rekognition.DistributeDatasetEntriesOutput, error) {
@@ -1374,6 +1466,47 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *reko
 	return req.Output.(*rekognition.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ListUsersWithContext(ctx context.Context, input *rekognition.ListUsersInput, opts ...request.Option) (*rekognition.ListUsersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListUsers",
+		Input:   input,
+		Output:  (*rekognition.ListUsersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.ListUsersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.ListUsersOutput), req.Error
+}
+
+func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *rekognition.ListUsersInput, cb func(*rekognition.ListUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListUsersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) PutProjectPolicyWithContext(ctx context.Context, input *rekognition.PutProjectPolicyInput, opts ...request.Option) (*rekognition.PutProjectPolicyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -1456,6 +1589,48 @@ func (c *Client) SearchFacesByImageWithContext(ctx context.Context, input *rekog
 	})
 
 	return req.Output.(*rekognition.SearchFacesByImageOutput), req.Error
+}
+
+func (c *Client) SearchUsersWithContext(ctx context.Context, input *rekognition.SearchUsersInput, opts ...request.Option) (*rekognition.SearchUsersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "SearchUsers",
+		Input:   input,
+		Output:  (*rekognition.SearchUsersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.SearchUsersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.SearchUsersOutput), req.Error
+}
+
+func (c *Client) SearchUsersByImageWithContext(ctx context.Context, input *rekognition.SearchUsersByImageInput, opts ...request.Option) (*rekognition.SearchUsersByImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "SearchUsersByImage",
+		Input:   input,
+		Output:  (*rekognition.SearchUsersByImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.SearchUsersByImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.SearchUsersByImageOutput), req.Error
 }
 
 func (c *Client) StartCelebrityRecognitionWithContext(ctx context.Context, input *rekognition.StartCelebrityRecognitionInput, opts ...request.Option) (*rekognition.StartCelebrityRecognitionOutput, error) {
