@@ -81,6 +81,7 @@ type EC2 interface {
 	CreateFlowLogsWithContext(ctx context.Context, input *ec2.CreateFlowLogsInput, opts ...request.Option) (*ec2.CreateFlowLogsOutput, error)
 	CreateFpgaImageWithContext(ctx context.Context, input *ec2.CreateFpgaImageInput, opts ...request.Option) (*ec2.CreateFpgaImageOutput, error)
 	CreateImageWithContext(ctx context.Context, input *ec2.CreateImageInput, opts ...request.Option) (*ec2.CreateImageOutput, error)
+	CreateInstanceConnectEndpointWithContext(ctx context.Context, input *ec2.CreateInstanceConnectEndpointInput, opts ...request.Option) (*ec2.CreateInstanceConnectEndpointOutput, error)
 	CreateInstanceEventWindowWithContext(ctx context.Context, input *ec2.CreateInstanceEventWindowInput, opts ...request.Option) (*ec2.CreateInstanceEventWindowOutput, error)
 	CreateInstanceExportTaskWithContext(ctx context.Context, input *ec2.CreateInstanceExportTaskInput, opts ...request.Option) (*ec2.CreateInstanceExportTaskOutput, error)
 	CreateInternetGatewayWithContext(ctx context.Context, input *ec2.CreateInternetGatewayInput, opts ...request.Option) (*ec2.CreateInternetGatewayOutput, error)
@@ -157,6 +158,7 @@ type EC2 interface {
 	DeleteFleetsWithContext(ctx context.Context, input *ec2.DeleteFleetsInput, opts ...request.Option) (*ec2.DeleteFleetsOutput, error)
 	DeleteFlowLogsWithContext(ctx context.Context, input *ec2.DeleteFlowLogsInput, opts ...request.Option) (*ec2.DeleteFlowLogsOutput, error)
 	DeleteFpgaImageWithContext(ctx context.Context, input *ec2.DeleteFpgaImageInput, opts ...request.Option) (*ec2.DeleteFpgaImageOutput, error)
+	DeleteInstanceConnectEndpointWithContext(ctx context.Context, input *ec2.DeleteInstanceConnectEndpointInput, opts ...request.Option) (*ec2.DeleteInstanceConnectEndpointOutput, error)
 	DeleteInstanceEventWindowWithContext(ctx context.Context, input *ec2.DeleteInstanceEventWindowInput, opts ...request.Option) (*ec2.DeleteInstanceEventWindowOutput, error)
 	DeleteInternetGatewayWithContext(ctx context.Context, input *ec2.DeleteInternetGatewayInput, opts ...request.Option) (*ec2.DeleteInternetGatewayOutput, error)
 	DeleteIpamWithContext(ctx context.Context, input *ec2.DeleteIpamInput, opts ...request.Option) (*ec2.DeleteIpamOutput, error)
@@ -300,6 +302,8 @@ type EC2 interface {
 	DescribeImportSnapshotTasksWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, opts ...request.Option) (*ec2.DescribeImportSnapshotTasksOutput, error)
 	DescribeImportSnapshotTasksPagesWithContext(ctx context.Context, input *ec2.DescribeImportSnapshotTasksInput, cb func(*ec2.DescribeImportSnapshotTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceAttributeWithContext(ctx context.Context, input *ec2.DescribeInstanceAttributeInput, opts ...request.Option) (*ec2.DescribeInstanceAttributeOutput, error)
+	DescribeInstanceConnectEndpointsWithContext(ctx context.Context, input *ec2.DescribeInstanceConnectEndpointsInput, opts ...request.Option) (*ec2.DescribeInstanceConnectEndpointsOutput, error)
+	DescribeInstanceConnectEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceConnectEndpointsInput, cb func(*ec2.DescribeInstanceConnectEndpointsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceCreditSpecificationsWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, opts ...request.Option) (*ec2.DescribeInstanceCreditSpecificationsOutput, error)
 	DescribeInstanceCreditSpecificationsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, cb func(*ec2.DescribeInstanceCreditSpecificationsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceEventNotificationAttributesWithContext(ctx context.Context, input *ec2.DescribeInstanceEventNotificationAttributesInput, opts ...request.Option) (*ec2.DescribeInstanceEventNotificationAttributesOutput, error)
@@ -2224,6 +2228,27 @@ func (c *Client) CreateImageWithContext(ctx context.Context, input *ec2.CreateIm
 	return req.Output.(*ec2.CreateImageOutput), req.Error
 }
 
+func (c *Client) CreateInstanceConnectEndpointWithContext(ctx context.Context, input *ec2.CreateInstanceConnectEndpointInput, opts ...request.Option) (*ec2.CreateInstanceConnectEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "CreateInstanceConnectEndpoint",
+		Input:   input,
+		Output:  (*ec2.CreateInstanceConnectEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.CreateInstanceConnectEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.CreateInstanceConnectEndpointOutput), req.Error
+}
+
 func (c *Client) CreateInstanceEventWindowWithContext(ctx context.Context, input *ec2.CreateInstanceEventWindowInput, opts ...request.Option) (*ec2.CreateInstanceEventWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -3818,6 +3843,27 @@ func (c *Client) DeleteFpgaImageWithContext(ctx context.Context, input *ec2.Dele
 	})
 
 	return req.Output.(*ec2.DeleteFpgaImageOutput), req.Error
+}
+
+func (c *Client) DeleteInstanceConnectEndpointWithContext(ctx context.Context, input *ec2.DeleteInstanceConnectEndpointInput, opts ...request.Option) (*ec2.DeleteInstanceConnectEndpointOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DeleteInstanceConnectEndpoint",
+		Input:   input,
+		Output:  (*ec2.DeleteInstanceConnectEndpointOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DeleteInstanceConnectEndpointWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DeleteInstanceConnectEndpointOutput), req.Error
 }
 
 func (c *Client) DeleteInstanceEventWindowWithContext(ctx context.Context, input *ec2.DeleteInstanceEventWindowInput, opts ...request.Option) (*ec2.DeleteInstanceEventWindowOutput, error) {
@@ -6792,6 +6838,47 @@ func (c *Client) DescribeInstanceAttributeWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.DescribeInstanceAttributeOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceConnectEndpointsWithContext(ctx context.Context, input *ec2.DescribeInstanceConnectEndpointsInput, opts ...request.Option) (*ec2.DescribeInstanceConnectEndpointsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceConnectEndpoints",
+		Input:   input,
+		Output:  (*ec2.DescribeInstanceConnectEndpointsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeInstanceConnectEndpointsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeInstanceConnectEndpointsOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceConnectEndpointsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceConnectEndpointsInput, cb func(*ec2.DescribeInstanceConnectEndpointsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceConnectEndpoints",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstanceConnectEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeInstanceCreditSpecificationsWithContext(ctx context.Context, input *ec2.DescribeInstanceCreditSpecificationsInput, opts ...request.Option) (*ec2.DescribeInstanceCreditSpecificationsOutput, error) {

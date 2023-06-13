@@ -13,14 +13,18 @@ import (
 type SecurityHub interface {
 	AcceptAdministratorInvitationWithContext(ctx context.Context, input *securityhub.AcceptAdministratorInvitationInput, opts ...request.Option) (*securityhub.AcceptAdministratorInvitationOutput, error)
 	AcceptInvitationWithContext(ctx context.Context, input *securityhub.AcceptInvitationInput, opts ...request.Option) (*securityhub.AcceptInvitationOutput, error)
+	BatchDeleteAutomationRulesWithContext(ctx context.Context, input *securityhub.BatchDeleteAutomationRulesInput, opts ...request.Option) (*securityhub.BatchDeleteAutomationRulesOutput, error)
 	BatchDisableStandardsWithContext(ctx context.Context, input *securityhub.BatchDisableStandardsInput, opts ...request.Option) (*securityhub.BatchDisableStandardsOutput, error)
 	BatchEnableStandardsWithContext(ctx context.Context, input *securityhub.BatchEnableStandardsInput, opts ...request.Option) (*securityhub.BatchEnableStandardsOutput, error)
+	BatchGetAutomationRulesWithContext(ctx context.Context, input *securityhub.BatchGetAutomationRulesInput, opts ...request.Option) (*securityhub.BatchGetAutomationRulesOutput, error)
 	BatchGetSecurityControlsWithContext(ctx context.Context, input *securityhub.BatchGetSecurityControlsInput, opts ...request.Option) (*securityhub.BatchGetSecurityControlsOutput, error)
 	BatchGetStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.BatchGetStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.BatchGetStandardsControlAssociationsOutput, error)
 	BatchImportFindingsWithContext(ctx context.Context, input *securityhub.BatchImportFindingsInput, opts ...request.Option) (*securityhub.BatchImportFindingsOutput, error)
+	BatchUpdateAutomationRulesWithContext(ctx context.Context, input *securityhub.BatchUpdateAutomationRulesInput, opts ...request.Option) (*securityhub.BatchUpdateAutomationRulesOutput, error)
 	BatchUpdateFindingsWithContext(ctx context.Context, input *securityhub.BatchUpdateFindingsInput, opts ...request.Option) (*securityhub.BatchUpdateFindingsOutput, error)
 	BatchUpdateStandardsControlAssociationsWithContext(ctx context.Context, input *securityhub.BatchUpdateStandardsControlAssociationsInput, opts ...request.Option) (*securityhub.BatchUpdateStandardsControlAssociationsOutput, error)
 	CreateActionTargetWithContext(ctx context.Context, input *securityhub.CreateActionTargetInput, opts ...request.Option) (*securityhub.CreateActionTargetOutput, error)
+	CreateAutomationRuleWithContext(ctx context.Context, input *securityhub.CreateAutomationRuleInput, opts ...request.Option) (*securityhub.CreateAutomationRuleOutput, error)
 	CreateFindingAggregatorWithContext(ctx context.Context, input *securityhub.CreateFindingAggregatorInput, opts ...request.Option) (*securityhub.CreateFindingAggregatorOutput, error)
 	CreateInsightWithContext(ctx context.Context, input *securityhub.CreateInsightInput, opts ...request.Option) (*securityhub.CreateInsightOutput, error)
 	CreateMembersWithContext(ctx context.Context, input *securityhub.CreateMembersInput, opts ...request.Option) (*securityhub.CreateMembersOutput, error)
@@ -64,6 +68,7 @@ type SecurityHub interface {
 	GetMasterAccountWithContext(ctx context.Context, input *securityhub.GetMasterAccountInput, opts ...request.Option) (*securityhub.GetMasterAccountOutput, error)
 	GetMembersWithContext(ctx context.Context, input *securityhub.GetMembersInput, opts ...request.Option) (*securityhub.GetMembersOutput, error)
 	InviteMembersWithContext(ctx context.Context, input *securityhub.InviteMembersInput, opts ...request.Option) (*securityhub.InviteMembersOutput, error)
+	ListAutomationRulesWithContext(ctx context.Context, input *securityhub.ListAutomationRulesInput, opts ...request.Option) (*securityhub.ListAutomationRulesOutput, error)
 	ListEnabledProductsForImportWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, opts ...request.Option) (*securityhub.ListEnabledProductsForImportOutput, error)
 	ListEnabledProductsForImportPagesWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, cb func(*securityhub.ListEnabledProductsForImportOutput, bool) bool, opts ...request.Option) error
 	ListFindingAggregatorsWithContext(ctx context.Context, input *securityhub.ListFindingAggregatorsInput, opts ...request.Option) (*securityhub.ListFindingAggregatorsOutput, error)
@@ -147,6 +152,27 @@ func (c *Client) AcceptInvitationWithContext(ctx context.Context, input *securit
 	return req.Output.(*securityhub.AcceptInvitationOutput), req.Error
 }
 
+func (c *Client) BatchDeleteAutomationRulesWithContext(ctx context.Context, input *securityhub.BatchDeleteAutomationRulesInput, opts ...request.Option) (*securityhub.BatchDeleteAutomationRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchDeleteAutomationRules",
+		Input:   input,
+		Output:  (*securityhub.BatchDeleteAutomationRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchDeleteAutomationRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchDeleteAutomationRulesOutput), req.Error
+}
+
 func (c *Client) BatchDisableStandardsWithContext(ctx context.Context, input *securityhub.BatchDisableStandardsInput, opts ...request.Option) (*securityhub.BatchDisableStandardsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -187,6 +213,27 @@ func (c *Client) BatchEnableStandardsWithContext(ctx context.Context, input *sec
 	})
 
 	return req.Output.(*securityhub.BatchEnableStandardsOutput), req.Error
+}
+
+func (c *Client) BatchGetAutomationRulesWithContext(ctx context.Context, input *securityhub.BatchGetAutomationRulesInput, opts ...request.Option) (*securityhub.BatchGetAutomationRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchGetAutomationRules",
+		Input:   input,
+		Output:  (*securityhub.BatchGetAutomationRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchGetAutomationRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchGetAutomationRulesOutput), req.Error
 }
 
 func (c *Client) BatchGetSecurityControlsWithContext(ctx context.Context, input *securityhub.BatchGetSecurityControlsInput, opts ...request.Option) (*securityhub.BatchGetSecurityControlsOutput, error) {
@@ -252,6 +299,27 @@ func (c *Client) BatchImportFindingsWithContext(ctx context.Context, input *secu
 	return req.Output.(*securityhub.BatchImportFindingsOutput), req.Error
 }
 
+func (c *Client) BatchUpdateAutomationRulesWithContext(ctx context.Context, input *securityhub.BatchUpdateAutomationRulesInput, opts ...request.Option) (*securityhub.BatchUpdateAutomationRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "BatchUpdateAutomationRules",
+		Input:   input,
+		Output:  (*securityhub.BatchUpdateAutomationRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.BatchUpdateAutomationRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.BatchUpdateAutomationRulesOutput), req.Error
+}
+
 func (c *Client) BatchUpdateFindingsWithContext(ctx context.Context, input *securityhub.BatchUpdateFindingsInput, opts ...request.Option) (*securityhub.BatchUpdateFindingsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "securityhub",
@@ -313,6 +381,27 @@ func (c *Client) CreateActionTargetWithContext(ctx context.Context, input *secur
 	})
 
 	return req.Output.(*securityhub.CreateActionTargetOutput), req.Error
+}
+
+func (c *Client) CreateAutomationRuleWithContext(ctx context.Context, input *securityhub.CreateAutomationRuleInput, opts ...request.Option) (*securityhub.CreateAutomationRuleOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "CreateAutomationRule",
+		Input:   input,
+		Output:  (*securityhub.CreateAutomationRuleOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.CreateAutomationRuleWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.CreateAutomationRuleOutput), req.Error
 }
 
 func (c *Client) CreateFindingAggregatorWithContext(ctx context.Context, input *securityhub.CreateFindingAggregatorInput, opts ...request.Option) (*securityhub.CreateFindingAggregatorOutput, error) {
@@ -1208,6 +1297,27 @@ func (c *Client) InviteMembersWithContext(ctx context.Context, input *securityhu
 	})
 
 	return req.Output.(*securityhub.InviteMembersOutput), req.Error
+}
+
+func (c *Client) ListAutomationRulesWithContext(ctx context.Context, input *securityhub.ListAutomationRulesInput, opts ...request.Option) (*securityhub.ListAutomationRulesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "securityhub",
+		Action:  "ListAutomationRules",
+		Input:   input,
+		Output:  (*securityhub.ListAutomationRulesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SecurityHubAPI.ListAutomationRulesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*securityhub.ListAutomationRulesOutput), req.Error
 }
 
 func (c *Client) ListEnabledProductsForImportWithContext(ctx context.Context, input *securityhub.ListEnabledProductsForImportInput, opts ...request.Option) (*securityhub.ListEnabledProductsForImportOutput, error) {
