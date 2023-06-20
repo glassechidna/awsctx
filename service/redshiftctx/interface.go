@@ -28,6 +28,7 @@ type Redshift interface {
 	CreateClusterSecurityGroupWithContext(ctx context.Context, input *redshift.CreateClusterSecurityGroupInput, opts ...request.Option) (*redshift.CreateClusterSecurityGroupOutput, error)
 	CreateClusterSnapshotWithContext(ctx context.Context, input *redshift.CreateClusterSnapshotInput, opts ...request.Option) (*redshift.CreateClusterSnapshotOutput, error)
 	CreateClusterSubnetGroupWithContext(ctx context.Context, input *redshift.CreateClusterSubnetGroupInput, opts ...request.Option) (*redshift.CreateClusterSubnetGroupOutput, error)
+	CreateCustomDomainAssociationWithContext(ctx context.Context, input *redshift.CreateCustomDomainAssociationInput, opts ...request.Option) (*redshift.CreateCustomDomainAssociationOutput, error)
 	CreateEndpointAccessWithContext(ctx context.Context, input *redshift.CreateEndpointAccessInput, opts ...request.Option) (*redshift.CreateEndpointAccessOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *redshift.CreateEventSubscriptionInput, opts ...request.Option) (*redshift.CreateEventSubscriptionOutput, error)
 	CreateHsmClientCertificateWithContext(ctx context.Context, input *redshift.CreateHsmClientCertificateInput, opts ...request.Option) (*redshift.CreateHsmClientCertificateOutput, error)
@@ -44,6 +45,7 @@ type Redshift interface {
 	DeleteClusterSecurityGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSecurityGroupInput, opts ...request.Option) (*redshift.DeleteClusterSecurityGroupOutput, error)
 	DeleteClusterSnapshotWithContext(ctx context.Context, input *redshift.DeleteClusterSnapshotInput, opts ...request.Option) (*redshift.DeleteClusterSnapshotOutput, error)
 	DeleteClusterSubnetGroupWithContext(ctx context.Context, input *redshift.DeleteClusterSubnetGroupInput, opts ...request.Option) (*redshift.DeleteClusterSubnetGroupOutput, error)
+	DeleteCustomDomainAssociationWithContext(ctx context.Context, input *redshift.DeleteCustomDomainAssociationInput, opts ...request.Option) (*redshift.DeleteCustomDomainAssociationOutput, error)
 	DeleteEndpointAccessWithContext(ctx context.Context, input *redshift.DeleteEndpointAccessInput, opts ...request.Option) (*redshift.DeleteEndpointAccessOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *redshift.DeleteEventSubscriptionInput, opts ...request.Option) (*redshift.DeleteEventSubscriptionOutput, error)
 	DeleteHsmClientCertificateWithContext(ctx context.Context, input *redshift.DeleteHsmClientCertificateInput, opts ...request.Option) (*redshift.DeleteHsmClientCertificateOutput, error)
@@ -74,6 +76,8 @@ type Redshift interface {
 	DescribeClusterVersionsPagesWithContext(ctx context.Context, input *redshift.DescribeClusterVersionsInput, cb func(*redshift.DescribeClusterVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClustersWithContext(ctx context.Context, input *redshift.DescribeClustersInput, opts ...request.Option) (*redshift.DescribeClustersOutput, error)
 	DescribeClustersPagesWithContext(ctx context.Context, input *redshift.DescribeClustersInput, cb func(*redshift.DescribeClustersOutput, bool) bool, opts ...request.Option) error
+	DescribeCustomDomainAssociationsWithContext(ctx context.Context, input *redshift.DescribeCustomDomainAssociationsInput, opts ...request.Option) (*redshift.DescribeCustomDomainAssociationsOutput, error)
+	DescribeCustomDomainAssociationsPagesWithContext(ctx context.Context, input *redshift.DescribeCustomDomainAssociationsInput, cb func(*redshift.DescribeCustomDomainAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeDataSharesWithContext(ctx context.Context, input *redshift.DescribeDataSharesInput, opts ...request.Option) (*redshift.DescribeDataSharesOutput, error)
 	DescribeDataSharesPagesWithContext(ctx context.Context, input *redshift.DescribeDataSharesInput, cb func(*redshift.DescribeDataSharesOutput, bool) bool, opts ...request.Option) error
 	DescribeDataSharesForConsumerWithContext(ctx context.Context, input *redshift.DescribeDataSharesForConsumerInput, opts ...request.Option) (*redshift.DescribeDataSharesForConsumerOutput, error)
@@ -142,6 +146,7 @@ type Redshift interface {
 	ModifyClusterSnapshotWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotOutput, error)
 	ModifyClusterSnapshotScheduleWithContext(ctx context.Context, input *redshift.ModifyClusterSnapshotScheduleInput, opts ...request.Option) (*redshift.ModifyClusterSnapshotScheduleOutput, error)
 	ModifyClusterSubnetGroupWithContext(ctx context.Context, input *redshift.ModifyClusterSubnetGroupInput, opts ...request.Option) (*redshift.ModifyClusterSubnetGroupOutput, error)
+	ModifyCustomDomainAssociationWithContext(ctx context.Context, input *redshift.ModifyCustomDomainAssociationInput, opts ...request.Option) (*redshift.ModifyCustomDomainAssociationOutput, error)
 	ModifyEndpointAccessWithContext(ctx context.Context, input *redshift.ModifyEndpointAccessInput, opts ...request.Option) (*redshift.ModifyEndpointAccessOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *redshift.ModifyEventSubscriptionInput, opts ...request.Option) (*redshift.ModifyEventSubscriptionOutput, error)
 	ModifyScheduledActionWithContext(ctx context.Context, input *redshift.ModifyScheduledActionInput, opts ...request.Option) (*redshift.ModifyScheduledActionOutput, error)
@@ -536,6 +541,27 @@ func (c *Client) CreateClusterSubnetGroupWithContext(ctx context.Context, input 
 	return req.Output.(*redshift.CreateClusterSubnetGroupOutput), req.Error
 }
 
+func (c *Client) CreateCustomDomainAssociationWithContext(ctx context.Context, input *redshift.CreateCustomDomainAssociationInput, opts ...request.Option) (*redshift.CreateCustomDomainAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "CreateCustomDomainAssociation",
+		Input:   input,
+		Output:  (*redshift.CreateCustomDomainAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.CreateCustomDomainAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.CreateCustomDomainAssociationOutput), req.Error
+}
+
 func (c *Client) CreateEndpointAccessWithContext(ctx context.Context, input *redshift.CreateEndpointAccessInput, opts ...request.Option) (*redshift.CreateEndpointAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "redshift",
@@ -870,6 +896,27 @@ func (c *Client) DeleteClusterSubnetGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*redshift.DeleteClusterSubnetGroupOutput), req.Error
+}
+
+func (c *Client) DeleteCustomDomainAssociationWithContext(ctx context.Context, input *redshift.DeleteCustomDomainAssociationInput, opts ...request.Option) (*redshift.DeleteCustomDomainAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DeleteCustomDomainAssociation",
+		Input:   input,
+		Output:  (*redshift.DeleteCustomDomainAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DeleteCustomDomainAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DeleteCustomDomainAssociationOutput), req.Error
 }
 
 func (c *Client) DeleteEndpointAccessWithContext(ctx context.Context, input *redshift.DeleteEndpointAccessInput, opts ...request.Option) (*redshift.DeleteEndpointAccessOutput, error) {
@@ -1488,6 +1535,47 @@ func (c *Client) DescribeClustersPagesWithContext(ctx context.Context, input *re
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RedshiftAPI.DescribeClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeCustomDomainAssociationsWithContext(ctx context.Context, input *redshift.DescribeCustomDomainAssociationsInput, opts ...request.Option) (*redshift.DescribeCustomDomainAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeCustomDomainAssociations",
+		Input:   input,
+		Output:  (*redshift.DescribeCustomDomainAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.DescribeCustomDomainAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.DescribeCustomDomainAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeCustomDomainAssociationsPagesWithContext(ctx context.Context, input *redshift.DescribeCustomDomainAssociationsInput, cb func(*redshift.DescribeCustomDomainAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "DescribeCustomDomainAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RedshiftAPI.DescribeCustomDomainAssociationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -2896,6 +2984,27 @@ func (c *Client) ModifyClusterSubnetGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*redshift.ModifyClusterSubnetGroupOutput), req.Error
+}
+
+func (c *Client) ModifyCustomDomainAssociationWithContext(ctx context.Context, input *redshift.ModifyCustomDomainAssociationInput, opts ...request.Option) (*redshift.ModifyCustomDomainAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "ModifyCustomDomainAssociation",
+		Input:   input,
+		Output:  (*redshift.ModifyCustomDomainAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.ModifyCustomDomainAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.ModifyCustomDomainAssociationOutput), req.Error
 }
 
 func (c *Client) ModifyEndpointAccessWithContext(ctx context.Context, input *redshift.ModifyEndpointAccessInput, opts ...request.Option) (*redshift.ModifyEndpointAccessOutput, error) {
