@@ -56,6 +56,8 @@ type EMR interface {
 	ListStudioSessionMappingsPagesWithContext(ctx context.Context, input *emr.ListStudioSessionMappingsInput, cb func(*emr.ListStudioSessionMappingsOutput, bool) bool, opts ...request.Option) error
 	ListStudiosWithContext(ctx context.Context, input *emr.ListStudiosInput, opts ...request.Option) (*emr.ListStudiosOutput, error)
 	ListStudiosPagesWithContext(ctx context.Context, input *emr.ListStudiosInput, cb func(*emr.ListStudiosOutput, bool) bool, opts ...request.Option) error
+	ListSupportedInstanceTypesWithContext(ctx context.Context, input *emr.ListSupportedInstanceTypesInput, opts ...request.Option) (*emr.ListSupportedInstanceTypesOutput, error)
+	ListSupportedInstanceTypesPagesWithContext(ctx context.Context, input *emr.ListSupportedInstanceTypesInput, cb func(*emr.ListSupportedInstanceTypesOutput, bool) bool, opts ...request.Option) error
 	ModifyClusterWithContext(ctx context.Context, input *emr.ModifyClusterInput, opts ...request.Option) (*emr.ModifyClusterOutput, error)
 	ModifyInstanceFleetWithContext(ctx context.Context, input *emr.ModifyInstanceFleetInput, opts ...request.Option) (*emr.ModifyInstanceFleetOutput, error)
 	ModifyInstanceGroupsWithContext(ctx context.Context, input *emr.ModifyInstanceGroupsInput, opts ...request.Option) (*emr.ModifyInstanceGroupsOutput, error)
@@ -1021,6 +1023,47 @@ func (c *Client) ListStudiosPagesWithContext(ctx context.Context, input *emr.Lis
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EMRAPI.ListStudiosPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSupportedInstanceTypesWithContext(ctx context.Context, input *emr.ListSupportedInstanceTypesInput, opts ...request.Option) (*emr.ListSupportedInstanceTypesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListSupportedInstanceTypes",
+		Input:   input,
+		Output:  (*emr.ListSupportedInstanceTypesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EMRAPI.ListSupportedInstanceTypesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*emr.ListSupportedInstanceTypesOutput), req.Error
+}
+
+func (c *Client) ListSupportedInstanceTypesPagesWithContext(ctx context.Context, input *emr.ListSupportedInstanceTypesInput, cb func(*emr.ListSupportedInstanceTypesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "emr",
+		Action:  "ListSupportedInstanceTypes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EMRAPI.ListSupportedInstanceTypesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

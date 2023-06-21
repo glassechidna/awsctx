@@ -30,6 +30,7 @@ type MQ interface {
 	ListConfigurationsWithContext(ctx context.Context, input *mq.ListConfigurationsInput, opts ...request.Option) (*mq.ListConfigurationsResponse, error)
 	ListTagsWithContext(ctx context.Context, input *mq.ListTagsInput, opts ...request.Option) (*mq.ListTagsOutput, error)
 	ListUsersWithContext(ctx context.Context, input *mq.ListUsersInput, opts ...request.Option) (*mq.ListUsersResponse, error)
+	PromoteWithContext(ctx context.Context, input *mq.PromoteInput, opts ...request.Option) (*mq.PromoteOutput, error)
 	RebootBrokerWithContext(ctx context.Context, input *mq.RebootBrokerInput, opts ...request.Option) (*mq.RebootBrokerOutput, error)
 	UpdateBrokerWithContext(ctx context.Context, input *mq.UpdateBrokerRequest, opts ...request.Option) (*mq.UpdateBrokerResponse, error)
 	UpdateConfigurationWithContext(ctx context.Context, input *mq.UpdateConfigurationRequest, opts ...request.Option) (*mq.UpdateConfigurationResponse, error)
@@ -447,6 +448,27 @@ func (c *Client) ListUsersWithContext(ctx context.Context, input *mq.ListUsersIn
 	})
 
 	return req.Output.(*mq.ListUsersResponse), req.Error
+}
+
+func (c *Client) PromoteWithContext(ctx context.Context, input *mq.PromoteInput, opts ...request.Option) (*mq.PromoteOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "mq",
+		Action:  "Promote",
+		Input:   input,
+		Output:  (*mq.PromoteOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MQAPI.PromoteWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*mq.PromoteOutput), req.Error
 }
 
 func (c *Client) RebootBrokerWithContext(ctx context.Context, input *mq.RebootBrokerInput, opts ...request.Option) (*mq.RebootBrokerOutput, error) {
