@@ -13,12 +13,16 @@ import (
 type SFN interface {
 	CreateActivityWithContext(ctx context.Context, input *sfn.CreateActivityInput, opts ...request.Option) (*sfn.CreateActivityOutput, error)
 	CreateStateMachineWithContext(ctx context.Context, input *sfn.CreateStateMachineInput, opts ...request.Option) (*sfn.CreateStateMachineOutput, error)
+	CreateStateMachineAliasWithContext(ctx context.Context, input *sfn.CreateStateMachineAliasInput, opts ...request.Option) (*sfn.CreateStateMachineAliasOutput, error)
 	DeleteActivityWithContext(ctx context.Context, input *sfn.DeleteActivityInput, opts ...request.Option) (*sfn.DeleteActivityOutput, error)
 	DeleteStateMachineWithContext(ctx context.Context, input *sfn.DeleteStateMachineInput, opts ...request.Option) (*sfn.DeleteStateMachineOutput, error)
+	DeleteStateMachineAliasWithContext(ctx context.Context, input *sfn.DeleteStateMachineAliasInput, opts ...request.Option) (*sfn.DeleteStateMachineAliasOutput, error)
+	DeleteStateMachineVersionWithContext(ctx context.Context, input *sfn.DeleteStateMachineVersionInput, opts ...request.Option) (*sfn.DeleteStateMachineVersionOutput, error)
 	DescribeActivityWithContext(ctx context.Context, input *sfn.DescribeActivityInput, opts ...request.Option) (*sfn.DescribeActivityOutput, error)
 	DescribeExecutionWithContext(ctx context.Context, input *sfn.DescribeExecutionInput, opts ...request.Option) (*sfn.DescribeExecutionOutput, error)
 	DescribeMapRunWithContext(ctx context.Context, input *sfn.DescribeMapRunInput, opts ...request.Option) (*sfn.DescribeMapRunOutput, error)
 	DescribeStateMachineWithContext(ctx context.Context, input *sfn.DescribeStateMachineInput, opts ...request.Option) (*sfn.DescribeStateMachineOutput, error)
+	DescribeStateMachineAliasWithContext(ctx context.Context, input *sfn.DescribeStateMachineAliasInput, opts ...request.Option) (*sfn.DescribeStateMachineAliasOutput, error)
 	DescribeStateMachineForExecutionWithContext(ctx context.Context, input *sfn.DescribeStateMachineForExecutionInput, opts ...request.Option) (*sfn.DescribeStateMachineForExecutionOutput, error)
 	GetActivityTaskWithContext(ctx context.Context, input *sfn.GetActivityTaskInput, opts ...request.Option) (*sfn.GetActivityTaskOutput, error)
 	GetExecutionHistoryWithContext(ctx context.Context, input *sfn.GetExecutionHistoryInput, opts ...request.Option) (*sfn.GetExecutionHistoryOutput, error)
@@ -29,9 +33,12 @@ type SFN interface {
 	ListExecutionsPagesWithContext(ctx context.Context, input *sfn.ListExecutionsInput, cb func(*sfn.ListExecutionsOutput, bool) bool, opts ...request.Option) error
 	ListMapRunsWithContext(ctx context.Context, input *sfn.ListMapRunsInput, opts ...request.Option) (*sfn.ListMapRunsOutput, error)
 	ListMapRunsPagesWithContext(ctx context.Context, input *sfn.ListMapRunsInput, cb func(*sfn.ListMapRunsOutput, bool) bool, opts ...request.Option) error
+	ListStateMachineAliasesWithContext(ctx context.Context, input *sfn.ListStateMachineAliasesInput, opts ...request.Option) (*sfn.ListStateMachineAliasesOutput, error)
+	ListStateMachineVersionsWithContext(ctx context.Context, input *sfn.ListStateMachineVersionsInput, opts ...request.Option) (*sfn.ListStateMachineVersionsOutput, error)
 	ListStateMachinesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, opts ...request.Option) (*sfn.ListStateMachinesOutput, error)
 	ListStateMachinesPagesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, cb func(*sfn.ListStateMachinesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *sfn.ListTagsForResourceInput, opts ...request.Option) (*sfn.ListTagsForResourceOutput, error)
+	PublishStateMachineVersionWithContext(ctx context.Context, input *sfn.PublishStateMachineVersionInput, opts ...request.Option) (*sfn.PublishStateMachineVersionOutput, error)
 	SendTaskFailureWithContext(ctx context.Context, input *sfn.SendTaskFailureInput, opts ...request.Option) (*sfn.SendTaskFailureOutput, error)
 	SendTaskHeartbeatWithContext(ctx context.Context, input *sfn.SendTaskHeartbeatInput, opts ...request.Option) (*sfn.SendTaskHeartbeatOutput, error)
 	SendTaskSuccessWithContext(ctx context.Context, input *sfn.SendTaskSuccessInput, opts ...request.Option) (*sfn.SendTaskSuccessOutput, error)
@@ -42,6 +49,7 @@ type SFN interface {
 	UntagResourceWithContext(ctx context.Context, input *sfn.UntagResourceInput, opts ...request.Option) (*sfn.UntagResourceOutput, error)
 	UpdateMapRunWithContext(ctx context.Context, input *sfn.UpdateMapRunInput, opts ...request.Option) (*sfn.UpdateMapRunOutput, error)
 	UpdateStateMachineWithContext(ctx context.Context, input *sfn.UpdateStateMachineInput, opts ...request.Option) (*sfn.UpdateStateMachineOutput, error)
+	UpdateStateMachineAliasWithContext(ctx context.Context, input *sfn.UpdateStateMachineAliasInput, opts ...request.Option) (*sfn.UpdateStateMachineAliasOutput, error)
 }
 
 type Client struct {
@@ -101,6 +109,27 @@ func (c *Client) CreateStateMachineWithContext(ctx context.Context, input *sfn.C
 	return req.Output.(*sfn.CreateStateMachineOutput), req.Error
 }
 
+func (c *Client) CreateStateMachineAliasWithContext(ctx context.Context, input *sfn.CreateStateMachineAliasInput, opts ...request.Option) (*sfn.CreateStateMachineAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "CreateStateMachineAlias",
+		Input:   input,
+		Output:  (*sfn.CreateStateMachineAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.CreateStateMachineAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.CreateStateMachineAliasOutput), req.Error
+}
+
 func (c *Client) DeleteActivityWithContext(ctx context.Context, input *sfn.DeleteActivityInput, opts ...request.Option) (*sfn.DeleteActivityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
@@ -141,6 +170,48 @@ func (c *Client) DeleteStateMachineWithContext(ctx context.Context, input *sfn.D
 	})
 
 	return req.Output.(*sfn.DeleteStateMachineOutput), req.Error
+}
+
+func (c *Client) DeleteStateMachineAliasWithContext(ctx context.Context, input *sfn.DeleteStateMachineAliasInput, opts ...request.Option) (*sfn.DeleteStateMachineAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "DeleteStateMachineAlias",
+		Input:   input,
+		Output:  (*sfn.DeleteStateMachineAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.DeleteStateMachineAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.DeleteStateMachineAliasOutput), req.Error
+}
+
+func (c *Client) DeleteStateMachineVersionWithContext(ctx context.Context, input *sfn.DeleteStateMachineVersionInput, opts ...request.Option) (*sfn.DeleteStateMachineVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "DeleteStateMachineVersion",
+		Input:   input,
+		Output:  (*sfn.DeleteStateMachineVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.DeleteStateMachineVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.DeleteStateMachineVersionOutput), req.Error
 }
 
 func (c *Client) DescribeActivityWithContext(ctx context.Context, input *sfn.DescribeActivityInput, opts ...request.Option) (*sfn.DescribeActivityOutput, error) {
@@ -225,6 +296,27 @@ func (c *Client) DescribeStateMachineWithContext(ctx context.Context, input *sfn
 	})
 
 	return req.Output.(*sfn.DescribeStateMachineOutput), req.Error
+}
+
+func (c *Client) DescribeStateMachineAliasWithContext(ctx context.Context, input *sfn.DescribeStateMachineAliasInput, opts ...request.Option) (*sfn.DescribeStateMachineAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "DescribeStateMachineAlias",
+		Input:   input,
+		Output:  (*sfn.DescribeStateMachineAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.DescribeStateMachineAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.DescribeStateMachineAliasOutput), req.Error
 }
 
 func (c *Client) DescribeStateMachineForExecutionWithContext(ctx context.Context, input *sfn.DescribeStateMachineForExecutionInput, opts ...request.Option) (*sfn.DescribeStateMachineForExecutionOutput, error) {
@@ -433,6 +525,48 @@ func (c *Client) ListMapRunsPagesWithContext(ctx context.Context, input *sfn.Lis
 	return req.Error
 }
 
+func (c *Client) ListStateMachineAliasesWithContext(ctx context.Context, input *sfn.ListStateMachineAliasesInput, opts ...request.Option) (*sfn.ListStateMachineAliasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListStateMachineAliases",
+		Input:   input,
+		Output:  (*sfn.ListStateMachineAliasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.ListStateMachineAliasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.ListStateMachineAliasesOutput), req.Error
+}
+
+func (c *Client) ListStateMachineVersionsWithContext(ctx context.Context, input *sfn.ListStateMachineVersionsInput, opts ...request.Option) (*sfn.ListStateMachineVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "ListStateMachineVersions",
+		Input:   input,
+		Output:  (*sfn.ListStateMachineVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.ListStateMachineVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.ListStateMachineVersionsOutput), req.Error
+}
+
 func (c *Client) ListStateMachinesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, opts ...request.Option) (*sfn.ListStateMachinesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "sfn",
@@ -493,6 +627,27 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *sfn.
 	})
 
 	return req.Output.(*sfn.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) PublishStateMachineVersionWithContext(ctx context.Context, input *sfn.PublishStateMachineVersionInput, opts ...request.Option) (*sfn.PublishStateMachineVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "PublishStateMachineVersion",
+		Input:   input,
+		Output:  (*sfn.PublishStateMachineVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.PublishStateMachineVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.PublishStateMachineVersionOutput), req.Error
 }
 
 func (c *Client) SendTaskFailureWithContext(ctx context.Context, input *sfn.SendTaskFailureInput, opts ...request.Option) (*sfn.SendTaskFailureOutput, error) {
@@ -703,4 +858,25 @@ func (c *Client) UpdateStateMachineWithContext(ctx context.Context, input *sfn.U
 	})
 
 	return req.Output.(*sfn.UpdateStateMachineOutput), req.Error
+}
+
+func (c *Client) UpdateStateMachineAliasWithContext(ctx context.Context, input *sfn.UpdateStateMachineAliasInput, opts ...request.Option) (*sfn.UpdateStateMachineAliasOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "UpdateStateMachineAlias",
+		Input:   input,
+		Output:  (*sfn.UpdateStateMachineAliasOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.UpdateStateMachineAliasWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.UpdateStateMachineAliasOutput), req.Error
 }
