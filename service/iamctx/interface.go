@@ -76,6 +76,7 @@ type IAM interface {
 	GetGroupPolicyWithContext(ctx context.Context, input *iam.GetGroupPolicyInput, opts ...request.Option) (*iam.GetGroupPolicyOutput, error)
 	GetInstanceProfileWithContext(ctx context.Context, input *iam.GetInstanceProfileInput, opts ...request.Option) (*iam.GetInstanceProfileOutput, error)
 	GetLoginProfileWithContext(ctx context.Context, input *iam.GetLoginProfileInput, opts ...request.Option) (*iam.GetLoginProfileOutput, error)
+	GetMFADeviceWithContext(ctx context.Context, input *iam.GetMFADeviceInput, opts ...request.Option) (*iam.GetMFADeviceOutput, error)
 	GetOpenIDConnectProviderWithContext(ctx context.Context, input *iam.GetOpenIDConnectProviderInput, opts ...request.Option) (*iam.GetOpenIDConnectProviderOutput, error)
 	GetOrganizationsAccessReportWithContext(ctx context.Context, input *iam.GetOrganizationsAccessReportInput, opts ...request.Option) (*iam.GetOrganizationsAccessReportOutput, error)
 	GetPolicyWithContext(ctx context.Context, input *iam.GetPolicyInput, opts ...request.Option) (*iam.GetPolicyOutput, error)
@@ -109,31 +110,38 @@ type IAM interface {
 	ListGroupsForUserWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, opts ...request.Option) (*iam.ListGroupsForUserOutput, error)
 	ListGroupsForUserPagesWithContext(ctx context.Context, input *iam.ListGroupsForUserInput, cb func(*iam.ListGroupsForUserOutput, bool) bool, opts ...request.Option) error
 	ListInstanceProfileTagsWithContext(ctx context.Context, input *iam.ListInstanceProfileTagsInput, opts ...request.Option) (*iam.ListInstanceProfileTagsOutput, error)
+	ListInstanceProfileTagsPagesWithContext(ctx context.Context, input *iam.ListInstanceProfileTagsInput, cb func(*iam.ListInstanceProfileTagsOutput, bool) bool, opts ...request.Option) error
 	ListInstanceProfilesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, opts ...request.Option) (*iam.ListInstanceProfilesOutput, error)
 	ListInstanceProfilesPagesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, cb func(*iam.ListInstanceProfilesOutput, bool) bool, opts ...request.Option) error
 	ListInstanceProfilesForRoleWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, opts ...request.Option) (*iam.ListInstanceProfilesForRoleOutput, error)
 	ListInstanceProfilesForRolePagesWithContext(ctx context.Context, input *iam.ListInstanceProfilesForRoleInput, cb func(*iam.ListInstanceProfilesForRoleOutput, bool) bool, opts ...request.Option) error
 	ListMFADeviceTagsWithContext(ctx context.Context, input *iam.ListMFADeviceTagsInput, opts ...request.Option) (*iam.ListMFADeviceTagsOutput, error)
+	ListMFADeviceTagsPagesWithContext(ctx context.Context, input *iam.ListMFADeviceTagsInput, cb func(*iam.ListMFADeviceTagsOutput, bool) bool, opts ...request.Option) error
 	ListMFADevicesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, opts ...request.Option) (*iam.ListMFADevicesOutput, error)
 	ListMFADevicesPagesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, cb func(*iam.ListMFADevicesOutput, bool) bool, opts ...request.Option) error
 	ListOpenIDConnectProviderTagsWithContext(ctx context.Context, input *iam.ListOpenIDConnectProviderTagsInput, opts ...request.Option) (*iam.ListOpenIDConnectProviderTagsOutput, error)
+	ListOpenIDConnectProviderTagsPagesWithContext(ctx context.Context, input *iam.ListOpenIDConnectProviderTagsInput, cb func(*iam.ListOpenIDConnectProviderTagsOutput, bool) bool, opts ...request.Option) error
 	ListOpenIDConnectProvidersWithContext(ctx context.Context, input *iam.ListOpenIDConnectProvidersInput, opts ...request.Option) (*iam.ListOpenIDConnectProvidersOutput, error)
 	ListPoliciesWithContext(ctx context.Context, input *iam.ListPoliciesInput, opts ...request.Option) (*iam.ListPoliciesOutput, error)
 	ListPoliciesPagesWithContext(ctx context.Context, input *iam.ListPoliciesInput, cb func(*iam.ListPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListPoliciesGrantingServiceAccessWithContext(ctx context.Context, input *iam.ListPoliciesGrantingServiceAccessInput, opts ...request.Option) (*iam.ListPoliciesGrantingServiceAccessOutput, error)
 	ListPolicyTagsWithContext(ctx context.Context, input *iam.ListPolicyTagsInput, opts ...request.Option) (*iam.ListPolicyTagsOutput, error)
+	ListPolicyTagsPagesWithContext(ctx context.Context, input *iam.ListPolicyTagsInput, cb func(*iam.ListPolicyTagsOutput, bool) bool, opts ...request.Option) error
 	ListPolicyVersionsWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, opts ...request.Option) (*iam.ListPolicyVersionsOutput, error)
 	ListPolicyVersionsPagesWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, cb func(*iam.ListPolicyVersionsOutput, bool) bool, opts ...request.Option) error
 	ListRolePoliciesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, opts ...request.Option) (*iam.ListRolePoliciesOutput, error)
 	ListRolePoliciesPagesWithContext(ctx context.Context, input *iam.ListRolePoliciesInput, cb func(*iam.ListRolePoliciesOutput, bool) bool, opts ...request.Option) error
 	ListRoleTagsWithContext(ctx context.Context, input *iam.ListRoleTagsInput, opts ...request.Option) (*iam.ListRoleTagsOutput, error)
+	ListRoleTagsPagesWithContext(ctx context.Context, input *iam.ListRoleTagsInput, cb func(*iam.ListRoleTagsOutput, bool) bool, opts ...request.Option) error
 	ListRolesWithContext(ctx context.Context, input *iam.ListRolesInput, opts ...request.Option) (*iam.ListRolesOutput, error)
 	ListRolesPagesWithContext(ctx context.Context, input *iam.ListRolesInput, cb func(*iam.ListRolesOutput, bool) bool, opts ...request.Option) error
 	ListSAMLProviderTagsWithContext(ctx context.Context, input *iam.ListSAMLProviderTagsInput, opts ...request.Option) (*iam.ListSAMLProviderTagsOutput, error)
+	ListSAMLProviderTagsPagesWithContext(ctx context.Context, input *iam.ListSAMLProviderTagsInput, cb func(*iam.ListSAMLProviderTagsOutput, bool) bool, opts ...request.Option) error
 	ListSAMLProvidersWithContext(ctx context.Context, input *iam.ListSAMLProvidersInput, opts ...request.Option) (*iam.ListSAMLProvidersOutput, error)
 	ListSSHPublicKeysWithContext(ctx context.Context, input *iam.ListSSHPublicKeysInput, opts ...request.Option) (*iam.ListSSHPublicKeysOutput, error)
 	ListSSHPublicKeysPagesWithContext(ctx context.Context, input *iam.ListSSHPublicKeysInput, cb func(*iam.ListSSHPublicKeysOutput, bool) bool, opts ...request.Option) error
 	ListServerCertificateTagsWithContext(ctx context.Context, input *iam.ListServerCertificateTagsInput, opts ...request.Option) (*iam.ListServerCertificateTagsOutput, error)
+	ListServerCertificateTagsPagesWithContext(ctx context.Context, input *iam.ListServerCertificateTagsInput, cb func(*iam.ListServerCertificateTagsOutput, bool) bool, opts ...request.Option) error
 	ListServerCertificatesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, opts ...request.Option) (*iam.ListServerCertificatesOutput, error)
 	ListServerCertificatesPagesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, cb func(*iam.ListServerCertificatesOutput, bool) bool, opts ...request.Option) error
 	ListServiceSpecificCredentialsWithContext(ctx context.Context, input *iam.ListServiceSpecificCredentialsInput, opts ...request.Option) (*iam.ListServiceSpecificCredentialsOutput, error)
@@ -1576,6 +1584,27 @@ func (c *Client) GetLoginProfileWithContext(ctx context.Context, input *iam.GetL
 	return req.Output.(*iam.GetLoginProfileOutput), req.Error
 }
 
+func (c *Client) GetMFADeviceWithContext(ctx context.Context, input *iam.GetMFADeviceInput, opts ...request.Option) (*iam.GetMFADeviceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "GetMFADevice",
+		Input:   input,
+		Output:  (*iam.GetMFADeviceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.IAMAPI.GetMFADeviceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*iam.GetMFADeviceOutput), req.Error
+}
+
 func (c *Client) GetOpenIDConnectProviderWithContext(ctx context.Context, input *iam.GetOpenIDConnectProviderInput, opts ...request.Option) (*iam.GetOpenIDConnectProviderOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2260,6 +2289,26 @@ func (c *Client) ListInstanceProfileTagsWithContext(ctx context.Context, input *
 	return req.Output.(*iam.ListInstanceProfileTagsOutput), req.Error
 }
 
+func (c *Client) ListInstanceProfileTagsPagesWithContext(ctx context.Context, input *iam.ListInstanceProfileTagsInput, cb func(*iam.ListInstanceProfileTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListInstanceProfileTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListInstanceProfileTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListInstanceProfilesWithContext(ctx context.Context, input *iam.ListInstanceProfilesInput, opts ...request.Option) (*iam.ListInstanceProfilesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2363,6 +2412,26 @@ func (c *Client) ListMFADeviceTagsWithContext(ctx context.Context, input *iam.Li
 	return req.Output.(*iam.ListMFADeviceTagsOutput), req.Error
 }
 
+func (c *Client) ListMFADeviceTagsPagesWithContext(ctx context.Context, input *iam.ListMFADeviceTagsInput, cb func(*iam.ListMFADeviceTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListMFADeviceTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListMFADeviceTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListMFADevicesWithContext(ctx context.Context, input *iam.ListMFADevicesInput, opts ...request.Option) (*iam.ListMFADevicesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2423,6 +2492,26 @@ func (c *Client) ListOpenIDConnectProviderTagsWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*iam.ListOpenIDConnectProviderTagsOutput), req.Error
+}
+
+func (c *Client) ListOpenIDConnectProviderTagsPagesWithContext(ctx context.Context, input *iam.ListOpenIDConnectProviderTagsInput, cb func(*iam.ListOpenIDConnectProviderTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListOpenIDConnectProviderTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListOpenIDConnectProviderTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListOpenIDConnectProvidersWithContext(ctx context.Context, input *iam.ListOpenIDConnectProvidersInput, opts ...request.Option) (*iam.ListOpenIDConnectProvidersOutput, error) {
@@ -2529,6 +2618,26 @@ func (c *Client) ListPolicyTagsWithContext(ctx context.Context, input *iam.ListP
 	return req.Output.(*iam.ListPolicyTagsOutput), req.Error
 }
 
+func (c *Client) ListPolicyTagsPagesWithContext(ctx context.Context, input *iam.ListPolicyTagsInput, cb func(*iam.ListPolicyTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListPolicyTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListPolicyTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListPolicyVersionsWithContext(ctx context.Context, input *iam.ListPolicyVersionsInput, opts ...request.Option) (*iam.ListPolicyVersionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2632,6 +2741,26 @@ func (c *Client) ListRoleTagsWithContext(ctx context.Context, input *iam.ListRol
 	return req.Output.(*iam.ListRoleTagsOutput), req.Error
 }
 
+func (c *Client) ListRoleTagsPagesWithContext(ctx context.Context, input *iam.ListRoleTagsInput, cb func(*iam.ListRoleTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListRoleTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListRoleTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListRolesWithContext(ctx context.Context, input *iam.ListRolesInput, opts ...request.Option) (*iam.ListRolesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "iam",
@@ -2692,6 +2821,26 @@ func (c *Client) ListSAMLProviderTagsWithContext(ctx context.Context, input *iam
 	})
 
 	return req.Output.(*iam.ListSAMLProviderTagsOutput), req.Error
+}
+
+func (c *Client) ListSAMLProviderTagsPagesWithContext(ctx context.Context, input *iam.ListSAMLProviderTagsInput, cb func(*iam.ListSAMLProviderTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListSAMLProviderTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListSAMLProviderTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSAMLProvidersWithContext(ctx context.Context, input *iam.ListSAMLProvidersInput, opts ...request.Option) (*iam.ListSAMLProvidersOutput, error) {
@@ -2775,6 +2924,26 @@ func (c *Client) ListServerCertificateTagsWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*iam.ListServerCertificateTagsOutput), req.Error
+}
+
+func (c *Client) ListServerCertificateTagsPagesWithContext(ctx context.Context, input *iam.ListServerCertificateTagsInput, cb func(*iam.ListServerCertificateTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "iam",
+		Action:  "ListServerCertificateTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.IAMAPI.ListServerCertificateTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListServerCertificatesWithContext(ctx context.Context, input *iam.ListServerCertificatesInput, opts ...request.Option) (*iam.ListServerCertificatesOutput, error) {

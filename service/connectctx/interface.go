@@ -190,6 +190,8 @@ type Connect interface {
 	SearchQueuesPagesWithContext(ctx context.Context, input *connect.SearchQueuesInput, cb func(*connect.SearchQueuesOutput, bool) bool, opts ...request.Option) error
 	SearchQuickConnectsWithContext(ctx context.Context, input *connect.SearchQuickConnectsInput, opts ...request.Option) (*connect.SearchQuickConnectsOutput, error)
 	SearchQuickConnectsPagesWithContext(ctx context.Context, input *connect.SearchQuickConnectsInput, cb func(*connect.SearchQuickConnectsOutput, bool) bool, opts ...request.Option) error
+	SearchResourceTagsWithContext(ctx context.Context, input *connect.SearchResourceTagsInput, opts ...request.Option) (*connect.SearchResourceTagsOutput, error)
+	SearchResourceTagsPagesWithContext(ctx context.Context, input *connect.SearchResourceTagsInput, cb func(*connect.SearchResourceTagsOutput, bool) bool, opts ...request.Option) error
 	SearchRoutingProfilesWithContext(ctx context.Context, input *connect.SearchRoutingProfilesInput, opts ...request.Option) (*connect.SearchRoutingProfilesOutput, error)
 	SearchRoutingProfilesPagesWithContext(ctx context.Context, input *connect.SearchRoutingProfilesInput, cb func(*connect.SearchRoutingProfilesOutput, bool) bool, opts ...request.Option) error
 	SearchSecurityProfilesWithContext(ctx context.Context, input *connect.SearchSecurityProfilesInput, opts ...request.Option) (*connect.SearchSecurityProfilesOutput, error)
@@ -3979,6 +3981,47 @@ func (c *Client) SearchQuickConnectsPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.SearchQuickConnectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) SearchResourceTagsWithContext(ctx context.Context, input *connect.SearchResourceTagsInput, opts ...request.Option) (*connect.SearchResourceTagsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchResourceTags",
+		Input:   input,
+		Output:  (*connect.SearchResourceTagsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.SearchResourceTagsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.SearchResourceTagsOutput), req.Error
+}
+
+func (c *Client) SearchResourceTagsPagesWithContext(ctx context.Context, input *connect.SearchResourceTagsInput, cb func(*connect.SearchResourceTagsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "SearchResourceTags",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.SearchResourceTagsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
