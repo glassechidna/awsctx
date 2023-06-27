@@ -13,6 +13,7 @@ import (
 type KinesisVideo interface {
 	CreateSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.CreateSignalingChannelInput, opts ...request.Option) (*kinesisvideo.CreateSignalingChannelOutput, error)
 	CreateStreamWithContext(ctx context.Context, input *kinesisvideo.CreateStreamInput, opts ...request.Option) (*kinesisvideo.CreateStreamOutput, error)
+	DeleteEdgeConfigurationWithContext(ctx context.Context, input *kinesisvideo.DeleteEdgeConfigurationInput, opts ...request.Option) (*kinesisvideo.DeleteEdgeConfigurationOutput, error)
 	DeleteSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DeleteSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DeleteSignalingChannelOutput, error)
 	DeleteStreamWithContext(ctx context.Context, input *kinesisvideo.DeleteStreamInput, opts ...request.Option) (*kinesisvideo.DeleteStreamOutput, error)
 	DescribeEdgeConfigurationWithContext(ctx context.Context, input *kinesisvideo.DescribeEdgeConfigurationInput, opts ...request.Option) (*kinesisvideo.DescribeEdgeConfigurationOutput, error)
@@ -25,6 +26,8 @@ type KinesisVideo interface {
 	DescribeStreamWithContext(ctx context.Context, input *kinesisvideo.DescribeStreamInput, opts ...request.Option) (*kinesisvideo.DescribeStreamOutput, error)
 	GetDataEndpointWithContext(ctx context.Context, input *kinesisvideo.GetDataEndpointInput, opts ...request.Option) (*kinesisvideo.GetDataEndpointOutput, error)
 	GetSignalingChannelEndpointWithContext(ctx context.Context, input *kinesisvideo.GetSignalingChannelEndpointInput, opts ...request.Option) (*kinesisvideo.GetSignalingChannelEndpointOutput, error)
+	ListEdgeAgentConfigurationsWithContext(ctx context.Context, input *kinesisvideo.ListEdgeAgentConfigurationsInput, opts ...request.Option) (*kinesisvideo.ListEdgeAgentConfigurationsOutput, error)
+	ListEdgeAgentConfigurationsPagesWithContext(ctx context.Context, input *kinesisvideo.ListEdgeAgentConfigurationsInput, cb func(*kinesisvideo.ListEdgeAgentConfigurationsOutput, bool) bool, opts ...request.Option) error
 	ListSignalingChannelsWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, opts ...request.Option) (*kinesisvideo.ListSignalingChannelsOutput, error)
 	ListSignalingChannelsPagesWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, cb func(*kinesisvideo.ListSignalingChannelsOutput, bool) bool, opts ...request.Option) error
 	ListStreamsWithContext(ctx context.Context, input *kinesisvideo.ListStreamsInput, opts ...request.Option) (*kinesisvideo.ListStreamsOutput, error)
@@ -99,6 +102,27 @@ func (c *Client) CreateStreamWithContext(ctx context.Context, input *kinesisvide
 	})
 
 	return req.Output.(*kinesisvideo.CreateStreamOutput), req.Error
+}
+
+func (c *Client) DeleteEdgeConfigurationWithContext(ctx context.Context, input *kinesisvideo.DeleteEdgeConfigurationInput, opts ...request.Option) (*kinesisvideo.DeleteEdgeConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "DeleteEdgeConfiguration",
+		Input:   input,
+		Output:  (*kinesisvideo.DeleteEdgeConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.DeleteEdgeConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.DeleteEdgeConfigurationOutput), req.Error
 }
 
 func (c *Client) DeleteSignalingChannelWithContext(ctx context.Context, input *kinesisvideo.DeleteSignalingChannelInput, opts ...request.Option) (*kinesisvideo.DeleteSignalingChannelOutput, error) {
@@ -350,6 +374,47 @@ func (c *Client) GetSignalingChannelEndpointWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*kinesisvideo.GetSignalingChannelEndpointOutput), req.Error
+}
+
+func (c *Client) ListEdgeAgentConfigurationsWithContext(ctx context.Context, input *kinesisvideo.ListEdgeAgentConfigurationsInput, opts ...request.Option) (*kinesisvideo.ListEdgeAgentConfigurationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "ListEdgeAgentConfigurations",
+		Input:   input,
+		Output:  (*kinesisvideo.ListEdgeAgentConfigurationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KinesisVideoAPI.ListEdgeAgentConfigurationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kinesisvideo.ListEdgeAgentConfigurationsOutput), req.Error
+}
+
+func (c *Client) ListEdgeAgentConfigurationsPagesWithContext(ctx context.Context, input *kinesisvideo.ListEdgeAgentConfigurationsInput, cb func(*kinesisvideo.ListEdgeAgentConfigurationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kinesisvideo",
+		Action:  "ListEdgeAgentConfigurations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KinesisVideoAPI.ListEdgeAgentConfigurationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListSignalingChannelsWithContext(ctx context.Context, input *kinesisvideo.ListSignalingChannelsInput, opts ...request.Option) (*kinesisvideo.ListSignalingChannelsOutput, error) {
