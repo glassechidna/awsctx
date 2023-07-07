@@ -18,6 +18,7 @@ type DatabaseMigrationService interface {
 	CreateEndpointWithContext(ctx context.Context, input *databasemigrationservice.CreateEndpointInput, opts ...request.Option) (*databasemigrationservice.CreateEndpointOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.CreateEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.CreateEventSubscriptionOutput, error)
 	CreateFleetAdvisorCollectorWithContext(ctx context.Context, input *databasemigrationservice.CreateFleetAdvisorCollectorInput, opts ...request.Option) (*databasemigrationservice.CreateFleetAdvisorCollectorOutput, error)
+	CreateReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationConfigOutput, error)
 	CreateReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationInstanceOutput, error)
 	CreateReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationSubnetGroupOutput, error)
 	CreateReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationTaskOutput, error)
@@ -27,6 +28,7 @@ type DatabaseMigrationService interface {
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.DeleteEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.DeleteEventSubscriptionOutput, error)
 	DeleteFleetAdvisorCollectorWithContext(ctx context.Context, input *databasemigrationservice.DeleteFleetAdvisorCollectorInput, opts ...request.Option) (*databasemigrationservice.DeleteFleetAdvisorCollectorOutput, error)
 	DeleteFleetAdvisorDatabasesWithContext(ctx context.Context, input *databasemigrationservice.DeleteFleetAdvisorDatabasesInput, opts ...request.Option) (*databasemigrationservice.DeleteFleetAdvisorDatabasesOutput, error)
+	DeleteReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationConfigOutput, error)
 	DeleteReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationInstanceOutput, error)
 	DeleteReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationSubnetGroupOutput, error)
 	DeleteReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationTaskOutput, error)
@@ -68,12 +70,16 @@ type DatabaseMigrationService interface {
 	DescribeRecommendationsWithContext(ctx context.Context, input *databasemigrationservice.DescribeRecommendationsInput, opts ...request.Option) (*databasemigrationservice.DescribeRecommendationsOutput, error)
 	DescribeRecommendationsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeRecommendationsInput, cb func(*databasemigrationservice.DescribeRecommendationsOutput, bool) bool, opts ...request.Option) error
 	DescribeRefreshSchemasStatusWithContext(ctx context.Context, input *databasemigrationservice.DescribeRefreshSchemasStatusInput, opts ...request.Option) (*databasemigrationservice.DescribeRefreshSchemasStatusOutput, error)
+	DescribeReplicationConfigsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationConfigsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationConfigsOutput, error)
+	DescribeReplicationConfigsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationConfigsInput, cb func(*databasemigrationservice.DescribeReplicationConfigsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationInstanceTaskLogsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstanceTaskLogsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationInstanceTaskLogsOutput, error)
 	DescribeReplicationInstanceTaskLogsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstanceTaskLogsInput, cb func(*databasemigrationservice.DescribeReplicationInstanceTaskLogsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationInstancesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstancesInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationInstancesOutput, error)
 	DescribeReplicationInstancesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstancesInput, cb func(*databasemigrationservice.DescribeReplicationInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationSubnetGroupsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationSubnetGroupsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationSubnetGroupsOutput, error)
 	DescribeReplicationSubnetGroupsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationSubnetGroupsInput, cb func(*databasemigrationservice.DescribeReplicationSubnetGroupsOutput, bool) bool, opts ...request.Option) error
+	DescribeReplicationTableStatisticsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTableStatisticsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTableStatisticsOutput, error)
+	DescribeReplicationTableStatisticsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTableStatisticsInput, cb func(*databasemigrationservice.DescribeReplicationTableStatisticsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationTaskAssessmentResultsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentResultsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskAssessmentResultsOutput, error)
 	DescribeReplicationTaskAssessmentResultsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentResultsInput, cb func(*databasemigrationservice.DescribeReplicationTaskAssessmentResultsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationTaskAssessmentRunsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskAssessmentRunsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTaskAssessmentRunsOutput, error)
@@ -82,6 +88,8 @@ type DatabaseMigrationService interface {
 	DescribeReplicationTaskIndividualAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsInput, cb func(*databasemigrationservice.DescribeReplicationTaskIndividualAssessmentsOutput, bool) bool, opts ...request.Option) error
 	DescribeReplicationTasksWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTasksInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTasksOutput, error)
 	DescribeReplicationTasksPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTasksInput, cb func(*databasemigrationservice.DescribeReplicationTasksOutput, bool) bool, opts ...request.Option) error
+	DescribeReplicationsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationsOutput, error)
+	DescribeReplicationsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationsInput, cb func(*databasemigrationservice.DescribeReplicationsOutput, bool) bool, opts ...request.Option) error
 	DescribeSchemasWithContext(ctx context.Context, input *databasemigrationservice.DescribeSchemasInput, opts ...request.Option) (*databasemigrationservice.DescribeSchemasOutput, error)
 	DescribeSchemasPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeSchemasInput, cb func(*databasemigrationservice.DescribeSchemasOutput, bool) bool, opts ...request.Option) error
 	DescribeTableStatisticsWithContext(ctx context.Context, input *databasemigrationservice.DescribeTableStatisticsInput, opts ...request.Option) (*databasemigrationservice.DescribeTableStatisticsOutput, error)
@@ -90,19 +98,23 @@ type DatabaseMigrationService interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *databasemigrationservice.ListTagsForResourceInput, opts ...request.Option) (*databasemigrationservice.ListTagsForResourceOutput, error)
 	ModifyEndpointWithContext(ctx context.Context, input *databasemigrationservice.ModifyEndpointInput, opts ...request.Option) (*databasemigrationservice.ModifyEndpointOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.ModifyEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.ModifyEventSubscriptionOutput, error)
+	ModifyReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationConfigOutput, error)
 	ModifyReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationInstanceOutput, error)
 	ModifyReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationSubnetGroupOutput, error)
 	ModifyReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationTaskOutput, error)
 	MoveReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.MoveReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.MoveReplicationTaskOutput, error)
 	RebootReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.RebootReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.RebootReplicationInstanceOutput, error)
 	RefreshSchemasWithContext(ctx context.Context, input *databasemigrationservice.RefreshSchemasInput, opts ...request.Option) (*databasemigrationservice.RefreshSchemasOutput, error)
+	ReloadReplicationTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadReplicationTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadReplicationTablesOutput, error)
 	ReloadTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadTablesOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *databasemigrationservice.RemoveTagsFromResourceInput, opts ...request.Option) (*databasemigrationservice.RemoveTagsFromResourceOutput, error)
 	RunFleetAdvisorLsaAnalysisWithContext(ctx context.Context, input *databasemigrationservice.RunFleetAdvisorLsaAnalysisInput, opts ...request.Option) (*databasemigrationservice.RunFleetAdvisorLsaAnalysisOutput, error)
 	StartRecommendationsWithContext(ctx context.Context, input *databasemigrationservice.StartRecommendationsInput, opts ...request.Option) (*databasemigrationservice.StartRecommendationsOutput, error)
+	StartReplicationWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationInput, opts ...request.Option) (*databasemigrationservice.StartReplicationOutput, error)
 	StartReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskOutput, error)
 	StartReplicationTaskAssessmentWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentOutput, error)
 	StartReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskAssessmentRunOutput, error)
+	StopReplicationWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationInput, opts ...request.Option) (*databasemigrationservice.StopReplicationOutput, error)
 	StopReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StopReplicationTaskOutput, error)
 	TestConnectionWithContext(ctx context.Context, input *databasemigrationservice.TestConnectionInput, opts ...request.Option) (*databasemigrationservice.TestConnectionOutput, error)
 	UpdateSubscriptionsToEventBridgeWithContext(ctx context.Context, input *databasemigrationservice.UpdateSubscriptionsToEventBridgeInput, opts ...request.Option) (*databasemigrationservice.UpdateSubscriptionsToEventBridgeOutput, error)
@@ -268,6 +280,27 @@ func (c *Client) CreateFleetAdvisorCollectorWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*databasemigrationservice.CreateFleetAdvisorCollectorOutput), req.Error
+}
+
+func (c *Client) CreateReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "CreateReplicationConfig",
+		Input:   input,
+		Output:  (*databasemigrationservice.CreateReplicationConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.CreateReplicationConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.CreateReplicationConfigOutput), req.Error
 }
 
 func (c *Client) CreateReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationInstanceOutput, error) {
@@ -457,6 +490,27 @@ func (c *Client) DeleteFleetAdvisorDatabasesWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*databasemigrationservice.DeleteFleetAdvisorDatabasesOutput), req.Error
+}
+
+func (c *Client) DeleteReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DeleteReplicationConfig",
+		Input:   input,
+		Output:  (*databasemigrationservice.DeleteReplicationConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DeleteReplicationConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DeleteReplicationConfigOutput), req.Error
 }
 
 func (c *Client) DeleteReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationInstanceOutput, error) {
@@ -1303,6 +1357,47 @@ func (c *Client) DescribeRefreshSchemasStatusWithContext(ctx context.Context, in
 	return req.Output.(*databasemigrationservice.DescribeRefreshSchemasStatusOutput), req.Error
 }
 
+func (c *Client) DescribeReplicationConfigsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationConfigsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationConfigsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationConfigs",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeReplicationConfigsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationConfigsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeReplicationConfigsOutput), req.Error
+}
+
+func (c *Client) DescribeReplicationConfigsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationConfigsInput, cb func(*databasemigrationservice.DescribeReplicationConfigsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationConfigs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationConfigsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeReplicationInstanceTaskLogsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationInstanceTaskLogsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationInstanceTaskLogsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1421,6 +1516,47 @@ func (c *Client) DescribeReplicationSubnetGroupsPagesWithContext(ctx context.Con
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationSubnetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeReplicationTableStatisticsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTableStatisticsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationTableStatisticsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationTableStatistics",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeReplicationTableStatisticsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTableStatisticsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeReplicationTableStatisticsOutput), req.Error
+}
+
+func (c *Client) DescribeReplicationTableStatisticsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationTableStatisticsInput, cb func(*databasemigrationservice.DescribeReplicationTableStatisticsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplicationTableStatistics",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTableStatisticsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1585,6 +1721,47 @@ func (c *Client) DescribeReplicationTasksPagesWithContext(ctx context.Context, i
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationTasksPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeReplicationsWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationsInput, opts ...request.Option) (*databasemigrationservice.DescribeReplicationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplications",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeReplicationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeReplicationsOutput), req.Error
+}
+
+func (c *Client) DescribeReplicationsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeReplicationsInput, cb func(*databasemigrationservice.DescribeReplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeReplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeReplicationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1756,6 +1933,27 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 	return req.Output.(*databasemigrationservice.ModifyEventSubscriptionOutput), req.Error
 }
 
+func (c *Client) ModifyReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationConfigOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ModifyReplicationConfig",
+		Input:   input,
+		Output:  (*databasemigrationservice.ModifyReplicationConfigOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ModifyReplicationConfigWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ModifyReplicationConfigOutput), req.Error
+}
+
 func (c *Client) ModifyReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationInstanceOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1882,6 +2080,27 @@ func (c *Client) RefreshSchemasWithContext(ctx context.Context, input *databasem
 	return req.Output.(*databasemigrationservice.RefreshSchemasOutput), req.Error
 }
 
+func (c *Client) ReloadReplicationTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadReplicationTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadReplicationTablesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ReloadReplicationTables",
+		Input:   input,
+		Output:  (*databasemigrationservice.ReloadReplicationTablesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ReloadReplicationTablesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ReloadReplicationTablesOutput), req.Error
+}
+
 func (c *Client) ReloadTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadTablesOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1966,6 +2185,27 @@ func (c *Client) StartRecommendationsWithContext(ctx context.Context, input *dat
 	return req.Output.(*databasemigrationservice.StartRecommendationsOutput), req.Error
 }
 
+func (c *Client) StartReplicationWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationInput, opts ...request.Option) (*databasemigrationservice.StartReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartReplication",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartReplicationOutput), req.Error
+}
+
 func (c *Client) StartReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -2027,6 +2267,27 @@ func (c *Client) StartReplicationTaskAssessmentRunWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*databasemigrationservice.StartReplicationTaskAssessmentRunOutput), req.Error
+}
+
+func (c *Client) StopReplicationWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationInput, opts ...request.Option) (*databasemigrationservice.StopReplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StopReplication",
+		Input:   input,
+		Output:  (*databasemigrationservice.StopReplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StopReplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StopReplicationOutput), req.Error
 }
 
 func (c *Client) StopReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StopReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StopReplicationTaskOutput, error) {

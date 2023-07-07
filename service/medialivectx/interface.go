@@ -33,6 +33,7 @@ type MediaLive interface {
 	DeleteReservationWithContext(ctx context.Context, input *medialive.DeleteReservationInput, opts ...request.Option) (*medialive.DeleteReservationOutput, error)
 	DeleteScheduleWithContext(ctx context.Context, input *medialive.DeleteScheduleInput, opts ...request.Option) (*medialive.DeleteScheduleOutput, error)
 	DeleteTagsWithContext(ctx context.Context, input *medialive.DeleteTagsInput, opts ...request.Option) (*medialive.DeleteTagsOutput, error)
+	DescribeAccountConfigurationWithContext(ctx context.Context, input *medialive.DescribeAccountConfigurationInput, opts ...request.Option) (*medialive.DescribeAccountConfigurationOutput, error)
 	DescribeChannelWithContext(ctx context.Context, input *medialive.DescribeChannelInput, opts ...request.Option) (*medialive.DescribeChannelOutput, error)
 	DescribeInputWithContext(ctx context.Context, input *medialive.DescribeInputInput, opts ...request.Option) (*medialive.DescribeInputOutput, error)
 	DescribeInputDeviceWithContext(ctx context.Context, input *medialive.DescribeInputDeviceInput, opts ...request.Option) (*medialive.DescribeInputDeviceOutput, error)
@@ -44,6 +45,7 @@ type MediaLive interface {
 	DescribeReservationWithContext(ctx context.Context, input *medialive.DescribeReservationInput, opts ...request.Option) (*medialive.DescribeReservationOutput, error)
 	DescribeScheduleWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, opts ...request.Option) (*medialive.DescribeScheduleOutput, error)
 	DescribeSchedulePagesWithContext(ctx context.Context, input *medialive.DescribeScheduleInput, cb func(*medialive.DescribeScheduleOutput, bool) bool, opts ...request.Option) error
+	DescribeThumbnailsWithContext(ctx context.Context, input *medialive.DescribeThumbnailsInput, opts ...request.Option) (*medialive.DescribeThumbnailsOutput, error)
 	ListChannelsWithContext(ctx context.Context, input *medialive.ListChannelsInput, opts ...request.Option) (*medialive.ListChannelsOutput, error)
 	ListChannelsPagesWithContext(ctx context.Context, input *medialive.ListChannelsInput, cb func(*medialive.ListChannelsOutput, bool) bool, opts ...request.Option) error
 	ListInputDeviceTransfersWithContext(ctx context.Context, input *medialive.ListInputDeviceTransfersInput, opts ...request.Option) (*medialive.ListInputDeviceTransfersOutput, error)
@@ -72,6 +74,7 @@ type MediaLive interface {
 	StopChannelWithContext(ctx context.Context, input *medialive.StopChannelInput, opts ...request.Option) (*medialive.StopChannelOutput, error)
 	StopMultiplexWithContext(ctx context.Context, input *medialive.StopMultiplexInput, opts ...request.Option) (*medialive.StopMultiplexOutput, error)
 	TransferInputDeviceWithContext(ctx context.Context, input *medialive.TransferInputDeviceInput, opts ...request.Option) (*medialive.TransferInputDeviceOutput, error)
+	UpdateAccountConfigurationWithContext(ctx context.Context, input *medialive.UpdateAccountConfigurationInput, opts ...request.Option) (*medialive.UpdateAccountConfigurationOutput, error)
 	UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error)
 	UpdateChannelClassWithContext(ctx context.Context, input *medialive.UpdateChannelClassInput, opts ...request.Option) (*medialive.UpdateChannelClassOutput, error)
 	UpdateInputWithContext(ctx context.Context, input *medialive.UpdateInputInput, opts ...request.Option) (*medialive.UpdateInputOutput, error)
@@ -559,6 +562,27 @@ func (c *Client) DeleteTagsWithContext(ctx context.Context, input *medialive.Del
 	return req.Output.(*medialive.DeleteTagsOutput), req.Error
 }
 
+func (c *Client) DescribeAccountConfigurationWithContext(ctx context.Context, input *medialive.DescribeAccountConfigurationInput, opts ...request.Option) (*medialive.DescribeAccountConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DescribeAccountConfiguration",
+		Input:   input,
+		Output:  (*medialive.DescribeAccountConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DescribeAccountConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DescribeAccountConfigurationOutput), req.Error
+}
+
 func (c *Client) DescribeChannelWithContext(ctx context.Context, input *medialive.DescribeChannelInput, opts ...request.Option) (*medialive.DescribeChannelOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -787,6 +811,27 @@ func (c *Client) DescribeSchedulePagesWithContext(ctx context.Context, input *me
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeThumbnailsWithContext(ctx context.Context, input *medialive.DescribeThumbnailsInput, opts ...request.Option) (*medialive.DescribeThumbnailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "DescribeThumbnails",
+		Input:   input,
+		Output:  (*medialive.DescribeThumbnailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.DescribeThumbnailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.DescribeThumbnailsOutput), req.Error
 }
 
 func (c *Client) ListChannelsWithContext(ctx context.Context, input *medialive.ListChannelsInput, opts ...request.Option) (*medialive.ListChannelsOutput, error) {
@@ -1366,6 +1411,27 @@ func (c *Client) TransferInputDeviceWithContext(ctx context.Context, input *medi
 	})
 
 	return req.Output.(*medialive.TransferInputDeviceOutput), req.Error
+}
+
+func (c *Client) UpdateAccountConfigurationWithContext(ctx context.Context, input *medialive.UpdateAccountConfigurationInput, opts ...request.Option) (*medialive.UpdateAccountConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "UpdateAccountConfiguration",
+		Input:   input,
+		Output:  (*medialive.UpdateAccountConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.UpdateAccountConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.UpdateAccountConfigurationOutput), req.Error
 }
 
 func (c *Client) UpdateChannelWithContext(ctx context.Context, input *medialive.UpdateChannelInput, opts ...request.Option) (*medialive.UpdateChannelOutput, error) {
