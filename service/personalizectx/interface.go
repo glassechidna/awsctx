@@ -91,6 +91,7 @@ type Personalize interface {
 	TagResourceWithContext(ctx context.Context, input *personalize.TagResourceInput, opts ...request.Option) (*personalize.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *personalize.UntagResourceInput, opts ...request.Option) (*personalize.UntagResourceOutput, error)
 	UpdateCampaignWithContext(ctx context.Context, input *personalize.UpdateCampaignInput, opts ...request.Option) (*personalize.UpdateCampaignOutput, error)
+	UpdateDatasetWithContext(ctx context.Context, input *personalize.UpdateDatasetInput, opts ...request.Option) (*personalize.UpdateDatasetOutput, error)
 	UpdateMetricAttributionWithContext(ctx context.Context, input *personalize.UpdateMetricAttributionInput, opts ...request.Option) (*personalize.UpdateMetricAttributionOutput, error)
 	UpdateRecommenderWithContext(ctx context.Context, input *personalize.UpdateRecommenderInput, opts ...request.Option) (*personalize.UpdateRecommenderOutput, error)
 }
@@ -1772,6 +1773,27 @@ func (c *Client) UpdateCampaignWithContext(ctx context.Context, input *personali
 	})
 
 	return req.Output.(*personalize.UpdateCampaignOutput), req.Error
+}
+
+func (c *Client) UpdateDatasetWithContext(ctx context.Context, input *personalize.UpdateDatasetInput, opts ...request.Option) (*personalize.UpdateDatasetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "personalize",
+		Action:  "UpdateDataset",
+		Input:   input,
+		Output:  (*personalize.UpdateDatasetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PersonalizeAPI.UpdateDatasetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*personalize.UpdateDatasetOutput), req.Error
 }
 
 func (c *Client) UpdateMetricAttributionWithContext(ctx context.Context, input *personalize.UpdateMetricAttributionInput, opts ...request.Option) (*personalize.UpdateMetricAttributionOutput, error) {

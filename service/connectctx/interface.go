@@ -52,7 +52,9 @@ type Connect interface {
 	DeleteInstanceWithContext(ctx context.Context, input *connect.DeleteInstanceInput, opts ...request.Option) (*connect.DeleteInstanceOutput, error)
 	DeleteIntegrationAssociationWithContext(ctx context.Context, input *connect.DeleteIntegrationAssociationInput, opts ...request.Option) (*connect.DeleteIntegrationAssociationOutput, error)
 	DeletePromptWithContext(ctx context.Context, input *connect.DeletePromptInput, opts ...request.Option) (*connect.DeletePromptOutput, error)
+	DeleteQueueWithContext(ctx context.Context, input *connect.DeleteQueueInput, opts ...request.Option) (*connect.DeleteQueueOutput, error)
 	DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error)
+	DeleteRoutingProfileWithContext(ctx context.Context, input *connect.DeleteRoutingProfileInput, opts ...request.Option) (*connect.DeleteRoutingProfileOutput, error)
 	DeleteRuleWithContext(ctx context.Context, input *connect.DeleteRuleInput, opts ...request.Option) (*connect.DeleteRuleOutput, error)
 	DeleteSecurityProfileWithContext(ctx context.Context, input *connect.DeleteSecurityProfileInput, opts ...request.Option) (*connect.DeleteSecurityProfileOutput, error)
 	DeleteTaskTemplateWithContext(ctx context.Context, input *connect.DeleteTaskTemplateInput, opts ...request.Option) (*connect.DeleteTaskTemplateOutput, error)
@@ -1131,6 +1133,27 @@ func (c *Client) DeletePromptWithContext(ctx context.Context, input *connect.Del
 	return req.Output.(*connect.DeletePromptOutput), req.Error
 }
 
+func (c *Client) DeleteQueueWithContext(ctx context.Context, input *connect.DeleteQueueInput, opts ...request.Option) (*connect.DeleteQueueOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteQueue",
+		Input:   input,
+		Output:  (*connect.DeleteQueueOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteQueueWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteQueueOutput), req.Error
+}
+
 func (c *Client) DeleteQuickConnectWithContext(ctx context.Context, input *connect.DeleteQuickConnectInput, opts ...request.Option) (*connect.DeleteQuickConnectOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1150,6 +1173,27 @@ func (c *Client) DeleteQuickConnectWithContext(ctx context.Context, input *conne
 	})
 
 	return req.Output.(*connect.DeleteQuickConnectOutput), req.Error
+}
+
+func (c *Client) DeleteRoutingProfileWithContext(ctx context.Context, input *connect.DeleteRoutingProfileInput, opts ...request.Option) (*connect.DeleteRoutingProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteRoutingProfile",
+		Input:   input,
+		Output:  (*connect.DeleteRoutingProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteRoutingProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteRoutingProfileOutput), req.Error
 }
 
 func (c *Client) DeleteRuleWithContext(ctx context.Context, input *connect.DeleteRuleInput, opts ...request.Option) (*connect.DeleteRuleOutput, error) {
