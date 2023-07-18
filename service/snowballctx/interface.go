@@ -38,6 +38,8 @@ type Snowball interface {
 	ListJobsPagesWithContext(ctx context.Context, input *snowball.ListJobsInput, cb func(*snowball.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListLongTermPricingWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, opts ...request.Option) (*snowball.ListLongTermPricingOutput, error)
 	ListLongTermPricingPagesWithContext(ctx context.Context, input *snowball.ListLongTermPricingInput, cb func(*snowball.ListLongTermPricingOutput, bool) bool, opts ...request.Option) error
+	ListPickupLocationsWithContext(ctx context.Context, input *snowball.ListPickupLocationsInput, opts ...request.Option) (*snowball.ListPickupLocationsOutput, error)
+	ListPickupLocationsPagesWithContext(ctx context.Context, input *snowball.ListPickupLocationsInput, cb func(*snowball.ListPickupLocationsOutput, bool) bool, opts ...request.Option) error
 	ListServiceVersionsWithContext(ctx context.Context, input *snowball.ListServiceVersionsInput, opts ...request.Option) (*snowball.ListServiceVersionsOutput, error)
 	UpdateClusterWithContext(ctx context.Context, input *snowball.UpdateClusterInput, opts ...request.Option) (*snowball.UpdateClusterOutput, error)
 	UpdateJobWithContext(ctx context.Context, input *snowball.UpdateJobInput, opts ...request.Option) (*snowball.UpdateJobOutput, error)
@@ -616,6 +618,47 @@ func (c *Client) ListLongTermPricingPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SnowballAPI.ListLongTermPricingPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListPickupLocationsWithContext(ctx context.Context, input *snowball.ListPickupLocationsInput, opts ...request.Option) (*snowball.ListPickupLocationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListPickupLocations",
+		Input:   input,
+		Output:  (*snowball.ListPickupLocationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SnowballAPI.ListPickupLocationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*snowball.ListPickupLocationsOutput), req.Error
+}
+
+func (c *Client) ListPickupLocationsPagesWithContext(ctx context.Context, input *snowball.ListPickupLocationsInput, cb func(*snowball.ListPickupLocationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "snowball",
+		Action:  "ListPickupLocations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SnowballAPI.ListPickupLocationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
