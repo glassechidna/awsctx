@@ -295,6 +295,8 @@ type SageMaker interface {
 	ListProcessingJobsPagesWithContext(ctx context.Context, input *sagemaker.ListProcessingJobsInput, cb func(*sagemaker.ListProcessingJobsOutput, bool) bool, opts ...request.Option) error
 	ListProjectsWithContext(ctx context.Context, input *sagemaker.ListProjectsInput, opts ...request.Option) (*sagemaker.ListProjectsOutput, error)
 	ListProjectsPagesWithContext(ctx context.Context, input *sagemaker.ListProjectsInput, cb func(*sagemaker.ListProjectsOutput, bool) bool, opts ...request.Option) error
+	ListResourceCatalogsWithContext(ctx context.Context, input *sagemaker.ListResourceCatalogsInput, opts ...request.Option) (*sagemaker.ListResourceCatalogsOutput, error)
+	ListResourceCatalogsPagesWithContext(ctx context.Context, input *sagemaker.ListResourceCatalogsInput, cb func(*sagemaker.ListResourceCatalogsOutput, bool) bool, opts ...request.Option) error
 	ListSpacesWithContext(ctx context.Context, input *sagemaker.ListSpacesInput, opts ...request.Option) (*sagemaker.ListSpacesOutput, error)
 	ListSpacesPagesWithContext(ctx context.Context, input *sagemaker.ListSpacesInput, cb func(*sagemaker.ListSpacesOutput, bool) bool, opts ...request.Option) error
 	ListStageDevicesWithContext(ctx context.Context, input *sagemaker.ListStageDevicesInput, opts ...request.Option) (*sagemaker.ListStageDevicesOutput, error)
@@ -6304,6 +6306,47 @@ func (c *Client) ListProjectsPagesWithContext(ctx context.Context, input *sagema
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.SageMakerAPI.ListProjectsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListResourceCatalogsWithContext(ctx context.Context, input *sagemaker.ListResourceCatalogsInput, opts ...request.Option) (*sagemaker.ListResourceCatalogsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListResourceCatalogs",
+		Input:   input,
+		Output:  (*sagemaker.ListResourceCatalogsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.ListResourceCatalogsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.ListResourceCatalogsOutput), req.Error
+}
+
+func (c *Client) ListResourceCatalogsPagesWithContext(ctx context.Context, input *sagemaker.ListResourceCatalogsInput, cb func(*sagemaker.ListResourceCatalogsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "ListResourceCatalogs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.SageMakerAPI.ListResourceCatalogsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
