@@ -30,6 +30,7 @@ type CostExplorer interface {
 	GetReservationPurchaseRecommendationWithContext(ctx context.Context, input *costexplorer.GetReservationPurchaseRecommendationInput, opts ...request.Option) (*costexplorer.GetReservationPurchaseRecommendationOutput, error)
 	GetReservationUtilizationWithContext(ctx context.Context, input *costexplorer.GetReservationUtilizationInput, opts ...request.Option) (*costexplorer.GetReservationUtilizationOutput, error)
 	GetRightsizingRecommendationWithContext(ctx context.Context, input *costexplorer.GetRightsizingRecommendationInput, opts ...request.Option) (*costexplorer.GetRightsizingRecommendationOutput, error)
+	GetSavingsPlanPurchaseRecommendationDetailsWithContext(ctx context.Context, input *costexplorer.GetSavingsPlanPurchaseRecommendationDetailsInput, opts ...request.Option) (*costexplorer.GetSavingsPlanPurchaseRecommendationDetailsOutput, error)
 	GetSavingsPlansCoverageWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, opts ...request.Option) (*costexplorer.GetSavingsPlansCoverageOutput, error)
 	GetSavingsPlansCoveragePagesWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, cb func(*costexplorer.GetSavingsPlansCoverageOutput, bool) bool, opts ...request.Option) error
 	GetSavingsPlansPurchaseRecommendationWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansPurchaseRecommendationInput, opts ...request.Option) (*costexplorer.GetSavingsPlansPurchaseRecommendationOutput, error)
@@ -466,6 +467,27 @@ func (c *Client) GetRightsizingRecommendationWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*costexplorer.GetRightsizingRecommendationOutput), req.Error
+}
+
+func (c *Client) GetSavingsPlanPurchaseRecommendationDetailsWithContext(ctx context.Context, input *costexplorer.GetSavingsPlanPurchaseRecommendationDetailsInput, opts ...request.Option) (*costexplorer.GetSavingsPlanPurchaseRecommendationDetailsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costexplorer",
+		Action:  "GetSavingsPlanPurchaseRecommendationDetails",
+		Input:   input,
+		Output:  (*costexplorer.GetSavingsPlanPurchaseRecommendationDetailsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostExplorerAPI.GetSavingsPlanPurchaseRecommendationDetailsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costexplorer.GetSavingsPlanPurchaseRecommendationDetailsOutput), req.Error
 }
 
 func (c *Client) GetSavingsPlansCoverageWithContext(ctx context.Context, input *costexplorer.GetSavingsPlansCoverageInput, opts ...request.Option) (*costexplorer.GetSavingsPlansCoverageOutput, error) {

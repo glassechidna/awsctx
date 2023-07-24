@@ -62,6 +62,7 @@ type CloudFormation interface {
 	ListExportsPagesWithContext(ctx context.Context, input *cloudformation.ListExportsInput, cb func(*cloudformation.ListExportsOutput, bool) bool, opts ...request.Option) error
 	ListImportsWithContext(ctx context.Context, input *cloudformation.ListImportsInput, opts ...request.Option) (*cloudformation.ListImportsOutput, error)
 	ListImportsPagesWithContext(ctx context.Context, input *cloudformation.ListImportsInput, cb func(*cloudformation.ListImportsOutput, bool) bool, opts ...request.Option) error
+	ListStackInstanceResourceDriftsWithContext(ctx context.Context, input *cloudformation.ListStackInstanceResourceDriftsInput, opts ...request.Option) (*cloudformation.ListStackInstanceResourceDriftsOutput, error)
 	ListStackInstancesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, opts ...request.Option) (*cloudformation.ListStackInstancesOutput, error)
 	ListStackInstancesPagesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, cb func(*cloudformation.ListStackInstancesOutput, bool) bool, opts ...request.Option) error
 	ListStackResourcesWithContext(ctx context.Context, input *cloudformation.ListStackResourcesInput, opts ...request.Option) (*cloudformation.ListStackResourcesOutput, error)
@@ -1175,6 +1176,27 @@ func (c *Client) ListImportsPagesWithContext(ctx context.Context, input *cloudfo
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListStackInstanceResourceDriftsWithContext(ctx context.Context, input *cloudformation.ListStackInstanceResourceDriftsInput, opts ...request.Option) (*cloudformation.ListStackInstanceResourceDriftsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cloudformation",
+		Action:  "ListStackInstanceResourceDrifts",
+		Input:   input,
+		Output:  (*cloudformation.ListStackInstanceResourceDriftsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CloudFormationAPI.ListStackInstanceResourceDriftsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cloudformation.ListStackInstanceResourceDriftsOutput), req.Error
 }
 
 func (c *Client) ListStackInstancesWithContext(ctx context.Context, input *cloudformation.ListStackInstancesInput, opts ...request.Option) (*cloudformation.ListStackInstancesOutput, error) {
