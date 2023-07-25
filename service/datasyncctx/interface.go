@@ -14,6 +14,7 @@ type DataSync interface {
 	AddStorageSystemWithContext(ctx context.Context, input *datasync.AddStorageSystemInput, opts ...request.Option) (*datasync.AddStorageSystemOutput, error)
 	CancelTaskExecutionWithContext(ctx context.Context, input *datasync.CancelTaskExecutionInput, opts ...request.Option) (*datasync.CancelTaskExecutionOutput, error)
 	CreateAgentWithContext(ctx context.Context, input *datasync.CreateAgentInput, opts ...request.Option) (*datasync.CreateAgentOutput, error)
+	CreateLocationAzureBlobWithContext(ctx context.Context, input *datasync.CreateLocationAzureBlobInput, opts ...request.Option) (*datasync.CreateLocationAzureBlobOutput, error)
 	CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error)
 	CreateLocationFsxLustreWithContext(ctx context.Context, input *datasync.CreateLocationFsxLustreInput, opts ...request.Option) (*datasync.CreateLocationFsxLustreOutput, error)
 	CreateLocationFsxOntapWithContext(ctx context.Context, input *datasync.CreateLocationFsxOntapInput, opts ...request.Option) (*datasync.CreateLocationFsxOntapOutput, error)
@@ -30,6 +31,7 @@ type DataSync interface {
 	DeleteTaskWithContext(ctx context.Context, input *datasync.DeleteTaskInput, opts ...request.Option) (*datasync.DeleteTaskOutput, error)
 	DescribeAgentWithContext(ctx context.Context, input *datasync.DescribeAgentInput, opts ...request.Option) (*datasync.DescribeAgentOutput, error)
 	DescribeDiscoveryJobWithContext(ctx context.Context, input *datasync.DescribeDiscoveryJobInput, opts ...request.Option) (*datasync.DescribeDiscoveryJobOutput, error)
+	DescribeLocationAzureBlobWithContext(ctx context.Context, input *datasync.DescribeLocationAzureBlobInput, opts ...request.Option) (*datasync.DescribeLocationAzureBlobOutput, error)
 	DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error)
 	DescribeLocationFsxLustreWithContext(ctx context.Context, input *datasync.DescribeLocationFsxLustreInput, opts ...request.Option) (*datasync.DescribeLocationFsxLustreOutput, error)
 	DescribeLocationFsxOntapWithContext(ctx context.Context, input *datasync.DescribeLocationFsxOntapInput, opts ...request.Option) (*datasync.DescribeLocationFsxOntapOutput, error)
@@ -70,6 +72,7 @@ type DataSync interface {
 	UntagResourceWithContext(ctx context.Context, input *datasync.UntagResourceInput, opts ...request.Option) (*datasync.UntagResourceOutput, error)
 	UpdateAgentWithContext(ctx context.Context, input *datasync.UpdateAgentInput, opts ...request.Option) (*datasync.UpdateAgentOutput, error)
 	UpdateDiscoveryJobWithContext(ctx context.Context, input *datasync.UpdateDiscoveryJobInput, opts ...request.Option) (*datasync.UpdateDiscoveryJobOutput, error)
+	UpdateLocationAzureBlobWithContext(ctx context.Context, input *datasync.UpdateLocationAzureBlobInput, opts ...request.Option) (*datasync.UpdateLocationAzureBlobOutput, error)
 	UpdateLocationHdfsWithContext(ctx context.Context, input *datasync.UpdateLocationHdfsInput, opts ...request.Option) (*datasync.UpdateLocationHdfsOutput, error)
 	UpdateLocationNfsWithContext(ctx context.Context, input *datasync.UpdateLocationNfsInput, opts ...request.Option) (*datasync.UpdateLocationNfsOutput, error)
 	UpdateLocationObjectStorageWithContext(ctx context.Context, input *datasync.UpdateLocationObjectStorageInput, opts ...request.Option) (*datasync.UpdateLocationObjectStorageOutput, error)
@@ -155,6 +158,27 @@ func (c *Client) CreateAgentWithContext(ctx context.Context, input *datasync.Cre
 	})
 
 	return req.Output.(*datasync.CreateAgentOutput), req.Error
+}
+
+func (c *Client) CreateLocationAzureBlobWithContext(ctx context.Context, input *datasync.CreateLocationAzureBlobInput, opts ...request.Option) (*datasync.CreateLocationAzureBlobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "CreateLocationAzureBlob",
+		Input:   input,
+		Output:  (*datasync.CreateLocationAzureBlobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.CreateLocationAzureBlobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.CreateLocationAzureBlobOutput), req.Error
 }
 
 func (c *Client) CreateLocationEfsWithContext(ctx context.Context, input *datasync.CreateLocationEfsInput, opts ...request.Option) (*datasync.CreateLocationEfsOutput, error) {
@@ -491,6 +515,27 @@ func (c *Client) DescribeDiscoveryJobWithContext(ctx context.Context, input *dat
 	})
 
 	return req.Output.(*datasync.DescribeDiscoveryJobOutput), req.Error
+}
+
+func (c *Client) DescribeLocationAzureBlobWithContext(ctx context.Context, input *datasync.DescribeLocationAzureBlobInput, opts ...request.Option) (*datasync.DescribeLocationAzureBlobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "DescribeLocationAzureBlob",
+		Input:   input,
+		Output:  (*datasync.DescribeLocationAzureBlobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.DescribeLocationAzureBlobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.DescribeLocationAzureBlobOutput), req.Error
 }
 
 func (c *Client) DescribeLocationEfsWithContext(ctx context.Context, input *datasync.DescribeLocationEfsInput, opts ...request.Option) (*datasync.DescribeLocationEfsOutput, error) {
@@ -1322,6 +1367,27 @@ func (c *Client) UpdateDiscoveryJobWithContext(ctx context.Context, input *datas
 	})
 
 	return req.Output.(*datasync.UpdateDiscoveryJobOutput), req.Error
+}
+
+func (c *Client) UpdateLocationAzureBlobWithContext(ctx context.Context, input *datasync.UpdateLocationAzureBlobInput, opts ...request.Option) (*datasync.UpdateLocationAzureBlobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "datasync",
+		Action:  "UpdateLocationAzureBlob",
+		Input:   input,
+		Output:  (*datasync.UpdateLocationAzureBlobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DataSyncAPI.UpdateLocationAzureBlobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*datasync.UpdateLocationAzureBlobOutput), req.Error
 }
 
 func (c *Client) UpdateLocationHdfsWithContext(ctx context.Context, input *datasync.UpdateLocationHdfsInput, opts ...request.Option) (*datasync.UpdateLocationHdfsOutput, error) {

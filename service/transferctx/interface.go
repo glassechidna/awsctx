@@ -70,6 +70,7 @@ type Transfer interface {
 	StartServerWithContext(ctx context.Context, input *transfer.StartServerInput, opts ...request.Option) (*transfer.StartServerOutput, error)
 	StopServerWithContext(ctx context.Context, input *transfer.StopServerInput, opts ...request.Option) (*transfer.StopServerOutput, error)
 	TagResourceWithContext(ctx context.Context, input *transfer.TagResourceInput, opts ...request.Option) (*transfer.TagResourceOutput, error)
+	TestConnectionWithContext(ctx context.Context, input *transfer.TestConnectionInput, opts ...request.Option) (*transfer.TestConnectionOutput, error)
 	TestIdentityProviderWithContext(ctx context.Context, input *transfer.TestIdentityProviderInput, opts ...request.Option) (*transfer.TestIdentityProviderOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *transfer.UntagResourceInput, opts ...request.Option) (*transfer.UntagResourceOutput, error)
 	UpdateAccessWithContext(ctx context.Context, input *transfer.UpdateAccessInput, opts ...request.Option) (*transfer.UpdateAccessOutput, error)
@@ -1323,6 +1324,27 @@ func (c *Client) TagResourceWithContext(ctx context.Context, input *transfer.Tag
 	})
 
 	return req.Output.(*transfer.TagResourceOutput), req.Error
+}
+
+func (c *Client) TestConnectionWithContext(ctx context.Context, input *transfer.TestConnectionInput, opts ...request.Option) (*transfer.TestConnectionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "transfer",
+		Action:  "TestConnection",
+		Input:   input,
+		Output:  (*transfer.TestConnectionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TransferAPI.TestConnectionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*transfer.TestConnectionOutput), req.Error
 }
 
 func (c *Client) TestIdentityProviderWithContext(ctx context.Context, input *transfer.TestIdentityProviderInput, opts ...request.Option) (*transfer.TestIdentityProviderOutput, error) {
