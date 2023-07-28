@@ -23,6 +23,7 @@ type Kafka interface {
 	DeleteVpcConnectionWithContext(ctx context.Context, input *kafka.DeleteVpcConnectionInput, opts ...request.Option) (*kafka.DeleteVpcConnectionOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *kafka.DescribeClusterInput, opts ...request.Option) (*kafka.DescribeClusterOutput, error)
 	DescribeClusterOperationWithContext(ctx context.Context, input *kafka.DescribeClusterOperationInput, opts ...request.Option) (*kafka.DescribeClusterOperationOutput, error)
+	DescribeClusterOperationV2WithContext(ctx context.Context, input *kafka.DescribeClusterOperationV2Input, opts ...request.Option) (*kafka.DescribeClusterOperationV2Output, error)
 	DescribeClusterV2WithContext(ctx context.Context, input *kafka.DescribeClusterV2Input, opts ...request.Option) (*kafka.DescribeClusterV2Output, error)
 	DescribeConfigurationWithContext(ctx context.Context, input *kafka.DescribeConfigurationInput, opts ...request.Option) (*kafka.DescribeConfigurationOutput, error)
 	DescribeConfigurationRevisionWithContext(ctx context.Context, input *kafka.DescribeConfigurationRevisionInput, opts ...request.Option) (*kafka.DescribeConfigurationRevisionOutput, error)
@@ -34,6 +35,8 @@ type Kafka interface {
 	ListClientVpcConnectionsPagesWithContext(ctx context.Context, input *kafka.ListClientVpcConnectionsInput, cb func(*kafka.ListClientVpcConnectionsOutput, bool) bool, opts ...request.Option) error
 	ListClusterOperationsWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, opts ...request.Option) (*kafka.ListClusterOperationsOutput, error)
 	ListClusterOperationsPagesWithContext(ctx context.Context, input *kafka.ListClusterOperationsInput, cb func(*kafka.ListClusterOperationsOutput, bool) bool, opts ...request.Option) error
+	ListClusterOperationsV2WithContext(ctx context.Context, input *kafka.ListClusterOperationsV2Input, opts ...request.Option) (*kafka.ListClusterOperationsV2Output, error)
+	ListClusterOperationsV2PagesWithContext(ctx context.Context, input *kafka.ListClusterOperationsV2Input, cb func(*kafka.ListClusterOperationsV2Output, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *kafka.ListClustersInput, opts ...request.Option) (*kafka.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *kafka.ListClustersInput, cb func(*kafka.ListClustersOutput, bool) bool, opts ...request.Option) error
 	ListClustersV2WithContext(ctx context.Context, input *kafka.ListClustersV2Input, opts ...request.Option) (*kafka.ListClustersV2Output, error)
@@ -335,6 +338,27 @@ func (c *Client) DescribeClusterOperationWithContext(ctx context.Context, input 
 	return req.Output.(*kafka.DescribeClusterOperationOutput), req.Error
 }
 
+func (c *Client) DescribeClusterOperationV2WithContext(ctx context.Context, input *kafka.DescribeClusterOperationV2Input, opts ...request.Option) (*kafka.DescribeClusterOperationV2Output, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "DescribeClusterOperationV2",
+		Input:   input,
+		Output:  (*kafka.DescribeClusterOperationV2Output)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.DescribeClusterOperationV2WithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.DescribeClusterOperationV2Output), req.Error
+}
+
 func (c *Client) DescribeClusterV2WithContext(ctx context.Context, input *kafka.DescribeClusterV2Input, opts ...request.Option) (*kafka.DescribeClusterV2Output, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
@@ -559,6 +583,47 @@ func (c *Client) ListClusterOperationsPagesWithContext(ctx context.Context, inpu
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.KafkaAPI.ListClusterOperationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListClusterOperationsV2WithContext(ctx context.Context, input *kafka.ListClusterOperationsV2Input, opts ...request.Option) (*kafka.ListClusterOperationsV2Output, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListClusterOperationsV2",
+		Input:   input,
+		Output:  (*kafka.ListClusterOperationsV2Output)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.ListClusterOperationsV2WithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.ListClusterOperationsV2Output), req.Error
+}
+
+func (c *Client) ListClusterOperationsV2PagesWithContext(ctx context.Context, input *kafka.ListClusterOperationsV2Input, cb func(*kafka.ListClusterOperationsV2Output, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListClusterOperationsV2",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListClusterOperationsV2PagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
