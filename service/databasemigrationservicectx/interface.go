@@ -46,6 +46,8 @@ type DatabaseMigrationService interface {
 	DescribeEndpointTypesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointTypesInput, cb func(*databasemigrationservice.DescribeEndpointTypesOutput, bool) bool, opts ...request.Option) error
 	DescribeEndpointsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointsInput, opts ...request.Option) (*databasemigrationservice.DescribeEndpointsOutput, error)
 	DescribeEndpointsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointsInput, cb func(*databasemigrationservice.DescribeEndpointsOutput, bool) bool, opts ...request.Option) error
+	DescribeEngineVersionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEngineVersionsInput, opts ...request.Option) (*databasemigrationservice.DescribeEngineVersionsOutput, error)
+	DescribeEngineVersionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEngineVersionsInput, cb func(*databasemigrationservice.DescribeEngineVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventCategoriesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventCategoriesInput, opts ...request.Option) (*databasemigrationservice.DescribeEventCategoriesOutput, error)
 	DescribeEventSubscriptionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventSubscriptionsInput, opts ...request.Option) (*databasemigrationservice.DescribeEventSubscriptionsOutput, error)
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventSubscriptionsInput, cb func(*databasemigrationservice.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
@@ -859,6 +861,47 @@ func (c *Client) DescribeEndpointsPagesWithContext(ctx context.Context, input *d
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.DatabaseMigrationServiceAPI.DescribeEndpointsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeEngineVersionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEngineVersionsInput, opts ...request.Option) (*databasemigrationservice.DescribeEngineVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeEngineVersions",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeEngineVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeEngineVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeEngineVersionsOutput), req.Error
+}
+
+func (c *Client) DescribeEngineVersionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEngineVersionsInput, cb func(*databasemigrationservice.DescribeEngineVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeEngineVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeEngineVersionsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

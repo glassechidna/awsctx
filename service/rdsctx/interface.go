@@ -44,6 +44,7 @@ type RDS interface {
 	DeleteBlueGreenDeploymentWithContext(ctx context.Context, input *rds.DeleteBlueGreenDeploymentInput, opts ...request.Option) (*rds.DeleteBlueGreenDeploymentOutput, error)
 	DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error)
+	DeleteDBClusterAutomatedBackupWithContext(ctx context.Context, input *rds.DeleteDBClusterAutomatedBackupInput, opts ...request.Option) (*rds.DeleteDBClusterAutomatedBackupOutput, error)
 	DeleteDBClusterEndpointWithContext(ctx context.Context, input *rds.DeleteDBClusterEndpointInput, opts ...request.Option) (*rds.DeleteDBClusterEndpointOutput, error)
 	DeleteDBClusterParameterGroupWithContext(ctx context.Context, input *rds.DeleteDBClusterParameterGroupInput, opts ...request.Option) (*rds.DeleteDBClusterParameterGroupOutput, error)
 	DeleteDBClusterSnapshotWithContext(ctx context.Context, input *rds.DeleteDBClusterSnapshotInput, opts ...request.Option) (*rds.DeleteDBClusterSnapshotOutput, error)
@@ -64,6 +65,7 @@ type RDS interface {
 	DescribeBlueGreenDeploymentsPagesWithContext(ctx context.Context, input *rds.DescribeBlueGreenDeploymentsInput, cb func(*rds.DescribeBlueGreenDeploymentsOutput, bool) bool, opts ...request.Option) error
 	DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error)
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, cb func(*rds.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
+	DescribeDBClusterAutomatedBackupsWithContext(ctx context.Context, input *rds.DescribeDBClusterAutomatedBackupsInput, opts ...request.Option) (*rds.DescribeDBClusterAutomatedBackupsOutput, error)
 	DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error)
 	DescribeDBClusterBacktracksPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, cb func(*rds.DescribeDBClusterBacktracksOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterEndpointsWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, opts ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error)
@@ -896,6 +898,27 @@ func (c *Client) DeleteDBClusterWithContext(ctx context.Context, input *rds.Dele
 	return req.Output.(*rds.DeleteDBClusterOutput), req.Error
 }
 
+func (c *Client) DeleteDBClusterAutomatedBackupWithContext(ctx context.Context, input *rds.DeleteDBClusterAutomatedBackupInput, opts ...request.Option) (*rds.DeleteDBClusterAutomatedBackupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteDBClusterAutomatedBackup",
+		Input:   input,
+		Output:  (*rds.DeleteDBClusterAutomatedBackupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteDBClusterAutomatedBackupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteDBClusterAutomatedBackupOutput), req.Error
+}
+
 func (c *Client) DeleteDBClusterEndpointWithContext(ctx context.Context, input *rds.DeleteDBClusterEndpointInput, opts ...request.Option) (*rds.DeleteDBClusterEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1312,6 +1335,27 @@ func (c *Client) DescribeCertificatesPagesWithContext(ctx context.Context, input
 	})
 
 	return req.Error
+}
+
+func (c *Client) DescribeDBClusterAutomatedBackupsWithContext(ctx context.Context, input *rds.DescribeDBClusterAutomatedBackupsInput, opts ...request.Option) (*rds.DescribeDBClusterAutomatedBackupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterAutomatedBackups",
+		Input:   input,
+		Output:  (*rds.DescribeDBClusterAutomatedBackupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeDBClusterAutomatedBackupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeDBClusterAutomatedBackupsOutput), req.Error
 }
 
 func (c *Client) DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error) {
