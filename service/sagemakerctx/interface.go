@@ -180,6 +180,7 @@ type SageMaker interface {
 	GetLineageGroupPolicyWithContext(ctx context.Context, input *sagemaker.GetLineageGroupPolicyInput, opts ...request.Option) (*sagemaker.GetLineageGroupPolicyOutput, error)
 	GetModelPackageGroupPolicyWithContext(ctx context.Context, input *sagemaker.GetModelPackageGroupPolicyInput, opts ...request.Option) (*sagemaker.GetModelPackageGroupPolicyOutput, error)
 	GetSagemakerServicecatalogPortfolioStatusWithContext(ctx context.Context, input *sagemaker.GetSagemakerServicecatalogPortfolioStatusInput, opts ...request.Option) (*sagemaker.GetSagemakerServicecatalogPortfolioStatusOutput, error)
+	GetScalingConfigurationRecommendationWithContext(ctx context.Context, input *sagemaker.GetScalingConfigurationRecommendationInput, opts ...request.Option) (*sagemaker.GetScalingConfigurationRecommendationOutput, error)
 	GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error)
 	ImportHubContentWithContext(ctx context.Context, input *sagemaker.ImportHubContentInput, opts ...request.Option) (*sagemaker.ImportHubContentOutput, error)
 	ListActionsWithContext(ctx context.Context, input *sagemaker.ListActionsInput, opts ...request.Option) (*sagemaker.ListActionsOutput, error)
@@ -3949,6 +3950,27 @@ func (c *Client) GetSagemakerServicecatalogPortfolioStatusWithContext(ctx contex
 	})
 
 	return req.Output.(*sagemaker.GetSagemakerServicecatalogPortfolioStatusOutput), req.Error
+}
+
+func (c *Client) GetScalingConfigurationRecommendationWithContext(ctx context.Context, input *sagemaker.GetScalingConfigurationRecommendationInput, opts ...request.Option) (*sagemaker.GetScalingConfigurationRecommendationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemaker",
+		Action:  "GetScalingConfigurationRecommendation",
+		Input:   input,
+		Output:  (*sagemaker.GetScalingConfigurationRecommendationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerAPI.GetScalingConfigurationRecommendationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemaker.GetScalingConfigurationRecommendationOutput), req.Error
 }
 
 func (c *Client) GetSearchSuggestionsWithContext(ctx context.Context, input *sagemaker.GetSearchSuggestionsInput, opts ...request.Option) (*sagemaker.GetSearchSuggestionsOutput, error) {

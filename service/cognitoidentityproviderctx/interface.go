@@ -73,6 +73,7 @@ type CognitoIdentityProvider interface {
 	GetDeviceWithContext(ctx context.Context, input *cognitoidentityprovider.GetDeviceInput, opts ...request.Option) (*cognitoidentityprovider.GetDeviceOutput, error)
 	GetGroupWithContext(ctx context.Context, input *cognitoidentityprovider.GetGroupInput, opts ...request.Option) (*cognitoidentityprovider.GetGroupOutput, error)
 	GetIdentityProviderByIdentifierWithContext(ctx context.Context, input *cognitoidentityprovider.GetIdentityProviderByIdentifierInput, opts ...request.Option) (*cognitoidentityprovider.GetIdentityProviderByIdentifierOutput, error)
+	GetLogDeliveryConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.GetLogDeliveryConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.GetLogDeliveryConfigurationOutput, error)
 	GetSigningCertificateWithContext(ctx context.Context, input *cognitoidentityprovider.GetSigningCertificateInput, opts ...request.Option) (*cognitoidentityprovider.GetSigningCertificateOutput, error)
 	GetUICustomizationWithContext(ctx context.Context, input *cognitoidentityprovider.GetUICustomizationInput, opts ...request.Option) (*cognitoidentityprovider.GetUICustomizationOutput, error)
 	GetUserWithContext(ctx context.Context, input *cognitoidentityprovider.GetUserInput, opts ...request.Option) (*cognitoidentityprovider.GetUserOutput, error)
@@ -100,6 +101,7 @@ type CognitoIdentityProvider interface {
 	ResendConfirmationCodeWithContext(ctx context.Context, input *cognitoidentityprovider.ResendConfirmationCodeInput, opts ...request.Option) (*cognitoidentityprovider.ResendConfirmationCodeOutput, error)
 	RespondToAuthChallengeWithContext(ctx context.Context, input *cognitoidentityprovider.RespondToAuthChallengeInput, opts ...request.Option) (*cognitoidentityprovider.RespondToAuthChallengeOutput, error)
 	RevokeTokenWithContext(ctx context.Context, input *cognitoidentityprovider.RevokeTokenInput, opts ...request.Option) (*cognitoidentityprovider.RevokeTokenOutput, error)
+	SetLogDeliveryConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetLogDeliveryConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetLogDeliveryConfigurationOutput, error)
 	SetRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetRiskConfigurationOutput, error)
 	SetUICustomizationWithContext(ctx context.Context, input *cognitoidentityprovider.SetUICustomizationInput, opts ...request.Option) (*cognitoidentityprovider.SetUICustomizationOutput, error)
 	SetUserMFAPreferenceWithContext(ctx context.Context, input *cognitoidentityprovider.SetUserMFAPreferenceInput, opts ...request.Option) (*cognitoidentityprovider.SetUserMFAPreferenceOutput, error)
@@ -1438,6 +1440,27 @@ func (c *Client) GetIdentityProviderByIdentifierWithContext(ctx context.Context,
 	return req.Output.(*cognitoidentityprovider.GetIdentityProviderByIdentifierOutput), req.Error
 }
 
+func (c *Client) GetLogDeliveryConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.GetLogDeliveryConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.GetLogDeliveryConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "GetLogDeliveryConfiguration",
+		Input:   input,
+		Output:  (*cognitoidentityprovider.GetLogDeliveryConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CognitoIdentityProviderAPI.GetLogDeliveryConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cognitoidentityprovider.GetLogDeliveryConfigurationOutput), req.Error
+}
+
 func (c *Client) GetSigningCertificateWithContext(ctx context.Context, input *cognitoidentityprovider.GetSigningCertificateInput, opts ...request.Option) (*cognitoidentityprovider.GetSigningCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "cognitoidentityprovider",
@@ -1996,6 +2019,27 @@ func (c *Client) RevokeTokenWithContext(ctx context.Context, input *cognitoident
 	})
 
 	return req.Output.(*cognitoidentityprovider.RevokeTokenOutput), req.Error
+}
+
+func (c *Client) SetLogDeliveryConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetLogDeliveryConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetLogDeliveryConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "cognitoidentityprovider",
+		Action:  "SetLogDeliveryConfiguration",
+		Input:   input,
+		Output:  (*cognitoidentityprovider.SetLogDeliveryConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CognitoIdentityProviderAPI.SetLogDeliveryConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*cognitoidentityprovider.SetLogDeliveryConfigurationOutput), req.Error
 }
 
 func (c *Client) SetRiskConfigurationWithContext(ctx context.Context, input *cognitoidentityprovider.SetRiskConfigurationInput, opts ...request.Option) (*cognitoidentityprovider.SetRiskConfigurationOutput, error) {
