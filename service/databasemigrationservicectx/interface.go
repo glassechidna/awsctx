@@ -15,19 +15,25 @@ type DatabaseMigrationService interface {
 	ApplyPendingMaintenanceActionWithContext(ctx context.Context, input *databasemigrationservice.ApplyPendingMaintenanceActionInput, opts ...request.Option) (*databasemigrationservice.ApplyPendingMaintenanceActionOutput, error)
 	BatchStartRecommendationsWithContext(ctx context.Context, input *databasemigrationservice.BatchStartRecommendationsInput, opts ...request.Option) (*databasemigrationservice.BatchStartRecommendationsOutput, error)
 	CancelReplicationTaskAssessmentRunWithContext(ctx context.Context, input *databasemigrationservice.CancelReplicationTaskAssessmentRunInput, opts ...request.Option) (*databasemigrationservice.CancelReplicationTaskAssessmentRunOutput, error)
+	CreateDataProviderWithContext(ctx context.Context, input *databasemigrationservice.CreateDataProviderInput, opts ...request.Option) (*databasemigrationservice.CreateDataProviderOutput, error)
 	CreateEndpointWithContext(ctx context.Context, input *databasemigrationservice.CreateEndpointInput, opts ...request.Option) (*databasemigrationservice.CreateEndpointOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.CreateEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.CreateEventSubscriptionOutput, error)
 	CreateFleetAdvisorCollectorWithContext(ctx context.Context, input *databasemigrationservice.CreateFleetAdvisorCollectorInput, opts ...request.Option) (*databasemigrationservice.CreateFleetAdvisorCollectorOutput, error)
+	CreateInstanceProfileWithContext(ctx context.Context, input *databasemigrationservice.CreateInstanceProfileInput, opts ...request.Option) (*databasemigrationservice.CreateInstanceProfileOutput, error)
+	CreateMigrationProjectWithContext(ctx context.Context, input *databasemigrationservice.CreateMigrationProjectInput, opts ...request.Option) (*databasemigrationservice.CreateMigrationProjectOutput, error)
 	CreateReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationConfigOutput, error)
 	CreateReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationInstanceOutput, error)
 	CreateReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationSubnetGroupOutput, error)
 	CreateReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationTaskOutput, error)
 	DeleteCertificateWithContext(ctx context.Context, input *databasemigrationservice.DeleteCertificateInput, opts ...request.Option) (*databasemigrationservice.DeleteCertificateOutput, error)
 	DeleteConnectionWithContext(ctx context.Context, input *databasemigrationservice.DeleteConnectionInput, opts ...request.Option) (*databasemigrationservice.DeleteConnectionOutput, error)
+	DeleteDataProviderWithContext(ctx context.Context, input *databasemigrationservice.DeleteDataProviderInput, opts ...request.Option) (*databasemigrationservice.DeleteDataProviderOutput, error)
 	DeleteEndpointWithContext(ctx context.Context, input *databasemigrationservice.DeleteEndpointInput, opts ...request.Option) (*databasemigrationservice.DeleteEndpointOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.DeleteEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.DeleteEventSubscriptionOutput, error)
 	DeleteFleetAdvisorCollectorWithContext(ctx context.Context, input *databasemigrationservice.DeleteFleetAdvisorCollectorInput, opts ...request.Option) (*databasemigrationservice.DeleteFleetAdvisorCollectorOutput, error)
 	DeleteFleetAdvisorDatabasesWithContext(ctx context.Context, input *databasemigrationservice.DeleteFleetAdvisorDatabasesInput, opts ...request.Option) (*databasemigrationservice.DeleteFleetAdvisorDatabasesOutput, error)
+	DeleteInstanceProfileWithContext(ctx context.Context, input *databasemigrationservice.DeleteInstanceProfileInput, opts ...request.Option) (*databasemigrationservice.DeleteInstanceProfileOutput, error)
+	DeleteMigrationProjectWithContext(ctx context.Context, input *databasemigrationservice.DeleteMigrationProjectInput, opts ...request.Option) (*databasemigrationservice.DeleteMigrationProjectOutput, error)
 	DeleteReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationConfigOutput, error)
 	DeleteReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationInstanceOutput, error)
 	DeleteReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationSubnetGroupOutput, error)
@@ -40,6 +46,9 @@ type DatabaseMigrationService interface {
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeCertificatesInput, cb func(*databasemigrationservice.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeConnectionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeConnectionsInput, opts ...request.Option) (*databasemigrationservice.DescribeConnectionsOutput, error)
 	DescribeConnectionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeConnectionsInput, cb func(*databasemigrationservice.DescribeConnectionsOutput, bool) bool, opts ...request.Option) error
+	DescribeConversionConfigurationWithContext(ctx context.Context, input *databasemigrationservice.DescribeConversionConfigurationInput, opts ...request.Option) (*databasemigrationservice.DescribeConversionConfigurationOutput, error)
+	DescribeDataProvidersWithContext(ctx context.Context, input *databasemigrationservice.DescribeDataProvidersInput, opts ...request.Option) (*databasemigrationservice.DescribeDataProvidersOutput, error)
+	DescribeDataProvidersPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeDataProvidersInput, cb func(*databasemigrationservice.DescribeDataProvidersOutput, bool) bool, opts ...request.Option) error
 	DescribeEndpointSettingsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointSettingsInput, opts ...request.Option) (*databasemigrationservice.DescribeEndpointSettingsOutput, error)
 	DescribeEndpointSettingsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointSettingsInput, cb func(*databasemigrationservice.DescribeEndpointSettingsOutput, bool) bool, opts ...request.Option) error
 	DescribeEndpointTypesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEndpointTypesInput, opts ...request.Option) (*databasemigrationservice.DescribeEndpointTypesOutput, error)
@@ -53,6 +62,8 @@ type DatabaseMigrationService interface {
 	DescribeEventSubscriptionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventSubscriptionsInput, cb func(*databasemigrationservice.DescribeEventSubscriptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeEventsWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventsInput, opts ...request.Option) (*databasemigrationservice.DescribeEventsOutput, error)
 	DescribeEventsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeEventsInput, cb func(*databasemigrationservice.DescribeEventsOutput, bool) bool, opts ...request.Option) error
+	DescribeExtensionPackAssociationsWithContext(ctx context.Context, input *databasemigrationservice.DescribeExtensionPackAssociationsInput, opts ...request.Option) (*databasemigrationservice.DescribeExtensionPackAssociationsOutput, error)
+	DescribeExtensionPackAssociationsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeExtensionPackAssociationsInput, cb func(*databasemigrationservice.DescribeExtensionPackAssociationsOutput, bool) bool, opts ...request.Option) error
 	DescribeFleetAdvisorCollectorsWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorCollectorsInput, opts ...request.Option) (*databasemigrationservice.DescribeFleetAdvisorCollectorsOutput, error)
 	DescribeFleetAdvisorCollectorsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorCollectorsInput, cb func(*databasemigrationservice.DescribeFleetAdvisorCollectorsOutput, bool) bool, opts ...request.Option) error
 	DescribeFleetAdvisorDatabasesWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorDatabasesInput, opts ...request.Option) (*databasemigrationservice.DescribeFleetAdvisorDatabasesOutput, error)
@@ -63,6 +74,20 @@ type DatabaseMigrationService interface {
 	DescribeFleetAdvisorSchemaObjectSummaryPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorSchemaObjectSummaryInput, cb func(*databasemigrationservice.DescribeFleetAdvisorSchemaObjectSummaryOutput, bool) bool, opts ...request.Option) error
 	DescribeFleetAdvisorSchemasWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorSchemasInput, opts ...request.Option) (*databasemigrationservice.DescribeFleetAdvisorSchemasOutput, error)
 	DescribeFleetAdvisorSchemasPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorSchemasInput, cb func(*databasemigrationservice.DescribeFleetAdvisorSchemasOutput, bool) bool, opts ...request.Option) error
+	DescribeInstanceProfilesWithContext(ctx context.Context, input *databasemigrationservice.DescribeInstanceProfilesInput, opts ...request.Option) (*databasemigrationservice.DescribeInstanceProfilesOutput, error)
+	DescribeInstanceProfilesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeInstanceProfilesInput, cb func(*databasemigrationservice.DescribeInstanceProfilesOutput, bool) bool, opts ...request.Option) error
+	DescribeMetadataModelAssessmentsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelAssessmentsInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelAssessmentsOutput, error)
+	DescribeMetadataModelAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelAssessmentsInput, cb func(*databasemigrationservice.DescribeMetadataModelAssessmentsOutput, bool) bool, opts ...request.Option) error
+	DescribeMetadataModelConversionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelConversionsInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelConversionsOutput, error)
+	DescribeMetadataModelConversionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelConversionsInput, cb func(*databasemigrationservice.DescribeMetadataModelConversionsOutput, bool) bool, opts ...request.Option) error
+	DescribeMetadataModelExportsAsScriptWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsAsScriptInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelExportsAsScriptOutput, error)
+	DescribeMetadataModelExportsAsScriptPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsAsScriptInput, cb func(*databasemigrationservice.DescribeMetadataModelExportsAsScriptOutput, bool) bool, opts ...request.Option) error
+	DescribeMetadataModelExportsToTargetWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsToTargetInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelExportsToTargetOutput, error)
+	DescribeMetadataModelExportsToTargetPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsToTargetInput, cb func(*databasemigrationservice.DescribeMetadataModelExportsToTargetOutput, bool) bool, opts ...request.Option) error
+	DescribeMetadataModelImportsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelImportsInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelImportsOutput, error)
+	DescribeMetadataModelImportsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelImportsInput, cb func(*databasemigrationservice.DescribeMetadataModelImportsOutput, bool) bool, opts ...request.Option) error
+	DescribeMigrationProjectsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMigrationProjectsInput, opts ...request.Option) (*databasemigrationservice.DescribeMigrationProjectsOutput, error)
+	DescribeMigrationProjectsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMigrationProjectsInput, cb func(*databasemigrationservice.DescribeMigrationProjectsOutput, bool) bool, opts ...request.Option) error
 	DescribeOrderableReplicationInstancesWithContext(ctx context.Context, input *databasemigrationservice.DescribeOrderableReplicationInstancesInput, opts ...request.Option) (*databasemigrationservice.DescribeOrderableReplicationInstancesOutput, error)
 	DescribeOrderableReplicationInstancesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeOrderableReplicationInstancesInput, cb func(*databasemigrationservice.DescribeOrderableReplicationInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribePendingMaintenanceActionsWithContext(ctx context.Context, input *databasemigrationservice.DescribePendingMaintenanceActionsInput, opts ...request.Option) (*databasemigrationservice.DescribePendingMaintenanceActionsOutput, error)
@@ -96,10 +121,15 @@ type DatabaseMigrationService interface {
 	DescribeSchemasPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeSchemasInput, cb func(*databasemigrationservice.DescribeSchemasOutput, bool) bool, opts ...request.Option) error
 	DescribeTableStatisticsWithContext(ctx context.Context, input *databasemigrationservice.DescribeTableStatisticsInput, opts ...request.Option) (*databasemigrationservice.DescribeTableStatisticsOutput, error)
 	DescribeTableStatisticsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeTableStatisticsInput, cb func(*databasemigrationservice.DescribeTableStatisticsOutput, bool) bool, opts ...request.Option) error
+	ExportMetadataModelAssessmentWithContext(ctx context.Context, input *databasemigrationservice.ExportMetadataModelAssessmentInput, opts ...request.Option) (*databasemigrationservice.ExportMetadataModelAssessmentOutput, error)
 	ImportCertificateWithContext(ctx context.Context, input *databasemigrationservice.ImportCertificateInput, opts ...request.Option) (*databasemigrationservice.ImportCertificateOutput, error)
 	ListTagsForResourceWithContext(ctx context.Context, input *databasemigrationservice.ListTagsForResourceInput, opts ...request.Option) (*databasemigrationservice.ListTagsForResourceOutput, error)
+	ModifyConversionConfigurationWithContext(ctx context.Context, input *databasemigrationservice.ModifyConversionConfigurationInput, opts ...request.Option) (*databasemigrationservice.ModifyConversionConfigurationOutput, error)
+	ModifyDataProviderWithContext(ctx context.Context, input *databasemigrationservice.ModifyDataProviderInput, opts ...request.Option) (*databasemigrationservice.ModifyDataProviderOutput, error)
 	ModifyEndpointWithContext(ctx context.Context, input *databasemigrationservice.ModifyEndpointInput, opts ...request.Option) (*databasemigrationservice.ModifyEndpointOutput, error)
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *databasemigrationservice.ModifyEventSubscriptionInput, opts ...request.Option) (*databasemigrationservice.ModifyEventSubscriptionOutput, error)
+	ModifyInstanceProfileWithContext(ctx context.Context, input *databasemigrationservice.ModifyInstanceProfileInput, opts ...request.Option) (*databasemigrationservice.ModifyInstanceProfileOutput, error)
+	ModifyMigrationProjectWithContext(ctx context.Context, input *databasemigrationservice.ModifyMigrationProjectInput, opts ...request.Option) (*databasemigrationservice.ModifyMigrationProjectOutput, error)
 	ModifyReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationConfigOutput, error)
 	ModifyReplicationInstanceWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationInstanceInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationInstanceOutput, error)
 	ModifyReplicationSubnetGroupWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationSubnetGroupInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationSubnetGroupOutput, error)
@@ -111,6 +141,12 @@ type DatabaseMigrationService interface {
 	ReloadTablesWithContext(ctx context.Context, input *databasemigrationservice.ReloadTablesInput, opts ...request.Option) (*databasemigrationservice.ReloadTablesOutput, error)
 	RemoveTagsFromResourceWithContext(ctx context.Context, input *databasemigrationservice.RemoveTagsFromResourceInput, opts ...request.Option) (*databasemigrationservice.RemoveTagsFromResourceOutput, error)
 	RunFleetAdvisorLsaAnalysisWithContext(ctx context.Context, input *databasemigrationservice.RunFleetAdvisorLsaAnalysisInput, opts ...request.Option) (*databasemigrationservice.RunFleetAdvisorLsaAnalysisOutput, error)
+	StartExtensionPackAssociationWithContext(ctx context.Context, input *databasemigrationservice.StartExtensionPackAssociationInput, opts ...request.Option) (*databasemigrationservice.StartExtensionPackAssociationOutput, error)
+	StartMetadataModelAssessmentWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelAssessmentInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelAssessmentOutput, error)
+	StartMetadataModelConversionWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelConversionInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelConversionOutput, error)
+	StartMetadataModelExportAsScriptWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelExportAsScriptInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelExportAsScriptOutput, error)
+	StartMetadataModelExportToTargetWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelExportToTargetInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelExportToTargetOutput, error)
+	StartMetadataModelImportWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelImportInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelImportOutput, error)
 	StartRecommendationsWithContext(ctx context.Context, input *databasemigrationservice.StartRecommendationsInput, opts ...request.Option) (*databasemigrationservice.StartRecommendationsOutput, error)
 	StartReplicationWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationInput, opts ...request.Option) (*databasemigrationservice.StartReplicationOutput, error)
 	StartReplicationTaskWithContext(ctx context.Context, input *databasemigrationservice.StartReplicationTaskInput, opts ...request.Option) (*databasemigrationservice.StartReplicationTaskOutput, error)
@@ -221,6 +257,27 @@ func (c *Client) CancelReplicationTaskAssessmentRunWithContext(ctx context.Conte
 	return req.Output.(*databasemigrationservice.CancelReplicationTaskAssessmentRunOutput), req.Error
 }
 
+func (c *Client) CreateDataProviderWithContext(ctx context.Context, input *databasemigrationservice.CreateDataProviderInput, opts ...request.Option) (*databasemigrationservice.CreateDataProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "CreateDataProvider",
+		Input:   input,
+		Output:  (*databasemigrationservice.CreateDataProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.CreateDataProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.CreateDataProviderOutput), req.Error
+}
+
 func (c *Client) CreateEndpointWithContext(ctx context.Context, input *databasemigrationservice.CreateEndpointInput, opts ...request.Option) (*databasemigrationservice.CreateEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -282,6 +339,48 @@ func (c *Client) CreateFleetAdvisorCollectorWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*databasemigrationservice.CreateFleetAdvisorCollectorOutput), req.Error
+}
+
+func (c *Client) CreateInstanceProfileWithContext(ctx context.Context, input *databasemigrationservice.CreateInstanceProfileInput, opts ...request.Option) (*databasemigrationservice.CreateInstanceProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "CreateInstanceProfile",
+		Input:   input,
+		Output:  (*databasemigrationservice.CreateInstanceProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.CreateInstanceProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.CreateInstanceProfileOutput), req.Error
+}
+
+func (c *Client) CreateMigrationProjectWithContext(ctx context.Context, input *databasemigrationservice.CreateMigrationProjectInput, opts ...request.Option) (*databasemigrationservice.CreateMigrationProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "CreateMigrationProject",
+		Input:   input,
+		Output:  (*databasemigrationservice.CreateMigrationProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.CreateMigrationProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.CreateMigrationProjectOutput), req.Error
 }
 
 func (c *Client) CreateReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.CreateReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.CreateReplicationConfigOutput, error) {
@@ -410,6 +509,27 @@ func (c *Client) DeleteConnectionWithContext(ctx context.Context, input *databas
 	return req.Output.(*databasemigrationservice.DeleteConnectionOutput), req.Error
 }
 
+func (c *Client) DeleteDataProviderWithContext(ctx context.Context, input *databasemigrationservice.DeleteDataProviderInput, opts ...request.Option) (*databasemigrationservice.DeleteDataProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DeleteDataProvider",
+		Input:   input,
+		Output:  (*databasemigrationservice.DeleteDataProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DeleteDataProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DeleteDataProviderOutput), req.Error
+}
+
 func (c *Client) DeleteEndpointWithContext(ctx context.Context, input *databasemigrationservice.DeleteEndpointInput, opts ...request.Option) (*databasemigrationservice.DeleteEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -492,6 +612,48 @@ func (c *Client) DeleteFleetAdvisorDatabasesWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*databasemigrationservice.DeleteFleetAdvisorDatabasesOutput), req.Error
+}
+
+func (c *Client) DeleteInstanceProfileWithContext(ctx context.Context, input *databasemigrationservice.DeleteInstanceProfileInput, opts ...request.Option) (*databasemigrationservice.DeleteInstanceProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DeleteInstanceProfile",
+		Input:   input,
+		Output:  (*databasemigrationservice.DeleteInstanceProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DeleteInstanceProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DeleteInstanceProfileOutput), req.Error
+}
+
+func (c *Client) DeleteMigrationProjectWithContext(ctx context.Context, input *databasemigrationservice.DeleteMigrationProjectInput, opts ...request.Option) (*databasemigrationservice.DeleteMigrationProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DeleteMigrationProject",
+		Input:   input,
+		Output:  (*databasemigrationservice.DeleteMigrationProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DeleteMigrationProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DeleteMigrationProjectOutput), req.Error
 }
 
 func (c *Client) DeleteReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.DeleteReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.DeleteReplicationConfigOutput, error) {
@@ -738,6 +900,68 @@ func (c *Client) DescribeConnectionsPagesWithContext(ctx context.Context, input 
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.DatabaseMigrationServiceAPI.DescribeConnectionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeConversionConfigurationWithContext(ctx context.Context, input *databasemigrationservice.DescribeConversionConfigurationInput, opts ...request.Option) (*databasemigrationservice.DescribeConversionConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeConversionConfiguration",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeConversionConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeConversionConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeConversionConfigurationOutput), req.Error
+}
+
+func (c *Client) DescribeDataProvidersWithContext(ctx context.Context, input *databasemigrationservice.DescribeDataProvidersInput, opts ...request.Option) (*databasemigrationservice.DescribeDataProvidersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeDataProviders",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeDataProvidersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeDataProvidersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeDataProvidersOutput), req.Error
+}
+
+func (c *Client) DescribeDataProvidersPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeDataProvidersInput, cb func(*databasemigrationservice.DescribeDataProvidersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeDataProviders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeDataProvidersPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1010,6 +1234,47 @@ func (c *Client) DescribeEventsPagesWithContext(ctx context.Context, input *data
 	return req.Error
 }
 
+func (c *Client) DescribeExtensionPackAssociationsWithContext(ctx context.Context, input *databasemigrationservice.DescribeExtensionPackAssociationsInput, opts ...request.Option) (*databasemigrationservice.DescribeExtensionPackAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeExtensionPackAssociations",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeExtensionPackAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeExtensionPackAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeExtensionPackAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeExtensionPackAssociationsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeExtensionPackAssociationsInput, cb func(*databasemigrationservice.DescribeExtensionPackAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeExtensionPackAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeExtensionPackAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeFleetAdvisorCollectorsWithContext(ctx context.Context, input *databasemigrationservice.DescribeFleetAdvisorCollectorsInput, opts ...request.Option) (*databasemigrationservice.DescribeFleetAdvisorCollectorsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1210,6 +1475,293 @@ func (c *Client) DescribeFleetAdvisorSchemasPagesWithContext(ctx context.Context
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.DatabaseMigrationServiceAPI.DescribeFleetAdvisorSchemasPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeInstanceProfilesWithContext(ctx context.Context, input *databasemigrationservice.DescribeInstanceProfilesInput, opts ...request.Option) (*databasemigrationservice.DescribeInstanceProfilesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeInstanceProfiles",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeInstanceProfilesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeInstanceProfilesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeInstanceProfilesOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceProfilesPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeInstanceProfilesInput, cb func(*databasemigrationservice.DescribeInstanceProfilesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeInstanceProfiles",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeInstanceProfilesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeMetadataModelAssessmentsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelAssessmentsInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelAssessmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelAssessments",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeMetadataModelAssessmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelAssessmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeMetadataModelAssessmentsOutput), req.Error
+}
+
+func (c *Client) DescribeMetadataModelAssessmentsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelAssessmentsInput, cb func(*databasemigrationservice.DescribeMetadataModelAssessmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelAssessments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelAssessmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeMetadataModelConversionsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelConversionsInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelConversionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelConversions",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeMetadataModelConversionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelConversionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeMetadataModelConversionsOutput), req.Error
+}
+
+func (c *Client) DescribeMetadataModelConversionsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelConversionsInput, cb func(*databasemigrationservice.DescribeMetadataModelConversionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelConversions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelConversionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeMetadataModelExportsAsScriptWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsAsScriptInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelExportsAsScriptOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelExportsAsScript",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeMetadataModelExportsAsScriptOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelExportsAsScriptWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeMetadataModelExportsAsScriptOutput), req.Error
+}
+
+func (c *Client) DescribeMetadataModelExportsAsScriptPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsAsScriptInput, cb func(*databasemigrationservice.DescribeMetadataModelExportsAsScriptOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelExportsAsScript",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelExportsAsScriptPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeMetadataModelExportsToTargetWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsToTargetInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelExportsToTargetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelExportsToTarget",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeMetadataModelExportsToTargetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelExportsToTargetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeMetadataModelExportsToTargetOutput), req.Error
+}
+
+func (c *Client) DescribeMetadataModelExportsToTargetPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelExportsToTargetInput, cb func(*databasemigrationservice.DescribeMetadataModelExportsToTargetOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelExportsToTarget",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelExportsToTargetPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeMetadataModelImportsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelImportsInput, opts ...request.Option) (*databasemigrationservice.DescribeMetadataModelImportsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelImports",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeMetadataModelImportsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelImportsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeMetadataModelImportsOutput), req.Error
+}
+
+func (c *Client) DescribeMetadataModelImportsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMetadataModelImportsInput, cb func(*databasemigrationservice.DescribeMetadataModelImportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMetadataModelImports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeMetadataModelImportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeMigrationProjectsWithContext(ctx context.Context, input *databasemigrationservice.DescribeMigrationProjectsInput, opts ...request.Option) (*databasemigrationservice.DescribeMigrationProjectsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMigrationProjects",
+		Input:   input,
+		Output:  (*databasemigrationservice.DescribeMigrationProjectsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.DescribeMigrationProjectsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.DescribeMigrationProjectsOutput), req.Error
+}
+
+func (c *Client) DescribeMigrationProjectsPagesWithContext(ctx context.Context, input *databasemigrationservice.DescribeMigrationProjectsInput, cb func(*databasemigrationservice.DescribeMigrationProjectsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "DescribeMigrationProjects",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.DatabaseMigrationServiceAPI.DescribeMigrationProjectsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1892,6 +2444,27 @@ func (c *Client) DescribeTableStatisticsPagesWithContext(ctx context.Context, in
 	return req.Error
 }
 
+func (c *Client) ExportMetadataModelAssessmentWithContext(ctx context.Context, input *databasemigrationservice.ExportMetadataModelAssessmentInput, opts ...request.Option) (*databasemigrationservice.ExportMetadataModelAssessmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ExportMetadataModelAssessment",
+		Input:   input,
+		Output:  (*databasemigrationservice.ExportMetadataModelAssessmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ExportMetadataModelAssessmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ExportMetadataModelAssessmentOutput), req.Error
+}
+
 func (c *Client) ImportCertificateWithContext(ctx context.Context, input *databasemigrationservice.ImportCertificateInput, opts ...request.Option) (*databasemigrationservice.ImportCertificateOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1934,6 +2507,48 @@ func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *data
 	return req.Output.(*databasemigrationservice.ListTagsForResourceOutput), req.Error
 }
 
+func (c *Client) ModifyConversionConfigurationWithContext(ctx context.Context, input *databasemigrationservice.ModifyConversionConfigurationInput, opts ...request.Option) (*databasemigrationservice.ModifyConversionConfigurationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ModifyConversionConfiguration",
+		Input:   input,
+		Output:  (*databasemigrationservice.ModifyConversionConfigurationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ModifyConversionConfigurationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ModifyConversionConfigurationOutput), req.Error
+}
+
+func (c *Client) ModifyDataProviderWithContext(ctx context.Context, input *databasemigrationservice.ModifyDataProviderInput, opts ...request.Option) (*databasemigrationservice.ModifyDataProviderOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ModifyDataProvider",
+		Input:   input,
+		Output:  (*databasemigrationservice.ModifyDataProviderOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ModifyDataProviderWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ModifyDataProviderOutput), req.Error
+}
+
 func (c *Client) ModifyEndpointWithContext(ctx context.Context, input *databasemigrationservice.ModifyEndpointInput, opts ...request.Option) (*databasemigrationservice.ModifyEndpointOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "databasemigrationservice",
@@ -1974,6 +2589,48 @@ func (c *Client) ModifyEventSubscriptionWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*databasemigrationservice.ModifyEventSubscriptionOutput), req.Error
+}
+
+func (c *Client) ModifyInstanceProfileWithContext(ctx context.Context, input *databasemigrationservice.ModifyInstanceProfileInput, opts ...request.Option) (*databasemigrationservice.ModifyInstanceProfileOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ModifyInstanceProfile",
+		Input:   input,
+		Output:  (*databasemigrationservice.ModifyInstanceProfileOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ModifyInstanceProfileWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ModifyInstanceProfileOutput), req.Error
+}
+
+func (c *Client) ModifyMigrationProjectWithContext(ctx context.Context, input *databasemigrationservice.ModifyMigrationProjectInput, opts ...request.Option) (*databasemigrationservice.ModifyMigrationProjectOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "ModifyMigrationProject",
+		Input:   input,
+		Output:  (*databasemigrationservice.ModifyMigrationProjectOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.ModifyMigrationProjectWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.ModifyMigrationProjectOutput), req.Error
 }
 
 func (c *Client) ModifyReplicationConfigWithContext(ctx context.Context, input *databasemigrationservice.ModifyReplicationConfigInput, opts ...request.Option) (*databasemigrationservice.ModifyReplicationConfigOutput, error) {
@@ -2205,6 +2862,132 @@ func (c *Client) RunFleetAdvisorLsaAnalysisWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*databasemigrationservice.RunFleetAdvisorLsaAnalysisOutput), req.Error
+}
+
+func (c *Client) StartExtensionPackAssociationWithContext(ctx context.Context, input *databasemigrationservice.StartExtensionPackAssociationInput, opts ...request.Option) (*databasemigrationservice.StartExtensionPackAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartExtensionPackAssociation",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartExtensionPackAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartExtensionPackAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartExtensionPackAssociationOutput), req.Error
+}
+
+func (c *Client) StartMetadataModelAssessmentWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelAssessmentInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelAssessmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartMetadataModelAssessment",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartMetadataModelAssessmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartMetadataModelAssessmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartMetadataModelAssessmentOutput), req.Error
+}
+
+func (c *Client) StartMetadataModelConversionWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelConversionInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelConversionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartMetadataModelConversion",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartMetadataModelConversionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartMetadataModelConversionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartMetadataModelConversionOutput), req.Error
+}
+
+func (c *Client) StartMetadataModelExportAsScriptWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelExportAsScriptInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelExportAsScriptOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartMetadataModelExportAsScript",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartMetadataModelExportAsScriptOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartMetadataModelExportAsScriptWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartMetadataModelExportAsScriptOutput), req.Error
+}
+
+func (c *Client) StartMetadataModelExportToTargetWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelExportToTargetInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelExportToTargetOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartMetadataModelExportToTarget",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartMetadataModelExportToTargetOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartMetadataModelExportToTargetWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartMetadataModelExportToTargetOutput), req.Error
+}
+
+func (c *Client) StartMetadataModelImportWithContext(ctx context.Context, input *databasemigrationservice.StartMetadataModelImportInput, opts ...request.Option) (*databasemigrationservice.StartMetadataModelImportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "databasemigrationservice",
+		Action:  "StartMetadataModelImport",
+		Input:   input,
+		Output:  (*databasemigrationservice.StartMetadataModelImportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.DatabaseMigrationServiceAPI.StartMetadataModelImportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*databasemigrationservice.StartMetadataModelImportOutput), req.Error
 }
 
 func (c *Client) StartRecommendationsWithContext(ctx context.Context, input *databasemigrationservice.StartRecommendationsInput, opts ...request.Option) (*databasemigrationservice.StartRecommendationsOutput, error) {
