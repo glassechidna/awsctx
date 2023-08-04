@@ -240,6 +240,7 @@ type Connect interface {
 	UpdateQueueStatusWithContext(ctx context.Context, input *connect.UpdateQueueStatusInput, opts ...request.Option) (*connect.UpdateQueueStatusOutput, error)
 	UpdateQuickConnectConfigWithContext(ctx context.Context, input *connect.UpdateQuickConnectConfigInput, opts ...request.Option) (*connect.UpdateQuickConnectConfigOutput, error)
 	UpdateQuickConnectNameWithContext(ctx context.Context, input *connect.UpdateQuickConnectNameInput, opts ...request.Option) (*connect.UpdateQuickConnectNameOutput, error)
+	UpdateRoutingProfileAgentAvailabilityTimerWithContext(ctx context.Context, input *connect.UpdateRoutingProfileAgentAvailabilityTimerInput, opts ...request.Option) (*connect.UpdateRoutingProfileAgentAvailabilityTimerOutput, error)
 	UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error)
 	UpdateRoutingProfileDefaultOutboundQueueWithContext(ctx context.Context, input *connect.UpdateRoutingProfileDefaultOutboundQueueInput, opts ...request.Option) (*connect.UpdateRoutingProfileDefaultOutboundQueueOutput, error)
 	UpdateRoutingProfileNameWithContext(ctx context.Context, input *connect.UpdateRoutingProfileNameInput, opts ...request.Option) (*connect.UpdateRoutingProfileNameOutput, error)
@@ -5031,6 +5032,27 @@ func (c *Client) UpdateQuickConnectNameWithContext(ctx context.Context, input *c
 	})
 
 	return req.Output.(*connect.UpdateQuickConnectNameOutput), req.Error
+}
+
+func (c *Client) UpdateRoutingProfileAgentAvailabilityTimerWithContext(ctx context.Context, input *connect.UpdateRoutingProfileAgentAvailabilityTimerInput, opts ...request.Option) (*connect.UpdateRoutingProfileAgentAvailabilityTimerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateRoutingProfileAgentAvailabilityTimer",
+		Input:   input,
+		Output:  (*connect.UpdateRoutingProfileAgentAvailabilityTimerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateRoutingProfileAgentAvailabilityTimerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateRoutingProfileAgentAvailabilityTimerOutput), req.Error
 }
 
 func (c *Client) UpdateRoutingProfileConcurrencyWithContext(ctx context.Context, input *connect.UpdateRoutingProfileConcurrencyInput, opts ...request.Option) (*connect.UpdateRoutingProfileConcurrencyOutput, error) {
