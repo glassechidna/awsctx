@@ -93,6 +93,7 @@ type ElastiCache interface {
 	RevokeCacheSecurityGroupIngressWithContext(ctx context.Context, input *elasticache.RevokeCacheSecurityGroupIngressInput, opts ...request.Option) (*elasticache.RevokeCacheSecurityGroupIngressOutput, error)
 	StartMigrationWithContext(ctx context.Context, input *elasticache.StartMigrationInput, opts ...request.Option) (*elasticache.StartMigrationOutput, error)
 	TestFailoverWithContext(ctx context.Context, input *elasticache.TestFailoverInput, opts ...request.Option) (*elasticache.TestFailoverOutput, error)
+	TestMigrationWithContext(ctx context.Context, input *elasticache.TestMigrationInput, opts ...request.Option) (*elasticache.TestMigrationOutput, error)
 }
 
 type Client struct {
@@ -1813,4 +1814,25 @@ func (c *Client) TestFailoverWithContext(ctx context.Context, input *elasticache
 	})
 
 	return req.Output.(*elasticache.TestFailoverOutput), req.Error
+}
+
+func (c *Client) TestMigrationWithContext(ctx context.Context, input *elasticache.TestMigrationInput, opts ...request.Option) (*elasticache.TestMigrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "elasticache",
+		Action:  "TestMigration",
+		Input:   input,
+		Output:  (*elasticache.TestMigrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ElastiCacheAPI.TestMigrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*elasticache.TestMigrationOutput), req.Error
 }

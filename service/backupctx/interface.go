@@ -17,6 +17,7 @@ type Backup interface {
 	CreateBackupVaultWithContext(ctx context.Context, input *backup.CreateBackupVaultInput, opts ...request.Option) (*backup.CreateBackupVaultOutput, error)
 	CreateFrameworkWithContext(ctx context.Context, input *backup.CreateFrameworkInput, opts ...request.Option) (*backup.CreateFrameworkOutput, error)
 	CreateLegalHoldWithContext(ctx context.Context, input *backup.CreateLegalHoldInput, opts ...request.Option) (*backup.CreateLegalHoldOutput, error)
+	CreateLogicallyAirGappedBackupVaultWithContext(ctx context.Context, input *backup.CreateLogicallyAirGappedBackupVaultInput, opts ...request.Option) (*backup.CreateLogicallyAirGappedBackupVaultOutput, error)
 	CreateReportPlanWithContext(ctx context.Context, input *backup.CreateReportPlanInput, opts ...request.Option) (*backup.CreateReportPlanOutput, error)
 	DeleteBackupPlanWithContext(ctx context.Context, input *backup.DeleteBackupPlanInput, opts ...request.Option) (*backup.DeleteBackupPlanOutput, error)
 	DeleteBackupSelectionWithContext(ctx context.Context, input *backup.DeleteBackupSelectionInput, opts ...request.Option) (*backup.DeleteBackupSelectionOutput, error)
@@ -70,6 +71,8 @@ type Backup interface {
 	ListLegalHoldsPagesWithContext(ctx context.Context, input *backup.ListLegalHoldsInput, cb func(*backup.ListLegalHoldsOutput, bool) bool, opts ...request.Option) error
 	ListProtectedResourcesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, opts ...request.Option) (*backup.ListProtectedResourcesOutput, error)
 	ListProtectedResourcesPagesWithContext(ctx context.Context, input *backup.ListProtectedResourcesInput, cb func(*backup.ListProtectedResourcesOutput, bool) bool, opts ...request.Option) error
+	ListProtectedResourcesByBackupVaultWithContext(ctx context.Context, input *backup.ListProtectedResourcesByBackupVaultInput, opts ...request.Option) (*backup.ListProtectedResourcesByBackupVaultOutput, error)
+	ListProtectedResourcesByBackupVaultPagesWithContext(ctx context.Context, input *backup.ListProtectedResourcesByBackupVaultInput, cb func(*backup.ListProtectedResourcesByBackupVaultOutput, bool) bool, opts ...request.Option) error
 	ListRecoveryPointsByBackupVaultWithContext(ctx context.Context, input *backup.ListRecoveryPointsByBackupVaultInput, opts ...request.Option) (*backup.ListRecoveryPointsByBackupVaultOutput, error)
 	ListRecoveryPointsByBackupVaultPagesWithContext(ctx context.Context, input *backup.ListRecoveryPointsByBackupVaultInput, cb func(*backup.ListRecoveryPointsByBackupVaultOutput, bool) bool, opts ...request.Option) error
 	ListRecoveryPointsByLegalHoldWithContext(ctx context.Context, input *backup.ListRecoveryPointsByLegalHoldInput, opts ...request.Option) (*backup.ListRecoveryPointsByLegalHoldOutput, error)
@@ -241,6 +244,27 @@ func (c *Client) CreateLegalHoldWithContext(ctx context.Context, input *backup.C
 	})
 
 	return req.Output.(*backup.CreateLegalHoldOutput), req.Error
+}
+
+func (c *Client) CreateLogicallyAirGappedBackupVaultWithContext(ctx context.Context, input *backup.CreateLogicallyAirGappedBackupVaultInput, opts ...request.Option) (*backup.CreateLogicallyAirGappedBackupVaultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "CreateLogicallyAirGappedBackupVault",
+		Input:   input,
+		Output:  (*backup.CreateLogicallyAirGappedBackupVaultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.CreateLogicallyAirGappedBackupVaultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.CreateLogicallyAirGappedBackupVaultOutput), req.Error
 }
 
 func (c *Client) CreateReportPlanWithContext(ctx context.Context, input *backup.CreateReportPlanInput, opts ...request.Option) (*backup.CreateReportPlanOutput, error) {
@@ -1341,6 +1365,47 @@ func (c *Client) ListProtectedResourcesPagesWithContext(ctx context.Context, inp
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.BackupAPI.ListProtectedResourcesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListProtectedResourcesByBackupVaultWithContext(ctx context.Context, input *backup.ListProtectedResourcesByBackupVaultInput, opts ...request.Option) (*backup.ListProtectedResourcesByBackupVaultOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListProtectedResourcesByBackupVault",
+		Input:   input,
+		Output:  (*backup.ListProtectedResourcesByBackupVaultOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListProtectedResourcesByBackupVaultWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListProtectedResourcesByBackupVaultOutput), req.Error
+}
+
+func (c *Client) ListProtectedResourcesByBackupVaultPagesWithContext(ctx context.Context, input *backup.ListProtectedResourcesByBackupVaultInput, cb func(*backup.ListProtectedResourcesByBackupVaultOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListProtectedResourcesByBackupVault",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListProtectedResourcesByBackupVaultPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
