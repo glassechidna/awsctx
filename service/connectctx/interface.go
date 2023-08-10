@@ -22,6 +22,7 @@ type Connect interface {
 	AssociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.AssociateQueueQuickConnectsInput, opts ...request.Option) (*connect.AssociateQueueQuickConnectsOutput, error)
 	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
+	AssociateTrafficDistributionGroupUserWithContext(ctx context.Context, input *connect.AssociateTrafficDistributionGroupUserInput, opts ...request.Option) (*connect.AssociateTrafficDistributionGroupUserOutput, error)
 	ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error)
 	CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
@@ -94,6 +95,7 @@ type Connect interface {
 	DisassociateQueueQuickConnectsWithContext(ctx context.Context, input *connect.DisassociateQueueQuickConnectsInput, opts ...request.Option) (*connect.DisassociateQueueQuickConnectsOutput, error)
 	DisassociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.DisassociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.DisassociateRoutingProfileQueuesOutput, error)
 	DisassociateSecurityKeyWithContext(ctx context.Context, input *connect.DisassociateSecurityKeyInput, opts ...request.Option) (*connect.DisassociateSecurityKeyOutput, error)
+	DisassociateTrafficDistributionGroupUserWithContext(ctx context.Context, input *connect.DisassociateTrafficDistributionGroupUserInput, opts ...request.Option) (*connect.DisassociateTrafficDistributionGroupUserOutput, error)
 	DismissUserContactWithContext(ctx context.Context, input *connect.DismissUserContactInput, opts ...request.Option) (*connect.DismissUserContactOutput, error)
 	GetContactAttributesWithContext(ctx context.Context, input *connect.GetContactAttributesInput, opts ...request.Option) (*connect.GetContactAttributesOutput, error)
 	GetCurrentMetricDataWithContext(ctx context.Context, input *connect.GetCurrentMetricDataInput, opts ...request.Option) (*connect.GetCurrentMetricDataOutput, error)
@@ -169,6 +171,8 @@ type Connect interface {
 	ListTagsForResourceWithContext(ctx context.Context, input *connect.ListTagsForResourceInput, opts ...request.Option) (*connect.ListTagsForResourceOutput, error)
 	ListTaskTemplatesWithContext(ctx context.Context, input *connect.ListTaskTemplatesInput, opts ...request.Option) (*connect.ListTaskTemplatesOutput, error)
 	ListTaskTemplatesPagesWithContext(ctx context.Context, input *connect.ListTaskTemplatesInput, cb func(*connect.ListTaskTemplatesOutput, bool) bool, opts ...request.Option) error
+	ListTrafficDistributionGroupUsersWithContext(ctx context.Context, input *connect.ListTrafficDistributionGroupUsersInput, opts ...request.Option) (*connect.ListTrafficDistributionGroupUsersOutput, error)
+	ListTrafficDistributionGroupUsersPagesWithContext(ctx context.Context, input *connect.ListTrafficDistributionGroupUsersInput, cb func(*connect.ListTrafficDistributionGroupUsersOutput, bool) bool, opts ...request.Option) error
 	ListTrafficDistributionGroupsWithContext(ctx context.Context, input *connect.ListTrafficDistributionGroupsInput, opts ...request.Option) (*connect.ListTrafficDistributionGroupsOutput, error)
 	ListTrafficDistributionGroupsPagesWithContext(ctx context.Context, input *connect.ListTrafficDistributionGroupsInput, cb func(*connect.ListTrafficDistributionGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUseCasesWithContext(ctx context.Context, input *connect.ListUseCasesInput, opts ...request.Option) (*connect.ListUseCasesOutput, error)
@@ -502,6 +506,27 @@ func (c *Client) AssociateSecurityKeyWithContext(ctx context.Context, input *con
 	})
 
 	return req.Output.(*connect.AssociateSecurityKeyOutput), req.Error
+}
+
+func (c *Client) AssociateTrafficDistributionGroupUserWithContext(ctx context.Context, input *connect.AssociateTrafficDistributionGroupUserInput, opts ...request.Option) (*connect.AssociateTrafficDistributionGroupUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "AssociateTrafficDistributionGroupUser",
+		Input:   input,
+		Output:  (*connect.AssociateTrafficDistributionGroupUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.AssociateTrafficDistributionGroupUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.AssociateTrafficDistributionGroupUserOutput), req.Error
 }
 
 func (c *Client) ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error) {
@@ -2014,6 +2039,27 @@ func (c *Client) DisassociateSecurityKeyWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.DisassociateSecurityKeyOutput), req.Error
+}
+
+func (c *Client) DisassociateTrafficDistributionGroupUserWithContext(ctx context.Context, input *connect.DisassociateTrafficDistributionGroupUserInput, opts ...request.Option) (*connect.DisassociateTrafficDistributionGroupUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DisassociateTrafficDistributionGroupUser",
+		Input:   input,
+		Output:  (*connect.DisassociateTrafficDistributionGroupUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DisassociateTrafficDistributionGroupUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DisassociateTrafficDistributionGroupUserOutput), req.Error
 }
 
 func (c *Client) DismissUserContactWithContext(ctx context.Context, input *connect.DismissUserContactInput, opts ...request.Option) (*connect.DismissUserContactOutput, error) {
@@ -3552,6 +3598,47 @@ func (c *Client) ListTaskTemplatesPagesWithContext(ctx context.Context, input *c
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListTaskTemplatesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTrafficDistributionGroupUsersWithContext(ctx context.Context, input *connect.ListTrafficDistributionGroupUsersInput, opts ...request.Option) (*connect.ListTrafficDistributionGroupUsersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListTrafficDistributionGroupUsers",
+		Input:   input,
+		Output:  (*connect.ListTrafficDistributionGroupUsersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListTrafficDistributionGroupUsersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListTrafficDistributionGroupUsersOutput), req.Error
+}
+
+func (c *Client) ListTrafficDistributionGroupUsersPagesWithContext(ctx context.Context, input *connect.ListTrafficDistributionGroupUsersInput, cb func(*connect.ListTrafficDistributionGroupUsersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListTrafficDistributionGroupUsers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListTrafficDistributionGroupUsersPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
