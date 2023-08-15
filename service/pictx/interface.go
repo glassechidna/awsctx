@@ -11,9 +11,12 @@ import (
 )
 
 type PI interface {
+	CreatePerformanceAnalysisReportWithContext(ctx context.Context, input *pi.CreatePerformanceAnalysisReportInput, opts ...request.Option) (*pi.CreatePerformanceAnalysisReportOutput, error)
+	DeletePerformanceAnalysisReportWithContext(ctx context.Context, input *pi.DeletePerformanceAnalysisReportInput, opts ...request.Option) (*pi.DeletePerformanceAnalysisReportOutput, error)
 	DescribeDimensionKeysWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, opts ...request.Option) (*pi.DescribeDimensionKeysOutput, error)
 	DescribeDimensionKeysPagesWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, cb func(*pi.DescribeDimensionKeysOutput, bool) bool, opts ...request.Option) error
 	GetDimensionKeyDetailsWithContext(ctx context.Context, input *pi.GetDimensionKeyDetailsInput, opts ...request.Option) (*pi.GetDimensionKeyDetailsOutput, error)
+	GetPerformanceAnalysisReportWithContext(ctx context.Context, input *pi.GetPerformanceAnalysisReportInput, opts ...request.Option) (*pi.GetPerformanceAnalysisReportOutput, error)
 	GetResourceMetadataWithContext(ctx context.Context, input *pi.GetResourceMetadataInput, opts ...request.Option) (*pi.GetResourceMetadataOutput, error)
 	GetResourceMetricsWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, opts ...request.Option) (*pi.GetResourceMetricsOutput, error)
 	GetResourceMetricsPagesWithContext(ctx context.Context, input *pi.GetResourceMetricsInput, cb func(*pi.GetResourceMetricsOutput, bool) bool, opts ...request.Option) error
@@ -21,6 +24,11 @@ type PI interface {
 	ListAvailableResourceDimensionsPagesWithContext(ctx context.Context, input *pi.ListAvailableResourceDimensionsInput, cb func(*pi.ListAvailableResourceDimensionsOutput, bool) bool, opts ...request.Option) error
 	ListAvailableResourceMetricsWithContext(ctx context.Context, input *pi.ListAvailableResourceMetricsInput, opts ...request.Option) (*pi.ListAvailableResourceMetricsOutput, error)
 	ListAvailableResourceMetricsPagesWithContext(ctx context.Context, input *pi.ListAvailableResourceMetricsInput, cb func(*pi.ListAvailableResourceMetricsOutput, bool) bool, opts ...request.Option) error
+	ListPerformanceAnalysisReportsWithContext(ctx context.Context, input *pi.ListPerformanceAnalysisReportsInput, opts ...request.Option) (*pi.ListPerformanceAnalysisReportsOutput, error)
+	ListPerformanceAnalysisReportsPagesWithContext(ctx context.Context, input *pi.ListPerformanceAnalysisReportsInput, cb func(*pi.ListPerformanceAnalysisReportsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *pi.ListTagsForResourceInput, opts ...request.Option) (*pi.ListTagsForResourceOutput, error)
+	TagResourceWithContext(ctx context.Context, input *pi.TagResourceInput, opts ...request.Option) (*pi.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *pi.UntagResourceInput, opts ...request.Option) (*pi.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -37,6 +45,48 @@ func New(base piiface.PIAPI, ctxer awsctx.Contexter) PI {
 
 var _ PI = (*pi.PI)(nil)
 var _ PI = (*Client)(nil)
+
+func (c *Client) CreatePerformanceAnalysisReportWithContext(ctx context.Context, input *pi.CreatePerformanceAnalysisReportInput, opts ...request.Option) (*pi.CreatePerformanceAnalysisReportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "CreatePerformanceAnalysisReport",
+		Input:   input,
+		Output:  (*pi.CreatePerformanceAnalysisReportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.CreatePerformanceAnalysisReportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.CreatePerformanceAnalysisReportOutput), req.Error
+}
+
+func (c *Client) DeletePerformanceAnalysisReportWithContext(ctx context.Context, input *pi.DeletePerformanceAnalysisReportInput, opts ...request.Option) (*pi.DeletePerformanceAnalysisReportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "DeletePerformanceAnalysisReport",
+		Input:   input,
+		Output:  (*pi.DeletePerformanceAnalysisReportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.DeletePerformanceAnalysisReportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.DeletePerformanceAnalysisReportOutput), req.Error
+}
 
 func (c *Client) DescribeDimensionKeysWithContext(ctx context.Context, input *pi.DescribeDimensionKeysInput, opts ...request.Option) (*pi.DescribeDimensionKeysOutput, error) {
 	req := &awsctx.AwsRequest{
@@ -98,6 +148,27 @@ func (c *Client) GetDimensionKeyDetailsWithContext(ctx context.Context, input *p
 	})
 
 	return req.Output.(*pi.GetDimensionKeyDetailsOutput), req.Error
+}
+
+func (c *Client) GetPerformanceAnalysisReportWithContext(ctx context.Context, input *pi.GetPerformanceAnalysisReportInput, opts ...request.Option) (*pi.GetPerformanceAnalysisReportOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "GetPerformanceAnalysisReport",
+		Input:   input,
+		Output:  (*pi.GetPerformanceAnalysisReportOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.GetPerformanceAnalysisReportWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.GetPerformanceAnalysisReportOutput), req.Error
 }
 
 func (c *Client) GetResourceMetadataWithContext(ctx context.Context, input *pi.GetResourceMetadataInput, opts ...request.Option) (*pi.GetResourceMetadataOutput, error) {
@@ -242,4 +313,108 @@ func (c *Client) ListAvailableResourceMetricsPagesWithContext(ctx context.Contex
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListPerformanceAnalysisReportsWithContext(ctx context.Context, input *pi.ListPerformanceAnalysisReportsInput, opts ...request.Option) (*pi.ListPerformanceAnalysisReportsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListPerformanceAnalysisReports",
+		Input:   input,
+		Output:  (*pi.ListPerformanceAnalysisReportsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.ListPerformanceAnalysisReportsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.ListPerformanceAnalysisReportsOutput), req.Error
+}
+
+func (c *Client) ListPerformanceAnalysisReportsPagesWithContext(ctx context.Context, input *pi.ListPerformanceAnalysisReportsInput, cb func(*pi.ListPerformanceAnalysisReportsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListPerformanceAnalysisReports",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.PIAPI.ListPerformanceAnalysisReportsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *pi.ListTagsForResourceInput, opts ...request.Option) (*pi.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*pi.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.ListTagsForResourceOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *pi.TagResourceInput, opts ...request.Option) (*pi.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*pi.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *pi.UntagResourceInput, opts ...request.Option) (*pi.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "pi",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*pi.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.PIAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*pi.UntagResourceOutput), req.Error
 }
