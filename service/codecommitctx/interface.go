@@ -66,6 +66,8 @@ type CodeCommit interface {
 	ListAssociatedApprovalRuleTemplatesForRepositoryPagesWithContext(ctx context.Context, input *codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryInput, cb func(*codecommit.ListAssociatedApprovalRuleTemplatesForRepositoryOutput, bool) bool, opts ...request.Option) error
 	ListBranchesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, opts ...request.Option) (*codecommit.ListBranchesOutput, error)
 	ListBranchesPagesWithContext(ctx context.Context, input *codecommit.ListBranchesInput, cb func(*codecommit.ListBranchesOutput, bool) bool, opts ...request.Option) error
+	ListFileCommitHistoryWithContext(ctx context.Context, input *codecommit.ListFileCommitHistoryInput, opts ...request.Option) (*codecommit.ListFileCommitHistoryOutput, error)
+	ListFileCommitHistoryPagesWithContext(ctx context.Context, input *codecommit.ListFileCommitHistoryInput, cb func(*codecommit.ListFileCommitHistoryOutput, bool) bool, opts ...request.Option) error
 	ListPullRequestsWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, opts ...request.Option) (*codecommit.ListPullRequestsOutput, error)
 	ListPullRequestsPagesWithContext(ctx context.Context, input *codecommit.ListPullRequestsInput, cb func(*codecommit.ListPullRequestsOutput, bool) bool, opts ...request.Option) error
 	ListRepositoriesWithContext(ctx context.Context, input *codecommit.ListRepositoriesInput, opts ...request.Option) (*codecommit.ListRepositoriesOutput, error)
@@ -1258,6 +1260,47 @@ func (c *Client) ListBranchesPagesWithContext(ctx context.Context, input *codeco
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.CodeCommitAPI.ListBranchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListFileCommitHistoryWithContext(ctx context.Context, input *codecommit.ListFileCommitHistoryInput, opts ...request.Option) (*codecommit.ListFileCommitHistoryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListFileCommitHistory",
+		Input:   input,
+		Output:  (*codecommit.ListFileCommitHistoryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CodeCommitAPI.ListFileCommitHistoryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*codecommit.ListFileCommitHistoryOutput), req.Error
+}
+
+func (c *Client) ListFileCommitHistoryPagesWithContext(ctx context.Context, input *codecommit.ListFileCommitHistoryInput, cb func(*codecommit.ListFileCommitHistoryOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "codecommit",
+		Action:  "ListFileCommitHistory",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.CodeCommitAPI.ListFileCommitHistoryPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
