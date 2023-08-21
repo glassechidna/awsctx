@@ -187,6 +187,7 @@ type RDS interface {
 	StopDBInstanceWithContext(ctx context.Context, input *rds.StopDBInstanceInput, opts ...request.Option) (*rds.StopDBInstanceOutput, error)
 	StopDBInstanceAutomatedBackupsReplicationWithContext(ctx context.Context, input *rds.StopDBInstanceAutomatedBackupsReplicationInput, opts ...request.Option) (*rds.StopDBInstanceAutomatedBackupsReplicationOutput, error)
 	SwitchoverBlueGreenDeploymentWithContext(ctx context.Context, input *rds.SwitchoverBlueGreenDeploymentInput, opts ...request.Option) (*rds.SwitchoverBlueGreenDeploymentOutput, error)
+	SwitchoverGlobalClusterWithContext(ctx context.Context, input *rds.SwitchoverGlobalClusterInput, opts ...request.Option) (*rds.SwitchoverGlobalClusterOutput, error)
 	SwitchoverReadReplicaWithContext(ctx context.Context, input *rds.SwitchoverReadReplicaInput, opts ...request.Option) (*rds.SwitchoverReadReplicaOutput, error)
 }
 
@@ -3865,6 +3866,27 @@ func (c *Client) SwitchoverBlueGreenDeploymentWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*rds.SwitchoverBlueGreenDeploymentOutput), req.Error
+}
+
+func (c *Client) SwitchoverGlobalClusterWithContext(ctx context.Context, input *rds.SwitchoverGlobalClusterInput, opts ...request.Option) (*rds.SwitchoverGlobalClusterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "SwitchoverGlobalCluster",
+		Input:   input,
+		Output:  (*rds.SwitchoverGlobalClusterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.SwitchoverGlobalClusterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.SwitchoverGlobalClusterOutput), req.Error
 }
 
 func (c *Client) SwitchoverReadReplicaWithContext(ctx context.Context, input *rds.SwitchoverReadReplicaInput, opts ...request.Option) (*rds.SwitchoverReadReplicaOutput, error) {
