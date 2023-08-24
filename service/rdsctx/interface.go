@@ -66,6 +66,7 @@ type RDS interface {
 	DescribeCertificatesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, opts ...request.Option) (*rds.DescribeCertificatesOutput, error)
 	DescribeCertificatesPagesWithContext(ctx context.Context, input *rds.DescribeCertificatesInput, cb func(*rds.DescribeCertificatesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterAutomatedBackupsWithContext(ctx context.Context, input *rds.DescribeDBClusterAutomatedBackupsInput, opts ...request.Option) (*rds.DescribeDBClusterAutomatedBackupsOutput, error)
+	DescribeDBClusterAutomatedBackupsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterAutomatedBackupsInput, cb func(*rds.DescribeDBClusterAutomatedBackupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error)
 	DescribeDBClusterBacktracksPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, cb func(*rds.DescribeDBClusterBacktracksOutput, bool) bool, opts ...request.Option) error
 	DescribeDBClusterEndpointsWithContext(ctx context.Context, input *rds.DescribeDBClusterEndpointsInput, opts ...request.Option) (*rds.DescribeDBClusterEndpointsOutput, error)
@@ -1357,6 +1358,26 @@ func (c *Client) DescribeDBClusterAutomatedBackupsWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*rds.DescribeDBClusterAutomatedBackupsOutput), req.Error
+}
+
+func (c *Client) DescribeDBClusterAutomatedBackupsPagesWithContext(ctx context.Context, input *rds.DescribeDBClusterAutomatedBackupsInput, cb func(*rds.DescribeDBClusterAutomatedBackupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBClusterAutomatedBackups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBClusterAutomatedBackupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeDBClusterBacktracksWithContext(ctx context.Context, input *rds.DescribeDBClusterBacktracksInput, opts ...request.Option) (*rds.DescribeDBClusterBacktracksOutput, error) {

@@ -76,7 +76,9 @@ type QuickSight interface {
 	DescribeDataSourcePermissionsWithContext(ctx context.Context, input *quicksight.DescribeDataSourcePermissionsInput, opts ...request.Option) (*quicksight.DescribeDataSourcePermissionsOutput, error)
 	DescribeFolderWithContext(ctx context.Context, input *quicksight.DescribeFolderInput, opts ...request.Option) (*quicksight.DescribeFolderOutput, error)
 	DescribeFolderPermissionsWithContext(ctx context.Context, input *quicksight.DescribeFolderPermissionsInput, opts ...request.Option) (*quicksight.DescribeFolderPermissionsOutput, error)
+	DescribeFolderPermissionsPagesWithContext(ctx context.Context, input *quicksight.DescribeFolderPermissionsInput, cb func(*quicksight.DescribeFolderPermissionsOutput, bool) bool, opts ...request.Option) error
 	DescribeFolderResolvedPermissionsWithContext(ctx context.Context, input *quicksight.DescribeFolderResolvedPermissionsInput, opts ...request.Option) (*quicksight.DescribeFolderResolvedPermissionsOutput, error)
+	DescribeFolderResolvedPermissionsPagesWithContext(ctx context.Context, input *quicksight.DescribeFolderResolvedPermissionsInput, cb func(*quicksight.DescribeFolderResolvedPermissionsOutput, bool) bool, opts ...request.Option) error
 	DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error)
 	DescribeGroupMembershipWithContext(ctx context.Context, input *quicksight.DescribeGroupMembershipInput, opts ...request.Option) (*quicksight.DescribeGroupMembershipOutput, error)
 	DescribeIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DescribeIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DescribeIAMPolicyAssignmentOutput, error)
@@ -116,7 +118,9 @@ type QuickSight interface {
 	ListDataSourcesWithContext(ctx context.Context, input *quicksight.ListDataSourcesInput, opts ...request.Option) (*quicksight.ListDataSourcesOutput, error)
 	ListDataSourcesPagesWithContext(ctx context.Context, input *quicksight.ListDataSourcesInput, cb func(*quicksight.ListDataSourcesOutput, bool) bool, opts ...request.Option) error
 	ListFolderMembersWithContext(ctx context.Context, input *quicksight.ListFolderMembersInput, opts ...request.Option) (*quicksight.ListFolderMembersOutput, error)
+	ListFolderMembersPagesWithContext(ctx context.Context, input *quicksight.ListFolderMembersInput, cb func(*quicksight.ListFolderMembersOutput, bool) bool, opts ...request.Option) error
 	ListFoldersWithContext(ctx context.Context, input *quicksight.ListFoldersInput, opts ...request.Option) (*quicksight.ListFoldersOutput, error)
+	ListFoldersPagesWithContext(ctx context.Context, input *quicksight.ListFoldersInput, cb func(*quicksight.ListFoldersOutput, bool) bool, opts ...request.Option) error
 	ListGroupMembershipsWithContext(ctx context.Context, input *quicksight.ListGroupMembershipsInput, opts ...request.Option) (*quicksight.ListGroupMembershipsOutput, error)
 	ListGroupMembershipsPagesWithContext(ctx context.Context, input *quicksight.ListGroupMembershipsInput, cb func(*quicksight.ListGroupMembershipsOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *quicksight.ListGroupsInput, opts ...request.Option) (*quicksight.ListGroupsOutput, error)
@@ -163,6 +167,7 @@ type QuickSight interface {
 	SearchDataSourcesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, opts ...request.Option) (*quicksight.SearchDataSourcesOutput, error)
 	SearchDataSourcesPagesWithContext(ctx context.Context, input *quicksight.SearchDataSourcesInput, cb func(*quicksight.SearchDataSourcesOutput, bool) bool, opts ...request.Option) error
 	SearchFoldersWithContext(ctx context.Context, input *quicksight.SearchFoldersInput, opts ...request.Option) (*quicksight.SearchFoldersOutput, error)
+	SearchFoldersPagesWithContext(ctx context.Context, input *quicksight.SearchFoldersInput, cb func(*quicksight.SearchFoldersOutput, bool) bool, opts ...request.Option) error
 	SearchGroupsWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, opts ...request.Option) (*quicksight.SearchGroupsOutput, error)
 	SearchGroupsPagesWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, cb func(*quicksight.SearchGroupsOutput, bool) bool, opts ...request.Option) error
 	StartAssetBundleExportJobWithContext(ctx context.Context, input *quicksight.StartAssetBundleExportJobInput, opts ...request.Option) (*quicksight.StartAssetBundleExportJobOutput, error)
@@ -1581,6 +1586,26 @@ func (c *Client) DescribeFolderPermissionsWithContext(ctx context.Context, input
 	return req.Output.(*quicksight.DescribeFolderPermissionsOutput), req.Error
 }
 
+func (c *Client) DescribeFolderPermissionsPagesWithContext(ctx context.Context, input *quicksight.DescribeFolderPermissionsInput, cb func(*quicksight.DescribeFolderPermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeFolderPermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.DescribeFolderPermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeFolderResolvedPermissionsWithContext(ctx context.Context, input *quicksight.DescribeFolderResolvedPermissionsInput, opts ...request.Option) (*quicksight.DescribeFolderResolvedPermissionsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -1600,6 +1625,26 @@ func (c *Client) DescribeFolderResolvedPermissionsWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*quicksight.DescribeFolderResolvedPermissionsOutput), req.Error
+}
+
+func (c *Client) DescribeFolderResolvedPermissionsPagesWithContext(ctx context.Context, input *quicksight.DescribeFolderResolvedPermissionsInput, cb func(*quicksight.DescribeFolderResolvedPermissionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeFolderResolvedPermissions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.DescribeFolderResolvedPermissionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *quicksight.DescribeGroupInput, opts ...request.Option) (*quicksight.DescribeGroupOutput, error) {
@@ -2414,6 +2459,26 @@ func (c *Client) ListFolderMembersWithContext(ctx context.Context, input *quicks
 	return req.Output.(*quicksight.ListFolderMembersOutput), req.Error
 }
 
+func (c *Client) ListFolderMembersPagesWithContext(ctx context.Context, input *quicksight.ListFolderMembersInput, cb func(*quicksight.ListFolderMembersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListFolderMembers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListFolderMembersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListFoldersWithContext(ctx context.Context, input *quicksight.ListFoldersInput, opts ...request.Option) (*quicksight.ListFoldersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "quicksight",
@@ -2433,6 +2498,26 @@ func (c *Client) ListFoldersWithContext(ctx context.Context, input *quicksight.L
 	})
 
 	return req.Output.(*quicksight.ListFoldersOutput), req.Error
+}
+
+func (c *Client) ListFoldersPagesWithContext(ctx context.Context, input *quicksight.ListFoldersInput, cb func(*quicksight.ListFoldersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListFolders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListFoldersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListGroupMembershipsWithContext(ctx context.Context, input *quicksight.ListGroupMembershipsInput, opts ...request.Option) (*quicksight.ListGroupMembershipsOutput, error) {
@@ -3380,6 +3465,26 @@ func (c *Client) SearchFoldersWithContext(ctx context.Context, input *quicksight
 	})
 
 	return req.Output.(*quicksight.SearchFoldersOutput), req.Error
+}
+
+func (c *Client) SearchFoldersPagesWithContext(ctx context.Context, input *quicksight.SearchFoldersInput, cb func(*quicksight.SearchFoldersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "SearchFolders",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.SearchFoldersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) SearchGroupsWithContext(ctx context.Context, input *quicksight.SearchGroupsInput, opts ...request.Option) (*quicksight.SearchGroupsOutput, error) {
