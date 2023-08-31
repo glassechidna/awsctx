@@ -18,6 +18,7 @@ type Health interface {
 	DescribeAffectedEntitiesForOrganizationWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesForOrganizationInput, opts ...request.Option) (*health.DescribeAffectedEntitiesForOrganizationOutput, error)
 	DescribeAffectedEntitiesForOrganizationPagesWithContext(ctx context.Context, input *health.DescribeAffectedEntitiesForOrganizationInput, cb func(*health.DescribeAffectedEntitiesForOrganizationOutput, bool) bool, opts ...request.Option) error
 	DescribeEntityAggregatesWithContext(ctx context.Context, input *health.DescribeEntityAggregatesInput, opts ...request.Option) (*health.DescribeEntityAggregatesOutput, error)
+	DescribeEntityAggregatesForOrganizationWithContext(ctx context.Context, input *health.DescribeEntityAggregatesForOrganizationInput, opts ...request.Option) (*health.DescribeEntityAggregatesForOrganizationOutput, error)
 	DescribeEventAggregatesWithContext(ctx context.Context, input *health.DescribeEventAggregatesInput, opts ...request.Option) (*health.DescribeEventAggregatesOutput, error)
 	DescribeEventAggregatesPagesWithContext(ctx context.Context, input *health.DescribeEventAggregatesInput, cb func(*health.DescribeEventAggregatesOutput, bool) bool, opts ...request.Option) error
 	DescribeEventDetailsWithContext(ctx context.Context, input *health.DescribeEventDetailsInput, opts ...request.Option) (*health.DescribeEventDetailsOutput, error)
@@ -190,6 +191,27 @@ func (c *Client) DescribeEntityAggregatesWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*health.DescribeEntityAggregatesOutput), req.Error
+}
+
+func (c *Client) DescribeEntityAggregatesForOrganizationWithContext(ctx context.Context, input *health.DescribeEntityAggregatesForOrganizationInput, opts ...request.Option) (*health.DescribeEntityAggregatesForOrganizationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "health",
+		Action:  "DescribeEntityAggregatesForOrganization",
+		Input:   input,
+		Output:  (*health.DescribeEntityAggregatesForOrganizationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.HealthAPI.DescribeEntityAggregatesForOrganizationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*health.DescribeEntityAggregatesForOrganizationOutput), req.Error
 }
 
 func (c *Client) DescribeEventAggregatesWithContext(ctx context.Context, input *health.DescribeEventAggregatesInput, opts ...request.Option) (*health.DescribeEventAggregatesOutput, error) {

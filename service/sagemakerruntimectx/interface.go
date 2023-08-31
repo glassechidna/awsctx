@@ -13,6 +13,7 @@ import (
 type SageMakerRuntime interface {
 	InvokeEndpointWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointOutput, error)
 	InvokeEndpointAsyncWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointAsyncInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointAsyncOutput, error)
+	InvokeEndpointWithResponseStreamWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointWithResponseStreamInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointWithResponseStreamOutput, error)
 }
 
 type Client struct {
@@ -70,4 +71,25 @@ func (c *Client) InvokeEndpointAsyncWithContext(ctx context.Context, input *sage
 	})
 
 	return req.Output.(*sagemakerruntime.InvokeEndpointAsyncOutput), req.Error
+}
+
+func (c *Client) InvokeEndpointWithResponseStreamWithContext(ctx context.Context, input *sagemakerruntime.InvokeEndpointWithResponseStreamInput, opts ...request.Option) (*sagemakerruntime.InvokeEndpointWithResponseStreamOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sagemakerruntime",
+		Action:  "InvokeEndpointWithResponseStream",
+		Input:   input,
+		Output:  (*sagemakerruntime.InvokeEndpointWithResponseStreamOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SageMakerRuntimeAPI.InvokeEndpointWithResponseStreamWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sagemakerruntime.InvokeEndpointWithResponseStreamOutput), req.Error
 }
