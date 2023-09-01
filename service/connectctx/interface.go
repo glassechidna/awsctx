@@ -43,6 +43,8 @@ type Connect interface {
 	CreateUseCaseWithContext(ctx context.Context, input *connect.CreateUseCaseInput, opts ...request.Option) (*connect.CreateUseCaseOutput, error)
 	CreateUserWithContext(ctx context.Context, input *connect.CreateUserInput, opts ...request.Option) (*connect.CreateUserOutput, error)
 	CreateUserHierarchyGroupWithContext(ctx context.Context, input *connect.CreateUserHierarchyGroupInput, opts ...request.Option) (*connect.CreateUserHierarchyGroupOutput, error)
+	CreateViewWithContext(ctx context.Context, input *connect.CreateViewInput, opts ...request.Option) (*connect.CreateViewOutput, error)
+	CreateViewVersionWithContext(ctx context.Context, input *connect.CreateViewVersionInput, opts ...request.Option) (*connect.CreateViewVersionOutput, error)
 	CreateVocabularyWithContext(ctx context.Context, input *connect.CreateVocabularyInput, opts ...request.Option) (*connect.CreateVocabularyOutput, error)
 	DeactivateEvaluationFormWithContext(ctx context.Context, input *connect.DeactivateEvaluationFormInput, opts ...request.Option) (*connect.DeactivateEvaluationFormOutput, error)
 	DeleteContactEvaluationWithContext(ctx context.Context, input *connect.DeleteContactEvaluationInput, opts ...request.Option) (*connect.DeleteContactEvaluationOutput, error)
@@ -63,6 +65,8 @@ type Connect interface {
 	DeleteUseCaseWithContext(ctx context.Context, input *connect.DeleteUseCaseInput, opts ...request.Option) (*connect.DeleteUseCaseOutput, error)
 	DeleteUserWithContext(ctx context.Context, input *connect.DeleteUserInput, opts ...request.Option) (*connect.DeleteUserOutput, error)
 	DeleteUserHierarchyGroupWithContext(ctx context.Context, input *connect.DeleteUserHierarchyGroupInput, opts ...request.Option) (*connect.DeleteUserHierarchyGroupOutput, error)
+	DeleteViewWithContext(ctx context.Context, input *connect.DeleteViewInput, opts ...request.Option) (*connect.DeleteViewOutput, error)
+	DeleteViewVersionWithContext(ctx context.Context, input *connect.DeleteViewVersionInput, opts ...request.Option) (*connect.DeleteViewVersionOutput, error)
 	DeleteVocabularyWithContext(ctx context.Context, input *connect.DeleteVocabularyInput, opts ...request.Option) (*connect.DeleteVocabularyOutput, error)
 	DescribeAgentStatusWithContext(ctx context.Context, input *connect.DescribeAgentStatusInput, opts ...request.Option) (*connect.DescribeAgentStatusOutput, error)
 	DescribeContactWithContext(ctx context.Context, input *connect.DescribeContactInput, opts ...request.Option) (*connect.DescribeContactOutput, error)
@@ -85,6 +89,7 @@ type Connect interface {
 	DescribeUserWithContext(ctx context.Context, input *connect.DescribeUserInput, opts ...request.Option) (*connect.DescribeUserOutput, error)
 	DescribeUserHierarchyGroupWithContext(ctx context.Context, input *connect.DescribeUserHierarchyGroupInput, opts ...request.Option) (*connect.DescribeUserHierarchyGroupOutput, error)
 	DescribeUserHierarchyStructureWithContext(ctx context.Context, input *connect.DescribeUserHierarchyStructureInput, opts ...request.Option) (*connect.DescribeUserHierarchyStructureOutput, error)
+	DescribeViewWithContext(ctx context.Context, input *connect.DescribeViewInput, opts ...request.Option) (*connect.DescribeViewOutput, error)
 	DescribeVocabularyWithContext(ctx context.Context, input *connect.DescribeVocabularyInput, opts ...request.Option) (*connect.DescribeVocabularyOutput, error)
 	DisassociateApprovedOriginWithContext(ctx context.Context, input *connect.DisassociateApprovedOriginInput, opts ...request.Option) (*connect.DisassociateApprovedOriginOutput, error)
 	DisassociateBotWithContext(ctx context.Context, input *connect.DisassociateBotInput, opts ...request.Option) (*connect.DisassociateBotOutput, error)
@@ -181,6 +186,10 @@ type Connect interface {
 	ListUserHierarchyGroupsPagesWithContext(ctx context.Context, input *connect.ListUserHierarchyGroupsInput, cb func(*connect.ListUserHierarchyGroupsOutput, bool) bool, opts ...request.Option) error
 	ListUsersWithContext(ctx context.Context, input *connect.ListUsersInput, opts ...request.Option) (*connect.ListUsersOutput, error)
 	ListUsersPagesWithContext(ctx context.Context, input *connect.ListUsersInput, cb func(*connect.ListUsersOutput, bool) bool, opts ...request.Option) error
+	ListViewVersionsWithContext(ctx context.Context, input *connect.ListViewVersionsInput, opts ...request.Option) (*connect.ListViewVersionsOutput, error)
+	ListViewVersionsPagesWithContext(ctx context.Context, input *connect.ListViewVersionsInput, cb func(*connect.ListViewVersionsOutput, bool) bool, opts ...request.Option) error
+	ListViewsWithContext(ctx context.Context, input *connect.ListViewsInput, opts ...request.Option) (*connect.ListViewsOutput, error)
+	ListViewsPagesWithContext(ctx context.Context, input *connect.ListViewsInput, cb func(*connect.ListViewsOutput, bool) bool, opts ...request.Option) error
 	MonitorContactWithContext(ctx context.Context, input *connect.MonitorContactInput, opts ...request.Option) (*connect.MonitorContactOutput, error)
 	PutUserStatusWithContext(ctx context.Context, input *connect.PutUserStatusInput, opts ...request.Option) (*connect.PutUserStatusOutput, error)
 	ReleasePhoneNumberWithContext(ctx context.Context, input *connect.ReleasePhoneNumberInput, opts ...request.Option) (*connect.ReleasePhoneNumberOutput, error)
@@ -260,6 +269,8 @@ type Connect interface {
 	UpdateUserPhoneConfigWithContext(ctx context.Context, input *connect.UpdateUserPhoneConfigInput, opts ...request.Option) (*connect.UpdateUserPhoneConfigOutput, error)
 	UpdateUserRoutingProfileWithContext(ctx context.Context, input *connect.UpdateUserRoutingProfileInput, opts ...request.Option) (*connect.UpdateUserRoutingProfileOutput, error)
 	UpdateUserSecurityProfilesWithContext(ctx context.Context, input *connect.UpdateUserSecurityProfilesInput, opts ...request.Option) (*connect.UpdateUserSecurityProfilesOutput, error)
+	UpdateViewContentWithContext(ctx context.Context, input *connect.UpdateViewContentInput, opts ...request.Option) (*connect.UpdateViewContentOutput, error)
+	UpdateViewMetadataWithContext(ctx context.Context, input *connect.UpdateViewMetadataInput, opts ...request.Option) (*connect.UpdateViewMetadataOutput, error)
 }
 
 type Client struct {
@@ -949,6 +960,48 @@ func (c *Client) CreateUserHierarchyGroupWithContext(ctx context.Context, input 
 	return req.Output.(*connect.CreateUserHierarchyGroupOutput), req.Error
 }
 
+func (c *Client) CreateViewWithContext(ctx context.Context, input *connect.CreateViewInput, opts ...request.Option) (*connect.CreateViewOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateView",
+		Input:   input,
+		Output:  (*connect.CreateViewOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateViewWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateViewOutput), req.Error
+}
+
+func (c *Client) CreateViewVersionWithContext(ctx context.Context, input *connect.CreateViewVersionInput, opts ...request.Option) (*connect.CreateViewVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreateViewVersion",
+		Input:   input,
+		Output:  (*connect.CreateViewVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreateViewVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreateViewVersionOutput), req.Error
+}
+
 func (c *Client) CreateVocabularyWithContext(ctx context.Context, input *connect.CreateVocabularyInput, opts ...request.Option) (*connect.CreateVocabularyOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -1367,6 +1420,48 @@ func (c *Client) DeleteUserHierarchyGroupWithContext(ctx context.Context, input 
 	})
 
 	return req.Output.(*connect.DeleteUserHierarchyGroupOutput), req.Error
+}
+
+func (c *Client) DeleteViewWithContext(ctx context.Context, input *connect.DeleteViewInput, opts ...request.Option) (*connect.DeleteViewOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteView",
+		Input:   input,
+		Output:  (*connect.DeleteViewOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteViewWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteViewOutput), req.Error
+}
+
+func (c *Client) DeleteViewVersionWithContext(ctx context.Context, input *connect.DeleteViewVersionInput, opts ...request.Option) (*connect.DeleteViewVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DeleteViewVersion",
+		Input:   input,
+		Output:  (*connect.DeleteViewVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DeleteViewVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DeleteViewVersionOutput), req.Error
 }
 
 func (c *Client) DeleteVocabularyWithContext(ctx context.Context, input *connect.DeleteVocabularyInput, opts ...request.Option) (*connect.DeleteVocabularyOutput, error) {
@@ -1829,6 +1924,27 @@ func (c *Client) DescribeUserHierarchyStructureWithContext(ctx context.Context, 
 	})
 
 	return req.Output.(*connect.DescribeUserHierarchyStructureOutput), req.Error
+}
+
+func (c *Client) DescribeViewWithContext(ctx context.Context, input *connect.DescribeViewInput, opts ...request.Option) (*connect.DescribeViewOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "DescribeView",
+		Input:   input,
+		Output:  (*connect.DescribeViewOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.DescribeViewWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.DescribeViewOutput), req.Error
 }
 
 func (c *Client) DescribeVocabularyWithContext(ctx context.Context, input *connect.DescribeVocabularyInput, opts ...request.Option) (*connect.DescribeVocabularyOutput, error) {
@@ -3808,6 +3924,88 @@ func (c *Client) ListUsersPagesWithContext(ctx context.Context, input *connect.L
 	return req.Error
 }
 
+func (c *Client) ListViewVersionsWithContext(ctx context.Context, input *connect.ListViewVersionsInput, opts ...request.Option) (*connect.ListViewVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListViewVersions",
+		Input:   input,
+		Output:  (*connect.ListViewVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListViewVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListViewVersionsOutput), req.Error
+}
+
+func (c *Client) ListViewVersionsPagesWithContext(ctx context.Context, input *connect.ListViewVersionsInput, cb func(*connect.ListViewVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListViewVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListViewVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListViewsWithContext(ctx context.Context, input *connect.ListViewsInput, opts ...request.Option) (*connect.ListViewsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListViews",
+		Input:   input,
+		Output:  (*connect.ListViewsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListViewsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListViewsOutput), req.Error
+}
+
+func (c *Client) ListViewsPagesWithContext(ctx context.Context, input *connect.ListViewsInput, cb func(*connect.ListViewsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListViews",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListViewsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) MonitorContactWithContext(ctx context.Context, input *connect.MonitorContactInput, opts ...request.Option) (*connect.MonitorContactOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "connect",
@@ -5455,4 +5653,46 @@ func (c *Client) UpdateUserSecurityProfilesWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*connect.UpdateUserSecurityProfilesOutput), req.Error
+}
+
+func (c *Client) UpdateViewContentWithContext(ctx context.Context, input *connect.UpdateViewContentInput, opts ...request.Option) (*connect.UpdateViewContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateViewContent",
+		Input:   input,
+		Output:  (*connect.UpdateViewContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateViewContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateViewContentOutput), req.Error
+}
+
+func (c *Client) UpdateViewMetadataWithContext(ctx context.Context, input *connect.UpdateViewMetadataInput, opts ...request.Option) (*connect.UpdateViewMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdateViewMetadata",
+		Input:   input,
+		Output:  (*connect.UpdateViewMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdateViewMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdateViewMetadataOutput), req.Error
 }
