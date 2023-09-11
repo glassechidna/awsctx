@@ -69,9 +69,11 @@ type MediaLive interface {
 	RebootInputDeviceWithContext(ctx context.Context, input *medialive.RebootInputDeviceInput, opts ...request.Option) (*medialive.RebootInputDeviceOutput, error)
 	RejectInputDeviceTransferWithContext(ctx context.Context, input *medialive.RejectInputDeviceTransferInput, opts ...request.Option) (*medialive.RejectInputDeviceTransferOutput, error)
 	StartChannelWithContext(ctx context.Context, input *medialive.StartChannelInput, opts ...request.Option) (*medialive.StartChannelOutput, error)
+	StartInputDeviceWithContext(ctx context.Context, input *medialive.StartInputDeviceInput, opts ...request.Option) (*medialive.StartInputDeviceOutput, error)
 	StartInputDeviceMaintenanceWindowWithContext(ctx context.Context, input *medialive.StartInputDeviceMaintenanceWindowInput, opts ...request.Option) (*medialive.StartInputDeviceMaintenanceWindowOutput, error)
 	StartMultiplexWithContext(ctx context.Context, input *medialive.StartMultiplexInput, opts ...request.Option) (*medialive.StartMultiplexOutput, error)
 	StopChannelWithContext(ctx context.Context, input *medialive.StopChannelInput, opts ...request.Option) (*medialive.StopChannelOutput, error)
+	StopInputDeviceWithContext(ctx context.Context, input *medialive.StopInputDeviceInput, opts ...request.Option) (*medialive.StopInputDeviceOutput, error)
 	StopMultiplexWithContext(ctx context.Context, input *medialive.StopMultiplexInput, opts ...request.Option) (*medialive.StopMultiplexOutput, error)
 	TransferInputDeviceWithContext(ctx context.Context, input *medialive.TransferInputDeviceInput, opts ...request.Option) (*medialive.TransferInputDeviceOutput, error)
 	UpdateAccountConfigurationWithContext(ctx context.Context, input *medialive.UpdateAccountConfigurationInput, opts ...request.Option) (*medialive.UpdateAccountConfigurationOutput, error)
@@ -1308,6 +1310,27 @@ func (c *Client) StartChannelWithContext(ctx context.Context, input *medialive.S
 	return req.Output.(*medialive.StartChannelOutput), req.Error
 }
 
+func (c *Client) StartInputDeviceWithContext(ctx context.Context, input *medialive.StartInputDeviceInput, opts ...request.Option) (*medialive.StartInputDeviceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "StartInputDevice",
+		Input:   input,
+		Output:  (*medialive.StartInputDeviceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.StartInputDeviceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.StartInputDeviceOutput), req.Error
+}
+
 func (c *Client) StartInputDeviceMaintenanceWindowWithContext(ctx context.Context, input *medialive.StartInputDeviceMaintenanceWindowInput, opts ...request.Option) (*medialive.StartInputDeviceMaintenanceWindowOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "medialive",
@@ -1369,6 +1392,27 @@ func (c *Client) StopChannelWithContext(ctx context.Context, input *medialive.St
 	})
 
 	return req.Output.(*medialive.StopChannelOutput), req.Error
+}
+
+func (c *Client) StopInputDeviceWithContext(ctx context.Context, input *medialive.StopInputDeviceInput, opts ...request.Option) (*medialive.StopInputDeviceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "medialive",
+		Action:  "StopInputDevice",
+		Input:   input,
+		Output:  (*medialive.StopInputDeviceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.MediaLiveAPI.StopInputDeviceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*medialive.StopInputDeviceOutput), req.Error
 }
 
 func (c *Client) StopMultiplexWithContext(ctx context.Context, input *medialive.StopMultiplexInput, opts ...request.Option) (*medialive.StopMultiplexOutput, error) {
