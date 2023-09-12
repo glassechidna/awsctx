@@ -495,6 +495,7 @@ type EC2 interface {
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
 	DisableFastLaunchWithContext(ctx context.Context, input *ec2.DisableFastLaunchInput, opts ...request.Option) (*ec2.DisableFastLaunchOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
+	DisableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.DisableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.DisableImageBlockPublicAccessOutput, error)
 	DisableImageDeprecationWithContext(ctx context.Context, input *ec2.DisableImageDeprecationInput, opts ...request.Option) (*ec2.DisableImageDeprecationOutput, error)
 	DisableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.DisableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.DisableIpamOrganizationAdminAccountOutput, error)
 	DisableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.DisableSerialConsoleAccessInput, opts ...request.Option) (*ec2.DisableSerialConsoleAccessOutput, error)
@@ -521,6 +522,7 @@ type EC2 interface {
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastLaunchWithContext(ctx context.Context, input *ec2.EnableFastLaunchInput, opts ...request.Option) (*ec2.EnableFastLaunchOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
+	EnableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.EnableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.EnableImageBlockPublicAccessOutput, error)
 	EnableImageDeprecationWithContext(ctx context.Context, input *ec2.EnableImageDeprecationInput, opts ...request.Option) (*ec2.EnableImageDeprecationOutput, error)
 	EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error)
 	EnableReachabilityAnalyzerOrganizationSharingWithContext(ctx context.Context, input *ec2.EnableReachabilityAnalyzerOrganizationSharingInput, opts ...request.Option) (*ec2.EnableReachabilityAnalyzerOrganizationSharingOutput, error)
@@ -550,6 +552,7 @@ type EC2 interface {
 	GetGroupsForCapacityReservationWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, opts ...request.Option) (*ec2.GetGroupsForCapacityReservationOutput, error)
 	GetGroupsForCapacityReservationPagesWithContext(ctx context.Context, input *ec2.GetGroupsForCapacityReservationInput, cb func(*ec2.GetGroupsForCapacityReservationOutput, bool) bool, opts ...request.Option) error
 	GetHostReservationPurchasePreviewWithContext(ctx context.Context, input *ec2.GetHostReservationPurchasePreviewInput, opts ...request.Option) (*ec2.GetHostReservationPurchasePreviewOutput, error)
+	GetImageBlockPublicAccessStateWithContext(ctx context.Context, input *ec2.GetImageBlockPublicAccessStateInput, opts ...request.Option) (*ec2.GetImageBlockPublicAccessStateOutput, error)
 	GetInstanceTypesFromInstanceRequirementsWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, opts ...request.Option) (*ec2.GetInstanceTypesFromInstanceRequirementsOutput, error)
 	GetInstanceTypesFromInstanceRequirementsPagesWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, cb func(*ec2.GetInstanceTypesFromInstanceRequirementsOutput, bool) bool, opts ...request.Option) error
 	GetInstanceUefiDataWithContext(ctx context.Context, input *ec2.GetInstanceUefiDataInput, opts ...request.Option) (*ec2.GetInstanceUefiDataOutput, error)
@@ -10811,6 +10814,27 @@ func (c *Client) DisableFastSnapshotRestoresWithContext(ctx context.Context, inp
 	return req.Output.(*ec2.DisableFastSnapshotRestoresOutput), req.Error
 }
 
+func (c *Client) DisableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.DisableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.DisableImageBlockPublicAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableImageBlockPublicAccess",
+		Input:   input,
+		Output:  (*ec2.DisableImageBlockPublicAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableImageBlockPublicAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableImageBlockPublicAccessOutput), req.Error
+}
+
 func (c *Client) DisableImageDeprecationWithContext(ctx context.Context, input *ec2.DisableImageDeprecationInput, opts ...request.Option) (*ec2.DisableImageDeprecationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11355,6 +11379,27 @@ func (c *Client) EnableFastSnapshotRestoresWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.EnableFastSnapshotRestoresOutput), req.Error
+}
+
+func (c *Client) EnableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.EnableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.EnableImageBlockPublicAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableImageBlockPublicAccess",
+		Input:   input,
+		Output:  (*ec2.EnableImageBlockPublicAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableImageBlockPublicAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableImageBlockPublicAccessOutput), req.Error
 }
 
 func (c *Client) EnableImageDeprecationWithContext(ctx context.Context, input *ec2.EnableImageDeprecationInput, opts ...request.Option) (*ec2.EnableImageDeprecationOutput, error) {
@@ -11961,6 +12006,27 @@ func (c *Client) GetHostReservationPurchasePreviewWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.GetHostReservationPurchasePreviewOutput), req.Error
+}
+
+func (c *Client) GetImageBlockPublicAccessStateWithContext(ctx context.Context, input *ec2.GetImageBlockPublicAccessStateInput, opts ...request.Option) (*ec2.GetImageBlockPublicAccessStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetImageBlockPublicAccessState",
+		Input:   input,
+		Output:  (*ec2.GetImageBlockPublicAccessStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetImageBlockPublicAccessStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetImageBlockPublicAccessStateOutput), req.Error
 }
 
 func (c *Client) GetInstanceTypesFromInstanceRequirementsWithContext(ctx context.Context, input *ec2.GetInstanceTypesFromInstanceRequirementsInput, opts ...request.Option) (*ec2.GetInstanceTypesFromInstanceRequirementsOutput, error) {
