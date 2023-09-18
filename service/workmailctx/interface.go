@@ -39,6 +39,7 @@ type WorkMail interface {
 	DeregisterFromWorkMailWithContext(ctx context.Context, input *workmail.DeregisterFromWorkMailInput, opts ...request.Option) (*workmail.DeregisterFromWorkMailOutput, error)
 	DeregisterMailDomainWithContext(ctx context.Context, input *workmail.DeregisterMailDomainInput, opts ...request.Option) (*workmail.DeregisterMailDomainOutput, error)
 	DescribeEmailMonitoringConfigurationWithContext(ctx context.Context, input *workmail.DescribeEmailMonitoringConfigurationInput, opts ...request.Option) (*workmail.DescribeEmailMonitoringConfigurationOutput, error)
+	DescribeEntityWithContext(ctx context.Context, input *workmail.DescribeEntityInput, opts ...request.Option) (*workmail.DescribeEntityOutput, error)
 	DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error)
 	DescribeInboundDmarcSettingsWithContext(ctx context.Context, input *workmail.DescribeInboundDmarcSettingsInput, opts ...request.Option) (*workmail.DescribeInboundDmarcSettingsOutput, error)
 	DescribeMailboxExportJobWithContext(ctx context.Context, input *workmail.DescribeMailboxExportJobInput, opts ...request.Option) (*workmail.DescribeMailboxExportJobOutput, error)
@@ -64,6 +65,8 @@ type WorkMail interface {
 	ListGroupMembersPagesWithContext(ctx context.Context, input *workmail.ListGroupMembersInput, cb func(*workmail.ListGroupMembersOutput, bool) bool, opts ...request.Option) error
 	ListGroupsWithContext(ctx context.Context, input *workmail.ListGroupsInput, opts ...request.Option) (*workmail.ListGroupsOutput, error)
 	ListGroupsPagesWithContext(ctx context.Context, input *workmail.ListGroupsInput, cb func(*workmail.ListGroupsOutput, bool) bool, opts ...request.Option) error
+	ListGroupsForEntityWithContext(ctx context.Context, input *workmail.ListGroupsForEntityInput, opts ...request.Option) (*workmail.ListGroupsForEntityOutput, error)
+	ListGroupsForEntityPagesWithContext(ctx context.Context, input *workmail.ListGroupsForEntityInput, cb func(*workmail.ListGroupsForEntityOutput, bool) bool, opts ...request.Option) error
 	ListImpersonationRolesWithContext(ctx context.Context, input *workmail.ListImpersonationRolesInput, opts ...request.Option) (*workmail.ListImpersonationRolesOutput, error)
 	ListImpersonationRolesPagesWithContext(ctx context.Context, input *workmail.ListImpersonationRolesInput, cb func(*workmail.ListImpersonationRolesOutput, bool) bool, opts ...request.Option) error
 	ListMailDomainsWithContext(ctx context.Context, input *workmail.ListMailDomainsInput, opts ...request.Option) (*workmail.ListMailDomainsOutput, error)
@@ -99,11 +102,13 @@ type WorkMail interface {
 	UntagResourceWithContext(ctx context.Context, input *workmail.UntagResourceInput, opts ...request.Option) (*workmail.UntagResourceOutput, error)
 	UpdateAvailabilityConfigurationWithContext(ctx context.Context, input *workmail.UpdateAvailabilityConfigurationInput, opts ...request.Option) (*workmail.UpdateAvailabilityConfigurationOutput, error)
 	UpdateDefaultMailDomainWithContext(ctx context.Context, input *workmail.UpdateDefaultMailDomainInput, opts ...request.Option) (*workmail.UpdateDefaultMailDomainOutput, error)
+	UpdateGroupWithContext(ctx context.Context, input *workmail.UpdateGroupInput, opts ...request.Option) (*workmail.UpdateGroupOutput, error)
 	UpdateImpersonationRoleWithContext(ctx context.Context, input *workmail.UpdateImpersonationRoleInput, opts ...request.Option) (*workmail.UpdateImpersonationRoleOutput, error)
 	UpdateMailboxQuotaWithContext(ctx context.Context, input *workmail.UpdateMailboxQuotaInput, opts ...request.Option) (*workmail.UpdateMailboxQuotaOutput, error)
 	UpdateMobileDeviceAccessRuleWithContext(ctx context.Context, input *workmail.UpdateMobileDeviceAccessRuleInput, opts ...request.Option) (*workmail.UpdateMobileDeviceAccessRuleOutput, error)
 	UpdatePrimaryEmailAddressWithContext(ctx context.Context, input *workmail.UpdatePrimaryEmailAddressInput, opts ...request.Option) (*workmail.UpdatePrimaryEmailAddressOutput, error)
 	UpdateResourceWithContext(ctx context.Context, input *workmail.UpdateResourceInput, opts ...request.Option) (*workmail.UpdateResourceOutput, error)
+	UpdateUserWithContext(ctx context.Context, input *workmail.UpdateUserInput, opts ...request.Option) (*workmail.UpdateUserOutput, error)
 }
 
 type Client struct {
@@ -709,6 +714,27 @@ func (c *Client) DescribeEmailMonitoringConfigurationWithContext(ctx context.Con
 	return req.Output.(*workmail.DescribeEmailMonitoringConfigurationOutput), req.Error
 }
 
+func (c *Client) DescribeEntityWithContext(ctx context.Context, input *workmail.DescribeEntityInput, opts ...request.Option) (*workmail.DescribeEntityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "DescribeEntity",
+		Input:   input,
+		Output:  (*workmail.DescribeEntityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.DescribeEntityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.DescribeEntityOutput), req.Error
+}
+
 func (c *Client) DescribeGroupWithContext(ctx context.Context, input *workmail.DescribeGroupInput, opts ...request.Option) (*workmail.DescribeGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -1225,6 +1251,47 @@ func (c *Client) ListGroupsPagesWithContext(ctx context.Context, input *workmail
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.WorkMailAPI.ListGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListGroupsForEntityWithContext(ctx context.Context, input *workmail.ListGroupsForEntityInput, opts ...request.Option) (*workmail.ListGroupsForEntityOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListGroupsForEntity",
+		Input:   input,
+		Output:  (*workmail.ListGroupsForEntityOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.ListGroupsForEntityWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.ListGroupsForEntityOutput), req.Error
+}
+
+func (c *Client) ListGroupsForEntityPagesWithContext(ctx context.Context, input *workmail.ListGroupsForEntityInput, cb func(*workmail.ListGroupsForEntityOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "ListGroupsForEntity",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkMailAPI.ListGroupsForEntityPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1956,6 +2023,27 @@ func (c *Client) UpdateDefaultMailDomainWithContext(ctx context.Context, input *
 	return req.Output.(*workmail.UpdateDefaultMailDomainOutput), req.Error
 }
 
+func (c *Client) UpdateGroupWithContext(ctx context.Context, input *workmail.UpdateGroupInput, opts ...request.Option) (*workmail.UpdateGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UpdateGroup",
+		Input:   input,
+		Output:  (*workmail.UpdateGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UpdateGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UpdateGroupOutput), req.Error
+}
+
 func (c *Client) UpdateImpersonationRoleWithContext(ctx context.Context, input *workmail.UpdateImpersonationRoleInput, opts ...request.Option) (*workmail.UpdateImpersonationRoleOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workmail",
@@ -2059,4 +2147,25 @@ func (c *Client) UpdateResourceWithContext(ctx context.Context, input *workmail.
 	})
 
 	return req.Output.(*workmail.UpdateResourceOutput), req.Error
+}
+
+func (c *Client) UpdateUserWithContext(ctx context.Context, input *workmail.UpdateUserInput, opts ...request.Option) (*workmail.UpdateUserOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workmail",
+		Action:  "UpdateUser",
+		Input:   input,
+		Output:  (*workmail.UpdateUserOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkMailAPI.UpdateUserWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workmail.UpdateUserOutput), req.Error
 }
