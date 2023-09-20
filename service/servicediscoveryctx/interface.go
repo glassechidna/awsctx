@@ -19,6 +19,7 @@ type ServiceDiscovery interface {
 	DeleteServiceWithContext(ctx context.Context, input *servicediscovery.DeleteServiceInput, opts ...request.Option) (*servicediscovery.DeleteServiceOutput, error)
 	DeregisterInstanceWithContext(ctx context.Context, input *servicediscovery.DeregisterInstanceInput, opts ...request.Option) (*servicediscovery.DeregisterInstanceOutput, error)
 	DiscoverInstancesWithContext(ctx context.Context, input *servicediscovery.DiscoverInstancesInput, opts ...request.Option) (*servicediscovery.DiscoverInstancesOutput, error)
+	DiscoverInstancesRevisionWithContext(ctx context.Context, input *servicediscovery.DiscoverInstancesRevisionInput, opts ...request.Option) (*servicediscovery.DiscoverInstancesRevisionOutput, error)
 	GetInstanceWithContext(ctx context.Context, input *servicediscovery.GetInstanceInput, opts ...request.Option) (*servicediscovery.GetInstanceOutput, error)
 	GetInstancesHealthStatusWithContext(ctx context.Context, input *servicediscovery.GetInstancesHealthStatusInput, opts ...request.Option) (*servicediscovery.GetInstancesHealthStatusOutput, error)
 	GetInstancesHealthStatusPagesWithContext(ctx context.Context, input *servicediscovery.GetInstancesHealthStatusInput, cb func(*servicediscovery.GetInstancesHealthStatusOutput, bool) bool, opts ...request.Option) error
@@ -225,6 +226,27 @@ func (c *Client) DiscoverInstancesWithContext(ctx context.Context, input *servic
 	})
 
 	return req.Output.(*servicediscovery.DiscoverInstancesOutput), req.Error
+}
+
+func (c *Client) DiscoverInstancesRevisionWithContext(ctx context.Context, input *servicediscovery.DiscoverInstancesRevisionInput, opts ...request.Option) (*servicediscovery.DiscoverInstancesRevisionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "servicediscovery",
+		Action:  "DiscoverInstancesRevision",
+		Input:   input,
+		Output:  (*servicediscovery.DiscoverInstancesRevisionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ServiceDiscoveryAPI.DiscoverInstancesRevisionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*servicediscovery.DiscoverInstancesRevisionOutput), req.Error
 }
 
 func (c *Client) GetInstanceWithContext(ctx context.Context, input *servicediscovery.GetInstanceInput, opts ...request.Option) (*servicediscovery.GetInstanceOutput, error) {
