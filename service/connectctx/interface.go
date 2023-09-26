@@ -169,6 +169,8 @@ type Connect interface {
 	ListRulesPagesWithContext(ctx context.Context, input *connect.ListRulesInput, cb func(*connect.ListRulesOutput, bool) bool, opts ...request.Option) error
 	ListSecurityKeysWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, opts ...request.Option) (*connect.ListSecurityKeysOutput, error)
 	ListSecurityKeysPagesWithContext(ctx context.Context, input *connect.ListSecurityKeysInput, cb func(*connect.ListSecurityKeysOutput, bool) bool, opts ...request.Option) error
+	ListSecurityProfileApplicationsWithContext(ctx context.Context, input *connect.ListSecurityProfileApplicationsInput, opts ...request.Option) (*connect.ListSecurityProfileApplicationsOutput, error)
+	ListSecurityProfileApplicationsPagesWithContext(ctx context.Context, input *connect.ListSecurityProfileApplicationsInput, cb func(*connect.ListSecurityProfileApplicationsOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilePermissionsWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, opts ...request.Option) (*connect.ListSecurityProfilePermissionsOutput, error)
 	ListSecurityProfilePermissionsPagesWithContext(ctx context.Context, input *connect.ListSecurityProfilePermissionsInput, cb func(*connect.ListSecurityProfilePermissionsOutput, bool) bool, opts ...request.Option) error
 	ListSecurityProfilesWithContext(ctx context.Context, input *connect.ListSecurityProfilesInput, opts ...request.Option) (*connect.ListSecurityProfilesOutput, error)
@@ -3570,6 +3572,47 @@ func (c *Client) ListSecurityKeysPagesWithContext(ctx context.Context, input *co
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.ConnectAPI.ListSecurityKeysPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListSecurityProfileApplicationsWithContext(ctx context.Context, input *connect.ListSecurityProfileApplicationsInput, opts ...request.Option) (*connect.ListSecurityProfileApplicationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListSecurityProfileApplications",
+		Input:   input,
+		Output:  (*connect.ListSecurityProfileApplicationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.ListSecurityProfileApplicationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.ListSecurityProfileApplicationsOutput), req.Error
+}
+
+func (c *Client) ListSecurityProfileApplicationsPagesWithContext(ctx context.Context, input *connect.ListSecurityProfileApplicationsInput, cb func(*connect.ListSecurityProfileApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "ListSecurityProfileApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.ConnectAPI.ListSecurityProfileApplicationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

@@ -19,8 +19,10 @@ type LakeFormation interface {
 	CommitTransactionWithContext(ctx context.Context, input *lakeformation.CommitTransactionInput, opts ...request.Option) (*lakeformation.CommitTransactionOutput, error)
 	CreateDataCellsFilterWithContext(ctx context.Context, input *lakeformation.CreateDataCellsFilterInput, opts ...request.Option) (*lakeformation.CreateDataCellsFilterOutput, error)
 	CreateLFTagWithContext(ctx context.Context, input *lakeformation.CreateLFTagInput, opts ...request.Option) (*lakeformation.CreateLFTagOutput, error)
+	CreateLakeFormationOptInWithContext(ctx context.Context, input *lakeformation.CreateLakeFormationOptInInput, opts ...request.Option) (*lakeformation.CreateLakeFormationOptInOutput, error)
 	DeleteDataCellsFilterWithContext(ctx context.Context, input *lakeformation.DeleteDataCellsFilterInput, opts ...request.Option) (*lakeformation.DeleteDataCellsFilterOutput, error)
 	DeleteLFTagWithContext(ctx context.Context, input *lakeformation.DeleteLFTagInput, opts ...request.Option) (*lakeformation.DeleteLFTagOutput, error)
+	DeleteLakeFormationOptInWithContext(ctx context.Context, input *lakeformation.DeleteLakeFormationOptInInput, opts ...request.Option) (*lakeformation.DeleteLakeFormationOptInOutput, error)
 	DeleteObjectsOnCancelWithContext(ctx context.Context, input *lakeformation.DeleteObjectsOnCancelInput, opts ...request.Option) (*lakeformation.DeleteObjectsOnCancelOutput, error)
 	DeregisterResourceWithContext(ctx context.Context, input *lakeformation.DeregisterResourceInput, opts ...request.Option) (*lakeformation.DeregisterResourceOutput, error)
 	DescribeResourceWithContext(ctx context.Context, input *lakeformation.DescribeResourceInput, opts ...request.Option) (*lakeformation.DescribeResourceOutput, error)
@@ -46,6 +48,8 @@ type LakeFormation interface {
 	ListDataCellsFilterPagesWithContext(ctx context.Context, input *lakeformation.ListDataCellsFilterInput, cb func(*lakeformation.ListDataCellsFilterOutput, bool) bool, opts ...request.Option) error
 	ListLFTagsWithContext(ctx context.Context, input *lakeformation.ListLFTagsInput, opts ...request.Option) (*lakeformation.ListLFTagsOutput, error)
 	ListLFTagsPagesWithContext(ctx context.Context, input *lakeformation.ListLFTagsInput, cb func(*lakeformation.ListLFTagsOutput, bool) bool, opts ...request.Option) error
+	ListLakeFormationOptInsWithContext(ctx context.Context, input *lakeformation.ListLakeFormationOptInsInput, opts ...request.Option) (*lakeformation.ListLakeFormationOptInsOutput, error)
+	ListLakeFormationOptInsPagesWithContext(ctx context.Context, input *lakeformation.ListLakeFormationOptInsInput, cb func(*lakeformation.ListLakeFormationOptInsOutput, bool) bool, opts ...request.Option) error
 	ListPermissionsWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, opts ...request.Option) (*lakeformation.ListPermissionsOutput, error)
 	ListPermissionsPagesWithContext(ctx context.Context, input *lakeformation.ListPermissionsInput, cb func(*lakeformation.ListPermissionsOutput, bool) bool, opts ...request.Option) error
 	ListResourcesWithContext(ctx context.Context, input *lakeformation.ListResourcesInput, opts ...request.Option) (*lakeformation.ListResourcesOutput, error)
@@ -254,6 +258,27 @@ func (c *Client) CreateLFTagWithContext(ctx context.Context, input *lakeformatio
 	return req.Output.(*lakeformation.CreateLFTagOutput), req.Error
 }
 
+func (c *Client) CreateLakeFormationOptInWithContext(ctx context.Context, input *lakeformation.CreateLakeFormationOptInInput, opts ...request.Option) (*lakeformation.CreateLakeFormationOptInOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "CreateLakeFormationOptIn",
+		Input:   input,
+		Output:  (*lakeformation.CreateLakeFormationOptInOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.CreateLakeFormationOptInWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.CreateLakeFormationOptInOutput), req.Error
+}
+
 func (c *Client) DeleteDataCellsFilterWithContext(ctx context.Context, input *lakeformation.DeleteDataCellsFilterInput, opts ...request.Option) (*lakeformation.DeleteDataCellsFilterOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "lakeformation",
@@ -294,6 +319,27 @@ func (c *Client) DeleteLFTagWithContext(ctx context.Context, input *lakeformatio
 	})
 
 	return req.Output.(*lakeformation.DeleteLFTagOutput), req.Error
+}
+
+func (c *Client) DeleteLakeFormationOptInWithContext(ctx context.Context, input *lakeformation.DeleteLakeFormationOptInInput, opts ...request.Option) (*lakeformation.DeleteLakeFormationOptInOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "DeleteLakeFormationOptIn",
+		Input:   input,
+		Output:  (*lakeformation.DeleteLakeFormationOptInOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.DeleteLakeFormationOptInWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.DeleteLakeFormationOptInOutput), req.Error
 }
 
 func (c *Client) DeleteObjectsOnCancelWithContext(ctx context.Context, input *lakeformation.DeleteObjectsOnCancelInput, opts ...request.Option) (*lakeformation.DeleteObjectsOnCancelOutput, error) {
@@ -811,6 +857,47 @@ func (c *Client) ListLFTagsPagesWithContext(ctx context.Context, input *lakeform
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.LakeFormationAPI.ListLFTagsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListLakeFormationOptInsWithContext(ctx context.Context, input *lakeformation.ListLakeFormationOptInsInput, opts ...request.Option) (*lakeformation.ListLakeFormationOptInsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "ListLakeFormationOptIns",
+		Input:   input,
+		Output:  (*lakeformation.ListLakeFormationOptInsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.LakeFormationAPI.ListLakeFormationOptInsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*lakeformation.ListLakeFormationOptInsOutput), req.Error
+}
+
+func (c *Client) ListLakeFormationOptInsPagesWithContext(ctx context.Context, input *lakeformation.ListLakeFormationOptInsInput, cb func(*lakeformation.ListLakeFormationOptInsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "lakeformation",
+		Action:  "ListLakeFormationOptIns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.LakeFormationAPI.ListLakeFormationOptInsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
