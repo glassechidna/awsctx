@@ -13,6 +13,7 @@ import (
 type WorkSpaces interface {
 	AssociateConnectionAliasWithContext(ctx context.Context, input *workspaces.AssociateConnectionAliasInput, opts ...request.Option) (*workspaces.AssociateConnectionAliasOutput, error)
 	AssociateIpGroupsWithContext(ctx context.Context, input *workspaces.AssociateIpGroupsInput, opts ...request.Option) (*workspaces.AssociateIpGroupsOutput, error)
+	AssociateWorkspaceApplicationWithContext(ctx context.Context, input *workspaces.AssociateWorkspaceApplicationInput, opts ...request.Option) (*workspaces.AssociateWorkspaceApplicationOutput, error)
 	AuthorizeIpRulesWithContext(ctx context.Context, input *workspaces.AuthorizeIpRulesInput, opts ...request.Option) (*workspaces.AuthorizeIpRulesOutput, error)
 	CopyWorkspaceImageWithContext(ctx context.Context, input *workspaces.CopyWorkspaceImageInput, opts ...request.Option) (*workspaces.CopyWorkspaceImageOutput, error)
 	CreateConnectClientAddInWithContext(ctx context.Context, input *workspaces.CreateConnectClientAddInInput, opts ...request.Option) (*workspaces.CreateConnectClientAddInOutput, error)
@@ -31,16 +32,24 @@ type WorkSpaces interface {
 	DeleteTagsWithContext(ctx context.Context, input *workspaces.DeleteTagsInput, opts ...request.Option) (*workspaces.DeleteTagsOutput, error)
 	DeleteWorkspaceBundleWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceBundleInput, opts ...request.Option) (*workspaces.DeleteWorkspaceBundleOutput, error)
 	DeleteWorkspaceImageWithContext(ctx context.Context, input *workspaces.DeleteWorkspaceImageInput, opts ...request.Option) (*workspaces.DeleteWorkspaceImageOutput, error)
+	DeployWorkspaceApplicationsWithContext(ctx context.Context, input *workspaces.DeployWorkspaceApplicationsInput, opts ...request.Option) (*workspaces.DeployWorkspaceApplicationsOutput, error)
 	DeregisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.DeregisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.DeregisterWorkspaceDirectoryOutput, error)
 	DescribeAccountWithContext(ctx context.Context, input *workspaces.DescribeAccountInput, opts ...request.Option) (*workspaces.DescribeAccountOutput, error)
 	DescribeAccountModificationsWithContext(ctx context.Context, input *workspaces.DescribeAccountModificationsInput, opts ...request.Option) (*workspaces.DescribeAccountModificationsOutput, error)
+	DescribeApplicationAssociationsWithContext(ctx context.Context, input *workspaces.DescribeApplicationAssociationsInput, opts ...request.Option) (*workspaces.DescribeApplicationAssociationsOutput, error)
+	DescribeApplicationAssociationsPagesWithContext(ctx context.Context, input *workspaces.DescribeApplicationAssociationsInput, cb func(*workspaces.DescribeApplicationAssociationsOutput, bool) bool, opts ...request.Option) error
+	DescribeApplicationsWithContext(ctx context.Context, input *workspaces.DescribeApplicationsInput, opts ...request.Option) (*workspaces.DescribeApplicationsOutput, error)
+	DescribeApplicationsPagesWithContext(ctx context.Context, input *workspaces.DescribeApplicationsInput, cb func(*workspaces.DescribeApplicationsOutput, bool) bool, opts ...request.Option) error
+	DescribeBundleAssociationsWithContext(ctx context.Context, input *workspaces.DescribeBundleAssociationsInput, opts ...request.Option) (*workspaces.DescribeBundleAssociationsOutput, error)
 	DescribeClientBrandingWithContext(ctx context.Context, input *workspaces.DescribeClientBrandingInput, opts ...request.Option) (*workspaces.DescribeClientBrandingOutput, error)
 	DescribeClientPropertiesWithContext(ctx context.Context, input *workspaces.DescribeClientPropertiesInput, opts ...request.Option) (*workspaces.DescribeClientPropertiesOutput, error)
 	DescribeConnectClientAddInsWithContext(ctx context.Context, input *workspaces.DescribeConnectClientAddInsInput, opts ...request.Option) (*workspaces.DescribeConnectClientAddInsOutput, error)
 	DescribeConnectionAliasPermissionsWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasPermissionsInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasPermissionsOutput, error)
 	DescribeConnectionAliasesWithContext(ctx context.Context, input *workspaces.DescribeConnectionAliasesInput, opts ...request.Option) (*workspaces.DescribeConnectionAliasesOutput, error)
+	DescribeImageAssociationsWithContext(ctx context.Context, input *workspaces.DescribeImageAssociationsInput, opts ...request.Option) (*workspaces.DescribeImageAssociationsOutput, error)
 	DescribeIpGroupsWithContext(ctx context.Context, input *workspaces.DescribeIpGroupsInput, opts ...request.Option) (*workspaces.DescribeIpGroupsOutput, error)
 	DescribeTagsWithContext(ctx context.Context, input *workspaces.DescribeTagsInput, opts ...request.Option) (*workspaces.DescribeTagsOutput, error)
+	DescribeWorkspaceAssociationsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceAssociationsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceAssociationsOutput, error)
 	DescribeWorkspaceBundlesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceBundlesOutput, error)
 	DescribeWorkspaceBundlesPagesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, cb func(*workspaces.DescribeWorkspaceBundlesOutput, bool) bool, opts ...request.Option) error
 	DescribeWorkspaceDirectoriesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceDirectoriesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceDirectoriesOutput, error)
@@ -53,6 +62,7 @@ type WorkSpaces interface {
 	DescribeWorkspacesConnectionStatusWithContext(ctx context.Context, input *workspaces.DescribeWorkspacesConnectionStatusInput, opts ...request.Option) (*workspaces.DescribeWorkspacesConnectionStatusOutput, error)
 	DisassociateConnectionAliasWithContext(ctx context.Context, input *workspaces.DisassociateConnectionAliasInput, opts ...request.Option) (*workspaces.DisassociateConnectionAliasOutput, error)
 	DisassociateIpGroupsWithContext(ctx context.Context, input *workspaces.DisassociateIpGroupsInput, opts ...request.Option) (*workspaces.DisassociateIpGroupsOutput, error)
+	DisassociateWorkspaceApplicationWithContext(ctx context.Context, input *workspaces.DisassociateWorkspaceApplicationInput, opts ...request.Option) (*workspaces.DisassociateWorkspaceApplicationOutput, error)
 	ImportClientBrandingWithContext(ctx context.Context, input *workspaces.ImportClientBrandingInput, opts ...request.Option) (*workspaces.ImportClientBrandingOutput, error)
 	ImportWorkspaceImageWithContext(ctx context.Context, input *workspaces.ImportWorkspaceImageInput, opts ...request.Option) (*workspaces.ImportWorkspaceImageOutput, error)
 	ListAvailableManagementCidrRangesWithContext(ctx context.Context, input *workspaces.ListAvailableManagementCidrRangesInput, opts ...request.Option) (*workspaces.ListAvailableManagementCidrRangesOutput, error)
@@ -136,6 +146,27 @@ func (c *Client) AssociateIpGroupsWithContext(ctx context.Context, input *worksp
 	})
 
 	return req.Output.(*workspaces.AssociateIpGroupsOutput), req.Error
+}
+
+func (c *Client) AssociateWorkspaceApplicationWithContext(ctx context.Context, input *workspaces.AssociateWorkspaceApplicationInput, opts ...request.Option) (*workspaces.AssociateWorkspaceApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "AssociateWorkspaceApplication",
+		Input:   input,
+		Output:  (*workspaces.AssociateWorkspaceApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.AssociateWorkspaceApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.AssociateWorkspaceApplicationOutput), req.Error
 }
 
 func (c *Client) AuthorizeIpRulesWithContext(ctx context.Context, input *workspaces.AuthorizeIpRulesInput, opts ...request.Option) (*workspaces.AuthorizeIpRulesOutput, error) {
@@ -516,6 +547,27 @@ func (c *Client) DeleteWorkspaceImageWithContext(ctx context.Context, input *wor
 	return req.Output.(*workspaces.DeleteWorkspaceImageOutput), req.Error
 }
 
+func (c *Client) DeployWorkspaceApplicationsWithContext(ctx context.Context, input *workspaces.DeployWorkspaceApplicationsInput, opts ...request.Option) (*workspaces.DeployWorkspaceApplicationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DeployWorkspaceApplications",
+		Input:   input,
+		Output:  (*workspaces.DeployWorkspaceApplicationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DeployWorkspaceApplicationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DeployWorkspaceApplicationsOutput), req.Error
+}
+
 func (c *Client) DeregisterWorkspaceDirectoryWithContext(ctx context.Context, input *workspaces.DeregisterWorkspaceDirectoryInput, opts ...request.Option) (*workspaces.DeregisterWorkspaceDirectoryOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
@@ -577,6 +629,109 @@ func (c *Client) DescribeAccountModificationsWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*workspaces.DescribeAccountModificationsOutput), req.Error
+}
+
+func (c *Client) DescribeApplicationAssociationsWithContext(ctx context.Context, input *workspaces.DescribeApplicationAssociationsInput, opts ...request.Option) (*workspaces.DescribeApplicationAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeApplicationAssociations",
+		Input:   input,
+		Output:  (*workspaces.DescribeApplicationAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeApplicationAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeApplicationAssociationsOutput), req.Error
+}
+
+func (c *Client) DescribeApplicationAssociationsPagesWithContext(ctx context.Context, input *workspaces.DescribeApplicationAssociationsInput, cb func(*workspaces.DescribeApplicationAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeApplicationAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkSpacesAPI.DescribeApplicationAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeApplicationsWithContext(ctx context.Context, input *workspaces.DescribeApplicationsInput, opts ...request.Option) (*workspaces.DescribeApplicationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeApplications",
+		Input:   input,
+		Output:  (*workspaces.DescribeApplicationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeApplicationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeApplicationsOutput), req.Error
+}
+
+func (c *Client) DescribeApplicationsPagesWithContext(ctx context.Context, input *workspaces.DescribeApplicationsInput, cb func(*workspaces.DescribeApplicationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeApplications",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.WorkSpacesAPI.DescribeApplicationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeBundleAssociationsWithContext(ctx context.Context, input *workspaces.DescribeBundleAssociationsInput, opts ...request.Option) (*workspaces.DescribeBundleAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeBundleAssociations",
+		Input:   input,
+		Output:  (*workspaces.DescribeBundleAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeBundleAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeBundleAssociationsOutput), req.Error
 }
 
 func (c *Client) DescribeClientBrandingWithContext(ctx context.Context, input *workspaces.DescribeClientBrandingInput, opts ...request.Option) (*workspaces.DescribeClientBrandingOutput, error) {
@@ -684,6 +839,27 @@ func (c *Client) DescribeConnectionAliasesWithContext(ctx context.Context, input
 	return req.Output.(*workspaces.DescribeConnectionAliasesOutput), req.Error
 }
 
+func (c *Client) DescribeImageAssociationsWithContext(ctx context.Context, input *workspaces.DescribeImageAssociationsInput, opts ...request.Option) (*workspaces.DescribeImageAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeImageAssociations",
+		Input:   input,
+		Output:  (*workspaces.DescribeImageAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeImageAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeImageAssociationsOutput), req.Error
+}
+
 func (c *Client) DescribeIpGroupsWithContext(ctx context.Context, input *workspaces.DescribeIpGroupsInput, opts ...request.Option) (*workspaces.DescribeIpGroupsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "workspaces",
@@ -724,6 +900,27 @@ func (c *Client) DescribeTagsWithContext(ctx context.Context, input *workspaces.
 	})
 
 	return req.Output.(*workspaces.DescribeTagsOutput), req.Error
+}
+
+func (c *Client) DescribeWorkspaceAssociationsWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceAssociationsInput, opts ...request.Option) (*workspaces.DescribeWorkspaceAssociationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DescribeWorkspaceAssociations",
+		Input:   input,
+		Output:  (*workspaces.DescribeWorkspaceAssociationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DescribeWorkspaceAssociationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DescribeWorkspaceAssociationsOutput), req.Error
 }
 
 func (c *Client) DescribeWorkspaceBundlesWithContext(ctx context.Context, input *workspaces.DescribeWorkspaceBundlesInput, opts ...request.Option) (*workspaces.DescribeWorkspaceBundlesOutput, error) {
@@ -973,6 +1170,27 @@ func (c *Client) DisassociateIpGroupsWithContext(ctx context.Context, input *wor
 	})
 
 	return req.Output.(*workspaces.DisassociateIpGroupsOutput), req.Error
+}
+
+func (c *Client) DisassociateWorkspaceApplicationWithContext(ctx context.Context, input *workspaces.DisassociateWorkspaceApplicationInput, opts ...request.Option) (*workspaces.DisassociateWorkspaceApplicationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "workspaces",
+		Action:  "DisassociateWorkspaceApplication",
+		Input:   input,
+		Output:  (*workspaces.DisassociateWorkspaceApplicationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.WorkSpacesAPI.DisassociateWorkspaceApplicationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*workspaces.DisassociateWorkspaceApplicationOutput), req.Error
 }
 
 func (c *Client) ImportClientBrandingWithContext(ctx context.Context, input *workspaces.ImportClientBrandingInput, opts ...request.Option) (*workspaces.ImportClientBrandingOutput, error) {
