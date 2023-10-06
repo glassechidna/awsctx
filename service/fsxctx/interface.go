@@ -54,6 +54,7 @@ type FSx interface {
 	ListTagsForResourcePagesWithContext(ctx context.Context, input *fsx.ListTagsForResourceInput, cb func(*fsx.ListTagsForResourceOutput, bool) bool, opts ...request.Option) error
 	ReleaseFileSystemNfsV3LocksWithContext(ctx context.Context, input *fsx.ReleaseFileSystemNfsV3LocksInput, opts ...request.Option) (*fsx.ReleaseFileSystemNfsV3LocksOutput, error)
 	RestoreVolumeFromSnapshotWithContext(ctx context.Context, input *fsx.RestoreVolumeFromSnapshotInput, opts ...request.Option) (*fsx.RestoreVolumeFromSnapshotOutput, error)
+	StartMisconfiguredStateRecoveryWithContext(ctx context.Context, input *fsx.StartMisconfiguredStateRecoveryInput, opts ...request.Option) (*fsx.StartMisconfiguredStateRecoveryOutput, error)
 	TagResourceWithContext(ctx context.Context, input *fsx.TagResourceInput, opts ...request.Option) (*fsx.TagResourceOutput, error)
 	UntagResourceWithContext(ctx context.Context, input *fsx.UntagResourceInput, opts ...request.Option) (*fsx.UntagResourceOutput, error)
 	UpdateDataRepositoryAssociationWithContext(ctx context.Context, input *fsx.UpdateDataRepositoryAssociationInput, opts ...request.Option) (*fsx.UpdateDataRepositoryAssociationOutput, error)
@@ -970,6 +971,27 @@ func (c *Client) RestoreVolumeFromSnapshotWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*fsx.RestoreVolumeFromSnapshotOutput), req.Error
+}
+
+func (c *Client) StartMisconfiguredStateRecoveryWithContext(ctx context.Context, input *fsx.StartMisconfiguredStateRecoveryInput, opts ...request.Option) (*fsx.StartMisconfiguredStateRecoveryOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "fsx",
+		Action:  "StartMisconfiguredStateRecovery",
+		Input:   input,
+		Output:  (*fsx.StartMisconfiguredStateRecoveryOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.FSxAPI.StartMisconfiguredStateRecoveryWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*fsx.StartMisconfiguredStateRecoveryOutput), req.Error
 }
 
 func (c *Client) TagResourceWithContext(ctx context.Context, input *fsx.TagResourceInput, opts ...request.Option) (*fsx.TagResourceOutput, error) {
