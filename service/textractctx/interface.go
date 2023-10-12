@@ -14,16 +14,30 @@ type Textract interface {
 	AnalyzeDocumentWithContext(ctx context.Context, input *textract.AnalyzeDocumentInput, opts ...request.Option) (*textract.AnalyzeDocumentOutput, error)
 	AnalyzeExpenseWithContext(ctx context.Context, input *textract.AnalyzeExpenseInput, opts ...request.Option) (*textract.AnalyzeExpenseOutput, error)
 	AnalyzeIDWithContext(ctx context.Context, input *textract.AnalyzeIDInput, opts ...request.Option) (*textract.AnalyzeIDOutput, error)
+	CreateAdapterWithContext(ctx context.Context, input *textract.CreateAdapterInput, opts ...request.Option) (*textract.CreateAdapterOutput, error)
+	CreateAdapterVersionWithContext(ctx context.Context, input *textract.CreateAdapterVersionInput, opts ...request.Option) (*textract.CreateAdapterVersionOutput, error)
+	DeleteAdapterWithContext(ctx context.Context, input *textract.DeleteAdapterInput, opts ...request.Option) (*textract.DeleteAdapterOutput, error)
+	DeleteAdapterVersionWithContext(ctx context.Context, input *textract.DeleteAdapterVersionInput, opts ...request.Option) (*textract.DeleteAdapterVersionOutput, error)
 	DetectDocumentTextWithContext(ctx context.Context, input *textract.DetectDocumentTextInput, opts ...request.Option) (*textract.DetectDocumentTextOutput, error)
+	GetAdapterWithContext(ctx context.Context, input *textract.GetAdapterInput, opts ...request.Option) (*textract.GetAdapterOutput, error)
+	GetAdapterVersionWithContext(ctx context.Context, input *textract.GetAdapterVersionInput, opts ...request.Option) (*textract.GetAdapterVersionOutput, error)
 	GetDocumentAnalysisWithContext(ctx context.Context, input *textract.GetDocumentAnalysisInput, opts ...request.Option) (*textract.GetDocumentAnalysisOutput, error)
 	GetDocumentTextDetectionWithContext(ctx context.Context, input *textract.GetDocumentTextDetectionInput, opts ...request.Option) (*textract.GetDocumentTextDetectionOutput, error)
 	GetExpenseAnalysisWithContext(ctx context.Context, input *textract.GetExpenseAnalysisInput, opts ...request.Option) (*textract.GetExpenseAnalysisOutput, error)
 	GetLendingAnalysisWithContext(ctx context.Context, input *textract.GetLendingAnalysisInput, opts ...request.Option) (*textract.GetLendingAnalysisOutput, error)
 	GetLendingAnalysisSummaryWithContext(ctx context.Context, input *textract.GetLendingAnalysisSummaryInput, opts ...request.Option) (*textract.GetLendingAnalysisSummaryOutput, error)
+	ListAdapterVersionsWithContext(ctx context.Context, input *textract.ListAdapterVersionsInput, opts ...request.Option) (*textract.ListAdapterVersionsOutput, error)
+	ListAdapterVersionsPagesWithContext(ctx context.Context, input *textract.ListAdapterVersionsInput, cb func(*textract.ListAdapterVersionsOutput, bool) bool, opts ...request.Option) error
+	ListAdaptersWithContext(ctx context.Context, input *textract.ListAdaptersInput, opts ...request.Option) (*textract.ListAdaptersOutput, error)
+	ListAdaptersPagesWithContext(ctx context.Context, input *textract.ListAdaptersInput, cb func(*textract.ListAdaptersOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *textract.ListTagsForResourceInput, opts ...request.Option) (*textract.ListTagsForResourceOutput, error)
 	StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error)
 	StartDocumentTextDetectionWithContext(ctx context.Context, input *textract.StartDocumentTextDetectionInput, opts ...request.Option) (*textract.StartDocumentTextDetectionOutput, error)
 	StartExpenseAnalysisWithContext(ctx context.Context, input *textract.StartExpenseAnalysisInput, opts ...request.Option) (*textract.StartExpenseAnalysisOutput, error)
 	StartLendingAnalysisWithContext(ctx context.Context, input *textract.StartLendingAnalysisInput, opts ...request.Option) (*textract.StartLendingAnalysisOutput, error)
+	TagResourceWithContext(ctx context.Context, input *textract.TagResourceInput, opts ...request.Option) (*textract.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *textract.UntagResourceInput, opts ...request.Option) (*textract.UntagResourceOutput, error)
+	UpdateAdapterWithContext(ctx context.Context, input *textract.UpdateAdapterInput, opts ...request.Option) (*textract.UpdateAdapterOutput, error)
 }
 
 type Client struct {
@@ -104,6 +118,90 @@ func (c *Client) AnalyzeIDWithContext(ctx context.Context, input *textract.Analy
 	return req.Output.(*textract.AnalyzeIDOutput), req.Error
 }
 
+func (c *Client) CreateAdapterWithContext(ctx context.Context, input *textract.CreateAdapterInput, opts ...request.Option) (*textract.CreateAdapterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "CreateAdapter",
+		Input:   input,
+		Output:  (*textract.CreateAdapterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.CreateAdapterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.CreateAdapterOutput), req.Error
+}
+
+func (c *Client) CreateAdapterVersionWithContext(ctx context.Context, input *textract.CreateAdapterVersionInput, opts ...request.Option) (*textract.CreateAdapterVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "CreateAdapterVersion",
+		Input:   input,
+		Output:  (*textract.CreateAdapterVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.CreateAdapterVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.CreateAdapterVersionOutput), req.Error
+}
+
+func (c *Client) DeleteAdapterWithContext(ctx context.Context, input *textract.DeleteAdapterInput, opts ...request.Option) (*textract.DeleteAdapterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "DeleteAdapter",
+		Input:   input,
+		Output:  (*textract.DeleteAdapterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.DeleteAdapterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.DeleteAdapterOutput), req.Error
+}
+
+func (c *Client) DeleteAdapterVersionWithContext(ctx context.Context, input *textract.DeleteAdapterVersionInput, opts ...request.Option) (*textract.DeleteAdapterVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "DeleteAdapterVersion",
+		Input:   input,
+		Output:  (*textract.DeleteAdapterVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.DeleteAdapterVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.DeleteAdapterVersionOutput), req.Error
+}
+
 func (c *Client) DetectDocumentTextWithContext(ctx context.Context, input *textract.DetectDocumentTextInput, opts ...request.Option) (*textract.DetectDocumentTextOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
@@ -123,6 +221,48 @@ func (c *Client) DetectDocumentTextWithContext(ctx context.Context, input *textr
 	})
 
 	return req.Output.(*textract.DetectDocumentTextOutput), req.Error
+}
+
+func (c *Client) GetAdapterWithContext(ctx context.Context, input *textract.GetAdapterInput, opts ...request.Option) (*textract.GetAdapterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "GetAdapter",
+		Input:   input,
+		Output:  (*textract.GetAdapterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.GetAdapterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.GetAdapterOutput), req.Error
+}
+
+func (c *Client) GetAdapterVersionWithContext(ctx context.Context, input *textract.GetAdapterVersionInput, opts ...request.Option) (*textract.GetAdapterVersionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "GetAdapterVersion",
+		Input:   input,
+		Output:  (*textract.GetAdapterVersionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.GetAdapterVersionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.GetAdapterVersionOutput), req.Error
 }
 
 func (c *Client) GetDocumentAnalysisWithContext(ctx context.Context, input *textract.GetDocumentAnalysisInput, opts ...request.Option) (*textract.GetDocumentAnalysisOutput, error) {
@@ -230,6 +370,109 @@ func (c *Client) GetLendingAnalysisSummaryWithContext(ctx context.Context, input
 	return req.Output.(*textract.GetLendingAnalysisSummaryOutput), req.Error
 }
 
+func (c *Client) ListAdapterVersionsWithContext(ctx context.Context, input *textract.ListAdapterVersionsInput, opts ...request.Option) (*textract.ListAdapterVersionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "ListAdapterVersions",
+		Input:   input,
+		Output:  (*textract.ListAdapterVersionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.ListAdapterVersionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.ListAdapterVersionsOutput), req.Error
+}
+
+func (c *Client) ListAdapterVersionsPagesWithContext(ctx context.Context, input *textract.ListAdapterVersionsInput, cb func(*textract.ListAdapterVersionsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "ListAdapterVersions",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TextractAPI.ListAdapterVersionsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListAdaptersWithContext(ctx context.Context, input *textract.ListAdaptersInput, opts ...request.Option) (*textract.ListAdaptersOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "ListAdapters",
+		Input:   input,
+		Output:  (*textract.ListAdaptersOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.ListAdaptersWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.ListAdaptersOutput), req.Error
+}
+
+func (c *Client) ListAdaptersPagesWithContext(ctx context.Context, input *textract.ListAdaptersInput, cb func(*textract.ListAdaptersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "ListAdapters",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.TextractAPI.ListAdaptersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *textract.ListTagsForResourceInput, opts ...request.Option) (*textract.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*textract.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) StartDocumentAnalysisWithContext(ctx context.Context, input *textract.StartDocumentAnalysisInput, opts ...request.Option) (*textract.StartDocumentAnalysisOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "textract",
@@ -312,4 +555,67 @@ func (c *Client) StartLendingAnalysisWithContext(ctx context.Context, input *tex
 	})
 
 	return req.Output.(*textract.StartLendingAnalysisOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *textract.TagResourceInput, opts ...request.Option) (*textract.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*textract.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *textract.UntagResourceInput, opts ...request.Option) (*textract.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*textract.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.UntagResourceOutput), req.Error
+}
+
+func (c *Client) UpdateAdapterWithContext(ctx context.Context, input *textract.UpdateAdapterInput, opts ...request.Option) (*textract.UpdateAdapterOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "textract",
+		Action:  "UpdateAdapter",
+		Input:   input,
+		Output:  (*textract.UpdateAdapterOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.TextractAPI.UpdateAdapterWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*textract.UpdateAdapterOutput), req.Error
 }

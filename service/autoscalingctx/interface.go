@@ -38,12 +38,15 @@ type AutoScaling interface {
 	DescribeAutoScalingInstancesPagesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingInstancesInput, cb func(*autoscaling.DescribeAutoScalingInstancesOutput, bool) bool, opts ...request.Option) error
 	DescribeAutoScalingNotificationTypesWithContext(ctx context.Context, input *autoscaling.DescribeAutoScalingNotificationTypesInput, opts ...request.Option) (*autoscaling.DescribeAutoScalingNotificationTypesOutput, error)
 	DescribeInstanceRefreshesWithContext(ctx context.Context, input *autoscaling.DescribeInstanceRefreshesInput, opts ...request.Option) (*autoscaling.DescribeInstanceRefreshesOutput, error)
+	DescribeInstanceRefreshesPagesWithContext(ctx context.Context, input *autoscaling.DescribeInstanceRefreshesInput, cb func(*autoscaling.DescribeInstanceRefreshesOutput, bool) bool, opts ...request.Option) error
 	DescribeLaunchConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeLaunchConfigurationsOutput, error)
 	DescribeLaunchConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, cb func(*autoscaling.DescribeLaunchConfigurationsOutput, bool) bool, opts ...request.Option) error
 	DescribeLifecycleHookTypesWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHookTypesInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHookTypesOutput, error)
 	DescribeLifecycleHooksWithContext(ctx context.Context, input *autoscaling.DescribeLifecycleHooksInput, opts ...request.Option) (*autoscaling.DescribeLifecycleHooksOutput, error)
 	DescribeLoadBalancerTargetGroupsWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancerTargetGroupsInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancerTargetGroupsOutput, error)
+	DescribeLoadBalancerTargetGroupsPagesWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancerTargetGroupsInput, cb func(*autoscaling.DescribeLoadBalancerTargetGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeLoadBalancersWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancersInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancersOutput, error)
+	DescribeLoadBalancersPagesWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancersInput, cb func(*autoscaling.DescribeLoadBalancersOutput, bool) bool, opts ...request.Option) error
 	DescribeMetricCollectionTypesWithContext(ctx context.Context, input *autoscaling.DescribeMetricCollectionTypesInput, opts ...request.Option) (*autoscaling.DescribeMetricCollectionTypesOutput, error)
 	DescribeNotificationConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeNotificationConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeNotificationConfigurationsOutput, error)
 	DescribeNotificationConfigurationsPagesWithContext(ctx context.Context, input *autoscaling.DescribeNotificationConfigurationsInput, cb func(*autoscaling.DescribeNotificationConfigurationsOutput, bool) bool, opts ...request.Option) error
@@ -668,6 +671,26 @@ func (c *Client) DescribeInstanceRefreshesWithContext(ctx context.Context, input
 	return req.Output.(*autoscaling.DescribeInstanceRefreshesOutput), req.Error
 }
 
+func (c *Client) DescribeInstanceRefreshesPagesWithContext(ctx context.Context, input *autoscaling.DescribeInstanceRefreshesInput, cb func(*autoscaling.DescribeInstanceRefreshesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeInstanceRefreshes",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeInstanceRefreshesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLaunchConfigurationsWithContext(ctx context.Context, input *autoscaling.DescribeLaunchConfigurationsInput, opts ...request.Option) (*autoscaling.DescribeLaunchConfigurationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -772,6 +795,26 @@ func (c *Client) DescribeLoadBalancerTargetGroupsWithContext(ctx context.Context
 	return req.Output.(*autoscaling.DescribeLoadBalancerTargetGroupsOutput), req.Error
 }
 
+func (c *Client) DescribeLoadBalancerTargetGroupsPagesWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancerTargetGroupsInput, cb func(*autoscaling.DescribeLoadBalancerTargetGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeLoadBalancerTargetGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeLoadBalancerTargetGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancersInput, opts ...request.Option) (*autoscaling.DescribeLoadBalancersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "autoscaling",
@@ -791,6 +834,26 @@ func (c *Client) DescribeLoadBalancersWithContext(ctx context.Context, input *au
 	})
 
 	return req.Output.(*autoscaling.DescribeLoadBalancersOutput), req.Error
+}
+
+func (c *Client) DescribeLoadBalancersPagesWithContext(ctx context.Context, input *autoscaling.DescribeLoadBalancersInput, cb func(*autoscaling.DescribeLoadBalancersOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "autoscaling",
+		Action:  "DescribeLoadBalancers",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AutoScalingAPI.DescribeLoadBalancersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) DescribeMetricCollectionTypesWithContext(ctx context.Context, input *autoscaling.DescribeMetricCollectionTypesInput, opts ...request.Option) (*autoscaling.DescribeMetricCollectionTypesOutput, error) {

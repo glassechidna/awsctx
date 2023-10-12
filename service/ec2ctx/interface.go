@@ -495,6 +495,7 @@ type EC2 interface {
 	DisableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.DisableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.DisableEbsEncryptionByDefaultOutput, error)
 	DisableFastLaunchWithContext(ctx context.Context, input *ec2.DisableFastLaunchInput, opts ...request.Option) (*ec2.DisableFastLaunchOutput, error)
 	DisableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.DisableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.DisableFastSnapshotRestoresOutput, error)
+	DisableImageWithContext(ctx context.Context, input *ec2.DisableImageInput, opts ...request.Option) (*ec2.DisableImageOutput, error)
 	DisableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.DisableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.DisableImageBlockPublicAccessOutput, error)
 	DisableImageDeprecationWithContext(ctx context.Context, input *ec2.DisableImageDeprecationInput, opts ...request.Option) (*ec2.DisableImageDeprecationOutput, error)
 	DisableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.DisableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.DisableIpamOrganizationAdminAccountOutput, error)
@@ -522,6 +523,7 @@ type EC2 interface {
 	EnableEbsEncryptionByDefaultWithContext(ctx context.Context, input *ec2.EnableEbsEncryptionByDefaultInput, opts ...request.Option) (*ec2.EnableEbsEncryptionByDefaultOutput, error)
 	EnableFastLaunchWithContext(ctx context.Context, input *ec2.EnableFastLaunchInput, opts ...request.Option) (*ec2.EnableFastLaunchOutput, error)
 	EnableFastSnapshotRestoresWithContext(ctx context.Context, input *ec2.EnableFastSnapshotRestoresInput, opts ...request.Option) (*ec2.EnableFastSnapshotRestoresOutput, error)
+	EnableImageWithContext(ctx context.Context, input *ec2.EnableImageInput, opts ...request.Option) (*ec2.EnableImageOutput, error)
 	EnableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.EnableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.EnableImageBlockPublicAccessOutput, error)
 	EnableImageDeprecationWithContext(ctx context.Context, input *ec2.EnableImageDeprecationInput, opts ...request.Option) (*ec2.EnableImageDeprecationOutput, error)
 	EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error)
@@ -10814,6 +10816,27 @@ func (c *Client) DisableFastSnapshotRestoresWithContext(ctx context.Context, inp
 	return req.Output.(*ec2.DisableFastSnapshotRestoresOutput), req.Error
 }
 
+func (c *Client) DisableImageWithContext(ctx context.Context, input *ec2.DisableImageInput, opts ...request.Option) (*ec2.DisableImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableImage",
+		Input:   input,
+		Output:  (*ec2.DisableImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableImageOutput), req.Error
+}
+
 func (c *Client) DisableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.DisableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.DisableImageBlockPublicAccessOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11379,6 +11402,27 @@ func (c *Client) EnableFastSnapshotRestoresWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*ec2.EnableFastSnapshotRestoresOutput), req.Error
+}
+
+func (c *Client) EnableImageWithContext(ctx context.Context, input *ec2.EnableImageInput, opts ...request.Option) (*ec2.EnableImageOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableImage",
+		Input:   input,
+		Output:  (*ec2.EnableImageOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableImageWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableImageOutput), req.Error
 }
 
 func (c *Client) EnableImageBlockPublicAccessWithContext(ctx context.Context, input *ec2.EnableImageBlockPublicAccessInput, opts ...request.Option) (*ec2.EnableImageBlockPublicAccessOutput, error) {
