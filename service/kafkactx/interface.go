@@ -16,10 +16,12 @@ type Kafka interface {
 	CreateClusterWithContext(ctx context.Context, input *kafka.CreateClusterInput, opts ...request.Option) (*kafka.CreateClusterOutput, error)
 	CreateClusterV2WithContext(ctx context.Context, input *kafka.CreateClusterV2Input, opts ...request.Option) (*kafka.CreateClusterV2Output, error)
 	CreateConfigurationWithContext(ctx context.Context, input *kafka.CreateConfigurationInput, opts ...request.Option) (*kafka.CreateConfigurationOutput, error)
+	CreateReplicatorWithContext(ctx context.Context, input *kafka.CreateReplicatorInput, opts ...request.Option) (*kafka.CreateReplicatorOutput, error)
 	CreateVpcConnectionWithContext(ctx context.Context, input *kafka.CreateVpcConnectionInput, opts ...request.Option) (*kafka.CreateVpcConnectionOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *kafka.DeleteClusterInput, opts ...request.Option) (*kafka.DeleteClusterOutput, error)
 	DeleteClusterPolicyWithContext(ctx context.Context, input *kafka.DeleteClusterPolicyInput, opts ...request.Option) (*kafka.DeleteClusterPolicyOutput, error)
 	DeleteConfigurationWithContext(ctx context.Context, input *kafka.DeleteConfigurationInput, opts ...request.Option) (*kafka.DeleteConfigurationOutput, error)
+	DeleteReplicatorWithContext(ctx context.Context, input *kafka.DeleteReplicatorInput, opts ...request.Option) (*kafka.DeleteReplicatorOutput, error)
 	DeleteVpcConnectionWithContext(ctx context.Context, input *kafka.DeleteVpcConnectionInput, opts ...request.Option) (*kafka.DeleteVpcConnectionOutput, error)
 	DescribeClusterWithContext(ctx context.Context, input *kafka.DescribeClusterInput, opts ...request.Option) (*kafka.DescribeClusterOutput, error)
 	DescribeClusterOperationWithContext(ctx context.Context, input *kafka.DescribeClusterOperationInput, opts ...request.Option) (*kafka.DescribeClusterOperationOutput, error)
@@ -27,6 +29,7 @@ type Kafka interface {
 	DescribeClusterV2WithContext(ctx context.Context, input *kafka.DescribeClusterV2Input, opts ...request.Option) (*kafka.DescribeClusterV2Output, error)
 	DescribeConfigurationWithContext(ctx context.Context, input *kafka.DescribeConfigurationInput, opts ...request.Option) (*kafka.DescribeConfigurationOutput, error)
 	DescribeConfigurationRevisionWithContext(ctx context.Context, input *kafka.DescribeConfigurationRevisionInput, opts ...request.Option) (*kafka.DescribeConfigurationRevisionOutput, error)
+	DescribeReplicatorWithContext(ctx context.Context, input *kafka.DescribeReplicatorInput, opts ...request.Option) (*kafka.DescribeReplicatorOutput, error)
 	DescribeVpcConnectionWithContext(ctx context.Context, input *kafka.DescribeVpcConnectionInput, opts ...request.Option) (*kafka.DescribeVpcConnectionOutput, error)
 	GetBootstrapBrokersWithContext(ctx context.Context, input *kafka.GetBootstrapBrokersInput, opts ...request.Option) (*kafka.GetBootstrapBrokersOutput, error)
 	GetClusterPolicyWithContext(ctx context.Context, input *kafka.GetClusterPolicyInput, opts ...request.Option) (*kafka.GetClusterPolicyOutput, error)
@@ -49,6 +52,8 @@ type Kafka interface {
 	ListKafkaVersionsPagesWithContext(ctx context.Context, input *kafka.ListKafkaVersionsInput, cb func(*kafka.ListKafkaVersionsOutput, bool) bool, opts ...request.Option) error
 	ListNodesWithContext(ctx context.Context, input *kafka.ListNodesInput, opts ...request.Option) (*kafka.ListNodesOutput, error)
 	ListNodesPagesWithContext(ctx context.Context, input *kafka.ListNodesInput, cb func(*kafka.ListNodesOutput, bool) bool, opts ...request.Option) error
+	ListReplicatorsWithContext(ctx context.Context, input *kafka.ListReplicatorsInput, opts ...request.Option) (*kafka.ListReplicatorsOutput, error)
+	ListReplicatorsPagesWithContext(ctx context.Context, input *kafka.ListReplicatorsInput, cb func(*kafka.ListReplicatorsOutput, bool) bool, opts ...request.Option) error
 	ListScramSecretsWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, opts ...request.Option) (*kafka.ListScramSecretsOutput, error)
 	ListScramSecretsPagesWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, cb func(*kafka.ListScramSecretsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *kafka.ListTagsForResourceInput, opts ...request.Option) (*kafka.ListTagsForResourceOutput, error)
@@ -67,6 +72,7 @@ type Kafka interface {
 	UpdateConfigurationWithContext(ctx context.Context, input *kafka.UpdateConfigurationInput, opts ...request.Option) (*kafka.UpdateConfigurationOutput, error)
 	UpdateConnectivityWithContext(ctx context.Context, input *kafka.UpdateConnectivityInput, opts ...request.Option) (*kafka.UpdateConnectivityOutput, error)
 	UpdateMonitoringWithContext(ctx context.Context, input *kafka.UpdateMonitoringInput, opts ...request.Option) (*kafka.UpdateMonitoringOutput, error)
+	UpdateReplicationInfoWithContext(ctx context.Context, input *kafka.UpdateReplicationInfoInput, opts ...request.Option) (*kafka.UpdateReplicationInfoOutput, error)
 	UpdateSecurityWithContext(ctx context.Context, input *kafka.UpdateSecurityInput, opts ...request.Option) (*kafka.UpdateSecurityOutput, error)
 	UpdateStorageWithContext(ctx context.Context, input *kafka.UpdateStorageInput, opts ...request.Option) (*kafka.UpdateStorageOutput, error)
 }
@@ -191,6 +197,27 @@ func (c *Client) CreateConfigurationWithContext(ctx context.Context, input *kafk
 	return req.Output.(*kafka.CreateConfigurationOutput), req.Error
 }
 
+func (c *Client) CreateReplicatorWithContext(ctx context.Context, input *kafka.CreateReplicatorInput, opts ...request.Option) (*kafka.CreateReplicatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "CreateReplicator",
+		Input:   input,
+		Output:  (*kafka.CreateReplicatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.CreateReplicatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.CreateReplicatorOutput), req.Error
+}
+
 func (c *Client) CreateVpcConnectionWithContext(ctx context.Context, input *kafka.CreateVpcConnectionInput, opts ...request.Option) (*kafka.CreateVpcConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
@@ -273,6 +300,27 @@ func (c *Client) DeleteConfigurationWithContext(ctx context.Context, input *kafk
 	})
 
 	return req.Output.(*kafka.DeleteConfigurationOutput), req.Error
+}
+
+func (c *Client) DeleteReplicatorWithContext(ctx context.Context, input *kafka.DeleteReplicatorInput, opts ...request.Option) (*kafka.DeleteReplicatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "DeleteReplicator",
+		Input:   input,
+		Output:  (*kafka.DeleteReplicatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.DeleteReplicatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.DeleteReplicatorOutput), req.Error
 }
 
 func (c *Client) DeleteVpcConnectionWithContext(ctx context.Context, input *kafka.DeleteVpcConnectionInput, opts ...request.Option) (*kafka.DeleteVpcConnectionOutput, error) {
@@ -420,6 +468,27 @@ func (c *Client) DescribeConfigurationRevisionWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*kafka.DescribeConfigurationRevisionOutput), req.Error
+}
+
+func (c *Client) DescribeReplicatorWithContext(ctx context.Context, input *kafka.DescribeReplicatorInput, opts ...request.Option) (*kafka.DescribeReplicatorOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "DescribeReplicator",
+		Input:   input,
+		Output:  (*kafka.DescribeReplicatorOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.DescribeReplicatorWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.DescribeReplicatorOutput), req.Error
 }
 
 func (c *Client) DescribeVpcConnectionWithContext(ctx context.Context, input *kafka.DescribeVpcConnectionInput, opts ...request.Option) (*kafka.DescribeVpcConnectionOutput, error) {
@@ -875,6 +944,47 @@ func (c *Client) ListNodesPagesWithContext(ctx context.Context, input *kafka.Lis
 	return req.Error
 }
 
+func (c *Client) ListReplicatorsWithContext(ctx context.Context, input *kafka.ListReplicatorsInput, opts ...request.Option) (*kafka.ListReplicatorsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListReplicators",
+		Input:   input,
+		Output:  (*kafka.ListReplicatorsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.ListReplicatorsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.ListReplicatorsOutput), req.Error
+}
+
+func (c *Client) ListReplicatorsPagesWithContext(ctx context.Context, input *kafka.ListReplicatorsInput, cb func(*kafka.ListReplicatorsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "ListReplicators",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.KafkaAPI.ListReplicatorsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListScramSecretsWithContext(ctx context.Context, input *kafka.ListScramSecretsInput, opts ...request.Option) (*kafka.ListScramSecretsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "kafka",
@@ -1249,6 +1359,27 @@ func (c *Client) UpdateMonitoringWithContext(ctx context.Context, input *kafka.U
 	})
 
 	return req.Output.(*kafka.UpdateMonitoringOutput), req.Error
+}
+
+func (c *Client) UpdateReplicationInfoWithContext(ctx context.Context, input *kafka.UpdateReplicationInfoInput, opts ...request.Option) (*kafka.UpdateReplicationInfoOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "kafka",
+		Action:  "UpdateReplicationInfo",
+		Input:   input,
+		Output:  (*kafka.UpdateReplicationInfoOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.KafkaAPI.UpdateReplicationInfoWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*kafka.UpdateReplicationInfoOutput), req.Error
 }
 
 func (c *Client) UpdateSecurityWithContext(ctx context.Context, input *kafka.UpdateSecurityInput, opts ...request.Option) (*kafka.UpdateSecurityOutput, error) {
