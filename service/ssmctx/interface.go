@@ -29,6 +29,7 @@ type SSM interface {
 	DeleteDocumentWithContext(ctx context.Context, input *ssm.DeleteDocumentInput, opts ...request.Option) (*ssm.DeleteDocumentOutput, error)
 	DeleteInventoryWithContext(ctx context.Context, input *ssm.DeleteInventoryInput, opts ...request.Option) (*ssm.DeleteInventoryOutput, error)
 	DeleteMaintenanceWindowWithContext(ctx context.Context, input *ssm.DeleteMaintenanceWindowInput, opts ...request.Option) (*ssm.DeleteMaintenanceWindowOutput, error)
+	DeleteOpsItemWithContext(ctx context.Context, input *ssm.DeleteOpsItemInput, opts ...request.Option) (*ssm.DeleteOpsItemOutput, error)
 	DeleteOpsMetadataWithContext(ctx context.Context, input *ssm.DeleteOpsMetadataInput, opts ...request.Option) (*ssm.DeleteOpsMetadataOutput, error)
 	DeleteParameterWithContext(ctx context.Context, input *ssm.DeleteParameterInput, opts ...request.Option) (*ssm.DeleteParameterOutput, error)
 	DeleteParametersWithContext(ctx context.Context, input *ssm.DeleteParametersInput, opts ...request.Option) (*ssm.DeleteParametersOutput, error)
@@ -589,6 +590,27 @@ func (c *Client) DeleteMaintenanceWindowWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*ssm.DeleteMaintenanceWindowOutput), req.Error
+}
+
+func (c *Client) DeleteOpsItemWithContext(ctx context.Context, input *ssm.DeleteOpsItemInput, opts ...request.Option) (*ssm.DeleteOpsItemOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ssm",
+		Action:  "DeleteOpsItem",
+		Input:   input,
+		Output:  (*ssm.DeleteOpsItemOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SSMAPI.DeleteOpsItemWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ssm.DeleteOpsItemOutput), req.Error
 }
 
 func (c *Client) DeleteOpsMetadataWithContext(ctx context.Context, input *ssm.DeleteOpsMetadataInput, opts ...request.Option) (*ssm.DeleteOpsMetadataOutput, error) {

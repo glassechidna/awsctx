@@ -247,6 +247,7 @@ type Connect interface {
 	UpdateInstanceStorageConfigWithContext(ctx context.Context, input *connect.UpdateInstanceStorageConfigInput, opts ...request.Option) (*connect.UpdateInstanceStorageConfigOutput, error)
 	UpdateParticipantRoleConfigWithContext(ctx context.Context, input *connect.UpdateParticipantRoleConfigInput, opts ...request.Option) (*connect.UpdateParticipantRoleConfigOutput, error)
 	UpdatePhoneNumberWithContext(ctx context.Context, input *connect.UpdatePhoneNumberInput, opts ...request.Option) (*connect.UpdatePhoneNumberOutput, error)
+	UpdatePhoneNumberMetadataWithContext(ctx context.Context, input *connect.UpdatePhoneNumberMetadataInput, opts ...request.Option) (*connect.UpdatePhoneNumberMetadataOutput, error)
 	UpdatePromptWithContext(ctx context.Context, input *connect.UpdatePromptInput, opts ...request.Option) (*connect.UpdatePromptOutput, error)
 	UpdateQueueHoursOfOperationWithContext(ctx context.Context, input *connect.UpdateQueueHoursOfOperationInput, opts ...request.Option) (*connect.UpdateQueueHoursOfOperationOutput, error)
 	UpdateQueueMaxContactsWithContext(ctx context.Context, input *connect.UpdateQueueMaxContactsInput, opts ...request.Option) (*connect.UpdateQueueMaxContactsOutput, error)
@@ -5192,6 +5193,27 @@ func (c *Client) UpdatePhoneNumberWithContext(ctx context.Context, input *connec
 	})
 
 	return req.Output.(*connect.UpdatePhoneNumberOutput), req.Error
+}
+
+func (c *Client) UpdatePhoneNumberMetadataWithContext(ctx context.Context, input *connect.UpdatePhoneNumberMetadataInput, opts ...request.Option) (*connect.UpdatePhoneNumberMetadataOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "UpdatePhoneNumberMetadata",
+		Input:   input,
+		Output:  (*connect.UpdatePhoneNumberMetadataOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.UpdatePhoneNumberMetadataWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.UpdatePhoneNumberMetadataOutput), req.Error
 }
 
 func (c *Client) UpdatePromptWithContext(ctx context.Context, input *connect.UpdatePromptInput, opts ...request.Option) (*connect.UpdatePromptOutput, error) {
