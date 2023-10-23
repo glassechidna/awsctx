@@ -56,6 +56,7 @@ type Rekognition interface {
 	GetFaceSearchPagesWithContext(ctx context.Context, input *rekognition.GetFaceSearchInput, cb func(*rekognition.GetFaceSearchOutput, bool) bool, opts ...request.Option) error
 	GetLabelDetectionWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, opts ...request.Option) (*rekognition.GetLabelDetectionOutput, error)
 	GetLabelDetectionPagesWithContext(ctx context.Context, input *rekognition.GetLabelDetectionInput, cb func(*rekognition.GetLabelDetectionOutput, bool) bool, opts ...request.Option) error
+	GetMediaAnalysisJobWithContext(ctx context.Context, input *rekognition.GetMediaAnalysisJobInput, opts ...request.Option) (*rekognition.GetMediaAnalysisJobOutput, error)
 	GetPersonTrackingWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, opts ...request.Option) (*rekognition.GetPersonTrackingOutput, error)
 	GetPersonTrackingPagesWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, cb func(*rekognition.GetPersonTrackingOutput, bool) bool, opts ...request.Option) error
 	GetSegmentDetectionWithContext(ctx context.Context, input *rekognition.GetSegmentDetectionInput, opts ...request.Option) (*rekognition.GetSegmentDetectionOutput, error)
@@ -71,6 +72,8 @@ type Rekognition interface {
 	ListDatasetLabelsPagesWithContext(ctx context.Context, input *rekognition.ListDatasetLabelsInput, cb func(*rekognition.ListDatasetLabelsOutput, bool) bool, opts ...request.Option) error
 	ListFacesWithContext(ctx context.Context, input *rekognition.ListFacesInput, opts ...request.Option) (*rekognition.ListFacesOutput, error)
 	ListFacesPagesWithContext(ctx context.Context, input *rekognition.ListFacesInput, cb func(*rekognition.ListFacesOutput, bool) bool, opts ...request.Option) error
+	ListMediaAnalysisJobsWithContext(ctx context.Context, input *rekognition.ListMediaAnalysisJobsInput, opts ...request.Option) (*rekognition.ListMediaAnalysisJobsOutput, error)
+	ListMediaAnalysisJobsPagesWithContext(ctx context.Context, input *rekognition.ListMediaAnalysisJobsInput, cb func(*rekognition.ListMediaAnalysisJobsOutput, bool) bool, opts ...request.Option) error
 	ListProjectPoliciesWithContext(ctx context.Context, input *rekognition.ListProjectPoliciesInput, opts ...request.Option) (*rekognition.ListProjectPoliciesOutput, error)
 	ListProjectPoliciesPagesWithContext(ctx context.Context, input *rekognition.ListProjectPoliciesInput, cb func(*rekognition.ListProjectPoliciesOutput, bool) bool, opts ...request.Option) error
 	ListStreamProcessorsWithContext(ctx context.Context, input *rekognition.ListStreamProcessorsInput, opts ...request.Option) (*rekognition.ListStreamProcessorsOutput, error)
@@ -89,6 +92,7 @@ type Rekognition interface {
 	StartFaceDetectionWithContext(ctx context.Context, input *rekognition.StartFaceDetectionInput, opts ...request.Option) (*rekognition.StartFaceDetectionOutput, error)
 	StartFaceSearchWithContext(ctx context.Context, input *rekognition.StartFaceSearchInput, opts ...request.Option) (*rekognition.StartFaceSearchOutput, error)
 	StartLabelDetectionWithContext(ctx context.Context, input *rekognition.StartLabelDetectionInput, opts ...request.Option) (*rekognition.StartLabelDetectionOutput, error)
+	StartMediaAnalysisJobWithContext(ctx context.Context, input *rekognition.StartMediaAnalysisJobInput, opts ...request.Option) (*rekognition.StartMediaAnalysisJobOutput, error)
 	StartPersonTrackingWithContext(ctx context.Context, input *rekognition.StartPersonTrackingInput, opts ...request.Option) (*rekognition.StartPersonTrackingOutput, error)
 	StartProjectVersionWithContext(ctx context.Context, input *rekognition.StartProjectVersionInput, opts ...request.Option) (*rekognition.StartProjectVersionOutput, error)
 	StartSegmentDetectionWithContext(ctx context.Context, input *rekognition.StartSegmentDetectionInput, opts ...request.Option) (*rekognition.StartSegmentDetectionOutput, error)
@@ -1055,6 +1059,27 @@ func (c *Client) GetLabelDetectionPagesWithContext(ctx context.Context, input *r
 	return req.Error
 }
 
+func (c *Client) GetMediaAnalysisJobWithContext(ctx context.Context, input *rekognition.GetMediaAnalysisJobInput, opts ...request.Option) (*rekognition.GetMediaAnalysisJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "GetMediaAnalysisJob",
+		Input:   input,
+		Output:  (*rekognition.GetMediaAnalysisJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.GetMediaAnalysisJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.GetMediaAnalysisJobOutput), req.Error
+}
+
 func (c *Client) GetPersonTrackingWithContext(ctx context.Context, input *rekognition.GetPersonTrackingInput, opts ...request.Option) (*rekognition.GetPersonTrackingOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rekognition",
@@ -1358,6 +1383,47 @@ func (c *Client) ListFacesPagesWithContext(ctx context.Context, input *rekogniti
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RekognitionAPI.ListFacesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListMediaAnalysisJobsWithContext(ctx context.Context, input *rekognition.ListMediaAnalysisJobsInput, opts ...request.Option) (*rekognition.ListMediaAnalysisJobsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListMediaAnalysisJobs",
+		Input:   input,
+		Output:  (*rekognition.ListMediaAnalysisJobsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.ListMediaAnalysisJobsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.ListMediaAnalysisJobsOutput), req.Error
+}
+
+func (c *Client) ListMediaAnalysisJobsPagesWithContext(ctx context.Context, input *rekognition.ListMediaAnalysisJobsInput, cb func(*rekognition.ListMediaAnalysisJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "ListMediaAnalysisJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RekognitionAPI.ListMediaAnalysisJobsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1736,6 +1802,27 @@ func (c *Client) StartLabelDetectionWithContext(ctx context.Context, input *reko
 	})
 
 	return req.Output.(*rekognition.StartLabelDetectionOutput), req.Error
+}
+
+func (c *Client) StartMediaAnalysisJobWithContext(ctx context.Context, input *rekognition.StartMediaAnalysisJobInput, opts ...request.Option) (*rekognition.StartMediaAnalysisJobOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rekognition",
+		Action:  "StartMediaAnalysisJob",
+		Input:   input,
+		Output:  (*rekognition.StartMediaAnalysisJobOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RekognitionAPI.StartMediaAnalysisJobWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rekognition.StartMediaAnalysisJobOutput), req.Error
 }
 
 func (c *Client) StartPersonTrackingWithContext(ctx context.Context, input *rekognition.StartPersonTrackingInput, opts ...request.Option) (*rekognition.StartPersonTrackingOutput, error) {
