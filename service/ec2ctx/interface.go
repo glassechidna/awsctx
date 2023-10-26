@@ -580,6 +580,8 @@ type EC2 interface {
 	GetNetworkInsightsAccessScopeContentWithContext(ctx context.Context, input *ec2.GetNetworkInsightsAccessScopeContentInput, opts ...request.Option) (*ec2.GetNetworkInsightsAccessScopeContentOutput, error)
 	GetPasswordDataWithContext(ctx context.Context, input *ec2.GetPasswordDataInput, opts ...request.Option) (*ec2.GetPasswordDataOutput, error)
 	GetReservedInstancesExchangeQuoteWithContext(ctx context.Context, input *ec2.GetReservedInstancesExchangeQuoteInput, opts ...request.Option) (*ec2.GetReservedInstancesExchangeQuoteOutput, error)
+	GetSecurityGroupsForVpcWithContext(ctx context.Context, input *ec2.GetSecurityGroupsForVpcInput, opts ...request.Option) (*ec2.GetSecurityGroupsForVpcOutput, error)
+	GetSecurityGroupsForVpcPagesWithContext(ctx context.Context, input *ec2.GetSecurityGroupsForVpcInput, cb func(*ec2.GetSecurityGroupsForVpcOutput, bool) bool, opts ...request.Option) error
 	GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error)
 	GetSpotPlacementScoresWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, opts ...request.Option) (*ec2.GetSpotPlacementScoresOutput, error)
 	GetSpotPlacementScoresPagesWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, cb func(*ec2.GetSpotPlacementScoresOutput, bool) bool, opts ...request.Option) error
@@ -12586,6 +12588,47 @@ func (c *Client) GetReservedInstancesExchangeQuoteWithContext(ctx context.Contex
 	})
 
 	return req.Output.(*ec2.GetReservedInstancesExchangeQuoteOutput), req.Error
+}
+
+func (c *Client) GetSecurityGroupsForVpcWithContext(ctx context.Context, input *ec2.GetSecurityGroupsForVpcInput, opts ...request.Option) (*ec2.GetSecurityGroupsForVpcOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSecurityGroupsForVpc",
+		Input:   input,
+		Output:  (*ec2.GetSecurityGroupsForVpcOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetSecurityGroupsForVpcWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetSecurityGroupsForVpcOutput), req.Error
+}
+
+func (c *Client) GetSecurityGroupsForVpcPagesWithContext(ctx context.Context, input *ec2.GetSecurityGroupsForVpcInput, cb func(*ec2.GetSecurityGroupsForVpcOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSecurityGroupsForVpc",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.GetSecurityGroupsForVpcPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error) {
