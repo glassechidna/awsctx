@@ -40,6 +40,7 @@ type RDS interface {
 	CreateDBSubnetGroupWithContext(ctx context.Context, input *rds.CreateDBSubnetGroupInput, opts ...request.Option) (*rds.CreateDBSubnetGroupOutput, error)
 	CreateEventSubscriptionWithContext(ctx context.Context, input *rds.CreateEventSubscriptionInput, opts ...request.Option) (*rds.CreateEventSubscriptionOutput, error)
 	CreateGlobalClusterWithContext(ctx context.Context, input *rds.CreateGlobalClusterInput, opts ...request.Option) (*rds.CreateGlobalClusterOutput, error)
+	CreateIntegrationWithContext(ctx context.Context, input *rds.CreateIntegrationInput, opts ...request.Option) (*rds.CreateIntegrationOutput, error)
 	CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error)
 	DeleteBlueGreenDeploymentWithContext(ctx context.Context, input *rds.DeleteBlueGreenDeploymentInput, opts ...request.Option) (*rds.DeleteBlueGreenDeploymentOutput, error)
 	DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error)
@@ -58,6 +59,7 @@ type RDS interface {
 	DeleteDBSubnetGroupWithContext(ctx context.Context, input *rds.DeleteDBSubnetGroupInput, opts ...request.Option) (*rds.DeleteDBSubnetGroupOutput, error)
 	DeleteEventSubscriptionWithContext(ctx context.Context, input *rds.DeleteEventSubscriptionInput, opts ...request.Option) (*rds.DeleteEventSubscriptionOutput, error)
 	DeleteGlobalClusterWithContext(ctx context.Context, input *rds.DeleteGlobalClusterInput, opts ...request.Option) (*rds.DeleteGlobalClusterOutput, error)
+	DeleteIntegrationWithContext(ctx context.Context, input *rds.DeleteIntegrationInput, opts ...request.Option) (*rds.DeleteIntegrationOutput, error)
 	DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error)
 	DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error)
@@ -119,6 +121,8 @@ type RDS interface {
 	DescribeExportTasksPagesWithContext(ctx context.Context, input *rds.DescribeExportTasksInput, cb func(*rds.DescribeExportTasksOutput, bool) bool, opts ...request.Option) error
 	DescribeGlobalClustersWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, opts ...request.Option) (*rds.DescribeGlobalClustersOutput, error)
 	DescribeGlobalClustersPagesWithContext(ctx context.Context, input *rds.DescribeGlobalClustersInput, cb func(*rds.DescribeGlobalClustersOutput, bool) bool, opts ...request.Option) error
+	DescribeIntegrationsWithContext(ctx context.Context, input *rds.DescribeIntegrationsInput, opts ...request.Option) (*rds.DescribeIntegrationsOutput, error)
+	DescribeIntegrationsPagesWithContext(ctx context.Context, input *rds.DescribeIntegrationsInput, cb func(*rds.DescribeIntegrationsOutput, bool) bool, opts ...request.Option) error
 	DescribeOptionGroupOptionsWithContext(ctx context.Context, input *rds.DescribeOptionGroupOptionsInput, opts ...request.Option) (*rds.DescribeOptionGroupOptionsOutput, error)
 	DescribeOptionGroupOptionsPagesWithContext(ctx context.Context, input *rds.DescribeOptionGroupOptionsInput, cb func(*rds.DescribeOptionGroupOptionsOutput, bool) bool, opts ...request.Option) error
 	DescribeOptionGroupsWithContext(ctx context.Context, input *rds.DescribeOptionGroupsInput, opts ...request.Option) (*rds.DescribeOptionGroupsOutput, error)
@@ -816,6 +820,27 @@ func (c *Client) CreateGlobalClusterWithContext(ctx context.Context, input *rds.
 	return req.Output.(*rds.CreateGlobalClusterOutput), req.Error
 }
 
+func (c *Client) CreateIntegrationWithContext(ctx context.Context, input *rds.CreateIntegrationInput, opts ...request.Option) (*rds.CreateIntegrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CreateIntegration",
+		Input:   input,
+		Output:  (*rds.CreateIntegrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CreateIntegrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CreateIntegrationOutput), req.Error
+}
+
 func (c *Client) CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1192,6 +1217,27 @@ func (c *Client) DeleteGlobalClusterWithContext(ctx context.Context, input *rds.
 	})
 
 	return req.Output.(*rds.DeleteGlobalClusterOutput), req.Error
+}
+
+func (c *Client) DeleteIntegrationWithContext(ctx context.Context, input *rds.DeleteIntegrationInput, opts ...request.Option) (*rds.DeleteIntegrationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteIntegration",
+		Input:   input,
+		Output:  (*rds.DeleteIntegrationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteIntegrationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteIntegrationOutput), req.Error
 }
 
 func (c *Client) DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error) {
@@ -2443,6 +2489,47 @@ func (c *Client) DescribeGlobalClustersPagesWithContext(ctx context.Context, inp
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.RDSAPI.DescribeGlobalClustersPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeIntegrationsWithContext(ctx context.Context, input *rds.DescribeIntegrationsInput, opts ...request.Option) (*rds.DescribeIntegrationsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeIntegrations",
+		Input:   input,
+		Output:  (*rds.DescribeIntegrationsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeIntegrationsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeIntegrationsOutput), req.Error
+}
+
+func (c *Client) DescribeIntegrationsPagesWithContext(ctx context.Context, input *rds.DescribeIntegrationsInput, cb func(*rds.DescribeIntegrationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeIntegrations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeIntegrationsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
