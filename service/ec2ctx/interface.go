@@ -241,6 +241,8 @@ type EC2 interface {
 	DescribeBundleTasksWithContext(ctx context.Context, input *ec2.DescribeBundleTasksInput, opts ...request.Option) (*ec2.DescribeBundleTasksOutput, error)
 	DescribeByoipCidrsWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, opts ...request.Option) (*ec2.DescribeByoipCidrsOutput, error)
 	DescribeByoipCidrsPagesWithContext(ctx context.Context, input *ec2.DescribeByoipCidrsInput, cb func(*ec2.DescribeByoipCidrsOutput, bool) bool, opts ...request.Option) error
+	DescribeCapacityBlockOfferingsWithContext(ctx context.Context, input *ec2.DescribeCapacityBlockOfferingsInput, opts ...request.Option) (*ec2.DescribeCapacityBlockOfferingsOutput, error)
+	DescribeCapacityBlockOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityBlockOfferingsInput, cb func(*ec2.DescribeCapacityBlockOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeCapacityReservationFleetsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationFleetsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationFleetsOutput, error)
 	DescribeCapacityReservationFleetsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationFleetsInput, cb func(*ec2.DescribeCapacityReservationFleetsOutput, bool) bool, opts ...request.Option) error
 	DescribeCapacityReservationsWithContext(ctx context.Context, input *ec2.DescribeCapacityReservationsInput, opts ...request.Option) (*ec2.DescribeCapacityReservationsOutput, error)
@@ -685,6 +687,7 @@ type EC2 interface {
 	ProvisionByoipCidrWithContext(ctx context.Context, input *ec2.ProvisionByoipCidrInput, opts ...request.Option) (*ec2.ProvisionByoipCidrOutput, error)
 	ProvisionIpamPoolCidrWithContext(ctx context.Context, input *ec2.ProvisionIpamPoolCidrInput, opts ...request.Option) (*ec2.ProvisionIpamPoolCidrOutput, error)
 	ProvisionPublicIpv4PoolCidrWithContext(ctx context.Context, input *ec2.ProvisionPublicIpv4PoolCidrInput, opts ...request.Option) (*ec2.ProvisionPublicIpv4PoolCidrOutput, error)
+	PurchaseCapacityBlockWithContext(ctx context.Context, input *ec2.PurchaseCapacityBlockInput, opts ...request.Option) (*ec2.PurchaseCapacityBlockOutput, error)
 	PurchaseHostReservationWithContext(ctx context.Context, input *ec2.PurchaseHostReservationInput, opts ...request.Option) (*ec2.PurchaseHostReservationOutput, error)
 	PurchaseReservedInstancesOfferingWithContext(ctx context.Context, input *ec2.PurchaseReservedInstancesOfferingInput, opts ...request.Option) (*ec2.PurchaseReservedInstancesOfferingOutput, error)
 	PurchaseScheduledInstancesWithContext(ctx context.Context, input *ec2.PurchaseScheduledInstancesInput, opts ...request.Option) (*ec2.PurchaseScheduledInstancesOutput, error)
@@ -5586,6 +5589,47 @@ func (c *Client) DescribeByoipCidrsPagesWithContext(ctx context.Context, input *
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeByoipCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeCapacityBlockOfferingsWithContext(ctx context.Context, input *ec2.DescribeCapacityBlockOfferingsInput, opts ...request.Option) (*ec2.DescribeCapacityBlockOfferingsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCapacityBlockOfferings",
+		Input:   input,
+		Output:  (*ec2.DescribeCapacityBlockOfferingsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeCapacityBlockOfferingsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeCapacityBlockOfferingsOutput), req.Error
+}
+
+func (c *Client) DescribeCapacityBlockOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeCapacityBlockOfferingsInput, cb func(*ec2.DescribeCapacityBlockOfferingsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeCapacityBlockOfferings",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeCapacityBlockOfferingsPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -14782,6 +14826,27 @@ func (c *Client) ProvisionPublicIpv4PoolCidrWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*ec2.ProvisionPublicIpv4PoolCidrOutput), req.Error
+}
+
+func (c *Client) PurchaseCapacityBlockWithContext(ctx context.Context, input *ec2.PurchaseCapacityBlockInput, opts ...request.Option) (*ec2.PurchaseCapacityBlockOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "PurchaseCapacityBlock",
+		Input:   input,
+		Output:  (*ec2.PurchaseCapacityBlockOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.PurchaseCapacityBlockWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.PurchaseCapacityBlockOutput), req.Error
 }
 
 func (c *Client) PurchaseHostReservationWithContext(ctx context.Context, input *ec2.PurchaseHostReservationInput, opts ...request.Option) (*ec2.PurchaseHostReservationOutput, error) {

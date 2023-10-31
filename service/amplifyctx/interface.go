@@ -32,11 +32,15 @@ type Amplify interface {
 	GetJobWithContext(ctx context.Context, input *amplify.GetJobInput, opts ...request.Option) (*amplify.GetJobOutput, error)
 	GetWebhookWithContext(ctx context.Context, input *amplify.GetWebhookInput, opts ...request.Option) (*amplify.GetWebhookOutput, error)
 	ListAppsWithContext(ctx context.Context, input *amplify.ListAppsInput, opts ...request.Option) (*amplify.ListAppsOutput, error)
+	ListAppsPagesWithContext(ctx context.Context, input *amplify.ListAppsInput, cb func(*amplify.ListAppsOutput, bool) bool, opts ...request.Option) error
 	ListArtifactsWithContext(ctx context.Context, input *amplify.ListArtifactsInput, opts ...request.Option) (*amplify.ListArtifactsOutput, error)
 	ListBackendEnvironmentsWithContext(ctx context.Context, input *amplify.ListBackendEnvironmentsInput, opts ...request.Option) (*amplify.ListBackendEnvironmentsOutput, error)
 	ListBranchesWithContext(ctx context.Context, input *amplify.ListBranchesInput, opts ...request.Option) (*amplify.ListBranchesOutput, error)
+	ListBranchesPagesWithContext(ctx context.Context, input *amplify.ListBranchesInput, cb func(*amplify.ListBranchesOutput, bool) bool, opts ...request.Option) error
 	ListDomainAssociationsWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, opts ...request.Option) (*amplify.ListDomainAssociationsOutput, error)
+	ListDomainAssociationsPagesWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, cb func(*amplify.ListDomainAssociationsOutput, bool) bool, opts ...request.Option) error
 	ListJobsWithContext(ctx context.Context, input *amplify.ListJobsInput, opts ...request.Option) (*amplify.ListJobsOutput, error)
+	ListJobsPagesWithContext(ctx context.Context, input *amplify.ListJobsInput, cb func(*amplify.ListJobsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *amplify.ListTagsForResourceInput, opts ...request.Option) (*amplify.ListTagsForResourceOutput, error)
 	ListWebhooksWithContext(ctx context.Context, input *amplify.ListWebhooksInput, opts ...request.Option) (*amplify.ListWebhooksOutput, error)
 	StartDeploymentWithContext(ctx context.Context, input *amplify.StartDeploymentInput, opts ...request.Option) (*amplify.StartDeploymentOutput, error)
@@ -506,6 +510,26 @@ func (c *Client) ListAppsWithContext(ctx context.Context, input *amplify.ListApp
 	return req.Output.(*amplify.ListAppsOutput), req.Error
 }
 
+func (c *Client) ListAppsPagesWithContext(ctx context.Context, input *amplify.ListAppsInput, cb func(*amplify.ListAppsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "ListApps",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AmplifyAPI.ListAppsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListArtifactsWithContext(ctx context.Context, input *amplify.ListArtifactsInput, opts ...request.Option) (*amplify.ListArtifactsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
@@ -569,6 +593,26 @@ func (c *Client) ListBranchesWithContext(ctx context.Context, input *amplify.Lis
 	return req.Output.(*amplify.ListBranchesOutput), req.Error
 }
 
+func (c *Client) ListBranchesPagesWithContext(ctx context.Context, input *amplify.ListBranchesInput, cb func(*amplify.ListBranchesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "ListBranches",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AmplifyAPI.ListBranchesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListDomainAssociationsWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, opts ...request.Option) (*amplify.ListDomainAssociationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
@@ -590,6 +634,26 @@ func (c *Client) ListDomainAssociationsWithContext(ctx context.Context, input *a
 	return req.Output.(*amplify.ListDomainAssociationsOutput), req.Error
 }
 
+func (c *Client) ListDomainAssociationsPagesWithContext(ctx context.Context, input *amplify.ListDomainAssociationsInput, cb func(*amplify.ListDomainAssociationsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "ListDomainAssociations",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AmplifyAPI.ListDomainAssociationsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListJobsWithContext(ctx context.Context, input *amplify.ListJobsInput, opts ...request.Option) (*amplify.ListJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "amplify",
@@ -609,6 +673,26 @@ func (c *Client) ListJobsWithContext(ctx context.Context, input *amplify.ListJob
 	})
 
 	return req.Output.(*amplify.ListJobsOutput), req.Error
+}
+
+func (c *Client) ListJobsPagesWithContext(ctx context.Context, input *amplify.ListJobsInput, cb func(*amplify.ListJobsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "amplify",
+		Action:  "ListJobs",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.AmplifyAPI.ListJobsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *amplify.ListTagsForResourceInput, opts ...request.Option) (*amplify.ListTagsForResourceOutput, error) {
