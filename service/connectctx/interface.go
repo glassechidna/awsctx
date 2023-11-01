@@ -23,6 +23,7 @@ type Connect interface {
 	AssociateRoutingProfileQueuesWithContext(ctx context.Context, input *connect.AssociateRoutingProfileQueuesInput, opts ...request.Option) (*connect.AssociateRoutingProfileQueuesOutput, error)
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
 	AssociateTrafficDistributionGroupUserWithContext(ctx context.Context, input *connect.AssociateTrafficDistributionGroupUserInput, opts ...request.Option) (*connect.AssociateTrafficDistributionGroupUserOutput, error)
+	BatchGetFlowAssociationWithContext(ctx context.Context, input *connect.BatchGetFlowAssociationInput, opts ...request.Option) (*connect.BatchGetFlowAssociationOutput, error)
 	ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error)
 	CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
@@ -541,6 +542,27 @@ func (c *Client) AssociateTrafficDistributionGroupUserWithContext(ctx context.Co
 	})
 
 	return req.Output.(*connect.AssociateTrafficDistributionGroupUserOutput), req.Error
+}
+
+func (c *Client) BatchGetFlowAssociationWithContext(ctx context.Context, input *connect.BatchGetFlowAssociationInput, opts ...request.Option) (*connect.BatchGetFlowAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "BatchGetFlowAssociation",
+		Input:   input,
+		Output:  (*connect.BatchGetFlowAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.BatchGetFlowAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.BatchGetFlowAssociationOutput), req.Error
 }
 
 func (c *Client) ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error) {

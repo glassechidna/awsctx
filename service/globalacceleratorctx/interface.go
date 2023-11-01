@@ -16,12 +16,14 @@ type GlobalAccelerator interface {
 	AdvertiseByoipCidrWithContext(ctx context.Context, input *globalaccelerator.AdvertiseByoipCidrInput, opts ...request.Option) (*globalaccelerator.AdvertiseByoipCidrOutput, error)
 	AllowCustomRoutingTrafficWithContext(ctx context.Context, input *globalaccelerator.AllowCustomRoutingTrafficInput, opts ...request.Option) (*globalaccelerator.AllowCustomRoutingTrafficOutput, error)
 	CreateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateAcceleratorOutput, error)
+	CreateCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.CreateCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.CreateCrossAccountAttachmentOutput, error)
 	CreateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingAcceleratorOutput, error)
 	CreateCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingEndpointGroupOutput, error)
 	CreateCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingListenerOutput, error)
 	CreateEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.CreateEndpointGroupInput, opts ...request.Option) (*globalaccelerator.CreateEndpointGroupOutput, error)
 	CreateListenerWithContext(ctx context.Context, input *globalaccelerator.CreateListenerInput, opts ...request.Option) (*globalaccelerator.CreateListenerOutput, error)
 	DeleteAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteAcceleratorOutput, error)
+	DeleteCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.DeleteCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.DeleteCrossAccountAttachmentOutput, error)
 	DeleteCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingAcceleratorOutput, error)
 	DeleteCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingEndpointGroupOutput, error)
 	DeleteCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingListenerOutput, error)
@@ -31,6 +33,7 @@ type GlobalAccelerator interface {
 	DeprovisionByoipCidrWithContext(ctx context.Context, input *globalaccelerator.DeprovisionByoipCidrInput, opts ...request.Option) (*globalaccelerator.DeprovisionByoipCidrOutput, error)
 	DescribeAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorOutput, error)
 	DescribeAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeAcceleratorAttributesOutput, error)
+	DescribeCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.DescribeCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.DescribeCrossAccountAttachmentOutput, error)
 	DescribeCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorOutput, error)
 	DescribeCustomRoutingAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorAttributesOutput, error)
 	DescribeCustomRoutingEndpointGroupWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingEndpointGroupInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingEndpointGroupOutput, error)
@@ -41,6 +44,11 @@ type GlobalAccelerator interface {
 	ListAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListAcceleratorsInput, cb func(*globalaccelerator.ListAcceleratorsOutput, bool) bool, opts ...request.Option) error
 	ListByoipCidrsWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, opts ...request.Option) (*globalaccelerator.ListByoipCidrsOutput, error)
 	ListByoipCidrsPagesWithContext(ctx context.Context, input *globalaccelerator.ListByoipCidrsInput, cb func(*globalaccelerator.ListByoipCidrsOutput, bool) bool, opts ...request.Option) error
+	ListCrossAccountAttachmentsWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountAttachmentsInput, opts ...request.Option) (*globalaccelerator.ListCrossAccountAttachmentsOutput, error)
+	ListCrossAccountAttachmentsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountAttachmentsInput, cb func(*globalaccelerator.ListCrossAccountAttachmentsOutput, bool) bool, opts ...request.Option) error
+	ListCrossAccountResourceAccountsWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountResourceAccountsInput, opts ...request.Option) (*globalaccelerator.ListCrossAccountResourceAccountsOutput, error)
+	ListCrossAccountResourcesWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountResourcesInput, opts ...request.Option) (*globalaccelerator.ListCrossAccountResourcesOutput, error)
+	ListCrossAccountResourcesPagesWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountResourcesInput, cb func(*globalaccelerator.ListCrossAccountResourcesOutput, bool) bool, opts ...request.Option) error
 	ListCustomRoutingAcceleratorsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingAcceleratorsOutput, error)
 	ListCustomRoutingAcceleratorsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingAcceleratorsInput, cb func(*globalaccelerator.ListCustomRoutingAcceleratorsOutput, bool) bool, opts ...request.Option) error
 	ListCustomRoutingEndpointGroupsWithContext(ctx context.Context, input *globalaccelerator.ListCustomRoutingEndpointGroupsInput, opts ...request.Option) (*globalaccelerator.ListCustomRoutingEndpointGroupsOutput, error)
@@ -63,6 +71,7 @@ type GlobalAccelerator interface {
 	UntagResourceWithContext(ctx context.Context, input *globalaccelerator.UntagResourceInput, opts ...request.Option) (*globalaccelerator.UntagResourceOutput, error)
 	UpdateAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorOutput, error)
 	UpdateAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateAcceleratorAttributesOutput, error)
+	UpdateCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.UpdateCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.UpdateCrossAccountAttachmentOutput, error)
 	UpdateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorOutput, error)
 	UpdateCustomRoutingAcceleratorAttributesWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorAttributesInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorAttributesOutput, error)
 	UpdateCustomRoutingListenerWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingListenerInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingListenerOutput, error)
@@ -191,6 +200,27 @@ func (c *Client) CreateAcceleratorWithContext(ctx context.Context, input *global
 	return req.Output.(*globalaccelerator.CreateAcceleratorOutput), req.Error
 }
 
+func (c *Client) CreateCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.CreateCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.CreateCrossAccountAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "CreateCrossAccountAttachment",
+		Input:   input,
+		Output:  (*globalaccelerator.CreateCrossAccountAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.CreateCrossAccountAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.CreateCrossAccountAttachmentOutput), req.Error
+}
+
 func (c *Client) CreateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.CreateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.CreateCustomRoutingAcceleratorOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "globalaccelerator",
@@ -315,6 +345,27 @@ func (c *Client) DeleteAcceleratorWithContext(ctx context.Context, input *global
 	})
 
 	return req.Output.(*globalaccelerator.DeleteAcceleratorOutput), req.Error
+}
+
+func (c *Client) DeleteCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.DeleteCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.DeleteCrossAccountAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DeleteCrossAccountAttachment",
+		Input:   input,
+		Output:  (*globalaccelerator.DeleteCrossAccountAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DeleteCrossAccountAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DeleteCrossAccountAttachmentOutput), req.Error
 }
 
 func (c *Client) DeleteCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DeleteCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DeleteCustomRoutingAcceleratorOutput, error) {
@@ -504,6 +555,27 @@ func (c *Client) DescribeAcceleratorAttributesWithContext(ctx context.Context, i
 	})
 
 	return req.Output.(*globalaccelerator.DescribeAcceleratorAttributesOutput), req.Error
+}
+
+func (c *Client) DescribeCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.DescribeCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.DescribeCrossAccountAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "DescribeCrossAccountAttachment",
+		Input:   input,
+		Output:  (*globalaccelerator.DescribeCrossAccountAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.DescribeCrossAccountAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.DescribeCrossAccountAttachmentOutput), req.Error
 }
 
 func (c *Client) DescribeCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.DescribeCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.DescribeCustomRoutingAcceleratorOutput, error) {
@@ -709,6 +781,109 @@ func (c *Client) ListByoipCidrsPagesWithContext(ctx context.Context, input *glob
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.GlobalAcceleratorAPI.ListByoipCidrsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCrossAccountAttachmentsWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountAttachmentsInput, opts ...request.Option) (*globalaccelerator.ListCrossAccountAttachmentsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCrossAccountAttachments",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCrossAccountAttachmentsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCrossAccountAttachmentsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCrossAccountAttachmentsOutput), req.Error
+}
+
+func (c *Client) ListCrossAccountAttachmentsPagesWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountAttachmentsInput, cb func(*globalaccelerator.ListCrossAccountAttachmentsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCrossAccountAttachments",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCrossAccountAttachmentsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCrossAccountResourceAccountsWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountResourceAccountsInput, opts ...request.Option) (*globalaccelerator.ListCrossAccountResourceAccountsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCrossAccountResourceAccounts",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCrossAccountResourceAccountsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCrossAccountResourceAccountsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCrossAccountResourceAccountsOutput), req.Error
+}
+
+func (c *Client) ListCrossAccountResourcesWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountResourcesInput, opts ...request.Option) (*globalaccelerator.ListCrossAccountResourcesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCrossAccountResources",
+		Input:   input,
+		Output:  (*globalaccelerator.ListCrossAccountResourcesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.ListCrossAccountResourcesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.ListCrossAccountResourcesOutput), req.Error
+}
+
+func (c *Client) ListCrossAccountResourcesPagesWithContext(ctx context.Context, input *globalaccelerator.ListCrossAccountResourcesInput, cb func(*globalaccelerator.ListCrossAccountResourcesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "ListCrossAccountResources",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlobalAcceleratorAPI.ListCrossAccountResourcesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1167,6 +1342,27 @@ func (c *Client) UpdateAcceleratorAttributesWithContext(ctx context.Context, inp
 	})
 
 	return req.Output.(*globalaccelerator.UpdateAcceleratorAttributesOutput), req.Error
+}
+
+func (c *Client) UpdateCrossAccountAttachmentWithContext(ctx context.Context, input *globalaccelerator.UpdateCrossAccountAttachmentInput, opts ...request.Option) (*globalaccelerator.UpdateCrossAccountAttachmentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "globalaccelerator",
+		Action:  "UpdateCrossAccountAttachment",
+		Input:   input,
+		Output:  (*globalaccelerator.UpdateCrossAccountAttachmentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlobalAcceleratorAPI.UpdateCrossAccountAttachmentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*globalaccelerator.UpdateCrossAccountAttachmentOutput), req.Error
 }
 
 func (c *Client) UpdateCustomRoutingAcceleratorWithContext(ctx context.Context, input *globalaccelerator.UpdateCustomRoutingAcceleratorInput, opts ...request.Option) (*globalaccelerator.UpdateCustomRoutingAcceleratorOutput, error) {

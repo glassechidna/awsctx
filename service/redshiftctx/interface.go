@@ -133,6 +133,7 @@ type Redshift interface {
 	DisassociateDataShareConsumerWithContext(ctx context.Context, input *redshift.DisassociateDataShareConsumerInput, opts ...request.Option) (*redshift.DisassociateDataShareConsumerOutput, error)
 	EnableLoggingWithContext(ctx context.Context, input *redshift.EnableLoggingInput, opts ...request.Option) (*redshift.LoggingStatus, error)
 	EnableSnapshotCopyWithContext(ctx context.Context, input *redshift.EnableSnapshotCopyInput, opts ...request.Option) (*redshift.EnableSnapshotCopyOutput, error)
+	FailoverPrimaryComputeWithContext(ctx context.Context, input *redshift.FailoverPrimaryComputeInput, opts ...request.Option) (*redshift.FailoverPrimaryComputeOutput, error)
 	GetClusterCredentialsWithContext(ctx context.Context, input *redshift.GetClusterCredentialsInput, opts ...request.Option) (*redshift.GetClusterCredentialsOutput, error)
 	GetClusterCredentialsWithIAMWithContext(ctx context.Context, input *redshift.GetClusterCredentialsWithIAMInput, opts ...request.Option) (*redshift.GetClusterCredentialsWithIAMOutput, error)
 	GetReservedNodeExchangeConfigurationOptionsWithContext(ctx context.Context, input *redshift.GetReservedNodeExchangeConfigurationOptionsInput, opts ...request.Option) (*redshift.GetReservedNodeExchangeConfigurationOptionsOutput, error)
@@ -2717,6 +2718,27 @@ func (c *Client) EnableSnapshotCopyWithContext(ctx context.Context, input *redsh
 	})
 
 	return req.Output.(*redshift.EnableSnapshotCopyOutput), req.Error
+}
+
+func (c *Client) FailoverPrimaryComputeWithContext(ctx context.Context, input *redshift.FailoverPrimaryComputeInput, opts ...request.Option) (*redshift.FailoverPrimaryComputeOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "redshift",
+		Action:  "FailoverPrimaryCompute",
+		Input:   input,
+		Output:  (*redshift.FailoverPrimaryComputeOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RedshiftAPI.FailoverPrimaryComputeWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*redshift.FailoverPrimaryComputeOutput), req.Error
 }
 
 func (c *Client) GetClusterCredentialsWithContext(ctx context.Context, input *redshift.GetClusterCredentialsInput, opts ...request.Option) (*redshift.GetClusterCredentialsOutput, error) {
