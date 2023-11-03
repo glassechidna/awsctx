@@ -33,6 +33,7 @@ type Connect interface {
 	CreateInstanceWithContext(ctx context.Context, input *connect.CreateInstanceInput, opts ...request.Option) (*connect.CreateInstanceOutput, error)
 	CreateIntegrationAssociationWithContext(ctx context.Context, input *connect.CreateIntegrationAssociationInput, opts ...request.Option) (*connect.CreateIntegrationAssociationOutput, error)
 	CreateParticipantWithContext(ctx context.Context, input *connect.CreateParticipantInput, opts ...request.Option) (*connect.CreateParticipantOutput, error)
+	CreatePersistentContactAssociationWithContext(ctx context.Context, input *connect.CreatePersistentContactAssociationInput, opts ...request.Option) (*connect.CreatePersistentContactAssociationOutput, error)
 	CreatePromptWithContext(ctx context.Context, input *connect.CreatePromptInput, opts ...request.Option) (*connect.CreatePromptOutput, error)
 	CreateQueueWithContext(ctx context.Context, input *connect.CreateQueueInput, opts ...request.Option) (*connect.CreateQueueOutput, error)
 	CreateQuickConnectWithContext(ctx context.Context, input *connect.CreateQuickConnectInput, opts ...request.Option) (*connect.CreateQuickConnectOutput, error)
@@ -752,6 +753,27 @@ func (c *Client) CreateParticipantWithContext(ctx context.Context, input *connec
 	})
 
 	return req.Output.(*connect.CreateParticipantOutput), req.Error
+}
+
+func (c *Client) CreatePersistentContactAssociationWithContext(ctx context.Context, input *connect.CreatePersistentContactAssociationInput, opts ...request.Option) (*connect.CreatePersistentContactAssociationOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "CreatePersistentContactAssociation",
+		Input:   input,
+		Output:  (*connect.CreatePersistentContactAssociationOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.CreatePersistentContactAssociationWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.CreatePersistentContactAssociationOutput), req.Error
 }
 
 func (c *Client) CreatePromptWithContext(ctx context.Context, input *connect.CreatePromptInput, opts ...request.Option) (*connect.CreatePromptOutput, error) {
