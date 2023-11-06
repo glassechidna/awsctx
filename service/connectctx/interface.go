@@ -24,6 +24,7 @@ type Connect interface {
 	AssociateSecurityKeyWithContext(ctx context.Context, input *connect.AssociateSecurityKeyInput, opts ...request.Option) (*connect.AssociateSecurityKeyOutput, error)
 	AssociateTrafficDistributionGroupUserWithContext(ctx context.Context, input *connect.AssociateTrafficDistributionGroupUserInput, opts ...request.Option) (*connect.AssociateTrafficDistributionGroupUserOutput, error)
 	BatchGetFlowAssociationWithContext(ctx context.Context, input *connect.BatchGetFlowAssociationInput, opts ...request.Option) (*connect.BatchGetFlowAssociationOutput, error)
+	BatchPutContactWithContext(ctx context.Context, input *connect.BatchPutContactInput, opts ...request.Option) (*connect.BatchPutContactOutput, error)
 	ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error)
 	CreateAgentStatusWithContext(ctx context.Context, input *connect.CreateAgentStatusInput, opts ...request.Option) (*connect.CreateAgentStatusOutput, error)
 	CreateContactFlowWithContext(ctx context.Context, input *connect.CreateContactFlowInput, opts ...request.Option) (*connect.CreateContactFlowOutput, error)
@@ -564,6 +565,27 @@ func (c *Client) BatchGetFlowAssociationWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*connect.BatchGetFlowAssociationOutput), req.Error
+}
+
+func (c *Client) BatchPutContactWithContext(ctx context.Context, input *connect.BatchPutContactInput, opts ...request.Option) (*connect.BatchPutContactOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "connect",
+		Action:  "BatchPutContact",
+		Input:   input,
+		Output:  (*connect.BatchPutContactOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ConnectAPI.BatchPutContactWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*connect.BatchPutContactOutput), req.Error
 }
 
 func (c *Client) ClaimPhoneNumberWithContext(ctx context.Context, input *connect.ClaimPhoneNumberInput, opts ...request.Option) (*connect.ClaimPhoneNumberOutput, error) {
