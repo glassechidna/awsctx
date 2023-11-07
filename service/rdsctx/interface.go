@@ -42,6 +42,7 @@ type RDS interface {
 	CreateGlobalClusterWithContext(ctx context.Context, input *rds.CreateGlobalClusterInput, opts ...request.Option) (*rds.CreateGlobalClusterOutput, error)
 	CreateIntegrationWithContext(ctx context.Context, input *rds.CreateIntegrationInput, opts ...request.Option) (*rds.CreateIntegrationOutput, error)
 	CreateOptionGroupWithContext(ctx context.Context, input *rds.CreateOptionGroupInput, opts ...request.Option) (*rds.CreateOptionGroupOutput, error)
+	CreateTenantDatabaseWithContext(ctx context.Context, input *rds.CreateTenantDatabaseInput, opts ...request.Option) (*rds.CreateTenantDatabaseOutput, error)
 	DeleteBlueGreenDeploymentWithContext(ctx context.Context, input *rds.DeleteBlueGreenDeploymentInput, opts ...request.Option) (*rds.DeleteBlueGreenDeploymentOutput, error)
 	DeleteCustomDBEngineVersionWithContext(ctx context.Context, input *rds.DeleteCustomDBEngineVersionInput, opts ...request.Option) (*rds.DeleteCustomDBEngineVersionOutput, error)
 	DeleteDBClusterWithContext(ctx context.Context, input *rds.DeleteDBClusterInput, opts ...request.Option) (*rds.DeleteDBClusterOutput, error)
@@ -61,6 +62,7 @@ type RDS interface {
 	DeleteGlobalClusterWithContext(ctx context.Context, input *rds.DeleteGlobalClusterInput, opts ...request.Option) (*rds.DeleteGlobalClusterOutput, error)
 	DeleteIntegrationWithContext(ctx context.Context, input *rds.DeleteIntegrationInput, opts ...request.Option) (*rds.DeleteIntegrationOutput, error)
 	DeleteOptionGroupWithContext(ctx context.Context, input *rds.DeleteOptionGroupInput, opts ...request.Option) (*rds.DeleteOptionGroupOutput, error)
+	DeleteTenantDatabaseWithContext(ctx context.Context, input *rds.DeleteTenantDatabaseInput, opts ...request.Option) (*rds.DeleteTenantDatabaseOutput, error)
 	DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error)
 	DescribeAccountAttributesWithContext(ctx context.Context, input *rds.DescribeAccountAttributesInput, opts ...request.Option) (*rds.DescribeAccountAttributesOutput, error)
 	DescribeBlueGreenDeploymentsWithContext(ctx context.Context, input *rds.DescribeBlueGreenDeploymentsInput, opts ...request.Option) (*rds.DescribeBlueGreenDeploymentsOutput, error)
@@ -105,6 +107,8 @@ type RDS interface {
 	DescribeDBSecurityGroupsWithContext(ctx context.Context, input *rds.DescribeDBSecurityGroupsInput, opts ...request.Option) (*rds.DescribeDBSecurityGroupsOutput, error)
 	DescribeDBSecurityGroupsPagesWithContext(ctx context.Context, input *rds.DescribeDBSecurityGroupsInput, cb func(*rds.DescribeDBSecurityGroupsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBSnapshotAttributesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotAttributesInput, opts ...request.Option) (*rds.DescribeDBSnapshotAttributesOutput, error)
+	DescribeDBSnapshotTenantDatabasesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotTenantDatabasesInput, opts ...request.Option) (*rds.DescribeDBSnapshotTenantDatabasesOutput, error)
+	DescribeDBSnapshotTenantDatabasesPagesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotTenantDatabasesInput, cb func(*rds.DescribeDBSnapshotTenantDatabasesOutput, bool) bool, opts ...request.Option) error
 	DescribeDBSnapshotsWithContext(ctx context.Context, input *rds.DescribeDBSnapshotsInput, opts ...request.Option) (*rds.DescribeDBSnapshotsOutput, error)
 	DescribeDBSnapshotsPagesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotsInput, cb func(*rds.DescribeDBSnapshotsOutput, bool) bool, opts ...request.Option) error
 	DescribeDBSubnetGroupsWithContext(ctx context.Context, input *rds.DescribeDBSubnetGroupsInput, opts ...request.Option) (*rds.DescribeDBSubnetGroupsOutput, error)
@@ -137,6 +141,8 @@ type RDS interface {
 	DescribeReservedDBInstancesOfferingsPagesWithContext(ctx context.Context, input *rds.DescribeReservedDBInstancesOfferingsInput, cb func(*rds.DescribeReservedDBInstancesOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeSourceRegionsWithContext(ctx context.Context, input *rds.DescribeSourceRegionsInput, opts ...request.Option) (*rds.DescribeSourceRegionsOutput, error)
 	DescribeSourceRegionsPagesWithContext(ctx context.Context, input *rds.DescribeSourceRegionsInput, cb func(*rds.DescribeSourceRegionsOutput, bool) bool, opts ...request.Option) error
+	DescribeTenantDatabasesWithContext(ctx context.Context, input *rds.DescribeTenantDatabasesInput, opts ...request.Option) (*rds.DescribeTenantDatabasesOutput, error)
+	DescribeTenantDatabasesPagesWithContext(ctx context.Context, input *rds.DescribeTenantDatabasesInput, cb func(*rds.DescribeTenantDatabasesOutput, bool) bool, opts ...request.Option) error
 	DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *rds.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error)
 	DownloadDBLogFilePortionWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, opts ...request.Option) (*rds.DownloadDBLogFilePortionOutput, error)
 	DownloadDBLogFilePortionPagesWithContext(ctx context.Context, input *rds.DownloadDBLogFilePortionInput, cb func(*rds.DownloadDBLogFilePortionOutput, bool) bool, opts ...request.Option) error
@@ -162,6 +168,7 @@ type RDS interface {
 	ModifyEventSubscriptionWithContext(ctx context.Context, input *rds.ModifyEventSubscriptionInput, opts ...request.Option) (*rds.ModifyEventSubscriptionOutput, error)
 	ModifyGlobalClusterWithContext(ctx context.Context, input *rds.ModifyGlobalClusterInput, opts ...request.Option) (*rds.ModifyGlobalClusterOutput, error)
 	ModifyOptionGroupWithContext(ctx context.Context, input *rds.ModifyOptionGroupInput, opts ...request.Option) (*rds.ModifyOptionGroupOutput, error)
+	ModifyTenantDatabaseWithContext(ctx context.Context, input *rds.ModifyTenantDatabaseInput, opts ...request.Option) (*rds.ModifyTenantDatabaseOutput, error)
 	PromoteReadReplicaWithContext(ctx context.Context, input *rds.PromoteReadReplicaInput, opts ...request.Option) (*rds.PromoteReadReplicaOutput, error)
 	PromoteReadReplicaDBClusterWithContext(ctx context.Context, input *rds.PromoteReadReplicaDBClusterInput, opts ...request.Option) (*rds.PromoteReadReplicaDBClusterOutput, error)
 	PurchaseReservedDBInstancesOfferingWithContext(ctx context.Context, input *rds.PurchaseReservedDBInstancesOfferingInput, opts ...request.Option) (*rds.PurchaseReservedDBInstancesOfferingOutput, error)
@@ -862,6 +869,27 @@ func (c *Client) CreateOptionGroupWithContext(ctx context.Context, input *rds.Cr
 	return req.Output.(*rds.CreateOptionGroupOutput), req.Error
 }
 
+func (c *Client) CreateTenantDatabaseWithContext(ctx context.Context, input *rds.CreateTenantDatabaseInput, opts ...request.Option) (*rds.CreateTenantDatabaseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "CreateTenantDatabase",
+		Input:   input,
+		Output:  (*rds.CreateTenantDatabaseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.CreateTenantDatabaseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.CreateTenantDatabaseOutput), req.Error
+}
+
 func (c *Client) DeleteBlueGreenDeploymentWithContext(ctx context.Context, input *rds.DeleteBlueGreenDeploymentInput, opts ...request.Option) (*rds.DeleteBlueGreenDeploymentOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -1259,6 +1287,27 @@ func (c *Client) DeleteOptionGroupWithContext(ctx context.Context, input *rds.De
 	})
 
 	return req.Output.(*rds.DeleteOptionGroupOutput), req.Error
+}
+
+func (c *Client) DeleteTenantDatabaseWithContext(ctx context.Context, input *rds.DeleteTenantDatabaseInput, opts ...request.Option) (*rds.DeleteTenantDatabaseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DeleteTenantDatabase",
+		Input:   input,
+		Output:  (*rds.DeleteTenantDatabaseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DeleteTenantDatabaseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DeleteTenantDatabaseOutput), req.Error
 }
 
 func (c *Client) DeregisterDBProxyTargetsWithContext(ctx context.Context, input *rds.DeregisterDBProxyTargetsInput, opts ...request.Option) (*rds.DeregisterDBProxyTargetsOutput, error) {
@@ -2165,6 +2214,47 @@ func (c *Client) DescribeDBSnapshotAttributesWithContext(ctx context.Context, in
 	return req.Output.(*rds.DescribeDBSnapshotAttributesOutput), req.Error
 }
 
+func (c *Client) DescribeDBSnapshotTenantDatabasesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotTenantDatabasesInput, opts ...request.Option) (*rds.DescribeDBSnapshotTenantDatabasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBSnapshotTenantDatabases",
+		Input:   input,
+		Output:  (*rds.DescribeDBSnapshotTenantDatabasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeDBSnapshotTenantDatabasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeDBSnapshotTenantDatabasesOutput), req.Error
+}
+
+func (c *Client) DescribeDBSnapshotTenantDatabasesPagesWithContext(ctx context.Context, input *rds.DescribeDBSnapshotTenantDatabasesInput, cb func(*rds.DescribeDBSnapshotTenantDatabasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeDBSnapshotTenantDatabases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeDBSnapshotTenantDatabasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeDBSnapshotsWithContext(ctx context.Context, input *rds.DescribeDBSnapshotsInput, opts ...request.Option) (*rds.DescribeDBSnapshotsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -2822,6 +2912,47 @@ func (c *Client) DescribeSourceRegionsPagesWithContext(ctx context.Context, inpu
 	return req.Error
 }
 
+func (c *Client) DescribeTenantDatabasesWithContext(ctx context.Context, input *rds.DescribeTenantDatabasesInput, opts ...request.Option) (*rds.DescribeTenantDatabasesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeTenantDatabases",
+		Input:   input,
+		Output:  (*rds.DescribeTenantDatabasesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.DescribeTenantDatabasesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.DescribeTenantDatabasesOutput), req.Error
+}
+
+func (c *Client) DescribeTenantDatabasesPagesWithContext(ctx context.Context, input *rds.DescribeTenantDatabasesInput, cb func(*rds.DescribeTenantDatabasesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "DescribeTenantDatabases",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.RDSAPI.DescribeTenantDatabasesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) DescribeValidDBInstanceModificationsWithContext(ctx context.Context, input *rds.DescribeValidDBInstanceModificationsInput, opts ...request.Option) (*rds.DescribeValidDBInstanceModificationsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "rds",
@@ -3344,6 +3475,27 @@ func (c *Client) ModifyOptionGroupWithContext(ctx context.Context, input *rds.Mo
 	})
 
 	return req.Output.(*rds.ModifyOptionGroupOutput), req.Error
+}
+
+func (c *Client) ModifyTenantDatabaseWithContext(ctx context.Context, input *rds.ModifyTenantDatabaseInput, opts ...request.Option) (*rds.ModifyTenantDatabaseOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "rds",
+		Action:  "ModifyTenantDatabase",
+		Input:   input,
+		Output:  (*rds.ModifyTenantDatabaseOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.RDSAPI.ModifyTenantDatabaseWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*rds.ModifyTenantDatabaseOutput), req.Error
 }
 
 func (c *Client) PromoteReadReplicaWithContext(ctx context.Context, input *rds.PromoteReadReplicaInput, opts ...request.Option) (*rds.PromoteReadReplicaOutput, error) {
