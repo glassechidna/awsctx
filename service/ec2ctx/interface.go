@@ -502,6 +502,7 @@ type EC2 interface {
 	DisableImageDeprecationWithContext(ctx context.Context, input *ec2.DisableImageDeprecationInput, opts ...request.Option) (*ec2.DisableImageDeprecationOutput, error)
 	DisableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.DisableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.DisableIpamOrganizationAdminAccountOutput, error)
 	DisableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.DisableSerialConsoleAccessInput, opts ...request.Option) (*ec2.DisableSerialConsoleAccessOutput, error)
+	DisableSnapshotBlockPublicAccessWithContext(ctx context.Context, input *ec2.DisableSnapshotBlockPublicAccessInput, opts ...request.Option) (*ec2.DisableSnapshotBlockPublicAccessOutput, error)
 	DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error)
 	DisableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.DisableVgwRoutePropagationInput, opts ...request.Option) (*ec2.DisableVgwRoutePropagationOutput, error)
 	DisableVpcClassicLinkWithContext(ctx context.Context, input *ec2.DisableVpcClassicLinkInput, opts ...request.Option) (*ec2.DisableVpcClassicLinkOutput, error)
@@ -531,6 +532,7 @@ type EC2 interface {
 	EnableIpamOrganizationAdminAccountWithContext(ctx context.Context, input *ec2.EnableIpamOrganizationAdminAccountInput, opts ...request.Option) (*ec2.EnableIpamOrganizationAdminAccountOutput, error)
 	EnableReachabilityAnalyzerOrganizationSharingWithContext(ctx context.Context, input *ec2.EnableReachabilityAnalyzerOrganizationSharingInput, opts ...request.Option) (*ec2.EnableReachabilityAnalyzerOrganizationSharingOutput, error)
 	EnableSerialConsoleAccessWithContext(ctx context.Context, input *ec2.EnableSerialConsoleAccessInput, opts ...request.Option) (*ec2.EnableSerialConsoleAccessOutput, error)
+	EnableSnapshotBlockPublicAccessWithContext(ctx context.Context, input *ec2.EnableSnapshotBlockPublicAccessInput, opts ...request.Option) (*ec2.EnableSnapshotBlockPublicAccessOutput, error)
 	EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error)
 	EnableVgwRoutePropagationWithContext(ctx context.Context, input *ec2.EnableVgwRoutePropagationInput, opts ...request.Option) (*ec2.EnableVgwRoutePropagationOutput, error)
 	EnableVolumeIOWithContext(ctx context.Context, input *ec2.EnableVolumeIOInput, opts ...request.Option) (*ec2.EnableVolumeIOOutput, error)
@@ -585,6 +587,7 @@ type EC2 interface {
 	GetSecurityGroupsForVpcWithContext(ctx context.Context, input *ec2.GetSecurityGroupsForVpcInput, opts ...request.Option) (*ec2.GetSecurityGroupsForVpcOutput, error)
 	GetSecurityGroupsForVpcPagesWithContext(ctx context.Context, input *ec2.GetSecurityGroupsForVpcInput, cb func(*ec2.GetSecurityGroupsForVpcOutput, bool) bool, opts ...request.Option) error
 	GetSerialConsoleAccessStatusWithContext(ctx context.Context, input *ec2.GetSerialConsoleAccessStatusInput, opts ...request.Option) (*ec2.GetSerialConsoleAccessStatusOutput, error)
+	GetSnapshotBlockPublicAccessStateWithContext(ctx context.Context, input *ec2.GetSnapshotBlockPublicAccessStateInput, opts ...request.Option) (*ec2.GetSnapshotBlockPublicAccessStateOutput, error)
 	GetSpotPlacementScoresWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, opts ...request.Option) (*ec2.GetSpotPlacementScoresOutput, error)
 	GetSpotPlacementScoresPagesWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, cb func(*ec2.GetSpotPlacementScoresOutput, bool) bool, opts ...request.Option) error
 	GetSubnetCidrReservationsWithContext(ctx context.Context, input *ec2.GetSubnetCidrReservationsInput, opts ...request.Option) (*ec2.GetSubnetCidrReservationsOutput, error)
@@ -10967,6 +10970,27 @@ func (c *Client) DisableSerialConsoleAccessWithContext(ctx context.Context, inpu
 	return req.Output.(*ec2.DisableSerialConsoleAccessOutput), req.Error
 }
 
+func (c *Client) DisableSnapshotBlockPublicAccessWithContext(ctx context.Context, input *ec2.DisableSnapshotBlockPublicAccessInput, opts ...request.Option) (*ec2.DisableSnapshotBlockPublicAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DisableSnapshotBlockPublicAccess",
+		Input:   input,
+		Output:  (*ec2.DisableSnapshotBlockPublicAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DisableSnapshotBlockPublicAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DisableSnapshotBlockPublicAccessOutput), req.Error
+}
+
 func (c *Client) DisableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.DisableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.DisableTransitGatewayRouteTablePropagationOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -11574,6 +11598,27 @@ func (c *Client) EnableSerialConsoleAccessWithContext(ctx context.Context, input
 	})
 
 	return req.Output.(*ec2.EnableSerialConsoleAccessOutput), req.Error
+}
+
+func (c *Client) EnableSnapshotBlockPublicAccessWithContext(ctx context.Context, input *ec2.EnableSnapshotBlockPublicAccessInput, opts ...request.Option) (*ec2.EnableSnapshotBlockPublicAccessOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "EnableSnapshotBlockPublicAccess",
+		Input:   input,
+		Output:  (*ec2.EnableSnapshotBlockPublicAccessOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.EnableSnapshotBlockPublicAccessWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.EnableSnapshotBlockPublicAccessOutput), req.Error
 }
 
 func (c *Client) EnableTransitGatewayRouteTablePropagationWithContext(ctx context.Context, input *ec2.EnableTransitGatewayRouteTablePropagationInput, opts ...request.Option) (*ec2.EnableTransitGatewayRouteTablePropagationOutput, error) {
@@ -12694,6 +12739,27 @@ func (c *Client) GetSerialConsoleAccessStatusWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*ec2.GetSerialConsoleAccessStatusOutput), req.Error
+}
+
+func (c *Client) GetSnapshotBlockPublicAccessStateWithContext(ctx context.Context, input *ec2.GetSnapshotBlockPublicAccessStateInput, opts ...request.Option) (*ec2.GetSnapshotBlockPublicAccessStateOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "GetSnapshotBlockPublicAccessState",
+		Input:   input,
+		Output:  (*ec2.GetSnapshotBlockPublicAccessStateOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.GetSnapshotBlockPublicAccessStateWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.GetSnapshotBlockPublicAccessStateOutput), req.Error
 }
 
 func (c *Client) GetSpotPlacementScoresWithContext(ctx context.Context, input *ec2.GetSpotPlacementScoresInput, opts ...request.Option) (*ec2.GetSpotPlacementScoresOutput, error) {

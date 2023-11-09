@@ -15,10 +15,12 @@ type EKS interface {
 	AssociateIdentityProviderConfigWithContext(ctx context.Context, input *eks.AssociateIdentityProviderConfigInput, opts ...request.Option) (*eks.AssociateIdentityProviderConfigOutput, error)
 	CreateAddonWithContext(ctx context.Context, input *eks.CreateAddonInput, opts ...request.Option) (*eks.CreateAddonOutput, error)
 	CreateClusterWithContext(ctx context.Context, input *eks.CreateClusterInput, opts ...request.Option) (*eks.CreateClusterOutput, error)
+	CreateEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.CreateEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.CreateEksAnywhereSubscriptionOutput, error)
 	CreateFargateProfileWithContext(ctx context.Context, input *eks.CreateFargateProfileInput, opts ...request.Option) (*eks.CreateFargateProfileOutput, error)
 	CreateNodegroupWithContext(ctx context.Context, input *eks.CreateNodegroupInput, opts ...request.Option) (*eks.CreateNodegroupOutput, error)
 	DeleteAddonWithContext(ctx context.Context, input *eks.DeleteAddonInput, opts ...request.Option) (*eks.DeleteAddonOutput, error)
 	DeleteClusterWithContext(ctx context.Context, input *eks.DeleteClusterInput, opts ...request.Option) (*eks.DeleteClusterOutput, error)
+	DeleteEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.DeleteEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.DeleteEksAnywhereSubscriptionOutput, error)
 	DeleteFargateProfileWithContext(ctx context.Context, input *eks.DeleteFargateProfileInput, opts ...request.Option) (*eks.DeleteFargateProfileOutput, error)
 	DeleteNodegroupWithContext(ctx context.Context, input *eks.DeleteNodegroupInput, opts ...request.Option) (*eks.DeleteNodegroupOutput, error)
 	DeregisterClusterWithContext(ctx context.Context, input *eks.DeregisterClusterInput, opts ...request.Option) (*eks.DeregisterClusterOutput, error)
@@ -27,6 +29,7 @@ type EKS interface {
 	DescribeAddonVersionsWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, opts ...request.Option) (*eks.DescribeAddonVersionsOutput, error)
 	DescribeAddonVersionsPagesWithContext(ctx context.Context, input *eks.DescribeAddonVersionsInput, cb func(*eks.DescribeAddonVersionsOutput, bool) bool, opts ...request.Option) error
 	DescribeClusterWithContext(ctx context.Context, input *eks.DescribeClusterInput, opts ...request.Option) (*eks.DescribeClusterOutput, error)
+	DescribeEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.DescribeEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.DescribeEksAnywhereSubscriptionOutput, error)
 	DescribeFargateProfileWithContext(ctx context.Context, input *eks.DescribeFargateProfileInput, opts ...request.Option) (*eks.DescribeFargateProfileOutput, error)
 	DescribeIdentityProviderConfigWithContext(ctx context.Context, input *eks.DescribeIdentityProviderConfigInput, opts ...request.Option) (*eks.DescribeIdentityProviderConfigOutput, error)
 	DescribeNodegroupWithContext(ctx context.Context, input *eks.DescribeNodegroupInput, opts ...request.Option) (*eks.DescribeNodegroupOutput, error)
@@ -36,6 +39,7 @@ type EKS interface {
 	ListAddonsPagesWithContext(ctx context.Context, input *eks.ListAddonsInput, cb func(*eks.ListAddonsOutput, bool) bool, opts ...request.Option) error
 	ListClustersWithContext(ctx context.Context, input *eks.ListClustersInput, opts ...request.Option) (*eks.ListClustersOutput, error)
 	ListClustersPagesWithContext(ctx context.Context, input *eks.ListClustersInput, cb func(*eks.ListClustersOutput, bool) bool, opts ...request.Option) error
+	ListEksAnywhereSubscriptionsWithContext(ctx context.Context, input *eks.ListEksAnywhereSubscriptionsInput, opts ...request.Option) (*eks.ListEksAnywhereSubscriptionsOutput, error)
 	ListFargateProfilesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, opts ...request.Option) (*eks.ListFargateProfilesOutput, error)
 	ListFargateProfilesPagesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, cb func(*eks.ListFargateProfilesOutput, bool) bool, opts ...request.Option) error
 	ListIdentityProviderConfigsWithContext(ctx context.Context, input *eks.ListIdentityProviderConfigsInput, opts ...request.Option) (*eks.ListIdentityProviderConfigsOutput, error)
@@ -51,6 +55,7 @@ type EKS interface {
 	UpdateAddonWithContext(ctx context.Context, input *eks.UpdateAddonInput, opts ...request.Option) (*eks.UpdateAddonOutput, error)
 	UpdateClusterConfigWithContext(ctx context.Context, input *eks.UpdateClusterConfigInput, opts ...request.Option) (*eks.UpdateClusterConfigOutput, error)
 	UpdateClusterVersionWithContext(ctx context.Context, input *eks.UpdateClusterVersionInput, opts ...request.Option) (*eks.UpdateClusterVersionOutput, error)
+	UpdateEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.UpdateEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.UpdateEksAnywhereSubscriptionOutput, error)
 	UpdateNodegroupConfigWithContext(ctx context.Context, input *eks.UpdateNodegroupConfigInput, opts ...request.Option) (*eks.UpdateNodegroupConfigOutput, error)
 	UpdateNodegroupVersionWithContext(ctx context.Context, input *eks.UpdateNodegroupVersionInput, opts ...request.Option) (*eks.UpdateNodegroupVersionOutput, error)
 }
@@ -154,6 +159,27 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, input *eks.Create
 	return req.Output.(*eks.CreateClusterOutput), req.Error
 }
 
+func (c *Client) CreateEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.CreateEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.CreateEksAnywhereSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "CreateEksAnywhereSubscription",
+		Input:   input,
+		Output:  (*eks.CreateEksAnywhereSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.CreateEksAnywhereSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.CreateEksAnywhereSubscriptionOutput), req.Error
+}
+
 func (c *Client) CreateFargateProfileWithContext(ctx context.Context, input *eks.CreateFargateProfileInput, opts ...request.Option) (*eks.CreateFargateProfileOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "eks",
@@ -236,6 +262,27 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, input *eks.Delete
 	})
 
 	return req.Output.(*eks.DeleteClusterOutput), req.Error
+}
+
+func (c *Client) DeleteEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.DeleteEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.DeleteEksAnywhereSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DeleteEksAnywhereSubscription",
+		Input:   input,
+		Output:  (*eks.DeleteEksAnywhereSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DeleteEksAnywhereSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DeleteEksAnywhereSubscriptionOutput), req.Error
 }
 
 func (c *Client) DeleteFargateProfileWithContext(ctx context.Context, input *eks.DeleteFargateProfileInput, opts ...request.Option) (*eks.DeleteFargateProfileOutput, error) {
@@ -403,6 +450,27 @@ func (c *Client) DescribeClusterWithContext(ctx context.Context, input *eks.Desc
 	})
 
 	return req.Output.(*eks.DescribeClusterOutput), req.Error
+}
+
+func (c *Client) DescribeEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.DescribeEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.DescribeEksAnywhereSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "DescribeEksAnywhereSubscription",
+		Input:   input,
+		Output:  (*eks.DescribeEksAnywhereSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.DescribeEksAnywhereSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.DescribeEksAnywhereSubscriptionOutput), req.Error
 }
 
 func (c *Client) DescribeFargateProfileWithContext(ctx context.Context, input *eks.DescribeFargateProfileInput, opts ...request.Option) (*eks.DescribeFargateProfileOutput, error) {
@@ -590,6 +658,27 @@ func (c *Client) ListClustersPagesWithContext(ctx context.Context, input *eks.Li
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListEksAnywhereSubscriptionsWithContext(ctx context.Context, input *eks.ListEksAnywhereSubscriptionsInput, opts ...request.Option) (*eks.ListEksAnywhereSubscriptionsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "ListEksAnywhereSubscriptions",
+		Input:   input,
+		Output:  (*eks.ListEksAnywhereSubscriptionsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.ListEksAnywhereSubscriptionsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.ListEksAnywhereSubscriptionsOutput), req.Error
 }
 
 func (c *Client) ListFargateProfilesWithContext(ctx context.Context, input *eks.ListFargateProfilesInput, opts ...request.Option) (*eks.ListFargateProfilesOutput, error) {
@@ -901,6 +990,27 @@ func (c *Client) UpdateClusterVersionWithContext(ctx context.Context, input *eks
 	})
 
 	return req.Output.(*eks.UpdateClusterVersionOutput), req.Error
+}
+
+func (c *Client) UpdateEksAnywhereSubscriptionWithContext(ctx context.Context, input *eks.UpdateEksAnywhereSubscriptionInput, opts ...request.Option) (*eks.UpdateEksAnywhereSubscriptionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "eks",
+		Action:  "UpdateEksAnywhereSubscription",
+		Input:   input,
+		Output:  (*eks.UpdateEksAnywhereSubscriptionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EKSAPI.UpdateEksAnywhereSubscriptionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*eks.UpdateEksAnywhereSubscriptionOutput), req.Error
 }
 
 func (c *Client) UpdateNodegroupConfigWithContext(ctx context.Context, input *eks.UpdateNodegroupConfigInput, opts ...request.Option) (*eks.UpdateNodegroupConfigOutput, error) {

@@ -52,6 +52,7 @@ type Comprehend interface {
 	DetectSentimentWithContext(ctx context.Context, input *comprehend.DetectSentimentInput, opts ...request.Option) (*comprehend.DetectSentimentOutput, error)
 	DetectSyntaxWithContext(ctx context.Context, input *comprehend.DetectSyntaxInput, opts ...request.Option) (*comprehend.DetectSyntaxOutput, error)
 	DetectTargetedSentimentWithContext(ctx context.Context, input *comprehend.DetectTargetedSentimentInput, opts ...request.Option) (*comprehend.DetectTargetedSentimentOutput, error)
+	DetectToxicContentWithContext(ctx context.Context, input *comprehend.DetectToxicContentInput, opts ...request.Option) (*comprehend.DetectToxicContentOutput, error)
 	ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error)
 	ListDatasetsWithContext(ctx context.Context, input *comprehend.ListDatasetsInput, opts ...request.Option) (*comprehend.ListDatasetsOutput, error)
 	ListDatasetsPagesWithContext(ctx context.Context, input *comprehend.ListDatasetsInput, cb func(*comprehend.ListDatasetsOutput, bool) bool, opts ...request.Option) error
@@ -988,6 +989,27 @@ func (c *Client) DetectTargetedSentimentWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*comprehend.DetectTargetedSentimentOutput), req.Error
+}
+
+func (c *Client) DetectToxicContentWithContext(ctx context.Context, input *comprehend.DetectToxicContentInput, opts ...request.Option) (*comprehend.DetectToxicContentOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "comprehend",
+		Action:  "DetectToxicContent",
+		Input:   input,
+		Output:  (*comprehend.DetectToxicContentOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.ComprehendAPI.DetectToxicContentWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*comprehend.DetectToxicContentOutput), req.Error
 }
 
 func (c *Client) ImportModelWithContext(ctx context.Context, input *comprehend.ImportModelInput, opts ...request.Option) (*comprehend.ImportModelOutput, error) {
