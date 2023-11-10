@@ -14,8 +14,11 @@ type CostandUsageReportService interface {
 	DeleteReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.DeleteReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.DeleteReportDefinitionOutput, error)
 	DescribeReportDefinitionsWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, opts ...request.Option) (*costandusagereportservice.DescribeReportDefinitionsOutput, error)
 	DescribeReportDefinitionsPagesWithContext(ctx context.Context, input *costandusagereportservice.DescribeReportDefinitionsInput, cb func(*costandusagereportservice.DescribeReportDefinitionsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *costandusagereportservice.ListTagsForResourceInput, opts ...request.Option) (*costandusagereportservice.ListTagsForResourceOutput, error)
 	ModifyReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.ModifyReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.ModifyReportDefinitionOutput, error)
 	PutReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.PutReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.PutReportDefinitionOutput, error)
+	TagResourceWithContext(ctx context.Context, input *costandusagereportservice.TagResourceInput, opts ...request.Option) (*costandusagereportservice.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *costandusagereportservice.UntagResourceInput, opts ...request.Option) (*costandusagereportservice.UntagResourceOutput, error)
 }
 
 type Client struct {
@@ -95,6 +98,27 @@ func (c *Client) DescribeReportDefinitionsPagesWithContext(ctx context.Context, 
 	return req.Error
 }
 
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *costandusagereportservice.ListTagsForResourceInput, opts ...request.Option) (*costandusagereportservice.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costandusagereportservice",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*costandusagereportservice.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostandUsageReportServiceAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costandusagereportservice.ListTagsForResourceOutput), req.Error
+}
+
 func (c *Client) ModifyReportDefinitionWithContext(ctx context.Context, input *costandusagereportservice.ModifyReportDefinitionInput, opts ...request.Option) (*costandusagereportservice.ModifyReportDefinitionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "costandusagereportservice",
@@ -135,4 +159,46 @@ func (c *Client) PutReportDefinitionWithContext(ctx context.Context, input *cost
 	})
 
 	return req.Output.(*costandusagereportservice.PutReportDefinitionOutput), req.Error
+}
+
+func (c *Client) TagResourceWithContext(ctx context.Context, input *costandusagereportservice.TagResourceInput, opts ...request.Option) (*costandusagereportservice.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costandusagereportservice",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*costandusagereportservice.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostandUsageReportServiceAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costandusagereportservice.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *costandusagereportservice.UntagResourceInput, opts ...request.Option) (*costandusagereportservice.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "costandusagereportservice",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*costandusagereportservice.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.CostandUsageReportServiceAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*costandusagereportservice.UntagResourceOutput), req.Error
 }

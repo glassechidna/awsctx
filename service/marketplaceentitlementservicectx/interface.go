@@ -12,6 +12,7 @@ import (
 
 type MarketplaceEntitlementService interface {
 	GetEntitlementsWithContext(ctx context.Context, input *marketplaceentitlementservice.GetEntitlementsInput, opts ...request.Option) (*marketplaceentitlementservice.GetEntitlementsOutput, error)
+	GetEntitlementsPagesWithContext(ctx context.Context, input *marketplaceentitlementservice.GetEntitlementsInput, cb func(*marketplaceentitlementservice.GetEntitlementsOutput, bool) bool, opts ...request.Option) error
 }
 
 type Client struct {
@@ -48,4 +49,24 @@ func (c *Client) GetEntitlementsWithContext(ctx context.Context, input *marketpl
 	})
 
 	return req.Output.(*marketplaceentitlementservice.GetEntitlementsOutput), req.Error
+}
+
+func (c *Client) GetEntitlementsPagesWithContext(ctx context.Context, input *marketplaceentitlementservice.GetEntitlementsInput, cb func(*marketplaceentitlementservice.GetEntitlementsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "marketplaceentitlementservice",
+		Action:  "GetEntitlements",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.MarketplaceEntitlementServiceAPI.GetEntitlementsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
