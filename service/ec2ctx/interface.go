@@ -313,6 +313,8 @@ type EC2 interface {
 	DescribeInstanceEventWindowsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceEventWindowsInput, cb func(*ec2.DescribeInstanceEventWindowsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceStatusWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, opts ...request.Option) (*ec2.DescribeInstanceStatusOutput, error)
 	DescribeInstanceStatusPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceStatusInput, cb func(*ec2.DescribeInstanceStatusOutput, bool) bool, opts ...request.Option) error
+	DescribeInstanceTopologyWithContext(ctx context.Context, input *ec2.DescribeInstanceTopologyInput, opts ...request.Option) (*ec2.DescribeInstanceTopologyOutput, error)
+	DescribeInstanceTopologyPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTopologyInput, cb func(*ec2.DescribeInstanceTopologyOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceTypeOfferingsWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, opts ...request.Option) (*ec2.DescribeInstanceTypeOfferingsOutput, error)
 	DescribeInstanceTypeOfferingsPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypeOfferingsInput, cb func(*ec2.DescribeInstanceTypeOfferingsOutput, bool) bool, opts ...request.Option) error
 	DescribeInstanceTypesWithContext(ctx context.Context, input *ec2.DescribeInstanceTypesInput, opts ...request.Option) (*ec2.DescribeInstanceTypesOutput, error)
@@ -7074,6 +7076,47 @@ func (c *Client) DescribeInstanceStatusPagesWithContext(ctx context.Context, inp
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.EC2API.DescribeInstanceStatusPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) DescribeInstanceTopologyWithContext(ctx context.Context, input *ec2.DescribeInstanceTopologyInput, opts ...request.Option) (*ec2.DescribeInstanceTopologyOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceTopology",
+		Input:   input,
+		Output:  (*ec2.DescribeInstanceTopologyOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeInstanceTopologyWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeInstanceTopologyOutput), req.Error
+}
+
+func (c *Client) DescribeInstanceTopologyPagesWithContext(ctx context.Context, input *ec2.DescribeInstanceTopologyInput, cb func(*ec2.DescribeInstanceTopologyOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeInstanceTopology",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.EC2API.DescribeInstanceTopologyPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
