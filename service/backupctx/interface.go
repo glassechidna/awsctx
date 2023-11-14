@@ -51,6 +51,8 @@ type Backup interface {
 	GetLegalHoldWithContext(ctx context.Context, input *backup.GetLegalHoldInput, opts ...request.Option) (*backup.GetLegalHoldOutput, error)
 	GetRecoveryPointRestoreMetadataWithContext(ctx context.Context, input *backup.GetRecoveryPointRestoreMetadataInput, opts ...request.Option) (*backup.GetRecoveryPointRestoreMetadataOutput, error)
 	GetSupportedResourceTypesWithContext(ctx context.Context, input *backup.GetSupportedResourceTypesInput, opts ...request.Option) (*backup.GetSupportedResourceTypesOutput, error)
+	ListBackupJobSummariesWithContext(ctx context.Context, input *backup.ListBackupJobSummariesInput, opts ...request.Option) (*backup.ListBackupJobSummariesOutput, error)
+	ListBackupJobSummariesPagesWithContext(ctx context.Context, input *backup.ListBackupJobSummariesInput, cb func(*backup.ListBackupJobSummariesOutput, bool) bool, opts ...request.Option) error
 	ListBackupJobsWithContext(ctx context.Context, input *backup.ListBackupJobsInput, opts ...request.Option) (*backup.ListBackupJobsOutput, error)
 	ListBackupJobsPagesWithContext(ctx context.Context, input *backup.ListBackupJobsInput, cb func(*backup.ListBackupJobsOutput, bool) bool, opts ...request.Option) error
 	ListBackupPlanTemplatesWithContext(ctx context.Context, input *backup.ListBackupPlanTemplatesInput, opts ...request.Option) (*backup.ListBackupPlanTemplatesOutput, error)
@@ -63,6 +65,8 @@ type Backup interface {
 	ListBackupSelectionsPagesWithContext(ctx context.Context, input *backup.ListBackupSelectionsInput, cb func(*backup.ListBackupSelectionsOutput, bool) bool, opts ...request.Option) error
 	ListBackupVaultsWithContext(ctx context.Context, input *backup.ListBackupVaultsInput, opts ...request.Option) (*backup.ListBackupVaultsOutput, error)
 	ListBackupVaultsPagesWithContext(ctx context.Context, input *backup.ListBackupVaultsInput, cb func(*backup.ListBackupVaultsOutput, bool) bool, opts ...request.Option) error
+	ListCopyJobSummariesWithContext(ctx context.Context, input *backup.ListCopyJobSummariesInput, opts ...request.Option) (*backup.ListCopyJobSummariesOutput, error)
+	ListCopyJobSummariesPagesWithContext(ctx context.Context, input *backup.ListCopyJobSummariesInput, cb func(*backup.ListCopyJobSummariesOutput, bool) bool, opts ...request.Option) error
 	ListCopyJobsWithContext(ctx context.Context, input *backup.ListCopyJobsInput, opts ...request.Option) (*backup.ListCopyJobsOutput, error)
 	ListCopyJobsPagesWithContext(ctx context.Context, input *backup.ListCopyJobsInput, cb func(*backup.ListCopyJobsOutput, bool) bool, opts ...request.Option) error
 	ListFrameworksWithContext(ctx context.Context, input *backup.ListFrameworksInput, opts ...request.Option) (*backup.ListFrameworksOutput, error)
@@ -83,6 +87,8 @@ type Backup interface {
 	ListReportJobsPagesWithContext(ctx context.Context, input *backup.ListReportJobsInput, cb func(*backup.ListReportJobsOutput, bool) bool, opts ...request.Option) error
 	ListReportPlansWithContext(ctx context.Context, input *backup.ListReportPlansInput, opts ...request.Option) (*backup.ListReportPlansOutput, error)
 	ListReportPlansPagesWithContext(ctx context.Context, input *backup.ListReportPlansInput, cb func(*backup.ListReportPlansOutput, bool) bool, opts ...request.Option) error
+	ListRestoreJobSummariesWithContext(ctx context.Context, input *backup.ListRestoreJobSummariesInput, opts ...request.Option) (*backup.ListRestoreJobSummariesOutput, error)
+	ListRestoreJobSummariesPagesWithContext(ctx context.Context, input *backup.ListRestoreJobSummariesInput, cb func(*backup.ListRestoreJobSummariesOutput, bool) bool, opts ...request.Option) error
 	ListRestoreJobsWithContext(ctx context.Context, input *backup.ListRestoreJobsInput, opts ...request.Option) (*backup.ListRestoreJobsOutput, error)
 	ListRestoreJobsPagesWithContext(ctx context.Context, input *backup.ListRestoreJobsInput, cb func(*backup.ListRestoreJobsOutput, bool) bool, opts ...request.Option) error
 	ListTagsWithContext(ctx context.Context, input *backup.ListTagsInput, opts ...request.Option) (*backup.ListTagsOutput, error)
@@ -960,6 +966,47 @@ func (c *Client) GetSupportedResourceTypesWithContext(ctx context.Context, input
 	return req.Output.(*backup.GetSupportedResourceTypesOutput), req.Error
 }
 
+func (c *Client) ListBackupJobSummariesWithContext(ctx context.Context, input *backup.ListBackupJobSummariesInput, opts ...request.Option) (*backup.ListBackupJobSummariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListBackupJobSummaries",
+		Input:   input,
+		Output:  (*backup.ListBackupJobSummariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListBackupJobSummariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListBackupJobSummariesOutput), req.Error
+}
+
+func (c *Client) ListBackupJobSummariesPagesWithContext(ctx context.Context, input *backup.ListBackupJobSummariesInput, cb func(*backup.ListBackupJobSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListBackupJobSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListBackupJobSummariesPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListBackupJobsWithContext(ctx context.Context, input *backup.ListBackupJobsInput, opts ...request.Option) (*backup.ListBackupJobsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "backup",
@@ -1201,6 +1248,47 @@ func (c *Client) ListBackupVaultsPagesWithContext(ctx context.Context, input *ba
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.BackupAPI.ListBackupVaultsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListCopyJobSummariesWithContext(ctx context.Context, input *backup.ListCopyJobSummariesInput, opts ...request.Option) (*backup.ListCopyJobSummariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListCopyJobSummaries",
+		Input:   input,
+		Output:  (*backup.ListCopyJobSummariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListCopyJobSummariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListCopyJobSummariesOutput), req.Error
+}
+
+func (c *Client) ListCopyJobSummariesPagesWithContext(ctx context.Context, input *backup.ListCopyJobSummariesInput, cb func(*backup.ListCopyJobSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListCopyJobSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListCopyJobSummariesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error
@@ -1611,6 +1699,47 @@ func (c *Client) ListReportPlansPagesWithContext(ctx context.Context, input *bac
 
 	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
 		req.Error = c.BackupAPI.ListReportPlansPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListRestoreJobSummariesWithContext(ctx context.Context, input *backup.ListRestoreJobSummariesInput, opts ...request.Option) (*backup.ListRestoreJobSummariesOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListRestoreJobSummaries",
+		Input:   input,
+		Output:  (*backup.ListRestoreJobSummariesOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.BackupAPI.ListRestoreJobSummariesWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*backup.ListRestoreJobSummariesOutput), req.Error
+}
+
+func (c *Client) ListRestoreJobSummariesPagesWithContext(ctx context.Context, input *backup.ListRestoreJobSummariesInput, cb func(*backup.ListRestoreJobSummariesOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "backup",
+		Action:  "ListRestoreJobSummaries",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.BackupAPI.ListRestoreJobSummariesPagesWithContext(ctx, input, cb, opts...)
 	})
 
 	return req.Error

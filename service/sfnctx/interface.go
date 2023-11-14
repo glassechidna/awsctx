@@ -39,6 +39,7 @@ type SFN interface {
 	ListStateMachinesPagesWithContext(ctx context.Context, input *sfn.ListStateMachinesInput, cb func(*sfn.ListStateMachinesOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *sfn.ListTagsForResourceInput, opts ...request.Option) (*sfn.ListTagsForResourceOutput, error)
 	PublishStateMachineVersionWithContext(ctx context.Context, input *sfn.PublishStateMachineVersionInput, opts ...request.Option) (*sfn.PublishStateMachineVersionOutput, error)
+	RedriveExecutionWithContext(ctx context.Context, input *sfn.RedriveExecutionInput, opts ...request.Option) (*sfn.RedriveExecutionOutput, error)
 	SendTaskFailureWithContext(ctx context.Context, input *sfn.SendTaskFailureInput, opts ...request.Option) (*sfn.SendTaskFailureOutput, error)
 	SendTaskHeartbeatWithContext(ctx context.Context, input *sfn.SendTaskHeartbeatInput, opts ...request.Option) (*sfn.SendTaskHeartbeatOutput, error)
 	SendTaskSuccessWithContext(ctx context.Context, input *sfn.SendTaskSuccessInput, opts ...request.Option) (*sfn.SendTaskSuccessOutput, error)
@@ -648,6 +649,27 @@ func (c *Client) PublishStateMachineVersionWithContext(ctx context.Context, inpu
 	})
 
 	return req.Output.(*sfn.PublishStateMachineVersionOutput), req.Error
+}
+
+func (c *Client) RedriveExecutionWithContext(ctx context.Context, input *sfn.RedriveExecutionInput, opts ...request.Option) (*sfn.RedriveExecutionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "sfn",
+		Action:  "RedriveExecution",
+		Input:   input,
+		Output:  (*sfn.RedriveExecutionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.SFNAPI.RedriveExecutionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*sfn.RedriveExecutionOutput), req.Error
 }
 
 func (c *Client) SendTaskFailureWithContext(ctx context.Context, input *sfn.SendTaskFailureInput, opts ...request.Option) (*sfn.SendTaskFailureOutput, error) {

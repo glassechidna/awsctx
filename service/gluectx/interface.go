@@ -23,6 +23,7 @@ type Glue interface {
 	BatchGetDevEndpointsWithContext(ctx context.Context, input *glue.BatchGetDevEndpointsInput, opts ...request.Option) (*glue.BatchGetDevEndpointsOutput, error)
 	BatchGetJobsWithContext(ctx context.Context, input *glue.BatchGetJobsInput, opts ...request.Option) (*glue.BatchGetJobsOutput, error)
 	BatchGetPartitionWithContext(ctx context.Context, input *glue.BatchGetPartitionInput, opts ...request.Option) (*glue.BatchGetPartitionOutput, error)
+	BatchGetTableOptimizerWithContext(ctx context.Context, input *glue.BatchGetTableOptimizerInput, opts ...request.Option) (*glue.BatchGetTableOptimizerOutput, error)
 	BatchGetTriggersWithContext(ctx context.Context, input *glue.BatchGetTriggersInput, opts ...request.Option) (*glue.BatchGetTriggersOutput, error)
 	BatchGetWorkflowsWithContext(ctx context.Context, input *glue.BatchGetWorkflowsInput, opts ...request.Option) (*glue.BatchGetWorkflowsOutput, error)
 	BatchStopJobRunWithContext(ctx context.Context, input *glue.BatchStopJobRunInput, opts ...request.Option) (*glue.BatchStopJobRunOutput, error)
@@ -50,6 +51,7 @@ type Glue interface {
 	CreateSecurityConfigurationWithContext(ctx context.Context, input *glue.CreateSecurityConfigurationInput, opts ...request.Option) (*glue.CreateSecurityConfigurationOutput, error)
 	CreateSessionWithContext(ctx context.Context, input *glue.CreateSessionInput, opts ...request.Option) (*glue.CreateSessionOutput, error)
 	CreateTableWithContext(ctx context.Context, input *glue.CreateTableInput, opts ...request.Option) (*glue.CreateTableOutput, error)
+	CreateTableOptimizerWithContext(ctx context.Context, input *glue.CreateTableOptimizerInput, opts ...request.Option) (*glue.CreateTableOptimizerOutput, error)
 	CreateTriggerWithContext(ctx context.Context, input *glue.CreateTriggerInput, opts ...request.Option) (*glue.CreateTriggerOutput, error)
 	CreateUserDefinedFunctionWithContext(ctx context.Context, input *glue.CreateUserDefinedFunctionInput, opts ...request.Option) (*glue.CreateUserDefinedFunctionOutput, error)
 	CreateWorkflowWithContext(ctx context.Context, input *glue.CreateWorkflowInput, opts ...request.Option) (*glue.CreateWorkflowOutput, error)
@@ -74,6 +76,7 @@ type Glue interface {
 	DeleteSecurityConfigurationWithContext(ctx context.Context, input *glue.DeleteSecurityConfigurationInput, opts ...request.Option) (*glue.DeleteSecurityConfigurationOutput, error)
 	DeleteSessionWithContext(ctx context.Context, input *glue.DeleteSessionInput, opts ...request.Option) (*glue.DeleteSessionOutput, error)
 	DeleteTableWithContext(ctx context.Context, input *glue.DeleteTableInput, opts ...request.Option) (*glue.DeleteTableOutput, error)
+	DeleteTableOptimizerWithContext(ctx context.Context, input *glue.DeleteTableOptimizerInput, opts ...request.Option) (*glue.DeleteTableOptimizerOutput, error)
 	DeleteTableVersionWithContext(ctx context.Context, input *glue.DeleteTableVersionInput, opts ...request.Option) (*glue.DeleteTableVersionOutput, error)
 	DeleteTriggerWithContext(ctx context.Context, input *glue.DeleteTriggerInput, opts ...request.Option) (*glue.DeleteTriggerOutput, error)
 	DeleteUserDefinedFunctionWithContext(ctx context.Context, input *glue.DeleteUserDefinedFunctionInput, opts ...request.Option) (*glue.DeleteUserDefinedFunctionOutput, error)
@@ -143,6 +146,7 @@ type Glue interface {
 	GetSessionWithContext(ctx context.Context, input *glue.GetSessionInput, opts ...request.Option) (*glue.GetSessionOutput, error)
 	GetStatementWithContext(ctx context.Context, input *glue.GetStatementInput, opts ...request.Option) (*glue.GetStatementOutput, error)
 	GetTableWithContext(ctx context.Context, input *glue.GetTableInput, opts ...request.Option) (*glue.GetTableOutput, error)
+	GetTableOptimizerWithContext(ctx context.Context, input *glue.GetTableOptimizerInput, opts ...request.Option) (*glue.GetTableOptimizerOutput, error)
 	GetTableVersionWithContext(ctx context.Context, input *glue.GetTableVersionInput, opts ...request.Option) (*glue.GetTableVersionOutput, error)
 	GetTableVersionsWithContext(ctx context.Context, input *glue.GetTableVersionsInput, opts ...request.Option) (*glue.GetTableVersionsOutput, error)
 	GetTableVersionsPagesWithContext(ctx context.Context, input *glue.GetTableVersionsInput, cb func(*glue.GetTableVersionsOutput, bool) bool, opts ...request.Option) error
@@ -195,6 +199,8 @@ type Glue interface {
 	ListSessionsWithContext(ctx context.Context, input *glue.ListSessionsInput, opts ...request.Option) (*glue.ListSessionsOutput, error)
 	ListSessionsPagesWithContext(ctx context.Context, input *glue.ListSessionsInput, cb func(*glue.ListSessionsOutput, bool) bool, opts ...request.Option) error
 	ListStatementsWithContext(ctx context.Context, input *glue.ListStatementsInput, opts ...request.Option) (*glue.ListStatementsOutput, error)
+	ListTableOptimizerRunsWithContext(ctx context.Context, input *glue.ListTableOptimizerRunsInput, opts ...request.Option) (*glue.ListTableOptimizerRunsOutput, error)
+	ListTableOptimizerRunsPagesWithContext(ctx context.Context, input *glue.ListTableOptimizerRunsInput, cb func(*glue.ListTableOptimizerRunsOutput, bool) bool, opts ...request.Option) error
 	ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error)
 	ListTriggersPagesWithContext(ctx context.Context, input *glue.ListTriggersInput, cb func(*glue.ListTriggersOutput, bool) bool, opts ...request.Option) error
 	ListWorkflowsWithContext(ctx context.Context, input *glue.ListWorkflowsInput, opts ...request.Option) (*glue.ListWorkflowsOutput, error)
@@ -248,6 +254,7 @@ type Glue interface {
 	UpdateSchemaWithContext(ctx context.Context, input *glue.UpdateSchemaInput, opts ...request.Option) (*glue.UpdateSchemaOutput, error)
 	UpdateSourceControlFromJobWithContext(ctx context.Context, input *glue.UpdateSourceControlFromJobInput, opts ...request.Option) (*glue.UpdateSourceControlFromJobOutput, error)
 	UpdateTableWithContext(ctx context.Context, input *glue.UpdateTableInput, opts ...request.Option) (*glue.UpdateTableOutput, error)
+	UpdateTableOptimizerWithContext(ctx context.Context, input *glue.UpdateTableOptimizerInput, opts ...request.Option) (*glue.UpdateTableOptimizerOutput, error)
 	UpdateTriggerWithContext(ctx context.Context, input *glue.UpdateTriggerInput, opts ...request.Option) (*glue.UpdateTriggerOutput, error)
 	UpdateUserDefinedFunctionWithContext(ctx context.Context, input *glue.UpdateUserDefinedFunctionInput, opts ...request.Option) (*glue.UpdateUserDefinedFunctionOutput, error)
 	UpdateWorkflowWithContext(ctx context.Context, input *glue.UpdateWorkflowInput, opts ...request.Option) (*glue.UpdateWorkflowOutput, error)
@@ -518,6 +525,27 @@ func (c *Client) BatchGetPartitionWithContext(ctx context.Context, input *glue.B
 	})
 
 	return req.Output.(*glue.BatchGetPartitionOutput), req.Error
+}
+
+func (c *Client) BatchGetTableOptimizerWithContext(ctx context.Context, input *glue.BatchGetTableOptimizerInput, opts ...request.Option) (*glue.BatchGetTableOptimizerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "BatchGetTableOptimizer",
+		Input:   input,
+		Output:  (*glue.BatchGetTableOptimizerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.BatchGetTableOptimizerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.BatchGetTableOptimizerOutput), req.Error
 }
 
 func (c *Client) BatchGetTriggersWithContext(ctx context.Context, input *glue.BatchGetTriggersInput, opts ...request.Option) (*glue.BatchGetTriggersOutput, error) {
@@ -1087,6 +1115,27 @@ func (c *Client) CreateTableWithContext(ctx context.Context, input *glue.CreateT
 	return req.Output.(*glue.CreateTableOutput), req.Error
 }
 
+func (c *Client) CreateTableOptimizerWithContext(ctx context.Context, input *glue.CreateTableOptimizerInput, opts ...request.Option) (*glue.CreateTableOptimizerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "CreateTableOptimizer",
+		Input:   input,
+		Output:  (*glue.CreateTableOptimizerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.CreateTableOptimizerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.CreateTableOptimizerOutput), req.Error
+}
+
 func (c *Client) CreateTriggerWithContext(ctx context.Context, input *glue.CreateTriggerInput, opts ...request.Option) (*glue.CreateTriggerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -1589,6 +1638,27 @@ func (c *Client) DeleteTableWithContext(ctx context.Context, input *glue.DeleteT
 	})
 
 	return req.Output.(*glue.DeleteTableOutput), req.Error
+}
+
+func (c *Client) DeleteTableOptimizerWithContext(ctx context.Context, input *glue.DeleteTableOptimizerInput, opts ...request.Option) (*glue.DeleteTableOptimizerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "DeleteTableOptimizer",
+		Input:   input,
+		Output:  (*glue.DeleteTableOptimizerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.DeleteTableOptimizerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.DeleteTableOptimizerOutput), req.Error
 }
 
 func (c *Client) DeleteTableVersionWithContext(ctx context.Context, input *glue.DeleteTableVersionInput, opts ...request.Option) (*glue.DeleteTableVersionOutput, error) {
@@ -3025,6 +3095,27 @@ func (c *Client) GetTableWithContext(ctx context.Context, input *glue.GetTableIn
 	return req.Output.(*glue.GetTableOutput), req.Error
 }
 
+func (c *Client) GetTableOptimizerWithContext(ctx context.Context, input *glue.GetTableOptimizerInput, opts ...request.Option) (*glue.GetTableOptimizerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetTableOptimizer",
+		Input:   input,
+		Output:  (*glue.GetTableOptimizerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetTableOptimizerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetTableOptimizerOutput), req.Error
+}
+
 func (c *Client) GetTableVersionWithContext(ctx context.Context, input *glue.GetTableVersionInput, opts ...request.Option) (*glue.GetTableVersionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -4095,6 +4186,47 @@ func (c *Client) ListStatementsWithContext(ctx context.Context, input *glue.List
 	})
 
 	return req.Output.(*glue.ListStatementsOutput), req.Error
+}
+
+func (c *Client) ListTableOptimizerRunsWithContext(ctx context.Context, input *glue.ListTableOptimizerRunsInput, opts ...request.Option) (*glue.ListTableOptimizerRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListTableOptimizerRuns",
+		Input:   input,
+		Output:  (*glue.ListTableOptimizerRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListTableOptimizerRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListTableOptimizerRunsOutput), req.Error
+}
+
+func (c *Client) ListTableOptimizerRunsPagesWithContext(ctx context.Context, input *glue.ListTableOptimizerRunsInput, cb func(*glue.ListTableOptimizerRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListTableOptimizerRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListTableOptimizerRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTriggersWithContext(ctx context.Context, input *glue.ListTriggersInput, opts ...request.Option) (*glue.ListTriggersOutput, error) {
@@ -5205,6 +5337,27 @@ func (c *Client) UpdateTableWithContext(ctx context.Context, input *glue.UpdateT
 	})
 
 	return req.Output.(*glue.UpdateTableOutput), req.Error
+}
+
+func (c *Client) UpdateTableOptimizerWithContext(ctx context.Context, input *glue.UpdateTableOptimizerInput, opts ...request.Option) (*glue.UpdateTableOptimizerOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "UpdateTableOptimizer",
+		Input:   input,
+		Output:  (*glue.UpdateTableOptimizerOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.UpdateTableOptimizerWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.UpdateTableOptimizerOutput), req.Error
 }
 
 func (c *Client) UpdateTriggerWithContext(ctx context.Context, input *glue.UpdateTriggerInput, opts ...request.Option) (*glue.UpdateTriggerOutput, error) {
