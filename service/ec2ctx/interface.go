@@ -352,6 +352,7 @@ type EC2 interface {
 	DescribeLocalGatewayVirtualInterfacesPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewayVirtualInterfacesInput, cb func(*ec2.DescribeLocalGatewayVirtualInterfacesOutput, bool) bool, opts ...request.Option) error
 	DescribeLocalGatewaysWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, opts ...request.Option) (*ec2.DescribeLocalGatewaysOutput, error)
 	DescribeLocalGatewaysPagesWithContext(ctx context.Context, input *ec2.DescribeLocalGatewaysInput, cb func(*ec2.DescribeLocalGatewaysOutput, bool) bool, opts ...request.Option) error
+	DescribeLockedSnapshotsWithContext(ctx context.Context, input *ec2.DescribeLockedSnapshotsInput, opts ...request.Option) (*ec2.DescribeLockedSnapshotsOutput, error)
 	DescribeManagedPrefixListsWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, opts ...request.Option) (*ec2.DescribeManagedPrefixListsOutput, error)
 	DescribeManagedPrefixListsPagesWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, cb func(*ec2.DescribeManagedPrefixListsOutput, bool) bool, opts ...request.Option) error
 	DescribeMovingAddressesWithContext(ctx context.Context, input *ec2.DescribeMovingAddressesInput, opts ...request.Option) (*ec2.DescribeMovingAddressesOutput, error)
@@ -622,6 +623,7 @@ type EC2 interface {
 	ListImagesInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListImagesInRecycleBinInput, cb func(*ec2.ListImagesInRecycleBinOutput, bool) bool, opts ...request.Option) error
 	ListSnapshotsInRecycleBinWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, opts ...request.Option) (*ec2.ListSnapshotsInRecycleBinOutput, error)
 	ListSnapshotsInRecycleBinPagesWithContext(ctx context.Context, input *ec2.ListSnapshotsInRecycleBinInput, cb func(*ec2.ListSnapshotsInRecycleBinOutput, bool) bool, opts ...request.Option) error
+	LockSnapshotWithContext(ctx context.Context, input *ec2.LockSnapshotInput, opts ...request.Option) (*ec2.LockSnapshotOutput, error)
 	ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error)
 	ModifyAvailabilityZoneGroupWithContext(ctx context.Context, input *ec2.ModifyAvailabilityZoneGroupInput, opts ...request.Option) (*ec2.ModifyAvailabilityZoneGroupOutput, error)
 	ModifyCapacityReservationWithContext(ctx context.Context, input *ec2.ModifyCapacityReservationInput, opts ...request.Option) (*ec2.ModifyCapacityReservationOutput, error)
@@ -752,6 +754,7 @@ type EC2 interface {
 	UnassignIpv6AddressesWithContext(ctx context.Context, input *ec2.UnassignIpv6AddressesInput, opts ...request.Option) (*ec2.UnassignIpv6AddressesOutput, error)
 	UnassignPrivateIpAddressesWithContext(ctx context.Context, input *ec2.UnassignPrivateIpAddressesInput, opts ...request.Option) (*ec2.UnassignPrivateIpAddressesOutput, error)
 	UnassignPrivateNatGatewayAddressWithContext(ctx context.Context, input *ec2.UnassignPrivateNatGatewayAddressInput, opts ...request.Option) (*ec2.UnassignPrivateNatGatewayAddressOutput, error)
+	UnlockSnapshotWithContext(ctx context.Context, input *ec2.UnlockSnapshotInput, opts ...request.Option) (*ec2.UnlockSnapshotOutput, error)
 	UnmonitorInstancesWithContext(ctx context.Context, input *ec2.UnmonitorInstancesInput, opts ...request.Option) (*ec2.UnmonitorInstancesOutput, error)
 	UpdateSecurityGroupRuleDescriptionsEgressWithContext(ctx context.Context, input *ec2.UpdateSecurityGroupRuleDescriptionsEgressInput, opts ...request.Option) (*ec2.UpdateSecurityGroupRuleDescriptionsEgressOutput, error)
 	UpdateSecurityGroupRuleDescriptionsIngressWithContext(ctx context.Context, input *ec2.UpdateSecurityGroupRuleDescriptionsIngressInput, opts ...request.Option) (*ec2.UpdateSecurityGroupRuleDescriptionsIngressOutput, error)
@@ -7881,6 +7884,27 @@ func (c *Client) DescribeLocalGatewaysPagesWithContext(ctx context.Context, inpu
 	return req.Error
 }
 
+func (c *Client) DescribeLockedSnapshotsWithContext(ctx context.Context, input *ec2.DescribeLockedSnapshotsInput, opts ...request.Option) (*ec2.DescribeLockedSnapshotsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "DescribeLockedSnapshots",
+		Input:   input,
+		Output:  (*ec2.DescribeLockedSnapshotsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.DescribeLockedSnapshotsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.DescribeLockedSnapshotsOutput), req.Error
+}
+
 func (c *Client) DescribeManagedPrefixListsWithContext(ctx context.Context, input *ec2.DescribeManagedPrefixListsInput, opts ...request.Option) (*ec2.DescribeManagedPrefixListsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -13467,6 +13491,27 @@ func (c *Client) ListSnapshotsInRecycleBinPagesWithContext(ctx context.Context, 
 	return req.Error
 }
 
+func (c *Client) LockSnapshotWithContext(ctx context.Context, input *ec2.LockSnapshotInput, opts ...request.Option) (*ec2.LockSnapshotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "LockSnapshot",
+		Input:   input,
+		Output:  (*ec2.LockSnapshotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.LockSnapshotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.LockSnapshotOutput), req.Error
+}
+
 func (c *Client) ModifyAddressAttributeWithContext(ctx context.Context, input *ec2.ModifyAddressAttributeInput, opts ...request.Option) (*ec2.ModifyAddressAttributeOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "ec2",
@@ -16193,6 +16238,27 @@ func (c *Client) UnassignPrivateNatGatewayAddressWithContext(ctx context.Context
 	})
 
 	return req.Output.(*ec2.UnassignPrivateNatGatewayAddressOutput), req.Error
+}
+
+func (c *Client) UnlockSnapshotWithContext(ctx context.Context, input *ec2.UnlockSnapshotInput, opts ...request.Option) (*ec2.UnlockSnapshotOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "ec2",
+		Action:  "UnlockSnapshot",
+		Input:   input,
+		Output:  (*ec2.UnlockSnapshotOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.EC2API.UnlockSnapshotWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*ec2.UnlockSnapshotOutput), req.Error
 }
 
 func (c *Client) UnmonitorInstancesWithContext(ctx context.Context, input *ec2.UnmonitorInstancesInput, opts ...request.Option) (*ec2.UnmonitorInstancesOutput, error) {

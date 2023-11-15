@@ -16,6 +16,7 @@ type S3Control interface {
 	CreateBucketWithContext(ctx context.Context, input *s3control.CreateBucketInput, opts ...request.Option) (*s3control.CreateBucketOutput, error)
 	CreateJobWithContext(ctx context.Context, input *s3control.CreateJobInput, opts ...request.Option) (*s3control.CreateJobOutput, error)
 	CreateMultiRegionAccessPointWithContext(ctx context.Context, input *s3control.CreateMultiRegionAccessPointInput, opts ...request.Option) (*s3control.CreateMultiRegionAccessPointOutput, error)
+	CreateStorageLensGroupWithContext(ctx context.Context, input *s3control.CreateStorageLensGroupInput, opts ...request.Option) (*s3control.CreateStorageLensGroupOutput, error)
 	DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error)
 	DeleteAccessPointForObjectLambdaWithContext(ctx context.Context, input *s3control.DeleteAccessPointForObjectLambdaInput, opts ...request.Option) (*s3control.DeleteAccessPointForObjectLambdaOutput, error)
 	DeleteAccessPointPolicyWithContext(ctx context.Context, input *s3control.DeleteAccessPointPolicyInput, opts ...request.Option) (*s3control.DeleteAccessPointPolicyOutput, error)
@@ -30,6 +31,7 @@ type S3Control interface {
 	DeletePublicAccessBlockWithContext(ctx context.Context, input *s3control.DeletePublicAccessBlockInput, opts ...request.Option) (*s3control.DeletePublicAccessBlockOutput, error)
 	DeleteStorageLensConfigurationWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationOutput, error)
 	DeleteStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.DeleteStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.DeleteStorageLensConfigurationTaggingOutput, error)
+	DeleteStorageLensGroupWithContext(ctx context.Context, input *s3control.DeleteStorageLensGroupInput, opts ...request.Option) (*s3control.DeleteStorageLensGroupOutput, error)
 	DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error)
 	DescribeMultiRegionAccessPointOperationWithContext(ctx context.Context, input *s3control.DescribeMultiRegionAccessPointOperationInput, opts ...request.Option) (*s3control.DescribeMultiRegionAccessPointOperationOutput, error)
 	GetAccessPointWithContext(ctx context.Context, input *s3control.GetAccessPointInput, opts ...request.Option) (*s3control.GetAccessPointOutput, error)
@@ -53,6 +55,7 @@ type S3Control interface {
 	GetPublicAccessBlockWithContext(ctx context.Context, input *s3control.GetPublicAccessBlockInput, opts ...request.Option) (*s3control.GetPublicAccessBlockOutput, error)
 	GetStorageLensConfigurationWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationOutput, error)
 	GetStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.GetStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.GetStorageLensConfigurationTaggingOutput, error)
+	GetStorageLensGroupWithContext(ctx context.Context, input *s3control.GetStorageLensGroupInput, opts ...request.Option) (*s3control.GetStorageLensGroupOutput, error)
 	ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error)
 	ListAccessPointsPagesWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, cb func(*s3control.ListAccessPointsOutput, bool) bool, opts ...request.Option) error
 	ListAccessPointsForObjectLambdaWithContext(ctx context.Context, input *s3control.ListAccessPointsForObjectLambdaInput, opts ...request.Option) (*s3control.ListAccessPointsForObjectLambdaOutput, error)
@@ -65,6 +68,9 @@ type S3Control interface {
 	ListRegionalBucketsPagesWithContext(ctx context.Context, input *s3control.ListRegionalBucketsInput, cb func(*s3control.ListRegionalBucketsOutput, bool) bool, opts ...request.Option) error
 	ListStorageLensConfigurationsWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, opts ...request.Option) (*s3control.ListStorageLensConfigurationsOutput, error)
 	ListStorageLensConfigurationsPagesWithContext(ctx context.Context, input *s3control.ListStorageLensConfigurationsInput, cb func(*s3control.ListStorageLensConfigurationsOutput, bool) bool, opts ...request.Option) error
+	ListStorageLensGroupsWithContext(ctx context.Context, input *s3control.ListStorageLensGroupsInput, opts ...request.Option) (*s3control.ListStorageLensGroupsOutput, error)
+	ListStorageLensGroupsPagesWithContext(ctx context.Context, input *s3control.ListStorageLensGroupsInput, cb func(*s3control.ListStorageLensGroupsOutput, bool) bool, opts ...request.Option) error
+	ListTagsForResourceWithContext(ctx context.Context, input *s3control.ListTagsForResourceInput, opts ...request.Option) (*s3control.ListTagsForResourceOutput, error)
 	PutAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointConfigurationForObjectLambdaOutput, error)
 	PutAccessPointPolicyWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyInput, opts ...request.Option) (*s3control.PutAccessPointPolicyOutput, error)
 	PutAccessPointPolicyForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointPolicyForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointPolicyForObjectLambdaOutput, error)
@@ -79,8 +85,11 @@ type S3Control interface {
 	PutStorageLensConfigurationWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationOutput, error)
 	PutStorageLensConfigurationTaggingWithContext(ctx context.Context, input *s3control.PutStorageLensConfigurationTaggingInput, opts ...request.Option) (*s3control.PutStorageLensConfigurationTaggingOutput, error)
 	SubmitMultiRegionAccessPointRoutesWithContext(ctx context.Context, input *s3control.SubmitMultiRegionAccessPointRoutesInput, opts ...request.Option) (*s3control.SubmitMultiRegionAccessPointRoutesOutput, error)
+	TagResourceWithContext(ctx context.Context, input *s3control.TagResourceInput, opts ...request.Option) (*s3control.TagResourceOutput, error)
+	UntagResourceWithContext(ctx context.Context, input *s3control.UntagResourceInput, opts ...request.Option) (*s3control.UntagResourceOutput, error)
 	UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error)
 	UpdateJobStatusWithContext(ctx context.Context, input *s3control.UpdateJobStatusInput, opts ...request.Option) (*s3control.UpdateJobStatusOutput, error)
+	UpdateStorageLensGroupWithContext(ctx context.Context, input *s3control.UpdateStorageLensGroupInput, opts ...request.Option) (*s3control.UpdateStorageLensGroupOutput, error)
 }
 
 type Client struct {
@@ -201,6 +210,27 @@ func (c *Client) CreateMultiRegionAccessPointWithContext(ctx context.Context, in
 	})
 
 	return req.Output.(*s3control.CreateMultiRegionAccessPointOutput), req.Error
+}
+
+func (c *Client) CreateStorageLensGroupWithContext(ctx context.Context, input *s3control.CreateStorageLensGroupInput, opts ...request.Option) (*s3control.CreateStorageLensGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "CreateStorageLensGroup",
+		Input:   input,
+		Output:  (*s3control.CreateStorageLensGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.CreateStorageLensGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.CreateStorageLensGroupOutput), req.Error
 }
 
 func (c *Client) DeleteAccessPointWithContext(ctx context.Context, input *s3control.DeleteAccessPointInput, opts ...request.Option) (*s3control.DeleteAccessPointOutput, error) {
@@ -495,6 +525,27 @@ func (c *Client) DeleteStorageLensConfigurationTaggingWithContext(ctx context.Co
 	})
 
 	return req.Output.(*s3control.DeleteStorageLensConfigurationTaggingOutput), req.Error
+}
+
+func (c *Client) DeleteStorageLensGroupWithContext(ctx context.Context, input *s3control.DeleteStorageLensGroupInput, opts ...request.Option) (*s3control.DeleteStorageLensGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "DeleteStorageLensGroup",
+		Input:   input,
+		Output:  (*s3control.DeleteStorageLensGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.DeleteStorageLensGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.DeleteStorageLensGroupOutput), req.Error
 }
 
 func (c *Client) DescribeJobWithContext(ctx context.Context, input *s3control.DescribeJobInput, opts ...request.Option) (*s3control.DescribeJobOutput, error) {
@@ -980,6 +1031,27 @@ func (c *Client) GetStorageLensConfigurationTaggingWithContext(ctx context.Conte
 	return req.Output.(*s3control.GetStorageLensConfigurationTaggingOutput), req.Error
 }
 
+func (c *Client) GetStorageLensGroupWithContext(ctx context.Context, input *s3control.GetStorageLensGroupInput, opts ...request.Option) (*s3control.GetStorageLensGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "GetStorageLensGroup",
+		Input:   input,
+		Output:  (*s3control.GetStorageLensGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.GetStorageLensGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.GetStorageLensGroupOutput), req.Error
+}
+
 func (c *Client) ListAccessPointsWithContext(ctx context.Context, input *s3control.ListAccessPointsInput, opts ...request.Option) (*s3control.ListAccessPointsOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -1224,6 +1296,68 @@ func (c *Client) ListStorageLensConfigurationsPagesWithContext(ctx context.Conte
 	})
 
 	return req.Error
+}
+
+func (c *Client) ListStorageLensGroupsWithContext(ctx context.Context, input *s3control.ListStorageLensGroupsInput, opts ...request.Option) (*s3control.ListStorageLensGroupsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListStorageLensGroups",
+		Input:   input,
+		Output:  (*s3control.ListStorageLensGroupsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.ListStorageLensGroupsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.ListStorageLensGroupsOutput), req.Error
+}
+
+func (c *Client) ListStorageLensGroupsPagesWithContext(ctx context.Context, input *s3control.ListStorageLensGroupsInput, cb func(*s3control.ListStorageLensGroupsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListStorageLensGroups",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.S3ControlAPI.ListStorageLensGroupsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
+func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *s3control.ListTagsForResourceInput, opts ...request.Option) (*s3control.ListTagsForResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "ListTagsForResource",
+		Input:   input,
+		Output:  (*s3control.ListTagsForResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.ListTagsForResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.ListTagsForResourceOutput), req.Error
 }
 
 func (c *Client) PutAccessPointConfigurationForObjectLambdaWithContext(ctx context.Context, input *s3control.PutAccessPointConfigurationForObjectLambdaInput, opts ...request.Option) (*s3control.PutAccessPointConfigurationForObjectLambdaOutput, error) {
@@ -1520,6 +1654,48 @@ func (c *Client) SubmitMultiRegionAccessPointRoutesWithContext(ctx context.Conte
 	return req.Output.(*s3control.SubmitMultiRegionAccessPointRoutesOutput), req.Error
 }
 
+func (c *Client) TagResourceWithContext(ctx context.Context, input *s3control.TagResourceInput, opts ...request.Option) (*s3control.TagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "TagResource",
+		Input:   input,
+		Output:  (*s3control.TagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.TagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.TagResourceOutput), req.Error
+}
+
+func (c *Client) UntagResourceWithContext(ctx context.Context, input *s3control.UntagResourceInput, opts ...request.Option) (*s3control.UntagResourceOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "UntagResource",
+		Input:   input,
+		Output:  (*s3control.UntagResourceOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.UntagResourceWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.UntagResourceOutput), req.Error
+}
+
 func (c *Client) UpdateJobPriorityWithContext(ctx context.Context, input *s3control.UpdateJobPriorityInput, opts ...request.Option) (*s3control.UpdateJobPriorityOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "s3control",
@@ -1560,4 +1736,25 @@ func (c *Client) UpdateJobStatusWithContext(ctx context.Context, input *s3contro
 	})
 
 	return req.Output.(*s3control.UpdateJobStatusOutput), req.Error
+}
+
+func (c *Client) UpdateStorageLensGroupWithContext(ctx context.Context, input *s3control.UpdateStorageLensGroupInput, opts ...request.Option) (*s3control.UpdateStorageLensGroupOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "s3control",
+		Action:  "UpdateStorageLensGroup",
+		Input:   input,
+		Output:  (*s3control.UpdateStorageLensGroupOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.S3ControlAPI.UpdateStorageLensGroupWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*s3control.UpdateStorageLensGroupOutput), req.Error
 }
