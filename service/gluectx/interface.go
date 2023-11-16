@@ -91,6 +91,9 @@ type Glue interface {
 	GetClassifiersPagesWithContext(ctx context.Context, input *glue.GetClassifiersInput, cb func(*glue.GetClassifiersOutput, bool) bool, opts ...request.Option) error
 	GetColumnStatisticsForPartitionWithContext(ctx context.Context, input *glue.GetColumnStatisticsForPartitionInput, opts ...request.Option) (*glue.GetColumnStatisticsForPartitionOutput, error)
 	GetColumnStatisticsForTableWithContext(ctx context.Context, input *glue.GetColumnStatisticsForTableInput, opts ...request.Option) (*glue.GetColumnStatisticsForTableOutput, error)
+	GetColumnStatisticsTaskRunWithContext(ctx context.Context, input *glue.GetColumnStatisticsTaskRunInput, opts ...request.Option) (*glue.GetColumnStatisticsTaskRunOutput, error)
+	GetColumnStatisticsTaskRunsWithContext(ctx context.Context, input *glue.GetColumnStatisticsTaskRunsInput, opts ...request.Option) (*glue.GetColumnStatisticsTaskRunsOutput, error)
+	GetColumnStatisticsTaskRunsPagesWithContext(ctx context.Context, input *glue.GetColumnStatisticsTaskRunsInput, cb func(*glue.GetColumnStatisticsTaskRunsOutput, bool) bool, opts ...request.Option) error
 	GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error)
 	GetConnectionsWithContext(ctx context.Context, input *glue.GetConnectionsInput, opts ...request.Option) (*glue.GetConnectionsOutput, error)
 	GetConnectionsPagesWithContext(ctx context.Context, input *glue.GetConnectionsInput, cb func(*glue.GetConnectionsOutput, bool) bool, opts ...request.Option) error
@@ -171,6 +174,8 @@ type Glue interface {
 	ImportCatalogToGlueWithContext(ctx context.Context, input *glue.ImportCatalogToGlueInput, opts ...request.Option) (*glue.ImportCatalogToGlueOutput, error)
 	ListBlueprintsWithContext(ctx context.Context, input *glue.ListBlueprintsInput, opts ...request.Option) (*glue.ListBlueprintsOutput, error)
 	ListBlueprintsPagesWithContext(ctx context.Context, input *glue.ListBlueprintsInput, cb func(*glue.ListBlueprintsOutput, bool) bool, opts ...request.Option) error
+	ListColumnStatisticsTaskRunsWithContext(ctx context.Context, input *glue.ListColumnStatisticsTaskRunsInput, opts ...request.Option) (*glue.ListColumnStatisticsTaskRunsOutput, error)
+	ListColumnStatisticsTaskRunsPagesWithContext(ctx context.Context, input *glue.ListColumnStatisticsTaskRunsInput, cb func(*glue.ListColumnStatisticsTaskRunsOutput, bool) bool, opts ...request.Option) error
 	ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error)
 	ListCrawlersPagesWithContext(ctx context.Context, input *glue.ListCrawlersInput, cb func(*glue.ListCrawlersOutput, bool) bool, opts ...request.Option) error
 	ListCrawlsWithContext(ctx context.Context, input *glue.ListCrawlsInput, opts ...request.Option) (*glue.ListCrawlsOutput, error)
@@ -218,6 +223,7 @@ type Glue interface {
 	SearchTablesWithContext(ctx context.Context, input *glue.SearchTablesInput, opts ...request.Option) (*glue.SearchTablesOutput, error)
 	SearchTablesPagesWithContext(ctx context.Context, input *glue.SearchTablesInput, cb func(*glue.SearchTablesOutput, bool) bool, opts ...request.Option) error
 	StartBlueprintRunWithContext(ctx context.Context, input *glue.StartBlueprintRunInput, opts ...request.Option) (*glue.StartBlueprintRunOutput, error)
+	StartColumnStatisticsTaskRunWithContext(ctx context.Context, input *glue.StartColumnStatisticsTaskRunInput, opts ...request.Option) (*glue.StartColumnStatisticsTaskRunOutput, error)
 	StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error)
 	StartCrawlerScheduleWithContext(ctx context.Context, input *glue.StartCrawlerScheduleInput, opts ...request.Option) (*glue.StartCrawlerScheduleOutput, error)
 	StartDataQualityRuleRecommendationRunWithContext(ctx context.Context, input *glue.StartDataQualityRuleRecommendationRunInput, opts ...request.Option) (*glue.StartDataQualityRuleRecommendationRunOutput, error)
@@ -229,6 +235,7 @@ type Glue interface {
 	StartMLLabelingSetGenerationTaskRunWithContext(ctx context.Context, input *glue.StartMLLabelingSetGenerationTaskRunInput, opts ...request.Option) (*glue.StartMLLabelingSetGenerationTaskRunOutput, error)
 	StartTriggerWithContext(ctx context.Context, input *glue.StartTriggerInput, opts ...request.Option) (*glue.StartTriggerOutput, error)
 	StartWorkflowRunWithContext(ctx context.Context, input *glue.StartWorkflowRunInput, opts ...request.Option) (*glue.StartWorkflowRunOutput, error)
+	StopColumnStatisticsTaskRunWithContext(ctx context.Context, input *glue.StopColumnStatisticsTaskRunInput, opts ...request.Option) (*glue.StopColumnStatisticsTaskRunOutput, error)
 	StopCrawlerWithContext(ctx context.Context, input *glue.StopCrawlerInput, opts ...request.Option) (*glue.StopCrawlerOutput, error)
 	StopCrawlerScheduleWithContext(ctx context.Context, input *glue.StopCrawlerScheduleInput, opts ...request.Option) (*glue.StopCrawlerScheduleOutput, error)
 	StopSessionWithContext(ctx context.Context, input *glue.StopSessionInput, opts ...request.Option) (*glue.StopSessionOutput, error)
@@ -1953,6 +1960,68 @@ func (c *Client) GetColumnStatisticsForTableWithContext(ctx context.Context, inp
 	return req.Output.(*glue.GetColumnStatisticsForTableOutput), req.Error
 }
 
+func (c *Client) GetColumnStatisticsTaskRunWithContext(ctx context.Context, input *glue.GetColumnStatisticsTaskRunInput, opts ...request.Option) (*glue.GetColumnStatisticsTaskRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetColumnStatisticsTaskRun",
+		Input:   input,
+		Output:  (*glue.GetColumnStatisticsTaskRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetColumnStatisticsTaskRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetColumnStatisticsTaskRunOutput), req.Error
+}
+
+func (c *Client) GetColumnStatisticsTaskRunsWithContext(ctx context.Context, input *glue.GetColumnStatisticsTaskRunsInput, opts ...request.Option) (*glue.GetColumnStatisticsTaskRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetColumnStatisticsTaskRuns",
+		Input:   input,
+		Output:  (*glue.GetColumnStatisticsTaskRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.GetColumnStatisticsTaskRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.GetColumnStatisticsTaskRunsOutput), req.Error
+}
+
+func (c *Client) GetColumnStatisticsTaskRunsPagesWithContext(ctx context.Context, input *glue.GetColumnStatisticsTaskRunsInput, cb func(*glue.GetColumnStatisticsTaskRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "GetColumnStatisticsTaskRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.GetColumnStatisticsTaskRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) GetConnectionWithContext(ctx context.Context, input *glue.GetConnectionInput, opts ...request.Option) (*glue.GetConnectionOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -3613,6 +3682,47 @@ func (c *Client) ListBlueprintsPagesWithContext(ctx context.Context, input *glue
 	return req.Error
 }
 
+func (c *Client) ListColumnStatisticsTaskRunsWithContext(ctx context.Context, input *glue.ListColumnStatisticsTaskRunsInput, opts ...request.Option) (*glue.ListColumnStatisticsTaskRunsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListColumnStatisticsTaskRuns",
+		Input:   input,
+		Output:  (*glue.ListColumnStatisticsTaskRunsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.ListColumnStatisticsTaskRunsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.ListColumnStatisticsTaskRunsOutput), req.Error
+}
+
+func (c *Client) ListColumnStatisticsTaskRunsPagesWithContext(ctx context.Context, input *glue.ListColumnStatisticsTaskRunsInput, cb func(*glue.ListColumnStatisticsTaskRunsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "ListColumnStatisticsTaskRuns",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.GlueAPI.ListColumnStatisticsTaskRunsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
+}
+
 func (c *Client) ListCrawlersWithContext(ctx context.Context, input *glue.ListCrawlersInput, opts ...request.Option) (*glue.ListCrawlersOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -4583,6 +4693,27 @@ func (c *Client) StartBlueprintRunWithContext(ctx context.Context, input *glue.S
 	return req.Output.(*glue.StartBlueprintRunOutput), req.Error
 }
 
+func (c *Client) StartColumnStatisticsTaskRunWithContext(ctx context.Context, input *glue.StartColumnStatisticsTaskRunInput, opts ...request.Option) (*glue.StartColumnStatisticsTaskRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StartColumnStatisticsTaskRun",
+		Input:   input,
+		Output:  (*glue.StartColumnStatisticsTaskRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StartColumnStatisticsTaskRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StartColumnStatisticsTaskRunOutput), req.Error
+}
+
 func (c *Client) StartCrawlerWithContext(ctx context.Context, input *glue.StartCrawlerInput, opts ...request.Option) (*glue.StartCrawlerOutput, error) {
 	req := &awsctx.AwsRequest{
 		Service: "glue",
@@ -4812,6 +4943,27 @@ func (c *Client) StartWorkflowRunWithContext(ctx context.Context, input *glue.St
 	})
 
 	return req.Output.(*glue.StartWorkflowRunOutput), req.Error
+}
+
+func (c *Client) StopColumnStatisticsTaskRunWithContext(ctx context.Context, input *glue.StopColumnStatisticsTaskRunInput, opts ...request.Option) (*glue.StopColumnStatisticsTaskRunOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "glue",
+		Action:  "StopColumnStatisticsTaskRun",
+		Input:   input,
+		Output:  (*glue.StopColumnStatisticsTaskRunOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.GlueAPI.StopColumnStatisticsTaskRunWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*glue.StopColumnStatisticsTaskRunOutput), req.Error
 }
 
 func (c *Client) StopCrawlerWithContext(ctx context.Context, input *glue.StopCrawlerInput, opts ...request.Option) (*glue.StopCrawlerOutput, error) {

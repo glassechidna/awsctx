@@ -26,6 +26,7 @@ type QuickSight interface {
 	CreateIngestionWithContext(ctx context.Context, input *quicksight.CreateIngestionInput, opts ...request.Option) (*quicksight.CreateIngestionOutput, error)
 	CreateNamespaceWithContext(ctx context.Context, input *quicksight.CreateNamespaceInput, opts ...request.Option) (*quicksight.CreateNamespaceOutput, error)
 	CreateRefreshScheduleWithContext(ctx context.Context, input *quicksight.CreateRefreshScheduleInput, opts ...request.Option) (*quicksight.CreateRefreshScheduleOutput, error)
+	CreateRoleMembershipWithContext(ctx context.Context, input *quicksight.CreateRoleMembershipInput, opts ...request.Option) (*quicksight.CreateRoleMembershipOutput, error)
 	CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error)
 	CreateTemplateAliasWithContext(ctx context.Context, input *quicksight.CreateTemplateAliasInput, opts ...request.Option) (*quicksight.CreateTemplateAliasOutput, error)
 	CreateThemeWithContext(ctx context.Context, input *quicksight.CreateThemeInput, opts ...request.Option) (*quicksight.CreateThemeOutput, error)
@@ -47,6 +48,8 @@ type QuickSight interface {
 	DeleteIAMPolicyAssignmentWithContext(ctx context.Context, input *quicksight.DeleteIAMPolicyAssignmentInput, opts ...request.Option) (*quicksight.DeleteIAMPolicyAssignmentOutput, error)
 	DeleteNamespaceWithContext(ctx context.Context, input *quicksight.DeleteNamespaceInput, opts ...request.Option) (*quicksight.DeleteNamespaceOutput, error)
 	DeleteRefreshScheduleWithContext(ctx context.Context, input *quicksight.DeleteRefreshScheduleInput, opts ...request.Option) (*quicksight.DeleteRefreshScheduleOutput, error)
+	DeleteRoleCustomPermissionWithContext(ctx context.Context, input *quicksight.DeleteRoleCustomPermissionInput, opts ...request.Option) (*quicksight.DeleteRoleCustomPermissionOutput, error)
+	DeleteRoleMembershipWithContext(ctx context.Context, input *quicksight.DeleteRoleMembershipInput, opts ...request.Option) (*quicksight.DeleteRoleMembershipOutput, error)
 	DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error)
 	DeleteTemplateAliasWithContext(ctx context.Context, input *quicksight.DeleteTemplateAliasInput, opts ...request.Option) (*quicksight.DeleteTemplateAliasOutput, error)
 	DeleteThemeWithContext(ctx context.Context, input *quicksight.DeleteThemeInput, opts ...request.Option) (*quicksight.DeleteThemeOutput, error)
@@ -86,6 +89,7 @@ type QuickSight interface {
 	DescribeIpRestrictionWithContext(ctx context.Context, input *quicksight.DescribeIpRestrictionInput, opts ...request.Option) (*quicksight.DescribeIpRestrictionOutput, error)
 	DescribeNamespaceWithContext(ctx context.Context, input *quicksight.DescribeNamespaceInput, opts ...request.Option) (*quicksight.DescribeNamespaceOutput, error)
 	DescribeRefreshScheduleWithContext(ctx context.Context, input *quicksight.DescribeRefreshScheduleInput, opts ...request.Option) (*quicksight.DescribeRefreshScheduleOutput, error)
+	DescribeRoleCustomPermissionWithContext(ctx context.Context, input *quicksight.DescribeRoleCustomPermissionInput, opts ...request.Option) (*quicksight.DescribeRoleCustomPermissionOutput, error)
 	DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error)
 	DescribeTemplateAliasWithContext(ctx context.Context, input *quicksight.DescribeTemplateAliasInput, opts ...request.Option) (*quicksight.DescribeTemplateAliasOutput, error)
 	DescribeTemplateDefinitionWithContext(ctx context.Context, input *quicksight.DescribeTemplateDefinitionInput, opts ...request.Option) (*quicksight.DescribeTemplateDefinitionOutput, error)
@@ -134,6 +138,8 @@ type QuickSight interface {
 	ListNamespacesWithContext(ctx context.Context, input *quicksight.ListNamespacesInput, opts ...request.Option) (*quicksight.ListNamespacesOutput, error)
 	ListNamespacesPagesWithContext(ctx context.Context, input *quicksight.ListNamespacesInput, cb func(*quicksight.ListNamespacesOutput, bool) bool, opts ...request.Option) error
 	ListRefreshSchedulesWithContext(ctx context.Context, input *quicksight.ListRefreshSchedulesInput, opts ...request.Option) (*quicksight.ListRefreshSchedulesOutput, error)
+	ListRoleMembershipsWithContext(ctx context.Context, input *quicksight.ListRoleMembershipsInput, opts ...request.Option) (*quicksight.ListRoleMembershipsOutput, error)
+	ListRoleMembershipsPagesWithContext(ctx context.Context, input *quicksight.ListRoleMembershipsInput, cb func(*quicksight.ListRoleMembershipsOutput, bool) bool, opts ...request.Option) error
 	ListTagsForResourceWithContext(ctx context.Context, input *quicksight.ListTagsForResourceInput, opts ...request.Option) (*quicksight.ListTagsForResourceOutput, error)
 	ListTemplateAliasesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, opts ...request.Option) (*quicksight.ListTemplateAliasesOutput, error)
 	ListTemplateAliasesPagesWithContext(ctx context.Context, input *quicksight.ListTemplateAliasesInput, cb func(*quicksight.ListTemplateAliasesOutput, bool) bool, opts ...request.Option) error
@@ -193,6 +199,7 @@ type QuickSight interface {
 	UpdateIpRestrictionWithContext(ctx context.Context, input *quicksight.UpdateIpRestrictionInput, opts ...request.Option) (*quicksight.UpdateIpRestrictionOutput, error)
 	UpdatePublicSharingSettingsWithContext(ctx context.Context, input *quicksight.UpdatePublicSharingSettingsInput, opts ...request.Option) (*quicksight.UpdatePublicSharingSettingsOutput, error)
 	UpdateRefreshScheduleWithContext(ctx context.Context, input *quicksight.UpdateRefreshScheduleInput, opts ...request.Option) (*quicksight.UpdateRefreshScheduleOutput, error)
+	UpdateRoleCustomPermissionWithContext(ctx context.Context, input *quicksight.UpdateRoleCustomPermissionInput, opts ...request.Option) (*quicksight.UpdateRoleCustomPermissionOutput, error)
 	UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error)
 	UpdateTemplateAliasWithContext(ctx context.Context, input *quicksight.UpdateTemplateAliasInput, opts ...request.Option) (*quicksight.UpdateTemplateAliasOutput, error)
 	UpdateTemplatePermissionsWithContext(ctx context.Context, input *quicksight.UpdateTemplatePermissionsInput, opts ...request.Option) (*quicksight.UpdateTemplatePermissionsOutput, error)
@@ -534,6 +541,27 @@ func (c *Client) CreateRefreshScheduleWithContext(ctx context.Context, input *qu
 	})
 
 	return req.Output.(*quicksight.CreateRefreshScheduleOutput), req.Error
+}
+
+func (c *Client) CreateRoleMembershipWithContext(ctx context.Context, input *quicksight.CreateRoleMembershipInput, opts ...request.Option) (*quicksight.CreateRoleMembershipOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "CreateRoleMembership",
+		Input:   input,
+		Output:  (*quicksight.CreateRoleMembershipOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.CreateRoleMembershipWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.CreateRoleMembershipOutput), req.Error
 }
 
 func (c *Client) CreateTemplateWithContext(ctx context.Context, input *quicksight.CreateTemplateInput, opts ...request.Option) (*quicksight.CreateTemplateOutput, error) {
@@ -975,6 +1003,48 @@ func (c *Client) DeleteRefreshScheduleWithContext(ctx context.Context, input *qu
 	})
 
 	return req.Output.(*quicksight.DeleteRefreshScheduleOutput), req.Error
+}
+
+func (c *Client) DeleteRoleCustomPermissionWithContext(ctx context.Context, input *quicksight.DeleteRoleCustomPermissionInput, opts ...request.Option) (*quicksight.DeleteRoleCustomPermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteRoleCustomPermission",
+		Input:   input,
+		Output:  (*quicksight.DeleteRoleCustomPermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteRoleCustomPermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteRoleCustomPermissionOutput), req.Error
+}
+
+func (c *Client) DeleteRoleMembershipWithContext(ctx context.Context, input *quicksight.DeleteRoleMembershipInput, opts ...request.Option) (*quicksight.DeleteRoleMembershipOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DeleteRoleMembership",
+		Input:   input,
+		Output:  (*quicksight.DeleteRoleMembershipOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DeleteRoleMembershipWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DeleteRoleMembershipOutput), req.Error
 }
 
 func (c *Client) DeleteTemplateWithContext(ctx context.Context, input *quicksight.DeleteTemplateInput, opts ...request.Option) (*quicksight.DeleteTemplateOutput, error) {
@@ -1792,6 +1862,27 @@ func (c *Client) DescribeRefreshScheduleWithContext(ctx context.Context, input *
 	})
 
 	return req.Output.(*quicksight.DescribeRefreshScheduleOutput), req.Error
+}
+
+func (c *Client) DescribeRoleCustomPermissionWithContext(ctx context.Context, input *quicksight.DescribeRoleCustomPermissionInput, opts ...request.Option) (*quicksight.DescribeRoleCustomPermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "DescribeRoleCustomPermission",
+		Input:   input,
+		Output:  (*quicksight.DescribeRoleCustomPermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.DescribeRoleCustomPermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.DescribeRoleCustomPermissionOutput), req.Error
 }
 
 func (c *Client) DescribeTemplateWithContext(ctx context.Context, input *quicksight.DescribeTemplateInput, opts ...request.Option) (*quicksight.DescribeTemplateOutput, error) {
@@ -2785,6 +2876,47 @@ func (c *Client) ListRefreshSchedulesWithContext(ctx context.Context, input *qui
 	})
 
 	return req.Output.(*quicksight.ListRefreshSchedulesOutput), req.Error
+}
+
+func (c *Client) ListRoleMembershipsWithContext(ctx context.Context, input *quicksight.ListRoleMembershipsInput, opts ...request.Option) (*quicksight.ListRoleMembershipsOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListRoleMemberships",
+		Input:   input,
+		Output:  (*quicksight.ListRoleMembershipsOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.ListRoleMembershipsWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.ListRoleMembershipsOutput), req.Error
+}
+
+func (c *Client) ListRoleMembershipsPagesWithContext(ctx context.Context, input *quicksight.ListRoleMembershipsInput, cb func(*quicksight.ListRoleMembershipsOutput, bool) bool, opts ...request.Option) error {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "ListRoleMemberships",
+		Input:   input,
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Error = c.QuickSightAPI.ListRoleMembershipsPagesWithContext(ctx, input, cb, opts...)
+	})
+
+	return req.Error
 }
 
 func (c *Client) ListTagsForResourceWithContext(ctx context.Context, input *quicksight.ListTagsForResourceInput, opts ...request.Option) (*quicksight.ListTagsForResourceOutput, error) {
@@ -4009,6 +4141,27 @@ func (c *Client) UpdateRefreshScheduleWithContext(ctx context.Context, input *qu
 	})
 
 	return req.Output.(*quicksight.UpdateRefreshScheduleOutput), req.Error
+}
+
+func (c *Client) UpdateRoleCustomPermissionWithContext(ctx context.Context, input *quicksight.UpdateRoleCustomPermissionInput, opts ...request.Option) (*quicksight.UpdateRoleCustomPermissionOutput, error) {
+	req := &awsctx.AwsRequest{
+		Service: "quicksight",
+		Action:  "UpdateRoleCustomPermission",
+		Input:   input,
+		Output:  (*quicksight.UpdateRoleCustomPermissionOutput)(nil),
+		Error:   nil,
+	}
+
+	ctxer := c.Contexter
+	if ctxer == nil {
+		ctxer = awsctx.NoopContexter
+	}
+
+	ctxer.WrapContext(ctx, req, func(ctx context.Context) {
+		req.Output, req.Error = c.QuickSightAPI.UpdateRoleCustomPermissionWithContext(ctx, input, opts...)
+	})
+
+	return req.Output.(*quicksight.UpdateRoleCustomPermissionOutput), req.Error
 }
 
 func (c *Client) UpdateTemplateWithContext(ctx context.Context, input *quicksight.UpdateTemplateInput, opts ...request.Option) (*quicksight.UpdateTemplateOutput, error) {
